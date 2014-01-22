@@ -1,3 +1,7 @@
 =How to setup=
 pip install -r requirements.txt 
-alembic init alembic
+alembic upgrade head
+
+=db migrations=
+alembic revision --autogenerate -m "<insert message here>"
+alembic upgrade head
