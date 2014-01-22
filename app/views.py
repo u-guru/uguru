@@ -8,3 +8,7 @@ def index():
 @app.route('/portfolio/')
 def portfolio():
 	return render_template('portfolio.html')
+
+@app.route('/admin/')
+def admin():
+    return render_template('admin.html')
