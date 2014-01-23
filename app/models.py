@@ -1,5 +1,4 @@
 from sqlalchemy import String, Integer, Column
-from flask.ext.sqlalchemy import SQLAlchemy
 from app.database import Base
 
 class User(Base):
