@@ -9,4 +9,4 @@ class User(Base):
     password = Column(String(64), index = True)
 
     def __repr__(self):
-        return "Name: %s, Email: %s" % (self.name, self.email)
+        return "Name: %s, Email: %s" % (self.name, self.email, self.password)
