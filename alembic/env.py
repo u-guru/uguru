@@ -5,10 +5,12 @@ from logging.config import fileConfig
 
 import os
 import sys
-sys.path.append(
-        os.path.abspath(
-            os.path.join(
-                os.path.dirname(os.path.abspath(__file__)), os.pardir)))
+# sys.path.append(
+#         os.path.abspath(
+#             os.path.join(
+#                 os.path.dirname(os.path.abspath(__file__)), os.pardir)))
+sys.path.append(os.getcwd())
+
 from app import app, models
 target_metadata = models.Base.metadata                          
 
@@ -19,6 +21,8 @@ config = context.config
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
+
+config.set_main_option('sqlalchemy.url', app.config['SQLALCHEMY_DATABASE_URI'])
 
 # add your model's MetaData object here
 # for 'autogenerate' support
