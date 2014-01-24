@@ -12,3 +12,11 @@ def portfolio():
 @app.route('/admin/')
 def admin():
     return render_template('admin.html')
+
+@app.route('/home/')
+def home():
+    return render_template('home.html')
+
+@app.route('/tutorsignup/')
+def tutorsignup():
+    return render_template('tutorsignup.html')
