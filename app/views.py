@@ -24,3 +24,19 @@ def tutorsignup1():
 @app.route('/tutorsignup2/')
 def tutorsignup2():
     return render_template('tutorsignup2.html')
+
+@app.route('/howitworks/')
+def howitworks():
+    return render_template('howitworks.html')
+
+@app.route('/studentsignup1/')
+def studentsignup1():
+    return render_template('studentsignup1.html')
+
+@app.route('/studentsignup2/')
+def studentsignup2():
+    return render_template('studentsignup2.html')
+
+@app.route('/studentsignup3/')
+def studentsignup3():
+    return render_template('studentsignup3.html')

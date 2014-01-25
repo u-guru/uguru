@@ -14,17 +14,13 @@
   </head>
   <body>
 
-  	<!-- Side Menu -->
+     <!-- Side Menu -->
     <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
         <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-        <li class="sidebar-brand"><a href="http://startbootstrap.com">uGuru.me</a></li>
-        <li><a href="#top">Home</a></li>
-        <li><a href="#about">Log in</a></li>
-        <li><a href="#services">How it works</a></li>
-        <li><a href="#portfolio">Why is this page so plain?</a></li>
-        <li><a href="#contact">Account Settings</a></li>
+        <li class="sidebar-brand"><a href="http://startbootstrap.com">uGuru.me Home</a></li>
+        <!-- <li><a href="/howitworks">How It Works</a></li> -->
       </ul>
     </div>
     <!-- /Side Menu -->
@@ -35,15 +31,44 @@
       	<img class="img-portfolio img-responsive" src="/static/img/guru.jpg">
         <h1>uGuru.me</h1>
         <h3><em>Peer to Peer</em> private tutoring.<br>Affordable. Quick.</h3>
-        <a href="/studenthelp/" class="btn btn-default btn-lg">Need a Tutor?</a>
+        <a href="/studentsignup1/" class="btn btn-default btn-lg">Need a Tutor?</a>
         <a href="/tutorsignup1" class="btn btn-lg btn-primary">Become a Tutor</a>
-        <div class="call-to-action">
+     
+  <!-- LogIn Experiment -->
+      <div class="call-to-action">
       <div class="container">
         <div class="row">
+        <script data-rocketsrc="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/rocketscript" data-rocketoptimized="true"></script>
+        <script data-rocketsrc="showHide.js" type="text/rocketscript" data-rocketoptimized="true"></script>
+        <script type="text/rocketscript" data-rocketoptimized="true">
+
+$(document).ready(function(){
+
+
+   $('.show_hide').showHide({      
+    speed: 1000,  // speed you want the toggle to happen  
+    easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
+    changeText: 1, // if you dont want the button text to change, set this to 0
+    showText: 'View',// the button text to show when a div is closed
+    hideText: 'Close' // the button text to show when a div is open
+           
+  }); 
+
+
+});
+
+</script>
+          <a href="#" class="show_hide" rel="#slidingDiv">LogIn</a>
+          <div id="slidingDiv" class="toggleDiv" style="display: none;">Fill this space with really interesting content.</div>
+          
           <div class="col-md-6 col-md-offset-3 text-center">
-            <h3>See <a target="_blank" href="/howitworks/">How it Works</a>.</h3>
+            <h3>See <a href="/howitworks/">How it Works</a>.</h3>
+        </div>
       </div>
     </div>
+      </div>
+    </div>
+  </div>
     <!-- /Full Page Image Header Area -->
 
     <!-- Footer -->
@@ -97,5 +122,77 @@
         });
       });
     </script>
+
+    <!-- JQuery for Login show/hide -->
+   <script type="text/rocketscript" data-rocketoptimized="true">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7025232-16']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    <script>
+
+    (function ($) {
+    $.fn.showHide = function (options) {
+ 
+    //default vars for the plugin
+        var defaults = {
+            speed: 1000,
+            easing: '',
+            changeText: 0,
+            showText: 'LogIn',
+            hideText: 'LogIn'
+ 
+        };
+        var options = $.extend(defaults, options);
+ 
+        $(this).click(function () {
+// optionally add the class .toggleDiv to each div you want to automatically close
+              $('.toggleDiv').slideUp(options.speed, options.easing);
+             // this var stores which button you've clicked
+             var toggleClick = $(this);
+             // this reads the rel attribute of the button to determine which div id to toggle
+             var toggleDiv = $(this).attr('rel');
+             // here we toggle show/hide the correct div at the right speed and using which easing effect
+             $(toggleDiv).slideToggle(options.speed, options.easing, function() {
+             // this only fires once the animation is completed
+             if(options.changeText==1){
+             $(toggleDiv).is(":visible") ? toggleClick.text(options.hideText) : toggleClick.text(options.showText);
+             }
+              });
+ 
+          return false;
+ 
+        });
+ 
+    };
+})(jQuery);
+</script>
+
+<script data-rocketsrc="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js" type="text/rocketscript" data-rocketoptimized="true"></script>
+<script type="text/rocketscript" data-rocketoptimized="true"> 
+
+$(document).ready(function(){
+ 
+   $('.show_hide').showHide({
+        speed: 1000,  // speed you want the toggle to happen
+        easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
+        changeText: 0, // if you dont want the button text to change, set this to 0
+        showText: 'LogIn',// the button text to show when a div is closed
+        hideText: 'LogIn' // the button text to show when a div is open
+ 
+    });
+ 
+});
+
+</script>
+
   </body>
 </html>
