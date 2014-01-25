@@ -17,6 +17,10 @@ def admin():
 def home():
     return render_template('home.html')
 
-@app.route('/tutorsignup/')
-def tutorsignup():
-    return render_template('tutorsignup.html')
+@app.route('/tutorsignup1/')
+def tutorsignup1():
+    return render_template('tutorsignup1.html')
+
+@app.route('/tutorsignup2/')
+def tutorsignup2():
+    return render_template('tutorsignup2.html')
