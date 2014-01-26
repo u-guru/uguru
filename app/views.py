@@ -40,3 +40,11 @@ def studentsignup2():
 @app.route('/studentsignup3/')
 def studentsignup3():
     return render_template('studentsignup3.html')
+
+@app.route('/login/')
+def login():
+    return render_template('login.html')
+
+@app.route('/settings/')
+def settings():
+    return render_template('settings.html')

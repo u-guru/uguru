@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Become a Tutor</title>
+    <title>Account Settings</title>
     <!-- Bootstrap core CSS -->
     <link href="/static/css/bootstrap.css" rel="stylesheet">
     <!-- Add custom CSS here -->
@@ -29,45 +29,54 @@
   <div id="top" class="header">
     <div class="vert-text">
     <div class="container">
- <!--    <div class="row vertical-offset-100">
+<!--     <div class="row vertical-offset-100">
       <div class="col-md-4 col-md-offset-4"> -->
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h2>Become a Tutor</h2>
+            <h2>Account Settings</h2>
         </div>
           <div class="panel-body">
             <form accept-charset="UTF-8" role="form">
-                    <fieldset>
-              <div class="form-group">
-                  <input class="form-control" placeholder="Name" name="name" type="text">
-              </div>
-              <div class="form-group">
-                  <input class="form-control" placeholder="E-mail" name="email" type="text">
-              </div>
-              <div class="form-group">
-                <input class="form-control" placeholder="Password" name="password" type="password" type="text">
-              </div>
-              <div class="form-group">
-                  <input class="form-control" placeholder="Phone Number" name="phone" type="text">
-              </div>
-              <!--  <div class="col-md-4 col-md-offset-4 text-center"> -->
-         <!--        <div class="service-item"> -->
-                <p>Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.</p>
-           <!--     </div>
-               </div> -->
-                <h3><u>Add Skills and Courses</u></h3>
-                <p>Add anything you feel proficient enough in to teach.</p>
-       <!--          <div class="col-sm-6 col-lg-offset-6 text-center"> -->
-                  <div class="input-group">
-                    <input type="text" class="form-control">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div><!-- /input-group -->
+            <fieldset>
+            <div class="col-md-4 col-mid-offset-6 text-left">
+              <h3><u>Your Ratings as a Student</u></h3>
+           <!--    <div class="col-md-4 col-mid-offset-4 text-left"> -->
+              <fieldset class="rating">
+                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5">5 stars</label>
+                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4">4 stars</label>
+                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3">3 stars</label>
+                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2">2 stars</label>
+                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1">1 star</label>
+                </fieldset>
                 <br>
                 <br>
-             <a href="/tutorsignup2" class="btn btn-lg btn-success btn-block" type="submit">Register</a>
-                <p>By clicking register you agree to our <a href="/TermsofService/">Terms of Service</a> and <a href="PrivacyPolicy">Privacy Policy</a>.</p>
+                <h4>4.0 average, 7 reviews
+              </div>
+           <!--  </div> -->
+            <div class="col-md-8 col-mid-offset-10 text-left">
+              <h3><u>Notification Preferences</u></h3>
+             <label class="checkbox">
+              <input type="checkbox" name="notif_pref[]" id="notif_pref_1" value="Email" /><label for="notif_pref_3">Email Notifications</label>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" name="notif_pref[]" id="notif_pref_2" value="Text" /><label for="notif_pref_3">Text Notifications</label>
+            </label>
+            <label class="checkbox">
+               <input type="checkbox" name="notif_pref[]" id="notif_none" value="0" checked /><label for="notif_none">Neither (you will be an offline tutor and not receive any requests)</label>
+            </label>
+
+              <h3><u>Change Password</u></h3>
+              <div class="form-group">
+                  <input class="form-control" placeholder="Current Password" name="currentpassword" type="text">
+              </div>
+              <div class="form-group">
+                  <input class="form-control" placeholder="New Password" name="newpassword" type="text">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Confirm New Password" name="password" type="confirm" type="text">
+              </div>
+              <a href="/settings" class="btn btn-lg btn-primary" type="submit">Save</a>
+              </div>
             </fieldset>
               </form>
           </div>
@@ -79,8 +88,6 @@
 </div>
 
 
-
-  
     <!-- Footer -->
     <footer>
      <div class="container">
@@ -132,5 +139,24 @@
         });
       });
     </script>
+
+    <!-- Custom JavaScript for Notification Checkboxes -->
+    <script>
+     $(function(){
+        var el=$('input:checkbox[name="notif_pref[]"]');
+        el.on('change', function(e){
+            if($(this).attr('id')!='notif_none')
+            {
+                if($(this).is(':checked')) 
+                    $('#notif_none').prop('checked', false);
+            }
+            else
+            {
+                if($(this).is(':checked'))
+                    el.not($(this)).prop('checked', false);
+            }
+        });
+    });
+     </script>
   </body>
 </html>

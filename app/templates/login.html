@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Student Signup 3</title>
+    <title>Log In</title>
     <!-- Bootstrap core CSS -->
     <link href="/static/css/bootstrap.css" rel="stylesheet">
     <!-- Add custom CSS here -->
@@ -19,7 +19,7 @@
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
         <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-        <li class="sidebar-brand"><a href="/home">uGuru.me Home</a></li>
+        <li class="sidebar-brand"><a href="/home/">uGuru.me Home</a></li>
         <li><a href="/howitworks">How It Works</a></li>
         <li><a href="/settings">Account Settings</a></li>
       </ul>
@@ -29,41 +29,35 @@
   <div id="top" class="header">
     <div class="vert-text">
     <div class="container">
-<!--     <div class="row vertical-offset-100">
-      <div class="col-md-4 col-md-offset-4"> -->
+    <div class="row vertical-offset-100">
+      <div class="col-md-4 col-md-offset-4">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h2>Your Request has been Submitted</h2>
-        </div>
+            <h2>Log In</h2>
+          </div>
           <div class="panel-body">
-              <!--  <div class="col-md-4 col-md-offset-4 text-center">
-                <div class="service-item"> -->
-                <h4>We've let all Gurus in __ know that someone is in need {ASAP}.</h4>
-              <!--  </div>
-               </div>
-               </div> -->
-               <img class="img-portfolio img-responsive" src="/static/img/guru.jpg">
-                <h3><u>What's next?</u></h3>
-             <!--    <div class="col-mid-4 col-md-offset-4 text-left">
-                <div class="service-item"> -->
-                <ol>
-                  <li>Once an expert accepts your request, you will receive a text and email notification with information regarding that expert. (Edit notification preferences <a href="/settings">here</a>.)</li>
-                  <li>You can choose to accept or wait for a different offer. If you accept, an email thread will be initiated between the two.</li>
-                  <li>Relax! We'll let you know as soon as a Guru is available.</li>
-                </ol>
-            <!--   </div>
-                </div> -->
+            <form accept-charset="UTF-8" role="form">
+            <fieldset>
+              <div class="form-group">
+                  <input class="form-control" placeholder="E-mail" name="email" type="text">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+              </div>
+               <a href="/home" class="btn btn-lg btn-success btn-block" type="submit">Submit</a>
+            </fieldset>
+            </form>
           </div>
       </div>
-<!--     </div>
-  </div> -->
+    </div>
+  </div>
 </div>
 </div>
 </div>
 
- <!-- Footer -->
+    <!-- Footer -->
     <footer>
-      <div class="container">
+     <div class="container">
         <div class="row">
           <div class="col-md-6 col-md-offset-3 text-center">
             <div class="top-scroll">
