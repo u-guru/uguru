@@ -111,7 +111,7 @@ body {
   height: 100%;
   width: 100%;
   position: relative;
-  background: url(../img/bg.jpg) no-repeat center center fixed; 
+  background: url(../img/campus_at_dusk.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -223,7 +223,7 @@ i.scroll:hover {
 @media (max-width: 768px) {
 	
   .header {
-	background: url(../img/bg.jpg) no-repeat center center scroll; 
+	background: url(../img/campus_at_dusk.jpg) no-repeat center center scroll; 
   }
 
   .callout {
@@ -234,4 +234,24 @@ i.scroll:hover {
 	height: 75%;
   }
 
+}
+
+/*Style Additions*/
+
+.btn-signup {
+  background:white;
+  margin: 10px 0 0 0;
+  border-color: #2e77fe;
+}
+
+span.tag {
+  border-radius:2px;
+  display: block;
+  float: left;
+  padding: 5px;
+  text-decoration: none;
+  background: #adcafe;
+  color: #000;
+  margin: 2px;
+  font-size: 13px;
 }

@@ -9,6 +9,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/static/css/bootstrap.css" rel="stylesheet">
     <!-- Add custom CSS here -->
+    <link href="/static/css/slider.css" rel="stylesheet">
     <link href="/static/css/style.css" rel="stylesheet">
     <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   </head>
@@ -29,15 +30,11 @@
   <div id="top" class="header">
     <div class="vert-text">
     <div class="container">
- <!--    <div class="row vertical-offset-100">
-      <div class="col-md-4 col-md-offset-4"> -->
         <div class="panel panel-default">
           <div class="panel-heading">
             <h2>What do you need help in?</h2>
         </div>
           <div class="panel-body">
-              <!--  <div class="col-md-4 col-md-offset-4 text-center"> -->
-          <!--       <div class="service-item"> -->
                 <div class="row">
                          <div id="custom-search-input">
                                           <div class="input-group col-md-12">
@@ -50,7 +47,6 @@
                                           </div>
                         </div>
              </div>
-          <!--      </div> -->
                <h4>Please Tell Us More</h4>
                <textarea class="form-control" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
                <h4>Urgency</h4>
@@ -70,18 +66,20 @@
               <label class="radio-inline">
                 <input type="radio" id="inlineRadio2" value="Regularly">Regularly
               </label>
+<!-- Slider -->
               <h4>Time Estimate per Session (hours)</h4>
-              <div id="slider"></div>
-             <!--  </div> -->
               <br>
+              <div class="slider slider-horizontal" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="1" data-slider-orientation="horizontal" data-slider-selection="before"data-slider-tooltip="show"></div>
+           <div>
+            <br>
             <a href="/studentsignup2" class="btn btn-lg btn-success btn-block" type="submit">Next</a>
           </div>
       </div>
-<!--     </div>
-  </div> -->
 </div>
 </div>
 </div>
+</div>
+<!-- /Slider -->
 
  <!-- Footer -->
     <footer>
@@ -102,6 +100,7 @@
    <!-- JavaScript -->
     <script src="/static/js/jquery-1.10.2.js"></script>
     <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/bootstrap-slider.js"></script>
 
     <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
     <script>
@@ -134,17 +133,8 @@
         });
       });
     </script>
-    <!-- jQuery UI Slider -->
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script>
-  $(function() {
-    $( "#slider" ).slider();
-  });
-  </script>
+    <!-- Custom jQuery UI Slider -->
+    <script>$('.slider').slider()</script>
 
-    <script>
   </body>
 </html>
