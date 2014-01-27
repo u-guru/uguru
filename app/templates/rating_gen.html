@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Student Rating Stars</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <!-- Add custom CSS here -->
+    <link href="/static/css/style.css" rel="stylesheet">
+    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+  <!-- Side Menu -->
+    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+        <li class="sidebar-brand"><a href="/home">uGuru.me Home</a></li>
+        <li><a href="/howitworks">How It Works</a></li>
+        <li><a href="/settings">Account Settings</a></li>
+      </ul>
+    </div>
+    <!-- /Side Menu -->
+
+  <div id="top" class="header">
+    <div class="vert-text">
+    <div class="container">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <!-- Tutor Rating Before Continuing General -->
+            <div class="alert alert-danger">You must rate Joseph before you can continue using uGuru.me</div>
+            <!-- /Tutor Rating Before Continuing General -->
+            <h2>Please Rate Your Experience with Joseph</h2>
+        </div>
+          <div class="panel-body">
+          <fieldset class="rating col-sm-3 col-mid-2">
+                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5">5 stars</label>
+                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4">4 stars</label>
+                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3">3 stars</label>
+                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2">2 stars</label>
+                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1">1 star</label>
+                </fieldset>
+              <br>
+              <br>
+              <h5>Anything less than a three will make sure you are not paired with Joseph again.</h5>
+               <h3>or</h3>
+                <a href="/rating_noshow" class="btn btn-lg btn-default">I did not end up meeting with Joseph</a>
+          </div>
+      </div>
+</div>
+</div>
+</div>
+
+ <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 text-center">
+            <div class="top-scroll">
+              <a href="#top"><i class="fa fa-circle-arrow-up scroll fa-4x"></i></a>
+            </div>
+            <hr>
+            <p>Copyright &copy; uGuru.me 2014</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- /Footer -->
+
+   <!-- JavaScript -->
+    <script src="/static/js/jquery-1.10.2.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+
+    <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
+    <script>
+        $("#menu-close").click(function(e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+    </script>
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+    </script>
+    <script>
+      $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+            || location.hostname == this.hostname) {
+
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html,body').animate({
+                scrollTop: target.offset().top
+              }, 1000);
+              return false;
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

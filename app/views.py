@@ -48,3 +48,27 @@ def login():
 @app.route('/settings/')
 def settings():
     return render_template('settings.html')
+
+@app.route('/tutoraccept/')
+def tutoraccept():
+    return render_template('tutoraccept.html')
+
+@app.route('/studentaccept/')
+def studentaccept():
+    return render_template('studentaccept.html')
+
+@app.route('/ratingconfirm/')
+def ratingconfirm():
+    return render_template('ratingconfirm.html')
+
+@app.route('/rating_noshow/')
+def rating_noshow():
+    return render_template('rating_noshow.html')
+
+@app.route('/rating_stars/')
+def rating_stars():
+    return render_template('rating_stars.html')
+
+@app.route('/rating_gen/')
+def rating_gen():
+    return render_template('rating_gen.html')
