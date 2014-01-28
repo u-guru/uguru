@@ -3,7 +3,7 @@ from flask import render_template
 
 @app.route('/')
 def index():
-	return render_template('home.html')
+	return render_template('index.html')
 
 @app.route('/portfolio/')
 def portfolio():
