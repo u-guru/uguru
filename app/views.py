@@ -3,7 +3,7 @@ from flask import render_template
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	return render_template('home.html')
 
 @app.route('/portfolio/')
 def portfolio():
@@ -12,10 +12,6 @@ def portfolio():
 @app.route('/admin/')
 def admin():
     return render_template('admin.html')
-
-@app.route('/home/')
-def home():
-    return render_template('home.html')
 
 @app.route('/tutorsignup1/')
 def tutorsignup1():

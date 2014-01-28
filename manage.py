@@ -84,7 +84,7 @@ if arg == 'testdb':
     student.pending_ratings.append(rating)
     tutor.pending_ratings.append(rating)
     print student.pending_ratings
-    print tutor.pending_ratings
+    print tutor.pending_ratingscy
     
 #     db.session.add(r)
 #     db.session.commit()
