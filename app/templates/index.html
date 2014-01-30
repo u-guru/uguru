@@ -64,7 +64,7 @@
                     <form method='post' action ='/'>
                       {{ request_form.hidden_tag()}}                      
                       <div class="form-group" id='skill-form-group'>
-                        <input name="skill" class="form-control" id="skill" type="text" class="search-query form-control" placeholder="Add Skill/Course (i.e. CS10 or Essay Proofreading)" autofocus/>
+                        <input name="skill" class="form-control" id="skill" type="text" class="search-query form-control" placeholder="Add Skill/Course (i.e. CS10 or Essay Proofreading)"/>
                       </div>
                       
                       <h4>Please Tell Us More</h4>
@@ -178,13 +178,8 @@
   $('#student-signup-btn').click(function(){
     $('.main-area').hide('slow'); 
     $('.student-signup-modal').show('slow');
+    $('#skill').focus();
   });
-
-  //go to next student signup dialog
-  // $('#student-signup-next').click(function(){
-  //   $('#student-panel-1').hide('slow'); 
-  //   $('#student-panel-2').show('slow');
-  // });
 
 </script>
 
