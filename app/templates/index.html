@@ -63,31 +63,26 @@
                       <h4>Please Tell Us More</h4>
                       <textarea class="form-control" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
                       
-                      <h4>Urgency</h4>
+                      <h4>Urgency</h4>                     
                       <div class="btn-group" data-toggle="buttons">
+                         {% for subfield in request_form.urgency %}
                         <label class="btn btn-default">
-                          <input type="radio" name="urgency" id="option1"> ASAP
+                          {{ subfield }} {{subfield.label.text}}
                         </label>
-                        <label class="btn btn-default">
-                          <input type="radio" name="urgency" id="option2"> Tomorrow
-                        </label>
-                        <label class="btn btn-default">
-                          <input type="radio" name="urgency" id="option3"> This Week
-                        </label>
-                      </div>
+                        {% endfor %}
+                      </div>                                             
                       
                       <h4>Frequency</h4>
-                       <div class="btn-group" data-toggle="buttons">
+                      <div class="btn-group" data-toggle="buttons">
+                         {% for subfield in request_form.frequency %}
                         <label class="btn btn-default">
-                          <input type="radio" name="frequency" id="option1"> One Time
+                          {{ subfield }} {{subfield.label.text}}
                         </label>
-                        <label class="btn btn-default">
-                          <input type="radio" name="frequency" id="option2"> Regularly
-                        </label>                        
-                      </div>
+                        {% endfor %}
+                      </div>                                             
                       <!-- Slider -->
                       <h4>Time Estimate per Session (hours)</h4>
-                        
+                        <input id="some_id" type="range"/>
                         <br>
                         <div class="slider slider-horizontal" data-slider-min="1" data-slider-max="10" data-slider-step="0.5" data-slider-value="1" data-slider-orientation="horizontal" data-slider-selection="before"data-slider-tooltip="show"></div>
                       <div>

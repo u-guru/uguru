@@ -10,14 +10,12 @@ class SignupForm(Form):
     # telephone = 
 
 class RequestForm(Form):
-    skill = TextField('Skill', validators=[InputRequired()])
-    description = TextAreaField('Please Tell Us More',
-     validators=[InputRequired()])
+    skill = TextField('Skill')
+    description = TextAreaField('Please Tell Us More')
     urgency = RadioField('Urgency', 
-        choices=[(0, 'ASAP'), (1, 'Tomorrow'), (2, 'Next Week')],
+        choices=[(0, 'ASAP'), (1, 'Tomorrow'), (2, 'Next Week')])
+    frequency = RadioField('Frequency', 
+        choices=[(0, 'One Time'), (1, 'Regularly')],
         validators=[InputRequired()])
-    # frequency = RadioField('Frequency', 
-    #     choices=[(0, 'One Time'), (1, 'Regularly')],
-    #     validators=[InputRequired()])
-    # time_estimate = RangeInput('Time Estimate')
+    time_estimate = RangeInput('Time Estimate')
 
