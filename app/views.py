@@ -1,9 +1,19 @@
 from app import app
-from flask import render_template
+from flask import render_template, redirect
+from forms import SignupForm, RequestForm
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-	return render_template('index.html')
+    request_form = RequestForm()
+    if request_form.validate_on_submit():
+        return redirect('/success/')
+    return render_template('index.html', forms=[request_form])
+    
+	
+
+@app.route('/success/')
+def success():
+    return "success"
 
 @app.route('/portfolio/')
 def portfolio():
@@ -13,9 +23,12 @@ def portfolio():
 def admin():
     return render_template('admin.html')
 
-@app.route('/tutorsignup1/')
+@app.route('/tutorsignup1/', methods=('GET', 'POST'))
 def tutorsignup1():
-    return render_template('tutorsignup1.html')
+    form = SignupForm()
+    if form.validate_on_submit():
+        return redirect('/')
+    return render_template('tutorsignup.html', form=form)
 
 @app.route('/tutorsignup2/')
 def tutorsignup2():

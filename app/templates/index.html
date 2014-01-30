@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
+  <!-- Jinja2 Variable Definitions -->
+  {% set request_form = forms[0] %}
+
  	<!-- Full Page Image Header Area -->
     <div id="top" class="header">
       <div class="vert-text">
@@ -48,54 +51,50 @@
                 <div id="student-panel-1" class="panel panel-default">                  
                   <div class="panel-heading">
                     <button type="button" class="close" id="modal-close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h2>What do you need help in?</h2>                    
+                    <h3>What do you need help in?</h3>                    
                   </div>
 
                   <!-- Panel Body -->
                   <div class="panel-body">
-                    <div class="row">
-                        <div id="custom-search-input">
-                            <div class="input-group col-md-12">
-                                <input type="text" class="  search-query form-control" placeholder="Search" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-danger" type="button">
-                                        <span class=" glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
-                            </div>
-                          </div>
-                    </div>
-                    <h4>Please Tell Us More</h4>
-                    <textarea class="form-control" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
-                    
-                    <h4>Urgency</h4>
-                    <label class="radio-inline">
-                      <input type="radio" id="inlineRadio1" value="ASAP">ASAP
-                    </label>                    
-                    <label class="radio-inline">
-                      <input type="radio" id="inlineRadio2" value="By Tomorrow">By Tomorrow
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" id="inlineRadio3" value="This Week">This Week
-                    </label>
-                    
-                    <h4>Frequency</h4>
-                    <label class="radio-inline">
-                      <input type="radio" id="inlineRadio1" value="One Time">One Time
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" id="inlineRadio2" value="Regularly">Regularly
-                    </label>
-                    
-                    <!-- Slider -->
-                    <h4>Time Estimate per Session (hours)</h4>
+                    <form method='post' action ='/'>
+                      {{ request_form.hidden_tag()}}                      
+                      <input name="skill" type="text" class="search-query form-control" placeholder="Add Skill/Course (i.e. CS10 or Essay Proofreading)" />
                       
-                      <br>
-                      <div class="slider slider-horizontal" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="1" data-slider-orientation="horizontal" data-slider-selection="before"data-slider-tooltip="show"></div>
-                    <div>
-                      <br>
-                      <a href="#" id="student-signup-next" class="btn btn-lg btn-success btn-block" type="submit">Next</a>
-                    </div>
+                      <h4>Please Tell Us More</h4>
+                      <textarea class="form-control" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
+                      
+                      <h4>Urgency</h4>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default">
+                          <input type="radio" name="urgency" id="option1"> ASAP
+                        </label>
+                        <label class="btn btn-default">
+                          <input type="radio" name="urgency" id="option2"> Tomorrow
+                        </label>
+                        <label class="btn btn-default">
+                          <input type="radio" name="urgency" id="option3"> This Week
+                        </label>
+                      </div>
+                      
+                      <h4>Frequency</h4>
+                       <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default">
+                          <input type="radio" name="frequency" id="option1"> One Time
+                        </label>
+                        <label class="btn btn-default">
+                          <input type="radio" name="frequency" id="option2"> Regularly
+                        </label>                        
+                      </div>
+                      <!-- Slider -->
+                      <h4>Time Estimate per Session (hours)</h4>
+                        
+                        <br>
+                        <div class="slider slider-horizontal" data-slider-min="1" data-slider-max="10" data-slider-step="0.5" data-slider-value="1" data-slider-orientation="horizontal" data-slider-selection="before"data-slider-tooltip="show"></div>
+                      <div>
+                        <br>
+                        <button id="student-signup-next" class="btn btn-lg btn-success btn-block" type="submit">Next</button>
+                      </div>
+                    </form>
                   </div>
                   <!-- /Panel Body -->
                 </div>

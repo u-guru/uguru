@@ -17,13 +17,14 @@
 
   <div id="top" class="header">
   <div class="vert-text">
-  <form class="text-center" id="registration" method='post' action='register.php'>
+  <form class="text-center" id="registration" method='post' action='/tutorsignup1/'>
+    {{ form.hidden_tag() }}
     <fieldset>
       <legend>Become a Tutor</legend>
       <div class="control-group">
         <label class="control-label">Name:</label>
         <div class="controls">
-          <input type="text" id="username" name="user_name">
+          <input type="text" id="username" name="name">
         </div>
       </div>
       <div class="control-group">
