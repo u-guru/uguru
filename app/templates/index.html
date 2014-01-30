@@ -63,7 +63,9 @@
                   <div class="panel-body">
                     <form method='post' action ='/'>
                       {{ request_form.hidden_tag()}}                      
-                      <input name="skill" id="skill" type="text" class="search-query form-control" placeholder="Add Skill/Course (i.e. CS10 or Essay Proofreading)" />
+                      <div class="form-group" id='skill-form-group'>
+                        <input name="skill" class="form-control" id="skill" type="text" class="search-query form-control" placeholder="Add Skill/Course (i.e. CS10 or Essay Proofreading)" autofocus/>
+                      </div>
                       
                       <h4>Please Tell Us More</h4>
                       <textarea class="form-control" id="description" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
@@ -205,6 +207,24 @@
     } else {
        $('#student-panel-1').hide('slow'); 
        $('#student-panel-2').show('slow');
+    }
+  });
+  $('#skill').blur(function(){
+    if ($('#skill').val()) {
+      $('#skill').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#skill').css({"border-color":"#a94442"
+      });
+    }
+  });
+  $('#description').blur(function(){
+    if ($('#description').val()) {
+      $('#description').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#description').css({"border-color":"#a94442"
+      });
     }
   });
 </script>
