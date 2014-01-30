@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+{% block header %}
+  <link href="/static/css/jquery.nouislider.min.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 
   <!-- Jinja2 Variable Definitions -->
@@ -82,13 +86,13 @@
                       </div>                                             
                       <!-- Slider -->
                       <h4>Time Estimate per Session (hours)</h4>
-                        <input id="some_id" type="range"/>
-                        <br>
-                        <div class="slider slider-horizontal" data-slider-min="1" data-slider-max="10" data-slider-step="0.5" data-slider-value="1" data-slider-orientation="horizontal" data-slider-selection="before"data-slider-tooltip="show"></div>
+                          <div class="noUiSlider"></div>
+                          <span style="font-weight:bold" id="low"></span> <b> hours </b>
                       <div>
                         <br>
-                        <button id="student-signup-next" class="btn btn-lg btn-success btn-block" type="submit">Next</button>
+                        <a href="/studentsignup2" class="btn btn-lg btn-success btn-block" type="submit">Next</a>
                       </div>
+
                     </form>
                   </div>
                   <!-- /Panel Body -->
@@ -137,7 +141,7 @@
 {% endblock %}
 
 {% block footer_scripts %}
-<script src="/static/js/bootstrap-slider.js"></script>
+<script src="/static/js/jquery.nouislider.min.js"></script>
 
 <!-- Show/Hide Login Jquery -->
 <script type="text/javascript">
@@ -180,6 +184,15 @@
 
 </script>
 
-<script>$('.slider').slider()</script>
+<script>$(".noUiSlider").noUiSlider({
+  range: [0.5, 10]
+  ,start: 2
+  ,step: 0.5
+  ,handles: 1
+  ,serialization: {
+    to: [ $("#low"), 'html' ],
+    resolution: 0.1
+  }
+});</script>
 
 {% endblock %}
