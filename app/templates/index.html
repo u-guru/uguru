@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block header %}
   <link href="/static/css/jquery.nouislider.min.css" rel="stylesheet">
+  <link href="/static/css/bootstrap-formhelpers.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -62,10 +63,10 @@
                   <div class="panel-body">
                     <form method='post' action ='/'>
                       {{ request_form.hidden_tag()}}                      
-                      <input name="skill" type="text" class="search-query form-control" placeholder="Add Skill/Course (i.e. CS10 or Essay Proofreading)" />
+                      <input name="skill" id="skill" type="text" class="search-query form-control" placeholder="Add Skill/Course (i.e. CS10 or Essay Proofreading)" />
                       
                       <h4>Please Tell Us More</h4>
-                      <textarea class="form-control" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
+                      <textarea class="form-control" id="description" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
                       
                       <h4>Urgency</h4>                     
                       <div class="btn-group" data-toggle="buttons">
@@ -85,12 +86,12 @@
                         {% endfor %}
                       </div>                                             
                       <!-- Slider -->
-                      <h4>Time Estimate per Session (hours)</h4>
+                      <h4>Time Estimate (per session)</h4>
                           <div class="noUiSlider"></div>
-                          <span style="font-weight:bold" id="low"></span> <b> hours </b>
+                          <p class="text-right"><span id="low"></span> hours </p>
                       <div>
-                        <br>
-                        <a href="/studentsignup2" class="btn btn-lg btn-success btn-block" type="submit">Next</a>
+                        <span id='alert-fields' style="color:red;display:None">Please fill or select all fields</span>
+                        <a href="javascript:void(0)" id="student-signup-next" class="btn btn-lg btn-success btn-block" type="submit">Next</a>
                       </div>
 
                     </form>
@@ -119,7 +120,7 @@
                           <input class="form-control" placeholder="Password" name="password" type="password" value="">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="Phone Number" name="phone" type="text">
+                            <input class="form-control bfh-phone" data-format="+1 (ddd) ddd-dddd" placeholder="Phone Number" name="phone" type="text">
                         </div>
                           <p>Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.</p>
                         <a href="/studentsignup3" class="btn btn-lg btn-success btn-block" type="submit">Submit</a>
@@ -142,6 +143,7 @@
 
 {% block footer_scripts %}
 <script src="/static/js/jquery.nouislider.min.js"></script>
+<script src="/static/js/bootstrap-formhelpers.min.js"></script>
 
 <!-- Show/Hide Login Jquery -->
 <script type="text/javascript">
@@ -177,10 +179,10 @@
   });
 
   //go to next student signup dialog
-  $('#student-signup-next').click(function(){
-    $('#student-panel-1').hide('slow'); 
-    $('#student-panel-2').show('slow');
-  });
+  // $('#student-signup-next').click(function(){
+  //   $('#student-panel-1').hide('slow'); 
+  //   $('#student-panel-2').show('slow');
+  // });
 
 </script>
 
@@ -194,5 +196,17 @@
     resolution: 0.1
   }
 });</script>
+
+<!--JavaScript form validation-->
+<script>
+  $('#student-signup-next').click(function(){
+    if ((!$('#description').val() || !$('#skill').val()) || $('input[type=radio]:checked').size() < 2) {
+      $('#alert-fields').show()
+    } else {
+       $('#student-panel-1').hide('slow'); 
+       $('#student-panel-2').show('slow');
+    }
+  });
+</script>
 
 {% endblock %}
