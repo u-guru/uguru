@@ -16,8 +16,29 @@
     </head>
 
     <body>
+        <!-- Navigation Bar -->
+        <nav class="general-nav">
+            <ul>
+                <li class="logo">
+                    <a href="/"> uGuru.me</a>
+                    <a href="javascript:void(0)" class="menu-trigger"></a>
+                </li>
+                <li class="general-nav-item first">
+                    <a href="javascript:void(0)" id="login-link">Login</a>
+                </li>
+                <li class="general-nav-item">
+                    <a href="/howitworks">How it Works</a>
+                </li>
+                <li class="general-nav-item">
+                    <a href="/settings">Settings</a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <!-- /Navigation Bar -->
         <!-- Side Menu -->
-        <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
+   <!--      <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
         <div id="sidebar-wrapper">
           <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
@@ -25,7 +46,7 @@
             <li><a href="/howitworks">How It Works</a></li>
             <li><a href="/settings">Account Settings</a></li>
           </ul>
-        </div>
+        </div> -->
         <!-- /Side Menu -->
 
         {% block content %}
@@ -56,36 +77,51 @@
 
     {% block footer_scripts %}
     {% endblock %}
-    <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
-    <script>
-        $("#menu-close").click(function(e) {
-            e.preventDefault();
-            $("#sidebar-wrapper").toggleClass("active");
-        });
-    </script>
-    <script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#sidebar-wrapper").toggleClass("active");
-        });
-    </script>
-    <script>
-      $(function() {
-        $('a[href*=#]:not([href=#])').click(function() {
-          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
-            || location.hostname == this.hostname) {
 
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-            if (target.length) {
-              $('html,body').animate({
-                scrollTop: target.offset().top
-              }, 1000);
-              return false;
-            }
-          }
-        });
+    <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
+    <script>  
+    $(document).ready(function() {
+      $('#login, #contact-now').click(function(){
+        $(".module-background, .module-unit").addClass("module-active");
       });
+      $(".module-background").click(function(){
+        $(".module-background, .module-unit").removeClass("module-active");
+      });
+      $(".menu-trigger").click(function(){
+        $(".general-nav").toggleClass("active");
+      });
+    });
     </script>
+
+     <script>
+    //     $("#menu-close").click(function(e) {
+    //         e.preventDefault();
+    //         $("#sidebar-wrapper").toggleClass("active");
+    //     });
+    // </script>
+     <script>
+    //     $("#menu-toggle").click(function(e) {
+    //         e.preventDefault();
+    //         $("#sidebar-wrapper").toggleClass("active");
+    //     });
+    // </script>
+     <script>
+    //   $(function() {
+    //     $('a[href*=#]:not([href=#])').click(function() {
+    //       if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+    //         || location.hostname == this.hostname) {
+
+    //         var target = $(this.hash);
+    //         target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+    //         if (target.length) {
+    //           $('html,body').animate({
+    //             scrollTop: target.offset().top
+    //           }, 1000);
+    //           return false;
+    //         }
+    //       }
+    //     });
+    //   });
+    // </script>
     </body>
 </html>
