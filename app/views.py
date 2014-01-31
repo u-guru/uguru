@@ -11,10 +11,15 @@ def index():
     
 	
 
-@app.route('/success/')
+@app.route('/success/', methods=('GET', 'POST'))
 def success():
-    name = request.args.get('name', "", type=str)
-    email = request.args.get('email', "", type=str)
+    if request.method == "POST":
+        name = request.json['name']
+        return jsonify(name=name)
+    # name = request.form['name']
+    # email = request.args.get('email', "", type=str)
+    # phone = request.args.get('phone', "", type=str)
+    print name + " sdasdsa"
     return jsonify(test=name)
 
 @app.route('/portfolio/')

@@ -243,12 +243,28 @@
     } 
     else {
       $('#alert-fields-student-signup2').hide();      
-      $.getJSON($SCRIPT_ROOT + '/success/', {
-        email: $('input[name="email"]').val(),
-        name: $('input[name="name"]').val()
-      }, function(data) {
-        alert(data.test);
+      var data = {
+        'name': $('input[name="name"]').val(),
+        'email': $('input[name="email"]').val(),
+        'phone': $('input[name="phone"]').val(),
+      }
+      data = 
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        url: '/success/' ,
+        data: JSON.stringify(data),
+        dataType: "json",        
+        success: function(result) {
+          alert(result.name);
+        }
       });
+      // $.getJSON($SCRIPT_ROOT + '/success/', {
+      //   email: $('input[name="email"]').val(),
+      //   name: $('input[name="name"]').val()
+      // }, function(data) {
+      //   alert(data.test);
+      // });
     }
   });
   $('#student-signup-name').blur(function(){
