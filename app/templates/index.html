@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% block header %}
+  <link href="/static/css/jquery.nouislider.min.css" rel="stylesheet">
+  <link href="/static/css/bootstrap-formhelpers.min.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 
   <!-- Jinja2 Variable Definitions -->
@@ -58,42 +63,39 @@
                   <div class="panel-body">
                     <form method='post' action ='/'>
                       {{ request_form.hidden_tag()}}                      
-                      <input name="skill" type="text" class="search-query form-control" placeholder="Add Skill/Course (i.e. CS10 or Essay Proofreading)" />
+                      <div class="form-group" id='skill-form-group'>
+                        <input name="skill" class="form-control" id="student-signup-skill" type="text" class="search-query form-control" placeholder="Add Skill/Course (i.e. CS10 or Essay Proofreading)"/>
+                      </div>
                       
                       <h4>Please Tell Us More</h4>
-                      <textarea class="form-control" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
+                      <textarea class="form-control" id="student-signup-description" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
                       
-                      <h4>Urgency</h4>
+                      <h4>Urgency</h4>                     
                       <div class="btn-group" data-toggle="buttons">
+                         {% for subfield in request_form.urgency %}
                         <label class="btn btn-default">
-                          <input type="radio" name="urgency" id="option1"> ASAP
+                          {{ subfield }} {{subfield.label.text}}
                         </label>
-                        <label class="btn btn-default">
-                          <input type="radio" name="urgency" id="option2"> Tomorrow
-                        </label>
-                        <label class="btn btn-default">
-                          <input type="radio" name="urgency" id="option3"> This Week
-                        </label>
-                      </div>
+                        {% endfor %}
+                      </div>                                             
                       
                       <h4>Frequency</h4>
-                       <div class="btn-group" data-toggle="buttons">
+                      <div class="btn-group" data-toggle="buttons">
+                         {% for subfield in request_form.frequency %}
                         <label class="btn btn-default">
-                          <input type="radio" name="frequency" id="option1"> One Time
+                          {{ subfield }} {{subfield.label.text}}
                         </label>
-                        <label class="btn btn-default">
-                          <input type="radio" name="frequency" id="option2"> Regularly
-                        </label>                        
-                      </div>
+                        {% endfor %}
+                      </div>                                             
                       <!-- Slider -->
-                      <h4>Time Estimate per Session (hours)</h4>
-                        
-                        <br>
-                        <div class="slider slider-horizontal" data-slider-min="1" data-slider-max="10" data-slider-step="0.5" data-slider-value="1" data-slider-orientation="horizontal" data-slider-selection="before"data-slider-tooltip="show"></div>
+                      <h4>Time Estimate (per session)</h4>
+                          <div class="noUiSlider"></div>
+                          <p class="text-right"><span id="low"></span> hours </p>
                       <div>
-                        <br>
-                        <button id="student-signup-next" class="btn btn-lg btn-success btn-block" type="submit">Next</button>
+                        <span id='alert-fields-student-signup1' style="color:red;display:None">Please fill or select all fields</span>
+                        <a href="javascript:void(0)" id="student-signup-next" class="btn btn-lg btn-success btn-block" type="submit">Next</a>
                       </div>
+
                     </form>
                   </div>
                   <!-- /Panel Body -->
@@ -111,19 +113,24 @@
                     <form accept-charset="UTF-8" role="form">
                       <fieldset>
                         <div class="form-group">
-                          <input class="form-control" placeholder="Name" name="name" type="text">
+                          <input class="form-control" placeholder="Name" id="student-signup-name" name="name" type="text">
+                        </div>
+                        <div class="input-group" style="padding-bottom:15px;">
+                            <input class="form-control" placeholder="E-mail" id="student-signup-email" name="email" type="text">
+                            <span class="input-group-addon">@berkeley.edu</span>           
+                        </div>
+
+                        <div class="form-group">
+                          <input class="form-control" id="student-signup-password" placeholder="Password" name="password" type="password" value="">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="E-mail" name="email" type="text">
+                            <input class="form-control bfh-phone" id="student-signup-phone" data-format="+1 (ddd) ddd-dddd" placeholder="Phone Number" name="phone" type="text">
                         </div>
-                        <div class="form-group">
-                          <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" placeholder="Phone Number" name="phone" type="text">
-                        </div>
-                          <p>Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.</p>
-                        <a href="/studentsignup3" class="btn btn-lg btn-success btn-block" type="submit">Submit</a>
+                          <p>Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
+                          </p>
+                          <span id='alert-fields-student-signup2' style="color:red;display:None">Please fill or select all fields</span>
+
+                        <a id="student-signup-submit" href="javascript:void(0);" class="btn btn-lg btn-success btn-block" type="submit">Submit</a>
                         <p>By clicking submit you agree to our <a href="/TermsofService/">Terms of Service</a> and <a href="PrivacyPolicy">Privacy Policy</a>.</p>
                       </fieldset>
                     </form>
@@ -142,7 +149,8 @@
 {% endblock %}
 
 {% block footer_scripts %}
-<script src="/static/js/bootstrap-slider.js"></script>
+<script src="/static/js/jquery.nouislider.min.js"></script>
+<script src="/static/js/bootstrap-formhelpers.min.js"></script>
 
 <!-- Show/Hide Login Jquery -->
 <script type="text/javascript">
@@ -175,16 +183,98 @@
   $('#student-signup-btn').click(function(){
     $('.main-area').hide('slow'); 
     $('.student-signup-modal').show('slow');
-  });
-
-  //go to next student signup dialog
-  $('#student-signup-next').click(function(){
-    $('#student-panel-1').hide('slow'); 
-    $('#student-panel-2').show('slow');
+    // $('#student-signup-skill').focus();
+    // window.scrollTo(0, 0);
   });
 
 </script>
 
-<script>$('.slider').slider()</script>
+<script>$(".noUiSlider").noUiSlider({
+  range: [0.5, 10]
+  ,start: 2
+  ,step: 0.5
+  ,handles: 1
+  ,serialization: {
+    to: [ $("#low"), 'html' ],
+    resolution: 0.1
+  }
+});</script>
+
+<!--JavaScript form validation for student-signup-->
+<script>
+  //Validation for part 1
+  $('#student-signup-next').click(function(){
+    if ((!$('#student-signup-description').val() || !$('#student-signup-skill').val()) || $('input[type=radio]:checked').size() < 2) {
+      $('#alert-fields-student-signup1').show()
+    } else {
+       $('#student-panel-1').hide('slow'); 
+       $('#student-panel-2').show('slow');
+    }
+  });
+  $('#student-signup-skill').blur(function(){
+    if ($('#student-signup-skill').val()) {
+      $('#student-signup-skill').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#student-signup-skill').css({"border-color":"#a94442"
+      });
+    }
+  });
+  $('#student-signup-description').blur(function(){
+    if ($('#student-signup-description').val()) {
+      $('#student-signup-description').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#student-signup-description').css({"border-color":"#a94442"
+      });
+    }
+  });
+
+  //Validation for part 2
+  $('#student-signup-submit').click(function(){
+    if ((!$('#student-signup-name').val() || !$('#student-signup-email').val()) 
+      || !$('#student-signup-password').val() || !($('#student-signup-phone').val().length == 17)) 
+    {
+        $('#alert-fields-student-signup2').show()
+    } 
+    else {
+      $('#alert-fields-student-signup2').hide()
+      //send data back to server
+      //send email --> jaclyn
+      //validate submission and go to confirmation page
+    }
+  });
+  $('#student-signup-name').blur(function(){
+    if ($('#student-signup-name').val()) {
+      $('#student-signup-name').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#student-signup-name').css({"border-color":"#a94442"
+      });
+    }
+  });
+  $('#student-signup-email').blur(function(){
+    if ($('#student-signup-email').val()) {
+      $('#student-signup-email').css({"border-color":"#3c763d"
+      })
+      if ($(this).val().indexOf("@berkeley.edu") != -1) {
+        var text = $(this).val().replace("@berkeley.edu","");
+        $(this).val(text);
+      }
+    } else {
+      $('#student-signup-email').css({"border-color":"#a94442"
+      });
+    }
+  });
+  $('#student-signup-password').blur(function(){
+    if ($('#student-signup-password').val()) {
+      $('#student-signup-password').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#student-signup-password').css({"border-color":"#a94442"
+      });
+    }
+  });
+</script>
 
 {% endblock %}
