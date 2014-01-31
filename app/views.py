@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, redirect
+from flask import render_template, jsonify, redirect, request
 from forms import SignupForm, RequestForm
 
 @app.route('/', methods=['GET', 'POST'])
@@ -13,7 +13,9 @@ def index():
 
 @app.route('/success/')
 def success():
-    return "success"
+    name = request.args.get('name', "", type=str)
+    email = request.args.get('email', "", type=str)
+    return jsonify(test=name)
 
 @app.route('/portfolio/')
 def portfolio():

@@ -200,6 +200,10 @@
   }
 });</script>
 
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
 <!--JavaScript form validation for student-signup-->
 <script>
   //Validation for part 1
@@ -238,10 +242,13 @@
         $('#alert-fields-student-signup2').show()
     } 
     else {
-      $('#alert-fields-student-signup2').hide()
-      //send data back to server
-      //send email --> jaclyn
-      //validate submission and go to confirmation page
+      $('#alert-fields-student-signup2').hide();      
+      $.getJSON($SCRIPT_ROOT + '/success/', {
+        email: $('input[name="email"]').val(),
+        name: $('input[name="name"]').val()
+      }, function(data) {
+        alert(data.test);
+      });
     }
   });
   $('#student-signup-name').blur(function(){
