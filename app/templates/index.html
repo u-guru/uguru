@@ -64,11 +64,11 @@
                     <form method='post' action ='/'>
                       {{ request_form.hidden_tag()}}                      
                       <div class="form-group" id='skill-form-group'>
-                        <input name="skill" class="form-control" id="skill" type="text" class="search-query form-control" placeholder="Add Skill/Course (i.e. CS10 or Essay Proofreading)"/>
+                        <input name="skill" class="form-control" id="student-signup-skill" type="text" class="search-query form-control" placeholder="Add Skill/Course (i.e. CS10 or Essay Proofreading)"/>
                       </div>
                       
                       <h4>Please Tell Us More</h4>
-                      <textarea class="form-control" id="description" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
+                      <textarea class="form-control" id="student-signup-description" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
                       
                       <h4>Urgency</h4>                     
                       <div class="btn-group" data-toggle="buttons">
@@ -92,7 +92,7 @@
                           <div class="noUiSlider"></div>
                           <p class="text-right"><span id="low"></span> hours </p>
                       <div>
-                        <span id='alert-fields' style="color:red;display:None">Please fill or select all fields</span>
+                        <span id='alert-fields-student-signup1' style="color:red;display:None">Please fill or select all fields</span>
                         <a href="javascript:void(0)" id="student-signup-next" class="btn btn-lg btn-success btn-block" type="submit">Next</a>
                       </div>
 
@@ -113,19 +113,22 @@
                     <form accept-charset="UTF-8" role="form">
                       <fieldset>
                         <div class="form-group">
-                          <input class="form-control" placeholder="Name" name="name" type="text">
+                          <input class="form-control" placeholder="Name" id="student-signup-name" name="name" type="text">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="E-mail" name="email" type="text">
+                            <input class="form-control" placeholder="E-mail" id="student-signup-email" name="email" type="text">
                         </div>
                         <div class="form-group">
-                          <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                          <input class="form-control" id="student-signup-password" placeholder="Password" name="password" type="password" value="">
                         </div>
                         <div class="form-group">
-                            <input class="form-control bfh-phone" data-format="+1 (ddd) ddd-dddd" placeholder="Phone Number" name="phone" type="text">
+                            <input class="form-control bfh-phone" id="student-signup-phone" data-format="+1 (ddd) ddd-dddd" placeholder="Phone Number" name="phone" type="text">
                         </div>
-                          <p>Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.</p>
-                        <a href="/studentsignup3" class="btn btn-lg btn-success btn-block" type="submit">Submit</a>
+                          <p>Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
+                          </p>
+                          <span id='alert-fields-student-signup2' style="color:red;display:None">Please fill or select all fields</span>
+
+                        <a id="student-signup-submit" href="javascript:void(0);" class="btn btn-lg btn-success btn-block" type="submit">Submit</a>
                         <p>By clicking submit you agree to our <a href="/TermsofService/">Terms of Service</a> and <a href="PrivacyPolicy">Privacy Policy</a>.</p>
                       </fieldset>
                     </form>
@@ -178,7 +181,7 @@
   $('#student-signup-btn').click(function(){
     $('.main-area').hide('slow'); 
     $('.student-signup-modal').show('slow');
-    // $('#skill').focus();
+    // $('#student-signup-skill').focus();
     // window.scrollTo(0, 0);
   });
 
@@ -195,31 +198,74 @@
   }
 });</script>
 
-<!--JavaScript form validation-->
+<!--JavaScript form validation for student-signup-->
 <script>
+  //Validation for part 1
   $('#student-signup-next').click(function(){
-    if ((!$('#description').val() || !$('#skill').val()) || $('input[type=radio]:checked').size() < 2) {
-      $('#alert-fields').show()
+    if ((!$('#student-signup-description').val() || !$('#student-signup-skill').val()) || $('input[type=radio]:checked').size() < 2) {
+      $('#alert-fields-student-signup1').show()
     } else {
        $('#student-panel-1').hide('slow'); 
        $('#student-panel-2').show('slow');
     }
   });
-  $('#skill').blur(function(){
-    if ($('#skill').val()) {
-      $('#skill').css({"border-color":"#3c763d"
+  $('#student-signup-skill').blur(function(){
+    if ($('#student-signup-skill').val()) {
+      $('#student-signup-skill').css({"border-color":"#3c763d"
       })
     } else {
-      $('#skill').css({"border-color":"#a94442"
+      $('#student-signup-skill').css({"border-color":"#a94442"
       });
     }
   });
-  $('#description').blur(function(){
-    if ($('#description').val()) {
-      $('#description').css({"border-color":"#3c763d"
+  $('#student-signup-description').blur(function(){
+    if ($('#student-signup-description').val()) {
+      $('#student-signup-description').css({"border-color":"#3c763d"
       })
     } else {
-      $('#description').css({"border-color":"#a94442"
+      $('#student-signup-description').css({"border-color":"#a94442"
+      });
+    }
+  });
+
+  //Validation for part 2
+  $('#student-signup-submit').click(function(){
+    if ((!$('#student-signup-name').val() || !$('#student-signup-email').val()) 
+      || !$('#student-signup-password').val() || !($('#student-signup-phone').val().length == 17)) 
+    {
+        $('#alert-fields-student-signup2').show()
+    } 
+    else {
+      $('#alert-fields-student-signup2').hide()
+      //send data back to server
+      //send email --> jaclyn
+      //validate submission and go to confirmation page
+    }
+  });
+  $('#student-signup-name').blur(function(){
+    if ($('#student-signup-name').val()) {
+      $('#student-signup-name').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#student-signup-name').css({"border-color":"#a94442"
+      });
+    }
+  });
+  $('#student-signup-email').blur(function(){
+    if ($('#student-signup-email').val()) {
+      $('#student-signup-email').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#student-signup-email').css({"border-color":"#a94442"
+      });
+    }
+  });
+  $('#student-signup-password').blur(function(){
+    if ($('#student-signup-password').val()) {
+      $('#student-signup-password').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#student-signup-password').css({"border-color":"#a94442"
       });
     }
   });
