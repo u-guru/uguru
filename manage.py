@@ -1,11 +1,11 @@
 import sys, os
+from app.database import *
+from app.models import *
 
 arg = sys.argv[1]
 
 #Test whether DB is accurate
-if arg == 'testdb':
-    from app.database import *
-    from app.models import *
+if arg == 'testdb':    
     init_db()
 
     #Create a user
@@ -84,7 +84,7 @@ if arg == 'testdb':
     student.pending_ratings.append(rating)
     tutor.pending_ratings.append(rating)
     print student.pending_ratings
-    print tutor.pending_ratingscy
+    print tutor.pending_ratings
     
 #     db.session.add(r)
 #     db.session.commit()
@@ -97,6 +97,19 @@ if arg == 'testdb':
     os.remove('app.db')
 
 
-# if arg == 'fakedata':
-#     pass
-#     #Generate fake tutors
+if arg == 'remove':
+    email = sys.argv[2]
+    user = User.query.filter_by(email=email).first()
+    db_session.delete(user)
+    db_session.commit()
+    print email + " removed"
+
+if arg == 'print':
+    email = sys.argv[2]
+    user = User.query.filter_by(email=email).first()
+    user_id = user.id
+    print user
+    print user.outgoing_requests
+
+
+
