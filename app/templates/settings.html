@@ -1,46 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Account Settings</title>
-    <!-- Bootstrap core CSS -->
-    <link href="/static/css/bootstrap.css" rel="stylesheet">
-    <!-- Add custom CSS here -->
-    <link href="/static/css/style.css" rel="stylesheet">
-    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  </head>
-  <body>
+{% extends 'base.html' %}
+{% block header %}
+  <link href="/static/css/bootstrap-formhelpers.min.css" rel="stylesheet">
+{% endblock %}
 
-    <!-- Side Menu -->
-    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
-    <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-        <li class="sidebar-brand"><a href="/home">uGuru.me Home</a></li>
-        <li><a href="/howitworks">How It Works</a></li>
-        <li><a href="/settings">Account Settings</a></li>
-      </ul>
-    </div>
-    <!-- /Side Menu -->
-
+{% block content %}
   <div id="top" class="header">
     <div class="vert-text">
+    <div class="settings-main" style="display:block">
     <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
+       <div class="row vertical-offset-100">
+        <div class="col-md-8 col-md-offset-2">
             <h2>Account Settings</h2>
-        </div>
-        
-          <div class="panel-body">
-            <form accept-charset="UTF-8" role="form">
-            <fieldset>
 
 <!-- Your Ratings as a Student -->
-            <div class="col-md-6 col-mid-offset-4 text-left">
-              <h3><u>Your Ratings as a Student</u></h3>
+            <div class="text-left">
+              <h4><b>Your Ratings as a Student</b></h4>
               <fieldset class="rating">
                 <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5">5 stars</label>
                 <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4">4 stars</label>
@@ -50,43 +24,28 @@
                 </fieldset>
                 <br>
                 <br>
-                <h4>4.0 average, 7 reviews
+                <h5>4.0 average, 7 reviews</h5>
             </div>
 <!-- /Your Ratings as a Student -->
-<!-- Your Ratings as a Tutor -->
-            <div class="col-md-6 col-mid-offset-12 text-left">
-              <h3><u>Your Ratings as a Tutor</u></h3>
-              <fieldset class="rating">
-                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5">5 stars</label>
-                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4">4 stars</label>
-                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3">3 stars</label>
-                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2">2 stars</label>
-                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1">1 star</label>
-                </fieldset>
-                <br>
-                <br>
-                <h4>4.0 average, 7 reviews
-            </div>
-<!-- /Your Ratings as a Tutor -->
 
 <!-- Notification Preferences -->
-            <div class="col-md-6 col-mid-offset-12 text-left">
-              <h3><u>Notification Preferences</u></h3>
+            <div class="text-left">
+              <h4><b>Notification Preferences</b></h4>
              <label class="checkbox">
-              <input type="checkbox" name="notif_pref[]" id="notif_pref_1" value="Email" /><label for="notif_pref_3"><h4>Email Notifications</h4></label>
+              <input type="checkbox" name="notif_pref[]" id="notif_pref_1" value="Email" /><label for="notif_pref_3"><h5>Email Notifications</h5></label>
             </label>
             <label class="checkbox">
-              <input type="checkbox" name="notif_pref[]" id="notif_pref_2" value="Text" /><label for="notif_pref_3"><h4>Text Notifications</h4></label>
+              <input type="checkbox" name="notif_pref[]" id="notif_pref_2" value="Text" /><label for="notif_pref_3"><h5>Text Notifications</h5></label>
             </label>
             <label class="checkbox">
-               <input type="checkbox" name="notif_pref[]" id="notif_none" value="0" checked /><label for="notif_none"><h4>Neither (you will be an offline tutor and not receive any requests)</h4></label>
+               <input type="checkbox" name="notif_pref[]" id="notif_none" value="0" checked /><label for="notif_none"><h5>Neither (you will be an offline tutor and not receive any requests)</h5></label>
             </label>
           </div>
 <!-- /Notification Preferences -->
 
 <!-- Change Password -->
-            <div class="col-md-6 col-mid-offset-12 text-left">
-              <h3><u>Change Password</u></h3>
+           <div class="text-left">
+              <h4><b>Change Password</b></h4>
               <div class="form-group max-width:5000px">
                   <input class="form-control" placeholder="Current Password" name="currentpassword" type="text">
               </div>
@@ -102,12 +61,11 @@
               </div>
 <!-- /Change Password -->
 
-<!-- ADD SKILLS AND COURSES -->
-  <!-- Become a Tutor -->
-         <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
-              <h3><u>Become a Tutor</u></h3>
-              <p>Very simple. Just add one skill and we'll start advertising you as a tutor. Read more regarding tutor validation and your starting session rates on our <a href="/howitworks">How it Works</a> page.</p>
-                <h4><u>Add Skills and Courses</u></h4>
+<!-- Become a Tutor -->
+              <a href="#add-skills-courses" id="tutor-signup-btn" class="btn btn-default btn-lg">Become a Tutor</a>
+              <p>It's simple. Just add one skill and we'll start advertising you as a tutor. Read more regarding tutor validation and your starting session rates on our <a href="/howitworks">How it Works</a> page.</p>
+          <div id="add-skills-courses">
+         <h4><u>Add Skills and Courses</u></h4>
                 <p>Add anything you feel proficient enough in to teach.</p>
   
                   <div class="input-group">
@@ -115,7 +73,7 @@
                     <span class="input-group-btn">
                       <button class="btn btn-default" type="button">Go!</button>
                     </span>
-                  </div><!-- /input-group -->
+                  </div>
                   
                   <h4>I Can Teach:</h4>
                   <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
@@ -126,92 +84,32 @@
                   <br>
                   <br>
       <div class="row">
-        
           <h5>Examples from other tutors:</h5>
           <div style="margin-bottom:25px;">
-            
             <button type="button" class="btn btn-signup">CS 61A</button>
-            
             <button type="button" class="btn btn-signup">Writing</button>
-            
             <button type="button" class="btn btn-signup">Guitar</button>
-            
             <button type="button" class="btn btn-signup">Photoshop</button>
-            
             <button type="button" class="btn btn-signup">Weight Training</button>
-            
             <button type="button" class="btn btn-signup">Photography</button>
-            
             <button type="button" class="btn btn-signup">French</button>
-            
             <button type="button" class="btn btn-signup">Math 1A</button>
-            
           </div>
         </div>
       </div>
- <!-- /ADD SKILLS AND COURSES -->
-     <div class="col-sm-3 col-md-offset-1 text-left"><a href="#">Delete Account</a></div>
-            </fieldset>
-              </form>
-          </div>
-      </div>
+
+     <div class="text-left"><a href="/">Delete Account</a>
+     </div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 
+{% endblock %}
 
-    <!-- Footer -->
-    <footer>
-     <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3 text-center">
-            <div class="top-scroll">
-              <a href="#top"><i class="fa fa-circle-arrow-up scroll fa-4x"></i></a>
-            </div>
-            <hr>
-            <p>Copyright &copy; uGuru.me 2014</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- /Footer -->
-
-   <!-- JavaScript -->
-    <script src="/static/js/jquery-1.10.2.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
-
-    <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
-    <script>
-        $("#menu-close").click(function(e) {
-            e.preventDefault();
-            $("#sidebar-wrapper").toggleClass("active");
-        });
-    </script>
-    <script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#sidebar-wrapper").toggleClass("active");
-        });
-    </script>
-    <script>
-      $(function() {
-        $('a[href*=#]:not([href=#])').click(function() {
-          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
-            || location.hostname == this.hostname) {
-
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-            if (target.length) {
-              $('html,body').animate({
-                scrollTop: target.offset().top
-              }, 1000);
-              return false;
-            }
-          }
-        });
-      });
-    </script>
-
+{% block footer_scripts %}
     <!-- Custom JavaScript for Notification Checkboxes -->
     <script>
      $(function(){
@@ -230,5 +128,16 @@
         });
     });
      </script>
-  </body>
-</html>
+
+<!-- Custom JavaScript for Become a Tutor -->
+
+
+<!-- Show/Hide Become a Tutor Jquery -->
+<script type="text/javascript">
+  $('#tutor-signup-btn').click(function(){
+    $('#add-skills-courses').toggle();
+    $('#add-skills-courses').scrollTop();
+  });
+</script>
+
+{% endblock %}
