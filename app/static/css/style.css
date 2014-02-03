@@ -111,6 +111,7 @@ body {
   height: 100%;
   width: 100%;
   position: relative;
+  padding: 10px;
   /*background: url(../img/campus_at_dusk.jpg) no-repeat center center fixed; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -199,7 +200,9 @@ i.service-icon {
 /* Footer */
 footer {
   background: #ffffff;
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 /*  margin-top: -20px;*/
   height: 20px;
   padding: 20px 0;
@@ -477,3 +480,5 @@ table {
     border-spacing: 0;
 }
 
+border-width:0 !important;
+}
