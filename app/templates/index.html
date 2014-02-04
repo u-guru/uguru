@@ -90,7 +90,7 @@
                       <!-- Slider -->
                       <h4>Time Estimate (per session)</h4>
                           <div class="noUiSlider"></div>
-                          <p class="text-right"><span id="low"></span> hours </p>
+                          <p class="text-right"><span name="estimate" id="low"></span> hours </p>
                       <div>
                         <span id='alert-fields-student-signup1' style="color:red;display:None">Please fill or select all fields</span>
                         <a href="javascript:void(0)" id="student-signup-next" class="btn btn-lg btn-success btn-block" type="submit">Next</a>
@@ -102,8 +102,9 @@
                 </div>
                 <!-- /Panel 1 -->
 
+                <!-- IF !logged_in -->
                 <!-- Panel 2 -->
-                <div  id="student-panel-2" class="panel panel-default" style="display:None">
+                <div id="student-panel-2" class="panel panel-default" style="display:None">
                   <div class="panel-heading">
                   <h2>Signup Information</h2>
                   </div>
@@ -200,6 +201,10 @@
   }
 });</script>
 
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
 <!--JavaScript form validation for student-signup-->
 <script>
   //Validation for part 1
@@ -208,7 +213,10 @@
       $('#alert-fields-student-signup1').show()
     } else {
        $('#student-panel-1').hide('slow'); 
+       //if not logged in
        $('#student-panel-2').show('slow');
+       //if logged in, ajax, show next panel + confirmation
+       $('#student-panel-3').show('slow');
     }
   });
   $('#student-signup-skill').blur(function(){
@@ -230,6 +238,7 @@
     }
   });
 
+  <!-- if !logged_in -->
   //Validation for part 2
   $('#student-signup-submit').click(function(){
     if ((!$('#student-signup-name').val() || !$('#student-signup-email').val()) 
@@ -238,10 +247,33 @@
         $('#alert-fields-student-signup2').show()
     } 
     else {
-      $('#alert-fields-student-signup2').hide()
-      //send data back to server
-      //send email --> jaclyn
-      //validate submission and go to confirmation page
+      $('#alert-fields-student-signup2').hide();      
+      var data = {
+        'student-signup': true,
+        'student-request': true,
+        'name': $('input[name="name"]').val(),
+        'email': $('input[name="email"]').val(),
+        'phone': $('input[name="phone"]').val(),
+        'password': $('input[name="password"]').val(),
+        //TODO: Make this a function. These are request fields
+        'description': $('textarea[name="description"]').val(),
+        'urgency': $('input[name="urgency"]:checked').val(),
+        'frequency': $('input[name="frequency"]:checked').val(),
+        'skill': $('input[name="skill"]').val(),
+        'estimate': $('span[name="estimate"]').text()
+      }
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        url: '/validation/' ,
+        data: JSON.stringify(data),
+        dataType: "json",        
+        success: function(result) {
+          alert(result.name);
+          //Update menu temporarily
+          //Show hide the next steps
+        }
+      });      
     }
   });
   $('#student-signup-name').blur(function(){
@@ -275,6 +307,7 @@
       });
     }
   });
+  <!-- /if !logged_in -->
 </script>
 
 {% endblock %}

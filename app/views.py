@@ -1,19 +1,55 @@
-from app import app
-from flask import render_template, redirect
+from app import app, models
+from app.database import *
+from flask import render_template, jsonify, redirect, request, session
 from forms import SignupForm, RequestForm
+from models import User, Request
+from hashlib import md5
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     request_form = RequestForm()
-    if request_form.validate_on_submit():
-        return redirect('/success/')
-    return render_template('index.html', forms=[request_form])
-    
-	
+    return render_template('index.html', forms=[request_form],
+        logged_in=session.get('user_id'))
 
-@app.route('/success/')
+@app.route('/validation/', methods=('GET', 'POST'))
 def success():
-    return "success"
+    if request.method == "POST":
+        ajax_json = request.json
+        
+        #Create user for first time experiences
+        if ajax_json.get('student-signup'):
+            u = User(
+                name = ajax_json['name'], 
+                password = md5(ajax_json['password']).hexdigest(),
+                email = ajax_json['email'],
+                phone_number = ajax_json['phone']
+            )
+            db_session.add(u)
+            db_session.commit()
+            user_id = u.id
+            authenticate(user_id)
+
+        #Create a request
+        if ajax_json.get('student-request'):
+            user_id = session['user_id']
+            r = Request(
+                student_id = user_id,
+                skill_id = 1, #change this later,
+                description = ajax_json['description'],
+                urgency = ajax_json['urgency'],
+                frequency = ajax_json['frequency'],
+                time_estimate = float(ajax_json['estimate'])
+            )
+            db_session.add(r)
+            db_session.commit()
+            #TODO: Post request creation tutor notification
+
+        return jsonify(name=test)
+    # name = request.form['name']
+    # email = request.args.get('email', "", type=str)
+    # phone = request.args.get('phone', "", type=str)
+    # print name + " sdasdsa"
+    # return jsonify(test=name)
 
 @app.route('/portfolio/')
 def portfolio():
@@ -37,14 +73,6 @@ def tutorsignup2():
 @app.route('/howitworks/')
 def howitworks():
     return render_template('howitworks.html')
-
-@app.route('/studentsignup1/')
-def studentsignup1():
-    return render_template('studentsignup1.html')
-
-@app.route('/studentsignup2/')
-def studentsignup2():
-    return render_template('studentsignup2.html')
 
 @app.route('/studentsignup3/')
 def studentsignup3():
@@ -81,3 +109,9 @@ def rating_stars():
 @app.route('/rating_gen/')
 def rating_gen():
     return render_template('rating_gen.html')
+
+def authenticate(user_id):
+    session['user_id'] = user_id
+
+def logout():
+    session.pop('user_id')

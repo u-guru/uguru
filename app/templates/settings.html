@@ -4,7 +4,8 @@
   <script src="/static/js/jquery.js"></script>
    <script src="/static/js/jquery.raty.js"></script>
    <link rel="stylesheet" href="/static/css/bootstrap-switch.css">
-   <script src="/static/js/bootstrap-switch.js"></script>
+    <script src="/static/js/bootstrap-switch.js"></script>
+    <script src="/static/js/bootstrap-switch.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -50,7 +51,7 @@
                   <br>
                   <br>
                   <label for "neither">Neither:</label>
-                  <div class="has-switch switch-animate switch-small switch-on" tabindex="0" id="neither"><div><span class="switch-left">ON</span><label>&nbsp;</label><span class="switch-right">OFF</span><input type="checkbox" checked="" class="switch-small"></div></div>
+                  <div class="has-switch switch-animate switch-small switch-off" tabindex="0" id="neither"><div><span class="switch-left">ON</span><label>&nbsp;</label><span class="switch-right">OFF</span><input type="checkbox" checked="" class="switch-small"></div></div>
                   <p><em>(you will be an offline tutor and not receive any requests)</em></p>
                     <br>
                   </div>
@@ -132,9 +133,7 @@
   </script>
 
     <!-- Custom JavaScript for Notification Checkboxes -->
- <script>
-        $('#dimension-switch').bootstrapSwitch('setSizeClass', 'switch-small');
-   </script>
+
 
 
 

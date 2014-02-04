@@ -169,9 +169,10 @@ class Request(Base):
         else:
             tutor_name = "Inactive"
         
-        return "%s <Student: %s, Tutor: %s, Skill: %s,\n Time: %s>" %\
+        return "%s <Student: %s, Tutor: %s, Skill: %s,\
+        \n Time Created: %s, Time Estimated: %s hours>" %\
         (str(self.id), student_name, tutor_name, skill_name, \
-            self.time_created.strftime('%b %d,%Y'))
+            self.time_created.strftime('%b %d,%Y'), self.time_estimate)
 
 class Skill(Base):
     __tablename__ = 'skill'
