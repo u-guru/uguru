@@ -1,6 +1,7 @@
 from app import app, models
 from app.database import *
-from flask import render_template, jsonify, redirect, request, session
+from flask import render_template, jsonify, redirect, request, \
+session, flash, redirect, url_for
 from forms import SignupForm, RequestForm
 from models import User, Request
 from hashlib import md5
@@ -21,7 +22,7 @@ def success():
             u = User(
                 name = ajax_json['name'], 
                 password = md5(ajax_json['password']).hexdigest(),
-                email = ajax_json['email'],
+                email = ajax_json['email'] + '@berkeley.edu',
                 phone_number = ajax_json['phone']
             )
             db_session.add(u)
@@ -32,6 +33,7 @@ def success():
         #Create a request
         if ajax_json.get('student-request'):
             user_id = session['user_id']
+            u = User.query.get(user_id)
             r = Request(
                 student_id = user_id,
                 skill_id = 1, #change this later,
@@ -40,47 +42,62 @@ def success():
                 frequency = ajax_json['frequency'],
                 time_estimate = float(ajax_json['estimate'])
             )
+            u.outgoing_requests.append(r)
             db_session.add(r)
             db_session.commit()
+            send_requests_to_tutors(r.requested_tutors)
+
+        if ajax_json.get('tutor-signup'):
+            u = User(
+                name = ajax_json['name'], 
+                password = md5(ajax_json['password']).hexdigest(),
+                email = ajax_json['email'] + '@berkeley.edu',
+                phone_number = ajax_json['phone'],
+            )
+            skills = ajax_json['skills']
+            print skills
             #TODO: Post request creation tutor notification
+        return jsonify(dict=ajax_json)
 
-        return jsonify(name=test)
-    # name = request.form['name']
-    # email = request.args.get('email', "", type=str)
-    # phone = request.args.get('phone', "", type=str)
-    # print name + " sdasdsa"
-    # return jsonify(test=name)
+@app.route('/logout/', methods=('GET', 'POST'))
+def logout():
+    session.pop("user_id")    
+    flash('You have been logged out', 'info')
+    return redirect(url_for("index"))
 
-@app.route('/portfolio/')
-def portfolio():
-	return render_template('portfolio.html')
-
-@app.route('/admin/')
-def admin():
-    return render_template('admin.html')
+@app.route('/login/', methods=('GET', 'POST'))
+def login():
+    if session.get('user_id'):
+        return redirect(url_for('index'))
+    if request.method == "POST":
+        ajax_json = request.json
+        email = ajax_json['email']
+        password = md5(ajax_json['password']).hexdigest()
+        query = User.query.filter_by(email=email, password=password).first()
+        if query:
+            user = query
+            authenticate(user.id)
+            flash("You have been logged in successfully", 'info')            
+            success = True
+        else:
+            success = False
+        return jsonify(json=success)
+    return render_template("index.html")    
 
 @app.route('/tutorsignup1/', methods=('GET', 'POST'))
 def tutorsignup1():
     form = SignupForm()
     if form.validate_on_submit():
         return redirect('/')
-    return render_template('tutorsignup.html', form=form)
+    return render_template('tutorsignup1.html', form=form)
 
 @app.route('/tutorsignup2/')
-def tutorsignup2():
+def tutorsignup2():  
     return render_template('tutorsignup2.html')
 
 @app.route('/howitworks/')
 def howitworks():
     return render_template('howitworks.html')
-
-@app.route('/studentsignup3/')
-def studentsignup3():
-    return render_template('studentsignup3.html')
-
-@app.route('/login/')
-def login():
-    return render_template('login.html')
 
 @app.route('/settings/')
 def settings():
@@ -113,5 +130,6 @@ def rating_gen():
 def authenticate(user_id):
     session['user_id'] = user_id
 
-def logout():
-    session.pop('user_id')
+#TODO
+def send_requests_to_tutors(requests_list):
+    pass

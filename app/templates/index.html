@@ -8,17 +8,28 @@
 
   <!-- Jinja2 Variable Definitions -->
   {% set request_form = forms[0] %}
+  {% set messages = get_flashed_messages(with_categories=true) %}
 
  	<!-- Full Page Image Header Area -->
     <div id="top" class="header">
-      <div class="vert-text">
+      <div class="vert-text">    
+
+        {% if messages %}
+          {% for category, message in messages %}
+              <div class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{message}}
+              </div>
+          {% endfor %}
+        {% endif %}
+
         <div class="main-area" style="display:block">
         	<img class="img-portfolio img-responsive" src="/static/img/guru.jpg">
          <!--  <h1>uGuru.me</h1> -->
           <h3><em>Peer to Peer</em> private tutoring.<br>Affordable. Quick.</h3>
-          <a href="#" id="student-signup-btn" class="btn btn-default btn-lg">Need a Tutor?</a>
-          <a href="/tutorsignup1" class="btn btn-lg btn-primary">Become a Tutor</a>      
-                <h4>or <a href="#" id="login-link" >LogIn</a> </h4>
+          <a href="javascript:void(0)" id="student-signup-btn" class="btn btn-default btn-lg">Need a Tutor?</a>
+          <a href="javascript:void(0);" id="tutor-signup-btn" class="btn btn-lg btn-primary">Become a Tutor</a>      
+                <h4>or <a href="#" id="login-link-main" >LogIn</a> </h4>
               <h3>See <a href="/howitworks/">How it Works</a>.</h3>
         </div>
 
@@ -31,15 +42,18 @@
                     <h2>Log In</h2>
                   </div>
                   <div class="panel-body">
+                    <div>
+                        <span id='alert-fields-login' style="color:red;display:None">Incorrect username or password</span>                        
+                    </div>
                     <form accept-charset="UTF-8" role="form">
                     <fieldset>
                       <div class="form-group">
-                          <input class="form-control" placeholder="E-mail" name="email" type="text">
+                          <input id="login-email" name="login-email" class="form-control" placeholder="E-mail" name="email" type="text">
                       </div>
                       <div class="form-group">
-                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                        <input id="login-password" name="login-password" class="form-control" placeholder="Password" name="password" type="password" value="">
                       </div>
-                       <a href="/" class="btn btn-lg btn-success btn-block" type="submit">Submit</a>
+                       <a href="javascript:void(0)" id="login-submit" class="btn btn-lg btn-success btn-block" type="submit">Submit</a>
                     </fieldset>
                     </form>
                   </div>
@@ -47,16 +61,101 @@
             </div>
           </div>
         </div>
+        
+        <!-- Tutor signup modal -->
+        <div class="tutor-signup-modal" style="display:none; text-align:center">            
+          <div class="row vertical-offset-100">
+            <div class="col-md-4 col-md-offset-4">
+              <div id="tutor-signup-panel" class="panel panel-default">
+                <div class="panel-heading">
+                <h3>Signup Information</h3>
+                <p>Have an account? Login <a href="javascript:void(0)" id="login-link-tutor-signup"> here</a>.<p>
+                </div>
+                <!-- Panel Body 2-->
+                <div class="panel-body">                    
+                  <form accept-charset="UTF-8" role="form">
+                    <fieldset>
+                      <div class="form-group">
+                        <input class="form-control" placeholder="Name" id="tutor-signup-name" name="name" type="text">
+                      </div>
+                      <div class="input-group" style="padding-bottom:15px;">
+                          <input class="form-control" placeholder="E-mail" id="tutor-signup-email" name="tutor-email" type="text">
+                          <span class="input-group-addon">@berkeley.edu</span>           
+                      </div>
 
-        <div class="student-signup-modal" style="display:none">            
+                      <div class="form-group">
+                        <input class="form-control" id="tutor-signup-password" placeholder="Password" name="tutor-password" type="password" value="">
+                      </div>
+                      <div class="form-group">
+                          <input class="form-control bfh-phone" id="tutor-signup-phone" data-format="+1 (ddd) ddd-dddd" placeholder="Phone Number" name="tutor-phone" type="text">
+                          <span style="font-weight:strong; font-size:0.80em">
+                          Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
+                          </span>
+                      </div>                                                                                         
+                        <h4 style="margin:2px">Add Courses and Skills</h4>
+                        <span style="font-weight:strong; margin-top:-10px; font-size:0.80em;">
+                        Add anything you feel proficient enough in to teach.
+                        </span>
+      
+                        <div class="input-group">
+                          <input type="text" class="form-control">
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span>
+                            </button>
+                          </span>
+                        </div><!-- /input-group -->
+                        <br>
+                            
+                        <div style="align:center; display:none;" class="row">
+                          <span class="tag">
+                            <span>CS 10&nbsp;&nbsp;</span>
+                            <a href="#" style="float:right;"title="Removing tag">x</a></span>
+                            <span class="tag">
+                            <span>Music 20A&nbsp;&nbsp;</span>
+                            <a href="#" title="Removing tag">x</a></span>
+                             <span class="tag">
+                            <span>Tae Kwan Do&nbsp;&nbsp;</span>
+                            <a href="#" title="Removing tag">x</a></span>
+                            <span class="tag">
+                            <span>Cooking&nbsp;&nbsp;</span>
+                            <a href="#" title="Removing tag">x</a></span>
+                        </div>
+                        
+                        <div class="row" style="margin-top:-10px">
+                          <!-- <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3"> -->
+                            <h5>Popular Examples</h4>
+                            <div style="margin-top:-15px">                              
+                              <button type="button" class="btn btn-sm btn-signup">CS 61A</button>                              
+                              <button type="button" class="btn btn-sm btn-signup">Essay Proofreading</button>                                                                                      
+                              <button type="button" class="btn btn-sm btn-signup">French R1B</button>
+                              
+                              <button type="button" class="btn btn-sm btn-signup">Chem 1A</button> 
+                            </div>
+                          </div>
+                        </div>
+                        <span id='alert-fields-tutor-signup' style="color:red;display:None">Please fill or select all fields</span>
+                      <a id="tutor-signup-submit" href="javascript:void(0);" class="btn btn-lg btn-success btn-block" type="submit">Register</a>
+                      <p>By clicking submit you agree to our <a href="/TermsofService/">Terms of Service</a> and <a href="PrivacyPolicy">Privacy Policy</a>.</p>
+                    </fieldset>
+                  </form>
+                </div>
+                  <!-- /Panel Body 2-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/ Tutor Signup modal -->
+
+        <div class="student-signup-modal container" style="display:none; text-align: center">            
             <div class="row vertical-offset-100">
               <div class="col-md-4 col-md-offset-4">
                 
                 <!-- Panel 1 -->
-                <div id="student-panel-1" class="panel panel-default">                  
+                <div id="request-panel" class="panel panel-default">                  
                   <div class="panel-heading">
                     <button type="button" class="close" id="modal-close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h3>What do you need help in?</h3>                    
+                    <h3>What do you need help in?</h3>
+                    Have an account? Please <a href="javascript:void(0)" id="login-link-request"> login</a> first.                    
                   </div>
 
                   <!-- Panel Body -->
@@ -68,7 +167,7 @@
                       </div>
                       
                       <h4>Please Tell Us More</h4>
-                      <textarea class="form-control" id="student-signup-description" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
+                      <textarea class="form-control" id="tutor-signup-description" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
                       
                       <h4>Urgency</h4>                     
                       <div class="btn-group" data-toggle="buttons">
@@ -93,7 +192,7 @@
                           <p class="text-right"><span name="estimate" id="low"></span> hours </p>
                       <div>
                         <span id='alert-fields-student-signup1' style="color:red;display:None">Please fill or select all fields</span>
-                        <a href="javascript:void(0)" id="student-signup-next" class="btn btn-lg btn-success btn-block" type="submit">Next</a>
+                        <a href="javascript:void(0)" id="request-submit" class="btn btn-lg btn-success btn-block" type="submit">Next</a>
                       </div>
 
                     </form>
@@ -103,14 +202,15 @@
                 <!-- /Panel 1 -->
 
                 <!-- IF !logged_in -->
+                {% if not logged_in %}
                 <!-- Panel 2 -->
-                <div id="student-panel-2" class="panel panel-default" style="display:None">
+                <div id="student-signup-panel" class="panel panel-default" style="display:None">
                   <div class="panel-heading">
-                  <h2>Signup Information</h2>
+                  <h3>Signup Information</h3>
+                  <p>Have an account? Login <a href="javascript:void(0)" id="login-link-signup"> here</a>.<p>
                   </div>
                   <!-- Panel Body 2-->
-                  <div class="panel-body">
-                    <h4>So we can let you know when we've found a tutor for you!</h4>
+                  <div class="panel-body">                    
                     <form accept-charset="UTF-8" role="form">
                       <fieldset>
                         <div class="form-group">
@@ -137,8 +237,26 @@
                     </form>
                   </div>
                   <!-- /Panel Body 2-->
-
                 </div>
+                <!-- /Panel 2-->
+                {% endif %}
+                <!-- Panel 3-->
+                <div id="request-panel-confirmation" style="display:None" class="panel panel-default">
+                  <div class="panel-heading">
+                    <h2>Your Request has been Submitted</h2>
+                  </div>
+                  <div class="panel-body">
+                        <h4>We've let all Gurus in <span id="student-request-skill-name"> </span> know that someone is in need.</h4>
+                       <img class="img-portfolio img-responsive" src="/static/img/guru.jpg">
+                        <h3><u>What's next?</u></h3>
+                        <ol>
+                          <li>Once an expert accepts your request, you will receive a text and email notification with information regarding that expert. (Edit notification preferences <a href="/settings">here</a>.)</li>
+                          <li>You can choose to accept or wait for a different offer. If you accept, an email thread will be initiated between the two.</li>
+                          <li>Relax! We'll let you know as soon as a Guru is available.</li>
+                        </ol>
+                  </div>
+                </div>
+                <!-- /Panel 3 -->                        
               </div>
             </div>
         </div>
@@ -156,8 +274,28 @@
 <!-- Show/Hide Login Jquery -->
 <script type="text/javascript">
   // Open Login Dialog
-  $('#login-link').click(function(){
+  $('#login-link-menu').click(function(){
     $('.main-area').hide('slow'); 
+    $('.login-modal').show('slow');
+  });
+
+  $('#login-link-main').click(function(){
+    $('.main-area').hide('slow'); 
+    $('.login-modal').show('slow');
+  });
+
+  $('#login-link-signup').click(function(){
+    $('.student-signup-modal').hide('slow'); 
+    $('.login-modal').show('slow');
+  });
+
+  $('#login-link-tutor-signup').click(function(){
+    $('.tutor-signup-modal').hide('slow'); 
+    $('.login-modal').show('slow');
+  });
+
+  $('#login-link-request').click(function(){
+    $('.student-signup-modal').hide('slow'); 
     $('.login-modal').show('slow');
   });
 
@@ -172,6 +310,7 @@
   $(document).keyup(function(e) {
     if (e.keyCode == 27) { 
       $('.login-modal').hide('slow');
+      $('.tutor-signup-modal').hide('slow');
       $('.student-signup-modal').hide('slow');
       $('.main-area').show('slow');        
     }
@@ -184,14 +323,20 @@
   $('#student-signup-btn').click(function(){
     $('.main-area').hide('slow'); 
     $('.student-signup-modal').show('slow');
-    // $('#student-signup-skill').focus();
-    // window.scrollTo(0, 0);
   });
+</script>
 
+<!--Student signup show/hide Jquery -->
+<script type="text/javascript">
+  // Open Student Signup Dialog
+  $('#tutor-signup-btn').click(function(){
+    $('.main-area').hide('slow'); 
+    $('.tutor-signup-modal').show('slow');
+  });
 </script>
 
 <script>$(".noUiSlider").noUiSlider({
-  range: [0.5, 10]
+  range: [1, 10]
   ,start: 2
   ,step: 0.5
   ,handles: 1
@@ -205,18 +350,41 @@
   $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 </script>
 
-<!--JavaScript form validation for student-signup-->
+<!--JavaScript form validation for student and tutor signup-->
 <script>
-  //Validation for part 1
-  $('#student-signup-next').click(function(){
+  //Validation for student request form, previously signed up
+  $('#request-submit').click(function(){
     if ((!$('#student-signup-description').val() || !$('#student-signup-skill').val()) || $('input[type=radio]:checked').size() < 2) {
       $('#alert-fields-student-signup1').show()
     } else {
-       $('#student-panel-1').hide('slow'); 
-       //if not logged in
-       $('#student-panel-2').show('slow');
-       //if logged in, ajax, show next panel + confirmation
-       $('#student-panel-3').show('slow');
+       {% if not logged_in %}
+       $('#request-panel').hide('slow'); 
+       $('#student-signup-panel').show('slow');
+       {% else %}
+        //Validate request form and submit it
+        var data = {
+        'student-request': true,
+        //TODO: Make this a function. These are request fields
+        'description': $('textarea[name="description"]').val(),
+        'urgency': $('input[name="urgency"]:checked').val(),
+        'frequency': $('input[name="frequency"]:checked').val(),
+        'skill': $('input[name="skill"]').val(),
+        'estimate': $('span[name="estimate"]').text()
+        }
+        $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/validation/' ,
+          data: JSON.stringify(data),
+          dataType: "json",        
+          success: function(result) {    
+            $('#request-panel').hide('slow');     
+            $('#request-panel-confirmation').show()
+            $('#student-request-skill-name').text(result.dict['skill']);
+            }
+          });              
+
+       {% endif %}
     }
   });
   $('#student-signup-skill').blur(function(){
@@ -237,9 +405,84 @@
       });
     }
   });
+  $('#tutor-signup-description').blur(function(){
+    if ($('#tutor-signup-description').val()) {
+      $('#tutor-signup-description').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#tutor-signup-description').css({"border-color":"#a94442"
+      });
+    }
+  });
 
+  <!-- login validation -->
+  $('#login-submit').click(function(){
+    //check whether fields are blank
+    if (!$('#login-email').val() || !$('#login-password')) {
+      $('#alert-fields-student-signup2').show()
+    } else {
+      //else get data and send to server
+      var data = {
+        'email': $('input[name="login-email"]').val(),
+        'password': $('input[name="login-password"]').val()
+      }
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        url: '/login/' ,
+        data: JSON.stringify(data),
+        dataType: "json",        
+        success: function(result) {        
+          if (result.json) {
+            window.location.replace($SCRIPT_ROOT)
+          } else {
+            $('#alert-fields-login').show()       
+          }
+        }
+      });      
+    }
+  })
+
+
+  //Validation for tutor signup part 2
+  $('#tutor-signup-submit').click(function(){
+    if ((!$('#tutor-signup-name').val() || !$('#tutor-signup-email').val()) 
+      || !$('#tutor-signup-password').val() || !($('#tutor-signup-phone').val().length == 17))
+    {
+      $('#alert-fields-tutor-signup').show() 
+    }
+    else {
+      $('#alert-fields-tutor-signup').hide() 
+      var data = {
+        'tutor-signup': true,        
+        'name': $('input[name="tutor-name"]').val(),
+        'email': $('input[name="tutor-email"]').val(),
+        'phone': $('input[name="tutor-phone"]').val(),
+        'password': $('input[name="tutor-password"]').val(),
+        'skills': [1,2,3,4,5]
+      }
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        url: '/validation/' ,
+        data: JSON.stringify(data),
+        dataType: "json",        
+        success: function(result) {        
+          $('#student-signup-panel').hide()
+          $('#request-panel-confirmation').show()
+          $('#student-request-skill-name').text(result.dict['skill']);
+          $('#login-link').attr({
+            id: "logout-link",
+            href: "/logout/"
+          });
+          $('#logout-link').text("Logout");
+        }
+      });
+    }
+  });
+  
   <!-- if !logged_in -->
-  //Validation for part 2
+  //Validation for student signup part 2
   $('#student-signup-submit').click(function(){
     if ((!$('#student-signup-name').val() || !$('#student-signup-email').val()) 
       || !$('#student-signup-password').val() || !($('#student-signup-phone').val().length == 17)) 
@@ -268,10 +511,15 @@
         url: '/validation/' ,
         data: JSON.stringify(data),
         dataType: "json",        
-        success: function(result) {
-          alert(result.name);
-          //Update menu temporarily
-          //Show hide the next steps
+        success: function(result) {        
+          $('#student-signup-panel').hide()
+          $('#request-panel-confirmation').show()
+          $('#student-request-skill-name').text(result.dict['skill']);
+          $('#login-link').attr({
+            id: "logout-link",
+            href: "/logout/"
+          });
+          $('#logout-link').text("Logout");
         }
       });      
     }
@@ -307,6 +555,7 @@
       });
     }
   });
+
   <!-- /if !logged_in -->
 </script>
 

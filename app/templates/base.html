@@ -22,9 +22,13 @@
                 <li class="logo">
                     <a href="/"> uGuru.me</a>
                     <a href="javascript:void(0)" class="menu-trigger"></a>
-                </li>
+                </li>                
                 <li class="general-nav-item first">
-                    <a href="javascript:void(0)" id="login-link">Login</a>
+                    {% if logged_in %}
+                    <a href="/logout/" id="logout-link">Logout</a>
+                    {% else %}
+                    <a href="javascript:void(0)" id="login-link-menu">Login</a>
+                    {% endif %}
                 </li>
                 <li class="general-nav-item">
                     <a href="/howitworks">How it Works</a>

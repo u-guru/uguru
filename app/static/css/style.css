@@ -1,9 +1,12 @@
 /* Global Styles */
 
-html,
-body {
-  height: 100%;
-  width: 100%;
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
 }
 
 .vert-text {
@@ -254,12 +257,13 @@ i.scroll:hover {
 span.tag {
   border-radius:2px;
   display: block;
-  float: left;
   padding: 5px;
+  /*margin-left: 10px;
+  margin-right:10px;*/
   text-decoration: none;
   background: #adcafe;
   color: #000;
-  margin: 2px;
+  margin: 2px 15px 2px 15px;
   font-size: 13px;
 }
 

@@ -1,6 +1,7 @@
 import sys, os
 from app.database import *
 from app.models import *
+from hashlib import md5
 
 arg = sys.argv[1]
 
@@ -100,6 +101,8 @@ if arg == 'testdb':
 if arg == 'remove':
     email = sys.argv[2]
     user = User.query.filter_by(email=email).first()
+    r = Request.query.filter_by(student_id=user.id).first()
+    db_session.delete(r)
     db_session.delete(user)
     db_session.commit()
     print email + " removed"
@@ -111,5 +114,24 @@ if arg == 'print':
     print user
     print user.outgoing_requests
 
+if arg == 'create':
+    email = sys.argv[2]
+    password = "admin"
+    phone = "18135009853"
+    name = "Admin"
+    user = User(name=name, email=email, password=md5(password).hexdigest(), \
+        phone_number = phone)
+    db_session.add(user)
+    db_session.commit()
+    print email + " added"
 
+if arg == 'delete_all':
+    users = User.query.all()
+    requests = Request.query.all()
+    for user in users:
+        db_session.delete(user)
+    for request in requests:
+        db_session.delete(request)
+    db_session.commit()
+    print 'everything deleted'
 
