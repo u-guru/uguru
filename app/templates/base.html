@@ -6,9 +6,12 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>uGuru.me</title>
+        <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
         <!-- Bootstrap core CSS -->
-        <link href="/static/css/bootstrap.css" rel="stylesheet">
+      <!--   <link href="/static/css/bootstrap.css" rel="stylesheet"> -->
         <!-- Add custom CSS here -->
+        <link href="/static/css/bootswatch.css" rel="stylesheet">
+        <link href="/static/css/bootswatch.min.css" rel="stylesheet">
         <link href="/static/css/style.css" rel="stylesheet">
         <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
         {% block header %}
@@ -17,27 +20,33 @@
 
     <body>
         <!-- Navigation Bar -->
-        <nav class="general-nav">
-            <ul>
-                <li class="logo">
-                    <a href="/"> uGuru.me</a>
-                    <a href="javascript:void(0)" class="menu-trigger"></a>
-                </li>                
-                <li class="general-nav-item first">
-                    {% if logged_in %}
-                    <a href="/logout/" id="logout-link">Logout</a>
+    <div class="navbar navbar-inverse navbar-relative">
+          <div class="container">
+            <div class="navbar-header">
+              <a href="../" class="navbar-brand" style="font-family: 'Oleo Script', cursive; font-size: 40px">uGuru.me</a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+             <ul class="nav navbar-nav navbar-right">
+                <li><a href="/settings">Settings</a></li>
+                <li><a href="/howitworks">How it Works</a></li>
+                <li>
+                     {% if logged_in %}
+                        <a href="/logout/" id="logout-link">Logout</a>
                     {% else %}
-                    <a href="javascript:void(0)" id="login-link-menu">Login</a>
+                        <a href="javascript:void(0)" id="login-link-menu">Login</a>
                     {% endif %}
                 </li>
-                <li class="general-nav-item">
-                    <a href="/howitworks">How it Works</a>
-                </li>
-                <li class="general-nav-item">
-                    <a href="/settings">Settings</a>
-                </li>
-            </ul>
-        </nav>
+              </ul>
+
+            </div>
+          </div>
+    </div>
+
 
         {% block content %}
         {% endblock %}
@@ -49,10 +58,8 @@
     <!-- Only include JavaScript that is required for every page -->
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script>window.jQuery || document.write('<script src="/static/js/jquery-1.10.2.js"><\/script>')</script>
-    
     <script>window.jQuery || document.write('<script src="/static/js/bootstrap.min.js"><\/script>')</script>
 
     {% block footer_scripts %}
