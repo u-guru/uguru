@@ -102,7 +102,8 @@ if arg == 'remove':
     email = sys.argv[2]
     user = User.query.filter_by(email=email).first()
     r = Request.query.filter_by(student_id=user.id).first()
-    db_session.delete(r)
+    if r:
+        db_session.delete(r)
     db_session.delete(user)
     db_session.commit()
     print email + " removed"
