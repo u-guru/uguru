@@ -9,6 +9,10 @@ html,body
     overflow-x: hidden; 
 }
 
+*:not(html) {
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
 .vert-text {
   display: table-cell;
   vertical-align: middle;
