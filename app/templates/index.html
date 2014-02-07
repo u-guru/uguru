@@ -111,7 +111,7 @@
                   <form accept-charset="UTF-8" role="form">
                     <fieldset>
                       <div class="form-group">
-                        <input class="form-control" placeholder="Name" id="tutor-signup-name" name="name" type="text">
+                        <input class="form-control" placeholder="Name" id="tutor-signup-name" name="tutor-name" type="text">
                       </div>
                       <div class="input-group" style="padding-bottom:15px;">
                           <input class="form-control" placeholder="E-mail" id="tutor-signup-email" name="tutor-email" type="text">
@@ -133,38 +133,25 @@
                         </span>
       
                         <div class="input-group">
-                          <input type="text" class="form-control">
+                          <input id="tutor-skill-input" type="text" class="form-control">
                           <span class="input-group-btn">
-                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span>
+                            <button id="tutor-skill-add" class="btn btn-default" type="button"><span class="glyphicon glyphicon-plus"></span>
                             </button>
                           </span>
-                        </div><!-- /input-group -->
-                        <br>
+                        </div><!-- /input-group -->                
                             
-                        <div style="align:center; display:none;" class="row">
-                          <span class="tag">
-                            <span>CS 10&nbsp;&nbsp;</span>
-                            <a href="#" style="float:right;"title="Removing tag">x</a></span>
-                            <span class="tag">
-                            <span>Music 20A&nbsp;&nbsp;</span>
-                            <a href="#" title="Removing tag">x</a></span>
-                             <span class="tag">
-                            <span>Tae Kwan Do&nbsp;&nbsp;</span>
-                            <a href="#" title="Removing tag">x</a></span>
-                            <span class="tag">
-                            <span>Cooking&nbsp;&nbsp;</span>
-                            <a href="#" title="Removing tag">x</a></span>
+                        <div id="tutor-skills" style="align:center; margin-top:5px; display:None" class="row">                                                   
                         </div>
                         
-                        <div class="row" style="margin-top:-10px">
+                        <div id="skill-popular-example" class="row">
                           <!-- <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3"> -->
-                            <h5>Popular Examples</h4>
+                            <h5>Popular Examples</h5>
                             <div style="margin-top:-15px">                              
-                              <button type="button" class="btn btn-sm btn-signup">CS 61A</button>                              
-                              <button type="button" class="btn btn-sm btn-signup">Essay Proofreading</button>                                                                                      
-                              <button type="button" class="btn btn-sm btn-signup">French R1B</button>
+                              <button type="button" class="skill-example btn btn-sm btn-signup">CS 61A</button>                              
+                              <button type="button" class="skill-example btn btn-sm btn-signup">Essay Proofreading</button>                                                                                      
+                              <button type="button" class="skill-example btn btn-sm btn-signup">French R1B</button>
                               
-                              <button type="button" class="btn btn-sm btn-signup">Chem 1A</button> 
+                              <button type="button" class="skill-example btn btn-sm btn-signup">Chem 1A</button> 
                             </div>
                           </div>
                         </div>
@@ -176,6 +163,24 @@
                 </div>
                   <!-- /Panel Body 2-->
               </div>
+            </div>
+          </div>
+            <!-- /Tutor Signup Panel -->
+            <div id="tutor-signup-confirmation" style="display:None" class="panel panel-default">
+                  <div class="panel-heading">
+                    <h2>You are now a Guru</h2>
+                  </div>
+                  <div class="panel-body">
+                    <h4>You will be earning $7/hour for your first session. If you get good ratings, we'll increase your rates! Read more <a href="/howitworks/">here</a>.</h4>
+                   <img class="img-portfolio img-responsive" src="/static/img/guru.jpg">
+                    <h3><u>What's next?</u></h3>
+                    <ol>
+                      <li>Once a student needs help in your area of expertise, you will receive a text and email notification with information regarding that student.</li>
+                      <li>You can choose to accept or reject. If you accept, an email thread will be initiated between the two.</li>
+                      <li>Feel free to edit your skills and set your notification preferences in <a href="/settings">Account Settings</a>.</li>
+                      <li>Sit back and relax! As soon as someone needs assistance in your skillset, we'll let you know <em>immediately.</em></li>
+                    </ol>
+                  </div>
             </div>
           </div>
         </div>
@@ -476,13 +481,64 @@
         }
       });      
     }
+  });
+
+  var add_skill_tag = function() {    
+    //Show the div
+    $('#tutor-skills').show();
+    //Get rid of popular examples after they add their first course
+    var skill_input_text = $('#tutor-skill-input').val();
+    var span_tag_str = '<span class="tag">' +
+                          '<span>' + skill_input_text + '&nbsp;&nbsp;</span>' +
+                            '<a href="javascript:void(0);" class="remove-skill" style="float:right;"title="Removing tag">x</a>'+
+                          '</span>';
+    $('#tutor-skills').prepend(span_tag_str);
+    $('#tutor-skill-input').val("");
+    if ($('#tutor-skills').children().length >= 2) {
+      $('#skill-popular-example').hide();
+    } 
+  };
+
+  $('#tutor-skills').on('click', '.remove-skill', function(e){
+    e.preventDefault();
+    $(this).parent().remove();
+    if ($('#tutor-skills').children().length == 0) {
+      $('#skill-popular-example').show();
+    }
   })
 
+  $('#skill-popular-example').on('click', '.skill-example', function(e){
+    $('#tutor-skills').show();
+    e.preventDefault();
+    skill_name = $(this).text()
+    var span_tag_str = '<span class="tag">' +
+                          '<span>' + skill_name + '&nbsp;&nbsp;</span>' +
+                            '<a href="javascript:void(0);" class="remove-skill" style="float:right;"title="Removing tag">x</a>'+
+                          '</span>';
+    $('#tutor-skills').prepend(span_tag_str);
+  })
 
-  //Validation for tutor signup part 2
+  $('#tutor-skill-add').click(function(){
+    if ($('#tutor-skill-input').val()) {
+      add_skill_tag();
+    }
+  });
+
+  $('#tutor-skill-input').keyup(function(e){
+    if ($('#tutor-skill-input').val()) {
+      if (e.keyCode == 13) {
+        add_skill_tag();
+      }
+    }
+  });
+
+  //make sure there is more than one skill before register 
+
+  //Validation for tutor signup
   $('#tutor-signup-submit').click(function(){
     if ((!$('#tutor-signup-name').val() || !$('#tutor-signup-email').val()) 
-      || !$('#tutor-signup-password').val() || !($('#tutor-signup-phone').val().length == 17))
+      || !$('#tutor-signup-password').val() || !($('#tutor-signup-phone').val().length == 17)
+      || !($('#tutor-skills').children().length > 0))
     {
       $('#alert-fields-tutor-signup').show() 
     }
@@ -503,9 +559,8 @@
         data: JSON.stringify(data),
         dataType: "json",        
         success: function(result) {        
-          $('#student-signup-panel').hide()
-          $('#request-panel-confirmation').show()
-          $('#student-request-skill-name').text(result.dict['skill']);
+          $('#tutor-signup-panel').hide()
+          $('#tutor-signup-confirmation').show()          
           $('#login-link').attr({
             id: "logout-link",
             href: "/logout/"

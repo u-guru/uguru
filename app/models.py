@@ -256,16 +256,3 @@ class Course(Base):
         return '<Course %r>' % (self.name)
 
 
-#     # def __repr__(self):
-#     #     return "<Name: %s, Email: %s>" % (self., self.email)
-
-# class Connection(db.Model):
-#     __tablename__ = 'connection'
-#     id = Column(Integer, primary_key = True)
-#     skill_id = Column(Integer, db.ForeignKey('skill.id'))
-#     student_id = Column(Integer, db.ForeignKey('user.id')) 
-#     tutor_id = Column(Integer, db.ForeignKey('user.id'))
-#     request_id = Column(Integer)
-
-
-

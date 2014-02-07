@@ -54,9 +54,15 @@ def success():
                 email = ajax_json['email'] + '@berkeley.edu',
                 phone_number = ajax_json['phone'],
             )
-            skills = ajax_json['skills']
-            print skills
-            #TODO: Post request creation tutor notification
+            u = User(
+                name = ajax_json['name'], 
+                password = md5(ajax_json['password']).hexdigest(),
+                email = ajax_json['email'] + '@berkeley.edu',
+                phone_number = ajax_json['phone']
+            )
+            db_session.add(u)
+            db_session.commit()
+            # Process skills
         return jsonify(dict=ajax_json)
 
 @app.route('/logout/', methods=('GET', 'POST'))
