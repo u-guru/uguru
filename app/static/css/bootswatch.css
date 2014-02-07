@@ -7702,8 +7702,8 @@ td.visible-print {
   text-decoration:none;
   margin:0 auto;
   border-radius:5px;
-  border:solid 1px #1ABC9C;
-  background:#1ABC9C;
+  border:solid 1px #1FC9B8;
+  background:#1FC9B8;
   text-align:center;
   padding: 8px 12px;
   margin-bottom: 0;
@@ -7715,9 +7715,9 @@ td.visible-print {
   -moz-transition: all 0.1s;
   transition: all 0.1s;
   
-  -webkit-box-shadow: 0px 9px 0px #0F967B;
-        -moz-box-shadow: 0px 9px 0px #0F967B;
-        box-shadow: 0px 9px 0px #0F967B;
+  -webkit-box-shadow: 0px 9px 0px #15A193;
+        -moz-box-shadow: 0px 9px 0px #15A193;
+        box-shadow: 0px 9px 0px #15A193;
 }
 
 .push_button_default{
@@ -7747,16 +7747,16 @@ td.visible-print {
 }
 
 .push_button_primary:active{
-    -webkit-box-shadow: 0px 2px 0px #01DFA5;
-    -moz-box-shadow: 0px 2px 0px #01DFA5;
-    box-shadow: 0px 2px 0px #01DFA5;
+    -webkit-box-shadow: 0px 2px 0px #1FC9B8;
+    -moz-box-shadow: 0px 2px 0px #1FC9B8;
+    box-shadow: 0px 2px 0px #1FC9B8;
     position:relative;
     top:7px;
 } 
 .push_button_default:active{
-    -webkit-box-shadow: 0px 2px 0px #FF00BF;
-    -moz-box-shadow: 0px 2px 0px #FF00BF;
-    box-shadow: 0px 2px 0px #FF00BF;
+    -webkit-box-shadow: 0px 2px 0px #de6868;
+    -moz-box-shadow: 0px 2px 0px #de6868;
+    box-shadow: 0px 2px 0px #de6868;
     position:relative;
     top:7px;
 }
@@ -7779,8 +7779,8 @@ td.visible-print {
 .push_button_primary.active,
 .open .dropdown-toggle.push_button_primary {
   color: #ffffff;
-  background-color: #01DFA5;
-  border-color: #01DFA5;
+  background-color: #29DECC;
+  border-color: #29DECC;
 }
 
 .push_button_default:hover,
