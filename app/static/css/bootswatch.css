@@ -7793,5 +7793,31 @@ td.visible-print {
   border-color: #F38F8F;
 } 
 
+/****************************************************
+ *  Student Signup Option Buttons
+ *****************************************************/
+.btn-option {
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  border: 1px solid #5F6B69;
+}
 
+.btn-option,
+.btn-option:hover {
+  background: #BAFCF1;
+  background-repeat: no-repeat;
+  /*border: 1px solid #5F6B69;*/
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6d7070', endColorstr='#ff3d3f3f', GradientType=0);*/
+
+}
+
+
+
+
+/*****************************************
+*   Panel 
+******************************************/
+.panel-heading {
+  width: 100%;
+  background-color: #1FC9B8;
+}
 
