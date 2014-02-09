@@ -174,6 +174,14 @@ class Request(Base):
         (str(self.id), student_name, tutor_name, skill_name, \
             self.time_created.strftime('%b %d,%Y'), self.time_estimate)
 
+    def convert_urgency_to_str(self, number):
+        if number == 0:
+            return "ASAP"
+        if number == 1:
+            return "by tomorrow"
+        if number == 2:
+            return "sometime this week"
+
 class Skill(Base):
     __tablename__ = 'skill'
     id = Column(Integer, primary_key = True)

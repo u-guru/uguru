@@ -208,7 +208,7 @@
                       </div>
                       
                       <h4>Please Tell Us More</h4>
-                      <textarea class="form-control" id="tutor-signup-description" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
+                      <textarea class="form-control" id="student-signup-description" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
                       
                       <h4>Urgency</h4>                     
                       <div class="btn-group" data-toggle="buttons">
@@ -596,16 +596,16 @@
         'skill': $('input[name="skill"]').val(),
         'estimate': $('span[name="estimate"]').text()
       }
+      $('#student-signup-panel').hide()
+      $('#request-panel-confirmation').show()
       $.ajax({
         type: "POST",
         contentType: 'application/json;charset=UTF-8',
         url: '/validation/' ,
         data: JSON.stringify(data),
         dataType: "json",        
-        success: function(result) {        
-          $('#student-signup-panel').hide()
-          $('#request-panel-confirmation').show()
-          $('#student-request-skill-name').text(result.dict['skill']);
+        success: function(result) {                  
+          $('#student-request-skill-name').text($('input[name="skill"]'));
           $('#login-link').attr({
             id: "logout-link",
             href: "/logout/"

@@ -5,6 +5,7 @@ session, flash, redirect, url_for
 from forms import SignupForm, RequestForm
 from models import User, Request
 from hashlib import md5
+import emails
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -43,10 +44,14 @@ def success():
                 time_estimate = float(ajax_json['estimate'])
             )
             u.outgoing_requests.append(r)
-            db_session.add(r)
+            db_session.add(r)            
             db_session.commit()
-            send_requests_to_tutors(r.requested_tutors)
+            for tutor in r.requested_tutors:
+                tutor.incoming_requests_to_tutor.append(r)
+            db_session.commit()
+            emails.send_request_to_tutors(r)
 
+        #Create a tutor for the first time
         if ajax_json.get('tutor-signup'):
             u = User(
                 name = ajax_json['name'], 
@@ -136,6 +141,3 @@ def rating_gen():
 def authenticate(user_id):
     session['user_id'] = user_id
 
-#TODO
-def send_requests_to_tutors(requests_list):
-    pass

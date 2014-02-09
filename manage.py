@@ -6,7 +6,22 @@ from app import emails
 
 arg = sys.argv[1]
 
-#Test whether DB is accurate
+def initialize_skill():
+    skill = Skill(u'test')
+    db_session.add(skill)
+    db_session.commit()
+
+if arg == 'create_db':
+    init_db()
+    initialize_skill()
+    print "db initialized"
+
+if arg == 're-create_db':
+    os.remove('app.db')
+    init_db()
+    initialize_skill()
+    print "Previous App.db deleted and new db_initialized"
+
 if arg == 'testdb':    
     init_db()
 
@@ -127,6 +142,19 @@ if arg == 'create':
     db_session.commit()
     print email + " added"
 
+if arg == 'create-tutor':
+    email = sys.argv[2]
+    password = "admin"
+    phone = "18135009853"
+    name = "Admin"
+    user = User(name=name, email=email, password=md5(password).hexdigest(), \
+        phone_number = phone)
+    skill = Skill.query.get(1)
+    user.skills.append(skill)
+    db_session.add(user)
+    db_session.commit()
+    print email + " added"
+
 def delete_all():
     users = User.query.all()
     requests = Request.query.all()
@@ -142,7 +170,7 @@ if arg == 'delete_all':
 
 if arg == 'test_email':
     init_db()
-    skill = Skill('test')
+    skill = Skill('CS10')
     db_session.add(skill)
     db_session.commit()
     student = User(name="Samir", email="makhani@berkeley.edu", \
@@ -152,12 +180,12 @@ if arg == 'test_email':
         password=md5("admin").hexdigest(), phone_number="18135009851")
     tutor2 = User(name="Michael Koh", email="michael60716@gmail.com", \
         password=md5("admin").hexdigest(), phone_number="18135009852")
-    tutor3 = User(name="Samir 2", email="samir@uguru.me", \
-        password=md5("admin").hexdigest(), phone_number="18135009850")
+    # tutor3 = User(name="Samir 2", email="samir@uguru.me", \
+    #     password=md5("admin").hexdigest(), phone_number="18135009850")
     tutor1.skills.append(skill)
     tutor2.skills.append(skill)
-    tutor3.skills.append(skill)
-    db_session.add_all([student, tutor1, tutor2, tutor3])
+    # tutor3.skills.append(skill)
+    db_session.add_all([student, tutor1, tutor2])
     db_session.commit()
     request = Request(student.id, skill.id, description="i need help",\
         urgency=1, frequency = 1, time_estimate=2)
@@ -165,21 +193,5 @@ if arg == 'test_email':
     db_session.commit()
     print "request created"
     emails.send_request_to_tutors(request)
-    os.remove('app.db')
-
-    # from app.models import user_skill_table
-    # d0 = user_skill_table.delete(user_skill_table.c.user_id == 1)
-    # d1 = user_skill_table.delete(user_skill_table.c.user_id == 2)
-    # d2 = user_skill_table.delete(user_skill_table.c.user_id == 3)
-    # d3 = user_skill_table.delete(user_skill_table.c.user_id == 4)
-    # db_session.execute(d0)
-    # db_session.execute(d1)
-    # db_session.execute(d2)
-    # db_session.execute(d3)
-    # db_session.commit()
-    # db_session.delete(student)
-    # db_session.delete(tutor1)
-    # db_session.delete(tutor2)
-    # db_session.delete(tutor3)
-    # db_session.commit()
+    os.remove('app.db')    
     
