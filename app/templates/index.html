@@ -101,13 +101,13 @@
         <div class="tutor-signup-modal" style="display:none; text-align:center">            
           <div class="row vertical-offset-100">
             <div class="col-md-4 col-md-offset-4">
-              <div id="tutor-signup-panel" class="panel panel-default">
+              <!-- <div id="tutor-signup-panel" class="panel panel-default"> -->
                 <div class="panel-heading">
-                <h3>SIGN UP INFORMATION</h3>
-                <p>Have an account? Login <a href="javascript:void(0)" id="login-link-tutor-signup"> here</a>.<p>
+                <h3 style="color:white">SIGNUP INFORMATION</h3>
                 </div>
                 <!-- Panel Body 2-->
-                <div class="panel-body">                    
+                <!-- <div class="panel-body">  -->      
+                <p><em>Have an account? Login <a href="javascript:void(0)" id="login-link-tutor-signup"> here</a>.</em><p>             
                   <form accept-charset="UTF-8" role="form">
                     <fieldset>
                       <div class="form-group">
@@ -146,22 +146,22 @@
                         <div id="skill-popular-example" class="row">
                           <!-- <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3"> -->
                             <h5>Popular Examples</h5>
-                            <div style="margin-top:-15px">                              
-                              <button type="button" class="skill-example btn btn-sm btn-signup">CS 61A</button>                              
-                              <button type="button" class="skill-example btn btn-sm btn-signup">Essay Proofreading</button>                                                                                      
-                              <button type="button" class="skill-example btn btn-sm btn-signup">French R1B</button>
+                            <div style="margin-top:10px">                              
+                              <button type="button" class="btn btn-sm btn-option">CS 61A</button>                              
+                              <button type="button" class="btn btn-sm btn-option">Essay Proofreading</button>                                                                                      
+                              <button type="button" class="btn btn-sm btn-option">French R1B</button>
                               
-                              <button type="button" class="skill-example btn btn-sm btn-signup">Chem 1A</button> 
+                              <button type="button" class="btn btn-sm btn-option">Chem 1A</button> 
                             </div>
                           </div>
-                        </div>
+                        <!-- </div> -->
                         <span id='alert-fields-tutor-signup' style="color:red;display:None">Please fill or select all fields</span>
-                      <a id="tutor-signup-submit" href="javascript:void(0);" class="btn btn-lg push_button_default btn-block" type="submit">Register</a>
+                      <a id="tutor-signup-submit" href="javascript:void(0);" class="btn btn-lg push_button_default btn-block" type="submit" style="margin-top:10px">Register</a>
                       <br>
                       <p>By clicking submit you agree to our <a href="/TermsofService/">Terms of Service</a> and <a href="PrivacyPolicy">Privacy Policy</a>.</p>
                     </fieldset>
                   </form>
-                </div>
+                <!-- </div> -->
                   <!-- /Panel Body 2-->
               </div>
             </div>
@@ -187,57 +187,59 @@
         </div>
         <!--/ Tutor Signup modal -->
 
+        <!-- Student Signup modal -->
         <div class="student-signup-modal container" style="display:none; text-align: center">            
             <div class="row vertical-offset-100">
               <div class="col-md-4 col-md-offset-4">
                 
                 <!-- Panel 1 -->
-                <div id="request-panel" class="panel panel-default">                  
+               <!--  <div id="request-panel" class="panel panel-default">  -->                 
                   <div class="panel-heading">
                     <button type="button" class="close" id="modal-close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h3>WHAT DO YOU NEED HELP IN?</h3>
-                    Have an account? Please <a href="javascript:void(0)" id="login-link-request"> login</a> first.                    
+                    <h3 style="color:white">WHAT DO YOU NEED HELP IN?</h3>                 
                   </div>
 
                   <!-- Panel Body -->
-                  <div class="panel-body">
+                 <!--  <div class="panel-body"> -->
+                  <em>Have an account? Please <a href="javascript:void(0)" id="login-link-request"> login</a> first.</em>
+                  <br>
                     <form method='post' action ='/'>
                       {{ request_form.hidden_tag()}}                      
                       <div class="form-group" id='skill-form-group'>
                         <input name="skill" class="form-control" id="student-signup-skill" type="text" class="search-query form-control" placeholder="Add Skill/Course (i.e. CS10 or Essay Proofreading)"/>
                       </div>
                       
-                      <h4>Please Tell Us More</h4>
+                      <h4 style="color:#1FC9B8">PLEASE TELL US MORE</h4>
                       <textarea class="form-control" id="student-signup-description" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
                       
-                      <h4>Urgency</h4>                     
+                      <h4 style="color:#1FC9B8">URGENCY</h4>                     
                       <div class="btn-group" data-toggle="buttons">
                          {% for subfield in request_form.urgency %}
-                        <label class="btn btn-default">
+                        <label class="btn btn-option">
                           {{ subfield }} {{subfield.label.text}}
                         </label>
                         {% endfor %}
                       </div>                                             
                       
-                      <h4>Frequency</h4>
+                      <h4 style="color:#1FC9B8">FREQUENCY</h4>
                       <div class="btn-group" data-toggle="buttons">
                          {% for subfield in request_form.frequency %}
-                        <label class="btn btn-default">
+                        <label class="btn btn-option">
                           {{ subfield }} {{subfield.label.text}}
                         </label>
                         {% endfor %}
                       </div>                                             
                       <!-- Slider -->
-                      <h4>Time Estimate (per session)</h4>
+                      <h4 style="color:#1FC9B8">TIME ESTIMATE (per session)</h4>
                           <div class="noUiSlider"></div>
                           <p class="text-right"><span name="estimate" id="low"></span> hours </p>
                       <div>
                         <span id='alert-fields-student-signup1' style="color:red;display:None">Please fill or select all fields</span>
-                        <a href="javascript:void(0)" id="request-submit" class="btn btn-lg push_button_default btn-block" type="submit">Next</a>
+                        <a href="javascript:void(0)" id="request-submit" class="btn btn-lg push_button_default btn-block" type="submit">NEXT</a>
                       </div>
 
                     </form>
-                  </div>
+                 <!--  </div> -->
                   <!-- /Panel Body -->
                 </div>
                 <!-- /Panel 1 -->
@@ -247,11 +249,11 @@
                 <!-- Panel 2 -->
                 <div id="student-signup-panel" class="panel panel-default" style="display:None">
                   <div class="panel-heading">
-                  <h3>Signup Information</h3>
-                  <p>Have an account? Login <a href="javascript:void(0)" id="login-link-signup"> here</a>.<p>
+                  <h3 style="color:white">SIGNUP INFORMATION</h3>
                   </div>
                   <!-- Panel Body 2-->
-                  <div class="panel-body">                    
+                 <!--  <div class="panel-body"> -->    
+                 <p><em>Have an account? Login <a href="javascript:void(0)" id="login-link-signup"> here</a>.</em><p>                
                     <form accept-charset="UTF-8" role="form">
                       <fieldset>
                         <div class="form-group">
@@ -272,11 +274,11 @@
                           </p>
                           <span id='alert-fields-student-signup2' style="color:red;display:None">Please fill or select all fields</span>
 
-                        <a id="student-signup-submit" href="javascript:void(0);" class="btn btn-lg btn-success btn-block" type="submit">Submit</a>
+                        <a id="student-signup-submit" href="javascript:void(0);" class="btn btn-lg push_button_default btn-block" type="submit">SUBMIT</a>
                         <p>By clicking submit you agree to our <a href="/TermsofService/">Terms of Service</a> and <a href="PrivacyPolicy">Privacy Policy</a>.</p>
                       </fieldset>
                     </form>
-                  </div>
+                 <!--  </div> -->
                   <!-- /Panel Body 2-->
                 </div>
                 <!-- /Panel 2-->
@@ -284,9 +286,9 @@
                 <!-- Panel 3-->
                 <div id="request-panel-confirmation" style="display:None" class="panel panel-default">
                   <div class="panel-heading">
-                    <h2>Your Request has been Submitted</h2>
+                    <h2 style="color:white">YOUR REQUEST HAS BEEN SUBMITTED</h2>
                   </div>
-                  <div class="panel-body">
+                 <!--  <div class="panel-body"> -->
                         <h4>We've let all Gurus in <span id="student-request-skill-name"> </span> know that someone is in need.</h4>
                        <img class="img-portfolio img-responsive" src="/static/img/guru.jpg">
                         <h3><u>What's next?</u></h3>
@@ -295,9 +297,11 @@
                           <li>You can choose to accept or wait for a different offer. If you accept, an email thread will be initiated between the two.</li>
                           <li>Relax! We'll let you know as soon as a Guru is available.</li>
                         </ol>
-                  </div>
+                  <!-- </div> -->
                 </div>
-                <!-- /Panel 3 -->                        
+                <!-- /Panel 3 -->  
+               <!-- /Student Signup Modal -->
+
               </div>
             </div>
         </div>
