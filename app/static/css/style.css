@@ -207,7 +207,7 @@ i.service-icon {
 /* Footer */
 footer {
   background: #ffffff;
-  /*position: fixed;*/
+  position: relative;
   bottom: 0;
   width: 100%;
 /*  margin-top: -20px;*/
