@@ -168,16 +168,16 @@
             </div>
           </div>
             <!-- /Tutor Signup Panel -->
-            <div id="tutor-signup-confirmation" style="display:None" class="panel panel-default">
+            <div id="tutor-signup-confirmation" style="display:None">
                   <div class="panel-heading">
                     <button type="button" class="close" id="modal-close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h2>You are now a Guru</h2>
+                    <h2 style="color:white; text-align:center;">YOU ARE NOW A GURU</h2>
                   </div>
-                  <div class="panel-body">
                     <h4>You will be earning $7/hour for your first session. If you get good ratings, we'll increase your rates! Read more <a href="/howitworks/">here</a>.</h4>
-                   <img class="img-portfolio img-responsive" src="/static/img/guru.jpg">
+                   <img class="img-portfolio img-responsive" src="/static/img/guru.svg">
                     <h3><u>What's next?</u></h3>
-                    <ol>
+                    <div style="align:center">
+                     <ol style="text-align:left">
                       <li>Once a student needs help in your area of expertise, you will receive a text and email notification with information regarding that student.</li>
                       <li>You can choose to accept or reject. If you accept, an email thread will be initiated between the two.</li>
                       <li>Feel free to edit your skills and set your notification preferences in <a href="/settings">Account Settings</a>.</li>
@@ -185,8 +185,8 @@
                     </ol>
                   </div>
             </div>
-          </div>
-        </div>
+      <!--     </div>
+        </div> -->
         <!--/ Tutor Signup modal -->
 
         <!-- Student Signup modal -->
@@ -251,7 +251,7 @@
                 <!-- IF !logged_in -->
                 {% if not logged_in %}
                 <!-- Panel 2 -->
-                <div id="student-signup-panel" class="panel panel-default" style="display:None">
+                <div id="student-signup-panel" style="display:None">
                   <div class="panel-heading">
                     <button type="button" class="close" id="modal-close" data-dismiss="modal" aria-hidden="true">×</button>
                   <h3 style="color:white">SIGNUP INFORMATION</h3>
@@ -290,20 +290,21 @@
                 {% endif %}
 
                 <!-- Request Confirmation Panel -->
-                <div id="request-panel-confirmation" style="display:None" class="panel panel-default">
+                <div id="request-panel-confirmation" style="display:None">
                   <div class="panel-heading">
-                    <h2 style="color:white">YOUR REQUEST HAS BEEN SUBMITTED</h2>
+                    <h2 style="color:white; text-align:center;">YOUR REQUEST HAS BEEN SUBMITTED</h2>
                   </div>
                  <!--  <div class="panel-body"> -->
                         <h4>We've let all Gurus in <span id="student-request-skill-name"> </span> know that someone is in need.</h4>
-                       <img class="img-portfolio img-responsive" src="/static/img/guru.jpg">
+                       <img class="img-portfolio img-responsive" src="/static/img/guru.svg">
                         <h3><u>What's next?</u></h3>
-                        <ol>
-                          <li>Once an expert accepts your request, you will receive a text and email notification with information regarding that expert. (Edit notification preferences <a href="/settings">here</a>.)</li>
+                      <div style="align:center">
+                        <ol style="text-align:left">
+                          <li>Once an expert accepts your request, you will receive a text and email notification with information regarding that expert. (Edit notification preferences <a href="/settings"><u>HERE</u></a>.)</li>
                           <li>You can choose to accept or wait for a different offer. If you accept, an email thread will be initiated between the two.</li>
                           <li>Relax! We'll let you know as soon as a Guru is available.</li>
                         </ol>
-                  <!-- </div> -->
+                  </div>
                 </div>
                 <!-- /Panel 3 -->  
                <!-- /Request Confirmation Panel -->

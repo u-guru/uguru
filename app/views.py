@@ -159,7 +159,7 @@ def tutor_accept():
     page_info = { 'student_name': 'Jaclyn', 'skill_name': 'CS61A'}
     return render_template('tutor_accept.html', page_dict = page_info)
 
-@app.route('/studentaccept/')
+@app.route('/student_accept/')
 def studentaccept():
     return render_template('student_accept.html')
 
