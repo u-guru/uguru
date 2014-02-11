@@ -101,7 +101,7 @@
         <div class="tutor-signup-modal" style="display:none; text-align:center">            
           <div class="row vertical-offset-100">
             <div class="col-md-4 col-md-offset-4">
-              <!-- <div id="tutor-signup-panel" class="panel panel-default"> -->
+              <div id="tutor-signup-panel"> 
                 <div class="panel-heading">
                   <button type="button" class="close" id="modal-close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 style="color:white">SIGNUP INFORMATION</h3>
@@ -162,7 +162,7 @@
                       <p>By clicking submit you agree to our <a href="/TermsofService/">Terms of Service</a> and <a href="PrivacyPolicy">Privacy Policy</a>.</p>
                     </fieldset>
                   </form>
-                <!-- </div> -->
+                </div>
                   <!-- /Panel Body 2-->
               </div>
             </div>
@@ -195,7 +195,7 @@
               <div class="col-md-4 col-md-offset-4">
                 
                 <!-- Panel 1 -->
-               <!--  <div id="request-panel" class="panel panel-default">  -->                 
+                <div id="request-panel">                  
                   <div class="panel-heading">
                     <button type="button" class="close" id="modal-close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h3 style="color:white">WHAT DO YOU NEED HELP IN?</h3>                 
@@ -243,7 +243,7 @@
                       <br>
 
                     </form>
-                 <!--  </div> -->
+                  </div>
                   <!-- /Panel Body -->
                 </div>
                 <!-- /Panel 1 -->
@@ -288,7 +288,8 @@
                 </div>
                 <!-- /Panel 2-->
                 {% endif %}
-                <!-- Panel 3-->
+
+                <!-- Request Confirmation Panel -->
                 <div id="request-panel-confirmation" style="display:None" class="panel panel-default">
                   <div class="panel-heading">
                     <h2 style="color:white">YOUR REQUEST HAS BEEN SUBMITTED</h2>
@@ -305,7 +306,7 @@
                   <!-- </div> -->
                 </div>
                 <!-- /Panel 3 -->  
-               <!-- /Student Signup Modal -->
+               <!-- /Request Confirmation Panel -->
 
               </div>
             </div>
@@ -483,7 +484,7 @@
         data: JSON.stringify(data),
         dataType: "json",        
         success: function(result) {        
-          if (result.json) {
+          if (result.json['success']) {
             window.location.replace($SCRIPT_ROOT)
           } else {
             $('#alert-fields-login').show()       

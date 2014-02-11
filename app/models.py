@@ -1,5 +1,6 @@
 from sqlalchemy import String, Integer, Column, ForeignKey, Float,\
  SmallInteger, Boolean, Table, Unicode, DateTime
+from flask import url_for
 from sqlalchemy.orm import relationship, backref
 from app.database import Base
 from app import db
@@ -181,6 +182,10 @@ class Request(Base):
             return "by tomorrow"
         if number == 2:
             return "sometime this week"
+
+    def generate_url(self):
+        return url_for('confirm_tutor_interest', request_id=self.id, _external=True)
+
 
 class Skill(Base):
     __tablename__ = 'skill'

@@ -3,11 +3,12 @@ from app.database import *
 from app.models import *
 from hashlib import md5
 from app import emails
+from app import app
 
 arg = sys.argv[1]
 
 def initialize_skill():
-    skill = Skill(u'test')
+    skill = Skill(u'CS10')
     db_session.add(skill)
     db_session.commit()
 
@@ -178,20 +179,20 @@ if arg == 'test_email':
     skill = Skill.query.get(1)
     tutor1 = User(name="Hurshal", email="makhani.samir@gmail.com", \
         password=md5("admin").hexdigest(), phone_number="18135009851")
-    tutor2 = User(name="Michael Koh", email="michael60716@gmail.com", \
-        password=md5("admin").hexdigest(), phone_number="18135009852")
+    # tutor2 = User(name="Michael Koh", email="michael60716@gmail.com", \
+    #     password=md5("admin").hexdigest(), phone_number="18135009852")
     # tutor3 = User(name="Samir 2", email="samir@uguru.me", \
     #     password=md5("admin").hexdigest(), phone_number="18135009850")
     tutor1.skills.append(skill)
-    tutor2.skills.append(skill)
+    # tutor2.skills.append(skill)
     # tutor3.skills.append(skill)
-    db_session.add_all([student, tutor1, tutor2])
+    db_session.add_all([student, tutor1])
     db_session.commit()
     request = Request(student.id, skill.id, description="i need help",\
         urgency=1, frequency = 1, time_estimate=2)
     db_session.add(request)
     db_session.commit()
-    print "request created"
-    emails.send_request_to_tutors(request)
-    os.remove('app.db')    
+    request_url = "http://0.0.0.0:5000/requests/tutors/" + str(request.id)
+    emails.send_request_to_tutors(request, request_url)
+    # os.remove('app.db')    
     

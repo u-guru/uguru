@@ -16,7 +16,7 @@ SMTP_PASSWORD = os.environ['MANDRILL_PASSWORD']
 
 HOURLY_RATE = 0
 
-def send_request_to_tutors(request):
+def send_request_to_tutors(request, url):
     #Start mail server    
 
     #Get mail template data
@@ -42,9 +42,9 @@ def send_request_to_tutors(request):
         msg['From'] = email_from
         tutor_name = tutor.name
         text = send_request_to_tutors_text(skill_name, urgency, time_estimate, 
-            student_name, tutor_name, student_description)
+            student_name, tutor_name, student_description, url)
         html = send_request_to_tutors_html(skill_name, urgency, time_estimate, 
-            student_name, tutor_name, student_description)
+            student_name, tutor_name, student_description, url)
         part1 = MIMEText(text, 'plain', 'utf-8')
         part2 = MIMEText(html, 'html', 'utf-8')
 
@@ -60,12 +60,12 @@ def send_request_to_tutors(request):
         print "Mail sent"
 
 def send_request_to_tutors_html(skill_name, urgency, time_estimate, 
-    student_name, tutor_name, student_description):
+    student_name, tutor_name, student_description, url):
     return """
     Hey """ + tutor_name + """! 
     <br> 
     <br>""" + \
-    student_name + """ needs help in """ + skill_name + " " + urgency + ". " + \
+    student_name + """ is a Cal student that needs help in """ + skill_name + " " + urgency + ". " + \
     student_name + """ estimates that it will take <b>""" + str(int(time_estimate)) + \
     """ hours</b>. Here is some extra information that """ + student_name + """ has asked
     us to forward on to you: 
@@ -77,7 +77,7 @@ def send_request_to_tutors_html(skill_name, urgency, time_estimate,
     the following for this job at $7 an hour:<br>
     <h2><center>$""" +str(int(time_estimate * 7.0)) + """</center></h2>
     By clicking accept below, you have choosen to continue on with this process. <br><br>""" +\
-    """<button><center> Accept </center></button><br><br>""" + \
+    """<a href='""" + url+ """'><center> Accept </center></a><br><br>""" + \
     student_name + """ will be notified with your background (your average rating and 
     number of tutor encounters with uGuru.me), and will be given the option to accept or
     reject. <br><br>If """ + student_name + """ chooses to accept, an automated email will be sent from uGuru.me
@@ -88,20 +88,20 @@ def send_request_to_tutors_html(skill_name, urgency, time_estimate,
     """
     
 def send_request_to_tutors_text(skill_name, urgency, time_estimate, 
-    student_name, tutor_name, student_description):
+    student_name, tutor_name, student_description, url):
     return """Hey """ + tutor_name + """!\n""" + \
-    student_name + """ needs help in """ + skill_name + " " + urgency + ". " + \
+    student_name + """ is a Cal student that needs help """ + skill_name + " " + urgency + ". " + \
     student_name + """ estimates that it will take """ + str(int(time_estimate)) + \
     """ hours.""" + """\nHere is some extra information that """ + student_name + \
-    """has asked us to forward on to you: \n\n""" 
-    +"""'"""+ student_description + """'\n\n
+    """ has asked us to forward on to you: \n\n""" + \
+    """'"""+ student_description + """'\n\n
     'Based on your tutoring experience at uGuru.me so far, you will be earning 
     the following for this job at $7 an hour:'\n
     """ +str(int(time_estimate * 7.0)) + """
     By clicking accept below, you have choosen to continue on with this process.""" +\
     student_name + """ will be notified with your background (your average rating and 
     number of tutor encounters with uGuru.me), and will be given the option to accept or
-    reject. If """ + student_name + """ chooses to accept, an automated email will be sent from uGuru.me.\n
-    https://uguru.me/accept/request/1 \n
+    reject. If """ + student_name + """ chooses to accept, an automated email will be sent from uGuru.me.\n""" +\
+    url + """\n
     Sincerely,
     The Uguru Team\n"""
