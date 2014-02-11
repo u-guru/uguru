@@ -333,10 +333,12 @@ span.tag {
 @media screen and (max-width: 938px) {
   .general-nav .general-nav-item {
   padding: 10px 30px; 
-}
+  }
 
 .general-nav .general-nav-item a {
   font-size: 15px; 
+  }
+
 }
 
 @media screen and (max-width: 720px) {
@@ -346,84 +348,84 @@ span.tag {
     float: none;
     text-align: left; }
 
-.general-nav {
-  box-shadow: none;
-  margin-bottom: 30px; 
-}
+  .general-nav {
+    box-shadow: none;
+    margin-bottom: 30px; 
+  }
 
-.general-nav .logo {
-  width: 100%;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-  padding: 10px 2%;  
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  overflow: hidden;
-  /*height: 30px;*/ 
-}
+  .general-nav .logo {
+    width: 100%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+    padding: 10px 2%;  
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    overflow: hidden;
+    /*height: 30px;*/ 
+  }
 
-.general-nav .logo a {
-  /*float: left;*/
-  color: #2980b9;
-  font-size: 25px; 
-}
+  .general-nav .logo a {
+    /*float: left;*/
+    color: #2980b9;
+    font-size: 25px; 
+  }
 
-.general-nav .logo .menu-trigger {
-  background: url(../img/menu.jpg);
-  display: block;
-  float: right; 
-  width: 30px;
-  height: 30px;
-}
+  .general-nav .logo .menu-trigger {
+    background: url(../img/menu.jpg);
+    display: block;
+    float: right; 
+    width: 30px;
+    height: 30px;
+  }
 
-.general-nav .logo .menu-trigger:hover {
-  opacity: 0.5; 
-}
+  .general-nav .logo .menu-trigger:hover {
+    opacity: 0.5; 
+  }
 
-.general-nav.active .general-nav-item {
-  display: block; 
-}
+  .general-nav.active .general-nav-item {
+    display: block; 
+  }
 
-.general-nav .general-nav-item {
-  /*display: block;*/
-  float: none;
-  padding: 10px 32px 10px 0;
-  overflow: hidden;
-  display: none; 
-}
+  .general-nav .general-nav-item {
+    /*display: block;*/
+    float: none;
+    padding: 10px 32px 10px 0;
+    overflow: hidden;
+    display: none; 
+  }
 
-.general-nav .general-nav-item:last-child {
-  border-bottom: 1px solid #ddd; 
-}
+  .general-nav .general-nav-item:last-child {
+    border-bottom: 1px solid #ddd; 
+  }
 
-.general-nav .general-nav-item.first {
-  margin-top: 40px; 
-}
+  .general-nav .general-nav-item.first {
+    margin-top: 40px; 
+  }
 
-.general-nav .general-nav-item a {
-  font-size: 18px;
-  float: right;
-  list-style: none; 
-}
+  .general-nav .general-nav-item a {
+    font-size: 18px;
+    float: right;
+    list-style: none; 
+  }
 
-.general-nav .general-nav-item.active, .general-nav .general-nav-item.active:hover {
-  display: block;
-  border: none;
-  border-right: 22px solid #2980b9;
-  padding-right: 10px; 
-}
+  .general-nav .general-nav-item.active, .general-nav .general-nav-item.active:hover {
+    display: block;
+    border: none;
+    border-right: 22px solid #2980b9;
+    padding-right: 10px; 
+  }
 
-.general-nav .general-nav-item.active:hover, .general-nav .general-nav-item.active:hover:hover {
-  cursor: default; 
-}
+  .general-nav .general-nav-item.active:hover, .general-nav .general-nav-item.active:hover:hover {
+    cursor: default; 
+  }
 
-.general-nav .general-nav-item:hover {
-  border: none;
-  border-right: 22px solid rgba(0, 190, 233, 0.3);
-  padding-right: 10px; 
+  .general-nav .general-nav-item:hover {
+    border: none;
+    border-right: 22px solid rgba(0, 190, 233, 0.3);
+    padding-right: 10px; 
+  }
 }
-
 
 /*************************************
 *   Sticky Footer
@@ -437,9 +439,29 @@ height: 100%;
 .wrapper {
 min-height: 100%;
 height: auto !important;
-height: 100%;
 margin: 0 auto -40px;
 }
+
+.footer {
+background: #ffffff;
+position: relative;
+/*bottom: 0;*/
+width: 100%;
+margin: 0 auto;
+height: 50px;
+text-align: center;
+/*clear: both;*/
+
+box-shadow: 0 0 3px rgba(0, 0, 0, 0.4); 
+}
+
+.footer, a, p {
+color: black; 
+
+padding-top: 8px;
+}
+
 .footer, .push {
-height: 40px;
+height: 50px;
+
 }
