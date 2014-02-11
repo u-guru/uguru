@@ -119,6 +119,12 @@ class User(Base):
             #TODO See if any of their skills are needed right now and 
                 #add to their incoming requests
 
+    def calc_avg_ratings(self):
+        rating_sum = 0.0
+        for rating in self.tutor_ratings:
+            rating_sum += rating.tutor_rating
+        return rating_sum / len(self.tutor_rating)
+
     def __repr__(self):
         return "<Name: %s, Email: %s, Phone: %s, Date: %s>" % (self.name, self.email,\
             str(self.phone_number), self.time_created.strftime('%b %d,%Y'))

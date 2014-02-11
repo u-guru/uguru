@@ -169,6 +169,59 @@ def delete_all():
 if arg == 'delete_all':
     delete_all()
 
+if arg == 'test_connection':
+    init_db()
+    skill = Skill(u'CS10')
+    print "======================="
+    print "Let's get started!"
+    print "======================="
+    print "1. Make sure you have a local server running on another tab"
+    print "2. Also make sure that you are logged out of uGuru.me on the local site."
+    print
+    print raw_input("If all of this is true, press enter to continue...")
+    db_session.add(skill)
+    db_session.commit()
+    student_email = sys.argv[2]
+    tutor_email = sys.argv[3]
+    student = User(name="Samir", email=student_email, \
+        password=md5("admin").hexdigest(), phone_number="18135009853")
+    tutor1 = User(name="Jaclyn", email=tutor_email, \
+        password=md5("admin").hexdigest(), phone_number="18135009851")
+    print "Accounts have been created"
+    print "--------------------------"
+    print "Student email is " + student_email + ". Name: Samir, Password: admin"
+    print "Tutor email is " + tutor_email + ". Name: Jaclyn, Password: admin"
+    print
+    db_session.commit()
+    skill = Skill.query.get(1) 
+    tutor1.skills.append(skill)
+    db_session.add(student)
+    db_session.add(tutor1)
+    db_session.commit()
+
+    #Create request
+    print "A request for CS10 has been created by Samir, a student. Jaclyn should now receive an email"
+    print
+    request = Request(student.id, skill.id, description="i need help",\
+        urgency=1, frequency = 1, time_estimate=2)
+    db_session.add(request)
+    db_session.commit()
+    request_url = "http://0.0.0.0:5000/requests/tutors/" + str(request.id)
+    emails.send_request_to_tutors(request, request_url)
+    print "Mail sent. Check tutor email: " + tutor_email
+    print raw_input("Did you receive an email? If so, press Enter to continue...")
+    print raw_input("Click the accept link. It should take you to a login page with" + \
+        " an alert that says 'Please Login First'. If this is true, click enter")
+    print raw_input("Go ahead in login with the following credentials\n email:%s \n password:admin\n Click enter after"% tutor_email)
+    print raw_input("You should have been redirected to a page that confirms your request acceptance")
+    print raw_input("The student has been sent an email to show that the tutor has accept their request. Check your student email" + \
+        student_email + ". If you received an email, DO NOT CLICK ACCEPT YET, you need to first  logout first from the local uguru site as a tutor. Click enter when you've done so.")
+    print raw_input("Login with the following credentials of your student account: \n email:%s \n password:admin \nClick enter after"% student_email)
+    print raw_input("Now click the link in the student email. It should take you to the connected page.")
+    print "That's all - more to follow!"
+    
+       
+
 if arg == 'test_email':
     init_db()
     skill = Skill('CS10')

@@ -13,6 +13,24 @@ def index():
     return render_template('index.html', forms=[request_form],
         logged_in=session.get('user_id'))
 
+@app.route('/requests/student/<request_id>')
+def confirm_student_interest(request_id):
+    if not session.get('user_id'):
+        return redirect(url_for('login', redirect=True, tutor_confirm=request_id))
+    user_id = session['user_id']
+    user = User.query.get(user_id)
+    r = Request.query.get(request_id)
+    skill = Skill.query.get(r.skill_id)
+    tutor_id = request.args.get('tutor_id')
+    tutor = User.query.get(tutor_id)
+    tutor_name = tutor.name
+
+    page_info = {'student_name':user.name, 'tutor_name':tutor_name, }
+    r.connected_tutor_id = tutor_id
+
+    return render_template('student_accept.html', logged_in=session.get('user_id'), \
+        page_dict = page_info)
+
 @app.route('/requests/tutors/<request_id>')
 def confirm_tutor_interest(request_id):
     if not session.get('user_id'):
@@ -37,11 +55,13 @@ def confirm_tutor_interest(request_id):
     student_requesting_help.incoming_requests_to_tutor.append(request)
     db_session.commit()
 
-    #TODO - Send email to student about requested tutor w/ accept link
-    #Pass in parameters to render page properly
+    #Send email to student to let them know
+    url = url_for('confirm_student_interest', request_id=request.id, _external=True, tutor_id=user_id)
+    emails.send_tutor_accept_to_student(request, user, skill, student_requesting_help, url)
 
     return render_template('tutor_accept.html', logged_in=session.get('user_id'), \
         page_dict = page_info)
+
 
 @app.route('/validation/', methods=('GET', 'POST'))
 def success():
