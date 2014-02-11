@@ -1,5 +1,6 @@
 from sqlalchemy import String, Integer, Column, ForeignKey, Float,\
  SmallInteger, Boolean, Table, Unicode, DateTime
+from flask import url_for
 from sqlalchemy.orm import relationship, backref
 from app.database import Base
 from app import db
@@ -173,6 +174,18 @@ class Request(Base):
         \n Time Created: %s, Time Estimated: %s hours>" %\
         (str(self.id), student_name, tutor_name, skill_name, \
             self.time_created.strftime('%b %d,%Y'), self.time_estimate)
+
+    def convert_urgency_to_str(self, number):
+        if number == 0:
+            return "ASAP"
+        if number == 1:
+            return "by tomorrow"
+        if number == 2:
+            return "sometime this week"
+
+    def generate_url(self):
+        return url_for('confirm_tutor_interest', request_id=self.id, _external=True)
+
 
 class Skill(Base):
     __tablename__ = 'skill'

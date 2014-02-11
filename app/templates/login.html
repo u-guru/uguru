@@ -1,110 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Log In</title>
-    <!-- Bootstrap core CSS -->
-    <link href="/static/css/bootstrap.css" rel="stylesheet">
-    <!-- Add custom CSS here -->
-    <link href="/static/css/style.css" rel="stylesheet">
-    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  </head>
-  <body>
+{% extends 'base.html' %}
+{% block header %}
+{% endblock %}
 
-  <!-- Side Menu -->
-    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
-    <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-        <li class="sidebar-brand"><a href="/home/">uGuru.me Home</a></li>
-        <li><a href="/howitworks">How It Works</a></li>
-        <li><a href="/settings">Account Settings</a></li>
-      </ul>
-    </div>
-    <!-- /Side Menu -->
-
-  <div id="top" class="header">
-    <div class="vert-text">
-    <div class="container">
-    <div class="row vertical-offset-100">
-      <div class="col-md-4 col-md-offset-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h2>Log In</h2>
-          </div>
-          <div class="panel-body">
-            <form accept-charset="UTF-8" role="form">
-            <fieldset>
-              <div class="form-group">
-                  <input class="form-control" placeholder="E-mail" name="email" type="text">
-              </div>
-              <div class="form-group">
-                <input class="form-control" placeholder="Password" name="password" type="password" value="">
-              </div>
-               <a href="/settings" class="btn btn-lg btn-success btn-block" type="submit">Submit</a>
-            </fieldset>
-            </form>
+{% block content %}
+  <div class="login-modal">            
+      <div class="row vertical-offset-100">
+        <div class="col-md-4 col-md-offset-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <button type="button" class="close" id="modal-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h2>Log In</h2>
             </div>
+            <div class="panel-body">
+              <div>
+                  <span id='alert-fields-login' style="color:red;display:None">Incorrect username or password</span>
+                  {% if redirect %}
+                  <span id='alert-fields-login-redirect' style="color:red;text-align:center">Please Login First</span>
+                  {% endif %}
+              </div>
+              <form accept-charset="UTF-8" role="form">
+              <fieldset>
+                <div class="form-group">
+                    <input id="login-email" name="login-email" class="form-control" placeholder="E-mail" name="email" type="text">
+                </div>
+                <div class="form-group">
+                  <input id="login-password" name="login-password" class="form-control" placeholder="Password" name="password" type="password" value="">
+                </div>
+                 <a href="javascript:void(0)" id="login-submit" class="btn btn-lg push_button_default btn-block" type="submit">Submit</a>
+              </fieldset>
+              </form>
+            </div>
+          </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-</div>
 
-    <!-- Footer -->
-    <footer>
-     <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3 text-center">
-            <div class="top-scroll">
-              <a href="#top"><i class="fa fa-circle-arrow-up scroll fa-4x"></i></a>
-            </div>
-            <hr>
-            <p>Copyright &copy; uGuru.me 2014</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- /Footer -->
+{% endblock %}
 
-   <!-- JavaScript -->
-    <script src="/static/js/jquery-1.10.2.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
-
-    <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
-    <script>
-        $("#menu-close").click(function(e) {
-            e.preventDefault();
-            $("#sidebar-wrapper").toggleClass("active");
-        });
-    </script>
-    <script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#sidebar-wrapper").toggleClass("active");
-        });
-    </script>
-    <script>
-      $(function() {
-        $('a[href*=#]:not([href=#])').click(function() {
-          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
-            || location.hostname == this.hostname) {
-
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-            if (target.length) {
-              $('html,body').animate({
-                scrollTop: target.offset().top
-              }, 1000);
-              return false;
-            }
+{% block footer_scripts %}
+<script>
+$('#login-submit').click(function(){
+    //check whether fields are blank
+    if (!$('#login-email').val() || !$('#login-password')) {
+      $('#alert-fields-student-signup2').show()
+    } else {
+      //else get data and send to server
+      var data = {
+        'email': $('input[name="login-email"]').val(),
+        'password': $('input[name="login-password"]').val()
+      }
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        url: '/login/' + '?' + '{{redirect}}'.replace('amp;', ''),
+        data: JSON.stringify(data),
+        dataType: "json",        
+        success: function(result) {        
+          if (result.json['success']) {
+            window.location.replace(result.json['redirect'])
+          } else {
+            $('#alert-fields-login').show();     
+            $('#alert-fields-login-redirect').hide();
           }
-        });
-      });
-    </script>
-  </body>
-</html>
+        }
+      });      
+    }
+  });
+</script>
+{% endblock %}
+

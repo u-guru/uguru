@@ -3,14 +3,45 @@ from app.database import *
 from flask import render_template, jsonify, redirect, request, \
 session, flash, redirect, url_for
 from forms import SignupForm, RequestForm
-from models import User, Request
+from models import User, Request, Skill
 from hashlib import md5
+import emails
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     request_form = RequestForm()
     return render_template('index.html', forms=[request_form],
         logged_in=session.get('user_id'))
+
+@app.route('/requests/tutors/<request_id>')
+def confirm_tutor_interest(request_id):
+    if not session.get('user_id'):
+        return redirect(url_for('login', redirect=True, tutor_confirm=request_id))
+    user_id = session['user_id']
+    user = User.query.get(user_id)
+    request = Request.query.get(request_id)
+    skill = Skill.query.get(request.skill_id)
+    student_requesting_help = User.query.get(request.student_id)
+    student_name = student_requesting_help.name
+    skill_name = skill.name
+
+    page_info = { 'student_name': student_name, 'skill_name': skill_name}
+    
+    #Make sure the correct user clicks this link
+    if user not in request.requested_tutors:
+        flash("You were sent to the wrong page. We've \
+            redirected you back to the home page.")
+        return redirect(url_for("index"))
+
+    request.committed_tutors.append(user)
+    student_requesting_help.incoming_requests_to_tutor.append(request)
+    db_session.commit()
+
+    #TODO - Send email to student about requested tutor w/ accept link
+    #Pass in parameters to render page properly
+
+    return render_template('tutor_accept.html', logged_in=session.get('user_id'), \
+        page_dict = page_info)
 
 @app.route('/validation/', methods=('GET', 'POST'))
 def success():
@@ -43,10 +74,15 @@ def success():
                 time_estimate = float(ajax_json['estimate'])
             )
             u.outgoing_requests.append(r)
-            db_session.add(r)
+            db_session.add(r)            
             db_session.commit()
-            send_requests_to_tutors(r.requested_tutors)
+            for tutor in r.requested_tutors:
+                tutor.incoming_requests_to_tutor.append(r)
+            db_session.commit()
+            emails.send_request_to_tutors(r, \
+                url_for('confirm_tutor_interest', request_id=r.id, _external=True))
 
+        #Create a tutor for the first time
         if ajax_json.get('tutor-signup'):
             u = User(
                 name = ajax_json['name'], 
@@ -74,8 +110,10 @@ def logout():
 @app.route('/login/', methods=('GET', 'POST'))
 def login():
     if session.get('user_id'):
+        flash("You are already logged in!")
         return redirect(url_for('index'))
     if request.method == "POST":
+        json = {}
         ajax_json = request.json
         email = ajax_json['email']
         password = md5(ajax_json['password']).hexdigest()
@@ -83,12 +121,19 @@ def login():
         if query:
             user = query
             authenticate(user.id)
-            flash("You have been logged in successfully", 'info')            
-            success = True
+            json['success'] = True                
+            if request.args.get('redirect'):
+                if request.args.get('tutor_confirm'):
+                    print "it gets here"
+                    json['redirect'] = redirect=url_for('confirm_tutor_interest',\
+                        request_id=request.args.get('tutor_confirm'))
+            else:
+                flash("You have been logged in")
+                json['redirect'] = '/'      
         else:
-            success = False
-        return jsonify(json=success)
-    return render_template("index.html")    
+            json['failure'] = False
+        return jsonify(json=json)
+    return render_template("login.html", redirect=request.query_string)    
 
 @app.route('/tutorsignup1/', methods=('GET', 'POST'))
 def tutorsignup1():
@@ -107,15 +152,16 @@ def howitworks():
 
 @app.route('/settings/')
 def settings():
-    return render_template('settings.html')
+    return render_template('settings.html', logged_in=session.get('user_id'))
 
 @app.route('/tutoraccept/')
-def tutoraccept():
-    return render_template('tutoraccept.html')
+def tutor_accept():
+    page_info = { 'student_name': 'Jaclyn', 'skill_name': 'CS61A'}
+    return render_template('tutor_accept.html', page_dict = page_info)
 
 @app.route('/studentaccept/')
 def studentaccept():
-    return render_template('studentaccept.html')
+    return render_template('student_accept.html')
 
 @app.route('/ratingconfirm/')
 def ratingconfirm():
@@ -136,6 +182,3 @@ def rating_gen():
 def authenticate(user_id):
     session['user_id'] = user_id
 
-#TODO
-def send_requests_to_tutors(requests_list):
-    pass
