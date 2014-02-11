@@ -1,27 +1,20 @@
 {% extends 'base.html' %}
-{% block header %}
-{% endblock %}
-
 {% block content %}
-    
-    <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h2>{{page_dict['student_name']}} has been notified that you've accepted a request for {{page_dict['skill_name']}}.</h2>
-        </div>
-          <div class="panel-body">
-               <img class="img-portfolio img-responsive" src="/static/img/guru.jpg">
-                <h3><u>What's next?</u></h3>
-                <ol>
-                  <li>{{page_dict['student_name']}} has been sent an email with your current ratings (see more details on your ratings <a href="/settings">here</a>.</li>
-                  <li>Given that {{page_dict['student_name']}} accepts, an email thread will be initiated between the two and you both can take it from there.</li>
-                </ol>
-          </div>
-        </div>
-      </div>
-  
-{% endblock %}
 
-{% block footer_scripts %}
-{% endblock %}
+          <div class="panel-heading">
+            <h2 style="color:white; text-align:center;">Karen has been notified that you've accepted her request.</h2>
+        </div>
+          <div class="panel-body" style="text-align:center;">
+               <img class="img-portfolio img-responsive" src="/static/img/guru.svg">
+                <h3><u>What's next?</u></h3>
+              <div style="align:center">
+                <ol style="text-align:left">
+                  <li>Karen has been sent an email with your current ratings (see more details on your ratings <a href="/settings"><u>HERE</u>)</a>.</li>
+                  <br>
+                  <li>If Karen accepts, an email thread will be initiated and you both can take it from there.</li>
+                </ol>
+              </div>
+      </div>
+
+ {% endblock %}
  
