@@ -5,6 +5,7 @@ session, flash, redirect, url_for
 from forms import SignupForm, RequestForm
 from models import User, Request, Skill
 from hashlib import md5
+from datetime import datetime
 import emails
 
 @app.route('/', methods=['GET', 'POST'])
@@ -28,6 +29,7 @@ def confirm_student_interest(request_id):
 
     page_info = {'student_name':user.name, 'tutor_name':tutor_name, }
     r.connected_tutor_id = tutor_id
+    r.time_connected = datetime.now()
 
     emails.send_connection_email(user, tutor, r)
     print "email sent"
@@ -59,10 +61,12 @@ def confirm_tutor_interest(request_id):
     student_requesting_help.incoming_requests_to_tutor.append(request)
     db_session.commit()
 
-    #Send email to student to let them know
-    url = url_for('confirm_student_interest', request_id=request.id, _external=True, tutor_id=user_id)
-    print url
-    emails.send_tutor_accept_to_student(request, user, skill, student_requesting_help, url)
+    #Check if student is already connected
+    if request.connected_tutor_id:
+        return render_template('sorry.html', logged_in=session.get('user_id'))
+    else: 
+        url = url_for('confirm_student_interest', request_id=request.id, _external=True, tutor_id=user_id)
+        emails.send_tutor_accept_to_student(request, user, skill, student_requesting_help, url)
 
     return render_template('tutor_accept.html', logged_in=session.get('user_id'), \
         page_dict = page_info)

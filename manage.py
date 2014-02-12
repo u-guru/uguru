@@ -187,6 +187,8 @@ if arg == 'test_connection':
         password=md5("admin").hexdigest(), phone_number="18135009853")
     tutor1 = User(name="Jaclyn", email=tutor_email, \
         password=md5("admin").hexdigest(), phone_number="18135009851")
+    tutor2 = User(name="Hurshal", email='samir.makhani@berkeley.edu', \
+        password=md5("admin").hexdigest(), phone_number="18135009852")
     print "Accounts have been created"
     print "--------------------------"
     print "Student email is " + student_email + ". Name: Samir, Password: admin"
@@ -195,8 +197,10 @@ if arg == 'test_connection':
     db_session.commit()
     skill = Skill.query.get(1) 
     tutor1.skills.append(skill)
+    tutor2.skills.append(skill)
     db_session.add(student)
     db_session.add(tutor1)
+    db_session.add(tutor2)
     db_session.commit()
 
     #Create request
