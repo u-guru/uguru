@@ -133,13 +133,12 @@ def send_request_to_tutors_text(skill_name, urgency, time_estimate,
     """ hours.""" + """\nHere is some extra information that """ + student_name + \
     """ has asked us to forward on to you: \n\n""" + \
     """'"""+ student_description + """'\n\n
-    'Based on your tutoring experience at uGuru.me so far, you will be earning 
-    the following for this job at $7 an hour:'\n
+    'Based on your tutoring experience at uGuru.me so far, you will be earning $7 an hour for a total of:'\n
     """ +str(int(time_estimate * 7.0)) + """
     By clicking accept below, you have choosen to continue on with this process.""" +\
-    student_name + """ will be notified with your background (your average rating and 
-    number of tutor encounters with uGuru.me), and will be given the option to accept or
-    reject. If """ + student_name + """ chooses to accept, an automated email will be sent from uGuru.me.\n""" +\
+    student_name + """ will be notified with your background (average rating and 
+    number of tutor encounters on uGuru.me), and will be given the option to accept or
+    reject. If """ + student_name + """ chooses to accept, an automated email will be sent from uGuru.me to connect you.\n""" +\
     url + """\n
     Sincerely,
     The Uguru Team\n"""
@@ -150,18 +149,18 @@ def send_request_to_student_text(skill_name, time_estimate,
         tutor_length = "NA (This is " + tutor_name + "'s first time with uGuru.me"
         tutor_avg_ratings = "NA"
     return """Hey """ + student_name + """!\n\n""" + \
-    tutor_name + """, one of our """ + skill_name + """ has accepted your request for tutoring. Before \
+    tutor_name + """, one of our """ + skill_name + """ tutors, has accepted your request for tutoring. Before \
     you choose to accept, we want to show you """ + tutor_name + "'s current experience with uGuru.me.\n\n" + \
-    """Number of times tutored with uGuru.me: """ + tutor_length + "\n" + \
+    """Number of times tutored with uGuru.me:  """ + tutor_length + "\n" + \
     """Average uGuru.me rating: """ + tutor_avg_ratings + "\n\n" + \
     "Because it is " + tutor_name + "'s first time with us, we've discounted the rate and sent" + tutor_name + \
     """ the uGuru.me Best Tutoring Practices to read beforhand.\n\n""" + \
-    """Based on this experience with uGuru.me, """ + tutor_name + " will cost $7/hr for " + str(time_estimate) + \
-    """ hours. Here is the total amount it will cost:\n\n""" + \
+    """Based on this experience with uGuru.me, """ + str(time_estimate) + \
+    """ hours of tutoring from """ + tutor_name + " will cost $7 an hour for a total of:\n\n""" + \
     str(int(time_estimate) * 7) + "\n\n" + \
     """We recommend that you pay """ + tutor_name + " at the end of the session.\n\n" + \
-    "If you choose to accept, click the link below. An automated email will be send with both of you" + \
-    "cc'd, and the two of you will take it from there. Thank you for using uGuru.me\n" + \
+    "If you choose to accept, click the button below. An automated email will be cc'd to both of you" + \
+    "so the two of you can take it from there. Thank you for using uGuru.me\n" + \
     url + """\nSincerely,The Uguru Team\n"""
 
 def send_connection_text(student_name, tutor_name, time_estimate):
@@ -195,14 +194,16 @@ def send_request_to_student_html(skill_name, time_estimate,
     sent """ + tutor_name + """ the <b>uGuru.me Best Tutoring Practices</b> to read beforehand.
     <br>
     <br>
-    Based on this experience with uGuru.me, """ + tutor_name + """will cost $7 an hour for """ + \
-    str(time_estimate) + """ hours. Here is the total amount it will cost:<br>
+    Based on this experience with uGuru.me, """ + \
+    str(time_estimate) + """ hours of tutoring from """ + tutor_name + """ will cost $7 an hour for a total of:<br>
     <h2><center>$""" +str(int(time_estimate * 7.0)) + """</center></h2>
-    If you choose to accept, click the link below. An automated email will be sent to both of you cc'd, 
-    and the two of you will take it from there. 
+    We recommend that you pay """ + tutor_name + """ at the end of the session.
+    <br>
+    <br>
+    If you choose to accept, click the button below. An automated email will be cc'd to both of you so the two of you can take it from there. 
     <br> 
     <br>""" + \
-    """<a href='""" + url+ """'><center> Accept </center></a>
+    """<a href='""" + url+ """'><center> ACCEPT </center></a>
     <br> 
     Thank you for using uGuru.me!
     <br>
@@ -225,13 +226,13 @@ def send_request_to_tutors_html(skill_name, urgency, time_estimate,
     '""" + \
     student_description + """'</i><br><br>
     Based on your tutoring experience at uGuru.me so far, you will be earning 
-    the following for this job at $7 an hour:<br>
+    $7 an hour for a total of:<br>
     <h2><center>$""" +str(int(time_estimate * 7.0)) + """</center></h2>
     By clicking accept below, you have choosen to continue on with this process. <br><br>""" +\
-    """<a href='""" + url+ """'><center> Accept </center></a><br><br>""" + \
-    student_name + """ will be notified with your background (your average rating and 
-    number of tutor encounters with uGuru.me), and will be given the option to accept or
-    reject. <br><br>If """ + student_name + """ chooses to accept, an automated email will be sent from uGuru.me
+    """<a href='""" + url+ """' ><center> ACCEPT </center></a><br><br>""" + \
+    student_name + """ will be notified with your background (average rating and 
+    number of tutor encounters on uGuru.me), and will be given the option to accept or
+    reject. <br><br>If """ + student_name + """ chooses to accept, an automated email will be sent from uGuru.me to connect you.
     <br>
     <br>
     Sincerely, <br>
