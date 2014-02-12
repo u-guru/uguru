@@ -213,6 +213,10 @@ def rating_stars():
 def rating_gen():
     return render_template('rating_gen.html')
 
+@app.route('/sorry/')
+def sorry():
+    return render_template('sorry.html')
+
 def authenticate(user_id):
     session['user_id'] = user_id
 
