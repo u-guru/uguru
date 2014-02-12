@@ -432,7 +432,7 @@
           success: function(result) {    
             $('#request-panel').hide('slow');     
             $('#request-panel-confirmation').show()
-            $('#student-request-skill-name').text(result.dict['skill']);
+            $('#student-request-skill-name').text($('input[name="skill"]').val());                        
             }
           });              
 
@@ -573,7 +573,7 @@
         success: function(result) {        
           $('#tutor-signup-panel').hide()
           $('#tutor-signup-confirmation').show()          
-          $('#login-link').attr({
+          $('#login-link-menu').attr({
             id: "logout-link",
             href: "/logout/"
           });
@@ -615,9 +615,9 @@
         url: '/validation/' ,
         data: JSON.stringify(data),
         dataType: "json",        
-        success: function(result) {                  
-          $('#student-request-skill-name').text($('input[name="skill"]'));
-          $('#login-link').attr({
+        success: function(result) {            
+          $('#student-request-skill-name').text($('input[name="skill"]').val());
+          $('#login-link-menu').attr({
             id: "logout-link",
             href: "/logout/"
           });
