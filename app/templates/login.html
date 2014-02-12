@@ -52,7 +52,7 @@ $('#login-submit').click(function(){
       $.ajax({
         type: "POST",
         contentType: 'application/json;charset=UTF-8',
-        url: '/login/' + '?' + '{{redirect}}'.replace('amp;', ''),
+        url: '/login/' + '?' + '{{redirect}}'.replace('amp;', '').replace('amp;',''),
         data: JSON.stringify(data),
         dataType: "json",        
         success: function(result) {        

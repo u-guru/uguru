@@ -16,17 +16,21 @@ def index():
 @app.route('/requests/student/<request_id>')
 def confirm_student_interest(request_id):
     if not session.get('user_id'):
-        return redirect(url_for('login', redirect=True, tutor_confirm=request_id))
+        return redirect(url_for('login', redirect=True, student_confirm=request_id, \
+            tutor_id=request.args.get('tutor_id')))
     user_id = session['user_id']
     user = User.query.get(user_id)
     r = Request.query.get(request_id)
     skill = Skill.query.get(r.skill_id)
     tutor_id = request.args.get('tutor_id')
-    tutor = User.query.get(tutor_id)
+    tutor = User.query.get(int(tutor_id))
     tutor_name = tutor.name
 
     page_info = {'student_name':user.name, 'tutor_name':tutor_name, }
     r.connected_tutor_id = tutor_id
+
+    emails.send_connection_email(user, tutor, r)
+    print "email sent"
 
     return render_template('student_accept.html', logged_in=session.get('user_id'), \
         page_dict = page_info)
@@ -57,6 +61,7 @@ def confirm_tutor_interest(request_id):
 
     #Send email to student to let them know
     url = url_for('confirm_student_interest', request_id=request.id, _external=True, tutor_id=user_id)
+    print url
     emails.send_tutor_accept_to_student(request, user, skill, student_requesting_help, url)
 
     return render_template('tutor_accept.html', logged_in=session.get('user_id'), \
@@ -143,10 +148,13 @@ def login():
             authenticate(user.id)
             json['success'] = True                
             if request.args.get('redirect'):
-                if request.args.get('tutor_confirm'):
-                    print "it gets here"
+                if request.args.get('tutor_confirm'):                    
                     json['redirect'] = redirect=url_for('confirm_tutor_interest',\
                         request_id=request.args.get('tutor_confirm'))
+                if request.args.get('student_confirm'):                    
+                    json['redirect'] = redirect=url_for('confirm_student_interest',\
+                        request_id=request.args.get('student_confirm'), \
+                        tutor_id=request.args.get('tutor_id'))                    
             else:
                 flash("You have been logged in")
                 json['redirect'] = '/'      

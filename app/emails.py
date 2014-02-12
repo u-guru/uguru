@@ -16,6 +16,37 @@ SMTP_PASSWORD = os.environ['MANDRILL_PASSWORD']
 
 HOURLY_RATE = 0
 
+def send_connection_email(student, tutor, request):
+    student_name = student.name
+    tutor_name = tutor.name
+    time_estimate = request.time_estimate
+    email_from = "uGuru.me <connections@uguru.me>"
+    email_subject = "[uGuru.me] Congrats! You've been connected"
+
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+
+    EMAIL_TO = [student.email, tutor.email]
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = email_subject
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = email_from
+    text = send_connection_text(student_name, tutor_name, time_estimate)
+    html = send_connection_html(student_name, tutor_name, time_estimate)
+    
+    part1 = MIMEText(text, 'plain', 'utf-8')
+    part2 = MIMEText(html, 'html', 'utf-8')
+
+    msg.attach(part1)
+    msg.attach(part2)
+    
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
+    mail.quit()
+
 def send_tutor_accept_to_student(request, tutor, skill, student, url):
     student_name = student.name
     student_email = student.email
@@ -133,6 +164,16 @@ def send_request_to_student_text(skill_name, time_estimate,
     "cc'd, and the two of you will take it from there. Thank you for using uGuru.me\n" + \
     url + """\nSincerely,The Uguru Team\n"""
 
+def send_connection_text(student_name, tutor_name, time_estimate):
+    return """
+    Congrats!\n\n""" + \
+    """The two of you have matched. At the end of this session, """ + student_name + """ owes """ + \
+    tutor_name + """ $""" + str(int(time_estimate) * 7) + """. Both of your emails are cc'd to this""" + \
+    """ message, so we'll let you two take it from here :)\n\n""" +\
+    """If you have any questions, or this experience did not go as well as you expected, please reach out """ +\
+    """to us at support@uguru.me for a quick reply.\n\n""" +\
+    """Sincerely, \nThe uGuru.me Team"""
+
 def send_request_to_student_html(skill_name, time_estimate, 
         student_name, tutor_name, tutor_avg_ratings, tutor_length, url):
     if tutor_length == 0:
@@ -195,4 +236,24 @@ def send_request_to_tutors_html(skill_name, urgency, time_estimate,
     <br>
     Sincerely, <br>
     The Uguru Team <br>
+    """
+
+def send_connection_html(student_name, tutor_name, time_estimate):
+    return """
+    Congrats!
+    <br>
+    <br>
+
+    The two of you have matched. At the end of this session, """ + student_name + """ owes """ + \
+    tutor_name + """ $""" + str(int(time_estimate) * 7) + """. Both of your emails are cc'd to this
+    message, so we'll let you two take it from here :)
+    <br>
+    <br>
+
+    If you have any questions, or this experience did not go as well as you expected, please reach out
+    to us at support@uguru.me for a quick reply.
+    <br>
+    <br>
+    Sincerely, <br>
+    The uGuru.me Team
     """
