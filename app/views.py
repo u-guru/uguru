@@ -82,7 +82,11 @@ def success():
                 phone_number = ajax_json['phone']
             )
             db_session.add(u)
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
             user_id = u.id
             authenticate(user_id)
 
