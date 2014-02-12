@@ -126,6 +126,8 @@ def success():
                 phone_number = ajax_json['phone']
             )
             db_session.add(u)
+            skill = Skill.query.get(1)
+            u.skills.append(skill)
             db_session.commit()
             # Process skills
         return jsonify(dict=ajax_json)
