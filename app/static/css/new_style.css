@@ -1,0 +1,86 @@
+html, body{
+    font-family:'Roboto',sans-serif; 
+    color:#fff; 
+    background-color:#00a0cf
+}
+
+div.main {
+    text-align:center;
+    margin-top:25%;
+    
+}
+
+.logo {
+    font-family:'grand hotel', cursive;
+    color:#fff;
+    }
+    .logo.logo_main {
+    font-size: 7em;
+    margin-top: -35px;
+    }
+
+.welcome {
+   /*width: 50%;
+   height: 50%;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   margin-left: 25%;
+   margin-top: 50%;*/
+}
+
+#welcome_text{
+    font-size:1.5em;
+}
+
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  background-color: #00a0cf;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid white;
+  border-radius: 12px;
+}
+
+.btn-lg {
+  padding: 15px 30px;
+  font-size: 16px;
+  line-height: 1.33;
+  border-radius: 12px;
+}
+
+#home-button-group button {    
+    margin:10px;
+    padding: 15px 60px;
+}
+
+#home-button-group button:hover {
+    background: white;
+    color: #00a0cf;
+}
+
+#login-text {
+    font-size:1.3em;
+}
+
+#how-it-works-text {
+    font-size:1.7em;   
+}
+
+.arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    margin:0 auto;
+    border-top: 20px solid #fff;
+}

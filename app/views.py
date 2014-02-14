@@ -14,6 +14,11 @@ def index():
     return render_template('index.html', forms=[request_form],
         logged_in=session.get('user_id'))
 
+
+@app.route('/sneak/', methods=['GET', 'POST'])
+def sneak():
+    return render_template('new_index.html')
+
 @app.route('/requests/student/<request_id>')
 def confirm_student_interest(request_id):
     if not session.get('user_id'):
