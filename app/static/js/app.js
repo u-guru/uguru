@@ -1,8 +1,8 @@
 $(document).ready(function(){
     $(window).resize(function() {
         if ($(window).width() <= 700) {
-            $('#how-it-works-main').css('top', '90%');
-            bottom_px = (parseInt($('#how-it-works-main').css("top").replace('px','')) - 250)+ 'px'
+            $('#how-it-works-main').css('top', '87%');
+            bottom_px = (parseInt($('#how-it-works-main').css("top").replace('px','')) - 220)+ 'px'
             $('.main').css('top',bottom_px);
             $('#home-button-1').attr('class', 'btn btn-sm')
             $('#home-button-1').css('padding', '10px 15px')
@@ -12,6 +12,8 @@ $(document).ready(function(){
             $('#welcome_text').css('font-size','1em')
             $('.welcome').css('margin-top','40px')
             $('#how-it-works-main').css('font-size','1.2em')
+            $('#home-button-group button').css('margin', '5px')
+            $('#login-text').css('font-size', '.9em')
         }
         else {
             $('#how-it-works-main').css('top', '85%');
@@ -23,6 +25,8 @@ $(document).ready(function(){
             $('.logo_main').attr('style', 'font-size: 7em; margin-top: -35px;')
             $('#welcome_text').css('font-size','1.5em')
             $('#how-it-works-main').css('font-size','1.7em')
+            $('#home-button-group button').css('margin', '10px')
+            $('#login-text').css('font-size', '1.3em')
         }
     }).resize(); 
 })
