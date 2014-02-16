@@ -11,7 +11,7 @@ import emails
 @app.route('/', methods=['GET', 'POST'])
 def index():
     request_form = RequestForm()
-    return render_template('index.html', forms=[request_form],
+    return render_template('new_index.html', forms=[request_form],
         logged_in=session.get('user_id'))
 
 
