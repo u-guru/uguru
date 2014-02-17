@@ -196,6 +196,10 @@ def tutorsignup1():
 def activity():
     return render_template('activity.html')
 
+@app.route('/tutor_offer/')
+def tutor_offer():
+    return render_template('tutor_offer.html')
+
 @app.route('/tutorsignup2/')
 def tutorsignup2():  
     return render_template('tutorsignup2.html')

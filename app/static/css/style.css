@@ -575,14 +575,14 @@ a:hover{
 
 .btn-accept {
   display:inline-block;
-  padding: 6px 12px;
+  padding: 30px 12px;
   margin-bottom: 0;
   font-size: 16px;
   font-weight: normal;
   line-height: 1.428571429;
   background-color:#69bf69;
   width:50%;
-  height:50px;
+  height:75px;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -590,18 +590,19 @@ a:hover{
   background-image: none;
   border: none;
   border-radius: 0px;
+  float:right;
 }
 
 .btn-reject {
   display:inline-block;
-  padding: 6px 12px;
+  padding: 30px 12px;
   margin-bottom: 0;
   font-size: 16px;
   font-weight: normal;
   line-height: 1.428571429;
   background-color:#ef5b40;
   width:50%;
-  height:50px;
+  height:75px;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -609,12 +610,13 @@ a:hover{
   background-image: none;
   border: none;
   border-radius: 0px;
+  float:left;
 }
 
 .btn-logout {
   display:inline-block;
-  position:relative;
-  bottom:0;
+/*  position:relative;*/
+/*  bottom:0;*/
   padding: 20px 12px;
   margin-bottom: -50;
   font-size: 20px;
@@ -653,8 +655,7 @@ a:hover{
   border-radius: 12px;
 }
 
-.notif-user-photo {
-  float:left;
+.user-photo {
   padding-left:10px;
   padding-right:10px;
   padding-top:10px;
@@ -715,8 +716,21 @@ a:hover{
   border-radius: 15px;
   padding-left:12px;
   text-align: left;
-  white-space: nowrap;
+  white-space:normal;
   color:#40bfec;
+}
+
+.price {
+  border: 1px solid #69bf69;
+  height:100px;
+  width:200px;
+  margin-left:auto;
+  margin-right:auto;
+  border-radius: 15px;
+  white-space:normal;
+  color: #69bf69;
+  font-size:60px;
+  text-align:center;
 }
 
 .rating {
@@ -816,6 +830,19 @@ a:hover{
   padding:20px 20px;
 }
 
+.back {
+  color:white;
+  width:20px;
+  height:40px;
+  float:left;
+  padding-left:50px;
+  -webkit-transform:rotate(90deg);
+}
+
+.offer {
+  margin:60px 90px 80px 90px;
+  text-align: center;
+}
 
 
 input[type=checkbox].css-checkbox { position: absolute;  overflow: hidden;  clip: rect(0 0 0 0);  height:1px;  width:1px;  margin:-1px;  padding:0; border:0; }  input[type=checkbox].css-checkbox + label.css-label { padding-left:20px; height:15px;  display:inline-block; line-height:15px; background-repeat:no-repeat; background-position: 0 0; font-size:15px; vertical-align:middle; cursor:pointer; }  input[type=checkbox].css-checkbox:checked + label.css-label { background-position: 0 -15px; }  .css-label{ background-image:url(http://csscheckbox.com/checkboxes/lite-blue-check.png); }
