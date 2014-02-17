@@ -192,6 +192,10 @@ def tutorsignup1():
         return redirect('/')
     return render_template('tutorsignup1.html', form=form)
 
+@app.route('/activity/')
+def activity():
+    return render_template('activity.html')
+
 @app.route('/tutorsignup2/')
 def tutorsignup2():  
     return render_template('tutorsignup2.html')

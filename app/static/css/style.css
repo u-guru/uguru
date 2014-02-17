@@ -491,19 +491,21 @@ a:hover{
 .page-title {
   background-color:#0070ce;
   width:100%;
-  height:50px;
+  height:40px;
   color:#ffffff;
   font-size:20px;
   font-weight:none;
   text-align:center;
-  padding-top:12px;
+  padding-top:2px;
+  margin-bottom:0;
+  bottom:0;
 }
 
 .btn-options {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 16px;
   font-weight: normal;
   line-height: 1.428571429;
@@ -634,19 +636,31 @@ a:hover{
 
 .notification {
   display: inline-block;
-  padding: 6px 12px;
   margin-bottom: 0;
+  width:100%;
+  padding:12px 20px 4px 6px;
+  margin-top:20px;
   font-size: 16px;
   font-weight: normal;
   line-height: 1.428571429;
   background-color: #ffffff;
-  text-align: center;
-  white-space: nowrap;
+  text-align: left;
+  white-space: wrap;
   vertical-align: middle;
   cursor: pointer;
   background-image: none;
-  border: 1px solid #40bfec;
+  border: 3px solid #40bfec;
   border-radius: 12px;
+}
+
+.notif-user-photo {
+  float:left;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:10px;
+  padding-bottom:10px;
+  width:70px;
+  height:70px;
 }
 
 .navbar {
@@ -792,15 +806,17 @@ a:hover{
   float:right;
 }
 
-/*.skills {
-  color:#00a0cf;
-  float:left;
-  margin-left:auto;
-  margin-top:10px;
-  margin-bottom:10px;
-  font-size:18px;
-  font-family:'Roboto',"Open Sans", "Helvetica Neue", sans-serif;
-}*/
+.request {
+  background-color:#e3f2fc;
+  width:100%;
+  height:65px;
+  margin-top:0;
+  text-align:center;
+  vertical-align: center;
+  padding:20px 20px;
+}
+
+
 
 input[type=checkbox].css-checkbox { position: absolute;  overflow: hidden;  clip: rect(0 0 0 0);  height:1px;  width:1px;  margin:-1px;  padding:0; border:0; }  input[type=checkbox].css-checkbox + label.css-label { padding-left:20px; height:15px;  display:inline-block; line-height:15px; background-repeat:no-repeat; background-position: 0 0; font-size:15px; vertical-align:middle; cursor:pointer; }  input[type=checkbox].css-checkbox:checked + label.css-label { background-position: 0 -15px; }  .css-label{ background-image:url(http://csscheckbox.com/checkboxes/lite-blue-check.png); }
 
