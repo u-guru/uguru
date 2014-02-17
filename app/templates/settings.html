@@ -24,72 +24,80 @@
         <div id="settings" display="block">
           <div id="notif">
           <h4>NOTIFICATION PREFERENCES</h4>
-          <input id="demo_box_1" class="css-checkbox" type="checkbox" checked="checked" />
-          <label for="demo_box_1" name="email" class="css-label" style="color:black;">EMAIL</label>
-          <br>
-          <input id="demo_box_2" class="css-checkbox" type="checkbox" checked="checked" />
-          <label for="demo_box_2" name="email" class="css-label" style="color:black;">TEXT</label>
-          <br>
-          <br>
+            <label for="email-on" class="h5" style="color:black">EMAIL&nbsp;&nbsp;</label> 
+              <span name="email-on" class="btn-toggle-on">ON</span><span class="btn-toggle-off">OFF</span>
+            <br>
+            <br>
+            <label for="text-on" class="h5" style="color:black">TEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+              <span name="text-on" class="btn-toggle-on">ON</span><span class="btn-toggle-off">OFF</span>
+            <br>
+            <br>
           </div>
           <div id="credit">
-          <h4>CREDIT CARD</h4>
-          <span><h5>****-****-****-*1823</h5></span>
-          <span class="btn-options btn-md" style="float:right">CHANGE</span>
-          <br>
-          <br>
-          <br>
+            <h4>CREDIT CARD</h4>
+              <span class="h4">****-****-****-*1823</span>
+              <span class="btn-options btn-md" style="float:right">CHANGE</span>
+                <br>
+                <br>
+                <br>
           </div>
           <div id="password">
-          <h4>PASSWORD</h4><span class="btn-options btn-md" style="float:right">CHANGE</span>
-          <br>
-          <br>
+          <span class="h4" style="color:#00a0cf;">PASSWORD</span><span class="btn-options btn-md" style="float:right">CHANGE</span>
+            <br>
+            <br>
           </div>
-          <br>
-          <br>
-          <br>
+            <br>
+            <br>
+            <br>
         <a href="/settings" class="btn btn-logout" type="submit">LOGOUT</a>
       </div>
 
 <!-- Skills -->
       <div id="skills" style="display:none" align="center">
         <div class="input-group">
-        <input class="add-skills" placeholder="add skill..."></input>
-        <span class="glyphicon glyphicon-circle_plus" style="color:green"></span>
+        <span><input class="add-skills" placeholder="add skill..."></input></span>
+        <span class="btn-add">+</span>
       </div>
-      <br>
-      <br>
-
+        <br>
+        <br>
       <div id="current-skills">
-        <span><h4>CS 10</h4></span>
+        <span class="h4" style="color:#00a0cf">CS 10</span>
         <span class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div></span>
-        <h4>CS 61A</h4>
-        <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-        <h4>French R1B</h4>
-        <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-        <h4>Chem 3A</h4>
-        <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
+            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+        </span><span class="btn-remove">-</span>
+        <br>
+        <hr>
+        <span class="h4" style="color:#00a0cf">CS 61A</span>
+          <span class="rating">
+            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+          </span>
+          <br>
+          <hr>
+        <span class="h4" style="color:#00a0cf">French R1B</span>
+          <span class="rating">
+            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+          </span>
+          <br>
+          <hr>
+        <span class="h4" style="color:#00a0cf">Chem 3A</span>
+          <span class="rating">
+            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+          </span>
       </div>
       </div>
 
 <!-- Profile -->
       <div id="profile" style="display:none">
         <div align="center">
-          <div id="pic-holder"><span class="glyphicon glyphicon-user"></span></div>
-          <h5 style="color:grey">CHANGE PICTURE</h5>
+          <div id="pic-holder">
+            <span class="glyphicon glyphicon-user"></span>
+          </div>
+            <h5 style="color:grey">CHANGE PICTURE</h5>
          </div>
          <h4>A SHORT BIO</h4>
-         <textarea class="bio" cols="50" rows="10"></textarea>
+          <textarea class="bio" cols="50" rows="10"></textarea>
          <h4>YOUR ADVERTISED RATE</h4>
-        <select class="customdropdown">
+          <select class="customdropdown">
             <option>$17</option>
             <option>$16</option>
             <option>$15</option>
@@ -112,7 +120,10 @@
             <option>Free</option>
         </select>
          <h4>DISCOVERABILITY</h4>
+         <span class="btn-toggle-on">ON</span><span class="btn-toggle-off">OFF</span>
       </div>
+        <br>
+         <br>
 
       <!-- Ratings -->
            <!--  <div class="tab-pane fade" id="ratings">

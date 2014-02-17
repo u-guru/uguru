@@ -734,6 +734,54 @@ a:hover{
   color:#40bfec;
 }
 
+.btn-toggle-on {
+  background-color: #00a9e5;
+  color:white;
+  padding-left:20px;
+  padding-right:20px;
+  padding-top:3px;
+  padding-bottom:5px;
+  margin-right:0;
+  width:90px;
+  height:20px;
+  border-top-left-radius:1em;
+  border-bottom-left-radius:1em;
+  border-top-right-radius:0;
+  border-bottom-right-radius:0;
+}
+
+.btn-toggle-off {
+  background-color: #66cbef;
+  color:white;
+  padding-left:16px;
+  padding-right:16px;
+  padding-top:3px;
+  padding-bottom:5px;
+  margin-left:0;
+  width:90px;
+  height:20px;
+  border-top-right-radius:1em;
+  border-bottom-right-radius:1em;
+  border-top-left-radius:0;
+  border-bottom-left-radius:0;
+}
+
+.btn-add {
+  background-color:#69bf69;
+  border-radius: 50%;
+/*  width:100px;
+  height:100px;*/
+  color:white;
+}
+
+.btn-remove {
+  background-color:#ef5b40;
+  border-radius: 50%;
+  width:100px;
+  height:100px;
+  color:white;
+}
+
 input[type=checkbox].css-checkbox { position: absolute;  overflow: hidden;  clip: rect(0 0 0 0);  height:1px;  width:1px;  margin:-1px;  padding:0; border:0; }  input[type=checkbox].css-checkbox + label.css-label { padding-left:20px; height:15px;  display:inline-block; line-height:15px; background-repeat:no-repeat; background-position: 0 0; font-size:15px; vertical-align:middle; cursor:pointer; }  input[type=checkbox].css-checkbox:checked + label.css-label { background-position: 0 -15px; }  .css-label{ background-image:url(http://csscheckbox.com/checkboxes/lite-blue-check.png); }
 
 .customdropdown { 
