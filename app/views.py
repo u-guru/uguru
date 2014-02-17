@@ -200,6 +200,10 @@ def activity():
 def tutor_offer():
     return render_template('tutor_offer.html')
 
+@app.route('/messages/')
+def messages():
+    return render_template('messages.html')
+
 @app.route('/tutorsignup2/')
 def tutorsignup2():  
     return render_template('tutorsignup2.html')
