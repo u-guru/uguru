@@ -715,7 +715,12 @@ a:hover{
   width: 2em;
   font-size:24px;
   color:black;
+/*  float:right;*/
+  margin-left:auto;
+  margin-right:auto;
+/*  padding-right:10px;*/
 }
+
 .rating > span:hover:before,
 .rating > span:hover ~ span:before {
    content: "\2605";
@@ -769,18 +774,33 @@ a:hover{
 .btn-add {
   background-color:#69bf69;
   border-radius: 50%;
-/*  width:100px;
-  height:100px;*/
+  -webkit-border-radius:50%;
+  width:30px;
+  height:30px;
   color:white;
+  margin-left:20px;
 }
 
 .btn-remove {
   background-color:#ef5b40;
   border-radius: 50%;
-  width:100px;
-  height:100px;
+  width:25px;
+  height:25px;
   color:white;
+  text-align: center;
+  font-size:18px;
+  float:right;
 }
+
+/*.skills {
+  color:#00a0cf;
+  float:left;
+  margin-left:auto;
+  margin-top:10px;
+  margin-bottom:10px;
+  font-size:18px;
+  font-family:'Roboto',"Open Sans", "Helvetica Neue", sans-serif;
+}*/
 
 input[type=checkbox].css-checkbox { position: absolute;  overflow: hidden;  clip: rect(0 0 0 0);  height:1px;  width:1px;  margin:-1px;  padding:0; border:0; }  input[type=checkbox].css-checkbox + label.css-label { padding-left:20px; height:15px;  display:inline-block; line-height:15px; background-repeat:no-repeat; background-position: 0 0; font-size:15px; vertical-align:middle; cursor:pointer; }  input[type=checkbox].css-checkbox:checked + label.css-label { background-position: 0 -15px; }  .css-label{ background-image:url(http://csscheckbox.com/checkboxes/lite-blue-check.png); }
 
