@@ -212,6 +212,10 @@ def messages():
 def student_request():
     return render_template('student_request.html')
 
+@app.route('/request_payment/')
+def request_payment():
+    return render_template('request_payment.html')
+
 @app.route('/tutorsignup2/')
 def tutorsignup2():  
     return render_template('tutorsignup2.html')
