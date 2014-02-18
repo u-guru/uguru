@@ -94,6 +94,27 @@ def update_notifications():
         print "user next notification is now " + str(user.text_notification)
         return jsonify(ajax_json)
 
+@app.route('/update-password/', methods=('GET','POST'))
+def update_password():
+    if request.method == "POST":
+        return_json = {}
+        
+        ajax_json = request.json
+        old_password = md5(ajax_json.get('old-pwd')).hexdigest()
+        new_password = md5(ajax_json.get('new-pwd')).hexdigest()
+        user_id = session['user_id']
+        user = User.query.get(user_id)
+        
+        if old_password != user.password:
+            return_json['error'] = 'Incorrect original password'
+        else:
+            user.password = new_password
+            return_json['success'] = 'Password successfully updated'
+            print "user password before was " + str(old_password)
+            print "user password is now" + str(new_password)
+        db_session.commit()
+        return jsonify(response=return_json)
+
 @app.route('/validation/', methods=('GET', 'POST'))
 def success():
     if request.method == "POST":

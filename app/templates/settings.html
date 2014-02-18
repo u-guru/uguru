@@ -25,12 +25,20 @@
           <div id="notif">
           <h4>NOTIFICATION PREFERENCES</h4>
             <label for="email-on" class="h5" style="color:black">EMAIL&nbsp;&nbsp;</label> 
+              {% if user.email_notification %}
               <a id="email-on" href="javascript:void(0);"><span id="email-on-span" name="email-on" class="btn-toggle-on">ON</span></a><a id="email-off" href="javascript:void(0);"><span id="email-off-span" class="btn-toggle-off">OFF</span></a>
+              {% else %}
+              <a id="email-on" href="javascript:void(0);"><span id="email-on-span" name="email-on" class="btn-toggle-on-inactive">ON</span></a><a id="email-off" href="javascript:void(0);"><span id="email-off-span" class="btn-toggle-off-active">OFF</span></a>
+              {% endif %}
               <span id="saved-email" class="saved-text">Saved!</span>
             <br>
             <br>
             <label for="text-on" class="h5" style="color:black">TEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+               {% if user.text_notification %}
                <a id="text-on" href="javascript:void(0);"><span id="text-on-span" name="text-on" class="btn-toggle-on">ON</span></a><a id="text-off" href="javascript:void(0);"><span id="text-off-span" class="btn-toggle-off">OFF</span></a>
+               {% else %}
+               <a id="text-on" href="javascript:void(0);"><span id="text-on-span" name="text-on" class="btn-toggle-on-inactive">ON</span></a><a id="text-off" href="javascript:void(0);"><span id="text-off-span" class="btn-toggle-off-active">OFF</span></a>
+               {% endif %}
                <span id="saved-text" class="saved-text">Saved!</span>
             <br>
             <br>
@@ -38,21 +46,63 @@
           <div id="credit">
             <h4>CREDIT CARD</h4>
               <span class="h4">****-****-****-*1823</span>
-              <span class="btn-options btn-md" style="float:right">CHANGE</span>
+              <span class="btn-options btn-md" style="margin-top:-33px; float:right">CHANGE</span>
                 <br>
                 <br>
                 <br>
           </div>
           <div id="password">
-          <span class="h4" style="color:#00a0cf;">PASSWORD</span><span class="btn-options btn-md" style="float:right">CHANGE</span>
-            <br>
-            <br>
+          <span class="h4" style="color:#00a0cf;">PASSWORD</span>
+          <a id="change-password-btn" href="javascript:void(0)"><span class="btn-options btn-md" style="margin-top:-5px; float:right">CHANGE</span></a>
+          <span id="saved-password" class="saved-text">Updated!</span>
           </div>
+          <br>
+          <br<
+          <div id="change-password" class="container" align="center">
+            <div id="change-password-alert" class="row">
+              
+            </div>
+            <div class="row">
+              <div class="col-xs-3 col-xs-offset-2">
+                <label for="old" class="h4">Old</label>
+              </div>
+              <div class="col-xs-5">
+                <input name='old-pwd' type="password" style="width:100%" id="old" class="input-signup"></input>
+              </div>
+            </div>
             <br>
+            <div class="row">
+              <div class="col-xs-3 col-xs-offset-2">
+                <label  for="new" class="h4">New</label>
+              </div>
+              <div class="col-xs-5">
+                <input name='new-pwd' type="password" style="width:100%" id="new" class="input-signup"></input>
+              </div>
+            </div>
             <br>
-            <br>
-        <a href="/logout/" class="btn btn-logout" type="submit">LOGOUT</a>
-      </div>
+            <div class="row">
+              <div class="col-xs-3 col-xs-offset-2">
+                <label for="confirm" class="h4">Confirm</label>
+              </div>
+              <div class="col-xs-5">
+                <input name='confirm-pwd' type="password" style="width:100%" id="confirm" class="input-signup"></input>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-5 col-xs-offset-5">
+                <a id="save-password-btn" href="javascript:void(0)">
+                  <span style="float:right;" class="btn-options btn-md active">
+                    <span style="color:white">Save</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <a href="/logout/" class="btn btn-logout" type="submit">LOGOUT</a>
+        </div>
+    
 
 <!-- Skills -->
       <div id="skills" style="display:none" align="center">

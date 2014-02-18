@@ -488,6 +488,10 @@ h4, h5 {
   font-weight:100;
 }
 
+.h4 {
+  font-weight:100; 
+}
+
 .clear {
   clear:both;
 }
@@ -633,12 +637,12 @@ a:hover{
 }
 
 .btn-logout {
-  display:inline-block;
+  /*display:inline-block;*/
 /*  position:relative;*/
 /*  bottom:0;*/
   padding: 20px 12px;
   margin-bottom: -50;
-  margin-top:175px;
+  /*margin-top:175px;*/
   font-size: 20px;
   font-weight: normal;
   line-height: 1.428571429;
@@ -739,7 +743,10 @@ a:hover{
 
 #menu-icons {
   padding: 30px;
+}
 
+.btn-options .btn-md span {
+  margin:0 auto; !important
 }
 
 .add-skills {
@@ -999,5 +1006,14 @@ input[type=checkbox].css-checkbox { position: absolute;  overflow: hidden;  clip
 
 .saved-text {
   color: #57ad5c;
+  display:none;
+}
+
+#change-password-alert{
+  display:none;
+  color:red;
+}
+
+#change-password {
   display:none;
 }
