@@ -51,6 +51,37 @@ pending_rating_table = Table('pending-rating-table',
     Column('rating_id', Integer, ForeignKey('rating.id'))
 )
 
+user_conversation_table = Table('user-conversation_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('conversation_id', Integer, ForeignKey('conversation.id'))
+)
+user_message_table = Table('user-message_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('message_id', Integer, ForeignKey('message.id'))
+)
+mailbox_conversation_table = Table('mailbox-conversation_assoc',
+    Base.metadata,
+    Column('mailbox_id', Integer, ForeignKey('mailbox.id')),
+    Column('conversation_id', Integer, ForeignKey('conversation.id'))
+)
+feed_notification_table = Table('feed-notification_assoc',
+    Base.metadata,
+    Column('feed_id', Integer, ForeignKey('feed.id')),
+    Column('notification_id', Integer, ForeignKey('notification.id'))
+)
+mailbox_message_table = Table('mailbox-message_assoc',
+    Base.metadata,
+    Column('mailbox_id', Integer, ForeignKey('mailbox.id')),
+    Column('message_id', Integer, ForeignKey('message.id'))
+)
+user_payment_table = Table('user-payment_assoc',
+    Base.metadata,
+    Column('payment_id', Integer, ForeignKey('payment.id')),
+    Column('user_id', Integer, ForeignKey('user.id'))
+)
+
 
 class User(Base):
     __tablename__ = 'user'
@@ -59,52 +90,48 @@ class User(Base):
     email = Column(String(64), index = True, unique = True)
     password = Column(String(64))
     is_a_tutor = Column(Boolean, default = False)
-
     phone_number = Column(String(64), unique = True)
-
-    # student_ratings = Column(Integer)
-    # tutor_ratings = 
-
     time_created = Column(DateTime)
     email_notification = Column(Boolean, default = True)
     text_notification = Column(Boolean, default = True)
-    #is_active = (email_notification OR text_notification)
+    profile_url = Column(String)
     
-    #Requests for tutoring
+    #Stripe Fields
+    customer_id = Column(String)
+    customer_last4 = Column(String(4))
+    
     outgoing_requests = relationship('Request', 
         secondary = student_request_table,
-        # backref = backref('student', lazy='dynamic')
         )
-
     incoming_requests_to_tutor = relationship('Request', 
         secondary = tutor_request_table,
         backref = backref('users', lazy='dynamic')
         )
-
     incoming_requests_from_tutors = relationship('Request', 
         secondary = committed_tutor_request_table,
-        # backref = backref('users', lazy='dynamic')
         )
-
     skills = relationship("Skill",
         secondary = user_skill_table,
         backref = backref('users', lazy='dynamic')
         )
-
     student_ratings = relationship('Rating',
         secondary = student_rating_table,
-        # backref = backref('users', lazy='dynamic')
         )
-
     tutor_ratings = relationship('Rating',
         secondary = tutor_rating_table,
-        # backref = backref('users', lazy='dynamic')
         )
-
     pending_ratings = relationship('Rating',
         secondary = pending_rating_table,
-        # backref = backref('users', lazy='dynamic'))
         )
+    mailbox = relationship("Mailbox",
+        uselist = False,
+        backref = backref("user", uselist = False))
+    payments = relationship("Payment",
+        secondary = user_payment_table
+        )
+    feed = relationship("Feed",
+        uselist = False,
+        backref = backref("user", uselist = False))
 
     def __init__(self, name, email, password, phone_number, is_a_tutor = None):
         self.name = name
@@ -129,6 +156,241 @@ class User(Base):
         return "<Name: %s, Email: %s, Phone: %s, Date: %s>" % (self.name, self.email,\
             str(self.phone_number), self.time_created.strftime('%b %d,%Y'))
 
+class Mailbox(Base):
+    __tablename__ = 'mailbox'
+    id = Column(Integer, ForeignKey('user.id'), primary_key = True)
+
+    def new_conversation(self, skill, guru, student):
+        assert guru.id != student.id, \
+            'guru and student must be different users'
+        assert self.user in [guru, student], \
+            'conversation must include a user of this mailbox'
+        return Conversation(skill, guru, student)
+
+    def __init__(self, user):
+        self.id = user.id
+        self.user = user
+
+    def __repr__(self):
+        return "<Mailbox for '%r'>" % (self.id)
+
+class Conversation(Base):
+    __tablename__ = 'conversation'
+    id = Column(Integer, primary_key = True)
+
+    skill_id = Column(Integer, ForeignKey('skill.id'))
+    skill = relationship("Skill",
+        uselist = False,
+        primaryjoin = "Skill.id == Conversation.skill_id",
+        backref = "conversations")
+
+    guru_id = Column(Integer, ForeignKey('user.id'))
+    guru = relationship("User", 
+        uselist = False, 
+        primaryjoin = "User.id == Conversation.guru_id",
+        backref = "guru_conversations")
+
+    student_id = Column(Integer, ForeignKey('user.id'))
+    student = relationship("User", 
+        uselist = False, 
+        primaryjoin = "User.id == Conversation.student_id",
+        backref = "student_conversations")
+
+    users = relationship("User",
+        secondary = user_conversation_table,
+        backref = "conversations")
+    mailboxes = relationship("Mailbox",
+        secondary = mailbox_conversation_table,
+        backref = "conversations")
+
+    def new_message(self, contents, sender, reciever):
+        assert sender != reciever, \
+            'sender and reciever must be different users'
+        assert sender in [self.guru, self.student] or \
+            reciever in [self.guru, self.student], \
+            'sender or reciever must be in this conversation'
+        return Message(contents, self, sender, reciever)
+
+    def __init__(self, skill, guru, student):
+        self.skill = skill
+        self.skill_id = skill.id
+        self.guru = guru
+        self.guru_id = guru.id
+        self.student = student
+        self.student_id = student.id
+        self.users.append(guru)
+        self.users.append(student)
+        self.mailboxes.append(guru.mailbox)
+        self.mailboxes.append(student.mailbox)
+
+    def __repr__(self):
+        return "<Conversation between '%r' and '%r' about '%r'>" %\
+              (self.guru_id, self.student_id, self.skill_id)
+
+class Message(Base):
+    __tablename__ = 'message'
+    id = Column(Integer, primary_key = True)
+    contents = Column(Unicode(1000))
+
+    sender_id = Column(Integer, ForeignKey('user.id'))
+    sender = relationship("User",
+        primaryjoin = 'Message.sender_id == User.id',
+        backref = "sent_messages")
+    write_time = Column(DateTime)
+
+    reciever_id = Column(Integer, ForeignKey('user.id'))
+    reciever = relationship("User",
+        primaryjoin = 'Message.reciever_id == User.id',
+        backref = "recieved_messages")
+    read_time = Column(DateTime)
+
+    conversation_id = Column(Integer, ForeignKey('conversation.id'))
+    conversation = relationship("Conversation",
+        uselist = False,
+        primaryjoin = 'Message.conversation_id == Conversation.id',
+        backref = "messages")
+
+    mailboxes = relationship("Mailbox", 
+        secondary = mailbox_message_table,
+        backref = "messages")
+    users = relationship("User",
+        secondary = user_message_table,
+        backref = "messages")
+
+    def __init__(self, contents, conversation, sender, reciever):
+        self.contents = contents
+        assert sender.id != reciever.id, 'sender and reciever must be different'
+        self.sender = sender
+        self.sender_id = sender.id
+        self.reciever = reciever
+        self.reciever_id = reciever.id
+        self.conversation = conversation
+        self.conversation_id = conversation.id
+        self.write_time = datetime.now()
+        self.users.append(sender)
+        self.users.append(reciever)
+        self.mailboxes.append(sender.mailbox)
+        self.mailboxes.append(reciever.mailbox)
+
+    def __str__(self):
+        return self.contents
+
+    def __repr__(self):
+        return "<Message from '%r' to '%r' at '%s'>" %\
+            (self.sender_id, self.reciever_id, str(self.write_time))
+
+class Notification(Base):
+    __tablename__ = 'notification'    
+    id = Column(Integer, primary_key = True)
+    request_id = Column(Integer, 
+        ForeignKey('request.id'), 
+        primary_key = True, 
+        default = 0)
+    request_tutor_amount_hourly = Column(Float)
+    other = Column(String(1000))
+    payment_id = Column(Integer,
+        ForeignKey('payment.id'),
+        primary_key = True,
+        default = 0)
+    rating_id = Column(Integer, 
+        ForeignKey('rating.id'),
+        primary_key = True,
+        default = 0)
+
+    def __init__(self, name, **kwargs):
+        request = kwargs.get('request')
+        payment = kwargs.get('payment')
+        rating = kwargs.get('rating')
+        other = kwargs.get('other')
+        assert bool(request) ^ bool(payment) ^ bool(rating) ^ bool(other), \
+        'kwargs must specify *either* a request, payment or a rating'
+        
+        if request:
+            self.request_id = request.id
+        if payment:
+            self.payment_id = payment.id
+        if rating:
+            self.rating_id = rating.id
+        if other:
+            self.other = other
+
+
+class Tag(Base):
+    __tablename__ = 'tag'
+    name = Column(String(16))
+
+    message_id = Column(Integer, 
+        ForeignKey('message.id'), 
+        primary_key = True, 
+        default = 0)
+    message = relationship("Message",
+        uselist = False,
+        primaryjoin = 'Tag.message_id == Message.id',
+        backref = "tags")
+
+    conversation_id = Column(Integer, 
+        ForeignKey('conversation.id'), 
+        primary_key = True,
+        default = 0)
+    conversation = relationship("Conversation",
+        uselist = False,
+        primaryjoin = 'Tag.conversation_id == Conversation.id',
+        backref = "tags")
+
+    def __init__(self, name, **kwargs):
+        message = kwargs.get('message')
+        conversation = kwargs.get('conversation')
+        assert bool(message) ^ bool(conversation), \
+            'kwargs must specify *either* a message or a conversation'
+        self.name = name
+        if message:
+            self.message = message
+            self.message_id = message.id
+        elif conversation:
+            self.conversation = conversation
+            self.conversation_id = conversation.id
+
+    def __repr__(self):
+        return "<Tag %r>" % (self.name)
+
+
+class Payment(Base):
+    __tablename__ = 'payment'
+    id = Column(Integer, primary_key = True)
+    student_id = Column(Integer)
+    tutor_id = Column(Integer)
+    request_id = Column(Integer)
+    skill_id = Column(Integer)    
+    time_amount = Column(Integer)
+    tutor_rate = Column(Float)
+    student_paid_amount = Column(Float)
+    tutor_received_amount = Column(Float)
+    time_created = Column(DateTime)
+
+    def __init__(self, request):
+        self.student_id = request.student_id
+        self.skill_id = request.skill_id
+        self.tutor_id = request.connected_tutor_id
+        self.time_amount = request.actual_time
+        self.tutor_rate = request.actual_hourly
+        self.time_created = datetime.now()
+
+    def __repr__(self):
+        student_name = User.query.get(self.student_id).name
+        skill_name = Skill.query.get(self.skill_id).name
+        
+        if self.connected_tutor_id: 
+            tutor_name = User.query.filter_by(id=self.connected_tutor_id)\
+            .first().name
+        else:
+            tutor_name = "Inactive"
+        
+        return "PAYMENT: %s <Student: %s, Tutor: %s, Skill: %s,\
+        \n Time Created: %s, Time Estimated: %s hours>" %\
+        (str(self.id), student_name, tutor_name, skill_name, \
+            self.time_created.strftime('%b %d,%Y'), self.time_estimate)
+
+
 class Request(Base):
     __tablename__ = 'request'
     id = Column(Integer, primary_key = True)
@@ -142,6 +404,10 @@ class Request(Base):
     time_estimate = Column(Float)
     time_created = Column(DateTime)
     time_connected = Column(DateTime)
+    payment_id = Column(Integer)
+    estimated_hourly = Column(Float)
+    actual_hourly = Column(Float)
+    actual_time = Column(Float)
 
     requested_tutors = relationship('User', 
         secondary = tutor_request_table,
@@ -256,9 +522,6 @@ class Rating(Base):
         (str(self.id), student_name, tutor_name, skill_name, \
             self.time_created.strftime('%b %d,%Y'))
 
-
-
-
 class Course(Base):
     __tablename__ = 'course'
     id = Column(Integer, primary_key = True)
@@ -274,4 +537,14 @@ class Course(Base):
     def __repr__(self):
         return '<Course %r>' % (self.name)
 
+class Feed(Base):
+    __tablename__ = 'feed'
+    id = Column(Integer, ForeignKey('user.id'), primary_key = True)    
+
+    def __init__(self, user):
+        self.id = user.id
+        self.user = user
+
+    def __repr__(self):
+        return "<Mailbox for '%r'>" % (self.id)
 

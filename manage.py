@@ -23,6 +23,80 @@ if arg == 're-create_db':
     initialize_skill()
     print "Previous App.db deleted and new db_initialized"
 
+if arg == 'test_payments':
+    user0 = User(name = u'Aleks', email="test2", password="test", phone_number="test2")
+    user1 = User(name = u'Samir', email="test3", password="test", phone_number="test3")
+    db_session.add_all([user0, user1])
+    db_session.commit()
+
+    skill = Skill(u'CS10')
+    db_session.add(skill)
+    db_session.commit()
+    user0.skills.append(skill)    
+    db_session.commit()
+
+    r1 = Request(student_id = 1, skill_id = 1, description = "help me", \
+        urgency = 1, frequency = 0, time_estimate = 1)
+
+    r1.connected_tutor_id = 1
+    r1.estimated_hourly = 20.0
+    db_session.add(r1)
+    db_session.commit()
+
+    tutor = user0
+
+    payment = Payment(r1)
+    db_session.add(payment)
+    
+if arg == 'test_inbox':
+    user0 = User(name = u'Aleks', email="test2", password="test", phone_number="test2")
+    user1 = User(name = u'Samir', email="test3", password="test", phone_number="test3")
+    user2 = User(name = u'Summer', email="test4", password="test", phone_number="test4")
+    db_session.add_all([user0, user1,user2])
+    db_session.commit()
+
+    mailbox0 = Mailbox(user0)
+    mailbox1 = Mailbox(user1)
+    mailbox2 = Mailbox(user2)
+    db_session.add_all([mailbox0, mailbox1, mailbox2])
+    db_session.commit()
+
+    skill0 = Skill(u'Guitar')
+    course0 = Course(u'CS 61A')
+    skill1 = course0.skill
+    course1 = Course(u'Math 1A')
+    skill2 = course1.skill
+    db_session.add_all([skill0, course0, skill1, course1, skill2])
+    db_session.commit()
+
+    user0.skills.append(skill0)
+    user0.skills.append(skill1)
+    user1.skills.append(skill1)
+    user1.skills.append(skill2)
+    db_session.add_all([skill0, course0, skill1, course1, skill2])
+    db_session.commit()
+
+    convo0 = Conversation(skill0, user0, user1)
+    convo1 = Conversation(skill1, user1, user0)
+    convo2 = Conversation(skill2, user2, user0)
+    db_session.add_all([convo0, convo1, convo2])
+    db_session.commit()
+
+    message0 = Message(u"Hello", convo0, user0, user1)
+    message1 = Message(u"World", convo0, user1, user0)
+    message2 = Message(u"Jon", convo1, user0, user1)
+    message3 = Message(u"Sucks", convo1, user1, user0)
+    db_session.add_all([message0, message1, message2, message3])
+    db_session.commit()
+
+    tag0 = Tag("accepted", conversation = convo0)
+    tag1 = Tag("read", message = message1)
+    tag2 = Tag("unread", message = message3)
+    tag3 = Tag("no_reply", conversation = convo1)
+    db_session.add_all([tag0, tag1, tag2, tag3])
+    db_session.commit()
+ 
+
 if arg == 'testdb':    
     init_db()
 

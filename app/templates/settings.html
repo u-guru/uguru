@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block header %}
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width-device-width" />
   <script src="/static/js/jquery.js"></script>
    <script src="/static/js/jquery.raty.js"></script>
    <link rel="stylesheet" href="/static/css/bootstrap-switch.css">
     <script src="/static/js/bootstrap-switch.js"></script>
     <script src="/static/js/bootstrap-switch.min.js"></script>
+    <script src="/static/js/settings.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -25,11 +25,11 @@
           <div id="notif">
           <h4>NOTIFICATION PREFERENCES</h4>
             <label for="email-on" class="h5" style="color:black">EMAIL&nbsp;&nbsp;</label> 
-              <span name="email-on" class="btn-toggle-on">ON</span><span class="btn-toggle-off">OFF</span>
+              <a id="email-on" href="javascript:void(0);"><span id="email-on-span" name="email-on" class="btn-toggle-on">ON</span></a><a id="email-off" href="javascript:void(0);"><span id="email-off-span" class="btn-toggle-off">OFF</span></a>
             <br>
             <br>
             <label for="text-on" class="h5" style="color:black">TEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
-              <span name="text-on" class="btn-toggle-on">ON</span><span class="btn-toggle-off">OFF</span>
+               <a id="text-on" href="javascript:void(0);"><span id="text-on-span" name="text-on" class="btn-toggle-on">ON</span></a><a id="text-off" href="javascript:void(0);"><span id="text-off-span" class="btn-toggle-off">OFF</span></a>
             <br>
             <br>
           </div>
@@ -49,7 +49,7 @@
             <br>
             <br>
             <br>
-        <a href="/settings" class="btn btn-logout" type="submit">LOGOUT</a>
+        <a href="/logout/" class="btn btn-logout" type="submit">LOGOUT</a>
       </div>
 
 <!-- Skills -->
