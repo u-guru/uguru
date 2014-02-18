@@ -10,145 +10,125 @@
 {% endblock %}
 
 {% block content %}
-  <div id="top" class="header">
-    <div class="container">
-    <div class="row vertical-offset-100">
+      <div class="page-title">
+        <h4 style="color:white;">YOUR ACCOUNT</h4>
+      </div>
+      <div align="center">
+        <span id="settings-button" class="btn-options btn-md"><a href="#settings">SETTINGS</a></span>
+        <span id="skills-button" class="btn-options btn-md"><a href="#skills">MY SKILLS</a></span>
+        <span id="profile-button" class="btn-options btn-md"><a href="#profile">PROFILE</a></span>
+      </div>
+      <hr>
 
-<div>
-          <div class="panel-heading">
-            <h1 id="nav-tabs" class="text-center" style="color:white"><b>SETTINGS</b></h1>
+<!-- Settings -->
+        <div id="settings" display="block">
+          <div id="notif">
+          <h4>NOTIFICATION PREFERENCES</h4>
+            <label for="email-on" class="h5" style="color:black">EMAIL&nbsp;&nbsp;</label> 
+              <span name="email-on" class="btn-toggle-on">ON</span><span class="btn-toggle-off">OFF</span>
+            <br>
+            <br>
+            <label for="text-on" class="h5" style="color:black">TEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+              <span name="text-on" class="btn-toggle-on">ON</span><span class="btn-toggle-off">OFF</span>
+            <br>
+            <br>
           </div>
-            <div class="bs-example">
-              <ul class="nav nav-tabs" style="margin-bottom: 10px;">
-                <li class="active"><a href="#account" data-toggle="tab">Account</a></li>
-                <li class=""><a href="#ratings" data-toggle="tab">Ratings</a></li>
-                <li class=""><a href="#becometutor" data-toggle="tab">Become a Tutor</a></li>
-          
-        <div id="myTabContent" class="tab-content" style="padding:6px">
+          <div id="credit">
+            <h4>CREDIT CARD</h4>
+              <span class="h4">****-****-****-*1823</span>
+              <span class="btn-options btn-md" style="float:right">CHANGE</span>
+                <br>
+                <br>
+                <br>
+          </div>
+          <div id="password">
+          <span class="h4" style="color:#00a0cf;">PASSWORD</span><span class="btn-options btn-md" style="float:right">CHANGE</span>
+            <br>
+            <br>
+          </div>
+            <br>
+            <br>
+            <br>
+        <a href="/settings" class="btn btn-logout" type="submit">LOGOUT</a>
+      </div>
 
-        <!-- Account Settings -->
-                <div class="tab-pane fade active in" id="account">
-                  <div data-role="fieldcontain">
-                    <br>
-                    <br>
-                    <br>
-                    <h3 style="color:#1FC9B8">NOTIFICATION PREFERENCES</h3>
-                   <label for "email">Email:</label>
-                   <div class="has-switch switch-animate switch-small switch-on" tabindex="0" id="email">
-                    <div><span class="switch-left">ON</span><label>&nbsp;</label><span class="switch-right">OFF</span><input type="checkbox" checked="" class="switch-small"></div></div>
-                   <br>
-                   <br>
-                   <label for "text">Text:</label>
-                  <div class="has-switch switch-animate switch-small switch-on" tabindex="0" id="text"><div><span class="switch-left">ON</span><label>&nbsp;</label><span class="switch-right">OFF</span><input type="checkbox" checked="" class="switch-small"></div></div>
-                  <br>
-                  <br>
-                  <label for "neither">Neither:</label>
-                  <div class="has-switch switch-animate switch-small switch-off" tabindex="0" id="neither"><div><span class="switch-left">ON</span><label>&nbsp;</label><span class="switch-right">OFF</span><input type="checkbox" checked="" class="switch-small"></div></div>
-                  <p><em>(you will be an offline tutor and not receive any requests)</em></p>
-                    <br>
-                  </div>
-                  <div>
-                  <h3 style="color:#1FC9B8">CHANGE PASSWORD</h3>
-                  <div class="text-left" style="margin-bottom:25px;">
-                    <div class="form-group max-width:5000px">
-                        <input class="form-control" placeholder="Current Password" name="currentpassword" type="text">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" placeholder="New Password" name="newpassword" type="text">
-                    </div>
-                    <div class="form-group">
-                      <input class="form-control" placeholder="Confirm New Password" name="password" type="confirm" type="text">
-                    </div>
-                    <a href="/settings" class="btn btn-lg push_button_default" type="submit">Save</a>
-                     <div class="text-right"><a href="/" style="color:#1FC9B8">Delete Account</a>
-                    </div>
-                    </div>
-                    </div>
-                      </div>
-      <!-- /Account Settings -->
+<!-- Skills -->
+      <div id="skills" style="display:none" align="center">
+        <div class="input-group">
+        <span><input class="add-skills" placeholder="add skill..."></input></span>
+        <div class="btn-add" style="float:right;font-size:20px">+</div>
+      </div>
+        <br>
+        <br>
+      <div id="current-skills" style="align:center">
+        <div class="h4" style="color:#00a0cf;float:left;">CS 10</div>
+          <span class="rating">
+              <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+          </span>
+          <div class="btn-remove">--</div>
+        <br>
+        <hr>
+        <div class="h4" style="color:#00a0cf;float:left">CS 61A</div>
+          <span class="rating">
+            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+          </span>
+          <div class="btn-remove">--</div>
+          <br>
+          <hr>
+        <div class="h4" style="color:#00a0cf;float:left">French R1B</div>
+          <span class="rating">
+            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+          </span>
+          <div class="btn-remove">--</div>
+          <br>
+          <hr>
+        <div class="h4" style="color:#00a0cf;float:left">Chem 3A</div>
+          <span class="rating">
+            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+          </span>
+          <div class="btn-remove">--</div>
+      </div>
+      </div>
 
-      <!-- Ratings -->
-            <div class="tab-pane fade" id="ratings">
-              <br>
-              <br>
-              <br>
-              <h3 style="color:#1FC9B8">CS 61A</h3>
-                <div class="star" align="left">
-                  <img src="/static/img/star-on.png" alt="1">
-                  <img src="/static/img/star-on.png" alt="2">
-                  <img src="/static/img/star-on.png" alt="3">
-                  <img src="/static/img/star-on.png" alt="4">
-                  <img src="/static/img/star-off.png" alt="5">
-                </div>
-                    <h4>4.0 average -- 7 reviews</h4>
-                <hr>
-                <h3 style="color:#1FC9B8">Photography</h3>
-                <div class="star" align="left">
-                  <img src="/static/img/star-on.png" alt="1">
-                  <img src="/static/img/star-on.png" alt="2">
-                  <img src="/static/img/star-on.png" alt="3">
-                  <img src="/static/img/star-on.png" alt="4">
-                  <img src="/static/img/star-off.png" alt="5">
-                </div>
-                    <h4>4.0 average -- 7 reviews</h4>
-                <hr>
-                <h3 style="color:#1FC9B8">Cooking</h3>
-                <div class="star" align="left">
-                  <img src="/static/img/star-on.png" alt="1">
-                  <img src="/static/img/star-on.png" alt="2">
-                  <img src="/static/img/star-on.png" alt="3">
-                  <img src="/static/img/star-on.png" alt="4">
-                  <img src="/static/img/star-off.png" alt="5">
-                </div>
-                    <h4>4.0 average -- 7 reviews</h4>
-                </div>
-        <!-- /Ratings -->
-
-      <!-- Become a Tutor -->
-      <!-- Should just be 'Add Courses and Skills' if already a Tutor -->
-                <div class="tab-pane fade" id="becometutor">
-                  <div class="text-left" >
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                   <p>It's simple. Just add one skill and we'll start advertising you as a tutor. Read more regarding tutor validation and your starting session rates on our <a href="/howitworks">How it Works</a> page.</p>
-                    <div id="add-skills-courses" style="display:block"> 
-                     <h3 style="margin:2px;color:#1FC9B8">Add Courses and Skills</h3>
-                        <span style="font-weight:strong; margin-top:-10px; font-size:0.80em;">
-                        Add anything you feel proficient enough in to teach.
-                        </span>
-      
-                        <div class="input-group">
-                          <input id="tutor-skill-input" type="text" class="form-control">
-                          <span class="input-group-btn">
-                            <button id="tutor-skill-add" class="btn push_button_primary" style="width:50px; height:38px; box-shadow:none" type="button"><span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                          </span>
-                        </div>              
-                            
-                      <!--   <div id="tutor-skills" style="align:center; margin-top:5px; display:None" class="row">                                                   
-                        </div> -->
-                        
-                        <div id="skill-popular-example">
-                          <!-- <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3"> -->
-                            <h5 style="margin:2px">Popular Examples</h5>
-                            <div style="margin-top:10px;margin-left:2px">                              
-                              <button type="button" class="btn btn-sm btn-option">CS 61A</button>                              
-                              <button type="button" class="btn btn-sm btn-option">Essay Proofreading</button>                                                                                      
-                              <button type="button" class="btn btn-sm btn-option">French R1B</button>
-                              
-                              <button type="button" class="btn btn-sm btn-option">Chem 1A</button> 
-                            </div>
-                          </div>
-                </div>
-                          </div>
-                        </div>
-        <!-- /Become a Tutor -->
-</div>
-</div>
-</div>
-</div>
+<!-- Profile -->
+      <div id="profile" style="display:none" align="center">
+        <div align="center">
+          <div id="pic-holder">
+            <span class="glyphicon glyphicon-user" style="font-size:80px;text-align:center;padding-top:5px"></span>
+          </div>
+            <h5 style="color:grey"><u>CHANGE PICTURE</u></h5>
+         </div>
+         <br>
+         <h4>A SHORT BIO:</h4>
+          <textarea class="bio" cols="50" rows="10"></textarea>
+         <h4>YOUR ADVERTISED RATE</h4>
+          <select class="customdropdown">
+            <option>$17</option>
+            <option>$16</option>
+            <option>$15</option>
+            <option>$14</option>
+            <option>$13</option>
+            <option>$14</option>
+            <option>$13</option>
+            <option>$12</option>
+            <option>$11</option>
+            <option>$10</option>
+            <option>$9</option>
+            <option>$8</option>
+            <option>$7</option>
+            <option>$6</option>
+            <option>$5</option>
+            <option>$4</option>
+            <option>$3</option>
+            <option>$2</option>
+            <option>$1</option>
+            <option>Free</option>
+        </select>
+         <h4>DISCOVERABILITY</h4>
+         <span class="btn-toggle-on">ON</span><span class="btn-toggle-off">OFF</span>
+      </div>
+        <br>
+         <br>
 </div>
 </div>
 
@@ -161,12 +141,57 @@
    
    <!-- Custom JavaScript for Star Ratings -->
    <script>
-   $('.star').raty();
+   // $('.star').raty();
   </script>
 
-    <!-- Custom JavaScript for Notification Checkboxes -->
+    <!-- Custom JavaScript for Highlight Tabs -->
+ <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
+  <script>
+  // $(document).ready(function() {    
+    // $("#settings-button").addClass('btn-options selected');
+    $("#settings-button").click(function() {
+      $("#skills").hide();
+      $("#profile").hide();
+      $("#settings").show();
+      
+    });
+    $("#skills-button").click(function() {
+      $("#settings").hide();
+      $("#profile").hide();
+      $("#skills").show();      
+    });
+    $("#profile-button").click(function() {
+      $("#settings").hide();
+      $("#skills").hide();
+      $("#profile").show();
+    });
+  // });
+  </script>
 
-
+<!-- Custom Dropdown -->
+<script>
+  (function($){
+    $.fn.extend({
+    customStyle : function(options) {
+        if(!$.browser.msie || ($.browser.msie&&$.browser.version>6)) {
+            return this.each(function() {
+                var currentSelected = $(this).find(':selected');
+                $(this).after('<span class="customdropdown"><span class="customdropdownInner">'+currentSelected.text()+'</span></span>').css({position:'absolute', opacity:0,fontSize:$(this).next().css('font-size')});
+                var selectBoxSpan = $(this).next();
+                var selectBoxWidth = parseInt($(this).width()) - parseInt(selectBoxSpan.css('padding-left')) -parseInt(selectBoxSpan.css('padding-right'));            
+                var selectBoxSpanInner = selectBoxSpan.find(':first-child');
+                selectBoxSpan.css({display:'inline-block'});
+                selectBoxSpanInner.css({width:selectBoxWidth, display:'inline-block'});
+                var selectBoxHeight = parseInt(selectBoxSpan.height()) + parseInt(selectBoxSpan.css('padding-top')) + parseInt(selectBoxSpan.css('padding-bottom'));
+                $(this).height(selectBoxHeight).change(function() {
+                    selectBoxSpanInner.text($(this).find(':selected').text()).parent().addClass('changed');
+                });
+         });
+        }
+    }
+    });
+})(jQuery);
+</script>
 
 
 {% endblock %}

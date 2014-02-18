@@ -50,6 +50,7 @@ div.main {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
+  margin-top: 20px;
   font-size: 16px;
   font-weight: normal;
   line-height: 1.428571429;
@@ -107,4 +108,63 @@ div.main {
     border-right: 20px solid transparent;
     margin:0 auto;
     border-top: 20px solid #fff;
+}
+
+.page-title {
+  color:#0097db;
+}
+
+.btn-accept {
+  display:inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  background-color:#69bf69;
+  width:50%;
+  height:50px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: none;
+  border-radius: 0px;
+}
+
+.btn-reject {
+  display:inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  background-color:#ef5b40;
+  width:50%;
+  height:50px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: none;
+  border-radius: 0px;
+}
+
+.notification {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  background-color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid #40bfec;
+  border-radius: 12px;
 }

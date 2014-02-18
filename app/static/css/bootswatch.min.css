@@ -22,13 +22,14 @@ border-right: 10px solid transparent;
 border-left: 10px solid transparent;
 }
 
-body{
+/*body{
 	background: #FBF8EF;
-}
+}*/
+
 .navbar-inverse {
-background-color: #999999;
+background-color: #00a0cf;
 background-image: none;
-border: #999999;
+border: none;
 border-radius: 0px;
 min-height: 75px;
 }

@@ -11,7 +11,7 @@ import emails
 @app.route('/', methods=['GET', 'POST'])
 def index():
     request_form = RequestForm()
-    return render_template('index.html', forms=[request_form],
+    return render_template('new_index.html', forms=[request_form],
         logged_in=session.get('user_id'))
 
 
@@ -191,6 +191,22 @@ def tutorsignup1():
     if form.validate_on_submit():
         return redirect('/')
     return render_template('tutorsignup1.html', form=form)
+
+@app.route('/activity/')
+def activity():
+    return render_template('activity.html')
+
+@app.route('/tutor_offer/')
+def tutor_offer():
+    return render_template('tutor_offer.html')
+
+@app.route('/messages/')
+def messages():
+    return render_template('messages.html')
+
+@app.route('/student_request/')
+def student_request():
+    return render_template('student_request.html')
 
 @app.route('/tutorsignup2/')
 def tutorsignup2():  

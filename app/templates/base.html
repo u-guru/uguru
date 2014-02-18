@@ -12,6 +12,7 @@
       <!--   <link href="/static/css/bootstrap.css" rel="stylesheet"> -->
         <!-- Add custom CSS here -->
         <link href="/static/css/bootswatch.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
         <link href="/static/css/bootswatch.min.css" rel="stylesheet">
         <link href="/static/css/style.css" rel="stylesheet">
         <link href="/static/fonts/grand_hotel.css" rel="stylesheet">
@@ -23,44 +24,29 @@
     <body>
      <!--  <div class="wrapper"> -->
         <!-- Navigation Bar -->
-    <div class="navbar navbar-inverse navbar-relative">
-          <div class="container">
-            <div class="navbar-header">
-              <a href="../../" class="navbar-brand" style="font-family: 'grand hotel', cursive; font-size: 50px">uguru.me</a>
-              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            </div>
-            <div class="navbar-collapse collapse" id="navbar-main">
-             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/settings">Settings</a></li>
-                <li><a href="/howitworks">How it Works</a></li>
-                <li>
-                     {% if logged_in %}
-                        <a href="/logout/" id="logout-link">Logout</a>
-                    {% else %}
-                        <a href="javascript:void(0)" id="login-link-menu">Login</a>
-                    {% endif %}
-                </li>
-              </ul>
+      <div class="navbar">
+        <div class="container">
+          <div class="navbar-header">
 
-            </div>
+              <a href="../../" class="navbar-brand" style="font-family: 'grand hotel', cursive; font-size: 50px"><span class="glyphicon glyphicon-chevron-left" style="color:white;float:left;font-size:30px;margin-left:20px;margin-right:20px"></span>uguru.me</a>
           </div>
+          <div id="menu-icons" style="float:right">
+             <a href="/activity/"><span class="glyphicon glyphicon-globe" style="color:white;padding-right:50px;font-size:20px"></span></a>
+            <a href="/messages/"><span class="glyphicon glyphicon-envelope" style="color:white;padding-right:50px;font-size:20px"></span></a>
+            <a href="/settings/"><span class="glyphicon glyphicon-cog" style="color:white;font-size:20px"></span></a>
+          </div>
+      </div>
     </div>
-<!--     <div class="push"></div> -->
-  <!--   </div> -->
 
         {% block content %}
         {% endblock %}
 
         <!-- Footer -->
-        <div class="footer">
+       <!--  <div class="footer"> -->
 <!--           <footer> -->
-                <p>Copyright &copy; uGuru.me 2014</p>
+               <!--  <p>Copyright &copy; uGuru.me 2014</p> -->
 <!--           </footer> -->
-        </div>
+        <!-- </div> -->
     <!-- Only include JavaScript that is required for every page -->
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
