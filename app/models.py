@@ -281,15 +281,38 @@ class Message(Base):
 
 class Notification(Base):
     __tablename__ = 'notification'    
-
+    id = Column(Integer, primary_key = True)
     request_id = Column(Integer, 
         ForeignKey('request.id'), 
         primary_key = True, 
         default = 0)
+    request_tutor_amount_hourly = Column(Float)
+    other = Column(String(1000))
     payment_id = Column(Integer,
         ForeignKey('payment.id'),
         primary_key = True,
         default = 0)
+    rating_id = Column(Integer, 
+        ForeignKey('rating.id'),
+        primary_key = True,
+        default = 0)
+
+    def __init__(self, name, **kwargs):
+        request = kwargs.get('request')
+        payment = kwargs.get('payment')
+        rating = kwargs.get('rating')
+        other = kwargs.get('other')
+        assert bool(request) ^ bool(payment) ^ bool(rating) ^ bool(other), \
+        'kwargs must specify *either* a request, payment or a rating'
+        
+        if request:
+            self.request_id = request.id
+        if payment:
+            self.payment_id = payment.id
+        if rating:
+            self.rating_id = rating.id
+        if other:
+            self.other = other
 
 
 class Tag(Base):

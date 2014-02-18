@@ -801,8 +801,9 @@ a:hover{
 }
 
 .btn-toggle-off {
-  background-color: #66cbef;
-  color:white;
+  border:1px solid;
+  border-color: #66cbef;
+  color:#00a9e5;
   padding-left:16px;
   padding-right:16px;
   padding-top:3px;

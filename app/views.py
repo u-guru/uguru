@@ -10,6 +10,8 @@ import emails
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    if session.get('user_id'):
+        return render_template('activity.html')
     request_form = RequestForm()
     return render_template('new_index.html', forms=[request_form],
         logged_in=session.get('user_id'))
@@ -179,7 +181,7 @@ def login():
                         tutor_id=request.args.get('tutor_id'))                    
             else:
                 flash("You have been logged in")
-                json['redirect'] = '/'      
+                json['redirect'] = '/activity/'      
         else:
             json['failure'] = False
         return jsonify(json=json)
@@ -194,7 +196,9 @@ def tutorsignup1():
 
 @app.route('/activity/')
 def activity():
-    return render_template('activity.html')
+    if not session.get('user_id'):
+        return redirect(url_for('login', redirect=True, tutor_confirm=request_id))
+    return render_template('activity.html', logged_in=session.get('user_id'))
 
 @app.route('/tutor_offer/')
 def tutor_offer():
