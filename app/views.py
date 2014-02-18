@@ -83,6 +83,15 @@ def update_notifications():
     if request.method == "POST":
         ajax_json = request.json
         print ajax_json
+        user_id = session['user_id']
+        user = User.query.get(user_id)
+        if 'text' in ajax_json:
+            user.text_notification = ajax_json.get('text')
+        if 'email' in ajax_json:
+            user.email_notification = ajax_json.get('email')
+        db_session.commit()
+        print "user email notification is now " + str(user.email_notification)
+        print "user next notification is now " + str(user.text_notification)
         return jsonify(ajax_json)
 
 @app.route('/validation/', methods=('GET', 'POST'))
@@ -260,7 +269,7 @@ def howitworks():
 
 @app.route('/settings/')
 def settings():
-    return render_template('settings.html', logged_in=session.get('user_id'))
+    return render_template('settings.html', logged_in=session.get('user_id'), user=user)
 
 @app.route('/tutor_accept/')
 def tutor_accept():

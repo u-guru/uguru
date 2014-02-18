@@ -297,6 +297,10 @@ class Notification(Base):
         primary_key = True,
         default = 0)
 
+    feed = relationship("Feed",
+        secondary = feed_notification_table,
+        backref = "notifications")
+
     def __init__(self, name, **kwargs):
         request = kwargs.get('request')
         payment = kwargs.get('payment')

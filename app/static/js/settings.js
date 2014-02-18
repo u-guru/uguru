@@ -4,28 +4,28 @@ $(document).ready(function() {
         $('#email-off-span').attr('class','btn-toggle-off');
         $('#saved-email').show();
         $('#saved-email').delay(750).fadeOut('slow');
-        send_notification_ajax('email', 1)
+        send_notification_ajax('email', true)
     });
     $('#email-off').click(function(){
         $('#email-on-span').attr('class','btn-toggle-on-inactive');
         $('#email-off-span').attr('class','btn-toggle-off-active');
         $('#saved-email').show();
         $('#saved-email').delay(750).fadeOut('slow');
-        send_notification_ajax('email', 0)
+        send_notification_ajax('email', false)
     });
     $('#text-off').click(function(){
         $('#text-on-span').attr('class','btn-toggle-on-inactive');
         $('#text-off-span').attr('class','btn-toggle-off-active');
         $('#saved-text').show();
         $('#saved-text').delay(750).fadeOut('slow');
-        send_notification_ajax('text', 1)
+        send_notification_ajax('text', false)
     });
     $('#text-on').click(function(){
         $('#text-on-span').attr('class','btn-toggle-on');
         $('#text-off-span').attr('class','btn-toggle-off');
         $('#saved-text').show();
         $('#saved-text').delay(750).fadeOut('slow');
-        send_notification_ajax('text', 0)
+        send_notification_ajax('text', true)
     });
 
     $("#settings-button").click(function() {
