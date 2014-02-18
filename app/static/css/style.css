@@ -19,6 +19,10 @@
   text-align: center;
 }
 
+a:link {
+  text-decoration:none;
+}
+
 .vert-text h1 {
   padding: 0;
   margin: 0;
@@ -534,6 +538,14 @@ a:hover{
   color:#fff;
 }
 
+.btn-options.active {
+  background-color: #00a0cf;
+}
+
+.btn-options.active a{
+  color:white;
+}
+
 .btn-options:hover a{
   color:#fff;
 }
@@ -953,4 +965,9 @@ input[type=checkbox].css-checkbox { position: absolute;  overflow: hidden;  clip
 .customdropdownInner { 
   background:url(images/arrow.gif) 
   no-repeat center right; 
+}
+
+.saved-text {
+  color: #57ad5c;
+  display:none;
 }

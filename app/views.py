@@ -78,6 +78,12 @@ def confirm_tutor_interest(request_id):
     return render_template('tutor_accept.html', logged_in=session.get('user_id'), \
         page_dict = page_info)
 
+@app.route('/notification-settings/', methods=('GET','POST'))
+def update_notifications():
+    if request.method == "POST":
+        ajax_json = request.json
+        print ajax_json
+        return jsonify(ajax_json)
 
 @app.route('/validation/', methods=('GET', 'POST'))
 def success():
@@ -196,8 +202,8 @@ def tutorsignup1():
 
 @app.route('/activity/')
 def activity():
-    if not session.get('user_id'):
-        return redirect(url_for('login', redirect=True, tutor_confirm=request_id))
+    # if not session.get('user_id'):
+    #     return redirect(url_for('login', redirect=True, tutor_confirm=request_id))
     return render_template('activity.html', logged_in=session.get('user_id'))
 
 @app.route('/tutor_offer/')
