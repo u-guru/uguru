@@ -835,6 +835,18 @@ a:hover{
   border-bottom-right-radius:0;
 }
 
+
+.input-signup {
+  border: 1px solid #40bfec;
+  width:170px;
+  height:40px;
+  border-radius: 12px;
+  padding-left:12px;
+  text-align: left;
+  white-space: nowrap;
+  color:#40bfec;
+}
+
 .btn-toggle-on-inactive {
   border:1px solid;
   border-color: #66cbef;
@@ -928,18 +940,6 @@ a:hover{
 .offer {
   margin:60px 90px 80px 90px;
   text-align: center;
-}
-
-.right-caret {
-    border-bottom: 4px solid transparent;
-    border-top: 4px solid transparent;
-    border-left: 4px solid #000000;
-    display: inline-block;
-    height: 0;
-    opacity: 0.3;
-    vertical-align: top;
-    width: 0;
-    float:right;
 }
 
 

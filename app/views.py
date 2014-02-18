@@ -222,6 +222,18 @@ def student_request():
 def request_payment():
     return render_template('request_payment.html')
 
+@app.route('/request_tutor/')
+def request_tutor():
+    return render_template('request_tutor.html')
+
+@app.route('/student_signup/')
+def student_signup():
+    return render_template('student_signup.html')
+
+@app.route('/tutor_signup/')
+def tutor_signup():
+    return render_template('tutor_signup.html')
+
 @app.route('/tutorsignup2/')
 def tutorsignup2():  
     return render_template('tutorsignup2.html')

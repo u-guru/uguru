@@ -1,0 +1,664 @@
+{% extends 'base.html' %}
+{% block header %}
+  <link href="/static/css/jquery.nouislider.min.css" rel="stylesheet">
+  <link href="/static/css/bootstrap-formhelpers.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+  <!-- Jinja2 Variable Definitions -->
+  {% set request_form = forms[0] %}
+  {% set messages = get_flashed_messages(with_categories=true) %}
+
+ 	<!-- Full Page Image Header Area -->
+    <div id="top" class="header">
+      <div class="vert-text">    
+
+        {% if messages %}
+          {% for category, message in messages %}
+              <div class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{message}}
+              </div>
+          {% endfor %}
+        {% endif %}
+        <section id="main">
+        <div class="main-area" style="display:block">
+          <br>
+          <br>
+          <br>
+        	<img class="img-portfolio img-responsive" src="/static/img/guru.svg">
+         <!--  <h1>uGuru.me</h1> -->
+          <h3><em>Peer to Peer</em> private tutoring.<br>Affordable. Quick.</h3>
+          <a href="javascript:void(0)" id="student-signup-btn" class="push_button_primary">NEED A TUTOR?</a>
+          <br>
+          <a href="javascript:void(0);" id="tutor-signup-btn" class="push_button_default">BECOME A TUTOR</a>      
+                <h4>OR <a href="#" id="login-link-main"><u>LogIn</u></a> </h4>
+                <br>
+              <h4>SEE HOW IT WORKS</h4>
+              <span class="caret"></span>
+      <br>
+      <br>
+      <br>
+      <hr>
+      <section id="how" class="jumbotron" style="min-height:100%; padding-bottom: 100px" >
+        <h2> Peer to Peer, Face to Face</h2>
+        <div class="row-fluid">
+          <div class="span8">
+          <img style="height:275px; width:300px;" src="/static/img/brain-gears.jpg"/>
+        </div>
+          <div class="span4">
+            <p>
+          Request personalized help from fellow students, or tutor anything you excel in, from courses to hobbies. We provide the connection, you provide the talent.
+          </p>
+        </div>
+      </div>
+      </section>
+      <hr>
+      <section id="pricing" class="jumbotron" style="min-height:100%">
+        <h2>Affordable, Quality Tutoring</h2>
+        <p>Each tutor begins with a starting rate of $7. Tutors with higher ratings and more experience through uGuru.me will be marketed at higher rates. Otherwise, enjoy 100% flexibility working for yourself, as much as you want, when you want.</p>
+      </section>
+      <hr>
+      <section id="what" class="jumbotron" style="min-height:100%; padding-bottom: 100px">
+        <h2>Why uGuru.me?</h2>
+        <p>We’ve all experienced that moment when we need last minute assistance on a problem set or quick feedback on a final paper. But not all of us have time to wait in line for the SLC or office hours.<br>
+        <br>
+        Thus, we were inspired to create a simple and effective tutoring platform that benefits both the tutor and the student. We are passionate about helping every fellow bear succeed, one guru at a time.</p>
+      </section>
+      </div>
+       </section>
+        <div class="login-modal" style="display:none">            
+            <div class="row vertical-offset-100">
+              <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <button type="button" class="close" id="modal-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h2>Log In</h2>
+                  </div>
+                  <div class="panel-body">
+                    <div>
+                        <span id='alert-fields-login' style="color:red;display:None">Incorrect username or password</span>                        
+                    </div>
+                    <form accept-charset="UTF-8" role="form">
+                    <fieldset>
+                      <div class="form-group">
+                          <input id="login-email" name="login-email" class="form-control" placeholder="E-mail" name="email" type="text">
+                      </div>
+                      <div class="form-group">
+                        <input id="login-password" name="login-password" class="form-control" placeholder="Password" name="password" type="password" value="">
+                      </div>
+                       <a href="javascript:void(0)" id="login-submit" class="btn btn-lg push_button_default btn-block" type="submit">Submit</a>
+                    </fieldset>
+                    </form>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tutor signup modal -->
+        <div class="tutor-signup-modal" style="display:none; text-align:center">            
+          <div class="row vertical-offset-100">
+            <div class="col-md-4 col-md-offset-4">
+              <div id="tutor-signup-panel"> 
+                <div class="panel-heading">
+                  <button type="button" class="close" id="modal-close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 style="color:white">SIGNUP INFORMATION</h3>
+                </div>
+                <!-- Panel Body 2-->
+                <!-- <div class="panel-body">  -->      
+                <p><em>Have an account? Login <a href="javascript:void(0)" id="login-link-tutor-signup"> here</a>.</em><p>             
+                  <form accept-charset="UTF-8" role="form">
+                    <fieldset>
+                      <div class="form-group">
+                        <input class="form-control" placeholder="Name" id="tutor-signup-name" name="tutor-name" type="text">
+                      </div>
+                      <div class="input-group" style="padding-bottom:15px;">
+                          <input class="form-control" placeholder="E-mail" id="tutor-signup-email" name="tutor-email" type="text">
+                          <span class="input-group-addon">@berkeley.edu</span>           
+                      </div>
+
+                      <div class="form-group">
+                        <input class="form-control" id="tutor-signup-password" placeholder="Password" name="tutor-password" type="password" value="">
+                      </div>
+                      <div class="form-group">
+                          <input class="form-control bfh-phone" id="tutor-signup-phone" data-format="+1 (ddd) ddd-dddd" placeholder="Phone Number" name="tutor-phone" type="text">
+                          <span style="font-weight:strong; font-size:0.80em">
+                          Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
+                          </span>
+                      </div>                                                                                         
+                        <h4 style="margin:2px">Add Courses and Skills</h4>
+                        <span style="font-weight:strong; margin-top:-10px; font-size:0.80em;">
+                        Add anything you feel proficient enough in to teach.
+                        </span>
+      
+                        <div class="input-group">
+                          <input id="tutor-skill-input" type="text" class="form-control">
+                          <span class="input-group-btn">
+                            <button id="tutor-skill-add" class="btn push_button_primary" style="width:50px; height:38px; box-shadow:none" type="button"><span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                          </span>
+                        </div>              
+                            
+                        <div id="tutor-skills" style="align:center; margin-top:5px; display:None" class="row">                                                   
+                        </div>
+                        
+                        <div id="skill-popular-example" class="row">
+                          <!-- <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3"> -->
+                            <h5>Popular Examples</h5>
+                            <div style="margin-top:10px">                              
+                              <button type="button" class="btn btn-sm btn-option">CS 61A</button>                              
+                              <button type="button" class="btn btn-sm btn-option">Essay Proofreading</button>                                                                                      
+                              <button type="button" class="btn btn-sm btn-option">French R1B</button>
+                              
+                              <button type="button" class="btn btn-sm btn-option">Chem 1A</button> 
+                            </div>
+                          </div>
+                        <!-- </div> -->
+                        <span id='alert-fields-tutor-signup' style="color:red;display:None">Please fill or select all fields</span>
+                      <a id="tutor-signup-submit" href="javascript:void(0);" class="btn btn-lg push_button_default btn-block" type="submit" style="margin-top:10px">Register</a>
+                      <br>
+                      <p>By clicking submit you agree to our <a href="/TermsofService/">Terms of Service</a> and <a href="PrivacyPolicy">Privacy Policy</a>.</p>
+                    </fieldset>
+                  </form>
+                </div>
+                  <!-- /Panel Body 2-->
+              </div>
+            </div>
+          </div>
+            <!-- /Tutor Signup Panel -->
+            <div id="tutor-signup-confirmation" style="display:None">
+                  <div class="panel-heading">
+                    <button type="button" class="close" id="modal-close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 style="color:white; text-align:center;">YOU ARE NOW A GURU</h2>
+                  </div>
+                    <h4>You will be earning $7/hour for your first session. If you get good ratings, we'll increase your rates! Read more <a href="/howitworks/">here</a>.</h4>
+                   <img class="img-portfolio img-responsive" src="/static/img/guru.svg">
+                    <h3><u>What's next?</u></h3>
+                    <div style="align:center">
+                     <ol style="text-align:left">
+                      <li>Once a student needs help in your area of expertise, you will receive a text and email notification with information regarding that student.</li>
+                      <li>You can choose to accept or reject. If you accept, an email thread will be initiated between the two.</li>
+                      <li>Feel free to edit your skills and set your notification preferences in <a href="/settings">Account Settings</a>.</li>
+                      <li>Sit back and relax! As soon as someone needs assistance in your skillset, we'll let you know <em>immediately.</em></li>
+                    </ol>
+                  </div>
+            </div>
+      <!--     </div>
+        </div> -->
+        <!--/ Tutor Signup modal -->
+
+        <!-- Student Signup modal -->
+        <div class="student-signup-modal container" style="display:none; text-align: center">            
+            <div class="row vertical-offset-100">
+              <div class="col-md-4 col-md-offset-4">
+                
+                <!-- Panel 1 -->
+                <div id="request-panel">                  
+                  <div class="panel-heading">
+                    <button type="button" class="close" id="modal-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 style="color:white">WHAT DO YOU NEED HELP IN?</h3>                 
+                  </div>
+
+                  <!-- Panel Body -->
+                 <!--  <div class="panel-body"> -->
+                  <em>Have an account? Please <a href="javascript:void(0)" id="login-link-request"> login</a> first.</em>
+                  <br>
+                    <form method='post' action ='/'>
+                      {{ request_form.hidden_tag()}}                      
+                      <div class="form-group" id='skill-form-group'>
+                        <input name="skill" class="form-control" id="student-signup-skill" type="text" class="search-query form-control" placeholder="Add Skill/Course (i.e. CS10 or Essay Proofreading)"/>
+                      </div>
+                      
+                      <h4 style="color:#1FC9B8">PLEASE TELL US MORE</h4>
+                      <textarea class="form-control" id="student-signup-description" name="description" rows="3" placeholder="Example: My CS61A project is due in 2 weeks. Topics that I need help in are... You can best prepare by..."></textarea>
+                      
+                      <h4 style="color:#1FC9B8">URGENCY</h4>                     
+                      <div class="btn-group" data-toggle="buttons">
+                         {% for subfield in request_form.urgency %}
+                        <label class="btn btn-option">
+                          {{ subfield }} {{subfield.label.text}}
+                        </label>
+                        {% endfor %}
+                      </div>                                             
+                      
+                      <h4 style="color:#1FC9B8">FREQUENCY</h4>
+                      <div class="btn-group" data-toggle="buttons">
+                         {% for subfield in request_form.frequency %}
+                        <label class="btn btn-option">
+                          {{ subfield }} {{subfield.label.text}}
+                        </label>
+                        {% endfor %}
+                      </div>                                             
+                      <!-- Slider -->
+                      <h4 style="color:#1FC9B8">TIME ESTIMATE (per session)</h4>
+                          <div class="noUiSlider"></div>
+                          <p class="text-right"><span name="estimate" id="low"></span> hours </p>
+                      <div>
+                        <span id='alert-fields-student-signup1' style="color:red;display:None">Please fill or select all fields</span>
+                        <a href="javascript:void(0)" id="request-submit" class="btn btn-lg push_button_default btn-block" type="submit">NEXT</a>
+                      </div>
+                      <br>
+                      <br>
+
+                    </form>
+                  </div>
+                  <!-- /Panel Body -->
+                </div>
+                <!-- /Panel 1 -->
+
+                <!-- IF !logged_in -->
+                {% if not logged_in %}
+                <!-- Panel 2 -->
+                <div id="student-signup-panel" style="display:None">
+                  <div class="panel-heading">
+                    <button type="button" class="close" id="modal-close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h3 style="color:white">SIGNUP INFORMATION</h3>
+                  </div>
+                  <!-- Panel Body 2-->
+                 <!--  <div class="panel-body"> -->    
+                 <p><em>Have an account? Login <a href="javascript:void(0)" id="login-link-signup"> here</a>.</em><p>                
+                    <form accept-charset="UTF-8" role="form">
+                      <fieldset>
+                        <div class="form-group">
+                          <input class="form-control" placeholder="Name" id="student-signup-name" name="name" type="text">
+                        </div>
+                        <div class="input-group" style="padding-bottom:15px;">
+                            <input class="form-control" placeholder="E-mail" id="student-signup-email" name="email" type="text">
+                            <span class="input-group-addon">@berkeley.edu</span>           
+                        </div>
+
+                        <div class="form-group">
+                          <input class="form-control" id="student-signup-password" placeholder="Password" name="password" type="password" value="">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control bfh-phone" id="student-signup-phone" data-format="+1 (ddd) ddd-dddd" placeholder="Phone Number" name="phone" type="text">
+                        </div>
+                          <p>Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
+                          </p>
+                          <span id='alert-fields-student-signup2' style="color:red;display:None">Please fill or select all fields</span>
+
+                        <a id="student-signup-submit" href="javascript:void(0);" class="btn btn-lg push_button_default btn-block" type="submit">SUBMIT</a>
+                        <p>By clicking submit you agree to our <a href="/TermsofService/">Terms of Service</a> and <a href="PrivacyPolicy">Privacy Policy</a>.</p>
+                      </fieldset>
+                    </form>
+                 <!--  </div> -->
+                  <!-- /Panel Body 2-->
+                </div>
+                <!-- /Panel 2-->
+                {% endif %}
+
+                <!-- Request Confirmation Panel -->
+                <div id="request-panel-confirmation" style="display:None">
+                  <div class="panel-heading">
+                    <h2 style="color:white; text-align:center;">YOUR REQUEST HAS BEEN SUBMITTED</h2>
+                  </div>
+                 <!--  <div class="panel-body"> -->
+                        <h4>We've let all Gurus in <span id="student-request-skill-name"> </span> know that someone is in need.</h4>
+                       <img class="img-portfolio img-responsive" src="/static/img/guru.svg">
+                        <h3><u>What's next?</u></h3>
+                      <div style="align:center">
+                        <ol style="text-align:left">
+                          <li>Once an expert accepts your request, you will receive a text and email notification with information regarding that expert. (Edit notification preferences <a href="/settings"><u>HERE</u></a>.)</li>
+                          <li>You can choose to accept or wait for a different offer. If you accept, an email thread will be initiated between the two.</li>
+                          <li>Relax! We'll let you know as soon as a Guru is available.</li>
+                        </ol>
+                  </div>
+                </div>
+                <!-- /Panel 3 -->  
+               <!-- /Request Confirmation Panel -->
+
+              </div>
+            </div>
+        </div>
+      </div>
+      
+    </div>
+  <!-- /Full Page Image Header Area -->
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/js/jquery.nouislider.min.js"></script>
+<script src="/static/js/bootstrap-formhelpers.min.js"></script>
+
+<!-- Show/Hide Login Jquery -->
+<script type="text/javascript">
+  // Open Login Dialog
+  $('#login-link-menu').click(function(){
+    $('.main-area').hide('slow'); 
+    $('.login-modal').show('slow');
+  });
+
+  $('#login-link-main').click(function(){
+    $('.main-area').hide('slow'); 
+    $('.login-modal').show('slow');
+  });
+
+  $('#login-link-signup').click(function(){
+    $('.student-signup-modal').hide('slow'); 
+    $('.login-modal').show('slow');
+  });
+
+  $('#login-link-tutor-signup').click(function(){
+    $('.tutor-signup-modal').hide('slow'); 
+    $('.login-modal').show('slow');
+  });
+
+  $('#login-link-request').click(function(){
+    $('.student-signup-modal').hide('slow'); 
+    $('.login-modal').show('slow');
+  });
+
+  //Close modal dialog by pressing corner x button
+  $('#modal-close').click(function(){
+    $('.login-modal').hide('slow');
+    $('.student-signup-modal').hide('slow')
+    $('.main-area').show('slow');       
+  });
+
+  //Close login dialog by pressing escape
+  $(document).keyup(function(e) {
+    if (e.keyCode == 27) { 
+      $('.login-modal').hide('slow');
+      $('.tutor-signup-modal').hide('slow');
+      $('.student-signup-modal').hide('slow');
+      $('.main-area').show('slow');        
+    }
+  });
+</script>
+
+<!--Student signup show/hide Jquery -->
+<script type="text/javascript">
+  // Open Student Signup Dialog
+  $('#student-signup-btn').click(function(){
+    $('.main-area').hide('slow'); 
+    $('.student-signup-modal').show('slow');
+  });
+</script>
+
+<!--Student signup show/hide Jquery -->
+<script type="text/javascript">
+  // Open Student Signup Dialog
+  $('#tutor-signup-btn').click(function(){
+    $('.main-area').hide('slow'); 
+    $('.tutor-signup-modal').show('slow');
+  });
+</script>
+
+<script>$(".noUiSlider").noUiSlider({
+  range: [1, 10]
+  ,start: 2
+  ,step: 0.5
+  ,handles: 1
+  ,serialization: {
+    to: [ $("#low"), 'html' ],
+    resolution: 0.1
+  }
+});</script>
+
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+<!--JavaScript form validation for student and tutor signup-->
+<script>
+  //Validation for student request form, previously signed up
+  $('#request-submit').click(function(){
+    if ((!$('#student-signup-description').val() || !$('#student-signup-skill').val()) || $('input[type=radio]:checked').size() < 2) {
+      $('#alert-fields-student-signup1').show()
+    } else {
+       {% if not logged_in %}
+       $('#request-panel').hide('slow'); 
+       $('#student-signup-panel').show('slow');
+       {% else %}
+        //Validate request form and submit it
+        var data = {
+        'student-request': true,
+        //TODO: Make this a function. These are request fields
+        'description': $('textarea[name="description"]').val(),
+        'urgency': $('input[name="urgency"]:checked').val(),
+        'frequency': $('input[name="frequency"]:checked').val(),
+        'skill': $('input[name="skill"]').val(),
+        'estimate': $('span[name="estimate"]').text()
+        }
+        $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/validation/' ,
+          data: JSON.stringify(data),
+          dataType: "json",        
+          success: function(result) {    
+            $('#request-panel').hide('slow');     
+            $('#request-panel-confirmation').show()
+            $('#student-request-skill-name').text($('input[name="skill"]').val());                        
+            }
+          });              
+
+       {% endif %}
+    }
+  });
+  $('#student-signup-skill').blur(function(){
+    if ($('#student-signup-skill').val()) {
+      $('#student-signup-skill').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#student-signup-skill').css({"border-color":"#a94442"
+      });
+    }
+  });
+  $('#student-signup-description').blur(function(){
+    if ($('#student-signup-description').val()) {
+      $('#student-signup-description').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#student-signup-description').css({"border-color":"#a94442"
+      });
+    }
+  });
+  $('#tutor-signup-description').blur(function(){
+    if ($('#tutor-signup-description').val()) {
+      $('#tutor-signup-description').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#tutor-signup-description').css({"border-color":"#a94442"
+      });
+    }
+  });
+
+  <!-- login validation -->
+  $('#login-submit').click(function(){
+    //check whether fields are blank
+    if (!$('#login-email').val() || !$('#login-password')) {
+      $('#alert-fields-student-signup2').show()
+    } else {
+      //else get data and send to server
+      var data = {
+        'email': $('input[name="login-email"]').val(),
+        'password': $('input[name="login-password"]').val()
+      }
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        url: '/login/' ,
+        data: JSON.stringify(data),
+        dataType: "json",        
+        success: function(result) {        
+          if (result.json['success']) {
+            window.location.replace($SCRIPT_ROOT)
+          } else {
+            $('#alert-fields-login').show()       
+          }
+        }
+      });      
+    }
+  });
+
+  var add_skill_tag = function() {    
+    //Show the div
+    $('#tutor-skills').show();
+    //Get rid of popular examples after they add their first course
+    var skill_input_text = $('#tutor-skill-input').val();
+    var span_tag_str = '<span class="tag">' +
+                          '<span>' + skill_input_text + '&nbsp;&nbsp;</span>' +
+                            '<a href="javascript:void(0);" class="remove-skill" style="float:right;"title="Removing tag">x</a>'+
+                          '</span>';
+    $('#tutor-skills').prepend(span_tag_str);
+    $('#tutor-skill-input').val("");
+    if ($('#tutor-skills').children().length >= 2) {
+      $('#skill-popular-example').hide();
+    } 
+  };
+
+  $('#tutor-skills').on('click', '.remove-skill', function(e){
+    e.preventDefault();
+    $(this).parent().remove();
+    if ($('#tutor-skills').children().length == 0) {
+      $('#skill-popular-example').show();
+    }
+  })
+
+  $('#skill-popular-example').on('click', '.skill-example', function(e){
+    $('#tutor-skills').show();
+    e.preventDefault();
+    skill_name = $(this).text()
+    var span_tag_str = '<span class="tag">' +
+                          '<span>' + skill_name + '&nbsp;&nbsp;</span>' +
+                            '<a href="javascript:void(0);" class="remove-skill" style="float:right;"title="Removing tag">x</a>'+
+                          '</span>';
+    $('#tutor-skills').prepend(span_tag_str);
+  })
+
+  $('#tutor-skill-add').click(function(){
+    if ($('#tutor-skill-input').val()) {
+      add_skill_tag();
+    }
+  });
+
+  $('#tutor-skill-input').keyup(function(e){
+    if ($('#tutor-skill-input').val()) {
+      if (e.keyCode == 13) {
+        add_skill_tag();
+      }
+    }
+  });
+
+  //make sure there is more than one skill before register 
+
+  //Validation for tutor signup
+  $('#tutor-signup-submit').click(function(){
+    if ((!$('#tutor-signup-name').val() || !$('#tutor-signup-email').val()) 
+      || !$('#tutor-signup-password').val() || !($('#tutor-signup-phone').val().length == 17)
+      || !($('#tutor-skills').children().length > 0))
+    {
+      $('#alert-fields-tutor-signup').show() 
+    }
+    else {
+      $('#alert-fields-tutor-signup').hide() 
+      var data = {
+        'tutor-signup': true,        
+        'name': $('input[name="tutor-name"]').val(),
+        'email': $('input[name="tutor-email"]').val(),
+        'phone': $('input[name="tutor-phone"]').val(),
+        'password': $('input[name="tutor-password"]').val(),
+        'skills': [1,2,3,4,5]
+      }
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        url: '/validation/' ,
+        data: JSON.stringify(data),
+        dataType: "json",        
+        success: function(result) {        
+          $('#tutor-signup-panel').hide()
+          $('#tutor-signup-confirmation').show()          
+          $('#login-link-menu').attr({
+            id: "logout-link",
+            href: "/logout/"
+          });
+          $('#logout-link').text("Logout");
+        }
+      });
+    }
+  });
+  
+  <!-- if !logged_in -->
+  //Validation for student signup part 2
+  $('#student-signup-submit').click(function(){
+    if ((!$('#student-signup-name').val() || !$('#student-signup-email').val()) 
+      || !$('#student-signup-password').val() || !($('#student-signup-phone').val().length == 17)) 
+    {
+        $('#alert-fields-student-signup2').show()
+    } 
+    else {
+      $('#alert-fields-student-signup2').hide();      
+      var data = {
+        'student-signup': true,
+        'student-request': true,
+        'name': $('input[name="name"]').val(),
+        'email': $('input[name="email"]').val(),
+        'phone': $('input[name="phone"]').val(),
+        'password': $('input[name="password"]').val(),
+        //TODO: Make this a function. These are request fields
+        'description': $('textarea[name="description"]').val(),
+        'urgency': $('input[name="urgency"]:checked').val(),
+        'frequency': $('input[name="frequency"]:checked').val(),
+        'skill': $('input[name="skill"]').val(),
+        'estimate': $('span[name="estimate"]').text()
+      }
+      $('#student-signup-panel').hide()
+      $('#request-panel-confirmation').show()
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        url: '/validation/' ,
+        data: JSON.stringify(data),
+        dataType: "json",        
+        success: function(result) {            
+          $('#student-request-skill-name').text($('input[name="skill"]').val());
+          $('#login-link-menu').attr({
+            id: "logout-link",
+            href: "/logout/"
+          });
+          $('#logout-link').text("Logout");
+        }
+      });      
+    }
+  });
+  $('#student-signup-name').blur(function(){
+    if ($('#student-signup-name').val()) {
+      $('#student-signup-name').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#student-signup-name').css({"border-color":"#a94442"
+      });
+    }
+  });
+  $('#student-signup-email').blur(function(){
+    if ($('#student-signup-email').val()) {
+      $('#student-signup-email').css({"border-color":"#3c763d"
+      })
+      if ($(this).val().indexOf("@berkeley.edu") != -1) {
+        var text = $(this).val().replace("@berkeley.edu","");
+        $(this).val(text);
+      }
+    } else {
+      $('#student-signup-email').css({"border-color":"#a94442"
+      });
+    }
+  });
+  $('#student-signup-password').blur(function(){
+    if ($('#student-signup-password').val()) {
+      $('#student-signup-password').css({"border-color":"#3c763d"
+      })
+    } else {
+      $('#student-signup-password').css({"border-color":"#a94442"
+      });
+    }
+  });
+
+  <!-- /if !logged_in -->
+</script>
+
+{% endblock %}
