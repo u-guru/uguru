@@ -202,8 +202,8 @@ def tutorsignup1():
 
 @app.route('/activity/')
 def activity():
-    if not session.get('user_id'):
-        return redirect(url_for('login', redirect=True, tutor_confirm=request_id))
+    # if not session.get('user_id'):
+    #     return redirect(url_for('login', redirect=True, tutor_confirm=request_id))
     return render_template('activity.html', logged_in=session.get('user_id'))
 
 @app.route('/tutor_offer/')
