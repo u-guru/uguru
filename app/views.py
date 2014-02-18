@@ -230,6 +230,14 @@ def bill():
 def request_payment():
     return render_template('request_payment.html')
 
+@app.route('/credit_card/')
+def credit_card():
+    return render_template('credit_card.html')
+
+@app.route('/conversation')
+def conversation():
+    return render_template('conversation.html')
+
 @app.route('/request_tutor/')
 def request_tutor():
     return render_template('request_tutor.html')
