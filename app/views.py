@@ -218,6 +218,14 @@ def messages():
 def student_request():
     return render_template('student_request.html')
 
+@app.route('/rate/')
+def rate():
+    return render_template('rate.html')
+
+@app.route('/bill/')
+def bill():
+    return render_template('bill.html')
+
 @app.route('/request_payment/')
 def request_payment():
     return render_template('request_payment.html')
