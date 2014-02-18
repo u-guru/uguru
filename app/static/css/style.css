@@ -823,10 +823,43 @@ a:hover{
   border-bottom-right-radius:0;
 }
 
+.btn-toggle-on-inactive {
+  border:1px solid;
+  border-color: #66cbef;
+  color:#00a9e5;
+  padding-left:20px;
+  padding-right:20px;
+  padding-top:3px;
+  padding-bottom:5px;
+  margin-right:0;
+  width:90px;
+  height:20px;
+  border-top-left-radius:1em;
+  border-bottom-left-radius:1em;
+  border-top-right-radius:0;
+  border-bottom-right-radius:0;
+}
+
 .btn-toggle-off {
   border:1px solid;
   border-color: #66cbef;
   color:#00a9e5;
+  padding-left:16px;
+  padding-right:16px;
+  padding-top:3px;
+  padding-bottom:5px;
+  margin-left:0;
+  width:90px;
+  height:20px;
+  border-top-right-radius:1em;
+  border-bottom-right-radius:1em;
+  border-top-left-radius:0;
+  border-bottom-left-radius:0;
+}
+
+.btn-toggle-off-active {
+  background-color: #00a9e5;
+  color:white;
   padding-left:16px;
   padding-right:16px;
   padding-top:3px;
