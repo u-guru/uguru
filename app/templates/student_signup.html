@@ -5,18 +5,30 @@
    <h4 style="color:white;">REQUEST A TUTOR</h4>
   </div>
 
-<div id="main" display="block">
+<div id="account-info" style="padding:20px">
+	<div align="center">
+		<label for="name" class="h4" style="padding-right:55px;">NAME</label>
+		<input id="name" class="input-signup"></input>
+		<br>
+		<br>
+		<label for="email" class="h4" style="padding-right:45px">EMAIL&nbsp;&nbsp;&nbsp;</label>
+		<input id="email" class="input-signup" placeholder="@berkeley.edu"></input>
+		<br>
+		<br>
+		<label for="password" class="h4" style="padding-right:10px">PASSWORD</label>
+		<input id="password" class="input-signup"></input>
+		<hr>
+	</div>
 <div style="margin:30px 30px 20px 30px" align="center">
 		<input class="add-skills" placeholder="I need help in..."></input>
-		<hr>
-		<h3>URGENCY</h3>
+		<h3 style="font-size:20px">URGENCY</h3>
 		<span id="ASAP" class="btn-options btn-md">ASAP</span>
         <span id="tomorrow" class="btn-options btn-md">TOMORROW</span>
         <span id="profile-button" class="btn-options btn-md">THIS WEEK</span>
-        <h3>FREQUENCY</h3>
+        <h3 style="font-size:20px">FREQUENCY</h3>
 		<span id="ASAP" class="btn-options btn-md">ONE TIME</span>
         <span id="tomorrow" class="btn-options btn-md">REGULARLY</span>
-        <h3>Time Estimate</h3>
+        <h3 style="font-size:20px">Time Estimate</h3>
         <select class="customdropdown">
             <option>1 hour</option>
             <option>2 hours</option>
@@ -33,35 +45,8 @@
         <br>
  		<textarea class="bio" style="height:100px" placeholder="Any further description (optional)..."></textarea>
 	</div>
- 	<div class="btn-request" id="next">NEXT</div>
 </div>
-
-<div id="account-info" style="display:none">
-	<div align="center">
-		<label for="name" class="h4" style="padding-right:10px">NAME</label>
-		<input id="name" class="input-signup"></input>
-		<br>
-		<br>
-		<label for="email" class="h4" style="padding-right:10px">EMAIL</label>
-		<input id="email" class="input-signup" placeholder="@berkeley.edu"></input>
-		<br>
-		<br>
-		<label for="password" class="h4" style="padding-right:10px">PASSWORD</label>
-		<input id="password" class="input-signup"></input>
-	</div>
-</div>
-
-
-{% endblock %}
-
-{% block footer %}
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
-  <script>
-    $("#next").click(function() {
-      $("#main").hide();
-      $("#account-info").show();
-    });
-  </script>
+<div class="btn-request" id="next">NEXT</div>
 
 
 {% endblock %}
