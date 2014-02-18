@@ -200,7 +200,7 @@ def login():
         else:
             json['failure'] = False
         return jsonify(json=json)
-    return render_template("login.html", redirect=request.query_string)    
+    return render_template("login.html", redirect_args=request.query_string)    
 
 @app.route('/tutorsignup1/', methods=('GET', 'POST'))
 def tutorsignup1():
@@ -269,6 +269,10 @@ def howitworks():
 
 @app.route('/settings/')
 def settings():
+    user_id = session.get('user_id')
+    if not user_id:
+        return redirect(url_for('login'))
+    user = User.query.get(user_id)
     return render_template('settings.html', logged_in=session.get('user_id'), user=user)
 
 @app.route('/tutor_accept/')
