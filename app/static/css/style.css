@@ -946,7 +946,33 @@ a:hover{
   text-align: center;
 }
 
+.chat-bubble {
+  border: 3px solid #40bfec;
+  border-radius: 20px;
+  padding:10px 25px 10px 15px;
+  text-align: left;
+  white-space: normal;
+  color:grey;
+}
 
+.blue-bottom-block {
+  width:100%;
+  margin-top:250px;
+  background-color:#00a9e5;
+  height:70px;
+  position:relative;
+
+}
+.type-message {
+  height:50px;
+  width:70%;
+  background-color:#fff;
+  color:grey;
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-left:20px;
+
+}
 input[type=checkbox].css-checkbox { position: absolute;  overflow: hidden;  clip: rect(0 0 0 0);  height:1px;  width:1px;  margin:-1px;  padding:0; border:0; }  input[type=checkbox].css-checkbox + label.css-label { padding-left:20px; height:15px;  display:inline-block; line-height:15px; background-repeat:no-repeat; background-position: 0 0; font-size:15px; vertical-align:middle; cursor:pointer; }  input[type=checkbox].css-checkbox:checked + label.css-label { background-position: 0 -15px; }  .css-label{ background-image:url(http://csscheckbox.com/checkboxes/lite-blue-check.png); }
 
 .customdropdown { 
