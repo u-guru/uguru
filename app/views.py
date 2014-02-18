@@ -204,6 +204,10 @@ def tutor_offer():
 def messages():
     return render_template('messages.html')
 
+@app.route('/student_request/')
+def student_request():
+    return render_template('student_request.html')
+
 @app.route('/tutorsignup2/')
 def tutorsignup2():  
     return render_template('tutorsignup2.html')
