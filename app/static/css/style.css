@@ -9,14 +9,18 @@
     overflow-x: hidden; 
 }*/
 
-*:not(html) {
+/**:not(.typeahead) {
     -webkit-transform: translate3d(0, 0, 0);
-}
+}*/
 
 .vert-text {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+}
+
+input {
+  outline:none;
 }
 
 a:link {
@@ -55,6 +59,31 @@ a:link {
   list-style: none;
   margin-top: 10px;
   padding: 0;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #00a0cf;
+    font-size:24px;
+    font-weight:100;;
+    margin-left:10px;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #00a0cf;
+    font-size:24px;
+    font-weight:100;
+    margin-left:10px;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #00a0cf;
+    font-size:24px;
+    font-weight:100;
+    margin-left:10px;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #00a0cf;
+    font-size:24px;
+    font-weight:100;
+    margin-left:10px;
 }
 
 .sidebar-nav li {
@@ -480,7 +509,8 @@ html, body{
 }
 
 hr {
-  border-top: 3px solid #00a0cf;
+  border-top: 1px solid #00a0cf;
+  width: 100%;
 }
 
 h4, h5 {
@@ -502,16 +532,19 @@ a:hover{
 }
 
 .page-title {
-  background-color:#0070ce;
+  background-color:#0081be;
   width:100%;
   height:40px;
   color:#ffffff;
   font-size:20px;
-  font-weight:none;
   text-align:center;
   padding-top:2px;
   margin-bottom:0;
   bottom:0;
+}
+
+.page-title h4 {
+  font-weight:500;
 }
 
 .btn-options {
@@ -535,6 +568,16 @@ a:hover{
 
 .btn-options a {
   color: #00a0cf;
+}
+
+.default-text {
+  color:#00a0cf;
+  font-size:18px;
+  font-weight:100;
+}
+
+.skill-name {
+  padding-top:7px;
 }
 
 .btn-options:hover {
@@ -735,7 +778,7 @@ a:hover{
   color:#e3f2fc;
 }
 
-#notif, #credit, #password, #skills, #profile {
+#notif, #credit, #password, #profile {
   padding-left:25px;
   padding-right:25px;
 }
@@ -750,8 +793,9 @@ a:hover{
 }
 
 .add-skills {
-  border: 1px solid #40bfec;
-  width:260px;
+  border: 1.5px solid #40bfec;
+  width:100%;
+  font-size:24px;
   border-radius: 12px;
   padding-left:12px;
   text-align: left;
@@ -803,21 +847,21 @@ a:hover{
 .rating > span {
   display: inline-block;
   position: relative;
-  width: 2em;
+  width: 1.5em;
   font-size:24px;
-  color:black;
+  color:grey;
 /*  float:right;*/
   margin-left:auto;
   margin-right:auto;
 /*  padding-right:10px;*/
 }
 
-.rating > span:hover:before,
+/*.rating > span:hover:before,
 .rating > span:hover ~ span:before {
    content: "\2605";
    position: absolute;
    color:gold;
-}
+}*/
 
 #pic-holder {
   border: 1px solid #40bfec;
@@ -915,18 +959,42 @@ a:hover{
   width:30px;
   height:30px;
   color:white;
-  margin-left:20px;
+  font-weight:700;
+  margin-top:5px;
 }
 
 .btn-remove {
   background-color:#ef5b40;
   border-radius: 50%;
-  width:25px;
-  height:25px;
+  width:30px;
+  height:30px;
   color:white;
   text-align: center;
-  font-size:18px;
-  float:right;
+  font-size:35px;
+  font-weight:700;
+  float:left;
+}
+
+a.boxclose{
+    float:right;
+    margin-top:5px;
+    margin-right:5px;
+    width:30px;
+     height:30px;
+    cursor:pointer;
+    color: #fff;
+    border: 1px solid red;
+    border-radius: 30px;
+    background: red;
+    font-size: 50px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 11px 3px;       
+}
+
+.boxclose:before {
+    content: "-";
 }
 
 .light-blue-bar {
@@ -1016,4 +1084,25 @@ input[type=checkbox].css-checkbox { position: absolute;  overflow: hidden;  clip
 
 #change-password {
   display:none;
+}
+.tt-dropdown-menu {
+  background-color: rgb(235, 247, 250);
+  margin-left:5%;
+  width:90%;
+  border:1px solid;
+  border-color: #66cbef;
+}
+
+.tt-suggestion p {
+    text-align:left;
+    margin:0;
+    color:grey;
+    font-size:22px;
+    font-weight:100;
+    padding-left:10px;
+    padding-bottom:5px;
+}
+
+.row.row-skills {
+  margin: 0;
 }

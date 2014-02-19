@@ -76,6 +76,35 @@ $(document).ready(function() {
       }
     });
 
+    $('#add-skill-btn').click(function() {
+      if ($('#add-skill-input-settings').val()) {
+        $('.template-one-skill:first').clone().hide().attr('class', 'one-skill').appendTo('#current-skills');
+        $('.one-skill:last .skill-name').text($('#add-skill-input-settings').val());
+        $('.one-skill:last').show();
+        $('#add-skill-input-settings').val('');
+        $('.tt-hint').hide();
+      }
+    });
+
+    $('#add-skill-input-settings').keyup(function(e){
+    if ($('#add-skill-input-settings').val()) {
+      if (e.keyCode == 13) {
+        if ($('#add-skill-input-settings').val()) {
+          $('.template-one-skill:first').clone().hide().attr('class', 'one-skill').appendTo('#current-skills');
+          $('.one-skill:last .skill-name').text($('#add-skill-input-settings').val());
+          $('.one-skill:last').show();
+          $('#add-skill-input-settings').val('');
+          $('.tt-hint').hide();
+      }
+      }
+    }
+  });
+
+    $('#current-skills').on('click', '.boxclose', function(e){
+      e.preventDefault();
+      $(this).parent().parent().parent().remove();    
+    })
+
     var send_notification_ajax = function(email_or_text, value) {
         var data = {};
         if (email_or_text == 'email') {
@@ -114,4 +143,35 @@ $(document).ready(function() {
             }
         });  
     }
+
+    // instantiate the bloodhound suggestion engine
+    var numbers = new Bloodhound({
+      datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name); },
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      limit: 3,
+      prefetch: {
+        url: '/static/data/autocomplete.json',
+        filter: function(list) {
+          return $.map(list, function(course) { return { name: course }; });
+        }
+      },
+      sorter: function compare(a,b) {
+        if (a > b) {
+          return 1;
+        } 
+        if (b < a) {
+          return -1;
+        }
+        return 0 ;
+      }
+    });
+     
+    // initialize the bloodhound suggestion engine
+    numbers.initialize();
+     
+    // instantiate the typeahead UI
+    $('#skills .typeahead').typeahead(null, {
+      displayKey: 'name',
+      source: numbers.ttAdapter()
+    });
 });
