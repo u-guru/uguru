@@ -9,9 +9,9 @@
     overflow-x: hidden; 
 }*/
 
-/**:not(.typeahead) {
+*:not(html) {
     -webkit-transform: translate3d(0, 0, 0);
-}*/
+}
 
 .vert-text {
   display: table-cell;
@@ -511,6 +511,8 @@ html, body{
 hr {
   border-top: 1px solid #00a0cf;
   width: 100%;
+  margin-top:20px;
+  margin-bottom:20px;
 }
 
 h4, h5 {
@@ -628,6 +630,11 @@ a:hover{
   font-size: 16px;
   line-height: 1.33;
   border-radius: 14px;
+}
+
+.btn-xs {
+  font-size:14px;
+  padding:5px 20px;
 }
 
 .btn-sm {
@@ -760,7 +767,7 @@ a:hover{
   border: none;
   border-radius: 0px;
   width:100%;
-  min-height: 100px;
+  min-height: 87px;
   margin-bottom:0px;
 }
 
@@ -785,7 +792,10 @@ a:hover{
 
 
 #menu-icons {
-  padding: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left:15px;
+  padding-right:5px;
 }
 
 .btn-options .btn-md span {
