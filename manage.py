@@ -21,6 +21,31 @@ if arg == 're-create_db':
     os.remove('app.db')
     init_db()
     initialize_skill()
+    import os, json
+    script_dir = os.path.dirname(__file__)
+    rel_path = 'app/static/data/all_courses.json'
+    rel_path_variations = 'app/static/data/variations.py'
+    abs_file_path = os.path.join(script_dir, rel_path)
+    abs_file_path_to_save = os.path.join(script_dir, rel_path_variations)
+    variation_dict = {}
+    courses = json.load(open(abs_file_path))
+    for course_name in courses.keys():
+        new_course = Course(course_name)
+        db_session.add(new_course)
+        db_session.commit()
+        new_skill_id = new_course.skill_id
+
+        #Create variation course
+        d = courses[course_name]
+        variations = d['variations'] 
+        for v in variations:
+            variation_dict[v.lower()] = new_skill_id
+
+    f = open(abs_file_path_to_save, "wb+")
+    f.write(json.dumps(variation_dict,
+        sort_keys = True,
+        indent = 4,
+        separators = (',', ': ')))
     print "Previous App.db deleted and new db_initialized"
 
 if arg == 'test_payments':
@@ -326,4 +351,31 @@ if arg == 'test_email':
     request_url = "http://0.0.0.0:5000/requests/tutors/" + str(request.id)
     emails.send_request_to_tutors(request, request_url)
     # os.remove('app.db')    
-    
+
+
+if arg == 'add_courses_db':
+    import os, json
+    script_dir = os.path.dirname(__file__)
+    rel_path = 'app/static/data/all_courses.json'
+    rel_path_variations = 'app/static/data/variations.py'
+    abs_file_path = os.path.join(script_dir, rel_path)
+    abs_file_path_to_save = os.path.join(script_dir, rel_path_variations)
+    variation_dict = {}
+    courses = json.load(open(abs_file_path))
+    for course_name in courses.keys():
+        new_course = Course(course_name)
+        db_session.add(new_course)
+        db_session.commit()
+        new_skill_id = new_course.skill_id
+
+        #Create variation course
+        d = courses[course_name]
+        variations = d['variations'] 
+        for v in variations:
+            variation_dict[v.lower()] = new_skill_id
+
+    f = open(abs_file_path_to_save, "wb+")
+    f.write(json.dumps(variation_dict,
+        sort_keys = True,
+        indent = 4,
+        separators = (',', ': ')))

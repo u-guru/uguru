@@ -11,3 +11,7 @@ heroku create <subdomain>
 git push heroku master
 heroku addons:add heroku-postgresql:dev
 heroku pg:promote HEROKU_POSTGRESQL_COLOR
+
+How to write all courses onto db 
+- python manage.py add_courses_db
+- add 'skills_dict = ' to variations.py in app/static/data/variations.py (which is written after the script has been ran.)

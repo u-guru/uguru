@@ -1,4 +1,63 @@
 $(document).ready(function() {
+
+    $('#upload-photo-link').on('click', function(e) {
+      e.preventDefault();
+      $("#upload-photo:hidden").trigger('click');
+    });
+
+    $("#upload-photo:hidden").change(function(){
+        var file = this.files[0]
+        name = file.name; 
+        size = file.size;
+        type = file.type;
+        if (file.size > 100000) {
+          alert("File is too big")
+        } else if (file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg' ) {
+          alert("File doesnt match png, jpg, or gif");
+        } else {
+          alert("it got here")
+          readURL(this);
+          var formData = new FormData()
+          formData.append('file', file)
+          $.ajax({
+            url:'/update-profile/',
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false 
+          });
+        }
+    });
+
+    $('#short-description').focus(function() {
+      $('#profile-save-button').show();
+    });
+    $('#profile-save-button').click(function(){
+      if (!$('#short-description').val()) {
+        $('#alert-rating-short-description').show()
+      } else {
+        $('#alert-rating-short-description').hide();
+        $('#profile-save-button').hide();
+        $('#saved-introduction').show();
+        $('#saved-introduction').delay(750).fadeOut('slow');
+        send_profile_update_ajax('intro', $('#short-description').val())
+      }
+    });
+    $('#discover-on').click(function(){
+        $('#discover-on-span').attr('class','btn-toggle-on');
+        $('#discover-off-span').attr('class','btn-toggle-off');
+        $('#saved-discover').show();
+        $('#saved-discover').delay(750).fadeOut('slow');
+        send_profile_update_ajax('discover', true)
+    });
+    $('#discover-off').click(function(){
+        $('#discover-on-span').attr('class','btn-toggle-on-inactive');
+        $('#discover-off-span').attr('class','btn-toggle-off-active');
+        $('#saved-discover').show();
+        $('#saved-discover').delay(750).fadeOut('slow');
+        send_profile_update_ajax('discover', false)
+    });
     $('#email-on').click(function(){
         $('#email-on-span').attr('class','btn-toggle-on');
         $('#email-off-span').attr('class','btn-toggle-off');
@@ -78,11 +137,13 @@ $(document).ready(function() {
 
     $('#add-skill-btn').click(function() {
       if ($('#add-skill-input-settings').val()) {
+        var skill_name = $('#add-skill-input-settings').val();
         $('.template-one-skill:first').clone().hide().attr('class', 'one-skill').appendTo('#current-skills');
         $('.one-skill:last .skill-name').text($('#add-skill-input-settings').val());
         $('.one-skill:last').show();
         $('#add-skill-input-settings').val('');
         $('.tt-hint').hide();
+        update_skill_ajax('add',skill_name);
       }
     });
 
@@ -90,20 +151,53 @@ $(document).ready(function() {
     if ($('#add-skill-input-settings').val()) {
       if (e.keyCode == 13) {
         if ($('#add-skill-input-settings').val()) {
+          var skill_name = $('#add-skill-input-settings').val();
           $('.template-one-skill:first').clone().hide().attr('class', 'one-skill').appendTo('#current-skills');
           $('.one-skill:last .skill-name').text($('#add-skill-input-settings').val());
           $('.one-skill:last').show();
           $('#add-skill-input-settings').val('');
           $('.tt-hint').hide();
-      }
+          update_skill_ajax('add',skill_name);
+        }
       }
     }
   });
 
+    $('#price-dropdown').on('click', '.dropdown-menu li a', function() {
+      var selected_text = $(this).text();
+      $('#selected-price').text(selected_text)
+      $('#saved-price').show();
+      $('#saved-price').delay(750).fadeOut('slow');
+      if (selected_text == 'Free') {
+        selected_text = 0.0
+      } else {
+        selected_text = parseFloat(selected_text.replace("$", ""));
+      }
+      send_profile_update_ajax('price', selected_text)
+    });
+
     $('#current-skills').on('click', '.boxclose', function(e){
       e.preventDefault();
-      $(this).parent().parent().parent().remove();    
-    })
+      var skill_name = $(this).parent().siblings('.default-text:first').children('.skill-name').text();
+      $(this).parent().parent().parent().remove();
+      update_skill_ajax('remove',skill_name);
+    });
+
+    update_skill_ajax = function(add_or_remove, skill_name) {
+      var data = {};
+      if (add_or_remove == 'add') {
+        data['add'] = skill_name
+      } else {
+        data['remove'] = skill_name
+      }
+      $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/update-skill/' ,
+            data: JSON.stringify(data),
+            dataType: "json"
+      });  
+    };
 
     var send_notification_ajax = function(email_or_text, value) {
         var data = {};
@@ -119,6 +213,42 @@ $(document).ready(function() {
             data: JSON.stringify(data),
             dataType: "json"
         });  
+    };
+
+    var send_profile_update_ajax = function(to_change, value) {
+      var data = {};
+      if (to_change == 'intro') {
+        data['intro'] = value
+      }
+      if (to_change =='price') {
+        data['price'] = value
+      }
+      if (to_change =='discover') {
+        data['discover'] = value 
+      }
+      $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/update-profile/' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+      });
+    };
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#default-photo').hide()
+                $('#image-preview').show()
+                $('#saved-photo').show();
+                $('#saved-photo').delay(750).fadeOut('slow');
+                $('#image-preview').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
     }
 
     var update_password_ajax = function(old_password, new_password) {
@@ -142,7 +272,7 @@ $(document).ready(function() {
               }
             }
         });  
-    }
+    };
 
     // instantiate the bloodhound suggestion engine
     var numbers = new Bloodhound({

@@ -3,7 +3,7 @@ from app.database import *
 from flask import render_template, jsonify, redirect, request, \
 session, flash, redirect, url_for
 from forms import SignupForm, RequestForm
-from models import User, Request, Skill
+from models import User, Request, Skill, Course
 from hashlib import md5
 from datetime import datetime
 import emails
@@ -93,6 +93,64 @@ def update_notifications():
         print "user email notification is now " + str(user.email_notification)
         print "user next notification is now " + str(user.text_notification)
         return jsonify(ajax_json)
+
+@app.route('/update-profile/', methods=('GET', 'POST'))
+def update_profile():
+    if request.method == "POST":
+        ajax_json = {}
+        return_json = {}
+        
+        #If image has been uploaded
+        if request.files:
+            file = request.files['file']
+            print file.filename
+        #if other profile data is being updated
+        if request.json:
+            ajax_json = request.json
+            
+        user_id = session.get('user_id')
+        user = User.query.get(user_id)
+
+        if ajax_json.get('intro'):
+            user.tutor_introduction = ajax_json.get('intro')
+        if ajax_json.get('price'):
+            user.advertised_rate = ajax_json.get('price')
+        if 'discover' in ajax_json:
+            user.discoverability = ajax_json.get('discover')
+        db_session.commit()
+        return jsonify(ajax_json)
+
+
+@app.route('/update-skill/', methods=('GET', 'POST'))
+def update_skill():
+    if request.method == "POST":
+        return_json = {}
+        ajax_json = request.json
+        print ajax_json
+        user_id = session.get('user_id')
+        user = User.query.get(user_id)
+
+        from app.static.data.variations import courses_dict
+
+        if ajax_json.get('add'):
+            skill_to_add = ajax_json.get('add').lower()
+
+            #check if skill is a course
+            if courses_dict.get(skill_to_add):
+                skill_to_add_id = courses_dict[skill_to_add]
+                skill = Skill.query.get(skill_to_add_id)
+                user.skills.append(skill)
+            else: #not a course 
+                course = Course(skill_to_add)
+                db_session.add(course)
+        if ajax_json.get('remove'):
+            skill_to_remove = ajax_json.get('remove').lower()
+            for skill in user.skills:
+                if skill.name.lower() == skill_to_remove:
+                    user.skills.remove(skill)
+        db_session.commit()
+        return jsonify(response=return_json)
+    
 
 @app.route('/update-password/', methods=('GET','POST'))
 def update_password():

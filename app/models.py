@@ -95,6 +95,10 @@ class User(Base):
     email_notification = Column(Boolean, default = True)
     text_notification = Column(Boolean, default = True)
     profile_url = Column(String)
+    tutor_introduction = Column(String(1000))
+    advertised_rate = Column(Float, default = 10.0)
+    max_price = Column(Float, default = 15.0)
+    discoverability = Column(Boolean, default = True)
     
     #Stripe Fields
     customer_id = Column(String)

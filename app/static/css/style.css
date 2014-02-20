@@ -9,9 +9,9 @@
     overflow-x: hidden; 
 }*/
 
-*:not(html) {
+/**:not(html) {
     -webkit-transform: translate3d(0, 0, 0);
-}
+}*/
 
 .vert-text {
   display: table-cell;
@@ -21,6 +21,10 @@
 
 input {
   outline:none;
+}
+
+textarea {
+  outline:none; 
 }
 
 a:link {
@@ -884,6 +888,11 @@ a:hover{
   color:#40bfec;
 }
 
+#image-preview {
+  margin-top:8px;
+  margin-left:-2px;
+}
+
 .btn-toggle-on {
   background-color: #00a9e5;
   color:white;
@@ -1115,4 +1124,83 @@ input[type=checkbox].css-checkbox { position: absolute;  overflow: hidden;  clip
 
 .row.row-skills {
   margin: 0;
+}
+
+#profile-save-button {
+  display: none;
+}
+
+#alert-rating-short-description{
+  display: none;
+  color:red;
+}
+
+.btn-group {
+  position:relative
+  display:inline-block;
+  vertical-align:middle;
+}
+
+.btn-group>.btn-default {
+  position:relative;
+  float:left;
+}
+
+.btn-group>.btn-default:first-child:not(:last-child):not(.dropdown-toggle) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.btn-group>.btn-default:first-child {
+  margin-left 0;
+}
+
+.caret {
+  margin-left:0;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  color:#000;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.btn-default {
+  color:#ccc;
+  background-color:#fff;
+  border-color:#ccc;
+  display:inline-block;
+  margin-bottom:0;
+  font-weight:400;
+  vertical-align:middle
+  cursor:pointer;
+  background-image:none;
+  border: 1px solid;
+  white-space:nowrap;
+  padding:6px 12px;
+  font-size:14px;
+  line-height:1.42857143;
+  border-radius:4px;
+}
+
+#image-preview {
+  display:none;
+}
+
+#upload-photo {
+  display:none;
 }
