@@ -1,4 +1,12 @@
 $(document).ready(function(){
+    $('#login-link').click(function() {
+        $('#home-top').hide();
+        $('#how-it-works-main').hide();
+        $('body').css('background-color','white')
+        // $('#login-page').show();
+        // $("#login-page").animate({width:'toggle'},350);
+        $('#login-page').show('slide', {direction: 'right'}, 200);
+    });
     $(window).resize(function() {
         if ($(window).width() <= 700) {
             $('#how-it-works-main').css('top', '87%');
@@ -30,4 +38,33 @@ $(document).ready(function(){
             $('#login-text').css('font-size', '1.3em')
         }
     }).resize(); 
+    
+    $('#login-submit-link').click(function(){
+    //check whether fields are blank
+    if (!$('#login-email').val() || !$('#login-password').val()) {
+      $('#alert-fields-login-2').show()
+    } else {
+      //else get data and send to server
+      var data = {
+        'email': $('input[name="login-email"]').val(),
+        'password': $('input[name="login-password"]').val()
+      }
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        url: '/login/' + '?' + '{{redirect}}'.replace('amp;', '').replace('amp;',''),
+        data: JSON.stringify(data),
+        dataType: "json",        
+        success: function(result) {        
+            if (result.json['success']) {
+                window.location.replace(result.json['redirect'])
+            } else {
+                $('#alert-fields-login').show();     
+                $('#alert-fields-login-redirect').hide();
+            }
+        }
+        });      
+        }
+    });
+
 })

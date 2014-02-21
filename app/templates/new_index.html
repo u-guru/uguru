@@ -9,14 +9,15 @@
         <title>uGuru.me</title>
         <link href="/static/css/bootswatch.css" rel="stylesheet">
         <link href="/static/css/bootswatch.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
         <link href="/static/fonts/grand_hotel.css" rel="stylesheet">
         <link href="/static/css/new_style.css" rel="stylesheet">
-        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
     </head>
 
     <body>
-        <div class="row main">
+        <img id="logo" src="/static/img/guru.png" />
+        <div id="home-top" class="row main">
             <div class="welcome"> 
                 <p id="welcome_text"> WELCOME TO </p>
                 <h2 class="logo logo_main">uguru.me</h2>
@@ -27,7 +28,7 @@
             </div>
             
             <p id='login-text' style="color:white">
-                OR <a href="/login/"><u><strong>LOGIN</strong></u></a>
+                OR <a id="login-link" href="javascript:void(0)"><u><strong>LOGIN</strong></u></a>
             </p>
         </div>
         <div class="row" id="how-it-works-main">
@@ -35,11 +36,48 @@
                 SEE HOW IT WORKS
             </p>
             <div class="arrow-down"></div>
-        </div>     
+        </div>
+        <div style="display:none" id="login-page">
+            <nav class="navbar"margin-right:25px;>
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                      <a href="../../" class="navbar-brand" id="logo-text"> <span id="back-carot"> < </span> uguru.me</a>
+                  </div>
+                </div>
+            </nav>
+            <div id="login-fields">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">EMAIL</label> <br>
+                                <input name="login-email" type="email" class="input-signup" id="login-email" placeholder="username@berkeley.edu">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">PASSWORD</label> <br>
+                            <input name="login-password" type="password" class="input-signup" id="login-password" >
+                          </div>
+                          <span id='alert-fields-login' style="color:red;display:None">Incorrect username or password</span>
+                          <span id='alert-fields-login-2' style="color:red;display:None">Please fill in all fields.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:void" id="login-submit-link">
+                <div class="main-font" id="submit-login">
+                    LOGIN
+                </div>
+            </a>
+        </div>
     </body>
     <footer>
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script src="/static/js/jquery-ui-custom.js"></script>
         <script>window.jQuery || document.write('<script src="/static/js/jquery-1.10.2.js"><\/script>')</script>
         <script>window.jQuery || document.write('<script src="/static/js/bootstrap.min.js"><\/script>')</script>
         <script src="/static/js/app.js"></script>

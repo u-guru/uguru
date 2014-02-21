@@ -15,7 +15,6 @@ $(document).ready(function() {
         } else if (file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg' ) {
           alert("File doesnt match png, jpg, or gif");
         } else {
-          alert("it got here")
           readURL(this);
           var formData = new FormData()
           formData.append('file', file)
@@ -243,7 +242,7 @@ $(document).ready(function() {
                 $('#default-photo').hide()
                 $('#image-preview').show()
                 $('#saved-photo').show();
-                $('#saved-photo').delay(750).fadeOut('slow');
+                $('#saved-photo').delay(1250).fadeOut('slow');
                 $('#image-preview').attr('src', e.target.result);
             }
             

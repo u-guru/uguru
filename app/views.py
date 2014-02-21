@@ -6,7 +6,10 @@ from forms import SignupForm, RequestForm
 from models import User, Request, Skill, Course
 from hashlib import md5
 from datetime import datetime
-import emails
+import emails, boto
+
+MAX_UPLOAD_SIZE = 1024 * 1024
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -99,17 +102,26 @@ def update_profile():
     if request.method == "POST":
         ajax_json = {}
         return_json = {}
+        user_id = session.get('user_id')
+        user = User.query.get(user_id)
         
         #If image has been uploaded
         if request.files:
             file = request.files['file']
-            print file.filename
+            extension = file.filename.rsplit('.',1)[1]
+            destination_filename = md5(str(user_id)).hexdigest() + "." + extension
+
+            upload_file_to_amazon(destination_filename, file)
+        
+            #save this to the db
+            amazon_url = "https://s3.amazonaws.com/uguruprof/"+destination_filename
+            user.profile_url = amazon_url
+
+            db_session.commit();
+
         #if other profile data is being updated
         if request.json:
             ajax_json = request.json
-            
-        user_id = session.get('user_id')
-        user = User.query.get(user_id)
 
         if ajax_json.get('intro'):
             user.tutor_introduction = ajax_json.get('intro')
@@ -386,3 +398,10 @@ def sorry():
 def authenticate(user_id):
     session['user_id'] = user_id
 
+
+def upload_file_to_amazon(filename, file):
+    conn = boto.connect_s3(app.config["S3_KEY"], app.config["S3_SECRET"])
+    b = conn.get_bucket(app.config["S3_BUCKET"])
+    sml = b.new_key("/".join(["/",filename]))
+    sml.set_contents_from_file(file)
+    sml.set_acl('public-read')

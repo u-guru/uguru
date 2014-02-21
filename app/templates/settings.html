@@ -174,8 +174,12 @@
       <div id="profile" style="display:none" align="center">
         <div align="center">
           <div id="pic-holder">
-            <span id="default-photo" class="glyphicon glyphicon-user" style="font-size:80px;text-align:center;padding-top:5px"></span>
-            <img width="80" height="80"id="image-preview" src="#"/>
+            {% if user.profile_url %}
+              <img style="display:block" width="80" height="80"id="image-preview" src="{{user.profile_url}}"/>
+            {% else %}
+              <span id="default-photo" class="glyphicon glyphicon-user" style="font-size:80px;text-align:center;padding-top:5px"></span>
+              <img width="80" height="80"id="image-preview" src="#"/>
+            {% endif %}
           </div>
             <a id="upload-photo-link" href="javascript:void(0);">
               <h5 style="color:grey">
