@@ -379,3 +379,47 @@ if arg == 'add_courses_db':
         sort_keys = True,
         indent = 4,
         separators = (',', ': ')))
+
+
+if arg == 'test_feed':
+    user1 = User(name = u'Samir', email="test3", password="test", phone_number="test3")
+    user2 = User(name = u'Michael', email="test4", password="test", phone_number="test4")
+    db_session.add(user1)
+    db_session.commit()
+    db_session.add(user2)
+    db_session.commit()
+    skill = Skill.query.get(1)
+    user1.skills.append(skill)
+
+    #instantiated when user is created
+    notification1 = Notification(other="Welcome to uGuru.me. Click here to get started")
+    user1.notifications.append(notification1)
+    skill_str = "You just added " + str(len(user1.skills)) + " skills. "
+    notification2 = Notification(other=skill_str)
+    db_session.add(notification1)
+    db_session.commit()
+    db_session.add(notification2)
+    db_session.commit()
+    user1.notifications.append(notification2)
+
+    r1 = Request(student_id = 2, skill_id = 1, description = "help me", \
+        urgency = 1, frequency = 0, time_estimate = 1)
+
+    db_session.add(r1)
+
+    db_session.commit()
+
+    notification3 = Notification(request = r1)
+    user1.notifications.append(notification3)
+    db_session.add(notification3)
+    db_session.commit()
+    user1 = User.query.get(1)
+    print user1.notifications
+
+
+
+
+
+
+
+

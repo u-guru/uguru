@@ -13,18 +13,18 @@
         <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
         <link href="/static/fonts/grand_hotel.css" rel="stylesheet">
         <link href="/static/css/new_style.css" rel="stylesheet">
+        <link href="/static/css/bootstrap-formhelpers.min.css" rel="stylesheet">
     </head>
 
     <body>
-        <img id="logo" src="/static/img/guru.png" />
         <div id="home-top" class="row main">
             <div class="welcome"> 
                 <p id="welcome_text"> WELCOME TO </p>
                 <h2 class="logo logo_main">uguru.me</h2>
             </div>
             <div id="home-button-group">              
-                <a href="/student_signup" style="color:white"><button id='home-button-1' type="button" class="btn btn-lg">NEED A TUTOR?</button></a>
-                 <a href="/tutor_signup" style="color:white"><button id='home-button-2' type="button" class="btn btn-lg" href="#tutor_signup">BECOME A TUTOR</button></a>
+                <a id="student-signup-btn" href="javascript:void(0);" style="color:white"><button id='home-button-1' type="button" class="btn btn-lg">NEED A TUTOR?</button></a>
+                 <a id="tutor-signup-btn" href="javascript:void(0);" style="color:white"><button id='home-button-2' type="button" class="btn btn-lg" href="#tutor_signup">BECOME A TUTOR</button></a>
             </div>
             
             <p id='login-text' style="color:white">
@@ -73,11 +73,190 @@
                 </div>
             </a>
         </div>
+        <div style="display:none" id="tutor-signup">
+            <nav class="navbar"margin-right:25px;>
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                      <a href="../../" class="navbar-brand" id="logo-text"> <span id="back-carot"> < </span> uguru.me</a>
+                  </div>
+                </div>
+            </nav>
+            <div id="tutor-signup-fields">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <span id='alert-fields-tutor-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">NAME</label> <br>
+                                <input id="tutor-signup-name" name="tutor-name" type="email" class="input-signup" id="login-email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">EMAIL</label> <br>
+                                <input name="tutor-email" type="email" class="input-signup" id="tutor-signup-email" placeholder="username@berkeley.edu">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">PASSWORD</label> <br>
+                            <input name="tutor-password" type="password" class="input-signup" id="tutor-signup-password" >
+                          </div>
+                          <span id='alert-fields-login' style="color:red;display:None">Incorrect username or password</span>
+                          <span id='alert-fields-login-2' style="color:red;display:None">Please fill in all fields.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">PHONE NUMBER</label> <br>
+                                <input class="input-signup form-control bfh-phone" id="tutor-signup-phone" data-format="+1 (ddd) ddd-dddd" name="tutor-phone" type="text">
+                                  <span style="font-weight:strong; font-size:0.80em">
+                                  Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:void" id="tutor-next-link">
+                <div class="main-font" id="tutor-submit-next">
+                    NEXT
+                </div>
+            </a>
+        </div>
+        <div style="display:none" id="tutor-signup-next">
+            <nav class="navbar"margin-right:25px;>
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                      <a href="../../" class="navbar-brand" id="logo-text"> <span id="back-carot"> < </span> uguru.me</a>
+                  </div>
+                </div>
+            </nav>
+            <div id="tutor-add-course-fields">
+                <div class = "row row-skills">
+                  <div class="col-xs-9 col-xs-offset-1 col-md-offset-4 col-md-4">
+                    <input id="add-skill-input-settings" class="typeahead add-skills" placeholder="add skill or course"> </input>
+                  </div>
+                  <div class="col-xs-2 col-md-2"> 
+                    <a href="javascript:void(0);" id="add-skill-btn">
+                      <div class="btn-add" style="float:left;font-size:20px">+</div>
+                    </a>
+                  </div>
+                </div>
+                <div id="current-skills" style="align:center">
+                    <br>
+                    <div style="display:none" class="template-one-skill">
+                      <hr>
+                      <div class="row row-skills">
+                        <div class="default-text col-xs-3 col-md-offset-4 col-md-1">
+                            <div class="skill-name">CS 10</div>
+                        </div>
+                        <div class="col-xs-7 col-md-2">
+                          <span class="rating">
+                            <span style="color;grey">☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                          </span>
+                        </div>
+                        <div class="col-xs-2 col-md-1">
+                          <!-- <div  class="btn-add">-</div> -->
+                           <a class="boxclose" id="boxclose"></a>
+                        </div>
+                      </div> 
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:void" id="tutor-register">
+                <div class="main-font" id="tutor-submit-next">
+                    REGISTER
+                </div>
+            </a>
+        </div>
+        <div style="display:none" id="student-signup">
+            <nav class="navbar"margin-right:25px;>
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                      <a href="../../" class="navbar-brand" id="logo-text"> <span id="back-carot"> < </span> uguru.me</a>
+                  </div>
+                </div>
+            </nav>
+            <div id="tutor-signup-fields">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <span id='alert-fields-student-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">NAME</label> <br>
+                                <input id="student-signup-name" name="tutor-name" type="email" class="input-signup" id="login-email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">EMAIL</label> <br>
+                                <input name="tutor-email" type="email" class="input-signup" id="student-signup-email" placeholder="username@berkeley.edu">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">PASSWORD</label> <br>
+                            <input name="tutor-password" type="password" class="input-signup" id="student-signup-password" >
+                          </div>
+                          <span id='alert-fields-login' style="color:red;display:None">Incorrect username or password</span>
+                          <span id='alert-fields-login-2' style="color:red;display:None">Please fill in all fields.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">PHONE NUMBER</label> <br>
+                                <input class="input-signup form-control bfh-phone" id="student-signup-phone" data-format="+1 (ddd) ddd-dddd" name="tutor-phone" type="text">
+                                  <span style="font-weight:strong; font-size:0.80em">
+                                  Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:void" id="student-next-link">
+                <div class="main-font" id="tutor-submit-next">
+                    NEXT
+                </div>
+            </a>
+        </div>
+        <div style="display:none" id="student-request">
+            <nav class="navbar"margin-right:25px;>
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                      <a href="../../" class="navbar-brand" id="logo-text"> <span id="back-carot"> < </span> uguru.me</a>
+                  </div>
+                </div>
+            </nav>
+            <div id="tutor-signup-fields">
+                
+            </div>
+            <a href="javascript:void" id="student-next-link">
+                <div class="main-font" id="tutor-submit-next">
+                    NEXT
+                </div>
+            </a>
+        </div>
+
+
     </body>
     <footer>
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <script src="/static/js/jquery-ui-custom.js"></script>
+        <script src="/static/js/bootstrap-formhelpers.min.js"></script>
+        <script type="text/javascript" src="/static/js/typeahead.js"></script>
         <script>window.jQuery || document.write('<script src="/static/js/jquery-1.10.2.js"><\/script>')</script>
         <script>window.jQuery || document.write('<script src="/static/js/bootstrap.min.js"><\/script>')</script>
         <script src="/static/js/app.js"></script>

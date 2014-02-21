@@ -244,8 +244,6 @@ def success():
             )            
             try:
                 db_session.add(u)
-                skill = Skill.query.get(1)
-                u.skills.append(skill)
                 db_session.commit()
             except:
                 db_session.rollback()
@@ -253,7 +251,7 @@ def success():
             
             user_id = u.id
             authenticate(user_id)
-            # Process skills
+            print "Account created!"
         return jsonify(dict=ajax_json)
 
 @app.route('/logout/', methods=('GET', 'POST'))

@@ -66,11 +66,6 @@ mailbox_conversation_table = Table('mailbox-conversation_assoc',
     Column('mailbox_id', Integer, ForeignKey('mailbox.id')),
     Column('conversation_id', Integer, ForeignKey('conversation.id'))
 )
-# feed_notification_table = Table('feed-notification_assoc',
-#     Base.metadata,
-#     Column('feed_id', Integer, ForeignKey('feed.id')),
-#     Column('notification_id', Integer, ForeignKey('notification.id'))
-# )
 mailbox_message_table = Table('mailbox-message_assoc',
     Base.metadata,
     Column('mailbox_id', Integer, ForeignKey('mailbox.id')),
@@ -79,6 +74,11 @@ mailbox_message_table = Table('mailbox-message_assoc',
 user_payment_table = Table('user-payment_assoc',
     Base.metadata,
     Column('payment_id', Integer, ForeignKey('payment.id')),
+    Column('user_id', Integer, ForeignKey('user.id'))
+)
+user_notification_table = Table('user-notification_assoc',
+    Base.metadata,
+    Column('notification_id', Integer, ForeignKey('notification.id')),
     Column('user_id', Integer, ForeignKey('user.id'))
 )
 
@@ -133,9 +133,8 @@ class User(Base):
     payments = relationship("Payment",
         secondary = user_payment_table
         )
-    # feed = relationship("Feed",
-    #     uselist = False,
-    #     backref = backref("user", uselist = False))
+    notifications = relationship("Notification",
+        secondary = user_notification_table)
 
     def __init__(self, name, email, password, phone_number, is_a_tutor = None):
         self.name = name
@@ -283,44 +282,38 @@ class Message(Base):
         return "<Message from '%r' to '%r' at '%s'>" %\
             (self.sender_id, self.reciever_id, str(self.write_time))
 
-# class Notification(Base):
-#     __tablename__ = 'notification'    
-#     id = Column(Integer, primary_key = True)
-#     request_id = Column(Integer, 
-#         ForeignKey('request.id'), 
-#         primary_key = True, 
-#         default = 0)
-#     request_tutor_amount_hourly = Column(Float)
-#     other = Column(String(1000))
-#     payment_id = Column(Integer,
-#         ForeignKey('payment.id'),
-#         primary_key = True,
-#         default = 0)
-#     rating_id = Column(Integer, 
-#         ForeignKey('rating.id'),
-#         primary_key = True,
-#         default = 0)
+class Notification(Base):
+    __tablename__ = 'notification'    
+    id = Column(Integer, primary_key = True)
+    feed_id = Column(Integer)
+    
+    request_id = Column(Integer)        
+    request_tutor_amount_hourly = Column(Float)
+    custom = Column(String(1000))
+    custom_tag = Column(String)
+    time_created = Column(DateTime)
+    time_read = Column(DateTime)
+    feed_message = Column(String(1000))
+    payment_id = Column(Integer)
+    rating_id = Column(Integer)
 
-#     feed = relationship("Feed",
-#         secondary = feed_notification_table,
-#         backref = "notifications")
-
-#     def __init__(self, name, **kwargs):
-#         request = kwargs.get('request')
-#         payment = kwargs.get('payment')
-#         rating = kwargs.get('rating')
-#         other = kwargs.get('other')
-#         assert bool(request) ^ bool(payment) ^ bool(rating) ^ bool(other), \
-#         'kwargs must specify *either* a request, payment or a rating'
+    def __init__(self, **kwargs):
+        request = kwargs.get('request')
+        payment = kwargs.get('payment')
+        rating = kwargs.get('rating')
+        other = kwargs.get('other')
+        time_created = datetime.now()
+        assert bool(request) ^ bool(payment) ^ bool(rating) ^ bool(other), \
+        'kwargs must specify *either* a request, payment or a rating'
         
-#         if request:
-#             self.request_id = request.id
-#         if payment:
-#             self.payment_id = payment.id
-#         if rating:
-#             self.rating_id = rating.id
-#         if other:
-#             self.other = other
+        if request:
+            self.request_id = request.id
+        if payment:
+            self.payment_id = payment.id
+        if rating:
+            self.rating_id = rating.id
+        if other:
+            self.custom = other
 
 
 class Tag(Base):
@@ -544,15 +537,4 @@ class Course(Base):
 
     def __repr__(self):
         return '<Course %r>' % (self.name)
-
-# class Feed(Base):
-#     __tablename__ = 'feed'
-#     id = Column(Integer, ForeignKey('user.id'), primary_key = True)    
-
-#     def __init__(self, user):
-#         self.id = user.id
-#         self.user = user
-
-#     def __repr__(self):
-#         return "<Mailbox for '%r'>" % (self.id)
 
