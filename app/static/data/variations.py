@@ -1,4 +1,4 @@
-{
+courses_dict = {
     "a,resec 201": 2156,
     "a,resec 202": 2157,
     "a,resec 210": 589,

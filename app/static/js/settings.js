@@ -10,9 +10,10 @@ $(document).ready(function() {
         name = file.name; 
         size = file.size;
         type = file.type;
-        if (file.size > 100000) {
-          alert("File is too big")
-        } else if (file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg' ) {
+        // if (file.size > 100000) {
+        //   alert("File is too big")
+        // } else
+        if (file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg' ) {
           alert("File doesnt match png, jpg, or gif");
         } else {
           readURL(this);
