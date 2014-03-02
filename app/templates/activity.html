@@ -1,77 +1,602 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="page-title">
-   <h4 style="color:white;">YOUR ACTIVITY</h4>
-  </div>
-<div class="light-blue-bar" align:"center">
-	<div style="float:left;text-align:right;width:50%;padding-right:30px">
-		<a href="/request_tutor/">
-			<span style="color:#00a0cf;" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:30px"></span>
-			<span class="h4" style="padding-left:15px;color:#00a0cf;"><b>REQUEST A TUTOR</b></span>
-		</a>
-	</div>
-	<div style="float:right;text-align:left;width:50%">
-		<a href="/request_payment/">
-			<div style="color:#00a0cf;float:left" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:30px">
+
+<div id="activity">
+	<div class="page-title">
+	   <h4 style="color:white;">YOUR ACTIVITY</h4>
+	  </div>
+	<div class="light-blue-bar" align:"center">
+		<div class="row">
+			<div class="col-xs-5 col-xs-offset-1 col-md-offset-4 col-md-2">
+				<a href="/request_tutor/">
+					<span style="color:#00a0cf;" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:60px"></span>
+					<span class="h4" style="color:#00a0cf;"><b>TUTOR</b></span>
+				</a>
 			</div>
-			<span class="h4" style="padding-left:15px;color:#00a0cf;"><b>REQUEST PAYMENT</b></span>
-		</a>
+			<div class="col-xs-5 col-md-2">
+				<a href="/request_tutor/">
+					<span style="color:#00a0cf;" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:60px"></span>
+					<span class="h4" style="color:#00a0cf;"><b>PAYMENT</b></span>
+				</a>
+			</div>
+		</div>
+		<!-- <div style="float:left;text-align:right;width:50%;padding-right:30px">
+			<a href="/request_tutor/">
+				<span style="color:#00a0cf;" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:30px"></span>
+				<span class="h4" style="padding-left:15px;color:#00a0cf;"><b>REQUEST A TUTOR</b></span>
+			</a>
+		</div> -->
+		<!-- <div style="float:right;text-align:left;width:50%">
+			<a id="request-payment-link" href="javascript:void(0)">
+				<div style="color:#00a0cf;float:left" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:30px">
+				</div>
+				<span class="h4" style="padding-left:15px;color:#00a0cf;"><b>REQUEST PAYMENT</b></span>
+			</a>
+		</div> -->
 	</div>
+	<div id="feed" class="container-fluid">
+		{% for n in user.notifications|reverse %}
+		<div class="row container-fluid">
+			<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-offset-2 col-md-8">
+				{% if n.custom_tag == 'student-match' or n.custom_tag == 'tutor_match' %}
+				<a id="{{n.a_id_name}}" href="/messages/">
+				{% else %}
+				<a id="{{n.a_id_name}}" href="javascript:void(0)">
+				{% endif %}
+					<div class="notification" align:"center">
+						<img src="{{n.image_url}}" class="user-photo" style="float:left">
+							<h4>{{n.feed_message|safe}}</h4>
+						<div style="float:right">
+							<h6 class="time-indicator">{{pretty_dates[n.id]}}</h6>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	<br>
+	<br>
 </div>
-<div style="padding:0 20px 20px 20px">
-	<a href="/student_request/">
-		<div class="notification" align:"center">
-			<img src="/static/img/guru.png" class="user-photo" style="float:left">
-				<h4><b>Jared</b> requested help in Math 1A</h4>
-			<div style="float:right">
-				<h6>2 hours ago</h6>
+{% if address_book.keys() %}
+<div id="request-payments" style="display:none">
+		<div class="page-title">
+				<a class="feed-message-link" href="javascript:void(0)"style="float:left; margin-bottom:5px; color:white; text-decoration:none"> 
+					< 
+				</a>
+				<h4 style="color:white;width:100%">Request Payment</h4>
+		</div>
+		<div class="offer" align="center" style="margin-left:20px;margin-right:20px">
+			<img id="payment-student-img" src="/static/img/guru.jpg" class="user-photo">
+			<h4 style="text-align:center">Request payment from <b>
+				<div id="select-person-to-pay" class="btn-group">
+		            <button type="button" class="btn-default">
+		           	{% set first_contact = address_book.keys()[0] %}
+		              <span id="selected-person-to-pay" class="dropdown-elem-{{address_book[first_contact]['conversation_id']}}" style="color:black">{{first_contact}}</span>
+		            </button>
+		            <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown">
+		              <span class="caret"></span>
+		              <span class="sr-only">Toggle Dropdown</span>
+		            </button>
+		            <ul class="dropdown-menu" role="menu">
+		              {% for name in address_book.keys() %}
+		              <li><a id="dropdown-elem-{{address_book[name]['conversation_id']}}" href="javascript:void(0);">{{name}}</a></li>
+		              {% endfor %}
+		            </ul>
+		         </div>
+			</b></h4>
+			<br>
+			<div class="bio" style="padding-bottom:20px">
+				<div style="float:left;text-align:right;width:50%;padding-right:20px">
+				  	<div class="h4"><b>Rate</b></div>
+				  	<div class="h4"><b>Time</b></div>
+				  	<div class="h4"><b>Total</b></div>
+				</div>
+				<div style="float:right;text-align:left;width:50%;">
+					<div class="h4" style="color:#69bf69;">
+						<div id="price-dropdown" class="btn-group">
+				            <button type="button" class="btn-default">
+				              <span id="selected-price" style="color:black">${{user.advertised_rate|int}}</span>
+				            </button>
+				            <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown">
+				              <span class="caret"></span>
+				              <span class="sr-only">Toggle Dropdown</span>
+				            </button>
+				            <ul class="dropdown-menu" role="menu">
+				              {% for n in range(user.max_price|int) %}
+				              <li><a href="javascript:void(0);">${{user.max_price|int - n}}</a></li>
+				              {% endfor %}
+				              <li class="divider"></li>
+				              <li><a href="javascript:void(0);">Free</a></li>
+				            </ul>
+				          </div>
+						<span class="h5">/hour</span>
+					</div>
+					<div id="payment-hours-dropdown" class="btn-group">
+			            <button type="button" class="btn-default">
+			              <span id="selected-payment-num-hour" style="color:black">2</span>
+			            </button>
+			            <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown">
+			              <span class="caret"></span>
+			              <span class="sr-only">Toggle Dropdown</span>
+			            </button>
+			            <ul class="dropdown-menu" role="menu">
+			              {% for n in range(10) %}
+			              <li><a href="javascript:void(0);">{{n}}</a></li>
+			              {% endfor %}
+			            </ul>
+          			</div> hours
+					<br>
+					<div style="color:#69bf69;font-size:36px">$60
+					</div>
+					<h6>(3 x $20/hr)</h6>
+				</div>
 			</div>
 		</div>
+	<a href="javascript:void(0)" id="submit-payment">
+		<div class="btn-request">REQUEST
+		</div>
 	</a>
-	<a href="/bill/">
-		<div class="notification" align:"center">
-			<img src="/static/img/guru.png" class="user-photo" style="float:left">
-				<h4><b>Samir</b> has sent you a bill</h4>
-			<div style="float:right">
-				<h6>2 hours ago</h6>
+</div>
+{% endif %}
+
+
+<div id="feed-messages">
+		{% if not user.customer_id %}
+		<div id="credit-card-info" style="display:none; color:rgb(0, 159, 225);">
+		<form role="form" action="javascript:void(0)" method="POST" id="payment-form">
+			<div class="page-title">
+				<div class="row" style="width:100%;text-align:center">
+   					<div class="col-xs-1 col-xs-offset-1">
+	   					<a href="javascript:void(0)" id="credit-card-back-link" style="text-decoration:none"> 
+	   						<h4 id="back-button">< </h4>
+	   					</a>
+   					</div>
+   					<div class="col-xs-9" style="text-align:center">
+							<h4 style="color:white;width:100%">Credit Card</h4>
+					</div>
+				</div>
 			</div>
-		</div>
-	</a>
-	<a href="/rate/">
-		<div class="notification" align:"center">
-			<img src="/static/img/guru.png" class="user-photo" style="float:left">
-				<h4>Rate your experience with <b>Samir</b></h4>
-			<div style="float:right">
-				<h6>2 hours ago</h6>
+			<div class="credit-main container-fluid">
+				<br>
+				<div class="row">
+				  	<div class="user-profile" style="text-align:center">
+				  		<img src="{{user.profile_url}}" class="user-photo">
+				  	</div>
+				</div>
+			  	<div class="row" style="text-align:center">
+			  		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+				  		<h4>Please enter your card information to confirm this request</h4>
+					  	<h6 >(We will not charge anything without your permission)</h6>
+					</div>
+			  	</div>
+			  	<div class="row">
+			  		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+					  		<br>
+					  		<div class="form-group">
+					  			<label for="credit-card-num">
+					  				<span class="glyphicon glyphicon-credit-card" style="color:#00a0cf;"></span>
+					  				<span class="h4" style="color:#00a0cf">&nbsp;&nbsp;CARD
+					  				</span>
+					  			</label>
+					  			<br>
+					  			<input placeholder="•••• •••• •••• ••••" style="width:100%" type="text" size="20" data-stripe="number" class="input-signup" id="credit-card-num">
+					  		</div>
+					  		<div class="form-group">
+					  			<label for="expiration-date">
+					  				<span class="glyphicon glyphicon-calendar" style="color:#00a0cf"></span>
+					  				<span class="h4" style="color:#00a0cf">&nbsp;&nbsp;EXPIRATION DATE</span>
+					  			</label>
+					  			<br>
+					  			<input placeholder="MM/YY" style="width:35%" class="input-signup" type="text" data-stripe="exp-month" id="expiration-date">
+					  		</div>
+						 	<span class="payment-errors"></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 col-md-6" style="padding-left:0px; padding-right:0px">
+						<a id="submit-card-info" href="javascript:void(0)" onclick="document.getElementById('payment-form').submit();return false;">
+							<div class="btn-save">
+								<p>SAVE INFORMATION
+								</p>
+							</div>
+						</a>
+					</div>
+				</div>
 			</div>
+		</form>
+
+			<!-- <div style="text-align:center"class= "container-fluid">
+				<form action="javascript:void(0)" method="POST" id="payment-form">
+				  <span class="payment-errors"></span>
+				  <br>
+				  <div class="form-row row">
+				    <label>
+				      <span>Card Number</span>
+				      <input type="text" size="20" data-stripe="number"/>
+				    </label>
+				  </div>
+
+				  <div class="form-row row">
+				    <label>
+				      <span>Expiration (MM/YYYY)</span>
+				      <input type="text" size="2" data-stripe="exp-month"/>
+				    </label>
+				    <span> / </span>
+				    <input type="text" size="4" data-stripe="exp-year"/>
+				  </div>
+
+				  <button type="submit">Submit Payment</button>
+				</form>
+			</div> -->
 		</div>
-	</a>
-	<a href="/messages/">
-	<div class="notification" align:"center">
-		<img src="/static/img/guru.png" class="user-photo" style="float:left">
-			<h4><b>You</b> accepted Samir's offer, you are now connected</h4>
-		<div style="float:right">
-			<h6>2 hours ago</h6>
-		</div>
+		{% endif %}
+		{% for n in user.notifications %}
+			{% if n.custom and n.custom == 'getting_started' %}
+				<div id="{{n.a_id_name}}-detailed" style="display:none; color:rgb(0, 159, 225);">
+					<div class="page-title">
+	   					<a class="feed-message-link" href="javascript:void(0)"style="float:left; margin-bottom:5px; color:white; text-decoration:none"> 
+	   						< 
+	   					</a>
+	   					<h4 style="color:white;width:100%">{{n.custom}}</h4>
+	  				</div>
+					This is where the getting started content would go.
+				</div>
+			{% elif n.custom_tag == 'student-payment-proposal-' %}
+				{% set payment = payment_dict[n.payment_id]['payment'] %}
+				{% set tutor_name = payment_dict[n.payment_id]['tutor_name'] %}
+				<div class="payment-id-{{payment.id}}"id="{{n.a_id_name}}-detailed" style="display:none">
+					<div class="page-title">
+							<a class="feed-message-link" href="javascript:void(0)"style="float:left; margin-bottom:5px; color:white; text-decoration:none"> 
+								< 
+							</a>
+							<h4 style="color:white;width:100%">Request Payment</h4>
+					</div>
+					<div class="offer" align="center" style="margin-left:20px;margin-right:20px">
+						<img id="payment-student-img" src="/static/img/guru.jpg" class="user-photo">
+						<h4 style="text-align:center">Payment request from <b> {{tutor_name}}
+						</b></h4>
+						<br>
+						<div class="bio" style="padding-bottom:20px">
+							<div style="float:left;text-align:right;width:50%;padding-right:20px">
+							  	<div class="h4"><b>Rate</b></div>
+							  	<div class="h4"><b>Time</b></div>
+							  	<div class="h4"><b>Total</b></div>
+							</div>
+							<div style="float:right;text-align:left;width:50%;">
+								<div class="h4" style="color:#69bf69;">
+									<span> ${{payment.tutor_rate}}/hour</span>
+								</div>
+								<div> {{payment.time_amount}} hours </div>
+								<div id="total-payment-amount" style="color:#69bf69;font-size:36px">${{payment.tutor_rate * payment.time_amount}}
+								</div>
+								<h6>({{payment.time_amount}} x ${{payment.tutor_rate}}/hr)</h6>
+							</div>
+						</div>
+					</div>
+				<a href="javascript:void(0)" id="accept-payment">
+					<div class="btn-request">REQUEST
+					</div>
+				</a>
+			</div>	
+			{% elif n.custom and n.custom == 'getting_started' %}
+				<div id="{{n.a_id_name}}-detailed" style="display:none; color:rgb(0, 159, 225);">
+					<div class="page-title">
+	   					<a class="feed-message-link" href="javascript:void(0)"style="float:left; margin-bottom:5px; color:white; text-decoration:none"> 
+	   						< 
+	   					</a>
+	   					<h4 style="color:white;width:100%">{{n.custom}}</h4>
+	  				</div>
+					This is where the getting started content would go.
+				</div>
+			{% elif n.custom_tag == 'student-payment-approval' %}
+				{% set payment = payment_dict[n.payment_id]['payment'] %}
+				{% set tutor_name = payment_dict[n.payment_id]['tutor_name'] %}
+				<div class="payment-id-{{payment.id}}"id="{{n.a_id_name}}-detailed" style="display:none">
+					<div class="page-title">
+							<a class="feed-message-link" href="javascript:void(0)"style="float:left; margin-bottom:5px; color:white; text-decoration:none"> 
+								< 
+							</a>
+							<h4 style="color:white;width:100%">Request Payment</h4>
+					</div>
+					<div class="offer" align="center" style="margin-left:20px;margin-right:20px">
+						<img id="payment-student-img" src="/static/img/guru.jpg" class="user-photo">
+						<h4 style="text-align:center">You have paid  <b> {{tutor_name}}
+						</b></h4>
+						<br>
+						<div class="bio" style="padding-bottom:20px">
+							<div style="float:left;text-align:right;width:50%;padding-right:20px">
+							  	<div class="h4"><b>Rate</b></div>
+							  	<div class="h4"><b>Time</b></div>
+							  	<div class="h4"><b>Total</b></div>
+							</div>
+							<div style="float:right;text-align:left;width:50%;">
+								<div class="h4" style="color:#69bf69;">
+									<span> ${{payment.tutor_rate}}/hour</span>
+								</div>
+								<div> {{payment.time_amount}} hours </div>
+								<div id="total-payment-amount" style="color:#69bf69;font-size:36px">${{payment.tutor_rate * payment.time_amount}}
+								</div>
+								<h6>({{payment.time_amount}} x ${{payment.tutor_rate}}/hr)</h6>
+							</div>
+						</div>
+					</div>
+			</div>		
+			{% elif n.custom_tag == 'tutor-receive-payment' %}
+				{% set payment = payment_dict[n.payment_id]['payment'] %}
+				{% set tutor_name = payment_dict[n.payment_id]['tutor_name'] %}
+				{% set student_name = payment_dict[n.payment_id]['student_name'] %}
+				<div class="payment-id-{{payment.id}}"id="{{n.a_id_name}}-detailed" style="display:none">
+					<div class="page-title">
+							<a class="feed-message-link" href="javascript:void(0)"style="float:left; margin-bottom:5px; color:white; text-decoration:none"> 
+								< 
+							</a>
+							<h4 style="color:white;width:100%">Request Payment</h4>
+					</div>
+					<div class="offer" align="center" style="margin-left:20px;margin-right:20px">
+						<img id="payment-student-img" src="/static/img/guru.jpg" class="user-photo">
+						<h4 style="text-align:center">Payment received from <b> {{student_name}}
+						</b></h4>
+						<br>
+						<div class="bio" style="padding-bottom:20px">
+							<div style="float:left;text-align:right;width:50%;padding-right:20px">
+							  	<div class="h4"><b>Rate</b></div>
+							  	<div class="h4"><b>Time</b></div>
+							  	<div class="h4"><b>Total</b></div>
+							</div>
+							<div style="float:right;text-align:left;width:50%;">
+								<div class="h4" style="color:#69bf69;">
+									<span> ${{payment.tutor_rate}}/hour</span>
+								</div>
+								<div> {{payment.time_amount}} hours </div>
+								<div id="total-payment-amount" style="color:#69bf69;font-size:36px">${{payment.tutor_rate * payment.time_amount}}
+								</div>
+								<h6>({{payment.time_amount}} x ${{payment.tutor_rate}}/hr)</h6>
+							</div>
+						</div>
+					</div>
+			</div>
+			{% elif n.custom_tag == 'student-request-help' %}
+				<div id="{{n.a_id_name}}-detailed" style="display:none;">
+					<div class="page-title">
+	   					<div class="row" style="width:100%;text-align:center">
+		   					<div class="col-xs-1 col-xs-offset-1">
+			   					<a href="javascript:void(0)" class= "feed-message-link" style="text-decoration:none"> 
+			   						<h4 id="back-button">< </h4>
+			   					</a>
+		   					</div>
+		   					<div class="col-xs-8" style="text-align:center">
+	   							<h4 style="color:white;width:100%">Your {{n.custom|upper}} Request</h4>
+	   						</div>
+	   					</div>
+	  				</div>
+					<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px">
+					  	<br>
+					  	{% if user.profile_url %}
+					  	<img src="{{user.profile_url}}" style="align:center" class="user-photo">
+					  	{% endif %}
+					  <div class="row">
+						  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
+							  <div class="request-info">
+							  	<div class="row">
+								  <div style="float:left;text-align:right;width:50%;padding-left:30px; padding-right:10px">
+								  	<div class="h4"><b>Urgency</b></div>
+								  	<div class="h4"><b>Estimate</b></div>
+								  	<div class="h4"><b>Description</b></div>
+								  </div>
+								  <div style="float:right;text-align:left;width:50%;">
+								  	<div class="h4">{{request_dict[n.request_id].urgency}}</div>
+								  	<div class="h4">{{request_dict[n.request_id].time_estimate}} hours</div>
+								  	<div class="h4">{{request_dict[n.request_id].description}}</div>
+								  </div>
+								 </div>
+								</div>
+						  </div>
+					 	</div>
+					 </div>
+					</div>
+			{% elif n.custom_tag  == 'student-incoming-offer' %}
+				<div id="{{n.a_id_name}}-detailed" style="display:none;">
+					<div class="page-title">
+	   					<div class="row" style="width:100%;text-align:center">
+		   					<div class="col-xs-1 col-xs-offset-1">
+			   					<a href="javascript:void(0)" class= "feed-message-link" style="text-decoration:none"> 
+			   						<h4 id="back-button">< </h4>
+			   					</a>
+		   					</div>
+		   					<div class="col-xs-9" style="text-align:center">
+	   							<h4 style="color:white;width:100%">Tutoring Request</h4>
+	   						</div>
+	   					</div>
+	  				</div>
+	  				<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px">
+					  	<br>
+					  	<img src="/static/img/guru.jpg" style="align:center" class="user-photo">
+						<div class="row">
+						  	<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
+						  		<h5 style="text-align:center">
+						  		<b>A Tutor</b> wants to help you with <b>{{n.skill_name}}</b>
+						  		and is requesting...
+						  		</h5>
+						  	</div>
+						</div>
+						<div id="hourly-amount-div" class="row">
+							<div class="col-xs-8 col-xs-offset-2">
+								<div id="offer-amount">
+									<span id="price">${{n.request_tutor_amount_hourly|int}}</span>
+									<span id="hour-text">/hr</span>
+								</div>
+							</div>
+						</div>
+						<br>
+						<span class="tutor-rating">
+       						<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+  						</span>
+  						<div class="row">
+  							<div class="col-xs-8 col-xs-offset-2">
+								<div id="num-reviews">
+									<p>0 Reviews </p>
+								</div>
+							</div>
+  						</div>
+					</div>
+					<div id="credit-card-success" style="display:None; color:green; text-align:center" class="row">
+							Credit Card Successfully Added! 
+					</div>
+				    <br>
+					<div class="row" style="width:104.75%">
+					        <div class="col-xs-6 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2" style="padding-right:0px">
+						        <div class="btn-reject">
+						        	<p> REJECT </p>
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-3 col-md-2" style="padding-right:0px; padding-left:0px">
+								<a href="javascript:void(0)" class="{% if not user.customer_id %} student-request-accept-btn-credit {% else %} student-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
+									<div class="btn-accept">
+										<p> ACCEPT </p>
+									</div>
+								</a>
+							</div>
+					</div>
+	  			</div>
+			{% elif n.custom_tag == 'tutor-request-offer' %}
+				<div id="{{n.a_id_name}}-detailed" style="display:none;">
+					<div class="page-title">
+	   					<div class="row" style="width:100%;text-align:center">
+		   					<div class="col-xs-1 col-xs-offset-1">
+			   					<a href="javascript:void(0)" class= "feed-message-link" style="text-decoration:none"> 
+			   						<h4 id="back-button">< </h4>
+			   					</a>
+		   					</div>
+		   					<div class="col-xs-9" style="text-align:center">
+	   							<h4 style="color:white;width:100%">Tutoring Request</h4>
+	   						</div>
+	   					</div>
+	  				</div>
+					<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px">
+					  	<br>
+					  	<img src="/static/img/guru.jpg" style="align:center" class="user-photo">
+					  <h5 style="text-align:center"><b>A Student</b> needs help in <b>{{n.custom|upper}}</b></h5>
+					  <div class="row">
+						  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
+							  <div class="request-info">
+							  	<div class="row">
+								  <div style="float:left;text-align:right;width:50%;padding-left:30px; padding-right:10px">
+								  	<div class="h4"><b>Urgency</b></div>
+								  	<div class="h4"><b>Estimate</b></div>
+								  	<div class="h4"><b>Description</b></div>
+								  </div>
+								  <div style="float:right;text-align:left;width:50%;">
+								  	<div class="h4">{{request_dict[n.request_id].urgency}}</div>
+								  	<div class="h4">{{request_dict[n.request_id].time_estimate}} hours</div>
+								  	<div class="h4">{{request_dict[n.request_id].description}}</div>
+								  </div>
+								 </div>
+								</div>
+						  </div>
+					 	</div>
+					   <div class="h4" style="float:left;text-align:right;width:50%;padding-top:8px;padding-right:20px"><b>Your Hourly Price</b>
+					   </div>
+					   <div id="price-dropdown-div" style="float:right;text-align:left;width:50%;padding-top:8px">
+						   <div id="price-dropdown" class="btn-group">
+					            <button type="button" class="btn-default">
+					              <span id="selected-price" style="color:black">${{user.advertised_rate|int}}</span>
+					            </button>
+					            <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown">
+					              <span class="caret"></span>
+					              <span class="sr-only">Toggle Dropdown</span>
+					            </button>
+					            <ul class="dropdown-menu" role="menu">
+					              {% for n in range(user.max_price|int) %}
+					              <li><a href="javascript:void(0);">${{user.max_price|int - n}}</a></li>
+					              {% endfor %}
+					              <li class="divider"></li>
+					              <li><a href="javascript:void(0);">Free</a></li>
+					            </ul>
+					         </div> 
+				        </div>
+					</div>
+					<div id="credit-card-success" style="display:None; color:green; text-align:center" class="row">
+							Credit Card Successfully Added! 
+					</div>
+				    <br>
+					<div class="row" style="width:104.75%">
+					        <div class="col-xs-6 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2" style="padding-right:0px">
+						        <div class="btn-reject">
+						        	<p> REJECT </p>
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-3 col-md-2" style="padding-right:0px; padding-left:0px">
+								<a href="javascript:void(0)" class="{% if not user.customer_id %} tutor-request-accept-btn-credit {% else %} tutor-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
+									<div class="btn-accept">
+										<p> ACCEPT </p>
+									</div>
+								</a>
+							</div>
+					</div>
+					<!-- <div class="container-fluid"  style="color:rgb(0, 159, 225)">
+						<div class="row">
+							Requested Skill: {{n.custom}}
+						</div>
+						<div class="row">
+							Urgency: {{request_dict[n.request_id].urgency}}
+						</div>
+						<div class="row">
+							Frequency: {{request_dict[n.request_id].frequency}}
+						</div>
+						<div class="row">
+							Description: {{request_dict[n.request_id].description}}
+						</div>
+						<div class="row">
+							Time Estimate: {{request_dict[n.request_id].time_estimate}}
+						</div>
+				          <div id="price-dropdown" class="btn-group">
+				            <button type="button" class="btn-default">
+				              <span id="selected-price" style="color:black">${{user.advertised_rate|int}}</span>
+				            </button>
+				            <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown">
+				              <span class="caret"></span>
+				              <span class="sr-only">Toggle Dropdown</span>
+				            </button>
+				            <ul class="dropdown-menu" role="menu">
+				              {% for n in range(user.max_price|int) %}
+				              <li><a href="javascript:void(0);">${{user.max_price|int - n}}</a></li>
+				              {% endfor %}
+				              <li class="divider"></li>
+				              <li><a href="javascript:void(0);">Free</a></li>
+				            </ul>
+				          </div>
+				          <br>
+				          <a href="javascript:void(0)" class="{% if not user.customer_id %} tutor-request-accept-btn-credit {% else %} tutor-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
+	                		  <div class="main-font" id="tutor-submit-next">
+	                    		Accept Request
+	                		  </div>
+            			  </a>
+            			 {% if not user.customer_id %}
+            			<div id="credit-card-success" style="display:None; color:green; text-align:center" class="row">
+							Credit Card Successfully Added! 
+						</div>
+						{% endif %}
+					</div> -->
+				</div>
+			{% endif %}
+		{% endfor %}
 	</div>
-	</a>
-	<a href="/tutor_offer/">
-		<div class="notification" align:"center">
-			<img src="/static/img/guru.png" class="user-photo" style="float:left">
-				<h4><b>Samir</b> is interested in helping you with CS10</h4>
-			<div style="float:right">
-				<h6>3 hours ago</h6>
-			</div>
-		</div>
-	</a>
-	<div class="notification" align:"center">
-		<img src="/static/img/guru.png" class="user-photo" style="float:left">
-			<h4><b>You</b> requested help in CS10</h4>
-		<div style="float:right">
-			<h6>5 hours ago</h6>
-		</div>
-	</div>	
 </div>
 
+
+	
+
+{% endblock %}
+
+{% block footer_scripts %}
+	<script src="/static/js/jquery-ui-custom.js"></script>
+	<script src="/static/js/activity.js"></script>    
+	{% if not user.customer_id %}
+	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+	<script src="/static/js/jquery.payment.js"></script>
+	<script src="/static/js/uguru.payments.js"></script>    
+	<script type="text/javascript">Stripe.setPublishableKey("{{key}}");</script>
+	{% endif %}
 {% endblock %}

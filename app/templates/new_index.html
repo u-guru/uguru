@@ -14,7 +14,12 @@
         <link href="/static/fonts/grand_hotel.css" rel="stylesheet">
         <link href="/static/css/new_style.css" rel="stylesheet">
         <link href="/static/css/bootstrap-formhelpers.min.css" rel="stylesheet">
+        <link href="/static/css/jquery.nouislider.min.css" rel="stylesheet">
     </head>
+
+      <!-- Jinja2 Variable Definitions -->
+    {% set request_form = forms[0] %}
+    {% set messages = get_flashed_messages(with_categories=true) %}
 
     <body>
         <div id="home-top" class="row main">
@@ -190,7 +195,7 @@
                             <span id='alert-fields-student-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">NAME</label> <br>
-                                <input id="student-signup-name" name="tutor-name" type="email" class="input-signup" id="login-email">
+                                <input id="student-signup-name" name="student-name" type="email" class="input-signup" id="login-email">
                             </div>
                         </div>
                     </div>
@@ -198,7 +203,7 @@
                         <div class="col-xs-10 col-xs-offset-1">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">EMAIL</label> <br>
-                                <input name="tutor-email" type="email" class="input-signup" id="student-signup-email" placeholder="username@berkeley.edu">
+                                <input name="student-email" type="email" class="input-signup" id="student-signup-email" placeholder="username@berkeley.edu">
                             </div>
                         </div>
                     </div>
@@ -206,7 +211,7 @@
                         <div class="col-xs-10 col-xs-offset-1">
                           <div class="form-group">
                             <label for="exampleInputPassword1">PASSWORD</label> <br>
-                            <input name="tutor-password" type="password" class="input-signup" id="student-signup-password" >
+                            <input name="student-password" type="password" class="input-signup" id="student-signup-password" >
                           </div>
                           <span id='alert-fields-login' style="color:red;display:None">Incorrect username or password</span>
                           <span id='alert-fields-login-2' style="color:red;display:None">Please fill in all fields.</span>
@@ -216,7 +221,7 @@
                         <div class="col-xs-10 col-xs-offset-1">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">PHONE NUMBER</label> <br>
-                                <input class="input-signup form-control bfh-phone" id="student-signup-phone" data-format="+1 (ddd) ddd-dddd" name="tutor-phone" type="text">
+                                <input class="input-signup form-control bfh-phone" id="student-signup-phone" data-format="+1 (ddd) ddd-dddd" name="student-phone" type="text">
                                   <span style="font-weight:strong; font-size:0.80em">
                                   Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
                                 </span>
@@ -239,10 +244,40 @@
                   </div>
                 </div>
             </nav>
-            <div id="tutor-signup-fields">
-                
+            <div id="student-request-fields">
+                <div style="margin:30px 30px 20px 30px" align="center">
+                    <span id='alert-fields-student-signup1' style="color:red;display:None">Please fill or select all fields</span>
+                    <input id="student-signup-skill" name="skill" class="typeahead add-skills" placeholder="I need help in..."></input>
+                    <hr>
+                    <textarea name="description" id="student-signup-description" class="bio" style="height:100px" placeholder="Any further description (optional)..."></textarea>
+                    <h4>URGENCY</h4>
+                    <div class="btn-group" data-toggle="buttons">
+                         {% for subfield in request_form.urgency %}
+                        <label class="btn btn-option">
+                          {{ subfield }} {{subfield.label.text}}
+                        </label>
+                        {% endfor %}
+                      </div>                                             
+                      
+                      <h4>FREQUENCY</h4>
+                      <div class="btn-group" data-toggle="buttons">
+                         {% for subfield in request_form.frequency %}
+                        <label class="btn btn-option">
+                          {{ subfield }} {{subfield.label.text}}
+                        </label>
+                        {% endfor %}
+                      </div>                                             
+                      <!-- Slider -->
+                      <h4>TIME ESTIMATE (per session)</h4>
+                          <div class="noUiSlider"></div>
+                          <p class="text-right"><span style="color:rgb(0, 159, 225)" name="estimate" id="low"></span> hours </p>
+                      <br>
+                      <br>
+                      <br>
+
+                </div>
             </div>
-            <a href="javascript:void" id="student-next-link">
+            <a href="javascript:void(0)" id="student-register">
                 <div class="main-font" id="tutor-submit-next">
                     NEXT
                 </div>
@@ -259,6 +294,19 @@
         <script type="text/javascript" src="/static/js/typeahead.js"></script>
         <script>window.jQuery || document.write('<script src="/static/js/jquery-1.10.2.js"><\/script>')</script>
         <script>window.jQuery || document.write('<script src="/static/js/bootstrap.min.js"><\/script>')</script>
+        <script src="/static/js/jquery.nouislider.min.js"></script>
         <script src="/static/js/app.js"></script>
+        <script>
+        $(".noUiSlider").noUiSlider({
+              range: [0, 10]
+              ,start: 0
+              ,step: 0.5
+              ,handles: 1
+              ,serialization: {
+                to: [ $("#low"), 'html' ],
+                resolution: 0.1
+              }
+        });     
+        </script>
     </footer>
 </html>

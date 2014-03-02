@@ -1,0 +1,84 @@
+    credit_card_back_link = true; 
+    $('input#credit-card-num').payment('formatCardNumber');
+    $('input#expiration-date').payment('formatCardExpiry');
+
+    $('.tutor-request-accept-btn-credit').click(function(){
+        if (credit_card_back_link) {
+            credit_card_back_link = $(this).parent().parent().parent().attr('id')
+            $(this).parent().parent().parent().hide();
+            $('#credit-card-info').show();
+        }
+    });
+
+    $('.student-request-accept-btn-credit').click(function(){
+        if (credit_card_back_link) {
+            credit_card_back_link = $(this).parent().parent().attr('id')
+            $(this).parent().parent().hide();
+            $('#credit-card-info').show();
+        }
+    });
+
+    $('#credit-card-back-link').click(function(){
+        $(this).parent().parent().parent().parent().hide();
+        $('#' + credit_card_back_link).show();
+        credit_card_back_link = true;
+    })
+    jQuery(function($) {
+      $('#submit-card-info').click(function() {
+        if (!$('input#credit-card-num').val() || !$('input#expiration-date').val()) {
+            $('.payment-errors').text("Please fill in all fields");
+            return false;
+        }
+        card_number  = $('input#credit-card-num').val()
+        expiration_date = $('input#expiration-date').val()
+        month = parseInt(expiration_date.split('/')[0])
+        year = parseInt(expiration_date.split('/')[1])
+
+        Stripe.card.createToken({
+            number : card_number,
+            exp_month : month,
+            exp_year : year
+        }, stripeResponseHandler);
+
+      });
+      $('#payment-form').submit(function(event) {
+        alert("sup");
+        var $form = $(this);
+
+        // Disable the submit button to prevent repeated clicks
+        $form.find('button').prop('disabled', true);
+
+        Stripe.card.createToken($form, stripeResponseHandler);
+
+        // Prevent the form from submitting with the default action
+        return false;
+        });
+
+var stripeResponseHandler = function(status, response) {
+    var $form = $('#payment-form');
+    if (response.error) {
+        // Show the errors on the form
+        $form.find('.payment-errors').text(response.error.message);
+    } else {
+        $('#payment-form').parent().hide();
+        $('#' + credit_card_back_link).show();
+        $('#' + credit_card_back_link + ' a.tutor-request-accept-btn-credit').addClass('tutor-request-accept-btn');
+        $('#' + credit_card_back_link + ' a.tutor-request-accept-btn-credit').removeClass('tutor-request-accept-btn-credit');
+        $('#' + credit_card_back_link + ' a.student-request-accept-btn-credit').addClass('student-request-accept-btn');
+        $('#' + credit_card_back_link + ' a.student-request-accept-btn-credit').removeClass('student-request-accept-btn-credit');
+        $('#credit-card-success').show();
+        $('#credit-card-success').delay(2000).fadeOut('slow');
+        credit_card_back_link = false
+        // token contains id, last4, and card type
+        var token = response.id;
+        var data = {'token':token};
+          $.ajax({
+                type: "POST",
+                contentType: 'application/json;charset=UTF-8',
+                url: '/add-credit/' ,
+                data: JSON.stringify(data),
+                dataType: "json"
+          });  
+        }
+    };
+});

@@ -33,14 +33,45 @@ $(document).ready(function(){
     });
     $('#student-next-link').click(function() {
         if ((!$('#student-signup-name').val() || !$('#student-signup-email').val()) 
-        || !$('#student-signup-password').val() || !($('#student-signup-phone').val().length == 17)) 
+        || !$('#student-signup-password').val() || !$('#student-signup-phone').val()) 
         {
             $('#alert-fields-student-signup').show()
         } else {
             $('#student-signup').hide();
             $('#student-request').show('slide', {direction: 'right'}, 200);
+            var data = {
+                'student-signup': true,        
+                'name': $('input[name="student-name"]').val(),
+                'email': $('input[name="student-email"]').val(),
+                'phone': $('input[name="student-phone"]').val(),
+                'password': $('input[name="student-password"]').val(),
+            }
+            send_tutor_signup_ajax(data);
         } 
     });
+    $('#student-register').click(function(){
+    if ((!$('#student-signup-description').val() || !$('#student-signup-skill').val()) || $('input[type=radio]:checked').size() < 2)  {
+      $('#alert-fields-student-signup1').show() 
+    } else {
+      var data = {
+        'student-request': true,
+        'description': $('textarea[name="description"]').val(),
+        'urgency': $('input[name="urgency"]:checked').val(),
+        'frequency': $('input[name="frequency"]:checked').val(),
+        'skill': $('input[name="skill"]').val(),
+        'estimate': $('span[name="estimate"]').text()
+        }
+        $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/validation/' ,
+          data: JSON.stringify(data),
+          dataType: "json"
+        });
+        // window.location.replace('/activity/');
+      }
+    });
+
     $('#tutor-next-link').click(function(){
         if ((!$('#tutor-signup-name').val() || !$('#tutor-signup-email').val()) 
           || !$('#tutor-signup-password').val() || $('#tutor-signup-phone').val().length == 17
@@ -138,12 +169,12 @@ $(document).ready(function(){
       $.ajax({
         type: "POST",
         contentType: 'application/json;charset=UTF-8',
-        url: '/login/' + '?' + '{{redirect}}'.replace('amp;', '').replace('amp;',''),
+        url: '/login/',
         data: JSON.stringify(data),
         dataType: "json",        
         success: function(result) {        
             if (result.json['success']) {
-                window.location.replace(result.json['redirect'])
+                window.location.replace('/activity/');
             } else {
                 $('#alert-fields-login').show();     
                 $('#alert-fields-login-redirect').hide();
@@ -179,6 +210,11 @@ $(document).ready(function(){
      
     // instantiate the typeahead UI
     $('#tutor-add-course-fields .typeahead').typeahead(null, {
+      displayKey: 'name',
+      source: numbers.ttAdapter()
+    });
+
+    $('#student-request-fields .typeahead').typeahead(null, {
       displayKey: 'name',
       source: numbers.ttAdapter()
     });

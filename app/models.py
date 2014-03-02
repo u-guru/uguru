@@ -15,6 +15,12 @@ user_skill_table = Table('user-skill_assoc',
     Column('skill_id', Integer, ForeignKey('skill.id'))
 )
 
+request_conversation_table = Table('request-convo_assoc',
+    Base.metadata,
+    Column('conversation_id', Integer, ForeignKey('conversation.id')),
+    Column('request_id', Integer, ForeignKey('request.id'))
+)
+
 student_request_table = Table('student-skill_assoc',
     Base.metadata,
     Column('request_id', Integer, ForeignKey('request.id')),
@@ -103,6 +109,7 @@ class User(Base):
     #Stripe Fields
     customer_id = Column(String)
     customer_last4 = Column(String(4))
+    recipient_id = Column(String)
     
     outgoing_requests = relationship('Request', 
         secondary = student_request_table,
@@ -181,6 +188,7 @@ class Conversation(Base):
     __tablename__ = 'conversation'
     id = Column(Integer, primary_key = True)
 
+
     skill_id = Column(Integer, ForeignKey('skill.id'))
     skill = relationship("Skill",
         uselist = False,
@@ -198,6 +206,9 @@ class Conversation(Base):
         uselist = False, 
         primaryjoin = "User.id == Conversation.student_id",
         backref = "student_conversations")
+
+    requests = relationship("Request",
+        secondary = request_conversation_table)
 
     users = relationship("User",
         secondary = user_conversation_table,
@@ -289,6 +300,8 @@ class Notification(Base):
     
     request_id = Column(Integer)        
     request_tutor_amount_hourly = Column(Float)
+    request_tutor_id = Column(Float)
+    skill_name = Column(String)
     custom = Column(String(1000))
     custom_tag = Column(String)
     time_created = Column(DateTime)
@@ -296,13 +309,15 @@ class Notification(Base):
     feed_message = Column(String(1000))
     payment_id = Column(Integer)
     rating_id = Column(Integer)
+    a_id_name = Column(String) #div to display
+    image_url = Column(String)
 
     def __init__(self, **kwargs):
         request = kwargs.get('request')
         payment = kwargs.get('payment')
         rating = kwargs.get('rating')
         other = kwargs.get('other')
-        time_created = datetime.now()
+        self.time_created = datetime.now()
         assert bool(request) ^ bool(payment) ^ bool(rating) ^ bool(other), \
         'kwargs must specify *either* a request, payment or a rating'
         
@@ -367,6 +382,8 @@ class Payment(Base):
     student_paid_amount = Column(Float)
     tutor_received_amount = Column(Float)
     time_created = Column(DateTime)
+    stripe_charge_id = Column(String)
+    stripe_recipient_id = Column(String)
 
     def __init__(self, request):
         self.student_id = request.student_id
@@ -399,6 +416,7 @@ class Request(Base):
     student_id = Column(Integer) 
     skill_id = Column(Integer)
     connected_tutor_id = Column(Integer) #Request is active if null
+    connected_tutor_hourly = Column(Float)
     description = Column(String)
     urgency = Column(SmallInteger)
     frequency = Column(SmallInteger) # 0 is once, 1 is regular
@@ -414,7 +432,7 @@ class Request(Base):
         secondary = tutor_request_table,
         backref = backref('requests', lazy='dynamic')
         )
-
+ 
     committed_tutors = relationship('User',
         secondary = committed_tutor_request_table,
         backref = backref('committed_requests', lazy='dynamic'))

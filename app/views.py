@@ -3,18 +3,24 @@ from app.database import *
 from flask import render_template, jsonify, redirect, request, \
 session, flash, redirect, url_for
 from forms import SignupForm, RequestForm
-from models import User, Request, Skill, Course
+from models import User, Request, Skill, Course, Notification, Mailbox, Conversation, Message, Payment
 from hashlib import md5
 from datetime import datetime
-import emails, boto
+import emails, boto, stripe, os
 
+
+stripe_keys = {
+    'secret_key': os.environ['SECRET_KEY'],
+    'publishable_key': os.environ['PUBLISHABLE_KEY']
+}
+stripe.api_key = stripe_keys['secret_key']
 MAX_UPLOAD_SIZE = 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if session.get('user_id'):
-        return render_template('activity.html')
+        return redirect(url_for('activity'))
     request_form = RequestForm()
     return render_template('new_index.html', forms=[request_form],
         logged_in=session.get('user_id'))
@@ -112,7 +118,7 @@ def update_profile():
             destination_filename = md5(str(user_id)).hexdigest() + "." + extension
 
             upload_file_to_amazon(destination_filename, file)
-        
+            
             #save this to the db
             amazon_url = "https://s3.amazonaws.com/uguruprof/"+destination_filename
             user.profile_url = amazon_url
@@ -131,6 +137,186 @@ def update_profile():
             user.discoverability = ajax_json.get('discover')
         db_session.commit()
         return jsonify(ajax_json)
+
+@app.route('/add-credit/', methods=('GET', 'POST'))
+def add_credit():
+    if request.method == "POST":
+        return_json = {}
+        ajax_json = request.json
+        print ajax_json
+        user_id = session.get('user_id')
+        user = User.query.get(user_id)
+
+        if ajax_json.get('token'):
+            stripe_user_token = ajax_json.get('token')
+            
+            customer = stripe.Customer.create(
+                email=user.email,
+                card = stripe_user_token
+                )
+
+            user.customer_id = customer.id
+            user.customer_last4 = customer['cards']['data'][0]['last4']
+            db_session.commit()
+        return jsonify(response=return_json)
+
+@app.route('/submit-payment/', methods=('GET', 'POST'))
+def submit_payment():
+    if request.method == "POST":
+        return_json = {}
+        ajax_json = request.json
+        print ajax_json
+        user_id = session.get('user_id')
+        user = User.query.get(user_id)
+
+        if 'accept-payment' in ajax_json:
+            payment_id = int(ajax_json.get('accept-payment'))
+            payment = Payment.query.get(payment_id)
+            total_amount = float(payment.time_amount * payment.tutor_rate)
+            stripe_amount_cents = int(total_amount * 100.0)
+            charge = stripe.Charge.create(
+                amount = stripe_amount_cents,
+                currency="usd",
+                customer=user.customer_id,
+                description="charge for receiving tutoring"
+            )
+            payment.stripe_charge_id = charge.id
+            db_session.commit()
+
+            student_id = payment.student_id
+            student = User.query.get(student_id)
+            tutor_id = payment.tutor_id
+            tutor = User.query.get(tutor_id)
+
+            from notifications import student_payment_approval, tutor_receive_payment
+            tutor_notification = tutor_receive_payment(student, tutor, payment)
+            student_notification = student_payment_approval(student, tutor, payment)
+            tutor.notifications.append(tutor_notification)
+            student.notifications.append(student_notification)
+            db_session.add_all([tutor_notification, student_notification])
+            db_session.commit()
+
+        if 'submit-payment' in ajax_json:
+            conversation_id = ajax_json.get('submit-payment')
+            hourly_rate = ajax_json.get('hourly-rate')
+            total_time = ajax_json.get('total-time')
+            amount = float(hourly_rate * total_time)
+
+            conversation = Conversation.query.get(conversation_id)
+
+            for _request in conversation.requests:
+                if _request.connected_tutor_id == user_id and not _request.actual_hourly:
+                    r = _request
+                    student_id = _request.student_id
+                    student = User.query.get(student_id)
+            
+            tutor = user
+            payment = Payment(r)
+            payment.tutor_rate = float(hourly_rate)
+            payment.time_amount = float(total_time)
+            db_session.add(payment)
+
+            tutor.payments.append(payment)
+            student.payments.append(payment)
+
+            db_session.commit()
+
+            from notifications import tutor_payment_request_receipt, student_payment_proposal
+            tutor_notification = tutor_payment_request_receipt(student, tutor, payment)
+            student_notification = student_payment_proposal(student, tutor, payment)
+            tutor.notifications.append(tutor_notification)
+            student.notifications.append(student_notification)
+            db_session.add_all([tutor_notification, student_notification])
+            db_session.commit()
+    return jsonify(response=return_json)
+
+@app.route('/send-message/', methods=('GET', 'POST'))
+def send_message():
+    if request.method == "POST":
+        return_json = {}
+        ajax_json = request.json
+        print ajax_json
+        user_id = session.get('user_id')
+        user = User.query.get(user_id)
+
+        if 'send-message' in ajax_json:
+            message_contents = ajax_json.get('send-message')
+            conversation_num = ajax_json.get('conversation-num')
+            conversation = user.mailbox.conversations[conversation_num]
+            sender_id = user.id
+            if conversation.guru_id == user.id:
+                receiver_id = conversation.student_id
+                receiver = User.query.get(receiver_id)
+            else:
+                receiver_id = conversation.guru_id
+                receiver = User.query.get(receiver_id)
+
+            message = Message(message_contents, conversation, user, receiver)
+            db_session.add(message)
+            db_session.commit()
+            print 'message-created'
+        return jsonify(response=return_json)
+
+@app.route('/update-request/', methods=('GET', 'POST'))
+def update_requests():
+    if request.method == "POST":
+        return_json = {}
+        ajax_json = request.json
+        print ajax_json
+        user_id = session.get('user_id')
+        user = User.query.get(user_id)
+
+        if 'tutor-accept' in ajax_json:
+            incoming_request_num = ajax_json.get('tutor-accept')
+            hourly_amount = ajax_json.get('hourly-amount')
+            skill_name = ajax_json.get('skill-name')
+            tutor = user
+            r = tutor.incoming_requests_to_tutor[incoming_request_num]
+            r.committed_tutors.append(tutor)
+            student = User.query.get(r.student_id)
+            student.incoming_requests_from_tutors.append(r)
+            db_session.commit()
+
+            from notifications import tutor_request_accept, student_incoming_tutor_request
+            tutor_notification = tutor_request_accept(student, tutor, r, skill_name, hourly_amount)
+            student_notification = student_incoming_tutor_request(student, tutor, r, skill_name, hourly_amount)
+            tutor.notifications.append(tutor_notification)
+            student.notifications.append(student_notification)
+            db_session.add_all([tutor_notification, student_notification])
+            db_session.commit()
+
+        if 'student-accept' in ajax_json:
+            hourly_amount = ajax_json.get('hourly-amount')
+            skill_name = ajax_json.get('skill-name')
+            notification_id = ajax_json.get('notification-id')
+            student = user
+            current_notification = student.notifications[notification_id]
+            print current_notification.id
+            tutor_id = current_notification.request_tutor_id
+            tutor = User.query.get(tutor_id)
+            request_id = current_notification.request_id
+            r = Request.query.get(request_id)
+            skill = Skill.query.get(r.skill_id)
+            r.connected_tutor_id = tutor_id
+            r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
+            # student.incoming_requests_from_tutors.remove(r)
+            # tutor.incoming_requests_to_tutor.remove(r)
+            
+            #create conversation between both
+            conversation = Conversation(skill, tutor, student)
+            conversation.requests.append(r)
+            db_session.add(conversation)
+            
+            from notifications import student_match, tutor_match
+            tutor_notification = tutor_match(student, tutor, r, skill_name, hourly_amount)
+            student_notification = student_match(student, tutor, r, skill_name, hourly_amount)
+            tutor.notifications.append(tutor_notification)
+            student.notifications.append(student_notification)
+            db_session.add_all([student_notification, tutor_notification])
+            db_session.commit()
+
+        return jsonify(response=return_json)
+    
 
 
 @app.route('/update-skill/', methods=('GET', 'POST'))
@@ -189,6 +375,7 @@ def update_password():
 def success():
     if request.method == "POST":
         ajax_json = request.json
+        print ajax_json
         
         #Create user for first time experiences
         if ajax_json.get('student-signup'):
@@ -199,6 +386,10 @@ def success():
                 phone_number = ajax_json['phone']
             )
             db_session.add(u)
+            db_session.commit()
+            m = Mailbox(u)
+            db_session.add(m)
+            db_session.commit()
             try:
                 db_session.commit()
             except:
@@ -206,14 +397,27 @@ def success():
                 raise 
             user_id = u.id
             authenticate(user_id)
+            try:
+                from notifications import getting_started
+                notification = getting_started(u)
+                u.notifications.append(notification)
+                db_session.add_all([u, notification])
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
 
         #Create a request
         if ajax_json.get('student-request'):
             user_id = session['user_id']
+            
+            from app.static.data.variations import courses_dict
+            skill_name = ajax_json['skill'].lower()
+            skill_id = courses_dict[skill_name]
             u = User.query.get(user_id)
             r = Request(
                 student_id = user_id,
-                skill_id = 1, #change this later,
+                skill_id = skill_id,
                 description = ajax_json['description'],
                 urgency = ajax_json['urgency'],
                 frequency = ajax_json['frequency'],
@@ -222,11 +426,23 @@ def success():
             u.outgoing_requests.append(r)
             db_session.add(r)            
             db_session.commit()
+            
+            from notifications import student_request_receipt
+            notification = student_request_receipt(u, r, skill_name)
+            u.notifications.append(notification)
+            db_session.add(notification)
+            db_session.commit()
+
+            from notifications import tutor_request_offer
             for tutor in r.requested_tutors:
                 tutor.incoming_requests_to_tutor.append(r)
+                notification = tutor_request_offer(u, tutor, r, skill_name)
+                db_session.add(notification)
+                tutor.notifications.append(notification)
             db_session.commit()
-            emails.send_request_to_tutors(r, \
-                url_for('confirm_tutor_interest', request_id=r.id, _external=True))
+            
+
+
 
         #Create a tutor for the first time
         if ajax_json.get('tutor-signup'):
@@ -243,7 +459,13 @@ def success():
                 phone_number = ajax_json['phone']
             )            
             try:
-                db_session.add(u)
+                from notifications import getting_started
+                notification = getting_started(u)
+                u.notifications.append(notification)
+                db_session.add_all([u, notification])
+                db_session.commit()
+                m = Mailbox(u)
+                db_session.add(m)
                 db_session.commit()
             except:
                 db_session.rollback()
@@ -275,17 +497,6 @@ def login():
             user = query
             authenticate(user.id)
             json['success'] = True                
-            if request.args.get('redirect'):
-                if request.args.get('tutor_confirm'):                    
-                    json['redirect'] = redirect=url_for('confirm_tutor_interest',\
-                        request_id=request.args.get('tutor_confirm'))
-                if request.args.get('student_confirm'):                    
-                    json['redirect'] = redirect=url_for('confirm_student_interest',\
-                        request_id=request.args.get('student_confirm'), \
-                        tutor_id=request.args.get('tutor_id'))                    
-            else:
-                flash("You have been logged in")
-                json['redirect'] = '/activity/'      
         else:
             json['failure'] = False
         return jsonify(json=json)
@@ -298,11 +509,35 @@ def tutorsignup1():
         return redirect('/')
     return render_template('tutorsignup1.html', form=form)
 
-@app.route('/activity/')
+@app.route('/activity/', methods=('GET', 'POST'))
 def activity():
-    # if not session.get('user_id'):
-    #     return redirect(url_for('login', redirect=True, tutor_confirm=request_id))
-    return render_template('activity.html', logged_in=session.get('user_id'))
+    if not session.get('user_id'):
+        return redirect(url_for('login'))
+    user_id = session.get('user_id')
+    user = User.query.get(user_id)
+    request_dict = {}
+    address_book = {}
+    payment_dict = {}
+    pretty_dates = {}
+    for notification in user.notifications:
+        pretty_dates[notification.id] = pretty_date(notification.time_created)
+    for request in (user.outgoing_requests + user.incoming_requests_to_tutor + user.incoming_requests_from_tutors):
+        request_dict[request.id] = request
+    for conversation in user.mailbox.conversations:
+        if conversation.student_id != user.id:
+            student = User.query.get(conversation.student_id)
+            address_book[student.name.split(" ")[0]] = \
+                {'profile_url': student.profile_url, 'conversation_id' : conversation.id}
+    for payment in user.payments:
+        tutor_id = payment.tutor_id
+        student_id = payment.student_id
+        tutor = User.query.get(tutor_id)
+        student = User.query.get(student_id)
+        payment_dict[payment.id] = {'payment': payment, 'tutor_name':tutor.name.split(' ')[0],\
+        'student_name': student.name.split(' ')[0]}
+    return render_template('activity.html', key=stripe_keys['publishable_key'], address_book=address_book, \
+        logged_in=session.get('user_id'), user=user, request_dict = request_dict, payment_dict = payment_dict,\
+        pretty_dates = pretty_dates)
 
 @app.route('/tutor_offer/')
 def tutor_offer():
@@ -310,7 +545,11 @@ def tutor_offer():
 
 @app.route('/messages/')
 def messages():
-    return render_template('messages.html')
+    if not session.get('user_id'):
+        return redirect(url_for('/'))
+    user_id = session['user_id']
+    user = User.query.get(user_id)
+    return render_template('messages.html', user=user)
 
 @app.route('/student_request/')
 def student_request():
@@ -332,7 +571,7 @@ def request_payment():
 def credit_card():
     return render_template('credit_card.html')
 
-@app.route('/conversation')
+@app.route('/conversation/')
 def conversation():
     return render_template('conversation.html')
 
@@ -403,3 +642,46 @@ def upload_file_to_amazon(filename, file):
     sml = b.new_key("/".join(["/",filename]))
     sml.set_contents_from_file(file)
     sml.set_acl('public-read')
+
+def pretty_date(time=False):
+    """
+    Get a datetime object or a int() Epoch timestamp and return a
+    pretty string like 'an hour ago', 'Yesterday', '3 months ago',
+    'just now', etc
+    """
+    from datetime import datetime
+    now = datetime.now()
+    if type(time) is int:
+        diff = now - datetime.fromtimestamp(time)
+    elif isinstance(time,datetime):
+        diff = now - time 
+    elif not time:
+        diff = now - now
+    second_diff = diff.seconds
+    day_diff = diff.days
+
+    if day_diff < 0:
+        return ''
+
+    if day_diff == 0:
+        if second_diff < 10:
+            return "just now"
+        if second_diff < 60:
+            return str(second_diff) + " seconds ago"
+        if second_diff < 120:
+            return  "a minute ago"
+        if second_diff < 3600:
+            return str( second_diff / 60 ) + " minutes ago"
+        if second_diff < 7200:
+            return "an hour ago"
+        if second_diff < 86400:
+            return str( second_diff / 3600 ) + " hours ago"
+    if day_diff == 1:
+        return "Yesterday"
+    if day_diff < 7:
+        return str(day_diff) + " days ago"
+    if day_diff < 31:
+        return str(day_diff/7) + " weeks ago"
+    if day_diff < 365:
+        return str(day_diff/30) + " months ago"
+    return str(day_diff/365) + " years ago"

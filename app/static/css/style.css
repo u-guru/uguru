@@ -65,30 +65,7 @@ a:link {
   padding: 0;
 }
 
-::-webkit-input-placeholder { /* WebKit browsers */
-    color:    rgb(0, 159, 225);
-    font-size:24px;
-    font-weight:100;;
-    margin-left:10px;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    rgb(0, 159, 225);
-    font-size:24px;
-    font-weight:100;
-    margin-left:10px;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    rgb(0, 159, 225);
-    font-size:24px;
-    font-weight:100;
-    margin-left:10px;
-}
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    rgb(0, 159, 225);
-    font-size:24px;
-    font-weight:100;
-    margin-left:10px;
-}
+
 
 .sidebar-nav li {
   line-height: 40px;
@@ -526,6 +503,7 @@ h4, h5 {
 
 .h4 {
   font-weight:100; 
+  font-size:14px;
 }
 
 .clear {
@@ -545,8 +523,8 @@ a:hover{
   font-size:20px;
   text-align:center;
   padding-top:2px;
-  margin-bottom:0;
-  bottom:0;
+/*  margin-bottom:0;*/
+/*  bottom:0;*/
 }
 
 .page-title h4 {
@@ -582,9 +560,9 @@ a:hover{
   font-weight:100;
 }
 
-.skill-name {
+/*.skill-name {
   padding-top:7px;
-}
+}*/
 
 .btn-options:hover {
   background-color: rgb(0, 159, 225);
@@ -649,45 +627,45 @@ a:hover{
 }
 
 .btn-accept {
-  display:inline-block;
-  padding: 30px 12px;
-  margin-bottom: 0;
-  margin-top:175px;
   font-size: 16px;
   font-weight: normal;
   line-height: 1.428571429;
   background-color:#69bf69;
-  width:50%;
-  height:75px;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border: none;
-  border-radius: 0px;
-  float:right;
+  height:50px;
+  text-align:center;
 }
 
 .btn-reject {
-  display:inline-block;
-  padding: 30px 12px;
-  margin-bottom: 0;
-  margin-top:175px;
+  text-align:center;
   font-size: 16px;
   font-weight: normal;
   line-height: 1.428571429;
   background-color:#ef5b40;
-  width:50%;
-  height:75px;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border: none;
-  border-radius: 0px;
-  float:left;
+  height:50px;
+  
+}
+.btn-save {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  background-color:#69bf69;
+  height:50px;
+  text-align:center; 
+}
+
+.btn-save p {
+  color:white;
+  padding-top:15px;
+}
+
+.btn-reject p {
+  color:white;
+  padding-top:15px;
+}
+
+.btn-accept p {
+  color:white;
+  padding-top:15px;
 }
 
 .btn-logout {
@@ -752,7 +730,7 @@ a:hover{
   vertical-align: middle;
   cursor: pointer;
   background-image: none;
-  border: 3px solid #40bfec;
+  border: 2px solid #16A7DE;
   border-radius: 12px;
 }
 
@@ -841,6 +819,17 @@ a:hover{
   color:#40bfec;
 }
 
+.request-info{
+  border: 2px solid #8D929C;
+  width:100%;
+  height:100%;
+  padding: 8px 15px 8px 15px;
+  border-radius: 20px;
+  text-align: left;
+  white-space:normal;
+  color:#40bfec; 
+}
+
 .price {
   border: 1px solid #69bf69;
   height:100px;
@@ -919,6 +908,10 @@ a:hover{
   text-align: left;
   white-space: nowrap;
   color:#40bfec;
+}
+
+.credit-main .input-signup {
+  border:1px solid grey;
 }
 
 .btn-toggle-on-inactive {
@@ -1017,13 +1010,13 @@ a.boxclose{
 }
 
 .light-blue-bar {
-  background-color:#e3f2fc;
+  background-color:#EFF6FC;
   width:100%;
-  height:80px;
+  /*height:80px;*/
   margin-top:0;
   text-align:center;
   vertical-align: center;
-  padding:20px 20px 20px 20px;
+  padding:15px;
 }
 
 .back {
@@ -1035,10 +1028,10 @@ a.boxclose{
   -webkit-transform:rotate(90deg);
 }
 
-.offer {
+/*.offer {
   margin:60px 90px 80px 90px;
   text-align: center;
-}
+}*/
 
 .chat-bubble {
   border: 3px solid #40bfec;
@@ -1203,4 +1196,95 @@ input[type=checkbox].css-checkbox { position: absolute;  overflow: hidden;  clip
 
 #upload-photo {
   display:none;
+}
+
+#activity {
+  min-height: 87%
+}
+
+.time-indicator {
+  color:#8D919A;
+}
+
+.feed-message-link {
+  color:white;
+  text-decoration:none;
+  margin-top:5px;
+}
+
+h4#back-button {
+  color:white;
+  float:left;
+}
+.payment-errors {
+  color:red;
+  text-align:center;
+}
+input#credit-card-num {
+  background: url('/static/img/card.png') no-repeat;
+  background-size: 32px 24px;
+  background-position:95% ;
+}
+
+input#credit-card-num.visa {
+  background-image: url('/static/img/visa.png');
+}
+
+input#credit-card-num.mastercard {
+  background-image: url('/static/img/mastercard.png');
+}
+ 
+input#credit-card-num.discover {
+  background-image: url('/static/img/discover.png');
+}
+ 
+input#credit-card-num.amex {
+  background-image: url('/static/img/amex.png');
+}
+
+#offer-amount {
+  border: 1px solid green;
+  padding: 6px 9px 6px 9px;
+  border-radius: 15px;
+  text-align: center;
+  white-space:normal;
+  font-weight:bold;
+}
+
+#offer-amount #price{
+  font-weight:bold; 
+  color:#69bf69; 
+  font-size:60px
+}
+
+#offer-amount #hour-text {
+  font-weight:bold; 
+  color:grey; 
+  font-size:28px 
+}
+
+.tutor-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  color:grey;
+}
+.tutor-rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.5em;
+  font-size:24px;
+  color:grey;
+/*  float:right;*/
+  margin-left:auto;
+  content: "\2605";
+  margin-right:auto;
+/*  padding-right:10px;*/
+}
+
+#num-reviews p {
+  font-size: 18px;
+  text-decoration: underline;
+  color:grey;
+  text-align: center;
+  font-weight:100;
 }
