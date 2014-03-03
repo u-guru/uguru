@@ -25,7 +25,6 @@ def index():
     return render_template('new_index.html', forms=[request_form],
         logged_in=session.get('user_id'))
 
-
 @app.route('/sneak/', methods=['GET', 'POST'])
 def sneak():
     return render_template('new_index.html')

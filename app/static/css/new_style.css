@@ -149,6 +149,13 @@ div.main {
 
 .page-title {
   color:#0097db;
+  background-color:#0081be;
+  width:100%;
+  height:40px;
+  color:#ffffff;
+  font-size:20px;
+  text-align:center;
+  padding-top:2px;
 }
 
 .btn-accept {
@@ -168,6 +175,17 @@ div.main {
   background-image: none;
   border: none;
   border-radius: 0px;
+}
+
+.tutor-submit-next {
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  background-color:#69bf69;
+  height:50px;
+  text-align:center;
+  color:white;
+  padding-top:1%;
 }
 
 .btn-reject {
@@ -212,13 +230,13 @@ div.main {
   border: none;
   border-radius: 0px;
   width:100%;
-  height:15%;
+  padding-bottom:20px;
   margin-bottom:0px;
 }
 
 .navbar-header {
-  margin-top: 14px;
-  margin-bottom: 14px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   float:left;
 }
 
@@ -245,17 +263,17 @@ div.main {
 }
 
 #login-fields {
-  height:70%;
   color:#00a9e5;
   margin: auto;
-  padding-top:25%;
+  padding-top:5%;
+  padding-bottom:1%;
 }
 
 #tutor-signup-fields{
   height:70%;
   color:#00a9e5;
   margin: auto;
-  padding-top:10%;
+  margin-top:20px;
 }
 #tutor-add-course-fields {
   height:70%;
@@ -277,12 +295,12 @@ div.main {
 }
 
 #submit-login {
-  height:15%;
   background-color: #00a9e5;
   text-align:center;
   font-size:24px;
   font-weight:100;
-  padding-top:7%;
+  width:95%;
+  float:center;
 }
 
 #tutor-submit-next {
@@ -499,4 +517,12 @@ a.boxclose{
   font-size:14px;
   line-height:1.42857143;
   border-radius:4px;
+}
+
+.form-group {
+  margin-bottom:8px;
+}
+
+.twitter-typeahead {
+  display:block !important;
 }
