@@ -182,10 +182,8 @@ $(document).ready(function(){
     });
     $('#add-skill-btn').click(function() {
       if ($('#add-skill-input-settings').val()) {
-        if ($('#register-skills').children().length > 1) {
-          $('#my-skills').show();
-          $('#tutor-register-div').show();
-        }
+        $('#my-skills').show();
+        $('#tutor-register-div').show();
         var skill_name = $('#add-skill-input-settings').val();
         $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
         $('.skill-tag:last .skill-tag-text').text($('#add-skill-input-settings').val());
@@ -199,10 +197,8 @@ $(document).ready(function(){
     $('#add-skill-input-settings').keyup(function(e){
         if ($('#add-skill-input-settings').val()) {
           if (e.keyCode == 13) {
-            if ($('#register-skills').children().length > 1) {
-              $('#my-skills').show();
-              $('#tutor-register-div').show();
-            }
+            $('#my-skills').show();
+            $('#tutor-register-div').show();
             if ($('#add-skill-input-settings').val()) {
               var skill_name = $('#add-skill-input-settings').val();
               $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
