@@ -469,12 +469,6 @@ text-align: center;
 box-shadow: 0 0 3px rgba(0, 0, 0, 0.4); 
 }
 
-.footer, a, p {
-color: black; 
-
-padding-top: 8px;
-}
-
 .footer, .push {
 height: 50px;
 
@@ -552,6 +546,11 @@ a:hover{
 
 .btn-options a {
   color: rgb(0, 159, 225);
+}
+
+.form-group {
+  margin-bottom:10px;
+  margin-top:5px;
 }
 
 .default-text {
@@ -1098,22 +1097,33 @@ input[type=checkbox].css-checkbox { position: absolute;  overflow: hidden;  clip
   display:none;
 }
 .tt-dropdown-menu {
-  background-color: rgb(235, 247, 250);
+  background-color: white;
   margin-left:5%;
   width:90%;
   border:1px solid;
   border-color: #66cbef;
+  color:rgb(0, 159, 225);
 }
 
 .tt-suggestion p {
     text-align:left;
     margin:0;
-    color:grey;
-    font-size:22px;
+    color:rgb(0, 159, 225);;
+    font-size:16px;
     font-weight:100;
     padding-left:10px;
     padding-bottom:5px;
 }
+
+.tt-suggestion:focus p, .tt-suggestion:hover p{
+  background-color:rgb(0, 159, 225);
+  color:white; 
+}
+
+/*.tt-suggestion.tt-is-under-cursor {
+  background-color:rgb(0, 159, 225);
+  color:white;  
+}*/
 
 .row.row-skills {
   margin: 0;
@@ -1288,3 +1298,79 @@ input#credit-card-num.amex {
   text-align: center;
   font-weight:100;
 }
+
+#frequency-btn-group, #urgency-btn-group {
+  color:white;
+}
+
+.btn-options-request {
+  display: inline-block;
+  margin:5px 5px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  background-color: #ffffff;
+  color: rgb(0, 159, 225);
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid rgb(0, 159, 225);
+  border-radius: 12px;
+  width:90px;
+  font-weight:strong;
+}
+
+.btn-options-request a {
+  text-decoration:none;
+  color:rgb(0, 159, 225);
+}
+
+.btn-options-request:hover a {
+  text-decoration:none;
+  color:white;
+}
+
+.btn-options-request.active, .btn-options-request.active a {
+  color:white;
+  background-color:rgb(0, 159, 225);
+}
+
+.btn-options-request:hover {
+  color:white;
+  background-color:rgb(0, 159, 225);
+}
+
+.btn-xs {
+  font-size:14px;
+  padding:4px 4px;
+}
+
+textarea#student-signup-description {
+  border:1px solid rgb(0, 159, 225); 
+  border-radius:15px;
+}
+
+#student-request-fields {
+  color:rgb(0, 159, 225);
+}
+
+#student-next-link, #student-register {
+  text-decoration:none;
+  color:white;
+}
+
+.tutor-submit-next {
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  background-color:#69bf69;
+  height:50px;
+  text-align:center;
+  color:white;
+  padding-top:1%;
+}
+
+span.twitter-typeahead {
+  width:100%;
+}
+

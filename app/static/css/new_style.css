@@ -13,6 +13,10 @@ body {
     background-color:#00a9e5;
 }
 
+input:focus, textarea:focus {
+  outline:none;
+}
+
 #login-page{
   height:100%;
   width:100%;
@@ -35,7 +39,9 @@ body {
 
 #student-request-fields {
   height:100%;
-  width:100%;   
+  width:100%;
+  color:#00a9e5;   
+  font-size:16px;
 }
 
 div.main {
@@ -408,43 +414,31 @@ a.boxclose{
 }
 
 .tt-dropdown-menu {
-  background-color: rgb(235, 247, 250);
+  background-color: white;
   margin-left:5%;
   width:90%;
   border:1px solid;
   border-color: #66cbef;
+  color:rgb(0, 159, 225);
 }
 
 .tt-suggestion p {
     text-align:left;
     margin:0;
-    color:grey;
-    font-size:22px;
+    color:rgb(0, 159, 225);;
+    font-size:16px;
     font-weight:100;
     padding-left:10px;
     padding-bottom:5px;
 }
+
+.tt-suggestion:focus p, .tt-suggestion:hover p{
+  background-color:rgb(0, 159, 225);
+  color:white; 
+}
 #student-next-link, #student-register {
   text-decoration:none;
   color:white;
-}
-.btn-options {
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  margin-top: 15px;
-  font-size: 16px;
-  font-weight: normal;
-  line-height: 1.428571429;
-  background-color: #ffffff;
-  color: rgb(0, 159, 225);
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid rgb(0, 159, 225);
-  border-radius: 12px;
 }
 .bio {
   border: 1px solid grey;
@@ -520,9 +514,90 @@ a.boxclose{
 }
 
 .form-group {
-  margin-bottom:8px;
+  margin-bottom:10px;
+  margin-top:5px;
 }
 
 .twitter-typeahead {
   display:block !important;
 }
+
+#my-skills {
+  display:block;
+  color:grey;
+}
+
+#register-skills {
+  color:white;
+  font-size:16px;
+  margin-top:10px;
+}
+
+.skill-tag {
+  background-color:#0081be;
+  border-radius: 7px;
+  text-align:center;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-right:15px;
+  padding-left:15px;
+  margin:10px 5px 5px 10px;
+  display:inline-block;
+}
+
+.skill-tag-remove {
+  font-size:12px;
+  color:white;
+}
+
+#frequency-btn-group, #urgency-btn-group {
+  color:white;
+}
+
+.btn-options {
+  display: inline-block;
+  margin:5px 5px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  background-color: #ffffff;
+  color: rgb(0, 159, 225);
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid rgb(0, 159, 225);
+  border-radius: 12px;
+  width:90px;
+  font-weight:strong;
+}
+
+.btn-options a {
+  text-decoration:none;
+  color:rgb(0, 159, 225);
+}
+
+.btn-options:hover a {
+  text-decoration:none;
+  color:white;
+}
+
+.btn-options.active, .btn-options.active a {
+  color:white;
+  background-color:rgb(0, 159, 225);
+}
+
+.btn-options:hover {
+  color:white;
+  background-color:rgb(0, 159, 225);
+}
+
+.btn-xs {
+  font-size:14px;
+  padding:4px 4px;
+}
+
+textarea#student-signup-description {
+  border:1px solid rgb(0, 159, 225); 
+  border-radius:15px;
+}
+

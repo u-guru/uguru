@@ -12,8 +12,8 @@
 
     $('.student-request-accept-btn-credit').click(function(){
         if (credit_card_back_link) {
-            credit_card_back_link = $(this).parent().parent().attr('id')
-            $(this).parent().parent().hide();
+            credit_card_back_link = $(this).parent().parent().parent().attr('id')
+            $(this).parent().parent().parent().hide();
             $('#credit-card-info').show();
         }
     });

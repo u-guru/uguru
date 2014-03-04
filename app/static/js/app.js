@@ -1,11 +1,23 @@
 $(document).ready(function(){
     
-    $('#current-skills').on('click', '.boxclose', function(e){
+    $('#register-skills').on('click', '.skill-tag-remove', function(e){
       e.preventDefault();
-      var skill_name = $(this).parent().siblings('.default-text:first').children('.skill-name').text();
-      $(this).parent().parent().parent().remove();
+      var skill_name = $(this).siblings('.skill-tag-text').text();
+      $(this).parent().remove();
       update_skill_ajax('remove',skill_name);
     });
+
+    $('#urgency-request').on('click', '.urgency', function(){
+      var current_active = $('#urgency-request .urgency.active');
+      current_active.removeClass('active')
+      $(this).addClass('active')
+    })
+
+    $('#frequency-request').on('click', '.frequency', function(){
+      var current_active = $('#frequency-request .frequency.active');
+      current_active.removeClass('active')
+      $(this).addClass('active')
+    })
 
     $('#login-link').click(function() {
         $('#home-top').hide();
@@ -50,14 +62,14 @@ $(document).ready(function(){
         } 
     });
     $('#student-register').click(function(){
-    if ((!$('#student-signup-description').val() || !$('#student-signup-skill').val()) || $('input[type=radio]:checked').size() < 2)  {
-      $('#alert-fields-student-signup1').show() 
+    if (!$('#student-signup-description').val() || !$('#student-signup-skill').val()) {
+      $('#alert-fields-student-signup1').show(); 
     } else {
       var data = {
         'student-request': true,
         'description': $('textarea[name="description"]').val(),
-        'urgency': $('input[name="urgency"]:checked').val(),
-        'frequency': $('input[name="frequency"]:checked').val(),
+        'urgency': $('#urgency-request .urgency.active').index(),
+        'frequency': $('#frequency-request .frequency.active').index(),
         'skill': $('input[name="skill"]').val(),
         'estimate': $('span[name="estimate"]').text()
         }
@@ -66,9 +78,11 @@ $(document).ready(function(){
           contentType: 'application/json;charset=UTF-8',
           url: '/validation/' ,
           data: JSON.stringify(data),
-          dataType: "json"
+          dataType: "json", 
+          success: function() {
+            window.location.replace('/activity/');
+          }
         });
-        // window.location.replace('/activity/');
       }
     });
 
@@ -95,9 +109,9 @@ $(document).ready(function(){
     $('#add-skill-btn').click(function() {
       if ($('#add-skill-input-settings').val()) {
         var skill_name = $('#add-skill-input-settings').val();
-        $('.template-one-skill:first').clone().hide().attr('class', 'one-skill').appendTo('#current-skills');
-        $('.one-skill:last .skill-name').text($('#add-skill-input-settings').val());
-        $('.one-skill:last').show();
+        $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
+        $('.skill-tag:last .skill-tag-text').text($('#add-skill-input-settings').val());
+        $('.skill-tag:last').show();
         $('#add-skill-input-settings').val('');
         $('.tt-hint').hide();
         update_skill_ajax('add',skill_name);
@@ -109,9 +123,9 @@ $(document).ready(function(){
           if (e.keyCode == 13) {
             if ($('#add-skill-input-settings').val()) {
               var skill_name = $('#add-skill-input-settings').val();
-              $('.template-one-skill:first').clone().hide().attr('class', 'one-skill').appendTo('#current-skills');
-              $('.one-skill:last .skill-name').text($('#add-skill-input-settings').val());
-              $('.one-skill:last').show();
+              $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
+              $('.skill-tag:last .skill-tag-text').text($('#add-skill-input-settings').val());
+              $('.skill-tag:last').show();
               $('#add-skill-input-settings').val('');
               $('.tt-hint').hide();
               update_skill_ajax('add',skill_name);

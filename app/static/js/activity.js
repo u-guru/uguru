@@ -1,5 +1,31 @@
 var credit_card_back_link = false; 
 $(document).ready(function() {
+
+    $('#student-register').click(function(){
+    if (!$('#student-signup-description').val() || !$('#student-signup-skill').val()) {
+      $('#alert-fields-student-signup1').show(); 
+    } else {
+      var data = {
+        'student-request': true,
+        'description': $('textarea[name="description"]').val(),
+        'urgency': $('#urgency-request .urgency.active').index(),
+        'frequency': $('#frequency-request .frequency.active').index(),
+        'skill': $('input[name="skill"]').val(),
+        'estimate': $('span[name="estimate"]').text()
+        }
+        $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/validation/' ,
+          data: JSON.stringify(data),
+          dataType: "json",
+          success: function() {
+            window.location.replace('/activity/');
+          }
+        });
+      }
+    });
+
    $('#feed').on('click', 'a', function() {
         var display_id = $(this).attr('id');
         var full_div = "#feed-messages div#" + display_id + '-detailed'
@@ -27,6 +53,14 @@ $(document).ready(function() {
         }); 
 
     });
+   $('#request-payment-link').click(function() {
+        $('#activity').hide();
+        $('#request-payments').show();
+   });
+   $('#tutor-request-link').click(function() {
+        $('#activity').hide();
+        $('#tutor-request').show();
+   })
    $('#request-payment-link').click(function() {
         $('#activity').hide();
         $('#request-payments').show();
@@ -113,4 +147,52 @@ $(document).ready(function() {
           $('#selected-payment-num-hour').text(selected_text)
           // send_profile_update_ajax('price', selected_text)
     });
+
+    var numbers = new Bloodhound({
+      datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name); },
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      limit: 3,
+      prefetch: {
+        url: '/static/data/autocomplete.json',
+        filter: function(list) {
+          return $.map(list, function(course) { return { name: course }; });
+        }
+      },
+      sorter: function compare(a,b) {
+        if (a > b) {
+          return 1;
+        } 
+        if (b < a) {
+          return -1;
+        }
+        return 0 ;
+      }
+    });
+     
+    // initialize the bloodhound suggestion engine
+    numbers.initialize();
+     
+    // instantiate the typeahead UI
+    $('#tutor-add-course-fields .typeahead').typeahead(null, {
+      displayKey: 'name',
+      source: numbers.ttAdapter()
+    });
+
+    $('#student-request-fields .typeahead').typeahead(null, {
+      displayKey: 'name',
+      source: numbers.ttAdapter()
+    });
+
+    $('#urgency-request').on('click', '.urgency', function(){
+      var current_active = $('#urgency-request .urgency.active');
+      current_active.removeClass('active')
+      $(this).addClass('active')
+    })
+
+    $('#frequency-request').on('click', '.frequency', function(){
+      var current_active = $('#frequency-request .frequency.active');
+      current_active.removeClass('active')
+      $(this).addClass('active')
+    })
+
 });

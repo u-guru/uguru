@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block header %}
+<link href="/static/css/jquery.nouislider.min.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 
 <div id="activity">
@@ -8,32 +12,25 @@
 	  </div>
 	<div class="light-blue-bar" align:"center">
 		<div class="row">
+			{% if address_book.keys() %}
 			<div class="col-xs-5 col-xs-offset-1 col-md-offset-4 col-md-2">
-				<a href="/request_tutor/">
+			{% else %}
+			<div class="col-xs-12 col-md-12">
+			{% endif %}
+				<a id="tutor-request-link" href="javascript:void(0)">
 					<span style="color:#00a0cf;" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:60px"></span>
-					<span class="h4" style="color:#00a0cf;"><b>TUTOR</b></span>
+					<span class="h4" style="color:#00a0cf;"><b>REQUEST A TUTOR</b></span>
 				</a>
 			</div>
+			{% if address_book.keys() %}
 			<div class="col-xs-5 col-md-2">
-				<a href="/request_tutor/">
+				<a id="request-payment-link" href="javascript:void(0)">
 					<span style="color:#00a0cf;" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:60px"></span>
 					<span class="h4" style="color:#00a0cf;"><b>PAYMENT</b></span>
 				</a>
 			</div>
+			{% endif %}
 		</div>
-		<!-- <div style="float:left;text-align:right;width:50%;padding-right:30px">
-			<a href="/request_tutor/">
-				<span style="color:#00a0cf;" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:30px"></span>
-				<span class="h4" style="padding-left:15px;color:#00a0cf;"><b>REQUEST A TUTOR</b></span>
-			</a>
-		</div> -->
-		<!-- <div style="float:right;text-align:left;width:50%">
-			<a id="request-payment-link" href="javascript:void(0)">
-				<div style="color:#00a0cf;float:left" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:30px">
-				</div>
-				<span class="h4" style="padding-left:15px;color:#00a0cf;"><b>REQUEST PAYMENT</b></span>
-			</a>
-		</div> -->
 	</div>
 	<div id="feed" class="container-fluid">
 		{% for n in user.notifications|reverse %}
@@ -141,6 +138,85 @@
 </div>
 {% endif %}
 
+<div style="display:none" id="tutor-request">
+	<div class="page-title">
+	  <div class="row" style="width:100%;text-align:center">
+	      <div class="col-xs-1">
+	        <a href="/" id="credit-card-back-link" style="text-decoration:none"> 
+	          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
+	        </a>
+	      </div>
+	      <div class="col-xs-10" style="text-align:center">
+	        <h4 style="color:white;width:100%;font-weight:500">REQUEST A TUTOR</h4>
+	    </div>
+	  </div>
+	</div>
+	<div id="student-request-fields">
+	    <div class="container-fluid">
+	        <div style="margin-top:15px" class="row">
+	            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+	                <span id='alert-fields-student-signup1' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1"><strong>I NEED HELP IN...</strong></label> <br>
+	                    <input style="width:100%"id="student-signup-skill" name="skill" type="email" class="input-signup typeahead" placeholder="CS10, BIO 1A, ESSAY PROOFREADING..." id="login-email">
+	                </div>
+	            </div>
+	        </div>
+	        <div id="urgency-request" class="row">
+	            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1"><strong>URGENCY</strong></label>
+	                </div>
+	                <div style="margin-top:-10px; margin-left:0px"class="row">
+	                  <span id="urgency-1" class="urgency active btn-options-request btn-xs"><a href="javascript:void(0);">ASAP</a></span>
+	                  <span id="urgency-2" class="urgency btn-options-request btn-xs"><a href="javascript:void(0);">TOMORROW</a></span>
+	                  <span id="urgency-3" class="urgency btn-options-request btn-xs"><a href="javascript:void(0);">THIS WEEK</a></span>
+	                </div>
+	            </div>
+	        </div>
+	        <div id="frequency-request" class="row">
+	            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1"><strong>FREQUENCY</strong></label>
+	                </div>
+	                <div style="margin-top:-10px; margin-left:0px"class="row">
+	                  <span id="frequency-1" class="frequency active btn-options-request btn-xs"><a href="javascript:void(0);">ONE TIME</a></span>
+	                  <span id="frequency-2" class="frequency btn-options-request btn-xs"><a href="javascript:void(0);">WEEKLY</a></span>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="row">
+	            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+	                <span id='alert-fields-student-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1"><strong>TIME ESTIMATE</strong></label> <br>
+	                    <div style="margin-top:10px" class="noUiSlider"></div>
+	                    <p style="margin-left:5px; font-size:12px; font-weight:700"class="text-left"><span style="font-size:12px;color:rgb(0, 159, 225)" name="estimate" id="low"></span> hours </p>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="row">
+	            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+	                <span id='alert-fields-student-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1"><strong>ADDITIONAL INFO</strong></label> <br>
+	                    <textarea name="description" placeholder="Additional details here..."id="student-signup-description" class="form-control" rows="3"></textarea>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div style="margin-right:-15px; margin-left:-15px; padding-left:0px; padding-right:0px;" class="row">
+	      <div style="padding-left:0px; padding-right:0px"class="col-xs-12 col-md-offset-5 col-md-2 col-sm-offset-4 col-sm-4">
+	        <a id="student-register" href="javascript:void(0)">
+	          <div class="tutor-submit-next">
+	            <p> REQUEST </p>
+	          </div>
+	        </a>
+	      </div>
+	    </div>
+	</div>
+</div>
+
 
 <div id="feed-messages">
 		{% if not user.customer_id %}
@@ -148,12 +224,12 @@
 		<form role="form" action="javascript:void(0)" method="POST" id="payment-form">
 			<div class="page-title">
 				<div class="row" style="width:100%;text-align:center">
-   					<div class="col-xs-1 col-xs-offset-1">
+   					<div class="col-xs-1 col-xs-offset-1 col-md-1">
 	   					<a href="javascript:void(0)" id="credit-card-back-link" style="text-decoration:none"> 
 	   						<h4 id="back-button">< </h4>
 	   					</a>
    					</div>
-   					<div class="col-xs-9" style="text-align:center">
+   					<div class="col-xs-9 col-md-8" style="text-align:center">
 							<h4 style="color:white;width:100%">Credit Card</h4>
 					</div>
 				</div>
@@ -162,7 +238,11 @@
 				<br>
 				<div class="row">
 				  	<div class="user-profile" style="text-align:center">
+				  		{% if user.profule_url %}
 				  		<img src="{{user.profile_url}}" class="user-photo">
+				  		{% else %}
+				  		<img src="/static/img/default-photo.jpg" class="user-photo">
+				  		{% endif %}
 				  	</div>
 				</div>
 			  	<div class="row" style="text-align:center">
@@ -597,6 +677,20 @@
 	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 	<script src="/static/js/jquery.payment.js"></script>
 	<script src="/static/js/uguru.payments.js"></script>    
+	<script type="text/javascript" src="/static/js/typeahead.js"></script>
 	<script type="text/javascript">Stripe.setPublishableKey("{{key}}");</script>
 	{% endif %}
+	<script src="/static/js/jquery.nouislider.min.js"></script>
+	<script>
+        $(".noUiSlider").noUiSlider({
+              range: [0, 10]
+              ,start: 2
+              ,step: 0.5
+              ,handles: 1
+              ,serialization: {
+                to: [ $("#low"), 'html' ],
+                resolution: 0.1
+              }
+        });     
+    </script>
 {% endblock %}
