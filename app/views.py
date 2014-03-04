@@ -74,7 +74,11 @@ def confirm_tutor_interest(request_id):
 
     request.committed_tutors.append(user)
     student_requesting_help.incoming_requests_to_tutor.append(request)
-    db_session.commit()
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        raise 
 
     #Check if student is already connected
     if request.connected_tutor_id:
@@ -122,7 +126,11 @@ def update_profile():
             amazon_url = "https://s3.amazonaws.com/uguruprof/"+destination_filename
             user.profile_url = amazon_url
 
-            db_session.commit();
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
 
         #if other profile data is being updated
         if request.json:
@@ -134,7 +142,11 @@ def update_profile():
             user.advertised_rate = ajax_json.get('price')
         if 'discover' in ajax_json:
             user.discoverability = ajax_json.get('discover')
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
         return jsonify(ajax_json)
 
 @app.route('/add-credit/', methods=('GET', 'POST'))
@@ -156,7 +168,11 @@ def add_credit():
 
             user.customer_id = customer.id
             user.customer_last4 = customer['cards']['data'][0]['last4']
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
         return jsonify(response=return_json)
 
 @app.route('/submit-payment/', methods=('GET', 'POST'))
@@ -180,7 +196,11 @@ def submit_payment():
                 description="charge for receiving tutoring"
             )
             payment.stripe_charge_id = charge.id
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
 
             student_id = payment.student_id
             student = User.query.get(student_id)
@@ -193,7 +213,11 @@ def submit_payment():
             tutor.notifications.append(tutor_notification)
             student.notifications.append(student_notification)
             db_session.add_all([tutor_notification, student_notification])
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
 
         if 'submit-payment' in ajax_json:
             conversation_id = ajax_json.get('submit-payment')
@@ -218,7 +242,11 @@ def submit_payment():
             tutor.payments.append(payment)
             student.payments.append(payment)
 
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
 
             from notifications import tutor_payment_request_receipt, student_payment_proposal
             tutor_notification = tutor_payment_request_receipt(student, tutor, payment)
@@ -226,7 +254,11 @@ def submit_payment():
             tutor.notifications.append(tutor_notification)
             student.notifications.append(student_notification)
             db_session.add_all([tutor_notification, student_notification])
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
     return jsonify(response=return_json)
 
 @app.route('/send-message/', methods=('GET', 'POST'))
@@ -252,7 +284,11 @@ def send_message():
 
             message = Message(message_contents, conversation, user, receiver)
             db_session.add(message)
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
             print 'message-created'
         return jsonify(response=return_json)
 
@@ -282,7 +318,11 @@ def update_requests():
             tutor.notifications.append(tutor_notification)
             student.notifications.append(student_notification)
             db_session.add_all([tutor_notification, student_notification])
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
 
         if 'student-accept' in ajax_json:
             hourly_amount = ajax_json.get('hourly-amount')
@@ -298,8 +338,6 @@ def update_requests():
             skill = Skill.query.get(r.skill_id)
             r.connected_tutor_id = tutor_id
             r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
-            # student.incoming_requests_from_tutors.remove(r)
-            # tutor.incoming_requests_to_tutor.remove(r)
             
             #create conversation between both
             conversation = Conversation(skill, tutor, student)
@@ -312,7 +350,11 @@ def update_requests():
             tutor.notifications.append(tutor_notification)
             student.notifications.append(student_notification)
             db_session.add_all([student_notification, tutor_notification])
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
 
         return jsonify(response=return_json)
     
@@ -345,7 +387,11 @@ def update_skill():
             for skill in user.skills:
                 if skill.name.lower() == skill_to_remove:
                     user.skills.remove(skill)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
         return jsonify(response=return_json)
     
 
@@ -367,7 +413,11 @@ def update_password():
             return_json['success'] = 'Password successfully updated'
             print "user password before was " + str(old_password)
             print "user password is now" + str(new_password)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
         return jsonify(response=return_json)
 
 @app.route('/validation/', methods=('GET', 'POST'))
@@ -378,17 +428,29 @@ def success():
         
         #Create user for first time experiences
         if ajax_json.get('student-signup'):
+            query = User.query.filter_by(email=ajax_json['email']).first()
+            if query:
+                ajax_json['duplicate-email'] = True
+                return jsonify(dict=ajax_json)
+            query = User.query.filter_by(phone_number=ajax_json['phone']).first()
+            if query:
+                ajax_json['duplicate-phone'] = True
+                return jsonify(dict=ajax_json)
+            
             u = User(
                 name = ajax_json['name'], 
                 password = md5(ajax_json['password']).hexdigest(),
-                email = ajax_json['email'] + '@berkeley.edu',
+                email = ajax_json['email'],
                 phone_number = ajax_json['phone']
             )
             db_session.add(u)
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
             m = Mailbox(u)
             db_session.add(m)
-            db_session.commit()
             try:
                 db_session.commit()
             except:
@@ -424,13 +486,21 @@ def success():
             )
             u.outgoing_requests.append(r)
             db_session.add(r)            
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
             
             from notifications import student_request_receipt
             notification = student_request_receipt(u, r, skill_name)
             u.notifications.append(notification)
             db_session.add(notification)
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
 
             from notifications import tutor_request_offer
             for tutor in r.requested_tutors:
@@ -438,23 +508,35 @@ def success():
                 notification = tutor_request_offer(u, tutor, r, skill_name)
                 db_session.add(notification)
                 tutor.notifications.append(notification)
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
             
 
 
 
         #Create a tutor for the first time
         if ajax_json.get('tutor-signup'):
+            query = User.query.filter_by(email=ajax_json['email']).first()
+            if query:
+                ajax_json['duplicate-email'] = True
+                return jsonify(dict=ajax_json)
+            query = User.query.filter_by(phone_number=ajax_json['phone']).first()
+            if query:
+                ajax_json['duplicate-phone'] = True
+                return jsonify(dict=ajax_json)
             u = User(
                 name = ajax_json['name'], 
                 password = md5(ajax_json['password']).hexdigest(),
-                email = ajax_json['email'] + '@berkeley.edu',
+                email = ajax_json['email'],
                 phone_number = ajax_json['phone'],
             )
             u = User(
                 name = ajax_json['name'], 
                 password = md5(ajax_json['password']).hexdigest(),
-                email = ajax_json['email'] + '@berkeley.edu',
+                email = ajax_json['email'],
                 phone_number = ajax_json['phone']
             )            
             try:

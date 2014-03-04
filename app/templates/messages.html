@@ -21,7 +21,11 @@
 				{% if conversation.guru_id == user.id %}
 				<img src="{{conversation.student.profile_url}}" class="user-photo" style="float:left">
 				{% else %}
-				<img src="{{conversation.guru.profile_url}}" class="user-photo" style="float:left">
+					{% if conversation.guru.profile_url %}
+					<img src="{{conversation.guru.profile_url}}" class="user-photo" style="float:left">
+					{% else %}
+					<img src="/static/img/default-photo.jpg" class="user-photo" style="float:left">
+					{% endif %}
 				{% endif %}
 				<div style="float:left">
 					{% if conversation.guru_id == user.id %}

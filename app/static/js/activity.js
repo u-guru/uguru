@@ -88,9 +88,9 @@ $(document).ready(function() {
 
     $('#feed-messages').on('click', 'a.student-request-accept-btn', function() {
         request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
-        hourly_amount = parseInt($(this).parent().parent().siblings('.container-fluid').children('#hourly-amount-div').children().children('#offer-amount').children("span:first").text().replace('$',''))
-        skill_name = $(this).parent().parent().siblings('.container-fluid').children('.row:first').children().children('h5').text().trim().split('A Tutor wants to help you with ')[1].split(" ")[0].trim()
-        notification_num = $(this).parent().parent().parent().index() 
+        hourly_amount = parseInt($(this).parent().parent().siblings('.container-fluid').children('#hourly-amount-div').children('div:first').children('#offer-amount').children('span#price').text().replace('$',''))
+        skill_name = $(this).parent().parent().siblings('.container-fluid').children('div:first').children('div:first').children('h5').text().trim().replace('A Tutor wants to help you with ','').split(" ")[0].trim()
+        notification_num = $(this).parent().parent().parent().index()
         var data = {
             'student-accept': request_num, 
             'hourly-amount': hourly_amount,
