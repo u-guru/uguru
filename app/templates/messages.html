@@ -3,17 +3,31 @@
 {% block content %}
 <div id="message-list">
 	<div class="page-title">
+			  <div class="row" style="width:100%;text-align:center">
+			      <div class="col-xs-1">
+			        <a href="/activity/" style="text-decoration:none"> 
+			          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
+			        </a>
+			      </div>
+			      <div class="col-xs-11" style="text-align:center">
+			        <h4 style="color:white;width:100%;font-weight:500">
+			        	YOUR MESSAGES
+			        </h4>
+			    </div>
+			</div>
+	</div>
+	<!-- <div class="page-title">
 		<div class="row" style="width:100%;text-align:center">
 			<div class="col-xs-1 col-xs-offset-1">
 				<a href="/activity/" style="text-decoration:none"> 
 					<h4 id="back-button">< </h4>
 				</a>
 			</div>
-			<div class="col-xs-8" style="text-align:center">
+			<div class="col-xs-10" style="text-align:center">
 				<h4 style="color:white;width:100%">YOUR MESSAGES</h4>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<div class="container-fluid" id="message-main">
 	{% for conversation in user.mailbox.conversations %}
 		<a id="conversation-{{loop.index}}" href="javascript:void(0)">
@@ -29,10 +43,10 @@
 				{% endif %}
 				<div style="float:left">
 					{% if conversation.guru_id == user.id %}
-						<h4><b>{{conversation.student.name}}</b></h4>
+						<h4><b>{{conversation.student.name.split()[0]}}</b></h4>
 						<h5>Student</h5>
 					{% else %}
-						<h4><b>{{conversation.guru.name}}</b></h4>
+						<h4><b>{{conversation.guru.name.split()[0]}}</b></h4>
 						<h5>Tutor</h5>
 					{% endif %}
 					<div class="clear"></div>
@@ -54,16 +68,23 @@
 	{% for conversation in user.mailbox.conversations %}
 		<div id="conversation-detailed-{{loop.index}}" style="display:none">
 			<div class="page-title">
-				<a href="javascript:void(0)" class= "message-back-link" style="float:left; margin-bottom:5px; color:white; text-decoration:none"> 
-	   						< 
-	   			</a>
-	   			{% if conversation.guru_id == user.id %}
-		   		<h4 style="color:white;">Your Conversation with {{conversation.student.name}}</h4>
-		   		{% else %}
-		   		<h4 style="color:white;">Your Conversation with {{conversation.guru.name}}</h4>
-		   		{% endif %}
-		  	</div>
-
+			  <div class="row" style="width:100%;text-align:center">
+			      <div class="col-xs-1">
+			        <a class="message-back-link" style="text-decoration:none"> 
+			          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
+			        </a>
+			      </div>
+			      <div class="col-xs-11" style="text-align:center">
+			        <h4 style="color:white;width:100%;font-weight:500">
+			        	{% if conversation.guru_id == user.id %}
+				   		<h4 style="color:white;">{{conversation.student.name.split()[0]|upper}}</h4>
+				   		{% else %}
+				   		<h4 style="color:white;">{{conversation.guru.name.split()[0]|upper}}</h4>
+				   		{% endif %}
+			        </h4>
+			    </div>
+			  </div>
+			</div>
 		  	<div class="container-fluid conversation-messages">
 			  	<br>
 			  	<br>

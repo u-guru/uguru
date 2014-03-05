@@ -26,7 +26,7 @@ $(document).ready(function() {
       }
     });
 
-   $('#feed').on('click', 'a', function() {
+   $('#feed').on('click', 'a.main-feed-messages', function() {
         var display_id = $(this).attr('id');
         var full_div = "#feed-messages div#" + display_id + '-detailed'
         $('#activity').hide();

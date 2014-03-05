@@ -6,7 +6,7 @@ $(document).ready(function() {
         $(full_div).show('slide', {direction: 'right'}, 100);
     });
    $('#messages').on('click', 'a.message-back-link', function() {
-        $(this).parent().parent().hide();
+        $(this).parent().parent().parent().parent().hide();
         $('#message-list').show();
     });
    $('#messages').on('click', 'a.submit-message', function() {
