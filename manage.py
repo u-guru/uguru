@@ -389,8 +389,8 @@ if arg == 'add_courses_production':
     for course_name in courses_dict.keys():
         _id = courses_dict[course_name]
         skill = Skill.query.get(_id)
-        skill.name = courses_dict_detailed(course_name)
-        skill.course.name = courses_dict_detailed(course_name)
+        skill.name = courses_dict_detailed[course_name]
+        skill.course.name = courses_dict_detailed[course_name]  
         db_session.commit()
 
 if arg == 'test_feed':
