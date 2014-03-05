@@ -380,6 +380,18 @@ if arg == 'add_courses_db':
         indent = 4,
         separators = (',', ': ')))
 
+if arg == 'add_courses_production':
+    from app.static.data.variations import courses_dict
+    from app.static.data.variations2 import courses_dict_detailed
+    from app.models import Skill
+    from app.database import db_session
+    
+    for course_name in courses_dict.keys():
+        _id = courses_dict[course_name]
+        skill = Skill.query.get(_id)
+        skill.name = courses_dict_detailed(course_name)
+        skill.course.name = courses_dict_detailed(course_name)
+        db_session.commit()
 
 if arg == 'test_feed':
     user1 = User(name = u'Samir', email="test3", password="test", phone_number="test3")
