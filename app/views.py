@@ -630,7 +630,11 @@ def messages():
         return redirect(url_for('/'))
     user_id = session['user_id']
     user = User.query.get(user_id)
-    return render_template('messages.html', user=user)
+    pretty_dates = {}
+    for conversation in user.mailbox.conversations:
+        for message in conversation.messages:
+            pretty_dates[message.id] = pretty_date(message.write_time)
+    return render_template('messages.html', user=user, pretty_dates=pretty_dates)
 
 @app.route('/student_request/')
 def student_request():

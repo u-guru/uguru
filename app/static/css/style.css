@@ -1033,7 +1033,7 @@ a.boxclose{
 }*/
 
 .chat-bubble {
-  border: 3px solid #40bfec;
+  border: 2px solid #40bfec;
   border-radius: 20px;
   padding:10px 25px 10px 15px;
   text-align: left;
@@ -1374,3 +1374,45 @@ span.twitter-typeahead {
   width:100%;
 }
 
+#message-send-box {
+  background-color:rgb(0, 159, 225);
+  padding:10px 10px;
+}
+
+#message-send-box input {
+  width:90%;
+  display:inline-block;
+  font-size:20px;
+  color:grey;
+}
+
+#message-send-box .submit-message {
+  display:inline-block;
+  padding-left:5px;
+  color:white;
+  text-decoration:none;
+}
+
+#no-messages-yet {
+  margin:10px;
+  text-align:center;
+}
+
+#no-messages-yet h4 {
+  color:grey;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  font-family:'Roboto',sans-serif; 
+
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  font-family:'Roboto',sans-serif; 
+
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  font-family:'Roboto',sans-serif; 
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  font-family:'Roboto',sans-serif; 
+}
