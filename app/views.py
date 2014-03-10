@@ -410,23 +410,23 @@ def success():
         
         #Create user for first time experiences
         if ajax_json.get('student-signup'):
-            query = User.query.filter_by(email=ajax_json['email']).first()
-            if query:
-                ajax_json['duplicate-email'] = True
-                return jsonify(dict=ajax_json)
-            query = User.query.filter_by(phone_number=ajax_json['phone']).first()
-            if query:
-                ajax_json['duplicate-phone'] = True
-                return jsonify(dict=ajax_json)
-            
-            u = User(
-                name = ajax_json['name'], 
-                password = md5(ajax_json['password']).hexdigest(),
-                email = ajax_json['email'],
-                phone_number = ajax_json['phone']
-            )
-            db_session.add(u)
-            try:
+            try: 
+                query = User.query.filter_by(email=ajax_json['email']).first()
+                if query:
+                    ajax_json['duplicate-email'] = True
+                    return jsonify(dict=ajax_json)
+                query = User.query.filter_by(phone_number=ajax_json['phone']).first()
+                if query:
+                    ajax_json['duplicate-phone'] = True
+                    return jsonify(dict=ajax_json)
+                
+                u = User(
+                    name = ajax_json['name'], 
+                    password = md5(ajax_json['password']).hexdigest(),
+                    email = ajax_json['email'],
+                    phone_number = ajax_json['phone']
+                )
+                db_session.add(u)
                 db_session.commit()
             except:
                 db_session.rollback()
@@ -501,27 +501,27 @@ def success():
 
         #Create a tutor for the first time
         if ajax_json.get('tutor-signup'):
-            query = User.query.filter_by(email=ajax_json['email']).first()
-            if query:
-                ajax_json['duplicate-email'] = True
-                return jsonify(dict=ajax_json)
-            query = User.query.filter_by(phone_number=ajax_json['phone']).first()
-            if query:
-                ajax_json['duplicate-phone'] = True
-                return jsonify(dict=ajax_json)
-            u = User(
-                name = ajax_json['name'], 
-                password = md5(ajax_json['password']).hexdigest(),
-                email = ajax_json['email'],
-                phone_number = ajax_json['phone'],
-            )
-            u = User(
-                name = ajax_json['name'], 
-                password = md5(ajax_json['password']).hexdigest(),
-                email = ajax_json['email'],
-                phone_number = ajax_json['phone']
-            )            
             try:
+                query = User.query.filter_by(email=ajax_json['email']).first()
+                if query:
+                    ajax_json['duplicate-email'] = True
+                    return jsonify(dict=ajax_json)
+                query = User.query.filter_by(phone_number=ajax_json['phone']).first()
+                if query:
+                    ajax_json['duplicate-phone'] = True
+                    return jsonify(dict=ajax_json)
+                u = User(
+                    name = ajax_json['name'], 
+                    password = md5(ajax_json['password']).hexdigest(),
+                    email = ajax_json['email'],
+                    phone_number = ajax_json['phone'],
+                )
+                u = User(
+                    name = ajax_json['name'], 
+                    password = md5(ajax_json['password']).hexdigest(),
+                    email = ajax_json['email'],
+                    phone_number = ajax_json['phone']
+                )            
                 from notifications import getting_started
                 notification = getting_started(u)
                 u.notifications.append(notification)
