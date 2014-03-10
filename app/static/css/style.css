@@ -1416,3 +1416,20 @@ span.twitter-typeahead {
 :-ms-input-placeholder { /* Internet Explorer 10+ */
   font-family:'Roboto',sans-serif; 
 }
+
+button.btn-default:hover {
+  background:white;
+}
+
+button.btn-default.dropdown-toggle:hover {
+  background:white;
+}
+
+.open .dropdown-toggle.btn-default {
+  background-color:white;
+  color:black;
+}
+
+label {
+  font-weight:400;
+}

@@ -29,67 +29,6 @@ def index():
 def sneak():
     return render_template('new_index.html')
 
-@app.route('/requests/student/<request_id>')
-def confirm_student_interest(request_id):
-    if not session.get('user_id'):
-        return redirect(url_for('login', redirect=True, student_confirm=request_id, \
-            tutor_id=request.args.get('tutor_id')))
-    user_id = session['user_id']
-    user = User.query.get(user_id)
-    r = Request.query.get(request_id)
-    skill = Skill.query.get(r.skill_id)
-    tutor_id = request.args.get('tutor_id')
-    tutor = User.query.get(int(tutor_id))
-    tutor_name = tutor.name
-
-    page_info = {'student_name':user.name, 'tutor_name':tutor_name, }
-    r.connected_tutor_id = tutor_id
-    r.time_connected = datetime.now()
-
-    emails.send_connection_email(user, tutor, r)
-    print "email sent"
-
-    return render_template('student_accept.html', logged_in=session.get('user_id'), \
-        page_dict = page_info)
-
-@app.route('/requests/tutors/<request_id>')
-def confirm_tutor_interest(request_id):
-    if not session.get('user_id'):
-        return redirect(url_for('login', redirect=True, tutor_confirm=request_id))
-    user_id = session['user_id']
-    user = User.query.get(user_id)
-    request = Request.query.get(request_id)
-    skill = Skill.query.get(request.skill_id)
-    student_requesting_help = User.query.get(request.student_id)
-    student_name = student_requesting_help.name
-    skill_name = skill.name
-
-    page_info = { 'student_name': student_name, 'skill_name': skill_name}
-    
-    #Make sure the correct user clicks this link
-    if user not in request.requested_tutors:
-        flash("You were sent to the wrong page. We've \
-            redirected you back to the home page.")
-        return redirect(url_for("index"))
-
-    request.committed_tutors.append(user)
-    student_requesting_help.incoming_requests_to_tutor.append(request)
-    try:
-        db_session.commit()
-    except:
-        db_session.rollback()
-        raise 
-
-    #Check if student is already connected
-    if request.connected_tutor_id:
-        return render_template('sorry.html', logged_in=session.get('user_id'))
-    else: 
-        url = url_for('confirm_student_interest', request_id=request.id, _external=True, tutor_id=user_id)
-        emails.send_tutor_accept_to_student(request, user, skill, student_requesting_help, url)
-
-    return render_template('tutor_accept.html', logged_in=session.get('user_id'), \
-        page_dict = page_info)
-
 @app.route('/notification-settings/', methods=('GET','POST'))
 def update_notifications():
     if request.method == "POST":
@@ -175,6 +114,47 @@ def add_credit():
                 raise 
         return jsonify(response=return_json)
 
+@app.route('/add-bank/', methods=('GET', 'POST'))
+def add_bank():
+    if request.method == "POST":
+        return_json = {}
+        ajax_json = request.json
+        print ajax_json
+        user_id = session.get('user_id')
+        user = User.query.get(user_id)
+
+        if ajax_json.get('token'):
+            stripe_user_token = ajax_json.get('token')
+            stripe_user_legal_name = ajax_json.get('legal-name')
+            
+            recipient = stripe.Recipient.create(
+                name=stripe_user_legal_name,
+                type="individual",
+                email=user.email,
+                bank_account=stripe_user_token
+            )
+
+            user.recipient_id = recipient.id
+            
+            transfer = stripe.Transfer.create(
+                amount=int(user.balance * 100), # amount in cents, again
+                currency="usd",
+                recipient=recipient.id
+            )
+
+            from notifications import tutor_cashed_out
+            notification = tutor_cashed_out(user, user.balance)
+            db_session.add(notification)
+
+            user.balance = 0
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+        return jsonify(response=return_json)        
+
 @app.route('/submit-payment/', methods=('GET', 'POST'))
 def submit_payment():
     if request.method == "POST":
@@ -206,6 +186,8 @@ def submit_payment():
             student = User.query.get(student_id)
             tutor_id = payment.tutor_id
             tutor = User.query.get(tutor_id)
+
+            tutor.balance = tutor.balance + float(float(stripe_amount_cents) / 100.0)
 
             from notifications import student_payment_approval, tutor_receive_payment
             tutor_notification = tutor_receive_payment(student, tutor, payment)
@@ -583,6 +565,19 @@ def login():
         return jsonify(json=json)
     return render_template("login.html", redirect_args=request.query_string)    
 
+@app.route('/access/', methods=('GET','POST'))
+def access():
+    if request.method == "POST":
+        json = {}
+        ajax_json = request.json
+        access_code = ajax_json['access']
+        if access_code.lower() == 'calslctutor':
+            json['success'] = True                
+        else:
+            json['failure'] = False
+        return jsonify(json=json)
+
+
 @app.route('/tutorsignup1/', methods=('GET', 'POST'))
 def tutorsignup1():
     form = SignupForm()
@@ -593,17 +588,21 @@ def tutorsignup1():
 @app.route('/activity/', methods=('GET', 'POST'))
 def activity():
     if not session.get('user_id'):
-        return redirect(url_for('login'))
+        return redirect(url_for('index'))
     user_id = session.get('user_id')
     user = User.query.get(user_id)
     request_dict = {}
     address_book = {}
     payment_dict = {}
     pretty_dates = {}
+    tutor_dict = {}
+    urgency_dict = ['ASAP', 'Tomorrow', 'This week']
     for notification in user.notifications:
+        if notification.request_tutor_id:
+            tutor_dict[notification] = User.query.get(notification.request_tutor_id)
         pretty_dates[notification.id] = pretty_date(notification.time_created)
     for request in (user.outgoing_requests + user.incoming_requests_to_tutor + user.incoming_requests_from_tutors):
-        request_dict[request.id] = request
+        request_dict[request.id] = {'request':request, 'student':User.query.get(request.student_id)}
     for conversation in user.mailbox.conversations:
         if conversation.student_id != user.id:
             student = User.query.get(conversation.student_id)
@@ -618,7 +617,7 @@ def activity():
         'student_name': student.name.split(' ')[0]}
     return render_template('activity.html', key=stripe_keys['publishable_key'], address_book=address_book, \
         logged_in=session.get('user_id'), user=user, request_dict = request_dict, payment_dict = payment_dict,\
-        pretty_dates = pretty_dates)
+        pretty_dates = pretty_dates, urgency_dict=urgency_dict, tutor_dict=tutor_dict)
 
 @app.route('/tutor_offer/')
 def tutor_offer():
@@ -627,7 +626,7 @@ def tutor_offer():
 @app.route('/messages/')
 def messages():
     if not session.get('user_id'):
-        return redirect(url_for('/'))
+        return redirect(url_for('index'))
     user_id = session['user_id']
     user = User.query.get(user_id)
     pretty_dates = {}
@@ -684,7 +683,7 @@ def howitworks():
 def settings():
     user_id = session.get('user_id')
     if not user_id:
-        return redirect(url_for('login'))
+        return redirect(url_for('index'))
     user = User.query.get(user_id)
     return render_template('settings.html', logged_in=session.get('user_id'), user=user)
 

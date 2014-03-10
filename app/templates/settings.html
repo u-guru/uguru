@@ -15,22 +15,64 @@
       </div>
       <div class="container-fluid">
         <div class="row" align="center">
+          {% if user.skills %}
           <div class="col-xs-4 col-md-offset-3 col-md-2">
-            <span id="settings-button" class="btn-options active btn-xs"><a href="javascript:void(0);">SETTINGS</a></span>
+            <span id="profile-button" class="btn-options active btn-xs"><a href="javascript:void(0);">PROFILE</a></span>
           </div>
           <div class="col-xs-4 col-md-2">
             <span id="skills-button" class="btn-options btn-xs"><a href="javascript:void(0);">MY SKILLS</a></span>
           </div>
-          <div class="col-xs-4 col-md-2">
-            <span id="profile-button" class="btn-options btn-xs"><a href="javascript:void(0);">PROFILE</a></span>
+          {% endif %}
+          {% if user.skills %}
+            <div class="col-xs-4 col-md-2">
+              <span id="settings-button" class="btn-options btn-xs"><a href="javascript:void(0);">SETTINGS</a></span>
+            {% else %}
+            <div class="col-xs-6 col-md-offset-3 col-md-3">
+            <span id="settings-button" class="btn-options active btn-xs"><a href="javascript:void(0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SETTINGS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+            {% endif %}
           </div>
+          {% if not user.skills %}
+            <div class="col-xs-6 col-md-3">
+              <span id="skills-button" class="btn-options btn-xs"><a href="javascript:void(0);">&nbsp;BECOME A TUTOR&nbsp;</a></span>
+            </div>
+          {% endif %}
         </div>
       </div>
       <hr>
 
 <!-- Settings -->
-        <div id="settings" display="block">
-          <div id="notif">
+        {% if user.skills %}
+        <div id="settings" style="display:none">
+        {% else %}
+        <div id="settings" style="display:block">
+
+        {% endif %}
+          {% if not user.skills %}
+          <h4 style="margin-left:25px;"> YOUR PHOTO</h4>
+            <div align="center">
+              <div id="pic-holder">
+                {% if user.profile_url %}
+                  <img style="display:block" width="80" height="80"id="image-preview" src="{{user.profile_url}}"/>
+                {% else %}
+                  <span id="default-photo" class="glyphicon glyphicon-user" style="font-size:80px;text-align:center;padding-top:5px"></span>
+                  <img width="80" height="80"id="image-preview" src="#"/>
+                {% endif %}
+              </div>
+                <a id="upload-photo-link" href="javascript:void(0);">
+                  <h5 style="color:grey">
+                    {% if user.profile_url %}
+                    <u>CHANGE PICTURE</u>
+                    {% else %}
+                    <u>ADD PICTURE</u>
+                    {% endif %}
+                  </h5>
+                  <span id="saved-photo" class="saved-text">Photo Successfully Uploaded!</span>
+                </a>
+                <input id="upload-photo" type="file"/>
+            </div>
+          {% endif %}
+
+          <div id="notif" style="margin-top:25px">
           <h4>NOTIFICATION PREFERENCES</h4>
             <label for="email-on" class="h5" style="color:black">EMAIL&nbsp;&nbsp;</label> 
               {% if user.email_notification %}
@@ -40,7 +82,7 @@
               {% endif %}
               <span id="saved-email" class="saved-text">Saved!</span>
             <br>
-            <br>
+            <!-- <br>
             <label for="text-on" class="h5" style="color:black">TEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
                {% if user.text_notification %}
                <a id="text-on" href="javascript:void(0);"><span id="text-on-span" name="text-on" class="btn-toggle-on">ON</span></a><a id="text-off" href="javascript:void(0);"><span id="text-off-span" class="btn-toggle-off">OFF</span></a>
@@ -48,20 +90,32 @@
                <a id="text-on" href="javascript:void(0);"><span id="text-on-span" name="text-on" class="btn-toggle-on-inactive">ON</span></a><a id="text-off" href="javascript:void(0);"><span id="text-off-span" class="btn-toggle-off-active">OFF</span></a>
                {% endif %}
                <span id="saved-text" class="saved-text">Saved!</span>
-            <br>
+            <br> -->
             <br>
           </div>
+          {% if user.customer_id %}
           <div id="credit">
             <h4>CREDIT CARD</h4>
-              <span class="h4">****-****-****-*1823</span>
-              <span class="btn-options btn-md" style="margin-top:-33px; float:right">CHANGE</span>
+              <span class="h4">****-****-****-{{user.customer_last4}}</span>
+              <!-- <span class="btn-options btn-md" style="margin-top:-33px; float:right">CHANGE</span> -->
                 <br>
                 <br>
                 <br>
           </div>
+          {% endif %}
+          {% if user.recipent_id %}
+          <div id="credit">
+            <h4>BANK ACCOUNT</h4>
+              <span class="h4">****-****-****-****</span>
+              <!-- <span class="btn-options btn-md" style="margin-top:-33px; float:right">CHANGE</span> -->
+                <br>
+                <br>
+                <br>
+          </div>
+          {% endif %}
           <div id="password">
-          <span class="h4" style="color:#00a0cf;">PASSWORD</span>
-          <a id="change-password-btn" href="javascript:void(0)"><span class="btn-options btn-md" style="margin-top:-5px; float:right">CHANGE</span></a>
+          <h4 style="display:inline-block">PASSWORD</h4>
+          <a id="change-password-btn" href="javascript:void(0)"><span class="btn-options btn-md" style="margin-top:5px; float:right">CHANGE</span></a>
           <span id="saved-password" class="saved-text">Updated!</span>
           </div>
           <br>
@@ -116,9 +170,18 @@
 
 <!-- Skills -->
       <div id="skills" style="display:none" align="center">
+        {% if not user.skills %}
+        <div style="text-align:center" class="row-fluid">
+          <h4>
+            Add a skill to begin tutor registration! We'll send you an email soon with more details regarding the verification process. 
+            <br>
+            <br>
+          </h4>
+        </div>
+        {% endif %}
         <div class = "row row-skills">
           <div class="col-xs-9 col-xs-offset-1 col-md-offset-4 col-md-4">
-            <input id="add-skill-input-settings" class="typeahead add-skills" placeholder="add skill..."> </input>
+            <input id="add-skill-input-settings" class="typeahead add-skills" placeholder="add course..."> </input>
           </div>
           <div class="col-xs-2 col-md-2"> 
             <a href="javascript:void(0);" id="add-skill-btn">
@@ -128,9 +191,11 @@
         </div>
       <div id="current-skills" style="align:center">
         <br>
+          {% if user.skills %}
           <div style="color:red;" id="alert-rating">
             Your reviews are not visible yet.
-        </div>
+          </div>
+          {% endif %}
         <div style="display:none" class="template-one-skill">
           <hr>
           <div class="row row-skills">
@@ -171,7 +236,11 @@
     </div>
 
 <!-- Profile -->
+      {% if user.skills %}
+      <div id="profile" style="display:block" align="center">
+      {% else %}
       <div id="profile" style="display:none" align="center">
+      {% endif %}
         <div align="center">
           <div id="pic-holder">
             {% if user.profile_url %}
@@ -183,7 +252,11 @@
           </div>
             <a id="upload-photo-link" href="javascript:void(0);">
               <h5 style="color:grey">
+                {% if user.profile_url %}
                 <u>CHANGE PICTURE</u>
+                {% else %}
+                <u>ADD PICTURE</u>
+                {% endif %}
               </h5>
               <span id="saved-photo" class="saved-text">Photo Successfully Uploaded!</span>
             </a>
@@ -191,7 +264,15 @@
         </div>
          <br>
          <h4>A SHORT BIO:</h4>
-          <textarea id="short-description" class="bio" cols="50" rows="10">{{user.tutor_introduction}}</textarea>
+          
+            {% if user.introduction %}
+            <textarea id="short-description" class="bio" cols="50" rows="10">
+            {{user.tutor_introduction}}
+            </textarea>
+            {% else %}
+            <textarea id="short-description" class="bio" cols="50" rows="10" placeholder="Please tell students about yourself and your previous experience in tutoring."></textarea>
+            {% endif %}
+          
           <div id="alert-rating-short-description">
             Please type something in
           </div>

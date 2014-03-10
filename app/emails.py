@@ -47,6 +47,94 @@ def send_connection_email(student, tutor, request):
     mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()
 
+def welcome_uguru(user):
+    user_first_name = user.name.split(" ")[0]
+    email_from = "uGuru.me <support@uguru.me>"
+    email_subject = "[uGuru.me] Sign Up Confirmation"
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+
+    EMAIL_TO = [user.email]
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = email_subject
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = email_from
+    text = welcome_uguru_text(user_first_name)
+    html = welcome_uguru_html(user_first_name)
+    
+    part1 = MIMEText(text, 'plain', 'utf-8')
+    part2 = MIMEText(html, 'html', 'utf-8')
+
+    msg.attach(part1)
+    msg.attach(part2)
+    
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
+    mail.quit()
+
+def general_notification_email(user, msg_contents, email_subject):
+    user_first_name = user.name.split(" ")[0]
+    email_from = "uGuru.me <support@uguru.me>"
+    email_subject = "[uGuru.me] " + email_subject
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+    EMAIL_TO = [user.email]
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = email_subject
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = email_from
+
+    text = general_notification_text(user_first_name, msg_contents)
+    html = general_notification_html(user_first_name, msg_contents)
+    
+    part1 = MIMEText(text, 'plain', 'utf-8')
+    part2 = MIMEText(html, 'html', 'utf-8')
+
+    msg.attach(part1)
+    msg.attach(part2)
+    
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
+    mail.quit()
+
+def student_needs_help(user, course_name, course_urgency):
+    email_subject = "A Student Needs Help in " + course_name.upper()
+    msg_contents = "A student needs help in " + course_name.upper() + " " + course_urgency + """."""
+    general_notification_email(user, msg_contents, email_subject)
+
+def tutor_wants_to_help(user, course_name):
+    email_subject = "A Tutor Wants to Help in " + course_name.upper()
+    msg_contents = "A tutor wants to help in " + course_name.upper() + "."
+    general_notification_email(user, msg_contents, email_subject)
+
+def tutor_is_matched(user, course_name, student_name):
+    email_subject = "Congrats! You've been matched with " + student_name
+    msg_contents = """Start messaging """ + student_name + """ and set up a time to meet now.<br><br>""" + \
+                   """Once you've met the student, don't forget to send the bill to the student
+                    so you can immediately get paid and receive your first rating. <br><br>
+                    If your first rating is good, we'll increase the max price you can advertise yourself ;) """
+    general_notification_email(user, msg_contents, email_subject)
+
+def student_payment_request(user, tutor_name):
+    email_subject = "Payment Request from " + tutor_name 
+    msg_contents = tutor_name + " has sent you a bill for your recent tutoring session"""  + \
+    """. Please verify the amount and time."""
+    general_notification_email(user, msg_contents, email_subject)
+
+def tutor_payment_received(user, student_name, amount, balance):
+    email_subject = "Congrats! You received a payment from " + student_name
+    msg_contents = student_name + " has paid you $" + str(amount) + "0. Your balance is now $" + str(balance) + \
+        """0. <br><br>You have the option of using this amount for future tutoring, or cashing out 
+        to your bank acount."""
+    general_notification_email(user, msg_contents, email_subject)
+
+
 def send_tutor_accept_to_student(request, tutor, skill, student, url):
     student_name = student.name
     student_email = student.email
@@ -173,6 +261,27 @@ def send_connection_text(student_name, tutor_name, time_estimate):
     """to us at support@uguru.me for a quick reply.\n\n""" +\
     """Sincerely, \nThe uGuru.me Team"""
 
+def welcome_uguru_text(user_name):
+    return """
+    Hi """ + user_name.split(' ')[0] + \
+    """, \n\n""" + \
+    """Thank you for signing up for uGuru.me! \n\nOur site is currently at a beta stage, so if anything is janky at""" +\
+    """ first, we sincerely apologize. \n\n""" + \
+    """We are hard at work to better your experience and would love to hear your thoughts! If you have """ +\
+    """any questions, concerns, or suggestions <i>please<i/> do not hesitate to reach out to us directly""" +\
+    """ by replying to this email.\n\n""" +\
+    """Sincerely, \nThe uGuru.me Team"""
+
+def general_notification_text(user_name, msg):
+    print msg, user_name
+    return"""
+    Hi """ + user_name.split(' ')[0] + \
+    """, \n\n""" + msg + \
+    """\n\n""" + \
+    """See more details by visiting the link below:\n""" + \
+    """Sincerely, \nThe uGuru.me Team"""
+    
+
 def send_request_to_student_html(skill_name, time_estimate, 
         student_name, tutor_name, tutor_avg_ratings, tutor_length, url):
     if tutor_length == 0:
@@ -253,6 +362,43 @@ def send_connection_html(student_name, tutor_name, time_estimate):
 
     If you have any questions, or this experience did not go as well as you expected, please reach out
     to us at support@uguru.me for a quick reply.
+    <br>
+    <br>
+    Sincerely, <br>
+    The uGuru.me Team
+    """
+
+def welcome_uguru_html(user_name):
+    return """
+    Hi """ + user_name.split(' ')[0] + """,
+    <br>
+    <br>
+
+    Thank you for signing up for uGuru.me! 
+    <br>
+    <br>
+    Our site is currently at a beta stage, so if anything is janky at first, we sincerely apologize. 
+    <br>
+    <br>
+    We are hard at work to better your experience and would love to hear your thoughts! If you have 
+    any questions, concerns, or suggestions <i>please</i> do not hesitate to reach out to us directly 
+    by replying to this email.
+
+    <br>
+    <br>
+    Sincerely, <br>
+    The uGuru.me Team
+    """
+
+
+def general_notification_html(user_name, msg):
+    return """
+    Hi """ + user_name + """,
+    <br>
+    <br> """ + msg + """ 
+    <br>
+    <br>
+    See more details <a href="https://beta.uguru.me/activity/"> here</a>. 
     <br>
     <br>
     Sincerely, <br>

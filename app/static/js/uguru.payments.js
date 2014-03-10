@@ -18,6 +18,58 @@
         }
     });
 
+    $('#submit-bank-account-info').click(function() {
+        if (!$('#full-legal-name').val() || !$('#bank-account-num').val() || 
+            !$('#bank-routing-num').val()) {
+            $('#bank-account-alert').show();
+        } else {
+            $('#bank-account-alert').hide();
+            var valid_routing = Stripe.bankAccount.validateRoutingNumber($('#bank-routing-num').val(), 'US');
+            var valid_account = Stripe.bankAccount.validateAccountNumber($('#bank-account-num').val(), 'US');
+            if (valid_account && valid_routing) {
+                Stripe.bankAccount.createToken({
+                    country: 'US',
+                    routingNumber: $('#bank-routing-num').val(),
+                    accountNumber: $('#bank-account-num').val(),
+                }, function(status, response) {
+                    var $form = $('#payment-form');
+                    if (response.error) {
+                        $('#bank-account-alert').text(response.error.message);
+                        $('#bank-account-alert').show();
+                    } else {
+                        // token contains id, last4, and card type
+                        $('#add-bank-account-info').hide();
+                        $('#cash-out-page').show();
+                        $('#bank-account-success').show();
+                        var token = response.id;
+                        var data = {'token':token, 'bank':response['bank_account']['bank_name'], 
+                            'legal-name':$('#full-legal-name').val(), last4:response['bank_account']['last4']};
+                          $.ajax({
+                                type: "POST",
+                                contentType: 'application/json;charset=UTF-8',
+                                url: '/add-bank/' ,
+                                data: JSON.stringify(data),
+                                dataType: "json",
+                                success: function(){
+                                    window.location.replace('/activity/');
+                                }
+                          });  
+                        }
+                    });
+            } else {
+                if (!valid_account) {
+                    $('#bank-account-alert').text("Invalid Account Number ");
+                    $('#bank-account-alert').show();
+                } else {
+                    $('#bank-account-alert').text("Invalid Routing Number");
+                    $('#bank-account-alert').show();
+                }
+            }
+        }
+        // $('#add-bank-account-info').hide();
+        // $('#cash-out-page').show();
+   });
+
     $('#credit-card-back-link').click(function(){
         $(this).parent().parent().parent().parent().hide();
         $('#' + credit_card_back_link).show();
@@ -42,7 +94,6 @@
 
       });
       $('#payment-form').submit(function(event) {
-        alert("sup");
         var $form = $(this);
 
         // Disable the submit button to prevent repeated clicks
@@ -67,11 +118,13 @@ var stripeResponseHandler = function(status, response) {
         $('#' + credit_card_back_link + ' a.student-request-accept-btn-credit').addClass('student-request-accept-btn');
         $('#' + credit_card_back_link + ' a.student-request-accept-btn-credit').removeClass('student-request-accept-btn-credit');
         $('#credit-card-success').show();
+        $('#credit-card-success-tutor').show();
         $('#credit-card-success').delay(2000).fadeOut('slow');
+        $('#credit-card-success-tutor').delay(2000).fadeOut('slow');
         credit_card_back_link = false
         // token contains id, last4, and card type
         var token = response.id;
-        var data = {'token':token};
+        var data = {'token':token}
           $.ajax({
                 type: "POST",
                 contentType: 'application/json;charset=UTF-8',
@@ -81,4 +134,28 @@ var stripeResponseHandler = function(status, response) {
           });  
         }
     };
+
+var stripeResponseHandlerBank = function(status, response) {
+    var $form = $('#payment-form');
+    if (response.error) {
+        $('#bank-account-alert').text(response.error.message);
+        $('#bank-account-alert').show();
+    } else {
+        // token contains id, last4, and card type
+        $('#add-bank-account-info').hide();
+        $('#cash-out-page').show();
+        $('#bank-account-success').show();
+        var token = response.id;
+        var data = {'token':token, 'bank':response['bank_account']['bank_name'], 
+            'legal-name':$('#full-legal-name').val(), last4:response['bank_account']['last4']};
+          $.ajax({
+                type: "POST",
+                contentType: 'application/json;charset=UTF-8',
+                url: '/add-bank/' ,
+                data: JSON.stringify(data),
+                dataType: "json"
+          });  
+        }
+    };
 });
+

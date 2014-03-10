@@ -14,7 +14,7 @@ def initialize_skill():
 
 if arg == 'create_db':
     init_db()
-    initialize_skill()
+    # initialize_skill()
     print "db initialized"
 
 if arg == 're-create_db':
@@ -353,32 +353,36 @@ if arg == 'test_email':
     # os.remove('app.db')    
 
 
-if arg == 'add_courses_db':
+if arg == 'save_db_skills':
     import os, json
     script_dir = os.path.dirname(__file__)
-    rel_path = 'app/static/data/all_courses.json'
-    rel_path_variations = 'app/static/data/variations.py'
-    abs_file_path = os.path.join(script_dir, rel_path)
-    abs_file_path_to_save = os.path.join(script_dir, rel_path_variations)
-    variation_dict = {}
-    courses = json.load(open(abs_file_path))
-    for course_name in courses.keys():
-        new_course = Course(course_name)
-        db_session.add(new_course)
-        db_session.commit()
-        new_skill_id = new_course.skill_id
+    rel_path = 'app/static/data/db_courses.json'
+    abs_file_path_to_save = os.path.join(script_dir, rel_path)
+    skills_dict = {}
 
-        #Create variation course
-        d = courses[course_name]
-        variations = d['variations'] 
-        for v in variations:
-            variation_dict[v.lower()] = new_skill_id
+    for skill in Skill.query.all():
+        skills_dict[skill.id] = skill.name
 
     f = open(abs_file_path_to_save, "wb+")
-    f.write(json.dumps(variation_dict,
+    f.write(json.dumps(skills_dict,
         sort_keys = True,
         indent = 4,
         separators = (',', ': ')))
+
+
+
+if arg == 'add_courses_db':
+    import os, json
+    script_dir = os.path.dirname(__file__)
+    rel_path = 'app/static/data/db_courses.json'
+    abs_file_path = os.path.join(script_dir, rel_path)    
+    skills = json.load(open(abs_file_path))
+    
+    for index in range(1, len(skills) + 1):
+        new_course = Course(name=skills[str(index)])
+        db_session.add(new_course)
+        db_session.commit()
+    print 'courses created'
 
 if arg == 'add_courses_production':
     from app.static.data.variations import courses_dict

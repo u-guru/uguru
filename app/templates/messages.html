@@ -16,7 +16,21 @@
 			    </div>
 			</div>
 	</div>
-	<div class="container-fluid" id="message-main">
+	{% if not user.mailbox.conversation %}
+		<div style="text-align:center" class="row-fluid">
+				<br>
+				<h4>
+					{% if user.skills %}
+					You have no conversations yet! You will be able to start a conversation once you've been matched with a tutor.
+					{% else %}
+					You have no conversations yet! You will be able to start a conversation once you've been matched with a student.
+					{% endif %}
+					<br>
+					<br>
+				</h4>
+		</div>
+	{% endif %}
+	<div style="text-align:center"class="container-fluid" id="message-main">
 	{% for conversation in user.mailbox.conversations %}
 		<a id="conversation-{{loop.index}}" href="javascript:void(0)">
 			<div class="notification" align:"center">
@@ -161,6 +175,8 @@
 				<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 					<h4>
 						You have no previous message history with this person. Start a conversation now!
+						<br>
+						<br>
 					</h4>
 				</div>
 			</div>

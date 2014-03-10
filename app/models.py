@@ -105,6 +105,7 @@ class User(Base):
     advertised_rate = Column(Float, default = 10.0)
     max_price = Column(Float, default = 15.0)
     discoverability = Column(Boolean, default = True)
+    balance = Column(Float, default = 0.0)
     
     #Stripe Fields
     customer_id = Column(String)
@@ -396,17 +397,18 @@ class Payment(Base):
     def __repr__(self):
         student_name = User.query.get(self.student_id).name
         skill_name = Skill.query.get(self.skill_id).name
+        tutor_name = User.query.get(self.tutor_id).name
         
-        if self.connected_tutor_id: 
-            tutor_name = User.query.filter_by(id=self.connected_tutor_id)\
-            .first().name
-        else:
-            tutor_name = "Inactive"
+        # if self.connected_tutor_id: 
+        #     tutor_name = User.query.filter_by(id=self.connected_tutor_id)\
+        #     .first().name
+        # else:
+        #     tutor_name = "Inactive"
         
         return "PAYMENT: %s <Student: %s, Tutor: %s, Skill: %s,\
         \n Time Created: %s, Time Estimated: %s hours>" %\
         (str(self.id), student_name, tutor_name, skill_name, \
-            self.time_created.strftime('%b %d,%Y'), self.time_estimate)
+            self.time_created.strftime('%b %d,%Y'), self.time_amount)
 
 
 class Request(Base):

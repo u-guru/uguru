@@ -1,6 +1,11 @@
 var credit_card_back_link = false; 
 $(document).ready(function() {
 
+    $('.price-dropdown').on('click', '.dropdown-menu li a', function() {
+      var selected_text = $(this).text();
+      $(this).parent().parent().siblings('button:first').children('span').text(selected_text);
+    });
+
     $('#student-register').click(function(){
     if (!$('#student-signup-description').val() || !$('#student-signup-skill').val()) {
       $('#alert-fields-student-signup1').show(); 
@@ -25,6 +30,26 @@ $(document).ready(function() {
         });
       }
     });
+
+   $('#cash-out-link').click(function() {
+    $('#activity').hide();
+    $('#cash-out-page').show();
+   });
+
+   $('#cash-out-back-link').click(function() {
+    $('#cash-out-page').hide();
+    $('#activity').show();
+   });
+
+   $('#cash-out-link-create').click(function() {
+    $('#cash-out-page').hide();
+    $('#add-bank-account-info').show();
+   });
+
+   $('#bank-account-back-link').click(function() {
+    $('#add-bank-account-info').hide();
+    $('#cash-out-page').show();
+   })
 
    $('#feed').on('click', 'a.main-feed-messages', function() {
         var display_id = $(this).attr('id');
@@ -67,7 +92,7 @@ $(document).ready(function() {
    });
    $('#feed-messages').on('click', 'a.tutor-request-accept-btn', function() {
             request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
-            hourly_amount = parseInt($(this).parent().parent().siblings('.container-fluid').children('#price-dropdown-div').children('#price-dropdown').children('button:first').text().trim().replace('$',''))
+            hourly_amount = parseInt($(this).parent().parent().siblings('.container-fluid').children('#price-dropdown-div').children('.price-dropdown').children('button:first').text().trim().replace('$',''))
             skill_name = $(this).parent().parent().siblings('.container-fluid').children('h5').text().split(" needs help in ").reverse()[0]
             var data = {
                 'tutor-accept': request_num, 
@@ -90,7 +115,7 @@ $(document).ready(function() {
         request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
         hourly_amount = parseInt($(this).parent().parent().siblings('.container-fluid').children('#hourly-amount-div').children('div:first').children('#offer-amount').children('span#price').text().replace('$',''))
         skill_name = $(this).parent().parent().siblings('.container-fluid').children('div:first').children('div:first').children('h5').text().trim().replace('A Tutor wants to help you with ','').split(" ")[0].trim()
-        notification_num = $(this).parent().parent().parent().index()
+        notification_num = $(this).parent().parent().parent().index() + 1
         var data = {
             'student-accept': request_num, 
             'hourly-amount': hourly_amount,
@@ -115,15 +140,10 @@ $(document).ready(function() {
         $('#selected-person-to-pay').text(selected_text)
         $('#selected-person-to-pay').attr('class', ($(this).attr('id')))
     });
-
-    $('#price-dropdown').on('click', '.dropdown-menu li a', function() {
-      var selected_text = $(this).text();
-      $('#selected-price').text(selected_text)
-    });
     
     $('#submit-payment').click(function() {
         conversation_id = parseInt($('#select-person-to-pay #selected-person-to-pay').attr('class').split('-').reverse()[0])
-        rate = parseInt($('#price-dropdown #selected-price').text().replace('$', ''))
+        rate = parseInt($('#payment-price-dropdown #selected-price').text().replace('$', ''))
         total_time = parseInt($('#payment-hours-dropdown #selected-payment-num-hour').text())
         var data = {
             'submit-payment': conversation_id,

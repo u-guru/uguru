@@ -38,6 +38,24 @@ $(document).ready(function(){
       $(this).parent().remove();
       update_skill_ajax('remove',skill_name);
     });
+    
+    $('#tutor-signup-phone').keyup(function (e) { 
+      var new_element = $('#tutor-signup-phone').val().slice(-1);
+      $('#tutor-signup-phone').val($('#tutor-signup-phone').val().replace(/[^0-9]/g, ''));
+      if ($('#tutor-signup-phone').val().length > 10) {
+        $('#tutor-signup-phone').val($('#tutor-signup-phone').val().slice(0,-1))
+        return false;
+      }
+    });
+
+    $('#student-signup-phone').keyup(function (e) { 
+      var new_element = $('#student-signup-phone').val().slice(-1);
+      $('#student-signup-phone').val($('#student-signup-phone').val().replace(/[^0-9]/g, ''));
+      if ($('#student-signup-phone').val().length > 10) {
+        $('#student-signup-phone').val($('#student-signup-phone').val().slice(0,-1))
+        return false;
+      }
+    });
 
     $('#urgency-request').on('click', '.urgency', function(){
       var current_active = $('#urgency-request .urgency.active');
@@ -65,7 +83,8 @@ $(document).ready(function(){
         $('body').css('background-color','white')
         // $('#login-page').show();
         // $("#login-page").animate({width:'toggle'},350);
-        $('#tutor-signup').show('slide', {direction: 'right'}, 200);
+        $('#exclusive-access-page').show('slide', {direction: 'right'}, 200);
+        // $('#tutor-signup').show('slide', {direction: 'right'}, 200);
     });
     $('#student-signup-btn').click(function() {
         $('#home-top').hide();
@@ -144,8 +163,8 @@ $(document).ready(function(){
 
     $('#tutor-next-link').click(function(){
         if ((!$('#tutor-signup-name').val() || !$('#tutor-signup-email').val()) 
-          || !$('#tutor-signup-password').val() || $('#tutor-signup-phone').val().length == 17
-          )
+          || !$('#tutor-signup-password').val() || !($('#tutor-signup-phone').val().length == 10)
+          || !($('#tutor-signup-email').val().indexOf('@berkeley.edu') != -1))
         {
           $('#alert-fields-tutor-signup').show() 
         } else {
@@ -238,6 +257,35 @@ $(document).ready(function(){
             } else {
                 $('#alert-fields-login').show();     
                 $('#alert-fields-login-redirect').hide();
+            }
+        }
+        });      
+        }
+    });
+
+    $('#access-submit-link').click(function(){
+    //check whether fields are blank
+    if (!$('#access-code').val()) {
+      $('#alert-fields-access-2').show()
+    } else {
+      //else get data and send to server
+      $('#alert-fields-access-2').hide()
+      var data = {
+        'access': $('input[name="access-code"]').val(),
+      }
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        url: '/access/',
+        data: JSON.stringify(data),
+        dataType: "json",        
+        success: function(result) {        
+            if (result.json['success']) {
+                $('#alert-fields-access').hide();
+                $('#exclusive-access-page').hide();
+                $('#tutor-signup').show();
+            } else {
+                $('#alert-fields-access').show();     
             }
         }
         });      

@@ -37,11 +37,67 @@
             </p>
         </div>
 
-        <div style="display:none"class="row" id="how-it-works-main">
+        <div style="display:block"class="row" id="how-it-works-main">
             <p id='how-it-works'>
-                SEE HOW IT WORKS
+            <!--     SEE HOW IT WORKS -->
             </p>
-            <div class="arrow-down"></div>
+            <!-- <div class="arrow-down"></div> -->
+        </div>
+
+        <div style="display:none" id="exclusive-access-page">
+            <nav class="navbar"margin-right:25px;>
+              <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="../../" class="navbar-brand" style="font-family: 'grand hotel', cursive; margin-left:5px; font-size: 50px">uguru.me</a>
+                </div>
+              </div>
+            </nav>
+            <div class="page-title">
+              <div class="row" style="width:100%;text-align:center">
+                  <div class="col-xs-1 col-sm-1 col-md-1">
+                    <a href="/" id="credit-card-back-link" style="text-decoration:none"> 
+                      <h4 id="back-button"><span style="color:white; padding-left:10px" class="glyphicon glyphicon-chevron-left"></span> </h4>
+                    </a>
+                  </div>
+                  <div class="col-xs-10 col-sm-10 col-md-10" style="text-align:center">
+                    <h4 style="padding-left:5px;color:white;width:100%;font-weight:500">ENTER ACCESS</h4>
+                </div>
+              </div>
+            </div>
+            <div id="login-fields">
+                <div class="container-fluid">
+                    <div style="text-align:center; margin-bottom:15px">
+                      <h4>
+                        Tutor Signup is currently invite only.
+                      </h4>
+                    </div>
+                    <div class="row">
+                        <div style="text-align:center" class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+                          <div class="form-group">
+                            <label for="exampleInputPassword1"><span style="font-size:14px"class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;PRIVATE ACCESS CODE</label> <br>
+                            <input id="access-code" name="access-code" class="input-signup" id="login-password" >
+                          </div>
+                          <span id='alert-fields-access' style="color:red;display:None">Incorrect Access Code</span>
+                          <span id='alert-fields-access-2' style="color:red;display:None">Please fill in all fields.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-bottom:0" class="row">
+              <div class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+                <a id="access-submit-link" style="color:white; text-decoration:None"href="javascript:void(0)">
+                  <div style="margin-left:2.5%"class="main-font" id='submit-login'>
+                    <p> SUBMIT </p>
+                  </div>
+                </a>
+                <div style="display:block; text-align:center">
+                  <h6><i>
+                    Interested in tutoring but don't have a code? Request access <a style="color:#0081be" href="javascript:void(0)">here</a>.</i>
+                  </h6>
+                </div>
+              </div>
+            </div>
+
         </div>
 
         <div style="display:none" id="login-page">
@@ -123,7 +179,7 @@
                             <span id='alert-fields-tutor-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;<span style="margin-bottom:2px">NAME</span></label> <br>
-                                <input id="tutor-signup-name" name="tutor-name" type="email" class="input-signup" id="login-email">
+                                <input placeholder="Full Name" id="tutor-signup-name" name="tutor-name" type="email" class="input-signup" id="login-email">
                             </div>
                         </div>
                     </div>
@@ -140,7 +196,7 @@
                         <div class="col-xs-12 col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4">
                           <div class="form-group">
                             <label for="exampleInputPassword1"><span style="font-size:14px" class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;PASSWORD</label> <br>
-                            <input name="tutor-password" type="password" class="input-signup" id="tutor-signup-password" >
+                            <input placeholder="••••••••" name="tutor-password" type="password" class="input-signup" id="tutor-signup-password" >
                           </div>
                           <span id='alert-fields-login' style="color:red;display:None">Incorrect username or password</span>
                           <span id='alert-fields-login-2' style="color:red;display:None">Please fill in all fields.</span>
@@ -150,7 +206,7 @@
                         <div class="col-xs-12 col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4">
                             <div style="line-height:0.75"class="form-group">
                                 <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;PHONE NUMBER</label> <br>
-                                <input class="input-signup form-control bfh-phone" id="tutor-signup-phone" data-format="+1 (ddd) ddd-dddd" name="tutor-phone" type="text">
+                                <input class="input-signup form-control" id="tutor-signup-phone" placeholder="5101234567" name="tutor-phone" type="text">
                                   <span style="font-weight:strong; color:grey; text-align:center; font-size:0.5em">
                                   Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
                                 </span>
@@ -271,8 +327,8 @@
                               <span id='alert-fields-student-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1"><strong><span style="font-size:14px" class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;NAME</strong></label> <br>
-                                <input id="student-signup-name" name="student-name" type="email" class="input-signup" id="login-email">
+                                <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;NAME</label> <br>
+                                <input placeholder="Full Name"id="student-signup-name" name="student-name" type="email" class="input-signup" id="login-email">
                             </div>
                         </div>
                     </div>
@@ -289,7 +345,7 @@
                         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                           <div class="form-group">
                             <label for="exampleInputPassword1"><span style="font-size:14px" class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;PASSWORD</label> <br>
-                            <input name="student-password" type="password" class="input-signup" id="student-signup-password" >
+                            <input placeholder="••••••••" name="student-password" type="password" class="input-signup" id="student-signup-password" >
                           </div>
                           <div style="text-align:center">
                             <span id='alert-fields-login' style="color:red;display:None">Incorrect username or password</span>
@@ -301,7 +357,7 @@
                         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                             <div style="line-height:0.75em"class="form-group">
                                 <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;PHONE NUMBER</label> <br>
-                                <input class="input-signup form-control bfh-phone" id="student-signup-phone" data-format="+1 (ddd) ddd-dddd" name="student-phone" type="text">
+                                <input class="input-signup form-control" id="student-signup-phone" placeholder="5101234567" name="student-phone" type="text">
                                   <span style="font-weight:strong; text-align:center; color:grey; font-size:0.5em">
                                   Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
                                 </span>
@@ -392,8 +448,8 @@
                         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                             <span id='alert-fields-student-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
                             <div class="form-group">
-                                <label for="exampleInputEmail1"><strong>ADDITIONAL INFO</strong></label> <br>
-                                <textarea name="description" placeholder="Additional details here..."id="student-signup-description" class="form-control" rows="3"></textarea>
+                                <label for="exampleInputEmail1"><strong>Please tell us more</strong></label> <br>
+                                <textarea name="description" placeholder="I need help in ____ and don't understand these particular concepts: ______"id="student-signup-description" class="form-control" rows="3"></textarea>
                             </div>
                         </div>
                     </div>

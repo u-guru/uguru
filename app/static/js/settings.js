@@ -110,7 +110,7 @@ $(document).ready(function() {
       $("#skills").hide();
       $(".btn-logout").hide();
       $("#skills-button").removeClass('active');
-      $("#profile-button").removeClass('active');
+      $("#settings-button").removeClass('active');
       $("#profile-button").addClass('active');
       $("#profile").show();
     });
@@ -267,6 +267,9 @@ $(document).ready(function() {
               }
               if (response_dict['success']) {
                 $('#change-password').hide();
+                $('#old').val('')
+                $('#new').val('')
+                $('#confirm').val('')
                 $('#saved-password').show();
                 $('#saved-password').delay(750).fadeOut('slow');
               }
