@@ -38,6 +38,32 @@ $(document).ready(function(){
       $(this).parent().remove();
       update_skill_ajax('remove',skill_name);
     });
+
+    $('#tutor-add-course-fields').on('click', '.tt-suggestion', function() {
+      var skill_name = $(this).children('p:first').text()
+      $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
+      $('.skill-tag:last .skill-tag-text').text($('#add-skill-input-settings').val());
+      $('.skill-tag:last').show();
+      $('#add-skill-input-settings').val('');
+      $('.tt-hint').hide();
+      $('#my-skills').show();
+      $('#tutor-register-div').show();
+      update_skill_ajax('add',skill_name);
+    });
+
+    $('#tutor-add-course-fields').on('click', 'a.example-skill-link', function() {
+      var skill_name = $(this).children('span:first').text().trim();
+      $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
+      $('.skill-tag:last .skill-tag-text').text(skill_name);
+      $('.skill-tag:last').show();
+      $('#add-skill-input-settings').val('');
+      $('.tt-hint').hide();
+      $('#my-skills').show();
+      $('#tutor-register-div').show();
+      update_skill_ajax('add',skill_name);
+    });
+
+
     
     $('#tutor-signup-phone').keyup(function (e) { 
       var new_element = $('#tutor-signup-phone').val().slice(-1);
@@ -232,7 +258,7 @@ $(document).ready(function(){
     });
 
     $('#tutor-register').click(function() {
-        window.location.replace('/activity/');
+        window.location.replace('/settings/');
     });
     
     $('#login-submit-link').click(function(){
@@ -253,7 +279,7 @@ $(document).ready(function(){
         dataType: "json",        
         success: function(result) {        
             if (result.json['success']) {
-                window.location.replace('/activity/');
+                window.location.replace('/settings/');
             } else {
                 $('#alert-fields-login').show();     
                 $('#alert-fields-login-redirect').hide();

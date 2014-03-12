@@ -27,9 +27,31 @@
               <a href="../../" class="navbar-brand" style="font-family: 'grand hotel', cursive; margin-left:5px; font-size: 50px">uguru.me</a>
           </div>
           <div id="menu-icons" style="float:right">
-             <a href="/activity/"><span class="glyphicon glyphicon-globe" style="color:white;margin-right:20px;font-size:20px"></span></a>
-            <a href="/messages/"><span class="glyphicon glyphicon-envelope" style="color:white;margin-right:14px; font-size:20px"></span></a>
-            <a href="/settings/"><span class="glyphicon glyphicon-cog" style="color:white;font-size:20px"></span></a>
+             <div style="display:inline"class="notif_container">
+               <a href="/activity/">
+                <span class="glyphicon glyphicon-globe" style="color:white;margin-right:20px;font-size:20px"></span>
+                {% if user.feed_notif %}
+                <div id="feed-notif"class="noti_bubble">{{user.feed_notif}}</div>
+                {% endif %}
+               </a>
+              </div>
+              <div style="display:inline"class="notif_container">
+                <a href="/messages/">
+                  <span class="glyphicon glyphicon-envelope" style="color:white;margin-right:14px; font-size:20px"></span>
+                  {% if user.msg_notif %}
+                  <div id="msg-notif" class="noti_bubble_messages">{{user.msg_notif}}</div>
+                  {% endif %}
+                </a>
+              </div>
+              <div style="display:inline"class="notif_container">
+                <a href="/settings/">
+                  <span class="glyphicon glyphicon-cog" style="color:white;font-size:20px">
+                  </span>
+                  {% if user.settings_notif %}
+                  <div class="noti_bubble_settings">{{user.settings_notif}}</div>
+                  {% endif %}
+                </a>
+              </div>
           </div>
         </div>
       </nav>

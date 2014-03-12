@@ -121,11 +121,17 @@ def tutor_is_matched(user, course_name, student_name):
                     If your first rating is good, we'll increase the max price you can advertise yourself ;) """
     general_notification_email(user, msg_contents, email_subject)
 
-def student_payment_request(user, tutor_name):
-    email_subject = "Payment Request from " + tutor_name 
-    msg_contents = tutor_name + " has sent you a bill for your recent tutoring session"""  + \
-    """. Please verify the amount and time."""
+
+def student_payment_request(user, tutor_name, amount):
+    email_subject = tutor_name + " has billed you "
+    msg_contents = tutor_name + " has billed you for your recent tutoring session."
     general_notification_email(user, msg_contents, email_subject)
+
+def student_rating_request(user, tutor_name):
+    email_subject = "Please rate " + tutor_name
+    msg_contents = "Please visit uguru.me and rate your experience with " + tutor_name +"""
+    <br> You will <strong> not </strong> be able to use uGuru.me further until you rate """ + tutor_name + """.
+    """
 
 def tutor_payment_received(user, student_name, amount, balance):
     email_subject = "Congrats! You received a payment from " + student_name

@@ -13,6 +13,66 @@
     -webkit-transform: translate3d(0, 0, 0);
 }*/
 
+* {
+  margin:0;
+  padding:0;
+}
+
+.notif_container {
+    position:relative;      This is crucial for the absolutely positioned element 
+    /*width:16px;
+    height:16px;*/
+}
+.noti_bubble {
+    position:absolute;    /* This breaks the div from the normal HTML document. */
+    top: 6px;
+    right:15px;
+    padding:2px 3px 1px 4px;
+    background-color:red; /* you could use a background image if you'd like as well */
+    color:white;
+    font-weight:bold;
+    font-size:0.55em;
+
+    /* The following is CSS3, but isn't crucial for this technique to work. */
+    /* Keep in mind that if a browser doesn't support CSS3, it's fine! They just won't have rounded borders and won't have a box shadow effect. */
+    /* You can always use a background image to produce the same effect if you want to, and you can use both together so browsers without CSS3 still have the rounded/shadow look. */
+    border-radius:50px;
+    box-shadow:2px 2px 2px gray;
+}
+
+.noti_bubble_messages {
+  position:absolute;    /* This breaks the div from the normal HTML document. */
+  top: 6px;
+  right:10px;
+  padding:2px 3px 1px 4px;
+  background-color:red; /* you could use a background image if you'd like as well */
+  color:white;
+  font-weight:bold;
+  font-size:0.55em;
+
+  /* The following is CSS3, but isn't crucial for this technique to work. */
+  /* Keep in mind that if a browser doesn't support CSS3, it's fine! They just won't have rounded borders and won't have a box shadow effect. */
+  /* You can always use a background image to produce the same effect if you want to, and you can use both together so browsers without CSS3 still have the rounded/shadow look. */
+  border-radius:50px;
+  box-shadow:2px 2px 2px gray;
+}
+
+.noti_bubble_settings {
+  position:absolute;    /* This breaks the div from the normal HTML document. */
+  top: 6px;
+  left:12px;
+  padding:2px 3px 1px 4px;
+  background-color:red; /* you could use a background image if you'd like as well */
+  color:white;
+  font-weight:bold;
+  font-size:0.55em;
+
+  /* The following is CSS3, but isn't crucial for this technique to work. */
+  /* Keep in mind that if a browser doesn't support CSS3, it's fine! They just won't have rounded borders and won't have a box shadow effect. */
+  /* You can always use a background image to produce the same effect if you want to, and you can use both together so browsers without CSS3 still have the rounded/shadow look. */
+  border-radius:50px;
+  box-shadow:2px 2px 2px gray;
+}
 .vert-text {
   display: table-cell;
   vertical-align: middle;
@@ -733,6 +793,10 @@ a:hover{
   border-radius: 12px;
 }
 
+.notification.grey-background {
+  background-color:#F0F8FF;
+}
+
 .user-photo {
   padding-left:10px;
   padding-right:10px;
@@ -766,7 +830,7 @@ a:hover{
   color:#e3f2fc;
 }
 
-#notif, #credit, #password, #profile {
+#notif, #discoverability, #credit, #password, #profile {
   padding-left:25px;
   padding-right:25px;
 }
@@ -841,29 +905,6 @@ a:hover{
   font-size:60px;
   text-align:center;
 }
-
-.rating {
-  unicode-bidi: bidi-override;
-  direction: rtl;
-}
-.rating > span {
-  display: inline-block;
-  position: relative;
-  width: 1.5em;
-  font-size:24px;
-  color:grey;
-/*  float:right;*/
-  margin-left:auto;
-  margin-right:auto;
-/*  padding-right:10px;*/
-}
-
-/*.rating > span:hover:before,
-.rating > span:hover ~ span:before {
-   content: "\2605";
-   position: absolute;
-   color:gold;
-}*/
 
 #pic-holder {
   border: 1px solid #40bfec;
@@ -1432,4 +1473,33 @@ button.btn-default.dropdown-toggle:hover {
 
 label {
   font-weight:400;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  color:grey;
+  font-size:24px;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  cursor:pointer;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   color:gold;
+}
+
+.star-link {
+  text-decoration: none;
+  color:inherit;
+}
+
+.close {
+  margin-right:10px;
+  margin-top:10px;
 }

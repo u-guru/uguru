@@ -56,7 +56,45 @@ $(document).ready(function() {
         var full_div = "#feed-messages div#" + display_id + '-detailed'
         $('#activity').hide();
         $(full_div).show('slide', {direction: 'right'}, 100);
+
+        if ($(this).children('div:first').hasClass('grey-background')) {
+          var notif_total = $(this).parent().parent().parent().children().length - 1;
+          var notif_number = notif_total - $(this).parent().parent().index();
+          var data = {'update-feed-count': true, 'notif_num': notif_number}
+          feed_count = parseInt($('#feed-notif').text()) - 1;
+          if (feed_count == 0) {
+            $('#feed-notif').hide()
+          } else {
+            $('#feed-notif').text(feed_count)
+          }
+          $('#feed-notif').text(feed_count);
+          $(this).children('div:first').removeClass('grey-background');
+          $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/notif-update/' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+          });
+        }
     });
+
+   $('#rating-form-tutor').on('click', '.rating span', function() {
+      var num_stars = 4 - $(this).index();
+      var star_children = $('#tutor-rating-stars').children()
+      for (var i = 0; i < 5; i++) {
+        var span = $('#tutor-rating-stars').children(':nth-child(' + (4 - i + 1) + ')')
+        if (i <= num_stars) {
+          span.css('color', 'gold');
+          span.css('content', "\2605");
+          span.addClass('star-selected');
+        }
+        else {
+          span.css('color', 'grey')
+        }
+      }
+   });
+
    $('#feed-messages').on('click', 'a.feed-message-link', function() {
         $(this).parent().parent().parent().parent().hide();
         $('#activity').show();
@@ -157,7 +195,12 @@ $(document).ready(function() {
             data: JSON.stringify(data),
             dataType: "json",
             success: function(result) {         
-                window.location.replace('/activity/');
+                var student_to_rate = result.return_json['student-name']
+                var student_profile_url = result.return_json['student-profile-url']
+                $('#student-profile-photo').attr('src', student_profile_url);
+                $('#student-name').text(student_to_rate.toUpperCase());
+                $('#request-payments').hide();
+                $('#rating-form-tutor').show();
             }
         }); 
     })
@@ -167,6 +210,45 @@ $(document).ready(function() {
           $('#selected-payment-num-hour').text(selected_text)
           // send_profile_update_ajax('price', selected_text)
     });
+
+    $('#submit-student-rating').click(function() {
+        var num_stars = $('.star-selected').length
+        var additional_detail = $('#student-rating-description').val();
+        var data = { 'tutor-rating-student' : true, 'num_stars' : num_stars, 'additional_detail' : additional_detail }
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/submit-rating/' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function(result) {         
+              $('#rating-form-tutor').hide();
+              $('#bootstrap-success').children('.alert').text('Thank you for submitting your rating!')
+              $('#bootstrap-success').show();
+              $('#activity').show();
+            }
+        }); 
+    });
+
+    $('#submit-tutor-rating').click(function() {
+        var num_stars = $('.star-selected').length
+        var additional_detail = $('#tutor-rating-description').val();
+        var data = { 'student-rating-tutor' : true, 'num_stars' : num_stars, 'additional_detail' : additional_detail }
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/submit-rating/' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function(result) {         
+              $('#rating-form-tutor').hide();
+              $('#bootstrap-success').children('.alert').text('Thank you for submitting your rating!')
+              $('#bootstrap-success').show();
+              $('#activity').show();
+            }
+        }); 
+    });
+    
 
     var numbers = new Bloodhound({
       datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name); },

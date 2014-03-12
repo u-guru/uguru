@@ -47,6 +47,7 @@ $(document).ready(function() {
     $('#discover-on').click(function(){
         $('#discover-on-span').attr('class','btn-toggle-on');
         $('#discover-off-span').attr('class','btn-toggle-off');
+        $('#discover-label').text('ACTIVE');
         $('#saved-discover').show();
         $('#saved-discover').delay(750).fadeOut('slow');
         send_profile_update_ajax('discover', true)
@@ -54,6 +55,7 @@ $(document).ready(function() {
     $('#discover-off').click(function(){
         $('#discover-on-span').attr('class','btn-toggle-on-inactive');
         $('#discover-off-span').attr('class','btn-toggle-off-active');
+        $('#discover-label').text('INACTIVE');
         $('#saved-discover').show();
         $('#saved-discover').delay(750).fadeOut('slow');
         send_profile_update_ajax('discover', false)

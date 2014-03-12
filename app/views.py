@@ -3,7 +3,8 @@ from app.database import *
 from flask import render_template, jsonify, redirect, request, \
 session, flash, redirect, url_for
 from forms import SignupForm, RequestForm
-from models import User, Request, Skill, Course, Notification, Mailbox, Conversation, Message, Payment
+from models import User, Request, Skill, Course, Notification, Mailbox, \
+    Conversation, Message, Payment, Rating
 from hashlib import md5
 from datetime import datetime
 import emails, boto, stripe, os
@@ -21,6 +22,8 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 def index():
     if session.get('user_id'):
         return redirect(url_for('activity'))
+    if (session.get('user_id') and user.skills and (not user.profile_url or not user.tutor_introduction)):
+        return redirect(url_for('settings'))
     request_form = RequestForm()
     return render_template('new_index.html', forms=[request_form],
         logged_in=session.get('user_id'))
@@ -155,6 +158,42 @@ def add_bank():
                 raise 
         return jsonify(response=return_json)        
 
+@app.route('/submit-rating/', methods=('GET', 'POST'))
+def submit_rating():
+    if request.method == "POST":
+        return_json = {}
+        ajax_json = request.json
+        print ajax_json
+        user_id = session.get('user_id')
+        user = User.query.get(user_id)
+
+        if 'tutor-rating-student' in ajax_json:
+            rating = user.pending_ratings[0]
+            rating.tutor_rating = ajax_json['num_stars']
+            if 'additional_detail' in ajax_json:
+                rating.tutor_rating_description
+            
+            student = User.query.get(rating.student_id)
+            student.pending_ratings.append(rating)
+            user.pending_ratings.remove(rating)
+
+            from emails import student_rating_request
+            student_rating_request(student, user.name.split(" ")[0])
+
+            db_session.commit()
+
+        if 'student-rating-tutor' in ajax_json:
+            rating = user.pending_ratings[0]
+            rating.student_rating = ajax_json['num_stars']
+            
+            if 'additional_detail' in ajax_json:
+                rating.student_rating_description
+
+            user.pending_ratings.remove(rating)
+            db_session.commit()
+
+    return jsonify(return_json=return_json)            
+
 @app.route('/submit-payment/', methods=('GET', 'POST'))
 def submit_payment():
     if request.method == "POST":
@@ -189,6 +228,11 @@ def submit_payment():
 
             tutor.balance = tutor.balance + float(float(stripe_amount_cents) / 100.0)
 
+            #Add pending rating to student 
+            for rating in tutor.pending_ratings:
+                if rating.student_id == user.id:
+                    student.pending_ratings.append(rating)
+
             from notifications import student_payment_approval, tutor_receive_payment
             tutor_notification = tutor_receive_payment(student, tutor, payment)
             student_notification = student_payment_approval(student, tutor, payment)
@@ -214,6 +258,10 @@ def submit_payment():
                     r = _request
                     student_id = _request.student_id
                     student = User.query.get(student_id)
+                    if student.profile_url:
+                        return_json['student-profile-url'] = student.profile_url
+                    else: 
+                        return_json['student-profile-url'] = '/static/img/default-photo.jpg'
             
             tutor = user
             payment = Payment(r)
@@ -230,6 +278,14 @@ def submit_payment():
                 db_session.rollback()
                 raise 
 
+            r.payment_id = payment.id
+            rating = Rating(r.id)
+            tutor.pending_ratings.append(rating)
+            db_session.add(rating)
+            db_session.commit()
+
+            return_json['student-name'] = user.name.split(" ")[0]
+
             from notifications import tutor_payment_request_receipt, student_payment_proposal
             tutor_notification = tutor_payment_request_receipt(student, tutor, payment)
             student_notification = student_payment_proposal(student, tutor, payment)
@@ -241,7 +297,7 @@ def submit_payment():
             except:
                 db_session.rollback()
                 raise 
-    return jsonify(response=return_json)
+    return jsonify(return_json=return_json)
 
 @app.route('/send-message/', methods=('GET', 'POST'))
 def send_message():
@@ -341,6 +397,23 @@ def update_requests():
         return jsonify(response=return_json)
     
 
+
+@app.route('/notif-update/', methods=('GET', 'POST'))
+def notif_update():
+    if request.method == "POST":
+        return_json = {}
+        ajax_json = request.json
+        print ajax_json
+        user_id = session.get('user_id')
+        user = User.query.get(user_id)
+
+        if 'update-feed-count' in ajax_json:
+            notification = user.notifications[ajax_json['notif_num']]
+            notification.time_read = datetime.now()
+            user.feed_notif = user.feed_notif - 1
+            db_session.commit();
+
+    return jsonify(return_json=return_json)
 
 @app.route('/update-skill/', methods=('GET', 'POST'))
 def update_skill():
@@ -516,17 +589,13 @@ def success():
                     email = ajax_json['email'],
                     phone_number = ajax_json['phone'],
                 )
-                u = User(
-                    name = ajax_json['name'], 
-                    password = md5(ajax_json['password']).hexdigest(),
-                    email = ajax_json['email'],
-                    phone_number = ajax_json['phone']
-                )            
+
                 from notifications import getting_started
                 notification = getting_started(u)
                 u.notifications.append(notification)
                 db_session.add_all([u, notification])
                 db_session.commit()
+                u.settings_notif = u.settings_notif + 1
                 m = Mailbox(u)
                 db_session.add(m)
                 db_session.commit()
@@ -591,12 +660,21 @@ def activity():
         return redirect(url_for('index'))
     user_id = session.get('user_id')
     user = User.query.get(user_id)
+    if (user.skills and (not user.profile_url or not user.tutor_introduction)):
+        return redirect(url_for('settings'))
     request_dict = {}
     address_book = {}
     payment_dict = {}
     pretty_dates = {}
+    pending_ratings_dict = {}
     tutor_dict = {}
     urgency_dict = ['ASAP', 'Tomorrow', 'This week']
+    if user.pending_ratings:
+        rating = user.pending_ratings[0]
+        student = User.query.get(rating.student_id)
+        tutor = User.query.get(rating.tutor_id)
+        pending_ratings_dict['student'] = student
+        pending_ratings_dict['tutor'] = tutor
     for notification in user.notifications:
         if notification.request_tutor_id:
             tutor_dict[notification] = User.query.get(notification.request_tutor_id)
@@ -617,7 +695,7 @@ def activity():
         'student_name': student.name.split(' ')[0]}
     return render_template('activity.html', key=stripe_keys['publishable_key'], address_book=address_book, \
         logged_in=session.get('user_id'), user=user, request_dict = request_dict, payment_dict = payment_dict,\
-        pretty_dates = pretty_dates, urgency_dict=urgency_dict, tutor_dict=tutor_dict)
+        pretty_dates = pretty_dates, urgency_dict=urgency_dict, tutor_dict=tutor_dict, pending_ratings_dict=pending_ratings_dict)
 
 @app.route('/tutor_offer/')
 def tutor_offer():
@@ -629,6 +707,8 @@ def messages():
         return redirect(url_for('index'))
     user_id = session['user_id']
     user = User.query.get(user_id)
+    if (user.skills and (not user.profile_url or not user.tutor_introduction)):
+        return redirect(url_for('settings'))
     pretty_dates = {}
     for conversation in user.mailbox.conversations:
         for message in conversation.messages:

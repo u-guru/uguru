@@ -45,7 +45,6 @@
         <div id="settings" style="display:none">
         {% else %}
         <div id="settings" style="display:block">
-
         {% endif %}
           {% if not user.skills %}
           <h4 style="margin-left:25px;"> YOUR PHOTO</h4>
@@ -73,15 +72,33 @@
           {% endif %}
 
           <div id="notif" style="margin-top:25px">
-          <h4>NOTIFICATION PREFERENCES</h4>
-            <label for="email-on" class="h5" style="color:black">EMAIL&nbsp;&nbsp;</label> 
-              {% if user.email_notification %}
-              <a id="email-on" href="javascript:void(0);"><span id="email-on-span" name="email-on" class="btn-toggle-on">ON</span></a><a id="email-off" href="javascript:void(0);"><span id="email-off-span" class="btn-toggle-off">OFF</span></a>
-              {% else %}
-              <a id="email-on" href="javascript:void(0);"><span id="email-on-span" name="email-on" class="btn-toggle-on-inactive">ON</span></a><a id="email-off" href="javascript:void(0);"><span id="email-off-span" class="btn-toggle-off-active">OFF</span></a>
-              {% endif %}
-              <span id="saved-email" class="saved-text">Saved!</span>
-            <br>
+            <h4>NOTIFICATION PREFERENCES</h4>
+              <label for="email-on" class="h5" style="color:black">EMAIL&nbsp;&nbsp;</label> 
+                {% if user.email_notification %}
+                <a id="email-on" href="javascript:void(0);"><span id="email-on-span" name="email-on" class="btn-toggle-on">ON</span></a><a id="email-off" href="javascript:void(0);"><span id="email-off-span" class="btn-toggle-off">OFF</span></a>
+                {% else %}
+                <a id="email-on" href="javascript:void(0);"><span id="email-on-span" name="email-on" class="btn-toggle-on-inactive">ON</span></a><a id="email-off" href="javascript:void(0);"><span id="email-off-span" class="btn-toggle-off-active">OFF</span></a>
+                {% endif %}
+                <span id="saved-email" class="saved-text">Saved!</span>
+              <br>
+              <br>
+          </div>
+          <div id="discoverability">
+             <h4>RECEIVE TUTORING REQUESTS</h4>
+              <label id="discover-label"for="discover-on" class="h5" style="color:black">
+                {% if user.discoverability %}
+                  ACTIVE&nbsp;&nbsp;
+                {% else %}
+                  INACTIVE&nbsp;&nbsp;
+                {% endif %}
+              </label> 
+                {% if user.discoverability %}
+                  <a id="discover-on" href="javascript:void(0);"><span id="discover-on-span" name="discover-on" class="btn-toggle-on">ON</span></a><a id="discover-off" href="javascript:void(0);"><span id="discover-off-span" class="btn-toggle-off">OFF</span></a>
+                  {% else %}
+                  <a id="discover-on" href="javascript:void(0);"><span id="discover-on-span" name="discover-on" class="btn-toggle-on-inactive">ON</span></a><a id="discover-off" href="javascript:void(0);"><span id="discover-off-span" class="btn-toggle-off-active">OFF</span></a>
+                  {% endif %}
+                  <span id="saved-discover" class="saved-text">Saved!</span>
+          </div>
             <!-- <br>
             <label for="text-on" class="h5" style="color:black">TEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
                {% if user.text_notification %}
@@ -92,7 +109,6 @@
                <span id="saved-text" class="saved-text">Saved!</span>
             <br> -->
             <br>
-          </div>
           {% if user.customer_id %}
           <div id="credit">
             <h4>CREDIT CARD</h4>
@@ -241,6 +257,11 @@
       {% else %}
       <div id="profile" style="display:none" align="center">
       {% endif %}
+      {% if user.skills %}
+          <div class="alert alert-danger">
+            Please add a <strong>profile picture</strong> and a <strong> short introduction</strong> to complete signup!
+          </div>
+        {% endif %}
         <div align="center">
           <div id="pic-holder">
             {% if user.profile_url %}
@@ -282,7 +303,7 @@
               <span style="color:white">Save</span>
             </span>
           </div>
-         <h4>YOUR ADVERTISED RATE</h4>
+         <!-- <h4>YOUR ADVERTISED RATE</h4>
          <span id="saved-price" class="saved-text">Saved!<br></span>
           <div id="price-dropdown" class="btn-group">
             <button type="button" class="btn-default">
@@ -300,32 +321,15 @@
               <li><a href="javascript:void(0);">Free</a></li>
             </ul>
           </div>
-          <br>
-         <h4>DISCOVERABILITY</h4>
-        <div class = "discoverability-toggle">
-          {% if user.discoverability %}
-            <a id="discover-on" href="javascript:void(0);"><span id="discover-on-span" name="discover-on" class="btn-toggle-on">ON</span></a><a id="discover-off" href="javascript:void(0);"><span id="discover-off-span" class="btn-toggle-off">OFF</span></a>
-            {% else %}
-            <a id="discover-on" href="javascript:void(0);"><span id="discover-on-span" name="discover-on" class="btn-toggle-on-inactive">ON</span></a><a id="discover-off" href="javascript:void(0);"><span id="discover-off-span" class="btn-toggle-off-active">OFF</span></a>
-            {% endif %}
-            <span id="saved-discover" class="saved-text">Saved!</span>
-        </div>
+          <br> -->
       </div>
         <br>
          <br>
-
-
-
 
 {% endblock %}
 
 {% block footer_scripts %}
 
-   
-   <!-- Custom JavaScript for Star Ratings -->
-   <script>
-   // $('.star').raty();
-  </script>
 
     <!-- Custom JavaScript for Highlight Tabs -->
  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>

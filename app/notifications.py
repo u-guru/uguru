@@ -2,14 +2,16 @@ from app import app
 from app.models import Skill, User, Request, Notification
 from emails import welcome_uguru, student_needs_help, tutor_wants_to_help, \
     tutor_is_matched, student_payment_request, tutor_payment_received
+from datetime import datetime
 
 def getting_started(user):
-    getting_started_msg = "<b>Welcome " + user.name.split(' ')[0] + \
-        " to uGuru.me!</b> <br>Select here for more information to get started."
+    getting_started_msg = "<b>You </b> signed up" + \
+        " as a uGuru.me <b>premium tutor</b>" 
     notification = Notification(other='getting_started')
     notification.feed_message = getting_started_msg
     notification.a_id_name = 'getting-started'
-    notification.image_url = "/static/img/guru.png"
+    notification.image_url = user.profile_url
+    notification.time_read = datetime.now()
     welcome_uguru(user)
     return notification
 
@@ -26,6 +28,7 @@ def student_request_receipt(user, request, skill_name):
     notification.custom_tag = 'student-request-help'
     notification.custom = skill_name
     notification.request_id = request.id
+    notification.time_read = datetime.now()
     return notification
 
 def tutor_request_offer(user, tutor, request, skill_name):
@@ -43,6 +46,8 @@ def tutor_request_offer(user, tutor, request, skill_name):
     notification.request_id = request.id
     urgency_dict = ['ASAP', 'by tomorrow', 'by next week']
     student_needs_help(tutor, skill_name, urgency_dict[request.urgency])
+    tutor.feed_notif = tutor.feed_notif + 1
+    tutor.status = 'red'
     return notification
 
 def tutor_request_accept(user, tutor, request, skill_name, hourly_amount):
@@ -58,6 +63,8 @@ def tutor_request_accept(user, tutor, request, skill_name, hourly_amount):
         notification.image_url = user.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
+    notification.time_read = datetime.now()
+    notification.status = 'yellow'
     return notification
 
 def student_incoming_tutor_request(user, tutor, request, skill_name, hourly_amount):
@@ -75,6 +82,8 @@ def student_incoming_tutor_request(user, tutor, request, skill_name, hourly_amou
     else:
         notification.image_url = '/static/img/default-photo.jpg'
     tutor_wants_to_help(user, skill_name) 
+    user.feed_notif = user.feed_notif + 1
+    notification.status = 'yellow'
     return notification
 
 def student_match(user, tutor, request, skill_name, hourly_amount):
@@ -92,6 +101,9 @@ def student_match(user, tutor, request, skill_name, hourly_amount):
     else:
         notification.image_url = '/static/img/default-photo.jpg'
     tutor_is_matched(tutor, skill_name, user.name.split(" ")[0])
+    notification.time_read = datetime.now()
+    user.msg_notif = user.msg_notif + 1
+    tutor.msg_notif = tutor.msg_notif + 1
     return notification
 
 def tutor_match(user, tutor, request, skill_name, hourly_amount):
@@ -108,6 +120,7 @@ def tutor_match(user, tutor, request, skill_name, hourly_amount):
         notification.image_url = tutor.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
+    notification.time_read = datetime.now()
     return notification
 
 def tutor_payment_request_receipt(user, tutor, payment):
@@ -120,6 +133,7 @@ def tutor_payment_request_receipt(user, tutor, payment):
         notification.image_url = user.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
+    notification.time_read = datetime.now()
     return notification
 
 def student_payment_proposal(user, tutor, payment):
@@ -133,7 +147,9 @@ def student_payment_proposal(user, tutor, payment):
     else:
          notification.image_url = '/static/img/default-photo.jpg' 
     tutor_name = User.query.get(payment.tutor_id).name.split(" ")[0]
-    student_payment_request(user, tutor_name)
+    amount = float(payment.time_amount * payment.tutor_rate)
+    student_payment_request(user, tutor_name, amount)
+    user.feed_notif = user.feed_notif + 1
     return notification
 
 def student_payment_approval(user, tutor, payment):
@@ -146,6 +162,7 @@ def student_payment_approval(user, tutor, payment):
         notification.image_url = tutor.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
+    notification.time_read = datetime.now()
     return notification
 
 def tutor_receive_payment(user, tutor, payment):
@@ -174,4 +191,5 @@ def tutor_cashed_out(tutor, amount):
         notification.image_url = tutor.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
+    notification.time_read = datetime.now()
     return notification

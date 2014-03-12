@@ -106,6 +106,12 @@ class User(Base):
     max_price = Column(Float, default = 15.0)
     discoverability = Column(Boolean, default = True)
     balance = Column(Float, default = 0.0)
+
+    verified_tutor = Column(Boolean)
+
+    msg_notif = Column(Integer, default = 0)
+    feed_notif = Column(Integer, default = 0)
+    settings_notif = Column(Integer, default = 0)
     
     #Stripe Fields
     customer_id = Column(String)
@@ -305,13 +311,16 @@ class Notification(Base):
     skill_name = Column(String)
     custom = Column(String(1000))
     custom_tag = Column(String)
+    
     time_created = Column(DateTime)
-    time_read = Column(DateTime)
+    time_read = Column(DateTime) #Set to now if it doesn't need to be read
+    
     feed_message = Column(String(1000))
     payment_id = Column(Integer)
     rating_id = Column(Integer)
     a_id_name = Column(String) #div to display
     image_url = Column(String)
+    status = Column(String)
 
     def __init__(self, **kwargs):
         request = kwargs.get('request')
