@@ -51,7 +51,8 @@ def update_notifications():
 @app.route('/update-profile/', methods=('GET', 'POST'))
 def update_profile():
     if request.method == "POST":
-        ajax_json = {}
+        ajax_json = request.json
+        print ajax_json
         return_json = {}
         user_id = session.get('user_id')
         user = User.query.get(user_id)
@@ -596,6 +597,7 @@ def success():
                 db_session.add_all([u, notification])
                 db_session.commit()
                 u.settings_notif = u.settings_notif + 1
+                u.verified_tutor = True
                 m = Mailbox(u)
                 db_session.add(m)
                 db_session.commit()
