@@ -15,6 +15,17 @@ def getting_started(user):
     welcome_uguru(user)
     return notification
 
+def getting_started_tutor(user):
+    getting_started_msg = "<b>You </b> successfully completed your profile!" + \
+        " we'll advertise you as soon as a student needs help. <br> Click here to see " +\
+        " an example of what you'll be receiving when a student has a request." 
+    notification = Notification(other='getting_start_tutor')
+    notification.feed_message = getting_started_msg
+    notification.a_id_name = 'getting-started-tutor'
+    notification.image_url = user.profile_url
+    return notification
+
+
 def student_request_receipt(user, request, skill_name):
     notification = Notification(request=request)
     notification.skill_name = skill_name

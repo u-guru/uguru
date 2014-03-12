@@ -75,21 +75,22 @@ def update_profile():
                 db_session.rollback()
                 raise 
 
+            ajax_json = {}
+
         #if other profile data is being updated
         if request.json:
             ajax_json = request.json
-
-        if ajax_json.get('intro'):
-            user.tutor_introduction = ajax_json.get('intro')
-        if ajax_json.get('price'):
-            user.advertised_rate = ajax_json.get('price')
-        if 'discover' in ajax_json:
-            user.discoverability = ajax_json.get('discover')
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
+            if ajax_json.get('intro'):
+                user.tutor_introduction = ajax_json.get('intro')
+            if ajax_json.get('price'):
+                user.advertised_rate = ajax_json.get('price')
+            if 'discover' in ajax_json:
+                user.discoverability = ajax_json.get('discover')
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
         return jsonify(ajax_json)
 
 @app.route('/add-credit/', methods=('GET', 'POST'))
@@ -569,9 +570,29 @@ def success():
             except:
                 db_session.rollback()
                 raise 
-            
+
+        if ajax_json.get('verify-tutor'):
+            try:
+                user_id = session.get('user_id')
+                user = User.query.get(user_id)
+                user.feed_notif = user.feed_notif + 1
+                user.settings_notif = user.settings_notif - 1
+                user.verified_tutor = True
 
 
+                from notifications import getting_started, getting_started_tutor
+                notification1 = getting_started(user)
+                notification2 = getting_started_tutor(user)
+                db_session.add(notification1)
+                db_session.add(notification2)
+                user.notifications.append(notification1)
+                user.notifications.append(notification2)
+                db_session.commit()
+
+                #increment feed counter
+                #create fake notification
+            except:
+                db_session.rollback();
 
         #Create a tutor for the first time
         if ajax_json.get('tutor-signup'):
@@ -591,13 +612,9 @@ def success():
                     phone_number = ajax_json['phone'],
                 )
 
-                from notifications import getting_started
-                notification = getting_started(u)
-                u.notifications.append(notification)
-                db_session.add_all([u, notification])
+                db_session.add(u)
                 db_session.commit()
                 u.settings_notif = u.settings_notif + 1
-                u.verified_tutor = True
                 m = Mailbox(u)
                 db_session.add(m)
                 db_session.commit()

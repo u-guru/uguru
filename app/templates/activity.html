@@ -561,7 +561,62 @@
 		</div>
 		{% endif %}
 		{% for n in user.notifications %}
-			{% if n.custom_tag == 'student-payment-proposal-' %}
+			{% if n.a_id_name == 'getting-started-tutor' %}
+				<div id="{{n.a_id_name}}-detailed" style="display:none;">
+					<div class="page-title">
+	   					<div class="row" style="width:100%;text-align:center">
+		   					<div class="col-xs-1 col-xs-offset-1 col-sm-offset-1 col-sm-1">
+			   					<a href="javascript:void(0)" class= "feed-message-link" style="text-decoration:none"> 
+			   						<h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
+			   					</a>
+		   					</div>
+		   					<div class="col-xs-9 col-sm-9" style="text-align:center">
+	   							<h4 style="color:white;width:100%">Tutoring Request</h4>
+	   						</div>
+	   					</div>
+	  				</div>
+					<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px">
+					  	<br>
+					  	<img src="/static/img/default-photo.jpg" style="align:center" class="user-photo">
+					  <h5 style="text-align:center"><b>A Student</b> needs help in <b>CS10</b></h5>
+					  <div class="row">
+						  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
+							  <div class="request-info">
+							  	<div class="row">
+								  <div style="float:left;text-align:right;width:50%;padding-left:30px; padding-right:10px">
+								  	<div class="h4"><b>Urgency</b></div>
+								  	<div class="h4"><b>Estimate</b></div>
+								  	<div class="h4"><b>Description</b></div>
+								  </div>
+								  <div style="float:right;text-align:left;width:50%;">
+								  	<div class="h4">ASAP</div>
+								  	<div class="h4">2 hours</div>
+								  	<div class="h4">Help me finish HW3 - the evil hangman project.</div>
+								  </div>
+								 </div>
+								</div>
+						  </div>
+					 	</div>
+					</div>
+				    <br>
+					<div class="row" style="width:104.75%">
+					        <div class="col-xs-6 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2" style="padding-right:0px">
+						        <a id="tutor-demo-reject" href="/messags/">
+							        <div class="btn-reject">
+							        	<p> REJECT </p>
+									</div>
+								</a>
+							</div>
+							<div class="col-xs-6 col-sm-3 col-md-2" style="padding-right:0px; padding-left:0px">
+								<a id="tutor-demo-accept" href="/messages/">
+									<div class="btn-accept">
+										<p> ACCEPT </p>
+									</div>
+								</a>
+							</div>
+					</div>
+				</div>
+			{% elif n.custom_tag == 'student-payment-proposal-' %}
 				{% set payment = payment_dict[n.payment_id]['payment'] %}
 				{% set tutor_name = payment_dict[n.payment_id]['tutor_name'] %}
 				<div class="payment-id-{{payment.id}}"id="{{n.a_id_name}}-detailed" style="display:none">

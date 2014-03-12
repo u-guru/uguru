@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    
     $('#upload-photo-link').on('click', function(e) {
       e.preventDefault();
       $("#upload-photo:hidden").trigger('click');
@@ -16,6 +16,10 @@ $(document).ready(function() {
         if (file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg' ) {
           alert("File doesnt match png, jpg, or gif");
         } else {
+          if ($('#short-description').val()) {
+            $('#prof-not-complete').hide();
+            $('#launch-profile-div').show();
+          }
           readURL(this);
           var formData = new FormData()
           formData.append('file', file)
@@ -29,6 +33,20 @@ $(document).ready(function() {
           });
         }
     });
+  
+    $('#launch-profile-link').click(function() {
+      var data = {'verify-tutor':true};
+        $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/validation/' ,
+          data: JSON.stringify(data),
+          dataType: "json",
+          success: function() {
+            window.location.replace('/activity/');
+          }
+        });
+    })
 
     $('#short-description').focus(function() {
       $('#profile-save-button').show();
@@ -41,6 +59,10 @@ $(document).ready(function() {
         $('#profile-save-button').hide();
         $('#saved-introduction').show();
         $('#saved-introduction').delay(750).fadeOut('slow');
+        if (!$('#default-photo').is(':visible')) {
+            $('#prof-not-complete').hide();
+            $('#launch-profile-div').show();
+        }
         send_profile_update_ajax('intro', $('#short-description').val())
       }
     });
