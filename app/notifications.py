@@ -1,6 +1,6 @@
 from app import app
 from app.models import Skill, User, Request, Notification
-from emails import welcome_uguru, student_needs_help, tutor_wants_to_help, \
+from emails import welcome_uguru_student, welcome_uguru_tutor, student_needs_help, tutor_wants_to_help, \
     tutor_is_matched, student_payment_request, tutor_payment_received
 from datetime import datetime
 
@@ -12,7 +12,10 @@ def getting_started(user):
     notification.a_id_name = 'getting-started'
     notification.image_url = user.profile_url
     notification.time_read = datetime.now()
-    welcome_uguru(user)
+    if user.skills: 
+        welcome_uguru_tutor(user)
+    else: 
+        welcome_uguru_student(user)
     return notification
 
 def getting_started_tutor(user):

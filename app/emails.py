@@ -47,7 +47,7 @@ def send_connection_email(student, tutor, request):
     mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()
 
-def welcome_uguru(user):
+def welcome_uguru_student(user):
     user_first_name = user.name.split(" ")[0]
     email_from = "uGuru.me <support@uguru.me>"
     email_subject = "[uGuru.me] Sign Up Confirmation"
@@ -62,6 +62,34 @@ def welcome_uguru(user):
     msg['From'] = email_from
     text = welcome_uguru_text(user_first_name)
     html = welcome_uguru_html(user_first_name)
+    
+    part1 = MIMEText(text, 'plain', 'utf-8')
+    part2 = MIMEText(html, 'html', 'utf-8')
+
+    msg.attach(part1)
+    msg.attach(part2)
+    
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
+    mail.quit()
+
+def welcome_uguru_tutor(user):
+    user_first_name = user.name.split(" ")[0]
+    email_from = "uGuru.me <support@uguru.me>"
+    email_subject = "[uGuru.me] Sign Up Confirmation"
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+
+    EMAIL_TO = [user.email]
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = email_subject
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = email_from
+    text = welcome_uguru_tutor_text(user_first_name)
+    html = welcome_uguru_tutor_html(user_first_name)
     
     part1 = MIMEText(text, 'plain', 'utf-8')
     part2 = MIMEText(html, 'html', 'utf-8')
@@ -278,6 +306,15 @@ def welcome_uguru_text(user_name):
     """ by replying to this email.\n\n""" +\
     """Sincerely, \nThe uGuru.me Team"""
 
+def welcome_uguru_tutor_text(user_name):
+    return """
+    Hi """ + user_name.split(' ')[0] + \
+    """, \n\n""" + \
+    """Welcome onboard as an exclusive beta guru at uGuru.me! Very shortly, we will start connecting you with students who need your help and expertise, and notify you when we such an opportunity presents itself.  \n\nOur site is currently at a beta stage, so if anything is janky at""" +\
+    """Our site is currently in beta, so our sincerely apologies for any unexpected hiccups. \n\n""" + \
+    """If you have any questions, concerns, or suggestions please do not hesitate to reach out to us directly by replying to this email. Your feedback is critical in making this product a meaningful service that can benefit the UC Berkeley as a whole. \n\n""" + \
+    """Sincerely, \nThe uGuru.me Team"""
+
 def general_notification_text(user_name, msg):
     print msg, user_name
     return"""
@@ -390,6 +427,27 @@ def welcome_uguru_html(user_name):
     any questions, concerns, or suggestions <i>please</i> do not hesitate to reach out to us directly 
     by replying to this email.
 
+    <br>
+    <br>
+    Sincerely, <br>
+    The uGuru.me Team
+    """
+
+def welcome_uguru_tutor_html(user_name):
+    return """
+    Hi """ + user_name.split(' ')[0] + """,
+    <br>
+    <br>
+    Welcome onboard as an exclusive beta guru at uGuru.me! Very shortly, we will start connecting you 
+    with students who need your help and expertise, and notify you when we such an opportunity presents itself. 
+    <br>
+    <br>
+    Our site is currently in beta, so our sincerely apologies for any unexpected hiccups. 
+    <br>
+    <br>
+    If you have any questions, concerns, or suggestions <i>please</i> do not hesitate to reach out to us directly by 
+    replying to this email. Your feedback is critical in making this product a meaningful service that can 
+    benefit the UC Berkeley as a whole.
     <br>
     <br>
     Sincerely, <br>
