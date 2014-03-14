@@ -39,18 +39,6 @@ $(document).ready(function(){
       update_skill_ajax('remove',skill_name);
     });
 
-    $('#tutor-add-course-fields').on('click', '.tt-suggestion', function() {
-      var skill_name = $(this).children('p:first').text()
-      $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
-      $('.skill-tag:last .skill-tag-text').text($('#add-skill-input-settings').val());
-      $('.skill-tag:last').show();
-      $('#add-skill-input-settings').val('');
-      $('.tt-hint').hide();
-      $('#my-skills').show();
-      $('#tutor-register-div').show();
-      update_skill_ajax('add',skill_name);
-    });
-
     $('#tutor-add-course-fields').on('click', 'a.example-skill-link', function() {
       var skill_name = $(this).children('span:first').text().trim();
       $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
@@ -257,6 +245,18 @@ $(document).ready(function(){
         }
     });
 
+    $('#tutor-add-course-fields').on('click', '.tt-suggestion', function() {
+      var skill_name = $(this).children('p:first').text()
+      $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
+      $('.skill-tag:last .skill-tag-text').text($('#add-skill-input-settings').val());
+      $('.skill-tag:last').show();
+      $('#add-skill-input-settings').val('');
+      $('.tt-hint').hide();
+      $('#my-skills').show();
+      $('#tutor-register-div').show();
+      update_skill_ajax('add',skill_name);
+    });
+
     $('#tutor-register').click(function() {
         window.location.replace('/settings/');
     });
@@ -370,12 +370,12 @@ $(document).ready(function(){
     };
     
     $('#student-signup-name').blur(function(){
-      if ($('#student-signup-name').val()) {
-        $('#student-signup-name').css({"border-color":"#00A253"
-      })
+      if ($('#student-signup-name').val().split(" ").length > 1) {
+        $('#student-signup-name').css({"border-color":"#00A253"});
+        $('#proper-student-name').hide();
       } else {
-        $('#student-signup-name').css({"border-color":"red"
-        });
+        $('#student-signup-name').css({"border-color":"red"});
+        $('#proper-student-name').show();
       }
     });
 
@@ -411,12 +411,13 @@ $(document).ready(function(){
     });
 
     $('#tutor-signup-name').blur(function(){
-      if ($('#tutor-signup-name').val()) {
-        $('#tutor-signup-name').css({"border-color":"#00A253"
-      })
+      if ($('#tutor-signup-name').val().split(" ").length > 1) {
+        $('#tutor-signup-name').css({"border-color":"#00A253"});
+        $('#proper-tutor-name').hide();
       } else {
         $('#tutor-signup-name').css({"border-color":"red"
         });
+        $('#proper-tutor-name').show();
       }
     });
 
