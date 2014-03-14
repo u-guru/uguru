@@ -5,6 +5,20 @@ $(document).ready(function() {
       $("#upload-photo:hidden").trigger('click');
     });
 
+      $('#example-skills').on('click', 'a.example-skill-link', function(e) {
+        var tag_arr = ['previous', 'slc','hkn', 'ta'];
+        if ($(this).children(':first').hasClass('active')){
+          $(this).children(':first').removeClass('active');
+          send_profile_update_ajax(tag_arr[$(this).index()], false);
+        } 
+        else {
+          $(this).children(':first').addClass('active');
+          send_profile_update_ajax(tag_arr[$(this).index()], true);
+        }
+        $('#saved-tag').show();
+        $('#saved-tag').delay(750).fadeOut('slow');
+      });
+
     $("#upload-photo:hidden").change(function(){
         var file = this.files[0]
         name = file.name; 
@@ -16,9 +30,14 @@ $(document).ready(function() {
         if (file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg' ) {
           alert("File doesnt match png, jpg, or gif");
         } else {
-          if ($('#short-description').val()) {
-            $('#prof-not-complete').hide();
+          if ($('#short-description').val() && $('#major-input')) {
+            $('#prof-not-complete').hide()
+            $('#prof-not-complete').removeClass('alert-danger')
+            $('#prof-not-complete').html('You completed your profile! Click <strong> "Launch my Site" </strong> at the bottom of the page!')
+            $('#prof-not-complete').addClass('alert-success')
+            $('#prof-not-complete').show();
             $('#launch-profile-div').show();
+            verify_tutor();
           }
           readURL(this);
           var formData = new FormData()
@@ -34,7 +53,7 @@ $(document).ready(function() {
         }
     });
   
-    $('#launch-profile-link').click(function() {
+    var verify_tutor = function() {
       var data = {'verify-tutor':true};
         $.ajax({
           type: "POST",
@@ -42,15 +61,42 @@ $(document).ready(function() {
           url: '/validation/' ,
           data: JSON.stringify(data),
           dataType: "json",
-          success: function() {
-            window.location.replace('/activity/');
-          }
         });
-    })
+    };
+
+    $('#launch-profile-link').click(function() {
+        window.location.replace('/activity/');
+    });
 
     $('#short-description').focus(function() {
       $('#profile-save-button').show();
     });
+
+    $('#major-input').focus(function() {
+      $('#save-btn-major').show();
+    })
+
+    $('#save-btn-major').click(function() {
+      if (!$('#major-input').val()) {
+        $('#alert-major-text').show();
+      } else {
+        if (!$('#default-photo').is(':visible') && $('#short-description').val()) {
+            $('#prof-not-complete').hide()
+            $('#prof-not-complete').removeClass('alert-danger')
+            $('#prof-not-complete').html('You completed your profile! Click <strong> "Launch my Site" </strong> at the bottom of the page!')
+            $('#prof-not-complete').addClass('alert-success')
+            $('#prof-not-complete').show();
+            $('#launch-profile-div').show();
+            verify_tutor();
+        }
+        $('#save-btn-major').hide();
+        $('#saved-major').show();
+        $('#saved-major').delay(750).fadeOut('slow');
+        var major_text = $('#major-input').val();
+        send_profile_update_ajax('major', major_text);
+      }
+    })
+
     $('#profile-save-button').click(function(){
       if (!$('#short-description').val()) {
         $('#alert-rating-short-description').show()
@@ -59,9 +105,14 @@ $(document).ready(function() {
         $('#profile-save-button').hide();
         $('#saved-introduction').show();
         $('#saved-introduction').delay(750).fadeOut('slow');
-        if (!$('#default-photo').is(':visible')) {
-            $('#prof-not-complete').hide();
+        if (!$('#default-photo').is(':visible') && $('#major-input').val()) {
+            $('#prof-not-complete').hide()
+            $('#prof-not-complete').removeClass('alert-danger')
+            $('#prof-not-complete').html('You completed your profile! Click <strong> "Launch my Site" </strong> at the bottom of the page!')
+            $('#prof-not-complete').addClass('alert-success')
+            $('#prof-not-complete').show();
             $('#launch-profile-div').show();
+            verify_tutor();
         }
         send_profile_update_ajax('intro', $('#short-description').val())
       }
@@ -187,17 +238,12 @@ $(document).ready(function() {
     }
   });
 
-    $('#price-dropdown').on('click', '.dropdown-menu li a', function() {
+    $('#year-dropdown').on('click', '.dropdown-menu li a', function() {
       var selected_text = $(this).text();
-      $('#selected-price').text(selected_text)
-      $('#saved-price').show();
-      $('#saved-price').delay(750).fadeOut('slow');
-      if (selected_text == 'Free') {
-        selected_text = 0.0
-      } else {
-        selected_text = parseFloat(selected_text.replace("$", ""));
-      }
-      send_profile_update_ajax('price', selected_text)
+      $('#selected-year').text(selected_text)
+      $('#saved-year').show();
+      $('#saved-year').delay(750).fadeOut('slow');
+      send_profile_update_ajax('year', selected_text)
     });
 
     $('#current-skills').on('click', '.boxclose', function(e){
@@ -241,14 +287,29 @@ $(document).ready(function() {
 
     var send_profile_update_ajax = function(to_change, value) {
       var data = {};
+      if (to_change =='previous') {
+        data['previous'] = value;
+      }
+      if (to_change =='slc') {
+        data['slc'] = value;
+      }
       if (to_change == 'intro') {
         data['intro'] = value
       }
-      if (to_change =='price') {
-        data['price'] = value
+      if (to_change == 'hkn') {
+        data['hkn'] = value
+      }
+      if (to_change == 'ta') {
+        data['ta'] = value
+      }
+      if (to_change =='year') {
+        data['year'] = value
       }
       if (to_change =='discover') {
         data['discover'] = value 
+      }
+      if (to_change =='major') {
+        data['major'] = value
       }
       $.ajax({
             type: "POST",

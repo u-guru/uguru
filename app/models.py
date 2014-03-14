@@ -105,9 +105,17 @@ class User(Base):
     advertised_rate = Column(Float, default = 10.0)
     max_price = Column(Float, default = 15.0)
     discoverability = Column(Boolean, default = True)
-    balance = Column(Float, default = 0.0)
 
+    #Tutor fields
     verified_tutor = Column(Boolean)
+    balance = Column(Float, default = 0.0)
+    discoverability = Column(Boolean, default = True)
+    major = Column(String)
+    year = Column(String)
+    previous_tutor = Column(Boolean, default = False)
+    slc_tutor = Column(Boolean, default = False)
+    hkn_tutor = Column(Boolean, default = False)
+    ta_tutor = Column(Boolean, default = False)
 
     msg_notif = Column(Integer, default = 0)
     feed_notif = Column(Integer, default = 0)

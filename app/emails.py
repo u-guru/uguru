@@ -296,8 +296,7 @@ def send_connection_text(student_name, tutor_name, time_estimate):
     """Sincerely, \nThe uGuru.me Team"""
 
 def welcome_uguru_text(user_name):
-    return """
-    Hi """ + user_name.split(' ')[0] + \
+    return """Hi """ + user_name.split(' ')[0] + \
     """, \n\n""" + \
     """Thank you for signing up for uGuru.me! \n\nOur site is currently at a beta stage, so if anything is janky at""" +\
     """ first, we sincerely apologize. \n\n""" + \
@@ -307,8 +306,7 @@ def welcome_uguru_text(user_name):
     """Sincerely, \nThe uGuru.me Team"""
 
 def welcome_uguru_tutor_text(user_name):
-    return """
-    Hi """ + user_name.split(' ')[0] + \
+    return """Hi """ + user_name.split(' ')[0] + \
     """, \n\n""" + \
     """Welcome onboard as an exclusive beta guru at uGuru.me! Very shortly, we will start connecting you with students who need your help and expertise, and notify you when we such an opportunity presents itself.  \n\nOur site is currently at a beta stage, so if anything is janky at""" +\
     """Our site is currently in beta, so our sincerely apologies for any unexpected hiccups. \n\n""" + \

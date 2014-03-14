@@ -82,8 +82,18 @@ def update_profile():
             ajax_json = request.json
             if ajax_json.get('intro'):
                 user.tutor_introduction = ajax_json.get('intro')
-            if ajax_json.get('price'):
-                user.advertised_rate = ajax_json.get('price')
+            if ajax_json.get('year'):
+                user.year = ajax_json.get('year')
+            if ajax_json.get('major'):
+                user.major = ajax_json.get('major')
+            if 'slc' in ajax_json:
+                user.slc_tutor = ajax_json.get('slc')
+            if 'previous' in ajax_json:
+                user.previous_tutor = ajax_json.get('previous')
+            if 'ta' in ajax_json:
+                user.ta_tutor = ajax_json.get('ta')
+            if 'hkn' in ajax_json:
+                user.hkn_tutor = ajax_json.get('hkn')
             if 'discover' in ajax_json:
                 user.discoverability = ajax_json.get('discover')
             try:
@@ -579,16 +589,15 @@ def success():
                 user.settings_notif = user.settings_notif - 1
                 user.verified_tutor = True
 
-
-                from notifications import getting_started, getting_started_tutor
-                notification1 = getting_started(user)
-                notification2 = getting_started_tutor(user)
-                db_session.add(notification1)
-                db_session.add(notification2)
-                user.notifications.append(notification1)
-                user.notifications.append(notification2)
-                db_session.commit()
-
+                if len(user.notifications) < 2: 
+                    from notifications import getting_started, getting_started_tutor
+                    notification1 = getting_started(user)
+                    notification2 = getting_started_tutor(user)
+                    db_session.add(notification1)
+                    db_session.add(notification2)
+                    user.notifications.append(notification1)
+                    user.notifications.append(notification2)
+                    db_session.commit()
                 #increment feed counter
                 #create fake notification
             except:
@@ -659,7 +668,7 @@ def access():
         json = {}
         ajax_json = request.json
         access_code = ajax_json['access']
-        if access_code.lower() == 'calslctutor':
+        if access_code.lower() == 'goslc50' or access_code.lower() == 'gohkn20' or access_code.lower() == 'gobears30':
             json['success'] = True                
         else:
             json['failure'] = False
