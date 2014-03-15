@@ -20,13 +20,18 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    tutor_signup_incomplete = False
+    request_form = RequestForm()
+    if session.get('tutor-signup'):
+        tutor_signup_incomplete = True
+        return render_template('new_index.html', forms=[request_form],
+        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete)
     if session.get('user_id'):
         return redirect(url_for('activity'))
     if (session.get('user_id') and user.skills and (not user.profile_url or not user.tutor_introduction)):
         return redirect(url_for('settings'))
-    request_form = RequestForm()
     return render_template('new_index.html', forms=[request_form],
-        logged_in=session.get('user_id'))
+        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete)
 
 @app.route('/sneak/', methods=['GET', 'POST'])
 def sneak():
@@ -440,6 +445,8 @@ def update_skill():
 
         if ajax_json.get('add'):
             skill_to_add = ajax_json.get('add').lower()
+            if session.get('tutor-signup'):
+                session.pop('tutor-signup')
 
             #check if skill is a course
             if courses_dict.get(skill_to_add):
@@ -456,6 +463,8 @@ def update_skill():
                     user.skills.remove(skill)
         try:
             db_session.commit()
+            if len(user.skills) == 0:
+                session['tutor-signup'] = True
         except:
             db_session.rollback()
             raise 
@@ -627,6 +636,7 @@ def success():
                 m = Mailbox(u)
                 db_session.add(m)
                 db_session.commit()
+                session['tutor-signup'] = True;
             except:
                 db_session.rollback()
                 raise 

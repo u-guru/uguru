@@ -258,7 +258,11 @@ $(document).ready(function(){
     });
 
     $('#tutor-register').click(function() {
-        window.location.replace('/settings/');
+        if ($('#register-skills').children().length > 1) {
+          window.location.replace('/settings/');
+        } else {
+          $('#add-one-skill-alert').show();
+        }
     });
     
     $('#login-submit-link').click(function(){
@@ -380,7 +384,7 @@ $(document).ready(function(){
     });
 
     $('#student-signup-email').blur(function(){
-      if ($('#student-signup-email').val().indexOf('@berkeley.edu') != -1) {
+      if ($('#student-signup-email').val().toLowerCase().indexOf('@berkeley.edu') != -1) {
         $('#student-signup-email').css({"border-color":"#00A253"});
         $('#proper-email').hide();
       } else {
@@ -422,7 +426,7 @@ $(document).ready(function(){
     });
 
     $('#tutor-signup-email').blur(function(){
-      if ($('#tutor-signup-email').val().indexOf('@berkeley.edu') != -1) {
+      if ($('#tutor-signup-email').val().toLowerCase().indexOf('@berkeley.edu') != -1) {
         $('#tutor-signup-email').css({"border-color":"#00A253"});
         $('#proper-email-tutor').hide();
       } else {

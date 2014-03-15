@@ -21,8 +21,13 @@
     {% set request_form = forms[0] %}
     {% set messages = get_flashed_messages(with_categories=true) %}
 
+    {% if not tutor_signup_incomplete %}
     <body>
         <div id="home-top" class="row main">
+    {% else %}
+    <body style="background-color:white">
+        <div id="home-top" style="display:none;" class="row main">
+    {% endif %}
             <div class="welcome"> 
                 <p id="welcome_text"> WELCOME TO </p>
                 <h2 class="logo logo_main">uguru.me</h2>
@@ -37,7 +42,11 @@
             </p>
         </div>
 
+        {% if not tutor_signup_incomplete %}
         <div style="display:block"class="row" id="how-it-works-main">
+        {% else %}
+        <div style="display:none"class="row" id="how-it-works-main">
+        {% endif %}
             <p id='how-it-works'>
                 SEE HOW IT WORKS
             </p>
@@ -208,9 +217,11 @@
                             <div style="line-height:0.75"class="form-group">
                                 <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;PHONE NUMBER</label> <br>
                                 <input class="input-signup form-control" id="tutor-signup-phone" placeholder="5101234567" name="tutor-phone" type="text">
-                                  <span style="font-weight:strong; color:grey; text-align:center; font-size:0.5em">
+                                <div style="text-align:center">
+                                  <span style="font-weight:strong; color:grey; text-align:center; font-size:0.65em">
                                   Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
-                                </span>
+                                  </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -232,7 +243,11 @@
                 </div>
             </a> -->
         </div>
+        {% if not tutor_signup_incomplete %}
         <div style="display:none" id="tutor-signup-next">
+        {% else %}
+        <div style="display:block" id="tutor-signup-next">
+        {% endif %}
             <nav class="navbar"margin-right:25px;>
               <div class="container-fluid">
                 <div class="navbar-header">
@@ -254,6 +269,16 @@
             </div>
             <div id="tutor-add-course-fields">
                 <div class="row">
+                  <div class="col-xs-10 col-xs-offset-1 col-md-6 col-sm-6 col-sm-offset-3 col-md-offset-3">
+                    {% if not tutor_signup_incomplete %}
+                    <div style="display:none" id="add-one-skill-alert" class="alert alert-danger alert-dismissable">
+                    {% else %}
+                    <div style="display:block" class="alert alert-danger alert-dismissable">
+                    {% endif %}
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      Please add at least one skill to complete signup!
+                    </div>
+                   </div>
                   <div class="col-xs-10 col-xs-offset-1 col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4">
                     <div class="form-group">
                       <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;ADD SKILLS & COURSES</label> <br>
@@ -388,8 +413,10 @@
                             <div style="line-height:0.75em"class="form-group">
                                 <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;PHONE NUMBER</label> <br>
                                 <input class="input-signup form-control" id="student-signup-phone" placeholder="5101234567" name="student-phone" type="text">
-                                  <span style="font-weight:strong; text-align:center; color:grey; font-size:0.5em">
-                                  Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
+                                  <div style="text-align:center">
+                                    <span style="font-weight:strong; text-align:center; color:grey; font-size:0.65em">
+                                    Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
+                                  </div>
                                 </span>
                             </div>
                         </div>
