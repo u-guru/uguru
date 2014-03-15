@@ -135,8 +135,12 @@
 				<a class='main-feed-messages'id="{{n.a_id_name}}" href="javascript:void(0)">
 				{% endif %}
 					<div class="notification {% if not n.time_read %} grey-background {% endif %}" align:"center">
-						<img src="{{n.image_url}}" class="user-photo" style="float:left">
-							<h4>{{n.feed_message|safe}}</h4>
+						<img src="{{n.image_url}}" class="user-photo" style="float:left; margin-top:-10px">
+							<h5 style="margin-bottom:0px; margin-top:0px">{{n.feed_message|safe}}</h4>
+							{% if n.feed_message_subtitle %}
+								<h6 style="padding-top:0px;margin-top:0px; color:grey">{{n.feed_message_subtitle|safe}}</h5>
+							{% endif %}
+							
 						<div style="float:right">
 							<h6 class="time-indicator">{{pretty_dates[n.id]}}</h6>
 						</div>
@@ -577,7 +581,7 @@
 	  				</div>
 					<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px">
 					  	<br>
-					  	<img src="/static/img/default-photo.jpg" style="align:center" class="user-photo">
+					  	<img src="/static/img/samir.png" style="align:center" class="user-photo">
 					  <h5 style="text-align:center"><b>A Student</b> needs help in <b>CS10</b></h5>
 					  <div class="row">
 						  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">

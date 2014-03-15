@@ -19,11 +19,12 @@ def getting_started(user):
     return notification
 
 def getting_started_tutor(user):
-    getting_started_msg = "<b>You </b> successfully completed your profile!" + \
-        " we'll advertise you as soon as a student needs help. <br> Click here to see " +\
-        " an example of what you'll be receiving when a student has a request." 
+    getting_started_msg = "<b>You </b> completed your profile!" + \
+        "We'll notify you when students need help."
     notification = Notification(other='getting_start_tutor')
     notification.feed_message = getting_started_msg
+    notification.feed_message_subtitle = "Click here to see " +\
+        " an example of what you'll be receiving when a student has a request." 
     notification.a_id_name = 'getting-started-tutor'
     notification.image_url = user.profile_url
     return notification

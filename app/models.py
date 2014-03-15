@@ -324,6 +324,8 @@ class Notification(Base):
     time_read = Column(DateTime) #Set to now if it doesn't need to be read
     
     feed_message = Column(String(1000))
+    feed_message_subtitle = Column(String(1000))
+    
     payment_id = Column(Integer)
     rating_id = Column(Integer)
     a_id_name = Column(String) #div to display
