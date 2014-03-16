@@ -20,37 +20,6 @@
       <!-- Jinja2 Variable Definitions -->
     {% set request_form = forms[0] %}
     {% set messages = get_flashed_messages(with_categories=true) %}
-
-    <!-- {% if not tutor_signup_incomplete %} -->
-<!--         <div id="home-top" class="row main">
-    {% else %}
-    <body style="background-color:white">
-        <div id="home-top" style="display:none;" class="row main">
-    {% endif %}
-            <div class="welcome"> 
-                <p id="welcome_text"> WELCOME TO </p>
-                <h2 class="logo logo_main">uguru.me</h2>
-            </div>
-            <div id="home-button-group">              
-                <a id="student-signup-btn" href="javascript:void(0);" style="color:white"><button id='home-button-1' type="button" class="btn btn-lg">NEED A GURU?</button></a>
-                 <a id="tutor-signup-btn" href="javascript:void(0);" style="color:white"><button id='home-button-2' type="button" class="btn btn-lg" href="#tutor_signup">BECOME A GURU</button></a>
-            </div>
-            
-            <p id='login-text' style="color:white">
-                OR <a id="login-link" href="javascript:void(0)"><u><strong>LOGIN</strong></u></a>
-            </p>
-        </div>
-
-        {% if not tutor_signup_incomplete %}
-        <div style="display:block"class="row" id="how-it-works-main">
-        {% else %}
-        <div style="display:none"class="row" id="how-it-works-main">
-        {% endif %}
-            <p id='how-it-works'>
-                SEE HOW IT WORKS
-            </p>
-            <div class="arrow-down"></div>
-        </div> -->
       {% if not tutor_signup_incomplete %}
       <body>
         <div id="home">
@@ -89,12 +58,71 @@
                     OR <u style="font-weight:500">LOGIN</u>
                   </a>
                 </div>
+                <div id="how-it-works-text" class="row-fluid">
+                    <a href="#how-it-works">
+                      <p style="color:white">SEE HOW IT WORKS </p>
+                      <div class="arrow-down"> </div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-          <!-- <div id="how-it-works">
-            test
-          </div> -->
+          <div id="how-it-works">
+            <div class="container-fluid">
+              <div class="row">
+                <div id="how-it-works-header"class="col-xs-12 col-md-12 col-sm-12">
+                  <h1> Earn <i> easy </i> side cash by sharing your knowledge </h1>
+                </div>
+              </div>
+              <div id="how-it-works-main" class="row">
+                <div class="col-sm-7 col-md-7 col-xs-12">
+                  <div class="one-step">
+                    <h3 class="step-header"> Step 1: Student sends request</h3>
+                    <p>Finals are coming and Jenny needs help with CS61A, so she sends out a tutoring
+                      request specifying when she needs help and what she needs help with.
+                    </p>
+                  </div>
+                  <div class="one-step">
+                    <h3 class="step-header"> Step 2: Tutor accepts or declines</h3>
+                    <p>uGuru.me then broadcasts the request to all CS61A tutors. Jared and Rafi <br> can't
+                      help unfortunately, but Saba, Nadir and Lee are available!
+                    </p>
+                  </div>
+                  <div class="one-step">
+                    <h3 class="step-header"> Step 3: Student meets with a tutor</h3>
+                    <p>Jenny choses Nadir because of his excellent tutor experience,<br> and they meet up!</p>
+                  </div>
+                  <div id="the-result">
+                      <h3> The result? </h3>
+                      <div>
+                        <p>
+                          <span style="font-size:1em"class="glyphicon glyphicon-ok"></span>&nbsp;
+                          Nadir <strong> shares his knowledge </strong> with Jenny and helps her do well in CS61A!
+                        </p>
+                      </div>
+                      <div>
+                        <p>
+                          <span style="font-size:1em"class="glyphicon glyphicon-credit-card"></span>&nbsp;
+                          Jenny rewards Nadir for his help via uGuru.me's <strong> easy payment system </strong>
+                        </p>
+                      </div>
+                  </div>
+                </div>
+                <div style="padding-left:0px"class="col-sm-5 col-md-5 col-xs-12">
+                  <div style="margin-left:-20px"id="how-it-works-image">
+                    <img id="how-it-works-img" src="/static/img/web-how-it-works.png">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div id="scroll-back-home" class="row-fluid">
+                <a href="#main">
+                  <div class="arrow-up"> </div>
+                  <p style="color:white">RETURN HOME</p>
+                </a>
+            </div>
+          </div>
         </div>
 
         <div style="display:none" id="exclusive-access-page">

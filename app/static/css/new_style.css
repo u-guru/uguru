@@ -17,7 +17,7 @@ h1,h2,h3,h4,h5,h6 {
 .home-btn {
   font-family:'Roboto',sans-serif; 
   padding: 12px 12px;
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 9px;
   text-align:center;
   font-size:0.8em;
@@ -29,11 +29,116 @@ h1,h2,h3,h4,h5,h6 {
   height:95px;
 }
 
+#how-it-works-header h1 {
+  color:white;
+  margin: 20px 0 0 35px;
+  font-weight:700;
+}
+
+#how-it-works-main {
+  margin:0px
+}
+
 #login-text {
   font-family:'Roboto',sans-serif; 
   font-weight:100;
   font-size:0.75em;
   margin-top:85px;
+  margin-bottom:0;
+}
+
+#how-it-works-text {
+  position:absolute;
+  bottom:5%;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#scroll-back-home {
+  position:absolute;
+  bottom:0.5%;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right:auto;
+  font-family:'Roboto Condensed',sans-serif; 
+  text-align:center;
+  font-size:0.5em;
+}
+
+#how-it-works-main h3.step-header  {
+  color:white;
+  font-family:inherit;
+  font-weight:500;
+  /*margin-bottom:0px;*/
+}
+
+#the-result h3{
+  color:white;
+  font-family:inherit;
+  font-weight:500;
+}
+
+.one-step p, #the-result p {
+  font-size:0.5em;
+  font-weight:100;
+}
+
+.one-step {
+  margin-bottom:30px;
+}
+
+@media only screen and (max-width: 768px) {
+  #scroll-back-home {
+    display:none;
+  }
+
+  #how-it-works-img {
+    margin-right:40px;
+    margin-bottom:40px;
+    width:100%;
+   }
+
+   #how-it-works-image {
+    /*margin:0!important;*/
+    margin-left:10px !important;
+   }
+
+   #how-it-works-header {
+    text-align:center;
+   }
+
+   #how-it-works-header h1 {
+    font-size:1.5em;
+    margin:0 20px;
+    margin-top:10px;
+   }
+
+   #how-it-works-main h3.step-header  {
+    font-size:1.25em;
+    color:white;
+    font-family:inherit;
+    font-weight:500;
+    /*margin-bottom:0px;*/
+  }
+
+  #the-result h3{
+    font-size:1.25em;
+    color:white;
+    font-family:inherit;
+    font-weight:500;
+  }
+
+  .one-step p, #the-result p {
+    font-size:0.7em;
+    font-weight:100;
+  }
+
+  .one-step {
+   margin-bottom:15px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -62,6 +167,15 @@ h1,h2,h3,h4,h5,h6 {
    #login-text {
     font-size:0.5em;
     margin-top:110px;
+   }
+
+   #how-it-works-text, #scroll-back-home {
+    font-size:0.7em;
+   }
+
+   #how-it-works-img {
+    margin-top:40px;
+    width:350px;
    }
 
 }
@@ -93,17 +207,19 @@ h1,h2,h3,h4,h5,h6 {
     margin-top:125px;
    }
 
+   #how-it-works-text, #scroll-back-home {
+    font-size:0.5em;
+   }
+
+   #how-it-works-img {
+    width:95%;
+    margin-top:5%;
+   }
+
 }
 
 input:focus, textarea:focus {
   outline:none;
-}
-
-#main {
-  display: table;
-  position: relative;
-  height: 100%;
-  width: 100%;
 }
 
 .home-btn:hover {
@@ -120,6 +236,13 @@ input:focus, textarea:focus {
 .logo-text {
     font-family:'grand hotel', cursive;
     color:#fff;
+}
+
+#main {
+  display: table;
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 #middle {
@@ -141,6 +264,9 @@ input:focus, textarea:focus {
 
 #how-it-works {
   height:100%;
+  position:relative;
+  font-family:'Roboto',sans-serif; 
+  color:white;
 }
 
 #student-signup-btn, #tutor-signup-btn {
@@ -257,22 +383,22 @@ input:focus, textarea:focus {
   color:white;
 }
 
-#how-it-works-main {
-    font-size:1.7em; 
-    text-align:center;
-    position: relative;
-    margin: auto;
-    top: 85%;
-    width: 100%;
-}
-
 .arrow-down {
     width: 0; 
     height: 0; 
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    margin:0 auto;
-    border-top: 20px solid #fff;
+    border-left: 0.6em solid transparent;
+    border-right: 0.6em solid transparent;
+    margin:-5px auto 0 auto;
+    border-top: 0.6em solid #fff;
+}
+
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 0.6em solid transparent;
+    border-right: 0.6em solid transparent;
+    margin:-5px auto 0 auto;
+    border-bottom: 0.6em solid #fff;
 }
 
 .page-title {
@@ -751,3 +877,19 @@ label {
 #login-link {
   text-decoration:none;
 }
+
+#how-it-works-link {
+  text-decoration:none;
+  color:white;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#how-it-works-link p {
+  color:white; 
+}
+
+
+
