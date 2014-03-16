@@ -134,6 +134,13 @@ def add_credit():
                 raise 
         return jsonify(response=return_json)
 
+@app.route('/admin/')
+def admin():
+    if session.get('admin'):
+        users = User.query.all()
+        return render_template('admin.html', users=users)
+    return redirect(url_for('/'))
+
 @app.route('/add-bank/', methods=('GET', 'POST'))
 def add_bank():
     if request.method == "POST":
@@ -648,7 +655,10 @@ def success():
 
 @app.route('/logout/', methods=('GET', 'POST'))
 def logout():
-    session.pop("user_id")    
+    if session.get('user_id'):
+        session.pop("user_id")
+    if session.get('admin'):
+        return redirect(url_for('admin'))
     flash('You have been logged out', 'info')
     return redirect(url_for("index"))
 
@@ -660,6 +670,13 @@ def login():
     if request.method == "POST":
         json = {}
         ajax_json = request.json
+
+        if ajax_json['email'].lower() == 'admin@uguru.me' \
+            and ajax_json['password'].lower() == 'launchuguru':
+            session['admin'] = True
+            users = User.query.all()
+            return render_template('admin.html', users=users )
+
         email = ajax_json['email']
         password = md5(ajax_json['password']).hexdigest()
         query = User.query.filter_by(email=email, password=password).first()
@@ -683,6 +700,17 @@ def access():
         else:
             json['failure'] = False
         return jsonify(json=json)
+
+@app.route('/admin-access/', methods=('GET', 'POST'))
+def admin_access():
+    if request.method == "POST": 
+        json = {}
+        ajax_json = request.json
+        user_id = ajax_json['user-id']
+        if session.get('user_id'):
+            session.pop('user_id')
+        session['user_id'] = int(user_id)
+        return jsonify(json=ajax_json)
 
 
 @app.route('/tutorsignup1/', methods=('GET', 'POST'))

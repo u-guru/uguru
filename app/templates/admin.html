@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <link href="/static/css/admin.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row-fluid">
+        <table class="table table-striped">
+            <tr class="info"> 
+                <td> Id </td>
+                <td> Name </td>
+                <td> Email </td>
+            </tr>
+            {% for user in users %}
+                    <tr {% if user.skills %} class="success" {% endif %}> 
+                        <td>  {{user.id}} </td>
+                        <td> <a href="javascript:void(0)" class="login-user"> {{user.name}} </a> </td>
+                        <td> {{user.email}} </td>
+                    </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+    <script src="/static/js/admin.js"></script>
+{% endblock %}
