@@ -21,9 +21,8 @@
     {% set request_form = forms[0] %}
     {% set messages = get_flashed_messages(with_categories=true) %}
 
-    {% if not tutor_signup_incomplete %}
-    <body>
-        <div id="home-top" class="row main">
+    <!-- {% if not tutor_signup_incomplete %} -->
+<!--         <div id="home-top" class="row main">
     {% else %}
     <body style="background-color:white">
         <div id="home-top" style="display:none;" class="row main">
@@ -51,6 +50,51 @@
                 SEE HOW IT WORKS
             </p>
             <div class="arrow-down"></div>
+        </div> -->
+      {% if not tutor_signup_incomplete %}
+      <body>
+        <div id="home">
+      {% else %}
+      <body style="background-color:white">
+        <div id="home" style="display:none">
+      {% endif %}
+          <div id="main">
+            <div id="middle">
+              <div id="inner">
+                <img id="home-logo-img" style='margin-bottom:10px' src="/static/img/guru.svg">
+                <p>WELCOME TO</p>
+                <p id="home-logo-text" class="logo-text">uguru.me</p>
+                <div class="row-fluid">
+                  <div style="padding-right:5px"class="col-xs-6 col-md-6 col-sm-6">
+                    <div class="pull-right">
+                      <a id="student-signup-btn" href="javascript:void(0)">
+                        <div class="home-btn">
+                          NEED A GURU?
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div style="padding-left:5px" class="col-xs-6 col-md-6 col-sm-6">
+                    <div class="pull-left">
+                      <a id="tutor-signup-btn" href="javascript:void(0)">
+                        <div class="home-btn">
+                          BECOME A GURU
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div id="login-text" class="row-fluid">
+                  <a id="login-link" href="javascript:void(0)">
+                    OR <u style="font-weight:500">LOGIN</u>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div id="how-it-works">
+            test
+          </div> -->
         </div>
 
         <div style="display:none" id="exclusive-access-page">

@@ -2,19 +2,155 @@ input {
   outline:none;
 }
 
-html, body{
+body, html {
     height:100%;
-    font-family:'Roboto',sans-serif; 
-    color:#fff; 
+    font-family:'Roboto Condensed',sans-serif; 
+    color:white; 
+    background-color:#00a9e5;
+    font-size:1em;
 }
 
-body {
-    min-height:100%;
-    background-color:#00a9e5;
+h1,h2,h3,h4,h5,h6 {
+  font-family:'Roboto Condensed',sans-serif; 
+}
+
+.home-btn {
+  font-family:'Roboto',sans-serif; 
+  padding: 12px 12px;
+  border: 1px solid white;
+  border-radius: 9px;
+  text-align:center;
+  font-size:0.8em;
+  width:150px;
+  font-weight: 100;
+}
+
+#home-logo-img {
+  height:95px;
+}
+
+#login-text {
+  font-family:'Roboto',sans-serif; 
+  font-weight:100;
+  font-size:0.75em;
+  margin-top:85px;
+}
+
+@media only screen and (min-width: 768px) {
+
+   body 
+   { 
+    font-size: 1.5em; 
+   }
+   #home-logo-text {
+    font-size:4em;
+    margin-top:-1em;
+  }
+  .home-btn {
+      padding: 12px 12px;
+      border: 1px solid white;
+      border-radius: 9px;
+      text-align:center;
+      font-size:0.65em;
+      width:200px;
+      font-family:'Roboto',sans-serif; 
+      font-weight: 100;
+   }
+   #home-logo-img {
+    height:125px;
+   }
+   #login-text {
+    font-size:0.5em;
+    margin-top:110px;
+   }
+
+}
+
+@media only screen and (min-width: 992px) {
+
+   body { font-size: 2em; }
+   #home-logo-text {
+    font-size:5em;
+    margin-top:-1.33em;
+   }
+   .home-btn {
+      padding: 12px 12px;
+      border: 1px solid white;
+      border-radius: 9px;
+      text-align:center;
+      font-size:0.6em;
+      width:275px;
+      font-family:'Roboto',sans-serif; 
+      font-weight: 100;
+   }
+
+   #home-logo-img {
+    height:150px;
+   }
+
+   #login-text {
+    font-size:0.6em;
+    margin-top:125px;
+   }
+
 }
 
 input:focus, textarea:focus {
   outline:none;
+}
+
+#main {
+  display: table;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.home-btn:hover {
+  background-color:white;
+}
+
+#home-logo-text {
+ font-size:3em;
+ font-weight:200;
+ margin-top:-0.66em;
+ margin-bottom:0.33em;
+}
+
+.logo-text {
+    font-family:'grand hotel', cursive;
+    color:#fff;
+}
+
+#middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#inner {
+    margin-left: auto;
+    margin-right: auto; 
+    width: 100%;
+    text-align:center;
+}
+
+#home {
+  height:100%;
+  position:relative;
+}
+
+#how-it-works {
+  height:100%;
+}
+
+#student-signup-btn, #tutor-signup-btn {
+  color:white;
+  text-decoration: none
+}
+
+#student-signup-btn:hover, #tutor-signup-btn:hover {
+  color:#00a9e5;
+  text-decoration: none
 }
 
 #login-page{
@@ -44,27 +180,18 @@ input:focus, textarea:focus {
   font-size:16px;
 }
 
-div.main {
+/*div.main {
     text-align:center;
     position: absolute;
     margin: auto;
     top: 60%;
-    /*right: 0;
+    right: 0;
     bottom: 0;
-    left: 0;*/
+    left: 0;
     width: 100%;
-    /*height: 100%;   */
-}
+    height: 100%;   
+}*/
 
-
-.logo {
-    font-family:'grand hotel', cursive;
-    color:#fff;
-    }
-    .logo.logo_main {
-    font-size: 7em;
-    margin-top: -35px;
-    }
 
 .welcome {
    /*width: 50%;
@@ -79,7 +206,6 @@ div.main {
 #welcome_text{
     font-size:1.5em;
 }
-
 
 .btn {
   display: inline-block;
@@ -125,10 +251,6 @@ div.main {
 #home-button-group button:hover {
     background: white;
     color: #00a9e5;
-}
-
-#login-text {
-    font-size:1.3em;
 }
 
 #login-text a {
@@ -625,4 +747,7 @@ textarea#student-signup-description {
 
 label {
   font-weight:normal;
+}
+#login-link {
+  text-decoration:none;
 }
