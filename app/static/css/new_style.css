@@ -233,6 +233,86 @@ h1,h2,h3,h4,h5,h6 {
 
 }
 
+@media only screen and (min-width: 1200px) and (min-height:700px) {
+  #how-it-works-img {
+    width:100%;
+    margin-top:-25px;
+   } 
+   #how-it-works-header {
+    margin-top:5%;
+    margin-bottom:20px;
+  }
+  #scroll-back-home {
+    font-size:1.3em;
+    bottom:2%;
+  }
+  #how-it-works-text {
+    font-size:25px;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (min-height:850px) {
+
+   body #main { font-size: 2.5em; }
+   #home-logo-text {
+    font-size:5em;
+    margin-top:-1.33em;
+   }
+   .home-btn {
+      padding: 12px 12px;
+      border: 1px solid white;
+      border-radius: 9px;
+      text-align:center;
+      font-size:0.6em;
+      width:275px;
+      font-family:'Roboto',sans-serif; 
+      font-weight: 100;
+   }
+
+   #home-logo-img {
+    height:200px;
+   }
+
+   #login-text {
+    font-size:0.6em;
+    margin-top:125px;
+   }
+
+   #how-it-works-text, #scroll-back-home {
+    font-size:0.7em;
+   }
+
+   #how-it-works-img {
+    margin-top:-25px;
+    width:100%;
+   }
+
+  .one-step p, #the-result p {
+    font-size:1.3em;
+    font-weight:100;
+    margin-top:20px;
+  }
+
+  #scroll-back-home {
+    font-size:1.3em;
+    bottom:2%;
+  }
+
+  #how-it-works-header {
+    margin-top:5%;
+    margin-bottom:20px;
+  }
+
+  .one-step h3, #the-result h3 {
+    font-size:2em;
+  }
+
+  #how-it-works-header h1 {
+    font-size:3em;
+  }
+
+}
+
 input:focus, textarea:focus {
   outline:none;
 }
