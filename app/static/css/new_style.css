@@ -143,7 +143,7 @@ h1,h2,h3,h4,h5,h6 {
 
 @media only screen and (min-width: 768px) {
 
-   body 
+   body #main
    { 
     font-size: 1.5em; 
    }
@@ -182,7 +182,7 @@ h1,h2,h3,h4,h5,h6 {
 
 @media only screen and (min-width: 992px) {
 
-   body { font-size: 2em; }
+   body #main { font-size: 2em; }
    #home-logo-text {
     font-size:5em;
     margin-top:-1.33em;
