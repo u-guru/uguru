@@ -69,6 +69,7 @@ $(document).ready(function(){
         $('body').css('background-color','white')
         // $('#login-page').show();
         // $("#login-page").animate({width:'toggle'},350);
+        invert_olark();
         $('#login-page').show('slide', {direction: 'right'}, 200);
     });
     $('#tutor-signup-btn').click(function() {
@@ -76,12 +77,14 @@ $(document).ready(function(){
         $('body').css('background-color','white')
         // $('#login-page').show();
         // $("#login-page").animate({width:'toggle'},350);
+        invert_olark();
         $('#exclusive-access-page').show('slide', {direction: 'right'}, 200);
         // $('#tutor-signup').show('slide', {direction: 'right'}, 200);
     });
     $('#student-signup-btn').click(function() {
         $('#home').hide();
         $('body').css('background-color','white')
+        invert_olark();
         // $('#login-page').show();
         // $("#login-page").animate({width:'toggle'},350);
         $('#student-signup').show('slide', {direction: 'right'}, 200);
@@ -116,6 +119,7 @@ $(document).ready(function(){
                 } 
                 else {
                   $('#student-signup').hide();
+                  invert_olark();
                   $('#student-request').show('slide', {direction: 'right'}, 200);
                 }
               }
@@ -184,6 +188,7 @@ $(document).ready(function(){
                 } 
                 else {
                   $('#tutor-signup').hide();
+                  invert_olark();
                   $('#tutor-signup-next').show('slide', {direction: 'right'}, 200);
                 }
               }
@@ -453,5 +458,10 @@ $(document).ready(function(){
         });
       }
     });
+
+    var invert_olark = function() {
+      $('#habla_window_div #habla_oplink_a').css('color','white');
+      $('#habla_window_div #habla_topbar_div').css('background', '#00a9e5 none repeat scroll 0 0');
+    }
 
 });
