@@ -178,6 +178,16 @@ h1,h2,h3,h4,h5,h6 {
     width:350px;
    }
 
+   #how-it-works-header h1 {
+    margin:0 15px;
+    margin-top:10px;
+   }
+
+   .one-step p, #the-result p {
+    font-size:0.85em;
+    font-weight:100;
+  }
+
 }
 
 @media only screen and (min-width: 992px) {
@@ -215,6 +225,11 @@ h1,h2,h3,h4,h5,h6 {
     width:95%;
     margin-top:5%;
    }
+
+  .one-step p, #the-result p {
+    font-size:0.85em;
+    font-weight:100;
+  }
 
 }
 
