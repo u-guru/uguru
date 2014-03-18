@@ -174,15 +174,26 @@ $(document).ready(function() {
 
     
     $('#select-person-to-pay').on('click', '.dropdown-menu li a', function() {
+        var current_index = $(this).parent().index();
+        $('#address-urls').find('img:visible').each(function(){
+          $(this).css('display','none')
+        });
+        $('#address-urls img:nth-child(' + (current_index + 1) + ")").css('display','block');
         var selected_text = $(this).text();
         $('#selected-person-to-pay').text(selected_text)
         $('#selected-person-to-pay').attr('class', ($(this).attr('id')))
+        rate = parseInt($('#payment-price-dropdown #selected-price').text().replace('$', ''))
+        total_time = parseInt($('#payment-hours-dropdown #selected-payment-num-hour').text())
+        $('#total-amount-request').text('$' + (rate * total_time))
     });
     
     $('#submit-payment').click(function() {
         conversation_id = parseInt($('#select-person-to-pay #selected-person-to-pay').attr('class').split('-').reverse()[0])
         rate = parseInt($('#payment-price-dropdown #selected-price').text().replace('$', ''))
         total_time = parseInt($('#payment-hours-dropdown #selected-payment-num-hour').text())
+        alert(conversation_id)
+        alert(rate)
+        alert(total_time)
         var data = {
             'submit-payment': conversation_id,
             'hourly-rate': rate,
@@ -208,6 +219,9 @@ $(document).ready(function() {
     $('#payment-hours-dropdown').on('click', '.dropdown-menu li a', function() {
           var selected_text = $(this).text();
           $('#selected-payment-num-hour').text(selected_text)
+          rate = parseInt($('#payment-price-dropdown #selected-price').text().replace('$', ''))
+          total_time = parseInt($('#payment-hours-dropdown #selected-payment-num-hour').text())
+          $('#total-amount-request').text('$' + (rate * total_time))
           // send_profile_update_ajax('price', selected_text)
     });
 

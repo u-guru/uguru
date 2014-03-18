@@ -17,6 +17,13 @@ if arg == 'create_db':
     # initialize_skill()
     print "db initialized"
 
+if arg == 'set_profile_default':
+    for user in User.query.all():
+        if not user.profile_url:
+            user.profile_url = '/static/img/default-photo.jpg'
+    db_session.commit()
+    print "complete"
+
 if arg == 're-create_db':
     os.remove('app.db')
     init_db()

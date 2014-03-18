@@ -100,7 +100,7 @@ class User(Base):
     time_created = Column(DateTime)
     email_notification = Column(Boolean, default = True)
     text_notification = Column(Boolean, default = True)
-    profile_url = Column(String)
+    profile_url = Column(String, default='/static/img/default-photo.jpg')
     tutor_introduction = Column(String(1000))
     advertised_rate = Column(Float, default = 10.0)
     max_price = Column(Float, default = 15.0)

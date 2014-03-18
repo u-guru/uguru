@@ -151,7 +151,8 @@ $(document).ready(function(){
           data: JSON.stringify(data),
           dataType: "json", 
           success: function() {
-            window.location.replace('/activity/');
+            // window.location.replace('/activity/');
+            $('#its-too-early').show();
           }
         });
       }

@@ -26,7 +26,7 @@ def getting_started_tutor(user):
     welcome_uguru_tutor(user)
     return notification
 
-def getting_started_tutor(user):
+def getting_started_tutor_2(user):
     getting_started_msg = "<b>You </b> completed your profile!" + \
         "We'll notify you when students need help."
     notification = Notification(other='getting_start_tutor')

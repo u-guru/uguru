@@ -273,7 +273,9 @@ def submit_payment():
             conversation_id = ajax_json.get('submit-payment')
             hourly_rate = ajax_json.get('hourly-rate')
             total_time = ajax_json.get('total-time')
-            amount = float(hourly_rate * total_time)
+            total_amount = float(hourly_rate * total_time)
+            stripe_amount_cents = int(total_amount * 100.0)
+
 
             conversation = Conversation.query.get(conversation_id)
 
@@ -286,11 +288,23 @@ def submit_payment():
                         return_json['student-profile-url'] = student.profile_url
                     else: 
                         return_json['student-profile-url'] = '/static/img/default-photo.jpg'
-            
-            tutor = user
+
             payment = Payment(r)
             payment.tutor_rate = float(hourly_rate)
             payment.time_amount = float(total_time)
+
+            tutor = user
+            student_id = payment.student_id
+            student = User.query.get(student_id)
+
+            charge = stripe.Charge.create(
+                amount = stripe_amount_cents,
+                currency="usd",
+                customer=student.customer_id,
+                description="charge for receiving tutoring"
+            )
+            
+
             db_session.add(payment)
 
             tutor.payments.append(payment)
@@ -308,11 +322,18 @@ def submit_payment():
             db_session.add(rating)
             db_session.commit()
 
-            return_json['student-name'] = user.name.split(" ")[0]
+            return_json['student-name'] = student.name.split(" ")[0]
 
-            from notifications import tutor_payment_request_receipt, student_payment_proposal
-            tutor_notification = tutor_payment_request_receipt(student, tutor, payment)
-            student_notification = student_payment_proposal(student, tutor, payment)
+            tutor.balance = tutor.balance + float(float(stripe_amount_cents) / 100.0)
+
+            #Add pending rating to student 
+            for rating in tutor.pending_ratings:
+                if rating.student_id == user.id:
+                    student.pending_ratings.append(rating)
+
+            from notifications import student_payment_approval, tutor_receive_payment
+            tutor_notification = tutor_receive_payment(student, tutor, payment)
+            student_notification = student_payment_approval(student, tutor, payment)
             tutor.notifications.append(tutor_notification)
             student.notifications.append(student_notification)
             db_session.add_all([tutor_notification, student_notification])
@@ -585,12 +606,15 @@ def success():
                 db_session.rollback()
                 raise 
 
-            from notifications import tutor_request_offer
-            for tutor in r.requested_tutors:
-                tutor.incoming_requests_to_tutor.append(r)
-                notification = tutor_request_offer(u, tutor, r, skill_name)
-                db_session.add(notification)
-                tutor.notifications.append(notification)
+            session.pop('user_id')
+
+            #Tutors are currently not contacted when there is a request.
+            # from notifications import tutor_request_offer
+            # for tutor in r.requested_tutors:
+            #     tutor.incoming_requests_to_tutor.append(r)
+            #     notification = tutor_request_offer(u, tutor, r, skill_name)
+            #     db_session.add(notification)
+            #     tutor.notifications.append(notification)
             try:
                 db_session.commit()
             except:
@@ -606,9 +630,9 @@ def success():
                 user.verified_tutor = True
 
                 if len(user.notifications) < 2: 
-                    from notifications import getting_started, getting_started_tutor
-                    notification1 = getting_started(user)
-                    notification2 = getting_started_tutor(user)
+                    from notifications import getting_started_tutor, getting_started_tutor_2
+                    notification1 = getting_started_tutor(user)
+                    notification2 = getting_started_tutor_2(user)
                     db_session.add(notification1)
                     db_session.add(notification2)
                     user.notifications.append(notification1)

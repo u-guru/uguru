@@ -282,6 +282,8 @@
 
 
 {% if address_book.keys() %}
+{% set keys = address_book.keys() %}
+{% set first_contact = keys[0] %}
 <div id="request-payments" style="display:none">
 		<div class="page-title">
 		  <div class="row" style="width:100%;text-align:center">
@@ -296,11 +298,16 @@
 		  </div>
 		</div>
 		<div class="offer" align="center" style="margin-left:20px;margin-right:20px">
-			<img id="payment-student-img" src="/static/img/guru.jpg" class="user-photo">
+			<br>
+			<div id="address-urls">
+				<img style="display:show" id="payment-student-img" src="{{address_book[first_contact]['profile_url']}}" class="user-photo">
+				{% for key in keys[1:] %}
+					<img style="display:none" id="payment-student-img" src="{{address_book[key]['profile_url']}}" class="user-photo">
+				{% endfor %}
+			</div>
 			<h4 style="text-align:center">Request payment from <b>
 				<div id="select-person-to-pay" class="btn-group">
 		            <button type="button" class="btn-default">
-		           	{% set first_contact = address_book.keys()[0] %}
 		              <span id="selected-person-to-pay" class="dropdown-elem-{{address_book[first_contact]['conversation_id']}}" style="color:black">{{first_contact}}</span>
 		            </button>
 		            <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown">
@@ -308,22 +315,19 @@
 		              <span class="sr-only">Toggle Dropdown</span>
 		            </button>
 		            <ul class="dropdown-menu" role="menu">
-		              {% for name in address_book.keys() %}
+		              {% for name in keys %}
 		              <li><a id="dropdown-elem-{{address_book[name]['conversation_id']}}" href="javascript:void(0);">{{name}}</a></li>
 		              {% endfor %}
 		            </ul>
 		         </div>
 			</b></h4>
 			<br>
-			<div class="bio" style="padding-bottom:20px">
-				<div style="float:left;text-align:right;width:50%;padding-right:20px">
-				  	<div class="h4"><b>Rate</b></div>
-				  	<div class="h4"><b>Time</b></div>
-				  	<div class="h4"><b>Total</b></div>
+			<div class="row">
+				<div class="col-xs-offset-2 col-xs-4 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2">
+					<div style="text-align:right" class="h4"><b>Rate per hour</b></div>
 				</div>
-				<div style="float:right;text-align:left;width:50%;">
-					<div class="h4" style="color:#69bf69;">
-						<div id="payment-price-dropdown"class="price-dropdown btn-group">
+				<div class="col-xs-4 col-sm-3 col-md-2">
+					<div style="float:left" id="payment-price-dropdown"class="price-dropdown btn-group">
 				            <button type="button" class="btn-default">
 				              <span id="selected-price" style="color:black">${{user.advertised_rate|int}}</span>
 				            </button>
@@ -338,11 +342,17 @@
 				              <li class="divider"></li>
 				              <li><a href="javascript:void(0);">Free</a></li>
 				            </ul>
-				          </div>
-						<span class="h5">/hour</span>
+				    
 					</div>
-					<div id="payment-hours-dropdown" class="btn-group">
-			            <button type="button" class="btn-default">
+				</div>
+			</div>
+			<div style="margin-top:20px"class="row">
+				<div class="col-xs-offset-2 col-xs-4 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2">
+					<div style="text-align:right" class="h4"><b>Time (in hours)</b></div>
+				</div>
+				<div class="col-xs-4 col-sm-3 col-md-2">
+					<div style="float:left"id="payment-hours-dropdown" class="btn-group">
+			            <button style="width:50px"type="button" class="btn-default">
 			              <span id="selected-payment-num-hour" style="color:black">2</span>
 			            </button>
 			            <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown">
@@ -354,18 +364,23 @@
 			              <li><a href="javascript:void(0);">{{n}}</a></li>
 			              {% endfor %}
 			            </ul>
-          			</div> hours
-					<br>
-					<div style="color:#69bf69;font-size:36px">$60
+          			</div>
+				</div>
+			</div>
+			<div style="margin-top:20px"class="row">
+				<div style="margin-top:10px"class="col-xs-offset-2 col-xs-4 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2">
+					<div style="text-align:right;" class="h4"><b>Total</b></div>
+				</div>
+				<div class="col-xs-4 col-sm-3 col-md-2">
+					<div id="total-amount-request" style="float:left;color:#69bf69;font-size:36px">$60
 					</div>
-					<h6>(3 x $20/hr)</h6>
 				</div>
 			</div>
 		</div>
-	<a href="javascript:void(0)" id="submit-payment">
-		<div class="btn-request">REQUEST
-		</div>
-	</a>
+		<a href="javascript:void(0)" id="submit-payment">
+			<div style="margin-top:30px!important;" class="btn-request">REQUEST
+			</div>
+		</a>
 </div>
 <div id="rating-form-tutor" style="display:none">
 	<div class="page-title">
@@ -406,6 +421,7 @@
 		<div class="btn-request">SUBMIT
 		</div>
 	</a>
+</div>
 </div>
 {% endif %}
 
@@ -587,7 +603,7 @@
 								</div>
 						  	</div>
 						 </div>
-					  	<img src="/static/img/samir.png" style="align:center" class="user-photo">
+					  	<img src="/static/img/jenny.jpg" style="align:center" class="user-photo">
 					  <h5 style="text-align:center"><b>A Student</b> needs help in <b>CS10</b></h5>
 					  <div class="row">
 						  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
