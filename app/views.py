@@ -405,7 +405,7 @@ def update_requests():
             conversation = Conversation(skill, tutor, student)
             conversation.requests.append(r)
             db_session.add(conversation)
-            
+            print tutor
             from notifications import student_match, tutor_match
             tutor_notification = tutor_match(student, tutor, r, skill_name, hourly_amount)
             student_notification = student_match(student, tutor, r, skill_name, hourly_amount)
