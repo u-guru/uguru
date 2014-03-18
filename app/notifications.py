@@ -4,18 +4,26 @@ from emails import welcome_uguru_student, welcome_uguru_tutor, student_needs_hel
     tutor_is_matched, student_payment_request, tutor_payment_received
 from datetime import datetime
 
-def getting_started(user):
+def getting_started_student(user):
+    getting_started_msg = "<b>You </b> signed up" + \
+        " for uGuru.me." 
+    notification = Notification(other='getting_started')
+    notification.feed_message = getting_started_msg
+    notification.a_id_name = 'getting-started'
+    notification.image_url = user.profile_url
+    notification.time_read = datetime.now()
+    welcome_uguru_student(user)
+    return notification
+
+def getting_started_tutor(user):
     getting_started_msg = "<b>You </b> signed up" + \
         " as a uGuru.me <b>premium tutor</b>" 
     notification = Notification(other='getting_started')
     notification.feed_message = getting_started_msg
     notification.a_id_name = 'getting-started'
     notification.image_url = user.profile_url
-    notification.time_read = datetime.now()
-    if user.skills: 
-        welcome_uguru_tutor(user)
-    else: 
-        welcome_uguru_student(user)
+    notification.time_read = datetime.now()    
+    welcome_uguru_tutor(user)
     return notification
 
 def getting_started_tutor(user):

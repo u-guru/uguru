@@ -542,8 +542,8 @@ def success():
             user_id = u.id
             authenticate(user_id)
             try:
-                from notifications import getting_started
-                notification = getting_started(u)
+                from notifications import getting_started_student
+                notification = getting_started_student(u)
                 u.notifications.append(notification)
                 db_session.add_all([u, notification])
                 db_session.commit()
