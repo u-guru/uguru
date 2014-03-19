@@ -95,7 +95,7 @@
 			{% endif %}
 				<a id="tutor-request-link" href="javascript:void(0)">
 					<span style="color:#00a0cf;" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:60px"></span>
-					<span class="h4" style="color:#00a0cf;"><b>GET A GURU</b></span>
+					<span class="h4" style="color:#00a0cf;"><b>REQUEST A GURU</b></span>
 				</a>
 			</div>
 			{% if address_book.keys() %}
@@ -122,19 +122,34 @@
 			</div>
 		</div>
 
+		{% if user.notifications|length <= 3 %}
+		<div style="display:block" class="row-fluid">
+			<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-offset-8 col-md-offset-3 col-md-6">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				{% if user.notifications|length == 3 %}
+				<div style="margin-bottom:0"class="alert alert-success">You're all set! Check your email frequently.<br> We'll let you via email <i>immediately </i> know if a tutor has agreed to help! </div>
+				{% else %}
+				<div style="margin-bottom:0"class="alert alert-info">Request immediate help by clicking 'Request a Guru' above. </div>
+				{% endif %}
+			</div>
+		 </div>
+		 {% endif %}
+
 		{% for n in user.notifications|reverse %}
 		<div class="row container-fluid">
-			<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-offset-2 col-md-8">
+			<div class="col-xs-12 col-sm-offset-2 col-sm-offset-8 col-md-offset-3 col-md-6">
 				{% if n.custom_tag == 'student-match' or n.custom_tag == 'tutor-match' %}
 				<a id="{{n.a_id_name}}" href="/messages/">
 				{% elif n.a_id_name == 'getting-started' and user.skills %}
 				<a target="_blank" id="getting-started-tutors" href="https://docs.google.com/a/uguru.me/document/d/17JKfvTw_wLGRsPQqPI_foBku1UjPXLtPW-bJIiMxS1M/">
 				{% elif n.a_id_name == 'getting-started' %}
-				<a target="_blank" id="getting-started-student" href="https://docs.google.com/document/d/1cw7kNolkCRYiFm4ewRRBJG0qa9YjsVVkZM7NRWnLCqk/edit?usp=sharing">
+				<a style="cursor:default!important;" href="javascript:void(0)">
+				{% elif n.a_id_name == 'tip-photo' %}
+				<a class='main-feed-messages' href="/settings/">					
 				{% else %}
 				<a class='main-feed-messages'id="{{n.a_id_name}}" href="javascript:void(0)">
 				{% endif %}
-					<div class="notification {% if not n.time_read %} grey-background {% endif %}" align:"center">
+					<div {% if n.a_id_name == 'getting-started' %} style="cursor:default;" {%endif%}class="notification {% if not n.time_read %} grey-background {% endif %}" align:"center">
 						<img src="{{n.image_url}}" class="user-photo" style="float:left; margin-top:-10px">
 							<h5 style="margin-bottom:0px; margin-top:0px">{{n.feed_message|safe}}</h4>
 							{% if n.feed_message_subtitle %}
@@ -142,7 +157,7 @@
 							{% endif %}
 							
 						<div style="float:right">
-							<h6 style="margin-top:20px"class="time-indicator">{{pretty_dates[n.id]}}</h6>
+							<h6 style="margin-top:0px"class="time-indicator">{{pretty_dates[n.id]}}</h6>
 						</div>
 					</div>
 				</a>
@@ -461,17 +476,6 @@
 	                </div>
 	            </div>
 	        </div>
-	        <div id="frequency-request" class="row">
-	            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-	                <div class="form-group">
-	                    <label for="exampleInputEmail1"><strong>FREQUENCY</strong></label>
-	                </div>
-	                <div style="margin-top:-10px; margin-left:0px"class="row">
-	                  <span id="frequency-1" class="frequency active btn-options-request btn-xs"><a href="javascript:void(0);">ONE TIME</a></span>
-	                  <span id="frequency-2" class="frequency btn-options-request btn-xs"><a href="javascript:void(0);">WEEKLY</a></span>
-	                </div>
-	            </div>
-	        </div>
 	        <div class="row">
 	            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 	                <span id='alert-fields-student-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
@@ -599,7 +603,8 @@
 					  	<div style="margin-top:15px" class="row">
 						  	<div class="col-xs-12">
 						  		<div style="margin-bottom:10px"class="alert alert-info">
-								  <strong>NOTE:</strong> This is a fake notification 
+								  <strong>NOTE:</strong> This is a fake notification, go ahead and click
+								  <strong> ACCEPT </strong> 
 								</div>
 						  	</div>
 						 </div>
@@ -617,13 +622,14 @@
 								  <div style="float:right;text-align:left;width:50%;">
 								  	<div class="h4">ASAP</div>
 								  	<div class="h4">2 hours</div>
-								  	<div class="h4">Help me finish HW3 - the evil hangman project.</div>
+								  	<div class="h4">Need help underestanding the concept of recursion.</div>
 								  </div>
 								 </div>
 								</div>
 								<div style="text-align:center; margin-top:10px; color:grey">
 									You will be making: <br>
-									<span style="color:#69bf69; font-size:30px"><strong> $12/hr </strong></span>
+									<span style="color:#69bf69; font-size:30px"><strong> $30 </strong></span>
+									<span style="color:grey; font-size:18px">($15/hr)</span>
 								</div>
 						  </div>
 					 	</div>
@@ -752,20 +758,24 @@
 			</div>
 			{% elif n.custom_tag == 'student-request-help' %}
 				<div id="{{n.a_id_name}}-detailed" style="display:none;">
-					<div class="page-title">
+	  				<div style="display:block;"class="page-title">
 	   					<div class="row" style="width:100%;text-align:center">
-		   					<div class="col-xs-1 col-xs-offset-1">
+		   					<div class="col-xs-1 col-sm-offset-1 col-sm-1 col-md-offset-1 col-md-1">
 			   					<a href="javascript:void(0)" class= "feed-message-link" style="text-decoration:none"> 
-			   						<h4 id="back-button">< </h4>
+			   						<h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
 			   					</a>
 		   					</div>
-		   					<div class="col-xs-8" style="text-align:center">
-	   							<h4 style="color:white;width:100%">Your {{n.custom|upper}} Request</h4>
+		   					<div class="col-xs-11 col-sm-8 col-md-8" style="text-align:center">
+	   							<h4 style="color:white;width:100%">YOUR {{n.custom|upper}} REQUEST</h4>
 	   						</div>
 	   					</div>
 	  				</div>
-					<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px">
-					  	<br>
+	  				<div style="display:block" class="row-fluid">
+		  				<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-offset-8 col-md-offset-3 col-md-6">
+		  					<div style="margin-bottom:0"class="alert alert-info"><strong>Your next steps:</strong> Check your email frequently.<br> We'll let you <i>immediately </i> know if a tutor has agreed to help! </div>
+		  				</div>
+		  			</div>
+					<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px; display:block">
 					  	{% if user.profile_url %}
 					  	<img src="{{user.profile_url}}" style="align:center" class="user-photo">
 					  	{% endif %}
@@ -779,7 +789,7 @@
 								  	<div class="h4"><b>Description</b></div>
 								  </div>
 								  <div style="float:right;text-align:left;width:50%;">
-								  	<div class="h4">{{request_dict[n.request_id]['request'].urgency}}</div>
+								  	<div class="h4">{{urgency_dict[request_dict[n.request_id]['request'].urgency]}}</div>
 								  	<div class="h4">{{request_dict[n.request_id]['request'].time_estimate}} hours</div>
 								  	<div class="h4">{{request_dict[n.request_id]['request'].description}}</div>
 								  </div>
@@ -787,6 +797,17 @@
 								</div>
 						  </div>
 					 	</div>
+					 	{% if request_dict[n.request_id]['request'].requested_tutors|length > 0 %}
+					 	<div style="text-align:center; float:center; margin-top:10px" class="row">
+					 		<h4>Tutors that have been contacted</h4>
+					 		<div id="contacted-tutors">
+					 		{% for tutor in request_dict[n.request_id]['request'].requested_tutors %}
+					 		<span>
+					 			<img src="{{tutor.profile_url}}" style="align:center" class="tutor-photo"> 
+					 		</span>
+					 		{% endfor %}
+					 	</div>
+					 	{% endif %}
 					 </div>
 					</div>
 			{% elif n.custom_tag  == 'student-incoming-offer' %}

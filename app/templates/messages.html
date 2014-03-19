@@ -18,11 +18,13 @@
 	</div>
 	{% if not user.mailbox.conversations %}
 		<div style="text-align:center" class="row-fluid">
-			  	<div class="col-xs-12">
-			  		<div style="margin-bottom:10px"class="alert alert-info">
-					  <strong>You're all done now!</strong><br>You will get a notification email as soon as you receive a request.
-					</div>
-			  	</div>	
+			  	<div style="margin-top:10px"class="row">
+				  	<div class="col-xs-12 col-sm-offset-2 col-sm-offset-8 col-md-offset-3 col-md-6">
+				  		<div style="margin-bottom:10px"class="alert alert-success">
+						  <strong>You're all done now!</strong><br>You will get a notification email as soon as you receive a request.
+						</div>
+				  	</div>	
+				</div>
 				<h5>
 					{% if user.skills %}
 					This is where you will be able to start a conversation once you've been matched with a student.
@@ -33,12 +35,13 @@
 					<br>
 				</h5>
 				<div class="row-fluid">
-					<div class="notification" style="margin-top:0;width:auto"align:"center">
+					<div class="notification" style="margin-top:0;width:auto; cursor:auto"align:"center">
 						<img src="/static/img/jenny.jpg" class="user-photo" style="float:left">
 						<div style="float:left">
-							<h4 style="margin-bottom:0px"><b> Samir </b></h4>
-							<h5 style="margin-top:0px;margin-bottom:0px"> Admin </h5>
-							<h6 style="margin-top:5px"><i>This is your inbox. Start conversations here.</i></h6>
+							<h4 style="margin-bottom:0px"><b> Jenny </b></h4>
+							<h5 style="margin-top:0px;margin-bottom:0px"> Example Student </h5>
+							<h6 style="margin-top:5px"><i>You will be able to coordinate with your students here
+								at the inbox once you are connected. This just an example. </i></h6>
 						</div>
 						<div style="float:right;margin-top:23px">
 							<span class="glyphicon glyphicon-chevron-right" style="color:#40bfec;float:right"></span>

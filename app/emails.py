@@ -60,8 +60,8 @@ def welcome_uguru_student(user):
     msg['Subject'] = email_subject
     msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
     msg['From'] = email_from
-    text = welcome_uguru_text(user_first_name)
-    html = welcome_uguru_html(user_first_name)
+    text = welcome_uguru_student_text(user_first_name)
+    html = welcome_uguru_student_html(user_first_name)
     
     part1 = MIMEText(text, 'plain', 'utf-8')
     part2 = MIMEText(html, 'html', 'utf-8')
@@ -308,7 +308,15 @@ def welcome_uguru_text(user_name):
 def welcome_uguru_tutor_text(user_name):
     return """Hi """ + user_name.split(' ')[0] + \
     """, \n\n""" + \
-    """Welcome onboard as an exclusive beta guru at uGuru.me! Very shortly, we will start connecting you with students who need your help and expertise, and notify you when we such an opportunity presents itself.  \n\nOur site is currently at a beta stage, so if anything is janky at""" +\
+    """Welcome onboard as an exclusive beta guru at uGuru.me! Very shortly, we will start connecting you with students who need your help and expertise, and notify you when we such an opportunity presents itself.  \n\n""" +\
+    """Our site is currently in beta, so our sincerely apologies for any unexpected hiccups. \n\n""" + \
+    """If you have any questions, concerns, or suggestions please do not hesitate to reach out to us directly by replying to this email. Your feedback is critical in making this product a meaningful service that can benefit the UC Berkeley as a whole. \n\n""" + \
+    """Sincerely, \nThe uGuru.me Team"""
+
+def welcome_uguru_student_text(user_name):
+    return """Hi """ + user_name.split(' ')[0] + \
+    """, \n\n""" + \
+    """Welcome onboard as an exclusive beta user at uGuru.me! Very shortly, we will start connecting you with experienced Berkeley tutors, and notify you when we such an opportunity presents itself. \n\n""" +\
     """Our site is currently in beta, so our sincerely apologies for any unexpected hiccups. \n\n""" + \
     """If you have any questions, concerns, or suggestions please do not hesitate to reach out to us directly by replying to this email. Your feedback is critical in making this product a meaningful service that can benefit the UC Berkeley as a whole. \n\n""" + \
     """Sincerely, \nThe uGuru.me Team"""
@@ -438,6 +446,27 @@ def welcome_uguru_tutor_html(user_name):
     <br>
     Welcome onboard as an exclusive beta guru at uGuru.me! Very shortly, we will start connecting you 
     with students who need your help and expertise, and notify you when we such an opportunity presents itself. 
+    <br>
+    <br>
+    Our site is currently in beta, so our sincerely apologies for any unexpected hiccups. 
+    <br>
+    <br>
+    If you have any questions, concerns, or suggestions <i>please</i> do not hesitate to reach out to us directly by 
+    replying to this email. Your feedback is critical in making this product a meaningful service that can 
+    benefit the UC Berkeley as a whole.
+    <br>
+    <br>
+    Sincerely, <br>
+    The uGuru.me Team
+    """
+
+def welcome_uguru_student_html(user_name):
+    return """
+    Hi """ + user_name.split(' ')[0] + """,
+    <br>
+    <br>
+    Welcome onboard as an exclusive beta user at uGuru.me! Very shortly, we will start connecting you 
+    with Cal tutors that can immediately help, and notify you when we such an opportunity presents itself. 
     <br>
     <br>
     Our site is currently in beta, so our sincerely apologies for any unexpected hiccups. 

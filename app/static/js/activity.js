@@ -14,7 +14,6 @@ $(document).ready(function() {
         'student-request': true,
         'description': $('textarea[name="description"]').val(),
         'urgency': $('#urgency-request .urgency.active').index(),
-        'frequency': $('#frequency-request .frequency.active').index(),
         'skill': $('input[name="skill"]').val(),
         'estimate': $('span[name="estimate"]').text()
         }
@@ -60,6 +59,7 @@ $(document).ready(function() {
         if ($(this).children('div:first').hasClass('grey-background')) {
           var notif_total = $(this).parent().parent().parent().children().length - 1;
           var notif_number = notif_total - $(this).parent().parent().index();
+
           var data = {'update-feed-count': true, 'notif_num': notif_number}
           feed_count = parseInt($('#feed-notif').text()) - 1;
           if (feed_count == 0) {
@@ -304,6 +304,7 @@ $(document).ready(function() {
       current_active.removeClass('active')
       $(this).addClass('active')
     })
+
 
     $('#frequency-request').on('click', '.frequency', function(){
       var current_active = $('#frequency-request .frequency.active');

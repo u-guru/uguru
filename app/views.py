@@ -74,6 +74,9 @@ def update_profile():
             amazon_url = "https://s3.amazonaws.com/uguruprof/"+destination_filename
             user.profile_url = amazon_url
 
+            if not user.skills:
+                user.settings_notif = 0
+
             try:
                 db_session.commit()
             except:
@@ -563,10 +566,12 @@ def success():
             user_id = u.id
             authenticate(user_id)
             try:
-                from notifications import getting_started_student
+                from notifications import getting_started_student, getting_started_student_tip
                 notification = getting_started_student(u)
+                notification2 = getting_started_student_tip(u)
                 u.notifications.append(notification)
-                db_session.add_all([u, notification])
+                u.notifications.append(notification2)
+                db_session.add_all([u, notification, notification2])
                 db_session.commit()
             except:
                 db_session.rollback()
@@ -585,7 +590,7 @@ def success():
                 skill_id = skill_id,
                 description = ajax_json['description'],
                 urgency = ajax_json['urgency'],
-                frequency = ajax_json['frequency'],
+                frequency = None, 
                 time_estimate = float(ajax_json['estimate'])
             )
             u.outgoing_requests.append(r)
@@ -608,7 +613,7 @@ def success():
 
             session.pop('user_id')
 
-            #Tutors are currently not contacted when there is a request.
+            # Tutors are currently not contacted when there is a request.
             # from notifications import tutor_request_offer
             # for tutor in r.requested_tutors:
             #     tutor.incoming_requests_to_tutor.append(r)
@@ -770,7 +775,7 @@ def activity():
             tutor_dict[notification] = User.query.get(notification.request_tutor_id)
         pretty_dates[notification.id] = pretty_date(notification.time_created)
     for request in (user.outgoing_requests + user.incoming_requests_to_tutor + user.incoming_requests_from_tutors):
-        request_dict[request.id] = {'request':request, 'student':User.query.get(request.student_id)}
+        request_dict[request.id] = {'request':request,'student':User.query.get(request.student_id)}
     for conversation in user.mailbox.conversations:
         if conversation.student_id != user.id:
             student = User.query.get(conversation.student_id)

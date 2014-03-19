@@ -58,6 +58,60 @@ $(document).ready(function(){
       $(this).addClass('active')
     })
 
+    $('#num-students-request').on('click', '.num-students', function() {
+      var current_active = $('#num-students-request .num-students.active');
+      current_active.removeClass('active')
+      $(this).addClass('active')
+
+      var index = $(this).index();
+
+      if (index == 0 ) {
+        $('#ideal-price-slider').val('13', {'animate':true });
+      }
+      else if (index == 1) {
+        $('#ideal-price-slider').val('8', {'animate':true });
+      } else if (index == 2) {
+        $('#ideal-price-slider').val('7' , {'animate':true });
+      } else if (index == 3) {
+        $('#ideal-price-slider').val('6', {'animate':true });
+      } else if (index == 4) {
+        $('#ideal-price-slider').val('5', {'animate':true });
+      }
+
+      if (index >= 1) {
+        $('#total-request-price').text('$' + $('#ideal-price-slider').val() + ' (per person)');
+        $('#total-price-header').text('Hourly price:');
+        $('#complete-price-hourly').text('$' + $('#time-estimate-slider').val() * $('#ideal-price-slider').val());
+        $('#complete-price-hourly').show();
+        $('#complete-price').text('Total Price: ' +'$' + ($('#ideal-price-slider').val() * (index + 1) * $('#time-estimate-slider').val()));
+      } else {
+        $('#complete-price-hourly').hide();
+        $('#total-price-header').text('Hourly Price:')
+        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()) + ' (per person)')
+        $('#complete-price').text('Total Price: ' +'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
+      }
+
+    });
+
+    $('#ideal-price-slider').change(function() {
+      var index = $('#num-students-request .num-students.active').index() + 1;
+            
+      if (index > 1) {
+        $('#complete-price-hourly').text('$' + $('#time-estimate-slider').val() * index * $('#ideal-price-slider').val() + ' (per person)')
+      }
+      $('#complete-price').text('Total Price: ' +'$' + ($('#ideal-price-slider').val() * index * $('#time-estimate-slider').val()));
+
+    })
+
+    $('#time-estimate-slider').change(function() {
+      var index = $('#num-students-request .num-students.active').index() + 1;
+            
+      if (index > 1) {
+        $('#complete-price-hourly').text('$' + $('#time-estimate-slider').val() * index * $('#ideal-price-slider').val() + ' (per person)')
+      }
+      $('#complete-price').text('Total Price: ' + '$' + ($('#ideal-price-slider').val() * index * $('#time-estimate-slider').val()));      
+    })
+
     $('#frequency-request').on('click', '.frequency', function(){
       var current_active = $('#frequency-request .frequency.active');
       current_active.removeClass('active')
@@ -102,6 +156,8 @@ $(document).ready(function(){
                 'phone': $('input[name="student-phone"]').val(),
                 'password': $('input[name="student-password"]').val(),
             }
+            $('#student-signup').hide();
+            $('#student-request').show('slide', {direction: 'right'}, 200);
             $.ajax({
               type: "POST",
               contentType: 'application/json;charset=UTF-8',
@@ -140,7 +196,6 @@ $(document).ready(function(){
         'student-request': true,
         'description': $('textarea[name="description"]').val(),
         'urgency': $('#urgency-request .urgency.active').index(),
-        'frequency': $('#frequency-request .frequency.active').index(),
         'skill': $('input[name="skill"]').val(),
         'estimate': $('span[name="estimate"]').text()
         }

@@ -438,15 +438,20 @@ class Request(Base):
     skill_id = Column(Integer)
     connected_tutor_id = Column(Integer) #Request is active if null
     connected_tutor_hourly = Column(Float)
+    
+    student_estimated_hour = Column(Integer)
+    num_students = Column(Integer, default = 0)
+    tutor_offer_hour = Column(Integer)
+
     description = Column(String)
     urgency = Column(SmallInteger)
-    frequency = Column(SmallInteger) # 0 is once, 1 is regular
+    frequency = Column(SmallInteger) # 0 is once, 1 is regular TO DROP
     time_estimate = Column(Float)
     time_created = Column(DateTime)
     time_connected = Column(DateTime)
     payment_id = Column(Integer)
-    estimated_hourly = Column(Float)
-    actual_hourly = Column(Float)
+    estimated_hourly = Column(Float) #TO DROP
+    actual_hourly = Column(Float) 
     actual_time = Column(Float)
 
     requested_tutors = relationship('User', 

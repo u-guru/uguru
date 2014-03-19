@@ -550,7 +550,16 @@
                             </div>
                         </div>
                     </div>
-                    <div id="urgency-request" class="row">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                            <span id='alert-fields-student-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"><strong>PLEASE SPECIFY TOPICS OR ASSIGNMENTS</strong></label> <br>
+                                <textarea name="description" placeholder="I need help in ____ and don't understand these particular concepts: ______"id="student-signup-description" class="form-control" rows="1"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:10px"id="urgency-request" class="row">
                         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><strong>URGENCY</strong></label>
@@ -562,37 +571,48 @@
                             </div>
                         </div>
                     </div>
-                    <div id="frequency-request" class="row">
-                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1"><strong>FREQUENCY</strong></label>
-                            </div>
-                            <div style="margin-top:-10px; margin-left:0px"class="row">
-                              <span id="frequency-1" class="frequency active btn-options btn-xs"><a href="javascript:void(0);">ONE TIME</a></span>
-                              <span id="frequency-2" class="frequency btn-options btn-xs"><a href="javascript:void(0);">WEEKLY</a></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
+                    <div style="margin-top:10px" class="row">
                         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                             <div style="text-align:center">
                               <span id='alert-fields-student-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><strong>TIME ESTIMATE</strong></label> <br>
-                                <div style="margin-top:10px" class="noUiSlider"></div>
-                                <p style="margin-left:5px; font-size:12px; font-weight:700"class="text-left"><span style="font-size:12px;color:rgb(0, 159, 225)" name="estimate" id="low"></span> hours (This is only an estimate)</p>
+                                <div id="time-estimate-slider" style="margin-top:10px"></div>
+                                <p style="margin-left:5px; font-size:14px; margin-top:3px; font-weight:700"class="text-left"><span style="font-size:14px;color:rgb(0, 159, 225)" name="estimate" id="low"></span> hours (This is only an estimate)</p>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div style="margin-top:10px" id="num-students-request" class="row">
                         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-                            <span id='alert-fields-student-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
                             <div class="form-group">
-                                <label for="exampleInputEmail1"><strong>PLEASE TELL US MORE</strong></label> <br>
-                                <textarea name="description" placeholder="I need help in ____ and don't understand these particular concepts: ______"id="student-signup-description" class="form-control" rows="3"></textarea>
+                                <label for="exampleInputEmail1"><strong># OF STUDENTS THAT NEED HELP</strong></label>
+                            </div>
+                            <div style="margin-top:-10px; margin-left:0px"class="row">
+                              <span style="width:60px"id="num-students-1" class="num-students active btn-options btn-xs"><a href="javascript:void(0);">1</a></span>
+                              <span style="width:60px" id="num-students-2" class="num-students btn-options btn-xs"><a href="javascript:void(0);">2</a></span>
+                              <span style="width:60px" id="num-students-3" class="num-students btn-options btn-xs"><a href="javascript:void(0);">3</a></span>
+                              <span style="width:60px" id="num-students-4" class="num-students btn-options btn-xs"><a href="javascript:void(0);">4</a></span>
+                              <span style="width:90px" id="num-students-4" class="num-students btn-options btn-xs"><a href="javascript:void(0);">5 or more</a></span>
                             </div>
                         </div>
+                    </div>
+                    <div style="margin-top:10px" class="row">
+                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"><strong>IDEAL PRICE YOU'RE WILLING TO PAY</strong></label> <br>
+                                <div style="margin-top:10px" id="ideal-price-slider"></div>
+                                <p id="hourly-price"style="margin-left:5px;margin-top:3px;font-size:14px; font-weight:700"class="text-left">$<span style="font-size:14px;color:rgb(0, 159, 225)" name="estimate" id="high"></span> /hr</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align:center" class="row">
+                        <h2 id="total-price-header" style="color:grey; display:inline"> Hourly Price: </h2>
+                        <h2 style="display:inline">
+                          <span id="total-request-price"style="color:#69bf69"> $15 </span>
+                        </h2>
+                        <h4 id="complete-price-hourly "style="display:none; margin-top:5px; margin-bottom:10px"> </h4>
+                        <h4 id="complete-price"style="display:show; margin-top:5px; margin-bottom:10px">Total Price: $15</h4>
                     </div>
                 </div>
                 <div style="text-align:center; margin-right:-15px; margin-left:-15px; padding-left:0px; padding-right:0px;" class="row">
@@ -663,7 +683,7 @@
         <script src="/static/js/jquery.nouislider.min.js"></script>
         <script src="/static/js/app.js"></script>
         <script>
-        $(".noUiSlider").noUiSlider({
+        $("#time-estimate-slider").noUiSlider({
               range: [0, 4]
               ,start: 1
               ,step: 0.5
@@ -672,7 +692,17 @@
                 to: [ $("#low"), 'html' ],
                 resolution: 0.1
               }
-        });     
+        });
+        $("#ideal-price-slider").noUiSlider({
+              range: [5, 25]
+              ,start: 15
+              ,step: 1
+              ,handles: 1
+              ,serialization: {
+                to: [ $("#high"), 'html' ],
+                resolution: 0.1
+              }
+        });
         </script>
     </footer>
 </html>

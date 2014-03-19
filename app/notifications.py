@@ -6,13 +6,26 @@ from datetime import datetime
 
 def getting_started_student(user):
     getting_started_msg = "<b>You </b> signed up" + \
-        " for uGuru.me." 
+        " for uGuru.me!" 
     notification = Notification(other='getting_started')
     notification.feed_message = getting_started_msg
     notification.a_id_name = 'getting-started'
     notification.image_url = user.profile_url
     notification.time_read = datetime.now()
     welcome_uguru_student(user)
+    return notification
+
+def getting_started_student_tip(user):
+    getting_started_msg = "<b>TIP:</b>  Adding a headshot profile picture " + \
+        " allows tutors to feel more comfortable connecting with you."  
+    notification = Notification(other='getting_started')
+    notification.feed_message = getting_started_msg
+    notification.a_id_name = 'tip-photo'
+    notification.feed_message_subtitle = "Click here to " +\
+        " add a photo." 
+    notification.image_url = '/static/img/jenny.jpg'
+    user.feed_notif = user.feed_notif + 1
+    user.settings_notif = user.settings_notif + 1
     return notification
 
 def getting_started_tutor(user):
@@ -27,8 +40,8 @@ def getting_started_tutor(user):
     return notification
 
 def getting_started_tutor_2(user):
-    getting_started_msg = "<b>You </b> completed your profile!" + \
-        "We'll notify you when students need help."
+    getting_started_msg = "<b>You </b> completed your profile! " + \
+        "<b>We will notify you when students need help.</b>"
     notification = Notification(other='getting_start_tutor')
     notification.feed_message = getting_started_msg
     notification.feed_message_subtitle = "Click here to see " +\
@@ -42,6 +55,8 @@ def student_request_receipt(user, request, skill_name):
     notification = Notification(request=request)
     notification.skill_name = skill_name
     notification.feed_message = "<b>You</b> requested help in " + skill_name
+    notification.feed_message_subtitle = "Click here to see " +\
+        "the status of your request!"
     request_number = user.outgoing_requests.index(request)
     notification.a_id_name = 'student-request-help' + str(request_number)
     if user.profile_url:
@@ -51,7 +66,7 @@ def student_request_receipt(user, request, skill_name):
     notification.custom_tag = 'student-request-help'
     notification.custom = skill_name
     notification.request_id = request.id
-    notification.time_read = datetime.now()
+    user.feed_notif = user.feed_notif + 1
     return notification
 
 def tutor_request_offer(user, tutor, request, skill_name):
