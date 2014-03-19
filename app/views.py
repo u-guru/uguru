@@ -593,6 +593,8 @@ def success():
                 frequency = None, 
                 time_estimate = float(ajax_json['estimate'])
             )
+            r.num_students = int(ajax_json['num-students'])
+            r.student_estimated_hour = int(float(ajax_json['idea-price']))
             u.outgoing_requests.append(r)
             db_session.add(r)            
             try:
@@ -614,7 +616,7 @@ def success():
             session.pop('user_id')
 
             # Tutors are currently not contacted when there is a request.
-            # from notifications import tutor_request_offer
+            from notifications import tutor_request_offer
             # for tutor in r.requested_tutors:
             #     tutor.incoming_requests_to_tutor.append(r)
             #     notification = tutor_request_offer(u, tutor, r, skill_name)
