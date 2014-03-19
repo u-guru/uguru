@@ -265,7 +265,7 @@
       {% else %}
       <div id="profile" style="display:none" align="center">
       {% endif %}
-        {% if user.skills and (not user.profile_url or not user.tutor_introduction) %}
+        {% if user.skills and (user.profile_url == '/static/img/default-photo.jpg' or not user.tutor_introduction) %}
           <div id="prof-not-complete" class="alert alert-danger">
             Please add a <strong>profile picture</strong>, your <strong>major</strong>, and a <strong> short introduction</strong> to complete signup!
           </div>
@@ -344,7 +344,7 @@
                 </span>
               </a>
               <a class="example-skill-link" href="javascript:void(0)">
-                <span class="example-tag {%if user._tutor%} active {%endif%}" >
+                <span class="example-tag {%if user.ta_tutor%} active {%endif%}" >
                   <span># TA or GSI </span> &nbsp;&nbsp;
                 </span>
               </a>
@@ -375,7 +375,7 @@
           </div>
         </div>
       </div>
-        {% if user.skills and (not user.profile_url or not user.tutor_introduction) %}
+        {% if user.skills and (user.profile_url == '/static/img/default-photo.jpg' or not user.tutor_introduction) %}
         <div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 col-md-6" style="padding-left:0px; padding-right:0px; display:none">
           <a id="launch-profile-link" href="javascript:void(0)">
             <div class="btn-save">

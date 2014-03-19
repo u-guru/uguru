@@ -755,7 +755,7 @@ def activity():
         return redirect(url_for('index'))
     user_id = session.get('user_id')
     user = User.query.get(user_id)
-    if (user.skills and (not user.profile_url or not user.tutor_introduction)):
+    if (user.skills and (user.profile_url == '/static/img/default-photo.jpg' or not user.tutor_introduction)):
         return redirect(url_for('settings'))
     request_dict = {}
     address_book = {}
@@ -802,7 +802,7 @@ def messages():
         return redirect(url_for('index'))
     user_id = session['user_id']
     user = User.query.get(user_id)
-    if (user.skills and (not user.profile_url or not user.tutor_introduction)):
+    if (user.skills and (user.profile_url == '/static/img/default-photo.jpg' or not user.tutor_introduction)):
         return redirect(url_for('settings'))
     pretty_dates = {}
     for conversation in user.mailbox.conversations:
