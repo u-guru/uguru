@@ -95,7 +95,7 @@
 			{% endif %}
 				<a id="tutor-request-link" href="javascript:void(0)">
 					<span style="color:#00a0cf;" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:60px"></span>
-					<span class="h4" style="color:#00a0cf;"><b>REQUEST A GURU</b></span>
+					<span class="h4" style="color:#00a0cf;"><b>GET A GURU IMMEDIATELY</b></span>
 				</a>
 			</div>
 			{% if address_book.keys() %}
@@ -150,7 +150,7 @@
 				<a class='main-feed-messages'id="{{n.a_id_name}}" href="javascript:void(0)">
 				{% endif %}
 					<div {% if n.a_id_name == 'getting-started' %} style="cursor:default;" {%endif%}class="notification {% if not n.time_read %} grey-background {% endif %}" align:"center">
-						<img src="{{n.image_url}}" class="user-photo" style="float:left; margin-top:-10px">
+						<img src="{% if user.photo_url != '/static/img/default-photo.jpg'%}{{user.profile_url}} {%else%}{{n.image_url}} {% endif %}" class="user-photo" style="float:left; margin-top:-10px">
 							<h5 style="margin-bottom:0px; margin-top:0px">{{n.feed_message|safe}}</h4>
 							{% if n.feed_message_subtitle %}
 								<h6 style="padding-top:0px;margin-top:0px; color:grey">{{n.feed_message_subtitle|safe}}</h5>
