@@ -142,8 +142,20 @@ def add_credit():
 @app.route('/admin/')
 def admin():
     if session.get('admin'):
-        users = User.query.all()
-        return render_template('admin.html', users=users)
+        from sqlalchemy import desc
+        users = User.query.order_by(desc(User.id)).all()
+        pretty_dates = {}
+        skills_dict = {}
+        for u in users:
+            pretty_dates[u.id] = pretty_date(u.time_created)
+            if u.skills:
+                result_string = ""
+                for s in u.skills:
+                    result_string = result_string + s.name + " "
+                skills_dict[u.id] = result_string
+
+        return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
+            skills_dict = skills_dict)
     return redirect(url_for('/'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
@@ -615,8 +627,7 @@ def success():
                 db_session.rollback()
                 raise 
 
-            if u.email != 'michael-test@berkeley.edu' or u.email != 'samir-test@berkeley.edu':
-                session.pop('user_id')
+            session.pop('user_id')
 
             # Tutors are currently not contacted when there is a request.
             from notifications import tutor_request_offer

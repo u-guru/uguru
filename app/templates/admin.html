@@ -6,27 +6,90 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row-fluid">
-        <table class="table table-striped">
-            <tr class="info"> 
-                <td> Id </td>
-                <td> Name </td>
-                <td> Email </td>
-            </tr>
-            {% for user in users %}
-                    <tr {% if user.skills %} class="success" {% endif %}> 
-                        <td>  {{user.id}} </td>
-                        <td> <a href="javascript:void(0)" class="login-user"> {{user.name}} </a> </td>
-                        <td> {{user.email}} </td>
-                    </tr>
-            {% endfor %}
-        </table>
+<ul style="margin:auto;float:center" class="nav nav-tabs">
+  <li class="active"><a href="#tutors" data-toggle="tab">Tutors</a></li>
+  <li><a href="#students" data-toggle="tab">Students</a></li>
+</ul>
+
+<div class="tab-content">
+
+  <div class="tab-pane active" id="tutors">
+    <div class="container">
+        <div class="row-fluid">
+            <table class="table table-striped">
+                <tr class="info"> 
+                    <td> Id </td>
+                    <td> Name </td>
+                    <td> Email </td>
+                    <td> Time </td>
+                    <td> Refer Code </td>
+                    <td> Skills </td>
+                    <td> What's missing profile </td>
+                </tr>
+                {% for user in users %}
+                        {% if user.skills %}
+                        <tr> 
+                            <td>  {{user.id}} </td>
+                            <td> <a href="javascript:void(0)" class="login-user"> {{user.name}} </a> </td>
+                            <td> {{user.email}} </td>
+                            <td> {{pretty_dates[user.id]}} </td>
+                            <td> {{user.referral_code}} </td>
+                            <td> {{skills_dict[user.id]}}</td>
+                            <td>
+                                {% if user.profile and user.introduction and user.major%}
+                                Complete
+                                {% else %}
+                                    {% if user.profile_url == '/static/img/default-photo.jpg' %}
+                                    Profile, 
+                                    {% endif %}
+                                    {% if not user.introduction %}
+                                    Introduction, 
+                                    {% endif %}
+                                    {% if not user.major %}
+                                    Major
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endif %}
+                {% endfor %}
+            </table>
+        </div>
     </div>
+  </div>
+
+  <div class="tab-pane" id="students"> 
+    <div class="tab-pane active" id="tutors">
+        <div class="container">
+            <div class="row-fluid">
+                <table class="table table-striped">
+                    <tr class="info"> 
+                        <td> Id </td>
+                        <td> Name </td>
+                        <td> Email </td>
+                        <td> Time </td>
+                    </tr>
+                    {% for user in users %}
+                            {% if not user.skills %}
+                            <tr> 
+                                <td>  {{user.id}} </td>
+                                <td> <a href="javascript:void(0)" class="login-user"> {{user.name}} </a> </td>
+                                <td> {{user.email}} </td>
+                                <td> {{pretty_dates[user.id]}} </td>
+                            </tr>
+                            {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+      </div>
+
+  </div>
 </div>
 
 {% endblock %}
 
 {% block footer_scripts %}
     <script src="/static/js/admin.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
 {% endblock %}
