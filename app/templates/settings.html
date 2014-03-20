@@ -380,8 +380,8 @@
           </div>
         </div>
       </div>
-        {% if user.skills and (user.profile_url == '/static/img/default-photo.jpg' or not user.tutor_introduction) %}
-        <div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 col-md-6" style="padding-left:0px; padding-right:0px; display:none">
+        {% if user.skills and not user.verified_tutor %}
+        <div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; display:block">
           <a id="launch-profile-link" href="javascript:void(0)">
             <div class="btn-save">
               <p>LAUNCH MY SITE

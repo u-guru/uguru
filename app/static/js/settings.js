@@ -1,4 +1,8 @@
 $(document).ready(function() {
+
+    window.onbeforeunload = function() {
+      return 'If you leave this page you will lose all form progress';
+    }
     
     $('#upload-photo-link').on('click', function(e) {
       e.preventDefault();
@@ -65,7 +69,17 @@ $(document).ready(function() {
     };
 
     $('#launch-profile-link').click(function() {
-        window.location.replace('/activity/');
+        var data = {'verify-tutor':true};
+        $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/validation/' ,
+          data: JSON.stringify(data),
+          dataType: "json",
+          success: function() {
+            window.location.replace('/activity/');
+          }
+        });
     });
 
     $('#short-description').focus(function() {

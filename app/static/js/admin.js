@@ -13,4 +13,7 @@ $(document).ready(function() {
               }
           });
     });
+    $(window).unload(function() {
+      alert('Handler for .unload() called.');
+    });
 });

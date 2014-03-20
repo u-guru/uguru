@@ -1,3 +1,4 @@
+var autocomplete_json = [];
 $(document).ready(function(){
     
     $('a[href*=#]:not([href=#])').click(function() {
@@ -12,6 +13,20 @@ $(document).ready(function(){
         }
       }
     });
+
+    window.onbeforeunload = function() {
+      return 'If you leave this page you will lose all form progress';
+    }
+
+    function readJSON(file) {
+      var request = new XMLHttpRequest();
+      request.open('GET', file, false);
+      request.send(null);
+      if (request.status == 200)
+          return request.responseText;
+    };
+
+    autocomplete_json = JSON.parse(readJSON('/static/data/autocomplete.json'));
 
     $('#register-skills').on('click', '.skill-tag-remove', function(e){
       e.preventDefault();
@@ -269,6 +284,51 @@ $(document).ready(function(){
     $('#add-skill-btn').click(function() {
       if ($('#add-skill-input-settings').val()) {
         var skill_name = $('#add-skill-input-settings').val();
+        if (autocomplete_json.indexOf(skill_name) == -1) {
+            alert('Please only add things from the available options.');
+            $('#add-skill-input-settings').val('');
+        } else {
+          $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
+          $('.skill-tag:last .skill-tag-text').text($('#add-skill-input-settings').val());
+          $('.skill-tag:last').show();
+          $('#add-skill-input-settings').val('');
+          $('.tt-hint').hide();
+          $('#my-skills').show();
+          $('#tutor-register-div').show();
+          update_skill_ajax('add',skill_name);
+        }
+      }
+    });
+
+    $('#add-skill-input-settings').keyup(function(e){
+        if ($('#add-skill-input-settings').val()) {
+          if (e.keyCode == 13) {
+            if ($('#add-skill-input-settings').val()) {
+              var skill_name = $('#add-skill-input-settings').val();
+              if (autocomplete_json.indexOf(skill_name) == -1) {
+                alert('Please only add things from the available options.');
+                $('#add-skill-input-settings').val('');
+              } else {
+                $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
+                $('.skill-tag:last .skill-tag-text').text($('#add-skill-input-settings').val());
+                $('.skill-tag:last').show();
+                $('#add-skill-input-settings').val('');
+                $('.tt-hint').hide();
+                $('#my-skills').show();
+                $('#tutor-register-div').show();
+                update_skill_ajax('add',skill_name);
+              }
+            }
+          }
+        }
+    });
+
+    $('#tutor-add-course-fields').on('click', '.tt-suggestion', function() {
+      var skill_name = $(this).children('p:first').text()
+      if (autocomplete_json.indexOf(skill_name) == -1) {
+          alert('Please only add things from the available options.');
+          $('#add-skill-input-settings').val('');
+      } else {
         $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
         $('.skill-tag:last .skill-tag-text').text($('#add-skill-input-settings').val());
         $('.skill-tag:last').show();
@@ -278,36 +338,6 @@ $(document).ready(function(){
         $('#tutor-register-div').show();
         update_skill_ajax('add',skill_name);
       }
-    });
-
-    $('#add-skill-input-settings').keyup(function(e){
-        if ($('#add-skill-input-settings').val()) {
-          if (e.keyCode == 13) {
-            if ($('#add-skill-input-settings').val()) {
-              var skill_name = $('#add-skill-input-settings').val();
-              $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
-              $('.skill-tag:last .skill-tag-text').text($('#add-skill-input-settings').val());
-              $('.skill-tag:last').show();
-              $('#add-skill-input-settings').val('');
-              $('.tt-hint').hide();
-              $('#my-skills').show();
-              $('#tutor-register-div').show();
-              update_skill_ajax('add',skill_name);
-            }
-          }
-        }
-    });
-
-    $('#tutor-add-course-fields').on('click', '.tt-suggestion', function() {
-      var skill_name = $(this).children('p:first').text()
-      $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
-      $('.skill-tag:last .skill-tag-text').text($('#add-skill-input-settings').val());
-      $('.skill-tag:last').show();
-      $('#add-skill-input-settings').val('');
-      $('.tt-hint').hide();
-      $('#my-skills').show();
-      $('#tutor-register-div').show();
-      update_skill_ajax('add',skill_name);
     });
 
     $('#tutor-register').click(function() {
