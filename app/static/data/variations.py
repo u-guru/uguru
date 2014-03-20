@@ -18218,5 +18218,9 @@ courses_dict = {
     "xmba 298c": 1379,
     "yiddish 101": 4588,
     "yiddish 102": 4586,
-    "yiddish 103": 4587
+    "yiddish 103": 4587,
+    "essay help": 8255,
+    "writing help": 8255,
+    "resume help": 8256,
+    "interview help": 8257,
 }

@@ -448,7 +448,7 @@ def welcome_uguru_tutor_html(user_name):
     with students who need your help and expertise, and notify you when we such an opportunity presents itself. 
     <br>
     <br>
-    Our site is currently in beta, so our sincerely apologies for any unexpected hiccups. 
+    Our site is currently in beta, so our sincere apologies for any unexpected hiccups. 
     <br>
     <br>
     If you have any questions, concerns, or suggestions <i>please</i> do not hesitate to reach out to us directly by 
