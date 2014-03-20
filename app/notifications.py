@@ -30,7 +30,7 @@ def getting_started_student_tip(user):
 
 def getting_started_tutor(user):
     getting_started_msg = "<b>You </b> signed up" + \
-        " as a uGuru.me <b>premium tutor</b>" 
+        " as a uGuru.me <b>beta tutor</b>" 
     notification = Notification(other='getting_started')
     notification.feed_message = getting_started_msg
     notification.a_id_name = 'getting-started'
