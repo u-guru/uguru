@@ -1,8 +1,19 @@
+var autocomplete_json = [];
 $(document).ready(function() {
 
-    window.onbeforeunload = function() {
-      return 'If you leave this page you will lose all form progress';
-    }
+    // window.onbeforeunload = function() {
+    //   return 'If you leave this page you will lose all form progress';
+    // }
+
+    function readJSON(file) {
+      var request = new XMLHttpRequest();
+      request.open('GET', file, false);
+      request.send(null);
+      if (request.status == 200)
+          return request.responseText;
+    };
+
+    autocomplete_json = JSON.parse(readJSON('/static/data/autocomplete.json'));
     
     $('#upload-photo-link').on('click', function(e) {
       e.preventDefault();
@@ -227,12 +238,17 @@ $(document).ready(function() {
     $('#add-skill-btn').click(function() {
       if ($('#add-skill-input-settings').val()) {
         var skill_name = $('#add-skill-input-settings').val();
-        $('.template-one-skill:first').clone().hide().attr('class', 'one-skill').appendTo('#current-skills');
-        $('.one-skill:last .skill-name').text($('#add-skill-input-settings').val());
-        $('.one-skill:last').show();
-        $('#add-skill-input-settings').val('');
-        $('.tt-hint').hide();
-        update_skill_ajax('add',skill_name);
+        if (autocomplete_json.indexOf(skill_name) == -1) {
+            alert('Please only add things from the available options.');
+            $('#add-skill-input-settings').val('');
+        } else {
+          $('.template-one-skill:first').clone().hide().attr('class', 'one-skill').appendTo('#current-skills');
+          $('.one-skill:last .skill-name').text($('#add-skill-input-settings').val());
+          $('.one-skill:last').show();
+          $('#add-skill-input-settings').val('');
+          $('.tt-hint').hide();
+          update_skill_ajax('add',skill_name);
+        }
       }
     });
 
@@ -241,12 +257,17 @@ $(document).ready(function() {
       if (e.keyCode == 13) {
         if ($('#add-skill-input-settings').val()) {
           var skill_name = $('#add-skill-input-settings').val();
-          $('.template-one-skill:first').clone().hide().attr('class', 'one-skill').appendTo('#current-skills');
-          $('.one-skill:last .skill-name').text($('#add-skill-input-settings').val());
-          $('.one-skill:last').show();
-          $('#add-skill-input-settings').val('');
-          $('.tt-hint').hide();
-          update_skill_ajax('add',skill_name);
+          if (autocomplete_json.indexOf(skill_name) == -1) {
+            alert('Please only add things from the available options.');
+            $('#add-skill-input-settings').val('');
+          } else {
+            $('.template-one-skill:first').clone().hide().attr('class', 'one-skill').appendTo('#current-skills');
+            $('.one-skill:last .skill-name').text($('#add-skill-input-settings').val());
+            $('.one-skill:last').show();
+            $('#add-skill-input-settings').val('');
+            $('.tt-hint').hide();
+            update_skill_ajax('add',skill_name);
+          }
         }
       }
     }

@@ -6,9 +6,9 @@ $(document).ready(function() {
       $(this).parent().parent().siblings('button:first').children('span').text(selected_text);
     });
 
-    window.onbeforeunload = function() {
-      return 'If you leave this page you will lose all form progress';
-    }
+    // window.onbeforeunload = function() {
+    //   return 'If you leave this page you will lose all form progress';
+    // }
 
     $('#student-register').click(function(){
     if (!$('#student-signup-description').val() || !$('#student-signup-skill').val()) {

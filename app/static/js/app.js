@@ -14,9 +14,9 @@ $(document).ready(function(){
       }
     });
 
-    window.onbeforeunload = function() {
-      return 'If you leave this page you will lose all form progress';
-    }
+    // window.onbeforeunload = function() {
+    //   return 'If you leave this page you will lose all form progress';
+    // }
 
     function readJSON(file) {
       var request = new XMLHttpRequest();
