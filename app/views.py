@@ -709,6 +709,8 @@ def success():
 def logout():
     if session.get('user_id'):
         session.pop("user_id")
+    if session.get('tutor-signup'):
+        session.pop('tutor-signup')
     if session.get('admin'):
         return redirect(url_for('admin'))
     flash('You have been logged out', 'info')
