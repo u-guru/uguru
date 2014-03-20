@@ -100,6 +100,8 @@ def update_profile():
                 user.previous_tutor = ajax_json.get('previous')
             if 'ta' in ajax_json:
                 user.ta_tutor = ajax_json.get('ta')
+            if 'res' in ajax_json:
+                user.res_tutor = ajax_json.get('res')
             if 'hkn' in ajax_json:
                 user.hkn_tutor = ajax_json.get('hkn')
             if 'discover' in ajax_json:
@@ -671,6 +673,9 @@ def success():
 
                 db_session.add(u)
                 db_session.commit()
+                if session.get('referral'):
+                    u.referral_code = session['referral']
+                    session.pop('referral')
                 u.settings_notif = u.settings_notif + 1
                 m = Mailbox(u)
                 db_session.add(m)
@@ -727,8 +732,10 @@ def access():
         json = {}
         ajax_json = request.json
         access_code = ajax_json['access']
-        if access_code.lower() == 'goslc50' or access_code.lower() == 'gohkn20' or access_code.lower() == 'gobears30':
-            json['success'] = True                
+        access_codes = ['goslc50', 'gohkn20', 'gobears30', 'golee', 'gojackie', 'gojared', 'gomichael','gosamir','gojonathan','gosaba','gorafi']
+        if access_code.lower() in access_codes:
+            json['success'] = True            
+            session['referral'] = access_code.lower()
         else:
             json['failure'] = False
         return jsonify(json=json)

@@ -6,7 +6,7 @@ $(document).ready(function() {
     });
 
       $('#example-skills').on('click', 'a.example-skill-link', function(e) {
-        var tag_arr = ['previous', 'slc','hkn', 'ta'];
+        var tag_arr = ['previous', 'slc','hkn', 'res', 'ta'];
         if ($(this).children(':first').hasClass('active')){
           $(this).children(':first').removeClass('active');
           send_profile_update_ajax(tag_arr[$(this).index()], false);
@@ -301,6 +301,9 @@ $(document).ready(function() {
       }
       if (to_change == 'ta') {
         data['ta'] = value
+      }
+      if (to_change == 'res') {
+       data['res'] = value 
       }
       if (to_change =='year') {
         data['year'] = value
