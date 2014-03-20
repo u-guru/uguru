@@ -146,6 +146,8 @@ def admin():
         users = User.query.order_by(desc(User.id)).all()
         pretty_dates = {}
         skills_dict = {}
+        tutor_count = 0
+        student_count = 0
         for u in users:
             pretty_dates[u.id] = pretty_date(u.time_created)
             if u.skills:
@@ -153,9 +155,11 @@ def admin():
                 for s in u.skills:
                     result_string = result_string + s.name + " "
                 skills_dict[u.id] = result_string
-
+                tutor_count +=1 
+            else:
+                student_count += 1
         return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
-            skills_dict = skills_dict)
+            skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count)
     return redirect(url_for('/'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
