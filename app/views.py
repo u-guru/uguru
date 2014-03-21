@@ -631,7 +631,7 @@ def success():
                 db_session.rollback()
                 raise 
 
-            session.pop('user_id')
+            # session.pop('user_id')
 
             # Tutors are currently not contacted when there is a request.
             from notifications import tutor_request_offer
