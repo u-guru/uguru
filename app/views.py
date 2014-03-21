@@ -764,7 +764,7 @@ def access():
         json = {}
         ajax_json = request.json
         access_code = ajax_json['access']
-        access_codes = ['goslc50', 'gohkn20', 'gobears30', 'golee', 'gojackie', \
+        access_codes = ['goslc50', 'goess10','gohkn20', 'gobears30', 'golee', 'gojackie', \
         'gojared', 'gomichael','gosamir','gojonathan','gosaba','gorafi', 'godorms20']
         if access_code.lower() in access_codes:
             json['success'] = True            
