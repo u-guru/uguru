@@ -8,6 +8,7 @@ from models import User, Request, Skill, Course, Notification, Mailbox, \
 from hashlib import md5
 from datetime import datetime
 import emails, boto, stripe, os
+from sqlalchemy import desc
 
 
 stripe_keys = {
@@ -142,7 +143,6 @@ def add_credit():
 @app.route('/admin/')
 def admin():
     if session.get('admin'):
-        from sqlalchemy import desc
         users = User.query.order_by(desc(User.id)).all()
         pretty_dates = {}
         skills_dict = {}
@@ -160,7 +160,7 @@ def admin():
                 student_count += 1
         return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
             skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count)
-    return redirect(url_for('/'))
+    return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
 def add_bank():
@@ -728,8 +728,23 @@ def login():
         if ajax_json['email'].lower() == 'admin@uguru.me' \
             and ajax_json['password'].lower() == 'launchuguru':
             session['admin'] = True
-            users = User.query.all()
-            return render_template('admin.html', users=users )
+            users = User.query.order_by(desc(User.id)).all()
+            pretty_dates = {}
+            skills_dict = {}
+            tutor_count = 0
+            student_count = 0
+            for u in users: 
+                pretty_dates[u.id] = pretty_date(u.time_created)
+                if u.skills:
+                    result_string = ""
+                    for s in u.skills:
+                        result_string = result_string + s.name + " "
+                    skills_dict[u.id] = result_string
+                    tutor_count +=1 
+                else:
+                    student_count += 1
+            return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
+                skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count)
 
         email = ajax_json['email']
         password = md5(ajax_json['password']).hexdigest()
