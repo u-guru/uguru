@@ -328,6 +328,7 @@ def general_notification_text(user_name, msg):
     """, \n\n""" + msg + \
     """\n\n""" + \
     """See more details by visiting the link below:\n""" + \
+    """http://uguru.me/activity\n\n""" + \
     """Sincerely, \nThe uGuru.me Team"""
     
 
@@ -489,7 +490,7 @@ def general_notification_html(user_name, msg):
     <br> """ + msg + """ 
     <br>
     <br>
-    See more details <a href="https://beta.uguru.me/activity/"> here</a>. 
+    See more details <a href="http://beta.uguru.me/activity/"> here</a>. 
     <br>
     <br>
     Sincerely, <br>

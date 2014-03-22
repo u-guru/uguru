@@ -598,7 +598,6 @@ def success():
         #Create a request
         if ajax_json.get('student-request'):
             user_id = session['user_id']
-            
             from app.static.data.variations import courses_dict
             skill_name = ajax_json['skill'].lower()
             skill_id = courses_dict[skill_name]

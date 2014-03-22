@@ -183,8 +183,8 @@ $(document).ready(function(){
                 'phone': $('input[name="student-phone"]').val(),
                 'password': $('input[name="student-password"]').val(),
             }
-            $('#student-signup').hide();
-            $('#student-request').show('slide', {direction: 'right'}, 200);
+            // $('#student-signup').hide();
+            // $('#student-request').show('slide', {direction: 'right'}, 200);
             $.ajax({
               type: "POST",
               contentType: 'application/json;charset=UTF-8',

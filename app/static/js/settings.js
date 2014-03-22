@@ -45,8 +45,10 @@ $(document).ready(function() {
         if (file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg' ) {
           alert("File doesnt match png, jpg, or gif");
         } else {
+          $('#settings-notif').hide();
+          $('#student-photo-alert').hide();
           if ($('#short-description').val() && $('#major-input')) {
-            $('#prof-not-complete').hide()
+            $('#prof-not-complete').hide();
             $('#prof-not-complete').removeClass('alert-danger')
             $('#prof-not-complete').html('You completed your profile! Click <strong> "Launch my Site" </strong> at the bottom of the page!')
             $('#prof-not-complete').addClass('alert-success')

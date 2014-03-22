@@ -51,6 +51,11 @@
         <div class="row-fluid">
           <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
           {% if not user.skills %}
+              {% if user.profile_url == '/static/img/default-photo.jpg' %}
+              <div id="student-photo-alert"style="text-align:center; margin-top:10px"class="alert alert-danger">
+                Please add a headshot photo complete setup!
+              </div>
+              {% endif %}
               <div style="text-align:center;margin-top:30px"class="photo-settings" style="display:block">
                 <h4 style="margin-left:25px;"> YOUR PHOTO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
                 <div align="center">
