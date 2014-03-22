@@ -1,10 +1,21 @@
 var credit_card_back_link = false; 
+window.onhashchange = locationHashChanged
+function locationHashChanged() {
+    if (!location.hash) {
+        $('#feed-messages').children().hide();
+        $('#activity').show();
+    }
+}
 $(document).ready(function() {
 
     $('.price-dropdown').on('click', '.dropdown-menu li a', function() {
       var selected_text = $(this).text();
       $(this).parent().parent().siblings('button:first').children('span').text(selected_text);
     });
+
+    // $(window).hashchange(function () {
+    //   alert(window.location.pathname)
+    // });
 
     // window.onbeforeunload = function() {
     //   return 'If you leave this page you will lose all form progress';
@@ -103,6 +114,7 @@ $(document).ready(function() {
 
    $('#feed-messages').on('click', 'a.feed-message-link', function() {
         $(this).parent().parent().parent().parent().hide();
+        window.location.hash = '';
         $('#activity').show();
     });
    $('#feed-messages').on('click', 'a#accept-payment', function() {
