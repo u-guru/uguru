@@ -113,6 +113,11 @@ class User(Base):
     discoverability = Column(Boolean, default = True)
     major = Column(String)
     year = Column(String)
+
+
+
+
+
     previous_tutor = Column(Boolean, default = False)
     slc_tutor = Column(Boolean, default = False)
     hkn_tutor = Column(Boolean, default = False)
@@ -446,6 +451,10 @@ class Request(Base):
     tutor_offer_hour = Column(Integer)
 
     description = Column(String)
+    available_time = Column(String)
+    location = Column(String)
+
+
     urgency = Column(SmallInteger)
     frequency = Column(SmallInteger) # 0 is once, 1 is regular TO DROP
     time_estimate = Column(Float)

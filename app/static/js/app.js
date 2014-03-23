@@ -210,7 +210,8 @@ $(document).ready(function(){
         } 
     });
     $('#student-register').click(function(){
-    if (!$('#student-signup-description').val() || !$('#student-signup-skill').val()) {
+    if (!$('#student-signup-description').val() || !$('#student-signup-location').val() || 
+        !$('#student-signup-availability').val() || !$('#student-signup-skill').val()) {
       $('#alert-fields-student-signup1').show(); 
       if (!$('#student-signup-description').val()) {
         $('#student-signup-description').css({"border-color":"red"});
@@ -221,12 +222,14 @@ $(document).ready(function(){
     } else {
       var data = {
         'student-request': true,
-        'description': $('textarea[name="description"]').val(),
+        'description': $('#student-signup-description').val(),
         'urgency': $('#urgency-request .urgency.active').index(),
         'num-students': ($('#num-students-request .num-students').index() + 1),
         'skill': $('input[name="skill"]').val(),
         'estimate': $('#time-estimate-slider').val(),
         'idea-price': $('#ideal-price-slider').val(),
+        'location': $('#student-signup-location').val(),
+        'availability': $('#student-signup-availability').val(),
         }
         $.ajax({
           type: "POST",
@@ -458,7 +461,7 @@ $(document).ready(function(){
     
     $('#student-signup-name').blur(function(){
       if ($('#student-signup-name').val().split(" ").length > 1) {
-        $('#student-signup-name').css({"border-color":"#00A253"});
+        $('#student-signup-name').css({"border-color":"#69bf69"});
         $('#proper-student-name').hide();
       } else {
         $('#student-signup-name').css({"border-color":"red"});
@@ -468,7 +471,7 @@ $(document).ready(function(){
 
     $('#student-signup-email').blur(function(){
       if ($('#student-signup-email').val().toLowerCase().indexOf('@berkeley.edu') != -1) {
-        $('#student-signup-email').css({"border-color":"#00A253"});
+        $('#student-signup-email').css({"border-color":"#69bf69"});
         $('#proper-email').hide();
       } else {
         $('#student-signup-email').css({"border-color":"red"
@@ -479,7 +482,7 @@ $(document).ready(function(){
 
     $('#student-signup-password').blur(function(){
       if ($('#student-signup-password').val()) {
-        $('#student-signup-password').css({"border-color":"#00A253"
+        $('#student-signup-password').css({"border-color":"#69bf69"
       })
       } else {
         $('#student-signup-password').css({"border-color":"red"
@@ -489,7 +492,7 @@ $(document).ready(function(){
 
     $('#student-signup-phone').blur(function(){
       if ($('#student-signup-phone').val()) {
-        $('#student-signup-phone').css({"border-color":"#00A253"
+        $('#student-signup-phone').css({"border-color":"#69bf69"
       })
       } else {
         $('#student-signup-phone').css({"border-color":"red"
@@ -499,7 +502,7 @@ $(document).ready(function(){
 
     $('#tutor-signup-name').blur(function(){
       if ($('#tutor-signup-name').val().split(" ").length > 1) {
-        $('#tutor-signup-name').css({"border-color":"#00A253"});
+        $('#tutor-signup-name').css({"border-color":"#69bf69"});
         $('#proper-tutor-name').hide();
       } else {
         $('#tutor-signup-name').css({"border-color":"red"
@@ -510,7 +513,7 @@ $(document).ready(function(){
 
     $('#tutor-signup-email').blur(function(){
       if ($('#tutor-signup-email').val().toLowerCase().indexOf('@berkeley.edu') != -1) {
-        $('#tutor-signup-email').css({"border-color":"#00A253"});
+        $('#tutor-signup-email').css({"border-color":"#69bf69"});
         $('#proper-email-tutor').hide();
       } else {
         $('#tutor-signup-email').css({"border-color":"red"
@@ -521,7 +524,7 @@ $(document).ready(function(){
 
     $('#tutor-signup-password').blur(function(){
       if ($('#tutor-signup-password').val()) {
-        $('#tutor-signup-password').css({"border-color":"#00A253"
+        $('#tutor-signup-password').css({"border-color":"#69bf69"
       })
       } else {
         $('#tutor-signup-password').css({"border-color":"red"
@@ -531,7 +534,7 @@ $(document).ready(function(){
 
     $('#tutor-signup-phone').blur(function(){
       if ($('#tutor-signup-phone').val()) {
-        $('#tutor-signup-phone').css({"border-color":"#00A253"
+        $('#tutor-signup-phone').css({"border-color":"#69bf69"
       })
       } else {
         $('#tutor-signup-phone').css({"border-color":"red"
@@ -541,7 +544,7 @@ $(document).ready(function(){
 
     $('#student-signup-skill').blur(function(){
       if ($('#student-signup-skill').val()) {
-        $('#student-signup-skill').css({"border-color":"#00A253"
+        $('#student-signup-skill').css({"border-color":"#69bf69"
       })
       } else {
         $('#student-signup-skill').css({"border-color":"red"
@@ -551,10 +554,30 @@ $(document).ready(function(){
 
     $('#student-signup-description').blur(function(){
       if ($('#student-signup-description').val()) {
-        $('#student-signup-description').css({"border-color":"#00A253"
+        $('#student-signup-description').css({"border-color":"#69bf69"
       })
       } else {
         $('#student-signup-description').css({"border-color":"red"
+        });
+      }
+    });
+
+    $('#student-signup-availability').blur(function(){
+      if ($('#student-signup-availability').val()) {
+        $('#student-signup-availability').css({"border-color":"#69bf69"
+      })
+      } else {
+        $('#student-signup-availability').css({"border-color":"red"
+        });
+      }
+    });
+
+    $('#student-signup-location').blur(function(){
+      if ($('#student-signup-location').val()) {
+        $('#student-signup-location').css({"border-color":"#69bf69"
+      })
+      } else {
+        $('#student-signup-location').css({"border-color":"red"
         });
       }
     });

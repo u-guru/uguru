@@ -22,15 +22,18 @@ $(document).ready(function() {
     // }
 
     $('#student-register').click(function(){
-    if (!$('#student-signup-description').val() || !$('#student-signup-skill').val()) {
+    if (!$('#student-signup-description').val() || !$('#student-signup-location').val() || 
+        !$('#student-signup-availability').val() || !$('#student-signup-skill').val()) {
       $('#alert-fields-student-signup1').show(); 
     } else {
       var data = {
         'student-request': true,
-        'description': $('textarea[name="description"]').val(),
+        'description': $('#student-signup-description').val(),
         'urgency': $('#urgency-request .urgency.active').index(),
         'skill': $('input[name="skill"]').val(),
         'estimate': $('#time-estimate-slider').val(),
+        'location': $('#student-signup-location').val(),
+        'availability': $('#student-signup-availability').val(),
         'num-students': ($('#num-students-request .num-students').index() + 1),
         'idea-price': $('#ideal-price-slider').val(),
         }
@@ -395,5 +398,45 @@ $(document).ready(function() {
       $('#num-students').text(index);
       $('#num-price').text($('#ideal-price-slider').val());
     })
+
+    $('#student-signup-skill').blur(function(){
+      if ($('#student-signup-skill').val()) {
+        $('#student-signup-skill').css({"border-color":"#69bf69"
+      })
+      } else {
+        $('#student-signup-skill').css({"border-color":"red"
+        });
+      }
+    });
+
+    $('#student-signup-description').blur(function(){
+      if ($('#student-signup-description').val()) {
+        $('#student-signup-description').css({"border-color":"#69bf69"
+      })
+      } else {
+        $('#student-signup-description').css({"border-color":"red"
+        });
+      }
+    });
+
+    $('#student-signup-avalability').blur(function(){
+      if ($('#student-signup-availability').val()) {
+        $('#student-signup-availability').css({"border-color":"#69bf69"
+      })
+      } else {
+        $('#student-signup-availability').css({"border-color":"red"
+        });
+      }
+    });
+
+    $('#student-signup-location').blur(function(){
+      if ($('#student-signup-location').val()) {
+        $('#student-signup-location').css({"border-color":"#69bf69"
+      })
+      } else {
+        $('#student-signup-location').css({"border-color":"red"
+        });
+      }
+    });
 
 });

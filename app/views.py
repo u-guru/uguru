@@ -612,6 +612,8 @@ def success():
             )
             r.num_students = int(ajax_json['num-students'])
             r.student_estimated_hour = int(float(ajax_json['idea-price']))
+            r.location = ajax_json['location']
+            r.available_time = ajax_json['availability']
             u.outgoing_requests.append(r)
             db_session.add(r)            
             try:

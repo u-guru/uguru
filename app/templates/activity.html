@@ -463,18 +463,26 @@
                             <label for="exampleInputEmail1"><strong>I NEED HELP IN...</strong></label> <br>
                             <input style="width:100%"id="student-signup-skill" name="skill" type="email" class="input-signup typeahead" placeholder="CS10, BIO 1A, ESSAY PROOFREADING..." id="login-email">
                         </div>
+                 </div>
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1"><strong>PLEASE SPECIFY TOPICS OR ASSIGNMENTS</strong></label> <br>
+                        <input style="width:100%"id="student-signup-description" name="skill" type="email" class="input-signup" placeholder="HW3, Chemical Reactions, Midterm Prep" id="login-email">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-                        <span id='alert-fields-student-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1"><strong>PLEASE SPECIFY TOPICS OR ASSIGNMENTS</strong></label> <br>
-                            <textarea name="description" placeholder="I need help in ____ and don't understand these particular concepts: ______"id="student-signup-description" class="form-control" rows="1"></textarea>
-                        </div>
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1"><strong>YOUR AVAILABILITY</strong></label> <br>
+                        <input style="width:100%"id="student-signup-availability" name="skill" type="email" class="input-signup" placeholder="ASAP, Monday 3-6pm, anytime this weekend" id="login-email">
                     </div>
                 </div>
-                <div id="urgency-request" class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1"><strong>PREFERRED LOCATION</strong></label> <br>
+                        <input style="width:100%"id="student-signup-location" name="skill" type="email" class="input-signup" placeholder="Dwinelle, Peets Coffee, SLC" id="login-email">
+                    </div>
+                </div>
+                <!-- <div id="urgency-request" class="row">
                     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                         <div class="form-group">
                             <label for="exampleInputEmail1"><strong>URGENCY</strong></label>
@@ -485,7 +493,7 @@
                           <span style="width:110px" id="urgency-3" class="urgency btn-options btn-xs"><a href="javascript:void(0);">THIS WEEK</a></span>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div style="margin-top:10px" id="num-students-request" class="row">
                     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                         <div class="form-group">
@@ -543,6 +551,7 @@
               </div>
             </div>
 	</div>
+</div>
 </div>
 
 
@@ -824,6 +833,8 @@
 								  	<div class="h4"><b>Urgency</b></div>
 								  	<div class="h4"><b>Estimate</b></div>
 								  	<div class="h4"><b>Description</b></div>
+								  	<div class="h4"><b>Location</b></div>
+								  	<div class="h4"><b>Availability</b></div>
 								  	<div class="h4"><b>Number of Students</b></div>
 								  	<div class="h4"><b>Estimated Hourly Price</b></div>
 								  	{% if request_dict[n.request_id]['request'].num_students > 1 %}
@@ -835,6 +846,8 @@
 								  	<div class="h4">{{urgency_dict[request_dict[n.request_id]['request'].urgency]}}</div>
 								  	<div class="h4">{{request_dict[n.request_id]['request'].time_estimate}} hours</div>
 								  	<div class="h4">{{request_dict[n.request_id]['request'].description}}</div>
+								  	<div class="h4">{{request_dict[n.request_id]['request'].location}}</div>
+								  	<div class="h4">{{request_dict[n.request_id]['request'].available_time}}</div>
 								  	<div class="h4">{{request_dict[n.request_id]['request'].num_students}}</div>
 								  	<div class="h4">${{request_dict[n.request_id]['request'].student_estimated_hour}}</div>
 								  	{% if request_dict[n.request_id]['request'].num_students > 1 %}
