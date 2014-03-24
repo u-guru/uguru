@@ -476,7 +476,26 @@ if arg == 'generate_short_variations':
         separators = (',', ': ')))
     print result_dict
 
+if arg == 'generate_short_variations_reverse':
+    import json    
+    json_data = open('app/static/data/all_courses.json')
+    data = json.load(json_data)
+    result_dict = {}
+    for key in data.keys():
+        key_variations = data[key]['variations']
+        shortest_one = min(key_variations, key=len)
+        result_dict[shortest_one] = key
 
+    script_dir = os.path.dirname(__file__)
+    rel_path_variations = 'app/static/data/short_variations_reverse.py'
+    abs_file_path_to_save = os.path.join(script_dir, rel_path_variations)
+
+    f = open(abs_file_path_to_save, "wb+")
+    f.write(json.dumps(result_dict,
+        sort_keys = True,
+        indent = 4,
+        separators = (',', ': ')))
+    print result_dict
 
 
 

@@ -13,10 +13,10 @@
       <div class="page-title">
         <h4 style="color:white;">YOUR ACCOUNT {%if not user.skills %} SETTINGS {% endif %}</h4>
       </div>
-      {% if user.skills and user.verified_tutor %}
+      {% if user.skills or user.verified_tutor %}
       <div class="container-fluid">
         <div class="row" align="center">
-          {% if user.skills and user.verified_tutor %}
+          {% if user.skills or user.verified_tutor %}
           <div class="col-xs-4 col-md-offset-3 col-md-2">
             <span id="profile-button" class="btn-options active btn-xs"><a href="javascript:void(0);">PROFILE</a></span>
           </div>
@@ -24,7 +24,7 @@
             <span id="skills-button" class="btn-options btn-xs"><a href="javascript:void(0);">MY SKILLS</a></span>
           </div>
           {% endif %}
-          {% if user.skills and user.verified_tutor %}
+          {% if user.skills or user.verified_tutor %}
             <div class="col-xs-4 col-md-2">
               <span id="settings-button" class="btn-options btn-xs"><a href="javascript:void(0);">SETTINGS</a></span>
             {% else %}
@@ -32,7 +32,7 @@
             <span id="settings-button" class="btn-options btn-xs"><a href="javascript:void(0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SETTINGS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
             {% endif %}
           </div>
-          {% if not user.skills %}
+          {% if not user.skills and not user.verified_tutor %}
             <div class="col-xs-6 col-md-3">
               <span id="skills-button" class="btn-options btn-xs"><a href="javascript:void(0);">&nbsp;BECOME A TUTOR&nbsp;</a></span>
             </div>
@@ -43,14 +43,14 @@
       {% endif %}
 
 <!-- Settings -->
-        {% if user.skills and user.verified_tutor %}
+        {% if user.skills or user.verified_tutor %}
         <div id="settings" style="display:none">
         {% else %}
         <div id="settings" style="display:block">
         {% endif %}
         <div class="row-fluid">
           <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-          {% if not user.skills %}
+          {% if not user.skills and not user.verified_tutor %}
               {% if user.profile_url == '/static/img/default-photo.jpg' %}
               <div id="student-photo-alert"style="text-align:center; margin-top:10px"class="alert alert-danger">
                 Please add a headshot photo complete setup!
@@ -94,7 +94,7 @@
               <br>
               <br>
           </div>
-          {% if user.skills and user.verified_tutor %}
+          {% if user.skills or user.verified_tutor %}
           <div id="discoverability" style="text-align:center;">
              <h4>RECEIVE TUTORING REQUESTS</h4>
               <label id="discover-label"for="discover-on" class="h5" style="color:black">
@@ -199,7 +199,7 @@
 
 <!-- Skills -->
       <div id="skills" style="display:none" align="center">
-        {% if not user.skills %}
+        {% if not user.skills and not user.verified_tutor%}
         <div style="text-align:center" class="row-fluid">
           <h4>
             Add a skill to begin tutor registration! We'll send you an email soon with more details regarding the verification process. 
@@ -220,7 +220,7 @@
         </div>
       <div id="current-skills" style="align:center">
         <br>
-          {% if user.skills and user.verified_tutor %}
+          {% if user.skills or user.verified_tutor %}
           <div style="color:red;" id="alert-rating">
             Your reviews are not visible yet.
           </div>
@@ -265,12 +265,12 @@
     </div>
 
 <!-- Profile -->
-      {% if user.skills and user.verified_tutor %}
+      {% if user.skills or user.verified_tutor %}
       <div id="profile" style="display:block" align="center">
       {% else %}
       <div id="profile" style="display:none" align="center">
       {% endif %}
-        {% if user.skills and user.verified_tutor and (user.profile_url == '/static/img/default-photo.jpg' or not user.tutor_introduction) %}
+        {% if user.skills or user.verified_tutor and (user.profile_url == '/static/img/default-photo.jpg' or not user.tutor_introduction) %}
           <div id="prof-not-complete" class="alert alert-danger">
             Please add a <strong>profile picture</strong>, your <strong>major</strong>, and a <strong> short introduction</strong> to complete signup!
           </div>
@@ -386,7 +386,7 @@
           </div>
         </div>
       </div>
-        {% if user.skills and user.verified_tutor and not user.verified_tutor %}
+        {% if user.skills or user.verified_tutor and not user.verified_tutor %}
         <div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; display:block">
           <a id="launch-profile-link" href="javascript:void(0)">
             <div class="btn-save">

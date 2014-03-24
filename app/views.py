@@ -564,9 +564,11 @@ def update_skill():
                 course = Course(skill_to_add)
                 db_session.add(course)
         if ajax_json.get('remove'):
-            skill_to_remove = ajax_json.get('remove').lower()
+            from app.static.data.short_variations_reverse import short_variations_reverse_dict
+            skill_to_remove = short_variations_reverse_dict[ajax_json.get('remove')]
+            print skill_to_remove
             for skill in user.skills:
-                if skill.name.lower() == skill_to_remove:
+                if skill.name.lower() == skill_to_remove.lower():
                     user.skills.remove(skill)
         try:
             db_session.commit()
