@@ -780,8 +780,18 @@ a.boxclose{
 
 .tt-suggestion:focus p, .tt-suggestion:hover p{
   background-color:rgb(0, 159, 225);
-  color:white; 
+  color:white !important; 
 }
+
+.tt-suggestion.tt-cursor {
+  background-color:rgb(0, 159, 225)!important;
+}
+
+.tt-suggestion.tt-cursor p {
+  color:white!important;  
+}
+
+
 #student-next-link, #student-register {
   text-decoration:none;
   color:white;
@@ -989,3 +999,4 @@ a:hover {
 #how-it-works-link p {
   color:white; 
 }
+

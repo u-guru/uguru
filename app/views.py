@@ -686,8 +686,6 @@ def success():
                 db_session.rollback()
                 raise 
 
-            # session.pop('user_id')
-
             # Tutors are currently not contacted when there is a request.
             from notifications import tutor_request_offer
             for tutor in r.requested_tutors:
@@ -798,8 +796,8 @@ def login():
                     tutor_count +=1 
                 else:
                     student_count += 1
-            return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
-                skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count)
+            json['admin'] = True
+            return jsonify(json=json)
 
         email = ajax_json['email']
         password = md5(ajax_json['password']).hexdigest()

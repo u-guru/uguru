@@ -1,4 +1,28 @@
 var autocomplete_json = [];
+var current_page_id = null; 
+var previous_page_id = null;
+var a,b,c;
+var invert_olark = function() {
+    $('#habla_window_div #habla_oplink_a').css('color','white');
+    $('#habla_window_div #habla_topbar_div').css('background', '#00a9e5 none repeat scroll 0 0');
+}
+var invert_olark_white = function() {
+    $('#habla_window_div #habla_oplink_a').css('color','#00a9e5');
+    $('#habla_window_div #habla_topbar_div').css('background', 'white none repeat scroll 0 0');
+}
+
+window.onhashchange = locationHashChanged
+function locationHashChanged() {
+    if (!location.hash) {
+      $('body').css('background-color','#00A9DE')
+      $('#access-code').hide();
+      $('#tutor-signup').hide();
+      $('#tutor-signup-next').hide();
+      $('#home').show();
+      invert_olark_white();
+      location.hash = '';
+    }
+}
 $(document).ready(function(){
     
     $('a[href*=#]:not([href=#])').click(function() {
@@ -156,11 +180,8 @@ $(document).ready(function(){
     $('#tutor-signup-btn').click(function() {
         $('#home').hide();
         $('body').css('background-color','white')
-        // $('#login-page').show();
-        // $("#login-page").animate({width:'toggle'},350);
         invert_olark();
-        $('#exclusive-access-page').show('slide', {direction: 'right'}, 200);
-        // $('#tutor-signup').show('slide', {direction: 'right'}, 200);
+        $('#access-code').show('slide', {direction: 'right'}, 200);
     });
     $('#student-signup-btn').click(function() {
         $('#home').hide();
@@ -368,6 +389,9 @@ $(document).ready(function(){
         data: JSON.stringify(data),
         dataType: "json",        
         success: function(result) {        
+            if (result.json['admin']) {
+              window.location.replace('/admin/');
+            }
             if (result.json['success']) {
                 window.location.replace('/settings/');
             } else {
@@ -381,13 +405,13 @@ $(document).ready(function(){
 
     $('#access-submit-link').click(function(){
     //check whether fields are blank
-    if (!$('#access-code').val()) {
+    if (!$('#exclusive-access-code').val()) {
       $('#alert-fields-access-2').show()
     } else {
       //else get data and send to server
       $('#alert-fields-access-2').hide()
       var data = {
-        'access': $('input[name="access-code"]').val(),
+        'access': $('input[name="exclusive-access-code"]').val(),
       }
       $.ajax({
         type: "POST",
@@ -398,7 +422,8 @@ $(document).ready(function(){
         success: function(result) {        
             if (result.json['success']) {
                 $('#alert-fields-access').hide();
-                $('#exclusive-access-page').hide();
+                $('#access-code').hide();
+                window.location.hash = '#tutor-signup';
                 $('#tutor-signup').show();
             } else {
                 $('#alert-fields-access').show();     
@@ -581,10 +606,5 @@ $(document).ready(function(){
         });
       }
     });
-
-    var invert_olark = function() {
-      $('#habla_window_div #habla_oplink_a').css('color','white');
-      $('#habla_window_div #habla_topbar_div').css('background', '#00a9e5 none repeat scroll 0 0');
-    }
 
 });

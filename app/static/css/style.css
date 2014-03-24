@@ -928,8 +928,8 @@ a:hover{
 
 #pic-holder {
   border: 1px solid #40bfec;
-  width:100px;
-  height:100px;
+  width:140px;
+  height:140px;
   border-radius: 12px;
   padding-left:12px;
   text-align: left;
@@ -1559,4 +1559,12 @@ label {
 
 a.example-skill-link {
   text-decoration: none;
+}
+
+.tt-suggestion.tt-cursor {
+  background-color:rgb(0, 159, 225)!important;
+}
+
+.tt-suggestion.tt-cursor p {
+  color:white!important;  
 }

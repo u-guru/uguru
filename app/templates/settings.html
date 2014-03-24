@@ -276,16 +276,17 @@
           </div>
         {% endif %}
         <div align="center">
+          <h4>PROFILE PICTURE</h4>
           <div id="pic-holder">
             {% if user.profile_url != '/static/img/default-photo.jpg' %}
-              <img style="display:block" width="80" height="80"id="image-preview" src="{{user.profile_url}}"/>
+              <img style="display:block" width="120" height="120"id="image-preview" src="{{user.profile_url}}"/>
             {% else %}
-              <span id="default-photo" class="glyphicon glyphicon-user" style="font-size:80px;text-align:center;padding-top:5px"></span>
-              <img width="80" height="80"id="image-preview" src="#"/>
+              <span id="default-photo" class="glyphicon glyphicon-user" style="font-size:120px; margin-left:-2px; text-align:center;padding-top:5px"></span>
+              <img width="120" height="120"id="image-preview" src="#"/>
             {% endif %}
           </div>
             <a id="upload-photo-link" href="javascript:void(0);">
-              <h6 style="color:grey">
+              <h5 style="color:grey">
                 {% if user.profile_url != '/static/img/default-photo.jpg'%}
                 <u>CHANGE PICTURE</u>
                 {% else %}
@@ -324,7 +325,7 @@
         </div>
         <div style="margin-top:15px"class="row-fluid">
           <span id="saved-major" class="saved-text">Saved!<br></span>
-          <input id="major-input" {% if user.major %} value="{{user.major}}" {% endif %} placeholder="Your Major(s)"> </input>
+          <input style="font-size:14px" id="major-input" {% if user.major %} value="{{user.major}}" {% endif %} placeholder="Your Major(s)"> </input>
           <span id="save-btn-major" style="margin-top:-5px; display:none" class="btn-options btn-md active">
               <span style="color:white">Save</span>
           </span>
