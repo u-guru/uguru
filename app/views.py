@@ -449,8 +449,6 @@ def update_requests():
             # user.incoming_requests_to_tutor.remove(_request)
             student_name = User.query.get(_request.student_id).name.split(" ")[0]
 
-
-
             current_notification.feed_message = 'You rejected ' + student_name + "'s request for " +\
                 current_notification.skill_name + "."
             current_notification.feed_message_subtitle = None
@@ -464,31 +462,52 @@ def update_requests():
 
 
         if 'student-accept' in ajax_json:
-            hourly_amount = ajax_json.get('hourly-amount')
-            skill_name = ajax_json.get('skill-name')
             notification_id = ajax_json.get('notification-id')
             student = user
             current_notification = student.notifications[notification_id]
+            skill_name = current_notification.skill_name
+            
             print current_notification.id
+
             tutor_id = current_notification.request_tutor_id
             tutor = User.query.get(tutor_id)
+
+            #Modify student notification
+            current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
+                + skill_name + " tutor."
+            current_notification.feed_message_subtitle = 'Click here to see next steps!'
+            current_notification.custom = 'student-accept-request'
+            user.feed_notif += 1
+            current_notification.time_read = None
+
+            #Update request
+            from app.static.data.animals import animal_list
+            import random 
             request_id = current_notification.request_id
             r = Request.query.get(request_id)
             skill = Skill.query.get(r.skill_id)
             r.connected_tutor_id = tutor_id
             r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
+            r.student_secret_code = random.choice(animal_list)
             
+            #Modify tutor notification
+            for n in tutor.notifications:
+                if n.request_id == r.id:
+                    tutor_notification = n
+            tutor_notification.feed_message = "<b>You</b> have been matched with " + user.name.split(" ")[0] + " for " + skill_name + "."
+            tutor_notification.feed_message_subtitle = 'Click here to see next steps!'
+            tutor_notification.custom = 'tutor-is-matched'
+            tutor.feed_notif += 1
+            tutor_notification.time_read = None
+            from emails import tutor_is_matched
+            tutor_is_matched(tutor, skill_name, user.name.split(" ")[0])
+
+
             #create conversation between both
             conversation = Conversation(skill, tutor, student)
             conversation.requests.append(r)
             db_session.add(conversation)
-            print tutor
-            from notifications import student_match, tutor_match
-            tutor_notification = tutor_match(student, tutor, r, skill_name, hourly_amount)
-            student_notification = student_match(student, tutor, r, skill_name, hourly_amount)
-            tutor.notifications.append(tutor_notification)
-            student.notifications.append(student_notification)
-            db_session.add_all([student_notification, tutor_notification])
+            
             try:
                 db_session.commit()
             except:
@@ -855,8 +874,7 @@ def activity():
             tutor_dict[notification] = User.query.get(notification.request_tutor_id)
         pretty_dates[notification.id] = pretty_date(notification.time_created)
     for request in (user.outgoing_requests + user.incoming_requests_to_tutor + user.incoming_requests_from_tutors):
-        request_dict[request.id] = {'request':request,'student':User.query.get(request.student_id),
-            'tutor':User.query.get(request.tutor_id)}
+        request_dict[request.id] = {'request':request,'student':User.query.get(request.student_id)}
     for conversation in user.mailbox.conversations:
         if conversation.student_id != user.id:
             student = User.query.get(conversation.student_id)

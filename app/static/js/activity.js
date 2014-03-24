@@ -1,5 +1,6 @@
 var credit_card_back_link = false; 
 var student_original_price = null;
+var last_clicked_notif_index = null;
 window.onhashchange = locationHashChanged
 function locationHashChanged() {
     if (!location.hash) {
@@ -114,6 +115,7 @@ $(document).ready(function() {
    })
 
    $('#feed').on('click', 'a.main-feed-messages', function() {
+        last_clicked_notif_index = $('#main-feed').children().length - $(this).parent().parent().index() - 1;
         var display_id = $(this).attr('id');
         var full_div = "#feed-messages div#" + display_id + '-detailed'
         $('#activity').hide();
@@ -197,7 +199,7 @@ $(document).ready(function() {
             var salt = $('#main-feed').children().length - $('#feed-messages').children().length 
             var tutor_changed_price = false
             request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
-            hourly_amount = $('#student-offer-hourly-price-' + (feed_message_index + 1)).text();
+            hourly_amount = $('#student-offer-hourly-price-' + (feed_message_index + salt)).text();
             skill_name = $(this).parent().parent().siblings('.container-fluid').children('h5').text().split(" needs help in ").reverse()[0]
             if (hourly_amount != student_original_price) {
               tutor_changed_price = true;
@@ -208,7 +210,7 @@ $(document).ready(function() {
                 'hourly-amount': hourly_amount,
                 'skill-name': skill_name,
                 'price-change': tutor_changed_price,
-                'notif-num':  ($('#main-feed').children().length - 1)
+                'notif-num':  last_clicked_notif_index,
             };
             $.ajax({
                 type: "POST",
@@ -224,14 +226,10 @@ $(document).ready(function() {
 
     $('#feed-messages').on('click', 'a.student-request-accept-btn', function() {
         request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
-        hourly_amount = parseInt($(this).parent().parent().siblings('.container-fluid').children('#hourly-amount-div').children('div:first').children('#offer-amount').children('span#price').text().replace('$',''))
-        skill_name = $(this).parent().parent().siblings('.container-fluid').children('div:first').children('div:first').children('h5').text().trim().replace('A Tutor wants to help you with ','').split(" ")[0].trim()
-        notification_num = $(this).parent().parent().parent().index() + 1
+    
         var data = {
             'student-accept': request_num, 
-            'hourly-amount': hourly_amount,
-            'skill-name': skill_name,
-            'notification-id': notification_num,
+            'notification-id': last_clicked_notif_index,
         };
         $.ajax({
             type: "POST",

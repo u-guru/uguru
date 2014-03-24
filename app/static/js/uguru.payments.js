@@ -124,6 +124,7 @@ var stripeResponseHandler = function(status, response) {
         $('#' + credit_card_back_link + ' a.student-request-accept-btn-credit').removeClass('student-request-accept-btn-credit');
         
         $('#tutor-accept-text').text('ACCEPT');
+        $('#student-accept-text').text('ACCEPT');
         $('#flakers-fee-alert').show();
         credit_card_back_link = false
         }

@@ -445,6 +445,7 @@ class Request(Base):
     skill_id = Column(Integer)
     connected_tutor_id = Column(Integer) #Request is active if null
     connected_tutor_hourly = Column(Float)
+    student_secret_code = Column(String)
     
     student_estimated_hour = Column(Integer)
     num_students = Column(Integer, default = 0)

@@ -151,7 +151,11 @@
 				<a class='main-feed-messages'id="{{n.a_id_name}}" href="#	{{n.a_id_name}}-detailed">
 				{% endif %}
 					<div {% if n.a_id_name == 'getting-started' %} style="cursor:default;" {%endif%}class="notification {% if not n.time_read %} grey-background {% endif %}" align:"center">
+						{% if n.a_id_name != 'tutor-request-offer' %}
 						<img src="{% if user.photo_url != '/static/img/default-photo.jpg'%}{{user.profile_url}} {%else%}{{n.image_url}} {% endif %}" class="user-photo" style="float:left; margin-top:-10px">
+						{% else %}
+						<img src="{{n.image_url}}" class="user-photo" style="float:left; margin-top:-10px">
+						{% endif %}
 							<h5 style="margin-bottom:0px; margin-top:0px">{{n.feed_message|safe}}</h4>
 							{% if n.feed_message_subtitle %}
 								<h6 style="padding-top:0px;margin-top:0px; color:grey">{{n.feed_message_subtitle|safe}}</h5>
@@ -905,7 +909,7 @@
 			   					</a>
 		   					</div>
 		   					<div class="col-xs-9" style="text-align:center">
-	   							<h4 style="color:white;width:100%">Tutoring Request</h4>
+	   							<h4 style="color:white;width:100%">TUTORING REQUEST FROM {{tutor_dict[n].name.split()[0]|upper}}</h4>
 	   						</div>
 	   					</div>
 	  				</div>
@@ -920,40 +924,124 @@
 					  	<img src="/static/img/default-photo.jpg" style="align:center" class="user-photo">
 					  	{% endif %}
 						<div class="row">
-						  	<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
-						  		<h5 style="text-align:center">
-						  		{{n.feed_message|safe}}
+						  	<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
+						  		<h5 style="text-align:center; margin:3px auto">
+						  			{{tutor_dict[n].name.split()[0]}}
+						  		</h5>
+						  	</div>
+						  	<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
+						  		<h5 style="text-align:center; margin:3px auto">
+						  		<b>Year:</b> {{tutor_dict[n].year}}, <b>Major:</b> {{tutor_dict[n].major}}
+						  		</h5>
+						  	</div>
+						  	<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
+						  		<h5 style="text-align:center; margin:3px auto">
+						  		<b>Introduction:</b> {{tutor_dict[n].tutor_introduction}}
+						  		</h5>
+						  	</div>
+						  	<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
+						  		<h5 style="text-align:center; margin:7px auto">
+						  		<b>Relevant Experience:</b> <br> 
+						            <div style="margin-top:10px">
+						            {% if tutor_dict[n].previous_tutor %}
+					                <span style="margin-left:0px"class="example-tag active" >
+					                  <span># I have tutoring experience at Cal </span> &nbsp;&nbsp;
+					                </span>
+					                {% endif %}
+					                {% if tutor_dict[n].slc_tutor %}
+					                <span style="margin-left:0px"class="example-tag active" >
+					                  <span># SLC Tutor </span> &nbsp;&nbsp;
+					                </span>
+					                {% endif %}
+					                {% if tutor_dict[n].hkn_tutor %}
+					                <span style="margin-left:0px"class="example-tag active" >
+					                  <span># HKN Tutor </span> &nbsp;&nbsp;
+					                </span>
+					                {% endif %}
+					                {% if tutor_dict[n].res_tutor %}
+					                <span style="margin-left:0px"class="example-tag active" >
+					                  <span># Residential Hall Tutor </span> &nbsp;&nbsp;
+					                </span>
+					                {% endif %}
+					                {% if tutor_dict[n].ta_tutor %}
+						                <span style="margin-left:0px"class="example-tag active" >
+					                  		<span># TA or GSI </span> &nbsp;&nbsp;
+					                	</span>
+						            {% endif %}
+						        	</div>
 						  		</h5>
 						  	</div>
 						</div>
-						<div id="hourly-amount-div" class="row">
-							<div class="col-xs-8 col-xs-offset-2">
-								<div id="offer-amount">
-									<span id="price">${{n.request_tutor_amount_hourly|int}}</span>
-									<span id="hour-text">/hr</span>
+						<div class="row">
+						  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
+							  <div class="request-info">
+							  	<div class="row">
+								  <div style="float:left;text-align:right;width:50%;padding-left:30px; padding-right:10px">
+								  	<div class="h4"><b>Urgency</b></div>
+								  	<div class="h4"><b>Estimate</b></div>
+								  	<div class="h4"><b>Description</b></div>
+								  	<div class="h4"><b>Location</b></div>
+								  	<div class="h4"><b>Availability</b></div>
+								  	<div class="h4"><b>Number of Students</b></div>
+								  	<div class="h4"><b>Hourly Price Per Person</b></div>
+								  	{% if request_dict[n.request_id]['request'].num_students > 1 %}
+								  	<div class="h4"><b>Total Hourly Price</b></div>
+								  	{% endif %}
+								  	<div class="h4"><b>Total Price</b></div>
+								  </div>
+								  <div style="float:right;text-align:left;width:50%;">
+								  	<div class="h4">{{urgency_dict[request_dict[n.request_id]['request'].urgency]}}</div>
+								  	<div class="h4">{{request_dict[n.request_id]['request'].time_estimate}} hours</div>
+								  	<div class="h4">{{request_dict[n.request_id]['request'].description}}</div>
+								  	<div class="h4">{{request_dict[n.request_id]['request'].location}}</div>
+								  	<div class="h4">{{request_dict[n.request_id]['request'].available_time}}</div>
+								  	<div class="h4">{{request_dict[n.request_id]['request'].num_students}}</div>
+								  	<div class="h4">${{n.request_tutor_amount_hourly/request_dict[n.request_id]['request'].num_students|float}}</div>
+								  	{% if request_dict[n.request_id]['request'].num_students > 1 %}
+								  	<div class="h4">${{n.request_tutor_amount_hourly|int}} </div>
+								  	{% endif %}
+								  	<div class="h4">${{request_dict[n.request_id]['request'].time_estimate * n.request_tutor_amount_hourly}}</div>
+								  </div>
+								 </div>
 								</div>
-							</div>
-						</div>
+
+								<div style="text-align:center; margin-top:10px; color:grey">
+									{% if n.request_tutor_amount_hourly !=  (request_dict[n.request_id]['request'].num_students * request_dict[n.request_id]['request'].student_estimated_hour) %}
+									<div style="font-size:14px; margin-top:10px; color:rgb(0, 159, 225)">
+											The tutor changed the price from ${{(request_dict[n.request_id]['request'].num_students * request_dict[n.request_id]['request'].student_estimated_hour )|int}}/hr to ${{n.request_tutor_amount_hourly|int}}/hr 
+											<br>
+											The price per student was ${{(request_dict[n.request_id]['request'].num_students * request_dict[n.request_id]['request'].student_estimated_hour )/request_dict[n.request_id]['request'].num_students}}/hr and is now ${{n.request_tutor_amount_hourly/request_dict[n.request_id]['request'].num_students}}/hr
+									</div>
+									{% endif%}
+								</div>
+						 	</div>
+						  </div>
 						<br>
   					</div>
 					<div class="row" style="width:104.75%">
-					        <div class="col-xs-6 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2" style="padding-right:0px">
-						        <div class="btn-reject">
-						        	<p> REJECT </p>
+				        <div class="col-xs-6 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2" style="padding-right:0px">
+					        <div class="btn-reject">
+					        	<p> REJECT </p>
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-2" style="padding-right:0px; padding-left:0px">
+							<a href="javascript:void(0)" class="{% if not user.customer_id %} student-request-accept-btn-credit {% else %} student-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
+								<div class="btn-accept">
+									{% if not user.customer_id %}
+									<p id="student-accept-text"> NEXT </p>
+									{% else %}
+									<p id="student-accept-text"> ACCEPT </p>
+									{% endif %}
 								</div>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-2" style="padding-right:0px; padding-left:0px">
-								<a href="javascript:void(0)" class="{% if not user.customer_id %} student-request-accept-btn-credit {% else %} student-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
-									<div class="btn-accept">
-										{% if not user.customer_id %}
-										<p> NEXT </p>
-										{% else %}
-										<p> ACCEPT </p>
-										{% endif %}
-									</div>
-								</a>
-							</div>
+							</a>
+						</div>
 					</div>
+					<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-4 col-md-offset-4">
+						<div id="flakers-fee-alert" style="{% if not user.customer_id %} display:none; {% else %} display:block; {% endif %} text-align:center; font-size:12px; color:red;">
+								If you click accept, you agree to our <strong> Terms of Service </strong>
+								and agree to a <strong>$10 Flaker's Fee</strong> if you do not show up to meet your student(s).
+						</div>
+					</div> 
 	  			</div>
 			{% elif n.custom_tag == 'tutor-request-offer' %}
 				<div id="{{n.a_id_name}}-detailed" style="display:none;">
@@ -1021,8 +1109,8 @@
 									<i>You could have made:</i> <br>
 									{% endif %}
 									<div>
-										<span style="color:#69bf69; font-size:45px;"><strong> $<span id="student-offer-total-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(request_dict[n.request_id]['request'].time_estimate * request_dict[n.request_id]['request'].num_students * request_dict[n.request_id]['request'].student_estimated_hour )|int}}
-											{% else %}{{(request_dict[n.request_id]['request'].time_estimate * n.request_tutor_amount_hourly)|int}}{% endif %}
+										<span style="color:#69bf69; font-size:45px;"><strong> $<span id="student-offer-total-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(request_dict[n.request_id]['request'].time_estimate * request_dict[n.request_id]['request'].num_students * request_dict[n.request_id]['request'].student_estimated_hour )}}
+											{% else %}{{(request_dict[n.request_id]['request'].time_estimate * n.request_tutor_amount_hourly)}}{% endif %}
 										</span></strong></span>
 									</div>
 									<div style="margin-top:-5px;">
@@ -1077,8 +1165,8 @@
 								</a>
 							</div>
 					</div>	
-					<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
-						<div id="flakers-fee-alert"style="{% if not user.customer_id %} display:none; {% else %} display:block {% endif %} text-align:center; font-size:14px; color:red;">
+					<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-4 col-md-offset-4">
+						<div id="flakers-fee-alert"style="{% if not user.customer_id %} display:none; {% else %} display:block {% endif %} text-align:center; font-size:12px; color:red;">
 								If you click accept, you agree to our <strong> Terms of Service </strong>
 								and agree to a <strong>$10 Flaker's Fee</strong> if you do not show up to meet your student(s).
 						</div>
