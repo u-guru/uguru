@@ -689,13 +689,12 @@ def success():
             # session.pop('user_id')
 
             # Tutors are currently not contacted when there is a request.
-            if not os.environ.get('DATABASE_URL'):
-                from notifications import tutor_request_offer
-                for tutor in r.requested_tutors:
-                    tutor.incoming_requests_to_tutor.append(r)
-                    notification = tutor_request_offer(u, tutor, r, skill_name)
-                    db_session.add(notification)
-                    tutor.notifications.append(notification)
+            from notifications import tutor_request_offer
+            for tutor in r.requested_tutors:
+                tutor.incoming_requests_to_tutor.append(r)
+                notification = tutor_request_offer(u, tutor, r, skill_name)
+                db_session.add(notification)
+                tutor.notifications.append(notification)
             try:
                 db_session.commit()
             except:
