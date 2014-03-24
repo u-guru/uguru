@@ -1235,50 +1235,6 @@
 			          </a>
 			        </div>
 					{% endif %}
-					<!-- <div class="container-fluid"  style="color:rgb(0, 159, 225)">
-						<div class="row">
-							Requested Skill: {{n.custom}}
-						</div>
-						<div class="row">
-							Urgency: {{request_dict[n.request_id].urgency}}
-						</div>
-						<div class="row">
-							Frequency: {{request_dict[n.request_id].frequency}}
-						</div>
-						<div class="row">
-							Description: {{request_dict[n.request_id].description}}
-						</div>
-						<div class="row">
-							Time Estimate: {{request_dict[n.request_id].time_estimate}}
-						</div>
-				          <div id="price-dropdown" class="btn-group">
-				            <button type="button" class="btn-default">
-				              <span id="selected-price" style="color:black">${{user.advertised_rate|int}}</span>
-				            </button>
-				            <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown">
-				              <span class="caret"></span>
-				              <span class="sr-only">Toggle Dropdown</span>
-				            </button>
-				            <ul class="dropdown-menu" role="menu">
-				              {% for n in range(user.max_price|int) %}
-				              <li><a href="javascript:void(0);">${{user.max_price|int - n}}</a></li>
-				              {% endfor %}
-				              <li class="divider"></li>
-				              <li><a href="javascript:void(0);">Free</a></li>
-				            </ul>
-				          </div>
-				          <br>
-				          <a href="javascript:void(0)" class="{% if not user.customer_id %} tutor-request-accept-btn-credit {% else %} tutor-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
-	                		  <div class="main-font" id="tutor-submit-next">
-	                    		Accept Request
-	                		  </div>
-            			  </a>
-            			 {% if not user.customer_id %}
-            			<div id="credit-card-success" style="display:None; color:green; text-align:center" class="row">
-							Credit Card Successfully Added! 
-						</div>
-						{% endif %}
-					</div> -->
 				</div>
 			{% endif %}
 		{% endfor %}

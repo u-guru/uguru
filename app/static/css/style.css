@@ -1568,3 +1568,9 @@ a.example-skill-link {
 .tt-suggestion.tt-cursor p {
   color:white!important;  
 }
+
+.shadow {
+  -moz-box-shadow:    5px 5px 5px #ccc;
+  -webkit-box-shadow: 5px 5px 5px #ccc;
+  box-shadow:         5px 5px 5px #ccc;
+}
