@@ -28,9 +28,10 @@ def index():
         return render_template('new_index.html', forms=[request_form],
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete)
     if session.get('user_id'):
+        user = User.query.get(session.get('user_id'))
+        if user.skills and not user.verified_tutor:
+            return redirect(url_for('settings'))
         return redirect(url_for('activity'))
-    if (session.get('user_id') and user.skills and (not user.profile_url or not user.tutor_introduction)):
-        return redirect(url_for('settings'))
     return render_template('new_index.html', forms=[request_form],
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete)
 
@@ -112,6 +113,9 @@ def update_profile():
             except:
                 db_session.rollback()
                 raise 
+            if user.skills and user.tutor_introduction and user.major and \
+                user.profile_url != '/static/img/default-photo.jpg':
+                user.settings_notif = 0
         return jsonify(ajax_json)
 
 @app.route('/add-credit/', methods=('GET', 'POST'))
@@ -704,7 +708,6 @@ def success():
                 user_id = session.get('user_id')
                 user = User.query.get(user_id)
                 user.feed_notif = user.feed_notif + 1
-                user.settings_notif = user.settings_notif - 1
                 user.verified_tutor = True
 
                 if len(user.notifications) < 2: 
@@ -739,6 +742,7 @@ def success():
                     phone_number = ajax_json['phone'],
                 )
 
+                u.year = 'Sophomore'
                 db_session.add(u)
                 db_session.commit()
                 if session.get('referral'):
@@ -818,7 +822,8 @@ def access():
         ajax_json = request.json
         access_code = ajax_json['access']
         access_codes = ['goslc50', 'goess10','gohkn20', 'gobears30', 'golee', 'gojackie', \
-        'gojared', 'gomichael','gosamir','gojonathan','gosaba','gorafi', 'godorms20']
+        'gojared', 'gomichael','gosamir','gojonathan','gosaba','gorafi', 'godorms20', 'gopeace20'\
+        ,'goess10']
         if access_code.lower() in access_codes:
             json['success'] = True            
             session['referral'] = access_code.lower()
@@ -851,8 +856,8 @@ def activity():
         return redirect(url_for('index'))
     user_id = session.get('user_id')
     user = User.query.get(user_id)
-    # if (user.skills and (user.profile_url == '/static/img/default-photo.jpg' or not user.tutor_introduction)):
-    #     return redirect(url_for('settings'))
+    if user.skills and not user.verified_tutor:
+        return redirect(url_for('settings'))
     request_dict = {}
     address_book = {}
     payment_dict = {}
@@ -898,8 +903,8 @@ def messages():
         return redirect(url_for('index'))
     user_id = session['user_id']
     user = User.query.get(user_id)
-    # if (user.skills and (user.profile_url == '/static/img/default-photo.jpg' or not user.tutor_introduction)):
-    #     return redirect(url_for('settings'))
+    if user.skills and not user.verified_tutor:
+        return redirect(url_for('settings'))
     pretty_dates = {}
     for conversation in user.mailbox.conversations:
         for message in conversation.messages:

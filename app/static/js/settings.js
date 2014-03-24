@@ -48,13 +48,7 @@ $(document).ready(function() {
           $('#settings-notif').hide();
           $('#student-photo-alert').hide();
           if ($('#short-description').val() && $('#major-input')) {
-            // $('#prof-not-complete').hide();
-            // $('#prof-not-complete').removeClass('alert-danger')
-            // $('#prof-not-complete').html('You completed your profile! Click <strong> "Launch my Site" </strong> at the bottom of the page!')
-            // $('#prof-not-complete').addClass('alert-success')
-            // $('#prof-not-complete').show();
-            $('#launch-profile-div').show();
-            verify_tutor();
+            $('#prof-not-complete').hide();
           }
           readURL(this);
           var formData = new FormData()
@@ -109,37 +103,27 @@ $(document).ready(function() {
       } else {
         if (!$('#default-photo').is(':visible') && $('#short-description').val()) {
             $('#prof-not-complete').hide()
-            // $('#prof-not-complete').removeClass('alert-danger')
-            // $('#prof-not-complete').html('You completed your profile! Click <strong> "Launch my Site" </strong> at the bottom of the page!')
-            // $('#prof-not-complete').addClass('alert-success')
-            // $('#prof-not-complete').show();
-            // $('#launch-profile-div').show();
-            verify_tutor();
         }
         $('#save-btn-major').hide();
         $('#saved-major').show();
         $('#saved-major').delay(750).fadeOut('slow');
+        $('#major-input').css('border','1px solid grey');
         var major_text = $('#major-input').val();
         send_profile_update_ajax('major', major_text);
       }
     })
 
     $('#profile-save-button').click(function(){
-      if (!$('#short-description').val()) {
+      if (!$('#short-description').val().trim()) {
         $('#alert-rating-short-description').show()
       } else {
         $('#alert-rating-short-description').hide();
         $('#profile-save-button').hide();
+        $('#short-description').css('border', '1px solid grey');
         $('#saved-introduction').show();
         $('#saved-introduction').delay(750).fadeOut('slow');
         if (!$('#default-photo').is(':visible') && $('#major-input').val()) {
             $('#prof-not-complete').hide()
-            // $('#prof-not-complete').removeClass('alert-danger')
-            // $('#prof-not-complete').html('You completed your profile! Click <strong> "Launch my Site" </strong> at the bottom of the page!')
-            // $('#prof-not-complete').addClass('alert-success')
-            // $('#prof-not-complete').show();
-            // $('#launch-profile-div').show();
-            verify_tutor();
         }
         send_profile_update_ajax('intro', $('#short-description').val())
       }
@@ -368,6 +352,7 @@ $(document).ready(function() {
                 $('#default-photo').hide()
                 $('#image-preview').show()
                 $('#saved-photo').show();
+                $('#pic-holder').css('border', '1px solid #40bfec');
                 $('#saved-photo').delay(1250).fadeOut('slow');
                 $('#image-preview').attr('src', e.target.result);
             }

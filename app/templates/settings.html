@@ -277,7 +277,7 @@
         {% endif %}
         <div align="center">
           <h4>PROFILE PICTURE</h4>
-          <div id="pic-holder">
+          <div style="{% if user.profile_url == '/static/img/default-photo.jpg' %} border:1px solid red {% endif %}"id="pic-holder">
             {% if user.profile_url != '/static/img/default-photo.jpg' %}
               <img style="display:block" width="120" height="120"id="image-preview" src="{{user.profile_url}}"/>
             {% else %}
@@ -325,7 +325,7 @@
         </div>
         <div style="margin-top:15px"class="row-fluid">
           <span id="saved-major" class="saved-text">Saved!<br></span>
-          <input style="font-size:14px" id="major-input" {% if user.major %} value="{{user.major}}" {% endif %} placeholder="Your Major(s)"> </input>
+          <input style="font-size:14px; {% if not user.major %} border:1px solid red; {% endif %}" id="major-input" {% if user.major %} value="{{user.major}}" {% endif %} placeholder="Your Major(s)"> </input>
           <span id="save-btn-major" style="margin-top:-5px; display:none" class="btn-options btn-md active">
               <span style="color:white">Save</span>
           </span>
@@ -371,7 +371,7 @@
             {{user.tutor_introduction}}
             </textarea>
             {% else %}
-            <textarea id="short-description" class="bio" cols="50" rows="5" placeholder="Tell students about yourself and your previous experience in tutoring. This section is important for students to choose among tutors."></textarea>
+            <textarea style="border:1px solid red" id="short-description" class="bio" cols="50" rows="5" placeholder="Tell students about yourself and your previous experience in tutoring. This section is important for students to choose among tutors."></textarea>
             {% endif %}
 
           
