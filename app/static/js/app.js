@@ -193,7 +193,7 @@ $(document).ready(function(){
     });
     $('#student-next-link').click(function() {
         if ((!$('#student-signup-name').val() || !$('#student-signup-email').val()) 
-        || !$('#student-signup-password').val() || !$('#student-signup-phone').val()) 
+        || !$('#student-signup-password').val()) 
         {
             $('#alert-fields-student-signup').show()
         } else {
@@ -268,7 +268,7 @@ $(document).ready(function(){
 
     $('#tutor-next-link').click(function(){
         if ((!$('#tutor-signup-name').val() || !$('#tutor-signup-email').val()) 
-          || !$('#tutor-signup-password').val() || !($('#tutor-signup-phone').val().length == 10)
+          || !$('#tutor-signup-password').val() 
           || !($('#tutor-signup-email').val().indexOf('@berkeley.edu') != -1))
         {
           $('#alert-fields-tutor-signup').show() 
@@ -305,6 +305,11 @@ $(document).ready(function(){
           }
 
     });
+
+    var check_duplicate_skill = function(skill) {
+      
+    }
+
     $('#add-skill-btn').click(function() {
       if ($('#add-skill-input-settings').val()) {
         var skill_name = $('#add-skill-input-settings').val();
@@ -324,6 +329,7 @@ $(document).ready(function(){
       }
     });
 
+
     $('#add-skill-input-settings').keyup(function(e){
         if ($('#add-skill-input-settings').val()) {
           if (e.keyCode == 13) {
@@ -342,6 +348,23 @@ $(document).ready(function(){
                 $('#tutor-register-div').show();
                 update_skill_ajax('add',skill_name);
               }
+            }
+          }
+          if (e.keyCode == 188) {
+            if ($('#add-skill-input-settings').val()) {
+              var skill_name = $('#add-skill-input-settings').val().replace(',', '');
+              if (autocomplete_json.indexOf(skill_name) == -1) {
+                alert('Please only add things from the available options.');
+                $('#add-skill-input-settings').val('');
+              } else {
+                $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
+                $('.skill-tag:last .skill-tag-text').text(skill_name);
+                $('.skill-tag:last').show();
+                $('#add-skill-input-settings').val('');
+                $('#my-skills').show();
+                $('#tutor-register-div').show();
+                update_skill_ajax('add',skill_name);
+              } 
             }
           }
         }

@@ -46,8 +46,8 @@ if arg == 're-create_db':
     import os, json
     script_dir = os.path.dirname(__file__)
     rel_path = 'app/static/data/all_courses.json'
-    rel_path_variations = 'app/static/data/variations.py'
     abs_file_path = os.path.join(script_dir, rel_path)
+    rel_path_variations = 'app/static/data/variations.py'
     abs_file_path_to_save = os.path.join(script_dir, rel_path_variations)
     variation_dict = {}
     courses = json.load(open(abs_file_path))
@@ -453,6 +453,28 @@ if arg == 'test_feed':
     db_session.commit()
     user1 = User.query.get(1)
     print user1.notifications
+
+if arg == 'generate_short_variations':
+    import json    
+    json_data = open('app/static/data/all_courses.json')
+    data = json.load(json_data)
+    result_dict = {}
+    for key in data.keys():
+        key_variations = data[key]['variations']
+        shortest_one = min(key_variations, key=len)
+        result_dict[key] = shortest_one
+
+
+    script_dir = os.path.dirname(__file__)
+    rel_path_variations = 'app/static/data/short_variations.py'
+    abs_file_path_to_save = os.path.join(script_dir, rel_path_variations)
+
+    f = open(abs_file_path_to_save, "wb+")
+    f.write(json.dumps(result_dict,
+        sort_keys = True,
+        indent = 4,
+        separators = (',', ': ')))
+    print result_dict
 
 
 

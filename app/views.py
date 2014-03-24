@@ -732,7 +732,7 @@ def success():
                     ajax_json['duplicate-email'] = True
                     return jsonify(dict=ajax_json)
                 query = User.query.filter_by(phone_number=ajax_json['phone']).first()
-                if query:
+                if query and ajax_json['phone'] != '':
                     ajax_json['duplicate-phone'] = True
                     return jsonify(dict=ajax_json)
                 u = User(
@@ -742,7 +742,11 @@ def success():
                     phone_number = ajax_json['phone'],
                 )
 
+                if ajax_json['phone'] == '':
+                    u.phone_number = None;
+
                 u.year = 'Sophomore'
+                u.verified_tutor = True
                 db_session.add(u)
                 db_session.commit()
                 if session.get('referral'):
@@ -821,7 +825,7 @@ def access():
         json = {}
         ajax_json = request.json
         access_code = ajax_json['access']
-        access_codes = ['goslc50', 'goess10','gohkn20', 'gobears30', 'golee', 'gojackie', \
+        access_codes = ['goslc50', 'gospc10', 'goess10','gohkn20', 'gobears30', 'golee', 'gojackie', \
         'gojared', 'gomichael','gosamir','gojonathan','gosaba','gorafi', 'godorms20', 'gopeace20'\
         ,'goess10']
         if access_code.lower() in access_codes:
@@ -961,7 +965,8 @@ def settings():
     if not user_id:
         return redirect(url_for('index'))
     user = User.query.get(user_id)
-    return render_template('settings.html', logged_in=session.get('user_id'), user=user)
+    from app.static.data.short_variations import short_variations_dict
+    return render_template('settings.html', logged_in=session.get('user_id'), user=user, variations=short_variations_dict)
 
 @app.route('/tutor_accept/')
 def tutor_accept():
