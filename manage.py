@@ -24,6 +24,21 @@ if arg == 'set_profile_default':
     db_session.commit()
     print "complete"
 
+if arg == 'initialize':
+    import os, json
+    os.remove('app.db')
+    init_db()
+    script_dir = os.path.dirname(__file__)
+    rel_path = 'app/static/data/db_courses.json'
+    abs_file_path = os.path.join(script_dir, rel_path)    
+    skills = json.load(open(abs_file_path))
+    
+    for index in range(1, len(skills) + 1):
+        new_course = Course(name=skills[str(index)])
+        db_session.add(new_course)
+        db_session.commit()
+    print 'courses created'
+
 if arg == 're-create_db':
     os.remove('app.db')
     init_db()

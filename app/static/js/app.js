@@ -224,7 +224,7 @@ $(document).ready(function(){
         'student-request': true,
         'description': $('#student-signup-description').val(),
         'urgency': $('#urgency-request .urgency.active').index(),
-        'num-students': ($('#num-students-request .num-students').index() + 1),
+        'num-students': ($('#num-students-request .num-students.active').index() + 1),
         'skill': $('input[name="skill"]').val(),
         'estimate': $('#time-estimate-slider').val(),
         'idea-price': $('#ideal-price-slider').val(),

@@ -12,7 +12,7 @@
 		<div class="page-title">
 		  <div class="row" style="width:100%;text-align:center">
 		      <div class="col-xs-1">
-		        <a href="/" id="credit-card-back-link" style="text-decoration:none"> 
+		        <a href="/" style="text-decoration:none"> 
 		          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
 		        </a>
 		      </div>
@@ -135,6 +135,7 @@
 		 </div>
 		 {% endif %}
 
+		<div id="main-feed">
 		{% for n in user.notifications|reverse %}
 		<div class="row container-fluid">
 			<div class="col-xs-12 col-sm-offset-2 col-sm-offset-8 col-md-offset-3 col-md-6">
@@ -163,6 +164,7 @@
 			</div>
 		</div>
 		{% endfor %}
+		</div>
 	</div>
 	<br>
 	<br>
@@ -400,7 +402,7 @@
 	<div class="page-title">
 	  <div class="row" style="width:100%;text-align:center">
 	      <div class="col-xs-1">
-	        <a href="/" id="credit-card-back-link" style="text-decoration:none"> 
+	        <a href="/" style="text-decoration:none"> 
 	          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
 	        </a>
 	      </div>
@@ -443,7 +445,7 @@
 	<div class="page-title">
 	  <div class="row" style="width:100%;text-align:center">
 	      <div class="col-xs-1">
-	        <a href="/" id="credit-card-back-link" style="text-decoration:none"> 
+	        <a href="/" style="text-decoration:none"> 
 	          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
 	        </a>
 	      </div>
@@ -560,17 +562,18 @@
 		<div id="credit-card-info" style="display:none; color:rgb(0, 159, 225);">
 		<form role="form" action="javascript:void(0)" method="POST" id="payment-form">
 			<div class="page-title">
-				<div class="row" style="width:100%;text-align:center">
-   					<div class="col-xs-1 col-xs-offset-1 col-md-1">
-	   					<a href="javascript:void(0)" id="credit-card-back-link" style="text-decoration:none"> 
-	   						<h4 id="back-button">< </h4>
-	   					</a>
-   					</div>
-   					<div class="col-xs-9 col-md-8" style="text-align:center">
-							<h4 style="color:white;width:100%">Credit Card</h4>
-					</div>
-				</div>
+			  <div class="row" style="width:100%;text-align:center">
+			      <div class="col-xs-1">
+			        <a href="javascript:void(0)" id="credit-card-back-link" style="text-decoration:none"> 
+			          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
+			        </a>
+			      </div>
+			      <div class="col-xs-10" style="text-align:center">
+			        <h4 style="color:white;width:100%;font-weight:500">CREDIT CARD</h4>
+			    </div>
+			  </div>
 			</div>
+
 			<div class="credit-main container-fluid">
 				<br>
 				<div class="row">
@@ -593,9 +596,12 @@
 					</div>
 			  	</div>
 			  	<div class="row">
-			  		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+			  		<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 					  		<br>
-					  		<div class="form-group">
+					  		<div style="text-align:center">
+					  			<span class="payment-errors"></span>
+					  		</div>
+					  		<div style="display:block" class="form-group">
 					  			<label for="credit-card-num">
 					  				<span class="glyphicon glyphicon-credit-card" style="color:#00a0cf;"></span>
 					  				<span class="h4" style="color:#00a0cf">&nbsp;&nbsp;CARD
@@ -604,25 +610,41 @@
 					  			<br>
 					  			<input placeholder="•••• •••• •••• ••••" style="width:100%" type="text" size="20" data-stripe="number" class="input-signup" id="credit-card-num">
 					  		</div>
-					  		<div class="form-group">
-					  			<label for="expiration-date">
-					  				<span class="glyphicon glyphicon-calendar" style="color:#00a0cf"></span>
-					  				<span class="h4" style="color:#00a0cf">&nbsp;&nbsp;EXPIRATION DATE</span>
-					  			</label>
-					  			<br>
-					  			<input placeholder="MM/YY" style="width:35%" class="input-signup" type="text" data-stripe="exp-month" id="expiration-date">
+					  		<div style="display:block"class="row-fluid">
+					  			<div style="padding-left:0px" class="col-xs-6 col-sm-6 col-md-6">
+							  		<div style="display:inline"class="form-group">
+							  			<label for="expiration-date">
+							  				<span class="glyphicon glyphicon-calendar" style="color:#00a0cf"></span>
+							  				<span class="h4" style="color:#00a0cf">&nbsp;&nbsp;EXPIRATION DATE</span>
+							  			</label>
+							  			<br>
+							  			<input placeholder="MM/YY" style="width:100%" class="input-signup" type="text" data-stripe="exp-month" id="expiration-date">
+							  		</div>
+							  	</div>
+							  	<div style="padding-right:0px" class="col-xs-6 col-sm-6 col-md-6">
+							  		<div style="display:inline"class="form-group">
+							  			<label for="expiration-date">
+							  				<span class="glyphicon glyphicon-calendar" style="color:#00a0cf"></span>
+							  				<span class="h4" style="color:#00a0cf">&nbsp;&nbsp;CVC</span>
+							  			</label>
+							  			<br>
+							  			<input placeholder="••••" style="width:100%" class="input-signup" type="text" id="cvc-code">
+							  		</div>
+							  	</div>
 					  		</div>
-						 	<span class="payment-errors"></span>
+					  		<div style="margin-top:85px; text-align:center" class="row-fluid">
+					  			<img src="/static/img/powered-stripe.png">
+					  		</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 col-md-6" style="padding-left:0px; padding-right:0px">
+					<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:0px; margin-top:20px; padding-right:0px">
 						<a id="submit-card-info" href="javascript:void(0)" onclick="document.getElementById('payment-form').submit();return false;">
 							<div class="btn-save">
-								<p>SAVE INFORMATION
+								<p>ADD CARD
 								</p>
 							</div>
-						</a>
+						</a> 
 					</div>
 				</div>
 			</div>
@@ -655,7 +677,7 @@
 						  	</div>
 						 </div>
 					  	<img src="/static/img/jenny.jpg" style="align:center" class="user-photo">
-					  <h5 style="text-align:center"><b>A Student</b> needs help in <b>CS10</b></h5>
+					  <h5 style="text-align:center"><b>Jenny</b> needs help in <b>CS10</b></h5>
 					  <div class="row">
 						  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
 							  <div class="request-info">
@@ -868,6 +890,7 @@
 					 			<img src="{{tutor.profile_url}}" style="align:center" class="tutor-photo"> 
 					 		</span>
 					 		{% endfor %}
+					 		</div>
 					 	</div>
 					 	{% endif %}
 					 </div>
@@ -899,8 +922,7 @@
 						<div class="row">
 						  	<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
 						  		<h5 style="text-align:center">
-						  		<b>A Tutor</b> wants to help you with <b>{{n.skill_name}}</b>
-						  		and is requesting...
+						  		{{n.feed_message|safe}}
 						  		</h5>
 						  	</div>
 						</div>
@@ -913,18 +935,7 @@
 							</div>
 						</div>
 						<br>
-						<span class="tutor-rating">
-       						<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-  						</span>
-  						<div class="row">
-  							<div class="col-xs-8 col-xs-offset-2">
-								<div id="num-reviews">
-									<p>0 Reviews </p>
-								</div>
-							</div>
-  						</div>
-					</div>
-				    <br>
+  					</div>
 					<div class="row" style="width:104.75%">
 					        <div class="col-xs-6 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2" style="padding-right:0px">
 						        <div class="btn-reject">
@@ -934,7 +945,11 @@
 							<div class="col-xs-6 col-sm-3 col-md-2" style="padding-right:0px; padding-left:0px">
 								<a href="javascript:void(0)" class="{% if not user.customer_id %} student-request-accept-btn-credit {% else %} student-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
 									<div class="btn-accept">
+										{% if not user.customer_id %}
+										<p> NEXT </p>
+										{% else %}
 										<p> ACCEPT </p>
+										{% endif %}
 									</div>
 								</a>
 							</div>
@@ -954,76 +969,121 @@
 	   						</div>
 	   					</div>
 	  				</div>
-					<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px">
-					  	<div id="credit-card-success-tutor" style="display:None; color:green; text-align:center" class="row">
-					  		<br>
-							Credit Card Successfully Added! 
+	  				<div id="credit-card-added-alert" style="display:none" class="row-fluid">
+						  	<div style="margin:auto; float:center; margin-top:10px;"class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+							  	<div class="alert alert-success" style="margin-bottom:0px;">
+							  		Credit card successfully added!
+							  	</div>
+							 </div>
+					</div>
+					{% if n.custom == 'tutor-accept-request' %}
+						<div class="row-fluid">
+						  	<div style="margin:auto; text-align:center; float:center; margin-top:10px;"class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+							  	<div class="alert alert-info" style="margin-bottom:0px;">
+							  		We have let the student know that you have accepted! <br>Once they agree, we'll connect you. Check your email <i>frequently</i>.
+							  	</div>
 						</div>
+					</div>
+					{% endif %}
+					<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px">
 					  	<br>
 					  	{% if request_dict[n.request_id]['student'].profile_url %}
 					  	<img src="{{request_dict[n.request_id]['student'].profile_url}}" style="align:center" class="user-photo">
 					  	{% else %}
 					  	<img src="/static/img/default-photo.jpg" style="align:center" class="user-photo">
 					  	{% endif %}
-					  <h5 style="text-align:center"><b>A Student</b> needs help in <b>{{n.custom|upper}}</b></h5>
+					  <h5 style="text-align:center">{{n.feed_message|safe}}</h5>
 					  <div class="row">
 						  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
 							  <div class="request-info">
 							  	<div class="row">
 								  <div style="float:left;text-align:right;width:50%;padding-left:30px; padding-right:10px">
-								  	<div class="h4"><b>Urgency</b></div>
-								  	<div class="h4"><b>Estimate</b></div>
-								  	<div class="h4"><b>Description</b></div>
+								  	<div class="h4"><b>Estimated time</b></div>
+								  	<div class="h4"><b>Details</b></div>
+								  	<div class="h4"><b>Best Time to Meet</b></div>
+								  	<div class="h4"><b>Preferred Location</b></div>
+								  	<div class="h4"><b>Number of Students</b></div>
 								  </div>
 								  <div style="float:right;text-align:left;width:50%;">
-								  	<div class="h4">{{urgency_dict[request_dict[n.request_id]['request'].urgency]}}</div>
-								  	<div class="h4">{{request_dict[n.request_id]['request'].time_estimate}} hours (This is only an estimate)</div>
+								  	<div class="h4"><span id="student-time-estimate-{{loop.index}}">{{request_dict[n.request_id]['request'].time_estimate}}</span> hours</div>
 								  	<div class="h4">{{request_dict[n.request_id]['request'].description}}</div>
+								  	<div class="h4">{{request_dict[n.request_id]['request'].available_time}}</div>
+								  	<div class="h4">{{request_dict[n.request_id]['request'].location}}</div>
+								  	<div class="h4">{{request_dict[n.request_id]['request'].num_students}}</div>
 								  </div>
 								 </div>
 								</div>
+
+								<div style="text-align:center; margin-top:10px; color:grey">
+									{% if n.custom != 'tutor-reject' %}
+									<i>You will be making:</i> <br>
+									{% else %}
+									<i>You could have made:</i> <br>
+									{% endif %}
+									<div>
+										<span style="color:#69bf69; font-size:45px;"><strong> $<span id="student-offer-total-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(request_dict[n.request_id]['request'].time_estimate * request_dict[n.request_id]['request'].num_students * request_dict[n.request_id]['request'].student_estimated_hour )|int}}
+											{% else %}{{(request_dict[n.request_id]['request'].time_estimate * n.request_tutor_amount_hourly)|int}}{% endif %}
+										</span></strong></span>
+									</div>
+									<div style="margin-top:-5px;">
+										<span style="color:grey; font-weight:100; font-size:16px">
+											$<span id="student-offer-hourly-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(request_dict[n.request_id]['request'].num_students * request_dict[n.request_id]['request'].student_estimated_hour )|int}}{% else %}{{n.request_tutor_amount_hourly|int}}{% endif %}</span>/hr
+										</span>
+									</div>
+									{% if n.request_tutor_amount_hourly %}
+									<div style="font-size:14px; margin-top:10px; color:rgb(0, 159, 225)">
+											You changed the price from ${{(request_dict[n.request_id]['request'].num_students * request_dict[n.request_id]['request'].student_estimated_hour )|int}}/hr to ${{n.request_tutor_amount_hourly|int}}/hr 
+									</div>
+									{% endif%}
+								</div>
+								{% if n.custom != 'tutor-reject' and n.custom != 'tutor-accept-request' %}
+								<a style="text-align:center;" id="tutor-change-price-link-{{loop.index}}" class="tutor-change-price-link" href="javascript:void(0);">
+									<div style="margin-top:10px;color:rgb(0, 159, 225)"> Change the price
+									</div>
+								</a>
+								{% endif %}
+						 	</div>
 						  </div>
 					 	</div>
-					   <div class="h4" style="float:left;text-align:right;width:50%;padding-top:8px;padding-right:20px"><b>Your Hourly Price</b>
-					   </div>
-					   <div id="price-dropdown-div" style="float:right;text-align:left;width:50%;padding-top:8px">
-						   <div class="btn-group price-dropdown">
-					            <button type="button" class="btn-default">
-					              <span id="selected-price" style="color:black">${{user.advertised_rate|int}}</span>
-					            </button>
-					            <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown">
-					              <span class="caret"></span>
-					              <span class="sr-only">Toggle Dropdown</span>
-					            </button>
-					            <ul class="dropdown-menu" role="menu">
-					              {% for n in range(user.max_price|int) %}
-					              <li><a href="javascript:void(0);">${{user.max_price|int - n}}</a></li>
-					              {% endfor %}
-					              <li class="divider"></li>
-					              <li><a href="javascript:void(0);">Free</a></li>
-					            </ul>
-					         </div> 
-				        </div>
-					</div>
-					<!-- <div id="credit-card-success" style="display:None; color:green; text-align:center" class="row">
-							Credit Card Successfully Added! 
-					</div>
-				    <br> -->
 				    <br>
+				    {% if n.custom != 'tutor-reject' and n.custom != 'tutor-accept-request' %}
+				    <div class="row" style="display:none; text-align:center; margin-top:-10px; margin-bottom:30px" id="tutor-change-price-slider-div-{{loop.index}}">
+				    	<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
+				    		<div style="margin:auto; width:75%" id="tutor-change-price-slider-{{loop.index}}" class="tutor-change-price-slider"></div>
+				    	</div>
+				    	<br>
+				    	<a style="text-align:center;" class="tutor-change-price-cancel" id="tutor-change-price-cancel-{{loop.index}}" href="javascript:void(0);">
+									<div style="margin-top:10px;color:rgb(0, 159, 225)"> Cancel
+									</div>
+						</a>
+				    </div>
 					<div class="row" style="width:104.75%">
 					        <div class="col-xs-6 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2" style="padding-right:0px">
-						        <div class="btn-reject">
-						        	<p> REJECT </p>
-								</div>
+						        <a class="tutor-reject-btn" id="tutor-reject-btn-{{n.request_id}}" href="javascript:void(0)">
+							        <div class="btn-reject">
+							        	<p> REJECT </p>
+									</div>
+								</a>
 							</div>
 							<div class="col-xs-6 col-sm-3 col-md-2" style="padding-right:0px; padding-left:0px">
 								<a href="javascript:void(0)" class="{% if not user.customer_id %} tutor-request-accept-btn-credit {% else %} tutor-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
 									<div class="btn-accept">
-										<p> ACCEPT </p>
+										{% if not user.customer_id %}
+										<p id="tutor-accept-text"> NEXT </p>
+										{% else %}
+										<p id="tutor-accept-text"> ACCEPT </p>
+										{% endif %}
 									</div>
 								</a>
 							</div>
+					</div>	
+					<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
+						<div id="flakers-fee-alert"style="{% if not user.customer_id %} display:none; {% else %} display:block {% endif %} text-align:center; font-size:14px; color:red;">
+								If you click accept, you agree to our <strong> Terms of Service </strong>
+								and agree to a <strong>$10 Flaker's Fee</strong> if you do not show up to meet your student(s).
+						</div>
 					</div>
+					{% endif %}
 					<!-- <div class="container-fluid"  style="color:rgb(0, 159, 225)">
 						<div class="row">
 							Requested Skill: {{n.custom}}
@@ -1091,6 +1151,12 @@
 	{% endif %}
 	<script src="/static/js/jquery.nouislider.min.js"></script>
 	<script>
+        $(".tutor-change-price-slider").noUiSlider({
+              range: [0, 40]
+              ,start: 5
+              ,step: 1
+              ,handles: 1
+        }); 
         $("#time-estimate-slider").noUiSlider({
               range: [0, 4]
               ,start: 1

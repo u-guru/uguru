@@ -2,20 +2,16 @@
     $('input#credit-card-num').payment('formatCardNumber');
     $('input#expiration-date').payment('formatCardExpiry');
 
-    $('.tutor-request-accept-btn-credit').click(function(){
-        if (credit_card_back_link) {
-            credit_card_back_link = $(this).parent().parent().parent().attr('id')
-            $(this).parent().parent().parent().hide();
-            $('#credit-card-info').show();
-        }
+    $('.tutor-request-accept-btn-credit').click(function(){    
+        credit_card_back_link = $(this).parent().parent().parent().attr('id')
+        $(this).parent().parent().parent().hide();
+        $('#credit-card-info').show();
     });
 
     $('.student-request-accept-btn-credit').click(function(){
-        if (credit_card_back_link) {
-            credit_card_back_link = $(this).parent().parent().parent().attr('id')
-            $(this).parent().parent().parent().hide();
-            $('#credit-card-info').show();
-        }
+        credit_card_back_link = $(this).parent().parent().parent().attr('id')
+        $(this).parent().parent().parent().hide();
+        $('#credit-card-info').show();
     });
 
     $('#submit-bank-account-info').click(function() {
@@ -71,7 +67,7 @@
    });
 
     $('#credit-card-back-link').click(function(){
-        $(this).parent().parent().parent().parent().hide();
+        $(this).parent().parent().parent().parent().parent().hide();
         $('#' + credit_card_back_link).show();
         credit_card_back_link = true;
     })
@@ -111,27 +107,25 @@ var stripeResponseHandler = function(status, response) {
         // Show the errors on the form
         $form.find('.payment-errors').text(response.error.message);
     } else {
+        var token = response.id;
+        var data = {'token':token}
+        $.ajax({
+                type: "POST",
+                contentType: 'application/json;charset=UTF-8',
+                url: '/add-credit/' ,
+                data: JSON.stringify(data),
+                dataType: "json"
+        });  
         $('#payment-form').parent().hide();
         $('#' + credit_card_back_link).show();
         $('#' + credit_card_back_link + ' a.tutor-request-accept-btn-credit').addClass('tutor-request-accept-btn');
         $('#' + credit_card_back_link + ' a.tutor-request-accept-btn-credit').removeClass('tutor-request-accept-btn-credit');
         $('#' + credit_card_back_link + ' a.student-request-accept-btn-credit').addClass('student-request-accept-btn');
         $('#' + credit_card_back_link + ' a.student-request-accept-btn-credit').removeClass('student-request-accept-btn-credit');
-        $('#credit-card-success').show();
-        $('#credit-card-success-tutor').show();
-        $('#credit-card-success').delay(2000).fadeOut('slow');
-        $('#credit-card-success-tutor').delay(2000).fadeOut('slow');
+        
+        $('#tutor-accept-text').text('ACCEPT');
+        $('#flakers-fee-alert').show();
         credit_card_back_link = false
-        // token contains id, last4, and card type
-        var token = response.id;
-        var data = {'token':token}
-          $.ajax({
-                type: "POST",
-                contentType: 'application/json;charset=UTF-8',
-                url: '/add-credit/' ,
-                data: JSON.stringify(data),
-                dataType: "json"
-          });  
         }
     };
 

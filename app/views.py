@@ -409,6 +409,7 @@ def update_requests():
             incoming_request_num = ajax_json.get('tutor-accept')
             hourly_amount = ajax_json.get('hourly-amount')
             skill_name = ajax_json.get('skill-name')
+            notif_num = ajax_json.get('notif-num')
             tutor = user
             r = tutor.incoming_requests_to_tutor[incoming_request_num]
             r.committed_tutors.append(tutor)
@@ -416,17 +417,51 @@ def update_requests():
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
 
+            current_notification = user.notifications[notif_num]
+            current_notification.feed_message = 'You accepted ' + student.name.split(' ')[0] + \
+                "'s request for " + skill_name.upper() + "."
+            current_notification.feed_message_subtitle = "Click here to see next steps."
+            current_notification.custom = 'tutor-accept-request'
+            
+            if ajax_json.get('price-change'):
+                current_notification.request_tutor_amount_hourly = ajax_json.get('hourly-amount')
+            
+            user.feed_notif += 1
+            current_notification.time_read = None
+
             from notifications import tutor_request_accept, student_incoming_tutor_request
-            tutor_notification = tutor_request_accept(student, tutor, r, skill_name, hourly_amount)
             student_notification = student_incoming_tutor_request(student, tutor, r, skill_name, hourly_amount)
-            tutor.notifications.append(tutor_notification)
             student.notifications.append(student_notification)
-            db_session.add_all([tutor_notification, student_notification])
+            db_session.add(student_notification)
+            
             try:
                 db_session.commit()
             except:
                 db_session.rollback()
                 raise 
+
+        if 'tutor-reject' in ajax_json:
+            notif_num = ajax_json.get('notif-num')
+            request_num = ajax_json.get('request-num')
+            _request = Request.query.get(request_num)
+            current_notification = user.notifications[notif_num]
+            print _request
+            # user.incoming_requests_to_tutor.remove(_request)
+            student_name = User.query.get(_request.student_id).name.split(" ")[0]
+
+
+
+            current_notification.feed_message = 'You rejected ' + student_name + "'s request for " +\
+                current_notification.skill_name + "."
+            current_notification.feed_message_subtitle = None
+            current_notification.custom = 'tutor-reject'
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise             
+
 
         if 'student-accept' in ajax_json:
             hourly_amount = ajax_json.get('hourly-amount')
@@ -635,12 +670,13 @@ def success():
             # session.pop('user_id')
 
             # Tutors are currently not contacted when there is a request.
-            from notifications import tutor_request_offer
-            # for tutor in r.requested_tutors:
-            #     tutor.incoming_requests_to_tutor.append(r)
-            #     notification = tutor_request_offer(u, tutor, r, skill_name)
-            #     db_session.add(notification)
-            #     tutor.notifications.append(notification)
+            if not os.environ.get('DATABASE_URL'):
+                from notifications import tutor_request_offer
+                for tutor in r.requested_tutors:
+                    tutor.incoming_requests_to_tutor.append(r)
+                    notification = tutor_request_offer(u, tutor, r, skill_name)
+                    db_session.add(notification)
+                    tutor.notifications.append(notification)
             try:
                 db_session.commit()
             except:
@@ -819,7 +855,8 @@ def activity():
             tutor_dict[notification] = User.query.get(notification.request_tutor_id)
         pretty_dates[notification.id] = pretty_date(notification.time_created)
     for request in (user.outgoing_requests + user.incoming_requests_to_tutor + user.incoming_requests_from_tutors):
-        request_dict[request.id] = {'request':request,'student':User.query.get(request.student_id)}
+        request_dict[request.id] = {'request':request,'student':User.query.get(request.student_id),
+            'tutor':User.query.get(request.tutor_id)}
     for conversation in user.mailbox.conversations:
         if conversation.student_id != user.id:
             student = User.query.get(conversation.student_id)

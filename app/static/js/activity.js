@@ -1,4 +1,5 @@
 var credit_card_back_link = false; 
+var student_original_price = null;
 window.onhashchange = locationHashChanged
 function locationHashChanged() {
     if (!location.hash) {
@@ -13,13 +14,55 @@ $(document).ready(function() {
       $(this).parent().parent().siblings('button:first').children('span').text(selected_text);
     });
 
-    // $(window).hashchange(function () {
-    //   alert(window.location.pathname)
-    // });
+    $('#feed-messages').on('click', '.tutor-reject-btn', function() {
+      if (confirm('Are you sure? This cannot be undone')) {
+        var request_num = parseInt($(this).attr('id').replace('tutor-reject-btn-',''));
+        var notification_num = $(this).parent().parent().parent().index();
+        var data = {
+          'tutor-reject': true, 
+          'notif-num': notification_num,
+          'request-num': request_num
+        };
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/update-request/' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function(result) {         
+                window.location.replace('/activity/');
+            }
+        }); 
+      }
+    });
 
-    // window.onbeforeunload = function() {
-    //   return 'If you leave this page you will lose all form progress';
-    // }
+    $('#feed-messages').on('change', '.tutor-change-price-slider', function() {
+      var salt = $('#main-feed').children().length - $('#feed-messages').children().length 
+      var feed_message_index = $(this).parent().parent().parent().index() + 1 + salt
+      $('#student-offer-hourly-price-' + feed_message_index).text(parseInt($('#tutor-change-price-slider-'+ feed_message_index).val()));
+      $('#student-offer-total-price-' + feed_message_index).text(parseInt($('#tutor-change-price-slider-'+ feed_message_index).val() * $('#student-time-estimate-' +feed_message_index).text()));
+    });
+
+    $('#feed-messages').on('click', '.tutor-change-price-link', function() {
+      var salt = $('#main-feed').children().length - $('#feed-messages').children().length 
+      var feed_message_index = $(this).parent().parent().parent().parent().index() + 1 + salt
+      if (!student_original_price) {
+          student_original_price = $('#student-offer-hourly-price-' + feed_message_index).text();
+        }
+        $('#tutor-change-price-slider-' + feed_message_index).val(student_original_price);
+        $('#tutor-change-price-link-' + feed_message_index).hide();
+        $('#tutor-change-price-slider-div-' + feed_message_index).show();
+    })
+
+    $('#feed-messages').on('click', '.tutor-change-price-cancel', function() {
+      var salt = $('#main-feed').children().length - $('#feed-messages').children().length 
+      var feed_message_index = $(this).parent().parent().index() + 1 + salt
+      $('#tutor-change-price-slider-div-' + feed_message_index).hide();
+      $('#tutor-change-price-text-' + feed_message_index).show();
+      $('#tutor-change-price-slider-' + feed_message_index).val(student_original_price);
+      $('#student-offer-hourly-price-' + feed_message_index).text(student_original_price);
+      $('#student-offer-total-price-' + feed_message_index).text((student_original_price * $('#student-time-estimate-'+ feed_message_index).text()))
+    });
 
     $('#student-register').click(function(){
     if (!$('#student-signup-description').val() || !$('#student-signup-location').val() || 
@@ -34,7 +77,7 @@ $(document).ready(function() {
         'estimate': $('#time-estimate-slider').val(),
         'location': $('#student-signup-location').val(),
         'availability': $('#student-signup-availability').val(),
-        'num-students': ($('#num-students-request .num-students').index() + 1),
+        'num-students': ($('#num-students-request .num-students.active').index() + 1),
         'idea-price': $('#ideal-price-slider').val(),
         }
         $.ajax({
@@ -150,13 +193,22 @@ $(document).ready(function() {
         $('#request-payments').show();
    });
    $('#feed-messages').on('click', 'a.tutor-request-accept-btn', function() {
+            var feed_message_index = $(this).parent().parent().parent().index() + 1
+            var salt = $('#main-feed').children().length - $('#feed-messages').children().length 
+            var tutor_changed_price = false
             request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
-            hourly_amount = parseInt($(this).parent().parent().siblings('.container-fluid').children('#price-dropdown-div').children('.price-dropdown').children('button:first').text().trim().replace('$',''))
+            hourly_amount = $('#student-offer-hourly-price-' + (feed_message_index + 1)).text();
             skill_name = $(this).parent().parent().siblings('.container-fluid').children('h5').text().split(" needs help in ").reverse()[0]
+            if (hourly_amount != student_original_price) {
+              tutor_changed_price = true;
+            }
+
             var data = {
                 'tutor-accept': request_num, 
                 'hourly-amount': hourly_amount,
-                'skill-name': skill_name
+                'skill-name': skill_name,
+                'price-change': tutor_changed_price,
+                'notif-num':  ($('#main-feed').children().length - 1)
             };
             $.ajax({
                 type: "POST",
@@ -418,6 +470,7 @@ $(document).ready(function() {
         });
       }
     });
+
 
     $('#student-signup-avalability').blur(function(){
       if ($('#student-signup-availability').val()) {

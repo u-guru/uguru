@@ -71,7 +71,7 @@ def student_request_receipt(user, request, skill_name):
 
 def tutor_request_offer(user, tutor, request, skill_name):
     notification = Notification(request=request)
-    notification.feed_message = "A <b>student</b> needs help in " + skill_name
+    notification.feed_message = "<b>" + user.name.split(" ")[0] + "</b> needs help in " + skill_name
     notification.skill_name = skill_name
     request_number = tutor.incoming_requests_to_tutor.index(request)
     notification.a_id_name = 'tutor-request-offer' + str(request_number)
@@ -107,7 +107,8 @@ def tutor_request_accept(user, tutor, request, skill_name, hourly_amount):
 
 def student_incoming_tutor_request(user, tutor, request, skill_name, hourly_amount):
     notification = Notification(request=request)
-    notification.feed_message = "<b>You</b> have received a tutor request for " + skill_name
+    notification.feed_message = "<b>"+ tutor.name.split(" ")[0] + "</b> wants to help you with <b>" \
+        + skill_name.upper() + "</b>."
     notification.skill_name = skill_name
     notification.request_tutor_amount_hourly = float(hourly_amount)
     notification.request_id = request.id
