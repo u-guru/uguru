@@ -61,10 +61,10 @@
                 <div align="center">
                   <div id="pic-holder">
                     {% if user.profile_url != '/static/img/default-photo.jpg' %}
-                      <img style="display:block" width="80" height="80"id="image-preview" src="{{user.profile_url}}"/>
+                      <img style="display:block" width="120" height="120"id="image-preview" src="{{user.profile_url}}"/>
                     {% else %}
-                      <span id="default-photo" class="glyphicon glyphicon-user" style="font-size:80px;text-align:center;padding-top:5px"></span>
-                      <img width="80" height="80"id="image-preview" src="#"/>
+                      <span id="default-photo" class="glyphicon glyphicon-user" style="font-size:120px;margin-left:-2px; text-align:center;padding-top:5px"></span>
+                      <img width="120" height="120"id="image-preview" src="#"/>
                     {% endif %}
                   </div>
                     <a id="upload-photo-link" href="javascript:void(0);">
@@ -270,7 +270,7 @@
       {% else %}
       <div id="profile" style="display:none" align="center">
       {% endif %}
-        {% if user.skills or user.verified_tutor and (user.profile_url == '/static/img/default-photo.jpg' or not user.tutor_introduction) %}
+        {% if (user.skills or user.verified_tutor) and (user.profile_url == '/static/img/default-photo.jpg' or not user.tutor_introduction) %}
           <div id="prof-not-complete" class="alert alert-danger">
             Please add a <strong>profile picture</strong>, your <strong>major</strong>, and a <strong> short introduction</strong> to complete signup!
           </div>
@@ -386,7 +386,7 @@
           </div>
         </div>
       </div>
-        {% if user.skills or user.verified_tutor and not user.verified_tutor %}
+        {% if user.verified_tutor and user.notifications|length < 2 %}
         <div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; display:block">
           <a id="launch-profile-link" href="javascript:void(0)">
             <div class="btn-save">

@@ -903,14 +903,14 @@ a:hover{
 }
 
 .request-info{
+  /*width:100%;
+  height:100%;*/
   border: 2px solid #8D929C;
-  width:100%;
-  height:100%;
   padding: 8px 15px 8px 15px;
   border-radius: 20px;
-  text-align: left;
+  /*text-align: left;
   white-space:normal;
-  color:#40bfec; 
+  color:#40bfec; */
 }
 
 .price {
@@ -1573,4 +1573,18 @@ a.example-skill-link {
   -moz-box-shadow:    5px 5px 5px #ccc;
   -webkit-box-shadow: 5px 5px 5px #ccc;
   box-shadow:         5px 5px 5px #ccc;
+}
+
+.request-info-left-column {
+  text-align:right;
+  padding-right:4px;
+}
+
+.request-info-right-column {
+  text-align:left;
+  padding-left:4px;
+}
+
+.request-info-row{
+  margin-bottom:0px;
 }

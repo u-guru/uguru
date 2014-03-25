@@ -104,18 +104,18 @@ $(document).ready(function(){
 
       var index = $(this).index();
 
-      if (index == 0 ) {
-        $('#ideal-price-slider').val('13', {'animate':true });
-      }
-      else if (index == 1) {
-        $('#ideal-price-slider').val('8', {'animate':true });
-      } else if (index == 2) {
-        $('#ideal-price-slider').val('7' , {'animate':true });
-      } else if (index == 3) {
-        $('#ideal-price-slider').val('6', {'animate':true });
-      } else if (index == 4) {
-        $('#ideal-price-slider').val('5', {'animate':true });
-      }
+      // if (index == 0 ) {
+      //   $('#ideal-price-slider').val('13', {'animate':true });
+      // }
+      // else if (index == 1) {
+      //   $('#ideal-price-slider').val('8', {'animate':true });
+      // } else if (index == 2) {
+      //   $('#ideal-price-slider').val('7' , {'animate':true });
+      // } else if (index == 3) {
+      //   $('#ideal-price-slider').val('6', {'animate':true });
+      // } else if (index == 4) {
+      //   $('#ideal-price-slider').val('5', {'animate':true });
+      // }
 
       if (index >= 1) {
         $('#total-request-price').text('$' + $('#ideal-price-slider').val() + ' a person');
@@ -192,7 +192,7 @@ $(document).ready(function(){
         $('#student-signup').show('slide', {direction: 'right'}, 200);
     });
     $('#student-next-link').click(function() {
-        if ((!$('#student-signup-name').val() || !$('#student-signup-email').val()) 
+        if (!$('#student-signup-name').val() || !$('#student-signup-email').val() 
         || !$('#student-signup-password').val()) 
         {
             $('#alert-fields-student-signup').show()
@@ -204,8 +204,6 @@ $(document).ready(function(){
                 'phone': $('input[name="student-phone"]').val(),
                 'password': $('input[name="student-password"]').val(),
             }
-            // $('#student-signup').hide();
-            // $('#student-request').show('slide', {direction: 'right'}, 200);
             $.ajax({
               type: "POST",
               contentType: 'application/json;charset=UTF-8',
@@ -241,6 +239,7 @@ $(document).ready(function(){
         $('#student-signup-skill').css({"border-color":"red"});
       }
     } else {
+      $('#student-register').click(false);
       var data = {
         'student-request': true,
         'description': $('#student-signup-description').val(),
@@ -307,7 +306,7 @@ $(document).ready(function(){
     });
 
     var check_duplicate_skill = function(skill) {
-      
+
     }
 
     $('#add-skill-btn').click(function() {
@@ -416,7 +415,7 @@ $(document).ready(function(){
               window.location.replace('/admin/');
             }
             if (result.json['success']) {
-                window.location.replace('/settings/');
+                window.location.replace('/activity/');
             } else {
                 $('#alert-fields-login').show();     
                 $('#alert-fields-login-redirect').hide();
@@ -592,11 +591,16 @@ $(document).ready(function(){
 
     $('#student-signup-skill').blur(function(){
       if ($('#student-signup-skill').val()) {
-        $('#student-signup-skill').css({"border-color":"#69bf69"
-      })
+        var skill_name = $('#student-signup-skill').val();
+        if (autocomplete_json.indexOf(skill_name) == -1) {
+            alert('Please only add things from the available options.');
+            $('#student-signup-skill').val('');
+            $('#student-signup-skill').css({"border-color":"red"});
+        } else {
+          $('#student-signup-skill').css({"border-color":"#69bf69"});
+        }
       } else {
-        $('#student-signup-skill').css({"border-color":"red"
-        });
+        $('#student-signup-skill').css({"border-color":"red"});
       }
     });
 

@@ -10,6 +10,15 @@ function locationHashChanged() {
 }
 $(document).ready(function() {
 
+    function readJSON(file) {
+      var request = new XMLHttpRequest();
+      request.open('GET', file, false);
+      request.send(null);
+      if (request.status == 200)
+          return request.responseText;
+    };
+    autocomplete_json = JSON.parse(readJSON('/static/data/autocomplete.json'));
+
     $('.price-dropdown').on('click', '.dropdown-menu li a', function() {
       var selected_text = $(this).text();
       $(this).parent().parent().siblings('button:first').children('span').text(selected_text);
@@ -24,6 +33,7 @@ $(document).ready(function() {
           'notif-num': notification_num,
           'request-num': request_num
         };
+        $(this).click(false);
         $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
@@ -38,15 +48,13 @@ $(document).ready(function() {
     });
 
     $('#feed-messages').on('change', '.tutor-change-price-slider', function() {
-      var salt = $('#main-feed').children().length - $('#feed-messages').children().length 
-      var feed_message_index = $(this).parent().parent().parent().index() + 1 + salt
+      feed_message_index = last_clicked_notif_index + 1
       $('#student-offer-hourly-price-' + feed_message_index).text(parseInt($('#tutor-change-price-slider-'+ feed_message_index).val()));
       $('#student-offer-total-price-' + feed_message_index).text(parseInt($('#tutor-change-price-slider-'+ feed_message_index).val() * $('#student-time-estimate-' +feed_message_index).text()));
     });
 
     $('#feed-messages').on('click', '.tutor-change-price-link', function() {
-      var salt = $('#main-feed').children().length - $('#feed-messages').children().length 
-      var feed_message_index = $(this).parent().parent().parent().parent().index() + 1 + salt
+      feed_message_index = last_clicked_notif_index + 1
       if (!student_original_price) {
           student_original_price = $('#student-offer-hourly-price-' + feed_message_index).text();
         }
@@ -56,8 +64,7 @@ $(document).ready(function() {
     })
 
     $('#feed-messages').on('click', '.tutor-change-price-cancel', function() {
-      var salt = $('#main-feed').children().length - $('#feed-messages').children().length 
-      var feed_message_index = $(this).parent().parent().index() + 1 + salt
+      feed_message_index = last_clicked_notif_index + 1
       $('#tutor-change-price-slider-div-' + feed_message_index).hide();
       $('#tutor-change-price-text-' + feed_message_index).show();
       $('#tutor-change-price-slider-' + feed_message_index).val(student_original_price);
@@ -70,6 +77,7 @@ $(document).ready(function() {
         !$('#student-signup-availability').val() || !$('#student-signup-skill').val()) {
       $('#alert-fields-student-signup1').show(); 
     } else {
+      $('#student-register').click(false);
       var data = {
         'student-request': true,
         'description': $('#student-signup-description').val(),
@@ -170,6 +178,7 @@ $(document).ready(function() {
         var data = {
             'accept-payment':payment_id,
         }
+        $(this).click(false);
         $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
@@ -195,6 +204,7 @@ $(document).ready(function() {
         $('#request-payments').show();
    });
    $('#feed-messages').on('click', 'a.tutor-request-accept-btn', function() {
+            $(this).click(false);
             var feed_message_index = $(this).parent().parent().parent().index() + 1
             var salt = $('#main-feed').children().length - $('#feed-messages').children().length 
             var tutor_changed_price = false
@@ -204,7 +214,6 @@ $(document).ready(function() {
             if (hourly_amount != student_original_price) {
               tutor_changed_price = true;
             }
-
             var data = {
                 'tutor-accept': request_num, 
                 'hourly-amount': hourly_amount,
@@ -225,6 +234,7 @@ $(document).ready(function() {
     });
 
     $('#feed-messages').on('click', 'a.student-request-accept-btn', function() {
+        $(this).click(false);
         request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
     
         var data = {
@@ -270,6 +280,7 @@ $(document).ready(function() {
             'hourly-rate': rate,
             'total-time': total_time
         }
+        $('#submit-payment').click(false);
         $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
@@ -300,6 +311,7 @@ $(document).ready(function() {
         var num_stars = $('.star-selected').length
         var additional_detail = $('#student-rating-description').val();
         var data = { 'tutor-rating-student' : true, 'num_stars' : num_stars, 'additional_detail' : additional_detail }
+        $('#submit-student-rating').click(false);
         $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
@@ -319,6 +331,7 @@ $(document).ready(function() {
         var num_stars = $('.star-selected').length
         var additional_detail = $('#tutor-rating-description').val();
         var data = { 'student-rating-tutor' : true, 'num_stars' : num_stars, 'additional_detail' : additional_detail }
+        $('#submit-tutor-rating').click(false);
         $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
@@ -390,18 +403,18 @@ $(document).ready(function() {
 
       var index = $(this).index();
 
-      if (index == 0 ) {
-        $('#ideal-price-slider').val('13', {'animate':true });
-      }
-      else if (index == 1) {
-        $('#ideal-price-slider').val('8', {'animate':true });
-      } else if (index == 2) {
-        $('#ideal-price-slider').val('7' , {'animate':true });
-      } else if (index == 3) {
-        $('#ideal-price-slider').val('6', {'animate':true });
-      } else if (index == 4) {
-        $('#ideal-price-slider').val('5', {'animate':true });
-      }
+      // if (index == 0 ) {
+      //   $('#ideal-price-slider').val('13', {'animate':true });
+      // }
+      // else if (index == 1) {
+      //   $('#ideal-price-slider').val('8', {'animate':true });
+      // } else if (index == 2) {
+      //   $('#ideal-price-slider').val('7' , {'animate':true });
+      // } else if (index == 3) {
+      //   $('#ideal-price-slider').val('6', {'animate':true });
+      // } else if (index == 4) {
+      //   $('#ideal-price-slider').val('5', {'animate':true });
+      // }
 
       if (index >= 1) {
         $('#total-request-price').text('$' + $('#ideal-price-slider').val() + ' a person');
@@ -451,12 +464,18 @@ $(document).ready(function() {
 
     $('#student-signup-skill').blur(function(){
       if ($('#student-signup-skill').val()) {
-        $('#student-signup-skill').css({"border-color":"#69bf69"
-      })
-      } else {
+        var skill_name = $('#student-signup-skill').val();
+        if (autocomplete_json.indexOf(skill_name) == -1) {
+            alert('Please only add things from the available options.');
+            $('#student-signup-skill').val('');
+            $('#student-signup-skill').css({"border-color":"red"});
+        } else {
+          $('#student-signup-skill').css({"border-color":"#69bf69"});
+        }
+     } else {
         $('#student-signup-skill').css({"border-color":"red"
         });
-      }
+     }
     });
 
     $('#student-signup-description').blur(function(){
@@ -487,6 +506,25 @@ $(document).ready(function() {
       } else {
         $('#student-signup-location').css({"border-color":"red"
         });
+      }
+    });
+
+    $('#cancel-request').click(function() {
+      if (confirm('Are you sure you want to cancel this request? It cannot be undone.')) {
+        data = {
+          'cancel-request': true,
+          'notif-num': last_clicked_notif_index
+        }
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/update-request/' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function(result) {         
+                window.location.replace('/activity/');
+            }
+        });      
       }
     });
 

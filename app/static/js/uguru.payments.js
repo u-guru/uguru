@@ -1,6 +1,7 @@
     credit_card_back_link = true; 
     $('input#credit-card-num').payment('formatCardNumber');
     $('input#expiration-date').payment('formatCardExpiry');
+    $('input#cvc-num').payment('formatCardCVC');
 
     $('.tutor-request-accept-btn-credit').click(function(){    
         credit_card_back_link = $(this).parent().parent().parent().attr('id')
@@ -79,13 +80,15 @@
         }
         card_number  = $('input#credit-card-num').val()
         expiration_date = $('input#expiration-date').val()
+        cvc_code = $('input#cvc-num').val();
         month = parseInt(expiration_date.split('/')[0])
         year = parseInt(expiration_date.split('/')[1])
 
         Stripe.card.createToken({
             number : card_number,
             exp_month : month,
-            exp_year : year
+            exp_year : year,
+            cvc : cvc_code
         }, stripeResponseHandler);
 
       });

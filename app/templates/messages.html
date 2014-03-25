@@ -26,7 +26,7 @@
 				  	</div>	
 				</div>
 				<h5>
-					{% if user.skills %}
+					{% if user.skills or user.verified_tutor %}
 					This is where you will be able to start a conversation once you've been matched with a student.
 					{% else %}
 					This is where you will be able to start a conversation once you've been matched with a tutor.
@@ -39,8 +39,8 @@
 						<img src="/static/img/jenny.jpg" class="user-photo" style="float:left">
 						<div style="float:left">
 							<h4 style="margin-bottom:0px"><b> Jenny </b></h4>
-							<h5 style="margin-top:0px;margin-bottom:0px"> Example Student </h5>
-							<h6 style="margin-top:5px"><i>You will be able to coordinate with your students here
+							<h5 style="margin-top:0px;margin-bottom:0px"> {% if user.skills or user.verified_tutor %} Example Student {% else %} Example Tutor {% endif %}</h5>
+							<h6 style="margin-top:5px"><i>You will be able to coordinate with your {% if user.skills or user.verified_tutor %} students {% else %} tutor {% endif %} here
 								at the inbox once you are connected. This just an example. </i></h6>
 						</div>
 						<div style="float:right;margin-top:23px">

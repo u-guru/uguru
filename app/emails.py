@@ -141,6 +141,18 @@ def tutor_wants_to_help(user, course_name):
     msg_contents = "A tutor wants to help in " + course_name.upper() + "."
     general_notification_email(user, msg_contents, email_subject)
 
+def student_canceled_request(student, course_name, tutor):
+    email_subject = "We're sorry!"
+    msg_contents = student.name.split(" ")[0] + "'s request for " + course_name.upper() + \
+        " is no longer valid."
+    general_notification_email(tutor, msg_contents, email_subject)
+
+def student_chose_another_tutor(student, course, tutor):
+    email_subject = "We're sorry!"
+    msg_contents = student.name.split(" ")[0] + " chose another " + course.upper() + \
+        " tutor."
+    general_notification_email(tutor, msg_contents, email_subject)
+
 def tutor_is_matched(user, course_name, student_name):
     email_subject = "Congrats! You've been matched with " + student_name
     msg_contents = """Start messaging """ + student_name + """ and set up a time to meet now.<br><br>""" + \

@@ -29,7 +29,7 @@ def index():
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete)
     if session.get('user_id'):
         user = User.query.get(session.get('user_id'))
-        if user.skills and not user.verified_tutor:
+        if user.skills and len(user.notifications) < 2:
             return redirect(url_for('settings'))
         return redirect(url_for('activity'))
     return render_template('new_index.html', forms=[request_form],
@@ -113,9 +113,9 @@ def update_profile():
             except:
                 db_session.rollback()
                 raise 
-            if user.skills and user.tutor_introduction and user.major and \
-                user.profile_url != '/static/img/default-photo.jpg':
-                user.settings_notif = 0
+        if user.skills and user.tutor_introduction and user.major and \
+            user.profile_url != '/static/img/default-photo.jpg':
+            user.settings_notif = 0
         return jsonify(ajax_json)
 
 @app.route('/add-credit/', methods=('GET', 'POST'))
@@ -464,6 +464,31 @@ def update_requests():
                 db_session.rollback()
                 raise             
 
+        if 'cancel-request' in ajax_json:
+            notif_num = ajax_json.get('notif-num')
+            student_notification = user.notifications[notif_num]
+            request_id = student_notification.request_id
+            _request = Request.query.get(request_id)
+            _request.connected_tutor_id = user.id
+            student_notification.feed_message = 'You canceled a request for ' + student_notification.skill_name.upper() + '.'
+            student_notification.feed_message_subtitle = None
+
+            from emails import student_canceled_request
+            for tutor in _request.committed_tutors:
+                for n in tutor.notifications:
+                    if n.request_id == _request.id:
+                        tutor_notification = n
+                tutor.feed_notif += 1
+                tutor_notification.time_read = None
+                tutor_notification.feed_message_subtitle = 'Click here to see the status of your accepted request'
+                student_canceled_request(user, student_notification.skill_name, tutor)
+                print "Email sent to " + tutor.name
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise             
 
         if 'student-accept' in ajax_json:
             notification_id = ajax_json.get('notification-id')
@@ -506,6 +531,18 @@ def update_requests():
             from emails import tutor_is_matched
             tutor_is_matched(tutor, skill_name, user.name.split(" ")[0])
 
+            #let other committed tutors now that they have been rejected
+            from emails import student_chose_another_tutor
+            for tutor in r.committed_tutors:
+                if r.connected_tutor_id != tutor.id:
+                    for n in tutor.notifications:
+                        if n.request_id == r.id:
+                            tutor_notification = n
+                    tutor.feed_notif += 1
+                    tutor_notification.time_read = None
+                    tutor_notification.feed_message_subtitle = 'Click here to see the status of your accepted request'
+                    student_chose_another_tutor(user, current_notification.skill_name, tutor)
+                    print "Email sent to " + tutor.email
 
             #create conversation between both
             conversation = Conversation(skill, tutor, student)
@@ -619,7 +656,7 @@ def success():
                     ajax_json['duplicate-email'] = True
                     return jsonify(dict=ajax_json)
                 query = User.query.filter_by(phone_number=ajax_json['phone']).first()
-                if query:
+                if query and ajax_json['phone'] != '':
                     ajax_json['duplicate-phone'] = True
                     return jsonify(dict=ajax_json)
                 
@@ -629,6 +666,10 @@ def success():
                     email = ajax_json['email'],
                     phone_number = ajax_json['phone']
                 )
+
+                if ajax_json['phone'] == '':
+                    u.phone_number = None;
+
                 db_session.add(u)
                 db_session.commit()
             except:
@@ -862,7 +903,7 @@ def activity():
         return redirect(url_for('index'))
     user_id = session.get('user_id')
     user = User.query.get(user_id)
-    if user.skills and not user.verified_tutor:
+    if user.skills and len(user.notifications) < 2:
         return redirect(url_for('settings'))
     request_dict = {}
     address_book = {}
@@ -909,7 +950,7 @@ def messages():
         return redirect(url_for('index'))
     user_id = session['user_id']
     user = User.query.get(user_id)
-    if user.skills and not user.verified_tutor:
+    if user.skills and len(user.notifications) < 2:
         return redirect(url_for('settings'))
     pretty_dates = {}
     for conversation in user.mailbox.conversations:
