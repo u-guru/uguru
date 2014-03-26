@@ -38,6 +38,11 @@ $(document).ready(function() {
     });
    $('#messages').on('click', 'a.submit-message', function() {
         var message = $(this).parent().siblings('div:first').children('input:first').val();
+        if (message == '') {
+            $('#message-alert').show();
+            return false;
+        }
+        $('#message-alert').hide();
         var conversation_num = last_clicked_convo_num
         $('#default-message-no-convo').hide();
         var data = {
@@ -62,6 +67,14 @@ $(document).ready(function() {
             dataType: "json",
         }); 
    });
+
+    $('#messages').on('keyup', 'input', function(e) {
+        if ( e.keyCode === 13 ) { // 13 is enter key
+            $(this).parent().siblings('div:last').children('a:first').trigger('click');
+        }
+    });
+
+
 
     Date.prototype.today = function () { 
        return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();
