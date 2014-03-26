@@ -210,7 +210,8 @@ class Conversation(Base):
     __tablename__ = 'conversation'
     id = Column(Integer, primary_key = True)
 
-
+    is_read = Column(Boolean, default = False)
+    
     skill_id = Column(Integer, ForeignKey('skill.id'))
     skill = relationship("Skill",
         uselist = False,

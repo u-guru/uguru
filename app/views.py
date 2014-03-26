@@ -378,6 +378,21 @@ def send_message():
         user_id = session.get('user_id')
         user = User.query.get(user_id)
 
+        if 'update-message' in ajax_json:
+            conversation_num = ajax_json.get('conversation-num')
+            conversation = user.mailbox.conversations[conversation_num]
+            conversation.is_read = True
+            if user.msg_notif > 0:
+                user.msg_notif = user.msg_notif - 1
+            else:
+                user.msg_notif = 0
+            
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+
         if 'send-message' in ajax_json:
             message_contents = ajax_json.get('send-message')
             conversation_num = ajax_json.get('conversation-num')
@@ -392,6 +407,8 @@ def send_message():
 
             message = Message(message_contents, conversation, user, receiver)
             db_session.add(message)
+            receiver.msg_notif += 1
+            conversation.is_read = False
             try:
                 db_session.commit()
             except:
@@ -548,6 +565,10 @@ def update_requests():
             conversation = Conversation(skill, tutor, student)
             conversation.requests.append(r)
             db_session.add(conversation)
+
+            #create message notifications
+            tutor.msg_notif += 1
+            student.msg_notif += 1
             
             try:
                 db_session.commit()

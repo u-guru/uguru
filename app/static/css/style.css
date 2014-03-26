@@ -797,6 +797,10 @@ a:hover{
   background-color:#F0F8FF;
 }
 
+.message.grey-background {
+  background-color:#F0F8FF; 
+}
+
 .user-photo {
   padding-left:10px;
   padding-right:10px;
@@ -1437,7 +1441,7 @@ span.twitter-typeahead {
 
 #message-send-box {
   background-color:rgb(0, 159, 225);
-  padding:10px 10px;
+  padding:12px 20px;
 }
 
 #message-send-box input {
@@ -1449,7 +1453,7 @@ span.twitter-typeahead {
 
 #message-send-box .submit-message {
   display:inline-block;
-  padding-left:5px;
+  padding-left:10px;
   color:white;
   text-decoration:none;
 }
@@ -1593,4 +1597,14 @@ a.example-skill-link {
   margin: 10px auto 5px auto;
   width: 96%;
   float: right
+}
+
+.input-message {
+  padding:5px;
+}
+
+#default-message-box {
+  border: 1px solid grey;
+  padding: 20px 30px 20px 30px;
+  border-radius: 35px;
 }
