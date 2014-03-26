@@ -4,8 +4,10 @@ $(document).ready(function() {
         var display_id = $(this).attr('id');
         var full_div = "#messages div#conversation-detailed-" + display_id.split('-').reverse()[0]
         $('#message-list').hide();
+        conversation_messages = $(full_div).children('.container-fluid').children().children('.conversation-messages');
+        conversation_messages.css('height', ($(document).height() - 300 ))
         $(full_div).show('slide', {direction: 'right'}, 100);
-        $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+        conversation_messages.animate({ scrollTop: $(document).height() }, 100);
         last_clicked_convo_num = $(this).parent().index()
 
         if ($(this).children('div:first').hasClass('grey-background')) {
@@ -48,6 +50,7 @@ $(document).ready(function() {
         conversation_messages = $(this).parent().parent().parent().siblings('.conversation-messages')
         conversation_messages.append(temp_message);
         temp_message.show()
+        conversation_messages.animate({ scrollTop: $(document).height() }, 100);
         $('#message-saved').show();
         $('#message-saved').delay(750).fadeOut('slow');
         $(this).parent().siblings('div:first').children('input:first').val('');

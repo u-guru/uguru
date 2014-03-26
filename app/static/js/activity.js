@@ -272,15 +272,11 @@ $(document).ready(function() {
     
     $('#submit-payment').click(function() {
         conversation_id = parseInt($('#select-person-to-pay #selected-person-to-pay').attr('class').split('-').reverse()[0])
-        rate = parseInt($('#payment-price-dropdown #selected-price').text().replace('$', ''))
-        total_time = parseInt($('#payment-hours-dropdown #selected-payment-num-hour').text())
-        alert(conversation_id)
-        alert(rate)
-        alert(total_time)
+        total_time = $('#time-estimate-slider-payment').val();
         var data = {
             'submit-payment': conversation_id,
-            'hourly-rate': rate,
-            'total-time': total_time
+            'total-time': total_time,
+            'secret-code': $('#secret-code').val()
         }
         $('#submit-payment').click(false);
         $.ajax({
@@ -290,12 +286,16 @@ $(document).ready(function() {
             data: JSON.stringify(data),
             dataType: "json",
             success: function(result) {         
-                var student_to_rate = result.return_json['student-name']
-                var student_profile_url = result.return_json['student-profile-url']
-                $('#student-profile-photo').attr('src', student_profile_url);
-                $('#student-name').text(student_to_rate.toUpperCase());
-                $('#request-payments').hide();
-                $('#rating-form-tutor').show();
+                if (!result.return_json['secret-code']) {
+                  $('#incorrect-secret-code').show();
+                } else {
+                  var student_to_rate = result.return_json['student-name']
+                  var student_profile_url = result.return_json['student-profile-url']
+                  $('#student-profile-photo').attr('src', student_profile_url);
+                  $('#student-name').text(student_to_rate.toUpperCase());
+                  $('#request-payments').hide();
+                  $('#rating-form-tutor').show();
+                }
             }
         }); 
     })

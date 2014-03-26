@@ -112,10 +112,10 @@
 			  </div>
 			</div>
 			<br>
-		  	<div style="max-height:100%; overflow:scroll"class="container-fluid">
-				<div id="default-message-box" class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">		
+		  	<div class="container-fluid">
+				<div style="position:relative" id="default-message-box" class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">		
 					<div id="template-message" style="display:none"class="row">
-						<div style="margin-left:15px; padding-left:0px; padding-right:5px"class="col-md-8 col-xs-8" align="left">
+						<div style="margin-left:15px; margin-top:15px;padding-left:0px; padding-right:5px"class="col-md-8 col-xs-8" align="left">
 							<div style="margin-top:-10px; padding:0px; width:25%" class="col-xs-4 col-md-4">
 								{% if conversation.guru_id == user.id %}
 									<img src="{{conversation.guru.profile_url}}" class="user-photo">

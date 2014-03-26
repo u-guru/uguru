@@ -218,6 +218,7 @@ def submit_rating():
 
         if 'tutor-rating-student' in ajax_json:
             rating = user.pending_ratings[0]
+            print user.pending_ratings
             rating.tutor_rating = ajax_json['num_stars']
             if 'additional_detail' in ajax_json:
                 rating.tutor_rating_description
@@ -229,7 +230,11 @@ def submit_rating():
             from emails import student_rating_request
             student_rating_request(student, user.name.split(" ")[0])
 
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
 
         if 'student-rating-tutor' in ajax_json:
             rating = user.pending_ratings[0]
@@ -239,7 +244,12 @@ def submit_rating():
                 rating.student_rating_description
 
             user.pending_ratings.remove(rating)
-            db_session.commit()
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
 
     return jsonify(return_json=return_json)            
 
@@ -296,11 +306,7 @@ def submit_payment():
 
         if 'submit-payment' in ajax_json:
             conversation_id = ajax_json.get('submit-payment')
-            hourly_rate = ajax_json.get('hourly-rate')
             total_time = ajax_json.get('total-time')
-            total_amount = float(hourly_rate * total_time)
-            stripe_amount_cents = int(total_amount * 100.0)
-
 
             conversation = Conversation.query.get(conversation_id)
 
@@ -314,9 +320,16 @@ def submit_payment():
                     else: 
                         return_json['student-profile-url'] = '/static/img/default-photo.jpg'
 
+            if r.student_secret_code != ajax_json.get('secret-code').lower():
+                return_json['secret-code'] = False
+                return jsonify(return_json=return_json)
+
+            total_amount = round((r.connected_tutor_hourly / 0.8) * float(total_time))
+            stripe_amount_cents = int(total_amount * 100.0)
+
             payment = Payment(r)
-            payment.tutor_rate = float(hourly_rate)
             payment.time_amount = float(total_time)
+            payment.tutor_rate = r.connected_tutor_hourly
 
             tutor = user
             student_id = payment.student_id
@@ -349,7 +362,7 @@ def submit_payment():
 
             return_json['student-name'] = student.name.split(" ")[0]
 
-            tutor.balance = tutor.balance + float(float(stripe_amount_cents) / 100.0)
+            tutor.balance = tutor.balance + int(round(r.connected_tutor_hourly * float(total_time)))
 
             #Add pending rating to student 
             for rating in tutor.pending_ratings:
@@ -548,7 +561,7 @@ def update_requests():
             from emails import tutor_is_matched
             tutor_is_matched(tutor, skill_name, user.name.split(" ")[0])
 
-            
+
             #create conversation between both
             conversation = Conversation(skill, tutor, user)
             conversation.requests.append(r)
@@ -944,18 +957,23 @@ def activity():
         if notification.request_tutor_id:
             tutor_dict[notification] = User.query.get(notification.request_tutor_id)
         pretty_dates[notification.id] = pretty_date(notification.time_created)
-    for request in (user.outgoing_requests + user.incoming_requests_to_tutor + user.incoming_requests_from_tutors):
-        request_dict[request.id] = {'request':request,'student':User.query.get(request.student_id)}
     for conversation in user.mailbox.conversations:
         if conversation.student_id != user.id:
             student = User.query.get(conversation.student_id)
-            address_book[student.name.split(" ")[0]] = \
-                {'profile_url': student.profile_url, 'conversation_id' : conversation.id}
+            address_book[student.id] = \
+                {'profile_url': student.profile_url, 'conversation_id' : conversation.id, 'student_name' : student.name.split(" ")[0]}
+    for request in (user.outgoing_requests + user.incoming_requests_to_tutor + user.incoming_requests_from_tutors):
+        student_id = request.student_id
+        if user.skills:
+            address_book[student_id]['request'] = request
+        student = User.query.get(request.student_id)
+        request_dict[request.id] = {'request':request,'student':student}
     for payment in user.payments:
         tutor_id = payment.tutor_id
         student_id = payment.student_id
         tutor = User.query.get(tutor_id)
         student = User.query.get(student_id)
+        # request = Request.query.get(payment.request_id)
         payment_dict[payment.id] = {'payment': payment, 'tutor_name':tutor.name.split(' ')[0],\
         'student_name': student.name.split(' ')[0]}
     return render_template('activity.html', key=stripe_keys['publishable_key'], address_book=address_book, \
