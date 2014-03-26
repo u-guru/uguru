@@ -548,6 +548,16 @@ def update_requests():
             from emails import tutor_is_matched
             tutor_is_matched(tutor, skill_name, user.name.split(" ")[0])
 
+            
+            #create conversation between both
+            conversation = Conversation(skill, tutor, user)
+            conversation.requests.append(r)
+            db_session.add(conversation)
+
+            #create message notifications
+            tutor.msg_notif += 1
+            student.msg_notif += 1
+
             #let other committed tutors now that they have been rejected
             from emails import student_chose_another_tutor
             for tutor in r.committed_tutors:
@@ -560,15 +570,6 @@ def update_requests():
                     tutor_notification.feed_message_subtitle = 'Click here to see the status of your accepted request'
                     student_chose_another_tutor(user, current_notification.skill_name, tutor)
                     print "Email sent to " + tutor.email
-
-            #create conversation between both
-            conversation = Conversation(skill, tutor, student)
-            conversation.requests.append(r)
-            db_session.add(conversation)
-
-            #create message notifications
-            tutor.msg_notif += 1
-            student.msg_notif += 1
             
             try:
                 db_session.commit()
