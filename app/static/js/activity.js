@@ -19,6 +19,8 @@ $(document).ready(function() {
     };
     autocomplete_json = JSON.parse(readJSON('/static/data/autocomplete.json'));
 
+    
+
     $('.price-dropdown').on('click', '.dropdown-menu li a', function() {
       var selected_text = $(this).text();
       $(this).parent().parent().siblings('button:first').children('span').text(selected_text);
@@ -66,7 +68,7 @@ $(document).ready(function() {
     $('#feed-messages').on('click', '.tutor-change-price-cancel', function() {
       feed_message_index = last_clicked_notif_index + 1
       $('#tutor-change-price-slider-div-' + feed_message_index).hide();
-      $('#tutor-change-price-text-' + feed_message_index).show();
+      $('#tutor-change-price-link-' + feed_message_index).show();
       $('#tutor-change-price-slider-' + feed_message_index).val(student_original_price);
       $('#student-offer-hourly-price-' + feed_message_index).text(student_original_price);
       $('#student-offer-total-price-' + feed_message_index).text((student_original_price * $('#student-time-estimate-'+ feed_message_index).text()))
@@ -205,11 +207,11 @@ $(document).ready(function() {
    });
    $('#feed-messages').on('click', 'a.tutor-request-accept-btn', function() {
             $(this).click(false);
-            var feed_message_index = $(this).parent().parent().parent().index() + 1
-            var salt = $('#main-feed').children().length - $('#feed-messages').children().length 
+            var feed_message_index = last_clicked_notif_index + 1
+            // var salt = $('#main-feed').children().length - $('#feed-messages').children().length 
             var tutor_changed_price = false
             request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
-            hourly_amount = $('#student-offer-hourly-price-' + (feed_message_index + salt)).text();
+            hourly_amount = $('#student-offer-hourly-price-' + (feed_message_index)).text();
             skill_name = $(this).parent().parent().siblings('.container-fluid').children('h5').text().split(" needs help in ").reverse()[0]
             if (hourly_amount != student_original_price) {
               tutor_changed_price = true;
@@ -403,52 +405,107 @@ $(document).ready(function() {
 
       var index = $(this).index();
 
-      // if (index == 0 ) {
-      //   $('#ideal-price-slider').val('13', {'animate':true });
-      // }
-      // else if (index == 1) {
-      //   $('#ideal-price-slider').val('8', {'animate':true });
-      // } else if (index == 2) {
-      //   $('#ideal-price-slider').val('7' , {'animate':true });
-      // } else if (index == 3) {
-      //   $('#ideal-price-slider').val('6', {'animate':true });
-      // } else if (index == 4) {
-      //   $('#ideal-price-slider').val('5', {'animate':true });
-      // }
+      if (index == 0 ) {
+        $('#ideal-price-slider').val('13');
+        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
+        $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
+      }
+      else if (index == 1) {
+        $('#ideal-price-slider').val('16');
+        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
+        $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
+        // $("#ideal-price-slider").noUiSlider({
+        //       range: [11, 40]
+        //       ,start: 16
+        //       ,step: 1
+        //       ,handles: 1
+        //       ,serialization: {
+        //         to: [ $("#high"), 'html' ],
+        //         resolution: 0.1
+        //       }
+        // });
+      } else if (index == 2) {
+        $('#ideal-price-slider').val('21');
+        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
+        $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
+        // $("#ideal-price-slider").noUiSlider({
+        //       range: [16, 40]
+        //       ,start: 21
+        //       ,step: 1
+        //       ,handles: 1
+        //       ,serialization: {
+        //         to: [ $("#high"), 'html' ],
+        //         resolution: 0.1
+        //       }
+        // });
+      } else if (index == 3) {
+        $('#ideal-price-slider').val('24');
+        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
+        $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
+        // $("#ideal-price-slider").noUiSlider({
+        //       range: [19, 40]
+        //       ,start: 24
+        //       ,step: 1
+        //       ,handles: 1
+        //       ,serialization: {
+        //         to: [ $("#high"), 'html' ],
+        //         resolution: 0.1
+        //       }
+        // });
+      } else if (index == 4) {
+        $('#ideal-price-slider').val('25');
+        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
+        $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));        
+        // $("#ideal-price-slider").noUiSlider({
+        //       range: [20, 40]
+        //       ,start: 25
+        //       ,step: 1
+        //       ,handles: 1
+        //       ,serialization: {
+        //         to: [ $("#high"), 'html' ],
+        //         resolution: 0.1
+        //       }
+        // });
+      }
 
       if (index >= 1) {
-        $('#total-request-price').text('$' + $('#ideal-price-slider').val() + ' a person');
-        $('#total-price-header').text('Hourly Price:');
-        $('#complete-price-hourly').text('$' + $('#time-estimate-slider').val() * $('#ideal-price-slider').val());
-        $('#complete-price-hourly').show();
-        $('#complete-price-hourly').text('Total Hourly Price: $' + ((index + 1) * $('#ideal-price-slider').val()))
-        $('#complete-price-hourly').show()
-        $('#complete-price').text('Total Price: ' +'$' + ($('#ideal-price-slider').val() * (index + 1) * $('#time-estimate-slider').val()));
+        $('#total-request-price-per-person').show();
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
+        $('#total-price-header').text('Suggested Hourly Price:');
+        $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
       } else {
-        $('#complete-price-hourly').hide();
-        $('#total-price-header').text('Hourly Price:')
+        $('#total-request-price-per-person').hide();
+        $('#total-price-header').text('Suggested Hourly Price:')
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
-        $('#complete-price').text('Total Estimated Price: ' +'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
+        $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
       }
-      $('#num-hours').text($('#time-estimate-slider').val());
-      $('#num-students').text((index + 1));
-      $('#num-price').text($('#ideal-price-slider').val());
     });
+
+    $('#request-change-hourly').click(function() {
+      $('#request-change-hourly').hide();
+      $('#suggested-price-slider').show();
+    });
+    $('#request-change-hourly-cancel').click(function() {
+      $('#suggested-price-slider').hide();
+      $('#request-change-hourly').show();
+    })
 
     $('#ideal-price-slider').change(function() {
       var index = $('#num-students-request .num-students.active').index() + 1;
-            
+      $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
       if (index > 1) {
-        $('#complete-price-hourly').text('Total Hourly Price: $' + (index) * $('#ideal-price-slider').val())
-        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()) + ' a person')
+        $('#total-request-price-per-person').show();
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
       } else {
+        $('#total-request-price-per-person').hide();
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
       }
-      $('#complete-price').text('Total Estimated Price: ' +'$' + ($('#ideal-price-slider').val() * index * $('#time-estimate-slider').val()));
-      $('#num-hours').text($('#time-estimate-slider').val());
-      $('#num-students').text(index);
-      $('#num-price').text($('#ideal-price-slider').val());
-
+      $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
     })
 
     $('#time-estimate-slider').change(function() {
@@ -456,11 +513,9 @@ $(document).ready(function() {
       if (index > 1) {
         $('#complete-price').text('$' + $('#time-estimate-slider').val() * index * $('#ideal-price-slider').val() + ' a person')
       } 
-      $('#complete-price').text('Total Price: ' + '$' + ($('#ideal-price-slider').val() * index * $('#time-estimate-slider').val())); 
-      $('#num-hours').text($('#time-estimate-slider').val());
-      $('#num-students').text(index);
-      $('#num-price').text($('#ideal-price-slider').val());
+      $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
     })
+
 
     $('#student-signup-skill').blur(function(){
       if ($('#student-signup-skill').val()) {
