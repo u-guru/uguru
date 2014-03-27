@@ -829,10 +829,11 @@ def login():
     if session.get('user_id'):
         flash("You are already logged in!")
         return redirect(url_for('index'))
+    if 'TESTING' not in os.environ:
+        return redirect(url_for('index'))
     if request.method == "POST":
         json = {}
         ajax_json = request.json
-
         if ajax_json['email'].lower() == 'testing@uguru.me' \
             and ajax_json['password'].lower() == 'launchuguru' and os.environ.get('TESTING'):
             session['testing-admin'] = True
@@ -871,7 +872,7 @@ def login():
         else:
             json['failure'] = False
         return jsonify(json=json)
-    return render_template("login.html", redirect_args=request.query_string)    
+    return render_template("login.html")
 
 @app.route('/access/', methods=('GET','POST'))
 def access():
