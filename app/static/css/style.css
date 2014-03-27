@@ -1619,3 +1619,19 @@ a.example-skill-link {
 #tutor-rating-stars {
   font-size:45px;
 }
+
+#your-balance-text-div {
+  text-align:center;
+  font-family:'Roboto Condensed',sans-serif; 
+  margin-top:-10px;
+}
+
+#your-balance-text {
+  color:grey;
+}
+
+#balance-amount h1{
+  margin:5px auto 5px auto;
+  color:#69bf69;
+  font-weight:700;
+}

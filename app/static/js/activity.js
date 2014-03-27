@@ -129,12 +129,11 @@ $(document).ready(function() {
         var display_id = $(this).attr('id');
         if (display_id == 'dont-do-anything') {
           $(this).css('cursor','default')
-          return false;
+        } else {
+          var full_div = "#feed-messages div#" + display_id + '-detailed'
+          $('#activity').hide();
+          $(full_div).show('slide', {direction: 'right'}, 100);
         }
-        var full_div = "#feed-messages div#" + display_id + '-detailed'
-        $('#activity').hide();
-        $(full_div).show('slide', {direction: 'right'}, 100);
-
         if ($(this).children('div:first').hasClass('grey-background')) {
           var notif_total = $(this).parent().parent().parent().children().length - 1;
           var notif_number = notif_total - $(this).parent().parent().index();

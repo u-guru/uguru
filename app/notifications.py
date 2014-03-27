@@ -115,7 +115,7 @@ def student_incoming_tutor_request(user, tutor, request, skill_name, hourly_amou
     notification.request_tutor_id = tutor.id
     notification.custom_tag = 'student-incoming-offer'
     request_number = user.incoming_requests_from_tutors.index(request)
-    notification.a_id_name = 'student-incoming-offer' + str(tutor.id)
+    notification.a_id_name = 'student-incoming-offer' + str(len(user.notifications))
     if tutor.profile_url:
         notification.image_url = tutor.profile_url
     else:
@@ -172,7 +172,6 @@ def tutor_payment_request_receipt(user, tutor, payment):
         notification.image_url = user.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
-    notification.time_read = datetime.now()
     return notification
 
 def student_payment_proposal(user, tutor, payment):
@@ -225,13 +224,13 @@ def tutor_receive_payment(user, tutor, payment, amount_made):
 
 def tutor_cashed_out(tutor, amount):
     notification = Notification(other='cashing_out')
-    notification.feed_message = '<b>You</b>' + " cashed out " + str(amount)
-    
+    notification.feed_message = '<b>You</b>' + " cashed out $" + str(amount) + "."
+    notification.feed_message_subtitle = "Click here to see the status of your transfer"
+    notification.custom = amount
     notification.custom_tag = 'tutor-cashed-out' 
-    notification.a_id_name = 'tutor-cashed-out'
+    notification.a_id_name = 'tutor-cashed-out' + str(len(tutor.notifications))
     if tutor.profile_url:
         notification.image_url = tutor.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
-    notification.time_read = datetime.now()
     return notification

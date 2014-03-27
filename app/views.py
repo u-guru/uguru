@@ -187,24 +187,34 @@ def add_bank():
             )
 
             user.recipient_id = recipient.id
-            
-            transfer = stripe.Transfer.create(
-                amount=int(user.balance * 100), # amount in cents, again
-                currency="usd",
-                recipient=recipient.id
-            )
-
-            from notifications import tutor_cashed_out
-            notification = tutor_cashed_out(user, user.balance)
-            db_session.add(notification)
-
-            user.balance = 0
 
             try:
                 db_session.commit()
             except:
                 db_session.rollback()
                 raise 
+
+
+        transfer = stripe.Transfer.create(
+                amount=int(user.balance * 100), # amount in cents, again
+                currency="usd",
+                recipient=user.recipient_id
+            )
+
+        from notifications import tutor_cashed_out
+        notification = tutor_cashed_out(user, user.balance)
+        db_session.add(notification)
+
+        user.notifications.append(notification)
+
+        user.balance = 0
+
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
         return jsonify(response=return_json)        
 
 @app.route('/submit-rating/', methods=('GET', 'POST'))

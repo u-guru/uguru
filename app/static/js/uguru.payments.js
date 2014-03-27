@@ -67,6 +67,20 @@
         // $('#cash-out-page').show();
    });
 
+    $('#cash-out-link-add').click(function() {
+        data = {};
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/add-bank/' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function(){
+                window.location.replace('/activity/');
+            }
+      });
+    });
+
     $('#credit-card-back-link').click(function(){
         $(this).parent().parent().parent().parent().parent().hide();
         $('#' + credit_card_back_link).show();
