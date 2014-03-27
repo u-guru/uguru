@@ -219,16 +219,11 @@ def submit_rating():
         if 'tutor-rating-student' in ajax_json:
             rating = user.pending_ratings[0]
             print user.pending_ratings
-            rating.tutor_rating = ajax_json['num_stars']
+            rating.student_rating = ajax_json['num_stars']
             if 'additional_detail' in ajax_json:
-                rating.tutor_rating_description
+                rating.student_rating_description
             
-            student = User.query.get(rating.student_id)
-            student.pending_ratings.append(rating)
             user.pending_ratings.remove(rating)
-
-            from emails import student_rating_request
-            student_rating_request(student, user.name.split(" ")[0])
 
             try:
                 db_session.commit()
@@ -238,10 +233,10 @@ def submit_rating():
 
         if 'student-rating-tutor' in ajax_json:
             rating = user.pending_ratings[0]
-            rating.student_rating = ajax_json['num_stars']
+            rating.tutor_rating = ajax_json['num_stars']
             
             if 'additional_detail' in ajax_json:
-                rating.student_rating_description
+                rating.tutor_rating_description
 
             user.pending_ratings.remove(rating)
 
@@ -262,48 +257,6 @@ def submit_payment():
         user_id = session.get('user_id')
         user = User.query.get(user_id)
 
-        if 'accept-payment' in ajax_json:
-            payment_id = int(ajax_json.get('accept-payment'))
-            payment = Payment.query.get(payment_id)
-            total_amount = float(payment.time_amount * payment.tutor_rate)
-            stripe_amount_cents = int(total_amount * 100.0)
-            charge = stripe.Charge.create(
-                amount = stripe_amount_cents,
-                currency="usd",
-                customer=user.customer_id,
-                description="charge for receiving tutoring"
-            )
-            payment.stripe_charge_id = charge.id
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-
-            student_id = payment.student_id
-            student = User.query.get(student_id)
-            tutor_id = payment.tutor_id
-            tutor = User.query.get(tutor_id)
-
-            tutor.balance = tutor.balance + float(float(stripe_amount_cents) / 100.0)
-
-            #Add pending rating to student 
-            for rating in tutor.pending_ratings:
-                if rating.student_id == user.id:
-                    student.pending_ratings.append(rating)
-
-            from notifications import student_payment_approval, tutor_receive_payment
-            tutor_notification = tutor_receive_payment(student, tutor, payment)
-            student_notification = student_payment_approval(student, tutor, payment)
-            tutor.notifications.append(tutor_notification)
-            student.notifications.append(student_notification)
-            db_session.add_all([tutor_notification, student_notification])
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-
         if 'submit-payment' in ajax_json:
             conversation_id = ajax_json.get('submit-payment')
             total_time = ajax_json.get('total-time')
@@ -315,15 +268,13 @@ def submit_payment():
                     r = _request
                     student_id = _request.student_id
                     student = User.query.get(student_id)
-                    if student.profile_url:
-                        return_json['student-profile-url'] = student.profile_url
-                    else: 
-                        return_json['student-profile-url'] = '/static/img/default-photo.jpg'
+                    return_json['student-profile-url'] = student.profile_url
 
             if r.student_secret_code != ajax_json.get('secret-code').lower():
                 return_json['secret-code'] = False
                 return jsonify(return_json=return_json)
 
+            return_json['secret-code'] = True
             total_amount = round((r.connected_tutor_hourly / 0.8) * float(total_time))
             stripe_amount_cents = int(total_amount * 100.0)
 
@@ -341,6 +292,8 @@ def submit_payment():
                 customer=student.customer_id,
                 description="charge for receiving tutoring"
             )
+
+            amount_charged = float(stripe_amount_cents / 100)
             
 
             db_session.add(payment)
@@ -362,16 +315,18 @@ def submit_payment():
 
             return_json['student-name'] = student.name.split(" ")[0]
 
+            amount_made = int(round(r.connected_tutor_hourly * float(total_time)))
+
             tutor.balance = tutor.balance + int(round(r.connected_tutor_hourly * float(total_time)))
 
             #Add pending rating to student 
             for rating in tutor.pending_ratings:
-                if rating.student_id == user.id:
+                if rating.student_id == student.id:
                     student.pending_ratings.append(rating)
 
             from notifications import student_payment_approval, tutor_receive_payment
-            tutor_notification = tutor_receive_payment(student, tutor, payment)
-            student_notification = student_payment_approval(student, tutor, payment)
+            tutor_notification = tutor_receive_payment(student, tutor, payment, amount_made)
+            student_notification = student_payment_approval(student, tutor, payment, amount_charged)
             tutor.notifications.append(tutor_notification)
             student.notifications.append(student_notification)
             db_session.add_all([tutor_notification, student_notification])
@@ -964,7 +919,7 @@ def activity():
                 {'profile_url': student.profile_url, 'conversation_id' : conversation.id, 'student_name' : student.name.split(" ")[0]}
     for request in (user.outgoing_requests + user.incoming_requests_to_tutor + user.incoming_requests_from_tutors):
         student_id = request.student_id
-        if user.skills:
+        if user.skills and len(address_book.keys())>0:
             address_book[student_id]['request'] = request
         student = User.query.get(request.student_id)
         request_dict[request.id] = {'request':request,'student':student}

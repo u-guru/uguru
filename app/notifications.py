@@ -1,7 +1,7 @@
 from app import app
 from app.models import Skill, User, Request, Notification
 from emails import welcome_uguru_student, welcome_uguru_tutor, student_needs_help, tutor_wants_to_help, \
-    tutor_is_matched, student_payment_request, tutor_payment_received
+    tutor_is_matched, student_payment_receipt, tutor_payment_received
 from datetime import datetime
 
 def getting_started_student(user):
@@ -187,26 +187,28 @@ def student_payment_proposal(user, tutor, payment):
          notification.image_url = '/static/img/default-photo.jpg' 
     tutor_name = User.query.get(payment.tutor_id).name.split(" ")[0]
     amount = float(payment.time_amount * payment.tutor_rate)
-    student_payment_request(user, tutor_name, amount)
     user.feed_notif = user.feed_notif + 1
     return notification
 
-def student_payment_approval(user, tutor, payment):
+def student_payment_approval(user, tutor, payment, amount_charged):
     notification = Notification(payment=payment)
-    notification.feed_message = "<b>You</b> have paid " + tutor.name.split(" ")[0]
-    
+    notification.feed_message = "<b>$" + str(amount_charged) + "</b> payment has been sent to " + \
+        tutor.name.split(" ")[0] + "."
+    notification.feed_message_subtitle = "A detailed receipt has been emailed to you. Email support@uguru.me " + \
+        "if the amount is incorrect."
     notification.custom_tag = 'student-payment-approval'
     notification.a_id_name = 'student-payment-approval-' + str(payment.id)
     if tutor.profile_url:
         notification.image_url = tutor.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
-    notification.time_read = datetime.now()
+    student_payment_receipt(user, tutor.name.split(" ")[0], amount_charged)
     return notification
 
-def tutor_receive_payment(user, tutor, payment):
+def tutor_receive_payment(user, tutor, payment, amount_made):
     notification = Notification(payment=payment)
-    notification.feed_message = '<b>' + user.name.split(' ')[0] + '</b>' + " has paid you."
+    notification.feed_message = '<b>Congrats!</b> You have made <b>$' + str(amount_made) + "</b>."
+    notification.feed_message_subtitle = "See your total balance above and cash out to your bank account."
     
     notification.custom_tag = 'tutor-receive-payment' 
     notification.a_id_name = 'tutor-receive-payment-' + str(payment.id)
@@ -214,10 +216,11 @@ def tutor_receive_payment(user, tutor, payment):
         notification.image_url = tutor.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
-    student_name = User.query.get(payment.student_id).name.split(" ")[0]
-    amount = payment.tutor_rate * payment.time_amount
-    balance = tutor.balance
-    tutor_payment_received(tutor,student_name, amount, balance)
+    # student_name = User.query.get(payment.student_id).name.split(" ")[0]
+    # amount = payment.tutor_rate * payment.time_amount
+    # balance = tutor.balance
+    # tutor_payment_received(tutor,student_name, amount, balance)
+    notification.time_read = datetime.now()
     return notification
 
 def tutor_cashed_out(tutor, amount):

@@ -10,13 +10,8 @@
 {% if user.pending_ratings|length > 0 %}
 	<div id="rating-form-tutor">
 		<div class="page-title">
-		  <div class="row" style="width:100%;text-align:center">
-		      <div class="col-xs-1">
-		        <a href="/" style="text-decoration:none"> 
-		          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
-		        </a>
-		      </div>
-		      <div class="col-xs-10" style="text-align:center">
+		  <div class="row-fluid" style="width:100%;text-align:center">
+		      <div class="col-xs-12 col-md-12 col-sm-12" style="text-align:center">
 		        <h4 style="color:white;width:100%;font-weight:500">PLEASE RATE 
 		        	{% if user.skills %}
 		        	<span id="student-name">{{pending_ratings_dict['student'].name.split(" ")[0]|upper}}</span>
@@ -29,20 +24,15 @@
 		</div>
 		<div class="container-fluid">
 			<br>
+			<div id="rate-alert" style="color:red;text-align:center;display:none"class="row">
+				Please select the number of stars
+			</div>
 			<div class="row">
 			  	<div class="user-profile" style="text-align:center">
 			  		{% if user.skills %}
-			  			{% if pending_ratings_dict['student'].profile_url %}
-			  				<img id="student-profile-photo" src="{{pending_ratings_dict['student'].profile_url}}" class="user-photo">
-			  			{% else %}
-			  				<img id="student-profile-photo" src="/static/img/default-photo.jpg" class="user-photo">
-			  			{% endif %}
+	  					<img id="student-profile-photo" style="height:120px;width:120px"  src="{{pending_ratings_dict['student'].profile_url}}" class="user-photo">
 			  		{% else %}
-			  			{% if pending_ratings_dict['tutor'].profile_url %}
-			  				<img id="student-profile-photo" src="{{pending_ratings_dict['tutor'].profile_url}}" class="user-photo">
-			  			{% else %}
-			  				<img id="student-profile-photo" src="/static/img/default-photo.jpg" class="user-photo">
-			  			{% endif %}
+		  				<img id="student-profile-photo" style="height:120px;width:120px"  src="{{pending_ratings_dict['tutor'].profile_url}}" class="user-photo">
 			  		{% endif %}
 			  	</div>
 			</div>
@@ -57,7 +47,7 @@
 			</div>
 			<br>
 			<div class="row">
-				<div class="col-xs-12 col-md-4 col-md-offset-4">
+				<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
 					{% if user.skills %}
 					<textarea name="description" placeholder="Additional details here..."id="student-rating-description" class="form-control" rows="3"></textarea>
 					{% else %}
@@ -65,14 +55,16 @@
 					{% endif %}
 				</div>
 			</div>
-			{% if user.skills %}
-			<a href="javascript:void(0)" id="submit-student-rating">
-			{% else %}
-			<a href="javascript:void(0)" id="submit-tutor-rating">
-			{% endif %}
-				<div class="btn-request">SUBMIT
-				</div>
-			</a>
+			<div id="launch-profile-div" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:20px; margin-bottom:20px; display:block">
+				{% if user.skills %}
+				<a href="javascript:void(0)" id="submit-student-rating">
+				{% else %}
+				<a href="javascript:void(0)" id="submit-tutor-rating">
+				{% endif %}
+					<div class="tutor-submit-next">SUBMIT
+					</div>
+				</a>
+			</div>
 		</div>
 	</div>
 {% endif %}
@@ -143,14 +135,14 @@
 				<a id="{{n.a_id_name}}" href="/messages/">
 				{% elif n.a_id_name == 'getting-started' and user.skills %}
 				<a target="_blank" id="getting-started-tutors" href="https://docs.google.com/a/uguru.me/document/d/17JKfvTw_wLGRsPQqPI_foBku1UjPXLtPW-bJIiMxS1M/">
-				{% elif n.a_id_name == 'getting-started' %}
-				<a style="cursor:default!important;" href="javascript:void(0)">
+				{% elif n.a_id_name == 'getting-started' or n.custom_tag == 'student-payment-approval' or n.custom_tag == 'tutor-receive-payment'%}
+				<a class='main-feed-messages' style="cursor:default!important;" id="dont-do-anything" href="javascript:void(0)">
 				{% elif n.a_id_name == 'tip-photo' %}
 				<a class='main-feed-messages' href="/settings/">
 				{% else %}
 				<a class='main-feed-messages'id="{{n.a_id_name}}" href="#	{{n.a_id_name}}-detailed">
 				{% endif %}
-					<div {% if n.a_id_name == 'getting-started' %} style="cursor:default;" {%endif%}class="notification {% if not n.time_read %} grey-background {% endif %}" align:"center">
+					<div {% if n.a_id_name == 'getting-started' or (n.custom_tag=='tutor-receive-payment' and n.time_read) or (n.custom_tag=='student-payment-approval' and n.time_read) %} style="cursor:default;" {%endif%}class="notification {% if not n.time_read %} grey-background {% endif %}" align:"center">
 						<img src="{{n.image_url}}" class="user-photo" style="float:left; margin-top:-10px">
 							<h5 style="margin-bottom:0px; margin-top:0px">{{n.feed_message|safe}}</h4>
 							{% if n.feed_message_subtitle %}
@@ -315,11 +307,6 @@
 		</div>
 		<div class="offer" align="center" style="margin-left:20px;margin-right:20px">
 			<br>
-			<div class="row-fluid">
-				<div class="incorrect-secret-code" style="color:red; display:none; font-size:16px">
-					Incorrect secret animal code
-				</div>
-			</div>
 			<div id="address-urls">
 				<img style="display:show" id="payment-student-img" src="{{address_book[first_contact]['profile_url']}}" class="user-photo">
 				{% for key in keys[1:] %}
@@ -372,6 +359,9 @@
 			</div>
 			<div style="text-align:center"class="row">
 				<h4 style="margin-top:0px"> Secret Animal Code </h4>
+				<div style="display:none;font-size:14px;color:red" id="secret-animal-code-alert">
+					Please enter a code
+				</div>
 				<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
 					<input id="secret-code" placeholder="black bear" class="input-signup"/>
 				</div>

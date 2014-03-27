@@ -1508,7 +1508,7 @@ label {
 .rating > span {
   display: inline-block;
   position: relative;
-  width: 1.1em;
+  width: 1.2em;
   cursor:pointer;
 }
 .rating > span:hover:before,
@@ -1616,3 +1616,6 @@ a.example-skill-link {
   overflow-y:scroll;
 }
 
+#tutor-rating-stars {
+  font-size:45px;
+}

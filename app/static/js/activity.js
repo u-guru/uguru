@@ -127,6 +127,10 @@ $(document).ready(function() {
    $('#feed').on('click', 'a.main-feed-messages', function() {
         last_clicked_notif_index = $('#main-feed').children().length - $(this).parent().parent().index() - 1;
         var display_id = $(this).attr('id');
+        if (display_id == 'dont-do-anything') {
+          $(this).css('cursor','default')
+          return false;
+        }
         var full_div = "#feed-messages div#" + display_id + '-detailed'
         $('#activity').hide();
         $(full_div).show('slide', {direction: 'right'}, 100);
@@ -270,7 +274,13 @@ $(document).ready(function() {
         $('#total-amount-request').text('$' + (rate * total_time))
     });
     
-    $('#submit-payment').click(function() {
+    $('#submit-payment').click(function() {        
+        if (!$('#secret-code').val()) {
+          $('#secret-animal-code-alert').text('Please enter a code');
+          $('#secret-animal-code-alert').show();
+          return false;
+        }
+        $('#secret-animal-code-alert').hide();
         conversation_id = parseInt($('#select-person-to-pay #selected-person-to-pay').attr('class').split('-').reverse()[0])
         total_time = $('#time-estimate-slider-payment').val();
         var data = {
@@ -287,7 +297,8 @@ $(document).ready(function() {
             dataType: "json",
             success: function(result) {         
                 if (!result.return_json['secret-code']) {
-                  $('#incorrect-secret-code').show();
+                  $('#secret-animal-code-alert').text('Incorrect Access Code');
+                  $('#secret-animal-code-alert').show();
                 } else {
                   var student_to_rate = result.return_json['student-name']
                   var student_profile_url = result.return_json['student-profile-url']
@@ -311,6 +322,11 @@ $(document).ready(function() {
 
     $('#submit-student-rating').click(function() {
         var num_stars = $('.star-selected').length
+        if (num_stars < 1) {
+          $('#rate-alert').show();
+          return false;
+        } 
+        $('#rate-alert').hide();
         var additional_detail = $('#student-rating-description').val();
         var data = { 'tutor-rating-student' : true, 'num_stars' : num_stars, 'additional_detail' : additional_detail }
         $('#submit-student-rating').click(false);
@@ -321,10 +337,7 @@ $(document).ready(function() {
             data: JSON.stringify(data),
             dataType: "json",
             success: function(result) {         
-              $('#rating-form-tutor').hide();
-              $('#bootstrap-success').children('.alert').text('Thank you for submitting your rating!')
-              $('#bootstrap-success').show();
-              $('#activity').show();
+              window.location.replace('/activity/');
             }
         }); 
     });

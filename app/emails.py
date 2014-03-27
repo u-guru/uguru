@@ -162,9 +162,10 @@ def tutor_is_matched(user, course_name, student_name):
     general_notification_email(user, msg_contents, email_subject)
 
 
-def student_payment_request(user, tutor_name, amount):
-    email_subject = tutor_name + " has billed you "
-    msg_contents = tutor_name + " has billed you for your recent tutoring session."
+def student_payment_receipt(user, tutor_name, amount):
+    email_subject = "Payment Sent - Please Rate " + tutor_name
+    msg_contents = tutor_name + " has billed you $" +  str(amount) + " for the recent tutoring session. " + \
+        "Please rate " + tutor_name + " by clicking the link below. It only takes two seconds." 
     general_notification_email(user, msg_contents, email_subject)
 
 def student_rating_request(user, tutor_name):
