@@ -653,15 +653,15 @@ def success():
         #Create user for first time experiences
         if ajax_json.get('student-signup'):
             try: 
-                query = User.query.filter_by(email=ajax_json['email']).first()
-                if query:
-                    ajax_json['duplicate-email'] = True
-                    return jsonify(dict=ajax_json)
-                query = User.query.filter_by(phone_number=ajax_json['phone']).first()
-                if query and ajax_json['phone'] != '':
-                    ajax_json['duplicate-phone'] = True
-                    return jsonify(dict=ajax_json)
-                
+                if not os.environ.get('TESTING'):
+                    query = User.query.filter_by(email=ajax_json['email']).first()
+                    if query:
+                        ajax_json['duplicate-email'] = True
+                        return jsonify(dict=ajax_json)
+                    query = User.query.filter_by(phone_number=ajax_json['phone']).first()
+                    if query and ajax_json['phone'] != '':
+                        ajax_json['duplicate-phone'] = True
+                        return jsonify(dict=ajax_json)
                 u = User(
                     name = ajax_json['name'], 
                     password = md5(ajax_json['password']).hexdigest(),

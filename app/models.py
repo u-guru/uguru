@@ -5,6 +5,7 @@ from sqlalchemy.orm import relationship, backref
 from app.database import Base
 from app import db
 from datetime import datetime
+import os
 
 
 
@@ -93,7 +94,10 @@ class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key = True)
     name = Column(String(64))
-    email = Column(String(64), index = True, unique = True)
+    if os.environ.get('TESTING'):
+        email = Column(String(64), index = True)
+    else:
+        email = Column(String(64), index = True, unique = True)
     password = Column(String(64))
     is_a_tutor = Column(Boolean, default = False)
     phone_number = Column(String(64), unique = True)
