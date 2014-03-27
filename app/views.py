@@ -814,8 +814,6 @@ def success():
 
 @app.route('/logout/', methods=('GET', 'POST'))
 def logout():
-    if os.environ.get('TESTING'):
-        session.pop('testing-admin')
     if session.get('user_id'):
         session.pop("user_id")
     if session.get('tutor-signup'):

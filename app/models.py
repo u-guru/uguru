@@ -95,7 +95,7 @@ class User(Base):
     id = Column(Integer, primary_key = True)
     name = Column(String(64))
     if os.environ.get('TESTING'):
-        email = Column(String(64), index = True)
+        email = Column(String(64))
     else:
         email = Column(String(64), index = True, unique = True)
     password = Column(String(64))
