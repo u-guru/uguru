@@ -941,7 +941,8 @@ def activity():
     for request in (user.outgoing_requests + user.incoming_requests_to_tutor + user.incoming_requests_from_tutors):
         student_id = request.student_id
         if user.skills and len(address_book.keys())>0:
-            address_book[student_id]['request'] = request
+            if address_book.get(student_id):
+                address_book[student_id]['request'] = request
         student = User.query.get(request.student_id)
         request_dict[request.id] = {'request':request,'student':student}
     for payment in user.payments:
