@@ -21,6 +21,8 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    if os.environ.get('TESTING') and not session.get('testing-admin'):
+        return redirect(url_for('login'))
     tutor_signup_incomplete = False
     request_form = RequestForm()
     if session.get('tutor-signup'):
@@ -811,6 +813,8 @@ def success():
 
 @app.route('/logout/', methods=('GET', 'POST'))
 def logout():
+    if os.environ.get('TESTING'):
+        session.pop('testing-admin')
     if session.get('user_id'):
         session.pop("user_id")
     if session.get('tutor-signup'):
@@ -828,6 +832,13 @@ def login():
     if request.method == "POST":
         json = {}
         ajax_json = request.json
+
+        if ajax_json['email'].lower() == 'testing@uguru.me' \
+            and ajax_json['password'].lower() == 'launchuguru' and os.environ.get('TESTING'):
+            session['testing-admin'] = True
+            json['success'] = True                
+            json['testing-admin'] = True
+            return jsonify(json=json)
 
         if ajax_json['email'].lower() == 'admin@uguru.me' \
             and ajax_json['password'].lower() == 'launchuguru':
