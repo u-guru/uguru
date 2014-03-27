@@ -772,14 +772,15 @@ def success():
         #Create a tutor for the first time
         if ajax_json.get('tutor-signup'):
             try:
-                query = User.query.filter_by(email=ajax_json['email']).first()
-                if query:
-                    ajax_json['duplicate-email'] = True
-                    return jsonify(dict=ajax_json)
-                query = User.query.filter_by(phone_number=ajax_json['phone']).first()
-                if query and ajax_json['phone'] != '':
-                    ajax_json['duplicate-phone'] = True
-                    return jsonify(dict=ajax_json)
+                if 'TESTING' not in os.environ:
+                    query = User.query.filter_by(email=ajax_json['email']).first()
+                    if query:
+                        ajax_json['duplicate-email'] = True
+                        return jsonify(dict=ajax_json)
+                    query = User.query.filter_by(phone_number=ajax_json['phone']).first()
+                    if query and ajax_json['phone'] != '':
+                        ajax_json['duplicate-phone'] = True
+                        return jsonify(dict=ajax_json)
                 u = User(
                     name = ajax_json['name'], 
                     password = md5(ajax_json['password']).hexdigest(),
