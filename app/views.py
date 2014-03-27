@@ -653,7 +653,7 @@ def success():
         #Create user for first time experiences
         if ajax_json.get('student-signup'):
             try: 
-                if not os.environ.get('TESTING'):
+                if 'TESTING' not in os.environ:
                     query = User.query.filter_by(email=ajax_json['email']).first()
                     if query:
                         ajax_json['duplicate-email'] = True
