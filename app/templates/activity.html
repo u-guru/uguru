@@ -1512,43 +1512,62 @@
 	<script src="/static/js/uguru.payments.js"></script>    
 	<script type="text/javascript">Stripe.setPublishableKey("{{key}}");</script>
 	{% endif %}
-	<script src="/static/js/jquery.nouislider.min.js"></script>
+	<script src="/static/js/jquery.nouislider.new.min.js"></script>
 	<script>
+        var Link = $.noUiSlider.Link; 
         $("#ideal-price-slider").noUiSlider({
-	          range: [5, 40]
-	          ,start: 16
-	          ,step: 1
-	          ,handles: 1
-	          ,serialization: {
-	            to: [ $("#high"), 'html' ],
-	            resolution: 0.1
-	          }
-    	});  
+            start: 16
+            ,range: {'min':[11], 'max':[40]}
+            ,step: 1
+            ,serialization: {
+              lower: [ new Link (
+                {
+                  target: $('#high')
+                })
+              ],
+              format: {
+                decimals:1
+              }
+            }  
+        });
+        {% if user.incoming_requests_to_tutor %}
         $(".tutor-change-price-slider").noUiSlider({
-              range: [0, 40]
-              ,start: 5
-              ,step: 1
-              ,handles: 1
+           	start:5
+           	,range: {'min':[5], 'max':[40]}
+           	,step: 1
         }); 
+        {% endif %}
         $("#time-estimate-slider").noUiSlider({
-              range: [1, 4]
-              ,start: 1
+              start: 1
+              ,range: {'min':[1], 'max':[6]}
               ,step: 0.5
-              ,handles: 1
               ,serialization: {
-                to: [ $("#low"), 'html' ],
-                resolution: 0.1
+                lower: [ new Link (
+                  {
+                    target: $('#low')
+                  })
+                ],
+                format: {
+                  decimals:1
+                }
               }
         });
+        {% if address_book %}
         $("#time-estimate-slider-payment").noUiSlider({
-              range: [1, 6]
-              ,start: 1
-              ,step: 0.5
-              ,handles: 1
-              ,serialization: {
-                to: [ $("#low"), 'html' ],
-                resolution: 0.1
+            start:5
+           	,range: {'min':[0], 'max':[40]}
+           	,step: 1
+           	,serialization: {
+                lower: [ new Link (
+                  {
+                    target: $('#payment')
+                  })
+                ],
+                format: {
+                  decimals:1
+                }
               }
         });
+        {% endif %}
     </script>
 {% endblock %}

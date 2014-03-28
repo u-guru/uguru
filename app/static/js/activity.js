@@ -422,67 +422,57 @@ $(document).ready(function() {
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
         $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
+        $('#ideal-price-slider').noUiSlider({
+          range: {
+            'min': Number(8),
+            'max': Number(40)
+          }
+        }, true);
       }
       else if (index == 1) {
         $('#ideal-price-slider').val('16');
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
         $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
-        // $("#ideal-price-slider").noUiSlider({
-        //       range: [11, 40]
-        //       ,start: 16
-        //       ,step: 1
-        //       ,handles: 1
-        //       ,serialization: {
-        //         to: [ $("#high"), 'html' ],
-        //         resolution: 0.1
-        //       }
-        // });
+        $('#ideal-price-slider').noUiSlider({
+          range: {
+            'min': Number(11),
+            'max': Number(40)
+          }
+        }, true);
       } else if (index == 2) {
         $('#ideal-price-slider').val('21');
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
         $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
-        // $("#ideal-price-slider").noUiSlider({
-        //       range: [16, 40]
-        //       ,start: 21
-        //       ,step: 1
-        //       ,handles: 1
-        //       ,serialization: {
-        //         to: [ $("#high"), 'html' ],
-        //         resolution: 0.1
-        //       }
-        // });
+        $('#ideal-price-slider').noUiSlider({
+          range: {
+            'min': Number(16),
+            'max': Number(40)
+          }
+        }, true);
       } else if (index == 3) {
         $('#ideal-price-slider').val('24');
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
         $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
-        // $("#ideal-price-slider").noUiSlider({
-        //       range: [19, 40]
-        //       ,start: 24
-        //       ,step: 1
-        //       ,handles: 1
-        //       ,serialization: {
-        //         to: [ $("#high"), 'html' ],
-        //         resolution: 0.1
-        //       }
-        // });
+        $('#ideal-price-slider').noUiSlider({
+          range: {
+            'min': Number(19),
+            'max': Number(40)
+          }
+        }, true);
       } else if (index == 4) {
         $('#ideal-price-slider').val('25');
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
         $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));        
-        // $("#ideal-price-slider").noUiSlider({
-        //       range: [20, 40]
-        //       ,start: 25
-        //       ,step: 1
-        //       ,handles: 1
-        //       ,serialization: {
-        //         to: [ $("#high"), 'html' ],
-        //         resolution: 0.1
-        //       }
-        // });
+        $('#ideal-price-slider').noUiSlider({
+          range: {
+            'min': Number(20),
+            'max': Number(40)
+          }
+        }, true);
       }
 
       if (index >= 1) {
@@ -502,17 +492,33 @@ $(document).ready(function() {
       $('#request-change-hourly').hide();
       $('#suggested-price-slider').show();
     });
+    
     $('#request-change-hourly-cancel').click(function() {
       $('#suggested-price-slider').hide();
+      num_students = $('#num-students-request .num-students.active').index()
+      if (num_students == 0) {
+        $('#ideal-price-slider').val(13)  
+      } else if (num_students == 1) {
+        $('#ideal-price-slider').val(16)  
+      } else if (num_students == 2) {
+        $('#ideal-price-slider').val(21)  
+      } else if (num_students == 3) {
+        $('#ideal-price-slider').val(24)  
+      } else {
+        $('#ideal-price-slider').val(25)  
+      }
+      $('#ideal-price-slider').trigger('change');
+      $('#suggested-or-your').text('Suggested');
       $('#request-change-hourly').show();
     })
+
 
     $('#ideal-price-slider').change(function() {
       var index = $('#num-students-request .num-students.active').index() + 1;
       $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
       if (index > 1) {
         $('#total-request-price-per-person').show();
-        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index)) + ' a person if you split the bill!)')
       } else {
         $('#total-request-price-per-person').hide();
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
