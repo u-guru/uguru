@@ -1096,23 +1096,6 @@ def settings():
 # def sorry():
 #     return render_template('sorry.html')
 
-@app.route('/500', methods=['GET', 'POST'])
-def _500():
-    if request.method == 'POST':
-        if session.get('user_id'):
-            email = User.query.get(session.get('user_id')).email
-        else:
-            email = 'yourmom@uguru.me'
-        message = request.form['message']
-        if input_not_empty(message):
-            message = request.form['message']
-            from emails import user_error_report
-            send_email.user_error_report(email, message)
-            return render_template('sorry.html')
-        else:
-            flash("Please Enter a Message")
-    return render_template('500.html')
-
 @app.route('/test-500/', methods=['GET','POST'])
 def test():
     return render_template('test-500.html')
@@ -1167,3 +1150,21 @@ def pretty_date(time=False):
     if day_diff < 365:
         return str(day_diff/30) + " months ago"
     return str(day_diff/365) + " years ago"
+
+
+####################
+#  Error Handling  #
+####################
+
+if os.environ.get('PRODUCTION') or os.environ.get('TESTING'):
+    @app.errorhandler(500)
+    def internal_server(e):
+        from emails import error
+        error(traceback.format_exc())
+        return render_template('500.html'), 500
+
+    @app.errorhandler(Exception)
+    def catch_all(e):
+        from emails import error
+        send_email.error(traceback.format_exc())
+        return render_template('500.html')

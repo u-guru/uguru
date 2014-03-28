@@ -510,18 +510,19 @@ def general_notification_html(user_name, msg):
     The uGuru.me Team
     """
 
-def user_error_report(email, message):
+def error(message):
 
     EMAIL_TO = ["samir@uguru.me", "michael@uguru.me"]
 
     if os.environ.get('TESTING'):
-        EMAIL_FROM = "500 Error TESTING Reponse <" + email + ">"
-        EMAIL_SUBJECT = "[500 Error Sandbox Response] Response from " + email
-    elif os.environ.get('PRODUCTION'): 
-        EMAIL_FROM = "500 Error PRODUCTION Reponse <" + email + ">"
-        EMAIL_SUBJECT = "[500 Error PRODUCTION Response] Response from " + email
-    else:
-        return False 
+        EMAIL_FROM = "TESTING Error <sandbox_error@uguru.me>"
+        EMAIL_SUBJECT = "[Uguru Sandbox Error] Exception"
+    elif os.environ.get('PRODUCTION'):
+        EMAIL_FROM = "PRODUCTION Error <site_error@uguru.me>"
+        EMAIL_SUBJECT = "[Uguru Site Error] Exception"
+    else: #local machine
+        return 
+
 
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
@@ -531,13 +532,14 @@ def user_error_report(email, message):
     msg = MIMEMultipart('alternative')
     msg['Subject'] = EMAIL_SUBJECT
     msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    print msg['To']
     msg['From'] = EMAIL_FROM
 
-    vigilante_response = MIMEText(message, 'plain', 'utf-8')
-    msg.attach(vigilante_response)
+    error_message = MIMEText(message, 'plain', 'utf-8')
+    msg.attach(error_message)
 
     mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
     mail.starttls()
     mail.login(SMTP_USERNAME, SMTP_PASSWORD)
-    mail.sendmail(EMAIL_FROM, EMAIL_TO, msg.as_string())
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()
