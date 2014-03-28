@@ -521,6 +521,7 @@ def error(message):
         EMAIL_FROM = "PRODUCTION Error <site_error@uguru.me>"
         EMAIL_SUBJECT = "[Uguru Site Error] Exception"
     else: #local machine
+        print message
         return 
 
 
@@ -532,7 +533,6 @@ def error(message):
     msg = MIMEMultipart('alternative')
     msg['Subject'] = EMAIL_SUBJECT
     msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
-    print msg['To']
     msg['From'] = EMAIL_FROM
 
     error_message = MIMEText(message, 'plain', 'utf-8')

@@ -55,14 +55,15 @@ def webhooks():
         print status
         #find user
         user = User.query.filter_by(recipient_id=recipient_id).first()
-        for n in reversed(user.notifications):
-            print n.id
-            if n.custom_tag == 'tutor-cashed-out':
-                if status == 'failed':
-                    status = "Your bank account transfer did not go through. Please contact support@uguru.me for quick support."
-                n.status = status
-                n.skill_name = bank_account_name
-                break;
+        if user:
+            for n in reversed(user.notifications):
+                print n.id
+                if n.custom_tag == 'tutor-cashed-out':
+                    if status == 'failed':
+                        status = "Your bank account transfer did not go through. Please contact support@uguru.me for quick support."
+                    n.status = status
+                    n.skill_name = bank_account_name
+                    break;
         try:
             db_session.commit()
         except:
