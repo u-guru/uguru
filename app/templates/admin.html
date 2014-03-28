@@ -104,7 +104,7 @@
                         <td> Skill </td>
                         <td> Count </td>
                     </tr>
-                    {% for row in skills_counter %}
+                    {% for row in skills_counter|reverse %}
                         <tr> 
                             <td>  {{row[0]}} </td>
                             <td>  {{row[1]}} </td>
