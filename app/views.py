@@ -154,18 +154,25 @@ def admin():
         skills_dict = {}
         tutor_count = 0
         student_count = 0
+        skills_array = []
         for u in users: 
             pretty_dates[u.id] = pretty_date(u.time_created)
             if u.skills:
                 result_string = ""
                 for s in u.skills:
                     result_string = result_string + s.name + " "
+                    skills_array.append(s.name)
                 skills_dict[u.id] = result_string
                 tutor_count +=1 
             else:
                 student_count += 1
+        from collections import Counter
+        import operator
+        skills_counter = dict(Counter(skills_array))
+        print skills_counter
+        skills_counter = sorted(skills_counter.iteritems(), key=operator.itemgetter(1))
         return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
-            skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count)
+            skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, skills_counter = skills_counter)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
