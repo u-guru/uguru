@@ -53,7 +53,7 @@ def webhooks():
         user = User.query.filter_by(recipient_id=recipient_id).first()
         for n in user.notifications:
             print n.id
-            if n.custom_tag = 'tutor-cashed-out':
+            if n.custom_tag == 'tutor-cashed-out':
                 n.status = stripe_response.status
                 n.amount = stripe_response.account.bank_name
                 break;
