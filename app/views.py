@@ -298,7 +298,11 @@ def submit_rating():
                 db_session.rollback()
                 raise 
 
-    return jsonify(return_json=return_json)            
+    return jsonify(return_json=return_json)     
+
+@app.route('/500/')       
+def _500():
+    return render_template('500.html')
 
 @app.route('/submit-payment/', methods=('GET', 'POST'))
 def submit_payment():
