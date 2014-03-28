@@ -823,12 +823,11 @@ def logout():
     flash('You have been logged out', 'info')
     return redirect(url_for("index"))
 
+
 @app.route('/login/', methods=('GET', 'POST'))
 def login():
     if session.get('user_id'):
         flash("You are already logged in!")
-        return redirect(url_for('index'))
-    if 'TESTING' not in os.environ:
         return redirect(url_for('index'))
     if request.method == "POST":
         json = {}
@@ -942,7 +941,7 @@ def activity():
         student_id = request.student_id
         if user.skills and len(address_book.keys())>0:
             if address_book.get(student_id):
-                address_book[student_id]['request'] = request
+                    address_book[student_id]['request'] = request
         student = User.query.get(request.student_id)
         request_dict[request.id] = {'request':request,'student':student}
     for payment in user.payments:
