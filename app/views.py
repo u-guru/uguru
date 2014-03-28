@@ -55,7 +55,7 @@ def webhooks():
         print status
         #find user
         user = User.query.filter_by(recipient_id=recipient_id).first()
-        for n in reversed(user.notifications)c:
+        for n in reversed(user.notifications):
             print n.id
             if n.custom_tag == 'tutor-cashed-out':
                 if status == 'failed':
