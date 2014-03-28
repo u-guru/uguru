@@ -509,3 +509,35 @@ def general_notification_html(user_name, msg):
     Sincerely, <br>
     The uGuru.me Team
     """
+
+def user_error_report(email, message):
+
+    EMAIL_TO = ["samir@uguru.me", "michael@uguru.me"]
+
+    if os.environ.get('TESTING'):
+        EMAIL_FROM = "500 Error TESTING Reponse <" + email + ">"
+        EMAIL_SUBJECT = "[500 Error Sandbox Response] Response from " + email
+    elif os.environ.get('PRODUCTION'): 
+        EMAIL_FROM = "500 Error PRODUCTION Reponse <" + email + ">"
+        EMAIL_SUBJECT = "[500 Error PRODUCTION Response] Response from " + email
+    else:
+        return False 
+
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+    DATA='This is the content of the email.'
+
+    # msg = MIMEText(DATA)
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = EMAIL_SUBJECT
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = EMAIL_FROM
+
+    vigilante_response = MIMEText(message, 'plain', 'utf-8')
+    msg.attach(vigilante_response)
+
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(EMAIL_FROM, EMAIL_TO, msg.as_string())
+    mail.quit()

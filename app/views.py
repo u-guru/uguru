@@ -87,6 +87,7 @@ def update_notifications():
         print "user next notification is now " + str(user.text_notification)
         return jsonify(ajax_json)
 
+
 @app.route('/update-profile/', methods=('GET', 'POST'))
 def update_profile():
     if request.method == "POST":
@@ -1066,37 +1067,55 @@ def settings():
     from app.static.data.short_variations import short_variations_dict
     return render_template('settings.html', logged_in=session.get('user_id'), user=user, variations=short_variations_dict)
 
-@app.route('/tutor_accept/')
-def tutor_accept():
-    page_info = { 'student_name': 'Jaclyn', 'skill_name': 'CS61A'}
-    return render_template('tutor_accept.html', page_dict = page_info)
+# @app.route('/tutor_accept/')
+# def tutor_accept():
+#     page_info = { 'student_name': 'Jaclyn', 'skill_name': 'CS61A'}
+#     return render_template('tutor_accept.html', page_dict = page_info)
 
-@app.route('/student_accept/')
-def studentaccept():
-    return render_template('student_accept.html')
+# @app.route('/student_accept/')
+# def studentaccept():
+#     return render_template('student_accept.html')
 
-@app.route('/ratingconfirm/')
-def ratingconfirm():
-    return render_template('ratingconfirm.html')
+# @app.route('/ratingconfirm/')
+# def ratingconfirm():
+#     return render_template('ratingconfirm.html')
 
-@app.route('/rating_noshow/')
-def rating_noshow():
-    return render_template('rating_noshow.html')
+# @app.route('/rating_noshow/')
+# def rating_noshow():
+#     return render_template('rating_noshow.html')
 
-@app.route('/rating_stars/')
-def rating_stars():
-    return render_template('rating_stars.html')
+# @app.route('/rating_stars/')
+# def rating_stars():
+#     return render_template('rating_stars.html')
 
-@app.route('/rating_gen/')
-def rating_gen():
-    return render_template('rating_gen.html')
+# @app.route('/rating_gen/')
+# def rating_gen():
+#     return render_template('rating_gen.html')
 
-@app.route('/sorry/')
-def sorry():
-    return render_template('sorry.html')
+# @app.route('/sorry/')
+# def sorry():
+#     return render_template('sorry.html')
 
-def authenticate(user_id):
-    session['user_id'] = user_id
+@app.route('/500', methods=['GET', 'POST'])
+def _500():
+    if request.method == 'POST':
+        if session.get('user_id'):
+            email = User.query.get(session.get('user_id')).email
+        else:
+            email = 'yourmom@uguru.me'
+        message = request.form['message']
+        if input_not_empty(message):
+            message = request.form['message']
+            from emails import user_error_report
+            send_email.user_error_report(email, message)
+            return render_template('sorry.html')
+        else:
+            flash("Please Enter a Message")
+    return render_template('500.html')
+
+@app.route('/test-500/', methods=['GET','POST'])
+def test():
+    return render_template('test-500.html')
 
 
 def upload_file_to_amazon(filename, file):
