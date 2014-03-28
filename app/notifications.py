@@ -215,10 +215,6 @@ def tutor_receive_payment(user, tutor, payment, amount_made):
         notification.image_url = tutor.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
-    # student_name = User.query.get(payment.student_id).name.split(" ")[0]
-    # amount = payment.tutor_rate * payment.time_amount
-    # balance = tutor.balance
-    # tutor_payment_received(tutor,student_name, amount, balance)
     notification.time_read = datetime.now()
     return notification
 

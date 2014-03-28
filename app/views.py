@@ -45,7 +45,23 @@ def sneak():
 @app.route('/webhooks/', methods=['GET', 'POST'])
 def webhooks():
     event_json = json.loads(request.data)
-    print event_json
+    stripe_response =  event_json['data']
+    print stripe_repsonse.status
+    if stripe_response.transfer:
+        recipient_id = stripe_response.recipient
+        #find user
+        user = User.query.filter_by(recipient_id=recipient_id).first()
+        for n in user.notifications:
+            print n.id
+            if n.custom_tag = 'tutor-cashed-out':
+                n.status = stripe_response.status
+                n.amount = stripe_response.account.bank_name
+                break;
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
     return "OK"
 
 
@@ -221,6 +237,8 @@ def add_bank():
         from notifications import tutor_cashed_out
         notification = tutor_cashed_out(user, user.balance)
         db_session.add(notification)
+
+        notification.status = 'Pending'
 
         user.notifications.append(notification)
 
