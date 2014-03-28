@@ -46,6 +46,7 @@ def sneak():
 def webhooks():
     event_json = json.loads(request.data)
     stripe_response =  event_json['data']['object']
+    print stripe_response
     stripe_response_type = stripe_response['object']
     bank_account_name = stripe_response['account']['bank_name']
     if stripe_response_type == 'transfer':
