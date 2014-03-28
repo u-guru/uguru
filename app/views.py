@@ -1166,5 +1166,5 @@ if os.environ.get('PRODUCTION') or os.environ.get('TESTING'):
     @app.errorhandler(Exception)
     def catch_all(e):
         from emails import error
-        send_email.error(traceback.format_exc())
+        error(traceback.format_exc())
         return render_template('500.html')
