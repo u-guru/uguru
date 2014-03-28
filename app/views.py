@@ -46,7 +46,7 @@ def sneak():
 def webhooks():
     event_json = json.loads(request.data)
     stripe_response =  event_json['data']
-    print stripe_repsonse.status
+    print stripe_response.status
     if stripe_response.transfer:
         recipient_id = stripe_response.recipient
         #find user
