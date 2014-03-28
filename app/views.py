@@ -47,15 +47,15 @@ def webhooks():
     event_json = json.loads(request.data)
     stripe_response =  event_json['data']['object']
     print stripe_response
+    stripe_response_type = stripe_response['object']
     if stripe_response_type == 'transfer':
-        stripe_response_type = stripe_response['object']
         bank_account_name = stripe_response['account']['bank_name']
         recipient_id = stripe_response['recipient']
         status = stripe_response['status']
         print status
         #find user
         user = User.query.filter_by(recipient_id=recipient_id).first()
-        for n in reversed(user.notifications):
+        for n in reversed(user.notifications)c:
             print n.id
             if n.custom_tag == 'tutor-cashed-out':
                 if status == 'failed':
