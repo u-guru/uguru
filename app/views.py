@@ -45,17 +45,20 @@ def sneak():
 @app.route('/webhooks/', methods=['GET', 'POST'])
 def webhooks():
     event_json = json.loads(request.data)
-    stripe_response =  event_json['data']
-    print stripe_response.status
-    if stripe_response.transfer:
-        recipient_id = stripe_response.recipient
+    stripe_response =  event_json['data']['object']
+    stripe_response_type = stripe_response['object']
+    bank_account_name = stripe_response['account']['bank_name']
+    if stripe_response_type == 'transfer':
+        recipient_id = stripe_response['recipient']
+        status = stripe_response['status']
+        print status
         #find user
         user = User.query.filter_by(recipient_id=recipient_id).first()
         for n in user.notifications:
             print n.id
             if n.custom_tag == 'tutor-cashed-out':
-                n.status = stripe_response.status
-                n.amount = stripe_response.account.bank_name
+                n.status = status
+                n.amount = bank_account_name
                 break;
         try:
             db_session.commit()
