@@ -61,7 +61,7 @@ def webhooks():
                 if status == 'failed':
                     status = "Your bank account transfer did not go through. Please contact support@uguru.me for quick support."
                 n.status = status
-                n.amount = bank_account_name
+                n.skill_name = bank_account_name
                 break;
         try:
             db_session.commit()
