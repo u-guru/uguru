@@ -58,6 +58,8 @@ def webhooks():
         for n in user.notifications:
             print n.id
             if n.custom_tag == 'tutor-cashed-out':
+                if status == 'failed':
+                    status = "Your bank account transfer did not go through. Please contact support@uguru.me for quick support."
                 n.status = status
                 n.amount = bank_account_name
                 break;
