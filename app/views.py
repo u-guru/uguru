@@ -41,6 +41,13 @@ def index():
 def sneak():
     return render_template('new_index.html')
 
+@app.route('/webhooks/', methods=['GET', 'POST'])
+def webhooks():
+    event_json = json.loads(request.data)
+    print event_json
+    return "OK"
+
+
 @app.route('/notification-settings/', methods=('GET','POST'))
 def update_notifications():
     if request.method == "POST":
