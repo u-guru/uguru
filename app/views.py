@@ -1157,6 +1157,9 @@ def pretty_date(time=False):
     return str(day_diff/365) + " years ago"
 
 
+def authenticate(user_id):
+    session['user_id'] = user_id
+
 ####################
 #  Error Handling  #
 ####################
