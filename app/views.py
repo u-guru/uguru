@@ -649,8 +649,13 @@ def update_skill():
                 db_session.add(course)
         if ajax_json.get('remove'):
             from app.static.data.short_variations_reverse import short_variations_reverse_dict
-            skill_to_remove = short_variations_reverse_dict[ajax_json.get('remove')]
-            print skill_to_remove
+            if short_variations_reverse_dict.get(ajax_json.get('remove')):
+                skill_to_remove = short_variations_reverse_dict[ajax_json.get('remove')]
+            else:
+                from app.static.data.variations import courses_dict
+                skill_id = courses_dict[ajax_json.get('remove').lower()]
+                skill = Skill.query.get(skill_id)
+                skill_to_remove = skill.name
             for skill in user.skills:
                 if skill.name.lower() == skill_to_remove.lower():
                     user.skills.remove(skill)
