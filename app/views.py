@@ -454,11 +454,17 @@ def update_requests():
         if 'tutor-accept' in ajax_json:
             incoming_request_num = ajax_json.get('tutor-accept')
             hourly_amount = ajax_json.get('hourly-amount')
-            skill_name = ajax_json.get('skill-name')
+            # skill_name = ajax_json.get('skill-name')
             notif_num = ajax_json.get('notif-num')
             tutor = user
             r = tutor.incoming_requests_to_tutor[incoming_request_num]
             r.committed_tutors.append(tutor)
+            skill_id = r.skill_id
+            skill = Skill.query.get(skill_id)
+            skill_name = skill.name
+            from app.static.data.short_variations import short_variations_dict
+            skill_name = short_variations_dict[skill_name]
+
             student = User.query.get(r.student_id)
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
@@ -585,15 +591,15 @@ def update_requests():
 
             #let other committed tutors now that they have been rejected
             from emails import student_chose_another_tutor
-            for tutor in r.committed_tutors:
-                if r.connected_tutor_id != tutor.id:
-                    for n in tutor.notifications:
+            for _tutor in r.committed_tutors:
+                if r.connected_tutor_id != tutor.id and r.connected_tutor_id != user.id:
+                    for n in _tutor.notifications:
                         if n.request_id == r.id:
                             tutor_notification = n
                     tutor.feed_notif += 1
                     tutor_notification.time_read = None
                     tutor_notification.feed_message_subtitle = 'Click here to see the status of your accepted request'
-                    student_chose_another_tutor(user, current_notification.skill_name, tutor)
+                    student_chose_another_tutor(user, current_notification.skill_name, _tutor)
                     print "Email sent to " + tutor.email
             
             try:
