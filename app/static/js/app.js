@@ -269,7 +269,7 @@ $(document).ready(function(){
               type: "POST",
               contentType: 'application/json;charset=UTF-8',
               url: '/validation/' ,
-              data: JSON.stringify(data_dict),
+              data: JSON.stringify(data_dict), 
               dataType: "json",
               success: function(result) {
                 if (result.dict['duplicate-phone']) {
