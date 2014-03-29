@@ -10,6 +10,13 @@ function locationHashChanged() {
 }
 $(document).ready(function() {
 
+      $body = $("body");
+
+      $(document).on({
+          ajaxStart: function() { $body.addClass("loading");    },
+           ajaxStop: function() { $body.removeClass("loading"); }    
+      });
+
     function readJSON(file) {
       var request = new XMLHttpRequest();
       request.open('GET', file, false);
@@ -74,11 +81,13 @@ $(document).ready(function() {
       $('#student-offer-total-price-' + feed_message_index).text((student_original_price * $('#student-time-estimate-'+ feed_message_index).text()))
     });
 
-    $('#student-register').click(function(){
+    $('#student-register').click(function(e){
     if (!$('#student-signup-description').val() || !$('#student-signup-location').val() || 
         !$('#student-signup-availability').val() || !$('#student-signup-skill').val()) {
       $('#alert-fields-student-signup1').show(); 
     } else {
+      $(this).addClass('disabled')
+      e.preventDefault();
       $('#student-register').click(false);
       var data = {
         'student-request': true,
