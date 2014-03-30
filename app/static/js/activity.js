@@ -8,9 +8,25 @@ function locationHashChanged() {
         $('#activity').show();
     }
 }
+
+var update_feed = function() {
+  var read_notifs = $('.grey-background').length
+      $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/notif-update/' ,
+            data: JSON.stringify({'update-total-unread':read_notifs}),
+            dataType: "json",
+      }); 
+  if (read_notifs == 0) {
+    $('#feed-notif').hide()
+  } 
+}
+
 $(document).ready(function() {
 
       $body = $("body");
+      update_feed();
 
       $(document).on({
           ajaxStart: function() { $body.addClass("loading");    },
@@ -106,7 +122,11 @@ $(document).ready(function() {
           url: '/validation/' ,
           data: JSON.stringify(data),
           dataType: "json",
-          success: function() {
+          success: function(result) {
+            if (result.dict['active-request']) {
+              $('#already-have-active-request-alert').show();
+              return false;
+            }
             window.location.replace('/activity/');
           }
         });

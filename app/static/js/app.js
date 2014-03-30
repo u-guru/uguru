@@ -252,6 +252,7 @@ $(document).ready(function(){
         // $('#login-page').show();
         // $("#login-page").animate({width:'toggle'},350);
         $('#student-signup').show('slide', {direction: 'right'}, 200);
+        // $('#student-request').show('slide', {direction: 'right'}, 200);
     });
     $('#student-next-link').click(function() {
         if (!$('#student-signup-name').val() || !$('#student-signup-email').val() 

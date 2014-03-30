@@ -430,9 +430,14 @@ def send_message():
                 receiver_id = conversation.guru_id
                 receiver = User.query.get(receiver_id)
 
+            #If previous message was not the sender, we know the receive should receive a notification
+            if not conversation.messages or conversation.messages[-1].sender_id != user.id \
+                or (conversation.messages[-1].sender_id == user.id and conversation.is_read):
+                receiver.msg_notif += 1
+
             message = Message(message_contents, conversation, user, receiver)
             db_session.add(message)
-            receiver.msg_notif += 1
+            
             conversation.is_read = False
             try:
                 db_session.commit()
@@ -474,6 +479,7 @@ def update_requests():
                 "'s request for " + skill_name.upper() + "."
             current_notification.feed_message_subtitle = "Click here to see next steps."
             current_notification.custom = 'tutor-accept-request'
+            current_notification.time_created = datetime.now()
             
             if ajax_json.get('price-change'):
                 current_notification.request_tutor_amount_hourly = ajax_json.get('hourly-amount')
@@ -505,6 +511,7 @@ def update_requests():
                 current_notification.skill_name + "."
             current_notification.feed_message_subtitle = None
             current_notification.custom = 'tutor-reject'
+            current_notification.time_created = datetime.now()
 
             try:
                 db_session.commit()
@@ -520,6 +527,7 @@ def update_requests():
             _request.connected_tutor_id = user.id
             student_notification.feed_message = 'You canceled a request for ' + student_notification.skill_name.upper() + '.'
             student_notification.feed_message_subtitle = None
+            student_notification.time_created = datetime.now()
 
             from emails import student_canceled_request
             for tutor in _request.committed_tutors:
@@ -556,6 +564,7 @@ def update_requests():
             current_notification.custom = 'student-accept-request'
             user.feed_notif += 1
             current_notification.time_read = None
+            current_notification.time_created = datetime.now()
 
             #Update request
             from app.static.data.animals import animal_list
@@ -566,6 +575,8 @@ def update_requests():
             r.connected_tutor_id = tutor_id
             r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
             r.student_secret_code = random.choice(animal_list)
+
+            student.outgoing_requests.remove(r)
             
             #Modify tutor notification
             for n in tutor.notifications:
@@ -574,6 +585,7 @@ def update_requests():
             tutor_notification.feed_message = "<b>You</b> have been matched with " + user.name.split(" ")[0] + " for " + skill_name + "."
             tutor_notification.feed_message_subtitle = 'Click here to see next steps!'
             tutor_notification.custom = 'tutor-is-matched'
+            tutor_notification.time_created = datetime.now()
             tutor.feed_notif += 1
             tutor_notification.time_read = None
             from emails import tutor_is_matched
@@ -581,9 +593,15 @@ def update_requests():
 
 
             #create conversation between both
-            conversation = Conversation(skill, tutor, user)
-            conversation.requests.append(r)
-            db_session.add(conversation)
+            conversation = Conversation.query.filter_by(student_id=user.id, guru_id=tutor.id).first()
+            if not conversation:
+                conversation = Conversation(skill, tutor, user)
+                conversation.requests.append(r)
+                db_session.add(conversation)
+            else:
+                conversation.is_read = False
+
+
 
             #create message notifications
             tutor.msg_notif += 1
@@ -598,7 +616,8 @@ def update_requests():
                             tutor_notification = n
                     tutor.feed_notif += 1
                     tutor_notification.time_read = None
-                    tutor_notification.feed_message_subtitle = 'Click here to see the status of your accepted request'
+                    tutor_notification.feed_message_subtitle = '<span style="color:red">This request has been canceled</span>'
+                    tutor_notification.time_created = datetime.now()
                     student_chose_another_tutor(user, current_notification.skill_name, _tutor)
                     print "Email sent to " + tutor.email
             
@@ -626,6 +645,12 @@ def notif_update():
             notification.time_read = datetime.now()
             user.feed_notif = user.feed_notif - 1
             db_session.commit();
+
+        if 'update-total-unread' in ajax_json:
+            user.feed_notif = ajax_json['update-total-unread']
+
+        if 'update-total-messages' in ajax_json:
+            user.msg_notif = ajax_json['update-total-messages']
 
     return jsonify(return_json=return_json)
 
@@ -758,9 +783,13 @@ def success():
         if ajax_json.get('student-request'):
             user_id = session['user_id']
             from app.static.data.variations import courses_dict
+            
+            # If student already has an outgoing request
             skill_name = ajax_json['skill'].lower()
             skill_id = courses_dict[skill_name]
             u = User.query.get(user_id)
+            if u.outgoing_requests:
+                return jsonify(dict={'active-request': True})
             r = Request(
                 student_id = user_id,
                 skill_id = skill_id,
