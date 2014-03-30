@@ -63,7 +63,14 @@ $(document).ready(function() {
         $('#message-alert').hide();
         var conversation_num = last_clicked_convo_num
         $('#default-message-no-convo').hide();
-        $('#conversation-messages').show();
+
+        conversation_messages_div = $(this).parent().parent().parent().siblings('.conversation-messages')
+        conversation_messages_div.show();
+        // conversation_messages.css('height', ($(document).height()-500))
+        
+        saved_message_div = $(this).parent().parent().parent().siblings('.saved-message')
+        saved_message_div.show();
+        saved_message_div.delay(750).fadeOut('slow');
         var data = {
             'send-message': message, 
             'conversation-num': ($('#message-feed').children().length - conversation_num - 1)
