@@ -337,9 +337,12 @@ def submit_payment():
                 return_json['secret-code'] = False
                 return jsonify(return_json=return_json)
 
+            r.student_secret_code = r.student_secret_code + '-USED'
             return_json['secret-code'] = True
             total_amount = round((r.connected_tutor_hourly / 0.8) * float(total_time))
             stripe_amount_cents = int(total_amount * 100.0)
+
+            # user.incoming_requests_to_tutor.remove(r)
 
             payment = Payment(r)
             payment.time_amount = float(total_time)
