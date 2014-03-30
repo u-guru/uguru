@@ -107,7 +107,10 @@ def update_profile():
             upload_file_to_amazon(destination_filename, file)
             
             #save this to the db
-            amazon_url = "https://s3.amazonaws.com/uguruprof/"+destination_filename
+            if os.environ.get('PRODUCTION')
+                amazon_url = "https://s3.amazonaws.com/uguruprof/"+destination_filename
+            else:
+                amazon_url = "https://s3.amazonaws.com/uguruproftest/"+destination_filename
             user.profile_url = amazon_url
 
             if not user.skills:
