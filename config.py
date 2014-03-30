@@ -9,5 +9,8 @@ S3_LOCATION = 'http://s3-us-west-2.amazonaws.com'
 S3_KEY = 'AKIAJTXCMXK5FHZY6YQA'
 S3_SECRET = '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'
 S3_UPLOAD_DIRECTORY = '/'
-S3_BUCKET = 'uguruprof'
+if os.environ.get('TESTING'):
+    S3_BUCKET = 'uguruproftest'
+else:
+    S3_BUCKET = 'uguruprof'
 # SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')

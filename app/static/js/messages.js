@@ -1,5 +1,23 @@
 var last_clicked_convo_num = null;
+var update_feed = function() {
+  var read_notifs = $('.grey-background').length
+      $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/notif-update/' ,
+            data: JSON.stringify({'update-total-messages':read_notifs}),
+            dataType: "json",
+      }); 
+  if (read_notifs == 0) {
+    $('#msg-notif').hide()
+  } 
+}
+
+
+
+
 $(document).ready(function() {
+  update_feed();
    $('#message-list').on('click', 'a', function() {
         var display_id = $(this).attr('id');
         var full_div = "#messages div#conversation-detailed-" + display_id.split('-').reverse()[0]
@@ -8,12 +26,12 @@ $(document).ready(function() {
         conversation_messages.css('height', ($(document).height() - 300 ))
         $(full_div).show('slide', {direction: 'right'}, 100);
         conversation_messages.animate({ scrollTop: $(document).height() }, 100);
-        last_clicked_convo_num = $(this).parent().index()
+        last_clicked_convo_num = $(this).index()
 
         if ($(this).children('div:first').hasClass('grey-background')) {
-          var convo_number = $(this).parent().index();
+          var convo_number = $(this).index();
 
-          var data = {'update-message': true, 'conversation-num': convo_number}
+          var data = {'update-message': true, 'conversation-num': ($('#message-feed').children().length - convo_number - 1)}
           feed_count = parseInt($('#msg-notif').text()) - 1;
           if (feed_count == 0) {
             $('#msg-notif').hide()
@@ -33,7 +51,7 @@ $(document).ready(function() {
     });
    $('#messages').on('click', 'a.message-back-link', function() {
         $(this).parent().parent().parent().parent().hide();
-        $('#default-message-box').hide();
+        // $('#default-message-box').hide();
         $('#message-list').show();
     });
    $('#messages').on('click', 'a.submit-message', function() {
@@ -45,9 +63,17 @@ $(document).ready(function() {
         $('#message-alert').hide();
         var conversation_num = last_clicked_convo_num
         $('#default-message-no-convo').hide();
+
+        conversation_messages_div = $(this).parent().parent().parent().siblings('.conversation-messages')
+        conversation_messages_div.show();
+        // conversation_messages.css('height', ($(document).height()-500))
+        
+        saved_message_div = $(this).parent().parent().parent().siblings('.saved-message')
+        saved_message_div.show();
+        saved_message_div.delay(750).fadeOut('slow');
         var data = {
             'send-message': message, 
-            'conversation-num': conversation_num
+            'conversation-num': ($('#message-feed').children().length - conversation_num - 1)
         };
 
         var temp_message = $('#template-message').clone();

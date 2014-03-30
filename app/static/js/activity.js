@@ -8,7 +8,30 @@ function locationHashChanged() {
         $('#activity').show();
     }
 }
+
+var update_feed = function() {
+  var read_notifs = $('.grey-background').length
+      $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/notif-update/' ,
+            data: JSON.stringify({'update-total-unread':read_notifs}),
+            dataType: "json",
+      }); 
+  if (read_notifs == 0) {
+    $('#feed-notif').hide()
+  } 
+}
+
 $(document).ready(function() {
+
+      $body = $("body");
+      update_feed();
+
+      $(document).on({
+          ajaxStart: function() { $body.addClass("loading");    },
+           ajaxStop: function() { $body.removeClass("loading"); }    
+      });
 
     function readJSON(file) {
       var request = new XMLHttpRequest();
@@ -74,11 +97,13 @@ $(document).ready(function() {
       $('#student-offer-total-price-' + feed_message_index).text((student_original_price * $('#student-time-estimate-'+ feed_message_index).text()))
     });
 
-    $('#student-register').click(function(){
+    $('#student-register').click(function(e){
     if (!$('#student-signup-description').val() || !$('#student-signup-location').val() || 
         !$('#student-signup-availability').val() || !$('#student-signup-skill').val()) {
       $('#alert-fields-student-signup1').show(); 
     } else {
+      $(this).addClass('disabled')
+      e.preventDefault();
       $('#student-register').click(false);
       var data = {
         'student-request': true,
@@ -97,7 +122,11 @@ $(document).ready(function() {
           url: '/validation/' ,
           data: JSON.stringify(data),
           dataType: "json",
-          success: function() {
+          success: function(result) {
+            if (result.dict['active-request']) {
+              $('#already-have-active-request-alert').show();
+              return false;
+            }
             window.location.replace('/activity/');
           }
         });

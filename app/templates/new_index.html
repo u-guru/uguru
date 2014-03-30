@@ -240,6 +240,59 @@
                 </a>
               </div>
             </div>
+            <div id="forgot-password-div" style="color:grey; text-align:center;"class="row">
+                  Forgot your password? <a id="forgot-password-link"style="color:#00a9e5"href="javascript:void(0);">Click here</a> to reset it.
+            </div>
+        </div>
+        <div style="display:none" id="forgot-password-page">
+            <nav class="navbar"margin-right:25px;>
+              <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="../../" class="navbar-brand" style="font-family: 'grand hotel', cursive; margin-left:5px; font-size: 50px">uguru.me</a>
+                </div>
+              </div>
+            </nav>
+            <div class="page-title">
+              <div class="row" style="width:100%;text-align:center">
+                  <div class="col-xs-1 col-sm-1 col-md-1">
+                    <a href="/" id="credit-card-back-link" style="text-decoration:none"> 
+                      <h4 id="back-button"><span style="color:white; padding-left:10px" class="glyphicon glyphicon-chevron-left"></span> </h4>
+                    </a>
+                  </div>
+                  <div class="col-xs-10 col-sm-10 col-md-10" style="text-align:center">
+                    <h4 style="padding-left:5px;color:white;width:100%;font-weight:500">FORGOTTEN PASSWORD</h4>
+                </div>
+              </div>
+            </div>
+            <div id="login-fields">
+                <div class="container-fluid">
+                    <div style="text-align:center"class="row">
+                      <div style="margin-bottom:25px;" class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+                        <h3>
+                          Please enter your email and we will send you a link to reset your password
+                        </h3>
+                      </div>
+                    </div>  
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;EMAIL</label> <br>
+                                <input name="password-email" type="email" class="input-signup" id="password-email" placeholder="username@berkeley.edu">
+                            </div>
+                            <span id='password-fields-login' style="color:red;display:None">Please fill in email field.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-bottom:0" class="row">
+              <div class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+                <a id="password-submit-link" href="javascript:void(0)">
+                  <div style="margin-left:2.5%"class="main-font" id='submit-login'>
+                    <p style="color:white"> SUBMIT </p>
+                  </div>
+                </a>
+              </div>
+            </div>
         </div>
         <div style="display:none" id="tutor-signup">
             <nav class="navbar"margin-right:25px;>
@@ -538,6 +591,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><strong>I NEED HELP IN...</strong></label> <br>
                                 <input id="student-signup-skill" name="skill" type="email" class="input-signup typeahead" placeholder="Chem 1A, Math 16A, Writing Help, Resume Help" id="login-email">
+                                <span id="other-examples">Other examples: Writing Help, Resume Help, Interview Help</span>
                             </div>
                         </div>
                     </div>
@@ -679,6 +733,7 @@
         }
         </style>
         {% endif %}
+      <div class="modal">
     </body>
     <footer>
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>

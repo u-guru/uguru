@@ -25,6 +25,13 @@ function locationHashChanged() {
 }
 $(document).ready(function(){
     
+    $body = $("body");
+
+    $(document).on({
+        ajaxStart: function() { $body.addClass("loading");    },
+         ajaxStop: function() { $body.removeClass("loading"); }    
+    });
+
     $('a[href*=#]:not([href=#])').click(function() {
       if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
         var target = $(this.hash);
@@ -245,6 +252,7 @@ $(document).ready(function(){
         // $('#login-page').show();
         // $("#login-page").animate({width:'toggle'},350);
         $('#student-signup').show('slide', {direction: 'right'}, 200);
+        // $('#student-request').show('slide', {direction: 'right'}, 200);
     });
     $('#student-next-link').click(function() {
         if (!$('#student-signup-name').val() || !$('#student-signup-email').val() 
@@ -383,6 +391,12 @@ $(document).ready(function(){
       }
     });
 
+    $('#exclusive-access-code').keyup(function(e) {
+      if (e.keyCode == 13) {
+        $('#access-submit-link').trigger('click');
+      }
+    });
+
 
     $('#add-skill-input-settings').keyup(function(e){
         if ($('#add-skill-input-settings').val()) {
@@ -448,6 +462,34 @@ $(document).ready(function(){
           $('#add-one-skill-alert').show();
         }
     });
+
+    $('#forgot-password-link').click(function() {
+      $('#login-page').hide();
+      $('#forgot-password-page').show();
+    });
+
+    $('#password-submit-link').click(function() {
+      if (!$('#password-email').val()) {
+            $('#password-fields-login').show();
+      } else {
+        var data = {
+          'reset-email': true,
+          'email': $('input[name="password-email"]').val(),
+        }
+        $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/validation/',
+          data: JSON.stringify(data),
+          dataType: "json",        
+          success: function(result) {        
+            $('#password-fields-login').css('color','green')
+            $('#password-fields-login').text('An email to this address with an activation link.')
+            $('#password-fields-login').show();
+          }
+        })
+      }
+    })
     
     $('#login-submit-link').click(function(){
     //check whether fields are blank
@@ -633,6 +675,7 @@ $(document).ready(function(){
         });
       }
     });
+
 
     $('#tutor-signup-phone').blur(function(){
       if ($('#tutor-signup-phone').val()) {
