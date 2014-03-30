@@ -17,10 +17,10 @@
       <div class="container-fluid">
         <div class="row" align="center">
           {% if user.skills or user.verified_tutor %}
-          <div class="col-xs-4 col-md-offset-4 col-md-1">
+          <div class="col-xs-3 col-md-offset-4 col-md-1">
             <span id="profile-button" class="btn-options active btn-xs"><a href="javascript:void(0);">PROFILE</a></span>
           </div>
-          <div class="col-xs-4 col-md-1">
+          <div class="col-xs-3 col-md-1">
             <span id="skills-button" class="btn-options btn-xs"><a href="javascript:void(0);">MY SKILLS</a></span>
           </div>
           {% endif %}
@@ -29,7 +29,7 @@
               <span id="settings-button" class="btn-options btn-xs"><a href="javascript:void(0);">SETTINGS</a></span>
             </div>
             <div class="col-xs-3 col-md-1">
-              <span class="btn-options btn-xs"><a href="/logout/">LOGOUT</a></span>
+              <span style="border:none; text-decoration:underline"class="btn-options btn-xs"><a href="/logout/">LOGOUT</a></span>
             </div>
             {% else %}
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6">

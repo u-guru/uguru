@@ -966,7 +966,10 @@ def access():
         access_codes = ['goslc50', 'gospc10', 'goess10','gohkn20', 'gobears30', 'golee', 'gojackie', \
         'gojared', 'gomichael','gosamir','gojonathan','gosaba','gorafi', 'godorms20', 'gopeace20'\
         ,'goess10']
-        if access_code.lower() in access_codes:
+
+        from app.static.data.random_codes import random_codes_array
+
+        if access_code.lower() in access_codes or access_code.upper() in random_codes_array:
             json['success'] = True            
             session['referral'] = access_code.lower()
         else:
