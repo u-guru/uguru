@@ -1,9 +1,20 @@
 var autocomplete_json = [];
-$(document).ready(function() {
 
-    // window.onbeforeunload = function() {
-    //   return 'If you leave this page you will lose all form progress';
-    // }
+var update_feed = function() {
+  if (!$('#default-photo').is(':visible') && $('#short-description').val() && $('#major-input').val()) {
+    $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/notif-update/' ,
+            data: JSON.stringify({'update-total-settings':true}),
+            dataType: "json",
+      }); 
+    $('#settings-notif').hide()
+    }
+  }
+
+$(document).ready(function() {
+    update_feed();
 
     function readJSON(file) {
       var request = new XMLHttpRequest();

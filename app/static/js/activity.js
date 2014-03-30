@@ -123,11 +123,16 @@ $(document).ready(function() {
           data: JSON.stringify(data),
           dataType: "json",
           success: function(result) {
-            if (result.dict['active-request']) {
+            if (result.dict['no-active-tutors']) {
+              $('#already-have-active-request-alert').children().children('div:first').text("Sorry! We currently don't have tutors for this course. We've registered your request and will let you know immediately when we do!");
+              $('#already-have-active-request-alert').show();
+            }
+            else if (result.dict['duplicate-request']) {
               $('#already-have-active-request-alert').show();
               return false;
+            } else {
+              window.location.replace('/activity/');
             }
-            window.location.replace('/activity/');
           }
         });
       }

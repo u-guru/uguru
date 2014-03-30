@@ -8251,5 +8251,8 @@ short_variations_reverse_dict = {
     "XMBA 298C": "XMBA.298C",
     "YIDDISH 101": "YIDDISH.101",
     "YIDDISH 102": "YIDDISH.102",
-    "YIDDISH 103": "YIDDISH.103"
+    "YIDDISH 103": "YIDDISH.103",
+    "Writing Help": "Writing Help",
+    "Resume Help": "Resume Help",
+    "Interview Help": "Interview Help"
 }

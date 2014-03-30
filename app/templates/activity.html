@@ -349,10 +349,10 @@
 				<h4> How Long Did You Tutor?</h4>
 				<div style="color:rgb(0, 159, 225)" class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
 					<div id="time-estimate-slider-payment" style="margin-top:7px; margin-bottom:5px"></div>
-                    <p style="margin-left:5px; font-size:14px; margin-top:3px; font-weight:700"class="text-left"><span style="font-size:14px;color:rgb(0, 159, 225)" name="estimate" id="low"></span> hours</p>
+                    <p style="margin-left:5px; font-size:14px; margin-top:3px; font-weight:700"class="text-left"><span style="font-size:14px;color:rgb(0, 159, 225)" name="estimate" id="payment"></span> hours</p>
 				</div>
 			</div>
-			<div style="text-align:center"class="row">
+			<!-- <div style="text-align:center"class="row">
 				<h4 style="margin-top:0px"> Agreed Hourly Rate </h4>
 				<div id="agreed-rates">
 					<h3 class="agreed-hourly-rate" style="color:grey; margin-top:0px; display:block"> ${{address_book[first_contact]['request'].connected_tutor_hourly}}</h3>
@@ -363,8 +363,8 @@
 						</h3>
 					{% endfor %}
 				</div>
-			</div>
-			<div style="text-align:center"class="row">
+			</div> -->
+			<!-- <div style="text-align:center"class="row">
 				<h4 style="margin-top:0px"> Your Total Earnings </h4>
 				<div id="total-earnings">
 					<h1 class="final-earning-amount"style="font-weight:700; color:#69bf69; margin-top:0px; display:block"> ${{address_book[first_contact]['request'].connected_tutor_hourly}}</h1>
@@ -372,7 +372,7 @@
 					<h1 class="final-earning-amount" style="font-weight:700;color:#69bf69;margin-top:0px; display:none">${{address_book[key]['request'].connected_tutor_hourly}}</h1>
 					{% endfor %}
 				</div>
-			</div>
+			</div> -->
 			<div style="text-align:center"class="row">
 				<h4 style="margin-top:0px"> Secret Animal Code </h4>
 				<div style="display:none;font-size:14px;color:red" id="secret-animal-code-alert">
@@ -453,7 +453,7 @@
 	    <div class="container-fluid">
 	    	<div id="already-have-active-request-alert" style="display:none" class="row-fluid">
   				<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-  					<div style="margin-bottom:0"class="alert alert-danger">You already have an active request. Once you've been matched you can make another one!</div>
+  					<div style="margin-bottom:0"class="alert alert-danger">You already have an active request for this class. Once you've been matched with a tutor you can make another one!</div>
   				</div>
 		  	</div>
 	        <div style="margin-top:15px" class="row">
@@ -718,12 +718,20 @@
 							  			<div class="h4 request-info-row">5</div>
 							  		</div>
 							  </div>
+							  <div class="row-fluid">
+							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
+							  			<div class="h4 request-info-row"><b>Time Estimate</b></div>
+							  		</div>
+							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
+							  			<div class="h4 request-info-row"><span id="student-time-estimate-{{loop.index}}">1</span>&nbsp;hour</div>
+							  		</div>
+							  </div>
 							</div>
 						</div>
 							<div style="text-align:center; margin-top:10px; color:grey">
 								You will be making: <br>
-								<span style="color:#69bf69; font-size:30px"><strong> $36 </strong></span><br>
-								<span style="color:grey; font-weight:300; font-size:14px">($18/hr)</span>
+								<span style="color:#69bf69; font-size:30px"><strong> $<span id="student-offer-total-price-{{loop.index}}">25</span> </strong></span><br>
+								<span style="color:grey; font-weight:300; font-size:14px">($<span id="student-offer-hourly-price-{{loop.index}}">25</span>/hr)</span>
 							</div>
 							<a style="text-align:center;" id="tutor-change-price-link-{{loop.index}}" class="tutor-change-price-link" href="javascript:void(0);">
 								<div style="margin-top:10px;color:rgb(0, 159, 225)"> Change the price
@@ -1054,11 +1062,10 @@
 									<b>NEXT STEPS</b>
 							</div>
 							<div style="font-size:14px; text-align:left;">
-								<p>1. Message your tutor and finalize logistics to meet in-person. </p>
-								<p>2. Once you've met in person and completed your session, discuss and agree
-								the final time spent tutoring.</p>
-								<p>3. Provide your 'secret code' to the tutor. Your secret code is <span style="color:red"><strong>'{{request_dict[n.request_id]['request'].student_secret_code}}'</strong></span>. </p>
-								<p>4. Your tutor will use this code to finalize the transaction. </p>
+								<p>1. Coordinate with your Guru, and finalize meetup time & location through messages. </p>
+								<p>2. At the end of the session, your Guru will draft the bill. Verify the bill, and give your Guru your code as proof of approval</p>
+								<p>Your secret code is <span style="color:red"><strong>'{{request_dict[n.request_id]['request'].student_secret_code}}'</strong></span>. </p>
+								<p>3. Review your Guru from 1-5 stars. Your feedback helps both the tutor and future students!</p>
 							</div>
 						</div> 
 						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:20px; margin-bottom:20px; display:block">
@@ -1245,8 +1252,8 @@
 				     <div style="margin:auto 0"class="row">
 					     <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-4 col-md-offset-4">
 							<div id="flakers-fee-alert" style="{% if not user.customer_id %} display:none; {% else %} display:block; {% endif %} text-align:center; font-size:12px; color:red;">
-									If you click accept, you agree to our <strong> <a href="#"> Terms of Service </a></strong>
-									and agree to a <strong>$10 Flaker's Fee</strong> if you do not show up to meet your student(s).
+									If you click accept, you agree to our <strong> <a href="/tos/"> Terms of Service </a></strong>
+									and agree to a <strong>$10 Flaker's Fee</strong> if you do not show up to meet your Guru.
 							</div>
 						</div> 
 					</div>
@@ -1311,13 +1318,12 @@
 							</div>
 							<div style="font-size:14px; text-align:left;">
 								<p>
-								1. Message your student and finalize logistics to meet in-person.
+								1. Coordinate with your student, and finalize meetup time & location through messages
 								</p>
 								<p>
-								2. Once you've met in person and completed your session, discuss and agree
-								the final time spent tutoring.</p>
-								<p>3. After discussing and reaching agreement, ask the student for the secret code.</p>
-								<p>4. Visit uguru.me/activity and click 'Payment.' Enter the final time amount and secret code, and you will be paid!</p>
+								2. At end of the session, you draft a bill by clicking “PAYMENT” on your feed page.</p>
+								<p>3. Have your student verify the amount, and input his/her 1-time verification code as proof of approval. </p>
+								<p>The amount will be added to your balance, and you can cash out at any time! Never have to worry about students "forgot to bring cash"!</p>
 							</div>
 						</div> 
 						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:20px; margin-bottom:20px; display:block">
@@ -1454,7 +1460,7 @@
 				     <div style="margin:auto 0"class="row">
 					     <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-4 col-md-offset-4">
 							<div id="flakers-fee-alert"style="{% if not user.customer_id %} display:none; {% else %} display:block {% endif %} text-align:center; font-size:12px; color:red;">
-									If you click accept, you agree to our <strong> <a href="#">Terms of Service</a> </strong>
+									If you click accept, you agree to our <strong> <a href="/tos/">Terms of Service</a> </strong>
 									and agree to a <strong>$10 Flaker's Fee</strong> if you do not show up to meet your student(s).
 							</div>
 						 </div>
@@ -1548,9 +1554,9 @@
         });
         {% if address_book %}
         $("#time-estimate-slider-payment").noUiSlider({
-            start:5
-           	,range: {'min':[0], 'max':[40]}
-           	,step: 1
+            start:1
+           	,range: {'min':[0], 'max':[6]}
+           	,step: 0.5
            	,serialization: {
                 lower: [ new Link (
                   {

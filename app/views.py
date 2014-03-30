@@ -42,6 +42,9 @@ def index():
 def sneak():
     return render_template('new_index.html')
 
+@app.route('/tos/', methods=['GET','POST'])
+def tos():
+    return render_template('tos.html')
 @app.route('/webhooks/', methods=['GET', 'POST'])
 def webhooks():
     event_json = json.loads(request.data)
@@ -487,8 +490,9 @@ def update_requests():
             if ajax_json.get('price-change'):
                 current_notification.request_tutor_amount_hourly = ajax_json.get('hourly-amount')
             
-            user.feed_notif += 1
-            current_notification.time_read = None
+            if current_notification.time_read:
+                user.feed_notif += 1
+                current_notification.time_read = None
 
             from notifications import tutor_request_accept, student_incoming_tutor_request
             student_notification = student_incoming_tutor_request(student, tutor, r, skill_name, hourly_amount)
@@ -528,9 +532,12 @@ def update_requests():
             request_id = student_notification.request_id
             _request = Request.query.get(request_id)
             _request.connected_tutor_id = user.id
-            student_notification.feed_message = 'You canceled a request for ' + student_notification.skill_name.upper() + '.'
-            student_notification.feed_message_subtitle = None
-            student_notification.time_created = datetime.now()
+            user.outgoing_requests.remove(_request)
+            user.notifications.remove(student_notification)
+            
+            # student_notification.feed_message = 'You canceled a request for ' + student_notification.skill_name.upper() + '.'
+            # student_notification.feed_message_subtitle = None
+            # student_notification.time_created = datetime.now()
 
             from emails import student_canceled_request
             for tutor in _request.committed_tutors:
@@ -565,8 +572,9 @@ def update_requests():
                 + skill_name + " tutor."
             current_notification.feed_message_subtitle = 'Click here to see next steps!'
             current_notification.custom = 'student-accept-request'
-            user.feed_notif += 1
-            current_notification.time_read = None
+            if current_notification.time_read:
+                user.feed_notif += 1
+                current_notification.time_read = None
             current_notification.time_created = datetime.now()
 
             #Update request
@@ -643,17 +651,24 @@ def notif_update():
         user_id = session.get('user_id')
         user = User.query.get(user_id)
 
+        if 'update-total-settings' in ajax_json:
+            user.settings_notif = 0
+
         if 'update-feed-count' in ajax_json:
             notification = user.notifications[ajax_json['notif_num']]
             notification.time_read = datetime.now()
             user.feed_notif = user.feed_notif - 1
-            db_session.commit();
 
         if 'update-total-unread' in ajax_json:
             user.feed_notif = ajax_json['update-total-unread']
 
         if 'update-total-messages' in ajax_json:
             user.msg_notif = ajax_json['update-total-messages']
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
 
     return jsonify(return_json=return_json)
 
@@ -790,9 +805,14 @@ def success():
             # If student already has an outgoing request
             skill_name = ajax_json['skill'].lower()
             skill_id = courses_dict[skill_name]
+            skill = Skill.query.get(skill_id)
             u = User.query.get(user_id)
+
             if u.outgoing_requests:
-                return jsonify(dict={'active-request': True})
+                for r in u.outgoing_requests:
+                    if r.skill_id == skill_id:
+                        return jsonify(dict={'duplicate-request': True})
+            
             r = Request(
                 student_id = user_id,
                 skill_id = skill_id,
@@ -822,6 +842,9 @@ def success():
             except:
                 db_session.rollback()
                 raise 
+
+            if not skill.tutors:
+                return jsonify(dict={'no-active-tutors': True})
 
             # Tutors are currently not contacted when there is a request.
             from notifications import tutor_request_offer

@@ -17,7 +17,10 @@ function locationHashChanged() {
       $('body').css('background-color','#00A9DE')
       $('#access-code').hide();
       $('#tutor-signup').hide();
+      $('#student-signup').hide();
       $('#tutor-signup-next').hide();
+      $('#login-page').hide();
+      $('#forgot-password-page').hide();
       $('#home').show();
       invert_olark_white();
       location.hash = '';
@@ -44,10 +47,6 @@ $(document).ready(function(){
         }
       }
     });
-
-    // window.onbeforeunload = function() {
-    //   return 'If you leave this page you will lose all form progress';
-    // }
 
     function readJSON(file) {
       var request = new XMLHttpRequest();
@@ -242,6 +241,7 @@ $(document).ready(function(){
     $('#tutor-signup-btn').click(function() {
         $('#home').hide();
         $('body').css('background-color','white')
+        location.hash = '#access-code'
         invert_olark();
         $('#access-code').show('slide', {direction: 'right'}, 200);
     });
