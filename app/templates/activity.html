@@ -1530,13 +1530,12 @@
               }
             }  
         });
-        {% if user.incoming_requests_to_tutor %}
         $(".tutor-change-price-slider").noUiSlider({
            	start:5
            	,range: {'min':[5], 'max':[40]}
            	,step: 1
         }); 
-        {% endif %}
+        
         $("#time-estimate-slider").noUiSlider({
               start: 1
               ,range: {'min':[1], 'max':[6]}
