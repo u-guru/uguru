@@ -498,7 +498,9 @@ def update_requests():
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
 
-            current_notification = user.notifications[notif_num]
+            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
+
+            current_notification = user_notifications[notif_num]
             current_notification.feed_message = 'You accepted ' + student.name.split(' ')[0] + \
                 "'s request for " + skill_name.upper() + "."
             current_notification.feed_message_subtitle = "Click here to see next steps."
@@ -527,7 +529,8 @@ def update_requests():
             notif_num = ajax_json.get('notif-num')
             request_num = ajax_json.get('request-num')
             _request = Request.query.get(request_num)
-            current_notification = user.notifications[notif_num]
+            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
+            current_notification = user_notifications[notif_num]
             print _request
             # user.incoming_requests_to_tutor.remove(_request)
             student_name = User.query.get(_request.student_id).name.split(" ")[0]
@@ -546,7 +549,8 @@ def update_requests():
 
         if 'cancel-request' in ajax_json:
             notif_num = ajax_json.get('notif-num')
-            student_notification = user.notifications[notif_num]
+            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
+            student_notification = user_notifications[notif_num]
             request_id = student_notification.request_id
             _request = Request.query.get(request_id)
             _request.connected_tutor_id = user.id
@@ -674,7 +678,8 @@ def notif_update():
             user.settings_notif = 0
 
         if 'update-feed-count' in ajax_json:
-            notification = user.notifications[ajax_json['notif_num']]
+            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
+            notification = user_notifications[ajax_json['notif_num']]
             notification.time_read = datetime.now()
             user.feed_notif = user.feed_notif - 1
 
