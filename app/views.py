@@ -669,6 +669,11 @@ def update_requests():
 def notif_update():
     if request.method == "POST":
         return_json = {}
+
+        #If admin is logged in, don't mark things as read or update their feed counter.
+        if session.get('admin'):
+            return jsonify(return_json=return_json)            
+        
         ajax_json = request.json
         print ajax_json
         user_id = session.get('user_id')
