@@ -917,6 +917,10 @@ def success():
                 db_session.add(m)
                 db_session.commit()
                 session['tutor-signup'] = True;
+
+                from emails import welcome_uguru_tutor
+                welcome_uguru_tutor(u)
+
             except:
                 db_session.rollback()
                 raise 

@@ -36,7 +36,7 @@ def getting_started_tutor(user):
     notification.a_id_name = 'getting-started'
     notification.image_url = user.profile_url
     notification.time_read = datetime.now()    
-    welcome_uguru_tutor(user)
+    # welcome_uguru_tutor(user)
     return notification
 
 def getting_started_tutor_2(user):

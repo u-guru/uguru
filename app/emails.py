@@ -321,10 +321,12 @@ def welcome_uguru_text(user_name):
 def welcome_uguru_tutor_text(user_name):
     return """Hi """ + user_name.split(' ')[0] + \
     """, \n\n""" + \
-    """Welcome onboard as an exclusive beta guru at uGuru.me! Very shortly, we will start connecting you with students who need your help and expertise, and notify you when we such an opportunity presents itself.  \n\n""" +\
-    """Our site is currently in beta, so our sincerely apologies for any unexpected hiccups. \n\n""" + \
-    """If you have any questions, concerns, or suggestions please do not hesitate to reach out to us directly by replying to this email. Your feedback is critical in making this product a meaningful service that can benefit the UC Berkeley as a whole. \n\n""" + \
-    """Sincerely, \nThe uGuru.me Team"""
+    """This is Samir, Co-Founder at <a href="http://uguru.me">Uguru</a>. First of all, congrats, you made it! We are very selective about our Gurus because we want to make sure students get the best quality help.\n\n""" +\
+    """My partner Michael and I both recently graduated from Cal. When we were in school, we saw many of our friends struggle in courses because they couldn't find enough support in this competitive Bear Territory. \n\n""" + \
+    """With <a href="http://uguru.me">Uguru</a>, we hope to make it available and affordable to everyone by connecting them with awesome Gurus like you! You will soon start receiving help requests from other students, and we will notify you via email! \n\n""" + \
+    """We are trying really hard to make it work, but we are a small team without much resources. If you encounter any hiccups on the website, or, if you have any questions/suggestions, please let me know directly by replying to this email. \n\n""" + \
+    """Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears!  \n\n""" + \
+    """Samir Makhani\nCo-Founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def welcome_uguru_student_text(user_name):
     return """Hi """ + user_name.split(' ')[0] + \
@@ -459,18 +461,18 @@ def welcome_uguru_tutor_html(user_name):
     <br>
     <br>
     This is Samir, Co-Founder at <a href="http://uguru.me">Uguru</a>. First of all, congrats, you made it! We are very selective about 
-    our Gurus because we want to make sure that they can provide the right help people need.
+    our Gurus because we want to make sure students get the best quality help.
     <br>
     <br>
     My partner Michael and I both recently graduated from Cal. When we were in school, we saw many of our friends struggle in courses because they couldn't 
-    find the help they needed in this competitive Bear Territory.
+    find enough support in this competitive Bear Territory.
     <br>
     <br>
     With <a href="http://uguru.me">Uguru</a>, we hope to make it available and affordable to everyone by connecting them with awesome Gurus like you! You will soon 
     start receiving help requests from other students, and we will notify you via email!
     <br>
     <br>
-    We are trying really hard to make it work, but we are a small team without much resource. If you encounter any hiccups on the website, or, if you have any 
+    We are trying really hard to make it work, but we are a small team without much resources. If you encounter any hiccups on the website, or, if you have any 
     questions/suggestions, please let me know directly by replying to this email. 
     <br>
     <br>
