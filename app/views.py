@@ -193,6 +193,16 @@ def admin():
         tutor_count = 0
         student_count = 0
         skills_array = []
+        all_requests = []
+        for r in Request.query.all()[::-1]:
+            request_dict = {}
+            request_dict['request'] = r
+            request_dict['date'] = pretty_date(r.time_created)
+            skill = Skill.query.get(r.skill_id)
+            request_dict['skill_name'] = skill.name
+            student = User.query.get(r.student_id)
+            request_dict['student'] = student
+            all_requests.append(request_dict)
         for u in users: 
             pretty_dates[u.id] = pretty_date(u.time_created)
             if u.skills:
@@ -210,7 +220,8 @@ def admin():
         print skills_counter
         skills_counter = sorted(skills_counter.iteritems(), key=operator.itemgetter(1))
         return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
-            skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, skills_counter = skills_counter)
+            skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, \
+            all_requests = all_requests, skills_counter = skills_counter)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
