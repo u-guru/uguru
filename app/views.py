@@ -1264,7 +1264,7 @@ if os.environ.get('PRODUCTION') or os.environ.get('TESTING'):
         if session.get('user_id'):
             user = User.query.get(session.get('user_id'))
             from pprint import pprint
-            message += "\n\n" + pprint(vars(user))
+            message += "\n\n" + str(pprint(vars(user)))
         error(message)
         return render_template('500.html'), 500
 
@@ -1275,6 +1275,6 @@ if os.environ.get('PRODUCTION') or os.environ.get('TESTING'):
         if session.get('user_id'):
             user = User.query.get(session.get('user_id'))
             from pprint import pprint
-            message += "\n\n" + pprint(vars(user))
+            message += "\n\n" + str(pprint(vars(user)))
         error(message)
         return render_template('500.html')
