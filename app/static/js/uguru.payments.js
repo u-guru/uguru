@@ -134,7 +134,7 @@ var stripeResponseHandler = function(status, response) {
                 dataType: "json"
         });  
         $('#payment-form').parent().hide();
-        $('#credit-card-info').show();
+        $('#credit-card-info').hide();
         $('#' + credit_card_back_link).show();
         $('#' + credit_card_back_link + ' a.tutor-request-accept-btn-credit').addClass('tutor-request-accept-btn');
         $('#' + credit_card_back_link + ' a.tutor-request-accept-btn-credit').removeClass('tutor-request-accept-btn-credit');
