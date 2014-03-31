@@ -131,10 +131,68 @@ def general_notification_email(user, msg_contents, email_subject):
     mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()
 
-def student_needs_help(user, course_name, course_urgency):
-    email_subject = "A Student Needs Help in " + course_name.upper()
-    msg_contents = "A student needs help in " + course_name.upper() + " " + course_urgency + """."""
-    general_notification_email(user, msg_contents, email_subject)
+def student_needs_help(student, tutor, course_name, request):
+    user_first_name = student.name.split(" ")[0]
+    email_from = "Samir from Uguru <samir@uguru.me>"
+    email_subject = "A Student Needs Your Help! Accept Now" 
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+    EMAIL_TO = [tutor.email]
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = email_subject
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = email_from
+
+    text = student_needs_help_text(user_first_name, course_name, request)
+    html = student_needs_help_html(user_first_name, course_name, request)
+    
+    part1 = MIMEText(text, 'plain', 'utf-8')
+    part2 = MIMEText(html, 'html', 'utf-8')
+
+    msg.attach(part1)
+    msg.attach(part2)
+    
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
+    mail.quit()
+
+def student_needs_help_html(student_name, class_name, request):
+    return """<b>
+    """ + student_name + """ needs help with """ + class_name + """.</b> Here's some info:
+    <br>
+    <br>
+    Availability: """ + request.available_time + """<br>
+    Preferred Location: """ + request.location+ """<br>
+    Time Estimate: """ + str(request.time_estimate) + """ hours<br>
+    # of Students That Need Help: """ + str(request.num_students) + """<br>
+    <br>
+    Sounds good so far? <a href="http://beta.uguru.me"> Log in </a> to see more details and accept the request!
+    <br>
+    <br>
+    Tip: take 3 minutes to update your profile so students feel more comfortable picking you as their Guru.    
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    """
+
+def student_needs_help_text(student_name, class_name, request):
+    return student_name + """ needs help with """ + class_name + """. Here's some info: \n\n""" + \
+    """Availability: """ + request.available_time + """\n""" +\
+    """Preferred Location: """ + request.location+ """\n""" + \
+    """Time Estimate: """ + str(request.time_estimate) + """ hours\n""" +\
+    """# of Students That Need Help: """ + str(request.num_students) + """ hours\n\n""" +\
+    """Sound good so far? Login at http://uguru.me to see more details and accept the request!\n\n""" +\
+    """Tip: take 3 minutes to update your profile so students feel more comfortable picking you as their Guru.\n\n"""+\
+    """Samir\nCo-founder"""
+
+# def student_needs_help(user, course_name, course_urgency):
+#     email_subject = "A Student Needs Help in " + course_name.upper()
+#     msg_contents = "A student needs help in " + course_name.upper() + " " + course_urgency + """."""
+#     general_notification_email(user, msg_contents, email_subject)
 
 def tutor_wants_to_help(user, course_name):
     email_subject = "A Tutor Wants to Help in " + course_name.upper()

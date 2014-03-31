@@ -71,7 +71,7 @@ def student_request_receipt(user, request, skill_name):
 
 def tutor_request_offer(user, tutor, request, skill_name):
     notification = Notification(request=request)
-    notification.feed_message = "<b>" + user.name.split(" ")[0] + "</b> needs help in " + skill_name
+    notification.feed_message = "<b>" + user.name.split(" ")[0] + "</b> needs help in " + skill_name.upper()
     notification.feed_message_subtitle = 'Click here to see more information'
     notification.skill_name = skill_name
     request_number = tutor.incoming_requests_to_tutor.index(request)
@@ -84,7 +84,7 @@ def tutor_request_offer(user, tutor, request, skill_name):
     notification.custom = skill_name
     notification.request_id = request.id
     urgency_dict = ['ASAP', 'by tomorrow', 'by next week']
-    student_needs_help(tutor, skill_name, urgency_dict[request.urgency])
+    student_needs_help(user, tutor, skill_name, request)
     tutor.feed_notif = tutor.feed_notif + 1
     tutor.status = 'red'
     return notification
