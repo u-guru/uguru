@@ -1259,12 +1259,22 @@ def authenticate(user_id):
 if os.environ.get('PRODUCTION') or os.environ.get('TESTING'):
     @app.errorhandler(500)
     def internal_server(e):
+        message = traceback.format_exc()
         from emails import error
-        error(traceback.format_exc())
+        if session.get('user_id'):
+            user = User.query.get(session.get('user_id'))
+            from pprint import pprint
+            message += "\n\n" + pprint(vars(user))
+        error(message)
         return render_template('500.html'), 500
 
     @app.errorhandler(Exception)
     def catch_all(e):
+        message = traceback.format_exc()
         from emails import error
-        error(traceback.format_exc())
+        if session.get('user_id'):
+            user = User.query.get(session.get('user_id'))
+            from pprint import pprint
+            message += "\n\n" + pprint(vars(user))
+        error(message)
         return render_template('500.html')

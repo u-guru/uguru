@@ -581,14 +581,14 @@ def general_notification_html(user_name, msg):
 
 def error(message):
 
-    EMAIL_TO = ["samir@uguru.me", "michael@uguru.me"]
+    EMAIL_TO = ["makhani.samir@gmail.com"]
 
     if os.environ.get('TESTING'):
         EMAIL_FROM = "TESTING Error <sandbox_error@uguru.me>"
         EMAIL_SUBJECT = "[Uguru Sandbox Error] Exception"
     elif os.environ.get('PRODUCTION'):
         EMAIL_FROM = "PRODUCTION Error <site_error@uguru.me>"
-        EMAIL_SUBJECT = "[Uguru Site Error] Exception"
+        EMAIL_SUBJECT = "[Uguru PRODUCTION Error] Exception"
     else: #local machine
         print message
         return 
