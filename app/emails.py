@@ -462,8 +462,8 @@ def welcome_uguru_tutor_html(user_name):
     our Gurus because we want to make sure that they can provide the right help people need.
     <br>
     <br>
-    My partner Michael and I both recently graduated from Cal. When we were in school, we saw many of our friends struggle in courses 
-    because they couldn’t find the help they needed in this competitive Bear Territory. 
+    My partner Michael and I both recently graduated from Cal. When we were in school, we saw many of our friends struggle in courses because they couldn't 
+    find the help they needed in this competitive Bear Territory.
     <br>
     <br>
     With <a href="http://uguru.me">Uguru</a>, we hope to make it available and affordable to everyone by connecting them with awesome Gurus like you! You will soon 
@@ -474,7 +474,7 @@ def welcome_uguru_tutor_html(user_name):
     questions/suggestions, please let me know directly by replying to this email. 
     <br>
     <br>
-    Thank you """+ user_name.split(' ')[0] + """ for joining us! Go Bears! 
+    Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears! 
     <br>
     <br>
     Samir<br>
