@@ -77,8 +77,8 @@ def welcome_uguru_student(user):
 
 def welcome_uguru_tutor(user):
     user_first_name = user.name.split(" ")[0]
-    email_from = "uGuru.me <support@uguru.me>"
-    email_subject = "[uGuru.me] Sign Up Confirmation"
+    email_from = "Samir from Uguru <samir@uguru.me>"
+    email_subject = "Congrats " + user_first_name + ", you did something great! See why"
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
 
@@ -458,20 +458,29 @@ def welcome_uguru_tutor_html(user_name):
     Hi """ + user_name.split(' ')[0] + """,
     <br>
     <br>
-    Welcome onboard as an exclusive beta guru at uGuru.me! Very shortly, we will start connecting you 
-    with students who need your help and expertise, and notify you when we such an opportunity presents itself. 
+    This is Samir, Co-Founder at <a href="http://uguru.me">Uguru</a>. First of all, congrats, you made it! We are very selective about 
+    our Gurus because we want to make sure that they can provide the right help people need.
     <br>
     <br>
-    Our site is currently in beta, so our sincere apologies for any unexpected hiccups. 
+    My partner Michael and I both recently graduated from Cal. When we were in school, we saw many of our friends struggle in courses 
+    because they couldn’t find the help they needed in this competitive Bear Territory. 
     <br>
     <br>
-    If you have any questions, concerns, or suggestions <i>please</i> do not hesitate to reach out to us directly by 
-    replying to this email. Your feedback is critical in making this product a meaningful service that can 
-    benefit the UC Berkeley as a whole.
+    With <a href="http://uguru.me">Uguru</a>, we hope to make it available and affordable to everyone by connecting them with awesome Gurus like you! You will soon 
+    start receiving help requests from other students, and we will notify you via email!
     <br>
     <br>
-    Sincerely, <br>
-    The uGuru.me Team
+    We are trying really hard to make it work, but we are a small team without much resource. If you encounter any hiccups on the website, or, if you have any 
+    questions/suggestions, please let me know directly by replying to this email. 
+    <br>
+    <br>
+    Thank you """+ user_name.split(' ')[0] + """ for joining us! Go Bears! 
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500-9853
     """
 
 def welcome_uguru_student_html(user_name):
