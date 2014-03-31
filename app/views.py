@@ -203,6 +203,7 @@ def admin():
             student = User.query.get(r.student_id)
             request_dict['student'] = student
             all_requests.append(request_dict)
+        all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
         for u in users: 
             pretty_dates[u.id] = pretty_date(u.time_created)
             if u.skills:
