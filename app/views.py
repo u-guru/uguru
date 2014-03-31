@@ -194,6 +194,9 @@ def admin():
         student_count = 0
         skills_array = []
         all_requests = []
+        
+        notifications = sorted(Notification.query.all(), key=lambda n:n.id, reverse=True)
+
         for r in Request.query.all()[::-1]:
             request_dict = {}
             request_dict['request'] = r
@@ -222,7 +225,7 @@ def admin():
         skills_counter = sorted(skills_counter.iteritems(), key=operator.itemgetter(1))
         return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
             skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, \
-            all_requests = all_requests, skills_counter = skills_counter)
+            all_requests = all_requests, skills_counter = skills_counter, notifications=notifications)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
