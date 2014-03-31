@@ -578,7 +578,7 @@ def update_requests():
             notification_id = ajax_json.get('notification-id')
             student = user
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
-            current_notification = user.notifications[notification_id]
+            current_notification = user_notifications[notification_id]
             skill_name = current_notification.skill_name
             
             print current_notification.id
