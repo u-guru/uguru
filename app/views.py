@@ -577,7 +577,8 @@ def update_requests():
         if 'student-accept' in ajax_json:
             notification_id = ajax_json.get('notification-id')
             student = user
-            current_notification = student.notifications[notification_id]
+            user_notifications = sorted(user.notifications, key=lambda n:n.time_created, reverse=True)
+            current_notification = user.notifications[notification_id]
             skill_name = current_notification.skill_name
             
             print current_notification.id
