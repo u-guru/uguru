@@ -1009,6 +1009,8 @@ def login():
         else:
             json['failure'] = False
         return jsonify(json=json)
+    if os.environ.get('PRODUCTION'):
+        return redirect(url_for('index'))
     return render_template("login.html")
 
 @app.route('/access/', methods=('GET','POST'))
