@@ -1262,6 +1262,7 @@ if os.environ.get('PRODUCTION') or os.environ.get('TESTING'):
         message = traceback.format_exc()
         from emails import error
         if session.get('user_id'):
+            print session.get('user_id')
             user = User.query.get(session.get('user_id'))
             from pprint import pprint
             message += "\n\n" + str(pprint(vars(user)))
