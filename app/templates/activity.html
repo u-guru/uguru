@@ -1425,7 +1425,7 @@
 									</div>
 									<div style="margin-top:-5px;">
 										<span style="color:grey; font-weight:100; font-size:16px">
-											approx. $<span id="student-offer-hourly-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(request_dict[n.request_id]['request'].student_estimated_hour * 0.8)|round|int}}{% else %}{{(n.request_tutor_amount_hourly)|round|int}}{% endif %}</span>/hr x {{request_dict[n.request_id]['request'].time_estimate}}hr
+											Approximately $<span id="student-offer-hourly-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(request_dict[n.request_id]['request'].student_estimated_hour * 0.8)|round|int}}{% else %}{{(n.request_tutor_amount_hourly)|round|int}}{% endif %}</span>/hr x {{request_dict[n.request_id]['request'].time_estimate}}hr
 										</span>
 									</div>
 									{% if n.custom == 'tutor-accept-request' and ((request_dict[n.request_id]['request'].student_estimated_hour*0.8)|round|int) != n.request_tutor_amount_hourly %}
