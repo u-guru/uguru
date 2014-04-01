@@ -126,6 +126,7 @@ $(document).ready(function() {
             if (result.dict['no-active-tutors']) {
               $('#already-have-active-request-alert').children().children('div:first').text("Sorry! We currently don't have tutors for this course. We've registered your request and will let you know immediately when we do!");
               $('#already-have-active-request-alert').show();
+              $('#student-register').hide();
             }
             else if (result.dict['duplicate-request']) {
               $('#already-have-active-request-alert').show();
@@ -616,8 +617,8 @@ $(document).ready(function() {
       }
     });
 
-    $('#cancel-request').click(function() {
-      if (confirm('Are you sure you want to cancel this request? It cannot be undone.')) {
+    $('#feed-messages').on('click', 'a.cancel-request', function() {
+      if (confirm('Are you sure you want to cancel this request? It cannot be undone and there will no previous history of this request.')) {
         data = {
           'cancel-request': true,
           'notif-num': last_clicked_notif_index
@@ -632,7 +633,7 @@ $(document).ready(function() {
                 window.location.replace('/activity/');
             }
         });      
-      }
-    });
+    }
+  });
 
 });

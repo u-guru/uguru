@@ -944,7 +944,14 @@
 	   						</div>
 	   					</div>
 	  				</div>
-	  				{% if not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
+	  				
+	  				{% if not (request_dict[n.request_id]['request'].requested_tutors ) %}
+		  			<div id="already-have-active-request-alert" style="display:show" class="row-fluid">
+                        <div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                          <div style="margin-bottom:0"class="alert alert-danger">Sorry! We currently don't have tutors for this course. <br>We've registered your request and are going to try our best to find you a tutor immediately. </div>
+                        </div>
+                    </div>
+	  				{% elif not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
 	  				<div style="display:block" class="row-fluid">
 		  				<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
 		  					<div style="margin-bottom:0"class="alert alert-info"><strong>Your next steps:</strong> Check your email frequently.<br> We'll let you know <i>immediately </i> if a tutor has agreed to help! </div>
@@ -1035,7 +1042,7 @@
 					 	{% endif %}
 					 	{% if not request_dict[n.request_id]['request'].connected_tutor_id %}
 					 	<div style="text-align:center; float:center; margin-top:20px; font-size:14px; color:grey;" class="row">
-					 		<a id="cancel-request" style="color:grey" href="javascript:void(0)"> (Click here to cancel this request) </a>
+					 		<a class="cancel-request" style="color:grey" href="javascript:void(0)"> (Click here to cancel this request) </a>
 					 	</div>
 					 	{% endif %}
 					 </div>
@@ -1545,11 +1552,13 @@
               }
             }  
         });
+        {% if user.verified_tutor %}
         $(".tutor-change-price-slider").noUiSlider({
            	start:5
            	,range: {'min':[5], 'max':[40]}
            	,step: 1
         }); 
+        {% endif %}
         {% if address_book %}
         $("#time-estimate-slider-payment").noUiSlider({
             start:1

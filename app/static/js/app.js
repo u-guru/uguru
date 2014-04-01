@@ -320,9 +320,14 @@ $(document).ready(function(){
           url: '/validation/' ,
           data: JSON.stringify(data),
           dataType: "json", 
-          success: function() {
-            window.location.replace('/activity/');
-            // $('#its-too-early').show();
+          success: function(result) {
+            if (result.dict['no-active-tutors']) {
+              $('#already-have-active-request-alert').show();
+              $('#student-register').children().children('p:first').text("Go to my homepage")
+              $('#skip-this-step').hide();
+            } else {
+              window.location.replace('/activity/');
+            }
           }
         });
       }
