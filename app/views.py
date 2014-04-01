@@ -509,6 +509,8 @@ def update_requests():
             
             if ajax_json.get('price-change'):
                 current_notification.request_tutor_amount_hourly = ajax_json.get('hourly-amount')
+            else:
+                current_notification.request_tutor_amount_hourly = r.student_estimated_hour
             
             if current_notification.time_read:
                 user.feed_notif += 1

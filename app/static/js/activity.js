@@ -182,6 +182,7 @@ $(document).ready(function() {
           }
           $('#feed-notif').text(feed_count);
           $(this).children('div:first').removeClass('grey-background');
+          $(this).children('div:first').removeClass('shadow');
           $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',

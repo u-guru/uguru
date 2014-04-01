@@ -1125,11 +1125,14 @@
 						  		<b>Year:</b> {{tutor_dict[n].year}}, <b>Major:</b> {{tutor_dict[n].major}}
 						  		</h5>
 						  	</div>
+						  	{% if tutor_dict[n].tutor_introduction %}
 						  	<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
 						  		<h5 style="text-align:center; margin:3px auto">
 						  		<b>Introduction:</b> {{tutor_dict[n].tutor_introduction}}
 						  		</h5>
 						  	</div>
+						  	{% endif %}
+						  	{% if tutor_dict[n].previous_tutor or tutor_dict[n].hkn_tutor or tutor_dict[n].slc_tutor or tutor_dict[n].res_tutor or tutor_dict[n].ta_tutor %}
 						  	<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
 						  		<h5 style="text-align:center; margin:7px auto">
 						  		<b>Relevant Experience:</b> <br> 
@@ -1162,6 +1165,7 @@
 						        	</div>
 						  		</h5>
 						  	</div>
+						  	{% endif %}
 						</div>
 						<div class="row">
 							{% set original_student_price = (request_dict[n.request_id]['request'].student_estimated_hour )|int %}
@@ -1238,7 +1242,11 @@
 									<div style="font-size:14px; margin-top:10px; color:red">
 											The tutor changed the price from ${{(request_dict[n.request_id]['request'].student_estimated_hour )|int}}/hr to ${{(n.request_tutor_amount_hourly / 0.8)|round|int}}/hr 
 									</div>
-									{% endif%}
+									{% else %}
+									<div style="font-size:14px; margin-top:10px; color:rgb(0, 159, 225)">
+											The tutor has accepted your original asking price!
+									</div>
+									{% endif %}
 								</div>
 								{%endif%}
 						 	</div>
