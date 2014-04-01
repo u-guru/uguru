@@ -84,7 +84,8 @@ def tutor_request_offer(user, tutor, request, skill_name):
     notification.custom = skill_name
     notification.request_id = request.id
     urgency_dict = ['ASAP', 'by tomorrow', 'by next week']
-    student_needs_help(user, tutor, skill_name, request)
+    if tutor.email_notification:
+        student_needs_help(user, tutor, skill_name, request)
     tutor.feed_notif = tutor.feed_notif + 1
     tutor.status = 'red'
     return notification
