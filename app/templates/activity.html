@@ -233,7 +233,7 @@
    					</a>
 					</div>
 					<div class="col-xs-9 col-md-8" style="text-align:center">
-						<h4 style="color:white;width:100%">Credit Card</h4>
+						<h4 style="color:white;width:100%">CREDIT CARD</h4>
 				</div>
 			</div>
 		</div>
@@ -255,7 +255,7 @@
 				</div>
 		  	</div>
 		  	<div class="row">
-		  		<div class="col-xs-12 col-xs-offset-3 col-sm-6 col-sm-offset-2 col-md-4 col-md-offset-4">
+		  		<div class="col-xs-12 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 				  		<div id="bank-account-alert" class="row" style="display:none; text-align:center; color:red">
 				  			Please fill out all fields
 				  		</div>
@@ -287,6 +287,9 @@
 				  			<input id="bank-routing-num" style="width:100%" type="text" size="20" data-stripe="number" class="input-signup">
 				  		</div>
 					 	<span class="payment-errors"></span>
+					 	<div style="margin-top:20px; margin-bottom:20px;text-align:center" class="row-fluid">
+					  			<img src="/static/img/powered-stripe.png">
+					  	</div>
 				</div>
 			</div>
 			<div class="row">
@@ -1453,13 +1456,9 @@
 				    </div>
 				    <div class="row">
 						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:0px; margin-bottom:5px; display:block">
-				          <a href="javascript:void(0)" class="{% if not user.customer_id %} tutor-request-accept-btn-credit {% else %} tutor-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
+				          <a href="javascript:void(0)" class="tutor-request-accept-btn"id="{{n.a_id_name}}-next-link">
 				            <div class="btn-save">
-				              {% if not user.customer_id %}
-									<p id="student-accept-text"> NEXT STEPS</p>
-							  {% else %}
 									<p id="student-accept-text"> ACCEPT REQUEST</p>
-							  {% endif %}
 				            </div>
 				          </a>
 				        </div>
