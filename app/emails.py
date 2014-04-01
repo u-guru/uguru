@@ -49,8 +49,8 @@ def send_connection_email(student, tutor, request):
 
 def welcome_uguru_student(user):
     user_first_name = user.name.split(" ")[0]
-    email_from = "uGuru.me <support@uguru.me>"
-    email_subject = "[uGuru.me] Sign Up Confirmation"
+    email_from = "Samir from Uguru <samir@uguru.me>"
+    email_subject = "Experienced Gurus Are Ready to Help Whenever You Feel Stuck"
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
 
@@ -134,7 +134,7 @@ def general_notification_email(user, msg_contents, email_subject):
 def student_needs_help(student, tutor, course_name, request):
     user_first_name = student.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = "A Student Needs Your Help! Accept Now" 
+    email_subject = user_first_name + " Needs Your Help in " + course_name.upper() +"! Accept Now" 
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
     EMAIL_TO = [tutor.email]
@@ -177,6 +177,8 @@ def student_needs_help_html(student_name, class_name, request):
     <br>
     Samir<br>
     Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
     """
 
 def student_needs_help_text(student_name, class_name, request):
@@ -189,15 +191,181 @@ def student_needs_help_text(student_name, class_name, request):
     """Tip: take 3 minutes to update your profile so students feel more comfortable picking you as their Guru.\n\n"""+\
     """Samir\nCo-founder"""
 
-# def student_needs_help(user, course_name, course_urgency):
-#     email_subject = "A Student Needs Help in " + course_name.upper()
-#     msg_contents = "A student needs help in " + course_name.upper() + " " + course_urgency + """."""
-#     general_notification_email(user, msg_contents, email_subject)
+def tutor_wants_to_help(student, tutor, course_name):
+    user_first_name = student.name.split(" ")[0]
+    tutor_name = tutor.name.split(" ")[0]
+    email_from = "Samir from Uguru <samir@uguru.me>"
+    email_subject = "A Guru Accepted Your " + course_name +" Request! Check Now" 
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+    EMAIL_TO = [student.email]
 
-def tutor_wants_to_help(user, course_name):
-    email_subject = "A Tutor Wants to Help in " + course_name.upper()
-    msg_contents = "A tutor wants to help in " + course_name.upper() + "."
-    general_notification_email(user, msg_contents, email_subject)
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = email_subject
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = email_from
+
+    text = tutor_wants_to_help_text(tutor_name, course_name)
+    html = tutor_wants_to_help_html(tutor_name, course_name)
+    
+    part1 = MIMEText(text, 'plain', 'utf-8')
+    part2 = MIMEText(html, 'html', 'utf-8')
+
+    msg.attach(part1)
+    msg.attach(part2)
+    
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
+    mail.quit()
+
+def tutor_wants_to_help_text(tutor_name, course_name):
+    return tutor_name + """ needs help with """ + course_name + """. \n\n""" + \
+    """Login to http://uguru.me to see""" + tutor_name + """'s profile and accept the offer, or if you're not in a rush, wait for a couple more Gurus to accept and choose the one you like best\n\n""" +\
+    """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
+
+def tutor_wants_to_help_html(tutor_name, course_name):
+    return """
+    """ + tutor_name + """ accepted your request for """ + course_name + """.
+    <br>
+    <br>
+    <a href="http://uguru.me"> Log in </a> to see """ + tutor_name + """'s profile and accept the offer, or if 
+    you're not in a rush, wait for a couple more Gurus to accept and choose the one you like best!
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
+
+
+def student_is_matched(student, tutor, request_code):
+    tutor_name = tutor.name.split(" ")[0]
+    email_from = "Samir from Uguru <samir@uguru.me>"
+    email_subject = "You Have Been Matched with " + tutor_name  + "! Now Follow These Steps"
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+    EMAIL_TO = [tutor.email]
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = email_subject
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = email_from
+
+    text = student_is_matched_text(tutor_name, request_code)
+    html = student_is_matched_html(tutor_name, request_code)
+    
+    part1 = MIMEText(text, 'plain', 'utf-8')
+    part2 = MIMEText(html, 'html', 'utf-8')
+
+    msg.attach(part1)
+    msg.attach(part2)
+    
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
+    mail.quit()
+
+def tutor_is_matched(student, tutor):
+    student_name = student.name.split(" ")[0]
+    tutor_name = tutor.name.split(" ")[0]
+    email_from = "Samir from Uguru <samir@uguru.me>"
+    email_subject = "Congrats! " + student_name  + " Chose You! Now Follow These Steps"
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+    EMAIL_TO = [tutor.email]
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = email_subject
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = email_from
+
+    text = tutor_is_matched_text(tutor_name)
+    html = tutor_is_matched_html(tutor_name)
+    
+    part1 = MIMEText(text, 'plain', 'utf-8')
+    part2 = MIMEText(html, 'html', 'utf-8')
+
+    msg.attach(part1)
+    msg.attach(part2)
+    
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
+    mail.quit()
+
+def student_is_matched_text(tutor_name, request_code):
+    return """We have made it super easy for you! Here are the steps:\n\n:""" + \
+    """1. Coordinate with your Guru, and finalize meetup time & location through our messages (http://uguru.me/messages).\n\n""" +\
+    """2. At end of the session, your Guru will draft the bill on his device. Verify the bill, and give your Guru your code as proof of approval. You will automatically be charged for the approved amount. Forget about cash, your code is your wallet!\n\n""" +\
+    """3. 3. Rate and review your Guru, and you are all done!\n\n""" +\
+    """Please bring(or remember) your 1-time verification code for this session:""" + request_code + """""" +\
+    """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
+
+def student_is_matched_html(tutor_name, request_code):
+    return """We have made it super easy for you! Here are the steps:
+    <br>
+    <br>
+    1. Coordinate with your student, and finalize meetup time & location through our <a href="http://uguru.me/messages/"> messages</a>.
+    <br>
+    <br>
+    2. At end of the session, your Guru will draft the bill on his device. Verify the bill, and give your Guru your code as proof of approval. You will automatically be charged 
+    for the approved amount. Forget about cash, your code is your wallet!
+    <br>
+    <br>
+    3. Rate and review your Guru, and you are all done!
+    <br>
+    <br>
+    <b> Please bring(or remember) your 1-time verification code for this session:</b> '<span style="color:red;font-weight:bold">""" + request_code + """</span>'
+    <br>
+    <br>
+    If you have any questions or concerns, please reply directly to this email, or give us a phonecall! 
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
+
+
+def tutor_is_matched_text(tutor_name):
+    return """Congrats """ + tutor_name + """! Here are the next steps\n\n:""" + \
+    """1. Coordinate with your student, and finalize meetup time & location through our messages (http://uguru.me/messages).\n\n""" +\
+    """2. At the end of the session, you draft a bill clicking "Request Payment" on your feed page. You should bring a laptop or smart phone that
+    can access the web to your session.\n\n""" +\
+    """3. Have your student verify the amount, and input his/her 1-time verification code as proof of approval. The amount will be added to your balance,
+    and you can cash out at any time!\n\n""" +\
+    """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
+
+def tutor_is_matched_html(tutor_name):
+    return """Congrats """ + tutor_name + """! Here are the next steps: 
+    <br>
+    <br>
+    1. Coordinate with your student, and finalize meetup time & location through our <a href="http://uguru.me/messages/"> messages</a>.
+    <br>
+    <br>
+    2. At the end of the session, you draft a bill clicking "Request Payment" on your feed page. You should bring a laptop or smart phone that
+    can access the web to your session.
+    <br>
+    <br>
+    3. Have your student verify the amount, and input his/her 1-time verification code as proof of approval. The amount will be added to your balance,
+    and you can cash out at any time!
+    <br>
+    <br>
+    If you have any questions or concerns, please reply directly to this email, or give us a phonecall! 
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
+
 
 def student_canceled_request(student, course_name, tutor):
     email_subject = "We're sorry!"
@@ -210,14 +378,6 @@ def student_chose_another_tutor(student, course, tutor):
     msg_contents = student.name.split(" ")[0] + " chose another " + course.upper() + \
         " tutor."
     general_notification_email(tutor, msg_contents, email_subject)
-
-def tutor_is_matched(user, course_name, student_name):
-    email_subject = "Congrats! You've been matched with " + student_name
-    msg_contents = """Start messaging """ + student_name + """ and set up a time to meet now.<br><br>""" + \
-                   """Once you've met the student, don't forget to send the bill to the student
-                    so you can immediately get paid and receive your first rating. <br><br>
-                    If your first rating is good, we'll increase the max price you can advertise yourself ;) """
-    general_notification_email(user, msg_contents, email_subject)
 
 
 def student_payment_receipt(user, tutor_name, amount):
@@ -379,20 +539,21 @@ def welcome_uguru_text(user_name):
 def welcome_uguru_tutor_text(user_name):
     return """Hi """ + user_name.split(' ')[0] + \
     """, \n\n""" + \
-    """This is Samir, Co-Founder at <a href="http://uguru.me">Uguru</a>. First of all, congrats, you made it! We are very selective about our Gurus because we want to make sure students get the best quality help.\n\n""" +\
-    """My partner Michael and I both recently graduated from Cal. When we were in school, we saw many of our friends struggle in courses because they couldn't find enough support in this competitive Bear Territory. \n\n""" + \
-    """With <a href="http://uguru.me">Uguru</a>, we hope to make it available and affordable to everyone by connecting them with awesome Gurus like you! You will soon start receiving help requests from other students, and we will notify you via email! \n\n""" + \
-    """We are trying really hard to make it work, but we are a small team without much resources. If you encounter any hiccups on the website, or, if you have any questions/suggestions, please let me know directly by replying to this email. \n\n""" + \
+    """This is Samir, Co-Founder at Uguru. First of all, congrats, you made it! Our Guru selection process is competitive only to make sure that you can provide infinite wisdom and sage advice to our students.\n\n""" +\
+    """My partner Michael and I both recently graduated from Cal. We couldn't help but notice many of our classmates wishing for a way to get help during times of great academic struggle. We knew that there had to be a better way to achieve success in Bear Territory. \n\n""" + \
+    """Enter Uguru, where we hope to make grade-saving help available and affordable to students by connecting them to our trusted Gurus like you! Soon, you will be able to guide those lost in the dungeons of Moffit and help them achieve scholarly enlightenment. We will be sending you these requests via email. \n\n""" + \
+    """As a small team slowly gathering our resources, we are trying our best to make using Uguru a seamless experience. If you encounter any pesky hiccups or bugs, or if you have any questions/suggestions, please let me know by replying directly to this email. \n\n""" + \
     """Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears!  \n\n""" + \
     """Samir Makhani\nCo-Founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def welcome_uguru_student_text(user_name):
     return """Hi """ + user_name.split(' ')[0] + \
     """, \n\n""" + \
-    """Welcome onboard as an exclusive beta user at uGuru.me! Very shortly, we will start connecting you with experienced Berkeley tutors, and notify you when we such an opportunity presents itself. \n\n""" +\
-    """Our site is currently in beta, so our sincerely apologies for any unexpected hiccups. \n\n""" + \
-    """If you have any questions, concerns, or suggestions please do not hesitate to reach out to us directly by replying to this email. Your feedback is critical in making this product a meaningful service that can benefit the UC Berkeley as a whole. \n\n""" + \
-    """Sincerely, \nThe uGuru.me Team"""
+    """This is Samir, Co-Founder at Uguru. My partner Michael and I both recently graduated from Cal. When we were in school, we saw many of our friends struggle in courses because they couldn't find the help they needed in this competitive Bear Territory. \n\n""" +\
+    """With Uguru, we hope to make it available and affordable to everyone by connecting them with awesome Gurus that we hand-picked from a pool of experienced peer tutors. If you are feeling stuck, just send a request here, and they will be ready to help! \n\n""" + \
+    """As a small team slowly gathering our resources, we are trying our best to make using Uguru a seamless experience. If you encounter any pesky hiccups or bugs, or if you have any questions/suggestions, please let me know by replying directly to this email. \n\n""" + \
+    """Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears!  \n\n""" + \
+    """Samir Makhani\nCo-Founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def general_notification_text(user_name, msg):
     print msg, user_name
@@ -518,20 +679,20 @@ def welcome_uguru_tutor_html(user_name):
     Hi """ + user_name.split(' ')[0] + """,
     <br>
     <br>
-    This is Samir, Co-Founder at <a href="http://uguru.me">Uguru</a>. First of all, congrats, you made it! We are very selective about 
-    our Gurus because we want to make sure students get the best quality help.
+    This is Samir, Co-Founder at <a href="http://uguru.me">Uguru</a>. First of all, congrats, you made it! First of all, congrats, you made it! Our Guru selection process 
+    is competitive only to make sure that you can provide infinite wisdom and sage advice to our students.
     <br>
     <br>
-    My partner Michael and I both recently graduated from Cal. When we were in school, we saw many of our friends struggle in courses because they couldn't 
-    find enough support in this competitive Bear Territory.
+    My partner Michael and I both recently graduated from Cal. We couldn't help but notice many of our classmates wishing for a way to get help during times of great 
+    academic struggle. We knew that there had to be a better way to achieve success in Bear Territory.
     <br>
     <br>
-    With <a href="http://uguru.me">Uguru</a>, we hope to make it available and affordable to everyone by connecting them with awesome Gurus like you! You will soon 
-    start receiving help requests from other students, and we will notify you via email!
+    Enter Uguru, where we hope to make grade-saving help available and affordable to students by connecting them to our trusted Gurus like you! Soon, you will be able to 
+    guide those lost in the dungeons of Moffit and help them achieve scholarly enlightenment. We will be sending you these requests via email.
     <br>
-    <br>
-    We are trying really hard to make it work, but we are a small team without much resources. If you encounter any hiccups on the website, or, if you have any 
-    questions/suggestions, please let me know directly by replying to this email. 
+    <br>    
+    As a small team slowly gathering our resources, we are trying our best to make using Uguru a seamless experience. If you encounter any pesky hiccups or bugs, or if you 
+    have any questions/suggestions, please let me know by replying directly to this email.
     <br>
     <br>
     Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears! 
@@ -548,20 +709,25 @@ def welcome_uguru_student_html(user_name):
     Hi """ + user_name.split(' ')[0] + """,
     <br>
     <br>
-    Welcome onboard as an exclusive beta user at uGuru.me! Very shortly, we will start connecting you 
-    with Cal tutors that can immediately help, and notify you when we such an opportunity presents itself. 
+    This is Samir, Co-Founder at <a href="http://uguru.me">Uguru</a>.  My partner Michael and I both recently graduated from Cal. When we were in school, we saw many of our 
+    friends struggle in courses because they couldn't find the help they needed in this competitive Bear Territory. 
     <br>
     <br>
-    Our site is currently in beta, so our sincerely apologies for any unexpected hiccups. 
+    With Uguru, we hope to make it available and affordable to everyone by connecting them with awesome Gurus that we hand-picked from a pool of experienced peer tutors. 
+    If you are feeling stuck, just send a request here, and they will be ready to help!    
+    <br>
+    <br>    
+    As a small team slowly gathering our resources, we are trying our best to make using Uguru a seamless experience. If you encounter any pesky hiccups or bugs, or if you 
+    have any questions/suggestions, please let me know by replying directly to this email.
     <br>
     <br>
-    If you have any questions, concerns, or suggestions <i>please</i> do not hesitate to reach out to us directly by 
-    replying to this email. Your feedback is critical in making this product a meaningful service that can 
-    benefit the UC Berkeley as a whole.
+    Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears! 
     <br>
     <br>
-    Sincerely, <br>
-    The uGuru.me Team
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500-9853
     """
 
 

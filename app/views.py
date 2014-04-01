@@ -486,7 +486,7 @@ def update_requests():
             # skill_name = ajax_json.get('skill-name')
             notif_num = ajax_json.get('notif-num')
             tutor = user
-            r = tutor.incoming_requests_to_tutor[incoming_request_num]
+            r = Request.query.get(incoming_request_num)
             r.committed_tutors.append(tutor)
             skill_id = r.skill_id
             skill = Skill.query.get(skill_id)
@@ -622,8 +622,9 @@ def update_requests():
             tutor_notification.time_created = datetime.now()
             tutor.feed_notif += 1
             tutor_notification.time_read = None
-            from emails import tutor_is_matched
-            tutor_is_matched(tutor, skill_name, user.name.split(" ")[0])
+            from emails import tutor_is_matched, student_is_matched
+            tutor_is_matched(user, tutor)
+            student_is_matched(user, tutor, r.student_secret_code)
 
 
             #create conversation between both

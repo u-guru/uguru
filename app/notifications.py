@@ -1,7 +1,7 @@
 from app import app
 from app.models import Skill, User, Request, Notification
 from emails import welcome_uguru_student, welcome_uguru_tutor, student_needs_help, tutor_wants_to_help, \
-    tutor_is_matched, student_payment_receipt, tutor_payment_received
+    tutor_is_matched, student_payment_receipt, tutor_payment_received, student_is_matched
 from datetime import datetime
 
 def getting_started_student(user):
@@ -75,7 +75,7 @@ def tutor_request_offer(user, tutor, request, skill_name):
     notification.feed_message_subtitle = 'Click here to see more information'
     notification.skill_name = skill_name
     request_number = tutor.incoming_requests_to_tutor.index(request)
-    notification.a_id_name = 'tutor-request-offer' + str(request_number)
+    notification.a_id_name = 'tutor-request-offer' + str(request.id)
     if user.profile_url:
         notification.image_url = user.profile_url
     else:
@@ -121,7 +121,7 @@ def student_incoming_tutor_request(user, tutor, request, skill_name, hourly_amou
         notification.image_url = tutor.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
-    tutor_wants_to_help(user, skill_name) 
+    tutor_wants_to_help(user, tutor, skill_name.upper()) 
     user.feed_notif = user.feed_notif + 1
     notification.status = 'yellow'
     return notification
@@ -140,7 +140,8 @@ def student_match(user, tutor, request, skill_name, hourly_amount):
         notification.image_url = tutor.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
-    tutor_is_matched(tutor, skill_name, user.name.split(" ")[0])
+    tutor_is_matched(user, tutor)
+    student_is_matched(user,tutor,request.student_secrete_code)
     notification.time_read = datetime.now()
     user.msg_notif = user.msg_notif + 1
     tutor.msg_notif = tutor.msg_notif + 1
