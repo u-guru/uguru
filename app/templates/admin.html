@@ -165,6 +165,7 @@
                         <td> Time Estimate </td>
                         <td> Hourly Price </td>
                         <td> #Tutors Avail </td>
+                        <td> #Tutors Seen </td>
                         <td> #Tutors Replied </td>
                         <td> Time Created </td>
                     </tr>
@@ -194,6 +195,9 @@
                             </td>
                             <td>  
                                 {{request_dict['request'].requested_tutors|length}} 
+                            </td>
+                            <td>  
+                                {{request_dict['total_seen']}} 
                             </td>
                             <td>  
                                 {{request_dict['request'].committed_tutors|length}} 
