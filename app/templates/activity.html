@@ -151,7 +151,7 @@
 				{% else %}
 				<a class='main-feed-messages'id="{{n.a_id_name}}" href="#	{{n.a_id_name}}-detailed">
 				{% endif %}
-					<div {% if n.a_id_name == 'getting-started' or (n.custom_tag=='tutor-receive-payment' and n.time_read) or (n.custom_tag=='student-payment-approval' and n.time_read) %} style="cursor:default;" {%endif%}class="notification {% if not n.time_read %} grey-background {% endif %}" align:"center">
+					<div {% if n.a_id_name == 'getting-started' or (n.custom_tag=='tutor-receive-payment' and n.time_read) or (n.custom_tag=='student-payment-approval' and n.time_read) %} style="cursor:default;" {%endif%}class="notification {% if not n.time_read %} grey-background shadow{% endif %}" align:"center">
 						<img src="{{n.image_url}}" class="user-photo" style="float:left; margin-top:-10px">
 							<h5 style="margin-bottom:0px; margin-top:0px">{{n.feed_message|safe}}</h4>
 							{% if n.feed_message_subtitle %}
