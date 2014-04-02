@@ -54,7 +54,7 @@ def getting_started_tutor_2(user):
 def student_request_receipt(user, request, skill_name):
     notification = Notification(request=request)
     notification.skill_name = skill_name
-    notification.feed_message = "<b>You</b> requested help in " + skill_name
+    notification.feed_message = "<b>You</b> requested help in " + skill_name.upper()
     notification.feed_message_subtitle = "Click here to see " +\
         "the status of your request!"
     request_number = user.outgoing_requests.index(request)
