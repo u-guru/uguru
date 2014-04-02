@@ -269,6 +269,120 @@ def student_is_matched(student, tutor, request_code):
     mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()
 
+
+def send_message_alert(receiver, sender):
+    receiver_name = receiver.name.split(" ")[0]
+    sender_name = sender.name.split(" ")[0]
+    email_from = "Samir from Uguru <samir@uguru.me>"
+    email_subject = "You have a new message from " + sender_name
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+    EMAIL_TO = [receiver.email]
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = email_subject
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = email_from
+
+    text = send_message_alert_text(receiver_name, sender_name)
+    html = send_message_alert_html(receiver_name, sender_name)
+    
+    part1 = MIMEText(text, 'plain', 'utf-8')
+    part2 = MIMEText(html, 'html', 'utf-8')
+
+    msg.attach(part1)
+    msg.attach(part2)
+    
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
+    mail.quit()
+    print "sent message alert sent to " + receiver_name
+
+def send_message_alert_text(receiver_name, sender_name):
+    return """Don't keep """ + sender_name + " waiting! Login to Uguru.me and message " + sender_name + " now at http://uguru.me/messages/ ."
+    """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
+
+def send_message_alert_html(receiver_name, sender_name):
+    return """Don't keep """ + sender_name + """ waiting!
+    <br>
+    <br>
+    Login to <a href="http://uguru.me"> Uguru </a> and reply to """ + sender_name + """ now through our <a href="http://uguru.me/messages">messages</a>.     
+    <br>
+    <br>
+    If you have any questions or concerns, please reply directly to this email, or give us a phonecall! 
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
+
+def student_payment_receipt(user, tutor_name, amount, payment, charge_id):
+    student_name = user.name.split(" ")[0]
+    email_from = "Samir from Uguru <samir@uguru.me>"
+    email_subject = "Here's Your Receipt from Your Session with " + tutor_name
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+    EMAIL_TO = [user.email]
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = email_subject
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = email_from
+
+    card_last4 = user.customer_last4
+    hourly_price = (round(payment.tutor_rate / 0.8))
+    hours = payment.time_amount
+
+    text = student_payment_receipt_text(charge_id, card_last4, tutor_name, hourly_price, hours, amount)
+    html = student_payment_receipt_html(charge_id, card_last4, tutor_name, hourly_price, hours, amount)
+    
+    part1 = MIMEText(text, 'plain', 'utf-8')
+    part2 = MIMEText(html, 'html', 'utf-8')
+
+    msg.attach(part1)
+    msg.attach(part2)
+    
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
+    mail.quit()
+
+def student_payment_receipt_text(charge_id, card_last4, tutor_name, hourly_price, hours, amount):
+    return """\n:""" + \
+    """Receipt ID: """+  charge_id +"""\n""" +\
+    """Card Number: ****-****-****-"""+ card_last4 +"""\n""" +\
+    """Guru Name: """+ tutor_name +"""\n""" +\
+    """Hourly Price: $"""+ str(hourly_price) +"""\n""" +\
+    """Hours: """+ str(hours) +""" hours\n""" +\
+    """Total Amount: $"""+ str(amount) +"""\n\n""" +\
+    """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
+    """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
+
+def student_payment_receipt_html(charge_id, card_last4, tutor_name, hourly_price, hours, amount):
+    return """
+    <br>
+    Receipt ID: """+  charge_id +"""<br>
+    Card Number: ****-****-****-"""+  card_last4 +"""<br>
+    Guru Name: """+  tutor_name +"""<br>
+    Hourly Price: $""" + str(hourly_price) + """<br>
+    Hours: """ + str(hours) + """ hours<br>
+    Total Amount: $""" + str(amount) + """
+    <br>
+    <br>
+    If the above information is incorrect, please contact us by directly replying to this email.
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
+
 def tutor_is_matched(student, tutor):
     student_name = student.name.split(" ")[0]
     tutor_name = tutor.name.split(" ")[0]
@@ -378,13 +492,6 @@ def student_chose_another_tutor(student, course, tutor):
     msg_contents = student.name.split(" ")[0] + " chose another " + course.upper() + \
         " tutor."
     general_notification_email(tutor, msg_contents, email_subject)
-
-
-def student_payment_receipt(user, tutor_name, amount):
-    email_subject = "Payment Sent - Please Rate " + tutor_name
-    msg_contents = tutor_name + " has billed you $" +  str(amount) + " for the recent tutoring session. " + \
-        "Please rate " + tutor_name + " by clicking the link below. It only takes two seconds." 
-    general_notification_email(user, msg_contents, email_subject)
 
 def student_rating_request(user, tutor_name):
     email_subject = "Please rate " + tutor_name

@@ -200,7 +200,7 @@
                                 {{request_dict['total_seen']}} 
                             </td>
                             <td>  
-                                {{request_dict['request'].committed_tutors|length}} 
+                                {{(request_dict['request'].committed_tutors|length - 1)}} 
                             </td>
                             <td>  
                                 {{request_dict['date']}}

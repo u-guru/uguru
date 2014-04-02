@@ -131,6 +131,10 @@ $(document).ready(function() {
             else if (result.dict['duplicate-request']) {
               $('#already-have-active-request-alert').show();
               return false;
+            } else if (result.dict['tutor-request-same']) {
+              $('#already-have-active-request-alert').children().children('div:first').text("Sorry, you cannot make a request for a course that you're a tutor in!");
+              $('#already-have-active-request-alert').show();
+              $('#student-register').hide();
             } else {
               window.location.replace('/activity/');
             }
@@ -139,24 +143,19 @@ $(document).ready(function() {
       }
     });
 
-   $('#cash-out-link').click(function() {
-    $('#activity').hide();
-    $('#cash-out-page').show();
-   });
-
-   $('#cash-out-back-link').click(function() {
-    $('#cash-out-page').hide();
-    $('#activity').show();
-   });
+   // $('#cash-out-link').click(function() {
+   //  $('#activity').hide();
+   //  $('#cash-out-page').show();
+   // });
 
    $('#cash-out-link-create').click(function() {
-    $('#cash-out-page').hide();
+    $('#activity').hide();
     $('#add-bank-account-info').show();
    });
 
    $('#bank-account-back-link').click(function() {
     $('#add-bank-account-info').hide();
-    $('#cash-out-page').show();
+    $('#activity').show();
    })
 
    $('#feed').on('click', 'a.main-feed-messages', function() {

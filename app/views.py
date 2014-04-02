@@ -264,17 +264,18 @@ def add_bank():
                 raise 
 
 
-        transfer = stripe.Transfer.create(
-                amount=int(user.balance * 100), # amount in cents, again
-                currency="usd",
-                recipient=user.recipient_id
-            )
+        # transfer = stripe.Transfer.create(
+        #         amount=int(user.balance * 100), # amount in cents, again
+        #         currency="usd",
+        #         recipient=user.recipient_id
+        #     )
 
         from notifications import tutor_cashed_out
         notification = tutor_cashed_out(user, user.balance)
         db_session.add(notification)
 
         notification.status = 'Pending'
+        notification.skill_name = 'Pending'
 
         user.notifications.append(notification)
 
@@ -381,6 +382,8 @@ def submit_payment():
                 description="charge for receiving tutoring"
             )
 
+            charge_id = charge["id"]
+
             amount_charged = float(stripe_amount_cents / 100)
             
 
@@ -414,7 +417,7 @@ def submit_payment():
 
             from notifications import student_payment_approval, tutor_receive_payment
             tutor_notification = tutor_receive_payment(student, tutor, payment, amount_made)
-            student_notification = student_payment_approval(student, tutor, payment, amount_charged)
+            student_notification = student_payment_approval(student, tutor, payment, amount_charged, charge_id)
             tutor.notifications.append(tutor_notification)
             student.notifications.append(student_notification)
             db_session.add_all([tutor_notification, student_notification])
@@ -461,10 +464,23 @@ def send_message():
                 receiver_id = conversation.guru_id
                 receiver = User.query.get(receiver_id)
 
-            #If previous message was not the sender, we know the receive should receive a notification
+            #If previous message was not the sender, we know the receive should receive a notification + email 
             if not conversation.messages or conversation.messages[-1].sender_id != user.id \
                 or (conversation.messages[-1].sender_id == user.id and conversation.is_read):
                 receiver.msg_notif += 1
+                
+                
+                if not conversation.messages :
+                    from emails import send_message_alert
+                    send_message_alert(receiver, user)
+                else:
+                    last_message_time = conversation.messages[-1].write_time
+                    current_time = datetime.now()
+                    difference_time = current_time - last_message_time
+                    if difference_time.seconds > (15 * 60):
+                        from emails import send_message_alert
+                        send_message_alert(receiver, user)
+
 
             message = Message(message_contents, conversation, user, receiver)
             db_session.add(message)
@@ -510,7 +526,7 @@ def update_requests():
             current_notification = user_notifications[notif_num]
             current_notification.feed_message = 'You accepted ' + student.name.split(' ')[0] + \
                 "'s request for " + skill_name.upper() + "."
-            current_notification.feed_message_subtitle = "Click here to see next steps."
+            current_notification.feed_message_subtitle = "<b>Click here</b> to see next steps."
             current_notification.custom = 'tutor-accept-request'
             current_notification.time_created = datetime.now()
             
@@ -577,7 +593,7 @@ def update_requests():
                         tutor_notification = n
                 tutor.feed_notif += 1
                 tutor_notification.time_read = None
-                tutor_notification.feed_message_subtitle = 'Click here to see the status of your accepted request'
+                tutor_notification.feed_message_subtitle = '<b>Click here</b> to see the status of your accepted request'
                 student_canceled_request(user, student_notification.skill_name, tutor)
                 print "Email sent to " + tutor.name
 
@@ -602,7 +618,7 @@ def update_requests():
             #Modify student notification
             current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
                 + skill_name + " tutor."
-            current_notification.feed_message_subtitle = 'Click here to see next steps!'
+            current_notification.feed_message_subtitle = '<b>Click here</b> to see next steps!'
             current_notification.custom = 'student-accept-request'
             if current_notification.time_read:
                 user.feed_notif += 1
@@ -617,7 +633,8 @@ def update_requests():
             skill = Skill.query.get(r.skill_id)
             r.connected_tutor_id = tutor_id
             r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
-            r.student_secret_code = random.choice(animal_list)
+            from random import randint 
+            r.student_secret_code = random.choice(animal_list) + str(randint(1, 100))
 
             student.outgoing_requests.remove(r)
             
@@ -626,7 +643,7 @@ def update_requests():
                 if n.request_id == r.id:
                     tutor_notification = n
             tutor_notification.feed_message = "<b>You</b> have been matched with " + user.name.split(" ")[0] + " for " + skill_name + "."
-            tutor_notification.feed_message_subtitle = 'Click here to see next steps!'
+            tutor_notification.feed_message_subtitle = '<b>Click here</b> to see next steps!'
             tutor_notification.custom = 'tutor-is-matched'
             tutor_notification.time_created = datetime.now()
             tutor.feed_notif += 1
@@ -846,6 +863,10 @@ def success():
             skill_id = courses_dict[skill_name]
             skill = Skill.query.get(skill_id)
             u = User.query.get(user_id)
+
+            if u.verified_tutor:
+                if skill in u.skills:
+                    return jsonify(dict={'tutor-request-same':True})
 
             if u.outgoing_requests:
                 for r in u.outgoing_requests:

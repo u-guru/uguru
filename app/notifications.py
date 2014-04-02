@@ -21,7 +21,7 @@ def getting_started_student_tip(user):
     notification = Notification(other='getting_started')
     notification.feed_message = getting_started_msg
     notification.a_id_name = 'tip-photo'
-    notification.feed_message_subtitle = "Click here to " +\
+    notification.feed_message_subtitle = "<b>Click here</b> to " +\
         " add a photo." 
     notification.image_url = '/static/img/jenny.jpg'
     user.feed_notif = user.feed_notif + 1
@@ -44,7 +44,7 @@ def getting_started_tutor_2(user):
         "<b>We will notify you when students need help.</b>"
     notification = Notification(other='getting_start_tutor')
     notification.feed_message = getting_started_msg
-    notification.feed_message_subtitle = "Click here to see " +\
+    notification.feed_message_subtitle = "<b>Click here</b> to see " +\
         " an example of what you'll be receiving when a student has a request." 
     notification.a_id_name = 'getting-started-tutor'
     notification.image_url = user.profile_url
@@ -55,7 +55,7 @@ def student_request_receipt(user, request, skill_name):
     notification = Notification(request=request)
     notification.skill_name = skill_name
     notification.feed_message = "<b>You</b> requested help in " + skill_name.upper()
-    notification.feed_message_subtitle = "Click here to see " +\
+    notification.feed_message_subtitle = "<b>Click here</b> to see " +\
         "the status of your request!"
     request_number = user.outgoing_requests.index(request)
     notification.a_id_name = 'student-request-help' + str(request.id)
@@ -72,7 +72,7 @@ def student_request_receipt(user, request, skill_name):
 def tutor_request_offer(user, tutor, request, skill_name):
     notification = Notification(request=request)
     notification.feed_message = "<b>" + user.name.split(" ")[0] + "</b> needs help in " + skill_name.upper()
-    notification.feed_message_subtitle = 'Click here to see more information'
+    notification.feed_message_subtitle = '<b>Click here</b> to see more information'
     notification.skill_name = skill_name
     request_number = tutor.incoming_requests_to_tutor.index(request)
     notification.a_id_name = 'tutor-request-offer' + str(request.id)
@@ -192,7 +192,7 @@ def student_payment_proposal(user, tutor, payment):
     user.feed_notif = user.feed_notif + 1
     return notification
 
-def student_payment_approval(user, tutor, payment, amount_charged):
+def student_payment_approval(user, tutor, payment, amount_charged, charge_id):
     notification = Notification(payment=payment)
     notification.feed_message = "<b>$" + str(amount_charged) + "</b> payment has been sent to " + \
         tutor.name.split(" ")[0] + "."
@@ -204,7 +204,7 @@ def student_payment_approval(user, tutor, payment, amount_charged):
         notification.image_url = tutor.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
-    student_payment_receipt(user, tutor.name.split(" ")[0], amount_charged)
+    student_payment_receipt(user, tutor.name.split(" ")[0], amount_charged, payment, charge_id)
     return notification
 
 def tutor_receive_payment(user, tutor, payment, amount_made):
@@ -224,7 +224,7 @@ def tutor_receive_payment(user, tutor, payment, amount_made):
 def tutor_cashed_out(tutor, amount):
     notification = Notification(other='cashing_out')
     notification.feed_message = '<b>You</b>' + " cashed out $" + str(amount) + "."
-    notification.feed_message_subtitle = "Click here to see the status of your transfer"
+    notification.feed_message_subtitle = "<b>Click here</b> to see the status of your transfer"
     notification.custom = amount
     notification.custom_tag = 'tutor-cashed-out' 
     notification.a_id_name = 'tutor-cashed-out' + str(len(tutor.notifications))

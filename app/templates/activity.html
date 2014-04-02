@@ -27,6 +27,10 @@
 			<div id="rate-alert" style="color:red;text-align:center;display:none"class="row">
 				Please select the number of stars
 			</div>
+			<div style="text-align:center;"class="row">
+				<h4 style="color:grey; font-weight:bold">Reviews help tutors and students find the right match.</h4>
+				<h6 style="color:grey">Don't worry! Your ratings and review will remain <b> anonymous </b></h6>
+			</div>
 			<div class="row">
 			  	<div class="user-profile" style="text-align:center">
 			  		{% if user.skills %}
@@ -49,9 +53,9 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
 					{% if user.skills %}
-					<textarea name="description" placeholder="Additional details here..."id="student-rating-description" class="form-control" rows="3"></textarea>
+					<textarea name="description" placeholder="How would you describe your experience? "id="student-rating-description" class="form-control" rows="3"></textarea>
 					{% else %}
-					<textarea name="description" placeholder="Additional details here..."id="tutor-rating-description" class="form-control" rows="3"></textarea>
+					<textarea name="description" placeholder="How would you describe your experience? How helpful was your Guru?"id="tutor-rating-description" class="form-control" rows="3"></textarea>
 					{% endif %}
 				</div>
 			</div>
@@ -81,7 +85,7 @@
 	<div class="light-blue-bar" align:"center">
 		<div class="row">
 			{% if address_book.keys() %}
-			<div class="col-xs-5 col-xs-offset-1 col-md-offset-4 col-md-2">
+			<div class="col-xs-5 col-xs-offset-1 col-md-offset-3 col-md-3">
 			{% else %}
 			<div class="col-xs-12 col-md-12">
 			{% endif %}
@@ -91,7 +95,7 @@
 				</a>
 			</div>
 			{% if address_book.keys() %}
-			<div class="col-xs-5 col-md-2">
+			<div class="col-xs-5 col-md-3">
 				<a id="request-payment-link" href="javascript:void(0)">
 					<span style="color:#00a0cf;" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:60px"></span>
 					<span class="h4" style="color:#00a0cf;"><b>REQUEST PAYMENT</b></span>
@@ -114,7 +118,7 @@
 			<div id="balance-amount">
 				<h1>${{user.balance}}</h1>
 			</div>
-			<h5 id="your-balance-text"style="margin-top:0px">  <a id="cash-out-link" href="javascript:void(0)">Cash out <u> here </u></a> </h6>
+			<h5 id="your-balance-text"style="margin-top:0px">  <a id="{%if not user.recipient_id %}cash-out-link-create{% else %} cash-out-link-add {% endif %}" href="javascript:void(0)">Cash out <u> here </u></a> </h6>
 		</div>
 
 		<!-- <div style="text-align:center; color:#00a0cf; margin-top:5px"class="row">
@@ -155,7 +159,7 @@
 						<img src="{{n.image_url}}" class="user-photo" style="float:left; margin-top:-10px">
 							<h5 style="margin-bottom:0px; margin-top:0px">{{n.feed_message|safe}}</h4>
 							{% if n.feed_message_subtitle %}
-								<h6 style="padding-top:0px;margin-top:0px; color:grey">{{n.feed_message_subtitle|safe}}</h5>
+								<h6 style="padding-top:4px;margin-top:0px; color:grey">{{n.feed_message_subtitle|safe}}</h5>
 							{% endif %}
 						<div style="float:right">
 							<h6 style="margin-top:0px"class="time-indicator">{{pretty_dates[n.id]}}</h6>
@@ -171,57 +175,6 @@
 	<br>
 </div>
 
-
-
-{% if user.balance > 0%}
-	<div id="cash-out-page" style="display:none">
-		<div class="page-title">
-		  <div class="row-fluid" style="width:100%;text-align:center">
-		      <div class="col-xs-1 col-md-offset-1 col-md-1 col-sm-offset-1 col-sm-1">
-		        <a href="javascript:void(0)" id="cash-out-back-link" style="text-decoration:none"> 
-		          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
-		        </a>
-		      </div>
-		      <div class="col-xs-11 col-sm-8 col-md-8" style="text-align:center">
-		        <h4 style="color:white;width:100%;font-weight:500">CASHOUT</h4>
-		    </div>
-		  </div>
-		</div>
-		<br>
-		<div class="offer" align="center" style="margin-left:20px;margin-right:20px">
-			<img id="payment-student-img" src="{{user.profile_url}}" class="user-photo">
-			<h4 style="text-align:center;margin:8px auto;">
-				Amount to cash out: 
-			</h4>
-			<div style="color:#69bf69;font-size:60px; margin:5px auto;">
-				${{user.balance}}
-			</div>
-		</div>
-		<br>
-		{% if user.recipient_id %}
-		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-5 col-md-2" style="padding-left:0px; padding-right:0px">
-				<a id="cash-out-link-add" href="javascript:void(0)">
-					<div class="tutor-submit-next">
-		            <p> CASH OUT </p>
-			      </div>
-			    </a>
-			</div>
-		</div>
-		{% else %}
-		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-5 col-md-2" style="padding-left:0px; padding-right:0px">
-				<a id="cash-out-link-create" href="javascript:void(0)">
-					<div class="tutor-submit-next">
-		            	<p> ADD BANK INFO </p>
-			      	</div>
-			    </a>
-			</div>
-		</div>
-		{% endif %}
-	</div>
-{% endif %}
-
 {% if user.balance > 0%}
 <div id="add-bank-account-info" style="display:none; color:rgb(0, 159, 225);">
 	<form role="form" action="javascript:void(0)" method="POST" id="payment-form">
@@ -233,7 +186,7 @@
    					</a>
 					</div>
 					<div class="col-xs-9 col-md-8" style="text-align:center">
-						<h4 style="color:white;width:100%">CREDIT CARD</h4>
+						<h4 style="color:white;width:100%">BANK ACCOUNT INFO</h4>
 				</div>
 			</div>
 		</div>
@@ -250,8 +203,9 @@
 			</div>
 		  	<div class="row" style="text-align:center">
 		  		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-			  		<h4>Please enter your bank account information to confirm this request</h4>
-				  	<strong><h6>You will receive the funds in your account within 3-7 days depending on your bank</h6></strong>
+			  		<h4>Please enter your bank account information to cash out</h4>
+			  		<h5 style="margin:25px auto;color:grey">Our payment system is securely <b>Powered by <a href="stripe.com">Stripe</a></b>, which handles all of the bank deposits. Uguru has no access to your bank information.</h5>
+				  	<h6 style="margin:25px auto;color:grey">You will receive the funds in your account within <b>3-7</b> days depending on your bank. We will email you confirmation as soon as the money is successfully transfered.</h6>
 				</div>
 		  	</div>
 		  	<div class="row">
@@ -296,7 +250,7 @@
 				<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px">
 					<a id="submit-bank-account-info" href="javascript:void(0)">
 						<div class="btn-save">
-							<p>CASH OUT USING OUR SECURE SERVER
+							<p>CASH OUT ${{user.balance}}
 							</p>
 						</div>
 					</a>
@@ -313,13 +267,13 @@
 {% set first_contact = keys[0] %}
 <div id="request-payments" style="display:none">
 		<div class="page-title">
-		  <div class="row" style="width:100%;text-align:center">
-		      <div class="col-xs-1">
+		  <div class="row-fluid" style="width:100%;text-align:center">
+		      <div class="col-xs-1 col-md-offset-1 col-md-1">
 		        <a href="/" id="feed-message-link" style="text-decoration:none"> 
 		          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
 		        </a>
 		      </div>
-		      <div class="col-xs-10" style="text-align:center">
+		      <div class="col-xs-10 col-md-8" style="text-align:center">
 		        <h4 style="color:white;width:100%;font-weight:500">REQUEST PAYMENT</h4>
 		    </div>
 		  </div>
@@ -332,8 +286,8 @@
 					<img style="display:none" id="payment-student-img" src="{{address_book[key]['profile_url']}}" class="user-photo">
 				{% endfor %}
 			</div>
-			<h4 style="text-align:center">Request payment from <b>
-				<div id="select-person-to-pay" class="btn-group">
+			<h4 style="text-align:center"><b>Select Student You Recently Tutored </b> <br>
+				<div style="margin-top:15px"id="select-person-to-pay" class="btn-group">
 		            <button type="button" class="btn-default">
 		              <span id="selected-person-to-pay" class="dropdown-elem-{{address_book[first_contact]['conversation_id']}}" style="color:black">{{address_book[first_contact]['student_name']}}</span>
 		            </button>
@@ -349,7 +303,7 @@
 		         </div>
 			</b></h4>
 			<div style="text-align:center"class="row">
-				<h4> How Long Did You Tutor?</h4>
+				<h4><b> How Long Did You Tutor?</b></h4>
 				<div style="color:rgb(0, 159, 225)" class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
 					<div id="time-estimate-slider-payment" style="margin-top:7px; margin-bottom:5px"></div>
                     <p style="margin-left:5px; font-size:14px; margin-top:3px; font-weight:700"class="text-left"><span style="font-size:14px;color:rgb(0, 159, 225)" name="estimate" id="payment"></span> hours</p>
@@ -377,16 +331,16 @@
 				</div>
 			</div> -->
 			<div style="text-align:center"class="row">
-				<h4 style="margin-top:0px"> Secret Animal Code </h4>
+				<h4 style="margin-top:0px"> <b>Secret Animal Code <b></h4>
 				<div style="display:none;font-size:14px;color:red" id="secret-animal-code-alert">
 					Please enter a code
 				</div>
 				<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-					<input id="secret-code" placeholder="black bear" class="input-signup"/>
+					<input style="text-align:center; padding-left:0px"id="secret-code" placeholder="bear30" class="input-signup"/>
 				</div>
 			</div>
 			<div style="text-align:center; margin-right:-15px; margin-top:20px; margin-left:-15px; padding-left:0px; padding-right:0px;" class="row">
-              <div style="padding-left:0px; padding-right:0px"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+              <div style="padding-left:20px; padding-right:20px"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
                 <a id="submit-payment" href="javascript:void(0)">
                   <div class="tutor-submit-next">
                     <p> REQUEST </p>
@@ -396,15 +350,62 @@
             </div>
 		</div>
 </div>
-<div id="rating-form-tutor" style="display:none">
+	<div style="display:none"id="rating-form-tutor">
+		<div class="page-title">
+		  <div class="row-fluid" style="width:100%;text-align:center">
+		      <div class="col-xs-12 col-md-12 col-sm-12" style="text-align:center">
+		        <h4 style="color:white;width:100%;font-weight:500">PLEASE RATE 
+		        	<span id="student-name"></span>
+		        </h4>
+		    </div>
+		  </div>
+		</div>
+		<div class="container-fluid">
+			<br>
+			<div id="rate-alert" style="color:red;text-align:center;display:none"class="row">
+				Please select the number of stars
+			</div>
+			<div style="text-align:center; color:grey"class="row">
+				<h4>Reviews help tutors and students find the right match.</h4>
+				<h6 style="color:grey">Don't worry! Your ratings and review will remain <b> anonymous </b></h6>
+			</div>
+			<div class="row">
+			  	<div class="user-profile" style="text-align:center">
+	  				<img id="student-profile-photo" src="{{user.profile_url}}" class="user-photo">
+			  	</div>
+			</div>
+			<div style="text-align:center" class="row">
+				<div id="tutor-rating-stars" class="rating">
+					<span>☆</span>
+					<span>☆</span>
+					<span>☆</span>
+					<span>☆</span>
+					<span>☆</span>
+				</div>	
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
+					<textarea name="description" placeholder="How would you describe your experience?"id="student-rating-description" class="form-control" rows="3"></textarea>
+				</div>
+			</div>
+			<div id="launch-profile-div" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:20px; margin-bottom:20px; display:block">
+				<a href="javascript:void(0)" id="submit-student-rating">
+					<div class="tutor-submit-next">SUBMIT
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+<!-- <div id="rating-form-tutor" style="display:none">
 	<div class="page-title">
 	  <div class="row" style="width:100%;text-align:center">
-	      <div class="col-xs-1">
+	      <div class="col-xs-1 col-md-offset-1 col-md-1">
 	        <a href="/" style="text-decoration:none"> 
 	          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
 	        </a>
 	      </div>
-	      <div class="col-xs-10" style="text-align:center">
+	      <div class="col-xs-10 col-md-8" style="text-align:center">
 	        <h4 style="color:white;width:100%;font-weight:500">PLEASE RATE <span id="student-name"></span></h4>
 	    </div>
 	  </div>
@@ -436,7 +437,7 @@
 		</div>
 	</a>
 </div>
-</div>
+</div> -->
 {% endif %}
 
 <div style="display:none" id="tutor-request">
@@ -1253,7 +1254,7 @@
 						  </div>
 						<br>
   					</div>
-  					{% if n.custom != 'student-accept-request' and not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
+  					{% if n.custom != 'student-accept-request' and not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) and (request_dict[n.request_id]['request'].connected_tutor_id != tutor_dict[n].id)%}
 					<div class="row">
 						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:0px; margin-bottom:5px; display:block">
 				          <a href="javascript:void(0)" class="{% if not user.customer_id %} student-request-accept-btn-credit {% else %} student-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
@@ -1267,17 +1268,11 @@
 				          </a>
 				        </div>
 				     </div>
-				     <div style="margin:auto 0"class="row">
-					     <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-4 col-md-offset-4">
-							<div id="flakers-fee-alert" style="{% if not user.customer_id %} display:none; {% else %} display:block; {% endif %} text-align:center; font-size:12px; color:red;">
-									If you click accept, you agree to our <strong> <a href="/tos/"> Terms of Service </a></strong>
-									and agree to a <strong>$10 Flaker's Fee</strong> if you do not show up to meet your Guru.
-							</div>
-						</div> 
-					</div>
 			        <div style="text-align:center; color:grey">
 			        	<i>or ignore this request if you're not interested.</i>
 			        </div>
+					{% elif not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) and (request_dict[n.request_id]['request'].connected_tutor_id != tutor_dict[n].id) %}
+					<div class="row-fluid col-xs-12 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6" style="text-align:center;color:red">You accepted another tutor's request for this subject. If you want to reconnect with this tutor, please message us at support@uguru.me for a quick reply.</div>
 					{% endif %}
 	  			</div>
 			{% elif n.custom_tag == 'tutor-request-offer' %}
