@@ -303,7 +303,7 @@ def submit_rating():
             print user.pending_ratings
             rating.student_rating = ajax_json['num_stars']
             if 'additional_detail' in ajax_json:
-                rating.student_rating_description
+                rating.student_rating_description = ajax_json['additional_detail']
             
             user.pending_ratings.remove(rating)
 
@@ -318,7 +318,7 @@ def submit_rating():
             rating.tutor_rating = ajax_json['num_stars']
             
             if 'additional_detail' in ajax_json:
-                rating.tutor_rating_description
+                rating.tutor_rating_description = ajax_json['additional_detail']
 
             user.pending_ratings.remove(rating)
 

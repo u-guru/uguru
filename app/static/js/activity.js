@@ -143,10 +143,6 @@ $(document).ready(function() {
       }
     });
 
-   // $('#cash-out-link').click(function() {
-   //  $('#activity').hide();
-   //  $('#cash-out-page').show();
-   // });
 
    $('#cash-out-link-create').click(function() {
     $('#activity').hide();
@@ -338,6 +334,7 @@ $(document).ready(function() {
                   var student_profile_url = result.return_json['student-profile-url']
                   $('#student-profile-photo').attr('src', student_profile_url);
                   $('#student-name').text(student_to_rate.toUpperCase());
+                  $('#student-name-again').text(student_to_rate);
                   $('#request-payments').hide();
                   $('#rating-form-tutor').show();
                 }
@@ -356,7 +353,7 @@ $(document).ready(function() {
 
     $('#submit-student-rating').click(function() {
         var num_stars = $('.star-selected').length
-        if (num_stars < 1) {
+        if (num_stars < 1 || !$('#student-rating-description').val()) {
           $('#rate-alert').show();
           return false;
         } 
@@ -378,6 +375,11 @@ $(document).ready(function() {
 
     $('#submit-tutor-rating').click(function() {
         var num_stars = $('.star-selected').length
+        if (num_stars < 1 || !$('#tutor-rating-description').val()) {
+          $('#rate-alert').show();
+          return false;
+        } 
+        $('#rate-alert').hide();
         var additional_detail = $('#tutor-rating-description').val();
         var data = { 'student-rating-tutor' : true, 'num_stars' : num_stars, 'additional_detail' : additional_detail }
         $('#submit-tutor-rating').click(false);

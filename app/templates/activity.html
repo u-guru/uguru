@@ -25,11 +25,11 @@
 		<div class="container-fluid">
 			<br>
 			<div id="rate-alert" style="color:red;text-align:center;display:none"class="row">
-				Please select the number of stars
+				Please select the number of stars and fill in all fields
 			</div>
 			<div style="text-align:center;"class="row">
-				<h4 style="color:grey; font-weight:bold">Reviews help tutors and students find the right match.</h4>
-				<h6 style="color:grey">Don't worry! Your ratings and review will remain <b> anonymous </b></h6>
+				<h4 style="color:grey;">Reviews help tutors and students find the right match.</h4>
+				<h6 style="color:grey">Don't worry! Your ratings and review will remain anonymous</h6>
 			</div>
 			<div class="row">
 			  	<div class="user-profile" style="text-align:center">
@@ -39,6 +39,13 @@
 		  				<img id="student-profile-photo" style="height:120px;width:120px"  src="{{pending_ratings_dict['tutor'].profile_url}}" class="user-photo">
 			  		{% endif %}
 			  	</div>
+			</div>
+			<div style="text-align:center; color:grey;margin-top:-5px"class="row">
+				{% if user.skills %}
+	        	<span id="student-name">{{pending_ratings_dict['student'].name.split(" ")[0]|upper}}</span>
+	        	{% else %}
+	        	<span id="student-name">{{pending_ratings_dict['tutor'].name.split(" ")[0]|upper}}</span>
+	        	{% endif %}
 			</div>
 			<div style="text-align:center" class="row">
 				<div id="tutor-rating-stars" class="rating">
@@ -59,7 +66,7 @@
 					{% endif %}
 				</div>
 			</div>
-			<div id="launch-profile-div" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:20px; margin-bottom:20px; display:block">
+			<div id="launch-profile-div" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:10px; padding-right:10px; margin-top:20px; margin-bottom:20px; display:block">
 				{% if user.skills %}
 				<a href="javascript:void(0)" id="submit-student-rating">
 				{% else %}
@@ -363,16 +370,19 @@
 		<div class="container-fluid">
 			<br>
 			<div id="rate-alert" style="color:red;text-align:center;display:none"class="row">
-				Please select the number of stars
+				Please select the number of stars and fill in all fields
 			</div>
 			<div style="text-align:center; color:grey"class="row">
 				<h4>Reviews help tutors and students find the right match.</h4>
-				<h6 style="color:grey">Don't worry! Your ratings and review will remain <b> anonymous </b></h6>
+				<h6 style="color:grey">Don't worry! Your ratings and review will remain anonymous </h6>
 			</div>
 			<div class="row">
 			  	<div class="user-profile" style="text-align:center">
 	  				<img id="student-profile-photo" src="{{user.profile_url}}" class="user-photo">
 			  	</div>
+			</div>
+			<div style="text-align:center; color:grey;margin-top:-5px"class="row">
+	        	<span id="student-name-again"></span>
 			</div>
 			<div style="text-align:center" class="row">
 				<div id="tutor-rating-stars" class="rating">
@@ -443,12 +453,12 @@
 <div style="display:none" id="tutor-request">
 	<div class="page-title">
 	  <div class="row" style="width:100%;text-align:center">
-	      <div class="col-xs-1">
+	      <div class="col-xs-1 col-md-offset-1 col-md-1">
 	        <a href="/" style="text-decoration:none"> 
 	          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
 	        </a>
 	      </div>
-	      <div class="col-xs-10" style="text-align:center">
+	      <div class="col-xs-10 col-md-8" style="text-align:center">
 	        <h4 style="color:white;width:100%;font-weight:500">REQUEST A GURU</h4>
 	    </div>
 	  </div>
@@ -1329,7 +1339,7 @@
 							<div id="flakers-fee-alert" style="margin-bottom:15px; text-align:center; font-size:24px; ">
 									<b>NEXT STEPS</b>
 							</div>
-							<div style="font-size:14px; text-align:left;">
+							<div style="font-size:14px; font-weight:normal; text-align:left;">
 								<p>
 								1. Coordinate with your student, and finalize meetup time & location through messages
 								</p>
