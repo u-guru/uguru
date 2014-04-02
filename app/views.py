@@ -904,16 +904,27 @@ def success():
                 user = User.query.get(user_id)
                 user.feed_notif = user.feed_notif + 1
                 user.verified_tutor = True
+                already_has_notifications = False
+                
+                if user.notifications:
+                    already_has_notifications = True
 
-                if len(user.notifications) < 2: 
-                    from notifications import getting_started_tutor, getting_started_tutor_2
-                    notification1 = getting_started_tutor(user)
-                    notification2 = getting_started_tutor_2(user)
-                    db_session.add(notification1)
-                    db_session.add(notification2)
-                    user.notifications.append(notification1)
-                    user.notifications.append(notification2)
-                    db_session.commit()
+                from notifications import getting_started_tutor, getting_started_tutor_2
+                notification1 = getting_started_tutor(user)
+                notification2 = getting_started_tutor_2(user)
+                db_session.add(notification1)
+                db_session.add(notification2)
+                user.notifications.append(notification1)
+                user.notifications.append(notification2)
+                db_session.commit()
+
+                if already_has_notifications:
+                    for n in user.notifications:
+                        if n.a_id_name != 'getting-started' and n.a_id_name != 'getting-started-tutor':
+                            n.time_created = datetime.now()
+
+                db_session.commit()
+
                 #increment feed counter
                 #create fake notification
             except:
@@ -1072,7 +1083,7 @@ def activity():
         return redirect(url_for('index'))
     user_id = session.get('user_id')
     user = User.query.get(user_id)
-    if user.skills and len(user.notifications) < 2:
+    if user.verified_tutor and not is_tutor_verified(user):
         return redirect(url_for('settings'))
     request_dict = {}
     address_book = {}
@@ -1125,7 +1136,7 @@ def messages():
         return redirect(url_for('index'))
     user_id = session['user_id']
     user = User.query.get(user_id)
-    if user.skills and len(user.notifications) < 2:
+    if user.verified_tutor and not is_tutor_verified(user):
         return redirect(url_for('settings'))
     pretty_dates = {}
     for conversation in user.mailbox.conversations:
@@ -1180,11 +1191,14 @@ def howitworks():
 @app.route('/settings/')
 def settings():
     user_id = session.get('user_id')
+    not_launched_flag = False
     if not user_id:
         return redirect(url_for('index'))
     user = User.query.get(user_id)
+    if user.verified_tutor and not is_tutor_verified(user):
+        not_launched_flag = True
     from app.static.data.short_variations import short_variations_dict
-    return render_template('settings.html', logged_in=session.get('user_id'), user=user, variations=short_variations_dict)
+    return render_template('settings.html', logged_in=session.get('user_id'), user=user, variations=short_variations_dict, not_launched_flag = not_launched_flag)
 
 # @app.route('/tutor_accept/')
 # def tutor_accept():
@@ -1269,6 +1283,14 @@ def pretty_date(time=False):
     if day_diff < 365:
         return str(day_diff/30) + " months ago"
     return str(day_diff/365) + " years ago"
+
+
+def is_tutor_verified(tutor):
+    tutor_verified_flag = False
+    for n in tutor.notifications:
+        if n.a_id_name == 'getting-started':
+            tutor_verified_flag = True
+    return tutor_verified_flag
 
 
 def authenticate(user_id):
