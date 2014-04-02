@@ -661,7 +661,7 @@
 
 		</div>
 		{% endif %}
-		{% for n in user.notifications %}
+		{% for n in user.notifications|sort(attribute='time_created') %}
 			{% if n.a_id_name == 'getting-started-tutor' %}
 				<div id="{{n.a_id_name}}-detailed" style="display:none;">
 					<div class="page-title">
