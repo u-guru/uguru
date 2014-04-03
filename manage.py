@@ -483,7 +483,7 @@ if arg == 'update_profile_notifications_test':
         if user.profile_url != '/static/img/default-photo.jpg':
             for n in user.notifications:
                 if n.a_id_name in a_id_names or n.custom_tag in custom_tags:
-                    if n.image_url != n.profile_url:
+                    if n.image_url != user.profile_url:
                         print user.name, n.feed_message[0:30], " notification is not updated"
 
 if arg == 'update_profile_notifications':
@@ -493,8 +493,8 @@ if arg == 'update_profile_notifications':
         if user.profile_url != '/static/img/default-photo.jpg':
             for n in user.notifications:
                 if n.a_id_name in a_id_names or n.custom_tag in custom_tags:
-                    if n.image_url != n.profile_url:
-                        n.image_url = n.profile_url
+                    if n.image_url != user.profile_url:
+                        n.image_url = user.profile_url
                         print user.name, n.feed_message[0:30], " notification is now updated"
     db_session.commit()
 
