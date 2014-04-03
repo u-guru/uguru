@@ -220,9 +220,11 @@ def admin():
                 tutor = User.query.get(r.connected_tutor_id)
                 request_dict['connected-tutor'] = tutor
                 c = Conversation.query.filter_by(guru=tutor, student=student).first()
+                request_dict['message-length'] = 0
                 if c:
                     request_dict['message-length'] = len(c.messages)
                 p = Payment.query.filter_by(tutor_id=tutor.id, student_id=student.id).first()
+                payment_dict['payment'] = None
                 if p:
                     payment_dict['payment'] = p
                     payment_dict['student'] = student
