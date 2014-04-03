@@ -228,12 +228,12 @@
         <br>
           {% if user.skills or user.verified_tutor %}
           <div style="color:red;" id="alert-rating">
-            Your reviews are not visible yet.
+            Students will leave you a review after each session.
           </div>
           {% endif %}
         <div style="display:none" class="template-one-skill">
           <hr>
-          <div class="row row-skills">
+          <div style="margin-top:5px"class="row row-skills">
             <div class="default-text col-xs-3 col-md-offset-4 col-md-1">
                 <div class="skill-name">CS 10</div>
             </div>
@@ -377,10 +377,8 @@
             {{user.tutor_introduction}}
             </textarea>
             {% else %}
-            <textarea style="border:1px solid red" id="short-description" class="bio" cols="50" rows="5" placeholder="Tell students about yourself and your previous experience in tutoring. This section is important for students to choose among tutors."></textarea>
+            <textarea style="border:1px solid red" id="short-description" class="bio" cols="50" rows="5" placeholder="Tell students about your tutoring experience and why you are an awesome tutor."></textarea>
             {% endif %}
-
-          
           <div id="alert-rating-short-description">
             Please type something in
           </div>

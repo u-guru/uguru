@@ -530,7 +530,8 @@
                     </div>
                     <div style="text-align:center; margin:15px auto 5px auto;" class="row">
                       <div style="border:1px solid grey; padding:10px; border-radius:12px;"class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-                        <h3 id="total-price-header" style="font-weight:700px; color:grey; display:inline"> Suggested Hourly Price </h3>
+                        <h4 id="total-price-header" style="font-weight:700px; color:grey; display:inline"> Suggested Hourly Price </h4>
+                        <h6 style="margin-top:3px"><i>Uguru fees included</i></h6>
                         <h1 style="display:block;font-size:60px; text-align:center; margin:5px auto">
                           <span id="total-request-price"style="color:#69bf69;font-weight:700"> $16 </span>
                         </h1> 
@@ -571,7 +572,10 @@
                   </div>
                 </a>
               </div>
-            </div>
+             </div>
+          <div style="margin-top:25px;text-align:center; color:red">
+		       Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our Q&A</u></a>
+		   </div>
 	</div>
 </div>
 </div>
@@ -668,6 +672,9 @@
 						</a> 
 					</div>
 				</div>
+				<div style="margin-top:25px;text-align:center; color:red">
+			        	Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our Q&A</u></a>
+			    </div>
 			</div>
 		</form>
 
@@ -677,22 +684,22 @@
 			{% if n.a_id_name == 'getting-started-tutor' %}
 				<div id="{{n.a_id_name}}-detailed" style="display:none;">
 					<div class="page-title">
-	   					<div class="row" style="width:100%;text-align:center">
-		   					<div class="col-xs-1 col-xs-offset-1 col-sm-offset-1 col-sm-1">
+	   					<div class="row-fluid" style="width:100%;text-align:center">
+		   					<div class="col-xs-1 col-xs-offset-1 col-sm-offset-1 col-sm-1 col-md-offset-1 col-md-1">
 			   					<a href="javascript:void(0)" class= "feed-message-link" style="text-decoration:none"> 
 			   						<h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
 			   					</a>
 		   					</div>
-		   					<div class="col-xs-9 col-sm-9" style="text-align:center">
-	   							<h4 style="color:white;width:100%">Tutoring Request</h4>
+		   					<div class="col-xs-9 col-sm-8 col-md-8" style="text-align:center">
+	   							<h4 style="color:white;width:100%">TUTORING REQUEST</h4>
 	   						</div>
 	   					</div>
 	  				</div>
 					<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px">
 					  	<div style="margin-top:15px" class="row">
-						  	<div class="col-xs-12">
-						  		<div style="margin-bottom:10px"class="alert alert-info">
-								  <strong>NOTE:</strong> This is a fake notification, go ahead and click
+						  	<div class="col-xs-12 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
+						  		<div style="margin-bottom:10px"class="alert alert-danger">
+								  <strong>NOTE:</strong> This is just an EXAMPLE, go ahead and click
 								  <strong> ACCEPT</strong> 
 								</div>
 						  	</div>
@@ -711,7 +718,7 @@
 							  </div>
 							  <div class="row-fluid">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Best Time to Meet</b></div>
+							  			<div class="h4 request-info-row"><b>Availability</b></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4 request-info-row">Monday 6-8pm</div>
@@ -727,26 +734,28 @@
 							  </div>
 							  <div class="row-fluid">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Number of Students</b></div>
+							  			<div class="h4 request-info-row"><b>Group Size</b></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">5</div>
+							  			<div class="h4 request-info-row">
+							  				(about 8/hr per person)
+							  			</div>
 							  		</div>
 							  </div>
 							  <div class="row-fluid">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Time Estimate</b></div>
+							  			<div class="h4 request-info-row"><b>Estimated Session Time</b></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><span id="student-time-estimate-{{loop.index}}">1</span>&nbsp;hour</div>
+							  			<div class="h4 request-info-row"><span id="student-time-estimate-{{loop.index}}">2</span>&nbsp;hours</div>
 							  		</div>
 							  </div>
 							</div>
 						</div>
 							<div style="text-align:center; margin-top:10px; color:grey">
 								You will be making: <br>
-								<span style="color:#69bf69; font-size:30px"><strong> $<span id="student-offer-total-price-{{loop.index}}">25</span> </strong></span><br>
-								<span style="color:grey; font-weight:300; font-size:14px">($<span id="student-offer-hourly-price-{{loop.index}}">25</span>/hr)</span>
+								<span style="color:#69bf69; font-size:30px"><strong>$26<span id="student-offer-total-price-{{loop.index}}"></span> </strong></span><br>
+								<span style="color:grey; font-weight:300; font-size:14px">($<span id="student-offer-hourly-price-{{loop.index}}">13</span>/hr)</span>
 							</div>
 							<a style="text-align:center;" id="tutor-change-price-link-{{loop.index}}" class="tutor-change-price-link" href="javascript:void(0);">
 								<div style="margin-top:10px;color:rgb(0, 159, 225)"> Change the price
@@ -777,6 +786,7 @@
 			        <div style="text-align:center; color:grey">
 			        	<i>or ignore this request if you're not interested.</i>
 			        </div>
+
 				</div>
 			{% elif n.custom_tag == 'tutor-cashed-out' %}
 				<div id="{{n.a_id_name}}-detailed" style="display:none;">
@@ -969,7 +979,7 @@
 	  				{% elif not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
 	  				<div style="display:block" class="row-fluid">
 		  				<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-		  					<div style="margin-bottom:0"class="alert alert-info"><strong>Your next steps:</strong> Check your email frequently.<br> We'll let you know <i>immediately </i> if a tutor has agreed to help! </div>
+		  					<div style="margin-bottom:0"class="alert alert-info">Sit tight and wait! <br>We will email you each time a tutor has agreed to help. </div>
 		  				</div>
 		  			</div>
 		  			{% else %}
@@ -1011,10 +1021,11 @@
 							  	</div>
 							  	<div class="row-fluid">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Number of Students</b></div>
+							  			<div class="h4 request-info-row"><b>Group Size</b></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].num_students}}</div>
+							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].num_students}}
+							  			</div>
 							  		</div>
 							  	</div>
 							  	<div class="row-fluid">
@@ -1027,7 +1038,7 @@
 							  	</div>
 							  	<div class="row-fluid">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Time Estimate</b></div>
+							  			<div class="h4 request-info-row"><b>Estimated Session Time</b></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].time_estimate}} hours</div>
@@ -1045,7 +1056,7 @@
 					 	</div>
 					 	{% if request_dict[n.request_id]['request'].requested_tutors|length > 0 %}
 					 	<div style="text-align:center; float:center; margin-top:10px" class="row">
-					 		<h4>Tutors that have been contacted</h4>
+					 		<h4>Contacted Tutors</h4>
 					 		<div id="contacted-tutors">
 					 		{% for tutor in request_dict[n.request_id]['request'].requested_tutors %}
 					 		<span>
@@ -1057,7 +1068,7 @@
 					 	{% endif %}
 					 	{% if not request_dict[n.request_id]['request'].connected_tutor_id %}
 					 	<div style="text-align:center; float:center; margin-top:20px; font-size:14px; color:grey;" class="row">
-					 		<a class="cancel-request" style="color:grey" href="javascript:void(0)"> (Click here to cancel this request) </a>
+					 		<a class="cancel-request" style="color:red" href="javascript:void(0)"> (Click here to cancel this request) </a>
 					 	</div>
 					 	{% endif %}
 					 </div>
@@ -1093,7 +1104,7 @@
 						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:20px; margin-bottom:20px; display:block">
 				          <a id="launch-profile-link" href="/messages/">
 				            <div class="btn-save">
-				              <p>MESSAGE TUTOR NOW
+				              <p>MESSAGE GURU NOW
 				              </p>
 				            </div>
 				          </a>
@@ -1214,7 +1225,7 @@
 							  	</div>
 							  	<div class="row-fluid">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Number of Students</b></div>
+							  			<div class="h4 request-info-row"><b>Group Size</b></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].num_students}}
@@ -1234,7 +1245,7 @@
 							  	</div>
 							  	<div class="row-fluid">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Time Estimate</b></div>
+							  			<div class="h4 request-info-row"><b>Estimated Session Time</b></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].time_estimate}} hours</div>
@@ -1276,7 +1287,7 @@
 				              {% if not user.customer_id %}
 									<p id="student-accept-text"> NEXT STEPS</p>
 							  {% else %}
-									<p id="student-accept-text"> ACCEPT REQUEST</p>
+									<p id="student-accept-text"> CHOOSE THIS GURU</p>
 							  {% endif %}
 				            </div>
 				          </a>
@@ -1286,6 +1297,9 @@
 			        	<i>or ignore this request if you're not interested.</i>
 			        </div>
 			        {% endif %}
+			        <div style="margin-top:25px;text-align:center; color:red">
+			        	Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our Q&A</u></a>
+			         </div>
 	  			</div>
 			{% elif n.custom_tag == 'tutor-request-offer' %}
 				<div id="{{n.a_id_name}}-detailed" style="display:none;">
@@ -1297,7 +1311,7 @@
 			   					</a>
 		   					</div>
 		   					<div class="col-xs-8 col-sm-8 col-md-8" style="text-align:center">
-	   							<h4 style="color:white;width:100%">Tutoring Request</h4>
+	   							<h4 style="color:white;width:100%">TUTORING REQUEST</h4>
 	   						</div>
 	   					</div>
 	  				</div>
@@ -1312,7 +1326,7 @@
 						<div class="row-fluid">
 						  	<div style="margin:auto; text-align:center; float:center; margin-top:10px;"class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
 							  	<div class="alert alert-info" style="margin-bottom:0px;">
-							  		We have let the student know that you have accepted! <br>Once they agree, we'll connect you. Check your email <i>frequently</i>.
+							  		We have let the student know that you have accepted! <br>If the student chooses you, we will email you.
 							  	</div>
 							</div>
 						</div>
@@ -1400,7 +1414,7 @@
 							  	</div>
 							  	<div class="row-fluid">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Best Time to Meet</b></div>
+							  			<div class="h4 request-info-row"><b>Availability</b></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].available_time}}</span> 
@@ -1418,7 +1432,7 @@
 							  	</div>
 							  	<div class="row-fluid">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4"><b>Number of Students</b></div>
+							  			<div class="h4"><b>Group Size</b></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4">{{request_dict[n.request_id]['request'].num_students}}</span> 
@@ -1429,7 +1443,7 @@
 							</div>
 								<div style="text-align:center; margin-top:10px; color:grey">
 									{% if n.custom != 'tutor-reject' and not (request_dict[n.request_id]['request'].connected_tutor_id and request_dict[n.request_id]['request'].connected_tutor_id != user.id) %}
-									<i>After fees, you will be making:</i> <br>
+									<i>After Uguru fees, you will be making:</i> <br>
 									{% else %}
 									<i>You could have made:</i> <br>
 									{% endif %}
@@ -1513,6 +1527,9 @@
 							</div>
 					</div>	 -->
 					{% endif %}
+					<div style="margin-top:25px;text-align:center; color:red">
+			        	Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our Q&A</u></a>
+			         </div>
 				</div>
 			{% endif %}
 		{% endfor %}

@@ -16,30 +16,35 @@
 			  	<div style="margin-top:10px"class="row">
 				  	<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
 				  		<div style="margin-bottom:10px"class="alert alert-success">
-						  <strong>You're all done now!</strong><br>You will get a notification email as soon as you receive a request.
+						  {% if user.verified_tutor %}We will notify you via email when you receive a request. <br>You can now update your profile you haven't done so. 
+						  {% else %}
+						  Return to your feed to make a request!
+						  {% endif %}<br>
 						</div>
 				  	</div>	
 				</div>
-				<h5>
+				<h5><b>
 					{% if user.skills or user.verified_tutor %}
-					This is where you will be able to start a conversation once you've been matched with a student.
+					Once you are matched with a student, a chat box will appear. <br><br>You can coordinate when and where to meet here!
 					{% else %}
-					This is where you will be able to start a conversation once you've been matched with a tutor.
+					Once you are matched with a tutor, a chat box will appear. <br><br>You can coordinate when and where to meet here! 
 					{% endif %}
+					</b>
 					<br>
 					<br>
 				</h5>
 				<div class="row-fluid">
-					<div class="notification" style="margin-top:0;width:auto; cursor:auto"align:"center">
-						<img src="/static/img/jenny.jpg" class="user-photo" style="float:left">
-						<div style="float:left">
-							<h4 style="margin-bottom:0px"><b> Jenny </b></h4>
-							<h5 style="margin-top:0px;margin-bottom:0px"> {% if user.skills or user.verified_tutor %} Example Student {% else %} Example Tutor {% endif %}</h5>
-							<h6 style="margin-top:5px"><i>You will be able to coordinate with your {% if user.skills or user.verified_tutor %} students {% else %} tutor {% endif %} here
-								at the inbox once you are connected. This just an example. </i></h6>
-						</div>
-						<div style="float:right;margin-top:23px">
-							<span class="glyphicon glyphicon-chevron-right" style="color:#40bfec;float:right"></span>
+					<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+						<div class="notification" style="margin-top:0;width:100%; cursor:auto"align:"center">
+							<img src="/static/img/jenny.jpg" class="user-photo" style="float:left">
+							<div style="float:left">
+								<h4 style="margin-bottom:0px"><b> Jenny </b></h4>
+								<h5 style="margin-top:0px;margin-bottom:0px"> {% if user.skills or user.verified_tutor %} Example Student {% else %} Example Tutor {% endif %}</h5>
+								<h6 style="margin-top:5px"><i>Hi! Let's meet at the SLC at 8pm today?</i></h6>
+							</div>
+							<div style="float:right;margin-top:23px">
+								<span class="glyphicon glyphicon-chevron-right" style="color:#40bfec;float:right"></span>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -196,8 +201,9 @@
 							<img src="{{conversation.guru.profile_url}}" class="user-photo">
 							{% endif %}
 						</div>
-						<div style="color:rgb(0, 159, 225);text-align:center;margin-top:10px; font-size:16px"class="row">
-							We <b><i>highly recommend</b></i> the first person to message to fill out a <span style="text-decoration:underline"><a href="http://http://www.when2meet.com/">When2Meet</a></span> to help coordinate availability between you two! <br><br>Once you've created a unique link, post this in your conversation!
+						<div style="color:red; font-weight:normal;text-align:center;margin-top:10px; font-size:16px"class="row">
+							Fill out a <span style="text-decoration:underline"><a href="http://http://www.when2meet.com/">When2Meet</a></span> to help coordinate availability between you two! <br><br>
+							<span style="color:grey">Once you've created a unique link, post this in your conversation!</span>
 						</div>
 					</div>
 					<br>
