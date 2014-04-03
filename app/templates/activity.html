@@ -1264,7 +1264,10 @@
 						  </div>
 						<br>
   					</div>
-  					{% if n.custom != 'student-accept-request' and not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) and (request_dict[n.request_id]['request'].connected_tutor_id != tutor_dict[n].id)%}
+  					{% if request_dict[n.request_id]['request'].connected_tutor_id and request_dict[n.request_id]['request'].connected_tutor_id != tutor_dict[n].id %}
+  					{{tutor_dict[n].id}}
+  						<div class="row-fluid col-xs-12 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6" style="text-align:center;color:red">You accepted another tutor's request for this subject. If you want to reconnect with this tutor, please message us at support@uguru.me for a quick reply.</div>
+  					{% elif n.custom != 'student-accept-request' and not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
 					<div class="row">
 						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:0px; margin-bottom:5px; display:block">
 				          <a href="javascript:void(0)" class="{% if not user.customer_id %} student-request-accept-btn-credit {% else %} student-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
@@ -1281,9 +1284,7 @@
 			        <div style="text-align:center; color:grey">
 			        	<i>or ignore this request if you're not interested.</i>
 			        </div>
-					{% elif not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) and (request_dict[n.request_id]['request'].connected_tutor_id != tutor_dict[n].id) %}
-					<div class="row-fluid col-xs-12 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6" style="text-align:center;color:red">You accepted another tutor's request for this subject. If you want to reconnect with this tutor, please message us at support@uguru.me for a quick reply.</div>
-					{% endif %}
+			        {% endif %}
 	  			</div>
 			{% elif n.custom_tag == 'tutor-request-offer' %}
 				<div id="{{n.a_id_name}}-detailed" style="display:none;">
