@@ -57,13 +57,13 @@
           {% if not user.skills and not user.verified_tutor %}
               {% if user.profile_url == '/static/img/default-photo.jpg' %}
               <div id="student-photo-alert"style="text-align:center; margin-top:10px"class="alert alert-danger">
-                Please add a headshot photo complete setup!
+                Add a profile picture to complete signup!
               </div>
               {% endif %}
               <div style="text-align:center;margin-top:30px"class="photo-settings" style="display:block">
-                <h4 style="margin-left:25px;"> YOUR PHOTO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
+                <h4 style="margin-left:25px;"> {{user.name.split(" ")[0]|upper}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
                 <div align="center">
-                  <div id="pic-holder">
+                  <div style="{% if user.profile_url == '/static/img/default-photo.jpg' %} border:1px solid red {% endif %}" id="pic-holder">
                     {% if user.profile_url != '/static/img/default-photo.jpg' %}
                       <img style="display:block" width="120" height="120"id="image-preview" src="{{user.profile_url}}"/>
                     {% else %}

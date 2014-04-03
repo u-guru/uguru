@@ -247,7 +247,7 @@ def student_is_matched(student, tutor, request_code):
     email_subject = "You Have Been Matched with " + tutor_name  + "! Now Follow These Steps"
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
-    EMAIL_TO = [tutor.email]
+    EMAIL_TO = [student.email]
 
     msg = MIMEMultipart('alternative')
     msg['Subject'] = email_subject

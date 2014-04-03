@@ -16,8 +16,8 @@ def getting_started_student(user):
     return notification
 
 def getting_started_student_tip(user):
-    getting_started_msg = "<b>TIP:</b>  Adding a headshot profile picture " + \
-        " allows tutors to feel more comfortable connecting with you."  
+    getting_started_msg = "<b>TIP:</b>  Adding a profile picture " + \
+        " makes Gurus feel more comfortable helping you!"  
     notification = Notification(other='getting_started')
     notification.feed_message = getting_started_msg
     notification.a_id_name = 'tip-photo'

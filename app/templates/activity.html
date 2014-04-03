@@ -98,7 +98,7 @@
 			{% endif %}
 				<a id="tutor-request-link" href="javascript:void(0)">
 					<span style="color:#00a0cf;" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:60px"></span>
-					<span class="h4" style="color:#00a0cf;"><b>GET A GURU IMMEDIATELY</b></span>
+					<span class="h4" style="color:#00a0cf;"><b>REQUEST A GURU</b></span>
 				</a>
 			</div>
 			{% if address_book.keys() %}
@@ -141,7 +141,7 @@
 				{% if user.notifications|length == 3 %}
 				<div style="margin-bottom:0"class="alert alert-success">You're all set! Check your email frequently.<br> We'll let you know <i>immediately </i> if a tutor has agreed to help! </div>
 				{% else %}
-				<div style="margin-bottom:0"class="alert alert-info">Request immediate help by clicking 'Get a Guru Immediately' above. </div>
+				<div style="margin-bottom:0"class="alert alert-info">Get help by clicking 'REQUEST A GURU' above. </div>
 				{% endif %}
 			</div>
 		 </div>
@@ -477,7 +477,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1"><strong>I NEED HELP IN...</strong></label> <br>
-                            <input style="width:100%"id="student-signup-skill" name="skill" type="email" class="input-signup typeahead" placeholder="Chem 1A, Math 16A, Writing Help, Resume Help" id="login-email">
+                            <input style="width:100%"id="student-signup-skill" name="skill" type="email" class="input-signup typeahead" placeholder="Chem 1A, Math 16A, Writing Help" id="login-email">
                         </div>
                         <span id="other-examples">Other examples: Writing Help, Resume Help, Interview Help</span>
                  </div>
@@ -485,15 +485,15 @@
                       <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                         <div class="form-group">
                             <label for="exampleInputEmail1"><strong>PLEASE SPECIFY TOPICS OR ASSIGNMENTS</strong></label> <br>
-                            <input style="width:100%"id="student-signup-description" name="skill" type="email" class="input-signup" placeholder="HW3, Chemical Reactions, Midterm Prep" id="login-email">
+                            <input style="width:100%"id="student-signup-description" name="skill" type="email" class="input-signup" placeholder="Radical Reactions, Geometric Series, Midterm Prep" id="login-email">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                           <div class="form-group">
-                              <label for="exampleInputEmail1"><strong>YOUR AVAILABILITY</strong></label> <br>
-                              <input style="width:100%"id="student-signup-availability" name="skill" type="email" class="input-signup" placeholder="Anytime tonight, Monday 3-6pm, Sometime this weekend" id="login-email">
+                              <label for="exampleInputEmail1"><strong>YOUR AVAILABILITY (BE SPECIFIC) </strong></label> <br>
+                              <input style="width:100%"id="student-signup-availability" name="skill" type="email" class="input-signup" placeholder="Anytime tonight, Mon 3-6pm, Sat morning" id="login-email">
                           </div>
                       </div>
                     </div>
@@ -508,7 +508,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                             <div class="form-group">
-                                <label for="exampleInputEmail1"><strong>TIME ESTIMATE</strong></label> <br>
+								<label for="exampleInputEmail1"><strong>HOW LONG WOULD IT TAKE</strong></label> <br>
                                 <div id="time-estimate-slider" style="margin-top:7px; margin-bottom:5px"></div>
                                 <p style="margin-left:5px; font-size:14px; margin-top:3px; font-weight:700"class="text-left"><span style="font-size:14px;color:rgb(0, 159, 225)" name="estimate" id="low"></span> hours (This is only an estimate)</p>
                             </div>
@@ -517,7 +517,7 @@
                     <div id="num-students-request" class="row">
                         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                             <div class="form-group">
-                                <label for="exampleInputEmail1"><strong># OF STUDENTS THAT NEED HELP</strong></label>
+                                <label for="exampleInputEmail1"><strong>HOW BIG IS YOUR GROUP</strong></label>
                             </div>
                             <div style="margin-top:-10px; margin-left:0px"class="row">
                               <span style="width:60px"id="num-students-1" class="num-students btn-options btn-xs"><a href="javascript:void(0);">1</a></span>
