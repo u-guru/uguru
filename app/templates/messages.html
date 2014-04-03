@@ -140,7 +140,7 @@
 						</div>
 					</div>
 					<div class="conversation-messages" {% if not conversation.messages %} style="display:none" {% endif %}>
-						{% for message in conversation.messages %}
+						{% for message in conversation.messages|sort(attribute='write_time') %}
 						<br>
 						<div class="row">
 							{% if message.sender_id == user.id %}
