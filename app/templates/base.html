@@ -3,14 +3,10 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>    
         <meta charset="utf-8">    
-        <meta property="og:image" content="/static/img/guru.png"/>    
+        <meta property="og:image" content="/static/img/guru.png"/>
         <meta name="description" content="">
         <meta name="author" content="">
         <title>uGuru.me</title>
-       <!--  <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'> -->
-        <!-- Bootstrap core CSS -->
-      <!--   <link href="/static/css/bootstrap.css" rel="stylesheet"> -->
-        <!-- Add custom CSS here -->
         <link href='http://fonts.googleapis.com/css?family=Roboto:400' rel='stylesheet' type='text/css'>
         <link href="/static/css/bootswatch.min.css" rel="stylesheet">
         <link href="/static/css/style.css" rel="stylesheet">
@@ -27,9 +23,15 @@
           ga('create', 'UA-33624184-2', 'uguru.me');
           ga('send', 'pageview');
         </script>
+        {% if environment == 'TESTING'%}
+        <link rel="icon" 
+          type="image/png" 
+          href="/static/img/favicon-testing.png">
+        {% else %}
         <link rel="icon" 
           type="image/png" 
           href="/static/img/favicon.png">
+        {% endif %}
     </head>
 
     <body>

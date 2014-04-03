@@ -22,6 +22,15 @@
           ga('create', 'UA-33624184-2', 'uguru.me');
           ga('send', 'pageview');
         </script>
+        {% if environment == 'TESTING'%}
+        <link rel="icon" 
+          type="image/png" 
+          href="/static/img/favicon-testing.png">
+        {% else %}
+        <link rel="icon" 
+          type="image/png" 
+          href="/static/img/favicon.png">
+        {% endif %}
     </head>
 
       <!-- Jinja2 Variable Definitions -->

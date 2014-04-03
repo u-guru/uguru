@@ -36,7 +36,7 @@ def index():
             return redirect(url_for('settings'))
         return redirect(url_for('activity'))
     return render_template('new_index.html', forms=[request_form],
-        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete)
+        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, environment = get_environment())
 
 @app.route('/sneak/', methods=['GET', 'POST'])
 def sneak():
@@ -270,7 +270,7 @@ def admin():
         return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
             skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, \
             all_requests = all_requests, skills_counter = skills_counter, notifications=notifications,\
-            payments=payments, total_profit=total_profit)
+            payments=payments, total_profit=total_profit, environment = get_environment())
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
@@ -1183,7 +1183,8 @@ def activity():
         'student_name': student.name.split(' ')[0]}
     return render_template('activity.html', key=stripe_keys['publishable_key'], address_book=address_book, \
         logged_in=session.get('user_id'), user=user, request_dict = request_dict, payment_dict = payment_dict,\
-        pretty_dates = pretty_dates, urgency_dict=urgency_dict, tutor_dict=tutor_dict, pending_ratings_dict=pending_ratings_dict)
+        pretty_dates = pretty_dates, urgency_dict=urgency_dict, tutor_dict=tutor_dict, pending_ratings_dict=pending_ratings_dict,\
+        environment = get_environment())
 
 @app.route('/tutor_offer/')
 def tutor_offer():
@@ -1201,7 +1202,7 @@ def messages():
     for conversation in user.mailbox.conversations:
         for message in conversation.messages:
             pretty_dates[message.id] = pretty_date(message.write_time)
-    return render_template('messages.html', user=user, pretty_dates=pretty_dates)
+    return render_template('messages.html', user=user, pretty_dates=pretty_dates, environment = get_environment())
 
 @app.route('/student_request/')
 def student_request():
@@ -1257,7 +1258,9 @@ def settings():
     if user.verified_tutor and not is_tutor_verified(user):
         not_launched_flag = True
     from app.static.data.short_variations import short_variations_dict
-    return render_template('settings.html', logged_in=session.get('user_id'), user=user, variations=short_variations_dict, not_launched_flag = not_launched_flag)
+    return render_template('settings.html', logged_in=session.get('user_id'), user=user, \
+        variations=short_variations_dict, not_launched_flag = not_launched_flag, \
+        environment = get_environment())
 
 # @app.route('/tutor_accept/')
 # def tutor_accept():
@@ -1396,3 +1399,11 @@ def update_profile_notifications(user):
                         n.image_url = user.profile_url
                         print user.name, n.feed_message[0:30], " notification is now updated"
     return False
+
+def get_environment():
+    environment = "LOCAL"
+    if os.environ.get('PRODUCTION'):
+        environment = "PRODUCTION"
+    if os.environ.get("TESTING"):
+        environment = "TESTING"
+    return environment
