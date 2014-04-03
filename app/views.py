@@ -241,9 +241,9 @@ def admin():
                     payment_dict['profit'] = request_dict['payment']
                     total_profit += payment_dict['profit']
                     payments.append(payment_dict)
-                if student.pending_ratings:
+                if student and student.pending_ratings:
                     request_dict['pending-ratings'] += 1
-                if tutor.pending_ratings:
+                if tutor and tutor.pending_ratings:
                     request_dict['pending-ratings'] += 1
 
             all_requests.append(request_dict)
