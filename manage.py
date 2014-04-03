@@ -476,6 +476,29 @@ if arg == 'generate_short_variations':
         separators = (',', ': ')))
     print result_dict
 
+if arg == 'update_profile_notifications_test':
+    a_id_names = ['getting-started', 'getting-started-tutor']
+    custom_tags = ['student-request-help', 'tutor-receive-payment', 'tutor-cashed-out']
+    for user in User.query.all():
+        if user.profile_url != '/static/img/default-photo.jpg':
+            for n in user.notifications:
+                if n.a_id_name in a_id_names or n.custom_tag in custom_tags:
+                    if n.image_url != n.profile_url:
+                        print user.name, n.feed_message[0:30], " notification is not updated"
+
+if arg == 'update_profile_notifications':
+    a_id_names = ['getting-started', 'getting-started-tutor']
+    custom_tags = ['student-request-help', 'tutor-receive-payment', 'tutor-cashed-out']
+    for user in User.query.all():
+        if user.profile_url != '/static/img/default-photo.jpg':
+            for n in user.notifications:
+                if n.a_id_name in a_id_names or n.custom_tag in custom_tags:
+                    if n.image_url != n.profile_url:
+                        n.image_url = n.profile_url
+                        print user.name, n.feed_message[0:30], " notification is now updated"
+    db_session.commit()
+
+
 if arg == 'generate_short_variations_reverse':
     import json    
     json_data = open('app/static/data/all_courses.json')
