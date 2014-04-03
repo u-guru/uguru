@@ -119,6 +119,9 @@ def update_profile():
             if not user.skills:
                 user.settings_notif = 0
 
+            #update previous notification profile photos to point to this new photo
+            update_profile_notifications(user)
+
             try:
                 db_session.commit()
             except:
@@ -1381,3 +1384,15 @@ if os.environ.get('PRODUCTION') or os.environ.get('TESTING'):
             message += "\n\n" + str(pprint(vars(user)))
         error(message)
         return render_template('500.html')
+
+def update_profile_notifications(user):
+    a_id_names = ['getting-started', 'getting-started-tutor']
+    custom_tags = ['student-request-help', 'tutor-receive-payment', 'tutor-cashed-out']
+    for user in User.query.all():
+        if user.profile_url != '/static/img/default-photo.jpg':
+            for n in user.notifications:
+                if n.a_id_name in a_id_names or n.custom_tag in custom_tags:
+                    if n.image_url != user.profile_url:
+                        n.image_url = user.profile_url
+                        print user.name, n.feed_message[0:30], " notification is now updated"
+    return False
