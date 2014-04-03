@@ -194,11 +194,14 @@ def admin():
         student_count = 0
         skills_array = []
         all_requests = []
+        total_profit = 0
+        payments = []
         
         notifications = sorted(Notification.query.all(), key=lambda n:n.id, reverse=True)
 
         for r in Request.query.all()[::-1]:
             request_dict = {}
+            payment_dict = {}
             request_dict['request'] = r
             request_dict['date'] = pretty_date(r.time_created)
             skill = Skill.query.get(r.skill_id)
@@ -212,6 +215,33 @@ def admin():
                         if n.time_read:
                             total_seen_count += 1
             request_dict['total_seen']  = total_seen_count
+            request_dict['pending-ratings'] = 0
+            if r.connected_tutor_id:
+                tutor = User.query.get(r.connected_tutor_id)
+                request_dict['connected-tutor'] = tutor
+                c = Conversation.query.filter_by(guru=tutor, student=student).first()
+                if c:
+                    request_dict['message-length'] = len(c.messages)
+                p = Payment.query.filter_by(tutor_id=tutor.id, student_id=student.id).first()
+                if p:
+                    payment_dict['payment'] = p
+                    payment_dict['student'] = student
+                    payment_dict['tutor'] = tutor
+                    payment_dict['student-hourly'] = round(p.tutor_rate/0.8)
+                    payment_dict['tutor-hourly'] = p.tutor_rate
+                    student_charge = round(p.tutor_rate/0.8) * p.time_amount
+                    payment_dict['student-total'] = student_charge
+                    tutor_paid = p.tutor_rate * p.time_amount
+                    payment_dict['tutor-total'] = tutor_paid
+                    request_dict['payment'] = student_charge - tutor_paid
+                    payment_dict['profit'] = request_dict['payment']
+                    total_profit += payment_dict['profit']
+                    payments.append(payment_dict)
+                if student.pending_ratings:
+                    request_dict['pending-ratings'] += 1
+                if tutor.pending_ratings:
+                    request_dict['pending-ratings'] += 1
+
             all_requests.append(request_dict)
         all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
         for u in users: 
@@ -232,7 +262,8 @@ def admin():
         skills_counter = sorted(skills_counter.iteritems(), key=operator.itemgetter(1))
         return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
             skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, \
-            all_requests = all_requests, skills_counter = skills_counter, notifications=notifications)
+            all_requests = all_requests, skills_counter = skills_counter, notifications=notifications,\
+            payments=payments, total_profit=total_profit)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
@@ -370,6 +401,7 @@ def submit_payment():
             payment = Payment(r)
             payment.time_amount = float(total_time)
             payment.tutor_rate = r.connected_tutor_hourly
+            payment.request_id = r.id
 
             tutor = user
             student_id = payment.student_id
@@ -1140,7 +1172,6 @@ def activity():
         student_id = payment.student_id
         tutor = User.query.get(tutor_id)
         student = User.query.get(student_id)
-        # request = Request.query.get(payment.request_id)
         payment_dict[payment.id] = {'payment': payment, 'tutor_name':tutor.name.split(' ')[0],\
         'student_name': student.name.split(' ')[0]}
     return render_template('activity.html', key=stripe_keys['publishable_key'], address_book=address_book, \
