@@ -224,7 +224,9 @@ def admin():
                 c = Conversation.query.filter_by(guru=tutor, student=student).first()
                 if c:
                     request_dict['message-length'] = len(c.messages)
-                p = Payment.query.filter_by(tutor_id=tutor.id, student_id=student.id).first()
+                p = None 
+                if tutor and student:
+                    p = Payment.query.filter_by(tutor_id=tutor.id, student_id=student.id).first()
                 if p:
                     payment_dict['payment'] = p
                     payment_dict['student'] = student
