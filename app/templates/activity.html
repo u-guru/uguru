@@ -589,7 +589,7 @@
 			        </a>
 			      </div>
 			      <div class="col-xs-10" style="text-align:center">
-			        <h4 style="color:white;width:100%;font-weight:500">CREDIT CARD</h4>
+			        <h4 style="color:white;width:100%;font-weight:500">ADD A CREDIT / DEBIT CARD</h4>
 			    </div>
 			  </div>
 			</div>
@@ -607,12 +607,13 @@
 				</div>
 			  	<div class="row" style="text-align:center">
 			  		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-				  		<h4>Please enter your credit or debit card information to confirm this request</h4>
-					  	{% if user.skills %}
-					  	<strong><h6>(You will NOT be charged anything without your permission)</h6></strong>
-					  	{% else %}
-					  	<strong><h6>(You will NOT be charged anything until after you have been happily tutored.)</h6></strong>
-					  	{% endif %}
+				  		<h4>Please add a credit or debit card to proceed</h4>
+					  	<strong><h5 style="color:grey; font-weight:bold;">(You will NOT be charged without your approval)</h5></strong>
+					</div>
+			  	</div>
+			  	<div class="row" style="text-align:center">
+			  		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+					  	<h5 style="margin:25px auto;color:grey">Our payment system is securely <b><a target="_blank"href="stripe.com">Powered by Stripe</a></b>, which handles all card info and charges. <br>Uguru has no direct access to your credit card information.</h5>
 					</div>
 			  	</div>
 			  	<div class="row">
@@ -653,7 +654,7 @@
 							  	</div>
 					  		</div>
 					  		<div style="margin-top:85px; text-align:center" class="row-fluid">
-					  			<img src="/static/img/powered-stripe.png">
+					  			<a target="_blank"href="http://stripe.com"><img src="/static/img/powered-stripe.png"></a>
 					  		</div>
 					</div>
 				</div>

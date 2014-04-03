@@ -1360,6 +1360,7 @@ if os.environ.get('PRODUCTION') or os.environ.get('TESTING'):
     @app.errorhandler(500)
     def internal_server(e):
         message = traceback.format_exc()
+        print message
         from emails import error
         if session.get('user_id'):
             print session.get('user_id')
@@ -1372,6 +1373,7 @@ if os.environ.get('PRODUCTION') or os.environ.get('TESTING'):
     @app.errorhandler(Exception)
     def catch_all(e):
         message = traceback.format_exc()
+        print message
         from emails import error
         if session.get('user_id'):
             user = User.query.get(session.get('user_id'))

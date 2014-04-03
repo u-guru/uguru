@@ -717,7 +717,7 @@ def send_request_to_tutors_html(skill_name, urgency, time_estimate,
     Hey """ + tutor_name + """! 
     <br> 
     <br>""" + \
-    student_name + """ is a Cal student that needs help in """ + skill_name + " " + urgency + ". " + \
+    student_name + """ is a Cal student that needs help in """ + skill_name.upper() + " " + urgency + ". " + \
     student_name + """ estimates that it will take <b>""" + str(int(time_estimate)) + \
     """ hours</b>. Here is some extra information that """ + student_name + """ has asked
     us to forward on to you: 
