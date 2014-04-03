@@ -303,7 +303,23 @@
             </a>
             <input id="upload-photo" type="file"/>
         </div>
-        <div style="margin-top:20px"class="row-fluid">
+        {% if not not_launched_flag %}
+        <div style="margin-top:15px; " class="row">
+          <div style="margin-bottom:15px" class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+            <h4 style="margin-bottom:5px">YOUR AVG RATING</h4>
+            <span class="rating">
+                <span style="color;rgb(0, 159, 225)">☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+            </span>
+            <div>
+              <h6 style="color:grey; margin-top:5px">
+                Each time you tutor a student, you receive one rating. <br>
+                The more quality reviews you have, the better we advertise you!
+              </h6>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        <div style="margin-top:-10px"class="row-fluid">
           <h4>DETAILS AND ATTRIBUTES</h4>
           <span id="saved-year" class="saved-text">Saved!<br></span>
           <div id="alert-major-text">
@@ -390,6 +406,7 @@
           </div>
         </div>
       </div>
+
         {% if not_launched_flag %}
         <div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; display:block">
           <a id="launch-profile-link" href="javascript:void(0)">
