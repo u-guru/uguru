@@ -357,7 +357,7 @@ def student_payment_receipt_text(charge_id, card_last4, tutor_name, hourly_price
     """Receipt ID: """+  charge_id +"""\n""" +\
     """Card Number: ****-****-****-"""+ card_last4 +"""\n""" +\
     """Guru Name: """+ tutor_name +"""\n""" +\
-    """Hourly Price: $"""+ str(hourly_price) +"""\n""" +\
+    """Hourly Price: $"""+ str(hourly_price) +""" (Including Uguru fees)\n""" +\
     """Hours: """+ str(hours) +""" hours\n""" +\
     """Total Amount: $"""+ str(amount) +"""\n\n""" +\
     """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
@@ -369,7 +369,7 @@ def student_payment_receipt_html(charge_id, card_last4, tutor_name, hourly_price
     Receipt ID: """+  charge_id +"""<br>
     Card Number: ****-****-****-"""+  card_last4 +"""<br>
     Guru Name: """+  tutor_name +"""<br>
-    Hourly Price: $""" + str(hourly_price) + """<br>
+    Hourly Price: $""" + str(hourly_price) + """ (including Uguru fees)<br>
     Hours: """ + str(hours) + """ hours<br>
     Total Amount: $""" + str(amount) + """
     <br>

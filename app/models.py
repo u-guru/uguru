@@ -127,6 +127,7 @@ class User(Base):
     hkn_tutor = Column(Boolean, default = False)
     ta_tutor = Column(Boolean, default = False)
     res_tutor = Column(Boolean, default = False)
+    la_tutor = Column(Boolean, default = False)
 
     msg_notif = Column(Integer, default = 0)
     feed_notif = Column(Integer, default = 0)

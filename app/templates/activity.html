@@ -1185,6 +1185,11 @@
 					                  		<span># TA or GSI </span> &nbsp;&nbsp;
 					                	</span>
 						            {% endif %}
+						            {% if tutor_dict[n].la_tutor %}
+						                <span style="margin-left:0px"class="example-tag active" >
+					                  		<span># Lab Assistant </span> &nbsp;&nbsp;
+					                	</span>
+						            {% endif %}
 						        	</div>
 						  		</h5>
 						  	</div>
@@ -1496,7 +1501,6 @@
 					     <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-4 col-md-offset-4">
 							<div id="flakers-fee-alert"style="{% if not user.customer_id %} display:none; {% else %} display:block {% endif %} text-align:center; font-size:12px; color:red;">
 									If you click accept, you agree to our <strong> <a href="/tos/">Terms of Service</a> </strong>
-									and agree to a <strong>$10 Flaker's Fee</strong> if you do not show up to meet your student(s).
 							</div>
 						 </div>
 					 </div>

@@ -145,6 +145,8 @@ def update_profile():
                 user.previous_tutor = ajax_json.get('previous')
             if 'ta' in ajax_json:
                 user.ta_tutor = ajax_json.get('ta')
+            if 'la' in ajax_json:
+                user.la_tutor = ajax_json.get('la')
             if 'res' in ajax_json:
                 user.res_tutor = ajax_json.get('res')
             if 'hkn' in ajax_json:
