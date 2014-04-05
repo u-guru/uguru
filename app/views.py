@@ -898,17 +898,19 @@ def success():
         if ajax_json.get('student-request'):
             user_id = session['user_id']
             from app.static.data.variations import courses_dict
+            from app.static.data.short_variations import short_variations_dict
             
-            # If student already has an outgoing request
             skill_name = ajax_json['skill'].lower()
             skill_id = courses_dict[skill_name]
             skill = Skill.query.get(skill_id)
+            skill_name = short_variations_dict[skill.name]
             u = User.query.get(user_id)
 
             if u.verified_tutor:
                 if skill in u.skills:
                     return jsonify(dict={'tutor-request-same':True})
 
+            # If student already has an outgoing request
             if u.outgoing_requests:
                 for r in u.outgoing_requests:
                     if r.skill_id == skill_id:
@@ -922,6 +924,7 @@ def success():
                 frequency = None, 
                 time_estimate = float(ajax_json['estimate'])
             )
+
             r.num_students = int(ajax_json['num-students'])
             r.student_estimated_hour = int(float(ajax_json['idea-price']))
             r.location = ajax_json['location']
