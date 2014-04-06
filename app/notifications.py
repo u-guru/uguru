@@ -56,7 +56,7 @@ def student_request_receipt(user, request, skill_name):
     notification.feed_message = "<b>You</b> requested help in " + skill_name.upper()
     notification.feed_message_subtitle = "<b>Click here</b> to see " +\
         "the status of your request!"
-    request_number = user.outgoing_requests.index(request)
+    # request_number = user.outgoing_requests.index(request)
     notification.a_id_name = 'student-request-help' + str(request.id)
     if user.profile_url:
         notification.image_url = user.profile_url
