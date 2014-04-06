@@ -1197,7 +1197,7 @@
 						</div>
 						<div class="row">
 							{% set original_student_price = (request_dict[n.request_id]['request'].student_estimated_hour )|int %}
-								{% set most_recent_price = (n.request_tutor_amount_hourly / 0.8)|round %}
+								{% set most_recent_price = prices_reversed_dict[n.request_tutor_amount_hourly]  %}
 							{% if (original_student_price - most_recent_price)|abs > 1 %}
 								{% set price_has_changed = True %}
 							{% else %}
@@ -1235,7 +1235,7 @@
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].num_students}}
 							  				{% if request_dict[n.request_id]['request'].num_students > 1 %}
-							  				(about ${{((n.request_tutor_amount_hourly/0.8)/request_dict[n.request_id]['request'].num_students)|float|int}}-{{((n.request_tutor_amount_hourly/0.8)/request_dict[n.request_id]['request'].num_students)|float|int + 1}}/hr per person)
+							  				(about ${{((prices_reversed_dict[n.request_tutor_amount_hourly])/request_dict[n.request_id]['request'].num_students)|float|int}}-{{((prices_reversed_dict[n.request_tutor_amount_hourly])/request_dict[n.request_id]['request'].num_students)|float|int + 1}}/hr per person)
 							  				{% endif %}
 							  			</div>
 							  		</div>
@@ -1245,7 +1245,7 @@
 							  			<div class="h4 request-info-row"><b>Hourly Price</b></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">${{(n.request_tutor_amount_hourly/0.8)|round|int}} </div>
+							  			<div class="h4 request-info-row">${{(prices_reversed_dict[n.request_tutor_amount_hourly])}} </div>
 							  		</div>
 							  	</div>
 							  	<div class="row-fluid">
@@ -1262,14 +1262,14 @@
 							  				<div style="font-size:12px">including fees&nbsp;<a href="http://tinyurl.com/uguru-q-a" target="_blank"><span style="font-size:14px; color:grey"class="glyphicon glyphicon-question-sign"></span></a></div></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4">${{(request_dict[n.request_id]['request'].time_estimate * ((n.request_tutor_amount_hourly/0.8)|round|int))|round|int}}<br></div>
+							  			<div class="h4">${{request_dict[n.request_id]['request'].time_estimate * prices_reversed_dict[n.request_tutor_amount_hourly]}}<br></div>
 							  		</div>
 							  	</div>
 								{% if n.custom != 'student-accept-request' %}
 								<div style="text-align:center; margin-top:10px; color:grey">
 									{% if price_has_changed %}
 									<div style="font-size:14px; margin-top:10px; color:red">
-											The tutor changed the price from ${{(request_dict[n.request_id]['request'].student_estimated_hour )|int}}/hr to ${{(n.request_tutor_amount_hourly / 0.8)|round|int}}/hr 
+											The tutor changed the price from ${{(request_dict[n.request_id]['request'].student_estimated_hour)}}/hr to ${{(prices_reversed_dict[n.request_tutor_amount_hourly])}}/hr 
 									</div>
 									{% else %}
 									<div style="font-size:14px; margin-top:10px; color:rgb(0, 159, 225)">
@@ -1402,7 +1402,7 @@
 						  <div class="request-info col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
 							  	<div class="row-fluid">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Estimated Time</b></div>
+							  			<div class="h4 request-info-row"><b>Estimated Session Time</b></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4 request-info-row"><span id="student-time-estimate-{{loop.index}}"> {{request_dict[n.request_id]['request'].time_estimate}}</span> hours
@@ -1454,18 +1454,18 @@
 									<i>You could have made:</i> <br>
 									{% endif %}
 									<div>
-										<span style="color:#69bf69; font-size:45px;"><strong> $<span id="student-offer-total-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(0.8*request_dict[n.request_id]['request'].time_estimate * request_dict[n.request_id]['request'].student_estimated_hour )|round|int}}
-											{% else %}{{(request_dict[n.request_id]['request'].time_estimate * n.request_tutor_amount_hourly)|round|int}}{% endif %}
+										<span style="color:#69bf69; font-size:45px;"><strong> $<span id="student-offer-total-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(request_dict[n.request_id]['request'].time_estimate * prices_dict[request_dict[n.request_id]['request'].student_estimated_hour])}}
+											{% else %}{{(request_dict[n.request_id]['request'].time_estimate * n.request_tutor_amount_hourly)}}{% endif %}
 										</span></strong></span>
 									</div>
 									<div style="margin-top:-5px;">
 										<span style="color:grey; font-weight:100; font-size:16px">
-											(Approximately $<span id="student-offer-hourly-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(request_dict[n.request_id]['request'].student_estimated_hour * 0.8)|round|int}}{% else %}{{(n.request_tutor_amount_hourly)|round|int}}{% endif %}</span>/hr x {{request_dict[n.request_id]['request'].time_estimate}}hr)
+											($<span id="student-offer-hourly-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(prices_dict[request_dict[n.request_id]['request'].student_estimated_hour])}}{% else %}{{(n.request_tutor_amount_hourly)|round|int}}{% endif %}</span>/hr x {{request_dict[n.request_id]['request'].time_estimate}}hr)
 										</span>
 									</div>
-									{% if n.custom == 'tutor-accept-request' and ((request_dict[n.request_id]['request'].student_estimated_hour*0.8)|round|int) != n.request_tutor_amount_hourly %}
+									{% if n.custom == 'tutor-accept-request' and (prices_dict[request_dict[n.request_id]['request'].student_estimated_hour]) != n.request_tutor_amount_hourly %}
 									<div style="font-size:14px; margin-top:10px; color:rgb(0, 159, 225)">
-											You changed the price from ${{(request_dict[n.request_id]['request'].student_estimated_hour * 0.8)|round|int}}/hr to ${{(n.request_tutor_amount_hourly)|float|round|int}}/hr 
+											You changed the price from ${{(prices_dict[request_dict[n.request_id]['request'].student_estimated_hour])}}/hr to ${{(n.request_tutor_amount_hourly)|float|round|int}}/hr 
 									</div>
 									{% endif%}
 								</div>

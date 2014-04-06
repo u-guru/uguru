@@ -74,8 +74,8 @@ $(document).ready(function() {
 
     $('#feed-messages').on('change', '.tutor-change-price-slider', function() {
       feed_message_index = last_clicked_notif_index + 1
-      $('#student-offer-hourly-price-' + feed_message_index).text(parseInt($('#tutor-change-price-slider-'+ feed_message_index).val()));
-      $('#student-offer-total-price-' + feed_message_index).text(parseInt($('#tutor-change-price-slider-'+ feed_message_index).val() * $('#student-time-estimate-' +feed_message_index).text()));
+      $('#student-offer-hourly-price-' + feed_message_index).text($('#tutor-change-price-slider-'+ feed_message_index).val());
+      $('#student-offer-total-price-' + feed_message_index).text($('#tutor-change-price-slider-'+ feed_message_index).val() * $('#student-time-estimate-' +feed_message_index).text());
     });
 
     $('#feed-messages').on('click', '.tutor-change-price-link', function() {
@@ -461,7 +461,7 @@ $(document).ready(function() {
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
         $('#ideal-price-slider').noUiSlider({
           range: {
-            'min': Number(8),
+            'min': Number(10),
             'max': Number(40)
           }
         }, true);

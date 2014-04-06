@@ -334,7 +334,9 @@ def student_payment_receipt(user, tutor_name, amount, payment, charge_id):
     msg['From'] = email_from
 
     card_last4 = user.customer_last4
-    hourly_price = (round(payment.tutor_rate / 0.8))
+    from app.static.data.prices import prices_dict
+    prices_reversed_dict = {v:k for k, v in prices_dict.items()}
+    hourly_price = prices_reversed_dict[payment.tutor_rate]
     hours = payment.time_amount
 
     text = student_payment_receipt_text(charge_id, card_last4, tutor_name, hourly_price, hours, amount)

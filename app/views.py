@@ -402,7 +402,9 @@ def submit_payment():
 
             r.student_secret_code = r.student_secret_code + '-USED'
             return_json['secret-code'] = True
-            total_amount = round((r.connected_tutor_hourly / 0.8) * float(total_time))
+            from app.static.data.prices import prices_dict
+            prices_reversed_dict = {v:k for k, v in prices_dict.items()}
+            total_amount = prices_reversed_dict[r.connected_tutor_hourly] * total_time
             stripe_amount_cents = int(total_amount * 100.0)
 
             # user.incoming_requests_to_tutor.remove(r)
@@ -447,9 +449,9 @@ def submit_payment():
 
             return_json['student-name'] = student.name.split(" ")[0]
 
-            amount_made = int(round(r.connected_tutor_hourly * float(total_time)))
+            amount_made = (r.connected_tutor_hourly * float(total_time))
 
-            tutor.balance = tutor.balance + int(round(r.connected_tutor_hourly * float(total_time)))
+            tutor.balance = tutor.balance + amount_made
 
             #Add pending rating to student 
             for rating in tutor.pending_ratings:
@@ -1157,6 +1159,9 @@ def activity():
     pending_ratings_dict = {}
     tutor_dict = {}
     urgency_dict = ['ASAP', 'Tomorrow', 'This week']
+
+    from app.static.data.prices import prices_dict
+    prices_reversed_dict = {v:k for k, v in prices_dict.items()}
     if user.pending_ratings:
         rating = user.pending_ratings[0]
         student = User.query.get(rating.student_id)
@@ -1189,7 +1194,7 @@ def activity():
     return render_template('activity.html', key=stripe_keys['publishable_key'], address_book=address_book, \
         logged_in=session.get('user_id'), user=user, request_dict = request_dict, payment_dict = payment_dict,\
         pretty_dates = pretty_dates, urgency_dict=urgency_dict, tutor_dict=tutor_dict, pending_ratings_dict=pending_ratings_dict,\
-        environment = get_environment())
+        environment = get_environment(), prices_dict=prices_dict, prices_reversed_dict=prices_reversed_dict)
 
 @app.route('/tutor_offer/')
 def tutor_offer():

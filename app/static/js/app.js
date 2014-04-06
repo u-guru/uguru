@@ -117,7 +117,7 @@ $(document).ready(function(){
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
         $('#ideal-price-slider').noUiSlider({
           range: {
-            'min': Number(8),
+            'min': Number(10),
             'max': Number(40)
           }
         }, true);
