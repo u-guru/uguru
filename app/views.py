@@ -404,8 +404,10 @@ def submit_payment():
             return_json['secret-code'] = True
             from app.static.data.prices import prices_dict
             prices_reversed_dict = {v:k for k, v in prices_dict.items()}
-            total_amount = prices_reversed_dict[r.connected_tutor_hourly] * total_time
-            stripe_amount_cents = int(total_amount * 100.0)
+            print prices_reversed_dict[r.connected_tutor_hourly]
+            print total_time
+            total_amount = prices_reversed_dict[r.connected_tutor_hourly] * float(total_time)
+            stripe_amount_cents = int(total_amount * 100)
 
             # user.incoming_requests_to_tutor.remove(r)
 
