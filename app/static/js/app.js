@@ -111,7 +111,7 @@ $(document).ready(function(){
       var index = $(this).index();
 
       if (index == 0 ) {
-        $('#ideal-price-slider').val('13');
+        $('#ideal-price-slider').val('15');
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
         $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
