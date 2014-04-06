@@ -773,6 +773,33 @@ def notif_update():
 
     return jsonify(return_json=return_json)
 
+@app.route('/reset-password/', methods=('GET', 'POST'))
+def reset_pw():
+    if request.method == 'POST':
+        return_json = {}
+
+        ajax_json = request.json
+
+        if 'email' in ajax_json:
+            from emails import generate_new_password
+            from app.static.data.random_codes import random_codes_array
+            import random
+            new_password = random.choice(random_codes_array)
+            email = ajax_json['email'].lower()
+
+            user = User.query.filter_by(email=email).first()
+            if user:
+                user.password = md5(new_password).hexdigest()
+                generate_new_password(user, new_password)
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise 
+
+
+    return jsonify(return_json=return_json)
+
 @app.route('/update-skill/', methods=('GET', 'POST'))
 def update_skill():
     if request.method == "POST":

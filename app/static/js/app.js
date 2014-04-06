@@ -123,7 +123,7 @@ $(document).ready(function(){
         }, true);
       }
       else if (index == 1) {
-        $('#ideal-price-slider').val('16');
+        $('#ideal-price-slider').val('20');
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
         $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
@@ -134,7 +134,7 @@ $(document).ready(function(){
           }
         }, true);
       } else if (index == 2) {
-        $('#ideal-price-slider').val('21');
+        $('#ideal-price-slider').val('24');
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
         $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
@@ -145,7 +145,7 @@ $(document).ready(function(){
           }
         }, true);
       } else if (index == 3) {
-        $('#ideal-price-slider').val('24');
+        $('#ideal-price-slider').val('28');
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
         $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
@@ -156,7 +156,7 @@ $(document).ready(function(){
           }
         }, true);
       } else if (index == 4) {
-        $('#ideal-price-slider').val('25');
+        $('#ideal-price-slider').val('30');
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
         $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));        
@@ -478,13 +478,12 @@ $(document).ready(function(){
             $('#password-fields-login').show();
       } else {
         var data = {
-          'reset-email': true,
           'email': $('input[name="password-email"]').val(),
         }
         $.ajax({
           type: "POST",
           contentType: 'application/json;charset=UTF-8',
-          url: '/validation/',
+          url: '/reset-password/',
           data: JSON.stringify(data),
           dataType: "json",        
           success: function(result) {        

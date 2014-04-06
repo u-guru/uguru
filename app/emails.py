@@ -47,6 +47,8 @@ def send_connection_email(student, tutor, request):
     mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()
 
+
+
 def welcome_uguru_student(user):
     user_first_name = user.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
@@ -158,6 +160,59 @@ def student_needs_help(student, tutor, course_name, request):
     mail.login(SMTP_USERNAME, SMTP_PASSWORD)
     mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()
+
+
+def generate_new_password(user, new_password):
+    user_name = user.name.split(" ")[0]
+    email_from = "Uguru Reset Password <do-not-reply@uguru.me>"
+    email_subject = "Your Temporary Generated Password"
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+    EMAIL_TO = [user.email]
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = email_subject
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = email_from
+
+    text = generate_new_password_text(user_name, new_password)
+    html = generate_new_password_html(user_name, new_password)
+    
+    part1 = MIMEText(text, 'plain', 'utf-8')
+    part2 = MIMEText(html, 'html', 'utf-8')
+
+    msg.attach(part1)
+    msg.attach(part2)
+    
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
+    mail.quit()
+
+def generate_new_password_text(user_name, new_password):
+    return "Hi """ + user_name + """, \n\n""" + \
+    """Your new generated password is '""" + new_password + """'\n\n""" + \
+    """Login to http://uguru.me with this password and change to a password of your choice under Account Settings.\n\n""" +\
+    """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
+
+def generate_new_password_html(user_name, new_password):
+    return """
+    Hi """ + user_name + """,
+    <br>
+    <br>
+    Your new generated password is <b>'""" + new_password + """'</b>
+    <br>
+    <br>
+    <a href="http://uguru.me"> Login</a> with this password on Uguru and change to a pasword of your choice under Account Settings. 
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
+
 
 def student_needs_help_html(student_name, class_name, request):
     return """<b>
