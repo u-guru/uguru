@@ -410,7 +410,7 @@ class Payment(Base):
     tutor_id = Column(Integer)
     request_id = Column(Integer)
     skill_id = Column(Integer)    
-    time_amount = Column(Integer)
+    time_amount = Column(Float)
     tutor_rate = Column(Float)
     student_paid_amount = Column(Float)
     tutor_received_amount = Column(Float)

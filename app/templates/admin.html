@@ -224,6 +224,7 @@
             <div class="row-fluid">
                 <table class="table table-striped">
                     <tr class="info"> 
+                        <id> ID </td>
                         <td> Student </td>
                         <td> Tutor </td>
                         <td> Time Amount </td>
@@ -235,7 +236,8 @@
                         <td> Profit </td>
                     </tr>
                         {% for payment_dict in payments %}
-                            <tr> 
+                            <tr>
+                                <td>  {{payment_dict['payment'].id}}</td> 
                                 <td>  {{payment_dict['student'].name.split(" ")[0]}} (id:{{payment_dict['student'].id}})</td>
                                 <td>  {{payment_dict['tutor'].name.split(" ")[0]}} (id:{{payment_dict['tutor'].id}})</td>
                                 <td>  {{payment_dict['payment'].time_amount}}hours </td>

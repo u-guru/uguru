@@ -222,7 +222,7 @@ def tutor_receive_payment(user, tutor, payment, amount_made):
 
 def tutor_cashed_out(tutor, amount):
     notification = Notification(other='cashing_out')
-    notification.feed_message = '<b>You</b>' + " cashed out $" + str(amount) + "."
+    notification.feed_message = '<b>You</b>' + " cashed out <b>$" + str(amount) + "</b>."
     notification.feed_message_subtitle = "<b>Click here</b> to see the status of your transfer"
     notification.custom = amount
     notification.custom_tag = 'tutor-cashed-out' 
