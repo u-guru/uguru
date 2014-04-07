@@ -258,12 +258,14 @@ def admin():
                 if tutor and student:
                     p = Payment.query.filter_by(tutor_id=tutor.id, student_id=student.id).first()
                 if p:
+                    from app.static.data.prices import prices_dict
+                    prices_reversed_dict = {v:k for k, v in prices_dict.items()}
                     payment_dict['payment'] = p
                     payment_dict['student'] = student
                     payment_dict['tutor'] = tutor
-                    payment_dict['student-hourly'] = round(p.tutor_rate/0.8)
+                    payment_dict['student-hourly'] = prices_reversed_dict[p.tutor_rate]
                     payment_dict['tutor-hourly'] = p.tutor_rate
-                    student_charge = round(p.tutor_rate/0.8) * p.time_amount
+                    student_charge = payment_dict['student-hourly'] * p.time_amount
                     payment_dict['student-total'] = student_charge
                     tutor_paid = p.tutor_rate * p.time_amount
                     stripe_fees = student_charge * 0.029 + 0.30
@@ -706,6 +708,7 @@ def update_requests():
             skill = Skill.query.get(r.skill_id)
             r.connected_tutor_id = tutor_id
             r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
+            r.time_connected = datetime.now()
             from random import randint 
             r.student_secret_code = random.choice(animal_list) + str(randint(1, 100))
 
