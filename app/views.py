@@ -199,11 +199,28 @@ def admin():
         student_count = 0
         skills_array = []
         all_requests = []
+        transactions = []
         total_profit = 0
         ratings_dict = {}
         payments = []
         
         notifications = sorted(Notification.query.all(), key=lambda n:n.id, reverse=True)
+
+        bank_users = User.query.filter(User.recipient_id != None)
+        for _user in bank_users:
+            recipient_id = _user.recipient_id
+            transfers = stripe.Transfer.all(recipient=recipient_id).data
+            for transfer in transfers:
+                transaction_dict = {}
+                transaction_dict['tutor-name'] = _user.name.split(" ")[0]
+                transaction_dict['tutor-id'] = _user.id
+                transaction_dict['amount'] = '$' + str(float(transfer.amount / 100)) 
+                transaction_dict['bank-name'] = transfer.account.bank_name
+                transaction_dict['bank-status'] = transfer.status
+                transaction_dict['time'] = pretty_date(datetime.fromtimestamp(transfer.created))
+                transactions.append(transaction_dict)
+
+
 
         for r in Rating.query.all():
             skill = Skill.query.get(r.skill_id)
@@ -281,7 +298,7 @@ def admin():
             skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, \
             all_requests = all_requests, skills_counter = skills_counter, notifications=notifications,\
             payments=payments, total_profit=total_profit, environment = get_environment(), ratings=Rating.query.all(),\
-            ratings_dict=ratings_dict)
+            ratings_dict=ratings_dict, transactions=transactions)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
