@@ -200,9 +200,17 @@ def admin():
         skills_array = []
         all_requests = []
         total_profit = 0
+        ratings_dict = {}
         payments = []
         
         notifications = sorted(Notification.query.all(), key=lambda n:n.id, reverse=True)
+
+        for r in Rating.query.all():
+            skill = Skill.query.get(r.skill_id)
+            tutor = User.query.get(r.tutor_id)
+            student = User.query.get(r.student_id)
+            ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
+                'student-name':student.name.split(" ")[0]}
 
         for r in Request.query.all()[::-1]:
             request_dict = {}
@@ -272,7 +280,8 @@ def admin():
         return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
             skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, \
             all_requests = all_requests, skills_counter = skills_counter, notifications=notifications,\
-            payments=payments, total_profit=total_profit, environment = get_environment())
+            payments=payments, total_profit=total_profit, environment = get_environment(), ratings=Rating.query.all(),\
+            ratings_dict=ratings_dict)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
@@ -304,11 +313,11 @@ def add_bank():
                 raise 
 
 
-        # transfer = stripe.Transfer.create(
-        #         amount=int(user.balance * 100), # amount in cents, again
-        #         currency="usd",
-        #         recipient=user.recipient_id
-        #     )
+        transfer = stripe.Transfer.create(
+                amount=int(user.balance * 100), # amount in cents, again
+                currency="usd",
+                recipient=user.recipient_id
+            )
 
         from notifications import tutor_cashed_out
         notification = tutor_cashed_out(user, user.balance)
@@ -784,7 +793,7 @@ def reset_pw():
             from emails import generate_new_password
             from app.static.data.random_codes import random_codes_array
             import random
-            new_password = random.choice(random_codes_array)
+            new_password = random.choice(random_codes_array).lower()
             email = ajax_json['email'].lower()
 
             user = User.query.filter_by(email=email).first()
