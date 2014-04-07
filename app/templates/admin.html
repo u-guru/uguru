@@ -231,6 +231,7 @@
                         <td> Tutor Hourly</td>
                         <td> Student Charge </td>
                         <td> Tutor Paid </td>
+                        <td> Stripe Fees </td>
                         <td> Profit </td>
                     </tr>
                         {% for payment_dict in payments %}
@@ -240,12 +241,15 @@
                                 <td>  {{payment_dict['payment'].time_amount}}hours </td>
                                 <td>  ${{payment_dict['student-hourly']}}</td>
                                 <td>  ${{payment_dict['tutor-hourly']}}</td>
-                                <td>  ${{payment_dict['student-total']}}</td>
-                                <td>  ${{payment_dict['tutor-total']}}</td>
-                                <td>  ${{payment_dict['profit']}}</td>
+                                <td style="color:green">  +${{payment_dict['student-total']}}</td>
+                                <td style="color:red">  -${{payment_dict['tutor-total']}}</td>
+                                <td style="color:red">  -${{payment_dict['stripe-fees']}}</td>
+                                <td style="color:green"> +${{payment_dict['profit']}}</td>
                             </tr>
                         {% endfor %}
                     <tr>
+                        <td>
+                        </td>
                         <td>
                         </td>
                         <td>

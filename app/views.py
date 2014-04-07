@@ -266,8 +266,10 @@ def admin():
                     student_charge = round(p.tutor_rate/0.8) * p.time_amount
                     payment_dict['student-total'] = student_charge
                     tutor_paid = p.tutor_rate * p.time_amount
+                    stripe_fees = student_charge * 0.029 + 0.30
                     payment_dict['tutor-total'] = tutor_paid
-                    request_dict['payment'] = student_charge - tutor_paid
+                    payment_dict['stripe-fees'] = round(stripe_fees, 2)
+                    request_dict['payment'] = round(student_charge - tutor_paid - stripe_fees, 2)
                     payment_dict['profit'] = request_dict['payment']
                     total_profit += payment_dict['profit']
                     payments.append(payment_dict)
