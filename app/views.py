@@ -55,7 +55,7 @@ def webhooks():
         bank_account_name = stripe_response['account']['bank_name']
         recipient_id = stripe_response['recipient']
         status = stripe_response['status']
-        print status
+
         #find user
         user = User.query.filter_by(recipient_id=recipient_id).first()
         if user:
@@ -67,6 +67,14 @@ def webhooks():
                     n.status = status
                     n.skill_name = bank_account_name
                     break;
+        
+        if user and status == "paid":
+            from emails import tutor_received_transfer
+            amount = float(stripe_response['amount'] / 100)
+            transfer_id = stripe_response['id']
+            last4 = stripe_response['account']['last4']
+            tutor_received_transfer(user, amount, bank_account_name, transfer_id, last4)
+
         try:
             db_session.commit()
         except:
@@ -1234,7 +1242,8 @@ def activity():
         return redirect(url_for('index'))
     user_id = session.get('user_id')
     user = User.query.get(user_id)
-    user.last_active = datetime.now()
+    if not session.get('admin'):
+        user.last_active = datetime.now()
     if user.verified_tutor and not is_tutor_verified(user):
         return redirect(url_for('settings'))
     request_dict = {}
@@ -1291,7 +1300,8 @@ def messages():
         return redirect(url_for('index'))
     user_id = session['user_id']
     user = User.query.get(user_id)
-    user.last_active = datetime.now()
+    if not session.get('admin'):
+        user.last_active = datetime.now()
     if user.verified_tutor and not is_tutor_verified(user):
         return redirect(url_for('settings'))
     pretty_dates = {}
@@ -1351,7 +1361,8 @@ def settings():
     if not user_id:
         return redirect(url_for('index'))
     user = User.query.get(user_id)
-    user.last_active = datetime.now()
+    if not session.get('admin'):
+        user.last_active = datetime.now()
     if user.verified_tutor and not is_tutor_verified(user):
         not_launched_flag = True
     from app.static.data.short_variations import short_variations_dict
