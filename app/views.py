@@ -222,7 +222,7 @@ def admin():
                 transactions.append(transaction_dict)
 
         for c in Conversation.query.all():
-            if c.requests:
+            if c.requests and c.guru and c.student:
                 c_dict = {}
                 c_dict['conversation'] = c
                 c_dict['tutor'] = c.guru
