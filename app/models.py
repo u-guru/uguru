@@ -110,6 +110,7 @@ class User(Base):
     max_price = Column(Float, default = 15.0)
     discoverability = Column(Boolean, default = True)
     referral_code = Column(String)
+    last_active = Column(DateTime)
 
     #Tutor fields
     verified_tutor = Column(Boolean)

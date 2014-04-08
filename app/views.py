@@ -944,6 +944,8 @@ def success():
                     phone_number = ajax_json['phone']
                 )
 
+                u.last_active = datetime.now()
+
                 if ajax_json['phone'] == '':
                     u.phone_number = None;
 
@@ -1093,6 +1095,8 @@ def success():
                     phone_number = ajax_json['phone'],
                 )
 
+                u.last_active = datetime.now()
+
                 if ajax_json['phone'] == '':
                     u.phone_number = None;
 
@@ -1227,6 +1231,7 @@ def activity():
         return redirect(url_for('index'))
     user_id = session.get('user_id')
     user = User.query.get(user_id)
+    user.last_active = datetime.now()
     if user.verified_tutor and not is_tutor_verified(user):
         return redirect(url_for('settings'))
     request_dict = {}
@@ -1283,6 +1288,7 @@ def messages():
         return redirect(url_for('index'))
     user_id = session['user_id']
     user = User.query.get(user_id)
+    user.last_active = datetime.now()
     if user.verified_tutor and not is_tutor_verified(user):
         return redirect(url_for('settings'))
     pretty_dates = {}
@@ -1342,6 +1348,7 @@ def settings():
     if not user_id:
         return redirect(url_for('index'))
     user = User.query.get(user_id)
+    user.last_active = datetime.now()
     if user.verified_tutor and not is_tutor_verified(user):
         not_launched_flag = True
     from app.static.data.short_variations import short_variations_dict
