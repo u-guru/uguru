@@ -412,7 +412,7 @@ def student_payment_receipt(user, tutor_name, amount, payment, charge_id):
 def tutor_received_transfer(user, amount, bank_name, transfer_id, last4):
     tutor_name = user.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = "Here's Your Receipt from Cashing Out"
+    email_subject = "$" + amount + " has been successfully transferred!"
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
     EMAIL_TO = [user.email]
@@ -422,14 +422,8 @@ def tutor_received_transfer(user, amount, bank_name, transfer_id, last4):
     msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
     msg['From'] = email_from
 
-    card_last4 = user.customer_last4
-    from app.static.data.prices import prices_dict
-    prices_reversed_dict = {v:k for k, v in prices_dict.items()}
-    hourly_price = prices_reversed_dict[payment.tutor_rate]
-    hours = payment.time_amount
-
-    text = tutor_received_transfer_text(tutor_name, amount, bank_name, transfer_id, last4)
-    html = tutor_received_transfer_html(tutor_name, amount, bank_name, transfer_id, last4)
+    text = tutor_received_transfer_text(amount, bank_name, transfer_id, last4)
+    html = tutor_received_transfer_html(amount, bank_name, transfer_id, last4)
     
     part1 = MIMEText(text, 'plain', 'utf-8')
     part2 = MIMEText(html, 'html', 'utf-8')
@@ -443,12 +437,12 @@ def tutor_received_transfer(user, amount, bank_name, transfer_id, last4):
     mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()    
 
-def student_payment_receipt_html(amount, bank_name, transfer_id, last4):
+def tutor_received_transfer_html(amount, bank_name, transfer_id, last4):
     return """
     <br>
     Receipt ID: """+  transfer_id +"""<br>
     Bank Name: """+  bank_name +"""<br>
-    Account Number: ****-****-****-"""+  last4 +"""<br>
+    Account Number: ****-****-****-"""+  str(last4) +"""<br>
     Total Amount: $""" + str(amount) + """
     <br>
     <br>
@@ -461,6 +455,14 @@ def student_payment_receipt_html(amount, bank_name, transfer_id, last4):
     (813) 500 - 9853
     """
 
+def tutor_received_transfer_text(amount, bank_name, transfer_id, last4):
+    return """\n:""" + \
+    """Receipt ID: """+  transfer_id +"""\n""" +\
+    """Bank Name: """+  bank_name +"""\n""" +\
+    """Account Number: ****-****-****-"""+ str(last4) +"""\n""" +\
+    """Total Amount: $"""+ str(amount) +"""\n\n""" +\
+    """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
+    """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def student_payment_receipt_text(charge_id, card_last4, tutor_name, hourly_price, hours, amount):
     return """\n:""" + \
