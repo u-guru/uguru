@@ -311,7 +311,7 @@
                                 {{request_dict['request'].id}} 
                             </td>
                             <td>  
-                                {{request_dict['student'].name.split(" ")[0]}} (id:{{request_dict['request'].student_id}})
+                                <a href="javascript:void(0)" class="login-student-request">{{request_dict['student'].name.split(" ")[0]}}</a> (id:<span>{{request_dict['request'].student_id}}</span>)
                             </td>
                             <td>  
                                 {{request_dict['date']}}
@@ -342,7 +342,7 @@
                             </td>
                             <td>  
                                 {% if request_dict['connected-tutor'] %}
-                                    {{request_dict['connected-tutor'].name.split(" ")[0]}} (id: {{request_dict['connected-tutor'].id}})
+                                    <a href="javascript:void(0)" class="login-tutor-request"> {{request_dict['connected-tutor'].name.split(" ")[0]}}</a> (id: <span> {{request_dict['connected-tutor'].id}}</span>)
                                 {% else %}
                                     None
                                 {% endif %}
