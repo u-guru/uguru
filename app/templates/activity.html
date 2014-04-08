@@ -1196,9 +1196,9 @@
 						  	{% endif %}
 						</div>
 						<div class="row">
-							{% set original_student_price = (request_dict[n.request_id]['request'].student_estimated_hour )|int %}
+							{% set original_student_price = (request_dict[n.request_id]['request'].student_estimated_hour ) %}
 								{% set most_recent_price = prices_reversed_dict[n.request_tutor_amount_hourly]  %}
-							{% if (original_student_price - most_recent_price)|abs > 1 %}
+							{% if original_student_price - most_recent_price != 0 %}
 								{% set price_has_changed = True %}
 							{% else %}
 								{% set price_has_changed = False %}
@@ -1265,7 +1265,7 @@
 							  			<div class="h4">${{request_dict[n.request_id]['request'].time_estimate * prices_reversed_dict[n.request_tutor_amount_hourly]}}<br></div>
 							  		</div>
 							  	</div>
-								{% if n.custom != 'student-accept-request' %}
+								
 								<div style="text-align:center; margin-top:10px; color:grey">
 									{% if price_has_changed %}
 									<div style="font-size:14px; margin-top:10px; color:red">
@@ -1277,7 +1277,6 @@
 									</div>
 									{% endif %}
 								</div>
-								{%endif%}
 						 	</div>
 						  </div>
 						<br>
@@ -1286,6 +1285,11 @@
   					{{tutor_dict[n].id}}
   						<div class="row-fluid col-xs-12 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6" style="text-align:center;color:red">You accepted another tutor's request for this subject. If you want to reconnect with this tutor, please message us at support@uguru.me for a quick reply.</div>
   					{% elif n.custom != 'student-accept-request' and not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
+					<div class="are-you-sure"style="display:none;text-align:center; color:red; font-size:14px" class="row"> 
+						<div style="margin-bottom:10px;"class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 col-md-6">
+							If you want to accept this request, you agree to the price the tutor has set. <br>If you do, go ahead and click 'CHOOSE THIS GURU' 
+						</div>
+					</div>
 					<div class="row">
 						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:0px; margin-bottom:5px; display:block">
 				          <a href="javascript:void(0)" class="{% if not user.customer_id %} student-request-accept-btn-credit {% else %} student-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
@@ -1460,12 +1464,12 @@
 									</div>
 									<div style="margin-top:-5px;">
 										<span style="color:grey; font-weight:100; font-size:16px">
-											($<span id="student-offer-hourly-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(prices_dict[request_dict[n.request_id]['request'].student_estimated_hour])}}{% else %}{{(n.request_tutor_amount_hourly)|round|int}}{% endif %}</span>/hr x {{request_dict[n.request_id]['request'].time_estimate}}hr)
+											($<span id="student-offer-hourly-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(prices_dict[request_dict[n.request_id]['request'].student_estimated_hour])}}{% else %}{{(n.request_tutor_amount_hourly)}}{% endif %}</span>/hr x {{request_dict[n.request_id]['request'].time_estimate}}hr)
 										</span>
 									</div>
-									{% if n.custom == 'tutor-accept-request' and (prices_dict[request_dict[n.request_id]['request'].student_estimated_hour]) != n.request_tutor_amount_hourly %}
+									{% if n.custom == 'tutor-accept-request' or n.custom=='tutor-is-matched' and (prices_dict[request_dict[n.request_id]['request'].student_estimated_hour]) != n.request_tutor_amount_hourly %}
 									<div style="font-size:14px; margin-top:10px; color:rgb(0, 159, 225)">
-											You changed the price from ${{(prices_dict[request_dict[n.request_id]['request'].student_estimated_hour])}}/hr to ${{(n.request_tutor_amount_hourly)|float|round|int}}/hr 
+											You changed the price from ${{(prices_dict[request_dict[n.request_id]['request'].student_estimated_hour])}}/hr to ${{(n.request_tutor_amount_hourly)}}/hr 
 									</div>
 									{% endif%}
 								</div>

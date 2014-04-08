@@ -270,6 +270,12 @@ $(document).ready(function() {
     });
 
     $('#feed-messages').on('click', 'a.student-request-accept-btn', function() {
+      $(this).parent().parent().siblings('div.are-you-sure').show();
+      $(this).addClass('student-request-accept-confirm-btn');
+      $(this).removeClass('student-request-accept-btn');
+    });
+
+    $('#feed-messages').on('click', 'a.student-request-accept-confirm-btn', function() {
         $(this).click(false);
         request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
     
