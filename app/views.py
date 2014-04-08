@@ -228,12 +228,14 @@ def admin():
             c_dict['student'] = c.student
             c_dict['msg-count'] = len(c.messages)
             if c_dict['msg-count']:
-                c_dict['last-message-time'] = pretty_date(c.messages[-1].write_time)
+                c_dict['last-message-time'] = c.messages[-1].write_time
             else: 
                 c_dict['last-message-time'] = None
             c_dict['skill-name'] = Skill.query.get(c.requests[0].skill_id).name
             conversations.append(c_dict)
         conversations = sorted(conversations, key=lambda c:c['last-message-time'])
+        for c_dict in conversations:
+            c_dict['last-message-time'] = pretty_date(c_dict['last-message-time'])
 
 
         for r in Rating.query.all():
