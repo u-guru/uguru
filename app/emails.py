@@ -412,7 +412,7 @@ def student_payment_receipt(user, tutor_name, amount, payment, charge_id):
 def tutor_received_transfer(user, amount, bank_name, transfer_id, last4):
     tutor_name = user.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = "$" + amount + " has been successfully transferred!"
+    email_subject = "$" + str(amount) + " has been successfully transferred!"
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
     EMAIL_TO = [user.email]
