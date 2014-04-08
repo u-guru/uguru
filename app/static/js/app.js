@@ -117,7 +117,7 @@ $(document).ready(function(){
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
         $('#ideal-price-slider').noUiSlider({
           range: {
-            'min': Number(10),
+            'min': Number(12),
             'max': Number(40)
           }
         }, true);
@@ -129,7 +129,7 @@ $(document).ready(function(){
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
         $('#ideal-price-slider').noUiSlider({
           range: {
-            'min': Number(11),
+            'min': Number(15),
             'max': Number(40)
           }
         }, true);
@@ -140,7 +140,7 @@ $(document).ready(function(){
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
         $('#ideal-price-slider').noUiSlider({
           range: {
-            'min': Number(16),
+            'min': Number(20),
             'max': Number(40)
           }
         }, true);
@@ -151,7 +151,7 @@ $(document).ready(function(){
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
         $('#ideal-price-slider').noUiSlider({
           range: {
-            'min': Number(19),
+            'min': Number(20),
             'max': Number(40)
           }
         }, true);

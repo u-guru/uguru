@@ -44,7 +44,37 @@ $(document).ready(function() {
           });
     });
 
-    $(window).unload(function() {
-      alert('Handler for .unload() called.');
+    $('.container').on('click', 'a.view-student-message', function() {
+        var user_id = $(this).siblings('span').text();
+        data = {'user-id': user_id}
+        $.ajax({
+              type: "POST",
+              contentType: 'application/json;charset=UTF-8',
+              url: '/admin-access/',
+              data: JSON.stringify(data),
+              dataType: "json",
+              success: function(result) {
+                window.location.replace('/messages/');
+              }
+          });
     });
+
+    $('.container').on('click', 'a.view-tutor-message', function() {
+        var user_id = $(this).siblings('span').text();
+        data = {'user-id': user_id}
+        $.ajax({
+              type: "POST",
+              contentType: 'application/json;charset=UTF-8',
+              url: '/admin-access/',
+              data: JSON.stringify(data),
+              dataType: "json",
+              success: function(result) {
+                window.location.replace('/messages/');
+              }
+          });
+    });
+
+    // $(window).unload(function() {
+    //   alert('Handler for .unload() called.');
+    // });
 });

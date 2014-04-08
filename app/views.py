@@ -203,6 +203,7 @@ def admin():
         total_profit = 0
         ratings_dict = {}
         payments = []
+        conversations = []
         
         notifications = sorted(Notification.query.all(), key=lambda n:n.id, reverse=True)
 
@@ -220,6 +221,16 @@ def admin():
                 transaction_dict['time'] = pretty_date(datetime.fromtimestamp(transfer.created))
                 transactions.append(transaction_dict)
 
+        for c in Conversation.query.all():
+            c_dict = {}
+            c_dict['conversation'] = c
+            c_dict['tutor'] = c.guru
+            c_dict['student'] = c.student
+            c_dict['msg-count'] = len(c.messages)
+            c_dict['last-message-time'] = pretty_date(c.messages[-1].write_time)
+            c_dict['skill-name'] = Skill.query.get(c.requests[0].skill_id).name
+            conversations.append(c_dict)
+        conversations = sorted(conversations, key=lambda c:c['last-message-time'])
 
 
         for r in Rating.query.all():
@@ -302,7 +313,7 @@ def admin():
             skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, \
             all_requests = all_requests, skills_counter = skills_counter, notifications=notifications,\
             payments=payments, total_profit=total_profit, environment = get_environment(), ratings=Rating.query.all(),\
-            ratings_dict=ratings_dict, transactions=transactions)
+            ratings_dict=ratings_dict, transactions=transactions, conversations=conversations)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
