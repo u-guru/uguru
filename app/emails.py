@@ -224,7 +224,7 @@ def student_needs_help_html(student_name, class_name, request):
     Time Estimate: """ + str(request.time_estimate) + """ hours<br>
     # of Students That Need Help: """ + str(request.num_students) + """<br>
     <br>
-    Sounds good so far? <a href="http://beta.uguru.me"> Log in </a> to see more details and accept the request!
+    Sounds good so far? <a href="http://beta.uguru.me"> Log in </a> to see more details. You can either accept the request, or change the hourly price to an amount you think is fair!
     <br>
     <br>
     Tip: take 3 minutes to update your profile so students feel more comfortable picking you as their Guru.    
@@ -242,7 +242,7 @@ def student_needs_help_text(student_name, class_name, request):
     """Preferred Location: """ + request.location+ """\n""" + \
     """Time Estimate: """ + str(request.time_estimate) + """ hours\n""" +\
     """# of Students That Need Help: """ + str(request.num_students) + """ hours\n\n""" +\
-    """Sound good so far? Login at http://uguru.me to see more details and accept the request!\n\n""" +\
+    """Sound good so far? Login at http://uguru.me to see more details. You can either accept the request, or change the hourly price to an amount you think is fair!!\n\n""" +\
     """Tip: take 3 minutes to update your profile so students feel more comfortable picking you as their Guru.\n\n"""+\
     """Samir\nCo-founder"""
 
@@ -366,7 +366,7 @@ def send_message_alert_html(receiver_name, sender_name):
     Login to <a href="http://uguru.me"> Uguru </a> and reply to """ + sender_name + """ now through our <a href="http://uguru.me/messages">messages</a>.     
     <br>
     <br>
-    If you have any questions or concerns, please reply directly to this email, or give us a phonecall! 
+    If you have any questions or concerns, please reply directly to this email, or give us a phonecall! \\
     <br>
     <br>
     Samir<br>
@@ -511,6 +511,7 @@ def tutor_is_matched_text(tutor_name):
     can access the web to your session.\n\n""" +\
     """3. Have your student verify the amount, and input his/her 1-time verification code as proof of approval. The amount will be added to your balance,
     and you can cash out at any time!\n\n""" +\
+    """4. Important: Remind your student to rate you after the session. The student can do this by logging in after the payment has been submitted. These ratings will help you promote yourself to other students!\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def tutor_is_matched_html(tutor_name):
@@ -526,6 +527,9 @@ def tutor_is_matched_html(tutor_name):
     <br>
     3. Have your student verify the amount, and input his/her 1-time verification code as proof of approval. The amount will be added to your balance,
     and you can cash out at any time!
+    <br>
+    <br>
+    4. <b>Important</b>: Remind your student to rate you after the session. The student can do this by logging in after the payment has been submitted. These ratings will help you promote yourself to other students!
     <br>
     <br>
     If you have any questions or concerns, please reply directly to this email, or give us a phonecall! 

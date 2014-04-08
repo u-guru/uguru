@@ -12,7 +12,7 @@
 		<div class="page-title">
 		  <div class="row-fluid" style="width:100%;text-align:center">
 		      <div class="col-xs-12 col-md-12 col-sm-12" style="text-align:center">
-		        <h4 style="color:white;width:100%;font-weight:500">PLEASE RATE 
+		        <h4 style="color:white;width:100%;font-weight:500">PLEASE RATE YOUR EXPERIENCE WITH
 		        	{% if user.skills %}
 		        	<span id="student-name">{{pending_ratings_dict['student'].name.split(" ")[0]|upper}}</span>
 		        	{% else %}
@@ -316,27 +316,6 @@
                     <p style="margin-left:5px; font-size:14px; margin-top:3px; font-weight:700"class="text-left"><span style="font-size:14px;color:rgb(0, 159, 225)" name="estimate" id="payment"></span> hours</p>
 				</div>
 			</div>
-			<!-- <div style="text-align:center"class="row">
-				<h4 style="margin-top:0px"> Agreed Hourly Rate </h4>
-				<div id="agreed-rates">
-					<h3 class="agreed-hourly-rate" style="color:grey; margin-top:0px; display:block"> ${{address_book[first_contact]['request'].connected_tutor_hourly}}</h3>
-					
-					{% for key in keys[1:] %}
-						<h3 class="agreed-hourly-rate" style="color:#69bf69;margin-top:0px; display:none"> 
-							${{address_book[key]['request'].connected_tutor_hourly}}
-						</h3>
-					{% endfor %}
-				</div>
-			</div> -->
-			<!-- <div style="text-align:center"class="row">
-				<h4 style="margin-top:0px"> Your Total Earnings </h4>
-				<div id="total-earnings">
-					<h1 class="final-earning-amount"style="font-weight:700; color:#69bf69; margin-top:0px; display:block"> ${{address_book[first_contact]['request'].connected_tutor_hourly}}</h1>
-					{% for key in keys[1:] %}
-					<h1 class="final-earning-amount" style="font-weight:700;color:#69bf69;margin-top:0px; display:none">${{address_book[key]['request'].connected_tutor_hourly}}</h1>
-					{% endfor %}
-				</div>
-			</div> -->
 			<div style="text-align:center"class="row">
 				<h4 style="margin-top:0px"> <b>Secret Animal Code <b></h4>
 				<div style="display:none;font-size:14px;color:red" id="secret-animal-code-alert">
@@ -361,7 +340,7 @@
 		<div class="page-title">
 		  <div class="row-fluid" style="width:100%;text-align:center">
 		      <div class="col-xs-12 col-md-12 col-sm-12" style="text-align:center">
-		        <h4 style="color:white;width:100%;font-weight:500">PLEASE RATE 
+		        <h4 style="color:white;width:100%;font-weight:500">PLEASE RATE YOUR EXPERIENCE WITH
 		        	<span id="student-name"></span>
 		        </h4>
 		    </div>
@@ -407,47 +386,6 @@
 			</div>
 		</div>
 	</div>
-<!-- <div id="rating-form-tutor" style="display:none">
-	<div class="page-title">
-	  <div class="row" style="width:100%;text-align:center">
-	      <div class="col-xs-1 col-md-offset-1 col-md-1">
-	        <a href="/" style="text-decoration:none"> 
-	          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
-	        </a>
-	      </div>
-	      <div class="col-xs-10 col-md-8" style="text-align:center">
-	        <h4 style="color:white;width:100%;font-weight:500">PLEASE RATE <span id="student-name"></span></h4>
-	    </div>
-	  </div>
-	</div>
-	<div class="container-fluid">
-		<br>
-		<div class="row">
-		  	<div class="user-profile" style="text-align:center">
-		  		<img id="student-profile-photo" src="{{user.profile_url}}" class="user-photo">
-		  	</div>
-		</div>
-		<div style="text-align:center" class="row">
-			<div id="tutor-rating-stars" class="rating">
-				<span>☆</span>
-				<span>☆</span>
-				<span>☆</span>
-				<span>☆</span>
-				<span>☆</span>
-			</div>	
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-xs-12 col-md-4 col-md-offset-4">
-				<textarea name="description" placeholder="Additional details here..."id="student-rating-description" class="form-control" rows="3"></textarea>
-			</div>
-		</div>
-	<a href="javascript:void(0)" id="submit-student-rating">
-		<div class="btn-request">SUBMIT
-		</div>
-	</a>
-</div>
-</div> -->
 {% endif %}
 
 <div style="display:none" id="tutor-request">
@@ -1287,7 +1225,7 @@
   					{% elif n.custom != 'student-accept-request' and not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
 					<div class="are-you-sure"style="display:none;text-align:center; color:red; font-size:14px" class="row"> 
 						<div style="margin-bottom:10px;"class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 col-md-6">
-							If you want to accept this request, you agree to the price the tutor has set. <br>If you do, go ahead and click 'CHOOSE THIS GURU' 
+							If you want to accept this request, you agree to this. <br>If you do, go ahead and click 'CHOOSE THIS GURU' 
 						</div>
 					</div>
 					<div class="row">

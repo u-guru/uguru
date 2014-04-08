@@ -270,29 +270,25 @@ $(document).ready(function() {
     });
 
     $('#feed-messages').on('click', 'a.student-request-accept-btn', function() {
-      $(this).parent().parent().siblings('div.are-you-sure').show();
-      $(this).addClass('student-request-accept-confirm-btn');
-      $(this).removeClass('student-request-accept-btn');
-    });
-
-    $('#feed-messages').on('click', 'a.student-request-accept-confirm-btn', function() {
-        $(this).click(false);
-        request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
-    
-        var data = {
-            'student-accept': request_num, 
-            'notification-id': last_clicked_notif_index,
-        };
-        $.ajax({
-            type: "POST",
-            contentType: 'application/json;charset=UTF-8',
-            url: '/update-request/' ,
-            data: JSON.stringify(data),
-            dataType: "json",
-            success: function(result) {         
-                window.location.replace('/activity/');
-            }
-        }); 
+        if (confirm('If you want to accept this request, you agree to this price. If so, click OK!')) {
+          $(this).click(false);
+          request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
+      
+          var data = {
+              'student-accept': request_num, 
+              'notification-id': last_clicked_notif_index,
+          };
+          $.ajax({
+              type: "POST",
+              contentType: 'application/json;charset=UTF-8',
+              url: '/update-request/' ,
+              data: JSON.stringify(data),
+              dataType: "json",
+              success: function(result) {         
+                  window.location.replace('/activity/');
+              }
+          }); 
+        }
     });
 
     
@@ -374,7 +370,10 @@ $(document).ready(function() {
             data: JSON.stringify(data),
             dataType: "json",
             success: function(result) {         
-              window.location.replace('/activity/');
+              $('#rating-form-tutor').hide();
+              $('#bootstrap-success').children('.alert').text('Thank you for submitting your rating!')
+              $('#bootstrap-success').show();
+              $('#activity').show();
             }
         }); 
     });
