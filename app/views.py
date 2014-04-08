@@ -192,7 +192,10 @@ def add_credit():
 @app.route('/admin/')
 def admin():
     if session.get('admin'):
-        users = User.query.order_by(desc(User.id)).all()
+        users = sorted(User.query.all(), key=lambda u:u.last_active, reverse=True)
+        users_last_active = {}
+        for u in users:
+            users_last_active[u] = pretty_date(u.last_active)
         pretty_dates = {}
         skills_dict = {}
         tutor_count = 0
@@ -319,7 +322,7 @@ def admin():
             skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, \
             all_requests = all_requests, skills_counter = skills_counter, notifications=notifications,\
             payments=payments, total_profit=total_profit, environment = get_environment(), ratings=Rating.query.all(),\
-            ratings_dict=ratings_dict, transactions=transactions, conversations=conversations)
+            ratings_dict=ratings_dict, transactions=transactions, conversations=conversations, users_last_active=users_last_active)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
