@@ -66,7 +66,7 @@
 					{% endif %}
 				</div>
 			</div>
-			<div id="launch-profile-div" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:10px; padding-right:10px; margin-top:20px; margin-bottom:20px; display:block">
+			<div id="launch-profile-div" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:10px; padding-right:10px; margin-top:20px; margin-bottom:0px; display:block">
 				{% if user.skills %}
 				<a href="javascript:void(0)" id="submit-student-rating">
 				{% else %}
@@ -76,6 +76,15 @@
 					</div>
 				</a>
 			</div>
+			{% if user.skills %}
+			<div class="row" style="text-align:center;">
+				<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4">
+					<h6 style="color:red">  
+						<b>Be sure to remind your student to rate you by logging in to their account. These ratings help promote yourself when students see your profile!</b>
+					</h6>
+				</div>
+			</div>
+			{% endif %}
 		</div>
 	</div>
 {% endif %}
@@ -378,12 +387,21 @@
 					<textarea name="description" placeholder="How would you describe your experience?"id="student-rating-description" class="form-control" rows="3"></textarea>
 				</div>
 			</div>
-			<div id="launch-profile-div" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:20px; margin-bottom:20px; display:block">
+			<div id="launch-profile-div" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:20px; margin-bottom:0px; display:block">
 				<a href="javascript:void(0)" id="submit-student-rating">
 					<div class="tutor-submit-next">SUBMIT
 					</div>
 				</a>
 			</div>
+			{% if user.skills %}
+			<div class="row" style="text-align:center;">
+				<div style="margin-top:-10px"class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4">
+					<h6 style="color:red">  
+						<b>Be sure to remind your student to rate you by logging into their account. These ratings help promote yourself when students see your profile!</b>
+					</h6>
+				</div>
+			</div>
+			{% endif %}
 		</div>
 	</div>
 {% endif %}
