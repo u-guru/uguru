@@ -230,7 +230,7 @@ def admin():
             if c_dict['msg-count']:
                 c_dict['last-message-time'] = c.messages[-1].write_time
             else: 
-                c_dict['last-message-time'] = None
+                c_dict['last-message-time'] = c.requests[0].time_created
             c_dict['skill-name'] = Skill.query.get(c.requests[0].skill_id).name
             conversations.append(c_dict)
         conversations = sorted(conversations, key=lambda c:c['last-message-time'])
