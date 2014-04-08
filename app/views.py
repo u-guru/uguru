@@ -1254,7 +1254,7 @@ def activity():
     return render_template('activity.html', key=stripe_keys['publishable_key'], address_book=address_book, \
         logged_in=session.get('user_id'), user=user, request_dict = request_dict, payment_dict = payment_dict,\
         pretty_dates = pretty_dates, urgency_dict=urgency_dict, tutor_dict=tutor_dict, pending_ratings_dict=pending_ratings_dict,\
-        environment = get_environment(), prices_dict=prices_dict, prices_reversed_dict=prices_reversed_dict)
+        environment = get_environment(), prices_dict=prices_dict, prices_reversed_dict=prices_reversed_dict, session=session)
 
 @app.route('/tutor_offer/')
 def tutor_offer():
@@ -1272,7 +1272,7 @@ def messages():
     for conversation in user.mailbox.conversations:
         for message in conversation.messages:
             pretty_dates[message.id] = pretty_date(message.write_time)
-    return render_template('messages.html', user=user, pretty_dates=pretty_dates, environment = get_environment())
+    return render_template('messages.html', user=user, pretty_dates=pretty_dates, environment = get_environment(), session=session)
 
 @app.route('/student_request/')
 def student_request():
@@ -1330,7 +1330,7 @@ def settings():
     from app.static.data.short_variations import short_variations_dict
     return render_template('settings.html', logged_in=session.get('user_id'), user=user, \
         variations=short_variations_dict, not_launched_flag = not_launched_flag, \
-        environment = get_environment())
+        environment = get_environment(), session=session)
 
 # @app.route('/tutor_accept/')
 # def tutor_accept():

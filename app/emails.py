@@ -843,7 +843,7 @@ def welcome_uguru_tutor_html(user_name):
     Hi """ + user_name.split(' ')[0] + """,
     <br>
     <br>
-    This is Samir, Co-Founder at <a href="http://uguru.me">Uguru</a>. First of all, congrats, you made it! First of all, congrats, you made it! Our Guru selection process 
+    This is Samir, Co-Founder at <a href="http://uguru.me">Uguru</a>. First of all, congrats, you made it! Our Guru selection process 
     is competitive only to make sure that you can provide infinite wisdom and sage advice to our students.
     <br>
     <br>

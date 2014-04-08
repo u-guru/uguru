@@ -38,7 +38,7 @@
       <nav class="navbar"margin-right:25px;>
         <div class="container-fluid">
           <div class="navbar-header">
-              <a href="../../" class="navbar-brand" style="font-family: 'grand hotel', cursive; margin-left:5px; font-size: 50px">uguru.me</a>
+              <a href="{% if session.get('admin') %} /logout/ {% else %}../../{%endif%}" class="navbar-brand" style="font-family: 'grand hotel', cursive; margin-left:5px; font-size: 50px">uguru.me</a>
           </div>
           {% if user %}
           <div id="menu-icons" style="float:right">
