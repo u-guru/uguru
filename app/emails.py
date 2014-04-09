@@ -437,6 +437,67 @@ def tutor_received_transfer(user, amount, bank_name, transfer_id, last4):
     mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()    
 
+def student_canceled_connection(student, tutor, reason):
+    tutor_name = tutor.name.split(" ")[0]
+    student_name = student.name.split(" ")[0]
+    email_from = "Samir from Uguru <samir@uguru.me>"
+    email_subject = "We're Sorry, " + student_name + " has canceled the request."
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+    EMAIL_TO = [tutor.email]
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = email_subject
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = email_from
+
+    reason_dict = [
+        'you were not able to make the time they wanted to meet',
+        'there were other tutors that had more experience',
+        'your price was out of their budget',
+        'the student found help somewhere else',
+        'of reasons the student was not willing to specify, unfortunately.'
+        ]
+
+    text = student_canceled_connection_text(student_name, tutor_name, reason_dict[reason])
+    html = student_canceled_connection_html(student_name, tutor_name, reason_dict[reason])
+    
+    part1 = MIMEText(text, 'plain', 'utf-8')
+    part2 = MIMEText(html, 'html', 'utf-8')
+
+    msg.attach(part1)
+    msg.attach(part2)
+    
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
+    mail.quit()
+
+def student_canceled_connection_html(student_name, tutor_name, reason):
+    return """
+    Hi """ + tutor_name + """, 
+    <br>
+    <br>
+    We regret to inform you that """ + student_name + """ has canceled the current connection with you 
+    because """ + reason +""".
+    <br>
+    <br>
+    We understand this is not your fault and you're still awesome! 
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
+
+def student_canceled_connection_text(student_name, tutor_name, reason):
+    return """Hi """ + student_name + """,\n\n""" +\
+    """We regret to infrom you that """ + student_name + """ has canceled the current connection with you because """ + reason + """.\n\n""" +\
+    """We understand this is not your fault and you're still awesome! \n\n""" +\
+    """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
+
 def tutor_received_transfer_html(amount, bank_name, transfer_id, last4):
     return """
     <br>
@@ -456,8 +517,7 @@ def tutor_received_transfer_html(amount, bank_name, transfer_id, last4):
     """
 
 def tutor_received_transfer_text(amount, bank_name, transfer_id, last4):
-    return """\n:""" + \
-    """Receipt ID: """+  transfer_id +"""\n""" +\
+    return """Receipt ID: """+  transfer_id +"""\n""" +\
     """Bank Name: """+  bank_name +"""\n""" +\
     """Account Number: ****-****-****-"""+ str(last4) +"""\n""" +\
     """Total Amount: $"""+ str(amount) +"""\n\n""" +\
@@ -597,17 +657,17 @@ def tutor_is_matched_html(tutor_name):
     """
 
 
-def student_canceled_request(student, course_name, tutor):
-    email_subject = "We're sorry!"
-    msg_contents = student.name.split(" ")[0] + "'s request for " + course_name.upper() + \
-        " is no longer valid."
-    general_notification_email(tutor, msg_contents, email_subject)
+# def student_canceled_request(student, course_name, tutor):
+#     email_subject = "We're sorry!"
+#     msg_contents = student.name.split(" ")[0] + "'s request for " + course_name.upper() + \
+#         " is no longer valid."
+#     general_notification_email(tutor, msg_contents, email_subject)
 
-def student_chose_another_tutor(student, course, tutor):
-    email_subject = "We're sorry!"
-    msg_contents = student.name.split(" ")[0] + " chose another " + course.upper() + \
-        " tutor."
-    general_notification_email(tutor, msg_contents, email_subject)
+# def student_chose_another_tutor(student, course, tutor):
+#     email_subject = "We're sorry!"
+#     msg_contents = student.name.split(" ")[0] + " chose another " + course.upper() + \
+#         " tutor."
+#     general_notification_email(tutor, msg_contents, email_subject)
 
 def student_rating_request(user, tutor_name):
     email_subject = "Please rate " + tutor_name

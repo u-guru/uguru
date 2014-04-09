@@ -212,6 +212,7 @@ def admin():
         all_requests = []
         transactions = []
         total_profit = 0
+        total_revenue = 0
         ratings_dict = {}
         payments = []
         conversations = []
@@ -302,6 +303,7 @@ def admin():
                     request_dict['payment'] = round(student_charge - tutor_paid - stripe_fees, 2)
                     payment_dict['profit'] = request_dict['payment']
                     total_profit += payment_dict['profit']
+                    total_revenue += student_charge
                     payments.append(payment_dict)
                 if student and student.pending_ratings:
                     request_dict['pending-ratings'] += 1
@@ -330,7 +332,8 @@ def admin():
             skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, \
             all_requests = all_requests, skills_counter = skills_counter, notifications=notifications,\
             payments=payments, total_profit=total_profit, environment = get_environment(), ratings=Rating.query.all(),\
-            ratings_dict=ratings_dict, transactions=transactions, conversations=conversations, users_last_active=users_last_active)
+            ratings_dict=ratings_dict, transactions=transactions, conversations=conversations, users_last_active=users_last_active,\
+            total_revenue = total_revenue)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
@@ -689,7 +692,7 @@ def update_requests():
             # student_notification.feed_message_subtitle = None
             # student_notification.time_created = datetime.now()
 
-            from emails import student_canceled_request
+            # from emails import student_canceled_request
             for tutor in _request.committed_tutors:
                 for n in tutor.notifications:
                     if n.request_id == _request.id:
@@ -697,14 +700,56 @@ def update_requests():
                 tutor.feed_notif += 1
                 tutor_notification.time_read = None
                 tutor_notification.feed_message_subtitle = '<b>Click here</b> to see the status of your accepted request'
-                student_canceled_request(user, student_notification.skill_name, tutor)
-                print "Email sent to " + tutor.name
+                # student_canceled_request(user, student_notification.skill_name, tutor)
+                # print "Email sent to " + tutor.name
 
             try:
                 db_session.commit()
             except:
                 db_session.rollback()
                 raise             
+
+        if 'cancel-connected-request' in ajax_json:
+            notif_num = ajax_json.get('notif-num')
+            reason = ajax_json.get('radio-index')
+            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
+            student_notification = user_notifications[notif_num]
+            request_id = student_notification.request_id
+            _request = Request.query.get(request_id)
+            former_tutor = User.query.get(_request.connected_tutor_id)
+            _request.connected_tutor_id = None
+            user.outgoing_requests.append(_request)
+
+            #Find the matched notification
+            for n in user.notifications[::-1]:
+                if n.custom == 'student-accept-request' and n.request_id == _request.id:
+                    db_session.delete(n)
+                    break;
+
+            #Delete the conversation
+            for c in user.mailbox.conversations:
+                if c.guru == former_tutor and c.student == user:
+                    db_session.delete(c)
+
+            #Delete the tutor's you've been matched notification + conversation
+            for n in former_tutor.notifications[::-1]:
+                if n.custom == 'tutor-is-matched' and n.request_id == _request.id:
+                    db_session.delete(n)
+
+            #Email the tutor
+            tutor_name = former_tutor.name.split(" ")[0]
+            student_name = user.name.split(" ")[0]
+            from app.emails import student_canceled_connection
+            student_canceled_connection(user, former_tutor, reason)
+            flash('Your connection has been successfully canceled')
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise             
+
+            
 
         if 'student-accept' in ajax_json:
             notification_id = ajax_json.get('notification-id')
@@ -773,7 +818,7 @@ def update_requests():
             student.msg_notif += 1
 
             #let other committed tutors now that they have been rejected
-            from emails import student_chose_another_tutor
+            # from emails import student_chose_another_tutor
             for _tutor in r.committed_tutors:
                 if r.connected_tutor_id != tutor.id and r.connected_tutor_id != user.id:
                     for n in _tutor.notifications:
@@ -783,7 +828,7 @@ def update_requests():
                     tutor_notification.time_read = None
                     tutor_notification.feed_message_subtitle = '<span style="color:red">This request has been canceled</span>'
                     tutor_notification.time_created = datetime.now()
-                    student_chose_another_tutor(user, current_notification.skill_name, _tutor)
+                    # student_chose_another_tutor(user, current_notification.skill_name, _tutor)
                     print "Email sent to " + tutor.email
             
             try:

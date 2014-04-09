@@ -402,6 +402,7 @@ $(document).ready(function() {
             }
         }); 
     });
+
     
 
     var numbers = new Bloodhound({
@@ -642,5 +643,40 @@ $(document).ready(function() {
         });      
     }
   });
+
+    $('#feed-messages').on('click', 'a.cancel-request-next', function() {
+        $(this).parent().parent().siblings('.cancel-request').hide();
+        $(this).parent().parent().siblings('.cancel-confirm').show();
+        $(this).children().children('p').text('Submit');
+        $(this).addClass('cancel-request-submit');
+        $(this).removeClass('cancel-request-next');
+    });
+
+    $('#feed-messages').on('click', 'a.cancel-request-submit', function() {
+        radio_class_name = $(this).parent().parent().siblings("#radio-group").children(':last').children().children('input').attr('class');
+        radio_alert_div = $(this).parent().parent().siblings().children('.radio-alert');
+        if (!$('.' + radio_class_name + ':checked').length > 0) {
+          radio_alert_div.show();
+          return false;
+        } else {
+          radio_alert_div.hide();
+        }
+        radio_index = $('.' + radio_class_name + ':checked').parent().parent().index() - 2
+        data = {
+          'cancel-connected-request': true,
+          'notif-num': last_clicked_notif_index,
+          'radio-index':radio_index
+        }
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/update-request/' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function(result) {         
+                window.location.replace('/activity/');
+            }
+        });      
+    })
 
 });
