@@ -52,7 +52,7 @@ def send_connection_email(student, tutor, request):
 def welcome_uguru_student(user):
     user_first_name = user.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = "Experienced Gurus Are Ready to Help Whenever You Feel Stuck"
+    email_subject = "Our Gurus Are Ready to Help Anytime!"
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
 
@@ -80,7 +80,7 @@ def welcome_uguru_student(user):
 def welcome_uguru_tutor(user):
     user_first_name = user.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = "Congrats " + user_first_name + ", you did something great! See why"
+    email_subject = "You Are Now a Guru!"
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
 
@@ -136,7 +136,7 @@ def general_notification_email(user, msg_contents, email_subject):
 def student_needs_help(student, tutor, course_name, request):
     user_first_name = student.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = user_first_name + " Needs Your Help in " + course_name.upper() +"! Accept Now" 
+    email_subject = "A Student Needs Your Help!" 
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
     EMAIL_TO = [tutor.email]
@@ -215,6 +215,8 @@ def generate_new_password_html(user_name, new_password):
 
 
 def student_needs_help_html(student_name, class_name, request):
+    from app.static.data.prices import prices_dict
+    tutor_rate = prices_dict[request.student_estimated_hour]
     return """<b>
     """ + student_name + """ needs help with """ + class_name + """.</b> Here's some info:
     <br>
@@ -222,9 +224,12 @@ def student_needs_help_html(student_name, class_name, request):
     Availability: """ + request.available_time + """<br>
     Preferred Location: """ + request.location+ """<br>
     Time Estimate: """ + str(request.time_estimate) + """ hours<br>
-    # of Students That Need Help: """ + str(request.num_students) + """<br>
+    # of Students: """ + str(request.num_students) + """<br>
+    You can make: $""" + str(request.time_estimate*tutor_rate) +""" ($"""+str(tutor_rate) +"""/hr)<br>
+    (You can also propose a different price!)
     <br>
-    Sounds good so far? <a href="http://beta.uguru.me"> Log in </a> to see more details. You can either accept the request, or change the hourly price to an amount you think is fair!
+    <br>
+    <a href="http://beta.uguru.me"> Log in </a> to accept """ + student_name + """'s request on your feed page, or offer a different price.
     <br>
     <br>
     Tip: take 3 minutes to update your profile so students feel more comfortable picking you as their Guru.    
@@ -237,12 +242,16 @@ def student_needs_help_html(student_name, class_name, request):
     """
 
 def student_needs_help_text(student_name, class_name, request):
+    from app.static.data.prices import prices_dict
+    tutor_rate = prices_dict[request.student_estimated_hour]
     return student_name + """ needs help with """ + class_name + """. Here's some info: \n\n""" + \
     """Availability: """ + request.available_time + """\n""" +\
     """Preferred Location: """ + request.location+ """\n""" + \
     """Time Estimate: """ + str(request.time_estimate) + """ hours\n""" +\
-    """# of Students That Need Help: """ + str(request.num_students) + """ hours\n\n""" +\
-    """Sound good so far? Login at http://uguru.me to see more details. You can either accept the request, or change the hourly price to an amount you think is fair!!\n\n""" +\
+    """# of Students: """ + str(request.num_students) + """\n\n""" +\
+    """You can make: $""" + str(request.time_estimate * tutor_rate) + """ ($"""+ str(tutor_rate) +"""/hr)\n""" + \
+    """(You can also propose a different price!)\n""" +\
+    """Login at http://uguru.me to see more details. You can either accept the request on the feed page, or offer a different price.\n\n""" +\
     """Tip: take 3 minutes to update your profile so students feel more comfortable picking you as their Guru.\n\n"""+\
     """Samir\nCo-founder"""
 
@@ -250,7 +259,7 @@ def tutor_wants_to_help(student, tutor, course_name):
     user_first_name = student.name.split(" ")[0]
     tutor_name = tutor.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = "A Guru Accepted Your " + course_name +" Request! Check Now" 
+    email_subject = "A Guru Accepted Your Request! Check Now" 
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
     EMAIL_TO = [student.email]
@@ -276,7 +285,7 @@ def tutor_wants_to_help(student, tutor, course_name):
     mail.quit()
 
 def tutor_wants_to_help_text(tutor_name, course_name):
-    return tutor_name + """ needs help with """ + course_name + """. \n\n""" + \
+    return tutor_name + """ accepted your request for """ + course_name + """. \n\n""" + \
     """Login to http://uguru.me to see""" + tutor_name + """'s profile and accept the offer, or if you're not in a rush, wait for a couple more Gurus to accept and choose the one you like best\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
@@ -285,8 +294,7 @@ def tutor_wants_to_help_html(tutor_name, course_name):
     """ + tutor_name + """ accepted your request for """ + course_name + """.
     <br>
     <br>
-    <a href="http://uguru.me"> Log in </a> to see """ + tutor_name + """'s profile and accept the offer, or if 
-    you're not in a rush, wait for a couple more Gurus to accept and choose the one you like best!
+    <a href="http://uguru.me">Log in</a> to see """ + tutor_name + """'s profile and accept the offer, or wait for more Gurus to accept!
     <br>
     <br>
     Samir<br>
@@ -299,7 +307,7 @@ def tutor_wants_to_help_html(tutor_name, course_name):
 def student_is_matched(student, tutor, request_code):
     tutor_name = tutor.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = "You Have Been Matched with " + tutor_name  + "! Now Follow These Steps"
+    email_subject = "You Have Been Matched with " + tutor_name  + "!"
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
     EMAIL_TO = [student.email]
@@ -366,7 +374,7 @@ def send_message_alert_html(receiver_name, sender_name):
     Login to <a href="http://uguru.me"> Uguru </a> and reply to """ + sender_name + """ now through our <a href="http://uguru.me/messages">messages</a>.     
     <br>
     <br>
-    If you have any questions or concerns, please reply directly to this email, or give us a phonecall! \\
+    If you have any questions or concerns, please reply directly to this email, or give us a phonecall! 
     <br>
     <br>
     Samir<br>
@@ -375,10 +383,10 @@ def send_message_alert_html(receiver_name, sender_name):
     (813) 500 - 9853
     """
 
-def student_payment_receipt(user, tutor_name, amount, payment, charge_id):
+def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_name):
     student_name = user.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = "Here's Your Receipt from Your Session with " + tutor_name
+    email_subject = "Your " + skill_name + " Session with " + tutor_name
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
     EMAIL_TO = [user.email]
@@ -393,9 +401,10 @@ def student_payment_receipt(user, tutor_name, amount, payment, charge_id):
     prices_reversed_dict = {v:k for k, v in prices_dict.items()}
     hourly_price = prices_reversed_dict[payment.tutor_rate]
     hours = payment.time_amount
+    date = payment.time_created.strftime("%B %d, %Y at %I:%M%p")
 
-    text = student_payment_receipt_text(charge_id, card_last4, tutor_name, hourly_price, hours, amount)
-    html = student_payment_receipt_html(charge_id, card_last4, tutor_name, hourly_price, hours, amount)
+    text = student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
+    html = student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
     
     part1 = MIMEText(text, 'plain', 'utf-8')
     part2 = MIMEText(html, 'html', 'utf-8')
@@ -409,7 +418,42 @@ def student_payment_receipt(user, tutor_name, amount, payment, charge_id):
     mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()
 
-def tutor_received_transfer(user, amount, bank_name, transfer_id, last4):
+def tutor_payment_receipt(user, tutor, amount, payment, charge_id, skill_name):
+    student_name = user.name.split(" ")[0]
+    email_from = "Samir from Uguru <samir@uguru.me>"
+    email_subject = "Your "  + skill_name + " Session with " + student_name
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+    EMAIL_TO = [tutor.email]
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = email_subject
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = email_from
+
+    card_last4 = user.customer_last4
+    from app.static.data.prices import prices_dict
+    hourly_price = payment.tutor_rate
+    hours = payment.time_amount
+    amount = hours * hourly_price
+    date = payment.time_created.strftime("%B %d, %Y at %I:%M%p")
+
+    text = tutor_payment_receipt_text(date, charge_id, student_name, hourly_price, hours, amount)
+    html = tutor_payment_receipt_html(date, charge_id, student_name, hourly_price, hours, amount)
+    
+    part1 = MIMEText(text, 'plain', 'utf-8')
+    part2 = MIMEText(html, 'html', 'utf-8')
+
+    msg.attach(part1)
+    msg.attach(part2)
+    
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
+    mail.quit()
+
+def tutor_received_transfer(user, amount, bank_name, transfer_id, last4, date):
     tutor_name = user.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
     email_subject = "$" + str(amount) + " has been successfully transferred!"
@@ -421,9 +465,10 @@ def tutor_received_transfer(user, amount, bank_name, transfer_id, last4):
     msg['Subject'] = email_subject
     msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
     msg['From'] = email_from
+    date = date.strftime("%B %d, %Y at %I:%M%p")
 
-    text = tutor_received_transfer_text(amount, bank_name, transfer_id, last4)
-    html = tutor_received_transfer_html(amount, bank_name, transfer_id, last4)
+    text = tutor_received_transfer_text(amount, bank_name, transfer_id, last4, date)
+    html = tutor_received_transfer_html(amount, bank_name, transfer_id, last4, date)
     
     part1 = MIMEText(text, 'plain', 'utf-8')
     part2 = MIMEText(html, 'html', 'utf-8')
@@ -455,8 +500,8 @@ def student_canceled_connection(student, tutor, reason):
         'you were not able to make the time they wanted to meet',
         'there were other tutors that had more experience',
         'your price was out of their budget',
-        'the student found help somewhere else',
-        'of reasons the student was not willing to specify, unfortunately.'
+        student_name + ' found help somewhere else',
+        'of reasons that ' + student_name +' was not willing to specify, unfortunately.'
         ]
 
     text = student_canceled_connection_text(student_name, tutor_name, reason_dict[reason])
@@ -498,13 +543,17 @@ def student_canceled_connection_text(student_name, tutor_name, reason):
     """We understand this is not your fault and you're still awesome! \n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
-def tutor_received_transfer_html(amount, bank_name, transfer_id, last4):
+def tutor_received_transfer_html(amount, bank_name, transfer_id, last4, date):
     return """
     <br>
-    Receipt ID: """+  transfer_id +"""<br>
+    Transfer ID: """+  transfer_id +"""<br>
+    Time: """+  date +"""<br>
     Bank Name: """+  bank_name +"""<br>
     Account Number: ****-****-****-"""+  str(last4) +"""<br>
     Total Amount: $""" + str(amount) + """
+    <br>
+    <br>
+    <i>Your balance is being transferred to your account by <a href="http://stripe.com"> Stripe</a>, a secure third-party payment platform</i>
     <br>
     <br>
     If the above information is incorrect, please contact us by directly replying to this email.
@@ -516,29 +565,71 @@ def tutor_received_transfer_html(amount, bank_name, transfer_id, last4):
     (813) 500 - 9853
     """
 
-def tutor_received_transfer_text(amount, bank_name, transfer_id, last4):
-    return """Receipt ID: """+  transfer_id +"""\n""" +\
+def tutor_received_transfer_text(amount, bank_name, transfer_id, last4,date):
+    return """Transfer ID: """+  transfer_id +"""\n""" +\
+    """Time: """+  date +"""\n""" +\
     """Bank Name: """+  bank_name +"""\n""" +\
     """Account Number: ****-****-****-"""+ str(last4) +"""\n""" +\
     """Total Amount: $"""+ str(amount) +"""\n\n""" +\
     """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
+    """Your balance is being transferred to your account by Stripe, a secure third-party payment platform\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
-def student_payment_receipt_text(charge_id, card_last4, tutor_name, hourly_price, hours, amount):
-    return """\n:""" + \
+def student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount):
+    return """\n""" + \
     """Receipt ID: """+  charge_id +"""\n""" +\
+    """Time: """+  date +"""\n""" +\
     """Card Number: ****-****-****-"""+ card_last4 +"""\n""" +\
     """Guru Name: """+ tutor_name +"""\n""" +\
     """Hourly Price: $"""+ str(hourly_price) +""" (Including Uguru fees)\n""" +\
     """Hours: """+ str(hours) +""" hours\n""" +\
     """Total Amount: $"""+ str(amount) +"""\n\n""" +\
+    """Your payment is handled by Stripe, a secure third-party payment platform\n\n""" + \
+    """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
+    """How helpful was """ + tutor_name + """? Rate and review """ + tutor_name + """ here.\n\n""" +\
+    """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
+
+def tutor_payment_receipt_text(date, charge_id, tutor_name, hourly_price, hours, amount):
+    return """\n""" + \
+    """Receipt ID: """+  charge_id +"""\n""" +\
+    """Time: """+  date +"""\n""" +\
+    """Student Name: """+ tutor_name +"""\n""" +\
+    """Hourly Price: $"""+ str(hourly_price) +""" (Including Uguru fees)\n""" +\
+    """Hours: """+ str(hours) +""" hours\n""" +\
+    """Total Earned: $"""+ str(amount) +"""\n\n""" +\
+    """Your payment is handled by Stripe, a secure third-party payment platform\n\n""" + \
     """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
-def student_payment_receipt_html(charge_id, card_last4, tutor_name, hourly_price, hours, amount):
+def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours, amount):
     return """
     <br>
     Receipt ID: """+  charge_id +"""<br>
+    Time: """+  date +"""<br>
+    Student Name: """+  tutor_name +"""<br>
+    Hourly Price: $""" + str(hourly_price) + """ (including Uguru fees)<br>
+    Hours: """ + str(hours) + """ hours<br>
+    Total Earned: $""" + str(amount) + """
+    <br>
+    <br>
+    <i>Your payment is handled by <a href="http://stripe.com"> Stripe</a>, a secure third-party payment platform</i>
+    <br>
+    <br>
+    If the above information is incorrect, please contact us by directly replying to this email.
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
+
+
+def student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount):
+    return """
+    <br>
+    Receipt ID: """+  charge_id +"""<br>
+    Time: """+  date +"""<br>
     Card Number: ****-****-****-"""+  card_last4 +"""<br>
     Guru Name: """+  tutor_name +"""<br>
     Hourly Price: $""" + str(hourly_price) + """ (including Uguru fees)<br>
@@ -546,7 +637,13 @@ def student_payment_receipt_html(charge_id, card_last4, tutor_name, hourly_price
     Total Amount: $""" + str(amount) + """
     <br>
     <br>
+    <i>Your payment is handled by <a href="http://stripe.com"> Stripe</a>, a secure third-party payment platform</i>
+    <br>
+    <br>
     If the above information is incorrect, please contact us by directly replying to this email.
+    <br>
+    <br>
+    How helpful was """ + tutor_name + """? <b> Rate and review """ + tutor_name + """ <a href="http://uguru.me/activity">here</a>.</b>
     <br>
     <br>
     Samir<br>
@@ -555,11 +652,11 @@ def student_payment_receipt_html(charge_id, card_last4, tutor_name, hourly_price
     (813) 500 - 9853
     """
 
-def tutor_is_matched(student, tutor):
+def tutor_is_matched(student, tutor, skill_name):
     student_name = student.name.split(" ")[0]
     tutor_name = tutor.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = "Congrats! " + student_name  + " Chose You! Now Follow These Steps"
+    email_subject = student_name  + " Chose You for " + skill_name + "!"
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
     EMAIL_TO = [tutor.email]
@@ -585,31 +682,33 @@ def tutor_is_matched(student, tutor):
     mail.quit()
 
 def student_is_matched_text(tutor_name, request_code):
-    return """We have made it super easy for you! Here are the steps:\n\n:""" + \
-    """1. Coordinate with your Guru, and finalize meetup time & location through our messages (http://uguru.me/messages).\n\n""" +\
-    """2. At end of the session, your Guru will draft the bill on his device. Verify the bill, and give your Guru your code as proof of approval. You will automatically be charged for the approved amount. Forget about cash, your code is your wallet!\n\n""" +\
+    return """You have been matched with """ + tutor_name + """! Please follow these next steps: \n\n:""" + \
+    """1. Message your Guru, and finalize meetup time & location (http://uguru.me/messages).\n\n""" +\
+    """2. At end of the session, your Guru will draft the bill on his device. Verify the bill, and give your Guru your code as proof of approval. You will automatically be charged for the approved amount.\n\n""" +\
     """3. 3. Rate and review your Guru, and you are all done!\n\n""" +\
-    """Please bring(or remember) your 1-time verification code for this session:""" + request_code + """""" +\
+    """Please bring(or remember) your 1-time secret code for this session:""" + request_code + """\n""" +\
+    """(Forget about cash, your code is your wallet!)\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def student_is_matched_html(tutor_name, request_code):
-    return """We have made it super easy for you! Here are the steps:
+    return """You have been matched with """ + tutor_name + """! Please follow these next steps:
     <br>
     <br>
-    1. Coordinate with your student, and finalize meetup time & location through our <a href="http://uguru.me/messages/"> messages</a>.
+    1. <a href="http://uguru.me/messages/"> Message</a> your Guru, and finalize meetup <b>time & location</b> .
     <br>
     <br>
-    2. At end of the session, your Guru will draft the bill on his device. Verify the bill, and give your Guru your code as proof of approval. You will automatically be charged 
-    for the approved amount. Forget about cash, your code is your wallet!
+    2. At end of the session, your Guru will draft the bill on a smart device. <b> Verify the bill</b>, and give your Guru your <b>secret code</b> as proof of approval. You will automatically be charged 
+    for the approved amount. 
     <br>
     <br>
-    3. Rate and review your Guru, and you are all done!
+    3. Then you get to <b> rate and review </b> your Guru, and you are all done!
     <br>
     <br>
-    <b> Please bring(or remember) your 1-time verification code for this session:</b> '<span style="color:red;font-weight:bold">""" + request_code + """</span>'
+    <b> Please bring(or remember) your 1-time secret code for this session:</b> <span style="color:red;font-weight:bold">'""" + request_code + """'</span><br>
+    (Forget about cash, your code is your wallet!)
     <br>
     <br>
-    If you have any questions or concerns, please reply directly to this email, or give us a phonecall! 
+    If you have any questions or concerns, please reply directly to this email. 
     <br>
     <br>
     Samir<br>
@@ -621,30 +720,30 @@ def student_is_matched_html(tutor_name, request_code):
 
 def tutor_is_matched_text(tutor_name):
     return """Congrats """ + tutor_name + """! Here are the next steps\n\n:""" + \
-    """1. Coordinate with your student, and finalize meetup time & location through our messages (http://uguru.me/messages).\n\n""" +\
-    """2. At the end of the session, you draft a bill clicking "Request Payment" on your feed page. You should bring a laptop or smart phone that
-    can access the web to your session.\n\n""" +\
+    """1. Message your student, and finalize meetup time & location (http://uguru.me/messages).\n\n""" +\
+    """2. At the end of the session, log into http://uguru.me on your device and draft a bill by clicking 
+    "REQUEST PAYMENT" on your feed page.\n\n""" +\
     """3. Have your student verify the amount, and input his/her 1-time verification code as proof of approval. The amount will be added to your balance,
     and you can cash out at any time!\n\n""" +\
-    """4. Important: Remind your student to rate you after the session. The student can do this by logging in after the payment has been submitted. These ratings will help you promote yourself to other students!\n\n""" +\
+    """4. After payment, remind your student to rate you on their account. These reviews will help you stand out when students choose their tutors.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def tutor_is_matched_html(tutor_name):
     return """Congrats """ + tutor_name + """! Here are the next steps: 
     <br>
     <br>
-    1. Coordinate with your student, and finalize meetup time & location through our <a href="http://uguru.me/messages/"> messages</a>.
+    1. <a href="http://uguru.me/messages/">Message</a> your student, and finalize meetup <b>time & location</b>.
     <br>
     <br>
-    2. At the end of the session, you draft a bill clicking "Request Payment" on your feed page. You should bring a laptop or smart phone that
-    can access the web to your session.
+    2. At the end of the session, <a href="http://uguru.me/activity/"> log into Uguru </a> on your device and draft a bill by clicking 
+    <b>"REQUEST PAYMENT"</b> on your feed page.
     <br>
     <br>
-    3. Have your student verify the amount, and input his/her 1-time verification code as proof of approval. The amount will be added to your balance,
+    3. Have your student <b>verify the amount</b>, and input his/her <b> secret code</b> as proof of approval. The amount will be added to your balance,
     and you can cash out at any time!
     <br>
     <br>
-    4. <b>Important</b>: Remind your student to rate you after the session. The student can do this by logging in after the payment has been submitted. These ratings will help you promote yourself to other students!
+    4. After payment, remind your student to <b>rate you</b> on their account. These reviews will help you stand out when students choose their tutors.
     <br>
     <br>
     If you have any questions or concerns, please reply directly to this email, or give us a phonecall! 
@@ -822,19 +921,18 @@ def welcome_uguru_text(user_name):
 def welcome_uguru_tutor_text(user_name):
     return """Hi """ + user_name.split(' ')[0] + \
     """, \n\n""" + \
-    """This is Samir, Co-Founder at Uguru. First of all, congrats, you made it! Our Guru selection process is competitive only to make sure that you can provide infinite wisdom and sage advice to our students.\n\n""" +\
-    """My partner Michael and I both recently graduated from Cal. We couldn't help but notice many of our classmates wishing for a way to get help during times of great academic struggle. We knew that there had to be a better way to achieve success in Bear Territory. \n\n""" + \
-    """Enter Uguru, where we hope to make grade-saving help available and affordable to students by connecting them to our trusted Gurus like you! Soon, you will be able to guide those lost in the dungeons of Moffit and help them achieve scholarly enlightenment. We will be sending you these requests via email. \n\n""" + \
-    """As a small team slowly gathering our resources, we are trying our best to make using Uguru a seamless experience. If you encounter any pesky hiccups or bugs, or if you have any questions/suggestions, please let me know by replying directly to this email. \n\n""" + \
+    """This is Samir from Uguru. We hope to make peer-to-peer help available and affordable to students by connecting them with trusted Gurus like you! \n\n""" +\
+    """Soon, you will be able to guide those lost in the dungeons of Moffit and help them achieve scholarly enlightenment. We will be sending you these requests via email. \n\n""" + \
+    """We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly! \n\n""" + \
     """Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears!  \n\n""" + \
     """Samir Makhani\nCo-Founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def welcome_uguru_student_text(user_name):
     return """Hi """ + user_name.split(' ')[0] + \
     """, \n\n""" + \
-    """This is Samir, Co-Founder at Uguru. My partner Michael and I both recently graduated from Cal. When we were in school, we saw many of our friends struggle in courses because they couldn't find the help they needed in this competitive Bear Territory. \n\n""" +\
-    """With Uguru, we hope to make it available and affordable to everyone by connecting them with awesome Gurus that we hand-picked from a pool of experienced peer tutors. If you are feeling stuck, just send a request here, and they will be ready to help! \n\n""" + \
-    """As a small team slowly gathering our resources, we are trying our best to make using Uguru a seamless experience. If you encounter any pesky hiccups or bugs, or if you have any questions/suggestions, please let me know by replying directly to this email. \n\n""" + \
+    """This is Samir, from Uguru. We hope to make instant help available and affordable by connecting you to Gurus who have done well in the same classes at Cal!  \n\n""" +\
+    """If you are feeling lost in the dungeons of Moffit, just send a request at http://uguru.me/activity, and our Gurus will be ready to save you! \n\n""" + \
+    """We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly! \n\n""" + \
     """Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears!  \n\n""" + \
     """Samir Makhani\nCo-Founder\nsamir@uguru.me\n(813) 500 9853"""
 
@@ -962,20 +1060,13 @@ def welcome_uguru_tutor_html(user_name):
     Hi """ + user_name.split(' ')[0] + """,
     <br>
     <br>
-    This is Samir, Co-Founder at <a href="http://uguru.me">Uguru</a>. First of all, congrats, you made it! Our Guru selection process 
-    is competitive only to make sure that you can provide infinite wisdom and sage advice to our students.
+    This is Samir, from <a href="http://uguru.me">Uguru</a>. We hope to make peer-to-peer help <b>available</b> and <b>affordable</b> to students by connecting them with trusted Gurus like you! 
     <br>
     <br>
-    My partner Michael and I both recently graduated from Cal. We couldn't help but notice many of our classmates wishing for a way to get help during times of great 
-    academic struggle. We knew that there had to be a better way to achieve success in Bear Territory.
+    Soon, you will be able to guide those lost in the dungeons of Moffit and help them achieve scholarly enlightenment. We will be sending you these requests via email. 
     <br>
     <br>
-    Enter Uguru, where we hope to make grade-saving help available and affordable to students by connecting them to our trusted Gurus like you! Soon, you will be able to 
-    guide those lost in the dungeons of Moffit and help them achieve scholarly enlightenment. We will be sending you these requests via email.
-    <br>
-    <br>    
-    As a small team slowly gathering our resources, we are trying our best to make using Uguru a seamless experience. If you encounter any pesky hiccups or bugs, or if you 
-    have any questions/suggestions, please let me know by replying directly to this email.
+    We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly.
     <br>
     <br>
     Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears! 
@@ -992,16 +1083,13 @@ def welcome_uguru_student_html(user_name):
     Hi """ + user_name.split(' ')[0] + """,
     <br>
     <br>
-    This is Samir, Co-Founder at <a href="http://uguru.me">Uguru</a>.  My partner Michael and I both recently graduated from Cal. When we were in school, we saw many of our 
-    friends struggle in courses because they couldn't find the help they needed in this competitive Bear Territory. 
+    This is Samir from <a href="http://uguru.me">Uguru</a>. We hope to make instant help <b>available</b> and <b>affordable</b> by connecting you to Gurus who have done well in the same classes at Cal.
     <br>
     <br>
-    With Uguru, we hope to make it available and affordable to everyone by connecting them with awesome Gurus that we hand-picked from a pool of experienced peer tutors. 
-    If you are feeling stuck, just send a request here, and they will be ready to help!    
+    If you are feeling lost in the dungeons of Moffit, just send a request <a href="http://uguru.me/activity">here</a>, and our Gurus will be ready to save you!
     <br>
     <br>    
-    As a small team slowly gathering our resources, we are trying our best to make using Uguru a seamless experience. If you encounter any pesky hiccups or bugs, or if you 
-    have any questions/suggestions, please let me know by replying directly to this email.
+    We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly.
     <br>
     <br>
     Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears! 

@@ -190,15 +190,15 @@ $(document).ready(function(){
       $('#suggested-price-slider').hide();
       num_students = $('#num-students-request .num-students.active').index()
       if (num_students == 0) {
-        $('#ideal-price-slider').val(13)  
+        $('#ideal-price-slider').val(15)  
       } else if (num_students == 1) {
-        $('#ideal-price-slider').val(16)  
+        $('#ideal-price-slider').val(20)  
       } else if (num_students == 2) {
-        $('#ideal-price-slider').val(21)  
-      } else if (num_students == 3) {
         $('#ideal-price-slider').val(24)  
+      } else if (num_students == 3) {
+        $('#ideal-price-slider').val(28)  
       } else {
-        $('#ideal-price-slider').val(25)  
+        $('#ideal-price-slider').val(30)  
       }
       $('#ideal-price-slider').trigger('change');
       $('#suggested-or-your').text('Suggested');

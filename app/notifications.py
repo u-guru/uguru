@@ -1,7 +1,7 @@
 from app import app
 from app.models import Skill, User, Request, Notification
 from emails import welcome_uguru_student, welcome_uguru_tutor, student_needs_help, tutor_wants_to_help, \
-    tutor_is_matched, student_payment_receipt, tutor_payment_received, student_is_matched
+    tutor_is_matched, student_payment_receipt, tutor_payment_receipt, tutor_payment_received, student_is_matched
 from datetime import datetime
 
 def getting_started_student(user):
@@ -46,7 +46,7 @@ def getting_started_tutor_2(user):
     notification.feed_message = getting_started_msg
     notification.feed_message_subtitle = "We will notify you when students need help via email."
     notification.a_id_name = 'getting-started-tutor'
-    notification.image_url = user.profile_url
+    notification.image_url = '/static/img/jenny.jpg'
     return notification
 
 
@@ -191,7 +191,7 @@ def student_payment_proposal(user, tutor, payment):
     user.feed_notif = user.feed_notif + 1
     return notification
 
-def student_payment_approval(user, tutor, payment, amount_charged, charge_id):
+def student_payment_approval(user, tutor, payment, amount_charged, charge_id, skill_name):
     notification = Notification(payment=payment)
     notification.feed_message = "<b>$" + str(amount_charged) + "</b> payment has been sent to " + \
         tutor.name.split(" ")[0] + "."
@@ -203,7 +203,8 @@ def student_payment_approval(user, tutor, payment, amount_charged, charge_id):
         notification.image_url = tutor.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
-    student_payment_receipt(user, tutor.name.split(" ")[0], amount_charged, payment, charge_id)
+    student_payment_receipt(user, tutor.name.split(" ")[0], amount_charged, payment, charge_id, skill_name)
+    tutor_payment_receipt(user, tutor, amount_charged, payment, charge_id, skill_name)
     return notification
 
 def tutor_receive_payment(user, tutor, payment, amount_made):

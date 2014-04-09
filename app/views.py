@@ -73,7 +73,8 @@ def webhooks():
             amount = float(stripe_response['amount'] / 100)
             transfer_id = stripe_response['id']
             last4 = stripe_response['account']['last4']
-            tutor_received_transfer(user, amount, bank_account_name, transfer_id, last4)
+            time = datetime.fromtimestamp(stripe_response['date'])
+            tutor_received_transfer(user, amount, bank_account_name, transfer_id, last4, time)
 
         try:
             db_session.commit()
@@ -505,6 +506,8 @@ def submit_payment():
                 raise 
 
             r.payment_id = payment.id
+            from app.static.data.short_variations import short_variations_dict
+            skill_name = short_variations_dict[Skill.query.get(r.skill_id).name]
             rating = Rating(r.id)
             tutor.pending_ratings.append(rating)
             db_session.add(rating)
@@ -523,7 +526,7 @@ def submit_payment():
 
             from notifications import student_payment_approval, tutor_receive_payment
             tutor_notification = tutor_receive_payment(student, tutor, payment, amount_made)
-            student_notification = student_payment_approval(student, tutor, payment, amount_charged, charge_id)
+            student_notification = student_payment_approval(student, tutor, payment, amount_charged, charge_id, skill_name)
             tutor.notifications.append(tutor_notification)
             student.notifications.append(student_notification)
             db_session.add_all([tutor_notification, student_notification])
@@ -800,7 +803,7 @@ def update_requests():
             tutor.feed_notif += 1
             tutor_notification.time_read = None
             from emails import tutor_is_matched, student_is_matched
-            tutor_is_matched(user, tutor)
+            tutor_is_matched(user, tutor, skill_name)
             student_is_matched(user, tutor, r.student_secret_code)
 
 
