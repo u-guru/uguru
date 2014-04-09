@@ -723,6 +723,7 @@ def update_requests():
             #Find the matched notification
             for n in user.notifications[::-1]:
                 if n.custom == 'student-accept-request' and n.request_id == _request.id:
+                    user.notifications.remove(n)
                     db_session.delete(n)
                     break;
 
@@ -734,6 +735,7 @@ def update_requests():
             #Delete the tutor's you've been matched notification + conversation
             for n in former_tutor.notifications[::-1]:
                 if n.custom == 'tutor-is-matched' and n.request_id == _request.id:
+                    former_tutor.notifications.remove(n)
                     db_session.delete(n)
 
             #Email the tutor
