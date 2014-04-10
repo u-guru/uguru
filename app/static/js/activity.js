@@ -679,5 +679,18 @@ $(document).ready(function() {
             }
         });      
     })
+  $('.modal-extra-detail').on('show', function() {
+      $(this).children().children().children('.modal-body').children('.extra-detail').children().children('textarea').select();
+  });
+  
+  (function ($) {
+      $.each(['show', 'hide'], function (i, ev) {
+        var el = $.fn[ev];
+        $.fn[ev] = function () {
+          this.trigger(ev);
+          return el.apply(this, arguments);
+        };
+      });
+    })(jQuery);
 
 });

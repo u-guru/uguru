@@ -1547,7 +1547,7 @@
 				          </a>
 				        </div>
 				     </div>
-				     <div class="modal fade" id="modal-{{n.a_id_name}}"tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+				     <div class="modal fade modal-extra-detail" id="modal-{{n.a_id_name}}"tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 					  <div style="margin:10% auto"class="modal-dialog modal-lg">
 					    <div class="modal-content">
 					      <div class="modal-header">
@@ -1572,7 +1572,7 @@
 					        </div>
 					        <div class="row extra-detail">
 						        <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8">
-					        		<textarea class="bio">Hi {{n.feed_message.split(" ")[0].split("<b>")[1].split("</b>")[0]}}, I know ____ very well. I have extra worksheets, practice exams, etc.</textarea>
+					        		<textarea onclick="this.focus();this.select()" class="bio">Hi {{n.feed_message.split(" ")[0].split("<b>")[1].split("</b>")[0]}}, I know ____ very well. I have extra worksheets, practice exams, etc.</textarea>
 					        	</div>
 					        </div>
 					        <div class="row">
