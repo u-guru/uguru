@@ -613,11 +613,14 @@ def update_requests():
         user = User.query.get(user_id)
 
         if 'tutor-accept' in ajax_json:
-            incoming_request_num = ajax_json.get('tutor-accept')
             hourly_amount = ajax_json.get('hourly-amount')
-            # skill_name = ajax_json.get('skill-name')
             notif_num = ajax_json.get('notif-num')
             tutor = user
+            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
+            current_notification = user_notifications[notif_num]
+            incoming_request_num = current_notification.request_id
+
+
             r = Request.query.get(incoming_request_num)
             r.committed_tutors.append(tutor)
             skill_id = r.skill_id
@@ -630,9 +633,6 @@ def update_requests():
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
 
-            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
-
-            current_notification = user_notifications[notif_num]
             current_notification.feed_message = 'You accepted ' + student.name.split(' ')[0] + \
                 "'s request for " + skill_name.upper() + "."
             current_notification.feed_message_subtitle = "<b>Click here</b> to see next steps."
@@ -649,7 +649,8 @@ def update_requests():
                 current_notification.time_read = None
 
             from notifications import tutor_request_accept, student_incoming_tutor_request
-            student_notification = student_incoming_tutor_request(student, tutor, r, skill_name, hourly_amount)
+            extra_detail = ajax_json.get('extra-detail')
+            student_notification = student_incoming_tutor_request(student, tutor, r, skill_name, hourly_amount, extra_detail)
             student.notifications.append(student_notification)
             db_session.add(student_notification)
             

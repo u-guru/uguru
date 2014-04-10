@@ -333,6 +333,8 @@ class Notification(Base):
     skill_name = Column(String)
     custom = Column(String(1000))
     custom_tag = Column(String)
+
+    extra_detail = Column(String(2500))
     
     time_created = Column(DateTime)
     time_read = Column(DateTime) #Set to now if it doesn't need to be read

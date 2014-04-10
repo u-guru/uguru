@@ -106,7 +106,7 @@ def tutor_request_accept(user, tutor, request, skill_name, hourly_amount):
     notification.status = 'yellow'
     return notification
 
-def student_incoming_tutor_request(user, tutor, request, skill_name, hourly_amount):
+def student_incoming_tutor_request(user, tutor, request, skill_name, hourly_amount, extra_detail):
     notification = Notification(request=request)
     notification.feed_message = "<b>"+ tutor.name.split(" ")[0] + "</b> wants to help you with <b>" \
         + skill_name.upper() + "</b>."
@@ -117,6 +117,8 @@ def student_incoming_tutor_request(user, tutor, request, skill_name, hourly_amou
     notification.custom_tag = 'student-incoming-offer'
     request_number = user.incoming_requests_from_tutors.index(request)
     notification.a_id_name = 'student-incoming-offer' + str(len(user.notifications))
+    if extra_detail:
+        notification.extra_detail = extra_detail
     if tutor.profile_url:
         notification.image_url = tutor.profile_url
     else:

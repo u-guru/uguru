@@ -1470,17 +1470,21 @@ span.twitter-typeahead {
 
 ::-webkit-input-placeholder { /* WebKit browsers */
   font-family:'Roboto',sans-serif; 
+  color:grey;
 
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
   font-family:'Roboto',sans-serif; 
+  color:grey;
 
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
   font-family:'Roboto',sans-serif; 
+  color:grey;
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */
   font-family:'Roboto',sans-serif; 
+  color:grey;
 }
 
 button.btn-default:hover {

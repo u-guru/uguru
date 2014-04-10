@@ -241,19 +241,20 @@ $(document).ready(function() {
    });
    $('#feed-messages').on('click', 'a.tutor-request-accept-btn', function() {
             $(this).click(false);
+            //Hide the modal
+            $(this).parent().parent().parent().parent().parent().hide();
             var feed_message_index = last_clicked_notif_index + 1
-            // var salt = $('#main-feed').children().length - $('#feed-messages').children().length 
             var tutor_changed_price = false
-            request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
             hourly_amount = $('#student-offer-hourly-price-' + (feed_message_index)).text();
-            skill_name = $(this).parent().parent().siblings('.container-fluid').children('h5').text().split(" needs help in ").reverse()[0]
+            extra_detail = $(this).parent().parent().siblings('.modal-body').children('.extra-detail').children().children('textarea').val();
+            
             if (hourly_amount != student_original_price) {
               tutor_changed_price = true;
             }
             var data = {
-                'tutor-accept': request_num, 
+                'tutor-accept': true, 
                 'hourly-amount': hourly_amount,
-                'skill-name': skill_name,
+                'extra-detail': extra_detail,
                 'price-change': tutor_changed_price,
                 'notif-num':  last_clicked_notif_index,
             };
