@@ -548,9 +548,11 @@ if arg == 'generate_secret_codes':
         return random.choice(animal_list) + str(randint(1, 100))
     for u in User.query.all():
         if not u.verified_tutor:
-            u.secret_code = generate_secret_code()
-        if u.outgoing_requests:
-            for r in u.outgoing_requests:
-                r.student_secret_code = u.secret_code
+            u.secret_code = generate_secret_code()                   
+            for n in u.notifications:
+                if n.request_id:
+                    r = Request.query.get(n.request_id)
+                    if r.connected_tutor_id:
+                        r.student_secret_code = u.secret_code
     db_session.commit()
 
