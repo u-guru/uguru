@@ -489,21 +489,23 @@
   				</div>
 		  	</div>
 	        <div style="margin-top:15px" class="row">
-                <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-                        <div style="text-align:center">
-                          <span id='alert-fields-student-signup1' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1"><strong>I NEED HELP IN...</strong></label> <br>
-                            <input style="width:100%"id="student-signup-skill" name="skill" type="email" class="input-signup typeahead" placeholder="Chem 1A, Math 16A, Writing Help" id="login-email">
-                        </div>
-                        <span id="other-examples">Other examples: Writing Help, Resume Help, Interview Help</span>
-                 </div>
+                <div class="row">
+	                <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+	                        <div style="text-align:center">
+	                          <span id='alert-fields-student-signup1' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="exampleInputEmail1"><strong>I NEED HELP IN...</strong></label> <br>
+	                            <input style="width:100%"id="student-signup-skill" name="skill" type="email" class="input-signup typeahead" placeholder="Chem 1A, Math 16A, Writing Help" id="login-email">
+	                        </div>
+	                        <span id="other-examples">Other examples: Writing Help, Resume Help, Interview Help</span>
+	                 </div>
+	            </div>
                 <div class="row">
                       <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1"><strong>SPECIFY TOPICS AND QUESTIONS</strong></label> <br>
-                            <input style="width:100%"id="student-signup-description" name="skill" type="email" class="input-signup" placeholder="Radical Reactions, Geometric Series, Midterm Prep" id="login-email">
+                            <label for="exampleInputEmail1"><strong>SPECIFY TOPICS AND GURU PREFERENCES</strong></label> <br>
+                            <input style="width:100%"id="student-signup-description" name="skill" type="email" class="input-signup" placeholder="Data Structures, Midterm Prep, with Prof Hilfinger" id="login-email">
                         </div>
                       </div>
                     </div>
@@ -554,11 +556,11 @@
                           <span id="total-request-price"style="color:#69bf69;font-weight:700"> $20 </span>
                         </h1> 
                         <h4 style="margin:5px auto">
-                          <span id="total-request-price-per-person">
+                          <span style="color:grey" id="total-request-price-per-person">
                             (only $10 a person if you split the bill!)
                           </span>
                         </h4>
-                        <h4 id="complete-price"style="display:show; margin-top:20px; margin-bottom:px; font-size:24px;">Estimated Total (1hr) : $20</h4>
+                        <h4 id="complete-price"style="color:grey;display:show; margin-top:20px; margin-bottom:px; font-size:24px;">Estimated Total (1hr) : $20</h4>
                           <a href="javascript:void(0)" id="request-change-hourly">
                             <h6 style="margin-top:0px; margin-bottom:-5px; color:#00a9e5">
                               Change hourly price
