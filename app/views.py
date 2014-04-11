@@ -383,6 +383,8 @@ def add_bank():
 
         user.balance = 0
 
+        flash("Thank you for cashing out! You should have the funds in account 1-3 days.")
+
         try:
             db_session.commit()
         except:
@@ -429,6 +431,8 @@ def submit_rating():
             except:
                 db_session.rollback()
                 raise 
+
+        flash("Thank you for submitting your rating!")
 
     return jsonify(return_json=return_json)     
 

@@ -134,7 +134,7 @@
 			<div id="balance-amount">
 				<h1>${{user.balance}}</h1>
 			</div>
-			<h5 id="your-balance-text"style="margin-top:0px">  <a id="{%if not user.recipient_id %}cash-out-link-create{% else %} cash-out-link-add {% endif %}" href="javascript:void(0)">Cash out <u> here </u></a> </h6>
+			<h5 id="your-balance-text"style="margin-top:0px">  <a id="{%if not user.recipient_id %}cash-out-link-create{% else %}cash-out-link-add{% endif %}" href="javascript:void(0)">Cash out <u> here </u></a> </h6>
 		</div>
 
 		<!-- <div style="text-align:center; color:#00a0cf; margin-top:5px"class="row">
@@ -286,6 +286,50 @@
 		</div>
 	</form>
 </div>
+<div id="cash-out-info" style="display:none; color:rgb(0, 159, 225);">
+	<form role="form" action="javascript:void(0)" method="POST" id="payment-form">
+		<div class="page-title">
+			<div class="row-fluid" style="width:100%;text-align:center">
+					<div class="col-xs-1 col-xs-offset-1 col-md-1">
+   					<a href="javascript:void(0)" id="bank-account-back-link" style="text-decoration:none"> 
+   						<h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
+   					</a>
+					</div>
+					<div class="col-xs-9 col-md-8" style="text-align:center">
+						<h4 style="color:white;width:100%">CASH OUT CONFIRMATION</h4>
+				</div>
+			</div>
+		</div>
+		<div class="credit-main container-fluid">
+			<br>
+			<div class="row">
+			  	<div class="user-profile" style="text-align:center">
+			  		{% if user.profile_url %}
+			  		<img src="{{user.profile_url}}" class="user-photo">
+			  		{% else %}
+			  		<img src="/static/img/default-photo.jpg" class="user-photo">
+			  		{% endif %}
+			  	</div>
+			</div>
+		  	<div class="row" style="text-align:center">
+		  		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+			  		<h5 style="margin:25px auto;color:grey">Our payment system is securely <b>Powered by <a href="stripe.com">Stripe</a></b>, which handles all of the bank deposits. Uguru has no access to your bank information.</h5>
+				  	<h6 style="margin:25px auto;color:grey">You will receive the funds in your account within <b>1-3</b> days depending on your bank. We will email you confirmation as soon as the money is successfully transfered.</h6>
+				</div>
+		  	</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px">
+					<a id="cash-out-link-submit" href="javascript:void(0)">
+						<div class="btn-save">
+							<p>CASH OUT ${{user.balance}}
+							</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
 {% endif %}
 
 
@@ -328,7 +372,7 @@
 		              {% endfor %}
 		            </ul>
 		         </div>
-			</b></h4>
+			</h4>
 			<div style="text-align:center"class="row">
 				<h4><b> How Long Did You Tutor?</b></h4>
 				<div style="color:rgb(0, 159, 225)" class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
@@ -1160,11 +1204,10 @@
 						        	</div>
 						  		</h5>
 						  	</div>
-
 						  	{% endif %}
 						  	{% if n.extra_detail %}
 						  	<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
-						  		<h5><b><u> A Personal Note from {{tutor_dict[n].name.split()[0]}}<u><b></h5>
+						  		<h5><b><u> A Personal Note from {{tutor_dict[n].name.split()[0]}}</u></b></h5>
 						  		<h5 style="margin-top:0px; color:grey;"><i>"{{n.extra_detail}}"<br>-{{tutor_dict[n].name.split()[0]}}</i></h5>
 						  	</div>
 						  	{% endif %}

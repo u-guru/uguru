@@ -154,6 +154,11 @@ $(document).ready(function() {
     $('#activity').show();
    })
 
+   $('#cash-out-link-add').click(function() {
+    $('#activity').hide();
+    $('#cash-out-info').show();
+   })
+
    $('#feed').on('click', 'a.main-feed-messages', function() {
         last_clicked_notif_index = $('#main-feed').children().length - $(this).parent().parent().index() - 1;
         var display_id = $(this).attr('id');
@@ -371,10 +376,7 @@ $(document).ready(function() {
             data: JSON.stringify(data),
             dataType: "json",
             success: function(result) {         
-              $('#rating-form-tutor').hide();
-              $('#bootstrap-success').children('.alert').text('Thank you for submitting your rating!')
-              $('#bootstrap-success').show();
-              $('#activity').show();
+              window.location.replace('/activity/');
             }
         }); 
     });
@@ -396,10 +398,7 @@ $(document).ready(function() {
             data: JSON.stringify(data),
             dataType: "json",
             success: function(result) {         
-              $('#rating-form-tutor').hide();
-              $('#bootstrap-success').children('.alert').text('Thank you for submitting your rating!')
-              $('#bootstrap-success').show();
-              $('#activity').show();
+              window.location.replace('/activity/');
             }
         }); 
     });

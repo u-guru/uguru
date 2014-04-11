@@ -63,11 +63,9 @@
                 }
             }
         }
-        // $('#add-bank-account-info').hide();
-        // $('#cash-out-page').show();
    });
 
-    $('#cash-out-link-add').click(function() {
+    $('#cash-out-link-submit').click(function() {
         data = {};
         $.ajax({
             type: "POST",
