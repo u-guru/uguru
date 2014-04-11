@@ -115,6 +115,7 @@ class User(Base):
     #Tutor fields
     verified_tutor = Column(Boolean)
     balance = Column(Float, default = 0.0)
+    total_earned = Column(Float, default = 0.0)
     discoverability = Column(Boolean, default = True)
     major = Column(String)
     year = Column(String)

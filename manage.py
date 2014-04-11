@@ -520,8 +520,22 @@ if arg == 'generate_short_variations_reverse':
         separators = (',', ': ')))
     print result_dict
 
+if arg == 'update_balance':
+    import stripe, os
+    stripe_keys = {
+        'secret_key': os.environ['SECRET_KEY'],
+        'publishable_key': os.environ['PUBLISHABLE_KEY']
+    }
+    for u in User.query.all():
+        if u.verified_tutor:
+            if u.balance:
+                u.total_earned == balance
+    bank_users = User.query.filter(User.recipient_id != None)
+    for _user in bank_users:
+        recipient_id = _user.recipient_id
+        transfers = stripe.Transfer.all(recipient=recipient_id).data
+        for transfer in transfers:
+            amount = float(transfer.amount / 100)
+            _user.total_earned = _user.total_earned + amount
 
-
-
-
-
+    db_session.commit()

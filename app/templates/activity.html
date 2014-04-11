@@ -128,13 +128,20 @@
 			</div>
 		</div>
 
-		{% if user.balance > 0 %}
-		<div id="your-balance-text-div"class="row">
+		{% if user.balance > 0 or user.total_earned > 0 %}
+		<div style="margin-top:5px;"id="your-balance-text-div"class="row">
+			{% if user.balance > 0 %}
 			<h6 id="your-balance-text"style="margin-bottom:0px"><u> YOUR BALANCE </u></h5>
 			<div id="balance-amount">
 				<h1>${{user.balance}}</h1>
 			</div>
 			<h5 id="your-balance-text"style="margin-top:0px">  <a id="{%if not user.recipient_id %}cash-out-link-create{% else %}cash-out-link-add{% endif %}" href="javascript:void(0)">Cash out <u> here </u></a> </h6>
+			{% endif %}
+			{% if user.total_earned > 0 %}
+			<h5 style="text-align:center; color:grey; margin-top:5px; margin-bottom:5px;">
+				Your Total Uguru Earnings: <span style="color:#69bf69"> <strong>${{user.total_earned}} </strong></span>
+			</h5>
+			{% endif %}
 		</div>
 
 		<!-- <div style="text-align:center; color:#00a0cf; margin-top:5px"class="row">
