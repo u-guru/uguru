@@ -549,5 +549,8 @@ if arg == 'generate_secret_codes':
     for u in User.query.all():
         if not u.verified_tutor:
             u.secret_code = generate_secret_code()
+        if u.outgoing_requests:
+            for r in u.outgoing_requests:
+                r.student_secret_code = u.secret_code
     db_session.commit()
 
