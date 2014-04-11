@@ -529,8 +529,7 @@ if arg == 'update_balance':
     stripe.api_key = stripe_keys['secret_key']
     for u in User.query.all():
         if u.verified_tutor:
-            if u.balance:
-                u.total_earned == u.balance
+            u.total_earned == u.balance
     bank_users = User.query.filter(User.recipient_id != None)
     for _user in bank_users:
         recipient_id = _user.recipient_id
