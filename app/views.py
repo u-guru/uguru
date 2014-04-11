@@ -546,7 +546,7 @@ def send_message():
         user_id = session.get('user_id')
         user = User.query.get(user_id)
 
-        if 'update-message' in ajax_json:
+        if 'update-message' in ajax_json and not session.get('admin'):
             conversation_num = ajax_json.get('conversation-num')
             conversation = user.mailbox.conversations[conversation_num]
             conversation.is_read = True
