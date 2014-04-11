@@ -502,7 +502,7 @@
                 <div class="row">
                       <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1"><strong>PLEASE SPECIFY TOPICS OR ASSIGNMENTS</strong></label> <br>
+                            <label for="exampleInputEmail1"><strong>SPECIFY TOPICS AND QUESTIONS</strong></label> <br>
                             <input style="width:100%"id="student-signup-description" name="skill" type="email" class="input-signup" placeholder="Radical Reactions, Geometric Series, Midterm Prep" id="login-email">
                         </div>
                       </div>
@@ -1214,8 +1214,8 @@
 						  	{% endif %}
 						  	{% if n.extra_detail %}
 						  	<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
-						  		<h5><b><u> A Personal Note from {{tutor_dict[n].name.split()[0]}}</u></b></h5>
-						  		<h5 style="margin-top:0px; color:grey;"><i>"{{n.extra_detail}}"<br>-{{tutor_dict[n].name.split()[0]}}</i></h5>
+						  		<h5><b> A Personal Note from {{tutor_dict[n].name.split()[0]}}</b></h5>
+						  		<h5 style="margin-top:0px; color:grey;"><i>"{{n.extra_detail}}"<br></i></h5>
 						  	</div>
 						  	{% endif %}
 						</div>
