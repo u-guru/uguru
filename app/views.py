@@ -462,12 +462,13 @@ def submit_payment():
                     student = User.query.get(student_id)
                     return_json['student-profile-url'] = student.profile_url
 
-            if r.student_secret_code != ajax_json.get('secret-code').lower():
+            if student.secret_code != ajax_json.get('secret-code').lower():
                 return_json['secret-code'] = False
                 return jsonify(return_json=return_json)
 
-            r.student_secret_code = r.student_secret_code + '-USED'
             return_json['secret-code'] = True
+            student.secret_code = generate_secret_code()
+
             from app.static.data.prices import prices_dict
             prices_reversed_dict = {v:k for k, v in prices_dict.items()}
             print prices_reversed_dict[r.connected_tutor_hourly]
@@ -785,16 +786,13 @@ def update_requests():
             current_notification.time_created = datetime.now()
 
             #Update request
-            from app.static.data.animals import animal_list
-            import random 
             request_id = current_notification.request_id
             r = Request.query.get(request_id)
             skill = Skill.query.get(r.skill_id)
             r.connected_tutor_id = tutor_id
             r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
             r.time_connected = datetime.now()
-            from random import randint 
-            r.student_secret_code = random.choice(animal_list) + str(randint(1, 100))
+            r.student_secret_code = user.secret_code
 
             student.outgoing_requests.remove(r)
             
@@ -1012,6 +1010,7 @@ def success():
                 )
 
                 u.last_active = datetime.now()
+                u.secret_code = generate_secret_code()
 
                 if ajax_json['phone'] == '':
                     u.phone_number = None;
@@ -1521,6 +1520,12 @@ def is_tutor_verified(tutor):
 
 def authenticate(user_id):
     session['user_id'] = user_id
+
+def generate_secret_code():
+    import random 
+    from random import randint 
+    from app.static.data.animals import animal_list
+    return random.choice(animal_list) + str(randint(1, 100))
 
 ####################
 #  Error Handling  #

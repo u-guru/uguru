@@ -539,3 +539,15 @@ if arg == 'update_balance':
             _user.total_earned = _user.total_earned + amount
 
     db_session.commit()
+
+if arg == 'generate_secret_codes':
+    def generate_secret_code():
+        import random 
+        from random import randint 
+        from app.static.data.animals import animal_list
+        return random.choice(animal_list) + str(randint(1, 100))
+    for u in User.query.all():
+        if not u.verified_tutor:
+            u.secret_code = generate_secret_code()
+    db_session.commit()
+

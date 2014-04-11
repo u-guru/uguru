@@ -128,31 +128,9 @@
 			</div>
 		</div>
 
-		{% if user.balance > 0 or user.total_earned > 0 %}
-		<div style="margin-top:5px;"id="your-balance-text-div"class="row">
-			{% if user.balance > 0 %}
-			<h6 id="your-balance-text"style="margin-bottom:0px"><u> YOUR BALANCE </u></h5>
-			<div id="balance-amount">
-				<h1>${{user.balance}}</h1>
-			</div>
-			<h5 id="your-balance-text"style="margin-top:0px">  <a id="{%if not user.recipient_id %}cash-out-link-create{% else %}cash-out-link-add{% endif %}" href="javascript:void(0)">Cash out <u> here </u></a> </h6>
-			{% endif %}
-			{% if user.total_earned > 0 %}
-			<h5 style="text-align:center; color:grey; margin-top:5px; margin-bottom:5px;">
-				Your Total Uguru Earnings: <span style="color:#69bf69"> <strong>${{user.total_earned}} </strong></span>
-			</h5>
-			{% endif %}
-		</div>
-
-		<!-- <div style="text-align:center; color:#00a0cf; margin-top:5px"class="row">
-			 Balance:<span style="color:light-green; font-weight:700">+${{user.balance}}</span>&nbsp; 
-			<br>
-		</div>  -->
-		{% endif %}
-
 		{% if user.notifications|length <= 3 and not user.skills %}
 		<div style="display:block" class="row-fluid">
-			<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+			<div style="margin-top:0px; margin-bottom:15px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 				{% if user.notifications|length == 3 %}
 				<div style="margin-bottom:0"class="alert alert-success">You're all set! Check your email frequently.<br> We'll let you know <i>immediately </i> if a tutor has agreed to help! </div>
@@ -173,6 +151,37 @@
 		    {% endfor %}
 		  {% endif %}
 		{% endwith %}
+		{% if user.balance > 0 or user.total_earned > 0 %}
+		<div style="margin-top:5px;"id="your-balance-text-div"class="row">
+			{% if user.balance > 0 %}
+			<h6 id="your-balance-text"style="margin-bottom:0px"><u> YOUR BALANCE </u></h5>
+			<div id="balance-amount">
+				<h1>${{user.balance}}</h1>
+			</div>
+			<h5 id="your-balance-text"style="margin-top:0px">  <a id="{%if not user.recipient_id %}cash-out-link-create{% else %}cash-out-link-add{% endif %}" href="javascript:void(0)">Cash out <u> here </u></a> </h6>
+			{% endif %}
+			{% if user.total_earned > 0 %}
+			<h5 style="text-align:center; color:grey; margin-top:5px; margin-bottom:5px;">
+				Your Total Uguru Earnings: <span style="color:#69bf69"> <strong>${{user.total_earned}} </strong></span>
+			</h5>
+			{% endif %}
+		</div>
+		{% endif %}
+		{% if not user.verified_tutor %}
+		<div style="text-align:center;margin-top:0px; " class="row">
+			<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+				<h5 style="color:grey; margin-bottom:5px;"> 
+					<strong>Your current secret code is 
+						<span style='color:red'> '{{user.secret_code}}'
+						</span>
+					</strong>
+				</h5>
+				<h6 style="margin-top:0px;color:grey;">
+					You will give this to your tutor after your session to confirm payment.
+				</h6>
+			</div>
+		</div>
+		{% endif %}
 
 		<div id="main-feed">
 		{% for n in user.notifications|sort(attribute='time_created')|reverse %}
@@ -993,7 +1002,8 @@
 	  				{% if not (request_dict[n.request_id]['request'].requested_tutors ) %}
 		  			<div id="already-have-active-request-alert" style="display:show" class="row-fluid">
                         <div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-                          <div style="margin-bottom:0"class="alert alert-danger">Sorry! We currently don't have tutors for this course. <br>We've registered your request and are going to try our best to find you a tutor immediately. </div>
+                          <div style="margin-bottom:0"class="alert alert-danger">Sorry! We currently don't have tutors for this course. <br>We've registered your request for the time being and will let you know if we find tutors.<br>
+                          Unfortunately we are mainly focusing on lower div courses at the moment.</div>
                         </div>
                     </div>
 	  				{% elif not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
@@ -1117,7 +1127,7 @@
 							<div style="font-size:14px; text-align:left;">
 								<p>1. Coordinate with your Guru, and finalize meetup time & location through messages. </p>
 								<p>2. At the end of the session, your Guru will draft the bill. Verify the bill, and give your Guru your code as proof of approval</p>
-								<p>Your secret code is <span style="color:red"><strong>'{{request_dict[n.request_id]['request'].student_secret_code}}'</strong></span>. </p>
+								<p>Your current secret code is <span style="color:red"><strong>'{{request_dict[n.request_id]['request'].student_secret_code}}'</strong></span>. </p>
 								<p>3. Review your Guru from 1-5 stars. Your feedback helps both the tutor and future students!</p>
 							</div>
 						</div> 

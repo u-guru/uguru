@@ -120,9 +120,8 @@ class User(Base):
     major = Column(String)
     year = Column(String)
 
-
-
-
+    #Student Secret Codes
+    secret_code = Column(String)
 
     previous_tutor = Column(Boolean, default = False)
     slc_tutor = Column(Boolean, default = False)
