@@ -522,7 +522,7 @@ def submit_payment():
             amount_made = (r.connected_tutor_hourly * float(total_time))
 
             tutor.balance = tutor.balance + amount_made
-            tutor.total_earned = tutor.total_earned + amount_made
+            tutor.total_earned = tutor.total_earned + amount_made   
 
             #Add pending rating to student 
             for rating in tutor.pending_ratings:
