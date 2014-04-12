@@ -706,7 +706,7 @@ def student_is_matched_html(tutor_name, request_code):
     1. <a href="http://uguru.me/messages/"> Message</a> your Guru, and finalize meetup <b>time & location</b> .
     <br>
     <br>
-    2. At end of the session, your Guru will draft the bill on his/her device. <b> Verify the bill</b>, and give your Guru your <b>secret code</b>(find this at the top of your feed page) as proof of approval. You will automatically be charged 
+    2. At end of the session, your Guru will draft the bill on his/her device. <b> Verify the bill</b>, and give your Guru your <b>secret code</b> (<a href="http://uguru.me/activity/">find this at the top of your feed page</a>) as proof of approval. You will automatically be charged 
     for the approved amount. 
     <br>
     <br>

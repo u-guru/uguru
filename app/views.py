@@ -418,7 +418,7 @@ def submit_rating():
                 db_session.rollback()
                 raise 
 
-            flash("For your next session with " + student_name + ", just set up a time and meetup. At the end of the session, request payment as you usually would with " + student_name + "'s regenerated student code.")
+            flash("For your next session with " + student_name + ", just set up a time and meetup. At the end of the session, request payment as you usually would with " + student_name + "'s regenerated secret code.")
 
         if 'student-rating-tutor' in ajax_json:
             rating = user.pending_ratings[0]

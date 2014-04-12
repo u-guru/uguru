@@ -552,7 +552,7 @@ if arg == 'generate_secret_codes':
             for n in u.notifications:
                 if n.request_id:
                     r = Request.query.get(n.request_id)
-                    if r.connected_tutor_id:
+                    if r and r.connected_tutor_id:
                         r.student_secret_code = u.secret_code
     db_session.commit()
 
