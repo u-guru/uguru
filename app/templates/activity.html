@@ -561,7 +561,7 @@
                     <div style="text-align:center; margin:15px auto 5px auto;" class="row">
                       <div style="border:1px solid grey; padding:10px; border-radius:12px;"class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                         <h4 id="total-price-header" style="font-weight:700px; color:grey; display:inline"> Suggested Hourly Price </h4>
-                        <h6 style="margin-top:3px"><i>Uguru fees included</i>&nbsp;&nbsp;<a href="http://tinyurl.com/uguru-q-a" target="_blank"><span style="font-size:14px; color:grey"class="glyphicon glyphicon-question-sign"></span></a></h6>
+                        <h6 style="margin-top:3px"><i>Uguru fees included</i>&nbsp;&nbsp;<a href="http://tinyurl.com/uguru-payment" target="_blank"><span style="font-size:14px; color:grey"class="glyphicon glyphicon-question-sign"></span></a></h6>
                         <h1 style="display:block;font-size:60px; text-align:center; margin:5px auto">
                           <span id="total-request-price"style="color:#69bf69;font-weight:700"> $20 </span>
                         </h1> 
@@ -1295,7 +1295,7 @@
 							  	<div class="row">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4"><b>Estimated Total Price</b><br>
-							  				<div style="font-size:12px">including fees&nbsp;<a href="http://tinyurl.com/uguru-q-a" target="_blank"><span style="font-size:14px; color:grey"class="glyphicon glyphicon-question-sign"></span></a></div></div>
+							  				<div style="font-size:12px">including fees&nbsp;<a href="http://tinyurl.com/uguru-payment" target="_blank"><span style="font-size:14px; color:grey"class="glyphicon glyphicon-question-sign"></span></a></div></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4">${{request_dict[n.request_id]['request'].time_estimate * prices_reversed_dict[n.request_tutor_amount_hourly]}}<br></div>
@@ -1560,7 +1560,7 @@
 							</div>
 								<div style="text-align:center; margin-top:10px; color:grey">
 									{% if n.custom != 'tutor-reject' and not (request_dict[n.request_id]['request'].connected_tutor_id and request_dict[n.request_id]['request'].connected_tutor_id != user.id) %}
-									<i>After Uguru fees, you will be making: &nbsp;<a href="http://tinyurl.com/uguru-q-a" target="_blank"><span style="font-size:14px; color:grey"class="glyphicon glyphicon-question-sign"></span></a></i> <br>
+									<i>After Uguru fees, you will be making: &nbsp;<a href="http://tinyurl.com/uguru-payment" target="_blank"><span style="font-size:14px; color:grey"class="glyphicon glyphicon-question-sign"></span></a></i> <br>
 									{% else %}
 									<i>You could have made:</i> <br>
 									{% endif %}
