@@ -460,7 +460,7 @@ def submit_payment():
             conversation = Conversation.query.get(conversation_id)
 
             for _request in conversation.requests:
-                if _request.connected_tutor_id == user_id and not _request.actual_hourly:
+                if _request.connected_tutor_id == user_id:
                     r = _request
                     student_id = _request.student_id
                     student = User.query.get(student_id)
@@ -475,9 +475,12 @@ def submit_payment():
 
             from app.static.data.prices import prices_dict
             prices_reversed_dict = {v:k for k, v in prices_dict.items()}
-            print prices_reversed_dict[r.connected_tutor_hourly]
-            print total_time
-            total_amount = prices_reversed_dict[r.connected_tutor_hourly] * float(total_time)
+            if 'price-change' in ajax_json:
+                total_amount = prices_reversed_dict[int(float(ajax_json['price-change']))] * float(total_time)
+                r.actual_hourly = int(float(ajax_json['price-change']))
+                r.connected_tutor_hourly = int(float(ajax_json['price-change']))
+            else:
+                total_amount = prices_reversed_dict[r.connected_tutor_hourly] * float(total_time)
             stripe_amount_cents = int(total_amount * 100)
 
             # user.incoming_requests_to_tutor.remove(r)
@@ -524,6 +527,8 @@ def submit_payment():
 
             return_json['student-name'] = student.name.split(" ")[0]
 
+        
+                
             amount_made = (r.connected_tutor_hourly * float(total_time))
 
             tutor.balance = tutor.balance + amount_made

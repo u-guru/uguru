@@ -41,6 +41,7 @@ $(document).ready(function() {
           return request.responseText;
     };
     autocomplete_json = JSON.parse(readJSON('/static/data/autocomplete.json'));
+    prices_reversed_dict = JSON.parse(readJSON('/static/data/prices_reverse.json'));
 
     
 
@@ -232,6 +233,18 @@ $(document).ready(function() {
         }); 
 
     });
+
+   $('#change-hourly-price-link').click(function() {
+    $('#change-hourly-price').show();
+    $(this).parent().parent().hide();
+   });
+
+   $('#change-hourly-price-cancel').click(function() {
+    $('#change-hourly-price').hide();
+    $('#change-hourly-price-link-div').show();
+    $("#hourly-price-slider-payment").val(15);
+   });
+
    $('#request-payment-link').click(function() {
         $('#activity').hide();
         $('#request-payments').show();
@@ -325,6 +338,9 @@ $(document).ready(function() {
             'submit-payment': conversation_id,
             'total-time': total_time,
             'secret-code': $('#secret-code').val()
+        }
+        if ($('#change-hourly-price:visible').length > 0) {
+          data['price-change'] = $('#hourly-price-slider-payment').val();
         }
         $('#submit-payment').click(false);
         $.ajax({
@@ -554,6 +570,10 @@ $(document).ready(function() {
       $('#suggested-or-your').text('Suggested');
       $('#request-change-hourly').show();
     })
+
+    $('#hourly-price-slider-payment').change(function() {
+      $('#student-charged-payment').text(prices_reversed_dict[parseInt($('#hourly-price-slider-payment').val()) + ""])
+    });
 
 
     $('#ideal-price-slider').change(function() {

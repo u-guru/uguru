@@ -397,6 +397,25 @@
                     <p style="margin-left:5px; font-size:14px; margin-top:3px; font-weight:700"class="text-left"><span style="font-size:14px;color:rgb(0, 159, 225)" name="estimate" id="payment"></span> hours</p>
 				</div>
 			</div>
+			<div id="change-hourly-price" style="display:none; text-align:center"class="row">
+				<h4 style="margin-top:5px;"><b> What Hourly Price Did You Settle?</b></h4>
+				<div style="color:rgb(0, 159, 225)" class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+					<div id="hourly-price-slider-payment" style="margin-top:7px; margin-bottom:5px"></div>
+					<p style="margin-left:5px; color:rgb(0, 159, 225); font-size:14px; margin-top:3px; font-weight:700"class="text-left">You will make: <span style="color:#69bf69">$<span style="font-size:14px;color:#69bf69" name="estimate" id="price"></span>/hr</span>&nbsp;&nbsp;<span style="color:grey; font-weight:100; position:absolute; margin-top:2px; font-size:10px;"><i>(Your student will be charged $<span id="student-charged-payment">17</span>/hr)</i></p>
+					<a href="javascript:void(0)" style="position:relative; z-index:1000;"id="change-hourly-price-cancel">
+						<h6 style="margin-top:0px; margin-bottom:10px; color:grey">
+						Cancel
+		            	</h6>
+		            </a>
+				</div>
+			</div>
+			<div id="change-hourly-price-link-div" class="row">
+	            	<h6 style="margin-top:-25px; margin-bottom:20px; color:grey">
+						<a style="position:relative; z-index:1000;" href="javascript:void(0);" id="change-hourly-price-link">
+							Change hourly price
+						</a>
+	            	</h6>
+	        </div>
 			<div style="text-align:center"class="row">
 				<h4 style="margin-top:0px"> <b>Secret Animal Code </b></h4>
 				<div style="display:none;font-size:14px;color:red" id="secret-animal-code-alert">
@@ -1753,6 +1772,21 @@
                 lower: [ new Link (
                   {
                     target: $('#payment')
+                  })
+                ],
+                format: {
+                  decimals:1
+                }
+              }
+        });
+        $("#hourly-price-slider-payment").noUiSlider({
+            start:15
+           	,range: {'min':[10], 'max':[40]}
+           	,step: 1
+           	,serialization: {
+                lower: [ new Link (
+                  {
+                    target: $('#price')
                   })
                 ],
                 format: {
