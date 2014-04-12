@@ -539,7 +539,7 @@ height: 50px;
 *************************************/
 html, body{
     height:100%;
-    font-family:'Roboto',sans-serif; 
+    font-family:'Roboto Condensed',sans-serif; 
     color:#fff; 
 }
 
@@ -1469,16 +1469,16 @@ span.twitter-typeahead {
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
-  font-family:'Roboto',sans-serif; 
+  font-family:'Roboto condensed',sans-serif; 
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  font-family:'Roboto',sans-serif; 
+  font-family:'Roboto condensed',sans-serif; 
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-  font-family:'Roboto',sans-serif; 
+  font-family:'Roboto condensed',sans-serif; 
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-  font-family:'Roboto',sans-serif; 
+  font-family:'Roboto condensed',sans-serif; 
 }
 
 button.btn-default:hover {

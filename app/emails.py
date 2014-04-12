@@ -418,7 +418,7 @@ def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_
     mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()
 
-def tutor_payment_receipt(user, tutor, amount, payment, charge_id, skill_name):
+def tutor_payment_receipt(user, tutor, amount, payment, charge_id, skill_name, student_name):
     student_name = user.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
     email_subject = "Your "  + skill_name + " Session with " + student_name
@@ -438,8 +438,8 @@ def tutor_payment_receipt(user, tutor, amount, payment, charge_id, skill_name):
     amount = hours * hourly_price
     date = payment.time_created.strftime("%B %d, %Y at %I:%M%p")
 
-    text = tutor_payment_receipt_text(date, charge_id, student_name, hourly_price, hours, amount)
-    html = tutor_payment_receipt_html(date, charge_id, student_name, hourly_price, hours, amount)
+    text = tutor_payment_receipt_text(date, charge_id, student_name, hourly_price, hours, amount, student_name)
+    html = tutor_payment_receipt_html(date, charge_id, student_name, hourly_price, hours, amount, student_name)
     
     part1 = MIMEText(text, 'plain', 'utf-8')
     part2 = MIMEText(html, 'html', 'utf-8')
@@ -576,7 +576,9 @@ def tutor_received_transfer_text(amount, bank_name, transfer_id, last4,date):
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount):
-    return """\n""" + \
+    return """For your next session with """ + tutor_name + """, you won't need to submit a request again. Just hit """+\
+    tutor_name + """ up to set up a time. At the end of the session, """ + tutor_name + """ will draft a bill, and ask for your """ +\
+    """updated secret code after you confirm the amount.\n\n""" + \
     """Receipt ID: """+  charge_id +"""\n""" +\
     """Time: """+  date +"""\n""" +\
     """Card Number: ****-****-****-"""+ card_last4 +"""\n""" +\
@@ -589,8 +591,11 @@ def student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly
     """How helpful was """ + tutor_name + """? Rate and review """ + tutor_name + """ here.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
-def tutor_payment_receipt_text(date, charge_id, tutor_name, hourly_price, hours, amount):
-    return """\n""" + \
+def tutor_payment_receipt_text(date, charge_id, tutor_name, hourly_price, hours, amount, student_name):
+    return """For your next session with """ + student_name + """, """ + student_name + """ won't need to submit a """+ \
+    """request again. Just coordinate through messaging and meet up. At the end of the session, click "REQUEST PAYMENT" on """ +\
+    """your feed page, find """ + student_name + """ in the drop-down list, and input the updated secret code after confirming the """ + \
+    """amount with """ + student_name + """.\n\n""" + \
     """Receipt ID: """+  charge_id +"""\n""" +\
     """Time: """+  date +"""\n""" +\
     """Student Name: """+ tutor_name +"""\n""" +\
@@ -601,8 +606,12 @@ def tutor_payment_receipt_text(date, charge_id, tutor_name, hourly_price, hours,
     """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
-def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours, amount):
+def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours, amount, student_name):
     return """
+    For your <b>next session with """ + student_name + """</b>, """ + student_name + """ won't need to submit a request again. 
+    Just coordinate through messaging and meet up. At the end of session, click "REQUEST PAYMENT" on your feed page, find """ + \
+    student_name + """ in the <b>drop-down list</b>, and input the <b>updated secret code</b> after confirming the amount with """ + student_name +""".
+    <br>
     <br>
     Receipt ID: """+  charge_id +"""<br>
     Time: """+  date +"""<br>
@@ -627,6 +636,9 @@ def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours,
 
 def student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount):
     return """
+    For your <b>next session with """ + tutor_name + """, you won't need to submit a request again. Just hit """ + tutor_name + """ up to set up a time. At the end of the session, """ + tutor_name + """ will draft a bill, and ask for your <b> updated secret code"""+\
+    """</b> after you confirm the amount.
+    <br>
     <br>
     Receipt ID: """+  charge_id +"""<br>
     Time: """+  date +"""<br>
@@ -684,10 +696,8 @@ def tutor_is_matched(student, tutor, skill_name):
 def student_is_matched_text(tutor_name, request_code):
     return """You have been matched with """ + tutor_name + """! Please follow these next steps: \n\n:""" + \
     """1. Message your Guru, and finalize meetup time & location (http://uguru.me/messages).\n\n""" +\
-    """2. At end of the session, your Guru will draft the bill on his device. Verify the bill, and give your Guru your code as proof of approval. You will automatically be charged for the approved amount.\n\n""" +\
-    """3. 3. Rate and review your Guru, and you are all done!\n\n""" +\
-    """Please bring(or remember) your 1-time secret code for this session:""" + request_code + """\n""" +\
-    """(Forget about cash, your code is your wallet!)\n""" +\
+    """2. At end of the session, your Guru will draft the bill on his/her device. Verify the bill, and give your Guru your secret code (find this at the top of your feed page) as proof of approval. You will automatically be charged for the approved amount.\n\n""" +\
+    """3. Review your Guru by signing in after the tutor has billed you. \n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def student_is_matched_html(tutor_name, request_code):
@@ -697,15 +707,11 @@ def student_is_matched_html(tutor_name, request_code):
     1. <a href="http://uguru.me/messages/"> Message</a> your Guru, and finalize meetup <b>time & location</b> .
     <br>
     <br>
-    2. At end of the session, your Guru will draft the bill on a smart device. <b> Verify the bill</b>, and give your Guru your <b>secret code</b> as proof of approval. You will automatically be charged 
+    2. At end of the session, your Guru will draft the bill on his/her device. <b> Verify the bill</b>, and give your Guru your <b>secret code</b>(find this at the top of your feed page) as proof of approval. You will automatically be charged 
     for the approved amount. 
     <br>
     <br>
-    3. Then you get to <b> rate and review </b> your Guru, and you are all done!
-    <br>
-    <br>
-    <b> Please bring(or remember) your 1-time secret code for this session:</b> <span style="color:red;font-weight:bold">'""" + request_code + """'</span><br>
-    (Forget about cash, your code is your wallet!)
+    3. <b> Review </b> your Guru by signing in after your Guru has billed you.    
     <br>
     <br>
     If you have any questions or concerns, please reply directly to this email. 

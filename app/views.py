@@ -1202,6 +1202,12 @@ def logout():
     flash('You have been logged out', 'info')
     return redirect(url_for("index"))
 
+@app.route('/logout-admin/')
+def admin_logout():
+    if session.get('admin'):
+        session.pop("admin")
+    return redirect(url_for('index'))
+
 
 @app.route('/login/', methods=('GET', 'POST'))
 def login():

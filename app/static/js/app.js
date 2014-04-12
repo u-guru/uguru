@@ -86,6 +86,9 @@ $(document).ready(function(){
         $('#tutor-signup-phone').val($('#tutor-signup-phone').val().slice(0,-1))
         return false;
       }
+      if (e.keyCode == 13) {
+        $('#tutor-next-link').trigger('click');
+      }
     });
 
     $('#student-signup-phone').keyup(function (e) { 
@@ -94,6 +97,9 @@ $(document).ready(function(){
       if ($('#student-signup-phone').val().length > 10) {
         $('#student-signup-phone').val($('#student-signup-phone').val().slice(0,-1))
         return false;
+      }
+      if (e.keyCode == 13) {
+        $('#student-next-link').trigger('click');
       }
     });
 
@@ -249,10 +255,7 @@ $(document).ready(function(){
         $('#home').hide();
         $('body').css('background-color','white')
         invert_olark();
-        // $('#login-page').show();
-        // $("#login-page").animate({width:'toggle'},350);
         $('#student-signup').show('slide', {direction: 'right'}, 200);
-        // $('#student-request').show('slide', {direction: 'right'}, 200);
     });
     $('#student-next-link').click(function() {
         if (!$('#student-signup-name').val() || !$('#student-signup-email').val() 
@@ -402,6 +405,17 @@ $(document).ready(function(){
       }
     });
 
+    $('#login-password').keyup(function(e) {
+      if (e.keyCode == 13) {
+        $('#login-submit-link').trigger('click');
+      }
+    });
+
+    $('#student-signup-location').keyup(function(e) {
+      if (e.keyCode == 13) {
+        $('#student-register').trigger('click');
+      }
+    });
 
     $('#add-skill-input-settings').keyup(function(e){
         if ($('#add-skill-input-settings').val()) {
