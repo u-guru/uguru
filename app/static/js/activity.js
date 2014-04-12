@@ -276,7 +276,7 @@ $(document).ready(function() {
     });
 
     $('#feed-messages').on('click', 'a.student-request-accept-btn', function() {
-        if (confirm('If you want to accept this request, you agree to this price. If so, click OK!')) {
+        if (confirm('By accepting this request, you agree to this price and to pay through Uguru.')) {
           $(this).click(false);
           request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
       

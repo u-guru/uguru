@@ -130,7 +130,7 @@ def student_incoming_tutor_request(user, tutor, request, skill_name, hourly_amou
 
 def student_match(user, tutor, request, skill_name, hourly_amount):
     notification = Notification(request=request)
-    notification.feed_message = "<b>You</b> have been matched with " + tutor.name + ", a " + skill_name + " tutor. </br>" + \
+    notification.feed_message = "<b>You</b> have been matched with <b>" + tutor.name + "</b>, a <b>" + skill_name + "</b> tutor. </br>" + \
         "Select here to start messaging your tutor."
     notification.skill_name = skill_name
     notification.request_tutor_amount_hourly = float(hourly_amount)
@@ -211,7 +211,7 @@ def student_payment_approval(user, tutor, payment, amount_charged, charge_id, sk
 
 def tutor_receive_payment(user, tutor, payment, amount_made):
     notification = Notification(payment=payment)
-    notification.feed_message = '<b>Congrats!</b> You have made <b>$' + str(amount_made) + "</b>."
+    notification.feed_message = 'Congrats! You have made <b>$' + str(amount_made) + "</b>."
     notification.feed_message_subtitle = "See your total balance above and cash out to your bank account."
     
     notification.custom_tag = 'tutor-receive-payment' 

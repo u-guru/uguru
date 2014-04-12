@@ -406,6 +406,7 @@ def submit_rating():
             rating = user.pending_ratings[0]
             print user.pending_ratings
             rating.student_rating = ajax_json['num_stars']
+            student_name = User.query.get(rating.student_id).name.split(" ")[0]
             if 'additional_detail' in ajax_json:
                 rating.student_rating_description = ajax_json['additional_detail']
             
@@ -417,9 +418,12 @@ def submit_rating():
                 db_session.rollback()
                 raise 
 
+            flash("For your next session with " + student_name + ", just set up a time and meetup. At the end of the session, request payment as you usually would with " + student_name + "'s regenerated student code.")
+
         if 'student-rating-tutor' in ajax_json:
             rating = user.pending_ratings[0]
             rating.tutor_rating = ajax_json['num_stars']
+            tutor_name = User.query.get(rating.tutor_id).name.split(" ")[0]
             
             if 'additional_detail' in ajax_json:
                 rating.tutor_rating_description = ajax_json['additional_detail']
@@ -432,7 +436,7 @@ def submit_rating():
                 db_session.rollback()
                 raise 
 
-        flash("Thank you for submitting your rating!")
+            flash("For your next session with " + tutor_name + ", you won't need to submit a request again. Just set up a time, meetup, and provide the regenerated code to " + tutor_name + " for payment.")
 
     return jsonify(return_json=return_json)     
 
@@ -639,8 +643,8 @@ def update_requests():
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
 
-            current_notification.feed_message = 'You accepted ' + student.name.split(' ')[0] + \
-                "'s request for " + skill_name.upper() + "."
+            current_notification.feed_message = 'You accepted <b>' + student.name.split(' ')[0] + \
+                "'s</b> request for <b>" + skill_name.upper() + "</b>."
             current_notification.feed_message_subtitle = "<b>Click here</b> to see next steps."
             current_notification.custom = 'tutor-accept-request'
             current_notification.time_created = datetime.now()

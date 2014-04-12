@@ -576,9 +576,8 @@ def tutor_received_transfer_text(amount, bank_name, transfer_id, last4,date):
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount):
-    return """For your next session with """ + tutor_name + """, you won't need to submit a request again. Just hit """+\
-    tutor_name + """ up to set up a time. At the end of the session, """ + tutor_name + """ will draft a bill, and ask for your """ +\
-    """updated secret code after you confirm the amount.\n\n""" + \
+    return """For your next session with """ + tutor_name + """, you won't need to submit a request again. Just set """+\
+    """ up a time, meetup, and provide your regenerated secret code for payment. Forget about cash - your code is your wallet!""" + \
     """Receipt ID: """+  charge_id +"""\n""" +\
     """Time: """+  date +"""\n""" +\
     """Card Number: ****-****-****-"""+ card_last4 +"""\n""" +\
@@ -636,8 +635,8 @@ def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours,
 
 def student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount):
     return """
-    For your <b>next session with """ + tutor_name + """, you won't need to submit a request again. Just hit """ + tutor_name + """ up to set up a time. At the end of the session, """ + tutor_name + """ will draft a bill, and ask for your <b> updated secret code"""+\
-    """</b> after you confirm the amount.
+    For your <b>next session with """ + tutor_name + """</b>, you won't need to submit a request again. Just set up a time, meetup, and provide the regenerated code to """ + tutor_name + """" for payment."""+\
+    """ Forget about cash - your code is your wallet!
     <br>
     <br>
     Receipt ID: """+  charge_id +"""<br>
