@@ -63,7 +63,7 @@
 	<br>
 	<div style="text-align:center"class="container-fluid" id="message-main">
 		<div class="row">
-			<div id="message-feed"class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6">
+			<div id="message-feed"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
 			{% for conversation in user.mailbox.conversations|reverse %}
 			<a id="conversation-{{loop.index}}" href="javascript:void(0)">
 				<div class="notification message {% if conversation.messages|length == 0 or (not conversation.is_read and conversation.messages[-1].sender_id != user.id) %} grey-background {% endif %}" align:"center">
@@ -128,6 +128,19 @@
 			</div>
 			<br>
 		  	<div class="container-fluid">
+		  		{% if conversation.guru in transactions or conversation.student in transactions %}
+		  		<div class="row">
+		  			<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+						<div style="text-align:center;"class="alert alert-info">
+							{% if user.verified_tutor %}
+							For your next session with {{conversation.student.name.split(" ")[0]}}, just set up a time and meet up! <br>After the session, ask {{conversation.student.name.split(" ")[0]}} for the regenerated secret code to request payment.
+							{% else %}
+							For your next session with {{conversation.guru.name.split(" ")[0]}}, <b>you won’t need to submit a request again.</b> <br>Just set up a time, meet up, and provide your regenerated secret code for payment
+							{% endif %}
+						</div>
+		  			</div>
+		  		</div>
+		  		{% endif %}
 				<div style="position:relative" id="default-message-box" class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">		
 					<div id="template-message" style="display:none"class="row">
 						<div style="margin-left:15px; margin-top:15px;padding-left:0px; padding-right:5px"class="col-md-8 col-xs-8" align="left">

@@ -1375,10 +1375,17 @@ def messages():
     if user.verified_tutor and not is_tutor_verified(user):
         return redirect(url_for('settings'))
     pretty_dates = {}
+    transactions = []
+    for p in user.payments:
+        if user.verified_tutor:
+            transactions.append(User.query.get(p.student_id))
+        else:
+            transactions.append(User.query.get(p.tutor_id))
     for conversation in user.mailbox.conversations:
         for message in conversation.messages:
             pretty_dates[message.id] = pretty_date(message.write_time)
-    return render_template('messages.html', user=user, pretty_dates=pretty_dates, environment = get_environment(), session=session)
+    return render_template('messages.html', user=user, pretty_dates=pretty_dates, environment = get_environment(), session=session, \
+        transactions = transactions)
 
 @app.route('/student_request/')
 def student_request():
