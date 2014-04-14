@@ -346,7 +346,7 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
-            url: '/submit-payment/' ,
+            url: '/submit-payment/',
             data: JSON.stringify(data),
             dataType: "json",
             success: function(result) {         

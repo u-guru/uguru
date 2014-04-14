@@ -162,7 +162,7 @@
 			{% endif %}
 			{% if user.total_earned > 0 %}
 			<h5 style="text-align:center; color:grey; margin-top:5px; margin-bottom:5px;">
-				Your Total Uguru Earnings: <span style="color:#69bf69"> <strong>${{user.total_earned}} </strong></span>
+				You have earned: <span style="color:#69bf69"> <strong>${{user.total_earned}} </strong></span>
 			</h5>
 			{% endif %}
 		</div>
@@ -401,7 +401,7 @@
 				<h4 style="margin-top:5px;"><b> What Hourly Price Did You Settle?</b></h4>
 				<div style="color:rgb(0, 159, 225)" class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
 					<div id="hourly-price-slider-payment" style="margin-top:7px; margin-bottom:5px"></div>
-					<p style="margin-left:5px; color:rgb(0, 159, 225); font-size:14px; margin-top:3px; font-weight:700"class="text-left">You will make: <span style="color:#69bf69">$<span style="font-size:14px;color:#69bf69" name="estimate" id="price"></span>/hr</span>&nbsp;&nbsp;<span style="color:grey; font-weight:100; position:absolute; margin-top:2px; font-size:10px;"><i>(Your student will be charged $<span id="student-charged-payment">17</span>/hr)</i></p>
+					<p style="margin-left:5px; color:grey; font-size:14px; margin-top:3px; font-weight:700"class="text-left">You will make: <span style="color:#69bf69">$<span style="font-size:14px;color:#69bf69" name="estimate" id="price"></span>/hr</span>&nbsp;&nbsp;<span style="color:grey; display:block; font-weight:100; font-size:10px;"><i>(Your student will be charged $<span id="student-charged-payment">17/hr for first payment, or $2 + 3% total for recurring payments.) <span id="student-charged-recurring-payment"></span></i></p>
 					<a href="javascript:void(0)" style="position:relative; z-index:1000;"id="change-hourly-price-cancel">
 						<h6 style="margin-top:0px; margin-bottom:10px; color:grey">
 						Cancel
@@ -1018,110 +1018,111 @@
 	   						</div>
 	   					</div>
 	  				</div>
-	  				
-	  				{% if not (request_dict[n.request_id]['request'].requested_tutors ) %}
-		  			<div id="already-have-active-request-alert" style="display:show" class="row-fluid">
-                        <div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-                          <div style="margin-bottom:0"class="alert alert-danger">Sorry! We currently don't have tutors for this course. <br>We've registered your request for the time being and will let you know if we find tutors.<br>
-                          Unfortunately we are mainly focusing on lower div courses at the moment.</div>
-                        </div>
-                    </div>
-	  				{% elif not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
-	  				<div style="display:block" class="row-fluid">
-		  				<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-		  					<div style="margin-bottom:0"class="alert alert-info">Sit tight and wait! <br>We will email you each time a tutor has agreed to help. </div>
-		  				</div>
-		  			</div>
-		  			{% else %}
-		  			<div style="display:block" class="row-fluid">
-		  				<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-		  					<div style="margin-bottom:0"class="alert alert-danger">You canceled this request.</div>
-		  				</div>
-		  			</div>
-		  			{% endif %}
-					<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px; display:block">
-					  	{% if user.profile_url %}
-					  	<img src="{{user.profile_url}}" style="align:center" class="user-photo">
-					  	{% endif %}
-					  <div class="row">
-						  <div class="request-info col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
-							  	<div class="row-fluid">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Description</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].description}}</div>
-							  		</div>
-							  	</div>
-							  	<div class="row-fluid">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Location</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].location}}</div>
-							  		</div>
-							  	</div>
-							  	<div class="row-fluid">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Availability</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].available_time}}</div>
-							  		</div>
-							  	</div>
-							  	<div class="row-fluid">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Group Size</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].num_students}}
-							  			</div>
-							  		</div>
-							  	</div>
-							  	<div class="row-fluid">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Requested Hourly Price</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">${{request_dict[n.request_id]['request'].student_estimated_hour}}</div>
-							  		</div>
-							  	</div>
-							  	<div class="row-fluid">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Estimated Session Time</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].time_estimate}} hours</div>
-							  		</div>
-							  	</div>
-							  	<div class="row-fluid">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4"><b>Requested Total Price</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4">${{(request_dict[n.request_id]['request'].time_estimate * request_dict[n.request_id]['request'].student_estimated_hour)}}</div>
-							  		</div>
-							  	</div>
-							</div>
-					 	</div>
-					 	{% if request_dict[n.request_id]['request'].requested_tutors|length > 0 %}
-					 	<div style="text-align:center; float:center; margin-top:10px" class="row">
-					 		<h4>Contacted Tutors</h4>
-					 		<div id="contacted-tutors">
-					 		{% for tutor in request_dict[n.request_id]['request'].requested_tutors %}
-					 		<span>
-					 			<img src="{{tutor.profile_url}}" style="align:center" class="tutor-photo"> 
-					 		</span>
-					 		{% endfor %}
-					 		</div>
-					 	</div>
-					 	{% endif %}
-					 	{% if not request_dict[n.request_id]['request'].connected_tutor_id %}
-					 	<div style="text-align:center; float:center; margin-top:20px; font-size:14px; color:grey;" class="row">
-					 		<a class="cancel-request" style="color:red" href="javascript:void(0)"> (Click here to cancel this request) </a>
-					 	</div>
-					 	{% endif %}
-					 </div>
+	  				<div id="request-details">
+		  				{% if not (request_dict[n.request_id]['request'].requested_tutors ) %}
+			  			<div id="already-have-active-request-alert" style="display:show" class="row-fluid">
+	                        <div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+	                          <div style="margin-bottom:0"class="alert alert-danger">Sorry! We currently don't have tutors for this course. <br>We've registered your request for the time being and will let you know if we find tutors.<br>
+	                          Unfortunately we are mainly focusing on lower div courses at the moment.</div>
+	                        </div>
+	                    </div>
+		  				{% elif not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
+		  				<div style="display:block" class="row-fluid">
+			  				<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+			  					<div style="margin-bottom:0"class="alert alert-info">Sit tight and wait! <br>We will email you each time a tutor has agreed to help. </div>
+			  				</div>
+			  			</div>
+			  			{% else %}
+			  			<div style="display:block" class="row-fluid">
+			  				<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+			  					<div style="margin-bottom:0"class="alert alert-danger">You canceled this request.</div>
+			  				</div>
+			  			</div>
+			  			{% endif %}
+						<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px; display:block">
+						  	{% if user.profile_url %}
+						  	<img src="{{user.profile_url}}" style="align:center" class="user-photo">
+						  	{% endif %}
+						  <div class="row">
+							  <div class="request-info col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
+								  	<div class="row-fluid">
+								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
+								  			<div class="h4 request-info-row"><b>Description</b></div>
+								  		</div>
+								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
+								  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].description}}</div>
+								  		</div>
+								  	</div>
+								  	<div class="row-fluid">
+								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
+								  			<div class="h4 request-info-row"><b>Location</b></div>
+								  		</div>
+								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
+								  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].location}}</div>
+								  		</div>
+								  	</div>
+								  	<div class="row-fluid">
+								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
+								  			<div class="h4 request-info-row"><b>Availability</b></div>
+								  		</div>
+								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
+								  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].available_time}}</div>
+								  		</div>
+								  	</div>
+								  	<div class="row-fluid">
+								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
+								  			<div class="h4 request-info-row"><b>Group Size</b></div>
+								  		</div>
+								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
+								  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].num_students}}
+								  			</div>
+								  		</div>
+								  	</div>
+								  	<div class="row-fluid">
+								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
+								  			<div class="h4 request-info-row"><b>Requested Hourly Price</b></div>
+								  		</div>
+								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
+								  			<div class="h4 request-info-row">${{request_dict[n.request_id]['request'].student_estimated_hour}}</div>
+								  		</div>
+								  	</div>
+								  	<div class="row-fluid">
+								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
+								  			<div class="h4 request-info-row"><b>Estimated Session Time</b></div>
+								  		</div>
+								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
+								  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].time_estimate}} hours</div>
+								  		</div>
+								  	</div>
+								  	<div class="row-fluid">
+								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
+								  			<div class="h4"><b>Requested Total Price</b></div>
+								  		</div>
+								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
+								  			<div class="h4">${{(request_dict[n.request_id]['request'].time_estimate * request_dict[n.request_id]['request'].student_estimated_hour)}}</div>
+								  		</div>
+								  	</div>
+								</div>
+						 	</div>
+						 	{% if request_dict[n.request_id]['request'].requested_tutors|length > 0 %}
+						 	<div style="text-align:center; float:center; margin-top:10px" class="row">
+						 		<h4>Contacted Tutors</h4>
+						 		<div id="contacted-tutors">
+						 		{% for tutor in request_dict[n.request_id]['request'].requested_tutors %}
+						 		<span>
+						 			<img src="{{tutor.profile_url}}" style="align:center" class="tutor-photo"> 
+						 		</span>
+						 		{% endfor %}
+						 		</div>
+						 	</div>
+						 	{% endif %}
+						 	{% if not request_dict[n.request_id]['request'].connected_tutor_id %}
+						 	<div style="text-align:center; float:center; margin-top:20px; font-size:14px; color:grey;" class="row">
+						 		<a class="cancel-request" style="color:grey" href="javascript:void(0)"> (Click here to edit this request) </a>
+						 	</div>
+						 	{% endif %}
+						 </div>
+						</div>
 					</div>
 			{% elif n.custom_tag  == 'student-incoming-offer' %}
 				<div id="{{n.a_id_name}}-detailed" style="display:none;">

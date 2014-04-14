@@ -454,6 +454,7 @@ def submit_payment():
         user = User.query.get(user_id)
 
         if 'submit-payment' in ajax_json:
+            recurring = None
             conversation_id = ajax_json.get('submit-payment')
             total_time = ajax_json.get('total-time')
 
@@ -481,6 +482,18 @@ def submit_payment():
                 r.connected_tutor_hourly = int(float(ajax_json['price-change']))
             else:
                 total_amount = prices_reversed_dict[r.connected_tutor_hourly] * float(total_time)
+
+            #if user has already has a payment with this student id
+            p = Payment.query.filter_by(tutor_id=user.id, student_id=student.id)
+            if p:
+                recurring = True
+                if 'price-change' in ajax_json:
+                    total_amount = (float(ajax_json['price-change']) * float(total_time) * 1.03) + 2
+                else:
+                    total_amount = (r.connected_tutor_hourly * float(total_time) * 1.03) + 2
+
+            print total_amount
+
             stripe_amount_cents = int(total_amount * 100)
 
             # user.incoming_requests_to_tutor.remove(r)
@@ -503,7 +516,7 @@ def submit_payment():
 
             charge_id = charge["id"]
 
-            amount_charged = float(stripe_amount_cents / 100)
+            amount_charged = float(stripe_amount_cents / 100.0)
             
 
             db_session.add(payment)
@@ -541,7 +554,7 @@ def submit_payment():
 
             from notifications import student_payment_approval, tutor_receive_payment
             tutor_notification = tutor_receive_payment(student, tutor, payment, amount_made)
-            student_notification = student_payment_approval(student, tutor, payment, amount_charged, charge_id, skill_name)
+            student_notification = student_payment_approval(student, tutor, payment, amount_charged, charge_id, skill_name, recurring)
             tutor.notifications.append(tutor_notification)
             student.notifications.append(student_notification)
             db_session.add_all([tutor_notification, student_notification])

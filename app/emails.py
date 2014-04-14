@@ -383,7 +383,7 @@ def send_message_alert_html(receiver_name, sender_name):
     (813) 500 - 9853
     """
 
-def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_name):
+def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_name, recurring):
     student_name = user.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
     email_subject = "Your " + skill_name + " Session with " + tutor_name
@@ -402,6 +402,9 @@ def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_
     hourly_price = prices_reversed_dict[payment.tutor_rate]
     hours = payment.time_amount
     date = payment.time_created.strftime("%B %d, %Y at %I:%M%p")
+
+    if recurring:
+        hourly_price = payment.tutor_rate
 
     text = student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
     html = student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
@@ -582,9 +585,9 @@ def student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly
     """Time: """+  date +"""\n""" +\
     """Card Number: ****-****-****-"""+ card_last4 +"""\n""" +\
     """Guru Name: """+ tutor_name +"""\n""" +\
-    """Hourly Price: $"""+ str(hourly_price) +""" (Including Uguru fees)\n""" +\
+    """Hourly Price: $"""+ str(hourly_price) +"""\n""" +\
     """Hours: """+ str(hours) +""" hours\n""" +\
-    """Total Amount: $"""+ str(amount) +"""\n\n""" +\
+    """Total Amount: $"""+ str(amount) +"""(Including Uguru fees)\n\n""" +\
     """Your payment is handled by Stripe, a secure third-party payment platform\n\n""" + \
     """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
     """How helpful was """ + tutor_name + """? Rate and review """ + tutor_name + """ here.\n\n""" +\
@@ -643,9 +646,9 @@ def student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly
     Time: """+  date +"""<br>
     Card Number: ****-****-****-"""+  card_last4 +"""<br>
     Guru Name: """+  tutor_name +"""<br>
-    Hourly Price: $""" + str(hourly_price) + """ (including Uguru fees)<br>
+    Hourly Price: $""" + str(hourly_price) + """<br>
     Hours: """ + str(hours) + """ hours<br>
-    Total Amount: $""" + str(amount) + """
+    Total Amount: $""" + str(amount) + """(including Uguru fees)
     <br>
     <br>
     <i>Your payment is handled by <a href="http://stripe.com"> Stripe</a>, a secure third-party payment platform</i>

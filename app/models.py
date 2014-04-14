@@ -463,6 +463,7 @@ class Request(Base):
     description = Column(String)
     available_time = Column(String)
     location = Column(String)
+    last_update = Column(DateTime)
 
 
     urgency = Column(SmallInteger)

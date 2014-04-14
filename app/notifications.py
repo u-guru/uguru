@@ -193,7 +193,7 @@ def student_payment_proposal(user, tutor, payment):
     user.feed_notif = user.feed_notif + 1
     return notification
 
-def student_payment_approval(user, tutor, payment, amount_charged, charge_id, skill_name):
+def student_payment_approval(user, tutor, payment, amount_charged, charge_id, skill_name, recurring):
     notification = Notification(payment=payment)
     notification.feed_message = "<b>$" + str(amount_charged) + "</b> payment has been sent to " + \
         tutor.name.split(" ")[0] + "."
@@ -205,7 +205,7 @@ def student_payment_approval(user, tutor, payment, amount_charged, charge_id, sk
         notification.image_url = tutor.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
-    student_payment_receipt(user, tutor.name.split(" ")[0], amount_charged, payment, charge_id, skill_name)
+    student_payment_receipt(user, tutor.name.split(" ")[0], amount_charged, payment, charge_id, skill_name, recurring)
     tutor_payment_receipt(user, tutor, amount_charged, payment, charge_id, skill_name, user.name.split(" ")[0])
     return notification
 
