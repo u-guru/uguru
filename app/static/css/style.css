@@ -27,7 +27,7 @@
     position:absolute;    /* This breaks the div from the normal HTML document. */
     top: 6px;
     right:15px;
-    padding:2px 3px 1px 4px;
+    padding:2px 5px 1px 4px;
     background-color:red; /* you could use a background image if you'd like as well */
     color:white;
     font-weight:bold;
@@ -44,7 +44,7 @@
   position:absolute;    /* This breaks the div from the normal HTML document. */
   top: 6px;
   right:10px;
-  padding:2px 3px 1px 4px;
+  padding:2px 5px 1px 4px;
   background-color:red; /* you could use a background image if you'd like as well */
   color:white;
   font-weight:bold;
@@ -61,7 +61,7 @@
   position:absolute;    /* This breaks the div from the normal HTML document. */
   top: 6px;
   left:12px;
-  padding:2px 3px 1px 4px;
+  padding:2px 5px 1px 4px;
   background-color:red; /* you could use a background image if you'd like as well */
   color:white;
   font-weight:bold;

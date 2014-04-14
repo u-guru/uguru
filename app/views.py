@@ -261,7 +261,7 @@ def admin():
 
         for r in Request.query.all()[::-1]:
             request_dict = {}
-            payment_dict = {}
+            
             request_dict['request'] = r
             request_dict['date'] = pretty_date(r.time_created)
             skill = Skill.query.get(r.skill_id)
@@ -277,35 +277,50 @@ def admin():
             request_dict['total_seen']  = total_seen_count
             request_dict['pending-ratings'] = 0
             request_dict['message-length'] = 0
-            payment_dict['payment'] = None
             if r.connected_tutor_id:
                 tutor = User.query.get(r.connected_tutor_id)
                 request_dict['connected-tutor'] = tutor
                 c = Conversation.query.filter_by(guru=tutor, student=student).first()
                 if c:
                     request_dict['message-length'] = len(c.messages)
-                p = None 
+                _payments = None 
                 if tutor and student:
-                    p = Payment.query.filter_by(tutor_id=tutor.id, student_id=student.id).first()
-                if p:
-                    from app.static.data.prices import prices_dict
-                    prices_reversed_dict = {v:k for k, v in prices_dict.items()}
-                    payment_dict['payment'] = p
-                    payment_dict['student'] = student
-                    payment_dict['tutor'] = tutor
-                    payment_dict['student-hourly'] = prices_reversed_dict[p.tutor_rate]
-                    payment_dict['tutor-hourly'] = p.tutor_rate
-                    student_charge = payment_dict['student-hourly'] * p.time_amount
-                    payment_dict['student-total'] = student_charge
-                    tutor_paid = p.tutor_rate * p.time_amount
-                    stripe_fees = student_charge * 0.029 + 0.30
-                    payment_dict['tutor-total'] = tutor_paid
-                    payment_dict['stripe-fees'] = round(stripe_fees, 2)
-                    request_dict['payment'] = round(student_charge - tutor_paid - stripe_fees, 2)
-                    payment_dict['profit'] = request_dict['payment']
-                    total_profit += payment_dict['profit']
-                    total_revenue += student_charge
-                    payments.append(payment_dict)
+                    _payments = Payment.query.filter_by(tutor_id=tutor.id, student_id=student.id)
+                if _payments:
+                    _payments = sorted(_payments, key=lambda d:d.time_created)
+                    count = 0
+                    for p in _payments:
+                        payment_dict = {}
+                        payment_dict['recurring'] = False
+                        if count >= 1:
+                            payment_dict['recurring'] = True
+                        # payment_dict['recurring'] = len(_payments) > 1
+                        from app.static.data.prices import prices_dict
+                        prices_reversed_dict = {v:k for k, v in prices_dict.items()}
+                        payment_dict['payment'] = p
+                        payment_dict['time_created'] = pretty_date(p.time_created)
+                        payment_dict['student'] = student
+                        payment_dict['tutor'] = tutor
+                        if count >= 1:
+                            payment_dict['student-hourly'] = p.tutor_rate
+                        else: 
+                            payment_dict['student-hourly'] = prices_reversed_dict[p.tutor_rate]
+                        payment_dict['tutor-hourly'] = p.tutor_rate
+                        student_charge = payment_dict['student-hourly'] * p.time_amount
+                        if count >=1:
+                            payment_dict['student-total'] = student_charge  * 1.03 + 2
+                        else:
+                            payment_dict['student-total'] = student_charge 
+                        tutor_paid = p.tutor_rate * p.time_amount
+                        stripe_fees = payment_dict['student-total'] * 0.029 + 0.30
+                        payment_dict['tutor-total'] = tutor_paid
+                        payment_dict['stripe-fees'] = round(stripe_fees, 2)
+                        request_dict['payment'] = round(payment_dict['student-total'] - tutor_paid - stripe_fees, 2)
+                        payment_dict['profit'] = request_dict['payment']
+                        total_profit += payment_dict['profit']
+                        total_revenue += student_charge
+                        payments.append(payment_dict)
+                        count += 1
                 if student and student.pending_ratings:
                     request_dict['pending-ratings'] += 1
                 if tutor and tutor.pending_ratings:
@@ -313,6 +328,7 @@ def admin():
 
             all_requests.append(request_dict)
         all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
+        payments = sorted(payments, key=lambda d:d['payment'].time_created, reverse=True)
         for u in users: 
             pretty_dates[u.id] = pretty_date(u.time_created)
             if u.skills:
@@ -485,7 +501,7 @@ def submit_payment():
 
             #if user has already has a payment with this student id
             p = Payment.query.filter_by(tutor_id=user.id, student_id=student.id)
-            if p:
+            if p.first():
                 recurring = True
                 if 'price-change' in ajax_json:
                     total_amount = (float(ajax_json['price-change']) * float(total_time) * 1.03) + 2
