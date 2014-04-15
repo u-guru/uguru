@@ -257,6 +257,7 @@
     <div class="tab-pane active" id="tutors">
         <div class="container">
             <div style="margin:20px; text-align:center" class="row">
+                # Payments: {{payments|length}} 
             </div>
             <div class="row-fluid">
                 <table class="table table-striped">
@@ -292,6 +293,40 @@
                                 <td style="color:green"> +${{payment_dict['profit']}}</td>
                             </tr>
                         {% endfor %}
+                    <tr style="font-size:14px;" class="info">
+                        <td style="font-weight:bold;">
+                            AVG
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td style="font-weight:bold;">
+                           ${{payment_analytics['avg-student-rate']/(payments|length)}}/hr
+                        </td>
+                        <td style="font-weight:bold;">
+                           ${{payment_analytics['avg-tutor-rate']/(payments|length)}}/hr
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td style="font-weight:bold;">
+                            ${{payment_analytics['avg-student-charge']/(payments|length)}}
+                        </td>
+                        <td style="font-weight:bold;">
+                            ${{payment_analytics['avg-tutor-paid']/(payments|length)}}
+                        </td>
+                        <td style="font-weight:bold;">
+                            ${{payment_analytics['avg-stripe-fees']/(payments|length)}}
+                        </td>
+                        <td style="font-weight:bold;">
+                            ${{payment_analytics['avg-profit']/(payments|length)}}
+                        </td>
+                    </tr>
                     <tr>
                         <td>
                         </td>
@@ -303,18 +338,24 @@
                         </td>
                         <td>
                         </td>
-                        <td style="font-weight:bold">
-                           Total Revenue:
-                        </td>
-                        <td style="font-weight:bold; color:green">
-                            ${{total_revenue}}
-                        </td>
                         <td>
                         </td>
-                        <td style="font-weight:bold">
-                            Total: 
+                        <td style="font-weight:bold;text-align:right">
+                           Cash Flow:
                         </td>
-                        <td style="font-weight:bold; color:green">
+                        <td style="font-weight:bold; color:green;text-align:left">
+                            ${{total_revenue}}
+                        </td>
+                        <td style="font-weight:bold;text-align:right">
+                            Revenue:
+                        </td>
+                        <td style="font-weight:bold; text-align:left; color:green">
+                            ${{payment_analytics['avg-stripe-fees'] + total_profit}}
+                        </td>
+                        <td style="font-weight:bold;text-align:right">
+                            Profit: 
+                        </td>
+                        <td style="font-weight:bold; color:green;text-align:left">
                             ${{total_profit}}
                         </td>
                     </tr>

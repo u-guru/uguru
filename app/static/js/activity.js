@@ -150,6 +150,11 @@ $(document).ready(function() {
     $('#add-bank-account-info').show();
    });
 
+   $('#bank-account-confirm-back-link').click(function() {
+    $('#cash-out-info').hide();
+    $('#activity').show();
+   })
+
    $('#bank-account-back-link').click(function() {
     $('#add-bank-account-info').hide();
     $('#activity').show();

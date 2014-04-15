@@ -212,6 +212,15 @@ def admin():
         skills_array = []
         all_requests = []
         transactions = []
+        payment_analytics=\
+            {
+                'avg-student-rate':0,
+                'avg-tutor-rate':0,
+                'avg-student-charge':0,
+                'avg-tutor-paid':0,
+                'avg-stripe-fees':0,
+                'avg-profit':0
+            }
         total_profit = 0
         total_revenue = 0
         ratings_dict = {}
@@ -305,18 +314,24 @@ def admin():
                             payment_dict['student-hourly'] = p.tutor_rate
                         else: 
                             payment_dict['student-hourly'] = prices_reversed_dict[p.tutor_rate]
+                        payment_analytics['avg-student-rate'] += payment_dict['student-hourly']
                         payment_dict['tutor-hourly'] = p.tutor_rate
+                        payment_analytics['avg-tutor-rate'] += payment_dict['tutor-hourly']
                         student_charge = payment_dict['student-hourly'] * p.time_amount
                         if count >=1:
                             payment_dict['student-total'] = student_charge  * 1.03 + 2
                         else:
                             payment_dict['student-total'] = student_charge 
+                        payment_analytics['avg-student-charge'] += payment_dict['student-total']
                         tutor_paid = p.tutor_rate * p.time_amount
+                        payment_analytics['avg-tutor-paid'] += tutor_paid
                         stripe_fees = payment_dict['student-total'] * 0.029 + 0.30
                         payment_dict['tutor-total'] = tutor_paid
                         payment_dict['stripe-fees'] = round(stripe_fees, 2)
+                        payment_analytics['avg-stripe-fees'] += payment_dict['stripe-fees']
                         request_dict['payment'] = round(payment_dict['student-total'] - tutor_paid - stripe_fees, 2)
                         payment_dict['profit'] = request_dict['payment']
+                        payment_analytics['avg-profit'] += payment_dict['profit']
                         total_profit += payment_dict['profit']
                         total_revenue += student_charge
                         payments.append(payment_dict)
@@ -343,14 +358,13 @@ def admin():
         from collections import Counter
         import operator
         skills_counter = dict(Counter(skills_array))
-        print skills_counter
         skills_counter = sorted(skills_counter.iteritems(), key=operator.itemgetter(1))
         return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
             skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, \
             all_requests = all_requests, skills_counter = skills_counter, notifications=notifications,\
             payments=payments, total_profit=total_profit, environment = get_environment(), ratings=Rating.query.all(),\
             ratings_dict=ratings_dict, transactions=transactions, conversations=conversations, users_last_active=users_last_active,\
-            total_revenue = total_revenue)
+            total_revenue = total_revenue, payment_analytics=payment_analytics)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
