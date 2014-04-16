@@ -650,6 +650,43 @@ $(document).ready(function() {
       }
     });
 
+    $('#feed-messages').on('click', 'a.edit-request-back-link', function() {
+      $(this).parent().parent().parent().siblings('.edit-request').hide();
+      $(this).parent().parent().parent().siblings('.request-details').show();
+      $(this).addClass('feed-message-link');
+      $(this).removeClass('edit-request-back-link');
+    });
+    
+    $('#feed-messages').on('click', 'a.edit-request', function() {
+      $(this).parent().parent().parent().hide();
+      $(this).parent().parent().parent().siblings('.page-title').children().children('div:first').children('a:first').addClass('edit-request-back-link');
+      $(this).parent().parent().parent().siblings('.page-title').children().children('div:first').children('a:first').removeClass('feed-message-link');
+      $(this).parent().parent().parent().siblings('.edit-request').show();
+    });
+
+    $('#feed-messages').on('click', 'a.edit-request-submit', function() {
+      info_div = $(this).parent().parent();
+      data = {
+        'edit-request': true, 
+        'notif-num':last_clicked_notif_index,
+        'additional': info_div.siblings('.edit-request-additional').children().children().children('input').val(),
+        'availability': info_div.siblings('.edit-request-availability').children().children().children('input').val(),
+        'location': info_div.siblings('.edit-request-location').children().children().children('input').val(),
+        'time-length': info_div.siblings('.edit-request-time-length').children().children().children('div').val(),
+        'price': info_div.siblings('.edit-request-price').children().children().children('div').val(),
+      }
+      $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/update-request/' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function(result) {         
+                window.location.replace('/activity/');
+            }
+        });      
+    });
+
     $('#feed-messages').on('click', 'a.cancel-request', function() {
       if (confirm('Are you sure you want to cancel this request? It cannot be undone and there will no previous history of this request.')) {
         data = {

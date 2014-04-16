@@ -718,6 +718,39 @@ def update_requests():
                 db_session.rollback()
                 raise 
 
+        if 'edit-request' in ajax_json:
+            notif_num = ajax_json.get('notif-num')
+            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
+            current_notification = user_notifications[notif_num]
+            _request = Request.query.get(current_notification.request_id)
+            changed_fields = {}
+
+            if ajax_json['additional'] != _request.description:
+                changed_fields['additional'] = {'before':_request.description, 'after':ajax_json['additional']}
+                _request.description = ajax_json['additional']
+            if ajax_json['availability'] != _request.available_time:
+                changed_fields['availability'] = {'before':_request.available_time, 'after':ajax_json['availability']}
+                _request.available_time = ajax_json['availability']
+            if ajax_json['location'] != _request.location:
+                changed_fields['location'] = {'before':_request.location, 'after':ajax_json['location']}
+                _request.location = ajax_json['location']
+            if float(ajax_json['time-length']) != _request.time_estimate:
+                changed_fields['time-length'] = {'before':_request.time_estimate, 'after':float(ajax_json['time-length'])}
+                _request.time_estimate = float(ajax_json['time-length'])
+            if int(ajax_json['price']) != _request.student_estimated_hour:
+                changed_fields['price'] = {'before':_request.student_estimated_hour, 'after':int(ajax_json['price'])}
+                _request.student_estimated_hour = int(ajax_json['price'])
+            
+            if changed_fields:
+                _request.last_updated = datetime.now()
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+            flash("Your request has been successfully edited!")
+
         if 'tutor-reject' in ajax_json:
             notif_num = ajax_json.get('notif-num')
             request_num = ajax_json.get('request-num')
@@ -764,7 +797,7 @@ def update_requests():
                 tutor_notification.feed_message_subtitle = '<b>Click here</b> to see the status of your accepted request'
                 # student_canceled_request(user, student_notification.skill_name, tutor)
                 # print "Email sent to " + tutor.name
-
+            flash("Your request has been successfully canceled.")
             try:
                 db_session.commit()
             except:
@@ -1364,11 +1397,18 @@ def activity():
     payment_dict = {}
     pretty_dates = {}
     pending_ratings_dict = {}
+    outgoing_request_index = {}
     tutor_dict = {}
+
     urgency_dict = ['ASAP', 'Tomorrow', 'This week']
 
     from app.static.data.prices import prices_dict
     prices_reversed_dict = {v:k for k, v in prices_dict.items()}
+    if user.outgoing_requests:
+        index = 0
+        for o_r in user.outgoing_requests:
+            outgoing_request_index[o_r] = index
+            index += 1
     if user.pending_ratings:
         rating = user.pending_ratings[0]
         student = User.query.get(rating.student_id)
@@ -1401,7 +1441,8 @@ def activity():
     return render_template('activity.html', key=stripe_keys['publishable_key'], address_book=address_book, \
         logged_in=session.get('user_id'), user=user, request_dict = request_dict, payment_dict = payment_dict,\
         pretty_dates = pretty_dates, urgency_dict=urgency_dict, tutor_dict=tutor_dict, pending_ratings_dict=pending_ratings_dict,\
-        environment = get_environment(), prices_dict=prices_dict, prices_reversed_dict=prices_reversed_dict, session=session)
+        environment = get_environment(), prices_dict=prices_dict, prices_reversed_dict=prices_reversed_dict, session=session,\
+        outgoing_request_index=outgoing_request_index)
 
 @app.route('/tutor_offer/')
 def tutor_offer():

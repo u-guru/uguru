@@ -6,7 +6,6 @@
 
 {% block content %}
 
-
 {% if user.pending_ratings|length > 0 %}
 	<div id="rating-form-tutor">
 		<div class="page-title">
@@ -1018,28 +1017,28 @@
 	   						</div>
 	   					</div>
 	  				</div>
-	  				<div id="request-details">
-		  				{% if not (request_dict[n.request_id]['request'].requested_tutors ) %}
-			  			<div id="already-have-active-request-alert" style="display:show" class="row-fluid">
-	                        <div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-	                          <div style="margin-bottom:0"class="alert alert-danger">Sorry! We currently don't have tutors for this course. <br>We've registered your request for the time being and will let you know if we find tutors.<br>
-	                          Unfortunately we are mainly focusing on lower div courses at the moment.</div>
-	                        </div>
-	                    </div>
-		  				{% elif not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
-		  				<div style="display:block" class="row-fluid">
-			  				<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-			  					<div style="margin-bottom:0"class="alert alert-info">Sit tight and wait! <br>We will email you each time a tutor has agreed to help. </div>
-			  				</div>
-			  			</div>
-			  			{% else %}
-			  			<div style="display:block" class="row-fluid">
-			  				<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-			  					<div style="margin-bottom:0"class="alert alert-danger">You canceled this request.</div>
-			  				</div>
-			  			</div>
-			  			{% endif %}
+	  				<div class="request-details">
 						<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px; display:block">
+						  	{% if not (request_dict[n.request_id]['request'].requested_tutors ) %}
+				  			<div id="already-have-active-request-alert" style="display:show;" class="row">
+		                        <div style="margin-top:10px; float:center; margin:10px auto"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+		                          <div style="margin-bottom:0"class="alert alert-danger">Sorry! We currently don't have tutors for this course. <br>We've registered your request for the time being and will let you know if we find tutors.<br>
+		                          Unfortunately we are mainly focusing on lower div courses at the moment.</div>
+		                        </div>
+		                    </div>
+			  				{% elif not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
+			  				<div style="display:block;" class="row">
+				  				<div style="margin-top:10px; float:center; margin:10px auto;"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+				  					<div style="margin-bottom:0;"class="alert alert-info">Sit tight and wait! <br>We will email you each time a tutor has agreed to help. </div>
+				  				</div>
+				  			</div>
+				  			{% else %}
+				  			<div style="display:block;" class="row">
+				  				<div style="margin-top:10px; float:center; margin:10px auto"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+				  					<div style="margin-bottom:0"class="alert alert-danger">You canceled this request.</div>
+				  				</div>
+				  			</div>
+				  			{% endif %}
 						  	{% if user.profile_url %}
 						  	<img src="{{user.profile_url}}" style="align:center" class="user-photo">
 						  	{% endif %}
@@ -1118,12 +1117,84 @@
 						 	{% endif %}
 						 	{% if not request_dict[n.request_id]['request'].connected_tutor_id %}
 						 	<div style="text-align:center; float:center; margin-top:20px; font-size:14px; color:grey;" class="row">
-						 		<a class="cancel-request" style="color:grey" href="javascript:void(0)"> (Click here to cancel this request) </a>
+						 		<a class="edit-request" style="color:grey" href="javascript:void(0)"> (Click here to edit this request) </a>
 						 	</div>
 						 	{% endif %}
 						 </div>
+					</div>
+					{% if not request_dict[n.request_id]['request'].connected_tutor_id %}
+					<div style="display:none; color:#00a9e5" class="edit-request">
+					    <div class="container-fluid">
+					    	<div style="display:show" class="row-fluid">
+				  				<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+				  					<div style="margin-bottom:0"class="alert alert-info">Edit your request carefully! Each time you do, tutors are notified.</div>
+				  				</div>
+						  	</div>
+					        <div class="row" style="margin-top:15px">
+				                <div class="edit-request-additional row">
+				                      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+				                        <div class="form-group">
+				                            <label for="exampleInputEmail1"><strong>SPECIFY TOPICS AND GURU PREFERENCES</strong></label> <br>
+				                            <input style="width:100%"id="student-signup-description" name="skill" type="email" class="input-signup" placeholder="Data Structures, Midterm Prep, with Prof Hilfinger" id="login-email" value="{{request_dict[n.request_id]['request'].description}}">
+				                        </div>
+				                      </div>
+				                </div>
+				                <div class="edit-request-availability row">
+				                   	<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+				                        <div class="form-group">
+			                              <label for="exampleInputEmail1"><strong>YOUR AVAILABILITY (BE SPECIFIC) </strong></label> <br>
+			                              <input style="width:100%"id="student-signup-availability" name="skill" type="email" class="input-signup" value="{{request_dict[n.request_id]['request'].available_time}}"placeholder="Anytime tonight, Mon 3-6pm, Sat morning" id="login-email">
+				                        </div>
+				                    </div>
+				                </div>
+				               	<div class="edit-request-location row">
+				                    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+				                        <div class="form-group">
+				                            <label for="exampleInputEmail1"><strong>PREFERRED LOCATION</strong></label> <br>
+				                              	<input style="width:100%"id="student-signup-location" name="skill" type="email" class="input-signup" value="{{request_dict[n.request_id]['request'].location}}"placeholder="Dwinelle, Peets Coffee, SLC" id="login-email">
+				                         </div>
+				                    </div>
+				                </div>
+			                    <div class="edit-request-time-length row">
+			                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+			                            <div class="form-group">
+											<label for="exampleInputEmail1"><strong>HOW LONG WOULD IT TAKE</strong></label> <br>
+			                                <div id="time-estimate-slider-request-{{outgoing_request_index[request_dict[n.request_id]['request']]}}" style="margin-top:7px; margin-bottom:5px"></div>
+			                                <p style="margin-left:5px; font-size:14px; margin-top:3px; font-weight:700"class="text-left"><span style="font-size:14px;color:rgb(0, 159, 225)" name="estimate" id="time-estimate-request-{{outgoing_request_index[request_dict[n.request_id]['request']]}}"></span> hours (This is only an estimate)</p>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="edit-request-price row">
+			                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+			                            <div class="form-group">
+											<label for="exampleInputEmail1"><strong>PRICE YOU ARE WILLING TO PAY</strong></label> <br>
+			                                <div id="hourly-price-slider-request-{{outgoing_request_index[request_dict[n.request_id]['request']]}}" style="margin-top:7px; margin-bottom:5px"></div>
+			                                <p style="margin-left:5px; font-size:14px;color:#69bf69; margin-top:3px; font-weight:700"class="text-left">$<span style="font-size:14px;" name="estimate" id="hourly-price-request-{{outgoing_request_index[request_dict[n.request_id]['request']]}}"></span></p>
+			                            </div>
+			                        </div>
+			                    </div>
+				            <div style="text-align:center; margin-right:-15px; margin-left:-15px; padding-left:0px; padding-right:0px;" class="row">
+				              <div style="padding-left:0px; padding-right:0px"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+				                <a class="edit-request-submit" href="javascript:void(0)">
+				                  <div class="tutor-submit-next">
+				                    <p> EDIT REQUEST </p>
+				                  </div>
+				                </a>
+				              </div>
+				            </div>
+				            {% if not request_dict[n.request_id]['request'].connected_tutor_id %}
+						 	<div style="text-align:center; float:center; margin-top:20px; font-size:10px; color:grey;" class="row">
+						 		<a class="cancel-request" style="color:grey" href="javascript:void(0)"> Cancel this Request </a>
+						 	</div>
+						 	{% endif %}
+				          <div style="margin-top:25px;text-align:center; color:red">
+						       Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our FAQ</u></a>
+						   </div>
 						</div>
 					</div>
+				</div>
+					{% endif %}
+				</div>
 			{% elif n.custom_tag  == 'student-incoming-offer' %}
 				<div id="{{n.a_id_name}}-detailed" style="display:none;">
 					<div class="page-title">
@@ -1576,6 +1647,11 @@
 							  			</div>
 							  		</div>
 							  	</div>
+							  	{% if request_dict[n.request_id]['request'].last_updated %}
+							  	<div style="text-align:center;color:rgb(0, 159, 225)" class="row">
+							  		<i>The student has recently updated this request.</i>
+							  	</div>
+							  	{% endif %}	
 							  </div>
 							</div>
 								<div style="text-align:center; margin-top:10px; color:grey">
@@ -1796,5 +1872,37 @@
               }
         });
         {% endif %}
+        {% for r in user.outgoing_requests %}
+        	$("#hourly-price-slider-request-{{loop.index - 1}}").noUiSlider({
+	            start:{{r.student_estimated_hour}}
+	           	,range: {'min':[12], 'max':[40]}
+	           	,step: 1
+	           	,serialization: {
+	                lower: [ new Link (
+	                  {
+	                    target: $('#hourly-price-request-{{loop.index - 1}}')
+	                  })
+	                ],
+	                format: {
+	                  decimals:0
+	                }
+	              }
+        	});
+        	$("#time-estimate-slider-request-{{loop.index - 1}}").noUiSlider({
+	            start:{{r.time_estimate}}
+	           	,range: {'min':[0], 'max':[6]}
+	           	,step: 1
+	           	,serialization: {
+	                lower: [ new Link (
+	                  {
+	                    target: $('#time-estimate-request-{{loop.index - 1}}')
+	                  })
+	                ],
+	                format: {
+	                  decimals:1
+	                }
+	              }
+        	});
+        {% endfor %}
     </script>
 {% endblock %}
