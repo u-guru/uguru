@@ -718,6 +718,39 @@ def update_requests():
                 db_session.rollback()
                 raise 
 
+        if 'tutor-cancel-accept' in ajax_json:
+            notif_num = ajax_json.get('notif-num')
+            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
+            current_notification = user_notifications[notif_num]
+            _request = Request.query.get(current_notification.request_id)
+            _request.committed_tutors.remove(user)
+
+            skill_id = _request.skill_id
+            skill = Skill.query.get(skill_id)
+            skill_name = skill.name
+            from app.static.data.short_variations import short_variations_dict
+            skill_name = short_variations_dict[skill_name]
+
+            student = User.query.get(_request.student_id)
+
+            current_notification.feed_message = "<b>" + student.name.split(" ")[0] + "</b> needs help in " + skill_name.upper()
+            current_notification.feed_message_subtitle = "<b>Click here</b> to see more information"
+            current_notification.custom = skill_name
+            current_notification.request_tutor_amount_hourly = None
+
+            for n in student.notifications:
+                if n.request_id == _request.id and n.request_tutor_id == user.id:
+                    student_notification = n
+                    break
+            student_notification.feed_message_subtitle = "<span style='color:red'>Sorry! This tutor is not able to help anymore.</span>"
+            student_notification.request_tutor_amount_hourly = None
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+            flash("You successfully canceled your commitment to " + student.name.split(" ")[0] + "'s request")
+
         if 'edit-request' in ajax_json:
             notif_num = ajax_json.get('notif-num')
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
@@ -743,6 +776,11 @@ def update_requests():
             
             if changed_fields:
                 _request.last_updated = datetime.now()
+                #send emails to tutors
+                #if price or availability has changed, email all tutors that have not committed
+
+                #LATER: If availability, location, description, or time-length has been changed
+                #Let committed tutors know
 
             try:
                 db_session.commit()

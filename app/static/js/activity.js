@@ -262,6 +262,26 @@ $(document).ready(function() {
         $('#activity').hide();
         $('#request-payments').show();
    });
+   
+   $('#feed-messages').on('click', 'a.tutor-cancel-accept', function() {
+      if (confirm("Are you sure you want to cancel this request?")) {
+        var data = {
+          'tutor-cancel-accept': true, 
+          'notif-num':last_clicked_notif_index
+        };
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/update-request/' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function(result) {         
+                window.location.replace('/activity/');
+            }
+        }); 
+      }
+   });
+
    $('#feed-messages').on('click', 'a.tutor-request-accept-btn', function() {
             $(this).click(false);
             //Hide the modal
@@ -269,7 +289,7 @@ $(document).ready(function() {
             var feed_message_index = last_clicked_notif_index + 1
             var tutor_changed_price = false
             hourly_amount = $('#student-offer-hourly-price-' + (feed_message_index)).text();
-            extra_detail = $(this).parent().parent().siblings('.modal-body').children('.extra-detail').children().children('textarea').val();
+            extra_detail = $(this).parent().parent().parent().siblings('.modal-body').children('.extra-detail').children().children('textarea').val();
             
             if (hourly_amount != student_original_price) {
               tutor_changed_price = true;
