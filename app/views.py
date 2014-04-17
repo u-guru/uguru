@@ -742,7 +742,7 @@ def update_requests():
                 if n.request_id == _request.id and n.request_tutor_id == user.id:
                     student_notification = n
                     break
-            student_notification.feed_message_subtitle = "<span style='color:red'>Sorry! This tutor is not able to help anymore.</span>"
+            student_notification.feed_message_subtitle = "<span style='color:#CD2626'>Sorry! This tutor is not able to help anymore.</span>"
             student_notification.request_tutor_amount_hourly = None
             try:
                 db_session.commit()
@@ -821,20 +821,11 @@ def update_requests():
             user.outgoing_requests.remove(_request)
             user.notifications.remove(student_notification)
             
-            # student_notification.feed_message = 'You canceled a request for ' + student_notification.skill_name.upper() + '.'
-            # student_notification.feed_message_subtitle = None
-            # student_notification.time_created = datetime.now()
-
-            # from emails import student_canceled_request
-            for tutor in _request.committed_tutors:
-                for n in tutor.notifications:
+            for _tutor in _request.requested_tutors:
+                for n in sorted(_tutor.notifications, reverse=True):
                     if n.request_id == _request.id:
-                        tutor_notification = n
-                tutor.feed_notif += 1
-                tutor_notification.time_read = None
-                tutor_notification.feed_message_subtitle = '<b>Click here</b> to see the status of your accepted request'
-                # student_canceled_request(user, student_notification.skill_name, tutor)
-                # print "Email sent to " + tutor.name
+                        n.feed_message_subtitle = '<span style="color:#CD2626"><strong>Update:</strong> The student has canceled the original request.</span>'
+            
             flash("Your request has been successfully canceled.")
             try:
                 db_session.commit()
@@ -864,6 +855,11 @@ def update_requests():
             for c in user.mailbox.conversations:
                 if c.guru == former_tutor and c.student == user:
                     db_session.delete(c)
+
+            for _tutor in _request.requested_tutors:
+                for n in sorted(_tutor.notifications, reverse=True):
+                    if n.request_id == _request.id:
+                        n.feed_message_subtitle = '<span style="color:#69bf69">This request is still <strong>available</strong>! Click here to accept now!</span>'
 
             #Delete the tutor's you've been matched notification + conversation
             for n in former_tutor.notifications[::-1]:
@@ -918,6 +914,12 @@ def update_requests():
             r.student_secret_code = user.secret_code
 
             student.outgoing_requests.remove(r)
+
+            for _tutor in r.requested_tutors:
+                if _tutor.id != tutor_id:
+                    for n in sorted(_tutor.notifications, reverse=True):
+                        if n.request_id == r.id:
+                            n.feed_message_subtitle = '<span style="color:red"><strong>Update:</strong> The student has already chose another tutor.</span>'
             
             #Modify tutor notification
             for n in tutor.notifications:

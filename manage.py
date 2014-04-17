@@ -39,6 +39,22 @@ if arg == 'initialize':
         db_session.commit()
     print 'courses created'
 
+if arg == 'update-notifications':
+    for u in User.query.all():
+        for n in u.notifications:
+            if n.custom_tag == 'tutor-request-offer':
+                r = Request.query.get(n.request_id)
+                student = User.query.get(r.student_id)
+                if r and not r.connected_tutor_id:
+                    n.feed_message_subtitle = '<span style="color:#69bf69">This request is still <strong>available</strong>! Click here to accept now!</span>'
+                elif r.connected_tutor_id and r.connected_tutor_id == student.id:
+                    n.feed_message_subtitle = '<span style="color:#CD2626"> <strong>Update:</strong> The student has canceled the original request.</span>'
+                elif r.connected_tutor_id and r.connected_tutor_id != u.id:
+                    n.feed_message_subtitle = '<span style="color:#CD2626"><strong>Update:</strong> The student has already chose another tutor.</span>'
+    db_session.commit()
+
+
+
 if arg == 're-create_db':
     os.remove('app.db')
     init_db()

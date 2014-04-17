@@ -71,7 +71,7 @@ def student_request_receipt(user, request, skill_name):
 def tutor_request_offer(user, tutor, request, skill_name):
     notification = Notification(request=request)
     notification.feed_message = "<b>" + user.name.split(" ")[0] + "</b> needs help in " + skill_name.upper()
-    notification.feed_message_subtitle = '<b>Click here</b> to see more information'
+    notification.feed_message_subtitle = '<span style="color:#69bf69">This request is still <strong>available</strong>! Click here to accept now!</span>'
     notification.skill_name = skill_name
     request_number = tutor.incoming_requests_to_tutor.index(request)
     notification.a_id_name = 'tutor-request-offer' + str(request.id)
