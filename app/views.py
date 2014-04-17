@@ -286,6 +286,8 @@ def admin():
             request_dict['total_seen']  = total_seen_count
             request_dict['pending-ratings'] = 0
             request_dict['message-length'] = 0
+            if r.last_updated:
+                request_dict['last-updated'] = pretty_date(r.last_updated)
             if r.connected_tutor_id:
                 tutor = User.query.get(r.connected_tutor_id)
                 request_dict['connected-tutor'] = tutor
@@ -336,11 +338,11 @@ def admin():
                         total_revenue += student_charge
                         payments.append(payment_dict)
                         count += 1
+                request_dict['pending-ratings'] = 0
                 if student and student.pending_ratings:
                     request_dict['pending-ratings'] += 1
                 if tutor and tutor.pending_ratings:
                     request_dict['pending-ratings'] += 1
-
             all_requests.append(request_dict)
         all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
         payments = sorted(payments, key=lambda d:d['payment'].time_created, reverse=True)

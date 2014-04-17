@@ -382,6 +382,7 @@
                         <td> Avail </td>
                         <td> Time </td>
                         <td> Hr Rate </td>
+                        <td> Edited? </td>
                         <td> #Tutors Avail </td>
                         <td> #Tutors Seen </td>
                         <td> #Tutors Replied </td>
@@ -426,6 +427,11 @@
                                 ${{request_dict['request'].student_estimated_hour}}
                             </td>
                             <td>  
+                                {% if request_dict['request'].last_updated %}
+                                    {{request_dict['last-updated']}}
+                                {% endif %}
+                            </td>
+                            <td>  
                                 {{request_dict['request'].requested_tutors|length}} 
                             </td>
                             <td>  
@@ -460,7 +466,11 @@
                                     {% if request_dict['pending-ratings'] == 2 %}
                                     Neither
                                     {% elif request_dict['pending-ratings'] == 1 %}
-                                    One has
+                                        {% if request_dict['student'].pending_ratings %}
+                                            only {{request_dict['connected-tutor'].name.split(" ")[0]}} has
+                                        {% else %}
+                                        only {{request_dict['student'].name.split(" ")[0]}} has
+                                        {% endif %}
                                     {% else %}
                                     Both
                                     {% endif %}
