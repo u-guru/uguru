@@ -93,7 +93,8 @@ def webhooks():
 def twilio_msg():
     if request.method == "POST":
         resp = twilio.twiml.Response()
-        print resp
+        print resp.message.body
+        print resp.message.from_
         resp.message("Hello, Mobile Monkey")
         return str(resp)
 
