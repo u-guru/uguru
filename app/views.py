@@ -48,6 +48,8 @@ def sneak():
 @app.route('/tos/', methods=['GET','POST'])
 def tos():
     return render_template('tos.html')
+
+
 @app.route('/webhooks/', methods=['GET', 'POST'])
 def webhooks():
     event_json = json.loads(request.data)
@@ -86,6 +88,11 @@ def webhooks():
             raise
     return "OK"
 
+@app.route('/twilio/', methods=['GET', 'POST'])
+def twilio_msg():
+    resp = twilio.twiml.Response()
+    resp.message("Hello, Mobile Monkey")
+    return str(resp)
 
 @app.route('/notification-settings/', methods=('GET','POST'))
 def update_notifications():
