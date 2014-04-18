@@ -10,7 +10,7 @@ from datetime import datetime
 import emails, boto, stripe, os
 from sqlalchemy import desc
 import json, traceback
-import mandrill, twilio
+import mandrill, twilio.twiml
 from twilio.rest import TwilioRestClient
 
 
