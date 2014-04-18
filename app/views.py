@@ -90,9 +90,10 @@ def webhooks():
 
 @app.route('/twilio/', methods=['GET', 'POST'])
 def twilio_msg():
-    resp = twilio.twiml.Response()
-    resp.message("Hello, Mobile Monkey")
-    return str(resp)
+    if request.method == "POST":
+        resp = twilio.twiml.Response()
+        resp.message("Hello, Mobile Monkey")
+        return str(resp)
 
 @app.route('/notification-settings/', methods=('GET','POST'))
 def update_notifications():
