@@ -306,15 +306,37 @@
         <div style="margin-top:15px; " class="row">
           <div style="margin-bottom:15px" class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
             <h4 style="margin-bottom:5px">YOUR AVG RATING</h4>
+            {% if not user.tutor_ratings %}
             <span class="rating">
                 <span style="color;rgb(0, 159, 225)">☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
             </span>
+            <div style="color:grey; font-size:12px; margin-top:-5px;"> 
+              0 reviews
+            </div>
             <div>
               <h6 style="color:grey; margin-top:5px">
                 Each time you tutor, you receive one rating. <br>
                 The more quality reviews you have, the better we advertise you!
               </h6>
             </div>
+            {% else %}
+              {% for i in range(0, avg_rating|round(method='floor')|int) %}
+                <span class="star-icon full">☆</span>
+              {% endfor %}
+              {% if avg_rating - avg_rating|round != 0 %}
+                <span class="star-icon half">☆</span>
+              {% endif %}
+              {% for i in range(0, 5 - avg_rating|round(method='ceil')|int) %}
+                <span class="star-icon empty">☆</span>
+              {% endfor %}
+                <div style="color:grey; font-size:14px; margin-top:-5px;"> 
+                  {% if num_ratings > 1 %}
+                  {{num_ratings}} reviews 
+                  {% else %}
+                  {{num_ratings}} review
+                  {% endif %}
+                </div>
+            {% endif %}
           </div>
         </div>
         <div style="margin-top:-10px"class="row-fluid">

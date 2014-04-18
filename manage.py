@@ -53,6 +53,16 @@ if arg == 'update-notifications':
                     n.feed_message_subtitle = '<span style="color:#CD2626"><strong>Update:</strong> The student has already chose another tutor.</span>'
     db_session.commit()
 
+if arg == 'update-rating':
+    for r in Rating.query.all():
+        student = User.query.get(r.student_id)
+        tutor = User.query.get(r.tutor_id)
+        if student:
+            student.student_ratings.append(r)
+        if tutor: 
+            tutor.tutor_ratings.append(r)
+    db_session.commit()
+
 
 
 if arg == 're-create_db':

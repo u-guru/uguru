@@ -290,14 +290,12 @@ def admin():
             request_dict['pending-ratings'] = 0
             request_dict['message-length'] = 0
             if r.emails:
-                print r.id
                 count = 0
                 mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
                 for email in r.emails:
                     mandrill_id = email.mandrill_id
                     try:
                         result = mandrill_client.messages.info(id=mandrill_id)
-                        print result
                         if result['opens'] > 0:
                             count += 1
                     except mandrill.Error, e:
@@ -456,11 +454,14 @@ def submit_rating():
             rating = user.pending_ratings[0]
             print user.pending_ratings
             rating.student_rating = ajax_json['num_stars']
-            student_name = User.query.get(rating.student_id).name.split(" ")[0]
+            student = User.query.get(rating.student_id)
+            student_name = student.name.split(" ")[0]
             if 'additional_detail' in ajax_json:
                 rating.student_rating_description = ajax_json['additional_detail']
             
             user.pending_ratings.remove(rating)
+            student.student_ratings.append(rating)
+
 
             try:
                 db_session.commit()
@@ -473,12 +474,14 @@ def submit_rating():
         if 'student-rating-tutor' in ajax_json:
             rating = user.pending_ratings[0]
             rating.tutor_rating = ajax_json['num_stars']
-            tutor_name = User.query.get(rating.tutor_id).name.split(" ")[0]
+            tutor = User.query.get(rating.tutor_id)
+            tutor_name = tutor.name.split(" ")[0]
             
             if 'additional_detail' in ajax_json:
                 rating.tutor_rating_description = ajax_json['additional_detail']
 
             user.pending_ratings.remove(rating)
+            tutor.tutor_ratings.append(rating)
 
             try:
                 db_session.commit()
@@ -1604,9 +1607,17 @@ def settings():
     if user.verified_tutor and not is_tutor_verified(user):
         not_launched_flag = True
     from app.static.data.short_variations import short_variations_dict
+    avg_rating = None
+    num_ratings = None
+    if user.tutor_ratings:
+        total_rating_sum = 0
+        num_ratings = len(user.tutor_ratings)
+        for rating in user.tutor_ratings:
+            total_rating_sum += rating.tutor_rating
+        avg_rating = round((total_rating_sum/float(num_ratings))*2)/2
     return render_template('settings.html', logged_in=session.get('user_id'), user=user, \
         variations=short_variations_dict, not_launched_flag = not_launched_flag, \
-        environment = get_environment(), session=session)
+        environment = get_environment(), session=session, avg_rating = avg_rating, num_ratings = num_ratings)
 
 # @app.route('/tutor_accept/')
 # def tutor_accept():
