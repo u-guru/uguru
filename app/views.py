@@ -10,8 +10,9 @@ from datetime import datetime
 import emails, boto, stripe, os
 from sqlalchemy import desc
 import json, traceback
-import mandrill, twilio.twiml
-from twilio.rest import TwilioRestClient
+import mandrill
+from twilio import twiml
+
 
 
 stripe_keys = {
@@ -92,11 +93,11 @@ def webhooks():
 @app.route('/twilio/', methods=['GET', 'POST'])
 def twilio_msg():
     if request.method == "POST":
-        resp = twilio.twiml.Response()
-        print resp.message.body
-        print resp.message.from_
-        resp.message("Hello, Mobile Monkey")
-        return str(resp)
+        resp = twiml.Response()
+        if request.form['Body'].upper() = "ACCEPT":
+            r.sms("You have accepted this request. See full details at uguru.me/activity.")
+        # resp.message("Hello, Mobile Monkey")
+        return str(r)
 
 @app.route('/notification-settings/', methods=('GET','POST'))
 def update_notifications():
