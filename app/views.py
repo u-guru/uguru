@@ -4,18 +4,21 @@ from flask import render_template, jsonify, redirect, request, \
 session, flash, redirect, url_for
 from forms import SignupForm, RequestForm
 from models import User, Request, Skill, Course, Notification, Mailbox, \
-    Conversation, Message, Payment, Rating
+    Conversation, Message, Payment, Rating, Email
 from hashlib import md5
 from datetime import datetime
 import emails, boto, stripe, os
 from sqlalchemy import desc
 import json, traceback
+import mandrill
 
 
 stripe_keys = {
     'secret_key': os.environ['SECRET_KEY'],
     'publishable_key': os.environ['PUBLISHABLE_KEY']
 }
+MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
+
 stripe.api_key = stripe_keys['secret_key']
 MAX_UPLOAD_SIZE = 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
@@ -270,7 +273,7 @@ def admin():
 
         for r in Request.query.all()[::-1]:
             request_dict = {}
-            
+            request_dict['emails-seen'] = 0
             request_dict['request'] = r
             request_dict['date'] = pretty_date(r.time_created)
             skill = Skill.query.get(r.skill_id)
@@ -286,6 +289,21 @@ def admin():
             request_dict['total_seen']  = total_seen_count
             request_dict['pending-ratings'] = 0
             request_dict['message-length'] = 0
+            if r.emails:
+                print r.id
+                count = 0
+                mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+                for email in r.emails:
+                    mandrill_id = email.mandrill_id
+                    try:
+                        result = mandrill_client.messages.info(id=mandrill_id)
+                        print result
+                        if result['opens'] > 0:
+                            count += 1
+                    except mandrill.Error, e:
+                        print 'A mandrill error occurred: %s - %s' % (e.__class__, e)
+                request_dict['emails-seen'] = count
+
             if r.last_updated:
                 request_dict['last-updated'] = pretty_date(r.last_updated)
             if r.connected_tutor_id:
@@ -1227,10 +1245,27 @@ def success():
             # Tutors are currently not contacted when there is a request.
             from notifications import tutor_request_offer
             for tutor in r.requested_tutors:
+                #update incoming requests + create notification
                 tutor.incoming_requests_to_tutor.append(r)
                 notification = tutor_request_offer(u, tutor, r, skill_name)
                 db_session.add(notification)
                 tutor.notifications.append(notification)
+            
+            #send emails + create objects
+            from emails import student_needs_help
+            mandrill_result, tutor_email_dict = student_needs_help(u, r.requested_tutors, skill_name, r)
+            for sent_email_dict in mandrill_result:
+                tutor = tutor_email_dict[sent_email_dict['email']]
+                email = Email(
+                    tag='tutor-request', 
+                    user_id=tutor.id, 
+                    time_created=datetime.now(), 
+                    mandrill_id = sent_email_dict['_id']
+                    )
+                db_session.add(email)
+                tutor.emails.append(email)
+                r.emails.append(email)
+
             try:
                 db_session.commit()
             except:

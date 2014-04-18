@@ -5,14 +5,16 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from app import app
-from app.models import Skill, User, Request
+from app.models import Skill, User, Request, Email
 from models import User
+import mandrill 
 
 SMTP_SERVER = "smtp.mandrillapp.com"
 SMTP_PORT = 587
 
 SMTP_USERNAME = os.environ['MANDRILL_USERNAME']
 SMTP_PASSWORD = os.environ['MANDRILL_PASSWORD']
+MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
 
 HOURLY_RATE = 0
 
@@ -133,34 +135,40 @@ def general_notification_email(user, msg_contents, email_subject):
     mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()
 
-def student_needs_help(student, tutor, course_name, request):
+def student_needs_help(student, tutors, course_name, request):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
     user_first_name = student.name.split(" ")[0]
-    email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = "A Student Needs Your Help!" 
-    DATE_FORMAT = "%d/%m/%Y"
-    EMAIL_SPACE = ", "
-    EMAIL_TO = [tutor.email]
-
-    msg = MIMEMultipart('alternative')
-    msg['Subject'] = email_subject
-    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
-    msg['From'] = email_from
-
     text = student_needs_help_text(user_first_name, course_name, request)
     html = student_needs_help_html(user_first_name, course_name, request)
-    
-    part1 = MIMEText(text, 'plain', 'utf-8')
-    part2 = MIMEText(html, 'html', 'utf-8')
+    to_emails = []
+    tutor_emails_dict = {}
 
-    msg.attach(part1)
-    msg.attach(part2)
-    
-    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
-    mail.starttls()
-    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
-    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
-    mail.quit()
+    for tutor in tutors:
+        if tutor.email_notification:
+            to_emails.append({
+                'email':tutor.email,
+                'name':tutor.name,
+                'type': 'to'
+                })
+            tutor_emails_dict[tutor.email] = tutor
 
+    message = {
+        'html':html,
+        'text':text,
+        'subject': "A Student Needs Your Help!",
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from Uguru',
+        'to': to_emails,
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['student-request']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+    return (result, tutor_emails_dict)
 
 def generate_new_password(user, new_password):
     user_name = user.name.split(" ")[0]

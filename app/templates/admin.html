@@ -306,25 +306,39 @@
                         <td>
                         </td>
                         <td style="font-weight:bold;">
+                        {% if payments|length > 0 %}
                            ${{payment_analytics['avg-student-rate']/(payments|length)}}/hr
+                        {% endif %}
                         </td>
                         <td style="font-weight:bold;">
-                           ${{payment_analytics['avg-tutor-rate']/(payments|length)}}/hr
+                           {% if payments|length > 0 %}
+                            ${{payment_analytics['avg-tutor-rate']/(payments|length)}}/hr
+                           {% endif %}
                         </td>
                         <td>
                             
                         </td>
                         <td style="font-weight:bold;">
-                            ${{payment_analytics['avg-student-charge']/(payments|length)}}
+                            {% if payments|length > 0 %}
+                                ${{payment_analytics['avg-student-charge']/(payments|length
+                                )}}
+                            {% endif %}
                         </td>
                         <td style="font-weight:bold;">
-                            ${{payment_analytics['avg-tutor-paid']/(payments|length)}}
+                            {% if payments|length > 0 %}
+                                ${{payment_analytics['avg-tutor-paid']/(payments|length)}}
+                            {% endif %}
+
                         </td>
                         <td style="font-weight:bold;">
+                            {% if payments|length > 0 %}
                             ${{payment_analytics['avg-stripe-fees']/(payments|length)}}
+                            {% endif %}
                         </td>
                         <td style="font-weight:bold;">
-                            ${{payment_analytics['avg-profit']/(payments|length)}}
+                            {% if payments|length > 0 %}
+                                ${{payment_analytics['avg-profit']/(payments|length)}}
+                            {% endif %}
                         </td>
                     </tr>
                     <tr>
@@ -384,7 +398,8 @@
                         <td> Hr Rate </td>
                         <td> Edited? </td>
                         <td> #Tutors Avail </td>
-                        <td> #Tutors Seen </td>
+                        <td> #Tutors Seen Email </td>
+                        <td> #Tutors Seen Notif </td>
                         <td> #Tutors Replied </td>
                         <td> Connected Tutor </td>
                         <td> Messaged? </td>
@@ -433,6 +448,9 @@
                             </td>
                             <td>  
                                 {{request_dict['request'].requested_tutors|length}} 
+                            </td>
+                            <td>  
+                                {{request_dict['emails-seen']}} 
                             </td>
                             <td>  
                                 {{request_dict['total_seen']}} 

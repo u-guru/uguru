@@ -28,6 +28,18 @@ student_request_table = Table('student-skill_assoc',
     Column('student_id', Integer, ForeignKey('user.id'))
 )
 
+user_email_table = Table('user-email_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('email_id', Integer, ForeignKey('email.id'))
+)
+
+request_email_table = Table('request-email_assoc',
+    Base.metadata,
+    Column('request_id', Integer, ForeignKey('request.id')),
+    Column('email_id', Integer, ForeignKey('email.id'))
+)
+
 tutor_request_table = Table('tutor-skill_assoc',
     Base.metadata,
     Column('request_id', Integer, ForeignKey('request.id')),
@@ -170,6 +182,8 @@ class User(Base):
         )
     notifications = relationship("Notification",
         secondary = user_notification_table)
+    emails = relationship("Email",
+        secondary = user_email_table)
 
     def __init__(self, name, email, password, phone_number, is_a_tutor = None):
         self.name = name
@@ -485,6 +499,9 @@ class Request(Base):
         secondary = committed_tutor_request_table,
         backref = backref('committed_requests', lazy='dynamic'))
 
+    emails = relationship("Email",
+        secondary = request_email_table)
+
     #To do: make sure student_id doesn't already have a request for that skill_id
 
     def __init__(self, student_id, skill_id, description, urgency, \
@@ -525,6 +542,14 @@ class Request(Base):
     def generate_url(self):
         return url_for('confirm_tutor_interest', request_id=self.id, _external=True)
 
+
+class Email(Base):
+    __tablename__ = 'email'
+    id = Column(Integer, primary_key = True)
+    tag = Column(String)
+    user_id = Column(Integer)
+    time_created = Column(DateTime)
+    mandrill_id = Column(String)
 
 class Skill(Base):
     __tablename__ = 'skill'
