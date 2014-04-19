@@ -95,9 +95,9 @@ def twilio_msg():
     if request.method == "POST":
         resp = twiml.Response()
         if request.form['Body'].upper() = "ACCEPT":
-            r.sms("You have accepted this request. See full details at uguru.me/activity.")
+            resp.sms("You have accepted this request. See full details at uguru.me/activity.")
         # resp.message("Hello, Mobile Monkey")
-        return str(r)
+        return str(resp)
 
 @app.route('/notification-settings/', methods=('GET','POST'))
 def update_notifications():
