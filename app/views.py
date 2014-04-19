@@ -94,7 +94,7 @@ def webhooks():
 def twilio_msg():
     if request.method == "POST":
         resp = twiml.Response()
-        if request.form['Body'].upper() = "ACCEPT":
+        if request.form['Body'].upper() == "ACCEPT":
             resp.sms("You have accepted this request. See full details at uguru.me/activity.")
         # resp.message("Hello, Mobile Monkey")
         return str(resp)
