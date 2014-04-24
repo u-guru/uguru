@@ -70,7 +70,9 @@ if arg == 'conversation-update':
             for c in u.mailbox.conversations:
                 if c.messages:
                     last_message_time = sorted(c.messages, key=lambda m:m.write_time, reverse = True)[0].write_time
-                    c.last_updated = last_message_time
+                else:
+                    last_message_time = datetime.now()
+                c.last_updated = last_message_time
     db_session.commit()
 
 
