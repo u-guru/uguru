@@ -73,7 +73,7 @@ $(document).ready(function() {
         saved_message_div.delay(750).fadeOut('slow');
         var data = {
             'send-message': message, 
-            'conversation-num': ($('#message-feed').children().length - conversation_num - 1)
+            'conversation-num': last_clicked_convo_num
         };
 
         var temp_message = $('#template-message').clone();

@@ -271,7 +271,7 @@ def admin():
                     c_dict['last-message-time'] = c.requests[0].time_created
                 c_dict['skill-name'] = Skill.query.get(c.requests[0].skill_id).name
                 conversations.append(c_dict)
-        conversations = sorted(conversations, key=lambda c:c['last-message-time'], reverse=True)
+        conversations = sorted(conversations, key=lambda c:c['last-message-time'])
         for c_dict in conversations:
             c_dict['last-message-time'] = pretty_date(c_dict['last-message-time'])
 
@@ -641,7 +641,8 @@ def send_message():
 
         if 'update-message' in ajax_json and not session.get('admin'):
             conversation_num = ajax_json.get('conversation-num')
-            conversation = user.mailbox.conversations[conversation_num]
+            conversations = sorted(user.mailbox.conversations, key=lambda c:c.last_updated, reverse=True)
+            conversation = conversations[conversation_num]
             conversation.is_read = True
             if user.msg_notif > 0:
                 user.msg_notif = user.msg_notif - 1
@@ -657,7 +658,9 @@ def send_message():
         if 'send-message' in ajax_json:
             message_contents = ajax_json.get('send-message')
             conversation_num = ajax_json.get('conversation-num')
-            conversation = user.mailbox.conversations[conversation_num]
+            conversations = sorted(user.mailbox.conversations, key=lambda c:c.last_updated, reverse=True)
+            conversation = conversations[conversation_num]
+            conversation.last_updated = datetime.now()
             sender_id = user.id
             if conversation.guru_id == user.id:
                 receiver_id = conversation.student_id
@@ -1560,8 +1563,10 @@ def messages():
     for conversation in user.mailbox.conversations:
         for message in conversation.messages:
             pretty_dates[message.id] = pretty_date(message.write_time)
+    
+    conversations = sorted(user.mailbox.conversations, key=lambda c:c.last_updated)
     return render_template('messages.html', user=user, pretty_dates=pretty_dates, environment = get_environment(), session=session, \
-        transactions = transactions)
+        transactions = transactions, conversations=conversations)
 
 @app.route('/student_request/')
 def student_request():

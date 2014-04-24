@@ -64,6 +64,15 @@ if arg == 'update-rating':
     db_session.commit()
 
 
+if arg == 'conversation-update':
+    for u in User.query.all():
+        if u and u.mailbox.conversations:
+            for c in u.mailbox.conversations:
+                last_message_time = sorted(c.messages, key=lambda m:m.write_time, reverse = True)[0].write_time
+                c.last_updated = last_message_time
+    db_session.commit()
+
+
 
 if arg == 're-create_db':
     os.remove('app.db')

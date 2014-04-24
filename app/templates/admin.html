@@ -35,6 +35,7 @@
                     <td> Refer Code </td>
                     <td> Skills </td>
                     <td> What's missing profile </td>
+                    <td> Num Convos</td>
                     <td> Last Active </td>
                 </tr>
                 {% for user in users %}
@@ -60,6 +61,9 @@
                                     Major
                                     {% endif %}
                                 {% endif %}
+                            </td>
+                            <td>
+                                {{user.mailbox.conversations|length}}
                             </td>
                             <td>
                                 {{users_last_active[user]}}

@@ -532,8 +532,8 @@
                 <div class="row">
                       <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1"><strong>SPECIFY TOPICS AND GURU PREFERENCES</strong></label> <br>
-                            <input style="width:100%"id="student-signup-description" name="skill" type="email" class="input-signup" placeholder="Data Structures, Midterm Prep, with Prof Hilfinger" id="login-email">
+                            <label for="exampleInputEmail1"><strong>SPECIFY TOPICS OR ASK YOUR GURU A QUESTION</strong></label> <br>
+                            <input style="width:100%"id="student-signup-description" name="skill" type="email" class="input-signup" placeholder="Data Structures, Midterm Prep, what professor did you take?" id="login-email">
                         </div>
                       </div>
                     </div>
@@ -1218,8 +1218,8 @@
 							</div>
 							<div style="font-size:14px; text-align:left;">
 								<p>1. Message your Guru, and finalize meetup <b>time & location</b>. </p>
-								<p>2. At the end of the session, your Guru will draft the bill. <b>Verify the bill</b>, and give your Guru your <b>secret code</b> (find this at the top of your feed page) as proof of approval.</p>
-								<p>3. <b>Review</b> your Guru by signing in after the tutor has billed you. </p>
+								<p>2. <b>No need to bring cash!</b> After the session, just give your Guru your <b>secret code</b> (on top of your homepage).</p>
+								<p>3. <b>Review</b> your Guru after the session by logging in. </p>
 							</div>
 						</div> 
 						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:20px; margin-bottom:20px; display:block">
@@ -1671,7 +1671,7 @@
 							  		</div>
 							  	</div>
 							  	{% if request_dict[n.request_id]['request'].last_updated %}
-							  	<div style="text-align:center;color:rgb(0, 159, 225)" class="row">
+							  	<div style="text-align:center;color:red" class="row">
 							  		<i>The student has recently updated this request.</i>
 							  	</div>
 							  	{% endif %}	

@@ -231,6 +231,7 @@ class Conversation(Base):
     id = Column(Integer, primary_key = True)
 
     is_read = Column(Boolean, default = False)
+    last_updated = Column(DateTime)
     
     skill_id = Column(Integer, ForeignKey('skill.id'))
     skill = relationship("Skill",
