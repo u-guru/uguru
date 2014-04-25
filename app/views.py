@@ -1630,7 +1630,8 @@ def settings():
         total_rating_sum = 0
         num_ratings = len(user.tutor_ratings)
         for rating in user.tutor_ratings:
-            total_rating_sum += rating.tutor_rating
+            if rating.tutor_rating:
+                total_rating_sum += rating.tutor_rating
         avg_rating = round((total_rating_sum/float(num_ratings))*2)/2
     return render_template('settings.html', logged_in=session.get('user_id'), user=user, \
         variations=short_variations_dict, not_launched_flag = not_launched_flag, \
