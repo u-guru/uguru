@@ -979,6 +979,7 @@ def update_requests():
             if not conversation:
                 conversation = Conversation(skill, tutor, user)
                 conversation.requests.append(r)
+                conversation.last_updated = datetime.now()
                 db_session.add(conversation)
             else:
                 conversation.is_read = False
@@ -1633,7 +1634,10 @@ def settings():
             if rating.tutor_rating:
                 total_rating_sum += rating.tutor_rating
                 num_ratings += 1
-        avg_rating = round((total_rating_sum/float(num_ratings))*2)/2
+        if num_ratings:
+            avg_rating = round((total_rating_sum/float(num_ratings))*2)/2
+        else:
+            avg_rating = 0
     return render_template('settings.html', logged_in=session.get('user_id'), user=user, \
         variations=short_variations_dict, not_launched_flag = not_launched_flag, \
         environment = get_environment(), session=session, avg_rating = avg_rating, num_ratings = num_ratings)
