@@ -75,6 +75,12 @@ if arg == 'conversation-update':
                 c.last_updated = last_message_time
     db_session.commit()
 
+if arg == 'send-test-email':
+    test_email_dict = {
+        'Samir Makhani': 'samir@uguru.me',
+        'Michael Koh': 'michael@uguru.me'
+    }
+
 
 
 if arg == 're-create_db':
