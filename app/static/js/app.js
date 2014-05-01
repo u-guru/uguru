@@ -315,6 +315,7 @@ $(document).ready(function(){
                 }
                 else {
                   $('#tutor-signup').hide();
+                  $('#student-signup').hide();
                   invert_olark();
                   $('#tutor-signup-next').show('slide', {direction: 'right'}, 200);
                 }
