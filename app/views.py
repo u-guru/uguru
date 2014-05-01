@@ -41,7 +41,7 @@ def index():
             return redirect(url_for('settings'))
         return redirect(url_for('activity'))
     return render_template('new_index.html', forms=[request_form],
-        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, environment = get_environment())
+        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, environment = get_environment(), session=session)
 
 @app.route('/sneak/', methods=['GET', 'POST'])
 def sneak():
@@ -1090,8 +1090,8 @@ def update_skill():
 
         if ajax_json.get('add'):
             skill_to_add = ajax_json.get('add').lower()
-            if session.get('tutor-signup'):
-                session.pop('tutor-signup')
+            # if session.get('tutor-signup'):
+            #     session.pop('tutor-signup')
 
             #check if skill is a course
             if courses_dict.get(skill_to_add):
@@ -1154,45 +1154,66 @@ def success():
         ajax_json = request.json
         print ajax_json
         
-        #Create user for first time experiences
+        if ajax_json.get('submit-email-home'):
+            try: 
+                query = User.query.filter_by(email=ajax_json['submit-email-home']).first()
+
+                #If user with email already exists
+                if query:
+                    ajax_json['duplicate-email'] = True
+                    return jsonify(dict=ajax_json)
+                #else create the new user
+                u = User(
+                        name = None,
+                        password = None,
+                        email = ajax_json['submit-email-home'],
+                        phone_number = None
+                    )
+                u.last_active = datetime.now()
+                u.secret_code = generate_secret_code()
+                db_session.add(u)
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+            
+            m = Mailbox(u)
+            db_session.add(m)
+            
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+            session['signup-start'] = ajax_json['submit-email-home']
+            session['signup-start-user-id'] = u.id
+
         if ajax_json.get('student-signup'):
             try: 
                 if 'TESTING' not in os.environ:
-                    query = User.query.filter_by(email=ajax_json['email']).first()
-                    if query:
-                        ajax_json['duplicate-email'] = True
-                        return jsonify(dict=ajax_json)
                     query = User.query.filter_by(phone_number=ajax_json['phone']).first()
                     if query and ajax_json['phone'] != '':
                         ajax_json['duplicate-phone'] = True
                         return jsonify(dict=ajax_json)
-                u = User(
-                    name = ajax_json['name'], 
-                    password = md5(ajax_json['password']).hexdigest(),
-                    email = ajax_json['email'],
-                    phone_number = ajax_json['phone']
-                )
-
+                u = User.query.get(session.get('signup-start-user-id'))
+                u.name = ajax_json['name'] 
+                u.password = md5(ajax_json['password']).hexdigest()
+                u.phone_number = ajax_json['phone']
                 u.last_active = datetime.now()
                 u.secret_code = generate_secret_code()
 
                 if ajax_json['phone'] == '':
                     u.phone_number = None;
 
-                db_session.add(u)
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-            m = Mailbox(u)
-            db_session.add(m)
-            try:
+                # db_session.add(u)
                 db_session.commit()
             except:
                 db_session.rollback()
                 raise 
             user_id = u.id
             authenticate(user_id)
+            session.pop('signup-start-user-id')
+            session.pop('signup-start')
             try:
                 from notifications import getting_started_student, getting_started_student_tip
                 notification = getting_started_student(u)
@@ -1204,6 +1225,54 @@ def success():
             except:
                 db_session.rollback()
                 raise 
+
+        #Create a tutor for the first time
+        if ajax_json.get('complete-tutor-signup'):
+            u = User.query.get(session['user_id'])
+            u.qualifications = ajax_json.get('complete-tutor-signup')
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+
+        if ajax_json.get('tutor-signup'):
+            try:
+                if 'TESTING' not in os.environ:
+                    query = User.query.filter_by(phone_number=ajax_json['phone']).first()
+                    if query and ajax_json['phone'] != '':
+                        ajax_json['duplicate-phone'] = True
+                        return jsonify(dict=ajax_json)
+                u = User.query.get(session.get('signup-start-user-id'))
+                u.name = ajax_json['name'] 
+                u.password = md5(ajax_json['password']).hexdigest()
+                u.phone_number = ajax_json['phone']
+
+                u.last_active = datetime.now()
+
+                if ajax_json['phone'] == '':
+                    u.phone_number = None;
+
+                u.year = 'Sophomore'
+                u.verified_tutor = True
+                db_session.add(u)
+                db_session.commit()
+                if session.get('referral'):
+                    u.referral_code = session['referral']
+                    session.pop('referral')
+                u.settings_notif = u.settings_notif + 1
+                db_session.commit()
+                session['tutor-signup'] = True;
+
+                from emails import welcome_uguru_tutor
+                welcome_uguru_tutor(u)
+
+            except:
+                db_session.rollback()
+                raise 
+            
+            user_id = u.id
+            authenticate(user_id)
+            print "Account created!"
 
         #Create a request
         if ajax_json.get('student-request'):
@@ -1323,53 +1392,6 @@ def success():
             except:
                 db_session.rollback();
 
-        #Create a tutor for the first time
-        if ajax_json.get('tutor-signup'):
-            try:
-                if 'TESTING' not in os.environ:
-                    query = User.query.filter_by(email=ajax_json['email']).first()
-                    if query:
-                        ajax_json['duplicate-email'] = True
-                        return jsonify(dict=ajax_json)
-                    query = User.query.filter_by(phone_number=ajax_json['phone']).first()
-                    if query and ajax_json['phone'] != '':
-                        ajax_json['duplicate-phone'] = True
-                        return jsonify(dict=ajax_json)
-                u = User(
-                    name = ajax_json['name'], 
-                    password = md5(ajax_json['password']).hexdigest(),
-                    email = ajax_json['email'],
-                    phone_number = ajax_json['phone'],
-                )
-
-                u.last_active = datetime.now()
-
-                if ajax_json['phone'] == '':
-                    u.phone_number = None;
-
-                u.year = 'Sophomore'
-                u.verified_tutor = True
-                db_session.add(u)
-                db_session.commit()
-                if session.get('referral'):
-                    u.referral_code = session['referral']
-                    session.pop('referral')
-                u.settings_notif = u.settings_notif + 1
-                m = Mailbox(u)
-                db_session.add(m)
-                db_session.commit()
-                session['tutor-signup'] = True;
-
-                from emails import welcome_uguru_tutor
-                welcome_uguru_tutor(u)
-
-            except:
-                db_session.rollback()
-                raise 
-            
-            user_id = u.id
-            authenticate(user_id)
-            print "Account created!"
         return jsonify(dict=ajax_json)
 
 @app.route('/logout/', methods=('GET', 'POST'))
@@ -1378,6 +1400,10 @@ def logout():
         session.pop("user_id")
     if session.get('tutor-signup'):
         session.pop('tutor-signup')
+    if session.get('signup-start-user-id'):
+        session.pop('signup-start-user-id')
+    if session.get('signup-start'):
+        session.pop('signup-start')
     if session.get('admin'):
         return redirect(url_for('admin'))
     flash('You have been logged out', 'info')

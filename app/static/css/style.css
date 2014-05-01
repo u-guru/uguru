@@ -17,9 +17,26 @@
   margin:0;
   padding:0;
 }
+h1,h2,h3,h4,h5,h6 {
+  font-family:'Roboto Condensed',sans-serif; 
+}
+
+.notification h1, .notification h2, .notification h3, .notification h4, .notification h5, .notification h6 {
+ font-family:'Roboto',sans-serif;  
+}
+
+#tutor-request h1, #tutor-request h2, #tutor-request h3, #tutor-request h4,#tutor-request h5,#tutor-request h6 {
+  font-family:'Roboto Condensed',sans-serif; 
+}
+
+
+html, body {
+  height: 100%;
+  font-family:'Roboto',sans-serif; 
+}
 
 .notif_container {
-    position:relative;      This is crucial for the absolutely positioned element 
+    position:relative;     
     /*width:16px;
     height:16px;*/
 }
@@ -507,9 +524,6 @@ span.tag {
 * {
 margin: 0;
 }
-html, body {
-height: 100%;
-}
 .wrapper {
 min-height: 100%;
 height: auto !important;
@@ -539,7 +553,6 @@ height: 50px;
 *************************************/
 html, body{
     height:100%;
-    font-family:'Roboto Condensed',sans-serif; 
     color:#fff; 
 }
 

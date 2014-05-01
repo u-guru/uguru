@@ -281,19 +281,48 @@ $(document).ready(function(){
                   $('#alert-fields-student-signup').text('There is already an account with this phone number');  
                   $('#alert-fields-student-signup').show();
                 }
-                else if (result.dict['duplicate-email']) {
-                  $('#alert-fields-student-signup').text('There is already an account with this email');  
-                  $('#alert-fields-student-signup').show();
-                } 
                 else {
-                  $('#student-signup').hide();
-                  invert_olark();
-                  $('#student-request').show('slide', {direction: 'right'}, 200);
+                  window.location.replace('/activity/');
                 }
               }
             });
         } 
     });
+
+    $('#tutor-next-link').click(function(){
+       if (!$('#student-signup-name').val() || !$('#student-signup-email').val() 
+        || !$('#student-signup-password').val()) 
+        {
+            $('#alert-fields-student-signup').show()
+        } else {
+            var data_dict = {
+                'tutor-signup': true,        
+                'name': $('input[name="student-name"]').val(),
+                'email': $('input[name="student-email"]').val(),
+                'phone': $('input[name="student-phone"]').val(),
+                'password': $('input[name="student-password"]').val(),
+            }
+            $.ajax({
+              type: "POST",
+              contentType: 'application/json;charset=UTF-8',
+              url: '/validation/' ,
+              data: JSON.stringify(data_dict), 
+              dataType: "json",
+              success: function(result) {
+                if (result.dict['duplicate-phone']) {
+                  $('#alert-fields-student-signup').text('There is already an account with this phone number');  
+                  $('#alert-fields-student-signup').show();
+                }
+                else {
+                  $('#tutor-signup').hide();
+                  invert_olark();
+                  $('#tutor-signup-next').show('slide', {direction: 'right'}, 200);
+                }
+              }
+            });
+        }  
+    });
+
     $('#student-register').click(function(){
     if (!$('#student-signup-description').val() || !$('#student-signup-location').val() || 
         !$('#student-signup-availability').val() || !$('#student-signup-skill').val()) {
@@ -336,50 +365,6 @@ $(document).ready(function(){
       }
     });
 
-    $('#tutor-next-link').click(function(){
-        if ((!$('#tutor-signup-name').val() || !$('#tutor-signup-email').val()) 
-          || !$('#tutor-signup-password').val() 
-          || !($('#tutor-signup-email').val().indexOf('@berkeley.edu') != -1))
-        {
-          $('#alert-fields-tutor-signup').show() 
-        } else {
-            var data_dict = {
-                'tutor-signup': true,        
-                'name': $('input[name="tutor-name"]').val(),
-                'email': $('input[name="tutor-email"]').val(),
-                'phone': $('input[name="tutor-phone"]').val(),
-                'password': $('input[name="tutor-password"]').val(),
-            }
-            $.ajax({
-              type: "POST",
-              contentType: 'application/json;charset=UTF-8',
-              url: '/validation/' ,
-              data: JSON.stringify(data_dict),
-              dataType: "json",
-              success: function(result) {
-                if (result.dict['duplicate-phone']) {
-                  $('#alert-fields-tutor-signup').text('There is already an account with this phone number');  
-                  $('#alert-fields-tutor-signup').show();
-                }
-                else if (result.dict['duplicate-email']) {
-                  $('#alert-fields-tutor-signup').text('There is already an account with this email');  
-                  $('#alert-fields-tutor-signup').show();
-                } 
-                else {
-                  $('#tutor-signup').hide();
-                  invert_olark();
-                  $('#tutor-signup-next').show('slide', {direction: 'right'}, 200);
-                }
-              }
-            });
-          }
-
-    });
-
-    var check_duplicate_skill = function(skill) {
-
-    }
-
     $('#add-skill-btn').click(function() {
       if ($('#add-skill-input-settings').val()) {
         var skill_name = $('#add-skill-input-settings').val();
@@ -408,6 +393,12 @@ $(document).ready(function(){
     $('#login-password').keyup(function(e) {
       if (e.keyCode == 13) {
         $('#login-submit-link').trigger('click');
+      }
+    });
+
+    $('#submit-email').keyup(function(e) {
+      if (e.keyCode == 13) {
+       $('#email-submit-link').trigger('click'); 
       }
     });
 
@@ -475,8 +466,18 @@ $(document).ready(function(){
     });
 
     $('#tutor-register').click(function() {
-        if ($('#register-skills').children().length > 1) {
-          window.location.replace('/settings/');
+        if ($('#register-skills').children().length > 1 && $('#former-experience').val()) {
+          data = {'complete-tutor-signup':$('#former-experience').val()}
+          $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/validation/',
+          data: JSON.stringify(data),
+          dataType: "json",        
+          success: function(result) {        
+              window.location.replace('/settings/');
+            }
+          })  
         } else {
           $('#add-one-skill-alert').show();
         }
@@ -539,6 +540,45 @@ $(document).ready(function(){
         });      
         }
     });
+
+    $('#email-submit-link').click(function() {
+      if(!$('#submit-email').val()) {
+        $('#submit-email-alert').text('Please enter an email')
+        $('#submit-email-alert').show();
+      } else if ($('#submit-email').val().toLowerCase().indexOf('@berkeley.edu') == -1) {
+        $('#submit-email-alert').show();
+        $('#submit-email-alert').text('Please enter a berkeley.edu email');
+      } else {
+        $('#submit-email-alert').hide();
+        data_dict = {'submit-email-home':$('#submit-email').val()}
+        $.ajax({
+              type: "POST",
+              contentType: 'application/json;charset=UTF-8',
+              url: '/validation/' ,
+              data: JSON.stringify(data_dict),
+              dataType: "json",
+              success: function(result) {
+                if (result.dict['duplicate-email']) {
+                  $('#home').hide();
+                  $('body').css('background-color','white')
+                  invert_olark();
+                  $('#alert-fields-login-3').text('There is already an account with this email. Try logging in!');
+                  $('#login-email').val(result.dict['submit-email-home']);
+                  $('#login-password').focus().select();
+                  $('#alert-fields-login-3').show();
+                  $('#login-page').show('slide', {direction: 'right'}, 200);
+                } 
+                else {
+                  $('#home').hide();
+                  $('body').css('background-color','white')
+                  invert_olark();
+                  $('#student-signup-email').val(result.dict['submit-email-home'])
+                  $('#student-signup').show('slide', {direction: 'right'}, 200);
+                }
+              }
+            });
+      }
+    })
 
     $('#access-submit-link').click(function(){
     //check whether fields are blank

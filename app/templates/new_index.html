@@ -36,7 +36,7 @@
       <!-- Jinja2 Variable Definitions -->
     {% set request_form = forms[0] %}
     {% set messages = get_flashed_messages(with_categories=true) %}
-      {% if not tutor_signup_incomplete %}
+      {% if not tutor_signup_incomplete and not session.get('signup-start') %}
       <body>
         <div id="home">
       {% else %}
@@ -51,34 +51,34 @@
                 <p id="home-logo-text" class="logo-text">uguru.me</p>
                 <p style="text-align:center; margin-top:-1.8em; margin-bottom:0.5em; font-size:0.65em"id="banner-text">Face-to-Face, On-Demand Academic Help from Your Peers</p>
                 <div class="row-fluid">
-                  <div style="padding-right:5px"class="col-xs-6 col-md-6 col-sm-6">
-                    <div class="pull-right">
-                      <a id="student-signup-btn" href="#needhelp">
-                        <div class="home-btn">
-                          NEED A GURU?
+                  <div id="get-started-container">
+                    <div id="email-container">
+                      <div id="email-signup-home" class="form-group">
+                        <label for="exampleInputPassword1"> Become Part of UC Berkeley's largest peer-to-peer tutoring platform. </label> <br>
+                        <div id="submit-email-alert">
                         </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div style="padding-left:5px" class="col-xs-6 col-md-6 col-sm-6">
-                    <div class="pull-left">
-                      <a id="tutor-signup-btn" href="#access-code">
-                        <div class="home-btn">
-                          BECOME A GURU
-                        </div>
-                      </a>
+                        <input placeholder="yourname@berkeley.edu" name="exclusive-access-code" class="input-signup" id="submit-email" >
+                      </div>
+                      <div>
+                        <a id="email-submit-link" href="javascript:void(0)">
+                          <div style="margin:auto;width:93%;"class="main-font" id='submit-email-link'>
+                            <p> Get Access Now </p>
+                          </div>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div id="login-text" class="row-fluid">
-                  <a id="login-link" href="#login">
-                    OR <u style="font-weight:500">LOGIN</u>
+                  <a style="color:white"href="#how-it-works">&nbsp;&nbsp;&nbsp;SEE HOW IT WORKS &nbsp;<br><span style="font-size:0.75em"class="glyphicon glyphicon-chevron-down"></span>
                   </a>
                 </div>
                 <div id="how-it-works-text" class="row-fluid">
                       <p style="color:white">&nbsp;&nbsp;
-                        <a style="color:white"href="http://tinyurl.com/uguru-q-a" target="_blank"> &nbsp;FAQ </a> &nbsp;&nbsp;&nbsp;| 
-                        <a style="color:white"href="#how-it-works">&nbsp;&nbsp;&nbsp;SEE HOW IT WORKS &nbsp;<span style="font-size:0.75em"class="glyphicon glyphicon-chevron-down"></span>
+                        <a style="color:white"href="http://tinyurl.com/uguru-q-a" target="_blank"> &nbsp;FAQ </a> &nbsp;&nbsp;&nbsp;
+                        |&nbsp;&nbsp;
+                        <a style="color:white"id="login-link" href="#login">
+                        LOGIN
                         </a>
                       </p>
                       <!-- <div class="arrow-down"> </div> -->
@@ -223,6 +223,9 @@
             </div>
             <div id="login-fields">
                 <div class="container-fluid">
+                    <div class="row"   style="text-align:center">
+                      <span id='alert-fields-login-3' style="color:red;display:None"></span>
+                    </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
                             <div class="form-group">
@@ -306,88 +309,6 @@
               </div>
             </div>
         </div>
-        <div style="display:none" id="tutor-signup">
-            <nav class="navbar"margin-right:25px;>
-              <div class="container-fluid">
-                <div class="navbar-header">
-                    <a href="../../" class="navbar-brand" style="font-family: 'grand hotel', cursive; margin-left:5px; font-size: 50px">uguru.me</a>
-                </div>
-              </div>
-            </nav>
-            <div class="page-title">
-              <div class="row" style="width:100%;text-align:center">
-                  <div class="col-xs-12 col-sm-12 col-md-12" style="text-align:center">
-                    <h4 style="padding-left:5px;color:white;width:100%;font-weight:500">BECOME A TUTOR</h4>
-                </div>
-              </div>
-            </div>
-            <div style="font-size:16px" id="tutor-signup-fields">
-                <div class="container-fluid">
-                    <div  class="row">
-                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-                            <span id='alert-fields-tutor-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;<span style="margin-bottom:2px">NAME</span></label> <br>
-                                <input placeholder="Full Name" id="tutor-signup-name" name="tutor-name" type="email" class="input-signup" id="login-email">
-                            </div>
-                            <span id="proper-tutor-name" style="font-size:12px; align:center; color:red; display:none">Please enter your full name</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;EMAIL</label> <br>
-                                <input name="tutor-email" type="email" class="input-signup" id="tutor-signup-email" placeholder="username@berkeley.edu">
-                            </div>
-                            <span id="proper-email-tutor" style="font-size:12px; align:center; color:red; display:none">Please enter .berkeley.edu email</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4">
-                          <div class="form-group">
-                            <label for="exampleInputPassword1"><span style="font-size:14px" class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;PASSWORD</label> <br>
-                            <input name="tutor-password" type="password" class="input-signup" id="tutor-signup-password" >
-                          </div>
-                          <span id='alert-fields-login' style="color:red;display:None">Incorrect username or password</span>
-                          <span id='alert-fields-login-2' style="color:red;display:None">Please fill in all fields.</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4">
-                            <div style="line-height:0.75"class="form-group">
-                                <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;PHONE NUMBER</label> <br>
-                                <input class="input-signup form-control" id="tutor-signup-phone" name="tutor-phone" type="text">
-                                <div style="text-align:center">
-                                  <span style="font-weight:strong; color:grey; text-align:center; font-size:0.65em">
-                                  Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
-                                  </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-right:-15px; margin-left:-15px; padding-left:0px; padding-right:0px;" class="row">
-                      <div style="padding-left:0px; padding-right:0px"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
-                        <a id="tutor-next-link" href="javascript:void(0)">
-                          <div class="tutor-submit-next">
-                            <p> Next </p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                    <div style="color:grey; font-size:16px;text-align:center" class="row">
-                      <div class="col-xs-12 col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4">
-                        By clicking next, you agree to our <a target="_blank" href="/tos/">Terms of Service </a>
-                      </div>  
-                    </div>
-                </div>
-            </div>
-          </div>
-            <!-- <a href="javascript:void" id="tutor-next-link">
-                <div class="main-font" id="tutor-submit-next">
-                    NEXT
-                </div>
-            </a> -->
-        </div>
         {% if not tutor_signup_incomplete %}
         <div style="display:none" id="tutor-signup-next">
         {% else %}
@@ -416,11 +337,15 @@
                     <div style="display:block" class="alert alert-danger alert-dismissable">
                     {% endif %}
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      Please add at least one skill to complete signup!
+                      Please fill in fields to complete signup!
                     </div>
                    </div>
                   <div class="col-xs-10 col-xs-offset-1 col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4">
                     <div class="form-group">
+                      <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;PLEASE TELL US ABOUT YOUR TUTORING EXPERIENCE</label> <br>
+                      <textarea placeholder="If you have experience tutoring at Cal, please specify classes. Example: 2 semesters of tutoring tutoring Chem 3A at SLC"id="former-experience" cols="50" rows="3"></textarea>
+                    </div>
+                    <div style="margin-top:20px" class="form-group">
                       <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;ADD COURSES YOU ARE COMFORTABLE TUTORING</label> <br>
                       <div class="row">
                         <div class="col-xs-10">
@@ -483,17 +408,17 @@
                   </div>
                 </div>
             </div>
-             <div id="tutor-register-div" style="display:none; margin-top:25px; margin-right:-15px; margin-left:-15px; padding-left:0px; padding-right:0px;" class="row">
-                <div style="padding-left:0px; padding-right:0px"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+             <div id="tutor-register-div" style="margin-top:25px; margin-right:-15px; margin-left:-15px; padding-left:0px; padding-right:0px;" class="row">
+                <div style="padding-left:0px; padding-right:0px; margin-top:15px"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
                   <a id="tutor-register" href="javascript:void(0)">
                     <div class="tutor-submit-next">
-                      <p> Register</p>
+                      <p> APPLY NOW</p>
                     </div>
                   </a>
                 </div>
             </div>
         </div>
-        <div style="display:none" id="student-signup">
+        <div style="display:{% if session.get('signup-start')%} block {%else%} none{%endif%}" id="student-signup">
             <nav class="navbar"margin-right:25px;>
               <div class="container-fluid">
                 <div class="navbar-header">
@@ -502,14 +427,14 @@
               </div>
             </nav>
             <div class="page-title">
-              <div class="row" style="width:100%;text-align:center">
-                  <div class="col-xs-1">
+              <div class="row-fluid" style="width:100%;text-align:center">
+                  <div class="col-xs-1 col-sm-offset-1 col-sm-1 col-md-offset-1 col-md-1">
                     <a href="/" id="credit-card-back-link" style="text-decoration:none"> 
                       <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
                     </a>
                   </div>
-                  <div class="col-xs-10" style="text-align:center">
-                    <h4 style="color:white;width:100%;font-weight:500">STUDENT SIGNUP</h4>
+                  <div class="col-xs-10 col-sm-8 col-md-8" style="text-align:center">
+                    <h4 style="color:white;width:100%;font-weight:500">UGURU SIGNUP</h4>
                 </div>
               </div>
             </div>
@@ -518,11 +443,11 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                             <div style="text-align:center">
-                              <span id='alert-fields-student-signup' style="text-align:center;color:red;display:None">Please fill or select all fields</span>
+                              <span id='alert-fields-student-signup' style="text-align:center;color:red;display:{% if not session.get('signup-start') %} None {% endif %}">Please fill in all fields</span>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;NAME</label> <br>
-                                <input placeholder="Full Name" id="student-signup-name" name="student-name" type="email" class="input-signup">
+                                <input {% if session.get('signup-start') %} style="border:2px solid red;" {% endif %} placeholder="Full Name" id="student-signup-name" name="student-name" type="email" class="input-signup">
                             </div>
                             <span id="proper-student-name" style="font-size:12px; align:center; color:red; display:none">Please enter your full name</span>
                         </div>
@@ -531,7 +456,7 @@
                         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;EMAIL</label> <br>
-                                <input name="student-email" type="email" class="input-signup" id="student-signup-email" placeholder="username@berkeley.edu">
+                                <input {% if session.get('signup-start') %} value="{{session.get('signup-start')}}" style="border:2px solid #69bf69;" {% endif %} name="student-email" type="email" class="input-signup" id="student-signup-email" placeholder="username@berkeley.edu">
                             </div>
                             <span id="proper-email" style="font-size:12px; align:center; color:red; display:none">Please enter .berkeley.edu email</span>
                         </div>
@@ -540,7 +465,7 @@
                         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                           <div class="form-group">
                             <label for="exampleInputPassword1"><span style="font-size:14px" class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;PASSWORD</label> <br>
-                            <input name="student-password" type="password" class="input-signup" id="student-signup-password" >
+                            <input {% if session.get('signup-start') %} style="border:2px solid red;" {% endif %} name="student-password" type="password" class="input-signup" id="student-signup-password" >
                           </div>
                           <div style="text-align:center">
                             <span id='alert-fields-login' style="color:red;display:None">Incorrect username or password</span>
@@ -551,11 +476,11 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                             <div style="line-height:0.75em"class="form-group">
-                                <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;PHONE NUMBER</label> <br>
-                                <input class="input-signup form-control" id="student-signup-phone" name="student-phone" type="text">
+                                <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;PHONE NUMBER (OPTIONAL)</label> <br>
+                                <input class="input-signup form-control" {% if session.get('signup-start') %} style="border:2px solid red;" {% endif %} id="student-signup-phone" name="student-phone" type="text">
                                   <div style="text-align:center">
-                                    <span style="font-weight:strong; text-align:center; color:grey; font-size:0.65em">
-                                    Your phone number will never be provided to anyone. We only use it to notify you to make things quicker on both ends.
+                                    <span style="font-weight:strong; text-align:center; color:grey; font-size:0.75em">
+                                    In the future, we may send text notifications to quickly connect students with tutors.
                                   </div>
                                 </span>
                             </div>
@@ -564,16 +489,27 @@
                 </div>
             <div style="margin-right:-15px; margin-left:-15px; padding-left:0px; padding-right:0px;" class="row">
               <div style="padding-left:0px; padding-right:0px"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
-                <a id="student-next-link" href="javascript:void(0)">
-                  <div class="tutor-submit-next">
-                    <p> Next </p>
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <a id="tutor-next-link" href="javascript:void(0)">
+                        <div id="become-a-guru-next">
+                          <p> Become a Guru </p>
+                        </div>
+                    </a>
                   </div>
-                </a>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <a id="student-next-link" href="javascript:void(0)">
+                      <div id="become-a-student-next" class="tutor-submit-next">
+                        <p> Complete Signup </p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
             <div style="color:grey; font-size:16px;text-align:center" class="row">
               <div class="col-xs-12 col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4">
-                By clicking next, you agree to our <a target="_blank" href="/tos/">Terms of Service </a>
+                By clicking either, you agree to our <a target="_blank" href="/tos/">Terms of Service </a>
               </div>  
             </div>
           </div>
@@ -740,7 +676,7 @@
         /* custom configuration goes here (www.olark.com/documentation) */
         olark.identify('9897-503-10-3249');/*]]>*/</script><noscript><a href="https://www.olark.com/site/9897-503-10-3249/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
         <!-- end olark code -->
-        {% if not tutor_signup_incomplete %}
+        {% if not tutor_signup_incomplete and not session.get('signup-start')%}
         <style>
         #habla_window_div #habla_oplink_a {
           color:#00a9e5;

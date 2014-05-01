@@ -81,7 +81,11 @@ if arg == 'send-test-email':
         'Michael Koh': 'michael@uguru.me'
     }
 
-
+if arg == 'update-aproved-admin':
+    for u in User.query.all():
+        if u.skills and u.verified_tutor:
+            u.approved_by_admin = True
+    db_session.commit()
 
 if arg == 're-create_db':
     os.remove('app.db')

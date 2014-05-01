@@ -118,11 +118,13 @@ class User(Base):
     text_notification = Column(Boolean, default = True)
     profile_url = Column(String, default='/static/img/default-photo.jpg')
     tutor_introduction = Column(String(1000))
+    qualifications = Column(String(5000))
     advertised_rate = Column(Float, default = 10.0)
     max_price = Column(Float, default = 15.0)
     discoverability = Column(Boolean, default = True)
     referral_code = Column(String)
     last_active = Column(DateTime)
+    approved_by_admin = Column(Boolean)
 
     #Tutor fields
     verified_tutor = Column(Boolean)

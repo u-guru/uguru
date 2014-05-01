@@ -48,9 +48,9 @@
 
 <!-- Settings -->
         {% if user.skills or user.verified_tutor %}
-        <div id="settings" style="display:none">
+        <div id="settings" style="display:none;">
         {% else %}
-        <div id="settings" style="display:block">
+        <div id="settings" style="display:block;">
         {% endif %}
         <div class="row-fluid">
           <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
@@ -278,7 +278,7 @@
       {% endif %}
         {% if (user.skills or user.verified_tutor) and (user.profile_url == '/static/img/default-photo.jpg' or not user.tutor_introduction) %}
           <div id="prof-not-complete" class="alert alert-danger">
-            Please add a <strong>profile picture</strong>, your <strong>major</strong>, and a <strong> short introduction</strong> to complete signup!
+            Please complete red fields to complete your profile!
           </div>
         {% endif %}
         <div align="center">
