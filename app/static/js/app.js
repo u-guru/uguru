@@ -572,6 +572,11 @@ $(document).ready(function(){
                   $('#home').hide();
                   $('body').css('background-color','white')
                   invert_olark();
+                  if ($('#guru-checkbox:checked').length > 0) {
+                    $('#tutor-next-link').show()
+                  } else {
+                    $('#student-next-link').show()
+                  }
                   $('#student-signup-email').val(result.dict['submit-email-home'])
                   $('#student-signup').show('slide', {direction: 'right'}, 200);
                 }

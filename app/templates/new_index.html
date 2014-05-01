@@ -59,6 +59,9 @@
                         </div>
                         <input placeholder="yourname@berkeley.edu" name="exclusive-access-code" class="input-signup" id="submit-email" >
                       </div>
+                      <div style="margin-top:0px" id="guru-checkbox-div">
+                        <input id="guru-checkbox" type="checkbox" {% if guru_referral %} checked {%endif%}> &nbsp;&nbsp; I want to be a Guru and make $12 - $40/hr
+                      </div>
                       <div>
                         <a id="email-submit-link" href="javascript:void(0)">
                           <div style="margin:auto;width:93%;"class="main-font" id='submit-email-link'>
@@ -490,18 +493,16 @@
             <div style="margin-right:-15px; margin-left:-15px; padding-left:0px; padding-right:0px;" class="row">
               <div style="padding-left:0px; padding-right:0px"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
                 <div class="row">
-                  <div class="col-xs-6 col-sm-6 col-md-6">
-                    <a id="tutor-next-link" href="javascript:void(0)">
-                        <div id="become-a-guru-next">
-                          <p> Become a Guru </p>
+                  <div id="student-or-tutor-next-link" class="col-xs-12 col-sm-12 col-md-12">
+                    <a style="display:none"id="tutor-next-link" href="javascript:void(0)">
+                        <div id="become-a-student-next">
+                          <p> Next Steps </p>
                         </div>
                     </a>
-                  </div>
-                  <div class="col-xs-6 col-sm-6 col-md-6">
-                    <a id="student-next-link" href="javascript:void(0)">
-                      <div id="become-a-student-next" class="tutor-submit-next">
-                        <p> Complete Signup </p>
-                      </div>
+                    <a style="display:none"id="student-next-link" href="javascript:void(0)">
+                        <div id="become-a-student-next">
+                          <p> Signup </p>
+                        </div>
                     </a>
                   </div>
                 </div>

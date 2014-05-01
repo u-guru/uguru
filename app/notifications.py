@@ -32,6 +32,8 @@ def getting_started_tutor(user):
     getting_started_msg = "<b>You </b> signed up" + \
         " as a uGuru.me <b>beta tutor</b>" 
     notification = Notification(other='getting_started')
+    if not user.approved_by_admin:
+        notification.feed_message_subtitle = "Your application status is <strong><span style='color:red'>pending</span></strong>. We will let you know via email if you are approved."
     notification.feed_message = getting_started_msg
     notification.a_id_name = 'getting-started'
     notification.image_url = user.profile_url
@@ -44,7 +46,10 @@ def getting_started_tutor_2(user):
         "a student request looks like." 
     notification = Notification(other='getting_start_tutor')
     notification.feed_message = getting_started_msg
-    notification.feed_message_subtitle = "We will notify you when students need help via email."
+    if not user.approved_by_admin:
+        notification.feed_message_subtitle = "Once approved, we will notify you when students need help via email."
+    else:
+        notification.feed_message_subtitle = "We will notify you when students need help via email."
     notification.a_id_name = 'getting-started-tutor'
     notification.image_url = '/static/img/jenny.jpg'
     return notification

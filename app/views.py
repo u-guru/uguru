@@ -30,7 +30,15 @@ def index():
     if os.environ.get('TESTING') and not session.get('testing-admin'):
         return redirect(url_for('login'))
     tutor_signup_incomplete = False
+    guru_referral = False
     request_form = RequestForm()
+    if session.get('guru-checked'):
+        guru_referral = True
+        session.pop('guru-checked')
+    if request.args.get('email'):
+        session['referral'] = request.args.get('email')
+        session['guru-checked'] = True
+        return redirect(url_for('index'))
     if session.get('tutor-signup'):
         tutor_signup_incomplete = True
         return render_template('new_index.html', forms=[request_form],
@@ -41,7 +49,8 @@ def index():
             return redirect(url_for('settings'))
         return redirect(url_for('activity'))
     return render_template('new_index.html', forms=[request_form],
-        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, environment = get_environment(), session=session)
+        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
+        environment = get_environment(), session=session, guru_referral=guru_referral)
 
 @app.route('/sneak/', methods=['GET', 'POST'])
 def sneak():
@@ -957,7 +966,7 @@ def update_requests():
                 if _tutor.id != tutor_id:
                     for n in sorted(_tutor.notifications, reverse=True):
                         if n.request_id == r.id:
-                            n.feed_message_subtitle = '<span style="color:red"><strong>Update:</strong> The student has already chose another tutor.</span>'
+                            n.feed_message_subtitle = '<span style="color:#CD2626"><strong>Update:</strong> The student has already chose another tutor.</span>'
             
             #Modify tutor notification
             for n in tutor.notifications:
@@ -1202,6 +1211,10 @@ def success():
                 u.last_active = datetime.now()
                 u.secret_code = generate_secret_code()
 
+                if session.get('referral'):
+                    u.referral_code = session['referral']
+                    session.pop('referral')
+
                 if ajax_json['phone'] == '':
                     u.phone_number = None;
 
@@ -1333,11 +1346,12 @@ def success():
             # Tutors are currently not contacted when there is a request.
             from notifications import tutor_request_offer
             for tutor in r.requested_tutors:
-                #update incoming requests + create notification
-                tutor.incoming_requests_to_tutor.append(r)
-                notification = tutor_request_offer(u, tutor, r, skill_name)
-                db_session.add(notification)
-                tutor.notifications.append(notification)
+                #Only if they are approved tutors
+                if tutor.approved_by_admin:
+                    tutor.incoming_requests_to_tutor.append(r)
+                    notification = tutor_request_offer(u, tutor, r, skill_name)
+                    db_session.add(notification)
+                    tutor.notifications.append(notification)
             
             #send emails + create objects
             from emails import student_needs_help

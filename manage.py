@@ -83,7 +83,7 @@ if arg == 'send-test-email':
 
 if arg == 'update-aproved-admin':
     for u in User.query.all():
-        if u.skills and u.verified_tutor:
+        if u.skills:
             u.approved_by_admin = True
     db_session.commit()
 
