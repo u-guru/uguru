@@ -573,8 +573,10 @@ $(document).ready(function(){
                   $('body').css('background-color','white')
                   invert_olark();
                   if ($('#guru-checkbox:checked').length > 0) {
+                    $('#tutor-student-header').text('GURU SIGNUP')
                     $('#tutor-next-link').show()
                   } else {
+                    $('#tutor-student-header').text('STUDENT SIGNUP')
                     $('#student-next-link').show()
                   }
                   $('#student-signup-email').val(result.dict['submit-email-home'])

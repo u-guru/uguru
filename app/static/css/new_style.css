@@ -1087,11 +1087,12 @@ body.loading .modal-load {
 #email-signup-home input {
   border: 1px solid grey;
   border-radius: 6px;
+  color:#625D5D;
 }
 
 #email-signup-home label {
-  font-weight:100;
-  font-size:0.80em;
+  font-weight:400;
+  font-size:0.95em;
   font-family:'Roboto',sans-serif; 
 }
 
@@ -1116,9 +1117,9 @@ body.loading .modal-load {
 }
 
 #guru-checkbox-div {
-  font-size:0.6em;
+  font-size:0.45em;
   color:grey;
-  text-align:center;
+  text-align:left;
   margin-left:3.5%;
   margin-bottom:10px;
   margin-top:-7px;

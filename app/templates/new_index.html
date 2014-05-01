@@ -49,23 +49,23 @@
                 <img id="home-logo-img" style='margin-bottom:10px' src="/static/img/guru.svg">
                 <!-- <p>WELCOME TO</p> -->
                 <p id="home-logo-text" class="logo-text">uguru.me</p>
-                <p style="text-align:center; margin-top:-1.8em; margin-bottom:0.5em; font-size:0.65em"id="banner-text">Face-to-Face, On-Demand Academic Help from Your Peers</p>
+                <p style="text-align:center; margin-top:-1.4em; margin-bottom:0.5em; font-weight:700;font-size:0.95em"id="banner-text">Easy, Affordable, Academic Help <br>from Your Fellow Cal Bears</p>
                 <div class="row-fluid">
                   <div id="get-started-container">
                     <div id="email-container">
                       <div id="email-signup-home" class="form-group">
-                        <label for="exampleInputPassword1"> Become Part of UC Berkeley's largest peer-to-peer tutoring platform. </label> <br>
+                        <label for="exampleInputPassword1"> This Finals Season, Save Your Grades, Don't Go at It Alone </label> <br>
                         <div id="submit-email-alert">
                         </div>
                         <input placeholder="yourname@berkeley.edu" name="exclusive-access-code" class="input-signup" id="submit-email" >
                       </div>
                       <div style="margin-top:0px" id="guru-checkbox-div">
-                        <input id="guru-checkbox" type="checkbox" {% if guru_referral %} checked {%endif%}> &nbsp;&nbsp; I want to be a Guru and make $12 - $40/hr
+                        <input id="guru-checkbox" type="checkbox" {% if guru_referral %} checked {%endif%}> &nbsp; Sign me up to be a grade-saving Guru
                       </div>
                       <div>
                         <a id="email-submit-link" href="javascript:void(0)">
-                          <div style="margin:auto;width:93%;"class="main-font" id='submit-email-link'>
-                            <p> Get Access Now </p>
+                          <div style="font-weight:500; margin:auto;width:93%;"class="main-font" id='submit-email-link'>
+                            <p> Get Started Now </p>
                           </div>
                         </a>
                       </div>
@@ -333,11 +333,11 @@
             </div>
             <div id="tutor-add-course-fields">
                 <div class="row">
-                  <div class="col-xs-10 col-xs-offset-1 col-md-6 col-sm-6 col-sm-offset-3 col-md-offset-3">
+                  <div class="col-xs-10 col-xs-offset-1 col-md-6 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4">
                     {% if not tutor_signup_incomplete %}
                     <div style="display:none" id="add-one-skill-alert" class="alert alert-danger alert-dismissable">
                     {% else %}
-                    <div style="display:block" class="alert alert-danger alert-dismissable">
+                    <div style="display:block; text-align:center" class="alert alert-danger alert-dismissable">
                     {% endif %}
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                       Please fill in fields to complete signup!
@@ -346,10 +346,10 @@
                   <div class="col-xs-10 col-xs-offset-1 col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4">
                     <div class="form-group">
                       <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;PLEASE TELL US ABOUT YOUR TUTORING EXPERIENCE</label> <br>
-                      <textarea placeholder="If you have experience tutoring at Cal, please specify classes. Example: 2 semesters of tutoring tutoring Chem 3A at SLC"id="former-experience" cols="50" rows="3"></textarea>
+                      <textarea placeholder="If you have tutoring experience at Cal, please specify classes (e.g. 2 semesters of tutoring Chem 3A at the SLC). If you don’t, tell us why you would be an awesome Guru!" id="former-experience" cols="50" rows="4"></textarea>
                     </div>
                     <div style="margin-top:20px" class="form-group">
-                      <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;ADD COURSES YOU ARE COMFORTABLE TUTORING</label> <br>
+                      <label for="exampleInputEmail1"><span style="font-size:14px" class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;ADD COURSES YOU ARE CONFIDENT TUTORING</label> <br>
                       <div class="row">
                         <div class="col-xs-10">
                           <input placeholder="CS10, BIO 1A, Writing Help"style="width:100%" name="tutor-email" type="email" class="typeahead input-signup" id="add-skill-input-settings">
@@ -419,6 +419,9 @@
                     </div>
                   </a>
                 </div>
+                <div style="color:grey; font-size:0.85em; text-align:center; padding-left:0px; padding-right:0px; margin-top:5px"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+                    We carefully screen our Gurus. We will notify you once your Guru application is approved. In the mean time, you can still request help for classes.
+                </div>
             </div>
         </div>
         <div style="display:{% if session.get('signup-start')%} block {%else%} none{%endif%}" id="student-signup">
@@ -437,7 +440,7 @@
                     </a>
                   </div>
                   <div class="col-xs-10 col-sm-8 col-md-8" style="text-align:center">
-                    <h4 style="color:white;width:100%;font-weight:500">UGURU SIGNUP</h4>
+                    <h4 id="tutor-student-header" style="color:white;width:100%;font-weight:500">UGURU SIGNUP</h4>
                 </div>
               </div>
             </div>
@@ -494,9 +497,9 @@
               <div style="padding-left:0px; padding-right:0px"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
                 <div class="row">
                   <div id="student-or-tutor-next-link" class="col-xs-12 col-sm-12 col-md-12">
-                    <a style="display:none"id="tutor-next-link" href="javascript:void(0)">
+                    <a style="display:{% if not session.get('signup-start') %} none {%else %} block {%endif%}"id="tutor-next-link" href="javascript:void(0)">
                         <div id="become-a-student-next">
-                          <p> Next Steps </p>
+                          <p> Next Step</p>
                         </div>
                     </a>
                     <a style="display:none"id="student-next-link" href="javascript:void(0)">

@@ -278,9 +278,13 @@
       {% endif %}
         {% if (user.skills or user.verified_tutor) and (user.profile_url == '/static/img/default-photo.jpg' or not user.tutor_introduction) %}
           <div id="prof-not-complete" class="alert alert-danger">
-            Please complete red fields to complete your profile!
+            Please complete all fields!
           </div>
         {% endif %}
+        <div>
+            <h4 style="color:Grey"> Guru Status: <strong> <span style="color:red"> Pending </span> </strong>
+            <br>
+        </div>
         <div align="center">
           <h4>{{user.name.split(" ")[0]|upper}}</h4>
           <div style="{% if user.profile_url == '/static/img/default-photo.jpg' %} border:1px solid red {% endif %}"id="pic-holder">

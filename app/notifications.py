@@ -29,11 +29,11 @@ def getting_started_student_tip(user):
     return notification
 
 def getting_started_tutor(user):
-    getting_started_msg = "<b>You </b> signed up" + \
-        " as a uGuru.me <b>beta tutor</b>" 
+    getting_started_msg = "You signed up" + \
+        " as a Guru" 
     notification = Notification(other='getting_started')
     if not user.approved_by_admin:
-        notification.feed_message_subtitle = "Your application status is <strong><span style='color:red'>pending</span></strong>. We will let you know via email if you are approved."
+        notification.feed_message_subtitle = "Application status: <strong><span style='color:red'>pending</span></strong>."
     notification.feed_message = getting_started_msg
     notification.a_id_name = 'getting-started'
     notification.image_url = user.profile_url
@@ -58,7 +58,7 @@ def getting_started_tutor_2(user):
 def student_request_receipt(user, request, skill_name):
     notification = Notification(request=request)
     notification.skill_name = skill_name
-    notification.feed_message = "<b>You</b> requested help in " + skill_name.upper()
+    notification.feed_message = "You requested help in <b>" + skill_name.upper() + '</b>.'
     notification.feed_message_subtitle = "<b>Click here</b> to see " +\
         "the status of your request!"
     # request_number = user.outgoing_requests.index(request)
