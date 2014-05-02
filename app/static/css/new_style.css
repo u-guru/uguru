@@ -26,6 +26,12 @@ h1,h2,h3,h4,h5,h6 {
   margin:auto;
 }
 
+#email-signup-home label {
+  font-weight:400;
+  font-size:0.95em;
+  font-family:'Roboto',sans-serif; 
+}
+
 .home-btn {
   font-family:'Roboto',sans-serif; 
   padding: 12px 12px;
@@ -55,7 +61,7 @@ h1,h2,h3,h4,h5,h6 {
   font-family:'Roboto',sans-serif; 
   font-weight:100;
   font-size:0.75em;
-  margin-top:85px;
+  margin-top:75px;
   margin-bottom:0;
 }
 
@@ -674,12 +680,13 @@ input:focus, textarea:focus {
 }
 
 #submit-email-link {
-  background-color: #69bf69;
+  background-color: #097054;
   text-align:center;
-  font-size:24px;
+  font-size:1em;
   font-weight:100;
   width:95%;
   float:center;
+  border-radius:8px;
 }
 
 #tutor-submit-next {
@@ -1090,16 +1097,12 @@ body.loading .modal-load {
   color:#625D5D;
 }
 
-#email-signup-home label {
-  font-weight:400;
-  font-size:0.95em;
-  font-family:'Roboto',sans-serif; 
-}
 
 #email-submit-link {
   color:white;
   margin:auto;
   width:93%;
+  font-size:1em;
   line-height: 1.5em;
 }
 

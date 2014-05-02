@@ -52,60 +52,63 @@ def send_connection_email(student, tutor, request):
 
 
 def welcome_uguru_student(user):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
     user_first_name = user.name.split(" ")[0]
-    email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = "Our Gurus Are Ready to Help Anytime!"
-    DATE_FORMAT = "%d/%m/%Y"
-    EMAIL_SPACE = ", "
-
-    EMAIL_TO = [user.email]
-
-    msg = MIMEMultipart('alternative')
-    msg['Subject'] = email_subject
-    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
-    msg['From'] = email_from
     text = welcome_uguru_student_text(user_first_name)
     html = welcome_uguru_student_html(user_first_name)
-    
-    part1 = MIMEText(text, 'plain', 'utf-8')
-    part2 = MIMEText(html, 'html', 'utf-8')
+    to_emails = []
+    to_emails.append({
+        'email':user.email,
+        'name':user.name,
+        'type': 'to'
+    })
 
-    msg.attach(part1)
-    msg.attach(part2)
-    
-    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
-    mail.starttls()
-    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
-    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
-    mail.quit()
+    message = {
+        'html':html,
+        'text':text,
+        'subject': user_first_name + ', Welcome to Uguru Beta!',
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from Uguru',
+        'to': to_emails,
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['student-signup']
+    }
+
+    result = mandrill_client.messages.send(message=message)
 
 def welcome_uguru_tutor(user):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
     user_first_name = user.name.split(" ")[0]
-    email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = "You Are Now a Guru!"
-    DATE_FORMAT = "%d/%m/%Y"
-    EMAIL_SPACE = ", "
-
-    EMAIL_TO = [user.email]
-
-    msg = MIMEMultipart('alternative')
-    msg['Subject'] = email_subject
-    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
-    msg['From'] = email_from
     text = welcome_uguru_tutor_text(user_first_name)
     html = welcome_uguru_tutor_html(user_first_name)
-    
-    part1 = MIMEText(text, 'plain', 'utf-8')
-    part2 = MIMEText(html, 'html', 'utf-8')
+    to_emails = []
+    to_emails.append({
+        'email':user.email,
+        'name':user.name,
+        'type': 'to'
+    })
 
-    msg.attach(part1)
-    msg.attach(part2)
-    
-    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
-    mail.starttls()
-    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
-    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
-    mail.quit()
+    message = {
+        'html':html,
+        'text':text,
+        'subject': user_first_name + ', Welcome to Uguru Beta!',
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from Uguru',
+        'to': to_emails,
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['student-signup']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+
 
 def general_notification_email(user, msg_contents, email_subject):
     user_first_name = user.name.split(" ")[0]
@@ -169,6 +172,37 @@ def student_needs_help(student, tutors, course_name, request):
 
     result = mandrill_client.messages.send(message=message)
     return (result, tutor_emails_dict)
+
+def send_invite_email(tutor_dict):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+
+    to_emails = []
+
+    for tutor in tutor_dict.keys():
+        email = tutor_dict[tutor]
+        first_name = tutor.split(' ')[0].title()
+        query = User.query.filter_by(email=email).first()
+        if not query:
+            to_emails.append({
+                'email':email,
+                'name' :tutor.title(),
+                'type':'to'
+                })
+    message = {
+        'subject': "Join Cal's Peer-to-Peer Tutoring Platform and Make Money",
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from Uguru',
+        'to': to_emails,
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['guru-campaign-test']
+    }
+    result = mandrill_client.messages.send_template(message=message, template_content=[], 
+        template_name='Tutor Email Blast v1')
+
 
 def generate_new_password(user, new_password):
     user_name = user.name.split(" ")[0]
@@ -937,8 +971,8 @@ def welcome_uguru_text(user_name):
 def welcome_uguru_tutor_text(user_name):
     return """Hi """ + user_name.split(' ')[0] + \
     """, \n\n""" + \
-    """This is Samir from Uguru. We hope to make peer-to-peer help available and affordable to students by connecting them with trusted Gurus like you! \n\n""" +\
-    """Soon, you will be able to guide those lost in the dungeons of Moffit and help them achieve scholarly enlightenment. We will be sending you these requests via email. \n\n""" + \
+    """This is Samir from Uguru. We created Uguru to make peer-to-peer help available and affordable to students by connecting fellow Cal Bears. \n\n""" +\
+    """We will email you as soon as we approve your application to join the Guru force. In the mean time, you are able to request help(at http://uguru.me/activity) from the Gurus If you feel lost in the dungeons of Moffit. \n\n""" + \
     """We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly! \n\n""" + \
     """Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears!  \n\n""" + \
     """Samir Makhani\nCo-Founder\nsamir@uguru.me\n(813) 500 9853"""
@@ -947,7 +981,7 @@ def welcome_uguru_student_text(user_name):
     return """Hi """ + user_name.split(' ')[0] + \
     """, \n\n""" + \
     """This is Samir, from Uguru. We hope to make instant help available and affordable by connecting you to Gurus who have done well in the same classes at Cal!  \n\n""" +\
-    """If you are feeling lost in the dungeons of Moffit, just send a request at http://uguru.me/activity, and our Gurus will be ready to save you! \n\n""" + \
+    """This finals season, you won't have to fight the battle alone. If you feel lost in the dungeons of Moffit, just request help here(at http://uguru.me/activity), and the Gurus will be ready to rescue you! \n\n""" + \
     """We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly! \n\n""" + \
     """Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears!  \n\n""" + \
     """Samir Makhani\nCo-Founder\nsamir@uguru.me\n(813) 500 9853"""
@@ -1079,7 +1113,7 @@ def welcome_uguru_tutor_html(user_name):
     This is Samir, from <a href="http://uguru.me">Uguru</a>. We hope to make peer-to-peer help <b>available</b> and <b>affordable</b> to students by connecting them with trusted Gurus like you! 
     <br>
     <br>
-    Soon, you will be able to guide those lost in the dungeons of Moffit and help them achieve scholarly enlightenment. We will be sending you these requests via email. 
+    We will email you as soon as we approve your application to join the Guru force. In the mean time, you are able to <a href="http://uguru.me/activity">request help</a> from the Gurus If you feel lost in the dungeons of Moffit.
     <br>
     <br>
     We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly.
@@ -1102,7 +1136,7 @@ def welcome_uguru_student_html(user_name):
     This is Samir from <a href="http://uguru.me">Uguru</a>. We hope to make instant help <b>available</b> and <b>affordable</b> by connecting you to Gurus who have done well in the same classes at Cal.
     <br>
     <br>
-    If you are feeling lost in the dungeons of Moffit, just send a request <a href="http://uguru.me/activity">here</a>, and our Gurus will be ready to save you!
+    This finals season, you won't have to fight the battle alone. If you feel lost in the dungeons of Moffit, just request help <a href="http://uguru.me/activity">here</a>, and the Gurus will be ready to rescue you!
     <br>
     <br>    
     We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly.
