@@ -173,7 +173,7 @@ def student_needs_help(student, tutors, course_name, request):
     result = mandrill_client.messages.send(message=message)
     return (result, tutor_emails_dict)
 
-def send_invite_email(tutor_dict):
+def send_invite_email(tutor_dict, tag, subject, template_name):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
 
     to_emails = []
@@ -189,7 +189,7 @@ def send_invite_email(tutor_dict):
                 'type':'to'
                 })
     message = {
-        'subject': "Join Cal's Peer-to-Peer Tutoring Platform and Make Money",
+        'subject': subject,
         'from_email': 'samir@uguru.me',
         'from_name': 'Samir from Uguru',
         'to': to_emails,
@@ -198,10 +198,10 @@ def send_invite_email(tutor_dict):
         'track_opens': True,
         'track_clicks': True,
         'preserve_recipients':False,
-        'tags':['guru-campaign-test']
+        'tags':[tag]
     }
     result = mandrill_client.messages.send_template(message=message, template_content=[], 
-        template_name='Tutor Email Blast v1')
+        template_name=template_name)
 
 
 def generate_new_password(user, new_password):
