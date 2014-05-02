@@ -67,16 +67,28 @@ if arg == 'update-rating':
 if arg == 'test-campaign-email':
     test_json = {'Samir Makhani':'makhani.samir@gmail.com'}
     from app.emails import send_invite_email
-    send_invite_email(first150_ab_1, 'guru-campaign-test', "Join Cal's Peer-to-Peer Tutoring Platform and Make Money", 'Tutor Email Blast v1')
-    send_invite_email(first150_ab_2, 'guru-campaign-test', "Become a Tutor on Uguru and Make Money", 'Tutor Email Blast v2')
+    send_invite_email(test_json, 'guru-campaign-test', "Join Cal's Peer-to-Peer Tutoring Platform and Make Money", 'Tutor Email Blast v1')
+    send_invite_email(test_json, 'guru-campaign-test', "Become a Tutor on Uguru and Make Money", 'Tutor Email Blast v2')
 
 if arg == 'send-first-150':
+    import json
     first150_ab_1 = json.load(open('app/static/data/first150-ab-1.json'))
     first150_ab_2 = json.load(open('app/static/data/first150-ab-2.json'))
     from app.emails import send_invite_email
     send_invite_email(first150_ab_1, 'ab-test-1', "Join Cal's Peer-to-Peer Tutoring Platform and Make Money", 'Tutor Email Blast v1')
     send_invite_email(first150_ab_2, 'ab-test-2', "Become a Tutor on Uguru and Make Money", 'Tutor Email Blast v2')
 
+if arg == 'send-next-450':
+    import json
+    second_ab_1 = json.load(open('app/static/data/second150-ab-1.json'))
+    second_ab_2 = json.load(open('app/static/data/second150-ab-2.json'))
+    second_ab_3 = json.load(open('app/static/data/second150-ab-3.json'))
+    second_ab_4 = json.load(open('app/static/data/second150-ab-4.json'))
+    from app.emails import send_invite_email
+    send_invite_email(second_ab_1, 'ab-test-3', "Become a Tutor on Uguru and Make Money", 'Tutor Email Blast v4')
+    send_invite_email(second_ab_2, 'ab-test-4', "Become a Tutor on Uguru and Make Money", 'Tutor Email Blast v5')
+    send_invite_email(second_ab_3, 'ab-test-5', "Become a Tutor on Uguru and Make Money", 'Tutor Email Blast v6')
+    send_invite_email(second_ab_4, 'ab-test-6', "Become a Tutor on Uguru and Make Money", 'Tutor Email Blast v7')
 
 if arg == 'conversation-update':
     for u in User.query.all():
