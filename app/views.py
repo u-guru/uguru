@@ -37,7 +37,8 @@ def index():
         session.pop('guru-checked')
     if request.args.get('email'):
         session['referral'] = request.args.get('email')
-        session['guru-checked'] = True
+        if request.args.get('email') == 'guru':
+            session['guru-checked'] = True
         return redirect(url_for('index'))
     if session.get('tutor-signup'):
         tutor_signup_incomplete = True
@@ -310,18 +311,18 @@ def admin():
             request_dict['total_seen']  = total_seen_count
             request_dict['pending-ratings'] = 0
             request_dict['message-length'] = 0
-            if r.emails:
-                count = 0
-                mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
-                for email in r.emails:
-                    mandrill_id = email.mandrill_id
-                    try:
-                        result = mandrill_client.messages.info(id=mandrill_id)
-                        if result['opens'] > 0:
-                            count += 1
-                    except mandrill.Error, e:
-                        print 'A mandrill error occurred: %s - %s' % (e.__class__, e)
-                request_dict['emails-seen'] = count
+            # if r.emails:
+            #     count = 0
+            #     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+            #     for email in r.emails:
+            #         mandrill_id = email.mandrill_id
+            #         try:
+            #             result = mandrill_client.messages.info(id=mandrill_id)
+            #             if result['opens'] > 0:
+            #                 count += 1
+            #         except mandrill.Error, e:
+            #             print 'A mandrill error occurred: %s - %s' % (e.__class__, e)
+            #     request_dict['emails-seen'] = count
 
             if r.last_updated:
                 request_dict['last-updated'] = pretty_date(r.last_updated)

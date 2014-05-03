@@ -180,6 +180,35 @@ def send_invite_email(tutor_dict, tag, subject, template_name):
 
     for tutor in tutor_dict.keys():
         email = tutor_dict[tutor]
+        query = User.query.filter_by(email=email).first()
+        if not query:
+            to_emails.append({
+                'email':email,
+                'name' :tutor.title(),
+                'type':'to'
+                })
+    message = {
+        'subject': subject,
+        'from_email': 'Michael@uguru.me',
+        'from_name': 'Michael from Uguru',
+        'to': to_emails,
+        'headers': {'Reply-To': 'michael@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':[tag]
+    }
+    result = mandrill_client.messages.send_template(message=message, template_content=[], 
+        template_name=template_name)
+
+def send_invite_email_test(tutor_dict, tag, subject, template_name):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+
+    to_emails = []
+
+    for tutor in tutor_dict.keys():
+        email = tutor_dict[tutor]
         first_name = tutor.split(' ')[0].title()
         query = User.query.filter_by(email=email).first()
         if not query:
@@ -190,19 +219,35 @@ def send_invite_email(tutor_dict, tag, subject, template_name):
                 })
     message = {
         'subject': subject,
-        'from_email': 'samir@uguru.me',
-        'from_name': 'Samir from Uguru',
+        'from_email': 'Michael@uguru.me',
+        'from_name': 'Michael from Uguru',
+        'html':"""Become a Tutor on 
+Cal's Peer-to-Peer Tutoring Platform
+Be Your Own Boss
+Set your own rate from $15 to $40 per hour
+
+No Time Commitment
+Make money when you are free
+
+Good Karma
+Be a hero and rescue your peers from the dungeon of Moffit
+Become a Guru Now <a href="http://berkeley.uguru.me/?email=guru"> here</a>.
+Feeling Screwed for Your Finals?
+
+Get instant face-to-face help from experienced Gurus at Cal who have aced the same classes you are struggling with.
+
+It's affordable, fast, and easy!
+Save Your Grades <a href="http://berkeley.uguru.me/?email=student"> here</a>.
+Gurus have finals too. Reserve one now before they get busy or booked out""",
         'to': to_emails,
-        'headers': {'Reply-To': 'samir@uguru.me'},
+        'headers': {'Reply-To': 'michael@uguru.me'},
         'important': True,
         'track_opens': True,
         'track_clicks': True,
         'preserve_recipients':False,
         'tags':[tag]
     }
-    result = mandrill_client.messages.send_template(message=message, template_content=[], 
-        template_name=template_name)
-
+    result = mandrill_client.messages.send(message=message)
 
 def generate_new_password(user, new_password):
     user_name = user.name.split(" ")[0]
