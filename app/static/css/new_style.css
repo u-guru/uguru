@@ -1127,3 +1127,18 @@ body.loading .modal-load {
   margin-bottom:10px;
   margin-top:-7px;
 }
+
+#how-it-works-home h3 {
+  color:white;
+  font-weight:700;
+  font-family:'Roboto Condensed',sans-serif; 
+  font-size:0.52em;
+  margin:4px 0 0 0;
+}
+
+#how-it-works-home p {
+  margin-top:10px;
+  font-size:0.35em;
+  font-family:'Roboto',sans-serif; 
+  text-align:center;
+}
