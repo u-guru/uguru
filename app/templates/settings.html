@@ -281,10 +281,12 @@
             Please complete all fields!
           </div>
         {% endif %}
+        {% if not user.approved_by_admin %}
         <div>
             <h4 style="color:Grey"> Guru Status: <strong> <span style="color:red"> Pending </span> </strong>
             <br>
         </div>
+        {% endif %}
         <div align="center">
           <h4>{{user.name.split(" ")[0]|upper}}</h4>
           <div style="{% if user.profile_url == '/static/img/default-photo.jpg' %} border:1px solid red {% endif %}"id="pic-holder">

@@ -97,30 +97,38 @@
 	<div class="page-title">
 	   <h4 style="color:white;">YOUR ACTIVITY</h4>
 	  </div>
-	<div class="light-blue-bar" align:"center">
+	<div id="call-to-action-bar" align:"center">
+		{% if not address_book.keys() %}
 		<div class="row">
-			{% if address_book.keys() %}
-			<div class="col-xs-5 col-xs-offset-1 col-md-offset-3 col-md-3">
-			{% else %}
-			<div class="col-xs-12 col-md-12">
-			{% endif %}
+			<div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6">
 				<a id="tutor-request-link" href="javascript:void(0)">
-					<span style="color:#00a0cf;" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:60px"></span>
-					<span class="h4" style="color:#00a0cf;"><b>REQUEST A GURU</b></span>
+					<div style="margin-left:1.5%"class="call-to-action-button">
+						REQUEST A GURU
+					</div>
 				</a>
 			</div>
-			{% if address_book.keys() %}
-			<div class="col-xs-5 col-md-3">
-				<a id="request-payment-link" href="javascript:void(0)">
-					<span style="color:#00a0cf;" class="glyphicon glyphicon-edit" style="padding-top:12px;padding-right:12px;font-size:60px"></span>
-					<span class="h4" style="color:#00a0cf;"><b>REQUEST PAYMENT</b></span>
-				</a>
-			</div>
-			{% endif %}
 		</div>
+		{% else %}
+		<div class="row">
+			<div class="col-xs-offset-1 col-xs-5 col-sm-offset-3 col-sm-3 col-md-offset-3 col-md-3">
+				<a id="tutor-request-link" href="javascript:void(0)">
+					<div style="margin-left:10px"class="call-to-action-button">
+						REQUEST A GURU
+					</div>
+				</a>
+			</div>
+			<div class="col-xs-5 col-sm-3 col-md-3">
+					<a id="request-payment-link" href="javascript:void(0)">
+						<div style="background-color:rgb(0, 159, 225)" class="call-to-action-button">
+						BILL A STUDENT
+						</div>
+					</a>
+			</div>
+		</div>
+		{% endif %}
 	</div>
 	<div id="feed" class="container-fluid">
-		<div style="margin-top:15px;" class="row container-fluid">
+		<div class="row container-fluid">
 			<div style="display:none"id="bootstrap-success" class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-offset-2 col-md-8">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 				<div class="alert alert-success"></div>
