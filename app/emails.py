@@ -173,7 +173,107 @@ def student_needs_help(student, tutors, course_name, request):
     result = mandrill_client.messages.send(message=message)
     return (result, tutor_emails_dict)
 
-def send_invite_email(tutor_dict, tag, subject, template_name):
+def send_invite_email(tutor_dict, tag, subject):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    to_emails = []
+    merge_vars = []
+    html = send_invite_email_html()
+
+    for tutor in tutor_dict.keys():
+        email = tutor_dict[tutor]
+        query = User.query.filter_by(email=email).first()
+        if not query:
+            to_emails.append({
+                'email':email,
+                'name' :tutor.title(),
+                'type':'to'
+                })
+            merge_vars.append({
+                'rcpt':email,
+                'vars': [
+                    {
+                        'name':"fname",
+                        'content':tutor.split(' ')[0].title()
+                    }
+                ]
+                })
+    message = {
+        'subject': subject,
+        'from_email': 'jasmine@uguru.me',
+        'from_name': 'Jasmine from Uguru',
+        'to': to_emails,
+        'headers': {'Reply-To': 'support@uguru.me'},
+        'html':html,
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'merge_vars': merge_vars,
+        'tags':[tag]
+    }
+    result = mandrill_client.messages.send(message=message)
+
+def send_invite_email_html():
+    return """
+    <div style="text-align:center">
+    Hi *|FNAME|*, 
+    <br>
+    <br>
+    This is Jasmine from <a href="http://berkeley.uguru.me"> Uguru</a>, Cal's peer-to-peer tutoring platform. Hope you enjoyed your semester!
+    <br>
+    <br>
+    Great power comes with great responsibility. This finals season you can make a change!<br>
+    Be a grade-saving hero and rescue those lost in the dungeons of Main Stacks.
+    <br>
+    <br>
+    Besides the good karma you will rack up, here are other cool benefits as a Guru (tutor):
+    <br>
+    <br>
+    <b> Be Your Own Boss </b><br>
+    Set your own rate from $15 to $40 per hour
+    <br>
+    <br>
+    <b>No Time Commitment</b><br>
+    Make Money when you are free
+    <br>
+    <br>
+    <b>Great Review for Yourself</b><br>
+    Refresh course material as you teach
+    <br>
+    <br>
+    <a href="http://berkeley.uguru.me/?email=guru">Become a Guru Now</a>
+    <br>
+    <br>
+    ---------------------------------------------
+    <br>
+    <br>
+    Alternatively, you won't have to fight this battle alone this semester!
+    <br>
+    <br>
+    If you need help with your finals or papers, you can request <b> instant face-to-face help </b> from your fellow Cal bears 
+    who have aced the same class. It's <b>quick</b>, <b>easy</b>, and <b>affordable</b>.
+    <br>
+    <br>
+    <a href="http://berkeley.uguru.me/?email=student">Save Your Grades Now</a>
+    <br>
+    <br>
+    <i> Gurus have finals too. Reserve one before they get busy or booked out!</i>
+    <br>
+    <br>
+    ---------------------------------------------
+    <br>
+    <br>
+    By Cal students, for Cal students<br>
+    - The Uguru Team
+    <br>
+    <br>
+    <span style="font-size:10px"><i>If you are annoyed by our email, simply reply "UNSUBSCRIBE" to this message directly. </i></span>
+    <br>
+    </div>
+    """
+
+
+def send_invite_email_old(tutor_dict, tag, subject, template_name):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
 
     to_emails = []

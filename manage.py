@@ -65,10 +65,10 @@ if arg == 'update-rating':
 
 
 if arg == 'test-campaign-email':
-    test_json = {'Samir Makhani':'sam1rm@berkeley.edu', 'Michael Koh':'michael60716@gmail.com', 'Subhav':'sub_have@berkeley.edu', 'Lee Lazar':'leelazar@berkeley.edu', 'Caleb Wang':'calebwang@berkeley.edu', 'David Liu': 'david_liu@berkeley.edu', 'Steve Wang':'ywang155@berkeley.edu', 'Jared Baker':'jaredbaker@berkeley.edu', }
-    # test_json = {'Jonathan Grundman':'jigrundman@berkeley.edu'}
+    # test_json = {'Samir Makhani':'sam1rm@berkeley.edu', 'Michael Koh':'michael60716@gmail.com', 'Subhav':'sub_have@berkeley.edu', 'Lee Lazar':'leelazar@berkeley.edu', 'Caleb Wang':'calebwang@berkeley.edu', 'David Liu': 'david_liu@berkeley.edu', 'Steve Wang':'ywang155@berkeley.edu', 'Jared Baker':'jaredbaker@berkeley.edu', 'Jackie Hong':'jhong924@berkeley.edu'}
+    test_json = {'Angela Lu':'angelalu@berkeley.edu'}
     from app.emails import send_invite_email
-    send_invite_email(test_json, 'guru-campaign-test', "Join Cal's Peer-to-Peer Tutoring Platform and Make Money", 'Tutor Email Blast v1')
+    send_invite_email(test_json, 'guru-campaign-test', "*|FNAME|*, Become a Freelance Tutor at Cal and Make Money")
 
 if arg == 'send-first-150':
     import json
@@ -80,15 +80,13 @@ if arg == 'send-first-150':
 
 if arg == 'send-next-450':
     import json
-    second_ab_1 = json.load(open('app/static/data/second150-ab-1.json'))
-    second_ab_2 = json.load(open('app/static/data/second150-ab-2.json'))
-    second_ab_3 = json.load(open('app/static/data/second150-ab-3.json'))
-    second_ab_4 = json.load(open('app/static/data/second150-ab-4.json'))
+    third_ab_1 = json.load(open('app/static/data/third300-ab-1.json'))
+    third_ab_2 = json.load(open('app/static/data/third300-ab-2.json'))
+    third_ab_3 = json.load(open('app/static/data/third300-ab-3.json'))
     from app.emails import send_invite_email
-    send_invite_email(second_ab_1, 'ab-test-3', "Become a Tutor on Uguru and Make Money", 'Tutor Email Blast v4')
-    send_invite_email(second_ab_2, 'ab-test-4', "Become a Tutor on Uguru and Make Money", 'Tutor Email Blast v5')
-    send_invite_email(second_ab_3, 'ab-test-5', "Become a Tutor on Uguru and Make Money", 'Tutor Email Blast v6')
-    send_invite_email(second_ab_4, 'ab-test-6', "Become a Tutor on Uguru and Make Money", 'Tutor Email Blast v7')
+    send_invite_email(third_ab_1, 'ab-test-7', "*|FNAME|*, Become a Freelance Tutor at Cal and Make Money")
+    send_invite_email(third_ab_2, 'ab-test-8', "*|FNAME|*, Tutor Your Classmates and Make Hundreds on Uguru")
+    send_invite_email(third_ab_3, 'ab-test-9', "*|FNAME|*, Tutor Your Classmates and Make Money on Uguru")
 
 if arg =='send-next-300':
     import json
