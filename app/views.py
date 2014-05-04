@@ -387,7 +387,7 @@ def admin():
         unverified_tutor_count = 0
         for u in users: 
             pretty_dates[u.id] = pretty_date(u.time_created)
-            if u.referral_code == 'guru' and not u.approved_by_admin:
+            if u.qualifications and not u.approved_by_admin:
                 unverified_tutor_count += 1
             if u.skills:
                 result_string = ""
@@ -407,7 +407,7 @@ def admin():
             all_requests = all_requests, skills_counter = skills_counter, notifications=notifications,\
             payments=payments, total_profit=total_profit, environment = get_environment(), ratings=Rating.query.all(),\
             ratings_dict=ratings_dict, transactions=transactions, conversations=conversations, users_last_active=users_last_active,\
-            total_revenue = total_revenue, payment_analytics=payment_analytics)
+            total_revenue = total_revenue, payment_analytics=payment_analytics, unverified_tutor_count=unverified_tutor_count)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
