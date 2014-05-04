@@ -392,7 +392,7 @@
                 </div>
             </div>
         </div>
-        <div style="display:{% if session.get('signup-start')%} block {%else%} none{%endif%}" id="student-signup">
+        <div style="display:{% if session.get('signup-start') and not tutor_signup_incomplete %} block {%else%} none{%endif%}" id="student-signup">
             <nav class="navbar"margin-right:25px;>
               <div class="container-fluid">
                 <div class="navbar-header">
