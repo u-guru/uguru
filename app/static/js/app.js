@@ -267,7 +267,7 @@ $(document).ready(function(){
                 'student-signup': true,        
                 'name': $('input[name="student-name"]').val(),
                 'email': $('input[name="student-email"]').val(),
-                'phone': $('input[name="student-phone"]').val(),
+                'phone': '',
                 'password': $('input[name="student-password"]').val(),
             }
             $.ajax({
@@ -299,7 +299,7 @@ $(document).ready(function(){
                 'tutor-signup': true,        
                 'name': $('input[name="student-name"]').val(),
                 'email': $('input[name="student-email"]').val(),
-                'phone': $('input[name="student-phone"]').val(),
+                'phone': '',
                 'password': $('input[name="student-password"]').val(),
             }
             $.ajax({

@@ -88,9 +88,11 @@ if arg == 'send-next-450':
     send_invite_email(third_ab_2, 'ab-test-8', "*|FNAME|*, Tutor Your Classmates and Make Hundreds on Uguru")
     send_invite_email(third_ab_3, 'ab-test-9', "*|FNAME|*, Tutor Your Classmates and Make Money on Uguru")
 
-if arg =='send-next-300':
+if arg =='mass-email-1':
     import json
-    second_ab_1 = json.load(open('app/static/data/third300-ab-1.json'))
+    mass_email_1 = json.load(open('app/static/data/mass-email-1.json'))
+    from app.emails import send_invite_email
+    send_invite_email(mass_email_1, 'mass-email-1', "*|FNAME|*, Tutor Your Classmates and Make Money on Uguru")
 
 
 if arg == 'conversation-update':

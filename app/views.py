@@ -1200,11 +1200,6 @@ def success():
 
         if ajax_json.get('student-signup'):
             try: 
-                if 'TESTING' not in os.environ:
-                    query = User.query.filter_by(phone_number=ajax_json['phone']).first()
-                    if query and ajax_json['phone'] != '':
-                        ajax_json['duplicate-phone'] = True
-                        return jsonify(dict=ajax_json)
                 u = User.query.get(session.get('signup-start-user-id'))
                 u.name = ajax_json['name'] 
                 u.password = md5(ajax_json['password']).hexdigest()
@@ -1251,11 +1246,6 @@ def success():
 
         if ajax_json.get('tutor-signup'):
             try:
-                if 'TESTING' not in os.environ:
-                    query = User.query.filter_by(phone_number=ajax_json['phone']).first()
-                    if query and ajax_json['phone'] != '':
-                        ajax_json['duplicate-phone'] = True
-                        return jsonify(dict=ajax_json)
                 u = User.query.get(session.get('signup-start-user-id'))
                 u.name = ajax_json['name'] 
                 u.password = md5(ajax_json['password']).hexdigest()
