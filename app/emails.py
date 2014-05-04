@@ -219,7 +219,7 @@ def send_invite_email_html():
     Hi *|FNAME|*, 
     <br>
     <br>
-    This is Jasmine from <a href="http://berkeley.uguru.me"> Uguru</a>, Cal's peer-to-peer tutoring platform. Hope you enjoyed your semester!
+    This is Jasmine from <a href="http://berkeley.uguru.me">Uguru</a>, Cal's peer-to-peer tutoring platform. Hope you enjoyed your semester!
     <br>
     <br>
     Great power comes with great responsibility. This finals season you can make a change!<br>
