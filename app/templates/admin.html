@@ -16,6 +16,7 @@
   <li><a href="#payments" data-toggle="tab"> Payments</a></li>
   <li><a href="#ratings" data-toggle="tab"> Ratings</a></li>
   <li><a href="#bank-transfers" data-toggle="tab"> Bank Transfers</a></li>
+  <li><a href="#unverified_tutors" data-toggle="tab"> Unverified Tutors</a></li>
 </ul>
 
 <div class="tab-content">
@@ -39,7 +40,7 @@
                     <td> Last Active </td>
                 </tr>
                 {% for user in users %}
-                        {% if user.verified_tutor %}
+                        {% if user.verified_tutor and user.approved_by_admin %}
                         <tr> 
                             <td>  {{user.id}} </td>
                             <td> <a href="javascript:void(0)" class="login-user"> {{user.name}} </a> </td>

@@ -384,8 +384,11 @@ def admin():
             all_requests.append(request_dict)
         all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
         payments = sorted(payments, key=lambda d:d['payment'].time_created, reverse=True)
+        unverified_tutor_count = 0
         for u in users: 
             pretty_dates[u.id] = pretty_date(u.time_created)
+            if u.referral_code == 'guru' and not u.approved_by_admin:
+                unverified_tutor_count += 1
             if u.skills:
                 result_string = ""
                 for s in u.skills:
