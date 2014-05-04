@@ -1284,8 +1284,8 @@ def success():
             from app.static.data.variations import courses_dict
             from app.static.data.short_variations import short_variations_dict
             
-            skill_name = ajax_json['skill'].lower()
-            skill_id = courses_dict[skill_name]
+            original_skill_name = ajax_json['skill'].lower()
+            skill_id = courses_dict[original_skill_name]
             skill = Skill.query.get(skill_id)
             skill_name = short_variations_dict[skill.name]
             u = User.query.get(user_id)
@@ -1322,7 +1322,7 @@ def success():
                 raise 
             
             from notifications import student_request_receipt
-            notification = student_request_receipt(u, r, skill_name)
+            notification = student_request_receipt(u, r, original_skill_name)
             u.notifications.append(notification)
             db_session.add(notification)
             try:
