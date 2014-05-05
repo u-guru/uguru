@@ -14,8 +14,14 @@
             credit_card_back_link = $(this).parent().parent().parent().attr('id')
             $(this).parent().parent().parent().hide();
         } else {
-            $(this).parent().parent().parent().parent().parent().hide();
-            $('#student-request-alert').show();
+            if (!$('#student-signup-description').val() || !$('#student-signup-location').val() || 
+                !$('#student-signup-availability').val() || !$('#student-signup-skill').val()) {
+                 $('#alert-fields-student-signup1').show(); 
+                return false;
+            } else {
+                $(this).parent().parent().parent().parent().parent().hide();
+                $('#student-request-alert').show();
+            }
         }
         $('#credit-card-info').show();
     });
@@ -149,13 +155,8 @@ var stripeResponseHandler = function(status, response) {
             $('#student-accept-text').text('CHOOSE THIS GURU');
             $('#flakers-fee-alert').show();
             credit_card_back_link = false
-        } else {
-            $('.student-request-accept-btn-credit').hide();
-            $('.student-register').show();
-            $('#request-credit-card-success').show();
-            $('#request-credit-card-success').delay(3000).fadeOut('slow');
-            $('#tutor-request').show();
         }
+        $('.student-register').trigger('click');
     }
 };
 

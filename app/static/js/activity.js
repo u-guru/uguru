@@ -100,10 +100,10 @@ $(document).ready(function() {
     });
 
     $('.student-register').click(function(e){
-    if (!$('#student-signup-description').val() || !$('#student-signup-location').val() || 
-        !$('#student-signup-availability').val() || !$('#student-signup-skill').val()) {
-      $('#alert-fields-student-signup1').show(); 
-    } else {
+      if (!$('#student-signup-description').val() || !$('#student-signup-location').val() || 
+          !$('#student-signup-availability').val() || !$('#student-signup-skill').val()) {
+        $('#alert-fields-student-signup1').show(); 
+      } else {
       $(this).addClass('disabled')
       e.preventDefault();
       $('.student-register').click(false);
