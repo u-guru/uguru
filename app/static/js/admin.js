@@ -29,6 +29,21 @@ $(document).ready(function() {
           });
     });
 
+    $('.container').on('click', 'a.approve-tutor', function() {
+      var user_id = $(this).parent().siblings('td:first').text().trim()
+      data = {'admin-approve-tutor':user_id}
+      $.ajax({
+              type: "POST",
+              contentType: 'application/json;charset=UTF-8',
+              url: '/validation/',
+              data: JSON.stringify(data),
+              dataType: "json",
+              success: function(result) {
+                window.location.replace('/admin/');
+              }
+          });
+    });
+
     $('.container').on('click', 'a.login-tutor-request', function() {
         var user_id = $(this).siblings('span').text();
         data = {'user-id': user_id}

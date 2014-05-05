@@ -40,15 +40,15 @@ def index():
         if request.args.get('email') == 'guru':
             session['guru-checked'] = True
         return redirect(url_for('index'))
-    if session.get('tutor-signup'):
-        tutor_signup_incomplete = True
-        return render_template('new_index.html', forms=[request_form],
-        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete)
     if session.get('user_id'):
         user = User.query.get(session.get('user_id'))
         if user.skills and len(user.notifications) < 2:
             return redirect(url_for('settings'))
         return redirect(url_for('activity'))
+    if session.get('tutor-signup'):
+        tutor_signup_incomplete = True
+        return render_template('new_index.html', forms=[request_form],
+        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete)
     return render_template('new_index.html', forms=[request_form],
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral)
@@ -1245,6 +1245,7 @@ def success():
         if ajax_json.get('complete-tutor-signup'):
             u = User.query.get(session['user_id'])
             u.qualifications = ajax_json.get('complete-tutor-signup')
+            session.pop('tutor-signup')
             try:
                 db_session.commit()
             except:
@@ -1370,6 +1371,22 @@ def success():
             except:
                 db_session.rollback()
                 raise 
+
+        if ajax_json.get('admin-approve-tutor'):
+            try:
+                user_id = int(ajax_json.get('admin-approve-tutor'))
+                user = User.query.get(user_id)
+                user.approved_by_admin = True
+
+                if user.notifications:
+                    notification = user.notifications[0]
+                    notification.feed_message_subtitle = "Application status: <strong><span style='color:#69bf69'>Approved!</span></strong>"
+
+                from emails import approved_by_admin_email
+                approved_by_admin_email(user)
+                db_session.commit()
+            except:
+                db_session.rollback()
 
         if ajax_json.get('verify-tutor'):
             try:

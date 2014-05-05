@@ -109,6 +109,56 @@ def welcome_uguru_tutor(user):
 
     result = mandrill_client.messages.send(message=message)
 
+def approved_by_admin_email(user):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    
+    user_first_name = user.name.split(" ")
+    html = approved_by_admin_email_html(user_first_name)
+
+    message = {
+        'html':html,
+        'subject': 'Congrats *|FNAME|*, You Are Now a Guru!',
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from Uguru',
+        'to': [{'email':user.email, 'name':user.name, 'type':'to'}],
+        'merge_vars': [{
+                'rcpt':user.email,
+                'vars': [
+                    {
+                        'name':"fname",
+                        'content':user.name.split(' ')[0].title()
+                    }
+                ]
+            }],
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['guru-approval-email']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+
+def approved_by_admin_email_html(user_first_name):
+    return """
+    Congrats *|FNAME|*, 
+    <br>
+    <br>
+    Congratulations! We have just approved your Guru application, and your Guru account has now been activated.
+    <br>
+    <br>
+    In the mean time, just sit tight and wait. We will email you when a student requests help for a course that you signed up for.
+    <br>
+    <br>
+    Thanks for joining us! Go Bears!
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
 
 def general_notification_email(user, msg_contents, email_subject):
     user_first_name = user.name.split(" ")[0]
@@ -147,7 +197,7 @@ def student_needs_help(student, tutors, course_name, request):
     tutor_emails_dict = {}
 
     for tutor in tutors:
-        if tutor.email_notification:
+        if tutor.email_notification and tutor.approved_by_admin:
             to_emails.append({
                 'email':tutor.email,
                 'name':tutor.name,
