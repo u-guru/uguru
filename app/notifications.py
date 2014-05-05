@@ -210,7 +210,7 @@ def student_payment_approval(user, tutor, payment, amount_charged, charge_id, sk
         notification.image_url = tutor.profile_url
     else:
         notification.image_url = '/static/img/default-photo.jpg'
-    student_payment_receipt(user, tutor.name.split(" ")[0], amount_charged, payment, charge_id, skill_name, recurring)
+    student_payment_receipt(user, tutor.name.split(" ")[0], amount_charged, payment, charge_id, skill_name, recurring, False)
     tutor_payment_receipt(user, tutor, amount_charged, payment, charge_id, skill_name, user.name.split(" ")[0])
     return notification
 

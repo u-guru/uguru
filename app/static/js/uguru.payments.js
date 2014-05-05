@@ -10,8 +10,13 @@
     });
 
     $('.student-request-accept-btn-credit').click(function(){
-        credit_card_back_link = $(this).parent().parent().parent().attr('id')
-        $(this).parent().parent().parent().hide();
+        if (!request_a_guru_clicked) {
+            credit_card_back_link = $(this).parent().parent().parent().attr('id')
+            $(this).parent().parent().parent().hide();
+        } else {
+            $(this).parent().parent().parent().parent().parent().hide();
+            $('#student-request-alert').show();
+        }
         $('#credit-card-info').show();
     });
 
@@ -133,18 +138,26 @@ var stripeResponseHandler = function(status, response) {
         });  
         $('#payment-form').parent().hide();
         $('#credit-card-info').hide();
-        $('#' + credit_card_back_link).show();
-        $('#' + credit_card_back_link + ' a.tutor-request-accept-btn-credit').addClass('tutor-request-accept-btn');
-        $('#' + credit_card_back_link + ' a.tutor-request-accept-btn-credit').removeClass('tutor-request-accept-btn-credit');
-        $('#' + credit_card_back_link + ' a.student-request-accept-btn-credit').addClass('student-request-accept-btn');
-        $('#' + credit_card_back_link + ' a.student-request-accept-btn-credit').removeClass('student-request-accept-btn-credit');
-        
-        $('#tutor-accept-text').text('CHOOSE THIS GURU');
-        $('#student-accept-text').text('CHOOSE THIS GURU');
-        $('#flakers-fee-alert').show();
-        credit_card_back_link = false
+        if (!request_a_guru_clicked) {
+            $('#' + credit_card_back_link).show();
+            $('#' + credit_card_back_link + ' a.tutor-request-accept-btn-credit').addClass('tutor-request-accept-btn');
+            $('#' + credit_card_back_link + ' a.tutor-request-accept-btn-credit').removeClass('tutor-request-accept-btn-credit');
+            $('#' + credit_card_back_link + ' a.student-request-accept-btn-credit').addClass('student-request-accept-btn');
+            $('#' + credit_card_back_link + ' a.student-request-accept-btn-credit').removeClass('student-request-accept-btn-credit');
+            
+            $('#tutor-accept-text').text('CHOOSE THIS GURU');
+            $('#student-accept-text').text('CHOOSE THIS GURU');
+            $('#flakers-fee-alert').show();
+            credit_card_back_link = false
+        } else {
+            $('.student-request-accept-btn-credit').hide();
+            $('.student-register').show();
+            $('#request-credit-card-success').show();
+            $('#request-credit-card-success').delay(3000).fadeOut('slow');
+            $('#tutor-request').show();
         }
-    };
+    }
+};
 
 var stripeResponseHandlerBank = function(status, response) {
     var $form = $('#payment-form');

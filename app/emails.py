@@ -623,7 +623,7 @@ def send_message_alert_html(receiver_name, sender_name):
     (813) 500 - 9853
     """
 
-def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_name, recurring):
+def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_name, recurring, connection):
     student_name = user.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
     email_subject = "Your " + skill_name + " Session with " + tutor_name
@@ -639,12 +639,15 @@ def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_
     card_last4 = user.customer_last4
     from app.static.data.prices import prices_dict
     prices_reversed_dict = {v:k for k, v in prices_dict.items()}
-    hourly_price = prices_reversed_dict[payment.tutor_rate]
+    if not connection:
+        hourly_price = prices_reversed_dict[payment.tutor_rate]
     hours = payment.time_amount
     date = payment.time_created.strftime("%B %d, %Y at %I:%M%p")
 
     if recurring:
         hourly_price = payment.tutor_rate
+    else:
+        hourly_price = None
 
     text = student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
     html = student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)

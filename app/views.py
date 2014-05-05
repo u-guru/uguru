@@ -353,19 +353,33 @@ def admin():
                         if count >= 1:
                             payment_dict['student-hourly'] = p.tutor_rate
                         else: 
-                            payment_dict['student-hourly'] = prices_reversed_dict[p.tutor_rate]
-                        payment_analytics['avg-student-rate'] += payment_dict['student-hourly']
+                            if p.tutor_rate:
+                                payment_dict['student-hourly'] = prices_reversed_dict[p.tutor_rate]
+                            else:
+                                payment_dict['student-hourly'] = None
+                        if payment_dict['student-hourly']:
+                            payment_analytics['avg-student-rate'] += payment_dict['student-hourly']
                         payment_dict['tutor-hourly'] = p.tutor_rate
-                        payment_analytics['avg-tutor-rate'] += payment_dict['tutor-hourly']
-                        student_charge = payment_dict['student-hourly'] * p.time_amount
+                        if payment_dict['tutor-hourly']:
+                            payment_analytics['avg-tutor-rate'] += payment_dict['tutor-hourly']
+                        if payment_dict['student-hourly']:
+                            student_charge = payment_dict['student-hourly'] * p.time_amount
+                        else:
+                            student_charge = 5
                         if count >=1:
                             payment_dict['student-total'] = student_charge  * 1.03 + 2
                         else:
-                            payment_dict['student-total'] = student_charge 
-                        payment_analytics['avg-student-charge'] += payment_dict['student-total']
-                        tutor_paid = p.tutor_rate * p.time_amount
-                        payment_analytics['avg-tutor-paid'] += tutor_paid
-                        stripe_fees = payment_dict['student-total'] * 0.029 + 0.30
+                            payment_dict['student-total'] = 5
+                        if payment_dict['student-total']:
+                            payment_analytics['avg-student-charge'] += payment_dict['student-total']
+                        if p.tutor_rate and p.time_amount:
+                            tutor_paid = p.tutor_rate * p.time_amount
+                        else:
+                            tutor_paid = 0
+                        if tutor_paid :
+                            payment_analytics['avg-tutor-paid'] += tutor_paid
+                        if payment_dict['student-total']:
+                            stripe_fees = payment_dict['student-total'] * 0.029 + 0.30
                         payment_dict['tutor-total'] = tutor_paid
                         payment_dict['stripe-fees'] = round(stripe_fees, 2)
                         payment_analytics['avg-stripe-fees'] += payment_dict['stripe-fees']
@@ -966,6 +980,22 @@ def update_requests():
             r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
             r.time_connected = datetime.now()
             r.student_secret_code = user.secret_code
+
+            p = Payment(r)
+            p.student_paid_amount = 5.0
+            db_session.add(p)
+
+            charge = stripe.Charge.create(
+                amount = 500,
+                currency="usd",
+                customer=student.customer_id,
+                description="one-time connection fee"
+            )
+
+            charge_id = charge["id"]
+
+            from emails import student_payment_receipt
+            student_payment_receipt(student, tutor.name.split(" ")[0], 5, p, charge_id, skill_name, False, True)
 
             student.outgoing_requests.remove(r)
 

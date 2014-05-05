@@ -718,17 +718,19 @@ a:hover{
   
 }
 .btn-save {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: normal;
-  line-height: 1.428571429;
   background-color:#69bf69;
-  height:50px;
+  padding:10px;
+  width:90%;
+  margin:0 auto;
+  border-radius:4px;
   text-align:center; 
 }
 
 .btn-save p {
   color:white;
-  padding-top:15px;
+  margin:0;
 }
 
 .btn-reject p {
@@ -1447,14 +1449,18 @@ textarea#student-signup-description {
 }
 
 .tutor-submit-next {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: normal;
-  line-height: 1.428571429;
+  line-height: 30px;
   background-color:#69bf69;
-  height:50px;
   text-align:center;
   color:white;
-  padding-top:1%;
+  padding:10px;
+  border-radius:4px;
+}
+
+.tutor-submit-next p {
+  margin:0;
 }
 
 span.twitter-typeahead {

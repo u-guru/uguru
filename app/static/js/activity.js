@@ -1,6 +1,7 @@
 var credit_card_back_link = false; 
 var student_original_price = null;
 var last_clicked_notif_index = null;
+var request_a_guru_clicked = false;
 window.onhashchange = locationHashChanged
 function locationHashChanged() {
     if (!location.hash) {
@@ -98,14 +99,14 @@ $(document).ready(function() {
       $('#student-offer-total-price-' + feed_message_index).text((student_original_price * $('#student-time-estimate-'+ feed_message_index).text()))
     });
 
-    $('#student-register').click(function(e){
+    $('.student-register').click(function(e){
     if (!$('#student-signup-description').val() || !$('#student-signup-location').val() || 
         !$('#student-signup-availability').val() || !$('#student-signup-skill').val()) {
       $('#alert-fields-student-signup1').show(); 
     } else {
       $(this).addClass('disabled')
       e.preventDefault();
-      $('#student-register').click(false);
+      $('.student-register').click(false);
       var data = {
         'student-request': true,
         'description': $('#student-signup-description').val(),
@@ -127,7 +128,7 @@ $(document).ready(function() {
             if (result.dict['no-active-tutors']) {
               $('#already-have-active-request-alert').children().children('div:first').text("Sorry! We currently don't have tutors for this course. We've registered your request and will let you know immediately when we do!");
               $('#already-have-active-request-alert').show();
-              $('#student-register').hide();
+              $('.student-register').hide();
             }
             else if (result.dict['duplicate-request']) {
               $('#already-have-active-request-alert').show();
@@ -256,6 +257,7 @@ $(document).ready(function() {
    });
    $('#tutor-request-link').click(function() {
         $('#activity').hide();
+        request_a_guru_clicked = true;
         $('#tutor-request').show();
    })
    $('#request-payment-link').click(function() {
@@ -314,25 +316,23 @@ $(document).ready(function() {
     });
 
     $('#feed-messages').on('click', 'a.student-request-accept-btn', function() {
-        if (confirm("By accepting this request, you agree to this price and to use Uguru's payment system.")) {
-          $(this).click(false);
-          request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
-      
-          var data = {
-              'student-accept': request_num, 
-              'notification-id': last_clicked_notif_index,
-          };
-          $.ajax({
-              type: "POST",
-              contentType: 'application/json;charset=UTF-8',
-              url: '/update-request/' ,
-              data: JSON.stringify(data),
-              dataType: "json",
-              success: function(result) {         
-                  window.location.replace('/activity/');
-              }
-          }); 
-        }
+        $(this).click(false);
+        request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
+    
+        var data = {
+            'student-accept': request_num, 
+            'notification-id': last_clicked_notif_index,
+        };
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/update-request/' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function(result) {         
+                window.location.replace('/activity/');
+            }
+        }); 
     });
 
     
@@ -650,7 +650,7 @@ $(document).ready(function() {
     });
 
 
-    $('#student-signup-avalability').blur(function(){
+    $('#student-signup-availability').blur(function(){
       if ($('#student-signup-availability').val()) {
         $('#student-signup-availability').css({"border-color":"#69bf69"
       })

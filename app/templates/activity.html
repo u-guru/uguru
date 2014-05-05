@@ -520,6 +520,11 @@
   					<div style="margin-bottom:0"class="alert alert-danger">You already have an active request for this class. Once you've been matched with a tutor you can make another one!</div>
   				</div>
 		  	</div>
+		  	<div id="request-credit-card-success" style="display:none" class="row-fluid">
+  				<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+  					<div style="margin-bottom:0"class="alert alert-success">Your credit card has been successfully added!<br> Click 'request' to finalize your request.</div>
+  				</div>
+		  	</div>
 	        <div style="margin-top:15px" class="row">
                 <div class="row">
 	                <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
@@ -618,14 +623,19 @@
                 </div>
             <div style="text-align:center; margin-right:-15px; margin-left:-15px; padding-left:0px; padding-right:0px;" class="row">
               <div style="padding-left:0px; padding-right:0px"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
-                <a id="student-register" href="javascript:void(0)">
+                <a style="{% if not user.customer_id %}display:block{%else%}display:none{% endif %}"class="student-request-accept-btn-credit" href="javascript:void(0)">
+                  <div class="tutor-submit-next">
+                    <p> NEXT STEPS </p>
+                  </div>
+                </a>
+                <a style="{% if user.customer_id %}display:block{%else%}display:none{% endif %}"class="student-register" href="javascript:void(0)">
                   <div class="tutor-submit-next">
                     <p> REQUEST </p>
                   </div>
                 </a>
               </div>
-             </div>
-          <div style="margin-top:25px;text-align:center; color:red">
+            </div>
+          <div style="margin-top:45px;text-align:center; color:grey">
 		       Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our FAQ</u></a>
 		   </div>
 	</div>
@@ -638,13 +648,13 @@
 		<div id="credit-card-info" style="display:none; color:rgb(0, 159, 225);">
 		<form role="form" action="javascript:void(0)" method="POST" id="payment-form">
 			<div class="page-title">
-			  <div class="row" style="width:100%;text-align:center">
-			      <div class="col-xs-1">
+			  <div class="row-fluid" style="width:100%;text-align:center">
+			      <div class="col-xs-1 col-sm-offset-1 col-sm-1 col-md-offset-1 col-md-1">
 			        <a href="javascript:void(0)" id="credit-card-back-link" style="text-decoration:none"> 
 			          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
 			        </a>
 			      </div>
-			      <div class="col-xs-10" style="text-align:center">
+			      <div class="col-xs-10 col-sm-8 col-md-8" style="text-align:center">
 			        <h4 style="color:white;width:100%;font-weight:500">ADD A CREDIT / DEBIT CARD</h4>
 			    </div>
 			  </div>
@@ -724,7 +734,10 @@
 						</a> 
 					</div>
 				</div>
-				<div style="margin-top:25px;text-align:center; color:red">
+				<div id="student-request-alert" style="display:none; text-align:center; color:#CD2626" class="row">
+					You will not be charged anything until you choose a tutor of your choice.
+				</div>
+				<div style="margin-top:45px;text-align:center; color:grey">
 			        	Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our FAQ</u></a>
 			    </div>
 			</div>
@@ -1191,7 +1204,7 @@
 						 		<a class="cancel-request" style="color:grey" href="javascript:void(0)"> Cancel this Request </a>
 						 	</div>
 						 	{% endif %}
-				          <div style="margin-top:25px;text-align:center; color:red">
+				          <div style="margin-top:25px;text-align:center; color:grey">
 						       Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our FAQ</u></a>
 						   </div>
 						</div>
@@ -1511,6 +1524,9 @@
 							If you want to accept this request, you agree to this. <br>If you do, go ahead and click 'CHOOSE THIS GURU' 
 						</div>
 					</div>
+					<div class="row" style="margin-bottom:5px; font-size: 14px; text-align:center; color:#CD2626"><b>
+				    	A one-time, $5 connection fee will be charged if you accept {{tutor_dict[n].name.split()[0]}}'s request. </b>
+				    </div>
 					<div class="row">
 						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:0px; margin-bottom:5px; display:block">
 				          <a href="javascript:void(0)" class="{% if not user.customer_id %} student-request-accept-btn-credit {% else %} student-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
@@ -1524,15 +1540,12 @@
 				          </a>
 				        </div>
 				    </div>
-			        <div style="text-align:center; color:grey">
-			        	<i>or ignore this request if you're not interested.</i>
-			        </div>
 			        {% elif n.request_tutor_amount_hourly %}
 			        <div style="text-align:center; color:grey">
 			        	Want to connect to another tutor? <a data-toggle="modal" data-target="#modal-{{n.a_id_name}}" href="#"> Click Here</a>
 			        </div>
 			        {% endif %}
-			        <div style="margin-top:25px;text-align:center; color:red">
+			        <div style="margin-top:25px;text-align:center; color:grey">
 			        	Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our FAQ</u></a>
 			         </div>
 	  			</div>
@@ -1802,7 +1815,7 @@
 				         </div>
 				     </div>
 					{% endif %}
-					<div style="margin-top:25px;text-align:center; color:red">
+					<div style="margin-top:25px;text-align:center; color:grey">
 			        	Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our FAQ</u></a>
 			         </div>
 				</div>
