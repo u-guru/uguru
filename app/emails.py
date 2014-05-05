@@ -148,6 +148,9 @@ def approved_by_admin_email_html(user_first_name):
     Congratulations! We have just approved your Guru application, and your Guru account has now been activated.
     <br>
     <br>
+    Take 2 minutes to <a href="http://berkeley.uguru.me/settings/">update your profile</a> (picture, major, year, and introduction) so students feel more comfortable picking you as their Guru.
+    <br>
+    <br>
     In the mean time, just sit tight and wait. We will email you when a student requests help for a course that you signed up for.
     <br>
     <br>
