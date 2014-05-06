@@ -333,6 +333,7 @@ def admin():
                 if c:
                     request_dict['message-length'] = len(c.messages)
                 _payments = None 
+
                 if tutor and student:
                     _payments = Payment.query.filter_by(tutor_id=tutor.id, student_id=student.id)
                 if _payments:
@@ -353,10 +354,7 @@ def admin():
                         if count >= 1:
                             payment_dict['student-hourly'] = p.tutor_rate
                         else: 
-                            if p.tutor_rate:
-                                payment_dict['student-hourly'] = prices_reversed_dict[p.tutor_rate]
-                            else:
-                                payment_dict['student-hourly'] = None
+                            payment_dict['student-hourly'] = prices_reversed_dict[p.tutor_rate]
                         if payment_dict['student-hourly']:
                             payment_analytics['avg-student-rate'] += payment_dict['student-hourly']
                         payment_dict['tutor-hourly'] = p.tutor_rate
@@ -364,18 +362,14 @@ def admin():
                             payment_analytics['avg-tutor-rate'] += payment_dict['tutor-hourly']
                         if payment_dict['student-hourly']:
                             student_charge = payment_dict['student-hourly'] * p.time_amount
-                        else:
-                            student_charge = 5
                         if count >=1:
                             payment_dict['student-total'] = student_charge  * 1.03 + 2
                         else:
-                            payment_dict['student-total'] = 5
+                            payment_dict['student-total'] = student_charge
                         if payment_dict['student-total']:
                             payment_analytics['avg-student-charge'] += payment_dict['student-total']
                         if p.tutor_rate and p.time_amount:
                             tutor_paid = p.tutor_rate * p.time_amount
-                        else:
-                            tutor_paid = 0
                         if tutor_paid :
                             payment_analytics['avg-tutor-paid'] += tutor_paid
                         if payment_dict['student-total']:
@@ -397,9 +391,25 @@ def admin():
                     request_dict['pending-ratings'] += 1
             all_requests.append(request_dict)
         all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
-        payments = sorted(payments, key=lambda d:d['payment'].time_created, reverse=True)
         unverified_tutor_count = 0
         for u in users: 
+            if Payment.query.filter_by(student_paid_amount=5, student_id = u.id).first():
+                    _connection_payments = Payment.query.filter_by(student_paid_amount=5,student_id = u.id)
+                    for p in _connection_payments:
+                        payment_dict = {}
+                        payment_dict['payment'] = p
+                        payment_dict['time_created'] = pretty_date(p.time_created)
+                        payment_dict['student'] = student
+                        payment_dict['tutor'] = None
+                        payment_dict['student-hourly'] = None
+                        payment_dict['tutor-hourly'] = None
+                        payment_dict['recurring'] = False
+                        payment_dict['student-total'] = p.student_paid_amount
+                        payment_dict['tutor-total'] = 0
+                        payment_dict['stripe-fees'] = p.student_paid_amount * 0.03 + .30
+                        payment_dict['profit'] = p.student_paid_amount - payment_dict['stripe-fees']
+                        payments.append(payment_dict)
+
             pretty_dates[u.id] = pretty_date(u.time_created)
             if u.qualifications and not u.approved_by_admin:
                 unverified_tutor_count += 1
@@ -412,6 +422,7 @@ def admin():
                 tutor_count +=1 
             else:
                 student_count += 1
+        payments = sorted(payments, key=lambda d:d['payment'].time_created, reverse=True)
         from collections import Counter
         import operator
         skills_counter = dict(Counter(skills_array))

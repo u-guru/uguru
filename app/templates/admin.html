@@ -337,8 +337,20 @@
                                 <td>  {{payment_dict['payment'].id}}</td> 
                                 <td>  {{payment_dict['time_created']}}</td> 
                                 <td>  {{payment_dict['student'].name.split(" ")[0]}} (id:{{payment_dict['student'].id}})</td>
-                                <td>  {{payment_dict['tutor'].name.split(" ")[0]}} (id:{{payment_dict['tutor'].id}})</td>
-                                <td>  {{payment_dict['payment'].time_amount}}hours </td>
+                                <td>  
+                                    {% if payment_dict['tutor'] %}
+                                        {{payment_dict['tutor'].name.split(" ")[0]}} (id:{{payment_dict['tutor'].id}})
+                                    {% else %}
+                                        None
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if payment_dict['payment'].time_amount %}  
+                                    {{payment_dict['payment'].time_amount}}hours 
+                                    {% else %}
+                                    None
+                                    {% endif %}
+                                </td>
                                 <td>  ${{payment_dict['student-hourly']}}/hr</td>
                                 <td>  ${{payment_dict['tutor-hourly']}}/hr</td>
                                 <td>  {% if payment_dict['recurring'] %} Yes {%else%} First Time {% endif %}</td>
