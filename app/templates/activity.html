@@ -181,7 +181,7 @@
 		<div style="text-align:center;margin-top:0px; " class="row">
 			<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
 				<h5 style="color:grey; margin-bottom:5px;"> 
-					<strong>Your current secret code is 
+					<strong>Your current secret payment code is 
 						<span style='color:red'> '{{user.secret_code}}'
 						</span>
 					</strong>
@@ -427,7 +427,7 @@
 	            	</h6>
 	        </div>
 			<div style="text-align:center"class="row">
-				<h4 style="margin-top:0px"> <b>Secret Animal Code </b></h4>
+				<h4 style="margin-top:0px"> <b>Secret Payment Code </b></h4>
 				<div style="display:none;font-size:14px;color:red" id="secret-animal-code-alert">
 					Please enter a code
 				</div>
@@ -1241,7 +1241,7 @@
 							</div>
 							<div style="font-size:14px; text-align:left;">
 								<p>1. Message your Guru, and finalize meetup <b>time & location</b>. </p>
-								<p>2. <b>No need to bring cash!</b> After the session, just give your Guru your <b>secret code</b> (on top of your homepage).</p>
+								<p>2. <b>No need to bring cash!</b> After the session, just give your Guru your <b>secret payment code</b> (on top of your homepage).</p>
 								<p>3. <b>Review</b> your Guru after the session by logging in. </p>
 							</div>
 						</div> 
@@ -1538,7 +1538,7 @@
 						{% endif %}
 						<div> We charge a one-time, ${{connection_fee}} fee to match you with 
 				    	{{tutor_dict[n].name.split()[0]}}. <br>
-				    	After connection, you can meet however many times without connection fees.
+				    	This connection fee is only applies to your first session with {{tutor_dict[n].name.split()[0]}}.
 				    	</div>
 				    	<div style="color:grey;margin-top:5px; margin-bottom:5px">If things don’t work out, you can connect to a different Guru, or be instantly refunded.
 				    	</div>
@@ -1625,7 +1625,7 @@
 								</p>
 								<p>
 								2. At end of the session, you will draft a bill by clicking <b>“REQUEST PAYMENT”</b> on your feed page.</p>
-								<p>3. Have your student verify the amount, and input his/her <b>secret code</b> as proof of approval. </p>
+								<p>3. Have your student verify the amount, and input his/her <b>secret payment code</b> as proof of approval. </p>
 								<p>The amount will be added to your balance, and you can cash out at any time! (Never have to worry about dealing with change, or students that "forgot to bring cash")</p>
 							</div>
 						</div> 
