@@ -291,35 +291,51 @@ $(document).ready(function() {
    });
 
    $('#feed-messages').on('click', 'a.tutor-request-accept-btn', function() {
-            $(this).click(false);
-            //Hide the modal
-            $(this).parent().parent().parent().parent().parent().hide();
-            var feed_message_index = last_clicked_notif_index + 1
-            var tutor_changed_price = false
-            hourly_amount = $('#student-offer-hourly-price-' + (feed_message_index)).text();
             extra_detail = $(this).parent().parent().parent().siblings('.modal-body').children('.extra-detail').children().children('textarea').val();
-            
-            if (hourly_amount != student_original_price) {
-              tutor_changed_price = true;
-            }
-            var data = {
-                'tutor-accept': true, 
-                'hourly-amount': hourly_amount,
-                'extra-detail': extra_detail,
-                'price-change': tutor_changed_price,
-                'notif-num':  last_clicked_notif_index,
-            };
-            $.ajax({
-                type: "POST",
-                contentType: 'application/json;charset=UTF-8',
-                url: '/update-request/' ,
-                data: JSON.stringify(data),
-                dataType: "json",
-                success: function(result) {         
-                    window.location.replace('/activity/');
+            if (!extra_detail || is_tutor_response_sanitized(extra_detail)) {
+                $(this).parent().parent().parent().siblings('.modal-body').children('.extra-detail-alert').hide();
+                $(this).click(false);
+                //Hide the modal
+                $(this).parent().parent().parent().parent().parent().hide();
+                var feed_message_index = last_clicked_notif_index + 1
+                var tutor_changed_price = false
+                hourly_amount = $('#student-offer-hourly-price-' + (feed_message_index)).text();
+                
+                if (hourly_amount != student_original_price) {
+                  tutor_changed_price = true;
                 }
-            }); 
+                var data = {
+                    'tutor-accept': true, 
+                    'hourly-amount': hourly_amount,
+                    'extra-detail': extra_detail,
+                    'price-change': tutor_changed_price,
+                    'notif-num':  last_clicked_notif_index,
+                };
+                $.ajax({
+                    type: "POST",
+                    contentType: 'application/json;charset=UTF-8',
+                    url: '/update-request/' ,
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    success: function(result) {         
+                        window.location.replace('/activity/');
+                    }
+                }); 
+            } else {
+              $(this).parent().parent().parent().siblings('.modal-body').children('.extra-detail-alert').show();
+            }
     });
+
+    var is_tutor_response_sanitized = function(text) {
+      if (text.indexOf("@") > -1) {
+        return false
+      }
+      if (text.replace(/[^0-9]/g,"").length > 9) {
+        return false
+      }
+      return true
+    }
+
 
     $('#feed-messages').on('click', 'a.student-request-accept-btn', function() {
         $(this).click(false);
