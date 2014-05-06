@@ -393,22 +393,23 @@ def admin():
         all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
         unverified_tutor_count = 0
         for u in users: 
-            if Payment.query.filter_by(student_paid_amount=5, student_id = u.id).first():
-                    _connection_payments = Payment.query.filter_by(student_paid_amount=5,student_id = u.id)
+            if Payment.query.filter_by(student_id = u.id).first():
+                    _connection_payments =Payment.query.filter_by(student_id = u.id)
                     for p in _connection_payments:
-                        payment_dict = {}
-                        payment_dict['payment'] = p
-                        payment_dict['time_created'] = pretty_date(p.time_created)
-                        payment_dict['student'] = student
-                        payment_dict['tutor'] = None
-                        payment_dict['student-hourly'] = None
-                        payment_dict['tutor-hourly'] = None
-                        payment_dict['recurring'] = False
-                        payment_dict['student-total'] = p.student_paid_amount
-                        payment_dict['tutor-total'] = 0
-                        payment_dict['stripe-fees'] = p.student_paid_amount * 0.03 + .30
-                        payment_dict['profit'] = p.student_paid_amount - payment_dict['stripe-fees']
-                        payments.append(payment_dict)
+                        if p.student_paid_amount:
+                            payment_dict = {}
+                            payment_dict['payment'] = p
+                            payment_dict['time_created'] = pretty_date(p.time_created)
+                            payment_dict['student'] = u
+                            payment_dict['tutor'] = None
+                            payment_dict['student-hourly'] = None
+                            payment_dict['tutor-hourly'] = None
+                            payment_dict['recurring'] = False
+                            payment_dict['student-total'] = p.student_paid_amount
+                            payment_dict['tutor-total'] = 0
+                            payment_dict['stripe-fees'] = p.student_paid_amount * 0.03 + .30
+                            payment_dict['profit'] = p.student_paid_amount - payment_dict['stripe-fees']
+                            payments.append(payment_dict)
 
             pretty_dates[u.id] = pretty_date(u.time_created)
             if u.qualifications and not u.approved_by_admin:
@@ -992,7 +993,10 @@ def update_requests():
             previous_request_payment = Payment.query.filter_by(request_id = r.id).first()
             if not previous_request_payment:
                 p = Payment(r)
-                p.student_paid_amount = 5.0
+                if student.id % 2 == 1:
+                    p.student_paid_amount = 5
+                else:
+                    p.student_paid_amount = 10
                 db_session.add(p)
             
             skill = Skill.query.get(r.skill_id)
@@ -1003,7 +1007,7 @@ def update_requests():
             r.student_secret_code = user.secret_code
 
             charge = stripe.Charge.create(
-                amount = 500,
+                amount = p.student_paid_amount * 100,
                 currency="usd",
                 customer=student.customer_id,
                 description="one-time connection fee"

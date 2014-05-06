@@ -97,8 +97,9 @@ if arg =='mass-email-1':
 if arg =='mass-email-2':
     import json
     mass_email_2 = json.load(open('app/static/data/mass-email-2.json'))
-    from app.emails import send_invite_email
-    send_invite_email(mass_email_2, 'mass-email-2', "*|FNAME|*, Tutor Your Classmates and Make Money on Uguru")
+    print len(mass_email_2)
+    # from app.emails import send_invite_email
+    # send_invite_email(mass_email_2, 'mass-email-2', "*|FNAME|*, Tutor Your Classmates and Make Money on Uguru")
 
 
 if arg == 'conversation-update':
