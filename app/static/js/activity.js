@@ -43,6 +43,7 @@ $(document).ready(function() {
     };
     autocomplete_json = JSON.parse(readJSON('/static/data/autocomplete.json'));
     prices_reversed_dict = JSON.parse(readJSON('/static/data/prices_reverse.json'));
+    prices_dict = JSON.parse(readJSON('/static/data/prices.json'))
 
     
 
@@ -78,6 +79,7 @@ $(document).ready(function() {
       feed_message_index = last_clicked_notif_index + 1
       $('#student-offer-hourly-price-' + feed_message_index).text($('#tutor-change-price-slider-'+ feed_message_index).val());
       $('#student-offer-total-price-' + feed_message_index).text($('#tutor-change-price-slider-'+ feed_message_index).val() * $('#student-time-estimate-' +feed_message_index).text());
+      $('#tutor-will-pay-' + feed_message_index).text(prices_dict[parseInt($('#tutor-change-price-slider-' + feed_message_index).val())])
     });
 
     $('#feed-messages').on('click', '.tutor-change-price-link', function() {
@@ -85,6 +87,8 @@ $(document).ready(function() {
       if (!student_original_price) {
           student_original_price = $('#student-offer-hourly-price-' + feed_message_index).text();
         }
+        $('#request-student-offer-index-' + feed_message_index).text('The student will pay:')
+        $('#student-has-agreed-' + feed_message_index).hide();
         $('#tutor-change-price-slider-' + feed_message_index).val(student_original_price);
         $('#tutor-change-price-link-' + feed_message_index).hide();
         $('#tutor-change-price-slider-div-' + feed_message_index).show();
@@ -93,6 +97,8 @@ $(document).ready(function() {
     $('#feed-messages').on('click', '.tutor-change-price-cancel', function() {
       feed_message_index = last_clicked_notif_index + 1
       $('#tutor-change-price-slider-div-' + feed_message_index).hide();
+      $('#student-has-agreed-' + feed_message_index).show();
+      $('#request-student-offer-index-' + feed_message_index).text('The student is offering:')
       $('#tutor-change-price-link-' + feed_message_index).show();
       $('#tutor-change-price-slider-' + feed_message_index).val(student_original_price);
       $('#student-offer-hourly-price-' + feed_message_index).text(student_original_price);

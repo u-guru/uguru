@@ -134,7 +134,14 @@
 				<div class="alert alert-success"></div>
 			</div>
 		</div>
-
+		{% if user.skills and not user.approved_by_admin %}
+		<div style="display:block" class="row-fluid">
+			<div style="margin-top:0px; margin-bottom:15px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<div style="margin-bottom:0"class="alert alert-info">We will email you once your Guru application is approved.<br> In the meantime, if you need help with your finals, you can request help above.</div>
+			</div>
+		 </div>
+		{% endif %}
 		{% if user.outgoing_requests|length >= 1 %}
 		<div style="display:block" class="row-fluid">
 			<div style="margin-top:0px; margin-bottom:15px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
@@ -588,7 +595,7 @@
                     <div style="text-align:center; margin:15px auto 5px auto;" class="row">
                       <div style="border:1px solid grey; padding:10px; border-radius:12px;"class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                         <h4 id="total-price-header" style="font-weight:700px; font-size:24px; color:grey; display:inline"> Suggested Hourly Price </h4>
-                        <h6 style="margin-top:3px"><i>Uguru fees included</i>&nbsp;&nbsp;<a href="http://tinyurl.com/uguru-payment" target="_blank"><span style="font-size:14px; color:grey"class="glyphicon glyphicon-question-sign"></span></a></h6>
+                        <!-- <h6 style="margin-top:3px"><i>Uguru fees included</i>&nbsp;&nbsp;<a href="http://tinyurl.com/uguru-payment" target="_blank"><span style="font-size:14px; color:grey"class="glyphicon glyphicon-question-sign"></span></a></h6> -->
                         <h1 style="display:block;font-size:60px; text-align:center; margin:5px auto">
                           <span id="total-request-price"style="color:#69bf69;font-weight:700"> $20 </span>
                         </h1> 
@@ -673,15 +680,12 @@
 				</div>
 			  	<div class="row" style="text-align:center">
 			  		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-				  		<h4>Please add a credit or debit card to proceed</h4>
-					  	<strong><h5 style="color:grey; font-weight:bold;">(You will NOT be charged without your approval)</h5></strong>
+				  		<h4 style="margin-bottom:0px">We handle payments to help avoid the<br> inconvenience and awkwardness of paying in cash. </h4>
 					</div>
 			  	</div>
-			  	<div class="row" style="text-align:center">
-			  		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-					  	<h5 style="margin:25px auto;color:grey">Our payment system is securely <b><a target="_blank"href="stripe.com">Powered by Stripe</a></b>, which handles all card info and charges. <br>Uguru has no direct access to your credit card information.</h5>
-					</div>
-			  	</div>
+			  	<div id="student-request-alert" style="display:none; font-size:16px; text-align:center; color:#CD2626" class="row">
+					You will not be charged anything until you choose a tutor of your choice.
+				</div>
 			  	<div class="row">
 			  		<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 					  		<br>
@@ -724,8 +728,13 @@
 					  		</div>
 					</div>
 				</div>
+				<div class="row" style="text-align:center">
+			  		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+					  	<h5 style="auto;color:grey">Our payment system is securely <b><a target="_blank"href="stripe.com">Powered by Stripe</a></b>, which handles all card info and charges. <br>Uguru has no direct access to your credit card information.</h5>
+					</div>
+			  	</div>
 				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:0px; margin-top:20px; padding-right:0px">
+					<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:0px; margin-top:0px; padding-right:0px">
 						<a id="submit-card-info" href="javascript:void(0)" onclick="document.getElementById('payment-form').submit();return false;">
 							<div class="btn-save">
 								<p>ADD CARD AND ACCEPT REQUEST
@@ -733,9 +742,6 @@
 							</div>
 						</a> 
 					</div>
-				</div>
-				<div id="student-request-alert" style="display:none; text-align:center; color:#CD2626" class="row">
-					You will not be charged anything until you choose a tutor of your choice.
 				</div>
 				<div style="margin-top:45px;text-align:center; color:grey">
 			        	Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our FAQ</u></a>
@@ -1351,7 +1357,7 @@
 						<div class="row">
 							{% if n.request_tutor_amount_hourly %}
 								{% set original_student_price = (request_dict[n.request_id]['request'].student_estimated_hour ) %}
-									{% set most_recent_price = prices_reversed_dict[n.request_tutor_amount_hourly]  %}
+									{% set most_recent_price = n.request_tutor_amount_hourly  %}
 								{% if original_student_price - most_recent_price != 0 %}
 									{% set price_has_changed = True %}
 								{% else %}
@@ -1391,7 +1397,7 @@
 							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].num_students}}
 							  				{% if request_dict[n.request_id]['request'].num_students > 1 %}
 							  				{% if n.request_tutor_amount_hourly %}
-							  				(about ${{((prices_reversed_dict[n.request_tutor_amount_hourly])/request_dict[n.request_id]['request'].num_students)|float|int}}-{{((prices_reversed_dict[n.request_tutor_amount_hourly])/request_dict[n.request_id]['request'].num_students)|float|int + 1}}/hr per person)
+							  				(about ${{((n.request_tutor_amount_hourly)/request_dict[n.request_id]['request'].num_students)|float|int}}-{{((n.request_tutor_amount_hourly)/request_dict[n.request_id]['request'].num_students)|float|int + 1}}/hr per person)
 							  				{% endif %}
 							  				{%endif%}
 							  			</div>
@@ -1404,7 +1410,7 @@
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4 request-info-row">
 							  				{% if n.request_tutor_amount_hourly %}
-							  					${{(prices_reversed_dict[n.request_tutor_amount_hourly])}} 
+							  					${{(n.request_tutor_amount_hourly)}} 
 							  				{% else %}
 							  				Canceled
 							  				{% endif %}
@@ -1423,10 +1429,10 @@
 							  	<div class="row">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4"><b>Estimated Total Price</b><br>
-							  				<div style="font-size:12px">including fees&nbsp;<a href="http://tinyurl.com/uguru-payment" target="_blank"><span style="font-size:14px; color:grey"class="glyphicon glyphicon-question-sign"></span></a></div></div>
+							  			</div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4">${{request_dict[n.request_id]['request'].time_estimate * prices_reversed_dict[n.request_tutor_amount_hourly]}}<br></div>
+							  			<div class="h4">${{request_dict[n.request_id]['request'].time_estimate * n.request_tutor_amount_hourly}}<br></div>
 							  		</div>
 							  	</div>
 							  	{% endif%}
@@ -1434,8 +1440,8 @@
 								{% if n.request_tutor_amount_hourly %}
 								<div style="text-align:center; margin-top:10px; color:grey">
 									{% if price_has_changed %}
-									<div style="font-size:14px; margin-top:10px; color:red">
-											The tutor changed the price from ${{(request_dict[n.request_id]['request'].student_estimated_hour)}}/hr to ${{(prices_reversed_dict[n.request_tutor_amount_hourly])}}/hr 
+									<div style="font-size:14px; margin-top:10px; color:rgb(0, 159, 225)">
+											The tutor changed the price from ${{(request_dict[n.request_id]['request'].student_estimated_hour)}}/hr to ${{(n.request_tutor_amount_hourly)}}/hr 
 									</div>
 									{% else %}
 									<div style="font-size:14px; margin-top:10px; color:rgb(0, 159, 225)">
@@ -1524,8 +1530,9 @@
 							If you want to accept this request, you agree to this. <br>If you do, go ahead and click 'CHOOSE THIS GURU' 
 						</div>
 					</div>
-					<div class="row" style="margin-bottom:5px; font-size: 14px; text-align:center; color:#CD2626"><b>
-				    	A one-time, $5 connection fee will be charged if you accept {{tutor_dict[n].name.split()[0]}}'s request. </b>
+					<div class="row" style="margin-bottom:5px; font-size: 16px; text-align:center; color:#CD2626">
+				    	A one-time, $5 connection fee will be charged if you accept {{tutor_dict[n].name.split()[0]}}'s request. <br>
+				    	If things don’t work out, you can connect to a different Guru, or you can get your money back.
 				    </div>
 					<div class="row">
 						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:0px; margin-bottom:5px; display:block">
@@ -1696,25 +1703,37 @@
 							</div>
 								<div style="text-align:center; margin-top:10px; color:grey">
 									{% if n.custom != 'tutor-reject' and not (request_dict[n.request_id]['request'].connected_tutor_id and request_dict[n.request_id]['request'].connected_tutor_id != user.id) %}
-									<i>After Uguru fees, you will be making: &nbsp;<a href="http://tinyurl.com/uguru-payment" target="_blank"><span style="font-size:14px; color:grey"class="glyphicon glyphicon-question-sign"></span></a></i> <br>
+									<i><span id="request-student-offer-index-{{loop.index}}">
+										{% if not ((n.custom == 'tutor-accept-request' or n.custom=='tutor-is-matched') and (prices_dict[request_dict[n.request_id]['request'].student_estimated_hour]|float) != n.request_tutor_amount_hourly) %}
+										The student is offering: 
+										{% else %}
+										The student will pay:
+										{% endif %}
+
+									</span></i><br>
 									{% else %}
 									<i>You could have made:</i> <br>
 									{% endif %}
 									<div>
-										<span style="color:#69bf69; font-size:45px;"><strong> $<span id="student-offer-total-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(request_dict[n.request_id]['request'].time_estimate * prices_dict[request_dict[n.request_id]['request'].student_estimated_hour])}}
+										<span style="color:#69bf69; font-size:45px;"><strong> $<span id="student-offer-total-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(request_dict[n.request_id]['request'].time_estimate * request_dict[n.request_id]['request'].student_estimated_hour)}}
 											{% else %}{{(request_dict[n.request_id]['request'].time_estimate * n.request_tutor_amount_hourly)}}{% endif %}
 										</span></strong></span>
 									</div>
 									<div style="margin-top:-5px;">
 										<span style="color:grey; font-weight:100; font-size:16px">
-											($<span id="student-offer-hourly-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(prices_dict[request_dict[n.request_id]['request'].student_estimated_hour])}}{% else %}{{(n.request_tutor_amount_hourly)}}{% endif %}</span>/hr x {{request_dict[n.request_id]['request'].time_estimate}}hr)
+											($<span id="student-offer-hourly-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(request_dict[n.request_id]['request'].student_estimated_hour)}}{% else %}{{(n.request_tutor_amount_hourly)}}{% endif %}</span>/hr x {{request_dict[n.request_id]['request'].time_estimate}}hr)
 										</span>
 									</div>
-									{% if (n.custom == 'tutor-accept-request' or n.custom=='tutor-is-matched') and (prices_dict[request_dict[n.request_id]['request'].student_estimated_hour]|float) != n.request_tutor_amount_hourly %}
-									<div style="font-size:14px; margin-top:10px; color:rgb(0, 159, 225)">
-											You changed the price from ${{(prices_dict[request_dict[n.request_id]['request'].student_estimated_hour])}}/hr to ${{(n.request_tutor_amount_hourly)}}/hr 
+									{% if (n.custom == 'tutor-accept-request' or n.custom=='tutor-is-matched') and (request_dict[n.request_id]['request'].student_estimated_hour|float) != n.request_tutor_amount_hourly %}
+									<div style="font-size:14px; margin-top:3px; color:grey">
+											You changed the original price the student will pay from ${{(request_dict[n.request_id]['request'].student_estimated_hour)}}/hr to ${{(n.request_tutor_amount_hourly)}}/hr 
 									</div>
 									{% endif%}
+									<div class="row" style="margin-top:10px;color:red">
+										<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+											If the student accepts, you will make $<span id="tutor-will-pay-{{loop.index}}">{{prices_dict[n.request_tutor_amount_hourly]}}</span>/hr for your first session after one-time connection fees. <br>You will make ${{(n.request_tutor_amount_hourly)}}/hr for each following session.
+										</div>
+									</div>
 									{% if n.custom == 'tutor-accept-request' and not request_dict[n.request_id]['request'].connected_tutor_id == request_dict[n.request_id]['student'].id%}
 									<div style="font-size:10px; margin-top:10px; color:grey">
 										Can't commit anymore? Cancel <a href="javascript:void(0)" class="tutor-cancel-accept">here </a>
@@ -1723,7 +1742,7 @@
 								</div>
 								{% if n.custom != 'tutor-reject' and n.custom != 'tutor-accept-request' and n.custom != 'tutor-is-matched' and not (request_dict[n.request_id]['request'].connected_tutor_id and request_dict[n.request_id]['request'].connected_tutor_id != user.id) %}
 								<a style="text-align:center;" id="tutor-change-price-link-{{loop.index}}" class="tutor-change-price-link" href="javascript:void(0);">
-									<div style="margin-top:10px;color:rgb(0, 159, 225)"> Change the price
+									<div style="margin-top:0px;color:rgb(0, 159, 225)"> Change the price
 									</div>
 								</a>
 								{% endif %}
@@ -1740,6 +1759,14 @@
 									<div style="margin-top:10px;color:rgb(0, 159, 225)"> Cancel
 									</div>
 						</a>
+				    </div>
+				    <div class="row" style="text-align:center; margin-bottom:10px; color:#CD2626">
+				    	{% set student_name = n.feed_message.split(" ")[0] %}
+				    	You will make $<span id="tutor-will-pay-{{loop.index}}">{{prices_dict[(request_dict[n.request_id]['request'].student_estimated_hour)]}}</span>/hr for your first session with {{student_name|safe}} after one-time connection fees 
+				    	<span id="student-has-agreed-{{loop.index}}"style="color:grey">
+				    	 <br>
+				    	 {{student_name|safe}} has agreed to pay you ${{(request_dict[n.request_id]['request'].student_estimated_hour)}}/hr after your first session.
+				    	</span>
 				    </div>
 				    <div class="row">
 						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:0px; margin-bottom:5px; display:block">

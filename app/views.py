@@ -582,17 +582,17 @@ def submit_payment():
                 if 'price-change' in ajax_json:
                     total_amount = (float(ajax_json['price-change']) * float(total_time) * 1.03) + 2
                 else:
-                    total_amount = (r.connected_tutor_hourly * float(total_time) * 1.03) + 2
+                    total_amount = (prices_reversed_dict[r.connected_tutor_hourly] * float(total_time) * 1.03) + 2
 
             print total_amount
 
             stripe_amount_cents = int(total_amount * 100)
-
-            # user.incoming_requests_to_tutor.remove(r)
-
             payment = Payment(r)
             payment.time_amount = float(total_time)
-            payment.tutor_rate = r.connected_tutor_hourly
+            if recurring:
+                payment.tutor_rate = prices_reversed_dict[r.connected_tutor_hourly]
+            else:
+                payment.tutor_rate = r.connected_tutor_hourly
             payment.request_id = r.id
 
             tutor = user
@@ -633,8 +633,10 @@ def submit_payment():
             return_json['student-name'] = student.name.split(" ")[0]
 
         
-                
-            amount_made = (r.connected_tutor_hourly * float(total_time))
+            if recurring:    
+                amount_made = (prices_reversed_dict[r.connected_tutor_hourly] * float(total_time))
+            else:
+                amount_made = (r.connected_tutor_hourly * float(total_time))
 
             tutor.balance = tutor.balance + amount_made
             tutor.total_earned = tutor.total_earned + amount_made   
@@ -975,15 +977,17 @@ def update_requests():
             #Update request
             request_id = current_notification.request_id
             r = Request.query.get(request_id)
-            skill = Skill.query.get(r.skill_id)
-            r.connected_tutor_id = tutor_id
-            r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
-            r.time_connected = datetime.now()
-            r.student_secret_code = user.secret_code
 
             p = Payment(r)
             p.student_paid_amount = 5.0
             db_session.add(p)
+            
+            skill = Skill.query.get(r.skill_id)
+            r.connected_tutor_id = tutor_id
+            from app.static.data.prices import prices_dict
+            r.connected_tutor_hourly = prices_dict[current_notification.request_tutor_amount_hourly]
+            r.time_connected = datetime.now()
+            r.student_secret_code = user.secret_code
 
             charge = stripe.Charge.create(
                 amount = 500,
