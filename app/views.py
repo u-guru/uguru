@@ -335,7 +335,7 @@ def admin():
                 _payments = None 
 
                 if tutor and student:
-                    _payments = Payment.query.filter_by(tutor_id=tutor.id, student_id=student.id)
+                    _payments = Payment.query.filter_by(tutor_id=tutor.id, request_id = r.id, student_id=student.id)
                 if _payments:
                     _payments = sorted(_payments, key=lambda d:d.time_created)
                     count = 0
