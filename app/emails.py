@@ -626,7 +626,10 @@ def send_message_alert_html(receiver_name, sender_name):
 def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_name, recurring, connection):
     student_name = user.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = "Your " + skill_name + " Session with " + tutor_name
+    if not connection:
+        email_subject = "Your " + skill_name + " Session with " + tutor_name
+    else:
+        email_subject = "Your Receipt for Connecting with " + tutor_name
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
     EMAIL_TO = [user.email]
@@ -644,13 +647,18 @@ def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_
     hours = payment.time_amount
     date = payment.time_created.strftime("%B %d, %Y at %I:%M%p")
 
-    if recurring:
+    if not connection:
         hourly_price = payment.tutor_rate
     else:
         hourly_price = None
+        
 
-    text = student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
-    html = student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
+    if connection:
+        text = student_payment_receipt_connection_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
+        html = student_payment_receipt_connection_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
+    else:
+        text = student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
+        html = student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
     
     part1 = MIMEText(text, 'plain', 'utf-8')
     part2 = MIMEText(html, 'html', 'utf-8')
@@ -836,6 +844,16 @@ def student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly
     """How helpful was """ + tutor_name + """? Rate and review """ + tutor_name + """ here.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
+def student_payment_receipt_connection_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount):
+    return """Receipt ID: """+  charge_id +"""\n""" +\
+    """Time: """+  date +"""\n""" +\
+    """Card Number: ****-****-****-"""+ card_last4 +"""\n""" +\
+    """Guru Name: """+ tutor_name +"""\n""" +\
+    """Total Amount: $"""+ str(amount) +"""(One-time Connection Fee)\n\n""" +\
+    """Your payment is handled by Stripe, a secure third-party payment platform\n\n""" + \
+    """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
+    """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
+
 def tutor_payment_receipt_text(date, charge_id, tutor_name, hourly_price, hours, amount, student_name):
     return """For your next session with """ + student_name + """, """ + student_name + """ won't need to submit a """+ \
     """request again. Just coordinate through messaging and meet up. At the end of the session, click "REQUEST PAYMENT" on """ +\
@@ -909,11 +927,32 @@ def student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly
     (813) 500 - 9853
     """
 
+def student_payment_receipt_connection_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount):
+    return """
+    Receipt ID: """+  charge_id +"""<br>
+    Time: """+  date +"""<br>
+    Card Number: ****-****-****-"""+  card_last4 +"""<br>
+    Guru Name: """+  tutor_name +"""<br>
+    Total Amount: $""" + str(amount) + """(One-time connection fee)
+    <br>
+    <br>
+    <i>Your payment is handled by <a href="http://stripe.com">Stripe</a>, a secure third-party payment platform</i>
+    <br>
+    <br>
+    If the above information is incorrect, please contact us by directly replying to this email.
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
+
 def tutor_is_matched(student, tutor, skill_name):
     student_name = student.name.split(" ")[0]
     tutor_name = tutor.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
-    email_subject = student_name  + " Chose You for " + skill_name + "!"
+    email_subject = student_name  + " Chose You for " + skill_name.upper() + "!"
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
     EMAIL_TO = [tutor.email]

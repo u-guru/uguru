@@ -40,15 +40,15 @@ def index():
         if request.args.get('email') == 'guru':
             session['guru-checked'] = True
         return redirect(url_for('index'))
+    if session.get('tutor-signup'):
+        tutor_signup_incomplete = True
+        return render_template('new_index.html', forms=[request_form],
+        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete)
     if session.get('user_id'):
         user = User.query.get(session.get('user_id'))
         if user.skills and len(user.notifications) < 2:
             return redirect(url_for('settings'))
         return redirect(url_for('activity'))
-    if session.get('tutor-signup'):
-        tutor_signup_incomplete = True
-        return render_template('new_index.html', forms=[request_form],
-        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete)
     return render_template('new_index.html', forms=[request_form],
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral)
@@ -978,9 +978,11 @@ def update_requests():
             request_id = current_notification.request_id
             r = Request.query.get(request_id)
 
-            p = Payment(r)
-            p.student_paid_amount = 5.0
-            db_session.add(p)
+            previous_request_payment = Payment.query.filter_by(request_id = r.id).first()
+            if not previous_request_payment:
+                p = Payment(r)
+                p.student_paid_amount = 5.0
+                db_session.add(p)
             
             skill = Skill.query.get(r.skill_id)
             r.connected_tutor_id = tutor_id

@@ -1530,9 +1530,10 @@
 							If you want to accept this request, you agree to this. <br>If you do, go ahead and click 'CHOOSE THIS GURU' 
 						</div>
 					</div>
-					<div class="row" style="margin-bottom:5px; font-size: 16px; text-align:center; color:#CD2626">
-				    	A one-time, $5 connection fee will be charged if you accept {{tutor_dict[n].name.split()[0]}}'s request. <br>
-				    	If things don’t work out, you can connect to a different Guru, or you can get your money back.
+					<div class="row" style="margin-bottom:5px; font-size: 14px; text-align:center; color:#CD2626">
+						We charge a one-time, $5 fee to connect you with 
+				    	{{tutor_dict[n].name.split()[0]}}. <br>
+				    	If things don’t work out, you can connect to a different Guru, or get your money back.
 				    </div>
 					<div class="row">
 						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:0px; margin-bottom:5px; display:block">
@@ -1729,12 +1730,12 @@
 											You changed the original price the student will pay from ${{(request_dict[n.request_id]['request'].student_estimated_hour)}}/hr to ${{(n.request_tutor_amount_hourly)}}/hr 
 									</div>
 									{% endif%}
+									{% if n.custom == 'tutor-accept-request' and not request_dict[n.request_id]['request'].connected_tutor_id == request_dict[n.request_id]['student'].id%}
 									<div class="row" style="margin-top:10px;color:red">
 										<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
 											If the student accepts, you will make $<span id="tutor-will-pay-{{loop.index}}">{{prices_dict[n.request_tutor_amount_hourly]}}</span>/hr for your first session after one-time connection fees. <br>You will make ${{(n.request_tutor_amount_hourly)}}/hr for each following session.
 										</div>
 									</div>
-									{% if n.custom == 'tutor-accept-request' and not request_dict[n.request_id]['request'].connected_tutor_id == request_dict[n.request_id]['student'].id%}
 									<div style="font-size:10px; margin-top:10px; color:grey">
 										Can't commit anymore? Cancel <a href="javascript:void(0)" class="tutor-cancel-accept">here </a>
 									</div>
