@@ -25,7 +25,7 @@ MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
 stripe.api_key = stripe_keys['secret_key']
 MAX_UPLOAD_SIZE = 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
-# mp = Mixpanel(os.environ['MP-TOKEN-LOCAL'])
+mp = Mixpanel(os.environ['MP-TOKEN'])
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -223,6 +223,7 @@ def add_credit():
             except:
                 db_session.rollback()
                 raise 
+            mp.track(str(user.id), 'Credit Card Added')
         return jsonify(response=return_json)
 
 @app.route('/admin/')
@@ -983,7 +984,7 @@ def update_requests():
 
             #Modify student notification
             current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
-                + skill_name + " tutor."
+                + skill_name.upper() + " tutor."
             current_notification.feed_message_subtitle = '<b>Click here</b> to see next steps!'
             current_notification.custom = 'student-accept-request'
             if current_notification.time_read:
@@ -1106,6 +1107,10 @@ def notif_update():
         if 'update-feed-count' in ajax_json:
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             notification = user_notifications[ajax_json['notif_num']]
+            mp.track(str(user.id), 'Notification Clicked', {
+                'Type':notification.a_id_name,
+                'Message': notification.feed_message
+                })
             notification.time_read = datetime.now()
             user.feed_notif = user.feed_notif - 1
 
@@ -1121,6 +1126,31 @@ def notif_update():
             raise 
 
     return jsonify(return_json=return_json)
+
+@app.route('/events/',methods =('GET', 'POST'))
+def event_update():
+    if request.method == 'POST':
+        return_json = {}
+        
+        if session.get('admin'):
+            return jsonify(return_json=return_json)
+
+        ajax_json = request.json
+        print ajax_json
+
+        user_id = session.get('user_id')
+        user = User.query.get(user_id)
+
+        if 'request-btn-clicked' in ajax_json:
+            mp.track(str(user.id), 'Request Guru Clicked')
+        if 'credit-card-page-open' in ajax_json:
+            mp.track(str(user.id), 'Credit Card Page Opened')
+        if 'request-already-active' in ajax_json:
+            mp.track(str(user.id), 'Unsuccessful Request', {
+                'Reason': 'Already Active Request',
+                })
+
+        return jsonify(return_json=return_json)
 
 @app.route('/reset-password/', methods=('GET', 'POST'))
 def reset_pw():
@@ -1297,6 +1327,11 @@ def success():
                 db_session.rollback()
                 raise 
 
+            mp.people_set(str(u.id), {
+                'name': u.name,
+                'email': u.email,
+            })
+
         #Create a tutor for the first time
         if ajax_json.get('complete-tutor-signup'):
             u = User.query.get(session['user_id'])
@@ -1393,6 +1428,14 @@ def success():
             except:
                 db_session.rollback()
                 raise 
+
+            mp.track(str(u.id), 'Request Created',{
+                'Course':original_skill_name,
+                'Time Estimate': ajax_json['estimate'],
+                'Number of Students': int(ajax_json['num-students']),
+                'Proposed Price': int(float(ajax_json['idea-price'])),
+                'Number of Tutors': len(r.requested_tutors)
+            })
 
             if not skill.tutors:
                 return jsonify(dict={'no-active-tutors': True})
@@ -1596,7 +1639,7 @@ def activity():
     user = User.query.get(user_id)
     if not session.get('admin'):
         user.last_active = datetime.now()
-        # mp.track(str(user.id), 'On Feed')
+        mp.track(str(user.id), 'On Feed')
     if user.verified_tutor and not is_tutor_verified(user):
         return redirect(url_for('settings'))
     request_dict = {}

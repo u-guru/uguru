@@ -24,6 +24,18 @@ var update_feed = function() {
   } 
 }
 
+var event_click = function(event_type) {
+    data = {};
+    data[event_type] = true
+    $.ajax({
+        type: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        url: '/events/' ,
+        data: JSON.stringify(data),
+        dataType: "json",
+    }); 
+}
+
 $(document).ready(function() {
       mixpanel.track("Video play");
       $body = $("body");
@@ -138,6 +150,7 @@ $(document).ready(function() {
             }
             else if (result.dict['duplicate-request']) {
               $('#already-have-active-request-alert').show();
+              event_click('request-already-active')
               return false;
             } else if (result.dict['tutor-request-same']) {
               $('#already-have-active-request-alert').children().children('div:first').text("Sorry, you cannot make a request for a course that you're a tutor in!");
@@ -264,6 +277,7 @@ $(document).ready(function() {
    $('#tutor-request-link').click(function() {
         $('#activity').hide();
         request_a_guru_clicked = true;
+        event_click('request-btn-clicked')
         $('#tutor-request').show();
    })
    $('#request-payment-link').click(function() {

@@ -10,6 +10,7 @@
     });
 
     $('.student-request-accept-btn-credit').click(function(){
+        event_click('credit-card-page-open')
         if (!request_a_guru_clicked) {
             credit_card_back_link = $(this).parent().parent().parent().attr('id')
             $(this).parent().parent().parent().hide();
