@@ -1744,6 +1744,34 @@ body.loading .modal-load {
   }
 }
 
+.star-icon-feed {
+    color: #ddd;
+    font-size: 1em;
+    position: relative;
+}
+.star-icon-feed.full:before {
+    text-shadow: 0 0 2px rgba(0,0,0,0.7);
+    color: #FDE16D;
+    content: '\2605'; /* Full star in UTF-8 */
+    position: absolute;
+    left: 0;
+}
+.star-icon-feed.half:before {
+    text-shadow: 0 0 2px rgba(0,0,0,0.7);
+    color: #FDE16D;
+    content: '\2605'; /* Full star in UTF-8 */
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+}
+@-moz-document url-prefix() { /* Firefox Hack :( */
+  .star-icon-feed {
+    font-size: 50px;
+    line-height: 34px;
+  }
+}
+
 .call-to-action-button {
   background-color:#69bf69;
   color:white;

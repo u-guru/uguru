@@ -91,9 +91,14 @@
     });
 
     $('#credit-card-back-link').click(function(){
-        $(this).parent().parent().parent().parent().parent().hide();
-        $('#' + credit_card_back_link).show();
-        credit_card_back_link = true;
+        if (!request_a_guru_clicked) {
+            $(this).parent().parent().parent().parent().parent().hide();
+            $('#' + credit_card_back_link).show();
+            credit_card_back_link = true;
+        } else {
+            $(this).parent().parent().parent().parent().parent().hide();
+            $('#tutor-request').show();
+        }
     })
     jQuery(function($) {
       $('#submit-card-info').click(function() {

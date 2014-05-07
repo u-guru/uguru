@@ -98,7 +98,7 @@
 	   <h4 style="color:white;">YOUR ACTIVITY</h4>
 	  </div>
 	<div id="call-to-action-bar" align:"center">
-		{% if not address_book.keys() %}
+		{% if not user.verified_tutor %}
 		<div class="row">
 			<div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
 				<a id="tutor-request-link" href="javascript:void(0)">
@@ -110,19 +110,70 @@
 		</div>
 		{% else %}
 		<div class="row">
-			<div class="col-xs-offset-1 col-xs-5 col-sm-offset-3 col-sm-3 col-md-offset-3 col-md-3">
+			<div class="col-xs-12 col-sm-offset-3 col-sm-3 col-md-offset-3 col-md-3">
+				<div style="color:grey;text-align:center"class="row">
+					<h4 style="font-weight:700; color:grey;"> As a Student</h4>
+				</div>
 				<a id="tutor-request-link" href="javascript:void(0)">
-					<div style="margin-left:10px"class="call-to-action-button">
+					<div style="margin-left:10px; margin-bottom:10px;"class="call-to-action-button">
 						REQUEST A GURU
 					</div>
 				</a>
+				<div style="margin-left:2px; font-weight:700; color:grey" class="row">
+					<h5 style="color:grey; margin-bottom:0px; font-size:17px">Secret payment code for your next session:<h5>
+				</div>
+				<div style="margin-bottom:5px;text-align:center; font-size:16px; font-weight:700; color:red" class="row">
+					"{{user.secret_code}}"
+				</div>
+				<div style="text-align:center; font-size:16px; font-weight:700; color:red" class="row">
+					<div class="col-xs-offset-2 col-xs-8 col-sm-offset-3 col-sm-offset-6 col-md-offset-2 col-md-8">
+						<h6 style="margin-top:5px;color:grey;">
+			                Give this to a Guru to confirm payment at the end of each session.
+			             </h6>
+			        </div>
+		        </div>
 			</div>
-			<div class="col-xs-5 col-sm-3 col-md-3">
+			
+			<div class="col-xs-12 col-sm-3 col-md-3">
+				<div style="color:grey; text-align:center"class="row">
+					<h4 style="color:grey;font-weight:700" >As a Guru</h4>
+				</div>
 					<a id="request-payment-link" href="javascript:void(0)">
-						<div style="background-color:rgb(0, 159, 225)" class="call-to-action-button">
+						<div style="margin-left:10px; margin-bottom:10px; background-color:rgb(0, 159, 225)" class="call-to-action-button">
 						BILL A STUDENT
 						</div>
 					</a>
+					<div style="margin-left:5px; font-weight:700; font-size:12px; color:grey" class="row">
+						<h5 style="color:grey; font-size:17px; margin-bottom:0px;">Your Balance: <span style="color:#69bf69"> ${{user.balance}}</span>
+							{% if user.balance > 0 %}
+							<a style="color:rgb(0, 159, 225); font-size:14px;"id="{%if not user.recipient_id %}cash-out-link-create{% else %}cash-out-link-add{% endif %}" href="javascript:void(0)">&nbsp;<u>Cash Out</u></a>
+							{% endif %}
+						<h5>
+					</div>
+					<div style="margin:0px;margin-bottom:5px;text-align:center; font-size:16px; font-weight:700;" class="row">
+						<h5 style="color:grey; margin:0">You have made <span style="color:#69bf69"> <strong>${{user.total_earned}} </strong></span> total with Uguru</h5>
+					</div>
+					{% if not user.tutor_ratings %}
+		            <span style="font-size:15px"class="rating">
+		                (0) <span style="color;rgb(0, 159, 225)">☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+		            </span>
+		            {% else %}
+		              {% for i in range(0, avg_rating|round(method='floor')|int) %}
+		                <span class="star-icon-feed full">☆</span>
+		              {% endfor %}
+		              {% if avg_rating - avg_rating|round != 0 %}
+		                <span class="star-icon-feed half">☆</span>
+		              {% endif %}
+		              {% for i in range(0, 5 - avg_rating|round(method='ceil')|int) %}
+		                <span class="star-icon-feed empty">☆</span>
+		              {% endfor %}
+		              &nbsp;<span style="font-size:12px;color:grey">({{num_ratings}})</span>
+		            {% endif %}
+			        <div class="row">
+		              <h6 style="color:grey; margin:5px">
+		                Rack up your ratings with every payment through Uguru
+		              </h6>
+		            </div>
 			</div>
 		</div>
 		{% endif %}
@@ -161,67 +212,6 @@
 		    {% endfor %}
 		  {% endif %}
 		{% endwith %}
-		{% if user.verified_tutor %}
-		<div style="margin-top:5px;"id="your-balance-text-div"class="row">
-			{% if user.balance or user.total_earned %}
-			<h6 id="your-balance-text"style="margin-bottom:0px"><u> YOUR BALANCE </u></h5>
-			<div id="balance-amount">
-				<h1>${{user.balance}}</h1>
-			</div>
-			{% endif %}
-			{% if user.balance > 0 %}
-			<h5 id="your-balance-text"style="margin-top:0px">  <a id="{%if not user.recipient_id %}cash-out-link-create{% else %}cash-out-link-add{% endif %}" href="javascript:void(0)">Cash out <u> here </u></a> </h6>
-			{% endif %}
-			<h5 style="text-align:center; color:grey; margin-top:5px; margin-bottom:5px;">
-				{% if not user.balance and not user.total_earned %}
-				Your Balance: <span style="color:#69bf69"> <strong>${{user.total_earned}} </strong></span>
-				{% else %}
-				Your Total Earnings: <span style="color:#69bf69"> <strong>${{user.total_earned}} </strong></span>
-				{% endif %}
-			</h5>
-		</div>
-		{% endif %}
-		{% if user.verified_tutor %}
-		<div class="row">
-          <div style="text-align:center"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
-            {% if not user.tutor_ratings %}
-            <span style="font-size:15px"class="rating">
-                <span style="color;rgb(0, 159, 225)">☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-            </span>
-            <div style="color:grey; font-size:12px; margin-top:-5px;"> 
-              0 reviews
-            </div>
-            <div>
-              <h6 style="color:grey; margin-top:0px">
-                Rack up your ratings with every payment through Uguru
-              </h6>
-            </div>
-            {% else %}
-              {% for i in range(0, avg_rating|round(method='floor')|int) %}
-                <span class="star-icon full">☆</span>
-              {% endfor %}
-              {% if avg_rating - avg_rating|round != 0 %}
-                <span class="star-icon half">☆</span>
-              {% endif %}
-              {% for i in range(0, 5 - avg_rating|round(method='ceil')|int) %}
-                <span class="star-icon empty">☆</span>
-              {% endfor %}
-                <div style="color:grey; font-size:12px margin-top:-5px;"> 
-                  {% if num_ratings > 1 %}
-                  {{num_ratings}} reviews 
-                  {% else %}
-                  {{num_ratings}} review
-                  {% endif %}
-                </div>
-                <div>
-	              <h6 style="color:grey; margin-top:0px">
-	                Rack up your ratings with every payment through Uguru
-	              </h6>
-	            </div>
-            {% endif %}
-          </div>
-        </div>
-		{% endif %}
 		{% if not user.verified_tutor %}
 		<div style="text-align:center;margin-top:0px; " class="row">
 			<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
@@ -405,9 +395,9 @@
 {% endif %}
 
 
-{% if address_book.keys() %}
-{% set keys = address_book.keys() %}
-{% set first_contact = keys[0] %}
+{% if address_book.keys() or user.verified_tutor %}
+	{% set keys = address_book.keys() %}
+	{% set first_contact = keys[0] %}
 <div id="request-payments" style="display:none">
 		<div class="page-title">
 		  <div class="row-fluid" style="width:100%;text-align:center">
@@ -418,21 +408,41 @@
 		      </div>
 		      <div class="col-xs-10 col-md-8" style="text-align:center">
 		        <h4 style="color:white;width:100%;font-weight:500">REQUEST PAYMENT</h4>
-		    </div>
+		    	</div>
 		  </div>
 		</div>
+		{% if not keys %}
+		<br>
+		<div class="row">
+			<div style="text-align:center" class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6">
+				<div style="margin-bottom:0"class="alert alert-info">This is where you will bill student after a tutoring session.</div>
+			</div>
+		</div>
+		{% endif %}
 		<div class="offer" align="center" style="margin-left:20px;margin-right:20px">
 			<br>
 			<div id="address-urls">
+				{% if keys %}
 				<img style="display:show" id="payment-student-img" src="{{address_book[first_contact]['profile_url']}}" class="user-photo">
 				{% for key in keys[1:] %}
 					<img style="display:none" id="payment-student-img" src="{{address_book[key]['profile_url']}}" class="user-photo">
 				{% endfor %}
+				{% else %}
+				<img style="display:show" id="payment-student-img" src="/static/img/jenny.jpg" class="user-photo">
+				{% endif %}
 			</div>
 			<h4 style="text-align:center"><b>Select Student You Recently Tutored </b> <br>
 				<div style="margin-top:15px"id="select-person-to-pay" class="btn-group">
 		            <button type="button" class="btn-default">
-		              <span id="selected-person-to-pay" class="dropdown-elem-{{address_book[first_contact]['conversation_id']}}" style="color:black">{{address_book[first_contact]['student_name']}}</span>
+		              {% if keys %}
+		              <span id="selected-person-to-pay" class="dropdown-elem-{{address_book[first_contact]['conversation_id']}}" style="color:black">
+		              	{{address_book[first_contact]['student_name']}}
+		              </span>
+		              {% else %}
+		              	<span id="selected-person-to-pay" style="color:black">
+		              	Sample Student
+		              	</span>
+		              {% endif %}
 		            </button>
 		            <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown">
 		              <span class="caret"></span>
@@ -1962,7 +1972,7 @@
            	,step: 1
         }); 
         {% endif %}
-        {% if address_book %}
+        {% if address_book or user.verified_tutor %}
         $("#time-estimate-slider-payment").noUiSlider({
             start:1
            	,range: {'min':[0], 'max':[10]}
