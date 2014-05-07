@@ -1019,10 +1019,14 @@ def update_requests():
                 description="one-time connection fee"
             )
 
+            mp.track(str(student.id), 'Student Accepted Request', {
+                'One-time-charge': p.student_paid_amount
+                })
+
             charge_id = charge["id"]
 
             from emails import student_payment_receipt
-            student_payment_receipt(student, tutor.name.split(" ")[0], 5, p, charge_id, skill_name, False, True)
+            student_payment_receipt(student, tutor.name.split(" ")[0], p.student_paid_amount, p, charge_id, skill_name, False, True)
 
             student.outgoing_requests.remove(r)
 
