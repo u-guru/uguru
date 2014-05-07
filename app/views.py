@@ -392,6 +392,7 @@ def admin():
             all_requests.append(request_dict)
         all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
         unverified_tutor_count = 0
+        unfinished_accounts = []
         for u in users: 
             if Payment.query.filter_by(student_id = u.id).first():
                     _connection_payments =Payment.query.filter_by(student_id = u.id)
@@ -410,6 +411,8 @@ def admin():
                             payment_dict['stripe-fees'] = p.student_paid_amount * 0.03 + .30
                             payment_dict['profit'] = p.student_paid_amount - payment_dict['stripe-fees']
                             payments.append(payment_dict)
+            if not u.name and u.email:
+                unfinished_accounts.append(u)
 
             pretty_dates[u.id] = pretty_date(u.time_created)
             if u.qualifications and not u.approved_by_admin:
@@ -433,7 +436,7 @@ def admin():
             all_requests = all_requests, skills_counter = skills_counter, notifications=notifications,\
             payments=payments, total_profit=total_profit, environment = get_environment(), ratings=Rating.query.all(),\
             ratings_dict=ratings_dict, transactions=transactions, conversations=conversations, users_last_active=users_last_active,\
-            total_revenue = total_revenue, payment_analytics=payment_analytics, unverified_tutor_count=unverified_tutor_count)
+            total_revenue = total_revenue, payment_analytics=payment_analytics, unverified_tutor_count=unverified_tutor_count, unfinished_accounts=unfinished_accounts)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
