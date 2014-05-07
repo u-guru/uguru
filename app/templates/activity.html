@@ -1578,7 +1578,9 @@
 					</div>
   					{% if request_dict[n.request_id]['request'].connected_tutor_id and request_dict[n.request_id]['request'].connected_tutor_id != tutor_dict[n].id %}
   					{{tutor_dict[n].id}}
-  						<div class="row-fluid col-xs-12 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6" style="text-align:center;color:red">You accepted another tutor's request for this subject. <br>If you want to reconnect with another tutor, <a data-toggle="modal" data-target="#modal-{{n.a_id_name}}" href="#"> click here </a>.</div>
+  						<div class="row" style="text-align:center;color:red">You accepted another tutor's request for this subject. <br>If you want to reconnect with another tutor, <a data-toggle="modal" data-target="#modal-{{n.a_id_name}}" href="#"> click here </a>.<br>
+  						</div>
+  						<div class="row" style="text-align:center; color:grey">If you want your one-time connection fee for this request to be refunded, please email support@uguru.me for a quick response.</div>
   					{% elif n.custom != 'student-accept-request' and n.request_tutor_amount_hourly and not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
 					<div class="are-you-sure"style="display:none;text-align:center; color:red; font-size:14px" class="row"> 
 						<div style="margin-bottom:10px;"class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 col-md-6">
@@ -1613,7 +1615,7 @@
 				    </div>
 			        {% elif n.request_tutor_amount_hourly %}
 			        <div style="text-align:center; color:grey">
-			        	Want to connect to another tutor? <a data-toggle="modal" data-target="#modal-{{n.a_id_name}}" href="#"> Click Here</a>
+			        	Want to connect to another tutor? <a data-toggle="modal" data-target="#modal-{{n.a_id_name}}" href="#"> Click Here</a>. <br> If you would like a refund for your one-time connection fee, please email support@uguru.me for a quick response.
 			        </div>
 			        {% endif %}
 			        <div style="margin-top:25px;text-align:center; color:grey">

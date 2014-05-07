@@ -121,7 +121,7 @@ def student_incoming_tutor_request(user, tutor, request, skill_name, hourly_amou
     notification.request_tutor_id = tutor.id
     notification.custom_tag = 'student-incoming-offer'
     request_number = user.incoming_requests_from_tutors.index(request)
-    notification.a_id_name = 'student-incoming-offer' + str(len(user.notifications))
+    notification.a_id_name = 'student-incoming-offer' + str(len(user.notifications) + 1)
     if extra_detail:
         notification.extra_detail = extra_detail
     if tutor.profile_url:

@@ -10,7 +10,6 @@
     });
 
     $('.student-request-accept-btn-credit').click(function(){
-        event_click('credit-card-page-open')
         if (!request_a_guru_clicked) {
             credit_card_back_link = $(this).parent().parent().parent().attr('id')
             $(this).parent().parent().parent().hide();
@@ -23,6 +22,21 @@
                 $(this).parent().parent().parent().parent().parent().hide();
                 $('#student-request-alert').show();
             }
+        }
+        if (request_a_guru_clicked) {
+            event_click('credit-card-page-open', 
+                {
+                    'Course': $('#student-signup-skill').val(), 
+                    'Description': $('#student-signup-description').val(),
+                    'Location': $('#student-signup-location').val(),
+                    'Availability':$('#student-signup-availability').val(),
+                    'Number of Students': ($('#num-students-request .num-students.active').index() + 1),
+                    'Proposed Price': $('#ideal-price-slider').val(),
+                    'Time Estimate': $('#time-estimate-slider').val(),
+                }
+            )
+        } else {
+            event_click('credit-card-page-open')
         }
         $('#credit-card-info').show();
     });

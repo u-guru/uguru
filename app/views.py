@@ -1148,7 +1148,18 @@ def event_update():
         if 'request-btn-clicked' in ajax_json:
             mp.track(str(user.id), 'Request Guru Clicked')
         if 'credit-card-page-open' in ajax_json:
-            mp.track(str(user.id), 'Credit Card Page Opened')
+            if not 'Description' in ajax_json:
+                mp.track(str(user.id), 'Credit Card Page Opened')
+            else:
+                mp.track(str(user.id), 'Credit Card Page Opened', {
+                    'Course':ajax_json['Course'], 
+                    'Description': ajax_json['Description'],
+                    'Time Estimate': ajax_json['Time Estimate'],
+                    'Availability': ajax_json['Availability'],
+                    'Location': ajax_json['Location'],
+                    'Number of Students': int(ajax_json['Number of Students']),
+                    'Proposed Price': int(float(ajax_json['Proposed Price'])),
+                    })
         if 'request-already-active' in ajax_json:
             mp.track(str(user.id), 'Unsuccessful Request', {
                 'Reason': 'Already Active Request',
@@ -1644,6 +1655,7 @@ def activity():
     if not session.get('admin'):
         user.last_active = datetime.now()
         mp.track(str(user.id), 'On Feed')
+        mp.people_set(str(user.id), {'Last Seen':datetime.now().isoformat()})
     if user.verified_tutor and not is_tutor_verified(user):
         return redirect(url_for('settings'))
     request_dict = {}

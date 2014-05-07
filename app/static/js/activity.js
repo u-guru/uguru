@@ -24,8 +24,11 @@ var update_feed = function() {
   } 
 }
 
-var event_click = function(event_type) {
+var event_click = function(event_type, extra_params) {
     data = {};
+    if (extra_params) {
+      data = extra_params
+    }
     data[event_type] = true
     $.ajax({
         type: "POST",
@@ -37,7 +40,6 @@ var event_click = function(event_type) {
 }
 
 $(document).ready(function() {
-      mixpanel.track("Video play");
       $body = $("body");
       update_feed();
       
@@ -144,6 +146,9 @@ $(document).ready(function() {
           dataType: "json",
           success: function(result) {
             if (result.dict['no-active-tutors']) {
+              $('#tutor-request').show();
+              $('#request-credit-card-success').hide();
+              $('.student-request-accept-btn-credit').hide();
               $('#already-have-active-request-alert').children().children('div:first').text("Sorry! We currently don't have tutors for this course. We've registered your request and will let you know immediately when we do!");
               $('#already-have-active-request-alert').show();
               $('.student-register').hide();
@@ -153,9 +158,11 @@ $(document).ready(function() {
               event_click('request-already-active')
               return false;
             } else if (result.dict['tutor-request-same']) {
+              $('#tutor-request').show();
+              $('#request-credit-card-success').hide();
               $('#already-have-active-request-alert').children().children('div:first').text("Sorry, you cannot make a request for a course that you're a tutor in!");
               $('#already-have-active-request-alert').show();
-              $('#student-register').hide();
+              $('.student-register').hide();
             } else {
               window.location.replace('/activity/');
             }
