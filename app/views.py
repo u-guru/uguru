@@ -1605,6 +1605,10 @@ def activity():
 
     from app.static.data.prices import prices_dict
     prices_reversed_dict = {v:k for k, v in prices_dict.items()}
+    avg_rating = None
+    num_ratings = None
+    if user.tutor_ratings:
+        avg_rating, num_ratings = calc_avg_rating(user)
     if user.outgoing_requests:
         index = 0
         for o_r in user.outgoing_requests:
@@ -1643,7 +1647,7 @@ def activity():
         logged_in=session.get('user_id'), user=user, request_dict = request_dict, payment_dict = payment_dict,\
         pretty_dates = pretty_dates, urgency_dict=urgency_dict, tutor_dict=tutor_dict, pending_ratings_dict=pending_ratings_dict,\
         environment = get_environment(), prices_dict=prices_dict, prices_reversed_dict=prices_reversed_dict, session=session,\
-        outgoing_request_index=outgoing_request_index)
+        outgoing_request_index=outgoing_request_index, avg_rating=avg_rating, num_ratings = num_ratings)
 
 @app.route('/tutor_offer/')
 def tutor_offer():
@@ -1730,22 +1734,27 @@ def settings():
     if user.verified_tutor and not is_tutor_verified(user):
         not_launched_flag = True
     from app.static.data.short_variations import short_variations_dict
-    avg_rating = None
     num_ratings = None
+    avg_rating = None
     if user.tutor_ratings:
-        total_rating_sum = 0
-        num_ratings = 0
-        for rating in user.tutor_ratings:
-            if rating.tutor_rating:
-                total_rating_sum += rating.tutor_rating
-                num_ratings += 1
-        if num_ratings:
-            avg_rating = round((total_rating_sum/float(num_ratings))*2)/2
-        else:
-            avg_rating = 0
+        avg_rating, num_ratings = calc_avg_rating(user)
     return render_template('settings.html', logged_in=session.get('user_id'), user=user, \
         variations=short_variations_dict, not_launched_flag = not_launched_flag, \
         environment = get_environment(), session=session, avg_rating = avg_rating, num_ratings = num_ratings)
+
+def calc_avg_rating(user):
+    total_rating_sum = 0
+    num_ratings = 0
+    for rating in user.tutor_ratings:
+        if rating.tutor_rating:
+            total_rating_sum += rating.tutor_rating
+            num_ratings += 1
+    if num_ratings:
+        avg_rating = round((total_rating_sum/float(num_ratings))*2)/2
+    else:
+        avg_rating = 0
+    return avg_rating, num_ratings
+
 
 # @app.route('/tutor_accept/')
 # def tutor_accept():

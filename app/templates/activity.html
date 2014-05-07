@@ -161,21 +161,66 @@
 		    {% endfor %}
 		  {% endif %}
 		{% endwith %}
-		{% if user.balance > 0 or user.total_earned > 0 %}
+		{% if user.verified_tutor %}
 		<div style="margin-top:5px;"id="your-balance-text-div"class="row">
-			{% if user.balance > 0 %}
+			{% if user.balance %}
 			<h6 id="your-balance-text"style="margin-bottom:0px"><u> YOUR BALANCE </u></h5>
 			<div id="balance-amount">
 				<h1>${{user.balance}}</h1>
 			</div>
+			{% endif %}
+			{% if user.balance > 0 %}
 			<h5 id="your-balance-text"style="margin-top:0px">  <a id="{%if not user.recipient_id %}cash-out-link-create{% else %}cash-out-link-add{% endif %}" href="javascript:void(0)">Cash out <u> here </u></a> </h6>
 			{% endif %}
-			{% if user.total_earned > 0 %}
 			<h5 style="text-align:center; color:grey; margin-top:5px; margin-bottom:5px;">
-				You have earned: <span style="color:#69bf69"> <strong>${{user.total_earned}} </strong></span>
+				{% if not user.balance %}
+				Your Balance: <span style="color:#69bf69"> <strong>${{user.total_earned}} </strong></span>
+				{% else %}
+				Your Total Earnings: <span style="color:#69bf69"> <strong>${{user.total_earned}} </strong></span>
+				{% endif %}
 			</h5>
-			{% endif %}
 		</div>
+		{% endif %}
+		{% if user.verified_tutor %}
+		<div class="row">
+          <div style="text-align:center"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+            {% if not user.tutor_ratings %}
+            <span style="font-size:15px"class="rating">
+                <span style="color;rgb(0, 159, 225)">☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+            </span>
+            <div style="color:grey; font-size:12px; margin-top:-5px;"> 
+              0 reviews
+            </div>
+            <div>
+              <h6 style="color:grey; margin-top:0px">
+                Rack up your ratings with every payment through Uguru
+              </h6>
+            </div>
+            {% else %}
+              {% for i in range(0, avg_rating|round(method='floor')|int) %}
+                <span class="star-icon full">☆</span>
+              {% endfor %}
+              {% if avg_rating - avg_rating|round != 0 %}
+                <span class="star-icon half">☆</span>
+              {% endif %}
+              {% for i in range(0, 5 - avg_rating|round(method='ceil')|int) %}
+                <span class="star-icon empty">☆</span>
+              {% endfor %}
+                <div style="color:grey; font-size:12px margin-top:-5px;"> 
+                  {% if num_ratings > 1 %}
+                  {{num_ratings}} reviews 
+                  {% else %}
+                  {{num_ratings}} review
+                  {% endif %}
+                </div>
+                <div>
+	              <h6 style="color:grey; margin-top:0px">
+	                Rack up your ratings with every payment through Uguru
+	              </h6>
+	            </div>
+            {% endif %}
+          </div>
+        </div>
 		{% endif %}
 		{% if not user.verified_tutor %}
 		<div style="text-align:center;margin-top:0px; " class="row">
@@ -1624,7 +1669,7 @@
 								1. Message your student, and finalize meetup <b>time & location</b>
 								</p>
 								<p>
-								2. At end of the session, you will draft a bill by clicking <b>“REQUEST PAYMENT”</b> on your feed page.</p>
+								2. At end of the session, you will draft a bill by clicking <b>“BILL A STUDENT”</b> on your feed page.</p>
 								<p>3. Have your student verify the amount, and input his/her <b>secret payment code</b> as proof of approval. </p>
 								<p>The amount will be added to your balance, and you can cash out at any time! (Never have to worry about dealing with change, or students that "forgot to bring cash")</p>
 							</div>
