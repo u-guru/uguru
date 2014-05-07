@@ -167,6 +167,7 @@
                         <td> Name </td>
                         <td> Email </td>
                         <td> Time </td>
+                        <td> Referral Code </td>
                         <td> Last Active </td>
                     </tr>
                     {% for user in users %}
@@ -176,6 +177,9 @@
                                 <td> <a href="javascript:void(0)" class="login-user"> {{user.name}} </a> </td>
                                 <td> {{user.email}} </td>
                                 <td> {{pretty_dates[user.id]}} </td>
+                                <td>
+                                    {{user.referral_code}}
+                                </td>
                                 <td>
                                 {{users_last_active[user]}}
                                 </td>
