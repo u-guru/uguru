@@ -12,6 +12,7 @@ from sqlalchemy import desc
 import json, traceback
 import mandrill
 from twilio import twiml
+from mixpanel import Mixpanel
 
 
 
@@ -24,6 +25,7 @@ MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
 stripe.api_key = stripe_keys['secret_key']
 MAX_UPLOAD_SIZE = 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+# mp = Mixpanel(os.environ['MP-TOKEN-LOCAL'])
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -1594,6 +1596,7 @@ def activity():
     user = User.query.get(user_id)
     if not session.get('admin'):
         user.last_active = datetime.now()
+        # mp.track(str(user.id), 'On Feed')
     if user.verified_tutor and not is_tutor_verified(user):
         return redirect(url_for('settings'))
     request_dict = {}

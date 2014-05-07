@@ -25,10 +25,10 @@ var update_feed = function() {
 }
 
 $(document).ready(function() {
-
+      mixpanel.track("Video play");
       $body = $("body");
       update_feed();
-
+      
       $(document).on({
           ajaxStart: function() { $body.addClass("loading");    },
            ajaxStop: function() { $body.removeClass("loading"); }    

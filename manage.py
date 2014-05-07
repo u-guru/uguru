@@ -4,6 +4,7 @@ from app.models import *
 from hashlib import md5
 from app import emails
 from app import app
+from mixpanel import Mixpanel
 
 arg = sys.argv[1]
 
@@ -23,6 +24,17 @@ if arg == 'set_profile_default':
             user.profile_url = '/static/img/default-photo.jpg'
     db_session.commit()
     print "complete"
+
+if arg =='mp-create-student-profiles':
+    import os
+    mp = Mixpanel(os.environ['MP-TOKEN-LOCAL'])
+    for u in User.query.all():
+        if not u.skills and not u.verified_tutor and u.name:
+            print u
+            mp.people_set(str(u.id), {
+                'name': u.name,
+                'email': u.email,
+                })
 
 if arg == 'initialize':
     import os, json
