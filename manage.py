@@ -27,7 +27,7 @@ if arg == 'set_profile_default':
 
 if arg =='mp-create-student-profiles':
     import os
-    mp = Mixpanel(os.environ['MP-TOKEN-LOCAL'])
+    mp = Mixpanel(os.environ['MP-TOKEN'])
     for u in User.query.all():
         if not u.skills and not u.verified_tutor and u.name:
             print u
