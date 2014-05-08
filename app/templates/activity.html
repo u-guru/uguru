@@ -1593,8 +1593,8 @@
 						</div>
 					</div>
 					<div class="row" style="margin-bottom:5px; font-size: 14px; text-align:center; color:#CD2626">
-						{% if user.id % 2 == 1 %}
-						{% set connection_fee = 10 %}
+						{% if request_dict[n.request_id]['request'].id > 165 %}
+						{% set connection_fee = 5 %}
 						{% else %}
 						{% set connection_fee = 10 %}
 						{% endif %}

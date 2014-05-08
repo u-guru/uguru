@@ -999,8 +999,8 @@ def update_requests():
             previous_request_payment = Payment.query.filter_by(request_id = r.id).first()
             if not previous_request_payment:
                 p = Payment(r)
-                if student.id % 2 == 1:
-                    p.student_paid_amount = 10
+                if r.id > 165 :
+                    p.student_paid_amount = 5
                 else:
                     p.student_paid_amount = 10
                 db_session.add(p)
