@@ -1000,7 +1000,7 @@ def update_requests():
             if not previous_request_payment:
                 p = Payment(r)
                 if student.id % 2 == 1:
-                    p.student_paid_amount = 5
+                    p.student_paid_amount = 10
                 else:
                     p.student_paid_amount = 10
                 db_session.add(p)
