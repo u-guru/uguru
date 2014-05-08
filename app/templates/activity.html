@@ -733,13 +733,13 @@
 				  		{% endif %}
 				  	</div>
 				</div>
-			  	<div class="row" style="text-align:center">
+			  	<!-- <div class="row" style="text-align:center">
 			  		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
 				  		<h4 style="margin-bottom:0px">We handle payments to help avoid the<br> inconvenience and awkwardness of paying in cash. </h4>
 					</div>
-			  	</div>
-			  	<div id="student-request-alert" style="display:none; font-size:16px; text-align:center; color:#CD2626" class="row">
-					You will not be charged anything until you choose a tutor of your choice.
+			  	</div> -->
+			  	<div id="student-request-alert" style="display:font-size:16px; margin-top:10px; text-align:center; color:#CD2626" class="row">
+					The $10 connection fee will be billed now. <br> Your Guru will bill you accordingly after the session using your secret payment code.
 				</div>
 			  	<div class="row">
 			  		<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
@@ -785,17 +785,22 @@
 				</div>
 				<div class="row" style="text-align:center">
 			  		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-					  	<h5 style="auto;color:grey">Our payment system is securely <b><a target="_blank"href="stripe.com">Powered by Stripe</a></b>, which handles all card info and charges. <br>Uguru has no direct access to your credit card information.</h5>
+					  	<h5 style="auto;color:grey">Our payment system is securely <b><a target="_blank"href="stripe.com">Powered by Stripe</a></b>, which handles all card info and charges. <!-- <br>Uguru has no direct access to your credit card information. --></h5>
 					</div>
 			  	</div>
 				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:0px; margin-top:0px; padding-right:0px">
+					<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:0px; margin-top:10px; padding-right:0px">
 						<a id="submit-card-info" href="javascript:void(0)" onclick="document.getElementById('payment-form').submit();return false;">
 							<div class="btn-save">
-								<p>ADD CARD
+								<p>GET CONNECTED
 								</p>
 							</div>
 						</a> 
+					</div>
+				</div>
+				<div style="color:grey; text-align:center; margin-top:6px" class="row">
+					<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:0px; margin-top:5px; padding-right:0px">
+						If things don’t work out, you can connect to a different Guru, or be instantly refunded.
 					</div>
 				</div>
 				<div style="margin-top:45px;text-align:center; color:grey">
@@ -1605,7 +1610,7 @@
 				          <a href="javascript:void(0)" class="{% if not user.customer_id %} student-request-accept-btn-credit {% else %} student-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
 				            <div class="btn-save">
 				              {% if not user.customer_id %}
-									<p id="student-accept-text"> NEXT STEPS</p>
+									<p id="student-accept-text"> NEXT STEP</p>
 							  {% else %}
 									<p id="student-accept-text"> CHOOSE THIS GURU</p>
 							  {% endif %}
