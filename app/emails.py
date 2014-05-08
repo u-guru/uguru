@@ -520,8 +520,7 @@ def generate_new_password_html(user_name, new_password):
 
 
 def student_needs_help_html(student_name, class_name, request):
-    from app.static.data.prices import prices_dict
-    tutor_rate = prices_dict[request.student_estimated_hour]
+    tutor_rate = request.student_estimated_hour
     return """<b>
     """ + student_name + """ needs help with """ + class_name + """.</b> Here's some info:
     <br>
@@ -547,8 +546,7 @@ def student_needs_help_html(student_name, class_name, request):
     """
 
 def student_needs_help_text(student_name, class_name, request):
-    from app.static.data.prices import prices_dict
-    tutor_rate = prices_dict[request.student_estimated_hour]
+    tutor_rate = request.student_estimated_hour
     return student_name + """ needs help with """ + class_name + """. Here's some info: \n\n""" + \
     """Availability: """ + request.available_time + """\n""" +\
     """Preferred Location: """ + request.location+ """\n""" + \

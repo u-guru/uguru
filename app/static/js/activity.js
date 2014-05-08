@@ -545,7 +545,7 @@ $(document).ready(function() {
       var index = $(this).index();
 
       if (index == 0 ) {
-        $('#ideal-price-slider').val('15');
+        $('#ideal-price-slider').val('18');
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
         $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
@@ -605,11 +605,11 @@ $(document).ready(function() {
       if (index >= 1) {
         $('#total-request-price-per-person').show();
         $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
-        $('#total-price-header').text('Suggested Hourly Price:');
+        // $('#total-price-header').text('Suggested Hourly Price:');
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
       } else {
         $('#total-request-price-per-person').hide();
-        $('#total-price-header').text('Suggested Hourly Price:')
+        // $('#total-price-header').text('Suggested Hourly Price:')
         $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
       }
