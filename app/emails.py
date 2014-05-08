@@ -266,6 +266,71 @@ def send_invite_email(tutor_dict, tag, subject):
     }
     result = mandrill_client.messages.send(message=message)
 
+def send_get_help_email(tutor_dict, tag, subject):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    to_emails = []
+    merge_vars = []
+    html = send_get_help_email_html()
+
+    for tutor in tutor_dict.keys():
+        email = tutor_dict[tutor]
+        query = User.query.filter_by(email=email).first()
+        if not query:
+            to_emails.append({
+                'email':email,
+                'name' :tutor.title(),
+                'type':'to'
+                })
+            merge_vars.append({
+                'rcpt':email,
+                'vars': [
+                    {
+                        'name':"fname",
+                        'content':tutor.split(' ')[0].title()
+                    }
+                ]
+                })
+    message = {
+        'subject': subject,
+        'from_email': 'chloe@uguru.me',
+        'from_name': 'Chloe from Uguru',
+        'to': to_emails,
+        'headers': {'Reply-To': 'support@uguru.me'},
+        'html':html,
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'merge_vars': merge_vars,
+        'tags':[tag]
+    }
+    result = mandrill_client.messages.send(message=message)
+
+def send_get_help_email_html():
+    return """
+    Hi *|FNAME|*,
+    <br>
+    <br>
+    Hope your studying is going well. My name is Chloe, and I'm emailing to let you know about <a href="http://berkeley.uguru.me/">Uguru</a>, Cal's peer-to-peer tutoring platform that can help you ace your finals!
+    <br>
+    <br>
+    With <a href="http://berkeley.uguru.me/">Uguru</a>, you can get fast affordable tutoring from other Cal Students, many of whom have taken 
+    and aced the same classes you're struggling with. 
+    <br>
+    <br>
+    You can request help for most courses, as well as select topics, such as general writing help. Finals represent the majority of your grades, so don't let them ruin your semester of hard work!
+    <br>
+    <br>
+    Also, if you're interested in becoming a tutor, you can apply <a href="http://berkeley.uguru.me/?email=guru">here</a>!
+    <br>
+    <br>
+    Have an awesome finals season!
+    <br>
+    <br>
+    Best,<br>
+    Chloe
+    """
+
 def send_invite_email_html():
     return """
     <div style="text-align:center">

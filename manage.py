@@ -77,10 +77,10 @@ if arg == 'update-rating':
 
 
 if arg == 'test-campaign-email':
-    # test_json = {'Samir Makhani':'sam1rm@berkeley.edu', 'Michael Koh':'michael60716@gmail.com', 'Subhav':'sub_have@berkeley.edu', 'Lee Lazar':'leelazar@berkeley.edu', 'Caleb Wang':'calebwang@berkeley.edu', 'David Liu': 'david_liu@berkeley.edu', 'Steve Wang':'ywang155@berkeley.edu', 'Jared Baker':'jaredbaker@berkeley.edu', 'Jackie Hong':'jhong924@berkeley.edu'}
-    test_json = {'Angela Lu':'angelalu@berkeley.edu'}
-    from app.emails import send_invite_email
-    send_invite_email(test_json, 'guru-campaign-test', "*|FNAME|*, Become a Freelance Tutor at Cal and Make Money")
+    mass_email_3 = {'Samir Makhani':'sam1rm@berkeley.edu', 'Michael Koh':'michael60716@gmail.com'}
+    # test_json = {'Samir Makhani':'sam1rm@berkeley.edu', 'Samir Makhani':'makhani.samir@gmail.com', 'Michael Koh':'michael60716@gmail.com', 'Subhav':'sub_have@berkeley.edu', 'Lee Lazar':'leelazar@berkeley.edu', 'Caleb Wang':'calebwang@berkeley.edu', 'David Liu': 'david_liu@berkeley.edu', 'Steve Wang':'ywang155@berkeley.edu', 'Jared Baker':'jaredbaker@berkeley.edu', 'Jackie Hong':'jhong924@berkeley.edu', 'Angela Lu':'angelalu@berkeley.edu'}
+    from app.emails import send_get_help_email
+    send_get_help_email(mass_email_3, 'mass-email-3', "*|FNAME|*, A Site That Can Help You Ace Your Finals")
 
 if arg == 'send-first-150':
     import json
@@ -112,6 +112,12 @@ if arg =='mass-email-2':
     print len(mass_email_2)
     # from app.emails import send_invite_email
     # send_invite_email(mass_email_2, 'mass-email-2', "*|FNAME|*, Tutor Your Classmates and Make Money on Uguru")
+
+if arg =='mass-email-3':
+    import json
+    mass_email_3 = json.load(open('app/static/data/all_cal_emails_unsubscribe.json'))
+    from app.emails import send_get_help_email
+    send_get_help_email(mass_email_3, 'mass-email-3', "*|FNAME|*, A Site That Can Help You Ace Your Finals")
 
 
 if arg == 'conversation-update':
