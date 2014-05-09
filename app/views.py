@@ -413,6 +413,8 @@ def admin():
                             payment_dict['tutor-total'] = 0
                             payment_dict['stripe-fees'] = p.student_paid_amount * 0.03 + .30
                             payment_dict['profit'] = p.student_paid_amount - payment_dict['stripe-fees']
+                            total_revenue += p.student_paid_amount
+                            total_profit += payment_dict['profit']
                             payments.append(payment_dict)
             if not u.name and u.email:
                 unfinished_accounts.append(u)
