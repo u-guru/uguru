@@ -1023,12 +1023,12 @@ def update_requests():
                     customer=student.customer_id,
                     description="one-time connection fee"
                 )
+                charge_id = charge["id"]
 
-            mp.track(str(student.id), 'Student Accepted Request', {
-                'One-time-charge': p.student_paid_amount
-                })
+                mp.track(str(student.id), 'Student Accepted Request', {
+                    'One-time-charge': p.student_paid_amount
+                    })
 
-            charge_id = charge["id"]
 
             if not previous_request_payment:
                 from emails import student_payment_receipt
