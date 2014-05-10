@@ -1006,6 +1006,8 @@ def update_requests():
                 else:
                     p.student_paid_amount = 10
                 db_session.add(p)
+            else:
+                p = previous_request_payment
             
             skill = Skill.query.get(r.skill_id)
             r.connected_tutor_id = tutor_id
@@ -1014,12 +1016,13 @@ def update_requests():
             r.time_connected = datetime.now()
             r.student_secret_code = user.secret_code
 
-            charge = stripe.Charge.create(
-                amount = p.student_paid_amount * 100,
-                currency="usd",
-                customer=student.customer_id,
-                description="one-time connection fee"
-            )
+            if not previous_request_payment:
+                charge = stripe.Charge.create(
+                    amount = p.student_paid_amount * 100,
+                    currency="usd",
+                    customer=student.customer_id,
+                    description="one-time connection fee"
+                )
 
             mp.track(str(student.id), 'Student Accepted Request', {
                 'One-time-charge': p.student_paid_amount
@@ -1027,8 +1030,9 @@ def update_requests():
 
             charge_id = charge["id"]
 
-            from emails import student_payment_receipt
-            student_payment_receipt(student, tutor.name.split(" ")[0], p.student_paid_amount, p, charge_id, skill_name, False, True)
+            if not previous_request_payment:
+                from emails import student_payment_receipt
+                student_payment_receipt(student, tutor.name.split(" ")[0], p.student_paid_amount, p, charge_id, skill_name, False, True)
 
             student.outgoing_requests.remove(r)
 
