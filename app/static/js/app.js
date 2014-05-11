@@ -324,6 +324,10 @@ $(document).ready(function(){
         }  
     });
 
+    $('#student-register-tutor-link').click(function() {
+      $('#student-next-link').trigger('click');
+    });
+
     $('#student-register').click(function(){
     if (!$('#student-signup-description').val() || !$('#student-signup-location').val() || 
         !$('#student-signup-availability').val() || !$('#student-signup-skill').val()) {
@@ -503,8 +507,8 @@ $(document).ready(function(){
           data: JSON.stringify(data),
           dataType: "json",        
           success: function(result) {        
-            $('#password-fields-login').css('color','green')
-            $('#password-fields-login').text('An email to this address with an activation link.')
+            $('#password-fields-login').css('color','red')
+            $('#password-fields-login').text('We have sent an email to this address with an activation link.')
             $('#password-fields-login').show();
           }
         })
@@ -528,6 +532,9 @@ $(document).ready(function(){
         data: JSON.stringify(data),
         dataType: "json",        
         success: function(result) {        
+            if (result.json['unfinished']) {
+              window.location.replace('/');
+            }
             if (result.json['admin']) {
               window.location.replace('/admin/');
             }

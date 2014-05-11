@@ -468,7 +468,10 @@ Gurus have finals too. Reserve one now before they get busy or booked out""",
     result = mandrill_client.messages.send(message=message)
 
 def generate_new_password(user, new_password):
-    user_name = user.name.split(" ")[0]
+    if user.name:
+        user_name = user.name.split(" ")[0]
+    else:
+        user_name = "there"
     email_from = "Uguru Reset Password <do-not-reply@uguru.me>"
     email_subject = "Your Temporary Generated Password"
     DATE_FORMAT = "%d/%m/%Y"

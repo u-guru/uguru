@@ -1185,6 +1185,7 @@ def reset_pw():
             from app.static.data.random_codes import random_codes_array
             import random
             new_password = random.choice(random_codes_array).lower()
+            print new_password
             email = ajax_json['email'].lower()
 
             user = User.query.filter_by(email=email).first()
@@ -1358,6 +1359,10 @@ def success():
             u = User.query.get(session['user_id'])
             u.qualifications = ajax_json.get('complete-tutor-signup')
             session.pop('tutor-signup')
+            u.verified_tutor = True
+            from emails import welcome_uguru_tutor
+            welcome_uguru_tutor(u)
+            u.settings_notif = u.settings_notif + 1
             try:
                 db_session.commit()
             except:
@@ -1376,18 +1381,13 @@ def success():
                     u.phone_number = None;
 
                 u.year = 'Sophomore'
-                u.verified_tutor = True
                 db_session.add(u)
                 db_session.commit()
                 if session.get('referral'):
                     u.referral_code = session['referral']
                     session.pop('referral')
-                u.settings_notif = u.settings_notif + 1
                 db_session.commit()
                 session['tutor-signup'] = True;
-
-                from emails import welcome_uguru_tutor
-                welcome_uguru_tutor(u)
 
             except:
                 db_session.rollback()
@@ -1605,8 +1605,13 @@ def login():
         query = User.query.filter_by(email=email, password=password).first()
         if query:
             user = query
-            authenticate(user.id)
-            json['success'] = True                
+            if not user.name:
+                json['unfinished'] = True
+                session['signup-start'] = user.email
+                session['signup-start-user-id'] = user.id
+            else:
+                authenticate(user.id)
+                json['success'] = True                
         else:
             json['failure'] = False
         return jsonify(json=json)
