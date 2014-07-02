@@ -1600,7 +1600,7 @@ def login():
             json['admin'] = True
             return jsonify(json=json)
 
-        email = ajax_json['email']
+        email = ajax_json['email'].lower()
         password = md5(ajax_json['password']).hexdigest()
         query = User.query.filter_by(email=email, password=password).first()
         if query:
