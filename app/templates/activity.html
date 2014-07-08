@@ -1087,11 +1087,17 @@
 								  		</div>
 								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
 								  			<div class="h4 request-info-row">
-								  				<span class='grey-text'> See times: </span> 
+								  				  {% if request_dict[n.request_id]['student-calendar'] %}
+								  					<span class='grey-text'> See times: </span> 
 
-					                              <a id='request-calendar-toggle' onclick='show_student_request_calendar({{request_dict[n.request_id]["student-calendar"]}})'>
-					                                <span class='glyphicon glyphicon-calendar'></span>
-					                              </a>
+						                            <a id='request-calendar-toggle' onclick='show_student_request_calendar({{request_dict[n.request_id]["student-calendar"]}})'>
+						                                <span class='glyphicon glyphicon-calendar'></span>
+						                           	</a>
+					                              {% else %}
+					                              	
+					                              	{{request_dict[n.request_id]['request'].availability}}
+
+					                              {% endif %}
 								  			</div>
 								  		</div>
 								  	</div>
@@ -1391,10 +1397,14 @@
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4 request-info-row">
+							  				{% if request_dict[n.request_id]['student-calendar'] %}
 							  				<span class='grey-text'> See chosen time: </span> 
 				                              <a id='request-calendar-toggle' onclick='show_tutor_request_submitted_calendar({{request_dict[n.request_id]["student-calendar"]}}, {{request_dict[n.request_id]["tutor-calendars"][tutor_dict[n].id]}})'>
 				                                <span class='glyphicon glyphicon-calendar'></span>
 				                              </a>
+				                            {% else %}
+				                            	{{request_dict[n.request_id]['request'].location}}
+				                            {% endif %}
 							  			</div>
 							  		</div>
 							  	</div>
@@ -1694,17 +1704,21 @@
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4 request-info-row"></span> 
-							  				{% if n.custom == 'tutor-accept-request' and not request_dict[n.request_id]['request'].connected_tutor_id == request_dict[n.request_id]['student'].id%}
-					                        <span class='grey-text'> See chosen time: </span> 
-				                              <a id='request-calendar-toggle' onclick='show_tutor_request_submitted_calendar({{request_dict[n.request_id]["student-calendar"]}}, {{request_dict[n.request_id]["tutor-calendars"][user.id]}})'>
-				                                <span class='glyphicon glyphicon-calendar'></span>
-				                              </a>
-					                        {% else %}
-					                        <span class='grey-text'> Select a time: </span> 
-				                              <a id='request-calendar-toggle' onclick='show_tutor_request_calendar({{request_dict[n.request_id]["student-calendar"]}},{{request_dict[n.request_id]["request"].time_estimate}})'>
-				                                <span class='glyphicon glyphicon-calendar'></span>
-				                              </a>
-					                        {% endif %}
+							  				{% if request_dict[n.request_id]['student-calendar'] %}
+								  				{% if n.custom == 'tutor-accept-request' and not request_dict[n.request_id]['request'].connected_tutor_id == request_dict[n.request_id]['student'].id%}
+						                        <span class='grey-text'> See chosen time: </span> 
+					                              <a id='request-calendar-toggle' onclick='show_tutor_request_submitted_calendar({{request_dict[n.request_id]["student-calendar"]}}, {{request_dict[n.request_id]["tutor-calendars"][user.id]}})'>
+					                                <span class='glyphicon glyphicon-calendar'></span>
+					                              </a>
+						                        {% else %}
+						                        <span class='grey-text'> Select a time: </span> 
+					                              <a id='request-calendar-toggle' onclick='show_tutor_request_calendar({{request_dict[n.request_id]["student-calendar"]}},{{request_dict[n.request_id]["request"].time_estimate}})'>
+					                                <span class='glyphicon glyphicon-calendar'></span>
+					                              </a>
+						                        {% endif %}
+						                    {% else %}
+						                    	{{request_dict[n.request_id]['request'].availability}}
+						                    {% endif %}
 							  			</div>
 							  		</div>
 							  	</div>

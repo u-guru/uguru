@@ -1781,6 +1781,8 @@ def activity():
         outgoing_request_index=outgoing_request_index, avg_rating=avg_rating, num_ratings = num_ratings)
 
 def get_student_time_ranges(week_object, owner):
+    if not week_object.first():
+        return []
     arr_ranges = []
     ranges = week_object.filter_by(owner=owner).first().ranges
     for r in ranges:
@@ -1788,6 +1790,8 @@ def get_student_time_ranges(week_object, owner):
     return arr_ranges
 
 def get_tutor_time_ranges(week_object):
+    if not week_object.first():
+        return []
     tutor_calendar_dict = {}
     for w in week_object:
         if w.owner != 0:
