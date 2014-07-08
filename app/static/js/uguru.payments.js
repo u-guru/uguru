@@ -1,3 +1,65 @@
+    
+    $('#submit-debit-card-info').click(function() {
+        if (!$('input#debit-card-num').val() || !$('input#debit-expiration-date').val()) {
+            $('.debit-payment-errors').text("Please fill in all fields");
+            return false;
+        }
+        card_number  = $('input#debit-card-num').val()
+        expiration_date = $('input#debit-expiration-date').val()
+        cvc_code = $('input#debit-cvc-num').val();
+        month = parseInt(expiration_date.split('/')[0])
+        year = parseInt(expiration_date.split('/')[1])
+
+        Stripe.card.createToken({
+            number : card_number,
+            exp_month : month,
+            exp_year : year,
+            cvc : cvc_code
+        }, stripeDebitResponseHandler);
+
+      });
+      $('#payment-form').submit(function(event) {
+        var $form = $(this);
+
+        // Disable the submit button to prevent repeated clicks
+        $form.find('button').prop('disabled', true);
+
+        Stripe.card.createToken($form, stripeResponseHandler);
+
+        // Prevent the form from submitting with the default action
+        return false;
+        });
+
+    var stripeDebitResponseHandler = function(status, response) {
+        var $form = $('#payment-form');
+        if (response.error) {
+            // Show the errors on the form            
+            $('.debit-payment-errors').text(response.error.message);
+            $('.debit-payment-errors').show();
+        } else {
+            console.log(response);
+            var token = response.id;
+            var data = {'token':token}
+            $.ajax({
+                    type: "POST",
+                    contentType: 'application/json;charset=UTF-8',
+                    url: '/add-bank/' ,
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    success:function(response) {
+                        if (response.response['not-a-debit']) {
+                            $('.debit-payment-errors').text('You enter a debit card, not a credit card.')
+                            $('.debit-payment-errors').show();
+                            return;
+                        } else {
+                            window.location.replace('/activity/');
+                        }
+                    }
+            });  
+        }
+    };
+
+
     credit_card_back_link = true; 
     $('input#credit-card-num').payment('formatCardNumber');
     $('input#expiration-date').payment('formatCardExpiry');
@@ -146,6 +208,9 @@
         // Prevent the form from submitting with the default action
         return false;
         });
+
+
+
 
 var stripeResponseHandler = function(status, response) {
     var $form = $('#payment-form');

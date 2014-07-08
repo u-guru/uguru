@@ -16,6 +16,18 @@ user_skill_table = Table('user-skill_assoc',
     Column('skill_id', Integer, ForeignKey('skill.id'))
 )
 
+week_ranges_table = Table('week-ranges_assoc',
+    Base.metadata,
+    Column('week_id', Integer, ForeignKey('week.id')),
+    Column('range_id', Integer, ForeignKey('range.id'))
+)
+
+request_weeks_table = Table('request-weeks_assoc',
+    Base.metadata,
+    Column('request_id', Integer, ForeignKey('request.id')),
+    Column('week_id', Integer, ForeignKey('week.id'))
+)
+
 request_conversation_table = Table('request-convo_assoc',
     Base.metadata,
     Column('conversation_id', Integer, ForeignKey('conversation.id')),
@@ -112,6 +124,7 @@ class User(Base):
         email = Column(String(64), index = True, unique = True)
     password = Column(String(64))
     is_a_tutor = Column(Boolean, default = False)
+    fb_account = Column(Boolean, default = False)
     phone_number = Column(String(64), unique = True)
     time_created = Column(DateTime)
     email_notification = Column(Boolean, default = True)
@@ -482,7 +495,7 @@ class Request(Base):
     location = Column(String)
     last_updated = Column(DateTime)
 
-
+    is_expired = Column(Boolean, default=False)
     urgency = Column(SmallInteger)
     frequency = Column(SmallInteger) # 0 is once, 1 is regular TO DROP
     time_estimate = Column(Float)
@@ -492,6 +505,10 @@ class Request(Base):
     estimated_hourly = Column(Float) #TO DROP
     actual_hourly = Column(Float) 
     actual_time = Column(Float)
+
+    weekly_availability = relationship('Week',
+        secondary = request_weeks_table,
+        backref='request', lazy='dynamic')
 
     requested_tutors = relationship('User', 
         secondary = tutor_request_table,
@@ -553,6 +570,24 @@ class Email(Base):
     user_id = Column(Integer)
     time_created = Column(DateTime)
     mandrill_id = Column(String)
+
+class Range(Base):
+    __tablename__ = 'range'
+    id = Column(Integer, primary_key = True)
+    start_time = Column(SmallInteger) #0-23 hours of the day
+    end_time = Column(SmallInteger) #0-23 hours of the day
+    week_day = Column(SmallInteger) #0-6 days of the week
+
+class Week(Base):
+    __tablename__ = 'week'
+    id = Column(Integer, primary_key = True)
+    owner = Column(SmallInteger) #0 if student, 1 if tutor
+    ranges = relationship('Range',
+        secondary = week_ranges_table,
+        backref = backref('week', lazy='dynamic')
+        )
+
+
 
 class Skill(Base):
     __tablename__ = 'skill'

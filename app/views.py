@@ -4,15 +4,17 @@ from flask import render_template, jsonify, redirect, request, \
 session, flash, redirect, url_for
 from forms import SignupForm, RequestForm
 from models import User, Request, Skill, Course, Notification, Mailbox, \
-    Conversation, Message, Payment, Rating, Email
+    Conversation, Message, Payment, Rating, Email, Week, Range
 from hashlib import md5
-from datetime import datetime
+from datetime import datetime, timedelta
 import emails, boto, stripe, os
 from sqlalchemy import desc
 import json, traceback
 import mandrill
 from twilio import twiml
 from mixpanel import Mixpanel
+from apscheduler.scheduler import Scheduler
+import logging
 
 
 
@@ -21,6 +23,7 @@ stripe_keys = {
     'publishable_key': os.environ['PUBLISHABLE_KEY']
 }
 MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
+logging.basicConfig()
 
 stripe.api_key = stripe_keys['secret_key']
 MAX_UPLOAD_SIZE = 1024 * 1024
@@ -51,7 +54,7 @@ def index():
         if user.skills and len(user.notifications) < 2:
             return redirect(url_for('settings'))
         return redirect(url_for('activity'))
-    return render_template('new_index.html', forms=[request_form],
+    return render_template('index.html', forms=[request_form],
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral)
 
@@ -455,14 +458,18 @@ def add_bank():
 
         if ajax_json.get('token'):
             stripe_user_token = ajax_json.get('token')
-            stripe_user_legal_name = ajax_json.get('legal-name')
+            # stripe_user_legal_name = ajax_json.get('legal-name')
             
-            recipient = stripe.Recipient.create(
-                name=stripe_user_legal_name,
-                type="individual",
-                email=user.email,
-                bank_account=stripe_user_token
-            )
+            try: 
+                recipient = stripe.Recipient.create(
+                    name=user.name,
+                    type="individual",
+                    email=user.email,
+                    card=stripe_user_token
+                )
+            except stripe.error.InvalidRequestError, e:
+                return_json['not-a-debit'] = True
+                return jsonify(response=return_json)
 
             user.recipient_id = recipient.id
 
@@ -768,6 +775,23 @@ def update_requests():
 
             r = Request.query.get(incoming_request_num)
             r.committed_tutors.append(tutor)
+            
+
+            weekly_availability = ajax_json['calendar']
+            
+            tutor_week_times = Week(owner=tutor.id)
+            db_session.add(tutor_week_times)
+            i = 0
+            for day in weekly_availability:
+                for time_range in day:
+                    temp_range = Range(start_time=time_range[0], end_time=time_range[1], week_day=i)
+                    db_session.add(temp_range)
+                    tutor_week_times.ranges.append(temp_range)
+                i = i + 1
+
+            r.weekly_availability.append(tutor_week_times)
+
+
             skill_id = r.skill_id
             skill = Skill.query.get(skill_id)
             skill_name = skill.name
@@ -814,6 +838,8 @@ def update_requests():
             current_notification = user_notifications[notif_num]
             _request = Request.query.get(current_notification.request_id)
             _request.committed_tutors.remove(user)
+            weekly_availability = _request.weekly_availability.filter_by(owner=user.id).first()
+            _request.weekly_availability.remove(weekly_availability)
 
             skill_id = _request.skill_id
             skill = Skill.query.get(skill_id)
@@ -1201,6 +1227,50 @@ def reset_pw():
 
     return jsonify(return_json=return_json)
 
+@app.route('/api/<arg>', methods=('GET', 'POST'))
+def api(arg):
+    return_json = {}
+    
+    if arg == 'support':
+        ajax_json = request.json
+
+        user_id = session.get('user_id')
+        user = User.query.get(user_id)
+
+        support_topic = ajax_json['selected-issue']
+        support_detail = ajax_json['detail']
+
+        from emails import send_support_email
+        send_support_email(support_topic, support_detail, user)
+
+
+    if arg == 'sample-tutors':
+        
+        from app.static.data.variations import courses_dict
+
+        ajax_json = request.json
+        
+        course_str = ajax_json['course'].lower()
+        skill_to_add_id = courses_dict[course_str]
+        skill = Skill.query.get(skill_to_add_id)
+
+        tutors = skill.tutors
+
+        count = 0
+        tutor_array = []
+        for tutor in skill.tutors:
+            if count >= 5:
+                break
+            if tutor.profile_url:
+                tutor_array.append(tutor.profile_url
+                )
+    
+        return_json['enough-tutors'] = count > 5
+        return_json['tutors'] = tutor_array
+
+    return jsonify(response=return_json)
+
+
 @app.route('/update-skill/', methods=('GET', 'POST'))
 def update_skill():
     if request.method == "POST":
@@ -1277,66 +1347,49 @@ def success():
     if request.method == "POST":
         ajax_json = request.json
         print ajax_json
-        
-        if ajax_json.get('submit-email-home'):
-            try: 
-                query = User.query.filter_by(email=ajax_json['submit-email-home']).first()
 
-                #If user with email already exists
-                if query:
-                    ajax_json['duplicate-email'] = True
-                    return jsonify(dict=ajax_json)
-                #else create the new user
+        if ajax_json.get('student-signup'):
+            try: 
+                if 'fb-signup' in ajax_json:
+                    u = User.query.filter_by(email=ajax_json['email']).first()
+                    #They have a facebook account and they want to login
+                    if u and u.fb_account:
+                        user_id = u.id
+                        authenticate(user_id)
+                        return jsonify(dict={'duplicate-account': True});
+                    password = ''
+                else:
+                    password = md5(ajax_json['password']).hexdigest()
+
+                if 'tutor-signup' in ajax_json: session['tutor-signup'] = True
+
                 u = User(
-                        name = None,
-                        password = None,
-                        email = ajax_json['submit-email-home'],
+                        name = ajax_json['name'],
+                        password = password,
+                        email = ajax_json['email'],
                         phone_number = None
                     )
                 u.last_active = datetime.now()
                 u.secret_code = generate_secret_code()
+                u.fb_account = True if 'fb-signup' in ajax_json else False
                 db_session.add(u)
                 db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-            
-            m = Mailbox(u)
-            db_session.add(m)
-            
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-            session['signup-start'] = ajax_json['submit-email-home']
-            session['signup-start-user-id'] = u.id
-
-        if ajax_json.get('student-signup'):
-            try: 
-                u = User.query.get(session.get('signup-start-user-id'))
-                u.name = ajax_json['name'] 
-                u.password = md5(ajax_json['password']).hexdigest()
-                u.phone_number = ajax_json['phone']
-                u.last_active = datetime.now()
-                u.secret_code = generate_secret_code()
 
                 if session.get('referral'):
                     u.referral_code = session['referral']
                     session.pop('referral')
-
-                if ajax_json['phone'] == '':
-                    u.phone_number = None;
-
-                # db_session.add(u)
+                
+                m = Mailbox(u)
+                db_session.add(m)
+                
                 db_session.commit()
             except:
                 db_session.rollback()
                 raise 
             user_id = u.id
             authenticate(user_id)
-            session.pop('signup-start-user-id')
-            session.pop('signup-start')
+            # session.pop('signup-start-user-id')
+            # session.pop('signup-start')
             try:
                 from notifications import getting_started_student, getting_started_student_tip
                 notification = getting_started_student(u)
@@ -1358,47 +1411,21 @@ def success():
         if ajax_json.get('complete-tutor-signup'):
             u = User.query.get(session['user_id'])
             u.qualifications = ajax_json.get('complete-tutor-signup')
-            session.pop('tutor-signup')
-            u.verified_tutor = True
-            from emails import welcome_uguru_tutor
-            welcome_uguru_tutor(u)
-            u.settings_notif = u.settings_notif + 1
+            if session.get('tutor-signup') : session.pop('tutor-signup')
+            u.year = 'sophomore'
+            if 'student-convert' not in ajax_json:
+                u.verified_tutor = True
+                from emails import welcome_uguru_tutor
+                welcome_uguru_tutor(u)
+                u.settings_notif = u.settings_notif + 1
             try:
                 db_session.commit()
             except:
                 db_session.rollback()
-
-        if ajax_json.get('tutor-signup'):
-            try:
-                u = User.query.get(session.get('signup-start-user-id'))
-                u.name = ajax_json['name'] 
-                u.password = md5(ajax_json['password']).hexdigest()
-                u.phone_number = ajax_json['phone']
-
-                u.last_active = datetime.now()
-
-                if ajax_json['phone'] == '':
-                    u.phone_number = None;
-
-                u.year = 'Sophomore'
-                db_session.add(u)
-                db_session.commit()
-                if session.get('referral'):
-                    u.referral_code = session['referral']
-                    session.pop('referral')
-                db_session.commit()
-                session['tutor-signup'] = True;
-
-            except:
-                db_session.rollback()
-                raise 
-            
-            user_id = u.id
-            authenticate(user_id)
-            print "Account created!"
 
         #Create a request
         if ajax_json.get('student-request'):
+            print ajax_json
             user_id = session['user_id']
             from app.static.data.variations import courses_dict
             from app.static.data.short_variations import short_variations_dict
@@ -1418,20 +1445,35 @@ def success():
                 for r in u.outgoing_requests:
                     if r.skill_id == skill_id:
                         return jsonify(dict={'duplicate-request': True})
-            
+
             r = Request(
                 student_id = user_id,
                 skill_id = skill_id,
                 description = ajax_json['description'],
-                urgency = ajax_json['urgency'],
+                urgency = int(ajax_json['urgency']),
                 frequency = None, 
                 time_estimate = float(ajax_json['estimate'])
             )
 
-            r.num_students = int(ajax_json['num-students'])
-            r.student_estimated_hour = int(float(ajax_json['idea-price']))
+
+            #Process calendar information
+            weekly_availability = ajax_json['calendar']
+            
+            week_times = Week(owner=0)
+            db_session.add(week_times)
+            i = 0
+            for day in weekly_availability:
+                for time_range in day:
+                    temp_range = Range(start_time=time_range[0], end_time=time_range[1], week_day=i)
+                    db_session.add(temp_range)
+                    week_times.ranges.append(temp_range)
+                i = i + 1
+
+            r.weekly_availability.append(week_times)
+            r.num_students = 1
+            r.student_estimated_hour = int(float(ajax_json['hourly-price']))
             r.location = ajax_json['location']
-            r.available_time = ajax_json['availability']
+            r.available_time = ''
             u.outgoing_requests.append(r)
             db_session.add(r)            
             try:
@@ -1440,6 +1482,13 @@ def success():
                 db_session.rollback()
                 raise 
             
+            sched = Scheduler()
+            sched.start()
+            later_time = datetime.now() + timedelta(0, 60)
+            
+            job = sched.add_date_job(expire_request_job, later_time, [r.id, u.id])
+
+
             from notifications import student_request_receipt
             notification = student_request_receipt(u, r, original_skill_name)
             u.notifications.append(notification)
@@ -1453,8 +1502,7 @@ def success():
             mp.track(str(u.id), 'Request Created',{
                 'Course':original_skill_name,
                 'Time Estimate': ajax_json['estimate'],
-                'Number of Students': int(ajax_json['num-students']),
-                'Proposed Price': int(float(ajax_json['idea-price'])),
+                'Proposed Price': int(float(ajax_json['hourly-price'])),
                 'Number of Tutors': len(r.requested_tutors)
             })
 
@@ -1497,6 +1545,10 @@ def success():
                 user_id = int(ajax_json.get('admin-approve-tutor'))
                 user = User.query.get(user_id)
                 user.approved_by_admin = True
+                user.verified_tutor = True
+
+                if user.settings_notif == 0: 
+                    user.settings_notif = u.settings_notif + 1
 
                 if user.notifications:
                     notification = user.notifications[0]
@@ -1602,9 +1654,8 @@ def login():
 
         email = ajax_json['email'].lower()
         password = md5(ajax_json['password']).hexdigest()
-        query = User.query.filter_by(email=email, password=password).first()
-        if query:
-            user = query
+        user = User.query.filter_by(email=email).first()
+        if user and user.password == password:
             if not user.name:
                 json['unfinished'] = True
                 session['signup-start'] = user.email
@@ -1613,6 +1664,8 @@ def login():
                 authenticate(user.id)
                 json['success'] = True                
         else:
+            if user and user.fb_account:
+                json['fb-account'] = True
             json['failure'] = False
         return jsonify(json=json)
     if os.environ.get('PRODUCTION'):
@@ -1711,7 +1764,9 @@ def activity():
             if address_book.get(student_id):
                     address_book[student_id]['request'] = request
         student = User.query.get(request.student_id)
-        request_dict[request.id] = {'request':request,'student':student}
+        student_time_ranges = get_student_time_ranges(request.weekly_availability, 0)
+        tutor_calendars = get_tutor_time_ranges(request.weekly_availability)
+        request_dict[request.id] = {'request':request,'student':student, 'student-calendar':student_time_ranges, 'tutor-calendars':tutor_calendars}
     for payment in user.payments:
         tutor_id = payment.tutor_id
         student_id = payment.student_id
@@ -1724,6 +1779,21 @@ def activity():
         pretty_dates = pretty_dates, urgency_dict=urgency_dict, tutor_dict=tutor_dict, pending_ratings_dict=pending_ratings_dict,\
         environment = get_environment(), prices_dict=prices_dict, prices_reversed_dict=prices_reversed_dict, session=session,\
         outgoing_request_index=outgoing_request_index, avg_rating=avg_rating, num_ratings = num_ratings)
+
+def get_student_time_ranges(week_object, owner):
+    arr_ranges = []
+    ranges = week_object.filter_by(owner=owner).first().ranges
+    for r in ranges:
+        arr_ranges.append([r.week_day, r.start_time, r.end_time])
+    return arr_ranges
+
+def get_tutor_time_ranges(week_object):
+    tutor_calendar_dict = {}
+    for w in week_object:
+        if w.owner != 0:
+            tutor_calendar_dict[w.owner] = get_student_time_ranges(week_object, w.owner)
+    return tutor_calendar_dict
+
 
 @app.route('/tutor_offer/')
 def tutor_offer():
@@ -1830,36 +1900,6 @@ def calc_avg_rating(user):
     else:
         avg_rating = 0
     return avg_rating, num_ratings
-
-
-# @app.route('/tutor_accept/')
-# def tutor_accept():
-#     page_info = { 'student_name': 'Jaclyn', 'skill_name': 'CS61A'}
-#     return render_template('tutor_accept.html', page_dict = page_info)
-
-# @app.route('/student_accept/')
-# def studentaccept():
-#     return render_template('student_accept.html')
-
-# @app.route('/ratingconfirm/')
-# def ratingconfirm():
-#     return render_template('ratingconfirm.html')
-
-# @app.route('/rating_noshow/')
-# def rating_noshow():
-#     return render_template('rating_noshow.html')
-
-# @app.route('/rating_stars/')
-# def rating_stars():
-#     return render_template('rating_stars.html')
-
-# @app.route('/rating_gen/')
-# def rating_gen():
-#     return render_template('rating_gen.html')
-
-# @app.route('/sorry/')
-# def sorry():
-#     return render_template('sorry.html')
 
 @app.route('/test-500/', methods=['GET','POST'])
 def test():
@@ -1983,3 +2023,10 @@ def get_environment():
     if os.environ.get("TESTING"):
         environment = "TESTING"
     return environment
+
+def expire_request_job(request_id, user_id):
+    print 'request has expired'
+    request = Request.query.get(request_id)
+    user = User.query.get(user_id)
+    request.is_expired = True
+    db_session.commit()

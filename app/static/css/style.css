@@ -1436,7 +1436,8 @@ input#credit-card-num.amex {
 
 textarea#student-signup-description {
   border:1px solid rgb(0, 159, 225); 
-  border-radius:15px;
+  border-radius:10px;
+  padding:10px;
 }
 
 #student-request-fields {
@@ -1788,4 +1789,8 @@ body.loading .modal-load {
 a .call-to-action-button {
   margin:0;
   color:white;
+}
+
+.grey-text {
+  color:grey;
 }

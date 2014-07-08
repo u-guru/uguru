@@ -13,6 +13,10 @@ var update_feed = function() {
     }
   }
 
+
+
+
+
 $(document).ready(function() {
     update_feed();
 
@@ -29,6 +33,10 @@ $(document).ready(function() {
     $('#upload-photo-link').on('click', function(e) {
       e.preventDefault();
       $("#upload-photo:hidden").trigger('click');
+    });
+
+    $('#logout-btn').click(function() {
+      window.location.replace('/logout/');
     });
 
       $('#example-skills').on('click', 'a.example-skill-link', function(e) {
@@ -193,6 +201,16 @@ $(document).ready(function() {
       $("#settings").show();
       $(".btn-logout").show();
     });
+    $('#support-button').click(function() {
+      $("#skills").hide();
+      $("#profile").hide();
+      $("#settings").hide();
+      $("#skills-button").removeClass('active');
+      $("#profile-button").removeClass('active');
+      $("#settings-button").removeClass('active');
+      $("#support-section").show();
+      $(".btn-logout").hide();
+    });
     $("#skills-button").click(function() {
       $("#settings").hide();
       $(".btn-logout").hide();
@@ -250,6 +268,87 @@ $(document).ready(function() {
     });
 
     $('#add-skill-input-settings').keyup(function(e){
+        if ($('#add-skill-input-settings').val()) {
+          if (e.keyCode == 13) {
+            if ($('#add-skill-input-settings').val()) {
+              var skill_name = $('#add-skill-input-settings').val();
+              if (autocomplete_json.indexOf(skill_name) == -1) {
+                alert('Please only add things from the available options.');
+                $('#add-skill-input-settings').val('');
+              } else {
+                $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
+                $('.skill-tag:last .skill-tag-text').text($('#add-skill-input-settings').val());
+                $('.skill-tag:last').show();
+                $('#add-skill-input-settings').val('');
+                $('.tt-hint').hide();
+                $('#my-skills').show();
+                $('#tutor-register-div').show();
+                update_skill_ajax('add',skill_name);
+              }
+            }
+          }
+          if (e.keyCode == 188) {
+            if ($('#add-skill-input-settings').val()) {
+              var skill_name = $('#add-skill-input-settings').val().replace(',', '');
+              if (autocomplete_json.indexOf(skill_name) == -1) {
+                alert('Please only add things from the available options.');
+                $('#add-skill-input-settings').val('');
+              } else {
+                $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
+                $('.skill-tag:last .skill-tag-text').text(skill_name);
+                $('.skill-tag:last').show();
+                $('#add-skill-input-settings').val('');
+                $('#my-skills').show();
+                $('#tutor-register-div').show();
+                update_skill_ajax('add',skill_name);
+              } 
+            }
+          }
+        }
+    });
+
+    $('#add-skill-apply-btn').click(function() {
+      if ($('#add-skill-input-settings').val()) {
+        var skill_name = $('#add-skill-input-settings').val();
+        if (autocomplete_json.indexOf(skill_name) == -1) {
+            alert('Please only add things from the available options.');
+            $('#add-skill-input-settings').val('');
+        } else {
+          $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
+          $('.skill-tag:last .skill-tag-text').text($('#add-skill-input-settings').val());
+          $('.skill-tag:last').show();
+          $('#add-skill-input-settings').val('');
+          $('.tt-hint').hide();
+          $('#my-skills').show();
+          $('#tutor-register-div').show();
+          update_skill_ajax('add',skill_name);
+        }
+      }
+    });
+
+    $('#tutor-application-submit').click(function() {
+      if (!$('#former-experience').val() || ($('.skill-tag').length < 2)) {
+        $('#add-one-skill-alert').show();
+      } else {
+        $('#add-one-skill-alert').hide();
+        data = {
+          'complete-tutor-signup':$('#former-experience').val(),
+          'student-convert':true
+        }
+          $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/validation/',
+          data: JSON.stringify(data),
+          dataType: "json",        
+          success: function(result) {        
+              window.location.replace('/settings/');
+            }
+          })  
+      }
+    });
+
+    $('#add-skill-input-settings').keyup(function(e){
     if ($('#add-skill-input-settings').val()) {
       if (e.keyCode == 13) {
         if ($('#add-skill-input-settings').val()) {
@@ -278,10 +377,51 @@ $(document).ready(function() {
       send_profile_update_ajax('year', selected_text)
     });
 
+    $('#submit-support-ticket').click(function() {
+      
+      if (!$('#support-detail').val()) {
+        $('#support-section-alert').text('Please fill in all fields')
+        $('#support-section-alert').show();
+        return;
+      } else {
+        $('#support-section-alert').hide();
+      }
+
+      data = {
+        'selected-issue':$('#selected-issue').text(),
+        'detail':$('#support-detail').val()
+      }
+
+      $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/api/support',
+          data: JSON.stringify(data),
+          dataType: "json",        
+          success: function(result) {        
+              $('#support-section-alert').text("Your issue has been submitted! We'll get back to you soon");
+              $('#support-section-alert').show();
+          }
+      });
+
+    });
+
+    $('#issue-dropdown').on('click', '.dropdown-menu li a', function() {
+      var selected_text = $(this).text();
+      $('#selected-issue').text(selected_text);
+    });    
+
     $('#current-skills').on('click', '.boxclose', function(e){
       e.preventDefault();
       var skill_name = $(this).parent().siblings('.default-text:first').children('.skill-name').text();
       $(this).parent().parent().parent().remove();
+      update_skill_ajax('remove',skill_name);
+    });
+
+    $('#register-skills').on('click', '.skill-tag-remove', function(e){
+      e.preventDefault();
+      var skill_name = $(this).siblings('.skill-tag-text').text();
+      $(this).parent().remove();
       update_skill_ajax('remove',skill_name);
     });
 

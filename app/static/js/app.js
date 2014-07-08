@@ -15,7 +15,6 @@ window.onhashchange = locationHashChanged
 function locationHashChanged() {
     if (!location.hash) {
       $('body').css('background-color','#00A9DE')
-      $('#access-code').hide();
       $('#tutor-signup').hide();
       $('#student-signup').hide();
       $('#tutor-signup-next').hide();
@@ -234,8 +233,8 @@ $(document).ready(function(){
 
     $('#frequency-request').on('click', '.frequency', function(){
       var current_active = $('#frequency-request .frequency.active');
-      current_active.removeClass('active')
-      $(this).addClass('active')
+      current_active.removeClass('active');
+      $(this).addClass('active');
     })
 
     $('#login-link').click(function() {
@@ -243,13 +242,6 @@ $(document).ready(function(){
         $('body').css('background-color','white')
         invert_olark();
         $('#login-page').show('slide', {direction: 'right'}, 200);
-    });
-    $('#tutor-signup-btn').click(function() {
-        $('#home').hide();
-        $('body').css('background-color','white')
-        location.hash = '#access-code'
-        invert_olark();
-        $('#access-code').show('slide', {direction: 'right'}, 200);
     });
     $('#student-signup-btn').click(function() {
         $('#home').hide();
@@ -282,7 +274,10 @@ $(document).ready(function(){
                   $('#alert-fields-student-signup').show();
                 }
                 else {
-                  window.location.replace('/activity/');
+                  $('#student-signup').hide();
+                  $('#student-signup-skill').val($('#home-page-courses').val());
+                  $('#student-signup-skill').css({"border-color":"#69bf69"});
+                  $('#student-request').show();
                 }
               }
             });
@@ -296,7 +291,8 @@ $(document).ready(function(){
             $('#alert-fields-student-signup').show()
         } else {
             var data_dict = {
-                'tutor-signup': true,        
+                'student-signup': true,
+                'tutor-signup': true,
                 'name': $('input[name="student-name"]').val(),
                 'email': $('input[name="student-email"]').val(),
                 'phone': '',
@@ -328,10 +324,19 @@ $(document).ready(function(){
       $('#student-next-link').trigger('click');
     });
 
-    $('#student-register').click(function(){
+    $('.student-register').click(function(){
     if (!$('#student-signup-description').val() || !$('#student-signup-location').val() || 
-        !$('#student-signup-availability').val() || !$('#student-signup-skill').val()) {
-      $('#alert-fields-student-signup1').show(); 
+        $('td.time-slot.td-selected').length == 0 || !$('#student-signup-skill').val()) {
+          if ($('td.time-slot.td-selected').length == 0) {
+              $('#select-calendar-slot-alert').show();
+              $('#request-avail-ok').hide();
+              $('#request-avail-remove').show();
+            } else {
+              $('#select-calendar-slot-alert').hide();
+              $('#request-avail-ok').show();
+              $('#request-avail-remove').hide();
+          }
+          $('#alert-fields-student-signup1').show(); 
       if (!$('#student-signup-description').val()) {
         $('#student-signup-description').css({"border-color":"red"});
       }
@@ -343,13 +348,12 @@ $(document).ready(function(){
       var data = {
         'student-request': true,
         'description': $('#student-signup-description').val(),
-        'urgency': $('#urgency-request .urgency.active').index(),
-        'num-students': ($('#num-students-request .num-students.active').index() + 1),
         'skill': $('input[name="skill"]').val(),
         'estimate': $('#time-estimate-slider').val(),
-        'idea-price': $('#ideal-price-slider').val(),
+        'hourly-price': $('#ideal-price-slider').val(),
+        'urgency': $('#urgency-flag').prop('checked'),
+        'calendar': get_calendar_selection(),
         'location': $('#student-signup-location').val(),
-        'availability': $('#student-signup-availability').val(),
         }
         $.ajax({
           type: "POST",
@@ -386,12 +390,6 @@ $(document).ready(function(){
           $('#tutor-register-div').show();
           update_skill_ajax('add',skill_name);
         }
-      }
-    });
-
-    $('#exclusive-access-code').keyup(function(e) {
-      if (e.keyCode == 13) {
-        $('#access-submit-link').trigger('click');
       }
     });
 
@@ -532,8 +530,13 @@ $(document).ready(function(){
         data: JSON.stringify(data),
         dataType: "json",        
         success: function(result) {        
+            console.log(result);
             if (result.json['unfinished']) {
               window.location.replace('/');
+            }
+            if (result.json['fb-account']) {
+              alert('this happened');
+              $('#alert-fields-login').text('You have a Uguru.me FB account, please login with Facebook!')
             }
             if (result.json['admin']) {
               window.location.replace('/admin/');
@@ -593,36 +596,26 @@ $(document).ready(function(){
               }
             });
       }
-    })
+    });
 
-    $('#access-submit-link').click(function(){
-    //check whether fields are blank
-    if (!$('#exclusive-access-code').val()) {
-      $('#alert-fields-access-2').show()
-    } else {
-      //else get data and send to server
-      $('#alert-fields-access-2').hide()
-      var data = {
-        'access': $('input[name="exclusive-access-code"]').val(),
-      }
-      $.ajax({
-        type: "POST",
-        contentType: 'application/json;charset=UTF-8',
-        url: '/access/',
-        data: JSON.stringify(data),
-        dataType: "json",        
-        success: function(result) {        
-            if (result.json['success']) {
-                $('#alert-fields-access').hide();
-                $('#access-code').hide();
-                window.location.hash = '#tutor-signup';
-                $('#tutor-signup').show();
-            } else {
-                $('#alert-fields-access').show();     
-            }
-        }
-        });      
-        }
+    $('#apply-tutor-link').click(function() {
+        $('#home').hide();
+        $('body').css('background-color','white')
+        invert_olark();
+        $('#tutor-student-header').text('GURU SIGNUP')
+        $('#tutor-next-link').show()
+        // $('#student-signup-email').val(result.dict['submit-email-home'])
+        $('#student-signup').show('slide', {direction: 'right'}, 200);
+
+    });
+
+    $('#student-signup-link').click(function() {
+        $('#home').hide();
+        $('body').css('background-color','white')
+        invert_olark();
+        $('#tutor-student-header').text('STUDENT SIGNUP')
+        $('#student-next-link').show()
+        $('#student-signup').show('slide', {direction: 'right'}, 200);
     });
 
     var numbers = new Bloodhound({
@@ -653,12 +646,38 @@ $(document).ready(function(){
     $('#tutor-add-course-fields .typeahead').typeahead(null, {
       displayKey: 'name',
       source: numbers.ttAdapter()
-    });
+    })
 
     $('#student-request-fields .typeahead').typeahead(null, {
       displayKey: 'name',
       source: numbers.ttAdapter()
     });
+
+    $('#home-page-courses.typeahead').typeahead(null, {
+      displayKey: 'name',
+      source: numbers.ttAdapter()
+    }).on('typeahead:selected', onTypeaheadSelected);
+
+    function onTypeaheadSelected(event, suggested, dataset_name) {
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        url: '/api/sample-tutors',
+        data: JSON.stringify({'course':$('#home-page-courses').val()}),
+        dataType: "json",        
+        success: function(result) {
+          var tutors = result.response['tutors']
+          var enough_tutors = result.response['enough-tutors']
+          for (i = 0; i < tutors.length; i++) {
+            $('#available-tutors').append('<span><img src="'+tutors[i]+'" style="align:center" class="tutor-photo"></span>')
+          }
+          $('#course-tutor-length').text(tutors.length)
+          $('#course-name-string').text($('#home-page-courses').val());
+          $('#available-tutors-per-course').show()
+        }
+      });
+      $('#student-signup-link').show();
+    };
 
     update_skill_ajax = function(add_or_remove, skill_name) {
       var data = {};

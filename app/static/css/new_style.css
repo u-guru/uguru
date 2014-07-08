@@ -670,6 +670,10 @@ input:focus, textarea:focus {
   width:100%;
 }
 
+.textarea-signup {
+  
+}
+
 #submit-login {
   background-color: #00a9e5;
   text-align:center;
@@ -1141,4 +1145,26 @@ body.loading .modal-load {
   font-size:0.35em;
   font-family:'Roboto',sans-serif; 
   text-align:center;
+}
+
+#student-signup-link {
+  color:white;
+  display:none;
+}
+
+#submit-course {
+  text-align:center;
+}
+
+#available-tutors-per-course {
+  display:none;
+}
+
+.tutor-photo {
+  padding-left:5px;
+  padding-right:5px;
+  padding-top:5px;
+  padding-bottom:5px;
+  width:40px;
+  height:40px; 
 }

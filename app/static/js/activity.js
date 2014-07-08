@@ -120,9 +120,18 @@ $(document).ready(function() {
     });
 
     $('.student-register').click(function(e){
-      if (!$('#student-signup-description').val() || !$('#student-signup-location').val() || 
-          !$('#student-signup-availability').val() || !$('#student-signup-skill').val()) {
-        $('#alert-fields-student-signup1').show(); 
+      if (!$('#student-signup-description').val() || !$('#student-signup-location').val() ||
+        $('td.time-slot.td-selected').length == 0 || !$('#student-signup-skill').val()) {
+          if ($('td.time-slot.td-selected').length == 0) {
+            $('#select-calendar-slot-alert').show();
+            $('#request-avail-ok').hide();
+            $('#request-avail-remove').show();
+          } else {
+            $('#select-calendar-slot-alert').hide();
+            $('#request-avail-ok').show();
+            $('#request-avail-remove').hide();
+          }
+          $('#alert-fields-student-signup1').show(); 
       } else {
       $(this).addClass('disabled')
       e.preventDefault();
@@ -130,13 +139,12 @@ $(document).ready(function() {
       var data = {
         'student-request': true,
         'description': $('#student-signup-description').val(),
-        'urgency': $('#urgency-request .urgency.active').index(),
         'skill': $('input[name="skill"]').val(),
         'estimate': $('#time-estimate-slider').val(),
         'location': $('#student-signup-location').val(),
-        'availability': $('#student-signup-availability').val(),
-        'num-students': ($('#num-students-request .num-students.active').index() + 1),
-        'idea-price': $('#ideal-price-slider').val(),
+        'urgency': $('#urgency-flag').prop('checked'),
+        'calendar': get_calendar_selection(),
+        'hourly-price': $('#ideal-price-slider').val(),
         }
         $.ajax({
           type: "POST",
@@ -313,7 +321,7 @@ $(document).ready(function() {
 
    $('#feed-messages').on('click', 'a.tutor-request-accept-btn', function() {
             extra_detail = $(this).parent().parent().parent().siblings('.modal-body').children('.extra-detail').children().children('textarea').val();
-            if (!extra_detail || is_tutor_response_sanitized(extra_detail)) {
+            if ((!extra_detail || is_tutor_response_sanitized(extra_detail)) && $('td.time-slot.td-selected').length > 0) {
                 $(this).parent().parent().parent().siblings('.modal-body').children('.extra-detail-alert').hide();
                 $(this).click(false);
                 //Hide the modal
@@ -331,6 +339,7 @@ $(document).ready(function() {
                     'extra-detail': extra_detail,
                     'price-change': tutor_changed_price,
                     'notif-num':  last_clicked_notif_index,
+                    'calendar': get_calendar_selection(),
                 };
                 $.ajax({
                     type: "POST",
@@ -343,7 +352,14 @@ $(document).ready(function() {
                     }
                 }); 
             } else {
-              $(this).parent().parent().parent().siblings('.modal-body').children('.extra-detail-alert').show();
+              alert_div = $(this).parent().parent().parent().siblings('.modal-body').children('.extra-detail-alert'); 
+              if ($('td.time-slot.td-selected').length == 0) {
+                alert_div.text('Please fill out your times in the calendar')
+                
+              } else {
+                alert_div.html('Please do not include personal contact information in your response. <br> You can exchange this after the student has selected you.');
+              }
+              alert_div.show();
             }
     });
 
@@ -806,6 +822,7 @@ $(document).ready(function() {
   $('.modal-extra-detail').on('show', function() {
       $(this).children().children().children('.modal-body').children('.extra-detail').children().children('textarea').select();
   });
+
   
   (function ($) {
       $.each(['show', 'hide'], function (i, ev) {
