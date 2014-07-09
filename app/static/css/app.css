@@ -1,3 +1,133 @@
+/*Components setup */
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight:100;
+}
+
+p {
+  /*font-family: 'Roboto', sans-serif;*/
+  font-family: 'Roboto', sans-serif;
+  font-weight:100;
+  font-size:1.00em;
+  color:#484748;
+}
+
+input {
+  outline:none;
+}
+
+h1, h3 {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.blue-btn {
+  padding:8px 20px;
+  background-color:#27ACE3;
+  color:white;
+  border-color:#27ACE3;
+}
+
+.large-blue-btn {
+  padding:12px 30px;
+  background-color:#27ACE3;
+  color:white;
+  border-color:#27ACE3;
+  font-size:1.25em;
+}
+
+.tutor-exp-tag {
+  background-color:#5EBB47;
+  padding:5px 16px;
+  color:white;
+  margin-right:5px;
+}
+
+.large-fb-blue-btn {
+  padding:12px 30px;
+  background-color:#3b5998;
+  border-color:#3b5998;
+  color:white;
+  font-size:1.25em;
+}
+
+.text-banner {
+  background-color:#27ACE3;
+  font-size:80px;
+  color:white;
+  padding:35px;
+  text-align:center;
+  font-family: 'Roboto Condensed', sans-serif;
+  position:relative;
+}
+
+.footer {
+  background-color:#27ACE3;
+  font-size:16px;
+  color:white;
+  padding:15px;
+  text-align:center;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight:100;
+}
+
+/*Bootstrap Overrides*/
+.navbar-default {
+  background-color:transparent;
+  border-color:transparent;
+  color:white !important;
+}
+
+.navbar-default .container-fluid {
+  padding:0px 30px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+  padding-top:30px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: white;
+}
+
+.navbar-default .navbar-brand {
+  color:white;
+}
+
+.navbar-default .navbar-brand:hover {
+  color:white;
+}
+
+/*Home page css */
+
+#home {
+  background-color:white;
+}
+
+#banner {
+  position:relative;
+}
+
+#tutor-banner-background {
+  position:absolute;
+  bottom:0px;
+  height:125px;
+  background-color:#27ACE3;
+  opacity:0.66;
+  color:white;
+  width:100%;
+}
+
+#tutor-banner-content {
+  z-index:1;
+  position:absolute;
+  bottom:0px;
+  height:125px;
+  color:white;
+  width:100%;
+}
+
 .calendar-modal {
      display:none;
      position: absolute;
@@ -113,4 +243,227 @@ td.time-slot {
 .debit-payment-errors {
   color:red;
   text-align:center;
+}
+
+.testimonial-section {
+  padding:40px;
+  font-size:1.25em;
+  text-align:center;
+}
+
+.hiw-section {
+  padding:30px;
+  font-size:1.25em;
+  text-align:center;
+}
+
+.white-text {
+  color:white;
+}
+
+.logo-text {
+  font-family: 'Grand Hotel', cursive;
+  font-size:40px;
+}
+
+.grey-text {
+  color:black;
+}
+
+h1.extra-margin-bottom {
+  margin-bottom:25px;
+}
+
+h1.extra-extra-margin-top {
+  margin-top:45px;
+}
+
+.guarantee-text-container {
+  padding-left:15%;
+  padding-right:15%;
+}
+
+.guarantee-container {
+  padding:30px;
+}
+
+.dark-grey-text {
+  color:#484748;
+}
+
+.signup-container {
+  padding:80px;
+}
+
+.footer-link {
+  padding-left:20px;
+  padding-right:20px;
+  display:inline;
+}
+
+.footer-link a {
+  color:white;
+}
+
+#main-container h3{
+  font-weight:100; 
+  margin-top:25px;
+  font-family: 'Roboto', sans-serif;
+}
+
+#main-container input {
+  margin-top:25px;
+  padding:5px 20px;
+}
+
+#main-container h1 {
+  margin-top:45px;
+  font-family: "Roboto", sans-serif;
+  font-weight:400;
+}
+
+#course-input {
+  width:300px;
+  color:grey;
+  font-family:"Roboto", sans-serif;
+  font-weight:100;
+}
+
+.tutor-preview {
+  position:relative;
+  padding:15px 10px 20px 10px;
+}
+
+.tutor-preview-img {
+  position: absolute;
+  left:0;
+  border-radius:15px;
+}
+
+.tutor-preview-content {
+  padding-left:90px;
+}
+
+.tutor-preview-content p {
+  color:white;
+}
+
+.tutor-preview-content-title {
+  display:block;
+}
+
+.tutor-preview-content-description {
+  margin-top:5px;
+  font-size:12px;
+}
+
+.tutor-preview-next {
+  position:relative;
+}
+
+#load-next-tutors-bar {
+  position:absolute;
+  height:125px;
+  width:20px;
+  right:0;
+  background-color:#27ACE3;
+}
+
+#load-next-tutors-pointer {
+  position:absolute;
+  right:0;
+  top:55px;
+  font-size:20px;
+}
+
+#load-next-tutor-photo {
+  position:absolute;
+  right:23px;
+  border-radius:10px;
+  top:15px;
+  height:90px;
+}
+
+#pencil-banner {
+  position:absolute;
+  left:150px;
+  bottom:0px;
+}
+
+#shield-banner {
+  position:absolute;
+  left:180px;
+  bottom:0px;
+}
+
+#guru-banner {
+  position:absolute;
+  left:180px;
+  bottom:0px;
+}
+
+/* XS devices (large desktops, 1200px and up) */
+@media (max-width: 768px) { 
+  #banner {
+    height:400px;
+  }
+}
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {  
+  #banner {
+    background: url('/static/img/background-1600.jpg') no-repeat;
+    background-size:cover;
+    height:450px;
+  }
+
+  #main-container h1 {
+    margin-top:10px;
+  }
+  .testimonial-section {
+    padding:30px 10px; 
+  }
+
+  #testimonials .container {
+    padding-right:0px;
+    padding-left:0px;
+  }
+
+  #pencil-banner {
+    left:55px;
+  }
+
+  #shield-banner {
+    left:75px;
+  }
+  #guru-banner {
+    left:55px;
+  }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {  
+  #banner {
+    background: url('/static/img/background-1600.jpg') no-repeat;
+    background-size:cover;
+    height:550px;
+  }    
+  .testimonial-section {
+    padding:40px; 
+  }
+  #testimonials .container {
+    padding-right:15px;
+    padding-left:15px;
+  }
+  #pencil-banner {
+    left:150px;
+  }
+
+  #shield-banner {
+    left:180px;
+  }
+  #guru-banner {
+    left:180px;
+  }
 }

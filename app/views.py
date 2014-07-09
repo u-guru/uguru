@@ -58,6 +58,10 @@ def index():
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral)
 
+@app.route('/new/')
+def new():
+    return render_template('new.html')
+
 @app.route('/sneak/', methods=['GET', 'POST'])
 def sneak():
     return render_template('new_index.html')

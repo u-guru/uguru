@@ -1,0 +1,263 @@
+<html>
+    <head>
+        <link href="/static/css/bootstrap.css" rel="stylesheet">
+        <link href="/static/css/app.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:100,300, 400,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300, 100' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div id='home'>
+            <div id='banner'>
+                <nav class="navbar navbar-default" role="navigation">
+                  <div class="container-fluid">
+                    <!-- Logo and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="#">
+                        <img src='/static/img/guru-new.svg' height='60px'>
+                        <span class='logo-text'> &nbsp;uguru.me </span>
+                      </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav">
+                        <li><a href="#">@ UC Berkeley</a></li>
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">How it works</a></li>
+                        <li><a href="#">Become a Guru</a></li>
+                        <li><a href="#"><u>Log in</u></a></li>
+                        <li><a href="#">
+                                <span class='blue-btn'> Sign up </span>
+                            </a>
+                        </li>
+                      </ul>
+                    </div><!-- /.navbar-collapse -->
+                  </div><!-- /.container-fluid -->
+                </nav> 
+                <div id='main-container' class='container center'>
+                    <h1 class='white-text'>
+                        Get Course Help from Your Fellow Cal Bears
+                    </h1>
+                    <h3 class='white-text'>
+                        Pick a Guru and Meet Up on Campus within Minutes
+                    </h3>
+                    <input id='course-input' placeholder='Someone help me in..(CS10)'type='text'></input>&nbsp;&nbsp;&nbsp;&nbsp;<span class='blue-btn'> Ace It! </span>
+                </div>
+                <div class='container-fluid' id='tutor-banner-background'>
+                </div>
+                <div id='tutor-banner-content'>
+                    <div class='container-fluid'>
+                        <div class='row-fluid'>
+                            <div class='col-xs-12 col-sm-5 col-md-offset-1 col-md-5'>
+                                <div class='tutor-preview'>
+                                    <div class='tutor-preview-img-container'>
+                                        <img class='tutor-preview-img' src='/static/img/rafi.png' height='90px' width='90px'>
+                                        <div class='tutor-preview-content'>
+                                            <div class='tutor-preview-content-title'>
+                                                <p><b>Integrative Biology, EECS, Class of 2017</b></p>
+                                            </div>
+                                            <div class='tutor-preview-content-tags'>
+                                                <span class='tutor-exp-tag'>
+                                                    SLC Tutor
+                                                </span>
+                                                <span class='tutor-exp-tag'>
+                                                    GSI
+                                                </span>
+                                            </div>
+                                            <div class='tutor-preview-content-description'>
+                                                <p>
+                                                    "I am an awesome tutor. I tutored at the SLC for 2 years. I really love teaching because it makes me feel good..."
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-xs-12 col-sm-5 col-md-5'>
+                                <div class='tutor-preview'>
+                                    <div class='tutor-preview-img-container'>
+                                        <img class='tutor-preview-img' src='/static/img/saba.png' height='90px' width='90px'>
+                                        <div class='tutor-preview-content'>
+                                            <div class='tutor-preview-content-title'>
+                                                <p><b>Integrative Biology, EECS, Class of 2017</b></p>
+                                            </div>
+                                            <div class='tutor-preview-content-tags'>
+                                                <span class='tutor-exp-tag'>
+                                                    SLC Tutor
+                                                </span>
+                                                <span class='tutor-exp-tag'>
+                                                    GSI
+                                                </span>
+                                            </div>
+                                            <div class='tutor-preview-content-description'>
+                                                <p>
+                                                    "I am an awesome tutor. I tutored at the SLC for 2 years. I really love teaching because it makes me feel good..."
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-xs-12 col-sm-2 col-md-1' style='padding-right:0px'>
+                                <div class='tutor-preview-next'>
+                                    <div id='load-next-tutors-bar'>
+                                    </div>
+                                    <span id='load-next-tutors-pointer' class='glyphicon glyphicon-step-backward'>
+                                    </span>
+                                    <img src='/static/img/lee.png' id='load-next-tutor-photo'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id='testimonials'>
+                <div class='container'>
+                    <div class='row-fluid'>
+                        <div class='col-xs-12 col-sm-4 col-md-4'>
+                            <div class='testimonial-section'>
+                                <i>
+                                    <p>
+                                        CS10 was a nightmare, and thanks to Uguru, I was able to connect with a tutor and meet up with her in <b> just an hour</b>
+                                    </p>
+                                    <img src='/static/img/jenny.jpg' height='40px'> 
+                                    <span class='dark-grey-text' style='font-size:14px;'> - Jenny L. EECS Class of 2014 </span>
+                                </i>
+                            </div>
+                        </div>
+                        <div class='col-xs-12 col-sm-4 col-md-4'>
+                            <div class='testimonial-section'>
+                                <i>
+                                    <p>
+                                        CS10 was a nightmare, and thanks to Uguru, I was able to connect with a tutor and meet up with her in <b> just an hour</b>
+                                    </p>
+                                    <img src='/static/img/jenny.jpg' height='40px'> 
+                                    <span class='dark-grey-text' style='font-size:14px;'> - Jenny L. EECS Class of 2014 </span>
+                                </i>
+                            </div>
+                        </div>
+                        <div class='col-xs-12 col-sm-4 col-md-4'>
+                            <div class='testimonial-section'>
+                                <i>
+                                    <p>
+                                        CS10 was a nightmare, and thanks to Uguru, I was able to connect with a tutor and meet up with her in <b> just an hour</b>
+                                    </p>
+                                    <img src='/static/img/jenny.jpg' height='40px'> 
+                                    <span class='dark-grey-text' style='font-size:14px;'> - Jenny L. EECS Class of 2014 </span>
+                                </i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id='how-it-works'>
+            <div class='row-fluid text-banner'>
+                <img src='/static/img/pencil-banner.svg' id='pencil-banner'>
+                <b>How It Works</b>
+            </div>
+            <div class='container'>
+                <div class='row-fluid'>
+                    <div class='col-xs-12 col-sm-4 col-md-4'>
+                        <div class='hiw-section'>
+                            <h1 class='extra-margin-bottom dark-grey-text'><b>Match Up</b></h1>
+                            <p>
+                                CS10 was a nightmare, and thanks to Uguru, I was able to connect with a tutor and meet up with her in <b> just an hour</b>
+                            </p>
+                        </div>
+                    </div>
+                    <div class='col-xs-12 col-sm-4 col-md-4'>
+                        <div class='hiw-section'>
+                            <h1 class='extra-margin-bottom dark-grey-text'><b>Meet Up</b></h1>
+                            <p>
+                                CS10 was a nightmare, and thanks to Uguru, I was able to connect with a tutor and meet up with her in <b> just an hour</b>
+                            </p>
+                        </div>
+                    </div>
+                    <div class='col-xs-12 col-sm-4 col-md-4'>
+                        <div class='hiw-section'>
+                            <h1 class='extra-margin-bottom dark-grey-text'><b>Pay Up</b></h1>
+                            <p>
+                                CS10 was a nightmare, and thanks to Uguru, I was able to connect with a tutor and meet up with her in <b> just an hour</b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div id='guarantee'>
+            <div class='row-fluid text-banner'>
+                <img src='/static/img/shield-banner.svg' id='shield-banner'>
+                <b>Guarantee</b>
+            </div>
+            <div class='container center'>
+                <div class='row-fluid'>
+                    <div class='guarantee-container'>
+                        <h1 class='extra-margin-bottom dark-grey-text'><b>100% Money Back Guarantee</b></h1>
+                        <div class='guarantee-text-container'>
+                            <p>
+                            I felt so screwed the night before my Math 54 final, so I decided to get help from Uguru. I was able to meet up with my tutor in just an hour. Because of the on-demand help, I got an A- in the class!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id='signup-now'>
+            <div class='row-fluid text-banner'>
+                <img src='/static/img/guru-banner.svg' id='guru-banner'>
+                <b>Sign Up Now</b>
+            </div>
+            <div class='container signup-container center'>
+                <div class='row-fluid'>
+                    <div class='col-xs-12 col-sm-5 col-md-5'>
+                        <span class='large-fb-blue-btn'>
+                            Sign up on Facebook
+                        </span>
+                    </div>
+                    <div class='col-xs-12 col-sm-2 col-md-2 dark-grey-text'>
+                        Or
+                    </div>
+                    <div class='col-xs-12 col-sm-5 col-md-5'>
+                        <span class='large-blue-btn'>
+                            Sign up through Uguru
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <div class='footer'>
+            <div class ='container'>
+                <div class='row-fluid'>
+                    <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6'>
+                        <div class='footer-link'>
+                            <a href='javascript:void(0)'> FAQ </a>
+                        </div>
+                        <div class='footer-link'>
+                            <a href='javascript:void(0)'> Terms of Use </a>
+                        </div>
+                        <div class='footer-link'>
+                            <a href='javascript:void(0)'> Privacy Policy </a>
+                        </div>
+                        <div class='footer-link'>
+                            <a href='javascript:void(0)'> Contact Us </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</html>
