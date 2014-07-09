@@ -534,6 +534,15 @@ h1.extra-extra-margin-top {
 }
 
 
+@media (min-width: 450) and (max-width: 768) { 
+  #testimonial-1, #testimonial-2, #tutor-preview-2, #tutor-next-sneak {
+    display:block;
+  }
+  .signup-btn-container {
+    margin-top:20px;
+  }
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {  
   #banner {
