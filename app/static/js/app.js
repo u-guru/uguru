@@ -1,6 +1,7 @@
 var autocomplete_json = [];
 var current_page_id = null; 
 var previous_page_id = null;
+var request_form_complete = null;
 var a,b,c;
 var invert_olark = function() {
     $('#habla_window_div #habla_oplink_a').css('color','white');
@@ -28,10 +29,54 @@ function locationHashChanged() {
 $(document).ready(function(){
     
     $body = $("body");
-
+    
     $(document).on({
         ajaxStart: function() { $body.addClass("loading");    },
          ajaxStop: function() { $body.removeClass("loading"); }    
+    });
+
+    $('#request-main-slider').slider(
+        {
+          'min':1, 
+          'max':10, 
+          'value':2,
+          change: function(event, ui) {
+            slider_val = $('#request-main-slider').slider('value');
+            hr_text = 'hrs'
+            if (slider_val == 1) {
+              hr_text = 'hr'
+            }
+            $('#request-main-slider-val').text(slider_val + ' ' + hr_text);
+          }
+        }
+    );
+
+    $('#edit-price-slider').slider(
+        {
+          'min':10, 
+          'max':25, 
+          'value':15,
+          change: function(event, ui) {
+            $('#final-offering-price').text($('#edit-price-slider').slider('value'));
+            slider_val = $('#edit-price-slider').slider('value');
+            $('#edit-price-slider-val').text('$' + slider_val + '/hr');
+          }
+        }
+    );
+
+    $(function() {
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top
+            }, 1000);
+            return false;
+          }
+        }
+      });
     });
 
     $('a[href*=#]:not([href=#])').click(function() {
@@ -54,7 +99,7 @@ $(document).ready(function(){
       if (request.status == 200)
           return request.responseText;
     };
-
+    
     autocomplete_json = JSON.parse(readJSON('/static/data/autocomplete.json'));
 
     $('#register-skills').on('click', '.skill-tag-remove', function(e){
@@ -62,6 +107,22 @@ $(document).ready(function(){
       var skill_name = $(this).siblings('.skill-tag-text').text();
       $(this).parent().remove();
       update_skill_ajax('remove',skill_name);
+    });
+
+    $('#request-form-edit-price').click(function() {
+      $('#request-form-edit-price').hide();
+      $('#request-form-remove-price').show();
+      $('#edit-price-container').show();
+      $('#suggested-or-your-text').text('Your Price: ')
+    });
+
+    $('#request-form-remove-price').click(function() {
+      $('#final-offering-price').text('15')
+      $('#edit-price-slider').slider({'value':15});
+      $('#request-form-edit-price').show();
+      $('#request-form-remove-price').hide();
+      $('#edit-price-container').hide();
+      $('#suggested-or-your-text').text('Suggested: ')
     });
 
     $('#tutor-add-course-fields').on('click', 'a.example-skill-link', function() {
@@ -269,19 +330,73 @@ $(document).ready(function(){
               data: JSON.stringify(data_dict), 
               dataType: "json",
               success: function(result) {
-                if (result.dict['duplicate-phone']) {
-                  $('#alert-fields-student-signup').text('There is already an account with this phone number');  
-                  $('#alert-fields-student-signup').show();
+                if (result.dict['account-exists']) {
+                  $('#signup-modal').modal('hide');
+                  $('#login-modal').modal('show');
+                  $('#alert-fields-login').text($('#student-signup-email').val() + ' already has an account! Please Log In.')
+                  $('#alert-fields-login').show();
+                  return;
                 }
-                else {
-                  $('#student-signup').hide();
-                  $('#student-signup-skill').val($('#home-page-courses').val());
-                  $('#student-signup-skill').css({"border-color":"#69bf69"});
-                  $('#student-request').show();
+
+                if (request_form_complete) {
+                  submit_request_form_to_server();
                 }
+
+                $('#signup-modal').modal('hide');
+                $('#main').hide();
+                $('#request-form').show();
               }
             });
         } 
+    });
+
+    $('#tutor-app-submit').click(function() {
+      if (!$('#tutor-app-school-email').val() || !$('#tutor-app-major').val() || $('.tutor-app-course-tag').length == 0
+        || !$('#tutor-app-experience').val() || $('#tutor-app-year').text().trim().length == 0) {
+          $('#tutor-app-alert').text('Please fill in all fields');
+          $('#tutor-app-alert').show();
+      } else {
+          var data_dict ={
+            'tutor-submit-app': true,
+            'school-email': $('#tutor-app-school-email').val(),
+            'major': $('#tutor-app-major').val(),
+            'experience': $('#tutor-app-experience').val(),
+            'year': $('#tutor-app-year').text().trim(),
+            'courses' : get_courses_from_tutor_app(),
+            'slc': $('#tutor-slc-check').prop('checked'),
+            'la': $('#tutor-la-check').prop('checked'),
+            'res': $('#tutor-res-check').prop('checked'),
+            'gsi': $('#tutor-gsi-check').prop('checked'),
+            'cal': $('#tutor-cal-check').prop('checked'),
+          }
+          $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/api/guru-app' ,
+            data: JSON.stringify(data_dict), 
+            dataType: "json",
+            success: function(result) {
+              window.location.replace('/')
+            }
+          });
+      }
+    });
+
+  function get_courses_from_tutor_app() {
+    arr_courses = [];
+    $('.tutor-app-course-tag').each(function() {
+      course_txt = $(this).children('span:first').text().toLowerCase();
+      arr_courses.push(course_txt)
+    });
+    return arr_courses
+  }
+
+    $('#tutor-app-add-course-btn').click(function() {
+    });
+
+    $('#tutor-app-dropdown li a').click(function() {
+      $('#tutor-app-year').text($(this).text());
+      $('#tutor-app-year').css('text-align','left');
     });
 
     $('#tutor-next-link').click(function(){
@@ -305,55 +420,65 @@ $(document).ready(function(){
               data: JSON.stringify(data_dict), 
               dataType: "json",
               success: function(result) {
-                if (result.dict['duplicate-phone']) {
-                  $('#alert-fields-student-signup').text('There is already an account with this phone number');  
-                  $('#alert-fields-student-signup').show();
+                if (result.dict['account-exists']) {
+                  $('#signup-modal').modal('hide');
+                  $('#login-modal').modal('show');
+                  $('#alert-fields-login').text($('#student-signup-email').val() + ' already has an account! Please Log In.')
+                  $('#alert-fields-login').show();
+                  return;
                 }
-                else {
-                  $('#tutor-signup').hide();
-                  $('#student-signup').hide();
-                  invert_olark();
-                  $('#tutor-signup-next').show('slide', {direction: 'right'}, 200);
-                }
+                $('#signup-modal').modal('hide');
+                $('#main').hide();
+                $('#tutor-application-form').show();
               }
             });
-        }  
+        }
     });
 
     $('#student-register-tutor-link').click(function() {
       $('#student-next-link').trigger('click');
     });
 
-    $('.student-register').click(function(){
-    if (!$('#student-signup-description').val() || !$('#student-signup-location').val() || 
-        $('td.time-slot.td-selected').length == 0 || !$('#student-signup-skill').val()) {
-          if ($('td.time-slot.td-selected').length == 0) {
-              $('#select-calendar-slot-alert').show();
-              $('#request-avail-ok').hide();
-              $('#request-avail-remove').show();
-            } else {
-              $('#select-calendar-slot-alert').hide();
-              $('#request-avail-ok').show();
-              $('#request-avail-remove').hide();
-          }
-          $('#alert-fields-student-signup1').show(); 
-      if (!$('#student-signup-description').val()) {
-        $('#student-signup-description').css({"border-color":"red"});
+    $('#request-form-submit').click(function(){
+    if (!$('#request-description').val() || !$('#request-location').val() || 
+        $('td.time-slot.td-selected').length == 0 || !$('#request-professor').val() || !$('#request-skill').val()) {
+          // if ($('td.time-slot.td-selected').length == 0) {
+          //     $('#select-calendar-slot-alert').show();
+          //     $('#request-avail-ok').hide();
+          //     $('#request-avail-remove').show();
+          //   } else {
+          //     $('#select-calendar-slot-alert').hide();
+          //     $('#request-avail-ok').show();
+          //     $('#request-avail-remove').hide();
+          // }
+          $('#alert-fields-request-form').show(); 
+      } else {
+      //If they have already signed up
+      if ($('#request-form-options').is(':visible')) {
+        submit_request_form_to_server();
+       } else {
+        request_form_complete = true;
+        $('#signup-modal').modal('show');
+        $('#alert-fields-student-signup-top').text('Please create an account before your request goes through!')
+        $('#alert-fields-student-signup-top').show();
+        $('#student-next-link').show();
+       }
       }
-      if (!$('#student-signup-skill').val()) {
-        $('#student-signup-skill').css({"border-color":"red"});
-      }
-    } else {
+    });
+
+    function submit_request_form_to_server() {
+      $('#alert-fields-request-form').hide(); 
       $('#student-register').click(false);
       var data = {
         'student-request': true,
-        'description': $('#student-signup-description').val(),
-        'skill': $('input[name="skill"]').val(),
-        'estimate': $('#time-estimate-slider').val(),
-        'hourly-price': $('#ideal-price-slider').val(),
-        'urgency': $('#urgency-flag').prop('checked'),
+        'description': $('#request-description').val(),
+        'skill': $('#request-skill').val(),
+        'estimate': $('#request-main-slider').slider('value'),
+        'hourly-price': $('#final-offering-price').text(),
+        'urgency': $('#request-urgency').prop('checked'),
+        'recurring': $('#request-recurring').prop('checked'),
         'calendar': get_calendar_selection(),
-        'location': $('#student-signup-location').val(),
+        'location': $('#request-location').val(),
         }
         $.ajax({
           type: "POST",
@@ -362,17 +487,10 @@ $(document).ready(function(){
           data: JSON.stringify(data),
           dataType: "json", 
           success: function(result) {
-            if (result.dict['no-active-tutors']) {
-              $('#already-have-active-request-alert').show();
-              $('#student-register').children().children('p:first').text("Go to my homepage")
-              $('#skip-this-step').hide();
-            } else {
               window.location.replace('/activity/');
-            }
           }
         });
-      }
-    });
+    }
 
     $('#add-skill-btn').click(function() {
       if ($('#add-skill-input-settings').val()) {
@@ -520,8 +638,8 @@ $(document).ready(function(){
     } else {
       //else get data and send to server
       var data = {
-        'email': $('input[name="login-email"]').val(),
-        'password': $('input[name="login-password"]').val()
+        'email': $('#login-email').val(),
+        'password': $('#login-password').val()
       }
       $.ajax({
         type: "POST",
@@ -535,7 +653,8 @@ $(document).ready(function(){
               window.location.replace('/');
             }
             if (result.json['fb-account']) {
-              alert('this happened');
+              $('#alert-fields-login-2').hide();
+              $('#alert-fields-login').show();
               $('#alert-fields-login').text('You have a Uguru.me FB account, please login with Facebook!')
             }
             if (result.json['admin']) {
@@ -544,7 +663,7 @@ $(document).ready(function(){
             if (result.json['success']) {
                 window.location.replace('/activity/');
             } else {
-                $('#alert-fields-login').show();     
+                $('#alert-fields-login').show();
                 $('#alert-fields-login-redirect').hide();
             }
         }
@@ -609,6 +728,15 @@ $(document).ready(function(){
 
     });
 
+    $('#home-course-submit').click(function() {
+      $('#main').hide();
+      $("#request-skill").val($('#course-input').val());
+      $('#request-form').show();
+      $('#request-form-options').hide();
+      $('#request-form-submit').children('span:first').removeClass('blue-btn-extra');
+      $('#request-form-submit').children('span:first').addClass('blue-btn-full');
+    });
+
     $('#student-signup-link').click(function() {
         $('#home').hide();
         $('body').css('background-color','white')
@@ -653,17 +781,43 @@ $(document).ready(function(){
       source: numbers.ttAdapter()
     });
 
-    $('#home-page-courses.typeahead').typeahead(null, {
+    $('#request-form .typeahead').typeahead(null, {
+      displayKey: 'name',
+      source: numbers.ttAdapter()
+    });
+
+    $('#course-input.typeahead').typeahead(null, {
       displayKey: 'name',
       source: numbers.ttAdapter()
     }).on('typeahead:selected', onTypeaheadSelected);
+
+    $('#courses-tutor-input.typeahead').typeahead(null, {
+      displayKey: 'name',
+      source: numbers.ttAdapter()
+    }).on('typeahead:selected', onTypeaheadSelectedTutorApp);
+
+    function onTypeaheadSelectedTutorApp(event, suggested, dataset_name) {
+      var course_name = $('#courses-tutor-input').val();
+      if (autocomplete_json.indexOf(course_name) == -1) {
+            alert('Please only add things from the available options.');
+            return;
+      } 
+
+      $('.courses-add-container').append("<span class='tutor-app-course-tag'><span>" + course_name + 
+          '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="remove-skill-tutor-app">x</a></span>' );
+      $('#courses-tutor-input').val('');
+
+      $('.tutor-app-course-tag .remove-skill-tutor-app').click(function() {
+        $(this).parent().remove();
+      });
+    };
 
     function onTypeaheadSelected(event, suggested, dataset_name) {
       $.ajax({
         type: "POST",
         contentType: 'application/json;charset=UTF-8',
         url: '/api/sample-tutors',
-        data: JSON.stringify({'course':$('#home-page-courses').val()}),
+        data: JSON.stringify({'course':$('#course-input').val()}),
         dataType: "json",        
         success: function(result) {
           var tutors = result.response['tutors']
@@ -694,6 +848,18 @@ $(document).ready(function(){
             dataType: "json"
       });  
     };
+
+    $('#become-guru-nav').click(function() {
+      $('#signup-modal').modal();
+      $('#tutor-next-link').show();
+      $('#student-next-link').hide();
+    });
+
+    $('#signup-nav').click(function() {
+      $('#signup-modal').modal();
+      $('#tutor-next-link').hide();
+      $('#student-next-link').show();
+    });
     
     $('#student-signup-name').blur(function(){
       if ($('#student-signup-name').val().split(" ").length > 1) {

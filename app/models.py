@@ -122,6 +122,8 @@ class User(Base):
         email = Column(String(64))
     else:
         email = Column(String(64), index = True, unique = True)
+
+    school_email = Column(String(64))
     password = Column(String(64))
     is_a_tutor = Column(Boolean, default = False)
     fb_account = Column(Boolean, default = False)
@@ -486,6 +488,8 @@ class Request(Base):
     connected_tutor_hourly = Column(Float)
     student_secret_code = Column(String)
     
+    professor = Column(String)
+    recurring = Column(Boolean, default=False)
     student_estimated_hour = Column(Integer)
     num_students = Column(Integer, default = 0)
     tutor_offer_hour = Column(Integer)

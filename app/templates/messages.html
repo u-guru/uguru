@@ -2,15 +2,6 @@
 
 {% block content %}
 <div id="message-list">
-	<div class="page-title">
-			  <div class="row" style="width:100%;text-align:center">
-			      <div class="col-xs-12 col-sm-12 col-md-12" style="text-align:center">
-			        <h4 style="color:white;width:100%;font-weight:500">
-			        	YOUR MESSAGES
-			        </h4>
-			    </div>
-			</div>
-	</div>
 	{% if not user.mailbox.conversations %}
 		<div style="text-align:center" class="row-fluid">
 			  	<div style="margin-top:10px"class="row">
@@ -63,40 +54,47 @@
 	<br>
 	<div style="text-align:center"class="container-fluid" id="message-main">
 		<div class="row">
-			<div id="message-feed"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+			<div id="message-feed"class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6">
 			{% for conversation in conversations|reverse %}
 			<a id="conversation-{{loop.index}}" href="javascript:void(0)">
-				<div class="notification message {% if conversation.messages|length == 0 or (not conversation.is_read and conversation.messages[-1].sender_id != user.id) %} grey-background {% endif %}" align:"center">
+				<div class="new-notification {% if conversation.messages|length == 0 or (not conversation.is_read and conversation.messages[-1].sender_id != user.id) %} unread {% endif %}">
+					<div class='notification-picture'>
 					{% if conversation.guru_id == user.id %}
 						{% if conversation.student.profile_url %}
-							<img src="{{conversation.student.profile_url}}" class="user-photo" style="float:left">
+							<img src="{{conversation.student.profile_url}}">
 						{% else %}
-							<img src="/static/img/default-photo.jpg" class="user-photo" style="float:left">
+							<img src="/static/img/default-photo.jpg">
 						{% endif %}
 					{% else %}
 						{% if conversation.guru.profile_url %}
-						<img src="{{conversation.guru.profile_url}}" class="user-photo" style="float:left">
+						<img src="{{conversation.guru.profile_url}}">
 						{% else %}
-						<img src="/static/img/default-photo.jpg" class="user-photo" style="float:left">
+						<img src="/static/img/default-photo.jpg">
 						{% endif %}
 					{% endif %}
-					<div style="float:left">
-						{% if conversation.guru_id == user.id %}
-							<h4><b>{{conversation.student.name.split()[0]}}</b></h4>
-							<h5>Student</h5>
-						{% else %}
-							<h4><b>{{conversation.guru.name.split()[0]}}</b></h4>
-							<h5>Tutor</h5>
-						{% endif %}
-						<div class="clear"></div>
-						{% if conversation.messages %}
-							<h6><i>{{conversation.messages[-1].contents[0:50]}}...</i></h6>
-						{% else %}
-							<h6>Click here to start the conversation</h6>
-						{% endif %}
 					</div>
-					<div style="float:right;margin-top:30px">
-						<span class="glyphicon glyphicon-chevron-right" style="color:#40bfec;float:right"></span>
+					<div class='notification-content reg-text normal-text'>
+						{% if conversation.guru_id == user.id %}
+							<h4 class='reg-text normal-text left margin-bottom-20'>
+								<b>{{conversation.student.name.split()[0]}}</b>
+							</h4>
+						{% else %}
+							<h4 class='reg-text normal-text left margin-bottom-20'>
+								<b>{{conversation.guru.name.split()[0]}}</b>
+							</h4>
+						{% endif %}
+						<div class='reg-text font-16 left {% if conversation.messages|length == 0 or (not conversation.is_read and conversation.messages[-1].sender_id != user.id) %} bold {% endif %}'>
+						{% if conversation.messages %}
+							{{conversation.messages[-1].contents[0:50]}}...
+						{% else %}
+							Click here to start the conversation
+						{% endif %}
+						{% if conversation.messages|length == 0 or (not conversation.is_read and conversation.messages[-1].sender_id != user.id) %} 
+							<div class='noti_bubble message'>
+								1
+							</div>
+						{% endif %}
+						</div>
 					</div>
 				</div>
 			</a>
@@ -108,24 +106,6 @@
 <div id="messages">
 	{% for conversation in conversations|reverse %}
 		<div id="conversation-detailed-{{loop.index}}" style="display:none; border:1px">
-			<div class="page-title">
-			  <div class="row" style="width:100%;text-align:center">
-			      <div class="col-xs-1 col-md-offset-1 col-md-1">
-			        <a class="message-back-link" style="text-decoration:none"> 
-			          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
-			        </a>
-			      </div>
-			      <div class="col-xs-11 col-md-8" style="text-align:center">
-			        <h4 style="color:white;width:100%;font-weight:500">
-			        	{% if conversation.guru_id == user.id %}
-				   		<h4 style="color:white;">{{conversation.student.name.split()[0]|upper}}</h4>
-				   		{% else %}
-				   		<h4 style="color:white;">{{conversation.guru.name.split()[0]|upper}}</h4>
-				   		{% endif %}
-			        </h4>
-			    </div>
-			  </div>
-			</div>
 			<br>
 		  	<div class="container-fluid">
 		  		{% if conversation.guru in transactions or conversation.student in transactions %}

@@ -21,11 +21,30 @@ h1, h3 {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+.left {
+  text-align:left;
+}
+
+.right {
+  text-align:right;
+}
+
 .blue-btn {
   padding:8px 20px;
   background-color:#27ACE3;
   color:white;
   border-color:#27ACE3;
+}
+
+.blue-btn-extra {
+  padding:8px 50px;
+}
+
+.blue-btn-full {
+  padding:8px auto;
+  width:100%;
+  display:block;
+  text-align:center;
 }
 
 .large-blue-btn {
@@ -43,12 +62,25 @@ h1, h3 {
   margin-right:5px;
 }
 
+.tutor-app-course-tag {
+  background-color:#5EBB47;
+  padding:5px 16px;
+  color:white;;
+  margin-right:5px; 
+  margin-bottom:10px;
+  display:inline-block;
+}
+
 .large-fb-blue-btn {
   padding:12px 30px;
   background-color:#3b5998;
   border-color:#3b5998;
   color:white;
   font-size:1.25em;
+}
+
+.ui-slider-handle.ui-state-default.ui-corner-all {
+  outline:none;
 }
 
 .text-banner {
@@ -61,6 +93,18 @@ h1, h3 {
   position:relative;
 }
 
+.become-guru-nav {
+  position:relative;
+}
+
+.navbar-app {
+  padding-left:60px;
+}
+
+#request-form {
+  display:none;
+}
+
 .footer {
   background-color:#27ACE3;
   font-size:16px;
@@ -71,11 +115,163 @@ h1, h3 {
   font-weight:100;
 }
 
+.noti_bubble {
+  position: absolute;
+  top: 45px;
+  right: 0px;
+  padding: 1px 8px 1px 8px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: 0.6em;
+  border-radius: 50px;
+  /*box-shadow: 2px 2px 2px gray;*/
+}
+
+.noti_bubble.message {
+  font-size:14px;
+  top:10px;
+  right:10px;
+}
+
+.bold {
+  font-weight:bold;
+}
+
+.login-input-container {
+  margin:10px 60px;
+  text-align:left;
+  font-weight:normal;
+}
+
+.login-input-container label {
+  font-weight:normal;
+  color: #484748;
+}
+
+.reg-text {
+  color:#484748 !important;
+}
+
+.login-input-container input {
+  border-color:grey;
+}
+
+input {
+  border:1px solid black;
+  border-radius:1px;
+}
+
+.new-notification {
+  margin-top:20px;
+  display:block;
+  height:80px;
+  position:relative;
+  border-bottom:1px solid #484748;
+}
+
+.notification-picture {
+  position:absolute;
+  left:10px;
+  top:10px;
+}
+
+.notification-content {
+  padding-left:80px;
+  padding-top:1px;
+  position:relative;
+}
+
+.notification-picture img {
+  height:60px;
+  width:60px;
+  border-radius:4px;
+}
+
+.new-notification.unread {
+  background-color:#BDE5F6;
+  box-shadow: 3px 3px 1px #888888;
+}
+
+#message-list {
+  padding:60px;
+}
+
+.navbar-default.navbar-main {
+  color:black!important;
+}
+
 /*Bootstrap Overrides*/
 .navbar-default {
   background-color:transparent;
   border-color:transparent;
   color:white !important;
+}
+
+.dropdown-menu {
+  width:100%;
+  color:#484747;
+}
+
+.dropdown-menu.settings-dropdown {
+  min-width:120px;
+}
+
+#settings-nav {
+  outline:none;
+}
+
+.settings-container {
+  padding:40px;
+  color:#484747;
+}
+
+.settings-container h1 {
+  text-align:center;
+}
+
+.dropdown-menu.settings-dropdown {
+  margin-top:2px !important;
+  border:2px solid #27ACE3;
+}
+
+.settings-dropdown li a:hover {
+  background-color:#27ACE3;
+  color:white;
+}
+
+.settings-dropdown li {
+  padding:0px!important;
+}
+
+.reset-password-btn {
+  position: absolute;
+  right: 0px;
+  top: 6px;
+}
+
+/*Placeholder align to right*/
+#tutor-app-school-email::-webkit-input-placeholder { 
+  text-align:right; 
+}
+
+#tutor-app-school-email:-moz-placeholder#tutor-app-school-email { 
+  text-align:right; 
+}
+
+.caret {
+  border-top:11px solid #484748;
+  border-right:11px solid transparent;
+  border-left:11px solid transparent;
+}
+.dropdown .btn.btn-default.dropdown-toggle {
+  width: 100%;
+  text-align: right;
+  border-color: #484748;
+  border-radius: 0px
+}
+.modal-content {
+  border:2px solid #27ACE3;
 }
 
 .navbar-default .container-fluid {
@@ -97,6 +293,237 @@ h1, h3 {
 
 .navbar-default .navbar-brand:hover {
   color:white;
+}
+
+.navbar-main {
+  border-bottom:2px solid #27ACE3;
+}
+
+.navbar-photo {
+  border-radius:8px;
+  height:50px;
+  margin-top:-10px;
+}
+
+.standard-input {
+  border:1px solid #484748;
+  border-radius:1px;
+}
+
+.standard-textarea {
+  border:1px solid #484748;
+  border-radius:1px; 
+}
+
+.extra-detail-container {
+  margin-top:100px;
+  padding-left:40px;
+  width:250px;
+}
+
+.request-textarea {
+  height:80px!important;
+}
+
+.guru-app-textarea {
+  height:120px!important;
+}
+
+.extra-detail-tutor-pic {
+  border-radius:4px;
+  margin-right:5px;
+  height:50px;
+  margin-bottom:5px;
+}
+
+.tutor-app-photo-container {
+  position:relative;
+}
+
+.tutor-app-photo-container img {
+  border-radius:8px;
+}
+
+.photo-upload-btn {
+  position:absolute;
+  left:90px;
+  top:43px;
+}
+
+#courses-tutor-input {
+  width:100%;
+  display:inline-block;
+}
+
+.guru-form-course-container .twitter-typeahead {
+  top:-14px;
+}
+
+.remove-skill-tutor-app {
+  color:white;
+  text-decoration:none;
+}
+
+.remove-skill-tutor-app:hover {
+  text-decoration:none;
+  color:white;
+}
+
+#add-course-btn-span {
+  position:absolute;
+  /*top:5px;*/
+  font-size:30px;
+}
+
+.guru-form-course-container {
+  position:relative;
+}
+
+textarea {
+  resize:none;
+}
+
+.navbar-right-main li {
+  padding:0px 10px;
+}
+
+.navbar-right-main .glyphicon {
+  font-size:20px;
+}
+
+.navbar-right {
+  position:relative;
+}
+
+.request-container, .guru-app-container {
+  padding:15px 15px 70px 15px;
+}
+
+#request-calendar-toggle:hover {
+  text-decoration:none;
+}
+
+#edit-price-container {
+  display:none;
+}
+
+.request-form-container, .guru-app-form-container {
+  padding:0px 25px;
+}
+
+.request-form-container label{
+  font-weight:normal;
+  margin-top:12px;
+  color:#484748;
+}
+
+#request-main-slider, #edit-price-slider {
+  margin-top:15px;
+  display:inline-block;
+  width:80%;
+}
+
+#request-main-slider-val, #edit-price-slider-val {
+  padding-left:15px;
+}
+
+.no-margin {
+  margin:0;
+}
+
+.blue-text {
+  color:#27ACE3;
+}
+
+.red-text {
+  color:red;
+}
+
+.normal-text {
+  font-weight:normal;
+}
+
+.calendar-img {
+  margin-bottom:7px;
+}
+.green-text {
+  color:#5EBB47
+}
+
+.margin-top-10 {
+  margin-top:10px;
+}
+
+.margin-top-15 {
+  margin-top:15px;
+}
+
+.margin-top-20 {
+  margin-top:20px;
+}
+
+.margin-top-30 {
+  margin-top:30px;
+}
+
+.margin-top-40 {
+  margin-top:40px;
+}
+
+.margin-bottom-15 {
+  margin-bottom:15px;
+}
+
+.margin-bottom-20 {
+  margin-bottom:20px;
+}
+
+.width-100 {
+  width:100%;
+}
+
+.font-30 {
+  font-size:30px !important;
+}
+
+.font-24 {
+  font-size:24px;
+}
+
+.font-18 {
+  font-size:18px;
+}
+
+.year-dropdown-select {
+  position:absolute;
+  left:12px;
+}
+
+#profile .dropdown-toggle {
+  position:relative;
+}
+
+#profile .dropdown-toggle:hover {
+  color:#484748;
+}
+
+.btn-default {
+  color:#484748;
+  text-align:left;
+}
+
+.inline {
+  display:inline-block;
+}
+
+#exp-date-month {
+  width:20%;
+}
+
+#exp-date-year {
+  margin-left:10px;
+  margin-right:35px;
+  width:30%%;
 }
 
 /*Home page css */
@@ -266,6 +693,11 @@ td.time-slot {
   font-size:40px;
 }
 
+.never-post {
+  color:grey;
+  margin:10px auto;
+}
+
 .grey-text {
   color:black;
 }
@@ -274,8 +706,17 @@ h1.extra-margin-bottom {
   margin-bottom:25px;
 }
 
+.login-btn-container {
+  text-align:center;
+  margin-top:35px;
+}
+
 h1.extra-extra-margin-top {
   margin-top:45px;
+}
+
+.or-text {
+  margin:35px auto;
 }
 
 .guarantee-text-container {
@@ -312,7 +753,8 @@ h1.extra-extra-margin-top {
 }
 
 #main-container input {
-  margin-top:25px;
+  margin-top:20px;
+  background-color:white !important;
   padding:5px 20px;
 }
 
@@ -348,6 +790,29 @@ h1.extra-extra-margin-top {
 .tutor-preview-content-description {
   margin-top:5px;
   font-size:12px;
+}
+
+#alert-fields-student-signup, #alert-fields-student-signup-top {
+  color:red;
+  text-align:center;
+  display:none;
+}
+
+#alert-fields-login, #alert-fields-login-2, #tutor-app-alert {
+  color:red;
+  text-align:center;
+  display:none;
+  padding:20px;
+  font-weight:bold;
+}
+
+
+#student-next-link:hover {
+  text-decoration: none;
+}
+
+#tutor-next-link:hover {
+  text-decoration: none;
 }
 
 .tutor-preview-next {
@@ -395,11 +860,70 @@ h1.extra-extra-margin-top {
   bottom:0px;
 }
 
-#home-course-submit {
+#home-course-submit-btn {
   margin-left:10px;
+  top:20px;
+  position:absolute;
 }
 
-/* XS devices (large desktops, 1200px and up) */
+.tt-dropdown-menu {
+  background-color: white;
+  /*margin-left:5%;*/
+  width:100%;
+  border:1px solid;
+  border-color: white;
+  color:rgb(0, 159, 225);
+}
+
+.tt-suggestion p {
+    text-align:left;
+    margin:0;
+    color:grey;
+    font-size:16px;
+    font-weight:100;
+    padding-left:20px;
+    padding-bottom:5px;
+}
+
+.no-padding {
+  padding:0px !important;
+}
+
+.tt-suggestion:focus p, .tt-suggestion:hover p{
+  background-color:rgb(0, 159, 225);
+  color:white !important; 
+}
+
+.tt-suggestion.tt-cursor {
+  background-color:rgb(0, 159, 225)!important;
+}
+
+.tt-suggestion.tt-cursor p {
+  color:white!important;  
+}
+
+.search-class-container {
+  position:relative;
+}
+
+.password-text-change-container {
+  position:relative;
+}
+
+.change-password-form label {
+  text-align:left !important;
+}
+
+.change-password-form .col-sm-10 {
+  padding-left:0px;
+  padding-right:30px;
+}
+
+.change-password-form {
+  margin-top:25px;
+}
+
+/* XS devices  */
 @media (max-width: 768px) { 
   #banner {
     height:100%;
@@ -415,9 +939,11 @@ h1.extra-extra-margin-top {
   }
   #course-input {
     width:250px;
-    color:grey;
+    color:#484748;
     font-family:"Roboto", sans-serif;
     font-weight:100;
+    font-size:16px;
+    border-color:white;
   }
   .navbar-default .container-fluid {
     padding:0px 0px;
@@ -531,6 +1057,12 @@ h1.extra-extra-margin-top {
     padding-left:5px;
     padding-right:5px;
   }
+  .navbar-collapse li {
+    border-bottom:1px solid white;
+  }
+  .request-form-extra-detail {
+    display:none;
+  }
 }
 
 
@@ -558,6 +1090,10 @@ h1.extra-extra-margin-top {
     padding:30px 10px; 
   }
 
+  #login-modal-container {
+    padding:40px;
+  }
+
   #testimonials .container {
     padding-right:0px;
     padding-left:0px;
@@ -575,10 +1111,26 @@ h1.extra-extra-margin-top {
   }
   #course-input {
     width:300px;
-    color:grey;
+    color:#484748;
     font-family:"Roboto", sans-serif;
     font-weight:100;
+    font-size:16px;
+    border-color:white;
+    /*margin-left:-80px;*/
   }
+  #home .twitter-typeahead {
+    margin-left:-80px;
+  }
+
+  #request-form .twitter-typeahead {
+    display:block !important;
+  }
+
+  .modal-dialog {
+    margin-top:100px;
+    width:500px;
+  }
+
 }
 
 /* Medium devices (desktops, 992px and up) */
@@ -606,3 +1158,4 @@ h1.extra-extra-margin-top {
     left:180px;
   }
 }
+

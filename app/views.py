@@ -45,16 +45,12 @@ def index():
         if request.args.get('email') == 'guru':
             session['guru-checked'] = True
         return redirect(url_for('index'))
-    if session.get('tutor-signup'):
-        tutor_signup_incomplete = True
-        return render_template('new_index.html', forms=[request_form],
-        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete)
     if session.get('user_id'):
         user = User.query.get(session.get('user_id'))
         if user.skills and len(user.notifications) < 2:
             return redirect(url_for('settings'))
         return redirect(url_for('activity'))
-    return render_template('index.html', forms=[request_form],
+    return render_template('new.html', forms=[request_form],
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral)
 
@@ -1234,9 +1230,10 @@ def reset_pw():
 @app.route('/api/<arg>', methods=('GET', 'POST'))
 def api(arg):
     return_json = {}
+    ajax_json = request.json
+    print ajax_json
     
     if arg == 'support':
-        ajax_json = request.json
 
         user_id = session.get('user_id')
         user = User.query.get(user_id)
@@ -1251,8 +1248,6 @@ def api(arg):
     if arg == 'sample-tutors':
         
         from app.static.data.variations import courses_dict
-
-        ajax_json = request.json
         
         course_str = ajax_json['course'].lower()
         skill_to_add_id = courses_dict[course_str]
@@ -1271,6 +1266,37 @@ def api(arg):
     
         return_json['enough-tutors'] = count > 5
         return_json['tutors'] = tutor_array
+
+    if arg =='guru-app':
+        user_id = session.get('user_id')
+        user = User.query.get(user_id)
+
+        user.school_email = ajax_json['school-email']
+        user.major = ajax_json['major']
+        user.qualifications = ajax_json['experience']
+        user.year = ajax_json['year']
+        user.slc_tutor = ajax_json['slc']
+        user.la_tutor = ajax_json['la']
+        user.res_tutor = ajax_json['res']
+        user.ta_tutor = ajax_json['gsi']
+        user.previous_tutor = ajax_json['cal']
+
+        courses = ajax_json['courses']
+
+        from app.static.data.variations import courses_dict
+
+        for course_txt in courses:
+            skill_to_add_id = courses_dict[course_txt]
+            skill = Skill.query.get(skill_to_add_id)
+            db_session.add(skill)
+            user.skills.append(skill)
+        
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
 
     return jsonify(response=return_json)
 
@@ -1354,16 +1380,22 @@ def success():
 
         if ajax_json.get('student-signup'):
             try: 
+                u = User.query.filter_by(email=ajax_json['email']).first()
+                
+                #Check if account already exists
+                if u and not u.fb_account:
+                        return jsonify(dict={'account-exists':True});
+
                 if 'fb-signup' in ajax_json:
-                    u = User.query.filter_by(email=ajax_json['email']).first()
                     #They have a facebook account and they want to login
                     if u and u.fb_account:
                         user_id = u.id
                         authenticate(user_id)
-                        return jsonify(dict={'duplicate-account': True});
+                        return jsonify(dict={'fb-account-exists': True});
                     password = ''
                 else:
                     password = md5(ajax_json['password']).hexdigest()
+
 
                 if 'tutor-signup' in ajax_json: session['tutor-signup'] = True
 
@@ -1610,7 +1642,6 @@ def logout():
         session.pop('signup-start')
     if session.get('admin'):
         return redirect(url_for('admin'))
-    flash('You have been logged out', 'info')
     return redirect(url_for("index"))
 
 @app.route('/logout-admin/')

@@ -31,6 +31,28 @@ function statusChangeCallback(response) {
     });
   }
 
+  function fb_login(){
+    FB.login(function(response) {
+
+        if (response.authResponse) {
+            console.log('Welcome!  Fetching your information.... ');
+            //console.log(response); // dump complete info
+            access_token = response.authResponse.accessToken; //get access token
+            user_id = response.authResponse.userID; //get FB UID
+            console.log(access_token)
+            console.log(user_id)
+            createFBAccount();
+
+        } else {
+            //user hit cancel button
+            console.log('User cancelled login or did not fully authorize.');
+
+        }
+    }, {
+        scope: 'publish_stream,email'
+    });
+}
+
   window.fbAsyncInit = function() {
   FB.init({
     appId      : '1416375518604557',
@@ -100,17 +122,22 @@ function statusChangeCallback(response) {
         data: JSON.stringify(data_dict), 
         dataType: "json",
         success: function(result) {
-            if (result.dict['tutor-signup']) {
-              $('#tutor-signup').hide();
-              $('#student-signup').hide();
-              invert_olark();
-              $('#tutor-signup-next').show('slide', {direction: 'right'}, 200);
+            if (result.dict['fb-account-exists']) {
+              window.location.replace('/');
+            }
+
+            if (request_form_complete) {
+                submit_request_form_to_server();
+            }
+            else if (result.dict['tutor-signup']) {
+              $('#signup-modal').modal('hide');
+              $('#main').hide();
+              $('#tutor-application-form').show();
             }
             else {
-              $('#student-signup').hide();
-              $('#student-signup-skill').val($('#home-page-courses').val());
-              $('#student-signup-skill').css({"border-color":"#69bf69"});
-              $('#student-request').show();
+              $('#signup-modal').modal('hide');
+              $('#main').hide();
+              $('#request-form').show();
             }
           }
       });

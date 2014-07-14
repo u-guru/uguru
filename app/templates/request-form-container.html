@@ -1,0 +1,111 @@
+<div class='request-container container-fluid'>
+    <div class='row'>
+        <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4'>
+            <h1 class='reg-text center bold extra-margin-bottom'>
+                Let's Ace This!
+            </h1>
+            <div class='request-form-container'>
+                <div id='alert-fields-request-form' class='red-text center normal-text' style='display:none'>
+                    Please fill in all fields.
+                </div>
+                <label for='request-class'>Class</label>
+                <input name='skill' id='request-skill' type='text' placeholder='CS10'class='form-control standard-input typeahead'>
+                
+                <label style='display:block' for='request-class'>Professor (optional) </label>
+                <input type='text' id='request-professor'class='form-control standard-input'>
+                
+                <label for='request-class'>What Do You Need Help In? Be Specific </label>
+                <textarea id='request-description' class='form-control standard-textarea request-textarea'> </textarea>
+
+                <label for='request-slider'> How Long Would This Session Take? </label>
+                <div class='row no-margin'>
+                    <div id='request-main-slider'> </div>
+                    <span class='green-text bold'id='request-main-slider-val'>2 hrs</span>
+                </div>
+
+                <label style='display:block' for='request-class'>Location </label>
+                <input type='text' id='request-location'class='form-control standard-input'>
+                
+                <label for='request-slider'> Your Availability </label>
+                <div style='margin-top:10px' class='row-fluid'>
+                    <a id='request-calendar-toggle' href='javascript:void(0);'>
+                        <img src='/static/img/calendar.svg' height='20px' class='calendar-img'>
+                        <span class='blue-text normal-text'>
+                            &nbsp;&nbsp;<u>Mark Available Time Slots </u>
+                        </span>
+                    </a>
+                </div>
+                <div class='row-fluid margin-top-10' >
+                    <input type='checkbox' id='request-urgency' class='uguru-checkbox'></input>
+                    <span class='reg-text'>
+                        I Need Help ASAP!
+                    </span>
+                </div>
+                <div class='row-fluid margin-top-10 margin-bottom-15'>
+                    <input type='checkbox' id='request-recurring'class='uguru-checkbox'></input>
+                    <span class='reg-text'>
+                        I Will Potentially Meet With The Same Guru Again
+                    </span>
+                </div>
+                <label> Offering Price </label>
+                <div style='margin-top:5px;' class='row-fluid'>
+                    <span id='suggested-or-your-text' class='reg-text'> Suggested: </span>
+                    <span class='blue-text normal-text'> $<span id='final-offering-price'>15</span>/hr </span>
+                    &nbsp;&nbsp;
+                    <a id='edit-price-toggle' href='javascript:void(0);'>
+                        <span id='request-form-edit-price' class='blue-text glyphicon glyphicon-pencil'>
+                        </span>
+                        <span id='request-form-remove-price' class='blue-text glyphicon glyphicon-remove' style='display:none'>
+                        </span>
+                    </a>
+                    <div id='edit-price-container' class='row no-margin'>
+                        <div id='edit-price-slider'> </div>
+                        <span class='green-text bold'id='edit-price-slider-val'>$15/hr</span>
+                    </div>
+                </div>
+                <div class='row-fluid margin-top-40'>
+                    <a id='request-form-submit' href='javascript:void(0);'>
+                        <span class='blue-btn blue-btn-extra'>
+                            Ace It Now!
+                        </span>
+                    </a>
+                    <div id='request-form-options'>
+                        <span class='reg-text'>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Or 
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                        <span class='blue-text normal-text'>
+                            <u> Skip This Step </u>
+                        </span>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class='request-form-extra-detail col-sm-3 col-md-4'>
+            <div class='extra-detail-container'>
+                <div class='extra-detail-tutor-info'>
+                    <span id='extra-detail-tutor-num' class='green-text normal-text'>32</span> 
+                        Gurus for
+                    </span>
+                    <span id='extra-detail-course-name' class='green-text normal-text'>CS10
+                    </span>
+                </div>
+                <div class='extra-detail-tutor-pics margin-top-10'>
+                    <img src='/static/img/lee.png' class='extra-detail-tutor-pic'>
+                    <img src='/static/img/lee.png' class='extra-detail-tutor-pic'>
+                    <img src='/static/img/lee.png' class='extra-detail-tutor-pic'>
+                    <img src='/static/img/lee.png' class='extra-detail-tutor-pic'>
+                    <img src='/static/img/lee.png' class='extra-detail-tutor-pic'>
+                    <img src='/static/img/lee.png' class='extra-detail-tutor-pic'>
+                    <img src='/static/img/lee.png' class='extra-detail-tutor-pic'>
+                    <img src='/static/img/lee.png' class='extra-detail-tutor-pic'>
+                    <img src='/static/img/lee.png' class='extra-detail-tutor-pic'>
+                </div>
+                And more...
+                <div class='extra-detail-form reg-text'>
+                    We will pin these tutors with your request, and let you know when they get back to you.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

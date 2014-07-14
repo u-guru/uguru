@@ -13,10 +13,6 @@ var update_feed = function() {
     }
   }
 
-
-
-
-
 $(document).ready(function() {
     update_feed();
 
@@ -38,6 +34,28 @@ $(document).ready(function() {
     $('#logout-btn').click(function() {
       window.location.replace('/logout/');
     });
+
+    $('#account-profile-link').click(function() {
+      hide_all_settings();
+      $('#profile').show();
+    });
+
+    $('#account-settings-link').click(function() {
+      hide_all_settings();
+      $('#settings').show();
+    });
+
+    $('#account-billing-link').click(function() {
+      hide_all_settings();
+      $('#billing').show();
+    });
+
+    function hide_all_settings() {
+      $('#settings').hide();
+      $('#profile').hide();
+      $('#billing').hide();
+      $('#support').hide();
+    };
 
       $('#example-skills').on('click', 'a.example-skill-link', function(e) {
         var tag_arr = ['previous', 'slc','hkn', 'res', 'ta', 'la'];

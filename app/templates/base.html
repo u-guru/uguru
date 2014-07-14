@@ -7,8 +7,8 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>uGuru.me</title>
-        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:100,300, 400,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300, 100' rel='stylesheet' type='text/css'>
         <link href="/static/css/bootswatch.min.css" rel="stylesheet">
         <link href="/static/css/style.css" rel="stylesheet">
         <link href="/static/fonts/grand_hotel.css" rel="stylesheet">
@@ -40,7 +40,7 @@
     </head>
 
     <body>
-      <nav class="navbar" margin-right:25px;>
+      <!-- <nav class="navbar" margin-right:25px;>
         <div class="container-fluid">
           <div class="navbar-header">
               <a href="{% if session.get('admin') %} /logout/ {% else %}../../{%endif%}" class="navbar-brand" style="font-family: 'grand hotel', cursive; margin-left:5px; font-size: 50px">uguru.me</a>
@@ -75,7 +75,65 @@
           </div>
           {% endif %}
         </div>
-      </nav>
+      </nav> -->
+
+      <nav class="navbar navbar-default navbar-main" role="navigation">
+          <div class="container-fluid">
+            <!-- Logo and toggle get grouped for better mobile display -->
+            <div class="navbar-header navbar-app">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="{% if session.get('admin') %} /logout/ {% else %}../../{%endif%}">
+                <!-- <img src='/static/img/guru-new.svg' height='60px'> -->
+                <span class='logo-text blue-text'> &nbsp;uguru.me </span>
+              </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li>
+                  <a class='reg-text' href="#">@ UC Berkeley</a></li>
+                </li>
+              </ul>
+              {% if user %}
+              <ul class="nav navbar-nav navbar-right navbar-right-main">
+                <li><a id='become-guru-nav' href="/activity/">
+                        <span class='glyphicon glyphicon-globe blue-text font-30' ></span>
+                        {% if user.feed_notif and user.feed_notif > 0%}
+                        <div id="feed-notif"class="noti_bubble">{{user.feed_notif}}</div>
+                        {% endif %}
+                    </a>
+                </li>
+                <li><a id='become-guru-nav' href="/messages/">
+                        <span class='glyphicon glyphicon-envelope blue-text font-30'></span>
+                        {% if user.msg_notif and user.msg_notif > 0%}
+                        <div id="msg-notif"class="noti_bubble">{{user.msg_notif}}</div>
+                        {% endif %}
+                    </a>
+                </li>
+                <li>
+                  <a id='settings-nav' href="#" data-toggle ='dropdown' >
+                        <img src='/static/img/default-photo.jpg' class='navbar-photo'>
+                  </a>
+                  <ul class="dropdown-menu settings-dropdown center" role="menu" aria-labelledby="dropdownMenu1">
+                      <li role="presentation"><a role="menuitem" tabindex="-1" id='account-settings-link' href="javascript:void(0)">Settings</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" id='account-profile-link' href="javascript:void(0)">Profile</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" id='account-billing-link' href="#">Billing</a></li>
+                      <li role="presentation" class="divider"></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Support</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/logout/">Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+              {% endif %}
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
 
         {% block content %}
         {% endblock %}

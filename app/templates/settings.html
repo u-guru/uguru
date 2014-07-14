@@ -9,10 +9,255 @@
 {% endblock %}
 
 {% block content %}
-      <div class="page-title">
-        <h4 style="color:white;">YOUR ACCOUNT {%if not user.skills %} SETTINGS {% endif %}</h4>
+  <div id='settings'>
+    <div class='settings-container'>
+        <div class='row'>
+            <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4'>
+                <h1 class='reg-text center bold extra-margin-bottom'>
+                    Settings 
+                </h1>
+                <div class='request-form-container'>
+                  <label> Use This Email For My Notifications</label>
+                  <div class='row-fluid' >
+                      <input type='checkbox' class='uguru-checkbox'></input>
+                      <span class='reg-text'>
+                          makhani@berkeley.edu
+                      </span>
+                  </div>
+                  <div class='row-fluid margin-top-10 margin-bottom-20'>
+                      <input type='checkbox' class='uguru-checkbox'></input>
+                      <span class='reg-text'>
+                          makhani.samir@gmail.com
+                      </span>
+                  </div>
+                  <label> Email Me When </label>
+                  <div class='row-fluid'>
+                      <input type='checkbox' class='uguru-checkbox'></input>
+                      <span class='reg-text'>
+                          I received a tutoring request
+                      </span>
+                  </div>
+                  <div class='row-fluid margin-top-10' >
+                      <input type='checkbox' class='uguru-checkbox'></input>
+                      <span class='reg-text'>
+                          My tutoring offer is accepted by the student
+                      </span>
+                  </div>
+                  <div class='row-fluid margin-top-10' >
+                      <input type='checkbox' class='uguru-checkbox'></input>
+                      <span class='reg-text'>
+                          I received a mesage
+                      </span>
+                  </div>
+                  <div class='row-fluid margin-top-10' >
+                      <input type='checkbox' class='uguru-checkbox'></input>
+                      <span class='reg-text'>
+                          A tutoring request I received is canceled/taken
+                      </span>
+                  </div>
+                  <div class='password-container margin-top-20'>
+                    <div class='password-text-change-container row width-100 margin-bottom-15'>
+                      <label style='padding-left:14px'> Password </label>
+                      <span class='blue-btn reset-password-btn'>
+                        Reset
+                      </span>
+                    </div>
+                    <form class="form-horizontal change-password-form" role="form">
+                      <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Old</label>
+                        <div class="col-sm-10">
+                          <input type="email" class="form-control standard-input" id="inputEmail3" >
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">New</label>
+                        <div class="col-sm-10">
+                          <input type="email" class="form-control standard-input" id="inputEmail3" >
+                        </div>
+                      </div>
+                    </form>
+                    <span class='blue-btn blue-btn-full'> Save </span>
+                  </div>
+                </div>
+            </div>
+            <div class='col-sm-3 col-md-4'>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div id='billing' style='display:none'>
+    <div class='guru-app-container container-fluid reg-text'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4'>
+          <h1 class='reg-text center bold extra-margin-bottom'>
+                Billing Info
+          </h1>
+          <div class='request-form-container margin-top-20'>
+                <div class='credit-card-payment-container row-fluid'>
+                  <div class='payment-text normal-text'>
+                    My Credit/Debit Card For Payments
+                  </div>
+                  <div class='payment-information margin-top-10'>
+                    <img src='/static/img/visa.png' height='15'>&nbsp;&nbsp;
+                    <span id='payment-card-type'>Visa </span> ending in <span id='payment-card-last4'> 2432 </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class='blue-text normal-text '><u> Change </u></span>
+                  </div>
+                </div>
+                <div class='change-payment-information margin-top-20 margin-bottom-20'>
+                  <label> Card Number </label>
+                  <input type='text' class='form-control standard-input'> </input>
+                  <label> Expiration Date </label>
+                  <div class = 'row-fluid'>
+                    <input type='text' id='exp-date-month'class='form-control standard-input inline'> </input>
+                    <input type='text' id='exp-date-year' class='form-control standard-input inline'> </input>
+                    <img src='/static/img/powered-stripe.png'> </img>
+                  </div>
+                  <span class='blue-btn blue-btn-full margin-top-15'> Save </span>
+                </div>
+                <div class='credit-card-payment-container row-fluid'>
+                  <div class='payment-text normal-text'>
+                    My Debit Card For Receiving Funds
+                  </div>
+                  <div class='payment-information margin-top-10'>
+                    <img src='/static/img/visa.png' height='15'>&nbsp;&nbsp;
+                    <span id='payment-card-type'>Visa </span> ending in <span id='payment-card-last4'> 2432 </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class='blue-text normal-text '><u> Change <u></span>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="container-fluid">
+    </div>
+
+  <div id='profile' style='display:none'>
+    <div class='guru-app-container container-fluid'>
+            <div class='row'>
+                <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4'>
+                    <h1 class='reg-text center bold extra-margin-bottom'>
+                        My Profile
+                    </h1>
+                    <div class='request-form-container'>
+                        
+                        <div class='tutor-app-photo-container margin-top-30 margin-bottom-15'>
+                            <img src='/static/img/lee.png' height='80px'> 
+                            <span class='photo-upload-btn blue-btn'> Upload </span>
+                        </div>
+
+                        <label for='request-class'>School Email</label>
+                        <input type='text' id='tutor-app-school-email' style='display:none' placeholder='@berkeley.edu'class='form-control standard-input'>
+                        
+                        <label for='request-class'>School Year</label>
+                        <!-- <input type='text' placeholder='CS10'class='form-control standard-input'> -->
+                        <div class='reg-text row-fluid margin-bottom-20'>
+                          <span id='settings-email'>Leelazar2016@berkeley.edu</span> &nbsp;&nbsp;
+                          <span class='glyphicon glyphicon-ok green-text font-18'></span>
+                          <span class='green-text font-18'> Verified </span>
+                        </div>
+                        <div class="dropdown">
+                          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                            <span class='year-dropdown-select'>Sophomore</span>
+                            <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Freshman</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sophomore</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Junior</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Senior</a></li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Grad Student</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ph.D Student</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Alumni</a></li>
+                          </ul>
+                        </div>
+
+                        <label for='request-class'>Your Major(s) </label>
+                        <input type='text' class='form-control standard-input'>
+
+                        <label for='request-class'>Courses You Want To Tutor </label>
+                        <div class='guru-form-course-container row-fluid'>
+                            <input type='text' placeholder='Bio 1A' id='courses-tutor-input' class='form-control standard-input'>
+                            &nbsp;&nbsp;
+                            <span class='glyphicon glyphicon-plus green-text' id='add-course-btn-span'></span>
+                        </div>
+                        <div class='courses-add-container row-fluid margin-top-15'>
+                            <span class='tutor-app-course-tag'>
+                                CS10
+                            </span>
+                            <span class='tutor-app-course-tag'>
+                                CS61A
+                            </span>
+                            <span class='tutor-app-course-tag'>
+                                CS61B
+                            </span>
+                            <span class='tutor-app-course-tag'>
+                                CS61C
+                            </span>
+                            <span class='tutor-app-course-tag'>
+                                Chem 3A
+                            </span>
+                            <span class='tutor-app-course-tag'>
+                                Chem 3B
+                            </span>
+                            <span class='tutor-app-course-tag'>
+                                MCB 102
+                            </span>
+                        </div>
+
+
+                        <label> Select Relevant Experience </label>
+                        <div class='row-fluid margin-top-10' >
+                            <input type='checkbox' class='uguru-checkbox'></input>
+                            <span class='reg-text'>
+                                SLC Tutor
+                            </span>
+                        </div>
+                        <div class='row-fluid margin-top-10' >
+                            <input type='checkbox' class='uguru-checkbox'></input>
+                            <span class='reg-text'>
+                                Residential Hall Tutor
+                            </span>
+                        </div>
+                        <div class='row-fluid margin-top-10'>
+                            <input type='checkbox' class='uguru-checkbox'></input>
+                            <span class='reg-text'>
+                                GSI
+                            </span>
+                        </div>
+                        <div class='row-fluid margin-top-10'>
+                            <input type='checkbox' class='uguru-checkbox'></input>
+                            <span class='reg-text'>
+                                Lab Assistant
+                            </span>
+                        </div>
+                        <label for='request-class'>Your Bio / Relevant Experience </label>
+                        <textarea class='form-control standard-textarea guru-app-textarea'> </textarea>
+                        <div class='row-fluid margin-top-20'>
+                            <span class='blue-btn blue-btn-full' style='width:100%'>
+                                Submit
+                            </span>
+                        </div> 
+                    </div>
+                </div>
+                <div class='request-form-extra-detail col-sm-3 col-md-4'>
+                    <div class='extra-detail-container' style='margin-top:220px'>
+                        <div class='extra-detail-form reg-text'>
+                            We will pin these tutors with your request, and let you know when they get back to you.
+                        </div>
+                        <div class='extra-detail-form reg-text margin-top-40'>
+                            We will pin these tutors with your request, and let you know when they get back to you.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+      <!-- <div class="page-title">
+        <h4 style="color:white;">YOUR ACCOUNT {%if not user.skills %} SETTINGS {% endif %}</h4>
+      </div> -->
+      <!-- <div class="container-fluid">
         <div class="row" align="center">
           {% if user.skills and user.verified_tutor %}
           <div class="col-xs-3 col-md-offset-4 col-md-1">
@@ -47,7 +292,7 @@
           {% endif %}
         </div>
       </div>
-      <hr>
+      <hr> -->
 
 
 <!-- Support -->
@@ -92,7 +337,7 @@
         {% if user.skills and user.verified_tutor %}
         <div id="settings" style="display:none;">
         {% else %}
-        <div id="settings" style="display:block;">
+        <div id="settings" style="display:none;">
         {% endif %}
         <div class="row-fluid">
           <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
@@ -380,7 +625,7 @@
     </div>
 
 <!-- Profile -->
-      {% if user.skills and user.verified_tutor %}
+     <!--  {% if user.skills and user.verified_tutor %}
       <div id="profile" style="display:block" align="center">
       {% else %}
       <div id="profile" style="display:none" align="center">
@@ -557,7 +802,7 @@
           </a>
         </div>
         {% endif %}
-      </div>
+      </div> -->
 
 {% endblock %}
 
@@ -571,22 +816,22 @@
   <script>
   // $(document).ready(function() {    
     // $("#settings-button").addClass('btn-options selected');
-    $("#settings-button").click(function() {
-      $("#skills").hide();
-      $("#profile").hide();
-      $("#settings").show();
+    // $("#settings-button").click(function() {
+    //   $("#skills").hide();
+    //   $("#profile").hide();
+    //   $("#settings").show();
       
-    });
-    $("#skills-button").click(function() {
-      $("#settings").hide();
-      $("#profile").hide();
-      $("#skills").show();      
-    });
-    $("#profile-button").click(function() {
-      $("#settings").hide();
-      $("#skills").hide();
-      $("#profile").show();
-    });
+    // });
+    // $("#skills-button").click(function() {
+    //   $("#settings").hide();
+    //   $("#profile").hide();
+    //   $("#skills").show();      
+    // });
+    // $("#profile-button").click(function() {
+    //   $("#settings").hide();
+    //   $("#skills").hide();
+    //   $("#profile").show();
+    // });
   // });
   </script>
 
