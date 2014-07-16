@@ -791,11 +791,11 @@
 							  </div>
 							  <div class="row-fluid">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Group Size</b></div>
+							  			<div class="h4 request-info-row"><b>Professor</b></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4 request-info-row">
-							  				(about 8/hr per person)
+							  				Hilfinger
 							  			</div>
 							  		</div>
 							  </div>
@@ -1089,15 +1089,17 @@
 								  			</div>
 								  		</div>
 								  	</div>
+								  	{% if request_dict[n.request_id]['request'].professor %}
 								  	<div class="row-fluid">
 								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4 request-info-row"><b>Group Size</b></div>
+								  			<div class="h4 request-info-row"><b>Professor</b></div>
 								  		</div>
 								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].num_students}}
+								  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].professor}}
 								  			</div>
 								  		</div>
 								  	</div>
+								  	{% endif %}
 								  	<div class="row-fluid">
 								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
 								  			<div class="h4 request-info-row"><b>Requested Hourly Price</b></div>
@@ -1137,9 +1139,9 @@
 						 	</div>
 						 	{% endif %}
 						 	{% if not request_dict[n.request_id]['request'].connected_tutor_id %}
-						 	<div style="text-align:center; float:center; margin-top:20px; font-size:14px; color:grey;" class="row">
+						 	<!-- <div style="text-align:center; float:center; margin-top:20px; font-size:14px; color:grey;" class="row">
 						 		<a class="edit-request" style="color:grey" href="javascript:void(0)"> (Click here to edit this request) </a>
-						 	</div>
+						 	</div> -->
 						 	{% endif %}
 						 </div>
 					</div>
@@ -1396,20 +1398,17 @@
 							  			</div>
 							  		</div>
 							  	</div>
+							  	{% if request_dict[n.request_id]['request'].professor %}
 							  	<div class="row-fluid">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Group Size</b></div>
+							  			<div class="h4 request-info-row"><b>Professor</b></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].num_students}}
-							  				{% if request_dict[n.request_id]['request'].num_students > 1 %}
-							  				{% if n.request_tutor_amount_hourly %}
-							  				(about ${{((n.request_tutor_amount_hourly)/request_dict[n.request_id]['request'].num_students)|float|int}}-{{((n.request_tutor_amount_hourly)/request_dict[n.request_id]['request'].num_students)|float|int + 1}}/hr per person)
-							  				{% endif %}
-							  				{%endif%}
+							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].professor}}
 							  			</div>
 							  		</div>
 							  	</div>
+							  	{% endif %}
 							  	<div class="row-fluid">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
 							  			<div class="h4 request-info-row"><b>Hourly Price</b></div>
@@ -1719,15 +1718,17 @@
 							  			</div>
 							  		</div>
 							  	</div>
+							  	{% if request_dict[n.request_id]['request'].professor %}
 							  	<div class="row">
 							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4"><b>Group Size</b></div>
+							  			<div class="h4"><b>Professor</b></div>
 							  		</div>
 							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4">{{request_dict[n.request_id]['request'].num_students}}</span> 
+							  			<div class="h4">{{request_dict[n.request_id]['request'].professor}}</span> 
 							  			</div>
 							  		</div>
 							  	</div>
+							  	{% endif %}
 							  	{% if request_dict[n.request_id]['request'].last_updated %}
 							  	<div style="text-align:center;color:red" class="row">
 							  		<i>The student has recently updated this request.</i>

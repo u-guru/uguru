@@ -586,6 +586,7 @@ $(document).ready(function(){
         'student-request': true,
         'description': $('#request-description').val(),
         'skill': $('#request-skill').val(),
+        'professor': $('#request-professor').val(),
         'estimate': $('#request-main-slider').slider('value'),
         'hourly-price': $('#final-offering-price').text(),
         'urgency': $('#request-urgency').prop('checked'),

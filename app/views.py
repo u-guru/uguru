@@ -1491,6 +1491,7 @@ def success():
                 time_estimate = float(ajax_json['estimate'])
             )
 
+            r.professor = ajax_json['professor']
 
             #Process calendar information
             weekly_availability = ajax_json['calendar']
