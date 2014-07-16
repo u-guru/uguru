@@ -489,7 +489,6 @@ class Request(Base):
     student_secret_code = Column(String)
     
     professor = Column(String)
-    recurring = Column(Boolean, default=False)
     student_estimated_hour = Column(Integer)
     num_students = Column(Integer, default = 0)
     tutor_offer_hour = Column(Integer)
