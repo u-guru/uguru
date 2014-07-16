@@ -32,7 +32,7 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                       <ul class="nav navbar-nav">
-                        <li><a href="#">@ UC Berkeley</a></li>
+                        <li><a href="#">Made With <span class='glyphicon glyphicon-heart'></span> at Cal</a></li>
                       </ul>
                       <ul class="nav navbar-nav navbar-right">
                         <li><a id='how-it-works-nav'href="#how-it-works">How it works</a></li>
@@ -133,35 +133,29 @@
                     <div class='row-fluid'>
                         <div id='testimonial-1' class='col-xs-12 col-sm-4 col-md-4'>
                             <div class='testimonial-section'>
-                                <i>
                                     <p>
-                                        CS10 was a nightmare, and thanks to Uguru, I was able to connect with a tutor and meet up with her in <b> just an hour</b>
+                                        "I decided to get help for Math 54 after being stuck by myself for hours. <b> My Guru met me at Moffit in 20 mins, and clarified everything </b>. I should've done that earlier!""
                                     </p>
                                     <img src='/static/img/jenny.jpg' height='40px'> 
                                     <span class='dark-grey-text' style='font-size:14px;'> - Jenny L. EECS Class of 2014 </span>
-                                </i>
                             </div>
                         </div>
                         <div id='testimonial-2' class='col-xs-12 col-sm-4 col-md-4'>
                             <div class='testimonial-section'>
-                                <i>
                                     <p>
-                                        CS10 was a nightmare, and thanks to Uguru, I was able to connect with a tutor and meet up with her in <b> just an hour</b>
+                                        "Finding a <b>Guru who has taken the exact same class by the same professors </b> was very helpful for classes like Hilfinger's CS61A. I almost gave up, but ended up pulling an A-."
                                     </p>
                                     <img src='/static/img/jenny.jpg' height='40px'> 
                                     <span class='dark-grey-text' style='font-size:14px;'> - Jenny L. EECS Class of 2014 </span>
-                                </i>
                             </div>
                         </div>
                         <div id='testimonial-3' class='col-xs-12 col-sm-4 col-md-4'>
                             <div class='testimonial-section'>
-                                <i>
                                     <p>
-                                        CS10 was a nightmare, and thanks to Uguru, I was able to connect with a tutor and meet up with her in <b> just an hour</b>
+                                        "I never considered getting a tutor because they usually cost about $40/hr. But <b> for $15/hr, it was totally worth it to get help</b> for my Chem 3A exams from other Cal students"
                                     </p>
                                     <img src='/static/img/jenny.jpg' height='40px'> 
                                     <span class='dark-grey-text' style='font-size:14px;'> - Jenny L. EECS Class of 2014 </span>
-                                </i>
                             </div>
                         </div>
                     </div>
@@ -180,7 +174,7 @@
                         <div class='hiw-section'>
                             <h1 class='extra-margin-bottom dark-grey-text'><b>Match Up</b></h1>
                             <p>
-                                CS10 was a nightmare, and thanks to Uguru, I was able to connect with a tutor and meet up with her in <b> just an hour</b>
+                                Fill out a request form, and all available Gurus will get back to you within minutes. Pick one you like based on their profiles and reviews.
                             </p>
                         </div>
                     </div>
@@ -188,15 +182,15 @@
                         <div class='hiw-section'>
                             <h1 class='extra-margin-bottom dark-grey-text'><b>Meet Up</b></h1>
                             <p>
-                                CS10 was a nightmare, and thanks to Uguru, I was able to connect with a tutor and meet up with her in <b> just an hour</b>
+                                We built tools to help you easily schedule meeting time and location. Meet your tutor within minutes at a local cafe.
                             </p>
                         </div>
                     </div>
                     <div class='col-xs-12 col-sm-4 col-md-4'>
                         <div class='hiw-section'>
-                            <h1 class='extra-margin-bottom dark-grey-text'><b>Pay Up</b></h1>
+                            <h1 class='extra-margin-bottom dark-grey-text'><b>Easy Pay</b></h1>
                             <p>
-                                CS10 was a nightmare, and thanks to Uguru, I was able to connect with a tutor and meet up with her in <b> just an hour</b>
+                                It's not only affordable, but also super easy! Forget about bringing cash. Your Guru will bill you after the session through our platform.
                             </p>
                         </div>
                     </div>
@@ -215,7 +209,7 @@
                         <h1 class='extra-margin-bottom dark-grey-text'><b>100% Money Back Guarantee</b></h1>
                         <div class='guarantee-text-container'>
                             <p>
-                            I felt so screwed the night before my Math 54 final, so I decided to get help from Uguru. I was able to meet up with my tutor in just an hour. Because of the on-demand help, I got an A- in the class!
+                            We carefully pick our Gurus to ensure quality of each session. In rare cases where you are not satisfied with your Guru, please let us know. You will get a full refund for your session.
                             </p>
                         </div>
                     </div>
@@ -250,7 +244,7 @@
     <!-- End of main -->
     
     <!-- Tutor Application Form -->
-    <div id='tutor-application-form'>
+    <div id='tutor-application-form' style='display:none'>
         <nav class="navbar navbar-default navbar-main" role="navigation">
           <div class="container-fluid">
             <!-- Logo and toggle get grouped for better mobile display -->
@@ -273,16 +267,10 @@
                 <li><a class='reg-text' href="#">@ UC Berkeley</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right navbar-right-main">
-                <li><a id='become-guru-nav' href="javascript:void(0);">
-                        <span class='glyphicon glyphicon-globe blue-text'></span>
-                    </a>
-                </li>
-                <li><a id='become-guru-nav' href="javascript:void(0);">
-                        <span class='glyphicon glyphicon-envelope blue-text'></span>
-                    </a>
-                </li>
-                <li><a id='signup-nav' href="javascript:void(0);">
-                        <img src='/static/img/default-photo.jpg' class='navbar-photo'>
+                <li><a id='become-guru-tutor' href="javascript:void(0);">Become a Guru</a></li>
+                <li><a data-toggle='modal'  data-target='#login-modal' href='#'><u>Log in</u></a></li>
+                <li><a id='signup-nav-tutor' href="javascript:void(0);">
+                        <span class='blue-btn'> Sign up </span>
                     </a>
                 </li>
               </ul>
@@ -301,9 +289,12 @@
                             Please fill in all fields
                         </div>
                         <div class='tutor-app-photo-container margin-top-30 margin-bottom-15'>
-                            <img src='/static/img/lee.png' height='80px'> 
-                            <span class='photo-upload-btn blue-btn'> Upload </span>
+                            <img id='tutor-app-photo' src='/static/img/default-photo.jpg' height='80px'> 
+                            <a id='upload-photo-link' href='javascript:void(0);'>
+                                <span class='photo-upload-btn blue-btn'> Upload </span>
+                            </a>
                         </div>
+                        <input id="upload-photo" type="file"/>
 
                         <label for='request-class'>School Email</label>
                         <input type='text' id='tutor-app-school-email' placeholder='@berkeley.edu'class='form-control standard-input'>
@@ -343,7 +334,8 @@
 
                         <label> Select Relevant Experience </label>
                         <div class='row-fluid margin-top-10' >
-                            <input id='tutor-slc-check' type='checkbox' class='uguru-checkbox'></input>
+                            <input id='tutor-slc-check' type='checkbox' class='uguru-checkbox' 
+                            ></input>
                             <span class='reg-text'>
                                 SLC Tutor
                             </span>
@@ -384,14 +376,14 @@
                     </div>
                 </div>
                 <div class='request-form-extra-detail col-sm-3 col-md-4'>
-                    <div class='extra-detail-container' style='margin-top:220px'>
+                    <!-- <div class='extra-detail-container' style='margin-top:220px'>
                         <div class='extra-detail-form reg-text'>
                             We will pin these tutors with your request, and let you know when they get back to you.
                         </div>
                         <div class='extra-detail-form reg-text margin-top-40'>
                             We will pin these tutors with your request, and let you know when they get back to you.
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -422,16 +414,10 @@
                 <li><a class='reg-text' href="#">@ UC Berkeley</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right navbar-right-main">
-                <li><a id='become-guru-nav' href="javascript:void(0);">
-                        <span class='glyphicon glyphicon-globe blue-text'></span>
-                    </a>
-                </li>
-                <li><a id='become-guru-nav' href="javascript:void(0);">
-                        <span class='glyphicon glyphicon-envelope blue-text'></span>
-                    </a>
-                </li>
-                <li><a id='signup-nav' href="javascript:void(0);">
-                        <img src='/static/img/default-photo.jpg' class='navbar-photo'>
+                <li><a id='become-guru-nav-request' href="javascript:void(0);">Become a Guru</a></li>
+                <li><a data-toggle='modal'  data-target='#login-modal' href='#'><u>Log in</u></a></li>
+                <li><a id='signup-nav-request' href="javascript:void(0);">
+                        <span class='blue-btn'> Sign up </span>
                     </a>
                 </li>
               </ul>
@@ -446,6 +432,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-body">
+                
                 <div id='login-modal-container' class='container-fluid center'>
                     <div id='alert-fields-login'>
                         Please fill in all fields.
@@ -465,6 +452,9 @@
                         <label style='margin-top:10px' for="exampleInputPassword1">Password</label>
                         <input name='login-password' type="password" class="form-control" id="login-password" >
                     </div>
+                    <div class='thin-text center row font-12 italic'>
+                        Forgot your password? Click <a href='javascript:void(0);' id='forgot-password-link'> here </a>
+                    </div>
                     <div class='login-btn-container'>
                         <a href='javascript:void(0)' id='login-submit-link'>
                             <span class='blue-btn'>
@@ -473,6 +463,27 @@
                         </a>
                     </div>
                 </div>
+
+                <div id='forgot-password-modal-container' class='container-fluid center'>
+                    <div id='alert-fields-forgot-password' class='red-text normal-text' style='display:none'>
+                        Please fill in all fields.
+                    </div>
+                    <div class='row font-16 normal-text reg-text'>
+                        Please enter your email and we will send you a generated password to change.
+                    </div>
+                    <div class='password-input-container'>
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input name='password-email' type="email" class="form-control" id="password-email" >
+                    </div>
+                    <div class='login-btn-container'>
+                        <a href='javascript:void(0)' id='password-submit-link'>
+                            <span class='blue-btn'>
+                                Reset
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -555,5 +566,6 @@
         <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
         <script src="/static/js/fb.js"></script>
         <script src="/static/js/snippets/calendar.js"></script>
+        <script src="/static/js/snippets/scroll.js"></script>
     </footer>
 </html>

@@ -1,5 +1,12 @@
 var autocomplete_json = [];
 
+function hide_all_settings() {
+      $('#settings').hide();
+      $('#profile').hide();
+      $('#billing').hide();
+      $('#support').hide();
+    };
+
 var update_feed = function() {
   if (!$('#default-photo').is(':visible') && $('#short-description').val() && $('#major-input').val()) {
     $.ajax({
@@ -13,8 +20,21 @@ var update_feed = function() {
     }
   }
 
+var update_page = function() {
+  var hash = window.location.hash;
+  if (hash == '#main') {
+    hide_all_settings();
+    $('#settings').show();
+  } 
+  if (hash == '#prof') {
+    hide_all_settings();
+    $('#profile').show();
+  }
+}
+
 $(document).ready(function() {
     update_feed();
+    update_page();
 
     function readJSON(file) {
       var request = new XMLHttpRequest();
@@ -25,11 +45,7 @@ $(document).ready(function() {
     };
 
     autocomplete_json = JSON.parse(readJSON('/static/data/autocomplete.json'));
-    
-    $('#upload-photo-link').on('click', function(e) {
-      e.preventDefault();
-      $("#upload-photo:hidden").trigger('click');
-    });
+  
 
     $('#logout-btn').click(function() {
       window.location.replace('/logout/');
@@ -50,13 +66,6 @@ $(document).ready(function() {
       $('#billing').show();
     });
 
-    function hide_all_settings() {
-      $('#settings').hide();
-      $('#profile').hide();
-      $('#billing').hide();
-      $('#support').hide();
-    };
-
       $('#example-skills').on('click', 'a.example-skill-link', function(e) {
         var tag_arr = ['previous', 'slc','hkn', 'res', 'ta', 'la'];
         if ($(this).children(':first').hasClass('active')){
@@ -70,36 +79,6 @@ $(document).ready(function() {
         $('#saved-tag').show();
         $('#saved-tag').delay(750).fadeOut('slow');
       });
-
-    $("#upload-photo:hidden").change(function(){
-        var file = this.files[0]
-        name = file.name; 
-        size = file.size;
-        type = file.type;
-        // if (file.size > 100000) {
-        //   alert("File is too big")
-        // } else
-        if (file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg' ) {
-          alert("File doesnt match png, jpg, or gif");
-        } else {
-          $('#settings-notif').hide();
-          $('#student-photo-alert').hide();
-          if ($('#short-description').val() && $('#major-input')) {
-            $('#prof-not-complete').hide();
-          }
-          readURL(this);
-          var formData = new FormData()
-          formData.append('file', file)
-          $.ajax({
-            url:'/update-profile/',
-            type: 'POST',
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false 
-          });
-        }
-    });
   
     var verify_tutor = function() {
       var data = {'verify-tutor':true};
@@ -256,17 +235,17 @@ $(document).ready(function() {
       }
     });
 
-    $('#save-password-btn').click(function() {
-      if (!$('input[name="old-pwd"]').val() || !$('input[name="new-pwd"]').val() || !$('input[name="confirm-pwd"]').val()) {
-        $("#change-password-alert").text('Please fill in all fields');
-        $("#change-password-alert").show();
-      } else if ($('input[name="new-pwd"]').val() != $('input[name="confirm-pwd"]').val()) {
-        $("#change-password-alert").text('New and confirm fields do not match.');
-        $("#change-password-alert").show();
-      } else {
-        update_password_ajax($('input[name="old-pwd"]').val(), $('input[name="new-pwd"]').val())
-      }
-    });
+    // $('#save-password-btn').click(function() {
+    //   if (!$('input[name="old-pwd"]').val() || !$('input[name="new-pwd"]').val() || !$('input[name="confirm-pwd"]').val()) {
+    //     $("#change-password-alert").text('Please fill in all fields');
+    //     $("#change-password-alert").show();
+    //   } else if ($('input[name="new-pwd"]').val() != $('input[name="confirm-pwd"]').val()) {
+    //     $("#change-password-alert").text('New and confirm fields do not match.');
+    //     $("#change-password-alert").show();
+    //   } else {
+    //     update_password_ajax($('input[name="old-pwd"]').val(), $('input[name="new-pwd"]').val())
+    //   }
+    // });
 
     $('#add-skill-btn').click(function() {
       if ($('#add-skill-input-settings').val()) {
@@ -387,13 +366,7 @@ $(document).ready(function() {
     }
   });
 
-    $('#year-dropdown').on('click', '.dropdown-menu li a', function() {
-      var selected_text = $(this).text();
-      $('#selected-year').text(selected_text)
-      $('#saved-year').show();
-      $('#saved-year').delay(750).fadeOut('slow');
-      send_profile_update_ajax('year', selected_text)
-    });
+    
 
     $('#submit-support-ticket').click(function() {
       
@@ -472,90 +445,6 @@ $(document).ready(function() {
             url: '/notification-settings/' ,
             data: JSON.stringify(data),
             dataType: "json"
-        });  
-    };
-
-    var send_profile_update_ajax = function(to_change, value) {
-      var data = {};
-      if (to_change =='previous') {
-        data['previous'] = value;
-      }
-      if (to_change =='slc') {
-        data['slc'] = value;
-      }
-      if (to_change == 'intro') {
-        data['intro'] = value
-      }
-      if (to_change == 'hkn') {
-        data['hkn'] = value
-      }
-      if (to_change == 'ta') {
-        data['ta'] = value
-      }
-      if (to_change == 'la') {
-        data['la'] = value 
-      }
-      if (to_change == 'res') {
-       data['res'] = value 
-      }
-      if (to_change =='year') {
-        data['year'] = value
-      }
-      if (to_change =='discover') {
-        data['discover'] = value 
-      }
-      if (to_change =='major') {
-        data['major'] = value
-      }
-      $.ajax({
-            type: "POST",
-            contentType: 'application/json;charset=UTF-8',
-            url: '/update-profile/' ,
-            data: JSON.stringify(data),
-            dataType: "json",
-      });
-    };
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            
-            reader.onload = function (e) {
-                $('#default-photo').hide()
-                $('#image-preview').show()
-                $('#saved-photo').show();
-                $('#pic-holder').css('border', '1px solid #40bfec');
-                $('#saved-photo').delay(1250).fadeOut('slow');
-                $('#image-preview').attr('src', e.target.result);
-            }
-            
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    var update_password_ajax = function(old_password, new_password) {
-        var data = {'old-pwd':old_password, 'new-pwd':new_password};
-        $.ajax({
-            type: "POST",
-            contentType: 'application/json;charset=UTF-8',
-            url: '/update-password/' ,
-            data: JSON.stringify(data),
-            dataType: "json",
-            success: function(result) {
-              var response_dict = result.response
-              if (response_dict['error']) {
-                $("#change-password-alert").text(response_dict['error']);
-                $("#change-password-alert").show();
-              }
-              if (response_dict['success']) {
-                $('#change-password').hide();
-                $('#old').val('')
-                $('#new').val('')
-                $('#confirm').val('')
-                $('#saved-password').show();
-                $('#saved-password').delay(750).fadeOut('slow');
-              }
-            }
         });  
     };
 

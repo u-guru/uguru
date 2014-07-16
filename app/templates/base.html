@@ -14,6 +14,7 @@
         <link href="/static/fonts/grand_hotel.css" rel="stylesheet">
         <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
         <link href="/static/css/app.css" rel="stylesheet">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
         {% block header %}
         {% endblock %}
         <script>
@@ -40,43 +41,6 @@
     </head>
 
     <body>
-      <!-- <nav class="navbar" margin-right:25px;>
-        <div class="container-fluid">
-          <div class="navbar-header">
-              <a href="{% if session.get('admin') %} /logout/ {% else %}../../{%endif%}" class="navbar-brand" style="font-family: 'grand hotel', cursive; margin-left:5px; font-size: 50px">uguru.me</a>
-          </div>
-          {% if user %}
-          <div id="menu-icons" style="float:right">
-             <div style="display:inline"class="notif_container">
-               <a href="/activity/">
-                <span class="glyphicon glyphicon-globe" style="color:white;margin-right:20px;font-size:20px"></span>
-                {% if user.feed_notif and user.feed_notif > 0%}
-                <div id="feed-notif"class="noti_bubble">{{user.feed_notif}}</div>
-                {% endif %}
-               </a>
-              </div>
-              <div style="display:inline"class="notif_container">
-                <a href="/messages/">
-                  <span class="glyphicon glyphicon-envelope" style="color:white;margin-right:14px; font-size:20px"></span>
-                  {% if user.msg_notif and user.msg_notif > 0%}
-                  <div id="msg-notif" class="noti_bubble_messages">{{user.msg_notif}}</div>
-                  {% endif %}
-                </a>
-              </div>
-              <div style="display:inline"class="notif_container">
-                <a href="/settings/">
-                  <span class="glyphicon glyphicon-cog" style="color:white;font-size:20px">
-                  </span>
-                  {% if user.settings_notif and user.settings_notif > 0 %}
-                  <div id="settings-notif" class="noti_bubble_settings">{{user.settings_notif}}</div>
-                  {% endif %}
-                </a>
-              </div>
-          </div>
-          {% endif %}
-        </div>
-      </nav> -->
-
       <nav class="navbar navbar-default navbar-main" role="navigation">
           <div class="container-fluid">
             <!-- Logo and toggle get grouped for better mobile display -->
@@ -118,14 +82,14 @@
                 </li>
                 <li>
                   <a id='settings-nav' href="#" data-toggle ='dropdown' >
-                        <img src='/static/img/default-photo.jpg' class='navbar-photo'>
+                        <img src='{{user.profile_url}}' class='navbar-photo'>
                   </a>
                   <ul class="dropdown-menu settings-dropdown center" role="menu" aria-labelledby="dropdownMenu1">
-                      <li role="presentation"><a role="menuitem" tabindex="-1" id='account-settings-link' href="javascript:void(0)">Settings</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" id='account-profile-link' href="javascript:void(0)">Profile</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" id='account-billing-link' href="#">Billing</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" id='account-settings-link' href="/settings/#main">Settings</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" id='account-profile-link' href="/settings/#prof">Profile</a></li>
+                      <!-- <li role="presentation"><a role="menuitem" tabindex="-1" id='account-billing-link' href="#">Billing</a></li> -->
                       <li role="presentation" class="divider"></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Support</a></li>
+                      <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Support</a></li> -->
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="/logout/">Logout</a></li>
                   </ul>
                 </li>
@@ -155,6 +119,8 @@
     <script src='/static/js/snippets/calendar.js'></script>
     <script>window.jQuery || document.write('<script src="/static/js/jquery-1.10.2.js"><\/script>')</script>
     <script>window.jQuery || document.write('<script src="/static/js/bootstrap.min.js"><\/script>')</script>
+    <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="/static/js/app.js"></script>
 
     {% block footer_scripts %}
     {% endblock %}

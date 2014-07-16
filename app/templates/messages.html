@@ -122,8 +122,8 @@
 		  		</div>
 		  		{% endif %}
 				<div style="position:relative" id="default-message-box" class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">		
-					<div id="template-message" style="display:none"class="row">
-						<div style="margin-left:15px; margin-top:15px;padding-left:0px; padding-right:5px"class="col-md-8 col-xs-8" align="left">
+					<div id="template-message" style="display:none">
+						<!-- <div style="margin-left:15px; margin-top:15px;padding-left:0px; padding-right:5px"class="col-md-8 col-xs-8" align="left">
 							<div style="margin-top:-10px; padding:0px; width:25%" class="col-xs-4 col-md-4">
 								{% if conversation.guru_id == user.id %}
 									<img src="{{conversation.guru.profile_url}}" class="user-photo">
@@ -135,44 +135,47 @@
 							<div style="padding-left:0px"align="left"class="col-xs-8 col-md-8">
 								<div style="display:inline-block"class="chat-bubble"></div>
 							</div>
+						</div> -->
+						<div class='row message-sender normal-text reg-text'>
+							<img class='message-sender-pic' src='{% if conversation.guru_id == user.id %} {{conversation.guru.profile_url}} {% else %} {{conversation.student.profile_url}}{%endif%}'>
+							<div class='message-sender-content-container'>
+							</div>
+							<div class='message-sender-timestamp grey-text font-12 italic thin-text'>
+								Just Now
+							</div>
 						</div>
 					</div>
 					<div class="conversation-messages" {% if not conversation.messages %} style="display:none" {% endif %}>
 						{% for message in conversation.messages|sort(attribute='write_time') %}
-						<br>
-						<div class="row">
 							{% if message.sender_id == user.id %}
-							<div style="margin-left:15px; padding-left:0px; padding-right:5px"class="col-md-8 col-xs-8" align="left">
-								<div style="margin-top:-10px; padding:0px; width:25%" class="col-xs-4 col-md-4">
-									{% if conversation.guru_id == user.id %}
-										<img src="{{conversation.guru.profile_url}}" class="user-photo">
-									{% else %}
-										<img src= "{{conversation.student.profile_url}}" class="user-photo">
-									{% endif %}
-									<h6 style="margin:0">{{pretty_dates[message.id]}}</h6>
-								</div>
-								<div style="padding-left:0px"align="left"class="col-xs-8 col-md-8">
-									<div style="display:inline-block"class="chat-bubble">{{message.contents}}</div>
-								</div>
-							</div>
-							{% else %}
-								<div style="padding-right:0px; padding-left:0px"class="col-md-offset-4 col-md-8"align="right">
-									<div class="row">
-										<div style="padding-right:0px"align="right"class="col-xs-8 col-md-8">
-											<div style="display:inline-block; margin-right:-45px;"class="chat-bubble">{{message.contents}}</div>
-										</div>
-										<div style="margin-top:-10px; width:22%;;padding-left:0px; margin-left:20px; padding-right:0px"class="col-xs-4 col-md-4">
-											{% if conversation.guru_id == user.id %}
-												<img src= "{{conversation.student.profile_url}}" class="user-photo">
-											{% else %}
-												<img src="{{conversation.guru.profile_url}}" class="user-photo">
-											{% endif %}
-											<span><h6 style="margin:0">{{pretty_dates[message.id]}}</h6></span>
-										</div>
+								<div class='row message-sender normal-text reg-text'>
+									<img class='message-sender-pic' src='{% if conversation.guru_id == user.id %} {{conversation.guru.profile_url}} {% else %} {{conversation.student.profile_url}}{%endif%}'>
+									<div class='message-sender-content-container'>
+										{{message.contents}}
+									</div>
+									<div class='message-sender-timestamp grey-text font-12 italic thin-text'>
+										{{pretty_dates[message.id]}}
+									</div>
+									<div class='message-sender-name grey-text bold reg-text'>
+										{% if conversation.guru_id == user.id %} 
+										{{conversation.guru.name.split(" ")[0]}}
+										{% else %} 
+										{{conversation.student.name.split(" ")[0]}}
+										{%endif%}
 									</div>
 								</div>
+							{% else %}
+								<div class='row message-receiver normal-text reg-text'>
+									<img class='message-receiver-pic' src='{% if conversation.guru_id == user.id %} {{conversation.student.profile_url}} {% else %} {{conversation.guru.profile_url}}{%endif%}'>
+									<div class='message-receiver-content-container'>
+										{{message.contents}}
+									</div>
+									<div class='message-receiver-timestamp grey-text font-12 italic thin-text'>
+										{{pretty_dates[message.id]}}
+									</div>
+
+								</div>
 							{% endif %}
-						</div>
 						{% endfor %}
 					</div>
 					<br>
@@ -204,14 +207,18 @@
 					<div class="saved-message"class="row-fluid">
 						Message Sent!
 					</div>
-					<div class="row-fluid">
-						<div id="message-send-box">
-							<div style="display:inline">
+					<div class="row-fluid message-send-box-container">
+						<div class="message-send-box">
+							<input type='text' class='standard-input reg-text' class='input-message'></input>
+							<a href='javascript:void(0);' class='submit-message'>
+								<img src='/static/img/message-send-icon.png' class='message-send-btn'>
+							</a>
+							<!-- <div style="display:inline">
 								<input class="input-message form-input" style="float:center;outline:none; border-radius:3px; padding:3px;" placeholder="  Type a message here..." style="float:left"></input>
 							</div>
 							<div style="display:inline">
 								<a class="submit-message" href="javascript:void(0);"/> <span style="font-size:18px;"class="glyphicon glyphicon-send"></span> </a>
-							</div>
+							</div>  -->
 						</div>
 					</div>
 				</div>

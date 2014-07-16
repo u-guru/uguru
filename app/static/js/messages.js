@@ -55,7 +55,7 @@ $(document).ready(function() {
         $('#message-list').show();
     });
    $('#messages').on('click', 'a.submit-message', function() {
-        var message = $(this).parent().siblings('div:first').children('input:first').val();
+        var message = $(this).siblings('input').val();
         if (message == '') {
             $('#message-alert').show();
             return false;
@@ -68,23 +68,18 @@ $(document).ready(function() {
         conversation_messages_div.show();
         // conversation_messages.css('height', ($(document).height()-500))
         
-        saved_message_div = $(this).parent().parent().parent().siblings('.saved-message')
-        saved_message_div.show();
-        saved_message_div.delay(750).fadeOut('slow');
         var data = {
             'send-message': message, 
             'conversation-num': last_clicked_convo_num
         };
 
         var temp_message = $('#template-message').clone();
-        temp_message.children().children('div:last').children('.chat-bubble').text(message);
-        conversation_messages = $(this).parent().parent().parent().siblings('.conversation-messages')
+        temp_message.children().children('div:first').text(message);
+        conversation_messages = $(this).parent().parent().siblings('.conversation-messages')
         conversation_messages.append(temp_message);
         temp_message.show()
         conversation_messages.animate({ scrollTop: $(document).height() }, 100);
-        $('#message-saved').show();
-        $('#message-saved').delay(750).fadeOut('slow');
-        $(this).parent().siblings('div:first').children('input:first').val('');
+        $(this).siblings('input').val('');
         $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
@@ -96,7 +91,7 @@ $(document).ready(function() {
 
     $('#messages').on('keyup', 'input', function(e) {
         if ( e.keyCode === 13 ) { // 13 is enter key
-            $(this).parent().siblings('div:last').children('a:first').trigger('click');
+            $(this).siblings('.submit-message').trigger('click');
         }
     });
 

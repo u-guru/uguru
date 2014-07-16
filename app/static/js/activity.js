@@ -293,6 +293,9 @@ $(document).ready(function() {
         $('#activity').hide();
         request_a_guru_clicked = true;
         event_click('request-btn-clicked')
+        $('#request-form-options').hide();
+        $('#request-form-submit').children('span:first').removeClass('blue-btn-extra');
+        $('#request-form-submit').children('span:first').addClass('blue-btn-full');
         $('#tutor-request').show();
    })
    $('#request-payment-link').click(function() {
@@ -505,40 +508,40 @@ $(document).ready(function() {
 
     
 
-    var numbers = new Bloodhound({
-      datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name); },
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      limit: 3,
-      prefetch: {
-        url: '/static/data/autocomplete.json',
-        filter: function(list) {
-          return $.map(list, function(course) { return { name: course }; });
-        }
-      },
-      sorter: function compare(a,b) {
-        if (a > b) {
-          return 1;
-        } 
-        if (b < a) {
-          return -1;
-        }
-        return 0 ;
-      }
-    });
+    // var numbers = new Bloodhound({
+    //   datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name); },
+    //   queryTokenizer: Bloodhound.tokenizers.whitespace,
+    //   limit: 3,
+    //   prefetch: {
+    //     url: '/static/data/autocomplete.json',
+    //     filter: function(list) {
+    //       return $.map(list, function(course) { return { name: course }; });
+    //     }
+    //   },
+    //   sorter: function compare(a,b) {
+    //     if (a > b) {
+    //       return 1;
+    //     } 
+    //     if (b < a) {
+    //       return -1;
+    //     }
+    //     return 0 ;
+    //   }
+    // });
      
-    // initialize the bloodhound suggestion engine
-    numbers.initialize();
+    // // initialize the bloodhound suggestion engine
+    // numbers.initialize();
      
     // instantiate the typeahead UI
-    $('#tutor-add-course-fields .typeahead').typeahead(null, {
-      displayKey: 'name',
-      source: numbers.ttAdapter()
-    });
+    // $('#tutor-add-course-fields .typeahead').typeahead(null, {
+    //   displayKey: 'name',
+    //   source: numbers.ttAdapter()
+    // });
 
-    $('#student-request-fields .typeahead').typeahead(null, {
-      displayKey: 'name',
-      source: numbers.ttAdapter()
-    });
+    // $('#student-request-fields .typeahead').typeahead(null, {
+    //   displayKey: 'name',
+    //   source: numbers.ttAdapter()
+    // });
 
     $('#urgency-request').on('click', '.urgency', function(){
       var current_active = $('#urgency-request .urgency.active');

@@ -71,6 +71,20 @@ h1, h3 {
   display:inline-block;
 }
 
+.tutor-profile-course-tag {
+  background-color:#5EBB47;
+  padding:5px 16px;
+  color:white;;
+  margin-right:5px; 
+  margin-top:10px;
+  display:inline-block;
+}
+
+.tutor-profile-course-tag a {
+  color:white;
+}
+
+
 .large-fb-blue-btn {
   padding:12px 30px;
   background-color:#3b5998;
@@ -138,13 +152,28 @@ h1, h3 {
   font-weight:bold;
 }
 
+.italic {
+  font-style:italic;
+}
+
 .login-input-container {
   margin:10px 60px;
   text-align:left;
   font-weight:normal;
 }
 
+.password-input-container {
+  margin:10px 60px;
+  text-align:left;
+  font-weight:normal;
+}
+
 .login-input-container label {
+  font-weight:normal;
+  color: #484748;
+}
+
+.password-input-container label {
   font-weight:normal;
   color: #484748;
 }
@@ -162,12 +191,26 @@ input {
   border-radius:1px;
 }
 
+#request-form .navbar-default .navbar-nav > li > a {
+  color: #484748;
+  padding-top: 30px;
+}
+
+#tutor-application-form .navbar-default .navbar-nav > li > a {
+  color: #484748;
+  padding-top: 30px;
+}
+
 .new-notification {
   margin-top:20px;
   display:block;
   height:80px;
   position:relative;
   border-bottom:1px solid #484748;
+}
+
+#forgot-password-modal-container {
+  display:none;
 }
 
 .notification-picture {
@@ -280,7 +323,7 @@ input {
 
 .navbar-default .navbar-nav > li > a {
   color: white;
-  padding-top:30px;
+  padding-top:33px;
 }
 
 .navbar-default .navbar-nav > li > a:hover {
@@ -355,8 +398,21 @@ input {
   display:inline-block;
 }
 
+#courses-profile-input {
+  display:inline-block;
+}
+
 .guru-form-course-container .twitter-typeahead {
   top:-14px;
+}
+
+.guru-profile-course-container {
+  top:0px;
+  position:relative;
+}
+
+.guru-profile-course-container .twitter-typeahead {
+  width:80%;
 }
 
 .remove-skill-tutor-app {
@@ -367,6 +423,86 @@ input {
 .remove-skill-tutor-app:hover {
   text-decoration:none;
   color:white;
+}
+
+.message-sender, .message-receiver {
+  position:relative;
+  padding-top:20px;
+  padding-bottom:20px;
+  margin-top:20px;
+  margin-bottom:10px;
+}
+
+#upload-photo {
+  display:none;
+}
+
+.message-sender-name {
+  left:30px;
+  bottom:-18px;
+  position:absolute;
+  font-size:16px;
+}
+
+.message-sender-pic {
+  border-radius:4px;
+  height:50px;
+  width:50px;
+  position:absolute;
+  left:25px;
+  top:5px;
+}
+
+.message-send-box {
+  padding:20px 5px 20px 0px;
+  border-top:1px solid #484747;
+}
+
+.message-send-btn {
+  height:30px;
+  margin-left:15px;
+}
+
+.message-send-box-container {
+  padding:10px;
+}
+
+.message-send-box input {
+  padding:5px;
+  width:90%;
+}
+
+.message-receiver-pic {
+  border-radius:4px;
+  height:50px;
+  width:50px;
+  position:absolute;
+  right:25px;
+  top:5px;
+}
+
+.message-sender-content-container {
+  margin-left:120px;
+  margin-right:80px;
+  text-align:left;
+}
+
+.message-receiver-content-container {
+  margin-right:120px;
+  margin-left:80px;
+  text-align:right;
+}
+
+.message-sender-timestamp {
+  bottom:0px;
+  right:25px;
+  position:absolute;
+}
+
+.message-receiver-timestamp {
+  bottom:0px;
+  left:25px;
+  position:absolute;
 }
 
 #add-course-btn-span {
@@ -439,8 +575,22 @@ textarea {
   color:red;
 }
 
+#profile-dropdown-selected {
+  text-align:left;
+  position:absolute;
+  left:10px;
+}
+
+.green-text {
+  color:green;
+}
+
 .normal-text {
   font-weight:normal;
+}
+
+.thin-text {
+  font-weight:100;
 }
 
 .calendar-img {
@@ -448,6 +598,13 @@ textarea {
 }
 .green-text {
   color:#5EBB47
+}
+
+#upload-photo-saved {
+  position: absolute;
+  top: 20px;
+  left: 110px;
+  display:none;
 }
 
 .margin-top-10 {
@@ -492,6 +649,10 @@ textarea {
 
 .font-18 {
   font-size:18px;
+}
+
+.font-12 {
+  font-size:12px;
 }
 
 .year-dropdown-select {
@@ -674,7 +835,7 @@ td.time-slot {
 
 .testimonial-section {
   padding:40px;
-  font-size:1.25em;
+  font-size:1.15em;
   text-align:center;
 }
 

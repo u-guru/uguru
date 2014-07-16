@@ -606,18 +606,6 @@
 {% endif %}
 
 <div style="display:none" id="tutor-request">
-	<div class="page-title">
-	  <div class="row" style="width:100%;text-align:center">
-	      <div class="col-xs-1 col-md-offset-1 col-md-1">
-	        <a href="/" style="text-decoration:none"> 
-	          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
-	        </a>
-	      </div>
-	      <div class="col-xs-10 col-md-8" style="text-align:center">
-	        <h4 style="color:white;width:100%;font-weight:500">REQUEST A GURU</h4>
-	    </div>
-	  </div>
-	</div>
 	<div style="font-size:16px" id="student-request-fields">
 	    <div class="container-fluid">
 	    	<div id="already-have-active-request-alert" style="display:none" class="row-fluid">
@@ -630,7 +618,7 @@
   					<div style="margin-bottom:0"class="alert alert-success">Your credit card has been successfully added!<br> Click 'request' to finalize your request.</div>
   				</div>
 		  	</div>
-	        {% include 'request-guru.html' %}
+	        {% include 'request-form-container.html' %}
             
           <div style="margin-top:45px;text-align:center; color:grey">
 		       Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our FAQ</u></a>
@@ -1915,107 +1903,107 @@
 	{% endif %}
 	<script src="/static/js/jquery.nouislider.new.min.js"></script>
 	<script>
-        var Link = $.noUiSlider.Link; 
-        $("#time-estimate-slider").noUiSlider({
-              start: 1
-              ,range: {'min':[1], 'max':[10]}
-              ,step: 0.5
-              ,serialization: {
-                lower: [ new Link (
-                  {
-                    target: $('#low')
-                  })
-                ],
-                format: {
-                  decimals:1
-                }
-              }
-        });
-        $("#ideal-price-slider").noUiSlider({
-            start: 20
-            ,range: {'min':[11], 'max':[40]}
-            ,step: 1
-            ,serialization: {
-              lower: [ new Link (
-                {
-                  target: $('#high')
-                })
-              ],
-              format: {
-                decimals:1
-              }
-            }  
-        });
-        {% if user.verified_tutor %}
-        $(".tutor-change-price-slider").noUiSlider({
-           	start:5
-           	,range: {'min':[5], 'max':[40]}
-           	,step: 1
-        }); 
-        {% endif %}
-        {% if address_book or user.verified_tutor %}
-        $("#time-estimate-slider-payment").noUiSlider({
-            start:1
-           	,range: {'min':[0], 'max':[10]}
-           	,step: 0.5
-           	,serialization: {
-                lower: [ new Link (
-                  {
-                    target: $('#payment')
-                  })
-                ],
-                format: {
-                  decimals:1
-                }
-              }
-        });
-        $("#hourly-price-slider-payment").noUiSlider({
-            start:15
-           	,range: {'min':[10], 'max':[40]}
-           	,step: 1
-           	,serialization: {
-                lower: [ new Link (
-                  {
-                    target: $('#price')
-                  })
-                ],
-                format: {
-                  decimals:1
-                }
-              }
-        });
-        {% endif %}
-        {% for r in user.outgoing_requests %}
-        	$("#hourly-price-slider-request-{{loop.index - 1}}").noUiSlider({
-	            start:{{r.student_estimated_hour}}
-	           	,range: {'min':[12], 'max':[40]}
-	           	,step: 1
-	           	,serialization: {
-	                lower: [ new Link (
-	                  {
-	                    target: $('#hourly-price-request-{{loop.index - 1}}')
-	                  })
-	                ],
-	                format: {
-	                  decimals:0
-	                }
-	              }
-        	});
-        	$("#time-estimate-slider-request-{{loop.index - 1}}").noUiSlider({
-	            start:{{r.time_estimate}}
-	           	,range: {'min':[0], 'max':[6]}
-	           	,step: 0.5
-	           	,serialization: {
-	                lower: [ new Link (
-	                  {
-	                    target: $('#time-estimate-request-{{loop.index - 1}}')
-	                  })
-	                ],
-	                format: {
-	                  decimals:1
-	                }
-	              }
-        	});
-        {% endfor %}
+        // var Link = $.noUiSlider.Link; 
+        // $("#time-estimate-slider").noUiSlider({
+        //       start: 1
+        //       ,range: {'min':[1], 'max':[10]}
+        //       ,step: 0.5
+        //       ,serialization: {
+        //         lower: [ new Link (
+        //           {
+        //             target: $('#low')
+        //           })
+        //         ],
+        //         format: {
+        //           decimals:1
+        //         }
+        //       }
+        // });
+        // $("#ideal-price-slider").noUiSlider({
+        //     start: 20
+        //     ,range: {'min':[11], 'max':[40]}
+        //     ,step: 1
+        //     ,serialization: {
+        //       lower: [ new Link (
+        //         {
+        //           target: $('#high')
+        //         })
+        //       ],
+        //       format: {
+        //         decimals:1
+        //       }
+        //     }  
+        // });
+        // {% if user.verified_tutor %}
+        // $(".tutor-change-price-slider").noUiSlider({
+        //    	start:5
+        //    	,range: {'min':[5], 'max':[40]}
+        //    	,step: 1
+        // }); 
+        // {% endif %}
+        // {% if address_book or user.verified_tutor %}
+        // $("#time-estimate-slider-payment").noUiSlider({
+        //     start:1
+        //    	,range: {'min':[0], 'max':[10]}
+        //    	,step: 0.5
+        //    	,serialization: {
+        //         lower: [ new Link (
+        //           {
+        //             target: $('#payment')
+        //           })
+        //         ],
+        //         format: {
+        //           decimals:1
+        //         }
+        //       }
+        // });
+        // $("#hourly-price-slider-payment").noUiSlider({
+        //     start:15
+        //    	,range: {'min':[10], 'max':[40]}
+        //    	,step: 1
+        //    	,serialization: {
+        //         lower: [ new Link (
+        //           {
+        //             target: $('#price')
+        //           })
+        //         ],
+        //         format: {
+        //           decimals:1
+        //         }
+        //       }
+        // });
+        // {% endif %}
+        // {% for r in user.outgoing_requests %}
+        // 	$("#hourly-price-slider-request-{{loop.index - 1}}").noUiSlider({
+	       //      start:{{r.student_estimated_hour}}
+	       //     	,range: {'min':[12], 'max':[40]}
+	       //     	,step: 1
+	       //     	,serialization: {
+	       //          lower: [ new Link (
+	       //            {
+	       //              target: $('#hourly-price-request-{{loop.index - 1}}')
+	       //            })
+	       //          ],
+	       //          format: {
+	       //            decimals:0
+	       //          }
+	       //        }
+        // 	});
+        // 	$("#time-estimate-slider-request-{{loop.index - 1}}").noUiSlider({
+	       //      start:{{r.time_estimate}}
+	       //     	,range: {'min':[0], 'max':[6]}
+	       //     	,step: 0.5
+	       //     	,serialization: {
+	       //          lower: [ new Link (
+	       //            {
+	       //              target: $('#time-estimate-request-{{loop.index - 1}}')
+	       //            })
+	       //          ],
+	       //          format: {
+	       //            decimals:1
+	       //          }
+	       //        }
+        // 	});
+        // {% endfor %}
     </script>
 {% endblock %}

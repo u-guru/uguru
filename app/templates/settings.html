@@ -17,66 +17,47 @@
                     Settings 
                 </h1>
                 <div class='request-form-container'>
-                  <label> Use This Email For My Notifications</label>
+                  <label> Email Settings</label>
                   <div class='row-fluid' >
-                      <input type='checkbox' class='uguru-checkbox'></input>
+                      <input id='email-notif-check' type='checkbox' class='uguru-checkbox' {% if user.email_notification %} checked {% endif %}>
                       <span class='reg-text'>
-                          makhani@berkeley.edu
+                          Email Notifications
                       </span>
-                  </div>
-                  <div class='row-fluid margin-top-10 margin-bottom-20'>
-                      <input type='checkbox' class='uguru-checkbox'></input>
-                      <span class='reg-text'>
-                          makhani.samir@gmail.com
-                      </span>
-                  </div>
-                  <label> Email Me When </label>
-                  <div class='row-fluid'>
-                      <input type='checkbox' class='uguru-checkbox'></input>
-                      <span class='reg-text'>
-                          I received a tutoring request
-                      </span>
-                  </div>
-                  <div class='row-fluid margin-top-10' >
-                      <input type='checkbox' class='uguru-checkbox'></input>
-                      <span class='reg-text'>
-                          My tutoring offer is accepted by the student
-                      </span>
-                  </div>
-                  <div class='row-fluid margin-top-10' >
-                      <input type='checkbox' class='uguru-checkbox'></input>
-                      <span class='reg-text'>
-                          I received a mesage
-                      </span>
-                  </div>
-                  <div class='row-fluid margin-top-10' >
-                      <input type='checkbox' class='uguru-checkbox'></input>
-                      <span class='reg-text'>
-                          A tutoring request I received is canceled/taken
+                      <span id='email-notif-saved-text' class='normal-text green-text' style='display:none'>
+                        Saved!
                       </span>
                   </div>
                   <div class='password-container margin-top-20'>
                     <div class='password-text-change-container row width-100 margin-bottom-15'>
                       <label style='padding-left:14px'> Password </label>
-                      <span class='blue-btn reset-password-btn'>
-                        Reset
-                      </span>
+                      <span class='green-text normal-text' id='saved-password'style='display:none'> Saved!</span>
+                      <a href='javascript:void(0);' id='settings-change-pwd-toggle'>
+                          <span class='blue-btn reset-password-btn'>
+                          Change
+                        </span>
+                      </a>
                     </div>
-                    <form class="form-horizontal change-password-form" role="form">
-                      <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Old</label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control standard-input" id="inputEmail3" >
-                        </div>
+                    <div id='change-pwd-settings-container' style='display:none'>
+                      <div class='row red-text center' id='change-password-alert' style='display:none'>
                       </div>
-                      <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">New</label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control standard-input" id="inputEmail3" >
+                      <form class="form-horizontal change-password-form" role="form">
+                        <div class="form-group">
+                          <label for="inputEmail3" class="col-sm-2 control-label">Old</label>
+                          <div class="col-sm-10">
+                            <input type="password" name='old-pwd' class="form-control standard-input" id="inputEmail3" >
+                          </div>
                         </div>
-                      </div>
-                    </form>
-                    <span class='blue-btn blue-btn-full'> Save </span>
+                        <div class="form-group">
+                          <label for="inputEmail3" class="col-sm-2 control-label">New</label>
+                          <div class="col-sm-10">
+                            <input type="password" name='confirm-pwd' class="form-control standard-input" id="inputEmail3" >
+                          </div>
+                        </div>
+                      </form>
+                      <a href='javascript:void(0);' id='save-password-btn'>
+                        <span class='blue-btn blue-btn-full'> Save </span>
+                      </a>
+                    </div>
                   </div>
                 </div>
             </div>
@@ -141,23 +122,33 @@
                     <div class='request-form-container'>
                         
                         <div class='tutor-app-photo-container margin-top-30 margin-bottom-15'>
-                            <img src='/static/img/lee.png' height='80px'> 
-                            <span class='photo-upload-btn blue-btn'> Upload </span>
+                            <img id='tutor-app-photo' src='{{user.profile_url}}' height='80px'> 
+                            <a href='javascript:void(0);' id='upload-photo-link'>
+                              <span class='photo-upload-btn blue-btn'> Upload </span>
+                            </a>
+                            <span class='green-text normal-text' id='upload-photo-saved'> Saved! </span>
                         </div>
+                        <input id="upload-photo" type="file"/>
 
-                        <label for='request-class'>School Email</label>
-                        <input type='text' id='tutor-app-school-email' style='display:none' placeholder='@berkeley.edu'class='form-control standard-input'>
+                        <!-- <label for='request-class'>School Email</label>
+                        <input type='text' id='tutor-app-school-email' style='display:none' placeholder='@berkeley.edu'class='form-control standard-input'> -->
                         
-                        <label for='request-class'>School Year</label>
+                        <label for='request-class'>School Year</label> <span id='school-year-saved' class='green-text normal-text' style='display:none'>Saved!</span>
                         <!-- <input type='text' placeholder='CS10'class='form-control standard-input'> -->
-                        <div class='reg-text row-fluid margin-bottom-20'>
+                        <!-- <div class='reg-text row-fluid margin-bottom-20'>
                           <span id='settings-email'>Leelazar2016@berkeley.edu</span> &nbsp;&nbsp;
                           <span class='glyphicon glyphicon-ok green-text font-18'></span>
                           <span class='green-text font-18'> Verified </span>
-                        </div>
-                        <div class="dropdown">
+                        </div> -->
+                        <div class="dropdown" id='profile-dropdown'>
                           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                            <span class='year-dropdown-select'>Sophomore</span>
+                            <span id='profile-dropdown-selected'>
+                              {% if user.year %}
+                              {{user.year}}
+                              {% else %}
+                              Sophomore
+                              {% endif %}
+                            </span>
                             <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -173,82 +164,99 @@
                         </div>
 
                         <label for='request-class'>Your Major(s) </label>
-                        <input type='text' class='form-control standard-input'>
+                        <input type='text' id='profile-major' class='form-control standard-input' {% if user.major %} value='{{user.major}}' {% endif %} >
 
+                        {% if user.approved_by_admin %}
                         <label for='request-class'>Courses You Want To Tutor </label>
-                        <div class='guru-form-course-container row-fluid'>
-                            <input type='text' placeholder='Bio 1A' id='courses-tutor-input' class='form-control standard-input'>
+                        <div class='guru-profile-course-container row-fluid'>
+                            <input type='text' placeholder='Bio 1A' id='courses-profile-input' class='typeahead form-control standard-input'>
                             &nbsp;&nbsp;
-                            <span class='glyphicon glyphicon-plus green-text' id='add-course-btn-span'></span>
+                            <a href='javascript:void(0);' id='tutor-app-add-course-btn'>
+                                <span class='glyphicon glyphicon-plus green-text' id='add-course-btn-span'></span>
+                            </a>
                         </div>
-                        <div class='courses-add-container row-fluid margin-top-15'>
-                            <span class='tutor-app-course-tag'>
-                                CS10
+                        <div class='courses-add-container row-fluid'>
+                          {% for skill in user.skills %}
+                            <span class='tutor-profile-course-tag'>
+                              <span>{{variations[skill.name]}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <a href="javascript:void(0);" class="remove-skill-tutor-profile">x</a>
                             </span>
-                            <span class='tutor-app-course-tag'>
-                                CS61A
-                            </span>
-                            <span class='tutor-app-course-tag'>
-                                CS61B
-                            </span>
-                            <span class='tutor-app-course-tag'>
-                                CS61C
-                            </span>
-                            <span class='tutor-app-course-tag'>
-                                Chem 3A
-                            </span>
-                            <span class='tutor-app-course-tag'>
-                                Chem 3B
-                            </span>
-                            <span class='tutor-app-course-tag'>
-                                MCB 102
-                            </span>
+                          {% endfor %}
                         </div>
 
 
                         <label> Select Relevant Experience </label>
                         <div class='row-fluid margin-top-10' >
-                            <input type='checkbox' class='uguru-checkbox'></input>
+                            <input id='slc-tutor-check' type='checkbox' class='uguru-checkbox' {% if user.slc_tutor %} checked {% endif %} ></input>
                             <span class='reg-text'>
                                 SLC Tutor
                             </span>
+                            <span id='slc-tutor-saved' class='green-text normal-text' style='display:none'>
+                              Saved!
+                            </span>
                         </div>
                         <div class='row-fluid margin-top-10' >
-                            <input type='checkbox' class='uguru-checkbox'></input>
+                            <input id='res-tutor-check' type='checkbox' class='uguru-checkbox' {% if user.res_tutor %} checked {% endif %} ></input>
                             <span class='reg-text'>
                                 Residential Hall Tutor
                             </span>
+                            <span id='res-tutor-saved' class='green-text normal-text' style='display:none'>
+                              Saved!
+                            </span>
                         </div>
                         <div class='row-fluid margin-top-10'>
-                            <input type='checkbox' class='uguru-checkbox'></input>
+                            <input id='ta-tutor-check' type='checkbox' class='uguru-checkbox' {% if user.ta_tutor %} checked {% endif %}></input>
                             <span class='reg-text'>
                                 GSI
                             </span>
+                            <span id='ta-tutor-saved' class='green-text normal-text' style='display:none'>
+                              Saved!
+                            </span>
                         </div>
                         <div class='row-fluid margin-top-10'>
-                            <input type='checkbox' class='uguru-checkbox'></input>
+                            <input id='la-tutor-check' type='checkbox' class='uguru-checkbox'{% if user.la_tutor %} checked {% endif %}></input>
                             <span class='reg-text'>
                                 Lab Assistant
                             </span>
+                            <span id='la-tutor-saved' class='green-text normal-text' style='display:none'>
+                              Saved!
+                            </span>
+                        </div>
+                        <div class='row-fluid margin-top-10'>
+                            <input id='prev-tutor-check' type='checkbox' class='uguru-checkbox'{% if user.previous_tutor %} checked {% endif %}></input>
+                            <span class='reg-text'>
+                                I've tutored at Cal
+                            </span>
+                            <span id='prev-tutor-saved' class='green-text normal-text' style='display:none'>
+                              Saved!
+                            </span>
                         </div>
                         <label for='request-class'>Your Bio / Relevant Experience </label>
-                        <textarea class='form-control standard-textarea guru-app-textarea'> </textarea>
+                        <textarea id='profile-relevant-experience' class='form-control standard-textarea guru-app-textarea'>{% if user.tutor_introduction %}{{user.tutor_introduction}}{% endif %}</textarea>
                         <div class='row-fluid margin-top-20'>
-                            <span class='blue-btn blue-btn-full' style='width:100%'>
-                                Submit
-                            </span>
+                            <a href='javascript:void(0);' id='submit-profile-info-btn'>
+                              <span class='blue-btn blue-btn-full' style='width:100%'>
+                                  Submit
+                              </span>
+                            </a>
                         </div> 
+                        <div class='row center' style='margin-top:20px'>
+                          <span id='profile-saved' class='green-text normal-text' style='display:none'>
+                          Saved!
+                          </span>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class='request-form-extra-detail col-sm-3 col-md-4'>
-                    <div class='extra-detail-container' style='margin-top:220px'>
+                    <!-- <div class='extra-detail-container' style='margin-top:220px'>
                         <div class='extra-detail-form reg-text'>
                             We will pin these tutors with your request, and let you know when they get back to you.
                         </div>
                         <div class='extra-detail-form reg-text margin-top-40'>
                             We will pin these tutors with your request, and let you know when they get back to you.
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -425,12 +433,12 @@
           <div style="text-align:center;"id="password">
           <h4 style="text-align:center;">PASSWORD</h4>
           <a id="change-password-btn" href="javascript:void(0)"><span class="btn-options btn-md" style="margin-top:5px;">CHANGE</span></a>
-          <span id="saved-password" class="saved-text">Updated!</span>
+          <!-- <span id="saved-password" class="saved-text">Updated!</span> -->
           </div>
           <br>
           <br>
           <div id="change-password">
-            <div style="text-align:center"id="change-password-alert" class="row">
+            <div style="text-align:center"  class="row">
             </div>
             <div class="row">
               <div class="col-xs-3 col-xs-offset-2">

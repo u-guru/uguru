@@ -1288,7 +1288,7 @@ def api(arg):
         for course_txt in courses:
             skill_to_add_id = courses_dict[course_txt]
             skill = Skill.query.get(skill_to_add_id)
-            db_session.add(skill)
+            # db_session.add(skill)
             user.skills.append(skill)
         
         try:
@@ -1590,10 +1590,12 @@ def success():
                     notification = user.notifications[0]
                     notification.feed_message_subtitle = "Application status: <strong><span style='color:#69bf69'>Approved!</span></strong>"
 
+                print user
                 from emails import approved_by_admin_email
                 approved_by_admin_email(user)
                 db_session.commit()
             except:
+                print 'sup'
                 db_session.rollback()
 
         if ajax_json.get('verify-tutor'):

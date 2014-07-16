@@ -12,20 +12,21 @@ var invert_olark_white = function() {
     $('#habla_window_div #habla_topbar_div').css('background', 'white none repeat scroll 0 0');
 }
 
-window.onhashchange = locationHashChanged
-function locationHashChanged() {
-    if (!location.hash) {
-      $('body').css('background-color','#00A9DE')
-      $('#tutor-signup').hide();
-      $('#student-signup').hide();
-      $('#tutor-signup-next').hide();
-      $('#login-page').hide();
-      $('#forgot-password-page').hide();
-      $('#home').show();
-      invert_olark_white();
-      location.hash = '';
-    }
-}
+// window.onhashchange = locationHashChanged
+// function locationHashChanged() {
+//     if (!location.hash) {
+//       $('body').css('background-color','#00A9DE')
+//       $('#tutor-signup').hide();
+//       $('#student-signup').hide();
+//       $('#tutor-signup-next').hide();
+//       $('#login-page').hide();
+//       $('#forgot-password-page').hide();
+//       $('#home').show();
+//       invert_olark_white();
+//       location.hash = '';
+//     }
+// }
+
 $(document).ready(function(){
     
     $body = $("body");
@@ -35,61 +36,74 @@ $(document).ready(function(){
          ajaxStop: function() { $body.removeClass("loading"); }    
     });
 
-    $('#request-main-slider').slider(
-        {
-          'min':1, 
-          'max':10, 
-          'value':2,
-          change: function(event, ui) {
-            slider_val = $('#request-main-slider').slider('value');
-            hr_text = 'hrs'
-            if (slider_val == 1) {
-              hr_text = 'hr'
+    if ($('#request-main-slider').length >= 1) {
+        $('#request-main-slider').slider(
+          {
+            'min':1, 
+            'max':10, 
+            'value':2,
+            change: function(event, ui) {
+              slider_val = $('#request-main-slider').slider('value');
+              hr_text = 'hrs'
+              if (slider_val == 1) {
+                hr_text = 'hr'
+              }
+              $('#request-main-slider-val').text(slider_val + ' ' + hr_text);
             }
-            $('#request-main-slider-val').text(slider_val + ' ' + hr_text);
           }
-        }
-    );
+      );
 
-    $('#edit-price-slider').slider(
-        {
-          'min':10, 
-          'max':25, 
-          'value':15,
-          change: function(event, ui) {
-            $('#final-offering-price').text($('#edit-price-slider').slider('value'));
-            slider_val = $('#edit-price-slider').slider('value');
-            $('#edit-price-slider-val').text('$' + slider_val + '/hr');
+      $('#edit-price-slider').slider(
+          {
+            'min':10, 
+            'max':25, 
+            'value':15,
+            change: function(event, ui) {
+              $('#final-offering-price').text($('#edit-price-slider').slider('value'));
+              slider_val = $('#edit-price-slider').slider('value');
+              $('#edit-price-slider-val').text('$' + slider_val + '/hr');
+            }
           }
-        }
-    );
-
-    $(function() {
-      $('a[href*=#]:not([href=#])').click(function() {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-          var target = $(this.hash);
-          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-          if (target.length) {
-            $('html,body').animate({
-              scrollTop: target.offset().top
-            }, 1000);
-            return false;
+      );
+    }
+    $('#email-notif-check').change(function(){
+          var status = this.checked;
+          if (status) {
+            send_notification_ajax('email', true)
+          } else {
+            send_notification_ajax('email', false)
           }
-        }
+          $('#email-notif-saved-text').show();
+          $('#email-notif-saved-text').delay(750).fadeOut('slow');
       });
+
+    $('#slc-tutor-check').change(function(){
+          send_profile_update_ajax('slc', this.checked)
     });
 
-    $('a[href*=#]:not([href=#])').click(function() {
-      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-        if (target.length) {
-          $('html,body').animate({
-            scrollTop: target.offset().top
-          }, 600);
-          return false;
-        }
+    $('#ta-tutor-check').change(function(){
+          send_profile_update_ajax('ta', this.checked)
+    });
+
+    $('#prev-tutor-check').change(function(){
+          send_profile_update_ajax('previous', this.checked)
+    });
+
+    $('#la-tutor-check').change(function(){
+          send_profile_update_ajax('la', this.checked)
+    });
+
+    $('#res-tutor-check').change(function(){
+          send_profile_update_ajax('res', this.checked)
+    });
+
+    $('#submit-profile-info-btn').click(function() {
+      if ($('#profile-relevant-experience').length > 0) {
+        send_profile_update_ajax('intro', $('#profile-relevant-experience').val());
       }
+      send_profile_update_ajax('major', $('#profile-major').val());
+      $('#profile-saved').show();
+      $('#profile-saved').delay(750).fadeOut('slow');
     });
 
     function readJSON(file) {
@@ -162,6 +176,53 @@ $(document).ready(function(){
         $('#student-next-link').trigger('click');
       }
     });
+
+    $('#settings-change-pwd-toggle').click(function() {
+      if ($('#change-pwd-settings-container').is(':visible')) {
+        $('#change-pwd-settings-container').hide();
+        $('#settings-change-pwd-toggle').children('span:first').text('Change');
+      } else {
+        $('#change-pwd-settings-container').show();
+        $('#settings-change-pwd-toggle').children('span:first').text('Cancel')
+      }
+    });
+
+    $('#save-password-btn').click(function() {
+      if (!$('input[name="old-pwd"]').val() || !$('input[name="confirm-pwd"]').val()) {
+        $("#change-password-alert").text('Please fill in all fields');
+        $("#change-password-alert").show();
+      } else {
+        update_password_ajax($('input[name="old-pwd"]').val(), $('input[name="new-pwd"]').val())
+      }
+    });
+
+    var update_password_ajax = function(old_password, new_password) {
+        var data = {'old-pwd':old_password, 'new-pwd':new_password};
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/update-password/' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function(result) {
+              var response_dict = result.response
+              if (response_dict['error']) {
+                $("#change-password-alert").text(response_dict['error']);
+                $("#change-password-alert").show();
+              }
+              if (response_dict['success']) {
+                $("#change-password-alert").hide();
+                $('#change-pwd-settings-container').hide();
+                $('input[name="old-pwd"]').val('')
+                $('input[name="new-pwd"]').val('')
+
+                $('#saved-password').show();
+                $('#saved-password').delay(750).fadeOut('slow');
+              }
+            }
+        });  
+    };
+
 
     $('#urgency-request').on('click', '.urgency', function(){
       var current_active = $('#urgency-request .urgency.active');
@@ -399,6 +460,11 @@ $(document).ready(function(){
       $('#tutor-app-year').css('text-align','left');
     });
 
+    $('#profile-dropdown li a').click(function() {
+      $('#profile-dropdown-selected').text($(this).text());
+      $('#profile-dropdown-selected').css('text-align','left');
+    });
+
     $('#tutor-next-link').click(function(){
        if (!$('#student-signup-name').val() || !$('#student-signup-email').val() 
         || !$('#student-signup-password').val()) 
@@ -454,7 +520,7 @@ $(document).ready(function(){
           $('#alert-fields-request-form').show(); 
       } else {
       //If they have already signed up
-      if ($('#request-form-options').is(':visible')) {
+      if ($('#request-form-options').is(':visible') || $('#feed').length > 0) {
         submit_request_form_to_server();
        } else {
         request_form_complete = true;
@@ -465,6 +531,53 @@ $(document).ready(function(){
        }
       }
     });
+
+    $('#upload-photo-link').on('click', function(e) {
+          e.preventDefault();
+          $("#upload-photo:hidden").trigger('click');
+        });
+
+        $("#upload-photo:hidden").change(function(){
+            var file = this.files[0]
+            name = file.name; 
+            size = file.size;
+            type = file.type;
+            // if (file.size > 100000) {
+            //   alert("File is too big")
+            // } else
+            if (file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg' ) {
+              alert("File doesnt match png, jpg, or gif");
+            } else {
+              $('#settings-notif').hide();
+              $('#student-photo-alert').hide();
+              $('#upload-photo-saved').show();
+              $('#upload-photo-saved').delay(750).fadeOut('slow');
+              readURL(this); 
+              var formData = new FormData()
+              formData.append('file', file)
+              $.ajax({
+                url:'/update-profile/',
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false 
+              });
+            }
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function (e) {
+                    $('#tutor-app-photo').attr('src', e.target.result);
+                    $('#tutor-app-photo').show()
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
     function submit_request_form_to_server() {
       $('#alert-fields-request-form').hide(); 
@@ -605,17 +718,18 @@ $(document).ready(function(){
     });
 
     $('#forgot-password-link').click(function() {
-      $('#login-page').hide();
-      $('#forgot-password-page').show();
+      $('#login-modal-container').hide();
+      $('#forgot-password-modal-container').show();
     });
 
     $('#password-submit-link').click(function() {
       if (!$('#password-email').val()) {
-            $('#password-fields-login').show();
+            $('#alert-fields-forgot-password').show();
       } else {
         var data = {
           'email': $('input[name="password-email"]').val(),
         }
+        $('#alert-fields-forgot-password').hide();
         $.ajax({
           type: "POST",
           contentType: 'application/json;charset=UTF-8',
@@ -623,9 +737,11 @@ $(document).ready(function(){
           data: JSON.stringify(data),
           dataType: "json",        
           success: function(result) {        
-            $('#password-fields-login').css('color','red')
-            $('#password-fields-login').text('We have sent an email to this address with an activation link.')
-            $('#password-fields-login').show();
+            $('#forgot-password-modal-container').hide();
+            $('#login-modal-container').show();
+            $('#alert-fields-login').css('color','red')
+            $('#alert-fields-login').text('We have sent an email to this address with a new password.')
+            $('#alert-fields-login').show();
           }
         })
       }
@@ -663,7 +779,8 @@ $(document).ready(function(){
             if (result.json['success']) {
                 window.location.replace('/activity/');
             } else {
-                $('#alert-fields-login').show();
+                $('#alert-fields-login-2').text('Incorrect email or password');
+                $('#alert-fields-login-2').show();
                 $('#alert-fields-login-redirect').hide();
             }
         }
@@ -796,6 +913,35 @@ $(document).ready(function(){
       source: numbers.ttAdapter()
     }).on('typeahead:selected', onTypeaheadSelectedTutorApp);
 
+    $('#courses-profile-input.typeahead').typeahead(null, {
+      displayKey: 'name',
+      source: numbers.ttAdapter()
+    }).on('typeahead:selected', onTypeaheadSelectedTutorProfile);
+
+
+    function onTypeaheadSelectedTutorProfile(event, suggested, dataset_name) {
+      var course_name = $('#courses-profile-input').val();
+      if (autocomplete_json.indexOf(course_name) == -1) {
+            alert('Please only add things from the available options.');
+            return;
+      } 
+
+      $('.courses-add-container').append("<span class='tutor-profile-course-tag'><span>" + course_name + 
+          '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="remove-skill-tutor-profile">x</a></span>' );
+      $('#courses-tutor-input').val('');
+      update_skill_ajax('add', course_name);
+      $('a.remove-skill-tutor-profile').click(function() {
+        $(this).parent().remove();
+        update_skill_ajax('remove', $(this).siblings('span').text().toLowerCase());
+    });
+    };
+
+    $('a.remove-skill-tutor-profile').click(function() {
+        $(this).parent().remove();
+        update_skill_ajax('remove', $(this).siblings('span').text().toLowerCase());
+    });
+
+
     function onTypeaheadSelectedTutorApp(event, suggested, dataset_name) {
       var course_name = $('#courses-tutor-input').val();
       if (autocomplete_json.indexOf(course_name) == -1) {
@@ -855,11 +1001,37 @@ $(document).ready(function(){
       $('#student-next-link').hide();
     });
 
+    $('#become-guru-nav-request').click(function() {
+      $('#signup-modal').modal();
+      $('#tutor-next-link').show();
+      $('#student-next-link').hide();
+    });
+
+    $('#become-guru-tutor').click(function() {
+      $('#signup-modal').modal();
+      $('#tutor-next-link').show();
+      $('#student-next-link').hide();
+    });
+
     $('#signup-nav').click(function() {
       $('#signup-modal').modal();
       $('#tutor-next-link').hide();
       $('#student-next-link').show();
     });
+
+    $('#signup-nav-request').click(function() {
+      $('#signup-modal').modal();
+      $('#tutor-next-link').hide();
+      $('#student-next-link').show();
+    });
+
+    $('#signup-nav-tutor').click(function() {
+      $('#signup-modal').modal();
+      $('#tutor-next-link').hide();
+      $('#student-next-link').show();
+    });
+
+
     
     $('#student-signup-name').blur(function(){
       if ($('#student-signup-name').val().split(" ").length > 1) {
@@ -988,6 +1160,81 @@ $(document).ready(function(){
         $('#student-signup-location').css({"border-color":"red"
         });
       }
+    });
+
+    var send_notification_ajax = function(email_or_text, value) {
+        var data = {};
+        if (email_or_text == 'email') {
+            data['email'] = value;
+        } else {
+            data['text'] = value;
+        }
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/notification-settings/' ,
+            data: JSON.stringify(data),
+            dataType: "json"
+        });  
+    };
+
+    var send_profile_update_ajax = function(to_change, value) {
+      var data = {};
+      if (to_change =='previous') {
+        data['previous'] = value;
+        $('#prev-tutor-saved').show();
+        $('#prev-tutor-saved').delay(750).fadeOut('slow');
+      }
+      if (to_change =='slc') {
+        data['slc'] = value;
+        $('#slc-tutor-saved').show();
+        $('#slc-tutor-saved').delay(750).fadeOut('slow');
+      }
+      if (to_change == 'intro') {
+        data['intro'] = value
+      }
+      if (to_change == 'hkn') {
+        data['hkn'] = value
+      }
+      if (to_change == 'ta') {
+        data['ta'] = value
+        $('#ta-tutor-saved').show();
+        $('#ta-tutor-saved').delay(750).fadeOut('slow');
+      }
+      if (to_change == 'la') {
+        data['la'] = value 
+        $('#la-tutor-saved').show();
+        $('#la-tutor-saved').delay(750).fadeOut('slow');
+      }
+      if (to_change == 'res') {
+       data['res'] = value 
+       $('#res-tutor-saved').show();
+        $('#res-tutor-saved').delay(750).fadeOut('slow');
+      }
+      if (to_change =='year') {
+        data['year'] = value
+      }
+      if (to_change =='discover') {
+        data['discover'] = value 
+      }
+      if (to_change =='major') {
+        data['major'] = value
+      }
+      $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/update-profile/' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+      });
+    };
+
+    $('#profile-dropdown').on('click', '.dropdown-menu li a', function() {
+      var selected_text = $(this).text();
+      $('#profile-dropdown-selected').text(selected_text)
+      $('#school-year-saved').show();
+      $('#school-year-saved').delay(750).fadeOut('slow');
+      send_profile_update_ajax('year', selected_text)
     });
 
 });
