@@ -796,6 +796,10 @@ td.time-slot {
     text-align:center;
 }
 
+#request-form-options {
+  display:inline-block;
+}
+
 .center {
     text-align:center;
 }
@@ -888,6 +892,10 @@ h1.extra-extra-margin-top {
 
 .guarantee-container {
   padding:30px;
+}
+
+a:hover {
+  text-decoration: none
 }
 
 .dark-grey-text {

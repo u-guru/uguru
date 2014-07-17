@@ -15,6 +15,7 @@ from twilio import twiml
 from mixpanel import Mixpanel
 from apscheduler.scheduler import Scheduler
 import logging
+import api
 
 
 
@@ -1227,78 +1228,78 @@ def reset_pw():
 
     return jsonify(return_json=return_json)
 
-@app.route('/api/<arg>', methods=('GET', 'POST'))
-def api(arg):
-    return_json = {}
-    ajax_json = request.json
-    print ajax_json
+# @app.route('/api/<arg>', methods=('GET', 'POST'))
+# def api(arg):
+#     return_json = {}
+#     ajax_json = request.json
+#     print ajax_json
     
-    if arg == 'support':
+#     if arg == 'support':
 
-        user_id = session.get('user_id')
-        user = User.query.get(user_id)
+#         user_id = session.get('user_id')
+#         user = User.query.get(user_id)
 
-        support_topic = ajax_json['selected-issue']
-        support_detail = ajax_json['detail']
+#         support_topic = ajax_json['selected-issue']
+#         support_detail = ajax_json['detail']
 
-        from emails import send_support_email
-        send_support_email(support_topic, support_detail, user)
+#         from emails import send_support_email
+#         send_support_email(support_topic, support_detail, user)
 
 
-    if arg == 'sample-tutors':
+#     if arg == 'sample-tutors':
         
-        from app.static.data.variations import courses_dict
+#         from app.static.data.variations import courses_dict
         
-        course_str = ajax_json['course'].lower()
-        skill_to_add_id = courses_dict[course_str]
-        skill = Skill.query.get(skill_to_add_id)
+#         course_str = ajax_json['course'].lower()
+#         skill_to_add_id = courses_dict[course_str]
+#         skill = Skill.query.get(skill_to_add_id)
 
-        tutors = skill.tutors
+#         tutors = skill.tutors
 
-        count = 0
-        tutor_array = []
-        for tutor in skill.tutors:
-            if count >= 5:
-                break
-            if tutor.profile_url:
-                tutor_array.append(tutor.profile_url
-                )
+#         count = 0
+#         tutor_array = []
+#         for tutor in skill.tutors:
+#             if count >= 5:
+#                 break
+#             if tutor.profile_url:
+#                 tutor_array.append(tutor.profile_url
+#                 )
     
-        return_json['enough-tutors'] = count > 5
-        return_json['tutors'] = tutor_array
+#         return_json['enough-tutors'] = count > 5
+#         return_json['tutors'] = tutor_array
 
-    if arg =='guru-app':
-        user_id = session.get('user_id')
-        user = User.query.get(user_id)
+#     if arg =='guru-app':
+#         user_id = session.get('user_id')
+#         user = User.query.get(user_id)
 
-        user.school_email = ajax_json['school-email']
-        user.major = ajax_json['major']
-        user.qualifications = ajax_json['experience']
-        user.year = ajax_json['year']
-        user.slc_tutor = ajax_json['slc']
-        user.la_tutor = ajax_json['la']
-        user.res_tutor = ajax_json['res']
-        user.ta_tutor = ajax_json['gsi']
-        user.previous_tutor = ajax_json['cal']
+#         user.school_email = ajax_json['school-email']
+#         user.major = ajax_json['major']
+#         user.qualifications = ajax_json['experience']
+#         user.year = ajax_json['year']
+#         user.slc_tutor = ajax_json['slc']
+#         user.la_tutor = ajax_json['la']
+#         user.res_tutor = ajax_json['res']
+#         user.ta_tutor = ajax_json['gsi']
+#         user.previous_tutor = ajax_json['cal']
 
-        courses = ajax_json['courses']
+#         courses = ajax_json['courses']
 
-        from app.static.data.variations import courses_dict
+#         from app.static.data.variations import courses_dict
 
-        for course_txt in courses:
-            skill_to_add_id = courses_dict[course_txt]
-            skill = Skill.query.get(skill_to_add_id)
-            # db_session.add(skill)
-            user.skills.append(skill)
+#         for course_txt in courses:
+#             skill_to_add_id = courses_dict[course_txt]
+#             skill = Skill.query.get(skill_to_add_id)
+#             # db_session.add(skill)
+#             user.skills.append(skill)
         
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
+#         try:
+#             db_session.commit()
+#         except:
+#             db_session.rollback()
+#             raise 
 
 
-    return jsonify(response=return_json)
+#     return jsonify(response=return_json)
 
 
 @app.route('/update-skill/', methods=('GET', 'POST'))
@@ -1495,7 +1496,8 @@ def success():
 
             #Process calendar information
             weekly_availability = ajax_json['calendar']
-            
+            print weekly_availability
+
             week_times = Week(owner=0)
             db_session.add(week_times)
             i = 0
@@ -1657,11 +1659,12 @@ def admin_logout():
 @app.route('/login/', methods=('GET', 'POST'))
 def login():
     if session.get('user_id'):
-        flash("You are already logged in!")
+        # flash("You are already logged in!")
         return redirect(url_for('index'))
     if request.method == "POST":
         json = {}
         ajax_json = request.json
+        print ajax_json
         if ajax_json['email'].lower() == 'testing@uguru.me' \
             and ajax_json['password'].lower() == 'launchuguru' and os.environ.get('TESTING'):
             session['testing-admin'] = True

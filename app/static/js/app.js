@@ -192,6 +192,7 @@ $(document).ready(function(){
         $("#change-password-alert").text('Please fill in all fields');
         $("#change-password-alert").show();
       } else {
+        $('#settings-change-pwd-toggle').children('span:first').text('Change');
         update_password_ajax($('input[name="old-pwd"]').val(), $('input[name="new-pwd"]').val())
       }
     });
@@ -394,7 +395,7 @@ $(document).ready(function(){
                 if (result.dict['account-exists']) {
                   $('#signup-modal').modal('hide');
                   $('#login-modal').modal('show');
-                  $('#alert-fields-login').text($('#student-signup-email').val() + ' already has an account! Please Log In.')
+                  $('#alert-fields-login').text($('#student-signup-email').val() + ' already has an account! Please log in.')
                   $('#alert-fields-login').show();
                   return;
                 }
@@ -1015,6 +1016,12 @@ $(document).ready(function(){
     });
 
     $('#signup-nav').click(function() {
+      $('#signup-modal').modal();
+      $('#tutor-next-link').hide();
+      $('#student-next-link').show();
+    });
+
+    $('#signup-nav-2').click(function() {
       $('#signup-modal').modal();
       $('#tutor-next-link').hide();
       $('#student-next-link').show();
