@@ -215,6 +215,7 @@ def api(arg):
                 db_session.rollback()
                 raise 
 
+            r = Request.query.get(r.id)
             current_notification = Notification.query.get(current_notification.id)
             response = {"request": r.__dict__,
                         "notifications": [current_notification.__dict__],
