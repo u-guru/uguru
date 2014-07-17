@@ -1504,7 +1504,7 @@ def general_notification_html(user_name, msg):
 
 def error(message):
 
-    EMAIL_TO = ["makhani.samir@gmail.com"]
+    EMAIL_TO = ["makhani.samir@gmail.com", "cameronehrlich@gmail.com"]
 
     if os.environ.get('TESTING'):
         EMAIL_FROM = "TESTING Error <sandbox_error@uguru.me>"

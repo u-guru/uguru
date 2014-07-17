@@ -26,7 +26,7 @@ def api(arg):
 
 
     # sign_up logic
-    if arg == 'sign-up' and request.method == 'POST': 
+    if arg == 'sign_up' and request.method == 'POST': 
 
         email = request.json.get("email")
         password = request.json.get("password")
@@ -61,7 +61,7 @@ def api(arg):
         return jsonify(response)
 
     # sign_in logic
-    if arg == 'sign-in' and request.method == 'POST':
+    if arg == 'sign_in' and request.method == 'POST':
         email = request.json.get("email")
         
         if request.json.get('password'):
@@ -95,7 +95,7 @@ def api(arg):
             return jsonify(response)
         return errors(["User or password were not correct"])
 
-    if arg =='apply-guru' and request.method == 'POST':
+    if arg =='apply_guru' and request.method == 'POST':
         user = getUser()
         
         print request.json
@@ -144,7 +144,7 @@ def api(arg):
         return errors(["Invalid Token"])    
 
 
-    if arg =='tutor-accept' and request.method =='POST':
+    if arg =='tutor_accept' and request.method =='POST':
         user = getUser()
         if user:
             request_id = request.json.get('request_id')
@@ -227,7 +227,7 @@ def api(arg):
 
 
 
-    if arg =='cancel-request' and request.method =='POST':
+    if arg =='cancel_request' and request.method =='POST':
         user = getUser()
         if user:
             print request.json
@@ -248,10 +248,14 @@ def api(arg):
             except:
                 db_session.rollback()
                 raise
+
+            user = User.query.get(user.id)
+            response = {'user': user.__dict__}
+            return json.dumps(response, default=json_handler, indent=4)
         return errors(['Invalid Token'])
     
 
-    if arg =='student-request' and request.method =='POST':
+    if arg =='student_request' and request.method =='POST':
 
         user = getUser()
         if user:
@@ -370,6 +374,7 @@ def api(arg):
                 db_session.rollback()
                 raise
 
+            r = Request.query.get(r.id)
             student_notification = Notification.query.get(student_notification_id)
             response = {"request": r.__dict__,
                         "notifications": [student_notification.__dict__],
@@ -466,6 +471,7 @@ def json_handler(obj):
     if obj.__class__.__name__ == 'InstanceState':
         return None
     else:
+        return json.JSONEncoder.default(self,obj)
         return obj
 
 def create_user(email, password, phone_number, name):
