@@ -74,7 +74,10 @@ function show_student_request_calendar(arr_ranges) {
     calendar_view_only();
 }
 
-function show_tutor_request_submitted_calendar(student_ranges, tutor_ranges) {
+function show_tutor_request_submitted_calendar(student_ranges, tutor_ranges, message_flag) {
+    if (message_flag) {
+        $('#calendar-header-text').hide();
+    }
     reset_calendar();
     add_mult_ranges_to_calendar(student_ranges, tutor_ranges);
     calendar_view_only();

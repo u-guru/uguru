@@ -134,6 +134,27 @@ def api(arg):
 
         return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
 
+    if arg =='stripe_token' and request.method == 'POST':
+        user = getUser()
+        if user:
+            user_token = request.json.get('stripe-token')
+            customer = stripe.Customer.create(
+                email=user.email,
+                card = stripe_user_token
+                )
+
+            user.customer_id = customer.id
+            user.customer_last4 = customer['cards']['data'][0]['last4']
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+
+            response = {"user": user.__dict__}
+
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+
     if arg == 'notifications' and request.method == 'GET':
         user = getUser()
         if user:

@@ -1428,12 +1428,18 @@ def success():
             # session.pop('signup-start-user-id')
             # session.pop('signup-start')
             try:
-                from notifications import getting_started_student, getting_started_student_tip
-                notification = getting_started_student(u)
-                notification2 = getting_started_student_tip(u)
+                from notifications import getting_started_student, getting_started_tutor, getting_started_student_tip
+                if session.get('tutor-signup'):
+                    notification = getting_started_tutor(u)
+                    from emails import welcome_uguru_tutor
+                    welcome_uguru_tutor(u)
+                else:
+                    notification = getting_started_student(u)
+                    notification2 = getting_started_student_tip(u)
+                    u.notifications.append(notification2)
+                    db_session.add(notification2)
                 u.notifications.append(notification)
-                u.notifications.append(notification2)
-                db_session.add_all([u, notification, notification2])
+                db_session.add_all([u, notification])
                 db_session.commit()
             except:
                 db_session.rollback()
@@ -1481,6 +1487,7 @@ def success():
             if u.outgoing_requests:
                 for r in u.outgoing_requests:
                     if r.skill_id == skill_id:
+                        print 'this happened'
                         return jsonify(dict={'duplicate-request': True})
 
             r = Request(
@@ -1492,7 +1499,9 @@ def success():
                 time_estimate = float(ajax_json['estimate'])
             )
 
-            r.professor = ajax_json['professor']
+            #optional
+            if ajax_json.get('professor'):
+                r.professor = ajax_json['professor']
 
             #Process calendar information
             weekly_availability = ajax_json['calendar']
@@ -1856,18 +1865,21 @@ def messages():
         return redirect(url_for('settings'))
     pretty_dates = {}
     transactions = []
+    calendars = {}
     for p in user.payments:
         if user.verified_tutor:
             transactions.append(User.query.get(p.student_id))
         else:
             transactions.append(User.query.get(p.tutor_id))
     for conversation in user.mailbox.conversations:
+        r = conversation.requests[0]
+        calendars[r] = (get_student_time_ranges(r.weekly_availability, 0), get_tutor_time_ranges(r.weekly_availability))
         for message in conversation.messages:
             pretty_dates[message.id] = pretty_date(message.write_time)
     
     conversations = sorted(user.mailbox.conversations, key=lambda c:c.last_updated)
     return render_template('messages.html', user=user, pretty_dates=pretty_dates, environment = get_environment(), session=session, \
-        transactions = transactions, conversations=conversations)
+        transactions = transactions, conversations=conversations, calendars=calendars)
 
 @app.route('/student_request/')
 def student_request():

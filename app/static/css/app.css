@@ -438,7 +438,7 @@ input {
 }
 
 .message-sender-name {
-  left:30px;
+  left:25px;
   bottom:-18px;
   position:absolute;
   font-size:16px;
@@ -677,6 +677,10 @@ textarea {
   display:inline-block;
 }
 
+.align-left {
+  text-align:left;
+}
+
 #exp-date-month {
   width:20%;
 }
@@ -892,6 +896,11 @@ h1.extra-extra-margin-top {
 
 .guarantee-container {
   padding:30px;
+}
+
+.start-convo-container {
+  padding:40px 10px 10px 10px;
+  border-bottom:1px solid #484748;
 }
 
 a:hover {

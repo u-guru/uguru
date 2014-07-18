@@ -89,12 +89,12 @@ $(document).ready(function() {
       }
     });
 
-    $('#feed-messages').on('change', '.tutor-change-price-slider', function() {
-      feed_message_index = last_clicked_notif_index + 1
-      $('#student-offer-hourly-price-' + feed_message_index).text($('#tutor-change-price-slider-'+ feed_message_index).val());
-      $('#student-offer-total-price-' + feed_message_index).text($('#tutor-change-price-slider-'+ feed_message_index).val() * $('#student-time-estimate-' +feed_message_index).text());
-      $('#tutor-will-pay-' + feed_message_index).text(prices_dict[parseInt($('#tutor-change-price-slider-' + feed_message_index).val())])
-    });
+    // $('#feed-messages').on('change', '.tutor-change-price-slider', function() {
+    //   feed_message_index = last_clicked_notif_index + 1
+    //   $('#student-offer-hourly-price-' + feed_message_index).text($('#tutor-change-price-slider-'+ feed_message_index).val());
+    //   $('#student-offer-total-price-' + feed_message_index).text($('#tutor-change-price-slider-'+ feed_message_index).val() * $('#student-time-estimate-' +feed_message_index).text());
+    //   $('#tutor-will-pay-' + feed_message_index).text(prices_dict[parseInt($('#tutor-change-price-slider-' + feed_message_index).val())])
+    // });
 
     $('#feed-messages').on('click', '.tutor-change-price-link', function() {
       feed_message_index = last_clicked_notif_index + 1
@@ -103,7 +103,7 @@ $(document).ready(function() {
         }
         $('#request-student-offer-index-' + feed_message_index).text('The student will pay:')
         $('#student-has-agreed-' + feed_message_index).hide();
-        $('#tutor-change-price-slider-' + feed_message_index).val(student_original_price);
+        $('#tutor-change-price-slider-' + feed_message_index).slider({'value':student_original_price});
         $('#tutor-change-price-link-' + feed_message_index).hide();
         $('#tutor-change-price-slider-div-' + feed_message_index).show();
     })
@@ -114,7 +114,7 @@ $(document).ready(function() {
       $('#student-has-agreed-' + feed_message_index).show();
       $('#request-student-offer-index-' + feed_message_index).text('The student is offering:')
       $('#tutor-change-price-link-' + feed_message_index).show();
-      $('#tutor-change-price-slider-' + feed_message_index).val(student_original_price);
+      $('#tutor-change-price-slider-' + feed_message_index).slider({'value':student_original_price});
       $('#student-offer-hourly-price-' + feed_message_index).text(student_original_price);
       $('#student-offer-total-price-' + feed_message_index).text((student_original_price * $('#student-time-estimate-'+ feed_message_index).text()))
     });
@@ -153,6 +153,7 @@ $(document).ready(function() {
           data: JSON.stringify(data),
           dataType: "json",
           success: function(result) {
+            alert('sup');
             if (result.dict['no-active-tutors']) {
               $('#tutor-request').show();
               $('#request-credit-card-success').hide();
@@ -164,7 +165,7 @@ $(document).ready(function() {
             else if (result.dict['duplicate-request']) {
               $('#already-have-active-request-alert').show();
               event_click('request-already-active')
-              return false;
+              // return false;
             } else if (result.dict['tutor-request-same']) {
               $('#tutor-request').show();
               $('#request-credit-card-success').hide();
@@ -282,7 +283,7 @@ $(document).ready(function() {
    $('#change-hourly-price-cancel').click(function() {
     $('#change-hourly-price').hide();
     $('#change-hourly-price-link-div').show();
-    $("#hourly-price-slider-payment").val(15);
+    $("#hourly-price-slider-payment").slider({'value':15});
    });
 
    $('#request-payment-link').click(function() {
@@ -420,14 +421,14 @@ $(document).ready(function() {
         }
         $('#secret-animal-code-alert').hide();
         conversation_id = parseInt($('#select-person-to-pay #selected-person-to-pay').attr('class').split('-').reverse()[0])
-        total_time = $('#time-estimate-slider-payment').val();
+        total_time = $('#time-estimate-slider-payment').slider('value');
         var data = {
             'submit-payment': conversation_id,
             'total-time': total_time,
             'secret-code': $('#secret-code').val()
         }
         if ($('#change-hourly-price:visible').length > 0) {
-          data['price-change'] = $('#hourly-price-slider-payment').val();
+          data['price-change'] = $('#hourly-price-slider-payment').slider('value');
         }
         $('#submit-payment').click(false);
         $.ajax({
@@ -659,7 +660,7 @@ $(document).ready(function() {
     })
 
     $('#hourly-price-slider-payment').change(function() {
-      $('#student-charged-payment').text(prices_reversed_dict[parseInt($('#hourly-price-slider-payment').val()) + ""])
+      $('#student-charged-payment').text(prices_reversed_dict[parseInt($('#hourly-price-slider-payment').slider('value'))] + "")
     });
 
 

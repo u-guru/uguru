@@ -245,7 +245,7 @@
 				<a class='main-feed-messages'id="{{n.a_id_name}}" href="#	{{n.a_id_name}}-detailed">
 				{% endif %}
 					<div {% if n.a_id_name == 'getting-started' or (n.custom_tag=='tutor-receive-payment' and n.time_read) or (n.custom_tag=='student-payment-approval' and n.time_read) %} style="cursor:default;" {%endif%}class="notification {% if not n.time_read %} grey-background shadow{% endif %}" align:"center">
-						<img src="{{n.image_url}}" class="user-photo" style="float:left; margin-top:-10px">
+						<img src="{% if n.image_url %}{{n.image_url}}{% else %} {{user.profile_url}}{% endif%}" class="user-photo" style="float:left; margin-top:-10px">
 							<h5 style="margin-bottom:0px; margin-top:0px">{{n.feed_message|safe}}</h4>
 							{% if n.feed_message_subtitle %}
 								<h6 style="padding-top:4px;margin-top:0px; color:grey">{{n.feed_message_subtitle|safe}}</h5>
@@ -502,14 +502,14 @@
 				<h4><b> How Long Did You Tutor?</b></h4>
 				<div style="color:rgb(0, 159, 225)" class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
 					<div id="time-estimate-slider-payment" style="margin-top:7px; margin-bottom:5px"></div>
-                    <p style="margin-left:5px; font-size:14px; margin-top:3px; font-weight:700"class="text-left"><span style="font-size:14px;color:rgb(0, 159, 225)" name="estimate" id="payment"></span> hours</p>
+                    <p style="margin-left:5px; font-size:14px; margin-top:3px; font-weight:700"class="text-left"><span style="font-size:14px;color:rgb(0, 159, 225)" name="estimate" id="payment">2</span> hours</p>
 				</div>
 			</div>
 			<div id="change-hourly-price" style="display:none; text-align:center"class="row">
 				<h4 style="margin-top:5px;"><b> What Hourly Price Did You Settle?</b></h4>
 				<div style="color:rgb(0, 159, 225)" class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
 					<div id="hourly-price-slider-payment" style="margin-top:7px; margin-bottom:5px"></div>
-					<p style="margin-left:5px; color:grey; font-size:14px; margin-top:3px; font-weight:700"class="text-left">You will make: <span style="color:#69bf69">$<span style="font-size:14px;color:#69bf69" name="estimate" id="price"></span>/hr</span>&nbsp;&nbsp;<span style="color:grey; display:block; font-weight:100; font-size:10px;"><i>(Your student will be charged $<span id="student-charged-payment">17/hr for first payment, or $2 + 3% total for recurring payments.) <span id="student-charged-recurring-payment"></span></i></p>
+					<p style="margin-left:5px; color:grey; font-size:14px; margin-top:3px; font-weight:700"class="text-left">You will make: <span style="color:#69bf69">$<span style="font-size:14px;color:#69bf69" name="estimate" id="price">15</span>/hr</span>&nbsp;&nbsp;<span style="color:grey; display:block; font-weight:100; font-size:10px;"><i>(Your student will be charged $<span id="student-charged-payment">17</span>/hr for first payment, or $2 + 3% total for recurring payments.) <span id="student-charged-recurring-payment"></span></i></p>
 					<a href="javascript:void(0)" style="position:relative; z-index:1000;"id="change-hourly-price-cancel">
 						<h6 style="margin-top:0px; margin-bottom:10px; color:grey">
 						Cancel
@@ -537,7 +537,7 @@
               <div style="padding-left:20px; padding-right:20px"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
                 <a id="submit-payment" href="javascript:void(0)">
                   <div class="tutor-submit-next">
-                    <p> REQUEST </p>
+                    <p style='color:white'> REQUEST </p>
                   </div>
                 </a>
               </div>
@@ -1392,7 +1392,7 @@
 							  			<div class="h4 request-info-row">
 							  				{% if request_dict[n.request_id]['student-calendar'] %}
 							  				<span class='grey-text'> See chosen time: </span> 
-				                              <a id='request-calendar-toggle' onclick='show_tutor_request_submitted_calendar({{request_dict[n.request_id]["student-calendar"]}}, {{request_dict[n.request_id]["tutor-calendars"][tutor_dict[n].id]}})'>
+				                              <a id='request-calendar-toggle' onclick='show_tutor_request_submitted_calendar({{request_dict[n.request_id]["student-calendar"]}}, {{request_dict[n.request_id]["tutor-calendars"][tutor_dict[n].id]}}, false)'>
 				                                <span class='glyphicon glyphicon-calendar'></span>
 				                              </a>
 				                            {% else %}
@@ -1697,11 +1697,11 @@
 							  				{% if request_dict[n.request_id]['student-calendar'] %}
 								  				{% if n.custom == 'tutor-accept-request' and not request_dict[n.request_id]['request'].connected_tutor_id == request_dict[n.request_id]['student'].id%}
 						                        <span class='grey-text'> See chosen time: </span> 
-					                              <a id='request-calendar-toggle' onclick='show_tutor_request_submitted_calendar({{request_dict[n.request_id]["student-calendar"]}}, {{request_dict[n.request_id]["tutor-calendars"][user.id]}})'>
+					                              <a id='request-calendar-toggle' onclick='show_tutor_request_submitted_calendar({{request_dict[n.request_id]["student-calendar"]}}, {{request_dict[n.request_id]["tutor-calendars"][user.id]}}, false)'>
 					                                <span class='glyphicon glyphicon-calendar'></span>
 					                              </a>
 						                        {% else %}
-						                        <span class='grey-text'> Select a time: </span> 
+						                        <span class='red-text'> Select a time: </span> 
 					                              <a id='request-calendar-toggle' onclick='show_tutor_request_calendar({{request_dict[n.request_id]["student-calendar"]}},{{request_dict[n.request_id]["request"].time_estimate}})'>
 					                                <span class='glyphicon glyphicon-calendar'></span>
 					                              </a>
@@ -1908,59 +1908,88 @@
 	<script src="/static/js/jquery.nouislider.new.min.js"></script>
 	<script>
         var Link = $.noUiSlider.Link; 
-        $("#time-estimate-slider").noUiSlider({
-              start: 1
-              ,range: {'min':[1], 'max':[10]}
-              ,step: 0.5
-              ,serialization: {
-                lower: [ new Link (
-                  {
-                    target: $('#low')
-                  })
-                ],
-                format: {
-                  decimals:1
-                }
-              }
-        });
-        $("#ideal-price-slider").noUiSlider({
-            start: 20
-            ,range: {'min':[11], 'max':[40]}
-            ,step: 1
-            ,serialization: {
-              lower: [ new Link (
-                {
-                  target: $('#high')
-                })
-              ],
-              format: {
-                decimals:1
-              }
-            }  
-        });
+        // $("#time-estimate-slider").noUiSlider({
+        //       start: 1
+        //       ,range: {'min':[1], 'max':[10]}
+        //       ,step: 0.5
+        //       ,serialization: {
+        //         lower: [ new Link (
+        //           {
+        //             target: $('#low')
+        //           })
+        //         ],
+        //         format: {
+        //           decimals:1
+        //         }
+        //       }
+        // });
+        // $("#ideal-price-slider").noUiSlider({
+        //     start: 20
+        //     ,range: {'min':[11], 'max':[40]}
+        //     ,step: 1
+        //     ,serialization: {
+        //       lower: [ new Link (
+        //         {
+        //           target: $('#high')
+        //         })
+        //       ],
+        //       format: {
+        //         decimals:1
+        //       }
+        //     }  
+        // });
         {% if user.verified_tutor %}
-        $(".tutor-change-price-slider").noUiSlider({
-           	start:5
-           	,range: {'min':[5], 'max':[40]}
-           	,step: 1
-        }); 
+        // $(".tutor-change-price-slider").noUiSlider({
+        //    	start:5
+        //    	,range: {'min':[5], 'max':[40]}
+        //    	,step: 1
+        // }); 
+
+        $('.tutor-change-price-slider').slider(
+          {
+            'min':5, 
+            'max':40, 
+            'value':15,
+            change: function(event, ui) {
+              slider_val = $(this).slider('value');
+              hr_text = 'hrs'
+              if (slider_val == 1) {
+                hr_text = 'hr'
+              }
+              feed_message_index = last_clicked_notif_index + 1
+		      $('#student-offer-hourly-price-' + feed_message_index).text($('#tutor-change-price-slider-'+ feed_message_index).slider('value'));
+		      $('#student-offer-total-price-' + feed_message_index).text($('#tutor-change-price-slider-'+ feed_message_index).slider('value') * $('#student-time-estimate-' +feed_message_index).text());
+		      $('#tutor-will-pay-' + feed_message_index).text(prices_dict[parseInt($('#tutor-change-price-slider-' + feed_message_index).slider('value'))])
+            }
+          }
+      	);
         {% endif %}
         {% if address_book or user.verified_tutor %}
-        $("#time-estimate-slider-payment").noUiSlider({
-            start:1
-           	,range: {'min':[0], 'max':[10]}
-           	,step: 0.5
-           	,serialization: {
-                lower: [ new Link (
-                  {
-                    target: $('#payment')
-                  })
-                ],
-                format: {
-                  decimals:1
-                }
-              }
-        });
+        $('#time-estimate-slider-payment').slider(
+          {
+            'min':0, 
+            'max':10, 
+            'value':1,
+            change: function(event, ui) {
+              slider_val = $(this).slider('value');
+              $('#payment').text(slider_val)
+            }
+          }
+      	);
+
+        $('#hourly-price-slider-payment').slider(
+          {
+            'min':10, 
+            'max':40, 
+            'value':15,
+            change: function(event, ui) {
+              slider_val = $(this).slider('value');
+              $('#student-charged-payment').text(prices_reversed_dict[parseInt($('#hourly-price-slider-payment').slider('value'))] + "")
+              $('#price').text(slider_val);
+            }
+          }
+      	);
+
         $("#hourly-price-slider-payment").noUiSlider({
             start:15
            	,range: {'min':[10], 'max':[40]}

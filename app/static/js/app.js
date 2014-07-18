@@ -508,16 +508,7 @@ $(document).ready(function(){
 
     $('#request-form-submit').click(function(){
     if (!$('#request-description').val() || !$('#request-location').val() || 
-        $('td.time-slot.td-selected').length == 0 || !$('#request-professor').val() || !$('#request-skill').val()) {
-          // if ($('td.time-slot.td-selected').length == 0) {
-          //     $('#select-calendar-slot-alert').show();
-          //     $('#request-avail-ok').hide();
-          //     $('#request-avail-remove').show();
-          //   } else {
-          //     $('#select-calendar-slot-alert').hide();
-          //     $('#request-avail-ok').show();
-          //     $('#request-avail-remove').hide();
-          // }
+        $('td.time-slot.td-selected').length == 0 || !$('#request-skill').val()) {
           $('#alert-fields-request-form').show(); 
       } else {
       //If they have already signed up
@@ -602,7 +593,22 @@ $(document).ready(function(){
           data: JSON.stringify(data),
           dataType: "json", 
           success: function(result) {
-              window.location.replace('/activity/');
+              if (result.dict['no-active-tutors']) {
+                $('#alert-fields-request-form').text("Sorry! We currently don't have tutors for this course. We've registered your request and will let you know immediately when we do!");
+                $('#alert-fields-request-form').show();
+                $('#request-form-submit').hide();
+              }
+              else if (result.dict['duplicate-request']) {
+                $('#alert-fields-request-form').text("Sorry! You already have an active request for this class. Please cancel it and try again.");
+                $('#alert-fields-request-form').show();
+                $('#request-form-submit').hide();
+              } else if (result.dict['tutor-request-same']) {
+                $('#alert-fields-request-form').text("Sorry, you cannot make a request for a course that you're a tutor in!");
+                $('#alert-fields-request-form').show();
+                $('#request-form-submit').hide();
+              } else {
+                window.location.replace('/activity/');
+              }
           }
         });
     }
