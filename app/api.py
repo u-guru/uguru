@@ -160,6 +160,16 @@ def api(arg):
         if user:
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             user_notifications_arr = [n.__dict__  for n in user_notifications]
+            tutor_tags = ['tutor-request-offer', 'student-incoming-offer', 'getting-started-tutor', 'tutor-receive-payment', 'tutor-cashed-out']
+            student_tags = ['student-request-help']
+
+
+
+            for n in user_notifications:
+                #Seperate whether it's a student or Guru notifications
+                #Seperate what type (Request vs Pay vs )
+                #Status: 
+
             response = {"notifications": user_notifications_arr}
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])    

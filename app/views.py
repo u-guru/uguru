@@ -77,36 +77,37 @@ def webhooks():
     stripe_response =  event_json['data']['object']
     print stripe_response
     stripe_response_type = stripe_response['object']
-    if stripe_response_type == 'transfer':
-        bank_account_name = stripe_response['account']['bank_name']
-        recipient_id = stripe_response['recipient']
-        status = stripe_response['status']
+    #TODO --> Handle bank account webhooks
+    # if stripe_response_type == 'transfer':
+    #     bank_account_name = stripe_response['account']['bank_name']
+    #     recipient_id = stripe_response['recipient']
+    #     status = stripe_response['status']
 
-        #find user
-        user = User.query.filter_by(recipient_id=recipient_id).first()
-        if user:
-            for n in reversed(user.notifications):
-                print n.id
-                if n.custom_tag == 'tutor-cashed-out':
-                    if status == 'failed':
-                        status = "Your bank account transfer did not go through. Please contact support@uguru.me for quick support."
-                    n.status = status
-                    n.skill_name = bank_account_name
-                    break;
+    #     #find user
+    #     user = User.query.filter_by(recipient_id=recipient_id).first()
+    #     if user:
+    #         for n in reversed(user.notifications):
+    #             print n.id
+    #             if n.custom_tag == 'tutor-cashed-out':
+    #                 if status == 'failed':
+    #                     status = "Your bank account transfer did not go through. Please contact support@uguru.me for quick support."
+    #                 n.status = status
+    #                 n.skill_name = bank_account_name
+    #                 break;
         
-        if user and status == "paid":
-            from emails import tutor_received_transfer
-            amount = float(stripe_response['amount'] / 100)
-            transfer_id = stripe_response['id']
-            last4 = stripe_response['account']['last4']
-            time = datetime.fromtimestamp(stripe_response['date'])
-            tutor_received_transfer(user, amount, bank_account_name, transfer_id, last4, time)
+    #     if user and status == "paid":
+    #         from emails import tutor_received_transfer
+    #         amount = float(stripe_response['amount'] / 100)
+    #         transfer_id = stripe_response['id']
+    #         last4 = stripe_response['account']['last4']
+    #         time = datetime.fromtimestamp(stripe_response['date'])
+    #         tutor_received_transfer(user, amount, bank_account_name, transfer_id, last4, time)
 
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise
+    #     try:
+    #         db_session.commit()
+    #     except:
+    #         db_session.rollback()
+    #         raise
     return "OK"
 
 @app.route('/twilio/', methods=['GET', 'POST'])
