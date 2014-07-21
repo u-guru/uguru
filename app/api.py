@@ -169,6 +169,7 @@ def api(arg):
                 #Seperate whether it's a student or Guru notifications
                 #Seperate what type (Request vs Pay vs )
                 #Status: 
+                pass
 
             response = {"notifications": user_notifications_arr}
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
