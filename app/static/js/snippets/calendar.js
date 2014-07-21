@@ -1,5 +1,6 @@
 $('#request-calendar-toggle').click(function() {
     calendar_edit_mode_request();
+    set_dates(null)
     $('.calendar-modal').show();
 });
 
@@ -11,6 +12,35 @@ $('#request-calendar-close').click(function() {
     reset_calendar();
     $('.calendar-modal').hide();
 })
+
+function set_dates(date_in_seconds) {
+    if (date_in_seconds == null) {
+        var first_date = new Date();
+    } else {
+       var first_date = new Date(date_in_seconds * 1000) 
+    }
+    process_dates(first_date);
+}
+
+// function set_dates(date_in_seconds) {
+//     var first_date = new Date(date_in_seconds * 1000)
+//     process_dates(first_date);
+// }
+
+function process_dates(date) {
+    first_date = date
+    day_names = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    month_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    month_vals = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    day_int = first_date.getDay()
+    var d = first_date.getDate();
+    var m = first_date.getMonth();
+    var y = first_date.getYear();
+    for (i = 0; i < 7; i++) {
+        var nextDate = new Date(y, m, d+i);   
+        $('#calendar-day-'+(i + 1)).text(day_names[(day_int + i) % 7] + ' ' + (month_names[nextDate.getMonth()]) + '/' + nextDate.getDate());
+    }
+}
 
 var clean_td = function(e){
    e.removeClass('success');
@@ -68,13 +98,15 @@ function merge_consecutive(day_range_arr) {
     return results
 }
 
-function show_student_request_calendar(arr_ranges) {
+function show_student_request_calendar(arr_ranges, time_in_seconds) {
+    set_dates(time_in_seconds);
     reset_calendar();
     add_ranges_to_calendar(arr_ranges, 'td-selected');
     calendar_view_only();
 }
 
-function show_tutor_request_submitted_calendar(student_ranges, tutor_ranges, message_flag) {
+function show_tutor_request_submitted_calendar(student_ranges, tutor_ranges, message_flag, time_in_seconds) {
+    set_dates(time_in_seconds)
     if (message_flag) {
         $('#calendar-header-text').hide();
     }
@@ -83,7 +115,8 @@ function show_tutor_request_submitted_calendar(student_ranges, tutor_ranges, mes
     calendar_view_only();
 }
 
-function show_tutor_request_calendar(arr_ranges, time_amount) {
+function show_tutor_request_calendar(arr_ranges, time_amount, time_in_seconds) {
+    set_dates(time_in_seconds)
     reset_calendar();
     add_ranges_to_calendar(arr_ranges, 'td-preselected');
     $('#calendar-header-text').html('Please select exactly <span id="num-hours-student">' + time_amount + '</span> hours of time from the schedule below.') ;

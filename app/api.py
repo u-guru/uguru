@@ -30,7 +30,7 @@ def api(arg):
 
         email = request.json.get("email")
         password = request.json.get("password")
-        phone_number = request.json.get("phone_number")
+        phone_number = ''
         name = request.json.get("name")
         
         new_user, mailbox = create_user(email, password, phone_number, name)

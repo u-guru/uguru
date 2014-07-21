@@ -16,6 +16,7 @@ from mixpanel import Mixpanel
 from apscheduler.scheduler import Scheduler
 import logging
 import api
+import time
 
 
 
@@ -24,7 +25,9 @@ stripe_keys = {
     'publishable_key': os.environ['PUBLISHABLE_KEY']
 }
 MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
-logging.basicConfig()
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 stripe.api_key = stripe_keys['secret_key']
 MAX_UPLOAD_SIZE = 1024 * 1024
@@ -48,8 +51,8 @@ def index():
         return redirect(url_for('index'))
     if session.get('user_id'):
         user = User.query.get(session.get('user_id'))
-        if user.skills and len(user.notifications) < 2:
-            return redirect(url_for('settings'))
+        # if user.skills and len(user.notifications) < 2:
+        #     return redirect(url_for('settings'))
         return redirect(url_for('activity'))
     return render_template('new.html', forms=[request_form],
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
@@ -1596,19 +1599,18 @@ def success():
                 user.verified_tutor = True
 
                 if user.settings_notif == 0: 
-                    user.settings_notif = u.settings_notif + 1
+                    user.settings_notif = user.settings_notif + 1
 
                 if user.notifications:
                     notification = user.notifications[0]
                     notification.feed_message_subtitle = "Application status: <strong><span style='color:#69bf69'>Approved!</span></strong>"
 
-                print user
                 from emails import approved_by_admin_email
                 approved_by_admin_email(user)
                 db_session.commit()
             except:
-                print 'sup'
                 db_session.rollback()
+                raise
 
         if ajax_json.get('verify-tutor'):
             try:
@@ -1828,7 +1830,7 @@ def activity():
         logged_in=session.get('user_id'), user=user, request_dict = request_dict, payment_dict = payment_dict,\
         pretty_dates = pretty_dates, urgency_dict=urgency_dict, tutor_dict=tutor_dict, pending_ratings_dict=pending_ratings_dict,\
         environment = get_environment(), prices_dict=prices_dict, prices_reversed_dict=prices_reversed_dict, session=session,\
-        outgoing_request_index=outgoing_request_index, avg_rating=avg_rating, num_ratings = num_ratings)
+        outgoing_request_index=outgoing_request_index, avg_rating=avg_rating, num_ratings = num_ratings, time=time)
 
 def get_student_time_ranges(week_object, owner):
     if not week_object.first():
