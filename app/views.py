@@ -274,8 +274,8 @@ def admin():
                 transaction_dict['tutor-name'] = _user.name.split(" ")[0]
                 transaction_dict['tutor-id'] = _user.id
                 transaction_dict['amount'] = '$' + str(float(transfer.amount / 100)) 
-                transaction_dict['bank-name'] = transfer.account.bank_name
-                transaction_dict['bank-status'] = transfer.status
+                # transaction_dict['bank-name'] = transfer.account.bank_name
+                # transaction_dict['bank-status'] = transfer.status
                 transaction_dict['time'] = pretty_date(datetime.fromtimestamp(transfer.created))
                 transactions.append(transaction_dict)
 
