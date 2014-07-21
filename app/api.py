@@ -24,8 +24,6 @@ def api(arg):
     return_json = {}
     ajax_json = request.json
 
-
-    # sign_up logic
     if arg == 'sign_up' and request.method == 'POST': 
 
         email = request.json.get("email")
@@ -94,6 +92,7 @@ def api(arg):
 
             return jsonify(response)
         return errors(["User or password were not correct"])
+
 
     if arg =='apply_guru' and request.method == 'POST':
         user = getUser()
@@ -185,6 +184,13 @@ def api(arg):
             response = {"notifications": user_notifications_arr}
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])    
+
+    if arg == 'user' and request.method == 'GET':
+        user = getUser()
+        if user:
+            response = {'user': user.__dict__}
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(["Invalid Token"])
 
 
     if arg =='tutor_accept' and request.method =='POST':
