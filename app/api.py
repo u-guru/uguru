@@ -159,17 +159,28 @@ def api(arg):
         user = getUser()
         if user:
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
-            user_notifications_arr = [n.__dict__  for n in user_notifications]
+            user_notifications_arr = []
+            # user_notifications_arr = [n.__dict__  for n in user_notifications]
             tutor_tags = ['tutor-request-offer', 'student-incoming-offer', 'getting-started-tutor', 'tutor-receive-payment', 'tutor-cashed-out']
-            student_tags = ['student-request-help']
+            student_tags = ['student-request-help', 'student-payment-approval', 'student-incoming-offer']
 
 
 
             for n in user_notifications:
-                #Seperate whether it's a student or Guru notifications
-                #Seperate what type (Request vs Pay vs )
-                #Status: 
-                pass
+                n_dict = n.__dict__
+                if n.custom_tag in tutor_tags:
+                    n_dict['role'] = 'guru'
+                else:
+                    n_dict['role'] = 'student'
+                if n.request_id:
+                    r = Request.query.get(n.request_id)
+                    n_dict['request'] = r.__dict__
+                if n.payment_id:
+                    p = Request.query.get(n.payment_id)
+                    n_dict['payment'] = p.__dict__
+
+                n_dict['feed_message'] = n_dict['feed_message'].replace('<b>', '').replace('</b>', '')
+                user_notifications_arr.append(n_dict)
 
             response = {"notifications": user_notifications_arr}
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
