@@ -71,7 +71,7 @@ def api(arg):
         if pwd_flag:
             user = User.query.filter_by(email=email).first()
         else:
-            user = User.query.filter_by(email=email, password=password).first()
+            user = User.query.filter_by(email=email).first()
 
         if user:
             user.auth_token = "%032x" % random.getrandbits(128);
@@ -162,8 +162,6 @@ def api(arg):
             # user_notifications_arr = [n.__dict__  for n in user_notifications]
             tutor_tags = ['tutor-request-offer', 'student-incoming-offer', 'getting-started-tutor', 'tutor-receive-payment', 'tutor-cashed-out']
             student_tags = ['student-request-help', 'student-payment-approval', 'student-incoming-offer']
-
-
 
             for n in user_notifications:
                 n_dict = n.__dict__
