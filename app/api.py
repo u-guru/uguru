@@ -158,7 +158,7 @@ def api(arg, _id):
     if arg == 'notifications' and request.method == 'GET' and _id == None:
         user = getUser()
         if user:
-            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
+            user_notifications = sorted(user.notifications, key=lambda n:n.time_created, reverse=True)
             user_notifications_arr = []
             # user_notifications_arr = [n.__dict__  for n in user_notifications]
             tutor_tags = ['tutor-request-offer', 'student-incoming-offer', 'getting-started-tutor', 'tutor-receive-payment', 'tutor-cashed-out']
