@@ -188,11 +188,11 @@ def api(arg, _id):
                     if n.time_read:
                         n_dict['status'] = 'inactive'
 
-                    n_dict['feed_message'] = n_dict['feed_message'].replace('<b>', '').replace('</b>', '')
-                    if n_dict.get('feed_message_subtitle'):
-                        n_dict.pop('feed_message_subtitle')
-                    if n_dict.get('id'):
-                        n_dict['server_id'] = n_dict.pop('id') 
+                n_dict['feed_message'] = n_dict['feed_message'].replace('<b>', '').replace('</b>', '')
+                if n_dict.get('feed_message_subtitle'):
+                    n_dict.pop('feed_message_subtitle')
+                if n_dict.get('id'):
+                    n_dict['server_id'] = n_dict.pop('id') 
 
                 user_notifications_arr.append(n_dict)
 
