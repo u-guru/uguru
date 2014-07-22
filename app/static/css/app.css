@@ -1110,7 +1110,7 @@ a:hover {
 #guru-banner {
   position:absolute;
   left:180px;
-  bottom:0px;
+  ;bottom:0px;
 }
 
 #home-course-submit-btn {
@@ -1182,7 +1182,7 @@ a:hover {
 }
 
 /* XS devices  */
-@media (max-width: 768px)5{  0px 0px 0px
+@media (max-width: 768px){  
   #banner {
     height:100%;
     background: url('/static/img/mobile-background.png') no-repeat;
