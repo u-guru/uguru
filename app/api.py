@@ -178,6 +178,7 @@ def api(arg):
 
                 n_dict['feed_message'] = n_dict['feed_message'].replace('<b>', '').replace('</b>', '')
                 n_dict.pop('feed_message_subtitle')
+                n_dict['server_id'] = n_dict.pop('id') 
                 user_notifications_arr.append(n_dict)
 
             response = {"notifications": user_notifications_arr}
