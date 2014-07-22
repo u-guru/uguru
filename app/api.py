@@ -177,6 +177,7 @@ def api(arg):
                     n_dict['payment'] = p.__dict__
 
                 n_dict['feed_message'] = n_dict['feed_message'].replace('<b>', '').replace('</b>', '')
+                n_dict.pop('feed_message_subtitle')
                 user_notifications_arr.append(n_dict)
 
             response = {"notifications": user_notifications_arr}
