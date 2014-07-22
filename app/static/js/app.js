@@ -404,6 +404,10 @@ $(document).ready(function(){
                   submit_request_form_to_server();
                 }
 
+                if (!$('#request-skill').val()) {
+                  window.location.replace("/");
+                }
+
                 $('#signup-modal').modal('hide');
                 $('#main').hide();
                 $('#request-form').show();
@@ -857,9 +861,13 @@ $(document).ready(function(){
       $('#main').hide();
       $("#request-skill").val($('#course-input').val());
       $('#request-form').show();
-      $('#request-form-options').hide();
-      $('#request-form-submit').children('span:first').removeClass('blue-btn-extra');
-      $('#request-form-submit').children('span:first').addClass('blue-btn-full');
+      $('#skip-this-step-link').click(function() {
+        $('#signup-modal').modal('show')
+        $('#student-next-link').show();
+      });
+      // $('#request-form-options').hide();
+      // $('#request-form-submit').children('span:first').removeClass('blue-btn-extra');
+      // $('#request-form-submit').children('span:first').addClass('blue-btn-full');
     });
 
     $('#student-signup-link').click(function() {

@@ -112,7 +112,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-offset-3 col-sm-3 col-md-offset-3 col-md-3">
 				<div style="color:grey;text-align:center"class="row">
-					<h4 style="font-weight:700; color:grey;"> As a Student</h4>
+					<h4 style="font-weight:700; color:grey;"> Even our Gurus need a little help sometimes!</h4>
 				</div>
 				<a id="tutor-request-link" href="javascript:void(0)">
 					<div style="margin-left:10px; margin-bottom:10px;"class="call-to-action-button">
@@ -491,7 +491,7 @@
 		              <span class="caret"></span>
 		              <span class="sr-only">Toggle Dropdown</span>
 		            </button>
-		            <ul class="dropdown-menu" role="menu">
+		            <ul class="dropdown-menu" style='z-index:1000'role="menu">
 		              {% for name in keys %}
 		              <li><a id="dropdown-elem-{{address_book[name]['conversation_id']}}" href="javascript:void(0);">{{address_book[name]['student_name']}}</a></li>
 		              {% endfor %}
@@ -519,7 +519,7 @@
 			</div>
 			<div id="change-hourly-price-link-div" class="row">
 	            	<h6 style="margin-top:-25px; margin-bottom:20px; color:grey">
-						<a style="position:relative; z-index:1000;" href="javascript:void(0);" id="change-hourly-price-link">
+						<a style="position:relative; z-index:999;" href="javascript:void(0);" id="change-hourly-price-link">
 							Change hourly price
 						</a>
 	            	</h6>
@@ -1568,9 +1568,9 @@
 				        </div>
 				    </div>
 			        {% elif n.request_tutor_amount_hourly %}
-			        <div style="text-align:center; color:grey">
+			        <!-- <div style="text-align:center; color:grey">
 			        	Want to connect to another tutor? <a data-toggle="modal" data-target="#modal-{{n.a_id_name}}" href="#"> Click Here</a>. <br> If you would like a refund for your one-time connection fee, please email support@uguru.me for a quick response.
-			        </div>
+			        </div> -->
 			        {% endif %}
 			        <div style="margin-top:25px;text-align:center; color:grey">
 			        	Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our FAQ</u></a>
@@ -1969,7 +1969,7 @@
           {
             'min':0, 
             'max':10, 
-            'value':1,
+            'value':2,
             change: function(event, ui) {
               slider_val = $(this).slider('value');
               $('#payment').text(slider_val)

@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class='row'>
+		<div class="page-title">
+		   	<h4 style="color:white;">INBOX</h4>
+		 </div>
+	</div>
 <div id="message-list">
 	{% if not user.mailbox.conversations %}
 		<div style="text-align:center" class="row-fluid">
