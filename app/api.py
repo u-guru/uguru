@@ -196,7 +196,7 @@ def api(arg, _id):
 
                 user_notifications_arr.append(n_dict)
 
-            response = {"notification": user_notifications_arr}
+            response = {"notifications": user_notifications_arr}
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
 
