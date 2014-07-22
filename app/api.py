@@ -222,23 +222,17 @@ def api(arg, _id):
             n = Notification.query.get(_id)
             n_detail['type'] =  n.custom_tag
 
-            if n.extra_detail:
-                n_detail['extra_detail'] = n.extra_detail
-
-            if n.request_tutor_amount_hourly:
-                n_detail['tutor-price'] = n.request_tutor_amount_hourly
-
-            if n.request_tutor_id:
-                n_detail['request-tutor'] = n.request_tutor_id
-
             if n.request_id:
                 r = Request.query.get(n.request_id)
                 n_detail['request'] = r.__dict__
-                n_detail['request']['server_id'] = n_detail['request'].pop('id')
+                if n_detail['request'].get('id'):
+                    n_detail['request']['server_id'] = n_detail['request'].pop('id')
             if n.payment_id:
                 p = Request.query.get(n.payment_id)
                 n_detail['payment'] = p.__dict__
                 n_detail['payment']['server_id'] = n_detail['payment'].pop('id')
+                if n_detail['payment'].get('id'):
+                    n_detail['payment']['server_id'] = n_detail['payment'].pop('id')
 
             n_detail['notification'] = n.__dict__
             n_detail['notification']['server_id'] = n_detail['notification'].pop('id')
@@ -246,7 +240,7 @@ def api(arg, _id):
             if n_detail['notification'].get('feed_message_subtitle'):
                 n_detail['notification'].pop('feed_message_subtitle')
 
-            response = {"notification-detail": n_detail}
+            response = n_detail
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
 
