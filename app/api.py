@@ -171,56 +171,82 @@ def api(arg, _id):
                 else:
                     n_dict['role'] = 'student'
 
-                n_dict['feed_message'] = n_dict['feed_message'].replace('<b>', '').replace('</b>', '')
-                if n_dict.get('feed_message_subtitle'):
-                    n_dict.pop('feed_message_subtitle')
-                n_dict['server_id'] = n_dict.pop('id') 
+                if n.request_id:
+                    r = Request.query.get(n.request_id)
+                    if r.student_id == r.connected_tutor_id:
+                        n_dict['status'] = 'canceled'
+                    if user in r.requested_tutors and r.connected_tutor_id and user.id != r.connected_tutor_id:
+                        n_dict['status'] = 'taken'
+                    if r.connected_tutor_id == None:
+                        n_dict['status'] = 'active'
+
+                # n_detail['request'] = r.__dict__
+                # n_detail['request']['server_id'] = n_detail['request'].pop('id')
+                if n.payment_id:
+                    p = Payment.query.get(n.payment_id)
+                    n_dict['status'] = 'active'
+                    if n.time_read:
+                        n_dict['status'] = 'inactive'
+
+                    n_dict['feed_message'] = n_dict['feed_message'].replace('<b>', '').replace('</b>', '')
+                    if n_dict.get('feed_message_subtitle'):
+                        n_dict.pop('feed_message_subtitle')
+                    if n_dict.get('id'):
+                        n_dict['server_id'] = n_dict.pop('id') 
+
                 user_notifications_arr.append(n_dict)
 
-            response = {"notifications": user_notifications_arr}
+            response = {"notification": user_notifications_arr}
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
 
+    if arg == 'read-notification' and _id != None and request.method == 'PUT':
+        user = getUser()
+        if user:
+            n = Notification.query.get(_id)
+            n.time_read = datetime.now()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+            response = {'notification': n.__dict__}
+        return errors(["Invalid Token"])
+
+
+
     if arg == 'notifications' and _id != None and request.method == 'GET':
         user = getUser()
-        n_detail = {}
-        n = Notification.query.get(_id)
-        n_detail['type'] =  n.custom_tag
-        n_detail['feed_message'] = n.feed_message.replace('<b>', '').replace('</b>', '')
-        n_detail['server_id'] = n.id
-        n_detail['image_url'] = n.image_url
-        n_detail['status'] = n.status
-
-        if n.request_id:
-            r = Request.query.get(n.request_id)
-            if r.student_id == r.connected_tutor_id:
-                n_detail['status'] = 'canceled'
-            if user in r.requested_tutors and r.connected_tutor_id and user.id != r.connected_tutor_id:
-                n_detail['status'] = 'taken'
-            if r.connected_tutor_id == None:
-                n_detail['status'] = 'active'
-
-            n_detail['request'] = r.__dict__
-            n_detail['request']['server_id'] = n_detail['request'].pop('id')
-        if n.payment_id:
-            p = Request.query.get(n.payment_id)
-            n_detail['payment'] = p.__dict__
-            n_detail['payment']['server_id'] = n_detail['payment'].pop('id')
-            n_detail['status'] = 'active'
-            if n.time_read:
-                n_detail['status'] = 'inactive'
-
-        if n.extra_detail:
-            n_detail['extra_detail'] = n.extra_detail
-
-        if n.request_tutor_amount_hourly:
-            n_detail['tutor-price'] = n.request_tutor_amount_hourly
-
-        if n.request_tutor_id:
-            n_detail['request-tutor'] = n.request_tutor_id
-        
         if user:
-            response = {"notification": n_detail}
+            n_detail = {}
+            n = Notification.query.get(_id)
+            n_detail['type'] =  n.custom_tag
+
+            if n.extra_detail:
+                n_detail['extra_detail'] = n.extra_detail
+
+            if n.request_tutor_amount_hourly:
+                n_detail['tutor-price'] = n.request_tutor_amount_hourly
+
+            if n.request_tutor_id:
+                n_detail['request-tutor'] = n.request_tutor_id
+
+            if n.request_id:
+                r = Request.query.get(n.request_id)
+                n_detail['request'] = r.__dict__
+                n_detail['request']['server_id'] = n_detail['request'].pop('id')
+            if n.payment_id:
+                p = Request.query.get(n.payment_id)
+                n_detail['payment'] = p.__dict__
+                n_detail['payment']['server_id'] = n_detail['payment'].pop('id')
+
+            n_detail['notification'] = n.__dict__
+            n_detail['notification']['server_id'] = n_detail['notification'].pop('id')
+            n_detail['notification']['feed_message'] = n_detail['notification']['feed_message'].replace('<b>', '').replace('</b>', '')
+            if n_detail['notification'].get('feed_message_subtitle'):
+                n_detail['notification'].pop('feed_message_subtitle')
+
+            response = {"notification-detail": n_detail}
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
 
@@ -561,7 +587,7 @@ def json_handler(obj):
     if obj.__class__.__name__ == 'InstanceState':
         return None
     else:
-        return json.JSONEncoder.default(self,obj)
+        return json.JSONEncoder.default(obj)
         return obj
 
 def create_user(email, password, phone_number, name):
