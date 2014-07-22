@@ -265,19 +265,19 @@ def admin():
         
         notifications = sorted(Notification.query.all(), key=lambda n:n.id, reverse=True)
 
-        bank_users = User.query.filter(User.recipient_id != None)
-        for _user in bank_users:
-            recipient_id = _user.recipient_id
-            transfers = stripe.Transfer.all(recipient=recipient_id).data
-            for transfer in transfers:
-                transaction_dict = {}
-                transaction_dict['tutor-name'] = _user.name.split(" ")[0]
-                transaction_dict['tutor-id'] = _user.id
-                transaction_dict['amount'] = '$' + str(float(transfer.amount / 100)) 
-                # transaction_dict['bank-name'] = transfer.account.bank_name
-                # transaction_dict['bank-status'] = transfer.status
-                transaction_dict['time'] = pretty_date(datetime.fromtimestamp(transfer.created))
-                transactions.append(transaction_dict)
+        # bank_users = User.query.filter(User.recipient_id != None)
+        # for _user in bank_users:
+        #     recipient_id = _user.recipient_id
+        #     transfers = stripe.Transfer.all(recipient=recipient_id).data
+        #     for transfer in transfers:
+        #         transaction_dict = {}
+        #         transaction_dict['tutor-name'] = _user.name.split(" ")[0]
+        #         transaction_dict['tutor-id'] = _user.id
+        #         transaction_dict['amount'] = '$' + str(float(transfer.amount / 100)) 
+        #         # transaction_dict['bank-name'] = transfer.account.bank_name
+        #         # transaction_dict['bank-status'] = transfer.status
+        #         transaction_dict['time'] = pretty_date(datetime.fromtimestamp(transfer.created))
+        #         transactions.append(transaction_dict)
 
         for c in Conversation.query.all():
             if c.requests and c.guru and c.student:
