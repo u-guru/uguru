@@ -15,8 +15,10 @@ from twilio import twiml
 from mixpanel import Mixpanel
 import random
 from apscheduler.scheduler import Scheduler
-import views
+import views, time
+from apns import APNs, Frame, Payload
 
+apns = APNs(use_sandbox=True, cert_file='/certs/uguru-cert.pem', key_file='/certs/uguru-key.pem')
 
 @app.route('/api/<arg>', methods=['GET', 'POST', 'PUT'], defaults={'_id': None})
 @app.route('/api/<arg>/<_id>')
@@ -225,7 +227,7 @@ def api(arg, _id):
                     image_url = c.student.profile_url
                     name = c.student.name
                 else:
-                    image_url = c.guru.profile_ugrl
+                    image_url = c.guru.profile_url
                     name = c.guru.name
                 if c.messages: 
                     last_message = c.messages[-1]
@@ -240,10 +242,86 @@ def api(arg, _id):
                         'image_url': image_url,
                         'last-message': last_message_contents,
                         'last-message-time': last_message_write_time,
-                        'name': name
+                        'name': name,
+                        'read': c.is_read
                     })
             response = {'conversations': conversations_arr}
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(['Invalid Token'])
+
+    if arg =='conversations' and _id != None and request.method == 'GET':
+        user = getUser()
+
+        if user:
+            conversation = Conversation.query.get(_id)
+            messages_arr = []
+            for m in conversation.messages:
+                conversations_arr.append({
+                        'server_id': m.id,
+                        'contents': m.contents,
+                        'sender_name': m.sender.name.split(" "),
+                        'sender_server_id': m.sender.id,
+                        'receiver_name': m.receiver.name.split(" "),
+                        'receiver_server_id': m.receiver.id,
+                        'write_time': m.write_time
+                    })
+            response = {'conversation_server_id': conversation.id,
+                        'conversation_meeting_location': conversation.requests[0].location,
+                        'conversation_meeting_time': None,
+                        'messages': messages_arr }
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(['Invalid Token'])
+
+    if arg =='send-message' and _id == None and request.method == 'POST':
+        user = getUser()
+        if user:
+            message_contents = ajax_json.get('send_message')
+            conversation_id = ajax_json.get('conversation_id')
+            conversation = Conversation.query.get(conversation_id)
+            sender_id = user.id
+            if conversation.guru_id == user.id:
+                receiver_id = conversation.student_id
+                receiver = User.query.get(receiver_id)
+            else:
+                receiver_id = conversation.guru_id
+                receiver = User.query.get(receiver_id)
+
+            #If previous message was not the sender, we know the receive should receive a notification + email 
+            if not conversation.messages or conversation.messages[-1].sender_id != user.id \
+                or (conversation.messages[-1].sender_id == user.id and conversation.is_read):
+                receiver.msg_notif += 1
+
+                if receiver.apn_token:
+                    apn_message = receiver.name.split(" ")[0] + ' has sent you a message'
+                    send_apn(apn_message, receiver.apn_token)
+                
+                
+                if not conversation.messages :
+                    from emails import send_message_alert
+                    send_message_alert(receiver, user)
+                else:
+                    last_message_time = conversation.messages[-1].write_time
+                    current_time = datetime.now()
+                    difference_time = current_time - last_message_time
+                    if difference_time.seconds > (15 * 60):
+                        from emails import send_message_alert
+                        send_message_alert(receiver, user)
+
+
+            message = Message(message_contents, conversation, user, receiver)
+            db_session.add(message)
+            
+            conversation.is_read = False
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+
+            message = Message.query.get(message.id)
+            response = {'message': message.__dict__}
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+
         return errors(['Invalid Token'])
 
 
@@ -391,11 +469,16 @@ def api(arg, _id):
             skill = Skill.query.get(skill_id)
             skill_name = skill.name
             from app.static.data.short_variations import short_variations_dict
-            skill_name = short_variations_dict[skill_name]
+            skill_name = short_variations_dict[skill_name].upper()
 
             student = User.query.get(r.student_id)
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
+
+
+            if student.apn_token:
+                apn_message = tutor.name.split(" ")[0] + ', a ' + skill_name + ' tutor, wants to help!'
+                send_apn(apn_message, student.apn_token)
 
             current_notification.feed_message = 'You accepted <b>' + student.name.split(' ')[0] + \
                 "'s</b> request for <b>" + skill_name.upper() + "</b>."
@@ -470,6 +553,130 @@ def api(arg, _id):
         return errors(['Invalid Token'])
     
 
+    if arg =='student_accept' and request.method == 'POST':
+        user = getUser()
+        if user:
+            notification_id = request.json.get('notification-id')
+            student = user
+            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
+            current_notification = user_notifications[notification_id]
+            skill_name = current_notification.skill_name
+            
+            print current_notification.id
+
+            tutor_id = current_notification.request_tutor_id
+            tutor = User.query.get(tutor_id)
+
+            #Modify student notification
+            current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
+                + skill_name.upper() + " tutor."
+            current_notification.feed_message_subtitle = '<b>Click here</b> to see next steps!'
+            current_notification.custom = 'student-accept-request'
+            if current_notification.time_read:
+                user.feed_notif += 1
+                current_notification.time_read = None
+            current_notification.time_created = datetime.now()
+
+            #Update request
+            request_id = current_notification.request_id
+            r = Request.query.get(request_id)
+
+            previous_request_payment = Payment.query.filter_by(request_id = r.id).first()
+            if not previous_request_payment:
+                p = Payment(r)
+                if r.id > 165 :
+                    p.student_paid_amount = 5
+                else:
+                    p.student_paid_amount = 10
+                db_session.add(p)
+            else:
+                p = previous_request_payment
+            
+            skill = Skill.query.get(r.skill_id)
+            r.connected_tutor_id = tutor_id
+            from app.static.data.prices import prices_dict
+            r.connected_tutor_hourly = prices_dict[current_notification.request_tutor_amount_hourly]
+            r.time_connected = datetime.now()
+            r.student_secret_code = user.secret_code
+
+            if not previous_request_payment:
+                charge = stripe.Charge.create(
+                    amount = p.student_paid_amount * 100,
+                    currency="usd",
+                    customer=student.customer_id,
+                    description="one-time connection fee"
+                )
+                charge_id = charge["id"]
+
+                mp.track(str(student.id), 'Student Accepted Request', {
+                    'One-time-charge': p.student_paid_amount
+                    })
+
+
+            if not previous_request_payment:
+                from emails import student_payment_receipt
+                student_payment_receipt(student, tutor.name.split(" ")[0], p.student_paid_amount, p, charge_id, skill_name, False, True)
+
+            student.outgoing_requests.remove(r)
+
+            for _tutor in r.requested_tutors:
+                if _tutor.id != tutor_id:
+                    for n in sorted(_tutor.notifications, reverse=True):
+                        if n.request_id == r.id:
+                            n.feed_message_subtitle = '<span style="color:#CD2626"><strong>Update:</strong> The student has already chose another tutor.</span>'
+            
+            #Modify tutor notification
+            for n in tutor.notifications:
+                if n.request_id == r.id:
+                    tutor_notification = n
+            tutor_notification.feed_message = "<b>You</b> have been matched with " + user.name.split(" ")[0] + " for " + skill_name + "."
+            tutor_notification.feed_message_subtitle = '<b>Click here</b> to see next steps!'
+            tutor_notification.custom = 'tutor-is-matched'
+            tutor_notification.time_created = datetime.now()
+            tutor.feed_notif += 1
+            tutor_notification.time_read = None
+            from emails import tutor_is_matched, student_is_matched
+            tutor_is_matched(user, tutor, skill_name)
+            student_is_matched(user, tutor, r.student_secret_code)
+
+
+            #create conversation between both
+            conversation = Conversation.query.filter_by(student_id=user.id, guru_id=tutor.id).first()
+            if not conversation:
+                conversation = Conversation(skill, tutor, user)
+                conversation.requests.append(r)
+                conversation.last_updated = datetime.now()
+                db_session.add(conversation)
+            else:
+                conversation.is_read = False
+
+
+
+            #create message notifications
+            tutor.msg_notif += 1
+            student.msg_notif += 1
+
+            #let other committed tutors now that they have been rejected
+            # from emails import student_chose_another_tutor
+            for _tutor in r.committed_tutors:
+                if r.connected_tutor_id != tutor.id and r.connected_tutor_id != user.id:
+                    for n in _tutor.notifications:
+                        if n.request_id == r.id:
+                            tutor_notification = n
+                    tutor.feed_notif += 1
+                    tutor_notification.time_read = None
+                    tutor_notification.feed_message_subtitle = '<span style="color:red">This request has been canceled</span>'
+                    tutor_notification.time_created = datetime.now()
+                    # student_chose_another_tutor(user, current_notification.skill_name, _tutor)
+                    print "Email sent to " + tutor.email
+            
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+        return errors(['Invalid Token'])
+
     if arg =='student_request' and request.method =='POST':
 
         user = getUser()
@@ -488,7 +695,7 @@ def api(arg, _id):
             original_skill_name = skill_name.lower()
             skill_id = courses_dict[original_skill_name]
             skill = Skill.query.get(skill_id)
-            skill_name = short_variations_dict[skill.name]
+            skill_name = short_variations_dict[skill.name].upper()
             
             if user.verified_tutor:
                 if skill in user.skills:
@@ -563,6 +770,11 @@ def api(arg, _id):
             for tutor in r.requested_tutors:
                 #Only if they are approved tutors
                 if tutor.approved_by_admin:
+                    if tutor.apn_token:
+                        apn_message = user.name.split(" ")[0] + ' needs help in ' + skill_name + '. You could make $' + \
+                            (r.student_estimated_hour * r.time_estimate) + '.'
+                        send_apn(apn_message, tutor.apn_token)
+
                     tutor.incoming_requests_to_tutor.append(r)
                     notification = tutor_request_offer(user, tutor, r, skill_name)
                     db_session.add(notification)
@@ -721,3 +933,7 @@ def get_time_ranges(week_object, owner):
     for r in ranges:
         arr_ranges.append([r.week_day, r.start_time, r.end_time])
     return arr_ranges
+
+def send_apn(message, token):
+    payload = Payload(alert(message), sound='default', badge=1)
+    apns.gateway_server.send_notification(token, payload)

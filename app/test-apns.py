@@ -1,8 +1,8 @@
 import time
 from apns import APNs, Frame, Payload
 
-apns = APNs(use_sandbox=True, cert_file='uguru-cert.pem', key_file='uguru-newkey.pem')
+apns = APNs(use_sandbox=True, cert_file='uguru-cert.pem', key_file='uguru-key.pem')
 
-token_hex = '91258cbd9d521d53ca5d5a6534a82bb9aef13ee9071b3067af4598a93cc02922'
-payload = Payload(alert="Suck a dick!", sound="default", badge=1)
+token_hex = 'b15c34d2639300184ed4b29cba73ed4f897bcfb7092b0cf6d090edf389e56256'
+payload = Payload(alert="TIT COCK", sound="default", badge=1)
 apns.gateway_server.send_notification(token_hex, payload)
