@@ -258,14 +258,21 @@ def api(arg, _id):
         if user:
             conversation = Conversation.query.get(_id)
             messages_arr = []
-            for m in conversation.messages:
-                conversations_arr.append({
+            conversation_messages = sorted(conversation.messages, key=lambda m:m.write_time, reverse=True)
+            for m in conversation_messages:
+                if conversation.guru_id == user.id:
+                    receiver_id = conversation.student_id
+                    receiver = User.query.get(receiver_id)
+                else:
+                    receiver_id = conversation.guru_id
+                    receiver = User.query.get(receiver_id)
+                messages_arr.append({
                         'server_id': m.id,
                         'contents': m.contents,
                         'sender_name': m.sender.name.split(" "),
                         'sender_server_id': m.sender.id,
-                        'receiver_name': m.receiver.name.split(" "),
-                        'receiver_server_id': m.receiver.id,
+                        'receiver_name': receiver.name.split(" "),
+                        'receiver_server_id': receiver_id,
                         'write_time': m.write_time
                     })
             response = {'conversation_server_id': conversation.id,
