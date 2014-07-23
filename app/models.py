@@ -142,6 +142,7 @@ class User(Base):
     approved_by_admin = Column(Boolean)
 
     auth_token = Column(String(64))
+    apn_token = Column(String(64))
 
     #Tutor fields
     verified_tutor = Column(Boolean)

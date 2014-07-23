@@ -18,7 +18,7 @@ from apscheduler.scheduler import Scheduler
 import views
 
 
-@app.route('/api/<arg>', methods=('GET', 'POST'), defaults={'_id': None})
+@app.route('/api/<arg>', methods=['GET', 'POST', 'PUT'], defaults={'_id': None})
 @app.route('/api/<arg>/<_id>')
 def api(arg, _id):
     # Cam doesn't use this shit
@@ -161,7 +161,7 @@ def api(arg, _id):
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created, reverse=True)
             user_notifications_arr = []
             # user_notifications_arr = [n.__dict__  for n in user_notifications]
-            tutor_tags = ['tutor-request-offer', 'student-incoming-offer', 'getting-started-tutor', 'tutor-receive-payment', 'tutor-cashed-out']
+            tutor_tags = ['tutor-request-offer', 'getting-started-tutor', 'tutor-receive-payment', 'tutor-cashed-out']
             student_tags = ['student-request-help', 'student-payment-approval', 'student-incoming-offer']
 
             for n in user_notifications:
@@ -211,7 +211,41 @@ def api(arg, _id):
                 db_session.rollback()
                 raise 
             response = {'notification': n.__dict__}
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
+
+    if arg =='conversations' and _id == None and request.method == 'GET':
+        user = getUser()
+
+        if user:
+            conversations_arr = []
+            conversations = sorted(user.mailbox.conversations, key=lambda c:c.last_updated)
+            for c in conversations:
+                if c.guru_id == user.id:
+                    image_url = c.student.profile_url
+                    name = c.student.name
+                else:
+                    image_url = c.guru.profile_ugrl
+                    name = c.guru.name
+                if c.messages: 
+                    last_message = c.messages[-1]
+                    last_message_contents = last_message.contents
+                    last_message_write_time = last_message.write_time
+                else: 
+                    last_message_contents = None
+                    last_message_write_time = None
+
+                conversations_arr.append({
+                        'server_id': c.id,
+                        'image_url': image_url,
+                        'last-message': last_message_contents,
+                        'last-message-time': last_message_write_time,
+                        'name': name
+                    })
+            response = {'conversations': conversations_arr}
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(['Invalid Token'])
+
 
 
 
@@ -244,7 +278,9 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
 
-
+    print request.method
+    
+    
     if arg == 'user' and request.method == 'GET':
         user = getUser()
         if user:
@@ -252,6 +288,25 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
 
+    if arg == 'user' and request.method == 'PUT':
+        user = getUser()
+        if user:
+            print request.json
+            if request.json.get('apn_token'):
+                user.apn_token = request.json.get('apn_token')
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+
+            user = User.query.get(user.id)
+
+            response = {'user': user.__dict__}
+            
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(["Invalid Token"])
 
     if arg =='tutor_accept' and request.method =='POST':
         user = getUser()

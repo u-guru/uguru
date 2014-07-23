@@ -17,6 +17,8 @@ from apscheduler.scheduler import Scheduler
 import logging
 import api
 import time
+from apns import APNs, Frame, Payload
+
 
 
 
@@ -28,6 +30,7 @@ MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+apns = APNs(use_sandbox=True, cert_file='cert.pem', key_file='key.pem')
 
 stripe.api_key = stripe_keys['secret_key']
 MAX_UPLOAD_SIZE = 1024 * 1024
