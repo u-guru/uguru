@@ -379,7 +379,8 @@ def api(arg, _id):
                                 'email': user.email,
                                 'password': user.password,
                                 'auth_token': user.auth_token,
-                                'apn_token': user.apn_token
+                                'apn_token': user.apn_token,
+                                'image_url': user.profile_url,
                             }
                     }
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
