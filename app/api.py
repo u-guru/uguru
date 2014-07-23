@@ -362,13 +362,14 @@ def api(arg, _id):
     if arg == 'user' and request.method == 'GET':
         user = getUser()
         if user:
-            response = {'user':
+            response = {'user': 
                             { 
-                            'name': user.name,
-                            'email': user.email,
-                            'password': user.password,
-                            'auth_token': user.auth_token,
-                            'apn_token': user.apn_token
+                                'server_id': user.id
+                                'name': user.name,
+                                'email': user.email,
+                                'password': user.password,
+                                'auth_token': user.auth_token,
+                                'apn_token': user.apn_token
                             }
                     }
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
