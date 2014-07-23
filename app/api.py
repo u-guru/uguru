@@ -233,9 +233,12 @@ def api(arg, _id):
                     last_message = c.messages[-1]
                     last_message_contents = last_message.contents
                     last_message_write_time = last_message.write_time
+                    message_read = c.is_read
                 else: 
-                    last_message_contents = False
+                    last_message_contents = None
                     last_message_write_time = None
+                    message_read = False
+
 
                 conversations_arr.append({
                         'server_id': c.id,
@@ -243,7 +246,7 @@ def api(arg, _id):
                         'last_message': last_message_contents,
                         'last_message_time': last_message_write_time,
                         'name': name,
-                        'read': c.is_read
+                        'read': message_read
                     })
             response = {'conversations': conversations_arr}
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
