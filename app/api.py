@@ -235,7 +235,7 @@ def api(arg, _id):
                     last_message_write_time = last_message.write_time
                 else: 
                     last_message_contents = False
-                    last_message_write_time = False
+                    last_message_write_time = None
 
                 conversations_arr.append({
                         'server_id': c.id,
