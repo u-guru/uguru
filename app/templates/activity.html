@@ -1844,7 +1844,7 @@
 					        </div>
 					        <div class="row">
 					        	<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8">
-					        		<h6 style="color:black; margin-bottom:0px;"><u>Additional Details from {{n.feed_message.split(" ")[0].split("<b>")[1].split("</b>")[0]}}</u><br>
+					        		<h6 style="color:black; margin-bottom:0px;"><u>Additional Details from {{n.feed_message.split(" ")[0]|upper|safe}}</u><br>
 					        		</h6>
 					        		<h5 style="margin-top:5px;color:grey;">{{request_dict[n.request_id]['request'].description}}</h5>
 					        	</div>
