@@ -364,7 +364,7 @@ def api(arg, _id):
         if user:
             response = {'user': 
                             { 
-                                'server_id': user.id
+                                'server_id': user.id,
                                 'name': user.name,
                                 'email': user.email,
                                 'password': user.password,
