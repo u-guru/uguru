@@ -221,7 +221,7 @@ def api(arg, _id):
 
         if user:
             conversations_arr = []
-            conversations = sorted(user.mailbox.conversations, key=lambda c:c.last_updated)
+            conversations = sorted(user.mailbox.conversations, key=lambda c:c.last_updated, reverse=True)
             for c in conversations:
                 if c.guru_id == user.id:
                     image_url = c.student.profile_url
@@ -234,8 +234,8 @@ def api(arg, _id):
                     last_message_contents = last_message.contents
                     last_message_write_time = last_message.write_time
                 else: 
-                    last_message_contents = None
-                    last_message_write_time = None
+                    last_message_contents = 0
+                    last_message_write_time = 0
 
                 conversations_arr.append({
                         'server_id': c.id,
