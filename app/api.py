@@ -240,8 +240,8 @@ def api(arg, _id):
                 conversations_arr.append({
                         'server_id': c.id,
                         'image_url': image_url,
-                        'last-message': last_message_contents,
-                        'last-message-time': last_message_write_time,
+                        'last_message': last_message_contents,
+                        'last_message_time': last_message_write_time,
                         'name': name,
                         'read': c.is_read
                     })
