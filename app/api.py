@@ -269,9 +269,9 @@ def api(arg, _id):
                 messages_arr.append({
                         'server_id': m.id,
                         'contents': m.contents,
-                        'sender_name': m.sender.name.split(" "),
+                        'sender_name': m.sender.name.split(" ")[0],
                         'sender_server_id': m.sender.id,
-                        'receiver_name': receiver.name.split(" "),
+                        'receiver_name': receiver.name.split(" ")[0],
                         'receiver_server_id': receiver_id,
                         'write_time': m.write_time
                     })
