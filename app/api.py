@@ -294,6 +294,56 @@ def api(arg, _id):
             print request.json
             if request.json.get('apn_token'):
                 user.apn_token = request.json.get('apn_token')
+            if request.json.get('password'):
+                user.password = md5(request.json.get('password')).hexdigest()
+            if request.json.get('major'):
+                user.major = request.json.get('major')
+            if request.json.get('email'):
+                user.email = request.json.get('email')
+            if request.json.get('last_active'):
+                user.last_active = datetime.now()
+            if request.json.get('ta_tutor'):
+                user.ta_tutor = request.json.get('ta_tutor')
+            if request.json.get('auth_token'):
+                user.auth_token = request.json.get('auth_token')
+            if request.json.get('la_tutor'):
+                user.la_tutor = request.json.get('la_tutor')
+            if request.json.get('hkn_tutor'):
+                user.hkn_tutor = request.json.get('hkn_tutor')
+            if request.json.get('res_tutor'):
+                user.res_tutor = request.json.get('res_tutor')
+            if request.json.get('slc_tutor'):
+                user.slc_tutor = request.json.get('slc_tutor')
+            if request.json.get('fb_account'):
+                user.fb_account = request.json.get('fb_account')
+            if request.json.get('secret_code'):
+                user.secret_code = request.json.get('secret_code')
+            if request.json.get('profile_url'):
+                user.profile_url = request.json.get('profile_url')
+            if request.json.get('verified_tutor'):
+                user.verified_tutor = request.json.get('verified_tutor')
+            if request.json.get('total_earned'):
+                user.total_earned = request.json.get('total_earned')
+            if request.json.get('recipient_id'):
+                user.recipient_id = request.json.get('recipient_id')
+            if request.json.get('customer_id'):
+                user.customer_id = request.json.get('customer_id')
+            if request.json.get('customer_last4'):
+                user.customer_last4 = request.json.get('customer_last4')
+            if request.json.get('previous_tutor'):
+                user.previous_tutor = request.json.get('previous_tutor')
+            if request.json.get('tutor_introduction'):
+                user.tutor_introduction = request.json.get('tutor_introduction')
+            if request.json.get('balance'):
+                user.balance = request.json.get('balance')
+            if request.json.get('feed_notif'):
+                user.feed_notif = request.json.get('feed_notif')
+            if request.json.get('settings_notif'):
+                user.settings_notif = request.json.get('settings_notif')
+            if request.json.get('msg_notif'):
+                user.msg_notif = request.json.get('msg_notif')
+            if request.json.get('name'):
+                user.name = request.json.get('name')
 
             try:
                 db_session.commit()
