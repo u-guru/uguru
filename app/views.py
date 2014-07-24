@@ -1570,7 +1570,7 @@ def success():
                 #Only if they are approved tutors
                 if tutor.approved_by_admin:
                     if tutor.apn_token:
-                        apn_message = user.name.split(" ")[0] + ' needs help in ' + skill_name + '. You could make $' + \
+                        apn_message = u.name.split(" ")[0] + ' needs help in ' + skill_name + '. You could make $' + \
                             (r.student_estimated_hour * r.time_estimate) + '.'
                         send_apn(apn_message, tutor.apn_token)
 
