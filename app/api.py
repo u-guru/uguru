@@ -462,7 +462,7 @@ def api(arg, _id):
             request_id = request.json.get('request_id')
             hourly_amount = request.json.get('amount')
             extra_details = request.json.get('details')
-            weekly_availability = request.json.get('calendar')
+            weekly_availability = [[[1,3]], [], [], [], [], [], []]
             notification_id = request.json.get('notif_id')
             current_notification = Notification.query.get(notification_id)
 
@@ -536,8 +536,8 @@ def api(arg, _id):
             current_notification = Notification.query.get(current_notification.id)
             response = {"request": r.__dict__,
                         "notifications": [current_notification.__dict__],
-                        "tutor-calendar": weekly_availability,
-                        "student-calendar": student_weekly_availability
+                        # "tutor-calendar": weekly_availability,
+                        # "student-calendar": student_weekly_availability
                         }
             return json.dumps(response, default=json_handler, indent=4)
         return errors(['Invalid Token'])
@@ -706,17 +706,21 @@ def api(arg, _id):
             urgency = request.json.get('urgency')
             estimate = request.json.get('estimate')
             professor = request.json.get('professor')
-            weekly_availability = request.json.get('calendar')
+            weekly_availability = [[[1,3]], [], [], [], [], [], []]
             student_price = request.json.get('hourly-price')
             location = request.json.get('location')
 
             from app.static.data.variations import courses_dict
             from app.static.data.short_variations import short_variations_dict
             original_skill_name = skill_name.lower()
+            
+            if not courses_dict.get(original_skill_name):
+                return errors([skill_name + ' is not a registered skill. Please try again.'])
+
             skill_id = courses_dict[original_skill_name]
             skill = Skill.query.get(skill_id)
             skill_name = short_variations_dict[skill.name].upper()
-            
+
             if user.verified_tutor:
                 if skill in user.skills:
                     return errors(["You cannot request help in a course you're a tutor for."])
@@ -825,7 +829,7 @@ def api(arg, _id):
             student_notification = Notification.query.get(student_notification_id)
             response = {"request": r.__dict__,
                         "notifications": [student_notification.__dict__],
-                        "calendar": weekly_availability
+                        # "calendar": weekly_availability
                         }
             return json.dumps(response, default=json_handler, indent=4)
 
