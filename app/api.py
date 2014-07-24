@@ -707,7 +707,7 @@ def api(arg, _id):
             estimate = request.json.get('estimated_hourly')
             professor = request.json.get('professor_name')
             student_price = request.json.get('student_estimated_hour')
-            location = request.json.get('location')
+            location = request.json.get('location_name')
 
             weekly_availability = [[[1,3]], [], [], [], [], [], []]
 
