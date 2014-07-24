@@ -491,7 +491,7 @@ def api(arg, _id):
 
 
             if student.apn_token:
-                apn_message = student.name.split(" ")[0] + ', a ' + skill_name + ' tutor, wants to help!'
+                apn_message =tutor.name.split(" ")[0] + ', a ' + skill_name + ' tutor, wants to help!'
                 send_apn(apn_message, student.apn_token)
 
             current_notification.feed_message = 'You accepted <b>' + student.name.split(' ')[0] + \
@@ -513,7 +513,7 @@ def api(arg, _id):
             for n in student.notifications[::-1]:
                 if n.request_id == r.id:
                     original_skill_name = n.custom
-            extra_detail = ajax_json.get('extra-detail')
+            extra_detail = ajax_json.get('tutor_message')
             student_notification = student_incoming_tutor_request(student, tutor, r, original_skill_name, hourly_amount, extra_detail)
             student.notifications.append(student_notification)
             db_session.add(student_notification)
@@ -567,7 +567,7 @@ def api(arg, _id):
         return errors(['Invalid Token'])
     
 
-    if arg =='student_accept' and request.method == 'POST':
+    if arg =='student_accept' and request.method == 'PUT':
         user = getUser()
         if user:
             notification_id = request.json.get('notification-id')
