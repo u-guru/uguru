@@ -450,7 +450,7 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
 
-    if arg =='tutor_accept' and request.method =='POST':
+    if arg =='tutor_accept' and request.method =='PUT':
         user = getUser()
         if user:
             request_id = request.json.get('request_id')
@@ -491,7 +491,7 @@ def api(arg, _id):
 
 
             if student.apn_token:
-                apn_message = tutor.name.split(" ")[0] + ', a ' + skill_name + ' tutor, wants to help!'
+                apn_message = student.name.split(" ")[0] + ', a ' + skill_name + ' tutor, wants to help!'
                 send_apn(apn_message, student.apn_token)
 
             current_notification.feed_message = 'You accepted <b>' + student.name.split(' ')[0] + \
