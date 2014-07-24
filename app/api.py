@@ -346,18 +346,18 @@ def api(arg, _id):
 
             if n.request_id:
                 r = Request.query.get(n.request_id)
-                n_detail['request'] = r.__dict__
-                if n_detail['request'].get('id'):
-                    n_detail['request']['server_id'] = n_detail['request'].pop('id')
+                n_detail['request'] = sanitize_dict(r.__dict__)
+                # if n_detail['request'].get('id'):
+                    # n_detail['request']['server_id'] = n_detail['request'].pop('id')
             if n.payment_id:
                 p = Request.query.get(n.payment_id)
-                n_detail['payment'] = p.__dict__
-                n_detail['payment']['server_id'] = n_detail['payment'].pop('id')
-                if n_detail['payment'].get('id'):
-                    n_detail['payment']['server_id'] = n_detail['payment'].pop('id')
+                n_detail['payment'] = sanitize_dict(p.__dict__)
+                # n_detail['payment']['server_id'] = n_detail['payment'].pop('id')
+                # if n_detail['payment'].get('id'):
+                #     n_detail['payment']['server_id'] = n_detail['payment'].pop('id')
 
-            n_detail['notification'] = n.__dict__
-            n_detail['notification']['server_id'] = n_detail['notification'].pop('id')
+            n_detail['notification'] = sanitize_dict(n.__dict__)
+            # n_detail['notification']['server_id'] = n_detail['notification'].pop('id')
             n_detail['notification']['feed_message'] = n_detail['notification']['feed_message'].replace('<b>', '').replace('</b>', '')
             if n_detail['notification'].get('feed_message_subtitle'):
                 n_detail['notification'].pop('feed_message_subtitle')
