@@ -261,7 +261,7 @@ def api(arg, _id):
         if user:
             conversation = Conversation.query.get(_id)
             messages_arr = []
-            conversation_messages = sorted(conversation.messages, key=lambda m:m.write_time, reverse=True)
+            conversation_messages = sorted(conversation.messages, key=lambda m:m.write_time)
             for m in conversation_messages:
                 if conversation.guru_id == user.id:
                     receiver_id = conversation.student_id
