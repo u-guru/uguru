@@ -570,7 +570,7 @@ def api(arg, _id):
     if arg =='student_accept' and request.method == 'PUT':
         user = getUser()
         if user:
-            notification_id = request.json.get('notif-id')
+            notification_id = request.json.get('notif_id')
             student = user
             current_notification = Notification.query.get(notification_id)
             skill_name = current_notification.skill_name
