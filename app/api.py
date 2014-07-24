@@ -701,14 +701,15 @@ def api(arg, _id):
 
         user = getUser()
         if user:
-            description = request.json.get('description')
-            skill_name = request.json.get('skill') 
+            description = request.json.get('_description')
+            skill_name = request.json.get('course_name') 
             urgency = request.json.get('urgency')
-            estimate = request.json.get('estimate')
-            professor = request.json.get('professor')
-            weekly_availability = [[[1,3]], [], [], [], [], [], []]
-            student_price = request.json.get('hourly-price')
+            estimate = request.json.get('estimated_hourly')
+            professor = request.json.get('professor_name')
+            student_price = request.json.get('student_estimated_hour')
             location = request.json.get('location')
+
+            weekly_availability = [[[1,3]], [], [], [], [], [], []]
 
             from app.static.data.variations import courses_dict
             from app.static.data.short_variations import short_variations_dict
