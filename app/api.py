@@ -965,4 +965,4 @@ def send_apn(message, token):
 
 def sanitize_dict(_dict):
     if _dict.get('id'): _dict['server_id'] = _dict.pop('id')
-    if _dict.get('description'): : _dict['_description'] = _dict.pop('description')
+    if _dict.get('description'): _dict['_description'] = _dict.pop('description')
