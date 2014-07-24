@@ -697,7 +697,7 @@ def api(arg, _id):
                 raise 
         return errors(['Invalid Token'])
 
-    if arg =='student_request' and request.method =='POST':
+    if arg =='request' and request.method =='POST':
 
         user = getUser()
         if user:
