@@ -18,7 +18,10 @@ from apscheduler.scheduler import Scheduler
 import views, time
 from apns import APNs, Frame, Payload
 
-apns = APNs(use_sandbox=True, cert_file='uguru-cert.pem', key_file='uguru-key.pem')
+cert_path = os.path.join(os.path.dirname(__file__), 'uguru-cert.pem')
+key_path = os.path.join(os.path.dirname(__file__), 'uguru-key.pem')
+apns = APNs(use_sandbox=True, cert_file=cert_path, key_file=key_path)
+
 
 @app.route('/api/<arg>', methods=['GET', 'POST', 'PUT'], defaults={'_id': None})
 @app.route('/api/<arg>/<_id>')
@@ -282,7 +285,7 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(['Invalid Token'])
 
-    if arg =='send-message' and _id == None and request.method == 'POST':
+    if arg =='send_message' and _id == None and request.method == 'POST':
         user = getUser()
         if user:
             message_contents = ajax_json.get('send_message')
@@ -347,17 +350,11 @@ def api(arg, _id):
             if n.request_id:
                 r = Request.query.get(n.request_id)
                 n_detail['request'] = sanitize_dict(r.__dict__)
-                # if n_detail['request'].get('id'):
-                    # n_detail['request']['server_id'] = n_detail['request'].pop('id')
             if n.payment_id:
                 p = Request.query.get(n.payment_id)
                 n_detail['payment'] = sanitize_dict(p.__dict__)
-                # n_detail['payment']['server_id'] = n_detail['payment'].pop('id')
-                # if n_detail['payment'].get('id'):
-                #     n_detail['payment']['server_id'] = n_detail['payment'].pop('id')
 
             n_detail['notification'] = sanitize_dict(n.__dict__)
-            # n_detail['notification']['server_id'] = n_detail['notification'].pop('id')
             n_detail['notification']['feed_message'] = n_detail['notification']['feed_message'].replace('<b>', '').replace('</b>', '')
             if n_detail['notification'].get('feed_message_subtitle'):
                 n_detail['notification'].pop('feed_message_subtitle')
@@ -651,6 +648,11 @@ def api(arg, _id):
             tutor_notification.custom = 'tutor-is-matched'
             tutor_notification.time_created = datetime.now()
             tutor.feed_notif += 1
+
+            if tutor.apn_token:
+                apn_message = student.name.split(" ")[0] + ' has chosen you! Message '  + student.name.split(" ")[0] + ' now!'
+                send_apn(apn_message, tutor.apn_token)
+
             tutor_notification.time_read = None
             from emails import tutor_is_matched, student_is_matched
             tutor_is_matched(user, tutor, skill_name)
@@ -963,4 +965,6 @@ def send_apn(message, token):
 def sanitize_dict(_dict):
     if _dict.get('id'): _dict['server_id'] = _dict.pop('id')
     if _dict.get('description'): _dict['_description'] = _dict.pop('description')
+    if _dict.get('professor'): _dict['professor_name'] = _dict.pop('professor')
+    if _dict.get('professor'): _dict['location_name'] = _dict.pop('location')
     return _dict

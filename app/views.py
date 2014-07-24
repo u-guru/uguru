@@ -32,7 +32,6 @@ logger = logging.getLogger(__name__)
 
 cert_path = os.path.join(os.path.dirname(__file__), 'uguru-cert.pem')
 key_path = os.path.join(os.path.dirname(__file__), 'uguru-key.pem')
-# apns = APNs(use_sandbox=True, cert_file=cert_path, key_file=key_path)
 apns = APNs(use_sandbox=True, cert_file=cert_path, key_file=key_path)
 
 stripe.api_key = stripe_keys['secret_key']
@@ -741,6 +740,9 @@ def send_message():
                 or (conversation.messages[-1].sender_id == user.id and conversation.is_read):
                 receiver.msg_notif += 1
                 
+                if receiver.apn_token:
+                    apn_message = receiver.name.split(" ")[0] + ' has sent you a message'
+                    send_apn(apn_message, receiver.apn_token)
                 
                 if not conversation.messages :
                     from emails import send_message_alert
@@ -812,6 +814,10 @@ def update_requests():
             student = User.query.get(r.student_id)
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
+
+            if student.apn_token:
+                apn_message = tutor.name.split(" ")[0] + ', a ' + skill_name + ' tutor, wants to help!'
+                send_apn(apn_message, student.apn_token)
 
             current_notification.feed_message = 'You accepted <b>' + student.name.split(' ')[0] + \
                 "'s</b> request for <b>" + skill_name.upper() + "</b>."
@@ -1092,6 +1098,11 @@ def update_requests():
             from emails import tutor_is_matched, student_is_matched
             tutor_is_matched(user, tutor, skill_name)
             student_is_matched(user, tutor, r.student_secret_code)
+
+            if tutor.apn_token:
+                apn_message = student.name.split(" ")[0] + ' has chosen you! Message '  + student.name.split(" ")[0] + ' now!'
+                send_apn(apn_message, tutor.apn_token)
+
 
 
             #create conversation between both
