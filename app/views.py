@@ -30,7 +30,10 @@ MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-apns = APNs(use_sandbox=True, cert_file='uguru-cert.pem', key_file='uguru-key.pem')
+cert_path = os.path.join(os.path.dirname(__file__), 'uguru-cert.pem')
+key_path = os.path.join(os.path.dirname(__file__), 'uguru-key.pem')
+# apns = APNs(use_sandbox=True, cert_file=cert_path, key_file=key_path)
+apns = APNs(use_sandbox=True, cert_file=cert_path, key_file=key_path)
 
 stripe.api_key = stripe_keys['secret_key']
 MAX_UPLOAD_SIZE = 1024 * 1024
@@ -1572,12 +1575,12 @@ def success():
                     if tutor.apn_token:
                         apn_message = u.name.split(" ")[0] + ' needs help in ' + skill_name + '. You could make $' + \
                             str(int(r.student_estimated_hour) * int(r.time_estimate)) + '.'
-                        print tutor.apn_token
-                        token_hex = tutor.apn_token
-                        payload = Payload(alert="Samir needs help with CS10. You can make $30", sound="default", badge=1)
-                        apns.gateway_server.send_notification(token_hex, payload)
+                        # print tutor.apn_token
+                        # token_hex = tutor.apn_token
+                        # payload = Payload(alert="Samir needs help with CS10. You can make $30", sound="default", badge=1)
+                        # apns.gateway_server.send_notification(token_hex, payload)
 
-                        # send_apn(apn_message, tutor.apn_token)
+                        send_apn(apn_message, tutor.apn_token)
 
                     tutor.incoming_requests_to_tutor.append(r)
                     notification = tutor_request_offer(u, tutor, r, skill_name)
