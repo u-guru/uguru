@@ -650,7 +650,7 @@ def api(arg, _id):
             tutor.feed_notif += 1
 
             if tutor.apn_token:
-                apn_message = student.name.split(" ")[0] + ' has chosen you! Message '  + student.name.split(" ")[0] + ' now!'
+                apn_message = student.name.split(" ")[0] + ' has chosen you! BIG MONEY TIME. Message '  + student.name.split(" ")[0] + ' now!'
                 send_apn(apn_message, tutor.apn_token)
 
             tutor_notification.time_read = None
