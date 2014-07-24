@@ -167,7 +167,7 @@ def api(arg, _id):
             student_tags = ['student-request-help', 'student-payment-approval', 'student-incoming-offer']
 
             for n in user_notifications:
-                n_dict = n.__dict__
+                n_dict = sanitize_dict(n.__dict__)
                 if n.custom_tag in tutor_tags:
                     n_dict['role'] = 'guru'
                 else:
