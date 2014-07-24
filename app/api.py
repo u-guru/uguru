@@ -365,9 +365,6 @@ def api(arg, _id):
             response = n_detail
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
-
-    print request.method
-    
     
     if arg == 'user' and request.method == 'GET':
         user = getUser()
