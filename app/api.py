@@ -621,10 +621,6 @@ def api(arg, _id):
                 )
                 charge_id = charge["id"]
 
-                mp.track(str(student.id), 'Student Accepted Request', {
-                    'One-time-charge': p.student_paid_amount
-                    })
-
 
             if not previous_request_payment:
                 from emails import student_payment_receipt
