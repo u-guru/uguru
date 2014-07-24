@@ -1569,6 +1569,11 @@ def success():
             for tutor in r.requested_tutors:
                 #Only if they are approved tutors
                 if tutor.approved_by_admin:
+                    if tutor.apn_token:
+                        apn_message = user.name.split(" ")[0] + ' needs help in ' + skill_name + '. You could make $' + \
+                            (r.student_estimated_hour * r.time_estimate) + '.'
+                        send_apn(apn_message, tutor.apn_token)
+
                     tutor.incoming_requests_to_tutor.append(r)
                     notification = tutor_request_offer(u, tutor, r, skill_name)
                     db_session.add(notification)
@@ -2093,3 +2098,8 @@ def expire_request_job(request_id, user_id):
     user = User.query.get(user_id)
     request.is_expired = True
     db_session.commit()
+
+
+def send_apn(message, token):
+    payload = Payload(alert(message), sound='default', badge=1)
+    apns.gateway_server.send_notification(token, payload)
