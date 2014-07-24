@@ -1572,7 +1572,12 @@ def success():
                     if tutor.apn_token:
                         apn_message = u.name.split(" ")[0] + ' needs help in ' + skill_name + '. You could make $' + \
                             str(int(r.student_estimated_hour) * int(r.time_estimate)) + '.'
-                        send_apn(apn_message, tutor.apn_token)
+                        print tutor.apn_token
+                        token_hex = tutor.apn_token
+                        payload = Payload(alert="Samir needs help with CS10. You can make $30", sound="default", badge=1)
+                        apns.gateway_server.send_notification(token_hex, payload)
+
+                        # send_apn(apn_message, tutor.apn_token)
 
                     tutor.incoming_requests_to_tutor.append(r)
                     notification = tutor_request_offer(u, tutor, r, skill_name)
