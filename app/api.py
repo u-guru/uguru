@@ -17,6 +17,7 @@ import random
 from apscheduler.scheduler import Scheduler
 import views, time
 from apns import APNs, Frame, Payload
+import api
 
 apns = APNs(use_sandbox=True, cert_file='uguru-cert.pem', key_file='uguru-key.pem')
 
