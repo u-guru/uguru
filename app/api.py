@@ -966,5 +966,5 @@ def sanitize_dict(_dict):
     if _dict.get('id'): _dict['server_id'] = _dict.pop('id')
     if _dict.get('description'): _dict['_description'] = _dict.pop('description')
     if _dict.get('professor'): _dict['professor_name'] = _dict.pop('professor')
-    if _dict.get('professor'): _dict['location_name'] = _dict.pop('location')
+    if _dict.get('location'): _dict['location_name'] = _dict.pop('location')
     return _dict
