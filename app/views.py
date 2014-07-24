@@ -30,7 +30,7 @@ MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-apns = APNs(use_sandbox=True, cert_file='cert.pem', key_file='key.pem')
+apns = APNs(use_sandbox=True, cert_file='uguru-cert.pem', key_file='uguru-key.pem')
 
 stripe.api_key = stripe_keys['secret_key']
 MAX_UPLOAD_SIZE = 1024 * 1024
