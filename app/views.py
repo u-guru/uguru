@@ -2101,5 +2101,5 @@ def expire_request_job(request_id, user_id):
 
 
 def send_apn(message, token):
-    payload = Payload(alert(message), sound='default', badge=1)
+    payload = Payload(alert=message, sound='default', badge=1)
     apns.gateway_server.send_notification(token, payload)
