@@ -288,7 +288,7 @@ def api(arg, _id):
     if arg =='send_message' and _id == None and request.method == 'POST':
         user = getUser()
         if user:
-            message_contents = ajax_json.get('send_message')
+            message_contents = ajax_json.get('contents')
             conversation_id = ajax_json.get('conversation_id')
             conversation = Conversation.query.get(conversation_id)
             sender_id = user.id
