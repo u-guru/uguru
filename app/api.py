@@ -18,7 +18,7 @@ from apscheduler.scheduler import Scheduler
 import views, time
 from apns import APNs, Frame, Payload
 
-apns = APNs(use_sandbox=True, cert_file='/certs/uguru-cert.pem', key_file='/certs/uguru-key.pem')
+apns = APNs(use_sandbox=True, cert_file='uguru-cert.pem', key_file='uguru-key.pem')
 
 @app.route('/api/<arg>', methods=['GET', 'POST', 'PUT'], defaults={'_id': None})
 @app.route('/api/<arg>/<_id>')

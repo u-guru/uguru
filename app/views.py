@@ -15,7 +15,7 @@ from twilio import twiml
 from mixpanel import Mixpanel
 from apscheduler.scheduler import Scheduler
 import logging
-import api
+# import api
 import time
 from apns import APNs, Frame, Payload
 
