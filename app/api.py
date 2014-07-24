@@ -828,8 +828,8 @@ def api(arg, _id):
 
             r = Request.query.get(r.id)
             student_notification = Notification.query.get(student_notification_id)
-            response = {"request": r.__dict__,
-                        "notifications": [student_notification.__dict__],
+            response = {"request": sanitize_dict(r.__dict__),
+                        "notifications": sanitize_dict(student_notification.__dict__),
                         # "calendar": weekly_availability
                         }
             return json.dumps(response, default=json_handler, indent=4)
@@ -962,3 +962,7 @@ def get_time_ranges(week_object, owner):
 def send_apn(message, token):
     payload = Payload(alert(message), sound='default', badge=1)
     apns.gateway_server.send_notification(token, payload)
+
+def sanitize_dict(_dict):
+    if _dict.get('id'): _dict['server_id'] = _dict.pop('id')
+    if _dict.get('description'): : _dict['_description'] = _dict.pop('description')
