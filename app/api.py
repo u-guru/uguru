@@ -454,8 +454,8 @@ def api(arg, _id):
         user = getUser()
         if user:
             request_id = request.json.get('request_id')
-            hourly_amount = request.json.get('amount')
-            extra_details = request.json.get('details')
+            hourly_amount = request.json.get('hourly_amount')
+            extra_details = request.json.get('tutor_message')
             weekly_availability = [[[1,3]], [], [], [], [], [], []]
             notification_id = request.json.get('notif_id')
             current_notification = Notification.query.get(notification_id)
