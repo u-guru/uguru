@@ -299,15 +299,14 @@ def api(arg, _id):
                 receiver_id = conversation.guru_id
                 receiver = User.query.get(receiver_id)
 
+            if receiver.apn_token:
+                    apn_message = receiver.name.split(" ")[0] + ' has sent you a message'
+                    send_apn(apn_message, receiver.apn_token)
+                
             #If previous message was not the sender, we know the receive should receive a notification + email 
             if not conversation.messages or conversation.messages[-1].sender_id != user.id \
                 or (conversation.messages[-1].sender_id == user.id and conversation.is_read):
                 receiver.msg_notif += 1
-
-                if receiver.apn_token:
-                    apn_message = receiver.name.split(" ")[0] + ' has sent you a message'
-                    send_apn(apn_message, receiver.apn_token)
-                
                 
                 if not conversation.messages :
                     from emails import send_message_alert
