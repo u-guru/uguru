@@ -332,7 +332,7 @@ def api(arg, _id):
                 raise
 
             message = Message.query.get(message.id)
-            response = {'message': message.__dict__}
+            response = {'message': sanitize_dict(message.__dict__)}
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
 
         return errors(['Invalid Token'])
