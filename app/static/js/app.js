@@ -516,15 +516,11 @@ $(document).ready(function(){
           $('#alert-fields-request-form').show(); 
       } else {
       //If they have already signed up
-      if ($('#request-form-options').is(':visible') || $('#feed').length > 0) {
-        submit_request_form_to_server();
-       } else {
         request_form_complete = true;
         $('#signup-modal').modal('show');
         $('#alert-fields-student-signup-top').text('Please create an account before your request goes through!')
         $('#alert-fields-student-signup-top').show();
         $('#student-next-link').show();
-       }
       }
     });
 
