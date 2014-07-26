@@ -1394,6 +1394,10 @@ def update_password():
             raise 
         return jsonify(response=return_json)
 
+@app.route('/apply/')
+def apply():
+    return render_template('apply.html')
+
 @app.route('/validation/', methods=('GET', 'POST'))
 def success():
     if request.method == "POST":
