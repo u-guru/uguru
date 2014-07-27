@@ -514,13 +514,15 @@ $(document).ready(function(){
     if (!$('#request-description').val() || !$('#request-location').val() || 
         $('td.time-slot.td-selected').length == 0 || !$('#request-skill').val()) {
           $('#alert-fields-request-form').show(); 
-      } else {
+      } else if ($("#activity").length == 0) {
       //If they have already signed up
         request_form_complete = true;
         $('#signup-modal').modal('show');
         $('#alert-fields-student-signup-top').text('Please create an account before your request goes through!')
         $('#alert-fields-student-signup-top').show();
         $('#student-next-link').show();
+      } else {
+        submit_request_form_to_server();
       }
     });
 
