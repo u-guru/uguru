@@ -344,7 +344,10 @@ def api(arg, _id):
         if user:
             n_detail = {}
             n = Notification.query.get(_id)
-            n_detail['type'] =  n.custom_tag
+            if n.custom and n.custom == 'tutor-accept-request':
+                n_detail['type'] = n.custom
+            else:
+                n_detail['type'] =  n.custom_tag
 
             if n.request_id:
                 r = Request.query.get(n.request_id)
