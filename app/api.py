@@ -912,6 +912,8 @@ def errors(errors=[]):
     return jsonify({"errors":errors})
 
 def json_handler(obj):
+    print obj
+    print obj.__class__.__name__
     if hasattr(obj, 'isoformat'):
         return obj.isoformat()
     if obj.__class__.__name__ == 'InstanceState':
@@ -957,7 +959,7 @@ def send_apn(message, token):
     payload = Payload(alert=message, sound='default', badge=1)
     apns.gateway_server.send_notification(token, payload)
 
-def sanitize_dict(_dict):
+def sanitize_dict(_dict):   
     if _dict.get('id'): _dict['server_id'] = _dict.pop('id')
     if _dict.get('description'): _dict['_description'] = _dict.pop('description')
     if _dict.get('professor'): _dict['professor_name'] = _dict.pop('professor')
