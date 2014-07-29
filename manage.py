@@ -5,6 +5,11 @@ from hashlib import md5
 from app import emails
 from app import app
 from mixpanel import Mixpanel
+import mandrill
+
+SMTP_USERNAME = os.environ['MANDRILL_USERNAME']
+SMTP_PASSWORD = os.environ['MANDRILL_PASSWORD']
+MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
 
 arg = sys.argv[1]
 
@@ -50,6 +55,73 @@ if arg == 'initialize':
         db_session.add(new_course)
         db_session.commit()
     print 'courses created'
+
+if arg == 'data_to_csv':
+    email = sys.argv[2]
+    users = User.query.all()
+    requests = Request.query.all()
+    data = []
+    data_first_row = ['Name', 'Email', 'Tutor?', 'Number Outgoing Requests', 'Number Conversations']
+    data.append(data_first_row)
+    for u in users:
+        data_row = [u.name, u.email]
+        user_requests = Request.query.filter_by(student_id = u.id).all()
+        user_requests_len = len(user_requests)
+        if u.skills and u.verified_tutor:
+            data_row.append('1')
+        else:
+            data_row.append('0')
+        data_row.append(user_requests_len)
+        data_row.append(len(u.conversations))
+        data.append(data_row)
+
+    import csv
+    with open('data.csv', 'wb') as fp:
+        a = csv.writer(fp, delimiter=',')
+        a.writerows(data)
+
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    to_emails = []
+    to_emails.append({
+        'email':email,
+        'name': 'UGURU Data Dump',
+        'type': 'to'
+    })
+
+    # import json
+    # with open('data.csv', 'w') as outfile:
+    #   json.dump(data, outfile)
+    # print data
+    import base64
+
+    with open("data.csv", "rb") as csv_file:
+        encoded_string = base64.b64encode(csv_file.read())
+
+    message = {
+        'subject': "Uguru Data Dump",
+        'from_email': 'yourmom@uguru.me',
+        'from_name': 'Uguru Data Director',
+        'to': to_emails,
+        'headers': {'Reply-To': 'makhani.samir@gmail.com'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'attachments': [
+                {
+                    "type": "text/csv",
+                    "name": "data.csv",
+                    "content": encoded_string
+                }
+            ],
+        'preserve_recipients':False,
+        'tags':['uguru-data']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+
+
+
+
 
 if arg == 'update-notifications':
     for u in User.query.all():
