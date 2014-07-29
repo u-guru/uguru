@@ -703,7 +703,7 @@ def api(arg, _id):
             student_price = request.json.get('student_estimated_hour')
             location = request.json.get('location_name')
 
-            weekly_availability = [[[1,3]], [], [], [], [], [], []]
+            weekly_availability = request.json.get('calendar')
 
             from app.static.data.variations import courses_dict
             from app.static.data.short_variations import short_variations_dict
