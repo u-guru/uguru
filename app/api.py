@@ -694,6 +694,7 @@ def api(arg, _id):
 
         user = getUser()
         if user:
+            print request.json
             description = request.json.get('_description')
             skill_name = request.json.get('course_name') 
             urgency = request.json.get('urgency')
