@@ -915,11 +915,11 @@ def errors(errors=[]):
     return jsonify({"errors":errors})
 
 def json_handler(obj):
-    print obj
-    print obj.__class__.__name__
     if hasattr(obj, 'isoformat'):
         return obj.isoformat()
     if obj.__class__.__name__ == 'InstanceState':
+        return None
+    if obj.__class__.__name__ == 'User':
         return None
     else:
         return json.JSONEncoder.default(obj)
