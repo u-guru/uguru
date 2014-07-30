@@ -617,6 +617,12 @@ def api(arg, _id):
                 db_session.add(p)
             else:
                 p = previous_request_payment
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
             
             skill = Skill.query.get(r.skill_id)
             r.connected_tutor_id = tutor_id
@@ -624,6 +630,12 @@ def api(arg, _id):
             r.connected_tutor_hourly = prices_dict[current_notification.request_tutor_amount_hourly]
             r.time_connected = datetime.now()
             r.student_secret_code = user.secret_code
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
 
             if not previous_request_payment:
                 charge = stripe.Charge.create(
@@ -646,6 +658,12 @@ def api(arg, _id):
                     for n in sorted(_tutor.notifications, reverse=True):
                         if n.request_id == r.id:
                             n.feed_message_subtitle = '<span style="color:#CD2626"><strong>Update:</strong> The student has already chose another tutor.</span>'
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise                    
             
             #Modify tutor notification
             for n in tutor.notifications:
@@ -665,6 +683,13 @@ def api(arg, _id):
             from emails import tutor_is_matched, student_is_matched
             tutor_is_matched(user, tutor, skill_name)
             student_is_matched(user, tutor, r.student_secret_code)
+
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
 
 
             #create conversation between both
