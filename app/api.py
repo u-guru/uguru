@@ -638,19 +638,19 @@ def api(arg, _id):
                 db_session.rollback()
                 raise 
 
-            if not previous_request_payment:
-                charge = stripe.Charge.create(
-                    amount = p.student_paid_amount * 100,
-                    currency="usd",
-                    customer=student.customer_id,
-                    description="one-time connection fee"
-                )
-                charge_id = charge["id"]
+            # if not previous_request_payment:
+            #     charge = stripe.Charge.create(
+            #         amount = p.student_paid_amount * 100,
+            #         currency="usd",
+            #         customer=student.customer_id,
+            #         description="one-time connection fee"
+            #     )
+            #     charge_id = charge["id"]
 
 
-            if not previous_request_payment:
-                from emails import student_payment_receipt
-                student_payment_receipt(student, tutor.name.split(" ")[0], p.student_paid_amount, p, charge_id, skill_name, False, True)
+            # if not previous_request_payment:
+            #     from emails import student_payment_receipt
+            #     student_payment_receipt(student, tutor.name.split(" ")[0], p.student_paid_amount, p, charge_id, skill_name, False, True)
 
             student.outgoing_requests.remove(r)
 
