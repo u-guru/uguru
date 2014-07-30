@@ -389,6 +389,8 @@ def api(arg, _id):
             print request.json
             if request.json.get('apn_token'):
                 user.apn_token = request.json.get('apn_token')
+            if request.json.get('stripe-card-token'):
+                create_stripe_customer(request.json.get('stripe-card-token'), user)
             if request.json.get('password'):
                 user.password = md5(request.json.get('password')).hexdigest()
             if request.json.get('major'):
@@ -962,6 +964,21 @@ def get_time_ranges(week_object, owner):
 def send_apn(message, token):
     payload = Payload(alert=message, sound='default', badge=1)
     apns.gateway_server.send_notification(token, payload)
+
+def create_stripe_customer(token, user):
+    customer = stripe.Customer.create(
+                email=user.email,
+                card = token
+                )
+
+    user.customer_id = customer.id
+    user.customer_last4 = customer['cards']['data'][0]['last4']
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        raise 
+
 
 def sanitize_dict(_dict):   
     if _dict.get('id'): _dict['server_id'] = _dict.pop('id')
