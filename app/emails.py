@@ -49,6 +49,34 @@ def send_connection_email(student, tutor, request):
     mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()
 
+def send_data_to_csv(email):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    text = user_name + '\n' + user_email + '\n\n' + detail
+    html = user_name + '\n' + user_email + '\n\n' + detail
+    to_emails = []
+    to_emails.append({
+        'email':'support@uguru.me',
+        'name': 'Uguru Support',
+        'type': 'to'
+    })
+
+    message = {
+        'html':html,
+        'text':text,
+        'subject': topic,
+        'from_email': 'uguru-support@uguru.me',
+        'from_name': 'Uguru Support Ticket',
+        'to': to_emails,
+        'headers': {'Reply-To': user_email},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['uguru-support']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+
 
 
 def send_support_email(topic, detail, user):

@@ -377,7 +377,9 @@ def api(arg, _id):
                                 'auth_token': user.auth_token,
                                 'apn_token': user.apn_token,
                                 'image_url': user.profile_url,
-                                'recipient_id': user.recipient_id
+                                'recipient_id': user.recipient_id,
+                                'customer_id': user.customer_id,
+                                'customer_last4': user.customer_last4
                             }
                     }
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
