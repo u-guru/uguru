@@ -583,6 +583,11 @@ def api(arg, _id):
     if arg =='student_accept' and request.method == 'PUT':
         user = getUser()
         if user:
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
             notification_id = request.json.get('notif_id')
 
             student = user
