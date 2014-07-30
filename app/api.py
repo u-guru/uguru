@@ -581,11 +581,6 @@ def api(arg, _id):
     
 
     if arg =='student_accept' and request.method == 'PUT':
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
         user = getUser()
         if user:
             notification_id = request.json.get('notif_id')
@@ -612,16 +607,16 @@ def api(arg, _id):
             r = Request.query.get(request_id)
 
             #Cancelled payments for now
-            # previous_request_payment = Payment.query.filter_by(request_id = r.id).first()
-            # if not previous_request_payment:
-            #     p = Payment(r)
-            #     if r.id > 165 :
-            #         p.student_paid_amount = 5
-            #     else:
-            #         p.student_paid_amount = 10
-            #     db_session.add(p)
-            # else:
-            #     p = previous_request_payment
+            previous_request_payment = Payment.query.filter_by(request_id = r.id).first()
+            if not previous_request_payment:
+                p = Payment(r)
+                if r.id > 165 :
+                    p.student_paid_amount = 5
+                else:
+                    p.student_paid_amount = 10
+                db_session.add(p)
+            else:
+                p = previous_request_payment
             
             skill = Skill.query.get(r.skill_id)
             r.connected_tutor_id = tutor_id
@@ -630,39 +625,28 @@ def api(arg, _id):
             r.time_connected = datetime.now()
             r.student_secret_code = user.secret_code
 
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-
-            # if not previous_request_payment:
-            #     charge = stripe.Charge.create(
-            #         amount = p.student_paid_amount * 100,
-            #         currency="usd",
-            #         customer=student.customer_id,
-            #         description="one-time connection fee"
-            #     )
-            #     charge_id = charge["id"]
+            if not previous_request_payment:
+                charge = stripe.Charge.create(
+                    amount = p.student_paid_amount * 100,
+                    currency="usd",
+                    customer=student.customer_id,
+                    description="one-time connection fee"
+                )
+                charge_id = charge["id"]
 
 
-            # if not previous_request_payment:
-            #     from emails import student_payment_receipt
-            #     student_payment_receipt(student, tutor.name.split(" ")[0], p.student_paid_amount, p, charge_id, skill_name, False, True)
+            if not previous_request_payment:
+                from emails import student_payment_receipt
+                student_payment_receipt(student, tutor.name.split(" ")[0], p.student_paid_amount, p, charge_id, skill_name, False, True)
 
-            student.outgoing_requests.remove(r)
+            if r in student.outgoing_requests:
+                student.outgoing_requests.remove(r)
 
             for _tutor in r.requested_tutors:
                 if _tutor.id != tutor_id:
                     for n in sorted(_tutor.notifications, reverse=True):
                         if n.request_id == r.id:
                             n.feed_message_subtitle = '<span style="color:#CD2626"><strong>Update:</strong> The student has already chose another tutor.</span>'
-
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise                    
             
             #Modify tutor notification
             for n in tutor.notifications:
@@ -682,13 +666,6 @@ def api(arg, _id):
             from emails import tutor_is_matched, student_is_matched
             tutor_is_matched(user, tutor, skill_name)
             student_is_matched(user, tutor, r.student_secret_code)
-
-
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
 
 
             #create conversation between both
