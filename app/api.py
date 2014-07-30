@@ -593,14 +593,14 @@ def api(arg, _id):
             tutor = User.query.get(tutor_id)
 
             #Modify student notification
-            current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
-                + skill_name.upper() + " tutor."
-            current_notification.feed_message_subtitle = '<b>Click here</b> to see next steps!'
-            current_notification.custom = 'student-accept-request'
-            if current_notification.time_read:
-                user.feed_notif += 1
-                current_notification.time_read = None
-            current_notification.time_created = datetime.now()
+            # current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
+            #     + skill_name.upper() + " tutor."
+            # current_notification.feed_message_subtitle = '<b>Click here</b> to see next steps!'
+            # current_notification.custom = 'student-accept-request'
+            # if current_notification.time_read:
+            #     user.feed_notif += 1
+            #     current_notification.time_read = None
+            # current_notification.time_created = datetime.now()
 
             #Update request
             request_id = current_notification.request_id
