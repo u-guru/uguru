@@ -586,7 +586,8 @@ def api(arg, _id):
             notification_id = request.json.get('notif_id')
             print "abotu to print json..."
             print request.json
-            print request.form
+            print notification_id
+
             student = user
             current_notification = Notification.query.get(notification_id)
             skill_name = current_notification.skill_name
