@@ -387,10 +387,13 @@ def api(arg, _id):
         user = getUser()
         if user:
             print request.json
+            user_response_dict = {}
             if request.json.get('apn_token'):
                 user.apn_token = request.json.get('apn_token')
             if request.json.get('stripe-card-token'):
                 create_stripe_customer(request.json.get('stripe-card-token'), user)
+                user_response_dict['customer_id'] = user.customer_id
+                user_response_dict['customer_last4'] = user.customer_last4
             if request.json.get('password'):
                 user.password = md5(request.json.get('password')).hexdigest()
             if request.json.get('major'):
@@ -450,7 +453,10 @@ def api(arg, _id):
 
             user = User.query.get(user.id)
 
-            response = {'user': user.__dict__}
+            if user_response_dict:
+                response = {'user': user_response_dict}
+            else:
+                response = {'user': user.__dict__}
             
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
