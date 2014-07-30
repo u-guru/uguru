@@ -581,6 +581,11 @@ def api(arg, _id):
     
 
     if arg =='student_accept' and request.method == 'PUT':
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
         user = getUser()
         if user:
             notification_id = request.json.get('notif_id')
@@ -593,21 +598,18 @@ def api(arg, _id):
             tutor = User.query.get(tutor_id)
 
             #Modify student notification
-            # current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
-            #     + skill_name.upper() + " tutor."
-            # current_notification.feed_message_subtitle = '<b>Click here</b> to see next steps!'
-            # current_notification.custom = 'student-accept-request'
-            # if current_notification.time_read:
-            #     user.feed_notif += 1
-            #     current_notification.time_read = None
-            # current_notification.time_created = datetime.now()
+            current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
+                + skill_name.upper() + " tutor."
+            current_notification.feed_message_subtitle = '<b>Click here</b> to see next steps!'
+            current_notification.custom = 'student-accept-request'
+            if current_notification.time_read:
+                user.feed_notif += 1
+                current_notification.time_read = None
+            current_notification.time_created = datetime.now()
 
             #Update request
             request_id = current_notification.request_id
             r = Request.query.get(request_id)
-
-            print request_id
-            print r
 
             #Cancelled payments for now
             # previous_request_payment = Payment.query.filter_by(request_id = r.id).first()
@@ -620,12 +622,6 @@ def api(arg, _id):
             #     db_session.add(p)
             # else:
             #     p = previous_request_payment
-
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
             
             skill = Skill.query.get(r.skill_id)
             r.connected_tutor_id = tutor_id
