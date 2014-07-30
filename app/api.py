@@ -592,10 +592,6 @@ def api(arg, _id):
             tutor_id = current_notification.request_tutor_id
             tutor = User.query.get(tutor_id)
 
-            print current_notification
-            print skill_name
-            print tutor
-
             #Modify student notification
             current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
                 + skill_name.upper() + " tutor."
@@ -609,6 +605,9 @@ def api(arg, _id):
             #Update request
             request_id = current_notification.request_id
             r = Request.query.get(request_id)
+
+            print request_id
+            print r
 
             #Cancelled payments for now
             # previous_request_payment = Payment.query.filter_by(request_id = r.id).first()
