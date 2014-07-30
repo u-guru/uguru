@@ -1804,8 +1804,8 @@ def activity():
         user.last_active = datetime.now()
         mp.track(str(user.id), 'On Feed')
         mp.people_set(str(user.id), {'Last Seen':datetime.now().isoformat()})
-    if user.verified_tutor and not is_tutor_verified(user):
-        return redirect(url_for('settings'))
+    # if user.verified_tutor and not user.approved_by_admin:
+    #     return redirect(url_for('settings'))
     request_dict = {}
     address_book = {}
     payment_dict = {}
@@ -1895,8 +1895,8 @@ def messages():
     user = User.query.get(user_id)
     if not session.get('admin'):
         user.last_active = datetime.now()
-    if user.verified_tutor and not is_tutor_verified(user):
-        return redirect(url_for('settings'))
+    # if user.verified_tutor and not is_tutor_verified(user):
+    #     return redirect(url_for('settings'))
     pretty_dates = {}
     transactions = []
     calendars = {}
