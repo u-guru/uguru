@@ -607,16 +607,17 @@ def api(arg, _id):
             request_id = current_notification.request_id
             r = Request.query.get(request_id)
 
-            previous_request_payment = Payment.query.filter_by(request_id = r.id).first()
-            if not previous_request_payment:
-                p = Payment(r)
-                if r.id > 165 :
-                    p.student_paid_amount = 5
-                else:
-                    p.student_paid_amount = 10
-                db_session.add(p)
-            else:
-                p = previous_request_payment
+            #Cancelled payments for now
+            # previous_request_payment = Payment.query.filter_by(request_id = r.id).first()
+            # if not previous_request_payment:
+            #     p = Payment(r)
+            #     if r.id > 165 :
+            #         p.student_paid_amount = 5
+            #     else:
+            #         p.student_paid_amount = 10
+            #     db_session.add(p)
+            # else:
+            #     p = previous_request_payment
 
             try:
                 db_session.commit()
