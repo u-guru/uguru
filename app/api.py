@@ -708,6 +708,8 @@ def api(arg, _id):
             except:
                 db_session.rollback()
                 raise 
+            response = {'user': user.__dict__}
+            return json.dumps(response, default=json_handler, indent=4)
         return errors(['Invalid Token'])
 
     if arg =='request' and request.method =='POST':
