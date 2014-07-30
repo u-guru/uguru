@@ -56,6 +56,54 @@ if arg == 'initialize':
         db_session.commit()
     print 'courses created'
 
+def get_email_gurus_update_html():
+    return """
+    Hi Gurus,
+    <br>
+    <br>
+    Hope you are enjoying your summer. We've been ramping up for the Fall 2014 semester and have some exciting updates for you.
+    <br>
+    <br>
+    <b>
+    Uguru is no faster and easier than ever before!
+    </b>
+    <br>
+    <br>
+    <div style='padding-left:20px'>
+        <b>1. Revamped Website </b> <br>
+        Thanks for bearing with our beta site last semester! We are thrilled to announce that we are completely rebuilding the site. The newest features are in final review, bu check out what we have so far at <a href='http://uguru.me'> Uguru.me </a>.
+        <br>
+        <br>
+        <b>2. iPhone & Android Apps </b> <span style='color:rgb(106, 168, 79); font-style:italic'>Coming Soon! </span><br>
+        We want to connect our Gurus with students as fast as possible! That's why we've built an iOS + Android app that will make scheduling so much easier. We will release the app at the start of the semester.
+    </div>
+    <br>
+    <br>
+    <b>
+    We love our Gurus! Here are some ways to get more involved:
+    </b>
+    <br>
+    <br>
+    <div style='padding-left:20px'>
+        <b> 1. APPLY </b><br>
+        Calling rockstars! If you are passionate about Uguru's vision, apply to join our team. All our open positions are posted <a href='http://uguru.me/apply'> here </a>. If you're interested in getting involved in another way, feel free to email Katie (katie@uguru.me).
+        <br>
+        <br>
+        <b> 2. CONNECT </b><br>
+        Join the <a href='https://www.facebook.com/groups/832170350134169/' target='_blank'>Guru & Campus Rep </a> group to stay up-to-date throughout our Launch @ Cal.
+        <br>
+        <br>
+        <b> 3. QUICK CASH </b><br>
+        We are building a referral program to make marketing your Guru skills even easier! We'll release the details at Caltopia, August 24th. 
+    </div>
+    <br>
+    <br>
+    Cheers,
+    <br>
+    <br>
+    Michael Koh
+    """
+
 if arg == 'data_to_csv':
     email = sys.argv[2]
     users = User.query.all()
@@ -119,9 +167,45 @@ if arg == 'data_to_csv':
 
     result = mandrill_client.messages.send(message=message)
 
+if arg == 'email_gurus_update':
+    to_emails = []
+    users = User.query.all()
+    for u in users:
+        if u.skills:
+            to_emails.append({
+                'email':u.email,
+                'name': u.name,
+                'type': 'to'
+            })
+            print "email sent to " + u.email
 
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    import base64
+    with open("team.jpg", "rb") as team_photo:
+        encoded_string = base64.b64encode(team_photo.read())
 
+    message = {
+        'subject': "Calling all Gurus! Updates + Opportunities",
+        'from_email': 'michael@uguru.me',
+        'from_name': 'Michael Koh',
+        'html': get_email_gurus_update_html(),
+        'to': to_emails,
+        'headers': {'Reply-To': 'michael@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'attachments': [
+                {
+                    "type": "image/jpeg",
+                    "name": "team.jpg",
+                    "content": encoded_string
+                }
+            ],
+        'preserve_recipients':False,
+        'tags':['calling-all-gurus']
+    }
 
+    result = mandrill_client.messages.send(message=message)
 
 if arg == 'update-notifications':
     for u in User.query.all():
