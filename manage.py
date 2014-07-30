@@ -71,11 +71,11 @@ def get_email_gurus_update_html():
     <br>
     <div style='padding-left:20px'>
         <b>1. Revamped Website </b> <br>
-        Thanks for bearing with our beta site last semester! We are thrilled to announce that we are completely rebuilding the site. The newest features are in final review, bu check out what we have so far at <a href='http://uguru.me'> Uguru.me </a>.
+        Thanks for bearing with our beta site last semester! We are thrilled to announce that we are completely rebuilding the site. The newest features are in final review, but check out what we have so far at <a href='http://uguru.me'> Uguru.me </a>.
         <br>
         <br>
         <b>2. iPhone & Android Apps </b> <span style='color:rgb(106, 168, 79); font-style:italic'>Coming Soon! </span><br>
-        We want to connect our Gurus with students as fast as possible! That's why we've built an iOS + Android app that will make scheduling so much easier. We will release the app at the start of the semester.
+        We want to connect our Gurus with students as fast as possible! That's why we've built an iOS/Android apps that will make scheduling so much easier. We will release the app at the start of the semester.
     </div>
     <br>
     <br>
@@ -171,7 +171,7 @@ if arg == 'email_gurus_update':
     to_emails = []
     users = User.query.all()
     for u in users:
-        if u.skills:
+        if u.skills and u.verified_tutor:
             to_emails.append({
                 'email':u.email,
                 'name': u.name,
