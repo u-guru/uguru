@@ -356,6 +356,7 @@ def api(arg, _id):
                 n_detail['request'] = sanitize_dict(r.__dict__)
                 if r.weekly_availability:
                     from views import get_student_time_ranges
+                    print get_student_time_ranges(r.weekly_availability, 0)
                     n_detail['request']['calendar'] = {
                             'time_ranges': get_student_time_ranges(r.weekly_availability, 0)
                         }
