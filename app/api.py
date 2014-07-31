@@ -352,7 +352,8 @@ def api(arg, _id):
             if n.request_id:
                 r = Request.query.get(n.request_id)
                 
-                temp_availability = r.weekly_availability.first()
+                temp_availability = r.weekly_availability
+                r = Request.query.get(n.request_id)
 
                 #View Calendar
                 n_detail['request'] = sanitize_dict(r.__dict__)
