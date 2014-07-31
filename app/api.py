@@ -360,6 +360,7 @@ def api(arg, _id):
                         }
                     if n.request_tutor_id:
                         n_detail['tutor-calendar'] = process_back_to_original_form(get_student_time_ranges(temp_availability, n.request_tutor_id))
+                        print n_detail['tutor-calendar']          
                 r = Request.query.get(n.request_id)
 
                 #View Calendar
