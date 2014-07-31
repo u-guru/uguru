@@ -359,7 +359,7 @@ def api(arg, _id):
                         }
                     if n.request_tutor_id:
                         n_detail['tutor-calendar'] = {
-                            'time-ranges': process_back_to_original_form(get_student_time_ranges(temp_availability, n.request_tutor_id))
+                            'time_ranges': process_back_to_original_form(get_student_time_ranges(temp_availability, n.request_tutor_id))
                         }
                 r = Request.query.get(n.request_id)
 
