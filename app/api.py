@@ -356,7 +356,7 @@ def api(arg, _id):
                 if temp_availability:
                     print get_student_time_ranges(temp_availability, 0)
                     n_detail['student-calendar'] = {
-                            'time_ranges': get_student_time_ranges(temp_availability, 0)
+                            'time_ranges': process_back_to_original_form(get_student_time_ranges(temp_availability, 0))
                         }
                 r = Request.query.get(n.request_id)
 
@@ -1022,3 +1022,12 @@ def get_student_time_ranges(week_object, owner):
     for r in ranges:
         arr_ranges.append([r.week_day, r.start_time, r.end_time])
     return arr_ranges
+
+def process_back_to_original_form(arr_arr):
+    return_list = [[],[],[],[],[],[],[]]
+    for item in arr_arr:
+        if item:
+            index = item.pop(0)
+            return_list[index].append(item)
+    return return_list
+
