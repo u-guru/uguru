@@ -351,7 +351,15 @@ def api(arg, _id):
 
             if n.request_id:
                 r = Request.query.get(n.request_id)
+                
+                #View Calendar
                 n_detail['request'] = sanitize_dict(r.__dict__)
+                if r.weekly_availability:
+                    from views import get_student_time_ranges
+                    n_detail['request']['calendar'] = {
+                            'time_ranges': get_student_time_ranges(r.weekly_availability, 0)
+                        }
+
             if n.payment_id:
                 p = Request.query.get(n.payment_id)
                 n_detail['payment'] = sanitize_dict(p.__dict__)
