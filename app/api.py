@@ -346,6 +346,10 @@ def api(arg, _id):
             n = Notification.query.get(_id)
             if n.custom and n.custom == 'tutor-accept-request':
                 n_detail['type'] = n.custom
+            elif: n.custom and n.custom =='student-accept-request':
+                n_detail['student-match']
+            elif: n.custom and n.custom =='tutor-is-matched':
+                n_detail['tutor-match']
             else:
                 n_detail['type'] =  n.custom_tag
 
