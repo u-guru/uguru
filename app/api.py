@@ -353,15 +353,15 @@ def api(arg, _id):
                 r = Request.query.get(n.request_id)
                 
                 temp_availability = r.weekly_availability
+                if temp_availability:
+                    print get_student_time_ranges(temp_availability, 0)
+                    n_detail['student-calendar'] = {
+                            'time_ranges': get_student_time_ranges(temp_availability, 0)
+                        }
                 r = Request.query.get(n.request_id)
 
                 #View Calendar
                 n_detail['request'] = sanitize_dict(r.__dict__)
-                if temp_availability:
-                    print get_student_time_ranges(temp_availability, 0)
-                    n_detail['request']['calendar'] = {
-                            'time_ranges': get_student_time_ranges(temp_availability, 0)
-                        }
 
             if n.payment_id:
                 p = Request.query.get(n.payment_id)
