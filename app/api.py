@@ -351,10 +351,14 @@ def api(arg, _id):
 
             if n.request_id:
                 r = Request.query.get(n.request_id)
+                print r
+                print r.weekly_availability.first().ranges
+                print r.student_id
+                print r.__dict__
                 
                 #View Calendar
                 n_detail['request'] = sanitize_dict(r.__dict__)
-                if r.weekly_availability:
+                if r.weekly_availability.first():
                     print get_student_time_ranges(r.weekly_availability, 0)
                     n_detail['request']['calendar'] = {
                             'time_ranges': get_student_time_ranges(r.weekly_availability, 0)
