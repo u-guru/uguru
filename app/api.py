@@ -355,7 +355,6 @@ def api(arg, _id):
                 #View Calendar
                 n_detail['request'] = sanitize_dict(r.__dict__)
                 if r.weekly_availability:
-                    from views import get_student_time_ranges
                     print get_student_time_ranges(r.weekly_availability, 0)
                     n_detail['request']['calendar'] = {
                             'time_ranges': get_student_time_ranges(r.weekly_availability, 0)
@@ -1011,3 +1010,12 @@ def sanitize_dict(_dict):
     if _dict.get('professor'): _dict['professor_name'] = _dict.pop('professor')
     if _dict.get('location'): _dict['location_name'] = _dict.pop('location')
     return _dict
+
+def get_student_time_ranges(week_object, owner):
+    if not week_object.first():
+        return []
+    arr_ranges = []
+    ranges = week_object.filter_by(owner=owner).first().ranges
+    for r in ranges:
+        arr_ranges.append([r.week_day, r.start_time, r.end_time])
+    return arr_ranges
