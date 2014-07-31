@@ -351,6 +351,7 @@ def api(arg, _id):
 
             if n.request_id:
                 r = Request.query.get(n.request_id)
+                connected_tutor_id = r.connected_tutor_id
                 
                 temp_availability = r.weekly_availability
                 if temp_availability:
@@ -358,6 +359,8 @@ def api(arg, _id):
                     n_detail['student-calendar'] = {
                             'time_ranges': process_back_to_original_form(get_student_time_ranges(temp_availability, 0))
                         }
+                    if r.connected_tutor_id:
+                        n_detail['tutor-calendar'] = get_student_time_ranges(temp_availability, r.connected_tutor_id)
                 r = Request.query.get(n.request_id)
 
                 #View Calendar
