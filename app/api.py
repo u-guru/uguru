@@ -477,10 +477,11 @@ def api(arg, _id):
     if arg =='tutor_accept' and request.method =='PUT':
         user = getUser()
         if user:
+            print request.json
             request_id = request.json.get('request_id')
             hourly_amount = request.json.get('hourly_amount')
             extra_details = request.json.get('tutor_message')
-            weekly_availability = [[[1,3]], [], [], [], [], [], []]
+            weekly_availability = request.json.get('calendar')
             notification_id = request.json.get('notif_id')
             current_notification = Notification.query.get(notification_id)
 
@@ -1030,4 +1031,3 @@ def process_back_to_original_form(arr_arr):
             index = item.pop(0)
             return_list[index].append(item)
     return return_list
-
