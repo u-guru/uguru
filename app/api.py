@@ -346,6 +346,7 @@ def api(arg, _id):
             for conversation in conversations:
                 if conversation.student_id != user.id:
                     student = User.query.get(conversation.student_id)
+                    print student
                     r = conversation.requests[0]
                     hourly_rate = r.request_tutor_amount_hourly
                     profile_url = student.profile_url
