@@ -346,17 +346,17 @@ def api(arg, _id):
             for conversation in conversations:
                 if conversation.student_id != user.id:
                     student = User.query.get(conversation.student_id)
-                    request = conversation.requests[0]
-                    hourly_rate = request.request_tutor_amount_hourly
+                    r = conversation.requests[0]
+                    hourly_rate = r.request_tutor_amount_hourly
                     profile_url = student.profile_url
-                    skill = Skill.query.get(request.skill_id)
+                    skill = Skill.query.get(r.skill_id)
                     skill_name = short_variations_dict[skill.name]
                     billing_contacts_arr.append({
                             'student-name': student.name.split(" ")[0],
                             'student-profile': profile_url,
                             'hourly-rate': hourly_rate, 
                             'course': skill_name,
-                            'time-estimate': request.time_estimate
+                            'time-estimate': r.time_estimate
                         })
 
             response = {'billing-contacts': billing_contacts_arr}
