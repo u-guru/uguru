@@ -373,7 +373,7 @@ def api(arg, _id):
             r = Request.query.get(request_id)
             r.actual_time = float(request.json.get('time_estimate'))
             r.actual_hourly = request.json.get('hourly_amount')
-            total_amount = r.actual_hourly * r.actual_hourly
+            total_amount = float(request.json.get('time_estimate')) * request.json.get('hourly_amount')
 
             payment = Payment(r)
 
