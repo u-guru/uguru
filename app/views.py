@@ -370,7 +370,12 @@ def admin():
                         if count >= 1:
                             payment_dict['student-hourly'] = p.tutor_rate
                         else: 
-                            payment_dict['student-hourly'] = prices_reversed_dict[p.tutor_rate]
+                            if prices_reversed_dict.get(p.tutor_rate):
+                                payment_dict['student-hourly'] = prices_reversed_dict[p.tutor_rate]
+                            else:
+                                payment_dict['student-hourly'] = p.tutor_rate
+                                print "ERROR: Reversed prices_reversed_dict Dictionary is not finding a value for the key: " + p.tutor_rate
+                            
                         if payment_dict['student-hourly']:
                             payment_analytics['avg-student-rate'] += payment_dict['student-hourly']
                         payment_dict['tutor-hourly'] = p.tutor_rate
