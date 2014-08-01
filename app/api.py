@@ -378,6 +378,7 @@ def api(arg, _id):
             payment = Payment(r)
 
             stripe_amount_cents = int(total_amount * 100)
+            student = User.query.get(r.student_id)
 
             try: 
                 charge = stripe.Charge.create(
@@ -403,8 +404,7 @@ def api(arg, _id):
                 raise 
 
             r.payment_id = payment.id
-            rating = Rating(r.id)
-            student = User.query.get(r.student_id)
+            rating = Rating(r.id)            
             user.pending_ratings.append(rating)
             student.pending_ratings.append(rating)
             db_session.add(rating)
