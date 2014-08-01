@@ -412,9 +412,12 @@ def api(arg, _id):
             user.balance = user.balance + total_amount
             user.total_earned = user.total_earned + total_amount
 
+            from app.static.data.short_variations import short_variations_dict
+            skill_name = short_variations_dict[Skill.query.get(r.skill_id).name]
+
             from notifications import student_payment_approval, tutor_receive_payment
-            tutor_notification = tutor_receive_payment(student, user, payment, amount_made)
-            student_notification = student_payment_approval(student, user, payment, amount_charged, charge_id, skill_name, recurring)
+            tutor_notification = tutor_receive_payment(student, user, payment, total_amount)
+            student_notification = student_payment_approval(student, user, payment, total_amount, charge['id'], skill_name, False)
             user.notifications.append(tutor_notification)
             student.notifications.append(student_notification)
             db_session.add_all([tutor_notification, student_notification])
