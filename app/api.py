@@ -476,6 +476,20 @@ def api(arg, _id):
     if arg == 'user' and request.method == 'GET':
         user = getUser()
         if user:
+            pending_ratings_dict = {}
+            if user.pending_ratings:
+                rating = user.pending_ratings[0]
+                student = User.query.get(rating.student_id)
+                tutor = User.query.get(rating.tutor_id)
+
+                pending_ratings_dict = {
+                    'rating_server_id' : rating.id,
+                    'student-name' : student.name.split(" ")[0],
+                    'student-profile' : student.profile_url,
+                    'tutor-name' : tutor.name.split(" ")[0],
+                    'tutor-profile': tutor.profile_url,
+                }
+
             response = {'user': 
                             { 
                                 'server_id': user.id,
@@ -487,7 +501,8 @@ def api(arg, _id):
                                 'image_url': user.profile_url,
                                 'recipient_id': user.recipient_id,
                                 'customer_id': user.customer_id,
-                                'customer_last4': user.customer_last4
+                                'customer_last4': user.customer_last4,
+                                'pending_ratings': pending_ratings_dict
                             }
                     }
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
