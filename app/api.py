@@ -369,6 +369,7 @@ def api(arg, _id):
         user = getUser()
         if user:
             request_id = request.json.get('request_id')
+            print request.json
             r = Request.query.get(request_id)
             r.actual_time = float(request.json.get('time_estimate'))
             r.actual_hourly = request.json.get('hourly_amount')
