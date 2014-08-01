@@ -348,7 +348,7 @@ def api(arg, _id):
                     student = User.query.get(conversation.student_id)
                     print student
                     r = conversation.requests[0]
-                    hourly_rate = r.request_tutor_amount_hourly
+                    hourly_rate = r.student_estimated_hour
                     profile_url = student.profile_url
                     skill = Skill.query.get(r.skill_id)
                     skill_name = short_variations_dict[skill.name]
