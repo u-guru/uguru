@@ -484,10 +484,12 @@ def api(arg, _id):
 
                 pending_ratings_dict = {
                     'rating_server_id' : rating.id,
-                    'student-name' : student.name.split(" ")[0],
-                    'student-profile' : student.profile_url,
-                    'tutor-name' : tutor.name.split(" ")[0],
-                    'tutor-profile': tutor.profile_url,
+                    'student_name' : student.name.split(" ")[0],
+                    'student_profile' : student.profile_url,
+                    'student_server_id': student.id, 
+                    'tutor_name' : tutor.name.split(" ")[0],
+                    'tutor_profile': tutor.profile_url,
+                    'tutor_server_id': tutor.id, 
                 }
 
             response = {'user': 
