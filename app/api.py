@@ -337,7 +337,31 @@ def api(arg, _id):
         return errors(['Invalid Token'])
 
 
+    if arg =='billing-contacts' and request.method == 'GET':
+        user = getUser()
+        billing_contacts_arr = []
+        if user:
+            from app.static.data.short_variations import short_variations_dict
+            conversations = sorted(user.mailbox.conversations, key=lambda c:c.last_updated, reverse=True)
+            for conversation in conversations:
+                if conversation.student_id != user.id:
+                    student = User.query.get(conversation.student_id)
+                    request = conversation.requests[0]
+                    hourly_rate = request.request_tutor_amount_hourly
+                    profile_url = student.profile_url
+                    skill = Skill.query.get(request.skill_id)
+                    skill_name = short_variations_dict[skill.name]
+                    billing_contacts_arr.append({
+                            'student-name': student.name.split(" ")[0],
+                            'student-profile': profile_url,
+                            'hourly-rate': hourly_rate, 
+                            'course': skill_name,
+                            'time-estimate': request.time_estimate
+                        })
 
+            response = {'billing-contacts': billing_contacts_arr}
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(['Invalid Token'])
 
     if arg == 'notifications' and _id != None and request.method == 'GET':
         user = getUser()
