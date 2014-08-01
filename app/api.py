@@ -394,7 +394,7 @@ def api(arg, _id):
 
             db_session.add(payment)
 
-            tutor.payments.append(payment)
+            user.payments.append(payment)
             student.payments.append(payment)
 
             try:
@@ -410,7 +410,7 @@ def api(arg, _id):
             db_session.add(rating)
 
             user.balance = user.balance + total_amount
-            tutor.total_earned = user.total_earned + total_amount
+            user.total_earned = user.total_earned + total_amount
 
             from notifications import student_payment_approval, tutor_receive_payment
             tutor_notification = tutor_receive_payment(student, user, payment, amount_made)
