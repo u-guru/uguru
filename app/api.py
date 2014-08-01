@@ -346,7 +346,7 @@ def api(arg, _id):
             for conversation in conversations:
                 if conversation.student_id != user.id:
                     student = User.query.get(conversation.student_id)
-                    print student
+                    print student.customer_id
                     r = conversation.requests[0]
                     hourly_rate = r.student_estimated_hour
                     profile_url = student.profile_url
@@ -357,12 +357,73 @@ def api(arg, _id):
                             'student-profile': profile_url,
                             'hourly-rate': hourly_rate, 
                             'course': skill_name,
-                            'time-estimate': r.time_estimate
+                            'time-estimate': r.time_estimate,
+                            'request-id': r.id
                         })
 
             response = {'billing-contacts': billing_contacts_arr}
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(['Invalid Token'])
+
+    if arg =='bill-student' and request.method == 'POST':
+        user = getUser()
+        if user:
+            request_id = request.json.get('request_id')
+            r = Request.query.get(request_id)
+            r.actual_time = float(request.json.get('time_estimate'))
+            r.actual_hourly = request.json.get('hourly_amount')
+            total_amount = r.actual_hourly * r.actual_hourly
+
+            payment = Payment(r)
+
+            stripe_amount_cents = int(total_amount * 100)
+
+            try: 
+                charge = stripe.Charge.create(
+                    amount = stripe_amount_cents,
+                    currency="usd",
+                    customer=student.customer_id,
+                    description="charge for receiving tutoring"
+                )
+            except stripe.error.InvalidRequestError, e:
+                return errors(["Sorry! The student's card has been declined. Please kindly ask them to update their information"])
+
+            payment.stripe_charge_id = charge['id']
+
+            db_session.add(payment)
+
+            tutor.payments.append(payment)
+            student.payments.append(payment)
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+
+            r.payment_id = payment.id
+            rating = Rating(r.id)
+            student = User.query.get(r.student_id)
+            user.pending_ratings.append(rating)
+            student.pending_ratings.append(rating)
+            db_session.add(rating)
+
+            user.balance = user.balance + total_amount
+            tutor.total_earned = user.total_earned + total_amount
+
+            from notifications import student_payment_approval, tutor_receive_payment
+            tutor_notification = tutor_receive_payment(student, user, payment, amount_made)
+            student_notification = student_payment_approval(student, user, payment, amount_charged, charge_id, skill_name, recurring)
+            user.notifications.append(tutor_notification)
+            student.notifications.append(student_notification)
+            db_session.add_all([tutor_notification, student_notification])
+            
+            db_session.commit()
+            
+            response = {'bill-student': True}
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(['Invalid Token'])
+
 
     if arg == 'notifications' and _id != None and request.method == 'GET':
         user = getUser()
