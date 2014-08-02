@@ -633,6 +633,13 @@ def api(arg, _id):
         user = getUser()
         if user:
             print request.json
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+            
             request_id = request.json.get('request_id')
             hourly_amount = request.json.get('hourly_amount')
             extra_details = request.json.get('tutor_message')
@@ -667,7 +674,7 @@ def api(arg, _id):
 
             student = User.query.get(r.student_id)
             student.incoming_requests_from_tutors.append(r)
-            db_session.commit()
+            # db_session.commit()
 
 
             if student.apn_token:
