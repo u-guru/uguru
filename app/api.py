@@ -508,6 +508,9 @@ def api(arg, _id):
                 db_session.rollback()
                 raise 
 
+            print tutor.pending_ratings
+            print student.pending_ratings
+
             response = {'rating': {'success':True}}
 
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
