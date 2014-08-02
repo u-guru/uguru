@@ -367,6 +367,7 @@ def api(arg, _id):
 
     if arg =='bill-student' and request.method == 'POST':
         user = getUser()
+        pending_ratings_dict = {}
         if user:
             request_id = request.json.get('request_id')
             print request.json
@@ -422,9 +423,24 @@ def api(arg, _id):
             student.notifications.append(student_notification)
             db_session.add_all([tutor_notification, student_notification])
             
-            db_session.commit()
-            
-            response = {'bill-student': True}
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+
+
+            pending_ratings_dict = {
+                    'rating_server_id' : rating.id,
+                    'student_name' : student.name.split(" ")[0],
+                    'student_profile' : student.profile_url,
+                    'student_server_id': student.id, 
+                    'tutor_name' : user.name.split(" ")[0],
+                    'tutor_profile': user.profile_url,
+                    'tutor_server_id': user.id, 
+                }
+            response = {'bill_student': {'pending_ratings': pending_ratings_dict } }
+            print response
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(['Invalid Token'])
 
@@ -639,7 +655,7 @@ def api(arg, _id):
             except:
                 db_session.rollback()
                 raise
-            
+
             request_id = request.json.get('request_id')
             hourly_amount = request.json.get('hourly_amount')
             extra_details = request.json.get('tutor_message')
