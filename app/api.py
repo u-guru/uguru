@@ -497,14 +497,18 @@ def api(arg, _id):
                 if request.json.get('rating_description'):
                     rating.tutor_rating_description = request.json.get('rating_description')
 
+                student.pending_ratings.remove(rating)
+                tutor.student_ratings.append(rating)
+
 
             try:
                 db_session.commit()
+                db_session.close()
             except:
                 db_session.rollback()
                 raise 
 
-            response = {'rating': 'success'}
+            response = {'rating': {'success':True}}
 
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
