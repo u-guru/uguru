@@ -479,6 +479,8 @@ def api(arg, _id):
             tutor = User.query.get(request.json.get('tutor_server_id'))
             student = User.query.get(request.json.get('student_server_id'))
             
+            print request.json
+
             if request.json.get('tutor_rating_student'):
                 rating = tutor.pending_ratings[0]
                 rating.student_rating = request.json.get('star_rating')
