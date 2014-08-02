@@ -551,7 +551,7 @@ def api(arg, _id):
 
             response = {'user': 
                             { 
-                                'id': user.id,
+                                'server_id': user.id,
                                 'name': user.name,
                                 'email': user.email,
                                 'password': user.password,
