@@ -473,6 +473,39 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
     
+    if arg == 'rating' and request.method == 'PUT':
+        user = getUser()
+        if user:
+            tutor = User.query.get('tutor_server_id')
+            student = User.query.get('student_server_id')
+            
+            if request.json.get('tutor_rating_student'):
+                rating = tutor.pending_ratings[0]
+                rating.student_rating = request.json.get('star_rating')
+
+                if request.json.get('rating_description'):
+                    rating.student_rating_description = request.json.get('rating_description')
+
+                tutor.pending_ratings.remove(rating)
+                student.student_ratings.append(rating)
+            else:
+                rating = student.pending_ratings[0]
+                rating.tutor_rating = request.json.get('star_rating')
+
+                if request.json.get('rating_description'):
+                    rating.tutor_rating_description = request.json.get('rating_description')
+
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(["Invalid Token"])
+
+
     if arg == 'user' and request.method == 'GET':
         user = getUser()
         if user:
