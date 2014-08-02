@@ -980,7 +980,7 @@ def api(arg, _id):
                 if tutor.approved_by_admin:
                     if tutor.apn_token:
                         apn_message = user.name.split(" ")[0] + ' needs help in ' + skill_name + '. You could make $' + \
-                            (r.student_estimated_hour * r.time_estimate) + '.'
+                            str(r.student_estimated_hour * r.time_estimate) + '.'
                         send_apn(apn_message, tutor.apn_token)
 
                     tutor.incoming_requests_to_tutor.append(r)
