@@ -476,8 +476,8 @@ def api(arg, _id):
     if arg == 'rating' and request.method == 'PUT':
         user = getUser()
         if user:
-            tutor = User.query.get('tutor_server_id')
-            student = User.query.get('student_server_id')
+            tutor = User.query.get(request.json.get('tutor_server_id'))
+            student = User.query.get(request.json.get('student_server_id'))
             
             if request.json.get('tutor_rating_student'):
                 rating = tutor.pending_ratings[0]
