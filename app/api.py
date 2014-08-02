@@ -640,7 +640,7 @@ def api(arg, _id):
             if user_response_dict:
                 response = {'user': user_response_dict}
             else:
-                response = {'user': user.__dict__}
+                response = {'user': user_dict_in_proper_format(user)}
             
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
@@ -1209,3 +1209,37 @@ def process_back_to_original_form(arr_arr):
             index = item.pop(0)
             return_list[index].append(item)
     return return_list
+
+def user_dict_in_proper_format(user):
+    pending_ratings_dict = {}
+    if user.pending_ratings:
+        rating = user.pending_ratings[0]
+        student = User.query.get(rating.student_id)
+        tutor = User.query.get(rating.tutor_id)
+
+        pending_ratings_dict = {
+            'rating_server_id' : rating.id,
+            'student_name' : student.name.split(" ")[0],
+            'student_profile' : student.profile_url,
+            'student_server_id': student.id, 
+            'tutor_name' : tutor.name.split(" ")[0],
+            'tutor_profile': tutor.profile_url,
+            'tutor_server_id': tutor.id, 
+        }
+
+    response = {'user': 
+                    { 
+                        'server_id': user.id,
+                        'name': user.name,
+                        'email': user.email,
+                        'password': user.password,
+                        'auth_token': user.auth_token,
+                        'apn_token': user.apn_token,
+                        'image_url': user.profile_url,
+                        'recipient_id': user.recipient_id,
+                        'customer_id': user.customer_id,
+                        'customer_last4': user.customer_last4,
+                        'pending_ratings': pending_ratings_dict
+                    }
+            }
+    return response
