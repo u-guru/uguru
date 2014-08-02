@@ -502,6 +502,8 @@ def api(arg, _id):
                 db_session.rollback()
                 raise 
 
+            response = {'rating': 'success'}
+
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
 
