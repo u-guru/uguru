@@ -1191,13 +1191,12 @@ def get_user_skills_in_arr(user):
 
 def user_dict_in_proper_format(user):
     pending_ratings_dict = {}
+    is_a_tutor = False
+    skills = []
     if user.pending_ratings:
         rating = user.pending_ratings[0]
         student = User.query.get(rating.student_id)
-        tutor = User.query.get(rating.tutor_id)
-
-        is_a_tutor = False
-        skills = []
+        tutor = User.query.get(rating.tutor_id
 
         pending_ratings_dict = {
             'rating_server_id' : rating.id,
