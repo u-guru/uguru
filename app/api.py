@@ -1210,12 +1210,24 @@ def process_back_to_original_form(arr_arr):
             return_list[index].append(item)
     return return_list
 
+def get_user_skills_in_arr(user):
+    skills = []
+    if user.skills:
+        for skill in user.skills:
+            from app.static.data.short_variations import short_variations_dict
+            skill_name = short_variations_dict(skill.name)
+            skills.append(skill_name)
+    return skills
+
 def user_dict_in_proper_format(user):
     pending_ratings_dict = {}
     if user.pending_ratings:
         rating = user.pending_ratings[0]
         student = User.query.get(rating.student_id)
         tutor = User.query.get(rating.tutor_id)
+
+        is_a_tutor = False
+        skills = []
 
         pending_ratings_dict = {
             'rating_server_id' : rating.id,
@@ -1226,6 +1238,11 @@ def user_dict_in_proper_format(user):
             'tutor_profile': tutor.profile_url,
             'tutor_server_id': tutor.id, 
         }
+
+        if user.verified_tutor and user.approved_by_admin:
+            is_a_tutor = True
+            skills = get_user_skills_in_arr(user)
+
 
     response = {'user': 
                     { 
@@ -1239,7 +1256,17 @@ def user_dict_in_proper_format(user):
                         'recipient_id': user.recipient_id,
                         'customer_id': user.customer_id,
                         'customer_last4': user.customer_last4,
-                        'pending_ratings': pending_ratings_dict
+                        'pending_ratings': pending_ratings_dict,
+                        'is_a_tutor': is_a_tutor,
+                        'hkn_tutor': user.hkn_tutor,
+                        'la_tutor': user.la_tutor,
+                        'slc_tutor': user.slc_tutor,
+                        'res_tutor': user.res_tutor,
+                        'ta_tutor': user.ta_tutor,
+                        'year': user.year,
+                        'bio': user.tutor_introduction,
+                        'skills' : skills,
+                        'major' : user.major
                     }
             }
     return response
