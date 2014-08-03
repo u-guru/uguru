@@ -1196,7 +1196,7 @@ def user_dict_in_proper_format(user):
     if user.pending_ratings:
         rating = user.pending_ratings[0]
         student = User.query.get(rating.student_id)
-        tutor = User.query.get(rating.tutor_id
+        tutor = User.query.get(rating.tutor_id)
 
         pending_ratings_dict = {
             'rating_server_id' : rating.id,
