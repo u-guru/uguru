@@ -1185,7 +1185,7 @@ def get_user_skills_in_arr(user):
     if user.skills:
         for skill in user.skills:
             from app.static.data.short_variations import short_variations_dict
-            skill_name = short_variations_dict(skill.name)
+            skill_name = short_variations_dict[skill.name]
             skills.append(skill_name)
     return skills
 
