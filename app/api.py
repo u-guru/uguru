@@ -1208,7 +1208,7 @@ def user_dict_in_proper_format(user):
             'tutor_server_id': tutor.id, 
         }
 
-        if user.verified_tutor and user.approved_by_admin:
+        if user.verified_tutor:
             is_a_tutor = True
             skills = get_user_skills_in_arr(user)
 
