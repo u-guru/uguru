@@ -1238,4 +1238,5 @@ def user_dict_in_proper_format(user):
                         'major' : user.major
                     }
             }
+    print response
     return response
