@@ -533,7 +533,7 @@ def api(arg, _id):
     if arg == 'user' and request.method == 'GET':
         user = getUser()
         if user:
-            response = {'user': user_dict_in_proper_format(user)}
+            response = user_dict_in_proper_format(user)
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
 
@@ -610,7 +610,7 @@ def api(arg, _id):
             if user_response_dict:
                 response = {'user': user_response_dict}
             else:
-                response = {'user': user_dict_in_proper_format(user)}
+                response = user_dict_in_proper_format(user)
             
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
