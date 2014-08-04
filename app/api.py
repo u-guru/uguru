@@ -593,7 +593,7 @@ def api(arg, _id):
             if request.json.get('feed_notif'):
                 user.feed_notif = request.json.get('feed_notif')
             if request.json.get('year'):
-                user.feed_notif = request.json.get('year')
+                user.year = request.json.get('year')
             if request.json.get('settings_notif'):
                 user.settings_notif = request.json.get('settings_notif')
             if request.json.get('msg_notif'):
