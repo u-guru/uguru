@@ -556,18 +556,17 @@ def api(arg, _id):
                 user.email = request.json.get('email')
             if request.json.get('last_active'):
                 user.last_active = datetime.now()
-            if request.json.get('ta_tutor'):
+            if 'ta_tutor' in request.json:
                 user.ta_tutor = request.json.get('ta_tutor')
             if request.json.get('auth_token'):
                 user.auth_token = request.json.get('auth_token')
-            if request.json.get('la_tutor'):
+            if 'la_tutor' in request.json:
                 user.la_tutor = request.json.get('la_tutor')
-            if request.json.get('hkn_tutor'):
+            if 'hkn_tutor' in request.json:
                 user.hkn_tutor = request.json.get('hkn_tutor')
-            if request.json.get('res_tutor'):
+            if 'res_tutor' in request.json:
                 user.res_tutor = request.json.get('res_tutor')
-            if request.json.get('slc_tutor'):
-                print "reached here"
+            if 'slc_tutor' in request.json:
                 user.slc_tutor = request.json.get('slc_tutor')
             if request.json.get('fb_account'):
                 user.fb_account = request.json.get('fb_account')
