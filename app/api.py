@@ -567,6 +567,7 @@ def api(arg, _id):
             if request.json.get('res_tutor'):
                 user.res_tutor = request.json.get('res_tutor')
             if request.json.get('slc_tutor'):
+                print "reached here"
                 user.slc_tutor = request.json.get('slc_tutor')
             if request.json.get('fb_account'):
                 user.fb_account = request.json.get('fb_account')
@@ -1216,7 +1217,7 @@ def user_dict_in_proper_format(user):
     response = {'user': 
                     { 
                         'server_id': user.id,
-                        'name': user.name,
+                        'name': user.name.split(" ")[0],
                         'email': user.email,
                         'password': user.password,
                         'auth_token': user.auth_token,
@@ -1232,6 +1233,7 @@ def user_dict_in_proper_format(user):
                         'slc_tutor': user.slc_tutor,
                         'res_tutor': user.res_tutor,
                         'ta_tutor': user.ta_tutor,
+                        'previous_tutor': user.previous_tutor,
                         'year': user.year,
                         'bio': user.tutor_introduction,
                         'skills' : skills,
