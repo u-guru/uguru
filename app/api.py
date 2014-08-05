@@ -1296,7 +1296,7 @@ def user_dict_in_proper_format(user):
                         'email_notification': user.email_notification,
                         'push_notification': user.push_notification,
                         'balance': user.balance,
-                        'total_earnings': user.total_earned
+                        'total_earned': user.total_earned
                     }
             }
     print response
