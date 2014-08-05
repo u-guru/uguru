@@ -1200,6 +1200,14 @@ def cash_out_user(user):
     notification.skill_name = 'Pending'
 
     user.notifications.append(notification)
+
+    user.balance = 0
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        raise
+
     return
 
 
