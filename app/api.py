@@ -1173,7 +1173,7 @@ def create_stripe_recipient(token, user):
                     name=user.name,
                     type="individual",
                     email=user.email,
-                    card=stripe_user_token
+                    card=token
                 )
     user.recipient_id = recipient.id
     try:
