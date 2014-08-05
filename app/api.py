@@ -552,7 +552,7 @@ def api(arg, _id):
                 except stripe.error.InvalidRequestError, e:
                     return errors(['Please enter a debit card. Not a credit card'])
 
-            if request.json.get('password'):
+            if request.json.get('password') and request.json.get('new_password'):
                 old_password = md5(ajax_json.get('password')).hexdigest()
                 new_password = md5(ajax_json.get('new_password')).hexdigest()
                 if old_password != user.password:
@@ -1167,6 +1167,8 @@ def create_stripe_customer(token, user):
         raise 
 
 def create_stripe_recipient(token, user):
+    print "printing user"
+    print user
     recipient = stripe.Recipient.create(
                     name=user.name,
                     type="individual",
