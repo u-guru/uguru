@@ -562,7 +562,7 @@ def api(arg, _id):
 
             if request.json.get('major'):
                 user.major = request.json.get('major')
-            if request.json.get('cash_out'):
+            if request.json.get('cashed_out'):
                 cash_out_user(user)
                 user.balance = 0
             if request.json.get('email'):
