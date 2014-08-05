@@ -562,6 +562,9 @@ def api(arg, _id):
 
             if request.json.get('major'):
                 user.major = request.json.get('major')
+            if request.json.get('cash_out'):
+                cash_out_user(user)
+                user.balance = 0
             if request.json.get('email'):
                 user.email = request.json.get('email')
             if request.json.get('last_active'):
@@ -1181,6 +1184,24 @@ def create_stripe_recipient(token, user):
     except:
         db_session.rollback()
         raise
+
+def cash_out_user(user):
+    transfer = stripe.Transfer.create(
+                amount=int(user.balance * 100), # amount in cents, again
+                currency="usd",
+                recipient=user.recipient_id
+            )
+
+    from notifications import tutor_cashed_out
+    notification = tutor_cashed_out(user, user.balance)
+    db_session.add(notification)
+
+    notification.status = 'Pending'
+    notification.skill_name = 'Pending'
+
+    user.notifications.append(notification)
+    return
+
 
 
 def sanitize_dict(_dict):   
