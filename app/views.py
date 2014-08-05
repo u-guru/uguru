@@ -1069,7 +1069,7 @@ def update_requests():
                     amount = p.student_paid_amount * 100,
                     currency="usd",
                     customer=student.customer_id,
-                    description="one-time connection fee"
+                    description="one-time _connection_payments fee"
                 )
                 charge_id = charge["id"]
 

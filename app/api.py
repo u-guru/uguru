@@ -576,6 +576,8 @@ def api(arg, _id):
                 user.profile_url = request.json.get('profile_url')
             if request.json.get('verified_tutor'):
                 user.verified_tutor = request.json.get('verified_tutor')
+            if request.json.get('email_notification'):
+                user.email_notification = request.json.get('email_notification')
             if request.json.get('total_earned'):
                 user.total_earned = request.json.get('total_earned')
             if request.json.get('recipient_id'):
@@ -588,6 +590,8 @@ def api(arg, _id):
                 user.previous_tutor = request.json.get('previous_tutor')
             if request.json.get('tutor_introduction'):
                 user.tutor_introduction = request.json.get('tutor_introduction')
+            if request.json.get('push_notification'):
+                user.push_notification = request.json.get('push_notification')
             if request.json.get('balance'):
                 user.balance = request.json.get('balance')
             if request.json.get('feed_notif'):

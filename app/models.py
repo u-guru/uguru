@@ -131,6 +131,7 @@ class User(Base):
     time_created = Column(DateTime)
     email_notification = Column(Boolean, default = True)
     text_notification = Column(Boolean, default = True)
+    push_notification = Column(Boolean, default = True)
     profile_url = Column(String, default='/static/img/default-photo.jpg')
     tutor_introduction = Column(String(1000))
     qualifications = Column(String(5000))
