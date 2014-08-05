@@ -549,7 +549,15 @@ def api(arg, _id):
                 user_response_dict['customer_id'] = user.customer_id
                 user_response_dict['customer_last4'] = user.customer_last4
             if request.json.get('password'):
-                user.password = md5(request.json.get('password')).hexdigest()
+                old_password = md5(ajax_json.get('password')).hexdigest()
+                new_password = md5(ajax_json.get('new_password')).hexdigest()
+                user = User.query.get(user_id)
+                
+                if old_password != user.password:
+                    return errors(["Incorrect password"])
+                else:
+                    user.password = new_password
+                    
             if request.json.get('major'):
                 user.major = request.json.get('major')
             if request.json.get('email'):
