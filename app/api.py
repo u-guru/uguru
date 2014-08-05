@@ -1242,7 +1242,9 @@ def user_dict_in_proper_format(user):
                         'year': user.year,
                         'bio': user.tutor_introduction,
                         'skills' : skills,
-                        'major' : user.major
+                        'major' : user.major,
+                        'email_notification': user.email_notification,
+                        'push_notification': user.push_notification
                     }
             }
     print response
