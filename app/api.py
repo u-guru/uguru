@@ -612,8 +612,6 @@ def api(arg, _id):
                 user.settings_notif = request.json.get('settings_notif')
             if request.json.get('msg_notif'):
                 user.msg_notif = request.json.get('msg_notif')
-            if request.json.get('name'):
-                user.name = request.json.get('name')
 
             try:
                 db_session.commit()
