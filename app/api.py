@@ -546,12 +546,15 @@ def api(arg, _id):
                 user.apn_token = request.json.get('apn_token')
             if request.json.get('stripe-card-token'):
                 create_stripe_customer(request.json.get('stripe-card-token'), user)
-                user_response_dict['customer_id'] = user.customer_id
-                user_response_dict['customer_last4'] = user.customer_last4
+            if request.json.get('stripe_recipient_token'):
+                try:
+                    create_stripe_recipient(request.json.get('stripe_recipient_token'), user)
+                except stripe.error.InvalidRequestError, e:
+                    return errors(['Please enter a debit card. Not a credit card'])
+
             if request.json.get('password'):
                 old_password = md5(ajax_json.get('password')).hexdigest()
                 new_password = md5(ajax_json.get('new_password')).hexdigest()
-                
                 if old_password != user.password:
                     return errors(["Incorrect password"])
                 else:
@@ -620,10 +623,7 @@ def api(arg, _id):
 
             user = User.query.get(user.id)
 
-            if user_response_dict:
-                response = {'user': user_response_dict}
-            else:
-                response = user_dict_in_proper_format(user)
+            response = user_dict_in_proper_format(user)
             
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
@@ -1168,6 +1168,20 @@ def create_stripe_customer(token, user):
         db_session.rollback()
         raise 
 
+def create_stripe_recipient(token, user):
+    recipient = stripe.Recipient.create(
+                    name=user.name,
+                    type="individual",
+                    email=user.email,
+                    card=stripe_user_token
+                )
+    user.recipient_id = recipient.id
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        raise
+
 
 def sanitize_dict(_dict):   
     if _dict.get('id'): _dict['server_id'] = _dict.pop('id')
@@ -1251,7 +1265,9 @@ def user_dict_in_proper_format(user):
                         'skills' : skills,
                         'major' : user.major,
                         'email_notification': user.email_notification,
-                        'push_notification': user.push_notification
+                        'push_notification': user.push_notification,
+                        'balance': user.balance,
+                        'total_earnings': user.total_earned
                     }
             }
     print response
