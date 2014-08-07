@@ -32,7 +32,7 @@ logger = logging.getLogger(__name__)
 
 cert_path = os.path.join(os.path.dirname(__file__), 'uguru-cert.pem')
 key_path = os.path.join(os.path.dirname(__file__), 'uguru-key.pem')
-apns = APNs(use_sandbox=True, cert_file=cert_path, key_file=key_path)
+apns = APNs(use_sandbox=False, cert_file=cert_path, key_file=key_path)
 
 stripe.api_key = stripe_keys['secret_key']
 MAX_UPLOAD_SIZE = 1024 * 1024
