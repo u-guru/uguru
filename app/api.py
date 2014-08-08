@@ -499,7 +499,7 @@ def api(arg, _id):
                 print request.files
                 file = request.files['profile_photo']
                 extension = file.filename.rsplit('.',1)[1]
-                destination_filename = md5(str(user_id)).hexdigest() + "." + extension
+                destination_filename = md5(str(user.id)).hexdigest() + "." + extension
                 print file.filename
                 print destination_filename
 
