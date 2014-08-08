@@ -139,6 +139,7 @@ class User(Base):
     max_price = Column(Float, default = 15.0)
     discoverability = Column(Boolean, default = True)
     referral_code = Column(String)
+    user_referral_code = Column(String)
     last_active = Column(DateTime)
     approved_by_admin = Column(Boolean)
 
@@ -148,6 +149,7 @@ class User(Base):
     #Tutor fields
     verified_tutor = Column(Boolean)
     balance = Column(Float, default = 0.0)
+    credit = Column(Float, default = 0.0)
     total_earned = Column(Float, default = 0.0)
     discoverability = Column(Boolean, default = True)
     major = Column(String)

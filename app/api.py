@@ -616,6 +616,20 @@ def api(arg, _id):
                 update_skill('add', request.json.get('add_skill'), user)
             if request.json.get('remove_skill'):
                 update_skill('remove',request.json.get('remove_skill'), user)
+            if request.json.get('check_promo_code'):
+                # result = check_promo_code(user)
+                # if (not result):
+                #     return errors(['Invalid Promo Code! Try again.'])
+                # else:
+                #     user.credit = user.credit + 10
+                print "check_promo_code", request.json.get('check_promo_code')
+            if request.json.get('update_promo_code'):
+                # result = update_promo_code(user)
+                # if (not result):
+                #     return errors(['Sorry! This promo code is already taken.'])
+                # else:
+                #     user.user_referral_code = request.json.get('update_promo_code')
+                print "update_promo_code", request.json.get('update_promo_code')
             if 'ta_tutor' in request.json:
                 user.ta_tutor = request.json.get('ta_tutor')
             if request.json.get('auth_token'):
@@ -1266,6 +1280,20 @@ def sanitize_dict(_dict):
     if _dict.get('location'): _dict['location_name'] = _dict.pop('location')
     return _dict
 
+def check_promo_code(user, promo_code):
+    users_with_promo_code = User.query.filter_by(user_referral_code = promo_code).first()
+    if (users_with_promo_code):
+        return True
+    else:
+        return False
+
+def update_promo_code(user, promo_code):
+    users_with_promo_code = User.query.filter_by(user_referral_code = promo_code).first()
+    if (not users_with_promo_code):
+        return True
+    else:
+        return False  
+
 def upload_file_to_amazon(filename, file):
     conn = boto.connect_s3(app.config["S3_KEY"], app.config["S3_SECRET"])
     b = conn.get_bucket(app.config["S3_BUCKET"])
@@ -1380,7 +1408,9 @@ def user_dict_in_proper_format(user):
                         'email_notification': user.email_notification,
                         'push_notification': user.push_notification,
                         'balance': user.balance,
-                        'total_earned': user.total_earned
+                        'total_earned': user.total_earned,
+                        'user_referral_code': "sample",
+                        'credit': 10
                     }
             }
     print response
