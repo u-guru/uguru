@@ -512,7 +512,9 @@ def api(arg, _id):
                     user.settings_notif = 0
 
                 #update previous notification profile photos to point to this new photo
-                update_profile_notifications(user)
+                # update_profile_notifications(user)
+
+                #TODO Uncomment method above when webapp is restful
 
                 try:
                     db_session.commit()
@@ -1257,6 +1259,13 @@ def sanitize_dict(_dict):
     if _dict.get('professor'): _dict['professor_name'] = _dict.pop('professor')
     if _dict.get('location'): _dict['location_name'] = _dict.pop('location')
     return _dict
+
+def upload_file_to_amazon(filename, file):
+    conn = boto.connect_s3(app.config["S3_KEY"], app.config["S3_SECRET"])
+    b = conn.get_bucket(app.config["S3_BUCKET"])
+    sml = b.new_key("/".join(["/",filename]))
+    sml.set_contents_from_file(file)
+    sml.set_acl('public-read')
 
 def get_student_time_ranges(week_object, owner):
     if not week_object.first():
