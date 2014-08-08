@@ -516,7 +516,8 @@ def api(arg, _id):
                     user.settings_notif = 0
 
                 #update previous notification profile photos to point to this new photo
-                # update_profile_notifications(user)
+                from views import update_profile_notifications
+                update_profile_notifications(user)
 
                 #TODO Uncomment method above when webapp is restful
 
