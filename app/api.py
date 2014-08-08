@@ -569,6 +569,10 @@ def api(arg, _id):
                 user.email = request.json.get('email')
             if request.json.get('last_active'):
                 user.last_active = datetime.now()
+            if request.json.get('add_skill'):
+                update_skill('add', request.json.get('add_skill'), user)
+            if request.json.get('remove_skill'):
+                update_skill('remove',request.json.get('remove_skill'), user)
             if 'ta_tutor' in request.json:
                 user.ta_tutor = request.json.get('ta_tutor')
             if request.json.get('auth_token'):
@@ -1244,6 +1248,36 @@ def get_user_skills_in_arr(user):
             skill_name = short_variations_dict[skill.name]
             skills.append(skill_name)
     return skills
+
+def update_skill(flag, skill, user):
+    from app.static.data.variations import courses_dict
+    from app.static.data.short_variations_reverse import short_variations_reverse_dict
+    skill = skill.lower()
+    if (flag == "add"):
+        skill_to_add_id = courses_dict[skill]
+        skill = Skill.query.get(skill_to_add_id)
+        user.skills.append(skill)
+
+    if (flag == "remove"):
+        if short_variations_reverse_dict.get(skill):
+                skill_to_remove = short_variations_reverse_dict[skill]
+        else:
+            from app.static.data.variations import courses_dict
+            skill_id = courses_dict[skill]
+            skill = Skill.query.get(skill_id)
+            skill_to_remove = skill.name
+        for skill in user.skills:
+            if skill.name.lower() == skill_to_remove.lower():
+                user.skills.remove(skill)
+
+    try:
+        db_session.commit()
+        if len(user.skills) == 0:
+            session['tutor-signup'] = True
+    except:
+        db_session.rollback()
+        raise 
+    print flag + " successful"
 
 def user_dict_in_proper_format(user):
     pending_ratings_dict = {}
