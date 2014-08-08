@@ -489,6 +489,41 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
     
+    if arg == 'upload_photo' and request.method == 'POST':
+        user = getUser()
+        if user:
+            print request.json
+            print "shit got here!"
+            if request.files:
+                file = request.files['file']
+                extension = file.filename.rsplit('.',1)[1]
+                destination_filename = md5(str(user_id)).hexdigest() + "." + extension
+
+                upload_file_to_amazon(destination_filename, file)
+                
+                #save this to the db
+                if os.environ.get('PRODUCTION'):
+                    amazon_url = "https://s3.amazonaws.com/uguruprof/"+destination_filename
+                else:
+                    amazon_url = "https://s3.amazonaws.com/uguruproftest/"+destination_filename
+                user.profile_url = amazon_url
+
+                if not user.skills:
+                    user.settings_notif = 0
+
+                #update previous notification profile photos to point to this new photo
+                update_profile_notifications(user)
+
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise 
+
+            response = user_dict_in_proper_format(user)
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(["Invalid Token"])
+
     if arg == 'rating' and request.method == 'PUT':
         user = getUser()
         if user:
@@ -1254,12 +1289,9 @@ def update_skill(flag, skill, user):
     from app.static.data.short_variations_reverse import short_variations_reverse_dict
     skill = skill.lower()
     if (flag == "add"):
-        print "step 1"
         skill_to_add_id = courses_dict[skill]
         skill = Skill.query.get(skill_to_add_id)
         user.skills.append(skill)
-        print "step 2"
-        print user.skills
 
     if (flag == "remove"):
         if short_variations_reverse_dict.get(skill):
