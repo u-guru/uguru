@@ -617,14 +617,14 @@ def api(arg, _id):
             if request.json.get('remove_skill'):
                 update_skill('remove',request.json.get('remove_skill'), user)
             if request.json.get('check_promo_code'):
-                result = check_promo_code(user)
+                result = check_promo_code(user, request.json.get('check_promo_code'))
                 if (not result):
                     return errors(['Invalid Promo Code! Try again.'])
                 else:
                     user.credit = user.credit + 10
                 print "check_promo_code", request.json.get('check_promo_code')
             if request.json.get('update_promo_code'):
-                result = update_promo_code(user)
+                result = update_promo_code(user, request.json.get('update_promo_code'))
                 if (not result):
                     return errors(['Sorry! This promo code is already taken.'])
                 else:
