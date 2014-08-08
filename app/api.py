@@ -178,13 +178,13 @@ def api(arg, _id):
 
 
                 if n.custom and n.custom == 'tutor-accept-request':
-                    n_detail['type'] = n.custom
+                    n_dict['type'] = n.custom
                 elif n.custom and n.custom =='student-accept-request':
-                    n_detail['type'] = 'student-match'
+                    n_dict['type'] = 'student-match'
                 elif n.custom and n.custom =='tutor-is-matched':
-                    n_detail['type'] = 'tutor-match'
+                    n_dict['type'] = 'tutor-match'
                 else:
-                    n_detail['type'] =  n.custom_tag
+                    n_dict['type'] =  n.custom_tag
 
                 if n.request_id:
                     r = Request.query.get(n.request_id)
