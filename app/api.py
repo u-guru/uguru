@@ -1254,9 +1254,12 @@ def update_skill(flag, skill, user):
     from app.static.data.short_variations_reverse import short_variations_reverse_dict
     skill = skill.lower()
     if (flag == "add"):
+        print "step 1"
         skill_to_add_id = courses_dict[skill]
         skill = Skill.query.get(skill_to_add_id)
         user.skills.append(skill)
+        print "step 2"
+        print user.skills
 
     if (flag == "remove"):
         if short_variations_reverse_dict.get(skill):
