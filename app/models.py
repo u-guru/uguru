@@ -16,6 +16,12 @@ user_skill_table = Table('user-skill_assoc',
     Column('skill_id', Integer, ForeignKey('skill.id'))
 )
 
+user_promo_table = Table('user-promo_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('promo_id', Integer, ForeignKey('promo.id'))
+    )
+
 week_ranges_table = Table('week-ranges_assoc',
     Base.metadata,
     Column('week_id', Integer, ForeignKey('week.id')),
@@ -207,6 +213,9 @@ class User(Base):
         secondary = user_notification_table)
     emails = relationship("Email",
         secondary = user_email_table)
+    promos = relationship("Promo",
+        secondary = user_promo_table)
+
 
     def __init__(self, name, email, password, phone_number, is_a_tutor = None):
         self.name = name
@@ -586,6 +595,17 @@ class Range(Base):
     start_time = Column(SmallInteger) #0-23 hours of the day
     end_time = Column(SmallInteger) #0-23 hours of the day
     week_day = Column(SmallInteger) #0-6 days of the week
+
+class Promo(Base):
+    __tablename__ = 'promo'
+    id = Column(Integer, primary_key = True)
+    tag = Column(String)
+    time_used = Column(DateTime)
+    future_time_used = Column(DateTime)
+    sender_id = Column(Integer)
+    receiver_id = Column(Integer)
+
+
 
 class Week(Base):
     __tablename__ = 'week'

@@ -4,7 +4,7 @@ from flask import render_template, jsonify, redirect, request, \
 session, flash, redirect, url_for
 from forms import SignupForm, RequestForm
 from models import User, Request, Skill, Course, Notification, Mailbox, \
-    Conversation, Message, Payment, Rating, Email, Week, Range
+    Conversation, Message, Payment, Rating, Email, Week, Range, Promo
 from hashlib import md5
 from datetime import datetime, timedelta
 import emails, boto, stripe, os
@@ -618,9 +618,11 @@ def api(arg, _id):
                 update_skill('remove',request.json.get('remove_skill'), user)
             if request.json.get('check_promo_code'):
                 result = check_promo_code(user, request.json.get('check_promo_code'))
-                if (not result):
+                if result == "invalid":
                     return errors(['Invalid Promo Code! Try again.'])
-                else:
+                elif result == "used":
+                    return errors(['Sorry you have already used a code for this promotion.'])
+                elif result == "success":
                     user.credit = user.credit + 10
                 print "check_promo_code", request.json.get('check_promo_code')
             if request.json.get('update_promo_code'):
@@ -1281,11 +1283,22 @@ def sanitize_dict(_dict):
     return _dict
 
 def check_promo_code(user, promo_code):
-    users_with_promo_code = User.query.filter_by(user_referral_code = promo_code).first()
+    user_with_promo_code = User.query.filter_by(user_referral_code = promo_code).first()
+    
+    #make sure referral promo code is not from the same user
+    if user_with_promo_code.id == user.id:
+        return "invalid"
+    
+    if user.promos:
+        return "used"
+    #check if user has already used this promo_code (return used)
+    #check if it is a good one --> return success
+    #else return invalid
+
     if (users_with_promo_code):
-        return True
+        return "invalid"
     else:
-        return False
+        return "success"
 
 def update_promo_code(user, promo_code):
     users_with_promo_code = User.query.filter_by(user_referral_code = promo_code).first()
