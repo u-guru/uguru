@@ -1314,7 +1314,7 @@ def check_promo_code(user, promo_code):
             p.tag = 'referral'
             db_session.add(p)
             user.promos.append(p)
-            user_with_promo_code.append(p)
+            user_with_promo_code.promos.append(p)
             return "success"
 
     return "invalid"
