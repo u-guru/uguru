@@ -413,6 +413,16 @@ def api(arg, _id):
             user.balance = user.balance + total_amount
             user.total_earned = user.total_earned + total_amount
 
+            if student.promos:
+                print "got to student promos"
+                print student.promos
+                for p in student.promos:
+                    if p.receiver_id == student.id and p.tag == 'referral':
+                        rewarded_user = User.query.get(p.sender_id)
+                        rewarded_user.credit = rewarded_user.credit + 10
+                        p.future_time_used = datetime.now()
+
+
             from app.static.data.short_variations import short_variations_dict
             skill_name = short_variations_dict[Skill.query.get(r.skill_id).name]
 
@@ -1289,16 +1299,25 @@ def check_promo_code(user, promo_code):
     if user_with_promo_code.id == user.id:
         return "invalid"
     
-    if user.promos:
-        return "used"
-    #check if user has already used this promo_code (return used)
-    #check if it is a good one --> return success
-    #else return invalid
+    #for referral rpomo case
+    if user_with_promo_code:
+        #check if they have already used it
+        if user.promos:
+            for p in user.promos:
+                if p.tag == 'referral' and user.id == p.receiver_id:
+                    return "used"
+        else:
+            p = Promo()
+            p.time_used = datetime.now()
+            p.sender_id = user_with_promo_code.id
+            p.receiver_id = user.id
+            p.tag = 'referral'
+            db_session.add(p)
+            user.promos.append(p)
+            user_with_promo_code.append(p)
+            return "success"
 
-    if (users_with_promo_code):
-        return "invalid"
-    else:
-        return "success"
+    return "invalid"
 
 def update_promo_code(user, promo_code):
     users_with_promo_code = User.query.filter_by(user_referral_code = promo_code).first()
