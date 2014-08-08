@@ -46,7 +46,7 @@ if arg == 'initialize_user_codes':
     unique_codes = []
 
     for u in User.query.all():
-        if not u.user_referral_code and u.name and len(u.name.split(" ")) > 1:
+        if not u.user_referral_code and u.name and len(u.name.split(" ")) > 1 and u.name.split(" ")[0] and len(u.name.split(" ")[1]) > 0:
             init_string = u.name.split(" ")[0] + u.name.split(" ")[1][0]
             if init_string not in unique_codes:
                 u.user_referral_code = init_string
