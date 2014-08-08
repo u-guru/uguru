@@ -497,7 +497,7 @@ def api(arg, _id):
             if request.files:
                 print "there are fucking files"
                 print request.files
-                file = request.files['file']
+                file = request.files['profile_photo']
                 extension = file.filename.rsplit('.',1)[1]
                 destination_filename = md5(str(user_id)).hexdigest() + "." + extension
                 print file.filename
