@@ -22,11 +22,12 @@ cert_path = os.path.join(os.path.dirname(__file__), 'uguru-cert.pem')
 key_path = os.path.join(os.path.dirname(__file__), 'uguru-key.pem')
 apns = APNs(use_sandbox=True, cert_file=cert_path, key_file=key_path)
 
+REQUEST_EXP_TIME_IN_SECONDS = 172800
+TUTOR_ACCEPT_EXP_TIME_IN_SECONDS = 86400
 
 @app.route('/api/<arg>', methods=['GET', 'POST', 'PUT'], defaults={'_id': None})
 @app.route('/api/<arg>/<_id>')
 def api(arg, _id):
-    # Cam doesn't use this shit
     return_json = {}
     ajax_json = request.json
 
@@ -188,9 +189,13 @@ def api(arg, _id):
 
                 if n.request_id:
                     r = Request.query.get(n.request_id)
-                    if n.custom_tag == 'student-request-help':
-                        n_dict['status'] = 'ACTIVE'
-                        print n.time_created
+                    if n.custom_tag == 'student-request-help': 
+                        seconds_since_creation = get_time_diff_in_seconds(datetime.now(), n.time_create)
+                        if seconds_since_creation > REQUEST_EXP_TIME_IN_SECONDS:
+                            n_dict['status'] = 'EXPIRED'
+                        else:
+                            n_dict['status'] = get_time_remaining(seconds_since_creation)
+
                     if r.student_id == r.connected_tutor_id:
                         n_dict['status'] = 'canceled'
                     if user in r.requested_tutors and r.connected_tutor_id and user.id != r.connected_tutor_id:
@@ -1304,6 +1309,22 @@ def sanitize_dict(_dict):
     if _dict.get('professor'): _dict['professor_name'] = _dict.pop('professor')
     if _dict.get('location'): _dict['location_name'] = _dict.pop('location')
     return _dict
+
+def get_time_diff_in_seconds(later_time, earlier_time):
+    return int(abs(later_time-earlier_time).total_seconds())
+
+def get_time_remaining(seconds):
+    if (seconds < 120):
+        "Expiring in " + str(seconds % 60) + " min"
+    if (seconds < 3600):
+        return "Expiring in " + str(seconds / 60) + " mins"
+    elif (seconds >= 3600 and seconds < 5400):
+        return "Expiring in " + str(seconds / 60) + " hour"
+    elif (seconds >= 3600 and seconds < 86400):
+        return "Expiring in " + str(seconds / 60) + " hours"
+    elif (seconds >= 86400 and seconds < 172800):
+        return "Expiring in " + str(seconds / 86400)  + ' day and ' + str((seconds - 86400) / 3600) + ' hrs'
+    return "2 days"
 
 def check_promo_code(user, promo_code):
     user_with_promo_code = User.query.filter_by(user_referral_code = promo_code).first()
