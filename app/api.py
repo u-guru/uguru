@@ -178,6 +178,9 @@ def api(arg, _id):
 
                 if n.request_id:
                     r = Request.query.get(n.request_id)
+                    if n.custom_tag == 'student-request-help':
+                        n_dict['status'] = 'ACTIVE'
+                        print n.time_created
                     if r.student_id == r.connected_tutor_id:
                         n_dict['status'] = 'canceled'
                     if user in r.requested_tutors and r.connected_tutor_id and user.id != r.connected_tutor_id:
