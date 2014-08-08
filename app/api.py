@@ -176,6 +176,16 @@ def api(arg, _id):
                 else:
                     n_dict['role'] = 'student'
 
+
+                if n.custom and n.custom == 'tutor-accept-request':
+                    n_detail['type'] = n.custom
+                elif n.custom and n.custom =='student-accept-request':
+                    n_detail['type'] = 'student-match'
+                elif n.custom and n.custom =='tutor-is-matched':
+                    n_detail['type'] = 'tutor-match'
+                else:
+                    n_detail['type'] =  n.custom_tag
+
                 if n.request_id:
                     r = Request.query.get(n.request_id)
                     if n.custom_tag == 'student-request-help':
