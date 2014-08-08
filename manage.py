@@ -41,6 +41,26 @@ if arg =='mp-create-student-profiles':
                 'email': u.email,
                 })
 
+if arg == 'initialize_user_codes':
+
+    unique_codes = []
+
+    for u in User.query.all():
+        if not u.user_referral_code and len(u.name.split(" ")) > 1:
+            init_string = u.name.split(" ")[0] + u.name.split(" ")[1][0]
+            if init_string not in unique_codes:
+                u.user_referral_code = init_string
+                unique_codes.append(init_string)
+            else:
+                u.user_referral_code = init_string + str(u.id)
+                unique_codes.append(init_string + str(u.id))
+            print u.id, u.user_referral_code, "initialized"
+
+    db_session.commit()
+
+
+
+
 if arg == 'initialize':
     import os, json
     os.remove('app.db')

@@ -617,18 +617,18 @@ def api(arg, _id):
             if request.json.get('remove_skill'):
                 update_skill('remove',request.json.get('remove_skill'), user)
             if request.json.get('check_promo_code'):
-                # result = check_promo_code(user)
-                # if (not result):
-                #     return errors(['Invalid Promo Code! Try again.'])
-                # else:
-                #     user.credit = user.credit + 10
+                result = check_promo_code(user)
+                if (not result):
+                    return errors(['Invalid Promo Code! Try again.'])
+                else:
+                    user.credit = user.credit + 10
                 print "check_promo_code", request.json.get('check_promo_code')
             if request.json.get('update_promo_code'):
-                # result = update_promo_code(user)
-                # if (not result):
-                #     return errors(['Sorry! This promo code is already taken.'])
-                # else:
-                #     user.user_referral_code = request.json.get('update_promo_code')
+                result = update_promo_code(user)
+                if (not result):
+                    return errors(['Sorry! This promo code is already taken.'])
+                else:
+                    user.user_referral_code = request.json.get('update_promo_code')
                 print "update_promo_code", request.json.get('update_promo_code')
             if 'ta_tutor' in request.json:
                 user.ta_tutor = request.json.get('ta_tutor')
@@ -1409,8 +1409,8 @@ def user_dict_in_proper_format(user):
                         'push_notification': user.push_notification,
                         'balance': user.balance,
                         'total_earned': user.total_earned,
-                        'user_referral_code': "sample",
-                        'credit': 10
+                        'user_referral_code': user.user_referral_code,
+                        'credit': user.credit
                     }
             }
     print response
