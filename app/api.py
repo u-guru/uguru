@@ -1296,7 +1296,7 @@ def check_promo_code(user, promo_code):
     user_with_promo_code = User.query.filter_by(user_referral_code = promo_code).first()
     
     #make sure referral promo code is not from the same user
-    if user_with_promo_code.id == user.id:
+    if user_with_promo_code and user_with_promo_code.id == user.id:
         return "invalid"
     
     #for referral rpomo case
