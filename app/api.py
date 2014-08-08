@@ -492,16 +492,17 @@ def api(arg, _id):
     if arg == 'upload_photo' and request.method == 'POST':
         user = getUser()
         if user:
-            print request.json
-            print request.form
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+
             if request.files:
-                print "there are fucking files"
-                print request.files
+                
                 file = request.files['profile_photo']
                 extension = file.filename.rsplit('.',1)[1]
                 destination_filename = md5(str(user.id)).hexdigest() + "." + extension
-                print file.filename
-                print destination_filename
 
                 upload_file_to_amazon(destination_filename, file)
                 
