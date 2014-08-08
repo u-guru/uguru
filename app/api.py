@@ -493,8 +493,9 @@ def api(arg, _id):
         user = getUser()
         if user:
             print request.json
-            print "shit got here!"
+            print request.form
             if request.files:
+                print "there are fucking files"
                 file = request.files['file']
                 extension = file.filename.rsplit('.',1)[1]
                 destination_filename = md5(str(user_id)).hexdigest() + "." + extension
