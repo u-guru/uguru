@@ -202,6 +202,13 @@ def api(arg, _id):
                         else:
                             n_dict['status'] = get_time_remaining(REQUEST_EXP_TIME_IN_SECONDS - seconds_since_creation)
 
+                    if n.custom_tag == 'student-incoming-offer':
+                        seconds_since_creation = get_time_diff_in_seconds(datetime.now(), n.time_created)
+                        if seconds_since_creation > TUTOR_ACCEPT_EXP_TIME_IN_SECONDS:
+                            n_dict['status'] = 'EXPIRED'
+                        else:
+                            n_dict['status'] = get_time_remaining(TUTOR_ACCEPT_EXP_TIME_IN_SECONDS - seconds_since_creation)
+
                 # n_detail['request'] = r.__dict__
                 # n_detail['request']['server_id'] = n_detail['request'].pop('id')
                 if n.payment_id:
