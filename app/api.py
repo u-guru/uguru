@@ -1063,7 +1063,8 @@ def api(arg, _id):
             
             sched = Scheduler()
             sched.start()
-            later_time = datetime.now() + timedelta(0, REQUEST_EXP_TIME_IN_SECONDS)
+            # later_time = datetime.now() + timedelta(0, REQUEST_EXP_TIME_IN_SECONDS)
+            later_time = datetime.now() + timedelta(0, 100)
             apn_message = "Your request is expiring in 1 hour. Please select a tutor!"
             
             job = sched.add_date_job(send_delayed_notification, later_time, [apn_message, user.apn_token, request_id])
