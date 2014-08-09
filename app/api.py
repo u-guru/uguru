@@ -1325,9 +1325,9 @@ def get_time_remaining(seconds):
     if (seconds < 3600):
         return "Expiring in " + str(seconds / 60) + " mins"
     elif (seconds >= 3600 and seconds < 5400):
-        return "Expiring in " + str(seconds / 60) + " hour"
+        return "Expiring in " + str(seconds / 3600) + " hour"
     elif (seconds >= 3600 and seconds < 86400):
-        return "Expiring in " + str(seconds / 60) + " hours"
+        return "Expiring in " + str(seconds / 3600) + " hours"
     elif (seconds >= 86400 and seconds < 172800):
         return "Expiring in " + str(seconds / 86400)  + ' day and ' + str((seconds - 86400) / 3600) + ' hrs'
     return "2 days"
