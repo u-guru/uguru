@@ -22,8 +22,8 @@ cert_path = os.path.join(os.path.dirname(__file__), 'uguru-cert.pem')
 key_path = os.path.join(os.path.dirname(__file__), 'uguru-key.pem')
 apns = APNs(use_sandbox=True, cert_file=cert_path, key_file=key_path)
 
-REQUEST_EXP_TIME_IN_SECONDS = 100
-TUTOR_ACCEPT_EXP_TIME_IN_SECONDS = 100
+REQUEST_EXP_TIME_IN_SECONDS = 172800
+TUTOR_ACCEPT_EXP_TIME_IN_SECONDS = 86400
 
 @app.route('/api/<arg>', methods=['GET', 'POST', 'PUT'], defaults={'_id': None})
 @app.route('/api/<arg>/<_id>')
