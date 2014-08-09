@@ -200,7 +200,7 @@ def api(arg, _id):
                         elif seconds_since_creation > REQUEST_EXP_TIME_IN_SECONDS:
                             n_dict['status'] = 'EXPIRED'
                         else:
-                            n_dict['status'] = get_time_remaining(seconds_since_creation)
+                            n_dict['status'] = get_time_remaining(REQUEST_EXP_TIME_IN_SECONDS - seconds_since_creation)
 
                 # n_detail['request'] = r.__dict__
                 # n_detail['request']['server_id'] = n_detail['request'].pop('id')
