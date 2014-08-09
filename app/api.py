@@ -442,6 +442,17 @@ def api(arg, _id):
                 apn_message =user.name.split(" ")[0] + ' has billed you $' + str(total_amount) + '. Please verify and rate your experience.'
                 send_apn(apn_message, student.apn_token)
 
+            sched = Scheduler()
+            sched.start()
+            later_time = datetime.now() + timedelta(0, TUTOR_ACCEPT_EXP_TIME_IN_SECONDS)
+            apn_message = "Please rate your experience with " + user.name.split(" ")[0] + ". It will only take 2 seconds."
+
+            job = sched.add_date_job(send_delayed_notification, later_time, [apn_message, student.apn_token, r.id])
+
+            later_time = datetime.now() + timedelta(0, TUTOR_ACCEPT_EXP_TIME_IN_SECONDS)
+            apn_message = "Please rate your experience with " + student.name.split(" ")[0] + ". It will only take 2 seconds."
+            job = sched.add_date_job(send_delayed_notification, later_time, [apn_message, tutor.apn_token, r.id])
+
             if student.promos:
                 print "got to student promos"
                 print student.promos
@@ -779,6 +790,13 @@ def api(arg, _id):
             # db_session.commit()
 
 
+            sched = Scheduler()
+            sched.start()
+            later_time = datetime.now() + timedelta(0, TUTOR_ACCEPT_EXP_TIME_IN_SECONDS - 3600)
+            apn_message = tutor.name.split(" ")[0] + "'s request to help you is expiring in 1 hour. Choose before it's too late!"
+            
+            job = sched.add_date_job(send_delayed_notification, later_time, [apn_message, student.apn_token, r.id])
+
             if student.apn_token:
                 apn_message =tutor.name.split(" ")[0] + ', a ' + skill_name + ' tutor, wants to help!'
                 send_apn(apn_message, student.apn_token)
@@ -1063,8 +1081,7 @@ def api(arg, _id):
             
             sched = Scheduler()
             sched.start()
-            # later_time = datetime.now() + timedelta(0, REQUEST_EXP_TIME_IN_SECONDS)
-            later_time = datetime.now() + timedelta(0, 100)
+            later_time = datetime.now() + timedelta(0, REQUEST_EXP_TIME_IN_SECONDS - 3600)
             apn_message = "Your request is expiring in 1 hour. Please select a tutor!"
             
             job = sched.add_date_job(send_delayed_notification, later_time, [apn_message, user.apn_token, r.id])
