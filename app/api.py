@@ -190,7 +190,7 @@ def api(arg, _id):
                 if n.request_id:
                     r = Request.query.get(n.request_id)
                     if n.custom_tag == 'student-request-help': 
-                        seconds_since_creation = get_time_diff_in_seconds(datetime.now(), n.time_create)
+                        seconds_since_creation = get_time_diff_in_seconds(datetime.now(), n.time_created)
                         if seconds_since_creation > REQUEST_EXP_TIME_IN_SECONDS:
                             n_dict['status'] = 'EXPIRED'
                         else:
