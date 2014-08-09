@@ -439,7 +439,7 @@ def api(arg, _id):
 
 
             if student.apn_token:
-                apn_message =user.name.split(" ")[0] + ' has billed you $' + total_amount + '. Please verify and rate your experience.'
+                apn_message =user.name.split(" ")[0] + ' has billed you $' + str(total_amount) + '. Please verify and rate your experience.'
                 send_apn(apn_message, student.apn_token)
 
             if student.promos:
