@@ -191,19 +191,16 @@ def api(arg, _id):
                     r = Request.query.get(n.request_id)
                     if n.custom_tag == 'student-request-help': 
                         seconds_since_creation = get_time_diff_in_seconds(datetime.now(), n.time_created)
-                        if r.connected_tutor_id:
+                        if r.student_id == r.connected_tutor_id:
+                            n_dict['status'] = 'canceled'
+                        elif r.connected_tutor_id:
                             n_dict['status'] = 'connected'
+                        elif user in r.requested_tutors and r.connected_tutor_id and user.id != r.connected_tutor_id:
+                            n_dict['status'] = 'taken'    
                         elif seconds_since_creation > REQUEST_EXP_TIME_IN_SECONDS:
                             n_dict['status'] = 'EXPIRED'
                         else:
                             n_dict['status'] = get_time_remaining(seconds_since_creation)
-
-                    if r.student_id == r.connected_tutor_id:
-                        n_dict['status'] = 'canceled'
-                    if user in r.requested_tutors and r.connected_tutor_id and user.id != r.connected_tutor_id:
-                        n_dict['status'] = 'taken'
-                    if r.connected_tutor_id == None:
-                        n_dict['status'] = 'active'
 
                 # n_detail['request'] = r.__dict__
                 # n_detail['request']['server_id'] = n_detail['request'].pop('id')
