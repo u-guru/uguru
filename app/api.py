@@ -191,7 +191,9 @@ def api(arg, _id):
                     r = Request.query.get(n.request_id)
                     if n.custom_tag == 'student-request-help': 
                         seconds_since_creation = get_time_diff_in_seconds(datetime.now(), n.time_created)
-                        if seconds_since_creation > REQUEST_EXP_TIME_IN_SECONDS:
+                        if r.connected_tutor_id:
+                            n_dict['status'] = 'connected'
+                        elif seconds_since_creation > REQUEST_EXP_TIME_IN_SECONDS:
                             n_dict['status'] = 'EXPIRED'
                         else:
                             n_dict['status'] = get_time_remaining(seconds_since_creation)
