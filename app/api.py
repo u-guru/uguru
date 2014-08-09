@@ -1063,9 +1063,14 @@ def api(arg, _id):
             
             sched = Scheduler()
             sched.start()
-            later_time = datetime.now() + timedelta(0, 60)
+            # later_time = datetime.now() + timedelta(0, REQUEST_EXP_TIME_IN_SECONDS)
+            later_time = datetime.now() + timedelta(0, 100)
+            apn_message = "Your request is expiring in 1 hour. Please select a tutor!"
             
-            job = sched.add_date_job(expire_request_job, later_time, [r.id, user.id])
+            job = sched.add_date_job(send_delayed_notification, later_time, [apn_message, user.apn_token])
+            
+
+
 
 
             from notifications import student_request_receipt
@@ -1243,6 +1248,9 @@ def expire_request_job(request_id, user_id):
     user = User.query.get(user_id)
     request.is_expired = True
     db_session.commit()
+
+def send_delayed_notification(message, apn_token):
+    send_apn(message, apn_token)
 
 def get_time_ranges(week_object, owner):
     if not week_object.first():
