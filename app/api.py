@@ -654,7 +654,7 @@ def api(arg, _id):
                 else:
                     user.password = new_password
 
-            if request.json.get('major'):
+            if 'major' in request.json:
                 user.major = request.json.get('major')
             if request.json.get('cashed_out'):
                 cash_out_user(user)
@@ -723,7 +723,7 @@ def api(arg, _id):
                 user.balance = request.json.get('balance')
             if request.json.get('feed_notif'):
                 user.feed_notif = request.json.get('feed_notif')
-            if request.json.get('year'):
+            if year in request.json:
                 user.year = request.json.get('year')
             if request.json.get('settings_notif'):
                 user.settings_notif = request.json.get('settings_notif')
