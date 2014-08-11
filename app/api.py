@@ -723,7 +723,7 @@ def api(arg, _id):
                 user.balance = request.json.get('balance')
             if request.json.get('feed_notif'):
                 user.feed_notif = request.json.get('feed_notif')
-            if year in request.json:
+            if 'year' in request.json:
                 user.year = request.json.get('year')
             if request.json.get('settings_notif'):
                 user.settings_notif = request.json.get('settings_notif')
