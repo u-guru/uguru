@@ -1481,10 +1481,11 @@ def user_dict_in_proper_format(user):
             'tutor_server_id': tutor.id, 
         }
 
-    if user.verified_tutor and user.approved_by_admin and user.skills:
+    if user.verified_tutor and user.approved_by_admin:
         is_a_tutor = True
-        skills = get_user_skills_in_arr(user)
 
+    if user.skills:
+        skills = get_user_skills_in_arr(user)
 
     response = {'user': 
                     { 
