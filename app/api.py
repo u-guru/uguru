@@ -719,6 +719,7 @@ def api(arg, _id):
                 user.previous_tutor = request.json.get('previous_tutor')
             if request.json.get('tutor_introduction'):
                 user.tutor_introduction = request.json.get('tutor_introduction')
+                user.qualifications = request.json.get('tutor_introduction')
             if request.json.get('balance'):
                 user.balance = request.json.get('balance')
             if request.json.get('feed_notif'):
