@@ -859,7 +859,6 @@ def api(arg, _id):
             student_notification = Notification.query.get(notif_id)
             _request = Request.query.get(request_id)
             _request.connected_tutor_id = user.id 
-            user.outgoing_requests.remove(_request)
             user.notifications.remove(student_notification)
 
             if description: #PRE connection
@@ -867,6 +866,7 @@ def api(arg, _id):
             
             
             if not _request.connected_tutor_id:
+                user.outgoing_requests.remove(_request)
                 for _tutor in _request.requested_tutors:
                     for n in sorted(_tutor.notifications, reverse=True):
                         if n.request_id == _request.id:
@@ -880,7 +880,7 @@ def api(arg, _id):
 
                 #Find the matched notification
                 for n in user.notifications[::-1]:
-                    if n.custom == 'student-accept-request' and n.request_id == _request.id:
+                    if n.request_id == _request.id:
                         user.notifications.remove(n)
                         db_session.delete(n)
                         break;
