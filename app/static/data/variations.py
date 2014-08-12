@@ -17414,6 +17414,7 @@ courses_dict = {
     "stat 201b": 3715,
     "stat 204": 4544,
     "stat 21": 6673,
+    "stats 21": 6673,
     "stat 210a": 1350,
     "stat 210b": 1349,
     "stat 212a": 1593,
