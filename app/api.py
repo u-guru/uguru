@@ -902,7 +902,7 @@ def api(arg, _id):
                         n.status = 'CANCELED'
                 if former_tutor.apn_token:
                     message = user.name.split(" ")[0] + ' has canceled the request. Sorry!'
-                    send_apn(message, fomer_tutor.apn_token)
+                    send_apn(message, former_tutor.apn_token)
             try:
                 db_session.commit()
             except:
