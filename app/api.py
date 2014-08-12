@@ -862,13 +862,47 @@ def api(arg, _id):
             user.outgoing_requests.remove(_request)
             user.notifications.remove(student_notification)
 
-            if description: 
+            if description: #PRE connection
                 _request.cancellation_reason = description
             
-            for _tutor in _request.requested_tutors:
-                for n in sorted(_tutor.notifications, reverse=True):
-                    if n.request_id == _request.id:
+            
+            if not _request.connected_tutor_id:
+                for _tutor in _request.requested_tutors:
+                    for n in sorted(_tutor.notifications, reverse=True):
+                        if n.request_id == _request.id:
+                            n.feed_message_subtitle = '<span style="color:#CD2626"><strong>Update:</strong> The student has canceled the original request.</span>'            
+                            if tutor.apn_token:
+                                message = user.name.split(" ")[0] + ' has canceled the request. Sorry!'
+                                send_apn(message, tutor.apn_token)
+
+            else: #POST connection
+                former_tutor = User.query.get(_request.connected_tutor_id)
+
+                #Find the matched notification
+                for n in user.notifications[::-1]:
+                    if n.custom == 'student-accept-request' and n.request_id == _request.id:
+                        user.notifications.remove(n)
+                        db_session.delete(n)
+                        break;
+
+                #Delete the conversation
+                for c in user.mailbox.conversations:
+                    if c.guru == former_tutor and c.student == user:
+                        db_session.delete(c)
+
+                # for _tutor in _request.requested_tutors:
+                #     for n in sorted(_tutor.notifications, reverse=True):
+                #         if n.request_id == _request.id:
+                #             n.feed_message_subtitle = '<span style="color:#69bf69">This request is still <strong>available</strong>! Click here to accept now!</span>'
+
+                #Delete the tutor's you've been matched notification + conversation
+                for n in former_tutor.notifications[::-1]:
+                    if n.custom == 'tutor-is-matched' and n.request_id == _request.id:
                         n.feed_message_subtitle = '<span style="color:#CD2626"><strong>Update:</strong> The student has canceled the original request.</span>'            
+                        n.status = 'CANCELED'
+                if former_tutor.apn_token:
+                    message = user.name.split(" ")[0] + ' has canceled the request. Sorry!'
+                    send_apn(message, tutor.apn_token)
             try:
                 db_session.commit()
             except:
