@@ -858,7 +858,6 @@ def api(arg, _id):
 
             student_notification = Notification.query.get(notif_id)
             _request = Request.query.get(request_id)
-            _request.connected_tutor_id = user.id 
             user.notifications.remove(student_notification)
 
             if description: #PRE connection
@@ -877,7 +876,6 @@ def api(arg, _id):
 
             else: #POST connection
                 former_tutor = User.query.get(_request.connected_tutor_id)
-                print former_tutor
 
                 #Find the matched notification
                 for n in user.notifications[::-1]:
@@ -890,7 +888,6 @@ def api(arg, _id):
                 for c in user.mailbox.conversations:
                     if c.guru == former_tutor and c.student == user:
                         db_session.delete(c)
-                        print "conversation was deleted...supposedly"
 
                 # for _tutor in _request.requested_tutors:
                 #     for n in sorted(_tutor.notifications, reverse=True):
@@ -899,15 +896,15 @@ def api(arg, _id):
 
                 #Delete the tutor's you've been matched notification + conversation
                 for n in former_tutor.notifications[::-1]:
-                    print "traversing through the former tutor's notifications"
                     if n.custom == 'tutor-is-matched' and n.request_id == _request.id:
                         n.feed_message_subtitle = '<span style="color:#CD2626"><strong>Update:</strong> The student has canceled the original request.</span>'            
                         n.status = 'CANCELED'
-                        print "notification found:" + n.feed_message + " " + str(n.id)
                 if former_tutor.apn_token:
-                    print "APN token found"
                     message = user.name.split(" ")[0] + ' has canceled the request. Sorry!'
                     send_apn(message, former_tutor.apn_token)
+
+            #Cancel this shit
+            _request.connected_tutor_id = user.id 
             try:
                 db_session.commit()
             except:
