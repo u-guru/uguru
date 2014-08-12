@@ -513,6 +513,8 @@ class Request(Base):
     location = Column(String)
     last_updated = Column(DateTime)
 
+    cancellation_reason = Column(String)
+
     is_expired = Column(Boolean, default=False)
     urgency = Column(SmallInteger)
     frequency = Column(SmallInteger) # 0 is once, 1 is regular TO DROP

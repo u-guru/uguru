@@ -1642,6 +1642,10 @@ def success():
                     notification = user.notifications[0]
                     notification.feed_message_subtitle = "Application status: <strong><span style='color:#69bf69'>Approved!</span></strong>"
 
+                if user.apn_token:
+                    apn_message = 'Congrats! Your tutor application has been approved! Swipe for next steps'
+                    send_apn(apn_message, user.apn_token)
+
                 from emails import approved_by_admin_email
                 approved_by_admin_email(user)
                 db_session.commit()

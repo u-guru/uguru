@@ -852,13 +852,18 @@ def api(arg, _id):
         user = getUser()
         if user:
             print request.json
-            notif_id = request.json.get('notif-id')
-            request_id = request.json.get('request-id')
+            notif_id = request.json.get('notif_id')
+            request_id = request.json.get('request_id')
+            description = request.json.get('description')
+
             student_notification = Notification.query.get(notif_id)
             _request = Request.query.get(request_id)
             _request.connected_tutor_id = user.id 
             user.outgoing_requests.remove(_request)
             user.notifications.remove(student_notification)
+
+            if description: 
+                _request.cancellation_reason = description
             
             for _tutor in _request.requested_tutors:
                 for n in sorted(_tutor.notifications, reverse=True):
