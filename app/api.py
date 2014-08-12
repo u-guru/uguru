@@ -862,6 +862,9 @@ def api(arg, _id):
 
             if description: #PRE connection
                 _request.cancellation_reason = description
+
+            if 'description' in request.json and not description:
+                _request.cancellation_reason = "0"
             
             
             if not _request.connected_tutor_id:
