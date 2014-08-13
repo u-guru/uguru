@@ -548,6 +548,7 @@ def api(arg, _id):
                 #View Calendar
                 n_detail['request'] = sanitize_dict(r.__dict__)
                 n_detail['request']['skill_name'] = n.feed_message.split(" ")[-1].replace('<b>', '').replace('</b>', '')
+                n_detail['request']['student_name'] = User.query.get(r.student_id).name.split(" ")[0]
 
             if n.payment_id:
                 p = Request.query.get(n.payment_id)
