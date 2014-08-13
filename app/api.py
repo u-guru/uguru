@@ -40,7 +40,7 @@ def api(arg, _id):
 
         u = User.query.filter_by(email=ajax_json['email']).first()
         if u and not u.fb_account:
-            errors(["This email already exists. Please try logging in!"])
+            return errors(["This email already exists. Please try logging in!"])
         
         new_user, mailbox = create_user(email, password, phone_number, name)
 
