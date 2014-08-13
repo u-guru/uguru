@@ -33,10 +33,14 @@ def api(arg, _id):
 
     if arg == 'sign_up' and request.method == 'POST': 
 
-        email = request.json.get("email")
+        email = request.json.get("email").lower()
         password = request.json.get("password")
         phone_number = email
         name = request.json.get("name")
+
+        u = User.query.filter_by(email=ajax_json['email']).first()
+        if u and not u.fb_account:
+            errors(["This email already exists. Please try logging in!"])
         
         new_user, mailbox = create_user(email, password, phone_number, name)
 
@@ -67,18 +71,10 @@ def api(arg, _id):
 
     # sign_in logic
     if arg == 'sign_in' and request.method == 'POST':
-        email = request.json.get("email")
+        email = request.json.get("email").lower()
+        password = md5(request.json.get("password")).hexdigest()
         
-        if request.json.get('password'):
-            password = md5(request.json.get("password")).hexdigest()
-
-        pwd_flag = request.json.get('no-pass')
-
-    
-        if pwd_flag:
-            user = User.query.filter_by(email=email).first()
-        else:
-            user = User.query.filter_by(email=email).first()
+        user = User.query.filter_by(email=email, password=password).first()
 
         if user:
             user.auth_token = "%032x" % random.getrandbits(128);
