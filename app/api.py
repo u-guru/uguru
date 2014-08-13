@@ -102,6 +102,7 @@ def api(arg, _id):
         user = User.query.filter_by(email=email, password=password).first()
 
         if user:
+            import random
             user.auth_token = "%032x" % random.getrandbits(128);
             
             try:
