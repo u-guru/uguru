@@ -31,6 +31,32 @@ def api(arg, _id):
     return_json = {}
     ajax_json = request.json
 
+    if arg == 'forgot_password' and request.method == 'POST':
+        email = request.json.get("email").lower()
+
+        u = User.query.filter_by(email=email).first()
+        if not u:
+            return errors(["There is no account with this email. Please try again or signup!"])
+        else:
+            from emails import generate_new_password
+            from app.static.data.random_codes import random_codes_array
+            import random
+            from views import random_codes_array
+            new_password = random.choice(random_codes_array).lower()
+            print new_password
+            email = ajax_json['email'].lower()
+            user.password = md5(new_password).hexdigest()
+            generate_new_password(user, new_password)
+            print "reset email sent to " + email
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+        response = {"forgot_password":"success"}
+        return jsonify(response)
+
+
     if arg == 'sign_up' and request.method == 'POST': 
 
         email = request.json.get("email").lower()
