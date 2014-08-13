@@ -44,9 +44,9 @@ def api(arg, _id):
             new_password = random.choice(random_codes_array).lower()
             print new_password
             email = ajax_json['email'].lower()
-            user.password = md5(new_password).hexdigest()
-            generate_new_password(user, new_password)
-            print "reset email sent to " + email
+            u.password = md5(new_password).hexdigest()
+            generate_new_password(u, new_password)
+            print "reset email sent to " + email + " " + new_password
             try:
                 db_session.commit()
             except:
