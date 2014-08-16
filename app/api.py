@@ -14,7 +14,7 @@ import mandrill
 from twilio import twiml
 from mixpanel import Mixpanel
 import random
-from apscheduler.scheduler import Scheduler
+from apscheduler.schedulers.background import BackgroundScheduler as Scheduler
 import views, time
 from apns import APNs, Frame, Payload
 
@@ -812,6 +812,10 @@ def api(arg, _id):
 
             student = User.query.get(r.student_id)
             student.incoming_requests_from_tutors.append(r)
+
+            if student.text_notification and student.phone_number:
+                    msg = send_twilio_msg(student.phone_number, "A tutor wants to help! See more information at http://uguru.me")
+
             # db_session.commit()
 
 
@@ -1183,6 +1187,9 @@ def api(arg, _id):
                             str(r.student_estimated_hour * r.time_estimate) + '.'
                         send_apn(apn_message, tutor.apn_token)
 
+                    if tutor.text_notification and tutor.phone_number:
+                        msg = send_twilio_msg(tutor.phone_number, "You have received a request and can make BIG MONEY. Please check http://uguru.me")
+
                     tutor.incoming_requests_to_tutor.append(r)
                     notification = tutor_request_offer(user, tutor, r, skill_name)
                     db_session.add(notification)
@@ -1474,7 +1481,7 @@ def upload_file_to_amazon(filename, file):
     sml.set_contents_from_file(file)
     sml.set_acl('public-read')
 
-def get_student_time_ranges(week_object, owner):
+def get_calendar_time_ranges(week_object, owner):
     if not week_object.first():
         return []
     arr_ranges = []

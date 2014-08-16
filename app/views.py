@@ -11,15 +11,28 @@ import emails, boto, stripe, os
 from sqlalchemy import desc
 import json, traceback
 import mandrill
+import twilio
 from twilio import twiml
+from twilio.rest import TwilioRestClient 
 from mixpanel import Mixpanel
-from apscheduler.scheduler import Scheduler
+from apscheduler.schedulers.background import BackgroundScheduler as Scheduler
 import logging
 import api
+import redis
 import time
 from apns import APNs, Frame, Payload
+from celery import Celery
+from celery.task import periodic_task
 
 
+redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
+redis = redis.from_url(redis_url)
+celery = Celery('tasks', broker=redis_url)
+
+TWILIO_ACCOUNT_SID = "AC0e19b68075686efd56de5bbce77285a5" 
+TWILIO_AUTH_TOKEN = "4d5a1f6390c445fd1f6eb39634bdf299" 
+TWILIO_DEFAULT_PHONE = "+15104661138"
+twilio_client = TwilioRestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
 
 stripe_keys = {
@@ -39,8 +52,15 @@ MAX_UPLOAD_SIZE = 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 mp = Mixpanel(os.environ['MP-TOKEN'])
 
+@celery.task
+def send_twilio_message_delayed(to_phone, body):
+    print "text is going to send"
+    send_twilio_msg(to_phone, body)
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    
     if os.environ.get('TESTING') and not session.get('testing-admin'):
         return redirect(url_for('login'))
     tutor_signup_incomplete = False
@@ -119,6 +139,9 @@ def webhooks():
 def twilio_msg():
     if request.method == "POST":
         resp = twiml.Response()
+        print resp
+        print type(resp)
+        print resp.__dict__
         if request.form['Body'].upper() == "ACCEPT":
             resp.sms("You have accepted this request. See full details at uguru.me/activity.")
         # resp.message("Hello, Mobile Monkey")
@@ -824,6 +847,9 @@ def update_requests():
                 apn_message = tutor.name.split(" ")[0] + ', a ' + skill_name + ' tutor, wants to help!'
                 send_apn(apn_message, student.apn_token)
 
+            if student.text_notification and student.phone_number:
+                    msg = send_twilio_msg(student.phone_number, "A tutor wants to help! See more information at http://uguru.me")
+
             current_notification.feed_message = 'You accepted <b>' + student.name.split(' ')[0] + \
                 "'s</b> request for <b>" + skill_name.upper() + "</b>."
             current_notification.feed_message_subtitle = "<b>Click here</b> to see next steps."
@@ -1026,8 +1052,6 @@ def update_requests():
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             current_notification = user_notifications[notification_id]
             skill_name = current_notification.skill_name
-            
-            print current_notification.id
 
             tutor_id = current_notification.request_tutor_id
             tutor = User.query.get(tutor_id)
@@ -1063,6 +1087,23 @@ def update_requests():
             r.connected_tutor_hourly = prices_dict[current_notification.request_tutor_amount_hourly]
             r.time_connected = datetime.now()
             r.student_secret_code = user.secret_code
+
+            mutual_times_arr = find_earliest_meeting_time(r)
+            if tutor.phone_number and tutor.text_notification:
+                total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
+                print total_seconds_delay
+                message = "You have a tutoring session in one hour! Don't forget to prepare, read more at uguru.me/faq."
+                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message], countdown=20)
+                # schedule_job(send_twilio_msg, 120, [tutor.phone_number, message])
+
+
+            if student.phone_number and student.text_notification:
+                total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
+                print total_seconds_delay
+                message = "You have a tutoring session in one hour! Don't forget to prepare, read more at uguru.me/faq."
+                # schedule_job(send_twilio_msg, 120, [student.phone_number, message])
+                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message], countdown=20)
+
 
             if not previous_request_payment:
                 charge = stripe.Charge.create(
@@ -1562,9 +1603,8 @@ def success():
             
             sched = Scheduler()
             sched.start()
-            later_time = datetime.now() + timedelta(0, 60)
-            
-            job = sched.add_date_job(expire_request_job, later_time, [r.id, u.id])
+            later_time = datetime.now() + timedelta(0, 10)  
+            job = sched.add_job(func=expire_request_job, next_run_time=later_time, args=[r.id, u.id])
 
 
             from notifications import student_request_receipt
@@ -1595,15 +1635,14 @@ def success():
                     if tutor.apn_token:
                         apn_message = u.name.split(" ")[0] + ' needs help in ' + skill_name + '. You could make $' + \
                             str(int(r.student_estimated_hour) * int(r.time_estimate)) + '.'
-                        # print tutor.apn_token
-                        # token_hex = tutor.apn_token
-                        # payload = Payload(alert="Samir needs help with CS10. You can make $30", sound="default", badge=1)
-                        # apns.gateway_server.send_notification(token_hex, payload)
                         try:
                             send_apn(apn_message, tutor.apn_token)
                         except:
                             print tutor
 
+                    if tutor.text_notification and tutor.phone_number:
+                        msg = send_twilio_msg(tutor.phone_number, "You have received a request and can make BIG MONEY. Please check http://uguru.me")
+                        #TODO Format Message
                     tutor.incoming_requests_to_tutor.append(r)
                     notification = tutor_request_offer(u, tutor, r, skill_name)
                     db_session.add(notification)
@@ -1827,6 +1866,14 @@ def activity():
 
     urgency_dict = ['ASAP', 'Tomorrow', 'This week']
 
+    def hello_world():
+        print "hello world"
+
+    sched = Scheduler()  
+    sched.start()
+    later_time = datetime.now() + timedelta(0, 120)  
+    job = sched.add_job(func=hello_world, next_run_time=later_time)
+
     from app.static.data.prices import prices_dict
     prices_reversed_dict = {v:k for k, v in prices_dict.items()}
     avg_rating = None
@@ -1859,7 +1906,7 @@ def activity():
             if address_book.get(student_id):
                     address_book[student_id]['request'] = request
         student = User.query.get(request.student_id)
-        student_time_ranges = get_student_time_ranges(request.weekly_availability, 0)
+        student_time_ranges = get_calendar_time_ranges(request.weekly_availability, 0)
         tutor_calendars = get_tutor_time_ranges(request.weekly_availability)
         request_dict[request.id] = {'request':request,'student':student, 'student-calendar':student_time_ranges, 'tutor-calendars':tutor_calendars}
     for payment in user.payments:
@@ -1875,7 +1922,7 @@ def activity():
         environment = get_environment(), prices_dict=prices_dict, prices_reversed_dict=prices_reversed_dict, session=session,\
         outgoing_request_index=outgoing_request_index, avg_rating=avg_rating, num_ratings = num_ratings, time=time)
 
-def get_student_time_ranges(week_object, owner):
+def get_calendar_time_ranges(week_object, owner):
     if not week_object.first():
         return []
     arr_ranges = []
@@ -1890,7 +1937,7 @@ def get_tutor_time_ranges(week_object):
     tutor_calendar_dict = {}
     for w in week_object:
         if w.owner != 0:
-            tutor_calendar_dict[w.owner] = get_student_time_ranges(week_object, w.owner)
+            tutor_calendar_dict[w.owner] = get_calendar_time_ranges(week_object, w.owner)
     return tutor_calendar_dict
 
 
@@ -1918,7 +1965,7 @@ def messages():
             transactions.append(User.query.get(p.tutor_id))
     for conversation in user.mailbox.conversations:
         r = conversation.requests[0]
-        calendars[r] = (get_student_time_ranges(r.weekly_availability, 0), get_tutor_time_ranges(r.weekly_availability))
+        calendars[r] = (get_calendar_time_ranges(r.weekly_availability, 0), get_tutor_time_ranges(r.weekly_availability))
         for message in conversation.messages:
             pretty_dates[message.id] = pretty_date(message.write_time)
     
@@ -2066,6 +2113,26 @@ def is_tutor_verified(tutor):
             tutor_verified_flag = True
     return tutor_verified_flag
 
+def schedule_job(func, seconds_delay, args):
+    sched = Scheduler()
+    sched.start()
+    later_time = datetime.now() + timedelta(0, seconds_delay)                
+    job = sched.add_job(func=func, next_run_time=later_time, args=args) 
+
+
+def find_earliest_meeting_time(_request):
+    print _request
+    student_ranges = sorted(get_calendar_time_ranges(_request.weekly_availability, 0), key=lambda u:u[0])
+    tutor_ranges = sorted(get_calendar_time_ranges(_request.weekly_availability, _request.connected_tutor_id), key=lambda u:u[0])
+    index = 0
+    for _range in student_ranges:
+        tutor_range = tutor_ranges[index]
+
+        if _range[0] == tutor_range[0] and _range[1] == tutor_range [1]:
+            return [_range[0], _range[1]]
+        
+        index = index+1
+    return None
 
 def authenticate(user_id):
     session['user_id'] = user_id
@@ -2118,6 +2185,22 @@ def update_profile_notifications(user):
                         print user.name, n.feed_message[0:30], " notification is now updated"
     return False
 
+
+def convert_mutual_times_in_seconds(mutual_arr, _request):
+    total_seconds = 0
+    print mutual_arr
+    if mutual_arr[0]:
+        total_seconds = (mutual_arr[0] - 1) * 24 * 3600 #one day of seconds depending on the offset days from today
+        total_seconds = total_seconds + mutual_arr[1] * 3600
+    total_seconds = total_seconds + total_seconds_remaining_today()
+    return total_seconds
+            
+def total_seconds_remaining_today():            
+    import datetime as datetime_orig
+    today = datetime_orig.date.today()
+    tomorrow = datetime.combine((today + timedelta(days = 1)), datetime.min.time())
+    return (tomorrow - datetime.now()).total_seconds()
+
 def get_environment():
     environment = "LOCAL"
     if os.environ.get('PRODUCTION'):
@@ -2125,6 +2208,18 @@ def get_environment():
     if os.environ.get("TESTING"):
         environment = "TESTING"
     return environment
+
+def send_twilio_msg(to_phone, body):
+    try:
+        message = twilio_client.messages.create(
+            body_ = body,
+            to_ = to_phone,
+            from_ = TWILIO_DEFAULT_PHONE,
+            )
+    except twilio.TwilioRestException:
+        print "text message didn't go through"
+        return
+    return message
 
 def expire_request_job(request_id, user_id):
     print 'request has expired'
