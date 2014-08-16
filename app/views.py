@@ -20,13 +20,9 @@ import api
 import redis
 import time
 from apns import APNs, Frame, Payload
-from celery import Celery
+from app import celery
 from celery.task import periodic_task
 
-
-redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
-redis = redis.from_url(redis_url)
-celery = Celery('tasks', broker=redis_url)
 
 TWILIO_ACCOUNT_SID = "AC0e19b68075686efd56de5bbce77285a5" 
 TWILIO_AUTH_TOKEN = "4d5a1f6390c445fd1f6eb39634bdf299" 
