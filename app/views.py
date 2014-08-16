@@ -20,8 +20,8 @@ import api
 import redis
 import time
 from apns import APNs, Frame, Payload
-from app import celery
-from celery.task import periodic_task
+# from app import celery
+# from celery.task import periodic_task
 
 
 TWILIO_ACCOUNT_SID = "AC0e19b68075686efd56de5bbce77285a5" 
@@ -53,10 +53,10 @@ mp = Mixpanel(os.environ['MP-TOKEN'])
 #     logging.info("bitchass")
 #     send_twilio_msg(to_phone, body)
 
-@celery.task
-def tester(arg):
-    logging.info("bitchass")
-    print "sup"
+# @celery.task
+# def tester(arg):
+#     logging.info("bitchass")
+#     print "sup"
 
 # def fib(n):
 #     if n > 1:
@@ -73,7 +73,7 @@ def tester(arg):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    tester.apply_async(args=[1], countdown=10)
+    # tester.apply_async(args=[1], countdown=10)
     if os.environ.get('TESTING') and not session.get('testing-admin'):
         return redirect(url_for('login'))
     tutor_signup_incomplete = False
