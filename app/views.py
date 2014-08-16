@@ -1092,6 +1092,7 @@ def update_requests():
             if tutor.phone_number and tutor.text_notification:
                 total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
                 print total_seconds_delay
+                print "it got here"
                 message = "You have a tutoring session in one hour! Don't forget to prepare, read more at uguru.me/faq."
                 send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message], countdown=20)
                 # schedule_job(send_twilio_msg, 120, [tutor.phone_number, message])
