@@ -63,6 +63,17 @@ def tester(arg):
     logging.info("bitchass")
     print "sup"
 
+def fib(n):
+    if n > 1:
+        return fib(n - 1) + fib(n - 2)
+    else:
+        return 1
+
+
+@periodic_task(run_every=timedelta(seconds=10))
+def print_fib():
+    logging.info(fib(30))
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
