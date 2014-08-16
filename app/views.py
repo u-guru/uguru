@@ -55,6 +55,7 @@ mp = Mixpanel(os.environ['MP-TOKEN'])
 @celery.task
 def send_twilio_message_delayed(to_phone, body):
     print "text is going to send"
+    logging.info("bitchass")
     send_twilio_msg(to_phone, body)
 
 
@@ -1866,14 +1867,6 @@ def activity():
     tutor_dict = {}
 
     urgency_dict = ['ASAP', 'Tomorrow', 'This week']
-
-    def hello_world():
-        print "hello world"
-
-    sched = Scheduler()  
-    sched.start()
-    later_time = datetime.now() + timedelta(0, 120)  
-    job = sched.add_job(func=hello_world, next_run_time=later_time)
 
     from app.static.data.prices import prices_dict
     prices_reversed_dict = {v:k for k, v in prices_dict.items()}
