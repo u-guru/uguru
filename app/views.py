@@ -53,10 +53,10 @@ mp = Mixpanel(os.environ['MP-TOKEN'])
 #     logging.info("bitchass")
 #     send_twilio_msg(to_phone, body)
 
-# @celery.task
-# def tester(arg):
-#     logging.info("bitchass")
-#     print "sup"
+@celery.task
+def tester(arg):
+    logging.info("bitchass")
+    print "sup"
 
 # def fib(n):
 #     if n > 1:
