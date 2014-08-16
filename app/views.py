@@ -71,6 +71,7 @@ def fib(n):
 
 @periodic_task(run_every=timedelta(seconds=10))
 def print_fib():
+    print "sup"
     logging.info(fib(30))
 
 
