@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from celery import Celery
 import redis
+import logging
 
 import os
 from os import environ
