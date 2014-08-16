@@ -768,9 +768,9 @@ def send_message():
                 or (conversation.messages[-1].sender_id == user.id and conversation.is_read):
                 receiver.msg_notif += 1
                 
-                if receiver.apn_token:
-                    apn_message = receiver.name.split(" ")[0] + ' has sent you a message'
-                    send_apn(apn_message, receiver.apn_token)
+                # if receiver.apn_token:
+                #     apn_message = receiver.name.split(" ")[0] + ' has sent you a message'
+                #     send_apn(apn_message, receiver.apn_token)
                 
                 if not conversation.messages :
                     from emails import send_message_alert
@@ -843,9 +843,9 @@ def update_requests():
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
 
-            if student.apn_token:
-                apn_message = tutor.name.split(" ")[0] + ', a ' + skill_name + ' tutor, wants to help!'
-                send_apn(apn_message, student.apn_token)
+            # if student.apn_token:
+            #     apn_message = tutor.name.split(" ")[0] + ', a ' + skill_name + ' tutor, wants to help!'
+            #     send_apn(apn_message, student.apn_token)
 
             if student.text_notification and student.phone_number:
                     msg = send_twilio_msg(student.phone_number, "A tutor wants to help! See more information at http://uguru.me")
@@ -1145,9 +1145,9 @@ def update_requests():
             tutor_is_matched(user, tutor, skill_name)
             student_is_matched(user, tutor, r.student_secret_code)
 
-            if tutor.apn_token:
-                apn_message = student.name.split(" ")[0] + ' has chosen you! Message '  + student.name.split(" ")[0] + ' now!'
-                send_apn(apn_message, tutor.apn_token)
+            # if tutor.apn_token:
+            #     apn_message = student.name.split(" ")[0] + ' has chosen you! Message '  + student.name.split(" ")[0] + ' now!'
+            #     send_apn(apn_message, tutor.apn_token)
 
 
 
@@ -1632,13 +1632,13 @@ def success():
             for tutor in r.requested_tutors:
                 #Only if they are approved tutors
                 if tutor.approved_by_admin:
-                    if tutor.apn_token:
-                        apn_message = u.name.split(" ")[0] + ' needs help in ' + skill_name + '. You could make $' + \
-                            str(int(r.student_estimated_hour) * int(r.time_estimate)) + '.'
-                        try:
-                            send_apn(apn_message, tutor.apn_token)
-                        except:
-                            print tutor
+                    # if tutor.apn_token:
+                    #     apn_message = u.name.split(" ")[0] + ' needs help in ' + skill_name + '. You could make $' + \
+                    #         str(int(r.student_estimated_hour) * int(r.time_estimate)) + '.'
+                    #     try:
+                    #         send_apn(apn_message, tutor.apn_token)
+                    #     except:
+                    #         print tutor
 
                     if tutor.text_notification and tutor.phone_number:
                         msg = send_twilio_msg(tutor.phone_number, "You have received a request and can make BIG MONEY. Please check http://uguru.me")
@@ -1683,9 +1683,9 @@ def success():
                     notification = user.notifications[0]
                     notification.feed_message_subtitle = "Application status: <strong><span style='color:#69bf69'>Approved!</span></strong>"
 
-                if user.apn_token:
-                    apn_message = 'Congrats! Your tutor application has been approved! Swipe for next steps'
-                    send_apn(apn_message, user.apn_token)
+                # if user.apn_token:
+                #     apn_message = 'Congrats! Your tutor application has been approved! Swipe for next steps'
+                #     send_apn(apn_message, user.apn_token)
 
                 from emails import approved_by_admin_email
                 approved_by_admin_email(user)
