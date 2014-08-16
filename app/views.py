@@ -52,16 +52,21 @@ MAX_UPLOAD_SIZE = 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 mp = Mixpanel(os.environ['MP-TOKEN'])
 
+# @celery.task
+# def send_twilio_message_delayed(to_phone, body):
+#     print "text is going to send"
+#     logging.info("bitchass")
+#     send_twilio_msg(to_phone, body)
+
 @celery.task
-def send_twilio_message_delayed(to_phone, body):
-    print "text is going to send"
+def tester(arg):
     logging.info("bitchass")
-    send_twilio_msg(to_phone, body)
+    print "sup"
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    
+    tester.apply_async(args=[1], countdown=10)
     if os.environ.get('TESTING') and not session.get('testing-admin'):
         return redirect(url_for('login'))
     tutor_signup_incomplete = False
