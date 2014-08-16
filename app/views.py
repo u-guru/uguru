@@ -1117,7 +1117,7 @@ def update_requests():
                 print total_seconds_delay
                 print "it got here"
                 message = "You have a tutoring session in one hour! Don't forget to prepare, read more at uguru.me/faq."
-                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message], countdown=20)
+                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message], countdown=60)
                 # schedule_job(send_twilio_msg, 120, [tutor.phone_number, message])
 
 
@@ -1126,7 +1126,7 @@ def update_requests():
                 print total_seconds_delay
                 message = "You have a tutoring session in one hour! Don't forget to prepare, read more at uguru.me/faq."
                 # schedule_job(send_twilio_msg, 120, [student.phone_number, message])
-                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message], countdown=20)
+                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message], countdown=60)
 
 
             if not previous_request_payment:
