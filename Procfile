@@ -1,5 +1,6 @@
 web: gunicorn run:app
-worker: celery -A run:app worker -B --loglevel=info
+worker: celery -A tasks worker -B -E --loglevel=info
+redis: redis-server
 migrate: alembic upgrade head
 upgrade: alembic upgrate +1
 downgrade: alembic downgrade -1
