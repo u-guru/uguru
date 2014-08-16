@@ -29,6 +29,19 @@ celery.conf.update(
     CELERY_ACCEPT_CONTENT=['json', 'msgpack', 'yaml']
 )
 
+def fib(n):
+    if n > 1:
+        return fib(n - 1) + fib(n - 2)
+    else:
+        return 1
+
+# The periodic task itself, defined by the following decorator
+@periodic_task(run_every=timedelta(seconds=10))
+def print_fib():
+    # Just log fibonacci(30), no more
+    logging.info(fib(30))
+
+
 class DataBase():
     session = None;
 
