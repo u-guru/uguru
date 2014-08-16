@@ -52,29 +52,6 @@ MAX_UPLOAD_SIZE = 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 mp = Mixpanel(os.environ['MP-TOKEN'])
 
-# @celery.task
-# def send_twilio_message_delayed(to_phone, body):
-#     print "text is going to send"
-#     logging.info("bitchass")
-#     send_twilio_msg(to_phone, body)
-
-# @celery.task
-# def tester(arg):
-#     logging.info("bitchass")
-#     print "sup"
-
-# def fib(n):
-#     if n > 1:
-#         return fib(n - 1) + fib(n - 2)
-#     else:
-#         return 1
-
-
-# @periodic_task(run_every=timedelta(seconds=10))
-# def print_fib():
-#     print "sup"
-#     logging.info(fib(30))
-
 celery = Celery('run')
 
 REDIS_URL = environ.get('REDISTOGO_URL', 'redis://localhost')
@@ -93,11 +70,15 @@ def fib(n):
         return 1
 
 # The periodic task itself, defined by the following decorator
-@periodic_task(run_every=timedelta(seconds=10))
-def print_fib():
-    # Just log fibonacci(30), no more
-    print "sup"
-    logging.info(fib(30))
+# @periodic_task(run_every=timedelta(seconds=10))
+# def print_fib():
+#     # Just log fibonacci(30), no more
+#     logging.info(fib(30))
+
+
+@celery.task
+def send_twilio_message_delayed(phone, msg):
+    send_twilio_msg(phone,msg)
 
 
 @app.route('/', methods=['GET', 'POST'])
