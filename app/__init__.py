@@ -4,6 +4,7 @@ from celery import Celery
 import redis
 
 import os
+from os import environ
 
 app = Flask(__name__)
 app.config.from_object('config')
