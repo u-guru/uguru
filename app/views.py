@@ -15,7 +15,6 @@ import twilio
 from twilio import twiml
 from twilio.rest import TwilioRestClient 
 from mixpanel import Mixpanel
-from apscheduler.schedulers.background import BackgroundScheduler as Scheduler
 import logging
 import api
 import redis
@@ -1618,12 +1617,6 @@ def success():
             except:
                 db_session.rollback()
                 raise 
-            
-            sched = Scheduler()
-            sched.start()
-            later_time = datetime.now() + timedelta(0, 10)  
-            job = sched.add_job(func=expire_request_job, next_run_time=later_time, args=[r.id, u.id])
-
 
             from notifications import student_request_receipt
             notification = student_request_receipt(u, r, original_skill_name)
