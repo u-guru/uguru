@@ -1,4 +1,163 @@
     
+    //Settings page
+    $('#submit-debit-card-settings').click(function() {
+        if (!$('input#debit-card-num-settings').val() || !$('input#debit-card-exp-date').val()) {
+            $('#add-debit-settings-alert').show();
+            $('#add-debit-settings-alert').text('Please fill in all fields');
+            return false;
+        }
+        $('#add-debit-settings-alert').hide();
+        card_number  = $('input#debit-card-num-settings').val()
+        expiration_date = $('input#debit-card-exp-date').val()
+        month = parseInt(expiration_date.split('/')[0])
+        year = parseInt(expiration_date.split('/')[1])
+
+        Stripe.card.createToken({
+            number : card_number,
+            exp_month : month,
+            exp_year : year,
+        }, stripeDebitSettingsResponseHandler);
+
+      });
+
+    var stripeDebitSettingsResponseHandler = function(status, response) {
+        var $form = $('#payment-form');
+        if (response.error) {
+            // Show the errors on the form    
+            $('#add-debit-settings-alert').text(response.error.message);
+            $('#add-debit-settings-alert').show();
+        } else {
+            $('#add-debit-settings-alert').hide();
+            var token = response.id;
+            var data = {'stripe_recipient_token':token}
+            $.ajax({
+                    type: "PUT",
+                    contentType: 'application/json;charset=UTF-8',
+                    url: '/api/user' ,
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    success:function(response) {
+                        if (response.errors) {
+                            $('#add-debit-settings-alert').text(response.errors);
+                            $('#add-debit-settings-alert').show();
+                            return;
+                        } else {
+                            location.reload();
+                        }
+                    }
+            });  
+        }
+    };
+
+    $('#submit-credit-card-settings').click(function() {
+        if (!$('input#credit-card-num').val() || !$('input#credit-card-exp-date').val()) {
+            $('#add-credit-settings-alert').show();
+            $('#add-credit-settings-alert').text('Please fill in all fields');
+            return false;
+        }
+        $('#add-credit-settings-alert').hide();
+        card_number  = $('input#credit-card-num').val()
+        expiration_date = $('input#credit-card-exp-date').val()
+        month = parseInt(expiration_date.split('/')[0])
+        year = parseInt(expiration_date.split('/')[1])
+
+        Stripe.card.createToken({
+            number : card_number,
+            exp_month : month,
+            exp_year : year,
+        }, stripeCreditSettingsResponseHandler);
+
+      });
+
+    var stripeCreditSettingsResponseHandler = function(status, response) {
+        var $form = $('#payment-form');
+        if (response.error) {
+            // Show the errors on the form    
+            $('#add-credit-settings-alert').text(response.error.message);
+            $('#add-credit-settings-alert').show();
+        } else {
+            $('#add-credit-settings-alert').hide();
+            var token = response.id;
+            var data = {'stripe-card-token':token}
+            $.ajax({
+                    type: "PUT",
+                    contentType: 'application/json;charset=UTF-8',
+                    url: '/api/user' ,
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    success:function(response) {
+                        if (response.errors) {
+                            $('#add-credit-settings-alert').text(response.errors);
+                            $('#add-credit-settings-alert').show();
+                            return;
+                        } else {
+                            location.reload();
+                        }
+                    }
+            });  
+        }
+    };
+
+    //Modal Submit
+
+    $('#submit-credit-card-modal').click(function() {
+        if (!$('input#credit-card-num-modal').val() || !$('input#credit-card-exp-date-modal').val()) {
+            $('#add-credit-modal-alert').show();
+            $('#add-credit-modal-alert').text('Please fill in all fields');
+            return false;
+        }
+        $('#add-credit-modal-alert').hide();
+        card_number  = $('input#credit-card-num-modal').val()
+        expiration_date = $('input#credit-card-exp-date-modal').val()
+        month = parseInt(expiration_date.split('/')[0])
+        year = parseInt(expiration_date.split('/')[1])
+
+        Stripe.card.createToken({
+            number : card_number,
+            exp_month : month,
+            exp_year : year,
+        }, stripeCreditModalResponseHandler);
+
+      });
+
+    var stripeCreditModalResponseHandler = function(status, response) {
+        var $form = $('#payment-form');
+        if (response.error) {
+            // Show the errors on the form    
+            $('#add-credit-modal-alert').text(response.error.message);
+            $('#add-credit-modal-alert').show();
+        } else {
+            $('#add-credit-modal-alert').hide();
+            var token = response.id;
+            var data = {'stripe-card-token':token}
+            $.ajax({
+                    type: "PUT",
+                    contentType: 'application/json;charset=UTF-8',
+                    url: '/api/user' ,
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    success:function(response) {
+                        $('#credit-modal').modal('hide');
+                        data = {'notification-id':last_clicked_notif_index,}
+                        $.ajax({
+                                type: "PUT",
+                                contentType: 'application/json;charset=UTF-8',
+                                url: '/api/student_accept' ,
+                                data: JSON.stringify(data),
+                                dataType: "json",
+                                success:function(response) {
+                                    location.reload();
+                                }
+                        });  
+                    }
+            });  
+        }
+    };
+
+
+
+    //Activity page
+
     $('#submit-debit-card-info').click(function() {
         if (!$('input#debit-card-num').val() || !$('input#debit-expiration-date').val()) {
             $('.debit-payment-errors').text("Please fill in all fields");
@@ -48,7 +207,7 @@
                     dataType: "json",
                     success:function(response) {
                         if (response.response['not-a-debit']) {
-                            $('.debit-payment-errors').text('You enter a debit card, not a credit card.')
+                            $('.debit-payment-errors').text('You entered a debit card, not a credit card.')
                             $('.debit-payment-errors').show();
                             return;
                         } else {
@@ -62,7 +221,11 @@
 
     credit_card_back_link = true; 
     $('input#credit-card-num').payment('formatCardNumber');
+    $('input#credit-card-num-modal').payment('formatCardNumber');
+    $('input#debit-card-num-settings').payment('formatCardNumber');
+    $('input.exp-date-month').payment('formatCardExpiry');
     $('input#expiration-date').payment('formatCardExpiry');
+    $('input#credit-card-exp-date-modal').payment('formatCardNumber');
     $('input#cvc-num').payment('formatCardCVC');
 
     $('.tutor-request-accept-btn-credit').click(function(){    

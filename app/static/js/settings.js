@@ -5,6 +5,7 @@ function hide_all_settings() {
       $('#profile').hide();
       $('#billing').hide();
       $('#support').hide();
+      $('#referral').hide();
     };
 
 var update_feed = function() {
@@ -29,6 +30,14 @@ var update_page = function() {
   if (hash == '#prof') {
     hide_all_settings();
     $('#profile').show();
+  }
+  if (hash == '#referral') {
+    hide_all_settings();
+    $('#referral').show();
+  }
+  if (hash == '#billing') {
+    hide_all_settings();
+    $('#billing').show();
   }
 }
 
@@ -56,9 +65,106 @@ $(document).ready(function() {
       $('#profile').show();
     });
 
+    $('#account-referral-link').click(function() {
+      hide_all_settings();
+      $('#referral').show();
+    });
+
+    $('#account-billing-link').click(function() {
+      hide_all_settings();
+      $('#billing').show();
+    });
+
     $('#account-settings-link').click(function() {
       hide_all_settings();
       $('#settings').show();
+    });
+
+    $('#apply-promo-code').click(function() {
+      data = {
+        'check_promo_code': $('#referral-promo').val()
+      }
+      $.ajax({
+          type: "PUT",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/api/user',
+          data: JSON.stringify(data),
+          dataType: "json",        
+          success: function(result) {
+            if (result.errors) {
+              $('#referral-promo-alert').text(result.errors);
+              $('#referral-promo-alert').show();
+            } else {
+              $('#referral-promo-alert').hide();
+              $('#referral-promo-success').show();
+              $('#referral-promo-success').delay(750).fadeOut('slow');
+              $('#referral-credits').text('$' + result.user.credit);
+            }
+          }
+      });
+    });
+
+    $('#edit-referral-code').click(function() {
+      $('#your-referral-code').hide();
+      $('#your-referral-code-edit').show();
+    });
+
+    $('#change-credit-edit-btn').click(function() {
+      if ($('#change-credit-edit-btn').text().trim() == 'Change') {
+        $('#change-credit-container').show();
+        $('#change-credit-edit-btn').text('Cancel');
+        $('#change-credit-edit-btn').css('text-decoration', 'underline');
+      } else {
+        $('#change-credit-container').hide();
+        $('#change-credit-edit-btn').text('Change');
+      }
+    });
+
+    $('#change-debit-edit-btn').click(function() {
+      if ($('#change-debit-edit-btn').text().trim() == 'Change') {
+        $('#change-debit-container').show();
+        $('#change-debit-edit-btn').text('Cancel');
+        $('#change-debit-edit-btn').css('text-decoration', 'underline');
+      } else {
+        $('#change-debit-container').hide();
+        $('#change-debit-edit-btn').text('Change');
+      }
+    });
+
+    $('#add-debit-btn').click(function() {
+      $('#change-debit-container').show();
+      $(this).hide();
+    });
+
+    $('#add-credit-btn').click(function() {
+      $('#change-credit-container').show();
+      $(this).hide();
+    });
+
+    $('#edit-referral-code-submit').click(function() {
+      data = {
+        'update_promo_code': $('#referral-code').val()
+      }
+      $.ajax({
+          type: "PUT",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/api/user',
+          data: JSON.stringify(data),
+          dataType: "json",        
+          success: function(result) {
+            if (result.errors) {
+              $('#referral-edit-alert').text(result.errors);
+              $('#referral-edit-alert').show();
+            } else {
+              $('#referral-edit-alert').hide();
+              $('#your-referral-code-text').text(result.user.user_referral_code);
+              $('#your-referral-code-url').text('http://uguru.me/' + result.user.user_referral_code);
+              $('#your-referral-code-edit').hide();
+              $('#your-referral-code').show();
+            }
+          }
+      });
+
     });
 
     $('#account-billing-link').click(function() {

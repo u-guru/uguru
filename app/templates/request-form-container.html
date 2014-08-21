@@ -13,6 +13,11 @@
                 
                 <label style='display:block' for='request-class'>Professor (optional) </label>
                 <input type='text' id='request-professor'class='form-control standard-input'>
+
+                {% if not user or (user and not user.phone_number)%} 
+                <label style='display:block' for='request-class'>Phone Number (to connect you quickly) </label>
+                <input type='text' id='request-phone'class='form-control standard-input' >
+                {% endif %}
                 
                 <label for='request-class'>What Do You Need Help In? Be Specific </label>
                 <textarea id='request-description' class='form-control standard-textarea request-textarea'> </textarea>

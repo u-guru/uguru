@@ -781,8 +781,8 @@ def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_
         text = student_payment_receipt_connection_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
         html = student_payment_receipt_connection_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
     else:
-        text = student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
-        html = student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
+        text = student_payment_receipt_text(date, charge_id, card_last4, str(tutor_name), hourly_price, hours, amount)
+        html = student_payment_receipt_html(date, charge_id, card_last4, str(tutor_name), hourly_price, hours, amount)
     
     part1 = MIMEText(text, 'plain', 'utf-8')
     part2 = MIMEText(html, 'html', 'utf-8')
@@ -955,7 +955,7 @@ def tutor_received_transfer_text(amount, bank_name, transfer_id, last4,date):
 
 def student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount):
     return """For your next session with """ + tutor_name + """, you won't need to submit a request again. Just set """+\
-    """ up a time, meetup, and provide your regenerated secret code for payment. Forget about cash - your code is your wallet!""" + \
+    """ up a time, meetup,. Forget about cash - we'll handle all your payments for free!""" + \
     """Receipt ID: """+  charge_id +"""\n""" +\
     """Time: """+  date +"""\n""" +\
     """Card Number: ****-****-****-"""+ card_last4 +"""\n""" +\
@@ -981,7 +981,7 @@ def student_payment_receipt_connection_text(date, charge_id, card_last4, tutor_n
 def tutor_payment_receipt_text(date, charge_id, tutor_name, hourly_price, hours, amount, student_name):
     return """For your next session with """ + student_name + """, """ + student_name + """ won't need to submit a """+ \
     """request again. Just coordinate through messaging and meet up. At the end of the session, click "REQUEST PAYMENT" on """ +\
-    """your feed page, find """ + student_name + """ in the drop-down list, and input the updated secret code after confirming the """ + \
+    """your feed page, find """ + student_name + """ in the drop-down list, and submit after confirming the """ + \
     """amount with """ + student_name + """.\n\n""" + \
     """Receipt ID: """+  charge_id +"""\n""" +\
     """Time: """+  date +"""\n""" +\
@@ -997,7 +997,7 @@ def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours,
     return """
     For your <b>next session with """ + student_name + """</b>, """ + student_name + """ won't need to submit a request again. 
     Just coordinate through messaging and meet up. At the end of session, click "REQUEST PAYMENT" on your feed page, find """ + \
-    student_name + """ in the <b>drop-down list</b>, and input the <b>updated secret code</b> after confirming the amount with """ + student_name +""".
+    student_name + """ in the <b>drop-down list</b>, and submit after confirming the amount with """ + student_name +""".
     <br>
     <br>
     Receipt ID: """+  charge_id +"""<br>
@@ -1023,8 +1023,8 @@ def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours,
 
 def student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount):
     return """
-    For your <b>next session with """ + tutor_name + """</b>, you won't need to submit a request again. Just set up a time, meetup, and provide the regenerated code to """ + tutor_name + """" for payment."""+\
-    """ Forget about cash - your code is your wallet!
+    For your <b>next session with """ + tutor_name + """</b>, you won't need to submit a request again. Just set up a time through our messaging."""+\
+    """ Forget about cash! We'll handle your payments - for free!
     <br>
     <br>
     Receipt ID: """+  charge_id +"""<br>
@@ -1104,7 +1104,7 @@ def tutor_is_matched(student, tutor, skill_name):
 def student_is_matched_text(tutor_name, request_code):
     return """You have been matched with """ + tutor_name + """! Please follow these next steps: \n\n:""" + \
     """1. Message your Guru, and finalize meetup time & location (http://uguru.me/messages).\n\n""" +\
-    """2. At end of the session, your Guru will draft the bill on his/her device. Verify the bill, and give your Guru your secret code (find this at the top of your feed page) as proof of approval. You will automatically be charged for the approved amount.\n\n""" +\
+    """2. At end of the session, your Guru will draft the bill on his/her device. Don't forget to verify the amount before submitting!\n\n""" +\
     """3. Review your Guru by signing in after the tutor has billed you. \n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
@@ -1115,7 +1115,7 @@ def student_is_matched_html(tutor_name, request_code):
     1. <a href="http://uguru.me/messages/"> Message</a> your Guru, and finalize meetup <b>time & location</b> .
     <br>
     <br>
-    2. At end of the session, your Guru will draft the bill on his/her device. <b> Verify the bill</b>, and give your Guru your <b>secret code</b> (<a href="http://uguru.me/activity/">find this at the top of your feed page</a>) as proof of approval. You will automatically be charged 
+    2. At end of the session, your Guru will draft the bill on his/her device. You will automatically be charged 
     for the approved amount. 
     <br>
     <br>
@@ -1137,7 +1137,7 @@ def tutor_is_matched_text(tutor_name):
     """1. Message your student, and finalize meetup time & location (http://uguru.me/messages).\n\n""" +\
     """2. At the end of the session, log into http://uguru.me on your device and draft a bill by clicking 
     "REQUEST PAYMENT" on your feed page.\n\n""" +\
-    """3. Have your student verify the amount, and input his/her 1-time verification code as proof of approval. The amount will be added to your balance,
+    """3. Have your student verify the amount before submitting.  The amount will be added to your balance,
     and you can cash out at any time!\n\n""" +\
     """4. After payment, remind your student to rate you on their account. These reviews will help you stand out when students choose their tutors.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
@@ -1153,7 +1153,7 @@ def tutor_is_matched_html(tutor_name):
     <b>"REQUEST PAYMENT"</b> on your feed page.
     <br>
     <br>
-    3. Have your student <b>verify the amount</b>, and input his/her <b> secret code</b> as proof of approval. The amount will be added to your balance,
+    3. Have your student <b>verify the amount</b> before submitting. The amount will be added to your balance,
     and you can cash out at any time!
     <br>
     <br>
@@ -1529,6 +1529,33 @@ def general_notification_html(user_name, msg):
     Sincerely, <br>
     The uGuru.me Team
     """
+
+
+def request_received_msg(user, _request, skill):
+    user_name = user.name.split(" ")[0].title()
+    amount = _request.student_estimated_hour * _request.time_estimate
+
+
+    msg = user_name + " needs your help with " + skill.upper() + " You can make up to $" + \
+    str(amount) + ". Act fast and see if your schedules line up at http://uguru.me."
+    return msg
+
+def guru_can_help(tutor, skill_name):
+    tutor_name = tutor.name.split(" ")[0].title()
+
+    msg = tutor_name + " can help with " + skill_name.upper() + ". Check out " + tutor_name + "'s profile and confirm this session at http://uguru.me. Happy Studying!"
+    return msg
+
+def its_a_match_guru(student, skill_name):
+    student_name = student.name.split(" ")[0]
+    msg = student_name + " has chosen you!" + " Message " + student_name + " now at http://uguru.me/messages."
+
+def reminder_before_session(person_a, person_b, location, ending):
+    person_a_name = person_a.name.split(" ")[0].title()
+    person_b_name = person_b.name.split(" ")[0].title()
+    msg = "Hey " + person_a_name + "! Your uGuru session with " + person_b_name + " is in one hour! Meet at " + location + ". Happy " + ending + "!"
+    return msg
+
 
 def error(message):
 

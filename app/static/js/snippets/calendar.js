@@ -37,8 +37,13 @@ function process_dates(date) {
     var m = first_date.getMonth();
     var y = first_date.getYear();
     for (i = 0; i < 7; i++) {
-        var nextDate = new Date(y, m, d+i);   
-        $('#calendar-day-'+(i + 1)).text(day_names[(day_int + i) % 7] + ' ' + (month_names[nextDate.getMonth()]) + '/' + nextDate.getDate());
+        if (i == 0) {
+            $('#calendar-day-1').text('Today')    
+        } else {
+            var nextDate = new Date(y, m, d+i);
+            // $('#calendar-day-'+(i + 1)).text(day_names[(day_int + i) % 7] + ' ' + (month_names[nextDate.getMonth()]) + '/' + nextDate.getDate());
+            $('#calendar-day-'+(i + 1)).text(day_names[(day_int + i) % 7]);
+        }
     }
 }
 
@@ -58,7 +63,7 @@ $('.close-calendar-btn').click(function() {
 
 function process_column_tds(td_list) {
     day_range_list = []
-    for (i = 0; i < 24; i++) {
+    for (i = 0; i < 48; i++) {
         current_td = $(td_list[i]);
         if (current_td.hasClass('td-selected')) {
             day_range_list.push([i, i+1]);

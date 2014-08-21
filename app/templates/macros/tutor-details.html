@@ -1,0 +1,133 @@
+{% macro tutor_details(user, notif, request_dict, time, index, tutor_dict, variations) -%}                        
+{% set tutor = tutor_dict[notif] %}
+<div class='tutor-app-photo-container margin-top-30 margin-bottom-15 block'>
+    <img id='tutor-app-photo' src='{{user.profile_url}}' height='100px'> 
+    <div class='guru-profile-attributes'> 
+        <div class='row'>
+            <span id='profile-name' class='font-20'>
+                {{tutor.name.split(" ")[0]}} 
+                <div class="profile-rating" style='display:inline-block'>
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                </div>  
+                <span class='underline blue-text font-16' >
+                    {{tutor.tutor_ratings|length}} ratings
+                </span>
+            </span>
+        </div>
+        <div class='row font-14 margin-top-10 green-text'>
+            {{tutor.year}}
+            &nbsp;&nbsp;&nbsp;
+            | 
+            &nbsp;&nbsp;&nbsp;
+            {{tutor.major}}
+        </div>
+        <div class='row'>
+            {% if tutor.ta_tutor %}
+                <span class='tutor-profile-course-tag'>
+                    TA or GSI
+                </span>
+            {% endif %}
+
+            {% if tutor.slc_tutor %}
+                <span class='tutor-profile-course-tag'>
+                    SLC Tutor
+                </span>
+            {% endif %}
+
+            {% if tutor.hkn_tutor %}
+                <span class='tutor-profile-course-tag'>
+                    HKN Tutor
+                </span>
+            {% endif %}
+
+            {% if tutor.la_tutor %}
+                <span class='tutor-profile-course-tag'>
+                    Lab Assistant
+                </span>
+            {% endif %}
+
+            {% if tutor.res_tutor %}
+                <span class='tutor-profile-course-tag'>
+                    Res Hall Tutor
+                </span>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+<div class='row block margin-top-30' style='padding-left:16px'>
+    <div class='row-fluid'>
+        <label class='font-20'> Courses {{tutor.name.split(" ")[0]|title}} can teach </label>
+        <br>
+        {% for skill in tutor.skills %}
+        <span class='tutor-profile-course-tag'>
+          <span>{{variations[skill.name]}}</span>
+        </span>
+        {% endfor %}
+    </div>
+    <div class='row-fluid margin-top-30'>
+        <label class='font-20'> {{tutor.name.split(" ")[0]}}'s bio </label>
+        <div id='guru-intro' class='block font-14'>
+            {{tutor.tutor_introduction}}
+        </div>
+    </div>
+    <div class='row-fluid margin-top-30 block'>
+        <label class='font-20'> {{tutor.name.split(" ")[0]}}'s Personal Note for You </label>
+        <div id='guru-intro' class='block font-14'>
+            {{notif.extra_detail}}
+        </div>
+        <br>
+    </div>
+    <hr>
+    <div class='row-fluid block font-14'>
+        <label class='font-20'> Availability and Pricing</label>
+        <div class='row-fluid block margin-top-10 margin-bottom-10'>
+            Preferred Meeting Time: 
+            {% if request_dict[notif.request_id]['student-calendar'] %}
+              <a id='request-calendar-toggle' onclick='show_tutor_request_submitted_calendar({{request_dict[notif.request_id]["student-calendar"]}}, {{request_dict[notif.request_id]["tutor-calendars"][tutor_dict[notif].id]}}, false, {{time.mktime(request_dict[notif.request_id]["request"].time_created.timetuple())}})'>
+                <span class='glyphicon glyphicon-calendar'></span>
+                <span class='blue-text'> See {{tutor.name.split(" ")[0]}}'s Availability </span> 
+              </a>
+            {% else %}
+                {{request_dict[notif.request_id]['request'].availability}}
+            {% endif %}
+
+        </div>
+        <div class='row-fluid block margin-top-10 margin-bottom-10'>
+            {{tutor.name.split(" ")[0]}} would like: 
+            <span class='green-text'> ${{(notif.request_tutor_amount_hourly)}}/hr </span>
+            
+        </div>
+    </div>
+    {% if notif.custom !=  'student-accept-request' %}
+    <div class='row-fluid font-20 margin-top-40 margin-bottom-20 center'>
+        <a {% if not user.customer_id %} data-toggle='modal' href='#' data-target='#credit-modal' {% else %} class='student-request-accept-btn' href="javascript:void(0);" {% endif %} id="{{notif.a_id_name}}-next-link">
+            <span class='blue-btn' style='padding:8px 60px'> Choose This Guru </span>
+        </a>
+    </div>
+    {% endif %}
+    {% if notif.custom ==  'student-accept-request' %}
+    <div class='row-fluid margin-top-20 block' style='background-color:#E0EEE0'>
+        <label class='font-20 green-text'> Next Steps </label>
+        <div id='guru-intro' class='block font-14'>
+            <p> 1. Message your Guru to confirm meeting time and location. </p>
+            <p> 2. Forget about cash, we will handle your payments, for FREE. </p>
+            <p> 3. Come back to give your Guru a nice review, or report any problems. </p>
+        </div>
+        <br>
+    </div>
+
+    <div class='row-fluid font-20 margin-top-40 margin-bottom-20 center'>
+        <a href="/messages/" >
+            <span class='blue-btn' style='padding:8px 60px'> Message Your Guru </span>
+        </a>
+    </div>
+
+    {% endif %}
+
+</div>
+{%- endmacro %}

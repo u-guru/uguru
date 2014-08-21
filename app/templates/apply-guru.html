@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id='tutor-application-form'>
+        <div class='guru-app-container container-fluid'>
+            <div class='row'>
+                <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4'>
+                    <h1 class='reg-text center bold extra-margin-bottom'>
+                        Guru Application
+                    </h1>
+                    <div class='request-form-container'>
+                        
+                        <div id='tutor-app-alert' class='row-fluid red-text center normal-text no-padding'>
+                            Please fill in all fields
+                        </div>
+                        <div class='tutor-app-photo-container margin-top-30 margin-bottom-15'>
+                            <img id='tutor-app-photo' src='/static/img/default-photo.jpg' height='80px'> 
+                            <a id='upload-photo-link' href='javascript:void(0);'>
+                                <span class='photo-upload-btn blue-btn'> Upload </span>
+                            </a>
+                        </div>
+                        <input id="upload-photo" type="file"/>
+
+                        <label for='request-class'>School Email</label>
+                        <input type='text' id='tutor-app-school-email' placeholder='@berkeley.edu'class='form-control standard-input'>
+                        
+                        <label for='request-class'>School Year</label>
+                        <div class="dropdown">
+                          <button class="btn btn-default dropdown-toggle" type="button" id="tutor-app-year" data-toggle="dropdown">
+                            &nbsp;
+                            <span class="caret"></span>
+                          </button>
+                          <ul id='tutor-app-dropdown' class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Freshman</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sophomore</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Junior</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Senior</a></li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Grad Student</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ph.D Student</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Alumni</a></li>
+                          </ul>
+                        </div>
+
+                        <label for='request-class'>Your Major(s) </label>
+                        <input type='text' id='tutor-app-major' class='form-control standard-input'>
+
+                        <label for='request-class'>Courses You Want To Tutor </label>
+                        <div class='guru-form-course-container row-fluid'>
+                            <input type='text' placeholder='Bio 1A' id='courses-tutor-input' class='typeahead form-control standard-input margin-top-15'>
+                            &nbsp;&nbsp;
+                            <a href='javascript:void(0);' id='tutor-app-add-course-btn'>
+                                <span class='glyphicon glyphicon-plus green-text' id='add-course-btn-span'></span>
+                            </a>
+                        </div>
+                        <div class='courses-add-container row-fluid'>
+                        </div>
+
+
+                        <label> Select Relevant Experience </label>
+                        <div class='row-fluid margin-top-10' >
+                            <input id='tutor-slc-check' type='checkbox' class='uguru-checkbox' 
+                            ></input>
+                            <span class='reg-text'>
+                                SLC Tutor
+                            </span>
+                        </div>
+                        <div class='row-fluid margin-top-10' >
+                            <input id='tutor-res-check' type='checkbox' class='uguru-checkbox'></input>
+                            <span class='reg-text'>
+                                Residential Hall Tutor
+                            </span>
+                        </div>
+                        <div class='row-fluid margin-top-10'>
+                            <input id='tutor-gsi-check' type='checkbox' class='uguru-checkbox'></input>
+                            <span class='reg-text'>
+                                GSI
+                            </span>
+                        </div>
+                        <div class='row-fluid margin-top-10'>
+                            <input id='tutor-la-check' type='checkbox' class='uguru-checkbox'></input>
+                            <span class='reg-text'>
+                                Lab Assistant
+                            </span>
+                        </div>
+                        <div class='row-fluid margin-top-10'>
+                            <input id='tutor-cal-check' type='checkbox' class='uguru-checkbox'></input>
+                            <span class='reg-text'>
+                                I've tutored at Cal
+                            </span>
+                        </div>
+                        <label for='request-class'>Your Bio / Relevant Experience </label>
+                        <textarea id='tutor-app-experience' class='form-control standard-textarea guru-app-textarea'> </textarea>
+                        <div class='row-fluid margin-top-20'>
+                            <a href='javascript:void(0);' id='tutor-app-submit'>
+                                <span class='blue-btn blue-btn-full' style='width:100%'>
+                                    Submit
+                                </span>
+                            </a>
+                        </div> 
+                    </div>
+                </div>
+                <div class='request-form-extra-detail col-sm-3 col-md-4'>
+                    <!-- <div class='extra-detail-container' style='margin-top:220px'>
+                        <div class='extra-detail-form reg-text'>
+                            We will pin these tutors with your request, and let you know when they get back to you.
+                        </div>
+                        <div class='extra-detail-form reg-text margin-top-40'>
+                            We will pin these tutors with your request, and let you know when they get back to you.
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}

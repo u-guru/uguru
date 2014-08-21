@@ -10,19 +10,19 @@ function locationHashChanged() {
     }
 }
 
-var update_feed = function() {
-  var read_notifs = $('.grey-background').length
-      $.ajax({
-            type: "POST",
-            contentType: 'application/json;charset=UTF-8',
-            url: '/notif-update/' ,
-            data: JSON.stringify({'update-total-unread':read_notifs}),
-            dataType: "json",
-      }); 
-  if (read_notifs == 0) {
-    $('#feed-notif').hide()
-  } 
-}
+// var update_feed = function() {
+//   var read_notifs = $('.grey-background').length
+//       $.ajax({
+//             type: "POST",
+//             contentType: 'application/json;charset=UTF-8',
+//             url: '/notif-update/' ,
+//             data: JSON.stringify({'update-total-unread':read_notifs}),
+//             dataType: "json",
+//       }); 
+//   if (read_notifs == 0) {
+//     $('#feed-notif').hide()
+//   } 
+// }
 
 var event_click = function(event_type, extra_params) {
     data = {};
@@ -41,7 +41,7 @@ var event_click = function(event_type, extra_params) {
 
 $(document).ready(function() {
       $body = $("body");
-      update_feed();
+      // update_feed();
       
       $(document).on({
           ajaxStart: function() { $body.addClass("loading");    },
@@ -101,8 +101,7 @@ $(document).ready(function() {
       if (!student_original_price) {
           student_original_price = $('#student-offer-hourly-price-' + feed_message_index).text();
         }
-        $('#request-student-offer-index-' + feed_message_index).text('The student will pay:')
-        $('#student-has-agreed-' + feed_message_index).hide();
+        $(this).siblings('a.tutor-change-price-cancel').show();
         $('#tutor-change-price-slider-' + feed_message_index).slider({'value':student_original_price});
         $('#tutor-change-price-link-' + feed_message_index).hide();
         $('#tutor-change-price-slider-div-' + feed_message_index).show();
@@ -111,6 +110,8 @@ $(document).ready(function() {
     $('#feed-messages').on('click', '.tutor-change-price-cancel', function() {
       feed_message_index = last_clicked_notif_index + 1
       $('#tutor-change-price-slider-div-' + feed_message_index).hide();
+      $(this).siblings('a.tutor-change-price-link').show();
+      $(this).hide();
       $('#student-has-agreed-' + feed_message_index).show();
       $('#request-student-offer-index-' + feed_message_index).text('The student is offering:')
       $('#tutor-change-price-link-' + feed_message_index).show();
@@ -256,6 +257,13 @@ $(document).ready(function() {
         window.location.hash = '';
         $('#activity').show();
     });
+
+   $('#feed-messages').on('click', 'a.feed-message-back-link', function() {
+    $(this).parent().parent().parent().parent().parent().parent().hide();
+    window.location.hash = '';
+    $('#activity').show();
+   });
+
    $('#feed-messages').on('click', 'a#accept-payment', function() {
         payment_id = $(this).parent().attr('class').split('-').reverse()[0]
         var data = {
@@ -324,12 +332,12 @@ $(document).ready(function() {
    });
 
    $('#feed-messages').on('click', 'a.tutor-request-accept-btn', function() {
-            extra_detail = $(this).parent().parent().parent().siblings('.modal-body').children('.extra-detail').children().children('textarea').val();
-            if ((!extra_detail || is_tutor_response_sanitized(extra_detail)) && $('td.time-slot.td-selected').length > 0) {
-                $(this).parent().parent().parent().siblings('.modal-body').children('.extra-detail-alert').hide();
+            extra_detail = $(this).parent().siblings('textarea').val();
+            if ((extra_detail.length > 0 && is_tutor_response_sanitized(extra_detail)) && $('td.time-slot.td-selected').length > 0) {
+                $(this).siblings('div.extra-detail-alert').hide();
                 $(this).click(false);
                 //Hide the modal
-                $(this).parent().parent().parent().parent().parent().hide();
+                // $(this).parent().parent().parent().parent().parent().hide();
                 var feed_message_index = last_clicked_notif_index + 1
                 var tutor_changed_price = false
                 hourly_amount = $('#student-offer-hourly-price-' + (feed_message_index)).text();
@@ -356,12 +364,13 @@ $(document).ready(function() {
                     }
                 }); 
             } else {
-              alert_div = $(this).parent().parent().parent().siblings('.modal-body').children('.extra-detail-alert'); 
+              alert_div = $(this).siblings('div.extra-detail-alert');
               if ($('td.time-slot.td-selected').length == 0) {
                 alert_div.text('Please fill out your times in the calendar')
-                
-              } else {
+              } else if (!is_tutor_response_sanitized(extra_detail)) {
                 alert_div.html('Please do not include personal contact information in your response. <br> You can exchange this after the student has selected you.');
+              } else if (extra_detail.length == 0) {
+                alert_div.text('Please fill out all fields.')
               }
               alert_div.show();
             }
@@ -380,16 +389,13 @@ $(document).ready(function() {
 
     $('#feed-messages').on('click', 'a.student-request-accept-btn', function() {
         $(this).click(false);
-        request_num = parseInt($(this).parent().parent().parent().attr('id').split('-')[2].replace('offer',''));
-    
         var data = {
-            'student-accept': request_num, 
             'notification-id': last_clicked_notif_index,
         };
         $.ajax({
-            type: "POST",
+            type: "PUT",
             contentType: 'application/json;charset=UTF-8',
-            url: '/update-request/' ,
+            url: '/api/student_accept' ,
             data: JSON.stringify(data),
             dataType: "json",
             success: function(result) {         
@@ -414,45 +420,25 @@ $(document).ready(function() {
     });
     
     $('#submit-payment').click(function() {        
-        if (!$('#secret-code').val()) {
-          $('#secret-animal-code-alert').text('Please enter a code');
-          $('#secret-animal-code-alert').show();
-          return false;
-        }
-        $('#secret-animal-code-alert').hide();
         conversation_id = parseInt($('#select-person-to-pay #selected-person-to-pay').attr('class').split('-').reverse()[0])
         total_time = $('#time-estimate-slider-payment').slider('value');
         var data = {
             'submit-payment': conversation_id,
             'total-time': total_time,
-            'secret-code': $('#secret-code').val()
-        }
-        if ($('#change-hourly-price:visible').length > 0) {
-          data['price-change'] = $('#hourly-price-slider-payment').slider('value');
+            'price': $('#hourly-price-slider-payment').slider('value')
         }
         $('#submit-payment').click(false);
         $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
-            url: '/submit-payment/',
+            url: '/api/bill-student',
             data: JSON.stringify(data),
             dataType: "json",
             success: function(result) {         
-                if (!result.return_json['secret-code']) {
-                  $('#secret-animal-code-alert').text('Incorrect Access Code');
-                  $('#secret-animal-code-alert').show();
-                } else {
-                  var student_to_rate = result.return_json['student-name']
-                  var student_profile_url = result.return_json['student-profile-url']
-                  $('#student-profile-photo').attr('src', student_profile_url);
-                  $('#student-name').text(student_to_rate.toUpperCase());
-                  $('#student-name-again').text(student_to_rate);
-                  $('#request-payments').hide();
-                  $('#rating-form-tutor').show();
-                }
+                window.location.replace('/activity/')
             }
         }); 
-    })
+    });
 
     $('#payment-hours-dropdown').on('click', '.dropdown-menu li a', function() {
           var selected_text = $(this).text();

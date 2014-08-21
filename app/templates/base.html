@@ -80,6 +80,12 @@
                         {% endif %}
                     </a>
                 </li>
+                {% if address_book and user.approved_by_admin %}
+                  <li><a id='become-guru-nav' href="javascript:void(0)">
+                        <img id='request-payment-link' src='/static/img/dollar-sign.png' height='30px'>
+                    </a>
+                  </li>
+                {% endif %}
                 <li>
                   <a id='settings-nav' href="#" data-toggle ='dropdown' >
                         <img src='{{user.profile_url}}' class='navbar-photo'>
@@ -87,7 +93,16 @@
                   <ul class="dropdown-menu settings-dropdown center" role="menu" aria-labelledby="dropdownMenu1">
                       <li role="presentation"><a role="menuitem" tabindex="-1" id='account-settings-link' href="/settings/#main">Settings</a></li>
                       <li role="presentation"><a role="menuitem" tabindex="-1" id='account-profile-link' href="/settings/#prof">Profile</a></li>
-                      <!-- <li role="presentation"><a role="menuitem" tabindex="-1" id='account-billing-link' href="#">Billing</a></li> -->
+                      <li role="presentation"><a role="menuitem" tabindex="-1" id='account-referral-link' href="/settings/#referral">Referrals </a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" id='account-billing-link' href="/settings/#billing">Billing</a></li>
+                      {% if not user.skills and not user.approved_by_admin %}
+                      <li role="presentation" class="divider"></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="/apply-guru/">
+                            <div style='display:inline-block; margin-left:-8px'> Become a Guru </div>
+                          </a>
+                      </li>
+                      {% endif %}
                       <li role="presentation" class="divider"></li>
                       <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Support</a></li> -->
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="/logout/">Logout</a></li>
@@ -119,6 +134,7 @@
     <script src='/static/js/snippets/calendar.js'></script>
     <script>window.jQuery || document.write('<script src="/static/js/jquery-1.10.2.js"><\/script>')</script>
     <script>window.jQuery || document.write('<script src="/static/js/bootstrap.min.js"><\/script>')</script>
+    
     <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <script type="text/javascript" src="/static/js/typeahead.js"></script>
     <script src="/static/js/app.js"></script>

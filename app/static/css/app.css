@@ -160,6 +160,56 @@ h1, h3 {
   font-style:italic;
 }
 
+.notification {
+  display: inline-block;
+  margin-bottom: 0;
+  width: 100%;
+  padding: 12px 20px 4px 6px;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  background-color: #ffffff;
+  text-align: left;
+  white-space: wrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border-bottom: 1px solid grey;
+  position:relative;
+}
+
+a .notification:hover {
+  text-decoration:none !important;
+}
+
+.notification-time {
+  position:absolute;
+  top:17px;
+  right:10px;
+}
+
+.notification-title {
+  position:absolute;
+  top:15px;
+  left:80px;
+}
+
+.notification-subtitle {
+  position:absolute;
+  bottom:15px;
+  left:80px;
+}
+
+.notification-expire {
+  position:absolute;
+  bottom:10px;
+  right:10px;
+}
+
+.notification h5 {
+  color:#484748;
+}
+
 .login-input-container {
   margin:10px 60px;
   text-align:left;
@@ -193,6 +243,16 @@ h1, h3 {
 input {
   border:1px solid black;
   border-radius:1px;
+}
+
+.user-photo {
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:10px;
+  padding-bottom:10px;
+  width:70px;
+  height:70px;
+  border-radius:16px;
 }
 
 #request-form .navbar-default .navbar-nav > li > a {
@@ -268,7 +328,7 @@ input {
   outline:none;
 }
 
-.settings-container {
+.settings-container, .profile-container {
   padding:40px;
   color:#484747;
 }
@@ -376,6 +436,10 @@ input {
   height:120px!important;
 }
 
+.guru-request-reply-textarea {
+  height:80px !important;
+}
+
 .extra-detail-tutor-pic {
   border-radius:4px;
   margin-right:5px;
@@ -387,14 +451,29 @@ input {
   position:relative;
 }
 
+.request-details-attribute-container {
+  position:relative;
+  height:180px;
+}
+
 .tutor-app-photo-container img {
   border-radius:8px;
+}
+
+#request-details-photo {
+  border-radius:16px;
 }
 
 .photo-upload-btn {
   position:absolute;
   left:90px;
   top:43px;
+}
+
+.guru-profile-attributes {
+  position:absolute;
+  left:140px;
+  top:0px;
 }
 
 #courses-tutor-input {
@@ -440,6 +519,12 @@ input {
 #upload-photo {
   display:none;
 }
+
+.underline {
+  text-decoration: underline;
+}
+
+
 
 .message-sender-name {
   left:25px;
@@ -523,6 +608,10 @@ textarea {
   resize:none;
 }
 
+#credit-modal .modal-dialog {
+  margin-top:25%;
+}
+
 .navbar-right-main li {
   padding:0px 10px;
 }
@@ -547,7 +636,7 @@ textarea {
   display:none;
 }
 
-.request-form-container, .guru-app-form-container {
+.request-form-container, .guru-app-form-container, .notification-container {
   padding:0px 25px;
 }
 
@@ -581,6 +670,10 @@ textarea {
 
 .black-text {
   color:black;
+}
+
+.white-text {
+  color:white;
 }
 
 #profile-dropdown-selected {
@@ -635,12 +728,24 @@ textarea {
   margin-top:40px;
 }
 
+.margin-top-60 {
+  margin-top:60px;
+}
+
+.margin-bottom-10 {
+  margin-bottom:15px;
+}
+
 .margin-bottom-15 {
   margin-bottom:15px;
 }
 
 .margin-bottom-20 {
   margin-bottom:20px;
+}
+
+.margin-bottom-30 {
+  margin-bottom:30px;
 }
 
 .width-100 {
@@ -651,8 +756,16 @@ textarea {
   font-size:30px !important;
 }
 
+.font-32 {
+  font-size:32px;
+}
+
 .font-24 {
   font-size:24px;
+}
+
+.font-20 {
+  font-size:20px;
 }
 
 .font-18 {
@@ -689,22 +802,71 @@ textarea {
   text-align:left;
 }
 
+.padding-horizontal-20 {
+  padding-left:20px;
+  padding-right:20px;
+}
+
 .inline {
   display:inline-block;
+}
+
+.block {
+  display:block;
 }
 
 .align-left {
   text-align:left;
 }
 
-#exp-date-month {
-  width:20%;
+.powered-by-stripe-settings {
+  right:0;
+  top:7px;
+}
+
+#credit-modal .powered-by-stripe-settings {
+  top:30px;  
+  right:55px;
+}
+
+#submit-credit-card-modal span{
+  width:93%;
+  margin: 0 auto;
+}
+
+.relative {
+  position:relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.float-right {
+  float:right;
+}
+
+.float-left {
+  float:left;
+}
+
+
+.align-left {
+  text-align:left;
+}
+.exp-date-month {
+  width:35%;
+  padding:8px 12px;
+}
+
+#credit-modal .exp-date-month {
+  width:50%;
 }
 
 #exp-date-year {
   margin-left:10px;
   margin-right:35px;
-  width:30%%;
+  width:30%;
 }
 
 /*Home page css */
@@ -736,11 +898,15 @@ textarea {
   width:100%;
 }
 
+.width-30 {
+  min-width:50px !important;
+}
+
 .calendar-modal {
      display:none;
      position: absolute;
      left: 0px;
-     top: 20%;
+     /*top: 20%;*/
      width:100%;
      height:100%;
      text-align:center;
@@ -776,11 +942,23 @@ td.time-slot:hover {
 
 .td-selected {
     background-color:green !important;
+    border:1px green solid;
 } 
+
+.td-selected.half-table-bordered {
+  border-left: 1px solid green;
+  border-right: 1px solid green;
+}
 
 .td-preselected {
     background-color:#dff0d8!important;
+    border:1px #dff0d8 solid;
 } 
+
+.td-preselected.half-table-bordered  {
+  border-left: 1px solid #dff0d8;
+  border-right: 1px solid #dff0d8;
+}
 
 td.time-slot {
     -webkit-touch-callout: none;
@@ -794,6 +972,11 @@ td.time-slot {
 #calendar-btns {
     float:right;
     padding-right:15px;
+}
+
+.padding-30 {
+  padding-right:30px;
+  padding-left:30px;
 }
 
 .saved-text {
@@ -979,6 +1162,38 @@ a:hover {
     color: #ddd;
     font-size: 2em;
     position: relative;
+}
+
+.half-table-bordered {
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-top:0px !important;
+}
+
+.no-bottom-border {
+  border-bottom:0px !important;
+}
+
+input#credit-card-num, input#debit-card-num-settings, input#credit-card-num-modal {
+  background: url('/static/img/card.png') no-repeat;
+  background-size: 32px 24px;
+  background-position:95% ;
+}
+
+input#credit-card-num.visa, input#debit-card-num-settings.visa, input#credit-card-num-modal.visa {
+  background-image: url('/static/img/visa.png');
+}
+
+input#credit-card-num.mastercard, input#debit-card-num-settings.mastercard, input#credit-card-num-modal.mastercard {
+  background-image: url('/static/img/mastercard.png');
+}
+ 
+input#credit-card-num.discover, input#debit-card-num-settings.discover, input#credit-card-num-modal.discover {
+  background-image: url('/static/img/discover.png');
+}
+ 
+input#credit-card-num.amex, input#debit-card-num-settings.amex, input#credit-card-num-modal.amex {
+  background-image: url('/static/img/amex.png');
 }
 .star-icon.full:before {
     text-shadow: 0 0 2px rgba(0,0,0,0.7);
@@ -1401,7 +1616,12 @@ a:hover {
     background: url('/static/img/background-1600.jpg') no-repeat;
     background-size:cover;
     height:550px;
-  }    
+  }
+  #how-it-works-banner {
+    background: url('/static/img/background-1600-2.jpg') no-repeat;
+    background-size:cover;
+    height:350px; 
+  }
   .testimonial-section {
     padding:25px 40px;
   }
@@ -1420,4 +1640,6 @@ a:hover {
     left:180px;
   }
 }
+
+
 

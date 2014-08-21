@@ -29,8 +29,8 @@ def getting_started_student_tip(user):
     return notification
 
 def getting_started_tutor(user):
-    getting_started_msg = "You signed up" + \
-        " as a Guru" 
+    getting_started_msg = "You applied to become" + \
+        " a Guru" 
     notification = Notification(other='getting_started')
     if not user.approved_by_admin:
         notification.feed_message_subtitle = "Application status: <strong><span style='color:red'>pending</span></strong>."

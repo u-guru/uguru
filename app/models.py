@@ -16,6 +16,12 @@ user_skill_table = Table('user-skill_assoc',
     Column('skill_id', Integer, ForeignKey('skill.id'))
 )
 
+user_text_table = Table('user-text_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('text_id', Integer, ForeignKey('text.id'))
+    )
+
 user_promo_table = Table('user-promo_assoc',
     Base.metadata,
     Column('user_id', Integer, ForeignKey('user.id')),
@@ -156,6 +162,7 @@ class User(Base):
     verified_tutor = Column(Boolean)
     balance = Column(Float, default = 0.0)
     credit = Column(Float, default = 0.0)
+    pending = Column(Float, default = 0.0)
     total_earned = Column(Float, default = 0.0)
     discoverability = Column(Boolean, default = True)
     major = Column(String)
@@ -178,7 +185,10 @@ class User(Base):
     #Stripe Fields
     customer_id = Column(String)
     customer_last4 = Column(String(4))
+    customer_card_type = Column(String(4))
     recipient_id = Column(String)
+    recipient_last4 = Column(String(4))
+    recipient_card_type = Column(String(4))
     
     outgoing_requests = relationship('Request', 
         secondary = student_request_table,
@@ -215,6 +225,9 @@ class User(Base):
         secondary = user_email_table)
     promos = relationship("Promo",
         secondary = user_promo_table)
+
+    texts = relationship("Text",
+        secondary = user_text_table)
 
 
     def __init__(self, name, email, password, phone_number, is_a_tutor = None):
@@ -468,29 +481,29 @@ class Payment(Base):
     stripe_charge_id = Column(String)
     stripe_recipient_id = Column(String)
 
-    def __init__(self, request):
-        self.student_id = request.student_id
-        self.skill_id = request.skill_id
-        self.tutor_id = request.connected_tutor_id
-        self.time_amount = request.actual_time
-        self.tutor_rate = request.actual_hourly
-        self.time_created = datetime.now()
+    student_description = Column(String)
+    tutor_description = Column(String)
+    tutor_confirmed = Column(Boolean)
+    student_confirmed = Column(Boolean)
+    confirmed_time_amount = Column(Float)
+    confirmed_tutor_rate = Column(Float)
+    confirmed_payment_id = Column(Integer)
+    flag = Column(Boolean)
+    refunded = Column(Boolean)
+    status = Column(String)
 
-    def __repr__(self):
-        student_name = User.query.get(self.student_id).name
-        skill_name = Skill.query.get(self.skill_id).name
-        tutor_name = User.query.get(self.tutor_id).name
-        
-        # if self.connected_tutor_id: 
-        #     tutor_name = User.query.filter_by(id=self.connected_tutor_id)\
-        #     .first().name
-        # else:
-        #     tutor_name = "Inactive"
-        
-        return "PAYMENT: %s <Student: %s, Tutor: %s, Skill: %s,\
-        \n Time Created: %s, Time Estimated: %s hours>" %\
-        (str(self.id), student_name, tutor_name, skill_name, \
-            self.time_created.strftime('%b %d,%Y'), self.time_amount)
+
+    def __init__(self, request_id = None):
+        if request_id:
+            request = Request.query.get(request_id)
+            self.student_id = request.student_id
+            self.skill_id = request.skill_id
+            self.tutor_id = request.connected_tutor_id
+            self.time_amount = request.actual_time
+            self.tutor_rate = request.actual_hourly
+            self.time_created = datetime.now()
+
+
 
 
 class Request(Base):
@@ -607,6 +620,21 @@ class Promo(Base):
     sender_id = Column(Integer)
     receiver_id = Column(Integer)
 
+class Text(Base):
+    __tablename__ = 'text'
+    id = Column(Integer, primary_key = True)
+    sid = Column(String)
+    to_phone = Column(String)
+    from_phone = Column(String)
+    body = Column(Unicode(1600))
+    status = Column(String)
+    date_created = Column(DateTime)
+    date_sent = Column(DateTime)
+    date_updated = Column(DateTime)
+    flags = Column(String)
+    price = Column(String)
+    uri = Column(String)
+    account_sid = Column(String)
 
 
 class Week(Base):

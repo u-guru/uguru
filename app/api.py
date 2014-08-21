@@ -30,6 +30,7 @@ TUTOR_ACCEPT_EXP_TIME_IN_SECONDS = 86400
 def api(arg, _id):
     return_json = {}
     ajax_json = request.json
+    print ajax_json
 
     if arg == 'forgot_password' and request.method == 'POST':
         email = request.json.get("email").lower()
@@ -150,7 +151,24 @@ def api(arg, _id):
             skill = Skill.query.get(skill_to_add_id)
             db_session.add(skill)
             user.skills.append(skill)
-        
+
+        tutor_notification_flag = False
+        for n in user.notifications:
+            print n.id, n.feed_message
+            if 'applied' in n.feed_message:
+                print "FOUND"
+                tutor_notification_flag = True
+                break
+
+
+        if not tutor_notification_flag:
+            from notifications import getting_started_tutor
+            notification = getting_started_tutor(u)
+            from emails import welcome_uguru_tutor
+            welcome_uguru_tutor(u)
+            user.notifications.append(notification)
+            db_session.add(notification)
+
         try:
             db_session.commit()
         except:
@@ -198,7 +216,7 @@ def api(arg, _id):
                     n_dict['role'] = 'guru'
                 else:
                     n_dict['role'] = 'student'
-
+                
 
                 if n.custom and n.custom == 'tutor-accept-request':
                     n_dict['type'] = n.custom
@@ -262,6 +280,48 @@ def api(arg, _id):
                 db_session.rollback()
                 raise 
             response = {'notification': n.__dict__}
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(["Invalid Token"])
+
+    if arg == 'cash_out' and _id == None and request.method == 'POST':
+        user = getUser()
+        if user:
+            transfer = stripe.Transfer.create(
+                amount=int(user.balance * 100), # amount in cents, again
+                currency="usd",
+                recipient=user.recipient_id
+            )
+
+            p = Payment()
+            
+
+            p.time_created = datetime.now()
+            p.stripe_recipient_id = transfer['id']
+            p.tutor_received_amount = user.balance
+            p.tutor_description = 'You cashed out $' + str(user.balance) + ' to your account'
+
+            user.payments.append(p)
+
+            db_session.add(p)
+
+            from notifications import tutor_cashed_out
+            notification = tutor_cashed_out(user, user.balance)
+            db_session.add(notification)
+
+            notification.status = 'Pending'
+            notification.skill_name = 'Pending'
+
+            user.notifications.append(notification)
+
+            user.balance = 0
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+
+            response = {'success': True}
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
 
@@ -330,6 +390,7 @@ def api(arg, _id):
                         'messages': messages_arr }
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(['Invalid Token'])
+
 
     if arg =='send_message' and _id == None and request.method == 'POST':
         user = getUser()
@@ -411,38 +472,208 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(['Invalid Token'])
 
+    if arg =='payments' and request.method == 'POST':
+        user = getUser()
+        billing_contacts_arr = []
+        if user:
+            p = Payment.query.get(int(request.json.get('payment_id')))
+            total_amount = p.time_amount * p.tutor_rate
+            print user.id, p.tutor_id, p.tutor_confirmed
+
+            #tutor is confirming
+            if p.tutor_confirmed == False and user.id == p.tutor_id:
+                p.tutor_confirmed = True
+                if p.time_amount != float(request.json.get('time_amount')):
+                    time_difference = float(request.json.get('time_amount')) - p.time_amount 
+                    new_payment = Payment(Request.query.get(p.request_id))
+                    new_payment.student_paid_amount = time_difference * p.tutor_rate
+                    total_amount = total_amount + new_payment.student_paid_amount
+                    new_payment.tutor_rate = p.tutor_rate
+                    new_payment.confirmed_payment_id = p.id #to keep track they are linked
+                    new_payment.time_created = datetime.now()
+                    new_payment.time_amount = request.json.get('time_amount')
+                    p.confirmed_time_amount = request.json.get('time_amount')
+                    
+
+                    tutor = user
+                    student = User.query.get(p.student_id)
+                    print student
+                    if time_difference > 0:
+                        new_payment.student_description = 'Extra charge from your session with ' + tutor.name.split(" ")[0].title()
+                        new_payment.tutor_description = 'Extra earnings from your session with ' + student.name.split(" ")[0].title()
+                    else:
+                        new_payment.student_description = 'A partial refund from your session with ' + tutor.name.split(" ")[0].title()
+                        new_payment.tutor_description = 'Substracted earnings from your session with ' + student.name.split(" ")[0].title()
+                        new_payment.refunded = True
+
+                    new_payment.student_confirmed = False
+                    student.payments.append(new_payment)
+                    tutor.payments.append(new_payment)
+                    db_session.add(new_payment)
+                
+                else:
+                    p.confirmed_time_amount = p.time_amount
+                    total_amount = p.student_paid_amount
+                    user.pending = user.pending - p.tutor_received_amount
+                    user.balance = user.balance + p.tutor_received_amount
+                    from notifications import student_payment_approval
+                    student = User.query.get(p.student_id)
+
+                    from app.static.data.short_variations import short_variations_dict
+                    skill_name = short_variations_dict[Skill.query.get(p.skill_id).name]
+
+                    student_notification = student_payment_approval(user, student, p, total_amount, p.stripe_charge_id, skill_name, False)
+                    user.notifications.append(student_notification)
+                    db_session.add(student_notification)
+
+                rating = Rating(p.request_id)
+                user.pending_ratings.append(rating)
+                student = User.query.get(p.student_id)
+                student.pending_ratings.append(rating)
+                db_session.add(rating)
+
+                from notifications import tutor_receive_payment
+                student = User.query.get(p.student_id)
+
+                if p.time_amount != float(request.json.get('time_amount')):
+                    previous_student_tutor_payment = Payment.query.filter_by(student_id = student.id, tutor_id = tutor.id).first()
+                    if previous_student_tutor_payment:
+                        final_tutor_amount_difference = time_difference * p.tutor_rate
+                        final_tutor_amount = p.tutor_received_amount + time_difference * p.tutor_rate
+                    else:
+                        final_tutor_amount_difference = time_difference * p.tutor_rate * 0.75
+                        final_tutor_amount = p.tutor_received_amount + 0.75 * time_difference * p.tutor_rate
+                    new_payment.tutor_received_amount = final_tutor_amount
+                    tutor.pending = tutor.pending + final_tutor_amount_difference
+                else:
+                    final_tutor_amount = p.tutor_received_amount
+
+
+                tutor_notification = tutor_receive_payment(student, user, p, final_tutor_amount)
+                user.notifications.append(tutor_notification)
+                db_session.add(tutor_notification)
+
+                #generate the notification(s) --> student rating, tutor rating
+
+
+            #student is confirming
+            if p.student_confirmed == False and p.student_id == user.id:
+                p.student_confirmed = True
+                if not p.confirmed_payment_id:
+                    orig_p = p
+                else:
+                    orig_p = Payment.query.get(p.confirmed_payment_id)
+
+                if p.student_paid_amount > 0:
+                    stripe_amount_cents = int(p.student_paid_amount * 100)
+                    student = User.query.get(p.student_id)               
+                    print student
+                    try: 
+                        charge = stripe.Charge.create(
+                            amount = stripe_amount_cents,
+                            currency="usd",
+                            customer=student.customer_id,
+                            description="charge for receiving tutoring"
+                        )
+                        p.stripe_charge_id = charge['id']
+                        print p.stripe_charge_id
+                    except stripe.error.InvalidRequestError, e:
+                        if p.student_id == user.id:
+                            error_msg = "Sorry! The your card has been declined. Please update your payment info in your settings."
+                        else:
+                            error_msg = "Sorry! The student's card has been declined. Please kindly ask them to update their information" 
+                        return errors([error_msg])
+                else:
+                    stripe_amount_refund_cents = int(abs(p.student_paid_amount) * 100)
+                    charge = stripe.Charge.retrieve(orig_p.stripe_charge_id)
+                    p.stripe_charge_id = charge['id']
+                    re = charge.refund(
+                        amount=stripe_amount_refund_cents
+                        )
+
+                
+
+                from notifications import student_payment_approval
+                tutor = User.query.get(p.tutor_id)
+
+                tutor.pending = tutor.pending - p.tutor_received_amount
+                tutor.balance = tutor.balance + p.tutor_received_amount     
+
+                
+                if p.confirmed_payment_id:
+                    total_amount = orig_p.time_amount * orig_p.tutor_rate + p.student_paid_amount
+                else:
+                    #recurring billing case
+                    total_amount = p.student_paid_amount
+                print total_amount
+                
+                from app.static.data.short_variations import short_variations_dict
+                skill_name = short_variations_dict[Skill.query.get(p.skill_id).name]
+                
+                student_notification = student_payment_approval(user, tutor, p, total_amount, charge['id'], skill_name, False)
+                user.notifications.append(student_notification)
+                db_session.add(student_notification)
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+
+
+            response = {'success': True}
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(['Invalid Token'])
+
+
     if arg =='bill-student' and request.method == 'POST':
         user = getUser()
         pending_ratings_dict = {}
         if user:
-            request_id = request.json.get('request_id')
             print request.json
+            conversation_id = request.json.get('submit-payment')
+            total_time = request.json.get('total-time')
+            hourly_price = request.json.get('price')
+
+            conversation = Conversation.query.get(conversation_id)
+
+            for _request in conversation.requests:
+                if _request.connected_tutor_id == user.id:
+                    r = _request
+                    student_id = _request.student_id
+                    student = User.query.get(student_id)
+
+
+            request_id = r.id
+            
             r = Request.query.get(request_id)
-            r.actual_time = float(request.json.get('time_estimate'))
-            r.actual_hourly = request.json.get('hourly_amount')
-            total_amount = float(request.json.get('time_estimate')) * request.json.get('hourly_amount')
 
-            payment = Payment(r)
+            payment = Payment(r.id)
 
+            total_amount = hourly_price * total_time
             stripe_amount_cents = int(total_amount * 100)
             student = User.query.get(r.student_id)
+            tutor = user
+            print stripe_amount_cents
 
-            try: 
-                charge = stripe.Charge.create(
-                    amount = stripe_amount_cents,
-                    currency="usd",
-                    customer=student.customer_id,
-                    description="charge for receiving tutoring"
-                )
-            except stripe.error.InvalidRequestError, e:
-                return errors(["Sorry! The student's card has been declined. Please kindly ask them to update their information"])
+            payment = Payment(r.id)
+            payment.student_paid_amount = total_amount
+            payment.tutor_rate = hourly_price
+            payment.confirmed_payment_id = payment.id #to keep track they are linked
+            payment.time_created = datetime.now()
+            payment.time_amount = total_time
 
-            payment.stripe_charge_id = charge['id']
+            payment.student_description = 'Final charge from your session with ' + tutor.name.split(" ")[0].title()
+            payment.tutor_description = 'Earnings from your session with ' + student.name.split(" ")[0].title() + ' including 10% fee'
 
+            payment.student_confirmed = False
+            student.payments.append(payment)
+            tutor.payments.append(payment)
             db_session.add(payment)
 
-            user.payments.append(payment)
-            student.payments.append(payment)
+            final_tutor_amount = 0.9 * payment.tutor_rate * payment.time_amount
+            payment.tutor_received_amount = final_tutor_amount
+            tutor.pending = tutor.pending + payment.tutor_received_amount
 
             try:
                 db_session.commit()
@@ -450,70 +681,20 @@ def api(arg, _id):
                 db_session.rollback()
                 raise 
 
-            r.payment_id = payment.id
-            rating = Rating(r.id)            
-            user.pending_ratings.append(rating)
-            student.pending_ratings.append(rating)
-            db_session.add(rating)
-
-            user.balance = user.balance + total_amount
-            user.total_earned = user.total_earned + total_amount
-
-
-            if student.apn_token:
-                apn_message =user.name.split(" ")[0] + ' has billed you $' + str(total_amount) + '. Please verify and rate your experience.'
-                send_apn(apn_message, student.apn_token)
-
-            sched = Scheduler()
-            sched.start()
-            later_time = datetime.now() + timedelta(0, TUTOR_ACCEPT_EXP_TIME_IN_SECONDS)
-            apn_message = "Please rate your experience with " + user.name.split(" ")[0] + ". It will only take 2 seconds."
-
-            job = sched.add_date_job(send_delayed_notification, later_time, [apn_message, student.apn_token, r.id])
-
-            later_time = datetime.now() + timedelta(0, TUTOR_ACCEPT_EXP_TIME_IN_SECONDS)
-            apn_message = "Please rate your experience with " + student.name.split(" ")[0] + ". It will only take 2 seconds."
-            job = sched.add_date_job(send_delayed_notification, later_time, [apn_message, tutor.apn_token, r.id])
-
-            if student.promos:
-                print "got to student promos"
-                print student.promos
-                for p in student.promos:
-                    if p.receiver_id == student.id and p.tag == 'referral':
-                        rewarded_user = User.query.get(p.sender_id)
-                        rewarded_user.credit = rewarded_user.credit + 10
-                        p.future_time_used = datetime.now()
-
-
-            from app.static.data.short_variations import short_variations_dict
-            skill_name = short_variations_dict[Skill.query.get(r.skill_id).name]
-
-            from notifications import student_payment_approval, tutor_receive_payment
-            tutor_notification = tutor_receive_payment(student, user, payment, total_amount)
-            student_notification = student_payment_approval(student, user, payment, total_amount, charge['id'], skill_name, False)
+            from notifications import tutor_receive_payment
+            tutor_notification = tutor_receive_payment(student, user, payment, final_tutor_amount)
             user.notifications.append(tutor_notification)
-            student.notifications.append(student_notification)
-            db_session.add_all([tutor_notification, student_notification])
-            
+            db_session.add(tutor_notification)
+
             try:
                 db_session.commit()
             except:
                 db_session.rollback()
                 raise 
 
-
-            pending_ratings_dict = {
-                    'rating_server_id' : rating.id,
-                    'student_name' : student.name.split(" ")[0],
-                    'student_profile' : student.profile_url,
-                    'student_server_id': student.id, 
-                    'tutor_name' : user.name.split(" ")[0],
-                    'tutor_profile': user.profile_url,
-                    'tutor_server_id': user.id, 
-                }
-            response = {'bill_student': {'pending_ratings': pending_ratings_dict } }
-            print response
+            response = {'success': True}
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+
         return errors(['Invalid Token'])
 
 
@@ -657,12 +838,12 @@ def api(arg, _id):
     if arg == 'user' and request.method == 'PUT':
         user = getUser()
         if user:
-            print request.json
             user_response_dict = {}
             if request.json.get('apn_token'):
                 user.apn_token = request.json.get('apn_token')
             if request.json.get('stripe-card-token'):
                 create_stripe_customer(request.json.get('stripe-card-token'), user)
+                
             if request.json.get('stripe_recipient_token'):
                 try:
                     create_stripe_recipient(request.json.get('stripe_recipient_token'), user)
@@ -692,6 +873,7 @@ def api(arg, _id):
                 update_skill('remove',request.json.get('remove_skill'), user)
             if request.json.get('check_promo_code'):
                 result = check_promo_code(user, request.json.get('check_promo_code'))
+                print result
                 if result == "invalid":
                     return errors(['Invalid Promo Code! Try again.'])
                 elif result == "used":
@@ -955,10 +1137,14 @@ def api(arg, _id):
             except:
                 db_session.rollback()
                 raise 
-            notification_id = request.json.get('notif_id')
+
+            print ajax_json.get('notification-id')
+            notification_id = ajax_json.get('notification-id')
+            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
+            current_notification = user_notifications[notification_id]
 
             student = user
-            current_notification = Notification.query.get(notification_id)
+            # current_notification = Notification.query.get(notification_id)
             skill_name = current_notification.skill_name
 
             tutor_id = current_notification.request_tutor_id
@@ -977,39 +1163,61 @@ def api(arg, _id):
             #Update request
             request_id = current_notification.request_id
             r = Request.query.get(request_id)
-
-            #Cancelled payments for now
-            previous_request_payment = Payment.query.filter_by(request_id = r.id).first()
-            if not previous_request_payment:
-                p = Payment(r)
-                if r.id > 165 :
-                    p.student_paid_amount = 5
-                else:
-                    p.student_paid_amount = 10
-                db_session.add(p)
-            else:
-                p = previous_request_payment
             
             skill = Skill.query.get(r.skill_id)
             r.connected_tutor_id = tutor_id
-            from app.static.data.prices import prices_dict
-            r.connected_tutor_hourly = prices_dict[current_notification.request_tutor_amount_hourly]
+            r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
             r.time_connected = datetime.now()
-            r.student_secret_code = user.secret_code
 
-            if not previous_request_payment:
-                charge = stripe.Charge.create(
-                    amount = p.student_paid_amount * 100,
-                    currency="usd",
-                    customer=student.customer_id,
-                    description="one-time connection fee"
-                )
-                charge_id = charge["id"]
+            p = Payment(r)
+            db_session.add(p)
+
+            from views import find_earliest_meeting_time, convert_mutual_times_in_seconds, send_twilio_message_delayed
+            mutual_times_arr = find_earliest_meeting_time(r)
+            total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
+            if tutor.phone_number and tutor.text_notification:
+                from emails import its_a_match_guru, reminder_before_session
+                message = reminder_before_session(tutor, student, r.location, "Guru-ing")
+                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=total_seconds_delay)
+                message = its_a_match_guru(student, skill_name)
+                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
 
 
-            if not previous_request_payment:
-                from emails import student_payment_receipt
-                student_payment_receipt(student, tutor.name.split(" ")[0], p.student_paid_amount, p, charge_id, skill_name, False, True)
+
+            if student.phone_number and student.text_notification:
+                from emails import reminder_before_session
+                total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
+                message = reminder_before_session(student, tutor, r.location, "Studying")
+                send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=total_seconds_delay)
+
+
+            charge = stripe.Charge.create(
+                amount = int(r.connected_tutor_hourly * r.time_estimate * 100),
+                currency="usd",
+                customer=student.customer_id,
+                description="amount for tutoring"
+            )
+
+            p.tutor_rate = r.connected_tutor_hourly
+            p.student_paid_amount = r.connected_tutor_hourly * r.time_estimate
+
+            previous_student_tutor_payment = Payment.query.filter_by(student_id = student.id, tutor_id = tutor.id).first()
+            if previous_student_tutor_payment:
+                p.tutor_received_amount = r.connected_tutor_hourly * r.time_estimate
+            else:
+                p.tutor_received_amount = r.connected_tutor_hourly * r.time_estimate * 0.75
+            
+
+            p.time_created = datetime.now()
+            p.stripe_charge_id = charge['id']
+            p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title()
+            p.tutor_description = 'Your earnings from your session with ' + student.name.split(" ")[0].title()
+            p.time_amount = r.time_estimate
+            p.request_id = r.id
+            tutor.pending = tutor.pending + p.tutor_received_amount 
+
+            tutor.payments.append(p)
+            student.payments.append(p)
 
             if r in student.outgoing_requests:
                 student.outgoing_requests.remove(r)
@@ -1029,11 +1237,6 @@ def api(arg, _id):
             tutor_notification.custom = 'tutor-is-matched'
             tutor_notification.time_created = datetime.now()
             tutor.feed_notif += 1
-
-            if tutor.apn_token:
-                apn_message = student.name.split(" ")[0] + ' has chosen you! BIG MONEY TIME. Message '  + student.name.split(" ")[0] + ' now!'
-                send_apn(apn_message, tutor.apn_token)
-
             tutor_notification.time_read = None
             from emails import tutor_is_matched, student_is_matched
             tutor_is_matched(user, tutor, skill_name)
@@ -1075,6 +1278,10 @@ def api(arg, _id):
             except:
                 db_session.rollback()
                 raise 
+            from views import tutor_confirm_payment
+            # tutor_confirm_payment.apply_async(args=[p.id], countdown=100)
+            tutor_confirm_payment.apply_async(args=[p.id], countdown=total_seconds_delay)
+
             response = {'user': user.__dict__}
             return json.dumps(response, default=json_handler, indent=4)
         return errors(['Invalid Token'])
@@ -1282,6 +1489,23 @@ def api(arg, _id):
             skill = Skill.query.get(skill_to_add_id)
             db_session.add(skill)
             user.skills.append(skill)
+
+        tutor_notification_flag = False
+        for n in user.notifications:
+            print n.id, n.feed_message
+            if 'applied' in n.feed_message:
+                print "FOUND"
+                tutor_notification_flag = True
+                break
+
+
+        if not tutor_notification_flag:
+            from notifications import getting_started_tutor
+            notification = getting_started_tutor(user)
+            from emails import welcome_uguru_tutor
+            welcome_uguru_tutor(user)
+            user.notifications.append(notification)
+            db_session.add(notification)
         
         try:
             db_session.commit()
@@ -1296,12 +1520,17 @@ def api(arg, _id):
 
 # Returns the user looked up by the authentication token sent in the header
 def getUser():
-    auth_token = request.headers.get("X-UGURU-Token")
-    user = User.query.filter_by(auth_token=auth_token).first()
-    if user:
-        return user
+    if session.get('user_id'):
+        return User.query.get(session.get('user_id'))
     else:
         return None
+    # auth_token = request.headers.get("X-UGURU-Token")
+    # print auth_token
+    # user = User.query.filter_by(auth_token=auth_token).first()
+    # if user:
+    #     return user
+    # else:
+    #     return None
 
 #retunns a {"errors": []} resource of the resounse the last request failed
 def errors(errors=[]):
@@ -1383,6 +1612,8 @@ def create_stripe_recipient(token, user):
                     email=user.email,
                     card=token
                 )
+    user.recipient_last4 = recipient['cards']['data'][0]['last4']
+    print user.recipient_last4
     user.recipient_id = recipient.id
     try:
         db_session.commit()

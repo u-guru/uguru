@@ -106,12 +106,14 @@ function statusChangeCallback(response) {
       var data_dict = {
                 'student-signup': true,
                 'fb-signup': true,
-                'name': response.first_name,
+                'name': response.first_name + ' ' + response.last_name,
                 'email': response.email,
                 'password': '',
             }
 
-      if ($('#tutor-student-header').text() == 'GURU SIGNUP') {
+
+
+      if ($('#tutor-next-link:visible').length > 0) {
         data_dict['tutor-signup'] = true;
       } 
       
@@ -130,9 +132,7 @@ function statusChangeCallback(response) {
                 submit_request_form_to_server();
             }
             else if (result.dict['tutor-signup']) {
-              $('#signup-modal').modal('hide');
-              $('#main').hide();
-              $('#tutor-application-form').show();
+              window.location.replace('/apply-guru/');
             }
             else {
               $('#signup-modal').modal('hide');

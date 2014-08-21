@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block header %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <script src="/static/js/jquery.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div id='profile'>
+    <div class='profile-container'>
+        <div class='row'>
+            <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6'>
+                <div id='guru-header-text' class='extra-margin-bottom'>
+                    <h1 class='reg-text center extra-margin-bottom'>
+                        Guru {{user.name.split(" ")[0]}}
+                    </h1>
+                </div>
+                <div id='guru-content' class='margin-top-40 padding-horizontal-20 block'>
+                    <div class='request-form-container'>
+                        
+                        <div class='tutor-app-photo-container margin-top-30 margin-bottom-15 block'>
+                            <img id='tutor-app-photo' src='{{user.profile_url}}' height='100px'> 
+                            <div class='guru-profile-attributes'> 
+                                <div class='row'>
+                                    <span id='profile-name' class='font-20'>
+                                        {{user.name.split(" ")[0]}} 
+                                        <div class="profile-rating" style='display:inline-block'>
+                                            <span>☆</span>
+                                            <span>☆</span>
+                                            <span>☆</span>
+                                            <span>☆</span>
+                                            <span>☆</span>
+                                        </div>  
+                                        <span class='underline blue-text font-16' >
+                                            {{user.tutor_ratings|length}} ratings
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class='row font-14 margin-top-10 green-text'>
+                                    {{user.year}}
+                                    &nbsp;&nbsp;&nbsp;
+                                    | 
+                                    &nbsp;&nbsp;&nbsp;
+                                    {{user.major}}
+                                </div>
+                                <div class='row'>
+                                    {% if user.ta_tutor %}
+                                        <span class='tutor-profile-course-tag'>
+                                            TA or GSI
+                                        </span>
+                                    {% endif %}
+
+                                    {% if user.slc_tutor %}
+                                        <span class='tutor-profile-course-tag'>
+                                            SLC Tutor
+                                        </span>
+                                    {% endif %}
+
+                                    {% if user.hkn_tutor %}
+                                        <span class='tutor-profile-course-tag'>
+                                            HKN Tutor
+                                        </span>
+                                    {% endif %}
+
+                                    {% if user.la_tutor %}
+                                        <span class='tutor-profile-course-tag'>
+                                            Lab Assistant
+                                        </span>
+                                    {% endif %}
+
+                                    {% if user.res_tutor %}
+                                        <span class='tutor-profile-course-tag'>
+                                            Res Hall Tutor
+                                        </span>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row block margin-top-30' style='padding-left:16px'>
+                            <label class='font-20'> {{user.name.split(" ")[0]}}'s bio </label>
+                            <div id='guru-intro' class='block font-14'>
+                                {{user.tutor_introduction}}
+                            </div>
+                            <br>
+                            <label class='font-20'> Courses {{user.name.split(" ")[0]|title}} can teach </label>
+                            <br>
+                            {% for skill in user.skills %}
+                            <span class='tutor-profile-course-tag'>
+                              <span>{{variations[skill.name]}}</span>
+                            </span>
+                          {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer_scripts %}
+
+{% endblock %}

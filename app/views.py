@@ -4,7 +4,7 @@ from flask import render_template, jsonify, redirect, request, \
 session, flash, redirect, url_for
 from forms import SignupForm, RequestForm
 from models import User, Request, Skill, Course, Notification, Mailbox, \
-    Conversation, Message, Payment, Rating, Email, Week, Range
+    Conversation, Message, Payment, Rating, Email, Week, Range, Text
 from hashlib import md5
 from datetime import datetime, timedelta
 import emails, boto, stripe, os
@@ -77,9 +77,8 @@ def fib(n):
 
 
 @celery.task
-def send_twilio_message_delayed(phone, msg):
-    send_twilio_msg(phone,msg)
-
+def send_twilio_message_delayed(phone, msg, user_id):
+    send_twilio_msg(phone,msg, user_id)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -109,6 +108,26 @@ def index():
 @app.route('/new/')
 def new():
     return render_template('new.html')
+
+
+@app.route('/<arg>', methods=['GET', 'POST', 'PUT'])
+def profile(arg):
+    user = User.query.filter_by(user_referral_code=arg).first()
+    if user and user.approved_by_admin:
+        from app.static.data.short_variations import short_variations_dict
+        return render_template('profile.html', user=user, variations=short_variations_dict)
+    else:
+        return redirect(url_for('index'))
+
+@app.route('/apply-guru/', methods=['GET', 'POST', 'PUT'])
+def apply_guru():
+    if session.get('user_id'):
+        user = User.query.get(session.get('user_id'))
+        return render_template('apply-guru.html', user=user)
+    else:
+        return redirect(url_for('index'))
+
+
 
 @app.route('/sneak/', methods=['GET', 'POST'])
 def sneak():
@@ -248,6 +267,8 @@ def update_profile():
                 user.hkn_tutor = ajax_json.get('hkn')
             if 'discover' in ajax_json:
                 user.discoverability = ajax_json.get('discover')
+            if 'phone' in ajax_json:
+                user.phone_number = ajax_json.get('phone')
             try:
                 db_session.commit()
             except:
@@ -503,7 +524,7 @@ def admin():
         return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
             skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, \
             all_requests = all_requests, skills_counter = skills_counter, notifications=notifications,\
-            payments=payments, total_profit=total_profit, environment = get_environment(), ratings=Rating.query.all(),\
+            payments=payments, total_profit=total_profit, environment = get_environment(), texts = Text.query.all(), ratings=Rating.query.all(),\
             ratings_dict=ratings_dict, transactions=transactions, conversations=conversations, users_last_active=users_last_active,\
             total_revenue = total_revenue, payment_analytics=payment_analytics, unverified_tutor_count=unverified_tutor_count, unfinished_accounts=unfinished_accounts)
     return redirect(url_for('index'))
@@ -596,8 +617,6 @@ def submit_rating():
                 db_session.rollback()
                 raise 
 
-            flash("For your next session with " + student_name + ", just set up a time and meetup. At the end of the session, request payment as you usually would with " + student_name + "'s regenerated secret code.")
-
         if 'student-rating-tutor' in ajax_json:
             rating = user.pending_ratings[0]
             rating.tutor_rating = ajax_json['num_stars']
@@ -615,8 +634,6 @@ def submit_rating():
             except:
                 db_session.rollback()
                 raise 
-
-            flash("For your next session with " + tutor_name + ", you won't need to submit a request again. Just set up a time, meetup, and provide the regenerated code to " + tutor_name + " for payment.")
 
     return jsonify(return_json=return_json)     
 
@@ -646,13 +663,6 @@ def submit_payment():
                     student_id = _request.student_id
                     student = User.query.get(student_id)
                     return_json['student-profile-url'] = student.profile_url
-
-            if student.secret_code != ajax_json.get('secret-code').lower():
-                return_json['secret-code'] = False
-                return jsonify(return_json=return_json)
-
-            return_json['secret-code'] = True
-            student.secret_code = generate_secret_code()
 
             from app.static.data.prices import prices_dict
             prices_reversed_dict = {v:k for k, v in prices_dict.items()}
@@ -870,8 +880,10 @@ def update_requests():
             #     apn_message = tutor.name.split(" ")[0] + ', a ' + skill_name + ' tutor, wants to help!'
             #     send_apn(apn_message, student.apn_token)
 
-            if student.text_notification and student.phone_number:
-                    msg = send_twilio_msg(student.phone_number, "A tutor wants to help! See more information at http://uguru.me")
+            if student.text_notification and student.phone_number:                
+                from emails import guru_can_help
+                message = guru_can_help(tutor, skill_name)
+                send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id])
 
             current_notification.feed_message = 'You accepted <b>' + student.name.split(' ')[0] + \
                 "'s</b> request for <b>" + skill_name.upper() + "</b>."
@@ -1007,6 +1019,10 @@ def update_requests():
             _request.connected_tutor_id = user.id
             user.outgoing_requests.remove(_request)
             user.notifications.remove(student_notification)
+
+            for n in user_notifications:
+                if n.request_id == request_id and n in user.notifications:
+                    user.notifications.remove(n)
             
             for _tutor in _request.requested_tutors:
                 for n in sorted(_tutor.notifications, reverse=True):
@@ -1109,24 +1125,23 @@ def update_requests():
             from app.static.data.prices import prices_dict
             r.connected_tutor_hourly = prices_dict[current_notification.request_tutor_amount_hourly]
             r.time_connected = datetime.now()
-            r.student_secret_code = user.secret_code
 
             mutual_times_arr = find_earliest_meeting_time(r)
             if tutor.phone_number and tutor.text_notification:
+                from emails import its_a_match_guru, reminder_before_session
                 total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
-                print total_seconds_delay
-                print "it got here"
-                message = "You have a tutoring session in one hour! Don't forget to prepare, read more at uguru.me/faq."
-                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message], countdown=60)
-                # schedule_job(send_twilio_msg, 120, [tutor.phone_number, message])
+                message = reminder_before_session(tutor, student, r.location, "Guru-ing")
+                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=total_seconds_delay)
+                message = its_a_match_guru(student, skill_name)
+                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
+
 
 
             if student.phone_number and student.text_notification:
+                from emails import reminder_before_session
                 total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
-                print total_seconds_delay
-                message = "You have a tutoring session in one hour! Don't forget to prepare, read more at uguru.me/faq."
-                # schedule_job(send_twilio_msg, 120, [student.phone_number, message])
-                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message], countdown=60)
+                message = reminder_before_session(student, tutor, r.location, "Studying")
+                send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=total_seconds_delay)
 
 
             if not previous_request_payment:
@@ -1167,7 +1182,7 @@ def update_requests():
             tutor_notification.time_read = None
             from emails import tutor_is_matched, student_is_matched
             tutor_is_matched(user, tutor, skill_name)
-            student_is_matched(user, tutor, r.student_secret_code)
+            student_is_matched(user, tutor, None)
 
             # if tutor.apn_token:
             #     apn_message = student.name.split(" ")[0] + ' has chosen you! Message '  + student.name.split(" ")[0] + ' now!'
@@ -1502,7 +1517,7 @@ def success():
                         phone_number = None
                     )
                 u.last_active = datetime.now()
-                u.secret_code = generate_secret_code()
+                u.user_referral_code = create_referral_code(u)
                 u.fb_account = True if 'fb-signup' in ajax_json else False
                 db_session.add(u)
                 db_session.commit()
@@ -1520,8 +1535,6 @@ def success():
                 raise 
             user_id = u.id
             authenticate(user_id)
-            # session.pop('signup-start-user-id')
-            # session.pop('signup-start')
             try:
                 from notifications import getting_started_student, getting_started_tutor, getting_started_student_tip
                 if session.get('tutor-signup'):
@@ -1598,6 +1611,9 @@ def success():
             if ajax_json.get('professor'):
                 r.professor = ajax_json['professor']
 
+            if ajax_json.get('phone'):
+                u.phone_number = ajax_json.get('phone')
+
             #Process calendar information
             weekly_availability = ajax_json['calendar']
             print weekly_availability
@@ -1635,36 +1651,35 @@ def success():
                 db_session.rollback()
                 raise 
 
-            mp.track(str(u.id), 'Request Created',{
-                'Course':original_skill_name,
-                'Time Estimate': ajax_json['estimate'],
-                'Proposed Price': int(float(ajax_json['hourly-price'])),
-                'Number of Tutors': len(r.requested_tutors)
-            })
-
             if not skill.tutors:
                 return jsonify(dict={'no-active-tutors': True})
 
             # Tutors are currently not contacted when there is a request.
             from notifications import tutor_request_offer
+            tier_2_tutor_ids = []
             for tutor in r.requested_tutors:
                 #Only if they are approved tutors
-                if tutor.approved_by_admin:
-                    # if tutor.apn_token:
-                    #     apn_message = u.name.split(" ")[0] + ' needs help in ' + skill_name + '. You could make $' + \
-                    #         str(int(r.student_estimated_hour) * int(r.time_estimate)) + '.'
-                    #     try:
-                    #         send_apn(apn_message, tutor.apn_token)
-                    #     except:
-                    #         print tutor
 
-                    if tutor.text_notification and tutor.phone_number:
-                        msg = send_twilio_msg(tutor.phone_number, "You have received a request and can make BIG MONEY. Please check http://uguru.me")
-                        #TODO Format Message
-                    tutor.incoming_requests_to_tutor.append(r)
-                    notification = tutor_request_offer(u, tutor, r, skill_name)
-                    db_session.add(notification)
-                    tutor.notifications.append(notification)
+                if tutor.approved_by_admin:
+                    if is_tier_one_tutor(tutor):
+                        print tutor.name + ' is a tier 1 tutor'
+                        if tutor.text_notification and tutor.phone_number:
+                            from emails import request_received_msg
+                            message = request_received_msg(user, request, skill_name)
+                            send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
+                        tutor.incoming_requests_to_tutor.append(r)
+                        notification = tutor_request_offer(u, tutor, r, skill_name)
+                        db_session.add(notification)
+                        tutor.notifications.append(notification)
+                    else:
+                        print tutor.name + ' is a tier 2 tutor'
+                        tier_2_tutor_ids.append(tutor.id)
+                        print tier_2_tutor_ids
+
+            if tier_2_tutor_ids:
+                print tier_2_tutor_ids
+                send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=50)
+
             
             #send emails + create objects
             from emails import student_needs_help
@@ -1766,6 +1781,14 @@ def admin_logout():
         session.pop("admin")
     return redirect(url_for('index'))
 
+@app.route('/payments/')
+def payments():
+    if session.get('user_id'):
+        user = User.query.get(session.get('user_id'))
+        return render_template('payments.html', user=user)
+    else:
+        return redirect(url_form('index'))
+
 
 @app.route('/login/', methods=('GET', 'POST'))
 def login():
@@ -1864,6 +1887,7 @@ def tutorsignup1():
 
 @app.route('/activity/', methods=('GET', 'POST'))
 def activity():
+    print 'sup'
     if not session.get('user_id'):
         return redirect(url_for('index'))
     user_id = session.get('user_id')
@@ -1881,6 +1905,7 @@ def activity():
     pending_ratings_dict = {}
     outgoing_request_index = {}
     tutor_dict = {}
+    confirm_payments = []
 
     urgency_dict = ['ASAP', 'Tomorrow', 'This week']
 
@@ -1902,8 +1927,28 @@ def activity():
         pending_ratings_dict['student'] = student
         pending_ratings_dict['tutor'] = tutor
     for notification in user.notifications:
+        notification.feed_message = notification.feed_message.replace("<b>", "<span class='green-text normal-text'> ").replace("</b>", " </span>")
+        if notification.feed_message_subtitle:
+            notification.feed_message_subtitle = notification.feed_message_subtitle.replace("<b>", "").replace("</b>", "")
+        print notification.feed_message
         if notification.request_tutor_id:
             tutor_dict[notification] = User.query.get(notification.request_tutor_id)
+        if notification.custom_tag == 'student-request-help':
+            from api import get_time_diff_in_seconds, REQUEST_EXP_TIME_IN_SECONDS, get_time_remaining
+            seconds_since_creation = get_time_diff_in_seconds(datetime.now(), notification.time_created)
+            if seconds_since_creation > REQUEST_EXP_TIME_IN_SECONDS or notification.status == 'EXPIRED':
+                notification.status = 'EXPIRED'
+                expire_request_job.apply_async(args=[notification.request_id, user.id])
+            else:
+                notification.status = get_time_remaining(REQUEST_EXP_TIME_IN_SECONDS - seconds_since_creation)
+        if notification.custom_tag == 'student-incoming-offer':
+            from api import get_time_diff_in_seconds, TUTOR_ACCEPT_EXP_TIME_IN_SECONDS, get_time_remaining
+            seconds_since_creation = get_time_diff_in_seconds(datetime.now(), notification.time_created)
+            if seconds_since_creation > TUTOR_ACCEPT_EXP_TIME_IN_SECONDS or notification.status == 'EXPIRED':
+                notification.status = 'EXPIRED'
+            else:
+                notification.status = get_time_remaining(TUTOR_ACCEPT_EXP_TIME_IN_SECONDS - seconds_since_creation)
+
         pretty_dates[notification.id] = pretty_date(notification.time_created)
     for conversation in user.mailbox.conversations:
         if conversation.student_id != user.id:
@@ -1922,15 +1967,28 @@ def activity():
     for payment in user.payments:
         tutor_id = payment.tutor_id
         student_id = payment.student_id
-        tutor = User.query.get(tutor_id)
-        student = User.query.get(student_id)
-        payment_dict[payment.id] = {'payment': payment, 'tutor_name':tutor.name.split(' ')[0],\
-        'student_name': student.name.split(' ')[0]}
+        if payment.student_id:
+            tutor = User.query.get(tutor_id)
+            if (payment.tutor_id == user.id and payment.tutor_confirmed == False) or (payment.student_id == user.id and payment.student_confirmed == False):
+                confirm_payments.append({
+                    'payment': payment,
+                    'student_name': student.name.split(" ")[0].title(),
+                    'tutor_name': tutor.name.split(" ")[0].title(),
+                    'student': student,
+                    'tutor': tutor
+                    })
+            student = User.query.get(student_id)
+            payment_dict[payment.id] = {'payment': payment, 'tutor_name':tutor.name.split(' ')[0],\
+            'student_name': student.name.split(' ')[0]}
+
+        
+    from app.static.data.short_variations import short_variations_dict
     return render_template('activity.html', key=stripe_keys['publishable_key'], address_book=address_book, \
         logged_in=session.get('user_id'), user=user, request_dict = request_dict, payment_dict = payment_dict,\
         pretty_dates = pretty_dates, urgency_dict=urgency_dict, tutor_dict=tutor_dict, pending_ratings_dict=pending_ratings_dict,\
         environment = get_environment(), prices_dict=prices_dict, prices_reversed_dict=prices_reversed_dict, session=session,\
-        outgoing_request_index=outgoing_request_index, avg_rating=avg_rating, num_ratings = num_ratings, time=time)
+        outgoing_request_index=outgoing_request_index, avg_rating=avg_rating, num_ratings = num_ratings, time=time, variations=short_variations_dict,\
+        confirm_payments=confirm_payments)
 
 def get_calendar_time_ranges(week_object, owner):
     if not week_object.first():
@@ -2045,7 +2103,7 @@ def settings():
         avg_rating, num_ratings = calc_avg_rating(user)
     return render_template('settings.html', logged_in=session.get('user_id'), user=user, \
         variations=short_variations_dict, not_launched_flag = not_launched_flag, \
-        environment = get_environment(), session=session, avg_rating = avg_rating, num_ratings = num_ratings)
+        environment = get_environment(), session=session, avg_rating = avg_rating, num_ratings = num_ratings,key=stripe_keys['publishable_key'])
 
 def calc_avg_rating(user):
     total_rating_sum = 0
@@ -2219,25 +2277,128 @@ def get_environment():
         environment = "TESTING"
     return environment
 
-def send_twilio_msg(to_phone, body):
+def send_twilio_msg(to_phone, body, user_id):
     try:
         message = twilio_client.messages.create(
             body_ = body,
             to_ = to_phone,
             from_ = TWILIO_DEFAULT_PHONE,
             )
+        user = User.query.get(user_id)
+        text = update_text(message)
+        user.texts.append(text)
+        db_session.add(text)
+        db_session.commit()
+        check_msg_status.apply_async(args=[text.id], countdown = 60)
+
     except twilio.TwilioRestException:
         print "text message didn't go through"
         return
+    except:
+        db_session.flush()
+        raise
     return message
 
+@celery.task
+def check_msg_status(text_id):
+    text = Text.query.get(text_id)
+    msg = twilio_client.messages.get(text.sid)
+    update_text(msg, text)
+    try:
+        db_session.commit()
+    except:
+        db_session.flush()
+        raise
+
+
+def create_referral_code(user):
+    first_name = user.name.split(" ")[0].lower()
+    users_with_promo_code = User.query.filter_by(user_referral_code = first_name).first()
+    #First attempt
+    if (not users_with_promo_code):
+        return first_name
+    first_name_last_initial = first_name + user.name.split(" ")[1][0].lower()
+    users_with_promo_code = User.query.filter_by(user_referral_code = first_name_last_initial).first()
+    if (not users_with_promo_code):
+        return first_name_last_initial
+    return first_name + str(user.id)
+
+
+def update_text(message, text = None):
+    from email.utils import parsedate_tz
+    if not text:
+        text = Text()
+    else:
+        text.date_sent = datetime(*parsedate_tz(message.date_sent)[:6])
+    
+    text.sid = message.sid
+    text.date_created = datetime.now()
+    text.to_phone = message.to
+    text.from_phone = message.from_
+    text.body = message.body
+    text.status = message.status
+    text.date_created = datetime(*parsedate_tz(message.date_created)[:6])
+    text.date_updated = datetime(*parsedate_tz(message.date_updated)[:6])
+    text.price = message.price
+    text.uri = message.uri
+    text.account_sid = message.account_sid
+    return text
+
+def is_tier_one_tutor(tutor):
+    if not tutor.tutor_ratings:
+        return True
+    _sum = 0
+    _index = 0
+    if tutor.tutor_ratings:
+        for rating in tutor.tutor_ratings:
+            _sum += rating.tutor_rating
+            _index += 1 
+    avg_rating = float (_sum) / float (_index)
+    if avg_rating >= 4.0:
+        print tutor.name + ' avg rating is approved'
+        return True
+    return False
+
+@celery.task
 def expire_request_job(request_id, user_id):
-    print 'request has expired'
-    request = Request.query.get(request_id)
+    _request = Request.query.get(request_id)
     user = User.query.get(user_id)
-    request.is_expired = True
+    if _request in user.outgoing_requests:
+        user.outgoing_requests.remove(_request)
+    _request.is_expired = True
     db_session.commit()
 
+@celery.task
+def tutor_confirm_payment(payment_id):
+    p = Payment.query.get(payment_id)
+    p.tutor_confirmed = False
+    try:
+        db_session.commit()
+    except:
+        db_session.flush()
+        raise
+
+@celery.task
+def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name):
+    r = Request.query.get(request_id)
+    student = User.query.get(user_id)
+    for tutor_id in tutor_id_arr:
+        tutor = User.query.get(tutor_id)
+        print tutor.name + ' received tier 2 request'
+        if tutor.text_notification and tutor.phone_number:
+            from emails import request_received_msg
+            message = request_received_msg(student, r, skill_name)
+            send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
+        tutor.incoming_requests_to_tutor.append(r)
+        from app.notifications import tutor_request_offer
+        notification = tutor_request_offer(student, tutor, r, skill_name)
+        db_session.add(notification)
+        tutor.notifications.append(notification)
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        raise 
 
 def send_apn(message, token):
     payload = Payload(alert=message, sound='default', badge=1)

@@ -577,11 +577,6 @@ h4, h5 {
   clear:both;
 }
 
-
-a:hover{
-  color:#eee;
-}
-
 .page-title {
   background-color:#0081be;
   width:100%;
@@ -789,26 +784,6 @@ a:hover{
   border-radius: 0px;
 }
 
-
-.notification {
-  display: inline-block;
-  margin-bottom: 0;
-  width:100%;
-  padding:12px 20px 4px 6px;
-  margin-top:20px;
-  font-size: 16px;
-  font-weight: normal;
-  line-height: 1.428571429;
-  background-color: #ffffff;
-  text-align: left;
-  white-space: wrap;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border: 2px solid #16A7DE;
-  border-radius: 12px;
-}
-
 .notification.grey-background {
   background-color:#F0F8FF;
 }
@@ -817,14 +792,14 @@ a:hover{
   background-color:#F0F8FF; 
 }
 
-.user-photo {
+/*.user-photo {
   padding-left:10px;
   padding-right:10px;
   padding-top:10px;
   padding-bottom:10px;
   width:70px;
   height:70px;
-}
+}*/
 
 .tutor-photo {
   padding-left:5px;
@@ -1318,27 +1293,7 @@ h4#back-button {
   color:red;
   text-align:center;
 }
-input#credit-card-num {
-  background: url('/static/img/card.png') no-repeat;
-  background-size: 32px 24px;
-  background-position:95% ;
-}
 
-input#credit-card-num.visa {
-  background-image: url('/static/img/visa.png');
-}
-
-input#credit-card-num.mastercard {
-  background-image: url('/static/img/mastercard.png');
-}
- 
-input#credit-card-num.discover {
-  background-image: url('/static/img/discover.png');
-}
- 
-input#credit-card-num.amex {
-  background-image: url('/static/img/amex.png');
-}
 
 #offer-amount {
   border: 1px solid green;
@@ -1463,9 +1418,9 @@ textarea#student-signup-description {
   margin:0;
 }
 
-span.twitter-typeahead {
+/*span.twitter-typeahead {
   width:100%;
-}
+}*/
 
 #message-send-box input {
   width:90%;
@@ -1529,7 +1484,7 @@ label {
 .rating > span {
   display: inline-block;
   position: relative;
-  width: 1.2em;
+  width: 1em;
   cursor:pointer;
 }
 .rating > span:hover:before,
@@ -1538,6 +1493,29 @@ label {
    position: absolute;
    color:gold;
 }
+
+.profile-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  color:gold;
+  font-size:20px;
+  padding-left:20px;
+  padding-right:10px;
+}
+.profile-rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1em;
+  cursor:pointer;
+  content: "\2605";
+}
+.profile-rating > span:before,
+.profile-rating > span ~ span:before {
+   content: "\2605";
+   position: absolute;
+   color:gold;
+ }
+
 
 .star-link {
   text-decoration: none;
@@ -1592,18 +1570,6 @@ a.example-skill-link {
 
 .tt-suggestion.tt-cursor p {
   color:white!important;  
-}
-
-.shadow {
-  -moz-box-shadow:    5px 5px 5px #ccc;
-  -webkit-box-shadow: 5px 5px 5px #ccc;
-  box-shadow:         5px 5px 5px #ccc;
-}
-
-.notification.shadow {
-  -moz-box-shadow:    10px 10px 10px #ccc;
-  -webkit-box-shadow: 10px 10px 10px #ccc;
-  box-shadow:         10px 10px 10px #ccc; 
 }
 
 .request-info-left-column {

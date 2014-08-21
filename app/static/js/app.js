@@ -3,6 +3,7 @@ var current_page_id = null;
 var previous_page_id = null;
 var request_form_complete = null;
 var a,b,c;
+var signup_type = null;
 var invert_olark = function() {
     $('#habla_window_div #habla_oplink_a').css('color','white');
     $('#habla_window_div #habla_topbar_div').css('background', '#00a9e5 none repeat scroll 0 0');
@@ -77,6 +78,17 @@ $(document).ready(function(){
           $('#email-notif-saved-text').delay(750).fadeOut('slow');
       });
 
+    $('#text-notif-check').change(function(){
+          var status = this.checked;
+          if (status) {
+            send_notification_ajax('text', true)
+          } else {
+            send_notification_ajax('text', false)
+          }
+          $('#text-notif-saved-text').show();
+          $('#text-notif-saved-text').delay(750).fadeOut('slow');
+      });
+
     $('#slc-tutor-check').change(function(){
           send_profile_update_ajax('slc', this.checked)
     });
@@ -102,6 +114,7 @@ $(document).ready(function(){
         send_profile_update_ajax('intro', $('#profile-relevant-experience').val());
       }
       send_profile_update_ajax('major', $('#profile-major').val());
+      send_profile_update_ajax('phone', $('#profile-phone').val())
       $('#profile-saved').show();
       $('#profile-saved').delay(750).fadeOut('slow');
     });
@@ -498,9 +511,7 @@ $(document).ready(function(){
                   $('#alert-fields-login').show();
                   return;
                 }
-                $('#signup-modal').modal('hide');
-                $('#main').hide();
-                $('#tutor-application-form').show();
+                  window.location.replace('/apply-guru/');
               }
             });
         }
@@ -524,6 +535,19 @@ $(document).ready(function(){
       } else {
         submit_request_form_to_server();
       }
+    });
+
+    $('#cash-out-button').click(function() {
+      $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/api/cash_out' ,
+          data: JSON.stringify({'cash-out':true}), 
+          dataType: "json",
+          success: function(result) {
+              window.location.replace('/');
+          }
+        });
     });
 
     $('#upload-photo-link').on('click', function(e) {
@@ -582,6 +606,7 @@ $(document).ready(function(){
         'skill': $('#request-skill').val(),
         'professor': $('#request-professor').val(),
         'estimate': $('#request-main-slider').slider('value'),
+        'phone': $('#request-phone').val(),
         'hourly-price': $('#final-offering-price').text(),
         'urgency': $('#request-urgency').prop('checked'),
         'recurring': $('#request-recurring').prop('checked'),
@@ -651,6 +676,8 @@ $(document).ready(function(){
         $('#student-register').trigger('click');
       }
     });
+
+
 
     $('#add-skill-input-settings').keyup(function(e){
         if ($('#add-skill-input-settings').val()) {
@@ -725,6 +752,23 @@ $(document).ready(function(){
         } else {
           $('#add-one-skill-alert').show();
         }
+    });
+
+    $('.submit-confirm-payment-text').click(function() {
+        data =  {
+          'time_amount': ($('#confirm-time-payment-slider').slider('value') / 2),
+          'payment_id': $(this).attr('id')
+        }
+        $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/api/payments',
+          data: JSON.stringify(data),
+          dataType: "json",        
+          success: function(result) {        
+              window.location.replace('/activity/');
+            }
+          })
     });
 
     $('#forgot-password-link').click(function() {
@@ -852,8 +896,11 @@ $(document).ready(function(){
         $('#tutor-next-link').show()
         // $('#student-signup-email').val(result.dict['submit-email-home'])
         $('#student-signup').show('slide', {direction: 'right'}, 200);
+        signup_type ='tutor';
 
     });
+
+    $('#')
 
     $('#home-course-submit').click(function() {
       $('#main').hide();
@@ -874,6 +921,7 @@ $(document).ready(function(){
         invert_olark();
         $('#tutor-student-header').text('STUDENT SIGNUP')
         $('#student-next-link').show()
+        signup_type = 'student'
         $('#student-signup').show('slide', {direction: 'right'}, 200);
     });
 
@@ -1239,6 +1287,9 @@ $(document).ready(function(){
       }
       if (to_change =='major') {
         data['major'] = value
+      }
+      if (to_change == 'phone') {
+        data['phone'] = value
       }
       $.ajax({
             type: "POST",
