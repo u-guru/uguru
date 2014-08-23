@@ -303,6 +303,10 @@ input {
   padding:60px;
 }
 
+#main-banner-header {
+  font-size:36px;
+}
+
 .navbar-default.navbar-main {
   color:black!important;
 }
@@ -1170,6 +1174,15 @@ a:hover {
   padding:40px 80px;
 }
 
+#guru-banner-header {
+  font-size:60px; 
+  font-weight:normal
+}
+
+#guru-banner-subheader {
+  font-size:32px;
+}
+
 .footer-link {
   padding-left:20px;
   padding-right:20px;
@@ -1204,6 +1217,10 @@ a:hover {
   background-color:white !important;
   padding:5px 20px;
 }
+
+.how-it-works-text-banner {
+    display:none;
+  }
 
 #main-container h1 {
   margin-top:45px;
@@ -1468,251 +1485,6 @@ input#credit-card-num.amex, input#debit-card-num-settings.amex, input#credit-car
   margin:5px 0px 0px 0px;
 }
 
-/* XS devices  */
-@media (max-width: 768px){  
-  #banner {
-    height:100%;
-    background: url('/static/img/mobile-background.png') no-repeat;
-    background-size:cover;
-  }
-  #main-container h1 {
-    margin-top:-10px;
-    font-size:28px;
-  }
-  #main-container h3 {
-    font-size:20px;
-  }
-  #course-input {
-    width:250px;
-    color:#484748;
-    font-family:"Roboto", sans-serif;
-    font-weight:100;
-    font-size:16px;
-    border-color:white;
-  }
-  .navbar-default .container-fluid {
-    padding:0px 0px;
-  }
-
-  .navbar-toggle {
-    margin-top:25px;
-  }
-  #home-course-submit {
-    margin:0 auto;
-    margin-top:10px;
-    display:block;
-    width:100px;
-  }
-  .tutor-preview-content-major p{
-    font-size:10px;
-  }
-  .mobile-tutor-content {
-    padding-right:5px;
-    padding-left:15px;
-  }
-  .tutor-preview-content-description {
-    font-size:10px;
-  }
-
-  #tutor-preview-2, #tutor-next-sneak, #testimonial-1, #testimonial-2{
-    display:none;
-  }
-  .text-banner {
-    font-size:35px;
-    padding:20px;
-    text-align:center;
-  }
-  .text-banner b {
-    margin-left:65px;
-  }
-  #pencil-banner {
-    position:absolute;
-    left:10px;
-    bottom:0px;
-    height:80px;
-  }
-
-  #shield-banner {
-    position:absolute;
-    left:10px;
-    bottom:0px;
-    height:80px;
-  }
-
-  #guru-banner {
-    position:absolute;
-    left:10px;
-    bottom:0px;
-    height:80px;
-  }
-  .testimonial-section {
-    padding:10px;
-    font-size:1em;
-  }
-
-  .hiw-section {
-    font-size:1em;
-    padding:0px 10px;
-  }
-
-  .hiw-section h1 {
-    font-size:28px;
-    margin:25px auto 10px 0px;
-  }
-
-  .guarantee-container {
-    padding:10px;
-  }
-
-  .guarantee-text-container {
-    padding:0px 10px;
-  }
-
-  .guarantee-container h1 {
-    font-size:28px;
-    margin-bottom:15px;
-  }
-
-  .signup-container {
-    padding:20px;
-  }
-
-  .fb-btn-container {
-    margin:20px auto;
-    display:block;
-  }
-
-  .signup-btn-container {
-    margin-bottom:20px;
-  }
-
-  .or-container  {
-    margin:20px auto;
-    display:block;
-  }
-
-  .large-fb-blue-btn {
-    padding:12px 36px;
-  }
-  .footer {
-    padding:10px 0px;
-    font-size:13px;
-  }
-  .footer-link {
-    padding-left:5px;
-    padding-right:5px;
-  }
-  .navbar-collapse li {
-    border-bottom:1px solid white;
-  }
-  .request-form-extra-detail {
-    display:none;
-  }
-}
-
-
-@media (min-width: 450) and (max-width: 768) { 
-  #testimonial-1, #testimonial-2, #tutor-preview-2, #tutor-next-sneak {
-    display:block;
-  }
-  .signup-btn-container {
-    margin-top:20px;
-  }
-}
-
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {  
-  #banner {
-    background: url('/static/img/background-1600.jpg') no-repeat;
-    background-size:cover;
-    height:450px;
-  }
-
-  #main-container h1 {
-    margin-top:10px;
-  }
-  .testimonial-section {
-    padding:30px 10px; 
-  }
-
-  #login-modal-container {
-    padding:40px;
-  }
-
-  #testimonials .container {
-    padding-right:0px;
-    padding-left:0px;
-  }
-
-  #pencil-banner {
-    left:55px;
-  }
-
-  #shield-banner {
-    left:75px;
-  }
-  #guru-banner {
-    left:55px;
-  }
-  #course-input {
-    width:300px;
-    color:#484748;
-    font-family:"Roboto", sans-serif;
-    font-weight:100;
-    font-size:16px;
-    border-color:white;
-    /*margin-left:-80px;*/
-  }
-  #home .twitter-typeahead {
-    margin-left:-80px;
-  }
-
-  #request-form .twitter-typeahead {
-    display:block !important;
-  }
-
-  .modal-dialog {
-    margin-top:100px;
-    width:500px;
-  }
-
-}
-
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: 992px) {  
-  #banner {
-    background: url('/static/img/background-1600.jpg') no-repeat;
-    background-size:cover;
-    height:550px;
-  }
-  #parent-banner {
-    background: url('/static/img/parent-background-1600.png') no-repeat;
-    background-size:cover;
-    height:550px;
-  }
-  #how-it-works-banner {
-    background: url('/static/img/background-1600-2.jpg') no-repeat;
-    background-size:cover;
-    height:350px; 
-  }
-  .testimonial-section {
-    padding:25px 40px;
-  }
-  #testimonials .container {
-    padding-right:15px;
-    padding-left:15px;
-  }
-  #pencil-banner {
-    left:150px;
-  }
-
-  #shield-banner {
-    left:180px;
-  }
-  #guru-banner {
-    left:180px;
-  }
-}
 
 
 

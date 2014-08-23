@@ -727,6 +727,53 @@ $(document).ready(function(){
       }
     });
 
+    $('#parent-signup-1').click(function() {
+      if (!$('#parent-name-1').val() || !$("#parent-email-1").val() || !$('#student-name-1').val() || !$('#student-email-1').val()) {
+        $('#parent-signup-alert-1').show();
+      } else {
+        $('#parent-signup-alert-1').hide();
+        data = {
+          'parent-name': $('#parent-name-1').val(),
+          'parent-email': $('#parent-email-1').val(),
+          'student-name': $('#student-name-1').val(),
+          'student-email': $('#student-email-1').val()
+        }
+        $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/api/parent_signup',
+          data: JSON.stringify(data),
+          dataType: "json",        
+          success: function(result) {
+            $('#confirmation-modal').modal('show');
+          }
+       });
+      }
+    });
+
+    $('#parent-signup-2').click(function() {
+      if (!$('#parent-name-2').val() || !$("#parent-email-2").val() || !$('#student-name-2').val() || !$('#student-email-2').val()) {
+        $('#parent-signup-alert-2').show();
+      } else {
+        $('#parent-signup-alert-2').hide();
+        data = {
+          'parent-name': $('#parent-name-2').val(),
+          'parent-email': $('#parent-email-2').val(),
+          'student-name': $('#student-name-2').val(),
+          'student-email': $('#student-email-2').val()
+        }
+        $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/api/parent_signup',
+          data: JSON.stringify(data),
+          dataType: "json",        
+          success: function(result) {
+            $('#confirmation-modal').modal('show');
+          }
+       });
+      }
+    });
 
 
     $('#add-skill-input-settings').keyup(function(e){
@@ -1029,7 +1076,6 @@ $(document).ready(function(){
       displayKey: 'name',
       source: numbers.ttAdapter()
     }).on('typeahead:selected', onTypeaheadSelectedTutorProfile);
-
 
     function onTypeaheadSelectedTutorProfile(event, suggested, dataset_name) {
       var course_name = $('#courses-profile-input').val();

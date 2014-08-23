@@ -101,9 +101,6 @@
 {% else %}
 <div id="activity" style="font-family: 'Roboto',sans-serif;">
 {% endif %}
-	<!-- <div class="page-title">
-	   <h4 style="color:white;">YOUR ACTIVITY</h4>
-	  </div> -->
 	<div id="call-to-action-bar" align:"center">
 		{% if not user.verified_tutor %}
 		<div class="row margin-top-40 margin-bottom-20	">
@@ -121,7 +118,7 @@
 					</div>
 				{% endif %}
 				<span class='font-14 grey-text center block margin-top-20'>
-					New to uGuru? Click <a class='underline blue-text'href='javascript:void(0);'> here </a> to get started! 
+					New to uGuru? Read more <a class='underline blue-text'href='javascript:void(0);'> here </a> 
 				</span>
 			</div>
 		</div>
@@ -190,12 +187,12 @@
 			</div>
 		</div>
 		{% if user.skills and not user.approved_by_admin %}
-		<div style="display:block" class="row-fluid">
+		<!-- <div style="display:block" class="row-fluid">
 			<div style="margin-top:0px; margin-bottom:15px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 				<div style="margin-bottom:0"class="alert alert-info">We will email you once your Guru application is approved.<br> In the meantime, if you need help with your finals, you can request help above.</div>
 			</div>
-		 </div>
+		 </div> -->
 		{% endif %}
 		{% if user.outgoing_requests|length >= 1 %}
 		<div style="display:block" class="row-fluid">

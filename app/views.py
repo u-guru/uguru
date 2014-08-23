@@ -33,6 +33,7 @@ TWILIO_ACCOUNT_SID = "AC0e19b68075686efd56de5bbce77285a5"
 TWILIO_AUTH_TOKEN = "4d5a1f6390c445fd1f6eb39634bdf299" 
 TWILIO_DEFAULT_PHONE = "+15104661138"
 twilio_client = TwilioRestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+MAX_REQUEST_TUTOR_LIMIT = 1
 
 
 
@@ -330,6 +331,7 @@ def admin():
         skills_array = []
         all_requests = []
         transactions = []
+        parents_info = []
         payment_analytics=\
             {
                 'avg-student-rate':0,
@@ -385,6 +387,20 @@ def admin():
             student = User.query.get(r.student_id)
             ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
                 'student-name':student.name.split(" ")[0]}
+
+
+        parents = User.query.filter(User.parent_name != None).all()
+        print parents
+
+        for parent in parents:
+            parents_info.append({
+                'id': parent.id,
+                'parent-name': parent.parent_name,
+                'parent-email': parent.parent_email,
+                'student-name': parent.name,
+                'student-email': parent.email
+                })
+
 
         for r in Request.query.all()[::-1]:
             request_dict = {}
@@ -536,7 +552,8 @@ def admin():
             all_requests = all_requests, skills_counter = skills_counter, notifications=notifications,\
             payments=payments, total_profit=total_profit, environment = get_environment(), texts = Text.query.all(), ratings=Rating.query.all(),\
             ratings_dict=ratings_dict, transactions=transactions, conversations=conversations, users_last_active=users_last_active,\
-            total_revenue = total_revenue, payment_analytics=payment_analytics, unverified_tutor_count=unverified_tutor_count, unfinished_accounts=unfinished_accounts)
+            total_revenue = total_revenue, payment_analytics=payment_analytics, unverified_tutor_count=unverified_tutor_count, \
+            unfinished_accounts=unfinished_accounts, parents=parents_info)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
@@ -859,6 +876,17 @@ def update_requests():
 
             r = Request.query.get(incoming_request_num)
             r.committed_tutors.append(tutor)
+
+            if len(r.committed_tutors) == MAX_REQUEST_TUTOR_LIMIT:
+                for tutor in r.requested_tutors:
+                    if tutor not in r.committed_tutors:
+                        for n in tutor.notifications:
+                            if n.request_id == r.id:
+                                n.status = 'LATE'
+                                f.feed_message_subtitle = None
+
+
+
             
 
             weekly_availability = ajax_json['calendar']
@@ -886,9 +914,7 @@ def update_requests():
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
 
-            # if student.apn_token:
-            #     apn_message = tutor.name.split(" ")[0] + ', a ' + skill_name + ' tutor, wants to help!'
-            #     send_apn(apn_message, student.apn_token)
+            
 
             if student.text_notification and student.phone_number:                
                 from emails import guru_can_help

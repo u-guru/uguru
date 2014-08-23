@@ -130,6 +130,8 @@ class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key = True)
     name = Column(String(64))
+    parent_name = Column(String)
+    parent_email = Column(String)
     if os.environ.get('TESTING'):
         email = Column(String(64))
     else:
@@ -230,7 +232,7 @@ class User(Base):
         secondary = user_text_table)
 
 
-    def __init__(self, name, email, password, phone_number, is_a_tutor = None):
+    def __init__(self, name = None, email = None, password = None, phone_number = None, is_a_tutor = None):
         self.name = name
         self.email = email
         self.password = password

@@ -393,6 +393,25 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(['Invalid Token'])
 
+    if arg =='parent_signup' and _id == None and request.method == 'POST':
+        user = User()
+        user.parent_name = request.json.get('parent-name');
+        user.parent_email = request.json.get('parent-email');
+        user.name = request.json.get('student-name');
+        user.email = request.json.get('student-email');
+        user.last_active = datetime.now()
+        user.time_created = datetime.now()
+        db_session.add(user)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        response = {'success': True}
+
+        return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+
 
     if arg =='send_message' and _id == None and request.method == 'POST':
         user = getUser()
@@ -1514,6 +1533,8 @@ def api(arg, _id):
         user.res_tutor = ajax_json['res']
         user.ta_tutor = ajax_json['gsi']
         user.previous_tutor = ajax_json['cal']
+        user.approved_by_admin = True
+        user.verified_tutor = True
 
         courses = ajax_json['courses']
 
@@ -1529,7 +1550,6 @@ def api(arg, _id):
         for n in user.notifications:
             print n.id, n.feed_message
             if 'applied' in n.feed_message:
-                print "FOUND"
                 tutor_notification_flag = True
                 break
 

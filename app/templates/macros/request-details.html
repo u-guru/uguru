@@ -1,11 +1,29 @@
 {% macro request_details(user, notif, request_dict, time, index) -%}                        
 {% set student_name = notif.feed_message.split(" ")[3] %}
+    
+    {% if notif.status == 'LATE' %}
+        <div class='row center margin-top-10 font-24'>
+            You Are Too Late...
+        </div>
+        <div class='row-fluid margin-top-30'>
+        <label class='font-20 green-text'> Next Steps </label>
+        <div id='guru-intro' class='block font-14'>
+            Sorry, other Gurus have already filled up the 3 available spots for {{student_name}}. 
+            <br>
+            <br>
+            Add your phone number in <a href='settings/#prof' class='blue-text'> settings </a> to get notified when students need help.
+        </div>
+    </div>
+
+    {% endif %}
     <div class='row center margin-top-20'>
         <span id='profile-name' class="font-24 center">
-        {% if notif.custom != 'tutor-is-matched' %}
+        {% if notif.custom != 'tutor-is-matched' and not notif.status == 'LATE'%}
             {{notif.feed_message|safe}} 
-        {% else %}
+        {% elif notif.custom == 'tutor-is-matched' %}
             <span class='green-text'>{{student_name}} </span> Chose You!
+        {% else %}
+        <hr>
         {% endif %}
         </span>
     </div>
@@ -51,9 +69,6 @@
             We will let you know if the student chooses you or not. Just relax and wait!
         </div>
     </div>
-    <!-- <div class='row-fluid align-left font-14'>
-        <a class="cancel-request blue-text" href="javascript:void(0)"> <u>Need to Cancel? </u></a>
-    </div> -->
     <hr>
     {% endif %}
     <div class='request-details-attribute-container margin-top-30 margin-bottom-15 block'>
@@ -130,7 +145,7 @@
                 <span class='green-text'> $<span id='student-offer-hourly-price-{{index}}'>{{request_dict[notif.request_id]['request'].student_estimated_hour}}</span>/hr
                 </span> 
                 
-                {% if notif.custom_tag == 'tutor-request-offer' and not notif.custom == 'tutor-accept-request' %}
+                {% if notif.custom_tag == 'tutor-request-offer' and not notif.custom == 'tutor-accept-request' and not notif.status =='LATE' %}
                 &nbsp;&nbsp;&nbsp;
                 <a id="tutor-change-price-link-{{index}}" class="tutor-change-price-link" href="javascript:void(0);">
                     <span class='glyphicon glyphicon-pencil blue-text'> </span>
@@ -182,7 +197,7 @@
         </div>
     {% endif %}
 
-    {% if notif.custom_tag == 'tutor-request-offer' and not notif.custom == 'tutor-accept-request' and not notif.custom == 'tutor-is-matched' %}
+    {% if notif.custom_tag == 'tutor-request-offer' and not notif.custom == 'tutor-accept-request' and not notif.custom == 'tutor-is-matched' and not notif.status =='LATE'%}
     <hr style='color:grey; margin-top:10px'>
     <div class='row block margin-top-10 margin-bottom-20' style='padding-left:16px'>
         <label class='font-20'> Your Personal Message To {{student_name|safe}} </label>

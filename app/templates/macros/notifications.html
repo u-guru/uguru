@@ -25,7 +25,11 @@
                 </div>
                 {% if n.status %}
                 <div class='notification-expire font-16 red-text'>
-                    {{n.status|title}}
+                    {% if n.status == 'LATE'%}
+                        Too Late!
+                    {% else %}
+                        {{n.status|title}}
+                    {%endif%}
                 </div>
                 {% endif %}
             </div>

@@ -3,6 +3,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1"/>    
         <link href="/static/css/bootstrap.css" rel="stylesheet">
         <link href="/static/css/app.css" rel="stylesheet">
+        <link href="/static/css/phone-mobile.css" rel="stylesheet">
+        <link href="/static/css/tablet-mobile.css" rel="stylesheet">
         <link href='http://fonts.googleapis.com/css?family=Roboto:300, 400,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300, 100' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
@@ -48,17 +50,19 @@
                   </div><!-- /.container-fluid -->
                 </nav> 
                 <div id='main-container' class='container center'>
-                    <div class='white-text'style='font-size:36px'>
+                    <div id='main-banner-header'class='white-text'>
                         Study <del>Harder</del> Smarter
                     </div>
-                    <h3 class='white-text'>
+                    <h3 id='main-banner-subheader' class='white-text'>
                         Get A Peer Tutor To Help You Ace It In Minutes
                     </h3>
-                    <div class='search-class-container'>
-                        <input id='course-input' class='typeahead' placeholder='Someone help me in..(CS10)'type='text'></input>
-                        <a href='javascript:void(0);' id='home-course-submit'>
-                            <span id='home-course-submit-btn' class='blue-btn'> Ace It! </span>
-                        </a>
+                    <div id='home-search-class-container'class='row-fluid'>
+                        <div class='search-class-container'>
+                            <input id='course-input' class='typeahead' placeholder='Someone help me in..(CS10)'type='text'></input>
+                            <a href='javascript:void(0);' id='home-course-submit'>
+                                <span id='home-course-submit-btn' class='blue-btn'> Ace It! </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class='container-fluid' id='tutor-banner-background'>
@@ -79,7 +83,7 @@
                                                     <span class="star-icon-feed full">☆</span>
                                                     <span class="star-icon-feed full">☆</span>
                                                     <span class="star-icon-feed half">☆</span>
-                                                    <span class='font-16'>&nbsp;(5)&nbsp;&nbsp;</span>
+                                                    <span id='tutor-demo-num-ratings-1'class='font-16'>&nbsp;(5)&nbsp;&nbsp;</span>
                                                 </span>
                                                 <div class='tutor-preview-content-tags'>
                                                     <span class='tutor-exp-tag'>
@@ -94,7 +98,7 @@
                                                 <p><b>MCB: Neurobiology, Class of 2014</b></p>
                                             </div>
                                             <div class='tutor-preview-content-description'>
-                                                <p>
+                                                <p id='tutor-preview-content-description-1'>
                                                     "I have 6 years of experience tutoring general chemistry. At Cal, I've been a Chem1A SLC drop-in tutor for 3 years and a Chem1A group leader..."
                                                 </p>
                                             </div>
@@ -150,13 +154,17 @@
                 </div>
             </div>
             <div id='how-it-works-home white-text'>
+                <div class='row-fluid text-banner how-it-works-text-banner'>
+                    <img src='/static/img/pencil-banner.svg' id='shield-banner'>
+                    <b>How It Works</b>
+                </div>
                 <div id='how-it-works-banner'>
                     <div class='container'>
                         <div class='row-fluid'>
                             <div id='testimonial-1' class='col-xs-12 col-sm-4 col-md-4'>
                                 <div class='testimonial-section margin-top-20'>
                                     <img src='/static/img/icon1.png' height='35px'> 
-                                        <div class='margin-bottom-20 white-text font-32 margin-top-20'>Request Help</div>
+                                        <div class='margin-bottom-20 white-text font-32 margin-top-20 how-it-works-header'>Request Help</div>
                                         <p>
                                             <span class='white-text font-18'>
                                             Fill out a request form, and tell our Gurus what you need help with, and how much you would like to pay.
@@ -165,9 +173,9 @@
                                 </div>
                             </div>
                             <div id='testimonial-2' class='col-xs-12 col-sm-4 col-md-4'>
-                                <div class='testimonial-section margin-top-20'>
+                                <div class='testimonial-section margin-top-20 '>
                                     <img src='/static/img/icon2.png' height='35px'> 
-                                        <div class='margin-bottom-20 white-text font-32 margin-top-20'>Pick A Guru</div>
+                                        <div class='margin-bottom-20 white-text font-32 margin-top-20 how-it-works-header'>Pick A Guru</div>
                                         <p>
                                             <span class='white-text font-18'>
                                             Up to 3 Gurus will respond to your request within minutes. Pick the one you like best based on their profiles and reviews.
@@ -178,7 +186,7 @@
                             <div id='testimonial-3' class='col-xs-12 col-sm-4 col-md-4'>
                                 <div class='testimonial-section margin-top-20'>
                                     <img src='/static/img/icon3.png' height='35px'> 
-                                        <div class='margin-bottom-20 white-text font-32 margin-top-20'>Meet Up</div>
+                                        <div class='margin-bottom-20 white-text font-32 margin-top-20 how-it-works-header'>Meet Up</div>
                                         <p>
                                             <span class='white-text font-18'>
                                             Meet up around campus at the scheduled time and location. Skip the ATM, we take care of all your payments.
@@ -191,49 +199,52 @@
                 </div>
             </div>
             <div id='testimonials'>
+                <div class='row-fluid text-banner how-it-works-text-banner bold'>
+                    Testimonials
+                </div>
                 <div class='container'>
                     <div class='row-fluid'>
                         <div id='testimonial-1' class='col-xs-12 col-sm-4 col-md-4'>
                             <div class='testimonial-section'>
-                                    <div class='margin-bottom-20 normal-text font-32 margin-top-20'>Right People</div>
+                                    <div class='margin-bottom-20 normal-text font-32 margin-top-20 testimonial-header'>Right People</div>
                                     <p>
                                         <span class='dark-grey-text font-18'>
                                         "Finding a Guru who has taken the exact same class by the same professors  was very helpful for Hilfinger's CS61A. 
                                         </span>
                                     </p>
                                     <div class='margin-top-20 relative'>
-                                        <img src='/static/img/face1.png' class='absolute' height='50px' style='left:5px; top:-3px'> 
-                                        <div class='dark-grey-text font-18'> - Jenny L. ECON <br> Class of 2016 </div>
+                                        <img src='/static/img/face1.png' class='absolute testimonial-face' height='50px' style='left:5px; top:-3px'> 
+                                        <div class='dark-grey-text font-18 testimonial-section-author'> - Jenny L. ECON <br> Class of 2016 </div>
                                     </div>
                                     <br>
                             </div>
                         </div>
                         <div id='testimonial-2' class='col-xs-12 col-sm-4 col-md-4'>
                             <div class='testimonial-section'>
-                                    <div class='margin-bottom-20 normal-text font-32 margin-top-20'>Right Time</div>
+                                    <div class='margin-bottom-20 normal-text font-32 margin-top-20 testimonial-header'>Right Time</div>
                                     <p>
                                         <span class='dark-grey-text font-18'>
                                             "My Guru met me at Moffit in 20 mins, and clarified everything I was stuck with for Math 54. I should've done that earlier!""
                                         <span class='dark-grey-text font-18'>
                                     </p>
                                     <div class='margin-top-20 relative'>
-                                        <img src='/static/img/face2.png' class='absolute' height='50px' style='left:5px; top:-3px'> 
-                                        <div class='dark-grey-text font-18'> - Mark K. EECS <br> Class of 2017 </div>
+                                        <img src='/static/img/face2.png' class='absolute testimonial-face' height='50px' style='left:5px; top:-3px'> 
+                                        <div class='dark-grey-text font-18 testimonial-section-author'> - Mark K. EECS <br> Class of 2017 </div>
                                     </div>
                                     <br>
                             </div>
                         </div>
                         <div id='testimonial-3' class='col-xs-12 col-sm-4 col-md-4'>
                             <div class='testimonial-section'>
-                                <div class='margin-bottom-20 normal-text font-32 margin-top-20'>Right Price</div>
+                                <div class='margin-bottom-20 normal-text font-32 margin-top-20 testimonial-header'>Right Price</div>
                                     <p>
                                         <span class='dark-grey-text font-18'>
                                             "Private tutoring normally cost about $40/hr. For $15/hr, it was totally worth it to get help to save my Chem 3A exams."
-                                        <span class='dark-grey-text font-18'>
+                                        <span class='dark-grey-text font-18 '>
                                     </p>
                                     <div class='margin-top-20 relative'>
-                                        <img src='/static/img/face3.png' class='absolute' height='50px' style='left:5px; top:-3px'> 
-                                        <div class='dark-grey-text font-18'> - Eric C. MCB <br> Class of 2015 </div>
+                                        <img src='/static/img/face3.png' class='absolute testimonial-face' height='50px' style='left:5px; top:-3px'> 
+                                        <div class='dark-grey-text font-18 testimonial-section-author'> - Eric C. MCB <br> Class of 2015 </div>
                                     </div>
                                     <br>
                             </div>
@@ -244,18 +255,18 @@
         </div>
 
         <div id='signup-now'>
-            <div class='row-fluid text-banner' style='height:350px'>
+            <div class='row-fluid text-banner' id='referral-banner' style='height:350px'>
                 <img src='/static/img/guru-sliced.png' id='guru-banner'>
                 <div class='margin-top-30 margin-bottom-20 reg-text align-left'>
-                    <div class='white-text col-xs-offset-2 col-xs-10 col-sm-offset-3 col-sm-9 col-md-offset-4 col-md-8'>
-                        <div style='font-size:60px; font-weight:normal' class='white-text'>
+                    <div class='white-text col-xs-offset-3 col-xs-9 col-sm-offset-3 col-sm-9 col-md-offset-4 col-md-8'>
+                        <div id='guru-banner-header' class='white-text'>
                             Give $5, Get $5
                         </div>
-                        <div style='font-size:32px;'>
+                        <div id='guru-banner-subheader' >
                             Help your friends study smarter <br>
                             Get $10 for every friend that tries it.
                         </div>
-                        <div style='font-size:20px;text-decoration:underline' class='margin-top-30'>
+                        <div style='font-size:20px;text-decoration:underline' >
                             How it works
                         </div>
                     </div>
@@ -264,7 +275,7 @@
             <div class='container signup-container center'>
                 <div class='row-fluid'>
                     <div class='col-xs-12 col-md-12 signup-btn-container'>
-                        <div class='blue-text font-32 center block'>
+                        <div class='blue-text font-32 center block first-time-uguru'>
                             Your first time on Uguru? It's all good. <br>
                             We'll give you $5 to try it out!
                         </div>
@@ -641,6 +652,7 @@
         <script src="/static/js/fb.js"></script>
         <script src="/static/js/snippets/calendar.js"></script>
         <script src="/static/js/snippets/scroll.js"></script>
+        <script src="/static/js/mobile.js"></script>
         <!-- begin olark code -->
         <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
         f[z]=function(){
