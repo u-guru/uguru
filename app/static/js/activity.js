@@ -2,6 +2,7 @@ var credit_card_back_link = false;
 var student_original_price = null;
 var last_clicked_notif_index = null;
 var request_a_guru_clicked = false;
+var payment_plan_clicked = null;
 window.onhashchange = locationHashChanged
 function locationHashChanged() {
     if (!location.hash) {
@@ -38,6 +39,30 @@ var event_click = function(event_type, extra_params) {
         dataType: "json",
     }); 
 }
+
+var process_payment_plan_by_index = function(index) {
+    if (index == 0) {
+      return 1000;
+    } else if (index == 1) {
+      return 200;
+    } else if (index == 2) {
+      return 50;
+    } else {
+      return 0;
+    }
+  }
+
+var process_payment_plan_cost_by_index = function(index) {
+  if (index == 0) {
+      return 800;
+    } else if (index == 1) {
+      return 170;
+    } else if (index == 2) {
+      return 45;
+    } else {
+      return 0;
+    }
+   }  
 
 $(document).ready(function() {
       $body = $("body");
@@ -258,10 +283,43 @@ $(document).ready(function() {
         $('#activity').show();
     });
 
+   $('.payment-plan').on('click', 'a.go-to-confirmation-payment', function() {
+      feed_message_index = last_clicked_notif_index + 1;
+      var slideIndex = $(this).closest('.go-to-confirmation-payment-' + feed_message_index).index('.go-to-confirmation-payment-' + feed_message_index);
+      payment_plan_clicked = slideIndex;
+      $('.payment-plan:visible').siblings('.student-confirm-tutor').show();
+      $('.payment-plan:visible').hide();
+      plan_value = process_payment_plan_by_index(payment_plan_clicked);
+      $('#credits-purchased-' + feed_message_index).text('$' + plan_value);
+      $('#remaining-credits-' + feed_message_index).text('$' + (plan_value + parseFloat($('#existing-credits-' + feed_message_index).text()) - parseFloat($('#session-cost-' + feed_message_index).text()).toString()));
+      if (plan_value == 0) {
+        $('#amount-to-be-billed-' + feed_message_index).text('$' + (parseFloat($('#session-cost-' + feed_message_index).text()) - parseFloat($('#existing-credits-' + feed_message_index).text())).toString());
+        $('#new-credits-purchased-' + feed_message_index).hide();
+        $('#remaining-credits-div-' + feed_message_index).hide();
+        $('#second-hr-' + feed_message_index).hide();
+      } else {
+        plan_cost = process_payment_plan_cost_by_index(payment_plan_clicked);
+        $('#second-hr-' + feed_message_index).show();
+        $('#new-credits-purchased-' + feed_message_index).show();
+        $('#remaining-credits-div-' + feed_message_index).show();
+        $('#amount-to-be-billed-' + feed_message_index).text('$' + plan_cost.toString());
+      }
+   }); 
+
    $('#feed-messages').on('click', 'a.feed-message-back-link', function() {
-    $(this).parent().parent().parent().parent().parent().parent().hide();
-    window.location.hash = '';
-    $('#activity').show();
+    if ($('.payment-plan:visible').length > 0) {
+      $('.payment-plan:visible').siblings('.tutor-details-student-choose').show();
+      $('.payment-plan:visible').hide();
+
+    } else if ($('.student-confirm-tutor:visible').length > 0) {
+      $('.student-confirm-tutor:visible').siblings('.payment-plan').show();
+      $('.student-confirm-tutor:visible').hide();
+    } 
+    else {
+      $(this).parent().parent().parent().parent().parent().parent().hide();
+      window.location.hash = '';
+      $('#activity').show();
+    }
    });
 
    $('#feed-messages').on('click', 'a#accept-payment', function() {
@@ -392,6 +450,10 @@ $(document).ready(function() {
         var data = {
             'notification-id': last_clicked_notif_index,
         };
+        if (($('#amount-to-be-billed-'+(last_clicked_notif_index + 1) + ':visible').length > 0) && payment_plan_clicked != 3)  {
+          data['payment_plan'] = 3 - payment_plan_clicked;
+        }
+        
         $.ajax({
             type: "PUT",
             contentType: 'application/json;charset=UTF-8',

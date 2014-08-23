@@ -129,7 +129,8 @@
         } else {
             $('#add-credit-modal-alert').hide();
             var token = response.id;
-            var data = {'stripe-card-token':token}
+            var data = {'stripe-card-token':token,
+                        'payment_plan':(3 - payment_plan_clicked)}
             $.ajax({
                     type: "PUT",
                     contentType: 'application/json;charset=UTF-8',
@@ -137,8 +138,10 @@
                     data: JSON.stringify(data),
                     dataType: "json",
                     success:function(response) {
-                        $('#credit-modal').modal('hide');
-                        data = {'notification-id':last_clicked_notif_index,}
+                        data = {
+                            'notification-id':last_clicked_notif_index,
+                            }
+
                         $.ajax({
                                 type: "PUT",
                                 contentType: 'application/json;charset=UTF-8',

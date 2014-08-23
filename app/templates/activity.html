@@ -108,11 +108,18 @@
 		{% if not user.verified_tutor %}
 		<div class="row margin-top-40 margin-bottom-20	">
 			<div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-4 col-md-4">
-				<a id="tutor-request-link" href="javascript:void(0)">
-					<span class='blue-btn blue-btn-full font-20'>
-						Get Help And Ace Your Class
-					</span>
-				</a>
+				<div class='row-fluid'>
+					<a id="tutor-request-link" href="javascript:void(0)">
+						<span class='blue-btn blue-btn-full font-20'>
+							Get Help And Ace Your Class
+						</span>
+					</a>
+				</div>
+				{% if user.credit %}
+					<div class='row-fluid center font-20 margin-top-10 dark-grey-text'>
+						Your uGuru credits: <span class='green-text'> ${{user.credit}} 
+					</div>
+				{% endif %}
 				<span class='font-14 grey-text center block margin-top-20'>
 					New to uGuru? Click <a class='underline blue-text'href='javascript:void(0);'> here </a> to get started! 
 				</span>
@@ -410,163 +417,13 @@
 {% endif %}
 
 
-{% if address_book.keys() or user.verified_tutor %}
+{% if address_book.keys() %}
+	{% from '/macros/tutor-billing-form.html' import tutor_billing_form %}
 	{% set keys = address_book.keys() %}
 	{% set first_contact = keys[0] %}
-<div id="request-payments" style="display:none">
-		<div class="page-title">
-		  <div class="row-fluid" style="width:100%;text-align:center">
-		      <div class="col-xs-1 col-md-offset-1 col-md-1">
-		        <a href="/" id="feed-message-link" style="text-decoration:none"> 
-		          <h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
-		        </a>
-		      </div>
-		      <div class="col-xs-10 col-md-8" style="text-align:center">
-		        <h4 style="color:white;width:100%;font-weight:500">REQUEST PAYMENT</h4>
-		    	</div>
-		  </div>
-		</div>
-		{% if not keys %}
-		<br>
-		<div class="row">
-			<div style="text-align:center" class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6">
-				<div style="margin-bottom:0"class="alert alert-info">This is where you will bill student after a tutoring session.</div>
-			</div>
-		</div>
-		{% endif %}
-		<div class="offer" align="center" style="margin-left:20px;margin-right:20px">
-			<br>
-			<div id="address-urls">
-				{% if keys %}
-				<img style="display:show" id="payment-student-img" src="{{address_book[first_contact]['profile_url']}}" class="user-photo">
-				{% for key in keys[1:] %}
-					<img style="display:none" id="payment-student-img" src="{{address_book[key]['profile_url']}}" class="user-photo">
-				{% endfor %}
-				{% else %}
-				<img style="display:show" id="payment-student-img" src="/static/img/jenny.jpg" class="user-photo">
-				{% endif %}
-			</div>
-			<h4 style="text-align:center"><b>Select Student You Recently Tutored </b> <br>
-				<div style="margin-top:15px"id="select-person-to-pay" class="btn-group">
-		            <button type="button" class="btn-default">
-		              {% if keys %}
-		              <span id="selected-person-to-pay" class="dropdown-elem-{{address_book[first_contact]['conversation_id']}}" style="color:black">
-		              	{{address_book[first_contact]['student_name']}}
-		              </span>
-		              {% else %}
-		              	<span id="selected-person-to-pay" style="color:black">
-		              	Sample Student
-		              	</span>
-		              {% endif %}
-		            </button>
-		            <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown">
-		              <span class="caret"></span>
-		              <span class="sr-only">Toggle Dropdown</span>
-		            </button>
-		            <ul class="dropdown-menu" style='z-index:1000'role="menu">
-		              {% for name in keys %}
-		              <li><a id="dropdown-elem-{{address_book[name]['conversation_id']}}" href="javascript:void(0);">{{address_book[name]['student_name']}}</a></li>
-		              {% endfor %}
-		            </ul>
-		         </div>
-			</h4>
-			<div style="text-align:center"class="row">
-				<h4><b> How Long Did You Tutor?</b></h4>
-				<div style="color:rgb(0, 159, 225)" class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-					<div id="time-estimate-slider-payment" style="margin-top:7px; margin-bottom:5px"></div>
-                    <p style="margin-left:5px; font-size:14px; margin-top:3px; font-weight:700"class="text-left"><span style="font-size:14px;color:rgb(0, 159, 225)" name="estimate" id="payment">2</span> hours</p>
-				</div>
-			</div>
-			<div id="change-hourly-price" style="display:none; text-align:center"class="row">
-				<h4 style="margin-top:5px;"><b> What Hourly Price Did You Settle?</b></h4>
-				<div style="color:rgb(0, 159, 225)" class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-					<div id="hourly-price-slider-payment" style="margin-top:7px; margin-bottom:5px"></div>
-					<p style="margin-left:5px; color:grey; font-size:14px; margin-top:3px; font-weight:700"class="text-left">You will make: <span style="color:#69bf69">$<span style="font-size:14px;color:#69bf69" name="estimate" id="price">15</span>/hr</span>&nbsp;&nbsp;
-						<!-- <span style="color:grey; display:block; font-weight:100; font-size:10px;"><i>(Your student will be charged $<span id="student-charged-payment">17</span>/hr for first payment, or $2 + 3% total for recurring payments.) <span id="student-charged-recurring-payment"></span> --></i></p>
-					<a href="javascript:void(0)" style="position:relative; z-index:1000;"id="change-hourly-price-cancel">
-						<h6 style="margin-top:0px; margin-bottom:10px; color:grey">
-						Cancel
-		            	</h6>
-		            </a>
-				</div>
-			</div>
-			<div id="change-hourly-price-link-div" class="row">
-	            	<h6 style="margin-top:-25px; margin-bottom:20px; color:grey">
-						<a style="position:relative; z-index:999;" href="javascript:void(0);" id="change-hourly-price-link">
-							Change hourly price
-						</a>
-	            	</h6>
-	        </div>
-			<div style="text-align:center; margin-right:-15px; margin-top:20px; margin-left:-15px; padding-left:0px; padding-right:0px;" class="row">
-              <div style="padding-left:20px; padding-right:20px"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
-                <a id="submit-payment" href="javascript:void(0)">
-                  <div class="tutor-submit-next">
-                    <p style='color:white'> REQUEST </p>
-                  </div>
-                </a>
-              </div>
-            </div>
-		</div>
-</div>
-	<div style="display:none"id="rating-form-tutor">
-		<div class="page-title">
-		  <div class="row-fluid" style="width:100%;text-align:center">
-		      <div class="col-xs-12 col-md-12 col-sm-12" style="text-align:center">
-		        <h4 style="color:white;width:100%;font-weight:500">PLEASE RATE YOUR EXPERIENCE WITH
-		        	<span id="student-name"></span>
-		        </h4>
-		    </div>
-		  </div>
-		</div>
-		<div class="container-fluid">
-			<br>
-			<div id="rate-alert" style="color:red;text-align:center;display:none"class="row">
-				Please select the number of stars and fill in all fields
-			</div>
-			<div style="text-align:center; color:grey"class="row">
-				<h4>Reviews help tutors and students find the right match.</h4>
-				<h6 style="color:grey">Don't worry! Your ratings and review will remain anonymous </h6>
-			</div>
-			<div class="row">
-			  	<div class="user-profile" style="text-align:center">
-	  				<img id="student-profile-photo" src="{{user.profile_url}}" class="user-photo">
-			  	</div>
-			</div>
-			<div style="text-align:center; color:grey;margin-top:-5px"class="row">
-	        	<span id="student-name-again"></span>
-			</div>
-			<div style="text-align:center" class="row">
-				<div id="tutor-rating-stars" class="rating">
-					<span>☆</span>
-					<span>☆</span>
-					<span>☆</span>
-					<span>☆</span>
-					<span>☆</span>
-				</div>	
-			</div>
-			<br>
-			<div class="row">
-				<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
-					<textarea name="description" placeholder="How would you describe your experience?"id="student-rating-description" class="form-control" rows="3"></textarea>
-				</div>
-			</div>
-			<div id="launch-profile-div" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:20px; margin-bottom:0px; display:block">
-				<a href="javascript:void(0)" id="submit-student-rating">
-					<div class="tutor-submit-next">SUBMIT
-					</div>
-				</a>
-			</div>
-			{% if user.skills %}
-			<div class="row" style="text-align:center;">
-				<div style="margin-top:-10px"class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4">
-					<h6 style="color:red">  
-						<b>Be sure to remind your student to rate you by logging into their account. These ratings help promote yourself when students see your profile!</b>
-					</h6>
-				</div>
-			</div>
-			{% endif %}
-		</div>
-	</div>
+	{{tutor_billing_form(address_book, first_contact)}}
+
+
 {% endif %}
 
 <div style="display:none" id="tutor-request">
@@ -594,7 +451,7 @@
 
 <div id="feed-messages">
 		{% if not user.customer_id %}
-		<div id='credit-modal' data-keyboard='True' class="modal fade">
+		<!-- <div id='credit-modal' data-keyboard='True' class="modal fade">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-body">
@@ -627,9 +484,9 @@
 
                 </div>
               </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div>
+            </div><! /.modal-content -->
+          <!-- </div>/.modal-dialog
+        </div>  -->
 		{% endif %}
 		{% for n in user.notifications|sort(attribute='time_created') %}
 			{% if n.a_id_name == 'getting-started-tutor' %}
@@ -1866,7 +1723,7 @@
               feed_message_index = last_clicked_notif_index + 1
 		      $('#student-offer-hourly-price-' + feed_message_index).text($('#tutor-change-price-slider-'+ feed_message_index).slider('value'));
 		      $('#student-offer-total-price-' + feed_message_index).text($('#tutor-change-price-slider-'+ feed_message_index).slider('value') * $('#student-time-estimate-' +feed_message_index).text());
-		      $('#tutor-will-pay-' + feed_message_index).text(prices_dict[parseInt($('#tutor-change-price-slider-' + feed_message_index).slider('value'))])
+		      $('#you-will-make-' + feed_message_index).text(parseFloat($('#tutor-change-price-slider-'+ feed_message_index).slider('value')) * 0.75 *parseFloat($('#session-length-'+ feed_message_index).text()));
             }
           }
       	);

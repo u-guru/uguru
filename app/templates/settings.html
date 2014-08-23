@@ -424,7 +424,7 @@
                         <textarea id='profile-relevant-experience' class='form-control standard-textarea guru-app-textarea'>{% if user.tutor_introduction %}{{user.tutor_introduction}}{% endif %}</textarea>
                         {% endif %}
                         <div class='row-fluid margin-top-20'>
-                            <a href='javascript:void(0);' id='submit-profile-info-btn'>
+                            <a href='javascript:void(0);' id='submit-profile-info-btn' name='{{user.user_referral_code}}'>
                               <span class='blue-btn blue-btn-full' style='width:100%'>
                                   Submit
                               </span>

@@ -50,7 +50,7 @@
                       {% else %}
                         <span class='red-text'> -${% if payment.stripe_recipient_id %}{{payment.tutor_received_amount}}
                           {% else %}
-                          {{payment.student_paid_amount}} 
+                          {{payment.tutor_received_amount}} 
                           {% endif %}
                         </span>
                       {% endif %}

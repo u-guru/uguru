@@ -109,6 +109,16 @@ $(document).ready(function(){
           send_profile_update_ajax('res', this.checked)
     });
 
+    $('#login-to-signup-modal').click(function() {
+      $('#login-modal').modal('hide');
+      $('#signup-modal').modal('show');
+    });
+
+    $('#signup-to-login-modal').click(function() {
+      $('#signup-modal').modal('hide');
+      $('#login-modal').modal('show');
+    });
+
     $('#submit-profile-info-btn').click(function() {
       if ($('#profile-relevant-experience').length > 0) {
         send_profile_update_ajax('intro', $('#profile-relevant-experience').val());
@@ -117,6 +127,7 @@ $(document).ready(function(){
       send_profile_update_ajax('phone', $('#profile-phone').val())
       $('#profile-saved').show();
       $('#profile-saved').delay(750).fadeOut('slow');
+      window.location.replace('/' + $(this).attr('name'));
     });
 
     function readJSON(file) {
@@ -134,6 +145,33 @@ $(document).ready(function(){
       var skill_name = $(this).siblings('.skill-tag-text').text();
       $(this).parent().remove();
       update_skill_ajax('remove',skill_name);
+    });
+
+    $('.go-to-payment-plan').click(function() {
+      root_parent = $(this).parent().parent().parent();
+      root_parent.hide();
+      root_parent.siblings('.payment-plan').show();
+    });
+
+    $('.go-to-confirmation').click(function() {
+      feed_message_index = last_clicked_notif_index + 1;
+      $('.tutor-details-student-choose:visible').siblings('.student-confirm-tutor').show();
+      $('.tutor-details-student-choose:visible').hide();
+      $('#new-credits-purchased-' + feed_message_index).hide();
+      $('#remaining-credits-div-' + feed_message_index).show();
+      $('#amount-to-be-billed-div-' + feed_message_index).hide();
+      $('#remaining-credits-' + feed_message_index).text('$' + (parseFloat($('#existing-credits-' + feed_message_index).text()) - parseFloat($('#session-cost-' + feed_message_index).text())).toString());
+
+      // $('#amount-to-be-billed').text('$' + (parseFloat($('#session-cost').text()) - parseFloat($('#existing-credits').text())).toString());
+      //   $('#new-credits-purchased').hide();
+      //   $('#remaining-credits-div').hide();
+      //   $('#second-hr').hide();
+      // } else {
+      //   plan_cost = process_payment_plan_cost_by_index(payment_plan_clicked);
+      //   $('#second-hr').show();
+      //   $('#new-credits-purchased').show();
+      //   $('#remaining-credits-div').show();
+      //   $('#amount-to-be-billed').text('$' + plan_cost.toString());
     });
 
     $('#request-form-edit-price').click(function() {
@@ -429,13 +467,26 @@ $(document).ready(function(){
         } 
     });
 
-    $('#tutor-app-submit').click(function() {
+    $('#tutor-app-next').click(function() {
       if (!$('#tutor-app-school-email').val() || !$('#tutor-app-major').val() || $('.tutor-app-course-tag').length == 0
         || !$('#tutor-app-experience').val() || $('#tutor-app-year').text().trim().length == 0) {
           $('#tutor-app-alert').text('Please fill in all fields');
           $('#tutor-app-alert').show();
       } else {
-          var data_dict ={
+          $('#guru-app').hide();
+          $('#tutor-app-details').show();
+          $('#guru-app-back').show();
+      }
+    });
+
+  $('#guru-app-back').click(function() {
+    $(this).hide();
+    $('#guru-app').show();
+    $('#tutor-app-details-hide')
+  });
+
+  $('#tutor-app-submit').click(function() {
+    var data_dict ={
             'tutor-submit-app': true,
             'school-email': $('#tutor-app-school-email').val(),
             'major': $('#tutor-app-major').val(),
@@ -447,8 +498,8 @@ $(document).ready(function(){
             'res': $('#tutor-res-check').prop('checked'),
             'gsi': $('#tutor-gsi-check').prop('checked'),
             'cal': $('#tutor-cal-check').prop('checked'),
-          }
-          $.ajax({
+    }
+    $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
             url: '/api/guru-app' ,
@@ -458,8 +509,7 @@ $(document).ready(function(){
               window.location.replace('/')
             }
           });
-      }
-    });
+  });
 
   function get_courses_from_tutor_app() {
     arr_courses = [];

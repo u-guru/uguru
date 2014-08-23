@@ -35,6 +35,8 @@ TWILIO_DEFAULT_PHONE = "+15104661138"
 twilio_client = TwilioRestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
 
+
+
 stripe_keys = {
     'secret_key': os.environ['SECRET_KEY'],
     'publishable_key': os.environ['PUBLISHABLE_KEY']
@@ -105,6 +107,11 @@ def index():
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral)
 
+
+@app.route('/parents/', methods =['GET', 'POST'])
+def parents():
+    return render_template('parents.html')
+
 @app.route('/new/')
 def new():
     return render_template('new.html')
@@ -112,10 +119,13 @@ def new():
 
 @app.route('/<arg>', methods=['GET', 'POST', 'PUT'])
 def profile(arg):
-    user = User.query.filter_by(user_referral_code=arg).first()
-    if user and user.approved_by_admin:
+    user = None
+    if session.get('user_id'):
+        user = User.query.get(session.get('user_id'))
+    profile_user = User.query.filter_by(user_referral_code=arg).first()
+    if profile_user and profile_user.approved_by_admin:
         from app.static.data.short_variations import short_variations_dict
-        return render_template('profile.html', user=user, variations=short_variations_dict)
+        return render_template('profile.html', profile_user=profile_user , user=user, variations=short_variations_dict)
     else:
         return redirect(url_for('index'))
 
@@ -1967,7 +1977,7 @@ def activity():
     for payment in user.payments:
         tutor_id = payment.tutor_id
         student_id = payment.student_id
-        if payment.student_id:
+        if payment.student_id and payment.tutor_id:
             tutor = User.query.get(tutor_id)
             if (payment.tutor_id == user.id and payment.tutor_confirmed == False) or (payment.student_id == user.id and payment.student_confirmed == False):
                 confirm_payments.append({
@@ -2012,6 +2022,10 @@ def get_tutor_time_ranges(week_object):
 @app.route('/tutor_offer/')
 def tutor_offer():
     return render_template('tutor_offer.html')
+
+@app.route('/guru-rules/')
+def guru_rules():
+    return render_template('guru-rules.html')
 
 @app.route('/messages/')
 def messages():

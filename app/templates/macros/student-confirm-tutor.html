@@ -1,0 +1,77 @@
+{% macro student_confirm_tutor(user, notif, request_dict, time, index, tutor_dict, variations) -%}
+{% set tutor = tutor_dict[notif] %}
+{% set cost = request_dict[notif.request_id]['request'].time_estimate * notif.request_tutor_amount_hourly %}
+    <div class='tutor-app-photo-container margin-top-30 margin-bottom-15 block student-confirm-tutor' style='display:none'>
+        <div class='font-32 normal-text center'> Session Confirmation</div>
+        
+        <p class='margin-top-20 font-16'> Your Guru: <span class='green-text'> {{tutor.name.split(" ")[0]}}
+        </p>
+
+        <p class='margin-top-20 font-16'> Scheduled Meeting Time: <span class='green-text'> 
+            <a id='request-calendar-toggle' onclick='show_tutor_request_submitted_calendar({{request_dict[notif.request_id]["student-calendar"]}}, {{request_dict[notif.request_id]["tutor-calendars"][tutor_dict[notif].id]}}, false, {{time.mktime(request_dict[notif.request_id]["request"].time_created.timetuple())}})'>
+                <span class='glyphicon glyphicon-calendar'></span>
+                <span class='blue-text'> See {{tutor.name.split(" ")[0]}}'s Availability </span> 
+              </a>
+        </p>
+
+        <p class='margin-top-20 font-16'> Hourly Rate <span class='green-text'> 
+            ${{(notif.request_tutor_amount_hourly)}}/hr
+        </p>
+
+        <p class='margin-top-20 font-16'> Total Hours <span class='green-text'> 
+            {{request_dict[notif.request_id]['request'].time_estimate}}
+        </p>
+
+        <hr>
+
+        <p class='font-16'>
+            Existing Credits: <span class='green-text'> $<span id='existing-credits-{{index}}'>{{user.credit}}</span> </span>
+        </p>
+        <p id='new-credits-purchased-{{index}}'class='font-16'>
+            New Credits Purchased: <span id='credits-purchased-{{index}}'class='green-text'> </span>
+        </p>
+        <p class='font-16' id='amount-to-be-billed-div-{{index}}'>
+            Amount to be billed: <span id='amount-to-be-billed-{{index}}'class='red-text'> </span>
+        </p>
+        <p class='font-16'>
+            Total Session Cost: <span class='red-text'> $<span id='session-cost-{{index}}'>{{cost}}</span> </span>
+        </p>
+        <hr id='second-hr-{{index}}'>
+
+        <p id='remaining-credits-div-{{index}}'class='font-20'>
+            Remaining Credits: <span id='remaining-credits-{{index}}' class='green-text'> </span>
+        </p>        
+
+        <hr>
+
+        <p class='font-16'>
+            You will be fully refunded if you don't meet up. You will only be charged for a $5 deposit if you cancel within 5 hours before your schedule.
+        </p>
+        {% if not user.customer_id %}
+        <div id='change-credit-container' style='display:block' class='change-payment-information margin-top-20 margin-bottom-20'>
+              <label> Card Number </label>
+              <input placeholder="•••• •••• •••• ••••" style="width:100%" type="text" size="20" data-stripe="number" class='form-control standard-input' id="credit-card-num-modal">
+              <label> Expiration Date </label>
+              <div class = 'row-fluid relative'>
+                <input placeholder="MM/YY" class='font-control standard-input exp-date-month' size="20"type="text" data-stripe="exp-month" id='credit-card-exp-date-modal'>
+                <img class='float-right absolute powered-by-stripe-settings'src='/static/img/powered-stripe.png'> </img>
+              </div>
+              <div id='add-credit-modal-alert' class='red-text font-12' style='display:none'>
+                    Please fill in all fields.
+              </div>
+              <div class='row-fluid margin-top-20'>
+                <a href='javascript:void(0);' id='submit-credit-card-modal'>
+                  <span style='width:100%'class='blue-btn blue-btn-full margin-top-10'> Save & Submit Card</span>
+                </a>
+              </div>
+        </div>
+        {% else %}
+        <div class='row-fluid font-20 margin-top-40 margin-bottom-20 center'>
+            <a href="javascript:void(0);" class='student-request-accept-btn' >
+                <span class='blue-btn' style='padding:8px 60px'> Confirm </span>
+            </a>
+        </div> 
+        {% endif %}
+
+    </div>
+{%- endmacro %}

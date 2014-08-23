@@ -491,6 +491,7 @@ class Payment(Base):
     flag = Column(Boolean)
     refunded = Column(Boolean)
     status = Column(String)
+    credits_used = Column(Integer)
 
 
     def __init__(self, request_id = None):

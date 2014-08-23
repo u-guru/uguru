@@ -107,7 +107,6 @@ h1, h3 {
   color:white;
   padding:35px;
   text-align:center;
-  font-family: 'Roboto Condensed', sans-serif;
   position:relative;
 }
 
@@ -315,6 +314,12 @@ input {
   color:white !important;
 }
 
+.navbar-default.navbar-black {
+  background-color:#424341;
+  margin-bottom:0px;
+  border-radius:0px !important;
+}
+
 .dropdown-menu {
   width:100%;
   color:#484747;
@@ -402,6 +407,10 @@ input {
   color:white;
 }
 
+.background-grey {
+  background-color:#424341;;
+}
+
 .navbar-main {
   border-bottom:2px solid #27ACE3;
 }
@@ -415,6 +424,16 @@ input {
 .standard-input {
   border:1px solid #484748;
   border-radius:1px;
+}
+
+.standard-input.no-border {
+  border:0px;
+  border-radius:1px; 
+}
+
+.standard-input.grey-border {
+  border:1px solid grey;
+  border-radius:1px; 
 }
 
 .standard-textarea {
@@ -451,9 +470,17 @@ input {
   position:relative;
 }
 
+.tutor-details-request {
+  height:160px;
+}
+
+.pointer {
+  cursor:pointer;
+}
+
 .request-details-attribute-container {
   position:relative;
-  height:180px;
+  height:200px;
 }
 
 .tutor-app-photo-container img {
@@ -472,7 +499,7 @@ input {
 
 .guru-profile-attributes {
   position:absolute;
-  left:140px;
+  left:180px;
   top:0px;
 }
 
@@ -550,6 +577,10 @@ input {
 .message-send-btn {
   height:30px;
   margin-left:15px;
+}
+
+.margin-left {
+  margin-left:5px;
 }
 
 .message-send-box-container {
@@ -661,7 +692,7 @@ textarea {
 }
 
 .blue-text {
-  color:#27ACE3;
+  color:#2CAEE1;
 }
 
 .red-text {
@@ -708,6 +739,10 @@ textarea {
   display:none;
 }
 
+.margin-top-5 {
+  margin-top:5px;
+}
+
 .margin-top-10 {
   margin-top:10px;
 }
@@ -748,6 +783,10 @@ textarea {
   margin-bottom:30px;
 }
 
+.margin-bottom-5 {
+  margin-bottom:5px;
+}
+
 .width-100 {
   width:100%;
 }
@@ -756,8 +795,16 @@ textarea {
   font-size:30px !important;
 }
 
+.font-40 {
+  font-size:40px;
+}
+
 .font-32 {
   font-size:32px;
+}
+
+.font-10 {
+  font-size:10px;
 }
 
 .font-24 {
@@ -876,6 +923,10 @@ textarea {
 }
 
 #banner {
+  position:relative;
+}
+
+#parent-banner {
   position:relative;
 }
 
@@ -1115,6 +1166,10 @@ a:hover {
   padding:80px;
 }
 
+.signup-container.parents {
+  padding:40px 80px;
+}
+
 .footer-link {
   padding-left:20px;
   padding-right:20px;
@@ -1130,6 +1185,19 @@ a:hover {
   margin-top:25px;
   font-family: 'Roboto', sans-serif;
 }
+
+.login-padding {
+  padding:8px 33px;
+}
+
+.signup-padding {
+  padding:8px 60px;
+}
+
+/* webkit solution */
+#login-email::-webkit-input-placeholder { text-align:right; }
+/* mozilla solution */
+#login-email input:-moz-placeholder { text-align:right; }
 
 #main-container input {
   margin-top:20px;
@@ -1614,6 +1682,11 @@ input#credit-card-num.amex, input#debit-card-num-settings.amex, input#credit-car
 @media (min-width: 992px) {  
   #banner {
     background: url('/static/img/background-1600.jpg') no-repeat;
+    background-size:cover;
+    height:550px;
+  }
+  #parent-banner {
+    background: url('/static/img/parent-background-1600.png') no-repeat;
     background-size:cover;
     height:550px;
   }

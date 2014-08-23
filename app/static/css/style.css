@@ -1505,7 +1505,7 @@ label {
 .profile-rating > span {
   display: inline-block;
   position: relative;
-  width: 1em;
+  width: 0.75em;
   cursor:pointer;
   content: "\2605";
 }

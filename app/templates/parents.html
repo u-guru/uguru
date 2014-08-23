@@ -12,141 +12,68 @@
     <body>
     <div id='main'>
         <div id='home' >
-            <div id='banner'>
-                <nav class="navbar navbar-default" role="navigation">
-                  <div class="container-fluid">
-                    <!-- Logo and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                      </button>
-                      <a class="navbar-brand" href="#">
-                        <img src='/static/img/guru-new.svg' height='60px'>
-                        <span class='logo-text'> &nbsp;uGuru.me </span>
-                      </a>
-                    </div>
+            <nav class="navbar navbar-default navbar-black" role="navigation">
+              <div class="container-fluid">
+                <!-- Logo and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#">
+                    <img src='/static/img/guru-new.svg' height='60px'>
+                    <span class='logo-text'> &nbsp;uGuru.me </span>
+                  </a>
+                </div>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                      <ul class="nav navbar-nav">
-                        <li><a href="#" id='powered-by-cal'>by Cal bears, for Cal bears</a></li>
-                      </ul>
-                      <ul class="nav navbar-nav navbar-right">
-                        <li><a id='how-it-works-nav'href="/parents/">Parents</a></li>
-                        <li><a id='how-it-works-nav'href="#how-it-works">How it works</a></li>
-                        <li><a id='become-guru-nav' href="javascript:void(0);">Become a Guru</a></li>
-                        <li><a data-toggle='modal'  data-target='#login-modal' href='#'><u>Log in</u></a></li>
-                        <li><a id='signup-nav' href="javascript:void(0);">
-                                <span style='padding:8px 26px;' class='blue-btn'> Get Started </span>
-                            </a>
-                        </li>
-                      </ul>
-                    </div><!-- /.navbar-collapse -->
-                  </div><!-- /.container-fluid -->
-                </nav> 
-                <div id='main-container' class='container center'>
-                    <div class='white-text'style='font-size:36px'>
-                        Study <del>Harder</del> Smarter
-                    </div>
-                    <h3 class='white-text'>
-                        Get A Peer Tutor To Help You Ace It In Minutes
-                    </h3>
-                    <div class='search-class-container'>
-                        <input id='course-input' class='typeahead' placeholder='Someone help me in..(CS10)'type='text'></input>
-                        <a href='javascript:void(0);' id='home-course-submit'>
-                            <span id='home-course-submit-btn' class='blue-btn'> Ace It! </span>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                    <li><a href="#" id='powered-by-cal'>by Cal bears, for Cal bears</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href='/'>Back to Home</a></li>
+                    <li><a id='signup-nav' href="javascript:void(0);">
+                            <span style='padding:8px 26px;' class='blue-btn'> View Pricing & Plans </span>
                         </a>
+                    </li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav> 
+            <div id='parent-banner'>
+                <div id='main-container' class='container center'>
+                    <div class='white-text font-40 margin-top-60'>
+                        Be Supportive! Let Your Kid Succeed At Cal
                     </div>
-                </div>
-                <div class='container-fluid' id='tutor-banner-background'>
-                </div>
-                <div id='tutor-banner-content'>
-                    <div class='container-fluid'>
-                        <div class='row-fluid'>
-                            <div id='tutor-preview-1' class='col-xs-12 col-sm-5 col-md-offset-1 col-md-5 mobile-tutor-content'>
-                                <div class='tutor-preview'>
-                                    <div class='tutor-preview-img-container'>
-                                        <img class='tutor-preview-img' src='/static/img/nadir.png' height='90px' width='90px'>
-                                        <div class='tutor-preview-content'>
-                                            <div class='tutor-preview-content-details'>
-                                                <span class='font-16 bold'> Nadir B. </span> &nbsp;&nbsp;
-                                                <span class='ratings font-16'> 
-                                                    <span class="star-icon-feed full">☆</span>
-                                                    <span class="star-icon-feed full">☆</span>
-                                                    <span class="star-icon-feed full">☆</span>
-                                                    <span class="star-icon-feed full">☆</span>
-                                                    <span class="star-icon-feed half">☆</span>
-                                                    <span class='font-16'>&nbsp;(5)&nbsp;&nbsp;</span>
-                                                </span>
-                                                <div class='tutor-preview-content-tags'>
-                                                    <span class='tutor-exp-tag'>
-                                                        GSI
-                                                    </span>
-                                                    <span class='tutor-exp-tag'>
-                                                        SLC Tutor
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class='tutor-preview-content-major'>
-                                                <p><b>MCB: Neurobiology, Class of 2014</b></p>
-                                            </div>
-                                            <div class='tutor-preview-content-description'>
-                                                <p>
-                                                    "I have 6 years of experience tutoring general chemistry. At Cal, I've been a Chem1A SLC drop-in tutor for 3 years and a Chem1A group leader..."
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class='margin-top-30 font-16 white-text'>
+                        Send $5 Coupon For Tutoring By Other Students Anytime He/She Needs It
+                    </div>
+                    <div class='row-fluid margin-top-30 center'>
+                        <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4'>
+                            <div class='row'>
+                                <input type='text' placeholder='Your Name' class='form-control standard-input inline no-border' style='width:40%'>&nbsp;&nbsp;
+                                <input type='text' placeholder='Your Email' class='form-control standard-input inline no-border'style='width:57%'>
                             </div>
-                            <!-- Margin is temporary -->
-                            <div id='tutor-preview-2' class='col-xs-12 col-sm-5 col-md-5' style='margin-left:30px'>
-                                <div class='tutor-preview'>
-                                    <div class='tutor-preview-img-container'>
-                                        <img class='tutor-preview-img' src='/static/img/sean.png' height='90px' width='90px'>
-                                        <div class='tutor-preview-content'>
-                                            <div class='tutor-preview-content-details'>
-                                                <span class='font-16 bold'> Sean Z. </span> &nbsp;&nbsp;
-                                                <span class='ratings font-16'> 
-                                                    <span class="star-icon-feed full">☆</span>
-                                                    <span class="star-icon-feed full">☆</span>
-                                                    <span class="star-icon-feed full">☆</span>
-                                                    <span class="star-icon-feed full">☆</span>
-                                                    <span class="star-icon-feed full">☆</span>
-                                                    <span class='font-16'>&nbsp;(1)&nbsp;&nbsp;</span>
-                                                </span>
-                                                <div class='tutor-preview-content-tags'>
-                                                    <span class='tutor-exp-tag'>
-                                                        Lab Assistant
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class='tutor-preview-content-major'>
-                                                <p><b>Computer Science, Class of 2016</b></p>
-                                            </div>
-                                            <div class='tutor-preview-content-description'>
-                                                <p>
-                                                    "I have 8 years of programming experience. I started in middle school when I learned Python by hacking on an old Nokia 3650..."
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class='row'>
+                                <input type='text' placeholder='Student Name' class='form-control standard-input inline no-border' style='width:40%; margin-top:8px !important;'>&nbsp;&nbsp;
+                                <input type='text' placeholder='Student Email'class='form-control standard-input inline no-border'style='width:57%;margin-top:8px !important;'>
+                            </div>        
+                            <div class='row margin-top-20'>
+                                <span class='blue-btn blue-btn-full center font-16'>
+                                    Send Your Kid $5 Tutoring Credits for Free
+                                </span>
                             </div>
-                            <!-- <div id='tutor-next-sneak' class='col-xs-12 col-sm-2 col-md-1' style='padding-right:0px'>
-                                <div class='tutor-preview-next'>
-                                    <div id='load-next-tutors-bar'>
-                                    </div>
-                                    <span id='load-next-tutors-pointer' class='glyphicon glyphicon-step-backward'>
-                                    </span>
-                                    <img src='/static/img/lee.png' id='load-next-tutor-photo'>
-                                </div>
-                            </div> -->
+
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class='row-fluid background-grey center' style='height:40px'>
+                <div class='white-text font-16' style='padding:10px'>
+                    How It Works For Your Kid
                 </div>
             </div>
             <div id='how-it-works-home white-text'>
@@ -249,34 +176,43 @@
                 <div class='margin-top-30 margin-bottom-20 reg-text align-left'>
                     <div class='white-text col-xs-offset-2 col-xs-10 col-sm-offset-3 col-sm-9 col-md-offset-4 col-md-8'>
                         <div style='font-size:60px; font-weight:normal' class='white-text'>
-                            Give $5, Get $5
+                            Cal Is Not Easy...
                         </div>
                         <div style='font-size:32px;'>
-                            Help your friends study smarter <br>
-                            Get $10 for every friend that tries it.
-                        </div>
-                        <div style='font-size:20px;text-decoration:underline' class='margin-top-30'>
-                            How it works
+                            Help your kid with last second HW Help <br>
+                            in the library. Tell them about uGuru!
                         </div>
                     </div>
                 </div>
             </div>
-            <div class='container signup-container center'>
+            <div class='container signup-container parents center'>
                 <div class='row-fluid'>
                     <div class='col-xs-12 col-md-12 signup-btn-container'>
                         <div class='blue-text font-32 center block'>
-                            Your first time on Uguru? It's all good. <br>
-                            We'll give you $5 to try it out!
+                            Turn Competition into Collaborative Learning
                         </div>
-                        <br>
-                        <br>
-                        <br>
-                        <div class='row-fluid block'>
-                            <a href='javascript:void(0)' id='signup-nav-2'>
-                                <span class='large-blue-btn'>
-                                    Get Started
-                                </span>
-                            </a>
+                        <div class='row-fluid blue-text font-20 center block margin-top-20'>
+                            <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6'>
+                                Now your kid can get help from other Cal students, and help others while earning side cash.
+                            </div>
+                        </div>
+                        <div class='row-fluid center'>
+                            <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 margin-top-20 '>
+                                <div class='row'>
+                                    <input type='text' placeholder='Your Name' class='form-control standard-input grey-border inline' style='width:40%'>&nbsp;&nbsp;
+                                    <input type='text' placeholder='Your Email' class='form-control standard-input grey-border inline'style='width:57%'>
+                                </div>
+                                <div class='row'>
+                                    <input type='text' placeholder='Student Name' class='form-control standard-input grey-border inline' style='width:40%; margin-top:8px !important;'>&nbsp;&nbsp;
+                                    <input type='text' placeholder='Student Email'class='form-control standard-input grey-border inline'style='width:57%;margin-top:8px !important;'>
+                                </div>        
+                                <div class='row margin-top-20'>
+                                    <span class='blue-btn blue-btn-full center font-16'>
+                                        Send Your Kid $5 Tutoring Credits for Free
+                                    </span>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -435,178 +371,129 @@
                         </div> 
                     </div>
                 </div>
-                <div class='request-form-extra-detail col-sm-3 col-md-4'>
-                    <!-- <div class='extra-detail-container' style='margin-top:220px'>
-                        <div class='extra-detail-form reg-text'>
-                            We will pin these tutors with your request, and let you know when they get back to you.
-                        </div>
-                        <div class='extra-detail-form reg-text margin-top-40'>
-                            We will pin these tutors with your request, and let you know when they get back to you.
-                        </div>
-                    </div> -->
-                </div>
             </div>
         </div>
     </div>
 
-    {% include 'calendar.html' %}
-    <!-- Student Request Form -->
-    <div id='request-form'>
-        <nav class="navbar navbar-default navbar-main" role="navigation">
-          <div class="container-fluid">
-            <!-- Logo and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="/">
-                <img src='/static/img/guru-new.svg' height='60px'>
-                <span class='logo-text blue-text'> &nbsp;uguru.me </span>
-              </a>
-            </div>
+    <div id='pricing-modal' data-keyboard='True' class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            
+            <div id='login-modal-container' class='container-fluid center'>
+                <!-- <h1 class='extra-margin-bottom dark-grey-text'><b>LOGIN</b></h1> -->
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li><a class='reg-text' href="#">by Cal bears, for Cal bears</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right navbar-right-main">
-                <li><a id='become-guru-nav-request' href="javascript:void(0);">Become a Guru</a></li>
-                <li><a data-toggle='modal'  data-target='#login-modal' href='#'><u>Log in</u></a></li>
-                <li><a id='signup-nav-request' href="javascript:void(0);">
-                        <span class='blue-btn'> Sign up </span>
-                    </a>
-                </li>
-              </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
-        </nav>
-        {% include 'request-form-container.html' %}
-    </div>
-
-
-        <div id='login-modal' data-keyboard='True' class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-body">
-                
-                <div id='login-modal-container' class='container-fluid center'>
-                    <!-- <h1 class='extra-margin-bottom dark-grey-text'><b>LOGIN</b></h1> -->
-
-                    <a id='fb-login-btn' onclick='fb_login()' href='#'>
-                        <img src='/static/img/login-fb.png'>
-                    </a>
-                    <div class='or-text relative'>
-                        <span style='width:20px; border-top:1px solid grey'> </span> Or <span style='border-top: 1px solid grey;'> 
-                        </span>
-                    </div>
-                    <div class='login-input-container'>
-                        <div id='alert-fields-login-2'>
-                            Please fill in all fields.
-                        </div>
-                        <div id='alert-fields-login'>
-                            Please fill in all fields.
-                        </div>
-                        <label for="exampleInputEmail1">Email</label>
-                        <input name='login-email' type="email" placeholder='@berkeley.edu' class="form-control" id="login-email" >
-                        <label style='margin-top:10px' for="exampleInputPassword1">Password</label>
-                        <input name='login-password' type="password" class="form-control" id="login-password" >
-                    </div>
-                    <div class='login-btn-container relative'>
-                        <a href='javascript:void(0)' id='login-submit-link'>
-                            <span class='blue-btn login-padding'>
-                                <span style='top:3px'class='glyphicon glyphicon-envelope absolute'></span>  
-                                <span style='margin-left:25px;' >Login with your Cal Mail</span>
-                            </span>
-                        </a>
-                    </div>
-                    <div class='center row font-14 margin-top-20'>
-                        <u><a href='javascript:void(0);' class='blue-text'id='forgot-password-link'> Forgot your password? </a></u>
-                    </div>
-                    <div class='center row font-14 margin-top-30'>
-                        <u><a href='javascript:void(0);' class='blue-text' id='login-to-signup-modal'> Don't have an account? Login in here </a></u>
-                    </div>
+                <a id='fb-login-btn' onclick='fb_login()' href='#'>
+                    <img src='/static/img/login-fb.png'>
+                </a>
+                <div class='or-text relative'>
+                    <span style='width:20px; border-top:1px solid grey'> </span> Or <span style='border-top: 1px solid grey;'> 
+                    </span>
                 </div>
-
-                <div id='forgot-password-modal-container' class='container-fluid center'>
-                    <div id='alert-fields-forgot-password' class='red-text normal-text' style='display:none'>
+                <div class='login-input-container'>
+                    <div id='alert-fields-login-2'>
                         Please fill in all fields.
                     </div>
-                    <div class='row font-16 normal-text reg-text'>
-                        Please enter your email and we will send you a generated password to change.
+                    <div id='alert-fields-login'>
+                        Please fill in all fields.
                     </div>
-                    <div class='password-input-container'>
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input name='password-email' type="email" class="form-control" id="password-email" >
-                    </div>
-                    <div class='login-btn-container'>
-                        <a href='javascript:void(0)' id='password-submit-link'>
-                            <span class='blue-btn'>
-                                Reset
-                            </span>
-                        </a>
-                    </div>
+                    <label for="exampleInputEmail1">Email</label>
+                    <input name='login-email' type="email" placeholder='@berkeley.edu' class="form-control" id="login-email" >
+                    <label style='margin-top:10px' for="exampleInputPassword1">Password</label>
+                    <input name='login-password' type="password" class="form-control" id="login-password" >
                 </div>
-
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div>
-
-        <div id='signup-modal' data-keyboard='True' class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-body">
-                <div id='login-modal-container' class='container-fluid center'>
-                    <div id='alert-fields-student-signup-top'>
-                            Please fill in all fields.
-                    </div>
-                    <a id='fb-signup-btn' onclick='fb_login()' href='#'>
-                        <img src='/static/img/login-fb.png'>
+                <div class='login-btn-container relative'>
+                    <a href='javascript:void(0)' id='login-submit-link'>
+                        <span class='blue-btn login-padding'>
+                            <span style='top:3px'class='glyphicon glyphicon-envelope absolute'></span>  
+                            <span style='margin-left:25px;' >Login with your Cal Mail</span>
+                        </span>
                     </a>
-                    <!-- <div class='never-post'>
-                        We will NEVER post on your Facebook
-                    </div> -->
-                    <div class='or-text'>
-                        Or
-                    </div>
-                    <div class='login-input-container'>
-                        <div id='alert-fields-student-signup'>
-                            Please fill in all fields.
-                        </div>
-                        <label for="exampleInputPassword1">Name</label>
-                        <input name='student-name' id='student-signup-name' class="form-control" >
-                        
-                        <label style='margin-top:10px' for="exampleInputEmail1">Email address</label>
-                        <input name='student-email' id='student-signup-email'  type="email" class="form-control">
-                        
-                        <label style='margin-top:10px' for="exampleInputPassword1">Password</label>
-                        <input name='student-password' id='student-signup-password' type="password" class="form-control" >
-                    </div>
-                    <div class='login-btn-container relative' >
-                        <a id='student-next-link' href='javascript:void(0);'style='display:none'>
-                            <span class='blue-btn signup-padding'>
-                                <span style='top:3px' class='glyphicon glyphicon-user absolute'></span>  
-                                <span style='margin-left:25px;' >Get an Account</span>
-                            </span>
-                        </a>
-                        <a id='tutor-next-link' href='javascript:void(0);' style='display:none'>
-                            <span class='blue-btn'>
-                                Next
-                            </span>
-                        </a>
-                    </div>
-                    <div class='center row font-14 margin-top-30'>
-                        <u><a href='javascript:void(0);' class='blue-text' id='signup-to-login-modal'> Have an account? Login in here </a></u>
-                    </div>
                 </div>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div>
+                <div class='center row font-14 margin-top-20'>
+                    <u><a href='javascript:void(0);' class='blue-text'id='forgot-password-link'> Forgot your password? </a></u>
+                </div>
+                <div class='center row font-14 margin-top-30'>
+                    <u><a href='javascript:void(0);' class='blue-text' id='login-to-signup-modal'> Don't have an account? Login in here </a></u>
+                </div>
+            </div>
+
+            <div id='forgot-password-modal-container' class='container-fluid center'>
+                <div id='alert-fields-forgot-password' class='red-text normal-text' style='display:none'>
+                    Please fill in all fields.
+                </div>
+                <div class='row font-16 normal-text reg-text'>
+                    Please enter your email and we will send you a generated password to change.
+                </div>
+                <div class='password-input-container'>
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input name='password-email' type="email" class="form-control" id="password-email" >
+                </div>
+                <div class='login-btn-container'>
+                    <a href='javascript:void(0)' id='password-submit-link'>
+                        <span class='blue-btn'>
+                            Reset
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+    <div id='confirmation-modal' data-keyboard='True' class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div id='login-modal-container' class='container-fluid center'>
+                <div id='alert-fields-student-signup-top'>
+                        Please fill in all fields.
+                </div>
+                <a id='fb-signup-btn' onclick='fb_login()' href='#'>
+                    <img src='/static/img/login-fb.png'>
+                </a>
+                <!-- <div class='never-post'>
+                    We will NEVER post on your Facebook
+                </div> -->
+                <div class='or-text'>
+                    Or
+                </div>
+                <div class='login-input-container'>
+                    <div id='alert-fields-student-signup'>
+                        Please fill in all fields.
+                    </div>
+                    <label for="exampleInputPassword1">Name</label>
+                    <input name='student-name' id='student-signup-name' class="form-control" >
+                    
+                    <label style='margin-top:10px' for="exampleInputEmail1">Email address</label>
+                    <input name='student-email' id='student-signup-email'  type="email" class="form-control">
+                    
+                    <label style='margin-top:10px' for="exampleInputPassword1">Password</label>
+                    <input name='student-password' id='student-signup-password' type="password" class="form-control" >
+                </div>
+                <div class='login-btn-container relative' >
+                    <a id='student-next-link' href='javascript:void(0);'style='display:none'>
+                        <span class='blue-btn signup-padding'>
+                            <span style='top:3px' class='glyphicon glyphicon-user absolute'></span>  
+                            <span style='margin-left:25px;' >Get an Account</span>
+                        </span>
+                    </a>
+                    <a id='tutor-next-link' href='javascript:void(0);' style='display:none'>
+                        <span class='blue-btn'>
+                            Next
+                        </span>
+                    </a>
+                </div>
+                <div class='center row font-14 margin-top-30'>
+                    <u><a href='javascript:void(0);' class='blue-text' id='signup-to-login-modal'> Have an account? Login in here </a></u>
+                </div>
+            </div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
 
     </body>
     <footer>

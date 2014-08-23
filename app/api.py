@@ -25,6 +25,8 @@ apns = APNs(use_sandbox=True, cert_file=cert_path, key_file=key_path)
 REQUEST_EXP_TIME_IN_SECONDS = 172800
 TUTOR_ACCEPT_EXP_TIME_IN_SECONDS = 86400
 
+PAYMENT_PLANS = {1:[45,50], 2:[170,200], 3:[800,1000]}
+
 @app.route('/api/<arg>', methods=['GET', 'POST', 'PUT'], defaults={'_id': None})
 @app.route('/api/<arg>/<_id>')
 def api(arg, _id):
@@ -565,9 +567,9 @@ def api(arg, _id):
                     orig_p = Payment.query.get(p.confirmed_payment_id)
 
                 if p.student_paid_amount > 0:
+                    
                     stripe_amount_cents = int(p.student_paid_amount * 100)
-                    student = User.query.get(p.student_id)               
-                    print student
+                    student = User.query.get(p.student_id)                                   
                     try: 
                         charge = stripe.Charge.create(
                             amount = stripe_amount_cents,
@@ -584,12 +586,13 @@ def api(arg, _id):
                             error_msg = "Sorry! The student's card has been declined. Please kindly ask them to update their information" 
                         return errors([error_msg])
                 else:
-                    stripe_amount_refund_cents = int(abs(p.student_paid_amount) * 100)
-                    charge = stripe.Charge.retrieve(orig_p.stripe_charge_id)
-                    p.stripe_charge_id = charge['id']
-                    re = charge.refund(
-                        amount=stripe_amount_refund_cents
-                        )
+                    user.credit = user.credit + abs(p.student_paid_amount)
+                    # stripe_amount_refund_cents = int(abs(p.student_paid_amount) * 100)
+                    # charge = stripe.Charge.retrieve(orig_p.stripe_charge_id)
+                    # p.stripe_charge_id = charge['id']
+                    # re = charge.refund(
+                    #     amount=stripe_amount_refund_cents
+                    #     )
 
                 
 
@@ -664,7 +667,7 @@ def api(arg, _id):
             payment.time_amount = total_time
 
             payment.student_description = 'Final charge from your session with ' + tutor.name.split(" ")[0].title()
-            payment.tutor_description = 'Earnings from your session with ' + student.name.split(" ")[0].title() + ' including 10% fee'
+            payment.tutor_description = 'Earnings from your session with ' + student.name.split(" ")[0].title() + ' after 10% fee'
 
             payment.student_confirmed = False
             student.payments.append(payment)
@@ -843,7 +846,9 @@ def api(arg, _id):
                 user.apn_token = request.json.get('apn_token')
             if request.json.get('stripe-card-token'):
                 create_stripe_customer(request.json.get('stripe-card-token'), user)
-                
+                if request.json.get('payment_plan'):
+                    process_payment_plan(request.json.get('payment_plan'), user)
+
             if request.json.get('stripe_recipient_token'):
                 try:
                     create_stripe_recipient(request.json.get('stripe_recipient_token'), user)
@@ -1140,6 +1145,9 @@ def api(arg, _id):
 
             print ajax_json.get('notification-id')
             notification_id = ajax_json.get('notification-id')
+            if request.json.get('payment_plan'):
+                process_payment_plan(request.json.get('payment_plan'), user)
+
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             current_notification = user_notifications[notification_id]
 
@@ -1169,9 +1177,6 @@ def api(arg, _id):
             r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
             r.time_connected = datetime.now()
 
-            p = Payment(r)
-            db_session.add(p)
-
             from views import find_earliest_meeting_time, convert_mutual_times_in_seconds, send_twilio_message_delayed
             mutual_times_arr = find_earliest_meeting_time(r)
             total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
@@ -1191,12 +1196,45 @@ def api(arg, _id):
                 send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=total_seconds_delay)
 
 
-            charge = stripe.Charge.create(
-                amount = int(r.connected_tutor_hourly * r.time_estimate * 100),
-                currency="usd",
-                customer=student.customer_id,
-                description="amount for tutoring"
-            )
+            p = Payment(r.id)
+            db_session.add(p)
+            
+            total_amount = r.connected_tutor_hourly * r.time_estimate
+            user_credits = user.credit
+            
+            if user_credits:
+                difference = user_credits - total_amount
+                #if they have enough credits
+                if difference > 0:
+                    print "case 1"
+                    user.credit = user.credit - total_amount
+                    p.credits_used = total_amount
+                    p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title() +'. You used ' + str(total_amount) + ' credits.'
+                else:
+                    print "case 2"
+                    p.credits_used = user_credits
+                    user.credit = 0
+                    p.student_paid_amount = total_amount - user_credits
+                    p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title() +'. You used ' + str(user_credits) + ' credits, and were billed $' + str(p.student_paid_amount)
+                    
+                    charge = stripe.Charge.create(
+                        amount = int(p.student_paid_amount * 100),
+                        currency="usd",
+                        customer=student.customer_id,
+                        description="partial charge with credit usage"
+                    )   
+                    p.stripe_charge_id = charge['id']
+
+            else:
+                print "case 3"
+                charge = stripe.Charge.create(
+                    amount = int(total_amount * 100),
+                    currency="usd",
+                    customer=student.customer_id,
+                    description="amount for tutoring"
+                )   
+                p.stripe_charge_id = charge['id']
+                p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title()
 
             p.tutor_rate = r.connected_tutor_hourly
             p.student_paid_amount = r.connected_tutor_hourly * r.time_estimate
@@ -1206,11 +1244,8 @@ def api(arg, _id):
                 p.tutor_received_amount = r.connected_tutor_hourly * r.time_estimate
             else:
                 p.tutor_received_amount = r.connected_tutor_hourly * r.time_estimate * 0.75
-            
 
             p.time_created = datetime.now()
-            p.stripe_charge_id = charge['id']
-            p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title()
             p.tutor_description = 'Your earnings from your session with ' + student.name.split(" ")[0].title()
             p.time_amount = r.time_estimate
             p.request_id = r.id
@@ -1827,3 +1862,30 @@ def user_dict_in_proper_format(user):
             }
     print response
     return response
+
+def process_payment_plan(plan_num, user):
+    plan_arr = PAYMENT_PLANS[plan_num]
+
+    p = Payment()
+    db_session.add(p)
+    p.time_created = datetime.now()
+    p.student_description = 'You purchased ' + str(plan_arr[1]) + " credits for $" + str(plan_arr[0]) + '.'
+    p.student_paid_amount = plan_arr[0]
+    p.student_id = user.id
+
+    charge = stripe.Charge.create(
+        amount = int(plan_arr[0] * 100),
+        currency="usd",
+        customer=user.customer_id,
+        description="student purchased credits"
+    )
+
+    p.stripe_charge_id = charge['id']
+    user.payments.append(p)
+    user.credit += plan_arr[1]
+
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        raise 
