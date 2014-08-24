@@ -1,4 +1,3 @@
-alert($(window).width());
 if ($(window).width() < 768) {
    $('#course-input').attr('placeholder', 'Math 1A, Bio 1B ..');
    $('#home-course-submit-btn ').text('GO');
