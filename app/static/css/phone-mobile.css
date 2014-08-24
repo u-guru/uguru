@@ -217,6 +217,18 @@
     font-size:26px;
   }
 
+  .package-option-header {
+    font-size:15px;
+  }
+
+  .package-option-subheader {
+    font-size:12px;
+  }
+
+  .package-option-detail {
+    font-size:10px;
+  }
+
   #main-banner-parent-subheader {
     font-size:16px;
   }
@@ -227,7 +239,20 @@
   }
 
   #package-header {
-    font-size:24px;
+    font-size:20px;
+  }
+
+  #package-header-subheader {
+    font-size:14px;
+    margin-top:10px;
+  }
+
+  #package-header-exp {
+    font-size:10px;
+  }
+
+  .blue-btn-mobile {
+    font-size:10px;
   }
 
   #parent-email-1, #student-email-1 {
