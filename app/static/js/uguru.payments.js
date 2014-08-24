@@ -157,6 +157,53 @@
         }
     };
 
+    //Parents
+
+    $('#submit-credit-card-modal-parents').click(function() {
+        if (!$('input#credit-card-num-parent-modal').val() || !$('input#credit-card-exp-date-parent-modal').val()) {
+            $('#add-credit-modal-parent-alert').show();
+            $('#add-credit-modal-parent-alert').text('Please fill in all fields');
+            return false;
+        }
+        $('#add-credit-modal-parent-alert').hide();
+        card_number  = $('input#credit-card-num-parent-modal').val()
+        expiration_date = $('input#credit-card-exp-date-parent-modal').val()
+        month = parseInt(expiration_date.split('/')[0])
+        year = parseInt(expiration_date.split('/')[1])
+
+        Stripe.card.createToken({
+            number : card_number,
+            exp_month : month,
+            exp_year : year,
+        }, stripeCreditModalParentsResponseHandler);
+
+      });
+
+    var stripeCreditModalParentsResponseHandler = function(status, response) {
+        var $form = $('#payment-form');
+        if (response.error) {
+            // Show the errors on the form    
+            $('#add-credit-modal-parent-alert').text(response.error.message);
+            $('#add-credit-modal-parent-alert').show();
+        } else {
+            $('#add-credit-modal-parent-alert').hide();
+            var token = response.id;
+            var data = {'stripe-card-token':token,
+                        'payment_plan':(4 - payment_plan_clicked)}
+            $.ajax({
+                    type: "PUT",
+                    contentType: 'application/json;charset=UTF-8',
+                    url: '/api/parent_purchase' ,
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    success:function(response) {
+                        $('#parent-confirmation-2').hide();
+                        $('#parent-confirmation-3').show();
+                    }
+            });  
+        }
+    };
+
 
 
     //Activity page
@@ -225,10 +272,12 @@
     credit_card_back_link = true; 
     $('input#credit-card-num').payment('formatCardNumber');
     $('input#credit-card-num-modal').payment('formatCardNumber');
+    $('input#credit-card-num-parent-modal').payment('formatCardNumber');
     $('input#debit-card-num-settings').payment('formatCardNumber');
     $('input.exp-date-month').payment('formatCardExpiry');
     $('input#expiration-date').payment('formatCardExpiry');
     $('input#credit-card-exp-date-modal').payment('formatCardNumber');
+    $('input#credit-card-exp-date-parent-modal').payment('formatCardNumber');
     $('input#cvc-num').payment('formatCardCVC');
 
     $('.tutor-request-accept-btn-credit').click(function(){    

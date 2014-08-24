@@ -32,7 +32,7 @@ def getting_started_tutor(user):
     getting_started_msg = "You applied to become" + \
         " a Guru" 
     notification = Notification(other='getting_started')
-    notification.feed_message_subtitle = "Application status: <strong><span style='color:#69bf69'>Approved!</span></strong>"
+    notification.feed_message_subtitle = "Application status: <strong><span style='color:#69bf69'>New Guru!</span></strong> Read more <a href='http://tinyurl.com/uguru-new-guru'> here </a>"
     notification.feed_message = getting_started_msg
     notification.a_id_name = 'getting-started'
     notification.image_url = user.profile_url

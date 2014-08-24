@@ -25,7 +25,7 @@ apns = APNs(use_sandbox=True, cert_file=cert_path, key_file=key_path)
 REQUEST_EXP_TIME_IN_SECONDS = 172800
 TUTOR_ACCEPT_EXP_TIME_IN_SECONDS = 86400
 
-PAYMENT_PLANS = {1:[45,50], 2:[170,200], 3:[800,1000]}
+PAYMENT_PLANS = {1:[45,50], 2:[170,200], 3:[800,1000], 4:[1500,10000]}
 
 @app.route('/api/<arg>', methods=['GET', 'POST', 'PUT'], defaults={'_id': None})
 @app.route('/api/<arg>/<_id>')
@@ -411,8 +411,27 @@ def api(arg, _id):
             raise
 
         response = {'success': True}
+        session['user_id'] = user.id
 
         return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+
+    if arg =='parent_purchase' and request.method =='PUT':
+        user = getUser()
+        if user:
+            if request.json.get('stripe-card-token'):
+                create_stripe_customer(request.json.get('stripe-card-token'), user)
+            if request.json.get('payment_plan'):
+                p = process_payment_plan(request.json.get('payment_plan'), user)
+            session.pop('user_id')
+            response = {'success':True}
+
+            from emails import send_parent_confirmation
+            plan_arr = PAYMENT_PLANS[request.json.get('payment_plan')]
+            send_parent_confirmation(user, p, plan_arr[1])
+
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(['Invalid Token'])
+
 
 
     if arg =='send_message' and _id == None and request.method == 'POST':
@@ -905,7 +924,7 @@ def api(arg, _id):
                 elif result == "used":
                     return errors(['Sorry you have already used a code for this promotion.'])
                 elif result == "success":
-                    user.credit = user.credit + 10
+                    user.credit = user.credit + 5
                 print "check_promo_code", request.json.get('check_promo_code')
             if request.json.get('update_promo_code'):
                 result = update_promo_code(user, request.json.get('update_promo_code'))
@@ -1733,6 +1752,7 @@ def check_promo_code(user, promo_code):
     
     #make sure referral promo code is not from the same user
     if user_with_promo_code and user_with_promo_code.id == user.id:
+        print 'it gets here'
         return "invalid"
     
     #for referral rpomo case
@@ -1752,6 +1772,19 @@ def check_promo_code(user, promo_code):
             user.promos.append(p)
             user_with_promo_code.promos.append(p)
             return "success"
+
+    if promo_code == 'doyouguru':
+        if user.promos:
+            for p in user.promos:
+                if p.tag == 'referral':
+                    return "used"
+        p = Promo()
+        p.time_used = datetime.now()
+        p.receiver_id = user.id
+        p.tag = 'referral'
+        db_session.add(p)
+        user.promos.append(p)
+        return "success"
 
     return "invalid"
 
@@ -1911,3 +1944,4 @@ def process_payment_plan(plan_num, user):
     except:
         db_session.rollback()
         raise 
+    return p

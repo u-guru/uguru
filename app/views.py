@@ -112,7 +112,7 @@ def index():
 @app.route('/parents/', methods =['GET', 'POST'], defaults={'arg': None})
 @app.route('/parents/<arg>/')
 def parents(arg=None):
-    return render_template('parents.html')
+    return render_template('parents.html', key=stripe_keys['publishable_key'])
 
 @app.route('/new/')
 def new():

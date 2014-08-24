@@ -815,6 +815,10 @@ textarea {
   font-size:24px;
 }
 
+.font-22 {
+  font-size:22px;
+}
+
 .font-20 {
   font-size:20px;
 }
@@ -829,6 +833,14 @@ textarea {
 
 .font-12 {
   font-size:12px;
+}
+
+.font-18 {
+  font-size:18px;
+}
+
+.font-8 {
+  font-size:8px;
 }
 
 .font-16 {
@@ -1077,6 +1089,10 @@ td.time-slot {
   color:grey;
 }
 
+.how-it-works-header {
+  color:white;
+}
+
 .skill-tag {
   background-color:#0081be;
   border-radius: 7px;
@@ -1100,6 +1116,10 @@ td.time-slot {
   padding:25px 40px;
   font-size:1.15em;
   text-align:center;
+}
+
+#package-header {
+  font-size:30px;
 }
 
 .hiw-section {
@@ -1234,6 +1254,10 @@ a:hover {
   font-weight:400;
 }
 
+.navbar-collapse li {
+  border-bottom: 0px solid transparent !important;
+  }
+
 .tutor-preview {
   position:relative;
   padding:15px 10px 20px 10px;
@@ -1265,25 +1289,31 @@ a:hover {
   border-bottom:0px !important;
 }
 
-input#credit-card-num, input#debit-card-num-settings, input#credit-card-num-modal {
+input#credit-card-num, input#debit-card-num-settings, input#credit-card-num-modal,
+input#credit-card-num-parent-modal {
   background: url('/static/img/card.png') no-repeat;
   background-size: 32px 24px;
   background-position:95% ;
 }
 
-input#credit-card-num.visa, input#debit-card-num-settings.visa, input#credit-card-num-modal.visa {
+input#credit-card-num.visa, input#debit-card-num-settings.visa, input#credit-card-num-modal.visa,
+input#credit-card-num-parent-modal.visa {
   background-image: url('/static/img/visa.png');
 }
 
-input#credit-card-num.mastercard, input#debit-card-num-settings.mastercard, input#credit-card-num-modal.mastercard {
+input#credit-card-num.mastercard, input#debit-card-num-settings.mastercard, input#credit-card-num-modal.mastercard,
+input#credit-card-num-modal.mastercard,
+input#credit-card-num-parent-modal.mastercard {
   background-image: url('/static/img/mastercard.png');
 }
  
-input#credit-card-num.discover, input#debit-card-num-settings.discover, input#credit-card-num-modal.discover {
+input#credit-card-num.discover, input#debit-card-num-settings.discover, input#credit-card-num-modal.discover,
+input#credit-card-num-parent-modal.discover {
   background-image: url('/static/img/discover.png');
 }
  
-input#credit-card-num.amex, input#debit-card-num-settings.amex, input#credit-card-num-modal.amex {
+input#credit-card-num.amex, input#debit-card-num-settings.amex, input#credit-card-num-modal.amex,
+input#credit-card-num-parent-modal.amex {
   background-image: url('/static/img/amex.png');
 }
 .star-icon.full:before {

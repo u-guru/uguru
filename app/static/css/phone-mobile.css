@@ -1,5 +1,5 @@
 /* XS devices  */
-@media (max-width: 768px){  
+@media (max-width: 767px){  
   #banner {
     height:100%;
     background: url('/static/img/mobile-background.png') no-repeat;
@@ -33,8 +33,31 @@
     width:90%;
   }
 
+  .login-input-container {
+    margin:10px 10px;
+  }
+
+  .navbar-default .navbar-nav > li > a {
+    color: white;
+    padding: 22px 0px 21px 25px;
+    font-size: 20px;
+  }
+
   #home-search-class-container .typeahead.tt-hint {
     width:90%;
+  }
+
+  #powered-by-cal-ul {
+    display:none;
+  }
+
+  .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: transparent;
+    outline:none;
+  }
+
+  li #powered-by-cal {
+    display:none; 
   }
 
   #home-search-class-container {
@@ -203,9 +226,17 @@
     font-size:12px;
   }
 
+  #package-header {
+    font-size:24px;
+  }
+
   #parent-email-1, #student-email-1 {
     width:55% !important;
     font-size:12px;
+  }
+
+  #login-modal-container {
+    padding:20px 0px !important;
   }
 
   #parent-signup-1 span {

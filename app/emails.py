@@ -198,6 +198,66 @@ def approved_by_admin_email(user):
 
     result = mandrill_client.messages.send(message=message)
 
+def send_parent_confirmation(user, payment, amount_credits):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    parent_name = user.parent_name.split(" ")[0]
+    parent_email = user.parent_email
+    student_name = user.name.split(" ")[0]
+    student_email = user.email
+    charge_id = payment.stripe_charge_id
+    card_last4 = user.customer_last4
+    amount_billed = payment.student_paid_amount
+
+    if amount_credits == 10000:
+        amount_credits = 'Unlimited'
+
+    date = payment.time_created.strftime("%B %d, %Y at %I:%M%p")
+
+    html = send_parent_confirmation_html(parent_name, student_name, charge_id, date, card_last4, amount_credits, amount_billed)
+
+    message = {
+        'html':html,
+        'subject': 'Thank You For Purchasing uGuru Credits for ' + student_name + '!',
+        'from_email': 'payments@uguru.me',
+        'from_name': 'Uguru Payments',
+        'to': [{'email':parent_email, 'name':parent_name, 'type':'to'}],
+        'headers': {'Reply-To': 'support@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['parent-confirmation-purchase']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+
+def send_parent_confirmation_html(parent_name, student_name, charge_id, date, card_last4, amount_credits, amount_billed):
+    return """
+    Hi """ + parent_name + """,    
+    <br>
+    <br>
+    """ + student_name + """ is going to greatly appreciate these credits as things become busier at Cal! 
+    <br>
+    <br>
+    If any experience is less than 100% satisfactory, please let us know, we will provide a full refund!
+    <br>
+    <br>
+    <b>Receipt ID:</b> """+  charge_id +"""<br>
+    <b>Time</b>: """+  date +"""<br>
+    <b>Card Number:</b> ****-****-****-"""+  card_last4 +"""<br>
+    <b>Credits Purchased</b>: """ + str(amount_credits) + """<br>
+    <b>Total Amount Billed:</b> $""" + str(amount_billed) + """
+    <br>
+    <br>
+    If the above information is incorrect, please contact us by directly replying to this email, or by emailing support@uguru.me for a quick reply.
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
+    
 def approved_by_admin_email_html(user_first_name):
     return """
     Congrats *|FNAME|*, 
@@ -1332,15 +1392,6 @@ def welcome_uguru_text(user_name):
     """ by replying to this email.\n\n""" +\
     """Sincerely, \nThe uGuru.me Team"""
 
-def welcome_uguru_tutor_text(user_name):
-    return """Hi """ + user_name.split(' ')[0] + \
-    """, \n\n""" + \
-    """This is Samir from Uguru. We created Uguru to make peer-to-peer help available and affordable to students by connecting fellow Cal Bears. \n\n""" +\
-    """We will email you as soon as we approve your application to join the Guru force. In the mean time, you are able to request help(at http://uguru.me/activity) from the Gurus If you feel lost in the dungeons of Moffit. \n\n""" + \
-    """We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly! \n\n""" + \
-    """Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears!  \n\n""" + \
-    """Samir Makhani\nCo-Founder\nsamir@uguru.me\n(813) 500 9853"""
-
 def welcome_uguru_student_text(user_name):
     return """Hi """ + user_name.split(' ')[0] + \
     """, \n\n""" + \
@@ -1477,7 +1528,10 @@ def welcome_uguru_tutor_html(user_name):
     This is Samir, from <a href="http://uguru.me">Uguru</a>. We hope to make peer-to-peer help <b>available</b> and <b>affordable</b> to students by connecting them with trusted Gurus like you! 
     <br>
     <br>
-    We will email you as soon as we approve your application to join the Guru force. In the mean time, you are able to <a href="http://uguru.me/activity">request help</a> from the Gurus If you feel lost in the dungeons of Moffit.
+    We are excited to have you on board as a Cal Guru. Your role will be to save students who are lost in the dungeons of Moffit.
+    <br>
+    <br>
+    Since this is your first time tutoring with us, we will need you to prove to us that have you the ability. Until you have a 4.5 average rating, you will not be able to earn any money. When you do, you will make an average of $15/hr. To read more, check out our <a href='tinyurl.com/uguru-q-a'> FAQ </a>.
     <br>
     <br>
     We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly.
@@ -1491,6 +1545,15 @@ def welcome_uguru_tutor_html(user_name):
     Samir@uguru.me<br>
     (813) 500-9853
     """
+
+def welcome_uguru_tutor_text(user_name):
+    return """Hi """ + user_name.split(' ')[0] + \
+    """, \n\n""" + \
+    """This is Samir from Uguru. We created Uguru to make peer-to-peer help available and affordable to students by connecting fellow Cal Bears. \n\n""" +\
+    """We will email you as soon as we approve your application to join the Guru force. In the mean time, you are able to request help(at http://uguru.me/activity) from the Gurus If you feel lost in the dungeons of Moffit. \n\n""" + \
+    """We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly! \n\n""" + \
+    """Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears!  \n\n""" + \
+    """Samir Makhani\nCo-Founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def welcome_uguru_student_html(user_name):
     return """

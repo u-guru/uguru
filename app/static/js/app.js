@@ -4,6 +4,7 @@ var previous_page_id = null;
 var request_form_complete = null;
 var a,b,c;
 var signup_type = null;
+var payment_plan_clicked = null;
 var invert_olark = function() {
     $('#habla_window_div #habla_oplink_a').css('color','white');
     $('#habla_window_div #habla_topbar_div').css('background', '#00a9e5 none repeat scroll 0 0');
@@ -78,6 +79,55 @@ $(document).ready(function(){
           $('#email-notif-saved-text').delay(750).fadeOut('slow');
       });
 
+    $('#confirmation-modal').on('click', 'a.go-to-confirmation-parent-payment', function() {
+          var slideIndex = $(this).closest('.go-to-confirmation-parent-payment').index('.go-to-confirmation-parent-payment');
+          payment_plan_clicked = slideIndex;
+          // $('.payment-plan:visible').siblings('.student-confirm-tutor').show();
+          // $('.payment-plan:visible').hide();
+          // plan_value = process_payment_plan_by_index(payment_plan_clicked);
+          // $('#credits-purchased-' + feed_message_index).text('$' + plan_value);
+          // $('#remaining-credits-' + feed_message_index).text('$' + (plan_value + parseFloat($('#existing-credits-' + feed_message_index).text()) - parseFloat($('#session-cost-' + feed_message_index).text()).toString()));
+          // if (plan_value == 0) {
+          //   $('#amount-to-be-billed-' + feed_message_index).text('$' + (parseFloat($('#session-cost-' + feed_message_index).text()) - parseFloat($('#existing-credits-' + feed_message_index).text())).toString());
+          //   $('#new-credits-purchased-' + feed_message_index).hide();
+          //   $('#remaining-credits-div-' + feed_message_index).hide();
+          //   $('#second-hr-' + feed_message_index).hide();
+          // } else {
+          //   plan_cost = process_payment_plan_cost_by_index(payment_plan_clicked);
+          //   $('#second-hr-' + feed_message_index).show();
+          //   $('#new-credits-purchased-' + feed_message_index).show();
+          //   $('#remaining-credits-div-' + feed_message_index).show();
+          //   $('#amount-to-be-billed-' + feed_message_index).text('$' + plan_cost.toString());
+          // }
+          if (payment_plan_clicked == 0) {
+            $('#parent-selected-plan').text('Unlimited');
+            $('#parent-billed-amount').text('$1500');
+          } else if (payment_plan_clicked == 1) {
+            $('#parent-selected-plan').text('$1000 credits for $800');
+            $('#parent-billed-amount').text('$800');
+          } else if (payment_plan_clicked == 2) {
+            $('#parent-selected-plan').text('$200 credits for $170');
+            $('#parent-billed-amount').text('$170');
+          }
+          if ($('#parent-email-1').val()) {
+            $('#parent-email-confirmation').text($('#parent-email-1').val());
+          } else {
+            $('#parent-email-confirmation').text($('#parent-email-2').val());
+          }
+          if ($('#student-name-1').val()) {
+            $('#student-name-confirmation').text($('#student-name-1').val());
+          } else {
+            $('#student-name-confirmation').text($('#student-name-2').val());
+          }
+          $('#parent-confirmation-1').hide();
+          $('#parent-confirmation-2').show();
+       }); 
+
+    $('#go-back-parent-confirmation').click(function() {
+      $('#parent-confirmation-2').hide();
+      $('#parent-confirmation-1').show();
+    });
+
     $('#text-notif-check').change(function(){
           var status = this.checked;
           if (status) {
@@ -88,6 +138,10 @@ $(document).ready(function(){
           $('#text-notif-saved-text').show();
           $('#text-notif-saved-text').delay(750).fadeOut('slow');
       });
+
+    $('#confirmation-modal-close').click(function() {
+      $('#confirmation-modal').modal('hide');
+    });
 
     $('#slc-tutor-check').change(function(){
           send_profile_update_ajax('slc', this.checked)
@@ -756,6 +810,7 @@ $(document).ready(function(){
           dataType: "json",        
           success: function(result) {
             $('#confirmation-modal').modal('show');
+            $('#thank-you-parent').delay(4000).fadeOut('slow');
           }
        });
       }

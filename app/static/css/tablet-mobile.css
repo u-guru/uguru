@@ -6,6 +6,26 @@
     height:450px;
   }
 
+  #how-it-works-banner {
+    background: url('/static/img/background-1600-2.jpg') no-repeat;
+    background-size:cover;
+    height:300px; 
+  }
+
+  #parent-banner {
+    height:500px;
+    background: url('/static/img/mobile-parent-background.png') no-repeat;
+    background-size:cover;
+  }
+
+  .how-it-works-header {
+    font-size:24px;
+  }
+
+  li #powered-by-cal {
+    display:none; 
+  }
+
   #main-container h1 {
     margin-top:10px;
   }
@@ -13,13 +33,43 @@
     padding:30px 10px; 
   }
 
+  #parent-email-2 {
+    width:55% !important;
+  }
+
+  #student-email-2 {
+    width:55% !important;
+  }
+
+  .testimonial-section p span {
+    font-size:14px;
+  }
+
+  .testimonial-section-author {
+    margin-left:40px;
+    font-size:14px;
+  }
+
   #login-modal-container {
     padding:40px;
+  }
+
+  #guru-banner-subheader {
+    font-size:26px;
+    margin-top:20px;
+  }
+
+  #powered-by-cal-ul {
+    display:none;
   }
 
   #testimonials .container {
     padding-right:0px;
     padding-left:0px;
+  }
+
+  #tutor-preview-2 {
+    display:none;
   }
 
   #pencil-banner {
