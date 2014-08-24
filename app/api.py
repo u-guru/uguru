@@ -393,8 +393,10 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(['Invalid Token'])
 
-    if arg =='parent_signup' and _id == None and request.method == 'POST':
+    if arg =='parent_signup' and request.method == 'POST':
         user = User()
+        if request.json.get('referral-code'):
+            user.referral_code = request.json.get('referral-code')
         user.parent_name = request.json.get('parent-name');
         user.parent_email = request.json.get('parent-email');
         user.name = request.json.get('student-name');

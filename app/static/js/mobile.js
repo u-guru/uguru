@@ -5,5 +5,5 @@ if ($(window).width() < 768) {
    $('#tutor-preview-content-description-1').text($('#tutor-preview-content-description-1').text().substr(0, 125) + '...')
 }
 else {
-   alert('More than 960');
+   
 }

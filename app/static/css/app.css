@@ -1123,7 +1123,13 @@ td.time-slot {
 }
 
 .grey-text {
-  color:black;
+  color:grey;
+}
+
+.modal-close-button {
+  top:10px;
+  right:10px;
+  position:absolute;
 }
 
 h1.extra-margin-bottom {

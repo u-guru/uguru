@@ -479,6 +479,10 @@ $(document).ready(function(){
       }
     });
 
+    $('.modal-close-now').click(function() {
+      $('#' + $(this).parent().parent().parent().parent().attr('id')).modal('hide');
+    });
+
   $('#guru-app-back').click(function() {
     $(this).hide();
     $('#guru-app').show();
@@ -738,6 +742,12 @@ $(document).ready(function(){
           'student-name': $('#student-name-1').val(),
           'student-email': $('#student-email-1').val()
         }
+        url_components = document.URL.split("/");
+        extension = url_components[url_components.length - 2]
+        document.URL.split("/");
+        if (extension !='parents') {
+          data['referral-code'] = extension;
+        } 
         $.ajax({
           type: "POST",
           contentType: 'application/json;charset=UTF-8',

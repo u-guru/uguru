@@ -117,6 +117,7 @@
                         <td> Parent Email </td>
                         <td> Student Name </td>
                         <td> Student Email </td>
+                        <td> Referred By </td>
                     </tr>
                     {% for parent_info in parents %}
                             <tr> 
@@ -125,6 +126,7 @@
                                 <td>  {{parent_info['parent-email']}} </td>
                                 <td>  {{parent_info['student-name']}} </td>
                                 <td>  {{parent_info['student-email']}} </td>
+                                <td>  {{parent_info['referred-by']}} </td>
                             </tr>
                     {% endfor %}
                 </table>

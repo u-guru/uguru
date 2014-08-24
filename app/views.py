@@ -109,8 +109,9 @@ def index():
         environment = get_environment(), session=session, guru_referral=guru_referral)
 
 
-@app.route('/parents/', methods =['GET', 'POST'])
-def parents():
+@app.route('/parents/', methods =['GET', 'POST'], defaults={'arg': None})
+@app.route('/parents/<arg>/')
+def parents(arg=None):
     return render_template('parents.html')
 
 @app.route('/new/')
@@ -398,7 +399,8 @@ def admin():
                 'parent-name': parent.parent_name,
                 'parent-email': parent.parent_email,
                 'student-name': parent.name,
-                'student-email': parent.email
+                'student-email': parent.email,
+                'referred-by': parent.referral_code
                 })
 
 
