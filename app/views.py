@@ -2359,10 +2359,10 @@ def create_referral_code(user):
     #First attempt
     if (not users_with_promo_code):
         return first_name
-    first_name_last_initial = first_name + user.name.split(" ")[1][0].lower()
-    users_with_promo_code = User.query.filter_by(user_referral_code = first_name_last_initial).first()
-    if (not users_with_promo_code):
-        return first_name_last_initial
+    # first_name_last_initial = first_name + user.name.split(" ")[1][0].lower()
+    # users_with_promo_code = User.query.filter_by(user_referral_code = first_name_last_initial).first()
+    # if (not users_with_promo_code):
+    #     return first_name_last_initial
     return first_name + str(user.id)
 
 
