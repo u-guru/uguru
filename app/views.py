@@ -1572,7 +1572,7 @@ def success():
                 db_session.rollback()
                 raise 
             user_id = u.id
-            authenticate(user_id)
+            # authenticate(user_id)
             try:
                 from notifications import getting_started_student, getting_started_tutor, getting_started_student_tip
                 if session.get('tutor-signup'):

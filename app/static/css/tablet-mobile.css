@@ -134,10 +134,29 @@
     left:150px;
   }
 
+
+  #tutor-preview-2 {
+    display:block;
+  }
+
   #shield-banner {
     left:180px;
   }
   #guru-banner {
     left:180px;
+  }
+
+  .how-it-works-header {
+    color:white;
+    font-size:32px;
+  }
+
+  .testimonial-section p span {
+    font-size:18px;
+  }
+
+  .testimonial-section-author {
+    margin-left:12px;
+    font-size:18px;
   }
 }

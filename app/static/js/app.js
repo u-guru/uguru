@@ -510,7 +510,18 @@ $(document).ready(function(){
                 }
 
                 if (!$('#request-skill').val()) {
-                  window.location.replace("/");
+                  $('#student-next-link').hide();
+                  $('input[name="student-name"]').val('');
+                  $('input[name="student-email"]').val('');
+                  $('input[name="student-password"]').val('');
+                  $('input[name="student-name"]').css('border-color','grey');
+                  $('input[name="student-email"]').css('border-color','grey');
+                  $('input[name="student-password"]').css('border-color','grey');
+                  $('#post-signup-span').show();
+                  $('#post-signup-span').delay(5000).fadeOut('slow', function() {
+                    $('#student-next-link').show();
+                  });
+                  return;
                 }
 
                 $('#signup-modal').modal('hide');
