@@ -280,7 +280,8 @@ def update_profile():
             if 'discover' in ajax_json:
                 user.discoverability = ajax_json.get('discover')
             if 'phone' in ajax_json:
-                user.phone_number = ajax_json.get('phone')
+                if ajax_json.get('phone'):
+                    user.phone_number = ajax_json.get('phone')
             try:
                 db_session.commit()
             except:
