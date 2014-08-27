@@ -1704,7 +1704,7 @@ def success():
                         print tutor.name + ' is a tier 1 tutor'
                         if tutor.text_notification and tutor.phone_number:
                             from emails import request_received_msg
-                            message = request_received_msg(user, request, skill_name)
+                            message = request_received_msg(u, r, skill_name)
                             send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
                         tutor.incoming_requests_to_tutor.append(r)
                         notification = tutor_request_offer(u, tutor, r, skill_name)
@@ -1933,8 +1933,8 @@ def activity():
     user = User.query.get(user_id)
     if not session.get('admin'):
         user.last_active = datetime.now()
-        mp.track(str(user.id), 'On Feed')
-        mp.people_set(str(user.id), {'Last Seen':datetime.now().isoformat()})
+        # mp.track(str(user.id), 'On Feed')
+        # mp.people_set(str(user.id), {'Last Seen':datetime.now().isoformat()})
     # if user.verified_tutor and not user.approved_by_admin:
     #     return redirect(url_for('settings'))
     request_dict = {}

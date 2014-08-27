@@ -394,9 +394,15 @@ def api(arg, _id):
         return errors(['Invalid Token'])
 
     if arg =='parent_signup' and request.method == 'POST':
-        user = User()
-        if request.json.get('referral-code'):
-            user.referral_code = request.json.get('referral-code')
+        query = User.query.filter_by(email = request.json.get('student-email')).first()
+        if query:
+            user = query
+        else:
+            user = User()
+            m = Mailbox(user)
+            db_session.add(m)
+        # if request.json.get('referral-code'):
+        #     user.referral_code = request.json.get('referral-code')
         user.parent_name = request.json.get('parent-name');
         user.parent_email = request.json.get('parent-email');
         user.name = request.json.get('student-name');
