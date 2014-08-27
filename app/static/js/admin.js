@@ -9,7 +9,7 @@ $(document).ready(function() {
               data: JSON.stringify(data),
               dataType: "json",
               success: function(result) {
-                window.location.replace('/activity/');
+                window.open('/activity/');
               }
           });
     });
@@ -24,7 +24,7 @@ $(document).ready(function() {
               data: JSON.stringify(data),
               dataType: "json",
               success: function(result) {
-                window.location.replace('/activity/');
+                window.open('/activity/');
               }
           });
     });
@@ -54,7 +54,7 @@ $(document).ready(function() {
               data: JSON.stringify(data),
               dataType: "json",
               success: function(result) {
-                window.location.replace('/activity/');
+                window.open('/activity/');
               }
           });
     });
