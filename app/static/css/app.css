@@ -375,11 +375,11 @@ input {
 }
 
 /*Placeholder align to right*/
-#tutor-app-school-email, #student-signup-email::-webkit-input-placeholder { 
+#tutor-app-school-email::-webkit-input-placeholder { 
   text-align:right; 
 }
 
-#tutor-app-school-email, #student-signup-email:-moz-placeholder#tutor-app-school-email { 
+#tutor-app-school-email::-moz-placeholder#tutor-app-school-email { 
   text-align:right; 
 }
 
@@ -1153,6 +1153,10 @@ td.time-slot {
 
 .grey-text {
   color:grey;
+}
+
+.light-grey-text {
+  color:#a8a8a8;
 }
 
 .modal-close-button {

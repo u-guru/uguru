@@ -555,7 +555,30 @@ $(document).ready(function(){
 
     $('.modal-close-now').click(function() {
       $('#' + $(this).parent().parent().parent().parent().attr('id')).modal('hide');
+      $('#student-signup-name').val('');
+      $('#student-signup-email').val('');
+      $('#student-signup-password').val('');
     });
+
+    $('#signup-modal').on('hidden.bs.modal', function (e) {
+      $('#student-signup-name').val('');
+      $('#student-signup-email').val('');
+      $('#student-signup-password').val('');
+      $('#alert-fields-student-signup').hide();
+      $('#student-signup-name').css('border', '1px solid grey');
+      $('#student-signup-email').css('border', '1px solid grey');
+      $('#student-signup-password').css('border', '1px solid grey');
+    })
+
+    $('#login-modal').on('hidden.bs.modal', function (e) {
+      $('#student-signup-name').val('');
+      $('#student-signup-email').val('');
+      $('#student-signup-password').val('');
+      $('#alert-fields-student-signup').hide();
+      $('#student-signup-name').css('border', '1px solid grey');
+      $('#student-signup-email').css('border', '1px solid grey');
+      $('#student-signup-password').css('border', '1px solid grey');
+    })    
 
   $('#guru-app-back').click(function() {
     $(this).parent().parent().hide();
@@ -576,6 +599,7 @@ $(document).ready(function(){
             'res': $('#tutor-res-check').prop('checked'),
             'gsi': $('#tutor-gsi-check').prop('checked'),
             'cal': $('#tutor-cal-check').prop('checked'),
+            'phone': $('#guru-apply-phone-number').val()
     }
     if ($('#writing-check').prop('checked')) {
       data_dict['courses'].push('writing help');
