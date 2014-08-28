@@ -577,6 +577,15 @@ $(document).ready(function(){
             'gsi': $('#tutor-gsi-check').prop('checked'),
             'cal': $('#tutor-cal-check').prop('checked'),
     }
+    if ($('#writing-check').prop('checked')) {
+      data_dict['courses'] = data_dict['courses'].push('writing help');
+    }
+    if ($('#interview-check').prop('checked')) {
+      data_dict['courses'] = data_dict['courses'].push('interview help');
+    }
+    if ($('#resume-check').prop('checked')) {
+      data_dict['courses'] = data_dict['courses'].push('resume help');
+    }
     $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
