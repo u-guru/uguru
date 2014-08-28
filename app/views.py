@@ -112,7 +112,7 @@ def index():
         modal_flag = 'login'
     if 'sign_up' in request.url:
         modal_flag = 'signup'
-    if 'guru' in request.url:
+    if '/guru' in request.url:
         modal_flag = 'guru'
     if 'callisto' in request.url:
         session['referral'] = 'callisto'

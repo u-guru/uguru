@@ -1296,11 +1296,13 @@ $(document).ready(function(){
     $('#signup-nav-2').click(function() {
       $('#signup-modal').modal();
       $('#tutor-next-link').hide();
+      $('#become-guru-text').hide();
       $('#student-next-link').show();
     });
 
     $('#signup-nav-request').click(function() {
       $('#signup-modal').modal();
+      $('#become-guru-text').hide();
       $('#tutor-next-link').hide();
       $('#student-next-link').show();
     });
