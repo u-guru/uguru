@@ -116,6 +116,7 @@ def index():
         modal_flag = 'guru'
     if 'callisto' in request.url:
         session['referral'] = 'callisto'
+    print modal_flag
     return render_template('new.html', forms=[request_form],
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
