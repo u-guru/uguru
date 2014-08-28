@@ -283,6 +283,11 @@ $(document).ready(function() {
         $('#activity').show();
     });
 
+   $('#tutor-request-activity-back').click(function() {
+    $(this).parent().parent().parent().parent().parent().hide();
+    $('#activity').show();
+   });
+
    $('.payment-plan').on('click', 'a.go-to-confirmation-payment', function() {
       feed_message_index = last_clicked_notif_index + 1;
       var slideIndex = $(this).closest('.go-to-confirmation-payment-' + feed_message_index).index('.go-to-confirmation-payment-' + feed_message_index);
@@ -320,6 +325,12 @@ $(document).ready(function() {
       window.location.hash = '';
       $('#activity').show();
     }
+   });
+
+   $('#guru-app-back-activity').click(function() {
+    $(this).parent().parent().parent().hide();
+    window.location.hash='';
+    $('#activity').show();
    });
 
    $('#feed-messages').on('click', 'a#accept-payment', function() {

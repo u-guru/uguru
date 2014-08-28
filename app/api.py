@@ -1578,7 +1578,7 @@ def api(arg, _id):
         tutor_notification_flag = False
         for n in user.notifications:
             print n.id, n.feed_message
-            if 'applied' in n.feed_message:
+            if n.a_id_name == 'getting-started-guru':
                 tutor_notification_flag = True
                 break
 

@@ -151,6 +151,14 @@ h1, h3 {
   right:10px;
 }
 
+#activity #request-skill {
+  width:100%;
+}
+
+#tutor-request .twitter-typeahead {
+  display:block !important;
+}
+
 .bold {
   font-weight:bold;
 }

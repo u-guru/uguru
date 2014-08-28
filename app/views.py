@@ -1591,7 +1591,17 @@ def success():
             try:
                 from notifications import getting_started_student, welcome_guru, getting_started_tutor, getting_started_student_tip
                 if session.get('tutor-signup'):
-                    pass
+                    from notifications import getting_started_tutor, welcome_guru
+                    welcome_guru_notification = welcome_guru(u)
+                    u.notifications.append(welcome_guru_notification)
+                    db_session.add(welcome_guru_notification)
+                    notification = getting_started_tutor(u)
+                    from emails import welcome_uguru_tutor
+                    welcome_uguru_tutor(u)
+                    u.notifications.append(notification)
+                    db_session.add(notification)
+                    u.approved_by_admin = True
+                    u.verified_tutor = True
                 else:
                     notification = getting_started_student(u)
                     notification2 = getting_started_student_tip(u)

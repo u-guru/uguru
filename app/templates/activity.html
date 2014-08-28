@@ -102,6 +102,13 @@
 <div id="activity" style="font-family: 'Roboto',sans-serif;">
 {% endif %}
 	<div id="call-to-action-bar" align:"center">
+		{% if user.approved_by_admin and user.verified_tutor and (not user.skills or not user.tutor_introduction or not user.major or not user.year or (user.profile_url == '/static/img/default-photo.jpg')) %}
+			<div style="margin-top:0px; margin-bottom:15px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+				<div style="margin-bottom:0"class="alert alert-danger">
+					Your guru profile is not complete! Complete it <a href='/settings/#prof'>here.</a>
+				</div>
+			</div>
+		{% endif %}
 		{% if not user.verified_tutor %}
 		<div class="row margin-top-40 margin-bottom-20	">
 			<div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-4 col-md-4">
@@ -118,45 +125,22 @@
 					</div>
 				{% endif %}
 				<span class='font-14 grey-text center block margin-top-20'>
-					New to uGuru? Read more <a target='_blank'class='underline blue-text'href='http://tinyurl.com/uguru-q-a'> here </a> 
+				Want to become a Guru? Become one <a class='underline blue-text'href='/apply-guru/'> here </a> 
 				</span>
 			</div>
 		</div>
 		{% else %}
-		<div class="row">
-			<div class="col-xs-12 col-sm-offset-3 col-sm-3 col-md-offset-3 col-md-3">
-				<div style="color:grey;text-align:center"class="row">
-					<h4 style="font-weight:700; color:grey;"> Even our Gurus need a little help sometimes!</h4>
-				</div>
-				<a id="tutor-request-link" href="javascript:void(0)">
-					<div style="margin-left:10px; margin-bottom:10px;"class="call-to-action-button">
-						REQUEST A GURU
-					</div>
-				</a>
-			</div>
-			
-			<div class="col-xs-12 col-sm-3 col-md-3">
+		<div class="row margin-top-40 margin-bottom-20	">
+			<div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-4 col-md-4">
 				<div style="color:grey; text-align:center"class="row">
-					<h4 style="color:grey;font-weight:700" >As a Guru</h4>
+					<h4 style="color:grey;font-weight:700; font-size:2em" >Hello, {{user.name.split(" ")[0]}}</h4>
 				</div>
-					<a id="request-payment-link" href="javascript:void(0)">
-						<div style="margin-left:10px; margin-bottom:10px; background-color:rgb(0, 159, 225)" class="call-to-action-button">
-						BILL A STUDENT
-						</div>
-					</a>
-					<div style="margin-left:5px; font-weight:700; font-size:12px; color:grey" class="row">
-						<h5 style="color:grey; font-size:17px; margin-bottom:0px;">Your Balance: <span style="color:#69bf69"> ${{user.balance}} (${{user.pending}} pending)</span>
-							{% if user.balance > 0 %}
-							<a style="color:rgb(0, 159, 225); font-size:14px;"id="{%if not user.recipient_id %}cash-out-link-create{% else %}cash-out-link-add{% endif %}" href="javascript:void(0)">&nbsp;<u>Cash Out</u></a>
-							{% endif %}
-						<h5>
-					</div>
-					<div style="margin:0px;margin-bottom:5px;text-align:center; font-size:16px; font-weight:700;" class="row">
-						<h5 style="color:grey; margin:0">You have made <span style="color:#69bf69"> <strong>${{user.total_earned}} </strong></span> total with Uguru</h5>
-					</div>
-					{% if not user.tutor_ratings %}
-		            <span style="font-size:15px"class="rating">
-		                (0) <span style="color;rgb(0, 159, 225)">☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+				{% if not user.tutor_ratings %}
+		            <span style="font-size:20px;"class="rating relative">
+
+		                <span style='font-size:16px; right:-3px; bottom:1px' class='absolute'>(0) </span>
+
+		                <span style="color;rgb(0, 159, 225)">☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 		            </span>
 		            {% else %}
 		              {% for i in range(0, avg_rating|round(method='floor')|int) %}
@@ -170,11 +154,33 @@
 		              {% endfor %}
 		              &nbsp;<span style="font-size:12px;color:grey">({{num_ratings}})</span>
 		            {% endif %}
-			        <div class="row">
-		              <h6 style="color:grey; margin:5px">
-		                Rack up your ratings with every payment through Uguru
-		              </h6>
-		            </div>
+				<div style="font-weight:700; font-size:12px; margin-top:10px; color:grey" class="row">
+						<h5 style="color:grey; font-size:22px; margin-bottom:0px; margin-top:0px">Your Earnings: 
+							<span style="color:#69bf69; font-weight:bold"> ${{'%.02f' % user.balance}} 
+								{% if user.pending %}
+									(${{user.pending}} pending)
+								{% endif %}
+							</span>
+							{% if user.balance > 0 %}
+							<a style="color:rgb(0, 159, 225); font-size:14px;"id="{%if not user.recipient_id %}cash-out-link-create{% else %}cash-out-link-add{% endif %}" href="javascript:void(0)">&nbsp;<u>Cash Out</u></a>
+							{% endif %}
+						<h5>
+					</div>
+					{% if user.total_earned %}
+					<div style="margin:0px;margin-bottom:5px;text-align:center; font-size:16px; font-weight:700;" class="row">
+						<h5 style="color:grey; margin:0">You have made <span style="color:#69bf69"> <strong>${{user.total_earned}} </strong></span> total with Uguru</h5>
+					</div>
+					{% endif %}
+					<div class='row-fluid center margin-top-10'>
+						<span style='color:#a8a8a8'class='font-14'>
+							Even our gurus need help sometimes, request help <a href='javascript:void(0);' id='tutor-request-link' class='blue-text'>here</a>
+						</span>
+					</div>
+				{% if user.credit %}
+					<div class='row-fluid center font-20 margin-top-10 dark-grey-text'>
+						Your uGuru credits: <span class='green-text'> ${{user.credit}} 
+					</div>
+				{% endif %}
 			</div>
 		</div>
 		{% endif %}
@@ -186,14 +192,6 @@
 				<div class="alert alert-success"></div>
 			</div>
 		</div>
-		{% if user.approved_by_admin and user.verified_tutor and (not user.skills or not user.tutor_introduction or not user.major or not user.year or (user.profile_url == '/static/img/default-photo.jpg')) %}
-			<div style="margin-top:0px; margin-bottom:15px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<div style="margin-bottom:0"class="alert alert-danger">
-					Your guru profile is not complete! Complete it <a href='/settings/#prof'>here.</a>
-				</div>
-			</div>
-		{% endif %}
 		{% if user.outgoing_requests|length >= 1 %}
 		<div style="display:block" class="row-fluid">
 			<div style="margin-top:0px; margin-bottom:15px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
@@ -235,6 +233,9 @@
 			{{notification_template.notification(n, user, pretty_dates)}}
 		{% endfor %}
 		</div>
+		<span class='font-14 grey-text center block margin-top-20'>
+				New to uGuru? Read more <a target='_blank'class='underline blue-text'href='http://tinyurl.com/uguru-q-a'> here </a> 
+		</span>
 	</div>
 	<br>
 	<br>
@@ -436,6 +437,14 @@
   					<div style="margin-bottom:0"class="alert alert-success">Your credit card has been successfully added!<br> Click 'request' to finalize your request.</div>
   				</div>
 		  	</div>
+		  	<div class='row margin-top-20' style='margin-bottom:-20px'>
+		  		<div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4'>
+		  			<a href='javascript:void(0)' class='blue-text' id='tutor-request-activity-back'>
+	                    <span class='glyphicon glyphicon-chevron-left'>
+	                    </span> Back
+	                </a>
+		  		</div>
+		  	</div>
 	        {% include 'request-form-container.html' %}
             
           <div style="margin-top:45px;text-align:center; color:grey">
@@ -486,6 +495,41 @@
         </div>  -->
 		{% endif %}
 		{% for n in user.notifications|sort(attribute='time_created') %}
+			{% if n.a_id_name == 'getting-started-guru'%}
+			<div id='getting-started-guru-detailed' style='display:none'>
+				<div class='row margin-top-40' id='tutor-app-details'>
+	                <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4'>
+	                    <a href='javascript:void(0)' class='blue-text' id='guru-app-back-activity'>
+	                        <span class='glyphicon glyphicon-chevron-left'>
+	                        </span> Back
+	                    </a>
+	                    <div class='normal-text font-40 margin-top-20 reg-text center'>
+	                        The Guru Rules
+	                    </div>
+	                    <div class='margin-top-40'>
+	                        <div class='font-20 align-left reg-text margin-bottom-5'>Free Sessions?</div>
+	                        <p>
+	                            To ensure quality, you will give 1 or more free sessions to students. As soon as you have an average review of 4.5 or above, you will become an official tutor, and you can start charging! If you get a 5 star review on your first one, you will be good to go!
+	                        </p>
+	                    </div>
+
+	                    <div class='margin-top-40'>
+	                        <div class='font-20 align-left reg-text margin-bottom-5'>Money Back Guarantee</div>
+	                        <p>
+	                            If a student is unhappy with your service (a 3 star review or below), the student can request his/her money back. We will carefully evaluate individual cases to prevent abuse.
+	                        </p>
+	                    </div>
+
+	                    <div class='margin-top-40'>
+	                        <div class='font-20 align-left reg-text margin-bottom-5'>Next Steps</div>
+	                        <p>
+	                            Just sit tight and wait! You will start recieving tutoring requests. Be sure to respond quickly.
+	                        </p>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+			{% endif %}
 			{% if n.a_id_name == 'getting-started-tutor' %}
 				<div id="{{n.a_id_name}}-detailed" style="display:none;">
 					<div class="page-title">
