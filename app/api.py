@@ -1562,7 +1562,8 @@ def api(arg, _id):
         user.ta_tutor = ajax_json['gsi']
         user.previous_tutor = ajax_json['cal']
         user.high_tutor = ajax_json['high']
-        user.phone_number = ajax_json['phone']
+        if ajax_json.get('phone'):
+            user.phone_number = ajax_json['phone']
         user.approved_by_admin = True
         user.verified_tutor = True
 
