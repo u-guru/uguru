@@ -430,7 +430,7 @@
                             </span>
                         </div>
                         <label for='request-class'>Your Bio / Relevant Experience </label>
-                        <textarea id='profile-relevant-experience' placeholder='How have you done in your classes? Do you have any previous tutoring experience? Why should you be chosen?'class='form-control standard-textarea guru-app-textarea'>{% if user.tutor_introduction %}{{user.tutor_introduction}}{% endif %}</textarea>
+                        <textarea id='profile-relevant-experience' placeholder='How have you done in your classes? Do you have any previous tutoring experience? Why should a student choose you as their Guru?'class='form-control standard-textarea guru-app-textarea'>{% if user.tutor_introduction %}{{user.tutor_introduction}}{% endif %}</textarea>
                         {% endif %}
                         <div class='row-fluid margin-top-20'>
                             <a href='javascript:void(0);' id='submit-profile-info-btn' name='{{user.user_referral_code}}'>

@@ -578,13 +578,13 @@ $(document).ready(function(){
             'cal': $('#tutor-cal-check').prop('checked'),
     }
     if ($('#writing-check').prop('checked')) {
-      data_dict['courses'] = data_dict['courses'].push('writing help');
+      data_dict['courses'].push('writing help');
     }
     if ($('#interview-check').prop('checked')) {
-      data_dict['courses'] = data_dict['courses'].push('interview help');
+      data_dict['courses'].push('interview help');
     }
     if ($('#resume-check').prop('checked')) {
-      data_dict['courses'] = data_dict['courses'].push('resume help');
+      data_dict['courses'].push('resume help');
     }
     $.ajax({
             type: "POST",
@@ -610,7 +610,7 @@ $(document).ready(function(){
     $('#tutor-app-add-course-btn').click(function() {
         var course_name = $('#courses-tutor-input').val();
         if (autocomplete_json.indexOf(course_name) == -1) {
-              alert('Please only add things from the available options.');
+              alert('Please only add from the available options.');
               return;
         } 
 
@@ -799,7 +799,7 @@ $(document).ready(function(){
       if ($('#add-skill-input-settings').val()) {
         var skill_name = $('#add-skill-input-settings').val();
         if (autocomplete_json.indexOf(skill_name) == -1) {
-            alert('Please only add things from the available options.');
+            alert('Please only add from the available options.');
             $('#add-skill-input-settings').val('');
         } else {
           $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
@@ -894,7 +894,7 @@ $(document).ready(function(){
             if ($('#add-skill-input-settings').val()) {
               var skill_name = $('#add-skill-input-settings').val();
               if (autocomplete_json.indexOf(skill_name) == -1) {
-                alert('Please only add things from the available options.');
+                alert('Please only add from the available options.');
                 $('#add-skill-input-settings').val('');
               } else {
                 $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
@@ -912,7 +912,7 @@ $(document).ready(function(){
             if ($('#add-skill-input-settings').val()) {
               var skill_name = $('#add-skill-input-settings').val().replace(',', '');
               if (autocomplete_json.indexOf(skill_name) == -1) {
-                alert('Please only add things from the available options.');
+                alert('Please only add from the available options.');
                 $('#add-skill-input-settings').val('');
               } else {
                 $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
@@ -931,7 +931,7 @@ $(document).ready(function(){
     $('#tutor-add-course-fields').on('click', '.tt-suggestion', function() {
       var skill_name = $(this).children('p:first').text()
       if (autocomplete_json.indexOf(skill_name) == -1) {
-          alert('Please only add things from the available options.');
+          alert('Please only add from the available options.');
           $('#add-skill-input-settings').val('');
       } else {
         $('.template-one-skill:first').clone().hide().attr('class', 'skill-tag').appendTo('#register-skills');
@@ -1194,7 +1194,7 @@ $(document).ready(function(){
     function onTypeaheadSelectedTutorProfile(event, suggested, dataset_name) {
       var course_name = $('#courses-profile-input').val();
       if (autocomplete_json.indexOf(course_name) == -1) {
-            alert('Please only add things from the available options.');
+            alert('Please only add from the available options.');
             return;
       } 
 
@@ -1217,7 +1217,7 @@ $(document).ready(function(){
     function onTypeaheadSelectedTutorApp(event, suggested, dataset_name) {
       var course_name = $('#courses-tutor-input').val();
       if (autocomplete_json.indexOf(course_name) == -1) {
-            alert('Please only add things from the available options.');
+            alert('Please only add from the available options.');
             return;
       } 
 
@@ -1401,7 +1401,7 @@ $(document).ready(function(){
       if ($('#student-signup-skill').val()) {
         var skill_name = $('#student-signup-skill').val();
         if (autocomplete_json.indexOf(skill_name) == -1) {
-            alert('Please only add things from the available options.');
+            alert('Please only add from the available options.');
             $('#student-signup-skill').val('');
             $('#student-signup-skill').css({"border-color":"red"});
         } else {
