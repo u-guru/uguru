@@ -1551,15 +1551,17 @@ def api(arg, _id):
         user_id = session.get('user_id')
         user = User.query.get(user_id)
 
-        user.school_email = ajax_json['school-email']
+        # user.school_email = ajax_json['school-email']
         user.major = ajax_json['major']
         user.qualifications = ajax_json['experience']
+        user.tutor_introduction = ajax_json['experience']
         user.year = ajax_json['year']
         user.slc_tutor = ajax_json['slc']
         user.la_tutor = ajax_json['la']
         user.res_tutor = ajax_json['res']
         user.ta_tutor = ajax_json['gsi']
         user.previous_tutor = ajax_json['cal']
+        user.high_tutor = ajax_json['high']
         user.approved_by_admin = True
         user.verified_tutor = True
 
@@ -1582,7 +1584,10 @@ def api(arg, _id):
 
 
         if not tutor_notification_flag:
-            from notifications import getting_started_tutor
+            from notifications import getting_started_tutor, welcome_guru
+            welcome_guru_notification = welcome_guru(user)
+            user.notifications.append(welcome_guru_notification)
+            db_session.add(welcome_guru_notification)
             notification = getting_started_tutor(user)
             from emails import welcome_uguru_tutor
             welcome_uguru_tutor(user)

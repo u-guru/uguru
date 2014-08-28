@@ -308,7 +308,7 @@
                     <div class='request-form-container'>
                     
                         <div class='tutor-app-photo-container margin-top-30 margin-bottom-15'>
-                            <img id='tutor-app-photo' src='{{user.profile_url}}' height='80px'> 
+                            <img id='tutor-app-photo' {% if (user.profile_url == '/static/img/default-photo.jpg') %} style='border: 1px solid red'{% endif %}src='{{user.profile_url}}' height='80px'> 
                             <a href='javascript:void(0);' id='upload-photo-link'>
                               <span class='photo-upload-btn blue-btn'> Upload </span>
                             </a>
@@ -420,8 +420,17 @@
                               Saved!
                             </span>
                         </div>
+                        <div class='row-fluid margin-top-10' >
+                            <input id='high-tutor-check' type='checkbox' class='uguru-checkbox' {% if user.high_tutor %} checked {% endif %} ></input>
+                            <span class='reg-text'>
+                                I've tutored in high school
+                            </span>
+                            <span id='high-tutor-saved' class='green-text normal-text' style='display:none'>
+                              Saved!
+                            </span>
+                        </div>
                         <label for='request-class'>Your Bio / Relevant Experience </label>
-                        <textarea id='profile-relevant-experience' class='form-control standard-textarea guru-app-textarea'>{% if user.tutor_introduction %}{{user.tutor_introduction}}{% endif %}</textarea>
+                        <textarea id='profile-relevant-experience' placeholder='How have you done in your classes? Do you have any previous tutoring experience? Why should you be chosen?'class='form-control standard-textarea guru-app-textarea'>{% if user.tutor_introduction %}{{user.tutor_introduction}}{% endif %}</textarea>
                         {% endif %}
                         <div class='row-fluid margin-top-20'>
                             <a href='javascript:void(0);' id='submit-profile-info-btn' name='{{user.user_referral_code}}'>

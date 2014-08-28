@@ -186,13 +186,13 @@
 				<div class="alert alert-success"></div>
 			</div>
 		</div>
-		{% if user.skills and not user.approved_by_admin %}
-		<!-- <div style="display:block" class="row-fluid">
+		{% if user.approved_by_admin and user.verified_tutor and (not user.skills or not user.tutor_introduction or not user.major or not user.year or (user.profile_url == '/static/img/default-photo.jpg')) %}
 			<div style="margin-top:0px; margin-bottom:15px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<div style="margin-bottom:0"class="alert alert-info">We will email you once your Guru application is approved.<br> In the meantime, if you need help with your finals, you can request help above.</div>
+				<div style="margin-bottom:0"class="alert alert-danger">
+					Your guru profile is not complete! Complete it <a href='/settings/#prof'>here.</a>
+				</div>
 			</div>
-		 </div> -->
 		{% endif %}
 		{% if user.outgoing_requests|length >= 1 %}
 		<div style="display:block" class="row-fluid">

@@ -5,6 +5,7 @@ var request_form_complete = null;
 var a,b,c;
 var signup_type = null;
 var payment_plan_clicked = null;
+var guru_signup_clicked;
 var invert_olark = function() {
     $('#habla_window_div #habla_oplink_a').css('color','white');
     $('#habla_window_div #habla_topbar_div').css('background', '#00a9e5 none repeat scroll 0 0');
@@ -163,6 +164,10 @@ $(document).ready(function(){
           send_profile_update_ajax('res', this.checked)
     });
 
+    $('#high-tutor-check').change(function(){
+          send_profile_update_ajax('high', this.checked)
+    });
+
     $('#login-to-signup-modal').click(function() {
       $('#login-modal').modal('hide');
       $('#signup-modal').modal('show');
@@ -180,8 +185,10 @@ $(document).ready(function(){
       send_profile_update_ajax('major', $('#profile-major').val());
       send_profile_update_ajax('phone', $('#profile-phone').val())
       $('#profile-saved').show();
-      $('#profile-saved').delay(750).fadeOut('slow');
-      window.location.replace('/' + $(this).attr('name'));
+      $('#profile-saved').delay(750).fadeOut('slow', function() {
+        window.location.replace('/settings/#prof');
+      });
+      
     });
 
     function readJSON(file) {
@@ -510,18 +517,20 @@ $(document).ready(function(){
                 }
 
                 if (!$('#request-skill').val()) {
-                  $('#student-next-link').hide();
-                  $('input[name="student-name"]').val('');
-                  $('input[name="student-email"]').val('');
-                  $('input[name="student-password"]').val('');
-                  $('input[name="student-name"]').css('border-color','grey');
-                  $('input[name="student-email"]').css('border-color','grey');
-                  $('input[name="student-password"]').css('border-color','grey');
-                  $('#post-signup-span').show();
-                  $('#post-signup-span').delay(5000).fadeOut('slow', function() {
-                    $('#student-next-link').show();
-                  });
+                  window.location.replace('/activity/');
                   return;
+                  // $('#student-next-link').hide();
+                  // $('input[name="student-name"]').val('');
+                  // $('input[name="student-email"]').val('');
+                  // $('input[name="student-password"]').val('');
+                  // $('input[name="student-name"]').css('border-color','grey');
+                  // $('input[name="student-email"]').css('border-color','grey');
+                  // $('input[name="student-password"]').css('border-color','grey');
+                  // $('#post-signup-span').show();
+                  // $('#post-signup-span').delay(5000).fadeOut('slow', function() {
+                  //   $('#student-next-link').show();
+                  // });
+                  // return;
                 }
 
                 $('#signup-modal').modal('hide');
@@ -533,7 +542,7 @@ $(document).ready(function(){
     });
 
     $('#tutor-app-next').click(function() {
-      if (!$('#tutor-app-school-email').val() || !$('#tutor-app-major').val() || $('.tutor-app-course-tag').length == 0
+      if (!$('#tutor-app-major').val() || $('.tutor-app-course-tag').length == 0
         || !$('#tutor-app-experience').val() || $('#tutor-app-year').text().trim().length == 0) {
           $('#tutor-app-alert').text('Please fill in all fields');
           $('#tutor-app-alert').show();
@@ -549,21 +558,21 @@ $(document).ready(function(){
     });
 
   $('#guru-app-back').click(function() {
-    $(this).hide();
+    $(this).parent().parent().hide();
     $('#guru-app').show();
-    $('#tutor-app-details-hide')
   });
 
   $('#tutor-app-submit').click(function() {
     var data_dict ={
             'tutor-submit-app': true,
-            'school-email': $('#tutor-app-school-email').val(),
+            // 'school-email': $('#tutor-app-school-email').val(),
             'major': $('#tutor-app-major').val(),
             'experience': $('#tutor-app-experience').val(),
             'year': $('#tutor-app-year').text().trim(),
             'courses' : get_courses_from_tutor_app(),
             'slc': $('#tutor-slc-check').prop('checked'),
             'la': $('#tutor-la-check').prop('checked'),
+            'high': $('#tutor-high-check').prop('checked'),
             'res': $('#tutor-res-check').prop('checked'),
             'gsi': $('#tutor-gsi-check').prop('checked'),
             'cal': $('#tutor-cal-check').prop('checked'),
@@ -590,6 +599,19 @@ $(document).ready(function(){
   }
 
     $('#tutor-app-add-course-btn').click(function() {
+        var course_name = $('#courses-tutor-input').val();
+        if (autocomplete_json.indexOf(course_name) == -1) {
+              alert('Please only add things from the available options.');
+              return;
+        } 
+
+        $('.courses-add-container').append("<span class='tutor-app-course-tag'><span>" + course_name + 
+            '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="remove-skill-tutor-app">x</a></span>' );
+        $('#courses-tutor-input').val('');
+
+        $('.tutor-app-course-tag .remove-skill-tutor-app').click(function() {
+          $(this).parent().remove();
+        });
     });
 
     $('#tutor-app-dropdown li a').click(function() {
@@ -606,6 +628,9 @@ $(document).ready(function(){
        if (!$('#student-signup-name').val() || !$('#student-signup-email').val() 
         || !$('#student-signup-password').val()) 
         {
+            $('#alert-fields-student-signup').show()
+        } else if ($('#student-signup-email').val().toLowerCase().indexOf('@berkeley.edu') == -1) {
+            $('#alert-fields-student-signup').text('Please enter an @berkeley.edu address.');
             $('#alert-fields-student-signup').show()
         } else {
             var data_dict = {
@@ -624,6 +649,7 @@ $(document).ready(function(){
               dataType: "json",
               success: function(result) {
                 if (result.dict['account-exists']) {
+                  guru_signup_clicked = true;
                   $('#signup-modal').modal('hide');
                   $('#login-modal').modal('show');
                   $('#alert-fields-login').text($('#student-signup-email').val() + ' already has an account! Please Log In.')
@@ -688,6 +714,7 @@ $(document).ready(function(){
               $('#settings-notif').hide();
               $('#student-photo-alert').hide();
               $('#upload-photo-saved').show();
+              $('#tutor-app-photo').css('border-color','1px solid transparent');
               $('#upload-photo-saved').delay(750).fadeOut('slow');
               readURL(this); 
               var formData = new FormData()
@@ -990,8 +1017,12 @@ $(document).ready(function(){
         url: '/login/',
         data: JSON.stringify(data),
         dataType: "json",        
-        success: function(result) {        
-            console.log(result);
+        success: function(result) {
+            if (guru_signup_clicked) {
+              window.location.replace('/apply-guru/');
+              return;
+            }
+
             if (result.json['unfinished']) {
               window.location.replace('/');
             }
@@ -1072,8 +1103,6 @@ $(document).ready(function(){
         signup_type ='tutor';
 
     });
-
-    $('#')
 
     $('#home-course-submit').click(function() {
       $('#main').hide();
@@ -1233,6 +1262,7 @@ $(document).ready(function(){
       $('#signup-modal').modal();
       $('#tutor-next-link').show();
       $('#student-next-link').hide();
+      $('#become-guru-text').show();
     });
 
     $('#become-guru-nav-request').click(function() {
@@ -1250,6 +1280,7 @@ $(document).ready(function(){
     $('#signup-nav').click(function() {
       $('#signup-modal').modal();
       $('#tutor-next-link').hide();
+      $('#become-guru-text').hide();
       $('#student-next-link').show();
     });
 
@@ -1424,6 +1455,11 @@ $(document).ready(function(){
         data['previous'] = value;
         $('#prev-tutor-saved').show();
         $('#prev-tutor-saved').delay(750).fadeOut('slow');
+      }
+      if (to_change =='high') {
+        data['high'] = value;
+        $('#high-tutor-saved').show();
+        $('#high-tutor-saved').delay(750).fadeOut('slow');
       }
       if (to_change =='slc') {
         data['slc'] = value;

@@ -367,11 +367,11 @@ input {
 }
 
 /*Placeholder align to right*/
-#tutor-app-school-email::-webkit-input-placeholder { 
+#tutor-app-school-email, #student-signup-email::-webkit-input-placeholder { 
   text-align:right; 
 }
 
-#tutor-app-school-email:-moz-placeholder#tutor-app-school-email { 
+#tutor-app-school-email, #student-signup-email:-moz-placeholder#tutor-app-school-email { 
   text-align:right; 
 }
 
@@ -1140,6 +1140,7 @@ td.time-slot {
 .never-post {
   color:grey;
   margin:10px auto;
+  font-size:12px;
 }
 
 .grey-text {
@@ -1166,7 +1167,7 @@ h1.extra-extra-margin-top {
 }
 
 .or-text {
-  margin:35px auto;
+  margin:20px auto;
 }
 
 .guarantee-text-container {

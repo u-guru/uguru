@@ -29,10 +29,19 @@ def getting_started_student_tip(user):
     return notification
 
 def getting_started_tutor(user):
-    getting_started_msg = "You applied to become" + \
-        " a Guru" 
+    getting_started_msg = "Ready to Guru?" 
     notification = Notification(other='getting_started')
-    notification.feed_message_subtitle = "Application status: <strong><span style='color:#69bf69'>New Guru!</span></strong> Read more <a href='http://tinyurl.com/uguru-new-guru'> here </a>"
+    notification.feed_message_subtitle = "Click here for our guide to getting started!"
+    notification.feed_message = getting_started_msg
+    notification.a_id_name = 'getting-started-guru'
+    notification.image_url = user.profile_url
+    # notification.time_read = datetime.now()    
+    # welcome_uguru_tutor(user)
+    return notification
+
+def welcome_guru(user):
+    getting_started_msg = 'Welcome to uGuru.'
+    notification = Notification(other='getting_started')
     notification.feed_message = getting_started_msg
     notification.a_id_name = 'getting-started'
     notification.image_url = user.profile_url

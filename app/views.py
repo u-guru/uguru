@@ -83,9 +83,13 @@ def fib(n):
 def send_twilio_message_delayed(phone, msg, user_id):
     send_twilio_msg(phone,msg, user_id)
 
+@app.route('/log_in/')
+@app.route('/sign_up/')
+@app.route('/guru/')
+@app.route('/callisto/')
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    # tester.apply_async(args=[1], countdown=10)
+    modal_flag = None
     if os.environ.get('TESTING') and not session.get('testing-admin'):
         return redirect(url_for('login'))
     tutor_signup_incomplete = False
@@ -104,9 +108,17 @@ def index():
         # if user.skills and len(user.notifications) < 2:
         #     return redirect(url_for('settings'))
         return redirect(url_for('activity'))
+    if 'log_in' in request.url:
+        modal_flag = 'login'
+    if 'sign_up' in request.url:
+        modal_flag = 'signup'
+    if 'guru' in request.url:
+        modal_flag = 'guru'
+    if 'callisto' in request.url:
+        session['referral'] = 'callisto'
     return render_template('new.html', forms=[request_form],
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
-        environment = get_environment(), session=session, guru_referral=guru_referral)
+        environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
 
 
 @app.route('/parents/', methods =['GET', 'POST'], defaults={'arg': None})
@@ -273,6 +285,8 @@ def update_profile():
                 user.ta_tutor = ajax_json.get('ta')
             if 'la' in ajax_json:
                 user.la_tutor = ajax_json.get('la')
+            if 'high' in ajax_json:
+                user.high_tutor = ajax_json.get('high')
             if 'res' in ajax_json:
                 user.res_tutor = ajax_json.get('res')
             if 'hkn' in ajax_json:
@@ -1573,20 +1587,19 @@ def success():
                 db_session.rollback()
                 raise 
             user_id = u.id
-            # authenticate(user_id)
+            authenticate(user_id)
             try:
-                from notifications import getting_started_student, getting_started_tutor, getting_started_student_tip
+                from notifications import getting_started_student, welcome_guru, getting_started_tutor, getting_started_student_tip
                 if session.get('tutor-signup'):
-                    notification = getting_started_tutor(u)
-                    from emails import welcome_uguru_tutor
-                    welcome_uguru_tutor(u)
+                    pass
                 else:
                     notification = getting_started_student(u)
                     notification2 = getting_started_student_tip(u)
                     u.notifications.append(notification2)
+                    db_session.add(notification)
                     db_session.add(notification2)
-                u.notifications.append(notification)
-                db_session.add_all([u, notification])
+                    u.notifications.append(notification)
+                db_session.add(u)
                 db_session.commit()
             except:
                 db_session.rollback()

@@ -141,7 +141,7 @@ def welcome_uguru_student(user):
 def welcome_uguru_tutor(user):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
     user_first_name = user.name.split(" ")[0]
-    text = welcome_uguru_tutor_text(user_first_name)
+    # text = welcome_uguru_tutor_text(user_first_name)
     html = welcome_uguru_tutor_html(user_first_name)
     to_emails = []
     to_emails.append({
@@ -152,7 +152,7 @@ def welcome_uguru_tutor(user):
 
     message = {
         'html':html,
-        'text':text,
+        # 'text':text,
         'subject': user_first_name + ', Welcome to Uguru Beta!',
         'from_email': 'samir@uguru.me',
         'from_name': 'Samir from Uguru',
@@ -619,7 +619,7 @@ def generate_new_password(user, new_password):
 def generate_new_password_text(user_name, new_password):
     return "Hi """ + user_name + """, \n\n""" + \
     """Your new generated password is '""" + new_password + """'\n\n""" + \
-    """Login to http://uguru.me with this password and change to a password of your choice under Account Settings.\n\n""" +\
+    """Login to http://uguru.me/log_in with this password and change to a password of your choice under Account Settings.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def generate_new_password_html(user_name, new_password):
@@ -630,7 +630,7 @@ def generate_new_password_html(user_name, new_password):
     Your new generated password is <b>'""" + new_password + """'</b>
     <br>
     <br>
-    <a href="http://uguru.me"> Login</a> with this password on Uguru and change to a pasword of your choice under Account Settings. 
+    <a href="http://uguru.me/log_in/"> Login</a> with this password on Uguru and change to a pasword of your choice under Account Settings. 
     <br>
     <br>
     Samir<br>
@@ -654,7 +654,7 @@ def student_needs_help_html(student_name, class_name, request):
     (You can also propose a different price!)
     <br>
     <br>
-    <a href="http://beta.uguru.me"> Log in </a> to accept """ + student_name + """'s request on your feed page, or offer a different price.
+    <a href="http://beta.uguru.me/log_in"> Log in </a> to accept """ + student_name + """'s request on your feed page, or offer a different price.
     <br>
     <br>
     Tip: take 3 minutes to update your profile so students feel more comfortable picking you as their Guru.    
@@ -675,7 +675,7 @@ def student_needs_help_text(student_name, class_name, request):
     """# of Students: """ + str(request.num_students) + """\n\n""" +\
     """You can make: $""" + str(request.time_estimate * tutor_rate) + """ ($"""+ str(tutor_rate) +"""/hr)\n""" + \
     """(You can also propose a different price!)\n""" +\
-    """Login at http://uguru.me to see more details. You can either accept the request on the feed page, or offer a different price.\n\n""" +\
+    """Login at http://uguru.me/log_in/ to see more details. You can either accept the request on the feed page, or offer a different price.\n\n""" +\
     """Tip: take 3 minutes to update your profile so students feel more comfortable picking you as their Guru.\n\n"""+\
     """Samir\nCo-founder"""
 
@@ -710,7 +710,7 @@ def tutor_wants_to_help(student, tutor, course_name):
 
 def tutor_wants_to_help_text(tutor_name, course_name):
     return tutor_name + """ accepted your request for """ + course_name + """. \n\n""" + \
-    """Login to http://uguru.me to see""" + tutor_name + """'s profile and accept the offer, or if you're not in a rush, wait for a couple more Gurus to accept and choose the one you like best\n\n""" +\
+    """Login to http://uguru.me/log_in/ to see""" + tutor_name + """'s profile and accept the offer, or if you're not in a rush, wait for a couple more Gurus to accept and choose the one you like best\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def tutor_wants_to_help_html(tutor_name, course_name):
@@ -718,7 +718,7 @@ def tutor_wants_to_help_html(tutor_name, course_name):
     """ + tutor_name + """ accepted your request for """ + course_name + """.
     <br>
     <br>
-    <a href="http://uguru.me">Log in</a> to see """ + tutor_name + """'s profile and accept the offer, or wait for more Gurus to accept!
+    <a href="http://uguru.me/log_in/">Log in</a> to see """ + tutor_name + """'s profile and accept the offer, or wait for more Gurus to accept!
     <br>
     <br>
     Samir<br>
@@ -795,7 +795,7 @@ def send_message_alert_html(receiver_name, sender_name):
     return """Don't keep """ + sender_name + """ waiting!
     <br>
     <br>
-    Login to <a href="http://uguru.me"> Uguru </a> and reply to """ + sender_name + """ now through our <a href="http://uguru.me/messages">messages</a>.     
+    Login to <a href="http://uguru.me/log_in"> Uguru </a> and reply to """ + sender_name + """ now through our <a href="http://uguru.me/messages">messages</a>.     
     <br>
     <br>
     If you have any questions or concerns, please reply directly to this email, or give us a phonecall! 
@@ -1195,7 +1195,7 @@ def student_is_matched_html(tutor_name, request_code):
 def tutor_is_matched_text(tutor_name):
     return """Congrats """ + tutor_name + """! Here are the next steps\n\n:""" + \
     """1. Message your student, and finalize meetup time & location (http://uguru.me/messages).\n\n""" +\
-    """2. At the end of the session, log into http://uguru.me on your device and draft a bill by clicking 
+    """2. At the end of the session, log into http://uguru.me/log_in/ on your device and draft a bill by clicking 
     "REQUEST PAYMENT" on your feed page.\n\n""" +\
     """3. Have your student verify the amount before submitting.  The amount will be added to your balance,
     and you can cash out at any time!\n\n""" +\
@@ -1209,7 +1209,7 @@ def tutor_is_matched_html(tutor_name):
     1. <a href="http://uguru.me/messages/">Message</a> your student, and finalize meetup <b>time & location</b>.
     <br>
     <br>
-    2. At the end of the session, <a href="http://uguru.me/activity/"> log into Uguru </a> on your device and draft a bill by clicking 
+    2. At the end of the session, <a href="http://uguru.me/log_in/"> log into Uguru </a> on your device and draft a bill by clicking 
     <b>"REQUEST PAYMENT"</b> on your feed page.
     <br>
     <br>
@@ -1525,26 +1525,26 @@ def welcome_uguru_tutor_html(user_name):
     Hi """ + user_name.split(' ')[0] + """,
     <br>
     <br>
-    This is Samir, from <a href="http://uguru.me">Uguru</a>. We hope to make peer-to-peer help <b>available</b> and <b>affordable</b> to students by connecting them with trusted Gurus like you! 
+    This is Samir, from <a href="http://uguru.me">uGuru</a>. We strive to create a better tutoring experiencing by making peer-to-peer help <b>available</b> and <b>affordable</b> to students by connecting them with trusted Gurus like you! 
     <br>
     <br>
     We are excited to have you on board as a Cal Guru. Your role will be to save students who are lost in the dungeons of Moffit.
     <br>
     <br>
-    Since this is your first time tutoring with us, we will need you to prove to us that have you the ability. Until you have a 4.5 average rating, you will not be able to earn any money. When you do, you will make an average of $15/hr. To read more, check out our <a href='tinyurl.com/uguru-q-a'> FAQ </a>.
-    <br>
-    <br>
-    We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly.
+    Since this is your first time tutoring with us, your current mission is to show your skills by earning a great rating during your first session. This session will be free to the student, so do your best to earn a 4.0 rating. As soon as you achieve that 4.0 rating, you'll be ready to set your own rates, be your own boss, and earn some extra cash. To get the full scoop on the Guru code, check out our <a href='tinyurl.com/uguru-q-a'> FAQ </a>.
     <br>
     <br>
     Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears! 
     <br>
     <br>
     Samir<br>
-    Co-Founder<br>
     Samir@uguru.me<br>
     (813) 500-9853
+    <br>
+    <br>
+    <span style='color:grey;font-size:12px;'> We're are a small team with limited resources, but we're committed to providing the best possible experience to our users. If you have any questions/suggestions, let us know by replying to this email. </span>
     """
+
 
 def welcome_uguru_tutor_text(user_name):
     return """Hi """ + user_name.split(' ')[0] + \

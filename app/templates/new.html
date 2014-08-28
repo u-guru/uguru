@@ -506,13 +506,13 @@
                 <div id='login-modal-container' class='container-fluid center'>
                     <!-- <h1 class='extra-margin-bottom dark-grey-text'><b>LOGIN</b></h1> -->
 
-                    <!-- <a id='fb-login-btn' onclick='fb_login()' href='#'>
+                    <a id='fb-login-btn' onclick='fb_login()' href='#'>
                         <img src='/static/img/login-fb.png'>
                     </a>
                     <div class='or-text relative'>
                         <span style='width:20px; border-top:1px solid grey'> </span> Or <span style='border-top: 1px solid grey;'> 
                         </span>
-                    </div> -->
+                    </div>
                     <div class='login-input-container'>
                         <div id='alert-fields-login-2'>
                             Please fill in all fields.
@@ -574,30 +574,31 @@
                     <span class='glyphicon glyphicon-remove grey-text modal-close-button' ></span>
                 </a>
                 <div id='login-modal-container' class='container-fluid center'>
+                    <h1 id='become-guru-text' style='margin-top:-10px; margin-bottom:30px'> Become a Guru </h1>
                     <div id='alert-fields-student-signup-top'>
-                            Please fill in all fields.
+                        Please fill in all fields.
                     </div>
-                    <!-- <a id='fb-signup-btn' onclick='fb_login()' href='#'>
-                        <img src='/static/img/login-fb.png'>
-                    </a> -->
-                    <!-- <div class='never-post'>
+                    <a id='fb-signup-btn' onclick='fb_login()' href='#'>
+                        <img src='/static/img/signup-fb.png'>
+                    </a>
+                    <div class='never-post'>
                         We will NEVER post on your Facebook
-                    </div> -->
-                    <!-- <div class='or-text'>
+                    </div>
+                    <div class='or-text'>
                         Or
-                    </div> -->
+                    </div>
                     <div class='login-input-container'>
                         <div id='alert-fields-student-signup'>
                             Please fill in all fields.
                         </div>
                         <label for="exampleInputPassword1">Name</label>
-                        <input name='student-name' id='student-signup-name' class="form-control" >
+                        <input name='student-name' placeholder='Full Name'  id='student-signup-name' class="form-control" >
                         
                         <label style='margin-top:10px' for="exampleInputEmail1">Email address</label>
-                        <input name='student-email' id='student-signup-email'  type="email" class="form-control">
+                        <input name='student-email' placeholder='@berkeley.edu' id='student-signup-email'  type="email" class="form-control">
                         
                         <label style='margin-top:10px' for="exampleInputPassword1">Create a Password</label>
-                        <input name='student-password' id='student-signup-password' type="password" class="form-control" >
+                        <input name='student-password' placeholder='••••••••' id='student-signup-password' type="password" class="form-control" >
                     </div>
                     <div class='login-btn-container relative' >
                         <a id='student-next-link' href='javascript:void(0);'style='display:none'>
@@ -662,6 +663,21 @@
         <script src="/static/js/snippets/calendar.js"></script>
         <script src="/static/js/snippets/scroll.js"></script>
         <script src="/static/js/mobile.js"></script>
+        {% if modal_flag %}
+        <script>
+        {% if modal_flag == 'login' %}
+            $('#login-modal').modal('show');
+        {% elif modal_flag == 'signup'%}
+            $('#signup-modal').modal();
+          $('#tutor-next-link').hide();
+          $('#student-next-link').show();
+        {% elif modal_flag == 'guru'%}  
+            $('#signup-modal').modal();
+            $('#student-next-link').hide();
+            $('#tutor-next-link').show();
+        {% endif %}
+        </script>
+        {% endif %}
         <!-- begin olark code -->
         <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
         f[z]=function(){

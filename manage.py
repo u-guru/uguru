@@ -59,6 +59,71 @@ if arg == 'initialize_user_codes':
     db_session.commit()
 
 
+if arg == 'send_free_5':
+    for user in User.query.all():
+        if user.id > 1219 and user.id < 1650:
+            if user.credit != 0:
+                user.credit = 5
+
+            user_name = user.name
+            user_email = user.email
+            mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+            html = send_free_5_email()
+            to_emails = []
+            to_emails.append({
+                'email':user_email,
+                'name': name,
+                'type': 'to'
+            })
+
+            message = {
+                'html':html,
+                'subject': '*|FNAME|*, Your $5 from uGuru is Here!',
+                'from_email': 'michael@uguru.me',
+                'from_name': 'Michael from uGuru',
+                'to': to_emails,
+                'headers': {'Reply-To': "michael@uguru.me"},
+                'important': True,
+                'merge_vars': [{
+                'rcpt':user.email,
+                'vars': [
+                        {
+                            'name':"fname",
+                            'content':user.name.split(' ')[0].title()
+                        }
+                    ]
+                }],
+                'track_opens': True,
+                'track_clicks': True,
+                'preserve_recipients':False,
+                'tags':['uguru-support']
+            }
+
+            result = mandrill_client.messages.send(message=message)
+    db_session.commit()
+
+def send_free_5_email():
+    return """
+    Hey *|FNAME|*,
+    <br>
+    <br>
+    You just received $5 in your <a href='http://uguru.me'> uGuru </a> account for signing up at Caltopia!
+    <br>
+    <br>
+    Whenever you are struggling in a class, just <a href='http://uguru.me'> log in </a> and get help from other
+    students who have done well in the same class. It's only $15/hr on average, and there are many new Gurus who will help you for free.
+    <br>
+    <br>
+    If you are interested in earning side money on your own schedule, <a href='javascript:void(0);'> Signup as a Guru </a> for classes that you are confident with.
+    <br>
+    <br>
+    Start your semester strong, and don't let your GPA slide!
+    <br>
+    <br>
+    Cheers,
+    <br>
+    Michael Koh
+    """
 
 
 if arg == 'initialize':

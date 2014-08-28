@@ -20,8 +20,8 @@
                         </div>
                         <input id="upload-photo" type="file"/>
 
-                        <label for='request-class'>School Email</label>
-                        <input type='text' id='tutor-app-school-email' placeholder='@berkeley.edu'class='form-control standard-input'>
+                        <!-- <label for='request-class'>School Email</label>
+                        <input type='text' id='tutor-app-school-email' placeholder='@berkeley.edu'class='form-control standard-input'> -->
                         
                         <label for='request-class'>School Year</label>
                         <div class="dropdown">
@@ -88,8 +88,14 @@
                                 I've tutored at Cal
                             </span>
                         </div>
-                        <label for='request-class'>Your Bio / Relevant Experience </label>
-                        <textarea id='tutor-app-experience' class='form-control standard-textarea guru-app-textarea'> </textarea>
+                        <div class='row-fluid margin-top-10' >
+                            <input id='tutor-high-check' type='checkbox' class='uguru-checkbox'></input>
+                            <span class='reg-text'>
+                                I've tutored in High School
+                            </span>
+                        </div>
+                        <label for='request-class'>Your Relevant Tutoring Experience </label>
+                        <textarea id='tutor-app-experience' placeholder="How have you done in your classes? Do you have any previous tutoring experience? Why should you be chosen?" class='form-control standard-textarea guru-app-textarea'></textarea>
                         <div class='row-fluid margin-top-20'>
                             <a href='javascript:void(0);' id='tutor-app-next'>
                                 <span class='blue-btn blue-btn-full' style='width:100%'>
