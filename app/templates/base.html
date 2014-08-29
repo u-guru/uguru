@@ -69,6 +69,13 @@
               </ul>
               {% if user %}
               <ul class="nav navbar-nav navbar-right navbar-right-main">
+                <li>
+                  <a href='/settings/#referral'>
+                    <div class='font-14 blue-text center' id='base-referral-btn'>
+                      Earn $5 for every student <br> you bring to uGuru
+                    </div>
+                  </a>
+                </li>
                 <li><a id='become-guru-nav' href="/activity/">
                         <span class='glyphicon glyphicon-globe blue-text font-30' ></span>
                         {% if user.feed_notif and user.feed_notif > 0%}

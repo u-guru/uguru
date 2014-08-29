@@ -4,7 +4,7 @@ from flask import render_template, jsonify, redirect, request, \
 session, flash, redirect, url_for
 from forms import SignupForm, RequestForm
 from models import User, Request, Skill, Course, Notification, Mailbox, \
-    Conversation, Message, Payment, Rating, Email, Week, Range, Text
+    Conversation, Message, Payment, Rating, Email, Week, Range, Text, Promo
 from hashlib import md5
 from datetime import datetime, timedelta
 import emails, boto, stripe, os
@@ -140,11 +140,14 @@ def profile(arg):
     if session.get('user_id'):
         user = User.query.get(session.get('user_id'))
     profile_user = User.query.filter_by(user_referral_code=arg).first()
-    if profile_user and profile_user.approved_by_admin:
-        from app.static.data.short_variations import short_variations_dict
-        return render_template('profile.html', profile_user=profile_user , user=user, variations=short_variations_dict)
-    else:
-        return redirect(url_for('index'))
+    if profile_user:
+        session['referral'] = arg
+    return redirect(url_for('index'))
+    # if profile_user and profile_user.approved_by_admin:
+    #     from app.static.data.short_variations import short_variations_dict
+    #     return render_template('profile.html', profile_user=profile_user , user=user, variations=short_variations_dict)
+    # else:
+    #     return redirect(url_for('index'))
 
 @app.route('/apply-guru/', methods=['GET', 'POST', 'PUT'])
 def apply_guru():
@@ -1593,6 +1596,18 @@ def success():
 
                 if session.get('referral'):
                     u.referral_code = session['referral']
+                    user_with_promo_code = User.query.filter_by(user_referral_code = session.get('referral')).first()
+                    if user_with_promo_code:
+                        p = Promo()
+                        p.time_used = datetime.now()
+                        p.sender_id = user_with_promo_code.id
+                        p.receiver_id = u.id
+                        p.tag = 'referral'
+                        db_session.add(p)
+                        u.promos.append(p)
+                        user_with_promo_code.promos.append(p)
+                        u.credit = u.credit + 5
+
                     session.pop('referral')
                 
                 m = Mailbox(u)

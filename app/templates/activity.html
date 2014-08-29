@@ -119,13 +119,16 @@
 						</span>
 					</a>
 				</div>
-				{% if user.credit %}
-					<div class='row-fluid center font-20 margin-top-10 dark-grey-text'>
-						Your uGuru credits: <span class='green-text'> ${{user.credit}} 
+				{% if user.credit and not user.verified_tutor and not user.approved_by_admin%}
+					<div class='row-fluid center font-20 margin-top-20 dark-grey-text'>
+						<h5 style="color:grey; font-size:22px; margin-bottom:0px; margin-top:0px">Your Credits: 
+							<span style="color:#69bf69; font-weight:bold"> ${{'%.02f' % user.credit}} 
+							</span>
+						</h5>
 					</div>
 				{% endif %}
-				<span class='font-14 grey-text center block margin-top-20'>
-				Want to become a Guru? Become one <a class='underline blue-text'href='/apply-guru/'> here </a> 
+				<span class='font-14 light-grey-text center block margin-top-20'>
+				Want to be a Guru and make <span class='green-text'>$15+</span>/hr? Start <a class='underline blue-text'href='/apply-guru/'> here </a> 
 				</span>
 			</div>
 		</div>
