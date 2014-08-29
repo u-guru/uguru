@@ -260,12 +260,16 @@
                         Referrals and Promo Codes
                     </h1>
                     <div class='request-form-container'>
+                        <div class='row-fluid reg-text center font-20'>
+                          Share your referral code/URL to get both you and your friend <span class='green-text bold'> $5</span>
+                        </div>
+                        <hr>
                         
                         <div class='row-fluid'>
-                          <label> Your credits: </label> <span id='referral-credits' class='green-text'> ${{user.credit}}</span>
+                          <label class='font-18'> Your credits: </label> <span id='referral-credits' class='font-18 green-text bold'> ${{'%.02f' %user.credit}}</span>
                         </div>
 
-                        <label for='request-class'>Promo / Referral Code</label>
+                        <label for='request-class'>Reedem a Promo / Referral Code</label>
                         <div class='row-fluid'>
                           <input type='text' id='referral-promo' style='display:inline-block; width:75%'class='form-control standard-input' >
                           <a href='javascript:void(0);' id='apply-promo-code'>
@@ -281,7 +285,8 @@
                           Promo code successful!
                         </div>
 
-                        <label> Your referral code: </label> 
+                        <label> Your unique referral code: </label>
+                        <div class='light-grey-text font-10' style='margin-top:-5px'>Give this to anyone new that signs up.</div>
                         <div id='your-referral-code' class='row-fluid'>
                           <span id='your-referral-code-text'class='green-text'> {{user.user_referral_code}}</span>
                           <a class='blue-text'href='javascript:void(0)' id='edit-referral-code' style='float:right'>
@@ -303,13 +308,10 @@
 
                         <div class='row-fluid'>
                           <label> Your referral {% if user.approved_by_admin %} and public profile {% endif %}URL: </label> 
-                          <br>
+                          <div class='light-grey-text font-10' style='margin-top:-5px'>Have anyone sign up with uGuru with this link.</div>
                           <span id='your-referral-code-url' class='green-text'> http://uguru.me/{{user.user_referral_code}}</span>
                         </div>
                         <br>
-                        <div class='row-fluid reg-text'>
-                          Share your referral code/URL to get both you and your friend <span class='green-text'> $10</span>
-                        </div>
 
             </div>
         </div>

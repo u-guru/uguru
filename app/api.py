@@ -1801,7 +1801,7 @@ def check_promo_code(user, promo_code):
             user_with_promo_code.promos.append(p)
             return "success"
 
-    if promo_code.lower == 'doyouguru':
+    if promo_code.lower() == 'doyouguru':
         if user.promos:
             for p in user.promos:
                 if p.tag == 'referral':

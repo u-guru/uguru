@@ -1587,7 +1587,6 @@ def success():
                         phone_number = None
                     )
                 u.last_active = datetime.now()
-                u.user_referral_code = create_referral_code(u)
                 u.fb_account = True if 'fb-signup' in ajax_json else False
                 db_session.add(u)
                 db_session.commit()
@@ -1604,6 +1603,7 @@ def success():
                 db_session.rollback()
                 raise 
             user_id = u.id
+            u.user_referral_code = create_referral_code(u)
 
             if ajax_json.get('instant') and session.get('tutor-signup'):
                 from emails import sign_up_caltopia_tutor
