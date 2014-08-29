@@ -14,8 +14,11 @@
         <div class='row'>
             <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4'>
                 <h1 class='reg-text center bold extra-margin-bottom'>
-                    Settings 
+                    Account Settings 
                 </h1>
+                <div id='account-settings-alert' style='text-align:center; color:red; display:none'> 
+                  Please fill in all fields
+                </div>
                 <div class='request-form-container'>
                   <label> Email Settings</label>
                   <div class='row-fluid' >
@@ -36,14 +39,25 @@
                         Saved!
                       </span>
                   </div>
-                  <div class='password-container margin-top-20'>
+                  
+                  <label for='request-class'>Your Name</label>
+                  <input type='text' id='settings-name' class='form-control standard-input' {% if user.phone_number %} value='{{user.name}}' {% endif %} >
+
+                  <label for='request-class'>Your Email</label>
+                  <input type='text' id='settings-email' class='form-control standard-input' {% if user.phone_number %} value='{{user.email}}' {% endif %} >
+
+                  <label for='request-class'>Your Phone Number </label>
+                  <input type='text' id='settings-phone' class='form-control standard-input' {% if user.phone_number %} value='{{user.phone_number}}' {% endif %} >
+
+                  <div class='password-container'>
                     <div class='password-text-change-container row width-100 margin-bottom-15'>
-                      <label style='padding-left:14px'> Password </label>
+                      <label style='padding-left:14px'> Your Password </label>
                       <span class='green-text normal-text' id='saved-password'style='display:none'> Saved!</span>
-                      <a href='javascript:void(0);' id='settings-change-pwd-toggle'>
-                          <span class='blue-btn reset-password-btn'>
+                      <a href='javascript:void(0);' id='settings-change-pwd-toggle' class='blue-text'>
+                          (edit)
+                          <!-- <span class='blue-btn reset-password-btn'>
                           Change
-                        </span>
+                        </span> -->
                       </a>
                     </div>
                     <div id='change-pwd-settings-container' style='display:none'>
@@ -64,9 +78,15 @@
                         </div>
                       </form>
                       <a href='javascript:void(0);' id='save-password-btn'>
-                        <span class='blue-btn blue-btn-full'> Save </span>
+                        <span class='blue-btn blue-btn-full'> Save Password</span>
                       </a>
                     </div>
+                  </div>
+                  <a href='javascript:void(0);' id='save-account-settings-btn'>
+                    <span class='blue-btn blue-btn-full'> Save All</span>
+                  </a>
+                  <div class='row-fluid margin-top-5 center'>
+                    <span class='green-text normal-text' style='display:none' id='save-account-saved'> Saved! </span>
                   </div>
                 </div>
             </div>
@@ -656,7 +676,7 @@
           {% endif %}
           <div style="text-align:center;"id="password">
           <h4 style="text-align:center;">PASSWORD</h4>
-          <a id="change-password-btn" href="javascript:void(0)"><span class="btn-options btn-md" style="margin-top:5px;">CHANGE</span></a>
+          <a id="change-password-btn" href="javascript:void(0)" class='blue-text'>(edit)<!-- <span class="btn-options btn-md" style="margin-top:5px;">CHANGE</span> --></a>
           <!-- <span id="saved-password" class="saved-text">Updated!</span> -->
           </div>
           <br>

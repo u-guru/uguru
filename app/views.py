@@ -288,6 +288,10 @@ def update_profile():
                 user.ta_tutor = ajax_json.get('ta')
             if 'la' in ajax_json:
                 user.la_tutor = ajax_json.get('la')
+            if 'name' in ajax_json:
+                user.name = ajax_json.get('name').title()
+            if 'email' in ajax_json:
+                user.email = ajax_json.get('email').lower()
             if 'high' in ajax_json:
                 user.high_tutor = ajax_json.get('high')
             if 'res' in ajax_json:

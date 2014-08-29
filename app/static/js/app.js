@@ -218,6 +218,27 @@ $(document).ready(function(){
       
     });
 
+    $('#save-account-settings-btn').click(function() {
+      if (!$('#settings-name').val() || !$('#settings-email').val()) {
+        $('#account-settings-alert').text('Please fill in all fields.');
+        $('#account-settings-alert').show();
+      }
+      else if ($('#settings-email').val().toLowerCase().indexOf('@berkeley.edu') == -1) {
+          $('#account-settings-alert').text('Please enter an @berkeley.edu address.');
+          $('#account-settings-alert').show()
+      } else {
+        $('#account-settings-alert').hide();
+          send_profile_update_ajax('phone', $('#settings-phone').val());
+          send_profile_update_ajax('email', $('#settings-email').val());
+          send_profile_update_ajax('name', $('#settings-name').val());
+          $('#save-account-saved').show();
+          $('#save-account-saved').delay(750).fadeOut('slow', function() {
+            window.location.replace('/settings/#main');
+          });
+      }
+
+    });
+
     function readJSON(file) {
       var request = new XMLHttpRequest();
       request.open('GET', file, false);
@@ -319,10 +340,12 @@ $(document).ready(function(){
     $('#settings-change-pwd-toggle').click(function() {
       if ($('#change-pwd-settings-container').is(':visible')) {
         $('#change-pwd-settings-container').hide();
-        $('#settings-change-pwd-toggle').children('span:first').text('Change');
+        $('#settings-change-pwd-toggle').text('(Edit)');
+        $('#save-account-settings-btn').show();
       } else {
         $('#change-pwd-settings-container').show();
-        $('#settings-change-pwd-toggle').children('span:first').text('Cancel')
+        $('#settings-change-pwd-toggle').text('(Cancel)')
+        $('#save-account-settings-btn').hide();
       }
     });
 
@@ -1561,6 +1584,15 @@ $(document).ready(function(){
       if (to_change == 'phone') {
         data['phone'] = value
       }
+
+      if (to_change == 'name') {
+        data['name'] = value
+      }
+
+      if (to_change == 'email') {
+        data['email'] = value
+      }
+
       $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
