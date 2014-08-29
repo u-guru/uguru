@@ -1190,7 +1190,7 @@ def api(arg, _id):
                 raise 
             notification_id = ajax_json.get('notification-id')
             if request.json.get('payment_plan'):
-                print "There was a payment plan selected, it was number " + request.json.get('payment_plan')
+                print "There was a payment plan selected, it was number " +str(request.json.get('payment_plan'))
                 process_payment_plan(request.json.get('payment_plan'), user)
 
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
@@ -1228,7 +1228,7 @@ def api(arg, _id):
             from views import find_earliest_meeting_time, convert_mutual_times_in_seconds, send_twilio_message_delayed
             mutual_times_arr = find_earliest_meeting_time(r)
             total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
-            print "Here are the time calculations for the the tutor. Reminder before session:", total_seconds_delay, "seconds" 
+            print "Here are the time calculations for the the tutor. Reminder before session:", str(total_seconds_delay), "seconds" 
             if tutor.phone_number and tutor.text_notification:
                 print "The tutor has a phone number and is supposed to receive a text."
                 from emails import its_a_match_guru, reminder_before_session
@@ -1258,10 +1258,10 @@ def api(arg, _id):
                 #if they have enough credits
                 if difference > 0:
                     print "The student has enough credits to not purchase anything"
-                    print "Credit before:", user.credit
-                    print "Amount to be billed", total_amount
+                    print "Credit before:", str(user.credit)
+                    print "Amount to be billed", str(total_amount)
                     user.credit = user.credit - total_amount
-                    print "Remaining credits:", user.credit
+                    print "Remaining credits:", str(user.credit)
                     p.credits_used = total_amount
                     p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title() +'. You used ' + str(total_amount) + ' credits.'
                 else:
@@ -1361,7 +1361,7 @@ def api(arg, _id):
                             tutor_notification.time_read = None
                             tutor_notification.feed_message_subtitle = '<span style="color:red">The student has chosen another tutor</span>'
                             tutor_notification.time_created = datetime.now()
-                            print "We have let", _tutor.name, 'id:', _tutor.id, "know that this request has been taken by someone else"
+                            print "We have let", _tutor.name, 'id:', str(_tutor.id), "know that this request has been taken by someone else"
 
                     # student_chose_another_tutor(user, current_notification.skill_name, _tutor)
                     # print "Email sent to " + tutor.email
