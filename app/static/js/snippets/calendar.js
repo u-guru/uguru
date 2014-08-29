@@ -1,6 +1,10 @@
+var calendar_was_saved = null;
+
 $('#request-calendar-toggle').click(function() {
-    calendar_edit_mode_request();
-    set_dates(null)
+    if (calendar_was_saved == null) {
+        calendar_edit_mode_request();
+        set_dates(null)
+    } 
     $('.calendar-modal').show();
 });
 
@@ -37,12 +41,12 @@ function process_dates(date) {
     var m = first_date.getMonth();
     var y = first_date.getYear();
     for (i = 0; i < 7; i++) {
+        var nextDate = new Date(y, m, d+i);
         if (i == 0) {
-            $('#calendar-day-1').text('Today')    
+            $('#calendar-day-1').html('Today' + '<br>' + (month_names[nextDate.getMonth()]) + '/' + nextDate.getDate());   
         } else {
-            var nextDate = new Date(y, m, d+i);
-            // $('#calendar-day-'+(i + 1)).text(day_names[(day_int + i) % 7] + ' ' + (month_names[nextDate.getMonth()]) + '/' + nextDate.getDate());
-            $('#calendar-day-'+(i + 1)).text(day_names[(day_int + i) % 7]);
+            $('#calendar-day-'+(i + 1)).html(day_names[(day_int + i) % 7] + '<br>' + (month_names[nextDate.getMonth()]) + '/' + nextDate.getDate());
+            // $('#calendar-day-'+(i + 1)).text(day_names[(day_int + i) % 7]);
         }
     }
 }
@@ -122,7 +126,9 @@ function show_tutor_request_submitted_calendar(student_ranges, tutor_ranges, mes
 
 function show_tutor_request_calendar(arr_ranges, time_amount, time_in_seconds) {
     set_dates(time_in_seconds)
-    reset_calendar();
+    if (calendar_was_saved != true) {
+        reset_calendar();
+    }
     add_ranges_to_calendar(arr_ranges, 'td-preselected');
     $('#calendar-header-text').html('Please select exactly <span id="num-hours-student">' + time_amount + '</span> hours of time from the schedule below.') ;
     if ($('td.time-slot.td-selected').length == 0) {
@@ -227,6 +233,7 @@ function calendar_edit_mode_request() {
         $(this).parent().parent().parent().parent().hide();
         $('#saved-tag').show();
         $('#saved-tag').delay(750).fadeOut('slow');
+        calendar_was_saved = true;
         if ($('td.time-slot.td-selected').length >= 1) {
             $('#select-calendar-slot-alert').hide();
             $('#request-avail-remove').hide();
@@ -283,11 +290,12 @@ function calendar_edit_mode_tutor_accept() {
     });
 
     $('.save-calendar-btn').click(function() {
-        if ($('#num-hours-student').text() != $('td.time-slot.td-selected').length) {
-            $('.calendar-alert').text('Please select exactly ' + $('#num-hours-student').text() + ' number of hours in the calendar');
+        if (($('#num-hours-student').text() * 2) != $('td.time-slot.td-selected').length) {
+            $('.calendar-alert').text('You have selected ' + ($('td.time-slot.td-selected').length / 2).toString() +  ' hours. Please select exactly ' + $('#num-hours-student').text() + ' hours in the calendar');
             $('.calendar-alert').show();
         } else {
             $('.calendar-alert').hide();
+            calendar_was_saved = true;
             $(this).parent().parent().parent().parent().hide();
         }
     });

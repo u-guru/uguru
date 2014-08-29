@@ -1188,21 +1188,23 @@ def api(arg, _id):
             except:
                 db_session.rollback()
                 raise 
-
-            print ajax_json.get('notification-id')
             notification_id = ajax_json.get('notification-id')
             if request.json.get('payment_plan'):
+                print "There was a payment plan selected, it was number " + request.json.get('payment_plan')
                 process_payment_plan(request.json.get('payment_plan'), user)
 
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             current_notification = user_notifications[notification_id]
 
             student = user
+            from views import print_user_details
+            print "student", print_user_details(student)
             # current_notification = Notification.query.get(notification_id)
             skill_name = current_notification.skill_name
 
             tutor_id = current_notification.request_tutor_id
             tutor = User.query.get(tutor_id)
+            print "tutor", print_user_details(tutor)
 
             #Modify student notification
             current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
@@ -1226,7 +1228,9 @@ def api(arg, _id):
             from views import find_earliest_meeting_time, convert_mutual_times_in_seconds, send_twilio_message_delayed
             mutual_times_arr = find_earliest_meeting_time(r)
             total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
+            print "Here are the time calculations for the the tutor. Reminder before session:", total_seconds_delay, "seconds" 
             if tutor.phone_number and tutor.text_notification:
+                print "The tutor has a phone number and is supposed to receive a text."
                 from emails import its_a_match_guru, reminder_before_session
                 message = reminder_before_session(tutor, student, r.location, "Guru-ing")
                 send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=total_seconds_delay)
@@ -1236,6 +1240,7 @@ def api(arg, _id):
 
 
             if student.phone_number and student.text_notification:
+                print "The student has a phone number and is supposed to receive a text."
                 from emails import reminder_before_session
                 total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
                 message = reminder_before_session(student, tutor, r.location, "Studying")
@@ -1252,15 +1257,18 @@ def api(arg, _id):
                 difference = user_credits - total_amount
                 #if they have enough credits
                 if difference > 0:
-                    print "case 1"
+                    print "The student has enough credits to not purchase anything"
+                    print "Credit before:", user.credit
+                    print "Amount to be billed", total_amount
                     user.credit = user.credit - total_amount
+                    print "Remaining credits:", user.credit
                     p.credits_used = total_amount
                     p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title() +'. You used ' + str(total_amount) + ' credits.'
                 else:
-                    print "case 2"
                     p.credits_used = user_credits
                     user.credit = 0
                     p.student_paid_amount = total_amount - user_credits
+                    print "The student has credits, but not enough, so we are billing them $", p.student_paid_amount
                     p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title() +'. You used ' + str(user_credits) + ' credits, and were billed $' + str(p.student_paid_amount)
                     
                     charge = stripe.Charge.create(
@@ -1272,7 +1280,7 @@ def api(arg, _id):
                     p.stripe_charge_id = charge['id']
 
             else:
-                print "case 3"
+                print "The student has no credits, and is paying directly"
                 charge = stripe.Charge.create(
                     amount = int(total_amount * 100),
                     currency="usd",
@@ -1303,11 +1311,13 @@ def api(arg, _id):
             if r in student.outgoing_requests:
                 student.outgoing_requests.remove(r)
 
-            for _tutor in r.requested_tutors:
-                if _tutor.id != tutor_id:
-                    for n in sorted(_tutor.notifications, reverse=True):
-                        if n.request_id == r.id:
-                            n.feed_message_subtitle = '<span style="color:#CD2626"><strong>Update:</strong> The student has already chose another tutor.</span>'
+            # for _tutor in r.committed_tutors:
+            #     if _tutor.id != tutor_id:
+            #         for n in sorted(_tutor.notifications, reverse=True):
+            #             if n.request_id == r.id:
+            #                 n.feed_message_subtitle = '<span style="color:#CD2626"><strong>Update:</strong> The student has already chose another tutor.</span>'
+                            
+
             
             #Modify tutor notification
             for n in tutor.notifications:
@@ -1343,22 +1353,27 @@ def api(arg, _id):
             #let other committed tutors now that they have been rejected
             # from emails import student_chose_another_tutor
             for _tutor in r.committed_tutors:
-                if r.connected_tutor_id != tutor.id and r.connected_tutor_id != user.id:
+                if r.connected_tutor_id != _tutor.id and r.connected_tutor_id != user.id and _tutor.id != student.id:
                     for n in _tutor.notifications:
                         if n.request_id == r.id:
                             tutor_notification = n
-                    tutor.feed_notif += 1
-                    tutor_notification.time_read = None
-                    tutor_notification.feed_message_subtitle = '<span style="color:red">This request has been canceled</span>'
-                    tutor_notification.time_created = datetime.now()
+                            _tutor.feed_notif += 1
+                            tutor_notification.time_read = None
+                            tutor_notification.feed_message_subtitle = '<span style="color:red">The student has chosen another tutor</span>'
+                            tutor_notification.time_created = datetime.now()
+                            print "We have let", _tutor.name, 'id:', _tutor.id, "know that this request has been taken by someone else"
+
                     # student_chose_another_tutor(user, current_notification.skill_name, _tutor)
-                    print "Email sent to " + tutor.email
+                    # print "Email sent to " + tutor.email
             
             try:
                 db_session.commit()
             except:
                 db_session.rollback()
                 raise 
+
+            print "Student Accept Request has been successfully made"
+
             from views import tutor_confirm_payment
             # tutor_confirm_payment.apply_async(args=[p.id], countdown=100)
             tutor_confirm_payment.apply_async(args=[p.id], countdown=total_seconds_delay)

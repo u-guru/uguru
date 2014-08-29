@@ -124,9 +124,9 @@ def welcome_uguru_student(user):
     message = {
         'html':html,
         'text':text,
-        'subject': user_first_name + ', Welcome to Uguru Beta!',
+        'subject': user_first_name + ', Welcome to uGuru Beta!',
         'from_email': 'samir@uguru.me',
-        'from_name': 'Samir from Uguru',
+        'from_name': 'Samir from uGuru',
         'to': to_emails,
         'headers': {'Reply-To': 'samir@uguru.me'},
         'important': True,
@@ -153,9 +153,9 @@ def welcome_uguru_tutor(user):
     message = {
         'html':html,
         # 'text':text,
-        'subject': user_first_name + ', Welcome to Uguru Beta!',
+        'subject': user_first_name + ', Welcome to uGuru Beta!',
         'from_email': 'samir@uguru.me',
-        'from_name': 'Samir from Uguru',
+        'from_name': 'Samir from uGuru',
         'to': to_emails,
         'headers': {'Reply-To': 'samir@uguru.me'},
         'important': True,
@@ -197,6 +197,53 @@ def approved_by_admin_email(user):
     }
 
     result = mandrill_client.messages.send(message=message)
+
+
+def sign_up_caltopia_tutor(user):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    name = user.name.split(" ")[0]
+    email = user.email
+    html = sign_up_caltopia_tutor_html(name)
+
+    message = {
+        'html':html,
+        'subject': '[Action Required] '+ user.name.split(" ")[0] + ', Finish Your Profile & Start Guru-ing Now!', 
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from uGuru',
+        'to': [{'email':email, 'name':name, 'type':'to'}],
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['caltopia-tutor-reminder']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+
+def sign_up_caltopia_tutor_html(user_name):
+    return """
+    Hi """ + user_name + """
+    <br>
+    <br>
+    You are only a couple steps away from receiving student requests and earning side cash! 
+    <br>
+    <br>
+    Take 2 minutes to <a href="http://berkeley.uguru.me/settings/#prof">to set up your profile</a> (picture, major, year, and introduction) so students feel more comfortable picking you as their Guru.
+    <br>
+    <br>
+    In the mean time, just sit tight and wait. We will email and text you when a student requests help for a course that you signed up for.
+    <br>
+    <br>
+    Thanks for joining us! Go Bears!
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
+
 
 def send_parent_confirmation(user, payment, amount_credits):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)

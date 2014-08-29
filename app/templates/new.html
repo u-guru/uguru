@@ -612,6 +612,11 @@
                                 Next
                             </span>
                         </a>
+                        <a id='tutor-next-link-instant' href='javascript:void(0);' style='display:none'>
+                            <span class='blue-btn'>
+                                Submit
+                            </span>
+                        </a>
                         <div id='post-signup-span' style ='display:none'class='row green-text font-24'>
                             <span id='post-signup-span-awesome'>
                             <span class='green-text glyphicon glyphicon-ok'> </span> You're all set! (and Awesome!)
@@ -663,8 +668,13 @@
         <script src="/static/js/snippets/calendar.js"></script>
         <script src="/static/js/snippets/scroll.js"></script>
         <script src="/static/js/mobile.js"></script>
-        {% if modal_flag %}
         <script>
+        $('#become-guru-nav').click(function() {
+          $('#signup-modal').modal();
+          $('#tutor-next-link-instant').show();
+          $('#student-next-link').hide();
+          $('#become-guru-text').show();
+        });
         {% if modal_flag == 'login' %}
             $('#login-modal').modal('show');
         {% elif modal_flag == 'signup'%}
@@ -675,9 +685,125 @@
             $('#signup-modal').modal();
             $('#student-next-link').hide();
             $('#tutor-next-link').show();
+        {% elif modal_flag == 'instant'%}  
+            $('#fb-signup-btn').hide();
+            $('.never-post').hide();
+            $('.or-text').hide();
+            $('#student-next-link').off();
+            $('#student-next-link').addClass('student-next-link-instant');
+            $('.student-next-link-instant').click(function() {
+                if (!$('#student-signup-name').val() || !$('#student-signup-email').val() 
+                || !$('#student-signup-password').val()) 
+                {
+                    $('#alert-fields-student-signup').show()
+                } else {
+                    var data_dict = {
+                        'student-signup': true,        
+                        'name': $('input[name="student-name"]').val(),
+                        'email': $('input[name="student-email"]').val(),
+                        'phone': '',
+                        'password': $('input[name="student-password"]').val(),
+                        'instant': true
+                    }
+                    $.ajax({
+                      type: "POST",
+                      contentType: 'application/json;charset=UTF-8',
+                      url: '/validation/' ,
+                      data: JSON.stringify(data_dict), 
+                      dataType: "json",
+                      success: function(result) {
+                        if (result.dict['account-exists']) {
+                          $('#signup-modal').modal('hide');
+                          $('#login-modal').modal('show');
+                          $('#alert-fields-login').text($('#student-signup-email').val() + ' already has an account! Please log in.')
+                          $('#alert-fields-login').show();
+                          return;
+                        }
+
+                        if (request_form_complete) {
+                          submit_request_form_to_server();
+                        }
+
+                        if (!$('#request-skill').val()) {
+                          $('#student-next-link').hide();
+                          $('input[name="student-name"]').val('');
+                          $('input[name="student-email"]').val('');
+                          $('input[name="student-password"]').val('');
+                          $('input[name="student-name"]').css('border-color','grey');
+                          $('input[name="student-email"]').css('border-color','grey');
+                          $('input[name="student-password"]').css('border-color','grey');
+                          $('#post-signup-span').show();
+                          $('#post-signup-span').delay(5000).fadeOut('slow', function() {
+                            $('#student-next-link').show();
+                          });
+                          return;
+                        }
+                        // $('#signup-modal').modal('hide');
+                        // $('#main').hide();
+                        // $('#request-form').show();
+                      }
+                    });
+                } 
+            });
+            
+            $('#tutor-next-link-instant').click(function(){
+                   if (!$('#student-signup-name').val() || !$('#student-signup-email').val() 
+                    || !$('#student-signup-password').val()) 
+                    {
+                        $('#alert-fields-student-signup').show()
+                    } else if ($('#student-signup-email').val().toLowerCase().indexOf('@berkeley.edu') == -1) {
+                        $('#alert-fields-student-signup').text('Please enter an @berkeley.edu address.');
+                        $('#alert-fields-student-signup').show()
+                    } else {
+                        var data_dict = {
+                            'student-signup': true,
+                            'tutor-signup': true,
+                            'name': $('input[name="student-name"]').val(),
+                            'email': $('input[name="student-email"]').val(),
+                            'phone': '',
+                            'password': $('input[name="student-password"]').val(),
+                            'instant': true
+                        }
+                        $.ajax({
+                          type: "POST",
+                          contentType: 'application/json;charset=UTF-8',
+                          url: '/validation/' ,
+                          data: JSON.stringify(data_dict), 
+                          dataType: "json",
+                          success: function(result) {
+                            if (result.dict['account-exists']) {
+                              guru_signup_clicked = true;
+                              $('#signup-modal').modal('hide');
+                              $('#login-modal').modal('show');
+                              $('#alert-fields-login').text($('#student-signup-email').val() + ' already has an account! Please Log In.')
+                              $('#alert-fields-login').show();
+                              return;
+                            }
+                            $('#tutor-next-link-instant').hide();
+                              $('input[name="student-name"]').val('');
+                              $('input[name="student-email"]').val('');
+                              $('input[name="student-password"]').val('');
+                              $('input[name="student-name"]').css('border-color','grey');
+                              $('input[name="student-email"]').css('border-color','grey');
+                              $('input[name="student-password"]').css('border-color','grey');
+                              $('#post-signup-span').show();
+                              $('#post-signup-span').delay(5000).fadeOut('slow', function() {
+                                $('#tutor-next-link-instant').show();
+                              });
+                          }
+                        });
+                    }
+                });
+        {% else %} 
+            $('#become-guru-nav').click(function() {
+                $('#signup-modal').modal();
+                $('#tutor-next-link').show();
+                $('#tutor-next-link-instant').hide();
+                $('#student-next-link').hide();
+                $('#become-guru-text').show();
+            });
         {% endif %}
         </script>
-        {% endif %}
         <!-- begin olark code -->
         <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
         f[z]=function(){

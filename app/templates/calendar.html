@@ -10,18 +10,18 @@
               <table class="table" id='request-calendar'>
                 <tr>
                     <td> &nbsp;&nbsp;&nbsp;</td>
-                    <th class="active center width-30" id='calendar-day-1'> Sun </td>
-                    <th class="active center width-30" id='calendar-day-2'> Mon </td>
-                    <th class="active center width-30" id='calendar-day-3'> Tue </td>
-                    <th class="active center width-30" id='calendar-day-4'> Wed </td>
-                    <th class="active center width-30" id='calendar-day-5'> Thu </td>
-                    <th class="active center width-30" id='calendar-day-6'> Fri </td> 
-                    <th class="active center width-30" id='calendar-day-7'> Sat </td>  
+                    <th class="active center width-30 font-10 calendar-table-head" id='calendar-day-1'> Sun </td>
+                    <th class="active center width-30 font-10 calendar-table-head" id='calendar-day-2'> Mon </td>
+                    <th class="active center width-30 font-10 calendar-table-head" id='calendar-day-3'> Tue </td>
+                    <th class="active center width-30 font-10 calendar-table-head" id='calendar-day-4'> Wed </td>
+                    <th class="active center width-30 font-10 calendar-table-head" id='calendar-day-5'> Thu </td>
+                    <th class="active center width-30 font-10 calendar-table-head" id='calendar-day-6'> Fri </td> 
+                    <th class="active center width-30 font-10 calendar-table-head" id='calendar-day-7'> Sat </td>  
                 </tr>
                 {% for i in range(0, 48) %}
                 <tr class='calendar-time-row'>
                     <td class='calendar-time-td relative {% if (i % 2) == 1 %} half-table-bordered {% else %} table-bordered no-bottom-border{% endif %}'>
-                        <span class='absolute' style='top:12px; right:5px'>
+                        <span class='absolute' style='top:9px; right:5px'>
                         {% if i == 0 %}
                             12-1am
                         {% elif (i % 2 == 0) and (i / 2) < 12 %}

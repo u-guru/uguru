@@ -111,7 +111,7 @@ def send_free_5_email():
     <br>
     <br>
     Whenever you are struggling in a class, just <a href='http://uguru.me'> log in </a> and get help from other
-    students who have done well in the same class. It's only $15/hr on average, and there are many new Gurus who will help you for free.
+    students who have done well in the same class. It's only $15/hr on average, and there are many new Gurus who will help you for FREE.
     <br>
     <br>
     If you are interested in earning side money on your own schedule, <a href='javascript:void(0);'> Signup as a Guru </a> for classes that you are confident with.

@@ -87,6 +87,7 @@ def send_twilio_message_delayed(phone, msg, user_id):
 @app.route('/sign_up/')
 @app.route('/guru/')
 @app.route('/callisto/')
+@app.route('/instant/')
 @app.route('/', methods=['GET', 'POST'])
 def index():
     modal_flag = None
@@ -116,6 +117,8 @@ def index():
         modal_flag = 'guru'
     if 'callisto' in request.url:
         session['referral'] = 'callisto'
+    if 'instant' in request.url:
+        modal_flag = 'instant'
     print modal_flag
     return render_template('new.html', forms=[request_form],
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
@@ -130,7 +133,6 @@ def parents(arg=None):
 @app.route('/new/')
 def new():
     return render_template('new.html')
-
 
 @app.route('/<arg>', methods=['GET', 'POST', 'PUT'])
 def profile(arg):
@@ -887,6 +889,7 @@ def update_requests():
             hourly_amount = ajax_json.get('hourly-amount')
             notif_num = ajax_json.get('notif-num')
             tutor = user
+            print "Tutor is accepting a student request:", print_user_details(tutor)
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             current_notification = user_notifications[notif_num]
             incoming_request_num = current_notification.request_id
@@ -895,13 +898,15 @@ def update_requests():
             r = Request.query.get(incoming_request_num)
             r.committed_tutors.append(tutor)
 
-            if len(r.committed_tutors) == MAX_REQUEST_TUTOR_LIMIT:
+            if len(r.committed_tutors) == (MAX_REQUEST_TUTOR_LIMIT + 1):
+                print "The max request tutor limit has been reached!"
                 for tutor in r.requested_tutors:
                     if tutor not in r.committed_tutors:
                         for n in tutor.notifications:
                             if n.request_id == r.id:
                                 n.status = 'LATE'
-                                n.feed_message_subtitle = None
+                                n.feed_message_subtitle = 'Click here to learn why!'
+                                print tutor.id, tutor.name, "is too late! We have updated their profile accordingly"
 
 
 
@@ -934,7 +939,8 @@ def update_requests():
 
             
 
-            if student.text_notification and student.phone_number:                
+            if student.text_notification and student.phone_number:
+                print "Student is supposed to be receiving a text message"            
                 from emails import guru_can_help
                 message = guru_can_help(tutor, skill_name)
                 send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id])
@@ -968,6 +974,8 @@ def update_requests():
             except:
                 db_session.rollback()
                 raise 
+
+            print "Tutor accept has been successfully committed to the database"
 
         if 'tutor-cancel-accept' in ajax_json:
             notif_num = ajax_json.get('notif-num')
@@ -1142,12 +1150,15 @@ def update_requests():
         if 'student-accept' in ajax_json:
             notification_id = ajax_json.get('notification-id')
             student = user
+            print "===A student is choosing a tutor==="
+            print "student", print_user_details(student)
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             current_notification = user_notifications[notification_id]
             skill_name = current_notification.skill_name
 
             tutor_id = current_notification.request_tutor_id
             tutor = User.query.get(tutor_id)
+            print "tutor", print_user_details(student)
 
             #Modify student notification
             current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
@@ -1181,6 +1192,7 @@ def update_requests():
             r.time_connected = datetime.now()
 
             mutual_times_arr = find_earliest_meeting_time(r)
+            print "Mutual times array", mutual_times_arr
             if tutor.phone_number and tutor.text_notification:
                 from emails import its_a_match_guru, reminder_before_session
                 total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
@@ -1565,7 +1577,7 @@ def success():
                 if 'tutor-signup' in ajax_json: session['tutor-signup'] = True
 
                 u = User(
-                        name = ajax_json['name'],
+                        name = ajax_json['name'].title(),
                         password = password,
                         email = ajax_json['email'],
                         phone_number = None
@@ -1588,7 +1600,15 @@ def success():
                 db_session.rollback()
                 raise 
             user_id = u.id
-            authenticate(user_id)
+
+            if ajax_json.get('instant') and session.get('tutor-signup'):
+                from emails import sign_up_caltopia_tutor
+                sign_up_caltopia_tutor(u)
+            else:    
+                authenticate(user_id)
+
+
+
             try:
                 from notifications import getting_started_student, welcome_guru, getting_started_tutor, getting_started_student_tip
                 if session.get('tutor-signup'):
@@ -1639,6 +1659,7 @@ def success():
 
         #Create a request
         if ajax_json.get('student-request'):
+            print "===Printing the json file for a student request below==="
             print ajax_json
             user_id = session['user_id']
             from app.static.data.variations import courses_dict
@@ -1649,6 +1670,8 @@ def success():
             skill = Skill.query.get(skill_id)
             skill_name = short_variations_dict[skill.name]
             u = User.query.get(user_id)
+            print "===Printing details about the user who made this request==="
+            print print_user_details(u)
 
             if u.verified_tutor:
                 if skill in u.skills:
@@ -1658,7 +1681,6 @@ def success():
             if u.outgoing_requests:
                 for r in u.outgoing_requests:
                     if r.skill_id == skill_id:
-                        print 'this happened'
                         return jsonify(dict={'duplicate-request': True})
 
             r = Request(
@@ -1704,6 +1726,8 @@ def success():
                 db_session.rollback()
                 raise 
 
+            print "===Request was successfully committed to the database==="
+
             from notifications import student_request_receipt
             notification = student_request_receipt(u, r, original_skill_name)
             u.notifications.append(notification)
@@ -1714,19 +1738,25 @@ def success():
                 db_session.rollback()
                 raise 
 
+            print "===Student request notification was successfully committed to the database==="
+
             if not skill.tutors:
                 return jsonify(dict={'no-active-tutors': True})
 
             # Tutors are currently not contacted when there is a request.
             from notifications import tutor_request_offer
             tier_2_tutor_ids = []
+            print "===Going through all qualified tutors for this request...==="
             for tutor in r.requested_tutors:
                 #Only if they are approved tutors
+                print tutor.id, tutor.name, tutor.email, " is qualified." 
 
                 if tutor.approved_by_admin:
+                    print tutor.name, " is approved by admin." 
                     if is_tier_one_tutor(tutor):
                         print tutor.name + ' is a tier 1 tutor'
                         if tutor.text_notification and tutor.phone_number:
+                            print tutor.name + ' is qualified to receive a text'
                             from emails import request_received_msg
                             message = request_received_msg(u, r, skill_name)
                             send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
@@ -1740,8 +1770,8 @@ def success():
                         print tier_2_tutor_ids
 
             if tier_2_tutor_ids:
-                print tier_2_tutor_ids
-                send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=50)
+                print "Here are all the tier2 tutor ids",  tier_2_tutor_ids
+                send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=3600)
 
             
             #send emails + create objects
@@ -1764,6 +1794,7 @@ def success():
             except:
                 db_session.rollback()
                 raise 
+            print "===Student Request Complete. Texts and Emails successfully sent out==="
 
         if ajax_json.get('admin-approve-tutor'):
             try:
@@ -2256,15 +2287,19 @@ def schedule_job(func, seconds_delay, args):
 
 
 def find_earliest_meeting_time(_request):
-    print _request
     student_ranges = sorted(get_calendar_time_ranges(_request.weekly_availability, 0), key=lambda u:u[0])
     tutor_ranges = sorted(get_calendar_time_ranges(_request.weekly_availability, _request.connected_tutor_id), key=lambda u:u[0])
+    print student_ranges
+    print tutor_ranges
     index = 0
     for _range in student_ranges:
         tutor_range = tutor_ranges[index]
 
         if _range[0] == tutor_range[0] and _range[1] == tutor_range [1]:
             return [_range[0], _range[1]]
+
+        if _range[0] == tutor_range[0] and tutor_range[1] >= _range[1] and tutor_range[2] <= _range[2]:
+            return [tutor_range[1], tutor_range[2]]
         
         index = index+1
     return None
@@ -2472,3 +2507,6 @@ def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name
 def send_apn(message, token):
     payload = Payload(alert=message, sound='default', badge=1)
     apns.gateway_server.send_notification(token, payload)
+
+def print_user_details(user):
+    return str(user.id) + " " + str(user.name) + str(user.email)

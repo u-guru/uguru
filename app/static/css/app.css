@@ -974,7 +974,7 @@ textarea {
 }
 
 .width-30 {
-  min-width:50px !important;
+  min-width:30px !important;
 }
 
 .calendar-modal {
@@ -1454,6 +1454,13 @@ input#credit-card-num-parent-modal.amex {
   bottom:0px;
 }
 
+.calendar-table-head {
+  font-size:10px;
+  width:15px !important;
+  padding-right:15px !important;
+  padding-left:15px !important;
+}
+
 #shield-banner {
   position:absolute;
   left:180px;
@@ -1535,5 +1542,10 @@ input#credit-card-num-parent-modal.amex {
 }
 
 
-
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+padding: 6px;
+line-height: 1.428571429;
+vertical-align: top;
+border-top: 1px solid #dddddd;
+}
 
