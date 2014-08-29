@@ -2418,12 +2418,14 @@ def is_tier_one_tutor(tutor):
     _index = 0
     if tutor.tutor_ratings:
         for rating in tutor.tutor_ratings:
-            _sum += rating.tutor_rating
-            _index += 1 
-    avg_rating = float (_sum) / float (_index)
-    if avg_rating >= 4.0:
-        print tutor.name + ' avg rating is approved'
-        return True
+            if rating.tutor_rating:
+                _sum += rating.tutor_rating
+                _index += 1 
+    if _sum > 0:
+        avg_rating = float (_sum) / float (_index)
+        if avg_rating >= 4.0:
+            print tutor.name + ' avg rating is approved'
+            return True
     return False
 
 @celery.task
