@@ -95,6 +95,7 @@
                         {% if user.approved_by_admin and user.verified_tutor and (not user.skills or not user.tutor_introduction or not user.major or not user.year or (user.profile_url == '/static/img/default-photo.jpg')) %}
                         <div style='top:59px; right:8px'id="msg-notif" style=''class="noti_bubble">1</div>
                         {%endif%}
+                        <span class='glyphicon glyphicon-chevron-down light-grey-text absolute' style='right:35px; top:75px; font-size:9px'> </span>
                   </a>
                   <ul class="dropdown-menu settings-dropdown center" role="menu" aria-labelledby="dropdownMenu1">
                       <li role="presentation"><a role="menuitem" tabindex="-1" id='account-settings-link' href="/settings/#main">Settings</a></li>
