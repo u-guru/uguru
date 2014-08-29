@@ -33,7 +33,7 @@ TWILIO_ACCOUNT_SID = "AC0e19b68075686efd56de5bbce77285a5"
 TWILIO_AUTH_TOKEN = "4d5a1f6390c445fd1f6eb39634bdf299" 
 TWILIO_DEFAULT_PHONE = "+15104661138"
 twilio_client = TwilioRestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-MAX_REQUEST_TUTOR_LIMIT = 1
+MAX_REQUEST_TUTOR_LIMIT = 3
 
 
 
@@ -901,7 +901,7 @@ def update_requests():
                         for n in tutor.notifications:
                             if n.request_id == r.id:
                                 n.status = 'LATE'
-                                f.feed_message_subtitle = None
+                                n.feed_message_subtitle = None
 
 
 
