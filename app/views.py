@@ -2143,10 +2143,11 @@ def messages():
     transactions = []
     calendars = {}
     for p in user.payments:
-        if user.verified_tutor:
-            transactions.append(User.query.get(p.student_id))
-        else:
-            transactions.append(User.query.get(p.tutor_id))
+        if p.tutor_id and p.student_id:
+            if user.verified_tutor:
+                transactions.append(User.query.get(p.student_id))
+            else:
+                transactions.append(User.query.get(p.tutor_id))
     for conversation in user.mailbox.conversations:
         r = conversation.requests[0]
         calendars[r] = (get_calendar_time_ranges(r.weekly_availability, 0), get_tutor_time_ranges(r.weekly_availability))
