@@ -372,6 +372,8 @@ def admin():
         ratings_dict = {}
         payments = []
         conversations = []
+        today_signups = []
+        today_requests = []
         
         notifications = sorted(Notification.query.all(), key=lambda n:n.id, reverse=True)
 
@@ -427,6 +429,12 @@ def admin():
                 'student-email': parent.email,
                 'referred-by': parent.referral_code
                 })
+
+        now = datetime.now()
+        today = datetime(*now.timetuple()[:3])
+        today_student_signups = db_session.query(User).filter(User.time_created >= today).filter(User.approved_by_admin == None).all()
+        today_tutor_signups = db_session.query(User).filter(User.time_created >= today).filter(User.approved_by_admin != None).all()
+        today_requests = db_session.query(Request).filter(Request.time_created >= today).all()
 
 
         for r in Request.query.all()[::-1]:
@@ -580,7 +588,8 @@ def admin():
             payments=payments, total_profit=total_profit, environment = get_environment(), texts = Text.query.all(), ratings=Rating.query.all(),\
             ratings_dict=ratings_dict, transactions=transactions, conversations=conversations, users_last_active=users_last_active,\
             total_revenue = total_revenue, payment_analytics=payment_analytics, unverified_tutor_count=unverified_tutor_count, \
-            unfinished_accounts=unfinished_accounts, parents=parents_info)
+            unfinished_accounts=unfinished_accounts, parents=parents_info, today_requests=today_requests, today_student_signups=today_student_signups,\
+            today_tutor_signups = today_tutor_signups)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))

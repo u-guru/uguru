@@ -286,7 +286,7 @@ def send_parent_confirmation_html(parent_name, student_name, charge_id, date, ca
     """ + student_name + """ is going to greatly appreciate these credits as things become busier at Cal! 
     <br>
     <br>
-    If any experience is less than 100% satisfactory, please let us know, we will provide a full refund!
+    If any experience is less than 100% satisfactory, please let us know, we will provide a full refund.
     <br>
     <br>
     <b>Receipt ID:</b> """+  charge_id +"""<br>

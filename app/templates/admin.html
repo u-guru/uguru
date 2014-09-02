@@ -7,6 +7,7 @@
 {% block content %}
 
 <ul style="margin:auto;float:center" class="nav nav-tabs">
+  <li><a href="#today" data-toggle="tab">Today</a></li>
   <li class="active"><a href="#tutors" data-toggle="tab">Tutors</a></li>
   <li><a href="#students" data-toggle="tab">Students</a></li>
   <li><a href="#analytics" data-toggle="tab">Analytics</a></li>
@@ -23,6 +24,23 @@
 </ul>
 
 <div class="tab-content">
+
+    <div class="tab-pane" id="today">
+        <div class="container">
+            <div style="margin:20px; text-align:center" class="row">
+                # of Total Signups: {{today_tutor_signups|length + today_student_signups|length}}
+            </div>
+            <div style="margin:20px; text-align:center" class="row">
+                # of Students: {{today_student_signups|length}}
+            </div>
+            <div style="margin:20px; text-align:center" class="row">
+                # of Tutors: {{today_tutor_signups|length}}
+            </div>
+            <div style="margin:20px; text-align:center" class="row">
+                # of Requests: {{today_requests|length}}
+            </div>
+        </div>
+      </div>
 
   <div class="tab-pane active" id="tutors">
     <div class="container">
