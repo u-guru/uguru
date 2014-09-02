@@ -2312,16 +2312,26 @@ def find_earliest_meeting_time(_request):
     print student_ranges
     print tutor_ranges
     index = 0
-    for _range in student_ranges:
-        tutor_range = tutor_ranges[index]
+    # for _range in student_ranges:
+    #     tutor_range = tutor_ranges[index]
 
-        if _range[0] == tutor_range[0] and _range[1] == tutor_range [1]:
-            return [_range[0], _range[1]]
+    #     if _range[0] == tutor_range[0] and _range[1] == tutor_range [1]:
+    #         return [_range[0], _range[1]]
 
-        if _range[0] == tutor_range[0] and tutor_range[1] >= _range[1] and tutor_range[2] <= _range[2]:
-            return [tutor_range[1], tutor_range[2]]
+    #     if _range[0] == tutor_range[0] and tutor_range[1] >= _range[1] and tutor_range[2] <= _range[2]:
+    #         return [tutor_range[1], tutor_range[2]]
         
-        index = index+1
+    #     index = index+1
+
+    for tutor_range in tutor_ranges:
+        for student_range in student_ranges:
+            if student_range[0] == tutor_range[0] and student_range[1] == tutor_range [1]:
+                return [student_range[0], student_range[1]]
+
+            if student_range[0] == tutor_range[0] and tutor_range[1] >= student_range[1] and tutor_range[2] <= student_range[2]:
+                return [tutor_range[1], tutor_range[2]]
+
+
     return None
 
 def authenticate(user_id):
@@ -2381,7 +2391,7 @@ def convert_mutual_times_in_seconds(mutual_arr, _request):
     print mutual_arr
     if mutual_arr[0]:
         total_seconds = (mutual_arr[0] - 1) * 24 * 3600 #one day of seconds depending on the offset days from today
-        total_seconds = total_seconds + mutual_arr[1] * 3600
+        total_seconds = total_seconds + float(mutual_arr[1] / 2.0) * 3600
     total_seconds = total_seconds + total_seconds_remaining_today()
     return total_seconds
             

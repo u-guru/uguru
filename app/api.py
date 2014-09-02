@@ -1227,26 +1227,26 @@ def api(arg, _id):
 
             #Texting does not work right now!
 
-            # from views import find_earliest_meeting_time, convert_mutual_times_in_seconds, send_twilio_message_delayed
-            # mutual_times_arr = find_earliest_meeting_time(r)
-            # total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
-            # print "Here are the time calculations for the the tutor. Reminder before session:", str(total_seconds_delay), "seconds" 
-            # if tutor.phone_number and tutor.text_notification:
-            #     print "The tutor has a phone number and is supposed to receive a text."
-            #     from emails import its_a_match_guru, reminder_before_session
-            #     message = reminder_before_session(tutor, student, r.location, "Guru-ing")
-            #     send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=total_seconds_delay)
-            #     message = its_a_match_guru(student, skill_name)
-            #     send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
+            from views import find_earliest_meeting_time, convert_mutual_times_in_seconds, send_twilio_message_delayed
+            mutual_times_arr = find_earliest_meeting_time(r)
+            total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
+            print "Here are the time calculations for the the tutor. Reminder before session:", str(total_seconds_delay), "seconds" 
+            if tutor.phone_number and tutor.text_notification:
+                print "The tutor has a phone number and is supposed to receive a text."
+                from emails import its_a_match_guru, reminder_before_session
+                message = reminder_before_session(tutor, student, r.location, "Guru-ing")
+                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=total_seconds_delay)
+                message = its_a_match_guru(student, skill_name)
+                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
 
 
 
-            # if student.phone_number and student.text_notification:
-            #     print "The student has a phone number and is supposed to receive a text."
-            #     from emails import reminder_before_session
-            #     total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
-            #     message = reminder_before_session(student, tutor, r.location, "Studying")
-            #     send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=total_seconds_delay)
+            if student.phone_number and student.text_notification:
+                print "The student has a phone number and is supposed to receive a text."
+                from emails import reminder_before_session
+                total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
+                message = reminder_before_session(student, tutor, r.location, "Studying")
+                send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=total_seconds_delay)
 
 
             p = Payment(r.id)
