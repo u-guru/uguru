@@ -400,6 +400,7 @@ def api(arg, _id):
         else:
             user = User()
             m = Mailbox(user)
+            db_session.add(user)
             db_session.add(m)
         # if request.json.get('referral-code'):
         #     user.referral_code = request.json.get('referral-code')
@@ -409,7 +410,6 @@ def api(arg, _id):
         user.email = request.json.get('student-email');
         user.last_active = datetime.now()
         user.time_created = datetime.now()
-        db_session.add(user)
         try:
             db_session.commit()
         except:

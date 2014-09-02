@@ -2067,7 +2067,8 @@ def activity():
             student = User.query.get(conversation.student_id)
             address_book[student.id] = \
                 {'profile_url': student.profile_url, 'conversation_id' : conversation.id, 'student_name' : student.name.split(" ")[0]}
-    for request in (user.outgoing_requests + user.incoming_requests_to_tutor + user.incoming_requests_from_tutors):
+    all_outgoing_requests = Request.query.filter_by(student_id = user.id).all()
+    for request in (user.outgoing_requests + user.incoming_requests_to_tutor + user.incoming_requests_from_tutors + all_outgoing_requests):
         student_id = request.student_id
         if user.skills and len(address_book.keys())>0:
             if address_book.get(student_id):
