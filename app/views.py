@@ -933,6 +933,7 @@ def update_requests():
 
                 #expire all of them in twenty four hours
             
+            tutor = user
             
             weekly_availability = ajax_json['calendar']
             
