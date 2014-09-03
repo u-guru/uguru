@@ -693,7 +693,6 @@ def student_needs_help_html(student_name, class_name, request):
     """ + student_name + """ needs help with """ + class_name + """.</b> Here's some info:
     <br>
     <br>
-    Availability: """ + request.available_time + """<br>
     Preferred Location: """ + request.location+ """<br>
     Time Estimate: """ + str(request.time_estimate) + """ hours<br>
     # of Students: """ + str(request.num_students) + """<br>
@@ -716,7 +715,6 @@ def student_needs_help_html(student_name, class_name, request):
 def student_needs_help_text(student_name, class_name, request):
     tutor_rate = request.student_estimated_hour
     return student_name + """ needs help with """ + class_name + """. Here's some info: \n\n""" + \
-    """Availability: """ + request.available_time + """\n""" +\
     """Preferred Location: """ + request.location+ """\n""" + \
     """Time Estimate: """ + str(request.time_estimate) + """ hours\n""" +\
     """# of Students: """ + str(request.num_students) + """\n\n""" +\
