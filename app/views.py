@@ -989,7 +989,7 @@ def update_requests():
                 if n.request_id == r.id:
                     original_skill_name = n.custom
             extra_detail = ajax_json.get('extra-detail')
-            student_notification = student_incoming_tutor_request(student, tutor, r, original_skill_name, hourly_amount, extra_detail)
+            student_notification = student_incoming_tutor_request(student, user, r, original_skill_name, hourly_amount, extra_detail)
             student.notifications.append(student_notification)
             db_session.add(student_notification)
             

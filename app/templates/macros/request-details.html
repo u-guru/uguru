@@ -71,7 +71,7 @@
     <hr>
     {% endif %}
 
-    {% if guru_not_ready and notif.status != 'LATE' %}
+    {% if guru_not_ready and notif.status != 'LATE' and notif.custom !='tutor-accept-request'%}
     <div class='row-fluid margin-top-40 block'>
         <label class='font-16 red-text'> This is your first time! What does this mean?</label>
         <div id='guru-intro' class='block font-14'>
