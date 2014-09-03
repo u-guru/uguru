@@ -58,12 +58,36 @@ if arg == 'initialize_user_codes':
 
     db_session.commit()
 
+def send_free_5_email():
+    return """
+    Hey *|FNAME|*,
+    <br>
+    <br>
+    You just received $5 in your <a href='http://uguru.me'> uGuru </a> account for signing up at Caltopia!
+    <br>
+    <br>
+    If you're ever struggling in a class at Cal, just <a href='http://uguru.me/login/'> log in </a> and get help from other
+    student. At around $15/hr you can keep your wallet happy while preventing your GPA from suffering. Best of all, there are many new Gurus who will help you for FREE.
+    <br>
+    <br>
+    Also, if you are interested in earning side cash on your own schedule, <a href='http://uguru.me/guru/'> Signup </a> and become a Guru for classes that you are confident with.
+    <br>
+    <br>
+    Start your semester strong, and don't let your GPA slide!
+    <br>
+    <br>
+    Cheers,
+    <br>
+    Samir from uGuru
+    """
 
 if arg == 'send_free_5':
     for user in User.query.all():
+        # if user.id > 0 and user.id < 5:
         if user.id > 1219 and user.id < 1650:
-            if user.credit != 0:
+            if user.credit == 0:
                 user.credit = 5
+                db_session.commit()
 
             user_name = user.name
             user_email = user.email
@@ -72,17 +96,17 @@ if arg == 'send_free_5':
             to_emails = []
             to_emails.append({
                 'email':user_email,
-                'name': name,
+                'name': user_name,
                 'type': 'to'
             })
 
             message = {
                 'html':html,
                 'subject': '*|FNAME|*, Your $5 from uGuru is Here!',
-                'from_email': 'michael@uguru.me',
-                'from_name': 'Michael from uGuru',
+                'from_email': 'samir@uguru.me',
+                'from_name': 'Samir from uGuru',
                 'to': to_emails,
-                'headers': {'Reply-To': "michael@uguru.me"},
+                'headers': {'Reply-To': "samir@uguru.me"},
                 'important': True,
                 'merge_vars': [{
                 'rcpt':user.email,
@@ -96,34 +120,256 @@ if arg == 'send_free_5':
                 'track_opens': True,
                 'track_clicks': True,
                 'preserve_recipients':False,
-                'tags':['uguru-support']
+                'tags':['uguru-free-5']
             }
 
             result = mandrill_client.messages.send(message=message)
-    db_session.commit()
 
-def send_free_5_email():
+def email_old_students():
     return """
     Hey *|FNAME|*,
     <br>
     <br>
-    You just received $5 in your <a href='http://uguru.me'> uGuru </a> account for signing up at Caltopia!
+    Hope you had a blast this summer! Now are you ready to ace this fall semester!?
     <br>
     <br>
-    Whenever you are struggling in a class, just <a href='http://uguru.me'> log in </a> and get help from other
-    students who have done well in the same class. It's only $15/hr on average, and there are many new Gurus who will help you for FREE.
+    While you were away this summer, we've been making some improvements to uGuru that we're really excited to share:
     <br>
     <br>
-    If you are interested in earning side money on your own schedule, <a href='javascript:void(0);'> Signup as a Guru </a> for classes that you are confident with.
+    <b> 1. No More Annoying Connection Fees! </b>
+    <br>
+    After much though and feedback, we decided to make uGuru 100% free to students.
     <br>
     <br>
-    Start your semester strong, and don't let your GPA slide!
+    <b> 2. More Gurus, and free Gurus </b>
+    <br>
+    We recruited more Gurus! To test the water, all the new Gurus offer their first lessons for free.<br>
+    Take advantage of these free sessions while they last!    
+    <br>
+    <br>
+    <b> 3. 100% Satisfaction Guaranteed </b>
+    <br>
+    In rare cases where you are not happy with your Guru, your Guru will give you a refund.
+    <br>
+    <br>
+    <b> 4. A better way to schedule </b>
+    <br>
+    We built a calendar into the Guru requerst form, so Gurus only connect with you if they can make your schedule. Connecting has never been so easy!
+    <br>
+    <br>
+    <b> 5. Texting </b>
+    <br>
+    We text both you and your Gurus to make finding help even quicker. Best of all, uGuru handles the communication, leaving your contact details as private as you want.
+    <br>
+    <br>
+    We are dedicated to our users! Anytime you experience confusion or difficulties, email samir@uguru.me or text 813-500-9853. Your feedback is extremely important and we know it will make uGuru better!
     <br>
     <br>
     Cheers,
     <br>
-    Michael Koh
+    Samir from uGuru
     """
+
+
+if arg == 'new_email_old_students':
+    for user in User.query.all():
+        if not user.skills or user.incoming_requests_from_tutors:
+            user_name = user.name
+            user_email = user.email
+            mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+            html = email_old_students()
+            to_emails = []
+            to_emails.append({
+                'email':user_email,
+                'name': user_name,
+                'type': 'to'
+            })
+
+            message = {
+                'html':html,
+                'subject': '*|FNAME|*, Important Changes to uGuru',
+                'from_email': 'samir@uguru.me',
+                'from_name': 'Samir from uGuru',
+                'to': to_emails,
+                'headers': {'Reply-To': "samir@uguru.me"},
+                'important': True,
+                'merge_vars': [{
+                'rcpt':user.email,
+                'vars': [
+                        {
+                            'name':"fname",
+                            'content':user.name.split(' ')[0].title()
+                        }
+                    ]
+                }],
+                'track_opens': True,
+                'track_clicks': True,
+                'preserve_recipients':False,
+                'tags':['uguru-fa14-students']
+            }
+
+            result = mandrill_client.messages.send(message=message)
+
+def email_old_tutors():
+    return """
+    Hey *|FNAME|*,
+    <br>
+    <br>
+    Hope you had a fantastic summer! Are you ready to help your fellow Cal bears while making money?
+    <br>
+    <br>
+    While you were away this summer, we've been making some improvements to uGuru that we're really excited to share:
+    <br>
+    <br>
+    <b> 1. More students us uGuru! </b>
+    <br>
+    uGuru is spreading across campus like you wouldn't believe. We've been working hard to get the word out and are continuing to do so as you read this. What does this mean? More student users, which translates to more opportunities to fill your pockets with money.
+    <br>
+    <br>
+    <b> 2. We now take less </b>
+    <br>
+    We now only take 25% commission of your first session with a student, and 10% each time you meet with that student again. Compared to the 50% commission most agencies take, we think you're going to love us even more now.
+    <br>
+    <br>
+    <b> 3. A better way to schedule </b>
+    <br>
+    We've built an availability calendar into the Guru request form, meaning the hassles of scheduling with a student have disappeared.
+    <br>
+    <br>
+    <b> 4. Texting </b>
+    <br>
+    Accepting a student request quickly is extremely important. This is why we're rolling out text notifications, which allow you to accept requests even faster than before. If you happen to not want to use this feature, you can always disable it as you please.
+    <br>
+    <br>
+    We are dedicated to our users! Anytime you experience confusion or difficulties, email samir@uguru.me or text 813-500-9853. Your feedback is extremely important and we know it will make uGuru better!
+    <br>
+    <br>
+    Cheers,
+    <br>
+    Samir from uGuru
+    """
+
+
+if arg == 'new_email_old_gurus':
+    for user in User.query.all():
+        if user.skills:
+            user_name = user.name
+            user_email = user.email
+            mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+            html = email_old_tutors()
+            to_emails = []
+            to_emails.append({
+                'email':user_email,
+                'name': user_name,
+                'type': 'to'
+            })
+
+            message = {
+                'html':html,
+                'subject': 'Important Changes to uGuru for Gurus',
+                'from_email': 'samir@uguru.me',
+                'from_name': 'Samir from uGuru',
+                'to': to_emails,
+                'headers': {'Reply-To': "samir@uguru.me"},
+                'important': True,
+                'merge_vars': [{
+                'rcpt':user.email,
+                'vars': [
+                        {
+                            'name':"fname",
+                            'content':user.name.split(' ')[0].title()
+                        }
+                    ]
+                }],
+                'track_opens': True,
+                'track_clicks': True,
+                'preserve_recipients':False,
+                'tags':['uguru-fa14-gurus']
+            }
+
+            result = mandrill_client.messages.send(message=message)
+
+def approve_old_tutors():
+    return """
+    Hey *|FNAME|*,
+    <br>
+    <br>
+    Thanks for applying to become a Guru last semester. We understand it took a while to get back to you, but we've been busy making uGuru even better and wanted you to be among the first to try out the new system.
+    <br>
+    <br>
+    We have processed your application, and you will start receiving requests for classes that you've added to your profile as being available to tutor. Be sure to update your profile if you haven't done so in a while!
+    <br>
+    <br>
+    Just like everyone else, your first session will be free to the student. As soon as you have an average review of 4.5 or above, you can start charging. If you get a 5 star review on your first one, you will be good to go!
+    <br>
+    <br>
+    We are dedicated to our users! Anytime you experience confusion or difficulties, email samir@uguru.me or text 813-500-9853. Your feedback is extremely important and we know it will make uGuru better!
+    <br>
+    <br>
+    Cheers,
+    <br>
+    Samir from uGuru
+    """
+
+
+
+if arg == 'approve_old_tutors':
+    for user in User.query.all():
+        if user.qualifications and not user.approved_by_admin:
+            user.approved_by_admin = True
+            user.verified_tutor = True
+            user.tutor_introduction = user.qualifications
+            
+            user.notifications = []
+
+            from app.notifications import getting_started_tutor, welcome_guru
+            welcome_guru_notification = welcome_guru(user)
+            user.notifications.append(welcome_guru_notification)
+            db_session.add(welcome_guru_notification)
+            notification = getting_started_tutor(user)
+            from emails import welcome_uguru_tutor
+            welcome_uguru_tutor(user)
+            u.notifications.append(notification)
+            db_session.add(notification)
+
+            db_session.commit()
+
+            user_name = user.name
+            user_email = user.email
+            mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+            html = approve_old_tutors()
+            to_emails = []
+            to_emails.append({
+                'email':user_email,
+                'name': user_name,
+                'type': 'to'
+            })
+
+            message = {
+                'html':html,
+                'subject': 'Important Changes to uGuru for Gurus',
+                'from_email': 'samir@uguru.me',
+                'from_name': 'Samir from uGuru',
+                'to': to_emails,
+                'headers': {'Reply-To': "samir@uguru.me"},
+                'important': True,
+                'merge_vars': [{
+                'rcpt':user.email,
+                'vars': [
+                        {
+                            'name':"fname",
+                            'content':user.name.split(' ')[0].title()
+                        }
+                    ]
+                }],
+                'track_opens': True,
+                'track_clicks': True,
+                'preserve_recipients':False,
+                'tags':['uguru-fa14-gurus']
+            }
+
+            result = mandrill_client.messages.send(message=message)
+
 
 
 if arg == 'initialize':

@@ -14,7 +14,7 @@
 {% endif %}
     
     {% if notif.status == 'LATE' %}
-        <div class='row center margin-top-10 font-24'>
+        <div class='row center margin-top-10 font-24 red-text'>
             You Are Too Late...
         </div>
         <div class='row-fluid margin-top-30'>
@@ -29,7 +29,7 @@
 
     {% endif %}
 
-    {% if guru_profile_not_complete %}
+    {% if guru_profile_not_complete and notif.status != 'LATE' %}
     <div class='row'>
         <div style="margin-top:0px; margin-bottom:15px; text-align:center; float:center"class="col-xs-12 col-sm-12 col-md-12">
             <div style="margin-bottom:0"class="alert alert-danger">
@@ -71,7 +71,7 @@
     <hr>
     {% endif %}
 
-    {% if guru_not_ready %}
+    {% if guru_not_ready and notif.status != 'LATE' %}
     <div class='row-fluid margin-top-40 block'>
         <label class='font-16 red-text'> This is your first time! What does this mean?</label>
         <div id='guru-intro' class='block font-14'>

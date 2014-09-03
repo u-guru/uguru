@@ -918,6 +918,7 @@ def update_requests():
 
 
             r = Request.query.get(incoming_request_num)
+            student = User.query.get(r.student_id)
             r.committed_tutors.append(tutor)
 
             if len(r.committed_tutors) == (MAX_REQUEST_TUTOR_LIMIT + 1):
@@ -930,10 +931,9 @@ def update_requests():
                                 n.feed_message_subtitle = 'Click here to learn why!'
                                 print tutor.id, tutor.name, "is too late! We have updated their profile accordingly"
 
-
-
+                #expire all of them in twenty four hours
             
-
+            
             weekly_availability = ajax_json['calendar']
             
             tutor_week_times = Week(owner=tutor.id)
@@ -955,7 +955,6 @@ def update_requests():
             from app.static.data.short_variations import short_variations_dict
             skill_name = short_variations_dict[skill_name]
 
-            student = User.query.get(r.student_id)
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
 
@@ -994,6 +993,10 @@ def update_requests():
             student.notifications.append(student_notification)
             db_session.add(student_notification)
             
+            if len(r.committed_tutors) == (MAX_REQUEST_TUTOR_LIMIT + 1):
+                for n in student.notifications:
+                        if n.request_id == r.id and n.custom_tag == 'student-incoming-offer':
+                            n.status = 'tutor_cap_reached'
             try:
                 db_session.commit()
             except:
@@ -2076,7 +2079,7 @@ def activity():
             seconds_since_creation = get_time_diff_in_seconds(datetime.now(), notification.time_created)
             if seconds_since_creation > TUTOR_ACCEPT_EXP_TIME_IN_SECONDS or notification.status == 'EXPIRED':
                 notification.status = 'EXPIRED'
-            else:
+            elif notification.status == 'tutor_cap_reached':
                 notification.status = get_time_remaining(TUTOR_ACCEPT_EXP_TIME_IN_SECONDS - seconds_since_creation)
 
         pretty_dates[notification.id] = pretty_date(notification.time_created)

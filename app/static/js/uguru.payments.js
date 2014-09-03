@@ -100,15 +100,15 @@
 
     //Modal Submit
 
-    $('#submit-credit-card-modal').click(function() {
-        if (!$('input#credit-card-num-modal').val() || !$('input#credit-card-exp-date-modal').val()) {
-            $('#add-credit-modal-alert').show();
-            $('#add-credit-modal-alert').text('Please fill in all fields');
+    $('.submit-credit-card-modal').click(function() {
+        if (!$('input#credit-card-num-modal-'+(last_clicked_notif_index + 1)).val() || !$('input#credit-card-exp-date-modal-'+(last_clicked_notif_index + 1)).val()) {
+            $('#add-credit-modal-alert-'+(last_clicked_notif_index + 1)).show();
+            $('#add-credit-modal-alert-'+(last_clicked_notif_index + 1)).text('Please fill in all fields');
             return false;
         }
-        $('#add-credit-modal-alert').hide();
-        card_number  = $('input#credit-card-num-modal').val()
-        expiration_date = $('input#credit-card-exp-date-modal').val()
+        $('#add-credit-modal-alert-'+(last_clicked_notif_index + 1)).hide();
+        card_number  = $('input#credit-card-num-modal-'+(last_clicked_notif_index + 1)).val()
+        expiration_date = $('input#credit-card-exp-date-modal-'+(last_clicked_notif_index + 1)).val()
         month = parseInt(expiration_date.split('/')[0])
         year = parseInt(expiration_date.split('/')[1])
 
@@ -124,10 +124,10 @@
         var $form = $('#payment-form');
         if (response.error) {
             // Show the errors on the form    
-            $('#add-credit-modal-alert').text(response.error.message);
-            $('#add-credit-modal-alert').show();
+            $('#add-credit-modal-alert-'+(last_clicked_notif_index + 1)).text(response.error.message);
+            $('#add-credit-modal-alert-'+(last_clicked_notif_index + 1)).show();
         } else {
-            $('#add-credit-modal-alert').hide();
+            $('#add-credit-modal-alert-'+(last_clicked_notif_index + 1)).hide();
             var token = response.id;
             var data = {'stripe-card-token':token}
             if (($('#amount-to-be-billed-'+(last_clicked_notif_index + 1) + ':visible').length > 0) && payment_plan_clicked != 3 && !($('#first-time-guru-flaker-' + (last_clicked_notif_index + 1) + ':visible').length > 0))  {
@@ -274,10 +274,12 @@
     credit_card_back_link = true; 
     $('input#credit-card-num').payment('formatCardNumber');
     $('input#credit-card-num-modal').payment('formatCardNumber');
+    $('.credit-card-num-modal').payment('formatCardNumber');
     $('input#credit-card-num-parent-modal').payment('formatCardNumber');
     $('input#debit-card-num-settings').payment('formatCardNumber');
     $('input.exp-date-month').payment('formatCardExpiry');
     $('input#expiration-date').payment('formatCardExpiry');
+    $('.credit-card-exp-date-modal').payment('formatCardExpiry');
     $('input#credit-card-exp-date-modal').payment('formatCardNumber');
     $('input#credit-card-exp-date-parent-modal').payment('formatCardNumber');
     $('input#cvc-num').payment('formatCardCVC');

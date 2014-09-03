@@ -185,7 +185,7 @@
 							Even our gurus need help sometimes, request help <a href='javascript:void(0);' id='tutor-request-link' class='blue-text'>here</a>
 						</span>
 					</div>
-				{% if user.credit %}
+				{% if user.credit and not user.approved_by_admin %}
 					<div class='row-fluid center font-20 margin-top-10 dark-grey-text'>
 						Your uGuru credits: <span class='green-text'> ${{user.credit}} 
 					</div>

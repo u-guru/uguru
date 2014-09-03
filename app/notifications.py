@@ -114,7 +114,6 @@ def tutor_request_accept(user, tutor, request, skill_name, hourly_amount):
     else:
         notification.image_url = '/static/img/default-photo.jpg'
     notification.time_read = datetime.now()
-    notification.status = 'yellow'
     return notification
 
 def student_incoming_tutor_request(user, tutor, request, skill_name, hourly_amount, extra_detail):
@@ -136,7 +135,6 @@ def student_incoming_tutor_request(user, tutor, request, skill_name, hourly_amou
         notification.image_url = '/static/img/default-photo.jpg'
     tutor_wants_to_help(user, tutor, skill_name.upper()) 
     user.feed_notif = user.feed_notif + 1
-    notification.status = 'yellow'
     return notification
 
 def student_match(user, tutor, request, skill_name, hourly_amount):

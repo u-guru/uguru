@@ -60,17 +60,17 @@
         {% if not user.customer_id %}
         <div id='change-credit-container' style='display:block' class='change-payment-information margin-top-20 margin-bottom-20'>
               <label> Card Number </label>
-              <input placeholder="•••• •••• •••• ••••" style="width:100%" type="text" size="20" data-stripe="number" class='form-control standard-input' id="credit-card-num-modal">
+              <input placeholder="•••• •••• •••• ••••" style="width:100%" type="text" size="20" data-stripe="number" class='form-control standard-input credit-card-num-modal' id="credit-card-num-modal-{{index}}">
               <label> Expiration Date </label>
               <div class = 'row-fluid relative'>
-                <input placeholder="MM/YY" class='font-control standard-input exp-date-month' size="20"type="text" data-stripe="exp-month" id='credit-card-exp-date-modal'>
+                <input placeholder="MM/YY" class='font-control standard-input exp-date-month credit-card-exp-date-modal' size="20"type="text" data-stripe="exp-month" id='credit-card-exp-date-modal-{{index}}'>
                 <img class='float-right absolute powered-by-stripe-settings'src='/static/img/powered-stripe.png'> </img>
               </div>
-              <div id='add-credit-modal-alert' class='red-text font-12' style='display:none'>
+              <div id='add-credit-modal-alert-{{index}}' class='red-text font-12' style='display:none'>
                     Please fill in all fields.
               </div>
               <div class='row-fluid margin-top-20'>
-                <a href='javascript:void(0);' id='submit-credit-card-modal'>
+                <a href='javascript:void(0);' class='submit-credit-card-modal' id='submit-credit-card-modal-{{index}}'>
                   <span style='width:100%'class='blue-btn blue-btn-full margin-top-10'> Save & Submit Card</span>
                 </a>
               </div>
