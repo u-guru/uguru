@@ -1363,8 +1363,10 @@ def api(arg, _id):
                             tutor_notification = n
                             _tutor.feed_notif += 1
                             tutor_notification.time_read = None
-                            tutor_notification.feed_message_subtitle = '<span style="color:red">The student has chosen another tutor</span>'
+                            # tutor_notification.feed_message_subtitle = '<span style="color:red">The student has chosen another tutor</span>'
                             tutor_notification.time_created = datetime.now()
+                            tutor_notification.feed_message_subtitle = 'Click here to see next steps'
+                            tutor_notification.status = 'Taken'
                             print "We have let", _tutor.name, 'id:', str(_tutor.id), "know that this request has been taken by someone else"
 
                     # student_chose_another_tutor(user, current_notification.skill_name, _tutor)

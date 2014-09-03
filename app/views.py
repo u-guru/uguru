@@ -2064,15 +2064,17 @@ def activity():
         notification.feed_message = notification.feed_message.replace("<b>", "<span class='green-text normal-text'> ").replace("</b>", " </span>")
         if notification.feed_message_subtitle:
             notification.feed_message_subtitle = notification.feed_message_subtitle.replace("<b>", "").replace("</b>", "")
-        print notification.feed_message
         if notification.request_tutor_id:
             tutor_dict[notification] = User.query.get(notification.request_tutor_id)
         if notification.custom_tag == 'student-request-help':
             from api import get_time_diff_in_seconds, REQUEST_EXP_TIME_IN_SECONDS, get_time_remaining
             seconds_since_creation = get_time_diff_in_seconds(datetime.now(), notification.time_created)
+            r = Request.query.get(notification.request_id)
             if seconds_since_creation > REQUEST_EXP_TIME_IN_SECONDS or notification.status == 'EXPIRED':
                 notification.status = 'EXPIRED'
                 expire_request_job.apply_async(args=[notification.request_id, user.id])
+            elif len(r.committed_tutors) == (MAX_REQUEST_TUTOR_LIMIT + 1):
+                notification.status = '' 
             else:
                 notification.status = get_time_remaining(REQUEST_EXP_TIME_IN_SECONDS - seconds_since_creation)
         if notification.custom_tag == 'student-incoming-offer':
@@ -2082,6 +2084,11 @@ def activity():
                 notification.status = 'EXPIRED'
             elif notification.status == 'tutor_cap_reached':
                 notification.status = get_time_remaining(TUTOR_ACCEPT_EXP_TIME_IN_SECONDS - seconds_since_creation)
+
+        if notification.request_id and notification.custom_tag == 'student-incoming-offer':
+            r = Request.query.get(notification.request_id)
+            if r.connected_tutor_id:
+                notification.status = ''
 
         pretty_dates[notification.id] = pretty_date(notification.time_created)
     for conversation in user.mailbox.conversations:

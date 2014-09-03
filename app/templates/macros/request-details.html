@@ -41,10 +41,14 @@
 
     <div class='row center margin-top-20'>
         <span id='profile-name' class="font-24 center">
-        {% if notif.custom != 'tutor-is-matched' and not notif.status == 'LATE'%}
+        {% if notif.custom != 'tutor-is-matched' and not notif.status == 'LATE' and not notif.status == 'Taken' %}
             {{notif.feed_message|safe}} 
         {% elif notif.custom == 'tutor-is-matched' %}
             <span class='green-text'>{{student_name}} </span> Chose You!
+        {% elif notif.status == 'Taken' %}
+            <span class='red-text'>
+                Sorry! The Student Chose Another Guru
+            </span>
         {% else %}
         <hr>
         {% endif %}
@@ -94,7 +98,7 @@
         <a class="cancel-request blue-text" href="javascript:void(0)"> <u>Need to Cancel? </u></a>
     </div>
     <hr>
-    {% elif notif.custom =='tutor-accept-request' %}
+    {% elif notif.custom =='tutor-accept-request' and notif.status != 'Taken' %}
     <div class='row-fluid margin-top-20'>
         <label class='font-20 green-text'> Next Steps </label>
         <div id='guru-intro' class='block font-14'>
@@ -102,6 +106,22 @@
             <br>
             <br>
             We will let you know if the student chooses you or not. Just relax and wait!
+        </div>
+    </div>
+    <hr>
+    {% elif notif.custom =='tutor-accept-request' and notif.status == 'Taken'%}
+    <div class='row-fluid margin-top-20'>
+        <label class='font-20 green-text'> Your Next Steps </label>
+        <div id='guru-intro' class='block font-14'>
+            You were still one of the first 3 Gurus-- great job on replying quickly!
+            <br>
+            <br>
+            We highly recommend that your personal response to the student is as detailed and friendly as possible.
+            <br>
+            <br>
+            Our studies show that this differentiates you the most from other Gurus.
+            <br>
+            <br>
         </div>
     </div>
     <hr>
