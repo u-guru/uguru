@@ -7,7 +7,7 @@
         {% set guru_profile_not_complete = false %}
 {% endif %}
 
-{% if user.approved_by_admin and user_avg_rating[0] < 4.5%}
+{% if notif.custom_tag == 'tutor-request-offer' and user.approved_by_admin and user_avg_rating[0] < 4.5%}
     {% set guru_not_ready = true %}
 {% else %}
     {% set guru_not_ready = false %}
