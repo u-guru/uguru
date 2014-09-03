@@ -38,7 +38,7 @@
 </div>
 {%- endmacro %}
 
-{% macro notification_details_template(user, notif, request_dict, time, index, tutor_dict=None, variations=None) -%}
+{% macro notification_details_template(user, notif, request_dict, time, index, tutor_dict=None, variations=None, tutor_avg_rating=None) -%}
     <div id="{{notif.a_id_name}}-detailed" style='display:none'>
         <div id='profile'>
             <div class='profile-container'>
@@ -53,7 +53,7 @@
                         <div id='guru-content' class='margin-top-20 padding-horizontal-20 block'>
                             <div class='notification-container'>
                                 {% if notif.custom_tag == 'student-request-help' or notif.custom_tag == 'tutor-request-offer'%}
-                                    {{request_details(user, notif, request_dict, time, index)}}
+                                    {{request_details(user, notif, request_dict, time, index, tutor_avg_rating)}}
                                 {% elif notif.custom_tag == 'student-incoming-offer'%}
                                     {{tutor_details(user, notif, request_dict, time, index, tutor_dict, variations)}}
                                 {% endif %}

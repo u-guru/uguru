@@ -502,7 +502,7 @@ def admin():
                                 payment_dict['student-hourly'] = prices_reversed_dict[p.tutor_rate]
                             else:
                                 payment_dict['student-hourly'] = p.tutor_rate
-                                print "ERROR: Reversed prices_reversed_dict Dictionary is not finding a value for the key: " + p.tutor_rate
+                                print "ERROR: Reversed prices_reversed_dict Dictionary is not finding a value for the key: " + str(p.tutor_rate)
                             
                         if payment_dict['student-hourly']:
                             payment_analytics['avg-student-rate'] += payment_dict['student-hourly']
@@ -511,6 +511,8 @@ def admin():
                             payment_analytics['avg-tutor-rate'] += payment_dict['tutor-hourly']
                         if payment_dict['student-hourly']:
                             student_charge = payment_dict['student-hourly'] * p.time_amount
+                        else:
+                            student_charge = 0
                         if count >=1:
                             payment_dict['student-total'] = student_charge  * 1.03 + 2
                         else:
@@ -519,10 +521,14 @@ def admin():
                             payment_analytics['avg-student-charge'] += payment_dict['student-total']
                         if p.tutor_rate and p.time_amount:
                             tutor_paid = p.tutor_rate * p.time_amount
+                        else:
+                            tutor_paid = 0
                         if tutor_paid :
                             payment_analytics['avg-tutor-paid'] += tutor_paid
                         if payment_dict['student-total']:
                             stripe_fees = payment_dict['student-total'] * 0.029 + 0.30
+                        else:
+                            stripe_fees = 0
                         payment_dict['tutor-total'] = tutor_paid
                         payment_dict['stripe-fees'] = round(stripe_fees, 2)
                         payment_analytics['avg-stripe-fees'] += payment_dict['stripe-fees']
@@ -953,7 +959,6 @@ def update_requests():
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
 
-            
 
             if student.text_notification and student.phone_number:
                 print "Student is supposed to be receiving a text message"            
@@ -971,6 +976,10 @@ def update_requests():
                 current_notification.request_tutor_amount_hourly = ajax_json.get('hourly-amount')
             else:
                 current_notification.request_tutor_amount_hourly = r.student_estimated_hour
+
+            if calc_avg_rating(tutor)[0] < 4.5:
+                current_notification.request_tutor_amount_hourly = 0
+                hourly_amount = 0
             
             if current_notification.time_read:
                 user.feed_notif += 1
@@ -2110,7 +2119,7 @@ def activity():
         pretty_dates = pretty_dates, urgency_dict=urgency_dict, tutor_dict=tutor_dict, pending_ratings_dict=pending_ratings_dict,\
         environment = get_environment(), prices_dict=prices_dict, prices_reversed_dict=prices_reversed_dict, session=session,\
         outgoing_request_index=outgoing_request_index, avg_rating=avg_rating, num_ratings = num_ratings, time=time, variations=short_variations_dict,\
-        confirm_payments=confirm_payments)
+        confirm_payments=confirm_payments, user_avg_rating = calc_avg_rating(user))
 
 def get_calendar_time_ranges(week_object, owner):
     if not week_object.first():

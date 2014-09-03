@@ -9,6 +9,11 @@
 
 {% block content %}
 {% include 'calendar.html' %}
+{% if (user.approved_by_admin and user.verified_tutor and (not user.skills or not user.tutor_introduction or not user.major or not user.phone_number or not user.year or (user.profile_url == '/static/img/default-photo.jpg'))) %}
+		{% set guru_profile_not_complete = true %}
+{% else %}	
+		{% set guru_profile_not_complete = false %}
+{% endif %}
 {% if confirm_payments|length > 0 %}
 	
 	{{confirm_payment_form(confirm_payments[0], user)}}
@@ -102,10 +107,11 @@
 <div id="activity" style="font-family: 'Roboto',sans-serif;">
 {% endif %}
 	<div id="call-to-action-bar" align:"center">
-		{% if user.approved_by_admin and user.verified_tutor and (not user.skills or not user.tutor_introduction or not user.major or not user.year or (user.profile_url == '/static/img/default-photo.jpg')) %}
+		{% if guru_profile_not_complete %}
+
 			<div style="margin-top:0px; margin-bottom:15px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
 				<div style="margin-bottom:0"class="alert alert-danger">
-					Your guru profile is not complete! Complete it <a href='/settings/#prof'>here.</a>
+				Your guru profile is not complete! Complete it <a href='/settings/#prof'>here.</a>
 				</div>
 			</div>
 		{% endif %}
@@ -808,7 +814,7 @@
 					</div>
 			</div>
 			{% elif n.custom_tag == 'student-request-help' %}
-				{{notification_details_template(user, n, request_dict, time, loop.index)}}
+				{{notification_details_template(user, n, request_dict, time, loop.index, tutor_avg_rating)}}
 				<!-- <div id="{{n.a_id_name}}-detailed" style="display:none;">
 	  				<div style="display:block;"class="page-title">
 	   					<div class="row" style="width:100%;text-align:center">
@@ -1386,7 +1392,7 @@
 			         </div>
 	  			</div> -->
 			{% elif n.custom_tag == 'tutor-request-offer' %}
-				{{notification_details_template(user, n, request_dict, time, loop.index)}}
+				{{notification_details_template(user, n, request_dict, time, loop.index, None, None, user_avg_rating)}}
 			<!-- {% set student_name = n.feed_message.split(" ")[0] %}
 				<div id="{{n.a_id_name}}-detailed" style="display:none;">
 					<div class="page-title">

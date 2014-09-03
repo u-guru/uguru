@@ -129,8 +129,10 @@
         } else {
             $('#add-credit-modal-alert').hide();
             var token = response.id;
-            var data = {'stripe-card-token':token,
-                        'payment_plan':(3 - payment_plan_clicked)}
+            var data = {'stripe-card-token':token}
+            if (($('#amount-to-be-billed-'+(last_clicked_notif_index + 1) + ':visible').length > 0) && payment_plan_clicked != 3 && !($('#first-time-guru-flaker-' + (last_clicked_notif_index + 1) + ':visible').length > 0))  {
+                data['payment_plan'] = 3 - payment_plan_clicked;
+            }
             $.ajax({
                     type: "PUT",
                     contentType: 'application/json;charset=UTF-8',

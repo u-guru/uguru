@@ -1,6 +1,11 @@
 {% macro student_confirm_tutor(user, notif, request_dict, time, index, tutor_dict, variations) -%}
 {% set tutor = tutor_dict[notif] %}
 {% set cost = request_dict[notif.request_id]['request'].time_estimate * notif.request_tutor_amount_hourly %}
+{% if notif.request_tutor_amount_hourly == 0 %}
+    {% set first_time_guru = true %}
+{% else %}
+    {% set first_time_guru = false %}
+{% endif %}
     <div class='tutor-app-photo-container margin-top-30 margin-bottom-15 block student-confirm-tutor' style='display:none'>
         <div class='font-32 normal-text center'> Session Confirmation</div>
         
@@ -21,7 +26,6 @@
         <p class='margin-top-20 font-16'> Total Hours <span class='green-text'> 
             {{request_dict[notif.request_id]['request'].time_estimate}}
         </p>
-
         <hr>
 
         <p class='font-16'>
@@ -43,10 +47,16 @@
         </p>        
 
         <hr>
-
+        {% if not first_time_guru %}
         <p class='font-16'>
             You will be fully refunded if you don't meet up. You will only be charged for a $5 deposit if you cancel within 5 hours before your schedule.
         </p>
+        {% else %}
+        <p class='font-12 grey-text' id='first-time-guru-flaker-{{index}}'>
+            We deduct a $5 flakers fee if you choose to cancel with your tutor within 5 hours of the first session. <br>
+            This is why we still ask for your credit card information for free sessions.
+        </p>
+        {% endif %}
         {% if not user.customer_id %}
         <div id='change-credit-container' style='display:block' class='change-payment-information margin-top-20 margin-bottom-20'>
               <label> Card Number </label>

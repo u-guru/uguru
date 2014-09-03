@@ -1189,12 +1189,13 @@ def api(arg, _id):
                 db_session.rollback()
                 raise 
             notification_id = ajax_json.get('notification-id')
-            if request.json.get('payment_plan'):
-                print "There was a payment plan selected, it was number " +str(request.json.get('payment_plan'))
-                process_payment_plan(request.json.get('payment_plan'), user)
 
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             current_notification = user_notifications[notification_id]
+
+            if request.json.get('payment_plan') and current_notification.request_tutor_amount_hourly != 0:
+                print "There was a payment plan selected, it was number " +str(request.json.get('payment_plan'))
+                process_payment_plan(request.json.get('payment_plan'), user)
 
             student = user
             from views import print_user_details
@@ -1255,7 +1256,7 @@ def api(arg, _id):
             total_amount = r.connected_tutor_hourly * r.time_estimate
             user_credits = user.credit
             
-            if user_credits:
+            if user_credits and r.connected_tutor_hourly != 0:
                 difference = user_credits - total_amount
                 #if they have enough credits
                 if difference > 0:
@@ -1283,14 +1284,15 @@ def api(arg, _id):
 
             else:
                 print "The student has no credits, and is paying directly"
-                charge = stripe.Charge.create(
-                    amount = int(total_amount * 100),
-                    currency="usd",
-                    customer=student.customer_id,
-                    description="amount for tutoring"
-                )   
-                p.stripe_charge_id = charge['id']
-                p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title()
+                if r.connected_tutor_hourly != 0:
+                    charge = stripe.Charge.create(
+                        amount = int(total_amount * 100),
+                        currency="usd",
+                        customer=student.customer_id,
+                        description="amount for tutoring"
+                    )   
+                    p.stripe_charge_id = charge['id']
+                    p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title()
 
             p.tutor_rate = r.connected_tutor_hourly
             p.student_paid_amount = r.connected_tutor_hourly * r.time_estimate
