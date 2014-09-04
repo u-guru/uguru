@@ -356,8 +356,7 @@ def new_admin():
             day_after = today - timedelta(days=(i - 1))
             day_student_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).all()
             day_tutor_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin != None).all()
-            day_requests = db_session.query(Request).filter(Request.time_created >= day).filter(User.time_created <= day_after).all()
-            print day_requests
+            day_requests = db_session.query(Request).filter(Request.time_created >= day).filter(Request.time_created <= day_after).all()            
             day_stats.append(
                     {
                         'date': day.strftime('%h %d %Y'),
