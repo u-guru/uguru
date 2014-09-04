@@ -9,7 +9,7 @@
 <ul style="margin:auto;float:center" class="nav nav-tabs">
   <li class='active'><a href="/new-admin/">Today</a></li>
   <li><a href="/admin/tutors/">Tutors</a></li>
-  <li><a href="/new-admin/students/">Students</a></li>
+  <li><a href="/admin/students/">Students</a></li>
   <li><a href="/admin/courses/">Courses</a></li>
   <li><a href="/admin/requests/" >Requests</a></li>
   <li><a href="/admin/conversations/" >Conversations</a></li>
@@ -23,24 +23,34 @@
 </ul>
 
 
-<div class="tab-content">
 
-    <div class="tab-pane active" id="today">
-        <div class="container">
+
+<div class="container">
+            
+        {% for day in day_stats %}
+
             <div style="margin:20px; text-align:center" class="row">
-                # of Total Signups: {{today_tutor_signups|length + today_student_signups|length}}
+            {{day['date']}}
             </div>
-            <div style="margin:20px; text-align:center" class="row">
-                # of Students: {{today_student_signups|length}}
+            <div class="row-fluid">
+                <table class="table table-striped">
+                    <tr> 
+                        <td>  Student Signups </td>
+                        <td> {{day['student-signups']|length}} </td>
+                    </tr>
+                    <tr> 
+                        <td>  Tutor Signups </td>
+                        <td> {{day['tutor-signups']|length}} </td>
+                    </tr>
+                    <tr> 
+                        <td>  Student Requests </td>
+                        <td> {{day['requests']|length}} </td>
+                    </tr>
+                </table>
             </div>
-            <div style="margin:20px; text-align:center" class="row">
-                # of Tutors: {{today_tutor_signups|length}}
-            </div>
-            <div style="margin:20px; text-align:center" class="row">
-                # of Requests: {{today_requests|length}}
-            </div>
-        </div>
-      </div>
+        {% endfor %}
+</div>
+
 
   <div style="text-align:center;color:black" class="row">
     <u><a href="/logout-admin/">Log out of admin</a></u>

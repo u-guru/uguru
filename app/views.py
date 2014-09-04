@@ -346,21 +346,37 @@ def add_credit():
 @app.route('/new-admin/')
 def new_admin():
     if session.get('admin'):
+    
         now = datetime.now()
         today = datetime(*now.timetuple()[:3])
-        today_student_signups = db_session.query(User).filter(User.time_created >= today).filter(User.approved_by_admin == None).all()
-        today_tutor_signups = db_session.query(User).filter(User.time_created >= today).filter(User.approved_by_admin != None).all()
-        today_requests = db_session.query(Request).filter(Request.time_created >= today).all()
+        day_stats = []
 
-        return render_template('new-admin.html', today_student_signups=today_student_signups, today_tutor_signups=today_tutor_signups,\
-         today_requests=today_requests)
+        for i in range(0, 7):
+            day = today - timedelta(days=i)
+            day_after = today - timedelta(days=(i - 1))
+            day_student_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).all()
+            day_tutor_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin != None).all()
+            day_requests = db_session.query(Request).filter(Request.time_created >= day).filter(User.time_created <= day_after).all()
+            print day_requests
+            day_stats.append(
+                    {
+                        'date': day.strftime('%h %d %Y'),
+                        'student-signups': day_student_signups,
+                        'tutor-signups': day_tutor_signups,
+                        'requests': day_requests,
+                    }
+
+                )
+        
+
+        return render_template('new-admin.html', day_stats=day_stats)
     return redirect(url_for('index'))
 
 
 @app.route('/admin/students/')
 def new_admin_students():
     if session.get('admin'):
-        all_students = db_session.query(User).filter(User.approved_by_admin == None).all()
+        all_students = sorted(db_session.query(User).filter(User.approved_by_admin == None).all(), key=lambda u:u.last_active, reverse=True)
         times_signed_up = {}
         times_last_active = {}
 
@@ -375,7 +391,7 @@ def new_admin_students():
 @app.route('/admin/tutors/')
 def new_admin_tutors():
     if session.get('admin'):
-        all_tutors = db_session.query(User).filter(User.approved_by_admin != None).all()
+        all_tutors = sorted(db_session.query(User).filter(User.approved_by_admin != None).all(), key=lambda u:u.last_active, reverse=True)
         times_signed_up = {}
         times_last_active = {}
 
@@ -2047,7 +2063,7 @@ def logout():
     if session.get('signup-start'):
         session.pop('signup-start')
     if session.get('admin'):
-        return redirect(url_for('admin'))
+        return redirect(url_for('new_admin'))
     return redirect(url_for("index"))
 
 @app.route('/logout-admin/')
