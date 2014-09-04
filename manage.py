@@ -367,7 +367,7 @@ if arg == 'approve_old_tutors':
                 'track_opens': True,
                 'track_clicks': True,
                 'preserve_recipients':False,
-                'tags':['uguru-fa14-gurus']
+                'tags':['uguru-fa13-unapproved-gurus']
             }
 
             result = mandrill_client.messages.send(message=message)
