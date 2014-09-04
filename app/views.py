@@ -381,7 +381,7 @@ def new_admin_students():
 
         for student in all_students:
             times_signed_up[student.id] = pretty_date(student.time_created)
-            times_last_active[student.id] = pretty_date(student.time_created)
+            times_last_active[student.id] = pretty_date(student.last_active)
 
         return render_template('new-admin-students.html', all_students = all_students, times_signed_up=times_signed_up,\
             times_last_active=times_last_active)
@@ -396,7 +396,7 @@ def new_admin_tutors():
 
         for tutor in all_tutors:
             times_signed_up[tutor.id] = pretty_date(tutor.time_created)
-            times_last_active[tutor.id] = pretty_date(tutor.time_created)
+            times_last_active[tutor.id] = pretty_date(tutor.last_active)
         return render_template('admin-tutors.html', all_tutors = all_tutors, times_signed_up=times_signed_up,\
             times_last_active=times_last_active)
     return redirect(url_for('index'))
