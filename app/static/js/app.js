@@ -175,6 +175,30 @@ $(document).ready(function(){
         }
     });
 
+    $('#freshman-dropdown').click(function() {
+      $('#only-undergrad-alert').show();
+    });
+
+    $('#sophomore-dropdown').click(function() {
+      $('#only-undergrad-alert').show();
+    });
+
+    $('#junior-dropdown').click(function() {
+      $('#only-undergrad-alert').show();
+    });
+
+    $('#senior-dropdown').click(function() {
+      $('#only-undergrad-alert').show();
+    });
+
+    $('#grad-dropdown').click(function() {
+      $('#only-undergrad-alert').hide();
+    });
+
+    $('#phd-dropdown').click(function() {
+      $('#only-undergrad-alert').hide();
+    });
+
     $('#ta-tutor-check').change(function(){
           send_profile_update_ajax('ta', this.checked)
     });
@@ -1120,7 +1144,7 @@ $(document).ready(function(){
               $('#alert-fields-login').text('You have a Uguru.me FB account, please login with Facebook!')
             }
             if (result.json['admin']) {
-              window.location.replace('/admin/');
+              window.location.replace('/new-admin/');
             }
             if (result.json['success']) {
                 window.location.replace('/activity/');

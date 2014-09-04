@@ -1236,7 +1236,11 @@ def api(arg, _id):
                 print "The tutor has a phone number and is supposed to receive a text."
                 from emails import its_a_match_guru, reminder_before_session
                 message = reminder_before_session(tutor, student, r.location, "Guru-ing")
-                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=total_seconds_delay)
+
+                if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
+                    send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=10)
+                else:
+                    send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=total_seconds_delay)
                 message = its_a_match_guru(student, skill_name)
                 send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
 
@@ -1247,7 +1251,10 @@ def api(arg, _id):
                 from emails import reminder_before_session
                 total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
                 message = reminder_before_session(student, tutor, r.location, "Studying")
-                send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=total_seconds_delay)
+                if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
+                    send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=10)
+                else:
+                    send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=total_seconds_delay)
 
 
             p = Payment(r.id)

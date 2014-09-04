@@ -343,6 +343,135 @@ def add_credit():
             mp.track(str(user.id), 'Credit Card Added')
         return jsonify(response=return_json)
 
+@app.route('/new-admin/')
+def new_admin():
+    if session.get('admin'):
+        now = datetime.now()
+        today = datetime(*now.timetuple()[:3])
+        today_student_signups = db_session.query(User).filter(User.time_created >= today).filter(User.approved_by_admin == None).all()
+        today_tutor_signups = db_session.query(User).filter(User.time_created >= today).filter(User.approved_by_admin != None).all()
+        today_requests = db_session.query(Request).filter(Request.time_created >= today).all()
+
+        return render_template('new-admin.html', today_student_signups=today_student_signups, today_tutor_signups=today_tutor_signups,\
+         today_requests=today_requests)
+    return redirect(url_for('index'))
+
+
+@app.route('/admin/students/')
+def new_admin_students():
+    if session.get('admin'):
+        all_students = db_session.query(User).filter(User.approved_by_admin == None).all()
+        times_signed_up = {}
+        times_last_active = {}
+
+        for student in all_students:
+            times_signed_up[student.id] = pretty_date(student.time_created)
+            times_last_active[student.id] = pretty_date(student.time_created)
+
+        return render_template('new-admin-students.html', all_students = all_students, times_signed_up=times_signed_up,\
+            times_last_active=times_last_active)
+    return redirect(url_for('index'))
+
+@app.route('/admin/tutors/')
+def new_admin_tutors():
+    if session.get('admin'):
+        all_tutors = db_session.query(User).filter(User.approved_by_admin != None).all()
+        times_signed_up = {}
+        times_last_active = {}
+
+        for tutor in all_tutors:
+            times_signed_up[tutor.id] = pretty_date(tutor.time_created)
+            times_last_active[tutor.id] = pretty_date(tutor.time_created)
+        return render_template('admin-tutors.html', all_tutors = all_tutors, times_signed_up=times_signed_up,\
+            times_last_active=times_last_active)
+    return redirect(url_for('index'))
+
+@app.route('/admin/courses/')
+def new_admin_courses():
+    if session.get('admin'):
+        skills_array = []
+        skills_dict = {}
+        for u in User.query.all():
+            from collections import Counter
+            import operator
+            if u.skills:
+                result_string = ""
+                for s in u.skills:
+                    result_string = result_string + s.name + " "
+                    skills_array.append(s.name)
+                skills_dict[u.id] = result_string
+
+        skills_counter = dict(Counter(skills_array))
+        skills_counter = sorted(skills_counter.iteritems(), key=operator.itemgetter(1))
+        return render_template('admin-courses.html', skills_counter=skills_counter)
+    return redirect(url_for('index'))
+
+@app.route('/admin/conversations/')
+def new_admin_convos():
+    if session.get('admin'):
+        conversations = []
+        for c in Conversation.query.all():
+            if c.requests and c.guru and c.student:
+                c_dict = {}
+                c_dict['conversation'] = c
+                c_dict['tutor'] = c.guru
+                c_dict['student'] = c.student
+                c_dict['msg-count'] = len(c.messages)
+                if c_dict['msg-count']:
+                    c_dict['last-message-time'] = c.messages[-1].write_time
+                else: 
+                    c_dict['last-message-time'] = c.requests[0].time_created
+                c_dict['skill-name'] = Skill.query.get(c.requests[0].skill_id).name
+                conversations.append(c_dict)
+        conversations = sorted(conversations, key=lambda c:c['last-message-time'], reverse=True)
+        for c_dict in conversations:
+            c_dict['last-message-time'] = pretty_date(c_dict['last-message-time'])
+        return render_template('admin-convos.html', conversations=conversations)
+    return redirect(url_for('index'))
+
+@app.route('/admin/requests/')
+def admin_requests():
+    if session.get('admin'):
+        all_requests = []
+        for r in Request.query.all()[::-1]:
+            request_dict = {}
+            request_dict['emails-seen'] = 0
+            request_dict['request'] = r
+            request_dict['date'] = pretty_date(r.time_created)
+            skill = Skill.query.get(r.skill_id)
+            request_dict['skill_name'] = skill.name
+            student = User.query.get(r.student_id)
+            request_dict['student'] = student
+            total_seen_count = 0
+            for tutor in r.requested_tutors:
+                for n in tutor.notifications:
+                    if n.request_id == r.id:
+                        if n.time_read:
+                            total_seen_count += 1
+            request_dict['total_seen']  = total_seen_count
+            request_dict['pending-ratings'] = 0
+            request_dict['message-length'] = 0
+
+            if r.last_updated:
+                request_dict['last-updated'] = pretty_date(r.last_updated)
+            if r.connected_tutor_id:
+                tutor = User.query.get(r.connected_tutor_id)
+                request_dict['connected-tutor'] = tutor
+                c = Conversation.query.filter_by(guru=tutor, student=student).first()
+                if c:
+                    request_dict['message-length'] = len(c.messages)
+                _payments = None 
+                        
+                request_dict['pending-ratings'] = 0
+                if student and student.pending_ratings:
+                    request_dict['pending-ratings'] += 1
+                if tutor and tutor.pending_ratings:
+                    request_dict['pending-ratings'] += 1
+            all_requests.append(request_dict)
+        all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
+        return render_template('admin-requests.html', all_requests=all_requests)
+    return redirect(url_for('index'))
+
 @app.route('/admin/')
 def admin():
     if session.get('admin'):
@@ -1226,7 +1355,12 @@ def update_requests():
                 from emails import its_a_match_guru, reminder_before_session
                 total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
                 message = reminder_before_session(tutor, student, r.location, "Guru-ing")
-                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=total_seconds_delay)
+
+                if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
+                    send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=10)
+                else:                    
+                    send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=total_seconds_delay)
+
                 message = its_a_match_guru(student, skill_name)
                 send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
 
@@ -1236,7 +1370,10 @@ def update_requests():
                 from emails import reminder_before_session
                 total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
                 message = reminder_before_session(student, tutor, r.location, "Studying")
-                send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=total_seconds_delay)
+                if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
+                    send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=10)
+                else:
+                    send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=total_seconds_delay)
 
 
             if not previous_request_payment:
@@ -1812,7 +1949,10 @@ def success():
 
             if tier_2_tutor_ids:
                 print "Here are all the tier2 tutor ids",  tier_2_tutor_ids
-                send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=3600)
+                if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
+                    send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=10)
+                else:
+                    send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=3600)
 
             
             #send emails + create objects
@@ -2568,4 +2708,4 @@ def send_apn(message, token):
     apns.gateway_server.send_notification(token, payload)
 
 def print_user_details(user):
-    return str(user.id) + " " + str(user.name) + str(user.email)
+        return str(user.id) + " " + str(user.name) + str(user.email)

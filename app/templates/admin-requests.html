@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <link href="/static/css/admin.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<ul style="margin:auto;float:center" class="nav nav-tabs">
+  <li><a href="/new-admin/">Today</a></li>
+  <li><a href="/admin/tutors/" data-toggle="tab">Tutors</a></li>
+  <li><a href="/admin/students/">Students</a></li>
+  <li><a href="/admin/courses/" >Courses</a></li>
+  <li class='active'><a href="/admin/requests/">Requests</a></li>
+  <li><a href="/admin/conversations/">Conversations</a></li>
+  <!-- <li><a href="#notifications" data-toggle="tab">Notifications</a></li> -->
+  <li><a href="/admin/payments/" data-toggle="tab"> Payments</a></li>
+  <li><a href="/admin/ratings/" data-toggle="tab"> Ratings</a></li>
+  <li><a href="/admin/bank-transfers/" data-toggle="tab"> Bank Transfers</a></li>
+  <li><a href="/admin/unverified_tutors/" data-toggle="tab"> Unverified Tutors</a></li>
+  <li><a href="/admin/unfinished-accounts/" data-toggle="tab"> Unfinished Accounts</a></li>
+  <li><a href="/admin/texts/" data-toggle="tab"> Texts </a></li>
+  <li><a href="/admin/parents/" data-toggle="tab"> Parents </a></li>
+</ul>
+
+        <div class="container">
+            <div style="margin:20px; text-align:center" class="row">
+                <span style="color:red">Red</span> = Canceled, <span style="color:green">Green</span> = Matched, <span style="color:#fcf8e3">Yellow</span> = Pending
+            </div>
+            <div style="margin:20px; text-align:center" class="row">
+                # Requests: {{all_requests|length}} 
+            </div>
+            <div class="row-fluid">
+                <table class="table table-striped">
+                    <tr style="font-size:9px"class="info"> 
+                        <td> ID </td>
+                        <td> Student </td>
+                        <td> Time Created </td>
+                        <td> Class </td>
+                        <td> # Students </td>
+                        <td> Avail </td>
+                        <td> Time </td>
+                        <td> Hr Rate </td>
+                        <td> Edited? </td>
+                        <td> #Tutors Avail </td>
+                        <td> #Tutors Seen Email </td>
+                        <td> #Tutors Seen Notif </td>
+                        <td> #Tutors Replied </td>
+                        <td> Connected Tutor </td>
+                        <td> Messaged? </td>
+                        <td> Payment? </td>
+                        <td> Rated? </td>
+                        <td> We made </td>
+                    </tr>
+                    {% for request_dict in all_requests %}
+                        {% if request_dict['student'].name %}
+                        {% if request_dict['connected-tutor'] and request_dict['connected-tutor'] == request_dict['student']%}
+                            {% set status = 'danger'%}
+                        {% elif request_dict['connected-tutor'] %}
+                            {% set status = 'success'%}
+                        {% else %} 
+                            {% set status = 'warning'%}
+                        {% endif %}
+                        <tr class="{{status}}"> 
+                            <td>  
+                                {{request_dict['request'].id}} 
+                            </td>
+                            <td>  
+                                <a href="javascript:void(0)" class="login-student-request">{{request_dict['student'].name.split(" ")[0]}}</a> (id:<span>{{request_dict['request'].student_id}}</span>)
+                            </td>
+                            <td>  
+                                {{request_dict['date']}}
+                            </td>
+                            <td> 
+                                {{request_dict['skill_name']}} 
+                            </td>
+                            <td>  
+                                {{request_dict['request'].num_students}} 
+                            </td>
+                            <td>  
+                                {{request_dict['request'].available_time}} 
+                            </td>
+                            <td>  
+                                {{request_dict['request'].time_estimate}} 
+                            </td>
+                            <td>  
+                                ${{request_dict['request'].student_estimated_hour}}
+                            </td>
+                            <td>  
+                                {% if request_dict['request'].last_updated %}
+                                    {{request_dict['last-updated']}}
+                                {% endif %}
+                            </td>
+                            <td>  
+                                {{request_dict['request'].requested_tutors|length}} 
+                            </td>
+                            <td>  
+                                {{request_dict['emails-seen']}} 
+                            </td>
+                            <td>  
+                                {{request_dict['total_seen']}} 
+                            </td>
+                            <td>  
+                                {{(request_dict['request'].committed_tutors|length - 1)}} 
+                            </td>
+                            <td>  
+                                {% if request_dict['connected-tutor'] %}
+                                    <a href="javascript:void(0)" class="login-tutor-request"> {{request_dict['connected-tutor'].name.split(" ")[0]}}</a> (id: <span> {{request_dict['connected-tutor'].id}}</span>)
+                                {% else %}
+                                    None
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if request_dict['message-length'] > 0 %}
+                                Yes
+                                {% else %}
+                                No
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if request_dict['payment'] %}
+                                Yes
+                                {% else %}
+                                No
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if request_dict['pending-ratings'] >= 0 or request_dict['pending-ratings'] < 3%}
+                                    {% if request_dict['pending-ratings'] == 2 %}
+                                    Neither
+                                    {% elif request_dict['pending-ratings'] == 1 %}
+                                        {% if request_dict['student'].pending_ratings %}
+                                            only {{request_dict['connected-tutor'].name.split(" ")[0]}} has
+                                        {% else %}
+                                        only {{request_dict['student'].name.split(" ")[0]}} has
+                                        {% endif %}
+                                    {% else %}
+                                    Both
+                                    {% endif %}
+                                {% endif%}
+                            </td>
+                            <td>
+                                {% if request_dict['payment'] %}
+                                    ${{request_dict['payment']}}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+  <div style="text-align:center;color:black" class="row">
+    <u><a href="/logout-admin/">Log out of admin</a></u>
+  </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+    <script src="/static/js/admin.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/typeahead.js"></script>
+{% endblock %}

@@ -26,13 +26,13 @@
                             <span class="caret"></span>
                           </button>
                           <ul id='tutor-app-dropdown' class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Freshman</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sophomore</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Junior</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Senior</a></li>
+                            <li role="presentation"><a role="menuitem" id='freshman-dropdown' tabindex="-1" href="#">Freshman</a></li>
+                            <li role="presentation"><a role="menuitem" id='sophomore-dropdown'tabindex="-1" href="#">Sophomore</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" id='junior-dropdown'href="#">Junior</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" id='senior-dropdown' href="#">Senior</a></li>
                             <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Grad Student</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ph.D Student</a></li>
+                            <li role="presentation"><a id='grad-dropdown'role="menuitem" tabindex="-1" href="#">Grad Student</a></li>
+                            <li role="presentation"><a role="menuitem" id='phd-dropdown' tabindex="-1" href="#">Ph.D Student</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Alumni</a></li>
                           </ul>
                         </div>
@@ -51,8 +51,11 @@
                                 <span class='glyphicon glyphicon-plus green-text' id='add-course-btn-span'></span>
                             </a>
                         </div>
-                        <div class='row-fluid align-left font-12 light-grey-text margin-bottom-20' style='margin-top:-10px'>
-                            Need help selecting courses? Click <a href='http://tinyurl.com/uguru-pick-course' target='_blank' class='blue-text'> here </a>
+                        <div id='only-undergrad-alert' class='row-fluid align-left font-12 red-text' style='margin-top:-10px; display:none'>
+                            Please only add courses you have taken.
+                        </div>
+                        <div class='row-fluid align-left font-12 light-grey-text margin-bottom-20'>
+                            Need help selecting courses? Click <a href='http://tinyurl.com/uguru-pick-course' target='_blank' class='blue-text'> here.</a>
                         </div>
                         <div class='courses-add-container row-fluid'>
                         </div>

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <link href="/static/css/admin.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<ul style="margin:auto;float:center" class="nav nav-tabs">
+  <li class='active'><a href="/new-admin/" data-toggle="tab">Today</a></li>
+  <li><a href="/admin/tutors/">Tutors</a></li>
+  <li><a href="/new-admin/students/">Students</a></li>
+  <li><a href="/admin/courses/">Courses</a></li>
+  <li><a href="/admin/requests/" >Requests</a></li>
+  <li><a href="/admin/conversations/" >Conversations</a></li>
+  <li><a href="/admin/payments/" data-toggle="tab"> Payments</a></li>
+  <li><a href="/admin/ratings/" data-toggle="tab"> Ratings</a></li>
+  <li><a href="/admin/bank-transfers/" data-toggle="tab"> Bank Transfers</a></li>
+  <li><a href="/admin/unverified_tutors/" data-toggle="tab"> Unverified Tutors</a></li>
+  <li><a href="/admin/unfinished-accounts/" data-toggle="tab"> Unfinished Accounts</a></li>
+  <li><a href="/admin/texts/" data-toggle="tab"> Texts </a></li>
+  <li><a href="/admin/parents/" data-toggle="tab"> Parents </a></li>
+</ul>
+
+
+<div class="tab-content">
+
+    <div class="tab-pane active" id="today">
+        <div class="container">
+            <div style="margin:20px; text-align:center" class="row">
+                # of Total Signups: {{today_tutor_signups|length + today_student_signups|length}}
+            </div>
+            <div style="margin:20px; text-align:center" class="row">
+                # of Students: {{today_student_signups|length}}
+            </div>
+            <div style="margin:20px; text-align:center" class="row">
+                # of Tutors: {{today_tutor_signups|length}}
+            </div>
+            <div style="margin:20px; text-align:center" class="row">
+                # of Requests: {{today_requests|length}}
+            </div>
+        </div>
+      </div>
+
+  <div style="text-align:center;color:black" class="row">
+    <u><a href="/logout-admin/">Log out of admin</a></u>
+  </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+    <script src="/static/js/admin.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/typeahead.js"></script>
+{% endblock %}
