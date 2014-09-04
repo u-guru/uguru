@@ -300,10 +300,10 @@ def approve_old_tutors():
     We have processed your application, and you will start receiving requests for classes that you've added to your profile as being available to tutor. Be sure to update your profile if you haven't done so in a while!
     <br>
     <br>
-    Just like everyone else, your first session will be free to the student. As soon as you have an average review of 4.5 or above, you can start charging. If you get a 5 star review on your first one, you will be good to go!
+    Just like everyone else, your first session will be free to the student. As soon as you have an average rating of 4.5 or above, you can start charging. If you get a 5 star review on your first one, you will be good to go!
     <br>
     <br>
-    We are dedicated to our users! Anytime you experience confusion or difficulties, email samir@uguru.me or text 813-500-9853. Your feedback is extremely important and we know it will make uGuru better!
+    Anytime you experience confusion or difficulties, email samir@uguru.me or text 813-500-9853. Your feedback is extremely important and we know it will make uGuru better!
     <br>
     <br>
     Cheers,
@@ -316,6 +316,8 @@ def approve_old_tutors():
 if arg == 'approve_old_tutors':
     for user in User.query.all():
         if user.qualifications and not user.approved_by_admin:
+            # user = User.query.get(4)
+            print user.id, user.name, user.email, 'email has sent'
             user.approved_by_admin = True
             user.verified_tutor = True
             user.tutor_introduction = user.qualifications
@@ -327,9 +329,9 @@ if arg == 'approve_old_tutors':
             user.notifications.append(welcome_guru_notification)
             db_session.add(welcome_guru_notification)
             notification = getting_started_tutor(user)
-            from emails import welcome_uguru_tutor
+            from app.emails import welcome_uguru_tutor
             welcome_uguru_tutor(user)
-            u.notifications.append(notification)
+            user.notifications.append(notification)
             db_session.add(notification)
 
             db_session.commit()
@@ -347,7 +349,7 @@ if arg == 'approve_old_tutors':
 
             message = {
                 'html':html,
-                'subject': 'Important Changes to uGuru for Gurus',
+                'subject': 'Congrats *|FNAME|*, You are now a Guru!',
                 'from_email': 'samir@uguru.me',
                 'from_name': 'Samir from uGuru',
                 'to': to_emails,
