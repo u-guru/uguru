@@ -229,18 +229,25 @@ function calendar_edit_mode_request() {
     });
 
     $('.save-calendar-btn').click(function() {
-        get_calendar_selection();
-        $(this).parent().parent().parent().parent().hide();
-        $('#saved-tag').show();
-        $('#saved-tag').delay(750).fadeOut('slow');
-        calendar_was_saved = true;
-        if ($('td.time-slot.td-selected').length >= 1) {
-            $('#select-calendar-slot-alert').hide();
-            $('#request-avail-remove').hide();
-            $('#request-avail-ok').show();
-        } else {
-            $('#request-avail-remove').show();
-            $('#request-avail-ok').hide();
+        if (($('#request-main-slider').slider('value') * 2) > $('td.time-slot.td-selected').length) {
+            $('.calendar-alert').text('Please select at least ' + $('#request-main-slider').slider('value') + ' hours.');
+            $('.calendar-alert').show();
+        }
+        else {
+            $('.calendar-alert').hide();
+            get_calendar_selection();
+            $(this).parent().parent().parent().parent().hide();
+            $('#saved-tag').show();
+            $('#saved-tag').delay(750).fadeOut('slow');
+            calendar_was_saved = true;
+            if ($('td.time-slot.td-selected').length >= 1) {
+                $('#select-calendar-slot-alert').hide();
+                $('#request-avail-remove').hide();
+                $('#request-avail-ok').show();
+            } else {
+                $('#request-avail-remove').show();
+                $('#request-avail-ok').hide();
+            }
         }
     });
 }

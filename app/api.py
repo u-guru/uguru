@@ -615,6 +615,7 @@ def api(arg, _id):
                     orig_p = Payment.query.get(p.confirmed_payment_id)
 
                 if p.student_paid_amount > 0:
+                    stripe_charge = True
                     
                     stripe_amount_cents = int(p.student_paid_amount * 100)
                     student = User.query.get(p.student_id)                                   
@@ -635,6 +636,7 @@ def api(arg, _id):
                         return errors([error_msg])
                 else:
                     user.credit = user.credit + abs(p.student_paid_amount)
+                    stripe_charge = False
                     # stripe_amount_refund_cents = int(abs(p.student_paid_amount) * 100)
                     # charge = stripe.Charge.retrieve(orig_p.stripe_charge_id)
                     # p.stripe_charge_id = charge['id']
@@ -661,7 +663,14 @@ def api(arg, _id):
                 from app.static.data.short_variations import short_variations_dict
                 skill_name = short_variations_dict[Skill.query.get(p.skill_id).name]
                 
-                student_notification = student_payment_approval(user, tutor, p, total_amount, charge['id'], skill_name, False)
+                if stripe_charge:
+                    charge = charge['id']
+                else:
+                    charge = 'as9d0sudas' + p.id
+
+
+
+                student_notification = student_payment_approval(user, tutor, p, total_amount, charge, skill_name, False)
                 user.notifications.append(student_notification)
                 db_session.add(student_notification)
 

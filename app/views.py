@@ -1138,7 +1138,7 @@ def update_requests():
             student.notifications.append(student_notification)
             db_session.add(student_notification)
             
-            if len(r.committed_tutors) == (MAX_REQUEST_TUTOR_LIMIT + 1):
+            if len(r.committed_tutors) >= (MAX_REQUEST_TUTOR_LIMIT + 1):
                 for n in student.notifications:
                         if n.request_id == r.id and n.custom_tag == 'student-incoming-offer':
                             n.status = 'tutor_cap_reached'
