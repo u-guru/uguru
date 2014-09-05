@@ -1623,6 +1623,12 @@ $(document).ready(function(){
             url: '/update-profile/' ,
             data: JSON.stringify(data),
             dataType: "json",
+            success: function(result) {
+              if (result.errors) {
+                $('#account-settings-alert').text(result.errors);
+                $('#account-settings-alert').show();
+              }
+            }
       });
     };
 

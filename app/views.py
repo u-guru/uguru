@@ -295,6 +295,10 @@ def update_profile():
                 user.name = ajax_json.get('name').title()
             if 'email' in ajax_json:
                 #check here to see if another email is already there
+                other_user = User.query.filter_by(email=ajax_json.get('email')).first()
+                if other_user and user != other_user:
+                    from api import errors
+                    return errors(['A duplicate account already exists with email ' + ajax_json.get('email') + '. Logout and try "Forgot your Password"'])
                 user.email = ajax_json.get('email').lower()
             if 'high' in ajax_json:
                 user.high_tutor = ajax_json.get('high')
@@ -306,6 +310,10 @@ def update_profile():
                 user.discoverability = ajax_json.get('discover')
             if 'phone' in ajax_json:
                 if ajax_json.get('phone'):
+                    other_user = User.query.filter_by(phone_number=ajax_json.get('phone')).first()
+                    if other_user and user != other_user:
+                        from api import errors
+                        return errors(['A duplicate account already exists with phone ' + ajax_json.get('phone') + '. Logout and try "Forgot your Password"'])
                     user.phone_number = ajax_json.get('phone')
             try:
                 db_session.commit()

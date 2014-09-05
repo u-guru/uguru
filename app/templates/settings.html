@@ -41,10 +41,10 @@
                   </div>
                   
                   <label for='request-class'>Your Name</label>
-                  <input type='text' id='settings-name' class='form-control standard-input' {% if user.phone_number %} value='{{user.name}}' {% endif %} >
+                  <input type='text' id='settings-name' class='form-control standard-input' {% if user.name %} value='{{user.name}}' {% endif %} >
 
                   <label for='request-class'>Your Email</label>
-                  <input type='text' id='settings-email' class='form-control standard-input' {% if user.phone_number %} value='{{user.email}}' {% endif %} >
+                  <input type='text' id='settings-email' class='form-control standard-input' {% if user.email %} value='{{user.email}}' {% endif %} >
 
                   <label for='request-class'>Your Phone Number </label>
                   <input type='text' id='settings-phone' class='form-control standard-input' {% if user.phone_number %} value='{{user.phone_number}}' {% endif %} >
