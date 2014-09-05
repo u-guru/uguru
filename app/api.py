@@ -526,14 +526,16 @@ def api(arg, _id):
         if user:
             p = Payment.query.get(int(request.json.get('payment_id')))
             total_amount = p.time_amount * p.tutor_rate
-            print user.id, p.tutor_id, p.tutor_confirmed
+            
 
             #tutor is confirming
             if p.tutor_confirmed == False and user.id == p.tutor_id:
+                print "Tutor confirming is beginning"
                 p.tutor_confirmed = True
                 if p.time_amount != float(request.json.get('time_amount')):
+                    print "Time amount is different"
                     time_difference = float(request.json.get('time_amount')) - p.time_amount 
-                    new_payment = Payment(Request.query.get(p.request_id))
+                    new_payment = Payment(p.request_id)
                     new_payment.student_paid_amount = time_difference * p.tutor_rate
                     total_amount = total_amount + new_payment.student_paid_amount
                     new_payment.tutor_rate = p.tutor_rate
@@ -541,11 +543,11 @@ def api(arg, _id):
                     new_payment.time_created = datetime.now()
                     new_payment.time_amount = request.json.get('time_amount')
                     p.confirmed_time_amount = request.json.get('time_amount')
+                    print "New confirmed time amount is " + str(p.confirmed_time_amount)
                     
 
                     tutor = user
                     student = User.query.get(p.student_id)
-                    print student
                     if time_difference > 0:
                         new_payment.student_description = 'Extra charge from your session with ' + tutor.name.split(" ")[0].title()
                         new_payment.tutor_description = 'Extra earnings from your session with ' + student.name.split(" ")[0].title()
