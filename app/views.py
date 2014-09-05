@@ -1261,7 +1261,8 @@ def update_requests():
             request_id = student_notification.request_id
             _request = Request.query.get(request_id)
             _request.connected_tutor_id = user.id
-            user.outgoing_requests.remove(_request)
+            if _request in user.outgoing_requests:
+                user.outgoing_requests.remove(_request)
             user.notifications.remove(student_notification)
 
             for n in user_notifications:
@@ -1984,7 +1985,7 @@ def success():
             mandrill_result, tutor_email_dict = student_needs_help(u, r.requested_tutors, skill_name, r)
             for sent_email_dict in mandrill_result:
                 if tutor_email_dict.get(send_email_dict['email']):
-                    tutor = tutor_email_dict[sent_email_dict['email']]
+                    tutor = tutor_email_dict[send_email_dict['email']]
                     email = Email(
                         tag='tutor-request', 
                         user_id=tutor.id, 

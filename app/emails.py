@@ -869,10 +869,8 @@ def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_
     msg['From'] = email_from
 
     card_last4 = user.customer_last4
-    from app.static.data.prices import prices_dict
-    prices_reversed_dict = {v:k for k, v in prices_dict.items()}
-    if not connection:
-        hourly_price = prices_reversed_dict[payment.tutor_rate]
+    
+    hourly_price = payment.tutor_rate
     hours = payment.time_amount
     date = payment.time_created.strftime("%B %d, %Y at %I:%M%p")
 
