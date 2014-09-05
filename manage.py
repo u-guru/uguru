@@ -63,14 +63,14 @@ def send_free_5_email():
     Hey *|FNAME|*,
     <br>
     <br>
-    You just received $5 in your <a href='http://uguru.me'> uGuru </a> account for signing up at Caltopia!
+    We've just added $5 to your <a href='http://uguru.me'> uGuru </a> account for signing up at Caltopia!
     <br>
     <br>
-    If you're ever struggling in a class at Cal, just <a href='http://uguru.me/login/'> log in </a> and get help from other
+    If you're ever struggling in a class at Cal, just <a href='http://uguru.me/login/'> log in </a> and get help from another
     student. At around $15/hr you can keep your wallet happy while preventing your GPA from suffering. Best of all, there are many new Gurus who will help you for FREE.
     <br>
     <br>
-    Also, if you are interested in earning side cash on your own schedule, <a href='http://uguru.me/guru/'> Signup </a> and become a Guru for classes that you are confident with.
+    Also, if you are looking for a part-time intership this fall, check out uGuru's <a href='uguru.me/apply'> Campus Ambassador Program</a>. It only takes 1 minute to apply, and can be a lot of fun!
     <br>
     <br>
     Start your semester strong, and don't let your GPA slide!
@@ -83,12 +83,10 @@ def send_free_5_email():
 
 if arg == 'send_free_5':
     for user in User.query.all():
-        # if user.id > 0 and user.id < 5:
         if user.id > 1219 and user.id < 1650:
             if user.credit == 0:
                 user.credit = 5
                 db_session.commit()
-
             user_name = user.name
             user_email = user.email
             mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
@@ -99,6 +97,8 @@ if arg == 'send_free_5':
                 'name': user_name,
                 'type': 'to'
             })
+
+            print user.id, user.name, user.email, user.credit, 'email has sent'
 
             message = {
                 'html':html,

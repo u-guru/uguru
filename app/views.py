@@ -294,6 +294,7 @@ def update_profile():
             if 'name' in ajax_json:
                 user.name = ajax_json.get('name').title()
             if 'email' in ajax_json:
+                #check here to see if another email is already there
                 user.email = ajax_json.get('email').lower()
             if 'high' in ajax_json:
                 user.high_tutor = ajax_json.get('high')

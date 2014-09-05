@@ -167,7 +167,7 @@
                 
             </div>
         </div>
-        {% if notif.custom !=  'student-accept-request' and notif.status != 'EXPIRED' %}
+        {% if notif.custom !=  'student-accept-request' and notif.status != 'EXPIRED' and request_dict[notif.request_id]['request'].connected_tutor_id != notif.request_tutor_id %}
         <div class='row-fluid font-20 margin-top-40 margin-bottom-20 center'>
             <!-- <a {% if not user.customer_id %} data-toggle='modal' href='#' data-target='#credit-modal' {% else %} class='student-request-accept-btn' href="javascript:void(0);" {% endif %} id="{{notif.a_id_name}}-next-link">
                 <span class='blue-btn' style='padding:8px 60px'> Choose This Guru </span>
