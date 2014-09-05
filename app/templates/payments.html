@@ -28,7 +28,7 @@
           </thead>
           <tbody>
             {% for payment in user.payments|sort(attribute='time_created')|reverse %}
-            {% if not payment.student_paid_amount %}
+            {% if payment.student_paid_amount %}
             <tr>
               <td>{{ payment.time_created.strftime('%h-%d-%Y') }}</td>
               <td>
