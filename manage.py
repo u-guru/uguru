@@ -102,7 +102,7 @@ if arg == 'send_free_5':
 
             message = {
                 'html':html,
-                'subject': '*|FNAME|*, Your $5 from uGuru is Here!',
+                'subject': '*|FNAME|*, Your $5 from uGuru is Here! + Internship Opportunity',
                 'from_email': 'samir@uguru.me',
                 'from_name': 'Samir from uGuru',
                 'to': to_emails,
