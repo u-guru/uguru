@@ -714,6 +714,15 @@ def api(arg, _id):
             stripe_amount_cents = int(total_amount * 100)
             student = User.query.get(r.student_id)
             tutor = user
+
+
+            previous_rating = Rating.query.filter_by(student_id=student.id, tutor_id=tutor.id).first()
+            if not previous_rating:
+                rating = Rating(r.id)
+                student.pending_ratings.append(rating)
+                tutor.pending_ratings.append(rating)
+                db_session.add(rating)
+
             print stripe_amount_cents
 
             payment = Payment(r.id)
@@ -1333,12 +1342,28 @@ def api(arg, _id):
             if r in student.outgoing_requests:
                 student.outgoing_requests.remove(r)
 
-            # for _tutor in r.committed_tutors:
-            #     if _tutor.id != tutor_id:
-            #         for n in sorted(_tutor.notifications, reverse=True):
-            #             if n.request_id == r.id:
-            #                 n.feed_message_subtitle = '<span style="color:#CD2626"><strong>Update:</strong> The student has already chose another tutor.</span>'
+            for _tutor in r.committed_tutors:
+                if _tutor.id != tutor_id and _tutor.id !=student.id:
+                    for n in sorted(_tutor.notifications, reverse=True):
+                        if n.request_id == r.id:
+                            n.status = 'Taken'
+                            n.feed_message_subtitle = 'Sorry, the student chose one of the other 2 Gurus.'
+
+            for _tutor in r.requested_tutors:
+                if _tutor not in r.committed_tutors:
+                    for n in _tutor.notifications:
+                        if n.request_id == r.id:
+                            n.status = 'LATE'
+                            n.feed_message_subtitle = 'Click here to learn why!'
+                            print _tutor.id, _tutor.name, "is too late! We have updated their profile accordingly"
                             
+
+
+            #delete notifications
+            for n in student.notifications:
+                if n.request_id and n.request_id == r.id and n.custom_tag == 'student-incoming-offer' and n.request_tutor_id != r.connected_tutor_id:
+                    student.notifications.remove(n)
+
 
             
             #Modify tutor notification
