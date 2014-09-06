@@ -1984,8 +1984,8 @@ def success():
             from emails import student_needs_help
             mandrill_result, tutor_email_dict = student_needs_help(u, r.requested_tutors, skill_name, r)
             for sent_email_dict in mandrill_result:
-                if tutor_email_dict.get(send_email_dict['email']):
-                    tutor = tutor_email_dict[send_email_dict['email']]
+                if tutor_email_dict.get(sent_email_dict['email']):
+                    tutor = tutor_email_dict[sent_email_dict['email']]
                     email = Email(
                         tag='tutor-request', 
                         user_id=tutor.id, 
