@@ -410,6 +410,34 @@ def new_admin_tutors():
             times_last_active=times_last_active)
     return redirect(url_for('index'))
 
+
+@app.route('/admin/ratings/')
+def new_admin_ratings():
+    if session.get('admin'):
+        ratings_dict = {}
+        for r in Rating.query.all():
+            skill = Skill.query.get(r.skill_id)
+            tutor = User.query.get(r.tutor_id)
+            student = User.query.get(r.student_id)
+            ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
+                'student-name':student.name.split(" ")[0]}
+        return render_template('admin-ratings.html', ratings=Rating.query.all(), ratings_dict=ratings_dict)
+    return redirect(url_for('index'))
+
+
+@app.route('/admin/payments/')
+def new_admin_payments():
+    if session.get('admin'):
+        payment_dict = {}
+        for p in Payment.query.all():
+            skill = Skill.query.get(p.skill_id)
+            tutor = User.query.get(p.tutor_id)
+            student = User.query.get(p.student_id)
+            payment_dict[p] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
+                'student-name':student.name.split(" ")[0]}
+        return render_template('admin-payments.html', payments=Payment.query.all(), payment_dict = payment_dict, env=get_environment())
+    return redirect(url_for('index'))
+
 @app.route('/admin/courses/')
 def new_admin_courses():
     if session.get('admin'):

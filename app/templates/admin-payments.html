@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <link href="/static/css/admin.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<ul style="margin:auto;float:center" class="nav nav-tabs">
+  <li><a href="/new-admin/">Today</a></li>
+  <li><a href="/admin/tutors/">Tutors</a></li>
+  <li><a href="/admin/students/">Students</a></li>
+  <li><a href="/admin/courses/">Courses</a></li>
+  <li><a href="/admin/requests/" >Requests</a></li>
+  <li><a href="/admin/conversations/" >Conversations</a></li>
+  <li class='active'><a href="/admin/payments/"> Payments</a></li>
+  <li><a href="/admin/ratings/"> Ratings</a></li>
+  <li><a href="/admin/bank-transfers/" data-toggle="tab"> Bank Transfers</a></li>
+  <li><a href="/admin/texts/" data-toggle="tab"> Texts </a></li>
+  <li><a href="/admin/parents/" data-toggle="tab"> Parents </a></li>
+</ul>
+
+
+<div class="container">
+    <div style="margin:20px; text-align:center" class="row">
+    </div>
+    <div class="row-fluid">
+        <table class="table table-striped">
+            <tr class="info"> 
+                <td> ID </td>
+                <td> Date </td>
+                <td> Student </td>
+                <td> Tutor </td>
+                <td> Time Amount </td>
+                <td> Total Amount </td>
+                <td> Tutor Description </td>
+                <td> Student Description </td>
+            </tr>
+            
+              {% for payment in (payments|sort(attribute='time_created')|reverse) %}
+                {% if  env != 'PRODUCTION' or (env == 'PRODUCTION' and payment.id >= 130) %}
+                <tr> 
+                    <td> {{payment.id}} </td>
+                    <td> {{payment.time_created.strftime('%h-%d-%Y')}} </td>
+                    <td> 
+                      {% if payment.student_id %}
+                        {{payment_dict[payment]['student-name']}}
+                      {% endif %}
+                    </td>
+                    <td> 
+                      {% if payment.tutor_id %}
+                        {{payment_dict[payment]['tutor-name']}}
+                      {% endif %}
+                    </td>
+                    <td> 
+                      {% if payment.time_amount %}
+                        {{payment.time_amount}} hr
+                      {% endif %}
+                    </td>
+                    <td> 
+                      {% if payment.student_paid_amount %}
+                        ${{payment.student_paid_amount }}
+                      {% endif %}
+                    </td>
+                    <td class='font-10'>   
+                      {% if payment.tutor_description %}
+                        {{payment.tutor_description}}
+                      {% endif %}
+                    </td>
+                    <td class='font-10'>
+                      {% if payment.student_description %}
+                        {{payment.student_description}}
+                      {% endif %}
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+  <div style="text-align:center;color:black" class="row">
+    <u><a href="/logout-admin/">Log out of admin</a></u>
+  </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+    <script src="/static/js/admin.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/typeahead.js"></script>
+{% endblock %}
