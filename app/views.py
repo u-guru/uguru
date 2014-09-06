@@ -435,10 +435,12 @@ def new_admin_payments():
 
             if p.tutor_id: 
                 tutor = User.query.get(p.tutor_id)
-                tutor_name = tutor.name.split(" ")[0]
+                if tutor.name:
+                    tutor_name = tutor.name.split(" ")[0]
             if p.student_id: 
                 student = User.query.get(p.student_id)
-                student_name = student.name.split(" ")[0]
+                if student.name: 
+                    student_name = student.name.split(" ")[0]
             payment_dict[p] = {'tutor-name':tutor_name, \
                 'student-name':student_name}
         return render_template('admin-payments.html', payments=Payment.query.all(), payment_dict = payment_dict, env=get_environment())
