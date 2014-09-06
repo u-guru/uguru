@@ -431,10 +431,16 @@ def new_admin_payments():
         payment_dict = {}
         for p in Payment.query.all():
             skill = Skill.query.get(p.skill_id)
-            tutor = User.query.get(p.tutor_id)
-            student = User.query.get(p.student_id)
-            payment_dict[p] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
-                'student-name':student.name.split(" ")[0]}
+            tutor_name = None
+            student_name = None
+            if p.tutor_id: 
+                tutor = User.query.get(p.tutor_id)
+                tutor_name = tutor.name.split(" ")[0]
+            if p.student_id: 
+                student = User.query.get(p.student_id)
+                student_name = student.name.split(" ")[0]
+            payment_dict[p] = {'skill':skill.name, 'tutor-name':tutor_name, \
+                'student-name':student_name}
         return render_template('admin-payments.html', payments=Payment.query.all(), payment_dict = payment_dict, env=get_environment())
     return redirect(url_for('index'))
 
