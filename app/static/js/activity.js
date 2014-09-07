@@ -507,10 +507,21 @@ $(document).ready(function() {
             url: '/api/bill-student',
             data: JSON.stringify(data),
             dataType: "json",
-            success: function(result) {         
-                window.location.replace('/activity/')
+            success: function(result) {     
+                if (result.errors) {
+                  $('#tutor-billing-alert').text(result.errors);
+                  $('#tutor-billing-alert').show();
+                  return;
+                } else {
+                  window.location.replace('/activity/')
+                }
             }
         }); 
+    });
+
+    $('#tutor-billing-back-btn').click(function() {
+      $(this).parent().parent().parent().parent().parent().hide();
+      $('#activity').show();
     });
 
     $('#payment-hours-dropdown').on('click', '.dropdown-menu li a', function() {

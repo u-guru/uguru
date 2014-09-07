@@ -691,6 +691,9 @@ def api(arg, _id):
         pending_ratings_dict = {}
         if user:
             print request.json
+            from app.views import calc_avg_rating
+            if calc_avg_rating(user)[0] < 4.5:
+                return errors(['Sorry! You cannot bill a student with less than a 4.5 star rating.'])
             conversation_id = request.json.get('submit-payment')
             total_time = request.json.get('total-time')
             hourly_price = request.json.get('price')
