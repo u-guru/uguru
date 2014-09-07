@@ -1665,7 +1665,7 @@ def reminder_before_session(person_a, person_b, location, ending):
 
 def error(message):
 
-    EMAIL_TO = ["makhani.samir@gmail.com"]
+    EMAIL_TO = ["makhani.samir@gmail.com", "bkamita@gmail.com"]
     print message
 
     if os.environ.get('TESTING'):

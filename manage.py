@@ -125,6 +125,72 @@ if arg == 'send_free_5':
 
             result = mandrill_client.messages.send(message=message)
 
+def send_growth_dev_html():
+    return """
+    Hey *|FNAME|*!
+    <br>
+    <br>
+    We wanted to let you know that we are currently looking for student applicants for our Campus Ambassador Internship. 
+    <br>
+    <br>
+    As a uGuru intern, you can conveniently work on campus while gaining valuable experience with a fast-growing <a href='http://500.co'>500 Startups</a> funded company. Commitments are flexible around your schedule, and are estimated to be 5+ hours per week. This internship will provide valuable experience to enhance your resume for future employers. 
+    <br>
+    <br>
+    If you haven't already, take two minutes to check out the job description and apply <a href='http://uguru.me/apply/'>here</a>.
+    <br>
+    <br>
+    Due to an unexpectedly high amount of interest, we've decided to increase the number of positions available and extend our deadline to <b>TONIGHT at 11:59pm</b>. 
+    <br>
+    <br>
+    Looking forward to work with you! 
+    <br>
+    <br>
+    Cheers,
+    <br>
+    Samir from uGuru
+    """
+
+
+if arg == 'growth-dev-internship':
+    for user in User.query.all():
+        if user.id > 1219 and user.id < 1650:
+            user_name = user.name
+            user_email = user.email
+            mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+            html = send_growth_dev_html()
+            to_emails = []
+            to_emails.append({
+                'email':user_email,
+                'name': user_name,
+                'type': 'to'
+            })
+
+            message = {
+                'html':html,
+                'subject': '[Apply Tonight] uGuru Internship Opportunity',
+                'from_email': 'samir@uguru.me',
+                'from_name': 'Samir from uGuru',
+                'to': to_emails,
+                'headers': {'Reply-To': "samir@uguru.me"},
+                'important': True,
+                'merge_vars': [{
+                'rcpt':user.email,
+                'vars': [
+                        {
+                            'name':"fname",
+                            'content': user.name.split(' ')[0].title()
+                        }
+                    ]
+                }],
+                'track_opens': True,
+                'track_clicks': True,
+                'preserve_recipients':False,
+                'tags':['growth-dev-internship']
+            }
+
+            result = mandrill_client.messages.send(message=message)
+            print user.id, user.name, user.email, 'email has sent'
+
 def email_old_students():
     return """
     Hey *|FNAME|*,
