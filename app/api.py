@@ -618,31 +618,50 @@ def api(arg, _id):
                     stripe_charge = True
                     
                     stripe_amount_cents = int(p.student_paid_amount * 100)
-                    student = User.query.get(p.student_id)                                   
-                    try: 
-                        charge = stripe.Charge.create(
-                            amount = stripe_amount_cents,
-                            currency="usd",
-                            customer=student.customer_id,
-                            description="charge for receiving tutoring"
-                        )
-                        p.stripe_charge_id = charge['id']
-                        print p.stripe_charge_id
-                    except stripe.error.InvalidRequestError, e:
-                        if p.student_id == user.id:
-                            error_msg = "Sorry! The your card has been declined. Please update your payment info in your settings."
-                        else:
-                            error_msg = "Sorry! The student's card has been declined. Please kindly ask them to update their information" 
-                        return errors([error_msg])
+                    student = User.query.get(p.student_id)
+                    
+                    if student.credit >= p.student_paid_amount:
+                        student.credit = student.credit - p.student_paid_amount
+                        p.student_description = 'Your credits used for this session'
+                    elif student.credit > 0:
+                        difference = p.student_paid_amount - student.credit
+                        p.student_description = 'You used $' + str(student.credit) +' in credit and were billed $' + str(difference) + ' to your card.'
+                        stripe_amount_cents = int(difference * 100)
+                        student.credit = 0
+                        try: 
+                            charge = stripe.Charge.create(
+                                amount = stripe_amount_cents,
+                                currency="usd",
+                                customer=student.customer_id,
+                                description="charge for receiving tutoring"
+                            )
+                            p.stripe_charge_id = charge['id']
+                            print p.stripe_charge_id
+                        except stripe.error.InvalidRequestError, e:
+                            if p.student_id == user.id:
+                                error_msg = "Sorry! The your card has been declined. Please update your payment info in your settings."
+                            else:
+                                error_msg = "Sorry! The student's card has been declined. Please kindly ask them to update their information" 
+                            return errors([error_msg])
+                    else:
+                        try: 
+                            charge = stripe.Charge.create(
+                                amount = stripe_amount_cents,
+                                currency="usd",
+                                customer=student.customer_id,
+                                description="charge for receiving tutoring"
+                            )
+                            p.stripe_charge_id = charge['id']
+                            print p.stripe_charge_id
+                        except stripe.error.InvalidRequestError, e:
+                            if p.student_id == user.id:
+                                error_msg = "Sorry! The your card has been declined. Please update your payment info in your settings."
+                            else:
+                                error_msg = "Sorry! The student's card has been declined. Please kindly ask them to update their information" 
+                            return errors([error_msg])
                 else:
                     user.credit = user.credit + abs(p.student_paid_amount)
                     stripe_charge = False
-                    # stripe_amount_refund_cents = int(abs(p.student_paid_amount) * 100)
-                    # charge = stripe.Charge.retrieve(orig_p.stripe_charge_id)
-                    # p.stripe_charge_id = charge['id']
-                    # re = charge.refund(
-                    #     amount=stripe_amount_refund_cents
-                    #     )
 
                 
 
@@ -706,7 +725,8 @@ def api(arg, _id):
                     student_id = _request.student_id
                     student = User.query.get(student_id)
 
-
+            if not r:
+                return errors(['Sorry! Something went wrong, please use the support chat below and we can help investigate the issue further.'])
             request_id = r.id
             
             r = Request.query.get(request_id)
@@ -725,8 +745,6 @@ def api(arg, _id):
                 student.pending_ratings.append(rating)
                 tutor.pending_ratings.append(rating)
                 db_session.add(rating)
-
-            print stripe_amount_cents
 
             payment = Payment(r.id)
             payment.student_paid_amount = total_amount
@@ -1428,7 +1446,10 @@ def api(arg, _id):
 
             from views import tutor_confirm_payment
             # tutor_confirm_payment.apply_async(args=[p.id], countdown=100)
-            tutor_confirm_payment.apply_async(args=[p.id], countdown=total_seconds_delay)
+            if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
+                tutor_confirm_payment.apply_async(args=[p.id], countdown=10)
+            else:
+                tutor_confirm_payment.apply_async(args=[p.id], countdown=total_seconds_delay)
 
             response = {'user': user.__dict__}
             return json.dumps(response, default=json_handler, indent=4)
