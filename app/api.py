@@ -572,9 +572,9 @@ def api(arg, _id):
                     from app.static.data.short_variations import short_variations_dict
                     skill_name = short_variations_dict[Skill.query.get(p.skill_id).name]
 
-                    student_notification = student_payment_approval(user, student, p, total_amount, p.stripe_charge_id, skill_name, False)
-                    user.notifications.append(student_notification)
-                    db_session.add(student_notification)
+                    # student_notification = student_payment_approval(student, user , p, total_amount, p.stripe_charge_id, skill_name, False)
+                    # user.notifications.append(student_notification)
+                    # db_session.add(student_notification)
 
                 rating = Rating(p.request_id)
                 user.pending_ratings.append(rating)
