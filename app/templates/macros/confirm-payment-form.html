@@ -20,12 +20,13 @@
                         <img style='border-radius:16px' height='100' src = '{{payment_dict["tutor"].profile_url}}'>
                         {% endif %}
                     </div>
-                    <div class='row font-16 margin-bottom-10'>
+                    <div class='row font-16 margin-bottom-10 center'>
                         <span> Scheduled Session Length: </span>
-                        <span class='green-text center'>
+                        <span class='green-text'>
                             {{payment_dict['payment'].time_amount}}hrs
                         </span> 
                         {% if payment_dict['payment'].student_id != user.id %}
+                        &nbsp;&nbsp;
                         <a href='javascript:void(0);' id='edit-confirm-payment-link' class='blue-text float-right'>
                             <span class='glyphicon glyphicon-pencil'> </span>
                         </a>
