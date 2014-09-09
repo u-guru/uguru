@@ -1241,6 +1241,7 @@ def api(arg, _id):
                 print "There was a payment plan selected, it was number " +str(request.json.get('payment_plan'))
                 process_payment_plan(request.json.get('payment_plan'), user)
 
+
             student = user
             from views import print_user_details
             print "student", print_user_details(student)
@@ -1270,7 +1271,10 @@ def api(arg, _id):
             r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
             r.time_connected = datetime.now()
 
-            #Texting does not work right now!
+            for n in user_notifications[::-1]:
+                if n.request_id == r.id and n.custom_tag == 'student-cap-reached':
+                    user.notifications.remove(n)
+                    print "Student-cap-reached notification removed for request id " + str(r.id)
 
             from views import find_earliest_meeting_time, convert_mutual_times_in_seconds, send_twilio_message_delayed
             mutual_times_arr = find_earliest_meeting_time(r)
@@ -1421,8 +1425,18 @@ def api(arg, _id):
             tutor.msg_notif += 1
             student.msg_notif += 1
 
+            #Create 'confirm that you've met' notifications
+            from notifications import confirm_meeting_tutor, confirm_meeting_student
+            confirm_meeting_tutor_notification = confirm_meeting_tutor(student, tutor, r)
+            confirm_meeting_student_notification = confirm_meeting_student(student, tutor, r)
+            tutor.notifications.append(confirm_meeting_tutor_notification)
+            student.notifications.append(confirm_meeting_student_notification)
+            db_session.add(confirm_meeting_student_notification)
+            db_session.add(confirm_meeting_tutor_notification)
+
             #let other committed tutors now that they have been rejected
             # from emails import student_chose_another_tutor
+
             for _tutor in r.committed_tutors:
                 if r.connected_tutor_id != _tutor.id and r.connected_tutor_id != user.id and _tutor.id != student.id:
                     for n in _tutor.notifications:
@@ -1447,12 +1461,13 @@ def api(arg, _id):
 
             print "Student Accept Request has been successfully made"
 
-            from views import tutor_confirm_payment
+            # We are not focusing on them confirming payments
+            # from views import tutor_confirm_payment
             # tutor_confirm_payment.apply_async(args=[p.id], countdown=100)
-            if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
-                tutor_confirm_payment.apply_async(args=[p.id], countdown=10)
-            else:
-                tutor_confirm_payment.apply_async(args=[p.id], countdown=total_seconds_delay)
+            # if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
+            #     tutor_confirm_payment.apply_async(args=[p.id], countdown=10)
+            # else:
+            #     tutor_confirm_payment.apply_async(args=[p.id], countdown=total_seconds_delay)
 
             response = {'user': user.__dict__}
             return json.dumps(response, default=json_handler, indent=4)

@@ -75,6 +75,31 @@ def student_cap_reached_notif(user, request, skill_name):
     user.feed_notif = user.feed_notif + 1
     return notification
 
+def confirm_meeting_tutor(user, tutor, request):
+    notification = Notification(request=request)
+    notification.feed_message = "Once you've met " + user.name.split(" ")[0].title() + ", please confirm that you've met."
+    notification.feed_message_subtitle = "Click here to confirm!"
+    notification.a_id_name = 'confirm-meeting' + str(request.id)
+    notification.image_url = user.profile_url
+    notification.custom_tag = 'confirm-meeting'
+    notification.request_id = request.id
+    notification.request_tutor_id = tutor.id
+    user.feed_notif = user.feed_notif + 1
+    return notification
+
+
+def confirm_meeting_student(user, tutor, request):
+    notification = Notification(request=request)
+    notification.feed_message = "Once you've met " + tutor.name.split(" ")[0].title() + ", please confirm that you've met."
+    notification.feed_message_subtitle = "Click here to confirm!"
+    notification.a_id_name = 'confirm-meeting' + str(request.id)
+    notification.image_url = tutor.profile_url
+    notification.custom_tag = 'confirm-meeting'
+    notification.request_id = request.id
+    notification.request_tutor_id = tutor.id
+    user.feed_notif = user.feed_notif + 1
+    return notification
+
 def student_request_receipt(user, request, skill_name):
     notification = Notification(request=request)
     notification.skill_name = skill_name

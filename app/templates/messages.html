@@ -121,8 +121,8 @@
 		  			<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3  col-md-6">
 						<div style="text-align:center;"class="alert alert-info">
 							{% if user.verified_tutor %}
-							For your next session with {{conversation.student.name.split(" ")[0]}}, just set up a time and meet up! <br>After the session, ask {{conversation.student.name.split(" ")[0]}} for the regenerated secret code to request payment.
-							{% else %}
+							For your next session with {{conversation.student.name.split(" ")[0]}}, just set up a time and meet up through our messaging! <br>After the session, just bill {{conversation.student.name.split(" ")[0]}} directly through our billing page.
+														{% else %}
 							For your next session with {{conversation.guru.name.split(" ")[0]}}, <b>you won’t need to submit a request again.</b> <br>Just set up a time, meet up, and have {{conversation.guru.name.split(" ")[0]}} bill you through uGuru.
 							{% endif %}
 						</div>

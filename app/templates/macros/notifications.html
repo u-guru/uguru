@@ -1,5 +1,6 @@
 {% from '/macros/request-details.html' import request_details %}
 {% from '/macros/tutor-details.html' import tutor_details %}
+{% from '/macros/confirm-meeting.html' import confirm_meeting%}
 {% macro notification(n, user, pretty_dates) -%}
 <div class="row container-fluid">
     <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
@@ -56,6 +57,8 @@
                                     {{request_details(user, notif, request_dict, time, index, tutor_avg_rating)}}
                                 {% elif notif.custom_tag == 'student-incoming-offer'%}
                                     {{tutor_details(user, notif, request_dict, time, index, tutor_dict, variations)}}
+                                {% elif notif.custom_tag == 'confirm-meeting' %}
+                                    {{confirm_meeting(user, notif, request_dict, tutor_dict)}}
                                 {% endif %}
                             </div>
                         </div>

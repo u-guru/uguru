@@ -967,7 +967,6 @@ def submit_payment():
             charge_id = charge["id"]
 
             amount_charged = float(stripe_amount_cents / 100.0)
-            
 
             db_session.add(payment)
 

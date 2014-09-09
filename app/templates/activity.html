@@ -813,6 +813,8 @@
 						</div>
 					</div>
 			</div>
+			{% elif n.custom_tag == 'confirm-meeting' %}
+			{{notification_details_template(user, n, request_dict, time, loop.index, tutor_dict)}}
 			{% elif n.custom_tag == 'student-request-help' %}
 				{{notification_details_template(user, n, request_dict, time, loop.index, tutor_avg_rating)}}
 				<!-- <div id="{{n.a_id_name}}-detailed" style="display:none;">
