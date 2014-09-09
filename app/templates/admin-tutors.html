@@ -31,6 +31,8 @@
                         <td> Id </td>
                         <td> Name </td>
                         <td> Email </td>
+                        <td> Skills </td>
+                        <td> Rating </td>
                         <td> Source </td>
                         <td> Time Signed Up </td>
                         <td> Last Active </td>
@@ -40,6 +42,14 @@
                                 <td>  {{user.id}} </td>
                                 <td> <a href="javascript:void(0)" class="login-user"> {{user.name}} </a> </td>
                                 <td> {{user.email}} </td>
+                                <td class='font-10'> 
+                                  {% for skill in user.skills %}{{skill.name}}, {% endfor %}
+                                </td>
+                                <td>
+                                    {% if avg_rating_tutor[user.id][0] %}
+                                      {{avg_rating_tutor[user.id][0]}}
+                                    {% endif %}
+                                </td>
                                 <td>
                                     {{user.referral_code}}
                                 </td>

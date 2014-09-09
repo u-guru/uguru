@@ -528,7 +528,7 @@ def api(arg, _id):
             total_amount = p.time_amount * p.tutor_rate
             
 
-            #tutor is confirming
+            #tutor is confirming --> this is only for first time requests
             if p.tutor_confirmed == False and user.id == p.tutor_id:
                 print "Tutor confirming is beginning"
                 p.tutor_confirmed = True
@@ -1283,7 +1283,7 @@ def api(arg, _id):
                 else:
                     send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=total_seconds_delay)
                 message = its_a_match_guru(student, skill_name)
-                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
+                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown =10)
 
 
 

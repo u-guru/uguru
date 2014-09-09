@@ -697,14 +697,15 @@ class Rating(Base):
     tutor_no_meet_description = Column(String(256))
     student_no_meet_description = Column(String(256))
 
-    def __init__(self, request_id):
-        r = Request.query.get(request_id)
+    def __init__(self, request_id=None):
+        if request_id:
+            r = Request.query.get(request_id)
 
-        self.request_id = request_id
-        self.student_id = r.student_id
-        self.tutor_id = r.connected_tutor_id
-        self.skill_id = r.skill_id
-        self.time_created = datetime.now()
+            self.request_id = request_id
+            self.student_id = r.student_id
+            self.tutor_id = r.connected_tutor_id
+            self.skill_id = r.skill_id
+            self.time_created = datetime.now()
 
     def __repr__(self):
         student_name = User.query.get(self.student_id).name

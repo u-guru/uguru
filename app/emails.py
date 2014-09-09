@@ -167,6 +167,34 @@ def welcome_uguru_tutor(user):
 
     result = mandrill_client.messages.send(message=message)
 
+
+def student_canceled_email(user, skill_name):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    user_first_name = user.name.split(" ")[0]
+    html = student_canceled_email_html()
+    to_emails = []
+    to_emails.append({
+        'email':user.email,
+        'name':user.name,
+        'type': 'to'
+    })
+
+    message = {
+        'html':html,
+        'subject': 'Your ' + skill_name + ' Request',
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from uGuru',
+        'to': to_emails,
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        # 'track_opens': True,
+        # 'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['canceled-email']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+
 def approved_by_admin_email(user):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
     
@@ -323,6 +351,30 @@ def approved_by_admin_email_html(user_first_name):
     <br>
     <br>
     Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
+
+def student_canceled_email_html():
+    return """
+    Hey *|FNAME|*
+    <br>
+    <br>
+    Our system notified us that you canceled your request recently - I just wanted to personally followup and make sure things were okay on your end.
+    <br>
+    <br>
+    Let us know if there's anything we could've done on our end to make the process smoother.
+    <br>
+    <br>
+    Best,
+    <br>
+    Samir
+    <br>
+    <br>
+    --
+    <br>
+    Samir Makhani<br>
     Co-Founder<br>
     Samir@uguru.me<br>
     (813) 500 - 9853
@@ -666,7 +718,7 @@ def generate_new_password(user, new_password):
 def generate_new_password_text(user_name, new_password):
     return "Hi """ + user_name + """, \n\n""" + \
     """Your new generated password is '""" + new_password + """'\n\n""" + \
-    """Login to http://uguru.me/log_in with this password and change to a password of your choice under Account Settings.\n\n""" +\
+    """Login to http://berkeley.uguru.me/log_in with this password and change to a password of your choice under Account Settings.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def generate_new_password_html(user_name, new_password):
@@ -677,7 +729,7 @@ def generate_new_password_html(user_name, new_password):
     Your new generated password is <b>'""" + new_password + """'</b>
     <br>
     <br>
-    <a href="http://uguru.me/log_in/"> Login</a> with this password on Uguru and change to a pasword of your choice under Account Settings. 
+    <a href="http://berkeley.uguru.me/log_in/"> Login</a> with this password on Uguru and change to a pasword of your choice under Account Settings. 
     <br>
     <br>
     Samir<br>
@@ -720,7 +772,7 @@ def student_needs_help_text(student_name, class_name, request):
     """# of Students: """ + str(request.num_students) + """\n\n""" +\
     """You can make: $""" + str(request.time_estimate * tutor_rate) + """ ($"""+ str(tutor_rate) +"""/hr)\n""" + \
     """(You can also propose a different price!)\n""" +\
-    """Login at http://uguru.me/log_in/ to see more details. You can either accept the request on the feed page, or offer a different price.\n\n""" +\
+    """Login at http://berkeley.uguru.me/log_in/ to see more details. You can either accept the request on the feed page, or offer a different price.\n\n""" +\
     """Tip: take 3 minutes to update your profile so students feel more comfortable picking you as their Guru.\n\n"""+\
     """Samir\nCo-founder"""
 
@@ -755,7 +807,7 @@ def tutor_wants_to_help(student, tutor, course_name):
 
 def tutor_wants_to_help_text(tutor_name, course_name):
     return tutor_name + """ accepted your request for """ + course_name + """. \n\n""" + \
-    """Login to http://uguru.me/log_in/ to see""" + tutor_name + """'s profile and accept the offer, or if you're not in a rush, wait for a couple more Gurus to accept and choose the one you like best\n\n""" +\
+    """Login to http://berkeley.uguru.me/log_in/ to see""" + tutor_name + """'s profile and accept the offer, or if you're not in a rush, wait for a couple more Gurus to accept and choose the one you like best\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def tutor_wants_to_help_html(tutor_name, course_name):
@@ -763,7 +815,7 @@ def tutor_wants_to_help_html(tutor_name, course_name):
     """ + tutor_name + """ accepted your request for """ + course_name + """.
     <br>
     <br>
-    <a href="http://uguru.me/log_in/">Log in</a> to see """ + tutor_name + """'s profile and accept the offer, or wait for more Gurus to accept!
+    <a href="http://berkeley.uguru.me/log_in/">Log in</a> to see """ + tutor_name + """'s profile and accept the offer, or wait for more Gurus to accept!
     <br>
     <br>
     Samir<br>
@@ -833,14 +885,14 @@ def send_message_alert(receiver, sender):
     print "sent message alert sent to " + receiver_name
 
 def send_message_alert_text(receiver_name, sender_name):
-    return """Don't keep """ + sender_name + " waiting! Login to Uguru.me and message " + sender_name + " now at http://uguru.me/messages/ ."
+    return """Don't keep """ + sender_name + " waiting! Login to Uguru.me and message " + sender_name + " now at http://berkeley.uguru.me/messages/ ."
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def send_message_alert_html(receiver_name, sender_name):
     return """Don't keep """ + sender_name + """ waiting!
     <br>
     <br>
-    Login to <a href="http://uguru.me/log_in"> Uguru </a> and reply to """ + sender_name + """ now through our <a href="http://uguru.me/messages">messages</a>.     
+    Login to <a href="http://berkeley.uguru.me/log_in"> Uguru </a> and reply to """ + sender_name + """ now through our <a href="http://berkeley.uguru.me/messages">messages</a>.     
     <br>
     <br>
     If you have any questions or concerns, please reply directly to this email, or give us a phonecall! 
@@ -1145,7 +1197,7 @@ def student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly
     If the above information is incorrect, please contact us by directly replying to this email.
     <br>
     <br>
-    How helpful was """ + tutor_name + """? <b> Rate and review """ + tutor_name + """ <a href="http://uguru.me/activity">here</a>.</b>
+    How helpful was """ + tutor_name + """? <b> Rate and review """ + tutor_name + """ <a href="http://berkeley.uguru.me/activity">here</a>.</b>
     <br>
     <br>
     Samir<br>
@@ -1206,7 +1258,7 @@ def tutor_is_matched(student, tutor, skill_name):
 
 def student_is_matched_text(tutor_name, request_code):
     return """You have been matched with """ + tutor_name + """! Please follow these next steps: \n\n:""" + \
-    """1. Message your Guru, and finalize meetup time & location (http://uguru.me/messages).\n\n""" +\
+    """1. Message your Guru, and finalize meetup time & location (http://berkeley.uguru.me/messages).\n\n""" +\
     """2. At end of the session, your Guru will draft the bill on his/her device. Don't forget to verify the amount before submitting!\n\n""" +\
     """3. Review your Guru by signing in after the tutor has billed you. \n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
@@ -1215,7 +1267,7 @@ def student_is_matched_html(tutor_name, request_code):
     return """You have been matched with """ + tutor_name + """! Please follow these next steps:
     <br>
     <br>
-    1. <a href="http://uguru.me/messages/"> Message</a> your Guru, and finalize meetup <b>time & location</b> .
+    1. <a href="http://berkeley.uguru.me/messages/"> Message</a> your Guru, and finalize meetup <b>time & location</b> .
     <br>
     <br>
     2. At end of the session, your Guru will draft the bill on his/her device. You will automatically be charged 
@@ -1237,8 +1289,8 @@ def student_is_matched_html(tutor_name, request_code):
 
 def tutor_is_matched_text(tutor_name):
     return """Congrats """ + tutor_name + """! Here are the next steps\n\n:""" + \
-    """1. Message your student, and finalize meetup time & location (http://uguru.me/messages).\n\n""" +\
-    """2. At the end of the session, log into http://uguru.me/log_in/ on your device and draft a bill by clicking 
+    """1. Message your student, and finalize meetup time & location (http://berkeley.uguru.me/messages).\n\n""" +\
+    """2. At the end of the session, log into http://berkeley.uguru.me/log_in/ on your device and draft a bill by clicking 
     "REQUEST PAYMENT" on your feed page.\n\n""" +\
     """3. Have your student verify the amount before submitting.  The amount will be added to your balance,
     and you can cash out at any time!\n\n""" +\
@@ -1249,10 +1301,10 @@ def tutor_is_matched_html(tutor_name):
     return """Congrats """ + tutor_name + """! Here are the next steps: 
     <br>
     <br>
-    1. <a href="http://uguru.me/messages/">Message</a> your student, and finalize meetup <b>time & location</b>.
+    1. <a href="http://berkeley.uguru.me/messages/">Message</a> your student, and finalize meetup <b>time & location</b>.
     <br>
     <br>
-    2. At the end of the session, <a href="http://uguru.me/log_in/"> log into Uguru </a> on your device and draft a bill by clicking 
+    2. At the end of the session, <a href="http://berkeley.uguru.me/log_in/"> log into Uguru </a> on your device and draft a bill by clicking 
     <b>"REQUEST PAYMENT"</b> on your feed page.
     <br>
     <br>
@@ -1439,7 +1491,7 @@ def welcome_uguru_student_text(user_name):
     return """Hi """ + user_name.split(' ')[0] + \
     """, \n\n""" + \
     """This is Samir, from Uguru. We hope to make instant help available and affordable by connecting you to Gurus who have done well in the same classes at Cal!  \n\n""" +\
-    """This finals season, you won't have to fight the battle alone. If you feel lost in the dungeons of Moffit, just request help here(at http://uguru.me/activity), and the Gurus will be ready to rescue you! \n\n""" + \
+    """This finals season, you won't have to fight the battle alone. If you feel lost in the dungeons of Moffit, just request help here(at http://berkeley.uguru.me/activity), and the Gurus will be ready to rescue you! \n\n""" + \
     """We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly! \n\n""" + \
     """Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears!  \n\n""" + \
     """Samir Makhani\nCo-Founder\nsamir@uguru.me\n(813) 500 9853"""
@@ -1451,7 +1503,7 @@ def general_notification_text(user_name, msg):
     """, \n\n""" + msg + \
     """\n\n""" + \
     """See more details by visiting the link below:\n""" + \
-    """http://uguru.me/activity\n\n""" + \
+    """http://berkeley.uguru.me/activity\n\n""" + \
     """Sincerely, \nThe uGuru.me Team"""
     
 
@@ -1568,7 +1620,7 @@ def welcome_uguru_tutor_html(user_name):
     Hi """ + user_name.split(' ')[0] + """,
     <br>
     <br>
-    This is Samir, from <a href="http://uguru.me">uGuru</a>. We strive to create a better tutoring experiencing by making peer-to-peer help <b>available</b> and <b>affordable</b> to students by connecting them with trusted Gurus like you! 
+    This is Samir, from <a href="http://berkeley.uguru.me">uGuru</a>. We strive to create a better tutoring experiencing by making peer-to-peer help <b>available</b> and <b>affordable</b> to students by connecting them with trusted Gurus like you! 
     <br>
     <br>
     We are excited to have you on board as a Cal Guru. Your role will be to save students who are lost in the dungeons of Moffit.
@@ -1593,7 +1645,7 @@ def welcome_uguru_tutor_text(user_name):
     return """Hi """ + user_name.split(' ')[0] + \
     """, \n\n""" + \
     """This is Samir from Uguru. We created Uguru to make peer-to-peer help available and affordable to students by connecting fellow Cal Bears. \n\n""" +\
-    """We will email you as soon as we approve your application to join the Guru force. In the mean time, you are able to request help(at http://uguru.me/activity) from the Gurus If you feel lost in the dungeons of Moffit. \n\n""" + \
+    """We will email you as soon as we approve your application to join the Guru force. In the mean time, you are able to request help(at http://berkeley.uguru.me/activity) from the Gurus If you feel lost in the dungeons of Moffit. \n\n""" + \
     """We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly! \n\n""" + \
     """Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears!  \n\n""" + \
     """Samir Makhani\nCo-Founder\nsamir@uguru.me\n(813) 500 9853"""
@@ -1603,10 +1655,10 @@ def welcome_uguru_student_html(user_name):
     Hi """ + user_name.split(' ')[0] + """,
     <br>
     <br>
-    This is Samir from <a href="http://uguru.me">Uguru</a>. We hope to make instant help <b>available</b> and <b>affordable</b> by connecting you to Gurus who have done well in the same classes at Cal.
+    This is Samir from <a href="http://berkeley.uguru.me">Uguru</a>. We hope to make instant help <b>available</b> and <b>affordable</b> by connecting you to Gurus who have done well in the same classes at Cal.
     <br>
     <br>
-    This finals season, you won't have to fight the battle alone. If you feel lost in the dungeons of Moffit, just request help <a href="http://uguru.me/activity">here</a>, and the Gurus will be ready to rescue you!
+    This finals season, you won't have to fight the battle alone. If you feel lost in the dungeons of Moffit, just request help <a href="http://berkeley.uguru.me/activity">here</a>, and the Gurus will be ready to rescue you!
     <br>
     <br>    
     We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly.
@@ -1643,18 +1695,19 @@ def request_received_msg(user, _request, skill):
 
 
     msg = user_name + " needs your help with " + skill.upper() + " You can make up to $" + \
-    str(amount) + ". Act fast and see if your schedules line up at http://uguru.me."
+    str(amount) + ". Act fast and see if your schedules line up at http://berkeley.uguru.me."
     return msg
 
 def guru_can_help(tutor, skill_name):
     tutor_name = tutor.name.split(" ")[0].title()
 
-    msg = tutor_name + " can help with " + skill_name.upper() + ". Check out " + tutor_name + "'s profile and confirm this session at http://uguru.me. Happy Studying!"
+    msg = tutor_name + " can help with " + skill_name.upper() + ". Check out " + tutor_name + "'s profile and confirm this session at http://berkeley.uguru.me. Happy Studying!"
     return msg
 
 def its_a_match_guru(student, skill_name):
     student_name = student.name.split(" ")[0]
-    msg = student_name + " has chosen you!" + " Message " + student_name + " now at http://uguru.me/messages."
+    msg = student_name + " has chosen you!" + " Message " + student_name + " now at http://berkeley.uguru.me/messages."
+    return msg
 
 def reminder_before_session(person_a, person_b, location, ending):
     person_a_name = person_a.name.split(" ")[0].title()

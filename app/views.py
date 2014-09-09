@@ -402,12 +402,14 @@ def new_admin_tutors():
         all_tutors = sorted(db_session.query(User).filter(User.approved_by_admin != None).all(), key=lambda u:u.last_active, reverse=True)
         times_signed_up = {}
         times_last_active = {}
+        avg_rating_tutor = {}
 
         for tutor in all_tutors:
             times_signed_up[tutor.id] = pretty_date(tutor.time_created)
             times_last_active[tutor.id] = pretty_date(tutor.last_active)
+            avg_rating_tutor[tutor.id] = calc_avg_rating(tutor)
         return render_template('admin-tutors.html', all_tutors = all_tutors, times_signed_up=times_signed_up,\
-            times_last_active=times_last_active)
+            times_last_active=times_last_active, avg_rating_tutor = avg_rating_tutor)
     return redirect(url_for('index'))
 
 
@@ -1298,6 +1300,14 @@ def update_requests():
                 user.outgoing_requests.remove(_request)
             user.notifications.remove(student_notification)
 
+            from app.static.data.short_variations import short_variations_dict
+            skill_name = short_variations_dict[Skill.query.get(_request.skill_id).name]
+            
+            if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
+                send_delayed_email.apply_async(args=['canceled-request-email', [user.id, skill_name]], countdown = 10)
+            else:
+                send_delayed_email.apply_async(args=['canceled-request-email', [user.id, skill_name]], countdown = 1800)
+
             for n in user_notifications:
                 if n.request_id == request_id and n in user.notifications:
                     user.notifications.remove(n)
@@ -1305,8 +1315,10 @@ def update_requests():
             for _tutor in _request.requested_tutors:
                 for n in sorted(_tutor.notifications, reverse=True):
                     if n.request_id == _request.id:
-                        n.feed_message_subtitle = '<span style="color:#CD2626"><strong>Update:</strong> The student has canceled the original request.</span>'
+                        n.status = 'Canceled'
+                        n.feed_message_subtitle = 'Sorry, the student has canceled the request.'
             
+
             flash("Your request has been successfully canceled.")
             try:
                 db_session.commit()
@@ -2008,7 +2020,7 @@ def success():
             if tier_2_tutor_ids:
                 print "Here are all the tier2 tutor ids",  tier_2_tutor_ids
                 if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
-                    send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=10)
+                    send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=100)
                 else:
                     send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=3600)
 
@@ -2650,10 +2662,9 @@ def send_twilio_msg(to_phone, body, user_id):
         db_session.add(text)
         db_session.commit()
         check_msg_status.apply_async(args=[text.id], countdown = 60)
-
     except twilio.TwilioRestException:
         print "text message didn't go through"
-        return
+        raise
     except:
         db_session.flush()
         raise
@@ -2716,7 +2727,7 @@ def is_tier_one_tutor(tutor):
                 _index += 1 
     if _sum > 0:
         avg_rating = float (_sum) / float (_index)
-        if avg_rating >= 4.0:
+        if avg_rating >= 4.5:
             print tutor.name + ' avg rating is approved'
             return True
     return False
@@ -2741,8 +2752,19 @@ def tutor_confirm_payment(payment_id):
         raise
 
 @celery.task
+def send_delayed_email(email_str, args):
+    if email_str == 'canceled-request-email':
+        from emails import student_canceled_email
+        user_id = args[0]
+        skill_name = args[1]
+        student_canceled_email(User.query.get(user_id), skill_name)
+
+@celery.task
 def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name):
     r = Request.query.get(request_id)
+    if len(r.committed_tutors) == (MAX_REQUEST_TUTOR_LIMIT + 1):
+        print 'We have already accomodated this request. Tier 2 tutors will not get it anymore.'
+        return
     student = User.query.get(user_id)
     for tutor_id in tutor_id_arr:
         tutor = User.query.get(tutor_id)

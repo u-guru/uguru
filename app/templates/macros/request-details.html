@@ -29,6 +29,20 @@
 
     {% endif %}
 
+    {% if notif.status == 'Canceled' %}
+        <div class='row center margin-top-10 font-24 red-text'>
+            Sorry! <br>The Student has Canceled the Request.
+        </div>
+        <div class='row-fluid margin-top-30'>
+        <label class='font-20 green-text'> Next Steps </label>
+        <div id='guru-intro' class='block font-14'>
+            Stay tuned! We'll immediately let you know when a student needs help in a course.
+        </div>
+    </div>
+    <hr>
+
+    {% endif %}
+
     {% if guru_profile_not_complete and notif.status != 'LATE' %}
     <div class='row'>
         <div style="margin-top:0px; margin-bottom:15px; text-align:center; float:center"class="col-xs-12 col-sm-12 col-md-12">
@@ -98,7 +112,7 @@
         <a class="cancel-request blue-text" href="javascript:void(0)"> <u>Need to Cancel? </u></a>
     </div>
     <hr>
-    {% elif notif.custom =='tutor-accept-request' and notif.status != 'Taken' %}
+    {% elif notif.custom =='tutor-accept-request' and notif.status != 'Taken' and notif.status != 'Canceled'%}
     <div class='row-fluid margin-top-20'>
         <label class='font-20 green-text'> Next Steps </label>
         <div id='guru-intro' class='block font-14'>
@@ -278,13 +292,16 @@
         </div>
         {% endif %}
         <textarea class='form-control standard-textarea guru-request-reply-textarea' style='width:97.5%'></textarea>
-        <div class='row-fluid font-20 margin-top-40 margin-bottom-20 center'>
+        <div class='row-fluid font-20 margin-top-20 margin-bottom-20 center'>
             <div class='center red-text font-12 extra-detail-alert'  style='display:none'>
             </div>
             <br>
             <a {% if guru_profile_not_complete %} href='javascript:void(0);' onclick='alert("Please complete your Guru Profile first.")' {% else %} href='javascript:void(0);' class='tutor-request-accept-btn' {%endif%}>
-                <span class='blue-btn' style='padding:8px 60px'> Accept This Offer </span>
+                <span class='blue-btn blue-btn-full'> Accept This Offer </span>
             </a>
+        </div>
+        <div class='row-fluid grey-text font-12 center'>
+            Only accept this offer if you are <b>100% confident</b> with the task. <br>(you've done well in the course, or are a grad student)
         </div>
     </div>
     {% endif %}
