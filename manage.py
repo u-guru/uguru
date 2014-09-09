@@ -459,6 +459,11 @@ if arg == 'initialize':
     user = User(name='Tutor 1', email='makhani.samir@gmail.com', phone_number = '8135009853')
     user.approved_by_admin = True
     user.verified_tutor = True
+    user.profile_url = '/static/img/jenny.jpg'
+    user.year = 'Freshman'
+    user.tutor_introduction = 'I like tutoring'
+    user.phone_number = '0dka0d-a'
+    user.major = 'EECS'
     skill = Skill.query.get(6849)
     user.skills.append(skill)
     m = Mailbox(user)
@@ -473,6 +478,11 @@ if arg == 'initialize':
     user.tutor_ratings.append(r)
     user.approved_by_admin = True
     user.verified_tutor = True
+    user.profile_url = '/static/img/jenny.jpg'
+    user.year = 'Freshman'
+    user.tutor_introduction = 'I like tutoring'
+    user.phone_number = '10dka0d-a'
+    user.major = 'EECS'
     skill = Skill.query.get(6849)
     m = Mailbox(user)
     db_session.add(m)
@@ -488,6 +498,11 @@ if arg == 'initialize':
     user.approved_by_admin = True
     user.verified_tutor = True
     user.tutor_ratings.append(r)
+    user.profile_url = '/static/img/jenny.jpg'
+    user.year = 'Freshman'
+    user.tutor_introduction = 'I like tutoring'
+    user.phone_number = '110dka0d-a'
+    user.major = 'EECS'
     m = Mailbox(user)
     db_session.add(m)
     skill = Skill.query.get(6849)
@@ -503,6 +518,11 @@ if arg == 'initialize':
     user.tutor_ratings.append(r)
     user.approved_by_admin = True
     m = Mailbox(user)
+    user.profile_url = '/static/img/jenny.jpg'
+    user.year = 'Freshman'
+    user.tutor_introduction = 'I like tutoring'
+    user.phone_number = '220dka0d-a'
+    user.major = 'EECS'
     db_session.add(m)
     user.verified_tutor = True
     skill = Skill.query.get(6849)
@@ -520,9 +540,22 @@ if arg == 'initialize':
     db_session.add(m)
     user.approved_by_admin = True
     user.verified_tutor = True
+    user.profile_url = '/static/img/jenny.jpg'
+    user.year = 'Freshman'
+    user.tutor_introduction = 'I like tutoring'
+    user.phone_number = '330dka0d-a'
+    user.major = 'EECS'
     skill = Skill.query.get(6849)
     user.skills.append(skill)
     db_session.add(r)
+    db_session.add(user)
+    db_session.commit()
+
+    #Student One
+    user = User(name='Student One', email='kljasdkl333jakd3@berkeley.edu')
+    m = Mailbox(user)
+    db_session.add(m)
+    user.phone_number = '18135009853'
     db_session.add(user)
     db_session.commit()
 

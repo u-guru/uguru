@@ -7,7 +7,7 @@
         <a id="{{n.a_id_name}}" href="/messages/">
         {% elif n.a_id_name == 'getting-started' and user.skills %}
         <a target="_blank" id="getting-started-tutors" href="http://tinyurl.com/uguru-q-a">
-        {% elif n.a_id_name == 'getting-started' or n.custom_tag == 'student-payment-approval' or n.custom_tag == 'tutor-receive-payment'%}
+        {% elif n.a_id_name == 'getting-started' or n.custom_tag == 'student-payment-approval' or n.custom_tag == 'tutor-receive-payment' or n.custom_tag =='student-cap-reached' %}
         <a class='main-feed-messages' style="cursor:default!important;" id="dont-do-anything" href="javascript:void(0)">
         {% elif n.a_id_name == 'tip-photo' %}
         <a class='main-feed-messages' href="/settings/#prof">

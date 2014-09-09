@@ -1150,6 +1150,8 @@ def update_requests():
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
 
+            print "print request" + str(r.id)
+
 
             if student.text_notification and student.phone_number:
                 print "Student is supposed to be receiving a text message"            
@@ -1186,6 +1188,23 @@ def update_requests():
                 for n in student.notifications:
                         if n.request_id == r.id and n.custom_tag == 'student-incoming-offer':
                             n.status = 'tutor_cap_reached'
+
+                if student.text_notification and student.phone_number:
+                    print "Student is supposed to receive a text about reaching the tutor limit"
+                    from emails import student_cap_reached
+                    message = student_cap_reached(skill_name.upper())
+                    send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id])
+
+                if student.email_notification:
+                    from emails import student_cap_reached_email
+                    student_cap_reached_email(student, skill_name)
+
+
+                from notifications import student_cap_reached_notif
+                student_cap_notif = student_cap_reached_notif(user, r, skill_name)
+                student.notifications.append(student_cap_notif)
+                db_session.add(student_cap_notif)
+
             try:
                 db_session.commit()
             except:

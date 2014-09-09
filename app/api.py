@@ -653,6 +653,9 @@ def api(arg, _id):
                             )
                             p.stripe_charge_id = charge['id']
                             print p.stripe_charge_id
+                        except stripe.error.CardError, e:
+                            error_msg = "Sorry! The your card has been declined. Please update your payment info in your settings."
+                            return errors([error_msg])
                         except stripe.error.InvalidRequestError, e:
                             if p.student_id == user.id:
                                 error_msg = "Sorry! The your card has been declined. Please update your payment info in your settings."
@@ -1883,6 +1886,19 @@ def check_promo_code(user, promo_code):
         p.time_used = datetime.now()
         p.receiver_id = user.id
         p.tag = 'referral'
+        db_session.add(p)
+        user.promos.append(p)
+        return "success"
+
+    if promo_code.lower() == 'indusrocks':
+        if user.promos:
+            for p in user.promos:
+                if p.tag == 'indusrocks':
+                    return "used"
+        p = Promo()
+        p.time_used = datetime.now()
+        p.received_id = user.id
+        p.tag = 'indusrocks'
         db_session.add(p)
         user.promos.append(p)
         return "success"

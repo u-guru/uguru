@@ -63,6 +63,36 @@ def getting_started_tutor_2(user):
     return notification
 
 
+def student_cap_reached_notif(user, request, skill_name):
+    notification = Notification(request=request)
+    notification.skill_name = skill_name
+    notification.feed_message = "You have 3 Gurus waiting to help for " +skill_name + "!"
+    notification.feed_message_subtitle = "You have 24 hours to pick one, or your request expires."
+    notification.a_id_name = 'student-cap-reached-' + str(request.id)
+    notification.image_url = user.profile_url
+    notification.custom_tag = 'student-cap-reached'
+    notification.request_id = request.id
+    user.feed_notif = user.feed_notif + 1
+    return notification
+
+def student_request_receipt(user, request, skill_name):
+    notification = Notification(request=request)
+    notification.skill_name = skill_name
+    notification.feed_message = "You requested help in <b>" + skill_name.upper() + '</b>.'
+    notification.feed_message_subtitle = "<b>Click here</b> to see " +\
+        "the status of your request!"
+    # request_number = user.outgoing_requests.index(request)
+    notification.a_id_name = 'student-request-help' + str(request.id)
+    if user.profile_url:
+        notification.image_url = user.profile_url
+    else:
+        notification.image_url = '/static/img/default-photo.jpg'
+    notification.custom_tag = 'student-request-help'
+    notification.custom = skill_name
+    notification.request_id = request.id
+    user.feed_notif = user.feed_notif + 1
+    return notification
+
 def student_request_receipt(user, request, skill_name):
     notification = Notification(request=request)
     notification.skill_name = skill_name

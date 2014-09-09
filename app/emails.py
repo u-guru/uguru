@@ -227,6 +227,50 @@ def approved_by_admin_email(user):
     result = mandrill_client.messages.send(message=message)
 
 
+def student_cap_reached_email(user, skill_name):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    name = user.name.split(" ")[0]
+    email = user.email
+    html = student_cap_reached_email_html(name)
+
+    message = {
+        'html':html,
+        'subject': '[Action Required] Choose One of Three ' + skill_name.upper() + ' Gurus', 
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from uGuru',
+        'to': [{'email':email, 'name':name, 'type':'to'}],
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['student-cap-reached']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+
+def student_cap_reached_email_html(user_name):
+    return """
+    Hi """ + user_name + """
+    <br>
+    <br>
+    You have three Gurus waiting for your reply. <a href='http://berkeley.uguru.me/log_in/'> Log in </a> to your account and choose one now.
+    <br>
+    <br>
+    Once you choose a Guru, you can immediately message them and find the most convenient time to meet.
+    <br>
+    <br>
+    Happy Tutoring!
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
+
+
+
 def sign_up_caltopia_tutor(user):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
     name = user.name.split(" ")[0]
@@ -1708,6 +1752,9 @@ def its_a_match_guru(student, skill_name):
     student_name = student.name.split(" ")[0]
     msg = student_name + " has chosen you!" + " Message " + student_name + " now at http://berkeley.uguru.me/messages."
     return msg
+
+def student_cap_reached(skill_name):
+    return "You've received your 3 Gurus for your " + skill_name +  " request! You have 24 hours to choose one!"
 
 def reminder_before_session(person_a, person_b, location, ending):
     person_a_name = person_a.name.split(" ")[0].title()
