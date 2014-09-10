@@ -145,7 +145,7 @@
         <br>
         {% if request_dict[notif.request_id]['request'].urgency %}
             <div class='row margin-top-10 margin-left'>
-                <img src='/static/img/asap.png' height='20px'> <span class='font-12'>I need help asap!</span>
+                <img src='/static/img/asap.png' height='20px'> <span class='font-14'>I need help <b>ASAP</b>!</span>
             </div>
         {% endif %}
         {% if request_dict[notif.request_id]['request'].frequency %}
@@ -245,13 +245,13 @@
                     </b>
                     </span> 
                     <br>
-                    <span class='font-10'> We take 25% of your <b>first</b> transaction with a student. </span>
+                    <span class='font-10'> We deduct 25% of your <b>first</b> transaction with a student. </span>
                     {% else %}
                     Next Time You Could Make
                     <span class='green-text'> $<span id='you-will-make-{{index}}'>{{request_dict[notif.request_id]['request'].time_estimate * request_dict[notif.request_id]['request'].student_estimated_hour * 0.75}} </span> 
                     </span> 
                     <br>
-                    <span class='font-10'> We take 25% of your <b>first</b> transaction with a student. </span>
+                    <span class='font-10'> We deduct 25% of your <b>first</b> transaction with a student. </span>
                     {% endif %}
             </div>
             {% endif %}

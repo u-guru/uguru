@@ -1670,7 +1670,7 @@ def welcome_uguru_tutor_html(user_name):
     We are excited to have you on board as a Cal Guru. Your role will be to save students who are lost in the dungeons of Moffit.
     <br>
     <br>
-    Since this is your first time tutoring with us, your current mission is to show your skills by earning a great rating during your first session. This session will be free to the student, so do your best to earn a 4.0 rating. As soon as you achieve that 4.0 rating, you'll be ready to set your own rates, be your own boss, and earn some extra cash. To get the full scoop on the Guru code, check out our <a href='tinyurl.com/uguru-q-a'> FAQ </a>.
+    Since this is your first time tutoring with us, your current mission is to show your skills by earning a great rating during your first session. This session will be free to the student, so do your best to earn a 4.5 rating. As soon as you achieve that 4.5 rating, you'll be ready to set your own rates, be your own boss, and earn some extra cash. To get the full scoop on the Guru code, check out our <a href='tinyurl.com/uguru-q-a'> FAQ </a>.
     <br>
     <br>
     Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears! 
