@@ -1161,7 +1161,7 @@ def student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly
     """Guru Name: """+ tutor_name +"""\n""" +\
     """Hourly Price: $"""+ str(hourly_price) +"""\n""" +\
     """Hours: """+ str(hours) +""" hours\n""" +\
-    """Total Amount: $"""+ str(amount) +"""(Including Uguru fees)\n\n""" +\
+    """Total Amount: $"""+ str(amount) +"""\n\n""" +\
     """Your payment is handled by Stripe, a secure third-party payment platform\n\n""" + \
     """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
     """How helpful was """ + tutor_name + """? Rate and review """ + tutor_name + """ here.\n\n""" +\
@@ -1185,9 +1185,9 @@ def tutor_payment_receipt_text(date, charge_id, tutor_name, hourly_price, hours,
     """Receipt ID: """+  charge_id +"""\n""" +\
     """Time: """+  date +"""\n""" +\
     """Student Name: """+ tutor_name +"""\n""" +\
-    """Hourly Price: $"""+ str(hourly_price) +""" (Including Uguru fees)\n""" +\
+    """Hourly Price: $"""+ str(hourly_price) +"""\n""" +\
     """Hours: """+ str(hours) +""" hours\n""" +\
-    """Total Earned: $"""+ str(amount) +"""\n\n""" +\
+    """Total Earned: $"""+ str(amount * 0.9) +"""(after 10% uGuru fee)\n\n""" +\
     """Your payment is handled by Stripe, a secure third-party payment platform\n\n""" + \
     """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
@@ -1202,9 +1202,9 @@ def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours,
     Receipt ID: """+  charge_id +"""<br>
     Time: """+  date +"""<br>
     Student Name: """+  tutor_name +"""<br>
-    Hourly Price: $""" + str(hourly_price) + """ (including Uguru fees)<br>
+    Hourly Price: $""" + str(hourly_price) + """<br>
     Hours: """ + str(hours) + """ hours<br>
-    Total Earned: $""" + str(amount) + """
+    Total Earned: $""" + str(amount * 0.9) + """(after 10% uGuru fee)
     <br>
     <br>
     <i>Your payment is handled by <a href="http://stripe.com"> Stripe</a>, a secure third-party payment platform</i>
@@ -1232,7 +1232,7 @@ def student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly
     Guru Name: """+  tutor_name +"""<br>
     Hourly Price: $""" + str(hourly_price) + """<br>
     Hours: """ + str(hours) + """ hours<br>
-    Total Amount: $""" + str(amount) + """(including Uguru fees)
+    Total Amount: $""" + str(amount) + """
     <br>
     <br>
     <i>Your payment is handled by <a href="http://stripe.com"> Stripe</a>, a secure third-party payment platform</i>

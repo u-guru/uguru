@@ -100,6 +100,30 @@ def confirm_meeting_student(user, tutor, request):
     user.feed_notif = user.feed_notif + 1
     return notification
 
+def next_time_student_notif(user, tutor, request):
+    notification = Notification(request=request)
+    notification.feed_message = "Next time you want to meet " + tutor.name.split(" ")[0].title() + ", here is what you should do."
+    notification.feed_message_subtitle = "Click here for more details"
+    notification.a_id_name = 'next-time' + str(request.id)
+    notification.image_url = tutor.profile_url
+    notification.custom_tag = 'next-time'
+    notification.request_id = request.id
+    notification.request_tutor_id = tutor.id
+    user.feed_notif = user.feed_notif + 1
+    return notification
+
+def next_time_tutor_notif(user, tutor, request):
+    notification = Notification(request=request)
+    notification.feed_message = "Next time you want to meet " + user.name.split(" ")[0].title() + ", here is what you should do."
+    notification.feed_message_subtitle = "Click here for more details"
+    notification.a_id_name = 'next-time' + str(request.id)
+    notification.image_url = user.profile_url
+    notification.custom_tag = 'next-time'
+    notification.request_id = request.id
+    notification.request_tutor_id = tutor.id
+    user.feed_notif = user.feed_notif + 1
+    return notification
+
 def student_request_receipt(user, request, skill_name):
     notification = Notification(request=request)
     notification.skill_name = skill_name

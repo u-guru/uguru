@@ -220,15 +220,29 @@ def api(arg, _id):
                     if n.custom_tag =='confirm-meeting' and n.request_id == r.id:
                         student.notifications.remove(n)
 
+                flash('We have sent a notification to ' + student.name.split(" ")[0].title() + ' to confirm the time amount.')
+
             else: #student is confirming
                 print "student is confirming"
                 for n in tutor.notifications:
                     if n.custom_tag =='confirm-meeting' and n.request_id == r.id:
                         tutor.notifications.remove(n)                    
 
+                flash('We have sent a notification to ' + tutor.name.split(" ")[0].title() + ' to confirm the time amount.')
+
+
 
             payment = Payment.query.filter_by(student_id = student.id, tutor_id = tutor.id).first()
             payment.tutor_confirmed = False
+
+            
+            from notifications import next_time_student_notif, next_time_tutor_notif
+            next_time_student = next_time_student_notif(student, tutor, r)
+            next_time_tutor = next_time_tutor_notif(student, tutor, r)
+            student.notifications.append(next_time_tutor)
+            tutor.notifications.append(next_time_tutor)
+            db_session.add(next_time_student)
+            db_session.add(next_time_tutor)
 
             try:
                 db_session.commit()
@@ -571,6 +585,7 @@ def api(arg, _id):
 
             #tutor is confirming --> this is only for first time requests
             if p.tutor_confirmed == False and user.id == p.tutor_id:
+                tutor = user
                 print "Tutor confirming is beginning"
                 p.tutor_confirmed = True
                 if p.time_amount != float(request.json.get('time_amount')):
@@ -597,6 +612,7 @@ def api(arg, _id):
                         new_payment.tutor_description = 'Substracted earnings from your session with ' + student.name.split(" ")[0].title()
                         new_payment.refunded = True
 
+
                     new_payment.student_confirmed = False
                     student.payments.append(new_payment)
                     tutor.payments.append(new_payment)
@@ -607,21 +623,28 @@ def api(arg, _id):
                     total_amount = p.student_paid_amount
                     user.pending = user.pending - p.tutor_received_amount
                     user.balance = user.balance + p.tutor_received_amount
+                    
                     from notifications import student_payment_approval
                     student = User.query.get(p.student_id)
 
                     from app.static.data.short_variations import short_variations_dict
                     skill_name = short_variations_dict[Skill.query.get(p.skill_id).name]
 
-                    # student_notification = student_payment_approval(student, user , p, total_amount, p.stripe_charge_id, skill_name, False)
-                    # user.notifications.append(student_notification)
-                    # db_session.add(student_notification)
+                    if total_amount > 0:
+                        student_notification = student_payment_approval(student, user , p, total_amount, p.stripe_charge_id, skill_name, False)
+                        user.notifications.append(student_notification)
+                        db_session.add(student_notification)
 
                 rating = Rating(p.request_id)
                 user.pending_ratings.append(rating)
                 student = User.query.get(p.student_id)
                 student.pending_ratings.append(rating)
                 db_session.add(rating)
+
+                if student.text_notification and student.phone_number:
+                    from views import send_twilio_message_delayed
+                    message = tutor.name.split(' ')[0].title() + ' has rated you! Please rate ' + tutor.name.split(' ')[0].title() + ' by logging in to www.uguru.me/log_in/.'
+                    send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=10)
 
                 from notifications import tutor_receive_payment
                 student = User.query.get(p.student_id)
@@ -640,9 +663,10 @@ def api(arg, _id):
                     final_tutor_amount = p.tutor_received_amount
 
 
-                tutor_notification = tutor_receive_payment(student, user, p, final_tutor_amount)
-                user.notifications.append(tutor_notification)
-                db_session.add(tutor_notification)
+                if final_tutor_amount > 0:
+                    tutor_notification = tutor_receive_payment(student, user, p, final_tutor_amount)
+                    user.notifications.append(tutor_notification)
+                    db_session.add(tutor_notification)
 
                 #generate the notification(s) --> student rating, tutor rating
 
@@ -808,6 +832,10 @@ def api(arg, _id):
             final_tutor_amount = 0.9 * payment.tutor_rate * payment.time_amount
             payment.tutor_received_amount = final_tutor_amount
             tutor.pending = tutor.pending + payment.tutor_received_amount
+
+            if student.text_notification and student.phone_number:
+                message = tutor.name.split(' ')[0].title() + ' has billed you! Please confirm the amount by logging in to www.uguru.me/log_in/.'
+                send_twilio_message_delayed.apply_async(args=[student.phone_number, message], countdown=10)
 
             try:
                 db_session.commit()
@@ -1324,26 +1352,26 @@ def api(arg, _id):
             if tutor.phone_number and tutor.text_notification:
                 print "The tutor has a phone number and is supposed to receive a text."
                 from emails import its_a_match_guru, reminder_before_session
-                message = reminder_before_session(tutor, student, r.location, "Guru-ing")
+                # message = reminder_before_session(tutor, student, r.location, "Guru-ing")
 
-                if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
-                    send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=10)
-                else:
-                    send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=total_seconds_delay)
+                # if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
+                #     send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=10)
+                # else:
+                #     send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=total_seconds_delay)
                 message = its_a_match_guru(student, skill_name)
                 send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown =10)
 
 
 
-            if student.phone_number and student.text_notification:
-                print "The student has a phone number and is supposed to receive a text."
-                from emails import reminder_before_session
-                total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
-                message = reminder_before_session(student, tutor, r.location, "Studying")
-                if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
-                    send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=10)
-                else:
-                    send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=total_seconds_delay)
+            # if student.phone_number and student.text_notification:
+            #     print "The student has a phone number and is supposed to receive a text."
+            #     from emails import reminder_before_session
+            #     total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
+            #     message = reminder_before_session(student, tutor, r.location, "Studying")
+            #     if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
+            #         send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=10)
+            #     else:
+            #         send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=total_seconds_delay)
 
 
             p = Payment(r.id)

@@ -87,6 +87,7 @@ def send_twilio_message_delayed(phone, msg, user_id):
 @app.route('/sign_up/')
 @app.route('/guru/')
 @app.route('/callisto/')
+@app.route('/fb/')
 @app.route('/instant/')
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -117,6 +118,8 @@ def index():
         modal_flag = 'guru'
     if 'callisto' in request.url:
         session['referral'] = 'callisto'
+    if 'fb' in request.url:
+        session['referral'] = 'fb'
     if 'instant' in request.url:
         modal_flag = 'instant'
     print modal_flag
@@ -2019,6 +2022,8 @@ def success():
             for tutor in r.requested_tutors:
                 #Only if they are approved tutors
                 print tutor.id, tutor.name, tutor.email, " is qualified." 
+
+
 
                 if tutor.approved_by_admin:
                     print tutor.name, " is approved by admin." 

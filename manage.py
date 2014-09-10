@@ -552,7 +552,7 @@ if arg == 'initialize':
     db_session.commit()
 
     #Tier 2 Tutor
-    user = User(name='Tutor 5', email='kljasdkljakd3@berkeley.edu')
+    user = User(name='Tutor 6', email='kljasdkljakd3@berkeley.edu')
     r = Rating()
     r.tutor_rating = 3
     user.tutor_ratings.append(r)

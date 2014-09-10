@@ -1,0 +1,37 @@
+{% macro next_time(user, notif, request_dict, tutor_dict) -%}
+    {% set student = request_dict[notif.request_id]['student'] %}
+    {% set tutor = tutor_dict[notif] %}
+    {% set student_name = student.name.split(" ")[0]  %}
+    {% set tutor_name = tutor.name.split(" ")[0] %}
+    {% if user.id == student.id %} 
+        {% set viewer = student %}
+        {% set opposite_viewer = tutor %}
+    {% else %}
+        {% set viewer = tutor %}
+        {% set opposite_viewer = student %}
+    {% endif %}
+
+    <div class='row-fluid margin-top-40 block'>
+        <div class='row-fluid center' >
+            <label class='font-24 green-text'> Want to Meet {{opposite_viewer.name.split(" ")[0]|title}} Again? </label><br>
+            <label class='font-16 light-grey-text'> Here is what you should do. </label><br>
+            <img id='request-details-photo' src='{{opposite_viewer.profile_url}}' height='80px' style='margin-top:20px'> 
+        </div>
+        <br>
+        <br>
+        <div id='guru-intro' class='block font-16'>
+            {% if viewer == student %}
+                <p> 1. <a href='/messages/'> Message {{tutor_name|title}} </a> and let them know you need some assistance.Discuss the details of what you need help in, and set a time to meet. 
+                <p> 2. After the session, {{tutor_name|title}} can bill you directly through uGuru. <br> uGuru is <b> FREE </b> for students.</p>
+            {% else %}
+                <p> 1. If you have spare time, message {{student_name|title}} and see if {{student_name|title}} needs help. <span class='light-grey-text'>(A great way to advertise yourself!)</span>
+                </p>
+                <p> 2. Discuss details of what {{student_name|title}} needs help in, and set a time to meet
+                </p>
+                <p> 3. Bill {{student_name|title}} directly using uGuru. You can do so by clicking the <img src='/static/img/dollar-sign.png' height='20px'> icon on the top right of the page.
+                </p>
+            {% endif %}
+        </div>
+    </div>
+
+{%- endmacro %}
