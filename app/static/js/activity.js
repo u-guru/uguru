@@ -489,8 +489,7 @@ $(document).ready(function() {
             data: JSON.stringify(data),
             dataType: "json",
             success: function(result) {         
-                alert('sup')
-                // window.location.replace('/activity/');
+                window.location.replace('/activity/');
             }
       }); 
 
