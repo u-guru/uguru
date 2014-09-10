@@ -1109,9 +1109,9 @@ def update_requests():
 
             r = Request.query.get(incoming_request_num)
             student = User.query.get(r.student_id)
-            r.committed_tutors.append(tutor)
 
-            if len(r.committed_tutors) == (MAX_REQUEST_TUTOR_LIMIT + 1):
+
+            if len(r.committed_tutors) > MAX_REQUEST_TUTOR_LIMIT:
                 print "The max request tutor limit has been reached!"
                 for tutor in r.requested_tutors:
                     if tutor not in r.committed_tutors:
@@ -1120,8 +1120,11 @@ def update_requests():
                                 n.status = 'LATE'
                                 n.feed_message_subtitle = 'Click here to learn why!'
                                 print tutor.id, tutor.name, "is too late! We have updated their profile accordingly"
+                from api import errors
+                return errors(['Sorry! You were just a couple seconds late. This request has already been accepted by three other Gurus!'])
 
-                #expire all of them in twenty four hours
+
+            r.committed_tutors.append(tutor)
             
             tutor = user
             

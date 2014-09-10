@@ -428,7 +428,10 @@ $(document).ready(function() {
                     url: '/update-request/' ,
                     data: JSON.stringify(data),
                     dataType: "json",
-                    success: function(result) {         
+                    success: function(result) {
+                        if (result.errors) {
+                          alert('Sorry! You were just a couple seconds late. This request has already been accepted by three other Gurus!')
+                        } 
                         window.location.replace('/activity/');
                     }
                 }); 

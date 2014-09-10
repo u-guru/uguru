@@ -531,6 +531,26 @@ if arg == 'initialize':
     db_session.add(user)
     db_session.commit()
 
+    #Tier 1 Tutor
+    user = User(name='Tutor 5', email='kljasd2232kljakd2@berkeley.edu')
+    r = Rating()
+    r.tutor_rating = 5
+    user.tutor_ratings.append(r)
+    user.approved_by_admin = True
+    m = Mailbox(user)
+    user.profile_url = '/static/img/jenny.jpg'
+    user.year = 'Freshman'
+    user.tutor_introduction = 'I like tutoring'
+    user.phone_number = '220dka0asdjasd9d-a'
+    user.major = 'EECS'
+    db_session.add(m)
+    user.verified_tutor = True
+    skill = Skill.query.get(6849)
+    user.skills.append(skill)
+    db_session.add(r)
+    db_session.add(user)
+    db_session.commit()
+
     #Tier 2 Tutor
     user = User(name='Tutor 5', email='kljasdkljakd3@berkeley.edu')
     r = Rating()
