@@ -202,6 +202,47 @@ def api(arg, _id):
             response = {"user": user.__dict__}
 
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(["Invalid Token"])
+
+    if arg == 'confirm_meeting' and request.method == 'POST':
+        user = getUser()
+        if user:
+            notification = user.notifications[request.json.get('notification-id')]
+            r = Request.query.get(notification.request_id)
+            user.notifications.remove(notification)
+            student = User.query.get(r.student_id)
+            tutor = User.query.get(r.connected_tutor_id)
+
+            #check tutor is confirming
+            if r.connected_tutor_id == user.id:
+                print "tutor is confirming"
+                for n in student.notifications:
+                    if n.custom_tag =='confirm-meeting' and n.request_id == r.id:
+                        student.notifications.remove(n)
+
+            else: #student is confirming
+                print "student is confirming"
+                for n in tutor.notifications:
+                    if n.custom_tag =='confirm-meeting' and n.request_id == r.id:
+                        tutor.notifications.remove(n)                    
+
+
+            payment = Payment.query.filter_by(student_id = student.id, tutor_id = tutor.id).first()
+            payment.tutor_confirmed = False
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+
+            response = {"user": user.__dict__}
+
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+
+
+
+        return errors(["Invalid Token"])
 
     if arg == 'notifications' and request.method == 'GET' and _id == None:
         user = getUser()

@@ -14,21 +14,27 @@
 
     <div class='row-fluid margin-top-40 block'>
         <div class='row-fluid center' >
-            <label class='font-24 green-text'> Next Steps After You've Met {{opposite_viewer.name|title}}</label><br>
+            <label class='font-24 green-text'> Next Steps After You've Met {{opposite_viewer.name.split(" ")[0]|title}}</label><br>
             <img id='request-details-photo' src='{{opposite_viewer.profile_url}}' height='80px' style='margin-top:20px'> 
         </div>
         <br>
         <br>
         <div id='guru-intro' class='block font-16'>
-            <p> 1. Click the big blue button below! (After you read the next two steps) </p>
+            <p> 1. Click the big blue button below! (After you read the next steps below) </p>
             {% if viewer == student %}
-            <p> 2. {{tutor_name|title}} will first be asked for the exact time amount of the session. If it is less than or greater than <span class='blue-text'>{{request_dict[notif.request_id]['request'].time_estimate}}hrs</span>, you will be asked to confirm as well. </p>
-            <p> 3. After {{tutor_name|title}} confirms, you will be asked to rate {{tutor_name|title}} </p>
-            <p> 4. For future sessions, {{tutor_name|title}} will bill you through their uGuru interface. There are no charges for students on our platform - you can use our platform for <b>FREE</b> </p>
+                <p> 2. {{tutor_name|title}} will first be asked for the exact time amount of the session. If it is less than or greater than <span class='blue-text'>{{request_dict[notif.request_id]['request'].time_estimate}}hrs</span>, you will be asked to confirm as well. </p>
+                <p> 3. After {{tutor_name|title}} confirms, you will be asked to rate {{tutor_name|title}} </p>
+                <p> 4. For future sessions, {{tutor_name|title}} will bill you through their uGuru interface. There are no charges for students on our platform - you can use our platform for <b>FREE</b>.</p>
             {% else %}
+                <p> 2. Once you click the button, you will be asked for the exact time amount of the session. If it is less than or greater than <span class='blue-text'>{{request_dict[notif.request_id]['request'].time_estimate}}hrs</span>, the student will be asked to confirm the time amount as well. </p>
+                <p> 3. You will be asked to rate {{student_name}}. </p>
             {% endif %}
         </div>
         <br>
+        <br>
+        <a href='javascript:void(0);' id='confirm-meeting-{{notif.id}}'class='confirm-meeting-btn'>
+            <span class='blue-btn blue-btn-full'> Confirm Meeting </span>
+        </a>
     </div>
 
 {%- endmacro %}

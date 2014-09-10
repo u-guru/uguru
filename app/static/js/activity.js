@@ -477,6 +477,25 @@ $(document).ready(function() {
         }); 
     });
 
+    $('#feed-messages').on('click', 'a.confirm-meeting-btn', function() {
+      $(this).click(false);
+      var data = {
+        'notification-id': last_clicked_notif_index
+      }
+      $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/api/confirm_meeting' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function(result) {         
+                alert('sup')
+                // window.location.replace('/activity/');
+            }
+      }); 
+
+    });
+
     
     $('#select-person-to-pay').on('click', '.dropdown-menu li a', function() {
         var current_index = $(this).parent().index();
