@@ -462,7 +462,7 @@ if arg == 'initialize':
     user.profile_url = '/static/img/jenny.jpg'
     user.year = 'Freshman'
     user.tutor_introduction = 'I like tutoring'
-    user.phone_number = '0dka0d-a'
+    user.phone_number = '18135009853'
     user.major = 'EECS'
     skill = Skill.query.get(6849)
     user.skills.append(skill)
@@ -575,7 +575,7 @@ if arg == 'initialize':
     user = User(name='Student One', email='kljasdkl333jakd3@berkeley.edu')
     m = Mailbox(user)
     db_session.add(m)
-    user.phone_number = '18135009853'
+    user.phone_number = '8135009853'
     db_session.add(user)
     db_session.commit()
 

@@ -239,7 +239,7 @@ def api(arg, _id):
             from notifications import next_time_student_notif, next_time_tutor_notif
             next_time_student = next_time_student_notif(student, tutor, r)
             next_time_tutor = next_time_tutor_notif(student, tutor, r)
-            student.notifications.append(next_time_tutor)
+            student.notifications.append(next_time_student)
             tutor.notifications.append(next_time_tutor)
             db_session.add(next_time_student)
             db_session.add(next_time_tutor)

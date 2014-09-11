@@ -2023,7 +2023,11 @@ def success():
                 #Only if they are approved tutors
                 print tutor.id, tutor.name, tutor.email, " is qualified." 
 
-
+                #Check if conversation already exists between tutor + student. If so, we don't want to see it.
+                conversation = Conversation.query.filter_by(student_id=u.id, guru_id=tutor.id).first()
+                if conversation:
+                    r.requested_tutors.remove(tutor)
+                    continue
 
                 if tutor.approved_by_admin:
                     print tutor.name, " is approved by admin." 
@@ -2032,7 +2036,7 @@ def success():
                         if tutor.text_notification and tutor.phone_number:
                             print tutor.name + ' is qualified to receive a text'
                             from emails import request_received_msg
-                            message = request_received_msg(u, r, skill_name)
+                            message = request_received_msg(u, tutor, r, skill_name)
                             send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
                         tutor.incoming_requests_to_tutor.append(r)
                         notification = tutor_request_offer(u, tutor, r, skill_name)

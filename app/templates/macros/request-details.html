@@ -1,6 +1,6 @@
 
 {% macro request_details(user, notif, request_dict, time, index, user_avg_rating=None) -%}                        
-{% set student_name = notif.feed_message.split(" ")[3] %}
+{% set student_name = request_dict[notif.request_id]['student'].name.split(" ")[0] %}
 {% if (user.approved_by_admin and user.verified_tutor and (not user.skills or not user.tutor_introduction or not user.major or not user.year or not user.phone_number or (user.profile_url == '/static/img/default-photo.jpg'))) %}
         {% set guru_profile_not_complete = true %}
 {% else %}  
@@ -68,9 +68,9 @@
         {% endif %}
         </span>
     </div>
-    {% if notif.custom == 'tutor-is-matched' %}
+    {% if notif.custom == 'tutor-is-matched' and not guru_not_ready %}
         <div class='row center margin-top-10 font-20'>
-            <span class='green-text'>${{request_dict[notif.request_id]['request'].time_estimate * request_dict[notif.request_id]['request'].student_estimated_hour * 0.75}}</span> Has Been Added To Your Balance!
+            <span class='green-text'>${{request_dict[notif.request_id]['request'].time_estimate * request_dict[notif.request_id]['request'].student_estimated_hour * 0.75}}</span> Has Been Added To Your Balance! 
         </div>
     {% endif %}
 
@@ -91,7 +91,13 @@
 
     {% if guru_not_ready and notif.status != 'LATE' and notif.custom !='tutor-accept-request'%}
     <div class='row-fluid margin-top-40 block'>
+        {% if user_avg_rating[0] == 0 %}
         <label class='font-16 red-text'> This is your first time! What does this mean?</label>
+        {% else %}
+        <label class='font-16 red-text'> 
+            Your current ratings do not qualify you to charge yet.
+        </label>
+        {% endif %}
         <div id='guru-intro' class='block font-14'>
             <p> 1. You can't ask for money until you average 4.5 stars (all you need is a 5 stars on this first session). </p>
             <p> 2. Read more about why we do this <a href='tinyurl.com/uguru-q-a' class='blue-text'> here</a>. </p>

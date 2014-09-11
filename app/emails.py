@@ -792,14 +792,14 @@ def student_needs_help_html(student_name, class_name, request):
     Preferred Location: """ + request.location+ """<br>
     Time Estimate: """ + str(request.time_estimate) + """ hours<br>
     # of Students: """ + str(request.num_students) + """<br>
-    You can make: $""" + str(request.time_estimate*tutor_rate) +""" ($"""+str(tutor_rate) +"""/hr)<br>
+    You could* make: $""" + str(request.time_estimate*tutor_rate) +""" ($"""+str(tutor_rate) +"""/hr)<br>
     (You can also propose a different price!)
     <br>
     <br>
     <a href="http://beta.uguru.me/log_in"> Log in </a> to accept """ + student_name + """'s request on your feed page, or offer a different price.
     <br>
     <br>
-    Tip: take 3 minutes to update your profile so students feel more comfortable picking you as their Guru.    
+    <span style='font-size:12px; color:grey'>*If this is your first time Guru-ing on the platform, you must tutor for free until you have 4.5 stars average rating.</span>
     <br>
     <br>
     Samir<br>
@@ -814,10 +814,10 @@ def student_needs_help_text(student_name, class_name, request):
     """Preferred Location: """ + request.location+ """\n""" + \
     """Time Estimate: """ + str(request.time_estimate) + """ hours\n""" +\
     """# of Students: """ + str(request.num_students) + """\n\n""" +\
-    """You can make: $""" + str(request.time_estimate * tutor_rate) + """ ($"""+ str(tutor_rate) +"""/hr)\n""" + \
+    """You could* make: $""" + str(request.time_estimate * tutor_rate) + """ ($"""+ str(tutor_rate) +"""/hr)\n""" + \
     """(You can also propose a different price!)\n""" +\
     """Login at http://berkeley.uguru.me/log_in/ to see more details. You can either accept the request on the feed page, or offer a different price.\n\n""" +\
-    """Tip: take 3 minutes to update your profile so students feel more comfortable picking you as their Guru.\n\n"""+\
+    """*If this is your first time Guru-ing on the platform, you must tutor for free until you have 4.5 stars average rating."""+\
     """Samir\nCo-founder"""
 
 def tutor_wants_to_help(student, tutor, course_name):
@@ -1733,13 +1733,15 @@ def general_notification_html(user_name, msg):
     """
 
 
-def request_received_msg(user, _request, skill):
+def request_received_msg(user, tutor, _request, skill):
     user_name = user.name.split(" ")[0].title()
     amount = _request.student_estimated_hour * _request.time_estimate
-
-
-    msg = user_name + " needs your help with " + skill.upper() + " You can make up to $" + \
-    str(amount) + ". Act fast and see if your schedules line up at http://berkeley.uguru.me."
+    from views import calc_avg_rating
+    if calc_avg_rating(tutor)[0] > 4.5:
+        msg = user_name + " needs your help with " + skill.upper() + " You can make up to $" + \
+        str(amount) + ". Act fast and see if your schedules line up at http://berkeley.uguru.me."
+    else:
+        msg = user_name + " needs your help with " + skill.upper() + ". Act fast and see if your schedules line up at http://berkeley.uguru.me."
     return msg
 
 def guru_can_help(tutor, skill_name):
