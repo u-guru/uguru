@@ -198,6 +198,13 @@
 									<div class='message-receiver-timestamp grey-text font-12 italic thin-text'>
 										{{pretty_dates[message.id]}}
 									</div>
+									<div class='message-receiver-name grey-text bold reg-text'>
+										{% if conversation.guru_id == user.id %} 
+										{{conversation.guru.name.split(" ")[0]}}
+										{% else %} 
+										{{conversation.student.name.split(" ")[0]}}
+										{%endif%}
+									</div>
 
 								</div>
 							{% endif %}

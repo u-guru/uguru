@@ -254,7 +254,7 @@ def student_cap_reached_email_html(user_name):
     Hi """ + user_name + """
     <br>
     <br>
-    You have three Gurus waiting for your reply. <a href='http://berkeley.uguru.me/log_in/'> Log in </a> to your account and choose one now.
+    You have three Gurus waiting for your reply. <a href='http://berkeley.uguru.me/log_in/'> Log in </a> to your account and choose one now!
     <br>
     <br>
     Once you choose a Guru, you can immediately message them and find the most convenient time to meet.
@@ -773,7 +773,7 @@ def generate_new_password_html(user_name, new_password):
     Your new generated password is <b>'""" + new_password + """'</b>
     <br>
     <br>
-    <a href="http://berkeley.uguru.me/log_in/"> Login</a> with this password on Uguru and change to a pasword of your choice under Account Settings. 
+    <a href="http://berkeley.uguru.me/log_in/">Login</a> with this password on Uguru and change to a pasword of your choice under Account Settings. 
     <br>
     <br>
     Samir<br>
@@ -796,7 +796,7 @@ def student_needs_help_html(student_name, class_name, request):
     (You can also propose a different price!)
     <br>
     <br>
-    <a href="http://beta.uguru.me/log_in"> Log in </a> to accept """ + student_name + """'s request on your feed page, or offer a different price.
+    <a href="http://beta.uguru.me/log_in"> Log in </a> to check exact availablilty and accept """ + student_name + """'s request on your feed page, or offer a different price.
     <br>
     <br>
     <span style='font-size:12px; color:grey'>*If this is your first time Guru-ing on the platform, you must tutor for free until you have 4.5 stars average rating.</span>
@@ -859,7 +859,7 @@ def tutor_wants_to_help_html(tutor_name, course_name):
     """ + tutor_name + """ accepted your request for """ + course_name + """.
     <br>
     <br>
-    <a href="http://berkeley.uguru.me/log_in/">Log in</a> to see """ + tutor_name + """'s profile and accept the offer, or wait for more Gurus to accept!
+    <a href="http://berkeley.uguru.me/log_in/">Log in</a> to see """ + tutor_name + """'s availability & profile, or wait for up to three Gurus to reply!
     <br>
     <br>
     Samir<br>
@@ -932,11 +932,16 @@ def send_message_alert_text(receiver_name, sender_name):
     return """Don't keep """ + sender_name + " waiting! Login to Uguru.me and message " + sender_name + " now at http://berkeley.uguru.me/messages/ ."
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
+def send_message_text(sender):
+    name = sender.name.split(" ")[0]
+    msg = "You have 1 new message on uGuru. Don't keep " + name + ' waiting! www.uguru.me/messages'
+    return msg
+
 def send_message_alert_html(receiver_name, sender_name):
     return """Don't keep """ + sender_name + """ waiting!
     <br>
     <br>
-    Login to <a href="http://berkeley.uguru.me/log_in"> Uguru </a> and reply to """ + sender_name + """ now through our <a href="http://berkeley.uguru.me/messages">messages</a>.     
+    Login to <a href="http://berkeley.uguru.me/log_in">Uguru</a> and reply to """ + sender_name + """ now through our <a href="http://berkeley.uguru.me/messages">messages</a>.
     <br>
     <br>
     If you have any questions or concerns, please reply directly to this email, or give us a phonecall! 
@@ -1204,7 +1209,7 @@ def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours,
     Student Name: """+  tutor_name +"""<br>
     Hourly Price: $""" + str(hourly_price) + """<br>
     Hours: """ + str(hours) + """ hours<br>
-    Total Earned: $""" + str(amount * 0.9) + """(after 10% uGuru fee)
+    Total Earned: $""" + str(amount * 0.9) + """(after 10% to uGuru)
     <br>
     <br>
     <i>Your payment is handled by <a href="http://stripe.com"> Stripe</a>, a secure third-party payment platform</i>
@@ -1349,14 +1354,14 @@ def tutor_is_matched_html(tutor_name):
     <br>
     <br>
     2. At the end of the session, <a href="http://berkeley.uguru.me/log_in/"> log into Uguru </a> on your device and draft a bill by clicking 
-    <b>"REQUEST PAYMENT"</b> on your feed page.
+    "REQUEST PAYMENT" on your feed page.
     <br>
     <br>
-    3. Have your student <b>verify the amount</b> before submitting. The amount will be added to your balance,
+    3. Have your student verify the amount before clicking the billing button. The amount will be added to your balance,
     and you can cash out at any time!
     <br>
     <br>
-    4. After payment, remind your student to <b>rate you</b> on their account. These reviews will help you stand out when students choose their tutors.
+    4. After payment, remind your student to rate you on their account. These reviews will help you stand out when students choose their tutors.
     <br>
     <br>
     If you have any questions or concerns, please reply directly to this email, or give us a phonecall! 

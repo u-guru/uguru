@@ -379,7 +379,7 @@ $(document).ready(function(){
         $("#change-password-alert").show();
       } else {
         $('#settings-change-pwd-toggle').children('span:first').text('Change');
-        update_password_ajax($('input[name="old-pwd"]').val(), $('input[name="new-pwd"]').val())
+        update_password_ajax($('input[name="old-pwd"]').val(), $('input[name="confirm-pwd"]').val())
       }
     });
 
@@ -781,6 +781,9 @@ $(document).ready(function(){
     $('#request-form-submit').click(function(){
     if (!$('#request-description').val() || !$('#request-location').val() || 
         $('td.time-slot.td-selected').length == 0 || !$('#request-skill').val()) {
+          $('#alert-fields-request-form').show(); 
+      } else if (($('#request-main-slider').slider('value') * 2) > $('td.time-slot.td-selected').length) {
+          $('#alert-fields-request-form').text('Please fill in at least ' + $('#request-main-slider').slider('value') + 'hrs on the calendar.');
           $('#alert-fields-request-form').show(); 
       } else if ($("#activity").length == 0) {
       //If they have already signed up

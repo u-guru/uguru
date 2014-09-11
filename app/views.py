@@ -59,6 +59,8 @@ celery = Celery('run')
 
 REDIS_URL = environ.get('REDISTOGO_URL', 'redis://localhost')
 
+tutor_blacklist = [1708]
+
 # Use Redis as our broker and define json as the default serializer
 celery.conf.update(
     BROKER_URL=REDIS_URL,
@@ -89,6 +91,9 @@ def send_twilio_message_delayed(phone, msg, user_id):
 @app.route('/callisto/')
 @app.route('/fb/')
 @app.route('/instant/')
+@app.route('/sproul/')
+@app.route('/cal/')
+@app.route('/piazza/')
 @app.route('/', methods=['GET', 'POST'])
 def index():
     modal_flag = None
@@ -120,6 +125,12 @@ def index():
         session['referral'] = 'callisto'
     if 'fb' in request.url:
         session['referral'] = 'fb'
+    if 'piazza' in request.url:
+        session['referral'] = 'piazza'
+    if 'cal' in request.url:
+        session['referral'] = 'cal'
+    if 'sproul' in request.url:
+        session['referral'] = 'sproul'
     if 'instant' in request.url:
         modal_flag = 'instant'
     print modal_flag
@@ -1063,10 +1074,6 @@ def send_message():
                 or (conversation.messages[-1].sender_id == user.id and conversation.is_read):
                 receiver.msg_notif += 1
                 
-                # if receiver.apn_token:
-                #     apn_message = receiver.name.split(" ")[0] + ' has sent you a message'
-                #     send_apn(apn_message, receiver.apn_token)
-                
                 if not conversation.messages :
                     from emails import send_message_alert
                     send_message_alert(receiver, user)
@@ -1074,9 +1081,14 @@ def send_message():
                     last_message_time = conversation.messages[-1].write_time
                     current_time = datetime.now()
                     difference_time = current_time - last_message_time
-                    if difference_time.seconds > (15 * 60):
+                    if difference_time.seconds > (0 * 60):
                         from emails import send_message_alert
                         send_message_alert(receiver, user)
+                        if receiver.phone_number and receiver.text_notification:
+                            print "testing "
+                            from emails import send_message_text
+                            msg = send_message_text(user)
+                            message = send_twilio_message_delayed.apply_async(args=[receiver.phone_number, msg, receiver.id], countdown=10)
 
 
             message = Message(message_contents, conversation, user, receiver)
@@ -2029,6 +2041,10 @@ def success():
                     r.requested_tutors.remove(tutor)
                     continue
 
+                #check if tutor is in tutor blacklist
+                if tutor.id in tutor_blacklist:
+                    continue
+
                 if tutor.approved_by_admin:
                     print tutor.name, " is approved by admin." 
                     if is_tier_one_tutor(tutor):
@@ -2352,6 +2368,7 @@ def activity():
         student_id = payment.student_id
         if payment.student_id and payment.tutor_id:
             tutor = User.query.get(tutor_id)
+            student = User.query.get(student_id)
             if (payment.tutor_id == user.id and payment.tutor_confirmed == False) or (payment.student_id == user.id and payment.student_confirmed == False):
                 confirm_payments.append({
                     'payment': payment,
@@ -2360,7 +2377,6 @@ def activity():
                     'student': student,
                     'tutor': tutor
                     })
-            student = User.query.get(student_id)
             payment_dict[payment.id] = {'payment': payment, 'tutor_name':tutor.name.split(' ')[0],\
             'student_name': student.name.split(' ')[0]}
 
