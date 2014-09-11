@@ -68,7 +68,7 @@
                             {% set span ='green-text' %}
                           {% endif %}
                           {% if previous_day and (previous_day['student-signups']|length + previous_day['tutor-signups']|length) > 0%}
-                            (<span class='{{span}}'>{{sign}}{{'%.01' % (((previous_day['student-signups']|length + previous_day['tutor-signups']|length) + (day['student-signups']|length + day['tutor-signups']|length)) / (previous_day['student-signups']|length + previous_day['tutor-signups']|length))|float}}%</span>)
+                            (<span class='{{span}}'>{{sign}}{{'%.01' % ((((previous_day['student-signups']|length + previous_day['tutor-signups']|length) + (day['student-signups']|length + day['tutor-signups']|length)) / (previous_day['student-signups']|length + previous_day['tutor-signups']|length))|float)}}%</span>)
                           {% elif previous_day and previous_day['student-signups']|length == 0 %}
                             (<span class='{{span}}'>{{sign}}{{(day['student-signups']|length + day['tutor-signups']|length) * 100}}% </span>)
                           {% endif %}
