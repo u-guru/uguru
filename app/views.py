@@ -378,14 +378,28 @@ def new_admin():
             day = today - timedelta(days=i)
             day_after = today - timedelta(days=(i - 1))
             day_student_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).all()
+            day_student_none_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == None).all()
+            day_student_fb_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'fb').all()
+            day_student_piazza_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'piazza').all()
+            day_student_cal_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'cal').all()
+            day_student_sproul_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'sproul').all()
             day_tutor_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin != None).all()
-            day_requests = db_session.query(Request).filter(Request.time_created >= day).filter(Request.time_created <= day_after).all()            
+            day_tutor_guru_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin != None).filter(User.referral_code == 'guru').all()
+            day_tutor_none_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin != None).filter(User.referral_code == None).all()
+            day_requests = db_session.query(Request).filter(Request.time_created >= day).filter(Request.time_created <= day_after).all()         
+
             day_stats.append(
                     {
                         'date': day.strftime('%h %d %Y'),
                         'student-signups': day_student_signups,
                         'tutor-signups': day_tutor_signups,
                         'requests': day_requests,
+                        'student-signups-piazza': day_student_piazza_signups,
+                        'student-signups-none': day_student_none_signups,
+                        'student-signups-fb': day_student_fb_signups,
+                        'student-signups-cal': day_student_cal_signups,
+                        'student-signups-guru-none': day_tutor_none_signups,
+                        'student-signups-guru': day_tutor_guru_signups
                     }
 
                 )
