@@ -50,7 +50,7 @@
                             {% set sign = '+'%}
                           {% endif %}
                           {% if previous_day and previous_day['requests']|length > 0%}
-                            (<span class='{{span}}'>{{sign}}{{'%0.0f'% ((previous_day['requests']|length + day['requests']|length) / previous_day['requests']|length)|float * 100}}%</span>)
+                            (<span class='{{span}}'>{{sign}}{{'%0.1f'% ((previous_day['requests']|length + day['requests']|length) / previous_day['requests']|length)|float * 100}}%</span>)
                           {% elif previous_day and previous_day['requests']|length == 0 %}
                             (<span class='{{span}}'>{{sign}}{{day['requests']|length * 100}}%</span>)
                           {% endif %}
