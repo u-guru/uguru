@@ -17,7 +17,7 @@
         <div class='row center margin-top-10 font-24 red-text'>
             You Are Too Late...
         </div>
-        <div class='row-fluid margin-top-30'>
+        <div class='row-fluid margin-top-30 margin-top-30-mobile'>
         <label class='font-20 green-text'> Next Steps </label>
         <div id='guru-intro' class='block font-14'>
             Sorry, other Gurus have already filled up the 3 available spots for this student. 
@@ -53,7 +53,7 @@
     </div>
     {% endif %}
 
-    <div class='row center margin-top-20'>
+    <div id='request-details-header' class='row center margin-top-20 margin-top-20-mobile'>
         <span id='profile-name' class="font-24 center">
         {% if notif.custom != 'tutor-is-matched' and not notif.status == 'LATE' and not notif.status == 'Taken' %}
             {{notif.feed_message|safe}} 
@@ -108,7 +108,7 @@
     {% endif %}
 
     {% if notif.custom_tag == 'student-request-help' %}
-    <div class='row-fluid margin-top-20'>
+    <div class='row-fluid margin-top-20 margin-top-20-mobile'>
         <label class='font-20 green-text'> Next Steps </label>
         <div id='guru-intro' class='block font-14'>
             <p> Up to <span class='green-text'> 3 </span> Gurus will respond to your request very soon. Pick one before your session expires in <span class='green-text'> 48 hours.</span></p>
@@ -151,7 +151,7 @@
         <br>
         {% if request_dict[notif.request_id]['request'].urgency %}
             <div class='row margin-top-10 margin-left'>
-                <img src='/static/img/asap.png' height='20px'> <span class='font-14'>I need help <b>ASAP</b>!</span>
+                <img src='/static/img/asap.png' class='asap-img' height='20px'> <span class='font-14 asap-text'>I need help <b>ASAP</b>!</span>
             </div>
         {% endif %}
         {% if request_dict[notif.request_id]['request'].frequency %}

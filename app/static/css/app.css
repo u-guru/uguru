@@ -25,6 +25,10 @@ h1, h3 {
   text-align:left;
 }
 
+.mobile-dropdown {
+  display:none;
+}
+
 .right {
   text-align:right;
 }
@@ -879,6 +883,14 @@ textarea {
   color:#484748;
 }
 
+.padding-bottom-12 {
+  padding-bottom:12px !important;
+}
+
+.padding-right-20 {
+  padding-right:40px !important;
+}
+
 .btn-default {
   color:#484748;
   text-align:left;
@@ -899,6 +911,10 @@ textarea {
 
 .align-left {
   text-align:left;
+}
+
+.align-right {
+  text-align:right;
 }
 
 .powered-by-stripe-settings {
@@ -1168,6 +1184,10 @@ td.time-slot {
 
 .light-grey-text {
   color:#a8a8a8;
+}
+
+.border-bottom-grey {
+  border-bottom:1px solid #a8a8a8 !important;
 }
 
 .modal-close-button {

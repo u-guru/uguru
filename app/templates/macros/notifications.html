@@ -18,9 +18,9 @@
         {% endif %}
             <div {% if n.a_id_name == 'getting-started' or (n.custom_tag=='tutor-receive-payment' and n.time_read) or (n.custom_tag=='student-payment-approval' and n.time_read) %} style="cursor:default;" {%endif%}class="notification {% if not n.time_read %} grey-background shadow{% endif %}" align:"center">
                 <img src="{% if n.image_url %}{{n.image_url}}{% else %} {{user.profile_url}}{% endif%}" class="user-photo" style="float:left; margin-top:-10px">
-                    <div class='font-16' style="width:75%; margin-top:2px">{{n.feed_message|safe}}</div>
+                    <div id='feed-message'class='font-16' style="width:75%; margin-top:2px">{{n.feed_message|safe}}</div>
                     {% if n.feed_message_subtitle %}
-                        <div class='font-12'style="width:85%; margin-top:8px">{{n.feed_message_subtitle|safe}}</div>
+                        <div id='feed-message-subtitle' class='font-12'style="width:85%; margin-top:8px">{{n.feed_message_subtitle|safe}}</div>
                     {% endif %}
                 <div class='notification-time font-12'>
                     {{pretty_dates[n.id]}}
@@ -46,10 +46,10 @@
             <div class='profile-container'>
                 <div class='row'>
                     <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6'>
-                        <div class='row font-16'>
+                        <div class='row font-16 back-button-container'>
                             <a href='javascript:void(0)' class='blue-text feed-message-back-link'>
                                 <span class='glyphicon glyphicon-chevron-left'>
-                                </span> Back
+                                </span> <span class='back-text'>Back</span>
                             </a>
                         </div>
                         <div id='guru-content' class='margin-top-20 padding-horizontal-20 block'>

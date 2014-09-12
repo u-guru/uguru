@@ -398,6 +398,7 @@ def new_admin():
                         'student-signups-piazza': day_student_piazza_signups,
                         'student-signups-none': day_student_none_signups,
                         'student-signups-fb': day_student_fb_signups,
+                        'student-signups-sproul': day_student_sproul_signups,
                         'student-signups-cal': day_student_cal_signups,
                         'student-signups-guru-none': day_tutor_none_signups,
                         'student-signups-guru': day_tutor_guru_signups

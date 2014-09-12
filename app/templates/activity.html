@@ -116,36 +116,36 @@
 			</div>
 		{% endif %}
 		{% if not user.verified_tutor %}
-		<div class="row margin-top-40 margin-bottom-20	">
+		<div id='activity-container-student' class="row margin-top-40 margin-bottom-20">
 			<div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-4 col-md-4">
 				<div class='row-fluid'>
 					<a id="tutor-request-link" href="javascript:void(0)">
-						<span class='blue-btn blue-btn-full font-20'>
+						<span id='ace-your-class-student-btn' class='blue-btn blue-btn-full font-20'>
 							Get Help And Ace Your Class
 						</span>
 					</a>
 				</div>
 				{% if user.credit and not user.verified_tutor and not user.approved_by_admin%}
-					<div class='row-fluid center font-20 margin-top-20 dark-grey-text'>
-						<h5 style="color:grey; font-size:22px; margin-bottom:0px; margin-top:0px">Your Credits: 
+					<div id='student-credit-conftainer' class='row-fluid center font-20 margin-top-20 dark-grey-text'>
+						<h5 id='student-credit'style="color:grey; font-size:22px; margin-bottom:0px; margin-top:0px">Your Credits: 
 							<span style="color:#69bf69; font-weight:bold"> ${{'%.02f' % user.credit}} 
 							</span>
 						</h5>
 					</div>
 				{% endif %}
-				<span class='font-14 light-grey-text center block margin-top-20'>
+				<span id='want-to-be-guru-text' class='font-14 light-grey-text center block margin-top-20'>
 				Want to be a Guru and make <span class='green-text'>$15+</span>/hr? Start <a class='underline blue-text'href='/apply-guru/'> here </a> 
 				</span>
 			</div>
 		</div>
 		{% else %}
-		<div class="row margin-top-40 margin-bottom-20	">
+		<div id='tutor-activity-container' class="row margin-top-40 margin-bottom-20">
 			<div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-4 col-md-4">
 				<div style="color:grey; text-align:center"class="row">
-					<h4 style="color:grey;font-weight:700; font-size:2em" >Hello, {{user.name.split(" ")[0]}}</h4>
+					<h4 id='hello-tutor-text' style="color:grey;font-weight:700; font-size:2em" >Hello, {{user.name.split(" ")[0]}}</h4>
 				</div>
 				{% if not user.tutor_ratings %}
-		            <span style="font-size:20px;"class="rating relative">
+		            <span id='mobile-rating-stars'style="font-size:20px;"class="rating relative">
 
 		                <span style='font-size:16px; right:-3px; bottom:1px' class='absolute'>(0) </span>
 
@@ -180,8 +180,8 @@
 						<h5 style="color:grey; margin:0">You have made <span style="color:#69bf69"> <strong>${{user.total_earned}} </strong></span> total with Uguru</h5>
 					</div>
 					{% endif %}
-					<div class='row-fluid center margin-top-10'>
-						<span style='color:#a8a8a8'class='font-14'>
+					<div id='guru-needs-help-text-container' class='row-fluid center margin-top-10'>
+						<span id='guru-needs-help-text' style='color:#a8a8a8'class='font-14'>
 							Even our gurus need help sometimes, request help <a href='javascript:void(0);' id='tutor-request-link' class='blue-text'>here</a>
 						</span>
 					</div>

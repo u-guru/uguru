@@ -834,6 +834,7 @@ def api(arg, _id):
             tutor.pending = tutor.pending + payment.tutor_received_amount
 
             if student.text_notification and student.phone_number:
+                from views import send_twilio_message_delayed
                 message = tutor.name.split(' ')[0].title() + ' has billed you! Please confirm the amount by logging in to www.uguru.me/log_in/.'
                 send_twilio_message_delayed.apply_async(args=[student.phone_number, message], countdown=10)
 
