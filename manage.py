@@ -204,13 +204,13 @@ def email_old_students():
     <br>
     <b> 1. No More Annoying Connection Fees! </b>
     <br>
-    After much though and feedback, we decided to make uGuru 100% free to students.
+    After much though and feedback, we decided to make uGuru 100% free for students to use.
     <br>
     <br>
     <b> 2. More Gurus, and free Gurus </b>
     <br>
     We recruited more Gurus! To test the water, all the new Gurus offer their first lessons for free.<br>
-    Take advantage of these free sessions while they last!    
+    Take advantage of the free sessions, <a href='www.uguru.me/activity/'>get help</a> or become a Guru <a href ='berkeley.uguru.me/guru/'>here</a>.
     <br>
     <br>
     <b> 3. 100% Satisfaction Guaranteed </b>
@@ -220,15 +220,15 @@ def email_old_students():
     <br>
     <b> 4. A better way to schedule </b>
     <br>
-    We built a calendar into the Guru requerst form, so Gurus only connect with you if they can make your schedule. Connecting has never been so easy!
+    We built a calendar into the Guru requerst form, so Gurus only connect with you if they can make your schedule. 
     <br>
     <br>
     <b> 5. Texting </b>
     <br>
-    We text both you and your Gurus to make finding help even quicker. Best of all, uGuru handles the communication, leaving your contact details as private as you want.
+    We text both you and your Gurus to make finding help even quicker!
     <br>
     <br>
-    We are dedicated to our users! Anytime you experience confusion or difficulties, email samir@uguru.me or text 813-500-9853. Your feedback is extremely important and we know it will make uGuru better!
+    Your opinion matters! Anytime you experience confusion or difficulties, email me at samir@uguru.me or text 813-500-9853. Your feedback is extremely important and we know it will make uGuru better!
     <br>
     <br>
     Cheers,
@@ -238,43 +238,45 @@ def email_old_students():
 
 
 if arg == 'new_email_old_students':
-    for user in User.query.all():
-        if not user.skills or user.incoming_requests_from_tutors:
-            user_name = user.name
-            user_email = user.email
-            mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
-            html = email_old_students()
-            to_emails = []
-            to_emails.append({
-                'email':user_email,
-                'name': user_name,
-                'type': 'to'
-            })
+    # for user in User.query.all():
+    #     if not user.skills or user.incoming_requests_from_tutors:
+    # user_name = user.name
+    # user_email = user.email
+    user_name = 'Michael Koh'
+    user_email = 'samir@uguru.me'
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    html = email_old_students()
+    to_emails = []
+    to_emails.append({
+        'email':user_email,
+        'name': user_name,
+        'type': 'to'
+    })
 
-            message = {
-                'html':html,
-                'subject': '*|FNAME|*, Important Changes to uGuru',
-                'from_email': 'samir@uguru.me',
-                'from_name': 'Samir from uGuru',
-                'to': to_emails,
-                'headers': {'Reply-To': "samir@uguru.me"},
-                'important': True,
-                'merge_vars': [{
-                'rcpt':user.email,
-                'vars': [
-                        {
-                            'name':"fname",
-                            'content':user.name.split(' ')[0].title()
-                        }
-                    ]
-                }],
-                'track_opens': True,
-                'track_clicks': True,
-                'preserve_recipients':False,
-                'tags':['uguru-fa14-students']
-            }
+    message = {
+        'html':html,
+        'subject': '*|FNAME|*, Here Are Some Exciting Changes to uGuru',
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from uGuru',
+        'to': to_emails,
+        'headers': {'Reply-To': "samir@uguru.me"},
+        'important': True,
+        'merge_vars': [{
+        'rcpt':user_email,
+        'vars': [
+                {
+                    'name':"fname",
+                    'content':user_name.split(' ')[0].title()
+                }
+            ]
+        }],
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['uguru-fa14-students']
+    }
 
-            result = mandrill_client.messages.send(message=message)
+    result = mandrill_client.messages.send(message=message)
 
 def email_old_tutors():
     return """

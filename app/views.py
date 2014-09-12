@@ -131,7 +131,8 @@ def index():
         session['referral'] = 'cal'
     if 'sproul' in request.url:
         session['referral'] = 'sproul'
-    if 'instant' in request.url:
+    if 'sproul' in request.url:
+        session['referral'] = 'sproul'
         modal_flag = 'instant'
     print modal_flag
     return render_template('new.html', forms=[request_form],
