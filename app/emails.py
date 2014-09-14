@@ -227,6 +227,64 @@ def approved_by_admin_email(user):
     result = mandrill_client.messages.send(message=message)
 
 
+def daily_results_email(from_email, to_email):
+    from datetime import datetime
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    
+    day = datetime.now().strftime('%h %d %Y')
+    html = daily_results_email_html(day)
+
+    message = {
+        'html':html,
+        'subject': 'uGuru Daily Stats for ' + day,
+        'from_email': from_email,
+        'from_name': 'Samir from uGuru',
+        'to': [{'email':to_email, 'name':'uGuru Team', 'type':'to'}],
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['daily-stats-email']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+
+def daily_results_email_html(str_date):
+    from models import User
+    from database import db_session
+    from datetime import datetime
+    from datetime import timedelta
+
+    now = datetime.now()
+    today = datetime(*now.timetuple()[:3])
+    day=today
+    day_after = today - timedelta(days=1)
+
+    day_student_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).all()
+    day_student_none_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == None).all()
+    day_student_fb_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'fb').all()
+    day_student_piazza_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'piazza').all()
+    day_student_cal_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'cal').all()
+    day_student_sproul_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'sproul').all()
+    day_tutor_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin != None).all()
+    day_tutor_guru_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin != None).filter(User.referral_code == 'guru').all()
+    day_tutor_none_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin != None).filter(User.referral_code == None).all()
+    day_requests = db_session.query(Request).filter(Request.time_created >= day).filter(Request.time_created <= day_after).all()         
+
+    return """
+    Daily stats for """ + str_date + """: 
+    <br>
+    <br>
+    # of Student Requests: """ +  str(len(day_requests)) + """<br>
+    # of Total Signups: """ +  str(len(day_student_signups) + len(day_tutor_signups))  + """<br>
+    # of Student Signups: """ +  str(len(day_student_signups))  + """<br>
+    # of Tutor Signups: """ +  str(len(day_tutor_signups))  + """<br>
+    <br>
+    <br>
+    Samir
+    """
+
 def student_cap_reached_email(user, skill_name):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
     name = user.name.split(" ")[0]
@@ -1135,7 +1193,7 @@ def tutor_received_transfer_html(amount, bank_name, transfer_id, last4, date):
     Total Amount: $""" + str(amount) + """
     <br>
     <br>
-    <i>Your balance is being transferred to your account by <a href="http://stripe.com"> Stripe</a>, a secure third-party payment platform</i>
+    <i>Your balance is being transferred to your account by <a href="http://stripe.com">Stripe</a>, a secure third-party payment platform</i>
     <br>
     <br>
     If the above information is incorrect, please contact us by directly replying to this email.

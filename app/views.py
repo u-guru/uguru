@@ -20,10 +20,9 @@ import api
 import redis
 import time
 from apns import APNs, Frame, Payload
-# from app import celery
-# from celery.task import periodic_task
 from celery import Celery
 from celery.task import periodic_task
+from celery.schedules import crontab
 from datetime import timedelta
 import redis
 import logging
@@ -2820,6 +2819,12 @@ def send_delayed_email(email_str, args):
         user_id = args[0]
         skill_name = args[1]
         student_canceled_email(User.query.get(user_id), skill_name)
+
+@periodic_task(run_every=crontab(minute=0, hour = 18))
+def test_periodic():
+    if get_environment() == 'PRODUCTION':
+        from emails import daily_results_email
+        daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
 
 @celery.task
 def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name):

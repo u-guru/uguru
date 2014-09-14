@@ -49,11 +49,9 @@
                             {% set span ='green-text' %}
                             {% set sign = '+'%}
                           {% endif %}
-                          {% if previous_day and previous_day['requests']|length > 0%}
-                            (<span class='{{span}}'>{{sign}}<!-- {{'%0.2f'% ((previous_day['requests']|length + day['requests']|length) / previous_day['requests']|length)|float * 100}}% --></span>)
-                          {% elif previous_day and previous_day['requests']|length == 0 %}
-                            (<span class='{{span}}'>{{sign}}<!-- {{day['requests']|length * 100}}% --></span>)
-                          {% endif %}
+                            {% if previous_day %}
+                            (<span class='{{span}}'>{{sign}}{{day['requests']|length - previous_day['requests']|length}}</span>)
+                            {% endif %}
                         </td>
                     </tr>
                     <tr> 
@@ -67,10 +65,8 @@
                             {% set sign = '+'%}
                             {% set span ='green-text' %}
                           {% endif %}
-                          {% if previous_day and (previous_day['student-signups']|length + previous_day['tutor-signups']|length) > 0%}
-                            (<span class='{{span}}'>{{sign}}<!-- {{'%0.2f' % ((((previous_day['student-signups']|length + previous_day['tutor-signups']|length) + (day['student-signups']|length + day['tutor-signups']|length)) / (previous_day['student-signups']|length + previous_day['tutor-signups']|length))|float * 100)}}%< --></span>)
-                          {% elif previous_day and previous_day['student-signups']|length == 0 %}
-                            (<span class='{{span}}'>{{sign}}<!-- {{(day['student-signups']|length + day['tutor-signups']|length) * 100}}% --> </span>)
+                          {% if previous_day %}
+                          (<span class='{{span}}'>{{sign}}{{(day['student-signups']|length + day['tutor-signups']|length) - (previous_day['student-signups']|length + previous_day['tutor-signups']|length)}}</span>)
                           {% endif %}
                         </td>
                     </tr>
@@ -84,10 +80,8 @@
                             {% set sign = '+'%}
                             {% set span ='green-text' %}
                         {% endif %}
-                          {% if previous_day and previous_day['student-signups']|length > 0%}
-                            (<span class='{{span}}'>{{sign}}<!-- {{'%0.2f'% ((previous_day['student-signups']|length + day['student-signups']|length) / previous_day['student-signups']|length)|float * 100}}% --></span>)
-                          {% elif previous_day and previous_day['student-signups']|length == 0 %}
-                            (<span class='{{span}}'>{{sign}}<!-- {{day['student-signups']|length * 100}}% --></span>)
+                          {% if previous_day %}
+                          (<span class='{{span}}'>{{sign}}{{(day['student-signups']|length) - (previous_day['student-signups']|length)}}</span>)
                           {% endif %}
                         </td>
                     </tr>
@@ -121,10 +115,8 @@
                             {% set sign = '+'%}
                             {% set span ='green-text' %}
                         {% endif %}
-                          {% if previous_day and previous_day['tutor-signups']|length > 0%}
-                            (<span class='{{span}}'>{{sign}}<!-- {{'%0.2f'% ((previous_day['tutor-signups']|length + day['tutor-signups']|length) / previous_day['tutor-signups']|length)|float * 100}}%  --></span>)
-                          {% elif previous_day and previous_day['tutor-signups']|length == 0 %}
-                            (<span class='{{span}}'>{{sign}}<!-- {{day['tutor-signups']|length * 100}}% --></span>)
+                          {% if previous_day %}
+                          (<span class='{{span}}'>{{sign}}{{(day['tutor-signups']|length) - (previous_day['tutor-signups']|length)}}</span>)
                           {% endif %}
                         </td>
                     </tr>
