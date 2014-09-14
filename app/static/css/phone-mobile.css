@@ -145,6 +145,30 @@
     display:none;
   }
 
+  .twenty-five-percent-transaction {
+    font-size:8px !important;
+  }
+
+  .margin-top-40-mobile {
+    margin-top:25px !important;
+  }
+
+  .next-steps-guru-match {
+    margin-top:-15px !important;
+  }
+
+  br.mobile {
+    display:none;
+  }
+
+  .message-your-student-mobile {
+    font-size:14px !important;
+  }
+
+  .message-container-student {
+    margin-top:10px;
+  }
+
   #main-feed {
     padding-top:0px!important;
   }
@@ -156,6 +180,51 @@
 
   #ace-your-class-student-btn {
     font-size:14px !important;
+  }
+
+
+
+  .student-chose-you {
+    font-size:16px;
+  }
+
+  .guru-profile-attributes .margin-top-15 {
+    margin-top:5px !important;
+    font-size:10px;
+  }
+
+  .additional-details label{
+    font-size:16px;
+  }
+
+  .tutor-photo {
+    height:25px;
+    width:25px;
+  }
+
+  .contacted-tutors label{
+    font-size:16px;
+  }
+
+  .contacted-tutors {
+    margin-top:10px;
+  }
+
+  .additional-details #guru-intro {
+    font-size:10px;
+  }
+
+  .guru-profile-attributes div {
+    font-size:10px;
+  }
+
+  .request-details-attribute-container {
+    margin-top:5px !important;
+    margin-bottom:5px !important;
+  }
+
+  .request-details-attribute-container {
+    height:100px;
   }
 
   #base-logo-text {

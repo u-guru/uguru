@@ -53,7 +53,7 @@
     </div>
     {% endif %}
 
-    <div id='request-details-header' class='row center margin-top-20 margin-top-20-mobile'>
+    <div id='request-details-header' class='row center margin-top-20'>
         <span id='profile-name' class="font-24 center">
         {% if notif.custom != 'tutor-is-matched' and not notif.status == 'LATE' and not notif.status == 'Taken' %}
             {{notif.feed_message|safe}} 
@@ -69,22 +69,22 @@
         </span>
     </div>
     {% if notif.custom == 'tutor-is-matched' and not guru_not_ready %}
-        <div class='row center margin-top-10 font-20'>
+        <div class='row center margin-top-10 font-20 student-chose-you'>
             <span class='green-text'>${{request_dict[notif.request_id]['request'].time_estimate * request_dict[notif.request_id]['request'].student_estimated_hour * 0.75}}</span> Has Been Added To Your Balance! 
         </div>
     {% endif %}
 
 
     {% if notif.custom ==  'tutor-is-matched' %}
-    <div class='row-fluid margin-top-40 block'>
+    <div class='row-fluid margin-top-40 margin-top-40-mobile block'>
         <label class='font-20 green-text'> Next Steps </label>
         <br>
         <br>
-        <div id='guru-intro' class='block font-14'>
+        <div id='guru-intro' class='block font-14 next-steps-guru-match'>
             <p> 1. <a href='/messages/' class='blue-text'><u> Message</u></a> your student <span class='green-text'>ASAP</span> to confirm meeting time and location. </p>
             <p> 2. No need to ask for cash, you will get paid through Uguru. </p>
         </div>
-        <br>
+        <br class='mobile'>
     </div>
     <hr>
     {% endif %}
@@ -108,7 +108,7 @@
     {% endif %}
 
     {% if notif.custom_tag == 'student-request-help' %}
-    <div class='row-fluid margin-top-20 margin-top-20-mobile'>
+    <div class='row-fluid margin-top-20'>
         <label class='font-20 green-text'> Next Steps </label>
         <div id='guru-intro' class='block font-14'>
             <p> Up to <span class='green-text'> 3 </span> Gurus will respond to your request very soon. Pick one before your session expires in <span class='green-text'> 48 hours.</span></p>
@@ -251,7 +251,7 @@
                     </b>
                     </span> 
                     <br>
-                    <span class='font-10'> We deduct 25% of your <b>first</b> transaction with a student. </span>
+                    <span class='font-10 twenty-five-percent-transaction'> We deduct 25% of your <b>first</b> transaction with a student. </span>
                     {% else %}
                     Next Time You Could Make
                     <span class='green-text'> $<span id='you-will-make-{{index}}'>{{request_dict[notif.request_id]['request'].time_estimate * request_dict[notif.request_id]['request'].student_estimated_hour * 0.75}} </span> 
@@ -263,7 +263,7 @@
             {% endif %}
         </div>
     </div>
-    <div class='row block margin-top-40' style='padding-left:16px'>
+    <div class='row block margin-top-40 additional-details' style='padding-left:16px'>
         <label class='font-20'> Additional Details </label>
         <div id='guru-intro' class='block font-14'>
             {{request_dict[notif.request_id]['request'].description}}
@@ -272,7 +272,7 @@
     </div>
 
     {% if notif.custom_tag == 'student-request-help' %}
-        <div class='row block margin-top-10' style='padding-left:16px'>
+        <div class='row block margin-top-10 contacted-tutors' style='padding-left:16px'>
             <label class='font-20'> Contacted Tutors ({{request_dict[notif.request_id]['request'].requested_tutors|length}}) </label>
             <div id="contacted-tutors">
                 {% for tutor in request_dict[notif.request_id]['request'].requested_tutors %}
@@ -313,9 +313,9 @@
     {% endif %}
 
     {% if notif.custom ==  'tutor-is-matched' %}
-    <div class='row-fluid font-20 margin-top-40 margin-bottom-20 center'>
+    <div class='row-fluid font-20 margin-top-40 margin-bottom-20 center message-container-student'>
         <a href="/messages/" >
-            <span class='blue-btn' style='padding:8px 60px'> Message Your Student </span>
+            <span class='blue-btn message-your-student-mobile' style='padding:8px 60px'> Message Your Student </span>
         </a>
     </div>
 
