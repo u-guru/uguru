@@ -47,7 +47,11 @@
                 <span class='green-text'>
                     {% if not payment.confirmed_time_amount %}
                       {% if payment.student_paid_amount > 0 %}
-                        +${{payment.student_paid_amount}}
+                        {% if payment.student_id == user.id %}
+                          +${{payment.student_paid_amount}}
+                        {% else %}
+                          +${{payment.tutor_received_amount}}
+                        {% endif %}
                       {% else %}
                         <span class='red-text'> -${% if payment.stripe_recipient_id %}{{payment.tutor_received_amount}}
                           {% else %}
