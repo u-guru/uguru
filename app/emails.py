@@ -258,10 +258,12 @@ def daily_results_email_html(str_date):
 
     now = datetime.now()
     today = datetime(*now.timetuple()[:3])
+    yesterday = today - timedelta(days = 1)
     day=today
     semester_start = today - timedelta(days = 21)
 
     day_student_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin == None).all()
+    day_student_signups_yesterday = db_session.query(User).filter(User.time_created < day).filter(User.time_created >= yesterday).filter(User.approved_by_admin == None).all()
     day_student_login = db_session.query(User).filter(User.last_active >= day).filter(User.approved_by_admin == None).all()
     day_student_none_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin == None).filter(User.referral_code == None).all()
     day_student_fb_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin == None).filter(User.referral_code == 'fb').all()
@@ -269,25 +271,52 @@ def daily_results_email_html(str_date):
     day_student_cal_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin == None).filter(User.referral_code == 'cal').all()
     day_student_sproul_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin == None).filter(User.referral_code == 'sproul').all()
     day_tutor_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin != None).all()
+    day_tutor_signups_yesterday = db_session.query(User).filter(User.time_created < day).filter(User.time_created >= yesterday).filter(User.approved_by_admin != None).all()
     day_tutor_login = db_session.query(User).filter(User.last_active >= day).filter(User.approved_by_admin != None).all()
     day_tutor_guru_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin != None).filter(User.referral_code == 'guru').all()
     day_tutor_none_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin != None).filter(User.referral_code == None).all()
     day_requests = db_session.query(Request).filter(Request.time_created >= day).all()
+    day_requests_yesterday = db_session.query(Request).filter(Request.time_created < day).filter(Request.time_created >= yesterday).all()
 
     total_signups = db_session.query(User).filter(User.time_created >= semester_start).all()
     total_student_signup = db_session.query(User).filter(User.time_created >= semester_start).filter(User.approved_by_admin == None).all()
     total_tutor_signup = db_session.query(User).filter(User.time_created >= semester_start).filter(User.approved_by_admin != None).all()
-    total_requests = day_requests = db_session.query(Request).filter(Request.time_created >= semester_start).all()    
+    total_requests = db_session.query(Request).filter(Request.time_created >= semester_start).all()    
+
+    day_request_difference = len(day_requests) - len(day_requests_yesterday)
+    if day_request_difference >= 0:
+        day_request_difference_result = ' (+' + str(day_request_difference) + ')'
+    else:
+        day_request_difference_result = ' (-' + str(day_request_difference) + ')'
+
+    day_student_signup_difference = len(day_student_signups) - len(day_student_signups_yesterday)
+    if day_student_signup_difference >= 0:
+        day_student_signup_difference_result = ' (+' + str(day_student_signup_difference) + ')'
+    else:
+        day_student_signup_difference_result = ' (-' + str(day_student_signup_difference) + ')'
+
+    day_tutor_signup_difference = len(day_tutor_signups) - len(day_tutor_signups_yesterday)
+    if day_tutor_signup_difference >= 0:
+        day_tutor_signup_difference_result = ' (+' + str(day_tutor_signup_difference) + ')'
+    else: 
+        day_tutor_signup_difference_result = ' (-' + str(day_tutor_signup_difference) + ')'
+
+    day_total_difference = day_tutor_signup_difference + day_student_signup_difference
+    if day_total_difference >= 0:
+        day_total_difference_result = ' (+' + str(day_tutor_signup_difference) + ')'
+    else:
+        day_total_difference_result = ' (-' + str(day_tutor_signup_difference) + ')'
+
 
     return """
     Daily stats for """ + str_date + """: 
     <br>
     <br>
     <b>Daily Stats </b> <br>
-    # of Student Requests: """ +  str(len(day_requests)) + """<br>
-    # of Total Signups: """ +  str(len(day_student_signups) + len(day_tutor_signups))  + """<br>
-    # of Student Signups: """ +  str(len(day_student_signups))  + """<br>
-    # of Tutor Signups: """ +  str(len(day_tutor_signups))  + """<br>
+    # of Student Requests: """ +  str(len(day_requests)) + day_request_difference_result + """<br>
+    # of Total Signups: """ +  str(len(day_student_signups) + len(day_tutor_signups))  + day_total_difference_result +"""<br>
+    # of Student Signups: """ +  str(len(day_student_signups))  + day_student_signup_difference_result + """<br>
+    # of Tutor Signups: """ +  str(len(day_tutor_signups))  + day_tutor_signup_difference_result + """<br>
     <br>
     <b>Daily Activity Stats </b> <br>
     # of Students Logged In: """+ str(len(day_student_login)) + """<br>
