@@ -131,6 +131,7 @@ def index(arg=None):
         session['referral'] = 'cal'
     if 'sproul' in request.url:
         session['referral'] = 'sproul'
+        modal_flag = 'instant'
     if 'sproul' in request.url and arg!= None:
         session['referral'] = str(arg) + '(sproul)'
         modal_flag = 'instant'
