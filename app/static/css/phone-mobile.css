@@ -30,7 +30,7 @@
   }
 
   #become-guru-nav {
-    display:none;
+    display:bl;
   }
 
   #activity-container-student {
@@ -319,6 +319,14 @@
     margin-top:10px;
     display:block;
     width:75px;
+  }
+
+  #apply-nav {
+    display:none;
+  }
+
+  #parents-nav {
+    display:none;
   }
 
   #home-course-submit-btn {

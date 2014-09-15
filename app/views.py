@@ -1903,9 +1903,9 @@ def success():
             if ajax_json.get('instant') and session.get('tutor-signup'):
                 from emails import sign_up_caltopia_tutor
                 sign_up_caltopia_tutor(u)
-            else:    
-                authenticate(user_id)
 
+            if not ajax_json.get('instant'):
+                authenticate(user_id)
 
 
             try:
@@ -2825,6 +2825,7 @@ def test_periodic():
     if get_environment() == 'PRODUCTION':
         from emails import daily_results_email
         daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
+        daily_results_email('samir@uguru.me', 'michael@uguru.me')
 
 @celery.task
 def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name):
