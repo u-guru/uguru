@@ -91,10 +91,11 @@ def send_twilio_message_delayed(phone, msg, user_id):
 @app.route('/fb/')
 @app.route('/instant/')
 @app.route('/sproul/')
+@app.route('/sproul/<arg>/')
 @app.route('/cal/')
 @app.route('/piazza/')
 @app.route('/', methods=['GET', 'POST'])
-def index():
+def index(arg=None):
     modal_flag = None
     if os.environ.get('TESTING') and not session.get('testing-admin'):
         return redirect(url_for('login'))
@@ -130,8 +131,8 @@ def index():
         session['referral'] = 'cal'
     if 'sproul' in request.url:
         session['referral'] = 'sproul'
-    if 'sproul' in request.url:
-        session['referral'] = 'sproul'
+    if 'sproul' in request.url and arg!= None:
+        session['referral'] = str(arg) + '(sproul)'
         modal_flag = 'instant'
     print modal_flag
     return render_template('new.html', forms=[request_form],
@@ -428,7 +429,10 @@ def new_admin_students():
 @app.route('/admin/tutors/')
 def new_admin_tutors():
     if session.get('admin'):
-        all_tutors = sorted(db_session.query(User).filter(User.approved_by_admin != None).all(), key=lambda u:u.last_active, reverse=True)
+        if get_environment() == 'PRODUCTION' or get_environment() =='TESTING':
+            all_tutors = sorted(db_session.query(User).filter(User.approved_by_admin != None).all(), key=lambda u:u.last_active, reverse=True)
+        else:
+            all_tutors = db_session.query(User).filter(User.approved_by_admin != None).all()
         times_signed_up = {}
         times_last_active = {}
         avg_rating_tutor = {}
