@@ -786,7 +786,7 @@ def api(arg, _id):
             hourly_price = request.json.get('price')
 
             conversation = Conversation.query.get(conversation_id)
-
+            r = None
             for _request in conversation.requests:
                 if _request.connected_tutor_id == user.id:
                     r = _request

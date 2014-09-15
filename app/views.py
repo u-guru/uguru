@@ -1866,7 +1866,7 @@ def success():
                 u = User(
                         name = ajax_json['name'].title(),
                         password = password,
-                        email = ajax_json['email'],
+                        email = ajax_json['email'].lower(),
                         phone_number = None
                     )
                 u.last_active = datetime.now()

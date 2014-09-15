@@ -251,7 +251,7 @@ def daily_results_email(from_email, to_email):
     result = mandrill_client.messages.send(message=message)
 
 def daily_results_email_html(str_date):
-    from models import User
+    from models import User, Request
     from database import db_session
     from datetime import datetime
     from datetime import timedelta
@@ -259,28 +259,47 @@ def daily_results_email_html(str_date):
     now = datetime.now()
     today = datetime(*now.timetuple()[:3])
     day=today
-    day_after = today - timedelta(days=1)
+    semester_start = today - timedelta(days = 21)
 
-    day_student_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).all()
-    day_student_none_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == None).all()
-    day_student_fb_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'fb').all()
-    day_student_piazza_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'piazza').all()
-    day_student_cal_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'cal').all()
-    day_student_sproul_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'sproul').all()
-    day_tutor_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin != None).all()
-    day_tutor_guru_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin != None).filter(User.referral_code == 'guru').all()
-    day_tutor_none_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin != None).filter(User.referral_code == None).all()
-    day_requests = db_session.query(Request).filter(Request.time_created >= day).filter(Request.time_created <= day_after).all()         
+    day_student_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin == None).all()
+    day_student_login = db_session.query(User).filter(User.last_active >= day).filter(User.approved_by_admin == None).all()
+    day_student_none_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin == None).filter(User.referral_code == None).all()
+    day_student_fb_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin == None).filter(User.referral_code == 'fb').all()
+    day_student_piazza_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin == None).filter(User.referral_code == 'piazza').all()
+    day_student_cal_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin == None).filter(User.referral_code == 'cal').all()
+    day_student_sproul_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin == None).filter(User.referral_code == 'sproul').all()
+    day_tutor_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin != None).all()
+    day_tutor_login = db_session.query(User).filter(User.last_active >= day).filter(User.approved_by_admin != None).all()
+    day_tutor_guru_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin != None).filter(User.referral_code == 'guru').all()
+    day_tutor_none_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin != None).filter(User.referral_code == None).all()
+    day_requests = db_session.query(Request).filter(Request.time_created >= day).all()
+
+    total_signups = db_session.query(User).filter(User.time_created >= semester_start).all()
+    total_student_signup = db_session.query(User).filter(User.time_created >= semester_start).filter(User.approved_by_admin == None).all()
+    total_tutor_signup = db_session.query(User).filter(User.time_created >= semester_start).filter(User.approved_by_admin != None).all()
+    total_requests = day_requests = db_session.query(Request).filter(Request.time_created >= semester_start).all()    
 
     return """
     Daily stats for """ + str_date + """: 
     <br>
     <br>
+    <b>Daily Stats </b> <br>
     # of Student Requests: """ +  str(len(day_requests)) + """<br>
     # of Total Signups: """ +  str(len(day_student_signups) + len(day_tutor_signups))  + """<br>
     # of Student Signups: """ +  str(len(day_student_signups))  + """<br>
     # of Tutor Signups: """ +  str(len(day_tutor_signups))  + """<br>
     <br>
+    <b>Daily Activity Stats </b> <br>
+    # of Students Logged In: """+ str(len(day_student_login)) + """<br>
+    # of Tutors Logged In: """ + str(len(day_tutor_login)) + """<br>
+    <br>
+    <b>Accumulated Fa 14 Stats</b> <br>
+    Total Signups: """ + str(len(total_signups)) + """ <br>
+    Total Student Signups: """ + str(len(total_student_signup)) + """ <br>
+    Total Tutor Signups: """ + str(len(total_tutor_signup)) + """ <br>
+    Total Student Requests Made: """ + str(len(total_requests))+ """ <br>
+    <br>
+    Keep up the great work!
     <br>
     Samir
     """
