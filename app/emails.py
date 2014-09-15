@@ -287,25 +287,25 @@ def daily_results_email_html(str_date):
     if day_request_difference >= 0:
         day_request_difference_result = ' (+' + str(day_request_difference) + ')'
     else:
-        day_request_difference_result = ' (-' + str(day_request_difference) + ')'
+        day_request_difference_result = ' (' + str(day_request_difference) + ')'
 
     day_student_signup_difference = len(day_student_signups) - len(day_student_signups_yesterday)
     if day_student_signup_difference >= 0:
         day_student_signup_difference_result = ' (+' + str(day_student_signup_difference) + ')'
     else:
-        day_student_signup_difference_result = ' (-' + str(day_student_signup_difference) + ')'
+        day_student_signup_difference_result = ' (' + str(day_student_signup_difference) + ')'
 
     day_tutor_signup_difference = len(day_tutor_signups) - len(day_tutor_signups_yesterday)
     if day_tutor_signup_difference >= 0:
         day_tutor_signup_difference_result = ' (+' + str(day_tutor_signup_difference) + ')'
     else: 
-        day_tutor_signup_difference_result = ' (-' + str(day_tutor_signup_difference) + ')'
+        day_tutor_signup_difference_result = ' (' + str(day_tutor_signup_difference) + ')'
 
     day_total_difference = day_tutor_signup_difference + day_student_signup_difference
     if day_total_difference >= 0:
         day_total_difference_result = ' (+' + str(day_tutor_signup_difference) + ')'
     else:
-        day_total_difference_result = ' (-' + str(day_tutor_signup_difference) + ')'
+        day_total_difference_result = ' (' + str(day_tutor_signup_difference) + ')'
 
 
     return """
