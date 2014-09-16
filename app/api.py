@@ -480,7 +480,9 @@ def api(arg, _id):
         user = getUser()
         if user:
             if request.json.get('stripe-card-token'):
-                create_stripe_customer(request.json.get('stripe-card-token'), user)
+                status = create_stripe_customer(request.json.get('stripe-card-token'), user)
+                if status == 'error':
+                    return errors(['Your card has been declined'])
             if request.json.get('payment_plan'):
                 p = process_payment_plan(request.json.get('payment_plan'), user)
             session.pop('user_id')
@@ -702,14 +704,15 @@ def api(arg, _id):
                             )
                             p.stripe_charge_id = charge['id']
                             print p.stripe_charge_id
-                        except stripe.error.InvalidRequestError, e:
+                        except stripe.error.CardError, e:
                             if p.student_id == user.id:
-                                error_msg = "Sorry! The your card has been declined. Please update your payment info in your settings."
+                                error_msg = "Sorry! Your card has been declined. Please update your payment info in your settings > billing."
                             else:
                                 error_msg = "Sorry! The student's card has been declined. Please kindly ask them to update their information" 
                             return errors([error_msg])
                     else:
                         try: 
+                            stripe_charge = True
                             charge = stripe.Charge.create(
                                 amount = stripe_amount_cents,
                                 currency="usd",
@@ -719,7 +722,7 @@ def api(arg, _id):
                             p.stripe_charge_id = charge['id']
                             print p.stripe_charge_id
                         except stripe.error.CardError, e:
-                            error_msg = "Sorry! The your card has been declined. Please update your payment info in your settings."
+                            error_msg = "Sorry! Your card has been declined. Please update your payment info in your settings > billing."
                             return errors([error_msg])
                         except stripe.error.InvalidRequestError, e:
                             if p.student_id == user.id:
@@ -1005,7 +1008,9 @@ def api(arg, _id):
             if request.json.get('apn_token'):
                 user.apn_token = request.json.get('apn_token')
             if request.json.get('stripe-card-token'):
-                create_stripe_customer(request.json.get('stripe-card-token'), user)
+                status = create_stripe_customer(request.json.get('stripe-card-token'), user)
+                if status == 'error':
+                    return errors(['Your card was declined. Please try again or try another card.'])
                 if request.json.get('payment_plan'):
                     process_payment_plan(request.json.get('payment_plan'), user)
 
@@ -1322,6 +1327,14 @@ def api(arg, _id):
             tutor = User.query.get(tutor_id)
             print "tutor", print_user_details(tutor)
 
+            #Update request
+            request_id = current_notification.request_id
+            r = Request.query.get(request_id)
+            
+            skill = Skill.query.get(r.skill_id)
+            r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
+            r.time_connected = datetime.now()
+
             #Modify student notification
             current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
                 + skill_name.upper() + " tutor."
@@ -1331,15 +1344,7 @@ def api(arg, _id):
                 user.feed_notif += 1
                 current_notification.time_read = None
             current_notification.time_created = datetime.now()
-
-            #Update request
-            request_id = current_notification.request_id
-            r = Request.query.get(request_id)
-            
-            skill = Skill.query.get(r.skill_id)
             r.connected_tutor_id = tutor_id
-            r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
-            r.time_connected = datetime.now()
 
             for n in user_notifications[::-1]:
                 if n.request_id == r.id and n.custom_tag == 'student-cap-reached':
@@ -1418,6 +1423,17 @@ def api(arg, _id):
                     )   
                     p.stripe_charge_id = charge['id']
                     p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title()
+
+            #Modify student notification
+            current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
+                + skill_name.upper() + " tutor."
+            current_notification.feed_message_subtitle = '<b>Click here</b> to see next steps!'
+            current_notification.custom = 'student-accept-request'
+            if current_notification.time_read:
+                user.feed_notif += 1
+                current_notification.time_read = None
+            current_notification.time_created = datetime.now()
+            r.connected_tutor_id = tutor_id
 
             p.tutor_rate = r.connected_tutor_hourly
             p.student_paid_amount = r.connected_tutor_hourly * r.time_estimate
@@ -1855,10 +1871,13 @@ def send_apn(message, token):
     apns.gateway_server.send_notification(token, payload)
 
 def create_stripe_customer(token, user):
-    customer = stripe.Customer.create(
-                email=user.email,
-                card = token
-                )
+    try:
+        customer = stripe.Customer.create(
+                    email=user.email,
+                    card = token
+                    )
+    except stripe.error.CardError, e:
+        return 'error'
 
     user.customer_id = customer.id
     user.customer_last4 = customer['cards']['data'][0]['last4']
@@ -1867,6 +1886,7 @@ def create_stripe_customer(token, user):
     except:
         db_session.rollback()
         raise 
+    return 'success'
 
 def create_stripe_recipient(token, user):
     print "printing user"

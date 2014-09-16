@@ -140,10 +140,15 @@
                     data: JSON.stringify(data),
                     dataType: "json",
                     success:function(response) {
-                        data = {
-                            'notification-id':last_clicked_notif_index,
+                        if (response.errors) {
+                             $('#add-credit-modal-alert-'+(last_clicked_notif_index + 1)).text(response.errors);
+                             $('#add-credit-modal-alert-'+(last_clicked_notif_index + 1)).show();
+                            return;
+                        } else {
+                            data = {
+                                'notification-id':last_clicked_notif_index,
                             }
-
+                        }
                         $.ajax({
                                 type: "PUT",
                                 contentType: 'application/json;charset=UTF-8',

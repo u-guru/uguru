@@ -104,6 +104,11 @@
     width:500px;
   }
 
+  .sproul-signup-container {
+    padding-right:20% !important;
+    padding-left:20% !important;
+  }
+
 }
 
 /* Medium devices (desktops, 992px and up) */
@@ -166,5 +171,10 @@
   .testimonial-section-author {
     margin-left:12px;
     font-size:18px;
+  }
+
+  .sproul-signup-container {
+    padding-right:30% !important;
+    padding-left:30% !important;
   }
 }
