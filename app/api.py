@@ -753,7 +753,7 @@ def api(arg, _id):
                 if stripe_charge:
                     charge = charge['id']
                 else:
-                    charge = 'as9d0sudas' + p.id
+                    charge = 'as9d0sudas' + str(p.id)
 
 
 

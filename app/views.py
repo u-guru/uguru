@@ -1856,11 +1856,11 @@ def success():
                     from api import errors
                     return errors(['Something went wrong ... Try again!'])
 
-                u = User.query.filter_by(email=ajax_json['email']).first()
+                u = User.query.filter_by(email=ajax_json['email'].lower()).first()
                 
                 #Check if account already exists
                 if u and not u.fb_account:
-                        return jsonify(dict={'account-exists':True});
+                    return jsonify(dict={'account-exists':True});
 
                 if 'fb-signup' in ajax_json:
                     #They have a facebook account and they want to login
@@ -1872,6 +1872,9 @@ def success():
                 else:
                     password = md5(ajax_json['password']).hexdigest()
 
+
+                if u:
+                    return jsonify(dict={'account-exists':True});
 
                 if 'tutor-signup' in ajax_json: session['tutor-signup'] = True
 
@@ -2832,7 +2835,7 @@ def send_delayed_email(email_str, args):
         skill_name = args[1]
         student_canceled_email(User.query.get(user_id), skill_name)
 
-@periodic_task(run_every=crontab(minute=0, hour = 18))
+@periodic_task(run_every=crontab(minute=0, hour = 1))
 def test_periodic():
     if get_environment() == 'PRODUCTION':
         from emails import daily_results_email
