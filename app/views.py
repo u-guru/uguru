@@ -1851,6 +1851,11 @@ def success():
 
         if ajax_json.get('student-signup'):
             try: 
+
+                if not ajax_json.get('email'):
+                    from api import errors
+                    return errors(['Something went wrong ... Try again!'])
+
                 u = User.query.filter_by(email=ajax_json['email']).first()
                 
                 #Check if account already exists

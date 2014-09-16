@@ -578,6 +578,10 @@ $(document).ready(function(){
                 data: JSON.stringify(data_dict), 
                 dataType: "json",
                 success: function(result) {
+                  if (result.errors) {
+                    alert(result.errors);
+                    return;
+                  }
                   if (result.dict['account-exists']) {
                     if ($('#student-signup-email').val()) {
                       $('#signup-modal').modal('hide');

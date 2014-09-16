@@ -674,14 +674,13 @@ def api(arg, _id):
             #student is confirming
             if p.student_confirmed == False and p.student_id == user.id:
                 p.student_confirmed = True
+                stripe_charge = False
                 if not p.confirmed_payment_id:
                     orig_p = p
                 else:
                     orig_p = Payment.query.get(p.confirmed_payment_id)
 
                 if p.student_paid_amount > 0:
-                    stripe_charge = True
-                    
                     stripe_amount_cents = int(p.student_paid_amount * 100)
                     student = User.query.get(p.student_id)
                     
@@ -694,6 +693,7 @@ def api(arg, _id):
                         stripe_amount_cents = int(difference * 100)
                         student.credit = 0
                         try: 
+                            stripe_charge = True
                             charge = stripe.Charge.create(
                                 amount = stripe_amount_cents,
                                 currency="usd",
