@@ -228,7 +228,10 @@ def email_old_students():
     We text both you and your Gurus to make finding help even quicker!
     <br>
     <br>
-    Your opinion matters! Anytime you experience confusion or difficulties, email me at samir@uguru.me or text 813-500-9853. Your feedback is extremely important and we know it will make uGuru better!
+    Your opinion counts! Anytime you feel like the platform can be better or something isn't working, do not hesitate to email me at samir@uguru.me or text 813-500-9853. We reply quickly and are available around the clock for support. 
+    <br>
+    <br>
+    Remember to <a href='berkeley.uguru.me/settings/#prof'>update your profile and add classes from last semester!
     <br>
     <br>
     Cheers,
@@ -287,30 +290,38 @@ def email_old_tutors():
     Hope you had a fantastic summer! Are you ready to help your fellow Cal bears while making money?
     <br>
     <br>
-    While you were away this summer, we've been making some improvements to uGuru that we're really excited to share:
+    While you were away this summer, we've been making improvements to uGuru that we're really excited to share:
     <br>
     <br>
     <b> 1. More students us uGuru! </b>
     <br>
-    uGuru is spreading across campus like you wouldn't believe. We've been working hard to get the word out and are continuing to do so as you read this. What does this mean? More student users, which translates to more opportunities to fill your pockets with money.
+    uGuru is spreading across campus like you wouldn't believe, which means more tutoring opportunities for you!
     <br>
     <br>
-    <b> 2. We now take less </b>
+    <b> 2. You earn more now </b>
     <br>
-    We now only take 25% commission of your first session with a student, and 10% each time you meet with that student again. Compared to the 50% commission most agencies take, we think you're going to love us even more now.
+    We now take 25% commission of your first session with a student, and only 10% each time you meet with that student again (most agencies take about 50% per session).
     <br>
     <br>
     <b> 3. A better way to schedule </b>
     <br>
-    We've built an availability calendar into the Guru request form, meaning the hassles of scheduling with a student have disappeared.
+    We've built an availability calendar into the Guru request form, making it easy to schedule with your students.
     <br>
     <br>
     <b> 4. Texting </b>
     <br>
-    Accepting a student request quickly is extremely important. This is why we're rolling out text notifications, which allow you to accept requests even faster than before. If you happen to not want to use this feature, you can always disable it as you please.
+    We've also built text notifications that allow you to accept requests even faster. If you happen to not want to use this feature, you can always disable it at the <a href='berkeley.uguru.me/settings/'>settings</a> page. 
     <br>
     <br>
-    We are dedicated to our users! Anytime you experience confusion or difficulties, email samir@uguru.me or text 813-500-9853. Your feedback is extremely important and we know it will make uGuru better!
+    <b> 5. A new way you receive Guru requests </b>
+    <br>
+    We used to notify all Gurus of tutoring requests at the same time. To avoid competition, we now notify Gurus in order based on experience. Higher-rated Gurus and 1st-time Gurus are notified first.
+    <br>
+    <br>
+    Your opinion counts! Please let me know how we can do better by emailing me directly at samir@uguru.me or texting 813-500-9853. 
+    <br>
+    <br>
+    Remember to <a href='berkeley.uguru.me/settings/#prof'>update your profile and add classes</a> from last semester!
     <br>
     <br>
     Cheers,
@@ -321,7 +332,7 @@ def email_old_tutors():
 
 if arg == 'new_email_old_gurus':
     for user in User.query.all():
-        if user.skills:
+        if user.skills and user.name:
             user_name = user.name
             user_email = user.email
             mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
@@ -335,18 +346,18 @@ if arg == 'new_email_old_gurus':
 
             message = {
                 'html':html,
-                'subject': 'Important Changes to uGuru for Gurus',
+                'subject': '*|FNAME|*, Here Are Some Exciting Changes For Gurus',
                 'from_email': 'samir@uguru.me',
                 'from_name': 'Samir from uGuru',
                 'to': to_emails,
                 'headers': {'Reply-To': "samir@uguru.me"},
                 'important': True,
                 'merge_vars': [{
-                'rcpt':user.email,
+                'rcpt':user_email,
                 'vars': [
                         {
                             'name':"fname",
-                            'content':user.name.split(' ')[0].title()
+                            'content':user_name.split(' ')[0].title()
                         }
                     ]
                 }],
@@ -357,6 +368,7 @@ if arg == 'new_email_old_gurus':
             }
 
             result = mandrill_client.messages.send(message=message)
+            print user.id, user.name, user.email, 'email has sent'
 
 def approve_old_tutors():
     return """

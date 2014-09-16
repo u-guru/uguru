@@ -1600,6 +1600,8 @@ def notif_update():
         ajax_json = request.json
         print ajax_json
         user_id = session.get('user_id')
+        if not user_id:
+            return redirect(url_for('index'))
         user = User.query.get(user_id)
 
         if 'update-total-settings' in ajax_json:
