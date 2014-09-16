@@ -474,8 +474,13 @@ $(document).ready(function() {
             url: '/api/student_accept' ,
             data: JSON.stringify(data),
             dataType: "json",
-            success: function(result) {         
-                window.location.replace('/activity/');
+            success: function(result) {
+                if (result.errors) {
+                  $('#student-request-accept-alert-' + (last_clicked_notif_index + 1)).text(result.errors);
+                  $('#student-request-accept-alert-' + (last_clicked_notif_index + 1)).show();
+                } else {
+                  window.location.replace('/activity/');
+                }
             }
         }); 
     });

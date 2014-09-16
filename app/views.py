@@ -1208,7 +1208,7 @@ def update_requests():
             else:
                 current_notification.request_tutor_amount_hourly = r.student_estimated_hour
 
-            if calc_avg_rating(tutor)[0] < 4.5:
+            if calc_avg_rating(tutor)[0] < 4.0:
                 current_notification.request_tutor_amount_hourly = 0
                 hourly_amount = 0
             
@@ -2075,6 +2075,7 @@ def success():
 
                 #check if tutor is in tutor blacklist
                 if tutor.id in tutor_blacklist:
+                    r.requested_tutors.remove(tutor)
                     continue
 
                 if tutor.approved_by_admin:
@@ -2092,6 +2093,7 @@ def success():
                         tutor.notifications.append(notification)
                     else:
                         print tutor.name + ' is a tier 2 tutor'
+                        r.requested_tutors.remove(tutor)
                         tier_2_tutor_ids.append(tutor.id)
                         print tier_2_tutor_ids
 
@@ -2805,7 +2807,7 @@ def is_tier_one_tutor(tutor):
                 _index += 1 
     if _sum > 0:
         avg_rating = float (_sum) / float (_index)
-        if avg_rating >= 4.5:
+        if avg_rating >= 4.0:
             print tutor.name + ' avg rating is approved'
             return True
     return False
@@ -2851,18 +2853,40 @@ def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name
         print 'We have already accomodated this request. Tier 2 tutors will not get it anymore.'
         return
     student = User.query.get(user_id)
+    second_tier_tutors = []
     for tutor_id in tutor_id_arr:
         tutor = User.query.get(tutor_id)
+        second_tier_tutors.append(tutor)
+        r.requested_tutors.append(tutor)
         print tutor.name + ' received tier 2 request'
         if tutor.text_notification and tutor.phone_number:
             from emails import request_received_msg
-            message = request_received_msg(student, r, skill_name)
+            message = request_received_msg(student, tutor, r, skill_name)
             send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
         tutor.incoming_requests_to_tutor.append(r)
         from app.notifications import tutor_request_offer
         notification = tutor_request_offer(student, tutor, r, skill_name)
         db_session.add(notification)
         tutor.notifications.append(notification)
+
+
+    #Send email to tier 2 tutors
+    from emails import student_needs_help
+    mandrill_result, tutor_email_dict = student_needs_help(student, second_tier_tutors, skill_name, r)
+    for sent_email_dict in mandrill_result:
+        if tutor_email_dict.get(sent_email_dict['email']):
+            tutor = tutor_email_dict[sent_email_dict['email']]
+            print tutor.name + ' received tier 2 email'
+            email = Email(
+                tag='tutor-request', 
+                user_id=tutor.id, 
+                time_created=datetime.now(), 
+                mandrill_id = sent_email_dict['_id']
+                )
+            db_session.add(email)
+            tutor.emails.append(email)
+            r.emails.append(email)
+
     try:
         db_session.commit()
     except:

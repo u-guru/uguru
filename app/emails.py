@@ -905,7 +905,7 @@ def student_needs_help_html(student_name, class_name, request):
     <a href="http://beta.uguru.me/log_in"> Log in </a> to check exact availablilty and accept """ + student_name + """'s request on your feed page, or offer a different price.
     <br>
     <br>
-    <span style='font-size:12px; color:grey'>*If this is your first time Guru-ing on the platform, you must tutor for free until you have 4.5 stars average rating.</span>
+    <span style='font-size:12px; color:grey'>*If this is your first time Guru-ing on the platform, you must tutor for free until you have 4.0 stars average rating.</span>
     <br>
     <br>
     Samir<br>
@@ -923,7 +923,7 @@ def student_needs_help_text(student_name, class_name, request):
     """You could* make: $""" + str(request.time_estimate * tutor_rate) + """ ($"""+ str(tutor_rate) +"""/hr)\n""" + \
     """(You can also propose a different price!)\n""" +\
     """Login at http://berkeley.uguru.me/log_in/ to see more details. You can either accept the request on the feed page, or offer a different price.\n\n""" +\
-    """*If this is your first time Guru-ing on the platform, you must tutor for free until you have 4.5 stars average rating."""+\
+    """*If this is your first time Guru-ing on the platform, you must tutor for free until you have 4.0 stars average rating."""+\
     """Samir\nCo-founder"""
 
 def tutor_wants_to_help(student, tutor, course_name):
@@ -1781,7 +1781,7 @@ def welcome_uguru_tutor_html(user_name):
     We are excited to have you on board as a Cal Guru. Your role will be to save students who are lost in the dungeons of Moffit.
     <br>
     <br>
-    Since this is your first time tutoring with us, your current mission is to show your skills by earning a great rating during your first session. This session will be free to the student, so do your best to earn a 4.5 rating. As soon as you achieve that 4.5 rating, you'll be ready to set your own rates, be your own boss, and earn some extra cash. To get the full scoop on the Guru code, check out our <a href='tinyurl.com/uguru-q-a'> FAQ </a>.
+    Since this is your first time tutoring with us, your current mission is to show your skills by earning a great rating during your first session. This session will be free to the student, so do your best to earn a 4.0 rating. As soon as you achieve that 4.0 rating, you'll be ready to set your own rates, be your own boss, and earn some extra cash. To get the full scoop on the Guru code, check out our <a href='tinyurl.com/uguru-q-a'> FAQ </a>.
     <br>
     <br>
     Thank you """.encode('utf-8') + user_name.split(' ')[0] + """ for joining us! Go Bears! 
@@ -1848,7 +1848,7 @@ def request_received_msg(user, tutor, _request, skill):
     user_name = user.name.split(" ")[0].title()
     amount = _request.student_estimated_hour * _request.time_estimate
     from views import calc_avg_rating
-    if calc_avg_rating(tutor)[0] > 4.5:
+    if calc_avg_rating(tutor)[0] >= 4.0:
         msg = user_name + " needs your help with " + skill.upper() + " You can make up to $" + \
         str(amount) + ". Act fast and see if your schedules line up at http://berkeley.uguru.me."
     else:

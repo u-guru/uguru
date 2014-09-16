@@ -7,7 +7,7 @@
         {% set guru_profile_not_complete = false %}
 {% endif %}
 
-{% if notif.custom_tag == 'tutor-request-offer' and user.approved_by_admin and user_avg_rating[0] < 4.5%}
+{% if notif.custom_tag == 'tutor-request-offer' and user.approved_by_admin and user_avg_rating[0] < 4.0 %}
     {% set guru_not_ready = true %}
 {% else %}
     {% set guru_not_ready = false %}
@@ -99,7 +99,7 @@
         </label>
         {% endif %}
         <div id='guru-intro' class='block font-14'>
-            <p> 1. You can't ask for money until you average 4.5 stars (all you need is a 5 stars on this first session). </p>
+            <p> 1. You can't ask for money until you average 4.0 stars (all you need is a 5 stars on this first session). </p>
             <p> 2. Read more about why we do this <a href='tinyurl.com/uguru-q-a' class='blue-text'> here</a>. </p>
         </div>
         <br>
@@ -222,7 +222,7 @@
                 </span> 
                 {% else %}
                 First Time Guru Hourly Rate:
-                <span class='green-text'> <b>$<span id='student-offer-hourly-price-{{index}}'>0</span>/hr</b> </span> <br> <span class='grey-text font-12'> (${{request_dict[notif.request_id]['request'].student_estimated_hour}}/hr when you have 4.5 stars avg rating)</span>
+                <span class='green-text'> <b>$<span id='student-offer-hourly-price-{{index}}'>0</span>/hr</b> </span> <br> <span class='grey-text font-12'> (${{request_dict[notif.request_id]['request'].student_estimated_hour}}/hr when you have 4.0 stars avg rating)</span>
                 {% endif %}
                 
                 {% if notif.custom_tag == 'tutor-request-offer' and not notif.custom == 'tutor-accept-request' and not notif.status =='LATE' and not guru_not_ready %}

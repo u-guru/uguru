@@ -485,6 +485,8 @@ def api(arg, _id):
                     return errors(['Your card has been declined'])
             if request.json.get('payment_plan'):
                 p = process_payment_plan(request.json.get('payment_plan'), user)
+                if p == 'error':
+                    return errors(['Your card has been declined'])
             session.pop('user_id')
             response = {'success':True}
 
@@ -782,8 +784,8 @@ def api(arg, _id):
         if user:
             print request.json
             from app.views import calc_avg_rating
-            if calc_avg_rating(user)[0] < 4.5:
-                return errors(['Sorry! You cannot bill a student with less than a 4.5 star rating.'])
+            if calc_avg_rating(user)[0] < 4.0:
+                return errors(['Sorry! You cannot bill a student with less than a 4.0 star rating.'])
             conversation_id = request.json.get('submit-payment')
             total_time = request.json.get('total-time')
             hourly_price = request.json.get('price')
@@ -1012,7 +1014,9 @@ def api(arg, _id):
                 if status == 'error':
                     return errors(['Your card was declined. Please try again or try another card.'])
                 if request.json.get('payment_plan'):
-                    process_payment_plan(request.json.get('payment_plan'), user)
+                    p = process_payment_plan(request.json.get('payment_plan'), user)
+                    if p == 'error':
+                        return errors(['Your card has been declined'])
 
             if request.json.get('stripe_recipient_token'):
                 try:
@@ -1314,7 +1318,9 @@ def api(arg, _id):
 
             if request.json.get('payment_plan') and current_notification.request_tutor_amount_hourly != 0:
                 print "There was a payment plan selected, it was number " +str(request.json.get('payment_plan'))
-                process_payment_plan(request.json.get('payment_plan'), user)
+                p = process_payment_plan(request.json.get('payment_plan'), user)
+                if p == 'error':
+                    return errors(['Your card has been declined. Please update your card info in Settings > Billing.'])
 
 
             student = user
@@ -1403,24 +1409,29 @@ def api(arg, _id):
                     p.student_paid_amount = total_amount - user_credits
                     print "The student has credits, but not enough, so we are billing them $", p.student_paid_amount
                     p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title() +'. You used ' + str(user_credits) + ' credits, and were billed $' + str(p.student_paid_amount)
-                    
-                    charge = stripe.Charge.create(
-                        amount = int(p.student_paid_amount * 100),
-                        currency="usd",
-                        customer=student.customer_id,
-                        description="partial charge with credit usage"
-                    )   
-                    p.stripe_charge_id = charge['id']
+                    try: 
+                        charge = stripe.Charge.create(
+                            amount = int(p.student_paid_amount * 100),
+                            currency="usd",
+                            customer=student.customer_id,
+                            description="partial charge with credit usage"
+                        )   
+                        p.stripe_charge_id = charge['id']
+                    except stripe.error.CardError, e:
+                        return errors(['Your card has been declined. Please update in Settings > Billing.'])
 
             else:
                 print "The student has no credits, and is paying directly"
                 if r.connected_tutor_hourly != 0:
-                    charge = stripe.Charge.create(
-                        amount = int(total_amount * 100),
-                        currency="usd",
-                        customer=student.customer_id,
-                        description="amount for tutoring"
-                    )   
+                    try:
+                        charge = stripe.Charge.create(
+                            amount = int(total_amount * 100),
+                            currency="usd",
+                            customer=student.customer_id,
+                            description="amount for tutoring"
+                        )   
+                    except stripe.error.CardError, e:
+                        return errors(['Your card has been declined. Please update in Settings > Billing.'])
                     p.stripe_charge_id = charge['id']
                     p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title()
 
@@ -2149,13 +2160,16 @@ def process_payment_plan(plan_num, user):
     p.student_description = 'You purchased ' + str(plan_arr[1]) + " credits for $" + str(plan_arr[0]) + '.'
     p.student_paid_amount = plan_arr[0]
     p.student_id = user.id
+    try:
+        charge = stripe.Charge.create(
+            amount = int(plan_arr[0] * 100),
+            currency="usd",
+            customer=user.customer_id,
+            description="student purchased credits"
+        )
+    except stripe.error.CardError, e:
+        return 'error'
 
-    charge = stripe.Charge.create(
-        amount = int(plan_arr[0] * 100),
-        currency="usd",
-        customer=user.customer_id,
-        description="student purchased credits"
-    )
 
     p.stripe_charge_id = charge['id']
     user.payments.append(p)
