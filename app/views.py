@@ -2846,6 +2846,12 @@ def test_periodic():
         daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
         daily_results_email('samir@uguru.me', 'michael@uguru.me')
 
+@periodic_task(run_every=crontab(minute=59, hour = 6))
+def test_periodic():
+    if get_environment() == 'PRODUCTION':
+        from emails import daily_results_email
+        daily_results_email('samir@uguru.me', 'makhani.samir@gmail.com')
+
 @celery.task
 def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name):
     r = Request.query.get(request_id)
