@@ -816,7 +816,10 @@ $(document).ready(function(){
       //If they have already signed up
         request_form_complete = true;
         $('#signup-modal').modal('show');
+        $('#become-guru-text').hide();
         $('#alert-fields-student-signup-top').text('Please create an account before your request goes through!')
+        $('#alert-fields-student-signup-top').css('font-size', '18px');
+        $('#alert-fields-student-signup-top').css('margin-bottom', '15px');
         $('#alert-fields-student-signup-top').show();
         $('#student-next-link').show();
       } else {

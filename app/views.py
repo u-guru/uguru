@@ -2236,7 +2236,7 @@ def payments():
         user = User.query.get(session.get('user_id'))
         return render_template('payments.html', user=user)
     else:
-        return redirect(url_form('index'))
+        return redirect(url_for('index'))
 
 
 @app.route('/login/', methods=('GET', 'POST'))

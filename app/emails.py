@@ -898,7 +898,6 @@ def student_needs_help_html(student_name, class_name, request):
     <br>
     Preferred Location: """ + request.location+ """<br>
     Time Estimate: """ + str(request.time_estimate) + """ hours<br>
-    # of Students: """ + str(request.num_students) + """<br>
     You could* make: $""" + str(request.time_estimate*tutor_rate) +""" ($"""+str(tutor_rate) +"""/hr)<br>
     (You can also propose a different price!)
     <br>
@@ -920,7 +919,6 @@ def student_needs_help_text(student_name, class_name, request):
     return student_name + """ needs help with """ + class_name + """. Here's some info: \n\n""" + \
     """Preferred Location: """ + request.location+ """\n""" + \
     """Time Estimate: """ + str(request.time_estimate) + """ hours\n""" +\
-    """# of Students: """ + str(request.num_students) + """\n\n""" +\
     """You could* make: $""" + str(request.time_estimate * tutor_rate) + """ ($"""+ str(tutor_rate) +"""/hr)\n""" + \
     """(You can also propose a different price!)\n""" +\
     """Login at http://berkeley.uguru.me/log_in/ to see more details. You can either accept the request on the feed page, or offer a different price.\n\n""" +\
