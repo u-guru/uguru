@@ -385,11 +385,16 @@ def new_admin():
             day_student_fb_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'fb').all()
             day_student_piazza_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'piazza').all()
             day_student_cal_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'cal').all()
-            day_student_sproul_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin == None).filter(User.referral_code == 'sproul').all()
             day_tutor_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin != None).all()
             day_tutor_guru_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin != None).filter(User.referral_code == 'guru').all()
             day_tutor_none_signups = db_session.query(User).filter(User.time_created >= day).filter(User.time_created <= day_after).filter(User.approved_by_admin != None).filter(User.referral_code == None).all()
             day_requests = db_session.query(Request).filter(Request.time_created >= day).filter(Request.time_created <= day_after).all()         
+
+            day_student_sproul_signups = []
+
+            for user in (day_student_signups + day_tutor_signups):
+                if user.referral_code and 'sproul' in user.referral_code:
+                    day_student_sproul_signups.append(user)
 
             day_stats.append(
                     {
