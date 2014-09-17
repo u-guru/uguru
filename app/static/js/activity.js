@@ -867,7 +867,7 @@ $(document).ready(function() {
     });
 
     $('#feed-messages').on('click', 'a.cancel-request', function() {
-      if (confirm('Are you sure you want to cancel this request? It cannot be undone and there will no previous history of this request.')) {
+      if (confirm('Are you sure you want to cancel this request? It cannot be undone and there will no previous history of this request. Also, you cannot request the same course for the next 2 hours.')) {
         data = {
           'cancel-request': true,
           'notif-num': last_clicked_notif_index

@@ -1160,6 +1160,10 @@ def update_requests():
                 return errors(['Sorry! You were just a couple seconds late. This request has already been accepted by three other Gurus!'])
 
 
+            if r.connected_tutor_id and r.connected_tutor_id != user.id:
+                print "Student with accept button after match is trying to connect"
+                return errors(['Sorry! You were just a couple seconds late. The student has already chose a Guru'])
+
             r.committed_tutors.append(tutor)
             
             tutor = user
@@ -1980,6 +1984,7 @@ def success():
             user_id = session['user_id']
             from app.static.data.variations import courses_dict
             from app.static.data.short_variations import short_variations_dict
+
             
             original_skill_name = ajax_json['skill'].lower()
             skill_id = courses_dict[original_skill_name]
@@ -1988,6 +1993,19 @@ def success():
             u = User.query.get(user_id)
             print "===Printing details about the user who made this request==="
             print print_user_details(u)
+
+            print "Checking whether a similar request has been made in the past 2 couple of hours for the same skill"
+            previous_request = sorted(Request.query.filter_by(student_id=user_id, skill_id=skill_id).all(), key=lambda n:n.time_created, reverse = True)
+            if previous_request:
+                most_recent_time = previous_request[0].time_created
+                from api import get_time_diff_in_seconds
+                time_diff_in_seconds = get_time_diff_in_seconds(datetime.now(), most_recent_time)
+                if time_diff_in_seconds < 7200:
+                    from api import errors
+                    return errors(['Sorry! You must wait 2 hours before you make a request for ' + skill_name.upper() + ' again.'])
+
+
+
 
             if u.verified_tutor:
                 if skill in u.skills:

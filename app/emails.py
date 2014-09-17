@@ -260,7 +260,8 @@ def daily_results_email_html(str_date):
     today = datetime(*now.timetuple()[:3])
     yesterday = today - timedelta(days = 1)
     day=today
-    semester_start = today - timedelta(days = 21)
+
+    semester_start = User.query.get(1200).time_created
 
     day_student_signups = db_session.query(User).filter(User.time_created >= day).filter(User.approved_by_admin == None).all()
     day_student_signups_yesterday = db_session.query(User).filter(User.time_created < day).filter(User.time_created >= yesterday).filter(User.approved_by_admin == None).all()

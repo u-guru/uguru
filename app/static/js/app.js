@@ -908,6 +908,12 @@ $(document).ready(function(){
           data: JSON.stringify(data),
           dataType: "json", 
           success: function(result) {
+              if (result.errors) {
+                $('#alert-fields-request-form').text(result.errors);
+                $('#alert-fields-request-form').show();
+                $('#request-form-submit').hide();
+                return;
+              }
               if (result.dict['no-active-tutors']) {
                 $('#alert-fields-request-form').text("Sorry! We currently don't have tutors for this course. We've registered your request and will let you know immediately when we do!");
                 $('#alert-fields-request-form').show();

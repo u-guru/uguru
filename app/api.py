@@ -1488,6 +1488,7 @@ def api(arg, _id):
             #delete notifications
             for n in student.notifications:
                 if n.request_id and n.request_id == r.id and n.custom_tag == 'student-incoming-offer' and n.request_tutor_id != r.connected_tutor_id:
+                    print "Previous tutor incoming offer deleted. Tutor id:", str(n.request_tutor_id), "Notification id:", str(n.id)
                     student.notifications.remove(n)
 
 
