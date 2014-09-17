@@ -1303,9 +1303,9 @@ def tutor_payment_receipt_text(date, charge_id, tutor_name, hourly_price, hours,
 
 def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours, amount, student_name):
     return """
-    For your <b>next session with """ + student_name + """</b>, """ + student_name + """ won't need to submit a request again. 
+    For your next session with """ + student_name + """, """ + student_name + """ won't need to submit a request again. 
     Just coordinate through messaging and meet up. At the end of session, click the billing button on the top menu bar (the dollar sign button), find """ + \
-    student_name + """ in the <b>drop-down list</b>, and submit after confirming the amount with """ + student_name +""".
+    student_name + """ in the drop-down list, and submit after confirming the amount with """ + student_name +""".
     <br>
     <br>
     Receipt ID: """+  charge_id +"""<br>

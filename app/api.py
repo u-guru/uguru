@@ -635,8 +635,9 @@ def api(arg, _id):
                     skill_name = short_variations_dict[Skill.query.get(p.skill_id).name]
 
                     if total_amount > 0:
+                        print student, student.id, user, user.id
                         student_notification = student_payment_approval(student, user , p, total_amount, p.stripe_charge_id, skill_name, False)
-                        user.notifications.append(student_notification)
+                        student.notifications.append(student_notification)
                         db_session.add(student_notification)
 
                 rating = Rating(p.request_id)
