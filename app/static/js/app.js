@@ -697,7 +697,12 @@ $(document).ready(function(){
             data: JSON.stringify(data_dict), 
             dataType: "json",
             success: function(result) {
-              window.location.replace('/')
+              if (result.errors) {
+                $('#tutor-submit-app-alert').text(result.errors)
+                $('#tutor-submit-app-alert').show();
+              } else {
+                window.location.replace('/')
+              }
             }
           });
   });
@@ -726,6 +731,24 @@ $(document).ready(function(){
           $(this).parent().remove();
         });
     });
+
+    $('#tutor-profile-add-course-btn').click(function() {
+        var course_name = $('#courses-profile-input').val();
+        if (autocomplete_json.indexOf(course_name) == -1) {
+              alert('Please only add from the available options.');
+              return;
+        } 
+
+        $('.courses-add-container').append("<span class='tutor-app-course-tag'><span>" + course_name + 
+            '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="remove-skill-tutor-app">x</a></span>' );
+        $('#courses-profile-input').val('');
+
+        $('.tutor-app-course-tag .remove-skill-tutor-app').click(function() {
+          $(this).parent().remove();
+        });
+    });
+
+
 
     $('#tutor-app-dropdown li a').click(function() {
       $('#tutor-app-year').text($(this).text());
@@ -1634,6 +1657,8 @@ $(document).ready(function(){
               if (result.errors) {
                 $('#account-settings-alert').text(result.errors);
                 $('#account-settings-alert').show();
+                $('#account-profile-alert').text(result.errors);
+                $('#account-profile-alert').show();
               }
             }
       });

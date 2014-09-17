@@ -24,7 +24,7 @@
 		  <div class="row-fluid" style="width:100%;text-align:center">
 		      <div class="col-xs-12 col-md-12 col-sm-12" style="text-align:center">
 		        <h4 style="color:white;width:100%;font-weight:500">PLEASE RATE YOUR EXPERIENCE WITH
-		        	{% if user.skills %}
+		        	{% if user.pending_ratings_dict['tutor'].id == user.id %}
 		        	<span id="student-name">{{pending_ratings_dict['student'].name.split(" ")[0]|upper}}</span>
 		        	{% else %}
 		        	<span id="student-name">{{pending_ratings_dict['tutor'].name.split(" ")[0]|upper}}</span>
@@ -44,7 +44,7 @@
 			</div>
 			<div class="row">
 			  	<div class="user-profile" style="text-align:center">
-			  		{% if user.skills %}
+			  		{% if user.pending_ratings_dict['tutor'].id == user.id %}
 	  					<img id="student-profile-photo" style="height:120px;width:120px"  src="{{pending_ratings_dict['student'].profile_url}}" class="user-photo">
 			  		{% else %}
 		  				<img id="student-profile-photo" style="height:120px;width:120px"  src="{{pending_ratings_dict['tutor'].profile_url}}" class="user-photo">
@@ -52,7 +52,7 @@
 			  	</div>
 			</div>
 			<div style="text-align:center; color:grey;margin-top:-5px"class="row">
-				{% if user.skills %}
+				{% if user.pending_ratings_dict['tutor'].id == user.id %}
 	        	<span id="student-name">{{pending_ratings_dict['student'].name.split(" ")[0]|upper}}</span>
 	        	{% else %}
 	        	<span id="student-name">{{pending_ratings_dict['tutor'].name.split(" ")[0]|upper}}</span>
@@ -70,7 +70,7 @@
 			<br>
 			<div class="row">
 				<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
-					{% if user.skills %}
+					{% if user.pending_ratings_dict['tutor'].id == user.id %}
 					<textarea name="description" placeholder="How would you describe your experience? "id="student-rating-description" class="form-control" rows="3"></textarea>
 					{% else %}
 					<textarea name="description" placeholder="How would you describe your experience? How helpful was your Guru?"id="tutor-rating-description" class="form-control" rows="3"></textarea>
@@ -78,7 +78,7 @@
 				</div>
 			</div>
 			<div id="launch-profile-div" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4" style="padding-left:10px; padding-right:10px; margin-top:20px; margin-bottom:0px; display:block">
-				{% if user.skills %}
+				{% if user.pending_ratings_dict['tutor'].id == user.id %}
 				<a href="javascript:void(0)" id="submit-student-rating">
 				{% else %}
 				<a href="javascript:void(0)" id="submit-tutor-rating">
@@ -87,7 +87,7 @@
 					</div>
 				</a>
 			</div>
-			{% if user.skills %}
+			{% if user.pending_ratings_dict['tutor'].id == user.id %}
 			<div class="row" style="text-align:center;">
 				<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4">
 					<h6 style="color:red">  

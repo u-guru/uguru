@@ -1752,6 +1752,12 @@ def api(arg, _id):
 
     if arg =='guru-app':
         user_id = session.get('user_id')
+        
+        user = User.query.filter_by(phone_number = ajax_json['phone']).first()
+        if user:
+            return errors(['There already exists an account with this phone number. Try logging in with your other account, or contact us via support below.'])
+
+
         user = User.query.get(user_id)
 
         # user.school_email = ajax_json['school-email']

@@ -1275,7 +1275,6 @@ def student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly
     """Total Amount: $"""+ str(amount) +"""\n\n""" +\
     """Your payment is handled by Stripe, a secure third-party payment platform\n\n""" + \
     """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
-    """How helpful was """ + tutor_name + """? Rate and review """ + tutor_name + """ here.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def student_payment_receipt_connection_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount):
@@ -1290,8 +1289,8 @@ def student_payment_receipt_connection_text(date, charge_id, card_last4, tutor_n
 
 def tutor_payment_receipt_text(date, charge_id, tutor_name, hourly_price, hours, amount, student_name):
     return """For your next session with """ + student_name + """, """ + student_name + """ won't need to submit a """+ \
-    """request again. Just coordinate through messaging and meet up. At the end of the session, click "REQUEST PAYMENT" on """ +\
-    """your feed page, find """ + student_name + """ in the drop-down list, and submit after confirming the """ + \
+    """request again. Just coordinate through messaging and meet up. At the end of the session, click the billing button on """ +\
+    """the top menu bar (the dollar sign button), find """ + student_name + """ in the drop-down list, and submit after confirming the """ + \
     """amount with """ + student_name + """.\n\n""" + \
     """Receipt ID: """+  charge_id +"""\n""" +\
     """Time: """+  date +"""\n""" +\
@@ -1299,14 +1298,13 @@ def tutor_payment_receipt_text(date, charge_id, tutor_name, hourly_price, hours,
     """Hourly Price: $"""+ str(hourly_price) +"""\n""" +\
     """Hours: """+ str(hours) +""" hours\n""" +\
     """Total Earned: $"""+ str(amount * 0.9) +"""(after 10% uGuru fee)\n\n""" +\
-    """Your payment is handled by Stripe, a secure third-party payment platform\n\n""" + \
     """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours, amount, student_name):
     return """
     For your <b>next session with """ + student_name + """</b>, """ + student_name + """ won't need to submit a request again. 
-    Just coordinate through messaging and meet up. At the end of session, click "REQUEST PAYMENT" on your feed page, find """ + \
+    Just coordinate through messaging and meet up. At the end of session, click the billing button on the top menu bar (the dollar sign button), find """ + \
     student_name + """ in the <b>drop-down list</b>, and submit after confirming the amount with """ + student_name +""".
     <br>
     <br>
@@ -1316,9 +1314,6 @@ def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours,
     Hourly Price: $""" + str(hourly_price) + """<br>
     Hours: """ + str(hours) + """ hours<br>
     Total Earned: $""" + str(amount * 0.9) + """(after 10% to uGuru)
-    <br>
-    <br>
-    <i>Your payment is handled by <a href="http://stripe.com"> Stripe</a>, a secure third-party payment platform</i>
     <br>
     <br>
     If the above information is incorrect, please contact us by directly replying to this email.
