@@ -536,6 +536,8 @@ def admin_requests():
     if session.get('admin'):
         all_requests = []
         for r in Request.query.all()[::-1]:
+            if get_environment() == 'PRODUCTION' and r.id < 313:
+                continue
             request_dict = {}
             request_dict['emails-seen'] = 0
             request_dict['request'] = r
