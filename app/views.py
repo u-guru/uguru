@@ -2868,10 +2868,10 @@ def test_periodic():
     if get_environment() == 'PRODUCTION':
         from emails import daily_results_email
         daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
-        daily_results_email('samir@uguru.me', 'michael@uguru.me')
+        # daily_results_email('samir@uguru.me', 'michael@uguru.me')
 
 @periodic_task(run_every=crontab(minute=59, hour = 6))
-def test_periodic():
+def samir_results():
     if get_environment() == 'PRODUCTION':
         from emails import daily_results_email
         daily_results_email('samir@uguru.me', 'makhani.samir@gmail.com')
