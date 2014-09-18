@@ -2358,6 +2358,14 @@ def activity():
     tutor_dict = {}
     confirm_payments = []
 
+    browser=get_browser()
+    os=get_os()
+    platform=get_platform()
+
+    if 'chrome' not in get_browser().lower():
+        flash("uGuru's functionality works best in Chrome!", 'info')
+
+
     urgency_dict = ['ASAP', 'Tomorrow', 'This week']
 
     from app.static.data.prices import prices_dict
@@ -2928,6 +2936,26 @@ def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name
 def send_apn(message, token):
     payload = Payload(alert=message, sound='default', badge=1)
     apns.gateway_server.send_notification(token, payload)
+
+def get_browser():
+    import httpagentparser
+    userAgentString = request.headers.get('User-Agent')
+    return httpagentparser.detect(userAgentString)['browser']['name']
+
+def get_os():
+    import httpagentparser
+    userAgentString = request.headers.get('User-Agent')
+    return httpagentparser.detect(userAgentString)['os']['name']
+
+# def get_dist():
+#     import httpagentparser
+#     userAgentString = request.headers.get('User-Agent')
+#     return httpagentparser.detect(userAgentString)['dist']['name']
+
+def get_platform():
+    import httpagentparser
+    userAgentString = request.headers.get('User-Agent')
+    return httpagentparser.detect(userAgentString)['platform']['name']    
 
 def print_user_details(user):
         return str(user.id) + " " + str(user.name) + str(user.email)
