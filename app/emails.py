@@ -912,6 +912,9 @@ def student_needs_help_html(student_name, class_name, request):
     Co-Founder<br>
     Samir@uguru.me<br>
     (813) 500 - 9853
+    <br>
+    <br>
+    <span style='color:grey;font-size:8px;'>Unsubscribe from these emails <a href='http://berkeley.uguru.me/settings/'>here</a>. Make our platform better by providing feedback <a href='http://tinyurl.com/uguru-feedback-community'>here</a>.</span>
     """
 
 def student_needs_help_text(student_name, class_name, request):
@@ -1327,7 +1330,7 @@ def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours,
 
 def student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount):
     return """
-    For your <b>next session with """ + tutor_name + """</b>, you won't need to submit a request again. Just set up a time through our messaging."""+\
+    For your next session with """ + tutor_name + """, you won't need to submit a request again. Just set up a time through our messaging."""+\
     """ Forget about cash! We'll handle your payments - for free!
     <br>
     <br>

@@ -1167,6 +1167,7 @@ def update_requests():
 
             if r.connected_tutor_id and r.connected_tutor_id != user.id:
                 print "Student with accept button after match is trying to connect"
+                from api import errors
                 return errors(['Sorry! You were just a couple seconds late. The student has already chose a Guru'])
 
             r.committed_tutors.append(tutor)
@@ -2092,7 +2093,7 @@ def success():
 
                 #Check if conversation already exists between tutor + student. If so, we don't want to see it.
                 conversation = Conversation.query.filter_by(student_id=u.id, guru_id=tutor.id).first()
-                if conversation:
+                if conversation and conversation.requests and conversation.requests[0].skill_id == r.skill_id:
                     r.requested_tutors.remove(tutor)
                     continue
 
