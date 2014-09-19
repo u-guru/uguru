@@ -172,6 +172,7 @@ def apply_guru():
         user = User.query.get(session.get('user_id'))
         return render_template('apply-guru.html', user=user)
     else:
+        session['redirect'] = '/apply-guru/'
         return redirect(url_for('index'))
 
 
@@ -1889,7 +1890,9 @@ def success():
                 if u:
                     return jsonify(dict={'account-exists':True});
 
-                if 'tutor-signup' in ajax_json: session['tutor-signup'] = True
+                if 'tutor-signup' in ajax_json: 
+                    session['tutor-signup'] = True
+
                 if 'sproul-intern-referral' in ajax_json: session['referral'] = ajax_json['sproul-intern-referral'] + '(sproul)'
 
                 u = User(
@@ -1902,6 +1905,12 @@ def success():
                 u.fb_account = True if 'fb-signup' in ajax_json else False
                 db_session.add(u)
                 db_session.commit()
+
+                # if 'tutor-signup' not in ajax_json:
+                #     if os.environ.get('USER') == 'makhani':
+                #         send_student_drip_1.apply_async(args=[u.id], countdown=10)
+                #     elif get_environment() == 'PRODUCTION':
+                #         send_student_drip_1.apply_async(args=[u.id], countdown=7200)
 
                 if session.get('referral'):
                     u.referral_code = session['referral']
@@ -2294,6 +2303,11 @@ def login():
             if user and user.fb_account:
                 json['fb-account'] = True
             json['failure'] = False
+
+        if json.get('success') and session.get('redirect'):
+            json['redirect'] = session.get('redirect')
+            session.pop('redirect')
+
         return jsonify(json=json)
     if os.environ.get('PRODUCTION'):
         return redirect(url_for('index'))
@@ -2363,7 +2377,7 @@ def activity():
     platform=get_platform()
 
     if 'chrome' not in get_browser().lower():
-        flash("uGuru's functionality works best in Chrome!", 'info')
+        flash("For the best experience with uGuru, we highly recommend that you use <img src='/static/img/chrome.svg.png' style='padding-bottom:4px' height=20><b> Chrome</b> for your browser.", 'info')
 
 
     urgency_dict = ['ASAP', 'Tomorrow', 'This week']
@@ -2562,6 +2576,7 @@ def settings():
     user_id = session.get('user_id')
     not_launched_flag = False
     if not user_id:
+        session['redirect'] = '/settings/'
         return redirect(url_for('index'))
     user = User.query.get(user_id)
     if not session.get('admin'):
@@ -2932,6 +2947,190 @@ def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name
     except:
         db_session.rollback()
         raise 
+
+#Student Drip Campaign 1 - New to uGuru students
+@celery.task
+def send_student_drip_1(user_id):
+    request = Request.query.filter_by(student_id=user_id).first()
+    if not request:
+        user = User.query.get(user_id)
+        from emails import drip_student_signup_1
+        email_result = drip_student_signup_1(user)
+        email = Email(
+                    tag='student-drip-1', 
+                    user_id=user.id, 
+                    time_created=datetime.now(), 
+                    mandrill_id = email_result[0]['_id']
+                    )
+        db_session.add(email)
+        user.emails.append(email)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+        if os.environ.get('USER') == 'makhani':
+            send_student_drip_2.apply_async(args=[user.id], countdown = 10)
+        else:
+            send_student_drip_2.apply_async(args=[user.id], countdown = 86400)
+
+#Student Drip Campaign 2 - Become a tutor + free tutors
+@celery.task
+def send_student_drip_2(user_id):
+    request = Request.query.filter_by(student_id=user_id).first()
+    if not request:
+        user = User.query.get(user_id)
+        from emails import drip_student_signup_2
+        email_result = drip_student_signup_2(user)
+        email = Email(
+                    tag='student-drip-2', 
+                    user_id=user.id, 
+                    time_created=datetime.now(), 
+                    mandrill_id = email_result[0]['_id']
+                    )
+        db_session.add(email)
+        user.emails.append(email)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+        if os.environ.get('USER') == 'makhani':
+            if user.credit == 5:
+                send_student_drip_3.apply_async(args=[user.id], countdown = 10)
+            else:
+                send_student_drip_4.apply_async(args=[user.id], countdown = 10)
+        elif get_environment() == 'PRODUCTION':
+            if user.credit == 5:
+                send_student_drip_3.apply_async(args=[user.id], countdown = (86400 * 3))
+            else:
+                send_student_drip_4.apply_async(args=[user.id], countdown = (86400 * 3))
+
+
+#Student Drip Campaign 3 - Free tutoring sessions
+@celery.task
+def send_student_drip_3(user_id):
+    request = Request.query.filter_by(student_id=user_id).first()
+    if not request:
+        user = User.query.get(user_id)
+        from emails import drip_student_signup_3
+        email_result = drip_student_signup_3(user)
+        email = Email(
+                    tag='student-drip-3', 
+                    user_id=user.id, 
+                    time_created=datetime.now(), 
+                    mandrill_id = email_result[0]['_id']
+                    )
+        db_session.add(email)
+        user.emails.append(email)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+        if os.environ.get('USER') == 'makhani':
+            send_student_drip_5.apply_async(args=[user.id], countdown = 10)
+        elif get_environment() == 'PRODUCTION':
+            send_student_drip_5.apply_async(args=[user.id], countdown = (86400 * 7))
+
+@celery.task
+def send_student_drip_4(user_id):
+    request = Request.query.filter_by(student_id=user_id).first()
+    if not request:
+        user = User.query.get(user_id)
+        user.credit = user.credit + 5
+        from emails import drip_student_signup_4
+        email_result = drip_student_signup_4(user)
+        email = Email(
+                    tag='student-drip-4', 
+                    user_id=user.id, 
+                    time_created=datetime.now(), 
+                    mandrill_id = email_result[0]['_id']
+                    )
+        db_session.add(email)
+        user.emails.append(email)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+        if os.environ.get('USER') == 'makhani':
+            send_student_drip_5.apply_async(args=[user.id], countdown = 10)
+        elif get_environment() == 'PRODUCTION':
+            send_student_drip_5.apply_async(args=[user.id], countdown = (86400 * 7))
+
+@celery.task
+def send_student_drip_5(user_id):
+    request = Request.query.filter_by(student_id=user_id).first()
+    if not request:
+        user = User.query.get(user_id)
+        from emails import drip_student_signup_5
+        email_result = drip_student_signup_5(user)
+        email = Email(
+                    tag='student-drip-5', 
+                    user_id=user.id, 
+                    time_created=datetime.now(), 
+                    mandrill_id = email_result[0]['_id']
+                    )
+        db_session.add(email)
+        user.emails.append(email)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+        if os.environ.get('USER') == 'makhani':
+            send_student_drip_6.apply_async(args=[user.id], countdown = 10)
+        elif get_environment() == 'PRODUCTION':
+            send_student_drip_6.apply_async(args=[user.id], countdown = (86400 * 7))
+
+@celery.task
+def send_student_drip_6(user_id):
+    request = Request.query.filter_by(student_id=user_id).first()
+    if not request:
+        user = User.query.get(user_id)
+        user.credit = user.credit + 5
+        from emails import drip_student_signup_6
+        email_result = drip_student_signup_6(user)
+        email = Email(
+                    tag='student-drip-6', 
+                    user_id=user.id, 
+                    time_created=datetime.now(), 
+                    mandrill_id = email_result[0]['_id']
+                    )
+        db_session.add(email)
+        user.emails.append(email)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+        if os.environ.get('USER') == 'makhani':
+            send_student_drip_7.apply_async(args=[user.id], countdown = 10)
+        elif get_environment() == 'PRODUCTION':
+            send_student_drip_7.apply_async(args=[user.id], countdown = (86400 * 7))
+
+@celery.task
+def send_student_drip_7(user_id):
+    request = Request.query.filter_by(student_id=user_id).first()
+    if not request:
+        user = User.query.get(user_id)
+        from emails import drip_student_signup_7
+        email_result = drip_student_signup_7(user)
+        email = Email(
+                        tag='student-drip-7', 
+                        user_id=user.id, 
+                        time_created=datetime.now(), 
+                        mandrill_id = email_result[0]['_id']
+                    )
+        db_session.add(email)
+        user.emails.append(email)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
 
 def send_apn(message, token):
     payload = Payload(alert=message, sound='default', badge=1)

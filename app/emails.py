@@ -425,10 +425,10 @@ def sign_up_caltopia_tutor(user):
 
 def sign_up_caltopia_tutor_html(user_name):
     return """
-    Hi """ + user_name + """
+    Hi """ + user_name + """,
     <br>
     <br>
-    You are only a couple steps away from receiving student requests and earning side cash! 
+    You are only a couple steps away from receiving student requests and earning side cash!
     <br>
     <br>
     Take 2 minutes to <a href="http://berkeley.uguru.me/settings/#prof">to set up your profile</a> (picture, major, year, and introduction) so students feel more comfortable picking you as their Guru.
@@ -445,7 +445,291 @@ def sign_up_caltopia_tutor_html(user_name):
     Samir@uguru.me<br>
     (813) 500 - 9853
     """
+def drip_student_signup_1(user):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    name = user.name.split(" ")[0]
+    email = user.email
+    html = drip_student_signup_html_1(name)
 
+    message = {
+        'html':html,
+        'subject': "Just in case you didn't know",
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from uGuru',
+        'to': [{'email':email, 'name':name, 'type':'to'}],
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['student-drip-campaign', 'student-drip-campaign-1']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+    return result
+
+
+def drip_student_signup_html_1(user_name):
+    return """
+    Hey """ + user_name + """,
+    <br>
+    <br>
+    Since you are new to <a href='http://uguru.me'>uGuru</a>, I want to make sure you know how to get help for your classes.
+    <br>
+    <br>
+    Just <a href='http://berkeley.uguru.me/log_in/'>log in</a> to your account and hit the blue button that says "Get Help And Ace Your Classes". Put in the class, professor, when and where you'd like to meet, and Gurus will get back to you right away.
+    <br>
+    <br>
+    Click <a href='http://berkeley.uguru.me/activity/'>HERE</a> and find a Guru. 
+    <br>
+    <br>
+    Let me know if there's anything else I can help with!
+    <br>
+    <br>
+    Samir
+    <br>
+    <br>
+    <span style='color:grey-text; font-size:10px'>If you don't want to hear from me, click <a href='berkeley.uguru.me/settings/'>here</a></span>
+    """
+
+def drip_student_signup_2(user):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    name = user.name.split(" ")[0]
+    email = user.email
+    html = drip_student_signup_html_2(name)
+
+    message = {
+        'html':html,
+        'subject': "The free tutoring sessions",
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from uGuru',
+        'to': [{'email':email, 'name':name, 'type':'to'}],
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['student-drip-campaign', 'student-drip-campaign-2']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+    return result
+
+def drip_student_signup_html_2(user_name):
+    return """
+    Hey """ + user_name + """,
+    <br>
+    <br>
+    I completely forgot to mention! Since <a href='http://uguru.me'>uGuru</a> is new, there are many 1st-time Gurus that offer free sessions. <a href='berkeley.uguru.me/activity/'>Request help</a> for a difficult class that you are taking now to try it out.
+    <br>
+    <br>
+    Also, don't forget to <a href='http://berkeley.uguru.me/apply-guru/'>become a Guru</a> for classes that you are doing well in! It's a good way to earn money at your own schedule.
+    <br>
+    <br>
+    Samir
+    <br>
+    <br>
+    <span style='color:grey-text; font-size:10px'>If you don't want to hear from me, click <a href='http://berkeley.uguru.me/settings/'>here</a></span>
+    """
+
+def drip_student_signup_3(user):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    name = user.name.split(" ")[0]
+    email = user.email
+    html = drip_student_signup_html_3(name)
+
+    message = {
+        'html':html,
+        'subject': "The $5 in your account",
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from uGuru',
+        'to': [{'email':email, 'name':name, 'type':'to'}],
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['student-drip-campaign', 'student-drip-campaign-3']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+    return result
+
+def drip_student_signup_html_3(user_name):
+    return """
+    Hey """ + user_name + """,
+    <br>
+    <br>
+    I just wanted to remind you to take advantage of that free $5 you earned before it expires. 93% of the Cal students who tried a tutoring session on <a href='http://uguru.me'>uGuru</a> said it helped them get a better grade, so I'd really recommend it.
+    <br>
+    <br>
+    Btw, you can earn extra $5 for every friend that tries <a href='http://uguru.me'>uGuru</a> with your own referral code.
+    <br>
+    <br>
+    Samir
+    <br>
+    <br>
+    <span style='color:grey-text; font-size:10px'>If you don't want to hear from me, click <a href='http://berkeley.uguru.me/settings/'>here</a></span>
+    """
+
+def drip_student_signup_4(user):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    name = user.name.split(" ")[0]
+    email = user.email
+    html = drip_student_signup_html_4(name)
+
+    message = {
+        'html':html,
+        'subject': "I decided to give you $5 for free",
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from uGuru',
+        'to': [{'email':email, 'name':name, 'type':'to'}],
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['student-drip-campaign', 'student-drip-campaign-4']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+    return result
+
+
+def drip_student_signup_html_4(user_name):
+    return """
+    Hey """ + user_name + """,
+    <br>
+    <br>
+    I just added $5 credits to your account. 93% of the Cal students who tried a tutoring session on <a href='http://uguru.me'>uGuru</a> said it helped them get a better grade, so I'd really recommend it.
+    <br>
+    <br>
+    Btw, you can earn extra $5 for every friend that tries <a href='http://uguru.me'>uGuru</a> with your own referral code.
+    <br>
+    <br>
+    Samir
+    <br>
+    <br>
+    <span style='color:grey-text; font-size:10px'>If you don't want to hear from me, click <a href='http://berkeley.uguru.me/settings/'>here</a></span>
+    """
+    
+def drip_student_signup_5(user):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    name = user.name.split(" ")[0]
+    email = user.email
+    html = drip_student_signup_html_5(name)
+
+    message = {
+        'html':html,
+        'subject': "Your classes",
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from uGuru',
+        'to': [{'email':email, 'name':name, 'type':'to'}],
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['student-drip-campaign', 'student-drip-campaign-5']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+    return result
+
+
+def drip_student_signup_html_5(user_name):
+    return """
+    """ + user_name.title() + """,
+    <br>
+    <br>
+    How are you classes treating you so far? Some of these classes are just ridiculous, so if you are struggling with any of them, don't forget to get help on <a href='http://uguru/me'>uGuru</a>. Use your free credits if you still have them, or get a free session with one of the 1st-time Gurus to save money.
+    <br>
+    <br>
+    Samir
+    <br>
+    <br>
+    <span style='color:grey-text; font-size:10px'>If you don't want to hear from me, click <a href='berkeley.uguru.me/settings/'>here</a></span>
+    """
+
+def drip_student_signup_6(user):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    name = user.name.split(" ")[0]
+    email = user.email
+    html = drip_student_signup_html_6(name)
+
+    message = {
+        'html':html,
+        'subject': name + " - 1 quick question",
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from uGuru',
+        'to': [{'email':email, 'name':name, 'type':'to'}],
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['student-drip-campaign', 'student-drip-campaign-6']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+    return result
+
+def drip_student_signup_html_6(user_name):
+    return """
+    Hey """ + user_name.title() + """,
+    <br>
+    <br>
+    Can I personally give you extra $5 to try <a href='http://uguru/me'>uGuru</a>? I just added it to your account. Log in here to get it, and get a Guru who has aced the same class to help you right away.
+    <br>
+    <br>
+    I really hope you can use <a href=''http://uguru.me'>uGuru</a> to make studying less of a pain!
+    <br>
+    <br>
+    Samir
+    <br>
+    <br>
+    <span style='color:grey-text; font-size:10px'>If you don't want to hear from me, click <a href='berkeley.uguru.me/settings/'>here</a></span>
+    """
+
+def drip_student_signup_7(user):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    name = user.name.split(" ")[0]
+    email = user.email
+    html = drip_student_signup_html_7(name)
+
+    message = {
+        'html':html,
+        'subject': "Checking in with you",
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from uGuru',
+        'to': [{'email':email, 'name':name, 'type':'to'}],
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['student-drip-campaign', 'student-drip-campaign-7']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+    return result
+
+def drip_student_signup_html_7(user_name):
+    return """
+    Hey """ + user_name.title() + """,
+    <br>
+    <br>
+    How are classes for you? More and more of your classmates are using <a href='http://uguru.me'>uGuru</a> to get good grades. I'd really use the <a href='berkeley'>free credits and try it out before they expire. It's quick and easy<a href='berkeley'>!
+    <br>
+    <br>
+    If you are doing well with your classes, don't forget to also <a href='berkeley.uguru.me/apply-guru/'>become a Guru</a> and make money during your free time!
+    <br>
+    <br>
+    Samir
+    <br>
+    <br>
+    <span style='color:grey-text; font-size:10px'>If you don't want to hear from me, click <a href='berkeley.uguru.me/settings/'>here</a></span>
+    """
 
 def send_parent_confirmation(user, payment, amount_credits):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)

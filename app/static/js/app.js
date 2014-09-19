@@ -1185,6 +1185,12 @@ $(document).ready(function(){
             if (result.json['admin']) {
               window.location.replace('/new-admin/');
             }
+            
+            if (result.json['success'] && result.json['redirect']) {
+              window.location.replace(result.json['redirect']); 
+              return;
+            }
+
             if (result.json['success']) {
                 window.location.replace('/activity/');
             } else {
