@@ -679,10 +679,10 @@ def drip_student_signup_html_6(user_name):
     Hey """ + user_name.title() + """,
     <br>
     <br>
-    Can I personally give you extra $5 to try <a href='http://uguru/me'>uGuru</a>? I just added it to your account. Log in here to get it, and get a Guru who has aced the same class to help you right away.
+    Can I personally give you extra $5 to try <a href='http://uguru/me'>uGuru</a>? I just added it to your account. <a href='http://berkeley.uguru.me/activity/'>Log in here</a> to get it, and get a Guru who has aced the same class to help you right away.
     <br>
     <br>
-    I really hope you can use <a href=''http://uguru.me'>uGuru</a> to make studying less of a pain!
+    I really hope you can use <a href='http://uguru.me'>uGuru</a> to make studying less of a pain!
     <br>
     <br>
     Samir
@@ -719,7 +719,7 @@ def drip_student_signup_html_7(user_name):
     Hey """ + user_name.title() + """,
     <br>
     <br>
-    How are classes for you? More and more of your classmates are using <a href='http://uguru.me'>uGuru</a> to get good grades. I'd really use the <a href='berkeley'>free credits and try it out before they expire. It's quick and easy<a href='berkeley'>!
+    How are classes for you? More and more of your classmates are using <a href='http://uguru.me'>uGuru</a> to get good grades. I'd really use the free credits and <a href='http://berkeley.uguru.me/activity/#request-form'>try it out</a> before they expire. It's quick and easy<a href='berkeley'>!
     <br>
     <br>
     If you are doing well with your classes, don't forget to also <a href='berkeley.uguru.me/apply-guru/'>become a Guru</a> and make money during your free time!
@@ -1582,7 +1582,7 @@ def student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly
     """Hourly Price: $"""+ str(hourly_price) +"""\n""" +\
     """Hours: """+ str(hours) +""" hours\n""" +\
     """Total Amount: $"""+ str(amount) +"""\n\n""" +\
-    """Your payment is handled by Stripe, a secure third-party payment platform\n\n""" + \
+    """Your payment is handled by Stripe, a secure third-party payment platform\n\n""" +\
     """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
@@ -1600,13 +1600,13 @@ def tutor_payment_receipt_text(date, charge_id, tutor_name, hourly_price, hours,
     return """For your next session with """ + student_name + """, """ + student_name + """ won't need to submit a """+ \
     """request again. Just coordinate through messaging and meet up. At the end of the session, click the billing button on """ +\
     """the top menu bar (the dollar sign button), find """ + student_name + """ in the drop-down list, and submit after confirming the """ + \
-    """amount with """ + student_name + """.\n\n""" + \
+    """amount with """ + student_name + """.\n\n""" +\
     """Receipt ID: """+  charge_id +"""\n""" +\
     """Time: """+  date +"""\n""" +\
     """Student Name: """+ tutor_name +"""\n""" +\
     """Hourly Price: $"""+ str(hourly_price) +"""\n""" +\
     """Hours: """+ str(hours) +""" hours\n""" +\
-    """Total Earned: $"""+ str(amount * 0.9) +"""(after 10% uGuru fee)\n\n""" +\
+    """Total Earned: $"""+ str(amount * 0.9) +"""(after 10%% to uGuru)\n\n""" +\
     """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
@@ -1622,7 +1622,7 @@ def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours,
     Student Name: """+  tutor_name +"""<br>
     Hourly Price: $""" + str(hourly_price) + """<br>
     Hours: """ + str(hours) + """ hours<br>
-    Total Earned: $""" + str(amount * 0.9) + """(after 10% to uGuru)
+    Total Earned: $""" + str(amount * 0.9) + """(after 10%% to uGuru)
     <br>
     <br>
     If the above information is incorrect, please contact us by directly replying to this email.

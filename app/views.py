@@ -1906,11 +1906,11 @@ def success():
                 db_session.add(u)
                 db_session.commit()
 
-                # if 'tutor-signup' not in ajax_json:
-                #     if os.environ.get('USER') == 'makhani':
-                #         send_student_drip_1.apply_async(args=[u.id], countdown=10)
-                #     elif get_environment() == 'PRODUCTION':
-                #         send_student_drip_1.apply_async(args=[u.id], countdown=7200)
+                if 'tutor-signup' not in ajax_json:
+                    if os.environ.get('USER') == 'makhani':
+                        send_student_drip_1.apply_async(args=[u.id], countdown=10)
+                    elif get_environment() == 'PRODUCTION':
+                        send_student_drip_1.apply_async(args=[u.id], countdown=7200)
 
                 if session.get('referral'):
                     u.referral_code = session['referral']
@@ -2354,6 +2354,7 @@ def tutorsignup1():
 @app.route('/activity/', methods=('GET', 'POST'))
 def activity():
     if not session.get('user_id'):
+        session['redirect'] = '/activity/'
         return redirect(url_for('index'))
     user_id = session.get('user_id')
     user = User.query.get(user_id)
