@@ -125,6 +125,10 @@ function statusChangeCallback(response) {
         dataType: "json",
         success: function(result) {
             if (result.dict['fb-account-exists']) {
+              if (result.dict['redirect']) {
+                window.location.replace(result.dict['redirect']); 
+                return;
+              }
               window.location.replace('/');
             }
 

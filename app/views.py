@@ -1881,7 +1881,11 @@ def success():
                     if u and u.fb_account:
                         user_id = u.id
                         authenticate(user_id)
-                        return jsonify(dict={'fb-account-exists': True});
+                        fb_result_dict = {'fb-account-exists': True}
+                        if session.get('redirect'):
+                            fb_result_dict['redirect'] = session.get('redirect')
+                            session.pop('redirect')
+                        return jsonify(dict=fb_result_dict);
                     password = ''
                 else:
                     password = md5(ajax_json['password']).hexdigest()
