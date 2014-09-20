@@ -173,7 +173,7 @@ def apply_guru():
         return render_template('apply-guru.html', user=user)
     else:
         session['redirect'] = '/apply-guru/'
-        return redirect(url_for('index'))
+        return redirect('/log_in/')
 
 
 
@@ -1906,11 +1906,11 @@ def success():
                 db_session.add(u)
                 db_session.commit()
 
-                if 'tutor-signup' not in ajax_json:
-                    if os.environ.get('USER') == 'makhani':
-                        send_student_drip_1.apply_async(args=[u.id], countdown=10)
-                    elif get_environment() == 'PRODUCTION':
-                        send_student_drip_1.apply_async(args=[u.id], countdown=7200)
+                # if 'tutor-signup' not in ajax_json:
+                #     if os.environ.get('USER') == 'makhani':
+                #         send_student_drip_1.apply_async(args=[u.id], countdown=10)
+                #     elif get_environment() == 'PRODUCTION':
+                #         send_student_drip_1.apply_async(args=[u.id], countdown=7200)
 
                 if session.get('referral'):
                     u.referral_code = session['referral']
@@ -2351,11 +2351,21 @@ def tutorsignup1():
         return redirect('/')
     return render_template('tutorsignup1.html', form=form)
 
+@app.route('/activity/request/')
+def activity_request():
+    user_id = session.get('user_id')
+    if not user_id:
+        session['redirect'] = '/activity/#request'
+        return redirect('/log_in/')
+    else:
+        return redirect('/activity/#request')
+
+
 @app.route('/activity/', methods=('GET', 'POST'))
 def activity():
     if not session.get('user_id'):
         session['redirect'] = '/activity/'
-        return redirect(url_for('index'))
+        return redirect('/log_in/')
     user_id = session.get('user_id')
     user = User.query.get(user_id)
     if not session.get('admin'):
@@ -2374,10 +2384,8 @@ def activity():
     confirm_payments = []
 
     browser=get_browser()
-    os=get_os()
-    platform=get_platform()
 
-    if 'chrome' not in get_browser().lower():
+    if browser and 'chrome' not in get_browser().lower():
         flash("For the best experience with uGuru, we highly recommend that you use <img src='/static/img/chrome.svg.png' style='padding-bottom:4px' height=20><b> Chrome</b> for your browser.", 'info')
 
 
@@ -2572,13 +2580,43 @@ def tutorsignup2():
 def howitworks():
     return render_template('howitworks.html')
 
+@app.route('/settings/referral/')
+def settings_referral():
+    user_id = session.get('user_id')
+    if not user_id:
+        session['redirect'] = '/settings/#referral'
+        return redirect('/log_in/')
+    else:
+        return redirect('/settings/#referral')
+
+@app.route('/settings/billing/')
+def settings_billing():
+    user_id = session.get('user_id')
+    if not user_id:
+        session['redirect'] = '/settings/#billing'
+        return redirect('/log_in/')
+    else:
+        return redirect('/settings/#billing')
+
+@app.route('/settings/profile/')
+def settings_profile():
+    user_id = session.get('user_id')
+    if not user_id:
+        session['redirect'] = '/settings/#prof'
+        return redirect('/log_in/')
+    else:
+        return redirect('/settings/#prof')
+
+
 @app.route('/settings/')
 def settings():
     user_id = session.get('user_id')
     not_launched_flag = False
+    print "=======This is being printed"
+    print request.url
     if not user_id:
         session['redirect'] = '/settings/'
-        return redirect(url_for('index'))
+        return redirect('/log_in/')
     user = User.query.get(user_id)
     if not session.get('admin'):
         user.last_active = datetime.now()
@@ -3139,13 +3177,17 @@ def send_apn(message, token):
 
 def get_browser():
     import httpagentparser
-    userAgentString = request.headers.get('User-Agent')
-    return httpagentparser.detect(userAgentString)['browser']['name']
+    userAgentString = httpagentparser.detect(request.headers.get('User-Agent'))
+    if userAgentString.get('browser'):
+        return userAgentString['browser']['name']
+    return None
 
 def get_os():
     import httpagentparser
-    userAgentString = request.headers.get('User-Agent')
-    return httpagentparser.detect(userAgentString)['os']['name']
+    userAgentString = httpagentparser.detect(request.headers.get('User-Agent'))
+    if userAgentString.get('os'):
+        return userAgentString['os']['name']
+    return None
 
 # def get_dist():
 #     import httpagentparser

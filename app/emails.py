@@ -480,7 +480,7 @@ def drip_student_signup_html_1(user_name):
     Just <a href='http://berkeley.uguru.me/log_in/'>log in</a> to your account and hit the blue button that says "Get Help And Ace Your Classes". Put in the class, professor, when and where you'd like to meet, and Gurus will get back to you right away.
     <br>
     <br>
-    Click <a href='http://berkeley.uguru.me/activity/'>HERE</a> and find a Guru. 
+    Click <a href='http://berkeley.uguru.me/activity/request/'>HERE</a> and find a Guru. 
     <br>
     <br>
     Let me know if there's anything else I can help with!
@@ -520,7 +520,7 @@ def drip_student_signup_html_2(user_name):
     Hey """ + user_name + """,
     <br>
     <br>
-    I completely forgot to mention! Since <a href='http://uguru.me'>uGuru</a> is new, there are many 1st-time Gurus that offer free sessions. <a href='berkeley.uguru.me/activity/'>Request help</a> for a difficult class that you are taking now to try it out.
+    I completely forgot to mention! Since <a href='http://uguru.me'>uGuru</a> is new, there are many 1st-time Gurus that offer free sessions. <a href='berkeley.uguru.me/activity/request/'>Request help</a> for a difficult class that you are taking now to try it out.
     <br>
     <br>
     Also, don't forget to <a href='http://berkeley.uguru.me/apply-guru/'>become a Guru</a> for classes that you are doing well in! It's a good way to earn money at your own schedule.
@@ -563,7 +563,7 @@ def drip_student_signup_html_3(user_name):
     I just wanted to remind you to take advantage of that free $5 you earned before it expires. 93% of the Cal students who tried a tutoring session on <a href='http://uguru.me'>uGuru</a> said it helped them get a better grade, so I'd really recommend it.
     <br>
     <br>
-    Btw, you can earn extra $5 for every friend that tries <a href='http://uguru.me'>uGuru</a> with your own referral code.
+    Btw, you can earn extra $5 for every friend that tries <a href='http://uguru.me'>uGuru</a> with your <a href='http://berkeley.uguru.me/settings/referral/'>own referral code</a>.
     <br>
     <br>
     Samir
@@ -604,7 +604,7 @@ def drip_student_signup_html_4(user_name):
     I just added $5 credits to your account. 93% of the Cal students who tried a tutoring session on <a href='http://uguru.me'>uGuru</a> said it helped them get a better grade, so I'd really recommend it.
     <br>
     <br>
-    Btw, you can earn extra $5 for every friend that tries <a href='http://uguru.me'>uGuru</a> with your own referral code.
+    Btw, you can earn extra $5 for every friend that tries <a href='http://uguru.me'>uGuru</a> with your <a href='http://berkeley.uguru.me/settings/referral/'>own referral code</a>.
     <br>
     <br>
     Samir
@@ -642,7 +642,7 @@ def drip_student_signup_html_5(user_name):
     """ + user_name.title() + """,
     <br>
     <br>
-    How are you classes treating you so far? Some of these classes are just ridiculous, so if you are struggling with any of them, don't forget to get help on <a href='http://uguru/me'>uGuru</a>. Use your free credits if you still have them, or get a free session with one of the 1st-time Gurus to save money.
+    How are you classes treating you so far? Some of these classes are just ridiculous, so if you are struggling with any of them, don't forget to <a href='http://berkeley.uguru.me/activity/request/'>get help</a> on <a href='http://uguru/me'>uGuru</a>. Use your free credits if you still have them, or <a href='http://berkeley.uguru.me/activity/request/'>get a free session</a> with one of the 1st-time Gurus to save money.
     <br>
     <br>
     Samir
@@ -719,7 +719,7 @@ def drip_student_signup_html_7(user_name):
     Hey """ + user_name.title() + """,
     <br>
     <br>
-    How are classes for you? More and more of your classmates are using <a href='http://uguru.me'>uGuru</a> to get good grades. I'd really use the free credits and <a href='http://berkeley.uguru.me/activity/#request-form'>try it out</a> before they expire. It's quick and easy<a href='berkeley'>!
+    How are classes for you? More and more of your classmates are using <a href='http://uguru.me'>uGuru</a> to get good grades. I'd really use the free credits and <a href='http://berkeley.uguru.me/activity/request/'>try it out</a> before they expire. It's quick and easy!
     <br>
     <br>
     If you are doing well with your classes, don't forget to also <a href='berkeley.uguru.me/apply-guru/'>become a Guru</a> and make money during your free time!

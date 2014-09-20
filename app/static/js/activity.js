@@ -67,6 +67,16 @@ var process_payment_plan_cost_by_index = function(index) {
 $(document).ready(function() {
       $body = $("body");
       // update_feed();
+
+      if (location.hash == '#request') {
+          $('#activity').hide();
+          request_a_guru_clicked = true;
+          event_click('request-btn-clicked')
+          $('#request-form-options').hide();
+          $('#request-form-submit').children('span:first').removeClass('blue-btn-extra');
+          $('#request-form-submit').children('span:first').addClass('blue-btn-full');
+          $('#tutor-request').show();
+      }
       
       $(document).on({
           ajaxStart: function() { $body.addClass("loading");    },

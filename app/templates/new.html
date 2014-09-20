@@ -506,6 +506,11 @@
                 </a>
                 
                 <div id='login-modal-container' class='container-fluid center'>
+                    {% if modal_flag == 'login' %}
+                        <div class='center font-18 light-grey-text margin-bottom-20'>
+                            You will be redirected to your destination after logging in.
+                        </div>
+                    {% endif %}
                     <!-- <h1 class='extra-margin-bottom dark-grey-text'><b>LOGIN</b></h1> -->
 
                     <a id='fb-login-btn' onclick='fb_login()' href='#'>
