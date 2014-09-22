@@ -944,6 +944,22 @@ def submit_rating():
 def _500():
     return render_template('500.html')
 
+@app.route('/free-10-credit/<email>/<name>')
+@app.route('/free-10-credit/')
+def free_10_credit(email=None, name=None):
+    if not email and not name and not session.get('free-10-credit-email') and not session.get('free-10-credit-name'):
+        return redirect(url_for('index'))
+    if email and name:
+        session['free-10-credit-email'] = email
+        session['free-10-credit-name'] = name
+        return redirect('/free-10-credit/')
+    if session.get('free-10-credit-email'):
+        email = session.get('free-10-credit-email')
+    if session.get('free-10-credit-name'):
+        name = session.get('free-10-credit-name')
+
+    return render_template('free-credit-signup.html', email=email, name=name)
+
 @app.route('/submit-payment/', methods=('GET', 'POST'))
 def submit_payment():
     if request.method == "POST":

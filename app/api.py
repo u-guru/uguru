@@ -36,7 +36,7 @@ def api(arg, _id):
 
     if arg == 'forgot_password' and request.method == 'POST':
         email = request.json.get("email").lower()
-
+        
         u = User.query.filter_by(email=email).first()
         if not u:
             return errors(["There is no account with this email. Please try again or signup!"])

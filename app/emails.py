@@ -2179,6 +2179,64 @@ def reminder_before_session(person_a, person_b, location, ending):
     msg = "Hey " + person_a_name + "! Your uGuru session with " + person_b_name + " is in one hour! Meet at " + location + ". Happy " + ending + "!"
     return msg
 
+
+def send_mailgun_email(receiver_name, receiver_email, subject,
+    _from, html_str, tag_arr, campaign_str=None, reply_to = None):
+    import requests
+    data = {
+            "from":_from,
+              "to": [receiver_email],
+              "subject": subject,
+              "html": html_str, 
+              "o:tag": tag_arr,
+              "o:tracking-clicks": True, 
+              "o:tracking-opens": True, 
+              "o:campaign": campaign_str, 
+            }
+    if reply_to:
+        data['h:Reply-To'] = reply_to
+    if campaign_str:
+        data['o:campaign'] = reply_to
+    return requests.post(
+        "https://api.mailgun.net/v2/caluguru.me/messages",
+        auth=("api", "key-bfe01b1e2cb76d45e086c2fa5e813781"),
+        data=data)
+
+
+def one_click_signup_email_html_bare(receiver_name, receiver_email):
+    return """
+    Hi """ + receiver_name.split(" ")[0] + """,
+    <br>
+    <br>
+    Click this <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>link</a> to get your free credit.
+    <br>
+    <br>
+    Samir from uGuru
+    """
+
+def one_click_signup_email(receiver_name, receiver_email):
+    send_mailgun_email(
+        receiver_name,
+        receiver_email,
+        'Free $10 Credit from uGuru',
+        'Spencer from uGuru <spencer@caluguru.me>',
+        one_click_signup_email_html_bare(receiver_name, receiver_email),
+        ['test-campaign-one'],
+        )
+
+def generate_one_click_signup_email_url(receiver_name, receiver_email):
+    from views import get_environment
+    base_url = None
+    if get_environment() == 'PRODUCTION':
+        base_url = 'http://berkeley.uguru.me/'
+    if get_environment() == 'TESTING':
+        base_url = 'http://testing.uguru.me/'
+    else:
+        base_url = 'http:/0.0.0.0:5000/'
+    return base_url + 'free-10-credit/' + receiver_email + '/' + receiver_name
+
+
+
 def mailgun_test(email, first_name):
     import requests
     return requests.post(

@@ -1203,6 +1203,11 @@ $(document).ready(function(){
         }
     });
 
+    $('#claim-free-credit').click(function() {
+      $('#first-page-container').hide();
+      $('#second-page-container').show();
+    });
+
     $('#email-submit-link').click(function() {
       if(!$('#submit-email').val()) {
         $('#submit-email-alert').text('Please enter an email')
