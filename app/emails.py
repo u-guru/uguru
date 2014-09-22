@@ -520,7 +520,7 @@ def drip_student_signup_html_2(user_name):
     Hey """ + user_name + """,
     <br>
     <br>
-    I completely forgot to mention! Since <a href='http://uguru.me'>uGuru</a> is new, there are many 1st-time Gurus that offer free sessions. <a href='berkeley.uguru.me/activity/request/'>Request help</a> for a difficult class that you are taking now to try it out.
+    I completely forgot to mention! Since <a href='http://uguru.me'>uGuru</a> is new, there are many 1st-time Gurus that offer free sessions. <a href='http://berkeley.uguru.me/activity/request/'>Request help</a> for a difficult class that you are taking now to try it out.
     <br>
     <br>
     Also, don't forget to <a href='http://berkeley.uguru.me/apply-guru/'>become a Guru</a> for classes that you are doing well in! It's a good way to earn money at your own schedule.
@@ -2117,7 +2117,7 @@ def welcome_uguru_student_html(user_name):
     This is Samir from <a href="http://berkeley.uguru.me">Uguru</a>. We hope to make instant help <b>available</b> and <b>affordable</b> by connecting you to Gurus who have done well in the same classes at Cal.
     <br>
     <br>
-    This finals season, you won't have to fight the battle alone. If you feel lost in the dungeons of Moffit, just request help <a href="http://berkeley.uguru.me/activity">here</a>, and the Gurus will be ready to rescue you!
+    This finals season, you won't have to fight the battle alone. If you feel lost in the dungeons of Moffit, just request help <a href="http://berkeley.uguru.me/activity/request/">here</a>, and the Gurus will be ready to rescue you!
     <br>
     <br>    
     We are a small team with limited resources. If you have any questions/suggestions, let us know by replying to this email directly.
@@ -2178,6 +2178,64 @@ def reminder_before_session(person_a, person_b, location, ending):
     person_b_name = person_b.name.split(" ")[0].title()
     msg = "Hey " + person_a_name + "! Your uGuru session with " + person_b_name + " is in one hour! Meet at " + location + ". Happy " + ending + "!"
     return msg
+
+def mailgun_test(email, first_name):
+    import requests
+    return requests.post(
+        "https://api.mailgun.net/v2/caluguru.me/messages",
+        auth=("api", "key-bfe01b1e2cb76d45e086c2fa5e813781"),
+        data={"from": "Spencer from uGuru <spencer@caluguru.me>",
+              "to": [email],
+              "subject": "Tutoring is the best thing ever, " + first_name,
+              "h:Reply-To": 'support@uguru.me',
+              "html": mail_gun_template_test_2_html(first_name),
+              "o:tag": ['test-campaign-one'],
+              "o:tracking-clicks": True, 
+              "o:tracking-opens": True, 
+              "o:campaign": 'd7eaw', 
+                })
+
+def unsubscribe_all_emails():
+    from static.data.unsubscribe import emails
+    import requests
+    for email in emails:
+        requests.post(
+        "https://api.mailgun.net/v2/caluguru.me/unsubscribes",
+        auth=("api", "key-bfe01b1e2cb76d45e086c2fa5e813781"),
+        data={"address":email,
+              "tag": "*"
+            }
+        )
+        print email, "has been unsubscribed"
+
+
+def mail_gun_template_test_1_html(user_name):
+    return """
+    Hi """ + user_name + """,
+    <br>
+    <br>
+    This is Spencer, a research analyst at National Academic Research.
+    <br>
+    <br>
+    We are trying to understand the habits of Berkeley students. At the end of 3 multiple choice survey questions, we will reward you with $10 with <a href='http://uguru.me'>uGuru</a>, the peer-to-peer tutoring platform on campus.
+    <br>
+    <br>
+    Take 30 secs to <a href='https://docs.google.com/forms/d/15edP5zH3YCjIWwoVxTPbpYJu_d2e9gmlXHf7JWLoGDk/viewform?usp=send_form'>tell us how you study</a>.
+    <br>
+    <br>
+    See more details <a href="http://beta.uguru.me/activity/"> here</a>. 
+    <br>
+    <br>
+    Sincerely, <br>
+    Spencer
+    """
+
+def mail_gun_template_test_2_html(user_name):
+    return """
+    Hi """ + user_name + """,
+    We hope you use our platform - thanks for showing interest!
+    Sincerely, <br>
+    Spencer"""
 
 
 def error(message):

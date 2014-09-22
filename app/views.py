@@ -1910,11 +1910,11 @@ def success():
                 db_session.add(u)
                 db_session.commit()
 
-                # if 'tutor-signup' not in ajax_json:
-                #     if os.environ.get('USER') == 'makhani':
-                #         send_student_drip_1.apply_async(args=[u.id], countdown=10)
-                #     elif get_environment() == 'PRODUCTION':
-                #         send_student_drip_1.apply_async(args=[u.id], countdown=7200)
+                if 'tutor-signup' not in ajax_json:
+                    if os.environ.get('USER') == 'makhani':
+                        send_student_drip_1.apply_async(args=[u.id], countdown=10)
+                    elif get_environment() == 'PRODUCTION':
+                        send_student_drip_1.apply_async(args=[u.id], countdown=7200)
 
                 if session.get('referral'):
                     u.referral_code = session['referral']
