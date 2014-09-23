@@ -8,17 +8,22 @@
               <h1 class='reg-text center bold extra-margin-bottom'>
                             Hi, {{name.split(' ')[0]|title}}
               </h1>
-              <div class='row-fluid center font-20 grey-text margin-top-10 margin-bottom-20'>
-                Click below and claim your <b class='reg-text'> FREE</b> uGuru credit
+              <div style= 'margin-top:-20px'class='row font-18 light-grey-text center margin-bottom-20'>
+                {{email}}
               </div>
-              <div class='row-fluid center font-80 green-text margin-top-10'>
+              <div class='row-fluid center font-80 normal-text green-text margin-top-10'>
                 $10
               </div>
+              <div class='row-fluid center font-18 light-grey-text margin-top-10 margin-bottom-20'>
+                has been added to your account.
+              </div>
+              <input name='student-password' placeholder='Create Password' id='free-10-password' style='width:260px; margin:auto;'type="password" class="form-control" autofocus>
               <div class='row-fluid center margin-top-30'>
                   <a id='claim-free-credit' name={{email}} href='javascript:void(0);'>
-                        <span class='blue-btn font-20'> 
-                            <span class='glyphicon glyphicon-gift'></span>
-                            &nbsp;&nbsp;Claim your free credits </span>
+                        <span class='blue-btn clickable font-20'> 
+                            <!-- <span class='glyphicon glyphicon-gift'></span>
+                            &nbsp;&nbsp;Claim your free credits </span> -->
+                            &nbsp;&nbsp;Okay!&nbsp;&nbsp;
                   </a>
               </div>
         </div>

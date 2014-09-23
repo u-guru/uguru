@@ -36,7 +36,7 @@ def api(arg, _id):
 
     if arg == 'forgot_password' and request.method == 'POST':
         email = request.json.get("email").lower()
-        
+
         u = User.query.filter_by(email=email).first()
         if not u:
             return errors(["There is no account with this email. Please try again or signup!"])
@@ -416,6 +416,21 @@ def api(arg, _id):
                     })
             response = {'conversations': conversations_arr}
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(['Invalid Token'])
+
+    
+    if arg == 'create-password' and request.method == 'POST':
+        user = getUser()
+        if user:
+            from hashlib import md5
+            user.password = md5(request.json.get('password')).hexdigest()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+            flash("<b>You're all set!</b> Anytime you need help with your courses, click the button above!")
+            response = {'success': True}
         return errors(['Invalid Token'])
 
     if arg =='conversations' and _id != None and request.method == 'GET':

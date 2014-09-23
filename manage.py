@@ -30,6 +30,10 @@ if arg == 'set_profile_default':
     db_session.commit()
     print "complete"
 
+if arg =='send_mailgun_1':
+    from app.emails import mailgun_template_one
+    mailgun_template_one(sys.argv[2], sys.argv[3])
+
 if arg =='mp-create-student-profiles':
     import os
     mp = Mixpanel(os.environ['MP-TOKEN'])
@@ -40,6 +44,10 @@ if arg =='mp-create-student-profiles':
                 'name': u.name,
                 'email': u.email,
                 })
+
+if arg == 'send_mailgun':
+    from app.emails import one_click_signup_email
+    one_click_signup_email(sys.argv[2], sys.argv[3])
 
 if arg == 'initialize_user_codes':
 

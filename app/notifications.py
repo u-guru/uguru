@@ -4,7 +4,7 @@ from emails import welcome_uguru_student, welcome_uguru_tutor, student_needs_hel
     tutor_is_matched, student_payment_receipt, tutor_payment_receipt, tutor_payment_received, student_is_matched
 from datetime import datetime
 
-def getting_started_student(user):
+def getting_started_student(user, no_email=None):
     getting_started_msg = "<b>You </b> signed up" + \
         " for uGuru.me!" 
     notification = Notification(other='getting_started')
@@ -12,7 +12,8 @@ def getting_started_student(user):
     notification.a_id_name = 'getting-started'
     notification.image_url = user.profile_url
     notification.time_read = datetime.now()
-    welcome_uguru_student(user)
+    if not no_email:
+        welcome_uguru_student(user)
     return notification
 
 def getting_started_student_tip(user):

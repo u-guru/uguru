@@ -716,6 +716,15 @@ class Rating(Base):
         (str(self.id), student_name, tutor_name, skill_name, \
             self.time_created.strftime('%b %d,%Y'))
 
+class Unsubscribe(Base):
+    __tablename__ = 'unsubscribe'
+    id = Column(Integer, primary_key = True)
+    email = Column(String)
+    tag = Column(String)
+    campaign = Column(String)
+    time_created = Column(DateTime)
+
+
 class Course(Base):
     __tablename__ = 'course'
     id = Column(Integer, primary_key = True)

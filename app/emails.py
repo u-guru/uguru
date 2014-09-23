@@ -2180,6 +2180,33 @@ def reminder_before_session(person_a, person_b, location, ending):
     return msg
 
 
+def unsubscribe_str_html(receiver_email, tag_arr = None, campaign_str = None):
+    from views import get_environment
+    base_url = None
+    if get_environment() == 'PRODUCTION':
+        base_url = 'http://berkeley.uguru.me/'
+    if get_environment() == 'TESTING':
+        base_url = 'http://testing.uguru.me/'
+    else:
+        base_url = 'http://0.0.0.0:5000/'
+
+    full_url = base_url + 'unsubscribe/' + receiver_email + '/'
+
+    if tag_arr:
+        full_url = full_url + ' '.join(tag_arr) + '/'
+
+    if campaign_str:
+        full_url = full_url + campaign_str + '/'
+
+    return """
+    <br>
+    <br>
+    <span style='color:grey-text; font-size:10px'>
+    Don't want to hear from us? Unsubscribe <a target='_blank' href='""" +full_url+"""'>here</a>.
+    </span>
+    """
+
+
 def send_mailgun_email(receiver_name, receiver_email, subject,
     _from, html_str, tag_arr, campaign_str=None, reply_to = None):
     import requests
@@ -2187,16 +2214,15 @@ def send_mailgun_email(receiver_name, receiver_email, subject,
             "from":_from,
               "to": [receiver_email],
               "subject": subject,
-              "html": html_str, 
+              "html": html_str + unsubscribe_str_html(receiver_email, tag_arr, campaign_str), 
               "o:tag": tag_arr,
               "o:tracking-clicks": True, 
               "o:tracking-opens": True, 
-              "o:campaign": campaign_str, 
             }
     if reply_to:
         data['h:Reply-To'] = reply_to
     if campaign_str:
-        data['o:campaign'] = reply_to
+        data['o:campaign'] = campaign_str
     return requests.post(
         "https://api.mailgun.net/v2/support.uguru.me/messages",
         auth=("api", "key-bfe01b1e2cb76d45e086c2fa5e813781"),
@@ -2220,8 +2246,30 @@ def one_click_signup_email_html_bare(receiver_name, receiver_email):
     Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your free credit.
     <br>
     <br>
-    Samir
-    """
+    Samir"""
+
+
+def mailgun_template_one_html(receiver_name, receiver_email):
+    return """
+    Hi """ + receiver_name.split(" ")[0].title() + """,
+    <br>
+    <br>
+    This is Chloe, from <a href="http://uguru.me">uGuru</a>, the peer-to-peer tutoring service on campus. Lots of your classmates are using uGuru to study, and 93 of them said uGuru helped them improve their grades. 
+    <br>
+    <br>
+    It really sucks when you are stuck by yourself the night before the exams, and that's why we built uGuru. You can find other students who have aced the same class to help you whenever you need it. 
+    <br>
+    <br>
+    I have added $10 to your uGuru account to try it, just make sure you confirm here. <br>
+    Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your free credit.
+    <br>
+    <br>
+    Good luck with your midterms!
+    <br>
+    <br>
+    Chloe"""
+
+
 
 def one_click_signup_email(receiver_name, receiver_email):
     send_mailgun_email(
@@ -2231,7 +2279,21 @@ def one_click_signup_email(receiver_name, receiver_email):
         'spencer@support.uguru.me',
         one_click_signup_email_html_bare(receiver_name, receiver_email),
         ['test-campaign-one'],
+        'd83uh'
         )
+
+def mailgun_template_one(receiver_name, receiver_email):
+    receiver_first_name = receiver_name.split(" ")[0].title()
+    subject = receiver_first_name + ', how are your classes treating you?'
+    send_mailgun_email(
+        receiver_name,
+        receiver_email,
+        subject,
+        "Chloe from uGuru <chloe@support.uguru.me>",
+        mailgun_template_one_html(receiver_name, receiver_email),
+        ['mailgun-campaign-one'],
+        'd83uh'
+        )    
 
 def generate_one_click_signup_email_url(receiver_name, receiver_email):
     from views import get_environment

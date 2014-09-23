@@ -4,7 +4,8 @@ from flask import render_template, jsonify, redirect, request, \
 session, flash, redirect, url_for
 from forms import SignupForm, RequestForm
 from models import User, Request, Skill, Course, Notification, Mailbox, \
-    Conversation, Message, Payment, Rating, Email, Week, Range, Text, Promo
+    Conversation, Message, Payment, Rating, Email, Week, Range, Text, Promo,\
+    Unsubscribe
 from hashlib import md5
 from datetime import datetime, timedelta
 import emails, boto, stripe, os
@@ -433,6 +434,21 @@ def new_admin_students():
         return render_template('new-admin-students.html', all_students = all_students, times_signed_up=times_signed_up,\
             times_last_active=times_last_active)
     return redirect(url_for('index'))
+
+
+@app.route('/admin/unsubscribes/')
+def new_admin_unsubscribes():
+    if session.get('admin'):
+        unsubscribes = sorted(Unsubscribe.query.all(), key=lambda u:u.time_created, reverse=True)
+
+        times = {}
+
+        for user in unsubscribes:
+            times[user.id] = pretty_date(user.time_created)
+
+        return render_template('admin-unsubscribe.html', unsubscribes=unsubscribes, times=times)
+    return redirect(url_for('index'))
+
 
 @app.route('/admin/tutors/')
 def new_admin_tutors():
@@ -944,19 +960,74 @@ def submit_rating():
 def _500():
     return render_template('500.html')
 
-@app.route('/free-10-credit/<email>/<name>')
+@app.route('/free-10-credit/<email>/<name>/<tag>/')
+@app.route('/free-10-credit/<email>/<name>/')
 @app.route('/free-10-credit/')
-def free_10_credit(email=None, name=None):
+def free_10_credit(email=None, name=None, tag=None):
     if not email and not name and not session.get('free-10-credit-email') and not session.get('free-10-credit-name'):
         return redirect(url_for('index'))
+
     if email and name:
         session['free-10-credit-email'] = email
         session['free-10-credit-name'] = name
+
+        print name, email, 'has clicked this link'
+
+        user = User.query.filter_by(email=email).first()
+        if user:
+            authenticate(user.id)
+            print name, email, "already exists... redirecting"
+            return redirect(url_for('index'))
+
+        user = User(
+                email=email,
+                name=name,
+            )
+
+        user.feed_notif = 0
+        user.settings_notif = 0
+        user.referral_code=tag
+
+        mailbox = Mailbox(user)
+
+        db_session.add(mailbox)
+        db_session.add(user)
+
+        user.last_active = datetime.now()
+        user.credit = 10
+        from notifications import getting_started_student, welcome_guru, getting_started_tutor, getting_started_student_tip
+        notification = getting_started_student(user, True)
+        notification2 = getting_started_student_tip(user)
+        user.notifications.append(notification2)
+        db_session.add(notification)
+        db_session.add(notification2)
+        user.notifications.append(notification)
+
+        try:
+            db_session.commit()
+            authenticate(user.id)
+            print name, email, 'account has been successfully created'
+        except:
+            db_session.rollback()
+            raise
+
+
+        if session.get('free-10-credit-email'):
+            email =session.get('free-10-credit-email')
+        if session.get('free-10-credit-name'):
+            name =session.get('free-10-credit-name')
+
         return redirect('/free-10-credit/')
+
+
     if session.get('free-10-credit-email'):
-        email = session.get('free-10-credit-email')
+        email =session.get('free-10-credit-email')
     if session.get('free-10-credit-name'):
-        name = session.get('free-10-credit-name')
+        name =session.get('free-10-credit-name')
+    #They already have an account and need to be redirected to home
+    # if session.get('free-10-credit-email') and session.get('free-10-credit-name') and not name and not email:
+    #     return redirect(url_for('activity'))
+
 
     return render_template('free-credit-signup.html', email=email, name=name)
 
@@ -1695,6 +1766,33 @@ def event_update():
                 })
 
         return jsonify(return_json=return_json)
+
+
+@app.route('/unsubscribe/<email>/')
+@app.route('/unsubscribe/<email>/<tag>/<campaign>/')
+def unsubscribe(email = None, tag = None, campaign = None):
+    if not email:
+        return redirect(url_for('index'))
+    else:
+        already_unsubscribed = Unsubscribe.query.filter_by(email=email).first()
+        if not already_unsubscribed:
+            unsubscribe_user = Unsubscribe(
+                                email=email,
+                                tag=tag,
+                                campaign=campaign,
+                                time_created = datetime.now()
+                                )
+            db_session.add(unsubscribe_user)
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+        else:
+            print "email", email, "has already unsubscribed."
+    return render_template('unsubscribe.html', email=email)
+
+
 
 @app.route('/reset-password/', methods=('GET', 'POST'))
 def reset_pw():

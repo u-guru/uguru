@@ -1204,8 +1204,23 @@ $(document).ready(function(){
     });
 
     $('#claim-free-credit').click(function() {
-      $('#first-page-container').hide();
-      $('#second-page-container').show();
+        
+        data_dict = {
+          'email': $('#claim-free-credit').attr('name'),
+          'password': $('#free-10-password').val()
+        }
+
+        $.ajax({
+              type: "POST",
+              contentType: 'application/json;charset=UTF-8',
+              url: '/api/create-password' ,
+              data: JSON.stringify(data_dict),
+              dataType: "json",
+              success: function(result) {
+                window.location.replace('/');
+              }
+
+      });
     });
 
     $('#email-submit-link').click(function() {
