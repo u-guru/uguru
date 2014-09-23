@@ -2198,7 +2198,7 @@ def send_mailgun_email(receiver_name, receiver_email, subject,
     if campaign_str:
         data['o:campaign'] = reply_to
     return requests.post(
-        "https://api.mailgun.net/v2/caluguru.me/messages",
+        "https://api.mailgun.net/v2/support.uguru.me/messages",
         auth=("api", "key-bfe01b1e2cb76d45e086c2fa5e813781"),
         data=data)
 
@@ -2208,18 +2208,27 @@ def one_click_signup_email_html_bare(receiver_name, receiver_email):
     Hi """ + receiver_name.split(" ")[0] + """,
     <br>
     <br>
-    Click this <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>link</a> to get your free credit.
+    This is Samir, from <a href="http://uguru.me">uGuru</a>. We strive to create a better tutoring experiencing by making peer-to-peer help <b>available</b> and <b>affordable</b> to students by connecting them with trusted Gurus like you! 
     <br>
     <br>
-    Samir from uGuru
+    We are excited to have you on board as a Cal Guru. Your role will be to save students who are lost in the dungeons of Moffit.
+    <br>
+    <br>
+    Since this is your first time tutoring with us, your current mission is to show your skills by earning a great rating during your first session. This session will be free to the student, so do your best to earn a 4.0 rating. As soon as you achieve that 4.0 rating, you'll be ready to set your own rates, be your own boss, and earn some extra cash. To get the full scoop on the Guru code, check out our <a href='tinyurl.com/uguru-q-a'> FAQ </a>.
+    <br>
+    <br>
+    Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your free credit.
+    <br>
+    <br>
+    Samir
     """
 
 def one_click_signup_email(receiver_name, receiver_email):
     send_mailgun_email(
         receiver_name,
         receiver_email,
-        'Free $10 Credit from uGuru',
-        'Spencer from uGuru <spencer@caluguru.me>',
+        'Thank you for signing up - here is your credit from uGuru',
+        'spencer@support.uguru.me',
         one_click_signup_email_html_bare(receiver_name, receiver_email),
         ['test-campaign-one'],
         )
@@ -2232,7 +2241,7 @@ def generate_one_click_signup_email_url(receiver_name, receiver_email):
     if get_environment() == 'TESTING':
         base_url = 'http://testing.uguru.me/'
     else:
-        base_url = 'http:/0.0.0.0:5000/'
+        base_url = 'http://testing.uguru.me/'
     return base_url + 'free-10-credit/' + receiver_email + '/' + receiver_name
 
 

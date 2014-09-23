@@ -2024,6 +2024,18 @@ def success():
 
             
             original_skill_name = ajax_json['skill'].lower()
+            if not courses_dict.get(original_skill_name):
+                from api import errors
+                return errors(['Please choose a skill from the listed courses we have in the dropdown.'])
+
+            if ajax_json.get('phone'):
+                other_user = User.query.filter_by(phone_number=ajax_json.get('phone')).first()
+                user = User.query.get(user_id)
+                if other_user and user != other_user:
+                    from api import errors
+                    return errors(['A duplicate account already exists with phone ' + ajax_json.get('phone') + '. Logout and try "Forgot your Password"'])
+                u.phone_number = ajax_json.get('phone')
+
             skill_id = courses_dict[original_skill_name]
             skill = Skill.query.get(skill_id)
             skill_name = short_variations_dict[skill.name]
@@ -2066,9 +2078,6 @@ def success():
             #optional
             if ajax_json.get('professor'):
                 r.professor = ajax_json['professor']
-
-            if ajax_json.get('phone'):
-                u.phone_number = ajax_json.get('phone')
 
             #Process calendar information
             weekly_availability = ajax_json['calendar']

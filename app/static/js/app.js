@@ -914,7 +914,7 @@ $(document).ready(function(){
               if (result.errors) {
                 $('#alert-fields-request-form').text(result.errors);
                 $('#alert-fields-request-form').show();
-                $('#request-form-submit').hide();
+                // $('#request-form-submit').hide();
                 return;
               }
               if (result.dict['no-active-tutors']) {
