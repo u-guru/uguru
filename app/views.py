@@ -1930,7 +1930,7 @@ def success():
                     if os.environ.get('USER') == 'makhani':
                         send_student_drip_1.apply_async(args=[u.id], countdown=10)
                     elif get_environment() == 'PRODUCTION':
-                        send_student_drip_1.apply_async(args=[u.id], countdown=7200)
+                        send_student_drip_1.apply_async(args=[u.id], countdown=86400)
 
                 if session.get('referral'):
                     u.referral_code = session['referral']
@@ -3011,8 +3011,16 @@ def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name
 @celery.task
 def send_student_drip_1(user_id):
     request = Request.query.filter_by(student_id=user_id).first()
+    
+    #concurrency bug?
+    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-1').first()
+    if e:
+        return
+
     if not request:
         user = User.query.get(user_id)
+        if not user.email_notification:
+            return 
         from emails import drip_student_signup_1
         email_result = drip_student_signup_1(user)
         email = Email(
@@ -3037,8 +3045,16 @@ def send_student_drip_1(user_id):
 @celery.task
 def send_student_drip_2(user_id):
     request = Request.query.filter_by(student_id=user_id).first()
+    
+    #concurrency bug?
+    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-2').first()
+    if e:
+        return
+
     if not request:
         user = User.query.get(user_id)
+        if not user.email_notification:
+            return 
         from emails import drip_student_signup_2
         email_result = drip_student_signup_2(user)
         email = Email(
@@ -3070,8 +3086,16 @@ def send_student_drip_2(user_id):
 @celery.task
 def send_student_drip_3(user_id):
     request = Request.query.filter_by(student_id=user_id).first()
+    
+    #concurrency bug?
+    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-3').first()
+    if e:
+        return
+
     if not request:
         user = User.query.get(user_id)
+        if not user.email_notification:
+            return 
         from emails import drip_student_signup_3
         email_result = drip_student_signup_3(user)
         email = Email(
@@ -3095,8 +3119,16 @@ def send_student_drip_3(user_id):
 @celery.task
 def send_student_drip_4(user_id):
     request = Request.query.filter_by(student_id=user_id).first()
+    
+    #concurrency bug?
+    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-4').first()
+    if e:
+        return
+
     if not request:
         user = User.query.get(user_id)
+        if not user.email_notification:
+            return 
         user.credit = user.credit + 5
         from emails import drip_student_signup_4
         email_result = drip_student_signup_4(user)
@@ -3121,8 +3153,16 @@ def send_student_drip_4(user_id):
 @celery.task
 def send_student_drip_5(user_id):
     request = Request.query.filter_by(student_id=user_id).first()
+    
+    #concurrency bug?
+    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-5').first()
+    if e:
+        return
+
     if not request:
         user = User.query.get(user_id)
+        if not user.email_notification:
+            return 
         from emails import drip_student_signup_5
         email_result = drip_student_signup_5(user)
         email = Email(
@@ -3146,8 +3186,16 @@ def send_student_drip_5(user_id):
 @celery.task
 def send_student_drip_6(user_id):
     request = Request.query.filter_by(student_id=user_id).first()
+
+    #concurrency bug?
+    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-6').first()
+    if e:
+        return
+
     if not request:
         user = User.query.get(user_id)
+        if not user.email_notification:
+            return 
         user.credit = user.credit + 5
         from emails import drip_student_signup_6
         email_result = drip_student_signup_6(user)
@@ -3172,8 +3220,16 @@ def send_student_drip_6(user_id):
 @celery.task
 def send_student_drip_7(user_id):
     request = Request.query.filter_by(student_id=user_id).first()
+    
+    #concurrency bug?
+    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-7').first()
+    if e:
+        return
+
     if not request:
         user = User.query.get(user_id)
+        if not user.email_notification:
+            return 
         from emails import drip_student_signup_7
         email_result = drip_student_signup_7(user)
         email = Email(

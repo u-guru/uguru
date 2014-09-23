@@ -477,7 +477,7 @@ def drip_student_signup_html_1(user_name):
     Since you are new to <a href='http://uguru.me'>uGuru</a>, I want to make sure you know how to get help for your classes.
     <br>
     <br>
-    Just <a href='http://berkeley.uguru.me/log_in/'>log in</a> to your account and hit the blue button that says "Get Help And Ace Your Classes". Put in the class, professor, when and where you'd like to meet, and Gurus will get back to you right away.
+    Just <a href='http://berkeley.uguru.me/log_in/'>log in</a> to your account and hit the blue button that says "Get Help And Ace Your Classes." Put in the class, professor, when and where you'd like to meet, and Gurus will get back to you right away.
     <br>
     <br>
     Click <a href='http://berkeley.uguru.me/activity/request/'>HERE</a> and find a Guru. 
