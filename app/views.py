@@ -2034,7 +2034,7 @@ def success():
                 if other_user and user != other_user:
                     from api import errors
                     return errors(['A duplicate account already exists with phone ' + ajax_json.get('phone') + '. Logout and try "Forgot your Password"'])
-                u.phone_number = ajax_json.get('phone')
+                user.phone_number = ajax_json.get('phone')
 
             skill_id = courses_dict[original_skill_name]
             skill = Skill.query.get(skill_id)
