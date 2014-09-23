@@ -1217,9 +1217,8 @@ $(document).ready(function(){
               data: JSON.stringify(data_dict),
               dataType: "json",
               success: function(result) {
-                window.location.replace('/');
+                window.location.replace('/activity/');
               }
-
       });
     });
 

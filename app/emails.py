@@ -2188,7 +2188,7 @@ def unsubscribe_str_html(receiver_email, tag_arr = None, campaign_str = None):
     if get_environment() == 'TESTING':
         base_url = 'http://testing.uguru.me/'
     else:
-        base_url = 'http://0.0.0.0:5000/'
+        base_url = 'http://testing.uguru.me/'
 
     full_url = base_url + 'unsubscribe/' + receiver_email + '/'
 
@@ -2206,6 +2206,27 @@ def unsubscribe_str_html(receiver_email, tag_arr = None, campaign_str = None):
     </span>
     """
 
+def unsubscribe_str_html_bare(receiver_email, tag_arr=None, campaign_str=None):
+    from views import get_environment
+    base_url = None
+    if get_environment() == 'PRODUCTION':
+        base_url = 'http://berkeley.uguru.me/'
+    if get_environment() == 'TESTING':
+        base_url = 'http://testing.uguru.me/'
+    else:
+        base_url = 'http://testing.uguru.me/'
+
+    full_url = base_url + 'unsubscribe/' + receiver_email + '/'
+
+    if tag_arr:
+        full_url = full_url + ' '.join(tag_arr) + '/'
+
+    if campaign_str:
+        full_url = full_url + campaign_str + '/'
+
+    return """
+    Don't want to hear from us? Unsubscribe <a target='_blank' href='""" +full_url+"""'>here</a>.
+    """
 
 def send_mailgun_email(receiver_name, receiver_email, subject,
     _from, html_str, tag_arr, campaign_str=None, reply_to = None):
@@ -2214,7 +2235,7 @@ def send_mailgun_email(receiver_name, receiver_email, subject,
             "from":_from,
               "to": [receiver_email],
               "subject": subject,
-              "html": html_str + unsubscribe_str_html(receiver_email, tag_arr, campaign_str), 
+              "html": html_str, 
               "o:tag": tag_arr,
               "o:tracking-clicks": True, 
               "o:tracking-opens": True, 
@@ -2249,28 +2270,6 @@ def one_click_signup_email_html_bare(receiver_name, receiver_email):
     Samir"""
 
 
-def mailgun_template_one_html(receiver_name, receiver_email):
-    return """
-    Hi """ + receiver_name.split(" ")[0].title() + """,
-    <br>
-    <br>
-    This is Chloe, from <a href="http://uguru.me">uGuru</a>, the peer-to-peer tutoring service on campus. Lots of your classmates are using uGuru to study, and 93 of them said uGuru helped them improve their grades. 
-    <br>
-    <br>
-    It really sucks when you are stuck by yourself the night before the exams, and that's why we built uGuru. You can find other students who have aced the same class to help you whenever you need it. 
-    <br>
-    <br>
-    I have added $10 to your uGuru account to try it, just make sure you confirm here. <br>
-    Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your free credit.
-    <br>
-    <br>
-    Good luck with your midterms!
-    <br>
-    <br>
-    Chloe"""
-
-
-
 def one_click_signup_email(receiver_name, receiver_email):
     send_mailgun_email(
         receiver_name,
@@ -2285,12 +2284,14 @@ def one_click_signup_email(receiver_name, receiver_email):
 def mailgun_template_one(receiver_name, receiver_email):
     receiver_first_name = receiver_name.split(" ")[0].title()
     subject = receiver_first_name + ', how are your classes treating you?'
+    tag_arr = ['mailgun-campaign-one']
+    campaign_str = 'd83uh'
     send_mailgun_email(
         receiver_name,
         receiver_email,
         subject,
         "Chloe from uGuru <chloe@support.uguru.me>",
-        mailgun_template_one_html(receiver_name, receiver_email),
+        mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, campaign_str),
         ['mailgun-campaign-one'],
         'd83uh'
         )    
@@ -2401,3 +2402,142 @@ def error(message):
     mail.login(SMTP_USERNAME, SMTP_PASSWORD)
     mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()
+
+
+def mailgun_template_one_html(receiver_name, receiver_email):
+    return """
+    Hi """ + receiver_name.split(" ")[0].title() + """,
+    <br>
+    <br>
+    This is Chloe, from <a href="http://uguru.me">uGuru</a>, the peer-to-peer tutoring service on campus. Lots of your classmates are using uGuru to study, and 93 of them said uGuru helped them improve their grades. 
+    <br>
+    <br>
+    It really sucks when you are stuck by yourself the night before the exams, and that's why we built uGuru. You can find other students who have aced the same class to help you whenever you need it. 
+    <br>
+    <br>
+    I have added $10 to your uGuru account to try it, just make sure you confirm here. <br>
+    Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your free credit.
+    <br>
+    <br>
+    Good luck with your midterms!
+    <br>
+    <br>
+    Chloe"""
+
+
+def mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, campaign_str):
+    return"""
+    <html xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+    <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Actionable emails e.g. reset password</title>
+
+
+    <style type="text/css">
+    img {
+    max-width: 100%;
+    }
+    body {
+    -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width: 100% !important; height: 100%; line-height: 1.6;
+    }
+    body {
+    background-color: #f6f6f6;
+    }
+    @media only screen and (max-width: 640px) {
+      h1 {
+        font-weight: 600 !important; margin: 20px 0 5px !important;
+      }
+      h2 {
+        font-weight: 600 !important; margin: 20px 0 5px !important;
+      }
+      h3 {
+        font-weight: 600 !important; margin: 20px 0 5px !important;
+      }
+      h4 {
+        font-weight: 600 !important; margin: 20px 0 5px !important;
+      }
+      h1 {
+        font-size: 22px !important;
+      }
+      h2 {
+        font-size: 18px !important;
+      }
+      h3 {
+        font-size: 16px !important;
+      }
+      .container {
+        width: 100% !important;
+      }
+      .content {
+        padding: 10px !important;
+      }
+      .content-wrapper {
+        padding: 10px !important;
+      }
+      .invoice {
+        width: 100% !important;
+      }
+    }
+    </style>
+    </head>
+
+    <body style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width: 100% !important; height: 100%; line-height: 1.6; background: #f6f6f6; margin: 0; padding: 0;">
+
+    <table class="body-wrap" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; width: 100%; background: #f6f6f6; margin: 0; padding: 0;">
+        <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+            <td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0;" valign="top"></td>
+            <td class="container" width="600" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; display: block !important; max-width: 600px !important; clear: both !important; margin: 0 auto; padding: 0;" valign="top">
+                <div class="content" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; max-width: 600px; display: block; margin: 0 auto; padding: 20px;">
+                    <table class="main" width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; border-radius: 3px; background: #fff; margin: 0; padding: 0; border: 1px solid #e9e9e9;">
+                        <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                            <td class="content-wrap" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 20px;" valign="top">
+                                <table width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            Hi """ + receiver_name.split(" ")[0].title() + """,
+                                        </td>
+                                    </tr>
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            It really sucks when you are stuck by yourself the night before the exams, and that's why we built uGuru. You can find other students who have aced the same class to help you whenever you need it. 
+                                        </td>
+                                    </tr>
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            I have added $10 to your uGuru account to try it, just make sure you confirm here.
+                                        </td>
+                                    </tr>
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            <a href='"""+generate_one_click_signup_email_url(receiver_name, receiver_email)+"""' class="btn-primary" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; color: #FFF; text-decoration: none; line-height: 2; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background: #348eda; margin: 0; padding: 0; border-color: #348eda; border-style: solid; border-width: 10px 20px;">Get my $10 credit</a>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            Good luck with your midterms!
+                                        </td>
+                                    </tr>
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            Chloe
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="footer" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; width: 100%; clear: both; color: #999; margin: 0; padding: 20px;">
+                        <table width="100%" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                            <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                <td class="aligncenter content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top">"""+unsubscribe_str_html_bare(receiver_email, tag_arr, campaign_str)+"""</td>
+                            </tr>
+                        </table>
+                    </div></div>
+            </td>
+            <td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0;" valign="top"></td>
+        </tr>
+    </table>
+
+    </body>
+    </html>"""
