@@ -3055,6 +3055,9 @@ def send_student_drip_1(user_id):
 def send_student_drip_2(user_id):
     request = Request.query.filter_by(student_id=user_id).first()
     
+    from time import sleep
+    sleep(0.1)
+
     #concurrency bug?
     e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-2').first()
     if e:
@@ -3096,6 +3099,9 @@ def send_student_drip_2(user_id):
 def send_student_drip_3(user_id):
     request = Request.query.filter_by(student_id=user_id).first()
     
+    from time import sleep
+    sleep(0.1)
+
     #concurrency bug?
     e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-3').first()
     if e:
@@ -3129,6 +3135,10 @@ def send_student_drip_3(user_id):
 def send_student_drip_4(user_id):
     request = Request.query.filter_by(student_id=user_id).first()
     
+
+    from time import sleep
+    sleep(0.1)
+
     #concurrency bug?
     e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-4').first()
     if e:
@@ -3163,6 +3173,10 @@ def send_student_drip_4(user_id):
 def send_student_drip_5(user_id):
     request = Request.query.filter_by(student_id=user_id).first()
     
+    from time import sleep
+    sleep(0.1)
+
+
     #concurrency bug?
     e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-5').first()
     if e:
@@ -3195,6 +3209,10 @@ def send_student_drip_5(user_id):
 @celery.task
 def send_student_drip_6(user_id):
     request = Request.query.filter_by(student_id=user_id).first()
+
+    from time import sleep
+    sleep(0.1)
+
 
     #concurrency bug?
     e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-6').first()
@@ -3230,6 +3248,10 @@ def send_student_drip_6(user_id):
 def send_student_drip_7(user_id):
     request = Request.query.filter_by(student_id=user_id).first()
     
+    
+    from time import sleep
+    sleep(0.1)
+
     #concurrency bug?
     e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-7').first()
     if e:
