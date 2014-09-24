@@ -85,9 +85,9 @@ if arg == 'send_campaign_two':
     from app.static.data.fa14_batch.batch_1 import batch_2_emails
     sent_count = 0
     avoided_count = 0
-    for key in emails.keys():
+    for key in batch_2_emails.keys():
         receiver_name = key.title()
-        receiver_email = emails[key]
+        receiver_email = batch_2_emails[key]
         from app.models import User
         user = User.query.filter_by(email=receiver_email).first()
 
@@ -105,9 +105,9 @@ if arg == 'send_campaign_three':
     from app.static.data.fa14_batch.batch_1 import batch_3_emails
     sent_count = 0
     avoided_count = 0
-    for key in emails.keys():
+    for key in batch_3_emails.keys():
         receiver_name = key.title()
-        receiver_email = emails[key]
+        receiver_email = batch_3_emails[key]
         from app.models import User
         user = User.query.filter_by(email=receiver_email).first()
 
