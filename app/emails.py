@@ -2345,7 +2345,7 @@ def mailgun_campaign_three(receiver_name, receiver_email, campaign_str):
 
 def mailgun_campaign_four(receiver_name, receiver_email, campaign_str):
     receiver_first_name = receiver_name.split(" ")[0].title()
-    subject = receiver_first_name + ', get $10 from uGuru'
+    subject = receiver_first_name + ', your friend Jenny just sent you $10'
     tag_arr = ['mailgun-campaign-four']
     send_mailgun_email(
         'nationalacademicresearch.org',
@@ -2353,7 +2353,7 @@ def mailgun_campaign_four(receiver_name, receiver_email, campaign_str):
         receiver_email,
         subject,
         "Hilary from uGuru <hilary@uguru.me>",
-        mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_str) + unsubscribe_str_html(receiver_email, tag_arr, campaign_str),
+        mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_str),
         ['mailgun-campaign-four'],
         campaign_str
         )    
@@ -2548,32 +2548,8 @@ def mailgun_campaign_three_html(receiver_name, receiver_email, tag_arr, campaign
     """
     #P.S. <b>93%</b> of your classmates said uGuru helped improve their grades.
 
+
 def mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_str):
-    return """
-    Hi """ + receiver_name.split(" ")[0].title() + """,
-    <br>
-    <br>
-    Many of your classmates are acing their exams with uGuru. With uGuru, you can find other students who have aced the same class to help you anytime, even the night before exams!
-    <br>
-    <br>
-    <b>We wanted to give you $10 to try it</b> (expires tomorrow).
-    <br>
-    <br>
-    Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your $10 from uGuru.
-    <br>
-    <br>
-    Good luck with your midterms!
-    <br>
-    <br>
-    Chloe
-    <br>
-    <br>
-    P.S. <b>93%</b> of your classmates said uGuru helped improve their grades.
-    """
-
-
-
-def mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, campaign_str):
     return"""
     <html xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
     <head>
@@ -2654,17 +2630,17 @@ def mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, 
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            Many of your classmates are acing their exams with uGuru, Cal's peer-to-peer tutoring service. <b>93%</b> of them said uGuru helped improve their grades.
+                                            This is Hilary from <a href='http://uguru.me'>uGuru</a>, the <b>peer-to-peer tutoring service</b> on campus. With uGuru, you can find other students who have aced the same class to help you anytime, even the night before exams!
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            <b>We want to give you $10 to try it. </b>
+                                            Your friend <b>Jenny</b> referred you, and sent you <b>$10</b> to try it! Jenny will also get $10 if you redeem.
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            <a href='"""+generate_one_click_signup_email_url(receiver_name, receiver_email)+"""' class="btn-primary" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; color: #2CAEE1; text-decoration: none; line-height: 2; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background: #348eda; margin: 0; padding: 0; border-color: #348eda; border-style: solid; border-width: 10px 20px;">Get my $10 credit</a>
+                                            <a href='"""+generate_one_click_signup_email_url(receiver_name, receiver_email)+"""' class="btn-primary" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 18px; color: #fff; text-decoration: none; line-height: 2; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background: #2CAEE1; margin: 0; padding: 0; border-color: #2CAEE1; border-style: solid; border-width: 10px 20px;">&nbsp;&nbsp;Get my $10&nbsp;&nbsp;</a>
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
