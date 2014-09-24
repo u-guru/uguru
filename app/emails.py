@@ -2185,7 +2185,7 @@ def unsubscribe_str_html(receiver_email, tag_arr = None, campaign_str = None):
     base_url = None
     if get_environment() == 'PRODUCTION':
         base_url = 'http://berkeley.uguru.me/'
-    if get_environment() == 'TESTING':
+    elif get_environment() == 'TESTING':
         base_url = 'http://testing.uguru.me/'
     else:
         base_url = 'http://testing.uguru.me/'
