@@ -163,7 +163,7 @@ if arg == 'send_campaign_five':
         if index > 0  and index % 100 == 0:
             from time import sleep
             print "100 emails sent, waiting 9 minutes"
-            sleep(5400)
+            sleep(540)
         receiver_name = key.title()
         receiver_email = batch_5_emails[key]
         from app.models import User
