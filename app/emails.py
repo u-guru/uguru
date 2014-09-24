@@ -2500,7 +2500,7 @@ def mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, 
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            Many of your classmates are acing their exams with uGuru, Cal's peer-to-peer tutoring service. 93%% of them said uGuru helped improve their grades.
+                                            Many of your classmates are acing their exams with uGuru, Cal's peer-to-peer tutoring service. <b>93%</b> of them said uGuru helped improve their grades.
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
@@ -2535,7 +2535,7 @@ def mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, 
                     <div class="footer" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; width: 100%; clear: both; color: #999; margin: 0; padding: 20px;">
                         <table width="100%" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                             <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
-                                <td class="aligncenter content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top"> You are receiving this message because a friend referred you. """+unsubscribe_str_html_bare(receiver_email, tag_arr, campaign_str)+"""</td>
+                                <td class="aligncenter content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top"> You are receiving this message because a friend referred you. <br> """+unsubscribe_str_html_bare(receiver_email, tag_arr, campaign_str)+"""</td>
                             </tr>
                         </table>
                     </div></div>
