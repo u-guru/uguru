@@ -61,6 +61,10 @@ if arg == 'send_mailgun_three':
     from app.emails import mailgun_campaign_three
     mailgun_campaign_three(sys.argv[2], sys.argv[3], sys.argv[4])
 
+if arg == 'send_mailgun_four':
+    from app.emails import mailgun_campaign_four
+    mailgun_campaign_four(sys.argv[2], sys.argv[3], sys.argv[4])
+
 if arg == 'send_campaign_one':
     from app.static.data.fa14_batch.batch_1 import emails
     sent_count = 0
@@ -114,6 +118,26 @@ if arg == 'send_campaign_three':
         if not user:
             from app.emails import mailgun_campaign_three
             mailgun_campaign_three(receiver_name, receiver_email, 'chloe_2_1_100_text')
+            print receiver_name, receiver_email, 'has been sent an email'
+            sent_count += 1
+        else:
+            print receiver_name, receiver_email, 'already has an account'
+            avoided_count += 1
+    print "Sent:", sent_count, "Accounts already made:", avoided_count
+
+if arg == 'send_campaign_four':
+    from app.static.data.fa14_batch.batch_1 import batch_3_emails
+    sent_count = 0
+    avoided_count = 0
+    for key in batch_3_emails.keys():
+        receiver_name = key.title()
+        receiver_email = batch_3_emails[key]
+        from app.models import User
+        user = User.query.filter_by(email=receiver_email).first()
+
+        if not user:
+            from app.emails import mailgun_campaign_three
+            mailgun_campaign_three(receiver_name, receiver_email, 'chloe_3_100_text')
             print receiver_name, receiver_email, 'has been sent an email'
             sent_count += 1
         else:

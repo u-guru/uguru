@@ -2343,6 +2343,20 @@ def mailgun_campaign_three(receiver_name, receiver_email, campaign_str):
         campaign_str
         )    
 
+def mailgun_campaign_four(receiver_name, receiver_email, campaign_str):
+    receiver_first_name = receiver_name.split(" ")[0].title()
+    subject = receiver_first_name + ', get $10 from uGuru'
+    tag_arr = ['mailgun-campaign-four']
+    send_mailgun_email(
+        'nationalacademicresearch.org',
+        receiver_name,
+        receiver_email,
+        subject,
+        "Hilary from uGuru <hilary@uguru.me>",
+        mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_str) + unsubscribe_str_html(receiver_email, tag_arr, campaign_str),
+        ['mailgun-campaign-four'],
+        campaign_str
+        )    
 
 
 def generate_one_click_signup_email_url(receiver_name, receiver_email):
@@ -2626,8 +2640,8 @@ def mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, 
                 <div class="content" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; max-width: 600px; display: block; margin: 0 auto; padding: 20px;">
                     <table class="main" width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; border-radius: 3px; background: #fff; margin: 0; padding: 0; border: 1px solid #e9e9e9;">
                         <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
-                            <td class="alert alert-warning" style="font-family: 'Grand Hotel', cursive; box-sizing: border-box; font-size: 32px; vertical-align: top; color: #fff; font-weight: 500; text-align: center; border-radius: 3px 3px 0 0; background: #2CAEE1; margin: 0; padding: 20px;" align="center" valign="top">
-                                uguru.me
+                            <td class="alert alert-warning" style="font-family: 'Grand Hotel', cursive; box-sizing: border-box; font-size: 32px; vertical-align: top; color: #fff; font-weight: 500; text-align: center; display:block;margin: 0 auto; border-radius: 3px 3px 0 0; background: #2CAEE1; margin: 0; padding: 20px;" align="center" valign="top">
+                                <img src='http://berkeley.uguru.me/static/img/uguru_font_only.svg' height='40px'>
                             </td>
                         </tr>
                         <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
@@ -2650,7 +2664,7 @@ def mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, 
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            <a href='"""+generate_one_click_signup_email_url(receiver_name, receiver_email)+"""' class="btn-primary" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; color: #FFF; text-decoration: none; line-height: 2; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background: #348eda; margin: 0; padding: 0; border-color: #348eda; border-style: solid; border-width: 10px 20px;">Get my $10 credit</a>
+                                            <a href='"""+generate_one_click_signup_email_url(receiver_name, receiver_email)+"""' class="btn-primary" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; color: #2CAEE1; text-decoration: none; line-height: 2; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background: #348eda; margin: 0; padding: 0; border-color: #348eda; border-style: solid; border-width: 10px 20px;">Get my $10 credit</a>
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
