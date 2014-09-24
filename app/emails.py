@@ -2501,7 +2501,7 @@ def mailgun_campaign_two_html(receiver_name, receiver_email, tag_arr, campaign_s
     This is Chloe from <a href='http://uguru.me'>uGuru</a>, the peer-to-peer tutoring service on campus. With uGuru, you can find other students who have aced the same class to help you anytime, even the night before exams!
     <br>
     <br>
-    Your friend Michael referred you, and sent you $10 to try it. Confirm here, so both of you get $10!
+    Your friend Michael referred you, and sent you $10 to try it! Michael will also get $10 if you redeem.
     <br>
     <br>
     Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your $10 from uGuru.
@@ -2523,11 +2523,10 @@ def mailgun_campaign_three_html(receiver_name, receiver_email, tag_arr, campaign
     <b>We wanted to give you $10 to try it</b> (expires 9/25).
     <br>
     <br>
-    Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your $10 from uGuru.
+    <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>Click here to get your $10 from uGuru.</a>
     <br>
     <br>
     Good luck with your midterms!
-    <br>
     <br>
     Chloe
     <br>
