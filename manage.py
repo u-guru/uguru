@@ -53,6 +53,25 @@ if arg == 'send_mailgun_one':
     from app.emails import mailgun_campaign_one
     mailgun_campaign_one(sys.argv[2], sys.argv[3], sys.argv[4])
 
+if arg == 'send_campaign_one':
+    from app.static.data.fa14_batch.batch_1 import emails
+    sent_count = 0
+    avoided_count = 0
+    for key in emails.keys():
+        receiver_name = key.title()
+        receiver_email = emails[key]
+        from app.models import User
+        user = User.query.filter_by(email=receiver_email).first()
+
+        if not user:
+            mailgun_campaign_one(receiver_name, receiver_email, 'nar_text_1_100')
+            print receiver_name, receiver_email, 'has been sent an email'
+            sent_count += 1
+        else:
+            print receiver_name, receiver_email, 'already has an account'
+            avoided_count += 1
+    print "Sent:", sent_count, "Accounts already made:", avoided_count
+
 if arg == 'initialize_user_codes':
 
     unique_codes = []
