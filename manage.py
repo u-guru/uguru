@@ -49,6 +49,10 @@ if arg == 'send_mailgun':
     from app.emails import one_click_signup_email
     one_click_signup_email(sys.argv[2], sys.argv[3])
 
+if arg == 'send_mailgun_one':
+    from app.emails import mailgun_campaign_one
+    mailgun_campaign_one(sys.argv[2], sys.argv[3], sys.argv[4])
+
 if arg == 'initialize_user_codes':
 
     unique_codes = []

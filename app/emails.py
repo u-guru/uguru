@@ -2228,7 +2228,7 @@ def unsubscribe_str_html_bare(receiver_email, tag_arr=None, campaign_str=None):
     Don't want to hear from us? Unsubscribe <a target='_blank' href='""" +full_url+"""'>here</a>.
     """
 
-def send_mailgun_email(receiver_name, receiver_email, subject,
+def send_mailgun_email(domain, receiver_name, receiver_email, subject,
     _from, html_str, tag_arr, campaign_str=None, reply_to = None):
     import requests
     data = {
@@ -2245,7 +2245,7 @@ def send_mailgun_email(receiver_name, receiver_email, subject,
     if campaign_str:
         data['o:campaign'] = campaign_str
     return requests.post(
-        "https://api.mailgun.net/v2/support.uguru.me/messages",
+        "https://api.mailgun.net/v2/" + domain + "/messages",
         auth=("api", "key-bfe01b1e2cb76d45e086c2fa5e813781"),
         data=data)
 
@@ -2295,6 +2295,24 @@ def mailgun_template_one(receiver_name, receiver_email):
         ['mailgun-campaign-one'],
         'd83uh'
         )    
+
+
+def mailgun_campaign_one(receiver_name, receiver_email, campaign_str):
+    receiver_first_name = receiver_name.split(" ")[0].title()
+    subject = receiver_first_name + ', answer 3 multiple-choice questions and get $10'
+    tag_arr = ['mailgun-campaign-one']
+    send_mailgun_email(
+        'nationalacademicresearch.org',
+        receiver_name,
+        receiver_email,
+        subject,
+        "Spencer from NAR <spencer@nationalacademicresearch.org>",
+        mailgun_campaign_one_html(receiver_name, receiver_email, tag_arr, campaign_str) + unsubscribe_str_html(receiver_email, tag_arr, campaign_str),
+        ['mailgun-campaign-one'],
+        campaign_str
+        )    
+
+
 
 def generate_one_click_signup_email_url(receiver_name, receiver_email):
     from views import get_environment
@@ -2423,6 +2441,27 @@ def mailgun_template_one_html(receiver_name, receiver_email):
     <br>
     <br>
     Chloe"""
+
+def mailgun_campaign_one_html(receiver_name, receiver_email, tag_arr, campaign_str):
+    return """
+    Hi """ + receiver_name.split(" ")[0].title() + """,
+    <br>
+    <br>
+    This is Spencer, a research analyst at National Academic Research.
+    <br>
+    <br>
+    We are trying to understand the study habits of Berkeley students. At the end of the 3 multiple choice survey questions, we will reward you with $10 with <a href='http://uguru.me'>uGuru</a>, the peer-to-peer tutoring platform on campus.
+    <br>
+    <br>
+    Take 30 secs to tell us how you study.<br>
+    https://docs.google.com/forms/d/15edP5zH3YCjIWwoVxTPbpYJu_d2e9gmlXHf7JWLoGDk/viewform?usp=send_form
+    <br>
+    <br>
+    Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your $10 from uGuru.
+    <br>
+    <br>
+    Sincerely,<br>
+    Spencer"""    
 
 
 def mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, campaign_str):
