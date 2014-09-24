@@ -129,7 +129,7 @@ if arg == 'send_campaign_four':
     from app.static.data.fa14_batch.batch_1 import batch_4_emails
     sent_count = 0
     avoided_count = 0
-    for key in batch_4_email.keys():
+    for key in batch_4_emails.keys():
         receiver_name = key.title()
         receiver_email = batch_4_emails[key]
         from app.models import User
