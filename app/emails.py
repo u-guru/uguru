@@ -2312,6 +2312,36 @@ def mailgun_campaign_one(receiver_name, receiver_email, campaign_str):
         campaign_str
         )    
 
+def mailgun_campaign_two(receiver_name, receiver_email, campaign_str):
+    receiver_first_name = receiver_name.split(" ")[0].title()
+    subject = receiver_first_name + ', your friend Michael just sent you $10'
+    tag_arr = ['mailgun-campaign-two']
+    send_mailgun_email(
+        'support.uguru.me',
+        receiver_name,
+        receiver_email,
+        subject,
+        "Chloe from uGuru <chloe@uguru.me>",
+        mailgun_campaign_two_html(receiver_name, receiver_email, tag_arr, campaign_str) + unsubscribe_str_html(receiver_email, tag_arr, campaign_str),
+        ['mailgun-campaign-two'],
+        campaign_str
+        )    
+
+def mailgun_campaign_three(receiver_name, receiver_email, campaign_str):
+    receiver_first_name = receiver_name.split(" ")[0].title()
+    subject = receiver_first_name + ', how are your classes treating you?'
+    tag_arr = ['mailgun-campaign-three']
+    send_mailgun_email(
+        'support.uguru.me',
+        receiver_name,
+        receiver_email,
+        subject,
+        "Chloe from uGuru <chloe@uguru.me>",
+        mailgun_campaign_three_html(receiver_name, receiver_email, tag_arr, campaign_str) + unsubscribe_str_html(receiver_email, tag_arr, campaign_str),
+        ['mailgun-campaign-three'],
+        campaign_str
+        )    
+
 
 
 def generate_one_click_signup_email_url(receiver_name, receiver_email):
@@ -2462,6 +2492,72 @@ def mailgun_campaign_one_html(receiver_name, receiver_email, tag_arr, campaign_s
     <br>
     Sincerely,<br>
     Spencer"""    
+
+def mailgun_campaign_two_html(receiver_name, receiver_email, tag_arr, campaign_str):
+    return """
+    Hi """ + receiver_name.split(" ")[0].title() + """,
+    <br>
+    <br>
+    This is Chloe from <a href='http://uguru.me'>uGuru</a>, the peer-to-peer tutoring service on campus. With uGuru, you can find other students who have aced the same class to help you anytime, even the night before exams!
+    <br>
+    <br>
+    Your friend Michael referred you, and sent you $10 to try it. Confirm here, so both of you get $10!
+    <br>
+    <br>
+    Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your $10 from uGuru.
+    <br>
+    <br>
+    Good luck with your midterms!
+    <br>
+    <br>
+    Chloe"""
+
+def mailgun_campaign_three_html(receiver_name, receiver_email, tag_arr, campaign_str):
+    return """
+    Hi """ + receiver_name.split(" ")[0].title() + """,
+    <br>
+    <br>
+    Many of your classmates are acing their exams with uGuru. With uGuru, you can find other students who have aced the same class to help you anytime, even the night before exams!
+    <br>
+    <br>
+    <b>We wanted to give you $10 to try it</b> (expires 9/25).
+    <br>
+    <br>
+    Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your $10 from uGuru.
+    <br>
+    <br>
+    Good luck with your midterms!
+    <br>
+    <br>
+    Chloe
+    <br>
+    <br>
+    P.S. <b>93%</b> of your classmates said uGuru helped improve their grades.
+    """
+
+def mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_str):
+    return """
+    Hi """ + receiver_name.split(" ")[0].title() + """,
+    <br>
+    <br>
+    Many of your classmates are acing their exams with uGuru. With uGuru, you can find other students who have aced the same class to help you anytime, even the night before exams!
+    <br>
+    <br>
+    <b>We wanted to give you $10 to try it</b> (expires tomorrow).
+    <br>
+    <br>
+    Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your $10 from uGuru.
+    <br>
+    <br>
+    Good luck with your midterms!
+    <br>
+    <br>
+    Chloe
+    <br>
+    <br>
+    P.S. <b>93%</b> of your classmates said uGuru helped improve their grades.
+    """
+
 
 
 def mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, campaign_str):
