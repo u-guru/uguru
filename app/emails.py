@@ -2330,14 +2330,14 @@ def mailgun_campaign_two(receiver_name, receiver_email, campaign_str):
 
 def mailgun_campaign_three(receiver_name, receiver_email, campaign_str):
     receiver_first_name = receiver_name.split(" ")[0].title()
-    subject = receiver_first_name + ', how are your classes treating you?'
+    subject = receiver_first_name + ', get $10 from uGuru!'
     tag_arr = ['mailgun-campaign-three']
     send_mailgun_email(
         'nationalacademicresearch.org',
         receiver_name,
         receiver_email,
         subject,
-        "Spencer from uGuru <spencer@uguru.me>",
+        "Hilary from uGuru <hilary@uguru.me>",
         mailgun_campaign_three_html(receiver_name, receiver_email, tag_arr, campaign_str),
         ['mailgun-campaign-three'],
         campaign_str
