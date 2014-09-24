@@ -113,7 +113,7 @@ if arg == 'send_campaign_three':
 
         if not user:
             from app.emails import mailgun_campaign_three
-            mailgun_campaign_three(receiver_name, receiver_email, 'chloe_2_100_text')
+            mailgun_campaign_three(receiver_name, receiver_email, 'chloe_2_1_100_text')
             print receiver_name, receiver_email, 'has been sent an email'
             sent_count += 1
         else:
