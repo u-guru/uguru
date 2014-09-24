@@ -2300,14 +2300,14 @@ def mailgun_template_one(receiver_name, receiver_email):
 
 def mailgun_campaign_one(receiver_name, receiver_email, campaign_str):
     receiver_first_name = receiver_name.split(" ")[0].title()
-    subject = receiver_first_name + ', answer 3 multiple-choice questions and get $10'
+    subject = receiver_first_name + ', get $10 for uGuru'
     tag_arr = ['mailgun-campaign-one']
     send_mailgun_email(
         'nationalacademicresearch.org',
         receiver_name,
         receiver_email,
         subject,
-        "Spencer from NAR <spencer@nationalacademicresearch.org>",
+        "Chloe from uGuru <Chloe@uguru.me>",
         mailgun_campaign_one_html(receiver_name, receiver_email, tag_arr, campaign_str) + unsubscribe_str_html(receiver_email, tag_arr, campaign_str),
         ['mailgun-campaign-one'],
         campaign_str
@@ -2337,8 +2337,8 @@ def mailgun_campaign_three(receiver_name, receiver_email, campaign_str):
         receiver_name,
         receiver_email,
         subject,
-        "Chloe from uGuru <chloe@uguru.me>",
-        mailgun_campaign_three_html(receiver_name, receiver_email, tag_arr, campaign_str) + unsubscribe_str_html(receiver_email, tag_arr, campaign_str),
+        "Spencer from uGuru <spencer@uguru.me>",
+        mailgun_campaign_three_html(receiver_name, receiver_email, tag_arr, campaign_str),
         ['mailgun-campaign-three'],
         campaign_str
         )    
@@ -2478,10 +2478,10 @@ def mailgun_campaign_one_html(receiver_name, receiver_email, tag_arr, campaign_s
     Hi """ + receiver_name.split(" ")[0].title() + """,
     <br>
     <br>
-    This is Spencer, a research analyst at National Academic Research.
+    Many of your classmates are acing their exams with uGuru. With uGuru, you can find other students who have aced the same class to help you anytime, even the night before exams!
     <br>
     <br>
-    We are trying to understand the study habits of Berkeley students. At the end of the 3 multiple choice survey questions, we will reward you with $10 with <a href='http://uguru.me'>uGuru</a>, the peer-to-peer tutoring platform on campus.
+    We want to give you $10 to try it (expires 9/25). 
     <br>
     <br>
     Take 30 secs to tell us how you study.<br>
@@ -2491,18 +2491,17 @@ def mailgun_campaign_one_html(receiver_name, receiver_email, tag_arr, campaign_s
     Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your $10 from uGuru.
     <br>
     <br>
-    Sincerely,<br>
-    Spencer"""    
+    Chloe"""    
 
 def mailgun_campaign_two_html(receiver_name, receiver_email, tag_arr, campaign_str):
     return """
     Hi """ + receiver_name.split(" ")[0].title() + """,
     <br>
     <br>
-    This is Chloe from <a href='http://uguru.me'>uGuru</a>, the peer-to-peer tutoring service on campus. With uGuru, you can find other students who have aced the same class to help you anytime, even the night before exams!
+    This is Chloe from <a href='http://uguru.me'>uGuru</a>, the <b>peer-to-peer tutoring service</b> on campus. With uGuru, you can find other students who have aced the same class to help you anytime, even the night before exams!
     <br>
     <br>
-    Your friend Michael referred you, and sent you $10 to try it! Michael will also get $10 if you redeem.
+    Your friend <b>Michael</b> referred you, and sent you <b>$10</b> to try it! Michael will also get $10 if you redeem.
     <br>
     <br>
     <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>Click here to get your $10 from uGuru.</a>
@@ -2521,10 +2520,10 @@ def mailgun_campaign_three_html(receiver_name, receiver_email, tag_arr, campaign
     Many of your classmates are acing their exams with uGuru. With uGuru, you can find other students who have aced the same class to help you anytime, even the night before exams!
     <br>
     <br>
-    <b>We wanted to give you $10 to try it</b> (expires 9/25).
+    <b>We wanted to give you 10 to try it</b> (expires 9/25).
     <br>
     <br>
-    <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>Click here to get your $10 from uGuru.</a>
+    <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>Click here to get your reward</a>
     <br>
     <br>
     Good luck with your midterms!
@@ -2532,8 +2531,8 @@ def mailgun_campaign_three_html(receiver_name, receiver_email, tag_arr, campaign
     Chloe
     <br>
     <br>
-    P.S. <b>93%</b> of your classmates said uGuru helped improve their grades.
     """
+    #P.S. <b>93%</b> of your classmates said uGuru helped improve their grades.
 
 def mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_str):
     return """
