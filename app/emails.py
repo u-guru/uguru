@@ -2500,12 +2500,12 @@ def mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, 
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            It really sucks when you are stuck by yourself the night before the exams, and that's why we built uGuru. You can find other students who have aced the same class to help you whenever you need it. 
+                                            Many of your classmates are acing their exams with uGuru, Cal's peer-to-peer tutoring service. 93%% of them said uGuru helped improve their grades.
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            I have added $10 to your uGuru account to try it, just make sure you confirm here.
+                                            We want to give you $10 to try it. 
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
@@ -2523,6 +2523,11 @@ def mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, 
                                             Chloe
                                         </td>
                                     </tr>
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 10px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            P.S. This promotion expires tomorrow.
+                                        </td>
+                                    </tr>
                                 </table>
                             </td>
                         </tr>
@@ -2530,7 +2535,7 @@ def mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, 
                     <div class="footer" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; width: 100%; clear: both; color: #999; margin: 0; padding: 20px;">
                         <table width="100%" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                             <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
-                                <td class="aligncenter content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top">"""+unsubscribe_str_html_bare(receiver_email, tag_arr, campaign_str)+"""</td>
+                                <td class="aligncenter content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top"> You are receiving this message because a friend referred you. """+unsubscribe_str_html_bare(receiver_email, tag_arr, campaign_str)+"""</td>
                             </tr>
                         </table>
                     </div></div>
