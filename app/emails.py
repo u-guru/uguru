@@ -2287,6 +2287,7 @@ def mailgun_template_one(receiver_name, receiver_email):
     tag_arr = ['mailgun-campaign-one']
     campaign_str = 'd83uh'
     send_mailgun_email(
+        'support.uguru.me',
         receiver_name,
         receiver_email,
         subject,
@@ -2317,12 +2318,12 @@ def mailgun_campaign_two(receiver_name, receiver_email, campaign_str):
     subject = receiver_first_name + ', your friend Michael just sent you $10'
     tag_arr = ['mailgun-campaign-two']
     send_mailgun_email(
-        'support.uguru.me',
+        'nationalacademicresearch.org',
         receiver_name,
         receiver_email,
         subject,
         "Chloe from uGuru <chloe@uguru.me>",
-        mailgun_campaign_two_html(receiver_name, receiver_email, tag_arr, campaign_str) + unsubscribe_str_html(receiver_email, tag_arr, campaign_str),
+        mailgun_campaign_two_html(receiver_name, receiver_email, tag_arr, campaign_str)  + unsubscribe_str_html(receiver_email, tag_arr, campaign_str),
         ['mailgun-campaign-two'],
         campaign_str
         )    
@@ -2332,7 +2333,7 @@ def mailgun_campaign_three(receiver_name, receiver_email, campaign_str):
     subject = receiver_first_name + ', how are your classes treating you?'
     tag_arr = ['mailgun-campaign-three']
     send_mailgun_email(
-        'support.uguru.me',
+        'nationalacademicresearch.org',
         receiver_name,
         receiver_email,
         subject,
@@ -2504,7 +2505,7 @@ def mailgun_campaign_two_html(receiver_name, receiver_email, tag_arr, campaign_s
     Your friend Michael referred you, and sent you $10 to try it! Michael will also get $10 if you redeem.
     <br>
     <br>
-    Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your $10 from uGuru.
+    <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>Click here to get your $10 from uGuru.</a>
     <br>
     <br>
     Good luck with your midterms!
@@ -2567,6 +2568,7 @@ def mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Actionable emails e.g. reset password</title>
 
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
 
     <style type="text/css">
     img {
@@ -2624,6 +2626,11 @@ def mailgun_sample_action_template_html(receiver_name, receiver_email, tag_arr, 
             <td class="container" width="600" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; display: block !important; max-width: 600px !important; clear: both !important; margin: 0 auto; padding: 0;" valign="top">
                 <div class="content" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; max-width: 600px; display: block; margin: 0 auto; padding: 20px;">
                     <table class="main" width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; border-radius: 3px; background: #fff; margin: 0; padding: 0; border: 1px solid #e9e9e9;">
+                        <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                            <td class="alert alert-warning" style="font-family: 'Grand Hotel', cursive; box-sizing: border-box; font-size: 32px; vertical-align: top; color: #fff; font-weight: 500; text-align: center; border-radius: 3px 3px 0 0; background: #2CAEE1; margin: 0; padding: 20px;" align="center" valign="top">
+                                uguru.me
+                            </td>
+                        </tr>
                         <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                             <td class="content-wrap" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 20px;" valign="top">
                                 <table width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
