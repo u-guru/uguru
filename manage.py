@@ -64,6 +64,7 @@ if arg == 'send_campaign_one':
         user = User.query.filter_by(email=receiver_email).first()
 
         if not user:
+            from app.emails import mailgun_campaign_one
             mailgun_campaign_one(receiver_name, receiver_email, 'nar_text_1_100')
             print receiver_name, receiver_email, 'has been sent an email'
             sent_count += 1
