@@ -2040,7 +2040,20 @@ def check_promo_code(user, promo_code):
         p.tag = 'indusrocks'
         db_session.add(p)
         user.promos.append(p)
-        return "success"
+        return "success" 
+
+    if promo_code.lower() == 'berkeleybap':
+        if user.promos:
+            for p in user.promos:
+                if p.tag == 'berkeleybap':
+                    return "used"
+        p = Promo()
+        p.time_used = datetime.now()
+        p.received_id = user.id
+        p.tag = 'berkeleybap'
+        db_session.add(p)
+        user.promos.append(p)
+        return "success" 
 
     return "invalid"
 
