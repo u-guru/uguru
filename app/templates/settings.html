@@ -107,7 +107,7 @@
                 
                 {% if user.pending or user.balance %}
                 <div class='margin-bottom-30 font-20'>
-                  My balance: <span class='green-text'>${{user.pending + user.balance}} 
+                  My balance: <span class='green-text'>${{user.balance}} 
                     {% if user.pending %}
                       (${{user.pending}} pending)
                     {% endif %}
