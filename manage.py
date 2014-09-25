@@ -212,19 +212,19 @@ if arg == 'send_campaign_seven':
     sent_count = 0
     avoided_count = 0
     index = 0
-    for key in batch_6_emails.keys():
+    for key in batch_7_emails.keys():
         if index > 0  and index % 100 == 0:
             from time import sleep
             print "100 emails sent, waiting 9 minutes"
             sleep(540)
         receiver_name = key.title()
-        receiver_email = batch_6_emails[key]
+        receiver_email = batch_7_emails[key]
         from app.models import User
         user = User.query.filter_by(email=receiver_email).first()
 
         if not user:
-            from app.emails import mailgun_campaign_six
-            mailgun_campaign_six(receiver_name, receiver_email, 'chloe_6_500_template')
+            from app.emails import mailgun_campaign_five
+            mailgun_campaign_five(receiver_name, receiver_email, 'chloe_6_500_template')
             print receiver_name, receiver_email, 'has been sent an email'
             sent_count += 1
         else:
