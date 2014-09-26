@@ -1572,8 +1572,7 @@ def update_requests():
             
             skill = Skill.query.get(r.skill_id)
             r.connected_tutor_id = tutor_id
-            from app.static.data.prices import prices_dict
-            r.connected_tutor_hourly = prices_dict[current_notification.request_tutor_amount_hourly]
+            r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
             r.time_connected = datetime.now()
 
             mutual_times_arr = find_earliest_meeting_time(r)
