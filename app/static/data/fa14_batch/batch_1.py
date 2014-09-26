@@ -6350,7 +6350,7 @@ batch_16_emails = {
 }
 
 batch_17_emails = {
-    CARISSA MEI-HUANG LEE": "carissalee@berkeley.edu",
+    "CARISSA MEI-HUANG LEE": "carissalee@berkeley.edu",
     "CARISSA TJONDRO": "ctjondro@berkeley.edu",
     "CARISSA VALERIE ALFORQUE": "calforque@berkeley.edu",
     "CARL CHOI": "carl.choi@berkeley.edu",
