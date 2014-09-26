@@ -6,6 +6,11 @@
     height:450px;
   }
 
+  .session-confirmation-container {
+    padding:20px 30px;
+    margin:0px;
+  }
+
   #how-it-works-banner {
     background: url('/static/img/background-1600-2.jpg') no-repeat;
     background-size:cover;
@@ -117,7 +122,8 @@
     background: url('/static/img/background-1600.jpg') no-repeat;
     background-size:cover;
     height:550px;
-  }
+  }  
+
   #parent-banner {
     background: url('/static/img/parent-background-1600.png') no-repeat;
     background-size:cover;

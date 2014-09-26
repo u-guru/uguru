@@ -1600,6 +1600,12 @@ vertical-align: top;
 border-top: 1px solid #dddddd;
 }
 
+.session-confirmation-container {
+  border: 1px solid grey;
+  border-radius:8px;
+  padding:20px 40px;
+  margin:0px 20%;
+}
 
 
 .darkClass

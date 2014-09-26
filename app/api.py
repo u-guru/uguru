@@ -204,6 +204,13 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
 
+    # if arg == 'unconfirm_meeting' and request.method == 'POST':
+    #     user = getUser()
+    #     if user:
+            
+    #         relevant_notifications = Notification.query.filter_by(custom_tag='confirm-meeting', request_id=request_id)
+    #     return errors(["Invalid Token"])
+
     if arg == 'confirm_meeting' and request.method == 'POST':
         user = getUser()
         if user:
