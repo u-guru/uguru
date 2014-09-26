@@ -370,7 +370,7 @@ if arg == 'send_campaign_thirteen':
     index = 0
     for key in batch_13_emails.keys():
         if index > 0  and index % 100 == 0:
-            from time import sleep
+            from time import sleep 
             print "100 emails sent, waiting 9 minutes"
             sleep(540)
         receiver_name = key.title()
@@ -381,6 +381,32 @@ if arg == 'send_campaign_thirteen':
         if not user:
             from app.emails import mailgun_campaign_five
             mailgun_campaign_five(receiver_name, receiver_email, 'chloe_12_500_template')
+            print receiver_name, receiver_email, 'has been sent an email'
+            sent_count += 1
+        else:
+            print receiver_name, receiver_email, 'already has an account'
+            avoided_count += 1
+        index += 1
+    print "Sent:", sent_count, "Accounts already made:", avoided_count
+
+if arg == 'send_campaign_fourteen':
+    from app.static.data.fa14_batch.batch_1 import batch_14_emails
+    sent_count = 0
+    avoided_count = 0
+    index = 0
+    for key in batch_14_emails.keys():
+        if index > 0  and index % 100 == 0:
+            from time import sleep 
+            print "100 emails sent, waiting 9 minutes"
+            sleep(540)
+        receiver_name = key.title()
+        receiver_email = batch_14_emails[key]
+        from app.models import User
+        user = User.query.filter_by(email=receiver_email).first()
+
+        if not user:
+            from app.emails import mailgun_campaign_five
+            mailgun_campaign_five(receiver_name, receiver_email, 'chloe_13_500_template')
             print receiver_name, receiver_email, 'has been sent an email'
             sent_count += 1
         else:
