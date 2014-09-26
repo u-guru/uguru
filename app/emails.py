@@ -2666,7 +2666,7 @@ def mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_
                     <table class="main" width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; border-radius: 3px; background: #fff; margin: 0; padding: 0; border: 1px solid #e9e9e9;">
                         <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                             <td class="alert alert-warning" style="font-family: 'Grand Hotel', cursive; box-sizing: border-box; font-size: 32px; vertical-align: top; color: #fff; font-weight: 500; text-align: center; display:block;margin: 0 auto; border-radius: 3px 3px 0 0; background: #2CAEE1; margin: 0; padding: 20px;" align="center" valign="top">
-                                <img src='http://berkeley.uguru.me/static/img/uguru_font_only.svg' height='30px'>
+                                <img src='http://berkeley.uguru.me/static/img/uguru_font_only.png'>
                             </td>
                         </tr>
                         <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
