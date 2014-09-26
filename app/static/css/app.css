@@ -1592,6 +1592,10 @@ input#credit-card-num-parent-modal.amex, input.credit-card-num-modal.amex {
   margin:5px 0px 0px 0px;
 }
 
+.super-success {
+  background-color:#69bf69;
+}
+
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
 padding: 6px;

@@ -578,6 +578,12 @@ def admin_requests():
             if r.connected_tutor_id:
                 tutor = User.query.get(r.connected_tutor_id)
                 request_dict['connected-tutor'] = tutor
+
+
+                all_payments = Payment.query.filter_by(student_id = student.id, tutor_id = tutor.id).all()
+
+                request_dict['num-payments'] = len(all_payments)
+
                 c = Conversation.query.filter_by(guru=tutor, student=student).first()
                 if c:
                     request_dict['message-length'] = len(c.messages)

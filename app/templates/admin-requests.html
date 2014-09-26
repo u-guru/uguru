@@ -23,7 +23,7 @@
 
         <div class="container">
             <div style="margin:20px; text-align:center" class="row">
-                <span style="color:red">Red</span> = Canceled, <span style="color:green">Green</span> = Matched, <span style="color:#fcf8e3">Yellow</span> = Pending
+                <span style="color:red">Red</span> = Canceled, <span style="color:green">Green</span> = Matched, <span style="color:#69bf69">Dark Green</span> = Recurring Payments, <span style="color:#fcf8e3">Yellow</span> = Pending 
             </div>
             <div style="margin:20px; text-align:center" class="row">
                 # Requests: {{all_requests|length}} 
@@ -48,12 +48,14 @@
                         <td> Messaged? </td>
                         <td> Payment? </td>
                         <td> Rated? </td>
-                        <td> We made </td>
+                        <td> Num Payments </td>
                     </tr>
                     {% for request_dict in all_requests %}
                         {% if request_dict['student'].name %}
                         {% if request_dict['connected-tutor'] and request_dict['connected-tutor'] == request_dict['student']%}
                             {% set status = 'danger'%}
+                        {% elif request_dict['connected-tutor'] and request_dict['num-payments'] > 1 %}
+                            {% set status = 'super-success' %}
                         {% elif request_dict['connected-tutor'] %}
                             {% set status = 'success'%}
                         {% else %} 
@@ -138,8 +140,8 @@
                                 {% endif%}
                             </td>
                             <td>
-                                {% if request_dict['payment'] %}
-                                    ${{request_dict['payment']}}
+                                {% if request_dict['num-payments'] %}
+                                    {{request_dict['num-payments']}}
                                 {% endif %}
                             </td>
                         </tr>
