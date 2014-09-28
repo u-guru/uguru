@@ -2367,7 +2367,7 @@ def mailgun_campaign_five(receiver_name, receiver_email, campaign_str):
         receiver_name,
         receiver_email,
         subject,
-        "Chloe from uGuru <chloe@uguru.me>",
+        "Jasmine from uGuru <jasmine@uguru.me>",
         mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_str),
         ['mailgun-campaign-five'],
         campaign_str
@@ -2695,7 +2695,7 @@ def mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
                                             Good luck with your midterms!<br>
-                                            Chloe
+                                            Jasmine
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
