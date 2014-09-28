@@ -974,12 +974,16 @@ if arg == 'initialize':
         db_session.commit()
     print 'courses created'
 
+    from datetime import datetime
+
     #New Guru
     user = User(name='Tutor 1', email='makhani.samir@gmail.com', phone_number = '8135009853')
     user.approved_by_admin = True
     user.verified_tutor = True
     user.profile_url = '/static/img/jenny.jpg'
     user.year = 'Freshman'
+    user.time_created = datetime.now()
+    user.last_active = datetime.now()
     user.tutor_introduction = 'I like tutoring'
     user.phone_number = '18135009853'
     user.major = 'EECS'
@@ -1001,6 +1005,8 @@ if arg == 'initialize':
     user.year = 'Freshman'
     user.tutor_introduction = 'I like tutoring'
     user.phone_number = '10dka0d-a'
+    user.time_created = datetime.now()
+    user.last_active = datetime.now()
     user.major = 'EECS'
     skill = Skill.query.get(6849)
     m = Mailbox(user)
@@ -1021,6 +1027,8 @@ if arg == 'initialize':
     user.year = 'Freshman'
     user.tutor_introduction = 'I like tutoring'
     user.phone_number = '110dka0d-a'
+    user.time_created = datetime.now()
+    user.last_active = datetime.now()
     user.major = 'EECS'
     m = Mailbox(user)
     db_session.add(m)
@@ -1041,6 +1049,8 @@ if arg == 'initialize':
     user.year = 'Freshman'
     user.tutor_introduction = 'I like tutoring'
     user.phone_number = '220dka0d-a'
+    user.time_created = datetime.now()
+    user.last_active = datetime.now()
     user.major = 'EECS'
     db_session.add(m)
     user.verified_tutor = True
@@ -1061,6 +1071,8 @@ if arg == 'initialize':
     user.year = 'Freshman'
     user.tutor_introduction = 'I like tutoring'
     user.phone_number = '220dka0asdjasd9d-a'
+    user.time_created = datetime.now()
+    user.last_active = datetime.now()
     user.major = 'EECS'
     db_session.add(m)
     user.verified_tutor = True
@@ -1079,6 +1091,8 @@ if arg == 'initialize':
     db_session.add(m)
     user.approved_by_admin = True
     user.verified_tutor = True
+    user.time_created = datetime.now()
+    user.last_active = datetime.now()
     user.profile_url = '/static/img/jenny.jpg'
     user.year = 'Freshman'
     user.tutor_introduction = 'I like tutoring'

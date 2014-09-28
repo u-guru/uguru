@@ -1596,6 +1596,14 @@ input#credit-card-num-parent-modal.amex, input.credit-card-num-modal.amex {
   background-color:#69bf69;
 }
 
+.padding-right-0 {
+  padding-right:0px !important;
+}
+
+.padding-left-0 {
+  padding-left:0px !important;
+}
+
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
 padding: 6px;
@@ -1606,7 +1614,7 @@ border-top: 1px solid #dddddd;
 
 .session-confirmation-container {
   border: 1px solid grey;
-  border-radius:8px;
+  border-radius:16px;
   padding:20px 40px;
   margin:0px 20%;
 }

@@ -8,6 +8,7 @@
 
 <ul style="margin:auto;float:center" class="nav nav-tabs">
   <li><a href="/new-admin/">Today</a></li>
+  <li><a href="/admin/stats/"> Stats </a></li>
   <li><a href="/admin/tutors/">Tutors</a></li>
   <li><a href="/admin/students/">Students</a></li>
   <li><a href="/admin/courses/" >Courses</a></li>
@@ -19,6 +20,7 @@
   <li><a href="/admin/bank-transfers/" data-toggle="tab"> Bank Transfers</a></li>
   <li><a href="/admin/texts/" data-toggle="tab"> Texts </a></li>
   <li><a href="/admin/parents/" data-toggle="tab"> Parents </a></li>
+  <li><a href="/admin/unsubscribes/"> Unsubscribes </a></li>
 </ul>
 
         <div class="container">
@@ -26,7 +28,10 @@
                 <span style="color:red">Red</span> = Canceled, <span style="color:green">Green</span> = Matched, <span style="color:#69bf69">Dark Green</span> = Recurring Payments, <span style="color:#fcf8e3">Yellow</span> = Pending 
             </div>
             <div style="margin:20px; text-align:center" class="row">
-                # Requests: {{all_requests|length}} 
+                # Requests: {{all_requests|length}} <br>
+                # Requests with Repeat Payments: {{num_repeat_payments}}<br>
+                # Recurring Requests / Requests: {{'%.3g' % ((num_repeat_payments / all_requests|length)|float * 100)}}%
+                
             </div>
             <div class="row-fluid">
                 <table class="table table-striped">

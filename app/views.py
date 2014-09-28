@@ -435,6 +435,44 @@ def new_admin_students():
             times_last_active=times_last_active)
     return redirect(url_for('index'))
 
+@app.route('/admin/stats/')
+def new_admin_stats():
+    if session.get('admin'):
+
+        all_students = db_session.query(User).filter(User.approved_by_admin == None).all()
+        all_tutors = db_session.query(User).filter(User.approved_by_admin == True).all()
+        
+        all_users = User.query.all()
+
+        num_tutors_request_help = 0
+        num_students_request_help = 0
+        num_students_request_help_again = 0
+
+        requests = Request.query.all()
+        payments = Payment.query.all()
+        p = Payment.query.all()
+
+        for u in all_users:
+            r = Request.query.filter_by(student_id=u.id).all()
+            
+            #How many students/tutors have requested help
+            if r:
+                if u.approved_by_admin:
+                    num_tutors_request_help += 1
+                else:
+                    num_students_request_help += 1
+                    if len(r) > 1:
+                        num_students_request_help_again += 1
+
+
+        for student in all_students:
+            times_signed_up[student.id] = pretty_date(student.time_created)
+            times_last_active[student.id] = pretty_date(student.last_active)
+
+        return render_template('admin-stats.html', all_students = all_students, times_signed_up=times_signed_up,\
+            times_last_active=times_last_active)
+    return redirect(url_for('index'))
+
 
 @app.route('/admin/unsubscribes/')
 def new_admin_unsubscribes():
@@ -552,6 +590,7 @@ def new_admin_convos():
 def admin_requests():
     if session.get('admin'):
         all_requests = []
+        num_repeat_payments = 0
         for r in Request.query.all()[::-1]:
             if get_environment() == 'PRODUCTION' and r.id < 313:
                 continue
@@ -584,6 +623,10 @@ def admin_requests():
 
                 request_dict['num-payments'] = len(all_payments)
 
+                if len(all_payments) > 1:
+                    num_repeat_payments += 1
+
+
                 c = Conversation.query.filter_by(guru=tutor, student=student).first()
                 if c:
                     request_dict['message-length'] = len(c.messages)
@@ -596,7 +639,7 @@ def admin_requests():
                     request_dict['pending-ratings'] += 1
             all_requests.append(request_dict)
         all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
-        return render_template('admin-requests.html', all_requests=all_requests)
+        return render_template('admin-requests.html', all_requests=all_requests, num_repeat_payments=num_repeat_payments)
     return redirect(url_for('index'))
 
 @app.route('/admin/')

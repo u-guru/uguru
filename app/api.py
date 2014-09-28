@@ -204,12 +204,68 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
 
-    # if arg == 'unconfirm_meeting' and request.method == 'POST':
-    #     user = getUser()
-    #     if user:
+    if arg == 'unconfirm_meeting' and request.method == 'POST':
+        user = getUser()
+        if user:
+            payment_id = request.json.get('payment_id')
+            payment = Payment.query.get(payment_id)
+            request_id = payment.request_id
+            relevant_notifications = Notification.query.filter_by(custom_tag='confirm-meeting', request_id=request_id).all()
+
+            print "# of relevant notifications", len(relevant_notifications)
+            print relevant_notifications            
             
-    #         relevant_notifications = Notification.query.filter_by(custom_tag='confirm-meeting', request_id=request_id)
-    #     return errors(["Invalid Token"])
+            student_notif = None
+            tutor_notif = None
+            tutor = User.query.get(payment.tutor_id)
+            student = User.query.get(payment.student_id)
+            for n in relevant_notifications:
+                if student.name.split(' ')[0].title() in n.feed_message:
+                    tutor_notif = n
+                else:
+                    student_notif = n
+
+            print student_notif.feed_message
+            print tutor_notif.feed_message
+
+            tutor_notif.time_read = None
+            student_notif.time_read = None
+            tutor_notif.time_created = datetime.now()
+            student_notif.time_created = datetime.now()
+
+            payment.tutor_confirmed = None
+            student.notifications.append(student_notif)
+            tutor.notifications.append(tutor_notif)
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+
+            for n in student.notifications:
+                if n.custom_tag == 'next-time' and request_id == n.request_id:
+                    print "student notification removed"
+                    print n.feed_message
+                    student.notifications.remove(n)
+
+            for n in tutor.notifications:
+                if n.custom_tag == 'next-time' and request_id == n.request_id:
+                    print n.feed_message
+                    print "tutor notification removed"
+                    tutor.notifications.remove(n)
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+
+            response = {"user": user.__dict__}
+
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+
+        return errors(["Invalid Token"])
 
     if arg == 'confirm_meeting' and request.method == 'POST':
         user = getUser()
@@ -219,6 +275,8 @@ def api(arg, _id):
             user.notifications.remove(notification)
             student = User.query.get(r.student_id)
             tutor = User.query.get(r.connected_tutor_id)
+            next_time_flag_student = False
+            next_time_flag_tutor = False
 
             #check tutor is confirming
             if r.connected_tutor_id == user.id:
@@ -227,6 +285,9 @@ def api(arg, _id):
                     if n.custom_tag =='confirm-meeting' and n.request_id == r.id:
                         student.notifications.remove(n)
 
+                    if n.custom_tag == 'next-time' and n.request_id == r.id:
+                        next_time_flag_tutor = True
+
                 flash('We have sent a notification to ' + student.name.split(" ")[0].title() + ' to confirm the time amount.')
 
             else: #student is confirming
@@ -234,6 +295,9 @@ def api(arg, _id):
                 for n in tutor.notifications:
                     if n.custom_tag =='confirm-meeting' and n.request_id == r.id:
                         tutor.notifications.remove(n)                    
+
+                    if n.custom_tag == 'next-time' and n.request_id == r.id:
+                        next_time_flag_student = True
 
                 flash('We have sent a notification to ' + tutor.name.split(" ")[0].title() + ' to confirm the time amount.')
 
@@ -244,12 +308,16 @@ def api(arg, _id):
 
             
             from notifications import next_time_student_notif, next_time_tutor_notif
-            next_time_student = next_time_student_notif(student, tutor, r)
-            next_time_tutor = next_time_tutor_notif(student, tutor, r)
-            student.notifications.append(next_time_student)
-            tutor.notifications.append(next_time_tutor)
-            db_session.add(next_time_student)
-            db_session.add(next_time_tutor)
+            
+            if not next_time_flag_student:
+                next_time_student = next_time_student_notif(student, tutor, r)    
+                student.notifications.append(next_time_student)
+                db_session.add(next_time_student)
+            
+            if not next_time_flag_tutor:
+                next_time_tutor = next_time_tutor_notif(student, tutor, r)
+                tutor.notifications.append(next_time_tutor)
+                db_session.add(next_time_tutor)
 
             try:
                 db_session.commit()

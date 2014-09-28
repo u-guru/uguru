@@ -1122,6 +1122,22 @@ $(document).ready(function(){
           })
     });
 
+    $('.cancel-confirm-payment').click(function() {
+        data =  {
+          'payment_id': $(this).attr('id')
+        }
+        $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: '/api/unconfirm_meeting',
+          data: JSON.stringify(data),
+          dataType: "json",        
+          success: function(result) {        
+              window.location.replace('/activity/');
+            }
+          })
+    });
+
     $('#forgot-password-link').click(function() {
       $('#login-modal-container').hide();
       $('#forgot-password-modal-container').show();

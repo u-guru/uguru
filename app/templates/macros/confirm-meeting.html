@@ -20,7 +20,7 @@
         <br>
         <br>
         <div id='guru-intro' class='block font-16'>
-            <p> 1. Click the big blue button below! (After you read the next steps below) </p>
+            <p> 1. After you've met {{opposite_name}}, click the blue button below.</p>
             {% if viewer == student %}
                 <p> 2. {{tutor_name|title}} will first be asked for the exact time amount of the session. If it is less than or greater than <span class='blue-text'>{{request_dict[notif.request_id]['request'].time_estimate}}hrs</span>, you will be asked to confirm as well. </p>
                 <p> 3. After {{tutor_name|title}} confirms, you will be asked to rate {{tutor_name|title}} </p>
