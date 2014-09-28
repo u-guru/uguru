@@ -576,9 +576,10 @@ if arg == 'send_campaign_twenty_one':
     sent_count = 0
     avoided_count = 0
     index = 0
+    from time import sleep 
+    sleep(1)
     for key in batch_21_emails.keys():
         if index > 0  and index % 100 == 0:
-            from time import sleep 
             print "100 emails sent, waiting 9 minutes"
             sleep(540)
         receiver_name = key.title()
@@ -588,7 +589,11 @@ if arg == 'send_campaign_twenty_one':
 
         if not user:
             from app.emails import mailgun_campaign_five
-            mailgun_campaign_five(receiver_name, receiver_email, 'chloe_19_200_template')
+            import requests
+            try:
+                mailgun_campaign_five(receiver_name, receiver_email, 'chloe_19_200_template')
+            except requests.exceptions.ConnectionError:
+                continue
             print receiver_name, receiver_email, 'has been sent an email'
             sent_count += 1
         else:
