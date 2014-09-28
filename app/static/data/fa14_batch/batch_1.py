@@ -8174,7 +8174,7 @@ batch_21_emails = {
     "Carrie Liu": "carrieliu@berkeley.edu",
     "Carrie SALAZAR": "csalazar@berkeley.edu",
     "Carrie Strohl": "carrie_strohl@berkeley.edu",
-    "Carrie Yang": "carrie.yang@berkeley.edu"
+    "Carrie Yang": "carrie.yang@berkeley.edu",
     "Carrina H LAI": "rinalai@berkeley.edu",
     "Carson E O'connell": "carsonoconnell@berkeley.edu",
     "Carson M QUINN": "carsonquinn@berkeley.edu",
