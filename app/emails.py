@@ -2345,14 +2345,14 @@ def mailgun_campaign_three(receiver_name, receiver_email, campaign_str):
 
 def mailgun_campaign_four(receiver_name, receiver_email, campaign_str):
     receiver_first_name = receiver_name.split(" ")[0].title()
-    subject = receiver_first_name + ', your friend Jenny just sent you $10'
+    subject = receiver_first_name + ', your friend Michael just sent you $10'
     tag_arr = ['mailgun-campaign-four']
     send_mailgun_email(
         'nationalacademicresearch.org',
         receiver_name,
         receiver_email,
         subject,
-        "Chloe from uGuru <Chloe@uguru.me>",
+        "Jasmine from uGuru <jasmine@uguru.me>",
         mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_str),
         ['mailgun-campaign-four'],
         campaign_str
@@ -2360,7 +2360,7 @@ def mailgun_campaign_four(receiver_name, receiver_email, campaign_str):
 
 def mailgun_campaign_five(receiver_name, receiver_email, campaign_str):
     receiver_first_name = receiver_name.split(" ")[0].title()
-    subject = receiver_first_name + ', your friend Jessica just sent you $10'
+    subject = receiver_first_name + ', your friend Michael just sent you $10'
     tag_arr = ['mailgun-campaign-five']
     send_mailgun_email(
         'nationalacademicresearch.org',
@@ -2684,7 +2684,7 @@ def mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            Your friend <b>Jessica</b> referred you, and sent you <b>$10</b> to try it! Jessica will also get $10 if you redeem.
+                                            Your friend <b>Michael</b> referred you, and sent you <b>$10</b> to try it! Michael will also get $10 if you redeem.
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
