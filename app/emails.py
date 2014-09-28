@@ -2352,7 +2352,7 @@ def mailgun_campaign_four(receiver_name, receiver_email, campaign_str):
         receiver_name,
         receiver_email,
         subject,
-        "Jasmine from uGuru <jasmine@uguru.me>",
+        "Jen from uGuru <jen@uguru.me>",
         mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_str),
         ['mailgun-campaign-four'],
         campaign_str
@@ -2360,14 +2360,14 @@ def mailgun_campaign_four(receiver_name, receiver_email, campaign_str):
 
 def mailgun_campaign_five(receiver_name, receiver_email, campaign_str):
     receiver_first_name = receiver_name.split(" ")[0].title()
-    subject = receiver_first_name + ', your friend Michael just sent you $10'
+    subject = receiver_first_name + ', your friend Michael referred you'
     tag_arr = ['mailgun-campaign-five']
     send_mailgun_email(
         'nationalacademicresearch.org',
         receiver_name,
         receiver_email,
         subject,
-        "Jasmine from uGuru <jasmine@uguru.me>",
+        "Jen from uGuru <jen@uguru.me>",
         mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_str),
         ['mailgun-campaign-five'],
         campaign_str
@@ -2695,7 +2695,7 @@ def mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
                                             Good luck with your midterms!<br>
-                                            Jasmine
+                                            Jen
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
