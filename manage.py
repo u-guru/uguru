@@ -77,6 +77,11 @@ if arg == 'send_mailgun_seven':
     from app.emails import mailgun_campaign_seven
     mailgun_campaign_seven(sys.argv[2], sys.argv[3], 'jen_22_200_template')
 
+if arg =='send_mailgun_eight':
+    from app.emails import mailgun_campaign_eight
+    mailgun_campaign_eight(sys.argv[2], sys.argv[3], 'jen_22_200_template')
+
+
 if arg == 'send_campaign_one':
     from app.static.data.fa14_batch.batch_1 import emails
     sent_count = 0

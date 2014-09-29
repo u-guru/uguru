@@ -2228,7 +2228,7 @@ def unsubscribe_str_html_bare(receiver_email, tag_arr=None, campaign_str=None):
     Don't want to hear from us? Unsubscribe <a target='_blank' href='""" +full_url+"""'>here</a>.
     """
 
-def unsubscribe_str_html_simple(receiver_email, tag_arr=None, campaign_str=None):
+def unsubscribe_str_html_(receiver_email, tag_arr=None, campaign_str=None):
     from views import get_environment
     base_url = None
     if get_environment() == 'PRODUCTION':
@@ -2247,7 +2247,7 @@ def unsubscribe_str_html_simple(receiver_email, tag_arr=None, campaign_str=None)
         full_url = full_url + campaign_str + '/'
 
     return """
-    Unsubscribe <a target='_blank' href='""" +full_url+"""'>here</a>.
+    Don't want to hear from us? Unsubscribe <a target='_blank' href='""" +full_url+"""'>here</a>.
     """
 
 
@@ -2882,15 +2882,15 @@ def mailgun_campaign_seven(receiver_name, receiver_email, campaign_str):
 
 def mailgun_campaign_eight(receiver_name, receiver_email, campaign_str):
     receiver_first_name = receiver_name.split(" ")[0].title()
-    subject = receiver_first_name + ", we want you to ace your classes."
+    subject = receiver_first_name + ", what are you doing tomorrow?."
     tag_arr = ['mailgun-campaign-five']
     send_mailgun_email(
         'nationalacademicresearch.org',
         receiver_name,
         receiver_email,
         subject,
-        "samir <samir@nationalacademicresearch.org>",
-        mailgun_campaign_eight_html(receiver_name, receiver_email, tag_arr, campaign_str),
+        "sieva <sieva@berkeleyguru.org>",
+        'test',
         ['mailgun-campaign-five'],
         campaign_str
         )

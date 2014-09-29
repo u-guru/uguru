@@ -232,7 +232,9 @@ def api(arg, _id):
             tutor_notif.time_created = datetime.now()
             student_notif.time_created = datetime.now()
 
-            payment.tutor_confirmed = None
+            payment = Payment.query.filter_by(student_id=r.student_id, tutor_id=r.connected_tutor_id).first()
+            if payment:
+                payment.tutor_confirmed = None
             student.notifications.append(student_notif)
             tutor.notifications.append(tutor_notif)
 
