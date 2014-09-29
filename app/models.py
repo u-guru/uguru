@@ -506,7 +506,6 @@ class Payment(Base):
             self.time_amount = request.actual_time
             self.tutor_rate = request.actual_hourly
             self.time_created = datetime.now()
-            self.request_id = datetime.now()
 
 
 
