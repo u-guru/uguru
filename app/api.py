@@ -207,9 +207,7 @@ def api(arg, _id):
     if arg == 'unconfirm_meeting' and request.method == 'POST':
         user = getUser()
         if user:
-            payment_id = request.json.get('payment_id')
-            payment = Payment.query.get(payment_id)
-            request_id = payment.request_id
+            request_id = request.json.get('payment_id')
             relevant_notifications = Notification.query.filter_by(custom_tag='confirm-meeting', request_id=request_id).all()
 
             print "# of relevant notifications", len(relevant_notifications)
