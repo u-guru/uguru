@@ -447,30 +447,44 @@ def new_admin_stats():
         num_tutors_request_help = 0
         num_students_request_help = 0
         num_students_request_help_again = 0
+        
+        #revenue vars
+        fall_request_revenue = 0
+        fall_free_tutor_request_revenue = 0
+        fall_package_revenue = 0
+        fall_recurring_payment_revenue = 0
 
         requests = Request.query.all()
         payments = Payment.query.all()
         p = Payment.query.all()
 
-        for u in all_users:
-            r = Request.query.filter_by(student_id=u.id).all()
-            
-            #How many students/tutors have requested help
-            if r:
-                if u.approved_by_admin:
-                    num_tutors_request_help += 1
-                else:
-                    num_students_request_help += 1
-                    if len(r) > 1:
-                        num_students_request_help_again += 1
+        for r in Request.query.all():
+            if r.connected_tutor_id and r.id > 313:
+                #Was not a free session
+                if r.connected_tutor_hourly:
+                    fall_request_revenue += r.connected_tutor_hourly * r.time_estimate
+                else: #was a free session
+                    fall_free_tutor_request_revenue += r.student_estimated_hour * r.time_estimate
+
+            if r.student_id and r.connected_tutor_id:
+                payments = Payment.query.filter_by(student_id=r.student_id, tutor_id = r.connected_tutor_id).all()
+                if payments:
+                        payments = sorted(payments, key=lambda k:k.id)
+                        payments.pop(0)
+                        for p in payments:
+                            if p.id > 130 and p.student_paid_amount:
+                                fall_recurring_payment_revenue += p.student_paid_amount
 
 
-        for student in all_students:
-            times_signed_up[student.id] = pretty_date(student.time_created)
-            times_last_active[student.id] = pretty_date(student.last_active)
+        for p in Payment.query.all():
+            if p.student_description and 'purchased' in p.student_description:
+                fall_package_revenue += p.student_paid_amount
 
-        return render_template('admin-stats.html', all_students = all_students, times_signed_up=times_signed_up,\
-            times_last_active=times_last_active)
+        return render_template('admin-stats.html', fall_request_revenue=fall_request_revenue, \
+            fall_free_tutor_request_revenue=fall_free_tutor_request_revenue, \
+            fall_package_revenue = fall_package_revenue, \
+            fall_recurring_payment_revenue=fall_recurring_payment_revenue)
+
     return redirect(url_for('index'))
 
 
