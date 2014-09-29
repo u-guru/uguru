@@ -768,6 +768,7 @@ if arg =='send_campaign_twenty_seven':
     index = 0
     from time import sleep 
     for key in batch_27_emails.keys():
+        sleep(2)
         receiver_name = key.title()
         receiver_email = batch_27_emails[key]
         from app.models import User
