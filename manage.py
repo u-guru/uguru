@@ -602,6 +602,37 @@ if arg == 'send_campaign_twenty_one':
         index += 1
     print "Sent:", sent_count, "Accounts already made:", avoided_count
 
+if arg == 'send_campaign_twenty_two':
+    from app.static.data.fa14_batch.batch_1 import batch_22_emails
+    sent_count = 0
+    avoided_count = 0
+    index = 0
+    from time import sleep 
+    sleep(1)
+    for key in batch_22_emails.keys():
+        if index > 0  and index % 100 == 0:
+            print "100 emails sent, waiting 9 minutes"
+            sleep(540)
+        receiver_name = key.title()
+        receiver_email = batch_22_emails[key]
+        from app.models import User
+        user = User.query.filter_by(email=receiver_email).first()
+
+        if not user:
+            from app.emails import mailgun_campaign_five
+            import requests
+            try:
+                mailgun_campaign_five(receiver_name, receiver_email, 'chloe_22_200_template')
+            except requests.exceptions.ConnectionError:
+                continue
+            print receiver_name, receiver_email, 'has been sent an email'
+            sent_count += 1
+        else:
+            print receiver_name, receiver_email, 'already has an account'
+            avoided_count += 1
+        index += 1
+    print "Sent:", sent_count, "Accounts already made:", avoided_count
+
 
 if arg == 'initialize_user_codes':
 
