@@ -81,6 +81,13 @@ if arg =='send_mailgun_eight':
     from app.emails import mailgun_campaign_eight
     mailgun_campaign_eight(sys.argv[2], sys.argv[3], 'test')
 
+if arg =='send_mandrill_nine':
+    from app.emails import send_mandrill_nine
+    send_mandrill_nine(sys.argv[2], sys.argv[3], sys.argv[4])
+
+if arg =='send_mandrill_ten':
+    from app.emails import send_mandrill_ten
+    send_mandrill_ten(sys.argv[2], sys.argv[3], 'mandrill_fa_14_mass_3k+_26_500')    
 
 if arg == 'send_campaign_one':
     from app.static.data.fa14_batch.batch_1 import emails
@@ -673,7 +680,113 @@ if arg == 'send_campaign_twenty_three':
         index += 1
     print "Sent:", sent_count, "Accounts already made:", avoided_count
 
+if arg == 'send_campaign_twenty_four':
+    from app.static.data.fa14_batch.batch_1 import batch_24_emails
+    sent_count = 0
+    avoided_count = 0
+    index = 0
+    from time import sleep 
+    for key in batch_24_emails.keys():
+        receiver_name = key.title()
+        receiver_email = batch_24_emails[key]
+        from app.models import User
+        user = User.query.filter_by(email=receiver_email).first()
 
+        if not user:
+            from app.emails import send_mandrill_nine
+            import requests
+            try:
+                send_mandrill_nine(receiver_name, receiver_email, 'mandrill_fa_14_mass_jen_24_250')
+            except requests.exceptions.ConnectionError:
+                continue
+            print receiver_name, receiver_email, 'has been sent an email'
+            sent_count += 1
+        else:
+            print receiver_name, receiver_email, 'already has an account'
+            avoided_count += 1
+        index += 1
+    print "Sent:", sent_count, "Accounts already made:", avoided_count
+
+if arg =='send_campaign_twenty_five':
+    from app.static.data.fa14_batch.batch_1 import batch_25_emails
+    sent_count = 0
+    avoided_count = 0
+    index = 0
+    from time import sleep 
+    for key in batch_25_emails.keys():
+        receiver_name = key.title()
+        receiver_email = batch_25_emails[key]
+        from app.models import User
+        user = User.query.filter_by(email=receiver_email).first()
+
+        if not user:
+            from app.emails import send_mandrill_nine
+            import requests
+            try:
+                send_mandrill_nine(receiver_name, receiver_email, 'mandrill_fa_14_mass_jen_25_1000')
+            except requests.exceptions.ConnectionError:
+                continue
+            print receiver_name, receiver_email, 'has been sent an email'
+            sent_count += 1
+        else:
+            print receiver_name, receiver_email, 'already has an account'
+            avoided_count += 1
+        index += 1
+    print "Sent:", sent_count, "Accounts already made:", avoided_count
+
+if arg =='send_campaign_twenty_six':
+    from app.static.data.fa14_batch.batch_1 import batch_26_emails
+    sent_count = 0
+    avoided_count = 0
+    index = 0
+    from time import sleep 
+    for key in batch_26_emails.keys():
+        receiver_name = key.title()
+        receiver_email = batch_26_emails[key]
+        from app.models import User
+        user = User.query.filter_by(email=receiver_email).first()
+
+        if not user:
+            from app.emails import send_mandrill_ten
+            import requests
+            try:
+                send_mandrill_ten(receiver_name, receiver_email, 'mandrill_fa_14_mass_3k+_26_500')
+            except requests.exceptions.ConnectionError:
+                continue
+            print receiver_name, receiver_email, 'has been sent an email'
+            sent_count += 1
+        else:
+            print receiver_name, receiver_email, 'already has an account'
+            avoided_count += 1
+        index += 1
+    print "Sent:", sent_count, "Accounts already made:", avoided_count
+
+if arg =='send_campaign_twenty_seven':
+    from app.static.data.fa14_batch.batch_1 import batch_27_emails
+    sent_count = 0
+    avoided_count = 0
+    index = 0
+    from time import sleep 
+    for key in batch_27_emails.keys():
+        receiver_name = key.title()
+        receiver_email = batch_27_emails[key]
+        from app.models import User
+        user = User.query.filter_by(email=receiver_email).first()
+
+        if not user:
+            from app.emails import send_mandrill_nine
+            import requests
+            try:
+                send_mandrill_nine(receiver_name, receiver_email, 'mandrill_fa_14_mass_jen_27_500')
+            except requests.exceptions.ConnectionError:
+                continue
+            print receiver_name, receiver_email, 'has been sent an email'
+            sent_count += 1
+        else:
+            print receiver_name, receiver_email, 'already has an account'
+            avoided_count += 1
+        index += 1
+    print "Sent:", sent_count, "Accounts already made:", avoided_count
 
 if arg == 'initialize_user_codes':
 
