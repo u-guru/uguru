@@ -2270,7 +2270,8 @@ def send_mailgun_email(domain, receiver_name, receiver_email, subject,
         data['o:campaign'] = campaign_str
     return requests.post(
         "https://api.mailgun.net/v2/" + domain + "/messages",
-        auth=("api", "key-bfe01b1e2cb76d45e086c2fa5e813781"),
+        # auth=("api", "key-bfe01b1e2cb76d45e086c2fa5e813781"),
+        auth=("api", "key-d28b48c63af278e7c460a7df9258c424"),
         data=data)
 
 
@@ -2882,16 +2883,16 @@ def mailgun_campaign_seven(receiver_name, receiver_email, campaign_str):
 
 def mailgun_campaign_eight(receiver_name, receiver_email, campaign_str):
     receiver_first_name = receiver_name.split(" ")[0].title()
-    subject = receiver_first_name + ", what are you doing tomorrow?."
-    tag_arr = ['mailgun-campaign-five']
+    subject = receiver_name + ', welcome to Cal Tutors!'
+    # tag_arr = ['mailgun-campaign-five']
     send_mailgun_email(
-        'nationalacademicresearch.org',
+        'caltutors.org',
         receiver_name,
         receiver_email,
         subject,
-        "sieva <sieva@berkeleyguru.org>",
-        'test',
-        ['mailgun-campaign-five'],
+        "Jen from Caltutors <dusty@caltutors.org>",
+        'Thank you for signing up! We will be in touch :)',
+        ['test'],
         campaign_str
         )
 def mailgun_campaign_eight_html(receiver_name, receiver_email, tag_arr, campaign_str):

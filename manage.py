@@ -79,7 +79,7 @@ if arg == 'send_mailgun_seven':
 
 if arg =='send_mailgun_eight':
     from app.emails import mailgun_campaign_eight
-    mailgun_campaign_eight(sys.argv[2], sys.argv[3], 'jen_22_200_template')
+    mailgun_campaign_eight(sys.argv[2], sys.argv[3], 'test')
 
 
 if arg == 'send_campaign_one':
