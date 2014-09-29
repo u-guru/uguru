@@ -454,6 +454,12 @@ def new_admin_stats():
         fall_package_revenue = 0
         fall_recurring_payment_revenue = 0
 
+        #user vars
+        total_user_signups = 0
+        organic_user_signups = 0
+        referral_user_signups = 0
+        mass_email_user_signups = 0
+
         requests = Request.query.all()
         payments = Payment.query.all()
         p = Payment.query.all()
@@ -480,10 +486,25 @@ def new_admin_stats():
             if p.student_description and 'purchased' in p.student_description:
                 fall_package_revenue += p.student_paid_amount
 
+        for u in User.query.all():
+            total_user_signups += 1
+            if u.referral_code:
+                if 'mass' in u.referral_code or 'chloe' in u.referral_code or u.referral_code =='m' or '00' in u.referral_code:
+                    mass_email_user_signups += 1
+                else:
+                    referral_user_signups += 1
+            else:
+                organic_user_signups += 1
+
+
         return render_template('admin-stats.html', fall_request_revenue=fall_request_revenue, \
             fall_free_tutor_request_revenue=fall_free_tutor_request_revenue, \
             fall_package_revenue = fall_package_revenue, \
-            fall_recurring_payment_revenue=fall_recurring_payment_revenue)
+            fall_recurring_payment_revenue=fall_recurring_payment_revenue,\
+            total_user_signups=total_user_signups, \
+            organic_user_signups=organic_user_signups, \
+            referral_user_signups=referral_user_signups,\
+            mass_email_user_signups=mass_email_user_signups)
 
     return redirect(url_for('index'))
 

@@ -27,6 +27,9 @@
         <div style="margin:20px; text-align:center" class="row font-24 bold margin-bottom-20">
               Higher Level Statistics
           </div>
+          <div class='row center font-18 margin-top-20 margin-bottom-10'>
+            Revenue
+          </div>
           <div class="row-fluid">
               <table class="table table-striped">
                   <tr class='success bold'> 
@@ -51,6 +54,31 @@
                       <td>  Recurring Payment Revenue </td>
                       <td>  ${{'%.4g' %  fall_recurring_payment_revenue}} </td>
                   </tr
+              </table>
+          </div>
+          <div class='row center font-18 margin-top-20 margin-bottom-10'>
+            Users
+          </div>
+          <div class="row-fluid">
+              <table class="table table-striped">
+                  <tr class='success bold'> 
+                    <td> Total Users </td>
+                    <td> 
+                      {{total_user_signups}}
+                    </td>
+                  </tr>
+                  <tr> 
+                      <td>  Organic User Signups </td>
+                      <td>  {{organic_user_signups}} </td>
+                  </tr>
+                  <tr> 
+                      <td>  Mass Email User Signups </td>
+                      <td>  {{mass_email_user_signups}} </td>
+                  </tr>
+                  <tr>
+                      <td>  Campaign/Referral/Sproul/Other </td>
+                      <td>  {{referral_user_signups}} </td>
+                  </tr>
               </table>
           </div>
         </div>
