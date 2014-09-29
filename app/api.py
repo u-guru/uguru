@@ -208,6 +208,7 @@ def api(arg, _id):
         user = getUser()
         if user:
             request_id = request.json.get('payment_id')
+            r = Request.query.get(request_id)
             relevant_notifications = Notification.query.filter_by(custom_tag='confirm-meeting', request_id=request_id).all()
 
             print "# of relevant notifications", len(relevant_notifications)
@@ -215,8 +216,8 @@ def api(arg, _id):
             
             student_notif = None
             tutor_notif = None
-            tutor = User.query.get(request.connected_tutor_id)
-            student = User.query.get(request.student_id)
+            tutor = User.query.get(r.connected_tutor_id)
+            student = User.query.get(r.student_id)
             for n in relevant_notifications:
                 if student.name.split(' ')[0].title() in n.feed_message:
                     tutor_notif = n
