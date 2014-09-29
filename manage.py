@@ -67,12 +67,15 @@ if arg == 'send_mailgun_four':
 
 if arg == 'send_mailgun_five':
     from app.emails import mailgun_campaign_five
-    mailgun_campaign_five(sys.argv[2], sys.argv[3], 'test')
+    mailgun_campaign_five(sys.argv[2], sys.argv[3], 'jen_22_200_template')
 
 if arg == 'send_mailgun_six':
     from app.emails import mailgun_campaign_six
     mailgun_campaign_six(sys.argv[2], sys.argv[3], 'test')
 
+if arg == 'send_mailgun_seven':
+    from app.emails import mailgun_campaign_seven
+    mailgun_campaign_seven(sys.argv[2], sys.argv[3], 'jen_22_200_template')
 
 if arg == 'send_campaign_one':
     from app.static.data.fa14_batch.batch_1 import emails
@@ -632,6 +635,39 @@ if arg == 'send_campaign_twenty_two':
             avoided_count += 1
         index += 1
     print "Sent:", sent_count, "Accounts already made:", avoided_count
+
+
+if arg == 'send_campaign_twenty_three':
+    from app.static.data.fa14_batch.batch_1 import batch_23_emails
+    sent_count = 0
+    avoided_count = 0
+    index = 0
+    from time import sleep 
+    sleep(1)
+    for key in batch_23_emails.keys():
+        if index > 0  and index % 100 == 0:
+            print "100 emails sent, waiting 9 minutes"
+            sleep(540)
+        receiver_name = key.title()
+        receiver_email = batch_23_emails[key]
+        from app.models import User
+        user = User.query.filter_by(email=receiver_email).first()
+
+        if not user:
+            from app.emails import mailgun_campaign_seven
+            import requests
+            try:
+                mailgun_campaign_seven(receiver_name, receiver_email, 'jen_22_200_template')
+            except requests.exceptions.ConnectionError:
+                continue
+            print receiver_name, receiver_email, 'has been sent an email'
+            sent_count += 1
+        else:
+            print receiver_name, receiver_email, 'already has an account'
+            avoided_count += 1
+        index += 1
+    print "Sent:", sent_count, "Accounts already made:", avoided_count
+
 
 
 if arg == 'initialize_user_codes':

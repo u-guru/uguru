@@ -215,8 +215,8 @@ def api(arg, _id):
             
             student_notif = None
             tutor_notif = None
-            tutor = User.query.get(payment.tutor_id)
-            student = User.query.get(payment.student_id)
+            tutor = User.query.get(request.connected_tutor_id)
+            student = User.query.get(request.student_id)
             for n in relevant_notifications:
                 if student.name.split(' ')[0].title() in n.feed_message:
                     tutor_notif = n

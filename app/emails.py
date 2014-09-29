@@ -2186,9 +2186,9 @@ def unsubscribe_str_html(receiver_email, tag_arr = None, campaign_str = None):
     if get_environment() == 'PRODUCTION':
         base_url = 'http://berkeley.uguru.me/'
     elif get_environment() == 'TESTING':
-        base_url = 'http://testing.uguru.me/'
+        base_url = 'http://berkeley.uguru.me/'
     else:
-        base_url = 'http://testing.uguru.me/'
+        base_url = 'http://berkeley.uguru.me/'
 
     full_url = base_url + 'unsubscribe/' + receiver_email + '/'
 
@@ -2212,9 +2212,9 @@ def unsubscribe_str_html_bare(receiver_email, tag_arr=None, campaign_str=None):
     if get_environment() == 'PRODUCTION':
         base_url = 'http://berkeley.uguru.me/'
     elif get_environment() == 'TESTING':
-        base_url = 'http://testing.uguru.me/'
+        base_url = 'http://berkeley.uguru.me/'
     else:
-        base_url = 'http://testing.uguru.me/'
+        base_url = 'http://berkeley.uguru.me/'
 
     full_url = base_url + 'unsubscribe/' + receiver_email + '/'
 
@@ -2227,6 +2227,30 @@ def unsubscribe_str_html_bare(receiver_email, tag_arr=None, campaign_str=None):
     return """
     Don't want to hear from us? Unsubscribe <a target='_blank' href='""" +full_url+"""'>here</a>.
     """
+
+def unsubscribe_str_html_simple(receiver_email, tag_arr=None, campaign_str=None):
+    from views import get_environment
+    base_url = None
+    if get_environment() == 'PRODUCTION':
+        base_url = 'http://berkeley.uguru.me/'
+    elif get_environment() == 'TESTING':
+        base_url = 'http://berkeley.uguru.me/'
+    else:
+        base_url = 'http://berkeley.uguru.me/'
+
+    full_url = base_url + 'unsubscribe/' + receiver_email + '/'
+
+    if tag_arr:
+        full_url = full_url + ' '.join(tag_arr) + '/'
+
+    if campaign_str:
+        full_url = full_url + campaign_str + '/'
+
+    return """
+    Unsubscribe <a target='_blank' href='""" +full_url+"""'>here</a>.
+    """
+
+
 
 def send_mailgun_email(domain, receiver_name, receiver_email, subject,
     _from, html_str, tag_arr, campaign_str=None, reply_to = None):
@@ -2360,7 +2384,7 @@ def mailgun_campaign_four(receiver_name, receiver_email, campaign_str):
 
 def mailgun_campaign_five(receiver_name, receiver_email, campaign_str):
     receiver_first_name = receiver_name.split(" ")[0].title()
-    subject = receiver_first_name + ', your friend Michael referred you'
+    subject = receiver_first_name + ", try uGuru today"
     tag_arr = ['mailgun-campaign-five']
     send_mailgun_email(
         'nationalacademicresearch.org',
@@ -2394,9 +2418,9 @@ def generate_one_click_signup_email_url(receiver_name, receiver_email, campaign_
     if get_environment() == 'PRODUCTION':
         base_url = 'http://berkeley.uguru.me/'
     elif get_environment() == 'TESTING':
-        base_url = 'http://testing.uguru.me/'
+        base_url = 'http://berkeley.uguru.me/'
     else:
-        base_url = 'http://testing.uguru.me/'
+        base_url = 'http://berkeley.uguru.me/'
     return base_url + 'free-10-credit/' + receiver_email + '/' + receiver_name + '/' + campaign_str
 
 
@@ -2531,7 +2555,7 @@ def mailgun_campaign_one_html(receiver_name, receiver_email, tag_arr, campaign_s
     https://docs.google.com/forms/d/15edP5zH3YCjIWwoVxTPbpYJu_d2e9gmlXHf7JWLoGDk/viewform?usp=send_form
     <br>
     <br>
-    Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email) + """'>here</a> to get your $10 from uGuru.
+    Click <a href='"""+ generate_one_click_signup_email_url(receiver_name, receiver_email, campaign_str) + """'>here</a> to get your $10 from uGuru.
     <br>
     <br>
     Chloe"""    
@@ -2679,7 +2703,7 @@ def mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            This is Chloe from <a href='http://uguru.me'>uGuru</a>, the <b>peer-to-peer tutoring service</b> on campus. With uGuru, you can find other students who have aced the same class to help you anytime, even the night before exams!
+                                            This is Jen from <a href='http://uguru.me'>uGuru</a>, the <b>peer-to-peer tutoring service</b> on campus. With uGuru, you can find other students who have aced the same class to help you anytime, even the night before exams!
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
@@ -2711,6 +2735,258 @@ def mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_
                         <table width="100%" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                             <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                 <td class="aligncenter content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top"> You are receiving this message because a friend referred you. <br> """+unsubscribe_str_html_bare(receiver_email, tag_arr, campaign_str)+"""</td>
+                            </tr>
+                        </table>
+                    </div></div>
+            </td>
+            <td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0;" valign="top"></td>
+        </tr>
+    </table>
+
+    </body>
+    </html>"""
+
+def mailgun_campaign_seven_html(receiver_name, receiver_email, tag_arr, campaign_str):
+    return"""
+    <html xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+    <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Actionable emails e.g. reset password</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+
+    <style type="text/css">
+    img {
+    max-width: 100%;
+    }
+    body {
+    -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width: 100% !important; height: 100%; line-height: 1.6;
+    }
+    body {
+    background-color: #f6f6f6;
+    }
+    @media only screen and (max-width: 640px) {
+      h1 {
+        font-weight: 600 !important; margin: 20px 0 5px !important;
+      }
+      h2 {
+        font-weight: 600 !important; margin: 20px 0 5px !important;
+      }
+      h3 {
+        font-weight: 600 !important; margin: 20px 0 5px !important;
+      }
+      h4 {
+        font-weight: 600 !important; margin: 20px 0 5px !important;
+      }
+      h1 {
+        font-size: 22px !important;
+      }
+      h2 {
+        font-size: 18px !important;
+      }
+      h3 {
+        font-size: 16px !important;
+      }
+      .container {
+        width: 100% !important;
+      }
+      .content {
+        padding: 10px !important;
+      }
+      .content-wrapper {
+        padding: 10px !important;
+      }
+      .invoice {
+        width: 100% !important;
+      }
+    }
+    </style>
+    </head>
+
+    <body style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width: 100% !important; height: 100%; line-height: 1.6; background: #f6f6f6; margin: 0; padding: 0;">
+
+    <table class="body-wrap" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; width: 100%; background: #f6f6f6; margin: 0; padding: 0;">
+        <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+            <td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0;" valign="top"></td>
+            <td class="container" width="600" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; display: block !important; max-width: 600px !important; clear: both !important; margin: 0 auto; padding: 0;" valign="top">
+                <div class="content" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; max-width: 600px; display: block; margin: 0 auto; padding: 20px;">
+                    <table class="main" width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; border-radius: 3px; background: #fff; margin: 0; padding: 0; border: 1px solid #e9e9e9;">
+                        <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                            <td class="alert alert-warning" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 32px; vertical-align: top; color: #fff; font-weight: 500; text-align: center; display:block;margin: 0 auto; border-radius: 3px 3px 0 0; background: #2CAEE1; margin: 0; padding: 20px; text-decoration:none;" align="center" valign="top">
+                                <b>uGuru.me</b>
+                            </td>
+                        </tr>
+                        <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                            <td class="content-wrap" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 20px;" valign="top">
+                                <table width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            Hi """ + receiver_name.split(" ")[0].title() + """,
+                                        </td>
+                                    </tr>
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            This is Lily from uGuru, the <b>peer-to-peer tutoring service</b> on campus. With uGuru, you can find students who have aced the same class to help you anytime!
+                                        </td>
+                                    </tr>
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            Over <b>3k students at Cal</b> are on uGuru. We would like to give you <b>$10</b> to try it!
+                                        </td>
+                                    </tr>
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            <a href='"""+generate_one_click_signup_email_url(receiver_name, receiver_email, campaign_str)+"""' class="btn-primary" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 18px; color: #fff; text-decoration: none; line-height: 2; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background: #2CAEE1; margin: 0; padding: 0; border-color: #2CAEE1; border-style: solid; border-width: 10px 20px;">&nbsp;&nbsp;Get 10 dollars now&nbsp;&nbsp;</a>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            Good luck with your courses!<br>
+                                            Lily
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="footer" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; width: 100%; clear: both; color: #999; margin: 0; padding: 20px;">
+                        <table width="100%" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                            <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                <td class="aligncenter content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top"> <br> """+unsubscribe_str_html_bare(receiver_email, tag_arr, campaign_str)+"""</td>
+                            </tr>
+                        </table>
+                    </div></div>
+            </td>
+            <td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0;" valign="top"></td>
+        </tr>
+    </table>
+
+    </body>
+    </html>"""
+
+def mailgun_campaign_seven(receiver_name, receiver_email, campaign_str):
+    receiver_first_name = receiver_name.split(" ")[0].title()
+    subject = receiver_first_name + ", here's 10 dollars towards your courses."
+    tag_arr = ['mailgun-campaign-five']
+    send_mailgun_email(
+        'nationalacademicresearch.org',
+        receiver_name,
+        receiver_email,
+        subject,
+        "Lily <lily@support.uguru.me>",
+        mailgun_campaign_seven_html(receiver_name, receiver_email, tag_arr, campaign_str),
+        ['mailgun-campaign-five'],
+        campaign_str
+        )
+
+def mailgun_campaign_eight(receiver_name, receiver_email, campaign_str):
+    receiver_first_name = receiver_name.split(" ")[0].title()
+    subject = receiver_first_name + ", we want you to ace your classes."
+    tag_arr = ['mailgun-campaign-five']
+    send_mailgun_email(
+        'nationalacademicresearch.org',
+        receiver_name,
+        receiver_email,
+        subject,
+        "samir <samir@nationalacademicresearch.org>",
+        mailgun_campaign_eight_html(receiver_name, receiver_email, tag_arr, campaign_str),
+        ['mailgun-campaign-five'],
+        campaign_str
+        )
+def mailgun_campaign_eight_html(receiver_name, receiver_email, tag_arr, campaign_str):
+    return"""
+    <html xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+    <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Actionable emails e.g. reset password</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+
+    <style type="text/css">
+    img {
+    max-width: 100%;
+    }
+    body {
+    -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width: 100% !important; height: 100%; line-height: 1.6;
+    }
+    body {
+    background-color: #f6f6f6;
+    }
+    @media only screen and (max-width: 640px) {
+      h1 {
+        font-weight: 600 !important; margin: 20px 0 5px !important;
+      }
+      h2 {
+        font-weight: 600 !important; margin: 20px 0 5px !important;
+      }
+      h3 {
+        font-weight: 600 !important; margin: 20px 0 5px !important;
+      }
+      h4 {
+        font-weight: 600 !important; margin: 20px 0 5px !important;
+      }
+      h1 {
+        font-size: 22px !important;
+      }
+      h2 {
+        font-size: 18px !important;
+      }
+      h3 {
+        font-size: 16px !important;
+      }
+      .container {
+        width: 100% !important;
+      }
+      .content {
+        padding: 10px !important;
+      }
+      .content-wrapper {
+        padding: 10px !important;
+      }
+      .invoice {
+        width: 100% !important;
+      }
+    }
+    </style>
+    </head>
+
+    <body style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width: 100% !important; height: 100%; line-height: 1.6; background: #f6f6f6; margin: 0; padding: 0;">
+
+    <table class="body-wrap" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; width: 100%; background: #f6f6f6; margin: 0; padding: 0;">
+        <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+            <td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0;" valign="top"></td>
+            <td class="container" width="600" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; display: block !important; max-width: 600px !important; clear: both !important; margin: 0 auto; padding: 0;" valign="top">
+                <div class="content" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; max-width: 600px; display: block; margin: 0 auto; padding: 20px;">
+                    <table class="main" width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; border-radius: 3px; background: #fff; margin: 0; padding: 0; border: 1px solid #e9e9e9;">
+                        <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                            <td class="content-wrap" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 20px;" valign="top">
+                                <table width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            Hi """ + receiver_name.split(" ")[0].title() + """,
+                                        </td>
+                                    </tr>
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            <a href='"""+generate_one_click_signup_email_url(receiver_name, receiver_email, campaign_str)+"""' class="btn-primary" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 18px; color: #fff; text-decoration: none; line-height: 2; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background: #2CAEE1; margin: 0; padding: 0; border-color: #2CAEE1; border-style: solid; border-width: 10px 20px;">&nbsp;&nbsp;Get it now&nbsp;&nbsp;</a>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                            Good luck with everything!<br>
+                                            Samir
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="footer" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; width: 100%; clear: both; color: #999; margin: 0; padding: 20px;">
+                        <table width="100%" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                            <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+                                <td class="aligncenter content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top"> <br> """+unsubscribe_str_html_bare(receiver_email, tag_arr, campaign_str)+"""</td>
                             </tr>
                         </table>
                     </div></div>
