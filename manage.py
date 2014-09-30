@@ -916,6 +916,38 @@ if arg =='send_campaign_thirty_one':
         index += 1
     print "Sent:", sent_count, "Accounts already made:", avoided_count
 
+if arg =='send_campaign_thirty_two':
+    from app.static.data.fa14_batch.batch_1 import batch_32_emails
+    sent_count = 0
+    avoided_count = 0
+    index = 0
+    from time import sleep 
+    for key in batch_32_emails.keys():
+        sleep(2)
+        if index > 0  and index % 25 == 0:
+            from time import sleep 
+            print "100 emails sent, waiting 9 minutes"
+            sleep(120)
+        receiver_name = key.title()
+        receiver_email = batch_32_emails[key]
+        from app.models import User
+        user = User.query.filter_by(email=receiver_email).first()
+
+        if not user:
+            from app.emails import send_mandrill_nine
+            import requests
+            try:
+                send_mandrill_nine(receiver_name, receiver_email, 'mandrill_fa_14_mass_lily_32_150')
+            except requests.exceptions.ConnectionError:
+                continue
+            print receiver_name, receiver_email, 'has been sent an email'
+            sent_count += 1
+        else:
+            print receiver_name, receiver_email, 'already has an account'
+            avoided_count += 1
+        index += 1
+    print "Sent:", sent_count, "Accounts already made:", avoided_count
+
 
 if arg == 'initialize_user_codes':
 
