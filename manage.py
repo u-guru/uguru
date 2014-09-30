@@ -866,6 +866,7 @@ if arg =='send_campaign_thirty':
             except mandrill.ServiceUnavailableError:
                 print "service unavailable"
                 sleep(10)
+                result = mandrill_client.messages.search(query='email:' + receiver_email.lower())
             if result:
                 sleep(2)
                 print "We have already sent this email"
