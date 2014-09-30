@@ -6,11 +6,11 @@
         {% elif n.a_id_name == 'getting-started' and user.skills %}
         <a target="_blank" id="getting-started-tutors" href="http://tinyurl.com/uguru-q-a">
         {% elif n.a_id_name == 'getting-started' or n.custom_tag == 'student-payment-approval' or n.custom_tag == 'tutor-receive-payment'%}
-        <a class='main-feed-messages' style="cursor:default!important;" id="dont-do-anything" href="javascript:void(0)">
+        <a class='main-feed-messages' style="cursor:default!important;" id="{% if n.custom_tag == 'tutor-receive-payment'%} {% else %}dont-do-anything{% endif %}" href="javascript:void(0)">
         {% elif n.a_id_name == 'tip-photo' %}
         <a class='main-feed-messages' href="/settings/">
         {% else %}
-        <a class='main-feed-messages'id="{{n.a_id_name}}" href="#   {{n.a_id_name}}-detailed">
+        <a class='main-feed-messages'id="{{n.a_id_name}}" href="#{{n.a_id_name}}-detailed">
         {% endif %}
             <div {% if n.a_id_name == 'getting-started' or (n.custom_tag=='tutor-receive-payment' and n.time_read) or (n.custom_tag=='student-payment-approval' and n.time_read) %} style="cursor:default;" {%endif%}class="notification {% if not n.time_read %} grey-background shadow{% endif %}" align:"center">
                 <img src="{% if n.image_url %}{{n.image_url}}{% else %} {{user.profile_url}}{% endif%}" class="user-photo" style="float:left; margin-top:-10px">

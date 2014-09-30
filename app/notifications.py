@@ -301,7 +301,7 @@ def student_payment_approval(user, tutor, payment, amount_charged, charge_id, sk
 def tutor_receive_payment(user, tutor, payment, amount_made):
     notification = Notification(payment=payment)
     notification.feed_message = 'Congrats! You have made <b>$' + str(amount_made) + "</b>."
-    notification.feed_message_subtitle = "If your earnings are pending, you have to wait for the student to confirm the time and amount."
+    notification.feed_message_subtitle = "Click here to view your transaction history."
     
     notification.custom_tag = 'tutor-receive-payment' 
     notification.a_id_name = 'tutor-receive-payment-' + str(payment.id)
