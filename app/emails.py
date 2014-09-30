@@ -2263,7 +2263,7 @@ def unsubscribe_str_html_bare(receiver_email, tag_arr=None, campaign_str=None):
         full_url = full_url + campaign_str + '/'
 
     return """
-    Don't want to hear from us? Unsubscribe <a target='_blank' href='""" +full_url+"""'>here</a>.
+    No thanks?<a target='_blank' href='""" +full_url+"""'>Unsubscribe here</a>.
     """
 
 def unsubscribe_str_html_(receiver_email, tag_arr=None, campaign_str=None):
@@ -2742,7 +2742,7 @@ def mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            This is Jen from <a href='http://uguru.me'>uGuru</a>, the <b>peer-to-peer tutoring service</b> on campus. With uGuru, you can find other students who have aced the same class to help you anytime, even the night before exams!
+                                            This is Lily from <a href='http://uguru.me'>uGuru</a>, the <b>peer-to-peer tutoring service</b> on campus. With uGuru, you can find other students who have aced the same class to help you anytime, even the night before exams!
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
@@ -2758,7 +2758,7 @@ def mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
                                             Good luck with your midterms!<br>
-                                            Jen
+                                            Lily
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
@@ -3103,8 +3103,8 @@ def send_mandrill_nine(receiver_name, receiver_email, tag_arr):
     message = {
         'html':mailgun_campaign_four_html(receiver_name, receiver_email, [tag_arr], tag_arr),
         'subject': subject,
-        'from_email': 'jen@uguru.me',
-        'from_name': 'Jen from uGuru',
+        'from_email': 'lily@uguru.me',
+        'from_name': 'Lily from uGuru',
         'to': to_emails,
         'headers': {'Reply-To': 'support@uguru.me'},
         'important': True,
