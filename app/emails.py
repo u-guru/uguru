@@ -2263,7 +2263,7 @@ def unsubscribe_str_html_bare(receiver_email, tag_arr=None, campaign_str=None):
         full_url = full_url + campaign_str + '/'
 
     return """
-    No thanks?<a target='_blank' href='""" +full_url+"""'>Unsubscribe here</a>.
+    No thanks? <a target='_blank' href='""" +full_url+"""'>Unsubscribe here</a>.
     """
 
 def unsubscribe_str_html_(receiver_email, tag_arr=None, campaign_str=None):
