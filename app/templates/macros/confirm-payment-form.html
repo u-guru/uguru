@@ -71,13 +71,20 @@
                         <div class='row font-16 margin-bottom-10 bold'>
                             <div class='col-xs-6 col-sm-6 col-md-6 align-right padding-right-0'>
                                 <span> Total: </span>
+                                <br>
                             </div>
                             <div class='col-xs-6 col-sm-6 col-md-6 padding-left-0'>
                                 <span class='green-text bold'>
                                     &nbsp;
-                                    ${{ '%0.4g'% (payment_dict['payment'].tutor_rate * payment_dict['payment'].time_amount)|float}}
-                                </span> 
+                                    ${{ '%0.4g'% (payment_dict['payment'].tutor_rate * payment_dict['payment'].time_amount * 0.75)|float}} <span class='grey-text'>*</span>
+                                </span>
+                                <br> 
                             </div>
+                        </div>
+                        <div class='row font-12 center'>
+                            <span class='grey-text font-10'>
+                                    *There is a 25% first-time transaction fee for the first time you meet {{opposite_name}}.
+                            </span>
                         </div>
                     </div>
                     <div class='row-fluid font-20 margin-top-40 margin-bottom-20 center'>

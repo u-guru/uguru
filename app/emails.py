@@ -1750,29 +1750,22 @@ def student_is_matched_html(tutor_name, request_code):
 def tutor_is_matched_text(tutor_name):
     return """Congrats """ + tutor_name + """! Here are the next steps\n\n:""" + \
     """1. Message your student, and finalize meetup time & location (http://berkeley.uguru.me/messages).\n\n""" +\
-    """2. At the end of the session, log into http://berkeley.uguru.me/log_in/ on your device and draft a bill by clicking 
-    "REQUEST PAYMENT" on your feed page.\n\n""" +\
-    """3. Have your student verify the amount before submitting.  The amount will be added to your balance,
-    and you can cash out at any time!\n\n""" +\
-    """4. After payment, remind your student to rate you on their account. These reviews will help you stand out when students choose their tutors.\n\n""" +\
+    """2. At the end of the session, log into http://berkeley.uguru.me/log_in/ on your device and confirm that you have met your student.
+    .\n\n""" +\
+    """3. After payment, remind your student to rate you on their account. These reviews will help you stand out when students choose their tutors.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def tutor_is_matched_html(tutor_name):
     return """Congrats """ + tutor_name + """! Here are the next steps: 
     <br>
     <br>
-    1. <a href="http://berkeley.uguru.me/messages/">Message</a> your student, and finalize meetup <b>time & location</b>.
+    1. <a href="http://berkeley.uguru.me/messages/">Message</a> your student, and finalize meetup time & location.
     <br>
     <br>
-    2. At the end of the session, <a href="http://berkeley.uguru.me/log_in/"> log into Uguru </a> on your device and draft a bill by clicking 
-    "REQUEST PAYMENT" on your feed page.
+    2. At the end of the session, <a href="http://berkeley.uguru.me/log_in/"> log into Uguru </a> on your device and confirm that you've met your student.
     <br>
     <br>
-    3. Have your student verify the amount before clicking the billing button. The amount will be added to your balance,
-    and you can cash out at any time!
-    <br>
-    <br>
-    4. After payment, remind your student to rate you on their account. These reviews will help you stand out when students choose their tutors.
+    3. After you have confirmed, remind your student to rate you on their account. These reviews will help you stand out when students choose their tutors.
     <br>
     <br>
     If you have any questions or concerns, please reply directly to this email, or give us a phonecall! 

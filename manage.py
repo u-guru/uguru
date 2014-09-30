@@ -845,6 +845,34 @@ if arg =='send_campaign_twenty_nine':
         index += 1
     print "Sent:", sent_count, "Accounts already made:", avoided_count
 
+if arg =='send_campaign_thirty':
+    from app.static.data.fa14_batch.batch_1 import batch_30_emails
+    sent_count = 0
+    avoided_count = 0
+    index = 0
+    from time import sleep 
+    for key in batch_30_emails.keys():
+        sleep(0.75)
+        receiver_name = key.title()
+        receiver_email = batch_30_emails[key]
+        from app.models import User
+        user = User.query.filter_by(email=receiver_email).first()
+
+        if not user:
+            from app.emails import send_mandrill_nine
+            import requests
+            try:
+                send_mandrill_nine(receiver_name, receiver_email, 'mandrill_fa_14_mass_jen_30_4000')
+            except requests.exceptions.ConnectionError:
+                continue
+            print receiver_name, receiver_email, 'has been sent an email'
+            sent_count += 1
+        else:
+            print receiver_name, receiver_email, 'already has an account'
+            avoided_count += 1
+        index += 1
+    print "Sent:", sent_count, "Accounts already made:", avoided_count
+
 
 if arg == 'initialize_user_codes':
 
@@ -1406,7 +1434,7 @@ if arg == 'initialize':
     db_session.commit()
 
     #Student One
-    user = User(name='Student One', email='kljasdkl333jakd3@berkeley.edu')
+    user = User(name='Student One', email='uguru.me@gmail.com')
     m = Mailbox(user)
     db_session.add(m)
     user.phone_number = '8135009853'
