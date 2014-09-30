@@ -14967,5 +14967,5 @@ batch_29_emails = {
     "HAYLEE MARGARET HODGKINS": "hhodgkins@berkeley.edu",
     "HAYLEE NOEL BERNAL": "hbernal@berkeley.edu",
     "HAYLEY A CARPENTER": "hayley.carpenter@berkeley.edu",
-    "HAYLEY ANNE CARTER": "hcarter@berkeley.edu"`
+    "HAYLEY ANNE CARTER": "hcarter@berkeley.edu"
 }
