@@ -853,7 +853,6 @@ if arg =='send_campaign_thirty':
     from time import sleep 
     mandrill_client = mandrill.Mandrill('Nr-H6duWBJz4kiCbNxtYqg')
     for key in batch_30_emails.keys():
-        sleep(0.75)
         receiver_name = key.title()
         receiver_email = batch_30_emails[key]
         from app.models import User
@@ -862,8 +861,8 @@ if arg =='send_campaign_thirty':
         
         if not user:
             from app.emails import send_mandrill_nine
-            
-            result = mandrill_client.messages.search(query='email:' + user.email.lower())
+            sleep(0.75)
+            result = mandrill_client.messages.search(query='email:' + receiver_email.lower())
             if result:
                 "We have already sent this email"
                 continue
