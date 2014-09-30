@@ -861,9 +861,13 @@ if arg =='send_campaign_thirty':
         
         if not user:
             from app.emails import send_mandrill_nine
-            result = mandrill_client.messages.search(query='email:' + receiver_email.lower())
+            try:
+                result = mandrill_client.messages.search(query='email:' + receiver_email.lower())
+            except mandrill.ServiceUnavailableError:
+                print "service unavailable"
+                sleep(10)
             if result:
-                sleep(5)
+                sleep(2)
                 print "We have already sent this email"
                 continue
 
