@@ -331,6 +331,36 @@ def daily_results_email_html(str_date):
     else:
         day_total_difference_result = ' (' + str(day_total_difference) + ')'
 
+    sam_signups = yasi_signups = tara_signups = pranay_signups = liliana_signups = allie_signups = 0
+    adrianna_signups = sarah_signups = monsoon_signups = ben_signups = akshay_signups = jessie_signups = 0
+
+    for u in User.query.all():
+        if u.referral_code and u.time_created > day:
+            if 'sam' in u.referral_code.lower():
+                sam_signups += 1
+            if 'yasi' in u.referral_code.lower():
+                yasi_signups += 1
+            if 'tara' in u.referral_code.lower():
+                tara_signups += 1
+            if 'pranay' in u.referral_code.lower():
+                pranay_signups += 1
+            if 'liliana' in u.referral_code.lower():
+                liliana_signups += 1
+            if 'allie' in u.referral_code.lower():
+                allie_signups += 1
+            if 'adrianna' in u.referral_code.lower():
+                adrianna_signups += 1
+            if 'sarah' in u.referral_code.lower():
+                sarah_signups += 1
+            if 'monsoon' in u.referral_code.lower():
+                monsoon_signups += 1
+            if 'ben' in u.referral_code.lower():
+                ben_signups += 1
+            if 'akshay' in u.referral_code.lower():
+                akshay_signups += 1
+            if 'jessie' in u.referral_code.lower():
+                jessie_signups += 1
+
 
     return """
     Daily stats for """ + str_date + """: 
@@ -352,6 +382,20 @@ def daily_results_email_html(str_date):
     Total Student Signups: """ + str(len(total_student_signup)) + """ <br>
     Total Tutor Signups: """ + str(len(total_tutor_signup)) + """ <br>
     Total Student Requests Made: """ + str(len(total_requests))+ """ <br>
+    <br>
+    <b>Ambasaddor Signup Stats</b> <br>
+    Sam: """ + str(sam_signups) + """<br>
+    Yasi: """ + str(yasi_signups) + """<br>
+    Tara: """ + str(tara_signups) + """<br>
+    Pranay: """ + str(pranay_signups) + """<br>
+    Liliana: """ + str(liliana_signups) + """<br>
+    Allie: """ + str(allie_signups) + """<br>
+    Adrianna: """ + str(adrianna_signups) + """<br>
+    Sarah: """ + str(sarah_signups) + """<br>
+    Monsoon: """ + str(monsoon_signups) + """<br>
+    Ben: """ + str(ben_signups) + """<br>
+    Akshay: """ + str(akshay_signups) + """<br>
+    Jessie: """ + str(jessie_signups) + """<br>
     <br>
     Keep up the great work!
     <br>

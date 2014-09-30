@@ -1449,6 +1449,8 @@ if arg == 'initialize':
     user = User(name='Student One', email='uguru.me@gmail.com')
     m = Mailbox(user)
     db_session.add(m)
+    user.time_created = datetime.now()
+    user.last_active = datetime.now()
     user.phone_number = '8135009853'
     db_session.add(user)
     db_session.commit()

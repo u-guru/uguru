@@ -133,6 +133,9 @@ def index(arg=None):
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
 
+@app.route('/dorm/')
+@app.route('/city/')
+@app.route('/fml/')
 @app.route('/sproul/')
 @app.route('/sproul/<arg>/')
 def new_sproul(arg=None):
@@ -2094,7 +2097,7 @@ def success():
                 if 'tutor-signup' in ajax_json: 
                     session['tutor-signup'] = True
 
-                if 'sproul-intern-referral' in ajax_json: session['referral'] = ajax_json['sproul-intern-referral'] + '(sproul)'
+                if 'sproul-intern-referral' in ajax_json: session['referral'] = ajax_json['sproul-intern-referral'] + '-sproul'
 
                 u = User(
                         name = ajax_json['name'].title(),
@@ -3149,6 +3152,7 @@ def samir_results():
     if get_environment() == 'PRODUCTION':
         from emails import daily_results_email
         daily_results_email('samir@uguru.me', 'makhani.samir@gmail.com')
+        daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
 
 @celery.task
 def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name):
