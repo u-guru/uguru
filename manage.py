@@ -861,10 +861,10 @@ if arg =='send_campaign_thirty':
         
         if not user:
             from app.emails import send_mandrill_nine
-            sleep(0.75)
             result = mandrill_client.messages.search(query='email:' + receiver_email.lower())
             if result:
-                "We have already sent this email"
+                sleep(3)
+                print "We have already sent this email"
                 continue
 
             import requests
