@@ -59,7 +59,7 @@ celery = Celery('run')
 
 REDIS_URL = environ.get('REDISTOGO_URL', 'redis://localhost')
 
-tutor_blacklist = [1708]
+tutor_blacklist = [1708, 624]
 
 # Use Redis as our broker and define json as the default serializer
 celery.conf.update(
@@ -1876,14 +1876,15 @@ def unsubscribe(email = None, tag = None, campaign = None):
                 raise
         else:
             print "email", email, "has already unsubscribed."
+
     return render_template('unsubscribe.html', email=email)
 
 
 
 @app.route('/reset-password/', methods=('GET', 'POST'))
 def reset_pw():
+    return_json = {}
     if request.method == 'POST':
-        return_json = {}
 
         ajax_json = request.json
 
