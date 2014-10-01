@@ -60,7 +60,7 @@ $(document).ready(function(){
           {
             'min':10, 
             'max':25, 
-            'value':15,
+            'value':18,
             change: function(event, ui) {
               $('#final-offering-price').text($('#edit-price-slider').slider('value'));
               slider_val = $('#edit-price-slider').slider('value');
@@ -315,12 +315,12 @@ $(document).ready(function(){
     });
 
     $('#request-form-remove-price').click(function() {
-      $('#final-offering-price').text('15')
-      $('#edit-price-slider').slider({'value':15});
+      $('#final-offering-price').text('18')
+      $('#edit-price-slider').slider({'value':18});
       $('#request-form-edit-price').show();
       $('#request-form-remove-price').hide();
       $('#edit-price-container').hide();
-      $('#suggested-or-your-text').text('Suggested: ')
+      $('#suggested-or-your-text').html('<span class="red-text">Midterm Season</span> Suggested Price: ')
     });
 
     $('#tutor-add-course-fields').on('click', 'a.example-skill-link', function() {

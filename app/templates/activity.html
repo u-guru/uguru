@@ -156,9 +156,9 @@
 		            {% endif %}
 				<div style="font-weight:700; font-size:12px; margin-top:10px; color:grey" class="row">
 						<h5 style="color:grey; font-size:22px; margin-bottom:0px; margin-top:0px">Your Earnings: 
-							<span style="color:#69bf69; font-weight:bold"> ${{'%.02f' % user.balance}} 
+							<span style="color:#69bf69; font-weight:bold"> ${{'%.4g' % user.balance}} 
 								{% if user.pending %}
-									(${{user.pending}} pending)
+									(${{'%.4g' % user.pending}} pending<span class='grey-text'>*</span>)
 								{% endif %}
 							</span>
 							{% if user.balance > 0 %}
@@ -236,6 +236,11 @@
 		<span class='font-14 grey-text center block margin-top-20'>
 				New to uGuru? Read more <a target='_blank'class='underline blue-text'href='http://tinyurl.com/uguru-q-a'> here </a> 
 		</span>
+		{% if user.pending %}
+		<span class='font-12 grey-text center block margin-top-30'>
+				* Your balance is pending because a student hasn't confirmed the amount yet.
+		</span>
+		{% endif %}
 	</div>
 	<br>
 	<br>

@@ -284,7 +284,7 @@ def student_payment_proposal(user, tutor, payment):
 
 def student_payment_approval(user, tutor, payment, amount_charged, charge_id, skill_name, recurring):
     notification = Notification(payment=payment)
-    notification.feed_message = "<b>$" + str(amount_charged) + "</b> payment has been sent to " + \
+    notification.feed_message = "<b>$" + str('%.4g' % amount_charged) + "</b> payment has been sent to " + \
         tutor.name.split(" ")[0] + "."
     notification.feed_message_subtitle = "Click here to view your transaction history."
     notification.custom_tag = 'student-payment-approval'
@@ -300,7 +300,7 @@ def student_payment_approval(user, tutor, payment, amount_charged, charge_id, sk
 
 def tutor_receive_payment(user, tutor, payment, amount_made):
     notification = Notification(payment=payment)
-    notification.feed_message = 'Congrats! You have made <b>$' + str(amount_made) + "</b>."
+    notification.feed_message = 'Congrats! You have made <b>$' + str('%.4g' % amount_made) + "</b>."
     notification.feed_message_subtitle = "Click here to view your transaction history."
     
     notification.custom_tag = 'tutor-receive-payment' 

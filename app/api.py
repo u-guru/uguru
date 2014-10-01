@@ -831,8 +831,8 @@ def api(arg, _id):
                 from notifications import student_payment_approval
                 tutor = User.query.get(p.tutor_id)
 
-                tutor.pending = tutor.pending - orig_p.tutor_received_amount
-                tutor.balance = tutor.balance + p.tutor_received_amount     
+                tutor.pending = tutor.pending - orig_p.tutor_received_amount - p.tutor_received_amount
+                tutor.balance = tutor.balance + p.tutor_received_amount + orig_p.tutor_received_amount     
 
                 
                 if p.confirmed_payment_id:
