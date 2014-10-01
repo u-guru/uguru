@@ -286,8 +286,7 @@ def student_payment_approval(user, tutor, payment, amount_charged, charge_id, sk
     notification = Notification(payment=payment)
     notification.feed_message = "<b>$" + str(amount_charged) + "</b> payment has been sent to " + \
         tutor.name.split(" ")[0] + "."
-    notification.feed_message_subtitle = "A detailed receipt has been emailed to you. Email support@uguru.me " + \
-        "if the amount is incorrect."
+    notification.feed_message_subtitle = "Click here to view your transaction history."
     notification.custom_tag = 'student-payment-approval'
     notification.a_id_name = 'student-payment-approval-' + str(payment.id)
     if tutor.profile_url:
@@ -296,6 +295,7 @@ def student_payment_approval(user, tutor, payment, amount_charged, charge_id, sk
         notification.image_url = '/static/img/default-photo.jpg'
     student_payment_receipt(user, tutor.name.split(" ")[0], amount_charged, payment, charge_id, skill_name, recurring, False)
     tutor_payment_receipt(user, tutor, amount_charged, payment, charge_id, skill_name, user.name.split(" ")[0])
+    notification.time_read = datetime.now()
     return notification
 
 def tutor_receive_payment(user, tutor, payment, amount_made):
