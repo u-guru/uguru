@@ -1616,12 +1616,15 @@ def tutor_received_transfer_text(amount, bank_name, transfer_id, last4,date):
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def student_payment_receipt_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount):
+    if not card_last4:
+        card_last4 = "None"
+
     return """For your next session with """ + tutor_name + """, you won't need to submit a request again. Just set """+\
     """ up a time, meetup,. Forget about cash - we'll handle all your payments for free!""" + \
-    """Receipt ID: """+  charge_id +"""\n""" +\
-    """Time: """+  date +"""\n""" +\
-    """Card Number: ****-****-****-"""+ card_last4 +"""\n""" +\
-    """Guru Name: """+ tutor_name +"""\n""" +\
+    """Receipt ID: """+  str(charge_id) +"""\n""" +\
+    """Time: """+  str(date) +"""\n""" +\
+    """Card Number: ****-****-****-"""+ str(card_last4) +"""\n""" +\
+    """Guru Name: """+ str(tutor_name) +"""\n""" +\
     """Hourly Price: $"""+ str(hourly_price) +"""\n""" +\
     """Hours: """+ str(hours) +""" hours\n""" +\
     """Total Amount: $"""+ str(amount) +"""\n\n""" +\
@@ -1664,14 +1667,16 @@ def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours,
 
 
 def student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount):
+    if not card_last4:
+        card_last4 = "None"
     return """
     For your next session with """ + tutor_name + """, you won't need to submit a request again. Just set up a time through our messaging."""+\
     """ Forget about cash! We'll handle your payments - for free!
     <br>
     <br>
-    Receipt ID: """+  charge_id +"""<br>
-    Time: """+  date +"""<br>
-    Card Number: ****-****-****-"""+  card_last4 +"""<br>
+    Receipt ID: """+  str(charge_id) +"""<br>
+    Time: """+  str(date) +"""<br>
+    Card Number: ****-****-****-"""+  str(card_last4) +"""<br>
     Guru Name: """+  tutor_name +"""<br>
     Hourly Price: $""" + str(hourly_price) + """<br>
     Hours: """ + str(hours) + """ hours<br>
@@ -2740,7 +2745,7 @@ def mailgun_campaign_four_html(receiver_name, receiver_email, tag_arr, campaign_
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            P.S. This promotion expires 9/30.
+                                            P.S. This promotion expires 10/1.
                                         </td>
                                     </tr>
                                 </table>
