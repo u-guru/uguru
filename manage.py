@@ -1413,7 +1413,7 @@ if arg == 'initialize':
     from datetime import datetime
 
     #New Guru
-    user = User(name='Tutor 1', email='makhani.samir@gmail.com', phone_number = '8135009853')
+    user = User(name='Tutor 1', email='makhani.samir1111@gmail.com', phone_number = '8135009853')
     user.approved_by_admin = True
     user.verified_tutor = True
     user.profile_url = '/static/img/jenny.jpg'
@@ -1431,7 +1431,7 @@ if arg == 'initialize':
     db_session.commit()
 
     #Tier 1 Tutor
-    user = User(name='Tutor 2', email='kljasdkljakd@berkeley.edu')
+    user = User(name='Tutor 2', email='sam1rm@berkeley.edu')
     r = Rating()
     r.tutor_rating = 5
     user.tutor_ratings.append(r)

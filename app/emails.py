@@ -1416,10 +1416,7 @@ def send_message_alert_html(receiver_name, sender_name):
 def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_name, recurring, connection):
     student_name = user.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
-    if not connection:
-        email_subject = "Your " + skill_name + " Session with " + tutor_name
-    else:
-        email_subject = "Your Receipt for Connecting with " + tutor_name
+    email_subject = "Your " + skill_name + " Session with " + tutor_name
     DATE_FORMAT = "%d/%m/%Y"
     EMAIL_SPACE = ", "
     EMAIL_TO = [user.email]
@@ -1441,12 +1438,8 @@ def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_
         hourly_price = None
         
 
-    if connection:
-        text = student_payment_receipt_connection_text(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
-        html = student_payment_receipt_connection_html(date, charge_id, card_last4, tutor_name, hourly_price, hours, amount)
-    else:
-        text = student_payment_receipt_text(date, charge_id, card_last4, str(tutor_name), hourly_price, hours, amount)
-        html = student_payment_receipt_html(date, charge_id, card_last4, str(tutor_name), hourly_price, hours, amount)
+    text = student_payment_receipt_text(date, charge_id, card_last4, str(tutor_name), hourly_price, hours, amount)
+    html = student_payment_receipt_html(date, charge_id, card_last4, str(tutor_name), hourly_price, hours, amount)
     
     part1 = MIMEText(text, 'plain', 'utf-8')
     part2 = MIMEText(html, 'html', 'utf-8')
@@ -1480,13 +1473,18 @@ def tutor_payment_receipt(user, tutor, amount, payment, charge_id, skill_name, s
     amount = hours * hourly_price
     date = payment.time_created.strftime("%B %d, %Y at %I:%M%p")
 
-    text = tutor_payment_receipt_text(date, charge_id, student_name, hourly_price, hours, amount, student_name)
-    html = tutor_payment_receipt_html(date, charge_id, student_name, hourly_price, hours, amount, student_name)
+    from models import Payment
+    payments = Payment.query.filter_by(tutor_id=payment.tutor_id, student_id=payment.student_id).all()
+
+    if len(payments) == 1:
+        fee_amount = '25'
+    else:
+        fee_amount = '10'
+
+    html = tutor_payment_receipt_html(date, charge_id, student_name, hourly_price, hours, amount, student_name, fee_amount)
     
-    part1 = MIMEText(text, 'plain', 'utf-8')
     part2 = MIMEText(html, 'html', 'utf-8')
 
-    msg.attach(part1)
     msg.attach(part2)
     
     mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
@@ -1641,25 +1639,10 @@ def student_payment_receipt_connection_text(date, charge_id, card_last4, tutor_n
     """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
-def tutor_payment_receipt_text(date, charge_id, tutor_name, hourly_price, hours, amount, student_name):
-    return """For your next session with """ + student_name + """, """ + student_name + """ won't need to submit a """+ \
-    """request again. Just coordinate through messaging and meet up. At the end of the session, click the billing button on """ +\
-    """the top menu bar (the dollar sign button), find """ + student_name + """ in the drop-down list, and submit after confirming the """ + \
-    """amount with """ + student_name + """.\n\n""" +\
-    """Receipt ID: """+  charge_id +"""\n""" +\
-    """Time: """+  date +"""\n""" +\
-    """Student Name: """+ tutor_name +"""\n""" +\
-    """Hourly Price: $"""+ str(hourly_price) +"""\n""" +\
-    """Hours: """+ str(hours) +""" hours\n""" +\
-    """Total Earned: $"""+ str(amount * 0.9) +"""(after 10%% to uGuru)\n\n""" +\
-    """If the above information is incorrect, please contact us by directly replying to this email.\n\n""" +\
-    """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
-
-def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours, amount, student_name):
+def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours, amount, student_name, fee_amount):
     return """
     For your next session with """ + student_name + """, """ + student_name + """ won't need to submit a request again. 
-    Just coordinate through messaging and meet up. At the end of session, click the billing button on the top menu bar (the dollar sign button), find """ + \
-    student_name + """ in the drop-down list, and submit after confirming the amount with """ + student_name +""".
+    At the end of session, click the billing button on the top menu bar (the dollar sign button).
     <br>
     <br>
     Receipt ID: """+  charge_id +"""<br>
@@ -1667,7 +1650,7 @@ def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours,
     Student Name: """+  tutor_name +"""<br>
     Hourly Price: $""" + str(hourly_price) + """<br>
     Hours: """ + str(hours) + """ hours<br>
-    Total Earned: $""" + str(amount * 0.9) + """(after 10%% to uGuru)
+    Total Earned: $""" + str(amount * (100 - int(fee_amount))/100) + """ (after """+ str(fee_amount) +"""% to uGuru)
     <br>
     <br>
     If the above information is incorrect, please contact us by directly replying to this email.
@@ -1695,9 +1678,6 @@ def student_payment_receipt_html(date, charge_id, card_last4, tutor_name, hourly
     Total Amount: $""" + str(amount) + """
     <br>
     <br>
-    <i>Your payment is handled by <a href="http://stripe.com"> Stripe</a>, a secure third-party payment platform</i>
-    <br>
-    <br>
     If the above information is incorrect, please contact us by directly replying to this email.
     <br>
     <br>
@@ -1717,9 +1697,6 @@ def student_payment_receipt_connection_html(date, charge_id, card_last4, tutor_n
     Card Number: ****-****-****-"""+  card_last4 +"""<br>
     Guru Name: """+  tutor_name +"""<br>
     Total Amount: $""" + str(amount) + """(One-time connection fee)
-    <br>
-    <br>
-    <i>Your payment is handled by <a href="http://stripe.com">Stripe</a>, a secure third-party payment platform</i>
     <br>
     <br>
     If the above information is incorrect, please contact us by directly replying to this email.

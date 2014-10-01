@@ -1742,6 +1742,8 @@
                 hr_text = 'hr'
               }
 		      $('#change-payment-time-txt').text((slider_val/2) + hr_text);
+		      hourly_rate = parseInt($('#confirm-payment-tutor-rate').text())
+		      $('#confirm-payment-tutor-total').text(((slider_val/2) * hourly_rate * 0.75).toFixed(2));
             }
           }
       	);

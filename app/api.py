@@ -746,14 +746,9 @@ def api(arg, _id):
                 student = User.query.get(p.student_id)
 
                 if p.time_amount != float(request.json.get('time_amount')):
-                    previous_student_tutor_payment = Payment.query.filter_by(student_id = student.id, tutor_id = tutor.id).first()
-                    if previous_student_tutor_payment:
-                        final_tutor_amount_difference = time_difference * p.tutor_rate
-                        final_tutor_amount = p.tutor_received_amount + time_difference * p.tutor_rate
-                    else:
-                        final_tutor_amount_difference = time_difference * p.tutor_rate * 0.75
-                        final_tutor_amount = p.tutor_received_amount + 0.75 * time_difference * p.tutor_rate
-                    new_payment.tutor_received_amount = final_tutor_amount
+                    final_tutor_amount_difference = time_difference * p.tutor_rate * 0.75
+                    final_tutor_amount = p.tutor_received_amount + 0.75 * time_difference * p.tutor_rate
+                    new_payment.tutor_received_amount = 0.75 * time_difference * p.tutor_rate
                     tutor.pending = tutor.pending + final_tutor_amount_difference
                 else:
                     final_tutor_amount = p.tutor_received_amount
