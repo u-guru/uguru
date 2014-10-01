@@ -1413,6 +1413,37 @@ def send_message_alert_html(receiver_name, sender_name):
     (813) 500 - 9853
     """
 
+
+def student_confirm_payment_receipt(user, tutor_name, payment, amount, hourly_price, hours, first_time=None):
+    student_name = user.name.split(" ")[0].title()
+    email_from = "Samir from Uguru <samir@uguru.me>"
+    email_subject = student_name + ", " + tutor_name.title() + " has billed you $" + str(amount) + " please confirm ASAP."
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+    EMAIL_TO = [user.email]
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = email_subject
+    msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+    msg['From'] = email_from
+    
+    date = payment.time_created.strftime("%B %d, %Y at %I:%M%p")
+    
+    #for recurring billing statements
+    if not first_time:
+        pass
+        
+    html = student_confirm_payment_receipt_html(date, student_name, str(tutor_name), hourly_price, hours, amount)
+    part2 = MIMEText(html, 'html', 'utf-8')
+
+    msg.attach(part2)
+    
+    mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)        
+    mail.starttls()
+    mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+    mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
+    mail.quit()
+
 def student_payment_receipt(user, tutor_name, amount, payment, charge_id, skill_name, recurring, connection):
     student_name = user.name.split(" ")[0]
     email_from = "Samir from Uguru <samir@uguru.me>"
@@ -1662,6 +1693,33 @@ def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours,
     Hourly Price: $""" + str(hourly_price) + """<br>
     Hours: """ + str(hours) + """ hours<br>
     Total Earned: $""" + str(amount * (100 - int(fee_amount))/100) + """ (after """+ str(fee_amount) +"""% to uGuru)
+    <br>
+    <br>
+    If the above information is incorrect, please contact us by directly replying to this email.
+    <br>
+    <br>
+    Samir<br>
+    Co-Founder<br>
+    Samir@uguru.me<br>
+    (813) 500 - 9853
+    """
+
+def student_confirm_payment_receipt_html(date, student_name, tutor_name, hourly_price, hours, amount):
+    return """
+    Hi """ + student_name + """,
+    <br>
+    <br>
+    """+ tutor_name + """ has billed you the amount below. Please <a href='http://berkeley.uguru.me/activity/'>log in</a> and confirm the amount.<br>
+    <b>
+    If you do not confirm within 24 hours, the system will auto-confirm.
+    </b>
+    <br>
+    <br>
+    Time: """+  str(date) +"""<br>
+    Guru Name: """+  tutor_name +"""<br>
+    Hourly Price: $""" + str(hourly_price) + """<br>
+    Hours: """ + str(hours) + """ hours<br>
+    Total Amount: $""" + str(amount) + """
     <br>
     <br>
     If the above information is incorrect, please contact us by directly replying to this email.

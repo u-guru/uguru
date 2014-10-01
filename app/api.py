@@ -753,6 +753,11 @@ def api(arg, _id):
                     final_tutor_amount = p.tutor_received_amount + 0.75 * time_difference * p.tutor_rate
                     new_payment.tutor_received_amount = 0.75 * time_difference * p.tutor_rate
                     tutor.pending = tutor.pending + final_tutor_amount_difference
+
+                    #send student email to confirmation
+                    # from emails import student_confirm_payment_receipt
+                    # final_student_amount = new_payment.student_paid_amount + p.student_paid_amount
+                    # student_confirm_payment_receipt(student, tutor.name.split(" ")[0].title(), new_payment, final_student_amount, p.tutor_rate, p.time_amount + time_difference, True)
                 else:
                     final_tutor_amount = p.tutor_received_amount
 
