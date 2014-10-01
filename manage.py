@@ -961,7 +961,7 @@ if arg =='send_campaign_thirty_three':
             print "50 emails sent, waiting 3 minutes"
             sleep(180)
         receiver_name = key.title()
-        receiver_email = batch_23_emails[key]
+        receiver_email = batch_33_emails[key]
         from app.models import User
         user = User.query.filter_by(email=receiver_email).first()
 
