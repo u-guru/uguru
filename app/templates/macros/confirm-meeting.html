@@ -20,11 +20,11 @@
         <br>
         <br>
         <div id='guru-intro' class='block font-16'>
-            <p> 1. After you've met {{opposite_name}}, click the blue button below.</p>
+            <p> 1. After you've met {{opposite_viewer.name.split(" ")[0]|title}}, click the blue button below.</p>
             {% if viewer == student %}
-                <p> 2. {{tutor_name|title}} will first be asked for the exact time amount of the session. If it is less than or greater than <span class='blue-text'>{{request_dict[notif.request_id]['request'].time_estimate}}hrs</span>, you will be asked to confirm as well. </p>
-                <p> 3. After {{tutor_name|title}} confirms, you will be asked to rate {{tutor_name|title}} </p>
-                <p> 4. For future sessions, {{tutor_name|title}} will bill you through their uGuru interface. There are no charges for students on our platform - you can use our platform for <b>FREE</b>.</p>
+                <p> 2. {{tutor_name|title}} will first be asked for the exact time amount of the session. If the time amount is greater than <span class='blue-text'>{{request_dict[notif.request_id]['request'].time_estimate}}hrs</span>, you will be asked to confirm as well. </p>
+                <p> 3. After {{tutor_name|title}} confirms, you will be asked to rate {{tutor_name|title}}.</p>
+                <p> 4. For future sessions, {{tutor_name|title}} will bill you through uGuru. <br>There are no charges for students on our platform - you can use our platform for <b>FREE</b>.</p>
             {% else %}
                 <p> 2. Once you click the button, you will be asked for the exact time amount of the session. If it is less than or greater than <span class='blue-text'>{{request_dict[notif.request_id]['request'].time_estimate}}hrs</span>, the student will be asked to confirm the time amount as well. </p>
                 <p> 3. You will be asked to rate {{student_name}}. </p>
@@ -33,7 +33,7 @@
         <br>
         <br>
         <a href='javascript:void(0);' id='confirm-meeting-{{notif.id}}'class='confirm-meeting-btn'>
-            <span class='blue-btn blue-btn-full'> Confirm Meeting </span>
+            <span class='blue-btn blue-btn-full'> I have met {{opposite_viewer.name.split(" ")[0]|title}} for my session. </span>
         </a>
     </div>
 

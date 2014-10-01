@@ -962,6 +962,7 @@ if arg =='send_campaign_thirty_three':
             sleep(180)
         receiver_name = key.title()
         receiver_email = batch_33_emails[key]
+
         from app.models import User
         user = User.query.filter_by(email=receiver_email).first()
 
@@ -981,7 +982,7 @@ if arg =='send_campaign_thirty_three':
     print "Sent:", sent_count, "Accounts already made:", avoided_count
 
 if arg =='send_campaign_thirty_four':
-    from app.static.data.fa14_batch.batch_1 import batch_34_emails
+    from app.static.data.fa14_batch.batch_1 import batch_34_emails, batch_34_emails_used
     sent_count = 0
     avoided_count = 0
     index = 0
@@ -994,9 +995,13 @@ if arg =='send_campaign_thirty_four':
             sleep(180)
         receiver_name = key.title()
         receiver_email = batch_34_emails[key]
+        
+        if receiver_email in batch_34_emails_used:
+            print "we have already emailed", receiver_email
+            continue
+
         from app.models import User
         user = User.query.filter_by(email=receiver_email).first()
-
         if not user:
             from app.emails import send_mandrill_nine
             import requests
