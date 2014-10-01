@@ -1478,6 +1478,14 @@ def tutor_payment_receipt(user, tutor, amount, payment, charge_id, skill_name, s
 
     if len(payments) == 1:
         fee_amount = '25'
+    elif len(payments) == 2:
+        payments = sorted(payments, key=lambda k:k.id)
+        first_payment = payments.pop(0)
+        second_payment = payments[0]
+        if second_payment.confirmed_payment_id == first_payment.id:
+            fee_amount = '25'
+        else:
+            fee_amount = '10'
     else:
         fee_amount = '10'
 

@@ -740,7 +740,7 @@ def api(arg, _id):
                 if student.text_notification and student.phone_number:
                     from views import send_twilio_message_delayed
                     if p.time_amount != float(request.json.get('time_amount')):
-                        message = tutor.name.split(' ')[0].title() + ' billed you! Please confirm the amount and rate' + tutor.name.split(' ')[0].title() + ". You have 24 hours to confirm or the system will auto-confirm."
+                        message = tutor.name.split(' ')[0].title() + ' billed you! Please confirm the amount and rate ' + tutor.name.split(' ')[0].title() + ". You have 24 hours to confirm or the system will auto-confirm."
                     else:    
                         message = tutor.name.split(' ')[0].title() + ' has rated you! Please rate ' + tutor.name.split(' ')[0].title() + ' by logging in to www.uguru.me/log_in/.'
                     send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=10)

@@ -1777,8 +1777,8 @@ def update_requests():
 
 @app.route('/notif-update/', methods=('GET', 'POST'))
 def notif_update():
+    return_json = {}
     if request.method == "POST":
-        return_json = {}
 
         #If admin is logged in, don't mark things as read or update their feed counter.
         if session.get('admin'):
@@ -3032,6 +3032,7 @@ def get_environment():
     return environment
 
 def send_twilio_msg(to_phone, body, user_id):
+    body = '[uGuru] ' + body
     try:
         message = twilio_client.messages.create(
             body_ = body,
