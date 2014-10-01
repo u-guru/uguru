@@ -1038,7 +1038,7 @@ if arg =='send_campaign_thirty_five':
             from app.emails import send_mandrill_nine
             import requests
             try:
-                send_mandrill_nine(receiver_name, receiver_email, 'mandrill_fa_14_mass_lily_34_1700')
+                send_mandrill_nine(receiver_name, receiver_email, 'mandrill_fa_14_mass_lily_35_1000')
             except requests.exceptions.ConnectionError:
                 continue
             print receiver_name, receiver_email, 'has been sent an email'
