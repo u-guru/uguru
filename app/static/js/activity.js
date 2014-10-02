@@ -77,6 +77,11 @@ $(document).ready(function() {
           $('#request-form-submit').children('span:first').addClass('blue-btn-full');
           $('#tutor-request').show();
       }
+
+      if (location.hash == '#p1') {
+        $('#activity').hide();
+        $('#package-promotion-1').show();
+      }
       
       $(document).on({
           ajaxStart: function() { $body.addClass("loading");    },

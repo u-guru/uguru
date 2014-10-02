@@ -2574,6 +2574,15 @@ def activity_request():
     else:
         return redirect('/activity/#request')
 
+@app.route('/activity/promotion/1/')
+def activity_request():
+    user_id = session.get('user_id')
+    if not user_id:
+        session['redirect'] = '/activity/#p1'
+        return redirect('/log_in/')
+    else:
+        return redirect('/activity/#p1')
+
 
 @app.route('/activity/', methods=('GET', 'POST'))
 def activity():
