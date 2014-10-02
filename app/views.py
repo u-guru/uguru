@@ -3464,6 +3464,117 @@ def send_student_drip_7(user_id):
             db_session.rollback()
             raise 
 
+@celery.task
+def auto_confirm_student_payment(payment_id, student_id):
+    user = User.query.get(student_id)
+    p = Payment.query.get(payment_id)
+    
+    #student has already confirmed!
+    if p.student_confirmed:
+        print "Student has already confirmed"
+        return
+    p.student_confirmed = True
+    stripe_charge = False
+    if not p.confirmed_payment_id:
+        orig_p = p
+    else:
+        orig_p = Payment.query.get(p.confirmed_payment_id)
+
+    if p.student_paid_amount > 0:
+        stripe_amount_cents = int(p.student_paid_amount * 100)
+        student = User.query.get(p.student_id)
+        
+        if student.credit >= p.student_paid_amount:
+            student.credit = student.credit - p.student_paid_amount
+            p.student_description = 'Your credits used for this session'
+        elif student.credit > 0:
+            difference = p.student_paid_amount - student.credit
+            p.student_description = 'You used $' + str(student.credit) +' in credit and were billed $' + str(difference) + ' to your card.'
+            stripe_amount_cents = int(difference * 100)
+            student.credit = 0
+            try: 
+                stripe_charge = True
+                charge = stripe.Charge.create(
+                    amount = stripe_amount_cents,
+                    currency="usd",
+                    customer=student.customer_id,
+                    description="charge for receiving tutoring"
+                )
+                p.stripe_charge_id = charge['id']
+                print p.stripe_charge_id
+            except stripe.error.CardError, e:
+                if p.student_id == user.id:
+                    error_msg = "Sorry! Your card has been declined. Please update your payment info in your settings > billing."
+                else:
+                    error_msg = "Sorry! The student's card has been declined. Please kindly ask them to update their information" 
+                return errors([error_msg])
+        else:
+            try: 
+                stripe_charge = True
+                charge = stripe.Charge.create(
+                    amount = stripe_amount_cents,
+                    currency="usd",
+                    customer=student.customer_id,
+                    description="charge for receiving tutoring"
+                )
+                p.stripe_charge_id = charge['id']
+                print p.stripe_charge_id
+            except stripe.error.CardError, e:
+                error_msg = "Sorry! Your card has been declined. Please update your payment info in your settings > billing."
+                return errors([error_msg])
+            except stripe.error.InvalidRequestError, e:
+                if p.student_id == user.id:
+                    error_msg = "Sorry! The your card has been declined. Please update your payment info in your settings."
+                else:
+                    error_msg = "Sorry! The student's card has been declined. Please kindly ask them to update their information" 
+                return errors([error_msg])
+    else:
+        user.credit = user.credit + abs(p.student_paid_amount)
+        stripe_charge = False
+
+    
+
+    from notifications import student_payment_approval
+    tutor = User.query.get(p.tutor_id)
+
+    if orig_p != p:
+        tutor.pending = tutor.pending - orig_p.tutor_received_amount - p.tutor_received_amount
+        tutor.balance = tutor.balance + p.tutor_received_amount + orig_p.tutor_received_amount     
+    else:
+        print "this is a bill-student api payment"
+        print "original pending", tutor.pending
+        print "original balance", tutor.balance
+        tutor.pending = tutor.pending - orig_p.tutor_received_amount
+        tutor.balance = tutor.balance + p.tutor_received_amount
+        print "new pending", tutor.pending
+        print "new balance", tutor.balance
+
+    
+    if p.confirmed_payment_id:
+        total_amount = orig_p.time_amount * orig_p.tutor_rate + p.student_paid_amount
+    else:
+        #recurring billing case
+        total_amount = p.student_paid_amount
+    print total_amount
+    
+    from app.static.data.short_variations import short_variations_dict
+    skill_name = short_variations_dict[Skill.query.get(p.skill_id).name]
+    
+    if stripe_charge:
+        charge = charge['id']
+    else:
+        charge = 'as9d0sudas' + str(p.id)
+
+
+
+    student_notification = student_payment_approval(user, tutor, p, total_amount, charge, skill_name, False)
+    user.notifications.append(student_notification)
+    db_session.add(student_notification)
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        raise
 
 def send_apn(message, token):
     payload = Payload(alert=message, sound='default', badge=1)

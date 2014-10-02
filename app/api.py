@@ -740,7 +740,7 @@ def api(arg, _id):
                 if student.text_notification and student.phone_number:
                     from views import send_twilio_message_delayed
                     if p.time_amount != float(request.json.get('time_amount')):
-                        message = tutor.name.split(' ')[0].title() + ' billed you! Please confirm the amount and rate ' + tutor.name.split(' ')[0].title() + ". You have 24 hours to confirm or the system will auto-confirm."
+                        message = tutor.name.split(' ')[0].title() + ' has billed you! Please confirm the amount and rate ' + tutor.name.split(' ')[0].title() + ". You have 24 hours to confirm or the system will auto-confirm."
                     else:    
                         message = tutor.name.split(' ')[0].title() + ' has rated you! Please rate ' + tutor.name.split(' ')[0].title() + ' by logging in to www.uguru.me/log_in/.'
                     send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=10)
@@ -755,9 +755,15 @@ def api(arg, _id):
                     tutor.pending = tutor.pending + final_tutor_amount_difference
 
                     #send student email to confirmation
-                    # from emails import student_confirm_payment_receipt
-                    # final_student_amount = new_payment.student_paid_amount + p.student_paid_amount
-                    # student_confirm_payment_receipt(student, tutor.name.split(" ")[0].title(), new_payment, final_student_amount, p.tutor_rate, p.time_amount + time_difference, True)
+                    from emails import student_confirm_payment_receipt
+                    final_student_amount = new_payment.student_paid_amount + p.student_paid_amount
+                    student_confirm_payment_receipt(student, tutor.name.split(" ")[0].title(), new_payment, final_student_amount, p.tutor_rate, p.time_amount + time_difference, True)
+                    from views import auto_confirm_student_payment
+                    from views import get_environment
+                    if get_environment() == 'PRODUCTION':
+                        auto_confirm_student_payment.apply_async(args=[new_payment.id, student.id], countdown=86400)
+                    else:
+                        auto_confirm_student_payment.apply_async(args=[new_payment.id, student.id], countdown=50)
                 else:
                     final_tutor_amount = p.tutor_received_amount
 
@@ -836,8 +842,13 @@ def api(arg, _id):
                 from notifications import student_payment_approval
                 tutor = User.query.get(p.tutor_id)
 
-                tutor.pending = tutor.pending - orig_p.tutor_received_amount - p.tutor_received_amount
-                tutor.balance = tutor.balance + p.tutor_received_amount + orig_p.tutor_received_amount     
+                if orig_p != p:
+                    tutor.pending = tutor.pending - orig_p.tutor_received_amount - p.tutor_received_amount
+                    tutor.balance = tutor.balance + p.tutor_received_amount + orig_p.tutor_received_amount     
+                else:
+                    tutor.pending = tutor.pending - orig_p.tutor_received_amount
+                    tutor.balance = tutor.balance + p.tutor_received_amount
+
 
                 
                 if p.confirmed_payment_id:
@@ -935,14 +946,24 @@ def api(arg, _id):
 
             if student.text_notification and student.phone_number:
                 from views import send_twilio_message_delayed
-                message = tutor.name.split(' ')[0].title() + ' has billed you! Please confirm the amount by logging in to www.uguru.me/log_in/.'
-                send_twilio_message_delayed.apply_async(args=[student.phone_number, message], countdown=10)
+                message = tutor.name.split(' ')[0].title() + ' has billed you! Please confirm the amount and rate ' + tutor.name.split(' ')[0].title() + ". You have 24 hours to confirm or the system will auto-confirm."
+                send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=10)
 
             try:
                 db_session.commit()
             except:
                 db_session.rollback()
                 raise 
+
+            from emails import student_confirm_payment_receipt
+            final_student_amount = payment.student_paid_amount
+            student_confirm_payment_receipt(student, tutor.name.split(" ")[0].title(), payment, final_student_amount, payment.tutor_rate, payment.time_amount, True)
+            from views import auto_confirm_student_payment
+            from views import get_environment
+            if get_environment() == 'PRODUCTION':
+                auto_confirm_student_payment.apply_async(args=[payment.id, student.id], countdown=86400)
+            else:
+                auto_confirm_student_payment.apply_async(args=[payment.id, student.id], countdown=50)
 
             from notifications import tutor_receive_payment
             tutor_notification = tutor_receive_payment(student, user, payment, final_tutor_amount)
