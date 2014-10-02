@@ -5,6 +5,7 @@
 
 {% block header %}
 <link href="/static/css/jquery.nouislider.min.css" rel="stylesheet">
+<link href="/static/css/inserthtml.com.radios.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -1714,6 +1715,22 @@
 {% endblock %}
 
 {% block footer_scripts %}
+	<script src="/static/js/modernizr.js"></script>
+	<script type="text/javascript">
+	window.onload = function() {
+
+		var Modernizr = window.Modernizr;
+		
+		if(Modernizr.csstransforms3d) { 
+			
+			var head = document.querySelector('head');
+			
+			head.innerHTML = head.innerHTML + '<link rel="stylesheet" href="/static/css/inserthtml.com.radios.min.css" />';
+			
+		}
+	}
+	</script>
+
 	<script src="/static/js/jquery-ui-custom.js"></script>
 	<script type="text/javascript" src="/static/js/typeahead.js"></script>
 	<script src="/static/js/activity.js"></script>    

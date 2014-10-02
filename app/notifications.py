@@ -63,6 +63,16 @@ def getting_started_tutor_2(user):
     notification.image_url = '/static/img/jenny.jpg'
     return notification
 
+def student_purchase_package(user, credits, amount):
+    notification = Notification(other='package_purchase')
+    notification.feed_message = 'You purchase <b>$'+str(credits)+'</b> credits for <b>$' + str(amount) +'.'
+    notification.feed_message_subtitle = "Click here to view your transaction history."    
+    notification.a_id_name = 'student-purchase-package'
+    notification.custom_tag = 'student-purchase-package'
+    notification.image_url = user.profile_url
+    notification.time_read = datetime.now()
+    return notification
+
 
 def student_cap_reached_notif(user, request, skill_name):
     notification = Notification(request=request)
@@ -160,6 +170,7 @@ def student_request_receipt(user, request, skill_name):
     notification.request_id = request.id
     user.feed_notif = user.feed_notif + 1
     return notification
+
 
 def tutor_request_offer(user, tutor, request, skill_name):
     notification = Notification(request=request)

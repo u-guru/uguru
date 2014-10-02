@@ -26,6 +26,7 @@ REQUEST_EXP_TIME_IN_SECONDS = 172800
 TUTOR_ACCEPT_EXP_TIME_IN_SECONDS = 86400
 
 PAYMENT_PLANS = {1:[45,50], 2:[170,200], 3:[800,1000], 4:[1500,10000]}
+PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 
 @app.route('/api/<arg>', methods=['GET', 'POST', 'PUT'], defaults={'_id': None})
 @app.route('/api/<arg>/<_id>')
@@ -1070,6 +1071,19 @@ def api(arg, _id):
             response = user_dict_in_proper_format(user)
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
+
+    
+    if arg =='purchase_promotion' and request.method == 'POST':
+        user = getUser()
+        if user:
+            print request.json
+            p = process_promotion_payment_plan(request.json.get('option-selected'), user)
+            if p == 'error':
+                return errors(['Your card has been declined. Please update it in settings!'])
+            response = {'success':True}
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
+        return errors(["Invalid Token"])        
+
 
     if arg == 'rating' and request.method == 'PUT':
         user = getUser()
@@ -2287,6 +2301,41 @@ def user_dict_in_proper_format(user):
     print response
     return response
 
+def process_promotion_payment_plan(plan_num, user):
+    plan_arr = PROMOTION_PAYMENT_PLANS[plan_num]
+    p = Payment()
+    db_session.add(p)
+    p.time_created = datetime.now()
+    p.student_description = 'You purchased ' + str(plan_arr[1]) + " credits for $" + str(plan_arr[0]) + ' through a promotion.'
+    p.student_paid_amount = plan_arr[0]
+    p.student_id = user.id
+    try:
+        charge = stripe.Charge.create(
+            amount = int(plan_arr[0] * 100),
+            currency="usd",
+            customer=user.customer_id,
+            description="student purchased credits"
+        )
+    except stripe.error.CardError, e:
+        return 'error'
+
+
+    from notifications import student_purchase_package
+    notification = student_purchase_package(user, plan_arr[1], plan_arr[0])
+    db_session.add(notification)
+    user.notifications.append(notification)
+
+    p.stripe_charge_id = charge['id']
+    user.payments.append(p)
+    user.credit += plan_arr[1]
+
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        raise 
+    return p
+
 def process_payment_plan(plan_num, user):
     plan_arr = PAYMENT_PLANS[plan_num]
 
@@ -2310,6 +2359,11 @@ def process_payment_plan(plan_num, user):
     p.stripe_charge_id = charge['id']
     user.payments.append(p)
     user.credit += plan_arr[1]
+
+    from notifications import student_purchase_package
+    notification = student_purchase_package(user, plan_arr[1], plan_arr[0])
+    db_session.add(notification)
+    user.notifications.append(notification)
 
     try:
         db_session.commit()

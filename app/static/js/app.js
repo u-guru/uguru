@@ -6,6 +6,7 @@ var a,b,c;
 var signup_type = null;
 var payment_plan_clicked = null;
 var guru_signup_clicked;
+var package_option_selected = 1;
 var invert_olark = function() {
     $('#habla_window_div #habla_oplink_a').css('color','white');
     $('#habla_window_div #habla_topbar_div').css('background', '#00a9e5 none repeat scroll 0 0');
@@ -346,6 +347,62 @@ $(document).ready(function(){
       }
       if (e.keyCode == 13) {
         $('#tutor-next-link').trigger('click');
+      }
+    });
+
+    $('.promotion-check-1').change(function() {
+      if ($('.promotion-check-1:checked')) {
+        $('.promotion-check-2').attr('checked',false);
+        $('.promotion-check-3').attr('checked', false);
+        $('#future-promotion-credit').text('$25');
+        $('#billed-promotion-amount').text('$20');
+        package_option_selected = 0;
+
+      }
+    });
+
+    $('.promotion-check-2').change(function() {
+      if ($('.promotion-check-2:checked')) {
+        $('.promotion-check-1').attr('checked',false);
+        $('.promotion-check-3').attr('checked', false);
+        $('#future-promotion-credit').text('$60');
+        $('#billed-promotion-amount').text('$45');
+        package_option_selected = 1;
+      }
+    });
+
+    $('.promotion-check-3').change(function() {
+      if ($('.promotion-check-3:checked')) {
+        $('.promotion-check-1').attr('checked',false);
+        $('.promotion-check-2').attr('checked', false);
+        $('#future-promotion-credit').text('$200');
+        $('#billed-promotion-amount').text('$150');
+        package_option_selected = 2;
+      }
+    });
+
+    $('#promotion-package-submit').click(function() {
+      if ($('.ios-check:checked').length == 0) {
+        $('#promotion-package-alert').text('Please choose one of the three options');
+        $('#promotion-package-alert').show();
+      } else {
+        $('#promotion-package-alert').hide();
+        data = {'option-selected': package_option_selected}
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/api/purchase_promotion' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function(result) {
+              if (result.errors) {
+                $("#promotion-package-alert").text(result.errors);
+                $("#promotion-package-alert").show();
+              } else {
+                window.location.replace('/');
+              }
+            }
+        });
       }
     });
 
