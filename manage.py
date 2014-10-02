@@ -1060,7 +1060,7 @@ if arg =='send_campaign_thirty_six':
     index = 0
     from time import sleep
     for key in batch_36_emails.keys():
-        sleep(2)
+        
         if index > 0  and index % 50 == 0:
             from time import sleep 
             print "50 emails sent, waiting 3 minutes"
@@ -1118,19 +1118,24 @@ if arg =='send_campaign_thirty_seven':
     print "Sent:", sent_count, "Accounts already made:", avoided_count
 
 if arg =='send_campaign_thirty_eight':
-    from app.static.data.fa14_batch.batch_1 import batch_38_emails
+    from app.static.data.fa14_batch.batch_1 import batch_38_emails, batch_38_emails_used
     sent_count = 0
     avoided_count = 0
     index = 0
     from time import sleep
     for key in batch_38_emails.keys():
+        receiver_name = key.title()
+        receiver_email = batch_38_emails[key]
+
+        if receiver_email in batch_38_emails_used:
+            print "we've already sent an email to ", receiver_email
+            continue
+
         sleep(2)
         if index > 0  and index % 50 == 0:
             from time import sleep 
             print "50 emails sent, waiting 3 minutes"
             sleep(180)
-        receiver_name = key.title()
-        receiver_email = batch_38_emails[key]
 
         from app.models import User
         user = User.query.filter_by(email=receiver_email).first()
