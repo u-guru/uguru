@@ -354,7 +354,7 @@ $(document).ready(function(){
       if ($('.promotion-check-1:checked')) {
         $('.promotion-check-2').attr('checked',false);
         $('.promotion-check-3').attr('checked', false);
-        $('#future-promotion-credit').text('$25');
+        $('#future-promotion-credit').text('$' + (25 + parseInt($('#package-promotion-current').text())).toString());
         $('#billed-promotion-amount').text('$20');
         package_option_selected = 0;
 
@@ -365,7 +365,7 @@ $(document).ready(function(){
       if ($('.promotion-check-2:checked')) {
         $('.promotion-check-1').attr('checked',false);
         $('.promotion-check-3').attr('checked', false);
-        $('#future-promotion-credit').text('$60');
+        $('#future-promotion-credit').text('$' + (60 + parseInt($('#package-promotion-current').text())).toString());
         $('#billed-promotion-amount').text('$45');
         package_option_selected = 1;
       }
@@ -375,7 +375,7 @@ $(document).ready(function(){
       if ($('.promotion-check-3:checked')) {
         $('.promotion-check-1').attr('checked',false);
         $('.promotion-check-2').attr('checked', false);
-        $('#future-promotion-credit').text('$200');
+        $('#future-promotion-credit').text('$' + (200 + parseInt($('#package-promotion-current').text())).toString());
         $('#billed-promotion-amount').text('$150');
         package_option_selected = 2;
       }

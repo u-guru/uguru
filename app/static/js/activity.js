@@ -71,7 +71,6 @@ $(document).ready(function() {
       if (location.hash == '#request') {
           $('#activity').hide();
           request_a_guru_clicked = true;
-          event_click('request-btn-clicked')
           $('#request-form-options').hide();
           $('#request-form-submit').children('span:first').removeClass('blue-btn-extra');
           $('#request-form-submit').children('span:first').addClass('blue-btn-full');
@@ -205,7 +204,6 @@ $(document).ready(function() {
             }
             else if (result.dict['duplicate-request']) {
               $('#already-have-active-request-alert').show();
-              event_click('request-already-active')
               // return false;
             } else if (result.dict['tutor-request-same']) {
               $('#tutor-request').show();
@@ -385,7 +383,6 @@ $(document).ready(function() {
    $('#tutor-request-link').click(function() {
         $('#activity').hide();
         request_a_guru_clicked = true;
-        event_click('request-btn-clicked')
         $('#request-form-options').hide();
         $('#request-form-submit').children('span:first').removeClass('blue-btn-extra');
         $('#request-form-submit').children('span:first').addClass('blue-btn-full');

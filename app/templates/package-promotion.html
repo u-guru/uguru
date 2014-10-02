@@ -14,8 +14,8 @@
             Expires 10/3
         </div>
 
-        <div class='row normal-text font-18 margin-top-20 center'>
-            To say thanks to all of our existing customers on uGuru, we wanted to reward you with special deals to save you even more!
+        <div class='row normal-text font-16 margin-top-20 center'>
+            To say thanks to all of our existing customers on uGuru, we wanted to reward you with special deals!
         </div>
 
         <hr>
@@ -61,7 +61,7 @@
                     </span>
                 </div>
                 <div class='col-xs-6 col-sm-6 col-md-6' style='padding-left:0px; margin-left:0px'>
-                    &nbsp;<span class='green-text align-left'>${{'%.4g' % user.credit}}</span> 
+                    &nbsp;<span class='green-text align-left'>$<span id='package-promotion-current'>{{'%.4g' % user.credit}}</span></span> 
                 </div>
             </div>
             <div class='row font-18 margin-bottom-10'>
@@ -71,13 +71,14 @@
                     </span>
                 </div>
                 <div class='col-xs-6 col-sm-6 col-md-6' style='padding-left:0px; margin-left:0px'>
-                    &nbsp;<span class='green-text align-left' id='future-promotion-credit'>$60</span> 
+                    &nbsp;<span class='green-text align-left' id='future-promotion-credit'>${{'%.4g' % (60 + user.credit)}}</span> 
                 </div>
             </div>
             <div class='row font-18 margin-bottom-10 bold'>
                 <div class='col-xs-6 col-sm-6 col-md-6 align-right' style='margin-right:0px; padding-right:0px'>
                     <span>
-                        Amount to be be billed to {{user.customer_last4}}:
+                        Amount to be be billed to your card:<br>
+                        <span class='grey-text font-12 block'><span class='glyphicon glyphicon-credit-card grey-text font-12'></span> {{user.customer_last4}}&nbsp;</span>
                     </span>
                 </div>
                 <div class='col-xs-6 col-sm-6 col-md-6' style='padding-left:0px; margin-left:0px'>

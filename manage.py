@@ -1155,7 +1155,7 @@ if arg =='send_campaign_thirty_eight':
     print "Sent:", sent_count, "Accounts already made:", avoided_count
 
 if arg =='send_campaign_thirty_nine':
-    from app.static.data.fa14_batch.batch_1 import batch_39_emails
+    from app.static.data.fa14_batch.batch_1 import batch_39_emails, batch_39_emails_used
     sent_count = 0
     avoided_count = 0
     index = 0
@@ -1164,9 +1164,9 @@ if arg =='send_campaign_thirty_nine':
         receiver_name = key.title()
         receiver_email = batch_39_emails[key]
 
-        # if receiver_email in batch_38_emails_used:
-        #     print "we've already sent an email to ", receiver_email
-        #     continue
+        if receiver_email in batch_39_emails_used:
+            print "we've already sent an email to ", receiver_email
+            continue
 
         sleep(2)
         if index > 0  and index % 50 == 0:
@@ -1190,6 +1190,27 @@ if arg =='send_campaign_thirty_nine':
             avoided_count += 1
         index += 1
     print "Sent:", sent_count, "Accounts already made:", avoided_count
+
+
+if arg == 'send_promotion_package':
+    from app.models import User, Request, Skill
+    from app.static.data.short_variations import short_variations_dict
+    from app.emails import send_mandrill_purchase_package_promotion
+    count = 0
+    for u in User.query.all():
+        if u and u.name and u.customer_id:
+            r = Request.query.filter_by(student_id = u.id).all()
+            if r:
+                r = sorted(r, key=lambda k:k.time_created, reverse = True)
+                skill_id = r[-1].skill_id
+                from app.models import Skill
+                skill = Skill.query.get(skill_id)
+                skill_name = short_variations_dict[skill.name]
+                send_mandrill_purchase_package_promotion(u.name, u.email, skill_name)
+                print u.name, "received an email for ", skill_name
+                count += 1
+    print "emails sent"
+
 
 if arg == 'initialize_user_codes':
 

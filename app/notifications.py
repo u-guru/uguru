@@ -65,7 +65,7 @@ def getting_started_tutor_2(user):
 
 def student_purchase_package(user, credits, amount):
     notification = Notification(other='package_purchase')
-    notification.feed_message = 'You purchase <b>$'+str(credits)+'</b> credits for <b>$' + str(amount) +'.'
+    notification.feed_message = 'You purchased <b>$'+str(credits)+'</b> credits for <b>$' + str(amount) +'.'
     notification.feed_message_subtitle = "Click here to view your transaction history."    
     notification.a_id_name = 'student-purchase-package'
     notification.custom_tag = 'student-purchase-package'
