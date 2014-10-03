@@ -1192,7 +1192,7 @@ if arg =='send_campaign_thirty_nine':
     print "Sent:", sent_count, "Accounts already made:", avoided_count
 
 if arg =='send_campaign_fourty':
-    from app.static.data.fa14_batch.batch_1 import batch_40_emails
+    from app.static.data.fa14_batch.batch_1 import batch_40_emails, batch_40_emails_used
     sent_count = 0
     avoided_count = 0
     index = 0
@@ -1201,9 +1201,9 @@ if arg =='send_campaign_fourty':
         receiver_name = key.title()
         receiver_email = batch_40_emails[key]
 
-        # if receiver_email in batch_39_emails_used:
-        #     print "we've already sent an email to ", receiver_email
-        #     continue
+        if receiver_email in batch_40_emails_used:
+            print "we've already sent an email to ", receiver_email
+            continue
 
         sleep(2)
         if index > 0  and index % 50 == 0:
