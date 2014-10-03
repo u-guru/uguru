@@ -1869,6 +1869,10 @@ def unsubscribe(email = None, tag = None, campaign = None):
                                 time_created = datetime.now()
                                 )
             db_session.add(unsubscribe_user)
+            user = User.query.filter_by(email=email).first()
+            if user:
+                user.text_notification = False
+                user.email_notification = False
             try:
                 db_session.commit()
             except:

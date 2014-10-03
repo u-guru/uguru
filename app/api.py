@@ -205,6 +205,21 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
 
+    if arg == 'deactivate_account' and request.method == 'POST':
+        user = getUser()
+        if user:
+            user.email = user.email + '-REMOVED'
+            session.pop('user_id')
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+
+            response = {"user": user.__dict__}
+
+        return errors(['Invalid Token'])
+
     if arg == 'unconfirm_meeting' and request.method == 'POST':
         user = getUser()
         if user:

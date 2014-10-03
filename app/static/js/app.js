@@ -361,6 +361,22 @@ $(document).ready(function(){
       }
     });
 
+    $('#deactivate-account').click(function() {
+      if (confirm('Are you sure? This cannot be undone.')) {
+        alert('sup');
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/api/deactivate_account',
+            data: JSON.stringify({'deactivate_account': true}),
+            dataType: "json",
+            success: function(result) {
+                window.location.replace('/');
+            }
+        });
+      }
+    });
+
     $('.promotion-check-2').change(function() {
       if ($('.promotion-check-2:checked')) {
         $('.promotion-check-1').attr('checked',false);
