@@ -1257,15 +1257,16 @@ if arg == 'send_promotion_package':
     from app.static.data.short_variations import short_variations_dict
     from app.emails import send_mandrill_purchase_package_promotion
     count = 0
+    used_names = ['Margaret George', 'Edison Hua', 'Elnaz Shahla']
     for u in User.query.all():
-        if u and u.name and u.customer_id:
+        if u and u.name and u.customer_id and u.name not in used_names:
             r = Request.query.filter_by(student_id = u.id).all()
             if r:
                 r = sorted(r, key=lambda k:k.time_created, reverse = True)
                 for _r in r:
                     if _r.connected_tutor_id:
-                        skill_id = r[0].skill_id
-                        tutor_name = User.query.get(r[-1].connected_tutor_id).name.split(" ")[0].title()
+                        skill_id = _r.skill_id
+                        tutor_name = User.query.get(_r.connected_tutor_id).name.split(" ")[0].title()
                         from app.models import Skill
                         skill = Skill.query.get(skill_id)
                         skill_name = short_variations_dict[skill.name]
