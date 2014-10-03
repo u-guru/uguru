@@ -3215,6 +3215,7 @@ def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name
 #Student Drip Campaign 1 - New to uGuru students
 @celery.task
 def send_student_drip_1(user_id):
+    return
     request = Request.query.filter_by(student_id=user_id).first()
     
     #concurrency bug?
@@ -3249,6 +3250,7 @@ def send_student_drip_1(user_id):
 #Student Drip Campaign 2 - Become a tutor + free tutors
 @celery.task
 def send_student_drip_2(user_id):
+    return
     request = Request.query.filter_by(student_id=user_id).first()
     
     from time import sleep
@@ -3293,6 +3295,7 @@ def send_student_drip_2(user_id):
 #Student Drip Campaign 3 - Free tutoring sessions
 @celery.task
 def send_student_drip_3(user_id):
+    return
     request = Request.query.filter_by(student_id=user_id).first()
     
     from time import sleep
@@ -3329,6 +3332,7 @@ def send_student_drip_3(user_id):
 
 @celery.task
 def send_student_drip_4(user_id):
+    return
     request = Request.query.filter_by(student_id=user_id).first()
     
 
@@ -3367,6 +3371,7 @@ def send_student_drip_4(user_id):
 
 @celery.task
 def send_student_drip_5(user_id):
+    return
     request = Request.query.filter_by(student_id=user_id).first()
     
     from time import sleep
@@ -3404,6 +3409,7 @@ def send_student_drip_5(user_id):
 
 @celery.task
 def send_student_drip_6(user_id):
+    return
     request = Request.query.filter_by(student_id=user_id).first()
 
     from time import sleep
@@ -3442,6 +3448,7 @@ def send_student_drip_6(user_id):
 
 @celery.task
 def send_student_drip_7(user_id):
+    return
     request = Request.query.filter_by(student_id=user_id).first()
     
     
