@@ -1229,6 +1229,26 @@ if arg =='send_campaign_fourty':
     print "Sent:", sent_count, "Accounts already made:", avoided_count
 
 
+if arg == 'send_promotion_package_test':
+    from app.models import User, Request, Skill
+    from app.static.data.short_variations import short_variations_dict
+    from app.emails import send_mandrill_purchase_package_promotion
+    count = 0
+    for u in User.query.all():
+        if u and u.name and u.customer_id:
+            r = Request.query.filter_by(student_id = u.id).all()
+            if r:
+                r = sorted(r, key=lambda k:k.time_created, reverse = True)
+                skill_id = r[-1].skill_id
+                tutor_name = User.query.get(r[-1].connected_tutor_id).name.split(" ")[0].title()
+                from app.models import Skill
+                skill = Skill.query.get(skill_id)
+                skill_name = short_variations_dict[skill.name]
+                # send_mandrill_purchase_package_promotion(u.name, u.email, skill_name)
+                print u.name, "received an email for ", skill_name
+                count += 1
+    print count, "emails sent"
+
 if arg == 'send_promotion_package':
     from app.models import User, Request, Skill
     from app.static.data.short_variations import short_variations_dict
@@ -1240,6 +1260,7 @@ if arg == 'send_promotion_package':
             if r:
                 r = sorted(r, key=lambda k:k.time_created, reverse = True)
                 skill_id = r[-1].skill_id
+                tutor_name = User.query.get(r[-1].connected_tutor_id).name.split(" ")[0].title()
                 from app.models import Skill
                 skill = Skill.query.get(skill_id)
                 skill_name = short_variations_dict[skill.name]
