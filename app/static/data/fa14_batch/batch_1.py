@@ -38610,8 +38610,8 @@ batch_40_emails = {
     "Risa Takenaka": "takenaka@berkeley.edu"
 }
 
-batch_40_emails = [
-    "nlow386@berkeley.edu",
+batch_40_emails_used = [
+"nlow386@berkeley.edu",
 "curran@berkeley.edu",
 "pongyulee@berkeley.edu",
 "honkan@berkeley.edu",
