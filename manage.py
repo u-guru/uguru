@@ -1239,14 +1239,17 @@ if arg == 'send_promotion_package_test':
             r = Request.query.filter_by(student_id = u.id).all()
             if r:
                 r = sorted(r, key=lambda k:k.time_created, reverse = True)
-                skill_id = r[-1].skill_id
-                tutor_name = User.query.get(r[-1].connected_tutor_id).name.split(" ")[0].title()
-                from app.models import Skill
-                skill = Skill.query.get(skill_id)
-                skill_name = short_variations_dict[skill.name]
-                # send_mandrill_purchase_package_promotion(u.name, u.email, skill_name)
-                print u.name, "received an email for ", skill_name, tutor_name
-                count += 1
+                for _r in r:
+                    if _r.connected_tutor_id:
+                        skill_id = _r.skill_id
+                        tutor_name = User.query.get(_r.connected_tutor_id).name.split(" ")[0].title()
+                        from app.models import Skill
+                        skill = Skill.query.get(skill_id)
+                        skill_name = short_variations_dict[skill.name]
+                        # send_mandrill_purchase_package_promotion(u.name, u.email, skill_name)
+                        print u.name, "received an email for ", skill_name, tutor_name
+                        count += 1
+                        break
     print count, "emails sent"
 
 if arg == 'send_promotion_package':
@@ -1259,15 +1262,18 @@ if arg == 'send_promotion_package':
             r = Request.query.filter_by(student_id = u.id).all()
             if r:
                 r = sorted(r, key=lambda k:k.time_created, reverse = True)
-                skill_id = r[-1].skill_id
-                tutor_name = User.query.get(r[-1].connected_tutor_id).name.split(" ")[0].title()
-                from app.models import Skill
-                skill = Skill.query.get(skill_id)
-                skill_name = short_variations_dict[skill.name]
-                send_mandrill_purchase_package_promotion(u.name, u.email, skill_name)
-                print u.name, "received an email for ", skill_name
-                count += 1
-    print "emails sent"
+                for _r in r:
+                    if _r.connected_tutor_id:
+                        skill_id = r[0].skill_id
+                        tutor_name = User.query.get(r[-1].connected_tutor_id).name.split(" ")[0].title()
+                        from app.models import Skill
+                        skill = Skill.query.get(skill_id)
+                        skill_name = short_variations_dict[skill.name]
+                        send_mandrill_purchase_package_promotion(u.name, u.email, skill_name)
+                        print u.name, "received an email for ", skill_name, tutor_name
+                        count += 1
+                        break
+    print count, "emails sent"
 
 
 if arg == 'initialize_user_codes':
