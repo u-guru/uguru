@@ -1268,7 +1268,7 @@ def student_needs_help_html(student_name, class_name, request):
     <a href="http://beta.uguru.me/log_in"> Log in </a> to check exact availablilty and accept """ + student_name + """'s request on your feed page, or offer a different price.
     <br>
     <br>
-    <span style='font-size:12px; color:grey'>*If this is your first time Guru-ing on the platform, you must tutor for free until you have 4.0 stars average rating.</span>
+    <span style='font-size:12px; color:grey'>*If this is your first time Guru-ing on the platform, you <b>must</b> tutor for free until you have 4.0 stars average rating. After your first session, have the student rate you immediately, and once you have the sufficient rating, you can continue to tutor the student and bill the student via our platform.</span>
     <br>
     <br>
     Samir<br>
@@ -2802,17 +2802,17 @@ def send_mandrill_purchase_package_promotion_html(receiver_name):
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            To say thanks to all of our existing customers like you on on uGuru, we wanted to reward you with <b>special grade-saving deals</b>!
+                                            Payments through uGuru are very easy. You don't need to worry about carrying cash anymore, and your tutor can bill you immediately after any session. 
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            Midterm season is just around the corner, so for one day only, we are offering a great discount on our tutoring packages. <br>
+                                            We just wanted to remind you one more time about the <b> grade-saving </b> deals & packages we are offering TODAY ONLY. This promotion will expire <b>tonight</b> at midnight.
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            <b>You can save up to $50 for your future tutoring sessions</b>.
+                                            <b>You can save up to $50 for your future tutoring sessions</b>. 
                                         </td>
                                     </tr>
                                     <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
@@ -2824,11 +2824,6 @@ def send_mandrill_purchase_package_promotion_html(receiver_name):
                                         <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
                                             Good luck with your midterms!<br>
                                             Samir
-                                        </td>
-                                    </tr>
-                                    <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
-                                        <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                            P.S. This promotion expires 10/3.
                                         </td>
                                     </tr>
                                 </table>
@@ -3306,10 +3301,10 @@ def send_mandrill_nine(receiver_name, receiver_email, tag_arr):
 
     result = mandrill_client.messages.send(message=message)
 
-def send_mandrill_purchase_package_promotion(receiver_name, receiver_email, skill_name):
+def send_mandrill_purchase_package_promotion(receiver_name, receiver_email, skill_name, tutor_name):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
     receiver_first_name = receiver_name.split(" ")[0].title()
-    subject = receiver_first_name + ", Save $50 on your next " + skill_name + ' session! ONE DAY ONLY' 
+    subject =  "LAST DAY: Pay " + tutor_name.split(" ")[0].title() + " through uGuru and get up to $50 free credit." 
 
     to_emails = []
     to_emails.append({
@@ -3330,7 +3325,7 @@ def send_mandrill_purchase_package_promotion(receiver_name, receiver_email, skil
         'track_opens': True,
         'track_clicks': True,
         'preserve_recipients':False,
-        'tags':['purchase-package-promotion-v1']
+        'tags':['purchase-package-promotion-v2']
     }
 
     result = mandrill_client.messages.send(message=message)
