@@ -331,8 +331,19 @@ def daily_results_email_html(str_date):
     else:
         day_total_difference_result = ' (' + str(day_total_difference) + ')'
 
-    sam_signups = yasi_signups = tara_signups = pranay_signups = liliana_signups = allie_signups = 0
-    adrianna_signups = sarah_signups = monsoon_signups = ben_signups = akshay_signups = jessie_signups = 0
+    sam_signups = 0
+    yasi_signups = 0
+    tara_signups = 0
+    pranay_signups = 0
+    liliana_signups = 0 
+    allie_signups = 0
+    adrianna_signups = 0 
+    sarah_signups = 0 
+    monsoon_signups = 0
+    ben_signups = 0
+    akshay_signups = 0
+    jessie_signups = 0
+    mass_email_user_signups = 0
 
     for u in User.query.all():
         if u.referral_code and u.time_created > day:
@@ -360,7 +371,9 @@ def daily_results_email_html(str_date):
                 akshay_signups += 1
             if 'jessie' in u.referral_code.lower():
                 jessie_signups += 1
-
+        if u.referral_code:
+            if 'mass' in u.referral_code or 'chloe' in u.referral_code or u.referral_code =='m' or '00' in u.referral_code:
+                mass_email_user_signups += 1
 
     return """
     Daily stats for """ + str_date + """: 
@@ -368,10 +381,9 @@ def daily_results_email_html(str_date):
     <br>
     <b>Daily Stats </b> <br>
     # of Student Requests: """ +  str(len(day_requests)) + day_request_difference_result + """<br>
-    # of Total Signups: """ +  str(len(day_student_signups) + len(day_tutor_signups))  + day_total_difference_result +"""<br>
-    # of Student Signups: """ +  str(len(day_student_signups))  + day_student_signup_difference_result + """<br>
-    # of Tutor Signups: """ +  str(len(day_tutor_signups))  + day_tutor_signup_difference_result + """<br>
-    # of Sproul Signups: """ +  str(len(day_student_sproul_signups))  + day_sproul_difference_result + """<br>
+    # of Total Signups: """ +  str(len(day_student_signups) + len(day_tutor_signups)) + """<br>
+    # of Mass Email Signups: """ +  str(mass_email_user_signups) + """<br>
+    # of Sproul/Referral/Other:""" + str(mass_email_user_signups - len(day_student_signups) - len(day_tutor_signups)) + """<br>
     <br>
     <b>Daily Activity Stats </b> <br>
     # of Students Logged In: """+ str(len(day_student_login)) + """<br>
