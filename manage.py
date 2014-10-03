@@ -1269,7 +1269,7 @@ if arg == 'send_promotion_package':
                         from app.models import Skill
                         skill = Skill.query.get(skill_id)
                         skill_name = short_variations_dict[skill.name]
-                        send_mandrill_purchase_package_promotion(u.name, u.email, skill_name)
+                        send_mandrill_purchase_package_promotion(u.name, u.email, skill_name, tutor_name)
                         print u.name, "received an email for ", skill_name, tutor_name
                         count += 1
                         break
