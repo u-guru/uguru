@@ -371,7 +371,6 @@ def daily_results_email_html(str_date):
                 akshay_signups += 1
             if 'jessie' in u.referral_code.lower():
                 jessie_signups += 1
-        if u.referral_code:
             if 'mass' in u.referral_code or 'chloe' in u.referral_code or u.referral_code =='m' or '00' in u.referral_code:
                 mass_email_user_signups += 1
 
