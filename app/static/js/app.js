@@ -7,6 +7,7 @@ var signup_type = null;
 var payment_plan_clicked = null;
 var guru_signup_clicked;
 var package_option_selected = 1;
+var package_home_option_selected = 2;
 var invert_olark = function() {
     $('#habla_window_div #habla_oplink_a').css('color','white');
     $('#habla_window_div #habla_topbar_div').css('background', '#00a9e5 none repeat scroll 0 0');
@@ -350,15 +351,56 @@ $(document).ready(function(){
       }
     });
 
-    $('.promotion-check-1').change(function() {
-      if ($('.promotion-check-1:checked')) {
-        $('.promotion-check-2').attr('checked',false);
-        $('.promotion-check-3').attr('checked', false);
-        $('#future-promotion-credit').text('$' + (25 + parseInt($('#package-promotion-current').text())).toString());
-        $('#billed-promotion-amount').text('$20');
-        package_option_selected = 0;
-
+    $('.package-home-1').change(function() {
+      if ($('.package-home-1:checked')) {
+        $('.package-home-2').attr('checked',false);
+        $('.package-home-3').attr('checked',false);
+        $('.package-home-4').attr('checked',false);
+        $('#future-package-credit').text('$' + (1000 + parseInt($('#package-home-current').text())).toString());
+        $('#billed-package-amount').text('$800');
+        package_home_option_selected = 0;
       }
+    });
+
+    $('.package-home-2').change(function() {
+      if ($('.package-home-2:checked')) {
+        $('.package-home-1').attr('checked',false);
+        $('.package-home-3').attr('checked',false);
+        $('.package-home-4').attr('checked',false);
+        $('#future-package-credit').text('$' + (600 + parseInt($('#package-home-current').text())).toString());
+        $('#billed-package-amount').text('$500');
+        package_home_option_selected = 1;
+      }
+    });
+
+
+    $('.package-home-3').change(function() {
+      if ($('.package-home-3:checked')) {
+        $('.package-home-1').attr('checked',false);
+        $('.package-home-2').attr('checked',false);
+        $('.package-home-4').attr('checked',false);
+        $('#future-package-credit').text('$' + (200 + parseInt($('#package-home-current').text())).toString());
+        $('#billed-package-amount').text('$170');
+        package_home_option_selected = 2;
+      }
+    });
+
+     $('.package-home-4').change(function() {
+      if ($('.package-home-4:checked')) {
+        $('.package-home-1').attr('checked',false);
+        $('.package-home-2').attr('checked',false);
+        $('.package-home-3').attr('checked',false);
+        $('#future-package-credit').text('$' + (50 + parseInt($('#package-home-current').text())).toString());
+        $('#billed-package-amount').text('$45');
+        package_home_option_selected = 3;
+      }
+    });
+
+
+
+    $('#see-packages-home').click(function() {
+      $('#activity').hide();
+      $('#packages-home').show();
     });
 
     $('#deactivate-account').click(function() {
@@ -374,6 +416,16 @@ $(document).ready(function(){
                 window.location.replace('/');
             }
         });
+      }
+    });
+    
+    $('.promotion-check-1').change(function() {
+      if ($('.promotion-check-1:checked')) {
+        $('.promotion-check-2').attr('checked',false);
+        $('.promotion-check-3').attr('checked', false);
+        $('#future-promotion-credit').text('$' + (25 + parseInt($('#package-promotion-current').text())).toString());
+        $('#billed-promotion-amount').text('$20');
+        package_option_selected = 0;
       }
     });
 
@@ -414,6 +466,31 @@ $(document).ready(function(){
               if (result.errors) {
                 $("#promotion-package-alert").text(result.errors);
                 $("#promotion-package-alert").show();
+              } else {
+                window.location.replace('/');
+              }
+            }
+        });
+      }
+    });
+
+    $('#package-home-submit').click(function() {
+      if ($('.ios-check:checked').length == 0) {
+        $('#package-home-alert').text('Please choose one of the three options');
+        $('#package-home-alert').show();
+      } else {
+        $('#package-home-alert').hide();
+        data = {'option-selected': package_home_option_selected}
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            url: '/api/purchase_package' ,
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function(result) {
+              if (result.errors) {
+                $("#package-home-alert").text(result.errors);
+                $("#package-home-alert").show();
               } else {
                 window.location.replace('/');
               }
