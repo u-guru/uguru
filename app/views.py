@@ -2578,8 +2578,17 @@ def activity_request():
     else:
         return redirect('/activity/#request')
 
+@app.route('/activity/packages/')
+def activity_packages():
+    user_id = session.get('user_id')
+    if not user_id:
+        session['redirect'] = '/activity/#packages'
+        return redirect('/log_in/')
+    else:
+        return redirect('/activity/#request')
+
 @app.route('/activity/promotion/1/')
-def activity_request():
+def activity_promotion():
     user_id = session.get('user_id')
     if not user_id:
         session['redirect'] = '/activity/#p1'
@@ -3065,6 +3074,24 @@ def send_twilio_msg(to_phone, body, user_id):
         db_session.flush()
         raise
     return message
+
+
+@celery.task
+def send_student_package_info(user_id, request_id):
+    from app.static.data.short_variations import short_variations_dict
+    user = User.query.get(user_id)
+
+    if user.credit > 10:
+        print "user already has purchased credits."
+        return
+
+    r = Request.query.get(request_id)
+    skill_name = short_variations_dict[Skill.query.get(r.skill_id).name]
+    tutor_name = User.query.get(r.connected_tutor_id).name.split(" ")[0]
+    from app.emails import send_student_packages_email
+    send_student_packages_email(user, tutor_name, skill_name)
+    print "Email sent to ", user.name.split(" ")[0], "regarding student packages."
+
 
 @celery.task
 def check_msg_status(text_id):

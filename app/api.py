@@ -1717,6 +1717,12 @@ def api(arg, _id):
 
             print "Student Accept Request has been successfully made"
 
+            from app.views import get_environment, send_student_package_info
+            if get_environment == 'PRODUCTION':
+                send_student_package_info.apply_async(args=[student.id, r.id], countdown=86400)
+            else:
+                send_student_package_info.apply_async(args=[student.id, r.id], countdown=10)
+
             # We are not focusing on them confirming payments
             # from views import tutor_confirm_payment
             # tutor_confirm_payment.apply_async(args=[p.id], countdown=100)

@@ -81,6 +81,11 @@ $(document).ready(function() {
         $('#activity').hide();
         $('#package-promotion-1').show();
       }
+
+      if (location.hash == '#packages') {
+        $('#activity').hide();
+        $('#packages-home').show();
+      }
       
       $(document).on({
           ajaxStart: function() { $body.addClass("loading");    },

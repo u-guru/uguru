@@ -110,6 +110,61 @@ def send_support_email(topic, detail, user):
 
     result = mandrill_client.messages.send(message=message)
 
+def send_student_packages_email(user, tutor_name, skill_name):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    user_first_name = user.name.split(" ")[0]
+    html = student_packages_html(user_first_name)
+    to_emails = []
+    to_emails.append({
+        'email':user.email,
+        'name':user.name,
+        'type': 'to'
+    })
+
+    message = {
+        'html':html,
+        'subject': user_first_name + ', save at least $5 on your next ' + skill_name + ' session with ' + tutor_name,
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from uGuru',
+        'to': to_emails,
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['student-packages']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+
+def student_packages_html(user_name):
+    return """
+    Hi """ + user_name + """,
+    <br>
+    <br>
+    Thank you for using uGuru! We handle payments on our platform to make things <b>easier and cheaper</b> for you. 
+    In fact, <b>hundreds of Cal students</b> are currently using our platform for payments.
+    <br>
+    <br>
+    <u>Benefits of using our platform for payments:</u>
+    <br>
+    <br>
+    <span style='padding-left:20px'> 1. <b>100% money back guarantee</b> on any transaction or session that was not satisfactory. </span>
+    <br>
+    <br> 
+    <span style='padding-left:20px'> 2. You never, ever have to worry about carrying cash.</span>
+    <br>
+    <br>
+    <span style='padding-left:20px'> 3. We offer credit packages of all sizes where you <b>get $5 to $200 free credit</b>. </span><a href='http://berkeley.uguru.me/activity/packages/'>See all available packages.</a>
+    <br>
+    <br>
+    If you have any questions or concerns, feel free to reply directly to this email!
+    <br>
+    <br>
+    Best,<br>
+    Samir from uGuru
+    """
+
 def welcome_uguru_student(user):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
     user_first_name = user.name.split(" ")[0]
