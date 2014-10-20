@@ -132,6 +132,7 @@ def index(arg=None):
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
 
+
 @app.route('/dorm/')
 @app.route('/city/')
 @app.route('/fml/')
@@ -151,6 +152,45 @@ def new_sproul(arg=None):
         session['referral'] = str(arg) + '(sproul)'
     return render_template('sproul.html', modal_flag = 'instant')
 
+@app.route('/ucla/', methods=['GET', 'POST'])
+def index(arg=None):
+    modal_flag = None
+    if os.environ.get('TESTING') and not session.get('testing-admin'):
+        return redirect(url_for('login'))
+    tutor_signup_incomplete = False
+    guru_referral = False
+    request_form = RequestForm()
+    if session.get('guru-checked'):
+        guru_referral = True
+        session.pop('guru-checked')
+    if request.args.get('email'):
+        session['referral'] = request.args.get('email')
+        if request.args.get('email') == 'guru':
+            session['guru-checked'] = True
+        return redirect(url_for('index'))
+    if session.get('user_id'):
+        user = User.query.get(session.get('user_id'))
+        # if user.skills and len(user.notifications) < 2:
+        #     return redirect(url_for('settings'))
+        return redirect(url_for('activity'))
+    if 'log_in' in request.url:
+        modal_flag = 'login'
+    if 'sign_up' in request.url:
+        modal_flag = 'signup'
+    if '/guru' in request.url:
+        modal_flag = 'guru'
+    if 'callisto' in request.url:
+        session['referral'] = 'callisto'
+    if 'fb' in request.url:
+        session['referral'] = 'fb'
+    if 'piazza' in request.url:
+        session['referral'] = 'piazza'
+    if 'cal' in request.url:
+        session['referral'] = 'cal'
+    print modal_flag
+    return render_template('ucla.html', forms=[request_form],
+        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
+        environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
 
 @app.route('/parents/', methods =['GET', 'POST'], defaults={'arg': None})
 @app.route('/parents/<arg>/')

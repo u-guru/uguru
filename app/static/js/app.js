@@ -915,8 +915,9 @@ $(document).ready(function(){
         || !$('#student-signup-password').val()) 
         {
             $('#alert-fields-student-signup').show()
-        } else if ($('#student-signup-email').val().toLowerCase().indexOf('@berkeley.edu') == -1) {
-            $('#alert-fields-student-signup').text('Please enter an @berkeley.edu address.');
+        } else if ($('#student-signup-email').val().toLowerCase().indexOf('@berkeley.edu') == -1 &&
+          $('#student-signup-email').val().toLowerCase().indexOf('@ucla.edu') == -1) {
+            $('#alert-fields-student-signup').text('Please enter an @ucla.edu or @berkeley.edu address.');
             $('#alert-fields-student-signup').show()
         } else {
             var data_dict = {
@@ -1656,7 +1657,8 @@ $(document).ready(function(){
     });
 
     $('#student-signup-email').blur(function(){
-      if ($('#student-signup-email').val().toLowerCase().indexOf('@berkeley.edu') != -1) {
+      if ($('#student-signup-email').val().toLowerCase().indexOf('@berkeley.edu') != -1 ||
+        $('#student-signup-email').val().toLowerCase().indexOf('@ucla.edu') != -1) {
         $('#student-signup-email').css({"border-color":"#69bf69"});
         $('#proper-email').hide();
       } else {
