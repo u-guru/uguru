@@ -153,7 +153,7 @@ def new_sproul(arg=None):
     return render_template('sproul.html', modal_flag = 'instant')
 
 @app.route('/ucla/', methods=['GET', 'POST'])
-def index(arg=None):
+def ucla(arg=None):
     modal_flag = None
     if os.environ.get('TESTING') and not session.get('testing-admin'):
         return redirect(url_for('login'))
