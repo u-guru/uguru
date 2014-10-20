@@ -735,6 +735,7 @@ def api(arg, _id):
                     total_amount = p.student_paid_amount
                     user.pending = user.pending - p.tutor_received_amount
                     user.balance = user.balance + p.tutor_received_amount
+                    user.total_earned = user.total_earned + p.tutor_received_amount
                     
                     from notifications import student_payment_approval
                     student = User.query.get(p.student_id)
@@ -862,11 +863,11 @@ def api(arg, _id):
                 if orig_p != p:
                     tutor.pending = tutor.pending - orig_p.tutor_received_amount - p.tutor_received_amount
                     tutor.balance = tutor.balance + p.tutor_received_amount + orig_p.tutor_received_amount     
+                    tutor.total_earned = tutor.total_earned + p.tutor_received_amount + orig_p.tutor_received_amount     
                 else:
                     tutor.pending = tutor.pending - orig_p.tutor_received_amount
                     tutor.balance = tutor.balance + p.tutor_received_amount
-
-
+                    tutor.total_earned = tutor.total_earned + p.tutor_received_amount
                 
                 if p.confirmed_payment_id:
                     total_amount = orig_p.time_amount * orig_p.tutor_rate + p.student_paid_amount
@@ -986,7 +987,7 @@ def api(arg, _id):
             tutor_notification = tutor_receive_payment(student, user, payment, final_tutor_amount)
             user.notifications.append(tutor_notification)
             db_session.add(tutor_notification)
-
+            
             try:
                 db_session.commit()
             except:

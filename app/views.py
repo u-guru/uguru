@@ -91,7 +91,6 @@ def send_twilio_message_delayed(phone, msg, user_id):
 @app.route('/callisto/')
 @app.route('/fb/')
 @app.route('/instant/')
-@app.route('/cal/')
 @app.route('/piazza/')
 @app.route('/', methods=['GET', 'POST'])
 def index(arg=None):
@@ -136,11 +135,18 @@ def index(arg=None):
 @app.route('/dorm/')
 @app.route('/city/')
 @app.route('/fml/')
+@app.route('/cal/')
 @app.route('/sproul/')
 @app.route('/sproul/<arg>/')
 def new_sproul(arg=None):
     if 'sproul' in request.url:
         session['referral'] = 'sproul'
+    if 'cal' in request.url:
+        session['referral'] = 'cal'
+    if 'fml' in request.url:
+        session['referral'] = 'fml'
+    if 'dorm' in request.url:
+        session['referral'] = 'dorm'
     if 'sproul' in request.url and arg!= None:
         session['referral'] = str(arg) + '(sproul)'
     return render_template('sproul.html', modal_flag = 'instant')
@@ -1002,7 +1008,11 @@ def submit_rating():
         ajax_json = request.json
         print ajax_json
         user_id = session.get('user_id')
+        if not user_id:
+            return redirect(url_for('index'))
         user = User.query.get(user_id)
+        if not user.pending_ratings:
+            return redirect(url_for('index'))
 
         if 'tutor-rating-student' in ajax_json:
             rating = user.pending_ratings[0]
@@ -1015,7 +1025,6 @@ def submit_rating():
             
             user.pending_ratings.remove(rating)
             student.student_ratings.append(rating)
-
 
             try:
                 db_session.commit()
@@ -1240,6 +1249,8 @@ def send_message():
         ajax_json = request.json
         print ajax_json
         user_id = session.get('user_id')
+        if not user_id:
+            return redirect(url_for('index'))
         user = User.query.get(user_id)
 
         if 'update-message' in ajax_json and not session.get('admin'):
@@ -1994,6 +2005,8 @@ def update_skill():
         ajax_json = request.json
         print ajax_json
         user_id = session.get('user_id')
+        if not user_id:
+            return redirect(url_for('index'))
         user = User.query.get(user_id)
 
         from app.static.data.variations import courses_dict
@@ -2379,6 +2392,12 @@ def success():
             except:
                 db_session.rollback()
                 raise 
+
+            if get_environment() == 'PRODUCTION':
+                send_student_one_hour_left.apply_async(args=[u.id, r.id], countdown=82800)
+            else:
+                send_student_one_hour_left.apply_async(args=[u.id, r.id], countdown=50)
+
             print "===Student Request Complete. Texts and Emails successfully sent out==="
 
         if ajax_json.get('admin-approve-tutor'):
@@ -3054,6 +3073,9 @@ def get_environment():
     return environment
 
 def send_twilio_msg(to_phone, body, user_id):
+    ## Bug from before
+    if 'Meet at' in body:
+        return 
     body = '[uGuru] ' + body
     try:
         message = twilio_client.messages.create(
@@ -3074,6 +3096,23 @@ def send_twilio_msg(to_phone, body, user_id):
         db_session.flush()
         raise
     return message
+
+
+@celery.task
+def send_student_one_hour_left(user_id, request_id):
+    from app.static.data.short_variations import short_variations_dict
+    user = User.query.get(user_id)
+    r = Request.query.get(request_id)
+    
+    #If student has already chosen or there are no tutors
+    if r.connected_tutor_id or len(r.committed_tutors) == 1:
+        return
+    
+    skill_name = short_variations_dict[Skill.query.get(r.skill_id).name]
+    from app.emails import student_one_hour_left
+    student_one_hour_left(user, skill_name)
+    print "Email sent to ", user.name.split(" ")[0], "regarding student packages."
+
 
 
 @celery.task
@@ -3140,7 +3179,7 @@ def update_text(message, text = None):
 
 def is_tier_one_tutor(tutor):
     if not tutor.tutor_ratings:
-        return True
+        return False
     _sum = 0
     _index = 0
     if tutor.tutor_ratings:
@@ -3182,7 +3221,7 @@ def send_delayed_email(email_str, args):
         skill_name = args[1]
         student_canceled_email(User.query.get(user_id), skill_name)
 
-@periodic_task(run_every=crontab(minute=0, hour = 1))
+@periodic_task(run_every=crontab(minute=0, hour = 5))
 def test_periodic():
     if get_environment() == 'PRODUCTION':
         from emails import daily_results_email

@@ -24,7 +24,7 @@
             {% if viewer == student %}
                 <p> 2. {{tutor_name|title}} will first be asked for the exact time amount of the session. If the time amount is greater than <span class='blue-text'>{{request_dict[notif.request_id]['request'].time_estimate}}hrs</span>, you will be asked to confirm as well. </p>
                 <p> 3. After {{tutor_name|title}} confirms, you will be asked to rate {{tutor_name|title}}.</p>
-                <p> 4. For future sessions, {{tutor_name|title}} will bill you through uGuru. <br>There are no charges for students on our platform - you can use our platform for <b>FREE</b>.</p>
+                <p> 4. For future sessions, {{tutor_name|title}} will bill you through uGuru. <br>There are no charges for students on our platform - you can use uGuru for <b>FREE</b>.</p>
             {% else %}
                 <p> 2. Once you click the button, you will be asked for the exact time amount of the session. If it is less than or greater than <span class='blue-text'>{{request_dict[notif.request_id]['request'].time_estimate}}hrs</span>, the student will be asked to confirm the time amount as well. </p>
                 <p> 3. You will be asked to rate {{student_name}}. </p>

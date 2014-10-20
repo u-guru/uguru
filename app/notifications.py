@@ -294,6 +294,7 @@ def student_payment_proposal(user, tutor, payment):
     return notification
 
 def student_payment_approval(user, tutor, payment, amount_charged, charge_id, skill_name, recurring):
+    print user, tutor, payment, amount_charged, charge_id, skill_name, recurring
     notification = Notification(payment=payment)
     notification.feed_message = "<b>$" + str('%.4g' % amount_charged) + "</b> payment has been sent to " + \
         tutor.name.split(" ")[0] + "."

@@ -224,6 +224,54 @@ def welcome_uguru_tutor(user):
     result = mandrill_client.messages.send(message=message)
 
 
+def student_sorry_no_gurus(user, skill_name):
+    pass
+
+def student_one_hour_left(user, skill_name):
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    user_first_name = user.name.split(" ")[0]
+    html = student_one_hour_left_html(user_first_name, skill_name)
+    to_emails = []
+    to_emails.append({
+        'email':user.email,
+        'name':user.name,
+        'type': 'to'
+    })
+
+    message = {
+        'html':html,
+        'subject': 'One Hour Left! Choose one of the available ' + skill_name + ' gurus before expiration.',
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from uGuru',
+        'to': to_emails,
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        # 'track_opens': True,
+        # 'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['canceled-email']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+
+def student_one_hour_left_html(user_name, skill_name):
+    return """
+    Hi """ + user_name +""", 
+    <br>
+    <br>
+    You have at least one Guru waiting to help you for """ + skill_name + """!
+    <br>
+    <br>
+    <b>You have 1 Hour to pick one before the request expires.</b> These Gurus may or may not be available if you were to request again.
+    <br>
+    <br>
+    If you have any questions, feel free to reply directly to this email.
+    <br>
+    <br>
+    Best,<br>
+    Samir from uGuru
+    """
+
 def student_canceled_email(user, skill_name):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
     user_first_name = user.name.split(" ")[0]
@@ -1749,13 +1797,13 @@ def student_payment_receipt_connection_text(date, charge_id, card_last4, tutor_n
 
 def tutor_payment_receipt_html(date, charge_id, tutor_name, hourly_price, hours, amount, student_name, fee_amount):
     return """
-    For your next session with """ + student_name + """, """ + student_name + """ won't need to submit a request again. 
+    For your next session with """ + str(student_name) + """, """ + str(student_name) + """ won't need to submit a request again. 
     At the end of session, click the billing button on the top menu bar (the dollar sign button).
     <br>
     <br>
-    Receipt ID: """+  charge_id +"""<br>
-    Time: """+  date +"""<br>
-    Student Name: """+  tutor_name +"""<br>
+    Receipt ID: """+  str(charge_id) +"""<br>
+    Time: """+  str(date) +"""<br>
+    Student Name: """+  str(tutor_name) +"""<br>
     Hourly Price: $""" + str(hourly_price) + """<br>
     Hours: """ + str(hours) + """ hours<br>
     Total Earned: $""" + str(amount * (100 - int(fee_amount))/100) + """ (after """+ str(fee_amount) +"""% to uGuru)

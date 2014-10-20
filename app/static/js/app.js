@@ -977,7 +977,9 @@ $(document).ready(function(){
       }
     });
 
-    $('#cash-out-button').click(function() {
+    $('#cash-out-button').click(function(event) {
+      $(this).hide();
+      $('#loading-cash-out-text').show();
       $.ajax({
           type: "POST",
           contentType: 'application/json;charset=UTF-8',
