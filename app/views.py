@@ -3145,7 +3145,7 @@ def send_student_one_hour_left(user_id, request_id):
     r = Request.query.get(request_id)
     
     #If student has already chosen or there are no tutors
-    if r.connected_tutor_id or len(r.committed_tutors) == 1:
+    if r.connected_tutor_id or len(r.committed_tutors) == 0:
         return
     
     skill_name = short_variations_dict[Skill.query.get(r.skill_id).name]
