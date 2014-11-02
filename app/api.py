@@ -225,6 +225,10 @@ def api(arg, _id):
         user = getUser()
         if user:
             request_id = request.json.get('payment_id')
+            
+            if request_id == 'None':
+                return errors(["Something went wrong... please contact customer support below immediately."])
+
             r = Request.query.get(request_id)
             relevant_notifications = Notification.query.filter_by(custom_tag='confirm-meeting', request_id=request_id).all()
 

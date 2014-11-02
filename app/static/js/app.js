@@ -1284,8 +1284,13 @@ $(document).ready(function(){
           url: '/api/unconfirm_meeting',
           data: JSON.stringify(data),
           dataType: "json",        
-          success: function(result) {        
-              window.location.replace('/activity/');
+          success: function(result) {    
+              if (result.errors) {
+                alert(result.errors);
+              }
+              else {
+                window.location.replace('/activity/');
+              }
             }
           })
     });
