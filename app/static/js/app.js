@@ -405,7 +405,6 @@ $(document).ready(function(){
 
     $('#deactivate-account').click(function() {
       if (confirm('Are you sure? This cannot be undone.')) {
-        alert('sup');
         $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
@@ -1512,10 +1511,10 @@ $(document).ready(function(){
       source: numbers.ttAdapter()
     });
 
-    $('#course-input.typeahead').typeahead(null, {
-      displayKey: 'name',
-      source: numbers.ttAdapter()
-    }).on('typeahead:selected', onTypeaheadSelected);
+    // $('#course-input.typeahead').typeahead(null, {
+    //   displayKey: 'name',
+    //   source: numbers.ttAdapter()
+    // }).on('typeahead:selected', onTypeaheadSelected);
 
     $('#courses-tutor-input.typeahead').typeahead(null, {
       displayKey: 'name',

@@ -1554,7 +1554,7 @@ def api(arg, _id):
             if user_credits and r.connected_tutor_hourly != 0:
                 difference = user_credits - total_amount
                 #if they have enough credits
-                if difference > 0:
+                if difference >= 0:
                     print "The student has enough credits to not purchase anything"
                     print "Credit before:", str(user.credit)
                     print "Amount to be billed", str(total_amount)
@@ -1574,7 +1574,7 @@ def api(arg, _id):
                             currency="usd",
                             customer=student.customer_id,
                             description="partial charge with credit usage"
-                        )   
+                        )
                         p.stripe_charge_id = charge['id']
                     except stripe.error.CardError, e:
                         return errors(['Your card has been declined. Please update in Settings > Billing.'])
@@ -1615,7 +1615,7 @@ def api(arg, _id):
                 p.tutor_received_amount = r.connected_tutor_hourly * r.time_estimate * 0.75
 
             p.time_created = datetime.now()
-            p.tutor_description = 'Your earnings from your session with ' + student.name.split(" ")[0].title()
+            p.tutor_description = 'Your earnings from your session with ' + student.name.split(" ")[0].title() + ' after 25% fee'
             p.time_amount = r.time_estimate
             p.request_id = r.id
             tutor.pending = tutor.pending + p.tutor_received_amount 

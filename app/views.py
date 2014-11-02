@@ -1339,7 +1339,6 @@ def send_message():
                         from emails import send_message_alert
                         send_message_alert(receiver, user)
                         if receiver.phone_number and receiver.text_notification:
-                            print "testing "
                             from emails import send_message_text
                             msg = send_message_text(user)
                             message = send_twilio_message_delayed.apply_async(args=[receiver.phone_number, msg, receiver.id], countdown=10)
@@ -3140,17 +3139,19 @@ def send_twilio_msg(to_phone, body, user_id):
 
 @celery.task
 def send_student_one_hour_left(user_id, request_id):
-    from app.static.data.short_variations import short_variations_dict
-    user = User.query.get(user_id)
-    r = Request.query.get(request_id)
+    return
+    #THIS IS A BUG I NEED TO FIX.
+    # from app.static.data.short_variations import short_variations_dict
+    # user = User.query.get(user_id)
+    # r = Request.query.get(request_id)
     
-    #If student has already chosen or there are no tutors
-    if r.connected_tutor_id or len(r.committed_tutors) == 0:
-        return
+    # #If student has already chosen or there are no tutors
+    # if r.connected_tutor_id or len(r.committed_tutors) == 0:
+    #     return
     
-    skill_name = short_variations_dict[Skill.query.get(r.skill_id).name]
-    from app.emails import student_one_hour_left
-    student_one_hour_left(user, skill_name)
+    # skill_name = short_variations_dict[Skill.query.get(r.skill_id).name]
+    # from app.emails import student_one_hour_left
+    # student_one_hour_left(user, skill_name)
     print "Email sent to ", user.name.split(" ")[0], "regarding student packages."
 
 

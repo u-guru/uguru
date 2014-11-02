@@ -198,7 +198,6 @@ $(document).ready(function() {
           data: JSON.stringify(data),
           dataType: "json",
           success: function(result) {
-            alert('sup');
             if (result.dict['no-active-tutors']) {
               $('#tutor-request').show();
               $('#request-credit-card-success').hide();
