@@ -15,7 +15,6 @@ import mandrill
 import twilio
 from twilio import twiml
 from twilio.rest import TwilioRestClient 
-from mixpanel import Mixpanel
 import logging
 import api
 import redis
@@ -36,13 +35,12 @@ twilio_client = TwilioRestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 MAX_REQUEST_TUTOR_LIMIT = 3
 
 
-
-
 stripe_keys = {
     'secret_key': os.environ['SECRET_KEY'],
     'publishable_key': os.environ['PUBLISHABLE_KEY']
 }
 MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -53,7 +51,6 @@ apns = APNs(use_sandbox=False, cert_file=cert_path, key_file=key_path)
 stripe.api_key = stripe_keys['secret_key']
 MAX_UPLOAD_SIZE = 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
-mp = Mixpanel(os.environ['MP-TOKEN'])
 
 celery = Celery('run')
 
@@ -452,7 +449,6 @@ def add_credit():
             except:
                 db_session.rollback()
                 raise 
-            mp.track(str(user.id), 'Credit Card Added')
         return jsonify(response=return_json)
 
 @app.route('/new-admin/')
@@ -1783,11 +1779,6 @@ def update_requests():
                 )
                 charge_id = charge["id"]
 
-                mp.track(str(student.id), 'Student Accepted Request', {
-                    'One-time-charge': p.student_paid_amount
-                    })
-
-
             if not previous_request_payment:
                 from emails import student_payment_receipt
                 student_payment_receipt(student, tutor.name.split(" ")[0], p.student_paid_amount, p, charge_id, skill_name, False, True)
@@ -1882,10 +1873,6 @@ def notif_update():
         if 'update-feed-count' in ajax_json:
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             notification = user_notifications[ajax_json['notif_num']]
-            mp.track(str(user.id), 'Notification Clicked', {
-                'Type':notification.a_id_name,
-                'Message': notification.feed_message
-                })
             notification.time_read = datetime.now()
             user.feed_notif = user.feed_notif - 1
 
@@ -1915,26 +1902,6 @@ def event_update():
 
         user_id = session.get('user_id')
         user = User.query.get(user_id)
-
-        if 'request-btn-clicked' in ajax_json:
-            mp.track(str(user.id), 'Request Guru Clicked')
-        if 'credit-card-page-open' in ajax_json:
-            if not 'Description' in ajax_json:
-                mp.track(str(user.id), 'Credit Card Page Opened')
-            else:
-                mp.track(str(user.id), 'Credit Card Page Opened', {
-                    'Course':ajax_json['Course'], 
-                    'Description': ajax_json['Description'],
-                    'Time Estimate': ajax_json['Time Estimate'],
-                    'Availability': ajax_json['Availability'],
-                    'Location': ajax_json['Location'],
-                    'Number of Students': int(ajax_json['Number of Students']),
-                    'Proposed Price': int(float(ajax_json['Proposed Price'])),
-                    })
-        if 'request-already-active' in ajax_json:
-            mp.track(str(user.id), 'Unsuccessful Request', {
-                'Reason': 'Already Active Request',
-                })
 
         return jsonify(return_json=return_json)
 
@@ -2268,11 +2235,6 @@ def success():
             except:
                 db_session.rollback()
                 raise 
-
-            mp.people_set(str(u.id), {
-                'name': u.name,
-                'email': u.email,
-            })
 
         #Create a tutor for the first time
         if ajax_json.get('complete-tutor-signup'):
@@ -2699,10 +2661,6 @@ def activity():
     user = User.query.get(user_id)
     if not session.get('admin'):
         user.last_active = datetime.now()
-        # mp.track(str(user.id), 'On Feed')
-        # mp.people_set(str(user.id), {'Last Seen':datetime.now().isoformat()})
-    # if user.verified_tutor and not user.approved_by_admin:
-    #     return redirect(url_for('settings'))
     request_dict = {}
     address_book = {}
     payment_dict = {}
