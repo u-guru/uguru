@@ -4,7 +4,6 @@ from app.models import *
 from hashlib import md5
 from app import emails
 from app import app
-from mixpanel import Mixpanel
 import mandrill
 
 SMTP_USERNAME = os.environ['MANDRILL_USERNAME']
@@ -33,17 +32,6 @@ if arg == 'set_profile_default':
 if arg =='send_mailgun_1':
     from app.emails import mailgun_template_one
     mailgun_template_one(sys.argv[2], sys.argv[3])
-
-if arg =='mp-create-student-profiles':
-    import os
-    mp = Mixpanel(os.environ['MP-TOKEN'])
-    for u in User.query.all():
-        if not u.skills and not u.verified_tutor and u.name:
-            print u
-            mp.people_set(str(u.id), {
-                'name': u.name,
-                'email': u.email,
-                })
 
 if arg == 'send_mailgun':
     from app.emails import one_click_signup_email
