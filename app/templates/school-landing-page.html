@@ -1,6 +1,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1"/>    
+        <title>uGuru | {{school_details['school_initials']}}</title>
         <meta name="google-site-verification" content="VedYsRZwfb8cgFav7a8007dC1zMR-vjIKoqBH1Fv9N4" />
         <link href="/static/css/bootstrap.css" rel="stylesheet">
         <link href="/static/css/app.css" rel="stylesheet">
@@ -14,47 +15,50 @@
         <style>
             .blue-btn {
                 padding:8px 20px;
-                background-color:{{school_color_two}};
+                background-color:{{school_details['color_two']}};
                 color:white;
-                border-color:{{school_color_two}};
+                border-color:{{school_details['color_two']}};
             }
             #powered-by-cal,.school-color-two {
-                color:{{school_color_two}};
+                color:{{school_details['color_two']}};
             }
             .school-color-one {
-                color:{{school_color_one}};   
+                color:{{school_details['color_one']}};   
             }
             .school-color-one-background {
-                background-color:{{school_color_one}};      
+                background-color:{{school_details['color_one']}};      
             }
             #tutor-banner-background {
-                background-color:{{school_color_two}};
+                background-color:{{school_details['color_two']}};
             }
             .tutor-exp-tag {
-                background-color: {{school_color_one}};
+                background-color: {{school_details['color_one']}};
             }
             .how-it-works-text-banner {
                 display:block;
             }
             .text-banner {
-                background-color:{{school_color_one}};
+                background-color:{{school_details['color_one']}};
             }
             .icon-num {
-                background-color:{{school_color_two}};   
+                background-color:{{school_details['color_two']}};   
             }
             .footer {
-                background-color:{{school_color_one}};
+                background-color:{{school_details['color_one']}};
             }
-            
+            .modal-content {
+                border:4px solid {{school_details['color_two']}};
+            }
         </style>
     </head>
     <body>
+        {% set become_guru_text = 'Become a ' + school_details['school_mascot_name'] + ' Guru'%}
     <div id='main'>
         <div id='home' >
-            <div id='banner' style='background: url("/static/img/ucla-background-1600.png") no-repeat;background-size:cover; height:600px;'>
-                <nav class="navbar navbar-default" role="navigation" style='background-color:{{school_color_one}};
+            <div id='banner' style='background: url("/static/img/school_banners/{{school_details['banner_image']}}") no-repeat;background-size:cover; height:600px;'>
+                <nav class="navbar navbar-default" role="navigation" style='background-color:{{school_details['color_one']}};
                 border-radius:0px !important;
-                border-bottom:2px solid {{school_color_two}}'>
+                border-bottom:2px solid {{school_details['color_two']}}'>
                   <div class="container-fluid">
                     <!-- Logo and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
@@ -74,13 +78,14 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                       <ul class="nav navbar-nav">
                         <li><a href="#" id='powered-by-cal' class="font-24">
-                            <b>{{school_name}}</b>
+                            <b>{{school_details['school_name']}}</b>
                         </a></li>
                       </ul>
                       <ul class="nav navbar-nav navbar-right">
                         <li class='font-24'><a href='tinyul.com/uguru-q-a'>FAQ</a></li>
-                        <li><a data-toggle='modal'  data-target='#pricing-modal' href='#'>
-                                <span style='padding:8px 26px;' class='blue-btn font-18'> <b>Become a Guru </b></span>
+                        <li class='font-24'><a href='tinyul.com/uguru-q-a'>Courses</a></li>
+                        <li><a class='become-guru-tutor' style='cursor:pointer !important;' href='javascript:void(0);'>
+                                <span style='padding:8px 26px;' class='blue-btn font-18'> <b>{{ become_guru_text }}</b></span>
                             </a>
                         </li>
                       </ul>
@@ -89,13 +94,15 @@
                 </nav>  
                 <div id='main-container' class='container center'>
                     <div id='main-banner-header'class='white-text' style='margin-top:5%'>
-                        Help your fellow {{mascot_name|title}}s ace their courses!
+                        Help Your Fellow {{school_details['school_mascot_name']|title}}s Ace Their Courses!
                     </div>
                     <h3 id='main-banner-subheader' class='white-text'>
-                        Make $15/hr tutoring courses you love.
+                        Make $15/hr Tutoring Courses You Can Teach
                     </h3>
                     <div id='home-search-class-container'class='row-fluid margin-top-40'>
-                        <span style='padding:8px 26px;' class='blue-btn font-24'> <b>Become a Guru </b></span>
+                        <a href='javascript:void(0);'class='become-guru-tutor'>
+                            <span style='padding:8px 26px;' class='blue-btn font-24'> <b>{{become_guru_text}} </b></span>
+                        </a>
                     </div>
                 </div>
                 <div class='container-fluid' id='tutor-banner-background'>
@@ -307,16 +314,16 @@
                 <div class='row-fluid'>
                     <div class='col-xs-12 col-md-12 signup-btn-container'>
                         <div class='blue-text font-32 center block first-time-uguru school-color-one bold'>
-                            We are looking for the best Gurus at <b><span class='school-color-two'>{{school_name}}</span></b> <br>
+                            We are looking for the best Gurus at <b><span class='school-color-two'>{{school_details['school_name']}}</span></b> <br>
                             It only takes a couple of minutes to set up your profile.
                         </div>
                         <br>
                         <br>
                         <br>
                         <div class='row-fluid block'>
-                            <a href='javascript:void(0)' id='signup-nav-2'>
-                                <span class='large-blue-btn school-color-one-background bold'>
-                                    Become a Guru
+                            <a href='javascript:void(0)' class='become-guru-tutor'>
+                                <span class='large-blue-btn school-color-one-background bold school-color-two'>
+                                    {{become_guru_text}}
                                 </span>
                             </a>
                         </div>
@@ -399,7 +406,7 @@
                         <input id="upload-photo" type="file"/>
 
                         <label for='request-class'>School Email</label>
-                        <input type='text' id='tutor-app-school-email' placeholder='@ucla.edu'class='form-control standard-input'>
+                        <input type='text' id='tutor-app-school-email' placeholder='@{{school_details["school_email_domain"]}}'class='form-control standard-input'>
                         
                         <label for='request-class'>School Year</label>
                         <div class="dropdown">
@@ -614,7 +621,7 @@
                     <span class='glyphicon glyphicon-remove grey-text modal-close-button' ></span>
                 </a>
                 <div id='login-modal-container' class='container-fluid center'>
-                    <h1 id='become-guru-text' style='margin-top:-10px; margin-bottom:30px'> Become a Guru </h1>
+                    <h1 id='become-guru-text' style='margin-top:-10px; margin-bottom:30px' class='school-color-one'> Become a Guru </h1>
                     <div id='alert-fields-student-signup-top'>
                         Please fill in all fields.
                     </div>
@@ -635,7 +642,7 @@
                         <input name='student-name' placeholder='Full Name'  id='student-signup-name' class="form-control" >
                         
                         <label style='margin-top:10px' for="exampleInputEmail1">Email address</label>
-                        <input name='student-email' placeholder='you@ucla.edu' id='student-signup-email'  type="email" class="form-control">
+                        <input name='student-email' placeholder='you@{{school_details["school_email_domain"]}}' id='student-signup-email'  type="email" class="form-control">
                         
                         <label style='margin-top:10px' for="exampleInputPassword1">Create a Password</label>
                         <input name='student-password' id='student-signup-password' type="password" class="form-control" >
@@ -647,7 +654,7 @@
                                 <span style='margin-left:25px;' >Get an Account</span>
                             </span>
                         </a>
-                        <a id='tutor-next-link' href='javascript:void(0);' style='display:none'>
+                        <a id='tutor-next-link-general' href='javascript:void(0);' style='display:none'>
                             <span class='blue-btn'>
                                 Next
                             </span>
@@ -810,8 +817,8 @@
                     || !$('#student-signup-password').val()) 
                     {
                         $('#alert-fields-student-signup').show()
-                    } else if ($('#student-signup-email').val().toLowerCase().indexOf('@ucla.edu') == -1) {
-                        $('#alert-fields-student-signup').text('Please enter an @ucla.edu address.');
+                    } else if ($('#student-signup-email').val().toLowerCase().indexOf('@{{school_details["school_email_domain"]}}') == -1) {
+                        $('#alert-fields-student-signup').text('Please enter an @{{school_details["school_email_domain"]}} address.');
                         $('#alert-fields-student-signup').show()
                     } else {
                         var data_dict = {

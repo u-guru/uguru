@@ -155,6 +155,8 @@ def new_sproul(arg=None):
 
 @app.route('/florida/', methods=['GET', 'POST'])
 def florida(arg=None):
+    from schools import school_dict
+    school_details = school_dict['UF']
     modal_flag = None
     tutor_signup_incomplete = False
     guru_referral = False
@@ -181,8 +183,8 @@ def florida(arg=None):
         session['referral'] = 'cal'
     return render_template('school-landing-page.html', forms=[request_form],
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
-        environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag,
-        school_color_one='#112B80', school_color_two='#FB7611', school_name='University of Florida', mascot_name='Gator')
+        environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag, \
+        school_details=school_details)
 
 @app.route('/ucla/', methods=['GET', 'POST'])
 def ucla(arg=None):

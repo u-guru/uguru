@@ -1613,7 +1613,7 @@ $(document).ready(function(){
       $('#student-next-link').hide();
     });
 
-    $('#become-guru-tutor').click(function() {
+    $('.become-guru-tutor').click(function() {
       $('#signup-modal').modal();
       $('#tutor-next-link').show();
       $('#student-next-link').hide();
