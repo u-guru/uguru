@@ -292,7 +292,8 @@ def api(arg, _id):
     if arg == 'confirm_meeting' and request.method == 'POST':
         user = getUser()
         if user:
-            notification = user.notifications[request.json.get('notification-id')]
+            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
+            notification = user_notifications[request.json.get('notification-id')]
             r = Request.query.get(notification.request_id)
             user.notifications.remove(notification)
             student = User.query.get(r.student_id)
