@@ -2365,6 +2365,7 @@ def success():
             from notifications import tutor_request_offer
             tier_2_tutor_ids = []
             print "===Going through all qualified tutors for this request...==="
+            print "Here are all the requested tutors:", r.requested_tutors
             for tutor in r.requested_tutors:
                 #Only if they are approved tutors
                 print tutor.id, tutor.name, tutor.email, " is qualified." 
