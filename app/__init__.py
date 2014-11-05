@@ -1,7 +1,5 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from celery import Celery
-from celery.task import periodic_task
 from datetime import timedelta
 import redis
 import logging

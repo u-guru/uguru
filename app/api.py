@@ -218,6 +218,7 @@ def api(arg, _id):
                 raise 
 
             response = {"user": user.__dict__}
+            return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
 
         return errors(['Invalid Token'])
 
@@ -726,7 +727,7 @@ def api(arg, _id):
                         new_payment.tutor_description = 'Extra earnings from your session with ' + student.name.split(" ")[0].title()
                     else:
                         new_payment.student_description = 'A partial refund from your session with ' + tutor.name.split(" ")[0].title()
-                        new_payment.tutor_description = 'Substracted earnings from your session with ' + student.name.split(" ")[0].title()
+                        new_payment.tutor_description = 'Subtracted earnings from your session with ' + student.name.split(" ")[0].title()
                         new_payment.refunded = True
 
 
@@ -1505,7 +1506,7 @@ def api(arg, _id):
             r.connected_tutor_hourly = current_notification.request_tutor_amount_hourly
             r.time_connected = datetime.now()
 
-            #Modify student notification
+            #Modify student_idnt notification
             current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
                 + skill_name.upper() + " tutor."
             current_notification.feed_message_subtitle = '<b>Click here</b> to see next steps!'
