@@ -2,6 +2,7 @@
 .elasticbeanstalk/
 venv
 app.db
+dump.rdb
 .DS_Store
 sijax
 
@@ -46,3 +47,6 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# Secret Sauce
+.env

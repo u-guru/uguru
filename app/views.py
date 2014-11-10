@@ -2364,7 +2364,9 @@ def success():
             # Tutors are currently not contacted when there is a request.
             from notifications import tutor_request_offer
             tier_2_tutor_ids = []
+            tier_2_tutors = []
             print "===Going through all qualified tutors for this request...==="
+            print "Here are all the requested tutors:", r.requested_tutors
             for tutor in r.requested_tutors:
                 #Only if they are approved tutors
                 print tutor.id, tutor.name, tutor.email, " is qualified." 
@@ -2395,9 +2397,13 @@ def success():
                         tutor.notifications.append(notification)
                     else:
                         print tutor.name + ' is a tier 2 tutor'
-                        r.requested_tutors.remove(tutor)
                         tier_2_tutor_ids.append(tutor.id)
+                        tier_2_tutors.append(tutor)
                         print tier_2_tutor_ids
+
+            for tutor in tier_2_tutors:
+                print "Tutor has been removed: " +  tutor
+                r.requested_tutors.remove(tutor)
 
             if tier_2_tutor_ids:
                 print "Here are all the tier2 tutor ids",  tier_2_tutor_ids

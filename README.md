@@ -1,17 +1,37 @@
-=How to setup=
-pip install -r requirements.txt 
-alembic upgrade head
+**Setup Environment**
 
-=db migrations=
-alembic revision --autogenerate -m "<insert message here>"
-alembic upgrade head
+- Install homebrew (http://brew.sh)
+- % brew doctor (make sure your dev environment is sexy)
+- % brew install python
+- % brew linkapps python
+- Install heroku toolbelt (https://toolbelt.heroku.com)
+- % heroku login (enter in your heroku credentials)
+- % heroku config:pull --override --app uguru (export them from your .zshrc/.bash_profile, or use an .env file)
 
-=first time heroku configuration=
-heroku create <subdomain>
-git push heroku master
-heroku addons:add heroku-postgresql:dev
-heroku pg:promote HEROKU_POSTGRESQL_COLOR
+**Pull down repo (https://github.com/sam1rm/uguru)**
 
-How to write all courses onto db 
-- python manage.py add_courses_db
-- add 'skills_dict = ' to variations.py in app/static/data/variations.py (which is written after the script has been ran.)
+- % git clone https://github.com/sam1rm/uguru
+- % cd uguru
+- % (sudo) pip install -r requirements.txt
+
+**Set up local DB**
+
+- % touch app.db
+- % python manage.py initialize
+
+**Run Locally**
+
+- % gem install forman
+- % brew install redis
+- % foreman start web
+
+or
+
+- % redis-server 
+- % celery -A app.views.celery worker -B -E --loglevel=info
+- % pyton run.py
+
+**Admin Console Login**
+
+- Email: admin@uguru.me
+- Pass: launchuguru
