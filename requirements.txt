@@ -9,11 +9,12 @@ Flask-SQLAlchemy==0.16
 Flask-WTF==0.8.3
 boto==2.13.3
 pillow==2.4.0
-stripe
-mandrill
+stripe==1.19.1
+mandrill==1.0.57
 twilio==3.6.6
-mixpanel-py
+mixpanel-py==3.2.0
 APScheduler==3.0.0
 redis==2.10.3
 celery==3.1.13
-httpagentparser
+httpagentparser==1.7.5
+honcho==0.5.0

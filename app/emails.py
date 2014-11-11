@@ -11,13 +11,9 @@ import mandrill
 
 SMTP_SERVER = "smtp.mandrillapp.com"
 SMTP_PORT = 587
-
 SMTP_USERNAME = os.environ['MANDRILL_USERNAME']
 SMTP_PASSWORD = os.environ['MANDRILL_PASSWORD']
 MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
-MASS_MANDRILL_API_KEY = 'Nr-H6duWBJz4kiCbNxtYqg'
-
-HOURLY_RATE = 0
 
 def send_connection_email(student, tutor, request):
     student_name = student.name
@@ -3376,7 +3372,7 @@ def mailgun_campaign_nine_html(name):
     """
 
 def send_mandrill_nine(receiver_name, receiver_email, tag_arr):
-    mandrill_client = mandrill.Mandrill(MASS_MANDRILL_API_KEY)
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
     receiver_first_name = receiver_name.split(" ")[0].title()
     subject = receiver_first_name + ', your friend Michael just sent you $10'
 
@@ -3434,7 +3430,7 @@ def send_mandrill_purchase_package_promotion(receiver_name, receiver_email, skil
     result = mandrill_client.messages.send(message=message)
 
 def send_mandrill_ten(receiver_name, receiver_email, tag_arr):
-    mandrill_client = mandrill.Mandrill(MASS_MANDRILL_API_KEY)
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
     receiver_first_name = receiver_name.split(" ")[0].title()
     subject = receiver_first_name + ", 3k+ Cal students use uGuru. Here's $10 to try it."
 

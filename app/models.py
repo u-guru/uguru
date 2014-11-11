@@ -7,9 +7,7 @@ from app import db
 from datetime import datetime
 import os
 
-
-
-#Many to #Many relation tables
+# many-to-many relation tables
 user_skill_table = Table('user-skill_assoc',
     Base.metadata,
     Column('user_id', Integer, ForeignKey('user.id')),
@@ -99,32 +97,36 @@ user_conversation_table = Table('user-conversation_assoc',
     Column('user_id', Integer, ForeignKey('user.id')),
     Column('conversation_id', Integer, ForeignKey('conversation.id'))
 )
+
 user_message_table = Table('user-message_assoc',
     Base.metadata,
     Column('user_id', Integer, ForeignKey('user.id')),
     Column('message_id', Integer, ForeignKey('message.id'))
 )
+
 mailbox_conversation_table = Table('mailbox-conversation_assoc',
     Base.metadata,
     Column('mailbox_id', Integer, ForeignKey('mailbox.id')),
     Column('conversation_id', Integer, ForeignKey('conversation.id'))
 )
+
 mailbox_message_table = Table('mailbox-message_assoc',
     Base.metadata,
     Column('mailbox_id', Integer, ForeignKey('mailbox.id')),
     Column('message_id', Integer, ForeignKey('message.id'))
 )
+
 user_payment_table = Table('user-payment_assoc',
     Base.metadata,
     Column('payment_id', Integer, ForeignKey('payment.id')),
     Column('user_id', Integer, ForeignKey('user.id'))
 )
+
 user_notification_table = Table('user-notification_assoc',
     Base.metadata,
     Column('notification_id', Integer, ForeignKey('notification.id')),
     Column('user_id', Integer, ForeignKey('user.id'))
 )
-
 
 class User(Base):
     __tablename__ = 'user'
@@ -194,41 +196,32 @@ class User(Base):
     recipient_card_type = Column(String(4))
     
     outgoing_requests = relationship('Request', 
-        secondary = student_request_table,
-        )
+        secondary = student_request_table)
     incoming_requests_to_tutor = relationship('Request', 
         secondary = tutor_request_table,
-        backref = backref('users', lazy='dynamic')
-        )
+        backref = backref('users', lazy='dynamic'))
     incoming_requests_from_tutors = relationship('Request', 
-        secondary = committed_tutor_request_table,
-        )
+        secondary = committed_tutor_request_table)
     skills = relationship("Skill",
         secondary = user_skill_table,
-        backref = backref('users', lazy='dynamic')
-        )
+        backref = backref('users', lazy='dynamic'))
     student_ratings = relationship('Rating',
-        secondary = student_rating_table,
-        )
+        secondary = student_rating_table)
     tutor_ratings = relationship('Rating',
-        secondary = tutor_rating_table,
-        )
+        secondary = tutor_rating_table)
     pending_ratings = relationship('Rating',
-        secondary = pending_rating_table,
-        )
+        secondary = pending_rating_table)
     mailbox = relationship("Mailbox",
         uselist = False,
         backref = backref("user", uselist = False))
     payments = relationship("Payment",
-        secondary = user_payment_table
-        )
+        secondary = user_payment_table)
     notifications = relationship("Notification",
         secondary = user_notification_table)
     emails = relationship("Email",
         secondary = user_email_table)
     promos = relationship("Promo",
         secondary = user_promo_table)
-
     texts = relationship("Text",
         secondary = user_text_table)
 
@@ -242,9 +235,8 @@ class User(Base):
 
         if is_a_tutor:
             pass
-            #TODO Pass in skills and Create skill objects and append them to user skills
-            #TODO See if any of their skills are needed right now and 
-                #add to their incoming requests
+            # TODO : Pass in skills and Create skill objects and append them to user skills
+             #TODO : See if any of their skills are needed right now and add to their incoming requests
 
     def calc_avg_ratings(self):
         rating_sum = 0.0
@@ -507,9 +499,6 @@ class Payment(Base):
             self.tutor_rate = request.actual_hourly
             self.time_created = datetime.now()
 
-
-
-
 class Request(Base):
     __tablename__ = 'request'
     id = Column(Integer, primary_key = True)
@@ -559,7 +548,7 @@ class Request(Base):
     emails = relationship("Email",
         secondary = request_email_table)
 
-    #To do: make sure student_id doesn't already have a request for that skill_id
+    #TODO: make sure student_id doesn't already have a request for that skill_id
 
     def __init__(self, student_id, skill_id, description, urgency, \
         frequency, time_estimate):
@@ -650,8 +639,6 @@ class Week(Base):
         backref = backref('week', lazy='dynamic')
         )
 
-
-
 class Skill(Base):
     __tablename__ = 'skill'
     id = Column(Integer, primary_key = True)
@@ -660,7 +647,6 @@ class Skill(Base):
     is_course = Column(Boolean, default = False)
 
     #TODO List of all tutors with a skill
-
     course = relationship("Course",
         primaryjoin = 'Skill.id == Course.skill_id',
         uselist = False,
@@ -739,4 +725,3 @@ class Course(Base):
 
     def __repr__(self):
         return '<Course %r>' % (self.name)
-
