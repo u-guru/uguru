@@ -16,7 +16,6 @@ from mixpanel import Mixpanel
 import random
 from apscheduler.schedulers.background import BackgroundScheduler as Scheduler
 import views, time
-from apns import APNs, Frame, Payload
 
 REQUEST_EXP_TIME_IN_SECONDS = 172800
 TUTOR_ACCEPT_EXP_TIME_IN_SECONDS = 86400
@@ -2050,10 +2049,6 @@ def get_time_ranges(week_object, owner):
     for r in ranges:
         arr_ranges.append([r.week_day, r.start_time, r.end_time])
     return arr_ranges
-
-def send_apn(message, token):
-    payload = Payload(alert=message, sound='default', badge=1)
-    apns.gateway_server.send_notification(token, payload)
 
 def create_stripe_customer(token, user):
     try:

@@ -19,7 +19,6 @@ import logging
 import api
 import redis
 import time
-from apns import APNs, Frame, Payload
 from celery import Celery
 from celery.task import periodic_task
 from celery.schedules import crontab
