@@ -19,7 +19,6 @@ import logging
 import api
 import redis
 import time
-from apns import APNs, Frame, Payload
 from celery import Celery
 from celery.task import periodic_task
 from celery.schedules import crontab
@@ -28,25 +27,21 @@ import redis
 import logging
 from os import environ
 
-TWILIO_ACCOUNT_SID = "AC0e19b68075686efd56de5bbce77285a5" 
-TWILIO_AUTH_TOKEN = "4d5a1f6390c445fd1f6eb39634bdf299" 
+TWILIO_ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
+TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
 TWILIO_DEFAULT_PHONE = "+15104661138"
 twilio_client = TwilioRestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 MAX_REQUEST_TUTOR_LIMIT = 3
 
 
 stripe_keys = {
-    'secret_key': os.environ['SECRET_KEY'],
-    'publishable_key': os.environ['PUBLISHABLE_KEY']
+    'secret_key': os.environ['STRIPE_SECRET_KEY'],
+    'publishable_key': os.environ['STRIPE_PUBLISHABLE_KEY']
 }
 MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-cert_path = os.path.join(os.path.dirname(__file__), 'uguru-cert.pem')
-key_path = os.path.join(os.path.dirname(__file__), 'uguru-key.pem')
-apns = APNs(use_sandbox=False, cert_file=cert_path, key_file=key_path)
 
 stripe.api_key = stripe_keys['secret_key']
 MAX_UPLOAD_SIZE = 1024 * 1024
@@ -64,19 +59,6 @@ celery.conf.update(
     CELERY_TASK_SERIALIZER='json',
     CELERY_ACCEPT_CONTENT=['json', 'msgpack', 'yaml']
 )
-
-def fib(n):
-    if n > 1:
-        return fib(n - 1) + fib(n - 2)
-    else:
-        return 1
-
-# The periodic task itself, defined by the following decorator
-# @periodic_task(run_every=timedelta(seconds=10))
-# def print_fib():
-#     # Just log fibonacci(30), no more
-#     logging.info(fib(30))
-
 
 @celery.task
 def send_twilio_message_delayed(phone, msg, user_id):
@@ -1805,12 +1787,6 @@ def update_requests():
             tutor_is_matched(user, tutor, skill_name)
             student_is_matched(user, tutor, None)
 
-            # if tutor.apn_token:
-            #     apn_message = student.name.split(" ")[0] + ' has chosen you! Message '  + student.name.split(" ")[0] + ' now!'
-            #     send_apn(apn_message, tutor.apn_token)
-
-
-
             #create conversation between both
             conversation = Conversation.query.filter_by(student_id=user.id, guru_id=tutor.id).first()
             if not conversation:
@@ -2402,7 +2378,7 @@ def success():
                         print tier_2_tutor_ids
 
             for tutor in tier_2_tutors:
-                print "Tutor has been removed: " +  tutor
+                print "Tutor has been removed: " +  str(tutor)
                 r.requested_tutors.remove(tutor)
 
             if tier_2_tutor_ids:
@@ -2455,10 +2431,6 @@ def success():
                 if user.notifications:
                     notification = user.notifications[0]
                     notification.feed_message_subtitle = "Application status: <strong><span style='color:#69bf69'>Approved!</span></strong>"
-
-                # if user.apn_token:
-                #     apn_message = 'Congrats! Your tutor application has been approved! Swipe for next steps'
-                #     send_apn(apn_message, user.apn_token)
 
                 from emails import approved_by_admin_email
                 approved_by_admin_email(user)
@@ -3701,10 +3673,6 @@ def auto_confirm_student_payment(payment_id, student_id):
     except:
         db_session.rollback()
         raise
-
-def send_apn(message, token):
-    payload = Payload(alert=message, sound='default', badge=1)
-    apns.gateway_server.send_notification(token, payload)
 
 def get_browser():
     import httpagentparser

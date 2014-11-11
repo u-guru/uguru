@@ -3,6 +3,7 @@
 venv
 app.db
 dump.rdb
+celerybeat-schedule.*
 .DS_Store
 sijax
 
