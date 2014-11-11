@@ -4,6 +4,7 @@
 - Install Homebrew (http://brew.sh)
 - % pip install virtualenvwrapper
 - source /usr/local/bin/virtualenvwrapper.sh in your .zshrc/.bash_profile
+- % brew install redis
 - % mkvirtualenv uguru
 - % workon uguru
 
@@ -20,9 +21,9 @@
 
 **Run Locally**
 
-- % brew install redis
+- workon uguru (if using virtualenv--you should be...)
 - % honcho start
-- % honco run python (to jump into a python shell with the app's envirmonment)
+- % (optionally) honcho run python (to jump into a python shell with the app's envirmonment)
 
 **Admin Console Login**
 
