@@ -27,16 +27,16 @@ import redis
 import logging
 from os import environ
 
-TWILIO_ACCOUNT_SID = "AC0e19b68075686efd56de5bbce77285a5" 
-TWILIO_AUTH_TOKEN = "4d5a1f6390c445fd1f6eb39634bdf299" 
+TWILIO_ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
+TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
 TWILIO_DEFAULT_PHONE = "+15104661138"
 twilio_client = TwilioRestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 MAX_REQUEST_TUTOR_LIMIT = 3
 
 
 stripe_keys = {
-    'secret_key': os.environ['SECRET_KEY'],
-    'publishable_key': os.environ['PUBLISHABLE_KEY']
+    'secret_key': os.environ['STRIPE_SECRET_KEY'],
+    'publishable_key': os.environ['STRIPE_PUBLISHABLE_KEY']
 }
 MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
 
@@ -59,19 +59,6 @@ celery.conf.update(
     CELERY_TASK_SERIALIZER='json',
     CELERY_ACCEPT_CONTENT=['json', 'msgpack', 'yaml']
 )
-
-def fib(n):
-    if n > 1:
-        return fib(n - 1) + fib(n - 2)
-    else:
-        return 1
-
-# The periodic task itself, defined by the following decorator
-# @periodic_task(run_every=timedelta(seconds=10))
-# def print_fib():
-#     # Just log fibonacci(30), no more
-#     logging.info(fib(30))
-
 
 @celery.task
 def send_twilio_message_delayed(phone, msg, user_id):
@@ -2391,7 +2378,7 @@ def success():
                         print tier_2_tutor_ids
 
             for tutor in tier_2_tutors:
-                print "Tutor has been removed: " +  tutor
+                print "Tutor has been removed: " +  str(tutor)
                 r.requested_tutors.remove(tutor)
 
             if tier_2_tutor_ids:
