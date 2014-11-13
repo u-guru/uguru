@@ -700,12 +700,6 @@ def admin_requests():
             student = User.query.get(r.student_id)
             request_dict['student'] = student
             total_seen_count = 0
-            for tutor in r.requested_tutors:
-                for n in tutor.notifications:
-                    if n.request_id == r.id:
-                        if n.time_read:
-                            total_seen_count += 1
-            request_dict['total_seen']  = total_seen_count
             request_dict['pending-ratings'] = 0
             request_dict['message-length'] = 0
 
