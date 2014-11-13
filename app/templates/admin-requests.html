@@ -53,8 +53,6 @@
                         {% if request_dict['student'].name %}
                         {% if request_dict['connected-tutor'] and request_dict['connected-tutor'] == request_dict['student']%}
                             {% set status = 'danger'%}
-                        {% elif request_dict['connected-tutor'] and request_dict['num-payments'] > 1 %}
-                            {% set status = 'super-success' %}
                         {% elif request_dict['connected-tutor'] %}
                             {% set status = 'success'%}
                         {% else %} 
