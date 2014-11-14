@@ -1,10 +1,10 @@
 var calendar_was_saved = null;
 
 $('#request-calendar-toggle').click(function() {
-    if (calendar_was_saved == null) {
+    if (calendar_was_saved === null) {
         calendar_edit_mode_request();
-        set_dates(null)
-    } 
+        set_dates(null);
+    }
     $('.calendar-modal').show();
 });
 
@@ -15,15 +15,16 @@ $('.student-request-view-calendar-toggle').click(function() {
 $('#request-calendar-close').click(function() {
     reset_calendar();
     $('.calendar-modal').hide();
-})
+});
 
 function set_dates(date_in_seconds) {
-    if (date_in_seconds == null) {
-        var first_date = new Date();
+    var first_date;
+    if (date_in_seconds === null) {
+        first_date = new Date();
     } else {
-       var first_date = new Date(date_in_seconds * 1000) 
-    }
-    process_dates(first_date);
+       first_date = new Date(date_in_seconds * 1000);
+   }
+   process_dates(first_date);
 }
 
 // function set_dates(date_in_seconds) {
@@ -32,28 +33,27 @@ function set_dates(date_in_seconds) {
 // }
 
 function process_dates(date) {
-    first_date = date
-    day_names = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    month_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    month_vals = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    day_int = first_date.getDay()
+    first_date = date;
+    day_names = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    month_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    month_vals = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    day_int = first_date.getDay();
     var d = first_date.getDate();
     var m = first_date.getMonth();
     var y = first_date.getYear();
     for (i = 0; i < 7; i++) {
         var nextDate = new Date(y, m, d+i);
-        if (i == 0) {
-            $('#calendar-day-1').html('Today' + '<br>' + (month_names[nextDate.getMonth()]) + '/' + nextDate.getDate());   
+        if (i === 0) {
+            $('#calendar-day-1').html('Today' + '<br>' + (month_names[nextDate.getMonth()]) + '/' + nextDate.getDate());
         } else {
             $('#calendar-day-'+(i + 1)).html(day_names[(day_int + i) % 7] + '<br>' + (month_names[nextDate.getMonth()]) + '/' + nextDate.getDate());
-            // $('#calendar-day-'+(i + 1)).text(day_names[(day_int + i) % 7]);
         }
     }
 }
 
 var clean_td = function(e){
    e.removeClass('success');
-}
+};
 
 function fillGaps() {
     min = $('td.csstdhighlight:first').parent().index();
@@ -66,7 +66,7 @@ $('.close-calendar-btn').click(function() {
 });
 
 function process_column_tds(td_list) {
-    day_range_list = []
+    day_range_list = [];
     for (i = 0; i < 48; i++) {
         current_td = $(td_list[i]);
         if (current_td.hasClass('td-selected')) {
@@ -77,16 +77,16 @@ function process_column_tds(td_list) {
 }
 
 function get_calendar_selection() {
-    calendar_data = []
+    calendar_data = [];
     for (j = 2; j < 9; j++) {
         column_tds = $('table#request-calendar tr td:nth-child('+j+')');
         calendar_data.push(process_column_tds(column_tds));
     }
-    return calendar_data
-};
+    return calendar_data;
+}
 
 function merge_consecutive(day_range_arr) {
-    results = []
+    results = [];
     while(day_range_arr.length > 0) {
         if (day_range_arr.length == 1) {
             results.push(day_range_arr[0]);
@@ -96,15 +96,15 @@ function merge_consecutive(day_range_arr) {
         first = day_range_arr[0];
         second = day_range_arr[1];
         if (first[1] == second[0]) {
-            day_range_arr[0][0] = first[0]
-            day_range_arr[0][1] = second[1]
+            day_range_arr[0][0] = first[0];
+            day_range_arr[0][1] = second[1];
             day_range_arr.splice(1,1);
         } else {
             results.push(first);
             day_range_arr.shift();
         }
     }
-    return results
+    return results;
 }
 
 function show_student_request_calendar(arr_ranges, time_in_seconds) {
@@ -115,7 +115,7 @@ function show_student_request_calendar(arr_ranges, time_in_seconds) {
 }
 
 function show_tutor_request_submitted_calendar(student_ranges, tutor_ranges, message_flag, time_in_seconds) {
-    set_dates(time_in_seconds)
+    set_dates(time_in_seconds);
     if (message_flag) {
         $('#calendar-header-text').hide();
     }
@@ -125,16 +125,16 @@ function show_tutor_request_submitted_calendar(student_ranges, tutor_ranges, mes
 }
 
 function show_tutor_request_calendar(arr_ranges, time_amount, time_in_seconds) {
-    set_dates(time_in_seconds)
-    if (calendar_was_saved != true) {
+    set_dates(time_in_seconds);
+    if (calendar_was_saved !== true) {
         reset_calendar();
     }
     add_ranges_to_calendar(arr_ranges, 'td-preselected');
     $('#calendar-header-text').html('Please select exactly <span id="num-hours-student">' + time_amount + '</span> hours of time from the schedule below.') ;
-    if ($('td.time-slot.td-selected').length == 0) {
+    if ($('td.time-slot.td-selected').length === 0) {
         calendar_edit_mode_tutor_accept();
     }
-}   
+}
 
 function add_ranges_to_calendar(arr_ranges, class_to_add) {
     if ($('td.time-slot.td-preselected').length > 0) {
@@ -143,10 +143,10 @@ function add_ranges_to_calendar(arr_ranges, class_to_add) {
     }
     for (i = 0; i < arr_ranges.length; i++) {
         range = arr_ranges[i];
-        day = range[0]
-        start = range[1]
-        end = range[2]
-        column = day + 2
+        day = range[0];
+        start = range[1];
+        end = range[2];
+        column = day + 2;
         for (j = start; j < end; j++) {
             column_tds = $('table#request-calendar tr td:nth-child('+column+')');
             row_object = column_tds[j];
@@ -159,10 +159,10 @@ function add_ranges_to_calendar(arr_ranges, class_to_add) {
 function add_mult_ranges_to_calendar(student_ranges, tutor_ranges) {
     for (i = 0; i < student_ranges.length; i++) {
         range = student_ranges[i];
-        day = range[0]
-        start = range[1]
-        end = range[2]
-        column = day + 2
+        day = range[0];
+        start = range[1];
+        end = range[2];
+        column = day + 2;
         for (j = start; j < end; j++) {
             column_tds = $('table#request-calendar tr td:nth-child('+column+')');
             row_object = column_tds[j];
@@ -171,10 +171,10 @@ function add_mult_ranges_to_calendar(student_ranges, tutor_ranges) {
     }
     for (i = 0; i < tutor_ranges.length; i++) {
         range = tutor_ranges[i];
-        day = range[0]
-        start = range[1]
-        end = range[2]
-        column = day + 2
+        day = range[0];
+        start = range[1];
+        end = range[2];
+        column = day + 2;
         for (j = start; j < end; j++) {
             column_tds = $('table#request-calendar tr td:nth-child('+column+')');
             row_object = column_tds[j];
@@ -188,7 +188,7 @@ function add_mult_ranges_to_calendar(student_ranges, tutor_ranges) {
 }
 
 function calendar_view_only() {
-    $('.save-calendar-btn').hide()
+    $('.save-calendar-btn').hide();
     $('td.time-slot').css('cursor', 'auto');
 }
 
@@ -198,24 +198,22 @@ function calendar_edit_mode_request() {
     var selectable = 'td.time-slot';
     $(selectable).mousedown(function () {
         selecting = true;
-        // $(selectable).removeClass('td-selected');
     }).mouseenter(function () {
         if (selecting) {
             $(this).addClass('td-selected');
-            window.getSelection().empty()
-            // fillGaps();
+            window.getSelection().empty();
         }
     });
     $(window).mouseup(function () {
         if (selecting) {
             selecting = false;
-            window.getSelection().empty()
-        } 
+            window.getSelection().empty();
+        }
     }).click(function () {
         // $(selectable).removeClass('td-selected');
     });
     $('td.time-slot').hover(function() {
-    $(this).addClass('success');
+        $(this).addClass('success');
     }, function() {
         $(this).removeClass('success');
     });
@@ -265,23 +263,22 @@ function calendar_edit_mode_tutor_accept() {
                 $(this).removeClass('td-preselected');
                 $(this).addClass('td-selected');
             }
-            window.getSelection().empty()
-            // fillGaps();
+            window.getSelection().empty();
         }
     });
     $(window).mouseup(function () {
         if (selecting) {
             selecting = false;
-            window.getSelection().empty()
-        } 
+            window.getSelection().empty();
+        }
     }).click(function () {
         // $(selectable).removeClass('td-selected');
     });
     $('td.time-slot').hover(function() {
         $(this).addClass('success');
-        }, 
-        function() {
-            $(this).removeClass('success');
+    },
+    function() {
+        $(this).removeClass('success');
     });
 
     $('td.time-slot').click(function() {
@@ -309,7 +306,11 @@ function calendar_edit_mode_tutor_accept() {
 }
 
 function reset_calendar() {
-    $('.td-selected').each(function(){$(this).removeClass('td-selected')});
-    $('.td-preselected').each(function(){$(this).removeClass('td-preselected')});
+    $('.td-selected').each(function(){
+        $(this).removeClass('td-selected');
+    });
+    $('.td-preselected').each(function(){
+        $(this).removeClass('td-preselected');
+    });
     $('.save-calendar-btn').show();
 }
