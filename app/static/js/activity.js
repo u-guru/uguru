@@ -263,7 +263,8 @@ $('#rating-form-tutor').on('click', '.rating span', function() {
     var span = $('#tutor-rating-stars').children(':nth-child(' + (4 - i + 1) + ')');
     if (i <= num_stars) {
       span.css('color', 'gold');
-      span.css('content', "\2605"); // TODO : WTF IS THIS @SAM1RM
+      // TODO : WTF IS THIS @SAM1RM
+      span.css('content', "\2605");
       span.addClass('star-selected');
     }
     else {
@@ -879,5 +880,4 @@ $('.modal-extra-detail').on('show', function() {
     };
   });
 })(jQuery);
-
 });

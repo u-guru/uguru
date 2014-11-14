@@ -16,25 +16,17 @@
 						  <button type="button" class="close" data-dismiss="alert">
 				            <span aria-hidden="true"><span class='glyphicon glyphicon-remove'></span></span>
 				            <span class="sr-only">Close</span></button>
-						  No requests yet! <br>
+						  No requests right now!
+						  <br>
 						  {% if user.verified_tutor %}
-						  We will notify you via email when you receive a request.
+						  We'll let you know when a student needs your help!
 						  {% else %}
-						  Return to your feed to make a request!
-						  {% endif %}<br>
+						  Return to your main feed to request a tutor!
+						  {% endif %}
+						  <br>
 						</div>
 				  	</div>	
 				</div>
-				<h5><b>
-					{% if user.skills or user.verified_tutor %}
-					Once you are matched with a student, a chat box will appear. <br><br>You can coordinate when and where to meet here!
-					{% else %}
-					Once you are matched with a tutor, a chat box will appear. <br><br>You can coordinate when and where to meet here! 
-					{% endif %}
-					</b>
-					<br>
-					<br>
-				</h5>
 				<div class="row-fluid">
 					<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
 						<div class="notification" style="margin-top:0;width:100%; cursor:auto"align:"center">
