@@ -27,8 +27,7 @@ $(document).ready(function(){
   });
 
   if ($('#request-main-slider').length >= 1) {
-    $('#request-main-slider').slider(
-    {
+    $('#request-main-slider').slider({
       'min': 1,
       'max': 10,
       'value': 2,
@@ -40,11 +39,9 @@ $(document).ready(function(){
         }
         $('#request-main-slider-val').text(slider_val + ' ' + hr_text);
       }
-    }
-    );
+    });
 
-    $('#edit-price-slider').slider(
-    {
+    $('#edit-price-slider').slider({
       'min': 10,
       'max': 25,
       'value': 18,
@@ -53,9 +50,9 @@ $(document).ready(function(){
         slider_val = $('#edit-price-slider').slider('value');
         $('#edit-price-slider-val').text('$' + slider_val + '/hr');
       }
-    }
-    );
+    });
   }
+
   $('#email-notif-check').change(function(){
     var status = this.checked;
     if (status) {
@@ -210,7 +207,6 @@ $('#submit-profile-info-btn').click(function() {
   $('#profile-saved').delay(750).fadeOut('slow', function() {
     window.location.replace('/settings/#prof');
   });
-
 });
 
 $('#save-account-settings-btn').click(function() {
@@ -932,31 +928,27 @@ $('#upload-photo-link').on('click', function(e) {
 
 $("#upload-photo:hidden").change(function(){
   var file = this.files[0];
-  name = file.name;
-  size = file.size;
-  type = file.type;
-
-            if (file.type != 'image/png' && file.type != 'image/jpg' && file.type != 'image/gif' && file.type != 'image/jpeg' ) { // TODO : Cameron enabled GIFs, shoot me if you don't approve
-              alert("File doesnt match png, jpg, or gif");
-          } else {
-            $('#settings-notif').hide();
-            $('#student-photo-alert').hide();
-            $('#upload-photo-saved').show();
-            $('#tutor-app-photo').css('border-color','1px solid transparent');
-            $('#upload-photo-saved').delay(750).fadeOut('slow');
-            readURL(this);
-            var formData = new FormData();
-            formData.append('file', file);
-            $.ajax({
-              url:'/update-profile/',
-              type: 'POST',
-              data: formData,
-              cache: false,
-              contentType: false,
-              processData: false
-            });
-          }
-        });
+  if (file.type != 'image/png' && file.type != 'image/jpg' && file.type != 'image/gif' && file.type != 'image/jpeg' ) {
+    alert("File doesnt match png, jpg, or gif");
+  } else {
+    $('#settings-notif').hide();
+    $('#student-photo-alert').hide();
+    $('#upload-photo-saved').show();
+    $('#tutor-app-photo').css('border-color','1px solid transparent');
+    $('#upload-photo-saved').delay(750).fadeOut('slow');
+    readURL(this);
+    var formData = new FormData();
+    formData.append('file', file);
+    $.ajax({
+      url:'/update-profile/',
+      type: 'POST',
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false
+    });
+  }
+});
 
 function readURL(input) {
   if (input.files && input.files[0]) {
@@ -1154,7 +1146,7 @@ $('#add-skill-input-settings').keyup(function(e){
 });
 
 $('#tutor-add-course-fields').on('click', '.tt-suggestion', function() {
-  skill_name = $(this).children('p:first').text()
+  skill_name = $(this).children('p:first').text();
   if (autocomplete_json.indexOf(skill_name) == -1) {
     alert('Please only add from the available options.');
     $('#add-skill-input-settings').val('');
@@ -1179,10 +1171,10 @@ $('#tutor-register').click(function() {
       url: '/validation/',
       data: JSON.stringify(data),
       dataType: "json",
-      success: function(result) {  
+      success: function(result) {
         window.location.replace('/settings/');
       }
-    }) 
+    });
   } else {
     $('#add-one-skill-alert').show();
   }
@@ -1199,7 +1191,7 @@ $('.submit-confirm-payment-text').click(function() {
     url: '/api/payments',
     data: JSON.stringify(data),
     dataType: "json",
-    success: function(result) { 
+    success: function(result) {
       window.location.replace('/activity/');
     }
   });
@@ -1415,10 +1407,10 @@ var numbers = new Bloodhound({
   sorter: function compare(a,b) {
     if (a > b) {
       return 1;
-    };
+    }
     if (b < a) {
       return -1;
-    };
+    }
     return 0 ;
   }
 });
@@ -1711,7 +1703,7 @@ var numbers = new Bloodhound({
         url: '/notification-settings/' ,
         data: JSON.stringify(data),
         dataType: "json"
-      });  
+      });
     };
 
     var send_profile_update_ajax = function(to_change, value) {
@@ -1762,7 +1754,7 @@ var numbers = new Bloodhound({
       data['major'] = value;
     }
     if (to_change == 'phone') {
-      data['phone'] = value
+      data['phone'] = value;
     }
 
     if (to_change == 'name') {
