@@ -18,9 +18,18 @@
         {% set fade = '' %}
     {% endif %}
 
-    <div id='{{_id}}' style="{{style}}" class="alert alert-{{_type}} {{_class}} {{fade}}" >
+    <div id='{{_id}}' style="{{style}}" class="alert alert-{{_type}} {{_class}} {{fade}} relative" >
+                <div class='absolute'>
+                    {% if _type == 'success' %}
+                        <span class='glyphicon glyphicon-ok font-30'></span>
+                    {% elif _type == 'info' %}
+                        <span class='glyphicon glyphicon-info-sign'></span>
+                    {% else %}
+                        <span class='glyphicon glyphicon-fire'></span>
+                    {% endif %}
+                </div>
         <button type="button" class="close" data-dismiss="alert">
             <span aria-hidden="true"><span class='glyphicon glyphicon-remove'></span></span>
             <span class="sr-only">Close</span></button>
-        {{ message|safe}}</div>
+        {{message|safe}}</div>
 {% endmacro %}

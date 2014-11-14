@@ -1526,6 +1526,10 @@ label {
   color:white;
   opacity:1;
   margin-top:3px;
+  font-size:12px;
+  font-weight:normal;
+  margin-top:-4px;
+  margin-right:-4px;
 }
 
 .alert-danger {
@@ -1536,8 +1540,8 @@ label {
 }
 
 .alert-success {
-  background-color:#3c763d;
-  border-color: #3c763d;
+  background-color:#228B22;
+  border-color: #228B22;
   color:white;
   font-size:20px;
 }
