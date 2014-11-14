@@ -2648,12 +2648,6 @@ def activity():
     tutor_dict = {}
     confirm_payments = []
 
-    browser=get_browser()
-
-    if browser and 'chrome' not in get_browser().lower():
-        flash("For the best experience with uGuru, we highly recommend that you use <img src='/static/img/chrome.svg.png' style='padding-bottom:4px' height=20><b> Chrome</b> for your browser.", 'info')
-
-
     urgency_dict = ['ASAP', 'Tomorrow', 'This week']
 
     from app.static.data.prices import prices_dict
@@ -3673,30 +3667,6 @@ def auto_confirm_student_payment(payment_id, student_id):
     except:
         db_session.rollback()
         raise
-
-def get_browser():
-    import httpagentparser
-    userAgentString = httpagentparser.detect(request.headers.get('User-Agent'))
-    if userAgentString.get('browser'):
-        return userAgentString['browser']['name']
-    return None
-
-def get_os():
-    import httpagentparser
-    userAgentString = httpagentparser.detect(request.headers.get('User-Agent'))
-    if userAgentString.get('os'):
-        return userAgentString['os']['name']
-    return None
-
-# def get_dist():
-#     import httpagentparser
-#     userAgentString = request.headers.get('User-Agent')
-#     return httpagentparser.detect(userAgentString)['dist']['name']
-
-def get_platform():
-    import httpagentparser
-    userAgentString = request.headers.get('User-Agent')
-    return httpagentparser.detect(userAgentString)['platform']['name']    
 
 def print_user_details(user):
         return str(user.id) + " " + str(user.name) + str(user.email)

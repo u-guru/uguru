@@ -98,6 +98,45 @@
 {% else %}
 <div id="activity" style="font-family: 'Roboto',sans-serif;">
 {% endif %}
+	{% if not user.password %}
+		<div id='password-modal' data-keyboard='True' class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body relative">
+                <a href='javascript:void(0)' class='modal-close-now'>
+                    <span class='glyphicon glyphicon-remove grey-text modal-close-button' ></span>
+                </a>
+                <div id='login-modal-container' class='container-fluid center'>
+                	<h1 id='become-guru-text' style='margin-top:-10px; margin-bottom:30px'> Complete Signup </h1>
+                    <div id='alert-fields-student-signup-top'>
+                        Please fill in all fields.
+                    </div>
+                    <div class='login-input-container'>
+                        <div id='alert-fields-complete-password'>
+                            Please fill in all fields.
+                        </div>                        
+                        <label style='margin-top:10px' for="exampleInputPassword1">Create a Password</label>
+                        <input name='student-password' id='complete-signup-password' type="password" class="form-control" autofocus>
+                    </div>
+                    <div class='login-btn-container relative' >
+                        <a id='student-next-link' href='javascript:void(0);'style='display:none'>
+                            <span class='blue-btn signup-padding'>
+                                <span style='top:3px' class='glyphicon glyphicon-user absolute'></span>  
+                                <span style='margin-left:25px;' >Get an Account</span>
+                            </span>
+                        </a>
+                        <a id='complete-password' href='javascript:void(0);'>
+                            <span class='blue-btn clickable' id='complete-password-btn'>
+                                Complete 
+                            </span>
+                        </a>
+                    </div>
+                </div>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+	{% endif %}
 	<div id="call-to-action-bar" align:"center">
 		{% if guru_profile_not_complete %}
 
@@ -463,46 +502,7 @@
 {% include 'package-promotion.html'%}
 {% include '/macros/payment-plans-home.html'%}
 
-
-<div id="feed-messages">
-		{% if not user.customer_id %}
-		<!-- <div id='credit-modal' data-keyboard='True' class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-body">
-                
-                <div id='login-modal-container reg-text' class='container-fluid center'>
-                    <div class='font-24 reg-text center'> Add a Card </div>
-                    <div class='margin-top-10 reg-text margin-bottom-20 font-16 center padding-30'>
-                    	You will not be charged until your Guru bills you at the end of the session.
-                    </div>
-                    <div class='row block align-left margin-bottom-10 padding-30'>
-	                    <label class='reg-text'> Card Number </label>
-			            <input placeholder="•••• •••• •••• ••••" style="width:100%" type="text" size="20" data-stripe="number" class='form-control standard-input float-left' id="credit-card-num-modal">
-			        </div>
-
-			        <div class='row block align-left margin-bottom-10 padding-30 relative'>
-	                    <label class='reg-text'> Expiration Date </label>
-			            <input placeholder="MM/YY" class='font-control reg-text standard-input block exp-date-month' size="20"type="text" data-stripe="exp-month" id='credit-card-exp-date-modal'>
-			            <img class='float-right absolute powered-by-stripe-settings'src='/static/img/powered-stripe.png'> </img>
-			        </div>
-	                  
-	                <div class='row-fluid block margin-top-20'>
-	                    <a href='javascript:void(0);' id='submit-credit-card-modal'>
-	                      <span class='blue-btn blue-btn-full margin-top-20'> Done! </span>
-	                    </a>
-	                </div>
-
-	                <div id='add-credit-modal-alert' class='red-text font-12' style='display:none'>
-                        Please fill in all fields.
-                    </div>
-
-                </div>
-              </div>
-            </div><! /.modal-content -->
-          <!-- </div>/.modal-dialog
-        </div>  -->
-		{% endif %}
+<div id="feed-messages">		
 		{% for n in user.notifications|sort(attribute='time_created') %}
 			{% if n.a_id_name == 'getting-started-guru'%}
 			<div id='getting-started-guru-detailed' style='display:none'>
@@ -1744,6 +1744,34 @@
 	<script type="text/javascript" src="/static/js/jquery-ui.js"></script>
 	<script src="/static/js/jquery.nouislider.new.min.js"></script>
 	<script>
+		{% if not user.password %}
+        	$('#password-modal').modal();
+
+        	$('#complete-signup-password').keyup(function(e) {
+		      if (e.keyCode == 13) {
+		        $('#complete-password-btn').trigger('click');
+		      }
+    		});
+
+        	$('#complete-password-btn').click(function() {
+        		if (!$('#complete-signup-password').val()) {
+        			$('#alert-fields-complete-password').show();
+        		} else {
+        			$('#alert-fields-complete-password').hide();
+        			$.ajax({
+			          type: "PUT",
+			          contentType: 'application/json;charset=UTF-8',
+			          url: '/api/user' ,
+			          data: JSON.stringify({'set-password':$('#complete-signup-password').val()}),
+			          dataType: "json",
+			          success: function(result) {
+			              window.location.replace('/');
+			          }
+			    	});
+        		}
+        	});
+        {% endif %}
+
         var Link = $.noUiSlider.Link; 
         {% if confirm_payments %}
         $('#confirm-time-payment-slider').slider(
