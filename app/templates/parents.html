@@ -1,17 +1,17 @@
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1"/>    
-        <link href="/static/css/bootstrap.css" rel="stylesheet">
-        <link href="/static/css/app.css" rel="stylesheet">
-        <link href="/static/css/phone-mobile.css" rel="stylesheet">
-        <link href="/static/css/tablet-mobile.css" rel="stylesheet">
-        <link href='http://fonts.googleapis.com/css?family=Roboto:300, 400,700' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300, 100' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-        <script src='/static/js/fb-header.js'></script>
-    </head>
-    <body>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1"/>    
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/app.css" rel="stylesheet">
+    <link href="/static/css/phone-mobile.css" rel="stylesheet">
+    <link href="/static/css/tablet-mobile.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300, 400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300, 100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src='/static/js/fb-header.js'></script>
+</head>
+<body>
     <div id='main'>
         <div id='home' >
             <nav class="navbar navbar-default navbar-black" role="navigation">
@@ -23,394 +23,397 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="#">
+                </button>
+                <a class="navbar-brand" href="#">
                     <img src='/static/img/guru-new.svg' height='60px'>
                     <span class='logo-text'> &nbsp;uGuru.me </span>
-                  </a>
-                </div>
+                </a>
+            </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav">
-                    <li><a href="#" id='powered-by-cal'>by Cal bears, for Cal bears</a></li>
-                  </ul>
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><a href='/'>Back to Home</a></li>
-                    <li><a data-toggle='modal'  data-target='#pricing-modal' href='#'>
-                            <span style='padding:8px 26px;' class='blue-btn'> View Pricing & Plans </span>
-                        </a>
-                    </li>
-                  </ul>
-                </div><!-- /.navbar-collapse -->
-              </div><!-- /.container-fluid -->
-            </nav> 
-            <div id='parent-banner'>
-                <div id='main-container' class='container center'>
-                    <div class='white-text font-40 margin-top-60' id='main-banner-parent-header'>
-                        Be Supportive! Let Your Kid Succeed At Cal
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li><a href="#" id='powered-by-cal'>by Cal bears, for Cal bears</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href='/'>Back to Home</a></li>
+                <li>
+                    <a data-toggle='modal' data-target='#pricing-modal' href='#'>
+                        <span style='padding:8px 26px;' class='blue-btn'> View Pricing &amp; Plans </span>
+                    </a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav> 
+<div id='parent-banner'>
+    <div id='main-container' class='container center'>
+        <div class='white-text font-40 margin-top-60' id='main-banner-parent-header'>
+            Be Supportive! Let Your Kid Succeed At Cal
+        </div>
+        <div class='margin-top-30 font-16 white-text' id='main-banner-parent-subheader'>
+            Send $5 Free Tutoring Credit To Be Used Anytime During The Semester.
+        </div>
+        <div class='row-fluid margin-top-30 center' id='main-banner-signup'>
+            <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4'>
+                <div class='row'>
+                    <input type='text' id='parent-name-1' placeholder='Your Name' class='form-control standard-input inline no-border' style='width:40%' autofocus="autofocus">&nbsp;&nbsp;
+                    <input type='text' id='parent-email-1' placeholder='Your Email' class='form-control standard-input inline no-border'style='width:57%'>
+                </div>
+                <div class='row'>
+                    <input type='text' id='student-name-1' placeholder='Student Name' class='form-control standard-input inline no-border' style='width:40%; margin-top:8px !important;'>&nbsp;&nbsp;
+                    <input type='text' id='student-email-1' placeholder='Student Email'class='form-control standard-input inline no-border'style='width:57%;margin-top:8px !important;'>
+                </div>        
+                <div class='row margin-top-20'>
+                    <a href='javascript:void(0);' id='parent-signup-1'>
+                        <span class='blue-btn blue-btn-full center font-16'>
+                            Send Free $5 and See Our Tutoring Packages
+                        </span>
+                    </a>
+                </div>
+                <div id='parent-signup-alert-1' class='row margin-top-5 white-text center' style='display:none'>
+                    Please fill in all fields.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class='row-fluid background-grey center how-it-works-parents-text' style='height:40px'>
+    <div class='white-text font-16' style='padding:10px'>
+        How It Works
+    </div>
+</div>
+<div id='how-it-works-home white-text'>
+    <div class='row-fluid text-banner how-it-works-text-banner how-it-works-parent-text-banner'>
+        <img src='/static/img/pencil-banner.svg' id='shield-banner'>
+        <b>How It Works</b>
+    </div>
+    <div id='how-it-works-banner'>
+        <div class='container'>
+            <div class='row-fluid'>
+                <div id='testimonial-1' class='col-xs-12 col-sm-4 col-md-4'>
+                    <div class='testimonial-section margin-top-20'>
+                        <img src='/static/img/icon1.png' height='35px'> 
+                        <div class='margin-bottom-20 white-text font-32 margin-top-20 how-it-works-header'>Request Help</div>
+                        <p>
+                            <span class='white-text font-18'>
+                                Fill out a request form, and tell our Gurus what you need help with, and how much you would like to pay.
+                            </span>
+                        </p>
                     </div>
-                    <div class='margin-top-30 font-16 white-text' id='main-banner-parent-subheader'>
-                        Send $5 Free Tutoring Credit To Be Used Anytime During The Semester.
+                </div>
+                <div id='testimonial-2' class='col-xs-12 col-sm-4 col-md-4'>
+                    <div class='testimonial-section margin-top-20 '>
+                        <img src='/static/img/icon2.png' height='35px'> 
+                        <div class='margin-bottom-20 white-text font-32 margin-top-20 how-it-works-header'>Pick A Guru</div>
+                        <p>
+                            <span class='white-text font-18'>
+                                Up to 3 Gurus will respond to your request within minutes. Pick the one you like best based on their profiles and reviews.
+                            </span>
+                        </p>
                     </div>
-                    <div class='row-fluid margin-top-30 center' id='main-banner-signup'>
-                        <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4'>
-                            <div class='row'>
-                                <input type='text' id='parent-name-1' placeholder='Your Name' class='form-control standard-input inline no-border' style='width:40%' autofocus="autofocus">&nbsp;&nbsp;
-                                <input type='text' id='parent-email-1' placeholder='Your Email' class='form-control standard-input inline no-border'style='width:57%'>
-                            </div>
-                            <div class='row'>
-                                <input type='text' id='student-name-1' placeholder='Student Name' class='form-control standard-input inline no-border' style='width:40%; margin-top:8px !important;'>&nbsp;&nbsp;
-                                <input type='text' id='student-email-1' placeholder='Student Email'class='form-control standard-input inline no-border'style='width:57%;margin-top:8px !important;'>
-                            </div>        
-                            <div class='row margin-top-20'>
-                                <a href='javascript:void(0);' id='parent-signup-1'>
-                                    <span class='blue-btn blue-btn-full center font-16'>
-                                        Send Free $5 and See Our Tutoring Packages
-                                    </span>
-                                </a>
-                            </div>
-                            <div id='parent-signup-alert-1' class='row margin-top-5 white-text center' style='display:none'>
-                                Please fill in all fields.
-                            </div>
-                        </div>
+                </div>
+                <div id='testimonial-3' class='col-xs-12 col-sm-4 col-md-4'>
+                    <div class='testimonial-section margin-top-20'>
+                        <img src='/static/img/icon3.png' height='35px'> 
+                        <div class='margin-bottom-20 white-text font-32 margin-top-20 how-it-works-header'>Meet Up</div>
+                        <p>
+                            <span class='white-text font-18'>
+                                Meet up around campus at the scheduled time and location. Skip the ATM, we take care of all your payments.
+                            </span>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class='row-fluid background-grey center how-it-works-parents-text' style='height:40px'>
-                <div class='white-text font-16' style='padding:10px'>
-                    How It Works
+        </div>
+    </div>
+</div>
+<div id='testimonials'>
+    <div class='row-fluid text-banner text-banner-parent how-it-works-text-banner bold'>
+        Testimonials
+    </div>
+    <div class='container'>
+        <div class='row-fluid'>
+            <div id='testimonial-1' class='col-xs-12 col-sm-4 col-md-4'>
+                <div class='testimonial-section'>
+                    <div class='margin-bottom-20 normal-text font-32 margin-top-20 testimonial-header'>Right People</div>
+                    <p>
+                        <span class='dark-grey-text font-18'>
+                            "Finding a Guru who has taken the exact same class by the same professors  was very helpful for Hilfinger's CS61A. 
+                        </span>
+                    </p>
+                    <div class='margin-top-20 relative'>
+                        <img src='/static/img/face1.png' class='absolute testimonial-face' height='50px' style='left:5px; top:-3px'> 
+                        <div class='dark-grey-text font-18 testimonial-section-author'> - Jenny L. ECON <br> Class of 2016 </div>
+                    </div>
+                    <br>
                 </div>
             </div>
-            <div id='how-it-works-home white-text'>
-                <div class='row-fluid text-banner how-it-works-text-banner how-it-works-parent-text-banner'>
-                    <img src='/static/img/pencil-banner.svg' id='shield-banner'>
-                    <b>How It Works</b>
-                </div>
-                <div id='how-it-works-banner'>
-                    <div class='container'>
-                        <div class='row-fluid'>
-                            <div id='testimonial-1' class='col-xs-12 col-sm-4 col-md-4'>
-                                <div class='testimonial-section margin-top-20'>
-                                    <img src='/static/img/icon1.png' height='35px'> 
-                                        <div class='margin-bottom-20 white-text font-32 margin-top-20 how-it-works-header'>Request Help</div>
-                                        <p>
-                                            <span class='white-text font-18'>
-                                            Fill out a request form, and tell our Gurus what you need help with, and how much you would like to pay.
-                                            </span>
-                                        </p>
-                                </div>
+            <div id='testimonial-2' class='col-xs-12 col-sm-4 col-md-4'>
+                <div class='testimonial-section'>
+                    <div class='margin-bottom-20 normal-text font-32 margin-top-20 testimonial-header'>Right Time</div>
+                    <p>
+                        <span class='dark-grey-text font-18'>
+                            "My Guru met me at Moffit in 20 mins, and clarified everything I was stuck with for Math 54. I should've done that earlier!""
+                            <span class='dark-grey-text font-18'>
+                            </p>
+                            <div class='margin-top-20 relative'>
+                                <img src='/static/img/face2.png' class='absolute testimonial-face' height='50px' style='left:5px; top:-3px'> 
+                                <div class='dark-grey-text font-18 testimonial-section-author'> - Mark K. EECS <br> Class of 2017 </div>
                             </div>
-                            <div id='testimonial-2' class='col-xs-12 col-sm-4 col-md-4'>
-                                <div class='testimonial-section margin-top-20 '>
-                                    <img src='/static/img/icon2.png' height='35px'> 
-                                        <div class='margin-bottom-20 white-text font-32 margin-top-20 how-it-works-header'>Pick A Guru</div>
-                                        <p>
-                                            <span class='white-text font-18'>
-                                            Up to 3 Gurus will respond to your request within minutes. Pick the one you like best based on their profiles and reviews.
-                                            </span>
-                                        </p>
-                                </div>
-                            </div>
-                            <div id='testimonial-3' class='col-xs-12 col-sm-4 col-md-4'>
-                                <div class='testimonial-section margin-top-20'>
-                                    <img src='/static/img/icon3.png' height='35px'> 
-                                        <div class='margin-bottom-20 white-text font-32 margin-top-20 how-it-works-header'>Meet Up</div>
-                                        <p>
-                                            <span class='white-text font-18'>
-                                            Meet up around campus at the scheduled time and location. Skip the ATM, we take care of all your payments.
-                                            </span>
-                                        </p>
-                                </div>
-                            </div>
+                            <br>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div id='testimonials'>
-                <div class='row-fluid text-banner text-banner-parent how-it-works-text-banner bold'>
-                    Testimonials
-                </div>
-                <div class='container'>
-                    <div class='row-fluid'>
-                        <div id='testimonial-1' class='col-xs-12 col-sm-4 col-md-4'>
-                            <div class='testimonial-section'>
-                                    <div class='margin-bottom-20 normal-text font-32 margin-top-20 testimonial-header'>Right People</div>
-                                    <p>
-                                        <span class='dark-grey-text font-18'>
-                                        "Finding a Guru who has taken the exact same class by the same professors  was very helpful for Hilfinger's CS61A. 
-                                        </span>
-                                    </p>
-                                    <div class='margin-top-20 relative'>
-                                        <img src='/static/img/face1.png' class='absolute testimonial-face' height='50px' style='left:5px; top:-3px'> 
-                                        <div class='dark-grey-text font-18 testimonial-section-author'> - Jenny L. ECON <br> Class of 2016 </div>
-                                    </div>
-                                    <br>
-                            </div>
-                        </div>
-                        <div id='testimonial-2' class='col-xs-12 col-sm-4 col-md-4'>
-                            <div class='testimonial-section'>
-                                    <div class='margin-bottom-20 normal-text font-32 margin-top-20 testimonial-header'>Right Time</div>
-                                    <p>
-                                        <span class='dark-grey-text font-18'>
-                                            "My Guru met me at Moffit in 20 mins, and clarified everything I was stuck with for Math 54. I should've done that earlier!""
-                                        <span class='dark-grey-text font-18'>
-                                    </p>
-                                    <div class='margin-top-20 relative'>
-                                        <img src='/static/img/face2.png' class='absolute testimonial-face' height='50px' style='left:5px; top:-3px'> 
-                                        <div class='dark-grey-text font-18 testimonial-section-author'> - Mark K. EECS <br> Class of 2017 </div>
-                                    </div>
-                                    <br>
-                            </div>
-                        </div>
-                        <div id='testimonial-3' class='col-xs-12 col-sm-4 col-md-4'>
-                            <div class='testimonial-section'>
-                                <div class='margin-bottom-20 normal-text font-32 margin-top-20 testimonial-header'>Right Price</div>
-                                    <p>
-                                        <span class='dark-grey-text font-18'>
-                                            "Private tutoring normally cost about $40/hr. For $15/hr, it was totally worth it to get help to save my Chem 3A exams."
-                                        <span class='dark-grey-text font-18 '>
+                    <div id='testimonial-3' class='col-xs-12 col-sm-4 col-md-4'>
+                        <div class='testimonial-section'>
+                            <div class='margin-bottom-20 normal-text font-32 margin-top-20 testimonial-header'>Right Price</div>
+                            <p>
+                                <span class='dark-grey-text font-18'>
+                                    "Private tutoring normally cost about $40/hr. For $15/hr, it was totally worth it to get help to save my Chem 3A exams."
+                                    <span class='dark-grey-text font-18 '>
                                     </p>
                                     <div class='margin-top-20 relative'>
                                         <img src='/static/img/face3.png' class='absolute testimonial-face' height='50px' style='left:5px; top:-3px'> 
                                         <div class='dark-grey-text font-18 testimonial-section-author'> - Eric C. MCB <br> Class of 2015 </div>
                                     </div>
                                     <br>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div id='signup-now'>
-            <div class='row-fluid text-banner' id='referral-banner'style='height:350px'>
-                <img src='/static/img/guru-sliced.png' id='guru-banner'>
-                <div class='margin-top-30 margin-bottom-20 reg-text align-left'>
-                    <div class='white-text col-xs-offset-3 col-xs-9 col-sm-offset-3 col-sm-9 col-md-offset-4 col-md-8'>
-                        <div id='guru-banner-header' class='white-text guru-banner-parent-header'>
-                            Cal Is Not Easy...
+            <div id='signup-now'>
+                <div class='row-fluid text-banner' id='referral-banner'style='height:350px'>
+                    <img src='/static/img/guru-sliced.png' id='guru-banner'>
+                    <div class='margin-top-30 margin-bottom-20 reg-text align-left'>
+                        <div class='white-text col-xs-offset-3 col-xs-9 col-sm-offset-3 col-sm-9 col-md-offset-4 col-md-8'>
+                            <div id='guru-banner-header' class='white-text guru-banner-parent-header'>
+                                Cal Is Not Easy...
+                            </div>
+                            <div id='guru-banner-subheader' class='margin-top-10'>
+                                Help your kid with last second HW Help 
+                                in the library. Tell them about uGuru!
+                            </div>
                         </div>
-                        <div id='guru-banner-subheader' class='margin-top-10'>
-                            Help your kid with last second HW Help 
-                            in the library. Tell them about uGuru!
+                    </div>
+                </div>
+                <div class='container signup-container parents center'>
+                    <div class='row-fluid'>
+                        <div class='col-xs-12 col-md-12 signup-btn-container'>
+                            <div class='blue-text font-32 center block' id='parent-signup-header-2'>
+                                Turn Competition into Collaborative Learning
+                            </div>
+                            <div class='row-fluid blue-text font-20 center block margin-top-20'>
+                                <div class='col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6' id='parent-signup-subheader-2'>
+                                    Now your kid can get help from other Cal students, and help others while earning side cash.
+                                </div>
+                            </div>
+                            <div class='row-fluid center'>
+                                <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 margin-top-20 '>
+                                    <div class='row'>
+                                        <input type='text' id='parent-name-2' placeholder='Your Name' class='form-control standard-input grey-border inline' style='width:40%'>&nbsp;&nbsp;
+                                        <input type='text' id ='parent-email-2' placeholder='Your Email' class='form-control standard-input grey-border inline'style='width:57%'>
+                                    </div>
+                                    <div class='row'>
+                                        <input type='text' id='student-name-2' placeholder='Student Name' class='form-control standard-input grey-border inline' style='width:40%; margin-top:8px !important;'>&nbsp;&nbsp;
+                                        <input type='text' id='student-email-2' placeholder='Student Email'class='form-control standard-input grey-border inline'style='width:57%;margin-top:8px !important;'>
+                                    </div>        
+                                    <div class='row margin-top-20'>
+                                        <a href='javascript:void(0);' id='parent-signup-2'>
+                                            <span class='blue-btn blue-btn-full center font-16'>
+                                                Send Free $5 and See Our Tutoring Packages
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div id='parent-signup-alert-2' class='row margin-top-5 red-text center' style='display:none'>
+                                        Please fill in all fields.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class='container signup-container parents center'>
-                <div class='row-fluid'>
-                    <div class='col-xs-12 col-md-12 signup-btn-container'>
-                        <div class='blue-text font-32 center block' id='parent-signup-header-2'>
-                            Turn Competition into Collaborative Learning
-                        </div>
-                        <div class='row-fluid blue-text font-20 center block margin-top-20'>
-                            <div class='col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6' id='parent-signup-subheader-2'>
-                                Now your kid can get help from other Cal students, and help others while earning side cash.
-                            </div>
-                        </div>
-                        <div class='row-fluid center'>
-                            <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 margin-top-20 '>
-                                <div class='row'>
-                                    <input type='text' id='parent-name-2' placeholder='Your Name' class='form-control standard-input grey-border inline' style='width:40%'>&nbsp;&nbsp;
-                                    <input type='text' id ='parent-email-2' placeholder='Your Email' class='form-control standard-input grey-border inline'style='width:57%'>
-                                </div>
-                                <div class='row'>
-                                    <input type='text' id='student-name-2' placeholder='Student Name' class='form-control standard-input grey-border inline' style='width:40%; margin-top:8px !important;'>&nbsp;&nbsp;
-                                    <input type='text' id='student-email-2' placeholder='Student Email'class='form-control standard-input grey-border inline'style='width:57%;margin-top:8px !important;'>
-                                </div>        
-                                <div class='row margin-top-20'>
-                                    <a href='javascript:void(0);' id='parent-signup-2'>
-                                        <span class='blue-btn blue-btn-full center font-16'>
-                                            Send Free $5 and See Our Tutoring Packages
-                                        </span>
-                                    </a>
-                                </div>
-                                <div id='parent-signup-alert-2' class='row margin-top-5 red-text center' style='display:none'>
-                                    Please fill in all fields.
-                                </div>
+            <div id='guarantee'>
+                <div class='row-fluid text-banner text-banner-parent'>
+                    <img src='/static/img/shield-banner.svg' id='shield-banner'>
+                    <b>Guarantee</b>
+                </div>
+                <div class='container center'>
+                    <div class='row-fluid'>
+                        <div class='guarantee-container'>
+                            <h1 class='extra-margin-bottom dark-grey-text'><b>100% Satisfaction Guaranteed</b></h1>
+                            <div class='guarantee-text-container'>
+                                <p>
+                                    We hand-pick our Gurus to ensure the quality of each session. In rare cases where you are not satisfied, please let us know and we will give you a full refund.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id='guarantee'>
-            <div class='row-fluid text-banner text-banner-parent'>
-                <img src='/static/img/shield-banner.svg' id='shield-banner'>
-                <b>Guarantee</b>
-            </div>
-            <div class='container center'>
-                <div class='row-fluid'>
-                    <div class='guarantee-container'>
-                        <h1 class='extra-margin-bottom dark-grey-text'><b>100% Satisfaction Guaranteed</b></h1>
-                        <div class='guarantee-text-container'>
-                            <p>
-                            We hand-pick our Gurus to ensure the quality of each session. In rare cases where you are not satisfied, please let us know and we will give you a full refund.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End of main -->
-    
-    <!-- Tutor Application Form -->
-    <div id='tutor-application-form' style='display:none'>
-        <nav class="navbar navbar-default navbar-main" role="navigation">
-          <div class="container-fluid">
-            <!-- Logo and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">
-                <img src='/static/img/guru-new.svg' height='60px'>
-                <span class='logo-text blue-text'> &nbsp;uguru.me </span>
-              </a>
+        <!-- End of main -->
+
+        <!-- Tutor Application Form -->
+        <div id='tutor-application-form' style='display:none'>
+            <nav class="navbar navbar-default navbar-main" role="navigation">
+              <div class="container-fluid">
+                <!-- Logo and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src='/static/img/guru-new.svg' height='60px'>
+                    <span class='logo-text blue-text'> &nbsp;uguru.me </span>
+                </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <li><a class='reg-text' href="#">by Cal bears, for Cal bears</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right navbar-right-main">
+            </ul>
+            <ul class="nav navbar-nav navbar-right navbar-right-main">
                 <li><a id='become-guru-tutor' href="javascript:void(0);">Become a Guru</a></li>
                 <li><a data-toggle='modal'  data-target='#login-modal' href='#'><u>Log in</u></a></li>
                 <li><a id='signup-nav-tutor' href="javascript:void(0);">
-                        <span class='blue-btn'> Sign up </span>
-                    </a>
-                </li>
-              </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
-        </nav>
-        <div class='guru-app-container container-fluid'>
-            <div class='row'>
-                <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4'>
-                    <h1 class='reg-text center bold extra-margin-bottom'>
-                        Guru Application
-                    </h1>
-                    <div class='request-form-container'>
-                        
-                        <div id='tutor-app-alert' class='row-fluid red-text center normal-text no-padding'>
-                            Please fill in all fields
-                        </div>
-                        <div class='tutor-app-photo-container margin-top-30 margin-bottom-15'>
-                            <img id='tutor-app-photo' src='/static/img/default-photo.jpg' height='80px'> 
-                            <a id='upload-photo-link' href='javascript:void(0);'>
-                                <span class='photo-upload-btn blue-btn'> Upload </span>
-                            </a>
-                        </div>
-                        <input id="upload-photo" type="file"/>
+                    <span class='blue-btn'> Sign up </span>
+                </a>
+            </li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>
+<div class='guru-app-container container-fluid'>
+    <div class='row'>
+        <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4'>
+            <h1 class='reg-text center bold extra-margin-bottom'>
+                Guru Application
+            </h1>
+            <div class='request-form-container'>
 
-                        <label for='request-class'>School Email</label>
-                        <input type='text' id='tutor-app-school-email' placeholder='@berkeley.edu'class='form-control standard-input'>
-                        
-                        <label for='request-class'>School Year</label>
-                        <div class="dropdown">
-                          <button class="btn btn-default dropdown-toggle" type="button" id="tutor-app-year" data-toggle="dropdown">
-                            &nbsp;
-                            <span class="caret"></span>
-                          </button>
-                          <ul id='tutor-app-dropdown' class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Freshman</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sophomore</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Junior</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Senior</a></li>
-                            <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Grad Student</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ph.D Student</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Alumni</a></li>
-                          </ul>
-                        </div>
-
-                        <label for='request-class'>Your Major(s) </label>
-                        <input type='text' id='tutor-app-major' class='form-control standard-input'>
-
-                        <label for='request-class'>Courses You Want To Tutor </label>
-                        <div class='guru-form-course-container row-fluid'>
-                            <input type='text' placeholder='Bio 1A' id='courses-tutor-input' class='typeahead form-control standard-input'>
-                            &nbsp;&nbsp;
-                            <a href='javascript:void(0);' id='tutor-app-add-course-btn'>
-                                <span class='glyphicon glyphicon-plus green-text' id='add-course-btn-span'></span>
-                            </a>
-                        </div>
-                        <div class='courses-add-container row-fluid'>
-                        </div>
-
-
-                        <label> Select Relevant Experience </label>
-                        <div class='row-fluid margin-top-10' >
-                            <input id='tutor-slc-check' type='checkbox' class='uguru-checkbox' 
-                            ></input>
-                            <span class='reg-text'>
-                                SLC Tutor
-                            </span>
-                        </div>
-                        <div class='row-fluid margin-top-10' >
-                            <input id='tutor-res-check' type='checkbox' class='uguru-checkbox'></input>
-                            <span class='reg-text'>
-                                Residential Hall Tutor
-                            </span>
-                        </div>
-                        <div class='row-fluid margin-top-10'>
-                            <input id='tutor-gsi-check' type='checkbox' class='uguru-checkbox'></input>
-                            <span class='reg-text'>
-                                GSI
-                            </span>
-                        </div>
-                        <div class='row-fluid margin-top-10'>
-                            <input id='tutor-la-check' type='checkbox' class='uguru-checkbox'></input>
-                            <span class='reg-text'>
-                                Lab Assistant
-                            </span>
-                        </div>
-                        <div class='row-fluid margin-top-10'>
-                            <input id='tutor-cal-check' type='checkbox' class='uguru-checkbox'></input>
-                            <span class='reg-text'>
-                                I've tutored at Cal
-                            </span>
-                        </div>
-                        <label for='request-class'>Your Bio / Relevant Experience </label>
-                        <textarea id='tutor-app-experience' class='form-control standard-textarea guru-app-textarea'> </textarea>
-                        <div class='row-fluid margin-top-20'>
-                            <a href='javascript:void(0);' id='tutor-app-submit'>
-                                <span class='blue-btn blue-btn-full' style='width:100%'>
-                                    Submit
-                                </span>
-                            </a>
-                        </div> 
-                    </div>
+                <div id='tutor-app-alert' class='row-fluid red-text center normal-text no-padding'>
+                    Please fill in all fields
                 </div>
+                <div class='tutor-app-photo-container margin-top-30 margin-bottom-15'>
+                    <img id='tutor-app-photo' src='/static/img/default-photo.jpg' height='80px'> 
+                    <a id='upload-photo-link' href='javascript:void(0);'>
+                        <span class='photo-upload-btn blue-btn'> Upload </span>
+                    </a>
+                </div>
+                <input id="upload-photo" type="file"/>
+
+                <label for='request-class'>School Email</label>
+                <input type='text' id='tutor-app-school-email' placeholder='@berkeley.edu'class='form-control standard-input'>
+
+                <label for='request-class'>School Year</label>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="tutor-app-year" data-toggle="dropdown">
+                    &nbsp;
+                    <span class="caret"></span>
+                </button>
+                <ul id='tutor-app-dropdown' class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Freshman</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sophomore</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Junior</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Senior</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Grad Student</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ph.D Student</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Alumni</a></li>
+                </ul>
             </div>
+
+            <label for='request-class'>Your Major(s) </label>
+            <input type='text' id='tutor-app-major' class='form-control standard-input'>
+
+            <label for='request-class'>Courses You Want To Tutor </label>
+            <div class='guru-form-course-container row-fluid'>
+                <input type='text' placeholder='Bio 1A' id='courses-tutor-input' class='typeahead form-control standard-input'>
+                &nbsp;&nbsp;
+                <a href='javascript:void(0);' id='tutor-app-add-course-btn'>
+                    <span class='glyphicon glyphicon-plus green-text' id='add-course-btn-span'></span>
+                </a>
+            </div>
+            <div class='courses-add-container row-fluid'>
+            </div>
+
+
+            <label> Select Relevant Experience </label>
+            <div class='row-fluid margin-top-10' >
+                <input id='tutor-slc-check' type='checkbox' class='uguru-checkbox' 
+                ></input>
+                <span class='reg-text'>
+                    SLC Tutor
+                </span>
+            </div>
+            <div class='row-fluid margin-top-10' >
+                <input id='tutor-res-check' type='checkbox' class='uguru-checkbox'></input>
+                <span class='reg-text'>
+                    Residential Hall Tutor
+                </span>
+            </div>
+            <div class='row-fluid margin-top-10'>
+                <input id='tutor-gsi-check' type='checkbox' class='uguru-checkbox'></input>
+                <span class='reg-text'>
+                    GSI
+                </span>
+            </div>
+            <div class='row-fluid margin-top-10'>
+                <input id='tutor-la-check' type='checkbox' class='uguru-checkbox'></input>
+                <span class='reg-text'>
+                    Lab Assistant
+                </span>
+            </div>
+            <div class='row-fluid margin-top-10'>
+                <input id='tutor-cal-check' type='checkbox' class='uguru-checkbox'></input>
+                <span class='reg-text'>
+                    I've tutored at Cal
+                </span>
+            </div>
+            <label for='request-class'>Your Bio / Relevant Experience </label>
+            <textarea id='tutor-app-experience' class='form-control standard-textarea guru-app-textarea'> </textarea>
+            <div class='row-fluid margin-top-20'>
+                <a href='javascript:void(0);' id='tutor-app-submit'>
+                    <span class='blue-btn blue-btn-full' style='width:100%'>
+                        Submit
+                    </span>
+                </a>
+            </div> 
         </div>
     </div>
+</div>
+</div>
+</div>
 
-    <div id='pricing-modal' data-keyboard='True' class="modal fade">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body relative">
-            <a href='javascript:void(0)' class='modal-close-now'>
-                <span class='glyphicon glyphicon-remove grey-text modal-close-button' ></span>
-            </a>
-            
-            <div id='login-modal-container' style='padding:20px 0px' class='container-fluid center'>
-                <!-- <h1 class='extra-margin-bottom dark-grey-text'><b>LOGIN</b></h1> -->
-                <div id='package-header' class='bold center'> Our Available Packages </div>
-                <div id='package-header-subheader' class='font-20 center margin-top-15'>  These are only available for <b>limited time only </b></div>
-                <div id='package-header-exp'class='font-14 center margin-top-5'> Expiration date: Aug 28 (when school starts)</div>
-                <hr>
+<div id='pricing-modal' data-keyboard='True' class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body relative">
+        <a href='javascript:void(0)' class='modal-close-now'>
+            <span class='glyphicon glyphicon-remove grey-text modal-close-button' ></span>
+        </a>
 
-                <div class='row-fluid font-20 margin-top-30 relative align-left'>
-                    <span class='green-text package-option-header'><b>UNLIMITED</b> Credits for <b>$1500</b> <br>
-                        <span class='reg-text bold font-18 package-option-subheader'>4.0 A+ Students ONLY</span></span>
-                        <span style ='right:0px; top:0px'class='blue-btn float-right font-14 absolute blue-btn-mobile'> Only 17 remaining! </span>
+        <div id='login-modal-container' style='padding:20px 0px' class='container-fluid center'>
+            <div id='package-header' class='bold center'> Our Available Packages </div>
+            <div id='package-header-subheader' class='font-20 center margin-top-15'>  
+                These are only available for <b>limited time only </b>
+            </div>
+            <hr>
+
+            <div class='row-fluid font-20 margin-top-30 relative align-left'>
+                <span class='green-text package-option-header'><b>UNLIMITED</b> Credits for <b>$1500</b> <br>
+                    <span class='reg-text bold font-18 package-option-subheader'>4.0 A+ Students ONLY</span></span>
+                    <span style ='right:0px; top:0px'class='blue-btn float-right font-14 absolute blue-btn-mobile'> 
+                        Only 13 remaining! 
+                    </span>
                     <span class='block font-14 package-option-details'> (Unlimited sessions!) </span>
                 </div>
 
@@ -418,24 +421,24 @@
                     <span class='green-text package-option-header'><b>$1000</b> Credits for <b>$799</b> <br>
                         <span class='reg-text bold font-18 package-option-subheader'>Most Popular!</span></span>
                         <span style ='right:0px; top:0px'class='blue-btn float-right font-14 absolute blue-btn-mobile'> Save 20% </span>
-                    <span class='block font-14 package-option-detail'> (About 50 sessions) </span>
-                </div>
+                        <span class='block font-14 package-option-detail'> (About 50 sessions) </span>
+                    </div>
 
-                <div class='row-fluid font-20 margin-top-30 relative align-left'>
-                    <span class='green-text package-option-header'><b>$200</b> Credits for <b>$169</b> <br>
-                        <span class='reg-text bold font-18 package-option-subheader'>Starter Plan</span></span>
-                        <span style ='right:0px; top:-5px'class='blue-btn float-right font-14 absolute blue-btn-mobile'> Save 15% </span>
-                    <span class='block font-14 package-option-detail'> (About 10 sessions) </span>
-                </div>
-                <hr>
-                <div class='row-fluid font-18 margin-top-30 center relative align-left'>
-                    We have a <b>100% satisfaction guaranteed</b> or your money back policy. Read more <a href='tinyurl.com/uguru-q-a' class='blue-text'>here.</a>
-                </div>
-            </div>
+                    <div class='row-fluid font-20 margin-top-30 relative align-left'>
+                        <span class='green-text package-option-header'><b>$200</b> Credits for <b>$169</b> <br>
+                            <span class='reg-text bold font-18 package-option-subheader'>Starter Plan</span></span>
+                            <span style ='right:0px; top:-5px'class='blue-btn float-right font-14 absolute blue-btn-mobile'> Save 15% </span>
+                            <span class='block font-14 package-option-detail'> (About 10 sessions) </span>
+                        </div>
+                        <hr>
+                        <div class='row-fluid font-18 margin-top-30 center relative align-left'>
+                            We have a <b>100% satisfaction guaranteed</b> or your money back policy. Read more <a href='tinyurl.com/uguru-q-a' class='blue-text'>here.</a>
+                        </div>
+                    </div>
 
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
     </div>
 
     <div id='confirmation-modal' data-keyboard='True' class="modal fade">
@@ -454,7 +457,7 @@
                     <div class='font-18 margin-top-10'> 
                         We will update you with next steps and further details within the next couple of days!
                     </div>
-                <hr>
+                    <hr>
                 </div>
                 <div id='package-header' class='bold center'> Our Available Packages </div>
                 <div class='font-20 center margin-top-15'>  These are only available for <b>limited time only </b></div>
@@ -464,154 +467,154 @@
                 <div class='row-fluid font-20 margin-top-30 relative align-left'>
                     <span class='green-text package-option-header'><b>UNLIMITED</b> Credits for <b>$1500</b> <br>
                         <span class='reg-text bold font-18'>The 4.0 Package</span></span>
-                    <a href='javascript:void(0)' class='go-to-confirmation-parent-payment'>
-                        <span style ='right:0px; top:0px'class='blue-btn float-right font-14 absolute blue-btn-mobile'> Only 17 remaining! </span>
-                    </a>
-                    <span class='block font-14 package-option-detail'> (Unlimited sessions!) </span>
-                </div>
-
-                <div class='row-fluid font-20 margin-top-30 relative align-left'>
-                    <span class='green-text package-option-header'><b>$1000</b> Credits for <b>$799</b> <br>
-                        <span class='reg-text bold font-18 package-option-subheader'>Most Popular!</span></span>
-                    <a href='javascript:void(0)' class='go-to-confirmation-parent-payment'>
-                        <span style ='right:0px; top:0px'class='blue-btn float-right font-14 absolute blue-btn-mobile'> Save 20% </span>
-                    </a>
-                    <span class='block font-14 package-option-detail'> (About 50 sessions) </span>
-                </div>
-
-                <div class='row-fluid font-20 margin-top-30 relative align-left'>
-                    <span class='green-text package-option-header'><b>$200</b> Credits for <b>$169</b> <br>
-                        <span class='reg-text bold font-18 package-option-subheader'>Starter Plan</span></span>
-                    <a href='javascript:void(0)' class='go-to-confirmation-parent-payment'>
-                        <span style ='right:0px; top:-5px'class='blue-btn float-right font-14 absolute blue-btn-mobile'> Save 15% </span>
-                    </a>
-                    <span class='block font-14 package-option-detail'> (About 10 sessions) </span>
-                </div>
-                <hr>
-                <div class='row-fluid font-18 margin-top-30 center relative align-left'>
-                    We have a <b>100% satisfaction guaranteed</b> or your money back policy. Read more <a href='tinyurl.com/uguru-q-a' class='blue-text'>here.</a>
-                </div>
-            </div>
-            <div id='parent-confirmation-2' style='display:none'>
-                
-                <a href='javascript:void(0);' class='absolute' style='top:10px; left:10px' id='go-back-parent-confirmation'>
-                    <span class='glyphicon glyphicon-chevron-left blue-text'> </span>
-                </a>
-                <div class='font-32 normal-text center margin-top-20'> Payment Confirmation</div>
-                <hr>
-                <p id='new-credits-purchased-{{index}}'class='font-24 margin-top-20'>
-                    Selected Plan: <span id='parent-selected-plan' class='green-text bold'> ajdklalkjsd </span>
-                </p>
-                <p id='new-credits-purchased-{{index}}'class='font-24 margin-top-20'>
-                    Amount to be Billed: <span id='parent-billed-amount'class='green-text bold'> aslkjdakld </span>
-                </p>
-                <hr>
-                <div class='font-20 normal-text bold center'> Billing Details </div>
-                <div id='change-credit-container' style='display:block' class='change-payment-information margin-bottom-20'>
-                    <label> Card Number </label>
-                    <input placeholder="•••• •••• •••• ••••" style="width:100%" type="text" size="20" data-stripe="number" class='form-control standard-input' id="credit-card-num-parent-modal">
-                    <label class='margin-top-10'> Expiration Date </label>
-                    <div class = 'row-fluid relative'>
-                        <input placeholder="MM/YY" class='font-control standard-input exp-date-month' size="20"type="text" data-stripe="exp-month" id='credit-card-exp-date-parent-modal'>
-                        <img class='float-right absolute powered-by-stripe-settings'src='/static/img/powered-stripe.png'> </img>
-                    </div>
-                    <div id='add-credit-modal-parent-alert' class='red-text font-12' style='display:none'>
-                            Please fill in all fields.
-                    </div>
-                    <hr>
-                    <div class='font-16 normal-text bold center margin-top-10'> 
-                        We will send you an email confirmation and purchase receipt to <span id='parent-email-confirmation' class='blue-text'> </span>
-                    </div>
-                    <div class='row-fluid margin-top-20'>
-                        <a href='javascript:void(0);' id='submit-credit-card-modal-parents'>
-                          <span style='width:100%'class='blue-btn blue-btn-full margin-top-10'> Submit and Pay</span>
+                        <a href='javascript:void(0)' class='go-to-confirmation-parent-payment'>
+                            <span style ='right:0px; top:0px'class='blue-btn float-right font-14 absolute blue-btn-mobile'> Only 17 remaining! </span>
                         </a>
+                        <span class='block font-14 package-option-detail'> (Unlimited sessions!) </span>
                     </div>
-                    <div class='font-12 center margin-top-5'>
-                        By clicking the button above, you agree to Uguru's <a target='_blank'href='/tos/' class='blue-text'>terms of service</a> and <a target='_blank'href='/tos/' class='blue-text'>privacy policy</a>.
-                    </div>
-                </div>
 
-            </div>
-            <div id='parent-confirmation-3' style='display:none'>
-                <div class='font-32 normal-text center margin-top-20'> Thank You!</div>
-                <div class='font-24 normal-text align-left margin-top-20 green-text'> Next Steps</div>
-                <p class='font-16 normal-text align-left margin-top-20'>
-                    1. We have emailed you confirmation of your purchase. Please reach out to us directly at support@uguru.me if you have any further questions.
-                </p> 
-                <p class='font-16 normal-text align-left margin-top-20'>
-                    2. We will email <span id='student-name-confirmation'> </span> when school starts on Aug 28 to set up their account, which will have the credits you just purchased.
-                </p> 
-                <p class='font-16 normal-text align-left margin-top-20'>
-                    3. Sit back and relax! We will do everything we can to provide the best instant help to your child. 
-                </p> 
-                <div class='row-fluid margin-top-20'>
-                        <a href='javascript:void(0);' id='confirmation-modal-close'>
-                          <span style='width:100%'class='blue-btn blue-btn-full margin-top-10'> Close </span>
-                        </a>
+                    <div class='row-fluid font-20 margin-top-30 relative align-left'>
+                        <span class='green-text package-option-header'><b>$1000</b> Credits for <b>$799</b> <br>
+                            <span class='reg-text bold font-18 package-option-subheader'>Most Popular!</span></span>
+                            <a href='javascript:void(0)' class='go-to-confirmation-parent-payment'>
+                                <span style ='right:0px; top:0px'class='blue-btn float-right font-14 absolute blue-btn-mobile'> Save 20% </span>
+                            </a>
+                            <span class='block font-14 package-option-detail'> (About 50 sessions) </span>
+                        </div>
+
+                        <div class='row-fluid font-20 margin-top-30 relative align-left'>
+                            <span class='green-text package-option-header'><b>$200</b> Credits for <b>$169</b> <br>
+                                <span class='reg-text bold font-18 package-option-subheader'>Starter Plan</span></span>
+                                <a href='javascript:void(0)' class='go-to-confirmation-parent-payment'>
+                                    <span style ='right:0px; top:-5px'class='blue-btn float-right font-14 absolute blue-btn-mobile'> Save 15% </span>
+                                </a>
+                                <span class='block font-14 package-option-detail'> (About 10 sessions) </span>
+                            </div>
+                            <hr>
+                            <div class='row-fluid font-18 margin-top-30 center relative align-left'>
+                                We have a <b>100% satisfaction guaranteed</b> or your money back policy. Read more <a href='tinyurl.com/uguru-q-a' class='blue-text'>here.</a>
+                            </div>
+                        </div>
+                        <div id='parent-confirmation-2' style='display:none'>
+
+                            <a href='javascript:void(0);' class='absolute' style='top:10px; left:10px' id='go-back-parent-confirmation'>
+                                <span class='glyphicon glyphicon-chevron-left blue-text'> </span>
+                            </a>
+                            <div class='font-32 normal-text center margin-top-20'> Payment Confirmation</div>
+                            <hr>
+                            <p id='new-credits-purchased-{{index}}'class='font-24 margin-top-20'>
+                                Selected Plan: <span id='parent-selected-plan' class='green-text bold'> ajdklalkjsd </span>
+                            </p>
+                            <p id='new-credits-purchased-{{index}}'class='font-24 margin-top-20'>
+                                Amount to be Billed: <span id='parent-billed-amount'class='green-text bold'> aslkjdakld </span>
+                            </p>
+                            <hr>
+                            <div class='font-20 normal-text bold center'> Billing Details </div>
+                            <div id='change-credit-container' style='display:block' class='change-payment-information margin-bottom-20'>
+                                <label> Card Number </label>
+                                <input placeholder="•••• •••• •••• ••••" style="width:100%" type="text" size="20" data-stripe="number" class='form-control standard-input' id="credit-card-num-parent-modal">
+                                <label class='margin-top-10'> Expiration Date </label>
+                                <div class = 'row-fluid relative'>
+                                    <input placeholder="MM/YY" class='font-control standard-input exp-date-month' size="20"type="text" data-stripe="exp-month" id='credit-card-exp-date-parent-modal'>
+                                    <img class='float-right absolute powered-by-stripe-settings'src='/static/img/powered-stripe.png'> </img>
+                                </div>
+                                <div id='add-credit-modal-parent-alert' class='red-text font-12' style='display:none'>
+                                    Please fill in all fields.
+                                </div>
+                                <hr>
+                                <div class='font-16 normal-text bold center margin-top-10'> 
+                                    We will send you an email confirmation and purchase receipt to <span id='parent-email-confirmation' class='blue-text'> </span>
+                                </div>
+                                <div class='row-fluid margin-top-20'>
+                                    <a href='javascript:void(0);' id='submit-credit-card-modal-parents'>
+                                      <span style='width:100%'class='blue-btn blue-btn-full margin-top-10'> Submit and Pay</span>
+                                  </a>
+                              </div>
+                              <div class='font-12 center margin-top-5'>
+                                By clicking the button above, you agree to Uguru's <a target='_blank'href='/tos/' class='blue-text'>terms of service</a> and <a target='_blank'href='/tos/' class='blue-text'>privacy policy</a>.
+                            </div>
+                        </div>
+
                     </div>
-            </div>
-          </div>
-        </div><!-- /.modal-content -->
+                    <div id='parent-confirmation-3' style='display:none'>
+                        <div class='font-32 normal-text center margin-top-20'> Thank You!</div>
+                        <div class='font-24 normal-text align-left margin-top-20 green-text'> Next Steps</div>
+                        <p class='font-16 normal-text align-left margin-top-20'>
+                            1. We have emailed you confirmation of your purchase. Please reach out to us directly at support@uguru.me if you have any further questions.
+                        </p> 
+                        <p class='font-16 normal-text align-left margin-top-20'>
+                            2. We will email <span id='student-name-confirmation'> </span> when school starts on Aug 28 to set up their account, which will have the credits you just purchased.
+                        </p> 
+                        <p class='font-16 normal-text align-left margin-top-20'>
+                            3. Sit back and relax! We will do everything we can to provide the best instant help to your child. 
+                        </p> 
+                        <div class='row-fluid margin-top-20'>
+                            <a href='javascript:void(0);' id='confirmation-modal-close'>
+                              <span style='width:100%'class='blue-btn blue-btn-full margin-top-10'> Close </span>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div>
+  </div>
 
-    </body>
-    <footer>
-        <div class='footer parent-footer'>
-            <div class ='container'>
-                <div class='row-fluid'>
-                    <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6'>
-                        <div class='footer-link'>
-                            <a target='_blank'  href='http://tinyurl.com/uguru-q-a'> FAQ </a>
-                        </div>
-                        <div class='footer-link'>
-                            <a target='_blank'  href='/tos/'> Terms of Use </a>
-                        </div>
-                        <div class='footer-link'>
-                            <a target='_blank' href='/tos/'> Privacy Policy </a>
-                        </div>
-                        <div class='footer-link'>
-                            <a target='_blank' href='/apply/'> Careers </a>
-                        </div>
-                        <div class='footer-link'>
-                            <a href="javascript:void(0)" onclick="olark('api.box.expand')" target='_top'> Contact Us </a>
-                        </div>
+</body>
+<footer>
+    <div class='footer parent-footer'>
+        <div class ='container'>
+            <div class='row-fluid'>
+                <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6'>
+                    <div class='footer-link'>
+                        <a target='_blank'  href='http://tinyurl.com/uguru-q-a'> FAQ </a>
+                    </div>
+                    <div class='footer-link'>
+                        <a target='_blank'  href='/tos/'> Terms of Use </a>
+                    </div>
+                    <div class='footer-link'>
+                        <a target='_blank' href='/tos/'> Privacy Policy </a>
+                    </div>
+                    <div class='footer-link'>
+                        <a target='_blank' href='/apply/'> Careers </a>
+                    </div>
+                    <div class='footer-link'>
+                        <a href="javascript:void(0)" onclick="olark('api.box.expand')" target='_top'> Contact Us </a>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="/static/js/jquery.js"></script>
-        <script type="text/javascript" src="/static/js/bootstrap.js"></script>
-        <script type="text/javascript" src="/static/js/typeahead.js"></script>
-        <script src="/static/js/app.js"></script>
-        <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-        <script src="/static/js/fb.js"></script>
-        <script src="/static/js/snippets/calendar.js"></script>
-        <script src="/static/js/snippets/scroll.js"></script>
-        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-        <script src="/static/js/jquery.payment.js"></script>
-        <script src="/static/js/uguru.payments.js"></script>    
-        <script type="text/javascript">Stripe.setPublishableKey("{{key}}");</script>
-        <!-- begin olark code -->
-        <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
+    </div>
+    <script src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/typeahead.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="/static/js/fb.js"></script>
+    <script src="/static/js/snippets/calendar.js"></script>
+    <script src="/static/js/snippets/scroll.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script src="/static/js/jquery.payment.js"></script>
+    <script src="/static/js/uguru.payments.js"></script>    
+    <script type="text/javascript">Stripe.setPublishableKey("{{key}}");</script>
+    <!-- begin olark code -->
+    <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
         f[z]=function(){
-        (a.s=a.s||[]).push(arguments)};var a=f[z]._={
-        },q=c.methods.length;while(q--){(function(n){f[z][n]=function(){
-        f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={
-        0:+new Date};a.P=function(u){
-        a.p[u]=new Date-a.p[0]};function s(){
-        a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var ld=function(){function p(hd){
-        hd="head";return["<",hd,"></",hd,"><",i,' onl' + 'oad="var d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var i="body",m=d[i];if(!m){
-        return setTimeout(ld,100)}a.P(1);var j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){
-        b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{
-        b.contentWindow[g].open()}catch(w){
-        c[e]=d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{
-        var t=b.contentWindow[g];t.write(p());t.close()}catch(x){
-        b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({
-        loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
-        /* custom configuration goes here (www.olark.com/documentation) */
-        olark.identify('2934-848-10-6319');/*]]>*/</script><noscript><a href="https://www.olark.com/site/2934-848-10-6319/contact" title="Contact us" target="_blank">Questions? Feedback?</a> by Cal bears, for Cal bears href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
-        <!-- end olark code -->
-    </footer>
-</html>
+            (a.s=a.s||[]).push(arguments)};var a=f[z]._={
+            },q=c.methods.length;while(q--){(function(n){f[z][n]=function(){
+                f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={
+                    0:+new Date};a.P=function(u){
+                        a.p[u]=new Date-a.p[0]};function s(){
+                            a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var ld=function(){function p(hd){
+                                hd="head";return["<",hd,"></",hd,"><",i,' onl' + 'oad="var d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var i="body",m=d[i];if(!m){
+                                    return setTimeout(ld,100)}a.P(1);var j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){
+                                        b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{
+                                            b.contentWindow[g].open()}catch(w){
+                                                c[e]=d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{
+                                                    var t=b.contentWindow[g];t.write(p());t.close()}catch(x){
+                                                        b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({
+                                                            loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
+                                                        /* custom configuration goes here (www.olark.com/documentation) */
+                                                        olark.identify('2934-848-10-6319');/*]]>*/</script><noscript><a href="https://www.olark.com/site/2934-848-10-6319/contact" title="Contact us" target="_blank">Questions? Feedback?</a> by Cal bears, for Cal bears href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+                                                        <!-- end olark code -->
+                                                    </footer>
+                                                    </html>
