@@ -122,63 +122,6 @@ def api(arg, _id):
             return jsonify(response)
         return errors(["User or password were not correct"])
 
-
-    if arg =='apply_guru' and request.method == 'POST':
-        user = getUser()
-        
-        print request.json
-        user.school_email = request.json.get('school-email')
-        user.major = request.json.get('major')
-        user.qualifications = request.json.get('experience')
-        user.tutor_introduction = user.qualifications
-        user.year = request.json.get('year')
-        user.slc_tutor = request.json.get('slc-tutor')
-        user.la_tutor = request.json.get('la-tutor')
-        user.res_tutor = request.json.get('res-tutor')
-        user.ta_tutor = request.json.get('ta-tutor')
-        user.previous_tutor = request.json.get('previous-tutor')
-        user.approved_by_admin = True
-        user.verified_tutor = True
-
-        courses = request.json.get('courses')
-
-        #Process text courses
-        from app.static.data.variations import courses_dict
-
-        for course_txt in courses:
-            skill_to_add_id = courses_dict[course_txt.lower()]
-            skill = Skill.query.get(skill_to_add_id)
-            db_session.add(skill)
-            user.skills.append(skill)
-
-        tutor_notification_flag = False
-        for n in user.notifications:
-            print n.id, n.feed_message
-            if 'applied' in n.feed_message:
-                print "FOUND"
-                tutor_notification_flag = True
-                break
-
-
-        if not tutor_notification_flag:
-            from notifications import getting_started_tutor
-            notification = getting_started_tutor(u)
-            from emails import welcome_uguru_tutor
-            welcome_uguru_tutor(u)
-            user.notifications.append(notification)
-            db_session.add(notification)
-
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            return errors(['Something went wrong...'])
-
-        user = User.query.get(user.id)
-        response = {"user": user.__dict__}
-
-        return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
-
     if arg =='stripe_token' and request.method == 'POST':
         user = getUser()
         if user:
@@ -1942,6 +1885,7 @@ def api(arg, _id):
             user.phone_number = ajax_json['phone']
         user.approved_by_admin = True
         user.verified_tutor = True
+        user.is_a_tutor = True
 
         courses = ajax_json['courses']
 

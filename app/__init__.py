@@ -8,7 +8,7 @@ import os
 from os import environ
 
 app = Flask(__name__)
-app.config.from_object('config')
+app.config.from_pyfile('../config.py')
 
 #Detects production env
 if os.environ.get('DATABASE_URL'):
