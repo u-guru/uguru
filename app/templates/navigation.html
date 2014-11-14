@@ -1,0 +1,132 @@
+{% block navigation %}
+<nav class="navbar navbar-default navbar-main" role="navigation">
+  <div class="container-fluid">
+    <!-- Logo and toggle get grouped for better mobile display -->
+    <div class="navbar-header navbar-app">
+      <button type="button" id='mobile-nav-button'class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% if session.get('admin') %} /logout/ {% else %}../../{%endif%}">
+        <span id='base-logo-text' class='logo-text blue-text'>uguru.me</span>
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <a class='reg-text' id='powered-by-cal' href="#">Powered by Cal students</a></li>
+        </li>
+      </ul>
+      {% if user %}
+      <ul class="nav navbar-nav navbar-right navbar-right-main">
+        <div class='mobile-dropdown'>
+          <li class='align-right font-20 padding-bottom-12 padding-right-20' style='border-bottom:1px solid #dddddd !important;'>
+            <a class='reg-text' href="/activity/">
+              Your Feed <span style='font-size:16px!important;padding-left:20px;' class='glyphicon glyphicon-globe'></span>
+            </a>
+          </li>
+          <li class='align-right font-20 padding-bottom-12 padding-right-20 margin-top-10' style='border-bottom:1px solid #dddddd !important;'>
+            <a class='reg-text' href="/messages/">
+              Your Messages <span style='font-size:16px!important;padding-left:20px;' class='glyphicon glyphicon-envelope'></span></a></li>
+          </li>
+          <li class='align-right font-20 padding-bottom-12 padding-right-20 margin-top-10' style='border-bottom:1px solid #dddddd !important;'>
+            <a class='reg-text' href="/settings/">
+              Settings <span style='font-size:16px!important;padding-left:20px;' class='glyphicon glyphicon-cog'></span></a></li>
+          </li>
+          <li class= 'align-right font-20 padding-bottom-12 padding-right-20 margin-top-10' style='border-bottom:1px solid #dddddd !important;'>
+            <a class='reg-text' href="/settings/#prof">
+              Profile <span style='font-size:16px!important;padding-left:20px;' class='glyphicon glyphicon-user'></span></a></li>
+          </li>
+          <li class='align-right font-20 padding-bottom-12 padding-right-20 margin-top-10' style='border-bottom:1px solid #dddddd !important;'>
+            <a class='reg-text' href="/settings/#referral">
+              Referral <span style='font-size:16px!important;padding-left:20px;' class='glyphicon glyphicon-arrow-right'></span></a></li>
+          </li>
+          <li class='align-right font-20 padding-bottom-12 padding-right-20 margin-top-10'>
+            <a class='reg-text' href="/settings/#billing">
+              Billing <span style='font-size:16px!important;padding-left:20px;' class='glyphicon glyphicon-credit-card'></span></a></li>
+          </li>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <li id='earn-5-referral'>
+          <a href='/settings/#referral'>
+            <div class='font-14 blue-text center' id='base-referral-btn'>
+              Earn $5 for every student
+              <br> 
+              you bring to uGuru
+            </div>
+          </a>
+        </li>
+        <li>
+          <a id='become-guru-nav' href="/activity/">
+            <span class='glyphicon glyphicon-globe blue-text font-30' ></span>
+            {% if user.feed_notif and user.feed_notif > 0 %}
+            <div id="feed-notif"class="noti_bubble">{{user.feed_notif}}</div>
+            {% endif %}
+          </a>
+        </li>
+        <li>
+          <a id='become-guru-nav' href="/messages/">
+            <span class='glyphicon glyphicon-envelope blue-text font-30'></span>
+            {% if user.msg_notif and user.msg_notif > 0%}
+            <div id="msg-notif"class="noti_bubble">{{user.msg_notif}}</div>
+            {% endif %}
+          </a>
+        </li>
+        <!-- TODO : is this even used anymore -->
+        {% if user.address_book %}
+        <li>
+          <a id='become-guru-nav' href="javascript:void(0)">
+            <img id='request-payment-link' src='/static/img/dollar-sign.png' height='30px'>
+          </a>
+        </li>
+        {% endif %}
+
+        <li id='profile-img-dropdown'>
+          <a id='settings-nav relative' href="#" data-toggle ='dropdown' >
+            <img src='{{user.profile_url}}' class='navbar-photo'>
+            <span class='glyphicon glyphicon-chevron-down light-grey-text absolute' style='right:35px; top:75px; font-size:9px'></span>
+          </a>
+          <!-- Begin User Options Drop Down -->
+          <ul class="dropdown-menu settings-dropdown center" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation">
+              <a role="menuitem" tabindex="-1" id='account-settings-link' href="/settings/#main">Settings</a>
+            </li>
+            <li role="presentation" class='relative'>
+              <a role="menuitem" tabindex="-1" id='account-profile-link' href="/settings/#prof">Profile 
+                <!-- TODO : This is gross, should be implemented another way, or just with the  -->
+              {% if user.approved_by_admin and user.verified_tutor and (not user.skills or not user.tutor_introduction or not user.major or not user.year or (user.profile_url == '/static/img/default-photo.jpg')) %}
+              <span style='right:15px'class='red-text absolute'> 1 </span>
+              {% endif %}
+              </a>
+            </li>
+            <li role="presentation">
+              <a role="menuitem" tabindex="-1" id='account-referral-link' href="/settings/#referral">Referrals</a>
+            </li>
+            <li role="presentation">
+              <a role="menuitem" tabindex="-1" id='account-billing-link' href="/settings/#billing">Billing</a>
+            </li>
+            {% if not user.skills and not user.approved_by_admin %}
+            <li role="presentation" class="divider"></li>
+            <li role="presentation">
+              <a role="menuitem" tabindex="-1" href="/apply-guru/">
+                <div style='display:inline-block; margin-left:-8px'>Become a Guru</div>
+              </a>
+            </li>
+            {% endif %}
+            <li role="presentation" class="divider"></li>
+            <li role="presentation">
+              <a role="menuitem" tabindex="-1" href="/logout/">Logout</a>
+            </li>
+        </ul>
+      </li>
+    </ul>
+    {% endif %}
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+{% endblock %}
