@@ -1,5 +1,5 @@
 var autocomplete_json = [];
-var current_page_id = null; 
+var current_page_id = null;
 var previous_page_id = null;
 var request_form_complete = null;
 var a,b,c;
@@ -11,47 +11,32 @@ var package_home_option_selected = 2;
 var invert_olark = function() {
     $('#habla_window_div #habla_oplink_a').css('color','white');
     $('#habla_window_div #habla_topbar_div').css('background', '#00a9e5 none repeat scroll 0 0');
-}
+};
 var invert_olark_white = function() {
     $('#habla_window_div #habla_oplink_a').css('color','#00a9e5');
     $('#habla_window_div #habla_topbar_div').css('background', 'white none repeat scroll 0 0');
-}
-
-// window.onhashchange = locationHashChanged
-// function locationHashChanged() {
-//     if (!location.hash) {
-//       $('body').css('background-color','#00A9DE')
-//       $('#tutor-signup').hide();
-//       $('#student-signup').hide();
-//       $('#tutor-signup-next').hide();
-//       $('#login-page').hide();
-//       $('#forgot-password-page').hide();
-//       $('#home').show();
-//       invert_olark_white();
-//       location.hash = '';
-//     }
-// }
+};
 
 $(document).ready(function(){
     
     $body = $("body");
     
     $(document).on({
-        ajaxStart: function() { $body.addClass("loading");    },
-         ajaxStop: function() { $body.removeClass("loading"); }    
+        ajaxStart: function() { $body.addClass("loading"); },
+         ajaxStop: function() { $body.removeClass("loading"); }
     });
 
     if ($('#request-main-slider').length >= 1) {
         $('#request-main-slider').slider(
           {
-            'min':1, 
-            'max':10, 
-            'value':2,
+            'min': 1,
+            'max': 10,
+            'value': 2,
             change: function(event, ui) {
               slider_val = $('#request-main-slider').slider('value');
-              hr_text = 'hrs'
+              hr_text = 'hrs';
               if (slider_val == 1) {
-                hr_text = 'hr'
+                hr_text = 'hr';
               }
               $('#request-main-slider-val').text(slider_val + ' ' + hr_text);
             }
@@ -60,9 +45,9 @@ $(document).ready(function(){
 
       $('#edit-price-slider').slider(
           {
-            'min':10, 
-            'max':25, 
-            'value':18,
+            'min': 10,
+            'max': 25,
+            'value': 18,
             change: function(event, ui) {
               $('#final-offering-price').text($('#edit-price-slider').slider('value'));
               slider_val = $('#edit-price-slider').slider('value');
@@ -74,9 +59,9 @@ $(document).ready(function(){
     $('#email-notif-check').change(function(){
           var status = this.checked;
           if (status) {
-            send_notification_ajax('email', true)
+            send_notification_ajax('email', true);
           } else {
-            send_notification_ajax('email', false)
+            send_notification_ajax('email', false);
           }
           $('#email-notif-saved-text').show();
           $('#email-notif-saved-text').delay(750).fadeOut('slow');
@@ -85,24 +70,8 @@ $(document).ready(function(){
     $('#confirmation-modal').on('click', 'a.go-to-confirmation-parent-payment', function() {
           var slideIndex = $(this).closest('.go-to-confirmation-parent-payment').index('.go-to-confirmation-parent-payment');
           payment_plan_clicked = slideIndex;
-          // $('.payment-plan:visible').siblings('.student-confirm-tutor').show();
-          // $('.payment-plan:visible').hide();
-          // plan_value = process_payment_plan_by_index(payment_plan_clicked);
-          // $('#credits-purchased-' + feed_message_index).text('$' + plan_value);
-          // $('#remaining-credits-' + feed_message_index).text('$' + (plan_value + parseFloat($('#existing-credits-' + feed_message_index).text()) - parseFloat($('#session-cost-' + feed_message_index).text()).toString()));
-          // if (plan_value == 0) {
-          //   $('#amount-to-be-billed-' + feed_message_index).text('$' + (parseFloat($('#session-cost-' + feed_message_index).text()) - parseFloat($('#existing-credits-' + feed_message_index).text())).toString());
-          //   $('#new-credits-purchased-' + feed_message_index).hide();
-          //   $('#remaining-credits-div-' + feed_message_index).hide();
-          //   $('#second-hr-' + feed_message_index).hide();
-          // } else {
-          //   plan_cost = process_payment_plan_cost_by_index(payment_plan_clicked);
-          //   $('#second-hr-' + feed_message_index).show();
-          //   $('#new-credits-purchased-' + feed_message_index).show();
-          //   $('#remaining-credits-div-' + feed_message_index).show();
-          //   $('#amount-to-be-billed-' + feed_message_index).text('$' + plan_cost.toString());
-          // }
-          if (payment_plan_clicked == 0) {
+
+          if (payment_plan_clicked === 0) {
             $('#parent-selected-plan').text('Unlimited');
             $('#parent-billed-amount').text('$1500');
           } else if (payment_plan_clicked == 1) {
@@ -124,7 +93,7 @@ $(document).ready(function(){
           }
           $('#parent-confirmation-1').hide();
           $('#parent-confirmation-2').show();
-       }); 
+       });
 
     $('#go-back-parent-confirmation').click(function() {
       $('#parent-confirmation-2').hide();
@@ -134,9 +103,9 @@ $(document).ready(function(){
     $('#text-notif-check').change(function(){
           var status = this.checked;
           if (status) {
-            send_notification_ajax('text', true)
+            send_notification_ajax('text', true);
           } else {
-            send_notification_ajax('text', false)
+            send_notification_ajax('text', false);
           }
           $('#text-notif-saved-text').show();
           $('#text-notif-saved-text').delay(750).fadeOut('slow');
@@ -147,7 +116,7 @@ $(document).ready(function(){
     });
 
     $('#slc-tutor-check').change(function(){
-          send_profile_update_ajax('slc', this.checked)
+          send_profile_update_ajax('slc', this.checked);
     });
 
     $('#writing-check').change(function() {
@@ -202,23 +171,23 @@ $(document).ready(function(){
     });
 
     $('#ta-tutor-check').change(function(){
-          send_profile_update_ajax('ta', this.checked)
+          send_profile_update_ajax('ta', this.checked);
     });
 
     $('#prev-tutor-check').change(function(){
-          send_profile_update_ajax('previous', this.checked)
+          send_profile_update_ajax('previous', this.checked);
     });
 
     $('#la-tutor-check').change(function(){
-          send_profile_update_ajax('la', this.checked)
+          send_profile_update_ajax('la', this.checked);
     });
 
     $('#res-tutor-check').change(function(){
-          send_profile_update_ajax('res', this.checked)
+          send_profile_update_ajax('res', this.checked);
     });
 
     $('#high-tutor-check').change(function(){
-          send_profile_update_ajax('high', this.checked)
+          send_profile_update_ajax('high', this.checked);
     });
 
     $('#login-to-signup-modal').click(function() {
@@ -236,7 +205,7 @@ $(document).ready(function(){
         send_profile_update_ajax('intro', $('#profile-relevant-experience').val());
       }
       send_profile_update_ajax('major', $('#profile-major').val());
-      send_profile_update_ajax('phone', $('#profile-phone').val())
+      send_profile_update_ajax('phone', $('#profile-phone').val());
       $('#profile-saved').show();
       $('#profile-saved').delay(750).fadeOut('slow', function() {
         window.location.replace('/settings/#prof');
@@ -251,7 +220,7 @@ $(document).ready(function(){
       }
       else if ($('#settings-email').val().toLowerCase().indexOf('@berkeley.edu') == -1) {
           $('#account-settings-alert').text('Please enter an @berkeley.edu address.');
-          $('#account-settings-alert').show()
+          $('#account-settings-alert').show();
       } else {
         $('#account-settings-alert').hide();
           send_profile_update_ajax('phone', $('#settings-phone').val());
@@ -262,7 +231,6 @@ $(document).ready(function(){
             window.location.replace('/settings/#main');
           });
       }
-
     });
 
     function readJSON(file) {
@@ -271,7 +239,7 @@ $(document).ready(function(){
       request.send(null);
       if (request.status == 200)
           return request.responseText;
-    };
+    }
     
     autocomplete_json = JSON.parse(readJSON('/static/data/autocomplete.json'));
 
@@ -296,33 +264,22 @@ $(document).ready(function(){
       $('#remaining-credits-div-' + feed_message_index).show();
       $('#amount-to-be-billed-div-' + feed_message_index).hide();
       $('#remaining-credits-' + feed_message_index).text('$' + (parseFloat($('#existing-credits-' + feed_message_index).text()) - parseFloat($('#session-cost-' + feed_message_index).text())).toString());
-
-      // $('#amount-to-be-billed').text('$' + (parseFloat($('#session-cost').text()) - parseFloat($('#existing-credits').text())).toString());
-      //   $('#new-credits-purchased').hide();
-      //   $('#remaining-credits-div').hide();
-      //   $('#second-hr').hide();
-      // } else {
-      //   plan_cost = process_payment_plan_cost_by_index(payment_plan_clicked);
-      //   $('#second-hr').show();
-      //   $('#new-credits-purchased').show();
-      //   $('#remaining-credits-div').show();
-      //   $('#amount-to-be-billed').text('$' + plan_cost.toString());
     });
 
     $('#request-form-edit-price').click(function() {
       $('#request-form-edit-price').hide();
       $('#request-form-remove-price').show();
       $('#edit-price-container').show();
-      $('#suggested-or-your-text').text('Your Price: ')
+      $('#suggested-or-your-text').text('Your Price: ');
     });
 
     $('#request-form-remove-price').click(function() {
-      $('#final-offering-price').text('18')
+      $('#final-offering-price').text('18');
       $('#edit-price-slider').slider({'value':18});
       $('#request-form-edit-price').show();
       $('#request-form-remove-price').hide();
       $('#edit-price-container').hide();
-      $('#suggested-or-your-text').html('<span class="red-text">Midterm Season</span> Suggested Price: ')
+      $('#suggested-or-your-text').html('<span class="red-text">Midterm Season</span> Suggested Price: ');
     });
 
     $('#tutor-add-course-fields').on('click', 'a.example-skill-link', function() {
@@ -337,13 +294,11 @@ $(document).ready(function(){
       update_skill_ajax('add',skill_name);
     });
 
-
-    
-    $('#tutor-signup-phone').keyup(function (e) { 
+    $('#tutor-signup-phone').keyup(function (e) {
       var new_element = $('#tutor-signup-phone').val().slice(-1);
       $('#tutor-signup-phone').val($('#tutor-signup-phone').val().replace(/[^0-9]/g, ''));
       if ($('#tutor-signup-phone').val().length > 10) {
-        $('#tutor-signup-phone').val($('#tutor-signup-phone').val().slice(0,-1))
+        $('#tutor-signup-phone').val($('#tutor-signup-phone').val().slice(0,-1));
         return false;
       }
       if (e.keyCode == 13) {
@@ -356,7 +311,7 @@ $(document).ready(function(){
         $('.package-home-2').attr('checked',false);
         $('.package-home-3').attr('checked',false);
         $('.package-home-4').attr('checked',false);
-        $('#future-package-credit').text('$' + (1000 + parseInt($('#package-home-current').text())).toString());
+        $('#future-package-credit').text('$' + (1000 + parseInt($('#package-home-current').text(), 10)).toString());
         $('#billed-package-amount').text('$800');
         package_home_option_selected = 0;
       }
@@ -367,7 +322,7 @@ $(document).ready(function(){
         $('.package-home-1').attr('checked',false);
         $('.package-home-3').attr('checked',false);
         $('.package-home-4').attr('checked',false);
-        $('#future-package-credit').text('$' + (600 + parseInt($('#package-home-current').text())).toString());
+        $('#future-package-credit').text('$' + (600 + parseInt($('#package-home-current').text(), 10)).toString());
         $('#billed-package-amount').text('$500');
         package_home_option_selected = 1;
       }
@@ -379,7 +334,7 @@ $(document).ready(function(){
         $('.package-home-1').attr('checked',false);
         $('.package-home-2').attr('checked',false);
         $('.package-home-4').attr('checked',false);
-        $('#future-package-credit').text('$' + (200 + parseInt($('#package-home-current').text())).toString());
+        $('#future-package-credit').text('$' + (200 + parseInt($('#package-home-current').text(), 10)).toString());
         $('#billed-package-amount').text('$170');
         package_home_option_selected = 2;
       }
@@ -390,13 +345,11 @@ $(document).ready(function(){
         $('.package-home-1').attr('checked',false);
         $('.package-home-2').attr('checked',false);
         $('.package-home-3').attr('checked',false);
-        $('#future-package-credit').text('$' + (50 + parseInt($('#package-home-current').text())).toString());
+        $('#future-package-credit').text('$' + (50 + parseInt($('#package-home-current').text(), 10)).toString());
         $('#billed-package-amount').text('$45');
         package_home_option_selected = 3;
       }
     });
-
-
 
     $('#see-packages-home').click(function() {
       $('#activity').hide();
@@ -422,7 +375,7 @@ $(document).ready(function(){
       if ($('.promotion-check-1:checked')) {
         $('.promotion-check-2').attr('checked',false);
         $('.promotion-check-3').attr('checked', false);
-        $('#future-promotion-credit').text('$' + (25 + parseInt($('#package-promotion-current').text())).toString());
+        $('#future-promotion-credit').text('$' + (25 + parseInt($('#package-promotion-current').text(), 10)).toString());
         $('#billed-promotion-amount').text('$20');
         package_option_selected = 0;
       }
@@ -432,7 +385,7 @@ $(document).ready(function(){
       if ($('.promotion-check-2:checked')) {
         $('.promotion-check-1').attr('checked',false);
         $('.promotion-check-3').attr('checked', false);
-        $('#future-promotion-credit').text('$' + (60 + parseInt($('#package-promotion-current').text())).toString());
+        $('#future-promotion-credit').text('$' + (60 + parseInt($('#package-promotion-current').text(), 10)).toString());
         $('#billed-promotion-amount').text('$45');
         package_option_selected = 1;
       }
@@ -442,19 +395,19 @@ $(document).ready(function(){
       if ($('.promotion-check-3:checked')) {
         $('.promotion-check-1').attr('checked',false);
         $('.promotion-check-2').attr('checked', false);
-        $('#future-promotion-credit').text('$' + (200 + parseInt($('#package-promotion-current').text())).toString());
+        $('#future-promotion-credit').text('$' + (200 + parseInt($('#package-promotion-current').text(), 10)).toString());
         $('#billed-promotion-amount').text('$150');
         package_option_selected = 2;
       }
     });
 
     $('#promotion-package-submit').click(function() {
-      if ($('.ios-check:checked').length == 0) {
+      if ($('.ios-check:checked').length === 0) {
         $('#promotion-package-alert').text('Please choose one of the three options');
         $('#promotion-package-alert').show();
       } else {
         $('#promotion-package-alert').hide();
-        data = {'option-selected': package_option_selected}
+        data = {'option-selected': package_option_selected};
         $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
@@ -474,12 +427,12 @@ $(document).ready(function(){
     });
 
     $('#package-home-submit').click(function() {
-      if ($('.ios-check:checked').length == 0) {
+      if ($('.ios-check:checked').length === 0) {
         $('#package-home-alert').text('Please choose one of the three options');
         $('#package-home-alert').show();
       } else {
         $('#package-home-alert').hide();
-        data = {'option-selected': package_home_option_selected}
+        data = {'option-selected': package_home_option_selected};
         $.ajax({
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
@@ -498,11 +451,11 @@ $(document).ready(function(){
       }
     });
 
-    $('#student-signup-phone').keyup(function (e) { 
+    $('#student-signup-phone').keyup(function (e) {
       var new_element = $('#student-signup-phone').val().slice(-1);
       $('#student-signup-phone').val($('#student-signup-phone').val().replace(/[^0-9]/g, ''));
       if ($('#student-signup-phone').val().length > 10) {
-        $('#student-signup-phone').val($('#student-signup-phone').val().slice(0,-1))
+        $('#student-signup-phone').val($('#student-signup-phone').val().slice(0,-1));
         return false;
       }
       if (e.keyCode == 13) {
@@ -517,7 +470,7 @@ $(document).ready(function(){
         $('#save-account-settings-btn').show();
       } else {
         $('#change-pwd-settings-container').show();
-        $('#settings-change-pwd-toggle').text('(Cancel)')
+        $('#settings-change-pwd-toggle').text('(Cancel)');
         $('#save-account-settings-btn').hide();
       }
     });
@@ -528,7 +481,7 @@ $(document).ready(function(){
         $("#change-password-alert").show();
       } else {
         $('#settings-change-pwd-toggle').children('span:first').text('Change');
-        update_password_ajax($('input[name="old-pwd"]').val(), $('input[name="confirm-pwd"]').val())
+        update_password_ajax($('input[name="old-pwd"]').val(), $('input[name="confirm-pwd"]').val());
       }
     });
 
@@ -541,7 +494,7 @@ $(document).ready(function(){
             data: JSON.stringify(data),
             dataType: "json",
             success: function(result) {
-              var response_dict = result.response
+              var response_dict = result.response;
               if (response_dict['error']) {
                 $("#change-password-alert").text(response_dict['error']);
                 $("#change-password-alert").show();
@@ -549,34 +502,33 @@ $(document).ready(function(){
               if (response_dict['success']) {
                 $("#change-password-alert").hide();
                 $('#change-pwd-settings-container').hide();
-                $('input[name="old-pwd"]').val('')
-                $('input[name="new-pwd"]').val('')
+                $('input[name="old-pwd"]').val('');
+                $('input[name="new-pwd"]').val('');
 
                 $('#saved-password').show();
                 $('#saved-password').delay(750).fadeOut('slow');
               }
             }
-        });  
+        });
     };
-
 
     $('#urgency-request').on('click', '.urgency', function(){
       var current_active = $('#urgency-request .urgency.active');
-      current_active.removeClass('active')
-      $(this).addClass('active')
-    })
+      current_active.removeClass('active');
+      $(this).addClass('active');
+    });
 
     $('#num-students-request').on('click', '.num-students', function() {
       var current_active = $('#num-students-request .num-students.active');
-      current_active.removeClass('active')
-      $(this).addClass('active')
+      current_active.removeClass('active');
+      $(this).addClass('active');
 
       var index = $(this).index();
 
-      if (index == 0 ) {
+      if (index === 0 ) {
         $('#ideal-price-slider').val('15');
-        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
-        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
+        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()));
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)');
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
         $('#ideal-price-slider').noUiSlider({
           range: {
@@ -587,8 +539,8 @@ $(document).ready(function(){
       }
       else if (index == 1) {
         $('#ideal-price-slider').val('20');
-        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
-        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
+        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()));
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)');
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
         $('#ideal-price-slider').noUiSlider({
           range: {
@@ -598,8 +550,8 @@ $(document).ready(function(){
         }, true);
       } else if (index == 2) {
         $('#ideal-price-slider').val('24');
-        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
-        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
+        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()));
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)');
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
         $('#ideal-price-slider').noUiSlider({
           range: {
@@ -609,8 +561,8 @@ $(document).ready(function(){
         }, true);
       } else if (index == 3) {
         $('#ideal-price-slider').val('28');
-        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
-        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
+        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()));
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)');
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
         $('#ideal-price-slider').noUiSlider({
           range: {
@@ -620,9 +572,9 @@ $(document).ready(function(){
         }, true);
       } else if (index == 4) {
         $('#ideal-price-slider').val('30');
-        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
-        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
-        $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));        
+        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()));
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)');
+        $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
         $('#ideal-price-slider').noUiSlider({
           range: {
             'min': Number(20),
@@ -633,13 +585,13 @@ $(document).ready(function(){
 
       if (index >= 1) {
         $('#total-request-price-per-person').show();
-        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)')
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index + 1)) + ' a person if you split the bill!)');
         $('#total-price-header').text('Suggested Hourly Price:');
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
       } else {
         $('#total-request-price-per-person').hide();
-        $('#total-price-header').text('Suggested Hourly Price:')
-        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
+        $('#total-price-header').text('Suggested Hourly Price:');
+        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()));
         $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
       }
     });
@@ -651,80 +603,79 @@ $(document).ready(function(){
 
     $('#request-change-hourly-cancel').click(function() {
       $('#suggested-price-slider').hide();
-      num_students = $('#num-students-request .num-students.active').index()
-      if (num_students == 0) {
-        $('#ideal-price-slider').val(15)  
+      num_students = $('#num-students-request .num-students.active').index();
+      if (num_students === 0) {
+        $('#ideal-price-slider').val(15);
       } else if (num_students == 1) {
-        $('#ideal-price-slider').val(20)  
+        $('#ideal-price-slider').val(20);
       } else if (num_students == 2) {
-        $('#ideal-price-slider').val(24)  
+        $('#ideal-price-slider').val(24);
       } else if (num_students == 3) {
-        $('#ideal-price-slider').val(28)  
+        $('#ideal-price-slider').val(28);
       } else {
-        $('#ideal-price-slider').val(30)  
+        $('#ideal-price-slider').val(30);
       }
       $('#ideal-price-slider').trigger('change');
       $('#suggested-or-your').text('Suggested');
       $('#request-change-hourly').show();
-    })
+    });
 
     $('#ideal-price-slider').change(function() {
       var index = $('#num-students-request .num-students.active').index() + 1;
-      $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
+      $('#total-request-price').text('$' + ($('#ideal-price-slider').val()));
       if (index > 1) {
         $('#total-request-price-per-person').show();
-        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index)) + ' a person if you split the bill!)')
+        $('#total-request-price-per-person').text('(only ' + '$' + ($('#ideal-price-slider').val()/(index)) + ' a person if you split the bill!)');
       } else {
         $('#total-request-price-per-person').hide();
-        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()))
+        $('#total-request-price').text('$' + ($('#ideal-price-slider').val()));
       }
       $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
-    })
+    });
 
     $('#time-estimate-slider').change(function() {
       var index = $('#num-students-request .num-students.active').index() + 1;
       if (index > 1) {
-        $('#complete-price').text('$' + $('#time-estimate-slider').val() * index * $('#ideal-price-slider').val() + ' a person')
-      } 
+        $('#complete-price').text('$' + $('#time-estimate-slider').val() * index * $('#ideal-price-slider').val() + ' a person');
+      }
       $('#complete-price').text('Estimated Total (' + $('#time-estimate-slider').val() +'hr) : '+'$' + ($('#ideal-price-slider').val() * $('#time-estimate-slider').val()));
-    })
+    });
 
     $('#frequency-request').on('click', '.frequency', function(){
       var current_active = $('#frequency-request .frequency.active');
       current_active.removeClass('active');
       $(this).addClass('active');
-    })
+    });
 
     $('#login-link').click(function() {
         $('#home').hide();
-        $('body').css('background-color','white')
+        $('body').css('background-color','white');
         invert_olark();
         $('#login-page').show('slide', {direction: 'right'}, 200);
     });
+
     $('#student-signup-btn').click(function() {
         $('#home').hide();
-        $('body').css('background-color','white')
+        $('body').css('background-color','white');
         invert_olark();
         $('#student-signup').show('slide', {direction: 'right'}, 200);
     });
       $('#student-next-link').on('click', function() {
-          if (!$('#student-signup-name').val() || !$('#student-signup-email').val() 
-          || !$('#student-signup-password').val()) 
-          {
-              $('#alert-fields-student-signup').show()
+          if (!$('#student-signup-name').val() || !$('#student-signup-email').val() || !$('#student-signup-password').val()){
+              $('#alert-fields-student-signup').show();
           } else {
               var data_dict = {
-                  'student-signup': true,        
+                  'student-signup': true,
                   'name': $('input[name="student-name"]').val(),
                   'email': $('input[name="student-email"]').val(),
                   'phone': '',
                   'password': $('input[name="student-password"]').val(),
-              }
+              };
               $.ajax({
                 type: "POST",
                 contentType: 'application/json;charset=UTF-8',
                 url: '/validation/' ,
-                data: JSON.stringify(data_dict), 
+                data: JSON.stringify(data_dict),
                 dataType: "json",
                 success: function(result) {
                   if (result.errors) {
@@ -735,7 +686,7 @@ $(document).ready(function(){
                     if ($('#student-signup-email').val()) {
                       $('#signup-modal').modal('hide');
                       $('#login-modal').modal('show');
-                      $('#alert-fields-login').text($('#student-signup-email').val() + ' already has an account! Please log in.')
+                      $('#alert-fields-login').text($('#student-signup-email').val() + ' already has an account! Please log in.');
                       $('#alert-fields-login').show();
                     }
                     return;
@@ -748,18 +699,6 @@ $(document).ready(function(){
                   if (!$('#request-skill').val()) {
                     window.location.replace('/activity/');
                     return;
-                    // $('#student-next-link').hide();
-                    // $('input[name="student-name"]').val('');
-                    // $('input[name="student-email"]').val('');
-                    // $('input[name="student-password"]').val('');
-                    // $('input[name="student-name"]').css('border-color','grey');
-                    // $('input[name="student-email"]').css('border-color','grey');
-                    // $('input[name="student-password"]').css('border-color','grey');
-                    // $('#post-signup-span').show();
-                    // $('#post-signup-span').delay(5000).fadeOut('slow', function() {
-                    //   $('#student-next-link').show();
-                    // });
-                    // return;
                   }
 
                   $('#signup-modal').modal('hide');
@@ -767,12 +706,11 @@ $(document).ready(function(){
                   $('#request-form').show();
                 }
               });
-          } 
+          }
       });
 
     $('#tutor-app-next').click(function() {
-      if (!$('#tutor-app-major').val() || $('.tutor-app-course-tag').length == 0
-        || !$('#tutor-app-experience').val() || $('#tutor-app-year').text().trim().length == 0) {
+      if (!$('#tutor-app-major').val() || $('.tutor-app-course-tag').length === 0 || !$('#tutor-app-experience').val() || $('#tutor-app-year').text().trim().length === 0) {
           $('#tutor-app-alert').text('Please fill in all fields');
           $('#tutor-app-alert').show();
       } else {
@@ -797,7 +735,7 @@ $(document).ready(function(){
       $('#student-signup-name').css('border', '1px solid grey');
       $('#student-signup-email').css('border', '1px solid grey');
       $('#student-signup-password').css('border', '1px solid grey');
-    })
+    });
 
     $('#login-modal').on('hidden.bs.modal', function (e) {
       $('#student-signup-name').val('');
@@ -807,7 +745,7 @@ $(document).ready(function(){
       $('#student-signup-name').css('border', '1px solid grey');
       $('#student-signup-email').css('border', '1px solid grey');
       $('#student-signup-password').css('border', '1px solid grey');
-    })    
+    });
 
   $('#guru-app-back').click(function() {
     $(this).parent().parent().hide();
@@ -829,7 +767,7 @@ $(document).ready(function(){
             'gsi': $('#tutor-gsi-check').prop('checked'),
             'cal': $('#tutor-cal-check').prop('checked'),
             'phone': $('#guru-apply-phone-number').val()
-    }
+    };
     if ($('#writing-check').prop('checked')) {
       data_dict['courses'].push('writing help');
     }
@@ -843,14 +781,14 @@ $(document).ready(function(){
             type: "POST",
             contentType: 'application/json;charset=UTF-8',
             url: '/api/guru-app' ,
-            data: JSON.stringify(data_dict), 
+            data: JSON.stringify(data_dict),
             dataType: "json",
             success: function(result) {
               if (result.errors) {
-                $('#tutor-submit-app-alert').text(result.errors)
+                $('#tutor-submit-app-alert').text(result.errors);
                 $('#tutor-submit-app-alert').show();
               } else {
-                window.location.replace('/')
+                window.location.replace('/');
               }
             }
           });
@@ -860,9 +798,9 @@ $(document).ready(function(){
     arr_courses = [];
     $('.tutor-app-course-tag').each(function() {
       course_txt = $(this).children('span:first').text().toLowerCase();
-      arr_courses.push(course_txt)
+      arr_courses.push(course_txt);
     });
-    return arr_courses
+    return arr_courses;
   }
 
     $('#tutor-app-add-course-btn').click(function() {
@@ -870,9 +808,9 @@ $(document).ready(function(){
         if (autocomplete_json.indexOf(course_name) == -1) {
               alert('Please only add from the available options.');
               return;
-        } 
+        }
 
-        $('.courses-add-container').append("<span class='tutor-app-course-tag'><span>" + course_name + 
+        $('.courses-add-container').append("<span class='tutor-app-course-tag'><span>" + course_name +
             '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="remove-skill-tutor-app">x</a></span>' );
         $('#courses-tutor-input').val('');
 
@@ -886,9 +824,9 @@ $(document).ready(function(){
         if (autocomplete_json.indexOf(course_name) == -1) {
               alert('Please only add from the available options.');
               return;
-        } 
+        }
 
-        $('.courses-add-container').append("<span class='tutor-app-course-tag'><span>" + course_name + 
+        $('.courses-add-container').append("<span class='tutor-app-course-tag'><span>" + course_name +
             '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="remove-skill-tutor-app">x</a></span>' );
         $('#courses-profile-input').val('');
 
@@ -896,8 +834,6 @@ $(document).ready(function(){
           $(this).parent().remove();
         });
     });
-
-
 
     $('#tutor-app-dropdown li a').click(function() {
       $('#tutor-app-year').text($(this).text());
@@ -910,14 +846,12 @@ $(document).ready(function(){
     });
 
     $('#tutor-next-link').click(function(){
-       if (!$('#student-signup-name').val() || !$('#student-signup-email').val() 
-        || !$('#student-signup-password').val()) 
-        {
-            $('#alert-fields-student-signup').show()
+       if (!$('#student-signup-name').val() || !$('#student-signup-email').val() || !$('#student-signup-password').val()) {
+            $('#alert-fields-student-signup').show();
         } else if ($('#student-signup-email').val().toLowerCase().indexOf('@berkeley.edu') == -1 &&
           $('#student-signup-email').val().toLowerCase().indexOf('@ucla.edu') == -1) {
             $('#alert-fields-student-signup').text('Please enter an @ucla.edu or @berkeley.edu address.');
-            $('#alert-fields-student-signup').show()
+            $('#alert-fields-student-signup').show();
         } else {
             var data_dict = {
                 'student-signup': true,
@@ -926,12 +860,12 @@ $(document).ready(function(){
                 'email': $('input[name="student-email"]').val(),
                 'phone': '',
                 'password': $('input[name="student-password"]').val(),
-            }
+            };
             $.ajax({
               type: "POST",
               contentType: 'application/json;charset=UTF-8',
               url: '/validation/' ,
-              data: JSON.stringify(data_dict), 
+              data: JSON.stringify(data_dict),
               dataType: "json",
               success: function(result) {
                 if (result.dict['account-exists']) {
@@ -939,13 +873,13 @@ $(document).ready(function(){
                     guru_signup_clicked = true;
                     $('#signup-modal').modal('hide');
                     $('#login-modal').modal('show');
-                    $('#alert-fields-login').text($('#student-signup-email').val() + ' already has an account! Please Log In.')
+                    $('#alert-fields-login').text($('#student-signup-email').val() + ' already has an account! Please Log In.');
                     $('#alert-fields-login').show();
                     return;
                   }
                 } else {
                   window.location.replace('/apply-guru/');
-                }                  
+                }
               }
             });
         }

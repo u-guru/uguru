@@ -33,7 +33,6 @@ TWILIO_DEFAULT_PHONE = "+15104661138"
 twilio_client = TwilioRestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 MAX_REQUEST_TUTOR_LIMIT = 3
 
-
 stripe_keys = {
     'secret_key': os.environ['STRIPE_SECRET_KEY'],
     'publishable_key': os.environ['STRIPE_PUBLISHABLE_KEY']
