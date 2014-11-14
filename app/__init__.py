@@ -1,11 +1,8 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
-import redis
-import logging
 
 import os
-from os import environ
 
 app = Flask(__name__)
 app.config.from_pyfile('../config.py')
