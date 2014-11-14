@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 import emails, boto, stripe, os
 from sqlalchemy import desc
 import json, traceback
+from hashlib import md5
 import mandrill
 from twilio import twiml
 from mixpanel import Mixpanel
@@ -1127,6 +1128,11 @@ def api(arg, _id):
                 except stripe.error.InvalidRequestError, e:
                     return errors(['Please enter a debit card. Not a credit card'])
 
+            #for first time password set.
+            if request.json.get('set-password'):
+                from hashlib import md5
+                user.password = md5(ajax_json.get('set-password')).hexdigest() 
+                flash('Your password has been set.')
             if request.json.get('password') and request.json.get('new_password'):
                 old_password = md5(ajax_json.get('password')).hexdigest()
                 new_password = md5(ajax_json.get('new_password')).hexdigest()

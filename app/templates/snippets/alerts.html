@@ -1,0 +1,35 @@
+{% macro alert_template(_id, _class, _type, message, style, fade=None) -%}
+    <!--  
+    There are three types of alerts that you want to pass in for '_type' variable:
+        - danger (red)
+        - success (green)
+        - info (blue)
+    If none of these are passed in, the default is 'success'
+    -->
+
+    {% set alert_types = ['danger', 'success', 'info']%}
+    {% if _type not in alert_types %}
+        {% set _type = 'success' %}
+    {% endif %}
+
+    {% if fade %}
+        {% set fade = 'alert-fade' %}
+    {% else %}
+        {% set fade = '' %}
+    {% endif %}
+
+    <div id='{{_id}}' style="{{style}}" class="alert alert-{{_type}} {{_class}} {{fade}} relative" >
+                <div class='absolute'>
+                    {% if _type == 'success' %}
+                        <span class='glyphicon glyphicon-ok font-30'></span>
+                    {% elif _type == 'info' %}
+                        <span class='glyphicon glyphicon-info-sign'></span>
+                    {% else %}
+                        <span class='glyphicon glyphicon-fire'></span>
+                    {% endif %}
+                </div>
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true"><span class='glyphicon glyphicon-remove'></span></span>
+            <span class="sr-only">Close</span></button>
+        {{message|safe}}</div>
+{% endmacro %}

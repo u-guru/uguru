@@ -212,6 +212,8 @@ a .notification:hover {
   right:10px;
 }
 
+
+
 .notification-title {
   position:absolute;
   top:15px;
@@ -1706,3 +1708,7 @@ border-top: 1px solid #dddddd;
   width:55px !important;
 }
 
+#complete-password-btn {
+  padding:10px 85px;
+  font-size:20px;
+}
