@@ -240,12 +240,22 @@
 			</div>
 		 </div> -->
 		 {% endif %}
-		 {% with messages = get_flashed_messages() %}
+		 {% with messages = get_flashed_messages(with_categories=true) %}
 		  {% if messages %}
-		    {% for message in messages %}
+		    {% for category, message in messages %}
 		    <div style="display:block" class="row-fluid">
 			    <div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-			    	<div id='default-activity-alert' style="margin-bottom:0"class="alert {% if 'Chrome' or 'set' in message %} alert-info {% else %} alert-success {% endif %}">{{ message|safe}}</div>
+			    	{% from '/snippets/alerts.html' import alert_template %}
+
+			    		{{alert_template
+			    			(
+				    			_id = 'default-activity-alert', 
+				    			_class = '',
+				    			_type = category, 
+				    			message = message, 
+				    			style = 'margin-bottom:0px'
+				    		)
+			    		}}
 			    </div>
 			</div>
 		    {% endfor %}

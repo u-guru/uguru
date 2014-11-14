@@ -2648,6 +2648,8 @@ def activity():
     tutor_dict = {}
     confirm_payments = []
 
+    flash('sup', 'bitches')
+
     urgency_dict = ['ASAP', 'Tomorrow', 'This week']
 
     from app.static.data.prices import prices_dict
