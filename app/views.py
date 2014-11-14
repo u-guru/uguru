@@ -2852,7 +2852,6 @@ def settings_profile():
 def settings():
     user_id = session.get('user_id')
     not_launched_flag = False
-    print "=======This is being printed"
     print request.url
     if not user_id:
         session['redirect'] = '/settings/'
