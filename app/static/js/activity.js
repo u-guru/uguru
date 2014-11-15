@@ -362,6 +362,7 @@ $('#request-payment-link').click(function() {
   $('#activity').hide();
   $('#request-payments').show();
 });
+
 $('#tutor-request-link').click(function() {
   $('#activity').hide();
   request_a_guru_clicked = true;
@@ -370,6 +371,7 @@ $('#tutor-request-link').click(function() {
   $('#request-form-submit').children('span:first').addClass('blue-btn-full');
   $('#tutor-request').show();
 });
+
 $('#request-payment-link').click(function() {
   $('#activity').hide();
   $('#request-payments').show();
