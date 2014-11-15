@@ -26,6 +26,7 @@ from datetime import timedelta
 import redis
 import logging
 from os import environ
+from app import tasks
 
 TWILIO_ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
 TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
@@ -45,14 +46,11 @@ logger = logging.getLogger(__name__)
 stripe.api_key = stripe_keys['secret_key']
 MAX_UPLOAD_SIZE = 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
-
-celery = Celery('run')
-
-REDIS_URL = environ.get('REDISTOGO_URL', 'redis://localhost')
-
 tutor_blacklist = [1708, 624]
 
-# Use Redis as our broker and define json as the default serializer
+# This, and all @tasks, should be moved to tasks.py
+celery = Celery('run')
+REDIS_URL = environ.get('REDISTOGO_URL')
 celery.conf.update(
     BROKER_URL=REDIS_URL,
     CELERY_TASK_SERIALIZER='json',
@@ -133,6 +131,9 @@ def new_sproul(arg=None):
 
 @app.route('/florida/', methods=['GET', 'POST'])
 def florida(arg=None):
+
+    tasks.test_background.delay() # TODO : remove this. this is just an example of a background task from tasks.py 
+
     from schools import school_dict
     school_details = school_dict['UF']
     modal_flag = None
@@ -3204,7 +3205,6 @@ def test_periodic():
     if get_environment() == 'PRODUCTION':
         from emails import daily_results_email
         daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
-        # daily_results_email('samir@uguru.me', 'michael@uguru.me')
 
 @periodic_task(run_every=crontab(minute=59, hour = 6))
 def samir_results():
