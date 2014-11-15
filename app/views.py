@@ -104,7 +104,7 @@ def index(arg=None):
     if 'cal' in request.url:
         session['referral'] = 'cal'
     print modal_flag
-    return render_template('new.html', forms=[request_form],
+    return render_template('index.html', forms=[request_form],
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
 
@@ -165,55 +165,10 @@ def florida(arg=None):
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag, \
         school_details=school_details)
 
-@app.route('/ucla/', methods=['GET', 'POST'])
-def ucla(arg=None):
-    modal_flag = None
-    if os.environ.get('TESTING') and not session.get('testing-admin'):
-        return redirect(url_for('login'))
-    tutor_signup_incomplete = False
-    guru_referral = False
-    request_form = RequestForm()
-    if session.get('guru-checked'):
-        guru_referral = True
-        session.pop('guru-checked')
-    if request.args.get('email'):
-        session['referral'] = request.args.get('email')
-        if request.args.get('email') == 'guru':
-            session['guru-checked'] = True
-        return redirect(url_for('index'))
-    if session.get('user_id'):
-        user = User.query.get(session.get('user_id'))
-        # if user.skills and len(user.notifications) < 2:
-        #     return redirect(url_for('settings'))
-        return redirect(url_for('activity'))
-    if 'log_in' in request.url:
-        modal_flag = 'login'
-    if 'sign_up' in request.url:
-        modal_flag = 'signup'
-    if '/guru' in request.url:
-        modal_flag = 'guru'
-    if 'callisto' in request.url:
-        session['referral'] = 'callisto'
-    if 'fb' in request.url:
-        session['referral'] = 'fb'
-    if 'piazza' in request.url:
-        session['referral'] = 'piazza'
-    if 'cal' in request.url:
-        session['referral'] = 'cal'
-    print modal_flag
-    return render_template('ucla.html', forms=[request_form],
-        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
-        environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
-
 @app.route('/parents/', methods =['GET', 'POST'], defaults={'arg': None})
 @app.route('/parents/<arg>/')
 def parents(arg=None):
     return render_template('parents.html', key=stripe_keys['publishable_key'])
-
-
-@app.route('/new/')
-def new():
-    return render_template('new.html')
 
 @app.route('/<arg>', methods=['GET', 'POST', 'PUT'])
 def profile(arg):
@@ -224,11 +179,6 @@ def profile(arg):
     if profile_user:
         session['referral'] = arg
     return redirect(url_for('index'))
-    # if profile_user and profile_user.approved_by_admin:
-    #     from app.static.data.short_variations import short_variations_dict
-    #     return render_template('profile.html', profile_user=profile_user , user=user, variations=short_variations_dict)
-    # else:
-    #     return redirect(url_for('index'))
 
 @app.route('/apply-guru/', methods=['GET', 'POST', 'PUT'])
 def apply_guru():
@@ -239,11 +189,6 @@ def apply_guru():
         session['redirect'] = '/apply-guru/'
         return redirect('/log_in/')
 
-
-
-@app.route('/sneak/', methods=['GET', 'POST'])
-def sneak():
-    return render_template('new_index.html')
 
 @app.route('/tos/', methods=['GET','POST'])
 def tos():
@@ -1662,80 +1607,6 @@ def reset_pw():
 
     return jsonify(return_json=return_json)
 
-# @app.route('/api/<arg>', methods=('GET', 'POST'))
-# def api(arg):
-#     return_json = {}
-#     ajax_json = request.json
-#     print ajax_json
-    
-#     if arg == 'support':
-
-#         user_id = session.get('user_id')
-#         user = User.query.get(user_id)
-
-#         support_topic = ajax_json['selected-issue']
-#         support_detail = ajax_json['detail']
-
-#         from emails import send_support_email
-#         send_support_email(support_topic, support_detail, user)
-
-
-#     if arg == 'sample-tutors':
-        
-#         from app.static.data.variations import courses_dict
-        
-#         course_str = ajax_json['course'].lower()
-#         skill_to_add_id = courses_dict[course_str]
-#         skill = Skill.query.get(skill_to_add_id)
-
-#         tutors = skill.tutors
-
-#         count = 0
-#         tutor_array = []
-#         for tutor in skill.tutors:
-#             if count >= 5:
-#                 break
-#             if tutor.profile_url:
-#                 tutor_array.append(tutor.profile_url
-#                 )
-    
-#         return_json['enough-tutors'] = count > 5
-#         return_json['tutors'] = tutor_array
-
-#     if arg =='guru-app':
-#         user_id = session.get('user_id')
-#         user = User.query.get(user_id)
-
-#         user.school_email = ajax_json['school-email']
-#         user.major = ajax_json['major']
-#         user.qualifications = ajax_json['experience']
-#         user.year = ajax_json['year']
-#         user.slc_tutor = ajax_json['slc']
-#         user.la_tutor = ajax_json['la']
-#         user.res_tutor = ajax_json['res']
-#         user.ta_tutor = ajax_json['gsi']
-#         user.previous_tutor = ajax_json['cal']
-
-#         courses = ajax_json['courses']
-
-#         from app.static.data.variations import courses_dict
-
-#         for course_txt in courses:
-#             skill_to_add_id = courses_dict[course_txt]
-#             skill = Skill.query.get(skill_to_add_id)
-#             # db_session.add(skill)
-#             user.skills.append(skill)
-        
-#         try:
-#             db_session.commit()
-#         except:
-#             db_session.rollback()
-#             raise 
-
-
-#     return jsonify(response=return_json)
-
-
 @app.route('/update-skill/', methods=('GET', 'POST'))
 def update_skill():
     if request.method == "POST":
@@ -2315,14 +2186,6 @@ def admin_access():
         session['user_id'] = int(user_id)
         return jsonify(json=ajax_json)
 
-
-@app.route('/tutorsignup1/', methods=('GET', 'POST'))
-def tutorsignup1():
-    form = SignupForm()
-    if form.validate_on_submit():
-        return redirect('/')
-    return render_template('tutorsignup1.html', form=form)
-
 @app.route('/activity/request/')
 def activity_request():
     user_id = session.get('user_id')
@@ -2478,10 +2341,6 @@ def get_tutor_time_ranges(week_object):
     return tutor_calendar_dict
 
 
-@app.route('/tutor_offer/')
-def tutor_offer():
-    return render_template('tutor_offer.html')
-
 @app.route('/guru-rules/')
 def guru_rules():
     return render_template('guru-rules.html')
@@ -2494,8 +2353,6 @@ def messages():
     user = User.query.get(user_id)
     if not session.get('admin'):
         user.last_active = datetime.now()
-    # if user.verified_tutor and not is_tutor_verified(user):
-    #     return redirect(url_for('settings'))
     pretty_dates = {}
     transactions = []
     calendars = {}
@@ -2515,49 +2372,6 @@ def messages():
     return render_template('messages.html', user=user, pretty_dates=pretty_dates, environment = get_environment(), session=session, \
         transactions = transactions, conversations=conversations, calendars=calendars)
 
-@app.route('/student_request/')
-def student_request():
-    return render_template('student_request.html')
-
-@app.route('/rate/')
-def rate():
-    return render_template('rate.html')
-
-@app.route('/bill/')
-def bill():
-    return render_template('bill.html')
-
-@app.route('/request_payment/')
-def request_payment():
-    return render_template('request_payment.html')
-
-@app.route('/credit_card/')
-def credit_card():
-    return render_template('credit_card.html')
-
-@app.route('/conversation/')
-def conversation():
-    return render_template('conversation.html')
-
-@app.route('/request_tutor/')
-def request_tutor():
-    return render_template('request_tutor.html')
-
-@app.route('/student_signup/')
-def student_signup():
-    return render_template('student_signup.html')
-
-@app.route('/tutor_signup/')
-def tutor_signup():
-    return render_template('tutor_signup.html')
-
-@app.route('/tutorsignup2/')
-def tutorsignup2():  
-    return render_template('tutorsignup2.html')
-
-@app.route('/howitworks/')
-def howitworks():
-    return render_template('howitworks.html')
 
 @app.route('/settings/referral/')
 def settings_referral():
@@ -2621,10 +2435,6 @@ def calc_avg_rating(user):
     else:
         avg_rating = 0
     return avg_rating, num_ratings
-
-@app.route('/test-500/', methods=['GET','POST'])
-def test():
-    return render_template('test-500.html')
 
 
 def upload_file_to_amazon(filename, file):
@@ -2698,17 +2508,6 @@ def find_earliest_meeting_time(_request):
     print student_ranges
     print tutor_ranges
     index = 0
-    # for _range in student_ranges:
-    #     tutor_range = tutor_ranges[index]
-
-    #     if _range[0] == tutor_range[0] and _range[1] == tutor_range [1]:
-    #         return [_range[0], _range[1]]
-
-    #     if _range[0] == tutor_range[0] and tutor_range[1] >= _range[1] and tutor_range[2] <= _range[2]:
-    #         return [tutor_range[1], tutor_range[2]]
-        
-    #     index = index+1
-
     for tutor_range in tutor_ranges:
         for student_range in student_ranges:
             if student_range[0] == tutor_range[0] and student_range[1] == tutor_range [1]:
