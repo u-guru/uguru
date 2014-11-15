@@ -2,7 +2,6 @@ from app import app, models
 from app.database import *
 from flask import render_template, jsonify, redirect, request, \
 session, flash, redirect, url_for
-from forms import SignupForm, RequestForm
 from models import User, Request, Skill, Course, Notification, Mailbox, \
     Conversation, Message, Payment, Rating, Email, Week, Range, Text, Promo,\
     Unsubscribe
@@ -75,7 +74,6 @@ def index(arg=None):
         return redirect(url_for('login'))
     tutor_signup_incomplete = False
     guru_referral = False
-    request_form = RequestForm()
     if session.get('guru-checked'):
         guru_referral = True
         session.pop('guru-checked')
@@ -104,7 +102,7 @@ def index(arg=None):
     if 'cal' in request.url:
         session['referral'] = 'cal'
     print modal_flag
-    return render_template('index.html', forms=[request_form],
+    return render_template('index.html',
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
 
@@ -139,7 +137,6 @@ def florida(arg=None):
     modal_flag = None
     tutor_signup_incomplete = False
     guru_referral = False
-    request_form = RequestForm()
     if session.get('guru-checked'):
         guru_referral = True
         session.pop('guru-checked')
@@ -160,7 +157,7 @@ def florida(arg=None):
         session['referral'] = 'piazza'
     if 'cal' in request.url:
         session['referral'] = 'cal'
-    return render_template('school-landing-page.html', forms=[request_form],
+    return render_template('school-landing-page.html',
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag, \
         school_details=school_details)
