@@ -1279,7 +1279,7 @@ $('#login-submit-link').click(function(){
             $('#alert-fields-login').text('You have a Uguru.me FB account, please login with Facebook!');
           }
           if (result.json['admin']) {
-            window.location.replace('/new-admin/');
+            window.location.replace('/admin/');
           }
 
           if (result.json['success'] && result.json['redirect']) {

@@ -433,7 +433,7 @@ def add_credit():
                 raise 
         return jsonify(response=return_json)
 
-@app.route('/new-admin/')
+@app.route('/admin/')
 def new_admin():
     if session.get('admin'):
     
@@ -478,7 +478,7 @@ def new_admin():
                 )
         
 
-        return render_template('new-admin.html', day_stats=day_stats)
+        return render_template('admin/new-admin.html', day_stats=day_stats)
     return redirect(url_for('index'))
 
 
@@ -610,11 +610,12 @@ def new_admin_ratings():
     if session.get('admin'):
         ratings_dict = {}
         for r in Rating.query.all():
-            skill = Skill.query.get(r.skill_id)
-            tutor = User.query.get(r.tutor_id)
-            student = User.query.get(r.student_id)
-            ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
-                'student-name':student.name.split(" ")[0]}
+            if r.skill_id and r.tutor_id and r.student_id:
+                skill = Skill.query.get(r.skill_id)
+                tutor = User.query.get(r.tutor_id)
+                student = User.query.get(r.student_id)
+                ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
+                    'student-name':student.name.split(" ")[0]}
         return render_template('admin/admin-ratings.html', ratings=Rating.query.all(), ratings_dict=ratings_dict)
     return redirect(url_for('index'))
 
