@@ -2152,7 +2152,7 @@ if arg == 'student_data_csv':
                 tutor_dept_name_str = ', '.join(skill_dept_names)
 
                 current_row = [str(u.name), str(u.email), str(is_a_tutor), str(u.phone_number), str(u.year), str(u.major), str(dept_name_str), str(tutor_skill_name_str), str(tutor_dept_name_str)]
-            rows.append(current_row)
+                rows.append(current_row)
         except:
             continue
     import csv
