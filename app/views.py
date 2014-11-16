@@ -750,12 +750,6 @@ def admin_requests():
             student = User.query.get(r.student_id)
             request_dict['student'] = student
             total_seen_count = 0
-            for tutor in r.requested_tutors:
-                for n in tutor.notifications:
-                    if n.request_id == r.id:
-                        if n.time_read:
-                            total_seen_count += 1
-            request_dict['total_seen']  = total_seen_count
             request_dict['pending-ratings'] = 0
             request_dict['message-length'] = 0
 
@@ -763,27 +757,8 @@ def admin_requests():
                 request_dict['last-updated'] = pretty_date(r.last_updated)
             if r.connected_tutor_id:
                 tutor = User.query.get(r.connected_tutor_id)
-                request_dict['connected-tutor'] = tutor
-
-
-                all_payments = Payment.query.filter_by(student_id = student.id, tutor_id = tutor.id).all()
-
-                request_dict['num-payments'] = len(all_payments)
-
-                if len(all_payments) > 1:
-                    num_repeat_payments += 1
-
-
-                c = Conversation.query.filter_by(guru=tutor, student=student).first()
-                if c:
-                    request_dict['message-length'] = len(c.messages)
-                _payments = None 
-                        
+                request_dict['connected-tutor'] = tutor                        
                 request_dict['pending-ratings'] = 0
-                if student and student.pending_ratings:
-                    request_dict['pending-ratings'] += 1
-                if tutor and tutor.pending_ratings:
-                    request_dict['pending-ratings'] += 1
             all_requests.append(request_dict)
         all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
         return render_template('admin-requests.html', all_requests=all_requests, num_repeat_payments=num_repeat_payments)
