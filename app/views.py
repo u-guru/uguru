@@ -1,7 +1,7 @@
 from app import app, models
 from app.database import *
 from flask import render_template, jsonify, redirect, request, \
-session, flash, redirect, url_for
+session, flash, redirect, url_for, Response
 from forms import SignupForm, RequestForm
 from models import User, Request, Skill, Course, Notification, Mailbox, \
     Conversation, Message, Payment, Rating, Email, Week, Range, Text, Promo,\
@@ -481,6 +481,49 @@ def new_admin():
         return render_template('new-admin.html', day_stats=day_stats)
     return redirect(url_for('index'))
 
+
+@app.route('/admin/students.csv')
+def generate_large_csv():
+    def generate():
+        rows = []
+        row_one = ['Name', 'Email' , 'Tutor?', 'Phone Number', 'Year', 'Major', 'Courses they have requested help in', 'Courses they can tutor', 'Departments they can tutor']
+        rows.append(row_one)
+        json_data=open('app/static/data/all_courses.json')
+        course_data = json.load(json_data)
+
+        for u in User.query.all():
+            if u.name and u.email: 
+                requests = Request.query.filter_by(student_id = u.id).all()
+                dept_names = []
+                if requests:
+                    for r in requests:
+                        if r.skill_id:
+                            skill = Skill.query.get(r.skill_id)
+                            dept_name = course_data[skill.name]['fullDepartmentCode']
+                            if dept_name not in dept_names:
+                                dept_names.append(dept_name)
+                if dept_names:
+                    dept_name_str = '; '.join(dept_names)
+                else:
+                    dept_name_str = ' '
+                is_a_tutor = False
+                if u.approved_by_admin: 
+                    is_a_tutor = True
+                    user_skills = []
+                    skill_dept_names = []
+                    for skill in u.skills:
+                        user_skills.append(skill.name)
+                        skill_dept_name = course_data[skill.name]['fullDepartmentCode']
+                        if skill_dept_name not in skill_dept_names:
+                            skill_dept_names.append(skill_dept_name)
+                tutor_skill_name_str = '; '.join(user_skills)
+                tutor_dept_name_str = ', '.join(skill_dept_names)
+
+                current_row = [str(u.name), str(u.email), str(is_a_tutor), str(u.phone_number), str(u.year), str(u.major), str(dept_name_str), str(tutor_skill_name_str), str(tutor_dept_name_str)]
+            rows.append(current_row)
+        for row in rows:
+            yield ','.join(row) + '\n'
+    return Response(generate(), mimetype='text/csv')
 
 @app.route('/admin/students/')
 def new_admin_students():
