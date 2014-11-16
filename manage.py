@@ -2105,6 +2105,100 @@ if arg == 'data_to_csv':
 
     result = mandrill_client.messages.send(message=message)
 
+
+if arg == 'student_data_csv':
+    import json
+    email = sys.argv[2]
+    rows = []
+    row_one = ['Name', 'Email' , 'Tutor?', 'Phone Number', 'Year', 'Major', 'Courses they have requested help in', 'Courses they can tutor', 'Departments they can tutor']
+    rows.append(row_one)
+    general_skills = ['Writing Help', 'Interview Help', 'Resume Help']
+    json_data=open('app/static/data/all_courses.json')
+    course_data = json.load(json_data)
+
+    for u in User.query.all():
+        try:
+            if u.name and u.email: 
+                requests = Request.query.filter_by(student_id = u.id).all()
+                dept_names = []
+                if requests:
+                    for r in requests:
+                        if r.skill_id:
+                            skill = Skill.query.get(r.skill_id)
+                            if skill.name not in general_skills:
+                                dept_name = course_data[skill.name]['fullDepartmentCode']
+                            else: 
+                                dept_name = skill.name
+                            if dept_name not in dept_names:
+                                dept_names.append(dept_name)
+                if dept_names:
+                    dept_name_str = '; '.join(dept_names)
+                else:
+                    dept_name_str = ' '
+                is_a_tutor = False
+                user_skills = []
+                skill_dept_names = []
+                if u.approved_by_admin: 
+                    is_a_tutor = True
+                    for skill in u.skills:
+                        user_skills.append(skill.name)
+                        if skill.name not in general_skills:
+                            skill_dept_name = course_data[skill.name]['fullDepartmentCode']
+                        else:
+                            skill_dept_name = skill.name
+                        if skill_dept_name not in skill_dept_names:
+                            skill_dept_names.append(skill_dept_name)
+                tutor_skill_name_str = '; '.join(user_skills)
+                tutor_dept_name_str = ', '.join(skill_dept_names)
+
+                current_row = [str(u.name), str(u.email), str(is_a_tutor), str(u.phone_number), str(u.year), str(u.major), str(dept_name_str), str(tutor_skill_name_str), str(tutor_dept_name_str)]
+            rows.append(current_row)
+        except:
+            continue
+    import csv
+    with open('data.csv', 'wb') as fp:
+        a = csv.writer(fp, delimiter=',')
+        a.writerows(rows)
+
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+    to_emails = []
+    to_emails.append({
+        'email':email,
+        'name': 'UGURU Data Dump',
+        'type': 'to'
+    })
+
+    # import json
+    # with open('data.csv', 'w') as outfile:
+    #   json.dump(data, outfile)
+    # print data
+    import base64
+
+    with open("data.csv", "rb") as csv_file:
+        encoded_string = base64.b64encode(csv_file.read())
+
+    message = {
+        'subject': "All uGuru Student & Tutor Data",
+        'from_email': 'yourmom@uguru.me',
+        'from_name': 'Uguru Data Admin',
+        'to': to_emails,
+        'headers': {'Reply-To': 'makhani.samir@gmail.com'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'attachments': [
+                {
+                    "type": "text/csv",
+                    "name": "data.csv",
+                    "content": encoded_string
+                }
+            ],
+        'preserve_recipients':False,
+        'tags':['uguru-data']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+
 if arg == 'email_gurus_update':
     to_emails = []
     users = User.query.all()
