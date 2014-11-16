@@ -2118,7 +2118,7 @@ if arg == 'student_data_csv':
 
     for u in User.query.all():
         try:
-            if u.name and u.email: 
+            if u.name and u.email and u.major and u.year: 
                 requests = Request.query.filter_by(student_id = u.id).all()
                 dept_names = []
                 if requests:
@@ -2138,7 +2138,7 @@ if arg == 'student_data_csv':
                 is_a_tutor = False
                 user_skills = []
                 skill_dept_names = []
-                if u.approved_by_admin: 
+                if u.approved_by_admin:
                     is_a_tutor = True
                     for skill in u.skills:
                         user_skills.append(skill.name)
@@ -2180,7 +2180,7 @@ if arg == 'student_data_csv':
     message = {
         'subject': "All uGuru Student & Tutor Data",
         'from_email': 'yourmom@uguru.me',
-        'from_name': 'Uguru Data Admin',
+        'from_name': 'Uguru Data Admin',    
         'to': to_emails,
         'headers': {'Reply-To': 'makhani.samir@gmail.com'},
         'important': True,
