@@ -507,10 +507,10 @@ def generate_large_csv():
                 else:
                     dept_name_str = ' '
                 is_a_tutor = False
+                user_skills = []
+                skill_dept_names = []
                 if u.approved_by_admin: 
                     is_a_tutor = True
-                    user_skills = []
-                    skill_dept_names = []
                     for skill in u.skills:
                         user_skills.append(skill.name)
                         skill_dept_name = course_data[skill.name]['fullDepartmentCode']
