@@ -488,6 +488,7 @@ def generate_large_csv():
         rows = []
         row_one = ['Name', 'Email' , 'Tutor?', 'Phone Number', 'Year', 'Major', 'Courses they have requested help in', 'Courses they can tutor', 'Departments they can tutor']
         rows.append(row_one)
+        general_skills = ['Writing Help', 'Interview Help', 'Resume Help']
         json_data=open('app/static/data/all_courses.json')
         course_data = json.load(json_data)
 
@@ -499,7 +500,10 @@ def generate_large_csv():
                     for r in requests:
                         if r.skill_id:
                             skill = Skill.query.get(r.skill_id)
-                            dept_name = course_data[skill.name]['fullDepartmentCode']
+                            if skill.name not in general_skills:
+                                dept_name = course_data[skill.name]['fullDepartmentCode']
+                            else: 
+                                dept_name = skill.name
                             if dept_name not in dept_names:
                                 dept_names.append(dept_name)
                 if dept_names:
@@ -513,7 +517,10 @@ def generate_large_csv():
                     is_a_tutor = True
                     for skill in u.skills:
                         user_skills.append(skill.name)
-                        skill_dept_name = course_data[skill.name]['fullDepartmentCode']
+                        if skill.name not in general_skills:
+                            skill_dept_name = course_data[skill.name]['fullDepartmentCode']
+                        else:
+                            skill_dept_name = skill.name
                         if skill_dept_name not in skill_dept_names:
                             skill_dept_names.append(skill_dept_name)
                 tutor_skill_name_str = '; '.join(user_skills)
