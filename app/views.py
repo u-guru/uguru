@@ -2267,7 +2267,7 @@ def success():
                 r.requested_tutors.remove(tutor)
 
             if tier_2_tutor_ids:
-                logging.info("Here are all the tier2 tutor ids: "  str(tier_2_tutor_ids))
+                logging.info("Here are all the tier2 tutor ids: " + str(tier_2_tutor_ids))
                 if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
                     send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=100)
                 else:
