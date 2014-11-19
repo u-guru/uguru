@@ -233,20 +233,14 @@ class User(Base):
         self.phone_number = phone_number
         self.time_created = datetime.now()
 
-        if is_a_tutor:
-            pass
-            # TODO : Pass in skills and Create skill objects and append them to user skills
-             #TODO : See if any of their skills are needed right now and add to their incoming requests
+    def __repr__(self):
+        return "<User " + str(self.id) + " " + str(self.name) + " " + str(self.email) + ">"
 
     def calc_avg_ratings(self):
         rating_sum = 0.0
         for rating in self.tutor_ratings:
             rating_sum += rating.tutor_rating
         return rating_sum / len(self.tutor_rating)
-
-    def __repr__(self):
-        return "<Name: %s, Email: %s, Phone: %s, Date: %s>" % (self.name, self.email,\
-            str(self.phone_number), self.time_created.strftime('%b %d,%Y'))
 
 class Mailbox(Base):
     __tablename__ = 'mailbox'

@@ -1,22 +1,21 @@
-from app import app, models
+from app import app
 from app.database import *
-from flask import render_template, jsonify, redirect, request, \
-session, flash, redirect, url_for
-from forms import SignupForm, RequestForm
-from models import User, Request, Skill, Course, Notification, Mailbox, \
-    Conversation, Message, Payment, Rating, Email, Week, Range, Promo
+from flask import render_template, jsonify, redirect, request, session, flash, redirect, url_for
+from forms import SignupForm, RequestForm #unused?
+from models import User, Request, Skill, Course, Notification, Mailbox, Conversation, Message, Payment, Rating, Email, Week, Range, Promo
 from hashlib import md5
 from datetime import datetime, timedelta
-import emails, boto, stripe, os
-from sqlalchemy import desc
-import json, traceback
-from hashlib import md5
-import mandrill
-from twilio import twiml
-from mixpanel import Mixpanel
-import random
 from apscheduler.schedulers.background import BackgroundScheduler as Scheduler
-import views, time
+
+import os
+import time
+import boto
+import stripe
+import json
+import twilio
+import random
+import views
+import logging
 
 REQUEST_EXP_TIME_IN_SECONDS = 172800
 TUTOR_ACCEPT_EXP_TIME_IN_SECONDS = 86400
@@ -30,7 +29,7 @@ PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 def api(arg, _id):
     return_json = {}
     ajax_json = request.json
-    print ajax_json
+    logging.info(ajax_json)
 
     if arg == 'forgot_password' and request.method == 'POST':
         email = request.json.get("email").lower()
@@ -41,13 +40,12 @@ def api(arg, _id):
         else:
             from emails import generate_new_password
             from app.static.data.random_codes import random_codes_array
-            import random
             new_password = random.choice(random_codes_array).lower()
-            print new_password
+            logging.info(new_password)
             email = ajax_json['email'].lower()
             u.password = md5(new_password).hexdigest()
             generate_new_password(u, new_password)
-            print "reset email sent to " + email + " " + new_password
+            logging.info("reset email sent to " + email + " " + new_password)
             try:
                 db_session.commit()
             except:
@@ -103,7 +101,6 @@ def api(arg, _id):
         user = User.query.filter_by(email=email, password=password).first()
 
         if user:
-            import random
             user.auth_token = "%032x" % random.getrandbits(128);
             
             try:
@@ -126,10 +123,10 @@ def api(arg, _id):
     if arg =='stripe_token' and request.method == 'POST':
         user = getUser()
         if user:
-            user_token = request.json.get('stripe-token')
+            user_token = request.json.get('stripe-token') 
             customer = stripe.Customer.create(
-                email=user.email,
-                card = stripe_user_token
+                email = user.email,
+                card = stripe_user_token # TODO : should this be user_token? 
                 )
 
             user.customer_id = customer.id
@@ -172,8 +169,8 @@ def api(arg, _id):
             r = Request.query.get(request_id)
             relevant_notifications = Notification.query.filter_by(custom_tag='confirm-meeting', request_id=request_id).all()
 
-            print "# of relevant notifications", len(relevant_notifications)
-            print relevant_notifications            
+            logging.info("# of relevant notifications " + str(len(relevant_notifications)))
+            logging.info(relevant_notifications)
             
             student_notif = None
             tutor_notif = None
@@ -185,8 +182,8 @@ def api(arg, _id):
                 else:
                     student_notif = n
 
-            print student_notif.feed_message
-            print tutor_notif.feed_message
+            logging.info(student_notif.feed_message)
+            logging.info(tutor_notif.feed_message)
 
             tutor_notif.time_read = None
             student_notif.time_read = None
@@ -207,16 +204,15 @@ def api(arg, _id):
 
             for n in student.notifications:
                 if n.custom_tag == 'next-time' and request_id == n.request_id:
-                    print "student notification removed"
-                    print n.feed_message
+                    logging.info("student notification removed")
+                    logging.info(n.feed_message)
                     student.notifications.remove(n)
 
             for n in tutor.notifications:
                 if n.custom_tag == 'next-time' and request_id == n.request_id:
-                    print n.feed_message
-                    print "tutor notification removed"
+                    logging.info(n.feed_message)
+                    logging.info("tutor notification removed")
                     tutor.notifications.remove(n)
-
             try:
                 db_session.commit()
             except:
@@ -243,7 +239,7 @@ def api(arg, _id):
 
             #check tutor is confirming
             if r.connected_tutor_id == user.id:
-                print "tutor is confirming"
+                logging.info("tutor is confirming")
                 for n in student.notifications:
                     if n.custom_tag =='confirm-meeting' and n.request_id == r.id:
                         student.notifications.remove(n)
@@ -254,7 +250,7 @@ def api(arg, _id):
                 flash('We have sent a notification to ' + student.name.split(" ")[0].title() + ' to confirm the time amount.')
 
             else: #student is confirming
-                print "student is confirming"
+                logging.info("student is confirming")
                 for n in tutor.notifications:
                     if n.custom_tag =='confirm-meeting' and n.request_id == r.id:
                         tutor.notifications.remove(n)                    
@@ -269,7 +265,6 @@ def api(arg, _id):
             payment = Payment.query.filter_by(student_id = student.id, tutor_id = tutor.id).first()
             payment.tutor_confirmed = False
 
-            
             from notifications import next_time_student_notif, next_time_tutor_notif
             
             if not next_time_flag_student:
@@ -292,8 +287,6 @@ def api(arg, _id):
 
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
 
-
-
         return errors(["Invalid Token"])
 
     if arg == 'notifications' and request.method == 'GET' and _id == None:
@@ -303,7 +296,7 @@ def api(arg, _id):
             user_notifications_arr = []
             # user_notifications_arr = [n.__dict__  for n in user_notifications]
             tutor_tags = ['tutor-request-offer', 'getting-started-tutor', 'tutor-receive-payment', 'tutor-cashed-out']
-            student_tags = ['student-request-help', 'student-payment-approval', 'student-incoming-offer']
+            student_tags = ['student-request-help', 'student-payment-approval', 'student-incoming-offer'] # TODO : assigned but unused
 
             for n in user_notifications:
                 n_dict = sanitize_dict(n.__dict__)
@@ -344,8 +337,6 @@ def api(arg, _id):
                         else:
                             n_dict['status'] = get_time_remaining(TUTOR_ACCEPT_EXP_TIME_IN_SECONDS - seconds_since_creation)
 
-                # n_detail['request'] = r.__dict__
-                # n_detail['request']['server_id'] = n_detail['request'].pop('id')
                 if n.payment_id:
                     p = Payment.query.get(n.payment_id)
                     n_dict['status'] = 'active'
@@ -388,7 +379,6 @@ def api(arg, _id):
             )
 
             p = Payment()
-            
 
             p.time_created = datetime.now()
             p.stripe_recipient_id = transfer['id']
@@ -510,8 +500,7 @@ def api(arg, _id):
             m = Mailbox(user)
             db_session.add(user)
             db_session.add(m)
-        # if request.json.get('referral-code'):
-        #     user.referral_code = request.json.get('referral-code')
+
         user.parent_name = request.json.get('parent-name');
         user.parent_email = request.json.get('parent-email');
         user.name = request.json.get('student-name');
@@ -550,15 +539,13 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(['Invalid Token'])
 
-
-
     if arg =='send_message' and _id == None and request.method == 'POST':
         user = getUser()
         if user:
             message_contents = ajax_json.get('contents')
             conversation_id = ajax_json.get('conversation_id')
             conversation = Conversation.query.get(conversation_id)
-            sender_id = user.id
+            sender_id = user.id # TODO : assigned but unused
             if conversation.guru_id == user.id:
                 receiver_id = conversation.student_id
                 receiver = User.query.get(receiver_id)
@@ -603,7 +590,6 @@ def api(arg, _id):
 
         return errors(['Invalid Token'])
 
-
     if arg =='billing-contacts' and request.method == 'GET':
         user = getUser()
         billing_contacts_arr = []
@@ -613,7 +599,7 @@ def api(arg, _id):
             for conversation in conversations:
                 if conversation.student_id != user.id:
                     student = User.query.get(conversation.student_id)
-                    print student.customer_id
+                    logging.info(student.customer_id)
                     r = conversation.requests[0]
                     hourly_rate = r.student_estimated_hour
                     profile_url = student.profile_url
@@ -639,14 +625,13 @@ def api(arg, _id):
             p = Payment.query.get(int(request.json.get('payment_id')))
             total_amount = p.time_amount * p.tutor_rate
             
-
             #tutor is confirming --> this is only for first time requests
             if p.tutor_confirmed == False and user.id == p.tutor_id:
                 tutor = user
-                print "Tutor confirming is beginning"
+                logging.info("Tutor confirming is beginning")
                 p.tutor_confirmed = True
                 if p.time_amount != float(request.json.get('time_amount')):
-                    print "Time amount is different"
+                    logging.info("Time amount is different")
                     time_difference = float(request.json.get('time_amount')) - p.time_amount 
                     new_payment = Payment(p.request_id)
                     new_payment.student_paid_amount = time_difference * p.tutor_rate
@@ -656,7 +641,7 @@ def api(arg, _id):
                     new_payment.time_created = datetime.now()
                     new_payment.time_amount = request.json.get('time_amount')
                     p.confirmed_time_amount = request.json.get('time_amount')
-                    print "New confirmed time amount is " + str(p.confirmed_time_amount)
+                    logging.info("New confirmed time amount is " + str(p.confirmed_time_amount))
                     
 
                     tutor = user
@@ -689,7 +674,7 @@ def api(arg, _id):
                     skill_name = short_variations_dict[Skill.query.get(p.skill_id).name]
 
                     if total_amount > 0:
-                        print student, student.id, user, user.id
+                        logging.info(str(student) + str(student.id) + str(user))
                         student_notification = student_payment_approval(student, user , p, total_amount, p.stripe_charge_id, skill_name, False)
                         student.notifications.append(student_notification)
                         db_session.add(student_notification)
@@ -736,9 +721,6 @@ def api(arg, _id):
                     user.notifications.append(tutor_notification)
                     db_session.add(tutor_notification)
 
-                #generate the notification(s) --> student rating, tutor rating
-
-
             #student is confirming
             if p.student_confirmed == False and p.student_id == user.id:
                 p.student_confirmed = True
@@ -769,7 +751,7 @@ def api(arg, _id):
                                 description="charge for receiving tutoring"
                             )
                             p.stripe_charge_id = charge['id']
-                            print p.stripe_charge_id
+                            logging.info(p.stripe_charge_id)
                         except stripe.error.CardError, e:
                             if p.student_id == user.id:
                                 error_msg = "Sorry! Your card has been declined. Please update your payment info in your settings > billing."
@@ -786,7 +768,7 @@ def api(arg, _id):
                                 description="charge for receiving tutoring"
                             )
                             p.stripe_charge_id = charge['id']
-                            print p.stripe_charge_id
+                            logging.info(p.stripe_charge_id)
                         except stripe.error.CardError, e:
                             error_msg = "Sorry! Your card has been declined. Please update your payment info in your settings > billing."
                             return errors([error_msg])
@@ -799,8 +781,6 @@ def api(arg, _id):
                 else:
                     user.credit = user.credit + abs(p.student_paid_amount)
                     stripe_charge = False
-
-                
 
                 from notifications import student_payment_approval
                 tutor = User.query.get(p.tutor_id)
@@ -819,7 +799,7 @@ def api(arg, _id):
                 else:
                     #recurring billing case
                     total_amount = p.student_paid_amount
-                print total_amount
+                logging.info(total_amount)
                 
                 from app.static.data.short_variations import short_variations_dict
                 skill_name = short_variations_dict[Skill.query.get(p.skill_id).name]
@@ -828,8 +808,6 @@ def api(arg, _id):
                     charge = charge['id']
                 else:
                     charge = 'as9d0sudas' + str(p.id)
-
-
 
                 student_notification = student_payment_approval(user, tutor, p, total_amount, charge, skill_name, False)
                 user.notifications.append(student_notification)
@@ -849,9 +827,9 @@ def api(arg, _id):
 
     if arg =='bill-student' and request.method == 'POST':
         user = getUser()
-        pending_ratings_dict = {}
+        pending_ratings_dict = {} # TODO : assigned but unused
         if user:
-            print request.json
+            logging.info(request.json)
             from app.views import calc_avg_rating
             if calc_avg_rating(user)[0] < 4.0:
                 return errors(['Sorry! You cannot bill a student with less than a 4.0 star rating.'])
@@ -879,7 +857,6 @@ def api(arg, _id):
             stripe_amount_cents = int(total_amount * 100)
             student = User.query.get(r.student_id)
             tutor = user
-
 
             previous_rating = Rating.query.filter_by(student_id=student.id, tutor_id=tutor.id).first()
             if not previous_rating:
@@ -1022,7 +999,7 @@ def api(arg, _id):
                 from views import update_profile_notifications
                 update_profile_notifications(user)
 
-                #TODO Uncomment method above when webapp is restful
+                # TODO : Uncomment method above when webapp is restful
 
                 try:
                     db_session.commit()
@@ -1038,7 +1015,7 @@ def api(arg, _id):
     if arg =='purchase_promotion' and request.method == 'POST':
         user = getUser()
         if user:
-            print request.json
+            logging.info(request.json)
             p = process_promotion_payment_plan(request.json.get('option-selected'), user)
             if p == 'error':
                 return errors(['Your card has been declined. Please update it in settings!'])
@@ -1050,7 +1027,7 @@ def api(arg, _id):
     if arg =='purchase_package' and request.method == 'POST':
         user = getUser()
         if user:
-            print request.json
+            logging.info(request.json)
             p = process_package_home(request.json.get('option-selected'), user)
             if p == 'error':
                 return errors(['Your card has been declined. Please update it in settings!'])
@@ -1065,7 +1042,7 @@ def api(arg, _id):
             tutor = User.query.get(request.json.get('tutor_server_id'))
             student = User.query.get(request.json.get('student_server_id'))
             
-            print request.json
+            logging.info(request.json)
 
             if request.json.get('tutor_rating_student'):
                 rating = tutor.pending_ratings[0]
@@ -1085,7 +1062,6 @@ def api(arg, _id):
 
                 student.pending_ratings.remove(rating)
                 tutor.student_ratings.append(rating)
-
 
             try:
                 db_session.commit()
@@ -1110,7 +1086,7 @@ def api(arg, _id):
     if arg == 'user' and request.method == 'PUT':
         user = getUser()
         if user:
-            user_response_dict = {}
+            user_response_dict = {} # TODO : assigned but unused
             if request.json.get('apn_token'):
                 user.apn_token = request.json.get('apn_token')
             if request.json.get('stripe-card-token'):
@@ -1156,21 +1132,21 @@ def api(arg, _id):
                 update_skill('remove',request.json.get('remove_skill'), user)
             if request.json.get('check_promo_code'):
                 result = check_promo_code(user, request.json.get('check_promo_code'))
-                print result
+                logging.info(result)
                 if result == "invalid":
                     return errors(['Invalid Promo Code! Try again.'])
                 elif result == "used":
                     return errors(['Sorry you have already used a code for this promotion.'])
                 elif result == "success":
                     user.credit = user.credit + 5
-                print "check_promo_code", request.json.get('check_promo_code')
+                logging.info("check_promo_code" + str(request.json.get('check_promo_code')))
             if request.json.get('update_promo_code'):
                 result = update_promo_code(user, request.json.get('update_promo_code'))
                 if (not result):
                     return errors(['Sorry! This promo code is already taken.'])
                 else:
                     user.user_referral_code = request.json.get('update_promo_code')
-                print "update_promo_code", request.json.get('update_promo_code')
+                logging.info("update_promo_code" + str(request.json.get('update_promo_code')))
             if 'ta_tutor' in request.json:
                 user.ta_tutor = request.json.get('ta_tutor')
             if request.json.get('auth_token'):
@@ -1235,8 +1211,7 @@ def api(arg, _id):
     if arg =='tutor_accept' and request.method =='PUT':
         user = getUser()
         if user:
-            print request.json
-
+            logging.info(request.json)
             try:
                 db_session.commit()
             except:
@@ -1245,7 +1220,7 @@ def api(arg, _id):
 
             request_id = request.json.get('request_id')
             hourly_amount = request.json.get('hourly_amount')
-            extra_details = request.json.get('tutor_message')
+            extra_details = request.json.get('tutor_message') # TODO : assigned buy unused
             weekly_availability = request.json.get('calendar')
             notification_id = request.json.get('notif_id')
             current_notification = Notification.query.get(notification_id)
@@ -1283,7 +1258,6 @@ def api(arg, _id):
 
             # db_session.commit()
 
-
             sched = Scheduler()
             sched.start()
             later_time = datetime.now() + timedelta(0, TUTOR_ACCEPT_EXP_TIME_IN_SECONDS - 3600)
@@ -1310,7 +1284,7 @@ def api(arg, _id):
                 user.feed_notif += 1
                 current_notification.time_read = None
 
-            from notifications import tutor_request_accept, student_incoming_tutor_request
+            from notifications import tutor_request_accept, student_incoming_tutor_request # TODO : tutor_request_accept imported but unused
             for n in student.notifications[::-1]:
                 if n.request_id == r.id:
                     original_skill_name = n.custom
@@ -1319,7 +1293,7 @@ def api(arg, _id):
             student.notifications.append(student_notification)
             db_session.add(student_notification)
             
-            student_weekly_availability = get_time_ranges(r.weekly_availability, 0)
+            student_weekly_availability = get_time_ranges(r.weekly_availability, 0) # TODO : assigned but unused
 
             try:
                 db_session.commit()
@@ -1337,13 +1311,10 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, indent=4)
         return errors(['Invalid Token'])
 
-
-
-
     if arg =='cancel_request' and request.method =='POST':
         user = getUser()
         if user:
-            print request.json
+            logging.info(request.json)
             notif_id = request.json.get('notif_id')
             request_id = request.json.get('request_id')
             description = request.json.get('description')
@@ -1357,7 +1328,6 @@ def api(arg, _id):
 
             if 'description' in request.json and not description:
                 _request.cancellation_reason = "0"
-            
             
             if not _request.connected_tutor_id:
                 user.outgoing_requests.remove(_request)
@@ -1383,11 +1353,6 @@ def api(arg, _id):
                 for c in user.mailbox.conversations:
                     if c.guru == former_tutor and c.student == user:
                         db_session.delete(c)
-
-                # for _tutor in _request.requested_tutors:
-                #     for n in sorted(_tutor.notifications, reverse=True):
-                #         if n.request_id == _request.id:
-                #             n.feed_message_subtitle = '<span style="color:#69bf69">This request is still <strong>available</strong>! Click here to accept now!</span>'
 
                 #Delete the tutor's you've been matched notification + conversation
                 for n in former_tutor.notifications[::-1]:
@@ -1426,21 +1391,20 @@ def api(arg, _id):
             current_notification = user_notifications[notification_id]
 
             if request.json.get('payment_plan') and current_notification.request_tutor_amount_hourly != 0:
-                print "There was a payment plan selected, it was number " +str(request.json.get('payment_plan'))
+                logging.info("There was a payment plan selected, it was number " + str(request.json.get('payment_plan')))
                 p = process_payment_plan(request.json.get('payment_plan'), user)
                 if p == 'error':
                     return errors(['Your card has been declined. Please update your card info in Settings > Billing.'])
 
-
             student = user
-            from views import print_user_details
-            print "student", print_user_details(student)
+
+            logging.info("student" + str(student))
             # current_notification = Notification.query.get(notification_id)
             skill_name = current_notification.skill_name
 
             tutor_id = current_notification.request_tutor_id
             tutor = User.query.get(tutor_id)
-            print "tutor", print_user_details(tutor)
+            logging.info("tutor" + str(tutor))
 
             #Update request
             request_id = current_notification.request_id
@@ -1464,36 +1428,17 @@ def api(arg, _id):
             for n in user_notifications[::-1]:
                 if n.request_id == r.id and n.custom_tag == 'student-cap-reached':
                     user.notifications.remove(n)
-                    print "Student-cap-reached notification removed for request id " + str(r.id)
+                    logging.info("Student-cap-reached notification removed for request id " + str(r.id))
 
             from views import find_earliest_meeting_time, convert_mutual_times_in_seconds, send_twilio_message_delayed
             mutual_times_arr = find_earliest_meeting_time(r)
             total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
-            print "Here are the time calculations for the the tutor. Reminder before session:", str(total_seconds_delay), "seconds" 
+            logging.info("Here are the time calculations for the the tutor. Reminder before session: " + str(total_seconds_delay) + "seconds" )
             if tutor.phone_number and tutor.text_notification:
-                print "The tutor has a phone number and is supposed to receive a text."
-                from emails import its_a_match_guru, reminder_before_session
-                # message = reminder_before_session(tutor, student, r.location, "Guru-ing")
-
-                # if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
-                #     send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=10)
-                # else:
-                #     send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=total_seconds_delay)
+                logging.info("The tutor has a phone number and is supposed to receive a text.")
+                from emails import its_a_match_guru
                 message = its_a_match_guru(student, skill_name)
-                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown =10)
-
-
-
-            # if student.phone_number and student.text_notification:
-            #     print "The student has a phone number and is supposed to receive a text."
-            #     from emails import reminder_before_session
-            #     total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
-            #     message = reminder_before_session(student, tutor, r.location, "Studying")
-            #     if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
-            #         send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=10)
-            #     else:
-            #         send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=total_seconds_delay)
-
+                send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=10)
 
             p = Payment(r.id)
             db_session.add(p)
@@ -1505,18 +1450,18 @@ def api(arg, _id):
                 difference = user_credits - total_amount
                 #if they have enough credits
                 if difference >= 0:
-                    print "The student has enough credits to not purchase anything"
-                    print "Credit before:", str(user.credit)
-                    print "Amount to be billed", str(total_amount)
+                    logging.info("The student has enough credits to not purchase anything")
+                    logging.info("Credit before: " + str(user.credit))
+                    logging.info("Amount to be billed: " + str(total_amount))
                     user.credit = user.credit - total_amount
-                    print "Remaining credits:", str(user.credit)
+                    logging.info("Remaining credits: " + str(user.credit))
                     p.credits_used = total_amount
                     p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title() +'. You used ' + str(total_amount) + ' credits.'
                 else:
                     p.credits_used = user_credits
                     user.credit = 0
                     p.student_paid_amount = total_amount - user_credits
-                    print "The student has credits, but not enough, so we are billing them $", p.student_paid_amount
+                    logging.info("The student has credits, but not enough, so we are billing them $" + str(p.student_paid_amount))
                     p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title() +'. You used ' + str(user_credits) + ' credits, and were billed $' + str(p.student_paid_amount)
                     try: 
                         charge = stripe.Charge.create(
@@ -1526,11 +1471,11 @@ def api(arg, _id):
                             description="partial charge with credit usage"
                         )
                         p.stripe_charge_id = charge['id']
-                    except stripe.error.CardError, e:
+                    except stripe.error.CardError, e: # TODO : 'e' assigned but unused
                         return errors(['Your card has been declined. Please update in Settings > Billing.'])
 
             else:
-                print "The student has no credits, and is paying directly"
+                logging.info("The student has no credits, and is paying directly")
                 if r.connected_tutor_hourly != 0:
                     try:
                         charge = stripe.Charge.create(
@@ -1539,7 +1484,7 @@ def api(arg, _id):
                             customer=student.customer_id,
                             description="amount for tutoring"
                         )   
-                    except stripe.error.CardError, e:
+                    except stripe.error.CardError:
                         return errors(['Your card has been declined. Please update in Settings > Billing.'])
                     p.stripe_charge_id = charge['id']
                     p.student_description = 'Your confirmed session amount with ' + tutor.name.split(" ")[0].title()
@@ -1589,18 +1534,14 @@ def api(arg, _id):
                         if n.request_id == r.id:
                             n.status = 'LATE'
                             n.feed_message_subtitle = 'Click here to learn why!'
-                            print _tutor.id, _tutor.name, "is too late! We have updated their profile accordingly"
-                            
-
+                            logging.info(str(_tutor) + " is too late! We have updated their profile accordingly")
 
             #delete notifications
             for n in student.notifications:
                 if n.request_id and n.request_id == r.id and n.custom_tag == 'student-incoming-offer' and n.request_tutor_id != r.connected_tutor_id:
-                    print "Previous tutor incoming offer deleted. Tutor id:", str(n.request_tutor_id), "Notification id:", str(n.id)
+                    logging.info("Previous tutor incoming offer deleted. Tutor id: " + str(n.request_tutor_id) + "Notification id: " + str(n.id))
                     student.notifications.remove(n)
 
-
-            
             #Modify tutor notification
             for n in tutor.notifications:
                 if n.request_id == r.id:
@@ -1615,7 +1556,6 @@ def api(arg, _id):
             tutor_is_matched(user, tutor, skill_name)
             student_is_matched(user, tutor, r.student_secret_code)
 
-
             #create conversation between both
             conversation = Conversation.query.filter_by(student_id=user.id, guru_id=tutor.id).first()
             if not conversation:
@@ -1625,8 +1565,6 @@ def api(arg, _id):
                 db_session.add(conversation)
             else:
                 conversation.is_read = False
-
-
 
             #create message notifications
             tutor.msg_notif += 1
@@ -1655,10 +1593,10 @@ def api(arg, _id):
                             tutor_notification.time_created = datetime.now()
                             tutor_notification.feed_message_subtitle = 'Click here to see next steps'
                             tutor_notification.status = 'Taken'
-                            print "We have let", _tutor.name, 'id:', str(_tutor.id), "know that this request has been taken by someone else"
+                            logging.info("We have let " + str(_tutor) + " know that this request has been taken by someone else")
 
                     # student_chose_another_tutor(user, current_notification.skill_name, _tutor)
-                    # print "Email sent to " + tutor.email
+                    # logging.info( "Email sent to " + tutor.email)
             
             try:
                 db_session.commit()
@@ -1666,7 +1604,7 @@ def api(arg, _id):
                 db_session.rollback()
                 raise 
 
-            print "Student Accept Request has been successfully made"
+            logging.info("Student Accept Request has been successfully made.")
 
             from app.views import get_environment, send_student_package_info
             if get_environment == 'PRODUCTION':
@@ -1690,7 +1628,7 @@ def api(arg, _id):
 
         user = getUser()
         if user:
-            print request.json
+            logging.info(request.json)
             description = request.json.get('_description')
             skill_name = request.json.get('course_name') 
             urgency = request.json.get('urgency')
@@ -1740,7 +1678,7 @@ def api(arg, _id):
             
             for day in weekly_availability:
                 for time_range in day:
-                    print time_range
+                    logging.info(str(time_range))
                     temp_range = Range(start_time=time_range[0], end_time=time_range[1], week_day=i)
                     db_session.add(temp_range)
                     week_times.ranges.append(temp_range)
@@ -1765,10 +1703,6 @@ def api(arg, _id):
             apn_message = "Your request is expiring in 1 hour. Please select a tutor!"
             
             job = sched.add_date_job(send_delayed_notification, later_time, [apn_message, user.apn_token, r.id])
-            
-
-
-
 
             from notifications import student_request_receipt
             notification = student_request_receipt(user, r, original_skill_name)
@@ -1795,7 +1729,7 @@ def api(arg, _id):
                         send_apn(apn_message, tutor.apn_token)
 
                     if tutor.text_notification and tutor.phone_number:
-                        msg = send_twilio_msg(tutor.phone_number, "You have received a request and can make BIG MONEY. Please check http://uguru.me")
+                        msg = send_twilio_msg(tutor.phone_number, "You have received a request and can make BIG MONEY. Please check http://uguru.me") # TODO: assigned but never used, although the right-hand call is important
 
                     tutor.incoming_requests_to_tutor.append(r)
                     notification = tutor_request_offer(user, tutor, r, skill_name)
@@ -1832,7 +1766,7 @@ def api(arg, _id):
             return json.dumps(response, default=json_handler, indent=4)
 
         return errors(['Invalid Token'])
-        
+
 
     if arg == 'support':
 
@@ -1866,13 +1800,13 @@ def api(arg, _id):
         return_json['enough-tutors'] = count > 5
         return_json['tutors'] = tutor_array
 
+
     if arg =='guru-app':
         user_id = session.get('user_id')
         
         user = User.query.filter_by(phone_number = ajax_json['phone']).first()
         if user:
             return errors(['There already exists an account with this phone number. Try logging in with your other account, or contact us via support below.'])
-
 
         user = User.query.get(user_id)
 
@@ -1905,11 +1839,10 @@ def api(arg, _id):
 
         tutor_notification_flag = False
         for n in user.notifications:
-            print n.id, n.feed_message
+            logging.info(str(n.id) + " " + str(n.feed_message))
             if n.a_id_name == 'getting-started-guru':
                 tutor_notification_flag = True
                 break
-
 
         if not tutor_notification_flag:
             from notifications import getting_started_tutor, welcome_guru
@@ -1940,7 +1873,7 @@ def getUser():
     else:
         return None
     # auth_token = request.headers.get("X-UGURU-Token")
-    # print auth_token
+    # logging.info( auth_token)
     # user = User.query.filter_by(auth_token=auth_token).first()
     # if user:
     #     return user
@@ -1980,9 +1913,8 @@ def create_user(email, password, phone_number, name):
     return new_user, mailbox
 
 def expire_request_job(request_id, user_id):
-    print 'request has expired'
+    logging.info("request has expired")
     request = Request.query.get(request_id)
-    user = User.query.get(user_id)
     request.is_expired = True
     db_session.commit()
 
@@ -2019,8 +1951,7 @@ def create_stripe_customer(token, user):
     return 'success'
 
 def create_stripe_recipient(token, user):
-    print "printing user"
-    print user
+    logging.info("Create stripe recipient" + str(user))
     recipient = stripe.Recipient.create(
                     name=user.name,
                     type="individual",
@@ -2028,7 +1959,7 @@ def create_stripe_recipient(token, user):
                     card=token
                 )
     user.recipient_last4 = recipient['cards']['data'][0]['last4']
-    print user.recipient_last4
+    logging.info(user.recipient_last4)
     user.recipient_id = recipient.id
     try:
         db_session.commit()
@@ -2037,7 +1968,8 @@ def create_stripe_recipient(token, user):
         raise
 
 def cash_out_user(user):
-    transfer = stripe.Transfer.create(
+    
+    transfer = stripe.Transfer.create( # TODO : assigned but unused
                 amount=int(user.balance * 100), # amount in cents, again
                 currency="usd",
                 recipient=user.recipient_id
@@ -2060,8 +1992,6 @@ def cash_out_user(user):
         raise
 
     return
-
-
 
 def sanitize_dict(_dict):   
     if _dict.get('id'): _dict['server_id'] = _dict.pop('id')
@@ -2091,7 +2021,6 @@ def check_promo_code(user, promo_code):
     
     #make sure referral promo code is not from the same user
     if user_with_promo_code and user_with_promo_code.id == user.id:
-        print 'it gets here'
         return "invalid"
     
     #for referral rpomo case
@@ -2221,7 +2150,7 @@ def update_skill(flag, skill, user):
     except:
         db_session.rollback()
         raise 
-    print flag + " successful"
+    logging.info(str(flag) + " successful")
 
 def user_dict_in_proper_format(user):
     pending_ratings_dict = {}
@@ -2280,10 +2209,8 @@ def user_dict_in_proper_format(user):
                         'credit': user.credit
                     }
             }
-    print response
+    logging.info(response)
     return response
-
-
 
 def process_package_home(plan_num, user):
     plan_arr = PACKAGE_HOME_PLANS[plan_num]
@@ -2300,9 +2227,8 @@ def process_package_home(plan_num, user):
             customer=user.customer_id,
             description="student purchased credits"
         )
-    except stripe.error.CardError, e:
+    except stripe.error.CardError, e: # TODO : assigned but unused
         return 'error'
-
 
     from notifications import student_purchase_package
     notification = student_purchase_package(user, plan_arr[1], plan_arr[0])
@@ -2335,7 +2261,7 @@ def process_promotion_payment_plan(plan_num, user):
             customer=user.customer_id,
             description="student purchased credits"
         )
-    except stripe.error.CardError, e:
+    except stripe.error.CardError, e: # TODO : assigned but unused
         return 'error'
 
 
@@ -2371,9 +2297,8 @@ def process_payment_plan(plan_num, user):
             customer=user.customer_id,
             description="student purchased credits"
         )
-    except stripe.error.CardError, e:
+    except stripe.error.CardError, e: # TODO : assigned but unused
         return 'error'
-
 
     p.stripe_charge_id = charge['id']
     user.payments.append(p)
