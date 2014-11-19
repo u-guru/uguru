@@ -131,9 +131,6 @@ def new_sproul(arg=None):
 
 @app.route('/florida/', methods=['GET', 'POST'])
 def florida(arg=None):
-
-    tasks.test_background.delay() # TODO : remove this. this is just an example of a background task from tasks.py 
-
     from schools import school_dict
     school_details = school_dict['UF']
     modal_flag = None
@@ -3639,6 +3636,3 @@ def auto_confirm_student_payment(payment_id, student_id):
     except:
         db_session.rollback()
         raise
-
-def print_user_details(user):
-        return str(user.id) + " " + str(user.name) + str(user.email)
