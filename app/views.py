@@ -1,3 +1,14 @@
+import os
+import stripe 
+import emails
+import boto
+import api
+import redis
+import time
+import json
+import traceback
+import mandrill
+import logging
 from app import app, models
 from app.database import *
 from flask import render_template, jsonify, redirect, request, session, flash, redirect, url_for
@@ -5,49 +16,39 @@ from forms import SignupForm, RequestForm
 from models import *
 from hashlib import md5
 from datetime import datetime, timedelta
-import emails, boto, stripe, os
 from sqlalchemy import desc
-import json, traceback
-import mandrill
-import twilio
 from twilio import twiml
-from twilio.rest import TwilioRestClient 
-import logging
-import api
-import redis
-import time
+from twilio.rest import TwilioRestClient
+from mixpanel import Mixpanel
 from celery import Celery
 from celery.task import periodic_task
 from celery.schedules import crontab
 from datetime import timedelta
-import redis
-from os import environ
 from app import tasks
-import logging
 
-TWILIO_ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
-TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
+# Twilio
 TWILIO_DEFAULT_PHONE = "+15104661138"
-twilio_client = TwilioRestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+twilio_client = TwilioRestClient(os.environ['TWILIO_ACCOUNT_SID'], os.environ['TWILIO_AUTH_TOKEN'])
+
+# Mixpanel
+mixpanel_client = Mixpanel(os.environ['MIXPANEL_TOKEN'])
+
+# Constants
 MAX_REQUEST_TUTOR_LIMIT = 3
-
-stripe_keys = {
-    'secret_key': os.environ['STRIPE_SECRET_KEY'],
-    'publishable_key': os.environ['STRIPE_PUBLISHABLE_KEY']
-}
-MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-stripe.api_key = stripe_keys['secret_key']
 MAX_UPLOAD_SIZE = 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 tutor_blacklist = [1708, 624]
 
+# Stripe
+stripe_keys = {
+    'secret_key': os.environ['STRIPE_SECRET_KEY'],
+    'publishable_key': os.environ['STRIPE_PUBLISHABLE_KEY']
+}
+stripe.api_key = stripe_keys['secret_key']
+
 # This, and all @tasks, should be moved to tasks.py
 celery = Celery('run')
-REDIS_URL = environ.get('REDISTOGO_URL')
+REDIS_URL = os.environ.get('REDISTOGO_URL')
 celery.conf.update(
     BROKER_URL=REDIS_URL,
     CELERY_TASK_SERIALIZER='json',
@@ -128,7 +129,9 @@ def new_sproul(arg=None):
 @app.route('/florida/', methods=['GET', 'POST'])
 def florida(arg=None):
 
-    tasks.test_background.delay() # TODO : remove this. this is just an example of a background task from tasks.py
+    # TODO : remove this. this is just an example of a background task from tasks.py and a mixpanel example
+    # tasks.test_background.delay() 
+    # mp.track(user_id, 'Sent Message')
 
     from schools import school_dict
     school_details = school_dict['UF']
@@ -822,18 +825,6 @@ def admin():
             request_dict['total_seen']  = total_seen_count
             request_dict['pending-ratings'] = 0
             request_dict['message-length'] = 0
-            # if r.emails:
-            #     count = 0
-            #     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
-            #     for email in r.emails:
-            #         mandrill_id = email.mandrill_id
-            #         try:
-            #             result = mandrill_client.messages.info(id=mandrill_id)
-            #             if result['opens'] > 0:
-            #                 count += 1
-            #         except mandrill.Error, e:
-            #             logging.info('A mandrill error occurred: %s - %s' % (e.__class__, e))
-            #     request_dict['emails-seen'] = count
 
             if r.last_updated:
                 request_dict['last-updated'] = pretty_date(r.last_updated)
