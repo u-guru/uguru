@@ -1969,11 +1969,11 @@ def create_stripe_recipient(token, user):
 
 def cash_out_user(user):
     
-    transfer = stripe.Transfer.create(
+    transfer = stripe.Transfer.create( # TODO : assigned but unused
                 amount=int(user.balance * 100), # amount in cents, again
                 currency="usd",
                 recipient=user.recipient_id
-            ) # TODO : assigned but never used
+            )
 
     from notifications import tutor_cashed_out
     notification = tutor_cashed_out(user, user.balance)
@@ -2227,7 +2227,7 @@ def process_package_home(plan_num, user):
             customer=user.customer_id,
             description="student purchased credits"
         )
-    except stripe.error.CardError, e:
+    except stripe.error.CardError, e: # TODO : assigned but unused
         return 'error'
 
     from notifications import student_purchase_package
@@ -2261,7 +2261,7 @@ def process_promotion_payment_plan(plan_num, user):
             customer=user.customer_id,
             description="student purchased credits"
         )
-    except stripe.error.CardError, e:
+    except stripe.error.CardError, e: # TODO : assigned but unused
         return 'error'
 
 
@@ -2297,7 +2297,7 @@ def process_payment_plan(plan_num, user):
             customer=user.customer_id,
             description="student purchased credits"
         )
-    except stripe.error.CardError, e:
+    except stripe.error.CardError, e: # TODO : assigned but unused
         return 'error'
 
     p.stripe_charge_id = charge['id']
