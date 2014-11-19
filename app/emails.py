@@ -3400,7 +3400,7 @@ def send_mandrill_nine(receiver_name, receiver_email, tag_arr):
 
 def send_mandrill_purchase_package_promotion(receiver_name, receiver_email, skill_name, tutor_name):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
-    receiver_first_name = receiver_name.split(" ")[0].title()
+    receiver_first_name = receiver_name.split(" ")[0].title() # TODO : assigned but unused
     subject =  "LAST DAY: Pay " + tutor_name.split(" ")[0].title() + " through uGuru and get up to $50 free credit." 
 
     to_emails = []
@@ -3425,7 +3425,7 @@ def send_mandrill_purchase_package_promotion(receiver_name, receiver_email, skil
         'tags':['purchase-package-promotion-v2']
     }
 
-    result = mandrill_client.messages.send(message=message)
+    result = mandrill_client.messages.send(message=message) # TODO : assigned but unused, righ-hand side important though
 
 def send_mandrill_ten(receiver_name, receiver_email, tag_arr):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
@@ -3454,7 +3454,7 @@ def send_mandrill_ten(receiver_name, receiver_email, tag_arr):
         'tags':[tag_arr]
     }
 
-    result = mandrill_client.messages.send(message=message)
+    result = mandrill_client.messages.send(message=message) # TODO : assigned but unused, right-hand side important though
 
 
 def mailgun_campaign_eight_html(receiver_name, receiver_email, tag_arr, campaign_str):
