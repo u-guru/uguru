@@ -127,6 +127,9 @@ def new_sproul(arg=None):
 
 @app.route('/florida/', methods=['GET', 'POST'])
 def florida(arg=None):
+
+    tasks.test_background.delay() # TODO : remove this. this is just an example of a background task from tasks.py
+
     from schools import school_dict
     school_details = school_dict['UF']
     modal_flag = None
