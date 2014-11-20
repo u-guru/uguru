@@ -9,6 +9,7 @@ import json
 import traceback
 import mandrill
 import logging
+import twilio
 from app import app, models
 from app.database import *
 from flask import render_template, jsonify, redirect, request, session, flash, redirect, url_for
@@ -2974,8 +2975,6 @@ def send_twilio_msg(to_phone, body, user_id):
         db_session.flush()
         raise
     return message
-
-
 
 @celery.task
 def send_student_package_info(user_id, request_id):
