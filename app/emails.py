@@ -1,13 +1,11 @@
 import os
 import smtplib
-
+import mandrill
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
-from app import app
-from app.models import Skill, User, Request, Email
-from models import User
-import mandrill 
+from email.mime.base import MIMEBase # TODO : Imported but unused
+from app import app # TODO : imported but unused
+from models import *
 
 SMTP_SERVER = "smtp.mandrillapp.com"
 SMTP_PORT = 587
@@ -22,7 +20,7 @@ def send_connection_email(student, tutor, request):
     email_from = "uGuru.me <connections@uguru.me>"
     email_subject = "[uGuru.me] Congrats! You've been connected"
 
-    DATE_FORMAT = "%d/%m/%Y"
+    DATE_FORMAT = "%d/%m/%Y" # TODO : assigned but unused
     EMAIL_SPACE = ", "
 
     EMAIL_TO = [student.email, tutor.email]
@@ -1496,7 +1494,7 @@ def send_message_alert(receiver, sender):
     mail.login(SMTP_USERNAME, SMTP_PASSWORD)
     mail.sendmail(msg['From'], EMAIL_TO, msg.as_string())
     mail.quit()
-    print "sent message alert sent to " + receiver_name
+    logging.info("sent message alert sent to " + receiver_name)
 
 def send_message_alert_text(receiver_name, sender_name):
     return """Don't keep """ + sender_name + " waiting! Login to Uguru.me and message " + sender_name + " now at http://berkeley.uguru.me/messages/ ."
@@ -2152,7 +2150,7 @@ def welcome_uguru_student_text(user_name):
     """Samir Makhani\nCo-Founder\nsamir@uguru.me\n(813) 500 9853"""
 
 def general_notification_text(user_name, msg):
-    print msg, user_name
+    logging.info(msg + " " + user_name)
     return"""
     Hi """ + user_name.split(' ')[0] + \
     """, \n\n""" + msg + \
@@ -2649,7 +2647,7 @@ def unsubscribe_all_emails():
               "tag": "*"
             }
         )
-        print email, "has been unsubscribed"
+        logging.info(email + " has been unsubscribed")
 
 
 def mail_gun_template_test_1_html(user_name):
@@ -2684,7 +2682,7 @@ def mail_gun_template_test_2_html(user_name):
 def error(message):
 
     EMAIL_TO = ["makhani.samir@gmail.com", "bkamita@gmail.com"]
-    print message
+    logging.info(message)
 
     if os.environ.get('TESTING'):
         EMAIL_FROM = "TESTING Error <sandbox_error@uguru.me>"
@@ -2693,13 +2691,13 @@ def error(message):
         EMAIL_FROM = "PRODUCTION Error <site_error@uguru.me>"
         EMAIL_SUBJECT = "[Uguru PRODUCTION Error] Exception"
     else: #local machine
-        print message
+        logging.info(message)
         return 
 
 
-    DATE_FORMAT = "%d/%m/%Y"
+    DATE_FORMAT = "%d/%m/%Y" # TODO : assigned but unused
     EMAIL_SPACE = ", "
-    DATA='This is the content of the email.'
+    DATA='This is the content of the email.' # TODO : assigned but unused
 
     # msg = MIMEText(DATA)
     msg = MIMEMultipart('alternative')
@@ -3398,11 +3396,11 @@ def send_mandrill_nine(receiver_name, receiver_email, tag_arr):
         'tags':[tag_arr]
     }
 
-    result = mandrill_client.messages.send(message=message)
+    result = mandrill_client.messages.send(message=message) # TODO : assigned but unused, right-hand side is important though
 
 def send_mandrill_purchase_package_promotion(receiver_name, receiver_email, skill_name, tutor_name):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
-    receiver_first_name = receiver_name.split(" ")[0].title()
+    receiver_first_name = receiver_name.split(" ")[0].title() # TODO : assigned but unused
     subject =  "LAST DAY: Pay " + tutor_name.split(" ")[0].title() + " through uGuru and get up to $50 free credit." 
 
     to_emails = []
@@ -3427,7 +3425,7 @@ def send_mandrill_purchase_package_promotion(receiver_name, receiver_email, skil
         'tags':['purchase-package-promotion-v2']
     }
 
-    result = mandrill_client.messages.send(message=message)
+    result = mandrill_client.messages.send(message=message) # TODO : assigned but unused, righ-hand side important though
 
 def send_mandrill_ten(receiver_name, receiver_email, tag_arr):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
@@ -3456,7 +3454,7 @@ def send_mandrill_ten(receiver_name, receiver_email, tag_arr):
         'tags':[tag_arr]
     }
 
-    result = mandrill_client.messages.send(message=message)
+    result = mandrill_client.messages.send(message=message) # TODO : assigned but unused, right-hand side important though
 
 
 def mailgun_campaign_eight_html(receiver_name, receiver_email, tag_arr, campaign_str):

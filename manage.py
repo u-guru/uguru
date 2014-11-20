@@ -2042,6 +2042,7 @@ def get_email_gurus_update_html():
     Michael Koh
     """
 
+<<<<<<< HEAD
 if arg == 'data_to_csv':
     email = sys.argv[2]
     users = User.query.all()
@@ -2199,6 +2200,8 @@ if arg == 'student_data_csv':
 
     result = mandrill_client.messages.send(message=message)
 
+=======
+>>>>>>> test-develop
 if arg == 'email_gurus_update':
     to_emails = []
     users = User.query.all()
@@ -2213,7 +2216,7 @@ if arg == 'email_gurus_update':
 
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
     import base64
-    with open("team.jpg", "rb") as team_photo:
+    with open("app/static/img/team.jpg", "rb") as team_photo:
         encoded_string = base64.b64encode(team_photo.read())
 
     message = {

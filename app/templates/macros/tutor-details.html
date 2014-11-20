@@ -174,14 +174,14 @@
                 <span class='blue-btn' style='padding:8px 60px'> Choose This Guru </span>
             </a> -->
             <a href='javascript:void(0);' {% if user_credit_balance < total_cost %} class='go-to-payment-plan' {% else %} class='go-to-confirmation' {% endif %}>
-                <span class='blue-btn' style='padding:8px 60px'> Choose This Guru </span>
+                <span class='blue-btn clickable' style='padding:8px 60px'> Choose This Guru </span>
             </a>
         </div>
         {% endif %}
         {% if notif.custom ==  'student-accept-request' %}
         <div class='row-fluid font-20 margin-top-40 margin-bottom-20 center'>
             <a href="/messages/" >
-                <span class='blue-btn' style='padding:8px 60px'> Message Your Guru </span>
+                <span class='blue-btn clickable' style='padding:8px 60px'> Message Your Guru </span>
             </a>
         </div>
 
