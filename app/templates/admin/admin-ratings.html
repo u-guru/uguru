@@ -7,7 +7,7 @@
 {% block content %}
 
 <ul style="margin:auto;float:center" class="nav nav-tabs">
-  <li><a href="/new-admin/">Today</a></li>
+  <li><a href="/admin/">Today</a></li>
   <li><a href="/admin/stats/"> Stats </a></li>
   <li><a href="/admin/tutors/">Tutors</a></li>
   <li><a href="/admin/students/">Students</a></li>
@@ -39,20 +39,22 @@
                         <td> Description</td>
                     </tr>
                     {% for rating in ratings|sort(attribute='time_created')|reverse %}
-                        <tr> 
-                            <td> {{rating.id}} </td>
-                            <td> {{ratings_dict[rating]['student-name']}} (student) reviewing {{ratings_dict[rating]['tutor-name']}} (tutor)</td>
-                            <td> {{ratings_dict[rating]['skill']}}</td>
-                            <td> {{rating.tutor_rating}}</td>
-                            <td> {{rating.tutor_rating_description}}</td>
-                        </tr>
-                        <tr> 
-                            <td> {{rating.id}} </td>
-                            <td> {{ratings_dict[rating]['tutor-name']}} (tutor) reviewing {{ratings_dict[rating]['student-name']}} (student)</td>
-                            <td> {{ratings_dict[rating]['skill']}}</td>
-                            <td> {{rating.student_rating}}</td>
-                            <td> {{rating.student_rating_description}}</td>
-                        </tr>
+                        {% if rating.skill_id and rating.tutor_id and rating.student_id %}
+                          <tr> 
+                              <td> {{rating.id}} </td>
+                              <td> {{ratings_dict[rating]['student-name']}} (student) reviewing {{ratings_dict[rating]['tutor-name']}} (tutor)</td>
+                              <td> {{ratings_dict[rating]['skill']}}</td>
+                              <td> {{rating.tutor_rating}}</td>
+                              <td> {{rating.tutor_rating_description}}</td>
+                          </tr>
+                          <tr> 
+                              <td> {{rating.id}} </td>
+                              <td> {{ratings_dict[rating]['tutor-name']}} (tutor) reviewing {{ratings_dict[rating]['student-name']}} (student)</td>
+                              <td> {{ratings_dict[rating]['skill']}}</td>
+                              <td> {{rating.student_rating}}</td>
+                              <td> {{rating.student_rating_description}}</td>
+                          </tr>
+                        {% endif %}
                     {% endfor %}
                 </table>
             </div>

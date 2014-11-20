@@ -74,7 +74,6 @@ def index(arg=None):
         return redirect(url_for('login'))
     tutor_signup_incomplete = False
     guru_referral = False
-    request_form = RequestForm()
     if session.get('guru-checked'):
         guru_referral = True
         session.pop('guru-checked')
@@ -103,7 +102,7 @@ def index(arg=None):
     if 'cal' in request.url:
         session['referral'] = 'cal'
     logging.info(modal_flag)
-    return render_template('new.html', forms=[request_form],
+    return render_template('index.html',
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
 
@@ -139,7 +138,6 @@ def florida(arg=None):
     modal_flag = None
     tutor_signup_incomplete = False
     guru_referral = False
-    request_form = RequestForm()
     if session.get('guru-checked'):
         guru_referral = True
         session.pop('guru-checked')
@@ -160,75 +158,15 @@ def florida(arg=None):
         session['referral'] = 'piazza'
     if 'cal' in request.url:
         session['referral'] = 'cal'
-    return render_template('school-landing-page.html', forms=[request_form],
+    return render_template('school-landing-page.html',
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag, \
         school_details=school_details)
-
-@app.route('/ucla/', methods=['GET', 'POST'])
-def ucla(arg=None):
-    modal_flag = None
-    if os.environ.get('TESTING') and not session.get('testing-admin'):
-        return redirect(url_for('login'))
-    tutor_signup_incomplete = False
-    guru_referral = False
-    request_form = RequestForm()
-    if session.get('guru-checked'):
-        guru_referral = True
-        session.pop('guru-checked')
-    if request.args.get('email'):
-        session['referral'] = request.args.get('email')
-        if request.args.get('email') == 'guru':
-            session['guru-checked'] = True
-        return redirect(url_for('index'))
-    if session.get('user_id'):
-        user = User.query.get(session.get('user_id'))
-        # if user.skills and len(user.notifications) < 2:
-        #     return redirect(url_for('settings'))
-        return redirect(url_for('activity'))
-    if 'log_in' in request.url:
-        modal_flag = 'login'
-    if 'sign_up' in request.url:
-        modal_flag = 'signup'
-    if '/guru' in request.url:
-        modal_flag = 'guru'
-    if 'callisto' in request.url:
-        session['referral'] = 'callisto'
-    if 'fb' in request.url:
-        session['referral'] = 'fb'
-    if 'piazza' in request.url:
-        session['referral'] = 'piazza'
-    if 'cal' in request.url:
-        session['referral'] = 'cal'
-    logging.info(modal_flag)
-    return render_template('ucla.html', forms=[request_form],
-        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
-        environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
 
 @app.route('/parents/', methods =['GET', 'POST'], defaults={'arg': None})
 @app.route('/parents/<arg>/')
 def parents(arg=None):
     return render_template('parents.html', key=stripe_keys['publishable_key'])
-
-
-@app.route('/new/')
-def new():
-    return render_template('new.html')
-
-@app.route('/<arg>', methods=['GET', 'POST', 'PUT'])
-def profile(arg):
-    user = None
-    if session.get('user_id'):
-        user = User.query.get(session.get('user_id'))
-    profile_user = User.query.filter_by(user_referral_code=arg).first()
-    if profile_user:
-        session['referral'] = arg
-    return redirect(url_for('index'))
-    # if profile_user and profile_user.approved_by_admin:
-    #     from app.static.data.short_variations import short_variations_dict
-    #     return render_template('profile.html', profile_user=profile_user , user=user, variations=short_variations_dict)
-    # else:
-    #     return redirect(url_for('index'))
 
 @app.route('/apply-guru/', methods=['GET', 'POST', 'PUT'])
 def apply_guru():
@@ -240,83 +178,9 @@ def apply_guru():
         return redirect('/log_in/')
 
 
-
-@app.route('/sneak/', methods=['GET', 'POST'])
-def sneak():
-    return render_template('new_index.html')
-
 @app.route('/tos/', methods=['GET','POST'])
 def tos():
     return render_template('tos.html')
-
-
-@app.route('/webhooks/', methods=['GET', 'POST'])
-def webhooks():
-    event_json = json.loads(request.data)
-    stripe_response =  event_json['data']['object']
-    logging.info(stripe_response)
-    stripe_response_type = stripe_response['object']
-    #TODO --> Handle bank account webhooks
-    # if stripe_response_type == 'transfer':
-    #     bank_account_name = stripe_response['account']['bank_name']
-    #     recipient_id = stripe_response['recipient']
-    #     status = stripe_response['status']
-
-    #     #find user
-    #     user = User.query.filter_by(recipient_id=recipient_id).first()
-    #     if user:
-    #         for n in reversed(user.notifications):
-    #             logging.info(n.id)
-    #             if n.custom_tag == 'tutor-cashed-out':
-    #                 if status == 'failed':
-    #                     status = "Your bank account transfer did not go through. Please contact support@uguru.me for quick support."
-    #                 n.status = status
-    #                 n.skill_name = bank_account_name
-    #                 break;
-        
-    #     if user and status == "paid":
-    #         from emails import tutor_received_transfer
-    #         amount = float(stripe_response['amount'] / 100)
-    #         transfer_id = stripe_response['id']
-    #         last4 = stripe_response['account']['last4']
-    #         time = datetime.fromtimestamp(stripe_response['date'])
-    #         tutor_received_transfer(user, amount, bank_account_name, transfer_id, last4, time)
-
-    #     try:
-    #         db_session.commit()
-    #     except:
-    #         db_session.rollback()
-    #         raise
-    return "OK"
-
-@app.route('/twilio/', methods=['GET', 'POST'])
-def twilio_msg():
-    if request.method == "POST":
-        resp = twiml.Response()
-        logging.info(resp)
-        logging.info(str(type(resp)))
-        logging.info(resp.__dict__)
-        if request.form['Body'].upper() == "ACCEPT":
-            resp.sms("You have accepted this request. See full details at uguru.me/activity.")
-        # resp.message("Hello, Mobile Monkey")
-        return str(resp)
-
-@app.route('/notification-settings/', methods=('GET','POST'))
-def update_notifications():
-    if request.method == "POST":
-        ajax_json = request.json
-        logging.info(ajax_json)
-        user_id = session['user_id']
-        user = User.query.get(user_id)
-        if 'text' in ajax_json:
-            user.text_notification = ajax_json.get('text')
-        if 'email' in ajax_json:
-            user.email_notification = ajax_json.get('email')
-        db_session.commit()
-        logging.info("user email notification is now " + str(user.email_notification))
-        logging.info("user next notification is now " + str(user.text_notification))
-        return jsonify(ajax_json)
-
 
 @app.route('/update-profile/', methods=('GET', 'POST'))
 def update_profile():
@@ -433,7 +297,7 @@ def add_credit():
                 raise 
         return jsonify(response=return_json)
 
-@app.route('/new-admin/')
+@app.route('/admin/')
 def new_admin():
     if session.get('admin'):
     
@@ -478,7 +342,7 @@ def new_admin():
                 )
         
 
-        return render_template('new-admin.html', day_stats=day_stats)
+        return render_template('admin/new-admin.html', day_stats=day_stats)
     return redirect(url_for('index'))
 
 @app.route('/admin/students/')
@@ -492,7 +356,7 @@ def new_admin_students():
             times_signed_up[student.id] = pretty_date(student.time_created)
             times_last_active[student.id] = pretty_date(student.last_active)
 
-        return render_template('new-admin-students.html', all_students = all_students, times_signed_up=times_signed_up,\
+        return render_template('admin/new-admin-students.html', all_students = all_students, times_signed_up=times_signed_up,\
             times_last_active=times_last_active)
     return redirect(url_for('index'))
 
@@ -558,7 +422,7 @@ def new_admin_stats():
                 organic_user_signups += 1
 
 
-        return render_template('admin-stats.html', fall_request_revenue=fall_request_revenue, \
+        return render_template('admin/admin-stats.html', fall_request_revenue=fall_request_revenue, \
             fall_free_tutor_request_revenue=fall_free_tutor_request_revenue, \
             fall_package_revenue = fall_package_revenue, \
             fall_recurring_payment_revenue=fall_recurring_payment_revenue,\
@@ -580,7 +444,7 @@ def new_admin_unsubscribes():
         for user in unsubscribes:
             times[user.id] = pretty_date(user.time_created)
 
-        return render_template('admin-unsubscribe.html', unsubscribes=unsubscribes, times=times)
+        return render_template('admin/admin-unsubscribe.html', unsubscribes=unsubscribes, times=times)
     return redirect(url_for('index'))
 
 
@@ -599,7 +463,7 @@ def new_admin_tutors():
             times_signed_up[tutor.id] = pretty_date(tutor.time_created)
             times_last_active[tutor.id] = pretty_date(tutor.last_active)
             avg_rating_tutor[tutor.id] = calc_avg_rating(tutor)
-        return render_template('admin-tutors.html', all_tutors = all_tutors, times_signed_up=times_signed_up,\
+        return render_template('admin/admin-tutors.html', all_tutors = all_tutors, times_signed_up=times_signed_up,\
             times_last_active=times_last_active, avg_rating_tutor = avg_rating_tutor)
     return redirect(url_for('index'))
 
@@ -609,12 +473,13 @@ def new_admin_ratings():
     if session.get('admin'):
         ratings_dict = {}
         for r in Rating.query.all():
-            skill = Skill.query.get(r.skill_id)
-            tutor = User.query.get(r.tutor_id)
-            student = User.query.get(r.student_id)
-            ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
-                'student-name':student.name.split(" ")[0]}
-        return render_template('admin-ratings.html', ratings=Rating.query.all(), ratings_dict=ratings_dict)
+            if r.skill_id and r.tutor_id and r.student_id:
+                skill = Skill.query.get(r.skill_id)
+                tutor = User.query.get(r.tutor_id)
+                student = User.query.get(r.student_id)
+                ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
+                    'student-name':student.name.split(" ")[0]}
+        return render_template('admin/admin-ratings.html', ratings=Rating.query.all(), ratings_dict=ratings_dict)
     return redirect(url_for('index'))
 
 
@@ -636,7 +501,7 @@ def new_admin_payments():
                     student_name = student.name.split(" ")[0]
             payment_dict[p] = {'tutor-name':tutor_name, \
                 'student-name':student_name}
-        return render_template('admin-payments.html', payments=Payment.query.all(), payment_dict = payment_dict, env=get_environment())
+        return render_template('admin/admin-payments.html', payments=Payment.query.all(), payment_dict = payment_dict, env=get_environment())
     return redirect(url_for('index'))
 
 @app.route('/admin/courses/')
@@ -656,7 +521,7 @@ def new_admin_courses():
 
         skills_counter = dict(Counter(skills_array))
         skills_counter = sorted(skills_counter.iteritems(), key=operator.itemgetter(1))
-        return render_template('admin-courses.html', skills_counter=skills_counter)
+        return render_template('admin/admin-courses.html', skills_counter=skills_counter)
     return redirect(url_for('index'))
 
 @app.route('/admin/conversations/')
@@ -679,7 +544,7 @@ def new_admin_convos():
         conversations = sorted(conversations, key=lambda c:c['last-message-time'], reverse=True)
         for c_dict in conversations:
             c_dict['last-message-time'] = pretty_date(c_dict['last-message-time'])
-        return render_template('admin-convos.html', conversations=conversations)
+        return render_template('admin/admin-convos.html', conversations=conversations)
     return redirect(url_for('index'))
 
 @app.route('/admin/requests/')
@@ -710,250 +575,7 @@ def admin_requests():
                 request_dict['pending-ratings'] = 0
             all_requests.append(request_dict)
         all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
-        return render_template('admin-requests.html', all_requests=all_requests, num_repeat_payments=num_repeat_payments)
-    return redirect(url_for('index'))
-
-@app.route('/admin/')
-def admin():
-    if session.get('admin'):
-        users = sorted(User.query.all(), key=lambda u:u.last_active, reverse=True)
-        users_last_active = {}
-        for u in users:
-            users_last_active[u] = pretty_date(u.last_active)
-        pretty_dates = {}
-        skills_dict = {}
-        tutor_count = 0
-        student_count = 0
-        skills_array = []
-        all_requests = []
-        transactions = []
-        parents_info = []
-        payment_analytics=\
-            {
-                'avg-student-rate':0,
-                'avg-tutor-rate':0,
-                'avg-student-charge':0,
-                'avg-tutor-paid':0,
-                'avg-stripe-fees':0,
-                'avg-profit':0
-            }
-        total_profit = 0
-        total_revenue = 0
-        ratings_dict = {}
-        payments = []
-        conversations = []
-        today_signups = []
-        today_requests = []
-        
-        notifications = sorted(Notification.query.all(), key=lambda n:n.id, reverse=True)
-
-        # bank_users = User.query.filter(User.recipient_id != None)
-        # for _user in bank_users:
-        #     recipient_id = _user.recipient_id
-        #     transfers = stripe.Transfer.all(recipient=recipient_id).data
-        #     for transfer in transfers:
-        #         transaction_dict = {}
-        #         transaction_dict['tutor-name'] = _user.name.split(" ")[0]
-        #         transaction_dict['tutor-id'] = _user.id
-        #         transaction_dict['amount'] = '$' + str(float(transfer.amount / 100)) 
-        #         # transaction_dict['bank-name'] = transfer.account.bank_name
-        #         # transaction_dict['bank-status'] = transfer.status
-        #         transaction_dict['time'] = pretty_date(datetime.fromtimestamp(transfer.created))
-        #         transactions.append(transaction_dict)
-
-        for c in Conversation.query.all():
-            if c.requests and c.guru and c.student:
-                c_dict = {}
-                c_dict['conversation'] = c
-                c_dict['tutor'] = c.guru
-                c_dict['student'] = c.student
-                c_dict['msg-count'] = len(c.messages)
-                if c_dict['msg-count']:
-                    c_dict['last-message-time'] = c.messages[-1].write_time
-                else: 
-                    c_dict['last-message-time'] = c.requests[0].time_created
-                c_dict['skill-name'] = Skill.query.get(c.requests[0].skill_id).name
-                conversations.append(c_dict)
-        conversations = sorted(conversations, key=lambda c:c['last-message-time'], reverse=True)
-        for c_dict in conversations:
-            c_dict['last-message-time'] = pretty_date(c_dict['last-message-time'])
-
-
-        for r in Rating.query.all():
-            skill = Skill.query.get(r.skill_id)
-            tutor = User.query.get(r.tutor_id)
-            student = User.query.get(r.student_id)
-            ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
-                'student-name':student.name.split(" ")[0]}
-
-
-        parents = User.query.filter(User.parent_name != None).all()
-        logging.info(parents)
-
-        for parent in parents:
-            parents_info.append({
-                'id': parent.id,
-                'parent-name': parent.parent_name,
-                'parent-email': parent.parent_email,
-                'student-name': parent.name,
-                'student-email': parent.email,
-                'referred-by': parent.referral_code
-                })
-
-        now = datetime.now()
-        today = datetime(*now.timetuple()[:3])
-        today_student_signups = db_session.query(User).filter(User.time_created >= today).filter(User.approved_by_admin == None).all()
-        today_tutor_signups = db_session.query(User).filter(User.time_created >= today).filter(User.approved_by_admin != None).all()
-        today_requests = db_session.query(Request).filter(Request.time_created >= today).all()
-
-
-        for r in Request.query.all()[::-1]:
-            request_dict = {}
-            request_dict['emails-seen'] = 0
-            request_dict['request'] = r
-            request_dict['date'] = pretty_date(r.time_created)
-            skill = Skill.query.get(r.skill_id)
-            request_dict['skill_name'] = skill.name
-            student = User.query.get(r.student_id)
-            request_dict['student'] = student
-            total_seen_count = 0
-            for tutor in r.requested_tutors:
-                for n in tutor.notifications:
-                    if n.request_id == r.id:
-                        if n.time_read:
-                            total_seen_count += 1
-            request_dict['total_seen']  = total_seen_count
-            request_dict['pending-ratings'] = 0
-            request_dict['message-length'] = 0
-
-            if r.last_updated:
-                request_dict['last-updated'] = pretty_date(r.last_updated)
-            if r.connected_tutor_id:
-                tutor = User.query.get(r.connected_tutor_id)
-                request_dict['connected-tutor'] = tutor
-                c = Conversation.query.filter_by(guru=tutor, student=student).first()
-                if c:
-                    request_dict['message-length'] = len(c.messages)
-                _payments = None 
-
-                if tutor and student:
-                    _payments = Payment.query.filter_by(tutor_id=tutor.id, request_id = r.id, student_id=student.id)
-                if _payments:
-                    _payments = sorted(_payments, key=lambda d:d.time_created)
-                    count = 0
-                    for p in _payments:
-                        payment_dict = {}
-                        payment_dict['recurring'] = False
-                        if count >= 1:
-                            payment_dict['recurring'] = True
-                        # payment_dict['recurring'] = len(_payments) > 1
-                        from app.static.data.prices import prices_dict
-                        prices_reversed_dict = {v:k for k, v in prices_dict.items()} # TODO : Wonky/Invalid syntax
-                        payment_dict['payment'] = p
-                        payment_dict['time_created'] = pretty_date(p.time_created)
-                        payment_dict['student'] = student
-                        payment_dict['tutor'] = tutor
-                        if count >= 1:
-                            payment_dict['student-hourly'] = p.tutor_rate
-                        else: 
-                            if prices_reversed_dict.get(p.tutor_rate):
-                                payment_dict['student-hourly'] = prices_reversed_dict[p.tutor_rate]
-                            else:
-                                payment_dict['student-hourly'] = p.tutor_rate
-                                logging.info("ERROR: Reversed prices_reversed_dict Dictionary is not finding a value for the key: " + str(p.tutor_rate))
-                            
-                        if payment_dict['student-hourly']:
-                            payment_analytics['avg-student-rate'] += payment_dict['student-hourly']
-                        payment_dict['tutor-hourly'] = p.tutor_rate
-                        if payment_dict['tutor-hourly']:
-                            payment_analytics['avg-tutor-rate'] += payment_dict['tutor-hourly']
-                        if payment_dict['student-hourly']:
-                            student_charge = payment_dict['student-hourly'] * p.time_amount
-                        else:
-                            student_charge = 0
-                        if count >=1:
-                            payment_dict['student-total'] = student_charge  * 1.03 + 2
-                        else:
-                            payment_dict['student-total'] = student_charge
-                        if payment_dict['student-total']:
-                            payment_analytics['avg-student-charge'] += payment_dict['student-total']
-                        if p.tutor_rate and p.time_amount:
-                            tutor_paid = p.tutor_rate * p.time_amount
-                        else:
-                            tutor_paid = 0
-                        if tutor_paid :
-                            payment_analytics['avg-tutor-paid'] += tutor_paid
-                        if payment_dict['student-total']:
-                            stripe_fees = payment_dict['student-total'] * 0.029 + 0.30
-                        else:
-                            stripe_fees = 0
-                        payment_dict['tutor-total'] = tutor_paid
-                        payment_dict['stripe-fees'] = round(stripe_fees, 2)
-                        payment_analytics['avg-stripe-fees'] += payment_dict['stripe-fees']
-                        request_dict['payment'] = round(payment_dict['student-total'] - tutor_paid - stripe_fees, 2)
-                        payment_dict['profit'] = request_dict['payment']
-                        payment_analytics['avg-profit'] += payment_dict['profit']
-                        total_profit += payment_dict['profit']
-                        total_revenue += student_charge
-                        payments.append(payment_dict)
-                        count += 1
-                request_dict['pending-ratings'] = 0
-                if student and student.pending_ratings:
-                    request_dict['pending-ratings'] += 1
-                if tutor and tutor.pending_ratings:
-                    request_dict['pending-ratings'] += 1
-            all_requests.append(request_dict)
-        all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
-        unverified_tutor_count = 0
-        unfinished_accounts = []
-        for u in users: 
-            if Payment.query.filter_by(student_id = u.id).first():
-                    _connection_payments =Payment.query.filter_by(student_id = u.id)
-                    for p in _connection_payments:
-                        if p.student_paid_amount:
-                            payment_dict = {}
-                            payment_dict['payment'] = p
-                            payment_dict['time_created'] = pretty_date(p.time_created)
-                            payment_dict['student'] = u
-                            payment_dict['tutor'] = None
-                            payment_dict['student-hourly'] = None
-                            payment_dict['tutor-hourly'] = None
-                            payment_dict['recurring'] = False
-                            payment_dict['student-total'] = p.student_paid_amount
-                            payment_dict['tutor-total'] = 0
-                            payment_dict['stripe-fees'] = p.student_paid_amount * 0.03 + .30
-                            payment_dict['profit'] = p.student_paid_amount - payment_dict['stripe-fees']
-                            total_revenue += p.student_paid_amount
-                            total_profit += payment_dict['profit']
-                            payments.append(payment_dict)
-            if not u.name and u.email:
-                unfinished_accounts.append(u)
-
-            pretty_dates[u.id] = pretty_date(u.time_created)
-            if u.qualifications and not u.approved_by_admin:
-                unverified_tutor_count += 1
-            if u.skills:
-                result_string = ""
-                for s in u.skills:
-                    result_string = result_string + s.name + " "
-                    skills_array.append(s.name)
-                skills_dict[u.id] = result_string
-                tutor_count +=1 
-            else:
-                student_count += 1
-        payments = sorted(payments, key=lambda d:d['payment'].time_created, reverse=True)
-        from collections import Counter
-        import operator
-        skills_counter = dict(Counter(skills_array))
-        skills_counter = sorted(skills_counter.iteritems(), key=operator.itemgetter(1))
-        return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
-            skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, \
-            all_requests = all_requests, skills_counter = skills_counter, notifications=notifications,\
-            payments=payments, total_profit=total_profit, environment = get_environment(), texts = Text.query.all(), ratings=Rating.query.all(),\
-            ratings_dict=ratings_dict, transactions=transactions, conversations=conversations, users_last_active=users_last_active,\
-            total_revenue = total_revenue, payment_analytics=payment_analytics, unverified_tutor_count=unverified_tutor_count, \
-            unfinished_accounts=unfinished_accounts, parents=parents_info, today_requests=today_requests, today_student_signups=today_student_signups,\
-            today_tutor_signups = today_tutor_signups)
+        return render_template('admin/admin-requests.html', all_requests=all_requests, num_repeat_payments=num_repeat_payments)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
@@ -2471,14 +2093,6 @@ def admin_access():
         session['user_id'] = int(user_id)
         return jsonify(json=ajax_json)
 
-
-@app.route('/tutorsignup1/', methods=('GET', 'POST'))
-def tutorsignup1():
-    form = SignupForm()
-    if form.validate_on_submit():
-        return redirect('/')
-    return render_template('tutorsignup1.html', form=form)
-
 @app.route('/activity/request/')
 def activity_request():
     user_id = session.get('user_id')
@@ -2634,10 +2248,6 @@ def get_tutor_time_ranges(week_object):
     return tutor_calendar_dict
 
 
-@app.route('/tutor_offer/')
-def tutor_offer():
-    return render_template('tutor_offer.html')
-
 @app.route('/guru-rules/')
 def guru_rules():
     return render_template('guru-rules.html')
@@ -2650,8 +2260,6 @@ def messages():
     user = User.query.get(user_id)
     if not session.get('admin'):
         user.last_active = datetime.now()
-    # if user.verified_tutor and not is_tutor_verified(user):
-    #     return redirect(url_for('settings'))
     pretty_dates = {}
     transactions = []
     calendars = {}
@@ -2671,49 +2279,6 @@ def messages():
     return render_template('messages.html', user=user, pretty_dates=pretty_dates, environment = get_environment(), session=session, \
         transactions = transactions, conversations=conversations, calendars=calendars)
 
-@app.route('/student_request/')
-def student_request():
-    return render_template('student_request.html')
-
-@app.route('/rate/')
-def rate():
-    return render_template('rate.html')
-
-@app.route('/bill/')
-def bill():
-    return render_template('bill.html')
-
-@app.route('/request_payment/')
-def request_payment():
-    return render_template('request_payment.html')
-
-@app.route('/credit_card/')
-def credit_card():
-    return render_template('credit_card.html')
-
-@app.route('/conversation/')
-def conversation():
-    return render_template('conversation.html')
-
-@app.route('/request_tutor/')
-def request_tutor():
-    return render_template('request_tutor.html')
-
-@app.route('/student_signup/')
-def student_signup():
-    return render_template('student_signup.html')
-
-@app.route('/tutor_signup/')
-def tutor_signup():
-    return render_template('tutor_signup.html')
-
-@app.route('/tutorsignup2/')
-def tutorsignup2():  
-    return render_template('tutorsignup2.html')
-
-@app.route('/howitworks/')
-def howitworks():
-    return render_template('howitworks.html')
 
 @app.route('/settings/referral/')
 def settings_referral():
@@ -2777,10 +2342,6 @@ def calc_avg_rating(user):
     else:
         avg_rating = 0
     return avg_rating, num_ratings
-
-@app.route('/test-500/', methods=['GET','POST'])
-def test():
-    return render_template('test-500.html')
 
 
 def upload_file_to_amazon(filename, file):
@@ -2854,17 +2415,6 @@ def find_earliest_meeting_time(_request):
     logging.info(student_ranges)
     logging.info(tutor_ranges)
     index = 0
-    # for _range in student_ranges:
-    #     tutor_range = tutor_ranges[index]
-
-    #     if _range[0] == tutor_range[0] and _range[1] == tutor_range [1]:
-    #         return [_range[0], _range[1]]
-
-    #     if _range[0] == tutor_range[0] and tutor_range[1] >= _range[1] and tutor_range[2] <= _range[2]:
-    #         return [tutor_range[1], tutor_range[2]]
-        
-    #     index = index+1
-
     for tutor_range in tutor_ranges:
         for student_range in student_ranges:
             if student_range[0] == tutor_range[0] and student_range[1] == tutor_range [1]:
