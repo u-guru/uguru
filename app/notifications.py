@@ -1,7 +1,6 @@
-from app import app
-from app.models import Skill, User, Request, Notification
-from emails import welcome_uguru_student, welcome_uguru_tutor, student_needs_help, tutor_wants_to_help, \
-    tutor_is_matched, student_payment_receipt, tutor_payment_receipt, tutor_payment_received, student_is_matched
+from app import app # TODO : imported but unused
+from models import Skill, User, Request, Notification
+from emails import *
 from datetime import datetime
 
 def getting_started_student(user, no_email=None):
@@ -18,7 +17,7 @@ def getting_started_student(user, no_email=None):
 
 def getting_started_student_tip(user):
     getting_started_msg = "<b>TIP:</b>  Adding a profile picture " + \
-        " makes Gurus feel more comfortable helping you!"  
+        " makes Gurus feel more comfortable helping you!"
     notification = Notification(other='getting_started')
     notification.feed_message = getting_started_msg
     notification.a_id_name = 'tip-photo'
@@ -153,7 +152,7 @@ def student_request_receipt(user, request, skill_name):
     user.feed_notif = user.feed_notif + 1
     return notification
 
-def student_request_receipt(user, request, skill_name):
+def student_request_receipt(user, request, skill_name): # TODO : REDIFINITION
     notification = Notification(request=request)
     notification.skill_name = skill_name
     notification.feed_message = "You requested help in <b>" + skill_name.upper() + '</b>.'
@@ -177,7 +176,7 @@ def tutor_request_offer(user, tutor, request, skill_name):
     notification.feed_message = "<b>" + user.name.split(" ")[0] + "</b> needs help in " + skill_name.upper()
     notification.feed_message_subtitle = '<span style="color:#69bf69">This request is still <strong>available</strong>! Click here to accept now!</span>'
     notification.skill_name = skill_name
-    request_number = tutor.incoming_requests_to_tutor.index(request)
+    request_number = tutor.incoming_requests_to_tutor.index(request) # TODO : assigned but unused
     notification.a_id_name = 'tutor-request-offer' + str(request.id)
     if user.profile_url:
         notification.image_url = user.profile_url
@@ -186,7 +185,7 @@ def tutor_request_offer(user, tutor, request, skill_name):
     notification.custom_tag = 'tutor-request-offer'
     notification.custom = skill_name
     notification.request_id = request.id
-    urgency_dict = ['ASAP', 'by tomorrow', 'by next week']
+    urgency_dict = ['ASAP', 'by tomorrow', 'by next week']  # TODO : assigned but unused
     tutor.feed_notif = tutor.feed_notif + 1
     tutor.status = 'red'
     return notification
@@ -216,7 +215,7 @@ def student_incoming_tutor_request(user, tutor, request, skill_name, hourly_amou
     notification.request_id = request.id
     notification.request_tutor_id = tutor.id
     notification.custom_tag = 'student-incoming-offer'
-    request_number = user.incoming_requests_from_tutors.index(request)
+    request_number = user.incoming_requests_from_tutors.index(request) # TODO : assigned but unused
     notification.a_id_name = 'student-incoming-offer' + str(len(user.notifications) + 1)
     if extra_detail:
         notification.extra_detail = extra_detail
@@ -288,13 +287,12 @@ def student_payment_proposal(user, tutor, payment):
         notification.image_url = tutor.profile_url 
     else:
          notification.image_url = '/static/img/default-photo.jpg' 
-    tutor_name = User.query.get(payment.tutor_id).name.split(" ")[0]
-    amount = float(payment.time_amount * payment.tutor_rate)
+    tutor_name = User.query.get(payment.tutor_id).name.split(" ")[0]  # TODO : assigned but unused
+    amount = float(payment.time_amount * payment.tutor_rate)  # TODO : assigned but unused
     user.feed_notif = user.feed_notif + 1
     return notification
 
 def student_payment_approval(user, tutor, payment, amount_charged, charge_id, skill_name, recurring):
-    print user, tutor, payment, amount_charged, charge_id, skill_name, recurring
     notification = Notification(payment=payment)
     notification.feed_message = "<b>$" + str('%.4g' % amount_charged) + "</b> payment has been sent to " + \
         tutor.name.split(" ")[0] + "."

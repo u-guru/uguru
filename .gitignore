@@ -55,4 +55,7 @@ nosetests.xml
 # Secret Sauce
 .env
 env
-
+*.key
+*.csr
+*.crt
+*.pem

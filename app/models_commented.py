@@ -132,42 +132,93 @@ class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key = True)
     name = Column(String(64))
+    
+    #For future use, not too heavily used right now
     parent_name = Column(String)
     parent_email = Column(String)
+    
+
+    #On testing we wanted to use multiple same emails for signups so you can go back and forth.
     if os.environ.get('TESTING'):
         email = Column(String(64))
     else:
         email = Column(String(64), index = True, unique = True)
 
+    #Not used .. yet .. or maybe we can have .school as a field for students
     school_email = Column(String(64))
     password = Column(String(64))
+    
+    #not used yet, will convert soon
     is_a_tutor = Column(Boolean, default = False)
+
+    
+    # This is my fault completely. I let them authenticate via fb,
+    # once they did, I made this flag true, and ENCRYPTED (fml)
+    # their Facebook ID and saved it as user.password =/
+
     fb_account = Column(Boolean, default = False)
+    
+    # This is unique, in the future we can let them login via phone
     phone_number = Column(String(64), unique = True)
+    
+    #Only updated when they create the account
     time_created = Column(DateTime)
+
+    # In the future we'll have 'email me when ... '
     email_notification = Column(Boolean, default = True)
     text_notification = Column(Boolean, default = True)
+    
+    # Has NOT been used yet. Was meant for iOS app
     push_notification = Column(Boolean, default = True)
+    
     profile_url = Column(String, default='/static/img/default-photo.jpg')
+    
+    #This is for their bio in their profile.
     tutor_introduction = Column(String(1000))
+    
+    # DEPRECIATED  In the past, we used this to verify whether they were tutored or not.
     qualifications = Column(String(5000))
+    
+    # DEPRECIATED This was for uGuru .01. We don't use it at all, can get rid of
     advertised_rate = Column(Float, default = 10.0)
+    
+    # DEPRECIATED This was for uGuru .01. We don't use it at all, can get rid of
     max_price = Column(Float, default = 15.0)
+
+    # DEPRECIATED This was meant for tutors toggling whether they wanted to be contacted or not. Never used.
     discoverability = Column(Boolean, default = True)
+
+    # When a user signs up, what UTM or what source did they sign up through? Example: uguru.me/sproul, from an email link, etc.
     referral_code = Column(String)
+    
+    # A unique user code 
     user_referral_code = Column(String)
+
+    # Last time they logged into the platform
     last_active = Column(DateTime)
+
+    # WILL BE DEPRECIATED. Once I change all the code.
     approved_by_admin = Column(Boolean)
 
+    # NEVER USED: Was meant for the iOS App last time we worked together
     auth_token = Column(String(64))
+
+    # NEVER USED: Was meant for the iOS App + push notifications
     apn_token = Column(String(64))
 
     #Tutor fields
     verified_tutor = Column(Boolean)
     balance = Column(Float, default = 0.0)
     credit = Column(Float, default = 0.0)
+    
+    # Pending means, if a student is matched a tutor, whatever the tutor can potentially make is added into 'pending'.
+    # This complicates things because if a student changes the amount of time they planned to meet the student & confirms meeting, 
+    # things get tricky to calculate.
     pending = Column(Float, default = 0.0)
+    
+    # Total earned via uGuru. This was added way later, so I definitely fucked this one up, and users total earned is not accurate.
     total_earned = Column(Float, default = 0.0)
+    
     discoverability = Column(Boolean, default = True)
     major = Column(String)
     year = Column(String)
@@ -175,6 +226,7 @@ class User(Base):
     #Student Secret Codes
     secret_code = Column(String)
 
+    # Different tutor tags for BERKELEY students only. This is BAD. This should be user.tutor_tags (one to many), with tag objects.
     previous_tutor = Column(Boolean, default = False)
     slc_tutor = Column(Boolean, default = False)
     hkn_tutor = Column(Boolean, default = False)
@@ -183,11 +235,13 @@ class User(Base):
     la_tutor = Column(Boolean, default = False)
     high_tutor = Column(Boolean, default = False)
 
+    # Notification counts. I was thinking, we can just do this in the client side. The number on the top of the page could be
+    # '# of grey background notifications'.length (based on jQuery selectors)
     msg_notif = Column(Integer, default = 0)
     feed_notif = Column(Integer, default = 0)
     settings_notif = Column(Integer, default = 0)
     
-    #Stripe Fields
+    #Stripe Fields. Not sure if this is the best way to track this. If anything, maybe a user should have many cards... 
     customer_id = Column(String)
     customer_last4 = Column(String(4))
     customer_card_type = Column(String(4))
@@ -195,33 +249,63 @@ class User(Base):
     recipient_last4 = Column(String(4))
     recipient_card_type = Column(String(4))
     
+    # Student has several outgoing requests. Once they pick & match one, that outgoing request is popped from this array.
+    # When a student requests help for CS10, I'll check and see if they already have an 'active' CS10 request by checking
+    # whether there already is a request for CS10 within user.outgoing_requests.
     outgoing_requests = relationship('Request', 
         secondary = student_request_table)
+
+    # DEPRECIATED (never really needed) Never really used this as I should. But it's meant for tutors who have incoming requests from students.
     incoming_requests_to_tutor = relationship('Request', 
         secondary = tutor_request_table,
         backref = backref('users', lazy='dynamic'))
+    
+    # DEPRECIATED (never really needed) Never really used this as I should. But it's meant for tutors who have incoming requests from students.
     incoming_requests_from_tutors = relationship('Request', 
         secondary = committed_tutor_request_table)
+
+    # Skills / courses that a user has.
     skills = relationship("Skill",
         secondary = user_skill_table,
         backref = backref('users', lazy='dynamic'))
+    
+    # All ratings as a student. Should this be just 'avg student rating'? instead of calculating it everytime? But then we'd need to keep count of the # of ratings as well.
     student_ratings = relationship('Rating',
         secondary = student_rating_table)
+    
+    # All ratings as a tutor
     tutor_ratings = relationship('Rating',
         secondary = tutor_rating_table)
+
+    # The way I check whether they have rating forms that need to be filled out.
+    # When a user logins, in the '/activity/' view I said if (user.pending_ratings),
+    # it'll set a flag on activity.html that basically 
     pending_ratings = relationship('Rating',
         secondary = pending_rating_table)
+
+    # Depreciated, but is used. It was meant so that a user.mailbox.conversations, incase if they anything else in the mailbox in the future -__-.
     mailbox = relationship("Mailbox",
         uselist = False,
         backref = backref("user", uselist = False))
+
+    # ALL PAYMENTS, which include cashing out, transaction payments.
+    # What is the best way for us to specifiy 'type' within the payment object?
     payments = relationship("Payment",
         secondary = user_payment_table)
+
+    #All notifications on the user feed.
     notifications = relationship("Notification",
         secondary = user_notification_table)
+    
+    #SOME emails that the user has been sent, it'll track via the email objects and we can see how many of them are opened. 
     emails = relationship("Email",
         secondary = user_email_table)
+    
+    # What promotions have they used (incoming & outgoing). Outgoing = referrals.
     promos = relationship("Promo",
         secondary = user_promo_table)
+
+    # What texts have they received, were they delived? etc.
     texts = relationship("Text",
         secondary = user_text_table)
 
@@ -233,8 +317,10 @@ class User(Base):
         self.phone_number = phone_number
         self.time_created = datetime.now()
 
-    def __repr__(self):
-        return "<User " + str(self.id) + " " + str(self.name) + " " + str(self.email) + ">"
+        if is_a_tutor:
+            pass
+            # TODO : Pass in skills and Create skill objects and append them to user skills
+             #TODO : See if any of their skills are needed right now and add to their incoming requests
 
     def calc_avg_ratings(self):
         rating_sum = 0.0
@@ -242,6 +328,12 @@ class User(Base):
             rating_sum += rating.tutor_rating
         return rating_sum / len(self.tutor_rating)
 
+    def __repr__(self):
+        return "<Name: %s, Email: %s, Phone: %s, Date: %s>" % (self.name, self.email,\
+            str(self.phone_number), self.time_created.strftime('%b %d,%Y'))
+
+
+# I dont fucking know an intern did this like over a year ago.
 class Mailbox(Base):
     __tablename__ = 'mailbox'
     id = Column(Integer, ForeignKey('user.id'), primary_key = True)
@@ -259,6 +351,7 @@ class Mailbox(Base):
 
     def __repr__(self):
         return "<Mailbox for '%r'>" % (self.id)
+
 
 class Conversation(Base):
     __tablename__ = 'conversation'
@@ -280,17 +373,22 @@ class Conversation(Base):
         backref = "guru_conversations")
 
     student_id = Column(Integer, ForeignKey('user.id'))
+    
+    #The RIGHT way to do foreign keys.. In most classes I just do 'user_id' as a field
     student = relationship("User", 
         uselist = False, 
         primaryjoin = "User.id == Conversation.student_id",
         backref = "student_conversations")
 
+    #in case a conversations b/w a student or tutor happens again, they can have multiple requests tied to it (different product back then)
     requests = relationship("Request",
         secondary = request_conversation_table)
 
     users = relationship("User",
         secondary = user_conversation_table,
         backref = "conversations")
+    
+    # Intern
     mailboxes = relationship("Mailbox",
         secondary = mailbox_conversation_table,
         backref = "conversations")
@@ -383,6 +481,9 @@ class Notification(Base):
     custom = Column(String(1000))
     custom_tag = Column(String)
 
+    # This is for tutors to specify a response to notifications that have a particular tag.
+    # I had trouble tracking different types of notifications and wasn't sure where to put them.
+    # ASK ME ABOUT THIS
     extra_detail = Column(String(2500))
     
     time_created = Column(DateTime)
@@ -391,12 +492,14 @@ class Notification(Base):
     feed_message = Column(String(1000))
     feed_message_subtitle = Column(String(1000))
     
+    # ASK ME ABOUT THIS --> super fucked up
     payment_id = Column(Integer)
     rating_id = Column(Integer)
     a_id_name = Column(String) #div to display
     image_url = Column(String)
     status = Column(String)
 
+    # ASK ME ABOUT THIS --> super fucked up
     def __init__(self, **kwargs):
         request = kwargs.get('request')
         payment = kwargs.get('payment')
@@ -416,6 +519,7 @@ class Notification(Base):
             self.custom = other
 
 
+# DEPRECIATED Never used this!! Was meant for each message to have a tag to it.
 class Tag(Base):
     __tablename__ = 'tag'
     name = Column(String(16))
@@ -454,6 +558,9 @@ class Tag(Base):
     def __repr__(self):
         return "<Tag %r>" % (self.name)
 
+
+# Covers multiple types of payments. Not the best way to do this. 
+# We have student payment, and tutor payment as the same object.. with different fields
 
 class Payment(Base):
     __tablename__ = 'payment'
@@ -591,6 +698,7 @@ class Email(Base):
     time_created = Column(DateTime)
     mandrill_id = Column(String)
 
+# A week of time has several ranges
 class Range(Base):
     __tablename__ = 'range'
     id = Column(Integer, primary_key = True)
@@ -598,6 +706,9 @@ class Range(Base):
     end_time = Column(SmallInteger) #0-23 hours of the day
     week_day = Column(SmallInteger) #0-6 days of the week
 
+
+# A user can redeem several promos. Sender ID specifies referrals, like who referred who.
+# Probably can be much more simplified.
 class Promo(Base):
     __tablename__ = 'promo'
     id = Column(Integer, primary_key = True)
@@ -607,6 +718,8 @@ class Promo(Base):
     sender_id = Column(Integer)
     receiver_id = Column(Integer)
 
+
+# These fields are all the fields provided from the response dictionary
 class Text(Base):
     __tablename__ = 'text'
     id = Column(Integer, primary_key = True)
@@ -624,9 +737,15 @@ class Text(Base):
     account_sid = Column(String)
 
 
+# A request has many weekly availabilities. One for the student, many for the tutors that
+# reply with their availability on top of the student. 
+# A week has several ranges. Example week has owner student(id), with several ranges 
+# (each range is a tuple with range (0,24) as each item)
 class Week(Base):
     __tablename__ = 'week'
     id = Column(Integer, primary_key = True)
+    
+    # THIS IS SHITTY.
     owner = Column(SmallInteger) #0 if student, 1 if tutor
     ranges = relationship('Range',
         secondary = week_ranges_table,
@@ -674,6 +793,8 @@ class Rating(Base):
     meeting_exist = Column(Boolean, default = True)
     student_rating_description = Column(String(256))
     tutor_rating_description = Column(String(256))
+    
+    # if they don't meet --> why not?
     tutor_no_meet_description = Column(String(256))
     student_no_meet_description = Column(String(256))
 
@@ -701,6 +822,7 @@ class Unsubscribe(Base):
     id = Column(Integer, primary_key = True)
     email = Column(String)
     tag = Column(String)
+    # What email campaign did they unsubscribe through?
     campaign = Column(String)
     time_created = Column(DateTime)
 
