@@ -526,14 +526,14 @@ update_skill_ajax = function(add_or_remove, skill_name) {
 var send_notification_ajax = function(email_or_text, value) {
   var data = {};
   if (email_or_text == 'email') {
-    data['email'] = value;
+    data['email_notification'] = value;
   } else {
-    data['text'] = value;
+    data['text_notification'] = value;
   }
   $.ajax({
-    type: "POST",
+    type: "PUT",
     contentType: 'application/json;charset=UTF-8',
-    url: '/notification-settings/' ,
+    url: '/api/user' ,
     data: JSON.stringify(data),
     dataType: "json"
   });
