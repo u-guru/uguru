@@ -17,7 +17,7 @@ from models import *
 from hashlib import md5
 from datetime import datetime, timedelta
 from sqlalchemy import desc
-from twilio import twiml
+from twilio import *
 from twilio.rest import TwilioRestClient
 from mixpanel import Mixpanel
 from celery import Celery
