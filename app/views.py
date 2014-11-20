@@ -480,7 +480,6 @@ def new_admin():
         return render_template('new-admin.html', day_stats=day_stats)
     return redirect(url_for('index'))
 
-
 @app.route('/admin/students/')
 def new_admin_students():
     if session.get('admin'):
