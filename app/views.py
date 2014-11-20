@@ -9,6 +9,7 @@ import json
 import traceback
 import mandrill
 import logging
+import twilio
 from app import app, models
 from app.database import *
 from flask import render_template, jsonify, redirect, request, session, flash, redirect, url_for
@@ -17,7 +18,7 @@ from models import *
 from hashlib import md5
 from datetime import datetime, timedelta
 from sqlalchemy import desc
-from twilio import *
+from twilio import twiml
 from twilio.rest import TwilioRestClient
 from mixpanel import Mixpanel
 from celery import Celery
@@ -2974,8 +2975,6 @@ def send_twilio_msg(to_phone, body, user_id):
         db_session.flush()
         raise
     return message
-
-
 
 @celery.task
 def send_student_package_info(user_id, request_id):
