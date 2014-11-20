@@ -2977,22 +2977,6 @@ def send_twilio_msg(to_phone, body, user_id):
     return message
 
 
-@celery.task
-def send_student_one_hour_left(user_id, request_id):
-    return
-    #THIS IS A BUG I NEED TO FIX.
-    # from app.static.data.short_variations import short_variations_dict
-    # user = User.query.get(user_id)
-    # r = Request.query.get(request_id)
-    
-    # #If student has already chosen or there are no tutors
-    # if r.connected_tutor_id or len(r.committed_tutors) == 0:
-    #     return
-    
-    # skill_name = short_variations_dict[Skill.query.get(r.skill_id).name]
-    # from app.emails import student_one_hour_left
-    # student_one_hour_left(user, skill_name)
-    logging.info("Email sent to " + str(user) + "regarding student packages.")
 
 @celery.task
 def send_student_package_info(user_id, request_id):
