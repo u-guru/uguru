@@ -888,8 +888,15 @@ $('#student-register-tutor-link').click(function() {
 $('#request-form-submit').click(function(){
   if (!$('#request-description').val() || !$('#request-location').val() || $('td.time-slot.td-selected').length === 0 || !$('#request-skill').val()) {
     $('#alert-fields-request-form').show();
+    $('html, body').animate({
+      scrollTop: $("#alert-fields-request-form").offset().top
+    }, 500);
   } else if (($('#request-main-slider').slider('value') * 2) > $('td.time-slot.td-selected').length) {
     $('#alert-fields-request-form').text('Please fill in at least ' + $('#request-main-slider').slider('value') + 'hrs on the calendar.');
+    $('html, body').animate({
+      scrollTop: $("#alert-fields-request-form").offset().top
+    }, 500);
+
     $('#alert-fields-request-form').show();
   } else if ($("#activity").length === 0) {
       //If they have already signed up
@@ -989,27 +996,14 @@ function submit_request_form_to_server() {
       if (result.errors) {
         $('#alert-fields-request-form').text(result.errors);
         $('#alert-fields-request-form').show();
-                // $('#request-form-submit').hide();
-                return;
-              }
-              if (result.dict['no-active-tutors']) {
-                $('#alert-fields-request-form').text("Sorry! We currently don't have tutors for this course. We've registered your request and will let you know immediately when we do!");
-                $('#alert-fields-request-form').show();
-                $('#request-form-submit').hide();
-              }
-              else if (result.dict['duplicate-request']) {
-                $('#alert-fields-request-form').text("Sorry! You already have an active request for this class. Please cancel it and try again.");
-                $('#alert-fields-request-form').show();
-                $('#request-form-submit').hide();
-              } else if (result.dict['tutor-request-same']) {
-                $('#alert-fields-request-form').text("Sorry, you cannot make a request for a course that you're a tutor in!");
-                $('#alert-fields-request-form').show();
-                $('#request-form-submit').hide();
-              } else {
-                window.location.replace('/activity/');
-              }
-            }
-          });
+        $('html, body').animate({
+          scrollTop: $("#alert-fields-request-form").offset().top
+        }, 500);
+      }else{
+        window.location.replace('/activity/');
+      }
+    }
+  });
 }
 
 $('#add-skill-btn').click(function() {

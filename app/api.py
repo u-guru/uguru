@@ -32,9 +32,8 @@ def api(arg, _id):
     logging.info(ajax_json)
 
     #for local testing purposes
-    from app.views import get_environment
-    if get_environment() == 'LOCAL':
-        print request.url, request.method
+    if not os.environ.get('PRODUCTION'):
+        logging.info(request.method + "-" + request.url)
 
     if arg == 'forgot_password' and request.method == 'POST':
         email = request.json.get("email").lower()

@@ -18,7 +18,7 @@ from models import *
 from hashlib import md5
 from datetime import datetime, timedelta
 from sqlalchemy import desc
-from twilio import twiml
+from twilio import *
 from twilio.rest import TwilioRestClient
 from mixpanel import Mixpanel
 from celery import Celery
@@ -69,6 +69,9 @@ def send_twilio_message_delayed(phone, msg, user_id):
 @app.route('/piazza/')
 @app.route('/', methods=['GET', 'POST'])
 def index(arg=None):
+    
+    logging.info("TESTING LOGGING IN index function")
+
     modal_flag = None
     if os.environ.get('TESTING') and not session.get('testing-admin'):
         return redirect(url_for('login'))
@@ -1020,7 +1023,7 @@ def update_requests():
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
 
-            logging.info("logging.info(request" + str(r.id))
+            logging.info("request" + str(r.id))
 
             if student.text_notification and student.phone_number:
                 logging.info("Student is supposed to be receiving a text message")
@@ -1604,7 +1607,6 @@ def success():
 
         if ajax_json.get('student-signup'):
             try: 
-
                 if not ajax_json.get('email'):
                     from api import errors
                     return errors(['Something went wrong ... Try again!'])
@@ -1628,7 +1630,6 @@ def success():
                     password = ''
                 else:
                     password = md5(ajax_json['password']).hexdigest()
-
 
                 if u:
                     return jsonify(dict={'account-exists':True});
@@ -2520,7 +2521,6 @@ def send_twilio_msg(to_phone, body, user_id):
         check_msg_status.apply_async(args=[text.id], countdown = 60)
     except twilio.TwilioRestException:
         logging.info("text message didn't go through")
-        raise
     except:
         db_session.flush()
         raise
