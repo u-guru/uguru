@@ -32,6 +32,7 @@ def api(arg, _id):
     logging.info(ajax_json)
 
     #for local testing purposes
+
     if not os.environ.get('PRODUCTION'):
         logging.info(request.method + "-" + request.url)
 
