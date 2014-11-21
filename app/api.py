@@ -34,7 +34,7 @@ def api(arg, _id):
     #for local testing purposes
     from app.views import get_environment
     if get_environment() == 'LOCAL':
-        print request.url, request.method
+        print request.url, request.method, request.json
 
     if arg == 'forgot_password' and request.method == 'POST':
         email = request.json.get("email").lower()
