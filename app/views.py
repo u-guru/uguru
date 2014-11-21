@@ -1565,13 +1565,13 @@ def success():
         return jsonify(dict=ajax_json)
 
 # TODO : This should go in api.py
-@app.route('/student_request/', methods=('POST'))
+@app.route('/student_request/', methods=('GET', 'POST'))
 def student_request():
     
     from api import errors, success
 
     ajax_json = request.json
-    logging.info("===Printing the json file for a student request below===")
+    logging.info("===Printing the json for a student request===")
     logging.info(ajax_json)
 
     from app.static.data.variations import courses_dict
@@ -2295,6 +2295,7 @@ def send_twilio_msg(to_phone, body, user_id):
     if 'Meet at' in body:
         return 
     body = '[uGuru] ' + body
+    message = None;
     try:
         message = twilio_client.messages.create(
             body_ = body,
