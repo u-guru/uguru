@@ -31,6 +31,11 @@ def api(arg, _id):
     ajax_json = request.json
     logging.info(ajax_json)
 
+    #for local testing purposes
+    from app.views import get_environment
+    if get_environment() == 'LOCAL':
+        print request.url, request.method
+
     if arg == 'forgot_password' and request.method == 'POST':
         email = request.json.get("email").lower()
 
@@ -1169,6 +1174,8 @@ def api(arg, _id):
                 user.verified_tutor = request.json.get('verified_tutor')
             if 'email_notification' in request.json:
                 user.email_notification = request.json.get('email_notification')
+            if 'text_notification' in request.json:
+                user.text_notification = request.json.get('text_notification')
             if 'push_notification' in request.json:
                 user.push_notification = request.json.get('push_notification')
             if request.json.get('total_earned'):

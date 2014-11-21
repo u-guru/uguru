@@ -1279,7 +1279,7 @@ $('#login-submit-link').click(function(){
             $('#alert-fields-login').text('You have a Uguru.me FB account, please login with Facebook!');
           }
           if (result.json['admin']) {
-            window.location.replace('/new-admin/');
+            window.location.replace('/admin/');
           }
 
           if (result.json['success'] && result.json['redirect']) {
@@ -1693,14 +1693,14 @@ var numbers = new Bloodhound({
     var send_notification_ajax = function(email_or_text, value) {
       var data = {};
       if (email_or_text == 'email') {
-        data['email'] = value;
+        data['email_notification'] = value;
       } else {
-        data['text'] = value;
+        data['text_notification'] = value;
       }
       $.ajax({
-        type: "POST",
+        type: "PUT",
         contentType: 'application/json;charset=UTF-8',
-        url: '/notification-settings/' ,
+        url: '/api/user' ,
         data: JSON.stringify(data),
         dataType: "json"
       });
