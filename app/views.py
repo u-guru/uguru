@@ -1715,7 +1715,7 @@ def student_request():
                     message = request_received_msg(user, tutor, new_request, skill_name)
                     send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
                 tutor.incoming_requests_to_tutor.append(new_request)
-                notification = tutor_request_offer(user, tutor, request, skill_name)
+                notification = tutor_request_offer(user, tutor, new_request, skill_name)
                 db_session.add(notification)
                 tutor.notifications.append(notification)
             else:
@@ -1787,7 +1787,6 @@ def payments():
         return render_template('payments.html', user=user)
     else:
         return redirect(url_for('index'))
-
 
 @app.route('/login/', methods=('GET', 'POST'))
 def login():
