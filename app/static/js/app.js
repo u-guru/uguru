@@ -988,11 +988,12 @@ function submit_request_form_to_server() {
   };
   $.ajax({
     type: "POST",
-    contentType: 'application/json;charset=UTF-8',
-    url: '/validation/' ,
+    contentType: 'application/json',
+    url: '/student_request/' ,
     data: JSON.stringify(data),
     dataType: "json",
     success: function(result) {
+      console.log(result);
       if (result.errors) {
         $('#alert-fields-request-form').text(result.errors);
         $('#alert-fields-request-form').show();
@@ -1002,6 +1003,9 @@ function submit_request_form_to_server() {
       }else{
         window.location.replace('/activity/');
       }
+    },
+    error: function(e) {
+      console.log(e);
     }
   });
 }
