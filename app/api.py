@@ -1889,7 +1889,14 @@ def getUser():
 
 #retunns a {"errors": []} resource of the resounse the last request failed
 def errors(errors=[]):
-    return jsonify({"errors":errors})
+    response = jsonify({"errors":errors})
+    logging.info(response)
+    return response
+
+def success(messages=[]):
+    response = jsonify({"message":messages})
+    logging.info(response)
+    return response
 
 def json_handler(obj):
     if hasattr(obj, 'isoformat'):

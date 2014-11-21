@@ -1509,192 +1509,6 @@ def success():
             except:
                 db_session.rollback()
 
-        #Create a request
-        if ajax_json.get('student-request'):
-            logging.info("===Printing the json file for a student request below===")
-            logging.info(ajax_json)
-            user_id = session['user_id']
-            from app.static.data.variations import courses_dict
-            from app.static.data.short_variations import short_variations_dict
-
-            
-            original_skill_name = ajax_json['skill'].lower()
-            if not courses_dict.get(original_skill_name):
-                from api import errors
-                return errors(['Please choose a skill from the listed courses we have in the dropdown.'])
-
-            if ajax_json.get('phone'):
-                other_user = User.query.filter_by(phone_number=ajax_json.get('phone')).first()
-                user = User.query.get(user_id)
-                if other_user and user != other_user:
-                    from api import errors
-                    return errors(['A duplicate account already exists with phone ' + ajax_json.get('phone') + '. Logout and try "Forgot your Password"'])
-                user.phone_number = ajax_json.get('phone')
-
-            skill_id = courses_dict[original_skill_name]
-            skill = Skill.query.get(skill_id)
-            skill_name = short_variations_dict[skill.name]
-            u = User.query.get(user_id)
-            logging.info("===Printing details about the user who made this request===")
-            logging.info(str(u))
-
-            logging.info("Checking whether a similar request has been made in the past 2 couple of hours for the same skill")
-            previous_request = sorted(Request.query.filter_by(student_id=user_id, skill_id=skill_id).all(), key=lambda n:n.time_created, reverse = True)
-            if previous_request:
-                most_recent_time = previous_request[0].time_created
-                from api import get_time_diff_in_seconds
-                time_diff_in_seconds = get_time_diff_in_seconds(datetime.now(), most_recent_time)
-                if time_diff_in_seconds < 7200:
-                    from api import errors
-                    return errors(['Sorry! You must wait 2 hours before you make a request for ' + skill_name.upper() + ' again.'])
-
-
-            if u.verified_tutor:
-                if skill in u.skills:
-                    return jsonify(dict={'tutor-request-same':True})
-
-            # If student already has an outgoing request
-            if u.outgoing_requests:
-                for r in u.outgoing_requests:
-                    if r.skill_id == skill_id:
-                        return jsonify(dict={'duplicate-request': True})
-
-            r = Request(
-                student_id = user_id,
-                skill_id = skill_id,
-                description = ajax_json['description'],
-                urgency = int(ajax_json['urgency']),
-                frequency = None, 
-                time_estimate = float(ajax_json['estimate'])
-            )
-
-            #optional
-            if ajax_json.get('professor'):
-                r.professor = ajax_json['professor']
-
-            #Process calendar information
-            weekly_availability = ajax_json['calendar']
-            logging.info(weekly_availability)
-
-            week_times = Week(owner=0)
-            db_session.add(week_times)
-            i = 0
-            for day in weekly_availability:
-                for time_range in day:
-                    temp_range = Range(start_time=time_range[0], end_time=time_range[1], week_day=i)
-                    db_session.add(temp_range)
-                    week_times.ranges.append(temp_range)
-                i = i + 1
-
-            r.weekly_availability.append(week_times)
-            r.num_students = 1
-            r.student_estimated_hour = int(float(ajax_json['hourly-price']))
-            r.location = ajax_json['location']
-            r.available_time = ''
-            u.outgoing_requests.append(r)
-            db_session.add(r)            
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-
-            logging.info("===Request was successfully committed to the database===")
-
-            from notifications import student_request_receipt
-            notification = student_request_receipt(u, r, original_skill_name)
-            u.notifications.append(notification)
-            db_session.add(notification)
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-
-            logging.info("===Student request notification was successfully committed to the database===")
-
-            if not skill.tutors:
-                return jsonify(dict={'no-active-tutors': True})
-
-            # Tutors are currently not contacted when there is a request.
-            from notifications import tutor_request_offer
-            tier_2_tutor_ids = []
-            tier_2_tutors = []
-            logging.info("===Going through all qualified tutors for this request...===")
-            logging.info("Here are all the requested tutors: " + str(r.requested_tutors))
-            for tutor in r.requested_tutors:
-                #Only if they are approved tutors
-                logging.info(str(tutor) + " is qualified.")
-
-                #Check if conversation already exists between tutor + student. If so, we don't want to see it.
-                conversation = Conversation.query.filter_by(student_id=u.id, guru_id=tutor.id).first()
-                if conversation and conversation.requests and conversation.requests[0].skill_id == r.skill_id:
-                    r.requested_tutors.remove(tutor)
-                    continue
-
-                #check if tutor is in tutor blacklist
-                if tutor.id in tutor_blacklist:
-                    r.requested_tutors.remove(tutor)
-                    continue
-
-                if tutor.approved_by_admin:
-                    logging.info(str(tutor) + " is approved by admin.")
-                    if is_tier_one_tutor(tutor):
-                        logging.info(str(tutor) + ' is a tier 1 tutor')
-                        if tutor.text_notification and tutor.phone_number:
-                            logging.info(str(tutor) + ' is qualified to receive a text')
-                            from emails import request_received_msg
-                            message = request_received_msg(u, tutor, r, skill_name)
-                            send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
-                        tutor.incoming_requests_to_tutor.append(r)
-                        notification = tutor_request_offer(u, tutor, r, skill_name)
-                        db_session.add(notification)
-                        tutor.notifications.append(notification)
-                    else:
-                        logging.info(str(tutor) + ' is a tier 2 tutor')
-                        tier_2_tutor_ids.append(tutor.id)
-                        tier_2_tutors.append(tutor)
-                        logging.info(tier_2_tutor_ids)
-
-            for tutor in tier_2_tutors:
-                logging.info("Tutor has been removed: " +  str(tutor))
-                r.requested_tutors.remove(tutor)
-
-            if tier_2_tutor_ids:
-                logging.info("Here are all the tier2 tutor ids: " + str(tier_2_tutor_ids))
-                if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
-                    send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=100)
-                else:
-                    send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=3600)
-
-            #send emails + create objects
-            from emails import student_needs_help
-            mandrill_result, tutor_email_dict = student_needs_help(u, r.requested_tutors, skill_name, r)
-            for sent_email_dict in mandrill_result:
-                if tutor_email_dict.get(sent_email_dict['email']):
-                    tutor = tutor_email_dict[sent_email_dict['email']]
-                    email = Email(
-                        tag='tutor-request', 
-                        user_id=tutor.id, 
-                        time_created=datetime.now(), 
-                        mandrill_id = sent_email_dict['_id']
-                        )
-                    db_session.add(email)
-                    tutor.emails.append(email)
-                    r.emails.append(email)
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-
-            if get_environment() == 'PRODUCTION':
-                send_student_one_hour_left.apply_async(args=[u.id, r.id], countdown=82800)
-            else:
-                send_student_one_hour_left.apply_async(args=[u.id, r.id], countdown=50)
-
-            logging.info("===Student Request Complete. Texts and Emails successfully sent out===")
-
         if ajax_json.get('admin-approve-tutor'):
             try:
                 user_id = int(ajax_json.get('admin-approve-tutor'))
@@ -1749,6 +1563,203 @@ def success():
                 db_session.rollback();
 
         return jsonify(dict=ajax_json)
+
+# TODO : This should go in api.py
+@app.route('/student_request/', methods=('POST'))
+def student_request():
+    
+    from api import errors, success
+
+    ajax_json = request.json
+    logging.info("===Printing the json file for a student request below===")
+    logging.info(ajax_json)
+
+    from app.static.data.variations import courses_dict
+    from app.static.data.short_variations import short_variations_dict
+
+    original_skill_name = ajax_json['skill'].lower()
+    if not courses_dict.get(original_skill_name):
+        return errors(['Please choose a skill from the listed courses we have in the dropdown.'])
+
+    # Get current user_id
+    user = User.query.get(session['user_id'])
+    logging.info("===Printing details about the user who made this request===")
+    logging.info(user)
+
+    if ajax_json.get('phone'):
+        # If there is another user with the same number,
+        other_user = User.query.filter_by(phone_number=ajax_json.get('phone')).first()
+        if other_user and user != other_user:
+            return errors(['A duplicate account already exists with phone ' + ajax_json.get('phone') + '. Logout and try "Forgot your Password"'])
+        else:
+            # If not, update user with new phone number
+            user.phone_number = ajax_json.get('phone')
+
+    # Get information about the skill they are requesting help in
+    skill_id = courses_dict[original_skill_name]
+    skill = Skill.query.get(skill_id)
+    skill_name = short_variations_dict[skill.name]
+
+    logging.info("===Checking whether a similar request has been made too recently===")
+    previous_request = sorted(Request.query.filter_by(student_id=user.id, skill_id=skill_id).all(), key=lambda n:n.time_created, reverse = True)
+    if previous_request:
+        most_recent_time = previous_request[0].time_created
+        from api import get_time_diff_in_seconds
+        time_diff_in_seconds = get_time_diff_in_seconds(datetime.now(), most_recent_time)
+        if time_diff_in_seconds < 7200 and os.environ.get("PRODUCTION"):
+            logging.info("Fail: Requesting help for skill too soon after last request.")
+            return errors(['Sorry! You must wait 2 hours before you make a request for ' + skill_name.upper() + ' again.'])
+
+    # Check if current user is a tutor, and if so, whether they are a turor for this particular skill.
+    if user.verified_tutor: # or user.is_a_tutor:
+        if skill in user.skills:
+            logging.info("Fail: Requesting help for class user is a tutor in.")
+            return errors(['Sorry! You cannot request help for a class you are a tutor in.'])
+
+    # If student already has an outgoing request
+    for user_request in user.outgoing_requests:
+        if user_request.skill_id == skill_id:
+            logging.info("Fail: Requesting help while there is already and active request.")
+            return errors(["You already have an active request for this course.  Please cancel your previous requst and try again."])
+
+    logging.info("===Creating a new request===")
+    new_request = Request(
+        student_id = user.id,
+        skill_id = skill_id,
+        description = ajax_json['description'],
+        urgency = int(ajax_json['urgency']),
+        frequency = None,
+        time_estimate = float(ajax_json['estimate'])
+        )
+
+    # Include optional professor information if available
+    if ajax_json.get('professor'):
+        new_request.professor = ajax_json['professor']
+
+    # Process calendar information, some voodoo magic that only Samir understands
+    weekly_availability = ajax_json['calendar']
+    week_times = Week(owner=0)
+    db_session.add(week_times)
+    i = 0
+    for day in weekly_availability:
+        for time_range in day:
+            temp_range = Range(start_time=time_range[0], end_time=time_range[1], week_day=i)
+            db_session.add(temp_range)
+            week_times.ranges.append(temp_range)
+        i = i + 1
+    
+    logging.info("===Processed calander information===")
+
+    new_request.weekly_availability.append(week_times)
+    new_request.num_students = 1 # TODO : this will eventually be variable?
+    new_request.student_estimated_hour = int(float(ajax_json['hourly-price']))
+    new_request.location = ajax_json['location']
+    new_request.available_time = '' # TODO : What does this do?
+
+    user.outgoing_requests.append(new_request)
+    db_session.add(new_request)
+
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        logging.info("Failed to add the request to the database")
+        return errors(["Sorry, we couldn't make your request at this time. Try again later"])
+    
+    logging.info("===Request was successfully committed to the database===")
+    logging.info(new_request)
+
+    # Create notification object for request and store it in the database
+    from notifications import student_request_receipt, tutor_request_offer
+
+    notification = student_request_receipt(user, new_request, original_skill_name)
+    user.notifications.append(notification)
+    db_session.add(notification)
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        logging.info("Failed to save notification to database.")
+        raise 
+
+    logging.info("===Student request notification was successfully committed to the database===")
+    if not skill.tutors:
+        return errors(["Sorry! There are currently no active tutors for this course.  Try again soon!"])
+
+    # Tutors are currently not contacted when there is a request.
+    tier_2_tutor_ids = []
+    tier_2_tutors = []
+    logging.info("===Going through all qualified tutors for this request...===")
+    logging.info("Here are all the requested tutors: " + str(new_request.requested_tutors))
+    for tutor in new_request.requested_tutors:
+        #Only if they are approved tutors
+        logging.info(str(tutor) + " is qualified.")
+
+        #Check if conversation already exists between tutor + student. If so, we don't want to see it.
+        conversation = Conversation.query.filter_by(student_id=user.id, guru_id=tutor.id).first()
+        if conversation and conversation.requests and conversation.requests[0].skill_id == new_request.skill_id:
+            new_request.requested_tutors.remove(tutor)
+            continue
+
+        #check if tutor is in tutor blacklist
+        if tutor.id in tutor_blacklist:
+            new_request.requested_tutors.remove(tutor)
+            continue
+
+        if tutor.approved_by_admin: # or tutor.is_a_tutor:
+            logging.info(str(tutor) + " is approved by admin.")
+            if is_tier_one_tutor(tutor):
+                logging.info(str(tutor) + ' is a tier 1 tutor')
+                if tutor.text_notification and tutor.phone_number:
+                    logging.info(str(tutor) + ' is qualified to receive a text')
+                    from emails import request_received_msg
+                    message = request_received_msg(user, tutor, new_request, skill_name)
+                    send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
+                tutor.incoming_requests_to_tutor.append(new_request)
+                notification = tutor_request_offer(user, tutor, request, skill_name)
+                db_session.add(notification)
+                tutor.notifications.append(notification)
+            else:
+                logging.info(str(tutor) + ' is a tier 2 tutor')
+                tier_2_tutor_ids.append(tutor.id)
+                tier_2_tutors.append(tutor)
+                logging.info(tier_2_tutor_ids)
+
+    for tutor in tier_2_tutors:
+        logging.info("Tutor has been removed: " +  str(tutor))
+        new_request.requested_tutors.remove(tutor)
+
+    if tier_2_tutor_ids:
+        logging.info("Here are all the tier2 tutor ids: " + str(tier_2_tutor_ids))
+        if not os.environ.get('PRODUCTION'):
+            send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, new_request.id, user.id, skill_name], countdown=100)
+        else:
+            send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, new_request.id, user.id, skill_name], countdown=3600)
+
+    logging.info("==Contacting tutors==")
+    # Send emails + create objects
+    from emails import student_needs_help
+    mandrill_result, tutor_email_dict = student_needs_help(user, new_request.requested_tutors, skill_name, new_request)
+    for sent_email_dict in mandrill_result:
+        if tutor_email_dict.get(sent_email_dict['email']):
+            tutor = tutor_email_dict[sent_email_dict['email']]
+            email = Email(
+                tag='tutor-request',
+                user_id=tutor.id,
+                time_created=datetime.now(), 
+                mandrill_id = sent_email_dict['_id']
+                )
+            db_session.add(email)
+            tutor.emails.append(email)
+            new_request.emails.append(email)
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        raise
+
+    logging.info("===Student Request Complete. Texts and Emails successfully sent out===")
+    return success(["Student request has been made!"])
 
 @app.route('/logout/', methods=('GET', 'POST'))
 def logout():
