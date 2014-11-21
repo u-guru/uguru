@@ -13,7 +13,6 @@ import twilio
 from app import app, models
 from app.database import *
 from flask import render_template, jsonify, redirect, request, session, flash, redirect, url_for
-from forms import SignupForm, RequestForm
 from models import *
 from hashlib import md5
 from datetime import datetime, timedelta
