@@ -27,6 +27,10 @@ from celery.schedules import crontab
 from datetime import timedelta
 from app import tasks
 
+logging.basicConfig()
+
+log = logging.getLogger(__name__)
+
 # Twilio
 TWILIO_DEFAULT_PHONE = "+15104661138"
 twilio_client = TwilioRestClient(os.environ['TWILIO_ACCOUNT_SID'], os.environ['TWILIO_AUTH_TOKEN'])
@@ -69,6 +73,7 @@ def send_twilio_message_delayed(phone, msg, user_id):
 @app.route('/piazza/')
 @app.route('/', methods=['GET', 'POST'])
 def index(arg=None):
+    log.info("YO")
     modal_flag = None
     if os.environ.get('TESTING') and not session.get('testing-admin'):
         return redirect(url_for('login'))
@@ -101,7 +106,7 @@ def index(arg=None):
         session['referral'] = 'piazza'
     if 'cal' in request.url:
         session['referral'] = 'cal'
-    logging.info(modal_flag)
+    log.info(modal_flag)
     return render_template('index.html',
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
@@ -186,7 +191,7 @@ def tos():
 def update_profile():
     if request.method == "POST":
         ajax_json = request.json
-        logging.info(ajax_json)
+        log.info(ajax_json)
         return_json = {}
         user_id = session.get('user_id')
         user = User.query.get(user_id)
@@ -276,7 +281,7 @@ def add_credit():
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
-        logging.info(ajax_json)
+        log.info(ajax_json)
         user_id = session.get('user_id')
         user = User.query.get(user_id)
 
@@ -583,7 +588,7 @@ def add_bank():
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
-        logging.info(ajax_json)
+        log.info(ajax_json)
         user_id = session.get('user_id')
         user = User.query.get(user_id)
 
@@ -643,7 +648,7 @@ def submit_rating():
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
-        logging.info(ajax_json)
+        log.info(ajax_json)
         user_id = session.get('user_id')
         if not user_id:
             return redirect(url_for('index'))
@@ -653,7 +658,7 @@ def submit_rating():
 
         if 'tutor-rating-student' in ajax_json:
             rating = user.pending_ratings[0]
-            logging.info(user.pending_ratings)
+            log.info(user.pending_ratings)
             rating.student_rating = ajax_json['num_stars']
             student = User.query.get(rating.student_id)
             student_name = student.name.split(" ")[0]
@@ -704,12 +709,12 @@ def free_10_credit(email=None, name=None, tag=None):
         session['free-10-credit-email'] = email
         session['free-10-credit-name'] = name
 
-        logging.info(name + " " + email + " has clicked this link")
+        log.info(name + " " + email + " has clicked this link")
 
         user = User.query.filter_by(email=email).first()
         if user:
             authenticate(user.id)
-            logging.info(name + " " + email + " already exists... redirecting")
+            log.info(name + " " + email + " already exists... redirecting")
             return redirect(url_for('index'))
 
         user = User(
@@ -739,7 +744,7 @@ def free_10_credit(email=None, name=None, tag=None):
         try:
             db_session.commit()
             authenticate(user.id)
-            logging.info(name + " " + email + " account has been successfully created")
+            log.info(name + " " + email + " account has been successfully created")
         except:
             db_session.rollback()
             raise
@@ -769,7 +774,7 @@ def submit_payment():
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
-        logging.info(ajax_json)
+        log.info(ajax_json)
         user_id = session.get('user_id')
         user = User.query.get(user_id)
 
@@ -805,7 +810,7 @@ def submit_payment():
                 else:
                     total_amount = (prices_reversed_dict[r.connected_tutor_hourly] * float(total_time) * 1.03) + 2
 
-            logging.info(total_amount)
+            log.info(total_amount)
 
             stripe_amount_cents = int(total_amount * 100)
             payment = Payment(r)
@@ -884,7 +889,7 @@ def send_message():
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
-        logging.info(ajax_json)
+        log.info(ajax_json)
         user_id = session.get('user_id')
         if not user_id:
             return redirect(url_for('index'))
@@ -950,7 +955,7 @@ def send_message():
             except:
                 db_session.rollback()
                 raise 
-            logging.info('message-created')
+            log.info('message-created')
         return jsonify(response=return_json)
 
 @app.route('/update-request/', methods=('GET', 'POST'))
@@ -958,7 +963,7 @@ def update_requests():
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
-        logging.info(ajax_json)
+        log.info(ajax_json)
         user_id = session.get('user_id')
         user = User.query.get(user_id)
 
@@ -966,7 +971,7 @@ def update_requests():
             hourly_amount = ajax_json.get('hourly-amount')
             notif_num = ajax_json.get('notif-num')
             tutor = user
-            logging.info("Tutor is accepting a student request:", str(tutor))
+            log.info("Tutor is accepting a student request:", str(tutor))
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             current_notification = user_notifications[notif_num]
             incoming_request_num = current_notification.request_id
@@ -975,20 +980,20 @@ def update_requests():
             student = User.query.get(r.student_id)
 
             if len(r.committed_tutors) > MAX_REQUEST_TUTOR_LIMIT:
-                logging.info("The max request tutor limit has been reached!")
+                log.info("The max request tutor limit has been reached!")
                 for tutor in r.requested_tutors:
                     if tutor not in r.committed_tutors:
                         for n in tutor.notifications:
                             if n.request_id == r.id:
                                 n.status = 'LATE'
                                 n.feed_message_subtitle = 'Click here to learn why!'
-                                logging.info(str(tutor) + " is too late! We have updated their profile accordingly")
+                                log.info(str(tutor) + " is too late! We have updated their profile accordingly")
                 from api import errors
                 return errors(['Sorry! You were just a couple seconds late. This request has already been accepted by three other Gurus!'])
 
 
             if r.connected_tutor_id and r.connected_tutor_id != user.id:
-                logging.info("Student with accept button after match is trying to connect")
+                log.info("Student with accept button after match is trying to connect")
                 from api import errors
                 return errors(['Sorry! You were just a couple seconds late. The student has already chose a Guru'])
 
@@ -1020,10 +1025,10 @@ def update_requests():
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
 
-            logging.info("logging.info(request" + str(r.id))
+            log.info("request" + str(r.id))
 
             if student.text_notification and student.phone_number:
-                logging.info("Student is supposed to be receiving a text message")
+                log.info("Student is supposed to be receiving a text message")
                 from emails import guru_can_help
                 message = guru_can_help(tutor, skill_name)
                 send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id])
@@ -1059,7 +1064,7 @@ def update_requests():
                             n.status = 'tutor_cap_reached'
 
                 if student.text_notification and student.phone_number:
-                    logging.info("Student is supposed to receive a text about reaching the tutor limit")
+                    log.info("Student is supposed to receive a text about reaching the tutor limit")
                     from emails import student_cap_reached
                     message = student_cap_reached(skill_name.upper())
                     send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id])
@@ -1080,7 +1085,7 @@ def update_requests():
                 db_session.rollback()
                 raise 
 
-            logging.info("Tutor accept has been successfully committed to the database")
+            log.info("Tutor accept has been successfully committed to the database")
 
         if 'tutor-cancel-accept' in ajax_json:
             notif_num = ajax_json.get('notif-num')
@@ -1161,7 +1166,7 @@ def update_requests():
             _request = Request.query.get(request_num)
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             current_notification = user_notifications[notif_num]
-            logging.info(_request)
+            log.info(_request)
             # user.incoming_requests_to_tutor.remove(_request)
             student_name = User.query.get(_request.student_id).name.split(" ")[0]
 
@@ -1265,15 +1270,15 @@ def update_requests():
         if 'student-accept' in ajax_json:
             notification_id = ajax_json.get('notification-id')
             student = user
-            logging.info("===A student is choosing a tutor===")
-            logging.info("student " + str(student))
+            log.info("===A student is choosing a tutor===")
+            log.info("student " + str(student))
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             current_notification = user_notifications[notification_id]
             skill_name = current_notification.skill_name
 
             tutor_id = current_notification.request_tutor_id
             tutor = User.query.get(tutor_id)
-            logging.info("tutor " + str(student))
+            log.info("tutor " + str(student))
 
             #Modify student notification
             current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
@@ -1306,7 +1311,7 @@ def update_requests():
             r.time_connected = datetime.now()
 
             mutual_times_arr = find_earliest_meeting_time(r)
-            logging.info("Mutual times array: " + str(mutual_times_arr))
+            log.info("Mutual times array: " + str(mutual_times_arr))
             if tutor.phone_number and tutor.text_notification:
                 from emails import its_a_match_guru, reminder_before_session
                 total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
@@ -1394,7 +1399,7 @@ def update_requests():
                     tutor_notification.feed_message_subtitle = '<span style="color:red">This request has been canceled</span>'
                     tutor_notification.time_created = datetime.now()
                     # student_chose_another_tutor(user, current_notification.skill_name, _tutor)
-                    logging.info("Email sent to " + str(tutor))
+                    log.info("Email sent to " + str(tutor))
             
             try:
                 db_session.commit()
@@ -1416,7 +1421,7 @@ def notif_update():
             return jsonify(return_json=return_json)            
         
         ajax_json = request.json
-        logging.info(ajax_json)
+        log.info(ajax_json)
         user_id = session.get('user_id')
         if not user_id:
             return redirect(url_for('index'))
@@ -1453,7 +1458,7 @@ def event_update():
             return jsonify(return_json=return_json)
 
         ajax_json = request.json
-        logging.info(ajax_json)
+        log.info(ajax_json)
 
         user_id = session.get('user_id')
         user = User.query.get(user_id)
@@ -1486,7 +1491,7 @@ def unsubscribe(email = None, tag = None, campaign = None):
                 db_session.rollback()
                 raise
         else:
-            logging.info("email: " + email + " has already unsubscribed.")
+            log.info("email: " + email + " has already unsubscribed.")
 
     return render_template('unsubscribe.html', email=email)
 
@@ -1503,7 +1508,7 @@ def reset_pw():
             from app.static.data.random_codes import random_codes_array
             import random
             new_password = random.choice(random_codes_array).lower()
-            logging.info(new_password)
+            log.info(new_password)
             email = ajax_json['email'].lower()
 
             user = User.query.filter_by(email=email).first()
@@ -1524,7 +1529,7 @@ def update_skill():
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
-        logging.info(ajax_json)
+        log.info(ajax_json)
         user_id = session.get('user_id')
         if not user_id:
             return redirect(url_for('index'))
@@ -1583,8 +1588,8 @@ def update_password():
         else:
             user.password = new_password
             return_json['success'] = 'Password successfully updated'
-            logging.info("user password before was " + str(old_password))
-            logging.info("user password is now" + str(new_password))
+            log.info("user password before was " + str(old_password))
+            log.info("user password is now" + str(new_password))
         try:
             db_session.commit()
         except:
@@ -1600,11 +1605,10 @@ def apply():
 def success():
     if request.method == "POST":
         ajax_json = request.json
-        logging.info(ajax_json)
+        log.info(ajax_json)
 
         if ajax_json.get('student-signup'):
             try: 
-
                 if not ajax_json.get('email'):
                     from api import errors
                     return errors(['Something went wrong ... Try again!'])
@@ -1628,7 +1632,6 @@ def success():
                     password = ''
                 else:
                     password = md5(ajax_json['password']).hexdigest()
-
 
                 if u:
                     return jsonify(dict={'account-exists':True});
@@ -1733,8 +1736,8 @@ def success():
 
         #Create a request
         if ajax_json.get('student-request'):
-            logging.info("===Printing the json file for a student request below===")
-            logging.info(ajax_json)
+            log.info("===Printing the json file for a student request below===")
+            log.info(ajax_json)
             user_id = session['user_id']
             from app.static.data.variations import courses_dict
             from app.static.data.short_variations import short_variations_dict
@@ -1757,10 +1760,10 @@ def success():
             skill = Skill.query.get(skill_id)
             skill_name = short_variations_dict[skill.name]
             u = User.query.get(user_id)
-            logging.info("===Printing details about the user who made this request===")
-            logging.info(str(u))
+            log.info("===Printing details about the user who made this request===")
+            log.info(str(u))
 
-            logging.info("Checking whether a similar request has been made in the past 2 couple of hours for the same skill")
+            log.info("Checking whether a similar request has been made in the past 2 couple of hours for the same skill")
             previous_request = sorted(Request.query.filter_by(student_id=user_id, skill_id=skill_id).all(), key=lambda n:n.time_created, reverse = True)
             if previous_request:
                 most_recent_time = previous_request[0].time_created
@@ -1796,7 +1799,7 @@ def success():
 
             #Process calendar information
             weekly_availability = ajax_json['calendar']
-            logging.info(weekly_availability)
+            log.info(weekly_availability)
 
             week_times = Week(owner=0)
             db_session.add(week_times)
@@ -1821,7 +1824,7 @@ def success():
                 db_session.rollback()
                 raise 
 
-            logging.info("===Request was successfully committed to the database===")
+            log.info("===Request was successfully committed to the database===")
 
             from notifications import student_request_receipt
             notification = student_request_receipt(u, r, original_skill_name)
@@ -1833,7 +1836,7 @@ def success():
                 db_session.rollback()
                 raise 
 
-            logging.info("===Student request notification was successfully committed to the database===")
+            log.info("===Student request notification was successfully committed to the database===")
 
             if not skill.tutors:
                 return jsonify(dict={'no-active-tutors': True})
@@ -1842,11 +1845,11 @@ def success():
             from notifications import tutor_request_offer
             tier_2_tutor_ids = []
             tier_2_tutors = []
-            logging.info("===Going through all qualified tutors for this request...===")
-            logging.info("Here are all the requested tutors: " + str(r.requested_tutors))
+            log.info("===Going through all qualified tutors for this request...===")
+            log.info("Here are all the requested tutors: " + str(r.requested_tutors))
             for tutor in r.requested_tutors:
                 #Only if they are approved tutors
-                logging.info(str(tutor) + " is qualified.")
+                log.info(str(tutor) + " is qualified.")
 
                 #Check if conversation already exists between tutor + student. If so, we don't want to see it.
                 conversation = Conversation.query.filter_by(student_id=u.id, guru_id=tutor.id).first()
@@ -1860,11 +1863,11 @@ def success():
                     continue
 
                 if tutor.approved_by_admin:
-                    logging.info(str(tutor) + " is approved by admin.")
+                    log.info(str(tutor) + " is approved by admin.")
                     if is_tier_one_tutor(tutor):
-                        logging.info(str(tutor) + ' is a tier 1 tutor')
+                        log.info(str(tutor) + ' is a tier 1 tutor')
                         if tutor.text_notification and tutor.phone_number:
-                            logging.info(str(tutor) + ' is qualified to receive a text')
+                            log.info(str(tutor) + ' is qualified to receive a text')
                             from emails import request_received_msg
                             message = request_received_msg(u, tutor, r, skill_name)
                             send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
@@ -1873,17 +1876,17 @@ def success():
                         db_session.add(notification)
                         tutor.notifications.append(notification)
                     else:
-                        logging.info(str(tutor) + ' is a tier 2 tutor')
+                        log.info(str(tutor) + ' is a tier 2 tutor')
                         tier_2_tutor_ids.append(tutor.id)
                         tier_2_tutors.append(tutor)
-                        logging.info(tier_2_tutor_ids)
+                        log.info(tier_2_tutor_ids)
 
             for tutor in tier_2_tutors:
-                logging.info("Tutor has been removed: " +  str(tutor))
+                log.info("Tutor has been removed: " +  str(tutor))
                 r.requested_tutors.remove(tutor)
 
             if tier_2_tutor_ids:
-                logging.info("Here are all the tier2 tutor ids: " + str(tier_2_tutor_ids))
+                log.info("Here are all the tier2 tutor ids: " + str(tier_2_tutor_ids))
                 if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
                     send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=100)
                 else:
@@ -1915,7 +1918,7 @@ def success():
             else:
                 send_student_one_hour_left.apply_async(args=[u.id, r.id], countdown=50)
 
-            logging.info("===Student Request Complete. Texts and Emails successfully sent out===")
+            log.info("===Student Request Complete. Texts and Emails successfully sent out===")
 
         if ajax_json.get('admin-approve-tutor'):
             try:
@@ -2009,7 +2012,7 @@ def login():
     if request.method == "POST":
         json = {}
         ajax_json = request.json
-        logging.info(ajax_json)
+        log.info(ajax_json)
         if ajax_json['email'].lower() == 'testing@uguru.me' \
             and ajax_json['password'].lower() == 'launchuguru' and os.environ.get('TESTING'):
             session['testing-admin'] = True
@@ -2312,7 +2315,7 @@ def settings_profile():
 def settings():
     user_id = session.get('user_id')
     not_launched_flag = False
-    logging.info(request.url)
+    log.info(request.url)
     if not user_id:
         session['redirect'] = '/settings/'
         return redirect('/log_in/')
@@ -2412,8 +2415,8 @@ def schedule_job(func, seconds_delay, args):
 def find_earliest_meeting_time(_request):
     student_ranges = sorted(get_calendar_time_ranges(_request.weekly_availability, 0), key=lambda u:u[0])
     tutor_ranges = sorted(get_calendar_time_ranges(_request.weekly_availability, _request.connected_tutor_id), key=lambda u:u[0])
-    logging.info(student_ranges)
-    logging.info(tutor_ranges)
+    log.info(student_ranges)
+    log.info(tutor_ranges)
     index = 0
     for tutor_range in tutor_ranges:
         for student_range in student_ranges:
@@ -2443,10 +2446,10 @@ if os.environ.get('PRODUCTION') or os.environ.get('TESTING'):
     @app.errorhandler(500)
     def internal_server(e):
         message = traceback.format_exc()
-        logging.info(message)
+        log.info(message)
         from emails import error
         if session.get('user_id'):
-            logging.info(session.get('user_id'))
+            log.info(session.get('user_id'))
             user = User.query.get(session.get('user_id'))
             from pprint import pprint # TODO : is pprint needed for any particular reason?
             message += "\n\n" + str(pprint(vars(user))) 
@@ -2456,7 +2459,7 @@ if os.environ.get('PRODUCTION') or os.environ.get('TESTING'):
     @app.errorhandler(Exception)
     def catch_all(e):
         message = traceback.format_exc()
-        logging.info(message)
+        log.info(message)
         from emails import error
         if session.get('user_id'):
             user = User.query.get(session.get('user_id'))
@@ -2474,13 +2477,13 @@ def update_profile_notifications(user):
                 if n.a_id_name in a_id_names or n.custom_tag in custom_tags:
                     if n.image_url != user.profile_url:
                         n.image_url = user.profile_url
-                        logging.info(str(user) + str(n.feed_message[0:30]) + " notification is now updated")
+                        log.info(str(user) + str(n.feed_message[0:30]) + " notification is now updated")
     return False
 
 
 def convert_mutual_times_in_seconds(mutual_arr, _request):
     total_seconds = 0
-    logging.info(mutual_arr)
+    log.info(mutual_arr)
     if mutual_arr[0]:
         total_seconds = (mutual_arr[0] - 1) * 24 * 3600 #one day of seconds depending on the offset days from today
         total_seconds = total_seconds + float(mutual_arr[1] / 2.0) * 3600
@@ -2519,8 +2522,7 @@ def send_twilio_msg(to_phone, body, user_id):
         db_session.commit()
         check_msg_status.apply_async(args=[text.id], countdown = 60)
     except twilio.TwilioRestException:
-        logging.info("text message didn't go through")
-        raise
+        log.info("text message didn't go through")
     except:
         db_session.flush()
         raise
@@ -2532,7 +2534,7 @@ def send_student_package_info(user_id, request_id):
     user = User.query.get(user_id)
 
     if user.credit > 10:
-        logging.info("user already has purchased credits.")
+        log.info("user already has purchased credits.")
         return
 
     r = Request.query.get(request_id)
@@ -2540,7 +2542,7 @@ def send_student_package_info(user_id, request_id):
     tutor_name = User.query.get(r.connected_tutor_id).name.split(" ")[0]
     from app.emails import send_student_packages_email
     send_student_packages_email(user, tutor_name, skill_name)
-    logging.info("Email sent to " + str(user) + " regarding student packages.")
+    log.info("Email sent to " + str(user) + " regarding student packages.")
 
 
 @celery.task
@@ -2601,7 +2603,7 @@ def is_tier_one_tutor(tutor):
     if _sum > 0:
         avg_rating = float (_sum) / float (_index)
         if avg_rating >= 4.0:
-            logging.info(str(tutor) + ' avg rating is approved')
+            log.info(str(tutor) + ' avg rating is approved')
             return True
     return False
 
@@ -2649,7 +2651,7 @@ def samir_results():
 def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name):
     r = Request.query.get(request_id)
     if len(r.committed_tutors) == (MAX_REQUEST_TUTOR_LIMIT + 1):
-        logging.info('We have already accomodated this request. Tier 2 tutors will not get it anymore.')
+        log.info('We have already accomodated this request. Tier 2 tutors will not get it anymore.')
         return
     student = User.query.get(user_id)
     second_tier_tutors = []
@@ -2657,7 +2659,7 @@ def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name
         tutor = User.query.get(tutor_id)
         second_tier_tutors.append(tutor)
         r.requested_tutors.append(tutor)
-        logging.info(str(tutor) + ' received tier 2 request')
+        log.info(str(tutor) + ' received tier 2 request')
         if tutor.text_notification and tutor.phone_number:
             from emails import request_received_msg
             message = request_received_msg(student, tutor, r, skill_name)
@@ -2675,7 +2677,7 @@ def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name
     for sent_email_dict in mandrill_result:
         if tutor_email_dict.get(sent_email_dict['email']):
             tutor = tutor_email_dict[sent_email_dict['email']]
-            logging.info(str(tutor) + ' received tier 2 email')
+            log.info(str(tutor) + ' received tier 2 email')
             email = Email(
                 tag='tutor-request', 
                 user_id=tutor.id, 
@@ -2967,7 +2969,7 @@ def auto_confirm_student_payment(payment_id, student_id):
     
     #student has already confirmed!
     if p.student_confirmed:
-        logging.info("Student has already confirmed")
+        log.info("Student has already confirmed")
         return
     p.student_confirmed = True
     stripe_charge = False
@@ -2997,7 +2999,7 @@ def auto_confirm_student_payment(payment_id, student_id):
                     description="charge for receiving tutoring"
                 )
                 p.stripe_charge_id = charge['id']
-                logging.info(p.stripe_charge_id)
+                log.info(p.stripe_charge_id)
             except stripe.error.CardError, e:
                 if p.student_id == user.id:
                     error_msg = "Sorry! Your card has been declined. Please update your payment info in your settings > billing."
@@ -3014,7 +3016,7 @@ def auto_confirm_student_payment(payment_id, student_id):
                     description="charge for receiving tutoring"
                 )
                 p.stripe_charge_id = charge['id']
-                logging.info(p.stripe_charge_id)
+                log.info(p.stripe_charge_id)
             except stripe.error.CardError, e:
                 error_msg = "Sorry! Your card has been declined. Please update your payment info in your settings > billing."
                 return errors([error_msg])
@@ -3037,20 +3039,20 @@ def auto_confirm_student_payment(payment_id, student_id):
         tutor.pending = tutor.pending - orig_p.tutor_received_amount - p.tutor_received_amount
         tutor.balance = tutor.balance + p.tutor_received_amount + orig_p.tutor_received_amount     
     else:
-        logging.info("this is a bill-student api payment")
-        logging.info("original pending " + tutor.pending)
-        logging.info("original balance " + tutor.balance)
+        log.info("this is a bill-student api payment")
+        log.info("original pending " + tutor.pending)
+        log.info("original balance " + tutor.balance)
         tutor.pending = tutor.pending - orig_p.tutor_received_amount
         tutor.balance = tutor.balance + p.tutor_received_amount
-        logging.info("new pending " + tutor.pending)
-        logging.info("new balance " + tutor.balance)
+        log.info("new pending " + tutor.pending)
+        log.info("new balance " + tutor.balance)
 
     if p.confirmed_payment_id:
         total_amount = orig_p.time_amount * orig_p.tutor_rate + p.student_paid_amount
     else:
         #recurring billing case
         total_amount = p.student_paid_amount
-    logging.info(total_amount)
+    log.info(total_amount)
     
     from app.static.data.short_variations import short_variations_dict
     skill_name = short_variations_dict[Skill.query.get(p.skill_id).name]
