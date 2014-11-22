@@ -68,8 +68,6 @@ def send_twilio_message_delayed(phone, msg, user_id):
 @app.route('/piazza/')
 @app.route('/', methods=['GET', 'POST'])
 def index(arg=None):
-    
-    logging.info("TESTING LOGGING IN index function")
 
     modal_flag = None
     if os.environ.get('TESTING') and not session.get('testing-admin'):
@@ -853,7 +851,7 @@ def update_requests():
             hourly_amount = ajax_json.get('hourly-amount')
             notif_num = ajax_json.get('notif-num')
             tutor = user
-            logging.info("Tutor is accepting a student request:", str(tutor))
+            logging.info("Tutor is accepting a student request: " + str(tutor))
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             current_notification = user_notifications[notif_num]
             incoming_request_num = current_notification.request_id
