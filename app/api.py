@@ -1,7 +1,6 @@
 from app import app
 from app.database import *
 from flask import render_template, jsonify, redirect, request, session, flash, redirect, url_for
-from forms import SignupForm, RequestForm #unused?
 from models import User, Request, Skill, Course, Notification, Mailbox, Conversation, Message, Payment, Rating, Email, Week, Range, Promo
 from hashlib import md5
 from datetime import datetime, timedelta

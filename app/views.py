@@ -13,7 +13,6 @@ import twilio
 from app import app, models
 from app.database import *
 from flask import render_template, jsonify, redirect, request, session, flash, redirect, url_for
-from forms import SignupForm, RequestForm
 from models import *
 from hashlib import md5
 from datetime import datetime, timedelta
@@ -69,8 +68,6 @@ def send_twilio_message_delayed(phone, msg, user_id):
 @app.route('/piazza/')
 @app.route('/', methods=['GET', 'POST'])
 def index(arg=None):
-    
-    logging.info("TESTING LOGGING IN index function")
 
     modal_flag = None
     if os.environ.get('TESTING') and not session.get('testing-admin'):
@@ -854,7 +851,7 @@ def update_requests():
             hourly_amount = ajax_json.get('hourly-amount')
             notif_num = ajax_json.get('notif-num')
             tutor = user
-            logging.info("Tutor is accepting a student request:", str(tutor))
+            logging.info("Tutor is accepting a student request: " + str(tutor))
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             current_notification = user_notifications[notif_num]
             incoming_request_num = current_notification.request_id
@@ -1565,13 +1562,13 @@ def success():
         return jsonify(dict=ajax_json)
 
 # TODO : This should go in api.py
-@app.route('/student_request/', methods=('POST'))
+@app.route('/student_request/', methods=('GET', 'POST'))
 def student_request():
     
     from api import errors, success
 
     ajax_json = request.json
-    logging.info("===Printing the json file for a student request below===")
+    logging.info("===Printing the json for a student request===")
     logging.info(ajax_json)
 
     from app.static.data.variations import courses_dict
@@ -1716,7 +1713,7 @@ def student_request():
                     message = request_received_msg(user, tutor, new_request, skill_name)
                     send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
                 tutor.incoming_requests_to_tutor.append(new_request)
-                notification = tutor_request_offer(user, tutor, request, skill_name)
+                notification = tutor_request_offer(user, tutor, new_request, skill_name)
                 db_session.add(notification)
                 tutor.notifications.append(notification)
             else:
@@ -1788,7 +1785,6 @@ def payments():
         return render_template('payments.html', user=user)
     else:
         return redirect(url_for('index'))
-
 
 @app.route('/login/', methods=('GET', 'POST'))
 def login():
@@ -2295,6 +2291,7 @@ def send_twilio_msg(to_phone, body, user_id):
     if 'Meet at' in body:
         return 
     body = '[uGuru] ' + body
+    message = None;
     try:
         message = twilio_client.messages.create(
             body_ = body,
