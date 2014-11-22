@@ -1,59 +1,54 @@
-from app import app, models
-from app.database import *
-from flask import render_template, jsonify, redirect, request, \
-session, flash, redirect, url_for, Response
-from forms import SignupForm, RequestForm
-from models import User, Request, Skill, Course, Notification, Mailbox, \
-    Conversation, Message, Payment, Rating, Email, Week, Range, Text, Promo,\
-    Unsubscribe
-from hashlib import md5
-from datetime import datetime, timedelta
-import emails, boto, stripe, os
-from sqlalchemy import desc
-import json, traceback
-import mandrill
-import twilio
-from twilio import twiml
-from twilio.rest import TwilioRestClient 
-import logging
+import os
+import stripe 
+import emails
+import boto
 import api
 import redis
 import time
+import json
+import traceback
+import mandrill
+import logging
+import twilio
+from app import app, models
+from app.database import *
+from flask import render_template, jsonify, redirect, request, session, flash, redirect, url_for
+from models import *
+from hashlib import md5
+from datetime import datetime, timedelta
+from sqlalchemy import desc
+from twilio import *
+from twilio.rest import TwilioRestClient
+from mixpanel import Mixpanel
 from celery import Celery
 from celery.task import periodic_task
 from celery.schedules import crontab
 from datetime import timedelta
-import redis
-import logging
-from os import environ
+from app import tasks
 
-TWILIO_ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
-TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
+# Twilio
 TWILIO_DEFAULT_PHONE = "+15104661138"
-twilio_client = TwilioRestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+twilio_client = TwilioRestClient(os.environ['TWILIO_ACCOUNT_SID'], os.environ['TWILIO_AUTH_TOKEN'])
+
+# Mixpanel
+mixpanel_client = Mixpanel(os.environ['MIXPANEL_TOKEN'])
+
+# Constants
 MAX_REQUEST_TUTOR_LIMIT = 3
+MAX_UPLOAD_SIZE = 1024 * 1024
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+tutor_blacklist = [1708, 624]
 
-
+# Stripe
 stripe_keys = {
     'secret_key': os.environ['STRIPE_SECRET_KEY'],
     'publishable_key': os.environ['STRIPE_PUBLISHABLE_KEY']
 }
-MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
 stripe.api_key = stripe_keys['secret_key']
-MAX_UPLOAD_SIZE = 1024 * 1024
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
+# This, and all @tasks, should be moved to tasks.py
 celery = Celery('run')
-
-REDIS_URL = environ.get('REDISTOGO_URL', 'redis://localhost')
-
-tutor_blacklist = [1708, 624]
-
-# Use Redis as our broker and define json as the default serializer
+REDIS_URL = os.environ.get('REDISTOGO_URL')
 celery.conf.update(
     BROKER_URL=REDIS_URL,
     CELERY_TASK_SERIALIZER='json',
@@ -73,12 +68,12 @@ def send_twilio_message_delayed(phone, msg, user_id):
 @app.route('/piazza/')
 @app.route('/', methods=['GET', 'POST'])
 def index(arg=None):
+
     modal_flag = None
     if os.environ.get('TESTING') and not session.get('testing-admin'):
         return redirect(url_for('login'))
     tutor_signup_incomplete = False
     guru_referral = False
-    request_form = RequestForm()
     if session.get('guru-checked'):
         guru_referral = True
         session.pop('guru-checked')
@@ -106,11 +101,10 @@ def index(arg=None):
         session['referral'] = 'piazza'
     if 'cal' in request.url:
         session['referral'] = 'cal'
-    print modal_flag
-    return render_template('new.html', forms=[request_form],
+    logging.info(modal_flag)
+    return render_template('index.html',
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
-
 
 @app.route('/dorm/')
 @app.route('/city/')
@@ -134,12 +128,16 @@ def new_sproul(arg=None):
 
 @app.route('/florida/', methods=['GET', 'POST'])
 def florida(arg=None):
+
+    # TODO : remove this. this is just an example of a background task from tasks.py and a mixpanel example
+    # tasks.test_background.delay() 
+    # mp.track(user_id, 'Sent Message')
+
     from schools import school_dict
     school_details = school_dict['UF']
     modal_flag = None
     tutor_signup_incomplete = False
     guru_referral = False
-    request_form = RequestForm()
     if session.get('guru-checked'):
         guru_referral = True
         session.pop('guru-checked')
@@ -160,75 +158,15 @@ def florida(arg=None):
         session['referral'] = 'piazza'
     if 'cal' in request.url:
         session['referral'] = 'cal'
-    return render_template('school-landing-page.html', forms=[request_form],
+    return render_template('school-landing-page.html',
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag, \
         school_details=school_details)
-
-@app.route('/ucla/', methods=['GET', 'POST'])
-def ucla(arg=None):
-    modal_flag = None
-    if os.environ.get('TESTING') and not session.get('testing-admin'):
-        return redirect(url_for('login'))
-    tutor_signup_incomplete = False
-    guru_referral = False
-    request_form = RequestForm()
-    if session.get('guru-checked'):
-        guru_referral = True
-        session.pop('guru-checked')
-    if request.args.get('email'):
-        session['referral'] = request.args.get('email')
-        if request.args.get('email') == 'guru':
-            session['guru-checked'] = True
-        return redirect(url_for('index'))
-    if session.get('user_id'):
-        user = User.query.get(session.get('user_id'))
-        # if user.skills and len(user.notifications) < 2:
-        #     return redirect(url_for('settings'))
-        return redirect(url_for('activity'))
-    if 'log_in' in request.url:
-        modal_flag = 'login'
-    if 'sign_up' in request.url:
-        modal_flag = 'signup'
-    if '/guru' in request.url:
-        modal_flag = 'guru'
-    if 'callisto' in request.url:
-        session['referral'] = 'callisto'
-    if 'fb' in request.url:
-        session['referral'] = 'fb'
-    if 'piazza' in request.url:
-        session['referral'] = 'piazza'
-    if 'cal' in request.url:
-        session['referral'] = 'cal'
-    print modal_flag
-    return render_template('ucla.html', forms=[request_form],
-        logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
-        environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
 
 @app.route('/parents/', methods =['GET', 'POST'], defaults={'arg': None})
 @app.route('/parents/<arg>/')
 def parents(arg=None):
     return render_template('parents.html', key=stripe_keys['publishable_key'])
-
-
-@app.route('/new/')
-def new():
-    return render_template('new.html')
-
-@app.route('/<arg>', methods=['GET', 'POST', 'PUT'])
-def profile(arg):
-    user = None
-    if session.get('user_id'):
-        user = User.query.get(session.get('user_id'))
-    profile_user = User.query.filter_by(user_referral_code=arg).first()
-    if profile_user:
-        session['referral'] = arg
-    return redirect(url_for('index'))
-    # if profile_user and profile_user.approved_by_admin:
-    #     from app.static.data.short_variations import short_variations_dict
-    #     return render_template('profile.html', profile_user=profile_user , user=user, variations=short_variations_dict)
-    # else:
-    #     return redirect(url_for('index'))
 
 @app.route('/apply-guru/', methods=['GET', 'POST', 'PUT'])
 def apply_guru():
@@ -240,89 +178,15 @@ def apply_guru():
         return redirect('/log_in/')
 
 
-
-@app.route('/sneak/', methods=['GET', 'POST'])
-def sneak():
-    return render_template('new_index.html')
-
 @app.route('/tos/', methods=['GET','POST'])
 def tos():
     return render_template('tos.html')
-
-
-@app.route('/webhooks/', methods=['GET', 'POST'])
-def webhooks():
-    event_json = json.loads(request.data)
-    stripe_response =  event_json['data']['object']
-    print stripe_response
-    stripe_response_type = stripe_response['object']
-    #TODO --> Handle bank account webhooks
-    # if stripe_response_type == 'transfer':
-    #     bank_account_name = stripe_response['account']['bank_name']
-    #     recipient_id = stripe_response['recipient']
-    #     status = stripe_response['status']
-
-    #     #find user
-    #     user = User.query.filter_by(recipient_id=recipient_id).first()
-    #     if user:
-    #         for n in reversed(user.notifications):
-    #             print n.id
-    #             if n.custom_tag == 'tutor-cashed-out':
-    #                 if status == 'failed':
-    #                     status = "Your bank account transfer did not go through. Please contact support@uguru.me for quick support."
-    #                 n.status = status
-    #                 n.skill_name = bank_account_name
-    #                 break;
-        
-    #     if user and status == "paid":
-    #         from emails import tutor_received_transfer
-    #         amount = float(stripe_response['amount'] / 100)
-    #         transfer_id = stripe_response['id']
-    #         last4 = stripe_response['account']['last4']
-    #         time = datetime.fromtimestamp(stripe_response['date'])
-    #         tutor_received_transfer(user, amount, bank_account_name, transfer_id, last4, time)
-
-    #     try:
-    #         db_session.commit()
-    #     except:
-    #         db_session.rollback()
-    #         raise
-    return "OK"
-
-@app.route('/twilio/', methods=['GET', 'POST'])
-def twilio_msg():
-    if request.method == "POST":
-        resp = twiml.Response()
-        print resp
-        print type(resp)
-        print resp.__dict__
-        if request.form['Body'].upper() == "ACCEPT":
-            resp.sms("You have accepted this request. See full details at uguru.me/activity.")
-        # resp.message("Hello, Mobile Monkey")
-        return str(resp)
-
-@app.route('/notification-settings/', methods=('GET','POST'))
-def update_notifications():
-    if request.method == "POST":
-        ajax_json = request.json
-        print ajax_json
-        user_id = session['user_id']
-        user = User.query.get(user_id)
-        if 'text' in ajax_json:
-            user.text_notification = ajax_json.get('text')
-        if 'email' in ajax_json:
-            user.email_notification = ajax_json.get('email')
-        db_session.commit()
-        print "user email notification is now " + str(user.email_notification)
-        print "user next notification is now " + str(user.text_notification)
-        return jsonify(ajax_json)
-
 
 @app.route('/update-profile/', methods=('GET', 'POST'))
 def update_profile():
     if request.method == "POST":
         ajax_json = request.json
-        print ajax_json
+        logging.info(ajax_json)
         return_json = {}
         user_id = session.get('user_id')
         user = User.query.get(user_id)
@@ -412,7 +276,7 @@ def add_credit():
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
-        print ajax_json
+        logging.info(ajax_json)
         user_id = session.get('user_id')
         user = User.query.get(user_id)
 
@@ -433,7 +297,7 @@ def add_credit():
                 raise 
         return jsonify(response=return_json)
 
-@app.route('/new-admin/')
+@app.route('/admin/')
 def new_admin():
     if session.get('admin'):
     
@@ -478,63 +342,8 @@ def new_admin():
                 )
         
 
-        return render_template('new-admin.html', day_stats=day_stats)
+        return render_template('admin/new-admin.html', day_stats=day_stats)
     return redirect(url_for('index'))
-
-
-@app.route('/admin/students.csv')
-def generate_large_csv():
-    def generate():
-        rows = []
-        row_one = ['Name', 'Email' , 'Tutor?', 'Phone Number', 'Year', 'Major', 'Courses they have requested help in', 'Courses they can tutor', 'Departments they can tutor']
-        rows.append(row_one)
-        general_skills = ['Writing Help', 'Interview Help', 'Resume Help']
-        json_data=open('app/static/data/all_courses.json')
-        course_data = json.load(json_data)
-
-        for u in User.query.all():
-            try:
-                if u.name and u.email: 
-                    requests = Request.query.filter_by(student_id = u.id).all()
-                    dept_names = []
-                    if requests:
-                        for r in requests:
-                            if r.skill_id:
-                                skill = Skill.query.get(r.skill_id)
-                                if skill.name not in general_skills:
-                                    dept_name = course_data[skill.name]['fullDepartmentCode']
-                                else: 
-                                    dept_name = skill.name
-                                if dept_name not in dept_names:
-                                    dept_names.append(dept_name)
-                    if dept_names:
-                        dept_name_str = '; '.join(dept_names)
-                    else:
-                        dept_name_str = ' '
-                    is_a_tutor = False
-                    user_skills = []
-                    skill_dept_names = []
-                    if u.approved_by_admin: 
-                        is_a_tutor = True
-                        for skill in u.skills:
-                            user_skills.append(skill.name)
-                            if skill.name not in general_skills:
-                                skill_dept_name = course_data[skill.name]['fullDepartmentCode']
-                            else:
-                                skill_dept_name = skill.name
-                            if skill_dept_name not in skill_dept_names:
-                                skill_dept_names.append(skill_dept_name)
-                    tutor_skill_name_str = '; '.join(user_skills)
-                    tutor_dept_name_str = ', '.join(skill_dept_names)
-
-                    current_row = [str(u.name), str(u.email), str(is_a_tutor), str(u.phone_number), str(u.year), str(u.major), str(dept_name_str), str(tutor_skill_name_str), str(tutor_dept_name_str)]
-                rows.append(current_row)
-            #incase there is a unicode error
-            except:
-                continue
-        for row in rows:
-            yield ','.join(row) + '\n'
-    return Response(generate(), mimetype='text/csv')
 
 @app.route('/admin/students/')
 def new_admin_students():
@@ -547,7 +356,7 @@ def new_admin_students():
             times_signed_up[student.id] = pretty_date(student.time_created)
             times_last_active[student.id] = pretty_date(student.last_active)
 
-        return render_template('new-admin-students.html', all_students = all_students, times_signed_up=times_signed_up,\
+        return render_template('admin/new-admin-students.html', all_students = all_students, times_signed_up=times_signed_up,\
             times_last_active=times_last_active)
     return redirect(url_for('index'))
 
@@ -613,7 +422,7 @@ def new_admin_stats():
                 organic_user_signups += 1
 
 
-        return render_template('admin-stats.html', fall_request_revenue=fall_request_revenue, \
+        return render_template('admin/admin-stats.html', fall_request_revenue=fall_request_revenue, \
             fall_free_tutor_request_revenue=fall_free_tutor_request_revenue, \
             fall_package_revenue = fall_package_revenue, \
             fall_recurring_payment_revenue=fall_recurring_payment_revenue,\
@@ -635,7 +444,7 @@ def new_admin_unsubscribes():
         for user in unsubscribes:
             times[user.id] = pretty_date(user.time_created)
 
-        return render_template('admin-unsubscribe.html', unsubscribes=unsubscribes, times=times)
+        return render_template('admin/admin-unsubscribe.html', unsubscribes=unsubscribes, times=times)
     return redirect(url_for('index'))
 
 
@@ -654,7 +463,7 @@ def new_admin_tutors():
             times_signed_up[tutor.id] = pretty_date(tutor.time_created)
             times_last_active[tutor.id] = pretty_date(tutor.last_active)
             avg_rating_tutor[tutor.id] = calc_avg_rating(tutor)
-        return render_template('admin-tutors.html', all_tutors = all_tutors, times_signed_up=times_signed_up,\
+        return render_template('admin/admin-tutors.html', all_tutors = all_tutors, times_signed_up=times_signed_up,\
             times_last_active=times_last_active, avg_rating_tutor = avg_rating_tutor)
     return redirect(url_for('index'))
 
@@ -664,12 +473,13 @@ def new_admin_ratings():
     if session.get('admin'):
         ratings_dict = {}
         for r in Rating.query.all():
-            skill = Skill.query.get(r.skill_id)
-            tutor = User.query.get(r.tutor_id)
-            student = User.query.get(r.student_id)
-            ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
-                'student-name':student.name.split(" ")[0]}
-        return render_template('admin-ratings.html', ratings=Rating.query.all(), ratings_dict=ratings_dict)
+            if r.skill_id and r.tutor_id and r.student_id:
+                skill = Skill.query.get(r.skill_id)
+                tutor = User.query.get(r.tutor_id)
+                student = User.query.get(r.student_id)
+                ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
+                    'student-name':student.name.split(" ")[0]}
+        return render_template('admin/admin-ratings.html', ratings=Rating.query.all(), ratings_dict=ratings_dict)
     return redirect(url_for('index'))
 
 
@@ -691,7 +501,7 @@ def new_admin_payments():
                     student_name = student.name.split(" ")[0]
             payment_dict[p] = {'tutor-name':tutor_name, \
                 'student-name':student_name}
-        return render_template('admin-payments.html', payments=Payment.query.all(), payment_dict = payment_dict, env=get_environment())
+        return render_template('admin/admin-payments.html', payments=Payment.query.all(), payment_dict = payment_dict, env=get_environment())
     return redirect(url_for('index'))
 
 @app.route('/admin/courses/')
@@ -711,7 +521,7 @@ def new_admin_courses():
 
         skills_counter = dict(Counter(skills_array))
         skills_counter = sorted(skills_counter.iteritems(), key=operator.itemgetter(1))
-        return render_template('admin-courses.html', skills_counter=skills_counter)
+        return render_template('admin/admin-courses.html', skills_counter=skills_counter)
     return redirect(url_for('index'))
 
 @app.route('/admin/conversations/')
@@ -734,7 +544,7 @@ def new_admin_convos():
         conversations = sorted(conversations, key=lambda c:c['last-message-time'], reverse=True)
         for c_dict in conversations:
             c_dict['last-message-time'] = pretty_date(c_dict['last-message-time'])
-        return render_template('admin-convos.html', conversations=conversations)
+        return render_template('admin/admin-convos.html', conversations=conversations)
     return redirect(url_for('index'))
 
 @app.route('/admin/requests/')
@@ -765,262 +575,7 @@ def admin_requests():
                 request_dict['pending-ratings'] = 0
             all_requests.append(request_dict)
         all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
-        return render_template('admin-requests.html', all_requests=all_requests, num_repeat_payments=num_repeat_payments)
-    return redirect(url_for('index'))
-
-@app.route('/admin/')
-def admin():
-    if session.get('admin'):
-        users = sorted(User.query.all(), key=lambda u:u.last_active, reverse=True)
-        users_last_active = {}
-        for u in users:
-            users_last_active[u] = pretty_date(u.last_active)
-        pretty_dates = {}
-        skills_dict = {}
-        tutor_count = 0
-        student_count = 0
-        skills_array = []
-        all_requests = []
-        transactions = []
-        parents_info = []
-        payment_analytics=\
-            {
-                'avg-student-rate':0,
-                'avg-tutor-rate':0,
-                'avg-student-charge':0,
-                'avg-tutor-paid':0,
-                'avg-stripe-fees':0,
-                'avg-profit':0
-            }
-        total_profit = 0
-        total_revenue = 0
-        ratings_dict = {}
-        payments = []
-        conversations = []
-        today_signups = []
-        today_requests = []
-        
-        notifications = sorted(Notification.query.all(), key=lambda n:n.id, reverse=True)
-
-        # bank_users = User.query.filter(User.recipient_id != None)
-        # for _user in bank_users:
-        #     recipient_id = _user.recipient_id
-        #     transfers = stripe.Transfer.all(recipient=recipient_id).data
-        #     for transfer in transfers:
-        #         transaction_dict = {}
-        #         transaction_dict['tutor-name'] = _user.name.split(" ")[0]
-        #         transaction_dict['tutor-id'] = _user.id
-        #         transaction_dict['amount'] = '$' + str(float(transfer.amount / 100)) 
-        #         # transaction_dict['bank-name'] = transfer.account.bank_name
-        #         # transaction_dict['bank-status'] = transfer.status
-        #         transaction_dict['time'] = pretty_date(datetime.fromtimestamp(transfer.created))
-        #         transactions.append(transaction_dict)
-
-        for c in Conversation.query.all():
-            if c.requests and c.guru and c.student:
-                c_dict = {}
-                c_dict['conversation'] = c
-                c_dict['tutor'] = c.guru
-                c_dict['student'] = c.student
-                c_dict['msg-count'] = len(c.messages)
-                if c_dict['msg-count']:
-                    c_dict['last-message-time'] = c.messages[-1].write_time
-                else: 
-                    c_dict['last-message-time'] = c.requests[0].time_created
-                c_dict['skill-name'] = Skill.query.get(c.requests[0].skill_id).name
-                conversations.append(c_dict)
-        conversations = sorted(conversations, key=lambda c:c['last-message-time'], reverse=True)
-        for c_dict in conversations:
-            c_dict['last-message-time'] = pretty_date(c_dict['last-message-time'])
-
-
-        for r in Rating.query.all():
-            skill = Skill.query.get(r.skill_id)
-            tutor = User.query.get(r.tutor_id)
-            student = User.query.get(r.student_id)
-            ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
-                'student-name':student.name.split(" ")[0]}
-
-
-        parents = User.query.filter(User.parent_name != None).all()
-        print parents
-
-        for parent in parents:
-            parents_info.append({
-                'id': parent.id,
-                'parent-name': parent.parent_name,
-                'parent-email': parent.parent_email,
-                'student-name': parent.name,
-                'student-email': parent.email,
-                'referred-by': parent.referral_code
-                })
-
-        now = datetime.now()
-        today = datetime(*now.timetuple()[:3])
-        today_student_signups = db_session.query(User).filter(User.time_created >= today).filter(User.approved_by_admin == None).all()
-        today_tutor_signups = db_session.query(User).filter(User.time_created >= today).filter(User.approved_by_admin != None).all()
-        today_requests = db_session.query(Request).filter(Request.time_created >= today).all()
-
-
-        for r in Request.query.all()[::-1]:
-            request_dict = {}
-            request_dict['emails-seen'] = 0
-            request_dict['request'] = r
-            request_dict['date'] = pretty_date(r.time_created)
-            skill = Skill.query.get(r.skill_id)
-            request_dict['skill_name'] = skill.name
-            student = User.query.get(r.student_id)
-            request_dict['student'] = student
-            total_seen_count = 0
-            for tutor in r.requested_tutors:
-                for n in tutor.notifications:
-                    if n.request_id == r.id:
-                        if n.time_read:
-                            total_seen_count += 1
-            request_dict['total_seen']  = total_seen_count
-            request_dict['pending-ratings'] = 0
-            request_dict['message-length'] = 0
-            # if r.emails:
-            #     count = 0
-            #     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
-            #     for email in r.emails:
-            #         mandrill_id = email.mandrill_id
-            #         try:
-            #             result = mandrill_client.messages.info(id=mandrill_id)
-            #             if result['opens'] > 0:
-            #                 count += 1
-            #         except mandrill.Error, e:
-            #             print 'A mandrill error occurred: %s - %s' % (e.__class__, e)
-            #     request_dict['emails-seen'] = count
-
-            if r.last_updated:
-                request_dict['last-updated'] = pretty_date(r.last_updated)
-            if r.connected_tutor_id:
-                tutor = User.query.get(r.connected_tutor_id)
-                request_dict['connected-tutor'] = tutor
-                c = Conversation.query.filter_by(guru=tutor, student=student).first()
-                if c:
-                    request_dict['message-length'] = len(c.messages)
-                _payments = None 
-
-                if tutor and student:
-                    _payments = Payment.query.filter_by(tutor_id=tutor.id, request_id = r.id, student_id=student.id)
-                if _payments:
-                    _payments = sorted(_payments, key=lambda d:d.time_created)
-                    count = 0
-                    for p in _payments:
-                        payment_dict = {}
-                        payment_dict['recurring'] = False
-                        if count >= 1:
-                            payment_dict['recurring'] = True
-                        # payment_dict['recurring'] = len(_payments) > 1
-                        from app.static.data.prices import prices_dict
-                        prices_reversed_dict = {v:k for k, v in prices_dict.items()}
-                        payment_dict['payment'] = p
-                        payment_dict['time_created'] = pretty_date(p.time_created)
-                        payment_dict['student'] = student
-                        payment_dict['tutor'] = tutor
-                        if count >= 1:
-                            payment_dict['student-hourly'] = p.tutor_rate
-                        else: 
-                            if prices_reversed_dict.get(p.tutor_rate):
-                                payment_dict['student-hourly'] = prices_reversed_dict[p.tutor_rate]
-                            else:
-                                payment_dict['student-hourly'] = p.tutor_rate
-                                print "ERROR: Reversed prices_reversed_dict Dictionary is not finding a value for the key: " + str(p.tutor_rate)
-                            
-                        if payment_dict['student-hourly']:
-                            payment_analytics['avg-student-rate'] += payment_dict['student-hourly']
-                        payment_dict['tutor-hourly'] = p.tutor_rate
-                        if payment_dict['tutor-hourly']:
-                            payment_analytics['avg-tutor-rate'] += payment_dict['tutor-hourly']
-                        if payment_dict['student-hourly']:
-                            student_charge = payment_dict['student-hourly'] * p.time_amount
-                        else:
-                            student_charge = 0
-                        if count >=1:
-                            payment_dict['student-total'] = student_charge  * 1.03 + 2
-                        else:
-                            payment_dict['student-total'] = student_charge
-                        if payment_dict['student-total']:
-                            payment_analytics['avg-student-charge'] += payment_dict['student-total']
-                        if p.tutor_rate and p.time_amount:
-                            tutor_paid = p.tutor_rate * p.time_amount
-                        else:
-                            tutor_paid = 0
-                        if tutor_paid :
-                            payment_analytics['avg-tutor-paid'] += tutor_paid
-                        if payment_dict['student-total']:
-                            stripe_fees = payment_dict['student-total'] * 0.029 + 0.30
-                        else:
-                            stripe_fees = 0
-                        payment_dict['tutor-total'] = tutor_paid
-                        payment_dict['stripe-fees'] = round(stripe_fees, 2)
-                        payment_analytics['avg-stripe-fees'] += payment_dict['stripe-fees']
-                        request_dict['payment'] = round(payment_dict['student-total'] - tutor_paid - stripe_fees, 2)
-                        payment_dict['profit'] = request_dict['payment']
-                        payment_analytics['avg-profit'] += payment_dict['profit']
-                        total_profit += payment_dict['profit']
-                        total_revenue += student_charge
-                        payments.append(payment_dict)
-                        count += 1
-                request_dict['pending-ratings'] = 0
-                if student and student.pending_ratings:
-                    request_dict['pending-ratings'] += 1
-                if tutor and tutor.pending_ratings:
-                    request_dict['pending-ratings'] += 1
-            all_requests.append(request_dict)
-        all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
-        unverified_tutor_count = 0
-        unfinished_accounts = []
-        for u in users: 
-            if Payment.query.filter_by(student_id = u.id).first():
-                    _connection_payments =Payment.query.filter_by(student_id = u.id)
-                    for p in _connection_payments:
-                        if p.student_paid_amount:
-                            payment_dict = {}
-                            payment_dict['payment'] = p
-                            payment_dict['time_created'] = pretty_date(p.time_created)
-                            payment_dict['student'] = u
-                            payment_dict['tutor'] = None
-                            payment_dict['student-hourly'] = None
-                            payment_dict['tutor-hourly'] = None
-                            payment_dict['recurring'] = False
-                            payment_dict['student-total'] = p.student_paid_amount
-                            payment_dict['tutor-total'] = 0
-                            payment_dict['stripe-fees'] = p.student_paid_amount * 0.03 + .30
-                            payment_dict['profit'] = p.student_paid_amount - payment_dict['stripe-fees']
-                            total_revenue += p.student_paid_amount
-                            total_profit += payment_dict['profit']
-                            payments.append(payment_dict)
-            if not u.name and u.email:
-                unfinished_accounts.append(u)
-
-            pretty_dates[u.id] = pretty_date(u.time_created)
-            if u.qualifications and not u.approved_by_admin:
-                unverified_tutor_count += 1
-            if u.skills:
-                result_string = ""
-                for s in u.skills:
-                    result_string = result_string + s.name + " "
-                    skills_array.append(s.name)
-                skills_dict[u.id] = result_string
-                tutor_count +=1 
-            else:
-                student_count += 1
-        payments = sorted(payments, key=lambda d:d['payment'].time_created, reverse=True)
-        from collections import Counter
-        import operator
-        skills_counter = dict(Counter(skills_array))
-        skills_counter = sorted(skills_counter.iteritems(), key=operator.itemgetter(1))
-        return render_template('admin.html', users=users, pretty_dates = pretty_dates, \
-            skills_dict = skills_dict, tutor_count = tutor_count, student_count=student_count, \
-            all_requests = all_requests, skills_counter = skills_counter, notifications=notifications,\
-            payments=payments, total_profit=total_profit, environment = get_environment(), texts = Text.query.all(), ratings=Rating.query.all(),\
-            ratings_dict=ratings_dict, transactions=transactions, conversations=conversations, users_last_active=users_last_active,\
-            total_revenue = total_revenue, payment_analytics=payment_analytics, unverified_tutor_count=unverified_tutor_count, \
-            unfinished_accounts=unfinished_accounts, parents=parents_info, today_requests=today_requests, today_student_signups=today_student_signups,\
-            today_tutor_signups = today_tutor_signups)
+        return render_template('admin/admin-requests.html', all_requests=all_requests, num_repeat_payments=num_repeat_payments)
     return redirect(url_for('index'))
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
@@ -1028,7 +583,7 @@ def add_bank():
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
-        print ajax_json
+        logging.info(ajax_json)
         user_id = session.get('user_id')
         user = User.query.get(user_id)
 
@@ -1088,7 +643,7 @@ def submit_rating():
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
-        print ajax_json
+        logging.info(ajax_json)
         user_id = session.get('user_id')
         if not user_id:
             return redirect(url_for('index'))
@@ -1098,7 +653,7 @@ def submit_rating():
 
         if 'tutor-rating-student' in ajax_json:
             rating = user.pending_ratings[0]
-            print user.pending_ratings
+            logging.info(user.pending_ratings)
             rating.student_rating = ajax_json['num_stars']
             student = User.query.get(rating.student_id)
             student_name = student.name.split(" ")[0]
@@ -1149,12 +704,12 @@ def free_10_credit(email=None, name=None, tag=None):
         session['free-10-credit-email'] = email
         session['free-10-credit-name'] = name
 
-        print name, email, 'has clicked this link'
+        logging.info(name + " " + email + " has clicked this link")
 
         user = User.query.filter_by(email=email).first()
         if user:
             authenticate(user.id)
-            print name, email, "already exists... redirecting"
+            logging.info(name + " " + email + " already exists... redirecting")
             return redirect(url_for('index'))
 
         user = User(
@@ -1184,7 +739,7 @@ def free_10_credit(email=None, name=None, tag=None):
         try:
             db_session.commit()
             authenticate(user.id)
-            print name, email, 'account has been successfully created'
+            logging.info(name + " " + email + " account has been successfully created")
         except:
             db_session.rollback()
             raise
@@ -1209,127 +764,12 @@ def free_10_credit(email=None, name=None, tag=None):
 
     return render_template('free-credit-signup.html', email=email, name=name)
 
-@app.route('/submit-payment/', methods=('GET', 'POST'))
-def submit_payment():
-    if request.method == "POST":
-        return_json = {}
-        ajax_json = request.json
-        print ajax_json
-        user_id = session.get('user_id')
-        user = User.query.get(user_id)
-
-        if 'submit-payment' in ajax_json:
-            recurring = None
-            conversation_id = ajax_json.get('submit-payment')
-            total_time = ajax_json.get('total-time')
-
-            conversation = Conversation.query.get(conversation_id)
-
-            for _request in conversation.requests:
-                if _request.connected_tutor_id == user_id:
-                    r = _request
-                    student_id = _request.student_id
-                    student = User.query.get(student_id)
-                    return_json['student-profile-url'] = student.profile_url
-
-            from app.static.data.prices import prices_dict
-            prices_reversed_dict = {v:k for k, v in prices_dict.items()}
-            if 'price-change' in ajax_json:
-                total_amount = prices_reversed_dict[int(float(ajax_json['price-change']))] * float(total_time)
-                r.actual_hourly = int(float(ajax_json['price-change']))
-                r.connected_tutor_hourly = int(float(ajax_json['price-change']))
-            else:
-                total_amount = prices_reversed_dict[r.connected_tutor_hourly] * float(total_time)
-
-            #if user has already has a payment with this student id
-            p = Payment.query.filter_by(tutor_id=user.id, student_id=student.id)
-            if p.first():
-                recurring = True
-                if 'price-change' in ajax_json:
-                    total_amount = (float(ajax_json['price-change']) * float(total_time) * 1.03) + 2
-                else:
-                    total_amount = (prices_reversed_dict[r.connected_tutor_hourly] * float(total_time) * 1.03) + 2
-
-            print total_amount
-
-            stripe_amount_cents = int(total_amount * 100)
-            payment = Payment(r)
-            payment.time_amount = float(total_time)
-            if recurring:
-                payment.tutor_rate = prices_reversed_dict[r.connected_tutor_hourly]
-            else:
-                payment.tutor_rate = r.connected_tutor_hourly
-            payment.request_id = r.id
-
-            tutor = user
-            student_id = payment.student_id
-            student = User.query.get(student_id)
-
-            charge = stripe.Charge.create(
-                amount = stripe_amount_cents,
-                currency="usd",
-                customer=student.customer_id,
-                description="charge for receiving tutoring"
-            )
-
-            charge_id = charge["id"]
-
-            amount_charged = float(stripe_amount_cents / 100.0)
-
-            db_session.add(payment)
-
-            tutor.payments.append(payment)
-            student.payments.append(payment)
-
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-
-            r.payment_id = payment.id
-            from app.static.data.short_variations import short_variations_dict
-            skill_name = short_variations_dict[Skill.query.get(r.skill_id).name]
-            rating = Rating(r.id)
-            tutor.pending_ratings.append(rating)
-            db_session.add(rating)
-            db_session.commit()
-
-            return_json['student-name'] = student.name.split(" ")[0]
-
-        
-            if recurring:    
-                amount_made = (prices_reversed_dict[r.connected_tutor_hourly] * float(total_time))
-            else:
-                amount_made = (r.connected_tutor_hourly * float(total_time))
-
-            tutor.balance = tutor.balance + amount_made
-            tutor.total_earned = tutor.total_earned + amount_made   
-
-            #Add pending rating to student 
-            for rating in tutor.pending_ratings:
-                if rating.student_id == student.id:
-                    student.pending_ratings.append(rating)
-
-            from notifications import student_payment_approval, tutor_receive_payment
-            tutor_notification = tutor_receive_payment(student, tutor, payment, amount_made)
-            student_notification = student_payment_approval(student, tutor, payment, amount_charged, charge_id, skill_name, recurring)
-            tutor.notifications.append(tutor_notification)
-            student.notifications.append(student_notification)
-            db_session.add_all([tutor_notification, student_notification])
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-    return jsonify(return_json=return_json)
-
 @app.route('/send-message/', methods=('GET', 'POST'))
 def send_message():
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
-        print ajax_json
+        logging.info(ajax_json)
         user_id = session.get('user_id')
         if not user_id:
             return redirect(url_for('index'))
@@ -1395,7 +835,7 @@ def send_message():
             except:
                 db_session.rollback()
                 raise 
-            print 'message-created'
+            logging.info('message-created')
         return jsonify(response=return_json)
 
 @app.route('/update-request/', methods=('GET', 'POST'))
@@ -1403,7 +843,7 @@ def update_requests():
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
-        print ajax_json
+        logging.info(ajax_json)
         user_id = session.get('user_id')
         user = User.query.get(user_id)
 
@@ -1411,31 +851,29 @@ def update_requests():
             hourly_amount = ajax_json.get('hourly-amount')
             notif_num = ajax_json.get('notif-num')
             tutor = user
-            print "Tutor is accepting a student request:", print_user_details(tutor)
+            logging.info("Tutor is accepting a student request: " + str(tutor))
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             current_notification = user_notifications[notif_num]
             incoming_request_num = current_notification.request_id
 
-
             r = Request.query.get(incoming_request_num)
             student = User.query.get(r.student_id)
 
-
             if len(r.committed_tutors) > MAX_REQUEST_TUTOR_LIMIT:
-                print "The max request tutor limit has been reached!"
+                logging.info("The max request tutor limit has been reached!")
                 for tutor in r.requested_tutors:
                     if tutor not in r.committed_tutors:
                         for n in tutor.notifications:
                             if n.request_id == r.id:
                                 n.status = 'LATE'
                                 n.feed_message_subtitle = 'Click here to learn why!'
-                                print tutor.id, tutor.name, "is too late! We have updated their profile accordingly"
+                                logging.info(str(tutor) + " is too late! We have updated their profile accordingly")
                 from api import errors
                 return errors(['Sorry! You were just a couple seconds late. This request has already been accepted by three other Gurus!'])
 
 
             if r.connected_tutor_id and r.connected_tutor_id != user.id:
-                print "Student with accept button after match is trying to connect"
+                logging.info("Student with accept button after match is trying to connect")
                 from api import errors
                 return errors(['Sorry! You were just a couple seconds late. The student has already chose a Guru'])
 
@@ -1467,11 +905,10 @@ def update_requests():
             student.incoming_requests_from_tutors.append(r)
             db_session.commit()
 
-            print "print request" + str(r.id)
-
+            logging.info("request" + str(r.id))
 
             if student.text_notification and student.phone_number:
-                print "Student is supposed to be receiving a text message"            
+                logging.info("Student is supposed to be receiving a text message")
                 from emails import guru_can_help
                 message = guru_can_help(tutor, skill_name)
                 send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id])
@@ -1507,7 +944,7 @@ def update_requests():
                             n.status = 'tutor_cap_reached'
 
                 if student.text_notification and student.phone_number:
-                    print "Student is supposed to receive a text about reaching the tutor limit"
+                    logging.info("Student is supposed to receive a text about reaching the tutor limit")
                     from emails import student_cap_reached
                     message = student_cap_reached(skill_name.upper())
                     send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id])
@@ -1528,7 +965,7 @@ def update_requests():
                 db_session.rollback()
                 raise 
 
-            print "Tutor accept has been successfully committed to the database"
+            logging.info("Tutor accept has been successfully committed to the database")
 
         if 'tutor-cancel-accept' in ajax_json:
             notif_num = ajax_json.get('notif-num')
@@ -1564,66 +1001,6 @@ def update_requests():
                 db_session.rollback()
                 raise 
             flash("You successfully canceled your commitment to " + student.name.split(" ")[0] + "'s request")
-
-        if 'edit-request' in ajax_json:
-            notif_num = ajax_json.get('notif-num')
-            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
-            current_notification = user_notifications[notif_num]
-            _request = Request.query.get(current_notification.request_id)
-            changed_fields = {}
-
-            if ajax_json['additional'] != _request.description:
-                changed_fields['additional'] = {'before':_request.description, 'after':ajax_json['additional']}
-                _request.description = ajax_json['additional']
-            if ajax_json['availability'] != _request.available_time:
-                changed_fields['availability'] = {'before':_request.available_time, 'after':ajax_json['availability']}
-                _request.available_time = ajax_json['availability']
-            if ajax_json['location'] != _request.location:
-                changed_fields['location'] = {'before':_request.location, 'after':ajax_json['location']}
-                _request.location = ajax_json['location']
-            if float(ajax_json['time-length']) != _request.time_estimate:
-                changed_fields['time-length'] = {'before':_request.time_estimate, 'after':float(ajax_json['time-length'])}
-                _request.time_estimate = float(ajax_json['time-length'])
-            if int(ajax_json['price']) != _request.student_estimated_hour:
-                changed_fields['price'] = {'before':_request.student_estimated_hour, 'after':int(ajax_json['price'])}
-                _request.student_estimated_hour = int(ajax_json['price'])
-            
-            if changed_fields:
-                _request.last_updated = datetime.now()
-                #send emails to tutors
-                #if price or availability has changed, email all tutors that have not committed
-
-                #LATER: If availability, location, description, or time-length has been changed
-                #Let committed tutors know
-
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-            flash("Your request has been successfully edited!")
-
-        if 'tutor-reject' in ajax_json:
-            notif_num = ajax_json.get('notif-num')
-            request_num = ajax_json.get('request-num')
-            _request = Request.query.get(request_num)
-            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
-            current_notification = user_notifications[notif_num]
-            print _request
-            # user.incoming_requests_to_tutor.remove(_request)
-            student_name = User.query.get(_request.student_id).name.split(" ")[0]
-
-            current_notification.feed_message = 'You rejected ' + student_name + "'s request for " +\
-                current_notification.skill_name + "."
-            current_notification.feed_message_subtitle = None
-            current_notification.custom = 'tutor-reject'
-            current_notification.time_created = datetime.now()
-
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise             
 
         if 'cancel-request' in ajax_json:
             notif_num = ajax_json.get('notif-num')
@@ -1662,67 +1039,18 @@ def update_requests():
                 db_session.rollback()
                 raise             
 
-        if 'cancel-connected-request' in ajax_json:
-            notif_num = ajax_json.get('notif-num')
-            reason = ajax_json.get('radio-index')
-            user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
-            student_notification = user_notifications[notif_num]
-            request_id = student_notification.request_id
-            _request = Request.query.get(request_id)
-            former_tutor = User.query.get(_request.connected_tutor_id)
-            _request.connected_tutor_id = None
-            user.outgoing_requests.append(_request)
-
-            #Find the matched notification
-            for n in user.notifications[::-1]:
-                if n.custom == 'student-accept-request' and n.request_id == _request.id:
-                    user.notifications.remove(n)
-                    db_session.delete(n)
-                    break;
-
-            #Delete the conversation
-            for c in user.mailbox.conversations:
-                if c.guru == former_tutor and c.student == user:
-                    db_session.delete(c)
-
-            for _tutor in _request.requested_tutors:
-                for n in sorted(_tutor.notifications, reverse=True):
-                    if n.request_id == _request.id:
-                        n.feed_message_subtitle = '<span style="color:#69bf69">This request is still <strong>available</strong>! Click here to accept now!</span>'
-
-            #Delete the tutor's you've been matched notification + conversation
-            for n in former_tutor.notifications[::-1]:
-                if n.custom == 'tutor-is-matched' and n.request_id == _request.id:
-                    former_tutor.notifications.remove(n)
-                    db_session.delete(n)
-
-            #Email the tutor
-            tutor_name = former_tutor.name.split(" ")[0]
-            student_name = user.name.split(" ")[0]
-            from app.emails import student_canceled_connection
-            student_canceled_connection(user, former_tutor, reason)
-            flash('Your connection has been successfully canceled')
-
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise             
-
-            
-
         if 'student-accept' in ajax_json:
             notification_id = ajax_json.get('notification-id')
             student = user
-            print "===A student is choosing a tutor==="
-            print "student", print_user_details(student)
+            logging.info("===A student is choosing a tutor===")
+            logging.info("student " + str(student))
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             current_notification = user_notifications[notification_id]
             skill_name = current_notification.skill_name
 
             tutor_id = current_notification.request_tutor_id
             tutor = User.query.get(tutor_id)
-            print "tutor", print_user_details(student)
+            logging.info("tutor " + str(student))
 
             #Modify student notification
             current_notification.feed_message = "<b>You</b> have been matched with " + tutor.name.split(" ")[0] + ", a " \
@@ -1755,7 +1083,7 @@ def update_requests():
             r.time_connected = datetime.now()
 
             mutual_times_arr = find_earliest_meeting_time(r)
-            print "Mutual times array", mutual_times_arr
+            logging.info("Mutual times array: " + str(mutual_times_arr))
             if tutor.phone_number and tutor.text_notification:
                 from emails import its_a_match_guru, reminder_before_session
                 total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
@@ -1768,7 +1096,6 @@ def update_requests():
 
                 message = its_a_match_guru(student, skill_name)
                 send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
-
 
 
             if student.phone_number and student.text_notification:
@@ -1844,7 +1171,7 @@ def update_requests():
                     tutor_notification.feed_message_subtitle = '<span style="color:red">This request has been canceled</span>'
                     tutor_notification.time_created = datetime.now()
                     # student_chose_another_tutor(user, current_notification.skill_name, _tutor)
-                    print "Email sent to " + tutor.email
+                    logging.info("Email sent to " + str(tutor))
             
             try:
                 db_session.commit()
@@ -1866,7 +1193,7 @@ def notif_update():
             return jsonify(return_json=return_json)            
         
         ajax_json = request.json
-        print ajax_json
+        logging.info(ajax_json)
         user_id = session.get('user_id')
         if not user_id:
             return redirect(url_for('index'))
@@ -1903,7 +1230,7 @@ def event_update():
             return jsonify(return_json=return_json)
 
         ajax_json = request.json
-        print ajax_json
+        logging.info(ajax_json)
 
         user_id = session.get('user_id')
         user = User.query.get(user_id)
@@ -1936,10 +1263,9 @@ def unsubscribe(email = None, tag = None, campaign = None):
                 db_session.rollback()
                 raise
         else:
-            print "email", email, "has already unsubscribed."
+            logging.info("email: " + email + " has already unsubscribed.")
 
     return render_template('unsubscribe.html', email=email)
-
 
 
 @app.route('/reset-password/', methods=('GET', 'POST'))
@@ -1954,7 +1280,7 @@ def reset_pw():
             from app.static.data.random_codes import random_codes_array
             import random
             new_password = random.choice(random_codes_array).lower()
-            print new_password
+            logging.info(new_password)
             email = ajax_json['email'].lower()
 
             user = User.query.filter_by(email=email).first()
@@ -1970,86 +1296,12 @@ def reset_pw():
 
     return jsonify(return_json=return_json)
 
-# @app.route('/api/<arg>', methods=('GET', 'POST'))
-# def api(arg):
-#     return_json = {}
-#     ajax_json = request.json
-#     print ajax_json
-    
-#     if arg == 'support':
-
-#         user_id = session.get('user_id')
-#         user = User.query.get(user_id)
-
-#         support_topic = ajax_json['selected-issue']
-#         support_detail = ajax_json['detail']
-
-#         from emails import send_support_email
-#         send_support_email(support_topic, support_detail, user)
-
-
-#     if arg == 'sample-tutors':
-        
-#         from app.static.data.variations import courses_dict
-        
-#         course_str = ajax_json['course'].lower()
-#         skill_to_add_id = courses_dict[course_str]
-#         skill = Skill.query.get(skill_to_add_id)
-
-#         tutors = skill.tutors
-
-#         count = 0
-#         tutor_array = []
-#         for tutor in skill.tutors:
-#             if count >= 5:
-#                 break
-#             if tutor.profile_url:
-#                 tutor_array.append(tutor.profile_url
-#                 )
-    
-#         return_json['enough-tutors'] = count > 5
-#         return_json['tutors'] = tutor_array
-
-#     if arg =='guru-app':
-#         user_id = session.get('user_id')
-#         user = User.query.get(user_id)
-
-#         user.school_email = ajax_json['school-email']
-#         user.major = ajax_json['major']
-#         user.qualifications = ajax_json['experience']
-#         user.year = ajax_json['year']
-#         user.slc_tutor = ajax_json['slc']
-#         user.la_tutor = ajax_json['la']
-#         user.res_tutor = ajax_json['res']
-#         user.ta_tutor = ajax_json['gsi']
-#         user.previous_tutor = ajax_json['cal']
-
-#         courses = ajax_json['courses']
-
-#         from app.static.data.variations import courses_dict
-
-#         for course_txt in courses:
-#             skill_to_add_id = courses_dict[course_txt]
-#             skill = Skill.query.get(skill_to_add_id)
-#             # db_session.add(skill)
-#             user.skills.append(skill)
-        
-#         try:
-#             db_session.commit()
-#         except:
-#             db_session.rollback()
-#             raise 
-
-
-#     return jsonify(response=return_json)
-
-
 @app.route('/update-skill/', methods=('GET', 'POST'))
 def update_skill():
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
-        print ajax_json
+        logging.info(ajax_json)
         user_id = session.get('user_id')
         if not user_id:
             return redirect(url_for('index'))
@@ -2108,8 +1360,8 @@ def update_password():
         else:
             user.password = new_password
             return_json['success'] = 'Password successfully updated'
-            print "user password before was " + str(old_password)
-            print "user password is now" + str(new_password)
+            logging.info("user password before was " + str(old_password))
+            logging.info("user password is now" + str(new_password))
         try:
             db_session.commit()
         except:
@@ -2125,11 +1377,10 @@ def apply():
 def success():
     if request.method == "POST":
         ajax_json = request.json
-        print ajax_json
+        logging.info(ajax_json)
 
         if ajax_json.get('student-signup'):
             try: 
-
                 if not ajax_json.get('email'):
                     from api import errors
                     return errors(['Something went wrong ... Try again!'])
@@ -2153,7 +1404,6 @@ def success():
                     password = ''
                 else:
                     password = md5(ajax_json['password']).hexdigest()
-
 
                 if u:
                     return jsonify(dict={'account-exists':True});
@@ -2213,7 +1463,6 @@ def success():
             if not ajax_json.get('instant'):
                 authenticate(user_id)
 
-
             try:
                 from notifications import getting_started_student, welcome_guru, getting_started_tutor, getting_started_student_tip
                 if session.get('tutor-signup'):
@@ -2256,196 +1505,6 @@ def success():
                 db_session.commit()
             except:
                 db_session.rollback()
-
-        #Create a request
-        if ajax_json.get('student-request'):
-            print "===Printing the json file for a student request below==="
-            print ajax_json
-            user_id = session['user_id']
-            from app.static.data.variations import courses_dict
-            from app.static.data.short_variations import short_variations_dict
-
-            
-            original_skill_name = ajax_json['skill'].lower()
-            if not courses_dict.get(original_skill_name):
-                from api import errors
-                return errors(['Please choose a skill from the listed courses we have in the dropdown.'])
-
-            if ajax_json.get('phone'):
-                other_user = User.query.filter_by(phone_number=ajax_json.get('phone')).first()
-                user = User.query.get(user_id)
-                if other_user and user != other_user:
-                    from api import errors
-                    return errors(['A duplicate account already exists with phone ' + ajax_json.get('phone') + '. Logout and try "Forgot your Password"'])
-                user.phone_number = ajax_json.get('phone')
-
-            skill_id = courses_dict[original_skill_name]
-            skill = Skill.query.get(skill_id)
-            skill_name = short_variations_dict[skill.name]
-            u = User.query.get(user_id)
-            print "===Printing details about the user who made this request==="
-            print print_user_details(u)
-
-            print "Checking whether a similar request has been made in the past 2 couple of hours for the same skill"
-            previous_request = sorted(Request.query.filter_by(student_id=user_id, skill_id=skill_id).all(), key=lambda n:n.time_created, reverse = True)
-            if previous_request:
-                most_recent_time = previous_request[0].time_created
-                from api import get_time_diff_in_seconds
-                time_diff_in_seconds = get_time_diff_in_seconds(datetime.now(), most_recent_time)
-                if time_diff_in_seconds < 7200:
-                    from api import errors
-                    return errors(['Sorry! You must wait 2 hours before you make a request for ' + skill_name.upper() + ' again.'])
-
-
-
-
-            if u.verified_tutor:
-                if skill in u.skills:
-                    return jsonify(dict={'tutor-request-same':True})
-
-            # If student already has an outgoing request
-            if u.outgoing_requests:
-                for r in u.outgoing_requests:
-                    if r.skill_id == skill_id:
-                        return jsonify(dict={'duplicate-request': True})
-
-            r = Request(
-                student_id = user_id,
-                skill_id = skill_id,
-                description = ajax_json['description'],
-                urgency = int(ajax_json['urgency']),
-                frequency = None, 
-                time_estimate = float(ajax_json['estimate'])
-            )
-
-            #optional
-            if ajax_json.get('professor'):
-                r.professor = ajax_json['professor']
-
-            #Process calendar information
-            weekly_availability = ajax_json['calendar']
-            print weekly_availability
-
-            week_times = Week(owner=0)
-            db_session.add(week_times)
-            i = 0
-            for day in weekly_availability:
-                for time_range in day:
-                    temp_range = Range(start_time=time_range[0], end_time=time_range[1], week_day=i)
-                    db_session.add(temp_range)
-                    week_times.ranges.append(temp_range)
-                i = i + 1
-
-            r.weekly_availability.append(week_times)
-            r.num_students = 1
-            r.student_estimated_hour = int(float(ajax_json['hourly-price']))
-            r.location = ajax_json['location']
-            r.available_time = ''
-            u.outgoing_requests.append(r)
-            db_session.add(r)            
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-
-            print "===Request was successfully committed to the database==="
-
-            from notifications import student_request_receipt
-            notification = student_request_receipt(u, r, original_skill_name)
-            u.notifications.append(notification)
-            db_session.add(notification)
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-
-            print "===Student request notification was successfully committed to the database==="
-
-            if not skill.tutors:
-                return jsonify(dict={'no-active-tutors': True})
-
-            # Tutors are currently not contacted when there is a request.
-            from notifications import tutor_request_offer
-            tier_2_tutor_ids = []
-            tier_2_tutors = []
-            print "===Going through all qualified tutors for this request...==="
-            print "Here are all the requested tutors:", r.requested_tutors
-            for tutor in r.requested_tutors:
-                #Only if they are approved tutors
-                print tutor.id, tutor.name, tutor.email, " is qualified." 
-
-                #Check if conversation already exists between tutor + student. If so, we don't want to see it.
-                conversation = Conversation.query.filter_by(student_id=u.id, guru_id=tutor.id).first()
-                if conversation and conversation.requests and conversation.requests[0].skill_id == r.skill_id:
-                    r.requested_tutors.remove(tutor)
-                    continue
-
-                #check if tutor is in tutor blacklist
-                if tutor.id in tutor_blacklist:
-                    r.requested_tutors.remove(tutor)
-                    continue
-
-                if tutor.approved_by_admin:
-                    print tutor.name, " is approved by admin." 
-                    if is_tier_one_tutor(tutor):
-                        print tutor.name + ' is a tier 1 tutor'
-                        if tutor.text_notification and tutor.phone_number:
-                            print tutor.name + ' is qualified to receive a text'
-                            from emails import request_received_msg
-                            message = request_received_msg(u, tutor, r, skill_name)
-                            send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
-                        tutor.incoming_requests_to_tutor.append(r)
-                        notification = tutor_request_offer(u, tutor, r, skill_name)
-                        db_session.add(notification)
-                        tutor.notifications.append(notification)
-                    else:
-                        print tutor.name + ' is a tier 2 tutor'
-                        tier_2_tutor_ids.append(tutor.id)
-                        tier_2_tutors.append(tutor)
-                        print tier_2_tutor_ids
-
-            for tutor in tier_2_tutors:
-                print "Tutor has been removed: " +  str(tutor)
-                r.requested_tutors.remove(tutor)
-
-            if tier_2_tutor_ids:
-                print "Here are all the tier2 tutor ids",  tier_2_tutor_ids
-                if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
-                    send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=100)
-                else:
-                    send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, r.id, u.id, skill_name], countdown=3600)
-
-            
-            #send emails + create objects
-            from emails import student_needs_help
-            mandrill_result, tutor_email_dict = student_needs_help(u, r.requested_tutors, skill_name, r)
-            for sent_email_dict in mandrill_result:
-                if tutor_email_dict.get(sent_email_dict['email']):
-                    tutor = tutor_email_dict[sent_email_dict['email']]
-                    email = Email(
-                        tag='tutor-request', 
-                        user_id=tutor.id, 
-                        time_created=datetime.now(), 
-                        mandrill_id = sent_email_dict['_id']
-                        )
-                    db_session.add(email)
-                    tutor.emails.append(email)
-                    r.emails.append(email)
-
-            try:
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise 
-
-            if get_environment() == 'PRODUCTION':
-                send_student_one_hour_left.apply_async(args=[u.id, r.id], countdown=82800)
-            else:
-                send_student_one_hour_left.apply_async(args=[u.id, r.id], countdown=50)
-
-            print "===Student Request Complete. Texts and Emails successfully sent out==="
 
         if ajax_json.get('admin-approve-tutor'):
             try:
@@ -2502,6 +1561,203 @@ def success():
 
         return jsonify(dict=ajax_json)
 
+# TODO : This should go in api.py
+@app.route('/student_request/', methods=('GET', 'POST'))
+def student_request():
+    
+    from api import errors, success
+
+    ajax_json = request.json
+    logging.info("===Printing the json for a student request===")
+    logging.info(ajax_json)
+
+    from app.static.data.variations import courses_dict
+    from app.static.data.short_variations import short_variations_dict
+
+    original_skill_name = ajax_json['skill'].lower()
+    if not courses_dict.get(original_skill_name):
+        return errors(['Please choose a skill from the listed courses we have in the dropdown.'])
+
+    # Get current user_id
+    user = User.query.get(session['user_id'])
+    logging.info("===Printing details about the user who made this request===")
+    logging.info(user)
+
+    if ajax_json.get('phone'):
+        # If there is another user with the same number,
+        other_user = User.query.filter_by(phone_number=ajax_json.get('phone')).first()
+        if other_user and user != other_user:
+            return errors(['A duplicate account already exists with phone ' + ajax_json.get('phone') + '. Logout and try "Forgot your Password"'])
+        else:
+            # If not, update user with new phone number
+            user.phone_number = ajax_json.get('phone')
+
+    # Get information about the skill they are requesting help in
+    skill_id = courses_dict[original_skill_name]
+    skill = Skill.query.get(skill_id)
+    skill_name = short_variations_dict[skill.name]
+
+    logging.info("===Checking whether a similar request has been made too recently===")
+    previous_request = sorted(Request.query.filter_by(student_id=user.id, skill_id=skill_id).all(), key=lambda n:n.time_created, reverse = True)
+    if previous_request:
+        most_recent_time = previous_request[0].time_created
+        from api import get_time_diff_in_seconds
+        time_diff_in_seconds = get_time_diff_in_seconds(datetime.now(), most_recent_time)
+        if time_diff_in_seconds < 7200 and os.environ.get("PRODUCTION"):
+            logging.info("Fail: Requesting help for skill too soon after last request.")
+            return errors(['Sorry! You must wait 2 hours before you make a request for ' + skill_name.upper() + ' again.'])
+
+    # Check if current user is a tutor, and if so, whether they are a turor for this particular skill.
+    if user.verified_tutor: # or user.is_a_tutor:
+        if skill in user.skills:
+            logging.info("Fail: Requesting help for class user is a tutor in.")
+            return errors(['Sorry! You cannot request help for a class you are a tutor in.'])
+
+    # If student already has an outgoing request
+    for user_request in user.outgoing_requests:
+        if user_request.skill_id == skill_id:
+            logging.info("Fail: Requesting help while there is already and active request.")
+            return errors(["You already have an active request for this course.  Please cancel your previous requst and try again."])
+
+    logging.info("===Creating a new request===")
+    new_request = Request(
+        student_id = user.id,
+        skill_id = skill_id,
+        description = ajax_json['description'],
+        urgency = int(ajax_json['urgency']),
+        frequency = None,
+        time_estimate = float(ajax_json['estimate'])
+        )
+
+    # Include optional professor information if available
+    if ajax_json.get('professor'):
+        new_request.professor = ajax_json['professor']
+
+    # Process calendar information, some voodoo magic that only Samir understands
+    weekly_availability = ajax_json['calendar']
+    week_times = Week(owner=0)
+    db_session.add(week_times)
+    i = 0
+    for day in weekly_availability:
+        for time_range in day:
+            temp_range = Range(start_time=time_range[0], end_time=time_range[1], week_day=i)
+            db_session.add(temp_range)
+            week_times.ranges.append(temp_range)
+        i = i + 1
+    
+    logging.info("===Processed calander information===")
+
+    new_request.weekly_availability.append(week_times)
+    new_request.num_students = 1 # TODO : this will eventually be variable?
+    new_request.student_estimated_hour = int(float(ajax_json['hourly-price']))
+    new_request.location = ajax_json['location']
+    new_request.available_time = '' # TODO : What does this do?
+
+    user.outgoing_requests.append(new_request)
+    db_session.add(new_request)
+
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        logging.info("Failed to add the request to the database")
+        return errors(["Sorry, we couldn't make your request at this time. Try again later"])
+    
+    logging.info("===Request was successfully committed to the database===")
+    logging.info(new_request)
+
+    # Create notification object for request and store it in the database
+    from notifications import student_request_receipt, tutor_request_offer
+
+    notification = student_request_receipt(user, new_request, original_skill_name)
+    user.notifications.append(notification)
+    db_session.add(notification)
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        logging.info("Failed to save notification to database.")
+        raise 
+
+    logging.info("===Student request notification was successfully committed to the database===")
+    if not skill.tutors:
+        return errors(["Sorry! There are currently no active tutors for this course.  Try again soon!"])
+
+    # Tutors are currently not contacted when there is a request.
+    tier_2_tutor_ids = []
+    tier_2_tutors = []
+    logging.info("===Going through all qualified tutors for this request...===")
+    logging.info("Here are all the requested tutors: " + str(new_request.requested_tutors))
+    for tutor in new_request.requested_tutors:
+        #Only if they are approved tutors
+        logging.info(str(tutor) + " is qualified.")
+
+        #Check if conversation already exists between tutor + student. If so, we don't want to see it.
+        conversation = Conversation.query.filter_by(student_id=user.id, guru_id=tutor.id).first()
+        if conversation and conversation.requests and conversation.requests[0].skill_id == new_request.skill_id:
+            new_request.requested_tutors.remove(tutor)
+            continue
+
+        #check if tutor is in tutor blacklist
+        if tutor.id in tutor_blacklist:
+            new_request.requested_tutors.remove(tutor)
+            continue
+
+        if tutor.approved_by_admin: # or tutor.is_a_tutor:
+            logging.info(str(tutor) + " is approved by admin.")
+            if is_tier_one_tutor(tutor):
+                logging.info(str(tutor) + ' is a tier 1 tutor')
+                if tutor.text_notification and tutor.phone_number:
+                    logging.info(str(tutor) + ' is qualified to receive a text')
+                    from emails import request_received_msg
+                    message = request_received_msg(user, tutor, new_request, skill_name)
+                    send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
+                tutor.incoming_requests_to_tutor.append(new_request)
+                notification = tutor_request_offer(user, tutor, new_request, skill_name)
+                db_session.add(notification)
+                tutor.notifications.append(notification)
+            else:
+                logging.info(str(tutor) + ' is a tier 2 tutor')
+                tier_2_tutor_ids.append(tutor.id)
+                tier_2_tutors.append(tutor)
+                logging.info(tier_2_tutor_ids)
+
+    for tutor in tier_2_tutors:
+        logging.info("Tutor has been removed: " +  str(tutor))
+        new_request.requested_tutors.remove(tutor)
+
+    if tier_2_tutor_ids:
+        logging.info("Here are all the tier2 tutor ids: " + str(tier_2_tutor_ids))
+        if not os.environ.get('PRODUCTION'):
+            send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, new_request.id, user.id, skill_name], countdown=100)
+        else:
+            send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, new_request.id, user.id, skill_name], countdown=3600)
+
+    logging.info("==Contacting tutors==")
+    # Send emails + create objects
+    from emails import student_needs_help
+    mandrill_result, tutor_email_dict = student_needs_help(user, new_request.requested_tutors, skill_name, new_request)
+    for sent_email_dict in mandrill_result:
+        if tutor_email_dict.get(sent_email_dict['email']):
+            tutor = tutor_email_dict[sent_email_dict['email']]
+            email = Email(
+                tag='tutor-request',
+                user_id=tutor.id,
+                time_created=datetime.now(), 
+                mandrill_id = sent_email_dict['_id']
+                )
+            db_session.add(email)
+            tutor.emails.append(email)
+            new_request.emails.append(email)
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        raise
+
+    logging.info("===Student Request Complete. Texts and Emails successfully sent out===")
+    return success(["Student request has been made!"])
+
 @app.route('/logout/', methods=('GET', 'POST'))
 def logout():
     if session.get('user_id'):
@@ -2530,7 +1786,6 @@ def payments():
     else:
         return redirect(url_for('index'))
 
-
 @app.route('/login/', methods=('GET', 'POST'))
 def login():
     if session.get('user_id'):
@@ -2539,7 +1794,7 @@ def login():
     if request.method == "POST":
         json = {}
         ajax_json = request.json
-        print ajax_json
+        logging.info(ajax_json)
         if ajax_json['email'].lower() == 'testing@uguru.me' \
             and ajax_json['password'].lower() == 'launchuguru' and os.environ.get('TESTING'):
             session['testing-admin'] = True
@@ -2623,14 +1878,6 @@ def admin_access():
         session['user_id'] = int(user_id)
         return jsonify(json=ajax_json)
 
-
-@app.route('/tutorsignup1/', methods=('GET', 'POST'))
-def tutorsignup1():
-    form = SignupForm()
-    if form.validate_on_submit():
-        return redirect('/')
-    return render_template('tutorsignup1.html', form=form)
-
 @app.route('/activity/request/')
 def activity_request():
     user_id = session.get('user_id')
@@ -2676,13 +1923,6 @@ def activity():
     outgoing_request_index = {}
     tutor_dict = {}
     confirm_payments = []
-
-    browser=get_browser()
-
-    if browser and 'chrome' not in get_browser().lower():
-        flash("For the best experience with uGuru, we highly recommend that you use <img src='/static/img/chrome.svg.png' style='padding-bottom:4px' height=20><b> Chrome</b> for your browser.", 'info')
-
-
     urgency_dict = ['ASAP', 'Tomorrow', 'This week']
 
     from app.static.data.prices import prices_dict
@@ -2793,10 +2033,6 @@ def get_tutor_time_ranges(week_object):
     return tutor_calendar_dict
 
 
-@app.route('/tutor_offer/')
-def tutor_offer():
-    return render_template('tutor_offer.html')
-
 @app.route('/guru-rules/')
 def guru_rules():
     return render_template('guru-rules.html')
@@ -2809,8 +2045,6 @@ def messages():
     user = User.query.get(user_id)
     if not session.get('admin'):
         user.last_active = datetime.now()
-    # if user.verified_tutor and not is_tutor_verified(user):
-    #     return redirect(url_for('settings'))
     pretty_dates = {}
     transactions = []
     calendars = {}
@@ -2830,49 +2064,6 @@ def messages():
     return render_template('messages.html', user=user, pretty_dates=pretty_dates, environment = get_environment(), session=session, \
         transactions = transactions, conversations=conversations, calendars=calendars)
 
-@app.route('/student_request/')
-def student_request():
-    return render_template('student_request.html')
-
-@app.route('/rate/')
-def rate():
-    return render_template('rate.html')
-
-@app.route('/bill/')
-def bill():
-    return render_template('bill.html')
-
-@app.route('/request_payment/')
-def request_payment():
-    return render_template('request_payment.html')
-
-@app.route('/credit_card/')
-def credit_card():
-    return render_template('credit_card.html')
-
-@app.route('/conversation/')
-def conversation():
-    return render_template('conversation.html')
-
-@app.route('/request_tutor/')
-def request_tutor():
-    return render_template('request_tutor.html')
-
-@app.route('/student_signup/')
-def student_signup():
-    return render_template('student_signup.html')
-
-@app.route('/tutor_signup/')
-def tutor_signup():
-    return render_template('tutor_signup.html')
-
-@app.route('/tutorsignup2/')
-def tutorsignup2():  
-    return render_template('tutorsignup2.html')
-
-@app.route('/howitworks/')
-def howitworks():
-    return render_template('howitworks.html')
 
 @app.route('/settings/referral/')
 def settings_referral():
@@ -2906,8 +2097,7 @@ def settings_profile():
 def settings():
     user_id = session.get('user_id')
     not_launched_flag = False
-    print "=======This is being printed"
-    print request.url
+    logging.info(request.url)
     if not user_id:
         session['redirect'] = '/settings/'
         return redirect('/log_in/')
@@ -2937,10 +2127,6 @@ def calc_avg_rating(user):
     else:
         avg_rating = 0
     return avg_rating, num_ratings
-
-@app.route('/test-500/', methods=['GET','POST'])
-def test():
-    return render_template('test-500.html')
 
 
 def upload_file_to_amazon(filename, file):
@@ -3011,20 +2197,9 @@ def schedule_job(func, seconds_delay, args):
 def find_earliest_meeting_time(_request):
     student_ranges = sorted(get_calendar_time_ranges(_request.weekly_availability, 0), key=lambda u:u[0])
     tutor_ranges = sorted(get_calendar_time_ranges(_request.weekly_availability, _request.connected_tutor_id), key=lambda u:u[0])
-    print student_ranges
-    print tutor_ranges
+    logging.info(student_ranges)
+    logging.info(tutor_ranges)
     index = 0
-    # for _range in student_ranges:
-    #     tutor_range = tutor_ranges[index]
-
-    #     if _range[0] == tutor_range[0] and _range[1] == tutor_range [1]:
-    #         return [_range[0], _range[1]]
-
-    #     if _range[0] == tutor_range[0] and tutor_range[1] >= _range[1] and tutor_range[2] <= _range[2]:
-    #         return [tutor_range[1], tutor_range[2]]
-        
-    #     index = index+1
-
     for tutor_range in tutor_ranges:
         for student_range in student_ranges:
             if student_range[0] == tutor_range[0] and student_range[1] == tutor_range [1]:
@@ -3053,12 +2228,12 @@ if os.environ.get('PRODUCTION') or os.environ.get('TESTING'):
     @app.errorhandler(500)
     def internal_server(e):
         message = traceback.format_exc()
-        print message
+        logging.info(message)
         from emails import error
         if session.get('user_id'):
-            print session.get('user_id')
+            logging.info(session.get('user_id'))
             user = User.query.get(session.get('user_id'))
-            from pprint import pprint
+            from pprint import pprint # TODO : is pprint needed for any particular reason?
             message += "\n\n" + str(pprint(vars(user))) 
         error(message)
         return render_template('500.html'), 500
@@ -3066,11 +2241,11 @@ if os.environ.get('PRODUCTION') or os.environ.get('TESTING'):
     @app.errorhandler(Exception)
     def catch_all(e):
         message = traceback.format_exc()
-        print message
+        logging.info(message)
         from emails import error
         if session.get('user_id'):
             user = User.query.get(session.get('user_id'))
-            from pprint import pprint
+            from pprint import pprint # TODO : is pprint needed for any particular reason?
             message += "\n\n" + str(pprint(vars(user)))
         error(message)
         return render_template('500.html')
@@ -3084,13 +2259,13 @@ def update_profile_notifications(user):
                 if n.a_id_name in a_id_names or n.custom_tag in custom_tags:
                     if n.image_url != user.profile_url:
                         n.image_url = user.profile_url
-                        print user.name, n.feed_message[0:30], " notification is now updated"
+                        logging.info(str(user) + str(n.feed_message[0:30]) + " notification is now updated")
     return False
 
 
 def convert_mutual_times_in_seconds(mutual_arr, _request):
     total_seconds = 0
-    print mutual_arr
+    logging.info(mutual_arr)
     if mutual_arr[0]:
         total_seconds = (mutual_arr[0] - 1) * 24 * 3600 #one day of seconds depending on the offset days from today
         total_seconds = total_seconds + float(mutual_arr[1] / 2.0) * 3600
@@ -3116,6 +2291,7 @@ def send_twilio_msg(to_phone, body, user_id):
     if 'Meet at' in body:
         return 
     body = '[uGuru] ' + body
+    message = None;
     try:
         message = twilio_client.messages.create(
             body_ = body,
@@ -3129,32 +2305,11 @@ def send_twilio_msg(to_phone, body, user_id):
         db_session.commit()
         check_msg_status.apply_async(args=[text.id], countdown = 60)
     except twilio.TwilioRestException:
-        print "text message didn't go through"
-        raise
+        logging.info("text message didn't go through")
     except:
         db_session.flush()
         raise
     return message
-
-
-@celery.task
-def send_student_one_hour_left(user_id, request_id):
-    return
-    #THIS IS A BUG I NEED TO FIX.
-    # from app.static.data.short_variations import short_variations_dict
-    # user = User.query.get(user_id)
-    # r = Request.query.get(request_id)
-    
-    # #If student has already chosen or there are no tutors
-    # if r.connected_tutor_id or len(r.committed_tutors) == 0:
-    #     return
-    
-    # skill_name = short_variations_dict[Skill.query.get(r.skill_id).name]
-    # from app.emails import student_one_hour_left
-    # student_one_hour_left(user, skill_name)
-    print "Email sent to ", user.name.split(" ")[0], "regarding student packages."
-
-
 
 @celery.task
 def send_student_package_info(user_id, request_id):
@@ -3162,7 +2317,7 @@ def send_student_package_info(user_id, request_id):
     user = User.query.get(user_id)
 
     if user.credit > 10:
-        print "user already has purchased credits."
+        logging.info("user already has purchased credits.")
         return
 
     r = Request.query.get(request_id)
@@ -3170,7 +2325,7 @@ def send_student_package_info(user_id, request_id):
     tutor_name = User.query.get(r.connected_tutor_id).name.split(" ")[0]
     from app.emails import send_student_packages_email
     send_student_packages_email(user, tutor_name, skill_name)
-    print "Email sent to ", user.name.split(" ")[0], "regarding student packages."
+    logging.info("Email sent to " + str(user) + " regarding student packages.")
 
 
 @celery.task
@@ -3231,7 +2386,7 @@ def is_tier_one_tutor(tutor):
     if _sum > 0:
         avg_rating = float (_sum) / float (_index)
         if avg_rating >= 4.0:
-            print tutor.name + ' avg rating is approved'
+            logging.info(str(tutor) + ' avg rating is approved')
             return True
     return False
 
@@ -3267,7 +2422,6 @@ def test_periodic():
     if get_environment() == 'PRODUCTION':
         from emails import daily_results_email
         daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
-        # daily_results_email('samir@uguru.me', 'michael@uguru.me')
 
 @periodic_task(run_every=crontab(minute=59, hour = 6))
 def samir_results():
@@ -3280,7 +2434,7 @@ def samir_results():
 def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name):
     r = Request.query.get(request_id)
     if len(r.committed_tutors) == (MAX_REQUEST_TUTOR_LIMIT + 1):
-        print 'We have already accomodated this request. Tier 2 tutors will not get it anymore.'
+        logging.info('We have already accomodated this request. Tier 2 tutors will not get it anymore.')
         return
     student = User.query.get(user_id)
     second_tier_tutors = []
@@ -3288,7 +2442,7 @@ def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name
         tutor = User.query.get(tutor_id)
         second_tier_tutors.append(tutor)
         r.requested_tutors.append(tutor)
-        print tutor.name + ' received tier 2 request'
+        logging.info(str(tutor) + ' received tier 2 request')
         if tutor.text_notification and tutor.phone_number:
             from emails import request_received_msg
             message = request_received_msg(student, tutor, r, skill_name)
@@ -3306,7 +2460,7 @@ def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name
     for sent_email_dict in mandrill_result:
         if tutor_email_dict.get(sent_email_dict['email']):
             tutor = tutor_email_dict[sent_email_dict['email']]
-            print tutor.name + ' received tier 2 email'
+            logging.info(str(tutor) + ' received tier 2 email')
             email = Email(
                 tag='tutor-request', 
                 user_id=tutor.id, 
@@ -3448,7 +2602,7 @@ def send_student_drip_4(user_id):
     
 
     from time import sleep
-    sleep(0.1)
+    sleep(0.1) # TODO : This looks like a nasty hack...
 
     #concurrency bug?
     e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-4').first()
@@ -3598,7 +2752,7 @@ def auto_confirm_student_payment(payment_id, student_id):
     
     #student has already confirmed!
     if p.student_confirmed:
-        print "Student has already confirmed"
+        logging.info("Student has already confirmed")
         return
     p.student_confirmed = True
     stripe_charge = False
@@ -3628,7 +2782,7 @@ def auto_confirm_student_payment(payment_id, student_id):
                     description="charge for receiving tutoring"
                 )
                 p.stripe_charge_id = charge['id']
-                print p.stripe_charge_id
+                logging.info(p.stripe_charge_id)
             except stripe.error.CardError, e:
                 if p.student_id == user.id:
                     error_msg = "Sorry! Your card has been declined. Please update your payment info in your settings > billing."
@@ -3645,7 +2799,7 @@ def auto_confirm_student_payment(payment_id, student_id):
                     description="charge for receiving tutoring"
                 )
                 p.stripe_charge_id = charge['id']
-                print p.stripe_charge_id
+                logging.info(p.stripe_charge_id)
             except stripe.error.CardError, e:
                 error_msg = "Sorry! Your card has been declined. Please update your payment info in your settings > billing."
                 return errors([error_msg])
@@ -3668,21 +2822,20 @@ def auto_confirm_student_payment(payment_id, student_id):
         tutor.pending = tutor.pending - orig_p.tutor_received_amount - p.tutor_received_amount
         tutor.balance = tutor.balance + p.tutor_received_amount + orig_p.tutor_received_amount     
     else:
-        print "this is a bill-student api payment"
-        print "original pending", tutor.pending
-        print "original balance", tutor.balance
+        logging.info("this is a bill-student api payment")
+        logging.info("original pending " + tutor.pending)
+        logging.info("original balance " + tutor.balance)
         tutor.pending = tutor.pending - orig_p.tutor_received_amount
         tutor.balance = tutor.balance + p.tutor_received_amount
-        print "new pending", tutor.pending
-        print "new balance", tutor.balance
+        logging.info("new pending " + tutor.pending)
+        logging.info("new balance " + tutor.balance)
 
-    
     if p.confirmed_payment_id:
         total_amount = orig_p.time_amount * orig_p.tutor_rate + p.student_paid_amount
     else:
         #recurring billing case
         total_amount = p.student_paid_amount
-    print total_amount
+    logging.info(total_amount)
     
     from app.static.data.short_variations import short_variations_dict
     skill_name = short_variations_dict[Skill.query.get(p.skill_id).name]
@@ -3692,8 +2845,6 @@ def auto_confirm_student_payment(payment_id, student_id):
     else:
         charge = 'as9d0sudas' + str(p.id)
 
-
-
     student_notification = student_payment_approval(user, tutor, p, total_amount, charge, skill_name, False)
     user.notifications.append(student_notification)
     db_session.add(student_notification)
@@ -3702,30 +2853,3 @@ def auto_confirm_student_payment(payment_id, student_id):
     except:
         db_session.rollback()
         raise
-
-def get_browser():
-    import httpagentparser
-    userAgentString = httpagentparser.detect(request.headers.get('User-Agent'))
-    if userAgentString.get('browser'):
-        return userAgentString['browser']['name']
-    return None
-
-def get_os():
-    import httpagentparser
-    userAgentString = httpagentparser.detect(request.headers.get('User-Agent'))
-    if userAgentString.get('os'):
-        return userAgentString['os']['name']
-    return None
-
-# def get_dist():
-#     import httpagentparser
-#     userAgentString = request.headers.get('User-Agent')
-#     return httpagentparser.detect(userAgentString)['dist']['name']
-
-def get_platform():
-    import httpagentparser
-    userAgentString = request.headers.get('User-Agent')
-    return httpagentparser.detect(userAgentString)['platform']['name']    
-
-def print_user_details(user):
-        return str(user.id) + " " + str(user.name) + str(user.email)

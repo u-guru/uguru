@@ -98,6 +98,45 @@
 {% else %}
 <div id="activity" style="font-family: 'Roboto',sans-serif;">
 {% endif %}
+	{% if not user.password %}
+		<div id='password-modal' data-keyboard='True' class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body relative">
+                <a href='javascript:void(0)' class='modal-close-now'>
+                    <span class='glyphicon glyphicon-remove grey-text modal-close-button' ></span>
+                </a>
+                <div id='login-modal-container' class='container-fluid center'>
+                	<h1 id='become-guru-text' style='margin-top:-10px; margin-bottom:30px'> Complete Signup </h1>
+                    <div id='alert-fields-student-signup-top'>
+                        Please fill in all fields.
+                    </div>
+                    <div class='login-input-container'>
+                        <div id='alert-fields-complete-password'>
+                            Please fill in all fields.
+                        </div>                        
+                        <label style='margin-top:10px' for="exampleInputPassword1">Create a Password</label>
+                        <input name='student-password' id='complete-signup-password' type="password" class="form-control" autofocus>
+                    </div>
+                    <div class='login-btn-container relative' >
+                        <a id='student-next-link' href='javascript:void(0);'style='display:none'>
+                            <span class='blue-btn signup-padding'>
+                                <span style='top:3px' class='glyphicon glyphicon-user absolute'></span>  
+                                <span style='margin-left:25px;' >Get an Account</span>
+                            </span>
+                        </a>
+                        <a id='complete-password' href='javascript:void(0);'>
+                            <span class='blue-btn clickable' id='complete-password-btn'>
+                                Complete 
+                            </span>
+                        </a>
+                    </div>
+                </div>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+	{% endif %}
 	<div id="call-to-action-bar" align:"center">
 		{% if guru_profile_not_complete %}
 
@@ -112,8 +151,8 @@
 			<div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-4 col-md-4">
 				<div class='row-fluid'>
 					<a id="tutor-request-link" href="javascript:void(0)">
-						<span id='ace-your-class-student-btn' class='blue-btn blue-btn-full font-20'>
-							Get Help And Ace Your Class
+						<span id='ace-your-class-student-btn' class='blue-btn blue-btn-full font-20 clickable'>
+							Request a Guru
 						</span>
 					</a>
 				</div>
@@ -192,43 +231,27 @@
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 				<div class="alert alert-success"></div>
 			</div>
-		</div>
-		{% if user.outgoing_requests|length >= 1 %}
-		<!-- <div style="display:block" class="row-fluid">
-			<div style="margin-top:0px; margin-bottom:15px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<div style="margin-bottom:0"class="alert alert-success">You're all set! Check your email frequently.<br> We'll let you know <i>immediately </i> if a tutor has agreed to help! </div>
-			</div>
-		 </div> -->
-		 {% endif %}
-		 {% with messages = get_flashed_messages() %}
+		 {% with messages = get_flashed_messages(with_categories=true) %}
 		  {% if messages %}
-		    {% for message in messages %}
+		    {% for category, message in messages %}
 		    <div style="display:block" class="row-fluid">
 			    <div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-			    	<div id='default-activity-alert' style="margin-bottom:0"class="alert {% if 'Chrome' or 'set' in message %} alert-info {% else %} alert-success {% endif %}">{{ message|safe}}</div>
+			    	{% from '/snippets/alerts.html' import alert_template %}
+
+			    		{{alert_template
+			    			(
+				    			_id = 'default-activity-alert', 
+				    			_class = '',
+				    			_type = category, 
+				    			message = message, 
+				    			style = 'margin-bottom:0px'
+				    		)
+			    		}}
 			    </div>
 			</div>
 		    {% endfor %}
 		  {% endif %}
 		{% endwith %}
-		{% if not user.verified_tutor %}
-		<!-- <div style="text-align:center;margin-top:0px; " class="row">
-			<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-				<h5 style="color:grey; margin-bottom:5px;"> 
-					<strong>Your current secret payment code is 
-						<span style='color:red'> '{{user.secret_code}}'
-						</span>
-					</strong>
-				</h5>
-				<h6 style="margin-top:0px;color:grey;">
-					Give this to a Guru to confirm payment at the end of each session.<br>
-					Your code regenerates after each payment.
-				</h6>
-			</div>
-		</div> -->
-		{% endif %}
-
 		<div id="main-feed" style='padding-top:20px'>
 		{% for n in user.notifications|sort(attribute='time_created')|reverse %}
 			{{notification_template.notification(n, user, pretty_dates)}}
@@ -246,6 +269,7 @@
 	<br>
 	<br>
 </div>
+</div> 
 
 {% if user.balance > 0%}
 <div id="add-bank-account-info" style="display:none; color:rgb(0, 159, 225);">
@@ -280,44 +304,6 @@
 				  	<h6 style="margin:25px auto;color:grey">You will receive the funds in your account within <b>1-3</b> days depending on your bank. We will email you confirmation as soon as the money is successfully transfered.</h6>
 				</div>
 		  	</div>
-		  	<!-- <div class="row">
-		  		<div class="col-xs-12 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-				  		<div id="bank-account-alert" class="row" style="display:none; text-align:center; color:red">
-				  			Please fill out all fields
-				  		</div>
-				  		<div class="form-group">
-				  			<label for="credit-card-num">
-				  				<span class="glyphicon glyphicon-user" style="color:#00a0cf;"></span>
-				  				<span class="h4" style="color:#00a0cf">&nbsp;&nbsp;YOUR FULL LEGAL NAME
-				  				</span>
-				  			</label>
-				  			<br>
-				  			<input id="full-legal-name"value="{{user.name}}"style="width:100%" type="text" size="20" data-stripe="number" class="input-signup">
-				  		</div>
-				  		<div class="form-group">
-				  			<label for="credit-card-num">
-				  				<span class="glyphicon glyphicon-credit-card" style="color:#00a0cf;"></span>
-				  				<span class="h4" style="color:#00a0cf">&nbsp;&nbsp;ACCOUNT NUMBER
-				  				</span>
-				  			</label>
-				  			<br>
-				  			<input id="bank-account-num" style="width:100%" type="text" size="20" data-stripe="number" class="input-signup">
-				  		</div>
-				  		<div class="form-group">
-				  			<label for="credit-card-num">
-				  				<span class="glyphicon glyphicon-random" style="color:#00a0cf;"></span>
-				  				<span class="h4" style="color:#00a0cf">&nbsp;&nbsp;ROUTING NUMBER
-				  				</span>
-				  			</label>
-				  			<br>
-				  			<input id="bank-routing-num" style="width:100%" type="text" size="20" data-stripe="number" class="input-signup">
-				  		</div>
-					 	<span class="payment-errors"></span>
-					 	<div style="margin-top:20px; margin-bottom:20px;text-align:center" class="row-fluid">
-					  			<img src="/static/img/powered-stripe.png">
-					  	</div>
-				</div>
-			</div> -->
 			<div class="row">
 			  		<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 					  		<br>
@@ -463,46 +449,7 @@
 {% include 'package-promotion.html'%}
 {% include '/macros/payment-plans-home.html'%}
 
-
-<div id="feed-messages">
-		{% if not user.customer_id %}
-		<!-- <div id='credit-modal' data-keyboard='True' class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-body">
-                
-                <div id='login-modal-container reg-text' class='container-fluid center'>
-                    <div class='font-24 reg-text center'> Add a Card </div>
-                    <div class='margin-top-10 reg-text margin-bottom-20 font-16 center padding-30'>
-                    	You will not be charged until your Guru bills you at the end of the session.
-                    </div>
-                    <div class='row block align-left margin-bottom-10 padding-30'>
-	                    <label class='reg-text'> Card Number </label>
-			            <input placeholder="•••• •••• •••• ••••" style="width:100%" type="text" size="20" data-stripe="number" class='form-control standard-input float-left' id="credit-card-num-modal">
-			        </div>
-
-			        <div class='row block align-left margin-bottom-10 padding-30 relative'>
-	                    <label class='reg-text'> Expiration Date </label>
-			            <input placeholder="MM/YY" class='font-control reg-text standard-input block exp-date-month' size="20"type="text" data-stripe="exp-month" id='credit-card-exp-date-modal'>
-			            <img class='float-right absolute powered-by-stripe-settings'src='/static/img/powered-stripe.png'> </img>
-			        </div>
-	                  
-	                <div class='row-fluid block margin-top-20'>
-	                    <a href='javascript:void(0);' id='submit-credit-card-modal'>
-	                      <span class='blue-btn blue-btn-full margin-top-20'> Done! </span>
-	                    </a>
-	                </div>
-
-	                <div id='add-credit-modal-alert' class='red-text font-12' style='display:none'>
-                        Please fill in all fields.
-                    </div>
-
-                </div>
-              </div>
-            </div><! /.modal-content -->
-          <!-- </div>/.modal-dialog
-        </div>  -->
-		{% endif %}
+<div id="feed-messages">		
 		{% for n in user.notifications|sort(attribute='time_created') %}
 			{% if n.a_id_name == 'getting-started-guru'%}
 			<div id='getting-started-guru-detailed' style='display:none'>
@@ -819,893 +766,10 @@
 				{{notification_details_template(user, n, request_dict, time, loop.index, tutor_dict)}}
 			{% elif n.custom_tag == 'student-request-help' %}
 				{{notification_details_template(user, n, request_dict, time, loop.index, tutor_avg_rating)}}
-				<!-- <div id="{{n.a_id_name}}-detailed" style="display:none;">
-	  				<div style="display:block;"class="page-title">
-	   					<div class="row" style="width:100%;text-align:center">
-		   					<div class="col-xs-1 col-sm-offset-1 col-sm-1 col-md-offset-1 col-md-1">
-			   					<a href="javascript:void(0)" class= "feed-message-link" style="text-decoration:none"> 
-			   						<h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
-			   					</a>
-		   					</div>
-		   					<div class="col-xs-11 col-sm-8 col-md-8" style="text-align:center">
-	   							<h4 style="color:white;width:100%">YOUR {{n.custom|upper}} REQUEST</h4>
-	   						</div>
-	   					</div>
-	  				</div>
-	  				<div class="request-details">
-						<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px; display:block">
-						  	{% if not (request_dict[n.request_id]['request'].requested_tutors ) %}
-				  			<div id="already-have-active-request-alert" style="display:show;" class="row">
-		                        <div style="margin-top:10px; float:center; margin:10px auto"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-		                          <div style="margin-bottom:0"class="alert alert-danger">Sorry! We currently don't have tutors for this course. <br>We've registered your request for the time being and will let you know if we find tutors.<br>
-		                          Unfortunately we are mainly focusing on lower div courses at the moment.</div>
-		                        </div>
-		                    </div>
-		                    {% elif n.status == 'EXPIRED' %}
-				  			<div style="display:block;" class="row">
-				  				<div style="margin-top:10px; float:center; margin:10px auto"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-				  					<div style="margin-bottom:0"class="alert alert-danger">This request has expired. Please make another one!</div>
-				  				</div>
-				  			</div>
-			  				{% elif not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
-			  				<div style="display:block;" class="row">
-				  				<div style="margin-top:10px; float:center; margin:10px auto;"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-				  					<div style="margin-bottom:0;"class="alert alert-info">Sit tight and wait! <br>We will email you each time a tutor has agreed to help. </div>
-				  				</div>
-				  			</div>
-				  			{% else %}
-				  			<div style="display:block;" class="row">
-				  				<div style="margin-top:10px; float:center; margin:10px auto"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-				  					<div style="margin-bottom:0"class="alert alert-danger">You canceled this request.</div>
-				  				</div>
-				  			</div>
-				  			{% endif %}
-						  	{% if user.profile_url %}
-						  	<img src="{{user.profile_url}}" style="align:center" class="user-photo">
-						  	{% endif %}
-						  <div class="row">
-							  <div class="request-info col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
-								  	<div class="row-fluid">
-								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4 request-info-row"><b>Description</b></div>
-								  		</div>
-								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].description}}</div>
-								  		</div>
-								  	</div>
-								  	<div class="row-fluid">
-								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4 request-info-row"><b>Location</b></div>
-								  		</div>
-								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].location}}</div>
-								  		</div>
-								  	</div>
-								  	<div class="row-fluid">
-								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4 request-info-row"><b>Availability</b></div>
-								  		</div>
-								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4 request-info-row">
-								  				  {% if request_dict[n.request_id]['student-calendar'] %}
-								  					<span class='grey-text'> See times: </span> 
-
-						                            <a id='request-calendar-toggle' onclick='show_student_request_calendar({{request_dict[n.request_id]["student-calendar"]}}, {{time.mktime(request_dict[n.request_id]["request"].time_created.timetuple())}})'>
-						                                <span class='glyphicon glyphicon-calendar'></span>
-						                           	</a>
-					                              {% else %}
-					                              	
-					                              	{{request_dict[n.request_id]['request'].availability}}
-
-					                              {% endif %}
-								  			</div>
-								  		</div>
-								  	</div>
-								  	{% if request_dict[n.request_id]['request'].professor %}
-								  	<div class="row-fluid">
-								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4 request-info-row"><b>Professor</b></div>
-								  		</div>
-								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].professor}}
-								  			</div>
-								  		</div>
-								  	</div>
-								  	{% endif %}
-								  	<div class="row-fluid">
-								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4 request-info-row"><b>Requested Hourly Price</b></div>
-								  		</div>
-								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4 request-info-row">${{request_dict[n.request_id]['request'].student_estimated_hour}}</div>
-								  		</div>
-								  	</div>
-								  	<div class="row-fluid">
-								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4 request-info-row"><b>Estimated Session Time</b></div>
-								  		</div>
-								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].time_estimate}} hours</div>
-								  		</div>
-								  	</div>
-								  	<div class="row-fluid">
-								  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4"><b>Requested Total Price</b></div>
-								  		</div>
-								  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-								  			<div class="h4">${{(request_dict[n.request_id]['request'].time_estimate * request_dict[n.request_id]['request'].student_estimated_hour)}}</div>
-								  		</div>
-								  	</div>
-								</div>
-						 	</div>
-						 	{% if request_dict[n.request_id]['request'].requested_tutors|length > 0 %}
-						 	<div style="text-align:center; float:center; margin-top:10px" class="row">
-						 		<h4>Contacted Tutors</h4>
-						 		<div id="contacted-tutors">
-						 		{% for tutor in request_dict[n.request_id]['request'].requested_tutors %}
-						 		<span>
-						 			<img src="{{tutor.profile_url}}" style="align:center" class="tutor-photo"> 
-						 		</span>
-						 		{% endfor %}
-						 		</div>
-						 	</div>
-						 	{% endif %}
-						 	{% if not request_dict[n.request_id]['request'].connected_tutor_id and not n.status == 'EXPIRED' %}
-						 	<!-- <div style="text-align:center; float:center; margin-top:20px; font-size:14px; color:grey;" class="row">
-						 		<a class="edit-request" style="color:grey" href="javascript:void(0)"> (Click here to edit this request) </a>
-						 	</div> -->
-						 	<!-- <div style="text-align:center; float:center; margin-top:20px; font-size:10px; color:grey;" class="row">
-						 		<a class="cancel-request" style="color:grey" href="javascript:void(0)"> Cancel this Request </a>
-						 	</div> 
-						 	{% endif %}
-					</div>
-					</div> 
-					{% if not request_dict[n.request_id]['request'].connected_tutor_id %}
-					<div style="display:none; color:#00a9e5" class="edit-request">
-					    <div class="container-fluid">
-					    	<div style="display:show" class="row-fluid">
-				  				<div style="margin-top:10px; text-align:center; float:center"class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-				  					<div style="margin-bottom:0"class="alert alert-info">Edit your request carefully! Each time you do, tutors are notified.</div>
-				  				</div>
-						  	</div>
-					        <div class="row" style="margin-top:15px">
-				                <div class="edit-request-additional row">
-				                      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-				                        <div class="form-group">
-				                            <label for="exampleInputEmail1"><strong>SPECIFY TOPICS AND GURU PREFERENCES</strong></label> <br>
-				                            <input style="width:100%"id="student-signup-description" name="skill" type="email" class="input-signup" placeholder="Data Structures, Midterm Prep, with Prof Hilfinger" id="login-email" value="{{request_dict[n.request_id]['request'].description}}">
-				                        </div>
-				                      </div>
-				                </div>
-				                <div class="edit-request-availability row">
-				                   	<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-				                        <div class="form-group">
-			                              <label for="exampleInputEmail1"><strong>YOUR AVAILABILITY (BE SPECIFIC) </strong></label> <br>
-			                              <input style="width:100%"id="student-signup-availability" name="skill" type="email" class="input-signup" value="{{request_dict[n.request_id]['request'].available_time}}"placeholder="Anytime tonight, Mon 3-6pm, Sat morning" id="login-email">
-				                        </div>
-				                    </div>
-				                </div>
-				               	<div class="edit-request-location row">
-				                    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-				                        <div class="form-group">
-				                            <label for="exampleInputEmail1"><strong>PREFERRED LOCATION</strong></label> <br>
-				                              	<input style="width:100%"id="student-signup-location" name="skill" type="email" class="input-signup" value="{{request_dict[n.request_id]['request'].location}}"placeholder="Dwinelle, Peets Coffee, SLC" id="login-email">
-				                         </div>
-				                    </div>
-				                </div>
-			                    <div class="edit-request-time-length row">
-			                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-			                            <div class="form-group">
-											<label for="exampleInputEmail1"><strong>HOW LONG WOULD IT TAKE</strong></label> <br>
-			                                <div id="time-estimate-slider-request-{{outgoing_request_index[request_dict[n.request_id]['request']]}}" style="margin-top:7px; margin-bottom:5px"></div>
-			                                <p style="margin-left:5px; font-size:14px; margin-top:3px; font-weight:700"class="text-left"><span style="font-size:14px;color:rgb(0, 159, 225)" name="estimate" id="time-estimate-request-{{outgoing_request_index[request_dict[n.request_id]['request']]}}"></span> hours (This is only an estimate)</p>
-			                            </div>
-			                        </div>
-			                    </div>
-			                    <div class="edit-request-price row">
-			                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-			                            <div class="form-group">
-											<label for="exampleInputEmail1"><strong>PRICE YOU ARE WILLING TO PAY</strong></label> <br>
-			                                <div id="hourly-price-slider-request-{{outgoing_request_index[request_dict[n.request_id]['request']]}}" style="margin-top:7px; margin-bottom:5px"></div>
-			                                <p style="margin-left:5px; font-size:14px;color:#69bf69; margin-top:3px; font-weight:700"class="text-left">$<span style="font-size:14px;" name="estimate" id="hourly-price-request-{{outgoing_request_index[request_dict[n.request_id]['request']]}}"></span></p>
-			                            </div>
-			                        </div>
-			                    </div>
-				            <div style="text-align:center; margin-right:-15px; margin-left:-15px; padding-left:0px; padding-right:0px;" class="row">
-				              <div style="padding-left:0px; padding-right:0px"class="col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
-				                <a class="edit-request-submit" href="javascript:void(0)">
-				                  <div class="tutor-submit-next">
-				                    <p> EDIT REQUEST </p>
-				                  </div>
-				                </a>
-				              </div>
-				            </div>
-				            {% if not request_dict[n.request_id]['request'].connected_tutor_id %}
-						 	<div style="text-align:center; float:center; margin-top:20px; font-size:10px; color:grey;" class="row">
-						 		<a class="cancel-request" style="color:grey" href="javascript:void(0)"> Cancel this Request </a>
-						 	</div>
-						 	{% endif %}
-				          <div style="margin-top:25px;text-align:center; color:grey">
-						       Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our FAQ</u></a>
-						   </div>
-						</div>
-					</div>
-				</div>
-					{% endif %}
-				</div> -->
 			{% elif n.custom_tag  == 'student-incoming-offer' %}
 			{{notification_details_template(user, n, request_dict, time, loop.index, tutor_dict, variations)}}
-				<!-- <div id="{{n.a_id_name}}-detailed" style="display:none;">
-					<div class="page-title">
-	   					<div class="row-fluid" style="width:100%;text-align:center">
-		   					<div class="col-xs-1 col-xs-offset-1 col-sm-offset-1 col-sm-1 col-md-offset-1 col-md-1">
-			   					<a href="javascript:void(0)" class= "feed-message-link" style="text-decoration:none"> 
-			   						<h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
-			   					</a>
-		   					</div>
-		   					<div class="col-xs-8 col-sm-8 col-md-8" style="text-align:center">
-	   							<h4 style="color:white;width:100%">TUTORING PROPOSAL FROM {{tutor_dict[n].name.split()[0]|upper}}</h4>
-	   						</div>
-	   					</div>
-	  				</div>
-	  				{% if n.custom == 'student-accept-request' and not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
-	  				<br>
-					<div class="row">
-						<div class="next-steps-border col-xs-12 col-sm-offset-2 col-sm-8 col-md-4 col-md-offset-4">
-							<div id="flakers-fee-alert" style="text-align:center; margin-bottom:10px;font-size:24px; ">
-									<b>NEXT STEPS</b>
-							</div>
-							<div style="font-size:14px; text-align:left;">
-								<p>1. Message your Guru, and finalize meetup <b>time & location</b>. </p>
-								<p>2. <b>No need to bring cash!</b> After the session, just give your Guru your <b>secret payment code</b> (on top of your homepage).</p>
-								<p>3. <b>Review</b> your Guru after the session by logging in. </p>
-							</div>
-						</div> 
-						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:20px; margin-bottom:20px; display:block">
-				          <a id="launch-profile-link" href="/messages/">
-				            <div class="btn-save">
-				              <p>MESSAGE GURU NOW
-				              </p>
-				            </div>
-				          </a>
-				        </div>
-			    	</div>
-			    	<div class="row">
-						<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-4 col-md-offset-4" style="margin-bottom:-20px; margin-top:20px">
-						    <div id="flakers-fee-alert" style="text-align:center; font-size:16px; color:grey;">
-									<i><b>REQUEST INFO</b></i>
-							</div>
-						</div>
-					</div>
-					{% endif %}
-					{% if n.status == 'EXPIRED' %}
-					<div class="row-fluid">
-					  	<div style="margin:auto; text-align:center; float:center; margin-top:10px;"class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-						  	<div class="alert alert-danger" style="margin-bottom:0px;">
-						  		This opportunity to connect has been expired
-						  	</div>
-						</div>
-					</div>
-					{% endif %}
-					{% if (request_dict[n.request_id]['request'].connected_tutor_id == user.id) %}
-					<div class="row-fluid">
-					  	<div style="margin:auto; text-align:center; float:center; margin-top:10px;"class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-						  	<div class="alert alert-danger" style="margin-bottom:0px;">
-						  		You canceled this request
-						  	</div>
-						</div>
-					</div>
-					{% endif %}
-					{% if not n.request_tutor_amount_hourly %}
-					<div class="row-fluid">
-					  	<div style="margin:auto; text-align:center; float:center; margin-top:10px;"class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-						  	<div class="alert alert-danger" style="margin-bottom:0px;">
-						  		Unfortunately the tutor cannot accommodate your request anymore. 
-						  	</div>
-						</div>
-					</div>
-					{% endif %}
-	  				<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px">
-					  	<div id="credit-card-success" style="display:None; color:green; text-align:center" class="row">
-							<br>Credit Card Successfully Added! 
-						</div>
-					  	<br>
-					  	{% if tutor_dict[n] and tutor_dict[n].profile_url %}
-					  	<img src="{{tutor_dict[n].profile_url}}" style="align:center" class="user-photo">
-					  	{% else %}
-					  	<img src="/static/img/default-photo.jpg" style="align:center" class="user-photo">
-					  	{% endif %}
-						<div class="row">
-						  	<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
-						  		<h5 style="text-align:center; margin:3px auto">
-						  			{{tutor_dict[n].name.split()[0]}}
-						  		</h5>
-						  	</div>
-						  	<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
-						  		<h5 style="text-align:center; margin:3px auto">
-						  		<b>Year:</b> {{tutor_dict[n].year}}, <b>Major:</b> {{tutor_dict[n].major}}
-						  		</h5>
-						  	</div>
-						  	{% if tutor_dict[n].tutor_introduction %}
-						  	<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
-						  		<h5 style="text-align:center; margin:3px auto">
-						  		<b>Introduction:</b> {{tutor_dict[n].tutor_introduction}}
-						  		</h5>
-						  	</div>
-						  	{% endif %}
-						  	{% if tutor_dict[n].previous_tutor or tutor_dict[n].hkn_tutor or tutor_dict[n].slc_tutor or tutor_dict[n].res_tutor or tutor_dict[n].ta_tutor or tutor_dict[n].la_tutor %}
-						  	<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
-						  		<h5 style="text-align:center; margin:7px auto">
-						  		<b>Relevant Experience:</b> <br> 
-						            <div style="margin-top:10px">
-						            {% if tutor_dict[n].previous_tutor %}
-					                <span style="margin-left:0px"class="example-tag active" >
-					                  <span># I have tutoring experience at Cal </span> &nbsp;&nbsp;
-					                </span>
-					                {% endif %}
-					                {% if tutor_dict[n].slc_tutor %}
-					                <span style="margin-left:0px"class="example-tag active" >
-					                  <span># SLC Tutor </span> &nbsp;&nbsp;
-					                </span>
-					                {% endif %}
-					                {% if tutor_dict[n].hkn_tutor %}
-					                <span style="margin-left:0px"class="example-tag active" >
-					                  <span># HKN Tutor </span> &nbsp;&nbsp;
-					                </span>
-					                {% endif %}
-					                {% if tutor_dict[n].res_tutor %}
-					                <span style="margin-left:0px"class="example-tag active" >
-					                  <span># Residential Hall Tutor </span> &nbsp;&nbsp;
-					                </span>
-					                {% endif %}
-					                {% if tutor_dict[n].ta_tutor %}
-						                <span style="margin-left:0px"class="example-tag active" >
-					                  		<span># TA or GSI </span> &nbsp;&nbsp;
-					                	</span>
-						            {% endif %}
-						            {% if tutor_dict[n].la_tutor %}
-						                <span style="margin-left:0px"class="example-tag active" >
-					                  		<span># Lab Assistant </span> &nbsp;&nbsp;
-					                	</span> 
-						            {% endif %}
-						        	</div>
-						  		</h5>
-						  	</div>
-						  	{% endif %}
-						  	{% if n.extra_detail %}
-						  	<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
-						  		<h5><b> A Personal Note from {{tutor_dict[n].name.split()[0]}}</b></h5>
-						  		<h5 style="margin-top:0px; color:grey;"><i>"{{n.extra_detail}}"<br></i></h5>
-						  	</div>
-						  	{% endif %}
-						</div>
-						<div class="row">
-							{% if n.request_tutor_amount_hourly %}
-								{% set original_student_price = (request_dict[n.request_id]['request'].student_estimated_hour ) %}
-									{% set most_recent_price = n.request_tutor_amount_hourly  %}
-								{% if original_student_price - most_recent_price != 0 %}
-									{% set price_has_changed = True %}
-								{% else %}
-									{% set price_has_changed = False %}
-								{% endif %}
-							{% endif %}
-						  <div class="request-info col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
-							  	<div class="row-fluid">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Description</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].description}}</div>
-							  		</div>
-							  	</div>
-							  	<div class="row-fluid">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Location</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].location}}</div>
-							  		</div>
-							  	</div>
-							  	<div class="row-fluid">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Availability</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">
-							  				{% if request_dict[n.request_id]['student-calendar'] %}
-							  				<span class='grey-text'> See chosen time: </span> 
-				                              <a id='request-calendar-toggle' onclick='show_tutor_request_submitted_calendar({{request_dict[n.request_id]["student-calendar"]}}, {{request_dict[n.request_id]["tutor-calendars"][tutor_dict[n].id]}}, false, {{time.mktime(request_dict[n.request_id]["request"].time_created.timetuple())}})'>
-				                                <span class='glyphicon glyphicon-calendar'></span>
-				                              </a>
-				                            {% else %}
-				                            	{{request_dict[n.request_id]['request'].availability}}
-				                            {% endif %}
-							  			</div>
-							  		</div>
-							  	</div>
-							  	{% if request_dict[n.request_id]['request'].professor %}
-							  	<div class="row-fluid">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Professor</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].professor}}
-							  			</div>
-							  		</div>
-							  	</div>
-							  	{% endif %}
-							  	<div class="row-fluid">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Hourly Price</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">
-							  				{% if n.request_tutor_amount_hourly %}
-							  					${{(n.request_tutor_amount_hourly)}} 
-							  				{% else %}
-							  				Canceled
-							  				{% endif %}
-							  			</div>
-							  		</div>
-							  	</div>
-							  	<div class="row-fluid">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Estimated Session Time</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].time_estimate}} hours</div>
-							  		</div>
-							  	</div>
-							  	{% if n.request_tutor_amount_hourly %}
-							  	<div class="row">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4"><b>Estimated Total Price</b><br>
-							  			</div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4">${{request_dict[n.request_id]['request'].time_estimate * n.request_tutor_amount_hourly}}<br></div>
-							  		</div>
-							  	</div>
-							  	{% endif%}
-								
-								{% if n.request_tutor_amount_hourly %}
-								<div style="text-align:center; margin-top:10px; color:grey">
-									{% if price_has_changed %}
-									<div style="font-size:14px; margin-top:10px; color:rgb(0, 159, 225)">
-											The tutor changed the price from ${{(request_dict[n.request_id]['request'].student_estimated_hour)}}/hr to ${{(n.request_tutor_amount_hourly)}}/hr 
-									</div>
-									{% else %}
-									<div style="font-size:14px; margin-top:10px; color:rgb(0, 159, 225)">
-											The tutor has accepted your original asking price!
-									</div>
-									{% endif %}
-								</div>
-								{% endif %}
-						 	</div>
-						  </div>
-						<br>
-  					</div>
-  					<div class="modal fade" id="modal-{{n.a_id_name}}"tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-					  <div style="margin:10% auto"class="modal-dialog modal-lg">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					        <h4 style="text-align:center"class="modal-title" id="myModalLabel">CANCEL CURRENT CONNECTION</h4>
-					      </div>
-					      <div style="color:grey; text-align:center" class="modal-body cancel-request">
-					        <h4 style="">Are you sure you want to disconnect with your current matched tutor? <h4>
-					        <div class="row">
-						        <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8">
-						        	<h5 style="color:grey;margin-top:15px;">This means that your conversation with your current matched tutor will be deleted and they will be notified. <strong>You will not be able to reconnect with this tutor again.</strong></h5>
-						       	</div>
-						    </div>
-					        <h6 style="color:grey;margin-top:15px;margin-bottom:0px;">If so, click 'next' below.</h6>
-					      </div>
-					      <div id="radio-group"style="display:none; color:grey" class="modal-body cancel-confirm">
-					        <div style="text-align:center; color:red; display:none" class="radio-alert row-fluid">
-					        	You must check at least one of the options
-					       	</div>
-					        <div style="text-align:center" class="row-fluid">
-					        	<h5> Please provide feedback on why you are canceling this request </h5>
-					        </div>
-					        <div style="margin-left:28%"class="radio">
-							  <label>
-							    <input type="radio" class="radio-{{n.a_id_name}}" name="whyCancel">
-							    Tutor cannot make the time I want to meet
-							  </label>
-							</div>
-							<div style="margin-left:28%" class="radio">
-							  <label>
-							    <input type="radio" class="radio-{{n.a_id_name}}"  name="whyCancel">
-							    Other tutors had more experience
-							  </label>
-							</div>
-							<div style="margin-left:28%" class="radio">
-							  <label>
-							    <input type="radio" class="radio-{{n.a_id_name}}"  name="whyCancel">
-							    Price was out of my budget
-							  </label>
-							</div>
-							<div style="margin-left:28%" class="radio">
-							  <label>
-							    <input type="radio" class="radio-{{n.a_id_name}}"  name="whyCancel">
-							    Found other source of help
-							  </label>
-							</div>
-							<div style="margin-left:28%" class="radio">
-							  <label>
-							    <input type="radio" class="radio-{{n.a_id_name}}"  name="whyCancel">
-							    Other
-							  </label>
-							</div>
-					      </div>
-					      <div class="modal-footer">
-					        <div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; display:block">
-					          <a class="cancel-request-next" href="javascript:void(0)">
-					            <div class="btn-save">
-					              <p>NEXT
-					              </p>
-					            </div>
-					          </a>
-					        </div>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-  					{% if request_dict[n.request_id]['request'].connected_tutor_id and request_dict[n.request_id]['request'].connected_tutor_id != tutor_dict[n].id %}
-  					{{tutor_dict[n].id}}
-  						<div class="row" style="text-align:center;color:red">You accepted another tutor's request for this subject. <br>If you want to reconnect with another tutor, <a data-toggle="modal" data-target="#modal-{{n.a_id_name}}" href="#"> click here </a>.<br>
-  						</div>
-  						<div class="row" style="text-align:center; color:grey">If you want your one-time connection fee for this request to be refunded, please email support@uguru.me for a quick response.</div>
-  					{% elif n.custom != 'student-accept-request' and n.request_tutor_amount_hourly and not (request_dict[n.request_id]['request'].connected_tutor_id == user.id) and not (n.status == 'EXPIRED')%}
-					<div class="are-you-sure"style="display:none;text-align:center; color:red; font-size:14px" class="row"> 
-						<div style="margin-bottom:10px;"class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 col-md-6">
-							If you want to accept this request, you agree to this. <br>If you do, go ahead and click 'CHOOSE THIS GURU' 
-						</div>
-					</div>
-					<div class="row" style="margin-bottom:5px; font-size: 14px; text-align:center; color:#CD2626">
-						{% if request_dict[n.request_id]['request'].id > 165 %}
-						{% set connection_fee = 5 %}
-						{% else %}
-						{% set connection_fee = 10 %}
-						{% endif %}
-						<div> We charge a one-time, ${{connection_fee}} fee to match you with 
-				    	{{tutor_dict[n].name.split()[0]}}. <br>
-				    	This connection fee only applies to your first session with {{tutor_dict[n].name.split()[0]}}.
-				    	</div>
-				    	<div style="color:grey;margin-top:5px; margin-bottom:5px">If things don’t work out, you can connect to a different Guru, or be instantly refunded.
-				    	</div>
-				    </div>
-					<div class="row">
-						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:0px; margin-bottom:5px; display:block">
-				          <a href="javascript:void(0)" class="{% if not user.customer_id %} student-request-accept-btn-credit {% else %} student-request-accept-btn {% endif %}"id="{{n.a_id_name}}-next-link">
-				            <div class="btn-save">
-				              {% if not user.customer_id %}
-									<p id="student-accept-text"> NEXT STEP</p>
-							  {% else %}
-									<p id="student-accept-text"> CHOOSE THIS GURU</p>
-							  {% endif %}
-				            </div>
-				          </a>
-				        </div>
-				    </div>
-			        {% elif n.request_tutor_amount_hourly %}
-			        {% endif %}
-			        <div style="margin-top:25px;text-align:center; color:grey">
-			        	Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our FAQ</u></a>
-			         </div>
-	  			</div> -->
 			{% elif n.custom_tag == 'tutor-request-offer' %}
 				{{notification_details_template(user, n, request_dict, time, loop.index, None, None, user_avg_rating)}}
-			<!-- {% set student_name = n.feed_message.split(" ")[0] %}
-				<div id="{{n.a_id_name}}-detailed" style="display:none;">
-					<div class="page-title">
-	   					<div class="row-fluid" style="width:100%;text-align:center">
-		   					<div class="col-xs-1 col-xs-offset-1 col-sm-offset-1 col-sm-1 col-md-offset-1 col-md-1">
-			   					<a href="javascript:void(0)" class= "feed-message-link" style="text-decoration:none"> 
-			   						<h4 id="back-button"><span style="color:white" class="glyphicon glyphicon-chevron-left"></span> </h4>
-			   					</a>
-		   					</div>
-		   					<div class="col-xs-8 col-sm-8 col-md-8" style="text-align:center">
-	   							<h4 style="color:white;width:100%">TUTORING REQUEST</h4>
-	   						</div>
-	   					</div>
-	  				</div>
-	  				<div id="credit-card-added-alert" style="display:none" class="row-fluid">
-						  	<div style="margin:auto; float:center; margin-top:10px;"class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-							  	<div class="alert alert-success" style="margin-bottom:0px;">
-							  		Credit card successfully added!
-							  	</div>
-							 </div>
-					</div>
-					{% if n.custom == 'tutor-accept-request' and not (request_dict[n.request_id]['request'].connected_tutor_id == request_dict[n.request_id]['student'].id) and not(request_dict[n.request_id]['request'].connected_tutor_id and request_dict[n.request_id]['request'].connected_tutor_id != user.id)%}
-						<div class="row-fluid">
-						  	<div style="margin:auto; text-align:center; float:center; margin-top:10px;"class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-							  	<div class="alert alert-info" style="margin-bottom:0px;">
-							  		We have let the student know that you have accepted! <br>If the student chooses you, we will email you.
-							  	</div>
-							</div>
-						</div>
-					{% endif %}
-					{% if request_dict[n.request_id]['request'].connected_tutor_id == request_dict[n.request_id]['student'].id %}
-					<div class="row-fluid">
-						  	<div style="margin:auto; text-align:center; float:center; margin-top:10px;"class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-							  	<div class="alert alert-danger" style="margin-bottom:0px;">
-							  		Sorry! This request is no longer available
-							  	</div>
-							</div>
-						</div>
-					{% elif request_dict[n.request_id]['request'].connected_tutor_id and request_dict[n.request_id]['request'].connected_tutor_id != user.id %}
-					<div class="row-fluid">
-						  	<div style="margin:auto; text-align:center; float:center; margin-top:10px;"class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-							  	<div class="alert alert-danger" style="margin-bottom:0px;">
-							  		Sorry! Another tutor has taken this offer.
-							  	</div>
-							</div>
-						</div>
-					{% endif %}
-					{% if n.custom == 'tutor-is-matched' %}
-					<br>
-					<div class="row">
-						<div class="next-steps-border col-xs-12 col-sm-offset-2 col-sm-8 col-md-4 col-md-offset-4">
-							<div id="flakers-fee-alert" style="margin-bottom:15px; text-align:center; font-size:24px; ">
-									<b>NEXT STEPS</b>
-							</div>
-							<div style="font-size:14px; font-weight:normal; text-align:left;">
-								<p>
-								1. Message your student, and finalize meetup <b>time & location</b>
-								</p>
-								<p>
-								2. At end of the session, you will draft a bill by clicking <b>“BILL A STUDENT”</b> on your feed page.</p>
-								<p>3. Have your student verify the amount, and input his/her <b>secret payment code</b> as proof of approval. </p>
-								<p>The amount will be added to your balance, and you can cash out at any time! (Never have to worry about dealing with change, or students that "forgot to bring cash")</p>
-							</div>
-						</div> 
-						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:20px; margin-bottom:20px; display:block">
-				          <a id="launch-profile-link" href="/messages/">
-				            <div class="btn-save">
-				              <p>MESSAGE STUDENT NOW
-				              </p>
-				            </div>
-				          </a>
-				        </div>
-				        
-				    </div>
-				    <div class="row">
-						<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-4 col-md-offset-4" style="margin-bottom:-20px; margin-top:20px">
-						    <div id="flakers-fee-alert" style="text-align:center; font-size:16px; color:grey;">
-									<i><b>REQUEST INFO</b></i>
-							</div>
-						</div>
-					</div>
-					{% endif %}
-					<div class="row">
-					<div class="container-fluid" align="center" style="margin-left:20px;margin-right:20px">
-					  	<br>
-					  	{% if request_dict[n.request_id]['student'].profile_url %}
-					  	<img src="{{request_dict[n.request_id]['student'].profile_url}}" style="align:center" class="user-photo">
-					  	{% else %}
-					  	<img src="/static/img/default-photo.jpg" style="align:center" class="user-photo">
-					  	{% endif %}
-					  <h5 style="text-align:center">{{n.feed_message|safe}}</h5>
-					  <div class="row">
-						  <div class="request-info col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
-							  	<div class="row">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Estimated Session Time</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><span id="student-time-estimate-{{loop.index}}"> {{request_dict[n.request_id]['request'].time_estimate}}</span> hours
-							  			</div>
-							  		</div>
-							  	</div>
-							  	<div class="row">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Details</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].description}}</span> 
-							  			</div>
-							  		</div>
-							  	</div>
-							  	<div class="row">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Availability</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"></span> 
-							  				{% if request_dict[n.request_id]['student-calendar'] %}
-								  				{% if n.custom == 'tutor-accept-request' and not request_dict[n.request_id]['request'].connected_tutor_id == request_dict[n.request_id]['student'].id%}
-						                        <span class='red-text'> See chosen time: </span> 
-					                              <a id='request-calendar-toggle' onclick='show_tutor_request_submitted_calendar({{request_dict[n.request_id]["student-calendar"]}}, {{request_dict[n.request_id]["tutor-calendars"][user.id]}}, false, {{time.mktime(request_dict[n.request_id]["request"].time_created.timetuple())}})'>
-					                                <span class='glyphicon glyphicon-calendar'></span>
-					                              </a>
-						                        {% else %}
-						                        <span class='red-text'> Select a time: </span> 
-					                              <a id='request-calendar-toggle' onclick='show_tutor_request_calendar({{request_dict[n.request_id]["student-calendar"]}},{{request_dict[n.request_id]["request"].time_estimate}}, {{time.mktime(request_dict[n.request_id]["request"].time_created.timetuple())}})'>
-					                                <span class='glyphicon glyphicon-calendar'></span>
-					                              </a>
-						                        {% endif %}
-						                    {% else %}
-						                    	{{request_dict[n.request_id]['request'].availability}}
-						                    {% endif %}
-							  			</div>
-							  		</div>
-							  	</div>
-							  	<div class="row">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row"><b>Preferred Location</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4 request-info-row">{{request_dict[n.request_id]['request'].location}}</span> 
-							  			</div>
-							  		</div>
-							  	</div>
-							  	{% if request_dict[n.request_id]['request'].professor %}
-							  	<div class="row">
-							  		<div class="request-info-left-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4"><b>Professor</b></div>
-							  		</div>
-							  		<div class="request-info-right-column col-xs-6 col-sm-6 col-md-6">
-							  			<div class="h4">{{request_dict[n.request_id]['request'].professor}}</span> 
-							  			</div>
-							  		</div>
-							  	</div>
-							  	{% endif %}
-							  	{% if request_dict[n.request_id]['request'].last_updated %}
-							  	<div style="text-align:center;color:red" class="row">
-							  		<i>The student has recently updated this request.</i>
-							  	</div>
-							  	{% endif %}	
-							  </div>
-							</div>
-								<div style="text-align:center; margin-top:10px; color:grey">
-									{% if n.custom != 'tutor-reject' and not (request_dict[n.request_id]['request'].connected_tutor_id and request_dict[n.request_id]['request'].connected_tutor_id != user.id) %}
-									<i><span id="request-student-offer-index-{{loop.index}}">
-										{% if not ((n.custom == 'tutor-accept-request' or n.custom=='tutor-is-matched') and (prices_dict[request_dict[n.request_id]['request'].student_estimated_hour]|float) != n.request_tutor_amount_hourly) %}
-										The student is offering: 
-										{% else %}
-										The student will pay:
-										{% endif %}
-
-									</span></i><br>
-									{% else %}
-									<i>You could have made:</i> <br>
-									{% endif %}
-									<div>
-										<span style="color:#69bf69; font-size:45px;"><strong> $<span id="student-offer-total-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(request_dict[n.request_id]['request'].time_estimate * request_dict[n.request_id]['request'].student_estimated_hour)}}
-											{% else %}{{(request_dict[n.request_id]['request'].time_estimate * n.request_tutor_amount_hourly)}}{% endif %}
-										</span></strong></span>
-									</div>
-									<div style="margin-top:-5px;">
-										<span style="color:grey; font-weight:100; font-size:16px">
-											($<span id="student-offer-hourly-price-{{loop.index}}">{% if not n.request_tutor_amount_hourly %}{{(request_dict[n.request_id]['request'].student_estimated_hour)}}{% else %}{{(n.request_tutor_amount_hourly)}}{% endif %}</span>/hr x {{request_dict[n.request_id]['request'].time_estimate}}hr)
-										</span>
-									</div>
-									{% if (n.custom == 'tutor-accept-request' or n.custom=='tutor-is-matched') and (request_dict[n.request_id]['request'].student_estimated_hour|float) != n.request_tutor_amount_hourly %}
-									<div style="font-size:14px; margin-top:3px; color:grey">
-											You changed the original price the student will pay from ${{(request_dict[n.request_id]['request'].student_estimated_hour)}}/hr to ${{(n.request_tutor_amount_hourly)}}/hr 
-									</div>
-									{% endif%}
-									{% if n.custom == 'tutor-accept-request' and not request_dict[n.request_id]['request'].connected_tutor_id == request_dict[n.request_id]['student'].id%}
-									<div class="row" style="margin-top:10px;color:red">
-										<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-											If the student accepts, you will make $<span id="tutor-will-pay-{{loop.index}}">{{prices_dict[n.request_tutor_amount_hourly]}}</span>/hr for your first session after one-time connection fees. <br>You will make ${{(n.request_tutor_amount_hourly)}}/hr for each following session.
-										</div>
-									</div>
-									<div style="font-size:10px; margin-top:10px; color:grey">
-										Can't commit anymore? Cancel <a href="javascript:void(0)" class="tutor-cancel-accept">here </a>
-									</div>
-									{% endif %}
-								</div>
-								{% if n.custom != 'tutor-reject' and n.custom != 'tutor-accept-request' and n.custom != 'tutor-is-matched' and not (request_dict[n.request_id]['request'].connected_tutor_id and request_dict[n.request_id]['request'].connected_tutor_id != user.id) %}
-								<a style="text-align:center;" id="tutor-change-price-link-{{loop.index}}" class="tutor-change-price-link" href="javascript:void(0);">
-									<div style="margin-top:0px;color:rgb(0, 159, 225)"> Change the price
-									</div>
-								</a>
-								{% endif %}
-						 	</div>
-						 </div>
-				    <br>
-				    {% if n.custom != 'tutor-reject' and n.custom != 'tutor-accept-request' and n.custom != 'tutor-is-matched' and not (request_dict[n.request_id]['request'].connected_tutor_id and request_dict[n.request_id]['request'].connected_tutor_id != user.id)%}
-				    <div class="row" style="display:none; text-align:center; margin-top:-10px; margin-bottom:30px" id="tutor-change-price-slider-div-{{loop.index}}">
-				    	<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
-				    		<div style="margin:auto; width:75%" id="tutor-change-price-slider-{{loop.index}}" class="tutor-change-price-slider"></div>
-				    	</div>
-				    	<br>
-				    	<a style="text-align:center;" class="tutor-change-price-cancel" id="tutor-change-price-cancel-{{loop.index}}" href="javascript:void(0);">
-									<div style="margin-top:10px;color:rgb(0, 159, 225)"> Cancel
-									</div>
-						</a>
-				    </div>
-				    <div class="row" style="text-align:center; margin-bottom:10px; color:#CD2626">
-				    	You will make $<span id="tutor-will-pay-{{loop.index}}">{{prices_dict[(request_dict[n.request_id]['request'].student_estimated_hour)]}}</span>/hr for your first session with {{student_name|safe}} after one-time connection fees 
-				    	<span id="student-has-agreed-{{loop.index}}"style="color:grey">
-				    	 <br>
-				    	 {{student_name|safe}} has agreed to pay you ${{(request_dict[n.request_id]['request'].student_estimated_hour)}}/hr after your first session.
-				    	</span>
-				    </div>
-				    <div class="row">
-						<div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; margin-top:0px; margin-bottom:5px; display:block">
-				          <a data-toggle="modal" data-target="#modal-{{n.a_id_name}}" href="#">
-				            <div class="btn-save">
-									<p id="student-accept-text"> ACCEPT REQUEST</p>
-				            </div>
-				          </a>
-				        </div>
-				     </div>
-				     <div class="modal fade modal-extra-detail" id="modal-{{n.a_id_name}}"tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-					  <div style="margin:10% auto"class="modal-dialog modal-lg">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					        <h4 style="text-align:center"class="modal-title" id="myModalLabel">PERSONALIZE YOUR RESPONSE TO {{n.feed_message.split(" ")[0]|upper|safe}}</h4>
-					      </div>
-					      <div style="color:grey; text-align:center" class="modal-body cancel-request">
-					        <h4 style="color:grey">
-					        	Stand out from other Gurus by covering details like: 
-					        </h4>
-					        <div class="row">
-					        	<div style="text-align:left; font-size:12px;" class="col-xs-12 col-sm-offset-4 col-sm-4 col-md-offset-3 col-md-6">
-				        			<div style="margin-left:15%">
-				        				<ul>
-				        					<li>
-				        						Your response to the student's "additional details"
-				        					</li>
-				        					<li>
-												Your experience with this subject
-					        				</li>
-					        				<li>
-												Studying resources that you can provide
-					        				</li>
-					        			</ul>
-				        			</div>
-					        	</div>
-					        </div>
-					        <div class="row">
-					        	<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8">
-					        		<h6 style="color:black; margin-bottom:0px;"><u>Additional Details from {{n.feed_message.split(" ")[0]|upper|safe}}</u><br>
-					        		</h6>
-					        		<h5 style="margin-top:5px;color:grey;">{{request_dict[n.request_id]['request'].description}}</h5>
-					        	</div>
-					        </div>
-					        <div class="row extra-detail">
-						        <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8">
-					        		<textarea onclick="this.focus();this.select()" class="bio"></textarea>
-					        	</div>
-					        </div>
-					        <div class="row extra-detail-alert" style="display:none; text-align:center; font-size:12px;color:red;">
-						    	Please do not include personal contact information in your response. <br> You can exchange this after the student has selected you!
-						    </div>
-					      </div>
-					      <div class="modal-footer">
-					        <div class="row">
-						        <div id="launch-profile-div" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-4 col-md-4" style="padding-left:0px; padding-right:0px; display:block">
-						          <a class="tutor-request-accept-btn" href="javascript:void(0)">
-						            <div class="btn-save">
-						              <p>ACCEPT REQUEST
-						              </p>
-						            </div>
-						          </a>
-						        </div>
-						    </div>
-					        <div class="row" style="text-align:center; font-size:12px; margin-top:3px;color:grey;">
-					        	If you click accept, you agree to our <strong> <a href="/tos/">Terms of Service</a> </strong> and <strong> to be paid through Uguru </strong>
-					        </div>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					 <div>
-					     <div style="text-align:center; color:grey">
-				        	<i>or ignore this request if you're not interested.</i>
-				         </div>
-				     </div>
-					{% endif %}
-					<div style="margin-top:25px;text-align:center; color:grey">
-			        	Have questions? <a href="http://tinyurl.com/uguru-q-a" target="_blank"><u> Check out our FAQ</u></a>
-			         </div>
-				</div> -->
 			{% endif %}
 		{% endfor %}
 	</div>
@@ -1744,6 +808,34 @@
 	<script type="text/javascript" src="/static/js/jquery-ui.js"></script>
 	<script src="/static/js/jquery.nouislider.new.min.js"></script>
 	<script>
+		{% if not user.password %}
+        	$('#password-modal').modal();
+
+        	$('#complete-signup-password').keyup(function(e) {
+		      if (e.keyCode == 13) {
+		        $('#complete-password-btn').trigger('click');
+		      }
+    		});
+
+        	$('#complete-password-btn').click(function() {
+        		if (!$('#complete-signup-password').val()) {
+        			$('#alert-fields-complete-password').show();
+        		} else {
+        			$('#alert-fields-complete-password').hide();
+        			$.ajax({
+			          type: "PUT",
+			          contentType: 'application/json;charset=UTF-8',
+			          url: '/api/user' ,
+			          data: JSON.stringify({'set-password':$('#complete-signup-password').val()}),
+			          dataType: "json",
+			          success: function(result) {
+			              window.location.replace('/');
+			          }
+			    	});
+        		}
+        	});
+        {% endif %}
+
         var Link = $.noUiSlider.Link; 
         {% if confirm_payments %}
         $('#confirm-time-payment-slider').slider(

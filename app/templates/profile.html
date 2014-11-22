@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
 {% block header %}
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <script src="/static/js/jquery.js"></script>
 {% endblock %}
 
 {% block content %}
-
 <div id='profile'>
     <div class='profile-container'>
         <div class='row'>
@@ -17,7 +14,7 @@
                 </div>
                 <div id='guru-content' class='margin-top-40 padding-horizontal-20 block'>
                     <div class='request-form-container'>
-                        
+
                         <div class='tutor-app-photo-container margin-top-30 margin-bottom-15 block'>
                             <img id='tutor-app-photo' src='{{profile_user.profile_url}}' height='100px'> 
                             <div class='guru-profile-attributes'> 
@@ -37,68 +34,68 @@
                                         </span>
                                         {% else %}
                                         <span class='red-text font-16'> &nbsp;&nbsp; New Guru!
-                                        {% endif %}
-                                    </span>
-                                </div>
-                                <div class='row font-14 margin-top-10 green-text'>
-                                    {{profile_user.year}}
-                                    &nbsp;&nbsp;&nbsp;
-                                    | 
-                                    &nbsp;&nbsp;&nbsp;
-                                    {{profile_user.major}}
-                                </div>
-                                <div class='row'>
-                                    {% if profile_user.ta_tutor %}
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                    <div class='row font-14 margin-top-10 green-text'>
+                                        {{profile_user.year}}
+                                        &nbsp;&nbsp;&nbsp;
+                                        | 
+                                        &nbsp;&nbsp;&nbsp;
+                                        {{profile_user.major}}
+                                    </div>
+                                    <div class='row'>
+                                        {% if profile_user.ta_tutor %}
                                         <span class='tutor-profile-course-tag'>
                                             TA or GSI
                                         </span>
-                                    {% endif %}
+                                        {% endif %}
 
-                                    {% if profile_user.slc_tutor %}
+                                        {% if profile_user.slc_tutor %}
                                         <span class='tutor-profile-course-tag'>
                                             SLC Tutor
                                         </span>
-                                    {% endif %}
+                                        {% endif %}
 
-                                    {% if profile_user.hkn_tutor %}
+                                        {% if profile_user.hkn_tutor %}
                                         <span class='tutor-profile-course-tag'>
                                             HKN Tutor
                                         </span>
-                                    {% endif %}
+                                        {% endif %}
 
-                                    {% if profile_user.la_tutor %}
+                                        {% if profile_user.la_tutor %}
                                         <span class='tutor-profile-course-tag'>
                                             Lab Assistant
                                         </span>
-                                    {% endif %}
+                                        {% endif %}
 
-                                    {% if profile_user.res_tutor %}
+                                        {% if profile_user.res_tutor %}
                                         <span class='tutor-profile-course-tag'>
                                             Res Hall Tutor
                                         </span>
-                                    {% endif %}
+                                        {% endif %}
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class='row block margin-top-30' style='padding-left:16px'>
-                            <label class='font-20'> {{profile_user.name.split(" ")[0]}}'s bio </label>
-                            <div id='guru-intro' class='block font-14'>
-                                {{profile_user.tutor_introduction}}
-                            </div>
-                            <br>
-                            <label class='font-20'> Courses {{profile_user.name.split(" ")[0]|title}} can teach </label>
-                            <br>
-                            {% for skill in profile_user.skills %}
-                            <span class='tutor-profile-course-tag'>
-                              <span>{{variations[skill.name]}}</span>
-                            </span>
-                          {% endfor %}
-                        </div>
-                        <br>
-                        <br>
-                        {% if user.id == profile_user.id %}
-                        <div class='row-fluid margin-top-40 relative center'>
+                            <div class='row block margin-top-30' style='padding-left:16px'>
+                                <label class='font-20'> {{profile_user.name.split(" ")[0]}}'s bio </label>
+                                <div id='guru-intro' class='block font-14'>
+                                    {{profile_user.tutor_introduction}}
+                                </div>
+                                <br>
+                                <label class='font-20'> Courses {{profile_user.name.split(" ")[0]|title}} can teach </label>
+                                <br>
+                                {% for skill in profile_user.skills %}
+                                <span class='tutor-profile-course-tag'>
+                                  <span>{{variations[skill.name]}}</span>
+                              </span>
+                              {% endfor %}
+                          </div>
+                          <br>
+                          <br>
+                          {% if user.id == profile_user.id %}
+                          <div class='row-fluid margin-top-40 relative center'>
                             <a href='/settings/#prof' id='go-to-edit-profile'>
                                 <span class='blue-btn signup-padding'>
                                     <span style='top:3px' class='glyphicon glyphicon-user absolute'></span>  

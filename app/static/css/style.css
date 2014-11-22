@@ -1523,8 +1523,34 @@ label {
 }
 
 .close {
-  margin-right:10px;
-  margin-top:10px;
+  color:white;
+  opacity:1;
+  margin-top:3px;
+  font-size:12px;
+  font-weight:normal;
+  margin-top:-4px;
+  margin-right:-4px;
+}
+
+.alert-danger {
+  background-color:#a94442;
+  border-color: #a94442;
+  color:white;
+  font-size:20px;
+}
+
+.alert-success {
+  background-color:#228B22;
+  border-color: #228B22;
+  color:white;
+  font-size:20px;
+}
+
+.alert-info {
+  background-color:#31708f;
+  border-color: #31708f;
+  color:white;
+  font-size:20px;
 }
 
 #example-skills {
