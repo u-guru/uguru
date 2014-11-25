@@ -690,7 +690,7 @@ def api(arg, _id):
                 db_session.add(rating)
 
                 if student.text_notification and student.phone_number:
-                    from views import send_twilio_message_delayed
+                    from tasks import send_twilio_message_delayed
                     if p.time_amount != float(request.json.get('time_amount')):
                         message = tutor.name.split(' ')[0].title() + ' has billed you! Please confirm the amount and rate ' + tutor.name.split(' ')[0].title() + ". You have 24 hours to confirm or the system will auto-confirm."
                     else:    
@@ -710,7 +710,7 @@ def api(arg, _id):
                     from emails import student_confirm_payment_receipt
                     final_student_amount = new_payment.student_paid_amount + p.student_paid_amount
                     student_confirm_payment_receipt(student, tutor.name.split(" ")[0].title(), new_payment, final_student_amount, p.tutor_rate, p.time_amount + time_difference, True)
-                    from views import auto_confirm_student_payment
+                    from tasks import auto_confirm_student_payment
                     from views import get_environment
                     if get_environment() == 'PRODUCTION':
                         auto_confirm_student_payment.apply_async(args=[new_payment.id, student.id], countdown=86400)
@@ -889,7 +889,7 @@ def api(arg, _id):
             tutor.pending = tutor.pending + payment.tutor_received_amount
 
             if student.text_notification and student.phone_number:
-                from views import send_twilio_message_delayed
+                from tasks import send_twilio_message_delayed
                 message = tutor.name.split(' ')[0].title() + ' has billed you! Please confirm the amount and rate ' + tutor.name.split(' ')[0].title() + ". You have 24 hours to confirm or the system will auto-confirm."
                 send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id], countdown=10)
 
@@ -902,7 +902,7 @@ def api(arg, _id):
             from emails import student_confirm_payment_receipt
             final_student_amount = payment.student_paid_amount
             student_confirm_payment_receipt(student, tutor.name.split(" ")[0].title(), payment, final_student_amount, payment.tutor_rate, payment.time_amount, True)
-            from views import auto_confirm_student_payment
+            from tasks import auto_confirm_student_payment
             from views import get_environment
             if get_environment() == 'PRODUCTION':
                 auto_confirm_student_payment.apply_async(args=[payment.id, student.id], countdown=86400)
@@ -1436,7 +1436,8 @@ def api(arg, _id):
                     user.notifications.remove(n)
                     logging.info("Student-cap-reached notification removed for request id " + str(r.id))
 
-            from views import find_earliest_meeting_time, convert_mutual_times_in_seconds, send_twilio_message_delayed
+            from views import find_earliest_meeting_time, convert_mutual_times_in_seconds
+            from tasks import send_twilio_message_delayed
             mutual_times_arr = find_earliest_meeting_time(r)
             total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
             logging.info("Here are the time calculations for the the tutor. Reminder before session: " + str(total_seconds_delay) + "seconds" )
@@ -1612,20 +1613,12 @@ def api(arg, _id):
 
             logging.info("Student Accept Request has been successfully made.")
 
-            from app.views import get_environment, send_student_package_info
+            from app.views import get_environment
+            from tasks import send_student_package_info
             if get_environment == 'PRODUCTION':
                 send_student_package_info.apply_async(args=[student.id, r.id], countdown=86400)
             else:
                 send_student_package_info.apply_async(args=[student.id, r.id], countdown=10)
-
-            # We are not focusing on them confirming payments
-            # from views import tutor_confirm_payment
-            # tutor_confirm_payment.apply_async(args=[p.id], countdown=100)
-            # if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
-            #     tutor_confirm_payment.apply_async(args=[p.id], countdown=10)
-            # else:
-            #     tutor_confirm_payment.apply_async(args=[p.id], countdown=total_seconds_delay)
-
             response = {'user': user.__dict__}
             return json.dumps(response, default=json_handler, indent=4)
         return errors(['Invalid Token'])
@@ -1773,19 +1766,6 @@ def api(arg, _id):
 
         return errors(['Invalid Token'])
 
-
-    if arg == 'support':
-
-        user_id = session.get('user_id')
-        user = User.query.get(user_id)
-
-        support_topic = ajax_json['selected-issue']
-        support_detail = ajax_json['detail']
-
-        from emails import send_support_email
-        send_support_email(support_topic, support_detail, user)
-
-
     if arg == 'sample-tutors':
         
         from app.static.data.variations import courses_dict
@@ -1924,12 +1904,6 @@ def create_user(email, password, phone_number, name):
     new_user.auth_token = "%032x" % random.getrandbits(128);
 
     return new_user, mailbox
-
-def expire_request_job(request_id, user_id):
-    logging.info("request has expired")
-    request = Request.query.get(request_id)
-    request.is_expired = True
-    db_session.commit()
 
 def send_delayed_notification(message, apn_token, request_id):
     r = Request.query.get(request_id)
