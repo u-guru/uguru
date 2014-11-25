@@ -55,9 +55,7 @@ celery.conf.update(
     CELERY_ACCEPT_CONTENT=['json', 'msgpack', 'yaml']
 )
 
-@celery.task
-def send_twilio_message_delayed(phone, msg, user_id):
-    send_twilio_msg(phone,msg, user_id)
+
 
 @app.route('/log_in/')
 @app.route('/sign_up/')
@@ -823,6 +821,7 @@ def send_message():
                         if receiver.phone_number and receiver.text_notification:
                             from emails import send_message_text
                             msg = send_message_text(user)
+                            from tasks import send_twilio_message_delayed
                             message = send_twilio_message_delayed.apply_async(args=[receiver.phone_number, msg, receiver.id], countdown=10)
 
 
@@ -911,6 +910,7 @@ def update_requests():
                 logging.info("Student is supposed to be receiving a text message")
                 from emails import guru_can_help
                 message = guru_can_help(tutor, skill_name)
+                from tasks import send_twilio_message_delayed
                 send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id])
 
             current_notification.feed_message = 'You accepted <b>' + student.name.split(' ')[0] + \
@@ -947,6 +947,7 @@ def update_requests():
                     logging.info("Student is supposed to receive a text about reaching the tutor limit")
                     from emails import student_cap_reached
                     message = student_cap_reached(skill_name.upper())
+                    from tasks import send_twilio_message_delayed
                     send_twilio_message_delayed.apply_async(args=[student.phone_number, message, student.id])
 
                 if student.email_notification:
@@ -1017,6 +1018,7 @@ def update_requests():
             skill_name = short_variations_dict[Skill.query.get(_request.skill_id).name]
             
             if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
+                from tasks import send_delayed_email
                 send_delayed_email.apply_async(args=['canceled-request-email', [user.id, skill_name]], countdown = 10)
             else:
                 send_delayed_email.apply_async(args=['canceled-request-email', [user.id, skill_name]], countdown = 1800)
@@ -1088,7 +1090,7 @@ def update_requests():
                 from emails import its_a_match_guru, reminder_before_session
                 total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
                 message = reminder_before_session(tutor, student, r.location, "Guru-ing")
-
+                from tasks import send_twilio_message_delayed
                 if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
                     send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=10)
                 else:                    
@@ -1102,6 +1104,7 @@ def update_requests():
                 from emails import reminder_before_session
                 total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
                 message = reminder_before_session(student, tutor, r.location, "Studying")
+                from tasks import send_twilio_message_delayed
                 if os.environ.get('TESTING') or os.environ.get('USER') == 'makhani':
                     send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id], countdown=10)
                 else:
@@ -1424,12 +1427,6 @@ def success():
                 db_session.add(u)
                 db_session.commit()
 
-                if 'tutor-signup' not in ajax_json:
-                    if os.environ.get('USER') == 'makhani':
-                        send_student_drip_1.apply_async(args=[u.id], countdown=10)
-                    elif get_environment() == 'PRODUCTION':
-                        send_student_drip_1.apply_async(args=[u.id], countdown=86400)
-
                 if session.get('referral'):
                     u.referral_code = session['referral']
                     user_with_promo_code = User.query.filter_by(user_referral_code = session.get('referral')).first()
@@ -1710,6 +1707,7 @@ def student_request():
                 if tutor.text_notification and tutor.phone_number:
                     logging.info(str(tutor) + ' is qualified to receive a text')
                     from emails import request_received_msg
+                    from tasks import send_twilio_message_delayed
                     message = request_received_msg(user, tutor, new_request, skill_name)
                     send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
                 tutor.incoming_requests_to_tutor.append(new_request)
@@ -1728,6 +1726,7 @@ def student_request():
 
     if tier_2_tutor_ids:
         logging.info("Here are all the tier2 tutor ids: " + str(tier_2_tutor_ids))
+        from tasks import send_student_request_to_tutors
         if not os.environ.get('PRODUCTION'):
             send_student_request_to_tutors.apply_async(args=[tier_2_tutor_ids, new_request.id, user.id, skill_name], countdown=100)
         else:
@@ -1953,6 +1952,7 @@ def activity():
             seconds_since_creation = get_time_diff_in_seconds(datetime.now(), notification.time_created)
             r = Request.query.get(notification.request_id)
             if seconds_since_creation > REQUEST_EXP_TIME_IN_SECONDS or notification.status == 'EXPIRED':
+                from tasks import expire_request_job
                 notification.status = 'EXPIRED'
                 expire_request_job.apply_async(args=[notification.request_id, user.id])
             elif len(r.committed_tutors) == (MAX_REQUEST_TUTOR_LIMIT + 1):
@@ -2303,6 +2303,7 @@ def send_twilio_msg(to_phone, body, user_id):
         user.texts.append(text)
         db_session.add(text)
         db_session.commit()
+        from tasks import check_msg_status
         check_msg_status.apply_async(args=[text.id], countdown = 60)
     except twilio.TwilioRestException:
         logging.info("text message didn't go through")
@@ -2310,34 +2311,6 @@ def send_twilio_msg(to_phone, body, user_id):
         db_session.flush()
         raise
     return message
-
-@celery.task
-def send_student_package_info(user_id, request_id):
-    from app.static.data.short_variations import short_variations_dict
-    user = User.query.get(user_id)
-
-    if user.credit > 10:
-        logging.info("user already has purchased credits.")
-        return
-
-    r = Request.query.get(request_id)
-    skill_name = short_variations_dict[Skill.query.get(r.skill_id).name]
-    tutor_name = User.query.get(r.connected_tutor_id).name.split(" ")[0]
-    from app.emails import send_student_packages_email
-    send_student_packages_email(user, tutor_name, skill_name)
-    logging.info("Email sent to " + str(user) + " regarding student packages.")
-
-
-@celery.task
-def check_msg_status(text_id):
-    text = Text.query.get(text_id)
-    msg = twilio_client.messages.get(text.sid)
-    update_text(msg, text)
-    try:
-        db_session.commit()
-    except:
-        db_session.flush()
-        raise
 
 
 def create_referral_code(user):
@@ -2389,467 +2362,3 @@ def is_tier_one_tutor(tutor):
             logging.info(str(tutor) + ' avg rating is approved')
             return True
     return False
-
-@celery.task
-def expire_request_job(request_id, user_id):
-    _request = Request.query.get(request_id)
-    user = User.query.get(user_id)
-    if _request in user.outgoing_requests:
-        user.outgoing_requests.remove(_request)
-    _request.is_expired = True
-    db_session.commit()
-
-@celery.task
-def tutor_confirm_payment(payment_id):
-    p = Payment.query.get(payment_id)
-    p.tutor_confirmed = False
-    try:
-        db_session.commit()
-    except:
-        db_session.flush()
-        raise
-
-@celery.task
-def send_delayed_email(email_str, args):
-    if email_str == 'canceled-request-email':
-        from emails import student_canceled_email
-        user_id = args[0]
-        skill_name = args[1]
-        student_canceled_email(User.query.get(user_id), skill_name)
-
-@periodic_task(run_every=crontab(minute=0, hour = 5))
-def test_periodic():
-    if get_environment() == 'PRODUCTION':
-        from emails import daily_results_email
-        daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
-
-@periodic_task(run_every=crontab(minute=59, hour = 6))
-def samir_results():
-    if get_environment() == 'PRODUCTION':
-        from emails import daily_results_email
-        daily_results_email('samir@uguru.me', 'makhani.samir@gmail.com')
-        daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
-
-@celery.task
-def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name):
-    r = Request.query.get(request_id)
-    if len(r.committed_tutors) == (MAX_REQUEST_TUTOR_LIMIT + 1):
-        logging.info('We have already accomodated this request. Tier 2 tutors will not get it anymore.')
-        return
-    student = User.query.get(user_id)
-    second_tier_tutors = []
-    for tutor_id in tutor_id_arr:
-        tutor = User.query.get(tutor_id)
-        second_tier_tutors.append(tutor)
-        r.requested_tutors.append(tutor)
-        logging.info(str(tutor) + ' received tier 2 request')
-        if tutor.text_notification and tutor.phone_number:
-            from emails import request_received_msg
-            message = request_received_msg(student, tutor, r, skill_name)
-            send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
-        tutor.incoming_requests_to_tutor.append(r)
-        from app.notifications import tutor_request_offer
-        notification = tutor_request_offer(student, tutor, r, skill_name)
-        db_session.add(notification)
-        tutor.notifications.append(notification)
-
-
-    #Send email to tier 2 tutors
-    from emails import student_needs_help
-    mandrill_result, tutor_email_dict = student_needs_help(student, second_tier_tutors, skill_name, r)
-    for sent_email_dict in mandrill_result:
-        if tutor_email_dict.get(sent_email_dict['email']):
-            tutor = tutor_email_dict[sent_email_dict['email']]
-            logging.info(str(tutor) + ' received tier 2 email')
-            email = Email(
-                tag='tutor-request', 
-                user_id=tutor.id, 
-                time_created=datetime.now(), 
-                mandrill_id = sent_email_dict['_id']
-                )
-            db_session.add(email)
-            tutor.emails.append(email)
-            r.emails.append(email)
-
-    try:
-        db_session.commit()
-    except:
-        db_session.rollback()
-        raise 
-
-#Student Drip Campaign 1 - New to uGuru students
-@celery.task
-def send_student_drip_1(user_id):
-    return
-    request = Request.query.filter_by(student_id=user_id).first()
-    
-    #concurrency bug?
-    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-1').first()
-    if e:
-        return
-
-    if not request:
-        user = User.query.get(user_id)
-        if not user.email_notification:
-            return 
-        from emails import drip_student_signup_1
-        email_result = drip_student_signup_1(user)
-        email = Email(
-                    tag='student-drip-1', 
-                    user_id=user.id, 
-                    time_created=datetime.now(), 
-                    mandrill_id = email_result[0]['_id']
-                    )
-        db_session.add(email)
-        user.emails.append(email)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
-        if os.environ.get('USER') == 'makhani':
-            send_student_drip_2.apply_async(args=[user.id], countdown = 10)
-        else:
-            send_student_drip_2.apply_async(args=[user.id], countdown = 86400)
-
-#Student Drip Campaign 2 - Become a tutor + free tutors
-@celery.task
-def send_student_drip_2(user_id):
-    return
-    request = Request.query.filter_by(student_id=user_id).first()
-    
-    from time import sleep
-    sleep(0.1)
-
-    #concurrency bug?
-    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-2').first()
-    if e:
-        return
-
-    if not request:
-        user = User.query.get(user_id)
-        if not user.email_notification:
-            return 
-        from emails import drip_student_signup_2
-        email_result = drip_student_signup_2(user)
-        email = Email(
-                    tag='student-drip-2', 
-                    user_id=user.id, 
-                    time_created=datetime.now(), 
-                    mandrill_id = email_result[0]['_id']
-                    )
-        db_session.add(email)
-        user.emails.append(email)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
-        if os.environ.get('USER') == 'makhani':
-            if user.credit == 5:
-                send_student_drip_3.apply_async(args=[user.id], countdown = 10)
-            else:
-                send_student_drip_4.apply_async(args=[user.id], countdown = 10)
-        elif get_environment() == 'PRODUCTION':
-            if user.credit == 5:
-                send_student_drip_3.apply_async(args=[user.id], countdown = (86400 * 3))
-            else:
-                send_student_drip_4.apply_async(args=[user.id], countdown = (86400 * 3))
-
-
-#Student Drip Campaign 3 - Free tutoring sessions
-@celery.task
-def send_student_drip_3(user_id):
-    return
-    request = Request.query.filter_by(student_id=user_id).first()
-    
-    from time import sleep
-    sleep(0.1)
-
-    #concurrency bug?
-    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-3').first()
-    if e:
-        return
-
-    if not request:
-        user = User.query.get(user_id)
-        if not user.email_notification:
-            return 
-        from emails import drip_student_signup_3
-        email_result = drip_student_signup_3(user)
-        email = Email(
-                    tag='student-drip-3', 
-                    user_id=user.id, 
-                    time_created=datetime.now(), 
-                    mandrill_id = email_result[0]['_id']
-                    )
-        db_session.add(email)
-        user.emails.append(email)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
-        if os.environ.get('USER') == 'makhani':
-            send_student_drip_5.apply_async(args=[user.id], countdown = 10)
-        elif get_environment() == 'PRODUCTION':
-            send_student_drip_5.apply_async(args=[user.id], countdown = (86400 * 7))
-
-@celery.task
-def send_student_drip_4(user_id):
-    return
-    request = Request.query.filter_by(student_id=user_id).first()
-    
-
-    from time import sleep
-    sleep(0.1) # TODO : This looks like a nasty hack...
-
-    #concurrency bug?
-    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-4').first()
-    if e:
-        return
-
-    if not request:
-        user = User.query.get(user_id)
-        if not user.email_notification:
-            return 
-        user.credit = user.credit + 5
-        from emails import drip_student_signup_4
-        email_result = drip_student_signup_4(user)
-        email = Email(
-                    tag='student-drip-4', 
-                    user_id=user.id, 
-                    time_created=datetime.now(), 
-                    mandrill_id = email_result[0]['_id']
-                    )
-        db_session.add(email)
-        user.emails.append(email)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
-        if os.environ.get('USER') == 'makhani':
-            send_student_drip_5.apply_async(args=[user.id], countdown = 10)
-        elif get_environment() == 'PRODUCTION':
-            send_student_drip_5.apply_async(args=[user.id], countdown = (86400 * 7))
-
-@celery.task
-def send_student_drip_5(user_id):
-    return
-    request = Request.query.filter_by(student_id=user_id).first()
-    
-    from time import sleep
-    sleep(0.1)
-
-
-    #concurrency bug?
-    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-5').first()
-    if e:
-        return
-
-    if not request:
-        user = User.query.get(user_id)
-        if not user.email_notification:
-            return 
-        from emails import drip_student_signup_5
-        email_result = drip_student_signup_5(user)
-        email = Email(
-                    tag='student-drip-5', 
-                    user_id=user.id, 
-                    time_created=datetime.now(), 
-                    mandrill_id = email_result[0]['_id']
-                    )
-        db_session.add(email)
-        user.emails.append(email)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
-        if os.environ.get('USER') == 'makhani':
-            send_student_drip_6.apply_async(args=[user.id], countdown = 10)
-        elif get_environment() == 'PRODUCTION':
-            send_student_drip_6.apply_async(args=[user.id], countdown = (86400 * 7))
-
-@celery.task
-def send_student_drip_6(user_id):
-    return
-    request = Request.query.filter_by(student_id=user_id).first()
-
-    from time import sleep
-    sleep(0.1)
-
-
-    #concurrency bug?
-    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-6').first()
-    if e:
-        return
-
-    if not request:
-        user = User.query.get(user_id)
-        if not user.email_notification:
-            return 
-        user.credit = user.credit + 5
-        from emails import drip_student_signup_6
-        email_result = drip_student_signup_6(user)
-        email = Email(
-                    tag='student-drip-6', 
-                    user_id=user.id, 
-                    time_created=datetime.now(), 
-                    mandrill_id = email_result[0]['_id']
-                    )
-        db_session.add(email)
-        user.emails.append(email)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
-        if os.environ.get('USER') == 'makhani':
-            send_student_drip_7.apply_async(args=[user.id], countdown = 10)
-        elif get_environment() == 'PRODUCTION':
-            send_student_drip_7.apply_async(args=[user.id], countdown = (86400 * 7))
-
-@celery.task
-def send_student_drip_7(user_id):
-    return
-    request = Request.query.filter_by(student_id=user_id).first()
-    
-    
-    from time import sleep
-    sleep(0.1)
-
-    #concurrency bug?
-    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-7').first()
-    if e:
-        return
-
-    if not request:
-        user = User.query.get(user_id)
-        if not user.email_notification:
-            return 
-        from emails import drip_student_signup_7
-        email_result = drip_student_signup_7(user)
-        email = Email(
-                        tag='student-drip-7', 
-                        user_id=user.id, 
-                        time_created=datetime.now(), 
-                        mandrill_id = email_result[0]['_id']
-                    )
-        db_session.add(email)
-        user.emails.append(email)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
-
-@celery.task
-def auto_confirm_student_payment(payment_id, student_id):
-    user = User.query.get(student_id)
-    p = Payment.query.get(payment_id)
-    
-    #student has already confirmed!
-    if p.student_confirmed:
-        logging.info("Student has already confirmed")
-        return
-    p.student_confirmed = True
-    stripe_charge = False
-    if not p.confirmed_payment_id:
-        orig_p = p
-    else:
-        orig_p = Payment.query.get(p.confirmed_payment_id)
-
-    if p.student_paid_amount > 0:
-        stripe_amount_cents = int(p.student_paid_amount * 100)
-        student = User.query.get(p.student_id)
-        
-        if student.credit >= p.student_paid_amount:
-            student.credit = student.credit - p.student_paid_amount
-            p.student_description = 'Your credits used for this session'
-        elif student.credit > 0:
-            difference = p.student_paid_amount - student.credit
-            p.student_description = 'You used $' + str(student.credit) +' in credit and were billed $' + str(difference) + ' to your card.'
-            stripe_amount_cents = int(difference * 100)
-            student.credit = 0
-            try: 
-                stripe_charge = True
-                charge = stripe.Charge.create(
-                    amount = stripe_amount_cents,
-                    currency="usd",
-                    customer=student.customer_id,
-                    description="charge for receiving tutoring"
-                )
-                p.stripe_charge_id = charge['id']
-                logging.info(p.stripe_charge_id)
-            except stripe.error.CardError, e:
-                if p.student_id == user.id:
-                    error_msg = "Sorry! Your card has been declined. Please update your payment info in your settings > billing."
-                else:
-                    error_msg = "Sorry! The student's card has been declined. Please kindly ask them to update their information" 
-                return errors([error_msg])
-        else:
-            try: 
-                stripe_charge = True
-                charge = stripe.Charge.create(
-                    amount = stripe_amount_cents,
-                    currency="usd",
-                    customer=student.customer_id,
-                    description="charge for receiving tutoring"
-                )
-                p.stripe_charge_id = charge['id']
-                logging.info(p.stripe_charge_id)
-            except stripe.error.CardError, e:
-                error_msg = "Sorry! Your card has been declined. Please update your payment info in your settings > billing."
-                return errors([error_msg])
-            except stripe.error.InvalidRequestError, e:
-                if p.student_id == user.id:
-                    error_msg = "Sorry! The your card has been declined. Please update your payment info in your settings."
-                else:
-                    error_msg = "Sorry! The student's card has been declined. Please kindly ask them to update their information" 
-                return errors([error_msg])
-    else:
-        user.credit = user.credit + abs(p.student_paid_amount)
-        stripe_charge = False
-
-    
-
-    from notifications import student_payment_approval
-    tutor = User.query.get(p.tutor_id)
-
-    if orig_p != p:
-        tutor.pending = tutor.pending - orig_p.tutor_received_amount - p.tutor_received_amount
-        tutor.balance = tutor.balance + p.tutor_received_amount + orig_p.tutor_received_amount     
-    else:
-        logging.info("this is a bill-student api payment")
-        logging.info("original pending " + tutor.pending)
-        logging.info("original balance " + tutor.balance)
-        tutor.pending = tutor.pending - orig_p.tutor_received_amount
-        tutor.balance = tutor.balance + p.tutor_received_amount
-        logging.info("new pending " + tutor.pending)
-        logging.info("new balance " + tutor.balance)
-
-    if p.confirmed_payment_id:
-        total_amount = orig_p.time_amount * orig_p.tutor_rate + p.student_paid_amount
-    else:
-        #recurring billing case
-        total_amount = p.student_paid_amount
-    logging.info(total_amount)
-    
-    from app.static.data.short_variations import short_variations_dict
-    skill_name = short_variations_dict[Skill.query.get(p.skill_id).name]
-    
-    if stripe_charge:
-        charge = charge['id']
-    else:
-        charge = 'as9d0sudas' + str(p.id)
-
-    student_notification = student_payment_approval(user, tutor, p, total_amount, charge, skill_name, False)
-    user.notifications.append(student_notification)
-    db_session.add(student_notification)
-    try:
-        db_session.commit()
-    except:
-        db_session.rollback()
-        raise
