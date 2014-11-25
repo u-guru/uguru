@@ -1,6 +1,8 @@
 from celery import Celery
 from celery.task import task, periodic_task
 from celery.schedules import crontab
+from models import *
+from views import *
 
 import time
 import logging
@@ -25,10 +27,12 @@ def test_background():
 
 @task
 def send_twilio_message_delayed(phone, msg, user_id):
+    from views import send_twilio_msg
     send_twilio_msg(phone,msg, user_id)
 
 @task(name='tasks.check_text_msg_status')
 def check_msg_status(text_id):
+    from views import twilio_client
     text = Text.query.get(text_id)
     msg = twilio_client.messages.get(text.sid)
     update_text(msg, text)
@@ -168,6 +172,7 @@ def send_delayed_email(email_str, args):
 
 @task(name='tasks.send_student_request_to_tutors')
 def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name):
+    from views import MAX_REQUEST_TUTOR_LIMIT
     r = Request.query.get(request_id)
     if len(r.committed_tutors) == (MAX_REQUEST_TUTOR_LIMIT + 1):
         logging.info('We have already accomodated this request. Tier 2 tutors will not get it anymore.')
