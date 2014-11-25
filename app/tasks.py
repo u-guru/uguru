@@ -20,12 +20,7 @@ celery.conf.update(
 # REGULAR TASKS #
 #################
 
-@task(name='tasks.test_background')
-def test_background():
-	time.sleep(3)
-	logging.info("Done!")
-
-@task
+@task(name='tasks.send_twilio_message_delayed')
 def send_twilio_message_delayed(phone, msg, user_id):
     from views import send_twilio_msg
     send_twilio_msg(phone,msg, user_id)
@@ -43,7 +38,6 @@ def check_msg_status(text_id):
         raise
 
 @task(name='tasks.autoconfirm_payment')
-@celery.task
 def auto_confirm_student_payment(payment_id, student_id):
     user = User.query.get(student_id)
     p = Payment.query.get(payment_id)
@@ -110,7 +104,6 @@ def auto_confirm_student_payment(payment_id, student_id):
     else:
         user.credit = user.credit + abs(p.student_paid_amount)
         stripe_charge = False
-
     
 
     from notifications import student_payment_approval
