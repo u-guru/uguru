@@ -32,7 +32,7 @@ def send_twilio_message_delayed(phone, msg, user_id):
 
 @task(name='tasks.check_text_msg_status')
 def check_msg_status(text_id):
-    from views import twilio_client
+    from views import twilio_client, update_text
     text = Text.query.get(text_id)
     msg = twilio_client.messages.get(text.sid)
     update_text(msg, text)

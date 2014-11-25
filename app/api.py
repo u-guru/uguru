@@ -1766,19 +1766,6 @@ def api(arg, _id):
 
         return errors(['Invalid Token'])
 
-
-    if arg == 'support':
-
-        user_id = session.get('user_id')
-        user = User.query.get(user_id)
-
-        support_topic = ajax_json['selected-issue']
-        support_detail = ajax_json['detail']
-
-        from emails import send_support_email
-        send_support_email(support_topic, support_detail, user)
-
-
     if arg == 'sample-tutors':
         
         from app.static.data.variations import courses_dict

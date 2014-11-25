@@ -1453,10 +1453,6 @@ def success():
             user_id = u.id
             u.user_referral_code = create_referral_code(u)
 
-            if ajax_json.get('instant') and session.get('tutor-signup'):
-                from emails import sign_up_caltopia_tutor
-                sign_up_caltopia_tutor(u)
-
             if not ajax_json.get('instant'):
                 authenticate(user_id)
 
@@ -1502,27 +1498,6 @@ def success():
                 db_session.commit()
             except:
                 db_session.rollback()
-
-        if ajax_json.get('admin-approve-tutor'):
-            try:
-                user_id = int(ajax_json.get('admin-approve-tutor'))
-                user = User.query.get(user_id)
-                user.approved_by_admin = True
-                user.verified_tutor = True
-
-                if user.settings_notif == 0: 
-                    user.settings_notif = user.settings_notif + 1
-
-                if user.notifications:
-                    notification = user.notifications[0]
-                    notification.feed_message_subtitle = "Application status: <strong><span style='color:#69bf69'>Approved!</span></strong>"
-
-                from emails import approved_by_admin_email
-                approved_by_admin_email(user)
-                db_session.commit()
-            except:
-                db_session.rollback()
-                raise
 
         if ajax_json.get('verify-tutor'):
             try:
