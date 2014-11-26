@@ -9,7 +9,6 @@
 {% endblock %}
 
 {% block content %}
-{% include 'calendar.html' %}
 {% if (user.approved_by_admin and user.verified_tutor and (not user.skills or not user.tutor_introduction or not user.major or not user.phone_number or not user.year or (user.profile_url == '/static/img/default-photo.jpg'))) %}
 		{% set guru_profile_not_complete = true %}
 {% else %}	
@@ -261,7 +260,7 @@
 		<span class='font-14 light-grey-text center block margin-top-20'>
 			See your <a href='/activity/all/' class='blue-text'>entire history</a>
 		</span>
-		{% else %}
+		{% elif user.notifications | length > 10 %}
 		<span class='font-14 light-grey-text center block margin-top-20'>
 			See your <a href='/activity/' class='blue-text'>recent history</a> only
 		</span> 

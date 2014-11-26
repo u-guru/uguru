@@ -521,6 +521,7 @@ class Request(Base):
     available_time = Column(String)
     location = Column(String)
     last_updated = Column(DateTime)
+    remote = Column(Boolean) #Video-chat friendly
 
     cancellation_reason = Column(String)
 

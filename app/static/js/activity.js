@@ -398,7 +398,7 @@ $('#feed-messages').on('click', 'a.tutor-cancel-accept', function() {
 
 $('#feed-messages').on('click', 'a.tutor-request-accept-btn', function() {
   extra_detail = $(this).parent().siblings('textarea').val();
-  if ((extra_detail.length > 0 && is_tutor_response_sanitized(extra_detail)) && $('td.time-slot.td-selected').length > 0) {
+  if ((extra_detail.length > 0 && is_tutor_response_sanitized(extra_detail))) {
     $(this).siblings('div.extra-detail-alert').hide();
     $(this).click(false);
     var feed_message_index = last_clicked_notif_index + 1;
@@ -414,7 +414,6 @@ $('#feed-messages').on('click', 'a.tutor-request-accept-btn', function() {
       'extra-detail': extra_detail,
       'price-change': tutor_changed_price,
       'notif-num':  last_clicked_notif_index,
-      'calendar': get_calendar_selection(),
     };
     $.ajax({
       type: "POST",
