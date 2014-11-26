@@ -1100,7 +1100,7 @@ def tutor_received_transfer_text(amount, bank_name, transfer_id, last4,date):
     """Your balance is being transferred to your account by Stripe, a secure third-party payment platform\n\n""" +\
     """Samir\nCo-founder\nsamir@uguru.me\n(813) 500 9853"""
 
-#When a student is matched.
+#When a tutor is matched.
 def tutor_is_matched(student, tutor, skill_name):
     student_name = student.name.split(" ")[0]
     tutor_name = tutor.name.split(" ")[0]

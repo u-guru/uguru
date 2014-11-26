@@ -13,19 +13,15 @@ REDIS_URL = os.environ.get('REDISTOGO_URL')
 celery.conf.update(
     BROKER_URL=REDIS_URL,
     CELERY_TASK_SERIALIZER='json',
-    CELERY_ACCEPT_CONTENT=['json', 'msgpack', 'yaml']
+    CELERY_ACCEPT_CONTENT=['json', 'msgpack', 'yaml'],
+    CELERY_TIMEZONE="America/Los_Angeles"
 )
 
 #################
 # REGULAR TASKS #
 #################
 
-@task(name='tasks.test_background')
-def test_background():
-	time.sleep(3)
-	logging.info("Done!")
-
-@task
+@task(name='tasks.send_twilio_message_delayed')
 def send_twilio_message_delayed(phone, msg, user_id):
     from views import send_twilio_msg
     send_twilio_msg(phone,msg, user_id)
@@ -43,7 +39,6 @@ def check_msg_status(text_id):
         raise
 
 @task(name='tasks.autoconfirm_payment')
-@celery.task
 def auto_confirm_student_payment(payment_id, student_id):
     user = User.query.get(student_id)
     p = Payment.query.get(payment_id)
@@ -110,7 +105,6 @@ def auto_confirm_student_payment(payment_id, student_id):
     else:
         user.credit = user.credit + abs(p.student_paid_amount)
         stripe_charge = False
-
     
 
     from notifications import student_payment_approval
@@ -238,289 +232,8 @@ def send_student_package_info(user_id, request_id):
 ##################
 # PERIODIC TASKS #
 ##################
-
-@periodic_task(run_every=crontab(minute=0, hour = 5))
-def test_periodic():
-    if get_environment() == 'PRODUCTION':
+@periodic_task(run_every=crontab(minute=0, hour=0), name="tasks.daily_results_email") # Every midnight
+def daily_results_email():
+    if os.environ.get('PRODUCTION'):
         from emails import daily_results_email
         daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
-
-@periodic_task(run_every=crontab(minute=59, hour = 6))
-def samir_results():
-    if get_environment() == 'PRODUCTION':
-        from emails import daily_results_email
-        daily_results_email('samir@uguru.me', 'makhani.samir@gmail.com')
-        daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
-
-##################
-#  UNUSED TASKS  #
-# (For reference)#
-##################
-
-#Student Drip Campaign 1 - New to uGuru students
-@task
-def send_student_drip_1(user_id):
-    return
-    request = Request.query.filter_by(student_id=user_id).first()
-    
-    #concurrency bug?
-    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-1').first()
-    if e:
-        return
-
-    if not request:
-        user = User.query.get(user_id)
-        if not user.email_notification:
-            return 
-        from emails import drip_student_signup_1
-        email_result = drip_student_signup_1(user)
-        email = Email(
-                    tag='student-drip-1', 
-                    user_id=user.id, 
-                    time_created=datetime.now(), 
-                    mandrill_id = email_result[0]['_id']
-                    )
-        db_session.add(email)
-        user.emails.append(email)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
-        if os.environ.get('USER') == 'makhani':
-            send_student_drip_2.apply_async(args=[user.id], countdown = 10)
-        else:
-            send_student_drip_2.apply_async(args=[user.id], countdown = 86400)
-
-#Student Drip Campaign 2 - Become a tutor + free tutors
-@task
-def send_student_drip_2(user_id):
-    return
-    request = Request.query.filter_by(student_id=user_id).first()
-    
-    from time import sleep
-    sleep(0.1)
-
-    #concurrency bug?
-    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-2').first()
-    if e:
-        return
-
-    if not request:
-        user = User.query.get(user_id)
-        if not user.email_notification:
-            return 
-        from emails import drip_student_signup_2
-        email_result = drip_student_signup_2(user)
-        email = Email(
-                    tag='student-drip-2', 
-                    user_id=user.id, 
-                    time_created=datetime.now(), 
-                    mandrill_id = email_result[0]['_id']
-                    )
-        db_session.add(email)
-        user.emails.append(email)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
-        if os.environ.get('USER') == 'makhani':
-            if user.credit == 5:
-                send_student_drip_3.apply_async(args=[user.id], countdown = 10)
-            else:
-                send_student_drip_4.apply_async(args=[user.id], countdown = 10)
-        elif get_environment() == 'PRODUCTION':
-            if user.credit == 5:
-                send_student_drip_3.apply_async(args=[user.id], countdown = (86400 * 3))
-            else:
-                send_student_drip_4.apply_async(args=[user.id], countdown = (86400 * 3))
-
-
-#Student Drip Campaign 3 - Free tutoring sessions
-@task
-def send_student_drip_3(user_id):
-    return
-    request = Request.query.filter_by(student_id=user_id).first()
-    
-    from time import sleep
-    sleep(0.1)
-
-    #concurrency bug?
-    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-3').first()
-    if e:
-        return
-
-    if not request:
-        user = User.query.get(user_id)
-        if not user.email_notification:
-            return 
-        from emails import drip_student_signup_3
-        email_result = drip_student_signup_3(user)
-        email = Email(
-                    tag='student-drip-3', 
-                    user_id=user.id, 
-                    time_created=datetime.now(), 
-                    mandrill_id = email_result[0]['_id']
-                    )
-        db_session.add(email)
-        user.emails.append(email)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
-        if os.environ.get('USER') == 'makhani':
-            send_student_drip_5.apply_async(args=[user.id], countdown = 10)
-        elif get_environment() == 'PRODUCTION':
-            send_student_drip_5.apply_async(args=[user.id], countdown = (86400 * 7))
-
-@task
-def send_student_drip_4(user_id):
-    return
-    request = Request.query.filter_by(student_id=user_id).first()
-    
-
-    from time import sleep
-    sleep(0.1) # TODO : This looks like a nasty hack...
-
-    #concurrency bug?
-    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-4').first()
-    if e:
-        return
-
-    if not request:
-        user = User.query.get(user_id)
-        if not user.email_notification:
-            return 
-        user.credit = user.credit + 5
-        from emails import drip_student_signup_4
-        email_result = drip_student_signup_4(user)
-        email = Email(
-                    tag='student-drip-4', 
-                    user_id=user.id, 
-                    time_created=datetime.now(), 
-                    mandrill_id = email_result[0]['_id']
-                    )
-        db_session.add(email)
-        user.emails.append(email)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
-        if os.environ.get('USER') == 'makhani':
-            send_student_drip_5.apply_async(args=[user.id], countdown = 10)
-        elif get_environment() == 'PRODUCTION':
-            send_student_drip_5.apply_async(args=[user.id], countdown = (86400 * 7))
-
-@task
-def send_student_drip_5(user_id):
-    return
-    request = Request.query.filter_by(student_id=user_id).first()
-    
-    from time import sleep
-    sleep(0.1)
-
-
-    #concurrency bug?
-    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-5').first()
-    if e:
-        return
-
-    if not request:
-        user = User.query.get(user_id)
-        if not user.email_notification:
-            return 
-        from emails import drip_student_signup_5
-        email_result = drip_student_signup_5(user)
-        email = Email(
-                    tag='student-drip-5', 
-                    user_id=user.id, 
-                    time_created=datetime.now(), 
-                    mandrill_id = email_result[0]['_id']
-                    )
-        db_session.add(email)
-        user.emails.append(email)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
-        if os.environ.get('USER') == 'makhani':
-            send_student_drip_6.apply_async(args=[user.id], countdown = 10)
-        elif get_environment() == 'PRODUCTION':
-            send_student_drip_6.apply_async(args=[user.id], countdown = (86400 * 7))
-
-@task
-def send_student_drip_6(user_id):
-    return
-    request = Request.query.filter_by(student_id=user_id).first()
-
-    from time import sleep
-    sleep(0.1)
-
-
-    #concurrency bug?
-    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-6').first()
-    if e:
-        return
-
-    if not request:
-        user = User.query.get(user_id)
-        if not user.email_notification:
-            return 
-        user.credit = user.credit + 5
-        from emails import drip_student_signup_6
-        email_result = drip_student_signup_6(user)
-        email = Email(
-                    tag='student-drip-6', 
-                    user_id=user.id, 
-                    time_created=datetime.now(), 
-                    mandrill_id = email_result[0]['_id']
-                    )
-        db_session.add(email)
-        user.emails.append(email)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
-        if os.environ.get('USER') == 'makhani':
-            send_student_drip_7.apply_async(args=[user.id], countdown = 10)
-        elif get_environment() == 'PRODUCTION':
-            send_student_drip_7.apply_async(args=[user.id], countdown = (86400 * 7))
-
-@task
-def send_student_drip_7(user_id):
-    return
-    request = Request.query.filter_by(student_id=user_id).first()
-    
-    
-    from time import sleep
-    sleep(0.1)
-
-    #concurrency bug?
-    e = Email.query.filter_by(user_id = user_id, tag = 'student-drip-7').first()
-    if e:
-        return
-
-    if not request:
-        user = User.query.get(user_id)
-        if not user.email_notification:
-            return 
-        from emails import drip_student_signup_7
-        email_result = drip_student_signup_7(user)
-        email = Email(
-                        tag='student-drip-7', 
-                        user_id=user.id, 
-                        time_created=datetime.now(), 
-                        mandrill_id = email_result[0]['_id']
-                    )
-        db_session.add(email)
-        user.emails.append(email)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise 
