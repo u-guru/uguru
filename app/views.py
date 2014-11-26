@@ -1880,8 +1880,10 @@ def activity_promotion():
         return redirect('/activity/#p1')
 
 
-@app.route('/activity/', methods=('GET', 'POST'))
-def activity():
+
+@app.route('/activity/', methods=('GET', 'POST'), defaults={'arg': None})
+@app.route('/activity/<arg>/')
+def activity(arg=None):
     if not session.get('user_id'):
         session['redirect'] = '/activity/'
         return redirect('/log_in/')
@@ -1916,7 +1918,11 @@ def activity():
         tutor = User.query.get(rating.tutor_id)
         pending_ratings_dict['student'] = student
         pending_ratings_dict['tutor'] = tutor
-    for notification in user.notifications:
+    if arg == 'all':
+        user_notifications = user.get_all_notifications()
+    else:
+        user_notifications = user.get_recent_notifications()
+    for notification in user_notifications:
         notification.feed_message = notification.feed_message.replace("<b>", "<span class='green-text normal-text'> ").replace("</b>", " </span>")
         if notification.feed_message_subtitle:
             notification.feed_message_subtitle = notification.feed_message_subtitle.replace("<b>", "").replace("</b>", "")
@@ -1987,7 +1993,7 @@ def activity():
         pretty_dates = pretty_dates, urgency_dict=urgency_dict, tutor_dict=tutor_dict, pending_ratings_dict=pending_ratings_dict,\
         environment = get_environment(), prices_dict=prices_dict, prices_reversed_dict=prices_reversed_dict, session=session,\
         outgoing_request_index=outgoing_request_index, avg_rating=avg_rating, num_ratings = num_ratings, time=time, variations=short_variations_dict,\
-        confirm_payments=confirm_payments, user_avg_rating = calc_avg_rating(user))
+        confirm_payments=confirm_payments, user_avg_rating = calc_avg_rating(user), user_notifications=user_notifications)
 
 def get_calendar_time_ranges(week_object, owner):
     if not week_object.first():

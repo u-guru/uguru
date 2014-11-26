@@ -253,13 +253,19 @@
 		  {% endif %}
 		{% endwith %}
 		<div id="main-feed" style='padding-top:20px'>
-		{% for n in user.notifications|sort(attribute='time_created')|reverse %}
+		{% for n in user_notifications %}
 			{{notification_template.notification(n, user, pretty_dates)}}
 		{% endfor %}
 		</div>
-		<span class='font-14 grey-text center block margin-top-20'>
-				New to uGuru? Read more <a target='_blank'class='underline blue-text'href='http://tinyurl.com/uguru-q-a'> here </a> 
+		{% if user_notifications|length != user.notifications | length %}
+		<span class='font-14 light-grey-text center block margin-top-20'>
+			See your <a href='/activity/all/' class='blue-text'>entire history</a>
 		</span>
+		{% else %}
+		<span class='font-14 light-grey-text center block margin-top-20'>
+			See your <a href='/activity/' class='blue-text'>recent history</a> only
+		</span>
+		{% endif %}
 		{% if user.pending %}
 		<span class='font-12 grey-text center block margin-top-30'>
 				* Your balance is pending because a student hasn't confirmed the amount yet.

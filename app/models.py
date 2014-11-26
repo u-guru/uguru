@@ -242,6 +242,16 @@ class User(Base):
             rating_sum += rating.tutor_rating
         return rating_sum / len(self.tutor_rating)
 
+    #returns ten most recent notifications
+    def get_recent_notifications(self):
+        notifications = sorted(self.notifications, key=lambda n:n.id, reverse=True)[:10]
+        return notifications
+
+    #return all notifications
+    def get_all_notifications(self):
+        notifications = sorted(self.notifications, key=lambda n:n.id, reverse=True)
+        return notifications
+
 class Mailbox(Base):
     __tablename__ = 'mailbox'
     id = Column(Integer, ForeignKey('user.id'), primary_key = True)
@@ -414,7 +424,6 @@ class Notification(Base):
             self.rating_id = rating.id
         if other:
             self.custom = other
-
 
 class Tag(Base):
     __tablename__ = 'tag'
