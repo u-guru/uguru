@@ -650,7 +650,6 @@ class Skill(Base):
     time_created = Column(DateTime)
     is_course = Column(Boolean, default = False)
 
-    #TODO List of all tutors with a skill
     course = relationship("Course",
         primaryjoin = 'Skill.id == Course.skill_id',
         uselist = False,

@@ -20,9 +20,6 @@ from sqlalchemy import desc
 from twilio import *
 from twilio.rest import TwilioRestClient
 from mixpanel import Mixpanel
-from celery import Celery
-from celery.task import periodic_task
-from celery.schedules import crontab
 from datetime import timedelta
 from app import tasks
 
@@ -45,17 +42,6 @@ stripe_keys = {
     'publishable_key': os.environ['STRIPE_PUBLISHABLE_KEY']
 }
 stripe.api_key = stripe_keys['secret_key']
-
-# This, and all @tasks, should be moved to tasks.py
-celery = Celery('run')
-REDIS_URL = os.environ.get('REDISTOGO_URL')
-celery.conf.update(
-    BROKER_URL=REDIS_URL,
-    CELERY_TASK_SERIALIZER='json',
-    CELERY_ACCEPT_CONTENT=['json', 'msgpack', 'yaml']
-)
-
-
 
 @app.route('/log_in/')
 @app.route('/sign_up/')
@@ -126,10 +112,6 @@ def new_sproul(arg=None):
 
 @app.route('/florida/', methods=['GET', 'POST'])
 def florida(arg=None):
-
-    # TODO : remove this. this is just an example of a background task from tasks.py and a mixpanel example
-    # tasks.test_background.delay() 
-    # mp.track(user_id, 'Sent Message')
 
     from schools import school_dict
     school_details = school_dict['UF']
