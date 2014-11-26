@@ -1,17 +1,15 @@
 from app import app
 from app.database import *
-from flask import render_template, jsonify, redirect, request, session, flash, redirect, url_for
-from models import User, Request, Skill, Course, Notification, Mailbox, Conversation, Message, Payment, Rating, Email, Week, Range, Promo
+from flask import jsonify, request, session, flash
+from models import *
 from hashlib import md5
 from datetime import datetime, timedelta
 from apscheduler.schedulers.background import BackgroundScheduler as Scheduler
 
 import os
-import time
 import boto
 import stripe
 import json
-import twilio
 import random
 import views
 import logging
@@ -127,7 +125,7 @@ def api(arg, _id):
     if arg =='stripe_token' and request.method == 'POST':
         user = getUser()
         if user:
-            user_token = request.json.get('stripe-token') 
+            user_token = request.json.get('stripe-token') # TODO : assigned but never used
             customer = stripe.Customer.create(
                 email = user.email,
                 card = stripe_user_token # TODO : should this be user_token? 
