@@ -1,9 +1,7 @@
-from sqlalchemy import String, Integer, Column, ForeignKey, Float,\
- SmallInteger, Boolean, Table, Unicode, DateTime
+from sqlalchemy import String, Integer, Column, ForeignKey, Float, SmallInteger, Boolean, Table, Unicode, DateTime
 from flask import url_for
 from sqlalchemy.orm import relationship, backref
 from app.database import Base
-from app import db
 from datetime import datetime
 import os
 
