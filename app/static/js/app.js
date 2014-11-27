@@ -885,6 +885,23 @@ $('#student-register-tutor-link').click(function() {
   $('#student-next-link').trigger('click');
 });
 
+//TODO: Where all of the request form javascript should go (eventually)
+
+//If asap checkbox is checked, un-check the location one
+$('#request-urgency').change(function() {
+  if ($('#request-urgency:checked')) {
+    $('#request-later').attr('checked', false);
+    //Hide location form (when created)
+  } 
+});
+
+$('#request-later').change(function() {
+  if ($('#request-later:checked')) {
+    $('#request-urgency').attr('checked', false);
+    //Show location form (when created)
+  } 
+});
+
 $('#request-form-submit').click(function(){
   if (!$('#request-description').val() || !$('#request-location').val() || !$('#request-skill').val()) {
     $('#alert-fields-request-form').show();
