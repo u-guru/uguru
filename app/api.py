@@ -1,6 +1,7 @@
 from app import app
 from app.database import *
-from flask import jsonify, request, session, flash
+from lib.api_utils import *
+from flask import jsonify, request, session, flash, Response
 from models import *
 from hashlib import md5
 from datetime import datetime, timedelta
@@ -142,11 +143,21 @@ def users_by_id_transactions_web_api(user_id):
 # GET logs in the user
 @app.route('/web/v1/api/login', methods = ['GET'])
 def users_login_web_api():
-    # If student, go here
-    # If tutor, go here
-    pass
+    if request.method == 'GET':
+        
+        expected_parameters = ['email','password']
+        request_json = request.json
+        return_dict = {}
+        
+        if request_contains_valid_parameters(request_json, expected_parameters):
+            
+            
 
-# User logout reoute
+            return json_response(200, return_dict)
+
+    return json_response(400)
+
+# User logout route
 # GET logs out the user
 @app.route('/web/v1/api/logout', methods = ['GET'])
 def users_logout_web_api():
