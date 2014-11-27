@@ -21,6 +21,178 @@ PAYMENT_PLANS = {1:[45,50], 2:[170,200], 3:[800,1000], 4:[1500,10000]}
 PACKAGE_HOME_PLANS = {0:[800, 1000], 1:[500, 600], 2:[170, 200], 3:[45, 50]}
 PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 
+
+#TODO
+# x Create routes for everything for the new version (before client-side)
+# - Test these routes (without a client site)
+# - Add MP events
+# - Server side validation
+# - Add status codes
+# - Make things secure + learn how to client side store information
+
+#################################
+# START of New RESFTUL Web API. #
+#################################
+
+########################
+# Request REST Web Api #
+########################
+
+# General request route
+# POST creates a new request
+@app.route('/web/v1/api/requests/', methods=['POST'])
+def request_web_api():
+    pass
+
+# Specific support route
+# GET returns details of a request 
+# DELETE cancels a request 
+@app.route('/web/v1/api/requests/<request_id>', methods=['GET', 'PUT', 'DELETE'])
+def request_by_id_web_api(request_id):
+    pass
+    # If Get
+        # If student
+            # Get stage
+        # If tutor
+            # Get stage
+    # If Delete
+        # If student
+            # Bill them 
+        # If tutor
+
+# Tutor Accepts/Rejects Request Route
+# PUT updates the request accordingly
+@app.route('/web/v1/api/requests/<request_id>/tutor_accept', methods=['PUT'])
+def request_by_id_tutor_accept_web_api(request_id):
+    pass
+
+# Student Accepts/Rejects Tutor Route
+# PUT updates the request accordingly
+@app.route('/web/v1/api/requests/<request_id>/student_accept', methods=['PUT'])
+def request_by_id_student_accept_web_api(request_id):
+    pass
+
+########################
+# User REST Web Api #
+########################
+
+# General User Route
+# POST creates a new user
+@app.route('/web/v1/api/users')
+def users_web_api():
+    pass
+
+# Updating/canceling a user
+# PUT updates a user
+# DELETE deletes a user (TODO Later)
+@app.route('/web/v1/api/users/<user_id>', methods = ['PUT', 'DELETE'])
+def users_by_id_web_api(user_id):
+    # Add all user settings here.
+    pass
+
+# List of active requests for a user Route 
+# GET returns a list of active requests
+@app.route('/web/v1/api/users/<user_id>/active_requests', methods = ['GET'])
+def users_by_id_active_requests_web_api(user_id):
+    # Add all user settings here.
+    pass
+
+# User All Conversations Route
+# GET returns a list of conversations for a user
+@app.route('/web/v1/api/users/<user_id>/conversations', methods = ['GET'])
+def users_by_id_conversations_web_api(user_id):
+    # If student, go here
+    # If tutor, go here
+    pass
+
+
+# User Specific Conversation Route
+# GET Returns all messages (sorted by time) for a conversation
+# POST creates and returns a message 
+# PUT Pings a tutor
+@app.route('/web/v1/api/users/<user_id>/conversations/<conversation_id>', methods = ['GET', 'POST', 'PUT'])
+def users_by_id_address_book(user_id):
+    # If student, go here
+    # If tutor, go here
+    pass
+
+# Customer credit/debit card route
+# POST adds card
+# PUT updates a card
+# DELETE removes a card (TODO LATER)
+@app.route('/web/v1/api/users/<user_id>/customer', methods = ['GET'])
+def users_by_id_customer_web_api(user_id):
+    pass
+
+# Recipient debit card route
+# POST adds card
+# PUT updates a card
+# DELETE removes a card (TODO LATER)
+@app.route('/web/v1/api/users/<user_id>/recipient', methods = ['GET'])
+def users_by_id_recepient_web_api(user_id):
+    pass
+
+# User transaction history route
+# GET returns list of transactions
+@app.route('/web/v1/api/users/<user_id>/transactions', methods = ['GET'])
+def users_by_id_transactions_web_api(user_id):
+    pass
+
+# User login route
+# GET logs in the user
+@app.route('/web/v1/api/login', methods = ['GET'])
+def users_login_web_api():
+    # If student, go here
+    # If tutor, go here
+    pass
+
+# User logout reoute
+# GET logs out the user
+@app.route('/web/v1/api/logout', methods = ['GET'])
+def users_logout_web_api():
+    pass
+
+# User reset password route
+# POST updates a password
+# GET sends an email to the user to reset the password
+@app.route('/web/v1/api/reset_password', methods = ['GET', 'POST'])
+def users_reset_password_web_api():
+    pass
+
+########################
+# Ratings REST Web Api #
+########################
+
+# POST Submits a Rating
+# GET Returns a list of Ratings & Average (TODO Later)
+@app.route('/web/v1/api/ratings', methods = ['POST'])
+def ratings_web_api():    
+    pass
+
+
+########################
+# Support REST Web Api #
+########################
+
+# POST Submits a general support request
+@app.route('/web/v1/api/support/', methods = ['POST'])
+def support_web_api():
+    pass
+
+# POST Submits a general support refund request
+@app.route('/web/v1/api/support/refund/', methods = ['POST'])
+def support_web_api():
+    pass
+
+############################
+# END New RESFTUL Web API. #
+############################
+
+
+##############################
+# START Old RESFTUL Web API. #
+##############################
+
 @app.route('/api/<arg>', methods=['GET', 'POST', 'PUT'], defaults={'_id': None})
 @app.route('/api/<arg>/<_id>')
 def api(arg, _id):

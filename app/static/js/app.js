@@ -3,6 +3,8 @@ var current_page_id = null;
 var previous_page_id = null;
 var request_form_complete = null;
 var a,b,c;
+var time_picker, date_picker;
+var time_picker_input, date_picker_input;
 var signup_type = null;
 var payment_plan_clicked = null;
 var guru_signup_clicked;
@@ -20,6 +22,29 @@ var invert_olark_white = function() {
 $(document).ready(function(){
 
   $body = $("body");
+
+  //Initialize all relevant javascript objects (i.e, sliders, date-popups)
+  date_picker_input = $('#request-date').pickadate({
+    min:true,
+    max:2,
+    onSet: function(context) {
+        date_picker = date_picker_input.pickadate('picker');
+        date_selected = date_picker.get('select')['date'];
+        todays_date = new Date().getDate();
+        time_picker = time_picker_input.pickatime('picker');
+        if (todays_date != date_selected) {
+          time_picker.set({
+            'min': false,
+            'highlight': [0,0]
+          });
+        } else {
+          time_picker.set('min', true);
+        }
+    }
+  });
+  time_picker_input = $('#request-time').pickatime({
+    min:true
+  });
 
   $(document).on({
     ajaxStart: function() { $body.addClass("loading"); },
@@ -891,15 +916,21 @@ $('#student-register-tutor-link').click(function() {
 $('#request-urgency').change(function() {
   if ($('#request-urgency:checked')) {
     $('#request-later').attr('checked', false);
-    //Hide location form (when created)
+    $('#request-later-form-group').hide();
   } 
 });
 
+$('#time-estimate-button-group button').click(function() {
+  $(this).addClass('active').siblings().removeClass('active');
+});
+
 $('#request-later').change(function() {
-  if ($('#request-later:checked')) {
+  if ($('#request-later').is(':checked')) {
     $('#request-urgency').attr('checked', false);
-    //Show location form (when created)
-  } 
+    $('#request-later-form-group').show();
+  } else {
+    $('#request-later-form-group').hide();
+  }
 });
 
 $('#request-form-submit').click(function(){
@@ -987,10 +1018,8 @@ function submit_request_form_to_server() {
     'student-request': true,
     'description': $('#request-description').val(),
     'skill': $('#request-skill').val(),
-    'professor': $('#request-professor').val(),
-    'estimate': $('#request-main-slider').slider('value'),
+    'estimate': $('#time-estimate-button-group button.active').index(),
     'phone': $('#request-phone').val(),
-    'hourly-price': $('#final-offering-price').text(),
     'urgency': $('#request-urgency').prop('checked'),
     'remote': $('#request-remote').prop('checked'),
     'location': $('#request-location').val(),

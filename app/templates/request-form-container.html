@@ -34,15 +34,28 @@
                         Now (Within the next 2 hours)
                     </span>
                     <br>
-                    <input type='checkbox' id='request-later' class='uguru-checkbox' style='display:inline-block !important;'></input>
-                    <span class='reg-text font-14'>
-                        Later (More than 2 hours from now)
-                    </span>
+                    <div class='checkbox-container'>
+                        <input type='checkbox' id='request-later' class='uguru-checkbox' style='display:inline-block !important;'></input>
+                            <span class='reg-text font-14'>
+                                Later (More than 2 hours from now)
+                            </span>
+                    </div>
+                </div>
+                <div class='form-inline font-14' id='request-later-form-group'role='form'>
+                    <div class='form-group'>
+                            <label>Date</label>
+                            <input id='request-date' placeholder='Today' class='form-control standard-input default-cursor'></input>
+                    </div>
+                    <div class='form-group' id='request-time-form-group'>
+                            <label>Time</label>
+                            <input id='request-time' placeholder='Time' class='form-control standard-input default-cursor'></input>
+                    </div>
+                    
                 </div>
                 <label for='estimate-group'> Time Estimate </label>
                 <br>
                 <div class='row-fluid'>
-                    <div id='estimate-group'class="btn-group" role="group" aria-label="...">
+                    <div id='time-estimate-button-group'class="btn-group" role="group" aria-label="...">
                       <button type="button" class="btn btn-default"><30m</button>
                       <button type="button" class="btn btn-default"><1hr</button>
                       <button type="button" class="btn btn-default">1-2hr</button>
