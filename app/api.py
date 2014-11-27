@@ -23,7 +23,7 @@ PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 
 
 #TODO
-# x Create routes for everything for the new version (before client-side)
+# x Implement routes
 # - Test these routes (without a client site)
 # - Add MP events
 # - Server side validation
