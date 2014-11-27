@@ -16,14 +16,11 @@ root.addHandler(ch)
 # TODO : Add debug logger
 
 app = Flask(__name__)
-app.config.from_pyfile('../config.py')
+app.config.from_object('config')
 
 #Detects production env
-if os.environ.get('DATABASE_URL'): # TODO : can this be os.environ.get('PRODUCTION') ?
+if os.environ.get('DATABASE_URL'):
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-else:
-    basedir = os.path.abspath(os.path.dirname(__file__))
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 
 class DataBase():
     session = None;
