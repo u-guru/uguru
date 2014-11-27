@@ -370,6 +370,7 @@ $('#tutor-request-link').click(function() {
   $('#request-form-submit').children('span:first').removeClass('blue-btn-extra');
   $('#request-form-submit').children('span:first').addClass('blue-btn-full');
   $('#tutor-request').show();
+  mixpanel.track("Clicked Request Button");
 });
 
 $('#request-payment-link').click(function() {

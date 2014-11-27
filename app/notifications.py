@@ -1,4 +1,4 @@
-from app import app # TODO : imported but unused
+from app import app
 from models import Skill, User, Request, Notification
 from emails import *
 from datetime import datetime

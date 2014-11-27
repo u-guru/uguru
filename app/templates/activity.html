@@ -703,9 +703,7 @@
 				{% set tutor_name = payment_dict[n.payment_id]['tutor_name'] %}
 				<div class="payment-id-{{payment.id}}"id="{{n.a_id_name}}-detailed" style="display:none">
 					<div class="page-title">
-							<a class="feed-message-link" href="javascript:void(0)"style="float:left; margin-bottom:5px; color:white; text-decoration:none"> 
-								< 
-							</a>
+							<a class="feed-message-link" href="javascript:void(0)"style="float:left; margin-bottom:5px; color:white; text-decoration:none"></a>
 							<h4 style="color:white;width:100%">Request Payment</h4>
 					</div>
 					<div class="offer" align="center" style="margin-left:20px;margin-right:20px">
@@ -786,33 +784,30 @@
 
 {% block footer_scripts %}
 	<script src="/static/js/modernizr.js"></script>
-	<script type="text/javascript">
+	<script>
 	window.onload = function() {
-
 		var Modernizr = window.Modernizr;
-		
 		if(Modernizr.csstransforms3d) { 
-			
 			var head = document.querySelector('head');
-			
 			head.innerHTML = head.innerHTML + '<link rel="stylesheet" href="/static/css/inserthtml.com.radios.min.css" />';
-			
 		}
 	}
 	</script>
 
 	<script src="/static/js/jquery-ui-custom.js"></script>
-	<script type="text/javascript" src="/static/js/typeahead.js"></script>
-	<script src="/static/js/activity.js"></script>    
+	<script src="/static/js/typeahead.js"></script>
+	<script src="/static/js/activity.js"></script>
 	{% if not user.customer_id or user.balance > 0%}
-	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+	<script src="https://js.stripe.com/v2/"></script>
 	<script src="/static/js/jquery.payment.js"></script>
 	<script src="/static/js/uguru.payments.js"></script>    
 	<script type="text/javascript">Stripe.setPublishableKey("{{key}}");</script>
 	{% endif %}
-	<script type="text/javascript" src="/static/js/jquery-ui.js"></script>
-	<script src="/static/js/jquery.nouislider.new.min.js"></script>
+	<script src="/static/js/jquery-ui.js"></script>
+	<script src="/static/js/jquery.nouislider.min.js"></script>
 	<script>
+	  	mixpanel.track('Loaded Activity Page')
+
 		{% if not user.password %}
         	$('#password-modal').modal();
 

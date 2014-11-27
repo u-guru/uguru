@@ -4,8 +4,8 @@ import mandrill
 import logging
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.base import MIMEBase # TODO : Imported but unused
-from app import app # TODO : imported but unused
+from email.mime.base import MIMEBase
+from app import app
 from models import *
 
 SMTP_SERVER = "smtp.mandrillapp.com"

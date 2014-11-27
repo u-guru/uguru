@@ -19,16 +19,12 @@ from datetime import datetime, timedelta
 from sqlalchemy import desc
 from twilio import *
 from twilio.rest import TwilioRestClient
-from mixpanel import Mixpanel
 from datetime import timedelta
 from app import tasks
 
 # Twilio
 TWILIO_DEFAULT_PHONE = "+15104661138"
 twilio_client = TwilioRestClient(os.environ['TWILIO_ACCOUNT_SID'], os.environ['TWILIO_AUTH_TOKEN'])
-
-# Mixpanel
-mixpanel_client = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 
 # Constants
 MAX_REQUEST_TUTOR_LIMIT = 3
@@ -85,7 +81,7 @@ def index(arg=None):
         session['referral'] = 'piazza'
     if 'cal' in request.url:
         session['referral'] = 'cal'
-    logging.info(modal_flag)
+
     return render_template('index.html',
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)

@@ -1009,8 +1009,11 @@ function submit_request_form_to_server() {
         $('html, body').animate({
           scrollTop: $("#alert-fields-request-form").offset().top
         }, 500);
+        mixpanel.track("Request Failed", data);
       }else{
-        window.location.replace('/activity/');
+        mixpanel.track("Request Succeeded", data, function(){
+          window.location.replace('/activity/');
+        });
       }
     },
     error: function(e) {
@@ -1273,6 +1276,7 @@ $('#login-submit-link').click(function(){
         dataType: "json",
         success: function(result) {
           if (guru_signup_clicked) {
+            mixpanel.track("Guru signed up");
             window.location.replace('/apply-guru/');
             return;
           }
@@ -1290,11 +1294,13 @@ $('#login-submit-link').click(function(){
           }
 
           if (result.json['success'] && result.json['redirect']) {
+            mixpanel.track("Student Logged in");
             window.location.replace(result.json['redirect']);
             return;
           }
 
           if (result.json['success']) {
+            mixpanel.track("Student Logged in");
             window.location.replace('/activity/');
           } else {
             $('#alert-fields-login-2').text('Incorrect email or password');

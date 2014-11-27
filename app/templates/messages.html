@@ -249,6 +249,9 @@
 {% endblock %}
 
 {% block footer_scripts %}
+	<script>
+	mixpanel.track("Loaded Messages Page");
+	</script>
 	<script src="/static/js/jquery-ui-custom.js"></script>
-	<script src="/static/js/messages.js"></script>    
+	<script src="/static/js/messages.js"></script>
 {% endblock %}
