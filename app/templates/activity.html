@@ -799,13 +799,13 @@
 	<script src="/static/js/typeahead.js"></script>
 	<script src="/static/js/activity.js"></script>
 	{% if not user.customer_id or user.balance > 0%}
-	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+	<script src="https://js.stripe.com/v2/"></script>
 	<script src="/static/js/jquery.payment.js"></script>
 	<script src="/static/js/uguru.payments.js"></script>    
 	<script type="text/javascript">Stripe.setPublishableKey("{{key}}");</script>
 	{% endif %}
-	<script type="text/javascript" src="/static/js/jquery-ui.js"></script>
-	<script src="/static/js/jquery.nouislider.new.min.js"></script>
+	<script src="/static/js/jquery-ui.js"></script>
+	<script src="/static/js/jquery.nouislider.min.js"></script>
 	<script>
 		{% if not user.password %}
         	$('#password-modal').modal();

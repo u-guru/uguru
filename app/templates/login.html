@@ -79,58 +79,56 @@
             </div>
           </div>
       </div>
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/static/js/jquery-1.10.2.js"><\/script>')</script>
-    <script>window.jQuery || document.write('<script src="/static/js/bootstrap.min.js"><\/script>')</script>
+          <script>window.jQuery || document.write('<script src="/static/js/jquery-1.11.1.min.js"><\/script>')</script>
+          <script>window.jQuery || document.write('<script src="/static/js/bootstrap.min.js"><\/script>')</script>
 
-    {% block footer_scripts %}
-    {% endblock %}
+          {% block footer_scripts %}
+          {% endblock %}
 
 
-    <script>
-    //  Custom JavaScript for the Side Menu and Smooth Scrolling
-    $(document).ready(function() {
-      $('#login, #contact-now').click(function(){
-        $(".module-background, .module-unit").addClass("module-active");
-      });
-      $(".module-background").click(function(){
-        $(".module-background, .module-unit").removeClass("module-active");
-      });
-      $(".menu-trigger").click(function(){
-        $(".general-nav").toggleClass("active");
-      });
-    });
+          <script>
+          //  Custom JavaScript for the Side Menu and Smooth Scrolling
+          $(document).ready(function() {
+            $('#login, #contact-now').click(function(){
+              $(".module-background, .module-unit").addClass("module-active");
+            });
+            $(".module-background").click(function(){
+              $(".module-background, .module-unit").removeClass("module-active");
+            });
+            $(".menu-trigger").click(function(){
+              $(".general-nav").toggleClass("active");
+            });
 
-    // Custom js functions
-    $('#login-submit').click(function(){
-          //check whether fields are blank
-          if (!$('#login-email').val() || !$('#login-password')) {
-            $('#alert-fields-login-2').show()
-          } else {
-            //else get data and send to server
-            var data = {
-              'email': $('input[name="login-email"]').val(),
-              'password': $('input[name="login-password"]').val()
-            }
-            $.ajax({
-              type: "POST",
-              contentType: 'application/json;charset=UTF-8',
-              url: '/login/',
-              data: JSON.stringify(data),
-              dataType: "json",        
-              success: function(result) {        
-                if (result.json['success']) {
-                  window.location.replace('/')
-                } else {
-                  $('#alert-fields-login-2').hide(); 
-                  $('#alert-fields-login').show();     
+            // Custom js functions
+            $('#login-submit').click(function(){
+              //check whether fields are blank
+              if (!$('#login-email').val() || !$('#login-password')) {
+                $('#alert-fields-login-2').show()
+              } else {
+                //else get data and send to server
+                var data = {
+                  'email': $('input[name="login-email"]').val(),
+                  'password': $('input[name="login-password"]').val()
                 }
+                $.ajax({
+                  type: "POST",
+                  contentType: 'application/json;charset=UTF-8',
+                  url: '/login/',
+                  data: JSON.stringify(data),
+                  dataType: "json",        
+                  success: function(result) {        
+                    if (result.json['success']) {
+                      window.location.replace('/')
+                    } else {
+                      $('#alert-fields-login-2').hide(); 
+                      $('#alert-fields-login').show();     
+                    }
+                  }
+                });      
               }
-            });      
-          }
+            });
         });
-    </script>
+        </script>
     <style>
     #habla_window_div #habla_oplink_a {
       color:white;
@@ -140,5 +138,5 @@
       background: #00a9e5 none repeat scroll 0 0;
     }
     </style>
-    </body>
-</html>
+  </body>
+  </html>
