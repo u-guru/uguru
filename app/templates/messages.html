@@ -107,7 +107,6 @@
 	</div>
 </div>
 <div id="messages">
-	{% include 'calendar.html' %}
 	{% for conversation in conversations|reverse %}
 		<div id="conversation-detailed-{{loop.index}}" style="display:none; border:1px">
 			<br>
@@ -155,13 +154,6 @@
 								
 							</div>
 							{% endif %}
-							<div class='margin-top-20'>
-								<span class='reg-text normal-text'>Scheduled Meeting Time:</span>
-	                              <a id='request-calendar-toggle' href='#' onclick='show_tutor_request_submitted_calendar({{calendars[conversation.requests[0]][0]}}, {{calendars[conversation.requests[0]][1][1]}}, true)'>
-		                          	<span class='green-text bold'> See scheduled time: </span> 
-		                          	<span class='glyphicon glyphicon-calendar'></span>
-		                          </a>
-		                    </div>
 		                    <div class='margin-top-20'>
 								<span class='reg-text normal-text'>Scheduled Meeting Location:</span>
 		                          	<span class='green-text bold'> {{conversation.requests[0].location}}</span> 

@@ -855,24 +855,7 @@ def update_requests():
                 return errors(['Sorry! You were just a couple seconds late. The student has already chose a Guru'])
 
             r.committed_tutors.append(tutor)
-            
             tutor = user
-            
-            weekly_availability = ajax_json['calendar']
-            
-            tutor_week_times = Week(owner=tutor.id)
-            db_session.add(tutor_week_times)
-            i = 0
-            for day in weekly_availability:
-                for time_range in day:
-                    temp_range = Range(start_time=time_range[0], end_time=time_range[1], week_day=i)
-                    db_session.add(temp_range)
-                    tutor_week_times.ranges.append(temp_range)
-                i = i + 1
-
-            r.weekly_availability.append(tutor_week_times)
-
-
             skill_id = r.skill_id
             skill = Skill.query.get(skill_id)
             skill_name = skill.name
@@ -1579,25 +1562,7 @@ def student_request():
         time_estimate = float(ajax_json['estimate'])
         )
 
-    # Include optional professor information if available
-    if ajax_json.get('professor'):
-        new_request.professor = ajax_json['professor']
-
-    # Process calendar information, some voodoo magic that only Samir understands
-    weekly_availability = ajax_json['calendar']
-    week_times = Week(owner=0)
-    db_session.add(week_times)
-    i = 0
-    for day in weekly_availability:
-        for time_range in day:
-            temp_range = Range(start_time=time_range[0], end_time=time_range[1], week_day=i)
-            db_session.add(temp_range)
-            week_times.ranges.append(temp_range)
-        i = i + 1
-    
-    logging.info("===Processed calander information===")
-
-    new_request.weekly_availability.append(week_times)
+    new_request.remote = ajax_json.get('remote')
     new_request.num_students = 1 # TODO : this will eventually be variable?
     new_request.student_estimated_hour = int(float(ajax_json['hourly-price']))
     new_request.location = ajax_json['location']
@@ -1944,9 +1909,7 @@ def activity(arg=None):
             if address_book.get(student_id):
                     address_book[student_id]['request'] = request
         student = User.query.get(request.student_id)
-        student_time_ranges = get_calendar_time_ranges(request.weekly_availability, 0)
-        tutor_calendars = get_tutor_time_ranges(request.weekly_availability)
-        request_dict[request.id] = {'request':request,'student':student, 'student-calendar':student_time_ranges, 'tutor-calendars':tutor_calendars}
+        request_dict[request.id] = {'request':request,'student':student}
     for payment in user.payments:
         tutor_id = payment.tutor_id
         student_id = payment.student_id
@@ -1973,25 +1936,6 @@ def activity(arg=None):
         outgoing_request_index=outgoing_request_index, avg_rating=avg_rating, num_ratings = num_ratings, time=time, variations=short_variations_dict,\
         confirm_payments=confirm_payments, user_avg_rating = calc_avg_rating(user), user_notifications=user_notifications)
 
-def get_calendar_time_ranges(week_object, owner):
-    if not week_object.first():
-        return []
-    arr_ranges = []
-    ranges = week_object.filter_by(owner=owner).first().ranges
-    for r in ranges:
-        arr_ranges.append([r.week_day, r.start_time, r.end_time])
-    return arr_ranges
-
-def get_tutor_time_ranges(week_object):
-    if not week_object.first():
-        return []
-    tutor_calendar_dict = {}
-    for w in week_object:
-        if w.owner != 0:
-            tutor_calendar_dict[w.owner] = get_calendar_time_ranges(week_object, w.owner)
-    return tutor_calendar_dict
-
-
 @app.route('/guru-rules/')
 def guru_rules():
     return render_template('guru-rules.html')
@@ -2006,7 +1950,6 @@ def messages():
         user.last_active = datetime.now()
     pretty_dates = {}
     transactions = []
-    calendars = {}
     for p in user.payments:
         if p.tutor_id and p.student_id:
             if user.verified_tutor:
@@ -2015,13 +1958,12 @@ def messages():
                 transactions.append(User.query.get(p.tutor_id))
     for conversation in user.mailbox.conversations:
         r = conversation.requests[0]
-        calendars[r] = (get_calendar_time_ranges(r.weekly_availability, 0), get_tutor_time_ranges(r.weekly_availability))
         for message in conversation.messages:
             pretty_dates[message.id] = pretty_date(message.write_time)
     
     conversations = sorted(user.mailbox.conversations, key=lambda c:c.last_updated)
     return render_template('messages.html', user=user, pretty_dates=pretty_dates, environment = get_environment(), session=session, \
-        transactions = transactions, conversations=conversations, calendars=calendars)
+        transactions = transactions, conversations=conversations)
 
 
 @app.route('/settings/referral/')
@@ -2151,24 +2093,6 @@ def schedule_job(func, seconds_delay, args):
     sched.start()
     later_time = datetime.now() + timedelta(0, seconds_delay)                
     job = sched.add_job(func=func, next_run_time=later_time, args=args) 
-
-
-def find_earliest_meeting_time(_request):
-    student_ranges = sorted(get_calendar_time_ranges(_request.weekly_availability, 0), key=lambda u:u[0])
-    tutor_ranges = sorted(get_calendar_time_ranges(_request.weekly_availability, _request.connected_tutor_id), key=lambda u:u[0])
-    logging.info(student_ranges)
-    logging.info(tutor_ranges)
-    index = 0
-    for tutor_range in tutor_ranges:
-        for student_range in student_ranges:
-            if student_range[0] == tutor_range[0] and student_range[1] == tutor_range [1]:
-                return [student_range[0], student_range[1]]
-
-            if student_range[0] == tutor_range[0] and tutor_range[1] >= student_range[1] and tutor_range[2] <= student_range[2]:
-                return [tutor_range[1], tutor_range[2]]
-
-
-    return None
 
 def authenticate(user_id):
     session['user_id'] = user_id

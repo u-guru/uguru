@@ -1225,7 +1225,6 @@ def api(arg, _id):
             request_id = request.json.get('request_id')
             hourly_amount = request.json.get('hourly_amount')
             extra_details = request.json.get('tutor_message') # TODO : assigned buy unused
-            weekly_availability = request.json.get('calendar')
             notification_id = request.json.get('notif_id')
             current_notification = Notification.query.get(notification_id)
 
@@ -1234,19 +1233,6 @@ def api(arg, _id):
 
             r = Request.query.get(request_id)   
             r.committed_tutors.append(tutor)
-            
-            tutor_week_times = Week(owner=tutor.id)
-            db_session.add(tutor_week_times)
-            i = 0
-            for day in weekly_availability:
-                for time_range in day:
-                    temp_range = Range(start_time=time_range[0], end_time=time_range[1], week_day=i)
-                    db_session.add(temp_range)
-                    tutor_week_times.ranges.append(temp_range)
-                i = i + 1
-
-            r.weekly_availability.append(tutor_week_times)
-
 
             skill_id = r.skill_id
             skill = Skill.query.get(skill_id)
@@ -1436,9 +1422,6 @@ def api(arg, _id):
 
             from views import find_earliest_meeting_time, convert_mutual_times_in_seconds
             from tasks import send_twilio_message_delayed
-            mutual_times_arr = find_earliest_meeting_time(r)
-            total_seconds_delay = int(convert_mutual_times_in_seconds(mutual_times_arr, r)) - 3600
-            logging.info("Here are the time calculations for the the tutor. Reminder before session: " + str(total_seconds_delay) + "seconds" )
             if tutor.phone_number and tutor.text_notification:
                 logging.info("The tutor has a phone number and is supposed to receive a text.")
                 from emails import its_a_match_guru
@@ -2080,15 +2063,6 @@ def upload_file_to_amazon(filename, file):
     sml = b.new_key("/".join(["/",filename]))
     sml.set_contents_from_file(file)
     sml.set_acl('public-read')
-
-def get_calendar_time_ranges(week_object, owner):
-    if not week_object.first():
-        return []
-    arr_ranges = []
-    ranges = week_object.filter_by(owner=owner).first().ranges
-    for r in ranges:
-        arr_ranges.append([r.week_day, r.start_time, r.end_time])
-    return arr_ranges
 
 def process_back_to_original_form(arr_arr):
     return_list = [[],[],[],[],[],[],[]]
