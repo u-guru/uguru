@@ -145,18 +145,6 @@
         <hr>
         <div class='row-fluid block font-14'>
             <label class='font-20'> Availability and Pricing</label>
-            <div class='row-fluid block'>
-                Preferred Meeting Time: 
-                {% if request_dict[notif.request_id]['student-calendar'] %}
-                  <a id='request-calendar-toggle' onclick='show_tutor_request_submitted_calendar({{request_dict[notif.request_id]["student-calendar"]}}, {{request_dict[notif.request_id]["tutor-calendars"][tutor_dict[notif].id]}}, false, {{time.mktime(request_dict[notif.request_id]["request"].time_created.timetuple())}})'>
-                    <span class='glyphicon glyphicon-calendar'></span>
-                    <span class='blue-text'> See {{tutor.name.split(" ")[0]}}'s Availability </span> 
-                  </a>
-                {% else %}
-                    {{request_dict[notif.request_id]['request'].availability}}
-                {% endif %}
-
-            </div>
             <div class='row-fluid block margin-top-10 margin-bottom-10'>
                 {{tutor.name.split(" ")[0]}} would like: 
                 {% if not first_time_guru %}
