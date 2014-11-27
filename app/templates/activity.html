@@ -804,10 +804,9 @@
 	<script type="text/javascript">Stripe.setPublishableKey("{{key}}");</script>
 	{% endif %}
 	<script src="/static/js/jquery-ui.js"></script>
-	<script src="/static/js/jquery.nouislider.min.js"></script>
 	<script>
 	  	mixpanel.track('Loaded Activity Page')
-
+	  	//TODO, where is the right place to put this?
 		{% if not user.password %}
         	$('#password-modal').modal();
 
@@ -835,136 +834,5 @@
         		}
         	});
         {% endif %}
-
-        var Link = $.noUiSlider.Link; 
-        {% if confirm_payments %}
-        $('#confirm-time-payment-slider').slider(
-          {
-            'min':1, 
-            'max':20, 
-            'value':{{confirm_payments[0]['payment'].time_amount}} * 2,
-            change: function(event, ui) {
-              slider_val = $(this).slider('value');
-              hr_text = 'hrs'
-              if (slider_val == 2) {
-                hr_text = 'hr'
-              }
-		      $('#change-payment-time-txt').text((slider_val/2) + hr_text);
-		      hourly_rate = parseInt($('#confirm-payment-tutor-rate').text())
-		      $('#confirm-payment-tutor-total').text(((slider_val/2) * hourly_rate * 0.75).toFixed(2));
-            }
-          }
-      	);
-      	$('#edit-confirm-payment-link').click(function() {
-	      $(this).hide();
-	      $('#edit-confirm-payment-cancel').show();
-	      orig_estimated_hour = $('#confirm-time-payment-slider').slider('value');
-	      $('#change-time-container').show();
-	      $('#submit-confirm-payment-text').text('Adjust Amount and Bill');
-	    });
-
-	    $('#edit-confirm-payment-cancel').click(function() {
-	      $(this).hide();
-	      $('#change-time-container').hide();
-	      $('#edit-confirm-payment-link').show();
-	      $('#submit-confirm-payment-text').text('This Looks Right');
-	    });
-        {% endif %}
-
-        {% if user.verified_tutor %}
-
-        $('.tutor-change-price-slider').slider(
-          {
-            'min':5, 
-            'max':40, 
-            'value':15,
-            change: function(event, ui) {
-              slider_val = $(this).slider('value');
-              hr_text = 'hrs'
-              if (slider_val == 1) {
-                hr_text = 'hr'
-              }
-              feed_message_index = last_clicked_notif_index + 1
-		      $('#student-offer-hourly-price-' + feed_message_index).text($('#tutor-change-price-slider-'+ feed_message_index).slider('value'));
-		      $('#student-offer-total-price-' + feed_message_index).text($('#tutor-change-price-slider-'+ feed_message_index).slider('value') * $('#student-time-estimate-' +feed_message_index).text());
-		      $('#you-will-make-' + feed_message_index).text(parseFloat($('#tutor-change-price-slider-'+ feed_message_index).slider('value')) * 0.75 *parseFloat($('#session-length-'+ feed_message_index).text()));
-            }
-          }
-      	);
-        {% endif %}
-        {% if address_book or user.verified_tutor %}
-        $('#time-estimate-slider-payment').slider(
-          {
-            'min':0, 
-            'max':10, 
-            'value':2,
-            change: function(event, ui) {
-              slider_val = $(this).slider('value');
-              $('#payment').text(slider_val)
-            }
-          }
-      	);
-
-        $('#hourly-price-slider-payment').slider(
-          {
-            'min':10, 
-            'max':40, 
-            'value':15,
-            change: function(event, ui) {
-              slider_val = $(this).slider('value');
-              $('#student-charged-payment').text(prices_reversed_dict[parseInt($('#hourly-price-slider-payment').slider('value'))] + "")
-              $('#price').text(slider_val);
-            }
-          }
-      	);
-
-        $("#hourly-price-slider-payment").noUiSlider({
-            start:15
-           	,range: {'min':[10], 'max':[40]}
-           	,step: 1
-           	,serialization: {
-                lower: [ new Link (
-                  {
-                    target: $('#price')
-                  })
-                ],
-                format: {
-                  decimals:1
-                }
-              }
-        });
-        {% endif %}
-        {% for r in user.outgoing_requests %}
-        	$("#hourly-price-slider-request-{{loop.index - 1}}").noUiSlider({
-	            start:{{r.student_estimated_hour}}
-	           	,range: {'min':[12], 'max':[40]}
-	           	,step: 1
-	           	,serialization: {
-	                lower: [ new Link (
-	                  {
-	                    target: $('#hourly-price-request-{{loop.index - 1}}')
-	                  })
-	                ],
-	                format: {
-	                  decimals:0
-	                }
-	              }
-        	});
-        	$("#time-estimate-slider-request-{{loop.index - 1}}").noUiSlider({
-	            start:{{r.time_estimate}}
-	           	,range: {'min':[0], 'max':[6]}
-	           	,step: 0.5
-	           	,serialization: {
-	                lower: [ new Link (
-	                  {
-	                    target: $('#time-estimate-request-{{loop.index - 1}}')
-	                  })
-	                ],
-	                format: {
-	                  decimals:1
-	                }
-	              }
-        	});
-        {% endfor %}
     </script>
 {% endblock %}
