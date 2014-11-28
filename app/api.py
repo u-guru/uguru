@@ -41,7 +41,7 @@ PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 
 # General request route
 # POST creates a new request
-@app.route('/web/v1/api/requests', methods=['POST'])
+@app.route('/api/v1/requests', methods=['POST'])
 def request_web_api():
 
     # Check if user is authenticated
@@ -97,22 +97,21 @@ def request_web_api():
                 return json_response(http_code=200, custom_error=error_msg, \
                     redirect='back-to-home')
 
+            #Initiated delayed functions here.
+            from tasks import contact_qualified_tutors
+            try:
+                contact_qualified_tutors.delay(args=[_request.approved_tutor_ids()])
+            except:
+                #TODO, figure out way to test connection to redis in testing.
+                pass
+
             #OK we are FINALLY good to send the return dictionary back to the 
             user.add_request_to_pending_requests(_request)
             request_return_dict = _request.get_return_dict(skill, user)
             return json_response(http_code = 200, return_dict = request_return_dict)
 
-            # Create request
-
-            # Check & process the number of tutors
-
-            # Return success back to user 
-
-            # Start contacting tutors
-            
-            return json_response(422, request_return_dict)
-
         else:
+            #Invalid payload
             return json_response(422, return_dict)
 
     return json_response(400)
@@ -122,28 +121,40 @@ def request_web_api():
 # Specific support route
 # GET returns details of a request 
 # DELETE cancels a request 
-@app.route('/web/v1/api/requests/<request_id>', methods=['GET', 'PUT', 'DELETE'])
+@app.route('/api/v1/requests/<request_id>', methods=['GET', 'DELETE'])
 def request_by_id_web_api(request_id):
-    pass
-    # If Get
-        # If student
-            # Get stage
-        # If tutor
-            # Get stage
-    # If Delete
-        # If student
-            # Bill them 
-        # If tutor
+    
+    if request.method == 'GET':
+        
+        user = getUser()
+        if not user:
+            return json_response(http_code=401)
+        
+        #Get request by ID
+        _request = Request.get_request_by_id(request_id)
+        
+        #check if this request_id is valid
+        if not _request:
+            return json_response(http_code=400)
+
+        #Make sure user is in the right place, either a student, or a tutor.
+        if not user == _request.get_student() and not _request.is_tutor_active(user):
+            return json_response(http_code=403)
+        
+        request_return_dict = _request.get_return_dict()
+        return json_response(http_code = 200, return_dict = request_return_dict)
+
+    return json_response(400)
 
 # Tutor Accepts/Rejects Request Route
 # PUT updates the request accordingly
-@app.route('/web/v1/api/requests/<request_id>/tutor_accept', methods=['PUT'])
+@app.route('/api/v1/requests/<request_id>/tutor_accept', methods=['PUT'])
 def request_by_id_tutor_accept_web_api(request_id):
     pass
 
 # Student Accepts/Rejects Tutor Route
 # PUT updates the request accordingly
-@app.route('/web/v1/api/requests/<request_id>/student_accept', methods=['PUT'])
+@app.route('/api/v1/requests/<request_id>/student_accept', methods=['PUT'])
 def request_by_id_student_accept_web_api(request_id):
     pass
 
@@ -153,7 +164,7 @@ def request_by_id_student_accept_web_api(request_id):
 
 ###### /users ########
 # POST creates a new user
-@app.route('/web/v1/api/users', methods=['POST'])
+@app.route('/api/v1/users', methods=['POST'])
 def users_web_api():
 
     if request.method == 'POST':
@@ -166,7 +177,7 @@ def users_web_api():
             
             name = request.json.get('name').title()
             email = request.json.get('email')
-            password = md5(request.json.get('password')).hexdigest()
+            password = request.json.get('password')
 
             #Make sure user doesn't already exist in DB
             if User.does_email_exist(email):
@@ -186,14 +197,16 @@ def users_web_api():
 
 ##### /login/ ########
 # GET logs in the user
-@app.route('/web/v1/api/login', methods = ['GET'])
+@app.route('/api/v1/login', methods = ['GET'])
 def users_login_web_api():
     
     if request.method == 'GET':
-        
+
         expected_parameters = ['email','password']
         request_json = request.json
         return_dict = {}
+
+        #TODO, check if a user is already logged in!
 
         if request_contains_all_valid_parameters(request_json, expected_parameters):
             
@@ -228,7 +241,7 @@ def users_login_web_api():
 ##### /user/<user_id> #####
 # PUT updates a user
 # DELETE deletes a user (TODO Later)
-@app.route('/web/v1/api/users/<user_id>', methods = ['PUT', 'DELETE'])
+@app.route('/api/v1/users/<user_id>', methods = ['PUT', 'DELETE'])
 def users_by_id_web_api(user_id):
     
     if request.method == 'PUT':
@@ -238,14 +251,14 @@ def users_by_id_web_api(user_id):
 
 # List of active requests for a user Route 
 # GET returns a list of active requests
-@app.route('/web/v1/api/users/<user_id>/active_requests', methods = ['GET'])
+@app.route('/api/v1/users/<user_id>/active_requests', methods = ['GET'])
 def users_by_id_active_requests_web_api(user_id):
     # Add all user settings here.
     pass
 
 # User All Conversations Route
 # GET returns a list of conversations for a user
-@app.route('/web/v1/api/users/<user_id>/conversations', methods = ['GET'])
+@app.route('/api/v1/users/<user_id>/conversations', methods = ['GET'])
 def users_by_id_conversations_web_api(user_id):
     # If student, go here
     # If tutor, go here
@@ -256,7 +269,7 @@ def users_by_id_conversations_web_api(user_id):
 # GET Returns all messages (sorted by time) for a conversation
 # POST creates and returns a message 
 # PUT Pings a tutor
-@app.route('/web/v1/api/users/<user_id>/conversations/<conversation_id>', methods = ['GET', 'POST', 'PUT'])
+@app.route('/api/v1/users/<user_id>/conversations/<conversation_id>', methods = ['GET', 'POST', 'PUT'])
 def users_by_id_address_book(user_id):
     # If student, go here
     # If tutor, go here
@@ -266,7 +279,7 @@ def users_by_id_address_book(user_id):
 # POST adds card
 # PUT updates a card
 # DELETE removes a card (TODO LATER)
-@app.route('/web/v1/api/users/<user_id>/customer', methods = ['GET'])
+@app.route('/api/v1/users/<user_id>/customer', methods = ['GET'])
 def users_by_id_customer_web_api(user_id):
     pass
 
@@ -274,26 +287,26 @@ def users_by_id_customer_web_api(user_id):
 # POST adds card
 # PUT updates a card
 # DELETE removes a card (TODO LATER)
-@app.route('/web/v1/api/users/<user_id>/recipient', methods = ['GET'])
+@app.route('/api/v1/users/<user_id>/recipient', methods = ['GET'])
 def users_by_id_recepient_web_api(user_id):
     pass
 
 # User transaction history route
 # GET returns list of transactions
-@app.route('/web/v1/api/users/<user_id>/transactions', methods = ['GET'])
+@app.route('/api/v1/users/<user_id>/transactions', methods = ['GET'])
 def users_by_id_transactions_web_api(user_id):
     pass
 
 # User logout route
 # GET logs out the user
-@app.route('/web/v1/api/logout', methods = ['GET'])
+@app.route('/api/v1/logout', methods = ['GET'])
 def users_logout_web_api():
     pass
 
 # User reset password route
 # POST updates a password
 # GET sends an email to the user to reset the password
-@app.route('/web/v1/api/reset_password', methods = ['GET', 'POST'])
+@app.route('/api/v1/reset_password', methods = ['GET', 'POST'])
 def users_reset_password_web_api():
     pass
 
@@ -303,7 +316,7 @@ def users_reset_password_web_api():
 
 # POST Submits a Rating
 # GET Returns a list of Ratings & Average (TODO Later)
-@app.route('/web/v1/api/ratings', methods = ['POST'])
+@app.route('/api/v1/ratings', methods = ['POST'])
 def ratings_web_api():    
     pass
 
@@ -313,12 +326,12 @@ def ratings_web_api():
 ########################
 
 # POST Submits a general support request
-@app.route('/web/v1/api/support/', methods = ['POST'])
+@app.route('/api/v1/support/', methods = ['POST'])
 def support_web_api():
     pass
 
 # POST Submits a general support refund request
-@app.route('/web/v1/api/support/refund/', methods = ['POST'])
+@app.route('/api/v1/support/refund/', methods = ['POST'])
 def support_web_api():
     pass
 

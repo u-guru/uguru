@@ -244,9 +244,15 @@ class User(Base):
 
 
     @staticmethod
+    def encrypted_password(password):
+        from hashlib import md5
+        return md5(password).hexdigest()
+
+    @staticmethod
     def create_user(name, email, password):
         from datetime import datetime
-        user = User(name=name, email=email, password=password)
+        encrypted_password = User.encrypted_password(password)
+        user = User(name=name, email=email, password=encrypted_password)
         try: 
             db_session.add(user)
             db_session.commit()
@@ -258,8 +264,7 @@ class User(Base):
 
     @staticmethod
     def login_user(email, password):
-        from hashlib import md5
-        encrypted_password = md5(password).hexdigest()
+        encrypted_password = User.encrypted_password(password)
         user = User.query.filter_by(email=email, password=encrypted_password).first()
         return user
 
@@ -652,16 +657,52 @@ class Request(Base):
         (str(self.id), student_name, tutor_name, skill_name, \
             self.time_created.strftime('%b %d,%Y'), self.time_estimate)
 
-    def get_return_dict(self, skill, student, tutor=None):
+    def get_return_dict(self, skill=None, student=None, tutor=None):
         from lib.requests import request_obj_to_dict
-        return request_obj_to_dict(self, skill, student, tutor=None)
+
+        if not skill:
+            skill = Skill.query.get(self.skill_id)
+        if not student:
+            student = User.query.get(self.student_id)
+        if self.connected_tutor_id:
+            tutor = User.query.get(self.connected_tutor_id)
+        
+        return request_obj_to_dict(self, skill, student, tutor)
 
     def get_tutor_count(self):
         return len(self.requested_tutors)
 
+    def is_tutor_active(self, tutor):
+        if tutor not in self.approved_tutors():
+            return False
+        else:
+            True
+
     def approved_tutors(self):
         from lib.requests import approved_tutors
         return approved_tutors(self)
+
+    def approved_tutor_ids(self):
+        tutor_ids = [tutor.id for tutor in self.approved_tutors()]
+        return tutor_ids
+
+    def get_student(self):
+        return User.query.get(self.student_id)
+
+    def get_connected_tutor(self):
+        return User.query.get(self.connected_tutor_id)
+
+    def get_status(self):
+        if not self.connected_tutor_id:
+            return 'pending'
+        elif self.is_canceled():
+            return 'canceled'
+        else:
+            return 'matched'
+        
+    @staticmethod
+    def get_request_by_id(request_id):
+        return Request.query.get(request_id)
     
     @staticmethod
     def create_request(student, skill_id, description, time_estimate, \
