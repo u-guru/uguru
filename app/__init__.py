@@ -18,10 +18,6 @@ root.addHandler(ch)
 app = Flask(__name__)
 app.config.from_object('config')
 
-#Detects production env
-if os.environ.get('DATABASE_URL'):
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-
 class DataBase():
     session = None;
 
