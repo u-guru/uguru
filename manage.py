@@ -166,6 +166,14 @@ def initialize():
     db_session.add(user)
     db_session.commit()
 
+def create_cs10_skill():
+    from app.models import Skill
+    from app.database import db_session
+    skill = Skill(u'COMPSCI.10')
+    db_session.add(skill)
+    db_session.commit()
+    skill.id = 6849
+    db_session.commit()
 
-
-
+if arg == 'initialize':
+    initialize()

@@ -48,6 +48,7 @@ def request_web_api():
     user = getUser()
     if not user:
         return json_response(http_code=401)
+
     
     if request.method == 'POST':
         
@@ -62,33 +63,58 @@ def request_web_api():
             #Check if this skill is registed in our DB
             skill_name = request_json.get('skill_name')
             skill = Skill.get_skill_from_name(skill_name)
-            if not skill:
+            if not skill: #TODO, this should still be logged in mixpanel!
                 error_msg = 'Sorry! This is not a support skill, please choose one from the dropdown.'
-                return json_response(http_code=200, custom_error=error_msg)
+                return json_response(http_code=403, custom_error=error_msg)
 
-            #Make sure they don't already an active request for this skill.
-            pending_requests = user.get_pending_requests()
-            pending_requests_skill_ids = [_request.skill_id for _request in pending_requests]
-            if skill.id in pending_requests_skill_ids:
+            #Make sure they don't already a pending request for a skill
+            if user.already_has_pending_request_for_skill(skill):
                 error_msg = 'You already have a pending request for ' + skill_name.upper() + \
                     '. Please cancel your current one or wait for a tutor for the other one.'
-                return json_response(http_code=200, custom_error=error_msg)
+                return json_response(http_code=403, custom_error=error_msg)
+            
+            #Make sure user is not a tutor for this skill
+            if skill in user.skills:
+                error_msg = "You're already a tutor for " + skill_name.upper() + '!'
+                return json_response(http_code=403, custom_error=error_msg)
 
+            #Create a request
+            _request = Request.create_request(
+                    student = user,
+                    skill_id = skill.id,
+                    description = request_json.get('description'),
+                    time_estimate = request_json.get('time_estimate'),
+                    phone_number = request_json.get('phone_number'),
+                    location = request_json.get('location'),
+                    remote = request_json.get('remote'),
+                    urgency = int(request_json.get('urgency')),
+                    start_time = request.json.get('start_time')
+                )
 
-            #Create request from the parameters
-            return_dict = DEFAULT_SUCCESS_DICT 
-            return json_response(200, return_dict)
+            #Check if there are no tutors
+            if _request.get_tutor_count() == 0:
+                error_msg = "We have no tutors for " + skill_name.upper()
+                return json_response(http_code=200, custom_error=error_msg, \
+                    redirect='back-to-home')
 
+            #OK we are FINALLY good to send the return dictionary back to the 
+            user.add_request_to_pending_requests(_request)
+            request_return_dict = _request.get_return_dict(skill, user)
+            return json_response(http_code = 200, return_dict = request_return_dict)
 
-        # Process parameters
+            # Create request
 
-        # Create request
+            # Check & process the number of tutors
 
-        # Check & process the number of tutors
+            # Return success back to user 
 
-        # Return success back to user 
+            # Start contacting tutors
+            
+            return json_response(422, request_return_dict)
 
-        # Start contacting tutors
+        else:
+            return json_response(422, return_dict)
+
     return json_response(400)
 
     
@@ -145,7 +171,7 @@ def users_web_api():
             #Make sure user doesn't already exist in DB
             if User.does_email_exist(email):
                 error_msg = 'Email already exists. Please login.'
-                return json_response(http_code=200, custom_error=error_msg)
+                return json_response(http_code=403, custom_error=error_msg)
 
             else:
                 user = User.create_user(name, email, password)
@@ -167,7 +193,6 @@ def users_login_web_api():
         
         expected_parameters = ['email','password']
         request_json = request.json
-        print 'request_json', request.json
         return_dict = {}
 
         if request_contains_all_valid_parameters(request_json, expected_parameters):
@@ -187,13 +212,13 @@ def users_login_web_api():
             #Email doesn't exist
             elif User.does_email_exist(email):
                 error_msg = 'Incorrect password. Please try again!'
-                return json_response(http_code=200, custom_error=error_msg)
+                return json_response(http_code=403, custom_error=error_msg)
 
             #Email does exist.
             else:
                 error_msg = 'Email does not exist in our records. ' + \
                     'Please try again or create an account.'
-                return json_response(http_code=200, custom_error=error_msg)
+                return json_response(http_code=403, custom_error=error_msg)
         else:
             # Incorrect json payload
             return json_response(422)

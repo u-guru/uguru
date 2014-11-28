@@ -271,20 +271,48 @@ class User(Base):
         from flask import session
         session.pop('user_id')
 
+    def get_first_name(self):
+        return self.name.split(' ')[0].title()
+
     def calc_avg_ratings(self):
         rating_sum = 0.0
         for rating in self.tutor_ratings:
             rating_sum += rating.tutor_rating
         return rating_sum / len(self.tutor_rating)
 
+    def add_skill(self, skill):
+        self.skills.append(skill)
+        try: 
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
+    def add_request_to_pending_requests(self, _request):
+        self.outgoing_requests.append(_request)
+        try: 
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
     # Active requests is not expired, or not canceled (yet), or not matched.
-    def get_pending_requests():
-        return user.outgoing_requests
+    def get_pending_requests(self):
+        return self.outgoing_requests
 
     #returns ten most recent notifications
     def get_recent_notifications(self):
         notifications = sorted(self.notifications, key=lambda n:n.id, reverse=True)[:10]
         return notifications
+
+    def already_has_pending_request_for_skill(self, skill):
+        pending_requests = self.get_pending_requests()
+        if not pending_requests:
+            return False
+        pending_requests_skill_ids = [_request.skill_id for _request in pending_requests]
+        if skill.id in pending_requests_skill_ids:
+            return True
+        
 
     #return all notifications
     def get_all_notifications(self):
@@ -560,6 +588,7 @@ class Request(Base):
     available_time = Column(String)
     location = Column(String)
     last_updated = Column(DateTime)
+    start_time = Column(DateTime) #New
     remote = Column(Boolean) #Video-chat friendly
 
     cancellation_reason = Column(String)
@@ -593,15 +622,18 @@ class Request(Base):
 
     #TODO: make sure student_id doesn't already have a request for that skill_id
 
-    def __init__(self, student_id, skill_id, description, urgency, \
-        frequency, time_estimate):
+    def __init__(self, student_id, skill_id, description, time_estimate, \
+        phone_number, location=None, remote=None, urgency=None, start_time=None):
         self.student_id = student_id
         self.skill_id = skill_id
         self.description = description
         self.urgency = urgency
-        self.frequency = frequency
         self.time_estimate = time_estimate
         self.time_created = datetime.now()
+        self.start_time = start_time
+        self.remote = remote
+        self.location = location
+        self.phone_number = phone_number
         self.requested_tutors = Skill.query.get(skill_id).tutors
         
 
@@ -619,6 +651,48 @@ class Request(Base):
         \n Time Created: %s, Time Estimated: %s hours>" %\
         (str(self.id), student_name, tutor_name, skill_name, \
             self.time_created.strftime('%b %d,%Y'), self.time_estimate)
+
+    def get_return_dict(self, skill, student, tutor=None):
+        from lib.requests import request_obj_to_dict
+        return request_obj_to_dict(self, skill, student, tutor=None)
+
+    def get_tutor_count(self):
+        return len(self.requested_tutors)
+
+    def approved_tutors(self):
+        from lib.requests import approved_tutors
+        return approved_tutors(self)
+    
+    @staticmethod
+    def create_request(student, skill_id, description, time_estimate, \
+        phone_number, location, remote=None, urgency=None, start_time=None):
+        
+        #Convert from JS Date to Python Datetime
+        from lib.utils import js_date_to_python_datetime
+        start_time = js_date_to_python_datetime(start_time)
+
+        _request = Request(
+                student_id = student.id,
+                skill_id = skill_id,
+                description = description,
+                time_estimate = time_estimate,
+                phone_number = phone_number,
+                location = location,
+                remote = remote,
+                urgency = urgency,
+                start_time = start_time
+            )
+
+        try: 
+            db_session.add(_request)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
+        return _request
+
+
 
     def convert_urgency_to_str(self, number):
         if number == 0:
@@ -713,7 +787,11 @@ class Skill(Base):
     def get_skill_from_name(skill_name):
         #TODO: Organize skills in next iteration of Data Model
         from static.data.variations import courses_dict
-        return courses_dict.get(skill_name.lower())
+        skill_id = courses_dict.get(skill_name.lower())
+        if skill_id:
+            skill = Skill.query.get(skill_id)
+            return skill
+        return False
 
 
 
