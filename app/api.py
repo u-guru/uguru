@@ -41,9 +41,57 @@ PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 
 # General request route
 # POST creates a new request
-@app.route('/web/v1/api/requests/', methods=['POST'])
+@app.route('/web/v1/api/requests', methods=['POST'])
 def request_web_api():
-    pass
+
+    # Check if user is authenticated
+    user = getUser()
+    if not user:
+        return json_response(http_code=401)
+    
+    if request.method == 'POST':
+        
+        request_json = request.json
+        return_dict = {}
+
+        expected_parameters = ['skill_name', 'description', 'time_estimate', 
+        'phone_number', 'location', 'remote', 'urgency', 'start_time']
+
+        if request_contains_all_valid_parameters(request_json, expected_parameters):
+
+            #Check if this skill is registed in our DB
+            skill_name = request_json.get('skill_name')
+            skill = Skill.get_skill_from_name(skill_name)
+            if not skill:
+                error_msg = 'Sorry! This is not a support skill, please choose one from the dropdown.'
+                return json_response(http_code=200, custom_error=error_msg)
+
+            #Make sure they don't already an active request for this skill.
+            pending_requests = user.get_pending_requests()
+            pending_requests_skill_ids = [_request.skill_id for _request in pending_requests]
+            if skill.id in pending_requests_skill_ids:
+                error_msg = 'You already have a pending request for ' + skill_name.upper() + \
+                    '. Please cancel your current one or wait for a tutor for the other one.'
+                return json_response(http_code=200, custom_error=error_msg)
+
+
+            #Create request from the parameters
+            return_dict = DEFAULT_SUCCESS_DICT 
+            return json_response(200, return_dict)
+
+
+        # Process parameters
+
+        # Create request
+
+        # Check & process the number of tutors
+
+        # Return success back to user 
+
+        # Start contacting tutors
+    return json_response(400)
+
+    
 
 # Specific support route
 # GET returns details of a request 
@@ -77,18 +125,90 @@ def request_by_id_student_accept_web_api(request_id):
 # User REST Web Api #
 ########################
 
-# General User Route
+###### /users ########
 # POST creates a new user
-@app.route('/web/v1/api/users')
+@app.route('/web/v1/api/users', methods=['POST'])
 def users_web_api():
-    pass
 
-# Updating/canceling a user
+    if request.method == 'POST':
+        
+        expected_parameters = ['name','email','password']
+        request_json = request.json
+        return_dict = {}
+
+        if request_contains_all_valid_parameters(request_json, expected_parameters):
+            
+            name = request.json.get('name').title()
+            email = request.json.get('email')
+            password = md5(request.json.get('password')).hexdigest()
+
+            #Make sure user doesn't already exist in DB
+            if User.does_email_exist(email):
+                error_msg = 'Email already exists. Please login.'
+                return json_response(http_code=200, custom_error=error_msg)
+
+            else:
+                user = User.create_user(name, email, password)
+                user.authenticate()
+                return_dict = DEFAULT_SUCCESS_DICT 
+                return json_response(200, return_dict)
+        else:
+            # Incorrect json payload
+            return json_response(422)
+
+    return json_response(400)
+
+##### /login/ ########
+# GET logs in the user
+@app.route('/web/v1/api/login', methods = ['GET'])
+def users_login_web_api():
+    
+    if request.method == 'GET':
+        
+        expected_parameters = ['email','password']
+        request_json = request.json
+        print 'request_json', request.json
+        return_dict = {}
+
+        if request_contains_all_valid_parameters(request_json, expected_parameters):
+            
+            email = request.json.get('email')
+            password = request.json.get('password')
+
+            #Check if user exists in DB
+            user = User.login_user(email, password)
+            
+            #If it does, send success to client to redirect to home
+            if user: 
+                user.authenticate()
+                return_dict = DEFAULT_SUCCESS_DICT 
+                return json_response(200, return_dict)
+
+            #Email doesn't exist
+            elif User.does_email_exist(email):
+                error_msg = 'Incorrect password. Please try again!'
+                return json_response(http_code=200, custom_error=error_msg)
+
+            #Email does exist.
+            else:
+                error_msg = 'Email does not exist in our records. ' + \
+                    'Please try again or create an account.'
+                return json_response(http_code=200, custom_error=error_msg)
+        else:
+            # Incorrect json payload
+            return json_response(422)
+
+    return json_response(400)
+
+##### /user/<user_id> #####
 # PUT updates a user
 # DELETE deletes a user (TODO Later)
 @app.route('/web/v1/api/users/<user_id>', methods = ['PUT', 'DELETE'])
 def users_by_id_web_api(user_id):
-    # Add all user settings here.
+    
+    if request.method == 'PUT':
+        if request_contains_some_valid_parameters(request_json, expected_parameters):
+            pass    
     pass
 
 # List of active requests for a user Route 
@@ -138,24 +258,6 @@ def users_by_id_recepient_web_api(user_id):
 @app.route('/web/v1/api/users/<user_id>/transactions', methods = ['GET'])
 def users_by_id_transactions_web_api(user_id):
     pass
-
-# User login route
-# GET logs in the user
-@app.route('/web/v1/api/login', methods = ['GET'])
-def users_login_web_api():
-    if request.method == 'GET':
-        
-        expected_parameters = ['email','password']
-        request_json = request.json
-        return_dict = {}
-        
-        if request_contains_valid_parameters(request_json, expected_parameters):
-            
-            
-
-            return json_response(200, return_dict)
-
-    return json_response(400)
 
 # User logout route
 # GET logs out the user

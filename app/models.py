@@ -1,7 +1,7 @@
 from sqlalchemy import String, Integer, Column, ForeignKey, Float, SmallInteger, Boolean, Table, Unicode, DateTime
 from flask import url_for
 from sqlalchemy.orm import relationship, backref
-from app.database import Base
+from app.database import Base, db_session
 from datetime import datetime
 import os
 
@@ -230,15 +230,56 @@ class User(Base):
         self.password = password
         self.phone_number = phone_number
         self.time_created = datetime.now()
+        self.last_active = datetime.now()
 
     def __repr__(self):
         return "<User " + str(self.id) + " " + str(self.name) + " " + str(self.email) + ">"
+
+    
+    # Returns [] if doesn't exist, otherwise User Object
+    @staticmethod
+    def does_email_exist(email):
+        user = User.query.filter_by(email=email).first()
+        return user
+
+
+    @staticmethod
+    def create_user(name, email, password):
+        from datetime import datetime
+        user = User(name=name, email=email, password=password)
+        try: 
+            db_session.add(user)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
+        return user
+
+    @staticmethod
+    def login_user(email, password):
+        from hashlib import md5
+        encrypted_password = md5(password).hexdigest()
+        user = User.query.filter_by(email=email, password=encrypted_password).first()
+        return user
+
+    def authenticate(self):
+        from flask import session
+        session['user_id'] = self.id
+
+    def logout_user(self):
+        from flask import session
+        session.pop('user_id')
 
     def calc_avg_ratings(self):
         rating_sum = 0.0
         for rating in self.tutor_ratings:
             rating_sum += rating.tutor_rating
         return rating_sum / len(self.tutor_rating)
+
+    # Active requests is not expired, or not canceled (yet), or not matched.
+    def get_pending_requests():
+        return user.outgoing_requests
 
     #returns ten most recent notifications
     def get_recent_notifications(self):
@@ -667,6 +708,14 @@ class Skill(Base):
         if self.is_course:
             return u"<Skill for Course '%r'>" % (self.name)
         return u"<Skill '%r'>" % (self.name)
+
+    @staticmethod
+    def get_skill_from_name(skill_name):
+        #TODO: Organize skills in next iteration of Data Model
+        from static.data.variations import courses_dict
+        return courses_dict.get(skill_name.lower())
+
+
 
 class Rating(Base):
     __tablename__ = 'rating'
