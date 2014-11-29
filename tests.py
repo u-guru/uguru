@@ -317,6 +317,77 @@ def test_put_request_by_id_student_accept_valid_parameters_valid_tutor():
     response = test_app.put(requests_url_id, data=json_data, content_type='application/json')
     eq_(response.status_code, 200)
 
+####################################
+# GET api/users/id/conversations #
+####################################
+
+def test_get_conversations_invalid_user():
+    invalid_student_id = 10000
+    conversations_url = BASE_WEB_API_URL + 'users/' + str(invalid_student_id) + '/conversations'
+    response = test_app.get(conversations_url)
+    eq_(response.status_code, 403)
+
+def test_get_conversations_valid_user():
+    #Tutor login for approved tutor
+    json_data = json.dumps({'email':'makhani@berkeley.edu', 'password':'makhani1'})
+    response = test_app.get(login_url, data=json_data, content_type='application/json')
+    
+    # Login *should* be successful 
+    eq_(response.status_code, 200)
+
+    conversations_url = BASE_WEB_API_URL + 'users/' + str(1) + '/conversations'
+    response = test_app.get(conversations_url)
+    eq_(response.status_code, 200)
+
+    get_response_data = json.loads(response.data)
+    
+    #Make sure there is only one conversation
+    conversations_arr = get_response_data['conversations']
+    eq_(len(conversations_arr), 1)    
+
+######################################################
+# GET, POST api/users/id/conversations/c_id/messages #
+######################################################
+
+def test_get_messages_invalid_conversation_id():
+    valid_user_id = 1
+    invalid_conversation_id = 10000
+    messages_url = BASE_WEB_API_URL + 'users/' + str(valid_user_id) + '/conversations/' + str(invalid_conversation_id) + '/messages'
+    response = test_app.get(messages_url)
+    eq_(response.status_code, 400)
+
+def test_get_messages_valid_conversation_id_no_messages():
+    valid_user_id = 1
+    valid_conversation_id = 1
+    messages_url = BASE_WEB_API_URL + 'users/' + str(valid_user_id) + '/conversations/' + str(valid_conversation_id) + '/messages'
+    response = test_app.get(messages_url)
+    eq_(response.status_code, 200)
+
+    get_response_data = json.loads(response.data)
+    
+    #Make sure there is only one conversation
+    messages_arr = get_response_data['messages']
+    eq_(len(messages_arr), 0)    
+
+def test_post_message_invalid_payload():
+    valid_user_id = 1
+    valid_conversation_id = 1
+    messages_url = BASE_WEB_API_URL + 'users/' + str(valid_user_id) + '/conversations/' + str(valid_conversation_id) + '/messages'
+    json_data = json.dumps({'message_contents':'true'})
+    response = test_app.post(messages_url, data=json_data, content_type='application/json')
+    eq_(response.status_code, 422)
+
+def test_post_message_valid_payload():
+    valid_user_id = 1
+    valid_conversation_id = 1
+    messages_url = BASE_WEB_API_URL + 'users/' + str(valid_user_id) + '/conversations/' + str(valid_conversation_id) + '/messages'
+    json_data = json.dumps({'contents':'true'})
+    response = test_app.post(messages_url, data=json_data, content_type='application/json')
+    eq_(response.status_code, 200)
+
+    get_response_data = json.loads(response.data)
+    eq_(get_response_data['server_id'], 1)    
+
 def teardown():
     os.remove('app.db')
 

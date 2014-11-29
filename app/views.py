@@ -39,6 +39,33 @@ stripe_keys = {
 }
 stripe.api_key = stripe_keys['secret_key']
 
+
+#################
+# New Web Views #
+#################
+@app.route('/home/')
+def home():
+    return render_template('web/home.html')
+
+@app.route('/guru/')
+def guru():
+    return render_template('web/guru.html')
+
+@app.route('/p/')
+@app.route('/profile/')
+def profile():
+    return render_template('web/profile.html')
+
+@app.route('/r/')
+@app.route('/request/')
+def _request():
+    return render_template('web/request.html')
+
+@app.route('/request/<_id>/')
+def request_by_id(_id):
+    return render_template('web/request_details.html')
+
+
 @app.route('/log_in/')
 @app.route('/sign_up/')
 @app.route('/guru/')

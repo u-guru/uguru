@@ -255,12 +255,23 @@ class User(Base):
         from datetime import datetime
         encrypted_password = User.encrypted_password(password)
         user = User(name=name, email=email, password=encrypted_password)
+
         try: 
             db_session.add(user)
             db_session.commit()
         except:
             db_session.rollback()
             raise 
+
+        #TODO: Remove this later, I don't know why this prevents me from creating messages/
+        user_mailbox = Mailbox(user)
+
+        try: 
+            db_session.add(user_mailbox)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
         return user
 
@@ -274,6 +285,24 @@ class User(Base):
     def get_user(_id = None, _email = None):
         if _id:
             return User.query.get(_id)
+
+    #TODO: Add more as needed
+    def as_dict(self):
+        u_dict = {
+            'server_id': self.id,
+            'name': self.get_first_name(),
+            'profile_url': self.profile_url,
+        }
+        return u_dict
+
+    def get_all_conversations(self, _dict=None):
+        conversations = self.conversations
+        if _dict:
+            conversations = {
+                'conversations': [conversation.as_dict() for conversation in conversations]
+            }
+
+        return conversations
 
     def authenticate(self):
         from flask import session
@@ -354,6 +383,7 @@ class Conversation(Base):
     id = Column(Integer, primary_key = True)
 
     is_read = Column(Boolean, default = False)
+    is_active = Column(Boolean)
     last_updated = Column(DateTime)
     
     skill_id = Column(Integer, ForeignKey('skill.id'))
@@ -403,10 +433,40 @@ class Conversation(Base):
             raise
         return conversation
 
+    @staticmethod
+    def get_conversation(_id):
+        return Conversation.query.get(_id)
+
+    def get_all_messages(self, _dict=False, sorted_by_time=False):
+        messages = self.messages
+
+        if sorted_by_time:
+            messages = sorted(messages, key=lambda m:m.time_created)
+
+        if _dict:
+            messages = {
+                'messages': [message.as_dict() for message in messages]
+            }
+
+        return messages
+
+
+    #TODO: Return more relevant keys, like last message time.
+    def as_dict(self):
+        c_dict = {
+            'server_id': self.id,
+            'student': self.student.as_dict(),
+            'tutor': self.guru.as_dict(),
+            'is_active': self.is_active,
+            'message_count': len(self.messages),
+        }
+        return c_dict
+
     def __init__(self, skill, guru, student):
         self.skill = skill
         self.skill_id = skill.id
         self.guru = guru
+        self.is_active = False
         self.guru_id = guru.id
         self.student = student
         self.student_id = student.id
@@ -463,6 +523,32 @@ class Message(Base):
         self.users.append(reciever)
         self.mailboxes.append(sender.mailbox)
         self.mailboxes.append(reciever.mailbox)
+
+    @staticmethod
+    def create_message(contents, conversation, sender):
+        if sender == conversation.student:
+            receiver = conversation.guru
+        else:
+            receiver = conversation.student
+        message = Message(contents, conversation, sender, receiver)
+        try: 
+            db_session.add(message)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+        return message
+
+    def as_dict(self):
+        from lib.utils import python_datetime_to_js_date
+        m_dict = {
+            'server_id': self.id,
+            'contents': self.contents,
+            'sender': self.sender.as_dict(),
+            'receiver': self.reciever.as_dict(),
+            'write_time': python_datetime_to_js_date(self.write_time)
+        }
+        return m_dict
 
     def __str__(self):
         return self.contents
@@ -750,6 +836,9 @@ class Request(Base):
 
     def get_connected_tutor(self):
         return User.query.get(self.connected_tutor_id)
+
+    def is_canceled(self):
+        return self.connected_tutor_id == self.student_id
 
     def get_status(self):
         if not self.connected_tutor_id:

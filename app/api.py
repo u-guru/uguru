@@ -341,7 +341,7 @@ def users_by_id_web_api(user_id):
     
     if request.method == 'PUT':
         if request_contains_some_valid_parameters(request_json, expected_parameters):
-            pass    
+            pass
     pass
 
 # List of active requests for a user Route 
@@ -355,20 +355,71 @@ def users_by_id_active_requests_web_api(user_id):
 # GET returns a list of conversations for a user
 @app.route('/api/v1/users/<user_id>/conversations', methods = ['GET'])
 def users_by_id_conversations_web_api(user_id):
-    # If student, go here
-    # If tutor, go here
-    pass
+    
+    if request.method == 'GET':
 
+        user = getUser()
+        if not user:
+            return json_response(http_code=401)
 
+        #Check if user_id is session['user_id'] 
+        if int(user_id) != user.id:
+            return json_response(http_code=403)
+
+        #Return list of conversations
+        conversations_dict = user.get_all_conversations(_dict=True)
+        return json_response(200, conversations_dict)
+
+    #Default response
+    return json_response(400)
+    
 # User Specific Conversation Route
 # GET Returns all messages (sorted by time) for a conversation
-# POST creates and returns a message 
-# PUT Pings a tutor
-@app.route('/api/v1/users/<user_id>/conversations/<conversation_id>', methods = ['GET', 'POST', 'PUT'])
-def users_by_id_address_book(user_id):
-    # If student, go here
-    # If tutor, go here
-    pass
+# POST allows a user to create a message
+# PUT Pings a tutor, Makes a conversation inactive
+@app.route('/api/v1/users/<user_id>/conversations/<conversation_id>/messages', methods = ['GET', 'POST', 'PUT'])
+def users_by_id_address_book(user_id, conversation_id):
+
+    user = getUser()
+    if not user:
+        return json_response(http_code=401)
+
+    #Check if user_id is session['user_id'] 
+    if int(user_id) != user.id:
+        return json_response(http_code=403)
+
+    #Check if conversation_id is valid
+    conversation = Conversation.get_conversation(int(conversation_id))
+    if not conversation:
+        return json_response(http_code=400)
+
+    if request.method == 'GET':
+
+        messages_dict = conversation.get_all_messages(_dict=True)
+        return json_response(200, messages_dict)
+
+    if request.method == 'POST':
+        
+        request_json = request.json
+        expected_parameters = ['contents']
+
+        #If invalid payload
+        if not request_contains_all_valid_parameters(request_json, expected_parameters):
+            return json_response(http_code=422)
+
+        message = Message.create_message(
+            contents = request.json.get('contents'),
+            conversation = conversation,
+            sender = user
+            )
+        message_dict = message.as_dict()
+        return json_response(http_code=200, return_dict=message_dict)
+
+    #TODO: Figure out workflow for this
+    if request.method == 'PUT':
+        return json_response(400)
+    
+    return json_response(400)
 
 # Customer credit/debit card route
 # POST adds card
