@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import os
+from flask.ext.script import Manager
+from flask.ext.migrate import Migrate, MigrateCommand
 
 # Logging
 import logging
@@ -16,21 +17,13 @@ root.addHandler(ch)
 # TODO : Add debug logger
 
 app = Flask(__name__)
-app.config.from_pyfile('../config.py')
-
-#Detects production env
-if os.environ.get('DATABASE_URL'): # TODO : can this be os.environ.get('PRODUCTION') ?
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-else:
-    basedir = os.path.abspath(os.path.dirname(__file__))
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
-
-class DataBase():
-    session = None;
-
-    def __init__(self, session):
-        self.session = session
+app.config.from_object('config')
 
 db = SQLAlchemy(app)
+
+# Migrations
+migrate = Migrate(app, db)
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
 
 from app import views, models, emails
