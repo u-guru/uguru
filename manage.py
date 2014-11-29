@@ -13,6 +13,7 @@ else:
 
 def initialize():
     import os, json
+    # TODO: check if it already exists
     os.remove('app.db')
     init_db()
     script_dir = os.path.dirname(__file__)
@@ -23,7 +24,7 @@ def initialize():
     for index in range(1, len(skills) + 1):
         new_course = Course(name=skills[str(index)])
         db_session.add(new_course)
-        db_session.commit()
+    db_session.commit()
     print 'courses created'
 
     from datetime import datetime

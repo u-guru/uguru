@@ -1,5 +1,6 @@
 from flask import Response, jsonify
 
+# TODO: {'message': ['create_successfully']}
 DEFAULT_SUCCESS_DICT = {'success':True}
 
 
@@ -15,8 +16,10 @@ def request_contains_some_valid_parameters(request_json, arr_parameters):
     result = (sorted_request_json_keys == sorted_arr_parameters)
     return result
 
-def json_response(http_code, return_dict=None, custom_error=None, \
+#TODO: custom_error should be called error, pass in an arr instead of one
+def json_response(http_code=200, return_dict=None, custom_error=None, \
     extra_headers=None, redirect=None):
+
     if return_dict and http_code == 200: 
         response = jsonify(return_dict)
     elif custom_error and redirect:

@@ -24,12 +24,9 @@ PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 
 
 #TODO
-# x Implement routes
-# - Test these routes (without a client site)
-# - Add MP events
-# - Server side validation
-# - Add status codes
-# - Make things secure + learn how to client side store information
+# - Finish MVP of the client side
+# - Fix custom_error
+# - MVP Integrate with client side
 
 #################################
 # START of New RESFTUL Web API. #
@@ -41,10 +38,12 @@ PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 
 # General request route
 # POST creates a new request
+# TODO: GET returns a users requests 
 @app.route('/api/v1/requests', methods=['POST'])
 def request_web_api():
 
-    # Check if user is authenticated
+    # TODO: change to get_user, also, 
+    # TODO: check for web wessions, if not, auth_token. 
     user = getUser()
     if not user:
         return json_response(http_code=401)
@@ -112,7 +111,7 @@ def request_web_api():
 
         else:
             #Invalid payload
-            return json_response(422, return_dict)
+            return json_response(422)
 
     return json_response(400)
 
@@ -125,8 +124,10 @@ def request_web_api():
 def request_by_id_web_api(request_id):
     
     if request.method == 'GET':
-        
+
+        expected_parameters = ['description', 'status']
         user = getUser()
+        
         if not user:
             return json_response(http_code=401)
         
@@ -146,17 +147,110 @@ def request_by_id_web_api(request_id):
 
     return json_response(400)
 
-# Tutor Accepts/Rejects Request Route
-# PUT updates the request accordingly
+###### /requests/id/tutor_accept ########
+# PUT updates the request accordingly for a studnet accepting a request
 @app.route('/api/v1/requests/<request_id>/tutor_accept', methods=['PUT'])
 def request_by_id_tutor_accept_web_api(request_id):
-    pass
+    
+    if request.method == 'PUT':
 
-# Student Accepts/Rejects Tutor Route
-# PUT updates the request accordingly
+        expected_parameters = ['description', 'status']
+        request_json = request.json
+
+        user = getUser()
+        if not user:
+            return json_response(http_code=401)
+
+        #Get request by ID
+        _request = Request.get_request_by_id(request_id)
+        
+        #check if this request_id is valid
+        if not _request:
+            return json_response(http_code=400)
+
+        #Check sure user is an approved tutor for this request
+        if not _request.is_tutor_active(user):
+            return json_response(http_code=403)
+
+
+        #Check payload for valid parameters
+        if request_contains_all_valid_parameters(request_json, expected_parameters):
+            
+            
+            #If a tutor accepts request
+            if request_json.get('status') == 'accept':
+                _request.process_tutor_acceptance(user)
+            
+            #If tutor rejects the request
+            else:
+                _request.process_tutor_reject(user)
+
+            #Return relevant dictionary
+            request_return_dict = _request.get_return_dict()
+            return json_response(http_code = 200, return_dict = request_return_dict)
+
+        else:
+            # Incorrect json payload
+            return json_response(422)
+
+    #Default response
+    return json_response(400)
+
+###### /requests/id/student_accept ########
+# PUT updates the request accordingly for a studnet accepting a request
 @app.route('/api/v1/requests/<request_id>/student_accept', methods=['PUT'])
 def request_by_id_student_accept_web_api(request_id):
-    pass
+    
+
+    if request.method == 'PUT':
+
+        expected_parameters = ['status', 'tutor_server_id']
+        request_json = request.json
+
+        user = getUser()
+        if not user:
+            return json_response(http_code=401)
+
+        #Get request by ID
+        _request = Request.get_request_by_id(request_id)
+        
+        #check if this request_id is valid
+        if not _request:
+            return json_response(http_code=400)
+
+        #Check sure user is the student for this request
+        if user != _request.get_student():
+            return json_response(http_code=403)
+
+        #Check payload for valid parameters
+        if request_contains_all_valid_parameters(request_json, expected_parameters):
+
+            #Check if tutor server_id is a committed tutor
+            tutor = User.get_user(_id=request_json.get('tutor_server_id'))
+            if tutor not in _request.get_interested_tutors():
+                return json_response(http_code=403)                
+
+            #If a student accepts request
+            if request_json.get('status') == 'accept':
+                _request.process_student_acceptance(tutor)
+            
+            #If student rejects the request
+            else:
+                _request.process_student_reject(tutor)
+                pass
+
+            #Return relevant dict
+            request_return_dict = _request.get_return_dict()
+            return json_response(http_code = 200, return_dict = request_return_dict)
+
+        else:
+            # Incorrect json payload
+            return json_response(422)
+
+    #Default response
+    return json_response(400)
+
+
 
 ########################
 # User REST Web Api #
@@ -197,6 +291,7 @@ def users_web_api():
 
 ##### /login/ ########
 # GET logs in the user
+# TODO: Make post
 @app.route('/api/v1/login', methods = ['GET'])
 def users_login_web_api():
     

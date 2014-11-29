@@ -5,6 +5,8 @@ from app.database import Base, db_session
 from datetime import datetime
 import os
 
+# TODO create __dict__ for popular objects
+
 # many-to-many relation tables
 user_skill_table = Table('user-skill_assoc',
     Base.metadata,
@@ -268,6 +270,11 @@ class User(Base):
         user = User.query.filter_by(email=email, password=encrypted_password).first()
         return user
 
+    @staticmethod
+    def get_user(_id = None, _email = None):
+        if _id:
+            return User.query.get(_id)
+
     def authenticate(self):
         from flask import session
         session['user_id'] = self.id
@@ -275,7 +282,7 @@ class User(Base):
     def logout_user(self):
         from flask import session
         session.pop('user_id')
-
+    
     def get_first_name(self):
         return self.name.split(' ')[0].title()
 
@@ -384,6 +391,17 @@ class Conversation(Base):
             reciever in [self.guru, self.student], \
             'sender or reciever must be in this conversation'
         return Message(contents, self, sender, reciever)
+
+    @staticmethod
+    def create_conversation(skill, guru, student):
+        conversation = Conversation(skill, guru, student)
+        try:
+            db_session.add(conversation)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return conversation
 
     def __init__(self, skill, guru, student):
         self.skill = skill
@@ -673,10 +691,51 @@ class Request(Base):
         return len(self.requested_tutors)
 
     def is_tutor_active(self, tutor):
-        if tutor not in self.approved_tutors():
+        approved_tutors = self.approved_tutors()
+        if tutor not in approved_tutors:
             return False
         else:
-            True
+            return True
+
+    def process_student_acceptance(self, tutor):
+        from datetime import datetime
+        
+        #Update time connected and everything
+        self.time_connected = datetime.now()
+        self.connected_tutor_id = tutor.id
+
+        student = User.get_user(self.student_id)
+        skill = Skill.query.get(self.skill_id)
+
+        #Create conversation
+        conversation = Conversation.create_conversation(skill, tutor, student)
+        conversation.requests.append(self)
+        conversation.last_updated = datetime.now()
+
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def process_tutor_acceptance(self, tutor):
+        self.committed_tutors.append(tutor)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    #TODO, we don't do anything yet, but we will in the near future.
+    def process_tutor_reject(self,tutor):
+        pass
+
+    #TODO, we don't do anything yet, but we will in the near future.
+    def process_tutor_reject(self,tutor):
+        pass
+
+    def get_interested_tutors(self):
+        return self.committed_tutors
 
     def approved_tutors(self):
         from lib.requests import approved_tutors

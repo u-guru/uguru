@@ -148,7 +148,7 @@ def test_create_request_already_pending():
         ])
 
 ################################
-# POST api/requests/id #
+# GET api/requests/id #
 ################################
 def test_get_request_details_invalid_request_id():
     invalid_request_id = 10000
@@ -181,6 +181,141 @@ def test_get_request_details_invalid_user():
     requests_url_id = requests_url + '/' + str(1)
     response = test_app.get(requests_url_id)
     eq_(response.status_code, 403)
+
+####################################
+# PUT api/requests/id/tutor_accept #
+####################################
+
+def test_put_request_by_id_tutor_accept_invalid_request_id():
+    invalid_request_id = 10000
+    requests_url_id = requests_url + '/' + str(invalid_request_id) + '/tutor_accept'
+    response = test_app.put(requests_url_id)
+    eq_(response.status_code, 400)
+
+def test_put_request_by_id_tutor_accept_inactive_tutor():
+    #Tutor login for unapproved tutor
+    json_data = json.dumps({'email':'howie@uguru.me', 'password':'howizzle'})
+    response = test_app.get(login_url, data=json_data, content_type='application/json')
+    
+    # Login *should* be successful
+    eq_(response.status_code, 200)
+
+    requests_url_id = requests_url + '/' + str(1) + '/tutor_accept'
+    response = test_app.put(requests_url_id)
+    eq_(response.status_code, 403)
+
+def test_put_request_by_id_tutor_accept_invalid_parameters():
+    #Tutor login for approved tutor
+    json_data = json.dumps({'email':'cameron1@uguru.me', 'password':'ehrlich1'})
+    response = test_app.get(login_url, data=json_data, content_type='application/json')
+    
+    # Login *should* be successful 
+    eq_(response.status_code, 200)
+
+    requests_url_id = requests_url + '/' + str(2) + '/tutor_accept'
+    
+    #Missing status
+    json_data = json.dumps({
+        'description': 5,
+        })
+    response = test_app.put(requests_url_id, data=json_data, content_type='application/json')
+    eq_(response.status_code, 422)
+
+def test_put_request_by_id_tutor_accept_valid_parameters():
+    #Tutor login for approved tutor
+    json_data = json.dumps({'email':'cameron1@uguru.me', 'password':'ehrlich1'})
+    response = test_app.get(login_url, data=json_data, content_type='application/json')
+    
+    # Login *should* be successful 
+    eq_(response.status_code, 200)
+
+    requests_url_id = requests_url + '/' + str(2) + '/tutor_accept'
+    
+    
+    json_data = json.dumps({
+        'description': 5,
+        'status': 'accept'
+        })
+    response = test_app.put(requests_url_id, data=json_data, content_type='application/json')
+    eq_(response.status_code, 200)
+
+    get_response_data = json.loads(response.data)
+    
+    #Check if interested tutors for request is updated
+    eq_(len(get_response_data['interested_tutors']), 1)    
+
+
+######################################
+# PUT api/requests/id/student_accept #
+######################################
+
+def test_put_request_by_id_student_accept_invalid_request_id():
+    invalid_request_id = 10000
+    requests_url_id = requests_url + '/' + str(invalid_request_id) + '/student_accept'
+    response = test_app.put(requests_url_id)
+    eq_(response.status_code, 400)
+
+
+def test_put_request_by_id_student_accept_invalid_user():
+    requests_url_id = requests_url + '/' + str(2) + '/student_accept'
+    response = test_app.put(requests_url_id)
+    eq_(response.status_code, 403)
+
+def test_put_request_by_id_student_accept_invalid_parameters():
+    
+    #Tutor login for approved tutor
+    json_data = json.dumps({'email':'makhani@berkeley.edu', 'password':'makhani1'})
+    response = test_app.get(login_url, data=json_data, content_type='application/json')
+    
+    # Login *should* be successful 
+    eq_(response.status_code, 200)
+
+    #Missing tutor_server_id
+    json_data = json.dumps({
+        'status': 'accept'
+        })
+
+    requests_url_id = requests_url + '/' + str(2) + '/student_accept'
+    response = test_app.put(requests_url_id, data=json_data, content_type='application/json')
+    eq_(response.status_code, 422)
+
+def test_put_request_by_id_student_accept_valid_parameters_invalid_tutor():
+    
+    #Tutor login for approved tutor
+    json_data = json.dumps({'email':'makhani@berkeley.edu', 'password':'makhani1'})
+    response = test_app.get(login_url, data=json_data, content_type='application/json')
+    
+    # Login *should* be successful 
+    eq_(response.status_code, 200)
+
+    #invalid tutor server_id
+    json_data = json.dumps({
+        'status': 'accept',
+        'tutor_server_id': 3
+        })
+
+    requests_url_id = requests_url + '/' + str(2) + '/student_accept'
+    response = test_app.put(requests_url_id, data=json_data, content_type='application/json')
+    eq_(response.status_code, 403)
+
+def test_put_request_by_id_student_accept_valid_parameters_valid_tutor():
+    
+    #Tutor login for approved tutor
+    json_data = json.dumps({'email':'makhani@berkeley.edu', 'password':'makhani1'})
+    response = test_app.get(login_url, data=json_data, content_type='application/json')
+    
+    # Login *should* be successful 
+    eq_(response.status_code, 200)
+
+    #invalid tutor server_id
+    json_data = json.dumps({
+        'status': 'accept',
+        'tutor_server_id': 2
+        })
+
+    requests_url_id = requests_url + '/' + str(2) + '/student_accept'
+    response = test_app.put(requests_url_id, data=json_data, content_type='application/json')
+    eq_(response.status_code, 200)
 
 def teardown():
     os.remove('app.db')
