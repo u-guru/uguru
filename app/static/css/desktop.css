@@ -1,0 +1,45 @@
+body {
+    position:relative;
+}
+
+#main-container {
+    text-align:center;
+    height:100%;
+}
+
+.device {
+    position: relative;
+    display: block;
+    width: 395px;
+    height: 813px;
+    margin: 100px auto;
+    font-family: "Helvetica Neue",sans-serif;
+    background-image: url(/static/img/device-sprite.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 300%;
+    -webkit-transition: background-image .1s linear;
+    -moz-transition: background-image .1s linear;
+    transition: background-image .1s linear;
+}
+
+
+.device .device-content {
+    position: relative;
+    width: 321px;
+    height: 569px;
+    top:117px;
+    left:37px;
+    overflow: hidden;
+    font-size: 17px;
+    line-height: 21px;
+    background-color: #fff;
+}
+
+.device .bar, .device .content, .device .modal {
+    position:absolute;
+}
+
+.platform-ios .device {
+    background-position: -395px 0;
+}

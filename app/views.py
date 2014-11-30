@@ -50,13 +50,20 @@ stripe.api_key = stripe_keys['secret_key']
 # - Go hard with views & integration
 @app.route('/home/')
 def home():
-    from lib.utils import is_desktop_browser
-    is_desktop_browser = is_desktop_browser(request.MOBILE)
-    return render_template('web/home.html')
+    
+    #Check if user agent is accessing uGuru from desktop
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+    
+    return render_template('web/home.html', user_agent_is_desktop=user_agent_is_desktop)
 
-@app.route('/guru/')
+@app.route('/inbox/')
 def guru():
-    return render_template('web/guru.html')
+    #Check if user agent is accessing uGuru from desktop
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+    
+    return render_template('web/inbox.html', user_agent_is_desktop=user_agent_is_desktop)
 
 @app.route('/p/')
 @app.route('/profile/')
