@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask.ext.mobility import Mobility
+from flask.ext.assets import Environment, Bundle
 import os
 
 # Logging
@@ -17,7 +18,17 @@ root.addHandler(ch)
 # TODO : Add debug logger
 
 app = Flask(__name__)
+
+#Device Detection Plugin
 Mobility(app)
+
+#Flask pyScss
+assets = Environment(app)
+assets.url = app.static_url_path
+scss = Bundle('css/web.scss', filters='pyscss', output='css/all.css')
+# TODO: Use this line when we have more css files to bundble
+assets.register('scss_all', scss) 
+
 app.config.from_pyfile('../config.py')
 
 #Detects production env

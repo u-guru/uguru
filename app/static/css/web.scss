@@ -1,3 +1,15 @@
+$logo-font:'Grand Hotel', cursive;
+
+header {
+  
+  .uguru-logo {
+    font-family: $logo-font;
+    font-size:24px;
+  }  
+
+}
+
+
 .updated-text {
   position: absolute;
   left: 0;
