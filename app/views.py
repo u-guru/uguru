@@ -43,6 +43,11 @@ stripe.api_key = stripe_keys['secret_key']
 #################
 # New Web Views #
 #################
+
+# TODO: 
+# - Create base template for mobile & web
+# - Check out mobile testing framework (see all screens)
+# - Go hard with views & integration
 @app.route('/home/')
 def home():
     return render_template('web/home.html')

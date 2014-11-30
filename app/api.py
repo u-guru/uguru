@@ -22,12 +22,6 @@ PAYMENT_PLANS = {1:[45,50], 2:[170,200], 3:[800,1000], 4:[1500,10000]}
 PACKAGE_HOME_PLANS = {0:[800, 1000], 1:[500, 600], 2:[170, 200], 3:[45, 50]}
 PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 
-
-#TODO
-# - Finish MVP of the client side
-# - Fix custom_error
-# - MVP Integrate with client side
-
 #################################
 # START of New RESFTUL Web API. #
 #################################
