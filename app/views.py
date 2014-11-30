@@ -54,6 +54,8 @@ def home():
     #Check if user agent is accessing uGuru from desktop
     from lib.utils import check_user_agent_desktop
     user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+
+    print request.MOBILE
     
     return render_template('web/home.html', user_agent_is_desktop=user_agent_is_desktop)
 

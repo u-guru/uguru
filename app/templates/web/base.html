@@ -1,6 +1,6 @@
 <!-- Apply desktop wrapper -->
 {% if user_agent_is_desktop %}
-    {% from 'web/desktop.html' import desktop_header, desktop_footer %}
+    {% from 'web/macros/desktop.html' import desktop_header, desktop_footer %}
 {% endif %}
 
 
@@ -15,31 +15,41 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <!-- Include standard stylesheets -->
-    {% include 'web/stylesheets.html' %}
+    {% include 'web/snippets/stylesheets.html' %}
     
     <!-- Include standard desktop scripts -->
     {% if user_agent_is_desktop %}
-      {% include 'web/desktop_stylesheets.html' %}
+      {% include 'web/snippets/desktop_stylesheets.html' %}
     {% endif %}    
   
   </head>
   
   <body>
 
+    <!-- Add web app header -->
     {% if user_agent_is_desktop %}
       {{desktop_header()}}
     {% endif %}
 
-    <!-- Main meat of applications -->
-    {% block main %}
+    <!-- Add main header of app -->
+    {% block main_header %}
     {% endblock %}
 
+    <!-- Add main footer of app -->
+    {% block main_footer %}
+    {% endblock %}
+
+    <!-- Add main footer of app -->
+    {% block main_content %}
+    {% endblock %}
+
+    <!-- Add web app footer -->
     {% if user_agent_is_desktop %}
       {{desktop_footer()}}
     {% endif %}
 
-    <!-- Include standard stylesheets -->
-    {% include 'web/scripts.html' %}
+    <!-- Include standard javascripts -->
+    {% include 'web/snippets/scripts.html' %}
 
   </body>
 </html>

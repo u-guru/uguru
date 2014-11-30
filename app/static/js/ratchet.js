@@ -401,7 +401,8 @@
     var key;
     var barElement;
     var data = parseXHR(xhr, options);
-
+    console.log(options);
+    console.log(data.title);
     if (!data.contents) {
       return locationReplace(options.url);
     }

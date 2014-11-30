@@ -1,13 +1,40 @@
 {% extends 'web/base.html' %}
 
-    {% block main %}
 
+    {% block main_header %}
     <header class="bar bar-nav">
-      <a class="icon icon-left-nav pull-left" href="/home/"></a>
+      <a class="icon icon-left-nav pull-left" href="/home/" data-transition="slide-out"></a>
       <a class="icon icon-refresh pull-right"></a>
       <h1 class="title">All inboxes</h1>
     </header>
+    {% endblock %}
 
+    {% block main_footer %}
+    <nav class="bar bar-tab">
+      <a class="tab-item active" href="#">
+        <span class="icon icon-home"></span>
+        <span class="tab-label">Home</span>
+      </a>
+      <a class="tab-item" href="#">
+        <span class="icon icon-person"></span>
+        <span class="tab-label">My Tutors</span>
+      </a>
+      <a class="tab-item" href="#requestModal">
+        <span class="icon icon-plus black bold"></span>
+        <span class="tab-label black">Request</span>
+      </a>
+      <a class="tab-item" href="#">
+        <span class="icon icon-search"></span>
+        <span class="tab-label">Search</span>
+      </a>
+      <a class="tab-item" href="#">
+        <span class="icon icon-gear"></span>
+        <span class="tab-label">Settings</span>
+      </a>
+    </nav>
+    {% endblock %}
+
+    {% block main_content %}
     <div class="content">
 
       <ul class="table-view">
@@ -102,5 +129,6 @@
           </a>
         </li>
       </ul>
+      
     </div>
   {% endblock %}

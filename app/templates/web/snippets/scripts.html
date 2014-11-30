@@ -2,10 +2,13 @@
 
 <script src="/static/js/ratchet.js"></script>
 <script src="/static/js/fingerblast.js"></script>
+<script src="/static/js/jquery-1.11.1.min.js"></script>
 
 <!-- Enable Touch Events using FingerBlast library -->
 <script>
-    var fingerBlast = new FingerBlast('body');
+    $(window).on('load', function () {
+        window.FingerBlast && (new FingerBlast('.device-content'));
+    });
 </script>
     
 {% endblock %}
