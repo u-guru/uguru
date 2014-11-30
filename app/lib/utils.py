@@ -6,6 +6,10 @@ def python_datetime_to_js_date(py_date):
     import time
     return (time.mktime(py_date.timetuple()) * 1000)
 
+def user_agent_is_desktop(request_mobile_boolean):
+    return not request_mobile_boolean
+
+
 def pretty_date(time=False):
     """
     Get a datetime object or a int() Epoch timestamp and return a

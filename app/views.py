@@ -50,6 +50,8 @@ stripe.api_key = stripe_keys['secret_key']
 # - Go hard with views & integration
 @app.route('/home/')
 def home():
+    from lib.utils import is_desktop_browser
+    is_desktop_browser = is_desktop_browser(request.MOBILE)
     return render_template('web/home.html')
 
 @app.route('/guru/')

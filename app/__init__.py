@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask.ext.mobility import Mobility
 import os
 
 # Logging
@@ -16,6 +17,7 @@ root.addHandler(ch)
 # TODO : Add debug logger
 
 app = Flask(__name__)
+Mobility(app)
 app.config.from_pyfile('../config.py')
 
 #Detects production env

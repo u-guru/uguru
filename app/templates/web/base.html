@@ -1,0 +1,36 @@
+<html>
+  
+  <head>
+    
+    <meta charset="utf-8">
+    <title>uGuru</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include scripts -->
+    {% include 'web/stylesheets.html' %}
+    {% block stylesheets %}
+    {% endblock %}    
+  
+  </head>
+  
+  <body>
+    
+    <!-- Web Header -->
+    {% if  %}
+
+    <!-- Main meat of applications -->
+    {% block main %}
+    {% endblock %}
+
+    <!-- Web Footer -->
+
+
+    <!-- javascripts -->
+    {% include 'web/scripts.html' %}
+    {% block scripts %}
+    {% endblock %}
+
+  </body>
+</html>
