@@ -202,26 +202,6 @@ def index(arg=None):
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
 
-@app.route('/dorm/')
-@app.route('/city/')
-@app.route('/fml/')
-@app.route('/cal/')
-@app.route('/sproul/')
-@app.route('/sproul/<arg>/')
-def new_sproul(arg=None):
-    if 'sproul' in request.url:
-        session['referral'] = 'sproul'
-    if 'cal' in request.url:
-        session['referral'] = 'cal'
-    if 'fml' in request.url:
-        session['referral'] = 'fml'
-    if 'dorm' in request.url:
-        session['referral'] = 'dorm'
-    if 'sproul' in request.url and arg!= None:
-        session['referral'] = str(arg) + '(sproul)'
-    return render_template('sproul.html', modal_flag = 'instant')
-
-
 @app.route('/florida/', methods=['GET', 'POST'])
 def florida(arg=None):
 
@@ -268,7 +248,6 @@ def apply_guru():
     else:
         session['redirect'] = '/apply-guru/'
         return redirect('/log_in/')
-
 
 @app.route('/tos/', methods=['GET','POST'])
 def tos():
