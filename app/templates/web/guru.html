@@ -1,5 +1,4 @@
 {% extends 'web/base.html' %}
-{% from 'web/macros/components.html' import show_components %}
 
     {% block main_header %}
     <header class="bar bar-nav">
@@ -30,25 +29,30 @@
       </ul>
 
       <h5 class="content-padded">
-        My pending requests
+        My Incoming Requests 
       </h5>
       <ul class="table-view">
         <li class="table-view-cell">
-          <a class="navigate-right" data-transition='slide-in' href='/request/'>
-            <span class="badge badge-negative">1</span>
-            CS61A Request
-            <p>2 hours ago, 3 tutors contacted</p>
+          <a class="navigate-right">
+            Cs61A Request
+            <p>Right now! 
+              <span class='red-text'>
+              Expiring in 1m
+              </span>
+            </p>
+            <button class="btn btn-positive">$20</button>
           </a>
         </li>
         <li class="table-view-cell">
-          <a class="navigate-right" data-transition='slide-in' href='/request/'>
+          <a class="navigate-right">
             Bio 1A Request
-            <p>3 hours ago</p>
+            <p>10-12pm. <span class='red-text'>Expiring in 10m</span></p>
+            <button class="btn btn-positive">$40</button>
           </a>
         </li>
       </ul>
 
     </div><!-- /.content -->
+    {{show_components(show_request_modal=True, show_tab_bar=True, student_mode=False, page_name='guru')}}
     {% include 'web/snippets/import_fingerblast.html' %}
-    {{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='home')}}
     {% endblock %}

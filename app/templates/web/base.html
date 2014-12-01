@@ -2,7 +2,7 @@
 {% if user_agent_is_desktop %}
     {% from 'web/macros/desktop.html' import desktop_header, desktop_footer %}
 {% endif %}
-
+{% from 'web/macros/components.html' import show_components %}
 
 <html>
   
@@ -20,7 +20,7 @@
     <!-- Include standard desktop scripts -->
     {% if user_agent_is_desktop %}
       {% include 'web/snippets/desktop_stylesheets.html' %}
-    {% endif %}    
+    {% endif %}
   
   </head>
   
@@ -35,11 +35,7 @@
     {% block main_header %}
     {% endblock %}
 
-    <!-- Add main footer of app -->
-    {% block main_footer %}
-    {% endblock %}
-
-    <!-- Add main footer of app -->
+    <!-- Add main content of app -->
     {% block main_content %}
     {% endblock %}
 

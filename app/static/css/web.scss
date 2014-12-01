@@ -10,6 +10,55 @@ header {
 }
 
 
+nav.bar-tab {
+
+  // .tab-item#address-book {
+  //   display:none;
+  // }
+  
+}
+
+#type-message {
+  width:78%
+}
+
+.message-face, .table-view-face {
+  height:40px;
+}
+
+.guru-photo {
+  height:80px;
+}
+
+.logo-container {
+  margin-top:7%;
+  margin-bottom: 7%;
+}
+
+.table-view-cell-photo {
+  height:20px;
+}
+
+.red-text {
+  color:red;
+}
+
+.grey-text {
+  color:#8f8f94;
+}
+
+.bar {
+  display:block;
+}
+
+.center {
+  text-align:center;
+}
+
+.table-view-cell-profile-photo {
+  height:25px; 
+}
+
 .updated-text {
   position: absolute;
   left: 0;
@@ -19,8 +68,21 @@ header {
   text-align: center;
 }
 
+.table-view-cell.message-cell, .table-view-cell.request-cell, 
+  .ignore-table-view-margin {
+  padding:10px 15px 11px 15px;
+}
+
 .table-view-cell .icon {
   color: #007aff;
+}
+
+.icon.profile-star {
+  font-size:14px;
+}
+
+.padding-top-5 {
+  padding-top:5px
 }
 
 .bold {
@@ -28,5 +90,5 @@ header {
 }
 
 .black {
-    color:black;
+    color:black !important;
 }

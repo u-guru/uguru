@@ -1,0 +1,62 @@
+{% macro process_request_modal(show=False) -%}
+<div id="requestModal" class="modal" {% if not show %} style='display:none' {% endif %}>
+      <header class="bar bar-nav">
+        <a class="btn btn-link pull-right" href="#requestModal">
+          <strong>Submit</strong>
+        </a>
+        <a class="btn btn-link pull-left" href="#requestModal">
+          Cancel
+        </a>
+        <h1 class="title">New Request</h1>
+      </header>
+
+      <div class="content">
+        <form class="input-group">
+          <input type="text" placeholder="Course">
+          <textarea placeholder="Description" rows="5"></textarea>
+          <input type="text" placeholder="Phone Number">
+          <input type="text" placeholder="Location">
+        </form>
+
+        <ul class="table-view">
+            <li class="table-view-cell">
+              <span class='pull-left' id='remote-toggle-text'>
+                In-person tutor only
+              </span>
+              <div id='remote-toggle' class="toggle active">
+                <div class="toggle-handle"></div>
+              </div>
+            </li>
+            <li class="table-view-cell">
+              <span class='pull-left' id='asap-toggle-text'>
+                I need help ASAP
+              </span>
+              <div id='asap-toggle' class="toggle active">
+                <div class="toggle-handle"></div>
+              </div>
+            </li>
+            <li class="table-view-cell">
+              <a class="navigate-right">
+                Choose Start Time
+              </a>
+            </li>
+            <li class="table-view-cell">Time Estimate 
+              <div class="segmented-control">
+                <a class="control-item active" href="#item1mobile">
+                  < 30m
+                </a>
+                <a class="control-item" href="#item2mobile">
+                  < 1hr
+                </a>
+                <a class="control-item" href="#item3mobile">
+                  < 1-2hr
+                </a>
+                <a class="control-item" href="#item3mobile">
+                  < +2hr
+                </a>
+              </div>
+            </li>
+        </ul>
+      </div>
+</div><!-- /.modal -->  
+{%- endmacro %}

@@ -401,8 +401,7 @@
     var key;
     var barElement;
     var data = parseXHR(xhr, options);
-    console.log(options);
-    console.log(data.title);
+
     if (!data.contents) {
       return locationReplace(options.url);
     }
@@ -416,6 +415,8 @@
         if (bars.hasOwnProperty(key)) {
           barElement = document.querySelector(bars[key]);
           if (data[key]) {
+            console.log(key);
+            console.log(barElement);
             swapContent(data[key], barElement);
           } else if (barElement) {
             barElement.parentNode.removeChild(barElement);
