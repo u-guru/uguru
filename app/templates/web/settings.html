@@ -2,7 +2,7 @@
 
     {% block main_header %}
     <header class="bar bar-nav">
-      <h1 class="title">My Settings</h1>
+      <h1 class="title">Settings</h1>
     </header>
     {% endblock %}
 
@@ -11,8 +11,16 @@
       
       <div id='account-table' class='control-content active'>
         
-        <h6 class="content-padded"></h6>
+        <h6 class="content-padded">Support</h6>
+        <ul class="table-view">
+          <li class="table-view-cell">
+            <a class="navigate-right" data-transition='slide-in' href='/support/'>
+                Questions, Issues, Refunds
+            </a>
+          </li>
+        </ul>
 
+        <h6 class="content-padded">My Account</h6>
         <ul class="table-view">
           <li class="table-view-cell">
             <a class="navigate-right">
@@ -67,6 +75,7 @@
             </a>
           </li>
         </ul>
+
       </div>
     </div>
     {{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='settings')}}

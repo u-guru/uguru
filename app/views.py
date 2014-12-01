@@ -122,6 +122,15 @@ def _request():
 
     return render_template('web/request.html', user_agent_is_desktop=user_agent_is_desktop)
 
+@app.route('/support/')
+def support():
+
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+
+    return render_template('web/support.html', user_agent_is_desktop=user_agent_is_desktop)
+
+
 @app.route('/r/<_id>/')
 @app.route('/request/<_id>/')
 def request_by_id(_id):
