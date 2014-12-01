@@ -36,3 +36,7 @@
 
 - Email: admin@uguru.me
 - Pass: launchuguru
+
+**Run Tests**
+
+- nosetests tests.py 

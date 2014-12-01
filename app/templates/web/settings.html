@@ -1,0 +1,85 @@
+{% extends 'web/base.html' %}
+
+    {% block main_header %}
+    <header class="bar bar-nav">
+      <h1 class="title">Settings</h1>
+    </header>
+    {% endblock %}
+
+    {% block main_content %}
+    <div class="content">
+      
+      <div id='account-table' class='control-content active'>
+        
+        <h6 class="content-padded">Support</h6>
+        <ul class="table-view">
+          <li class="table-view-cell">
+            <a class="navigate-right" data-transition='slide-in' href='/support/'>
+                Questions, Issues, Refunds
+            </a>
+          </li>
+        </ul>
+
+        <h6 class="content-padded">My Account</h6>
+        <ul class="table-view">
+          <li class="table-view-cell">
+            <a class="navigate-right">
+              <span class="badge badge-negative">1</span>
+              <img class="media-object pull-left table-view-cell-photo" src="/static/img/face2.png">
+              <div class="media-body">
+                Profile
+              </div>
+            </a>
+          </li>
+          <li class="table-view-cell">
+            Text Notifications
+            <div class="toggle">
+              <div class="toggle-handle"></div>
+            </div>
+          </li>
+          <li class="table-view-cell">
+            Email Notifications
+            <div class="toggle active">
+              <div class="toggle-handle"></div>
+            </div>
+          </li>
+          <li class="table-view-cell">
+            <a class="navigate-right">
+              Change Password
+            </a>
+          </li>
+        </ul>
+
+        <h5 class="content-padded">Payments</h5>
+
+        <ul class='table-view'>
+          <li class="table-view-cell">
+            <a class="navigate-right">
+              <img class="media-object pull-left table-view-cell-photo" src="/static/img/card.png">
+              <div class="media-body">
+                Payments Card
+              </div>
+            </a>
+          </li>
+          <li class="table-view-cell">
+            <a class="navigate-right">
+              <img class="media-object pull-left table-view-cell-photo" src="/static/img/card.png">
+              <div class="media-body">
+                Cash Out Card
+              </div>
+            </a>
+          </li>
+          <li class="table-view-cell">
+            <a class="navigate-right">
+              View Transactions
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+    {{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='settings')}}
+    {% include 'web/snippets/import_fingerblast.html' %}
+    {% endblock %}
+
+    

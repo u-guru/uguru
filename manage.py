@@ -13,6 +13,7 @@ else:
 
 def initialize():
     import os, json
+    # TODO: check if it already exists
     os.remove('app.db')
     init_db()
     script_dir = os.path.dirname(__file__)
@@ -23,7 +24,7 @@ def initialize():
     for index in range(1, len(skills) + 1):
         new_course = Course(name=skills[str(index)])
         db_session.add(new_course)
-        db_session.commit()
+    db_session.commit()
     print 'courses created'
 
     from datetime import datetime
@@ -166,6 +167,14 @@ def initialize():
     db_session.add(user)
     db_session.commit()
 
+def create_cs10_skill():
+    from app.models import Skill
+    from app.database import db_session
+    skill = Skill(u'COMPSCI.10')
+    db_session.add(skill)
+    db_session.commit()
+    skill.id = 6849
+    db_session.commit()
 
-
-
+if arg == 'initialize':
+    initialize()

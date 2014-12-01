@@ -39,6 +39,122 @@ stripe_keys = {
 }
 stripe.api_key = stripe_keys['secret_key']
 
+
+#################
+# New Web Views #
+#################
+
+# TODO: 
+# - 
+# - Go hard with views & integration
+@app.route('/home/')
+def home():
+    
+    #Check if user agent is accessing uGuru from desktop
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+    
+    return render_template('web/home.html', user_agent_is_desktop=user_agent_is_desktop)
+
+@app.route('/m/guru/')
+def guru():
+    
+    #Check if user agent is accessing uGuru from desktop
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+    
+    return render_template('web/guru.html', user_agent_is_desktop=user_agent_is_desktop)
+
+#Test, #TODO, get rid of it
+@app.route('/inbox/')
+def inbox():
+    #Check if user agent is accessing uGuru from desktop
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+    
+    return render_template('web/inbox.html', user_agent_is_desktop=user_agent_is_desktop)
+
+@app.route('/tutors/')
+def my_tutors():
+    
+    #Check if user agent is accessing uGuru from desktop
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+    
+    return render_template('web/my_tutors.html', user_agent_is_desktop=user_agent_is_desktop)
+
+@app.route('/m/login/')
+def m_login():
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+    
+    return render_template('web/login.html', user_agent_is_desktop=user_agent_is_desktop)
+
+@app.route('/m/messages/')
+def m_messages():
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+    
+    return render_template('web/messages.html', user_agent_is_desktop=user_agent_is_desktop)
+
+@app.route('/m/settings/')
+def m_settings():
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+    
+    return render_template('web/settings.html', user_agent_is_desktop=user_agent_is_desktop)
+
+
+@app.route('/p/')
+@app.route('/profile/')
+def profile():
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+    
+    return render_template('web/profile.html', user_agent_is_desktop=user_agent_is_desktop)
+
+
+@app.route('/guru/rating/')
+def guru_request():
+
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+
+    return render_template('web/tutor_rating.html', user_agent_is_desktop=user_agent_is_desktop)
+
+@app.route('/student/rating/')
+def _student_request():
+    
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+
+    return render_template('web/student_rating.html', user_agent_is_desktop=user_agent_is_desktop)
+
+
+@app.route('/r/')
+@app.route('/request/')
+def _request():
+
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+
+    return render_template('web/request.html', user_agent_is_desktop=user_agent_is_desktop)
+
+@app.route('/support/')
+def support():
+
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+
+    return render_template('web/support.html', user_agent_is_desktop=user_agent_is_desktop)
+
+
+@app.route('/r/<_id>/')
+@app.route('/request/<_id>/')
+def request_by_id(_id):
+    return render_template('web/request_details.html')
+
+
 @app.route('/log_in/')
 @app.route('/sign_up/')
 @app.route('/guru/')

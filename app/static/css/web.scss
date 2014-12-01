@@ -1,0 +1,98 @@
+$logo-font:'Grand Hotel', cursive;
+
+header {
+  
+  .uguru-logo {
+    font-family: $logo-font;
+    font-size:24px;
+  }  
+
+}
+
+
+nav.bar-tab {
+
+  // .tab-item#address-book {
+  //   display:none;
+  // }
+  
+}
+
+#type-message {
+  width:78%
+}
+
+.message-face, .table-view-face {
+  height:40px;
+}
+
+.guru-photo {
+  height:80px;
+}
+
+.logo-container {
+  margin-top:7%;
+  margin-bottom: 7%;
+}
+
+.table-view-cell-photo {
+  height:20px;
+}
+
+.red-text {
+  color:red;
+}
+
+.green-text {
+  color:#5cb85c;
+}
+
+.grey-text {
+  color:#8f8f94;
+}
+
+.bar {
+  display:block;
+}
+
+.center {
+  text-align:center;
+}
+
+.table-view-cell-profile-photo {
+  height:25px; 
+}
+
+.updated-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 10px 0;
+  font-size: 11px;
+  text-align: center;
+}
+
+.table-view-cell.message-cell, .table-view-cell.request-cell, 
+  .ignore-table-view-margin {
+  padding:10px 15px 11px 15px;
+}
+
+.table-view-cell .icon {
+  color: #007aff;
+}
+
+.icon.profile-star {
+  font-size:14px;
+}
+
+.padding-top-5 {
+  padding-top:5px
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.black {
+    color:black !important;
+}

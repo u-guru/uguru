@@ -1,0 +1,58 @@
+{% extends 'web/base.html' %}
+
+    {% block main_header %}
+    <header class="bar bar-nav">
+      <h1 class="title uguru-logo">uguru</h1>
+    </header>
+    {% endblock %}
+
+    {% block main_content %}
+    <div class="content">
+      <div class='logo-container center content-padded'>
+        <img class="media-object guru-photo" src="/static/img/guru-new.svg">
+      </div>
+
+      <h5 class="content-padded">
+        My Scheduled Sessions
+      </h5>
+
+      <ul class="table-view">
+        <li class="table-view-cell media">
+            <a class="navigate-right">
+                <img class="media-object pull-left table-view-face" src="/static/img/face3.png">
+                <div class="media-body">
+                    CS10 Session with Peter
+                    <p>Today at 8pm</p>
+                </div>
+            </a>
+        </li>
+      </ul>
+
+      <h5 class="content-padded">
+        My Incoming Requests 
+      </h5>
+      <ul class="table-view">
+        <li class="table-view-cell">
+          <a class="navigate-right">
+            Cs61A Request
+            <p>Right now! 
+              <span class='red-text'>
+              Expiring in 1m
+              </span>
+            </p>
+            <button class="btn btn-positive">$20</button>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a class="navigate-right">
+            Bio 1A Request
+            <p>10-12pm. <span class='red-text'>Expiring in 10m</span></p>
+            <button class="btn btn-positive">$40</button>
+          </a>
+        </li>
+      </ul>
+
+    </div><!-- /.content -->
+    {{show_components(show_request_modal=True, show_tab_bar=True, student_mode=False, page_name='guru')}}
+    {% include 'web/snippets/import_fingerblast.html' %}
+    {% endblock %}
