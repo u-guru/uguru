@@ -113,6 +113,24 @@ def profile():
     
     return render_template('web/profile.html', user_agent_is_desktop=user_agent_is_desktop)
 
+
+@app.route('/guru/rating/')
+def guru_request():
+
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+
+    return render_template('web/tutor_rating.html', user_agent_is_desktop=user_agent_is_desktop)
+
+@app.route('/student/rating/')
+def _student_request():
+    
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+
+    return render_template('web/student_rating.html', user_agent_is_desktop=user_agent_is_desktop)
+
+
 @app.route('/r/')
 @app.route('/request/')
 def _request():
