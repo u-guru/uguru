@@ -1,0 +1,104 @@
+/* home */
+.bar {
+background-color: #2B3234;
+border-bottom: 1px solid #dddn;
+}
+
+.content {
+    background-color: #3b484d;
+}
+
+.table-view {
+    background-color: #4e5c5f;
+}
+
+.h5, .h6, h5, h6, p {
+    color: #c9cdcd;
+}
+
+.table-view-cell > a:not(.btn) {
+    color: #ffffff
+}
+
+.badge-negative {
+    background-color: #48b7a6;
+}
+
+header .uguru-logo {
+    color: #ffffff;
+}
+
+.bar-tab .tab-item.active, .bar-tab .tab-item:active {
+    color: #48b7a6;
+}
+
+
+/* home -> choose tutor */
+.red-text {
+    color: #02e452;
+}
+
+.btn-negative {
+    background-color: #db7400;
+    border: 1px solid #db7400;
+}
+
+.table-view-cell.message-cell, .table-view-cell.request-cell, .ignore-table-view-margin {
+    color: white;
+    padding: 10px 15px 11px;
+}
+
+.grey-text {
+    color: #c9cdcd;
+}
+
+.table-view .table-view-cell:last-child {
+    color: #fff;
+}
+
+.icon-left-nav:before {
+    color: #c9cdcd;
+}
+
+
+/* tutors */
+.black {
+    color: #02e452 !important;
+}
+
+.btn-primary {
+    background-color: #48b7a6;
+    border: 1px solid #48b7a6;
+    color: #fff;
+}
+
+.title {
+  color: #fff;
+}
+
+/* request */
+.bar-nav .btn-link, .tab-item.active, .tab-item:active {
+    color: #c9cdcd;
+}
+
+.table-view {
+    background-color: #4e5c5f;
+}
+
+.table-view-cell > a:not(.btn) {
+    color: #ffffff;
+}
+
+
+/* settting */
+.table-view .table-view-cell {
+color: #ffffff;
+}
+
+
+/* support */
+.btn-positive {
+color: #fff;
+background-color: #dc7400;
+border: 1px solid #dc7400;
+}
