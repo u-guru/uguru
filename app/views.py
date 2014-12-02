@@ -90,6 +90,13 @@ def m_login():
     
     return render_template('web/login.html', user_agent_is_desktop=user_agent_is_desktop)
 
+@app.route('/m/signup/')
+def m_signup():
+    from lib.utils import check_user_agent_desktop
+    user_agent_is_desktop = check_user_agent_desktop(request.MOBILE)
+    
+    return render_template('web/signup.html', user_agent_is_desktop=user_agent_is_desktop)
+
 @app.route('/m/messages/')
 def m_messages():
     from lib.utils import check_user_agent_desktop

@@ -17,22 +17,22 @@ def request_contains_some_valid_parameters(request_json, arr_parameters):
     return result
 
 #TODO: custom_error should be called error, pass in an arr instead of one
-def json_response(http_code=200, return_dict=None, custom_error=None, \
+def json_response(http_code=200, return_dict=None, errors=None, \
     extra_headers=None, redirect=None):
 
     if return_dict and http_code == 200: 
         response = jsonify(return_dict)
-    elif custom_error and redirect:
+    elif errors and redirect:
         response = jsonify(
             {
-                'errors' : [custom_error],
+                'errors' : errors,
                 'redirect': redirect
             }
         )
-    elif custom_error:
+    elif errors:
         response = jsonify(
             {
-                'errors' : [custom_error]
+                'errors' : errors
             }
         )
     else:

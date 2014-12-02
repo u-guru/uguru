@@ -5,14 +5,15 @@
     <a class="btn btn-link pull-right" data-transition='slide-in' href="#" id="submit-link">
         <strong>Submit</strong>
     </a>
-    <h1 class="title">uGuru Login</h1>
+    <h1 class="title">uGuru Signup</h1>
 </header>
 {% endblock %}
 
 {% block main_content %}
 <div class="content">
 
-    <form class="input-group" id="login-form">
+    <form class="input-group" id="signup-form">
+        <input type="email" id="name-field" placeholder="Ulysses S. Guru"></input>
         <input type="email" id="email-field" placeholder="Your School Email"></input>
         <input type="password" id="password-field" placeholder="password"></input>
     </form>
@@ -20,18 +21,22 @@
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <script>
 
 $(document).ready(function() {
     $('#submit-link').on('touchstart', function(){
 
-        payload = JSON.stringify({ 
-            email:$('#email-field').val(), 
-            password:$('#password-field').val() 
+        payload = JSON.stringify({
+            name     : $('#name-field').val(),
+            email    : $('#email-field').val(), 
+            password : $('#password-field').val() 
         });
 
+        console.log(payload);
+
         $.ajax({
-            url: '/api/v1/login',
+            url: '/api/v1/signup',
             type: 'POST',
             contentType: 'application/json',
             data: payload,

@@ -8,26 +8,24 @@ function addToggleListener(toggle_id, toggle_text_id, toggle_label_text_on, togg
     if (! elementExists) {
         return;
     }
-    document.querySelector('#' + toggle_id).addEventListener('toggle', 
+    document.querySelector('#' + toggle_id).addEventListener('toggle',
         function() {
             if (hasClass(this, 'active')) {
                 document.getElementById(toggle_text_id).innerHTML = toggle_label_text_on;
             } else {
                 document.getElementById(toggle_text_id).innerHTML = toggle_label_text_off;
             }
-        } 
-    );    
+        }
+    );
 }
 
-function show_element(element_id) { 
+function show_element(element_id) {
     document.getElementById(element_id).style.display = 'block';
 }
 
-function hide_element(element_id) { 
+function hide_element(element_id) {
     document.getElementById(element_id).style.display = 'none';
 }
-
-
 
 addToggleListener('asap-toggle', 'asap-toggle-text', 'I need help ASAP', 'I need help later');
 
