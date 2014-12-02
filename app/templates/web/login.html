@@ -11,10 +11,20 @@
 
 {% block main_content %}
 <div class="content should-hide-message-bar should-hide-tab-bar">
+    <h6 class='content-padded'></h6>
     <form class="input-group" id="login-form" >
         <input type="email" id="email-field" placeholder="Your School Email"></input>
         <input type="password" id="password-field" placeholder="Password"></input>
     </form>
+    <ul class='table-view'>
+        <li class='table-view-cell'>
+            <a class='navigate-right' href='/m/signup/' data-transition='slide-in'>
+                Create an Account
+            </a>
+        </li>
+    </ul>
+    <button class="btn btn-positive btn-block">How it Works</button>
+    
 
 </div>
 {% endblock %}

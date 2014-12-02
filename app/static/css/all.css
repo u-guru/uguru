@@ -18,51 +18,47 @@ header .uguru-logo {
         .table-view-cell-photo {
           height: 20px; }
 
-          .content-padded.top-only {
-            padding-left: 0px;
-            padding-right: 0px; }
+          .red-text {
+            color: red; }
 
-            .red-text {
-              color: red; }
+            .green-text {
+              color: #5cb85c; }
 
-              .green-text {
-                color: #5cb85c; }
+              .grey-text {
+                color: #8f8f94; }
 
-                .grey-text {
-                  color: #8f8f94; }
+                .bar {
+                  display: block; }
 
-                  .bar {
-                    display: block; }
+                  .center {
+                    text-align: center; }
 
-                    .center {
-                      text-align: center; }
+                    .table-view-cell-profile-photo {
+                      height: 25px; }
 
-                      .table-view-cell-profile-photo {
-                        height: 25px; }
+                      .updated-text {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        padding: 10px 0;
+                        font-size: 11px;
+                        text-align: center; }
 
-                        .updated-text {
-                          position: absolute;
-                          left: 0;
-                          right: 0;
-                          padding: 10px 0;
-                          font-size: 11px;
-                          text-align: center; }
+                        .table-view-cell.message-cell, .table-view-cell.request-cell,
+                        .ignore-table-view-margin {
+                          padding: 10px 15px 11px 15px; }
 
-                          .table-view-cell.message-cell, .table-view-cell.request-cell,
-                          .ignore-table-view-margin {
-                            padding: 10px 15px 11px 15px; }
+                          .table-view-cell .icon {
+                            color: #007aff; }
 
-                            .table-view-cell .icon {
-                              color: #007aff; }
+                            .icon.profile-star {
+                              font-size: 14px; }
 
-                              .icon.profile-star {
-                                font-size: 14px; }
+                              .padding-top-5 {
+                                padding-top: 5px; }
 
-                                .padding-top-5 {
-                                  padding-top: 5px; }
+                                .bold {
+                                  font-weight: bold; }
 
-                                  .bold {
-                                    font-weight: bold; }
-
-                                    .black {
-                                      color: black !important; }
+                                  .black {
+                                    color: black !important; }

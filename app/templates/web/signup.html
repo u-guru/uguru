@@ -5,17 +5,23 @@
     <a class="btn btn-link pull-right" data-transition='slide-in' href="#" id="signup-link">
         <strong>Submit</strong>
     </a>
+
+    <a class="icon icon-left pull-left" data-transition='slide-in' href="/m/login/" id="signup-link">
+    
+    </a>
+
     <h1 class="title">uGuru Signup</h1>
 </header>
 {% endblock %}
 
 {% block main_content %}
-<div class="content should-hide-message-bar should-hide-main-bar">
+<div class="content should-hide-message-bar should-hide-tab-bar">
     <form class="input-group" id="signup-form">
         <input type="email" id="name-field" placeholder="Ulysses S. Guru"></input>
         <input type="email" id="email-field" placeholder="Your School Email"></input>
         <input type="password" id="password-field" placeholder="Password"></input>
     </form>
+    <button class="btn btn-positive btn-block">How it Works</button>
 </div>
 
 {% endblock %}
