@@ -1,45 +1,43 @@
 {% extends 'web/base.html' %}
 
-    {% block main_header %}
-    <header class="bar bar-nav">
-      <h1 class="title">Support</h1>
-      <a class="icon icon-left-nav pull-left" href="/m/settings/" data-transition="slide-out"></a>
-    </header>
-    {% endblock %}
+{% block main_header %}
+<header class="bar bar-nav">
+  <h1 class="title">Support</h1>
+  <a class="icon icon-left-nav pull-left" href="/m/settings/" data-transition="slide-out"></a>
+</header>
+{% endblock %}
 
-    {% block main_content %}
-    <div class="content">
-      
-      <h6 class="content-padded">Options</h6>
-      <ul class="table-view">
-        <li class="table-view-cell ignore-table-view-margin">
-          <div class="segmented-control content-padded">
-            <a class="control-item active">Question</a>
-            <a class="control-item">Suggestion</a>
-            <a class="control-item">Refund</a>
-            <a class="control-item">Other</a>
-          </div>
-        </li>
-      </ul>
-      
-      <h6 class="content-padded">Description</h6>
-      <form class="input-group">
-        <textarea placeholder="Please provide all necessary details" rows="5"></textarea>
-      </form>
+{% block main_content %}
+<div class="content">
+  
+  <h6 class="content-padded">Options</h6>
+  <ul class="table-view">
+    <li class="table-view-cell ignore-table-view-margin">
+      <div class="segmented-control content-padded">
+        <a class="control-item active">Question</a>
+        <a class="control-item">Suggestion</a>
+        <a class="control-item">Refund</a>
+        <a class="control-item">Other</a>
+      </div>
+    </li>
+  </ul>
+  
+  <h6 class="content-padded">Description</h6>
+  <form class="input-group">
+    <textarea placeholder="Please provide all necessary details" rows="5"></textarea>
+  </form>
 
-      <ul class='table-view'>
-        <li class="table-view-cell">
-          Is this urgent?
-          <div class="toggle">
-            <div class="toggle-handle"></div>
-          </div>
-        </li>
-      </ul>
-      <button class="btn btn-positive btn-block">Submit</button>
-      
-    </div>
-    {{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='settings')}}
-    {% include 'web/snippets/import_fingerblast.html' %}
-  {% endblock %}
+  <ul class='table-view'>
+    <li class="table-view-cell">
+      Is this urgent?
+      <div class="toggle">
+        <div class="toggle-handle"></div>
+      </div>
+    </li>
+  </ul>
+  <button class="btn btn-positive btn-block">Submit</button>
+  
+</div>
 
-    
+{{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='settings')}}
+{% endblock %}
