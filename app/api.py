@@ -32,12 +32,9 @@ PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 @app.route('/api/v1/requests', methods=['POST'])
 def request_web_api():
 
-    # TODO: change to get_user, also, 
-    # TODO: check for web wessions, if not, auth_token. 
-    user = get_user()
+    user = current_user()
     if not user:
         return json_response(http_code=401)
-
     
     if request.method == 'POST':
         
@@ -115,7 +112,7 @@ def request_by_id_web_api(request_id):
     if request.method == 'GET':
 
         expected_parameters = ['description', 'status']
-        user = get_user()
+        user = current_user()
         
         if not user:
             return json_response(http_code=401)
@@ -146,7 +143,7 @@ def request_by_id_tutor_accept_web_api(request_id):
         expected_parameters = ['description', 'status']
         request_json = request.json
 
-        user = get_user()
+        user = current_user()
         if not user:
             return json_response(http_code=401)
 
@@ -196,7 +193,7 @@ def request_by_id_student_accept_web_api(request_id):
         expected_parameters = ['status', 'tutor_server_id']
         request_json = request.json
 
-        user = get_user()
+        user = current_user()
         if not user:
             return json_response(http_code=401)
 
@@ -215,7 +212,7 @@ def request_by_id_student_accept_web_api(request_id):
         if request_contains_all_valid_parameters(request_json, expected_parameters):
 
             #Check if tutor server_id is a committed tutor
-            tutor = User.get_user(_id=request_json.get('tutor_server_id'))
+            tutor = User.current_user(_id=request_json.get('tutor_server_id'))
             if tutor not in _request.get_interested_tutors():
                 return json_response(http_code=403)                
 
@@ -248,7 +245,7 @@ def request_by_id_student_accept_web_api(request_id):
 ###### /signup ########
 # POST - creates a new user and logs them in
 @app.route('/api/v1/signup', methods=['POST'])
-def users_web_api():
+def api_signup():
 
     if request.method == 'POST':
         
@@ -291,7 +288,7 @@ def users_web_api():
 ##### /login/ ########
 # POST - logs user in
 @app.route('/api/v1/login', methods = ['POST'])
-def users_login_web_api():
+def api_login():
     
     if request.method == 'POST':
 
@@ -357,7 +354,7 @@ def users_by_id_conversations_web_api(user_id):
     
     if request.method == 'GET':
 
-        user = get_user()
+        user = current_user()
         if not user:
             return json_response(http_code=401)
 
@@ -379,7 +376,7 @@ def users_by_id_conversations_web_api(user_id):
 @app.route('/api/v1/users/<user_id>/conversations/<conversation_id>/messages', methods = ['GET', 'POST', 'PUT'])
 def users_by_id_address_book(user_id, conversation_id):
 
-    user = get_user()
+    user = current_user()
     if not user:
         return json_response(http_code=401)
 
@@ -591,7 +588,7 @@ def api(arg, _id):
         return errors(["User or password were not correct"])
 
     if arg =='stripe_token' and request.method == 'POST':
-        user = get_user()
+        user = current_user()
         if user:
             user_token = request.json.get('stripe-token') # TODO : assigned but never used
             customer = stripe.Customer.create(
@@ -613,7 +610,7 @@ def api(arg, _id):
         return errors(["Invalid Token"])
 
     if arg == 'deactivate_account' and request.method == 'POST':
-        user = get_user()
+        user = current_user()
         if user:
             user.email = user.email + '-REMOVED'
             session.pop('user_id')
@@ -629,7 +626,7 @@ def api(arg, _id):
         return errors(['Invalid Token'])
 
     if arg == 'unconfirm_meeting' and request.method == 'POST':
-        user = get_user()
+        user = current_user()
         if user:
             request_id = request.json.get('payment_id')
             
@@ -696,7 +693,7 @@ def api(arg, _id):
         return errors(["Invalid Token"])
 
     if arg == 'confirm_meeting' and request.method == 'POST':
-        user = get_user()
+        user = current_user()
         if user:
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created)
             notification = user_notifications[request.json.get('notification-id')]
@@ -760,7 +757,7 @@ def api(arg, _id):
         return errors(["Invalid Token"])
 
     if arg == 'notifications' and request.method == 'GET' and _id == None:
-        user = get_user()
+        user = current_user()
         if user:
             user_notifications = sorted(user.notifications, key=lambda n:n.time_created, reverse=True)
             user_notifications_arr = []
@@ -826,7 +823,7 @@ def api(arg, _id):
         return errors(["Invalid Token"])
 
     if arg == 'read-notification' and _id != None and request.method == 'PUT':
-        user = get_user()
+        user = current_user()
         if user:
             n = Notification.query.get(_id)
             n.time_read = datetime.now()
@@ -840,7 +837,7 @@ def api(arg, _id):
         return errors(["Invalid Token"])
 
     if arg == 'cash_out' and _id == None and request.method == 'POST':
-        user = get_user()
+        user = current_user()
         if user:
             transfer = stripe.Transfer.create(
                 amount=int(user.balance * 100), # amount in cents, again
@@ -881,7 +878,7 @@ def api(arg, _id):
         return errors(["Invalid Token"])
 
     if arg =='conversations' and _id == None and request.method == 'GET':
-        user = get_user()
+        user = current_user()
 
         if user:
             conversations_arr = []
@@ -918,7 +915,7 @@ def api(arg, _id):
 
     
     if arg == 'create-password' and request.method == 'POST':
-        user = get_user()
+        user = current_user()
         if user:
             from hashlib import md5
             user.password = md5(request.json.get('password')).hexdigest()
@@ -932,7 +929,7 @@ def api(arg, _id):
         return errors(['Invalid Token'])
 
     if arg =='conversations' and _id != None and request.method == 'GET':
-        user = get_user()
+        user = current_user()
 
         if user:
             conversation = Conversation.query.get(_id)
@@ -989,7 +986,7 @@ def api(arg, _id):
         return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
 
     if arg =='parent_purchase' and request.method =='PUT':
-        user = get_user()
+        user = current_user()
         if user:
             if request.json.get('stripe-card-token'):
                 status = create_stripe_customer(request.json.get('stripe-card-token'), user)
@@ -1010,7 +1007,7 @@ def api(arg, _id):
         return errors(['Invalid Token'])
 
     if arg =='send_message' and _id == None and request.method == 'POST':
-        user = get_user()
+        user = current_user()
         if user:
             message_contents = ajax_json.get('contents')
             conversation_id = ajax_json.get('conversation_id')
@@ -1061,7 +1058,7 @@ def api(arg, _id):
         return errors(['Invalid Token'])
 
     if arg =='billing-contacts' and request.method == 'GET':
-        user = get_user()
+        user = current_user()
         billing_contacts_arr = []
         if user:
             from app.static.data.short_variations import short_variations_dict
@@ -1089,7 +1086,7 @@ def api(arg, _id):
         return errors(['Invalid Token'])
 
     if arg =='payments' and request.method == 'POST':
-        user = get_user()
+        user = current_user()
         billing_contacts_arr = []
         if user:
             p = Payment.query.get(int(request.json.get('payment_id')))
@@ -1296,7 +1293,7 @@ def api(arg, _id):
 
 
     if arg =='bill-student' and request.method == 'POST':
-        user = get_user()
+        user = current_user()
         pending_ratings_dict = {} # TODO : assigned but unused
         if user:
             logging.info(request.json)
@@ -1393,7 +1390,7 @@ def api(arg, _id):
 
 
     if arg == 'notifications' and _id != None and request.method == 'GET':
-        user = get_user()
+        user = current_user()
         if user:
             n_detail = {}
             n = Notification.query.get(_id)
@@ -1439,7 +1436,7 @@ def api(arg, _id):
         return errors(["Invalid Token"])
     
     if arg == 'upload_photo' and request.method == 'POST':
-        user = get_user()
+        user = current_user()
         if user:
             try:
                 db_session.commit()
@@ -1483,7 +1480,7 @@ def api(arg, _id):
 
     
     if arg =='purchase_promotion' and request.method == 'POST':
-        user = get_user()
+        user = current_user()
         if user:
             logging.info(request.json)
             p = process_promotion_payment_plan(request.json.get('option-selected'), user)
@@ -1495,7 +1492,7 @@ def api(arg, _id):
 
 
     if arg =='purchase_package' and request.method == 'POST':
-        user = get_user()
+        user = current_user()
         if user:
             logging.info(request.json)
             p = process_package_home(request.json.get('option-selected'), user)
@@ -1507,7 +1504,7 @@ def api(arg, _id):
 
 
     if arg == 'rating' and request.method == 'PUT':
-        user = get_user()
+        user = current_user()
         if user:
             tutor = User.query.get(request.json.get('tutor_server_id'))
             student = User.query.get(request.json.get('student_server_id'))
@@ -1547,14 +1544,14 @@ def api(arg, _id):
 
 
     if arg == 'user' and request.method == 'GET':
-        user = get_user()
+        user = current_user()
         if user:
             response = user_dict_in_proper_format(user)
             return json.dumps(response, default=json_handler, allow_nan=True, indent=4)
         return errors(["Invalid Token"])
 
     if arg == 'user' and request.method == 'PUT':
-        user = get_user()
+        user = current_user()
         if user:
             user_response_dict = {} # TODO : assigned but unused
             if request.json.get('apn_token'):
@@ -1681,7 +1678,7 @@ def api(arg, _id):
         return errors(["Invalid Token"])
 
     if arg =='tutor_accept' and request.method =='PUT':
-        user = get_user()
+        user = current_user()
         if user:
             logging.info(request.json)
             try:
@@ -1770,7 +1767,7 @@ def api(arg, _id):
         return errors(['Invalid Token'])
 
     if arg =='cancel_request' and request.method =='POST':
-        user = get_user()
+        user = current_user()
         if user:
             logging.info(request.json)
             notif_id = request.json.get('notif_id')
@@ -1836,7 +1833,7 @@ def api(arg, _id):
     
 
     if arg =='student_accept' and request.method == 'PUT':
-        user = get_user()
+        user = current_user()
         if user:
             try:
                 db_session.commit()
@@ -2074,7 +2071,7 @@ def api(arg, _id):
 
     if arg =='request' and request.method =='POST':
 
-        user = get_user()
+        user = current_user()
         if user:
             logging.info(request.json)
             description = request.json.get('_description')
@@ -2302,7 +2299,7 @@ def api(arg, _id):
 ################# HELPER METHODS #####################
 
 # Returns the user looked up by the authentication token sent in the header
-def get_user():
+def current_user():
     if session.get('user_id'):
         return User.query.get(session.get('user_id'))
     else:
@@ -2539,7 +2536,7 @@ def process_back_to_original_form(arr_arr):
             return_list[index].append(item)
     return return_list
 
-def get_user_skills_in_arr(user):
+def current_user_skills_in_arr(user):
     skills = []
     if user.skills:
         for skill in user.skills:
@@ -2601,7 +2598,7 @@ def user_dict_in_proper_format(user):
         is_a_tutor = True
 
     if user.skills:
-        skills = get_user_skills_in_arr(user)
+        skills = current_user_skills_in_arr(user)
 
     response = {'user': 
                     { 
