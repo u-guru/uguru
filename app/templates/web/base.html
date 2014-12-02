@@ -1,5 +1,6 @@
 <!-- Apply desktop wrapper -->
-{% if user_agent_is_desktop %}
+{% if not request.MOBILE %}
+    {% set user_agent_is_desktop = True %}
     {% from 'web/macros/desktop.html' import desktop_header, desktop_footer %}
 {% endif %}
 {% from 'web/macros/components.html' import show_components %}
@@ -38,7 +39,7 @@
     <!-- Add main content of app -->
     {% block main_content %}
     {% endblock %}
-    
+
     <!-- Add web app footer -->
     {% if user_agent_is_desktop %}
       {{desktop_footer()}}

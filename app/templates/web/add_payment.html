@@ -1,0 +1,26 @@
+{% extends 'web/base.html' %}
+
+    {% block main_header %}
+    <header class="bar bar-nav">
+      <h1 class="title">Add a Card</h1>
+      <a class="icon icon-left-nav pull-left" href="/m/settings/" data-transition="slide-out"></a>
+    </header>
+    {% endblock %}
+
+    {% block main_content %}
+    <div class="content">
+      
+      <ul class="table-view">
+        <form class="input-group">
+          <input type="text" placeholder="•••• •••• •••• ••••">
+          <input type="text" placeholder="MM / YYYY">
+        </form>
+      </ul>
+      <button class="btn btn-positive btn-block">Submit</button>
+      
+    </div>
+    {{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='add_payment')}}
+    {% include 'web/snippets/import_fingerblast.html' %}
+  {% endblock %}
+
+    
