@@ -2,7 +2,7 @@
 
 {% block main_header %}
 <header class="bar bar-nav">
-    <a class="btn btn-link pull-right" data-transition='slide-in' href="#" id="submit-link">
+    <a class="btn btn-link pull-right" data-transition='slide-in' href="#" id="signup-link">
         <strong>Submit</strong>
     </a>
     <h1 class="title">uGuru Signup</h1>
@@ -20,41 +20,6 @@
 
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-<script>
-
-$(document).ready(function() {
-    $('#submit-link').on('touchstart', function(){
-
-        payload = JSON.stringify({
-            name     : $('#name-field').val(),
-            email    : $('#email-field').val(), 
-            password : $('#password-field').val() 
-        });
-
-        console.log(payload);
-
-        $.ajax({
-            url: '/api/v1/signup',
-            type: 'POST',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                window.PUSH({
-                    transition : "slide-in",
-                    url : "/home/"
-                });
-            },
-            error: function (request) {
-                alert(request.responseJSON['errors']);
-            }
-        });
-    });
-});
-
-</script>
-
 {{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='login')}}
-{% include 'web/snippets/import_fingerblast.html' %}
+
 {% endblock %}

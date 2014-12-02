@@ -256,7 +256,10 @@ def api_signup():
             name = request.json.get('name').title()
             email = request.json.get('email')
             password = request.json.get('password')
-
+            # If fields are left empty
+            if not name or not email or not password:
+                return json_response(http_code=403, errors=["Please fill in required fields."])
+            
             errors = []
 
             # Check if user with this email already exists
@@ -302,6 +305,10 @@ def api_login():
             
             email = request.json.get('email')
             password = request.json.get('password')
+
+            # If fields are left empty
+            if not email or not password:
+                return json_response(http_code=403, errors=["Please fill in required fields."])
 
             #Check if user exists in DB
             user = User.login_user(email, password)

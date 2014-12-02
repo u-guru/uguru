@@ -30,3 +30,60 @@ function hide_element(element_id) {
 addToggleListener('asap-toggle', 'asap-toggle-text', 'I need help ASAP', 'I need help later');
 
 addToggleListener('remote-toggle', 'remote-toggle-text', 'In-person or online', 'In-person tutor only');
+
+
+// jQuery Shit
+$(document).ready(function() {
+
+    // Login Page
+    $('#login-link').on('touchstart', function(){
+
+        payload = JSON.stringify({
+            email:$('#login-form #email-field').val(),
+            password:$('#login-form #password-field').val()
+        });
+
+        $.ajax({
+            url: '/api/v1/login',
+            type: 'POST',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "slide-in",
+                    url : "/home/"
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+
+    // Signup Page Form
+    $('#signup-link').on('touchstart', function(){
+
+        payload = JSON.stringify({
+            name     : $('#signup-form #name-field').val(),
+            email    : $('#signup-form #email-field').val(),
+            password : $('#signup-form #password-field').val()
+        });
+
+        $.ajax({
+            url: '/api/v1/signup',
+            type: 'POST',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "slide-in",
+                    url : "/home/"
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+
+});

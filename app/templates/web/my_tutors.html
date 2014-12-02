@@ -1,62 +1,60 @@
 {% extends 'web/base.html' %}
 {% from 'web/macros/components.html' import show_components %}
 
-    {% block main_header %}
-    <header class="bar bar-nav">
-        <h1 class="title">My Tutors</h1>
-    </header>
-    {% endblock %}
+{% block main_header %}
+<header class="bar bar-nav">
+    <h1 class="title">My Tutors</h1>
+</header>
+{% endblock %}
 
-    {% block main_content %}
-    <div class="content">
+{% block main_content %}
+<div class="content">
 
-        <ul class="table-view">
-          <li class="table-view-cell media">
-            <a class="navigate-right" data-transition="slide-in" href='/m/messages/'>
-                <span class="badge badge-negative">5</span>
+    <ul class="table-view">
+      <li class="table-view-cell media">
+        <a class="navigate-right" data-transition="slide-in" href='/m/messages/'>
+            <span class="badge badge-negative">5</span>
+            <img class="media-object pull-left" src="http://placehold.it/42x42">
+            <div class="media-body">
+                Peter
+                <p>Hi my name is Peter</p>
+            </div>
+        </a>
+      </li>
+      <li class="table-view-cell media">
+            <a class="navigate-right">
                 <img class="media-object pull-left" src="http://placehold.it/42x42">
                 <div class="media-body">
-                    Peter
-                    <p>Hi my name is Peter</p>
+                    Mary
+                    <p>
+                        <span class="icon icon-star-filled profile-star black"></span>
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                    </p>
                 </div>
+                <button class="btn btn-primary">Check Availability</button>
             </a>
-          </li>
-          <li class="table-view-cell media">
-                <a class="navigate-right">
-                    <img class="media-object pull-left" src="http://placehold.it/42x42">
-                    <div class="media-body">
-                        Mary
-                        <p>
-                            <span class="icon icon-star-filled profile-star black"></span>
-                            <span class="icon icon-star-filled profile-star black"></span> 
-                            <span class="icon icon-star-filled profile-star black"></span> 
-                            <span class="icon icon-star-filled profile-star black"></span> 
-                            <span class="icon icon-star-filled profile-star black"></span> 
-                        </p>
-                    </div>
-                    <button class="btn btn-primary">Check Availability</button>
-                </a>
-          </li>
-          <li class="table-view-cell media">
-                <a class="navigate-right">
-                    <img class="media-object pull-left" src="http://placehold.it/42x42">
-                    <div class="media-body">
-                        Cameron 
-                        <p>
-                            <span class="icon icon-star-filled profile-star black"></span>
-                            <span class="icon icon-star-filled profile-star black"></span> 
-                            <span class="icon icon-star-filled profile-star black"></span> 
-                            <span class="icon icon-star-filled profile-star black"></span> 
-                            <span class="icon icon-star-filled profile-star black"></span> 
-                        </p>
-                    </div>
-                    <button class="btn btn-primary">Check Availability</button>
-                </a>
-          </li>
-        </ul>
+      </li>
+      <li class="table-view-cell media">
+            <a class="navigate-right">
+                <img class="media-object pull-left" src="http://placehold.it/42x42">
+                <div class="media-body">
+                    Cameron 
+                    <p>
+                        <span class="icon icon-star-filled profile-star black"></span>
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                    </p>
+                </div>
+                <button class="btn btn-primary">Check Availability</button>
+            </a>
+      </li>
+    </ul>
 
-    </div>
-    {% include 'web/snippets/import_fingerblast.html' %}
-    {% include 'web/snippets/import_fingerblast.html' %}
-    {{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='tutors')}}
-    {% endblock %}
+</div>
+{{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='tutors')}}
+{% endblock %}

@@ -1,55 +1,54 @@
 {% extends 'web/base.html' %}
 
-    {% block main_header %}
-    <header class="bar bar-nav">
-        <a class="icon icon-left-nav pull-left" href="/tutors/" data-transition="slide-out"></a>
-        <h1 class="title">Jake</h1>
-    </header>
-    {% endblock %}
+{% block main_header %}
+<header class="bar bar-nav">
+    <a class="icon icon-left-nav pull-left" href="/tutors/" data-transition="slide-out"></a>
+    <h1 class="title">Jake</h1>
+</header>
+{% endblock %}
 
-    {% block main_content %}
-    <div class="content">
+{% block main_content %}
+<div class="content">
 
-        <ul class="table-view">
-            <li class="table-view-cell message-cell media">
-                <img class="media-object message-face pull-left" src="/static/img/face1.png">
-                <div class="media-body">
-                    <p>Hi Jake I really need help with CS10 tonight. I have a midterm tomorrow.</p>
-                </div>
-            </li>
-            <li class="table-view-cell message-cell media">
-                <img class="media-object message-face pull-right" src="/static/img/face2.png">
-                <div class="media-body">
-                    <p class='pull-right'>Cool, don't worry! I got your back. Is there any particular questions you want me to look through?</p>
-                </div>
-            </li>
-            <li class="table-view-cell message-cell media">
-                <img class="media-object message-face pull-left" src="/static/img/face1.png">
-                <div class="media-body">
-                    <p>Yes! I'm trying to ... simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it</p>
-                </div>
-            </li>
-            <li class="table-view-cell message-cell media">
-                <img class="media-object message-face pull-right" src="/static/img/face2.png">
-                <div class="media-body">
-                    <p class='pull-right'>Dude... that's not too bad! What do you think?</p>
-                </div>
-            </li>
-            <li class="table-view-cell message-cell media">
-                <img class="media-object message-face pull-left" src="/static/img/face1.png">
-                <div class="media-body">
-                    <p>I think this is retarded. </p>
-                </div>
-            </li>
-            <li class="table-view-cell message-cell media">
-                <img class="media-object message-face pull-right" src="/static/img/face1.png">
-                <div class="media-body">
-                    <p class='pull-right'>You're supposed to help me...</p>
-                </div>
-            </li>
-        </ul>
+    <ul class="table-view">
+        <li class="table-view-cell message-cell media">
+            <img class="media-object message-face pull-left" src="/static/img/face1.png">
+            <div class="media-body">
+                <p>Hi Jake I really need help with CS10 tonight. I have a midterm tomorrow.</p>
+            </div>
+        </li>
+        <li class="table-view-cell message-cell media">
+            <img class="media-object message-face pull-right" src="/static/img/face2.png">
+            <div class="media-body">
+                <p class='pull-right'>Cool, don't worry! I got your back. Is there any particular questions you want me to look through?</p>
+            </div>
+        </li>
+        <li class="table-view-cell message-cell media">
+            <img class="media-object message-face pull-left" src="/static/img/face1.png">
+            <div class="media-body">
+                <p>Yes! I'm trying to ... simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it</p>
+            </div>
+        </li>
+        <li class="table-view-cell message-cell media">
+            <img class="media-object message-face pull-right" src="/static/img/face2.png">
+            <div class="media-body">
+                <p class='pull-right'>Dude... that's not too bad! What do you think?</p>
+            </div>
+        </li>
+        <li class="table-view-cell message-cell media">
+            <img class="media-object message-face pull-left" src="/static/img/face1.png">
+            <div class="media-body">
+                <p>I think this is retarded. </p>
+            </div>
+        </li>
+        <li class="table-view-cell message-cell media">
+            <img class="media-object message-face pull-right" src="/static/img/face1.png">
+            <div class="media-body">
+                <p class='pull-right'>You're supposed to help me...</p>
+            </div>
+        </li>
+    </ul>
 
-    </div>
-    {{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='messages')}}
-    {% include 'web/snippets/import_fingerblast.html' %}
-    {% endblock %}
+</div>
+{{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='messages')}}
+{% endblock %}
