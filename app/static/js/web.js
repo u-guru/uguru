@@ -31,10 +31,23 @@ addToggleListener('asap-toggle', 'asap-toggle-text', 'I need help ASAP', 'I need
 
 addToggleListener('remote-toggle', 'remote-toggle-text', 'In-person or online', 'In-person tutor only');
 
+// Main Tab Bar Function
+function updateMainTabBar(){
+    if ($('.should-hide-tab-bar').length > 0) {
+        $('#main-bar-tab').hide();
+    }else{
+        $('#main-bar-tab').show();
+    }
+}
 
 // jQuery Shit
 $(document).ready(function() {
 
+    updateMainTabBar();
+    window.addEventListener('push', function(){
+        updateMainTabBar();
+    });
+    
     // Login Page
     $('#login-link').on('touchstart', function(){
 
@@ -85,5 +98,4 @@ $(document).ready(function() {
             }
         });
     });
-
 });
