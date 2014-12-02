@@ -38,6 +38,11 @@ def check_msg_status(text_id):
         db_session.flush()
         raise
 
+@task(name='tasks.contact_tutors')
+def contact_qualified_tutors(arr_tutor_ids):
+    from lib.requests import contact_tutors
+    contact_tutors(arr_tutor_ids)
+
 @task(name='tasks.autoconfirm_payment')
 def auto_confirm_student_payment(payment_id, student_id):
     user = User.query.get(student_id)

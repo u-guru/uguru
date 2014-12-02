@@ -1,0 +1,17 @@
+{% block scripts %}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ratchet/2.0.2/js/ratchet.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="/static/js/fingerblast.js"></script>
+<script src="/static/js/web.js"></script>
+
+<script>
+	window.FingerBlast && (new FingerBlast('.device-content'));	
+	window.addEventListener('push', function(){
+		if (!window.FingerBlast) {
+			window.FingerBlast && (new FingerBlast('.device-content'));	
+		};
+	});
+</script>
+
+{% endblock %}

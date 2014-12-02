@@ -39,6 +39,187 @@ stripe_keys = {
 }
 stripe.api_key = stripe_keys['secret_key']
 
+
+#################
+# New Web Views #
+#################
+
+# TODO: 
+# - 
+# - Go hard with views & integration
+@app.route('/home/')
+def home():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/home.html', user=user)
+
+@app.route('/m/guru/')
+def guru():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/guru.html')
+
+@app.route('/tutors/')
+def my_tutors():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+    
+    return render_template('web/my_tutors.html')
+
+@app.route('/m/login/')
+def m_login():
+
+    user = api.current_user()
+    if user:
+        return redirect(url_form('home'))
+    
+    return render_template('web/login.html')
+
+@app.route('/m/signup/')
+def m_signup():
+
+    user = api.current_user()
+    if user:
+        return redirect(url_for('home'))
+
+    return render_template('web/signup.html')
+
+@app.route('/m/logout/')
+def m_logout():
+
+    if session.get('user_id'):
+        session.pop('user_id')
+    return redirect(url_for('m_login'))
+
+
+@app.route('/m/transactions/')
+def m_transactions():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/transactions.html')
+
+@app.route('/add_payment/')
+def add_payment():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/add_payment.html')
+
+@app.route('/add_cash_out/')
+def add_cash_out():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/add_cash_out.html')
+
+@app.route('/become_guru/')
+def become_guru():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/become_guru.html')
+
+@app.route('/add_courses/')
+def add_courses():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/add_courses.html')
+
+@app.route('/m/messages/')
+def m_messages():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+    
+    return render_template('web/messages.html')
+
+@app.route('/m/settings/')
+def m_settings():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+    
+    return render_template('web/settings.html')
+
+
+@app.route('/p/')
+@app.route('/profile/')
+def profile():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+    
+    return render_template('web/profile.html')
+
+
+@app.route('/guru/rating/')
+def guru_request():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/tutor_rating.html')
+
+@app.route('/student/rating/')
+def _student_request():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/student_rating.html')
+
+
+@app.route('/r/')
+@app.route('/request/')
+def _request():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/request.html')
+
+@app.route('/support/')
+def support():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/support.html')
+
+
+@app.route('/r/<_id>/')
+@app.route('/request/<_id>/')
+def request_by_id(_id):
+    return render_template('web/request_details.html')
+
+
 @app.route('/log_in/')
 @app.route('/sign_up/')
 @app.route('/guru/')
@@ -86,26 +267,6 @@ def index(arg=None):
         logged_in=session.get('user_id'), tutor_signup_incomplete=tutor_signup_incomplete, \
         environment = get_environment(), session=session, guru_referral=guru_referral, modal_flag = modal_flag)
 
-@app.route('/dorm/')
-@app.route('/city/')
-@app.route('/fml/')
-@app.route('/cal/')
-@app.route('/sproul/')
-@app.route('/sproul/<arg>/')
-def new_sproul(arg=None):
-    if 'sproul' in request.url:
-        session['referral'] = 'sproul'
-    if 'cal' in request.url:
-        session['referral'] = 'cal'
-    if 'fml' in request.url:
-        session['referral'] = 'fml'
-    if 'dorm' in request.url:
-        session['referral'] = 'dorm'
-    if 'sproul' in request.url and arg!= None:
-        session['referral'] = str(arg) + '(sproul)'
-    return render_template('sproul.html', modal_flag = 'instant')
-
-
 @app.route('/florida/', methods=['GET', 'POST'])
 def florida(arg=None):
 
@@ -152,7 +313,6 @@ def apply_guru():
     else:
         session['redirect'] = '/apply-guru/'
         return redirect('/log_in/')
-
 
 @app.route('/tos/', methods=['GET','POST'])
 def tos():

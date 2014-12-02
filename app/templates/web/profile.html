@@ -1,0 +1,52 @@
+x{% extends 'web/base.html' %}
+
+{% block main_header %}
+<header class="bar bar-nav">
+  <h1 class="title">Tutor Profile
+  </h1>
+  <a class="icon icon-left-nav pull-left" href="/request/" data-transition="slide-out"></a>
+  
+  <a class="icon icon-info pull-right"></a>
+  
+</header>
+{% endblock %}
+
+{% block main_content %}
+<div class="content should-hide-message-bar should-hide-tab-bar">
+    <ul class="table-view">
+      <li class="table-view-cell media center ignore-table-view-margin">
+          <img class="media-object" src="/static/img/face1.png">
+          <p class='content-padded'>
+              <span class="icon icon-star-filled guru-profile-star black"></span>
+              <span class="icon icon-star-filled guru-profile-star black"></span> 
+              <span class="icon icon-star-filled guru-profile-star black"></span> 
+              <span class="icon icon-star-filled guru-profile-star black"></span> 
+              <span class="icon icon-star-filled guru-profile-star black"></span> 
+          </p>
+          <h5 class='content-padded'> 4.9 Stars | 6 Sessions</h6>
+          <p>
+            <i>Hi Ben, I can definitely help you with this task. I've helped several students with this project. Don't worry, I got you.</i>
+          </p>
+      </li>
+      <li class="table-view-cell request-cell ignore-table-view-margin">
+          Mary can tutor
+          <p class='padding-top-5'>
+             <button class='btn btn-primary'>CS61A</button>
+             <button class='btn btn-primary btn-outlined'>CS10</button>
+             <button class='btn btn-primary btn-outlined'>CS70</button>
+             <button class='btn btn-primary btn-outlined'>CS188</button>
+             <button class='btn btn-primary btn-outlined'>CS184</button>
+          </p>
+      </li>
+      <li class="table-view-cell">
+          Mary's Introduction
+          <p>
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+          </p>
+      </li>
+    </ul>  
+  <button class="btn btn-positive btn-block pull-right">Accept Request</button>      
+  <button class="btn btn-negative btn-block">Reject Request</button>      
+</div>
+{% endblock %}
+

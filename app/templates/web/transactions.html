@@ -1,0 +1,36 @@
+{% extends 'web/base.html' %}
+
+    {% block main_header %}
+    <header class="bar bar-nav">
+      <h1 class="title">Transactions</h1>
+      <a class="icon icon-left-nav pull-left" href="/m/settings/" data-transition="slide-out"></a>
+    </header>
+    {% endblock %}
+
+    {% block main_content %}
+    <div class="content should-hide-main-bar should-hide-message-bar">
+      
+      <ul class="table-view">
+        <li class="table-view-cell ignore-table-view-margin">
+            <span class='pull-left'> CS10 Request </span>
+            <span class='pull-right red-text bold'> -$10 </span>
+            <br>
+            <p>
+              Billed to Visa 4129
+            </p>
+        </li>
+        <li class="table-view-cell ignore-table-view-margin">
+            <span class='pull-left'> CS61A Tutoring Session </span>
+            <span class='pull-right green-text bold'> +$10 </span>
+            <br>
+            <p>
+              Sent to Master 4321 (Pending)
+            </p>
+        </li>
+      </ul>
+      
+    </div>
+  
+  {% endblock %}
+
+    

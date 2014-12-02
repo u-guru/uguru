@@ -1,0 +1,62 @@
+{% extends 'web/base.html' %}
+
+{% block main_header %}
+<header class="bar bar-nav">
+  <h1 class="title">Your Request
+  </h1>
+  <a class="icon icon-left-nav pull-left" href="/home/" data-transition="slide-out"></a>
+</header>
+{% endblock %}
+
+{% block main_content %}
+<div class="content should-hide-message-bar should-hide-tab-bar" onload=updateAllBars()>
+  <h6 class="content-padded center">
+      You have a tutor waiting for your reply
+  </h6>
+  <ul class='table-view'>
+    <li class="table-view-cell media">
+        <a class="navigate-right" href='/profile/' data-transition='slide-in'>
+            <img class="media-object pull-left table-view-face" src="/static/img/face1.png">
+            <div class="media-body">
+                Mary can help!
+                <p class='red-text'>
+                    Expires in 5 minutes
+                </p>
+            </div>
+            <button class="btn btn-primary">See Profile</button>
+        </a>
+      </li>
+    </ul>
+    <ul class="table-view">
+      <li class="table-view-cell request-cell">
+          Course
+          <span class='pull-right grey-text'>CS61A</span>
+      </li>
+      <li class="table-view-cell request-cell">
+          Location
+          <span class='pull-right grey-text'>Dwinelle</span>
+          <p>
+            In-person only
+          </p>
+      </li>
+      <li class="table-view-cell request-cell">
+          Time Estimate
+          <span class='pull-right grey-text'><30min</span>
+      </li>
+      <li class="table-view-cell request-cell">
+          Start Time
+          <span class='pull-right grey-text'>10pm Tonight</span>
+      </li>
+      <li class="table-view-cell">
+          Description
+          <p>
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+          </p>
+      </li>
+    </ul>  
+    <h6 class="content-padded center">
+        Created at 2:34pm Today
+    </h6>
+  <button class="btn btn-negative btn-block">Cancel Request</button>      
+</div>
+{% endblock %}
