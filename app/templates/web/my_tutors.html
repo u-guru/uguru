@@ -10,7 +10,7 @@
 {% block main_content %}
 <div class="content">
 
-    <ul class="table-view">
+    <ul class="table-view should-hide-message-bar">
       <li class="table-view-cell media">
         <a class="navigate-right" data-transition="slide-in" href='/m/messages/'>
             <span class="badge badge-negative">5</span>
@@ -55,5 +55,4 @@
       </li>
     </ul>
 </div>
-{{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='tutors')}}
 {% endblock %}

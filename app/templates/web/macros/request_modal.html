@@ -1,5 +1,5 @@
 {% macro process_request_modal(show=False) -%}
-<div id="requestModal" class="modal" {% if not show %} style='display:none' {% endif %}>
+<div id="requestModal" class="modal">
       <header class="bar bar-nav">
         <a class="btn btn-link pull-right" href="#requestModal">
           <strong>Submit</strong>
@@ -11,14 +11,16 @@
       </header>
 
       <div class="content">
-        <form class="input-group">
-          <input type="text" placeholder="Course">
-          <textarea placeholder="Description" rows="5"></textarea>
-          <input type="text" placeholder="Phone Number">
-          <input type="text" placeholder="Location">
-        </form>
-
         <ul class="table-view">
+            <li class="table-view-cell">
+              <a class='navigate-right' data-transition='slide-in' href='/add_course/ '>
+                Courses
+              </a>
+            </li>
+             <li class="table-view-cell">
+              <textarea rows='5'></textarea>
+            </li>
+            <input type="text" placeholder="Phone Number">
             <li class="table-view-cell">
               <span class='pull-left' id='remote-toggle-text'>
                 In-person tutor only

@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block main_content %}
-<div class="content">
+<div class="content should-hide-message-bar should-hide-main-bar">
 
     <form class="input-group" id="login-form">
         <input type="email" id="email-field" placeholder="Your School Email"></input>
@@ -18,6 +18,4 @@
     </form>
 
 </div>
-
-{{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='login')}}
 {% endblock %}

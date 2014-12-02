@@ -12,7 +12,7 @@ x{% extends 'web/base.html' %}
 {% endblock %}
 
 {% block main_content %}
-<div class="content">
+<div class="content should-hide-message-bar should-hide-tab-bar">
     <ul class="table-view">
       <li class="table-view-cell media center ignore-table-view-margin">
           <img class="media-object" src="/static/img/face1.png">
@@ -48,6 +48,5 @@ x{% extends 'web/base.html' %}
   <button class="btn btn-positive btn-block pull-right">Accept Request</button>      
   <button class="btn btn-negative btn-block">Reject Request</button>      
 </div>
-{{show_components(show_request_modal=False, show_tab_bar=False, student_mode=True, page_name='request')}}
 {% endblock %}
 

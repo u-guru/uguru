@@ -55,12 +55,6 @@ def home():
 def guru():
     return render_template('web/guru.html')
 
-#Test, #TODO, get rid of it
-@app.route('/inbox/')
-def inbox():
-    
-    return render_template('web/inbox.html')
-
 @app.route('/tutors/')
 def my_tutors():
     
@@ -116,24 +110,24 @@ def profile():
 @app.route('/guru/rating/')
 def guru_request():
 
-    return render_template('web/tutor_rating.html', user_agent_is_desktop=user_agent_is_desktop)
+    return render_template('web/tutor_rating.html')
 
 @app.route('/student/rating/')
 def _student_request():
 
-    return render_template('web/student_rating.html', user_agent_is_desktop=user_agent_is_desktop)
+    return render_template('web/student_rating.html')
 
 
 @app.route('/r/')
 @app.route('/request/')
 def _request():
 
-    return render_template('web/request.html', user_agent_is_desktop=user_agent_is_desktop)
+    return render_template('web/request.html')
 
 @app.route('/support/')
 def support():
 
-    return render_template('web/support.html', user_agent_is_desktop=user_agent_is_desktop)
+    return render_template('web/support.html')
 
 
 @app.route('/r/<_id>/')

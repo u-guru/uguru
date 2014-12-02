@@ -1,6 +1,8 @@
-<div class="bar bar-footer">
+{% macro process_message_footer() -%}
+<div class="bar bar-footer" id='footer-message-bar'>
   <input id='type-message' type="search" placeholder="Type message">
   <button class="btn btn-primary pull-right">
     Send
   </button>
 </div>
+{%-endmacro%}

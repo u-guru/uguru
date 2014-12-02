@@ -10,7 +10,7 @@
     {% endblock %}
 
     {% block main_content %}
-    <div class="content">
+    <div class="content should-hide-message-bar">
       
       <ul class="table-view">
         <li class="table-view-cell media">
@@ -29,8 +29,6 @@
       </ul>
       
     </div>
-    {{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='become_guru')}}
-    {% include 'web/snippets/import_fingerblast.html' %}
   {% endblock %}
 
     

@@ -10,14 +10,12 @@
 {% endblock %}
 
 {% block main_content %}
-<div class="content">
+<div class="content should-hide-message-bar should-hide-main-bar">
     <form class="input-group" id="signup-form">
         <input type="email" id="name-field" placeholder="Ulysses S. Guru"></input>
         <input type="email" id="email-field" placeholder="Your School Email"></input>
         <input type="password" id="password-field" placeholder="Password"></input>
     </form>
 </div>
-
-{{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='login')}}
 
 {% endblock %}

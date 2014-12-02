@@ -1,11 +1,11 @@
-{% macro process_tab_bar(show=False, active_page=None, student_mode=False) -%}
+{% macro process_tab_bar(show=False, active_page=None, student_mode=True) -%}
 <nav id='main-bar-tab'class="bar bar-tab" >    
     {% if student_mode %}
-    <a data-transition='fade' class="tab-item {% if active_page == 'home'%}active{% endif %}" href="/home/">
-      <span class="icon icon-home"></span>
+    <a data-transition='fade' class="tab-item main-tab-item" href="/home/">
+      <span class="icon icon-home active"></span>
       <span class="tab-label">Home</span>
     </a>
-    <a data-transition='fade' class="tab-item {% if active_page == 'tutors'%}active{% endif %}" id='address-book' href="/tutors/">
+    <a data-transition='fade' class="tab-item main-tab-item" id='address-book' href="/tutors/">
       <span class="icon icon-person"></span>
       <span class="tab-label">My Tutors</span>
     </a>
@@ -13,20 +13,20 @@
       <span class="icon icon-plus"></span>
       <span class="tab-label">Request</span>
     </a>
-    <a data-transition='fade' class="tab-item {% if active_page == 'settings'%}active{% endif %}" href="/m/settings/">
+    <a data-transition='fade' class="tab-item main-tab-item" href="/m/settings/">
       <span class="icon icon-gear"></span>
       <span class="tab-label">Settings</span>
     </a>
-    <a class="tab-item {% if active_page == 'become_guru'%}active{% endif %}" href="/become_guru/" data-transition='fade'>
+    <a class="tab-item main-tab-item" href="/become_guru/" data-transition='fade'>
       <span class="icon icon-star-filled"></span>
       <span class="tab-label">Guru</span>
     </a>
     {% else %}
-    <a data-transition='fade' class="tab-item {% if active_page == 'guru'%}active{% endif %}" href="/m/guru/">
+    <a data-transition='fade' class="tab-item main-tab-item" href="/m/guru/">
       <span class="icon icon-home"></span>
       <span class="tab-label">Home</span>
     </a>
-    <a data-transition='fade' class="tab-item {% if active_page == 'profile'%}active{% endif %}" id='address-book' href="#">
+    <a data-transition='fade' class="tab-item main-tab-item" id='address-book' href="#">
       <span class="icon icon-person"></span>
       <span class="tab-label">My Profile</span>
     </a>
@@ -34,13 +34,13 @@
       <span class="icon icon-plus"></span>
       <span class="tab-label">Cash Out</span>
     </a>
-    <a data-transition='fade' class="tab-item {% if active_page == 'settings'%}active{% endif %}" href="#">
+    <a data-transition='fade' class="tab-item main-tab-item" href="#">
       <span class="icon icon-gear"></span>
       <span class="tab-label">Settings</span>
     </a>
     <a class="tab-item" href="/home/" data-transition='fade'>
       <span class="icon icon-edit"></span>
-      <span class="tab-label">s</span>
+      <span class="tab-label">Student</span>
     </a>
     {% endif %}
 </nav>

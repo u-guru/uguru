@@ -8,14 +8,10 @@
 {% endblock %}
 
 {% block main_content %}
-<div class="content">
+<div class="content should-hide-message-bar">
   <div class='logo-container center content-padded'>
     <img class="media-object guru-photo" src="/static/img/guru-new.svg">
   </div>
-
-  <h5 class="content-padded">
-    My Scheduled Sessions
-  </h5>
 
   <ul class="table-view">
     <li class="table-view-cell media">
@@ -29,25 +25,19 @@
     </li>
   </ul>
 
-  <h5 class="content-padded">
-    My pending requests
-  </h5>
   <ul class="table-view">
     <li class="table-view-cell">
       <a class="navigate-right" data-transition='slide-in' href='/request/'>
-        <span class="badge badge-negative">1</span>
-        CS61A Request
-        <p>2 hours ago, 3 tutors contacted</p>
+        How it Works
       </a>
     </li>
     <li class="table-view-cell">
       <a class="navigate-right" data-transition='slide-in' href='/request/'>
-        Bio 1A Request
-        <p>3 hours ago</p>
+        <span class="badge">2</span>
+        Current Requests
       </a>
     </li>
   </ul>
 
 </div><!-- /.content -->
-{{show_components(show_request_modal=True, show_tab_bar=True, student_mode=True, page_name='home')}}
 {% endblock %}

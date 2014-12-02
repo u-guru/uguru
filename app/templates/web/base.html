@@ -3,7 +3,7 @@
     {% set user_agent_is_desktop = True %}
     {% from 'web/macros/desktop.html' import desktop_header, desktop_footer %}
 {% endif %}
-{% from 'web/macros/components.html' import show_components %}
+{% from 'web/macros/components.html' import show_all_components %}
 
 <html>
   
@@ -39,6 +39,8 @@
     <!-- Add main content of app -->
     {% block main_content %}
     {% endblock %}
+
+    {{show_all_components()}}
 
     <!-- Add web app footer -->
     {% if user_agent_is_desktop %}

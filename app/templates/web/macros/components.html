@@ -1,12 +1,11 @@
 {% from 'web/macros/request_modal.html' import process_request_modal %}
-{% from 'web/macros/tab_bar.html' import process_tab_bar %}
+{% from 'web/macros/footer.html' import process_tab_bar %}
+{% from 'web/macros/message_footer.html' import process_message_footer %}
 
-{% macro show_components(show_tab_bar=False, show_request_modal=False, page_name=None, student_mode=True)-%}
+{% macro show_all_components()-%}
 
-        
-        {{process_request_modal(show=show_request_modal)}}
-        
-        {{process_tab_bar(show=show_tab_bar, active_page=page_name, 
-        student_mode=student_mode)}}
+        {{process_tab_bar()}}
+        {{process_request_modal()}}
+        {{process_message_footer()}}
 
 {%- endmacro %}
