@@ -14,7 +14,6 @@ else:
 def initialize():
     import os, json
     # TODO: check if it already exists
-    os.remove('app.db')
     init_db()
     script_dir = os.path.dirname(__file__)
     rel_path = 'app/static/data/db_courses.json'

@@ -32,6 +32,8 @@ PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 @app.route('/api/v1/requests', methods=['POST'])
 def request_web_api():
 
+    print 'request'
+
     user = current_user()
     if not user:
         return json_response(http_code=401)

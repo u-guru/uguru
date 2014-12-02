@@ -86,6 +86,40 @@ $(document).ready(function() {
         });
     });
 
+    $('#submit-request-link').on('touchstart', function(){
+        payload = JSON.stringify({
+            'skill_name': 'CS10',
+            'description': $('#request-description').val(),
+            'time_estimate': $('#time-estimate-button-group button.active').index(),
+            'phone_number': $('#request-phone').val(),
+            'location': $('#request-location').val(),
+            'remote': $('#remote-toggle').hasClass('active'),
+            'urgency': $('#asap-toggle').hasClass('active'),
+            'start_time': (new Date().getTime()).toString(),
+        });
+
+        console.log(payload);
+        $.ajax({
+            url: '/api/v1/requests',
+            type: 'POST',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                console.log(request);                
+                if (request.errors) {
+                    alert(request.errors[0])
+                }
+                // window.PUSH({
+                //     transition : "slide-in",
+                //     url : "/home/"
+                // });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+
     // Signup Page Form
     $('#signup-link').on('touchstart', function(){
 

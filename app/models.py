@@ -383,7 +383,7 @@ class Conversation(Base):
     id = Column(Integer, primary_key = True)
 
     is_read = Column(Boolean, default = False)
-    is_active = Column(Boolean)
+    # is_active = Column(Boolean)
     last_updated = Column(DateTime)
     
     skill_id = Column(Integer, ForeignKey('skill.id'))
@@ -697,7 +697,7 @@ class Request(Base):
     available_time = Column(String)
     location = Column(String)
     last_updated = Column(DateTime)
-    start_time = Column(DateTime) #New
+    # start_time = Column(DateTime) #New
     remote = Column(Boolean) #Video-chat friendly
 
     cancellation_reason = Column(String)

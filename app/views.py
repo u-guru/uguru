@@ -49,53 +49,113 @@ stripe.api_key = stripe_keys['secret_key']
 # - Go hard with views & integration
 @app.route('/home/')
 def home():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    if user.get_pending_requests():
+        return redirect(url_for('m_login'))
+
+
+
+
     return render_template('web/home.html')
 
 @app.route('/m/guru/')
 def guru():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
     return render_template('web/guru.html')
 
 @app.route('/tutors/')
 def my_tutors():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
     
     return render_template('web/my_tutors.html')
 
 @app.route('/m/login/')
 def m_login():
+
+    #redirect
     
     return render_template('web/login.html')
 
 @app.route('/m/transactions/')
 def m_transactions():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
     return render_template('web/transactions.html')
 
 @app.route('/add_payment/')
 def add_payment():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
     return render_template('web/add_payment.html')
 
 @app.route('/add_cash_out/')
 def add_cash_out():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
     return render_template('web/add_cash_out.html')
 
 @app.route('/become_guru/')
 def become_guru():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
     return render_template('web/become_guru.html')
 
 @app.route('/add_courses/')
 def add_courses():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
     return render_template('web/add_courses.html')
 
 @app.route('/m/signup/')
 def m_signup():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
     return render_template('web/signup.html')
 
 @app.route('/m/messages/')
 def m_messages():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
     
     return render_template('web/messages.html')
 
 @app.route('/m/settings/')
 def m_settings():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
     
     return render_template('web/settings.html')
 
@@ -103,6 +163,10 @@ def m_settings():
 @app.route('/p/')
 @app.route('/profile/')
 def profile():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
     
     return render_template('web/profile.html')
 
@@ -110,10 +174,18 @@ def profile():
 @app.route('/guru/rating/')
 def guru_request():
 
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
     return render_template('web/tutor_rating.html')
 
 @app.route('/student/rating/')
 def _student_request():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
 
     return render_template('web/student_rating.html')
 
@@ -122,10 +194,18 @@ def _student_request():
 @app.route('/request/')
 def _request():
 
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
     return render_template('web/request.html')
 
 @app.route('/support/')
 def support():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
 
     return render_template('web/support.html')
 
