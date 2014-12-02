@@ -19,33 +19,41 @@
             </li>
         </ul>
         <form class="input-group">
-          <textarea id='request-description' placeholder='Please add more details'></textarea>
+          <textarea id='request-description' placeholder='What do you need help in?'></textarea>
           <input id='request-location' type="text" placeholder="Where do you want to meet?">
           <input id='request-phone' type="text" placeholder="Phone Number">
         </form>
         <ul class='table-view'>
+          <li class="table-view-cell ignore-table-view-margin media">
+              <div class="media-body">
+                <span style='padding-right:7%;'> In Person </span>
+                <span>
+                  <div class="toggle toggle-inline active">
+                    <div class="toggle-handle"></div>
+                  </div>
+                  &nbsp;&nbsp;
+                  <span style='padding-right:7%;'> Online </span>
+                  <div class="toggle toggle-inline active">
+                    <div class="toggle-handle"></div>
+                  </div>
+                </span>
+              </div>
+            </li>
           <li class="table-view-cell">
-            <span class='pull-left' id='remote-toggle-text'>
-              In-person tutor only
-            </span>
-            <div id='remote-toggle' class="toggle active">
-              <div class="toggle-handle"></div>
-            </div>
-          </li>
-          <li class="table-view-cell">
-            <span class='pull-left' id='asap-toggle-text'>
               I need help right now
-            </span>
-            <div id='asap-toggle' class="toggle active">
-              <div class="toggle-handle"></div>
-            </div>
+              <div id='asap-toggle' class="toggle active">
+                <div class="toggle-handle"></div>
+              </div>
+              <p>
+                Within next 2 hours
+              </p>
           </li>
           <li class="table-view-cell">
             <a class="navigate-right">
               Choose Start Time
             </a>
           </li>
-          <li class="table-view-cell">How long would the session be
+          <li class="table-view-cell">Length of Session (Estimate)
             <div class="segmented-control">
               <a class="control-item active" href="#item1mobile">
                 < 30m

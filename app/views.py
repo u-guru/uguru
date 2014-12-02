@@ -54,7 +54,7 @@ def home():
     if not user:
         return redirect(url_for('m_login'))
 
-    return render_template('web/home.html')
+    return render_template('web/home.html', user=user)
 
 @app.route('/m/guru/')
 def guru():
