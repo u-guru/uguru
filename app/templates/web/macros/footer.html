@@ -1,5 +1,5 @@
 {% macro process_tab_bar(show=False, active_page=None, student_mode=True) -%}
-<nav id='main-bar-tab'class="bar bar-tab" >    
+<nav id='main-bar-tab' class="bar bar-tab" style='display:none'>  
     {% if student_mode %}
     <a data-transition='fade' class="tab-item main-tab-item" href="/home/">
       <span class="icon icon-home active"></span>
@@ -8,10 +8,6 @@
     <a data-transition='fade' class="tab-item main-tab-item" id='address-book' href="/tutors/">
       <span class="icon icon-person"></span>
       <span class="tab-label">My Tutors</span>
-    </a>
-    <a class="tab-item" href="#requestModal">
-      <span class="icon icon-plus"></span>
-      <span class="tab-label">Request</span>
     </a>
     <a data-transition='fade' class="tab-item main-tab-item" href="/m/settings/">
       <span class="icon icon-gear"></span>
