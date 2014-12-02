@@ -54,12 +54,6 @@ def home():
     if not user:
         return redirect(url_for('m_login'))
 
-    if user.get_pending_requests():
-        return redirect(url_for('m_login'))
-
-
-
-
     return render_template('web/home.html')
 
 @app.route('/m/guru/')
@@ -83,9 +77,28 @@ def my_tutors():
 @app.route('/m/login/')
 def m_login():
 
-    #redirect
+    user = api.current_user()
+    if user:
+        return redirect(url_form('home'))
     
     return render_template('web/login.html')
+
+@app.route('/m/signup/')
+def m_signup():
+
+    user = api.current_user()
+    if user:
+        return redirect(url_for('home'))
+
+    return render_template('web/signup.html')
+
+@app.route('/m/logout/')
+def m_logout():
+
+    if session.get('user_id'):
+        session.pop('user_id')
+    return redirect(url_for('m_login'))
+
 
 @app.route('/m/transactions/')
 def m_transactions():
@@ -131,11 +144,6 @@ def add_courses():
         return redirect(url_for('m_login'))
 
     return render_template('web/add_courses.html')
-
-@app.route('/m/signup/')
-def m_signup():
-
-    return render_template('web/signup.html')
 
 @app.route('/m/messages/')
 def m_messages():

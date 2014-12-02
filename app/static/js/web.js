@@ -61,6 +61,11 @@ $(document).ready(function() {
         updateAllBars();
     });
     
+    //Logout link
+    $('#logout-link').on('touchstart', function(){
+        window.location.replace('/m/logout/')
+    });
+
     // Login Page
     $('#login-link').on('touchstart', function(){
 
