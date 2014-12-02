@@ -135,10 +135,6 @@ def add_courses():
 @app.route('/m/signup/')
 def m_signup():
 
-    user = api.current_user()
-    if not user:
-        return redirect(url_for('m_login'))
-
     return render_template('web/signup.html')
 
 @app.route('/m/messages/')
