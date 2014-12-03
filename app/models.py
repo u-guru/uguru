@@ -154,7 +154,7 @@ class User(Base):
     user_referral_code = Column(String)
     last_active = Column(DateTime)
     approved_by_admin = Column(Boolean)
-
+    response_rate = Column(Float)
     auth_token = Column(String(64))
     apn_token = Column(String(64))
 
