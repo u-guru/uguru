@@ -1,21 +1,14 @@
-{% macro process_request_modal() -%}
-<div id="requestModal" class="modal">
-      <header class="bar bar-nav">
-        <a class="btn btn-link pull-right" data-transition='slide-in' id='submit-request-link'href="#">
-          <strong>Submit</strong>
-        </a>
-        <a class="btn btn-link pull-left" href="#requestModal">
-          Cancel
-        </a>
-        <h1 class="title">New Request</h1>
-      </header>
+{% extends 'web/base.html' %}
 
-      <div class="content">
-        <!-- <ul class="table-view">
-          <li class="table-view-cell ignore-table-view-margin">
-            Course: <span class='grey-text'>CS10</span>
-          </li>
-        </ul> -->
+{% block main_header %}
+      <header class="bar bar-nav">
+        <a class="icon icon-left pull-left" href="/home/" data-transition='slide-out'></a>
+        <h1 class="title">Find a Guru</h1>
+      </header>
+{% endblock %}
+
+{% block main_content %}
+      <div class="content should-hide-message-bar should-hide-tab-bar">
         <form class="input-group">
           <input id='request-location' type="text" placeholder="Course">
           <textarea id='request-description' placeholder='What do you need help in?'></textarea>
@@ -37,7 +30,7 @@
                   </div>
                 </span>
               </div>
-            </li>
+          </li>
           <li class="table-view-cell">
               I need help right now
               <div id='asap-toggle' class="toggle active">
@@ -69,6 +62,31 @@
             </div>
           </li>
         </ul>
+        <a class="btn btn-positive btn-block" href="#confirm-request-modal"> Submit
+        </a>
+
+        <!-- Confirm request modal -->
+        <div id="confirm-request-modal" class="modal">
+          <header class="bar bar-nav">
+            <h1 class="title">Confirmation</h1>
+            <a class="icon icon-close pull-right" href="#confirm-request-modal">
+            </a>
+          </header>
+          <div class="content">
+            <ul class='table-view'>
+              <li class="table-view-cell">
+                  Pricing
+              </li>
+              <li class="table-view-cell">
+                <a class="navigate-right">
+                  Terms & Services
+                </a>
+              </li>
+            </ul>
+            <a class="btn btn-positive btn-block" data-transition='slide-in' id='submit-request-link'href="#"> Confirm
+            </a>
+          </div>
+        </div>
       </div>
-</div><!-- /.modal -->  
-{%- endmacro %}
+      
+{% endblock %}

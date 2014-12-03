@@ -11,6 +11,12 @@
 		if (!window.FingerBlast) {
 			window.FingerBlast && (new FingerBlast('.device-content'));	
 		};
+
+        var scriptsList = document.querySelectorAll('script.flash-alerts-js');
+        for(var i = 0; i < scriptsList.length; ++i) {
+            eval(scriptsList[i].innerHTML);
+        }
+
 	});
 </script>
 

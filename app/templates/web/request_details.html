@@ -1,5 +1,6 @@
 {% extends 'web/base.html' %}
 {% set is_student = (user.id == request_dict['student']['server_id'])%}
+{% set is_guru = not is_student %}
 
 {% block main_header %}
     <header class="bar bar-nav">
@@ -21,6 +22,9 @@
         Just <b>$5</b> for every <b>15 minutes</b>
       </li>
     </ul>
+
+    {% if is_student %}
+
     <a class='btn btn-positive btn-block content-pa' href='#cancelModal'> 
         Cancel Request
     </a>
@@ -33,14 +37,45 @@
 
       <div class="content">
         <div class='content-padded'></h6>
-        <form>
-          <textarea id='cancel-request-decription' placeholder='Please tell us why! Help us make your future experience be the best as possible.'rows="5"></textarea>
-          <a class='btn btn-positive btn-block' href='#' id='cancel-link'> 
-            Submit 
-          </a>
-        </form>
+          <form>
+            <textarea id='cancel-request-description' placeholder='Please tell us why! Help us make your future experience be the best as possible.'rows="5"></textarea>
+            <a class='btn btn-positive btn-block' href='#' id='cancel-link'> 
+              Submit 
+            </a>
+          </form>
+        </div>
       </div>
     </div>
+      {% endif %}
 
-</div>
+      {% if is_guru %}
+      <a class='btn btn-positive btn-block' href='#' id='guru-accept-link'> 
+          Accept
+      </a>
+      <a class='btn btn-negative btn-block' href='#reject-request-modal'>
+          Reject
+      </a>
+
+      <div id="reject-request-modal" class="modal">
+        <header class="bar bar-nav">
+          <a class="btn btn-link pull-left" href="#reject-request-modal">Cancel</a>
+          <h1 class="title">Reject</h1>
+          <a class="btn btn-link pull-right guru-reject-link" href="#">Skip</a>
+        </header>
+
+        <div class="content">
+          <div class='content-padded'></h6>
+            <form>
+              <textarea id='guru-reject-decription' placeholder='Please tell us more! Replying will increase your response rate!'rows="5"></textarea>
+              <a class='btn btn-positive btn-block guru-reject-link' href='#'>
+                Submit 
+              </a>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {% endif %}
+
+    </div>
 {% endblock %}

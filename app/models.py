@@ -134,11 +134,7 @@ class User(Base):
     name = Column(String(64))
     parent_name = Column(String)
     parent_email = Column(String)
-    if os.environ.get('TESTING'):
-        email = Column(String(64))
-    else:
-        email = Column(String(64), index = True, unique = True)
-
+    email = Column(String(64), index = True, unique = True)
     school_email = Column(String(64))
     password = Column(String(64))
     is_a_tutor = Column(Boolean, default = False)
@@ -158,7 +154,7 @@ class User(Base):
     user_referral_code = Column(String)
     last_active = Column(DateTime)
     approved_by_admin = Column(Boolean)
-
+    response_rate = Column(Float)
     auth_token = Column(String(64))
     apn_token = Column(String(64))
 
@@ -697,7 +693,7 @@ class Request(Base):
     available_time = Column(String)
     location = Column(String)
     last_updated = Column(DateTime)
-    # start_time = Column(DateTime) #New
+    start_time = Column(DateTime)
     remote = Column(Boolean) #Video-chat friendly
 
     cancellation_reason = Column(String)
@@ -709,7 +705,6 @@ class Request(Base):
     time_created = Column(DateTime)
     time_connected = Column(DateTime)
     payment_id = Column(Integer)
-    estimated_hourly = Column(Float) #TO DROP
     actual_hourly = Column(Float) 
     actual_time = Column(Float)
 
@@ -814,7 +809,13 @@ class Request(Base):
 
     #TODO, we don't do anything yet, but we will in the near future.
     def process_tutor_reject(self,tutor):
-        pass
+        tutor.outgoing_requests.remove(self)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
 
     def get_interested_tutors(self):
         return self.committed_tutors

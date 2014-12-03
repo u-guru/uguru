@@ -71,7 +71,7 @@ def guru():
     if not user:
         return redirect(url_for('m_login'))
 
-    return render_template('web/guru.html')
+    return render_template('web/guru.html', user=user)
 
 @app.route('/tutors/')
 def my_tutors():
@@ -87,7 +87,13 @@ def m_login():
 
     user = api.current_user()
     if user:
-        return redirect(url_for('home'))    
+        pending_requests = user.get_pending_requests()
+        if pending_requests:
+            pending_request_id = pending_requests[0].id
+            return redirect( \
+                url_for(endpoint='request_by_id', _id=pending_request_id))
+        else:
+            return redirect(url_for('home'))
     
     return render_template('web/login.html')
 
@@ -107,6 +113,8 @@ def m_logout():
         session.pop('user_id')
     return redirect(url_for('m_login'))
 
+
+
 #Content pages, example: Sorry, 'We have no tutors page'
 @app.route('/show/<event>/')
 def content_page(event):
@@ -125,6 +133,15 @@ def m_transactions():
         return redirect(url_for('m_login'))
 
     return render_template('web/transactions.html')
+
+@app.route('/request_form/')
+def request_form():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/request_form.html')
 
 @app.route('/add_payment/')
 def add_payment():
@@ -240,12 +257,17 @@ def request_by_id(_id):
     if not _request:
         return redirect(url_for('home'))
 
-    print _request
+    print _request.committed_tutors
 
     #if tutor (should take up the whole page)
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
+
+    # request already canceled, guru can't accept
+    if _request.is_canceled() and user in _request.approved_tutors():
+        flash('Sorry! The student has canceled this request')
+        return redirect(url_for('home'))
 
     if not user == _request.get_student() and not _request.is_tutor_active(user) \
         and not _request.is_canceled():

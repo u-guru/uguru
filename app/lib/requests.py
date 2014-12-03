@@ -42,7 +42,6 @@ def request_obj_to_dict(_request, skill, student, tutor=None):
             interested_tutors_arr.append(tutor_profile_info_dict)
         return_dict['interested_tutors'] = interested_tutors_arr
 
-
     return return_dict
 
 def user_obj_to_dict(user):
@@ -56,7 +55,6 @@ def user_obj_to_dict(user):
 # MVP, see approved_tutors_ordered
 def approved_tutors(_request):
     # TODO: Remove tutors that are already in the student's address book.
-
     return _request.requested_tutors
 
 #TODO: This should sort the tutors based on uGuru score
@@ -68,6 +66,8 @@ def calc_uguru_score(tutor):
     pass
 
 #TODO: This is MVP, this should be more sophisticated.
-def contact_tutors(tutors):
+def contact_tutors(_request):
     pass
+
+    
 
