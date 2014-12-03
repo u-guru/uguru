@@ -79,7 +79,7 @@ def m_login():
 
     user = api.current_user()
     if user:
-        return redirect(url_form('home'))
+        return redirect(url_for('home'))
     
     return render_template('web/login.html')
 
@@ -99,6 +99,15 @@ def m_logout():
         session.pop('user_id')
     return redirect(url_for('m_login'))
 
+#Content pages, example: Sorry, 'We have no tutors page'
+@app.route('/show/<event>/')
+def content_page(event):
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+    
+    return render_template('web/content.html', event=event)
 
 @app.route('/m/transactions/')
 def m_transactions():

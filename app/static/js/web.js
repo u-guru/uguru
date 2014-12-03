@@ -62,6 +62,7 @@ $(document).ready(function() {
     });
     
     //Logout link
+    //TODO: Make this a PUSH EVENT
     $('#logout-link').on('touchstart', function(){
         window.location.replace('/m/logout/')
     });
@@ -91,6 +92,8 @@ $(document).ready(function() {
         });
     });
 
+    //Submit request link
+
     $('#submit-request-link').on('touchstart', function(){
         payload = JSON.stringify({
             'skill_name': 'CS10',
@@ -110,14 +113,24 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: payload,
             success: function(request){
-                console.log(request);                
-                if (request.errors) {
-                    alert(request.errors[0])
+                if (request.errors && request.redirect) {
+                    if (request.redirect == 'no-tutors') {
+                        window.PUSH({
+                            transition : "fade",
+                            url : "/show/no-tutors/"
+                        });       
+                    }
+                    window.PUSH({
+                        transition : "fade",
+                        url : "/show/no-tutors/"
+                    });
                 }
-                // window.PUSH({
-                //     transition : "slide-in",
-                //     url : "/home/"
-                // });
+                else {
+                    
+                }
+                
+                //Close modal
+                $('#requestModal').removeClass('active');
             },
             error: function (request) {
                 alert(request.responseJSON['errors']);
@@ -127,7 +140,7 @@ $(document).ready(function() {
 
     // Signup Page Form
     $('#signup-link').on('touchstart', function(){
-
+        console.log('sup');
         payload = JSON.stringify({
             name     : $('#signup-form #name-field').val(),
             email    : $('#signup-form #email-field').val(),
