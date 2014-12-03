@@ -73,6 +73,15 @@ def guru():
 
     return render_template('web/guru.html', user=user)
 
+@app.route('/m/guru/requests/')
+def guru_requests():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/guru_requests.html', user=user)
+
 @app.route('/tutors/')
 def my_tutors():
 
@@ -255,6 +264,7 @@ def request_by_id(_id):
     #if ID is not accurate, send back to home.
     _request = Request.get_request_by_id(_id)
     if not _request:
+        
         return redirect(url_for('home'))
 
     print _request.committed_tutors

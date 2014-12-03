@@ -1,4 +1,6 @@
 {% extends 'web/base.html' %}
+{% set guru_requests = user.get_accepted_requests() %}
+
 
 {% block main_header %}
 <header class="bar bar-nav">
@@ -11,7 +13,7 @@
   <div class='logo-container center content-padded'>
     <img class="media-object guru-photo" src="/static/img/guru-new.svg">
   </div>
-
+  
 
   <ul class="table-view">
     <li class="table-view-cell media">
@@ -26,15 +28,22 @@
   </ul>
 
   <ul class="table-view">
+    {% if guru_requests %}
+    <li class="table-view-cell">
+      <a class="navigate-right" href='/m/guru/requests/' data-transition='slide-in'>
+        My Accepted Requests
+        <span class="badge">{{guru_requests|length}}</span>
+      </a>
+    </li>
+    {% endif %}
     <li class="table-view-cell">
       <a class="navigate-right">
-        My accepted requests
-        <span class="badge">{{user.outgoing_requests|length}}</span>
+        Upcoming Sessions
       </a>
     </li>
     <li class="table-view-cell">
       <a class="navigate-right">
-        Upcoming Sessions
+        Guru Guide to Success
       </a>
     </li>
   </ul>

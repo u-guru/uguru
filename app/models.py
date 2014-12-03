@@ -190,6 +190,27 @@ class User(Base):
     recipient_id = Column(String)
     recipient_last4 = Column(String(4))
     recipient_card_type = Column(String(4))
+
+    # Go through user.outgoing_requests, filter the ones 
+    # that Gurus have accepted, but student hasn't
+    #HACKED for now, will change 
+    def get_accepted_requests(self):
+        accepted_requests = []
+        for _request in self.outgoing_requests:
+            if self in _request.committed_tutors:
+                accepted_requests.append(_request)
+        return accepted_requests
+
+    # Go through user.conversations, filter out the
+    # active ones.
+    def get_scheduled_sessions(self):
+        scheduled_sessions = []
+        for c in self.conversations:
+            if c.is_active:
+                all_requests_by_date = sorted(c.requests, 
+                    key=lambda c:c.time_created, reverse=True)
+                scheduled_sessions.append(all_requests_by_date[0])
+        return scheduled_sessions
     
     outgoing_requests = relationship('Request', 
         secondary = student_request_table)

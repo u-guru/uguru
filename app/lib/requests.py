@@ -16,6 +16,7 @@ def request_obj_to_dict(_request, skill, student, tutor=None):
         'student': {
                 'name': student.get_first_name(),
                 'server_id': student.id,
+                'profile_url': student.profile_url,
             },
         'tutor_count': len(_request.approved_tutors()),
         'description': _request.description,
