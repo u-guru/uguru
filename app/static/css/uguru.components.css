@@ -39,8 +39,8 @@ header .uguru-logo {
 }
 
 .btn-negative {
-    background-color: #db7400;
-    border: 1px solid #db7400;
+    background-color: #69b2a5;
+    border: 1px solid #69b2a5;
 }
 
 .table-view-cell.message-cell, .table-view-cell.request-cell, .ignore-table-view-margin {
@@ -67,8 +67,8 @@ header .uguru-logo {
 }
 
 .btn-primary {
-    background-color: #48b7a6;
-    border: 1px solid #48b7a6;
+    background-color: #db7500;
+    border: 1px solid #db7500;
     color: #fff;
 }
 
@@ -78,7 +78,7 @@ header .uguru-logo {
 
 /* request */
 .bar-nav .btn-link, .tab-item.active, .tab-item:active {
-    color: #c9cdcd;
+    color: #69b2a5;
 }
 
 .table-view {
@@ -101,4 +101,10 @@ color: #ffffff;
 color: #fff;
 background-color: #69b2a5;
 border: 1px solid #69b2a5;
+}
+
+
+/* login */
+body {
+    color: #636c6d
 }
