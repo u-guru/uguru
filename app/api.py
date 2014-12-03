@@ -32,8 +32,6 @@ PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 @app.route('/api/v1/requests', methods=['POST'])
 def request_web_api():
 
-    print 'request'
-
     user = current_user()
     if not user:
         return json_response(http_code=401)
@@ -88,7 +86,8 @@ def request_web_api():
             #Initiated delayed functions here.
             from tasks import contact_qualified_tutors
             try:
-                contact_qualified_tutors.delay(args=[_request.approved_tutor_ids()])
+                pass #for now
+                # contact_qualified_tutors.delay(args=[_request.approved_tutor_ids()])
             except:
                 #TODO, figure out way to test connection to redis in testing.
                 pass
@@ -107,31 +106,50 @@ def request_web_api():
 
 # Specific support route
 # GET returns details of a request 
-# DELETE cancels a request 
-@app.route('/api/v1/requests/<request_id>', methods=['GET', 'DELETE'])
+# PUT cancels a request 
+@app.route('/api/v1/requests/<request_id>', methods=['GET', 'PUT'])
 def request_by_id_web_api(request_id):
     
+    user = current_user()
+    if not user:
+        return json_response(http_code=401)
+
+    #Get request by ID
+    _request = Request.get_request_by_id(request_id)
+
+    #check if this request_id is valid
+    if not _request:
+        return json_response(http_code=400)
+
+    #Make sure user is in the right place, either a student, or a tutor.
+    if not user == _request.get_student() and not _request.is_tutor_active(user):
+        return json_response(http_code=403)
+        
     if request.method == 'GET':
 
         expected_parameters = ['description', 'status']
-        user = current_user()
-        
-        if not user:
-            return json_response(http_code=401)
-        
-        #Get request by ID
-        _request = Request.get_request_by_id(request_id)
-        
-        #check if this request_id is valid
-        if not _request:
-            return json_response(http_code=400)
-
-        #Make sure user is in the right place, either a student, or a tutor.
-        if not user == _request.get_student() and not _request.is_tutor_active(user):
-            return json_response(http_code=403)
         
         request_return_dict = _request.get_return_dict()
         return json_response(http_code = 200, return_dict = request_return_dict)
+
+    if request.method == 'PUT':
+        
+        expected_parameters = ['action', 'description']
+        request_json = request.json
+
+        #check for invalid payload
+        if not request_contains_all_valid_parameters(request_json, expected_parameters):
+            #invalid payload
+            return json_response(422)
+        
+        put_action = request_json['action']
+
+        if put_action == 'cancel':
+            _request.cancel(user)
+            
+        request_return_dict = _request.get_return_dict()
+        return json_response(http_code = 200, return_dict = request_return_dict)
+
 
     return json_response(400)
 
@@ -142,7 +160,7 @@ def request_by_id_tutor_accept_web_api(request_id):
     
     if request.method == 'PUT':
 
-        expected_parameters = ['description', 'status']
+        expected_parameters = ['description', 'reponse']
         request_json = request.json
 
         user = current_user()
@@ -156,17 +174,18 @@ def request_by_id_tutor_accept_web_api(request_id):
         if not _request:
             return json_response(http_code=400)
 
+        #TODO: Check and make sure student hasn't already canceled
+
         #Check sure user is an approved tutor for this request
         if not _request.is_tutor_active(user):
             return json_response(http_code=403)
-
 
         #Check payload for valid parameters
         if request_contains_all_valid_parameters(request_json, expected_parameters):
             
             
             #If a tutor accepts request
-            if request_json.get('status') == 'accept':
+            if request_json.get('response') == 'accept':
                 _request.process_tutor_acceptance(user)
             
             #If tutor rejects the request

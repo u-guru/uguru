@@ -55,7 +55,6 @@ function updateAllBars() {
 
 // jQuery Shit
 $(document).ready(function() {
-
     updateAllBars();
     window.addEventListener('push', function(){
         updateAllBars();
@@ -92,6 +91,33 @@ $(document).ready(function() {
         });
     });
 
+    $('#cancel-link').on('touchstart', function() {
+        url_components = window.location.pathname.split( '/' );
+        request_id = url_components[url_components.length - 2]
+        
+        payload = JSON.stringify({
+            action:'cancel',
+            description:'description'
+        });
+
+        $.ajax({
+            url: '/api/v1/requests/' + request_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "slide-in",
+                    url : "/home/"
+                });
+                $('#cancelModal').removeClass('active');
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+
     //Submit request link
 
     $('#submit-request-link').on('touchstart', function(){
@@ -113,6 +139,7 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: payload,
             success: function(request){
+                console.log(request)
                 if (request.errors && request.redirect) {
                     if (request.redirect == 'no-tutors') {
                         window.PUSH({
@@ -120,15 +147,14 @@ $(document).ready(function() {
                             url : "/show/no-tutors/"
                         });       
                     }
-                    window.PUSH({
-                        transition : "fade",
-                        url : "/show/no-tutors/"
-                    });
                 }
                 else {
-                    
+                    window.PUSH({
+                        transition : "fade",
+                        url : "/request/" + request['server_id'] +'/'
+                    });
                 }
-                
+
                 //Close modal
                 $('#requestModal').removeClass('active');
             },
@@ -140,7 +166,6 @@ $(document).ready(function() {
 
     // Signup Page Form
     $('#signup-link').on('touchstart', function(){
-        console.log('sup');
         payload = JSON.stringify({
             name     : $('#signup-form #name-field').val(),
             email    : $('#signup-form #email-field').val(),

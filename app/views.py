@@ -39,7 +39,6 @@ stripe_keys = {
 }
 stripe.api_key = stripe_keys['secret_key']
 
-
 #################
 # New Web Views #
 #################
@@ -53,6 +52,15 @@ def home():
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
+
+    #Check if user is a student & has pending requests
+    pending_requests = user.get_pending_requests()
+    if pending_requests:
+        pending_request_id = pending_requests[0].id
+        return redirect( \
+            url_for(endpoint='request_by_id', _id=pending_request_id))
+
+    #Check if user is a tutor & has incoming_requests
 
     return render_template('web/home.html', user=user)
 
@@ -79,7 +87,7 @@ def m_login():
 
     user = api.current_user()
     if user:
-        return redirect(url_for('home'))
+        return redirect(url_for('home'))    
     
     return render_template('web/login.html')
 
@@ -226,7 +234,25 @@ def support():
 @app.route('/r/<_id>/')
 @app.route('/request/<_id>/')
 def request_by_id(_id):
-    return render_template('web/request_details.html')
+
+    #if ID is not accurate, send back to home.
+    _request = Request.get_request_by_id(_id)
+    if not _request:
+        return redirect(url_for('home'))
+
+    print _request
+
+    #if tutor (should take up the whole page)
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    if not user == _request.get_student() and not _request.is_tutor_active(user) \
+        and not _request.is_canceled():
+        return redirect(url_for('home'))
+    
+    return render_template('web/request_details.html', user=user,\
+     request_dict=_request.get_return_dict())
 
 
 @app.route('/log_in/')

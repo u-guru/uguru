@@ -816,10 +816,6 @@ class Request(Base):
     def process_tutor_reject(self,tutor):
         pass
 
-    #TODO, we don't do anything yet, but we will in the near future.
-    def process_tutor_reject(self,tutor):
-        pass
-
     def get_interested_tutors(self):
         return self.committed_tutors
 
@@ -836,6 +832,16 @@ class Request(Base):
 
     def get_connected_tutor(self):
         return User.query.get(self.connected_tutor_id)
+
+    def cancel(self, user):
+        self.connected_tutor_id = self.student_id
+        user.outgoing_requests.remove(self)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return 
 
     def is_canceled(self):
         return self.connected_tutor_id == self.student_id
@@ -982,6 +988,10 @@ class Skill(Base):
             return skill
         return False
 
+    def get_short_name(self):
+        from app.static.data.short_variations import short_variations_dict
+        skill_name = short_variations_dict[self.name]
+        return skill_name
 
 
 class Rating(Base):
