@@ -32,14 +32,36 @@ header .uguru-logo {
     color: #48b7a6;
 }
 
+.btn-positive.active, .btn-positive:active {
+color: #fff;
+background-color: #69B3A5;
+border: 1px solid #69B3A5;
+}
+
+/* nav */
+
+.main-tab-item.active {
+    border-bottom: 2px solid #69B3A5;
+}
+
+.icon.active {
+    color: white;
+}
+
+.tab-label.active {
+    color: white;   
+}
+
 
 /* home -> choose tutor */
 .red-text {
     color: #02e452;
 }
 
+69B3A5
+
 .btn-negative {
-    background-color: #69b2a5;
+    background-color: #69B3A5;
     border: 1px solid #69b2a5;
 }
 
@@ -78,7 +100,7 @@ header .uguru-logo {
 
 /* request */
 .bar-nav .btn-link, .tab-item.active, .tab-item:active {
-    color: #69b2a5;
+    color: #69B3A5;
 }
 
 .table-view {
@@ -99,8 +121,8 @@ color: #ffffff;
 /* support */
 .btn-positive {
 color: #fff;
-background-color: #69b2a5;
-border: 1px solid #69b2a5;
+background-color: #69B3A5;
+border: 1px solid #69B3A5;
 }
 
 
