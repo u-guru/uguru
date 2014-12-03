@@ -83,7 +83,7 @@ def request_web_api():
             if _request.get_tutor_count() == 0:
                 error_msg = "We have no tutors for " + skill_name.upper()
                 return json_response(http_code=200, errors=[error_msg], \
-                    redirect='back-to-home')
+                    redirect='no-tutors')
 
             #Initiated delayed functions here.
             from tasks import contact_qualified_tutors
