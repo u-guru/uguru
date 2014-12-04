@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'HelveticaNeue-Medium';
+    src: url(../fonts/HelveticaNeue-Medium.otf);
+    font-family: 'HelveticaNeue-Light';
+    src: url(../fonts/HelveticaNeue-Light.otf);
+    font-family: 'HelveticaNeue';
+    src: url(../fonts/HelveticaNeue.otf);  
+
+}
+ 
+
 /* home */
 .bar {
 background-color: #2B3234;
@@ -10,6 +21,7 @@ border-bottom: 1px solid #dddn;
 
 .table-view {
     background-color: #4e5c5f;
+    font-family: 'HelveticaNeue';
 }
 
 .h5, .h6, h5, h6, p {
@@ -32,15 +44,121 @@ header .uguru-logo {
     color: #48b7a6;
 }
 
+    /* button */
+        /* positive_negative_big */
+.btn-positive {
+    color: #fff;
+    background-color: #69B3A5;
+    border: 1px solid #69B3A5;
+    margin: auto;
+    width: 94%;
+    border-radius: 1px;
+    font-family: 'HelveticaNeue-Medium';
+}
+
+.btn-negative {
+    color: #7b8486;
+    background-color: #4e5c5f;
+    border: 1px solid #7b8486;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+        /* positive_negative_half */
+.btn.btn-positive.btn-block.sign-up {
+    color: #fff;
+    background-color: #69B3A5;
+    border: 1px solid #69B3A5;
+    width: 45%;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    float: left;
+    border-radius: 1px;
+    font-family: 'HelveticaNeue-Medium';
+}
+
+
+.btn.btn-positive.btn-block.login {
+    color: #fff;
+    background-color: #69B3A5;
+    border: 1px solid #69B3A5;
+    width: 45%;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    float: right;
+    border-radius: 1px;
+    font-family: 'HelveticaNeue-Medium';
+}
+
+.btn.btn-positive.btn-block.accept {
+    color: #fff;
+    background-color: #69B3A5;
+    border: 1px solid #69B3A5;
+    width: 45%;
+    margin-left: 10px;
+    margin-right: 5px;
+    float: left;
+    border-radius: 1px;
+    font-family: 'HelveticaNeue-Medium';
+}
+
+.btn.btn-positive.btn-block.decline {
+    color: #7b8486;
+    background-color: #4e5c5f;
+    border: 1px solid #7b8486;
+    width: 45%;
+    margin-left: 5px;
+    margin-right: 10px;
+    float: right;
+    border-radius: 1px;
+    font-family: 'HelveticaNeue-Medium';
+}
+
+    /* form */
+.input-row {
+    height: 48px;
+}
+
+.input-row label {
+    line-height: 2.7;
+    font-family: 'HelveticaNeue-Light';
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.input-group input {
+    height: 48px;
+    font-family: 'HelveticaNeue-Light';
+    font-size: 12px;
+
+}
+
+/* nav */
+
+.main-tab-item.active {
+    border-bottom: 2px solid #69B3A5;
+}
+
+.icon.active {
+    color: white;
+}
+
+.tab-label.active {
+    color: white;   
+}
+
 
 /* home -> choose tutor */
 .red-text {
     color: #02e452;
 }
 
+69B3A5
+
 .btn-negative {
-    background-color: #db7400;
-    border: 1px solid #db7400;
+    background-color: #69B3A5;
+    border: 1px solid #69b2a5;
 }
 
 .table-view-cell.message-cell, .table-view-cell.request-cell, .ignore-table-view-margin {
@@ -67,18 +185,20 @@ header .uguru-logo {
 }
 
 .btn-primary {
-    background-color: #48b7a6;
-    border: 1px solid #48b7a6;
+    background-color: #db7500;
+    border: 1px solid #db7500;
     color: #fff;
 }
 
 .title {
   color: #fff;
+  font-family: 'HelveticaNeue-Light'
 }
 
 /* request */
 .bar-nav .btn-link, .tab-item.active, .tab-item:active {
-    color: #c9cdcd;
+    color: #69B3A5;
+    font-family: 'HelveticaNeue-Light'
 }
 
 .table-view {
@@ -90,15 +210,41 @@ header .uguru-logo {
 }
 
 
-/* settting */
+
+/* support */
+
+/* settings */
+.content.should-hide-message-bar {
+    background: #343d3e;
+}
+
+.table-view {
+    background: #3c4445;
+}
+
 .table-view .table-view-cell {
-color: #ffffff;
+    color: #ffffff;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.media-body {
+    color: #e6e7e7;
+}
+
+a.navigate-right::after {
+    color: #64696b;
 }
 
 
-/* support */
-.btn-positive {
-color: #fff;
-background-color: #dc7400;
-border: 1px solid #dc7400;
+/* login */
+body {
+    color: #636c6d
+}
+
+.input-group {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 90px;
 }

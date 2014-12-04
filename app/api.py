@@ -32,8 +32,6 @@ PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 @app.route('/api/v1/requests', methods=['POST'])
 def request_web_api():
 
-    print 'request'
-
     user = current_user()
     if not user:
         return json_response(http_code=401)
@@ -83,12 +81,12 @@ def request_web_api():
             if _request.get_tutor_count() == 0:
                 error_msg = "We have no tutors for " + skill_name.upper()
                 return json_response(http_code=200, errors=[error_msg], \
-                    redirect='back-to-home')
+                    redirect='no-tutors')
 
             #Initiated delayed functions here.
             from tasks import contact_qualified_tutors
             try:
-                contact_qualified_tutors.delay(args=[_request.approved_tutor_ids()])
+                contact_qualified_tutors.delay(_request.id)
             except:
                 #TODO, figure out way to test connection to redis in testing.
                 pass
@@ -107,82 +105,84 @@ def request_web_api():
 
 # Specific support route
 # GET returns details of a request 
-# DELETE cancels a request 
-@app.route('/api/v1/requests/<request_id>', methods=['GET', 'DELETE'])
+# PUT cancels a request 
+@app.route('/api/v1/requests/<request_id>', methods=['GET', 'PUT'])
 def request_by_id_web_api(request_id):
     
+    user = current_user()
+    if not user:
+        return json_response(http_code=401)
+
+    print request.json
+
+    #Get request by ID
+    _request = Request.get_request_by_id(request_id)
+
+    #check if this request_id is valid
+    if not _request:
+        return json_response(http_code=400)
+
+    #Make sure user is in the right place, either a student, or a tutor.
+    if not user == _request.get_student() and not _request.is_tutor_active(user):
+        return json_response(http_code=403)
+        
     if request.method == 'GET':
 
         expected_parameters = ['description', 'status']
-        user = current_user()
-        
-        if not user:
-            return json_response(http_code=401)
-        
-        #Get request by ID
-        _request = Request.get_request_by_id(request_id)
-        
-        #check if this request_id is valid
-        if not _request:
-            return json_response(http_code=400)
-
-        #Make sure user is in the right place, either a student, or a tutor.
-        if not user == _request.get_student() and not _request.is_tutor_active(user):
-            return json_response(http_code=403)
         
         request_return_dict = _request.get_return_dict()
         return json_response(http_code = 200, return_dict = request_return_dict)
 
-    return json_response(400)
-
-###### /requests/id/tutor_accept ########
-# PUT updates the request accordingly for a studnet accepting a request
-@app.route('/api/v1/requests/<request_id>/tutor_accept', methods=['PUT'])
-def request_by_id_tutor_accept_web_api(request_id):
-    
     if request.method == 'PUT':
-
-        expected_parameters = ['description', 'status']
-        request_json = request.json
-
-        user = current_user()
-        if not user:
-            return json_response(http_code=401)
-
-        #Get request by ID
-        _request = Request.get_request_by_id(request_id)
         
-        #check if this request_id is valid
-        if not _request:
-            return json_response(http_code=400)
+        request_json = request.json
+        put_action = request_json['action']
 
-        #Check sure user is an approved tutor for this request
-        if not _request.is_tutor_active(user):
-            return json_response(http_code=403)
+        # if student cancels request
+        if put_action == 'cancel':
+            expected_parameters = ['action', 'description']
+            #invalid payload
+            if not request_contains_all_valid_parameters(request_json, expected_parameters):
+                return json_response(422)
+
+            _request.cancel(user)
+
+        
+        if put_action == 'guru-accept':
+            _request.process_tutor_acceptance(user)
 
 
-        #Check payload for valid parameters
-        if request_contains_all_valid_parameters(request_json, expected_parameters):
+        if put_action == 'guru-reject':
+            _request.process_tutor_reject(user)
+
+        if put_action == 'student-accept':
+            expected_parameters = ['action', 'description']
             
+            #invalid payload
+            if not request_contains_all_valid_parameters(request_json, expected_parameters):
+                return json_response(422)
             
-            #If a tutor accepts request
-            if request_json.get('status') == 'accept':
-                _request.process_tutor_acceptance(user)
+            _request.process_student_acceptance(tutor)
+
+        #If student rejects guru
+        if put_action == 'student-reject':
+
+            expected_parameters = ['action', 'description']
             
-            #If tutor rejects the request
-            else:
-                _request.process_tutor_reject(user)
+            #invalid payload
+            if not request_contains_all_valid_parameters(request_json, expected_parameters):
+                return json_response(422)
 
-            #Return relevant dictionary
-            request_return_dict = _request.get_return_dict()
-            return json_response(http_code = 200, return_dict = request_return_dict)
+            print request_json
 
-        else:
-            # Incorrect json payload
-            return json_response(422)
+            # _request.process_studnet_reject(tutor)
+            
+        request_return_dict = _request.get_return_dict()
+        return json_response(http_code = 200, return_dict = request_return_dict)
 
-    #Default response
+
     return json_response(400)
+
 
 ###### /requests/id/student_accept ########
 # PUT updates the request accordingly for a studnet accepting a request
@@ -345,9 +345,26 @@ def api_login():
 def users_by_id_web_api(user_id):
     
     if request.method == 'PUT':
-        if request_contains_some_valid_parameters(request_json, expected_parameters):
+
+        request_json = request.json
+
+        user = current_user()
+        if not user:
+            return json_response(http_code=401)
+
+        #Check if user_id is session['user_id'] 
+        if int(user_id) != user.id:
+            return json_response(http_code=403)
+
+        if not request_json:
+            return json_response(http_code=422)
+
+        if request_json.get('add_card'):
             pass
-    pass
+        
+    return json_response(400)
+        
+    
 
 # List of active requests for a user Route 
 # GET returns a list of active requests
@@ -2373,6 +2390,7 @@ def get_time_ranges(week_object, owner):
         arr_ranges.append([r.week_day, r.start_time, r.end_time])
     return arr_ranges
 
+#TODO, write this much better
 def create_stripe_customer(token, user):
     try:
         customer = stripe.Customer.create(

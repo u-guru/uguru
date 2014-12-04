@@ -5,12 +5,19 @@
 <script src="/static/js/fingerblast.js"></script>
 <script src="/static/js/web.js"></script>
 
+
 <script>
 	window.FingerBlast && (new FingerBlast('.device-content'));	
 	window.addEventListener('push', function(){
 		if (!window.FingerBlast) {
 			window.FingerBlast && (new FingerBlast('.device-content'));	
 		};
+
+        var scriptsList = document.querySelectorAll('script.content-js');
+        for(var i = 0; i < scriptsList.length; ++i) {
+            eval(scriptsList[i].innerHTML);
+        }
+
 	});
 </script>
 

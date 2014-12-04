@@ -1,5 +1,4 @@
 {% extends 'web/base.html' %}
-{% from 'web/macros/components.html' import show_components %}
 
 {% block main_header %}
 <header class="bar bar-nav">
@@ -39,9 +38,11 @@
     </li>
   </ul>
 
-  <a class="btn btn-positive btn-block" href="#requestModal">
-    New Request
+  <a class="btn btn-positive btn-block" href="/request_form/" data-transition='slide-in'>
+    Request Guru
   </a>
+
+  {% include 'web/snippets/flash_alerts.html'%}
 
 </div><!-- /.content -->
 {% endblock %}

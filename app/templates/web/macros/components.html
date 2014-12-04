@@ -1,11 +1,9 @@
-{% from 'web/macros/request_modal.html' import process_request_modal %}
 {% from 'web/macros/footer.html' import process_tab_bar %}
 {% from 'web/macros/message_footer.html' import process_message_footer %}
 
 {% macro show_all_components()-%}
 
         {{process_tab_bar()}}
-        {{process_request_modal()}}
         {{process_message_footer()}}
 
 {%- endmacro %}

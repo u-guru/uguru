@@ -100,3 +100,25 @@ nav.bar-tab {
 .black {
     color:black !important;
 }
+
+input#card-num {
+  background: url('/static/img/card.png') no-repeat;
+  background-size: 32px 24px;
+  background-position:95% ;
+}
+
+input#card-num.visa {
+  background-image: url('/static/img/visa.png');
+}
+
+input#credit-card-num.mastercard {
+  background-image: url('/static/img/mastercard.png'); 
+}
+
+input#credit-card-num.discover {
+  background-image: url('/static/img/discover.png'); 
+}
+
+input#credit-card-num.amex {
+  background-image: url('/static/img/discover.png'); 
+}
