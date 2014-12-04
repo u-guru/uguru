@@ -5,17 +5,17 @@
     <a class="btn btn-link pull-right" data-transition='slide-in' href="#" id="signup-link">
         <strong>Submit</strong>
     </a>
-
-    <a class="icon icon-left pull-left" data-transition='slide-in' href="/m/login/">
-    
-    </a>
-
     <h1 class="title">uGuru Signup</h1>
 </header>
 {% endblock %}
 
 {% block main_content %}
 <div class="content should-hide-message-bar should-hide-tab-bar">
+    <h6>
+        <div class='center'>
+            <img class="" src="/static/img/guru-new.svg"></img>
+        </div>
+    </h6>
     <form class="input-group" id="signup-form">
         <div class='input-row'>
             <label>First</label>
@@ -34,7 +34,14 @@
             <input type="password" id="password-field" placeholder="Password"></input>
         </div>
     </form>
-    <button class="btn btn-positive btn-block">How it Works</button>
+    <div style="text-align:center;">
+
+        <button class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="signup-link">Signin</button>
+        <br>
+        <a href="/m/login" data-transition="fade">
+            <button class="btn">Already a user? Login here.</button>
+        </a>
+    </div>
 </div>
 
 {% endblock %}

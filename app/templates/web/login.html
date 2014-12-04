@@ -11,7 +11,11 @@
 
 {% block main_content %}
 <div class="content should-hide-message-bar should-hide-tab-bar">
-    <h6 class='content-padded'></h6>
+    <h6>
+        <div class='center'>
+            <img src="/static/img/guru-new.svg"></img>
+        </div>
+    </h6>
     <form class="input-group" id="login-form" >
         <div class='input-row'>
             <label>EMAIL</label>
@@ -31,10 +35,10 @@
         </li>
     </ul>
     
-    <button class="btn btn-positive btn-block sign-up">Sign up</button>
-    <button class="btn btn-positive btn-block login">Log in</button>
-    <button class="btn btn-positive btn-block accept">Accept</button>
-    <button class="btn btn-positive btn-block decline">Decline</button>
+    <a data-transition='fade' href="/m/signup/">
+        <button class="btn btn-positive btn-block sign-up">Sign up</button>
+    </a>
+    <button class="btn btn-positive btn-block login" id="login-link">Log in</button>
 
 </div>
 {% endblock %}

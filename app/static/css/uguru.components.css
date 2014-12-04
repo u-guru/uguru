@@ -7,12 +7,12 @@
     src: url(../fonts/HelveticaNeue.otf);  
 
 }
- 
+
 
 /* home */
 .bar {
-background-color: #2B3234;
-border-bottom: 1px solid #dddn;
+    background-color: #2B3234;
+    border-bottom: 1px solid #dddn;
 }
 
 .content {
@@ -44,8 +44,8 @@ header .uguru-logo {
     color: #48b7a6;
 }
 
-    /* button */
-        /* positive_negative_big */
+/* button */
+/* positive_negative_big */
 .btn-positive {
     color: #fff;
     background-color: #69B3A5;
@@ -63,7 +63,7 @@ header .uguru-logo {
     margin-left: 10px;
     margin-right: 5px;
 }
-        /* positive_negative_half */
+/* positive_negative_half */
 .btn.btn-positive.btn-block.sign-up {
     color: #fff;
     background-color: #69B3A5;
@@ -115,7 +115,7 @@ header .uguru-logo {
     font-family: 'HelveticaNeue-Medium';
 }
 
-    /* form */
+/* form */
 .input-row {
     height: 48px;
 }
@@ -153,8 +153,6 @@ header .uguru-logo {
 .red-text {
     color: #02e452;
 }
-
-69B3A5
 
 .btn-negative {
     background-color: #69B3A5;
@@ -210,7 +208,6 @@ header .uguru-logo {
 }
 
 
-
 /* support */
 
 /* settings */
@@ -237,14 +234,11 @@ a.navigate-right::after {
     color: #64696b;
 }
 
-
 /* login */
 body {
     color: #636c6d
 }
 
 .input-group {
-    margin-right: 10px;
-    margin-left: 10px;
-    margin-top: 90px;
+    margin: 20px;
 }
