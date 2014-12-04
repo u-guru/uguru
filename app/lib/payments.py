@@ -1,6 +1,8 @@
 import stripe
 
-#TODO, write this much better
+# TODO, this is LEGACY MVP code, 
+# I'll write this much better by this weekend.
+# SORRY CAMERON :( :(
 def create_stripe_customer(token, user):
     try:
         customer = stripe.Customer.create(
@@ -8,7 +10,7 @@ def create_stripe_customer(token, user):
                     card = token
                     )
     except stripe.error.CardError, e:
-        return 'error'
+        return False
 
     user.customer_id = customer.id
     user.customer_last4 = customer['cards']['data'][0]['last4']
@@ -17,7 +19,7 @@ def create_stripe_customer(token, user):
     except:
         db_session.rollback()
         raise 
-    return 'success'
+    return True
 
 def create_stripe_recipient(token, user):
     logging.info("Create stripe recipient" + str(user))

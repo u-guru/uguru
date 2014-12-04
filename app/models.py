@@ -291,6 +291,20 @@ class User(Base):
         }
         return u_dict
 
+    def add_payment_card(self, token):
+        from lib.payments import create_stripe_customer
+        
+        result = create_stripe_customer(token, self)
+
+        if result:
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise 
+
+        return result 
+
     def get_all_conversations(self, _dict=None):
         conversations = self.conversations
         if _dict:
