@@ -27,31 +27,22 @@
           <h1>{{request_dict['skill_name']}} 
             <span class='grey-text'>Session</span>
           </h1>
-          <span class='red-text'>
+          <p class='red-text'>
             TODAY AT 8PM
-          </span>
+          </p>
         </li>
         <li class="table-view-cell media">
                 <img class="media-object pull-left table-view-face" src="{{request_dict['connected_tutor']['profile_url']}}">
                 <div class="media-body">
-                  {{request_dict['connected_tutor']['name']}}
-                    <p>
-                        <span class="icon icon-star-filled profile-star black"></span>
-                        <span class="icon icon-star-filled profile-star black"></span> 
-                        <span class="icon icon-star-filled profile-star black"></span> 
-                        <span class="icon icon-star-filled profile-star black"></span> 
-                        <span class="icon icon-star-filled profile-star black"></span> 
-                    </p>
+                  {{request_dict['student']['name']}}
                 </div>
-                <a class='btn btn-link'> View More
-                </a>
         </li>
         <li class='table-view-cell'>
           Location: {{request_dict['location']}}
         </li>
         <li class='table-view-cell'>
-          $5 for every 15 minutes 
-          <a class='btn btn-primary' href='/conversation/{{request_dict["conversation"]["server_id"]}}' data-transition='slide-in'> Message
+          $4 for every 15 minutes 
+          <a class='btn btn-primary' href='/conversation/{{request_dict["conversation"]["server_id"]}}' data-transition='slide-in'> Message {{request_dict['student']['name']}}
           </a>
         </li>
       </ul>
@@ -60,6 +51,13 @@
 
 
   <ul class="table-view">    
+    {% if not guru_requests and not scheduled_sessions %}
+    <li class="table-view-cell">
+      <a class="navigate-right" data-transition='slide-in'>
+        Guru Getting-Started Guide
+      </a>
+    </li>
+    {% endif %}
     {% if guru_requests %}
     <li class="table-view-cell">
       <a class="navigate-right" href='/m/guru/requests/' data-transition='slide-in'>

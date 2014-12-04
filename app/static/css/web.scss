@@ -118,3 +118,7 @@ input#credit-card-num.discover {
 input#credit-card-num.amex {
   background-image: url('/static/img/discover.png'); 
 }
+
+.table-view.no-margin {
+  margin-top:0px !important;
+}

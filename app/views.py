@@ -111,7 +111,6 @@ def m_login():
 
         # if student w/ requests
         pending_requests = user.get_pending_requests()
-        print user.id
         if pending_requests:
             pending_request_id = pending_requests[0].id
             return redirect( \
@@ -219,7 +218,7 @@ def m_messages(_id):
 
     convo = Conversation.query.get(_id)
     
-    return render_template('web/messages.html')
+    return render_template('web/messages.html', convo=convo)
 
 @app.route('/guru/settings/')
 @app.route('/m/settings/')

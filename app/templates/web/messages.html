@@ -1,4 +1,5 @@
 {% extends 'web/base.html' %}
+{% convo_dict = convo.as_dict()%}
 
 {% block main_header %}
 <header class="bar bar-nav">
@@ -8,8 +9,8 @@
 {% endblock %}
 
 {% block main_content %}
-<div class="content should-hide-main-bar">
-    <ul class="table-view">
+<div class="content should-hide-tab-bar">
+    <ul class="table-view no-margin">
         <li class="table-view-cell message-cell media">
             <img class="media-object message-face pull-left" src="/static/img/face1.png">
             <div class="media-body">
