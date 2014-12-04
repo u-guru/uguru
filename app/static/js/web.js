@@ -257,7 +257,6 @@ function updateAllBars() {
 
 function stripeAddCreditCardHandler(status, response) {
 
-    var $form = $('#payment-form');
     if (response.error) {
             // Show the errors on the form    
             alert(response.error.message);
