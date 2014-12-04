@@ -291,6 +291,7 @@ class User(Base):
         }
         return u_dict
 
+    #Create stripe customer
     def add_payment_card(self, token):
         from lib.payments import create_stripe_customer
         
@@ -301,7 +302,7 @@ class User(Base):
                 db_session.commit()
             except:
                 db_session.rollback()
-                raise 
+                raise
 
         return result 
 
@@ -423,7 +424,7 @@ class Conversation(Base):
     id = Column(Integer, primary_key = True)
 
     is_read = Column(Boolean, default = False)
-    # is_active = Column(Boolean)
+    is_active = Column(Boolean)
     last_updated = Column(DateTime)
     
     skill_id = Column(Integer, ForeignKey('skill.id'))
@@ -732,6 +733,9 @@ class Request(Base):
     student_estimated_hour = Column(Integer)
     num_students = Column(Integer, default = 0)
     tutor_offer_hour = Column(Integer)
+
+    pending_tutor_id = Column(Integer)
+    pending_tutor_description = Column(String)
 
     description = Column(String)
     available_time = Column(String)

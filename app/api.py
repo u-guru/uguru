@@ -360,7 +360,17 @@ def users_by_id_web_api(user_id):
             return json_response(http_code=422)
 
         if request_json.get('add_card'):
-            pass
+
+            token = request.json.get('add_card')
+            result = user.add_payment_card(token)
+
+            #If we successfully can charge them in the future ;)
+            if result:
+                return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
+
+            else:    
+                error_msg = 'Card was declined, please try again'
+                return json_response(http_code=403, errors=[error_msg])
         
     return json_response(400)
         

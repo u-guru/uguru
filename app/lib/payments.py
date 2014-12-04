@@ -14,11 +14,6 @@ def create_stripe_customer(token, user):
 
     user.customer_id = customer.id
     user.customer_last4 = customer['cards']['data'][0]['last4']
-    try:
-        db_session.commit()
-    except:
-        db_session.rollback()
-        raise 
     return True
 
 def create_stripe_recipient(token, user):

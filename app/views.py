@@ -273,6 +273,7 @@ def support():
 
 @app.route('/r/<_id>/')
 @app.route('/request/<_id>/')
+@app.route('/confirm_request/<_id>/')
 def request_by_id(_id):
 
     #if ID is not accurate, send back to home.
@@ -296,6 +297,11 @@ def request_by_id(_id):
     #if Guru shouldn't see this.
     if not user == _request.get_student() and not _request.is_tutor_involved:
         return redirect(url_for('home'))
+
+    #Different page, same validation, might as well put in same route? 
+    if 'confirm_request' in request.url:
+        render_template('web/confirm_request.html', user=user,\
+        request_dict=_request.get_return_dict())
     
 
     return render_template('web/request_details.html', user=user,\

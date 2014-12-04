@@ -280,6 +280,8 @@ function stripeAddCreditCardHandler(status, response) {
                         transition : "fade",
                         url : "/request/" + request_id + '/'
                     });
+                    $('#student-accept-tutor-modal').addClass('active');
+                    return;
                 },
                 error: function (request) {
                     alert(request.responseJSON['errors']);
