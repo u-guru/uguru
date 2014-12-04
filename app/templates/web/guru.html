@@ -7,17 +7,55 @@
 {% block main_header %}
 <header class="bar bar-nav">
   <h1 class="title uguru-logo">uguru</h1>
+  <a class='btn btn-link pull-right'>Help</a>
 </header>
 {% endblock %}
 
 {% block main_content %}
 <div class="content should-hide-message-bar">
   <div class='logo-container center content-padded'>
-    <img class="media-object guru-photo" src="/static/img/guru-new.svg">
+    {% if not guru_requests and not scheduled_sessions %}
+      <img class="media-object guru-photo" src="/static/img/guru-new.svg">
+    {% endif %}
   </div>
 
 
-  <ul class="table-view">
+  {% for _request in scheduled_sessions %}
+      {% set request_dict = _request.get_return_dict() %}
+      <ul class="table-view table-view-scheduled">    
+        <li class='table-view-cell'>
+          <h1>{{request_dict['skill_name']}} 
+            <span class='grey-text'>Session</span>
+          </h1>
+          <span class='red-text'>
+            TODAY AT 8PM
+          </span>
+        </li>
+        <li class="table-view-cell media">
+                <img class="media-object pull-left table-view-face" src="{{request_dict['connected_tutor']['profile_url']}}">
+                <div class="media-body">
+                  {{request_dict['connected_tutor']['name']}}
+                    <p>
+                        <span class="icon icon-star-filled profile-star black"></span>
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                    </p>
+                </div>
+                <a class='btn btn-link'> View Profile
+                </a>
+        </li>
+        <li class='table-view-cell'>
+          Location: {{request_dict['location']}}
+        </li>
+        <li class='table-view-cell'>
+          $5 for every 15 minutes
+        </li>
+      </ul>
+    {% endfor %}
+
+  <ul class="table-view">    
     {% if guru_requests %}
     <li class="table-view-cell">
       <a class="navigate-right" href='/m/guru/requests/' data-transition='slide-in'>
@@ -26,19 +64,6 @@
       </a>
     </li>
     {% endif %}
-    {% if scheduled_sessions %}
-    <li class="table-view-cell">
-      <a class="navigate-right">
-        Upcoming Sessions 
-      </a>
-      <span class="badge">{{scheduled_sessions|length}}</span>
-    </li>
-    {% endif %}
-    <li class="table-view-cell">
-      <a class="navigate-right">
-        Guru Guide to Success
-      </a>
-    </li>
   </ul>
 
 </div><!-- /.content -->

@@ -76,6 +76,15 @@ def m_guru():
 
     return render_template('web/guru.html', user=user)
 
+@app.route('/m/guru/sessions/')
+def guru_sessions():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/guru_sessions.html', user=user)
+
 @app.route('/m/guru/requests/')
 def guru_requests():
 

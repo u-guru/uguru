@@ -19,6 +19,7 @@
     color: #69B3A5;
 }
 
+
 .bar-tab .icon {
     color: #c9cdcd
 }
@@ -152,6 +153,12 @@ header .uguru-logo {
 
 }
 
+h1, h2, h3 {
+    font-family: 'HelveticaNeue-Light';
+    color: white;
+    font-weight:100;
+}
+
 /* nav */
 
 .main-tab-item.active {
@@ -168,12 +175,16 @@ header .uguru-logo {
 
 
 /* home -> choose tutor */
-.red-text  {
-    color: #02e452;
+.red-text, .green-text  {
+    color: #45DA5E;
 }
 
 .btn.btn-primary {
     background-color:#CC792B;
+}
+
+.table-view.table-view-scheduled {
+    border-left: 5px solid #CC792B;
 }
 
 .btn.btn-outlined {
@@ -195,7 +206,7 @@ header .uguru-logo {
 }
 
 /* tutors */
-.black {
+.icon.icon-star-filled {
     color: #02e452 !important;
 }
 
