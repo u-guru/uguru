@@ -1,0 +1,34 @@
+{% extends 'web/base.html' %}
+
+    {% block main_header %}
+    <header class="bar bar-nav">
+      <h1 class="title">Become a Guru</h1>
+      <a class="btn btn-link btn-nav pull-right" href='/m/guru/' data-transition='fade'>
+        Submit
+      </a>
+    </header>
+    {% endblock %}
+
+    {% block main_content %}
+    <div class="content should-hide-message-bar">
+      
+      <ul class="table-view">
+        <li class="table-view-cell media">
+            <div class="media-body">
+              Add Photo
+            </div>
+            <button class="btn btn-primary">Upload</button>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a class='navigate-right' transition='slide-in' href='/add_courses/'>
+            Add Courses
+          </a>
+        </li>
+        <textarea placeholder='Include a short introduction of yourself!'rows="5"></textarea>
+      </ul>
+      
+    </div>
+  {% endblock %}
+
+    

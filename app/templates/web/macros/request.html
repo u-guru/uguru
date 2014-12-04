@@ -1,0 +1,102 @@
+{% macro request_details(request_dict, is_student) -%}
+    <ul class="table-view">
+      <li class="table-view-cell request-cell">
+          Course
+          <span class='pull-right grey-text'>
+            {{request_dict['skill_name']|upper}}
+          </span>
+      </li>
+      <li class="table-view-cell request-cell">
+          Location
+          <span class='pull-right grey-text'>{{request_dict['location']}}</span>
+          <p>
+            In-person only  
+          </p>
+      </li>
+      <li class="table-view-cell request-cell">
+          Time Estimate
+          <span class='pull-right grey-text'>{{request_dict['time_estimate']}}</span>
+      </li>
+      <!-- TODO -->
+      <!-- <li class="table-view-cell request-cell">
+          Start Time
+          <span class='pull-right grey-text'></span>
+      </li> -->
+      <li class="table-view-cell">
+          Description
+          <p>
+            {{request_dict['description']}}
+          </p>
+      </li>
+        <li class="table-view-cell">
+          {% if is_student %}
+            Pricing
+            <p>
+              <b>$5</b> per 15min, billed by minute.
+            </p>
+          {% else %}
+            You will make
+            <p>
+              <b>$4</b> per 15min, billed by minute.
+            </p>
+          {% endif %}
+        </li>
+    </ul>  
+{%-endmacro%}
+
+{% macro student_reject_modal(request_dict) -%}
+<div id="student-reject-tutor-modal" class="modal">
+        <header class="bar bar-nav">
+          <a class="btn btn-link pull-left" href="#student-reject-tutor-modal">Cancel</a>
+          <h1 class="title">Reject {{request_dict['interested_tutors'][0]['name']}}</h1>
+        </header>
+
+        <div class="content">
+          <div class='content-padded'>
+            <form>
+              <textarea id='student-reject-guru-description' placeholder='Please tell us why, and we will try out best to send another Guru your way for this request.' rows="5"></textarea>
+              <a class='btn btn-positive btn-block' href='#' id='student-reject-guru-link'>
+                Submit 
+              </a>
+            </form>
+          </div>
+        </div>
+</div>
+  
+{%- endmacro %}
+
+{% macro student_accept_modal(request_dict, student) -%}
+
+<div id="student-accept-tutor-modal" class="modal">
+  <header class="bar bar-nav">
+    <a class="btn btn-link pull-left" href="#student-accept-tutor-modal">Cancel</a>
+    <h1 class="title">Confirm</h1>
+  </header>
+
+  <div class="content">
+      <ul class='table-view'>
+        {% if not student.customer_id %}
+          <li class='table-view-cell'>
+            <a class='navigate-right' href='/add_payment/{{request_dict["server_id"]}}/' data-transition='slide-in'>
+              Add Payment Method
+              <p> Billed occurs at the end of the session. 100% satisfaction guaranteed.</p>
+            </a>
+          </li>
+        {% else %}
+          <li class='table-view-cell'>
+            <a class='navigate-right' href='/add_payment/{{request_dict["server_id"]}}/' data-transition='slide-in'>
+              Payment Details
+              <p>
+                Card: *{{student.customer_last4}}
+              </p>
+              <span class='btn btn-link'>
+                Edit
+              </span>
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+</div>
+
+{%- endmacro %}

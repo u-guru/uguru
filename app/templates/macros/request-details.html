@@ -163,52 +163,27 @@
             </div>
         {% endif %}
         <div class='guru-profile-attributes'> 
-            <div class='row font-14 reg-text'>
-                Professor: 
-                <span class='green-text'> {{request_dict[notif.request_id]['request'].professor}}
-                </span>
-            </div>
             <div class='row font-14 margin-top-15 reg-text'>
                 Preferred Meeting Location: 
                 <span class='green-text'> {{request_dict[notif.request_id]['request'].location}}
                 </span>
             </div>
 
-            {% if notif.custom_tag == 'student-request-help' %}
             <div class='row font-14 margin-top-15 reg-text'>
-                Meeting Time:
-                <span class='green-text'> 
-                    {% if request_dict[notif.request_id]['student-calendar'] %}
-                        <span class='green-text'> See times: </span> 
-
-                        <a id='request-calendar-toggle' onclick='show_student_request_calendar({{request_dict[notif.request_id]["student-calendar"]}}, {{time.mktime(request_dict[notif.request_id]["request"].time_created.timetuple())}})'>
-                            <span class='glyphicon glyphicon-calendar'></span>
-                        </a>
-                    {% else %}
-                        
-                        {{request_dict[notif.request_id]['request'].availability}}
-
-                    {% endif %}
+                Remote Friendly:
+                <span class='green-text'> {{request_dict[notif.request_id]['request'].remote}}
                 </span>
             </div>
-            {% endif %}
 
-            {% if notif.custom_tag == 'tutor-request-offer' %}
-                <div class='row font-14 margin-top-15 red-text'>
-                    {% if notif.custom == 'tutor-accept-request' and not request_dict[notif.request_id]['request'].connected_tutor_id == request_dict[notif.request_id]['student'].id%}
-                      <a id='request-calendar-toggle' onclick='show_tutor_request_submitted_calendar({{request_dict[notif.request_id]["student-calendar"]}}, {{request_dict[notif.request_id]["tutor-calendars"][user.id]}}, false, {{time.mktime(request_dict[notif.request_id]["request"].time_created.timetuple())}})'>
-                        <span class='red-text'> See chosen time: </span> 
-                        <span class='glyphicon glyphicon-calendar'></span>
-                      </a>
-                    {% else %}
-                      <a class='pointer' id='request-calendar-toggle' onclick='show_tutor_request_calendar({{request_dict[notif.request_id]["student-calendar"]}},{{request_dict[notif.request_id]["request"].time_estimate}}, {{time.mktime(request_dict[notif.request_id]["request"].time_created.timetuple())}})'>
-                        <span class='glyphicon glyphicon-calendar'></span>
-                        <span class='blue-text'> <u>Pick a Meeting Time</u></span> 
-                      </a>
-                    {% endif %}
+            {% if notif.custom_tag == 'student-request-help' %}
+                {% if request_dict[notif.request_id]['request'].availability %}
+                <div class='row font-14 margin-top-15 reg-text'>
+                    Meeting Time:
+                    <span class='green-text'> 
+                    </span>
                 </div>
+                {% endif%}
             {% endif %}
-
             <div class='row font-14 margin-top-15 reg-text'>
                 This Session Would Take: 
                 <span class='green-text'> <span id='session-length-{{index}}'>{{request_dict[notif.request_id]['request'].time_estimate}}</span> hours

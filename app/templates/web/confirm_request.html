@@ -1,0 +1,16 @@
+{% extends 'web/base.html' %}
+{% from 'web/macros/request.html' import request_details, student_reject_modal, student_accept_modal %}
+{% set is_student = (user.id == request_dict['student']['server_id'])%}
+{% set is_guru = not is_student %}
+
+{% block main_header %}
+    <header class="bar bar-nav">
+        <h1 class="title uguru-logo">uguru</h1>
+    </header>
+{% endblock %}
+
+{% block main_content %}
+<div class="content should-hide-tab-bar should-hide-message-bar">
+    <a class="icon icon-left-nav pull-left" href="/become_guru/" data-transition="slide-out"></a>    
+</div>
+{% endblock %}

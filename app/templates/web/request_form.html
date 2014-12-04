@@ -1,0 +1,92 @@
+{% extends 'web/base.html' %}
+
+{% block main_header %}
+      <header class="bar bar-nav">
+        <a class="icon icon-left pull-left" href="/home/" data-transition='slide-out'></a>
+        <h1 class="title">Find a Guru</h1>
+      </header>
+{% endblock %}
+
+{% block main_content %}
+      <div class="content should-hide-message-bar should-hide-tab-bar">
+        <form class="input-group">
+          <input id='request-skill' type="text" placeholder="Course">
+          <textarea id='request-description' placeholder='What do you need help in?'></textarea>
+          <input id='request-location' type="text" placeholder="Where do you want to meet?">
+          <input id='request-phone' type="text" placeholder="Phone Number">
+        </form>
+        <ul class='table-view'>
+          <li class="table-view-cell ignore-table-view-margin media">
+              <div class="media-body">
+                <span style='padding-right:7%;'> In Person </span>
+                <span>
+                  <div class="toggle toggle-inline active">
+                    <div class="toggle-handle"></div>
+                  </div>
+                  &nbsp;&nbsp;
+                  <span style='padding-right:7%;'> Online </span>
+                  <div class="toggle toggle-inline active">
+                    <div class="toggle-handle"></div>
+                  </div>
+                </span>
+              </div>
+          </li>
+          <li class="table-view-cell">
+              I need help right now
+              <div id='asap-toggle' class="toggle active">
+                <div class="toggle-handle"></div>
+              </div>
+              <p>
+                Within next 2 hours
+              </p>
+          </li>
+          <li class="table-view-cell">
+            <a class="navigate-right">
+              Choose Start Time
+            </a>
+          </li>
+          <li class="table-view-cell">Length of Session (Estimate)
+            <div class="segmented-control">
+              <a class="control-item active" href="#item1mobile">
+                < 30m
+              </a>
+              <a class="control-item" href="#item2mobile">
+                < 1hr
+              </a>
+              <a class="control-item" href="#item3mobile">
+                 1-2hr
+              </a>
+              <a class="control-item" href="#item3mobile">
+                + 2hr
+              </a>
+            </div>
+          </li>
+        </ul>
+        <a class="btn btn-positive btn-block" href="#confirm-request-modal"> Submit
+        </a>
+
+        <!-- Confirm request modal -->
+        <div id="confirm-request-modal" class="modal">
+          <header class="bar bar-nav">
+            <h1 class="title">Confirmation</h1>
+            <a class="icon icon-close pull-right" href="#confirm-request-modal">
+            </a>
+          </header>
+          <div class="content">
+            <ul class='table-view'>
+              <li class="table-view-cell">
+                  Pricing
+              </li>
+              <li class="table-view-cell">
+                <a class="navigate-right">
+                  Terms & Services
+                </a>
+              </li>
+            </ul>
+            <a class="btn btn-positive btn-block" data-transition='slide-in' id='submit-request-link'href="#"> Confirm
+            </a>
+          </div>
+        </div>
+      </div>
+      
+{% endblock %}

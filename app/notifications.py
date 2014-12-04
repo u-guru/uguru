@@ -1,4 +1,4 @@
-from app import app # TODO : imported but unused
+from app import app
 from models import Skill, User, Request, Notification
 from emails import *
 from datetime import datetime
@@ -35,8 +35,6 @@ def getting_started_tutor(user):
     notification.feed_message = getting_started_msg
     notification.a_id_name = 'getting-started-guru'
     notification.image_url = user.profile_url
-    # notification.time_read = datetime.now()    
-    # welcome_uguru_tutor(user)
     return notification
 
 def welcome_guru(user):
@@ -46,7 +44,6 @@ def welcome_guru(user):
     notification.a_id_name = 'getting-started'
     notification.image_url = user.profile_url
     notification.time_read = datetime.now()    
-    # welcome_uguru_tutor(user)
     return notification
 
 def getting_started_tutor_2(user):

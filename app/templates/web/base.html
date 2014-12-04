@@ -1,0 +1,53 @@
+<!-- Apply desktop wrapper -->
+{% if not request.MOBILE %}
+    {% set user_agent_is_desktop = True %}
+    {% from 'web/macros/desktop.html' import desktop_header, desktop_footer %}
+{% endif %}
+{% from 'web/macros/components.html' import show_all_components %}
+
+<html>
+  
+  <head>
+    
+    <meta charset="utf-8">
+    <title>uGuru</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include standard stylesheets -->
+    {% include 'web/snippets/stylesheets.html' %}
+    
+    <!-- Include standard desktop scripts -->
+    {% if user_agent_is_desktop %}
+      {% include 'web/snippets/desktop_stylesheets.html' %}
+    {% endif %}
+  
+  </head>
+  
+  <body>
+
+    <!-- Add web app header -->
+    {% if user_agent_is_desktop %}
+      {{desktop_header()}}
+    {% endif %}
+
+    <!-- Add main header of app -->
+    {% block main_header %}
+    {% endblock %}
+
+    <!-- Add main content of app -->
+    {% block main_content %}
+    {% endblock %}
+
+    {{show_all_components()}}
+
+    <!-- Add web app footer -->
+    {% if user_agent_is_desktop %}
+      {{desktop_footer()}}
+    {% endif %}
+
+    {% include 'web/snippets/scripts.html' %}
+    
+  </body>
+</html>

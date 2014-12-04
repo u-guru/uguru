@@ -1,0 +1,103 @@
+{% extends 'web/base.html' %}
+{% from 'web/macros/request.html' import request_details, student_reject_modal, student_accept_modal %}
+{% set is_student = (user.id == request_dict['student']['server_id'])%}
+{% set is_guru = not is_student %}
+
+{% block main_header %}
+    <header class="bar bar-nav">
+        <h1 class="title uguru-logo">uguru</h1>
+    </header>
+{% endblock %}
+
+{% block main_content %}
+<div class="content {% if not is_student %}should-hide-tab-bar{%endif%} should-hide-message-bar">
+    
+    {% if is_student %}
+      {% set available_guru = request_dict.get('interested_tutors') %}
+
+      {% if available_guru %}
+        {% set guru = available_guru[0]%}
+          <ul class='table-view'>
+            <li class="table-view-cell media">
+                <a class="navigate-right" href="/p/{{guru['server_id']}}/" data-transition='slide-in'>
+                    <img class="media-object pull-left table-view-face" src="{{guru['profile_url']}}">
+                    <div class="media-body">
+                        {{guru['name']}} can help!
+                        <p class='red-text'>
+                            Expires in 5 minutes
+                        </p>
+                    </div>
+                    <button class="btn btn-link">Profile</button>
+                </a>
+            </li>
+          </ul>
+          {{request_details(request_dict, is_student)}}
+          <a class='btn btn-negative btn-block decline' href='#student-reject-tutor-modal' > 
+                Reject
+          </a>
+          <a class='btn btn-positive btn-block accept' href='#student-accept-tutor-modal'> 
+                Accept 
+          </a>
+          {{student_reject_modal(request_dict)}}
+          {{student_accept_modal(request_dict, user)}}
+      
+      {% else %}
+
+        {{request_details(request_dict, is_student  )}}
+        <a class='btn btn-positive btn-block' href='#cancelModal'> 
+            Cancel Request
+        </a>
+
+        <div id="cancelModal" class="modal">
+          <header class="bar bar-nav">
+            <a class="icon icon-close pull-right" href="#cancelModal"></a>
+            <h1 class="title">Cancel {{request_dict['skill_name']}} Request</h1>
+          </header>
+
+          <div class="content">
+            <div class='content-padded'></h6>
+              <form>
+                <textarea id='cancel-request-description' placeholder='Please tell us why! Help us make your future experience be the best as possible.'rows="5"></textarea>
+                <a class='btn btn-positive btn-block' href='#' id='cancel-link'> 
+                  Submit 
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+      {% endif %}
+      <!-- end student case -->
+
+      {% if is_guru %}
+      <a class='btn btn-positive btn-block' href='#' id='guru-accept-link'> 
+          Accept
+      </a>
+      <a class='btn btn-negative btn-block' href='#reject-request-modal'>
+          Reject
+      </a>
+
+      <div id="reject-request-modal" class="modal">
+        <header class="bar bar-nav">
+          <a class="btn btn-link pull-left" href="#reject-request-modal">Cancel</a>
+          <h1 class="title">Reject</h1>
+          <a class="btn btn-link pull-right guru-reject-link" href="#">Skip</a>
+        </header>
+
+        <div class="content">
+          <div class='content-padded'></h6>
+            <form>
+              <textarea id='guru-reject-decription' placeholder='Please tell us more! Replying will increase your response rate!'rows="5"></textarea>
+              <a class='btn btn-positive btn-block guru-reject-link' href='#'>
+                Submit 
+              </a>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {% endif %}
+
+    </div>
+{% endblock %}

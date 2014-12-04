@@ -1,0 +1,48 @@
+{% extends 'web/base.html' %}
+
+{% block main_header %}
+<header class="bar bar-nav">
+  <h1 class="title uguru-logo">uguru</h1>
+</header>
+{% endblock %}
+
+{% block main_content %}
+<div class="content should-hide-message-bar">
+  <div class='logo-container center content-padded'>
+    <img class="media-object guru-photo" src="/static/img/guru-new.svg">
+  </div>
+
+  <ul class="table-view">
+    <li class="table-view-cell media">
+        <a class="navigate-right">
+            <img class="media-object pull-left table-view-face" src="/static/img/face3.png">
+            <div class="media-body">
+                CS10 Session with Peter
+                <p>Today at 8pm</p>
+            </div>
+        </a>
+    </li>
+  </ul>
+
+  <ul class="table-view">
+    <li class="table-view-cell">
+      <a class="navigate-right" data-transition='slide-in' href='/request/'>
+        How it Works
+      </a>
+    </li>
+    <li class="table-view-cell">
+      <a class="navigate-right" data-transition='slide-in' href='/request/'>
+        <span class="badge">2</span>
+        Current Requests
+      </a>
+    </li>
+  </ul>
+
+  <a class="btn btn-positive btn-block" href="/request_form/" data-transition='slide-in'>
+    Request Guru
+  </a>
+
+  {% include 'web/snippets/flash_alerts.html'%}
+
+</div><!-- /.content -->
+{% endblock %}

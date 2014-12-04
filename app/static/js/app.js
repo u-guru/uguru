@@ -3,6 +3,8 @@ var current_page_id = null;
 var previous_page_id = null;
 var request_form_complete = null;
 var a,b,c;
+var time_picker, date_picker;
+var time_picker_input, date_picker_input;
 var signup_type = null;
 var payment_plan_clicked = null;
 var guru_signup_clicked;
@@ -20,6 +22,29 @@ var invert_olark_white = function() {
 $(document).ready(function(){
 
   $body = $("body");
+
+  //Initialize all relevant javascript objects (i.e, sliders, date-popups)
+  date_picker_input = $('#request-date').pickadate({
+    min:true,
+    max:2,
+    onSet: function(context) {
+        date_picker = date_picker_input.pickadate('picker');
+        date_selected = date_picker.get('select')['date'];
+        todays_date = new Date().getDate();
+        time_picker = time_picker_input.pickatime('picker');
+        if (todays_date != date_selected) {
+          time_picker.set({
+            'min': false,
+            'highlight': [0,0]
+          });
+        } else {
+          time_picker.set('min', true);
+        }
+    }
+  });
+  time_picker_input = $('#request-time').pickatime({
+    min:true
+  });
 
   $(document).on({
     ajaxStart: function() { $body.addClass("loading"); },
@@ -885,12 +910,35 @@ $('#student-register-tutor-link').click(function() {
   $('#student-next-link').trigger('click');
 });
 
+//TODO: Where all of the request form javascript should go (eventually)
+
+//If asap checkbox is checked, un-check the location one
+$('#request-urgency').change(function() {
+  if ($('#request-urgency:checked')) {
+    $('#request-later').attr('checked', false);
+    $('#request-later-form-group').hide();
+  } 
+});
+
+$('#time-estimate-button-group button').click(function() {
+  $(this).addClass('active').siblings().removeClass('active');
+});
+
+$('#request-later').change(function() {
+  if ($('#request-later').is(':checked')) {
+    $('#request-urgency').attr('checked', false);
+    $('#request-later-form-group').show();
+  } else {
+    $('#request-later-form-group').hide();
+  }
+});
+
 $('#request-form-submit').click(function(){
-  if (!$('#request-description').val() || !$('#request-location').val() || $('td.time-slot.td-selected').length === 0 || !$('#request-skill').val()) {
+  if (!$('#request-description').val() || !$('#request-location').val() || !$('#request-skill').val()) {
     $('#alert-fields-request-form').show();
-  } else if (($('#request-main-slider').slider('value') * 2) > $('td.time-slot.td-selected').length) {
-    $('#alert-fields-request-form').text('Please fill in at least ' + $('#request-main-slider').slider('value') + 'hrs on the calendar.');
-    $('#alert-fields-request-form').show();
+    $('html, body').animate({
+      scrollTop: $("#alert-fields-request-form").offset().top
+    }, 500);
   } else if ($("#activity").length === 0) {
       //If they have already signed up
       request_form_complete = true;
@@ -970,46 +1018,37 @@ function submit_request_form_to_server() {
     'student-request': true,
     'description': $('#request-description').val(),
     'skill': $('#request-skill').val(),
-    'professor': $('#request-professor').val(),
-    'estimate': $('#request-main-slider').slider('value'),
+    'estimate': $('#time-estimate-button-group button.active').index(),
     'phone': $('#request-phone').val(),
-    'hourly-price': $('#final-offering-price').text(),
     'urgency': $('#request-urgency').prop('checked'),
-    'recurring': $('#request-recurring').prop('checked'),
-    'calendar': get_calendar_selection(),
+    'remote': $('#request-remote').prop('checked'),
     'location': $('#request-location').val(),
   };
   $.ajax({
     type: "POST",
-    contentType: 'application/json;charset=UTF-8',
-    url: '/validation/' ,
+    contentType: 'application/json',
+    url: '/student_request/' ,
     data: JSON.stringify(data),
     dataType: "json",
     success: function(result) {
+      console.log(result);
       if (result.errors) {
         $('#alert-fields-request-form').text(result.errors);
         $('#alert-fields-request-form').show();
-                // $('#request-form-submit').hide();
-                return;
-              }
-              if (result.dict['no-active-tutors']) {
-                $('#alert-fields-request-form').text("Sorry! We currently don't have tutors for this course. We've registered your request and will let you know immediately when we do!");
-                $('#alert-fields-request-form').show();
-                $('#request-form-submit').hide();
-              }
-              else if (result.dict['duplicate-request']) {
-                $('#alert-fields-request-form').text("Sorry! You already have an active request for this class. Please cancel it and try again.");
-                $('#alert-fields-request-form').show();
-                $('#request-form-submit').hide();
-              } else if (result.dict['tutor-request-same']) {
-                $('#alert-fields-request-form').text("Sorry, you cannot make a request for a course that you're a tutor in!");
-                $('#alert-fields-request-form').show();
-                $('#request-form-submit').hide();
-              } else {
-                window.location.replace('/activity/');
-              }
-            }
-          });
+        $('html, body').animate({
+          scrollTop: $("#alert-fields-request-form").offset().top
+        }, 500);
+        mixpanel.track("Request Failed", data);
+      }else{
+        mixpanel.track("Request Succeeded", data, function(){
+          window.location.replace('/activity/');
+        });
+      }
+    },
+    error: function(e) {
+      console.log(e);
+    }
+  });
 }
 
 $('#add-skill-btn').click(function() {
@@ -1266,6 +1305,7 @@ $('#login-submit-link').click(function(){
         dataType: "json",
         success: function(result) {
           if (guru_signup_clicked) {
+            mixpanel.track("Guru signed up");
             window.location.replace('/apply-guru/');
             return;
           }
@@ -1279,15 +1319,17 @@ $('#login-submit-link').click(function(){
             $('#alert-fields-login').text('You have a Uguru.me FB account, please login with Facebook!');
           }
           if (result.json['admin']) {
-            window.location.replace('/new-admin/');
+            window.location.replace('/admin/');
           }
 
           if (result.json['success'] && result.json['redirect']) {
+            mixpanel.track("Student Logged in");
             window.location.replace(result.json['redirect']);
             return;
           }
 
           if (result.json['success']) {
+            mixpanel.track("Student Logged in");
             window.location.replace('/activity/');
           } else {
             $('#alert-fields-login-2').text('Incorrect email or password');
@@ -1693,14 +1735,14 @@ var numbers = new Bloodhound({
     var send_notification_ajax = function(email_or_text, value) {
       var data = {};
       if (email_or_text == 'email') {
-        data['email'] = value;
+        data['email_notification'] = value;
       } else {
-        data['text'] = value;
+        data['text_notification'] = value;
       }
       $.ajax({
-        type: "POST",
+        type: "PUT",
         contentType: 'application/json;charset=UTF-8',
-        url: '/notification-settings/' ,
+        url: '/api/user' ,
         data: JSON.stringify(data),
         dataType: "json"
       });

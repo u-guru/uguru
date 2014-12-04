@@ -12,13 +12,6 @@
         <p class='margin-top-20 font-16'> Your Guru: <span class='green-text'> {{tutor.name.split(" ")[0]}}
         </p>
 
-        <p class='margin-top-20 font-16'> Scheduled Meeting Time: <span class='green-text'> 
-            <a id='request-calendar-toggle' onclick='show_tutor_request_submitted_calendar({{request_dict[notif.request_id]["student-calendar"]}}, {{request_dict[notif.request_id]["tutor-calendars"][tutor_dict[notif].id]}}, false, {{time.mktime(request_dict[notif.request_id]["request"].time_created.timetuple())}})'>
-                <span class='glyphicon glyphicon-calendar'></span>
-                <span class='blue-text'> See {{tutor.name.split(" ")[0]}}'s Availability </span> 
-              </a>
-        </p>
-
         <p class='margin-top-20 font-16'> Hourly Rate <span class='green-text'> 
             ${{(notif.request_tutor_amount_hourly)}}/hr
         </p>

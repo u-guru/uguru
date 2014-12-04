@@ -1,0 +1,38 @@
+{% extends 'web/base.html' %}
+
+    {% block main_header %}
+    <header class="bar bar-nav">
+      <h1 class="title">Add Card</h1>
+      {% if redirect_request_id %}
+        <a class="icon icon-left-nav pull-left" href="/request/{{redirect_request_id}}/" data-transition="slide-out"></a>  
+      {% else %}
+        <a class="icon icon-left-nav pull-left" href="/m/settings/" data-transition="slide-out"></a>
+      {% endif %}
+    </header>
+    {% endblock %}
+
+    {% block main_content %}
+    <div class="content should-hide-tab-bar should-hide-message-bar">
+      
+      <ul class="table-view">
+        <form class="input-group">
+          <input id='card-num' type="text" placeholder="•••• •••• •••• ••••">
+          <input id='exp-date' type="text" placeholder="MM / YYYY">
+        </form>
+      </ul>
+      <a id='add-card-link' data-user-id='{{user.id}}' class="btn btn-positive btn-block">Submit</a>
+
+      <!-- Inject all stripe-related scripts --> 
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script src="/static/js/jquery.payment.js"></script>
+      <script src="https://js.stripe.com/v2/"></script>
+      <script type="text/javascript">Stripe.setPublishableKey("{{stripe_key}}");</script>
+      <script class='content-js'>
+        $('input#card-num').payment('formatCardNumber');
+        $('input#exp-date').payment('formatCardExpiry');
+      </script>
+      
+    </div>    
+  {% endblock %}
+
+    

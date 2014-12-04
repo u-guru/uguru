@@ -1,0 +1,24 @@
+{% extends 'web/base.html' %}
+
+    {% block main_header %}
+    <header class="bar bar-nav">
+      <h1 class="title">Add a Debit Card</h1>
+      <a class="icon icon-left-nav pull-left" href="/m/settings/" data-transition="slide-out"></a>
+    </header>
+    {% endblock %}
+
+    {% block main_content %}
+    <div class="content should-hide-main-bar should-hide-message-bar">
+      
+      <ul class="table-view">
+        <form class="input-group">
+          <input type="text" placeholder="•••• •••• •••• ••••">
+          <input type="text" placeholder="MM / YYYY">
+        </form>
+      </ul>
+      <button class="btn btn-positive btn-block">Submit</button>
+      
+    </div>
+  {% endblock %}
+
+    

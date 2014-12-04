@@ -1,11 +1,11 @@
-from sqlalchemy import String, Integer, Column, ForeignKey, Float,\
- SmallInteger, Boolean, Table, Unicode, DateTime
+from sqlalchemy import String, Integer, Column, ForeignKey, Float, SmallInteger, Boolean, Table, Unicode, DateTime
 from flask import url_for
 from sqlalchemy.orm import relationship, backref
-from app.database import Base
-from app import db
+from app.database import Base, db_session
 from datetime import datetime
 import os
+
+# TODO create __dict__ for popular objects
 
 # many-to-many relation tables
 user_skill_table = Table('user-skill_assoc',
@@ -134,11 +134,7 @@ class User(Base):
     name = Column(String(64))
     parent_name = Column(String)
     parent_email = Column(String)
-    if os.environ.get('TESTING'):
-        email = Column(String(64))
-    else:
-        email = Column(String(64), index = True, unique = True)
-
+    email = Column(String(64), index = True, unique = True)
     school_email = Column(String(64))
     password = Column(String(64))
     is_a_tutor = Column(Boolean, default = False)
@@ -158,7 +154,7 @@ class User(Base):
     user_referral_code = Column(String)
     last_active = Column(DateTime)
     approved_by_admin = Column(Boolean)
-
+    response_rate = Column(Float)
     auth_token = Column(String(64))
     apn_token = Column(String(64))
 
@@ -232,15 +228,178 @@ class User(Base):
         self.password = password
         self.phone_number = phone_number
         self.time_created = datetime.now()
+        self.last_active = datetime.now()
 
     def __repr__(self):
         return "<User " + str(self.id) + " " + str(self.name) + " " + str(self.email) + ">"
 
-    def calc_avg_ratings(self):
-        rating_sum = 0.0
-        for rating in self.tutor_ratings:
-            rating_sum += rating.tutor_rating
-        return rating_sum / len(self.tutor_rating)
+    
+    # Returns [] if doesn't exist, otherwise User Object
+    @staticmethod
+    def does_email_exist(email):
+        user = User.query.filter_by(email=email).first()
+        return user
+
+
+    @staticmethod
+    def encrypted_password(password):
+        from hashlib import md5
+        return md5(password).hexdigest()
+
+    @staticmethod
+    def create_user(name, email, password):
+        from datetime import datetime
+        encrypted_password = User.encrypted_password(password)
+        user = User(name=name, email=email, password=encrypted_password)
+
+        try: 
+            db_session.add(user)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
+        #TODO: Remove this later, I don't know why this prevents me from creating messages/
+        user_mailbox = Mailbox(user)
+
+        try: 
+            db_session.add(user_mailbox)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        return user
+
+    @staticmethod
+    def login_user(email, password):
+        encrypted_password = User.encrypted_password(password)
+        user = User.query.filter_by(email=email, password=encrypted_password).first()
+        return user
+
+    @staticmethod
+    def get_user(_id = None, _email = None):
+        if _id:
+            return User.query.get(_id)
+
+    #TODO: Add more as needed
+    def as_dict(self):
+        u_dict = {
+            'server_id': self.id,
+            'name': self.get_first_name(),
+            'profile_url': self.profile_url,
+        }
+        return u_dict
+
+    #Create stripe customer
+    def add_payment_card(self, token):
+        from lib.payments import create_stripe_customer
+        
+        result = create_stripe_customer(token, self)
+
+        if result:
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+
+        return result 
+
+    def get_all_conversations(self, _dict=None):
+        conversations = self.conversations
+        if _dict:
+            conversations = {
+                'conversations': [conversation.as_dict() for conversation in conversations]
+            }
+
+        return conversations
+
+    def authenticate(self):
+        from flask import session
+        session['user_id'] = self.id
+
+    def logout_user(self):
+        from flask import session
+        session.pop('user_id')
+    
+    def get_first_name(self):
+        return self.name.split(' ')[0].title()
+
+    def calc_avg_rating(self):
+        from views import calc_avg_rating
+        return calc_avg_rating(self)
+
+    # Go through user.outgoing_requests, filter the ones 
+    # that Gurus have accepted, but student hasn't
+    #HACKED for now, will change 
+    def get_accepted_requests(self):
+        accepted_requests = []
+        for _request in self.outgoing_requests:
+            if self in _request.committed_tutors:
+                accepted_requests.append(_request)
+        return accepted_requests
+
+    # Go through user.conversations, filter out the
+    # active ones.
+    def get_scheduled_sessions(self):
+        scheduled_sessions = []
+        for c in self.conversations:
+            if c.is_active:
+                all_requests_by_date = sorted(c.requests, 
+                    key=lambda c:c.time_created, reverse=True)
+                scheduled_sessions.append(all_requests_by_date[0])
+        return scheduled_sessions
+
+    #Helper function for /profile/<id> route
+    def has_incoming_tutor_for_request(self, guru_id):
+        for _request in self.get_pending_requests():
+            print _request
+            incoming_tutor_ids = [tutor.id for tutor in _request.get_interested_tutors()]
+            print incoming_tutor_ids
+            if guru_id in incoming_tutor_ids:
+                guru = User.query.get(guru_id)
+                return guru, _request
+        return False
+
+    def add_skill(self, skill):
+        self.skills.append(skill)
+        try: 
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
+    def add_request_to_pending_requests(self, _request):
+        self.outgoing_requests.append(_request)
+        try: 
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
+    # Active requests is not expired, or not canceled (yet), or not matched.
+    def get_pending_requests(self):
+        return self.outgoing_requests
+
+    #returns ten most recent notifications
+    def get_recent_notifications(self):
+        notifications = sorted(self.notifications, key=lambda n:n.id, reverse=True)[:10]
+        return notifications
+
+    def already_has_pending_request_for_skill(self, skill):
+        pending_requests = self.get_pending_requests()
+        if not pending_requests:
+            return False
+        pending_requests_skill_ids = [_request.skill_id for _request in pending_requests]
+        if skill.id in pending_requests_skill_ids:
+            return True
+        
+
+    #return all notifications
+    def get_all_notifications(self):
+        notifications = sorted(self.notifications, key=lambda n:n.id, reverse=True)
+        return notifications
 
 class Mailbox(Base):
     __tablename__ = 'mailbox'
@@ -265,6 +424,7 @@ class Conversation(Base):
     id = Column(Integer, primary_key = True)
 
     is_read = Column(Boolean, default = False)
+    is_active = Column(Boolean)
     last_updated = Column(DateTime)
     
     skill_id = Column(Integer, ForeignKey('skill.id'))
@@ -303,10 +463,51 @@ class Conversation(Base):
             'sender or reciever must be in this conversation'
         return Message(contents, self, sender, reciever)
 
+    @staticmethod
+    def create_conversation(skill, guru, student):
+        conversation = Conversation(skill, guru, student)
+        try:
+            db_session.add(conversation)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return conversation
+
+    @staticmethod
+    def get_conversation(_id):
+        return Conversation.query.get(_id)
+
+    def get_all_messages(self, _dict=False, sorted_by_time=False):
+        messages = self.messages
+
+        if sorted_by_time:
+            messages = sorted(messages, key=lambda m:m.time_created)
+
+        if _dict:
+            messages = {
+                'messages': [message.as_dict() for message in messages]
+            }
+
+        return messages
+
+
+    #TODO: Return more relevant keys, like last message time.
+    def as_dict(self):
+        c_dict = {
+            'server_id': self.id,
+            'student': self.student.as_dict(),
+            'tutor': self.guru.as_dict(),
+            'is_active': self.is_active,
+            'message_count': len(self.messages),
+        }
+        return c_dict
+
     def __init__(self, skill, guru, student):
         self.skill = skill
         self.skill_id = skill.id
         self.guru = guru
+        self.is_active = False
         self.guru_id = guru.id
         self.student = student
         self.student_id = student.id
@@ -364,6 +565,32 @@ class Message(Base):
         self.mailboxes.append(sender.mailbox)
         self.mailboxes.append(reciever.mailbox)
 
+    @staticmethod
+    def create_message(contents, conversation, sender):
+        if sender == conversation.student:
+            receiver = conversation.guru
+        else:
+            receiver = conversation.student
+        message = Message(contents, conversation, sender, receiver)
+        try: 
+            db_session.add(message)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+        return message
+
+    def as_dict(self):
+        from lib.utils import python_datetime_to_js_date
+        m_dict = {
+            'server_id': self.id,
+            'contents': self.contents,
+            'sender': self.sender.as_dict(),
+            'receiver': self.reciever.as_dict(),
+            'write_time': python_datetime_to_js_date(self.write_time)
+        }
+        return m_dict
+
     def __str__(self):
         return self.contents
 
@@ -414,7 +641,6 @@ class Notification(Base):
             self.rating_id = rating.id
         if other:
             self.custom = other
-
 
 class Tag(Base):
     __tablename__ = 'tag'
@@ -508,10 +734,15 @@ class Request(Base):
     num_students = Column(Integer, default = 0)
     tutor_offer_hour = Column(Integer)
 
+    pending_tutor_id = Column(Integer)
+    pending_tutor_description = Column(String)
+
     description = Column(String)
     available_time = Column(String)
     location = Column(String)
     last_updated = Column(DateTime)
+    start_time = Column(DateTime)
+    remote = Column(Boolean) #Video-chat friendly
 
     cancellation_reason = Column(String)
 
@@ -522,7 +753,6 @@ class Request(Base):
     time_created = Column(DateTime)
     time_connected = Column(DateTime)
     payment_id = Column(Integer)
-    estimated_hourly = Column(Float) #TO DROP
     actual_hourly = Column(Float) 
     actual_time = Column(Float)
 
@@ -544,15 +774,18 @@ class Request(Base):
 
     #TODO: make sure student_id doesn't already have a request for that skill_id
 
-    def __init__(self, student_id, skill_id, description, urgency, \
-        frequency, time_estimate):
+    def __init__(self, student_id, skill_id, description, time_estimate, \
+        phone_number, location=None, remote=None, urgency=None, start_time=None):
         self.student_id = student_id
         self.skill_id = skill_id
         self.description = description
         self.urgency = urgency
-        self.frequency = frequency
         self.time_estimate = time_estimate
         self.time_created = datetime.now()
+        self.start_time = start_time
+        self.remote = remote
+        self.location = location
+        self.phone_number = phone_number
         self.requested_tutors = Skill.query.get(skill_id).tutors
         
 
@@ -570,6 +803,140 @@ class Request(Base):
         \n Time Created: %s, Time Estimated: %s hours>" %\
         (str(self.id), student_name, tutor_name, skill_name, \
             self.time_created.strftime('%b %d,%Y'), self.time_estimate)
+
+    def get_return_dict(self, skill=None, student=None, tutor=None):
+        from lib.requests import request_obj_to_dict
+
+        if not skill:
+            skill = Skill.query.get(self.skill_id)
+        if not student:
+            student = User.query.get(self.student_id)
+        if self.connected_tutor_id:
+            tutor = User.query.get(self.connected_tutor_id)
+        
+        return request_obj_to_dict(self, skill, student, tutor)
+
+    def get_tutor_count(self):
+        return len(self.requested_tutors)
+
+    def is_tutor_involved(self, tutor):
+        if tutor in self.requested_tutors \
+        or tutor in self.committed_tutors:
+            return True
+        return False
+
+    def process_student_acceptance(self, tutor):
+        from datetime import datetime
+        
+        #Update time connected and everything
+        self.time_connected = datetime.now()
+        self.connected_tutor_id = tutor.id
+
+        student = User.get_user(self.student_id)
+        skill = Skill.query.get(self.skill_id)
+
+        #Create conversation
+        conversation = Conversation.create_conversation(skill, tutor, student)
+        conversation.requests.append(self)
+        conversation.last_updated = datetime.now()
+
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def process_tutor_acceptance(self, tutor):
+        self.committed_tutors.append(tutor)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    #TODO, we don't do anything yet, but we will in the near future.
+    def process_tutor_reject(self,tutor):
+        tutor.outgoing_requests.remove(self)
+        self.committed_tutors.remove(tutor)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+
+    def get_interested_tutors(self):
+        return self.committed_tutors
+
+    def approved_tutors(self):
+        from lib.requests import approved_tutors
+        return approved_tutors(self)
+
+    def approved_tutor_ids(self):
+        tutor_ids = [tutor.id for tutor in self.approved_tutors()]
+        return tutor_ids
+
+    def get_student(self):
+        return User.query.get(self.student_id)
+
+    def get_connected_tutor(self):
+        return User.query.get(self.connected_tutor_id)
+
+    def cancel(self, user):
+        self.connected_tutor_id = self.student_id
+        user.outgoing_requests.remove(self)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return 
+
+    def is_canceled(self):
+        return self.connected_tutor_id == self.student_id
+
+    def get_status(self):
+        if not self.connected_tutor_id:
+            return 'pending'
+        elif self.is_canceled():
+            return 'canceled'
+        else:
+            return 'matched'
+        
+    @staticmethod
+    def get_request_by_id(request_id):
+        return Request.query.get(request_id)
+    
+    @staticmethod
+    def create_request(student, skill_id, description, time_estimate, \
+        phone_number, location, remote=None, urgency=None, start_time=None):
+        
+        #Convert from JS Date to Python Datetime
+        from lib.utils import js_date_to_python_datetime
+        start_time = js_date_to_python_datetime(start_time)
+
+        _request = Request(
+                student_id = student.id,
+                skill_id = skill_id,
+                description = description,
+                time_estimate = time_estimate,
+                phone_number = phone_number,
+                location = location,
+                remote = remote,
+                urgency = urgency,
+                start_time = start_time
+            )
+
+        try: 
+            db_session.add(_request)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
+        return _request
+
+
 
     def convert_urgency_to_str(self, number):
         if number == 0:
@@ -640,7 +1007,6 @@ class Skill(Base):
     time_created = Column(DateTime)
     is_course = Column(Boolean, default = False)
 
-    #TODO List of all tutors with a skill
     course = relationship("Course",
         primaryjoin = 'Skill.id == Course.skill_id',
         uselist = False,
@@ -660,6 +1026,22 @@ class Skill(Base):
         if self.is_course:
             return u"<Skill for Course '%r'>" % (self.name)
         return u"<Skill '%r'>" % (self.name)
+
+    @staticmethod
+    def get_skill_from_name(skill_name):
+        #TODO: Organize skills in next iteration of Data Model
+        from static.data.variations import courses_dict
+        skill_id = courses_dict.get(skill_name.lower())
+        if skill_id:
+            skill = Skill.query.get(skill_id)
+            return skill
+        return False
+
+    def get_short_name(self):
+        from app.static.data.short_variations import short_variations_dict
+        skill_name = short_variations_dict[self.name]
+        return skill_name
+
 
 class Rating(Base):
     __tablename__ = 'rating'

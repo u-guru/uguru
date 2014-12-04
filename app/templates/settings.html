@@ -1,11 +1,7 @@
 {% extends 'base.html' %}
 {% block header %}
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <script src="/static/js/jquery.js"></script>
-   <script src="/static/js/jquery.raty.js"></script>
-   <link rel="stylesheet" href="/static/css/bootstrap-switch.css">
-    <script src="/static/js/bootstrap-switch.js"></script>
-    <script src="/static/js/bootstrap-switch.min.js"></script>
+  <link rel="stylesheet" href="/static/css/bootstrap-switch.css">
 {% endblock %}
 
 {% block content %}
@@ -736,10 +732,7 @@
         </div>
       </div>
     </div>
-          
-          
     
-
 <!-- Skills -->
       <div id="skills" style="display:none" align="center">
         {% if not user.verified_tutor%}
@@ -890,14 +883,14 @@
 
 {% block footer_scripts %}
 
-
-    <!-- Custom JavaScript for Highlight Tabs -->
- <script src="/static/js/settings.js"></script>
- <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
- <script type="text/javascript" src="/static/js/typeahead.js"></script>
- <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-  <script src="/static/js/jquery.payment.js"></script>
-  <script src="/static/js/uguru.payments.js"></script>    
-  <script type="text/javascript">Stripe.setPublishableKey("{{key}}");</script>
+<!-- Custom JavaScript for Highlight Tabs -->
+<script>window.jQuery || document.write('<script src="/static/js/jquery-1.11.1.min.js"><\/script>')</script>
+<script src="/static/js/bootstrap-switch.js"></script>
+<script src="/static/js/bootstrap-switch.min.js"></script>
+<script src="/static/js/settings.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script src="/static/js/jquery.payment.js"></script>
+<script src="/static/js/uguru.payments.js"></script>    
+<script type="text/javascript">Stripe.setPublishableKey("{{key}}");</script>
 
 {% endblock %}
