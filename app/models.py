@@ -746,6 +746,7 @@ class Payment(Base):
 
 
     #deprecated, but need to migrate shit from production
+    time_amount = Column(Float)
     tutor_rate = Column(Float)
     student_description = Column(String)
     tutor_description = Column(String)
