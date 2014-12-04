@@ -1,14 +1,14 @@
-"""SAMIR: added pending_tutor_id, pending_tutor_description to Request table, adding is_active to Conversation
+"""Adding new fields for samir's new jank-ass dank-ass temp DB
 
-Revision ID: 2033e5f72a8c
-Revises: 22e2186d4384
-Create Date: 2014-12-03 21:30:13.482947
+Revision ID: 515853c23e1c
+Revises: 51cff19af108
+Create Date: 2014-12-03 22:34:20.522878
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '2033e5f72a8c'
-down_revision = '22e2186d4384'
+revision = '515853c23e1c'
+down_revision = '51cff19af108'
 
 from alembic import op
 import sqlalchemy as sa

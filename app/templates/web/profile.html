@@ -23,7 +23,7 @@
               | 
               {{guru_num_sessions}}
             {% else %}
-              Ben is a new to Guru
+              {{guru.get_first_name()}} is a new to Guru
             {% endif %}
 
           </h6>
@@ -34,7 +34,6 @@
             {% endif %}
       </li>
       <li class="table-view-cell request-cell ignore-table-view-margin">
-          {{guru.get_first_name()}} can tutor
           <p class='padding-top-5'>
             <button class='btn btn-primary'>{{request_dict['skill_name']|upper}}</button>
             {% for skill in guru.skills[:3] %}
@@ -44,7 +43,7 @@
               {% if skill_name != request_dict['skill_name'] 
                 and skill_name not in ['Writing Help', 'Career Help', 'Resume Help']
               %}
-                <button class='btn btn-primary btn-outlined'>{{skill_name}}</button>
+                <button class='btn btn-outlined'>{{skill_name}}</button>
               {% endif %}
 
             {% endfor %}

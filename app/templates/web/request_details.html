@@ -32,11 +32,11 @@
             </li>
           </ul>
           {{request_details(request_dict, is_student)}}
-          <a class='btn btn-positive btn-block' href='#student-accept-tutor-modal'> 
-                Accept 
-          </a>
-          <a class='btn btn-negative btn-block' href='#student-reject-tutor-modal' > 
+          <a class='btn btn-negative btn-block decline' href='#student-reject-tutor-modal' > 
                 Reject
+          </a>
+          <a class='btn btn-positive btn-block accept' href='#student-accept-tutor-modal'> 
+                Accept 
           </a>
           {{student_reject_modal(request_dict)}}
           {{student_accept_modal(request_dict, user)}}

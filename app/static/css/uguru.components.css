@@ -91,10 +91,10 @@ header .uguru-logo {
     font-family: 'HelveticaNeue-Medium';
 }
 
-.btn.btn-positive.btn-block.accept {
-    color: #fff;
-    background-color: #69B3A5;
-    border: 1px solid #69B3A5;
+.btn.btn-negative.btn-block.decline {
+    color: #7b8486;
+    background-color: #4e5c5f;
+    border: 1px solid #7b8486;
     width: 45%;
     margin-left: 10px;
     margin-right: 5px;
@@ -103,16 +103,20 @@ header .uguru-logo {
     font-family: 'HelveticaNeue-Medium';
 }
 
-.btn.btn-positive.btn-block.decline {
-    color: #7b8486;
-    background-color: #4e5c5f;
-    border: 1px solid #7b8486;
+.btn.btn-positive.btn-block.accept {
+    color: #fff;
+    background-color: #69B3A5;
+    border: 1px solid #69B3A5;
     width: 45%;
     margin-left: 5px;
     margin-right: 10px;
     float: right;
     border-radius: 1px;
     font-family: 'HelveticaNeue-Medium';
+}
+
+.btn.btn-link {
+    color:#fff;
 }
 
 /* form */
@@ -157,6 +161,15 @@ header .uguru-logo {
 .btn-negative {
     background-color: #69B3A5;
     border: 1px solid #69b2a5;
+}
+
+.btn.btn-primary {
+    background-color:#CC792B;
+}
+
+.btn.btn-outlined {
+    color:#fff;
+    border-color:#fff;
 }
 
 .table-view-cell.message-cell, .table-view-cell.request-cell, .ignore-table-view-margin {
