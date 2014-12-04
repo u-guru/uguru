@@ -39,9 +39,21 @@ def check_msg_status(text_id):
         raise
 
 @task(name='tasks.contact_tutors')
-def contact_qualified_tutors(arr_tutor_ids):
+def contact_qualified_tutors(request_id):
     from lib.requests import contact_tutors
-    contact_tutors(arr_tutor_ids)
+    from app.models import Request
+    from app.database import db_session
+    r = Request.query.get(request_id)
+    for tutor in r.requested_tutors:
+        #hack for now
+        tutor.outgoing_requests.append(r)
+        print tutor.id, tutor.name, tutor.email
+    try:
+        db_session.commit()
+    except:
+        db_session.flush()
+        raise
+
 
 @task(name='tasks.autoconfirm_payment')
 def auto_confirm_student_payment(payment_id, student_id):

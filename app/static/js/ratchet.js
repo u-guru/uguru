@@ -301,7 +301,7 @@
     }
 
     transition = direction === 'back' ? transitionMap[transitionFromObj.transition] : transitionFromObj.transition;
-
+    console.log(activeDom);
     if (!activeDom) {
       return PUSH({
         id         : activeObj.id,

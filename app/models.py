@@ -311,11 +311,41 @@ class User(Base):
     def get_first_name(self):
         return self.name.split(' ')[0].title()
 
-    def calc_avg_ratings(self):
-        rating_sum = 0.0
-        for rating in self.tutor_ratings:
-            rating_sum += rating.tutor_rating
-        return rating_sum / len(self.tutor_rating)
+    def calc_avg_rating(self):
+        from views import calc_avg_rating
+        return calc_avg_rating(self)
+
+    # Go through user.outgoing_requests, filter the ones 
+    # that Gurus have accepted, but student hasn't
+    #HACKED for now, will change 
+    def get_accepted_requests(self):
+        accepted_requests = []
+        for _request in self.outgoing_requests:
+            if self in _request.committed_tutors:
+                accepted_requests.append(_request)
+        return accepted_requests
+
+    # Go through user.conversations, filter out the
+    # active ones.
+    def get_scheduled_sessions(self):
+        scheduled_sessions = []
+        for c in self.conversations:
+            if c.is_active:
+                all_requests_by_date = sorted(c.requests, 
+                    key=lambda c:c.time_created, reverse=True)
+                scheduled_sessions.append(all_requests_by_date[0])
+        return scheduled_sessions
+
+    #Helper function for /profile/<id> route
+    def has_incoming_tutor_for_request(self, guru_id):
+        for _request in self.get_pending_requests():
+            print _request
+            incoming_tutor_ids = [tutor.id for tutor in _request.get_interested_tutors()]
+            print incoming_tutor_ids
+            if guru_id in incoming_tutor_ids:
+                guru = User.query.get(guru_id)
+                return guru, _request
+        return False
 
     def add_skill(self, skill):
         self.skills.append(skill)
@@ -705,7 +735,6 @@ class Request(Base):
     time_created = Column(DateTime)
     time_connected = Column(DateTime)
     payment_id = Column(Integer)
-    estimated_hourly = Column(Float) #TO DROP
     actual_hourly = Column(Float) 
     actual_time = Column(Float)
 
@@ -772,12 +801,11 @@ class Request(Base):
     def get_tutor_count(self):
         return len(self.requested_tutors)
 
-    def is_tutor_active(self, tutor):
-        approved_tutors = self.approved_tutors()
-        if tutor not in approved_tutors:
-            return False
-        else:
+    def is_tutor_involved(self, tutor):
+        if tutor in self.requested_tutors \
+        or tutor in self.committed_tutors:
             return True
+        return False
 
     def process_student_acceptance(self, tutor):
         from datetime import datetime
@@ -810,11 +838,14 @@ class Request(Base):
 
     #TODO, we don't do anything yet, but we will in the near future.
     def process_tutor_reject(self,tutor):
-        pass
+        tutor.outgoing_requests.remove(self)
+        self.committed_tutors.remove(tutor)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
-    #TODO, we don't do anything yet, but we will in the near future.
-    def process_tutor_reject(self,tutor):
-        pass
 
     def get_interested_tutors(self):
         return self.committed_tutors
@@ -832,6 +863,16 @@ class Request(Base):
 
     def get_connected_tutor(self):
         return User.query.get(self.connected_tutor_id)
+
+    def cancel(self, user):
+        self.connected_tutor_id = self.student_id
+        user.outgoing_requests.remove(self)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return 
 
     def is_canceled(self):
         return self.connected_tutor_id == self.student_id
@@ -978,6 +1019,10 @@ class Skill(Base):
             return skill
         return False
 
+    def get_short_name(self):
+        from app.static.data.short_variations import short_variations_dict
+        skill_name = short_variations_dict[self.name]
+        return skill_name
 
 
 class Rating(Base):
