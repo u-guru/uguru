@@ -333,6 +333,14 @@ class User(Base):
         from views import calc_avg_rating
         return calc_avg_rating(self)
 
+    def get_conversation_with(self, guru):
+        for c in self.conversations:
+            if c.guru == guru:
+                return c
+        return 
+
+
+
     # Go through user.outgoing_requests, filter the ones 
     # that Gurus have accepted, but student hasn't.
     #HACKED for now, will change 

@@ -52,11 +52,6 @@ def home():
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
-
-    #Check if user is a guru & has accepted_requests
-    accepted_requests = user.get_accepted_requests()
-    if accepted_requests or user.skills:
-        return redirect(url_for('m_guru'))
     
     #Check if user is a student & has pending requests
     pending_requests = user.get_pending_requests()
@@ -116,6 +111,7 @@ def m_login():
 
         # if student w/ requests
         pending_requests = user.get_pending_requests()
+        print user.id
         if pending_requests:
             pending_request_id = pending_requests[0].id
             return redirect( \
@@ -213,15 +209,19 @@ def add_courses():
 
     return render_template('web/add_courses.html')
 
-@app.route('/m/messages/')
-def m_messages():
+@app.route('/c/<_id>')
+@app.route('/conversation/<_id>')
+def m_messages(_id):
 
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
+
+    convo = Conversation.query.get(_id)
     
     return render_template('web/messages.html')
 
+@app.route('/guru/settings/')
 @app.route('/m/settings/')
 def m_settings():
 
@@ -298,9 +298,8 @@ def support():
 @app.route('/confirm_request/<_id>/')
 @app.route('/request/<_id>/')
 def request_by_id(_id):
-
     #if ID is not accurate, send back to home.
-    _request = Request.get_request_by_id(_id)
+    _request = Request.get_request_by_id(int(_id))
     if not _request:
         
         return redirect(url_for('home'))

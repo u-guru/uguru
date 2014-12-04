@@ -1,7 +1,4 @@
 {% macro process_tab_bar(user, show=False, active_page=None, student_mode=True) -%}
-{% if user and user.is_a_guru() %}
-  {% set student_mode = False %}
-{% endif %}
 <nav id='main-bar-tab' class="bar bar-tab" style='display:none'>  
     {% if student_mode %}
     <a data-transition='fade' class="tab-item main-tab-item" href="/home/">

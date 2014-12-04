@@ -40,8 +40,8 @@ $(document).ready(function() {
     //Student cancels a request
 
     $('body').on('touchstart', '#cancel-link', function() {
-        url_components = window.location.pathname.split( '/' );
-        request_id = url_components[url_components.length - 2];
+        var request_id = ($('#cancel-link').data().requestId).toString();
+        alert(request_id);
         
         payload = JSON.stringify({
             action:'cancel',
@@ -56,7 +56,7 @@ $(document).ready(function() {
             success: function(request){
                 window.PUSH({
                     transition : "fade",
-                    url : "/guru/"
+                    url : "/home/"
                 });
                 $('#cancelModal').removeClass('active');
             },
@@ -151,7 +151,7 @@ $(document).ready(function() {
         
         url_components = window.location.pathname.split( '/' );
         request_id = url_components[url_components.length - 2];
-        
+
         payload = JSON.stringify({
             action:'student-accept',
         });

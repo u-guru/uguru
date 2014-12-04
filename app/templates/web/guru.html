@@ -43,17 +43,21 @@
                         <span class="icon icon-star-filled profile-star black"></span> 
                     </p>
                 </div>
-                <a class='btn btn-link'> View Profile
+                <a class='btn btn-link'> View More
                 </a>
         </li>
         <li class='table-view-cell'>
           Location: {{request_dict['location']}}
         </li>
         <li class='table-view-cell'>
-          $5 for every 15 minutes
+          $5 for every 15 minutes 
+          <a class='btn btn-primary' href='/conversation/{{request_dict["conversation"]["server_id"]}}' data-transition='slide-in'> Message
+          </a>
         </li>
       </ul>
     {% endfor %}
+
+
 
   <ul class="table-view">    
     {% if guru_requests %}

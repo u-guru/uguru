@@ -1,9 +1,9 @@
 {% from 'web/macros/footer.html' import process_tab_bar %}
 {% from 'web/macros/message_footer.html' import process_message_footer %}
 
-{% macro show_all_components(user=None)-%}
+{% macro show_all_components(user=None, student_mode = False)-%}
 
-        {{process_tab_bar(user)}}
+        {{process_tab_bar(user=user, student_mode=student_mode)}}
         {{process_message_footer()}}
 
 {%- endmacro %}
