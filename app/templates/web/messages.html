@@ -1,52 +1,45 @@
 {% extends 'web/base.html' %}
-{% convo_dict = convo.as_dict()%}
+{% set all_message_dicts = convo.get_all_messages(_dict=True, sorted_by_time=True)%}
+
+{% if '/guru/' in request.url %}
+    {% set back_url = '/m/guru/'%}
+{% else %}
+    {% set back_url = '/tutors/'%}
+{% endif %}
+
+{% if convo.guru == user %}
+    {% set receiver_name = convo.student.get_first_name() %}
+{% else %}
+    {% set receiver_name = convo.guru.get_first_name() %}
+{% endif %}
 
 {% block main_header %}
 <header class="bar bar-nav">
-    <a class="icon icon-left-nav pull-left" href="/tutors/" data-transition="slide-out"></a>
-    <h1 class="title">Jake</h1>
+    <a class="icon icon-left-nav pull-left" href="{{back_url}}" data-transition="slide-out"></a>
+    <h1 class="title">{{receiver_name}}</h1>
 </header>
 {% endblock %}
 
 {% block main_content %}
-<div class="content should-hide-tab-bar">
+<div class="content should-hide-tab-bar" id='message-content-div' data-convo-id='{{convo.id}}' data-user-id='{{user.id}}'>
+
     <ul class="table-view no-margin">
+        {% for message_dict in all_message_dicts['messages'] %}
+
+            {% if message_dict['sender']['server_id'] == user.id %}
+                {% set side = 'pull-right' %}
+                {% set image_url = message_dict['sender']['profile_url'] %}
+            {% else %}
+                {% set side = 'pull-left' %}
+                {% set image_url = message_dict['sender']['profile_url'] %}
+            {% endif %}
         <li class="table-view-cell message-cell media">
-            <img class="media-object message-face pull-left" src="/static/img/face1.png">
-            <div class="media-body">
-                <p>Hi Jake I really need help with CS10 tonight. I have a midterm tomorrow.</p>
+            <div class="media-object message-face {{side}}" style='background-image: url("{{image_url}}")'></div>
+            <div class="media-body {{side}}">
+                <p>{{message_dict['contents']}}</p>
             </div>
         </li>
-        <li class="table-view-cell message-cell media">
-            <img class="media-object message-face pull-right" src="/static/img/face2.png">
-            <div class="media-body">
-                <p class='pull-right'>Cool, don't worry! I got your back. Is there any particular questions you want me to look through?</p>
-            </div>
-        </li>
-        <li class="table-view-cell message-cell media">
-            <img class="media-object message-face pull-left" src="/static/img/face1.png">
-            <div class="media-body">
-                <p>Yes! I'm trying to ... simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it</p>
-            </div>
-        </li>
-        <li class="table-view-cell message-cell media">
-            <img class="media-object message-face pull-right" src="/static/img/face2.png">
-            <div class="media-body">
-                <p class='pull-right'>Dude... that's not too bad! What do you think?</p>
-            </div>
-        </li>
-        <li class="table-view-cell message-cell media">
-            <img class="media-object message-face pull-left" src="/static/img/face1.png">
-            <div class="media-body">
-                <p>I think this is retarded. </p>
-            </div>
-        </li>
-        <li class="table-view-cell message-cell media">
-            <img class="media-object message-face pull-right" src="/static/img/face1.png">
-            <div class="media-body">
-                <p class='pull-right'>You're supposed to help me...</p>
-            </div>
-        </li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}

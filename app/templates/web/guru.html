@@ -1,6 +1,7 @@
 {% extends 'web/base.html' %}
+{% from 'web/macros/modals.html' import guru_confirm_session_modal %}
 {% set guru_requests = user.get_accepted_requests() %}
-{% set scheduled_sessions = user.get_scheduled_sessions() %}
+{% set scheduled_sessions = user.get_scheduled_sessions_guru() %}
 
 
 
@@ -32,20 +33,26 @@
           </p>
         </li>
         <li class="table-view-cell media">
-                <img class="media-object pull-left table-view-face" src="{{request_dict['connected_tutor']['profile_url']}}">
+                <div class="media-object pull-left table-view-face" style='background-image: url("{{request_dict['connected_tutor']['profile_url']}}")'></div>
                 <div class="media-body">
                   {{request_dict['student']['name']}}
                 </div>
         </li>
         <li class='table-view-cell'>
-          Location: {{request_dict['location']}}
+          <a class='navigate-right' href='/guru/conversation/{{request_dict["conversation"]["server_id"]}}' data-transition='slide-in'> 
+            Location: {{request_dict['location']}}
+          </a>
         </li>
         <li class='table-view-cell'>
           $4 for every 15 minutes 
-          <a class='btn btn-primary' href='/conversation/{{request_dict["conversation"]["server_id"]}}' data-transition='slide-in'> Message {{request_dict['student']['name']}}
+          <a class='btn btn-primary' href='#guru-start-session-{{request_dict["server_id"]}}'>
+            Start Session
           </a>
         </li>
       </ul>
+
+      {{guru_confirm_session_modal(_request)}}
+
     {% endfor %}
 
 

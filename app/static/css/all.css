@@ -2,11 +2,17 @@ header .uguru-logo {
   font-family: 'Grand Hotel', cursive;
   font-size: 24px; }
 
-#type-message {
+#message-contents {
   width: 78%; }
 
   .message-face, .table-view-face {
-    height: 40px; }
+    width: 42px;
+    height: 42px;
+    border-radius: 20px;
+    border: 2px solid white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%; }
 
     .guru-photo {
       height: 120px; }
@@ -60,25 +66,31 @@ header .uguru-logo {
                                 .bold {
                                   font-weight: bold; }
 
-                                  .black {
-                                    color: black !important; }
+                                  .no-border-top {
+                                    border-top: 0; }
 
-                                    input#card-num {
-                                      background: url('/static/img/card.png') no-repeat;
-                                      background-size: 32px 24px;
-                                      background-position: 95%; }
+                                    .black {
+                                      color: black !important; }
 
-                                      input#card-num.visa {
-                                        background-image: url('/static/img/visa.png'); }
+                                      input#card-num {
+                                        background: url('/static/img/card.png') no-repeat;
+                                        background-size: 32px 24px;
+                                        background-position: 95%; }
 
-                                        input#credit-card-num.mastercard {
-                                          background-image: url('/static/img/mastercard.png'); }
+                                        input#card-num.visa {
+                                          background-image: url('/static/img/visa.png'); }
 
-                                          input#credit-card-num.discover {
-                                            background-image: url('/static/img/discover.png'); }
+                                          input#credit-card-num.mastercard {
+                                            background-image: url('/static/img/mastercard.png'); }
 
-                                            input#credit-card-num.amex {
+                                            input#credit-card-num.discover {
                                               background-image: url('/static/img/discover.png'); }
 
-                                              .table-view.no-margin {
-                                                margin-top: 0px !important; }
+                                              input#credit-card-num.amex {
+                                                background-image: url('/static/img/discover.png'); }
+
+                                                .table-view.no-margin {
+                                                  margin-top: 0px !important; }
+
+                                                  .auto-height {
+                                                    height: auto; }

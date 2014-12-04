@@ -1,5 +1,6 @@
 {% extends 'web/base.html' %}
 {% from 'web/macros/components.html' import show_components %}
+{% set all_conversation_dicts = user.get_all_conversations(_dict=True, sorted_by_time=True)%}
 
 {% block main_header %}
 <header class="bar bar-nav">
@@ -10,38 +11,36 @@
 {% block main_content %}
 <div class="content">
 
-    <ul class="table-view should-hide-message-bar">
+
+
+    <ul class="table-view should-hide-message-bar">      
+      {% for conversation_dict in all_conversation_dicts['conversations'] %}
+        {% set last_message =  conversation_dict.get('last_message') %} 
       <li class="table-view-cell media">
-        <a class="navigate-right" data-transition="slide-in" href='/m/messages/'>
-            <span class="badge badge-negative">5</span>
-            <img class="media-object pull-left" src="http://placehold.it/42x42">
+        <a class="navigate-right" data-transition="slide-in" href='/conversation/{{conversation_dict["server_id"]}}'>
+            <div class="media-object pull-left message-face" style='background-image: url("{{conversation_dict['tutor']['profile_url']}}")'></div>
             <div class="media-body">
-                Peter
-                <p>Hi my name is Peter</p>
+                {{conversation_dict['tutor']['name']}}
+                <p>
+                    {% if last_message %}
+                        {{conversation_dict['last_message']['contents'][:30]}}
+                    {% else %}
+                        No messages yet.
+                    {% endif %}
+                </p>
             </div>
+            {% if not last_message or last_message['sender']['server_id'] != user.id %}
+                <span class="badge badge-negative"> 1
+                </span>
+            {% endif %}
         </a>
       </li>
+      {% endfor %}
       <li class="table-view-cell media">
             <a class="navigate-right">
                 <img class="media-object pull-left" src="http://placehold.it/42x42">
                 <div class="media-body">
                     Mary
-                    <p>
-                        <span class="icon icon-star-filled profile-star black"></span>
-                        <span class="icon icon-star-filled profile-star black"></span> 
-                        <span class="icon icon-star-filled profile-star black"></span> 
-                        <span class="icon icon-star-filled profile-star black"></span> 
-                        <span class="icon icon-star-filled profile-star black"></span> 
-                    </p>
-                </div>
-                <button class="btn btn-primary">Check Availability</button>
-            </a>
-      </li>
-      <li class="table-view-cell media">
-            <a class="navigate-right">
-                <img class="media-object pull-left" src="http://placehold.it/42x42">
-                <div class="media-body">
-                    Cameron 
                     <p>
                         <span class="icon icon-star-filled profile-star black"></span>
                         <span class="icon icon-star-filled profile-star black"></span> 

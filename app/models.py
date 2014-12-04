@@ -284,10 +284,16 @@ class User(Base):
 
     #TODO: Add more as needed
     def as_dict(self):
+        
+        #if no uploaded photo, use base
+        profile_url = self.profile_url
+        if not self.profile_url:
+            profile_url = '/static/img/default-photo.jpg'
+        
         u_dict = {
             'server_id': self.id,
             'name': self.get_first_name(),
-            'profile_url': self.profile_url,
+            'profile_url': profile_url,
         }
         return u_dict
 
@@ -309,8 +315,12 @@ class User(Base):
 
         return result 
 
-    def get_all_conversations(self, _dict=None):
+    def get_all_conversations(self, _dict=None, sorted_by_time=None):
         conversations = self.conversations
+
+        if sorted_by_time:
+            conversations = sorted(conversations, lambda c:c.get_last_message_time())
+
         if _dict:
             conversations = {
                 'conversations': [conversation.as_dict() for conversation in conversations]
@@ -351,12 +361,23 @@ class User(Base):
                 accepted_requests.append(_request)
         return accepted_requests
 
-    # Go through user.conversations, filter out the
+    # Go through guru.conversations, filter out the
     # active ones.
-    def get_scheduled_sessions(self):
+    def get_scheduled_sessions_guru(self):
         scheduled_sessions = []
         for c in self.conversations:
-            if c.is_active:
+            if c.is_active and self == c.guru:
+                all_requests_by_date = sorted(c.requests, 
+                    key=lambda c:c.time_created, reverse=True)
+                scheduled_sessions.append(all_requests_by_date[0])
+        return scheduled_sessions
+
+    # Go through guru.conversations, filter out the
+    # active ones.
+    def get_scheduled_sessions_student(self):
+        scheduled_sessions = []
+        for c in self.conversations:
+            if c.is_active and self == c.student:
                 all_requests_by_date = sorted(c.requests, 
                     key=lambda c:c.time_created, reverse=True)
                 scheduled_sessions.append(all_requests_by_date[0])
@@ -489,11 +510,18 @@ class Conversation(Base):
     def get_conversation(_id):
         return Conversation.query.get(_id)
 
+    #Returns datetime of the last message sent in the convo
+    def get_last_message_time(self):
+        return self.get_last_message().write_time
+
+    def get_last_message(self):
+        return sorted(self.messages, key=lambda m:m.write_time)[-1]
+
     def get_all_messages(self, _dict=False, sorted_by_time=False):
         messages = self.messages
 
         if sorted_by_time:
-            messages = sorted(messages, key=lambda m:m.time_created)
+            messages = sorted(messages, key=lambda m:m.write_time)
 
         if _dict:
             messages = {
@@ -512,6 +540,11 @@ class Conversation(Base):
             'is_active': self.is_active,
             'message_count': len(self.messages),
         }
+
+        last_message = self.get_last_message()
+        if last_message: 
+            c_dict['last_message'] = last_message.as_dict()
+
         return c_dict
 
     def __init__(self, skill, guru, student):
@@ -695,18 +728,25 @@ class Tag(Base):
 class Payment(Base):
     __tablename__ = 'payment'
     id = Column(Integer, primary_key = True)
+    
+    #in use as of 12/4/14
     student_id = Column(Integer)
     tutor_id = Column(Integer)
     request_id = Column(Integer)
     skill_id = Column(Integer)    
-    time_amount = Column(Float)
-    tutor_rate = Column(Float)
-    student_paid_amount = Column(Float)
-    tutor_received_amount = Column(Float)
     time_created = Column(DateTime)
     stripe_charge_id = Column(String)
     stripe_recipient_id = Column(String)
+    student_paid_amount = Column(Float)
+    tutor_received_amount = Column(Float)
+    
+    #new
+    num_minutes = Column(Integer)
+    num_hours = Column(Integer)
 
+
+    #deprecated, but need to migrate shit from production
+    tutor_rate = Column(Float)
     student_description = Column(String)
     tutor_description = Column(String)
     tutor_confirmed = Column(Boolean)

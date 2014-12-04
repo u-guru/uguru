@@ -55,8 +55,7 @@ def home():
     
     #Check if user is a student & has pending requests
     pending_requests = user.get_pending_requests()
-    if pending_requests:
-        pending_request_id = pending_requests[0].id
+    if pending_requests and pending_requests[0].get_student() == user:
         return redirect( \
             url_for(endpoint='request_by_id', _id=pending_request_id))
 
@@ -95,8 +94,10 @@ def my_tutors():
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
+
+    print user.get_all_conversations()
     
-    return render_template('web/my_tutors.html')
+    return render_template('web/my_tutors.html', user=user)
 
 @app.route('/m/login/')
 def m_login():
@@ -210,6 +211,7 @@ def add_courses():
 
 @app.route('/c/<_id>')
 @app.route('/conversation/<_id>')
+@app.route('/guru/conversation/<_id>')
 def m_messages(_id):
 
     user = api.current_user()
@@ -218,7 +220,7 @@ def m_messages(_id):
 
     convo = Conversation.query.get(_id)
     
-    return render_template('web/messages.html', convo=convo)
+    return render_template('web/messages.html', convo=convo, user=user)
 
 @app.route('/guru/settings/')
 @app.route('/m/settings/')
@@ -314,8 +316,9 @@ def request_by_id(_id):
         return redirect(url_for('home'))
 
     #if Guru shouldn't see this.
-    if not user == _request.get_student() and not _request.is_tutor_involved:
-        return redirect(url_for('home'))
+    if not user == _request.get_student() and not _request.is_tutor_involved():
+        flash("Sorry! You don't have access to this page.")
+        return redirect(url_for('m_guru'))
 
     #Different page, same validation, might as well put in same route? 
     if 'confirm_request' in request.url:

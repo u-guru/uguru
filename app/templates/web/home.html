@@ -1,5 +1,5 @@
 {% extends 'web/base.html' %}
-{% set scheduled_sessions = user.get_scheduled_sessions() %}
+{% set scheduled_sessions = user.get_scheduled_sessions_student() %}
 
 {% block main_header %}
 <header class="bar bar-nav">
@@ -55,6 +55,7 @@
   </a>
 
   {% include 'web/snippets/flash_alerts.html'%}
+  {{show_all_components(user, student_mode)}}
 
 </div><!-- /.content -->
 {% endblock %}

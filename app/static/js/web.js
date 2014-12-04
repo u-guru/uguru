@@ -41,7 +41,6 @@ $(document).ready(function() {
 
     $('body').on('touchstart', '#cancel-link', function() {
         var request_id = ($('#cancel-link').data().requestId).toString();
-        alert(request_id);
         
         payload = JSON.stringify({
             action:'cancel',
@@ -147,6 +146,36 @@ $(document).ready(function() {
         });
     });
 
+    $('body').on('touchstart', '.guru-confirm-session', function() {
+        
+        var request_id = ($(this).data().requestId).toString();
+        var num_hours = parseInt($('#confirm-hours-' + request_id).val(), 10);
+        var num_minutes = parseInt($('#confirm-minutes-' + request_id).val(), 10);
+
+        payload = JSON.stringify({
+            action:'guru-confirm',
+            minutes: num_minutes,
+            hours: num_hours
+        });
+
+        $.ajax({
+            url: '/api/v1/requests/' + request_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/m/guru/"
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+
+    //Student accepts a guru
     $('body').on('touchstart', '#student-accept-guru-link', function() {
         
         url_components = window.location.pathname.split( '/' );
@@ -165,6 +194,36 @@ $(document).ready(function() {
                 window.PUSH({
                     transition : "fade",
                     url : "/home/"
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+
+    //Send Message
+    $('body').on('touchstart', '#send-message-link', function() {
+        
+        var convo_id = ($('#message-content-div').data().convoId).toString();
+        var user_id = ($('#message-content-div').data().userId).toString();
+
+        post_url = '/api/v1/users/' + user_id + '/conversations/' +
+            convo_id + '/messages';
+
+        payload = JSON.stringify({
+            contents: $('#message-contents').val()
+        });
+
+        $.ajax({
+            url: post_url,
+            type: 'POST',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/guru/conversation/" + convo_id
                 });
             },
             error: function (request) {
@@ -259,6 +318,7 @@ $(document).ready(function() {
 
     });
 });
+// end document ready
 
 function updateMainTabBar(){
     if ($('.should-hide-tab-bar').length > 0) {

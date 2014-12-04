@@ -3,8 +3,7 @@
     {% set user_agent_is_desktop = True %}
     {% from 'web/macros/desktop.html' import desktop_header, desktop_footer %}
 {% endif %}
-{% set student_mode = not ('guru' in request.url) %}
-
+{% set student_mode = not ('/guru/' in request.url) %}
 {% from 'web/macros/components.html' import show_all_components %}
 
 <html>

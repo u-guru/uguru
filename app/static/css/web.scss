@@ -18,12 +18,20 @@ nav.bar-tab {
   
 }
 
-#type-message {
+#message-contents {
   width:78%
 }
 
 .message-face, .table-view-face {
-  height:40px;
+  // height:40px;
+  width: 42px;
+  height: 42px;
+  border-radius:20px;
+  border:2px solid white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+
 }
 
 .guru-photo {
@@ -93,6 +101,10 @@ nav.bar-tab {
     font-weight: bold;
 }
 
+.no-border-top {
+  border-top:0;
+}
+
 .black {
     color:black !important;
 }
@@ -121,4 +133,8 @@ input#credit-card-num.amex {
 
 .table-view.no-margin {
   margin-top:0px !important;
+}
+
+.auto-height {
+  height:auto;
 }
