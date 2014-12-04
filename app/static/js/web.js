@@ -1,35 +1,4 @@
-//JS Helper functions 
-function hasClass(element, cls) {
-    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
-}
-
-function addToggleListener(toggle_id, toggle_text_id, toggle_label_text_on, toggle_label_text_off) {
-    var elementExists = document.getElementById(toggle_id);
-    if (! elementExists) {
-        return;
-    }
-    document.querySelector('#' + toggle_id).addEventListener('toggle',
-        function() {
-            if (hasClass(this, 'active')) {
-                document.getElementById(toggle_text_id).innerHTML = toggle_label_text_on;
-            } else {
-                document.getElementById(toggle_text_id).innerHTML = toggle_label_text_off;
-            }
-        }
-    );
-}
-
-function show_element(element_id) {
-    document.getElementById(element_id).style.display = 'block';
-}
-
-function hide_element(element_id) {
-    document.getElementById(element_id).style.display = 'none';
-}
-
-addToggleListener('asap-toggle', 'asap-toggle-text', 'I need help ASAP', 'I need help later');
-
-addToggleListener('remote-toggle', 'remote-toggle-text', 'In-person or online', 'In-person tutor only');
+// JS Helper functions //
 
 // Main Tab Bar Function
 function updateMainTabBar(){
@@ -53,27 +22,29 @@ function updateAllBars() {
     updateMessageFooter();
 }
 
-// jQuery Shit
+// Begin jQuery Shit //
 $(document).ready(function() {
-
     updateAllBars();
+    
     window.addEventListener('push', function(){
         updateAllBars();
     });
     
     //Logout link
-    $('#logout-link').on('touchstart', function(){
-        window.location.replace('/m/logout/')
+    //TODO: Make this a PUSH EVENT
+    $('body').on('touchstart', '#logout-link', function(){
+        window.location.replace('/m/logout/');
     });
 
+
+
     // Login Page
-    $('#login-link').on('touchstart', function(){
+    $('body').on('touchstart', '#login-link', function(){
 
         payload = JSON.stringify({
             email:$('#login-form #email-field').val(),
             password:$('#login-form #password-field').val()
         });
-
         $.ajax({
             url: '/api/v1/login',
             type: 'POST',
@@ -91,7 +62,91 @@ $(document).ready(function() {
         });
     });
 
-    $('#submit-request-link').on('touchstart', function(){
+    //Student cancels a request
+
+    $('body').on('touchstart', '#cancel-link', function() {
+        url_components = window.location.pathname.split( '/' );
+        request_id = url_components[url_components.length - 2];
+        
+        payload = JSON.stringify({
+            action:'cancel',
+            description:$('#cancel-request-description').val()
+        });
+
+        $.ajax({
+            url: '/api/v1/requests/' + request_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/guru/"
+                });
+                $('#cancelModal').removeClass('active');
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+
+    $('body').on('touchstart', '#guru-accept-link', function() {
+        url_components = window.location.pathname.split( '/' );
+        request_id = url_components[url_components.length - 2];
+        
+        payload = JSON.stringify({
+            action:'guru-accept',
+            description:$('#guru-accept-description').val()
+        });
+
+        $.ajax({
+            url: '/api/v1/requests/' + request_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/m/guru/"
+                });
+                $('#cancelModal').removeClass('active');
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+
+    $('body').on('touchstart', 'a.guru-reject-link', function() {
+        url_components = window.location.pathname.split( '/' );
+        request_id = url_components[url_components.length - 2];
+        
+        payload = JSON.stringify({
+            action:'guru-reject',
+            description:$('#guru-reject-description').val()
+        });
+
+        $.ajax({
+            url: '/api/v1/requests/' + request_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/m/guru/"
+                });
+                $('#reject-request-modal').removeClass('active');
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+
+    //Student creates a request
+    $('body').on('touchstart', '#submit-request-link', function(){
         payload = JSON.stringify({
             'skill_name': 'CS10',
             'description': $('#request-description').val(),
@@ -103,21 +158,30 @@ $(document).ready(function() {
             'start_time': (new Date().getTime()).toString(),
         });
 
-        console.log(payload);
         $.ajax({
             url: '/api/v1/requests',
             type: 'POST',
             contentType: 'application/json',
             data: payload,
             success: function(request){
-                console.log(request);                
-                if (request.errors) {
-                    alert(request.errors[0])
+                console.log(request);
+                if (request.errors && request.redirect) {
+                    if (request.redirect == 'no-tutors') {
+                        window.PUSH({
+                            transition : "fade",
+                            url : "/show/no-tutors/"
+                        });
+                    }
                 }
-                // window.PUSH({
-                //     transition : "slide-in",
-                //     url : "/home/"
-                // });
+                else {
+                    window.PUSH({
+                        transition : "fade",
+                        url : "/request/" + request['server_id'] +'/'
+                    });
+                }
+
+                //Close modal
+                $('#requestModal').removeClass('active');
             },
             error: function (request) {
                 alert(request.responseJSON['errors']);
@@ -126,8 +190,7 @@ $(document).ready(function() {
     });
 
     // Signup Page Form
-    $('#signup-link').on('touchstart', function(){
-
+    $('body').on('touchstart', '#signup-link', function(){
         payload = JSON.stringify({
             name     : $('#signup-form #name-field').val(),
             email    : $('#signup-form #email-field').val(),
