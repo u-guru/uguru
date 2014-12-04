@@ -113,6 +113,8 @@ def request_by_id_web_api(request_id):
     if not user:
         return json_response(http_code=401)
 
+    print request.json
+
     #Get request by ID
     _request = Request.get_request_by_id(request_id)
 
@@ -139,7 +141,6 @@ def request_by_id_web_api(request_id):
         # if student cancels request
         if put_action == 'cancel':
             expected_parameters = ['action', 'description']
-            print request.json
             #invalid payload
             if not request_contains_all_valid_parameters(request_json, expected_parameters):
                 return json_response(422)
@@ -153,6 +154,28 @@ def request_by_id_web_api(request_id):
 
         if put_action == 'guru-reject':
             _request.process_tutor_reject(user)
+
+        if put_action == 'student-accept':
+            expected_parameters = ['action', 'description']
+            
+            #invalid payload
+            if not request_contains_all_valid_parameters(request_json, expected_parameters):
+                return json_response(422)
+            
+            _request.process_student_acceptance(tutor)
+
+        #If student rejects guru
+        if put_action == 'student-reject':
+
+            expected_parameters = ['action', 'description']
+            
+            #invalid payload
+            if not request_contains_all_valid_parameters(request_json, expected_parameters):
+                return json_response(422)
+
+            print request_json
+
+            # _request.process_studnet_reject(tutor)
             
         request_return_dict = _request.get_return_dict()
         return json_response(http_code = 200, return_dict = request_return_dict)
@@ -322,9 +345,26 @@ def api_login():
 def users_by_id_web_api(user_id):
     
     if request.method == 'PUT':
-        if request_contains_some_valid_parameters(request_json, expected_parameters):
+
+        request_json = request.json
+
+        user = current_user()
+        if not user:
+            return json_response(http_code=401)
+
+        #Check if user_id is session['user_id'] 
+        if int(user_id) != user.id:
+            return json_response(http_code=403)
+
+        if not request_json:
+            return json_response(http_code=422)
+
+        if request_json.get('add_card'):
             pass
-    pass
+        
+    return json_response(400)
+        
+    
 
 # List of active requests for a user Route 
 # GET returns a list of active requests
@@ -2350,6 +2390,7 @@ def get_time_ranges(week_object, owner):
         arr_ranges.append([r.week_day, r.start_time, r.end_time])
     return arr_ranges
 
+#TODO, write this much better
 def create_stripe_customer(token, user):
     try:
         customer = stripe.Customer.create(

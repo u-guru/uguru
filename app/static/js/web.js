@@ -1,24 +1,3 @@
-function updateMainTabBar(){
-    if ($('.should-hide-tab-bar').length > 0) {
-        $('#main-bar-tab').hide();
-    }else{
-        $('#main-bar-tab').show();
-    }
-}
-
-function updateMessageFooter(){
-    if ($('.should-hide-message-bar').length > 0) {
-        $('#footer-message-bar').hide();
-    }else{
-        $('#footer-message-bar').show();
-    }
-}
-
-function updateAllBars() {
-    updateMainTabBar();
-    updateMessageFooter();
-}
-
 // jQuery Shit
 $(document).ready(function() {
     updateAllBars();
@@ -141,6 +120,33 @@ $(document).ready(function() {
         });
     });
 
+    $('body').on('touchstart', '#student-reject-guru-link', function() {
+        url_components = window.location.pathname.split( '/' );
+        request_id = url_components[url_components.length - 2];
+        
+        payload = JSON.stringify({
+            action:'student-reject',
+            description:$('#student-reject-guru-description').val()
+        });
+
+        $.ajax({
+            url: '/api/v1/requests/' + request_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/request/" + request_id + '/'
+                });
+                $('#student-reject-tutor-modal').removeClass('active');
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+
     //Student creates a request
     $('body').on('touchstart', '#submit-request-link', function(){
         payload = JSON.stringify({
@@ -160,7 +166,6 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: payload,
             success: function(request){
-                console.log(request);
                 if (request.errors && request.redirect) {
                     if (request.redirect == 'no-tutors') {
                         window.PUSH({
@@ -209,4 +214,77 @@ $(document).ready(function() {
             }
         });
     });
+
+    $('body').on('touchstart', '#add-card-link', function(){
+        if (!$('input#card-num').val() || !$('input#exp-date').val()) {
+            alert('Please enter all fields');
+            return;
+        }
+        card_number  = $('input#card-num').val();
+        expiration_date = $('input#exp-date').val();
+        month = parseInt(expiration_date.split('/')[0], 10);
+        year = parseInt(expiration_date.split('/')[1], 10);
+
+        Stripe.card.createToken({
+            number : card_number,
+            exp_month : month,
+            exp_year : year,
+        }, stripeAddCreditCardHandler);
+
+    });
 });
+
+function updateMainTabBar(){
+    if ($('.should-hide-tab-bar').length > 0) {
+        $('#main-bar-tab').hide();
+    }else{
+        $('#main-bar-tab').show();
+    }
+}
+
+function updateMessageFooter(){
+    if ($('.should-hide-message-bar').length > 0) {
+        $('#footer-message-bar').hide();
+    }else{
+        $('#footer-message-bar').show();
+    }
+}
+
+function updateAllBars() {
+    updateMainTabBar();
+    updateMessageFooter();
+}
+
+function stripeAddCreditCardHandler(status, response) {
+
+    var $form = $('#payment-form');
+    if (response.error) {
+            // Show the errors on the form    
+            alert(response.error.message);
+            return;
+        } else {
+            var token = response.id;
+            var data = {'add_card':token};
+            var user_id = ($('#add-card-link').data().userId).toString();
+            $.ajax({
+                type: "PUT",
+                contentType: 'application/json;charset=UTF-8',
+                url: '/api/v1/users/' +  user_id,
+                data: JSON.stringify(data),
+                dataType: "json",
+                success: function(request){
+
+                    url_components = window.location.pathname.split( '/' );
+                    request_id = url_components[url_components.length - 2];
+
+                    window.PUSH({
+                        transition : "fade",
+                        url : "/request/" + request_id + '/'
+                    });
+                },
+                error: function (request) {
+                    alert(request.responseJSON['errors']);
+                }
+            });
+        }
+    }

@@ -1,4 +1,5 @@
 {% extends 'web/base.html' %}
+{% from 'web/macros/request.html' import request_details, student_reject_modal, student_accept_modal %}
 {% set is_student = (user.id == request_dict['student']['server_id'])%}
 {% set is_guru = not is_student %}
 
@@ -10,43 +11,64 @@
 
 {% block main_content %}
 <div class="content {% if not is_student %}should-hide-tab-bar{%endif%} should-hide-message-bar">
-    <ul class="table-view">
-      <li class="table-view-cell">
-        {{request_dict['skill_name']}}
-      </li>
-      <li class="table-view-cell">
-        asd
-        {{request_dict['location']}}
-      </li>
-      <li class="table-view-cell">
-        Just <b>$5</b> for every <b>15 minutes</b>
-      </li>
-    </ul>
-
+    
     {% if is_student %}
+      {% set available_guru = request_dict.get('interested_tutors') %}
 
-    <a class='btn btn-positive btn-block content-pa' href='#cancelModal'> 
-        Cancel Request
-    </a>
+      {% if available_guru %}
+        {% set guru = available_guru[0]%}
+          <ul class='table-view'>
+            <li class="table-view-cell media">
+                <a class="navigate-right" href="/p/{{guru['server_id']}}/" data-transition='slide-in'>
+                    <img class="media-object pull-left table-view-face" src="{{guru['profile_url']}}">
+                    <div class="media-body">
+                        {{guru['name']}} can help!
+                        <p class='red-text'>
+                            Expires in 5 minutes
+                        </p>
+                    </div>
+                    <button class="btn btn-link">Profile</button>
+                </a>
+            </li>
+          </ul>
+          {{request_details(request_dict, is_student)}}
+          <a class='btn btn-positive btn-block' href='#student-accept-tutor-modal'> 
+                Accept 
+          </a>
+          <a class='btn btn-negative btn-block' href='#student-reject-tutor-modal' > 
+                Reject
+          </a>
+          {{student_reject_modal(request_dict)}}
+          {{student_accept_modal(request_dict, user)}}
+      
+      {% else %}
 
-    <div id="cancelModal" class="modal">
-      <header class="bar bar-nav">
-        <a class="icon icon-close pull-right" href="#cancelModal"></a>
-        <h1 class="title">Cancel {{request_dict['skill_name']}} Request</h1>
-      </header>
+        {{request_details(request_dict, is_student  )}}
+        <a class='btn btn-positive btn-block' href='#cancelModal'> 
+            Cancel Request
+        </a>
 
-      <div class="content">
-        <div class='content-padded'></h6>
-          <form>
-            <textarea id='cancel-request-description' placeholder='Please tell us why! Help us make your future experience be the best as possible.'rows="5"></textarea>
-            <a class='btn btn-positive btn-block' href='#' id='cancel-link'> 
-              Submit 
-            </a>
-          </form>
+        <div id="cancelModal" class="modal">
+          <header class="bar bar-nav">
+            <a class="icon icon-close pull-right" href="#cancelModal"></a>
+            <h1 class="title">Cancel {{request_dict['skill_name']}} Request</h1>
+          </header>
+
+          <div class="content">
+            <div class='content-padded'></h6>
+              <form>
+                <textarea id='cancel-request-description' placeholder='Please tell us why! Help us make your future experience be the best as possible.'rows="5"></textarea>
+                <a class='btn btn-positive btn-block' href='#' id='cancel-link'> 
+                  Submit 
+                </a>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+        {% endif %}
+
       {% endif %}
+      <!-- end student case -->
 
       {% if is_guru %}
       <a class='btn btn-positive btn-block' href='#' id='guru-accept-link'> 

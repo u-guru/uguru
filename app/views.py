@@ -152,14 +152,18 @@ def request_form():
 
     return render_template('web/request_form.html')
 
-@app.route('/add_payment/')
-def add_payment():
+@app.route('/add_payment/', defaults={'r_id': None})
+@app.route('/add_payment/<r_id>/')
+def add_payment(r_id=None):
 
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
 
-    return render_template('web/add_payment.html')
+    return render_template('web/add_payment.html', \
+        stripe_key=stripe_keys['publishable_key'],\
+        redirect_request_id = r_id,
+        user=user)
 
 @app.route('/add_cash_out/')
 def add_cash_out():
@@ -207,15 +211,25 @@ def m_settings():
     return render_template('web/settings.html')
 
 
-@app.route('/p/')
-@app.route('/profile/')
-def profile():
+@app.route('/p/<_id>/')
+@app.route('/profile/<_id>/')
+def profile(_id):
 
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
+
+    #Make sure user can see this tutor profile
+    results = user.has_incoming_tutor_for_request(int(_id))
+    if not results:
+        flash('Sorry, you dont have access to this page!')
+        return redirect(url_for('m_home'))
     
-    return render_template('web/profile.html')
+    guru = results[0]
+    _request = results[1]
+
+    return render_template('web/profile.html', \
+        student=user, guru=guru, _request=_request)
 
 
 @app.route('/guru/rating/')
@@ -279,10 +293,11 @@ def request_by_id(_id):
         flash('Sorry! The student has canceled this request')
         return redirect(url_for('home'))
 
-    if not user == _request.get_student() and not _request.is_tutor_active(user) \
-        and not _request.is_canceled():
+    #if Guru shouldn't see this.
+    if not user == _request.get_student() and not _request.is_tutor_involved:
         return redirect(url_for('home'))
     
+
     return render_template('web/request_details.html', user=user,\
      request_dict=_request.get_return_dict())
 
