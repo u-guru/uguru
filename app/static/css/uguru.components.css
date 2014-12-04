@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url(../fonts/HelveticaNeue-Medium.otf);
+}
+ 
+
 /* home */
 .bar {
 background-color: #2B3234;
@@ -35,28 +41,68 @@ header .uguru-logo {
     /* button */
         /* positive_negative_big */
 .btn-positive {
-color: #fff;
-background-color: #69B3A5;
-border: 1px solid #69B3A5;
+    color: #fff;
+    background-color: #69B3A5;
+    border: 1px solid #69B3A5;
+    margin-left: 10px;
+    margin-right: 5px;
 }
 
 .btn-negative {
-    background-color: #69B3A5;
-    border: 1px solid #69b2a5;
+    color: #7b8486;
+    background-color: #4e5c5f;
+    border: 1px solid #7b8486;
+    margin-left: 10px;
+    margin-right: 5px;
 }
         /* positive_negative_half */
-.btn-positive-half {
-color: #fff;
-background-color: #69B3A5;
-border: 1px solid #69B3A5;
-width: 50%;
+.btn.btn-positive.btn-block.sign-up {
+    color: #fff;
+    background-color: #69B3A5;
+    border: 1px solid #69B3A5;
+    width: 45%;
+    margin-left: 10px;
+    margin-right: 5px;
+    float: left;
+    border-radius: 2px;
+    font-family: 'HelveticaNeue';
 }
 
-.btn-negative-half {
-color: #7b8486;
-background-color: #4e5c5f;
-border: 1px solid #7b8486;
-width: 50%;
+
+.btn.btn-positive.btn-block.login {
+    color: #fff;
+    background-color: #69B3A5;
+    border: 1px solid #69B3A5;
+    width: 45%;
+    margin-left: 5px;
+    margin-right: 10px;
+    float: right;
+    border-radius: 2px;
+    font-family: 'HelveticaNeue';
+}
+
+.btn.btn-positive.btn-block.accept {
+    color: #fff;
+    background-color: #69B3A5;
+    border: 1px solid #69B3A5;
+    width: 45%;
+    margin-left: 10px;
+    margin-right: 5px;
+    float: left;
+    border-radius: 2px;
+    font-family: 'HelveticaNeue';
+}
+
+.btn.btn-positive.btn-block.decline {
+    color: #7b8486;
+    background-color: #4e5c5f;
+    border: 1px solid #7b8486;
+    width: 45%;
+    margin-left: 5px;
+    margin-right: 10px;
+    float: right;
+    border-radius: 2px;
+    font-family: 'HelveticaNeue';
 }
 
         /* positive_negative.active */
