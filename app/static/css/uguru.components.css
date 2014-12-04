@@ -32,6 +32,34 @@ header .uguru-logo {
     color: #48b7a6;
 }
 
+    /* button */
+        /* positive_negative_big */
+.btn-positive {
+color: #fff;
+background-color: #69B3A5;
+border: 1px solid #69B3A5;
+}
+
+.btn-negative {
+    background-color: #69B3A5;
+    border: 1px solid #69b2a5;
+}
+        /* positive_negative_half */
+.btn-positive-half {
+color: #fff;
+background-color: #69B3A5;
+border: 1px solid #69B3A5;
+width: 50%;
+}
+
+.btn-negative-half {
+color: #7b8486;
+background-color: #4e5c5f;
+border: 1px solid #7b8486;
+width: 50%;
+}
+
+        /* positive_negative.active */
 .btn-positive.active, .btn-positive:active {
 color: #fff;
 background-color: #69B3A5;
@@ -119,14 +147,15 @@ color: #ffffff;
 
 
 /* support */
-.btn-positive {
-color: #fff;
-background-color: #69B3A5;
-border: 1px solid #69B3A5;
-}
 
 
 /* login */
 body {
     color: #636c6d
+}
+
+.input-group {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 90px;
 }
