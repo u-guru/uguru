@@ -1,6 +1,8 @@
 @font-face {
-    font-family: 'HelveticaNeue';
+    font-family: 'HelveticaNeue-Medium';
     src: url(../fonts/HelveticaNeue-Medium.otf);
+    font-family: 'HelveticaNeue-Light';
+    src: url(../fonts/HelveticaNeue-Light.otf);  
 }
  
 
@@ -45,7 +47,10 @@ header .uguru-logo {
     background-color: #69B3A5;
     border: 1px solid #69B3A5;
     margin-left: 10px;
-    margin-right: 5px;
+    margin-right: 10px;
+    float: left;
+    border-radius: 2px;
+    font-family: 'HelveticaNeue-Medium';
 }
 
 .btn-negative {
@@ -65,7 +70,7 @@ header .uguru-logo {
     margin-right: 5px;
     float: left;
     border-radius: 2px;
-    font-family: 'HelveticaNeue';
+    font-family: 'HelveticaNeue-Medium';
 }
 
 
@@ -78,7 +83,7 @@ header .uguru-logo {
     margin-right: 10px;
     float: right;
     border-radius: 2px;
-    font-family: 'HelveticaNeue';
+    font-family: 'HelveticaNeue-Medium';
 }
 
 .btn.btn-positive.btn-block.accept {
@@ -90,7 +95,7 @@ header .uguru-logo {
     margin-right: 5px;
     float: left;
     border-radius: 2px;
-    font-family: 'HelveticaNeue';
+    font-family: 'HelveticaNeue-Medium';
 }
 
 .btn.btn-positive.btn-block.decline {
@@ -102,14 +107,26 @@ header .uguru-logo {
     margin-right: 10px;
     float: right;
     border-radius: 2px;
-    font-family: 'HelveticaNeue';
+    font-family: 'HelveticaNeue-Medium';
 }
 
-        /* positive_negative.active */
-.btn-positive.active, .btn-positive:active {
-color: #fff;
-background-color: #69B3A5;
-border: 1px solid #69B3A5;
+    /* form */
+.input-row {
+    height: 48px;
+}
+
+.input-row label {
+    line-height: 2.7;
+    font-family: 'HelveticaNeue-Light';
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.input-group input {
+    height: 48px;
+    font-family: 'HelveticaNeue-Light';
+    font-size: 12px;
+
 }
 
 /* nav */
@@ -170,11 +187,13 @@ border: 1px solid #69B3A5;
 
 .title {
   color: #fff;
+  font-family: 'HelveticaNeue-Light'
 }
 
 /* request */
 .bar-nav .btn-link, .tab-item.active, .tab-item:active {
     color: #69B3A5;
+    font-family: 'HelveticaNeue-Light'
 }
 
 .table-view {
