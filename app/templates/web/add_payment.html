@@ -2,9 +2,13 @@
 
     {% block main_header %}
     <header class="bar bar-nav">
-      <h1 class="title">Add Card</h1>
+      {% if not user.customer_id %}
+        <h1 class="title">Add Card</h1>
+      {% else %}
+        <h1 class="title">Add a New Card</h1>
+      {% endif %}
       {% if redirect_request_id %}
-        <a class="icon icon-left-nav pull-left" href="/request/{{redirect_request_id}}/" data-transition="slide-out"></a>  
+        <a class="icon icon-left-nav pull-left" href="/confirm_request/{{redirect_request_id}}/" data-transition="slide-out"></a>  
       {% else %}
         <a class="icon icon-left-nav pull-left" href="/m/settings/" data-transition="slide-out"></a>
       {% endif %}

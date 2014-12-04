@@ -40,7 +40,7 @@
     {% block main_content %}
     {% endblock %}
 
-    {{show_all_components()}}
+    {{show_all_components(user)}}
 
     <!-- Add web app footer -->
     {% if user_agent_is_desktop %}

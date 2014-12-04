@@ -53,6 +53,11 @@ def home():
     if not user:
         return redirect(url_for('m_login'))
 
+    #Check if user is a guru & has accepted_requests
+    accepted_requests = user.get_accepted_requests()
+    if accepted_requests or user.skills:
+        return redirect(url_for('m_guru'))
+    
     #Check if user is a student & has pending requests
     pending_requests = user.get_pending_requests()
     if pending_requests:
@@ -60,12 +65,10 @@ def home():
         return redirect( \
             url_for(endpoint='request_by_id', _id=pending_request_id))
 
-    #Check if user is a tutor & has incoming_requests
-
     return render_template('web/home.html', user=user)
 
 @app.route('/m/guru/')
-def guru():
+def m_guru():
 
     user = api.current_user()
     if not user:
@@ -96,11 +99,20 @@ def m_login():
 
     user = api.current_user()
     if user:
+        
+        #if tutor
+        accepted_requests = user.get_accepted_requests()
+        if accepted_requests or user.skills:
+            return redirect(url_for('m_guru'))
+
+        # if student w/ requests
         pending_requests = user.get_pending_requests()
         if pending_requests:
             pending_request_id = pending_requests[0].id
             return redirect( \
                 url_for(endpoint='request_by_id', _id=pending_request_id))
+        
+        #Go to home page regardless
         else:
             return redirect(url_for('home'))
     
@@ -208,7 +220,9 @@ def m_settings():
     if not user:
         return redirect(url_for('m_login'))
     
-    return render_template('web/settings.html')
+    return render_template('web/settings.html',\
+        stripe_key=stripe_keys['publishable_key'],\
+        user=user)
 
 
 @app.route('/p/<_id>/')
@@ -272,8 +286,8 @@ def support():
 
 
 @app.route('/r/<_id>/')
-@app.route('/request/<_id>/')
 @app.route('/confirm_request/<_id>/')
+@app.route('/request/<_id>/')
 def request_by_id(_id):
 
     #if ID is not accurate, send back to home.
@@ -281,8 +295,6 @@ def request_by_id(_id):
     if not _request:
         
         return redirect(url_for('home'))
-
-    print _request.committed_tutors
 
     #if tutor (should take up the whole page)
     user = api.current_user()
@@ -300,8 +312,9 @@ def request_by_id(_id):
 
     #Different page, same validation, might as well put in same route? 
     if 'confirm_request' in request.url:
-        render_template('web/confirm_request.html', user=user,\
-        request_dict=_request.get_return_dict())
+        return render_template('web/confirm_request.html', user=user,\
+        request_dict=_request.get_return_dict(),\
+        stripe_key=stripe_keys['publishable_key'])
     
 
     return render_template('web/request_details.html', user=user,\

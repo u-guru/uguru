@@ -291,6 +291,9 @@ class User(Base):
         }
         return u_dict
 
+    def is_a_guru(self):
+        return self.approved_by_admin or self.is_a_tutor or self.skills
+
     #Create stripe customer
     def add_payment_card(self, token):
         from lib.payments import create_stripe_customer
@@ -331,7 +334,7 @@ class User(Base):
         return calc_avg_rating(self)
 
     # Go through user.outgoing_requests, filter the ones 
-    # that Gurus have accepted, but student hasn't
+    # that Gurus have accepted, but student hasn't.
     #HACKED for now, will change 
     def get_accepted_requests(self):
         accepted_requests = []
@@ -835,10 +838,14 @@ class Request(Base):
         student = User.get_user(self.student_id)
         skill = Skill.query.get(self.skill_id)
 
+        student.pending_requests.remove(self)
+        tutor.pending_requests.remove(self)
+
         #Create conversation
         conversation = Conversation.create_conversation(skill, tutor, student)
         conversation.requests.append(self)
         conversation.last_updated = datetime.now()
+        conversation.is_active = True
 
         try:
             db_session.commit()
@@ -848,6 +855,7 @@ class Request(Base):
 
     def process_tutor_acceptance(self, tutor):
         self.committed_tutors.append(tutor)
+        self.pending_tutor_id = tutor.id
         try:
             db_session.commit()
         except:

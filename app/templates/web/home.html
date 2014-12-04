@@ -1,4 +1,5 @@
 {% extends 'web/base.html' %}
+{% set scheduled_sessions = user.get_scheduled_sessions() %}
 
 {% block main_header %}
 <header class="bar bar-nav">
@@ -12,31 +13,22 @@
     <img class="media-object guru-photo" src="/static/img/guru-new.svg">
   </div>
 
+  {% if scheduled_sessions %}
   <ul class="table-view">
+    {% for _request in scheduled_sessions %}
+    {% set request_dict = _request.get_return_dict() %}
     <li class="table-view-cell media">
         <a class="navigate-right">
-            <img class="media-object pull-left table-view-face" src="/static/img/face3.png">
+            <img class="media-object pull-left table-view-face" src="{{request_dict['connected_tutor']['profile_url']}}">
             <div class="media-body">
-                CS10 Session with Peter
-                <p>Today at 8pm</p>
+                {{request_dict['skill_name']}} Session with {{request_dict['connected_tutor']['name']}}
+                <p>Starts Now</p>
             </div>
         </a>
     </li>
+    {% endfor %}
   </ul>
-
-  <ul class="table-view">
-    <li class="table-view-cell">
-      <a class="navigate-right" data-transition='slide-in' href='/request/'>
-        How it Works
-      </a>
-    </li>
-    <li class="table-view-cell">
-      <a class="navigate-right" data-transition='slide-in' href='/request/'>
-        <span class="badge">2</span>
-        Current Requests
-      </a>
-    </li>
-  </ul>
+  {% endif %}
 
   <a class="btn btn-positive btn-block" href="/request_form/" data-transition='slide-in'>
     Request Guru

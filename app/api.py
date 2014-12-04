@@ -156,11 +156,13 @@ def request_by_id_web_api(request_id):
             _request.process_tutor_reject(user)
 
         if put_action == 'student-accept':
-            expected_parameters = ['action', 'description']
+            expected_parameters = ['action']
             
             #invalid payload
             if not request_contains_all_valid_parameters(request_json, expected_parameters):
                 return json_response(422)
+
+            tutor = User.get_user(_request.pending_tutor_id)
             
             _request.process_student_acceptance(tutor)
 

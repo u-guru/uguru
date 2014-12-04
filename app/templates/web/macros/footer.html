@@ -1,4 +1,7 @@
-{% macro process_tab_bar(show=False, active_page=None, student_mode=True) -%}
+{% macro process_tab_bar(user, show=False, active_page=None, student_mode=True) -%}
+{% if user and user.is_a_guru() %}
+  {% set student_mode = False %}
+{% endif %}
 <nav id='main-bar-tab' class="bar bar-tab" style='display:none'>  
     {% if student_mode %}
     <a data-transition='fade' class="tab-item main-tab-item" href="/home/">
@@ -25,10 +28,6 @@
     <a data-transition='fade' class="tab-item main-tab-item" id='address-book' href="#">
       <span class="icon icon-person"></span>
       <span class="tab-label">My Profile</span>
-    </a>
-    <a class="tab-item" href="#">
-      <span class="icon icon-plus"></span>
-      <span class="tab-label">Cash Out</span>
     </a>
     <a data-transition='fade' class="tab-item main-tab-item" href="#">
       <span class="icon icon-gear"></span>

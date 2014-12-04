@@ -147,6 +147,32 @@ $(document).ready(function() {
         });
     });
 
+    $('body').on('touchstart', '#student-accept-guru-link', function() {
+        
+        url_components = window.location.pathname.split( '/' );
+        request_id = url_components[url_components.length - 2];
+        
+        payload = JSON.stringify({
+            action:'student-accept',
+        });
+
+        $.ajax({
+            url: '/api/v1/requests/' + request_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/home/"
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+
     //Student creates a request
     $('body').on('touchstart', '#submit-request-link', function(){
         payload = JSON.stringify({
@@ -278,9 +304,9 @@ function stripeAddCreditCardHandler(status, response) {
 
                     window.PUSH({
                         transition : "fade",
-                        url : "/request/" + request_id + '/'
+                        url : "/confirm_request/" + request_id + '/'
                     });
-                    $('#student-accept-tutor-modal').addClass('active');
+                    $('#add-card-modal').removeClass('active');
                     return;
                 },
                 error: function (request) {
