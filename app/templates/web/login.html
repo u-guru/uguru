@@ -1,38 +1,24 @@
 {% extends 'web/base.html' %}
-{% from 'web/macros/modals.html' import home_signup_modal, home_login_modal %}
+{% block main_content %}
 
 {% block main_header %}
 <header id='header-bar' class="bar bar-nav no-border-bottom login-header">
+  <a class="icon icon-left pull-left" href='/m/welcome/' data-transition='slide-out'></a>
+    <h1 class="title">Login</h1>
 </header>
 {% endblock %}
 
-{% block main_content %}
-<div class="content login-content should-hide-message-bar should-hide-tab-bar">
-    <div class='center home-guru-container'>
-        <img class='home-guru' src="/static/img/hip_guru.svg"></img>
-    </div>
-    <h1 id='uguru-home-text'class='center light-green-text open-sans-bold'> uguru </h1>
-    <div class='center home-guru-btn-container'>
-        <a data-transition='fade' href="#signup-modal">
-            <button class="btn btn-positive btn-block sign-up">Sign up</button>
-        </a>
-        <a data-transition='fade' href="#login-modal">
-            <button class="btn btn-positive btn-block login">Log in</button>
-        </a>
-        <img src='/static/img/fb-signup-btn.png' width='94%' height='50px'></img>
-        <p class='content-padded'> Uguru will NEVER post to your Facebook. </p>
-    </div>
+<div class="content should-hide-message-bar should-hide-tab-bar">
+    <form class="input-group" id="login-form" >
+      <div class='input-row'>
+          <label>EMAIL</label>
+          <input href='#login-modal' type="email" id="email-field" placeholder="your email"></input>
+      </div>
+      <div class='input-row'>
+          <label>PASSWORD</label>
+          <input href='#signup-modal' type="password" id="password-field" placeholder="Password"></input>
+      </div>
+  </form>
+  <a class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="login-link">Login</a>
 </div>
-
-{{home_signup_modal()}}
-{{home_login_modal()}}
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css'>
-<script class='content-js'>
-    $('.login-content').css('background-color','white');
-    $('.login-header').css('background-color', 'white');
-    $(".login-header").css("box-shadow", "none");
-    $(".login-header").hide();
-</script>
 {% endblock %}

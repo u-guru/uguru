@@ -1,0 +1,27 @@
+{% extends 'web/base.html' %}
+
+{% block main_content %}
+<div class="content login-content should-hide-message-bar should-hide-tab-bar">
+    <div class='center home-guru-container'>
+        <img class='home-guru' src="/static/img/hip_guru.svg"></img>
+    </div>
+    <h1 id='uguru-home-text'class='center light-green-text open-sans-bold'> uguru </h1>
+    <div class='center home-guru-btn-container'>
+        <a data-transition='slide-in' href='/m/signup/'>
+            <button class="btn btn-positive btn-block sign-up">Sign up</button>
+        </a>
+        <a data-transition='slide-in' href='/m/login/'>
+            <button class="btn btn-positive btn-block login">Log in</button>
+        </a>
+        <img src='/static/img/fb-signup-btn.png' width='94%' height='50px'></img>
+        <p class='content-padded'> Uguru will NEVER post to your Facebook. </p>
+    </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    // console.log("balls");
+  });
+</script>
+
+{% endblock %}

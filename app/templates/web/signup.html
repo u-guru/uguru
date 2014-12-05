@@ -1,21 +1,16 @@
 {% extends 'web/base.html' %}
 
 {% block main_header %}
-<header class="bar bar-nav">
-    <a class="btn btn-link pull-right" data-transition='slide-in' href="#" id="signup-link">
-        <strong>Submit</strong>
-    </a>
-    <h1 class="title">uGuru Signup</h1>
+<header id='header-bar' class="bar bar-nav no-border-bottom login-header">
+  <a class="icon icon-left pull-left" href='/m/welcome/' data-transition='slide-out'></a>
+  <h1 class="title">Sign Up</h1>
 </header>
 {% endblock %}
 
 {% block main_content %}
+
+
 <div class="content should-hide-message-bar should-hide-tab-bar">
-    <h6>
-        <div class='center'>
-            <img class="" src="/static/img/guru-new.svg"></img>
-        </div>
-    </h6>
     <form class="input-group" id="signup-form">
         <div class='input-row'>
             <label>First</label>
@@ -34,14 +29,7 @@
             <input type="password" id="password-field" placeholder="Password"></input>
         </div>
     </form>
-    <div style="text-align:center;">
-
-        <button class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="signup-link">Signin</button>
-        <br>
-        <a href="/m/login" data-transition="fade">
-            <button class="btn">Already a user? Login here.</button>
-        </a>
-    </div>
+    <a class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="signup-link">Signin</a>
 </div>
 
 {% endblock %}
