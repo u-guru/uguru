@@ -69,6 +69,10 @@ def m_guru():
     if not user:
         return redirect(url_for('m_login'))
 
+    if user.pending_ratings:
+        rating_id = user.pending_ratings[0].id
+        return redirect(url_for('m_rating', _id=rating_id))
+
     return render_template('web/guru.html', user=user)
 
 @app.route('/m/guru/sessions/')
@@ -257,23 +261,17 @@ def profile(_id):
         student=user, guru=guru, _request=_request)
 
 
-@app.route('/guru/rating/')
-def guru_request():
+@app.route('/m/rating/<_id>')
+def m_rating(_id):
 
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
 
-    return render_template('web/tutor_rating.html')
+    rating = Rating.query.get(_id)
 
-@app.route('/student/rating/')
-def _student_request():
-
-    user = api.current_user()
-    if not user:
-        return redirect(url_for('m_login'))
-
-    return render_template('web/student_rating.html')
+    return render_template('web/rating.html', user=user, \
+        rating=rating)
 
 
 @app.route('/r/')

@@ -500,11 +500,35 @@ def users_reset_password_web_api():
 # Ratings REST Web Api #
 ########################
 
-# POST Submits a Rating
+# PUT Updates a Rating
 # GET Returns a list of Ratings & Average (TODO Later)
-@app.route('/api/v1/ratings', methods = ['POST'])
-def ratings_web_api():    
-    pass
+@app.route('/api/v1/ratings/<_id>', methods = ['PUT'])
+def ratings_web_api(_id):    
+    
+    user = current_user()
+    if not user:
+        return json_response(http_code=401)
+
+    if request.method == 'PUT':
+        
+        request_json = request.json
+
+        if 'rating' not in request_json:
+            return json_response(http_code=422)
+
+        rating = Rating.query.get(_id)
+        
+        #student is submitting guru rating
+        if user.id == rating.student_id:
+            rating.update_guru_rating(request_json.get('rating'))
+
+        #guru is submitting guru rating
+        if user.id == rating.tutor_id:
+            rating.update_student_rating(request_json.get('rating'))
+
+        return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
+
+    return json_response(400)
 
 
 ########################

@@ -1,35 +1,50 @@
 {% extends 'web/base.html' %}
+{% set payment_details_dict = rating.get_payment_details_dict() %}
 
 {% block main_header %}
 {% endblock %}
 
 {% block main_content %}
-<div class="content">
-  
-  <div id='account-table' class='control-content active'>
-    
-    <ul class="table-view">
-      <li class="table-view-cell media ignore-table-view-margin center">
-        <br>
-        <br>
-        <h2>Your CS10 Session</h2>
-        <h6>November 30, 2014 at 8pm</h6>
-        <br>
-        <br>
-        <h1>$40</h1>
-        <br>
-        <br>
-        <h5><u>Rate your Guru<u></h5>
-        <img class="media-object" src="/static/img/face1.png">
-        <h2 class='content-padded'>
-            <span class="icon icon-star guru-profile-star black"></span><span class="icon icon-star guru-profile-star black"></span><span class="icon icon-star guru-profile-star black"></span><span class="icon icon-star guru-profile-star black"></span><span class="icon icon-star guru-profile-star black"></span> 
-        </h2>
-        <br>
-      </li>
-    </ul>
+<div class="content should-hide-message-bar should-hide-tab-bar">
 
-
-  </div>
+    <div class="rating-title">
+        <p>Session Complete!</p>
+    </div>
+    <h6 class='center'>
+            {{rating.time_created}}
+    </h6>
+    <div class="rating-price">
+        <p><span style='font-weight:100'>$</span>27</p>
+    </div>
+    <div class="border-frame">
+      <div class="border-line">
+        <span class="border-content2">
+            RATE YOUR GURU
+        </span>
+      </div>
+    </div>
+    <div class="rating-container">
+        <img class="media-object rating-face pull-left" src="/static/img/face1.png">
+        <div class="rating-container-texts">
+            <div class="rating-name">
+                <p>Bonnie Fisher</p>
+            </div>
+            <div class="rating-course">
+                <p>BIO101</p>
+            </div>
+        </div>
+    </div>
+    <div class="border-frame">
+      <div class="border-line">
+      </div>
+    </div>
+    <div class="rating-container-starts">
+        <ul class="table-ul">
+          <li><span class="icon icon-star guru-rating-star black"></span></li>
+          <li><span class="icon icon-star guru-rating-star black"></span></li>
+          <li><span class="icon icon-star guru-rating-star black"></span></li>
+          <li><span class="icon icon-star guru-rating-star black"></span></li>
+          <li><span class="icon icon-star guru-rating-star black"></span></li>
+        </ul>
 </div>
-
 {% endblock %}

@@ -319,7 +319,37 @@ $(document).ready(function() {
     });
 
     $('body').on('touchstart', '#negative-guru-request-btn', function() {
-        alert('Sorry! Only one request at a time. Once you are connected with a Guru, you can make another one!')
+        alert('Sorry! Only one request at a time. Once you are connected with a Guru, you can make another one!');
+    });
+
+    //Ratings
+    $('body').on('touchstart', 'a.rating-star', function () {
+        var index = $(this).index('a.rating-star');
+        //Entire ratings plugin implemented in the two lines below
+        $( ".guru-rating-star" ).slice(0, index + 1).removeClass('icon-star').addClass('icon-star-filled');
+        $( ".guru-rating-star" ).slice(index + 1, $('.guru-rating-star').length).removeClass('icon-star-filled').addClass('icon-star');
+
+        var rating_id = ($('#submit-rating-container').data().ratingId).toString();
+
+        payload = JSON.stringify({
+            rating: (index + 1)
+        });
+
+        $.ajax({
+            url: '/api/v1/ratings/' + rating_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "slide-in",
+                    url : "/home/"
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
     });
 });
 // end document ready
