@@ -56,6 +56,7 @@ def home():
     #Check if user is a student & has pending requests
     pending_requests = user.get_pending_requests()
     if pending_requests and pending_requests[0].get_student() == user:
+        pending_request_id = pending_requests[0].id
         return redirect( \
             url_for(endpoint='request_by_id', _id=pending_request_id))
 
@@ -162,7 +163,6 @@ def m_transactions():
 
 @app.route('/request_form/')
 def request_form():
-
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
