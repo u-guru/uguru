@@ -319,7 +319,7 @@ class User(Base):
         conversations = self.conversations
 
         if sorted_by_time:
-            conversations = sorted(conversations, lambda c:c.get_last_message_time())
+            conversations = sorted(conversations, key=lambda c:c.get_last_message_time())
 
         if _dict:
             conversations = {

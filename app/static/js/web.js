@@ -232,49 +232,7 @@ $(document).ready(function() {
         });
     });
 
-    //Student creates a request
-    $('body').on('touchstart', '#submit-request-link', function(){
-        payload = JSON.stringify({
-            'skill_name': 'CS10',
-            'description': $('#request-description').val(),
-            'time_estimate': $('#time-estimate-button-group button.active').index(),
-            'phone_number': $('#request-phone').val(),
-            'location': $('#request-location').val(),
-            'remote': $('#remote-toggle').hasClass('active'),
-            'urgency': $('#asap-toggle').hasClass('active'),
-            'start_time': (new Date().getTime()).toString(),
-        });
-
-        $.ajax({
-            url: '/api/v1/requests',
-            type: 'POST',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                if (request.errors && request.redirect) {
-                    if (request.redirect == 'no-tutors') {
-                        window.PUSH({
-                            transition : "fade",
-                            url : "/show/no-tutors/"
-                        });
-                    }
-                }
-                else {
-                    window.PUSH({
-                        transition : "fade",
-                        url : "/request/" + request['server_id'] +'/'
-                    });
-                }
-
-                //Close modal
-                $('#requestModal').removeClass('active');
-            },
-            error: function (request) {
-                alert(request.responseJSON['errors']);
-            }
-        });
-    });
-
+    
     // Signup Page Form
     $('body').on('touchstart', '#signup-link', function(){
         payload = JSON.stringify({
@@ -318,6 +276,7 @@ $(document).ready(function() {
 
     });
 
+<<<<<<< HEAD
     $('body').on('touchstart', '#negative-guru-request-btn', function() {
         alert('Sorry! Only one request at a time. Once you are connected with a Guru, you can make another one!');
     });
@@ -347,6 +306,87 @@ $(document).ready(function() {
                 });
             },
             error: function (request) {
+            
+            }
+        });
+    });
+
+
+    // Request Form /request_form/
+    $('body').on('touchstart', '#request-location-in-person', function(){
+        $('#request-location').show(10);
+    });
+    $('body').on('touchstart', '#request-location-online', function(){
+       $('#request-location').hide(10);
+    });
+    $('body').on('touchend', '#asap-toggle', function(){
+        var isSelected = !$('#asap-toggle').hasClass('active');
+        if (isSelected) {
+            $('#request-time-selection-cell').hide(10);
+        }else{
+            $('#request-time-selection-cell').show(10);
+        }
+    });
+    $('body').on('touchstart', '#time-segment-1', function(){
+        $('#request-estimated-cost').text("$5");
+    });
+    $('body').on('touchstart', '#time-segment-2', function(){
+        $('#request-estimated-cost').text("$10");
+    });
+    $('body').on('touchstart', '#time-segment-3', function(){
+        $('#request-estimated-cost').text("$20");
+    });
+    $('body').on('touchstart', '#time-segment-4', function(){
+        $('#request-estimated-cost').text("$40");
+    });
+
+    $('body').on('touchstart', '#submit-button', function () {
+        $('#submit-button').hide();
+        $('#confirm-button').show();
+    });
+
+    //Student creates a request
+    $('body').on('touchstart', '#confirm-button', function(){
+        payload = JSON.stringify({
+            'skill_name': $('#request-course').val(),
+            'description': $('#request-description').val(),
+            'phone_number': $('#request-phone-number').val(),
+            'remote': $('#request-location-online').hasClass('active'),
+            'location': $('#request-location').val(),
+            'urgency': $('#asap-toggle').hasClass('active'),
+            'time_estimate': $('#request-time-estimate-button-group .control-item.active').index(), // TODO : this should be in minutes, not just the index
+            'start_time': (new Date().getTime()).toString(), // TODO : Get start time from the selector on the page
+        });
+
+        $.ajax({
+            url: '/api/v1/requests',
+            type: 'POST',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                if (request.errors) {
+                    console.log(request.errors);
+                    if (request.redirect && request.redirect == 'no-tutors') {
+                        window.PUSH({
+                            transition : "fade",
+                            url : "/show/no-tutors/"
+                        });
+                    }
+                    // If errors, reset
+                    $('#submit-button').show();
+                    $('#confirm-button').hide();
+                }
+                else {
+                    window.PUSH({
+                        transition : "fade",
+                        url : "/request/" + request['server_id'] +'/'
+                    });
+                }
+            },
+            error: function (request) {
+                // If errors, reset
+                $('#submit-button').show();
+                $('#confirm-button').hide();
                 alert(request.responseJSON['errors']);
             }
         });

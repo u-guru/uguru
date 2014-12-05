@@ -167,7 +167,6 @@ def m_transactions():
 
 @app.route('/request_form/')
 def request_form():
-
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
