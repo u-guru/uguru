@@ -1,5 +1,9 @@
 $logo-font:'Grand Hotel', cursive;
 
+.bar.bar-nav {
+  -webkit-transform: translateZ(10px);
+}
+
 header {
 
   .uguru-logo {
@@ -13,8 +17,12 @@ header {
   width:78%
 }
 
+.profile-title-icon {
+  top:10px;
+  position:absolute;
+}
+
 .message-face, .table-view-face {
-  // height:40px;
   width: 42px;
   height: 42px;
   border-radius:20px;
@@ -22,6 +30,16 @@ header {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+}
+
+.table-view-mini-face {
+  width: 24px;
+  height: 24px;
+  border-radius:20px;
+  border:1px solid white;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: 50% 50%;
 
 }
 
@@ -96,7 +114,7 @@ header {
 }
 
 .black {
-  color:black !important;
+    color:black;
 }
 
 input#card-num {
@@ -129,11 +147,55 @@ input#credit-card-num.amex {
   height:auto;
 }
 
+.hidden {
+  display:none;
+}
+
 // Request Form Shit, more shit should be moved here and it shouldnt be so general... TODO
 input {
   color:#000000;
 }
 
+.white-text {
+  color:#fff;
+}
+
+.no-border-bottom {
+  border-bottom:0px;
+}
+
 textarea {
   color:#000000; 
 }
+
+//typeahead overrides
+.twitter-typeahead, .tt-dropdown-menu {
+  width:100%;
+  background-color: #636c6d;
+  font-size:14px !important;
+}
+
+.tt-hint {
+  text-align: left !important;
+}
+
+//Homepage CSS
+.home-guru {
+  height:200px;
+}
+
+#uguru-home-text {
+  font-size:44px;
+  margin-top: -4%;
+}
+
+.home-guru-container {
+  margin-top:25%
+}
+
+.home-guru-btn-container {
+  bottom:2%;
+  position:absolute;
+  width:100%;
+}
+

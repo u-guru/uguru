@@ -71,3 +71,60 @@
   </div>
 </div>
 {%- endmacro %}
+
+{% macro home_signup_modal() -%}
+<div class='modal' id="signup-modal" >
+  <header class="bar bar-nav">
+    <a class="btn btn-link pull-right" href="#signup-modal">
+        Cancel
+    </a>
+    <h1 class="title">Create your account</h1>
+  </header>
+
+  <div class="content should-hide-message-bar should-hide-tab-bar">
+    <form class="input-group" id="signup-form">
+        <div class='input-row'>
+            <label>First</label>
+            <input type="text" id="name-field" placeholder="your first name"></input>
+        </div>
+        <div class='input-row'>
+            <label>Last</label>
+            <input type="email" id="name-field-last" placeholder="your last name"></input>
+        </div>
+        <div class='input-row'>
+            <label>Email</label>
+            <input type="email" id="email-field" placeholder="Your School Email"></input>
+        </div>
+        <div class='input-row'>
+            <label>Password</label>
+            <input type="password" id="password-field" placeholder="Password"></input>
+        </div>
+    </form>
+    <a class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="signup-link">Signin</a>
+  </div>
+</div>
+{%- endmacro %}
+{% macro home_login_modal() -%}
+<div class='modal' id="login-modal">
+  <header class="bar bar-nav">
+    <a class="btn btn-link pull-right" href="#login-modal">
+        <strong>Cancel</strong>
+    </a>
+    <h1 class="title">Login</h1>
+  </header>
+
+  <div class="content should-hide-message-bar should-hide-tab-bar">
+    <form class="input-group" id="login-form" >
+          <div class='input-row'>
+              <label>EMAIL</label>
+              <input href='#login-modal' type="email" id="email-field" placeholder="your email"></input>
+          </div>
+          <div class='input-row'>
+              <label>PASSWORD</label>
+              <input href='#signup-modal' type="password" id="password-field" placeholder="Password"></input>
+          </div>
+    </form>
+    <a class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="login-link">Login</a>
+  </div>
+</div>
+{%- endmacro %}

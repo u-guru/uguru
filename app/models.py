@@ -414,6 +414,14 @@ class User(Base):
     def get_pending_requests(self):
         return self.outgoing_requests
 
+    #for guru to get all incoming requests
+    def get_guru_requests(self):
+        all_guru_requests = []
+        for _request in self.outgoing_requests:
+            if self.id != _request.student_id:
+                all_guru_requests.append(_request)
+        return all_guru_requests
+
     #returns ten most recent notifications
     def get_recent_notifications(self):
         notifications = sorted(self.notifications, key=lambda n:n.id, reverse=True)[:10]
@@ -965,8 +973,8 @@ class Request(Base):
         student = User.get_user(self.student_id)
         skill = Skill.query.get(self.skill_id)
 
-        student.pending_requests.remove(self)
-        tutor.pending_requests.remove(self)
+        student.outgoing_requests.remove(self)
+        tutor.outgoing_requests.remove(self)
 
         #Create conversation
         conversation = Conversation.create_conversation(skill, tutor, student)
@@ -1237,6 +1245,24 @@ class Rating(Base):
         except:
             db_session.rollback()
             raise         
+
+
+    #TODO, make queries more optimal
+    def get_payment_details_dict(self):
+        _request = Request.query.get(self.request_id)
+        payment = Payment.query.get(_request.payment_id)
+        student = User.query.get(payment.student_id)
+        guru = User.query.get(payment.tutor_id)
+        skill = Skill.query.get(payment.skill_id)
+        payment_dict = {
+            'student': student.as_dict(),
+            'guru': guru.as_dict(),
+            'student_cost': payment.student_paid_amount,
+            'guru_earnings': payment.tutor_received_amount,
+            'skill_name': skill.get_short_name()
+        }
+        return payment_dict
+
 
 
     def __init__(self, request_id=None):

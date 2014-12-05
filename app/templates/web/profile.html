@@ -1,13 +1,17 @@
 {% extends 'web/base.html' %}
-{% set request_dict = _request.get_return_dict() %}
 {% set guru_avg_rating = guru.calc_avg_rating()[0] %}
 {% set guru_num_sessions = guru.calc_avg_rating()[1] %}
+{% if _request %}
+  {% set request_dict = _request.get_return_dict() %}
+{% endif %}
 
 {% block main_header %}
 <header class="bar bar-nav">
   <h1 class="title">Guru Profile
   </h1>
+  {% if _request %}
   <a class="icon icon-left-nav pull-left" href="/request/{{request_dict['server_id']}}" data-transition="slide-out"></a>
+  {% endif %}
   
 </header>
 {% endblock %}
@@ -26,27 +30,39 @@
               {{guru.get_first_name()}} is a new to Guru
             {% endif %}
 
-          </h6>
-            {% if request_dict.get('incoming-tutor-replies') %}
-            <p>
-              <i>Hi Ben, I can definitely help you with this task. I've helped several students with this project. Don't worry, I got you.</i>
-            </p>
+          </h5>
+            {% if _request %}
+              {% if request_dict.get('incoming-tutor-replies') %}
+              <p>
+                <i>Hi Ben, I can definitely help you with this task. I've helped several students with this project. Don't worry, I got you.</i>
+              </p>
+              {% endif %}
             {% endif %}
       </li>
       <li class="table-view-cell request-cell ignore-table-view-margin">
           <p class='padding-top-5'>
-            <button class='btn btn-primary'>{{request_dict['skill_name']|upper}}</button>
-            {% for skill in guru.skills[:3] %}
-              
-              {% set skill_name = skill.get_short_name() %}
-              
-              {% if skill_name != request_dict['skill_name'] 
-                and skill_name not in ['Writing Help', 'Career Help', 'Resume Help']
-              %}
-                <button class='btn btn-outlined'>{{skill_name}}</button>
-              {% endif %}
+            {% if _request %}
+              <button class='btn btn-primary'>{{request_dict['skill_name']|upper}}</button>
+              {% for skill in guru.skills[:3] %}
+                
+                {% set skill_name = skill.get_short_name() %}
+                
+                {% if skill_name != request_dict['skill_name'] 
+                  and skill_name not in ['Writing Help', 'Career Help', 'Resume Help']
+                %}
+                  <button class='btn btn-outlined'>{{skill_name}}</button>
+                {% endif %}
 
-            {% endfor %}
+              {% endfor %}
+
+            {% else %}
+                {% for skill in guru.skills %}
+                
+                {% set skill_name = skill.get_short_name() %}
+                <button class='btn btn-outlined'>{{skill_name}}</button>
+
+                {% endfor %}
+            {% endif %}
           </p>
       </li>
       <li class="table-view-cell">

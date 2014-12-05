@@ -69,6 +69,10 @@ def m_guru():
     if not user:
         return redirect(url_for('m_login'))
 
+    if user.pending_ratings:
+        rating_id = user.pending_ratings[0].id
+        return redirect(url_for('m_rating', _id=rating_id))
+
     return render_template('web/guru.html', user=user)
 
 @app.route('/m/guru/sessions/')
@@ -243,7 +247,11 @@ def profile(_id):
     if not user:
         return redirect(url_for('m_login'))
 
-    #Make sure user can see this tutor profile
+    if user.id == int(_id):
+        return render_template('web/profile.html', \
+        student=None, guru=user, _request=None)
+
+    # Make sure user can see this tutor profile
     results = user.has_incoming_tutor_for_request(int(_id))
     if not results:
         flash('Sorry, you dont have access to this page!')
@@ -256,23 +264,17 @@ def profile(_id):
         student=user, guru=guru, _request=_request)
 
 
-@app.route('/guru/rating/')
-def guru_request():
+@app.route('/m/rating/<_id>')
+def m_rating(_id):
 
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
 
-    return render_template('web/tutor_rating.html')
+    rating = Rating.query.get(_id)
 
-@app.route('/student/rating/')
-def _student_request():
-
-    user = api.current_user()
-    if not user:
-        return redirect(url_for('m_login'))
-
-    return render_template('web/student_rating.html')
+    return render_template('web/rating.html', user=user, \
+        rating=rating)
 
 
 @app.route('/r/')
@@ -297,6 +299,7 @@ def support():
 
 @app.route('/r/<_id>/')
 @app.route('/confirm_request/<_id>/')
+@app.route('/guru/request/<_id>/')
 @app.route('/request/<_id>/')
 def request_by_id(_id):
     #if ID is not accurate, send back to home.
@@ -311,12 +314,13 @@ def request_by_id(_id):
         return redirect(url_for('m_login'))
 
     # request already canceled, guru can't accept
-    if _request.is_canceled() and user in _request.approved_tutors():
+    if not user == _request.get_student() and \
+    _request.is_canceled() and user in _request.approved_tutors():
         flash('Sorry! The student has canceled this request')
-        return redirect(url_for('home'))
+        return redirect(url_for('m_guru'))
 
     #if Guru shouldn't see this.
-    if not user == _request.get_student() and not _request.is_tutor_involved():
+    if not user == _request.get_student() and not _request.is_tutor_involved(user):
         flash("Sorry! You don't have access to this page.")
         return redirect(url_for('m_guru'))
 

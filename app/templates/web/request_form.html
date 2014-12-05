@@ -57,4 +57,30 @@
     Confirm
   </a>
 </div>
+
+<script class='content-js' type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script class='content-js' type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
+<script class='content-js'> 
+  var numbers = new Bloodhound({
+    datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name); },
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    limit: 3,
+    prefetch: {
+      url: '/static/data/autocomplete.json',
+      filter: function(list) {
+        return $.map(list, function(course) { return { name: course }; });
+      }
+    },
+  });
+
+    // initialize the bloodhound suggestion engine
+    numbers.initialize();
+
+    // instantiate the typeahead UI
+    $('#request-course').typeahead({
+      displayKey: 'name',
+      source: numbers.ttAdapter()
+    });
+</script>
 {% endblock %}
+
