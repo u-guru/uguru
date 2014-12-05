@@ -16,42 +16,44 @@
     <ul class="table-view should-hide-message-bar">      
       {% for conversation_dict in all_conversation_dicts['conversations'] %}
         {% set last_message =  conversation_dict.get('last_message') %} 
-      <li class="table-view-cell media">
-        <a class="navigate-right" data-transition="slide-in" href='/conversation/{{conversation_dict["server_id"]}}'>
-            <div class="media-object pull-left message-face" style='background-image: url("{{conversation_dict['tutor']['profile_url']}}")'></div>
-            <div class="media-body">
-                {{conversation_dict['tutor']['name']}}
-                <p>
-                    {% if last_message %}
-                        {{conversation_dict['last_message']['contents'][:30]}}
-                    {% else %}
-                        No messages yet.
-                    {% endif %}
-                </p>
-            </div>
-            {% if not last_message or last_message['sender']['server_id'] != user.id %}
-                <span class="badge badge-negative"> 1
-                </span>
-            {% endif %}
-        </a>
-      </li>
-      {% endfor %}
-      <li class="table-view-cell media">
-            <a class="navigate-right">
-                <img class="media-object pull-left" src="http://placehold.it/42x42">
+          <li class="table-view-cell media">
+
+            {% if conversation_dict['is_active'] %}
+
+            <a class="navigate-right" data-transition="slide-in" href='/conversation/{{conversation_dict["server_id"]}}'>
+                <div class="media-object pull-left message-face" style='background-image: url("{{conversation_dict['tutor']['profile_url']}}")'></div>
                 <div class="media-body">
-                    Mary
+                    {{conversation_dict['tutor']['name']}}
                     <p>
-                        <span class="icon icon-star-filled profile-star black"></span>
-                        <span class="icon icon-star-filled profile-star black"></span> 
-                        <span class="icon icon-star-filled profile-star black"></span> 
-                        <span class="icon icon-star-filled profile-star black"></span> 
-                        <span class="icon icon-star-filled profile-star black"></span> 
+                        {% if last_message %}
+                            {{conversation_dict['last_message']['contents'][:30]}}
+                        {% else %}
+                            No messages yet.
+                        {% endif %}
                     </p>
                 </div>
-                <button class="btn btn-primary">Check Availability</button>
+                {% if not last_message or last_message['sender']['server_id'] != user.id %}
+                    <span class="badge badge-negative"> 1
+                    </span>
+                {% endif %}
             </a>
-      </li>
+
+            {% else %}
+                <div class="media-object pull-left message-face" style='background-image: url("{{conversation_dict['tutor']['profile_url']}}")'></div>
+                    <div class="media-body">
+                        {{conversation_dict['tutor']['name']}}
+                        <p>
+                            <span class="icon icon-star-filled profile-star black"></span>
+                            <span class="icon icon-star-filled profile-star black"></span> 
+                            <span class="icon icon-star-filled profile-star black"></span> 
+                            <span class="icon icon-star-filled profile-star black"></span> 
+                            <span class="icon icon-star-filled profile-star black"></span>
+                        </p>
+                    </div>
+                    <button class="btn btn-primary">Check Availability</button>
+            {% endif %}
+          </li>
+      {% endfor %}
     </ul>
 </div>
 {% endblock %}

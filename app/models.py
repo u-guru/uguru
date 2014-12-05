@@ -992,6 +992,12 @@ class Request(Base):
         #make conversation inactive
         self.get_conversation().is_active = False 
 
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
         return 
 
 

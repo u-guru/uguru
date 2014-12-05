@@ -13,7 +13,7 @@
       <span class="icon icon-gear"></span>
       <span class="tab-label">Settings</span>
     </a>
-    <a class="tab-item main-tab-item" href="{% if user.approved_by_admin %}/m/guru/{%else%} /become_guru/ {% endif %}" data-transition='fade'>
+    <a class="tab-item main-tab-item" href="{% if user and user.approved_by_admin %}/m/guru/{%else%} /become_guru/ {% endif %}" data-transition='fade'>
       <span class="icon icon-star"></span>
       <span class="tab-label">Guru</span>
     </a>
