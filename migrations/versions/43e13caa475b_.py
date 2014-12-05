@@ -1,4 +1,4 @@
-"""empty message
+"""Added columns to payment
 
 Revision ID: 43e13caa475b
 Revises: 515853c23e1c
