@@ -253,3 +253,32 @@ def daily_results_email():
     if os.environ.get('PRODUCTION'):
         from emails import daily_results_email
         daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
+
+
+#TODO: Samir
+#Run on every 2nd ot the month
+@periodic_task(run_every=crontab(0, 0, day_of_month='27'), name="tasks.daily_results_email") 
+def transfer_stripe_funds_to_bank():
+    import stripe, os
+
+    stripe_keys = {
+        'secret_key': os.environ['STRIPE_SECRET_KEY'],
+        'publishable_key': os.environ['STRIPE_PUBLISHABLE_KEY']
+    }
+    stripe.api_key = stripe_keys['secret_key']
+    SVB_RECIPIENT_ID = "rp_156UOc228F3k8kGfDFirLu5C"
+    stripe_balance = stripe.Balance.retrieve()
+    stripe_balance_cents = stripe_balance.available[0]['amount'] 
+    stripe_balance_dollars = int(stripe_balance_cents / 100)
+
+    if stripe_balance_dollars > 500:
+        amount_to_cash_out = stripe_balance_dollars - 500
+        transfer = stripe.Transfer.create(
+                amount=int(amount_to_cash_out * 100), 
+                currency="usd",
+                recipient=SVB_RECIPIENT_ID
+            )
+    else:
+        print 'Not enough funds to deposit revenue this month :('
+    return            
+    
