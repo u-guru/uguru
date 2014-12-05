@@ -50,7 +50,7 @@ def request_web_api():
             skill_name = request_json.get('skill_name')
             skill = Skill.get_skill_from_name(skill_name)
             if not skill: #TODO, this should still be logged in mixpanel!
-                error_msg = 'Sorry! This is not a support skill, please choose one from the dropdown.'
+                error_msg = 'Sorry! This is not a supported skill, please choose one from the dropdown.'
                 return json_response(http_code=403, errors=[error_msg])
 
             #Make sure they don't already a pending request for a skill
