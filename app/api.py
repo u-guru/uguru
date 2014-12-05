@@ -181,6 +181,7 @@ def request_by_id_web_api(request_id):
             minutes = request_json.get('minutes')
             hours = request_json.get('hours')
 
+            #TODO: Delay this function to tasks.py
             _request.process_guru_confirm(hours, minutes)
 
             

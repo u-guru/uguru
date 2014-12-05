@@ -739,7 +739,8 @@ class Payment(Base):
     stripe_recipient_id = Column(String)
     student_paid_amount = Column(Float)
     tutor_received_amount = Column(Float)
-    
+    flag = Column(Boolean) #for if payment didn't go through
+
     #new
     num_minutes = Column(Integer)
     num_hours = Column(Integer)
@@ -759,6 +760,78 @@ class Payment(Base):
     refunded = Column(Boolean)
     status = Column(String)
     credits_used = Column(Integer)
+
+
+    @staticmethod
+    def bill_student(student, total):
+        import stripe
+        try: 
+            charge = stripe.Charge.create(
+                amount = int(total*100),
+                currency="usd",
+                customer=student.customer_id,
+                description="charge for receiving tutoring"
+            )
+        except stripe.error.CardError, e:
+            return False
+        
+        #Success case
+        return charge['id']
+
+
+
+    @staticmethod
+    def create_payment(_request, hours, minutes):
+        payment = Payment()
+        payment.student_id = _request.student_id
+        payment.tutor_id = _request.connected_tutor_id
+        payment.request_id = _request.id
+        payment.skill_id = _request.skill_id
+        payment.time_created = datetime.now()
+        payment.num_hours = hours
+        payment.num_minutes = minutes
+        
+        student = _request.get_student()
+        guru = User.query.get(_request.connected_tutor_id)
+        
+        payment.student_paid_amount = Payment.calculate_student_price(hours, minutes)
+        payment.tutor_received_amount = Payment.calculate_guru_price(hours, minutes)
+
+        bill_student_result = Payment.bill_student(student, payment.student_paid_amount)
+        #TODO, if a Guru already has a debit card, just cash out for them.
+        
+        #Charge succeeded
+        if bill_student_result:
+            payment.stripe_charge_id = bill_student_result
+        #TODO: Flag it, notifiy student
+        else:
+            payment.flag = True
+
+        student.payments.append(payment)
+        guru.payments.append(payment)
+
+        try: 
+            db_session.add(payment)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
+        return payment
+
+    @staticmethod 
+    def calculate_student_price(hours, minutes):
+        total_hours = hours + float(minutes / 60.0)
+        total_amount = 20 * total_hours
+        rounded_total_amount = round(total_amount, 2)
+        return rounded_total_amount
+
+    @staticmethod 
+    def calculate_guru_price(hours, minutes):
+        total_hours = hours + float(minutes / 60.0)
+        total_amount = 16 * total_hours
+        rounded_total_amount = round(total_amount, 2)
+        return rounded_total_amount
 
 
     def __init__(self, request_id = None):
@@ -877,6 +950,11 @@ class Request(Base):
             return True
         return False
 
+    def get_conversation(self):
+        c = Conversation.query.filter_by(student_id = self.student_id, \
+            guru_id=self.connected_tutor_id).first()
+        return c
+
     def process_student_acceptance(self, tutor):
         from datetime import datetime
         
@@ -901,6 +979,21 @@ class Request(Base):
         except:
             db_session.rollback()
             raise
+
+    def process_guru_confirm(self, hours, minutes):
+        
+        #create payment & bill student
+        payment = Payment.create_payment(self, hours, minutes)
+        self.payment_id = payment.id
+
+        #create rating
+        rating = Rating.create_rating(self)
+
+        #make conversation inactive
+        self.get_conversation().is_active = False 
+
+        return 
+
 
     def process_tutor_acceptance(self, tutor):
         self.committed_tutors.append(tutor)
@@ -1115,6 +1208,30 @@ class Rating(Base):
     tutor_rating_description = Column(String(256))
     tutor_no_meet_description = Column(String(256))
     student_no_meet_description = Column(String(256))
+
+    @staticmethod
+    def create_rating(_request):
+        rating = Rating()
+
+        rating.request_id = _request.id
+        rating.student_id = _request.student_id
+        rating.tutor_id = _request.connected_tutor_id
+        rating.skill_id = _request.skill_id
+        rating.time_created = datetime.now()
+
+        student = User.query.get(_request.student_id)
+        tutor = User.query.get(_request.connected_tutor_id)
+        
+        student.pending_ratings.append(rating)
+        tutor.pending_ratings.append(rating)
+
+        try: 
+            db_session.add(rating)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise         
+
 
     def __init__(self, request_id=None):
         if request_id:
