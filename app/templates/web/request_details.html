@@ -1,11 +1,20 @@
 {% extends 'web/base.html' %}
-{% from 'web/macros/request.html' import request_details, student_reject_modal, student_accept_modal %}
+
+{% from 'web/macros/request.html' import request_details_student, student_reject_modal, student_accept_modal, cancel_request_modal,
+request_details_guru, guru_request_reject_modal %}
+
 {% set is_student = (user.id == request_dict['student']['server_id'])%}
 {% set is_guru = not is_student %}
 
 {% block main_header %}
     <header class="bar bar-nav">
+        {% if is_guru %}
+        <h1 class="title">{{request_dict['skill_name']}}</h1>
+        <a class='icon icon-left' href='/m/guru/requests/' data-transition='slide-out'>
+        </a>
+        {% else %}
         <h1 class="title uguru-logo">uguru</h1>
+        {% endif %}
     </header>
 {% endblock %}
 
@@ -31,7 +40,7 @@
                 </a>
             </li>
           </ul>
-          {{request_details(request_dict, is_student)}}
+          {{request_details_student(request_dict)}}
           <a class='btn btn-negative btn-block decline' href='#student-reject-tutor-modal' > 
                 Reject
           </a>
@@ -40,61 +49,24 @@
           </a>
           {{student_reject_modal(request_dict)}}
       
-      {% else %}
+      <!-- No gurus available -->
+        {% else %}
 
-        {{request_details(request_dict, is_student  )}}
-        <a class='btn btn-positive btn-block' href='#cancelModal'> 
-            Cancel Request
-        </a>
-
-        <div id="cancelModal" class="modal">
-          <header class="bar bar-nav">
-            <a class="icon icon-close pull-right" href="#cancelModal"></a>
-            <h1 class="title">Cancel {{request_dict['skill_name']}} Request</h1>
-          </header>
-
-          <div class="content">
-            <div class='content-padded'></h6>
-              <form>
-                <textarea id='cancel-request-description' placeholder='Please tell us why! Help us make your future experience be the best as possible.'rows="5"></textarea>
-                <a class='btn btn-positive btn-block' data-request-id='{{request_dict["server_id"]}}' href='#' id='cancel-link'> 
-                  Submit 
-                </a>
-              </form>
-            </div>
-          </div>
-        </div>
+          {{request_details_student(request_dict)}}
+          {{cancel_request_modal(request_dict)}}
+        
         {% endif %}
 
-      {% endif %}
-      <!-- end student case -->
+        <button class='btn btn-block btn-negative' id='negative-guru-request-btn'>
+          Request a Guru
+        </button>
+
+    {% endif %}
+    <!-- end student case -->
 
       {% if is_guru %}
-      <a class='btn btn-positive btn-block' href='#' id='guru-accept-link'> 
-          Accept
-      </a>
-      <a class='btn btn-negative btn-block' href='#reject-request-modal'>
-          Reject
-      </a>
-
-      <div id="reject-request-modal" class="modal">
-        <header class="bar bar-nav">
-          <a class="btn btn-link pull-left" href="#reject-request-modal">Cancel</a>
-          <h1 class="title">Reject</h1>
-          <a class="btn btn-link pull-right guru-reject-link" href="#">Skip</a>
-        </header>
-
-        <div class="content">
-          <div class='content-padded'></h6>
-            <form>
-              <textarea id='guru-reject-decription' placeholder='Please tell us more! Replying will increase your response rate!'rows="5"></textarea>
-              <a class='btn btn-positive btn-block guru-reject-link' href='#'>
-                Submit 
-              </a>
-            </form>
-          </div>
-        </div>
-      </div>
+      {{request_details_guru(request_dict)}} 
+      {{guru_request_reject_modal(request_dict)}}
 
       {% endif %}
 

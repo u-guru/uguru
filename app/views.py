@@ -56,6 +56,7 @@ def home():
     #Check if user is a student & has pending requests
     pending_requests = user.get_pending_requests()
     if pending_requests and pending_requests[0].get_student() == user:
+        pending_request_id = pending_requests[0].id
         return redirect( \
             url_for(endpoint='request_by_id', _id=pending_request_id))
 
@@ -297,6 +298,7 @@ def support():
 
 @app.route('/r/<_id>/')
 @app.route('/confirm_request/<_id>/')
+@app.route('/guru/request/<_id>/')
 @app.route('/request/<_id>/')
 def request_by_id(_id):
     #if ID is not accurate, send back to home.
@@ -311,12 +313,13 @@ def request_by_id(_id):
         return redirect(url_for('m_login'))
 
     # request already canceled, guru can't accept
-    if _request.is_canceled() and user in _request.approved_tutors():
+    if not user == _request.get_student() and \
+    _request.is_canceled() and user in _request.approved_tutors():
         flash('Sorry! The student has canceled this request')
-        return redirect(url_for('home'))
+        return redirect(url_for('m_guru'))
 
     #if Guru shouldn't see this.
-    if not user == _request.get_student() and not _request.is_tutor_involved():
+    if not user == _request.get_student() and not _request.is_tutor_involved(user):
         flash("Sorry! You don't have access to this page.")
         return redirect(url_for('m_guru'))
 

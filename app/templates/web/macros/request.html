@@ -1,48 +1,67 @@
-{% macro request_details(request_dict, is_student) -%}
-    <ul class="table-view">
-      <li class="table-view-cell request-cell">
-          Course
-          <span class='pull-right grey-text'>
-            {{request_dict['skill_name']|upper}}
-          </span>
-      </li>
-      <li class="table-view-cell request-cell">
-          Location
-          <span class='pull-right grey-text'>{{request_dict['location']}}</span>
-          <p>
-            In-person only  
+{% macro request_details_student(request_dict) -%}
+    <ul class="table-view table-view-scheduled">    
+        <li class='table-view-cell'>
+          <h1>{{request_dict['skill_name']}} 
+            <span class='grey-text'>Session</span>
+          </h1>
+          <p class='red-text'>
+            WAITING FOR TUTORS
           </p>
-      </li>
-      <li class="table-view-cell request-cell">
-          Time Estimate
-          <span class='pull-right grey-text'>{{request_dict['time_estimate']}}</span>
-      </li>
-      <!-- TODO -->
-      <!-- <li class="table-view-cell request-cell">
-          Start Time
-          <span class='pull-right grey-text'></span>
-      </li> -->
-      <li class="table-view-cell">
+          <p class='grey-text'>
+            Tonight at 8pm
+          </p>
+        </li>
+        <li class='table-view-cell'>
+            Location: 
+            <p>
+              {{request_dict['location']}}
+            </p>
+        </li>
+        <li class='table-view-cell'>
+          Description
+          <p>
+            {{request_dict['description'][0:100]}}...
+          </p>
+          <a class='btn btn-outlined' href='#cancelModal'>
+            Cancel Request
+          </a>
+        </li>
+      </ul>
+{%-endmacro %}
+
+{% macro request_details_guru(request_dict) -%}
+    <ul class="table-view table-view-scheduled">    
+        <li class='table-view-cell'>
+          <h1>{{request_dict['skill_name']}} 
+            <span class='grey-text'>Session</span>
+          </h1>
+          <p class='red-text'>
+            WAITING FOR TUTORS
+          </p>
+          <p class='grey-text'>
+            Tonight at 8pm
+          </p>
+        </li>
+        <li class='table-view-cell'>
+            Location: 
+            <p>
+              {{request_dict['location']}}
+            </p>
+        </li>
+        <li class='table-view-cell'>
           Description
           <p>
             {{request_dict['description']}}
           </p>
-      </li>
-        <li class="table-view-cell">
-          {% if is_student %}
-            Pricing
-            <p>
-              <b>$5</b> per 15min, billed by minute.
-            </p>
-          {% else %}
-            You will make
-            <p>
-              <b>$4</b> per 15min, billed by minute.
-            </p>
-          {% endif %}
         </li>
-    </ul>  
-{%-endmacro%}
+    </ul>
+    <a class='btn btn-positive btn-block accept' href='#' id='guru-accept-link'> 
+          Accept
+    </a>
+    <a class='btn btn-negative btn-block decline' href='#reject-request-modal'>
+          Reject
+    </a>
+{%-endmacro %}
 
 {% macro student_reject_modal(request_dict) -%}
 <div id="student-reject-tutor-modal" class="modal">
@@ -64,3 +83,45 @@
 </div>
   
 {%- endmacro %}
+
+{% macro cancel_request_modal(request_dict)-%}
+
+<div id="cancelModal" class="modal">
+  <header class="bar bar-nav">
+    <a class="icon icon-close pull-right" href="#cancelModal"></a>
+    <h1 class="title">Cancel {{request_dict['skill_name']}} Request</h1>
+  </header>
+
+  <div class="content">
+    <div class='content-padded'></h6>
+      <form>
+        <textarea id='cancel-request-description' placeholder='Please tell us why! Help us make your future experience be the best as possible.'rows="5"></textarea>
+        <a class='btn btn-positive btn-block' data-request-id='{{request_dict["server_id"]}}' href='#' id='cancel-link'> 
+          Submit 
+        </a>
+      </form>
+    </div>
+  </div>
+</div>
+{%- endmacro %}
+
+{% macro guru_request_reject_modal(request_dict)-%}
+<div id="reject-request-modal" class="modal">
+        <header class="bar bar-nav">
+          <a class="btn btn-link pull-left" href="#reject-request-modal">Cancel</a>
+          <h1 class="title">Reject</h1>
+          <a class="btn btn-link pull-right guru-reject-link" href="#">Skip</a>
+        </header>
+
+        <div class="content">
+          <div class='content-padded'></h6>
+            <form>
+              <textarea id='guru-reject-decription' placeholder='Please tell us more! Replying will increase your response rate!'rows="5"></textarea>
+              <a class='btn btn-positive btn-block guru-reject-link' href='#'>
+                Submit 
+              </a>
+            </form>
+          </div>
+        </div>
+  </div>
+  {%- endmacro %}

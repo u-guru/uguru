@@ -10,14 +10,14 @@
 {% block main_content %}
 <div class="content should-hide-tab-bar should-hide-message-bar">
   <ul class="table-view">
-    {% for _request in user.get_accepted_requests() %}
+    {% for _request in user.get_guru_requests() %}
     {% set request_dict = _request.get_return_dict() %}
     <li class="table-view-cell media">
-        <a class="navigate-right">
-            <img class="media-object pull-left table-view-face" src="{{request_dict['student']['profile_url']}}">
+        <a class="navigate-right" data-transition='slide-in' href='/guru/request/{{request_dict["server_id"]}}'>
+            <div class="media-object pull-left table-view-face" style='background-image: url("{{request_dict['student']['profile_url']}}")'></div>
             <div class="media-body">
                 CS10 Session
-                <p>Waiting for {{request_dict['student']['name']}} to accept</p>
+                <p class='green-text'>You have 10 minutes to accept</p>
             </div>
         </a>
     </li>

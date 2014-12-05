@@ -1,6 +1,7 @@
 {% extends 'web/base.html' %}
 {% from 'web/macros/modals.html' import guru_confirm_session_modal %}
-{% set guru_requests = user.get_accepted_requests() %}
+{% set guru_accepted_requests = user.get_accepted_requests() %}
+{% set guru_incoming_requests = user.get_guru_requests() %}
 {% set scheduled_sessions = user.get_scheduled_sessions_guru() %}
 
 
@@ -58,6 +59,14 @@
 
 
   <ul class="table-view">    
+    {% if guru_incoming_requests %}
+    <li class="table-view-cell">
+      <a class="navigate-right" href='/m/guru/requests/' data-transition='slide-in'>
+        Incoming Requests
+        <span class="badge badge-negative">{{guru_incoming_requests|length}}</span>
+      </a>
+    </li>
+    {% endif %}
     {% if not guru_requests and not scheduled_sessions %}
     <li class="table-view-cell">
       <a class="navigate-right" data-transition='slide-in'>
@@ -65,11 +74,11 @@
       </a>
     </li>
     {% endif %}
-    {% if guru_requests %}
+    {% if guru_accepted_requests %}
     <li class="table-view-cell">
       <a class="navigate-right" href='/m/guru/requests/' data-transition='slide-in'>
         My Accepted Requests
-        <span class="badge">{{guru_requests|length}}</span>
+        <span class="badge">{{guru_accepted_requests|length}}</span>
       </a>
     </li>
     {% endif %}

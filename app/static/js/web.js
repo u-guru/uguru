@@ -317,6 +317,10 @@ $(document).ready(function() {
         }, stripeAddCreditCardHandler);
 
     });
+
+    $('body').on('touchstart', '#negative-guru-request-btn', function() {
+        alert('Sorry! Only one request at a time. Once you are connected with a Guru, you can make another one!')
+    });
 });
 // end document ready
 

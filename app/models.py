@@ -414,6 +414,14 @@ class User(Base):
     def get_pending_requests(self):
         return self.outgoing_requests
 
+    #for guru to get all incoming requests
+    def get_guru_requests(self):
+        all_guru_requests = []
+        for _request in self.outgoing_requests:
+            if self.id != _request.student_id:
+                all_guru_requests.append(_request)
+        return all_guru_requests
+
     #returns ten most recent notifications
     def get_recent_notifications(self):
         notifications = sorted(self.notifications, key=lambda n:n.id, reverse=True)[:10]
@@ -965,8 +973,8 @@ class Request(Base):
         student = User.get_user(self.student_id)
         skill = Skill.query.get(self.skill_id)
 
-        student.pending_requests.remove(self)
-        tutor.pending_requests.remove(self)
+        student.outgoing_requests.remove(self)
+        tutor.outgoing_requests.remove(self)
 
         #Create conversation
         conversation = Conversation.create_conversation(skill, tutor, student)
