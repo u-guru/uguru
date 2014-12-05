@@ -3,31 +3,31 @@
     {% block main_header %}
     <header class="bar bar-nav">
       <h1 class="title">Become a Guru</h1>
-      <a class="btn btn-link btn-nav pull-right" href='/m/guru/' data-transition='fade'>
-        Submit
-      </a>
     </header>
     {% endblock %}
 
     {% block main_content %}
     <div class="content should-hide-message-bar">
-      
       <ul class="table-view">
         <li class="table-view-cell media">
             <div class="media-body">
               Add Photo
+              <div id='guru-profile-photo' class="media-object pull-right table-view-mini-face hidden"></div>
             </div>
-            <button class="btn btn-primary">Upload</button>
-          </a>
+            <a id='upload-photo-link' class="btn btn-primary">Upload</a>
+            <input id='upload-photo' style='display:none;' type='file'/>
         </li>
-        <li class="table-view-cell">
-          <a class='navigate-right' transition='slide-in' href='/add_courses/'>
-            Add Courses
-          </a>
+        <li class='table-view-cell'>
+          Add courses
+          <input id='request-course' type="text" placeholder="CS10" />
+          <a id='upload-photo-link' class="btn btn-primary">Add</a>
         </li>
-        <textarea placeholder='Include a short introduction of yourself!'rows="5"></textarea>
+        <li class='table-view-cell ignore-table-view-margin'>
+          Introduction
+          <textarea placeholder='Include a short introduction of yourself!'rows="5"></textarea>
+        </li>
       </ul>
-      
+      <a href='/m/guru/' data-transition='fade' class='btn btn-block btn-positive'>Submit</a>
     </div>
   {% endblock %}
 

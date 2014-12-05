@@ -1,7 +1,6 @@
 // jQuery Shit
 $(document).ready(function() {
     updateAllBars();
-    
     window.addEventListener('push', function(){
         updateAllBars();
     });
@@ -26,6 +25,8 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: payload,
             success: function(request){
+                $('#login-modal').hide();
+                $('.login-header').css('background-color', 'white');
                 window.PUSH({
                     transition : "slide-in",
                     url : "/home/"
@@ -38,7 +39,6 @@ $(document).ready(function() {
     });
 
     //Student cancels a request
-
     $('body').on('touchstart', '#cancel-link', function() {
         var request_id = ($('#cancel-link').data().requestId).toString();
         
@@ -276,7 +276,6 @@ $(document).ready(function() {
 
     });
 
-<<<<<<< HEAD
     $('body').on('touchstart', '#negative-guru-request-btn', function() {
         alert('Sorry! Only one request at a time. Once you are connected with a Guru, you can make another one!');
     });
@@ -311,6 +310,39 @@ $(document).ready(function() {
         });
     });
 
+    // Guru upload photo link
+    $('body').on('touchstart', '#upload-photo-link', function(e) {
+      e.preventDefault();
+      $('#upload-photo').trigger('click');
+    });
+
+
+    $('body').on('change', '#upload-photo', function(){
+      var file = this.files[0];
+      //TODO Cam: Can we validate this properly?
+      if (file.type != 'image/png' && file.type != 'image/jpg' && file.type != 'image/gif' && file.type != 'image/jpeg' ) {
+        alert("File doesnt match png, jpg, or gif");
+      } else {
+        readURL(this);
+        var formData = new FormData();
+        formData.append('file', file);
+        $.ajax({
+          url:'/update-profile/',
+          type: 'POST',
+          data: formData,
+          cache: false,
+          contentType: false,
+          processData: false
+        });
+      }
+    });
+
+    $('body').on('touchstart', '#profile-title-bar-icon', function(){
+        window.PUSH({
+            transition : "slide-in",
+            url : "/profile/"
+        });
+    });
 
     // Request Form /request_form/
     $('body').on('touchstart', '#request-location-in-person', function(){
@@ -414,6 +446,23 @@ function updateAllBars() {
     updateMainTabBar();
     updateMessageFooter();
 }
+
+
+// Grab incoming photo inject it into page 
+// while s3 is uploading the photo
+function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#upload-photo-link').hide();
+          $('#guru-profile-photo').show();
+          $('#guru-profile-photo').css('background', '(url' + e.target.result + ')');
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
 
 function stripeAddCreditCardHandler(status, response) {
 

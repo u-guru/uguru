@@ -59,10 +59,17 @@
           <a href='#add-card-modal' class='btn btn-link'>Edit</a>
       </li>
       <li class="table-view-cell">
-        <a class="navigate-right" data-transition='slide-in' href='/add_cash_out/'>
+        <a data-transition='slide-in'>
           <div class="media-body">
-            Cash Out Card
+            Deposit Card
           </div>
+          <a href='#add-debit-modal' class='btn btn-link'>
+            {% if user.recipient_id %}
+              Edit
+            {% else %}
+              Add
+            {% endif %}
+          </a>
         </a>
       </li>
       <li class="table-view-cell">

@@ -8,6 +8,9 @@
 
 {% block main_header %}
 <header class="bar bar-nav">
+  <a class='btn btn-link' id='profile-title-bar-icon' data-transition='fade'href='/profile/{{user.id}}'>
+    <div id='guru-profile-photo' class="media-object pull-left table-view-mini-face profile-title-icon" style='background-image:url("{{user.profile_url}}")'></div>
+  </a>
   <h1 class="title uguru-logo">uguru</h1>
   <a class='btn btn-link pull-right'>Help</a>
 </header>

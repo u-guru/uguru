@@ -247,7 +247,11 @@ def profile(_id):
     if not user:
         return redirect(url_for('m_login'))
 
-    #Make sure user can see this tutor profile
+    if user.id == int(_id):
+        return render_template('web/profile.html', \
+        student=None, guru=user, _request=None)
+
+    # Make sure user can see this tutor profile
     results = user.has_incoming_tutor_for_request(int(_id))
     if not results:
         flash('Sorry, you dont have access to this page!')
