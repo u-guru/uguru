@@ -113,18 +113,12 @@ def request_by_id_web_api(request_id):
     if not user:
         return json_response(http_code=401)
 
-    print request.json
-
     #Get request by ID
     _request = Request.get_request_by_id(request_id)
 
     #check if this request_id is valid
     if not _request:
         return json_response(http_code=400)
-
-    #Make sure user is in the right place, either a student, or a tutor.
-    if not user == _request.get_student() and not _request.is_tutor_active(user):
-        return json_response(http_code=403)
         
     if request.method == 'GET':
 
@@ -156,11 +150,13 @@ def request_by_id_web_api(request_id):
             _request.process_tutor_reject(user)
 
         if put_action == 'student-accept':
-            expected_parameters = ['action', 'description']
+            expected_parameters = ['action']
             
             #invalid payload
             if not request_contains_all_valid_parameters(request_json, expected_parameters):
                 return json_response(422)
+
+            tutor = User.get_user(_request.pending_tutor_id)
             
             _request.process_student_acceptance(tutor)
 
@@ -173,9 +169,21 @@ def request_by_id_web_api(request_id):
             if not request_contains_all_valid_parameters(request_json, expected_parameters):
                 return json_response(422)
 
-            print request_json
+            # _request.process_student_reject(tutor)
 
-            # _request.process_studnet_reject(tutor)
+        if put_action == 'guru-confirm':
+            expected_parameters = ['action', 'minutes', 'hours']
+            
+            if not request_contains_all_valid_parameters(request_json, expected_parameters):
+                error_msg = "Please fill in all fields"
+                return json_response(http_code=422, errors=[error_msg])
+
+            minutes = request_json.get('minutes')
+            hours = request_json.get('hours')
+
+            #TODO: Delay this function to tasks.py
+            _request.process_guru_confirm(hours, minutes)
+
             
         request_return_dict = _request.get_return_dict()
         return json_response(http_code = 200, return_dict = request_return_dict)
@@ -1075,7 +1083,7 @@ def api(arg, _id):
                     if difference_time.seconds > (15 * 60):
                         from emails import send_message_alert
                         send_message_alert(receiver, user)
-
+                
 
             message = Message(message_contents, conversation, user, receiver)
             db_session.add(message)

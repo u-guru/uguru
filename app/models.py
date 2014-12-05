@@ -284,12 +284,21 @@ class User(Base):
 
     #TODO: Add more as needed
     def as_dict(self):
+        
+        #if no uploaded photo, use base
+        profile_url = self.profile_url
+        if not self.profile_url:
+            profile_url = '/static/img/default-photo.jpg'
+        
         u_dict = {
             'server_id': self.id,
             'name': self.get_first_name(),
-            'profile_url': self.profile_url,
+            'profile_url': profile_url,
         }
         return u_dict
+
+    def is_a_guru(self):
+        return self.approved_by_admin or self.is_a_tutor or self.skills
 
     #Create stripe customer
     def add_payment_card(self, token):
@@ -306,8 +315,12 @@ class User(Base):
 
         return result 
 
-    def get_all_conversations(self, _dict=None):
+    def get_all_conversations(self, _dict=None, sorted_by_time=None):
         conversations = self.conversations
+
+        if sorted_by_time:
+            conversations = sorted(conversations, lambda c:c.get_last_message_time())
+
         if _dict:
             conversations = {
                 'conversations': [conversation.as_dict() for conversation in conversations]
@@ -330,8 +343,16 @@ class User(Base):
         from views import calc_avg_rating
         return calc_avg_rating(self)
 
+    def get_conversation_with(self, guru):
+        for c in self.conversations:
+            if c.guru == guru:
+                return c
+        return 
+
+
+
     # Go through user.outgoing_requests, filter the ones 
-    # that Gurus have accepted, but student hasn't
+    # that Gurus have accepted, but student hasn't.
     #HACKED for now, will change 
     def get_accepted_requests(self):
         accepted_requests = []
@@ -340,12 +361,23 @@ class User(Base):
                 accepted_requests.append(_request)
         return accepted_requests
 
-    # Go through user.conversations, filter out the
+    # Go through guru.conversations, filter out the
     # active ones.
-    def get_scheduled_sessions(self):
+    def get_scheduled_sessions_guru(self):
         scheduled_sessions = []
         for c in self.conversations:
-            if c.is_active:
+            if c.is_active and self == c.guru:
+                all_requests_by_date = sorted(c.requests, 
+                    key=lambda c:c.time_created, reverse=True)
+                scheduled_sessions.append(all_requests_by_date[0])
+        return scheduled_sessions
+
+    # Go through guru.conversations, filter out the
+    # active ones.
+    def get_scheduled_sessions_student(self):
+        scheduled_sessions = []
+        for c in self.conversations:
+            if c.is_active and self == c.student:
                 all_requests_by_date = sorted(c.requests, 
                     key=lambda c:c.time_created, reverse=True)
                 scheduled_sessions.append(all_requests_by_date[0])
@@ -478,11 +510,18 @@ class Conversation(Base):
     def get_conversation(_id):
         return Conversation.query.get(_id)
 
+    #Returns datetime of the last message sent in the convo
+    def get_last_message_time(self):
+        return self.get_last_message().write_time
+
+    def get_last_message(self):
+        return sorted(self.messages, key=lambda m:m.write_time)[-1]
+
     def get_all_messages(self, _dict=False, sorted_by_time=False):
         messages = self.messages
 
         if sorted_by_time:
-            messages = sorted(messages, key=lambda m:m.time_created)
+            messages = sorted(messages, key=lambda m:m.write_time)
 
         if _dict:
             messages = {
@@ -501,6 +540,11 @@ class Conversation(Base):
             'is_active': self.is_active,
             'message_count': len(self.messages),
         }
+
+        last_message = self.get_last_message()
+        if last_message: 
+            c_dict['last_message'] = last_message.as_dict()
+
         return c_dict
 
     def __init__(self, skill, guru, student):
@@ -684,18 +728,27 @@ class Tag(Base):
 class Payment(Base):
     __tablename__ = 'payment'
     id = Column(Integer, primary_key = True)
+    
+    #in use as of 12/4/14
     student_id = Column(Integer)
     tutor_id = Column(Integer)
     request_id = Column(Integer)
     skill_id = Column(Integer)    
-    time_amount = Column(Float)
-    tutor_rate = Column(Float)
-    student_paid_amount = Column(Float)
-    tutor_received_amount = Column(Float)
     time_created = Column(DateTime)
     stripe_charge_id = Column(String)
     stripe_recipient_id = Column(String)
+    student_paid_amount = Column(Float)
+    tutor_received_amount = Column(Float)
+    flag = Column(Boolean) #for if payment didn't go through
 
+    #new
+    num_minutes = Column(Integer)
+    num_hours = Column(Integer)
+
+
+    #deprecated, but need to migrate shit from production
+    time_amount = Column(Float)
+    tutor_rate = Column(Float)
     student_description = Column(String)
     tutor_description = Column(String)
     tutor_confirmed = Column(Boolean)
@@ -707,6 +760,78 @@ class Payment(Base):
     refunded = Column(Boolean)
     status = Column(String)
     credits_used = Column(Integer)
+
+
+    @staticmethod
+    def bill_student(student, total):
+        import stripe
+        try: 
+            charge = stripe.Charge.create(
+                amount = int(total*100),
+                currency="usd",
+                customer=student.customer_id,
+                description="charge for receiving tutoring"
+            )
+        except stripe.error.CardError, e:
+            return False
+        
+        #Success case
+        return charge['id']
+
+
+
+    @staticmethod
+    def create_payment(_request, hours, minutes):
+        payment = Payment()
+        payment.student_id = _request.student_id
+        payment.tutor_id = _request.connected_tutor_id
+        payment.request_id = _request.id
+        payment.skill_id = _request.skill_id
+        payment.time_created = datetime.now()
+        payment.num_hours = hours
+        payment.num_minutes = minutes
+        
+        student = _request.get_student()
+        guru = User.query.get(_request.connected_tutor_id)
+        
+        payment.student_paid_amount = Payment.calculate_student_price(hours, minutes)
+        payment.tutor_received_amount = Payment.calculate_guru_price(hours, minutes)
+
+        bill_student_result = Payment.bill_student(student, payment.student_paid_amount)
+        #TODO, if a Guru already has a debit card, just cash out for them.
+        
+        #Charge succeeded
+        if bill_student_result:
+            payment.stripe_charge_id = bill_student_result
+        #TODO: Flag it, notifiy student
+        else:
+            payment.flag = True
+
+        student.payments.append(payment)
+        guru.payments.append(payment)
+
+        try: 
+            db_session.add(payment)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
+        return payment
+
+    @staticmethod 
+    def calculate_student_price(hours, minutes):
+        total_hours = hours + float(minutes / 60.0)
+        total_amount = 20 * total_hours
+        rounded_total_amount = round(total_amount, 2)
+        return rounded_total_amount
+
+    @staticmethod 
+    def calculate_guru_price(hours, minutes):
+        total_hours = hours + float(minutes / 60.0)
+        total_amount = 16 * total_hours
+        rounded_total_amount = round(total_amount, 2)
+        return rounded_total_amount
 
 
     def __init__(self, request_id = None):
@@ -825,6 +950,11 @@ class Request(Base):
             return True
         return False
 
+    def get_conversation(self):
+        c = Conversation.query.filter_by(student_id = self.student_id, \
+            guru_id=self.connected_tutor_id).first()
+        return c
+
     def process_student_acceptance(self, tutor):
         from datetime import datetime
         
@@ -835,10 +965,14 @@ class Request(Base):
         student = User.get_user(self.student_id)
         skill = Skill.query.get(self.skill_id)
 
+        student.pending_requests.remove(self)
+        tutor.pending_requests.remove(self)
+
         #Create conversation
         conversation = Conversation.create_conversation(skill, tutor, student)
         conversation.requests.append(self)
         conversation.last_updated = datetime.now()
+        conversation.is_active = True
 
         try:
             db_session.commit()
@@ -846,8 +980,24 @@ class Request(Base):
             db_session.rollback()
             raise
 
+    def process_guru_confirm(self, hours, minutes):
+        
+        #create payment & bill student
+        payment = Payment.create_payment(self, hours, minutes)
+        self.payment_id = payment.id
+
+        #create rating
+        rating = Rating.create_rating(self)
+
+        #make conversation inactive
+        self.get_conversation().is_active = False 
+
+        return 
+
+
     def process_tutor_acceptance(self, tutor):
         self.committed_tutors.append(tutor)
+        self.pending_tutor_id = tutor.id
         try:
             db_session.commit()
         except:
@@ -1058,6 +1208,30 @@ class Rating(Base):
     tutor_rating_description = Column(String(256))
     tutor_no_meet_description = Column(String(256))
     student_no_meet_description = Column(String(256))
+
+    @staticmethod
+    def create_rating(_request):
+        rating = Rating()
+
+        rating.request_id = _request.id
+        rating.student_id = _request.student_id
+        rating.tutor_id = _request.connected_tutor_id
+        rating.skill_id = _request.skill_id
+        rating.time_created = datetime.now()
+
+        student = User.query.get(_request.student_id)
+        tutor = User.query.get(_request.connected_tutor_id)
+        
+        student.pending_ratings.append(rating)
+        tutor.pending_ratings.append(rating)
+
+        try: 
+            db_session.add(rating)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise         
+
 
     def __init__(self, request_id=None):
         if request_id:

@@ -35,11 +35,10 @@
           <a class='btn btn-negative btn-block decline' href='#student-reject-tutor-modal' > 
                 Reject
           </a>
-          <a class='btn btn-positive btn-block accept' href='#student-accept-tutor-modal'> 
+          <a class='btn btn-positive btn-block accept' href='/confirm_request/{{request_dict["server_id"]}}' data-transition='slide-in'> 
                 Accept 
           </a>
           {{student_reject_modal(request_dict)}}
-          {{student_accept_modal(request_dict, user)}}
       
       {% else %}
 
@@ -58,7 +57,7 @@
             <div class='content-padded'></h6>
               <form>
                 <textarea id='cancel-request-description' placeholder='Please tell us why! Help us make your future experience be the best as possible.'rows="5"></textarea>
-                <a class='btn btn-positive btn-block' href='#' id='cancel-link'> 
+                <a class='btn btn-positive btn-block' data-request-id='{{request_dict["server_id"]}}' href='#' id='cancel-link'> 
                   Submit 
                 </a>
               </form>

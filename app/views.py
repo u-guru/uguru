@@ -52,26 +52,32 @@ def home():
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
-
+    
     #Check if user is a student & has pending requests
     pending_requests = user.get_pending_requests()
-    if pending_requests:
-        pending_request_id = pending_requests[0].id
+    if pending_requests and pending_requests[0].get_student() == user:
         return redirect( \
             url_for(endpoint='request_by_id', _id=pending_request_id))
-
-    #Check if user is a tutor & has incoming_requests
 
     return render_template('web/home.html', user=user)
 
 @app.route('/m/guru/')
-def guru():
+def m_guru():
 
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
 
     return render_template('web/guru.html', user=user)
+
+@app.route('/m/guru/sessions/')
+def guru_sessions():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/guru_sessions.html', user=user)
 
 @app.route('/m/guru/requests/')
 def guru_requests():
@@ -88,19 +94,30 @@ def my_tutors():
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
+
+    print user.get_all_conversations()
     
-    return render_template('web/my_tutors.html')
+    return render_template('web/my_tutors.html', user=user)
 
 @app.route('/m/login/')
 def m_login():
 
     user = api.current_user()
     if user:
+        
+        #if tutor
+        accepted_requests = user.get_accepted_requests()
+        if accepted_requests or user.skills:
+            return redirect(url_for('m_guru'))
+
+        # if student w/ requests
         pending_requests = user.get_pending_requests()
         if pending_requests:
             pending_request_id = pending_requests[0].id
             return redirect( \
                 url_for(endpoint='request_by_id', _id=pending_request_id))
+        
+        #Go to home page regardless
         else:
             return redirect(url_for('home'))
     
@@ -192,15 +209,20 @@ def add_courses():
 
     return render_template('web/add_courses.html')
 
-@app.route('/m/messages/')
-def m_messages():
+@app.route('/c/<_id>')
+@app.route('/conversation/<_id>')
+@app.route('/guru/conversation/<_id>')
+def m_messages(_id):
 
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
-    
-    return render_template('web/messages.html')
 
+    convo = Conversation.query.get(_id)
+    
+    return render_template('web/messages.html', convo=convo, user=user)
+
+@app.route('/guru/settings/')
 @app.route('/m/settings/')
 def m_settings():
 
@@ -208,7 +230,9 @@ def m_settings():
     if not user:
         return redirect(url_for('m_login'))
     
-    return render_template('web/settings.html')
+    return render_template('web/settings.html',\
+        stripe_key=stripe_keys['publishable_key'],\
+        user=user)
 
 
 @app.route('/p/<_id>/')
@@ -272,17 +296,14 @@ def support():
 
 
 @app.route('/r/<_id>/')
-@app.route('/request/<_id>/')
 @app.route('/confirm_request/<_id>/')
+@app.route('/request/<_id>/')
 def request_by_id(_id):
-
     #if ID is not accurate, send back to home.
-    _request = Request.get_request_by_id(_id)
+    _request = Request.get_request_by_id(int(_id))
     if not _request:
         
         return redirect(url_for('home'))
-
-    print _request.committed_tutors
 
     #if tutor (should take up the whole page)
     user = api.current_user()
@@ -295,13 +316,15 @@ def request_by_id(_id):
         return redirect(url_for('home'))
 
     #if Guru shouldn't see this.
-    if not user == _request.get_student() and not _request.is_tutor_involved:
-        return redirect(url_for('home'))
+    if not user == _request.get_student() and not _request.is_tutor_involved():
+        flash("Sorry! You don't have access to this page.")
+        return redirect(url_for('m_guru'))
 
     #Different page, same validation, might as well put in same route? 
     if 'confirm_request' in request.url:
-        render_template('web/confirm_request.html', user=user,\
-        request_dict=_request.get_return_dict())
+        return render_template('web/confirm_request.html', user=user,\
+        request_dict=_request.get_return_dict(),\
+        stripe_key=stripe_keys['publishable_key'])
     
 
     return render_template('web/request_details.html', user=user,\

@@ -33,6 +33,7 @@ def request_obj_to_dict(_request, skill, student, tutor=None):
     #If request is in matched stage with a matched tutor
     if request_status == 'matched' and tutor:
         return_dict['connected_tutor'] = user_obj_to_dict(tutor)
+        return_dict['conversation'] = student.get_conversation_with(tutor).as_dict()
 
     #If request is in pending stage with interested tutors
     interested_tutors = _request.get_interested_tutors()

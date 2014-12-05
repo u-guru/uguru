@@ -1,4 +1,4 @@
-{% macro process_tab_bar(show=False, active_page=None, student_mode=True) -%}
+{% macro process_tab_bar(user, show=False, active_page=None, student_mode=True) -%}
 <nav id='main-bar-tab' class="bar bar-tab" style='display:none'>  
     {% if student_mode %}
     <a data-transition='fade' class="tab-item main-tab-item" href="/home/">
@@ -13,8 +13,8 @@
       <span class="icon icon-gear"></span>
       <span class="tab-label">Settings</span>
     </a>
-    <a class="tab-item main-tab-item" href="/become_guru/" data-transition='fade'>
-      <span class="icon icon-star-filled"></span>
+    <a class="tab-item main-tab-item" href="{% if user.approved_by_admin %}/m/guru/{%else%} /become_guru/ {% endif %}" data-transition='fade'>
+      <span class="icon icon-star"></span>
       <span class="tab-label">Guru</span>
     </a>
     {% else %}
@@ -26,15 +26,11 @@
       <span class="icon icon-person"></span>
       <span class="tab-label">My Profile</span>
     </a>
-    <a class="tab-item" href="#">
-      <span class="icon icon-plus"></span>
-      <span class="tab-label">Cash Out</span>
-    </a>
-    <a data-transition='fade' class="tab-item main-tab-item" href="#">
+    <a data-transition='fade' class="tab-item main-tab-item" href="/guru/settings/">
       <span class="icon icon-gear"></span>
       <span class="tab-label">Settings</span>
     </a>
-    <a class="tab-item" href="/home/" data-transition='fade'>
+    <a class="tab-item main-tab-item" href="/home/" data-transition='fade'>
       <span class="icon icon-edit"></span>
       <span class="tab-label">Student</span>
     </a>

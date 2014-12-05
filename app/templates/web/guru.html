@@ -1,33 +1,70 @@
 {% extends 'web/base.html' %}
+{% from 'web/macros/modals.html' import guru_confirm_session_modal %}
 {% set guru_requests = user.get_accepted_requests() %}
+{% set scheduled_sessions = user.get_scheduled_sessions_guru() %}
+
 
 
 {% block main_header %}
 <header class="bar bar-nav">
   <h1 class="title uguru-logo">uguru</h1>
+  <a class='btn btn-link pull-right'>Help</a>
 </header>
 {% endblock %}
 
 {% block main_content %}
 <div class="content should-hide-message-bar">
   <div class='logo-container center content-padded'>
-    <img class="media-object guru-photo" src="/static/img/guru-new.svg">
+    {% if not guru_requests and not scheduled_sessions %}
+      <img class="media-object guru-photo" src="/static/img/guru-new.svg">
+    {% endif %}
   </div>
-  
 
-  <ul class="table-view">
-    <li class="table-view-cell media">
-        <a class="navigate-right">
-            <img class="media-object pull-left table-view-face" src="/static/img/face3.png">
-            <div class="media-body">
-                CS10 Session with Peter
-                <p>Today at 8pm</p>
-            </div>
-        </a>
+
+  {% for _request in scheduled_sessions %}
+      {% set request_dict = _request.get_return_dict() %}
+      <ul class="table-view table-view-scheduled">    
+        <li class='table-view-cell'>
+          <h1>{{request_dict['skill_name']}} 
+            <span class='grey-text'>Session</span>
+          </h1>
+          <p class='red-text'>
+            TODAY AT 8PM
+          </p>
+        </li>
+        <li class="table-view-cell media">
+                <div class="media-object pull-left table-view-face" style='background-image: url("{{request_dict['connected_tutor']['profile_url']}}")'></div>
+                <div class="media-body">
+                  {{request_dict['student']['name']}}
+                </div>
+        </li>
+        <li class='table-view-cell'>
+          <a class='navigate-right' href='/guru/conversation/{{request_dict["conversation"]["server_id"]}}' data-transition='slide-in'> 
+            Location: {{request_dict['location']}}
+          </a>
+        </li>
+        <li class='table-view-cell'>
+          $4 for every 15 minutes 
+          <a class='btn btn-primary' href='#guru-start-session-{{request_dict["server_id"]}}'>
+            Start Session
+          </a>
+        </li>
+      </ul>
+
+      {{guru_confirm_session_modal(_request)}}
+
+    {% endfor %}
+
+
+
+  <ul class="table-view">    
+    {% if not guru_requests and not scheduled_sessions %}
+    <li class="table-view-cell">
+      <a class="navigate-right" data-transition='slide-in'>
+        Guru Getting-Started Guide
+      </a>
     </li>
-  </ul>
-
-  <ul class="table-view">
+    {% endif %}
     {% if guru_requests %}
     <li class="table-view-cell">
       <a class="navigate-right" href='/m/guru/requests/' data-transition='slide-in'>
@@ -36,16 +73,6 @@
       </a>
     </li>
     {% endif %}
-    <li class="table-view-cell">
-      <a class="navigate-right">
-        Upcoming Sessions
-      </a>
-    </li>
-    <li class="table-view-cell">
-      <a class="navigate-right">
-        Guru Guide to Success
-      </a>
-    </li>
   </ul>
 
 </div><!-- /.content -->

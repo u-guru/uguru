@@ -1,109 +1,96 @@
 header .uguru-logo {
   font-family: 'Grand Hotel', cursive;
-  font-size: 24px; 
-}
+  font-size: 24px; }
 
-#type-message {
-  width: 78%; 
-}
+#message-contents {
+  width: 78%; }
 
-.message-face, .table-view-face {
-  height: 40px; 
-}
+  .message-face, .table-view-face {
+    width: 42px;
+    height: 42px;
+    border-radius: 20px;
+    border: 2px solid white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%; }
 
-.guru-photo {
-  height: 120px; 
-}
+    .guru-photo {
+      height: 120px; }
 
-.logo-container {
-  margin-top: 15%;
-  margin-bottom: 15%; 
-}
+      .logo-container {
+        margin-top: 15%;
+        margin-bottom: 15%; }
 
-.table-view-cell-photo {
-  height: 20px; 
-}
+        .table-view-cell-photo {
+          height: 20px; }
 
-.red-text {
-  color: red; 
-}
+          .red-text {
+            color: red; }
 
-.green-text {
-  color: #5cb85c; 
-}
+            .grey-text {
+              color: #8f8f94; }
 
-.grey-text {
-  color: #8f8f94; 
-}
+              .bar {
+                display: block; }
 
-.bar {
-  display: block; 
-}
+                .center {
+                  text-align: center; }
 
-.center {
-  text-align: center; 
-}
+                  .table-view-cell-profile-photo {
+                    height: 25px; }
 
-.table-view-cell-profile-photo {
-  height: 25px; 
-}
+                    .updated-text {
+                      position: absolute;
+                      left: 0;
+                      right: 0;
+                      padding: 10px 0;
+                      font-size: 11px;
+                      text-align: center; }
 
-.updated-text {
-  position: absolute;
-  left: 0;
-  right: 0;
-  padding: 10px 0;
-  font-size: 11px;
-  text-align: center; 
-}
+                      .toggle.toggle-inline {
+                        display: inline-block; }
 
-.toggle.toggle-inline {
-  display: inline-block; 
-}
+                        .table-view-cell.message-cell, .table-view-cell.request-cell,
+                        .ignore-table-view-margin {
+                          padding: 10px 15px 11px 15px; }
 
-.table-view-cell.message-cell, .table-view-cell.request-cell,
-.ignore-table-view-margin {
-  padding: 10px 15px 11px 15px; 
-}
+                          .table-view-cell .icon {
+                            color: #007aff; }
 
-.table-view-cell .icon {
-  color: #007aff; 
-}
+                            .icon.profile-star {
+                              font-size: 14px; }
 
-.icon.profile-star {
-  font-size: 14px; 
-}
+                              .padding-top-5 {
+                                padding-top: 5px; }
 
-.padding-top-5 {
-  padding-top: 5px; 
-}
+                                .bold {
+                                  font-weight: bold; }
 
-.bold {
-  font-weight: bold; 
-}
+                                  .no-border-top {
+                                    border-top: 0; }
 
-.black {
-  color: black !important; 
-}
+                                    .black {
+                                      color: black !important; }
 
-input#card-num {
-  background: url('/static/img/card.png') no-repeat;
-  background-size: 32px 24px;
-  background-position: 95%; 
-}
+                                      input#card-num {
+                                        background: url('/static/img/card.png') no-repeat;
+                                        background-size: 32px 24px;
+                                        background-position: 95%; }
 
-input#card-num.visa {
-  background-image: url('/static/img/visa.png'); 
-}
+                                        input#card-num.visa {
+                                          background-image: url('/static/img/visa.png'); }
 
-input#credit-card-num.mastercard {
-  background-image: url('/static/img/mastercard.png'); 
-}
+                                          input#credit-card-num.mastercard {
+                                            background-image: url('/static/img/mastercard.png'); }
 
-input#credit-card-num.discover {
-  background-image: url('/static/img/discover.png'); 
-}
+                                            input#credit-card-num.discover {
+                                              background-image: url('/static/img/discover.png'); }
 
-input#credit-card-num.amex {
-  background-image: url('/static/img/discover.png'); 
-}
+                                              input#credit-card-num.amex {
+                                                background-image: url('/static/img/discover.png'); }
+
+                                                .table-view.no-margin {
+                                                  margin-top: 0px !important; }
+
+                                                  .auto-height {
+                                                    height: auto; }

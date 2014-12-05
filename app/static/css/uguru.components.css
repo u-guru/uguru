@@ -15,8 +15,20 @@
     border-bottom: 1px solid #dddn;
 }
 
+.icon, a {
+    color: #69B3A5;
+}
+
+.bar-tab .icon {
+    color: #c9cdcd
+}
+
 .content {
     background-color: #3b484d;
+}
+
+.btn.btn-link {
+    color: #45DA5E;
 }
 
 .table-view {
@@ -40,29 +52,29 @@ header .uguru-logo {
     color: #ffffff;
 }
 
-.bar-tab .tab-item.active, .bar-tab .tab-item:active {
+.tab-item.active, .bar-tab .tab-item:active {
     color: #48b7a6;
 }
 
 /* button */
 /* positive_negative_big */
+
+
+
 .btn-positive {
     color: #fff;
     background-color: #69B3A5;
     border: 1px solid #69B3A5;
+}
+
+
+.btn-positive.btn-block, .btn-negative.btn-block {
     margin: auto;
     width: 94%;
     border-radius: 1px;
     font-family: 'HelveticaNeue-Medium';
 }
 
-.btn-negative {
-    color: #7b8486;
-    background-color: #4e5c5f;
-    border: 1px solid #7b8486;
-    margin-left: 10px;
-    margin-right: 5px;
-}
 /* positive_negative_half */
 .btn.btn-positive.btn-block.sign-up {
     color: #fff;
@@ -91,6 +103,12 @@ header .uguru-logo {
     font-family: 'HelveticaNeue-Medium';
 }
 
+.btn.btn-negative {
+    color: #7b8486;
+    background-color: #4e5c5f;
+    border: 1px solid #7b8486;
+}
+
 .btn.btn-negative.btn-block.decline {
     color: #7b8486;
     background-color: #4e5c5f;
@@ -115,10 +133,6 @@ header .uguru-logo {
     font-family: 'HelveticaNeue-Medium';
 }
 
-.btn.btn-link {
-    color:#fff;
-}
-
 /* form */
 .input-row {
     height: 48px;
@@ -138,6 +152,12 @@ header .uguru-logo {
 
 }
 
+h1, h2, h3 {
+    font-family: 'HelveticaNeue-Light';
+    color: white;
+    font-weight:100;
+}
+
 /* nav */
 
 .main-tab-item.active {
@@ -154,17 +174,16 @@ header .uguru-logo {
 
 
 /* home -> choose tutor */
-.red-text {
-    color: #02e452;
-}
-
-.btn-negative {
-    background-color: #69B3A5;
-    border: 1px solid #69b2a5;
+.red-text, .green-text  {
+    color: #45DA5E;
 }
 
 .btn.btn-primary {
     background-color:#CC792B;
+}
+
+.table-view.table-view-scheduled {
+    border-left: 5px solid #CC792B;
 }
 
 .btn.btn-outlined {
@@ -185,13 +204,8 @@ header .uguru-logo {
     color: #fff;
 }
 
-.icon-left-nav:before {
-    color: #c9cdcd;
-}
-
-
 /* tutors */
-.black {
+.icon.icon-star-filled {
     color: #02e452 !important;
 }
 

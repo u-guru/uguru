@@ -1,4 +1,5 @@
 {% extends 'web/base.html' %}
+{% from 'web/macros/modals.html' import add_card_modal %}
 
 {% block main_header %}
 <header class="bar bar-nav">
@@ -52,11 +53,10 @@
     <h6 class="content-padded">Payment Setting</h6>
     <ul class='table-view'>
       <li class="table-view-cell">
-        <a class="navigate-right" data-transition='slide-in' href='/add_payment/'>
           <div class="media-body">
             Payments Card
           </div>
-        </a>
+          <a href='#add-card-modal' class='btn btn-link'>Edit</a>
       </li>
       <li class="table-view-cell">
         <a class="navigate-right" data-transition='slide-in' href='/add_cash_out/'>
@@ -73,5 +73,7 @@
     </ul>
 
   </div>
+
+  {{ add_card_modal(user, stripe_key) }}
 </div>
 {% endblock %}

@@ -64,39 +64,3 @@
 </div>
   
 {%- endmacro %}
-
-{% macro student_accept_modal(request_dict, student) -%}
-
-<div id="student-accept-tutor-modal" class="modal">
-  <header class="bar bar-nav">
-    <a class="btn btn-link pull-left" href="#student-accept-tutor-modal">Cancel</a>
-    <h1 class="title">Confirm</h1>
-  </header>
-
-  <div class="content">
-      <ul class='table-view'>
-        {% if not student.customer_id %}
-          <li class='table-view-cell'>
-            <a class='navigate-right' href='/add_payment/{{request_dict["server_id"]}}/' data-transition='slide-in'>
-              Add Payment Method
-              <p> Billed occurs at the end of the session. 100% satisfaction guaranteed.</p>
-            </a>
-          </li>
-        {% else %}
-          <li class='table-view-cell'>
-            <a class='navigate-right' href='/add_payment/{{request_dict["server_id"]}}/' data-transition='slide-in'>
-              Payment Details
-              <p>
-                Card: *{{student.customer_last4}}
-              </p>
-              <span class='btn btn-link'>
-                Edit
-              </span>
-            </a>
-          </li>
-        {% endif %}
-      </ul>
-    </div>
-</div>
-
-{%- endmacro %}

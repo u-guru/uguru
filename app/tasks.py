@@ -47,7 +47,6 @@ def contact_qualified_tutors(request_id):
     for tutor in r.requested_tutors:
         #hack for now
         tutor.outgoing_requests.append(r)
-        print tutor.id, tutor.name, tutor.email
     try:
         db_session.commit()
     except:

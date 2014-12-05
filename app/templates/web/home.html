@@ -1,4 +1,5 @@
 {% extends 'web/base.html' %}
+{% set scheduled_sessions = user.get_scheduled_sessions_student() %}
 
 {% block main_header %}
 <header class="bar bar-nav">
@@ -9,40 +10,52 @@
 {% block main_content %}
 <div class="content should-hide-message-bar">
   <div class='logo-container center content-padded'>
+    {% if not scheduled_sessions %}
     <img class="media-object guru-photo" src="/static/img/guru-new.svg">
+    {% endif %}
   </div>
 
-  <ul class="table-view">
-    <li class="table-view-cell media">
-        <a class="navigate-right">
-            <img class="media-object pull-left table-view-face" src="/static/img/face3.png">
-            <div class="media-body">
-                CS10 Session with Peter
-                <p>Today at 8pm</p>
-            </div>
-        </a>
-    </li>
-  </ul>
-
-  <ul class="table-view">
-    <li class="table-view-cell">
-      <a class="navigate-right" data-transition='slide-in' href='/request/'>
-        How it Works
-      </a>
-    </li>
-    <li class="table-view-cell">
-      <a class="navigate-right" data-transition='slide-in' href='/request/'>
-        <span class="badge">2</span>
-        Current Requests
-      </a>
-    </li>
-  </ul>
+  {% for _request in scheduled_sessions %}
+      {% set request_dict = _request.get_return_dict() %}
+      <ul class="table-view table-view-scheduled">    
+        <li class='table-view-cell'>
+          <h1>{{request_dict['skill_name']}} 
+            <span class='grey-text'>Session</span>
+          </h1>
+          <span class='red-text'>
+            TODAY AT 8PM
+          </span>
+        </li>
+        <li class="table-view-cell media">
+                <img class="media-object pull-left table-view-face" src="{{request_dict['connected_tutor']['profile_url']}}">
+                <div class="media-body">
+                  {{request_dict['connected_tutor']['name']}}
+                    <p>
+                        <span class="icon icon-star-filled profile-star black"></span>
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                    </p>
+                </div>
+                <a class='btn btn-link'> View More
+                </a>
+        </li>
+        <li class='table-view-cell'>
+          Location: {{request_dict['location']}}
+        </li>
+        <li class='table-view-cell'>
+          $5 for every 15 minutes
+        </li>
+      </ul>
+    {% endfor %}
 
   <a class="btn btn-positive btn-block" href="/request_form/" data-transition='slide-in'>
     Request Guru
   </a>
 
   {% include 'web/snippets/flash_alerts.html'%}
+  {{show_all_components(user, student_mode)}}
 
 </div><!-- /.content -->
 {% endblock %}

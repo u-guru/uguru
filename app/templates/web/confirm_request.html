@@ -1,16 +1,37 @@
 {% extends 'web/base.html' %}
-{% from 'web/macros/request.html' import request_details, student_reject_modal, student_accept_modal %}
+{% from 'web/macros/modals.html' import add_card_modal %}
 {% set is_student = (user.id == request_dict['student']['server_id'])%}
 {% set is_guru = not is_student %}
 
 {% block main_header %}
     <header class="bar bar-nav">
-        <h1 class="title uguru-logo">uguru</h1>
+        <h1 class="title">Confirm</h1>
+        <a class="icon icon-left-nav pull-left" href="/request/{{request_dict['server_id']}}/" data-transition="slide-out"></a>    
     </header>
 {% endblock %}
 
 {% block main_content %}
 <div class="content should-hide-tab-bar should-hide-message-bar">
-    <a class="icon icon-left-nav pull-left" href="/become_guru/" data-transition="slide-out"></a>    
+    <ul class='table-view'>
+        {% if not user.customer_id %}
+          <li class='table-view-cell'>
+              Add Payment Method
+              <a href='#add-card-modal'class='btn btn-primary'>Add Card</a>
+              <p> 100% Satisfaction Guranteed </p>
+          </li>
+        {% else %}
+          <li class='table-view-cell'>
+              Edit Payment
+              <a href='#add-card-modal' class='btn btn-link'>Edit</a>
+              <p> Card **{{user.customer_last4}}</p>
+          </li>
+        {% endif %}
+      </ul>
+      {% if user.customer_id %}
+        <a id='student-accept-guru-link' class='btn btn-positive btn-block'> Confirm </a>
+      {% else %}
+        <button class='btn btn-negative btn-block' disable> Confirm </button>
+      {% endif %}
+      {{ add_card_modal(user, stripe_key) }}
 </div>
 {% endblock %}

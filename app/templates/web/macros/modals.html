@@ -1,0 +1,73 @@
+{% macro add_card_modal(user, stripe_key) -%}
+<div id="add-card-modal" class="modal">
+  <header class="bar bar-nav">
+        {% if not user.customer_id %}
+        <h1 class="title">Add Card</h1>
+        {% else %}
+        <h1 class="title">Add a New Card</h1>
+        {% endif %}
+        <a href='#add-card-modal'class='icon icon-close pull-right'></a>
+  </header>
+
+
+  <div class="content">
+        <ul class="table-view">
+          <form class="input-group">
+            <input id='card-num' type="text" placeholder="•••• •••• •••• ••••">
+            <input id='exp-date' type="text" placeholder="MM / YYYY">
+          </form>
+        </ul>
+        <a id='add-card-link' data-user-id='{{user.id}}' class="btn btn-positive btn-block">Submit</a>
+
+        <!-- Inject all stripe-related scripts --> 
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="/static/js/jquery.payment.js"></script>
+        <script src="https://js.stripe.com/v2/"></script>
+        <script type="text/javascript">Stripe.setPublishableKey("{{stripe_key}}");</script>
+        <script class='content-js'>
+          $('input#card-num').payment('formatCardNumber');
+          $('input#exp-date').payment('formatCardExpiry');
+        </script>
+  </div>
+</div>
+{%- endmacro %}
+
+{% macro guru_confirm_session_modal(_request) -%}
+  <div id="guru-start-session-{{_request.id}}" class="modal">
+  <header class="bar bar-nav">
+        <h1 class="title">Confirm Session</h1>
+        <a href='#guru-start-session-{{_request.id}}'class='icon icon-close pull-right'></a>
+  </header>
+
+  <div class="content">
+        <ul class='table-view'>
+          <li class='table-view-cell'>
+            Next Steps
+            <p>
+              <br>
+              1. Start a timer when you meet your student. 
+              <br>
+              2. Enter the time for the session.
+              <br>
+              3. Confirm, and get paid immediately.
+            </p>
+          </li>
+        </ul>
+  </div>
+  <div class="bar bar-footer-secondary auto-height">
+    <form class="input-group" >
+          <div class='input-row'>
+              <label>Hours</label>
+                <input type="number" id="confirm-hours-{{_request.id}}" placeholder="Enter hours"></input>
+          </div>
+          <div class='input-row'>
+              <label>Minutes</label>
+              <input type="number" id="confirm-minutes-{{_request.id}}" placeholder="Enter minutes"></input>
+          </div>
+    </form>
+  </div>
+  <div class="bar bar-footer">
+    <a data-request-id='{{_request.id}}' class="btn btn-positive btn-block guru-confirm-session">Confirm and Get Paid!</a>
+  </div>
+</div>
+{%- endmacro %}
