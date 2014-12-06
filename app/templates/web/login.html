@@ -21,4 +21,30 @@
   </form>
   <a class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="login-link">Login</a>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#login-link').click(function(event) {
+            payload = JSON.stringify({
+                email:$('#login-form #email-field').val(),
+                password:$('#login-form #password-field').val()
+            });
+            $.ajax({
+                url: '/api/v1/login',
+                type: 'POST',
+                contentType: 'application/json',
+                data: payload,
+                success: function(request){
+                    window.PUSH({
+                        transition : "slide-in",
+                        url : "/home/"
+                    });
+                },
+                error: function (request) {
+                    alert(request.responseJSON['errors']);
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}

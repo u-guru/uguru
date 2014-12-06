@@ -13,32 +13,6 @@ $(document).ready(function() {
     });
 
 
-    // Login Page
-    $('body').on('touchstart', '#login-link', function(){
-
-        payload = JSON.stringify({
-            email:$('#login-form #email-field').val(),
-            password:$('#login-form #password-field').val()
-        });
-        $.ajax({
-            url: '/api/v1/login',
-            type: 'POST',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                $('#login-modal').hide();
-                $('.login-header').css('background-color', 'white');
-                window.PUSH({
-                    transition : "slide-in",
-                    url : "/home/"
-                });
-            },
-            error: function (request) {
-                alert(request.responseJSON['errors']);
-            }
-        });
-    });
-
     //Student cancels a request
     $('body').on('touchstart', '#cancel-link', function() {
         var request_id = ($('#cancel-link').data().requestId).toString();
