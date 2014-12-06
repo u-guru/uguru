@@ -207,32 +207,6 @@ $(document).ready(function() {
         });
     });
 
-    
-    // Signup Page Form
-    $('body').on('touchstart', '#signup-link', function(){
-        payload = JSON.stringify({
-            name     : $('#signup-form #name-field').val(),
-            email    : $('#signup-form #email-field').val(),
-            password : $('#signup-form #password-field').val()
-        });
-
-        $.ajax({
-            url: '/api/v1/signup',
-            type: 'POST',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                window.PUSH({
-                    transition : "slide-in",
-                    url : "/home/"
-                });
-            },
-            error: function (request) {
-                alert(request.responseJSON['errors']);
-            }
-        });
-    });
-
     $('body').on('touchstart', '#add-card-link', function(){
         if (!$('input#card-num').val() || !$('input#exp-date').val()) {
             alert('Please enter all fields');

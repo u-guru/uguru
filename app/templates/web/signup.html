@@ -9,7 +9,6 @@
 
 {% block main_content %}
 
-
 <div class="content should-hide-message-bar should-hide-tab-bar">
     <form class="input-group" id="signup-form">
         <div class='input-row'>
@@ -31,5 +30,33 @@
     </form>
     <a class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="signup-link">Signin</a>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#signup-link').click(function(){
+            payload = JSON.stringify({
+                name     : $('#signup-form #name-field').val(),
+                email    : $('#signup-form #email-field').val(),
+                password : $('#signup-form #password-field').val()
+            });
+
+            $.ajax({
+                url: '/api/v1/signup',
+                type: 'POST',
+                contentType: 'application/json',
+                data: payload,
+                success: function(request){
+                    window.PUSH({
+                        transition : "slide-in",
+                        url : "/home/"
+                    });
+                },
+                error: function (request) {
+                    alert(request.responseJSON['errors']);
+                }
+            });
+        });
+    });
+</script>
 
 {% endblock %}
