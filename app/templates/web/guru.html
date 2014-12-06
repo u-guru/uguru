@@ -1,5 +1,7 @@
 {% extends 'web/base.html' %}
-{% from 'web/macros/modals.html' import guru_confirm_session_modal %}
+{% from 'web/macros/modals.html' import guru_confirm_session_modal,
+ %}
+{% from 'web/macros/request.html' import request_details_guru_waiting %}
 {% set guru_accepted_requests = user.get_accepted_requests() %}
 {% set guru_incoming_requests = user.get_guru_requests() %}
 {% set scheduled_sessions = user.get_scheduled_sessions_guru() %}
@@ -19,7 +21,7 @@
 {% block main_content %}
 <div class="content should-hide-message-bar">
   <div class='logo-container center content-padded'>
-    {% if not guru_requests and not scheduled_sessions %}
+    {% if not guru_accepted_requests and not scheduled_sessions %}
       <img class="media-object guru-photo" src="/static/img/guru-new.svg">
     {% endif %}
   </div>
@@ -59,33 +61,35 @@
 
   {% endfor %}
 
+  {% for _request in guru_accepted_requests %}
+
+    {% set request_dict = _request.get_return_dict() %}
+    {{request_details_guru_waiting(request_dict)}}
+
+  {% endfor %}
 
 
-  <ul class="table-view">    
+
+
     {% if guru_incoming_requests %}
-    <li class="table-view-cell">
-      <a class="navigate-right" href='/m/guru/requests/' data-transition='slide-in'>
-        Incoming Requests
-        <span class="badge badge-negative">{{guru_incoming_requests|length}}</span>
-      </a>
-    </li>
+    <ul class="table-view">    
+      <li class="table-view-cell">
+        <a class="navigate-right" href='/m/guru/requests/' data-transition='slide-in'>
+          Incoming Requests
+          <span class="badge badge-negative">{{guru_incoming_requests|length}}</span>
+        </a>
+      </li>
+    </ul>
     {% endif %}
     {% if not guru_requests and not scheduled_sessions %}
-    <li class="table-view-cell">
-      <a class="navigate-right" data-transition='slide-in'>
-        Guru Getting-Started Guide
-      </a>
-    </li>
+    <ul class="table-view attach-bottom">    
+      <li class="table-view-cell">
+        <a class="navigate-right" data-transition='slide-in'>
+          Guru Getting-Started Guide
+        </a>
+      </li>
+    </ul>
     {% endif %}
-    {% if guru_accepted_requests %}
-    <li class="table-view-cell">
-      <a class="navigate-right" href='/m/guru/requests/' data-transition='slide-in'>
-        My Accepted Requests
-        <span class="badge badge-negative">{{guru_accepted_requests|length}}</span>
-      </a>
-    </li>
-    {% endif %}
-  </ul>
 
   <!-- Add flashed content -->
   {% include 'web/snippets/flash_alerts.html' %}
