@@ -301,7 +301,6 @@
     }
 
     transition = direction === 'back' ? transitionMap[transitionFromObj.transition] : transitionFromObj.transition;
-    console.log(activeDom);
     if (!activeDom) {
       return PUSH({
         id         : activeObj.id,
@@ -415,8 +414,6 @@
         if (bars.hasOwnProperty(key)) {
           barElement = document.querySelector(bars[key]);
           if (data[key]) {
-            console.log(key);
-            console.log(barElement);
             swapContent(data[key], barElement);
           } else if (barElement) {
             barElement.parentNode.removeChild(barElement);
@@ -522,6 +519,12 @@
       swap.classList.remove(swapDirection);
       swap.addEventListener('webkitTransitionEnd', slideEnd);
     }
+
+    // Custom code to trigger jquery ready calls after push event
+    if (window.jQuery) {
+      window.jQuery.ready();
+    };
+    
   };
 
   var triggerStateChange = function () {
@@ -617,7 +620,7 @@
   window.addEventListener('touchstart', function () { isScrolling = false; });
   window.addEventListener('touchmove', function () { isScrolling = true; });
   window.addEventListener('touchend', touchend);
-  window.addEventListener('click', function (e) { if (getTarget(e)) {e.preventDefault();} });
+  window.addEventListener('click', function () { isScrolling = false; });
   window.addEventListener('popstate', popstate);
   window.PUSH = PUSH;
 

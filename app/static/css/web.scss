@@ -1,7 +1,11 @@
 $logo-font:'Grand Hotel', cursive;
 
+.bar.bar-nav {
+  -webkit-transform: translateZ(10px);
+}
+
 header {
-  
+
   .uguru-logo {
     font-family: $logo-font;
     font-size:24px;
@@ -9,21 +13,16 @@ header {
 
 }
 
-
-nav.bar-tab {
-
-  // .tab-item#address-book {
-  //   display:none;
-  // }
-  
-}
-
 #message-contents {
   width:78%
 }
 
+.profile-title-icon {
+  top:10px;
+  position:absolute;
+}
+
 .message-face, .table-view-face {
-  // height:40px;
   width: 42px;
   height: 42px;
   border-radius:20px;
@@ -31,6 +30,16 @@ nav.bar-tab {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+}
+
+.table-view-mini-face {
+  width: 24px;
+  height: 24px;
+  border-radius:20px;
+  border:1px solid white;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: 50% 50%;
 
 }
 
@@ -80,9 +89,8 @@ nav.bar-tab {
   display:inline-block;
 }
 
-.table-view-cell.message-cell, .table-view-cell.request-cell, 
-  .ignore-table-view-margin {
-  padding:10px 15px 11px 15px;
+.table-view-cell.message-cell, .table-view-cell.request-cell, .ignore-table-view-margin {
+  padding:10px 15px 10px 15px;
 }
 
 .table-view-cell .icon {
@@ -98,7 +106,7 @@ nav.bar-tab {
 }
 
 .bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .no-border-top {
@@ -106,7 +114,7 @@ nav.bar-tab {
 }
 
 .black {
-    color:black !important;
+    color:black;
 }
 
 input#card-num {
@@ -137,4 +145,61 @@ input#credit-card-num.amex {
 
 .auto-height {
   height:auto;
+}
+
+.hidden {
+  display:none;
+}
+
+// Request Form Shit, more shit should be moved here and it shouldnt be so general... TODO
+input {
+  color:#000000;
+}
+
+.white-text {
+  color:#fff;
+}
+
+.no-border-bottom {
+  border-bottom:0px;
+}
+
+textarea {
+  color:#000000; 
+}
+
+//typeahead overrides
+.twitter-typeahead, .tt-dropdown-menu {
+  width:100%;
+  background-color: #636c6d;
+  font-size:14px !important;
+}
+
+.tt-hint {
+  text-align: left !important;
+}
+
+//Homepage CSS
+.home-guru {
+  height:200px;
+}
+
+#uguru-home-text {
+  font-size:44px;
+  margin-top: -4%;
+}
+
+.home-guru-container {
+  margin-top:25%
+}
+
+.home-guru-btn-container {
+  bottom:2%;
+  position:absolute;
+  width:100%;
+}
+
+.attach-bottom {
+  position:relative;
+  margin-bottom:0px;
 }

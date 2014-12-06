@@ -48,7 +48,6 @@ stripe.api_key = stripe_keys['secret_key']
 # - Go hard with views & integration
 @app.route('/home/')
 def home():
-
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
@@ -56,6 +55,7 @@ def home():
     #Check if user is a student & has pending requests
     pending_requests = user.get_pending_requests()
     if pending_requests and pending_requests[0].get_student() == user:
+        pending_request_id = pending_requests[0].id
         return redirect( \
             url_for(endpoint='request_by_id', _id=pending_request_id))
 
@@ -67,6 +67,10 @@ def m_guru():
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
+
+    if user.pending_ratings:
+        rating_id = user.pending_ratings[0].id
+        return redirect(url_for('m_rating', _id=rating_id))
 
     return render_template('web/guru.html', user=user)
 
@@ -99,6 +103,18 @@ def my_tutors():
     
     return render_template('web/my_tutors.html', user=user)
 
+##########################################################
+# /m/ Mobile Routes 
+##########################################################
+@app.route('/m/')
+@app.route('/m/welcome/')
+def m_welcome():
+    user = api.current_user()
+    if user:
+        return redirect(url_for('home'))
+
+    return render_template('web/welcome.html')
+
 @app.route('/m/login/')
 def m_login():
 
@@ -125,21 +141,16 @@ def m_login():
 
 @app.route('/m/signup/')
 def m_signup():
-
     user = api.current_user()
     if user:
         return redirect(url_for('home'))
-
     return render_template('web/signup.html')
 
 @app.route('/m/logout/')
 def m_logout():
-
     if session.get('user_id'):
         session.pop('user_id')
-    return redirect(url_for('m_login'))
-
-
+    return redirect(url_for('m_welcome'))
 
 #Content pages, example: Sorry, 'We have no tutors page'
 @app.route('/show/<event>/')
@@ -162,7 +173,6 @@ def m_transactions():
 
 @app.route('/request_form/')
 def request_form():
-
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
@@ -243,7 +253,11 @@ def profile(_id):
     if not user:
         return redirect(url_for('m_login'))
 
-    #Make sure user can see this tutor profile
+    if user.id == int(_id):
+        return render_template('web/profile.html', \
+        student=None, guru=user, _request=None)
+
+    # Make sure user can see this tutor profile
     results = user.has_incoming_tutor_for_request(int(_id))
     if not results:
         flash('Sorry, you dont have access to this page!')
@@ -256,23 +270,17 @@ def profile(_id):
         student=user, guru=guru, _request=_request)
 
 
-@app.route('/guru/rating/')
-def guru_request():
+@app.route('/m/rating/<_id>')
+def m_rating(_id):
 
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
 
-    return render_template('web/tutor_rating.html')
+    rating = Rating.query.get(_id)
 
-@app.route('/student/rating/')
-def _student_request():
-
-    user = api.current_user()
-    if not user:
-        return redirect(url_for('m_login'))
-
-    return render_template('web/student_rating.html')
+    return render_template('web/rating.html', user=user, \
+        rating=rating)
 
 
 @app.route('/r/')
@@ -297,6 +305,7 @@ def support():
 
 @app.route('/r/<_id>/')
 @app.route('/confirm_request/<_id>/')
+@app.route('/guru/request/<_id>/')
 @app.route('/request/<_id>/')
 def request_by_id(_id):
     #if ID is not accurate, send back to home.
@@ -311,12 +320,13 @@ def request_by_id(_id):
         return redirect(url_for('m_login'))
 
     # request already canceled, guru can't accept
-    if _request.is_canceled() and user in _request.approved_tutors():
+    if not user == _request.get_student() and \
+    _request.is_canceled() and user in _request.approved_tutors():
         flash('Sorry! The student has canceled this request')
-        return redirect(url_for('home'))
+        return redirect(url_for('m_guru'))
 
     #if Guru shouldn't see this.
-    if not user == _request.get_student() and not _request.is_tutor_involved():
+    if not user == _request.get_student() and not _request.is_tutor_involved(user):
         flash("Sorry! You don't have access to this page.")
         return redirect(url_for('m_guru'))
 

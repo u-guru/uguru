@@ -157,6 +157,8 @@ class User(Base):
     response_rate = Column(Float)
     auth_token = Column(String(64))
     apn_token = Column(String(64))
+    fb_id = Column(String(64))
+    gender = Column(String(64))
 
     #Tutor fields
     verified_tutor = Column(Boolean)
@@ -247,11 +249,23 @@ class User(Base):
         return md5(password).hexdigest()
 
     @staticmethod
-    def create_user(name, email, password):
-        from datetime import datetime
-        encrypted_password = User.encrypted_password(password)
-        user = User(name=name, email=email, password=encrypted_password)
-
+    def create_user(name=None, email=None, password=None, profile_url=None, fb_id=None, gender=None):
+        # TODO : VALIDATE SHIT BITCH
+        if fb_id:
+            user = User(
+                name=name, 
+                email=email, 
+                password=None, 
+                profile_url=profile_url, 
+                fb_id=fb_id,
+                fb_account=True, 
+                gender=gender)
+        else:
+            user = User(
+                name=name, 
+                email=email, 
+                password=User.encrypted_password(password),
+                gender=gender)
         try: 
             db_session.add(user)
             db_session.commit()
@@ -319,7 +333,7 @@ class User(Base):
         conversations = self.conversations
 
         if sorted_by_time:
-            conversations = sorted(conversations, lambda c:c.get_last_message_time())
+            conversations = sorted(conversations, key=lambda c:c.get_last_message_time())
 
         if _dict:
             conversations = {
@@ -357,7 +371,8 @@ class User(Base):
     def get_accepted_requests(self):
         accepted_requests = []
         for _request in self.outgoing_requests:
-            if self in _request.committed_tutors:
+            if self in _request.committed_tutors and self.id \
+            != _request.student_id:
                 accepted_requests.append(_request)
         return accepted_requests
 
@@ -413,6 +428,15 @@ class User(Base):
     # Active requests is not expired, or not canceled (yet), or not matched.
     def get_pending_requests(self):
         return self.outgoing_requests
+
+    #for guru to get all incoming requests
+    def get_guru_requests(self):
+        all_guru_requests = []
+        for _request in self.outgoing_requests:
+            if self.id != _request.student_id and self not \
+            in _request.committed_tutors:
+                all_guru_requests.append(_request)
+        return all_guru_requests
 
     #returns ten most recent notifications
     def get_recent_notifications(self):
@@ -965,8 +989,8 @@ class Request(Base):
         student = User.get_user(self.student_id)
         skill = Skill.query.get(self.skill_id)
 
-        student.pending_requests.remove(self)
-        tutor.pending_requests.remove(self)
+        student.outgoing_requests.remove(self)
+        tutor.outgoing_requests.remove(self)
 
         #Create conversation
         conversation = Conversation.create_conversation(skill, tutor, student)
@@ -1001,9 +1025,11 @@ class Request(Base):
         return 
 
 
-    def process_tutor_acceptance(self, tutor):
+    def process_tutor_acceptance(self, tutor, description):
+        tutor.outgoing_requests.remove(self)
         self.committed_tutors.append(tutor)
         self.pending_tutor_id = tutor.id
+        self.pending_tutor_description = description
         try:
             db_session.commit()
         except:
@@ -1013,7 +1039,6 @@ class Request(Base):
     #TODO, we don't do anything yet, but we will in the near future.
     def process_tutor_reject(self,tutor):
         tutor.outgoing_requests.remove(self)
-        self.committed_tutors.remove(tutor)
         try:
             db_session.commit()
         except:
@@ -1237,6 +1262,24 @@ class Rating(Base):
         except:
             db_session.rollback()
             raise         
+
+
+    #TODO, make queries more optimal
+    def get_payment_details_dict(self):
+        _request = Request.query.get(self.request_id)
+        payment = Payment.query.get(_request.payment_id)
+        student = User.query.get(payment.student_id)
+        guru = User.query.get(payment.tutor_id)
+        skill = Skill.query.get(payment.skill_id)
+        payment_dict = {
+            'student': student.as_dict(),
+            'guru': guru.as_dict(),
+            'student_cost': payment.student_paid_amount,
+            'guru_earnings': payment.tutor_received_amount,
+            'skill_name': skill.get_short_name()
+        }
+        return payment_dict
+
 
 
     def __init__(self, request_id=None):
