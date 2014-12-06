@@ -60,6 +60,33 @@
     </a>
 {%-endmacro %}
 
+{% macro request_details_guru_waiting(request_dict) -%}
+  <ul class="table-view table-view-scheduled">
+      <li class='table-view-cell'>
+        <h1>{{request_dict['skill_name']}}
+          <span class='grey-text'>Session</span>
+        </h1>
+        <p class='red-text'> 
+          WAITING FOR STUDENT
+        </p>
+      </li>
+      <li class='table-view-cell'>
+          Time & Location: 
+          <p class='grey-text'>
+            <p class='grey-text'>
+              Tonight at 8pm, or remotely via Skype, at {{request_details_guru_waiting}}
+            </p>
+          </p>
+      </li>
+      <li class='table-view-cell'>
+        Description
+        <p>
+          {{request_dict['description']}}
+        </p>
+      </li>
+  </ul>
+{%-endmacro %}
+
 {% macro student_reject_modal(request_dict) -%}
 <div id="student-reject-tutor-modal" class="modal">
         <header class="bar bar-nav">
