@@ -224,11 +224,21 @@ class User(Base):
         secondary = user_text_table)
 
 
-    def __init__(self, name = None, email = None, password = None, phone_number = None, is_a_tutor = None):
+
+    #Gets called when you create a new User() 
+    def __init__(self, name = None, email = None, password = None, \
+        phone_number = None, is_a_tutor = None, profile_url = None, \
+        fb_id = None, fb_account = None, gender = None):
+        
         self.name = name
         self.email = email
         self.password = password
         self.phone_number = phone_number
+        self.is_a_tutor = is_a_tutor
+        self.profile_url = profile_url
+        self.fb_id = fb_id
+        self.fb_account = fb_account
+        self.gender = gender
         self.time_created = datetime.now()
         self.last_active = datetime.now()
 
