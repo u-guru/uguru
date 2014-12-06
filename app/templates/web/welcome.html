@@ -47,23 +47,31 @@
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     if (response.status === 'connected') {
+
+      // Get general information
       FB.api('/me', function(response) {
+        payload = response;
 
-        payload = JSON.stringify(response);
-        console.log(payload);
+        // Get profile picture
+        FB.api('/me/picture',{"type": "normal"}, function (response){
+          payload["profile_url"] = response["data"]["url"];
 
-        $.ajax({
-          url: '/api/v1/fb_connect',
-          type: 'POST',
-          contentType: 'application/json',
-          data: payload,
-          success: function (request){
-            console.log(request);
-          },
-          error: function (request){
-            console.log(request);
-          }
-        })
+          // Go try to create the user on the DB!
+          payload = JSON.stringify(payload);
+          $.ajax({
+            url: '/api/v1/fb_connect',
+            type: 'POST',
+            contentType: 'application/json',
+            data: payload,
+            success: function (request){
+              console.log(request);
+              window.location = "/home/";
+            },
+            error: function (request){
+              console.log("Error from API");
+            }
+          });
+        });
       });
     } else if (response.status === 'not_authorized') {
       console.log("App not authorized");

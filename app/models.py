@@ -157,6 +157,8 @@ class User(Base):
     response_rate = Column(Float)
     auth_token = Column(String(64))
     apn_token = Column(String(64))
+    fb_id = Column(String(64))
+    gender = Column(String(64))
 
     #Tutor fields
     verified_tutor = Column(Boolean)
@@ -247,11 +249,23 @@ class User(Base):
         return md5(password).hexdigest()
 
     @staticmethod
-    def create_user(name, email, password):
-        from datetime import datetime
-        encrypted_password = User.encrypted_password(password)
-        user = User(name=name, email=email, password=encrypted_password)
-
+    def create_user(name=None, email=None, password=None, profile_url=None, fb_id=None, gender=None):
+        # TODO : VALIDATE SHIT BITCH
+        if fb_id:
+            user = User(
+                name=name, 
+                email=email, 
+                password=None, 
+                profile_url=profile_url, 
+                fb_id=fb_id,
+                fb_account=True, 
+                gender=gender)
+        else:
+            user = User(
+                name=name, 
+                email=email, 
+                password=User.encrypted_password(password),
+                gender=gender)
         try: 
             db_session.add(user)
             db_session.commit()
@@ -357,7 +371,8 @@ class User(Base):
     def get_accepted_requests(self):
         accepted_requests = []
         for _request in self.outgoing_requests:
-            if self in _request.committed_tutors:
+            if self in _request.committed_tutors and self.id \
+            != _request.student_id:
                 accepted_requests.append(_request)
         return accepted_requests
 
@@ -418,7 +433,8 @@ class User(Base):
     def get_guru_requests(self):
         all_guru_requests = []
         for _request in self.outgoing_requests:
-            if self.id != _request.student_id:
+            if self.id != _request.student_id and self not \
+            in _request.committed_tutors:
                 all_guru_requests.append(_request)
         return all_guru_requests
 
@@ -1009,9 +1025,11 @@ class Request(Base):
         return 
 
 
-    def process_tutor_acceptance(self, tutor):
+    def process_tutor_acceptance(self, tutor, description):
+        tutor.outgoing_requests.remove(self)
         self.committed_tutors.append(tutor)
         self.pending_tutor_id = tutor.id
+        self.pending_tutor_description = description
         try:
             db_session.commit()
         except:
@@ -1021,7 +1039,6 @@ class Request(Base):
     #TODO, we don't do anything yet, but we will in the near future.
     def process_tutor_reject(self,tutor):
         tutor.outgoing_requests.remove(self)
-        self.committed_tutors.remove(tutor)
         try:
             db_session.commit()
         except:

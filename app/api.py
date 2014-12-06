@@ -143,10 +143,18 @@ def request_by_id_web_api(request_id):
 
         
         if put_action == 'guru-accept':
-            _request.process_tutor_acceptance(user)
-
+            _request.process_tutor_acceptance(user, request.json.get('description'))
+            flash('Request successfully sent to student! We have texted '\
+                    + _request.get_student().get_first_name() + ' will get back'\
+                    + 'to you if the student likes your profile.')
 
         if put_action == 'guru-reject':
+            # TODO MP: Record this!
+            if request_json.get('description'):
+                flash('Request successfully rejected! Thank you for your feedback')
+            else:
+                flash('Request successfully rejected!')
+
             _request.process_tutor_reject(user)
 
         if put_action == 'student-accept':
@@ -303,11 +311,40 @@ def api_signup():
 @app.route('/api/v1/fb_connect', methods=['POST'])
 def api_fb_connect():
 
-    exsisting_user = User.query.filter_by(fb_id=request.json.get("id")).first()
+    logging.info(request.json)
 
-    request_json = request.json
-    logging.info(request_json)
-    return json_response(http_code=200, errors=["Request method not supported."])
+    user_from_fb_id = User.query.filter_by(fb_id=request.json.get("id")).first()
+
+    # If we can find them by their fb_id, log them in!
+    if user_from_fb_id:
+        user_from_fb_id.authenticate();
+        return json_response(http_code=200)
+    
+    # If we can find them by email, but they don't have their fb_id set, we set in and log them in
+    user_from_email = User.query.filter_by(email=request.json.get("email")).first()
+    if user_from_email:
+        # Update the user with new information from facebook.
+        user_from_email.fb_id = request.json.get("id")
+        user_from_email.gender = request.json.get("gender")
+        user_from_email.profile_url = request.json.get("profile_url")
+        user_from_email.fb_account = True;
+        db_session.commit()
+        exsisting_user.authenticate();
+        return json_response(http_code=200)
+
+    # If we can't find them, create a new user
+    new_user = User.create_user(
+        name=request.json.get("name"), 
+        email=request.json.get("email"),
+        password=None,
+        profile_url=request.json.get("profle_url"),
+        fb_id=request.json.get("id"),
+        gender=request.json.get("gender"))
+
+    if not new_user:
+        return json_response(http_code=400, errors=["Couldn't create new user."]) # TODO : Use correct http status code?
+    else:
+        return json_response(http_code=200)
 
 ##### /login/ ########
 # POST - logs user in
