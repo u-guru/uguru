@@ -18,11 +18,9 @@
 
     <!-- Include standard stylesheets -->
     {% include 'web/snippets/stylesheets.html' %}
-    
+
     <!-- Include standard desktop scripts -->
-    {% if user_agent_is_desktop %}
-      {% include 'web/snippets/desktop_stylesheets.html' %}
-    {% endif %}
+    {% include 'web/snippets/scripts.html' %}
   
   </head>
   
@@ -47,8 +45,5 @@
     {% if user_agent_is_desktop %}
       {{desktop_footer()}}
     {% endif %}
-
-    {% include 'web/snippets/scripts.html' %}
-    
   </body>
 </html>

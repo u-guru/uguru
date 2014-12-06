@@ -519,6 +519,12 @@
       swap.classList.remove(swapDirection);
       swap.addEventListener('webkitTransitionEnd', slideEnd);
     }
+
+    // Custom code to trigger jquery ready calls after push event
+    if (window.jQuery) {
+      window.jQuery.ready();
+    };
+    
   };
 
   var triggerStateChange = function () {
@@ -614,7 +620,7 @@
   window.addEventListener('touchstart', function () { isScrolling = false; });
   window.addEventListener('touchmove', function () { isScrolling = true; });
   window.addEventListener('touchend', touchend);
-  window.addEventListener('click', function (e) { if (getTarget(e)) {e.preventDefault();} });
+  window.addEventListener('click', function () { isScrolling = false; });
   window.addEventListener('popstate', popstate);
   window.PUSH = PUSH;
 

@@ -48,7 +48,6 @@ stripe.api_key = stripe_keys['secret_key']
 # - Go hard with views & integration
 @app.route('/home/')
 def home():
-
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
@@ -103,6 +102,18 @@ def my_tutors():
     print user.get_all_conversations()
     
     return render_template('web/my_tutors.html', user=user)
+
+##########################################################
+# /m/ Mobile Routes 
+##########################################################
+@app.route('/m/')
+@app.route('/m/welcome/')
+def m_welcome():
+    user = api.current_user()
+    if user:
+        return redirect(url_for('home'))
+
+    return render_template('web/welcome.html')
 
 @app.route('/m/login/')
 def m_login():

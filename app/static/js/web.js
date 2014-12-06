@@ -1,5 +1,6 @@
 // jQuery Shit
 $(document).ready(function() {
+    console.log("document ready() in web.js");
     updateAllBars();
     window.addEventListener('push', function(){
         updateAllBars();
@@ -426,6 +427,11 @@ $(document).ready(function() {
 });
 // end document ready
 
+function updateAllBars() {
+    updateMainTabBar();
+    updateMessageFooter();
+}
+
 function updateMainTabBar(){
     if ($('.should-hide-tab-bar').length > 0) {
         $('#main-bar-tab').hide();
@@ -442,10 +448,6 @@ function updateMessageFooter(){
     }
 }
 
-function updateAllBars() {
-    updateMainTabBar();
-    updateMessageFooter();
-}
 
 
 // Grab incoming photo inject it into page 
