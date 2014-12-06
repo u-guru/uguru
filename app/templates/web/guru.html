@@ -57,7 +57,7 @@
 
       {{guru_confirm_session_modal(_request)}}
 
-    {% endfor %}
+  {% endfor %}
 
 
 
@@ -81,11 +81,14 @@
     <li class="table-view-cell">
       <a class="navigate-right" href='/m/guru/requests/' data-transition='slide-in'>
         My Accepted Requests
-        <span class="badge">{{guru_accepted_requests|length}}</span>
+        <span class="badge badge-negative">{{guru_accepted_requests|length}}</span>
       </a>
     </li>
     {% endif %}
   </ul>
+
+  <!-- Add flashed content -->
+  {% include 'web/snippets/flash_alerts.html' %}
 
 </div><!-- /.content -->
 {% endblock %}

@@ -35,11 +35,8 @@
           <h1>{{request_dict['skill_name']}} 
             <span class='grey-text'>Session</span>
           </h1>
-          <p class='red-text'>
-            WAITING FOR TUTORS
-          </p>
           <p class='grey-text'>
-            Tonight at 8pm
+            Tonight at 8pm, or remotely via Skype. 
           </p>
         </li>
         <li class='table-view-cell'>
@@ -55,10 +52,10 @@
           </p>
         </li>
     </ul>
-    <a class='btn btn-positive btn-block accept' href='#' id='guru-accept-link'> 
+    <a class='btn btn-positive btn-block accept' data-transition='slide-in' href='/guru/accept_request/{{request_dict["server_id"]}}/'> 
           Accept
     </a>
-    <a class='btn btn-negative btn-block decline' href='#reject-request-modal'>
+    <a class='btn btn-negative btn-block decline' data-transition='slide-in' href='/guru/cancel_request/{{request_dict["server_id"]}}/'>
           Reject
     </a>
 {%-endmacro %}
@@ -105,23 +102,24 @@
 </div>
 {%- endmacro %}
 
-{% macro guru_request_reject_modal(request_dict)-%}
-<div id="reject-request-modal" class="modal">
-        <header class="bar bar-nav">
-          <a class="btn btn-link pull-left" href="#reject-request-modal">Cancel</a>
-          <h1 class="title">Reject</h1>
-          <a class="btn btn-link pull-right guru-reject-link" href="#">Skip</a>
-        </header>
+{% macro guru_request_reject(request_dict)-%}
+      <div class='content-padded'></h6>
+        <form>
+          <textarea id='guru-reject-description' placeholder='Please tell us more! Replying will increase your response rate!'rows="5"></textarea>
+          <a class='btn btn-positive btn-block guru-reject-link' href='#'>
+            Submit 
+          </a>
+        </form>
+      </div>
+{%- endmacro %}
 
-        <div class="content">
-          <div class='content-padded'></h6>
-            <form>
-              <textarea id='guru-reject-decription' placeholder='Please tell us more! Replying will increase your response rate!'rows="5"></textarea>
-              <a class='btn btn-positive btn-block guru-reject-link' href='#'>
-                Submit 
-              </a>
-            </form>
-          </div>
-        </div>
-  </div>
-  {%- endmacro %}
+{% macro guru_accept_request(request_dict)-%}
+      <div class='content-padded'></h6>
+        <form>
+          <textarea id='guru-accept-description' placeholder='Please assure the student that you are the best fit!'rows="5"></textarea>
+          <a class='btn btn-positive btn-block' id='guru-accept-link' href='#'>
+            Submit 
+          </a>
+        </form>
+      </div>
+{%- endmacro %}

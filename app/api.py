@@ -143,10 +143,18 @@ def request_by_id_web_api(request_id):
 
         
         if put_action == 'guru-accept':
-            _request.process_tutor_acceptance(user)
-
+            _request.process_tutor_acceptance(user, request.json.get('description'))
+            flash('Request successfully sent to student! We have texted '\
+                    + _request.get_student().get_first_name() + ' will get back'\
+                    + 'to you if the student likes your profile.')
 
         if put_action == 'guru-reject':
+            # TODO MP: Record this!
+            if request_json.get('description'):
+                flash('Request successfully rejected! Thank you for your feedback')
+            else:
+                flash('Request successfully rejected!')
+
             _request.process_tutor_reject(user)
 
         if put_action == 'student-accept':

@@ -68,6 +68,8 @@ def m_guru():
     if not user:
         return redirect(url_for('m_login'))
 
+    print user.id
+
     if user.pending_ratings:
         rating_id = user.pending_ratings[0].id
         return redirect(url_for('m_rating', _id=rating_id))
@@ -308,6 +310,55 @@ def support():
     return render_template('web/support.html')
 
 
+@app.route('/guru/cancel_request/<_id>/')
+def guru_cancel_request(_id):
+    #if ID is not accurate, send back to home.
+    _request = Request.get_request_by_id(int(_id))
+    
+    #Invalid request
+    if not _request:
+        return redirect(url_for('m_guru'))
+
+    #Invalid user
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    #Request is canceled
+    if not user == _request.get_student() and \
+    _request.is_canceled() and user in _request.approved_tutors():
+        flash('Sorry! The student has canceled this request')
+        return redirect(url_for('m_guru'))
+
+    #render page! 
+    return render_template('web/guru_cancel_request.html', user=user,\
+        request_dict=_request.get_return_dict())
+
+@app.route('/guru/accept_request/<_id>/')
+def guru_accept_request(_id):
+    #if ID is not accurate, send back to home.
+    _request = Request.get_request_by_id(int(_id))
+    
+    #Invalid request
+    if not _request:
+        return redirect(url_for('m_guru'))
+
+    #Invalid user
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    #Request is canceled
+    if not user == _request.get_student() and \
+    _request.is_canceled() and user in _request.approved_tutors():
+        flash('Sorry! The student has canceled this request')
+        return redirect(url_for('m_guru'))
+
+    #render page! 
+    return render_template('web/guru_accept_request.html', user=user,\
+        request_dict=_request.get_return_dict())
+
+
 @app.route('/r/<_id>/')
 @app.route('/confirm_request/<_id>/')
 @app.route('/guru/request/<_id>/')
@@ -316,7 +367,6 @@ def request_by_id(_id):
     #if ID is not accurate, send back to home.
     _request = Request.get_request_by_id(int(_id))
     if not _request:
-        
         return redirect(url_for('home'))
 
     #if tutor (should take up the whole page)

@@ -1,7 +1,7 @@
 {% extends 'web/base.html' %}
 
 {% from 'web/macros/request.html' import request_details_student, student_reject_modal, student_accept_modal, cancel_request_modal,
-request_details_guru, guru_request_reject_modal %}
+request_details_guru %}
 
 {% set is_student = (user.id == request_dict['student']['server_id'])%}
 {% set is_guru = not is_student %}
@@ -65,10 +65,9 @@ request_details_guru, guru_request_reject_modal %}
     <!-- end student case -->
 
       {% if is_guru %}
-      {{request_details_guru(request_dict)}} 
-      {{guru_request_reject_modal(request_dict)}}
-
+        {{request_details_guru(request_dict)}}
       {% endif %}
 
     </div>
+
 {% endblock %}

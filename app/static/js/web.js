@@ -40,60 +40,6 @@ $(document).ready(function() {
         });
     });
 
-    $('body').on('touchstart', '#guru-accept-link', function() {
-        url_components = window.location.pathname.split( '/' );
-        request_id = url_components[url_components.length - 2];
-        
-        payload = JSON.stringify({
-            action:'guru-accept',
-            description:$('#guru-accept-description').val()
-        });
-
-        $.ajax({
-            url: '/api/v1/requests/' + request_id,
-            type: 'PUT',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                window.PUSH({
-                    transition : "fade",
-                    url : "/m/guru/"
-                });
-                $('#cancelModal').removeClass('active');
-            },
-            error: function (request) {
-                alert(request.responseJSON['errors']);
-            }
-        });
-    });
-
-    $('body').on('touchstart', 'a.guru-reject-link', function() {
-        url_components = window.location.pathname.split( '/' );
-        request_id = url_components[url_components.length - 2];
-        
-        payload = JSON.stringify({
-            action:'guru-reject',
-            description:$('#guru-reject-description').val()
-        });
-
-        $.ajax({
-            url: '/api/v1/requests/' + request_id,
-            type: 'PUT',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                window.PUSH({
-                    transition : "fade",
-                    url : "/m/guru/"
-                });
-                $('#reject-request-modal').removeClass('active');
-            },
-            error: function (request) {
-                alert(request.responseJSON['errors']);
-            }
-        });
-    });
-
     $('body').on('touchstart', '#student-reject-guru-link', function() {
         url_components = window.location.pathname.split( '/' );
         request_id = url_components[url_components.length - 2];
