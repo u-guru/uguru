@@ -298,6 +298,17 @@ def api_signup():
 
     return json_response(http_code=400, errors=["Request method not supported."])
 
+###### /fb_connect ########
+# POST - Checks for exsisting user, or begins creation of new one.
+@app.route('/api/v1/fb_connect', methods=['POST'])
+def api_fb_connect():
+
+    exsisting_user = User.query.filter_by(fb_id=request.json.get("id")).first()
+
+    request_json = request.json
+    logging.info(request_json)
+    return json_response(http_code=200, errors=["Request method not supported."])
+
 ##### /login/ ########
 # POST - logs user in
 @app.route('/api/v1/login', methods = ['POST'])

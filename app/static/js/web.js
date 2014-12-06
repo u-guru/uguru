@@ -1,6 +1,5 @@
 // jQuery Shit
 $(document).ready(function() {
-    console.log("document ready() in web.js");
     updateAllBars();
     window.addEventListener('push', function(){
         updateAllBars();

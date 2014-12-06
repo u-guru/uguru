@@ -1,27 +1,89 @@
 {% extends 'web/base.html' %}
 
 {% block main_content %}
+<script>
+
+
+</script>
+
+
 <div class="content login-content should-hide-message-bar should-hide-tab-bar">
-    <div class='center home-guru-container'>
-        <img class='home-guru' src="/static/img/hip_guru.svg"></img>
-    </div>
-    <h1 id='uguru-home-text'class='center light-green-text open-sans-bold'> uguru </h1>
-    <div class='center home-guru-btn-container'>
-        <a data-transition='slide-in' href='/m/signup/'>
-            <button class="btn btn-positive btn-block sign-up">Sign up</button>
-        </a>
-        <a data-transition='slide-in' href='/m/login/'>
-            <button class="btn btn-positive btn-block login">Log in</button>
-        </a>
-        <img src='/static/img/fb-signup-btn.png' width='94%' height='50px'></img>
-        <p class='content-padded'> Uguru will NEVER post to your Facebook. </p>
-    </div>
+  <div class='center home-guru-container'>
+    <img class='home-guru' src="/static/img/hip_guru.svg"></img>
+  </div>
+  <h1 id='uguru-home-text'class='center light-green-text open-sans-bold'> uguru </h1>
+  <div class='center home-guru-btn-container'>
+    <a data-transition='slide-in' href='/m/signup/'>
+      <button class="btn btn-positive btn-block sign-up">Sign up</button>
+    </a>
+    <a data-transition='slide-in' href='/m/login/'>
+      <button class="btn btn-positive btn-block login">Log in</button>
+    </a>
+    <fb:login-button size="xlarge" scope="public_profile,email" onlogin="beginFbConnect();"></fb:login-button>
+    <p class='content-padded'> Uguru will never post to your Facebook. </p>
+  </div>
 </div>
 
+<div id="fb-root"></div>
 <script>
-  $(document).ready(function() {
-    $('.content').css('background-color', '#ffffff');
-  });
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1416375518604557',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  }
+
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    if (response.status === 'connected') {
+      FB.api('/me', function(response) {
+
+        payload = JSON.stringify(response);
+        console.log(payload);
+
+        $.ajax({
+          url: '/api/v1/fb_connect',
+          type: 'POST',
+          contentType: 'application/json',
+          data: payload,
+          success: function (request){
+            console.log(request);
+          },
+          error: function (request){
+            console.log(request);
+          }
+        })
+      });
+    } else if (response.status === 'not_authorized') {
+      console.log("App not authorized");
+    } else {
+      console.log("Not logged in to FB");
+    }
+  }
+
+  function beginFbConnect() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+</script>
+
+<script>
+$(document).ready(function() {
+  $('.content').css('background-color', '#ffffff');
+});
 </script>
 
 {% endblock %}

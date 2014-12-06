@@ -141,21 +141,16 @@ def m_login():
 
 @app.route('/m/signup/')
 def m_signup():
-
     user = api.current_user()
     if user:
         return redirect(url_for('home'))
-
     return render_template('web/signup.html')
 
 @app.route('/m/logout/')
 def m_logout():
-
     if session.get('user_id'):
         session.pop('user_id')
-    return redirect(url_for('m_login'))
-
-
+    return redirect(url_for('m_welcome'))
 
 #Content pages, example: Sorry, 'We have no tutors page'
 @app.route('/show/<event>/')
