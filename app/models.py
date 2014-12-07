@@ -1272,7 +1272,7 @@ class Request(Base):
         self.cancellation_reason = description
 
         #Clear this request from all tutors inbox
-        for tutor in self.requested_tutors + tutor.committed_tutors:
+        for tutor in self.requested_tutors + self.committed_tutors:
             if self in tutor.outgoing_requests:
                 tutor.outgoing_requests.remove(self)
 

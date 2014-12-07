@@ -45,7 +45,8 @@ def contact_qualified_tutors(request_id):
     from app.database import db_session
     r = Request.query.get(request_id)
     for tutor in r.requested_tutors:
-        #hack for now
+        # T0DO : DO magic sauce that queues and requests tutors in the proper order here
+        logging.info("requesting tutor: " + str(tutor))
         tutor.outgoing_requests.append(r)
     try:
         db_session.commit()
