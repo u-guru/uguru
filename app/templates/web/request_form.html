@@ -37,15 +37,16 @@
     <li class="table-view-cell ignore-table-view-margin">
       <p style="margin-bottom:10px;">Session Length (estimated)</p>
       <div class="segmented-control" id="request-time-estimate-button-group">
-        <a class="control-item" id="time-segment-1" href="#"> 15m </a>
-        <a class="control-item active" id="time-segment-2" href="#"> 30m </a>
-        <a class="control-item" id="time-segment-3" href="#"> 1hr </a>
-        <a class="control-item" id="time-segment-4" href="#"> 2hr + </a>
+        <a class="control-item" href="#"> 15m </a>
+        <a class="control-item active" href="#"> 30m </a>
+        <a class="control-item" href="#"> 1hr </a>
+        <a class="control-item" href="#"> 2hr + </a>
       </div>
     </li>
 
     <li class="table-view-cell ignore-table-view-margin center">
-      <span style="font-size:30;color:#ffffff;" id="request-estimated-cost">$10</span>
+      <span style="font-size:16;color:#ffffff;">$</span>
+      <span style="font-size:35;color:#ffffff;" id="request-estimated-cost">10</span>
       <br>
       <span style="color:#c0c0c0;">estimated cost</span>
     </li>
@@ -80,6 +81,26 @@
             $(this).addClass('active');
             {% endif %}
         }
+  });
+
+  $('body').on('click', '#request-time-estimate-button-group', function(event) {
+    var selectedIndex = $('#request-time-estimate-button-group .control-item.active').index();
+    switch(selectedIndex) {
+      case 0:
+        $('#request-estimated-cost').text('5');
+        break;
+      case 1:
+        $('#request-estimated-cost').text('10');
+        break;
+      case 2:
+        $('#request-estimated-cost').text('20');
+        break;
+      case 3:
+        $('#request-estimated-cost').text('40');
+        break;
+      default:
+        // Do nothing
+    }
   });
 
   date_picker_input = $('#request-date').pickadate({
