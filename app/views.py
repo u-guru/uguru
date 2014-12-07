@@ -1209,7 +1209,7 @@ def update_requests():
         user = User.query.get(user_id)
 
         if 'tutor-accept' in ajax_json:
-            hourly_amount = ajax_json.get('hourly-amount')
+            hourly_amount = 20
             notif_num = ajax_json.get('notif-num')
             tutor = user
             logging.info("Tutor is accepting a student request: " + str(tutor))
@@ -1265,9 +1265,9 @@ def update_requests():
             current_notification.time_created = datetime.now()
             
             if ajax_json.get('price-change'):
-                current_notification.request_tutor_amount_hourly = ajax_json.get('hourly-amount')
+                current_notification.request_tutor_amount_hourly = 20
             else:
-                current_notification.request_tutor_amount_hourly = r.student_estimated_hour
+                current_notification.request_tutor_amount_hourly = 20
 
             if calc_avg_rating(tutor)[0] < 4.0:
                 current_notification.request_tutor_amount_hourly = 0
@@ -1942,13 +1942,12 @@ def student_request():
         skill_id = skill_id,
         description = ajax_json['description'],
         urgency = int(ajax_json['urgency']),
-        frequency = None,
         time_estimate = float(ajax_json['estimate'])
         )
 
     new_request.remote = ajax_json.get('remote')
     new_request.num_students = 1 # TODO : this will eventually be variable?
-    new_request.student_estimated_hour = int(float(ajax_json['hourly-price']))
+    new_request.student_estimated_hour = 20
     new_request.location = ajax_json['location']
     new_request.available_time = '' # TODO : What does this do?
 

@@ -2042,7 +2042,6 @@ def api(arg, _id):
                     user.notifications.remove(n)
                     logging.info("Student-cap-reached notification removed for request id " + str(r.id))
 
-            from views import find_earliest_meeting_time, convert_mutual_times_in_seconds
             from tasks import send_twilio_message_delayed
             if tutor.phone_number and tutor.text_notification:
                 logging.info("The tutor has a phone number and is supposed to receive a text.")
