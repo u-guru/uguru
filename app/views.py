@@ -61,7 +61,6 @@ def home():
 @app.route('/m/guru/')
 def m_guru():
     user = api.current_user()
-    print user.id
     if not user:
         return redirect(url_for('m_login'))
 
@@ -166,7 +165,7 @@ def m_transactions():
     if not user:
         return redirect(url_for('m_login'))
 
-    return render_template('web/transactions.html')
+    return render_template('web/transactions.html', user=user)
 
 @app.route('/request_form/')
 def request_form():
@@ -323,19 +322,33 @@ def support():
 
     return render_template('web/support.html')
 
+@app.route('/reject_guru/<_id>/')
+def student_reject_guru(_id):
+    _request = Request.get_request_by_id(int(_id))
+    if not _request:
+        return redirect(url_for('home'))
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/student_reject_guru.html',\
+        _request=_request)
+
 @app.route('/cancel_request/<_id>/')
-@app.route('/accept_request/<_id>/')
 def student_cancel_request_id(_id):
     _request = Request.get_request_by_id(int(_id))
     if not _request:
         return redirect(url_for('home'))
 
-    #if tutor (should take up the whole page)
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
-    return
 
+    return render_template('web/student_cancel_request.html',\
+        _request=_request)
+
+@app.route('/guru/reject_request/<_id>/')
 @app.route('/guru/cancel_request/<_id>/')
 @app.route('/guru/accept_request/<_id>/')
 @app.route('/guru/confirm/<_id>/')
@@ -353,7 +366,10 @@ def guru_cancel_request_by_id(_id):
         flash("Sorry! You don't have access to this page.")
         return redirect(url_for('m_guru'))
 
-    if 'cancel' in request.url:
+    if 'reject' in request.url:
+        return render_template('web/guru_reject_request.html', user=user,\
+        request_dict=_request.get_return_dict())
+    elif 'cancel' in request.url:
         return render_template('web/guru_cancel_request.html', user=user,\
         request_dict=_request.get_return_dict())
     elif 'confirm' in request.url:

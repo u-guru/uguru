@@ -1,71 +1,31 @@
 // jQuery Shit
+window.addEventListener('push', function(){
+    updateAllBars();
+
+    // We NEED this for all ajax calls to work on mobile
+    var scriptsList = document.querySelectorAll('script');
+    for(var i = 0; i < scriptsList.length; ++i) {
+        eval(scriptsList[i].innerHTML);
+    }
+});
+
+
 $(document).ready(function() {
     updateAllBars();
-    window.addEventListener('push', function(){
-        updateAllBars();
+
+    //Extra handlers to imitate mobile
+
+    $('body').on('click', '.control-item', function() {
+        $(this).siblings('.active').removeClass('active');
+        $(this).addClass('active');
     });
-    
+
     //Logout link
     //TODO: Make this a PUSH EVENT
     $('body').on('touchstart', '#logout-link', function(){
         window.location.replace('/m/logout/');
     });
-
-
-    //Student cancels a request
-    $('body').on('touchstart', '#cancel-link', function() {
-        var request_id = ($('#cancel-link').data().requestId).toString();
-        
-        payload = JSON.stringify({
-            action:'cancel',
-            description:$('#cancel-request-description').val()
-        });
-
-        $.ajax({
-            url: '/api/v1/requests/' + request_id,
-            type: 'PUT',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                window.PUSH({
-                    transition : "fade",
-                    url : "/home/"
-                });
-                $('#cancelModal').removeClass('active');
-            },
-            error: function (request) {
-                alert(request.responseJSON['errors']);
-            }
-        });
-    });
-
-    $('body').on('touchstart', '#student-reject-guru-link', function() {
-        url_components = window.location.pathname.split( '/' );
-        request_id = url_components[url_components.length - 2];
-        
-        payload = JSON.stringify({
-            action:'student-reject',
-            description:$('#student-reject-guru-description').val()
-        });
-
-        $.ajax({
-            url: '/api/v1/requests/' + request_id,
-            type: 'PUT',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                window.PUSH({
-                    transition : "fade",
-                    url : "/request/" + request_id + '/'
-                });
-                $('#student-reject-tutor-modal').removeClass('active');
-            },
-            error: function (request) {
-                alert(request.responseJSON['errors']);
-            }
-        });
-    });
-
+    
     $('body').on('touchstart', '.guru-confirm-session', function() {
         
         var request_id = ($(this).data().requestId).toString();
@@ -184,39 +144,6 @@ $(document).ready(function() {
             transition : "slide-in",
             url : "/profile/"
         });
-    });
-
-    // Request Form /request_form/
-    $('body').on('touchstart', '#request-location-in-person', function(){
-        $('#request-location').show(10);
-    });
-    $('body').on('touchstart', '#request-location-online', function(){
-       $('#request-location').hide(10);
-    });
-    $('body').on('touchend', '#asap-toggle', function(){
-        var isSelected = !$('#asap-toggle').hasClass('active');
-        if (isSelected) {
-            $('#request-time-selection-cell').hide(10);
-        }else{
-            $('#request-time-selection-cell').show(10);
-        }
-    });
-    $('body').on('touchstart', '#time-segment-1', function(){
-        $('#request-estimated-cost').text("$5");
-    });
-    $('body').on('touchstart', '#time-segment-2', function(){
-        $('#request-estimated-cost').text("$10");
-    });
-    $('body').on('touchstart', '#time-segment-3', function(){
-        $('#request-estimated-cost').text("$20");
-    });
-    $('body').on('touchstart', '#time-segment-4', function(){
-        $('#request-estimated-cost').text("$40");
-    });
-
-    $('body').on('touchstart', '#submit-button', function () {
-        $('#submit-button').hide();
-        $('#confirm-button').show();
     });
 
 });

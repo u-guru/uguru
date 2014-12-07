@@ -25,12 +25,6 @@ request_details_guru %}
 
 
   {% if student_requests %}
-    
-    {% if available_guru%}
-      {{student_reject_modal(request_dict)}}
-    {% else %}
-      {{cancel_request_modal(request_dict)}}
-    {% endif %}
       {{request_details_student(request_dict, available_guru)}}
   {% endif %}
 

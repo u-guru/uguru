@@ -22,10 +22,12 @@
     <fb:login-button size="xlarge" scope="public_profile,email" onlogin="beginFbConnect();"></fb:login-button>
     <p class='content-padded'> Uguru will never post to your Facebook. </p>
   </div>
-</div>
 
-<div id="fb-root"></div>
-<script>
+  <script>
+      $('.content').css('background-color', '#ffffff');
+  </script>
+  
+  <script>
   // Load the SDK asynchronously
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -80,18 +82,18 @@
     }
   }
 
-  function beginFbConnect() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
+    function beginFbConnect() {
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+      });
+    }
 
-</script>
+  </script>
 
-<script>
-$(document).ready(function() {
-  $('.content').css('background-color', '#ffffff');
-});
-</script>
+  <div id="fb-root"></div>
+</div>
+
+
+
 
 {% endblock %}

@@ -20,9 +20,8 @@
       </div>
   </form>
   <a class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="login-link">Login</a>
-</div>
 
-<script>
+  <script>
     $(document).ready(function() {
         $('#login-link').click(function(event) {
             payload = JSON.stringify({
@@ -46,5 +45,7 @@
             });
         });
     });
-</script>
+  </script>
+
+</div>
 {% endblock %}

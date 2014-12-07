@@ -12,12 +12,11 @@ request_details_guru %}
 {% endblock %}
 
 {% block main_content %}
-<div class="content {% if not is_student %}should-hide-tab-bar{%endif%} should-hide-message-bar">
+<div class="content should-hide-tab-bar should-hide-message-bar">
     
 
-      {% if is_guru %}
         {{request_details_guru(request_dict)}}
-      {% endif %}
+
 
     </div>
 

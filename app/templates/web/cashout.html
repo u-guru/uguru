@@ -1,41 +1,68 @@
 {% extends 'web/base.html' %}
-{% from 'web/macros/request.html' import guru_confirm_session %}
 
-{% block main_content %}
+
 
 {% if redirect == 'home' %}
     {% set redirect_url = '/m/guru/' %}
 {% else %}
-    {% %}
+    {% set redirect_url = '/m/guru/settings/' %}
 {% endif %}
 
-{{guru_cash_out(request.MOBILE, redirect_url=redirect_url)}}
 
-<script>
-    $('#guru-cashout-link').on('click touchstart', function() {
+{% block main_header %}
+<header class="bar bar-nav">
+      <h1 class="title">Cashout Earnings</h1>
+      <a href='{{redirect_url}}' data-transition='slide-out' class='icon icon-left pull-left'></a>
+</header> 
+{% endblock %}
 
-        var user_id = ($(this).data().userId).toString();
 
-        payload = JSON.stringify({
-            action:'guru-cashout'
+{% block main_content %}
+<div class="content should-hide-message-bar should-hide-tab-bar">
+      <ul class='table-view'>
+        <li class='table-view-cell'>
+          Next Steps
+          <p>
+            <br>
+            1. Start a timer when you meet your student. 
+            <br>
+            2. Enter the time for the session.
+            <br>
+            3. Confirm, and get paid immediately.
+          </p>
+        </li>
+      </ul>
+      <a data-user-id='{{user.id}}' id='guru-cashout-link' class="btn btn-positive btn-block">Cash Out</a>
+
+
+      <script>
+        $('#guru-cashout-link').on('click', function() {
+
+            var user_id = ($(this).data().userId).toString();
+
+            payload = JSON.stringify({
+                'guru-cashout':true
+            });
+            
+            $.ajax({
+                url: '/api/v1/users/' + user_id,    
+                type: 'PUT',
+                contentType: 'application/json',
+                data: payload,
+                success: function(request){
+                    window.PUSH({
+                        transition : "fade",
+                        url : '{{redirect_url}}'
+                    });
+                },
+                error: function (request) {
+                    alert(request.responseJSON['errors']);
+                }
+            });
         });
-        
-        $.ajax({
-            url: '/api/v1/users/' + user_id
-            type: 'PUT',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                window.PUSH({
-                    transition : "fade",
-                    url : "/m/guru/"
-                });
-            },
-            error: function (request) {
-                alert(request.responseJSON['errors']);
-            }
-        });
-    });
-</script>
+    </script>
+
+
+</div>
 {% endblock %}
 

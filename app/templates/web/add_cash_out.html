@@ -24,81 +24,77 @@
         </form>
       </ul>
       <a id='add-debit-card-link' data-user-id='{{user.id}}' href='#' class="btn btn-positive btn-block">Submit</a>
-      
-    </div>    
+      <script src="/static/js/jquery.payment.js"></script>
+      <script type="text/javascript">Stripe.setPublishableKey("{{stripe_key}}");</script>
+      <script>
+          
+          function stripeAddCreditCardHandler(status, response) {
 
-    <script class='content-js' src="https://js.stripe.com/v2/"></script>
-    <script class='content-js' src="/static/js/jquery.payment.js"></script>
-    <script class='content-js' type="text/javascript">Stripe.setPublishableKey("{{stripe_key}}");</script>
-    <script class='content-js'>
-        
-        function stripeAddCreditCardHandler(status, response) {
+            if (response.error) {
+                    // Show the errors on the form    
+                    alert(response.error.message);
+                    return;
+                } else {
+                    var token = response.id;
+                    var data = {'add_debit_card':token};
+                    var user_id = ($('#add-debit-card-link').data().userId).toString();
+                    $.ajax({
+                        type: "PUT",
+                        contentType: 'application/json;charset=UTF-8',
+                        url: '/api/v1/users/' +  user_id,
+                        data: JSON.stringify(data),
+                        dataType: "json", 
+                        success: function(request){
 
-          if (response.error) {
-                  // Show the errors on the form    
-                  alert(response.error.message);
-                  return;
-              } else {
-                  var token = response.id;
-                  var data = {'add_debit_card':token};
-                  var user_id = ($('#add-debit-card-link').data().userId).toString();
-                  $.ajax({
-                      type: "PUT",
-                      contentType: 'application/json;charset=UTF-8',
-                      url: '/api/v1/users/' +  user_id,
-                      data: JSON.stringify(data),
-                      dataType: "json", 
-                      success: function(request){
+                            url_components = window.location.pathname.split( '/' );
+                            request_id = url_components[url_components.length - 2];
 
-                          url_components = window.location.pathname.split( '/' );
-                          request_id = url_components[url_components.length - 2];
+                            {% if redirect_home %}
 
-                          {% if redirect_home %}
+                            window.PUSH({
+                                transition : "fade",
+                                url : "/guru/cashout/home/" 
+                            });
 
-                          window.PUSH({
-                              transition : "fade",
-                              url : "/guru/cashout/home/" 
-                          });
+                            {% else %}
 
-                          {% else %}
+                            window.PUSH({
+                                transition : "fade",
+                                url : "/m/guru/settings/" 
+                            });                          
 
-                          window.PUSH({
-                              transition : "fade",
-                              url : "/m/guru/settings/" 
-                          });                          
+                            {% endif %}
+                            
+                        },
+                        error: function (request) {
+                            alert(request.responseJSON['errors']);
+                        }
+                    });
+                }
+            }
 
-                          {% endif %}
-                          
-                      },
-                      error: function (request) {
-                          alert(request.responseJSON['errors']);
-                      }
-                  });
-              }
-          }
+            $(document).ready(function() {
+              $('input#debit-card-num').payment('formatCardNumber');
+              $('input#debit-exp-date').payment('formatCardExpiry');
 
-          $(document).ready(function() {
-            alert('sup');
-            // $('input#debit-card-num').payment('formatCardNumber');
-            // $('input#debit-exp-date').payment('formatCardExpiry');
+              $('#add-debit-card-link').on('click', function(){
+                if (!$('input#debit-card-num').val() || !$('input#debit-exp-date').val()) {
+                    alert('Please enter all fields');
+                    return;
+                }
+                card_number  = $('input#debit-card-num').val();
+                expiration_date = $('input#debit-exp-date').val();
+                month = parseInt(expiration_date.split('/')[0], 10);
+                year = parseInt(expiration_date.split('/')[1], 10);
 
-            $('#add-debit-card-link').on('click touchstart', function(){
-              if (!$('input#debit-card-num').val() || !$('input#debit-exp-date').val()) {
-                  alert('Please enter all fields');
-                  return;
-              }
-              card_number  = $('input#debit-card-num').val();
-              expiration_date = $('input#debit-exp-date').val();
-              month = parseInt(expiration_date.split('/')[0], 10);
-              year = parseInt(expiration_date.split('/')[1], 10);
+                Stripe.card.createToken({
+                    number : card_number,
+                    exp_month : month,
+                    exp_year : year,
+                }, stripeAddCreditCardHandler);
 
-              Stripe.card.createToken({
-                  number : card_number,
-                  exp_month : month,
-                  exp_year : year,
-              }, stripeAddCreditCardHandler);
-
+              });
             });
-          });
-      </script>
+        </script>
+      </div>
 {% endblock %}

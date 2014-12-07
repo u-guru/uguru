@@ -65,7 +65,7 @@
   {% if user.balance %}
   <ul class='table-view'>
     <li class="table-view-cell">
-      <a class='navigate-right' {% if user.recipient_id %} href='/cash_out/'
+      <a class='navigate-right' {% if user.recipient_id %} href='/guru/cashout/home/'
       {% else %} href='/add_cash_card/home/' {% endif %} data-transition='slide-in'
       >
       Your balance: <strong> ${{user.balance}} </strong>
@@ -76,43 +76,43 @@
   {% endif %}
   <!-- Add flashed content -->
   {% include 'web/snippets/flash_alerts.html' %}
+  <script>
+    $(document).ready(function() {
+      $('.guru-confirm-session').on('click touchstart', function() {
+
+          var request_id = ($(this).data().requestId).toString();
+          var num_hours = parseInt($('#confirm-hours-' + request_id).val(), 10);
+          var num_minutes = parseInt($('#confirm-minutes-' + request_id).val(), 10);
+
+          payload = JSON.stringify({
+              action:'guru-confirm',
+              minutes: num_minutes,
+              hours: num_hours
+          });
+
+          console.log(payload);
+          
+          $.ajax({
+              url: '/api/v1/requests/' + request_id,
+              type: 'PUT',
+              contentType: 'application/json',
+              data: payload,
+              success: function(request){
+                  window.PUSH({
+                      transition : "fade",
+                      url : "/m/guru/"
+                  });
+              },
+              error: function (request) {
+                  alert(request.responseJSON['errors']);
+              }
+          });
+      });
+
+    });
+</script>
+
 
 </div><!-- /.content -->
-
-<script>
-  $(document).ready(function() {
-    $('.guru-confirm-session').on('click touchstart', function() {
-
-        var request_id = ($(this).data().requestId).toString();
-        var num_hours = parseInt($('#confirm-hours-' + request_id).val(), 10);
-        var num_minutes = parseInt($('#confirm-minutes-' + request_id).val(), 10);
-
-        payload = JSON.stringify({
-            action:'guru-confirm',
-            minutes: num_minutes,
-            hours: num_hours
-        });
-
-        console.log(payload);
-        
-        $.ajax({
-            url: '/api/v1/requests/' + request_id,
-            type: 'PUT',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                window.PUSH({
-                    transition : "fade",
-                    url : "/m/guru/"
-                });
-            },
-            error: function (request) {
-                alert(request.responseJSON['errors']);
-            }
-        });
-    });
-
-  });
-</script>
 
 {% endblock %}

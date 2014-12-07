@@ -31,3 +31,12 @@ def create_stripe_recipient(token, user):
 
     #Successfully created
     return True
+
+#TODO: Validate this better
+def create_stripe_transfer(amount, user):
+    transfer = stripe.Transfer.create( # TODO : assigned but unused
+        amount=int(amount * 100), # amount in cents, again
+        currency="usd",
+        recipient=user.recipient_id
+    )
+    return transfer

@@ -15,6 +15,14 @@
  * Licensed under MIT (https://github.com/twbs/ratchet/blob/master/LICENSE)
  * ======================================================================== */
 
+// RATCHET RULES
+//
+// 1. All javascript per .html file MUST be WITHIN <div class='content'>
+//
+// 2. Do NOT modify the the event listener on top of web.js. Cam, we can
+// move that listener to this file if you would like. 
+// 
+
 !(function () {
   'use strict';
 

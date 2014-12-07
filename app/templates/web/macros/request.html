@@ -9,7 +9,7 @@
             WAITING FOR TUTORS
           </p>
           <p class='grey-text'>
-            Tonight at 8pm
+            {{request_dict['start_time']}} for {{request_dict['time_estimate']}}
           </p>
           {% else %}
           <p class='red-text'>
@@ -29,7 +29,7 @@
           <p>
             {{request_dict['description'][0:100]}}...
           </p>
-          <a class='btn btn-outlined' href='#cancelModal'>
+          <a class='btn btn-outlined' href='/cancel_request/{{request_dict["server_id"]}}' data-transition='slide-in'>
             Cancel Request
           </a>
         </li>
@@ -57,7 +57,7 @@
             </a>
       </li>
     </ul>
-    <a class='btn btn-negative btn-block decline' href='#student-reject-tutor-modal' > 
+    <a class='btn btn-negative btn-block decline' data-transition='slide-in' href='/reject_guru/{{request_dict["server_id"]}}/'> 
           Reject
     </a>
     <a class='btn btn-positive btn-block accept' href='/confirm_request/{{request_dict["server_id"]}}' data-transition='slide-in'> 
@@ -72,7 +72,7 @@
             <span class='grey-text'>Session</span>
           </h1>
           <p class='grey-text'>
-            Tonight at 8pm, or remotely via Skype. 
+            {{request_dict['start_time']}} for {{request_dict['time_estimate']}}
           </p>
         </li>
         <li class='table-view-cell'>
@@ -91,7 +91,7 @@
     <a class='btn btn-positive btn-block accept' data-transition='slide-in' href='/guru/accept_request/{{request_dict["server_id"]}}/'> 
           Accept
     </a>
-    <a class='btn btn-negative btn-block decline' data-transition='slide-in' href='/guru/cancel_request/{{request_dict["server_id"]}}/'>
+    <a class='btn btn-negative btn-block decline' data-transition='slide-in' href='/guru/reject_request/{{request_dict["server_id"]}}/'>
           Reject
     </a>
 {%-endmacro %}
@@ -110,7 +110,7 @@
           Time & Location: 
           <p class='grey-text'>
             <p class='grey-text'>
-              Tonight at 8pm, or remotely via Skype, at {{request_dict['location']}}
+              {{request_dict['start_time']}} for {{request_dict['time_estimate']}}
             </p>
           </p>
       </li>
@@ -119,51 +119,12 @@
         <p>
           {{request_dict['description']}}
         </p>
+        <a class='btn btn-outlined' href='/guru/cancel_request/{{request_dict["server_id"]}}/' data-transition='slide-in'>
+            Cancel Request
+        </a>
       </li>
   </ul>
 {%-endmacro %}
-
-{% macro student_reject_modal(request_dict) -%}
-<div id="student-reject-tutor-modal" class="modal">
-        <header class="bar bar-nav">
-          <a class="btn btn-link pull-left" href="#student-reject-tutor-modal">Cancel</a>
-          <h1 class="title">Reject {{request_dict['interested_tutors'][0]['name']}}</h1>
-        </header>
-
-        <div class="content">
-          <div class='content-padded'>
-            <form>
-              <textarea id='student-reject-guru-description' placeholder='Please tell us why, and we will try out best to send another Guru your way for this request.' rows="5"></textarea>
-              <a class='btn btn-positive btn-block' href='#' id='student-reject-guru-link'>
-                Submit 
-              </a>
-            </form>
-          </div>
-        </div>
-</div>
-  
-{%- endmacro %}
-
-{% macro cancel_request_modal(request_dict)-%}
-
-<div id="cancelModal" class="modal">
-  <header class="bar bar-nav">
-    <a class="icon icon-close pull-right" href="#cancelModal"></a>
-    <h1 class="title">Cancel {{request_dict['skill_name']}} Request</h1>
-  </header>
-
-  <div class="content">
-    <div class='content-padded'></h6>
-      <form>
-        <textarea id='cancel-request-description' placeholder='Please tell us why! Help us make your future experience be the best as possible.'rows="5"></textarea>
-        <a class='btn btn-positive btn-block' data-request-id='{{request_dict["server_id"]}}' href='#' id='cancel-link'> 
-          Submit 
-        </a>
-      </form>
-    </div>
-  </div>
-</div>
-{%- endmacro %}
 
 {% macro guru_request_reject(request_dict)-%}
       <div class='content-padded'></h6>
@@ -196,7 +157,7 @@
             <span class='grey-text'>Session</span>
           </h1>
           <p class='red-text'>
-            TODAY AT 8PM
+            {{request_dict['start_time']}} for {{request_dict['time_estimate']}}
           </p>
         </li>
         <li class="table-view-cell media">

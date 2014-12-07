@@ -1,25 +1,26 @@
 {% extends 'web/base.html' %}
-{% from 'web/macros/request.html' import guru_accept_request %}
+{% from 'web/macros/request.html' import guru_request_reject %}
 
 {% block main_header %}
-<header class="bar bar-nav">
+
+<header class="bar bar-nav"> 
   <a class="icon icon-left pull-left" href='/guru/request/{{request_dict["server_id"]}}/' data-transition='slide-out'></a>
-    <h1 class="title">Accept Request</h1>
+    <h1 class="title">Reject Request</h1>
 </header>
 {% endblock %}
 
 {% block main_content %}
 <div class="content should-hide-message-bar should-hide-tab-bar">
-    {{guru_accept_request(request_dict)}}
-
-    <script>
-      $('#guru-accept-link').on('click', function() {
+    {{guru_request_reject(request_dict)}}
+</div>
+<script>
+    $('a.guru-reject-link').click(function() {
         url_components = window.location.pathname.split( '/' );
         request_id = url_components[url_components.length - 2];
         
         payload = JSON.stringify({
-            action:'guru-accept',
-            description:$('#guru-accept-description').val()
+            action:'guru-reject',
+            description:$('#guru-reject-description').val()
         });
 
         $.ajax({
@@ -32,13 +33,11 @@
                     transition : "fade",
                     url : "/m/guru/"
                 });
-                $('#cancelModal').removeClass('active');
             },
             error: function (request) {
                 alert(request.responseJSON['errors']);
             }
         });
     });
-    </script>
-</div>
+</script>
 {% endblock %}

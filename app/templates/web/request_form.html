@@ -1,37 +1,37 @@
 {% extends 'web/base.html' %}
+{% from 'web/macros/autocomplete-input.html' import autocomplete_input %}
 
 {% block main_header %}
 <header class="bar bar-nav">
   <a class="icon icon-left pull-left" href="/home/" data-transition='slide-out'></a>
   <h1 class="title">Find a Guru</h1>
 </header>
+<link href="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.3/compressed/themes/default.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.3/compressed/themes/default.time.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.3/compressed/themes/default.date.css" rel="stylesheet">
 {% endblock %}
 
 {% block main_content %}
 <div class="content should-hide-message-bar should-hide-tab-bar">
   <ul class='table-view'>
-    <li class="table-view-cell ignore-table-view-margin">
-      <input id='request-course' type="text" placeholder="Enter Course" />
-      <textarea id='request-description' style="margin-bottom:0px;text-color:#c0c0c0;" placeholder='What do you need help with?'></textarea>
+    <li class="table-view-cell overflow-visible ignore-table-view-margin">
+      <input id='request-course' type="text" placeholder="Enter Course" class=' no-bottom-margin typeahead'/>
+      <textarea id='request-description' style="margin-bottom:0px;text-color:#c0c0c0;" class='margin-top-10'placeholder='What do you need help with?'></textarea>
       <input id='request-phone-number' style="margin-top:0px;margin-bottom:0px;" type="text" placeholder="Your phone number" />
-    </li>
-    <li class="table-view-cell ignore-table-view-margin">
-      <div class="media-body">
-        <div class="segmented-control">
-          <a class="control-item" id="request-location-in-person">In Person</a>
-          <a class="control-item active" id="request-location-online">Online</a>
-        </div>
-      </div>
-      <input id='request-location' style="margin-top:10px;margin-bottom:0px;display:none;" type="text" placeholder="Select a location" />
+      <input id='request-location' style="margin-top:10px;margin-bottom:0px;" type="text" placeholder="Select a location" />
     </li>
     <li class="table-view-cell">
       <div id='asap-toggle' class="toggle active">
         <div class="toggle-handle"></div>
       </div>
-      <p>ASAP!</p>
+      <p>I need help ASAP!</p>
     </li>
-    <li class="table-view-cell ignore-table-view-margin" id="request-time-selection-cell" style="display:none;">
-      <input id='request-datetime' style="margin-top:0px;margin-bottom:0px;" type="text" placeholder="Choose a date and time" />
+    <li class="table-view-cell overflow-visible ignore-table-view-margin" id="request-time-selection-cell" style="display:none;">
+      Select Start Time <br>
+      <label>Date</label>
+      <input id='request-date' style='width:35%' placeholder='Today' class='form-control standard-input default-cursor'></input>
+      <label>Time</label>
+      <input id='request-time' style='width:35%' placeholder='Time' class='form-control standard-input default-cursor'></input>
     </li>
 
     <li class="table-view-cell ignore-table-view-margin">
@@ -53,21 +53,81 @@
   <a class="btn btn-positive btn-block" id="confirm-button" href="#">
     Submit Request
   </a>
-</div>
 
-<script class='content-js' type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script class='content-js' type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
-<script class='content-js'> 
-  $('#confirm-button').on('click touchstart', function(){
+{{autocomplete_input('request-course')}}
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.3/compressed/picker.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.3/compressed/picker.time.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.3/compressed/picker.date.js"></script>
+
+<script> 
+  $('body').on('click', '#asap-toggle', function(){
+        var isSelected = $('#asap-toggle').hasClass('active');
+        if (isSelected) {
+            {% if not request.MOBILE %}
+              $(this).removeClass('active');
+              $('#request-time-selection-cell').show(250);
+              return;
+            {% endif %}
+            $('#request-time-selection-cell').hide(250);
+            //Desktop hacks
+        }else{
+            $('#request-time-selection-cell').show(250);
+            //Desktop hacks
+            {% if not request.MOBILE %}
+            $('#request-time-selection-cell').hide(250);
+            $(this).addClass('active');
+            {% endif %}
+        }
+  });
+
+  date_picker_input = $('#request-date').pickadate({
+    min:true,
+    max:1,
+    onSet: function(context) {
+        date_picker = date_picker_input.pickadate('picker');
+        date_selected = date_picker.get('select')['date'];
+        todays_date = new Date().getDate();
+        time_picker = time_picker_input.pickatime('picker');
+        if (todays_date != date_selected) {
+          time_picker.set({
+            'min': false, 
+            'highlight': [0,0]
+          });
+        } else {
+          time_picker.set('min', true);
+        }
+    }
+  });
+  time_picker_input = $('#request-time').pickatime({
+    min:true
+  });
+
+  $('#confirm-button').on('click', function(){
+
+        var start_time = NaN;
+
+        if ($('#request-time-selection-cell:visible').length > 0) {
+          date_picker = date_picker_input.pickadate('picker');
+          date_picker_milliseconds = date_picker.get('select')['pick'];
+
+          time_picker = time_picker_input.pickatime('picker');
+          time_picker_minutes = time_picker.get('select')['pick'];
+          time_picker_milliseconds = time_picker_minutes * 60 * 1000;
+
+          total_time_epoch = time_picker_milliseconds + date_picker_milliseconds;
+          start_time = total_time_epoch;
+        }
+
         payload = JSON.stringify({
             'skill_name': $('#request-course').val(),
             'description': $('#request-description').val(),
             'phone_number': $('#request-phone-number').val(),
-            'remote': $('#request-location-online').hasClass('active'),
             'location': $('#request-location').val(),
             'urgency': $('#asap-toggle').hasClass('active'),
-            'time_estimate': $('#request-time-estimate-button-group .control-item.active').index(), // TODO : this should be in minutes, not just the index
-            'start_time': (new Date().getTime()).toString(), // TODO : Get start time from the selector on the page
+            'time_estimate': $('#request-time-estimate-button-group .control-item.active').index(), 
+            'start_time': start_time, 
         });
 
         $.ajax({
@@ -93,14 +153,11 @@
                 }
             },
             error: function (request) {
-                // If errors, reset
-                $('#submit-button').show();
-                $('#confirm-button').hide();
                 alert(request.responseJSON['errors']);
             }
         });
     });
-
 </script>
+</div>
 {% endblock %}
 
