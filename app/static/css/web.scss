@@ -17,6 +17,16 @@ header {
   width:78%
 }
 
+//Margin stuff
+
+.no-bottom-margin {
+  margin-bottom:0px !important;
+}
+
+.margin-top-10 {
+  margin-top:10px;
+}
+
 .profile-title-icon {
   top:10px;
   position:absolute;
@@ -117,26 +127,29 @@ header {
     color:black;
 }
 
-input#card-num {
+input#card-num, input#debit-card-num {
   background: url('/static/img/card.png') no-repeat;
   background-size: 32px 24px;
   background-position:95% ;
 }
 
-input#card-num.visa {
+input#card-num.visa, input#debit-card-num.visa {
   background-image: url('/static/img/visa.png');
 }
 
-input#credit-card-num.mastercard {
+input#card-num.mastercard, 
+input#debit-card-num.mastercard {
   background-image: url('/static/img/mastercard.png'); 
 }
 
-input#credit-card-num.discover {
+input#card-num.discover,
+input#debit-card-num.discover {
   background-image: url('/static/img/discover.png'); 
 }
 
-input#credit-card-num.amex {
-  background-image: url('/static/img/discover.png'); 
+input#card-num.amex,
+input#debit-card-num.amex {
+  background-image: url('/static/img/amex.png'); 
 }
 
 .table-view.no-margin {
@@ -168,13 +181,6 @@ textarea {
   color:#000000; 
 }
 
-//typeahead overrides
-.twitter-typeahead, .tt-dropdown-menu {
-  width:100%;
-  background-color: #636c6d;
-  font-size:14px !important;
-}
-
 .tt-hint {
   text-align: left !important;
 }
@@ -202,4 +208,52 @@ textarea {
 .attach-bottom {
   position:relative;
   margin-bottom:0px;
+}
+
+//ratchet overrides
+
+.overflow-visible {
+  overflow:visible !important;  
+}
+
+//typeahead overlap
+.tt-suggestion.tt-cursor {
+  background-color:white;
+}
+
+.tt-suggestion.tt-cursor p {
+  color: #343d3e;
+}
+
+.tt-suggestion p {
+  font-size:20px;
+}
+
+.tt-suggestion {
+  padding: 5px 15px;
+  border-bottom: 1px solid white;
+}
+
+.twitter-typeahead, .tt-dropdown-menu {
+  width:100%;
+  background-color: #636c6d;
+}
+
+//typeahead custom
+#become-guru-course-input {
+  vertical-align: none;
+}
+
+
+//Request form css
+
+.typeahead.selected-course {
+  background: url('/static/img/ok.png') no-repeat;
+  background-size: 24px 24px;
+  background-position:95%;
+  background-color:white;
+}
+  
+.course-tag {
+  margin:5px 5px 5px 5px;
 }

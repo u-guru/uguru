@@ -1,26 +1,33 @@
 {% extends 'web/base.html' %}
-{% from 'web/macros/request.html' import guru_request_reject %}
 
 {% block main_header %}
 
 <header class="bar bar-nav"> 
-  <a class="icon icon-left pull-left" href='/guru/request/{{request_dict["server_id"]}}/' data-transition='slide-out'></a>
-    <h1 class="title">Cancel Request</h1>
+  <a class="icon icon-left pull-left" href='/m/guru/' data-transition='slide-out'></a>
+    <h1 class="title">Cancel {{request_dict['skill_name']}} Request</h1>
 </header>
 {% endblock %}
 
 {% block main_content %}
 <div class="content should-hide-message-bar should-hide-tab-bar">
-    {{guru_request_reject(request_dict)}}
+    <div class='content-padded'></h6>
+        <form>
+          <textarea id='guru-reject-description' placeholder='Please tell us why! Replying will increase your response rate!'rows="5"></textarea>
+          <a data-request-id='{{request_dict["server_id"]}}' data-tutor-id='{{user.id}}' class='btn btn-positive btn-block guru-cancel-link' href='#'>
+            Submit 
+          </a>
+        </form>
+    </div>
 </div>
 <script>
-    $('a.guru-reject-link').click(function() {
-        url_components = window.location.pathname.split( '/' );
-        request_id = url_components[url_components.length - 2];
+    $('a.guru-cancel-link').click(function() {
+        var request_id = ($(this).data().requestId).toString();
+        var tutor_id = ($(this).data().tutorId).toString();
         
         payload = JSON.stringify({
-            action:'guru-reject',
-            description:$('#guru-reject-description').val()
+            action:'guru-cancel',
+            description:$('#guru-reject-description').val(),
+            tutor_server_id: tutor_id
         });
 
         $.ajax({

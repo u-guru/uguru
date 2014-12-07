@@ -1,16 +1,23 @@
-{% macro request_details_student(request_dict) -%}
+{% macro request_details_student(request_dict, available_guru=False) -%}
     <ul class="table-view table-view-scheduled">    
         <li class='table-view-cell'>
           <h1>{{request_dict['skill_name']}} 
             <span class='grey-text'>Session</span>
           </h1>
+          {% if not available_guru %}
           <p class='red-text'>
             WAITING FOR TUTORS
           </p>
           <p class='grey-text'>
-            Tonight at 8pm
+            {{request_dict['start_time']}} for {{request_dict['time_estimate']}}
           </p>
+          {% else %}
+          <p class='red-text'>
+            TUTOR IS AVAILABLE
+          </p>
+          {% endif %}
         </li>
+        {% if not available_guru %}
         <li class='table-view-cell'>
             Location: 
             <p>
@@ -22,12 +29,41 @@
           <p>
             {{request_dict['description'][0:100]}}...
           </p>
-          <a class='btn btn-outlined' href='#cancelModal'>
+          <a class='btn btn-outlined' href='/cancel_request/{{request_dict["server_id"]}}' data-transition='slide-in'>
             Cancel Request
           </a>
         </li>
-      </ul>
+        {% endif %}
+    </ul>
+    {% if available_guru %}
+      {{student_has_incoming_guru(request_dict)}}
+    {% endif %}
+
 {%-endmacro %}
+
+{% macro student_has_incoming_guru(request_dict) -%}
+  {% set guru = request_dict.get('interested_tutors')[0]%}
+    <ul class='table-view'>
+      <li class="table-view-cell media">
+            <a class="navigate-right" href="/p/{{guru['server_id']}}/" data-transition='slide-in'>
+                <img class="media-object pull-left table-view-face" src="{{guru['profile_url']}}">
+                <div class="media-body">
+                    {{guru['name']}} can help!
+                    <p class='red-text'>
+                        Expires in 5 minutes
+                    </p>
+                </div>
+                <button class="btn btn-link">Profile</button>
+            </a>
+      </li>
+    </ul>
+    <a class='btn btn-negative btn-block decline' data-transition='slide-in' href='/reject_guru/{{request_dict["server_id"]}}/'> 
+          Reject
+    </a>
+    <a class='btn btn-positive btn-block accept' href='/confirm_request/{{request_dict["server_id"]}}' data-transition='slide-in'> 
+          Accept 
+    </a>
+{%- endmacro %}
 
 {% macro request_details_guru(request_dict) -%}
     <ul class="table-view table-view-scheduled">    
@@ -36,7 +72,7 @@
             <span class='grey-text'>Session</span>
           </h1>
           <p class='grey-text'>
-            Tonight at 8pm, or remotely via Skype. 
+            {{request_dict['start_time']}} for {{request_dict['time_estimate']}}
           </p>
         </li>
         <li class='table-view-cell'>
@@ -55,7 +91,7 @@
     <a class='btn btn-positive btn-block accept' data-transition='slide-in' href='/guru/accept_request/{{request_dict["server_id"]}}/'> 
           Accept
     </a>
-    <a class='btn btn-negative btn-block decline' data-transition='slide-in' href='/guru/cancel_request/{{request_dict["server_id"]}}/'>
+    <a class='btn btn-negative btn-block decline' data-transition='slide-in' href='/guru/reject_request/{{request_dict["server_id"]}}/'>
           Reject
     </a>
 {%-endmacro %}
@@ -74,7 +110,7 @@
           Time & Location: 
           <p class='grey-text'>
             <p class='grey-text'>
-              Tonight at 8pm, or remotely via Skype, at {{request_details_guru_waiting}}
+              {{request_dict['start_time']}} for {{request_dict['time_estimate']}}
             </p>
           </p>
       </li>
@@ -83,51 +119,12 @@
         <p>
           {{request_dict['description']}}
         </p>
+        <a class='btn btn-outlined' href='/guru/cancel_request/{{request_dict["server_id"]}}/' data-transition='slide-in'>
+            Cancel Request
+        </a>
       </li>
   </ul>
 {%-endmacro %}
-
-{% macro student_reject_modal(request_dict) -%}
-<div id="student-reject-tutor-modal" class="modal">
-        <header class="bar bar-nav">
-          <a class="btn btn-link pull-left" href="#student-reject-tutor-modal">Cancel</a>
-          <h1 class="title">Reject {{request_dict['interested_tutors'][0]['name']}}</h1>
-        </header>
-
-        <div class="content">
-          <div class='content-padded'>
-            <form>
-              <textarea id='student-reject-guru-description' placeholder='Please tell us why, and we will try out best to send another Guru your way for this request.' rows="5"></textarea>
-              <a class='btn btn-positive btn-block' href='#' id='student-reject-guru-link'>
-                Submit 
-              </a>
-            </form>
-          </div>
-        </div>
-</div>
-  
-{%- endmacro %}
-
-{% macro cancel_request_modal(request_dict)-%}
-
-<div id="cancelModal" class="modal">
-  <header class="bar bar-nav">
-    <a class="icon icon-close pull-right" href="#cancelModal"></a>
-    <h1 class="title">Cancel {{request_dict['skill_name']}} Request</h1>
-  </header>
-
-  <div class="content">
-    <div class='content-padded'></h6>
-      <form>
-        <textarea id='cancel-request-description' placeholder='Please tell us why! Help us make your future experience be the best as possible.'rows="5"></textarea>
-        <a class='btn btn-positive btn-block' data-request-id='{{request_dict["server_id"]}}' href='#' id='cancel-link'> 
-          Submit 
-        </a>
-      </form>
-    </div>
-  </div>
-</div>
-{%- endmacro %}
 
 {% macro guru_request_reject(request_dict)-%}
       <div class='content-padded'></h6>
@@ -149,4 +146,90 @@
           </a>
         </form>
       </div>
+{%- endmacro %}
+
+{% macro guru_scheduled_session(_request, is_mobile) -%}
+
+      {% set request_dict = _request.get_return_dict() %}
+      <ul class="table-view table-view-scheduled">    
+        <li class='table-view-cell'>
+          <h1>{{request_dict['skill_name']}} 
+            <span class='grey-text'>Session</span>
+          </h1>
+          <p class='red-text'>
+            {{request_dict['start_time']}} for {{request_dict['time_estimate']}}
+          </p>
+        </li>
+        <li class="table-view-cell media">
+                <div class="media-object pull-left table-view-face" style='background-image: url("{{request_dict['connected_tutor']['profile_url']}}")'></div>
+                <div class="media-body">
+                  {{request_dict['student']['name']}}
+                </div>
+        </li>
+        <li class='table-view-cell'>
+          <a class='navigate-right' href='/guru/conversation/{{request_dict["conversation"]["server_id"]}}' data-transition='slide-in'> 
+            Location: {{request_dict['location']}}
+          </a>
+        </li>
+        <li class='table-view-cell'>
+          $4 for every 15 minutes 
+          {% if is_mobile %}
+            <a class='btn btn-primary' href='#guru-start-session-{{request_dict["server_id"]}}'>
+              Start Session
+            </a>
+            {% else %}
+            <a class='btn btn-primary' href='/guru/confirm/{{request_dict["server_id"]}}'> Start Session
+            </a>
+          {% endif %}
+        </li>
+      </ul>
+
+      {% if is_mobile %}
+        {{guru_confirm_session(_request, is_mobile)}}
+      {% endif %}
+
+{%- endmacro %}
+
+{% macro guru_confirm_session(_request, is_mobile) -%}
+  {% if is_mobile %}
+  <div id="guru-start-session-{{_request.id}}" class="modal">
+  {% endif %}
+    <header class="bar bar-nav">
+          <h1 class="title">Confirm Session</h1>
+          <a href='#guru-start-session-{{_request.id}}'class='icon icon-close pull-right'></a>
+    </header>
+
+    <div class="content should-hide-message-bar should-hide-tab-bar">
+          <ul class='table-view'>
+            <li class='table-view-cell'>
+              Next Steps
+              <p>
+                <br>
+                1. Start a timer when you meet your student. 
+                <br>
+                2. Enter the time for the session.
+                <br>
+                3. Confirm, and get paid immediately.
+              </p>
+            </li>
+          </ul>
+    </div>
+    <div class="bar bar-footer-secondary auto-height">
+      <form class="input-group" >
+            <div class='input-row'>
+                <label>Hours</label>
+                  <input type="number" id="confirm-hours-{{_request.id}}" placeholder="Enter hours"></input>
+            </div>
+            <div class='input-row'>
+                <label>Minutes</label>
+                <input type="number" id="confirm-minutes-{{_request.id}}" placeholder="Enter minutes"></input>
+            </div>
+      </form>
+    </div>
+    <div class="bar bar-footer">
+      <a data-request-id='{{_request.id}}' class="btn btn-positive btn-block guru-confirm-session">Confirm and Get Paid!</a>
+    </div>
+  {% if is_mobile %}
+  </div>
+  {% endif %}
 {%- endmacro %}

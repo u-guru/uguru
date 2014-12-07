@@ -1,0 +1,101 @@
+
+{% macro autocomplete_input(input_id) -%}
+<script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
+
+<script>
+  
+  var courses = new Bloodhound({
+    datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name); },
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    limit: 5,
+    prefetch: {
+      url: '/static/data/autocomplete.json',
+      filter: function(list) {
+        return $.map(list, function(course) { return { name: course }; });
+      }
+    },
+  });
+
+  courses.initialize();
+  
+  // instantiate the typeahead UI
+  $('#{{input_id}}').typeahead(
+    {
+      'highlight':true,
+      'hint': false,
+      'minLength':1
+    },
+    {
+      displayKey: 'name',
+      source: courses.ttAdapter()
+    })
+    .on('typeahead:selected', function() {
+      if ($('#{{input_id}}').val()) {
+        $('#{{input_id}}').addClass('selected-course');
+        $('#request-description').focus();
+      }
+    });
+</script>
+{%- endmacro %}
+
+{% macro autocomplete_input_become_guru(input_id, course_list_div_id) -%}
+  <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
+
+  <script>
+  
+  var courses = new Bloodhound({
+    datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name); },
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    limit: 5,
+    prefetch: {
+      url: '/static/data/autocomplete.json',
+      filter: function(list) {
+        return $.map(list, function(course) { return { name: course }; });
+      }
+    },
+  });
+
+  courses.initialize();
+
+  var all_courses_added = [];
+
+  var add_course_to_list = function(course_name) {
+    if (all_courses_added.indexOf(course_name) == 0) {
+          all_courses_added.push(course_name);
+        }
+    $('#{{course_list_div_id}}').append(
+        '<a href="#" class="btn btn-outlined course-tag">' + course_name.toUpperCase() +' ' + ' x</a>')
+    $('#{{input_id}}').val('');
+  };
+  
+  // instantiate the typeahead UI
+  $('#{{input_id}}').typeahead(
+    {
+      'highlight':true,
+      'hint': false,
+      'minLength':1
+    },
+    {
+      displayKey: 'name',
+      source: courses.ttAdapter()
+    })
+    .on('typeahead:selected', function() {
+      if ($('#{{input_id}}').val()) {
+        var course_name = $('#{{input_id}}').val();
+        add_course_to_list(course_name);
+      }
+    });
+
+    $('#add-course-btn').click(function() {
+      var course_name = $('#{{input_id}}').val();
+      add_course_to_list(course_name);
+    });
+
+    $('.course-tag').click(function() {
+      alert('sup');
+      $(this).remove();
+    });
+
+  </script>
+
+{% endmacro %}

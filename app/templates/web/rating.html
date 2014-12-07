@@ -8,6 +8,8 @@
 {% endif %}
 
 {% block main_header %}
+<header class="bar bar-nav">
+</header>
 {% endblock %}
 
 {% block main_content %}
@@ -71,4 +73,40 @@
           <li><a class='rating-star' href='#'><span class="icon icon-star guru-rating-star black"></span></a></li>
         </ul>
     </div>
+  <script>
+  $(document).ready(function() {
+    //hide header
+    $('header').hide();
+    $('.content').css('padding-top','0px');
+    //home
+    $('a.rating-star').on('touchstart click', function () {
+        var index = $(this).index('a.rating-star');
+        //Entire ratings plugin implemented in the two lines below
+        $( ".guru-rating-star" ).slice(0, index + 1).removeClass('icon-star').addClass('icon-star-filled');
+        $( ".guru-rating-star" ).slice(index + 1, $('.guru-rating-star').length).removeClass('icon-star-filled').addClass('icon-star');
+
+        var rating_id = ($('#submit-rating-container').data().ratingId).toString();
+
+        payload = JSON.stringify({
+            rating: (index + 1)
+        });
+
+        $.ajax({
+            url: '/api/v1/ratings/' + rating_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/home/"
+                });
+            },
+            error: function (request) {
+            
+            }
+        });
+      });
+  });
+  </script>
 {% endblock %}

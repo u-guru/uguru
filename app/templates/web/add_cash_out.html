@@ -1,24 +1,100 @@
 {% extends 'web/base.html' %}
-
-    {% block main_header %}
+{% block main_header %}
     <header class="bar bar-nav">
-      <h1 class="title">Add a Debit Card</h1>
-      <a class="icon icon-left-nav pull-left" href="/m/settings/" data-transition="slide-out"></a>
+      {% if not user.recipient_id %}
+        <h1 class="title">Add Debit Card</h1>
+      {% else %}
+        <h1 class="title">Add a New Card</h1>
+      {% endif %}
+      {% if redirect_home %}
+        <a class="icon icon-left-nav pull-left" href="/m/guru/" data-transition="slide-out"></a>  
+      {% else %}
+        <a class="icon icon-left-nav pull-left" href="/m/guru/settings/" data-transition="slide-out"></a>
+      {% endif %}
     </header>
-    {% endblock %}
+  {% endblock %}
 
-    {% block main_content %}
-    <div class="content should-hide-main-bar should-hide-message-bar">
+{% block main_content %}
+    <div class="content should-hide-tab-bar should-hide-message-bar">
       
       <ul class="table-view">
         <form class="input-group">
-          <input type="text" placeholder="•••• •••• •••• ••••">
-          <input type="text" placeholder="MM / YYYY">
+          <input id='debit-card-num' type="text" placeholder="•••• •••• •••• ••••">
+          <input id='debit-exp-date' type="text" placeholder="MM / YYYY">
         </form>
       </ul>
-      <button class="btn btn-positive btn-block">Submit</button>
-      
-    </div>
-  {% endblock %}
+      <a id='add-debit-card-link' data-user-id='{{user.id}}' href='#' class="btn btn-positive btn-block">Submit</a>
+      <script src="/static/js/jquery.payment.js"></script>
+      <script type="text/javascript">Stripe.setPublishableKey("{{stripe_key}}");</script>
+      <script>
+          
+          function stripeAddCreditCardHandler(status, response) {
 
-    
+            if (response.error) {
+                    // Show the errors on the form    
+                    alert(response.error.message);
+                    return;
+                } else {
+                    var token = response.id;
+                    var data = {'add_debit_card':token};
+                    var user_id = ($('#add-debit-card-link').data().userId).toString();
+                    $.ajax({
+                        type: "PUT",
+                        contentType: 'application/json;charset=UTF-8',
+                        url: '/api/v1/users/' +  user_id,
+                        data: JSON.stringify(data),
+                        dataType: "json", 
+                        success: function(request){
+
+                            url_components = window.location.pathname.split( '/' );
+                            request_id = url_components[url_components.length - 2];
+
+                            {% if redirect_home %}
+
+                            window.PUSH({
+                                transition : "fade",
+                                url : "/guru/cashout/home/" 
+                            });
+
+                            {% else %}
+
+                            window.PUSH({
+                                transition : "fade",
+                                url : "/m/guru/settings/" 
+                            });                          
+
+                            {% endif %}
+                            
+                        },
+                        error: function (request) {
+                            alert(request.responseJSON['errors']);
+                        }
+                    });
+                }
+            }
+
+            $(document).ready(function() {
+              $('input#debit-card-num').payment('formatCardNumber');
+              $('input#debit-exp-date').payment('formatCardExpiry');
+
+              $('#add-debit-card-link').on('click', function(){
+                if (!$('input#debit-card-num').val() || !$('input#debit-exp-date').val()) {
+                    alert('Please enter all fields');
+                    return;
+                }
+                card_number  = $('input#debit-card-num').val();
+                expiration_date = $('input#debit-exp-date').val();
+                month = parseInt(expiration_date.split('/')[0], 10);
+                year = parseInt(expiration_date.split('/')[1], 10);
+
+                Stripe.card.createToken({
+                    number : card_number,
+                    exp_month : month,
+                    exp_year : year,
+                }, stripeAddCreditCardHandler);
+
+              });
+            });
+        </script>
+      </div>
+{% endblock %}

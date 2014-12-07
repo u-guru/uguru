@@ -1,0 +1,50 @@
+{% extends 'web/base.html' %}
+{% set request_dict = _request.get_return_dict() %}
+
+{% block main_header %}
+  <header class="bar bar-nav">
+    <a class="icon icon-left pull-left" data-transition='slide-out' href="/home/"></a>
+    <h1 class="title">Cancel {{request_dict['skill_name']}} Request</h1>
+  </header>
+{% endblock %}
+
+{% block main_content %}
+  <div class="content should-hide-message-bar should-hide-tab-bar">
+    <div class='content-padded'></h6>
+      <form>
+        <textarea id='cancel-request-description' placeholder='Please tell us why! Help us make your future experience be the best as possible.'rows="5"></textarea>
+        <a class='btn btn-positive btn-block' data-request-id='{{request_dict["server_id"]}}' href='#' id='cancel-link'> 
+          Submit
+        </a>
+      </form>
+    </div>
+
+
+    <script>
+    $('#cancel-link').on('click', function() {
+        var request_id = ($('#cancel-link').data().requestId).toString();
+        
+        payload = JSON.stringify({
+            action:'cancel',
+            description:$('#cancel-request-description').val()
+        });
+
+        $.ajax({
+            url: '/api/v1/requests/' + request_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/home/"
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+    </script>
+  </div>
+{% endblock %}

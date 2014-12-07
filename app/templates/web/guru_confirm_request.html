@@ -1,0 +1,39 @@
+{% extends 'web/base.html' %}
+{% from 'web/macros/request.html' import guru_confirm_session %}
+
+{% block main_content %}
+
+{{guru_confirm_session(request_dict, request.MOBILE)}}
+
+<script>
+    $('.guru-confirm-session').on('click touchstart', function() {
+
+        var request_id = ($(this).data().requestId).toString();
+        var num_hours = parseInt($('#confirm-hours-' + request_id).val(), 10);
+        var num_minutes = parseInt($('#confirm-minutes-' + request_id).val(), 10);
+
+        payload = JSON.stringify({
+            action:'guru-confirm',
+            minutes: num_minutes,
+            hours: num_hours
+        });
+        
+        $.ajax({
+            url: '/api/v1/requests/' + request_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/m/guru/"
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+</script>
+{% endblock %}
+

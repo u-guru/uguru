@@ -42,7 +42,7 @@ def request_web_api():
         return_dict = {}
 
         expected_parameters = ['skill_name', 'description', 'time_estimate', 
-        'phone_number', 'location', 'remote', 'urgency', 'start_time']
+        'phone_number', 'location', 'urgency', 'start_time']
 
         if request_contains_all_valid_parameters(request_json, expected_parameters):
 
@@ -65,6 +65,9 @@ def request_web_api():
                 return json_response(http_code=403, errors=[error_msg])
 
             #Create a request
+
+            from lib.utils import js_date_to_python_datetime
+
             _request = Request.create_request(
                     student = user,
                     skill_id = skill.id,
@@ -74,7 +77,7 @@ def request_web_api():
                     location = request_json.get('location'),
                     remote = request_json.get('remote'),
                     urgency = int(request_json.get('urgency')),
-                    start_time = request.json.get('start_time')
+                    start_time = request_json.get('start_time')
                 )
 
             #Check if there are no tutors
@@ -139,15 +142,30 @@ def request_by_id_web_api(request_id):
             if not request_contains_all_valid_parameters(request_json, expected_parameters):
                 return json_response(422)
 
-            _request.cancel(user)
+            _request.cancel(user, request.json.get('description'))
+            flash('Your request has been successfully canceled.')
+
+        # Guru cancels a pending session
+        # TODO: they should be penalized.
+        if put_action == 'guru-cancel':
+            expected_parameters = ['action', 'description', 'tutor_server_id']
+            #invalid payload
+            if not request_contains_all_valid_parameters(request_json, expected_parameters):
+                return json_response(422)
+
+            _request.guru_cancel(user.id, request.json.get('description'))
+            flash('Your request has been successfully canceled.')
 
         
+        #Guru accepts a student request. 
         if put_action == 'guru-accept':
             _request.process_tutor_acceptance(user, request.json.get('description'))
             flash('Request successfully sent to student! We have texted '\
                     + _request.get_student().get_first_name() + ' will get back'\
                     + 'to you if the student likes your profile.')
 
+        # Guru rejects incoming student request.
+        # TODO: Active gurus should be rewarded
         if put_action == 'guru-reject':
             # TODO MP: Record this!
             if request_json.get('description'):
@@ -155,8 +173,10 @@ def request_by_id_web_api(request_id):
             else:
                 flash('Request successfully rejected!')
 
-            _request.process_tutor_reject(user)
+            _request.process_guru_reject(user)
 
+        
+        # Student accepts guru 
         if put_action == 'student-accept':
             expected_parameters = ['action']
             
@@ -171,14 +191,15 @@ def request_by_id_web_api(request_id):
         #If student rejects guru
         if put_action == 'student-reject':
 
-            expected_parameters = ['action', 'description']
+            expected_parameters = ['action', 'description', 'tutor_server_id']
             
             #invalid payload
             if not request_contains_all_valid_parameters(request_json, expected_parameters):
                 return json_response(422)
 
-            # _request.process_student_reject(tutor)
+            _request.process_student_reject(request.json.get('tutor_server_id'))
 
+        #Guru confirms session, student is charged, guru is paid.
         if put_action == 'guru-confirm':
             expected_parameters = ['action', 'minutes', 'hours']
             
@@ -322,7 +343,7 @@ def api_fb_connect():
     
     # If we can find them by email, but they don't have their fb_id set, we set in and log them in
     user_from_email = User.query.filter_by(email=request.json.get("email")).first()
-    if user_from_email:
+    if user_from_email: 
         # Update the user with new information from facebook.
         user_from_email.fb_id = request.json.get("id")
         user_from_email.gender = request.json.get("gender")
@@ -427,7 +448,27 @@ def users_by_id_web_api(user_id):
             else:    
                 error_msg = 'Card was declined, please try again'
                 return json_response(http_code=403, errors=[error_msg])
-        
+
+
+        if request_json.get('add_debit_card'):
+
+            token = request.json.get('add_debit_card')
+            result = user.add_cashout_card(token)
+
+            if result:
+                return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)                
+
+            else:
+                error_msg = 'Please enter a debit card. Not a credit card'
+                return json_response(http_code=403, errors=[error_msg])
+
+        if request_json.get('guru-cashout'):
+
+            user.cashout_balance()
+
+            return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
+
+
     return json_response(400)
         
     
@@ -570,7 +611,7 @@ def ratings_web_api(_id):
         if user.id == rating.student_id:
             rating.update_guru_rating(request_json.get('rating'))
 
-        #guru is submitting guru rating
+        #guru is submitting student rating
         if user.id == rating.tutor_id:
             rating.update_student_rating(request_json.get('rating'))
 

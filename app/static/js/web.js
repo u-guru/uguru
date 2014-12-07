@@ -1,71 +1,31 @@
 // jQuery Shit
+window.addEventListener('push', function(){
+    updateAllBars();
+
+    // We NEED this for all ajax calls to work on mobile
+    var scriptsList = document.querySelectorAll('script');
+    for(var i = 0; i < scriptsList.length; ++i) {
+        eval(scriptsList[i].innerHTML);
+    }
+});
+
+
 $(document).ready(function() {
     updateAllBars();
-    window.addEventListener('push', function(){
-        updateAllBars();
+
+    //Extra handlers to imitate mobile
+
+    $('body').on('click', '.control-item', function() {
+        $(this).siblings('.active').removeClass('active');
+        $(this).addClass('active');
     });
-    
+
     //Logout link
     //TODO: Make this a PUSH EVENT
     $('body').on('touchstart', '#logout-link', function(){
         window.location.replace('/m/logout/');
     });
-
-
-    //Student cancels a request
-    $('body').on('touchstart', '#cancel-link', function() {
-        var request_id = ($('#cancel-link').data().requestId).toString();
-        
-        payload = JSON.stringify({
-            action:'cancel',
-            description:$('#cancel-request-description').val()
-        });
-
-        $.ajax({
-            url: '/api/v1/requests/' + request_id,
-            type: 'PUT',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                window.PUSH({
-                    transition : "fade",
-                    url : "/home/"
-                });
-                $('#cancelModal').removeClass('active');
-            },
-            error: function (request) {
-                alert(request.responseJSON['errors']);
-            }
-        });
-    });
-
-    $('body').on('touchstart', '#student-reject-guru-link', function() {
-        url_components = window.location.pathname.split( '/' );
-        request_id = url_components[url_components.length - 2];
-        
-        payload = JSON.stringify({
-            action:'student-reject',
-            description:$('#student-reject-guru-description').val()
-        });
-
-        $.ajax({
-            url: '/api/v1/requests/' + request_id,
-            type: 'PUT',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                window.PUSH({
-                    transition : "fade",
-                    url : "/request/" + request_id + '/'
-                });
-                $('#student-reject-tutor-modal').removeClass('active');
-            },
-            error: function (request) {
-                alert(request.responseJSON['errors']);
-            }
-        });
-    });
-
+    
     $('body').on('touchstart', '.guru-confirm-session', function() {
         
         var request_id = ($(this).data().requestId).toString();
@@ -152,58 +112,6 @@ $(document).ready(function() {
         });
     });
 
-    $('body').on('touchstart', '#add-card-link', function(){
-        if (!$('input#card-num').val() || !$('input#exp-date').val()) {
-            alert('Please enter all fields');
-            return;
-        }
-        card_number  = $('input#card-num').val();
-        expiration_date = $('input#exp-date').val();
-        month = parseInt(expiration_date.split('/')[0], 10);
-        year = parseInt(expiration_date.split('/')[1], 10);
-
-        Stripe.card.createToken({
-            number : card_number,
-            exp_month : month,
-            exp_year : year,
-        }, stripeAddCreditCardHandler);
-
-    });
-
-    $('body').on('touchstart', '#negative-guru-request-btn', function() {
-        alert('Sorry! Only one request at a time. Once you are connected with a Guru, you can make another one!');
-    });
-
-    //Ratings
-    $('body').on('touchstart', 'a.rating-star', function () {
-        var index = $(this).index('a.rating-star');
-        //Entire ratings plugin implemented in the two lines below
-        $( ".guru-rating-star" ).slice(0, index + 1).removeClass('icon-star').addClass('icon-star-filled');
-        $( ".guru-rating-star" ).slice(index + 1, $('.guru-rating-star').length).removeClass('icon-star-filled').addClass('icon-star');
-
-        var rating_id = ($('#submit-rating-container').data().ratingId).toString();
-
-        payload = JSON.stringify({
-            rating: (index + 1)
-        });
-
-        $.ajax({
-            url: '/api/v1/ratings/' + rating_id,
-            type: 'PUT',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                window.PUSH({
-                    transition : "slide-in",
-                    url : "/home/"
-                });
-            },
-            error: function (request) {
-            
-            }
-        });
-    });
-
     // Guru upload photo link
     $('body').on('touchstart', '#upload-photo-link', function(e) {
       e.preventDefault();
@@ -238,85 +146,6 @@ $(document).ready(function() {
         });
     });
 
-    // Request Form /request_form/
-    $('body').on('touchstart', '#request-location-in-person', function(){
-        $('#request-location').show(10);
-    });
-    $('body').on('touchstart', '#request-location-online', function(){
-       $('#request-location').hide(10);
-    });
-    $('body').on('touchend', '#asap-toggle', function(){
-        var isSelected = !$('#asap-toggle').hasClass('active');
-        if (isSelected) {
-            $('#request-time-selection-cell').hide(10);
-        }else{
-            $('#request-time-selection-cell').show(10);
-        }
-    });
-    $('body').on('touchstart', '#time-segment-1', function(){
-        $('#request-estimated-cost').text("$5");
-    });
-    $('body').on('touchstart', '#time-segment-2', function(){
-        $('#request-estimated-cost').text("$10");
-    });
-    $('body').on('touchstart', '#time-segment-3', function(){
-        $('#request-estimated-cost').text("$20");
-    });
-    $('body').on('touchstart', '#time-segment-4', function(){
-        $('#request-estimated-cost').text("$40");
-    });
-
-    $('body').on('touchstart', '#submit-button', function () {
-        $('#submit-button').hide();
-        $('#confirm-button').show();
-    });
-
-    //Student creates a request
-    $('body').on('touchstart', '#confirm-button', function(){
-        payload = JSON.stringify({
-            'skill_name': $('#request-course').val(),
-            'description': $('#request-description').val(),
-            'phone_number': $('#request-phone-number').val(),
-            'remote': $('#request-location-online').hasClass('active'),
-            'location': $('#request-location').val(),
-            'urgency': $('#asap-toggle').hasClass('active'),
-            'time_estimate': $('#request-time-estimate-button-group .control-item.active').index(), // TODO : this should be in minutes, not just the index
-            'start_time': (new Date().getTime()).toString(), // TODO : Get start time from the selector on the page
-        });
-
-        $.ajax({
-            url: '/api/v1/requests',
-            type: 'POST',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                if (request.errors) {
-                    console.log(request.errors);
-                    if (request.redirect && request.redirect == 'no-tutors') {
-                        window.PUSH({
-                            transition : "fade",
-                            url : "/show/no-tutors/"
-                        });
-                    }
-                    // If errors, reset
-                    $('#submit-button').show();
-                    $('#confirm-button').hide();
-                }
-                else {
-                    window.PUSH({
-                        transition : "fade",
-                        url : "/request/" + request['server_id'] +'/'
-                    });
-                }
-            },
-            error: function (request) {
-                // If errors, reset
-                $('#submit-button').show();
-                $('#confirm-button').hide();
-                alert(request.responseJSON['errors']);
-            }
-        });
-    });
 });
 // end document ready
 
@@ -357,39 +186,4 @@ function readURL(input) {
 
         reader.readAsDataURL(input.files[0]);
       }
-    }
-
-function stripeAddCreditCardHandler(status, response) {
-
-    if (response.error) {
-            // Show the errors on the form    
-            alert(response.error.message);
-            return;
-        } else {
-            var token = response.id;
-            var data = {'add_card':token};
-            var user_id = ($('#add-card-link').data().userId).toString();
-            $.ajax({
-                type: "PUT",
-                contentType: 'application/json;charset=UTF-8',
-                url: '/api/v1/users/' +  user_id,
-                data: JSON.stringify(data),
-                dataType: "json",
-                success: function(request){
-
-                    url_components = window.location.pathname.split( '/' );
-                    request_id = url_components[url_components.length - 2];
-
-                    window.PUSH({
-                        transition : "fade",
-                        url : "/confirm_request/" + request_id + '/'
-                    });
-                    $('#add-card-modal').removeClass('active');
-                    return;
-                },
-                error: function (request) {
-                    alert(request.responseJSON['errors']);
-                }
-            });
-        }
     }

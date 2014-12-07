@@ -1,5 +1,13 @@
 {% extends 'web/base.html' %}
+{% from 'web/macros/request.html' import request_details_student, student_reject_modal, student_accept_modal, cancel_request_modal,
+request_details_guru %}
 {% set scheduled_sessions = user.get_scheduled_sessions_student() %}
+{% set student_requests = user.get_student_requests() %}
+
+{% if student_requests %}
+  {% set request_dict = student_requests[0].get_return_dict() %}
+  {% set available_guru = request_dict.get('interested_tutors') %}
+{% endif %}
 
 {% block main_header %}
 <header class="bar bar-nav">
@@ -10,10 +18,15 @@
 {% block main_content %}
 <div class="content should-hide-message-bar">
   <div class='logo-container center content-padded'>
-    {% if not scheduled_sessions %}
+    {% if not scheduled_sessions and not student_requests %}
     <img class="media-object guru-photo" src="/static/img/guru-new.svg">
     {% endif %}
   </div>
+
+
+  {% if student_requests %}
+      {{request_details_student(request_dict, available_guru)}}
+  {% endif %}
 
   {% for _request in scheduled_sessions %}
       {% set request_dict = _request.get_return_dict() %}
@@ -38,7 +51,7 @@
                         <span class="icon icon-star-filled profile-star black"></span> 
                     </p>
                 </div>
-                <a class='btn btn-link'> View More
+                <a class='btn btn-link'> See profile
                 </a>
         </li>
         <li class='table-view-cell'>
@@ -50,12 +63,23 @@
       </ul>
     {% endfor %}
 
+  {% if not student_requests %}
   <a class="btn btn-positive btn-block" href="/request_form/" data-transition='slide-in'>
     Request Guru
   </a>
+  {% elif not available_guru %}
+    <button class='btn btn-block btn-negative' id='negative-guru-request-btn'>
+      Request a Guru
+    </button>
+  {% endif %}
 
   {% include 'web/snippets/flash_alerts.html'%}
   {{show_all_components(user, student_mode)}}
 
 </div><!-- /.content -->
+<script>
+$('#negative-guru-request-btn').on('click touchstart', function() {
+    alert('Sorry! Only one request at a time. Once you are connected with a Guru, you can make another one!');
+});
+</script>
 {% endblock %}

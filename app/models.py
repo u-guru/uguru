@@ -224,11 +224,21 @@ class User(Base):
         secondary = user_text_table)
 
 
-    def __init__(self, name = None, email = None, password = None, phone_number = None, is_a_tutor = None):
+
+    #Gets called when you create a new User() 
+    def __init__(self, name = None, email = None, password = None, \
+        phone_number = None, is_a_tutor = None, profile_url = None, \
+        fb_id = None, fb_account = None, gender = None):
+        
         self.name = name
         self.email = email
         self.password = password
         self.phone_number = phone_number
+        self.is_a_tutor = is_a_tutor
+        self.profile_url = profile_url
+        self.fb_id = fb_id
+        self.fb_account = fb_account
+        self.gender = gender
         self.time_created = datetime.now()
         self.last_active = datetime.now()
 
@@ -327,6 +337,39 @@ class User(Base):
                 db_session.rollback()
                 raise
 
+        return result
+
+    def cashout_balance(self):
+        if self.balance:
+
+            payment = Payment.create_cashout_payment(self)
+            self.payments.append(payment)
+            
+            #Update total earned
+            self.total_earned = self.total_earned + self.balance
+            self.balance = 0
+
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+
+            return True
+        return False
+
+    def add_cashout_card(self, token):
+        from lib.payments import create_stripe_recipient
+
+        result = create_stripe_recipient(token, self)
+
+        if result:
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+
         return result 
 
     def get_all_conversations(self, _dict=None, sorted_by_time=None):
@@ -362,6 +405,12 @@ class User(Base):
             if c.guru == guru:
                 return c
         return 
+
+    def get_all_transactions(self):
+        user_payments = self.payments
+        if not user_payments: return user_payments #return none
+        payments = sorted(self.payments, key=lambda p:p.time_created, reverse=True)
+        return [payment.as_dict(self) for payment in payments]
 
 
 
@@ -401,9 +450,7 @@ class User(Base):
     #Helper function for /profile/<id> route
     def has_incoming_tutor_for_request(self, guru_id):
         for _request in self.get_pending_requests():
-            print _request
             incoming_tutor_ids = [tutor.id for tutor in _request.get_interested_tutors()]
-            print incoming_tutor_ids
             if guru_id in incoming_tutor_ids:
                 guru = User.query.get(guru_id)
                 return guru, _request
@@ -428,6 +475,13 @@ class User(Base):
     # Active requests is not expired, or not canceled (yet), or not matched.
     def get_pending_requests(self):
         return self.outgoing_requests
+
+    def get_student_requests(self):
+        all_student_requests = []
+        for _request in self.outgoing_requests:
+            if self.id == _request.student_id:
+                all_student_requests.append(_request)
+        return all_student_requests
 
     #for guru to get all incoming requests
     def get_guru_requests(self):
@@ -536,10 +590,17 @@ class Conversation(Base):
 
     #Returns datetime of the last message sent in the convo
     def get_last_message_time(self):
-        return self.get_last_message().write_time
+        last_message = self.get_last_message()
+        if last_message:
+            return last_message.write_time
+        else:
+            return False
 
     def get_last_message(self):
-        return sorted(self.messages, key=lambda m:m.write_time)[-1]
+        if self.messages:
+            return sorted(self.messages, key=lambda m:m.write_time)[-1]
+        else:
+            return False
 
     def get_all_messages(self, _dict=False, sorted_by_time=False):
         messages = self.messages
@@ -785,7 +846,6 @@ class Payment(Base):
     status = Column(String)
     credits_used = Column(Integer)
 
-
     @staticmethod
     def bill_student(student, total):
         import stripe
@@ -814,6 +874,7 @@ class Payment(Base):
         payment.time_created = datetime.now()
         payment.num_hours = hours
         payment.num_minutes = minutes
+        payment.request_id = _request.id
         
         student = _request.get_student()
         guru = User.query.get(_request.connected_tutor_id)
@@ -834,6 +895,8 @@ class Payment(Base):
         student.payments.append(payment)
         guru.payments.append(payment)
 
+        guru.balance = guru.balance + payment.tutor_received_amount
+
         try: 
             db_session.add(payment)
             db_session.commit()
@@ -842,6 +905,31 @@ class Payment(Base):
             raise 
 
         return payment
+
+    @staticmethod 
+    def create_cashout_payment(user):
+        
+        from lib.payments import create_stripe_transfer
+        from datetime import datetime 
+        
+        transfer = create_stripe_transfer(user.balance, user)
+        
+        payment = Payment()
+        payment.stripe_recipient_id = transfer.id
+        payment.time_created = datetime.now()
+        payment.status = 'pending'
+        payment.tutor_received_amount = user.balance
+        payment.tutor_id = user.id
+
+        try: 
+            db_session.add(payment)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
+        return payment
+
 
     @staticmethod 
     def calculate_student_price(hours, minutes):
@@ -856,6 +944,63 @@ class Payment(Base):
         total_amount = 16 * total_hours
         rounded_total_amount = round(total_amount, 2)
         return rounded_total_amount
+
+    
+    def get_payment_type(self, user):
+        if self.student_id == user.id:
+            return 'student'
+        
+        #payment.student_id is None for cashout transations
+        if self.tutor_id == user.id and \
+        not self.student_id:
+            return 'cashout'
+
+        if self.tutor_id == user.id:
+            return 'guru'
+
+    def as_dict(self, user):
+        return_dict = {}
+        _type = self.get_payment_type(user)
+        if _type == 'student':
+
+            _request = Request.query.get(self.request_id)
+
+            skill = Skill.query.get(_request.skill_id)
+
+            return_dict = {
+
+                'type': _type,
+                'skill_name': Skill.get_skill_from_name(skill), 
+                'guru': User.query.get(_request.connected_tutor_id).as_dict(),
+                'time': self.time_created.strftime('%h %d %Y'),
+                'amount': self.student_paid_amount
+
+            }
+
+        elif _type == 'guru':
+
+            _request = Request.query.get(self.request_id)
+            skill = Skill.query.get(_request.skill_id)
+
+            return_dict = {
+
+                'type': _type,
+                'skill_name': Skill.get_skill_from_name(skill.name),
+                'student': User.query.get(_request.student_id).as_dict(),
+                'time': self.time_created.strftime('%h %d %Y'),
+                'amount': self.tutor_received_amount,
+            }
+
+        elif _type == 'cashout':
+            return_dict = {
+                
+                'type': _type,
+                'time': self.time_created.strftime('%h %d %Y'),
+                'amount': self.tutor_received_amount,
+                'status': self.status,
+            }
+
+        return return_dict
 
 
     def __init__(self, request_id = None):
@@ -979,6 +1124,61 @@ class Request(Base):
             guru_id=self.connected_tutor_id).first()
         return c
 
+    def process_start_time(self):
+        if self.urgency:
+            print self.start_time
+            return 'ASAP'
+        
+        #else case
+        from datetime import datetime
+        result_str = ''
+        if datetime.now().day == self.start_time.day:
+            result_str += 'Today, '
+        else:
+            result_str += 'Tomorrow, '
+        
+        if not self.start_time.minute:
+            result_str += self.start_time.strftime('%I%p')
+        else:
+            result_str += self.start_time.strftime('%I:%M %p')
+        return result_str
+
+    def process_time_estimate(self):
+        if not self.time_estimate:
+            return '15-30min'
+        elif self.time_estimate == 1:
+            return '30-60min'
+        elif self.time_estimate == 1:
+            return '1-2hr'
+        else:
+            return '2+ hours'
+
+
+    def process_student_reject(self, tutor_id):
+        tutor = User.query.get(tutor_id)
+
+        self.committed_tutors.remove(tutor)
+        tutor.outgoing_requests.remove(self)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+
+    def process_guru_reject(self, tutor_id):
+        tutor = User.query.get(tutor_id)
+
+        self.committed_tutors.remove(tutor)
+        tutor.outgoing_requests.remove(self)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+
+
     def process_student_acceptance(self, tutor):
         from datetime import datetime
         
@@ -991,6 +1191,10 @@ class Request(Base):
 
         student.outgoing_requests.remove(self)
         tutor.outgoing_requests.remove(self)
+
+        for tutor in (self.committed_tutors + self.requested_tutors):
+            if self in tutor.outgoing_requests:
+                tutor.outgoing_requests.remove(self)
 
         #Create conversation
         conversation = Conversation.create_conversation(skill, tutor, student)
@@ -1026,7 +1230,6 @@ class Request(Base):
 
 
     def process_tutor_acceptance(self, tutor, description):
-        tutor.outgoing_requests.remove(self)
         self.committed_tutors.append(tutor)
         self.pending_tutor_id = tutor.id
         self.pending_tutor_description = description
@@ -1063,9 +1266,27 @@ class Request(Base):
     def get_connected_tutor(self):
         return User.query.get(self.connected_tutor_id)
 
-    def cancel(self, user):
+    def cancel(self, user, description=None):
         self.connected_tutor_id = self.student_id
         user.outgoing_requests.remove(self)
+        self.cancellation_reason = description
+
+        #Clear this request from all tutors inbox
+        for tutor in self.requested_tutors + tutor.committed_tutors:
+            if self in tutor.outgoing_requests:
+                tutor.outgoing_requests.remove(self)
+
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return 
+
+    # A guru who has committed, but is not anymore
+    def guru_cancel(self, guru_id, description=None):
+        guru = User.query.get(guru_id)
+        guru.outgoing_requests.remove(self)
         try:
             db_session.commit()
         except:
@@ -1263,6 +1484,31 @@ class Rating(Base):
             db_session.rollback()
             raise         
 
+    def update_student_rating(self, rating_num):
+        self.student_rating = rating_num
+
+        #remove rating from student pending ratings
+        guru = User.query.get(self.tutor_id)
+        guru.pending_ratings.remove(self)
+
+        try: 
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise        
+
+    def update_guru_rating(self, rating_num):
+        self.tutor_rating = rating_num
+
+        #remove rating from guru pending ratings
+        student = User.query.get(self.student_id)
+        student.pending_ratings.remove(self)
+
+        try: 
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise        
 
     #TODO, make queries more optimal
     def get_payment_details_dict(self):

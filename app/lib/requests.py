@@ -21,13 +21,12 @@ def request_obj_to_dict(_request, skill, student, tutor=None):
         'tutor_count': len(_request.approved_tutors()),
         'description': _request.description,
         'skill_name': skill.get_short_name(),
-        'time_estimate': _request.time_estimate,
+        'time_estimate': _request.process_time_estimate(),
         'location': _request.location,
         'time_created': pretty_date(_request.time_created),
         'remote': _request.remote,
-        'urgency': _request.urgency
-        #LATER
-        # 'start_time': python_datetime_to_js_date(_request.start_time)
+        'urgency': _request.urgency,
+        'start_time': _request.process_start_time()
     }
 
     #If request is in matched stage with a matched tutor

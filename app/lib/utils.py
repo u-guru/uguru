@@ -1,4 +1,5 @@
 def js_date_to_python_datetime(js_date):
+    if not js_date: return None
     from datetime import datetime
     return datetime.fromtimestamp(int(js_date)/1000.0)
 
