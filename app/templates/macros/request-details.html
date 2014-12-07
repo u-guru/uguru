@@ -186,56 +186,14 @@
             {% endif %}
             <div class='row font-14 margin-top-15 reg-text'>
                 This Session Would Take: 
-                <span class='green-text'> <span id='session-length-{{index}}'>{{request_dict[notif.request_id]['request'].time_estimate}}</span> hours
+                <span class='green-text'> <span id='session-length-{{index}}'>{{request_dict[notif.request_id]['request'].process_time_estimate()}}</span> hours
                 </span>
             </div>
             
             <div class='row font-14 margin-top-15 reg-text'>
-                {% if not guru_not_ready %}
                 Hourly Rate:
-                <span class='green-text'> $<span id='student-offer-hourly-price-{{index}}'>{{request_dict[notif.request_id]['request'].student_estimated_hour}}</span>/hr
-                </span> 
-                {% else %}
-                First Time Guru Hourly Rate:
-                <span class='green-text'> <b>$<span id='student-offer-hourly-price-{{index}}'>0</span>/hr</b> </span> <br> <span class='grey-text font-12'> (${{request_dict[notif.request_id]['request'].student_estimated_hour}}/hr when you have 4.0 stars avg rating)</span>
-                {% endif %}
-                
-                {% if notif.custom_tag == 'tutor-request-offer' and not notif.custom == 'tutor-accept-request' and not notif.status =='LATE' and not guru_not_ready %}
-                &nbsp;&nbsp;&nbsp;
-                <a id="tutor-change-price-link-{{index}}" class="tutor-change-price-link" href="javascript:void(0);">
-                    <span class='glyphicon glyphicon-pencil blue-text'> </span>
-                </a>
-                <a class="tutor-change-price-cancel" style='display:none' id="tutor-change-price-cancel-{{index}}" href="javascript:void(0);">
-                    <span class='glyphicon glyphicon-remove blue-text float-right'> </span>
-                </a>
-                <br>
-                <div style="display:none; width:100%" id="tutor-change-price-slider-div-{{index}}">
-                        <div style="margin:auto;" id="tutor-change-price-slider-{{index}}" class="tutor-change-price-slider"></div>
-                </div>
-
-                {% endif %}
-
+                <span class='green-text'> $16/hr </span>
             </div>
-
-            {% if notif.custom_tag == 'tutor-request-offer' or notif.custom == 'tutor-accept-request' or notif.custom == 'tutor-is-matched' %}
-            <div class='row font-14 margin-top-15 reg-text'>
-                    {% if not guru_not_ready %}
-                    You will make:
-                    <b>
-                    <span class='green-text'> $<span id='you-will-make-{{index}}'>{{request_dict[notif.request_id]['request'].time_estimate * request_dict[notif.request_id]['request'].student_estimated_hour * 0.75}} </span> 
-                    </b>
-                    </span> 
-                    <br>
-                    <span class='font-10 twenty-five-percent-transaction'> We deduct 25% of your <b>first</b> transaction with a student. </span>
-                    {% else %}
-                    Next Time You Could Make
-                    <span class='green-text'> $<span id='you-will-make-{{index}}'>{{request_dict[notif.request_id]['request'].time_estimate * request_dict[notif.request_id]['request'].student_estimated_hour * 0.75}} </span> 
-                    </span> 
-                    <br>
-                    <span class='font-10'> We deduct 25% of your <b>first</b> transaction with a student. </span>
-                    {% endif %}
-            </div>
-            {% endif %}
         </div>
     </div>
     <div class='row block margin-top-40 additional-details' style='padding-left:16px'>

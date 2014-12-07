@@ -1068,8 +1068,8 @@ class Request(Base):
 
     #TODO: make sure student_id doesn't already have a request for that skill_id
 
-    def __init__(self, student_id, skill_id, description, time_estimate, \
-        phone_number, location=None, remote=None, urgency=None, start_time=None):
+    def __init__(self, student_id=None, skill_id=None, description=None, time_estimate=None, \
+        phone_number=None, location=None, remote=None, urgency=None, start_time=None):
         self.student_id = student_id
         self.skill_id = skill_id
         self.description = description
@@ -1272,7 +1272,7 @@ class Request(Base):
         self.cancellation_reason = description
 
         #Clear this request from all tutors inbox
-        for tutor in self.requested_tutors + tutor.committed_tutors:
+        for tutor in self.requested_tutors + self.committed_tutors:
             if self in tutor.outgoing_requests:
                 tutor.outgoing_requests.remove(self)
 
