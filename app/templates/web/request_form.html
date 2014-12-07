@@ -50,37 +50,57 @@
       <span style="color:#c0c0c0;">estimated cost</span>
     </li>
   </ul>
-  <a class="btn btn-positive btn-block" id="submit-button" href="#">
-    Submit 
-  </a>
-  <a class="btn btn-positive btn-block" style="display:none;background-color:#3EB9BB;" id="confirm-button" href="#">
-    Confirm
+  <a class="btn btn-positive btn-block" id="confirm-button" href="#">
+    Submit Request
   </a>
 </div>
 
 <script class='content-js' type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script class='content-js' type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
 <script class='content-js'> 
-  var numbers = new Bloodhound({
-    datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name); },
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    limit: 3,
-    prefetch: {
-      url: '/static/data/autocomplete.json',
-      filter: function(list) {
-        return $.map(list, function(course) { return { name: course }; });
-      }
-    },
-  });
+  $('#confirm-button').on('click touchstart', function(){
+        payload = JSON.stringify({
+            'skill_name': $('#request-course').val(),
+            'description': $('#request-description').val(),
+            'phone_number': $('#request-phone-number').val(),
+            'remote': $('#request-location-online').hasClass('active'),
+            'location': $('#request-location').val(),
+            'urgency': $('#asap-toggle').hasClass('active'),
+            'time_estimate': $('#request-time-estimate-button-group .control-item.active').index(), // TODO : this should be in minutes, not just the index
+            'start_time': (new Date().getTime()).toString(), // TODO : Get start time from the selector on the page
+        });
 
-    // initialize the bloodhound suggestion engine
-    numbers.initialize();
-
-    // instantiate the typeahead UI
-    $('#request-course').typeahead({
-      displayKey: 'name',
-      source: numbers.ttAdapter()
+        $.ajax({
+            url: '/api/v1/requests',
+            type: 'POST',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                if (request.errors) {
+                    console.log(request.errors);
+                    if (request.redirect && request.redirect == 'no-tutors') {
+                        window.PUSH({
+                            transition : "fade",
+                            url : "/show/no-tutors/"
+                        });
+                    }
+                }
+                else {
+                    window.PUSH({
+                        transition : "fade",
+                        url : '/home/'
+                    });
+                }
+            },
+            error: function (request) {
+                // If errors, reset
+                $('#submit-button').show();
+                $('#confirm-button').hide();
+                alert(request.responseJSON['errors']);
+            }
+        });
     });
+
 </script>
 {% endblock %}
 

@@ -1,7 +1,5 @@
 {% extends 'web/base.html' %}
-{% from 'web/macros/modals.html' import guru_confirm_session_modal,
- %}
-{% from 'web/macros/request.html' import request_details_guru_waiting %}
+{% from 'web/macros/request.html' import request_details_guru_waiting, guru_scheduled_session %}
 {% set guru_accepted_requests = user.get_accepted_requests() %}
 {% set guru_incoming_requests = user.get_guru_requests() %}
 {% set scheduled_sessions = user.get_scheduled_sessions_guru() %}
@@ -27,40 +25,15 @@
   </div>
 
 
+  <!-- guru scheduled sessions -->
   {% for _request in scheduled_sessions %}
-      {% set request_dict = _request.get_return_dict() %}
-      <ul class="table-view table-view-scheduled">    
-        <li class='table-view-cell'>
-          <h1>{{request_dict['skill_name']}} 
-            <span class='grey-text'>Session</span>
-          </h1>
-          <p class='red-text'>
-            TODAY AT 8PM
-          </p>
-        </li>
-        <li class="table-view-cell media">
-                <div class="media-object pull-left table-view-face" style='background-image: url("{{request_dict['connected_tutor']['profile_url']}}")'></div>
-                <div class="media-body">
-                  {{request_dict['student']['name']}}
-                </div>
-        </li>
-        <li class='table-view-cell'>
-          <a class='navigate-right' href='/guru/conversation/{{request_dict["conversation"]["server_id"]}}' data-transition='slide-in'> 
-            Location: {{request_dict['location']}}
-          </a>
-        </li>
-        <li class='table-view-cell'>
-          $4 for every 15 minutes 
-          <a class='btn btn-primary' href='#guru-start-session-{{request_dict["server_id"]}}'>
-            Start Session
-          </a>
-        </li>
-      </ul>
 
-      {{guru_confirm_session_modal(_request)}}
+    {{guru_scheduled_session(_request, request.MOBILE)}}
 
   {% endfor %}
 
+
+  <!-- guru accepted sessions -->
   {% for _request in guru_accepted_requests %}
 
     {% set request_dict = _request.get_return_dict() %}
@@ -69,30 +42,77 @@
   {% endfor %}
 
 
-
-
-    {% if guru_incoming_requests %}
-    <ul class="table-view">    
-      <li class="table-view-cell">
-        <a class="navigate-right" href='/m/guru/requests/' data-transition='slide-in'>
-          Incoming Requests
-          <span class="badge badge-negative">{{guru_incoming_requests|length}}</span>
-        </a>
-      </li>
-    </ul>
-    {% endif %}
-    {% if not guru_requests and not scheduled_sessions %}
-    <ul class="table-view attach-bottom">    
-      <li class="table-view-cell">
-        <a class="navigate-right" data-transition='slide-in'>
-          Guru Getting-Started Guide
-        </a>
-      </li>
-    </ul>
-    {% endif %}
-
+  <!-- guru incoming requests -->
+  {% if guru_incoming_requests %}
+  <ul class="table-view">    
+    <li class="table-view-cell">
+      <a class="navigate-right" href='/m/guru/requests/' data-transition='slide-in'>
+        Incoming Requests
+        <span class="badge badge-negative">{{guru_incoming_requests|length}}</span>
+      </a>
+    </li>
+  </ul>
+  {% endif %}
+  {% if not guru_requests and not scheduled_sessions %}
+  <ul class="table-view">    
+    <li class="table-view-cell">
+      <a class="navigate-right" data-transition='slide-in'>
+        Guru Getting-Started Guide
+      </a>
+    </li>
+  </ul>
+  {% endif %}
+  {% if user.balance %}
+  <ul class='table-view'>
+    <li class="table-view-cell">
+      <a class='navigate-right' {% if user.recipient_id %} href='/cash_out/'
+      {% else %} href='/add_cash_card/home/' {% endif %} data-transition='slide-in'
+      >
+      Your balance: <strong> ${{user.balance}} </strong>
+       <button class='btn btn-link'> Cash out  </button>
+      </a>
+    </li>
+  </ul>
+  {% endif %}
   <!-- Add flashed content -->
   {% include 'web/snippets/flash_alerts.html' %}
 
 </div><!-- /.content -->
+
+<script>
+  $(document).ready(function() {
+    $('.guru-confirm-session').on('click touchstart', function() {
+
+        var request_id = ($(this).data().requestId).toString();
+        var num_hours = parseInt($('#confirm-hours-' + request_id).val(), 10);
+        var num_minutes = parseInt($('#confirm-minutes-' + request_id).val(), 10);
+
+        payload = JSON.stringify({
+            action:'guru-confirm',
+            minutes: num_minutes,
+            hours: num_hours
+        });
+
+        console.log(payload);
+        
+        $.ajax({
+            url: '/api/v1/requests/' + request_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/m/guru/"
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+
+  });
+</script>
+
 {% endblock %}

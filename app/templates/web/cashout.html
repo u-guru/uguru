@@ -1,0 +1,41 @@
+{% extends 'web/base.html' %}
+{% from 'web/macros/request.html' import guru_confirm_session %}
+
+{% block main_content %}
+
+{% if redirect == 'home' %}
+    {% set redirect_url = '/m/guru/' %}
+{% else %}
+    {% %}
+{% endif %}
+
+{{guru_cash_out(request.MOBILE, redirect_url=redirect_url)}}
+
+<script>
+    $('#guru-cashout-link').on('click touchstart', function() {
+
+        var user_id = ($(this).data().userId).toString();
+
+        payload = JSON.stringify({
+            action:'guru-cashout'
+        });
+        
+        $.ajax({
+            url: '/api/v1/users/' + user_id
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/m/guru/"
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+</script>
+{% endblock %}
+

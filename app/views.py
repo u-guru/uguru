@@ -51,20 +51,17 @@ def home():
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
-    
-    #Check if user is a student & has pending requests
-    pending_requests = user.get_pending_requests()
-    if pending_requests and pending_requests[0].get_student() == user:
-        pending_request_id = pending_requests[0].id
-        return redirect( \
-            url_for(endpoint='request_by_id', _id=pending_request_id))
 
+    if user.pending_ratings:
+        rating_id = user.pending_ratings[0].id
+        return redirect(url_for('m_rating', _id=rating_id))
+    
     return render_template('web/home.html', user=user)
 
 @app.route('/m/guru/')
 def m_guru():
-
     user = api.current_user()
+    print user.id
     if not user:
         return redirect(url_for('m_login'))
 
@@ -192,14 +189,32 @@ def add_payment(r_id=None):
         redirect_request_id = r_id,
         user=user)
 
-@app.route('/add_cash_out/')
-def add_cash_out():
+@app.route('/guru/cashout/')
+@app.route('/guru/cashout/<redirect>/')
+def guru_cashout(redirect=None):
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    #if tutor doesn't have a balance
+    if not user.balance:
+        return redirect(url_for('m_guru'))
+
+    return render_template('web/cashout.html',\
+        user=user, redirect=redirect)
+
+@app.route('/add_cash_card/<home>/')
+@app.route('/add_cash_card/')
+def add_cash_out(home=None):
 
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
 
-    return render_template('web/add_cash_out.html')
+    return render_template('web/add_cash_out.html', \
+        stripe_key=stripe_keys['publishable_key'],\
+        redirect_home=home,
+        user=user)
 
 @app.route('/become_guru/')
 def become_guru():
@@ -232,7 +247,7 @@ def m_messages(_id):
     
     return render_template('web/messages.html', convo=convo, user=user)
 
-@app.route('/guru/settings/')
+@app.route('/m/guru/settings/')
 @app.route('/m/settings/')
 def m_settings():
 
@@ -270,7 +285,7 @@ def profile(_id):
         student=user, guru=guru, _request=_request)
 
 
-@app.route('/m/rating/<_id>')
+@app.route('/m/rating/<_id>/')
 def m_rating(_id):
 
     user = api.current_user()
@@ -278,6 +293,12 @@ def m_rating(_id):
         return redirect(url_for('m_login'))
 
     rating = Rating.query.get(_id)
+
+    if not user.pending_ratings:
+        if user.id == rating.student_id:
+            return redirect(url_for('home'))
+        else:
+            return redirect(url_for('m_guru'))
 
     return render_template('web/rating.html', user=user, \
         rating=rating)
@@ -301,6 +322,66 @@ def support():
         return redirect(url_for('m_login'))
 
     return render_template('web/support.html')
+
+@app.route('/cancel_request/<_id>/')
+@app.route('/accept_request/<_id>/')
+def student_cancel_request_id(_id):
+    _request = Request.get_request_by_id(int(_id))
+    if not _request:
+        return redirect(url_for('home'))
+
+    #if tutor (should take up the whole page)
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+    return
+
+@app.route('/guru/cancel_request/<_id>/')
+@app.route('/guru/accept_request/<_id>/')
+@app.route('/guru/confirm/<_id>/')
+def guru_cancel_request_by_id(_id):
+    _request = Request.get_request_by_id(int(_id))
+    
+    if not _request:        
+        return redirect(url_for('home'))
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    if not user == _request.get_student() and not _request.is_tutor_involved(user):
+        flash("Sorry! You don't have access to this page.")
+        return redirect(url_for('m_guru'))
+
+    if 'cancel' in request.url:
+        return render_template('web/guru_cancel_request.html', user=user,\
+        request_dict=_request.get_return_dict())
+    elif 'confirm' in request.url:
+        return render_template('web/guru_confirm_request.html', user=user,\
+        request_dict=_request.get_return_dict())
+    else:
+        return render_template('web/guru_accept_request.html', user=user,\
+        request_dict=_request.get_return_dict())
+
+
+@app.route('/guru/accept_request/<_id>/')
+def accept_request_by_id(_id):
+    _request = Request.get_request_by_id(int(_id))
+    if not _request:
+        
+        return redirect(url_for('home'))
+
+    #if tutor (should take up the whole page)
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    if not user == _request.get_student() and not _request.is_tutor_involved(user):
+        flash("Sorry! You don't have access to this page.")
+        return redirect(url_for('m_guru'))
+
+    return render_template('web/guru_accept_request.html', user=user,\
+     request_dict=_request.get_return_dict())
 
 
 @app.route('/r/<_id>/')
@@ -332,6 +413,12 @@ def request_by_id(_id):
 
     #Different page, same validation, might as well put in same route? 
     if 'confirm_request' in request.url:
+        
+        # if something went wrong but the PUT request went through..
+        # redirect to home
+        if _request.connected_tutor_id:
+            return redirect(url_for('home'))
+
         return render_template('web/confirm_request.html', user=user,\
         request_dict=_request.get_return_dict(),\
         stripe_key=stripe_keys['publishable_key'])

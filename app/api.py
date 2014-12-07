@@ -322,7 +322,7 @@ def api_fb_connect():
     
     # If we can find them by email, but they don't have their fb_id set, we set in and log them in
     user_from_email = User.query.filter_by(email=request.json.get("email")).first()
-    if user_from_email:
+    if user_from_email: 
         # Update the user with new information from facebook.
         user_from_email.fb_id = request.json.get("id")
         user_from_email.gender = request.json.get("gender")
@@ -427,7 +427,20 @@ def users_by_id_web_api(user_id):
             else:    
                 error_msg = 'Card was declined, please try again'
                 return json_response(http_code=403, errors=[error_msg])
-        
+
+
+        if request_json.get('add_debit_card'):
+
+            token = request.json.get('add_debit_card')
+            result = user.add_cashout_card(token)
+
+            if result:
+                return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)                
+
+            else:
+                error_msg = 'Please enter a debit card. Not a credit card'
+                return json_response(http_code=403, errors=[error_msg])
+
     return json_response(400)
         
     
@@ -570,7 +583,7 @@ def ratings_web_api(_id):
         if user.id == rating.student_id:
             rating.update_guru_rating(request_json.get('rating'))
 
-        #guru is submitting guru rating
+        #guru is submitting student rating
         if user.id == rating.tutor_id:
             rating.update_student_rating(request_json.get('rating'))
 

@@ -3,66 +3,17 @@
 {% from 'web/macros/request.html' import request_details_student, student_reject_modal, student_accept_modal, cancel_request_modal,
 request_details_guru %}
 
-{% set is_student = (user.id == request_dict['student']['server_id'])%}
-{% set is_guru = not is_student %}
-
 {% block main_header %}
     <header class="bar bar-nav">
-        {% if is_guru %}
         <h1 class="title">{{request_dict['skill_name']}}</h1>
         <a class='icon icon-left' href='/m/guru/requests/' data-transition='slide-out'>
         </a>
-        {% else %}
-        <h1 class="title uguru-logo">uguru</h1>
-        {% endif %}
     </header>
 {% endblock %}
 
 {% block main_content %}
 <div class="content {% if not is_student %}should-hide-tab-bar{%endif%} should-hide-message-bar">
     
-    {% if is_student %}
-      {% set available_guru = request_dict.get('interested_tutors') %}
-
-      {% if available_guru %}
-        {% set guru = available_guru[0]%}
-          <ul class='table-view'>
-            <li class="table-view-cell media">
-                <a class="navigate-right" href="/p/{{guru['server_id']}}/" data-transition='slide-in'>
-                    <img class="media-object pull-left table-view-face" src="{{guru['profile_url']}}">
-                    <div class="media-body">
-                        {{guru['name']}} can help!
-                        <p class='red-text'>
-                            Expires in 5 minutes
-                        </p>
-                    </div>
-                    <button class="btn btn-link">Profile</button>
-                </a>
-            </li>
-          </ul>
-          {{request_details_student(request_dict)}}
-          <a class='btn btn-negative btn-block decline' href='#student-reject-tutor-modal' > 
-                Reject
-          </a>
-          <a class='btn btn-positive btn-block accept' href='/confirm_request/{{request_dict["server_id"]}}' data-transition='slide-in'> 
-                Accept 
-          </a>
-          {{student_reject_modal(request_dict)}}
-      
-      <!-- No gurus available -->
-        {% else %}
-
-          {{request_details_student(request_dict)}}
-          {{cancel_request_modal(request_dict)}}
-        
-        {% endif %}
-
-        <button class='btn btn-block btn-negative' id='negative-guru-request-btn'>
-          Request a Guru
-        </button>
-
-    {% endif %}
-    <!-- end student case -->
 
       {% if is_guru %}
         {{request_details_guru(request_dict)}}

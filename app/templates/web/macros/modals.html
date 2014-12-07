@@ -29,45 +29,6 @@
           $('input#exp-date').payment('formatCardExpiry');
         </script>
   </div>
-</div>
-{%- endmacro %}
 
-{% macro guru_confirm_session_modal(_request) -%}
-  <div id="guru-start-session-{{_request.id}}" class="modal">
-  <header class="bar bar-nav">
-        <h1 class="title">Confirm Session</h1>
-        <a href='#guru-start-session-{{_request.id}}'class='icon icon-close pull-right'></a>
-  </header>
-
-  <div class="content">
-        <ul class='table-view'>
-          <li class='table-view-cell'>
-            Next Steps
-            <p>
-              <br>
-              1. Start a timer when you meet your student. 
-              <br>
-              2. Enter the time for the session.
-              <br>
-              3. Confirm, and get paid immediately.
-            </p>
-          </li>
-        </ul>
-  </div>
-  <div class="bar bar-footer-secondary auto-height">
-    <form class="input-group" >
-          <div class='input-row'>
-              <label>Hours</label>
-                <input type="number" id="confirm-hours-{{_request.id}}" placeholder="Enter hours"></input>
-          </div>
-          <div class='input-row'>
-              <label>Minutes</label>
-              <input type="number" id="confirm-minutes-{{_request.id}}" placeholder="Enter minutes"></input>
-          </div>
-    </form>
-  </div>
-  <div class="bar bar-footer">
-    <a data-request-id='{{_request.id}}' class="btn btn-positive btn-block guru-confirm-session">Confirm and Get Paid!</a>
-  </div>
 </div>
 {%- endmacro %}

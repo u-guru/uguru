@@ -117,26 +117,29 @@ header {
     color:black;
 }
 
-input#card-num {
+input#card-num, input#debit-card-num {
   background: url('/static/img/card.png') no-repeat;
   background-size: 32px 24px;
   background-position:95% ;
 }
 
-input#card-num.visa {
+input#card-num.visa, input#debit-card-num.visa {
   background-image: url('/static/img/visa.png');
 }
 
-input#credit-card-num.mastercard {
+input#card-num.mastercard, 
+input#debit-card-num.mastercard {
   background-image: url('/static/img/mastercard.png'); 
 }
 
-input#credit-card-num.discover {
+input#card-num.discover,
+input#debit-card-num.discover {
   background-image: url('/static/img/discover.png'); 
 }
 
-input#credit-card-num.amex {
-  background-image: url('/static/img/discover.png'); 
+input#card-num.amex,
+input#debit-card-num.amex {
+  background-image: url('/static/img/amex.png'); 
 }
 
 .table-view.no-margin {

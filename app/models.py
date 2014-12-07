@@ -339,6 +339,20 @@ class User(Base):
 
         return result 
 
+    def add_cashout_card(self, token):
+        from lib.payments import create_stripe_recipient
+
+        result = create_stripe_recipient(token, self)
+
+        if result:
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+
+        return result 
+
     def get_all_conversations(self, _dict=None, sorted_by_time=None):
         conversations = self.conversations
 
@@ -438,6 +452,13 @@ class User(Base):
     # Active requests is not expired, or not canceled (yet), or not matched.
     def get_pending_requests(self):
         return self.outgoing_requests
+
+    def get_student_requests(self):
+        all_student_requests = []
+        for _request in self.outgoing_requests:
+            if self.id == _request.student_id:
+                all_student_requests.append(_request)
+        return all_student_requests
 
     #for guru to get all incoming requests
     def get_guru_requests(self):
@@ -546,10 +567,17 @@ class Conversation(Base):
 
     #Returns datetime of the last message sent in the convo
     def get_last_message_time(self):
-        return self.get_last_message().write_time
+        last_message = self.get_last_message()
+        if last_message:
+            return last_message.write_time
+        else:
+            return False
 
     def get_last_message(self):
-        return sorted(self.messages, key=lambda m:m.write_time)[-1]
+        if self.messages:
+            return sorted(self.messages, key=lambda m:m.write_time)[-1]
+        else:
+            return False
 
     def get_all_messages(self, _dict=False, sorted_by_time=False):
         messages = self.messages
@@ -844,6 +872,8 @@ class Payment(Base):
         student.payments.append(payment)
         guru.payments.append(payment)
 
+        guru.balance = guru.balance + payment.tutor_received_amount
+
         try: 
             db_session.add(payment)
             db_session.commit()
@@ -1036,7 +1066,6 @@ class Request(Base):
 
 
     def process_tutor_acceptance(self, tutor, description):
-        tutor.outgoing_requests.remove(self)
         self.committed_tutors.append(tutor)
         self.pending_tutor_id = tutor.id
         self.pending_tutor_description = description
@@ -1273,6 +1302,31 @@ class Rating(Base):
             db_session.rollback()
             raise         
 
+    def update_student_rating(self, rating_num):
+        self.student_rating = rating_num
+
+        #remove rating from student pending ratings
+        guru = User.query.get(self.tutor_id)
+        guru.pending_ratings.remove(self)
+
+        try: 
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise        
+
+    def update_guru_rating(self, rating_num):
+        self.tutor_rating = rating_num
+
+        #remove rating from guru pending ratings
+        student = User.query.get(self.student_id)
+        student.pending_ratings.remove(self)
+
+        try: 
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise        
 
     #TODO, make queries more optimal
     def get_payment_details_dict(self):

@@ -13,7 +13,7 @@
     {{guru_accept_request(request_dict)}}
 </div>
 <script>
-      $('#guru-accept-link').on('click', function() {
+      $('#guru-accept-link').on('click touchstart', function() {
         url_components = window.location.pathname.split( '/' );
         request_id = url_components[url_components.length - 2];
         

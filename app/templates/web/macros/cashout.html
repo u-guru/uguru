@@ -1,0 +1,34 @@
+{% macro guru_cashout(is_mobile, redirect_url=None) -%}
+  {% if is_mobile %}
+  <div id="guru-cashout-modal" class="modal">
+  {% endif %}
+    <header class="bar bar-nav">
+          <h1 class="title">Cashout Earnings</h1>
+          {% if is_mobile %}
+          <a href='#guru-cashout-modal' class='icon icon-close pull-right'></a>
+          {% else %}
+          <a href='' data-transition='slide-out' class='icon icon-left pull-left'></a>
+          {% endif %}
+    </header> 
+    <div class="content should-hide-message-bar should-hide-tab-bar">
+          <ul class='table-view'>
+            <li class='table-view-cell'>
+              Next Steps
+              <p>
+                <br>
+                1. Start a timer when you meet your student. 
+                <br>
+                2. Enter the time for the session.
+                <br>
+                3. Confirm, and get paid immediately.
+              </p>
+            </li>
+          </ul>
+    </div>
+    <div class="bar bar-footer">
+      <a data-request-id='{{_request.id}}' class="btn btn-positive btn-block guru-confirm-session">Cash Out</a>
+    </div>
+  {% if is_mobile %}
+  </div>
+  {% endif %}
+  {%- endmacro %}

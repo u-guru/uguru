@@ -1,0 +1,10 @@
+<!-- For push events on mobile that need specific libraries injected.
+Example: add-debit-card page needs stripe libraries evaluated. -->
+<script>
+    window.addEventListener('push', function(){
+        var scriptsList = document.querySelectorAll('script.content-js');
+        for(var i = 0; i < scriptsList.length; ++i) {
+            eval(scriptsList[i].innerHTML);
+        }
+    });
+</script>
