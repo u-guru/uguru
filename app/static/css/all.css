@@ -1,9 +1,12 @@
 .bar.bar-nav {
   -webkit-transform: translateZ(10px); }
 
-  header .uguru-logo {
-    font-family: 'Grand Hotel', cursive;
-    font-size: 24px; }
+  a {
+    color: inherit; }
+
+    header .uguru-logo {
+      font-family: 'Grand Hotel', cursive;
+      font-size: 24px; }
 
 .relative {
   position: relative; }

@@ -4,6 +4,10 @@ $logo-font:'Grand Hotel', cursive;
   -webkit-transform: translateZ(10px);
 }
 
+a{
+    color:inherit;
+}
+
 header {
 
   .uguru-logo {
@@ -296,5 +300,6 @@ textarea {
   border-radius: 2px;
   display:inline-block;
 }
+
 
 

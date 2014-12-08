@@ -46,6 +46,13 @@ stripe.api_key = stripe_keys['secret_key']
 # TODO: 
 # - 
 # - Go hard with views & integration
+@app.route('/m/desktop/')
+def desktop():
+
+    
+    return render_template('web/home-desktop.html')
+
+
 @app.route('/m/home/')
 def home():
     user = api.current_user()

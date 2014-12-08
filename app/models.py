@@ -1590,6 +1590,7 @@ class Course(Base):
     def __repr__(self):
         return '<Course %r>' % (self.name)
 
+
 #General models helper functions
 def commit_to_db(obj=None):
     try: 

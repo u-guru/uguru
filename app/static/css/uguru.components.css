@@ -46,6 +46,10 @@
     background-color: #3b484d;
 }
 
+.btn.btn-link {
+    color: #45DA5E;
+}
+
 .light-green-text {
     color:#69B3A5
 }
@@ -423,3 +427,54 @@ body {
     margin: 10px 10px 10px 10px;
 }
 
+
+
+@media (min-width: 768px) {
+  .desktop-container {width: 750px;}
+}
+@media (min-width: 992px) {
+  .desktop-container {width: 970px;}
+}
+@media (min-width: 1200px) {
+  .desktop-container {width: 900px;}
+  .desktop-textbox .col-md-6 {margin-top: 80px;}
+  .desktop-phone-img .col-md-6 img {float: right;}
+  .desktop-phone-img .col-md-6 {padding-right: 50px;}
+}
+
+#desktop-header {
+  padding: 40px 0 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#desktop-footer li {
+float: left;
+height: 35px;
+margin-right: 7px;
+margin-top: 20px;
+overflow: hidden;
+}
+
+.desktop-ul {
+  padding: 0px;
+}
+
+/* component */
+
+.btn.uguru-landing{
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background: #48b7a6;
+  color: white;
+  padding: 12px 24px 12px 24px;
+  border-radius: 24px;
+  position: relative;
+}
+
+p.capital-grey {
+  font-size: 10px;
+  position: absolute;
+  bottom: -20px;
+  left: 26px;
+}

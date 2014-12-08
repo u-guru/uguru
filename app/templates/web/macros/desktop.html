@@ -1,12 +1,33 @@
 {% macro desktop_header() -%}
     
     <div id='main-container'>
-        <div class="device device-fixed">
-            <div class="device-content">
+        <div class='container'>
+                <div class='col-xs-12 col-sm-6 col-md-6'> 
+                    <div class='left-container container'>
+                        <h1 class='desktop-home-header-text'style='font-size:64px;'> You asked, <br>
+                            we heard you.
+                        </h1>
+                        <h1 class='desktop-home-subheader-text'>
+                            Find a tutor in minutes,<br>
+                            uGuru has never been easier.
+                        </h1>
+                        <a href='#' class='btn btn-positive home-btn'> GET UGURU NOW
+                        </a>
+                        <p style='font-size:12px; margin-left:11px; margin-top:5px;'> TEXT A LINK TO YOUR PHONE </p>
+                    </div>
+                </div>
+                <div class='col-xs-12 col-sm-6 col-md-6'> 
 
-{%- endmacro %}
-{% macro desktop_footer()  -%}
+                    <div class="device device-fixed">
+                        <div class="device-content">
+                        
+                            {%- endmacro %}
+                            {% macro desktop_footer()  -%}
 
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
