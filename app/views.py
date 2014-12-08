@@ -46,7 +46,7 @@ stripe.api_key = stripe_keys['secret_key']
 # TODO: 
 # - 
 # - Go hard with views & integration
-@app.route('/home/')
+@app.route('/m/home/')
 def home():
     user = api.current_user()
     if not user:
@@ -88,7 +88,7 @@ def guru_requests():
 
     return render_template('web/guru_requests.html', user=user)
 
-@app.route('/tutors/')
+@app.route('/m/tutors/')
 def my_tutors():
 
     user = api.current_user()
@@ -149,7 +149,7 @@ def m_logout():
     return redirect(url_for('m_welcome'))
 
 #Content pages, example: Sorry, 'We have no tutors page'
-@app.route('/show/<event>/')
+@app.route('/m/show/<event>/')
 def content_page(event):
 
     user = api.current_user()
@@ -167,7 +167,7 @@ def m_transactions():
 
     return render_template('web/transactions.html', user=user)
 
-@app.route('/request_form/')
+@app.route('/m/request_form/')
 def request_form():
     user = api.current_user()
     if not user:
@@ -175,8 +175,8 @@ def request_form():
 
     return render_template('web/request_form.html')
 
-@app.route('/add_payment/', defaults={'r_id': None})
-@app.route('/add_payment/<r_id>/')
+@app.route('/m/add_payment/', defaults={'r_id': None})
+@app.route('/m/add_payment/<r_id>/')
 def add_payment(r_id=None):
 
     user = api.current_user()
@@ -188,8 +188,8 @@ def add_payment(r_id=None):
         redirect_request_id = r_id,
         user=user)
 
-@app.route('/guru/cashout/')
-@app.route('/guru/cashout/<redirect>/')
+@app.route('/m/guru/cashout/')
+@app.route('/m/guru/cashout/<redirect>/')
 def guru_cashout(redirect=None):
     user = api.current_user()
     if not user:
@@ -202,8 +202,8 @@ def guru_cashout(redirect=None):
     return render_template('web/cashout.html',\
         user=user, redirect=redirect)
 
-@app.route('/add_cash_card/<home>/')
-@app.route('/add_cash_card/')
+@app.route('/m/add_cash_card/<home>/')
+@app.route('/m/add_cash_card/')
 def add_cash_out(home=None):
 
     user = api.current_user()
@@ -215,16 +215,17 @@ def add_cash_out(home=None):
         redirect_home=home,
         user=user)
 
-@app.route('/become_guru/')
+@app.route('/m/become_guru/')
 def become_guru():
 
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
 
-    return render_template('web/become_guru.html')
+    return render_template('web/become_guru.html'\
+        , user=user)
 
-@app.route('/add_courses/')
+@app.route('/m/add_courses/')
 def add_courses():
 
     user = api.current_user()
@@ -233,9 +234,9 @@ def add_courses():
 
     return render_template('web/add_courses.html')
 
-@app.route('/c/<_id>')
-@app.route('/conversation/<_id>')
-@app.route('/guru/conversation/<_id>')
+@app.route('/m/c/<_id>')
+@app.route('/m/conversation/<_id>')
+@app.route('/m/guru/conversation/<_id>')
 def m_messages(_id):
 
     user = api.current_user()
@@ -258,18 +259,35 @@ def m_settings():
         stripe_key=stripe_keys['publishable_key'],\
         user=user)
 
+@app.route('/m/guru/profile/edit/')
+@app.route('/m/profile/edit/')
+def edit_profile():
+    user = api.current_user()
+    print user.profile_url
+    if not user:
+        return redirect(url_for('m_login'))
 
-@app.route('/p/<_id>/')
-@app.route('/profile/<_id>/')
+    return render_template('web/edit_profile.html',\
+        user=user)
+
+
+@app.route('/m/p/<_id>/')
+@app.route('/m/profile/<_id>/')
 def profile(_id):
 
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
 
-    if user.id == int(_id):
+    #if guru is viewing their profile
+    if user.id == int(_id) and user.is_a_guru():
         return render_template('web/profile.html', \
         student=None, guru=user, _request=None)
+
+    #if student is viewing their profile
+    if user.id == int(_id):
+        return render_template('web/profile.html', \
+        student=user, guru=None, _request=None)
 
     # Make sure user can see this tutor profile
     results = user.has_incoming_tutor_for_request(int(_id))
@@ -303,8 +321,8 @@ def m_rating(_id):
         rating=rating)
 
 
-@app.route('/r/')
-@app.route('/request/')
+@app.route('/m/r/')
+@app.route('/m/request/')
 def _request():
 
     user = api.current_user()
@@ -313,7 +331,7 @@ def _request():
 
     return render_template('web/request.html')
 
-@app.route('/support/')
+@app.route('/m/support/')
 def support():
 
     user = api.current_user()
@@ -322,7 +340,7 @@ def support():
 
     return render_template('web/support.html')
 
-@app.route('/reject_guru/<_id>/')
+@app.route('/m/reject_guru/<_id>/')
 def student_reject_guru(_id):
     _request = Request.get_request_by_id(int(_id))
     if not _request:
@@ -335,7 +353,7 @@ def student_reject_guru(_id):
     return render_template('web/student_reject_guru.html',\
         _request=_request)
 
-@app.route('/cancel_request/<_id>/')
+@app.route('/m/cancel_request/<_id>/')
 def student_cancel_request_id(_id):
     _request = Request.get_request_by_id(int(_id))
     if not _request:
@@ -348,10 +366,10 @@ def student_cancel_request_id(_id):
     return render_template('web/student_cancel_request.html',\
         _request=_request)
 
-@app.route('/guru/reject_request/<_id>/')
-@app.route('/guru/cancel_request/<_id>/')
-@app.route('/guru/accept_request/<_id>/')
-@app.route('/guru/confirm/<_id>/')
+@app.route('/m/guru/reject_request/<_id>/')
+@app.route('/m/guru/cancel_request/<_id>/')
+@app.route('/m/guru/accept_request/<_id>/')
+@app.route('/m/guru/confirm/<_id>/')
 def guru_cancel_request_by_id(_id):
     _request = Request.get_request_by_id(int(_id))
     
@@ -380,7 +398,7 @@ def guru_cancel_request_by_id(_id):
         request_dict=_request.get_return_dict())
 
 
-@app.route('/guru/accept_request/<_id>/')
+@app.route('/m/guru/accept_request/<_id>/')
 def accept_request_by_id(_id):
     _request = Request.get_request_by_id(int(_id))
     if not _request:
@@ -400,10 +418,10 @@ def accept_request_by_id(_id):
      request_dict=_request.get_return_dict())
 
 
-@app.route('/r/<_id>/')
-@app.route('/confirm_request/<_id>/')
-@app.route('/guru/request/<_id>/')
-@app.route('/request/<_id>/')
+@app.route('/m/r/<_id>/')
+@app.route('/m/confirm_request/<_id>/')
+@app.route('/m/guru/request/<_id>/')
+@app.route('/m/request/<_id>/')
 def request_by_id(_id):
     #if ID is not accurate, send back to home.
     _request = Request.get_request_by_id(int(_id))
@@ -1671,16 +1689,13 @@ def update_skill():
                 db_session.add(course)
         if ajax_json.get('remove'):
             from app.static.data.short_variations_reverse import short_variations_reverse_dict
-            if short_variations_reverse_dict.get(ajax_json.get('remove')):
-                skill_to_remove = short_variations_reverse_dict[ajax_json.get('remove')]
-            else:
-                from app.static.data.variations import courses_dict
-                skill_id = courses_dict[ajax_json.get('remove').lower()]
-                skill = Skill.query.get(skill_id)
-                skill_to_remove = skill.name
-            for skill in user.skills:
-                if skill.name.lower() == skill_to_remove.lower():
-                    user.skills.remove(skill)
+            skill_name = ajax_json.get('remove').lower()
+            if courses_dict.get(skill_name):
+                skill_to_remove_id = courses_dict[skill_name]
+                skill = Skill.query.get(skill_to_remove_id)
+                skill.tutors.remove(user)
+                user.skills.remove(skill)
+
         try:
             db_session.commit()
             if len(user.skills) == 0:

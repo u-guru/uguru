@@ -339,6 +339,17 @@ class User(Base):
 
         return result
 
+    def become_a_guru(self, introduction):
+        self.tutor_introduction = introduction
+        self.is_a_tutor = True
+        self.approved_by_admin = True
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+
     def cashout_balance(self):
         if self.balance:
 

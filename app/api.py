@@ -468,6 +468,17 @@ def users_by_id_web_api(user_id):
 
             return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
 
+        if request_json.get('action') == 'become-guru':
+
+            print request_json
+            if not request_json.get('tutor_introduction'):
+                return json_response(http_code=422)
+
+            flash('Wecome to the Guru interface. Check out our getting started guide.')
+            user.become_a_guru(request.json.get('tutor_introduction'))
+
+            return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
+
 
     return json_response(400)
         

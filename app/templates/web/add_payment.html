@@ -8,7 +8,7 @@
         <h1 class="title">Add a New Card</h1>
       {% endif %}
       {% if redirect_request_id %}
-        <a class="icon icon-left-nav pull-left" href="/confirm_request/{{redirect_request_id}}/" data-transition="slide-out"></a>  
+        <a class="icon icon-left-nav pull-left" href="/m/confirm_request/{{redirect_request_id}}/" data-transition="slide-out"></a>  
       {% else %}
         <a class="icon icon-left-nav pull-left" href="/m/settings/" data-transition="slide-out"></a>
       {% endif %}
@@ -54,7 +54,7 @@
 
                           window.PUSH({
                               transition : "fade",
-                              url : "/confirm_request/" + request_id + '/'
+                              url : "/m/confirm_request/" + request_id + '/'
                           });
                           $('#add-card-modal').removeClass('active');
                           return;

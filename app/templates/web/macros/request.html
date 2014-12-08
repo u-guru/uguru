@@ -29,7 +29,7 @@
           <p>
             {{request_dict['description'][0:100]}}...
           </p>
-          <a class='btn btn-outlined' href='/cancel_request/{{request_dict["server_id"]}}' data-transition='slide-in'>
+          <a class='btn btn-outlined' href='/m/cancel_request/{{request_dict["server_id"]}}' data-transition='slide-in'>
             Cancel Request
           </a>
         </li>
@@ -45,7 +45,7 @@
   {% set guru = request_dict.get('interested_tutors')[0]%}
     <ul class='table-view'>
       <li class="table-view-cell media">
-            <a class="navigate-right" href="/p/{{guru['server_id']}}/" data-transition='slide-in'>
+            <a class="navigate-right" href="/m/p/{{guru['server_id']}}/" data-transition='slide-in'>
                 <img class="media-object pull-left table-view-face" src="{{guru['profile_url']}}">
                 <div class="media-body">
                     {{guru['name']}} can help!
@@ -57,10 +57,10 @@
             </a>
       </li>
     </ul>
-    <a class='btn btn-negative btn-block decline' data-transition='slide-in' href='/reject_guru/{{request_dict["server_id"]}}/'> 
+    <a class='btn btn-negative btn-block decline' data-transition='slide-in' href='/m/reject_guru/{{request_dict["server_id"]}}/'> 
           Reject
     </a>
-    <a class='btn btn-positive btn-block accept' href='/confirm_request/{{request_dict["server_id"]}}' data-transition='slide-in'> 
+    <a class='btn btn-positive btn-block accept' href='/m/confirm_request/{{request_dict["server_id"]}}' data-transition='slide-in'> 
           Accept 
     </a>
 {%- endmacro %}
@@ -88,10 +88,10 @@
           </p>
         </li>
     </ul>
-    <a class='btn btn-positive btn-block accept' data-transition='slide-in' href='/guru/accept_request/{{request_dict["server_id"]}}/'> 
+    <a class='btn btn-positive btn-block accept' data-transition='slide-in' href='/m/guru/accept_request/{{request_dict["server_id"]}}/'> 
           Accept
     </a>
-    <a class='btn btn-negative btn-block decline' data-transition='slide-in' href='/guru/reject_request/{{request_dict["server_id"]}}/'>
+    <a class='btn btn-negative btn-block decline' data-transition='slide-in' href='/m/guru/reject_request/{{request_dict["server_id"]}}/'>
           Reject
     </a>
 {%-endmacro %}
@@ -119,7 +119,7 @@
         <p>
           {{request_dict['description']}}
         </p>
-        <a class='btn btn-outlined' href='/guru/cancel_request/{{request_dict["server_id"]}}/' data-transition='slide-in'>
+        <a class='btn btn-outlined' href='/m/guru/cancel_request/{{request_dict["server_id"]}}/' data-transition='slide-in'>
             Cancel Request
         </a>
       </li>
@@ -167,7 +167,7 @@
                 </div>
         </li>
         <li class='table-view-cell'>
-          <a class='navigate-right' href='/guru/conversation/{{request_dict["conversation"]["server_id"]}}' data-transition='slide-in'> 
+          <a class='navigate-right' href='/m/guru/conversation/{{request_dict["conversation"]["server_id"]}}' data-transition='slide-in'> 
             Location: {{request_dict['location']}}
           </a>
         </li>
@@ -178,7 +178,7 @@
               Start Session
             </a>
             {% else %}
-            <a class='btn btn-primary' href='/guru/confirm/{{request_dict["server_id"]}}'> Start Session
+            <a class='btn btn-primary' href='/m/guru/confirm/{{request_dict["server_id"]}}'> Start Session
             </a>
           {% endif %}
         </li>

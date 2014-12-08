@@ -16,16 +16,14 @@
 
       .profile-title-icon {
         top: 10px;
-        position: absolute; }
+        position: absolute;
+        background-color: white; }
 
         .message-face, .table-view-face {
           width: 42px;
           height: 42px;
           border-radius: 20px;
-          border: 2px solid white;
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-position: 50% 50%; }
+          border: 2px solid white; }
 
           .table-view-mini-face {
             width: 24px;
@@ -181,4 +179,9 @@
                                                                                                   background-color: white; }
 
                                                                                                   .course-tag {
-                                                                                                    margin: 5px 5px 5px 5px; }
+                                                                                                    margin: 5px 5px 5px 5px;
+                                                                                                    padding: 5px 10px;
+                                                                                                    color: white;
+                                                                                                    border: 1px solid white;
+                                                                                                    border-radius: 2px;
+                                                                                                    display: inline-block; }

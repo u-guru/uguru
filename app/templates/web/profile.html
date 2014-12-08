@@ -1,16 +1,32 @@
 {% extends 'web/base.html' %}
-{% set guru_avg_rating = guru.calc_avg_rating()[0] %}
-{% set guru_num_sessions = guru.calc_avg_rating()[1] %}
+
 {% if _request %}
   {% set request_dict = _request.get_return_dict() %}
 {% endif %}
 
+{% if guru %}
+  {% set guru_avg_rating = guru.calc_avg_rating()[0] %}
+  {% set guru_num_sessions = guru.calc_avg_rating()[1] %}
+{% endif %}
+
 {% block main_header %}
 <header class="bar bar-nav">
-  <h1 class="title">Guru Profile
+  {% if _request and guru and student %}
+  <h1 class="title">My Profile
   </h1>
-  {% if _request %}
-  <a class="icon icon-left-nav pull-left" href="/home/" data-transition="slide-out"></a>
+  <a class="icon icon-left-nav pull-left" href="/m/home/" data-transition="slide-out"></a>
+  {% endif %}
+  {% if guru %}
+  <h1 class="title">My Profile
+  </h1>
+  <a class="icon icon-left-nav pull-left" href="/m/guru/" data-transition="slide-out"></a>
+  <a class="btn btn-link pull-right" href="/m/guru/profile/edit/" data-transition="slide-in">edit</a>
+  {% endif %}
+  {% if student %}
+  <h1 class="title">My Profile
+  </h1>
+  <a class="icon icon-left-nav pull-left" href="/m/home/" data-transition="slide-out"></a>
+  <a class="btn btn-link pull-right" href="/m/profile/edit/" data-transition="slide-in">edit</a>
   {% endif %}
   
 </header>
@@ -20,16 +36,19 @@
 <div class="content should-hide-message-bar should-hide-tab-bar">
     <ul class="table-view">
       <li class="table-view-cell media center ignore-table-view-margin">
+          {% if student and not guru and not _request%}
+          <img class="media-object table-view-face" src="{{student.as_dict().profile_url}}">
+          {% else %}
           <img class="media-object table-view-face" src="{{guru.profile_url}}">
+          {% endif %}
+          {% if guru and guru_avg_rating and guru_num_sessions %}
           <h5 class='content-padded'> 
-            {% if guru_avg_rating and guru_num_sessions %}
               {{guru_avg_rating}} 
               | 
               {{guru_num_sessions}}
-            {% else %}
+            {% elif guru %}
               {{guru.get_first_name()}} is a new to Guru
             {% endif %}
-
           </h5>
             {% if _request %}
               {% if request_dict.get('incoming-tutor-replies') %}
@@ -65,12 +84,14 @@
             {% endif %}
           </p>
       </li>
+      {% if guru %}
       <li class="table-view-cell">
           {{guru.get_first_name()}}'s Introduction
           <p>
             {{guru.tutor_introduction}}
           </p>
       </li>
+      {% endif %}
     </ul>  
 </div>
 {% endblock %}

@@ -1,38 +1,55 @@
-{% extends 'web/base.html' %}
-{% from 'web/macros/autocomplete-input.html' import autocomplete_input_become_guru %}
+{% macro profile_photo_html_li(user) -%}
 
-{% block main_header %}
-<header class="bar bar-nav">
-  <h1 class="title">Become a Guru</h1>
-</header>
-{% endblock %}
+  <li class="table-view-cell media">
+    <div class="media-body">
+      My Photo
 
-{% block main_content %}
-<div class="content should-hide-message-bar">
-  <ul class="table-view">
-    <li class="table-view-cell media ignore-table-view-margin">
-        <div class="media-body">
-          Add Photo
-          <img id='guru-profile-photo' class="media-object pull-right table-view-mini-face hidden"/>
-        </div>
-        <a id='upload-photo-link' class="btn btn-primary">Upload</a>
-        <input id='upload-photo' style='display:none;' type='file'/>
-    </li>
-    <li class='table-view-cell overflow-visible'>
+      {% if user.profile_url %}
+      <img id='profile-photo' src='{{user.profile_url}}' class="media-object pull-right table-view-mini-face"/>
+      {% else %}
+      <img id='profile-photo' class="media-object pull-right table-view-mini-face hidden"/>
+      {% endif %}
+    </div>
+    <a id='upload-photo-link' class="btn btn-link">
+      {% if user.profile_url %} edit {% else %} upload {% endif %}
+    </a>
+    <input id='upload-photo' style='display:none;' type='file'/>
+  </li>
+  
+{%- endmacro %}
+
+{% macro profile_edit_courses_li(user) -%}
+<li class='table-view-cell overflow-visible'>
       Add courses
       <input id='become-guru-course-input' type="text" placeholder="CS10" class='no-bottom-margin' />
       <a id='add-course-btn' style='top:65px;' class="btn btn-primary pull-right">Add</a>
-    </li>
-    <li class="table-view-cell media ignore-table-view-margin hidden" id='add-courses-container'>
-    </li>
-    <li class='table-view-cell ignore-table-view-margin'>
-      Introduction
-      <textarea data-user-id='{{user.id}}' id='tutor-introduction' placeholder='Include a short introduction of yourself!'rows="5"></textarea>
-    </li>
-  </ul>
-  <a href='#' id='submit-guru-application' data-transition='fade' data-user-id='{{user.id}}'class='btn btn-block btn-positive'>Submit</a>
+</li>
+<li class="table-view-cell media ignore-table-view-margin {% if not user.skills %}hidden{% endif %}" id='add-courses-container'>
 
-  <script>
+  {% for skill in user.skills %}
+
+    <span href="#" class="course-tag">
+        
+        {{skill.get_short_name()}}
+        &nbsp;&nbsp;&nbsp;
+        <a class="remove-course"href="#">x</a>
+
+    </span>
+
+  {% endfor %}
+</li>
+{%- endmacro %}
+
+{% macro profile_introduction_li(user) -%}
+<li class='table-view-cell ignore-table-view-margin'>
+      Introduction
+      <textarea data-user-id='{{user.id}}' id='tutor-introduction' placeholder='Include a short introduction of yourself!'rows="5">{{user.tutor_introduction}}</textarea>
+</li>
+{% endmacro -%}
+
+{% macro profile_photo_js(user) -%}
+
+<script>
     $('#upload-photo-link').on('click', function(e) {
       e.preventDefault();
       $('#upload-photo').trigger('click');
@@ -89,20 +106,15 @@
         var reader = new FileReader();
 
         reader.onload = function (e) {
-          $('#upload-photo-link').hide();
-          $('#guru-profile-photo').show();
+          $('#upload-photo-link').text('edit');
+          $('#profile-photo').show();
           console.log(e.target.result);
-          $('#guru-profile-photo').attr('src', e.target.result);
+          $('#profile-photo').attr('src', e.target.result);
         };
 
         reader.readAsDataURL(input.files[0]);
       }
     }
   </script>
-
-  {{autocomplete_input_become_guru("become-guru-course-input", "add-courses-container")}}
-
-</div>
-{% endblock %}
-
     
+{%- endmacro %}
