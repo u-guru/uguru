@@ -12,6 +12,9 @@ request_details_guru %}
 {% block main_header %}
 <header class="bar bar-nav">
   <h1 class="title uguru-logo">uguru</h1>
+  <a class='btn btn-link' id='profile-title-bar-icon' data-transition='fade'href='/m/profile/{{user.id}}'>
+  <img id='guru-profile-photo' src='{{user.as_dict().profile_url}}'class="media-object pull-right table-view-mini-face profile-title-icon"/>
+  </a>
 </header>
 {% endblock %}
 
@@ -64,7 +67,7 @@ request_details_guru %}
     {% endfor %}
 
   {% if not student_requests %}
-  <a class="btn btn-positive btn-block" href="/request_form/" data-transition='slide-in'>
+  <a class="btn btn-positive btn-block" href="/m/request_form/" data-transition='slide-in'>
     Request Guru
   </a>
   {% elif not available_guru %}

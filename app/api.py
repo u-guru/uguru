@@ -468,6 +468,17 @@ def users_by_id_web_api(user_id):
 
             return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
 
+        if request_json.get('action') == 'become-guru':
+
+            print request_json
+            if not request_json.get('tutor_introduction'):
+                return json_response(http_code=422)
+
+            flash('Wecome to the Guru interface. Check out our getting started guide.')
+            user.become_a_guru(request.json.get('tutor_introduction'))
+
+            return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
+
 
     return json_response(400)
         
@@ -2042,7 +2053,6 @@ def api(arg, _id):
                     user.notifications.remove(n)
                     logging.info("Student-cap-reached notification removed for request id " + str(r.id))
 
-            from views import find_earliest_meeting_time, convert_mutual_times_in_seconds
             from tasks import send_twilio_message_delayed
             if tutor.phone_number and tutor.text_notification:
                 logging.info("The tutor has a phone number and is supposed to receive a text.")

@@ -1,11 +1,11 @@
 {% macro process_tab_bar(user, show=False, active_page=None, student_mode=True) -%}
 <nav id='main-bar-tab' class="bar bar-tab" style='display:none'>  
     {% if student_mode %}
-    <a data-transition='fade' class="tab-item main-tab-item" href="/home/">
+    <a data-transition='fade' class="tab-item main-tab-item" href="/m/home/">
       <span class="icon icon-home active"></span>
       <span class="tab-label">Home</span>
     </a>
-    <a data-transition='fade' class="tab-item main-tab-item" id='address-book' href="/tutors/">
+    <a data-transition='fade' class="tab-item main-tab-item" id='address-book' href="/m/tutors/">
       <span class="icon icon-person"></span>
       <span class="tab-label">My Tutors</span>
     </a>
@@ -13,7 +13,7 @@
       <span class="icon icon-gear"></span>
       <span class="tab-label">Settings</span>
     </a>
-    <a class="tab-item main-tab-item" href="{% if user and user.approved_by_admin %}/m/guru/{%else%} /become_guru/ {% endif %}" data-transition='fade'>
+    <a class="tab-item main-tab-item" href="{% if user and user.approved_by_admin %}/m/guru/{%else%} /m/become_guru/ {% endif %}" data-transition='fade'>
       <span class="icon icon-star"></span>
       <span class="tab-label">Guru</span>
     </a>
@@ -22,20 +22,14 @@
       <span class="icon icon-home"></span>
       <span class="tab-label">Home</span>
     </a>
-    <a data-transition='fade' class="tab-item main-tab-item" id='address-book' href="#">
-      <span class="icon icon-person"></span>
-      <span class="tab-label">My Profile</span>
-    </a>
     <a data-transition='fade' class="tab-item main-tab-item" href="/m/guru/settings/">
       <span class="icon icon-gear"></span>
       <span class="tab-label">Settings</span>
     </a>
-    <a class="tab-item main-tab-item" href="/home/" data-transition='fade'>
+    <a class="tab-item main-tab-item" href="/m/home/" data-transition='fade'>
       <span class="icon icon-edit"></span>
       <span class="tab-label">Student</span>
     </a>
     {% endif %}
 </nav>
-
-
 {%-endmacro %}

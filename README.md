@@ -15,6 +15,7 @@
 - % pip install -r requirements.txt 
 
 **Set up local DB**
+
 - % pip install -U psycopg2
 - % pip install Flask-SQLAlchemy
 - Download PostgreSQL (http://postgresapp.com)
@@ -22,9 +23,19 @@
 - % createuser uguru -d -s -P
 - Enter twice to confirm password: uguru
 - % createdb -U uguru -E utf-8 -O uguru uguru_db
-- % honcho run python run.py db migrate
 - % honcho run python run.py db upgrade
-- % honcho run python manage.py initialize
+
+**Pull seed data from heroku servers**
+
+- % heroku pgbackups:capture \-\-app uguru-testing
+- % curl -o latest.dump \`heroku pgbackups:url \-\-app uguru-testing\`
+- % psql (enters shell with prompt: User=#)
+- User=# DROP DATABASE uguru_db;
+- DROP DATABASE
+- User=# \q 
+- % createdb -U uguru -E utf-8 -O uguru uguru_db
+- % pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump
+- (it's okay if it prints out that there were errors ignored)
 
 **Run Locally**
 
@@ -32,7 +43,7 @@
 - % honcho start -f ProcfileDev
 - % (optionally) honcho run python (to jump into a python shell with the app's envirmonment)
 
-**Admin Console Login**
+**Admin Console and Celery Flower UI Login**
 
 - Email: admin@uguru.me
 - Pass: launchuguru

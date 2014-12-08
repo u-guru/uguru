@@ -18,7 +18,7 @@
     <h6 class="content-padded">Support</h6>
     <ul class="table-view">
       <li class="table-view-cell">
-        <a class="navigate-right" data-transition='slide-in' href='/support/'>
+        <a class="navigate-right" data-transition='slide-in' href='/m/support/'>
             Questions, Issues, Refunds
         </a>
       </li>
@@ -27,21 +27,24 @@
     <h6 class="content-padded">My Account</h6>
     <ul class="table-view">
       <li class="table-view-cell">
-        <a class="navigate-right">
+        <a class="navigate-right" href='/m/profile/{{user.id}}/' data-transition='fade'>
           <div class="media-body">
+            <img id='guru-profile-photo' style='top:10px;'src='{{user.as_dict().profile_url}}'class="media-object table-view-mini-face"/>
             Profile
           </div>
         </a>
       </li>
       <li class="table-view-cell">
-        <a class="navigate-right">
           Text Notifications
-        </a>
+          <div class="toggle {% if user.text_notification %}active{%endif%}">
+            <div class="toggle-handle"></div>
+          </div>
       </li>
       <li class="table-view-cell">
-        <a class="navigate-right">
           Email Notifications
-        </a>
+          <div class="toggle {% if user.email_notification %}active{%endif%}">
+            <div class="toggle-handle"></div>
+          </div>
       </li>
       <li class="table-view-cell">
         <a class="navigate-right">
@@ -52,6 +55,7 @@
 
     <h6 class="content-padded">Payment Setting</h6>
     <ul class='table-view'>
+      {% if user.is_a_guru() %}
       <li class="table-view-cell">
           <div class="media-body">
             Payments Card
@@ -59,6 +63,8 @@
           <a href='#add-card-modal' class='btn btn-link'>Add
           </a>
       </li>
+      {% endif %}
+      {% if user.is_a_guru() %}
       <li class="table-view-cell">
         <a data-transition='slide-in'>
           <div class="media-body">
@@ -73,15 +79,33 @@
           </a>
         </a>
       </li>
+      {% endif %}
+      {% if user.payments %}
       <li class="table-view-cell">
         <a class="navigate-right" href='/m/transactions' data-transition='slide-in'>
           View Transactions
         </a>
       </li>
+      {% endif %}
     </ul>
 
   </div>
 
   {{ add_card_modal(user, stripe_key) }}
+
+  {% if not request.MOBILE %}
+    <script>
+      // Add desktop support for toggles
+      // TODO: Create a macro that does this for 
+      // all unsupported desktop inputs
+      $('.toggle').on('click', function(){
+          if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+          } else {
+            $(this).addClass('active');
+          }
+      });
+    </script>
+  {% endif %}
 </div>
 {% endblock %}

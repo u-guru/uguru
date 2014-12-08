@@ -6,7 +6,7 @@
 {% block main_header %}
     <header class="bar bar-nav">
         <h1 class="title">Confirm</h1>
-        <a class="icon icon-left-nav pull-left" href="/home/" data-transition="slide-out"></a>    
+        <a class="icon icon-left-nav pull-left" href="/m/home/" data-transition="slide-out"></a>    
     </header>
 {% endblock %}
 
@@ -16,13 +16,13 @@
         {% if not user.customer_id %}
           <li class='table-view-cell'>
               Add Payment Method
-              <a href='/add_payment/{{request_dict["server_id"]}}'class='btn btn-primary'>Add Card</a>
+              <a href='/m/add_payment/{{request_dict["server_id"]}}'class='btn btn-primary'>Add Card</a>
               <p> 100% Satisfaction Guranteed </p>
           </li>
         {% else %}
           <li class='table-view-cell'>
               Edit Payment
-              <a href='/add_payment/{{request_dict["server_id"]}}' class='btn btn-link'>Edit</a>
+              <a href='/m/add_payment/{{request_dict["server_id"]}}' class='btn btn-link'>Edit</a>
               <p> Card **{{user.customer_last4}}</p>
           </li>
         {% endif %}
@@ -52,7 +52,7 @@
               success: function(request){
                   window.PUSH({
                       transition : "fade",
-                      url : "/home/"
+                      url : "/m/home/"
                   });
               },
               error: function (request) {

@@ -339,6 +339,17 @@ class User(Base):
 
         return result
 
+    def become_a_guru(self, introduction):
+        self.tutor_introduction = introduction
+        self.is_a_tutor = True
+        self.approved_by_admin = True
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+
     def cashout_balance(self):
         if self.balance:
 
@@ -1019,57 +1030,73 @@ class Request(Base):
     
     student_id = Column(Integer) 
     skill_id = Column(Integer)
-    connected_tutor_id = Column(Integer) #Request is active if null
-    connected_tutor_hourly = Column(Float)
-    student_secret_code = Column(String)
-    
     professor = Column(String)
     student_estimated_hour = Column(Integer)
-    num_students = Column(Integer, default = 0)
-    tutor_offer_hour = Column(Integer)
+    num_students = Column(Integer, default = 1)
+    description = Column(String)
+    location = Column(String)
+    start_time = Column(DateTime)
+    time_estimate = Column(Float)
+    remote = Column(Boolean)
+    urgency = Column(SmallInteger)
+    payment_id = Column(Integer)
+    time_created = Column(DateTime)
+    last_updated = Column(DateTime)
 
+    ####################################
+    ##### Begin queing properties ######
+    ####################################
+    # Pending tutor is set while they are currently in the contact queue
     pending_tutor_id = Column(Integer)
     pending_tutor_description = Column(String)
 
-    description = Column(String)
-    available_time = Column(String)
-    location = Column(String)
-    last_updated = Column(DateTime)
-    start_time = Column(DateTime)
-    remote = Column(Boolean) #Video-chat friendly
-
-    cancellation_reason = Column(String)
-
-    is_expired = Column(Boolean, default=False)
-    urgency = Column(SmallInteger)
-    frequency = Column(SmallInteger) # 0 is once, 1 is regular TO DROP
-    time_estimate = Column(Float)
-    time_created = Column(DateTime)
+    # Set if the connected all the way through. Request is still unmatched if connected_tutor_id null.
+    connected_tutor_id = Column(Integer)
     time_connected = Column(DateTime)
-    payment_id = Column(Integer)
-    actual_hourly = Column(Float) 
-    actual_time = Column(Float)
 
-    weekly_availability = relationship('Week',
-        secondary = request_weeks_table,
-        backref='request', lazy='dynamic')
+    # Flag is set if the student chooses to cancel the request, all subsequest effors to contact tutors are thrown away.
+    is_canceled = Column(Boolean, default=False)
+    cancellation_reason = Column(String)
+    time_canceled = Column(DateTime)
+
+    # If request expires -- Taking to long? 
+    is_expired = Column(Boolean, default=False)
+    time_expired = Column(DateTime)
+
+    # TODO : DROP THESE COLUMNS
+    tutor_offer_hour = Column(Integer) # TODO : DROP
+    available_time = Column(String) # TODO : DROP
+    student_secret_code = Column(String) # TODO : DROP
+    connected_tutor_hourly = Column(Float) # TODO : DROP
+    frequency = Column(SmallInteger) # TODO : DROP - 0 is once, 1 is regular 
+    actual_hourly = Column(Float) # TODO : DROP
+    actual_time = Column(Float) # TODO : DROP
+    
+    ############################
+    # Begin association tables #
+    ############################
 
     requested_tutors = relationship('User', 
         secondary = tutor_request_table,
         backref = backref('requests', lazy='dynamic')
         )
+
+    # TODO : DROP
+    weekly_availability = relationship('Week',
+        secondary = request_weeks_table,
+        backref='request', lazy='dynamic')
  
+    # TODO : DROP - This is contriversial, but it shouldn't be needed in the new queuing system
     committed_tutors = relationship('User',
         secondary = committed_tutor_request_table,
         backref = backref('committed_requests', lazy='dynamic'))
 
+    # TODO : DROP - used for tracking if emails were opened
     emails = relationship("Email",
         secondary = request_email_table)
 
-    #TODO: make sure student_id doesn't already have a request for that skill_id
-
-    def __init__(self, student_id, skill_id, description, time_estimate, \
-        phone_number, location=None, remote=None, urgency=None, start_time=None):
+    def __init__(self, student_id=None, skill_id=None, description=None, time_estimate=None, \
+        phone_number=None, location=None, remote=None, urgency=None, start_time=None):
         self.student_id = student_id
         self.skill_id = skill_id
         self.description = description
@@ -1081,15 +1108,13 @@ class Request(Base):
         self.location = location
         self.phone_number = phone_number
         self.requested_tutors = Skill.query.get(skill_id).tutors
-        
 
     def __repr__(self):
         student_name = User.query.get(self.student_id).name
         skill_name = Skill.query.get(self.skill_id).name
         
         if self.connected_tutor_id: 
-            tutor_name = User.query.filter_by(id=self.connected_tutor_id)\
-            .first().name
+            tutor_name = User.query.filter_by(id=self.connected_tutor_id).first().name
         else:
             tutor_name = "Inactive"
         
@@ -1177,8 +1202,6 @@ class Request(Base):
             db_session.rollback()
             raise
 
-
-
     def process_student_acceptance(self, tutor):
         from datetime import datetime
         
@@ -1248,7 +1271,6 @@ class Request(Base):
             db_session.rollback()
             raise
 
-
     def get_interested_tutors(self):
         return self.committed_tutors
 
@@ -1267,15 +1289,16 @@ class Request(Base):
         return User.query.get(self.connected_tutor_id)
 
     def cancel(self, user, description=None):
+        self.is_canceled = True
+        self.time_canceled = datetime.now();
         self.connected_tutor_id = self.student_id
         user.outgoing_requests.remove(self)
         self.cancellation_reason = description
 
         #Clear this request from all tutors inbox
-        for tutor in self.requested_tutors + tutor.committed_tutors:
+        for tutor in self.requested_tutors + self.committed_tutors:
             if self in tutor.outgoing_requests:
                 tutor.outgoing_requests.remove(self)
-
         try:
             db_session.commit()
         except:
@@ -1294,13 +1317,10 @@ class Request(Base):
             raise
         return 
 
-    def is_canceled(self):
-        return self.connected_tutor_id == self.student_id
-
     def get_status(self):
-        if not self.connected_tutor_id:
+        if not self.pending_tutor_id:
             return 'pending'
-        elif self.is_canceled():
+        elif self.is_canceled:
             return 'canceled'
         else:
             return 'matched'

@@ -1,0 +1,74 @@
+{% extends 'web/base.html' %}
+{% from 'web/macros/autocomplete-input.html' import autocomplete_input_become_guru %}
+{% from 'web/macros/profile.html' import 
+profile_photo_html_li, profile_photo_js, profile_edit_courses_li,
+profile_introduction_li %}
+
+{% block main_header %}
+<header class="bar bar-nav">
+  <h1 class="title">Edit Profile</h1>
+  {% if user.is_a_guru() %}
+    <a class="icon icon-left-nav pull-left" href="/m/guru/" data-transition="slide-out"></a>
+  {% else %}
+  <a class="icon icon-left-nav pull-left" href="/m/home/" data-transition="slide-out"></a>
+  {% endif %}
+</header>
+{% endblock %}
+
+{% block main_content %}
+<div class="content should-hide-message-bar should-hide-tab-bar">
+  <ul class="table-view">
+    
+    {{profile_photo_html_li(user)}}
+    
+    {% if user.is_a_guru() %}
+
+      {{ profile_edit_courses_li(user) }}
+      {{ profile_introduction_li(user)}}
+
+      <a href='#' id='save-profile' data-transition='fade' data-user-id='{{user.id}}'class='btn btn-block btn-positive'>Save</a>
+
+    {% endif %}
+  </ul>
+
+  {{profile_photo_js(user)}}
+
+  
+  {% if user.is_a_guru() %}
+    
+    {{autocomplete_input_become_guru("become-guru-course-input", "add-courses-container")}}
+
+    <script>
+    $('#save-profile').on('click', function(){
+        var user_id = ($('#submit-guru-application').data().userId).toString();
+        
+        payload = JSON.stringify({
+            action: 'become-guru',
+            tutor_introduction:$('#tutor-introduction').val()
+        });
+
+        $.ajax({
+            url: '/api/v1/users/' + user_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/m/guru/"
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+
+      });
+    </script>
+
+  {% endif %}
+
+</div>
+{% endblock %}
+
+    

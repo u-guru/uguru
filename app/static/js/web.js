@@ -73,7 +73,7 @@ $(document).ready(function() {
             success: function(request){
                 window.PUSH({
                     transition : "fade",
-                    url : "/home/"
+                    url : "/m/home/"
                 });
             },
             error: function (request) {
@@ -103,7 +103,7 @@ $(document).ready(function() {
             success: function(request){
                 window.PUSH({
                     transition : "fade",
-                    url : "/guru/conversation/" + convo_id
+                    url : "/m/guru/conversation/" + convo_id
                 });
             },
             error: function (request) {
@@ -142,7 +142,7 @@ $(document).ready(function() {
     $('body').on('touchstart', '#profile-title-bar-icon', function(){
         window.PUSH({
             transition : "slide-in",
-            url : "/profile/"
+            url : "/m/profile/"
         });
     });
 
