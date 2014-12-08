@@ -8,6 +8,7 @@ from views import *
 import time
 import logging
 import os
+from datetime import datetime
 
 celery = Celery('run')
 REDIS_URL = os.environ.get('REDISTOGO_URL')
@@ -82,7 +83,7 @@ def contact_tutor(tutor_id, request_id):
 
     # Add request to the tutors requests.  Outgoing, why?
     tutor.outgoing_requests.append(r)
-    
+
     try:
         db_session.commit()
     except:
@@ -222,7 +223,9 @@ def expire_request_job(request_id, user_id):
     if _request in user.outgoing_requests:
         user.outgoing_requests.remove(_request)
     _request.is_expired = True
+    _request.time_expired = datetime.now()
     db_session.commit()
+    # TODO : Try catch if commit fails!
 
 @task(name='tasks.send_delayed_email')
 def send_delayed_email(email_str, args):
