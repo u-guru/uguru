@@ -29,7 +29,9 @@
   <script>
       $('.content').css('background-color', '#ffffff');
       $('#fb-login-btn').on('click', function() {
-        FB.login();
+         FB.login(function(response) {
+              beginFbConnect();
+        }
       });
   </script>
   
