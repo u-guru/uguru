@@ -35,6 +35,7 @@
 - User=# \q 
 - % createdb -U uguru -E utf-8 -O uguru uguru_db
 - % pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump
+- (it's okay if it prints out that there were errors ignored)
 
 **Run Locally**
 

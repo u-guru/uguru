@@ -66,9 +66,3 @@ def approved_tutors_ordered(tutors):
 def calc_uguru_score(tutor):
     pass
 
-#TODO: This is MVP, this should be more sophisticated.
-def contact_tutors(_request):
-    pass
-
-    
-

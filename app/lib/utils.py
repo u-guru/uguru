@@ -4,9 +4,6 @@ def send_support_email(sender_email, sender_contents, args=None):
     mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
     return shit
 
-
-
-
 def js_date_to_python_datetime(js_date):
     if not js_date: return None
     from datetime import datetime
