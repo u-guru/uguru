@@ -1069,16 +1069,18 @@ class Request(Base):
         secondary = tutor_request_table,
         backref = backref('requests', lazy='dynamic')
         )
-    
+
     # TODO : DROP
     weekly_availability = relationship('Week',
         secondary = request_weeks_table,
         backref='request', lazy='dynamic')
  
+    # TODO : DROP - This is contriversial, but it shouldn't be needed in the new queuing system
     committed_tutors = relationship('User',
         secondary = committed_tutor_request_table,
         backref = backref('committed_requests', lazy='dynamic'))
 
+    # TODO : DROP - used for tracking if emails were opened
     emails = relationship("Email",
         secondary = request_email_table)
 

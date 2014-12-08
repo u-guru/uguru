@@ -82,12 +82,7 @@ def contact_tutor(tutor_id, request_id):
 
     # Add request to the tutors requests.  Outgoing, why?
     tutor.outgoing_requests.append(r)
-
-
     
-    if :
-        pass
-
     try:
         db_session.commit()
     except:
