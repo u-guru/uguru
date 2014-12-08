@@ -32,9 +32,10 @@
     <script>
     $(document).ready(function() {
         $('#signup-link').click(function(){
+            name = $('#signup-form #name-field').val() + ' ' +$('#signup-form #name-field-last')
+
             payload = JSON.stringify({
-                first_name     : $('#signup-form #name-field').val(),
-                last_name     : $('#signup-form #name-field-last').val(),
+                name     : name,
                 email    : $('#signup-form #email-field').val(),
                 password : $('#signup-form #password-field').val()
             });

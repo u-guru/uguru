@@ -529,9 +529,9 @@
     }
 
     // Custom code to trigger jquery ready calls after push event
-    if (window.jQuery) {
-      window.jQuery.ready();
-    };
+    // if (window.jQuery) {
+    //   window.jQuery.ready();
+    // };
     
   };
 

@@ -35,7 +35,37 @@
       </div>
     </li>
   </ul>
-  <button class="btn btn-positive btn-block">Submit</button>
+  <a id='submit-support-ticket'class="btn btn-positive btn-block">Submit</a>
+
+  <script>
+
+  $('#submit-support-ticket').on('click', function() {
+        request_id = ($(this).data().requestId).toString();
+        tutor_id = ($(this).data().tutorId).toString();
+        
+        payload = JSON.stringify({
+            action:'student-reject',
+            description:$('#student-reject-guru-description').val(),
+            tutor_server_id: tutor_id
+        });
+
+        $.ajax({
+            url: '/api/v1/requests/' + request_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : '/m/home/'
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+  </script>
   
 </div>     
 {% endblock %}
