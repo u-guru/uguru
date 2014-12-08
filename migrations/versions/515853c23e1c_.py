@@ -1,4 +1,4 @@
-"""Adding new fields for samir's new jank-ass dank-ass temp DB
+"""adding new fields for samir's new jank-ass dank-ass temp DB
 
 Revision ID: 515853c23e1c
 Revises: 51cff19af108

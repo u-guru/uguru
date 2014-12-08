@@ -1,4 +1,4 @@
-"""Adding response rate column
+"""adding response rate column
 
 Revision ID: 3183552ed3f
 Revises: 1bafbb2c8f5d

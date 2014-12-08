@@ -154,7 +154,6 @@ class User(Base):
     user_referral_code = Column(String)
     last_active = Column(DateTime)
     approved_by_admin = Column(Boolean)
-    response_rate = Column(Float)
     auth_token = Column(String(64))
     apn_token = Column(String(64))
     fb_id = Column(String(64))
@@ -955,7 +954,6 @@ class Payment(Base):
         total_amount = 16 * total_hours
         rounded_total_amount = round(total_amount, 2)
         return rounded_total_amount
-
     
     def get_payment_type(self, user):
         if self.student_id == user.id:

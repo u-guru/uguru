@@ -455,7 +455,7 @@
 {% include '/macros/payment-plans-home.html'%}
 
 <div id="feed-messages">		
-		{% for n in user.notifications|sort(attribute='time_created') %}
+		{% for n in user_notifications|sort(attribute='time_created') %}
 			{% if n.a_id_name == 'getting-started-guru'%}
 			<div id='getting-started-guru-detailed' style='display:none'>
 				<div class='row margin-top-40' id='tutor-app-details'>
