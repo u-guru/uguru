@@ -369,16 +369,15 @@ def api_fb_connect():
 
 ##### /login/ ########
 # POST - logs user in
-@app.route('/api/v1/login', methods = ['POST'])
+@app.route('/api/v1/login', methods = ['POST', 'PUT'])
 def api_login():
     
     if request.method == 'POST':
 
+        #General login
         expected_parameters = ['email','password']
         request_json = request.json
         return_dict = {}
-
-        #TODO, check if a user is already logged in!
 
         if request_contains_all_valid_parameters(request_json, expected_parameters):
             
@@ -408,10 +407,50 @@ def api_login():
                 error_msg = 'Email does not exist in our records. ' + \
                     'Please try again or create an account.'
                 return json_response(http_code=403, errors=[error_msg])
+
+        else:
+            # Incorrect json payload
+            error_msg = 'All valid parameters were not supplied.'
+            return json_response(http_code=422, errors=[error_msg])
+
+
+    if request.method == 'PUT':
+
+        expected_parameters = ['email','action']
+        request_json = request.json
+        return_dict = {}
+
+        if request_contains_all_valid_parameters(request_json, expected_parameters):
+
+            if request_json.get('action') == 'reset-password':
+                
+                email = request_json.get('email')
+
+                #Check if email exists
+                user = User.does_email_exist(email)
+
+                if user:
+                    from emails import reset_password_email
+                    from hashlib import md5
+                    
+                    #Make the password the hash of their ID
+                    reset_password_email(user)
+                    user.password = md5(str(user.id)).hexdigest()
+                    commit_to_db()
+
+                    return_dict = DEFAULT_SUCCESS_DICT 
+                    return json_response(200, return_dict)
+
+                else:
+                    error_msg = 'Email does not exist in our records. ' + \
+                    'Please try again or create an account.'
+                    return json_response(http_code=403, errors=[error_msg])
+
         else:
             # Incorrect json payload
             error_msg = 'All valid perameters were not supplied.'
             return json_response(http_code=422, errors=[error_msg])
+
 
     return json_response(http_code=400)
 
@@ -478,6 +517,62 @@ def users_by_id_web_api(user_id):
             user.become_a_guru(request.json.get('tutor_introduction'))
 
             return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
+
+        if request_json.get('action') == 'change-password':
+
+            if not ('old_pwd' in request_json and 'new_pwd' in request_json \
+                and 'confirm_pwd' in request_json):
+                return json_response(http_code=422)
+
+            from hashlib import md5
+
+            if md5(request.json.get('old_pwd')).hexdigest() != user.password:
+                error_msg = 'You entered the wrong password. Please try again.'
+                return json_response(http_code=403, errors=[error_msg])
+
+            if request_json.get('confirm_pwd') != request_json.get('new_pwd'):
+                error_msg = 'Your new passwords do not match! Please try again.'
+                return json_response(http_code=403, errors=[error_msg])
+
+            user.password = User.encrypted_password(request.json.get('confirm_pwd'))
+            commit_to_db()
+
+            return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
+
+        if request_json.get('action') == 'reset-password':
+            
+            if not ('new_pwd' in request_json \
+                and 'confirm_pwd' in request_json):
+                return json_response(http_code=422)
+
+            from hashlib import md5
+
+            if request_json.get('confirm_pwd') != request_json.get('new_pwd'):
+                error_msg = 'Your new passwords do not match! Please try again.'
+                return json_response(http_code=403, errors=[error_msg])
+
+            user.password = User.encrypted_password(request.json.get('confirm_pwd'))
+            commit_to_db()
+
+            return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
+
+
+
+        #For settings, like emails, phone-number, etc
+        if request_json.get('update_attribute'):
+
+            if request_json.get('update_attribute') == 'text-notification':
+                user.text_notification = request_json.get('value')
+                commit_to_db()
+                print user.text_notification
+                return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
+
+            if request_json.get('update_attribute') == 'email-notification':
+                user.email_notification = request_json.get('value')
+                commit_to_db()
+                print user.email_notification
+                return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
+
 
 
     return json_response(400)

@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block main_content %}
-<div class="content should-hide-message-bar">
+<div class="content should-hide-message-bar" data-user-id='{{user.id}}'>
   
   <div id='account-table' class='control-content setting-table active'>
     
@@ -36,48 +36,55 @@
       </li>
       <li class="table-view-cell">
           Text Notifications
-          <div class="toggle {% if user.text_notification %}active{%endif%}">
+          <div id='text-toggle' class="toggle {% if user.text_notification %}active{%endif%}">
             <div class="toggle-handle"></div>
           </div>
       </li>
       <li class="table-view-cell">
           Email Notifications
-          <div class="toggle {% if user.email_notification %}active{%endif%}">
+          <div id='email-toggle' class="toggle {% if user.email_notification %}active{%endif%}">
             <div class="toggle-handle"></div>
           </div>
       </li>
       <li class="table-view-cell">
-        <a class="navigate-right">
+        <a class="navigate-right" href='/m/change_password/' data-transition='slide-out'>
           Change Password
         </a>
       </li>
     </ul>
 
-    <h6 class="content-padded">Payment Setting</h6>
+    <h6 class="content-padded">Payment</h6>
     <ul class='table-view'>
-      {% if user.is_a_guru() %}
       <li class="table-view-cell">
-          <div class="media-body">
-            Payments Card
-          </div>
-          <a href='#add-card-modal' class='btn btn-link'>Add
+          <a class='navigate-right' href='/m/add_payment/' data-transition='slide-in'>
+              Payments Card 
+              {% if user.customer_id %}
+              <p class='grey-text'>*{{user.customer_last4}}</p>
+              {% endif %}
+            <button class='btn btn-link green-shade-1 font-16'>
+              {% if user.customer_id %}
+              Edit
+              {% else %}
+              Add
+              {% endif %}
+            </button>
           </a>
       </li>
-      {% endif %}
       {% if user.is_a_guru() %}
       <li class="table-view-cell">
-        <a data-transition='slide-in'>
-          <div class="media-body">
-            Deposit Card
-          </div>
-          <a href='#add-debit-modal' class='btn btn-link'>
-            {% if user.recipient_id %}
+        <a class='navigate-right' href='/m/guru/cashout/' data-transition='slide-in'>
+              Cashout Card 
+              {% if user.recipient_id %}
+              <p class='grey-text'>*{{user.recipient_last4}}</p>
+              {% endif %}
+            <button class='btn btn-link green-shade-1 font-16'>
+              {% if user.recipient_last4 %}
               Edit
-            {% else %}
+              {% else %}
               Add
-            {% endif %}
+              {% endif %}
+            </button>
           </a>
-        </a>
       </li>
       {% endif %}
       {% if user.payments %}
@@ -91,7 +98,42 @@
 
   </div>
 
-  {{ add_card_modal(user, stripe_key) }}
+    <script>
+    $('#text-toggle').on('toggle', function(){
+        var is_on = $(this).hasClass('active');
+        update_toggle('text-notification', is_on);
+      });
+    $('#email-toggle').on('toggle', function(){
+        var is_on = $(this).hasClass('active');
+        update_toggle('email-notification', is_on);
+      });
+
+
+    function update_toggle(setting_name, setting_value)  {
+      
+      var user_id = ($('.content').data().userId).toString();
+
+      payload = JSON.stringify({
+          update_attribute: setting_name,
+          value: setting_value,
+      });
+
+      $.ajax({
+          url: '/api/v1/users/' + user_id,
+          type: 'PUT',
+          contentType: 'application/json',
+          data: payload,
+          success: function (request){
+              //no need to do anything
+              return;
+          },
+          error: function (request) {
+              alert(request.responseJSON['errors']);
+          }
+        });
+    }
+
+    </script>
 
   {% if not request.MOBILE %}
     <script>
@@ -105,6 +147,19 @@
             $(this).addClass('active');
           }
       });
+
+      $('#text-toggle').on('click', function(){
+        var is_on = $(this).hasClass('active');
+        update_toggle('text-notification', is_on);
+      });
+
+      $('#email-toggle').on('click', function(){
+        var is_on = $(this).hasClass('active');
+        update_toggle('email-notification', is_on);
+      });
+
+      
+
     </script>
   {% endif %}
 </div>

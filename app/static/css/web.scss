@@ -35,8 +35,26 @@ header {
   margin-bottom:0px !important;
 }
 
+.no-margin-top {
+  margin-top: 0px !important;
+}
+
 .margin-top-10 {
   margin-top:10px;
+}
+
+.margin-top-20 {
+  margin-top:20px;
+}
+
+
+//font-stuff
+.font-16 { 
+  font-size:16px;
+}
+
+.font-12 {
+  font-size:12px;
 }
 
 .profile-title-icon {
@@ -50,9 +68,12 @@ header {
   height: 42px;
   border-radius:20px;
   border:2px solid white;
-  // background-size: cover;
-  // background-repeat: no-repeat;
-  // background-position: 50% 50%;
+}
+
+.table-view-large-face {
+  height:65px;
+  border-radius:50px;
+  border:2px solid white;
 }
 
 .table-view-mini-face {

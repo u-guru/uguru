@@ -10,7 +10,7 @@
       {% if redirect_request_id %}
         <a class="icon icon-left-nav pull-left" href="/m/confirm_request/{{redirect_request_id}}/" data-transition="slide-out"></a>  
       {% else %}
-        <a class="icon icon-left-nav pull-left" href="/m/settings/" data-transition="slide-out"></a>
+        <a class="icon icon-left-nav pull-left" href="/m/settings/" data-transition="slide-out"> </a>
       {% endif %}
     </header>
     {% endblock %}
@@ -25,8 +25,6 @@
         </form>
       </ul>
       <a id='add-card-link' data-user-id='{{user.id}}' class="btn btn-positive btn-block">Submit</a>
-      
-    </div>    
 
       <script type="text/javascript">Stripe.setPublishableKey("{{stripe_key}}");</script>
       <script class='content-js'>
@@ -52,11 +50,21 @@
                           url_components = window.location.pathname.split( '/' );
                           request_id = url_components[url_components.length - 2];
 
+                          {% if redirect_request_id %}
+
                           window.PUSH({
                               transition : "fade",
                               url : "/m/confirm_request/" + request_id + '/'
                           });
-                          $('#add-card-modal').removeClass('active');
+
+                          {% else %}
+
+                          window.PUSH({
+                              transition : "slide-out",
+                              url : "/m/settings/" + request_id + '/'
+                          });
+                          {% endif %}
+
                           return;
                       },
                       error: function (request) {
@@ -70,7 +78,7 @@
           $('input#card-num').payment('formatCardNumber');
           $('input#exp-date').payment('formatCardExpiry');
 
-          $('#add-card-link').on('click touchstart', function(){
+          $('#add-card-link').on('click', function(){
             if (!$('input#card-num').val() || !$('input#exp-date').val()) {
                 alert('Please enter all fields');
                 return;
@@ -90,6 +98,8 @@
 
         });
       </script>
+
+    </div>    
   {% endblock %}
 
     

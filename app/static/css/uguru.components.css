@@ -9,6 +9,25 @@
 }
 
 
+/*uGuru Color Scheme*/
+.grey-shade-3 {
+    background-color:#3E494C !important;
+}
+
+.grey-shade-2 {
+    background-color:#363D3F;
+}
+
+.green-shade-1 {
+    color:#69B3A5;
+}
+
+.no-border-bottom {
+    border-bottom: 0px !important;
+    -webkit-box-shadow: 0 0 0px rgba(0,0,0,.85);
+     box-shadow: 0 0 0px rgba(0,0,0,.85);
+}
+
 /* home */
 .bar {
     background-color: #2B3234;
@@ -25,10 +44,6 @@
 
 .content {
     background-color: #3b484d;
-}
-
-.btn.btn-link {
-    color: #45DA5E;
 }
 
 .light-green-text {
@@ -65,7 +80,7 @@ header .uguru-logo {
     color: #48b7a6;
 }
 
-/* button */
+/* button 
 /* positive_negative_big */
 
 .fb-color {

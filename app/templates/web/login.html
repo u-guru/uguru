@@ -3,7 +3,8 @@
 {% block main_header %}
 <header id='header-bar' class="bar bar-nav no-border-bottom login-header">
   <a class="icon icon-left pull-left" href='/m/welcome/' data-transition='slide-out'></a>
-    <h1 class="title">Login</h1>
+    <h1 id='login-header'class="title">Login</h1>
+    <a class="icon icon-close pull-right hidden" id='forgot-password-cancel' data-transition='slide-out'></a>
 </header>
 {% endblock %}
 
@@ -14,16 +15,29 @@
           <label>EMAIL</label>
           <input href='#login-modal' type="email" id="email-field" placeholder="your email"></input>
       </div>
-      <div class='input-row'>
+      <div class='input-row' id='password-field-row'>
           <label>PASSWORD</label>
           <input href='#signup-modal' type="password" id="password-field" placeholder="Password"></input>
       </div>
   </form>
   <a class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="login-link">Login</a>
+  <br>
+
+  <div class='center font-12 margin-top-20 bold'>
+    <a class='grey-text' href='#' id='forgot-password-link'>Forgot your password?</a>
+  </div>
 
   <script>
     $(document).ready(function() {
         $('#login-link').click(function(event) {
+            
+            if ($('#login-link:visible').length == 0) {
+              
+              forgotPassword();
+              return;
+
+            }
+
             payload = JSON.stringify({
                 email:$('#login-form #email-field').val(),
                 password:$('#login-form #password-field').val()
@@ -44,6 +58,54 @@
                 }
             });
         });
+
+        function forgotPassword() {
+        
+            payload = JSON.stringify({
+                action:'reset-password',
+                email:$('#login-form #email-field').val()
+            });
+            $.ajax({
+                url: '/api/v1/login',
+                type: 'PUT',
+                contentType: 'application/json',
+                data: payload,
+                success: function(request){
+                    window.PUSH({
+                        transition : "slide-out",
+                        url : "/m/welcome/"
+                    });
+                    alert("We've sent an email to your address. Please confirm and change your password.")
+                },
+                error: function (request) {
+                    alert(request.responseJSON['errors']);
+                }
+            });
+          }
+
+        $('#forgot-password-link').click(function() {
+
+          $('#password-field-row').hide();
+          $('#forgot-password-link').hide();
+          $('#login-link').attr('id', 'submit-password-link');
+          $('#submit-password-link').text('Submit');
+          $('#login-header').text('Reset Password');
+          $('#forgot-password-cancel').show();
+          
+
+        });
+
+        $('#forgot-password-cancel').click(function() {
+
+          $('#password-field-row').show();
+          $('#forgot-password-link').show();
+          $('#submit-password-link').attr('id', 'login-link');
+          $('#submit-password-link').text('Login');
+          $('#login-header').text('Login');
+          $('#forgot-password-cancel').hide();
+
+        });
+
     });
   </script>
 

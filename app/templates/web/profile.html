@@ -10,7 +10,7 @@
 {% endif %}
 
 {% block main_header %}
-<header class="bar bar-nav">
+<header class="bar bar-nav grey-shade-3 no-border-bottom">
   {% if _request and guru and student %}
   <h1 class="title">My Profile
   </h1>
@@ -23,10 +23,10 @@
   <a class="btn btn-link pull-right" href="/m/guru/profile/edit/" data-transition="slide-in">edit</a>
   {% endif %}
   {% if student %}
-  <h1 class="title">My Profile
+  <h1 class="title">
   </h1>
   <a class="icon icon-left-nav pull-left" href="/m/home/" data-transition="slide-out"></a>
-  <a class="btn btn-link pull-right" href="/m/profile/edit/" data-transition="slide-in">edit</a>
+  <a class="btn btn-link pull-right" href="/m/profile/edit/" data-transition="slide-in">Edit</a>
   {% endif %}
   
 </header>
@@ -34,21 +34,31 @@
 
 {% block main_content %}
 <div class="content should-hide-message-bar should-hide-tab-bar">
-    <ul class="table-view">
-      <li class="table-view-cell media center ignore-table-view-margin">
-          {% if student and not guru and not _request%}
-          <img class="media-object table-view-face" src="{{student.as_dict().profile_url}}">
-          {% else %}
-          <img class="media-object table-view-face" src="{{guru.profile_url}}">
-          {% endif %}
-          {% if guru and guru_avg_rating and guru_num_sessions %}
-          <h5 class='content-padded'> 
-              {{guru_avg_rating}} 
-              | 
-              {{guru_num_sessions}}
-            {% elif guru %}
+    
+    <!-- Student case -->
+    {% if student and not guru and not _request %}
+      <ul class="table-view" style='margin-top:-10px;'>
+        <li style='height:35%' class="table-view-cell media center ignore-table-view-margin grey-shade-3">
+          <img class="media-object table-view-large-face" src="{{student.as_dict().profile_url}}">
+          <p class='white-text center font-20 margin-top-10'>
+            {{student.get_first_name()}}
+          </p>
+        </li>
+        <li class="table-view-cell media grey-shade-2">
+          <h1> My Major </h1>
+          <a class='btn btn-link green-shade-1 font-16'>
+          </a>
+        </li>
+        <li class="table-view-cell media grey-shade-2">
+          <h1> My Year </h1>
+        </li>
+      </ul>
+
+    <!-- Student Viewing Guru -->
+    {% elif guru and _request  %}
+
               {{guru.get_first_name()}} is a new to Guru
-            {% endif %}
+
           </h5>
             {% if _request %}
               {% if request_dict.get('incoming-tutor-replies') %}
@@ -57,9 +67,11 @@
               </p>
               {% endif %}
             {% endif %}
-      </li>
-      <li class="table-view-cell request-cell ignore-table-view-margin">
-          <p class='padding-top-5'>
+
+            {{guru_avg_rating}} 
+                    | 
+            {{guru_num_sessions}}
+
             {% if _request %}
               <button class='btn btn-primary'>{{request_dict['skill_name']|upper}}</button>
               {% for skill in guru.skills[:3] %}
@@ -74,24 +86,16 @@
 
               {% endfor %}
 
-            {% else %}
                 {% for skill in guru.skills %}
                 
                 {% set skill_name = skill.get_short_name() %}
                 <button class='btn btn-outlined'>{{skill_name}}</button>
-
                 {% endfor %}
             {% endif %}
-          </p>
-      </li>
-      {% if guru %}
-      <li class="table-view-cell">
           {{guru.get_first_name()}}'s Introduction
-          <p>
-            {{guru.tutor_introduction}}
-          </p>
-      </li>
-      {% endif %}
+                  {{guru.tutor_introduction}}
+
+    {% endif %}
     </ul>  
 </div>
 {% endblock %}

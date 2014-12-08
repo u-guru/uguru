@@ -70,6 +70,58 @@ def student_packages_html(user_name):
     Samir from uGuru
     """
 
+def reset_password_email(user):
+    from hashlib import md5
+    if user.name:
+        user_name = user.name.split(" ")[0]
+    else:
+        user_name = "there"
+    email_from = "Uguru Reset Password <do-not-reply@uguru.me>"
+    email_subject = "[Uguru] Reset Password Link"
+    DATE_FORMAT = "%d/%m/%Y"
+    EMAIL_SPACE = ", "
+    EMAIL_TO = [user.email]
+
+    reset_password_url = 'http://uguru.me/m/reset_password/' + \
+    md5(str(user.id)).hexdigest()
+
+    to_emails = []
+    to_emails.append({
+        'email':user.email,
+        'name':user.name,
+        'type': 'to' 
+    })
+
+    html = """
+    Hi """ + user_name + """,
+    <br>
+    <br>
+    Click <a href='""" + reset_password_url + """'>here</a> to 
+    reset your password. 
+    <br>
+    <br>
+    Have a wonderful day!
+    <br>
+    <br>
+    - The Uguru team
+    """
+
+    message = {
+        'html':html,
+        'subject': email_subject,
+        'from_email': 'samir@uguru.me',
+        'from_name': 'Samir from uGuru',
+        'to': to_emails,
+        'headers': {'Reply-To': 'samir@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['student-signup']
+    }
+
+    result = mandrill_client.messages.send(message=message)
+
 #Sent to students when they sign up for the first time
 def welcome_uguru_student(user):
     user_first_name = user.name.split(" ")[0]

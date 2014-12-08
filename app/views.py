@@ -234,6 +234,36 @@ def add_courses():
 
     return render_template('web/add_courses.html')
 
+@app.route('/m/reset_password/<_hash>')
+@app.route('/m/change_password/')
+def add_courses(_hash=None):
+
+    reset_flag = False
+
+    
+    if 'reset' in request.url:
+        
+        user = User.query.filter_by(password=_hash).first()
+        print user
+
+        if not user:
+            flash('Sorry! That reset link is no longer valid.\
+                please try resetting your password again.')
+            return redirect(url_for('m_login'))        
+
+        #Reset password is successful.
+        else:
+            user.authenticate()
+            reset_flag = True
+
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/change_password.html',\
+        user=user, reset_flag=reset_flag)
+
 @app.route('/m/c/<_id>')
 @app.route('/m/conversation/<_id>')
 @app.route('/m/guru/conversation/<_id>')
@@ -1632,7 +1662,6 @@ def unsubscribe(email = None, tag = None, campaign = None):
 
     return render_template('unsubscribe.html', email=email)
 
-
 @app.route('/reset-password/', methods=('GET', 'POST'))
 def reset_pw():
     return_json = {}
@@ -1645,7 +1674,7 @@ def reset_pw():
             from app.static.data.random_codes import random_codes_array
             import random
             new_password = random.choice(random_codes_array).lower()
-            logging.info(new_password)
+            
             email = ajax_json['email'].lower()
 
             user = User.query.filter_by(email=email).first()
