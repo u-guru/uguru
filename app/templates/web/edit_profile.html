@@ -1,5 +1,6 @@
 {% extends 'web/base.html' %}
 {% from 'web/macros/autocomplete-input.html' import autocomplete_input_become_guru %}
+{% from 'web/macros/profile.html' import profile_photo_html_li %}
 
 {% block main_header %}
 <header class="bar bar-nav">
@@ -10,14 +11,9 @@
 {% block main_content %}
 <div class="content should-hide-message-bar">
   <ul class="table-view">
-    <li class="table-view-cell media ignore-table-view-margin">
-        <div class="media-body">
-          Add Photo
-          <img id='guru-profile-photo' class="media-object pull-right table-view-mini-face hidden"/>
-        </div>
-        <a id='upload-photo-link' class="btn btn-primary">Upload</a>
-        <input id='upload-photo' style='display:none;' type='file'/>
-    </li>
+    
+    {{profile_photo_html_li(user)}}
+    
     <li class='table-view-cell overflow-visible'>
       Add courses
       <input id='become-guru-course-input' type="text" placeholder="CS10" class='no-bottom-margin' />

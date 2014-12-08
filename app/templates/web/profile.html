@@ -7,9 +7,20 @@
 
 {% block main_header %}
 <header class="bar bar-nav">
-  <h1 class="title">Guru Profile
+  {% if _request and guru and student %}
+  <h1 class="title">My Profile
   </h1>
-  {% if _request %}
+  <a class="icon icon-left-nav pull-left" href="/home/" data-transition="slide-out"></a>
+  {% endif %}
+  {% if guru %}
+  <h1 class="title">My Profile
+  </h1>
+  <a class="icon icon-left-nav pull-left" href="/m/guru/" data-transition="slide-out"></a>
+  <a class="btn btn-link pull-right" href="/guru/profile/edit/" data-transition="slide-out">edit</a>
+  {% endif %}
+  {% if student %}
+  <h1 class="title">My Profile
+  </h1>
   <a class="icon icon-left-nav pull-left" href="/home/" data-transition="slide-out"></a>
   {% endif %}
   

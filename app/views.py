@@ -61,6 +61,7 @@ def home():
 @app.route('/m/guru/')
 def m_guru():
     user = api.current_user()
+    print user.skills
     if not user:
         return redirect(url_for('m_login'))
 
@@ -222,7 +223,8 @@ def become_guru():
     if not user:
         return redirect(url_for('m_login'))
 
-    return render_template('web/become_guru.html')
+    return render_template('web/become_guru.html'\
+        , user=user)
 
 @app.route('/add_courses/')
 def add_courses():
@@ -258,6 +260,16 @@ def m_settings():
         stripe_key=stripe_keys['publishable_key'],\
         user=user)
 
+@app.route('/guru/profile/edit/')
+@app.route('/profile/edit/')
+def edit_profile():
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/edit_profile.html',\
+        user=user)
+
 
 @app.route('/p/<_id>/')
 @app.route('/profile/<_id>/')
@@ -267,9 +279,15 @@ def profile(_id):
     if not user:
         return redirect(url_for('m_login'))
 
-    if user.id == int(_id):
+    #if guru is viewing their profile
+    if user.id == int(_id) and user.is_a_guru():
         return render_template('web/profile.html', \
         student=None, guru=user, _request=None)
+
+    #if student is viewing their profile
+    if user.id == int(_id):
+        return render_template('web/profile.html', \
+        student=user, guru=user, _request=None)
 
     # Make sure user can see this tutor profile
     results = user.has_incoming_tutor_for_request(int(_id))
@@ -293,11 +311,11 @@ def m_rating(_id):
 
     rating = Rating.query.get(_id)
 
-    if not user.pending_ratings:
-        if user.id == rating.student_id:
-            return redirect(url_for('home'))
-        else:
-            return redirect(url_for('m_guru'))
+    # if not user.pending_ratings:
+    #     if user.id == rating.student_id:
+    #         return redirect(url_for('home'))
+    #     else:
+    #         return redirect(url_for('m_guru'))
 
     return render_template('web/rating.html', user=user, \
         rating=rating)
@@ -1672,16 +1690,13 @@ def update_skill():
                 db_session.add(course)
         if ajax_json.get('remove'):
             from app.static.data.short_variations_reverse import short_variations_reverse_dict
-            if short_variations_reverse_dict.get(ajax_json.get('remove')):
-                skill_to_remove = short_variations_reverse_dict[ajax_json.get('remove')]
-            else:
-                from app.static.data.variations import courses_dict
-                skill_id = courses_dict[ajax_json.get('remove').lower()]
-                skill = Skill.query.get(skill_id)
-                skill_to_remove = skill.name
-            for skill in user.skills:
-                if skill.name.lower() == skill_to_remove.lower():
-                    user.skills.remove(skill)
+            skill_name = ajax_json.get('remove').lower()
+            if courses_dict.get(skill_name):
+                skill_to_remove_id = courses_dict[skill_name]
+                skill = Skill.query.get(skill_to_remove_id)
+                skill.tutors.remove(user)
+                user.skills.remove(skill)
+
         try:
             db_session.commit()
             if len(user.skills) == 0:
