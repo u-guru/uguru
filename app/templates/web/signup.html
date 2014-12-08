@@ -28,10 +28,8 @@
             <input type="password" id="password-field" placeholder="Password"></input>
         </div>
     </form>
-    <a class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="signup-link">Sign In</a>
-</div>
-
-<script>
+    <a class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="signup-link">Sign Up</a>
+    <script>
     $(document).ready(function() {
         $('#signup-link').click(function(){
             payload = JSON.stringify({
@@ -58,5 +56,6 @@
         });
     });
 </script>
+</div>
 
 {% endblock %}

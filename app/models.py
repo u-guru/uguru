@@ -156,8 +156,8 @@ class User(Base):
     approved_by_admin = Column(Boolean)
     auth_token = Column(String(64))
     apn_token = Column(String(64))
-    fb_id = Column(String(64))
-    gender = Column(String(64))
+    # fb_id = Column(String(64))
+    # gender = Column(String(64))
 
     #Tutor fields
     verified_tutor = Column(Boolean)
@@ -1053,9 +1053,9 @@ class Request(Base):
     time_connected = Column(DateTime)
 
     # Flag is set if the student chooses to cancel the request, all subsequest effors to contact tutors are thrown away.
-    is_canceled = Column(Boolean, default=False)
-    cancellation_reason = Column(String)
-    time_canceled = Column(DateTime)
+    # is_canceled = Column(Boolean, default=False)
+    # cancellation_reason = Column(String)
+    # time_canceled = Column(DateTime)
 
     # If request expires -- Taking to long? 
     is_expired = Column(Boolean, default=False)
