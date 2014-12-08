@@ -61,7 +61,6 @@ def home():
 @app.route('/m/guru/')
 def m_guru():
     user = api.current_user()
-    print user.skills
     if not user:
         return redirect(url_for('m_login'))
 
