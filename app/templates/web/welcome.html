@@ -19,15 +19,17 @@
     <a data-transition='slide-in' href='/m/login/'>
       <button class="btn btn-positive btn-block login home-page-btn">Log in</button>
     </a>
-    <button class="btn btn-positive btn-block fb-color relative home-page-btn">
+    <button type='submit' id='fb-login-btn' class="btn btn-positive btn-block fb-color relative home-page-btn">
       <span class='fb-icon absolute'>f</span>Connect with Facebook
     </button>
-    <fb:login-button size="xlarge" scope="public_profile,email" onlogin="beginFbConnect();"></fb:login-button>
     <p class='content-padded'> uguru will NEVER post to your Facebook. </p>
   </div>
 
   <script>
       $('.content').css('background-color', '#ffffff');
+      $('#fb-login-btn').on('click', function() {
+        FB.login();
+      });
   </script>
   
   <script>
