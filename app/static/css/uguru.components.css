@@ -68,7 +68,15 @@ header .uguru-logo {
 /* button */
 /* positive_negative_big */
 
+.fb-color {
+    background-color: #38548C !important;
+    color:white !important;
+}
 
+.home-page-btn {
+    font-size: 15px;
+    padding: 16px 0px;
+}
 
 .btn-positive {
     color: #fff;

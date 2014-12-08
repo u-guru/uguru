@@ -13,6 +13,18 @@ header {
 
 }
 
+.relative {
+  position:relative;
+}
+
+.fb-icon {
+  font-size: 27px;
+  position: absolute;
+  left: 7%;
+  top: 20%;
+  font-weight: 700;
+}
+
 #message-contents {
   width:78%
 }
