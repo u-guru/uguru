@@ -33,7 +33,8 @@
     $(document).ready(function() {
         $('#signup-link').click(function(){
             payload = JSON.stringify({
-                name     : $('#signup-form #name-field').val(),
+                first_name     : $('#signup-form #name-field').val(),
+                last_name     : $('#signup-form #name-field-last').val(),
                 email    : $('#signup-form #email-field').val(),
                 password : $('#signup-form #password-field').val()
             });

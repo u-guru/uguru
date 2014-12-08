@@ -350,7 +350,7 @@ def api_fb_connect():
         user_from_email.profile_url = request.json.get("profile_url")
         user_from_email.fb_account = True;
         db_session.commit()
-        exsisting_user.authenticate();
+        user_from_email.authenticate();
         return json_response(http_code=200)
 
     # If we can't find them, create a new user
