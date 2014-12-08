@@ -8,7 +8,7 @@
 
 {% block main_header %}
 <header class="bar bar-nav">
-  <a class='btn btn-link' id='profile-title-bar-icon' data-transition='fade'href='/profile/{{user.id}}'>
+  <a class='btn btn-link' id='profile-title-bar-icon' data-transition='fade'href='/m/profile/{{user.id}}'>
     <img id='guru-profile-photo' src='{{user.as_dict().profile_url}}'class="media-object pull-right table-view-mini-face profile-title-icon"/>
   </a>
   <h1 class="title uguru-logo">uguru</h1>
@@ -65,8 +65,8 @@
   {% if user.balance %}
   <ul class='table-view'>
     <li class="table-view-cell">
-      <a class='navigate-right' {% if user.recipient_id %} href='/guru/cashout/home/'
-      {% else %} href='/add_cash_card/home/' {% endif %} data-transition='slide-in'
+      <a class='navigate-right' {% if user.recipient_id %} href='/m/guru/cashout/home/'
+      {% else %} href='/m/add_cash_card/home/' {% endif %} data-transition='slide-in'
       >
       Your balance: <strong> ${{user.balance}} </strong>
        <button class='btn btn-link'> Cash out  </button>

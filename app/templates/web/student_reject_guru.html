@@ -2,7 +2,7 @@
 {% set request_dict = _request.get_return_dict() %}
 {% block main_header %}
 <header class="bar bar-nav">
-          <a class="icon icon-left pull-left" href="/home/" data-transition='slide-out'></a>
+          <a class="icon icon-left pull-left" href="/m/home/" data-transition='slide-out'></a>
           <h1 class="title">Reject {{request_dict['interested_tutors'][0]['name']}}</h1>
         </header>
 {% endblock %}
@@ -36,7 +36,7 @@
             success: function(request){
                 window.PUSH({
                     transition : "fade",
-                    url : '/home/'
+                    url : '/m/home/'
                 });
             },
             error: function (request) {

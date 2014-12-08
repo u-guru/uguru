@@ -3,7 +3,7 @@
 
 {% block main_header %}
   <header class="bar bar-nav">
-    <a class="icon icon-left pull-left" data-transition='slide-out' href="/home/"></a>
+    <a class="icon icon-left pull-left" data-transition='slide-out' href="/m/home/"></a>
     <h1 class="title">Cancel {{request_dict['skill_name']}} Request</h1>
   </header>
 {% endblock %}
@@ -37,7 +37,7 @@
             success: function(request){
                 window.PUSH({
                     transition : "fade",
-                    url : "/home/"
+                    url : "/m/home/"
                 });
             },
             error: function (request) {

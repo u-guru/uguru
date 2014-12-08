@@ -13,7 +13,7 @@
     {% for _request in user.get_guru_requests() %}
     {% set request_dict = _request.get_return_dict() %}
     <li class="table-view-cell media">
-        <a class="navigate-right" data-transition='slide-in' href='/guru/request/{{request_dict["server_id"]}}'>
+        <a class="navigate-right" data-transition='slide-in' href='/m/guru/request/{{request_dict["server_id"]}}'>
             <div class="media-object pull-left table-view-face" style='background-image: url("{{request_dict['student']['profile_url']}}")'></div>
             <div class="media-body">
                 CS10 Session

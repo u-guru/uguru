@@ -20,7 +20,7 @@
 
             {% if conversation_dict['is_active'] %}
 
-            <a class="navigate-right" data-transition="slide-in" href='/conversation/{{conversation_dict["server_id"]}}'>
+            <a class="navigate-right" data-transition="slide-in" href='/m/conversation/{{conversation_dict["server_id"]}}'>
                 <div class="media-object pull-left message-face" style='background-image: url("{{conversation_dict['tutor']['profile_url']}}")'></div>
                 <div class="media-body">
                     {{conversation_dict['tutor']['name']}}

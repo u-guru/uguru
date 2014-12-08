@@ -3,7 +3,7 @@
 
 {% block main_header %}
 <header class="bar bar-nav">
-  <a class="icon icon-left pull-left" href="/home/" data-transition='slide-out'></a>
+  <a class="icon icon-left pull-left" href="/m/home/" data-transition='slide-out'></a>
   <h1 class="title">Find a Guru</h1>
 </header>
 <link href="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.3/compressed/themes/default.css" rel="stylesheet">
@@ -141,14 +141,14 @@
                     if (request.redirect && request.redirect == 'no-tutors') {
                         window.PUSH({
                             transition : "fade",
-                            url : "/show/no-tutors/"
+                            url : "/m/show/no-tutors/"
                         });
                     }
                 }
                 else {
                     window.PUSH({
                         transition : "fade",
-                        url : '/home/'
+                        url : '/m/home/'
                     });
                 }
             },
