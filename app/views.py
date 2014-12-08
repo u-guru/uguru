@@ -418,7 +418,7 @@ def request_by_id(_id):
 
     # request already canceled, guru can't accept
     if not user == _request.get_student() and \
-    _request.is_canceled() and user in _request.approved_tutors():
+    _request.is_canceled and user in _request.approved_tutors():
         flash('Sorry! The student has canceled this request')
         return redirect(url_for('m_guru'))
 
@@ -442,7 +442,6 @@ def request_by_id(_id):
 
     return render_template('web/request_details.html', user=user,\
      request_dict=_request.get_return_dict())
-
 
 @app.route('/log_in/')
 @app.route('/sign_up/')

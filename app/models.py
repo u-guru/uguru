@@ -1191,8 +1191,6 @@ class Request(Base):
             db_session.rollback()
             raise
 
-
-
     def process_student_acceptance(self, tutor):
         from datetime import datetime
         
@@ -1262,7 +1260,6 @@ class Request(Base):
             db_session.rollback()
             raise
 
-
     def get_interested_tutors(self):
         return self.committed_tutors
 
@@ -1281,6 +1278,8 @@ class Request(Base):
         return User.query.get(self.connected_tutor_id)
 
     def cancel(self, user, description=None):
+        self.is_canceled = True
+        self.time_canceled = datetime.now();
         self.connected_tutor_id = self.student_id
         user.outgoing_requests.remove(self)
         self.cancellation_reason = description
@@ -1289,7 +1288,6 @@ class Request(Base):
         for tutor in self.requested_tutors + self.committed_tutors:
             if self in tutor.outgoing_requests:
                 tutor.outgoing_requests.remove(self)
-
         try:
             db_session.commit()
         except:
@@ -1308,13 +1306,10 @@ class Request(Base):
             raise
         return 
 
-    def is_canceled(self):
-        return self.connected_tutor_id == self.student_id
-
     def get_status(self):
-        if not self.connected_tutor_id:
+        if not self.pending_tutor_id:
             return 'pending'
-        elif self.is_canceled():
+        elif self.is_canceled:
             return 'canceled'
         else:
             return 'matched'
