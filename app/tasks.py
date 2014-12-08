@@ -1,12 +1,14 @@
 from celery import Celery
 from celery.task import task, periodic_task
 from celery.schedules import crontab
+from app.database import *
 from models import *
 from views import *
 
 import time
 import logging
 import os
+from datetime import datetime
 
 celery = Celery('run')
 REDIS_URL = os.environ.get('REDISTOGO_URL')
@@ -40,12 +42,12 @@ def check_msg_status(text_id):
 
 @task(name='tasks.contact_tutors')
 def contact_qualified_tutors(request_id):
-    from lib.requests import contact_tutors
-    from app.models import Request
-    from app.database import db_session
-    r = Request.query.get(request_id)
-    for tutor in r.requested_tutors:
-        #hack for now
+    
+    prioritized_tutors = prioritize_qualified_tutors(r.requested_tutors)
+
+    for tutor in previous_tutor:
+        # TODO : DO magic sauce that queues and requests tutors in the proper order here
+        logging.info("requesting tutor: " + str(tutor))
         tutor.outgoing_requests.append(r)
     try:
         db_session.commit()
@@ -53,6 +55,57 @@ def contact_qualified_tutors(request_id):
         db_session.flush()
         raise
 
+##############################
+# BEGIN Contact Tutor Helpers#
+##############################
+
+def prioritize_qualified_tutors(tutors):
+    """ Orders the list of tutors from best to worst. """
+    logging.info( "Number of tutors being prioritized: " + str(len(tutors)) )
+    # TODO : Implement secret saucce prioritizing algorithm.
+    return tutors
+
+
+def contact_tutor(tutor_id, request_id):
+    """ Takes in a turor and a requst and tries to reach the tutor by all possible means. Returns True if the turor was successfully contacted, False otherwise. """
+    logging.info("============ Requesting User ==============")
+    
+    # Find the Request with the given ID
+    r = Request.query.get(request_id)
+    if not r:
+        logging.info("Couln't find a request with the supplied id: ", str(request_id))
+        return False
+
+    t = User.query.get(tutor_id)
+    if not t:
+        logging.info("Couln't find a request with the supplied id: ", str(request_id))
+        return False
+
+    # Add request to the tutors requests.  Outgoing, why?
+    tutor.outgoing_requests.append(r)
+
+    try:
+        db_session.commit()
+    except:
+        db_session.rollback()
+        return False
+
+    if tutor.text_notification:
+        # TODO : Send them a text
+        logging.info("Text sent to tutor: " + str(tutor))
+    if tutor.email_notification:
+        # TODO : send off a text
+        logging.info("Email email to tutor: " + str(tutor))
+    if tutors.push_notification:
+        # TODO : implement push notifications
+        pass
+
+    logging.info("============ End Requesting User ==============")
+    return True
+
+########################
+# END Contact Tutor Helpers#
+########################
 
 @task(name='tasks.autoconfirm_payment')
 def auto_confirm_student_payment(payment_id, student_id):
@@ -170,7 +223,9 @@ def expire_request_job(request_id, user_id):
     if _request in user.outgoing_requests:
         user.outgoing_requests.remove(_request)
     _request.is_expired = True
+    _request.time_expired = datetime.now()
     db_session.commit()
+    # TODO : Try catch if commit fails!
 
 @task(name='tasks.send_delayed_email')
 def send_delayed_email(email_str, args):
