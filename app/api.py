@@ -173,7 +173,7 @@ def request_by_id_web_api(request_id):
             else:
                 flash('Request successfully rejected!')
 
-            _request.process_guru_reject(user)
+            _request.process_tutor_reject(user)
 
         
         # Student accepts guru 
@@ -210,10 +210,9 @@ def request_by_id_web_api(request_id):
             minutes = request_json.get('minutes')
             hours = request_json.get('hours')
 
-            #TODO: Delay this function to tasks.py
-            _request.process_guru_confirm(hours, minutes)
+            # TODO : Delay this function to tasks.py
+            _request.process_tutor_confirm(hours, minutes)
 
-            
         request_return_dict = _request.get_return_dict()
         return json_response(http_code = 200, return_dict = request_return_dict)
 

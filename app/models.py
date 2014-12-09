@@ -128,6 +128,12 @@ user_notification_table = Table('user-notification_assoc',
     Column('user_id', Integer, ForeignKey('user.id'))
 )
 
+request_contacted_tutors_table = Table('request-contacted-tutors_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('request_id', Integer, ForeignKey('request.id'))
+)
+
 class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key = True)
@@ -1038,7 +1044,8 @@ class Request(Base):
     start_time = Column(DateTime)
     time_estimate = Column(Float)
     remote = Column(Boolean)
-    urgency = Column(SmallInteger)
+    is_urgent = Column(Boolean) # TODO : migrate to using this eventually
+    urgency = Column(SmallInteger) # TODO : Depricate and Drop - Run a script that moves all > 0 to mean is_urgent is True 
     payment_id = Column(Integer)
     time_created = Column(DateTime)
     last_updated = Column(DateTime)
@@ -1046,21 +1053,20 @@ class Request(Base):
     ####################################
     ##### Begin queing properties ######
     ####################################
-    # Pending tutor is set while they are currently in the contact queue
+    # Pending tutor is set while they are currently in the contact queue, _description should be reset to None eachtime _id is changed
     pending_tutor_id = Column(Integer)
     pending_tutor_description = Column(String)
+    time_pending_began = Column(DateTime)
 
     # Set if the connected all the way through. Request is still unmatched if connected_tutor_id null.
     connected_tutor_id = Column(Integer)
     time_connected = Column(DateTime)
 
-    # Flag is set if the student chooses to cancel the request, all subsequest effors to contact tutors are thrown away.
-    is_canceled = Column(Boolean, default=False)
-    cancellation_reason = Column(String)
+    # If time_canceled is not None, the request is considered canceled
     time_canceled = Column(DateTime)
-
-    # If request expires -- Taking to long? 
-    is_expired = Column(Boolean, default=False)
+    cancellation_reason = Column(String)
+    
+    # If time_expired is not None, the request is expired.
     time_expired = Column(DateTime)
 
     # TODO : DROP THESE COLUMNS
@@ -1080,6 +1086,9 @@ class Request(Base):
         secondary = tutor_request_table,
         backref = backref('requests', lazy='dynamic')
         )
+
+    contacted_tutors = relationship('User', 
+        secondary = request_contacted_tutors_table)
 
     # TODO : DROP
     weekly_availability = relationship('Week',
@@ -1180,7 +1189,9 @@ class Request(Base):
 
 
     def process_student_reject(self, tutor_id):
-        tutor = User.query.get(tutor_id)
+        # Take the request out of the pending state
+        self.pending_tutor_id = None
+        self.time_pending_began = None
 
         self.committed_tutors.remove(tutor)
         tutor.outgoing_requests.remove(self)
@@ -1191,7 +1202,7 @@ class Request(Base):
             raise
 
 
-    def process_guru_reject(self, tutor_id):
+    def process_tutor_reject(self, tutor_id):
         tutor = User.query.get(tutor_id)
 
         self.committed_tutors.remove(tutor)
@@ -1203,11 +1214,12 @@ class Request(Base):
             raise
 
     def process_student_acceptance(self, tutor):
-        from datetime import datetime
-        
-        #Update time connected and everything
-        self.time_connected = datetime.now()
+        # Update time connected and everything
         self.connected_tutor_id = tutor.id
+        self.time_connected = datetime.now()
+
+        # Connected so it is no longer pending
+        self.pending_tutor_id = None
 
         student = User.get_user(self.student_id)
         skill = Skill.query.get(self.skill_id)
@@ -1215,7 +1227,7 @@ class Request(Base):
         student.outgoing_requests.remove(self)
         tutor.outgoing_requests.remove(self)
 
-        for tutor in (self.committed_tutors + self.requested_tutors):
+        for tutor in (self.requested_tutors + self.committed_tutors):
             if self in tutor.outgoing_requests:
                 tutor.outgoing_requests.remove(self)
 
@@ -1231,40 +1243,28 @@ class Request(Base):
             db_session.rollback()
             raise
 
-    def process_guru_confirm(self, hours, minutes):
-        
-        #create payment & bill student
-        payment = Payment.create_payment(self, hours, minutes)
-        self.payment_id = payment.id
-
-        #create rating
-        rating = Rating.create_rating(self)
-
-        #make conversation inactive
-        self.get_conversation().is_active = False 
-
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise
-
-        return 
-
-
     def process_tutor_acceptance(self, tutor, description):
         self.committed_tutors.append(tutor)
         self.pending_tutor_id = tutor.id
         self.pending_tutor_description = description
+        self.time_pending_began = datetime.now()
         try:
             db_session.commit()
         except:
             db_session.rollback()
             raise
 
-    #TODO, we don't do anything yet, but we will in the near future.
-    def process_tutor_reject(self,tutor):
-        tutor.outgoing_requests.remove(self)
+    def process_tutor_confirm(self, hours, minutes):
+        # Create payment & bill student
+        payment = Payment.create_payment(self, hours, minutes)
+        self.payment_id = payment.id
+
+        # Create rating
+        Rating.create_rating(self)
+
+        # Make conversation inactive
+        self.get_conversation().is_active = False 
+
         try:
             db_session.commit()
         except:
@@ -1284,9 +1284,6 @@ class Request(Base):
 
     def get_student(self):
         return User.query.get(self.student_id)
-
-    def get_connected_tutor(self):
-        return User.query.get(self.connected_tutor_id)
 
     def cancel(self, user, description=None):
         self.is_canceled = True
