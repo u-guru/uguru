@@ -318,7 +318,7 @@ def profile(_id):
         return redirect(url_for('m_login'))
 
     #if guru is viewing their profile
-    if user.id == int(_id) and user.is_a_guru():
+    if user.id == int(_id) and user.approved_by_admin:
         return render_template('web/profile.html', \
         student=None, guru=user, _request=None)
 

@@ -17,8 +17,6 @@
   <a class="icon icon-left-nav pull-left" href="/m/home/" data-transition="slide-out"></a>
   {% endif %}
   {% if guru %}
-  <h1 class="title">My Profile
-  </h1>
   <a class="icon icon-left-nav pull-left" href="/m/guru/" data-transition="slide-out"></a>
   <a class="btn btn-link pull-right" href="/m/guru/profile/edit/" data-transition="slide-in">edit</a>
   {% endif %}
@@ -41,16 +39,61 @@
         <li style='height:35%' class="table-view-cell media center ignore-table-view-margin grey-shade-3">
           <img class="media-object table-view-large-face" src="{{student.as_dict().profile_url}}">
           <p class='white-text center font-20 margin-top-10'>
-            {{student.get_first_name()}}
+            {{student.get_first_name()}} <br>
+            UC Berkeley
           </p>
         </li>
-        <li class="table-view-cell media grey-shade-2">
-          <h1> My Major </h1>
-          <a class='btn btn-link green-shade-1 font-16'>
-          </a>
+        <li class="table-view-cell media grey-shade-2 ignore-table-view-margin">
+          <h2> My Major 
+            {% if student.major %}
+            <span class='pull-right' style='color:#db7500'>{{student.major}}</span>
+            {% else %}
+            <a class='btn btn-link pull-right' href="/m/profile/edit/">add</a>
+            {% endif %}
+          </h2>
+          
         </li>
-        <li class="table-view-cell media grey-shade-2">
-          <h1> My Year </h1>
+        <li class="table-view-cell media grey-shade-2 ignore-table-view-margin">
+          <h2> My Year 
+
+            {% if student.year %}
+            <span class='pull-right' style='color:#db7500'>{{student.year}}</span>
+            {% else %}
+            <a class='btn btn-link pull-right' href="/m/profile/edit/">add</a>
+            {% endif %}
+          </h2>
+        </li>
+      </ul>
+
+    {% elif guru and not _request  %}
+
+    <ul class="table-view" style='margin-top:-10px;'>
+        <li style='height:35%' class="table-view-cell media center ignore-table-view-margin grey-shade-3">
+          <img class="media-object table-view-large-face" src="{{guru.as_dict().profile_url}}">
+          <p class='white-text center font-20 margin-top-10'>
+            {{guru.get_first_name()}} <br>
+            UC Berkeley
+          </p>
+        </li>
+        <li class="table-view-cell media grey-shade-2 ignore-table-view-margin">
+          <h2> My Major 
+            {% if guru.major %}
+            <span class='pull-right' style='color:#db7500'>{{guru.major}}</span>
+            {% else %}
+            <a class='btn btn-link pull-right' href="/m/guru/profile/edit/">add</a>
+            {% endif %}
+          </h2>
+          
+        </li>
+        <li class="table-view-cell media grey-shade-2 ignore-table-view-margin">
+          <h2> My Year 
+
+            {% if guru.year %}
+            <span class='pull-right' style='color:#db7500'>{{guru.year}}</span>
+            {% else %}
+            <a class='btn btn-link pull-right' href="/m/guru/profile/edit/">add</a>
+            {% endif %}
+          </h2>
         </li>
       </ul>
 

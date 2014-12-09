@@ -19,12 +19,10 @@
 {%- endmacro %}
 
 {% macro profile_major_html_li(user) -%}
-<form class='input-group'>
-  <div class='input-row'>
-    <label>Choose Major</label>
-    <input type="text" id="{% if user.is_a_guru() %}tutor-major{% else %}student-major{%endif%}" value='{% if user.major %}{{user.major}}{%endif%}'placeholder="First name"></input>
-  </div>
-</form>
+<li class='table-view-cell overflow-visible .ignore-table-view-margin'>
+      Major 
+      <input id="{% if user.is_a_guru() %}tutor-major{% else %}student-major{%endif%}" value='{% if user.major %}{{user.major}}{%endif%}' type="text" placeholder="Your Major" class='no-bottom-margin' />
+</li>
 {%- endmacro %}
 
 

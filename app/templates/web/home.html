@@ -1,4 +1,4 @@
-{% extends 'web/base.html' %}
+  {% extends 'web/base.html' %}
 {% from 'web/macros/request.html' import request_details_student, student_reject_modal, student_accept_modal, cancel_request_modal,
 request_details_guru %}
 {% set scheduled_sessions = user.get_scheduled_sessions_student() %}
@@ -67,15 +67,15 @@ request_details_guru %}
       </ul>
     {% endfor %}
 
-  {% if not student_requests %}
-  <a class="btn btn-positive btn-block" href="/m/request_form/" data-transition='slide-in'>
-    Request Guru
-  </a>
-  {% elif not available_guru %}
-    <button class='btn btn-block btn-negative' id='negative-guru-request-btn'>
-      Request a Guru
-    </button>
-  {% endif %}
+    {% if not student_requests %}
+    <a class="btn btn-positive btn-block request-guru-btn" href="/m/request_form/" data-transition='slide-in'>
+      Request Guru
+    </a>
+    {% elif not available_guru %}
+      <button class='btn btn-block btn-negative request-guru-btn' id='negative-guru-request-btn'>
+        Request a Guru
+      </button>
+    {% endif %}
 
   {% include 'web/snippets/flash_alerts.html'%}
   {{show_all_components(user, student_mode)}}
