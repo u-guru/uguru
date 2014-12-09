@@ -19,6 +19,11 @@ $(document).ready(function() {
         $(this).siblings('.active').removeClass('active');
         $(this).addClass('active');
     });
+
+    $('body').on('click', '.control-item', function() {
+        $(this).siblings('.active').removeClass('active');
+        $(this).addClass('active');
+    });
     
     $('body').on('touchstart', '.guru-confirm-session', function() {
         
@@ -74,6 +79,14 @@ $(document).ready(function() {
                 alert(request.responseJSON['errors']);
             }
         });
+    });
+
+    $('body').on('click', '#get-uguru-link', function(e) {
+            window.PUSH({
+                transition : "slide-in",
+                url : "/m/signup/"
+            });
+            $('header').css('background-color','#343d3e')
     });
 
     //Send Message

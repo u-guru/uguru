@@ -7,6 +7,9 @@
 </script>
 
 
+<header id='header-bar' class="bar bar-nav no-border-bottom">
+</header>
+
 <div class="content login-content should-hide-message-bar should-hide-tab-bar">
   <div class='center home-guru-container'>
     <img class='home-guru' src="/static/img/hip_guru.svg"></img>
@@ -26,7 +29,7 @@
   </div>
 
   <script>
-      $('.content').css('background-color', '#ffffff');
+      $('.content, #header-bar').css('background-color', '#ffffff');
       $('#fb-login-btn').on('click', function() {
          FB.login(function(response) {
               beginFbConnect();
