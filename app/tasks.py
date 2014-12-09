@@ -9,6 +9,7 @@ import time
 import logging
 import os
 from datetime import datetime
+from time import sleep
 
 celery = Celery('run')
 REDIS_URL = os.environ.get('REDISTOGO_URL')
@@ -40,20 +41,83 @@ def check_msg_status(text_id):
         db_session.flush()
         raise
 
-@task(name='tasks.contact_tutors')
+@task(name='tasks.contact_qualified_tutors')
 def contact_qualified_tutors(request_id):
-    
-    prioritized_tutors = prioritize_qualified_tutors(r.requested_tutors)
 
-    for tutor in previous_tutor:
-        # TODO : DO magic sauce that queues and requests tutors in the proper order here
-        logging.info("requesting tutor: " + str(tutor))
-        tutor.outgoing_requests.append(r)
-    try:
+    request = Request.query.get(request_id)
+    if not request:
+        logging.info("Couldn't find a request with the supplied id: ", str(request_id))
+        return 
+    
+    # TODO : set based on urgency
+    SECONDS_BETWEEN_CONTACT_ATTEMPTS    = 60 * 5  # Five minutes
+    SECONDS_ALLOWED_PENDING             = 60 * 15 # Ten Minutes
+
+    # Get a list of tutors, prioritized, and make a queue
+    tutor_queue = prioritize_qualified_tutors(request.requested_tutors)
+    
+    # Get starting tutor    
+    current_tutor = tutor_queue.pop(0)
+
+    while len(tutor_queue) != 0:
+
+        # Re-fetch the request so that we are sure it's state is accurate
+        request = Request.query.get(request_id)
+        
+        # if request has been connected, you are done. "CARRY ON MY WAYWARD SON!"
+        if request.connected_tutor_id:
+            logging.info("Tutor has been matched, request contacted to tutor :" + str(request.connected_tutor_id))
+            break
+
+        # Don't proceed if the request is canceled
+        if request.time_canceled:
+            logging.info("Stopped contacting tutors. Request ID: " + str(request.id) +" cancelled at " + str(request.time_canceled))
+            break
+
+        # Don't proceed if the request is expired, although it shouldn
+        if request.time_expired:
+            logging.info("Stopped contacting tutors. Request ID: " + str(request.id) +" expired at " + str(request.time_expired))
+            break
+
+        # If request is in a pending state, check how long its been and proceed to wait or expire the request accordingly
+        if request.pending_tutor_id:
+            # Been pending too long, expire the request
+            seconds_spent_pending = (datetime.now() - request.time_pending_began) # datetime.timedelta
+            if seconds_spent_pending > SECONDS_ALLOWED_PENDING:
+                request.time_expired = datetime.now()
+
+                logging.info("Request " + str(request.id) + " expired at " + str(request.time_expired) + " because it was pending for too long.")
+                db_session.commit()
+                # TODO : Try catch if commit fails!
+                break
+            else:
+                logging.info("Request " + str(request.id) + " is pending...")
+                sleep(SECONDS_BETWEEN_CONTACT_ATTEMPTS) # Wait a beat and then try again
+                continue
+
+        # If this tutor has already been contacted, "MOVE ALONG MOVE ALONG LIKE YOU ALWAYS DO"
+        if current_tutor.id in request.contacted_tutors:
+            #   NOTE :  This will be important when we allow the list of qualified tutors 
+            #           to be updated while this function is running.  Instead of assigning r.requested_tutors
+            #           once when the request is created, we could have a method on the Request instance
+            #           called r.prioritized_tutor_candidates() that fetches Skill.query.get(skill_id).tutors
+            #           and prioritized them.  This way we ensure that we are always contacting 
+            #           the best possible tutor as sson as possible.
+            logging.info("Skipping over tutor who has already been contacted for request: " + str(request))
+            current_tutor = tutor_queue.pop(0) # Pop next tutor off the queue
+            continue
+
+        # Finally, go ahead and try to contact the tutor
+        contact_success = contact_tutor(tutor=tutor, request=request)
+        if not contact_success:
+            logging.info("Failed to contact tutor: " + str(tutor))
+        # Either way we add the tutor to the list of tutors we've tried to contact
+        request.contacted_tutors.append(tutor)
         db_session.commit()
-    except:
-        db_session.flush()
-        raise
+        # TODO : Try catch here
+        sleep(SECONDS_BETWEEN_CONTACT_ATTEMPTS) # Wait a beat and then
+        current_tutor = tutor_queue.pop(0) # Pop next tutor off the queue
+        
 
 ##############################
 # BEGIN Contact Tutor Helpers#
@@ -61,51 +125,38 @@ def contact_qualified_tutors(request_id):
 
 def prioritize_qualified_tutors(tutors):
     """ Orders the list of tutors from best to worst. """
-    logging.info( "Number of tutors being prioritized: " + str(len(tutors)) )
+    logging.info("Number of tutors being prioritized: " + str(len(tutors)) )
     # TODO : Implement secret saucce prioritizing algorithm.
     return tutors
 
+def contact_tutor(tutor, request):
+    """ Takes in a turor and a requst and tries to reach the 
+    tutor by all possible means. Returns True if the turor was 
+    successfully contacted, False otherwise. """
+    logging.info("...requesting tutor: " + str(tutor))
 
-def contact_tutor(tutor_id, request_id):
-    """ Takes in a turor and a requst and tries to reach the tutor by all possible means. Returns True if the turor was successfully contacted, False otherwise. """
-    logging.info("============ Requesting User ==============")
-    
-    # Find the Request with the given ID
-    r = Request.query.get(request_id)
-    if not r:
-        logging.info("Couln't find a request with the supplied id: ", str(request_id))
-        return False
-
-    t = User.query.get(tutor_id)
-    if not t:
-        logging.info("Couln't find a request with the supplied id: ", str(request_id))
-        return False
-
-    # Add request to the tutors requests.  Outgoing, why?
-    tutor.outgoing_requests.append(r)
-
+    # Append request to the tutor's outgoing_requests.    
+    tutor.outgoing_requests.append(request)
     try:
         db_session.commit()
     except:
         db_session.rollback()
+        logging.info("Failed to add the outgoing_request to the tutor.")
         return False
 
-    if tutor.text_notification:
+    if tutor.email_notification:
+        # TODO : send off a email
+        logging.info("DISABLED: Email sent to tutor: " + str(tutor))
+
+    if tutor.phone_number and tutor.text_notification:
         # TODO : Send them a text
         logging.info("Text sent to tutor: " + str(tutor))
-    if tutor.email_notification:
-        # TODO : send off a text
-        logging.info("Email email to tutor: " + str(tutor))
-    if tutors.push_notification:
-        # TODO : implement push notifications
-        pass
 
-    logging.info("============ End Requesting User ==============")
     return True
 
-########################
-# END Contact Tutor Helpers#
-########################
+#############################
+# END Contact Tutor Helpers #
+#############################
 
 @task(name='tasks.autoconfirm_payment')
 def auto_confirm_student_payment(payment_id, student_id):
@@ -222,7 +273,6 @@ def expire_request_job(request_id, user_id):
     user = User.query.get(user_id)
     if _request in user.outgoing_requests:
         user.outgoing_requests.remove(_request)
-    _request.is_expired = True
     _request.time_expired = datetime.now()
     db_session.commit()
     # TODO : Try catch if commit fails!
@@ -258,7 +308,6 @@ def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name
         notification = tutor_request_offer(student, tutor, r, skill_name)
         db_session.add(notification)
         tutor.notifications.append(notification)
-
 
     #Send email to tier 2 tutors
     from emails import student_needs_help
