@@ -54,12 +54,21 @@
   </ul>
   {% endif %}
   {% if not guru_requests and not scheduled_sessions %}
-  <ul class="table-view">    
+  <!-- <ul class="table-view">    
     <li class="table-view-cell">
       <a class="navigate-right" data-transition='slide-in'>
         Guru Getting-Started Guide
       </a>
     </li>
+  </ul> -->
+  <ul class='table-view center'>
+    <li class='table-view-cell ignore-table-view-margin'>
+      No requests yet! <br>Our system will text you when there is a a request.
+      {% if user.phone_number %}
+        <br><br> <strong class='green-text'>You will only receive requests if you we have your phone number <strong>
+      {% endif %}
+    </li>
+
   </ul>
   {% endif %}
   {% if user.balance %}
