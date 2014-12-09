@@ -24,7 +24,7 @@
   
   <h6 class="content-padded">Description</h6>
   <form class="input-group">
-    <textarea placeholder="Please provide all necessary details" rows="5"></textarea>
+    <textarea id='support-description' placeholder="Please provide all necessary details" rows="5"></textarea>
   </form>
 
   <ul class='table-view'>
@@ -35,22 +35,21 @@
       </div>
     </li>
   </ul>
-  <a id='submit-support-ticket'class="btn btn-positive btn-block">Submit</a>
+  <a id='submit-support-ticket' data-user-id='{{user.id}}' class="btn btn-positive btn-block">Submit</a>
 
   <script>
 
   $('#submit-support-ticket').on('click', function() {
-        request_id = ($(this).data().requestId).toString();
-        tutor_id = ($(this).data().tutorId).toString();
+        var user_id = ($(this).data().userId).toString();
         
         payload = JSON.stringify({
-            action:'student-reject',
-            description:$('#student-reject-guru-description').val(),
-            tutor_server_id: tutor_id
+            action:'support',
+            description:$('#support-description').val(),
+            urgency: $('.toggle').hasClass('active')
         });
 
         $.ajax({
-            url: '/api/v1/requests/' + request_id,
+            url: '/api/v1/users/' + user_id,
             type: 'PUT',
             contentType: 'application/json',
             data: payload,
@@ -65,7 +64,20 @@
             }
         });
     });
+
   </script>
+
+  {% if not request.MOBILE %}
+    <script>
+      $('.toggle').on('click', function(){
+          if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+          } else {
+            $(this).addClass('active');
+          }
+      });
+    </script>
+  {% endif %}
   
 </div>     
 {% endblock %}

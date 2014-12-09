@@ -375,7 +375,8 @@ def support():
     if not user:
         return redirect(url_for('m_login'))
 
-    return render_template('web/support.html')
+    return render_template('web/support.html', 
+        user=user)
 
 @app.route('/m/reject_guru/<_id>/')
 def student_reject_guru(_id):

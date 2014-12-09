@@ -457,7 +457,7 @@ def api_login():
 ##### /user/<user_id> #####
 # PUT updates a user
 # DELETE deletes a user (TODO Later)
-@app.route('/api/v1/users/<user_id>', methods = ['PUT', 'DELETE'])
+@app.route('/api/v1/users/<user_id>', methods = ['PUT', 'POST','DELETE'])
 def users_by_id_web_api(user_id):
     
     if request.method == 'PUT':
@@ -556,6 +556,19 @@ def users_by_id_web_api(user_id):
 
             return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
 
+
+        if request_json.get('action') == 'support':
+            
+            if not request_json.get('description'):
+                error_msg = 'Please type in a description!'
+                return json_response(http_code=403, errors=[error_msg])
+
+
+            from emails import send_support_email
+            send_support_email(user, request_json.get('description'), \
+                request_json.get('urgency'))
+            flash("Thank you for taking the time! We'll get back to you as soon as possible.")
+            return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
 
 
         #For settings, like emails, phone-number, etc

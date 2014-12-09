@@ -5,10 +5,10 @@
 <header class="bar bar-nav">
   <a class="icon icon-left pull-left" href="/m/home/" data-transition='slide-out'></a>
   <h1 class="title">Find a Guru</h1>
+  <link href="/static/css/default.css" rel="stylesheet">
+  <link href="/static/css/default.time.css" rel="stylesheet">
+  <link href="/static/css/default.date.css" rel="stylesheet">
 </header>
-<link href="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.3/compressed/themes/default.css" rel="stylesheet">
-<link href="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.3/compressed/themes/default.time.css" rel="stylesheet">
-<link href="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.3/compressed/themes/default.date.css" rel="stylesheet">
 {% endblock %}
 
 {% block main_content %}
@@ -56,11 +56,9 @@
   </a>
 
 {{autocomplete_input('request-course')}}
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.3/compressed/picker.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.3/compressed/picker.time.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.3/compressed/picker.date.js"></script>
+<script src="/static/js/picker.js"></script>
+<script src="/static/js/picker.time.js"></script>
+<script src="/static/js/picker.date.js"></script>
 
 <script> 
   $('body').on('click', '#asap-toggle', function(){
@@ -103,7 +101,7 @@
     }
   });
 
-  date_picker_input = $('#request-date').pickadate({
+    date_picker_input = $('#request-date').pickadate({
     min:true,
     max:1,
     onSet: function(context) {
@@ -121,6 +119,7 @@
         }
     }
   });
+  
   time_picker_input = $('#request-time').pickatime({
     min:true
   });

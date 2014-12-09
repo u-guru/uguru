@@ -42,6 +42,43 @@ def send_student_packages_email(user, tutor_name, skill_name):
 
     result = mandrill_client.messages.send(message=message)
 
+def send_support_email(user, description, urgency):
+    user_first_name = user.name.split(" ")[0]
+    html = description + """
+    <br>
+    <br>
+    Name: """ +  user.name + """<br>
+    Email: """ + user.email + """<br>
+    Notifications: """ + str(len(user.notifications)) + """.<br>
+    Outgoing Requests: """ + str(user.outgoing_requests) + """.
+    """
+    
+    to_emails = []
+    to_emails.append({
+        'email':'support@uguru.me',
+        'name':'uGuru Support',
+        'type': 'to'
+    })
+
+    subject = 'uGuru Support Ticket from ' + user_first_name
+    if urgency:
+        subject = 'URGENT: ' + subject
+
+    message = {
+        'html':html,
+        'subject': subject,
+        'from_email': user.email,
+        'from_name': user.name,
+        'to': to_emails,
+        'headers': {'Reply-To': user.email},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['support']
+    }    
+    result = mandrill_client.messages.send(message=message)
+
 def student_packages_html(user_name):
     return """
     Hi """ + user_name + """,

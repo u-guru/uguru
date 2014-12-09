@@ -1,6 +1,10 @@
 
 {% macro autocomplete_input(input_id) -%}
-<script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
+
+<script src="/static/js/jquery-2.1.1.min.js"></script>
+<script src="/static/js/typeahead.bundle.js"></script>
+
+
 
 <script>
   
@@ -39,9 +43,10 @@
 {%- endmacro %}
 
 {% macro autocomplete_input_become_guru(input_id, course_list_div_id) -%}
+  <script src="/static/js/typeahead.bundle.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
 
-  <script>
+<script>
   
   autocomplete_json = JSON.parse(readJSON('/static/data/autocomplete.json'));
 
