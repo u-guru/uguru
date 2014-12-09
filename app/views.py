@@ -300,7 +300,7 @@ def m_settings():
 @app.route('/m/profile/edit/')
 def edit_profile():
     user = api.current_user()
-    print user.profile_url
+
     if not user:
         return redirect(url_for('m_login'))
 
@@ -443,7 +443,6 @@ def accept_request_by_id(_id):
         
         return redirect(url_for('home'))
 
-    #if tutor (should take up the whole page)
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
@@ -454,6 +453,15 @@ def accept_request_by_id(_id):
 
     return render_template('web/guru_accept_request.html', user=user,\
      request_dict=_request.get_return_dict())
+
+@app.route('/m/account_details/')
+def account_details():
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/account_details.html', user=user)
+
 
 
 @app.route('/m/r/<_id>/')

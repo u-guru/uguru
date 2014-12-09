@@ -4,7 +4,7 @@
 {% block main_header %}
 <header class="bar bar-nav">
   <h1 class="title">Settings</h1>
-  <a class="btn btn-link pull-right" href="/m/logout/">
+  <a class="btn btn-link pull-right" data-user-id='{{user.id}}' href="#" id='logout-link'>
         Logout
   </a>
 </header>
@@ -24,16 +24,23 @@
       </li>
     </ul>
 
-    <h6 class="content-padded">My Account</h6>
+    <h6 class="content-padded">My Profile & Details</h6>
     <ul class="table-view">
       <li class="table-view-cell">
         <a class="navigate-right" href='/m/profile/{{user.id}}/' data-transition='fade'>
           <div class="media-body">
-            <img id='guru-profile-photo' style='top:10px;'src='{{user.as_dict().profile_url}}'class="media-object table-view-mini-face"/>
-            Profile
+            Edit My Profile
           </div>
         </a>
       </li>
+      <li class="table-view-cell">
+        <a class="navigate-right" href='/m/account_details/' data-transition='slide-in'>
+            Account Details
+        </a>
+      </li>
+    </ul>
+    <h6 class="content-padded">Privacy Settings</h6>
+    <ul class='table-view'>
       <li class="table-view-cell">
           Text Notifications
           <div id='text-toggle' class="toggle {% if user.text_notification %}active{%endif%}">
@@ -47,7 +54,7 @@
           </div>
       </li>
       <li class="table-view-cell">
-        <a class="navigate-right" href='/m/change_password/' data-transition='slide-out'>
+        <a class="navigate-right" href='/m/change_password/' data-transition='slide-in'>
           Change Password
         </a>
       </li>
@@ -98,7 +105,32 @@
 
   </div>
 
-    <script>
+  <script>
+  
+    //Logout script
+    $('#logout-link').click(function() {
+
+      $.ajax({
+            url: '/api/v1/logout',
+            type: 'DELETE',
+            contentType: 'application/json',
+            success: function (request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/m/welcome/"
+                });
+                return;
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+          });
+
+    });
+
+
+
+    //Toggle code to update notifications
     $('#text-toggle').on('toggle', function(){
         var is_on = $(this).hasClass('active');
         update_toggle('text-notification', is_on);
@@ -110,28 +142,28 @@
 
 
     function update_toggle(setting_name, setting_value)  {
-      
-      var user_id = ($('.content').data().userId).toString();
+        
+        var user_id = ($('.content').data().userId).toString();
 
-      payload = JSON.stringify({
-          update_attribute: setting_name,
-          value: setting_value,
-      });
-
-      $.ajax({
-          url: '/api/v1/users/' + user_id,
-          type: 'PUT',
-          contentType: 'application/json',
-          data: payload,
-          success: function (request){
-              //no need to do anything
-              return;
-          },
-          error: function (request) {
-              alert(request.responseJSON['errors']);
-          }
+        payload = JSON.stringify({
+            update_attribute: setting_name,
+            value: setting_value,
         });
-    }
+
+        $.ajax({
+            url: '/api/v1/users/' + user_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function (request){
+                //no need to do anything
+                return;
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+          });
+      }
 
     </script>
 
@@ -156,9 +188,7 @@
       $('#email-toggle').on('click', function(){
         var is_on = $(this).hasClass('active');
         update_toggle('email-notification', is_on);
-      });
-
-      
+      });      
 
     </script>
   {% endif %}

@@ -339,9 +339,10 @@ class User(Base):
 
         return result
 
-    def become_a_guru(self, introduction):
+    def become_a_guru(self, introduction, major):
         self.tutor_introduction = introduction
         self.is_a_tutor = True
+        self.major = major
         self.approved_by_admin = True
         try:
             db_session.commit()

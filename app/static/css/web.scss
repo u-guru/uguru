@@ -292,14 +292,28 @@ textarea {
   background-color:white;
 }
   
-.course-tag {
-  margin:5px 5px 5px 5px;
+.course-tag, .year-tag {
+  margin:6px 4px;
   padding:5px 10px;
   color:white;
   border: 1px solid white;
   border-radius: 2px;
   display:inline-block;
+  font-size:12px;
 }
 
 
+.year-tag.active {
+  color:white;
+  background-color:#CC792B;
+  border-color:#CC792B !important;
+}
 
+.year-tag.move-right.active {
+  color:white;
+  background-color:#CC792B;
+  border-color:#CC792B !important;
+  position: absolute;
+  top: 6px;
+  right: 60px;
+}

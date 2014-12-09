@@ -509,12 +509,37 @@ def users_by_id_web_api(user_id):
 
         if request_json.get('action') == 'become-guru':
 
-            print request_json
-            if not request_json.get('tutor_introduction'):
+            if not request_json.get('tutor_introduction') and \
+            not request_json.get('tutor_major'):
                 return json_response(http_code=422)
 
             flash('Wecome to the Guru interface. Check out our getting started guide.')
-            user.become_a_guru(request.json.get('tutor_introduction'))
+            user.become_a_guru(request.json.get('tutor_introduction'),\
+                request.json.get('tutor_major'))
+
+            return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
+
+        if request_json.get('action') == 'update-guru-profile':
+
+            if not request_json.get('tutor_introduction') and \
+            not request_json.get('tutor_major'):
+                return json_response(http_code=422)
+
+            
+            print request_json
+            user.become_a_guru(request.json.get('tutor_introduction'),\
+                request.json.get('tutor_major'))
+
+            return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
+
+        if request_json.get('action') == 'update-student-profile':
+
+            if not request_json.get('tutor_introduction') and \
+            not request_json.get('student_major'):
+                return json_response(http_code=422)
+
+            user.major = request_json.get('student_major')
+            commit_to_db()
 
             return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
 
@@ -577,16 +602,39 @@ def users_by_id_web_api(user_id):
             if request_json.get('update_attribute') == 'text-notification':
                 user.text_notification = request_json.get('value')
                 commit_to_db()
-                print user.text_notification
                 return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
 
             if request_json.get('update_attribute') == 'email-notification':
                 user.email_notification = request_json.get('value')
                 commit_to_db()
-                print user.email_notification
                 return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
 
+        #Save the year of the student / guru as soon as they click the option.
+        if request_json.get('year'):
+            user.year = request_json.get('year')
+            commit_to_db()
+            return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
 
+
+        if request_json.get('account_details'):
+
+            # Always required for a user.
+            if not request_json.get('name') or not request_json.get('email'):
+                error_msg = 'Name and email are required fields.'
+                return json_response(http_code=403, errors=[error_msg])
+
+            if request_json.get('phone_number'):
+                user.phone_number = request_json.get('phone_number')
+
+            if request_json.get('email'):
+                user.email = request_json.get('email')
+
+            if request_json.get('name'):
+                user.name = request_json.get('name')                
+
+            commit_to_db()
+
+            return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
 
     return json_response(400)
         
@@ -693,9 +741,20 @@ def users_by_id_transactions_web_api(user_id):
 
 # User logout route
 # GET logs out the user
-@app.route('/api/v1/logout', methods = ['GET'])
+@app.route('/api/v1/logout', methods = ['DELETE'])
 def users_logout_web_api():
-    pass
+    if request.method == 'DELETE':
+        
+        user = current_user()
+        if not user:
+            return json_response(http_code=401)
+
+        if session.get('user_id'):
+            session.pop('user_id')
+        return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
+
+
+
 
 # User reset password route
 # POST updates a password

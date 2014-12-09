@@ -19,12 +19,6 @@ $(document).ready(function() {
         $(this).siblings('.active').removeClass('active');
         $(this).addClass('active');
     });
-
-    //Logout link
-    //TODO: Make this a PUSH EVENT
-    $('body').on('touchstart', '#logout-link', function(){
-        window.location.replace('/m/logout/');
-    });
     
     $('body').on('touchstart', '.guru-confirm-session', function() {
         

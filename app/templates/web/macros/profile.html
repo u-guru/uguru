@@ -18,6 +18,56 @@
   
 {%- endmacro %}
 
+{% macro profile_major_html_li(user) -%}
+<form class='input-group'>
+  <div class='input-row'>
+    <label>Choose Major</label>
+    <input type="text" id="{% if user.is_a_guru() %}tutor-major{% else %}student-major{%endif%}" value='{% if user.major %}{{user.major}}{%endif%}'placeholder="First name"></input>
+  </div>
+</form>
+{%- endmacro %}
+
+
+{% macro profile_year_html_li(user) -%}
+<li class='table-view-cell ignore-table-view-margin'>
+  Pick a year
+  {% if user.year %}
+    <a href="#" style='top:13px;'class="btn btn-outlined initial-year-tag year-tag active move-right" >
+        <span> {{user.year|title}} </span>
+    </a>
+  {% endif %}
+  <p id='year-container'{% if user.year%}style='display:none;'{% endif %}class='margin-top-10 center'>
+
+    <a href="#" class="btn btn-outlined year-tag" >
+        <span> Freshman </span>
+    </a>
+    <a href="#" class="btn btn-outlined year-tag" >
+        Sophomore 
+    </a>
+    <a href="#" class="btn btn-outlined year-tag" >
+        Junior 
+    </a>
+    <a href="#" class="btn btn-outlined year-tag" >
+        Senior
+    </a>
+    <a href="#" class="btn btn-outlined year-tag" >
+        Grad 
+    </a>
+    <a href="#" class="btn btn-outlined year-tag" >
+        Ph.D
+    </a>
+    <a href="#" class="btn btn-outlined year-tag" >
+        Alumni
+    </a>
+  </p>
+  <a id='edit-year-link' {% if not user.year %}style='display:none;'{% endif%} class="btn btn-link">
+      edit
+  </a>
+</li>
+{%- endmacro %}
+
+
+
 {% macro profile_edit_courses_li(user) -%}
 <li class='table-view-cell overflow-visible'>
       Add courses
@@ -43,7 +93,7 @@
 {% macro profile_introduction_li(user) -%}
 <li class='table-view-cell ignore-table-view-margin'>
       Introduction
-      <textarea data-user-id='{{user.id}}' id='tutor-introduction' placeholder='Include a short introduction of yourself!'rows="5">{{user.tutor_introduction}}</textarea>
+      <textarea data-user-id='{{user.id}}' id='tutor-introduction' placeholder='Include a short introduction of yourself!'rows="5">{% if user.tutor_introduction %}{{user.tutor_introduction}}{% endif %}</textarea>
 </li>
 {% endmacro -%}
 
@@ -80,6 +130,7 @@
         });
 
       });
+
 
     $('#upload-photo:hidden').change(function(){
       var file = this.files[0];
