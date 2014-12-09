@@ -10,6 +10,7 @@
 
 {% block main_content %}
 <div class="content should-hide-message-bar should-hide-tab-bar">
+    <div id='login-errors' class='center error-text error-div margin-top-20'>Please fill in all fields</div>
     <form class="input-group" id="login-form" >
       <div class='input-row'>
           <label>EMAIL</label>
@@ -30,7 +31,14 @@
   <script>
     $(document).ready(function() {
         $('#login-link').click(function(event) {
+            $('#login-errors').hide();
             
+            if (!($('#email-field').val() && $('#password-field').val())) {
+              $('#login-errors').text('Please fill in all fields');
+              $('#login-errors').show();
+              return;
+            }
+
             if ($('#login-link:visible').length == 0) {
               
               forgotPassword();
@@ -54,7 +62,9 @@
                     });
                 },
                 error: function (request) {
-                    alert(request.responseJSON['errors']);
+                  $('#login-errors').text(request.responseJSON['errors']);
+                  $('#login-errors').show();
+                    
                 }
             });
         });
@@ -71,11 +81,16 @@
                 contentType: 'application/json',
                 data: payload,
                 success: function(request){
+                    
+                    $('#login-errors').text("We've sent an email to your address. Please confirm and change your password.");
+                    
+                    $('#login-errors').show();
+                    $('#login-errors').delay(750).fadeOut('slow');
+                    
                     window.PUSH({
                         transition : "slide-out",
                         url : "/m/welcome/"
                     });
-                    alert("We've sent an email to your address. Please confirm and change your password.")
                 },
                 error: function (request) {
                     alert(request.responseJSON['errors']);
@@ -84,6 +99,7 @@
           }
 
         $('#forgot-password-link').click(function() {
+          $('#login-errors').hide();
 
           $('#password-field-row').hide();
           $('#forgot-password-link').hide();

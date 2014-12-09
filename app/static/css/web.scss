@@ -112,6 +112,7 @@ header {
   color:#8f8f94;
 }
 
+
 .bar {
   display:block;
 }
@@ -223,6 +224,14 @@ textarea {
   text-align: left !important;
 }
 
+//error message css
+.error-div {
+  font-size:0.8em;
+  margin:15px 5px 15px 5px;
+  display:none;
+}
+
+
 //Homepage CSS
 .home-guru {
   height:200px;
@@ -316,4 +325,10 @@ textarea {
   position: absolute;
   top: 6px;
   right: 60px;
+}
+
+.btn-positive.active, .btn-positive:active {
+  color: #fff;
+  background-color: #69B3A5;
+  border: 0px;
 }

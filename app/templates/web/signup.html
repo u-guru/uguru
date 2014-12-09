@@ -10,28 +10,42 @@
 {% block main_content %}
 
 <div class="content should-hide-message-bar should-hide-tab-bar">
+    <div id='signup-errors' class='center error-text error-div margin-top-20'>Please fill in all fields</div>
     <form class="input-group" id="signup-form">
         <div class='input-row'>
             <label>First</label>
-            <input type="text" id="name-field" placeholder="First name"></input>
+            <input type="text" id="name-field" placeholder="your first name"></input>
         </div>
         <div class='input-row'>
             <label>Last</label>
-            <input type="email" id="name-field-last" placeholder="Last name"></input>
+            <input type="email" id="name-field-last" placeholder="your last name"></input>
         </div>
         <div class='input-row'>
             <label>Email</label>
-            <input type="email" id="email-field" placeholder="Your School Email"></input>
-        </div>
-        <div class='input-row'>
-            <label>Password</label>
-            <input type="password" id="password-field" placeholder="Password"></input>
+            <input type="email" id="email-field" placeholder="peter.parker@berkeley.edu"></input>
         </div>
     </form>
-    <a class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="signup-link">Sign Up</a>
+    <form class="input-group" id="signup-form">
+    <div class='input-row margin-top-10'>
+        <label>Password</label>
+        <input type="password" id="password-field" placeholder="at least 6 characters"></input>
+    </div>
+</form>
+    <a class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="signup-link">Join Uguru</a>
     <script>
     $(document).ready(function() {
         $('#signup-link').click(function(){
+            
+            //client side validation
+            if (!($('#name-field').val() && $('#name-field-last').val() 
+                && $('#email-field').val() && $('#password-field').val() ))
+            {
+                $('#signup-errors').text('Please fill in all fields');
+                $('#signup-errors').show();
+                return;
+            }
+
+
             name = $('#signup-form #name-field').val() + ' ' +$('#signup-form #name-field-last')
 
             payload = JSON.stringify({
@@ -52,7 +66,10 @@
                     });
                 },
                 error: function (request) {
-                    alert(request.responseJSON['errors']);
+                    $('#signup-errors').text(request.responseJSON['errors']);
+                    $('#signup-errors').show();
+                    return;
+
                 }
             });
         });

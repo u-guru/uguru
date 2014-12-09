@@ -54,6 +54,10 @@
     color:#69B3A5
 }
 
+.error-text, .main-green-text {
+    color:#45DA5E;
+}
+
 .open-sans-bold {
     font-family: open sans;
     font-weight: 700;
@@ -303,7 +307,7 @@ body {
 }
 
 .input-group {
-    margin: 20px;
+    margin: 10px;
 }
 
 /* rating */

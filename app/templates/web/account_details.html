@@ -10,6 +10,7 @@
 {% block main_content %}
 
 <div class="content should-hide-message-bar should-hide-tab-bar">
+    <div id='login-errors' class='center error-text error-div margin-top-20'></div>
     <form class="input-group" id="signup-form">
         <div class='input-row'>
             <label>Full Name</label>
@@ -52,7 +53,8 @@
                     });
                 },
                 error: function (request) {
-                    alert(request.responseJSON['errors']);
+                    $('.error-div').text(request.responseJSON['errors']);
+                    $('.error-div').show();
                 }
             });
         });

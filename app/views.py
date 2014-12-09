@@ -768,6 +768,65 @@ def new_admin():
         return render_template('admin/new-admin.html', day_stats=day_stats)
     return redirect(url_for('index'))
 
+
+@app.route('/admin/users/<arg>/')
+def admin_users(arg):
+    if session.get('admin'):
+    
+        result_str = ''
+        count = 0
+
+        def attr_to_row(arr_attr):
+            return ','.join(arr_attr) + '<br>'
+
+        if arg =='students':
+            for u in User.query.all():
+                if not u.is_a_guru() and u.email_notification:
+                    
+                    user_fields = [u.name, u.email]
+                    result_str += attr_to_row(user_fields)
+                    count += 1
+
+        if arg =='students-no-pw':
+            for u in User.query.all():
+                if not u.is_a_guru() and u.email_notification \
+                and not u.password and not u.fb_account:
+                    
+                    user_fields = [u.email]
+                    result_str += attr_to_row(user_fields)
+                    count += 1
+
+        if arg =='tutors':
+            for u in User.query.all():
+                if u.is_a_guru() and u.email_notification:                    
+                    user_fields = [u.name, u.email]
+                    result_str += attr_to_row(user_fields)
+                    count += 1
+
+        if arg =='active-tutors':
+            for u in User.query.all():
+                if u.is_a_guru() and u.email_notification \
+                and 'removed' not in u.email.lower():                    
+                    for n in u.notifications:
+                        if 'accepted' in n.feed_message or 'matched' in n.feed_message:
+                            user_fields = [u.email]
+                            result_str += attr_to_row(user_fields)
+                            count += 1
+                            break 
+
+        if arg =='no-skills':
+            for u in User.query.all():
+                if u.is_a_guru() and u.email_notification \
+                and 'removed' not in u.email.lower() and not u.skills:                    
+                    user_fields = [u.email]
+                    result_str += attr_to_row(user_fields)
+                    count += 1
+
+
+
+    print 'results returned:', count
+    return result_str
+
 @app.route('/admin/students/')
 def new_admin_students():
     if session.get('admin'):
