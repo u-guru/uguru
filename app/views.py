@@ -113,9 +113,9 @@ def my_tutors():
 @app.route('/m/')
 @app.route('/m/welcome/')
 def m_welcome():
-    user = api.current_user()
-    if user:
-        return redirect(url_for('home'))
+    # user = api.current_user()
+    # if user:
+    #     return redirect(url_for('home'))
 
     return render_template('web/welcome.html')
 
