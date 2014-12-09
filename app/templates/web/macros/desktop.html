@@ -1,6 +1,11 @@
-{% macro desktop_header() -%}
+{% macro desktop_header(request) -%}
+    {% if 'welcome' in request.url or 'signup' in request.url 
+    or 'login' in request.url %}
+        {% set on_welcome_page = True %}
+    {% endif %}
     
     <div id='main-container'>
+        {% if on_welcome_page %}
         <div class='container'>
                 <div class='col-xs-12 col-sm-6 col-md-6'> 
                     <div class='left-container container'>
@@ -17,19 +22,20 @@
                     </div>
                 </div>
                 <div class='col-xs-12 col-sm-6 col-md-6'> 
-
+        {% endif %}
                     <div class="device device-fixed">
                         <div class="device-content">
                         
                             {%- endmacro %}
-                            {% macro desktop_footer()  -%}
+                            {% macro desktop_footer(request)  -%}
 
                         </div>
                     </div>  
-
+        {% if on_welcome_page %}
                 </div>
             </div>
         </div>
+        {% endif %}
     </div>
     <script>
         $('#get-uguru-link').click(function() {

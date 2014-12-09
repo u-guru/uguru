@@ -95,6 +95,7 @@ def guru_requests():
 
     return render_template('web/guru_requests.html', user=user)
 
+@app.route('/m/guru/students/')
 @app.route('/m/tutors/')
 def my_tutors():
 
@@ -126,7 +127,7 @@ def m_login():
         
         #if tutor
         accepted_requests = user.get_accepted_requests()
-        if accepted_requests or user.skills:
+        if user.is_a_guru():
             return redirect(url_for('m_guru'))
 
         # if student w/ requests

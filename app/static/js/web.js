@@ -77,34 +77,7 @@ $(document).ready(function() {
     });
 
     //Send Message
-    $('body').on('touchstart', '#send-message-link', function() {
-        
-        var convo_id = ($('#message-content-div').data().convoId).toString();
-        var user_id = ($('#message-content-div').data().userId).toString();
-
-        post_url = '/api/v1/users/' + user_id + '/conversations/' +
-            convo_id + '/messages';
-
-        payload = JSON.stringify({
-            contents: $('#message-contents').val()
-        });
-
-        $.ajax({
-            url: post_url,
-            type: 'POST',
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                window.PUSH({
-                    transition : "fade",
-                    url : "/m/guru/conversation/" + convo_id
-                });
-            },
-            error: function (request) {
-                alert(request.responseJSON['errors']);
-            }
-        });
-    });
+    
 
     // Guru upload photo link
     $('body').on('touchstart', '#upload-photo-link', function(e) {

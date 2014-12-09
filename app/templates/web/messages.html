@@ -2,7 +2,7 @@
 {% set all_message_dicts = convo.get_all_messages(_dict=True, sorted_by_time=True)%}
 
 {% if '/guru/' in request.url %}
-    {% set back_url = '/m/guru/'%}
+    {% set back_url = '/m/guru/students/'%}
 {% else %}
     {% set back_url = '/m/tutors/'%}
 {% endif %}
@@ -23,7 +23,7 @@
 {% block main_content %}
 <div class="content should-hide-tab-bar" id='message-content-div' data-convo-id='{{convo.id}}' data-user-id='{{user.id}}'>
 
-    <ul class="table-view no-margin">
+    <ul class="table-view no-margin" style='padding-bottom:40px'>
         {% for message_dict in all_message_dicts['messages'] %}
 
             {% if message_dict['sender']['server_id'] == user.id %}
@@ -34,12 +34,45 @@
                 {% set image_url = message_dict['sender']['profile_url'] %}
             {% endif %}
         <li class="table-view-cell message-cell media">
-            <div class="media-object message-face {{side}}" style='background-image: url("{{image_url}}")'></div>
+            <img class="media-object {{side}} message-face" src="{{image_url}}">
             <div class="media-body {{side}}">
                 <p>{{message_dict['contents']}}</p>
             </div>
         </li>
         {% endfor %}
     </ul>
+    <script>
+    $('body').on('click', '#send-message-link', function() {
+        var convo_id = ($('#message-content-div').data().convoId).toString();
+        var user_id = ($('#message-content-div').data().userId).toString();
+
+        post_url = '/api/v1/users/' + user_id + '/conversations/' +
+            convo_id + '/messages';
+
+        payload = JSON.stringify({
+            contents: $('#message-contents').val()
+        });
+
+        $.ajax({
+            url: post_url,
+            type: 'POST',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    {% if convo.guru == user %}
+                    url : "/m/guru/conversation/" + convo_id
+                    {% else %}
+                    url : "/m/guru/conversation/" + convo_id
+                    {% endif %}
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+    </script>
 </div>
 {% endblock %}

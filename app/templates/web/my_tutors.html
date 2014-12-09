@@ -4,24 +4,27 @@
 
 {% block main_header %}
 <header class="bar bar-nav">
+    {% if 'tutor' in request.url %}
     <h1 class="title">My Tutors</h1>
+    {% else %}
+    <h1 class="title">My Students</h1>
+    {% endif %}
 </header>
 {% endblock %}
 
 {% block main_content %}
 <div class="content">
 
-
-
     <ul class="table-view should-hide-message-bar">      
       {% for conversation_dict in all_conversation_dicts['conversations'] %}
         {% set last_message =  conversation_dict.get('last_message') %} 
           <li class="table-view-cell media">
 
-            {% if conversation_dict['is_active'] %}
+            <!-- TODO: Change to active -->
+            {% if 'tutor' in request.url and conversation_dict['student']['server_id'] == user.id %}
 
             <a class="navigate-right" data-transition="slide-in" href='/m/conversation/{{conversation_dict["server_id"]}}'>
-                <div class="media-object pull-left message-face" style='background-image: url("{{conversation_dict['tutor']['profile_url']}}")'></div>
+                <img class="media-object pull-left message-face" src="{{conversation_dict['tutor']['profile_url']}}">
                 <div class="media-body">
                     {{conversation_dict['tutor']['name']}}
                     <p>
@@ -37,9 +40,30 @@
                     </span>
                 {% endif %}
             </a>
-
             {% else %}
-                <div class="media-object pull-left message-face" style='background-image: url("{{conversation_dict['tutor']['profile_url']}}")'></div>
+
+                <a class="navigate-right" data-transition="slide-in" href='/m/guru/conversation/{{conversation_dict["server_id"]}}'>
+                <img class="media-object pull-left message-face" src="{{conversation_dict['student']['profile_url']}}">
+                <div class="media-body">
+                    {{conversation_dict['student']['name']}}
+                    <p>
+                        {% if last_message %}
+                            {{conversation_dict['last_message']['contents'][:30]}}
+                        {% else %}
+                            No messages yet.
+                        {% endif %}
+                    </p>
+                </div>
+                {% if not last_message or last_message['sender']['server_id'] != user.id %}
+                    <span class="badge badge-negative"> 1
+                    </span>
+                {% endif %}
+                </a>    
+
+            {% endif %}
+
+            
+                <!-- <div class="media-object pull-left message-face" style='background-image: url("{{conversation_dict['tutor']['profile_url']}}")'></div>
                     <div class="media-body">
                         {{conversation_dict['tutor']['name']}}
                         <p>
@@ -50,8 +74,7 @@
                             <span class="icon icon-star-filled profile-star black"></span>
                         </p>
                     </div>
-                    <button class="btn btn-primary">Check Availability</button>
-            {% endif %}
+                    <button class="btn btn-primary">Check Availability</button> -->
           </li>
       {% endfor %}
     </ul>

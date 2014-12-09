@@ -11,6 +11,11 @@ body {
     background-size: cover;
 }
 
+#message-contents {
+    height:10px;
+    width:68%;
+}
+
 .device {
     position: relative;
     display: block;

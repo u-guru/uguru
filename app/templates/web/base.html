@@ -28,7 +28,7 @@
       
                 <!-- Add web app header -->
                 {% if user_agent_is_desktop %}
-                  {{desktop_header()}}
+                  {{desktop_header(request)}}
                 {% endif %}
 
                 <!-- Add main header of app -->
@@ -43,7 +43,7 @@
 
                 <!-- Add web app footer -->
                 {% if user_agent_is_desktop %}
-                  {{desktop_footer()}}
+                  {{desktop_footer(request)}}
                 {% endif %}
 
   </body>
