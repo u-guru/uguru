@@ -15,9 +15,10 @@
 {% block main_content %}
 <div class="content">
 
-    <ul class="table-view should-hide-message-bar">      
+    <ul class="table-view should-hide-message-bar" >      
       {% for conversation_dict in all_conversation_dicts['conversations'] %}
         {% set last_message =  conversation_dict.get('last_message') %} 
+        
           <li class="table-view-cell media">
 
             <!-- TODO: Change to active -->
@@ -43,7 +44,7 @@
             {% else %}
 
                 <a class="navigate-right" data-transition="slide-in" href='/m/guru/conversation/{{conversation_dict["server_id"]}}'>
-                <img class="media-object pull-left message-face" src="{{conversation_dict['student']['profile_url']}}">
+                <img style='overflow: hidden;background-size: cover; height:auto;'class="media-object pull-left message-face" src="{{conversation_dict['student']['profile_url']}}">
                 <div class="media-body">
                     {{conversation_dict['student']['name']}}
                     <p>

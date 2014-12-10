@@ -92,6 +92,7 @@ def guru_sessions():
 def guru_requests():
 
     user = api.current_user()
+
     if not user:
         return redirect(url_for('m_login'))
 
@@ -123,6 +124,9 @@ def welcome():
         mp.track(user_id, 'Link Clicked', {
             'Campaign': campaign
             })
+
+        session['email_user_id'] = user_id
+
         return redirect(url_for('welcome'))
 
     return render_template('web/welcome.html')
@@ -135,6 +139,7 @@ def m_welcome_campaign_track(campaign, _id):
 @app.route('/m/login/')
 def m_login():
 
+    no_pw_user = None
     user = api.current_user()
     if user:
         
@@ -143,23 +148,34 @@ def m_login():
         else:
             return redirect(url_for('home'))
 
+    if session.get('email_user_id'):
+        user = User.query.get(session.get('email_user_id'))
+        if not user.password:
+            no_pw_user = user
+            return redirect(url_for('m_signup'))
+
         # if student w/ requests
         # pending_requests = user.get_pending_requests()
         # if pending_requests:
         #     pending_request_id = pending_requests[0].id
         #     return redirect( \
         #         url_for(endpoint='request_by_id', _id=pending_request_id))
-        
-        
     
-    return render_template('web/login.html')
+    return render_template('web/login.html', no_pw_user=no_pw_user)
 
 @app.route('/m/signup/')
 def m_signup():
+    no_pw_user = None
     user = api.current_user()
     if user:
         return redirect(url_for('home'))
-    return render_template('web/signup.html')
+    
+    if session.get('email_user_id'):
+        user = User.query.get(session.get('email_user_id'))
+        if not user.password:
+            no_pw_user = user
+
+    return render_template('web/signup.html', no_pw_user=no_pw_user)
 
 @app.route('/m/logout/')
 def m_logout():
@@ -320,6 +336,7 @@ def edit_profile():
 
 
 @app.route('/m/p/<_id>/')
+@app.route('/m/guru/profile/<_id>/')
 @app.route('/m/profile/<_id>/')
 def profile(_id):
 
@@ -341,7 +358,7 @@ def profile(_id):
     results = user.has_incoming_tutor_for_request(int(_id))
     if not results:
         flash('Sorry, you dont have access to this page!')
-        return redirect(url_for('m_home'))
+        return redirect(url_for('m_guru'))
     
     guru = results[0]
     _request = results[1]
@@ -493,7 +510,7 @@ def request_by_id(_id):
 
     # request already canceled, guru can't accept
     if not user == _request.get_student() and \
-    _request.is_canceled and user in _request.approved_tutors():
+    _request.time_connected and user in _request.approved_tutors():
         flash('Sorry! The student has canceled this request')
         return redirect(url_for('m_guru'))
 

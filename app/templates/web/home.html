@@ -11,7 +11,7 @@ request_details_guru %}
 
 {% block main_header %}
 <header class="bar bar-nav">
-  <h1 class="title uguru-logo">uguru</h1>
+  <h1 class="title">Student {{user.get_first_name()|title}}</h1>
   <a class='btn btn-link' id='profile-title-bar-icon' data-transition='fade'href='/m/profile/{{user.id}}'>
   <img id='guru-profile-photo' src='{{user.as_dict().profile_url}}'class="media-object pull-right table-view-mini-face profile-title-icon"/>
   </a>

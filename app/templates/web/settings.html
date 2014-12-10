@@ -15,7 +15,6 @@
   
   <div id='account-table' class='control-content setting-table active'>
     
-    <h6 class="content-padded">Support</h6>
     <ul class="table-view">
       <li class="table-view-cell">
         <a class="navigate-right" data-transition='slide-in' href='/m/support/'>
@@ -77,7 +76,7 @@
             </button>
           </a>
       </li>
-      {% if user.balance %}
+      {% if user.balance or user.recipient_id %}
       <li class="table-view-cell">
         <a class='navigate-right' href='/m/guru/cashout/' data-transition='slide-in'>
               Cashout Card 

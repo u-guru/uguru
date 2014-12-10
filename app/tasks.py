@@ -19,7 +19,6 @@ celery.conf.update(
     CELERY_TASK_SERIALIZER='json',
     CELERY_ACCEPT_CONTENT=['json', 'msgpack', 'yaml'],
     CELERY_TIMEZONE="America/Los_Angeles",
-    CELERY_ACKS_LATE
 )
 
 DEFAULT_TUTOR_ACCEPT_TIME = 5 #*60
@@ -32,14 +31,29 @@ ASAP_LIMIT = 60 * 120 # 2 hours
 # Helpers ######
 ################
 
-#Returns best tutor based on sorting
+# Returns best tutor based on sorting
+# Sort by average rating (for now) 
 def get_best_queued_tutor(_request):
+    from views import calc_avg_rating
+    
     tutor_queue = get_qualified_tutors(_request)
-    return tutor_queue.pop(0)
+    
+    tutor_queue = sorted(tutor_queue, key=lambda tutor:calc_avg_rating(tutor)[0], reverse=True)
 
-#Returns list of qualified tutors
+    tutor = tutor_queue.pop(0)
+    _request.requested_tutors.remove(tutor) 
+    commit_to_db()
+    return tutor
+
+# Returns list of qualified tutors if they have text enabled.
 def get_qualified_tutors(_request):
-    return _request.requested_tutors
+    qualified_tutors = []
+    for tutor in _request.requested_tutors:
+        if tutor.text_notification and tutor.phone_number:
+            qualified_tutors.append(tutor)
+    
+    commit_to_db()
+    return qualified_tutors 
 
 ################
 # Samir-Tasks #
@@ -47,6 +61,7 @@ def get_qualified_tutors(_request):
 
 # If Time:
 # Cancel a ASAP request automatically 2 hours after the request
+# Make MVP tutors algorithm better
 
 #Send request to tutor
 @task(name='tasks.send_student_request')
@@ -61,7 +76,6 @@ def send_student_request(r_id):
     if _request.connected_tutor_id or _request.time_connected:        
         return
 
-    #
     tutor = get_best_queued_tutor(_request)
     tutor.outgoing_requests.append(_request)
 
@@ -73,7 +87,7 @@ def send_student_request(r_id):
     #Send to mixpanel
     print
     print '============================'
-    print 'Request #' + str(_request.id) + tutor.get_first_name().upper() + ' REQUEST RECEIVED'
+    print 'Request #' + str(_request.id) + tutor.get_first_name().upper() + ' REQUEST RECEIVED: ' + str(tutor.calc_avg_rating()[0]) + 'stars'
     print '============================'
 
     #Check status ten minutes later
@@ -83,12 +97,9 @@ def send_student_request(r_id):
     #Send the text message
     msg = tutor.get_first_name().upper() + tutor_receives_student_request(r_id)
     from views import send_twilio_msg
-    twilio_msg = send_twilio_msg('8135009853', msg, tutor)
+    # twilio_msg = send_twilio_msg(tutor.phone_number, msg, tutor)
 
     commit_to_db()
-
-    # check_tutor_msg_status.apply_async(args=[twilio_msg.sid], \
-    #     countdown = DEFAULT_TUTOR_ACCEPT_TIME)
 
 
 #Removes cancellation from tutor 
@@ -99,7 +110,7 @@ def check_tutor_request_status(r_id, tutor_id):
     _request = Request.query.get(r_id)
     tutor = User.query.get(tutor_id)
 
-    SECONDS_IN_BETWEEN = (datetime.now() - _request.time_pending_began)
+    SECONDS_IN_BETWEEN = (datetime.now() - _request.time_pending_began).seconds
 
     #If tutor accepted in time .... recall the function for seconds in between
     if SECONDS_IN_BETWEEN < DEFAULT_STUDENT_ACCEPT_TIME and \
@@ -479,7 +490,7 @@ def send_student_package_info(user_id, request_id):
     from app.emails import send_student_packages_email
     send_student_packages_email(user, tutor_name, skill_name)
     logging.info("Email sent to " + str(user) + " regarding student packages.")
-
+    
 
 ##################
 # PERIODIC TASKS #

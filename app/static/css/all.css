@@ -9,241 +9,282 @@
       font-size: 24px; }
 
 .relative {
-  position: relative; }
+  position: relative;
+  text-align: left; }
 
-  .fb-icon {
-    font-size: 27px;
-    position: absolute;
-    left: 7%;
-    top: 20%;
-    font-weight: 700; }
+  .btn-course {
+    margin: 3px 6px;
+    position: relative !important;
+    border-radius: 1px; }
 
-    a:focus, button:focus {
-      outline: 0; }
+    .bar .btn-nav.pull-right .icon-right-nav {
+      margin-left: -3px; }
 
-      #message-contents {
-        width: 78%; }
+      .bar .btn .icon {
+        top: 1px;
+        padding: 0;
+        padding-left: 3px;
+        font-size: 19px; }
 
-        .no-bottom-margin {
-          margin-bottom: 0px !important; }
+        .fb-icon {
+          font-size: 27px;
+          position: absolute;
+          left: 7%;
+          top: 20%;
+          font-weight: 700; }
 
-          .no-margin-top {
-            margin-top: 0px !important; }
+          a:focus, button:focus {
+            outline: 0; }
 
-            .margin-top-10 {
-              margin-top: 10px; }
+            #message-contents {
+              width: 78%; }
 
-              .margin-top-20 {
-                margin-top: 20px; }
+              .no-bottom-margin {
+                margin-bottom: 0px !important; }
 
-                .font-16 {
-                  font-size: 16px; }
+                .no-margin-top {
+                  margin-top: 0px !important; }
 
-                  .font-12 {
-                    font-size: 12px; }
+                  .margin-top-10 {
+                    margin-top: 10px; }
 
-                    .profile-title-icon {
-                      top: 10px;
-                      position: absolute;
-                      background-color: white; }
+                    .margin-bottom-10 {
+                      margin-bottom: 10px; }
 
-                      .message-face, .table-view-face {
-                        width: 42px;
-                        height: 42px;
-                        border-radius: 20px;
-                        border: 2px solid white; }
+                      .margin-top-20 {
+                        margin-top: 20px; }
 
-                        .table-view-large-face {
-                          height: 65px;
-                          border-radius: 50px;
-                          border: 2px solid white; }
+                        .margin-top-15 {
+                          margin-top: 15px; }
 
-                          .table-view-mini-face {
-                            width: 24px;
-                            height: 24px;
-                            border-radius: 20px;
-                            border: 1px solid white; }
+                          .margin-bottom-20 {
+                            margin-bottom: 20px; }
 
-                            .guru-photo {
-                              height: 120px; }
+                            .margin-5 {
+                              margin: 5px; }
 
-                              .logo-container {
-                                margin-top: 15%;
-                                margin-bottom: 15%; }
+                              .font-16 {
+                                font-size: 16px; }
 
-                                .table-view-cell-photo {
-                                  height: 20px; }
+                                .font-12 {
+                                  font-size: 12px; }
 
-                                  .red-text {
-                                    color: red; }
+                                  .font-20 {
+                                    font-size: 20px; }
 
-                                    .grey-text {
-                                      color: #8f8f94; }
+                                    .profile-title-icon {
+                                      top: 10px;
+                                      position: absolute;
+                                      background-color: white; }
 
-                                      .bar {
-                                        display: block; }
+                                      .message-face, .table-view-face {
+                                        width: 42px;
+                                        height: 42px;
+                                        border-radius: 20px;
+                                        border: 2px solid white; }
 
-                                        .center {
-                                          text-align: center; }
+                                        .table-view-large-face {
+                                          height: 85px;
+                                          border-radius: 50px;
+                                          border: 2px solid white; }
 
-                                          .table-view-cell-profile-photo {
-                                            height: 25px; }
+                                          .table-view-mini-face {
+                                            width: 24px;
+                                            height: 24px;
+                                            border-radius: 20px;
+                                            border: 1px solid white; }
 
-                                            .updated-text {
-                                              position: absolute;
-                                              left: 0;
-                                              right: 0;
-                                              padding: 10px 0;
-                                              font-size: 11px;
-                                              text-align: center; }
+                                            .guru-photo {
+                                              height: 120px; }
 
-                                              .toggle.toggle-inline {
-                                                display: inline-block; }
+                                              .guru-home-photo {
+                                                height: 40%; }
 
-                                                .table-view-cell.message-cell, .table-view-cell.request-cell,
-                                                .ignore-table-view-margin {
-                                                  padding: 10px 15px 10px 15px; }
+                                                .logo-container {
+                                                  margin-top: 15%;
+                                                  margin-bottom: 15%; }
 
-                                                  .table-view-cell .icon {
-                                                    color: #007aff; }
+                                                  .table-view-cell-photo {
+                                                    height: 20px; }
 
-                                                    .icon.profile-star {
-                                                      font-size: 14px; }
+                                                    .red-text {
+                                                      color: red; }
 
-                                                      .padding-top-5 {
-                                                        padding-top: 5px; }
+                                                      .grey-text {
+                                                        color: #8f8f94; }
 
-                                                        .bold {
-                                                          font-weight: bold; }
+                                                        .negative-text {
+                                                          color: #CC792B; }
 
-                                                          .no-border-top {
-                                                            border-top: 0; }
+                                                          .bar {
+                                                            display: block; }
 
-                                                            .black {
-                                                              color: black; }
+                                                            .center {
+                                                              text-align: center; }
 
-                                                              input#card-num, input#debit-card-num {
-                                                                background: url('/static/img/card.png') no-repeat;
-                                                                background-size: 32px 24px;
-                                                                background-position: 95%; }
+                                                              .table-view-cell-profile-photo {
+                                                                height: 25px; }
 
-                                                                input#card-num.visa, input#debit-card-num.visa {
-                                                                  background-image: url('/static/img/visa.png'); }
+                                                                .updated-text {
+                                                                  position: absolute;
+                                                                  left: 0;
+                                                                  right: 0;
+                                                                  padding: 10px 0;
+                                                                  font-size: 11px;
+                                                                  text-align: center; }
 
-                                                                  input#card-num.mastercard, input#debit-card-num.mastercard {
-                                                                    background-image: url('/static/img/mastercard.png'); }
+                                                                  .toggle.toggle-inline {
+                                                                    display: inline-block; }
 
-                                                                    input#card-num.discover, input#debit-card-num.discover {
-                                                                      background-image: url('/static/img/discover.png'); }
+                                                                    .table-view-cell.message-cell, .table-view-cell.request-cell,
+                                                                    .ignore-table-view-margin {
+                                                                      padding: 10px 15px 10px 15px; }
 
-                                                                      input#card-num.amex, input#debit-card-num.amex {
-                                                                        background-image: url('/static/img/amex.png'); }
+                                                                      .table-view-cell .icon {
+                                                                        color: #007aff; }
 
-                                                                        .table-view.no-margin {
-                                                                          margin-top: 0px !important; }
+                                                                        .icon.profile-star {
+                                                                          font-size: 14px; }
 
-                                                                          .auto-height {
-                                                                            height: auto; }
+                                                                          .padding-top-5 {
+                                                                            padding-top: 5px; }
 
-                                                                            .hidden {
-                                                                              display: none; }
+                                                                            .bold {
+                                                                              font-weight: bold; }
 
-                                                                              input {
-                                                                                color: #000000; }
+                                                                              .no-border-top {
+                                                                                border-top: 0; }
 
-                                                                                .white-text {
-                                                                                  color: #fff; }
+                                                                                .black {
+                                                                                  color: black; }
 
-                                                                                  .no-border-bottom {
-                                                                                    border-bottom: 0px; }
+                                                                                  input#card-num, input#debit-card-num {
+                                                                                    background: url('/static/img/card.png') no-repeat;
+                                                                                    background-size: 32px 24px;
+                                                                                    background-position: 95%; }
 
-                                                                                    textarea {
-                                                                                      color: #000000; }
+                                                                                    input#card-num.visa, input#debit-card-num.visa {
+                                                                                      background-image: url('/static/img/visa.png'); }
 
-                                                                                      .tt-hint {
-                                                                                        text-align: left !important; }
+                                                                                      input#card-num.mastercard, input#debit-card-num.mastercard {
+                                                                                        background-image: url('/static/img/mastercard.png'); }
 
-                                                                                        .error-div {
-                                                                                          font-size: 0.8em;
-                                                                                          margin: 15px 5px 15px 5px;
-                                                                                          display: none; }
+                                                                                        input#card-num.discover, input#debit-card-num.discover {
+                                                                                          background-image: url('/static/img/discover.png'); }
 
-                                                                                          .request-guru-btn {
-                                                                                            position: absolute;
-                                                                                            bottom: 65px;
-                                                                                            margin-left: 3% !important; }
+                                                                                          input#card-num.amex, input#debit-card-num.amex {
+                                                                                            background-image: url('/static/img/amex.png'); }
 
-                                                                                            .home-guru {
-                                                                                              height: 200px; }
+                                                                                            .table-view.no-margin {
+                                                                                              margin-top: 0px !important; }
 
-                                                                                              #uguru-home-text {
-                                                                                                font-size: 44px;
-                                                                                                margin-top: -4%; }
+                                                                                              .auto-height {
+                                                                                                height: auto; }
 
-                                                                                                .home-guru-container {
-                                                                                                  margin-top: 25%; }
+                                                                                                .hidden {
+                                                                                                  display: none; }
 
-                                                                                                  .home-guru-btn-container {
-                                                                                                    bottom: 2%;
-                                                                                                    position: absolute;
-                                                                                                    width: 100%; }
+                                                                                                  input {
+                                                                                                    color: #000000; }
 
-                                                                                                    .attach-bottom {
-                                                                                                      position: relative;
-                                                                                                      margin-bottom: 0px; }
+                                                                                                    .white-text {
+                                                                                                      color: #fff; }
 
-                                                                                                      .overflow-visible {
-                                                                                                        overflow: visible !important; }
+                                                                                                      .no-border-bottom {
+                                                                                                        border-bottom: 0px; }
 
-                                                                                                        .tt-suggestion.tt-cursor {
-                                                                                                          background-color: white; }
+                                                                                                        textarea {
+                                                                                                          color: #000000; }
 
-                                                                                                          .tt-suggestion.tt-cursor p {
-                                                                                                            color: #343d3e; }
+                                                                                                          .tt-hint {
+                                                                                                            text-align: left !important; }
 
-                                                                                                            .tt-suggestion p {
-                                                                                                              font-size: 20px; }
+                                                                                                            .error-div {
+                                                                                                              font-size: 0.8em;
+                                                                                                              margin: 15px 5px 15px 5px;
+                                                                                                              display: none; }
 
-                                                                                                              .tt-suggestion {
-                                                                                                                padding: 5px 15px;
-                                                                                                                border-bottom: 1px solid white; }
+                                                                                                              .request-guru-btn {
+                                                                                                                position: absolute;
+                                                                                                                bottom: 65px;
+                                                                                                                margin-left: 3% !important; }
 
-                                                                                                                .twitter-typeahead, .tt-dropdown-menu {
-                                                                                                                  width: 100%;
-                                                                                                                  background-color: #636c6d; }
+                                                                                                                .home-guru {
+                                                                                                                  height: 200px; }
 
-                                                                                                                  #become-guru-course-input {
-                                                                                                                    vertical-align: none; }
+                                                                                                                  #uguru-home-text {
+                                                                                                                    font-size: 44px;
+                                                                                                                    margin-top: -4%; }
 
-                                                                                                                    .typeahead.selected-course {
-                                                                                                                      background: url('/static/img/ok.png') no-repeat;
-                                                                                                                      background-size: 24px 24px;
-                                                                                                                      background-position: 95%;
-                                                                                                                      background-color: white; }
+                                                                                                                    .home-guru-container {
+                                                                                                                      margin-top: 25%; }
 
-                                                                                                                      .course-tag, .year-tag {
-                                                                                                                        margin: 6px 4px;
-                                                                                                                        padding: 5px 10px;
-                                                                                                                        color: white;
-                                                                                                                        border: 1px solid white;
-                                                                                                                        border-radius: 2px;
-                                                                                                                        display: inline-block;
-                                                                                                                        font-size: 12px; }
+                                                                                                                      .home-guru-btn-container {
+                                                                                                                        bottom: 2%;
+                                                                                                                        position: absolute;
+                                                                                                                        width: 100%; }
 
-                                                                                                                        .year-tag.active {
-                                                                                                                          color: white;
-                                                                                                                          background-color: #CC792B;
-                                                                                                                          border-color: #CC792B !important; }
+                                                                                                                        .attach-bottom {
+                                                                                                                          position: relative;
+                                                                                                                          margin-bottom: 0px; }
 
-                                                                                                                          .year-tag.move-right.active {
-                                                                                                                            color: white;
-                                                                                                                            background-color: #CC792B;
-                                                                                                                            border-color: #CC792B !important;
-                                                                                                                            position: absolute;
-                                                                                                                            top: 6px;
-                                                                                                                            right: 60px; }
+                                                                                                                          .overflow-visible {
+                                                                                                                            overflow: visible !important; }
 
-                                                                                                                            .btn-positive.active, .btn-positive:active {
-                                                                                                                              color: #fff;
-                                                                                                                              background-color: #69B3A5;
-                                                                                                                              border: 0px; }
+                                                                                                                            .tt-suggestion.tt-cursor {
+                                                                                                                              background-color: white; }
+
+                                                                                                                              .tt-suggestion.tt-cursor p {
+                                                                                                                                color: #343d3e; }
+
+                                                                                                                                .tt-suggestion p {
+                                                                                                                                  font-size: 20px; }
+
+                                                                                                                                  .tt-suggestion {
+                                                                                                                                    padding: 5px 15px;
+                                                                                                                                    border-bottom: 1px solid white; }
+
+                                                                                                                                    .twitter-typeahead, .tt-dropdown-menu {
+                                                                                                                                      width: 100%;
+                                                                                                                                      background-color: #636c6d; }
+
+                                                                                                                                      #become-guru-course-input {
+                                                                                                                                        vertical-align: none; }
+
+                                                                                                                                        .guru-intro {
+                                                                                                                                          text-align: center;
+                                                                                                                                          line-height: 1.5;
+                                                                                                                                          font-size: 12.5px !important; }
+
+                                                                                                                                          .typeahead.selected-course {
+                                                                                                                                            background: url('/static/img/ok.png') no-repeat;
+                                                                                                                                            background-size: 24px 24px;
+                                                                                                                                            background-position: 95%;
+                                                                                                                                            background-color: white; }
+
+                                                                                                                                            .course-tag, .year-tag {
+                                                                                                                                              margin: 6px 4px;
+                                                                                                                                              padding: 5px 10px;
+                                                                                                                                              color: white;
+                                                                                                                                              border: 1px solid white;
+                                                                                                                                              border-radius: 2px;
+                                                                                                                                              display: inline-block;
+                                                                                                                                              font-size: 12px; }
+
+                                                                                                                                              .year-tag.active {
+                                                                                                                                                color: white;
+                                                                                                                                                background-color: #CC792B;
+                                                                                                                                                border-color: #CC792B !important; }
+
+                                                                                                                                                .year-tag.move-right.active {
+                                                                                                                                                  color: white;
+                                                                                                                                                  background-color: #CC792B;
+                                                                                                                                                  border-color: #CC792B !important;
+                                                                                                                                                  position: absolute;
+                                                                                                                                                  top: 6px;
+                                                                                                                                                  right: 60px; }
+
+                                                                                                                                                  .btn-positive.active, .btn-positive:active {
+                                                                                                                                                    color: #fff;
+                                                                                                                                                    background-color: #69B3A5;
+                                                                                                                                                    border: 0px; }

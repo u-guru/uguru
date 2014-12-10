@@ -22,7 +22,7 @@
     <a data-transition='slide-in' href='/m/login/'>
       <button class="btn btn-positive btn-block login home-page-btn">Log in</button>
     </a>
-    <button type='submit' id='fb-login-btn' onlogin="beginFbConnect();" class="btn btn-positive btn-block fb-color relative home-page-btn">
+    <button type='submit' id='fb-login-btn' onlogin="beginFbConnect();" class="btn btn-positive btn-block fb-color center relative home-page-btn">
       <span class='fb-icon absolute'>f</span>Connect with Facebook
     </button>
     <p class='content-padded'> Uguru will NEVER post to your Facebook. </p>
@@ -76,6 +76,7 @@
             data: payload,
             success: function (request){
               console.log(request);
+
               window.location = "/m/home/";
             },
             error: function (request){

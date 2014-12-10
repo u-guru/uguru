@@ -965,7 +965,7 @@ class Payment(Base):
         return rounded_total_amount
     
     def get_payment_type(self, user):
-        if self.student_id == user.id:
+        if self.student_id == user.id and self.tutor_id:
             return 'student'
         
         #payment.student_id is None for cashout transations
@@ -988,7 +988,7 @@ class Payment(Base):
             return_dict = {
 
                 'type': _type,
-                'skill_name': Skill.get_skill_from_name(skill), 
+                'skill_name': Skill.get_skill_from_name(skill.name), 
                 'guru': User.query.get(_request.connected_tutor_id).as_dict(),
                 'time': self.time_created.strftime('%h %d %Y'),
                 'amount': self.student_paid_amount
