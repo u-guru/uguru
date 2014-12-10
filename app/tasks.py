@@ -50,15 +50,15 @@ def contact_qualified_tutors(request_id):
         return 
     
     # TODO : set based on urgency
-    SECONDS_BETWEEN_CONTACT_ATTEMPTS    = 60 * 5  # Five minutes
-    SECONDS_ALLOWED_PENDING             = 60 * 15 # Ten Minutes
+    SECONDS_BETWEEN_CONTACT_ATTEMPTS    = 5
+    SECONDS_ALLOWED_PENDING             = 30 # Ten Minutes
 
     # Get a list of tutors, prioritized, and make a queue
     tutor_queue = prioritize_qualified_tutors(request.requested_tutors)
-    
+    logging.info("=== Beginning Number of qualified and prioritized tutors: " + str(len(tutor_queue)) )
+
     # Get starting tutor    
     current_tutor = tutor_queue.pop(0)
-
     while len(tutor_queue) != 0:
 
         # Re-fetch the request so that we are sure it's state is accurate
@@ -66,17 +66,17 @@ def contact_qualified_tutors(request_id):
         
         # if request has been connected, you are done. "CARRY ON MY WAYWARD SON!"
         if request.connected_tutor_id:
-            logging.info("Tutor has been matched, request contacted to tutor :" + str(request.connected_tutor_id))
+            logging.info("...tutor has been matched with to tutor :" + str(request.connected_tutor_id))
             break
 
         # Don't proceed if the request is canceled
         if request.time_canceled:
-            logging.info("Stopped contacting tutors. Request ID: " + str(request.id) +" cancelled at " + str(request.time_canceled))
+            logging.info("...stopped contacting tutors because request was canceled.")
             break
 
         # Don't proceed if the request is expired, although it shouldn
         if request.time_expired:
-            logging.info("Stopped contacting tutors. Request ID: " + str(request.id) +" expired at " + str(request.time_expired))
+            logging.info("...stopped contacting tutors because request expired")
             break
 
         # If request is in a pending state, check how long its been and proceed to wait or expire the request accordingly
@@ -85,13 +85,12 @@ def contact_qualified_tutors(request_id):
             seconds_spent_pending = (datetime.now() - request.time_pending_began) # datetime.timedelta
             if seconds_spent_pending > SECONDS_ALLOWED_PENDING:
                 request.time_expired = datetime.now()
-
-                logging.info("Request " + str(request.id) + " expired at " + str(request.time_expired) + " because it was pending for too long.")
+                logging.info("...request expired at " + str(request.time_expired) + " because it was pending for too long.")
                 db_session.commit()
                 # TODO : Try catch if commit fails!
                 break
             else:
-                logging.info("Request " + str(request.id) + " is pending...")
+                logging.info("...request " + str(request.id) + " is in pending state.")
                 sleep(SECONDS_BETWEEN_CONTACT_ATTEMPTS) # Wait a beat and then try again
                 continue
 
@@ -104,20 +103,22 @@ def contact_qualified_tutors(request_id):
             #           and prioritized them.  This way we ensure that we are always contacting 
             #           the best possible tutor as sson as possible.
             logging.info("Skipping over tutor who has already been contacted for request: " + str(request))
-            current_tutor = tutor_queue.pop(0) # Pop next tutor off the queue
+            current_tutor = tutor_queue.pop(0) # Pop next tutor off the queue, and begin the loop again immediately
+            logging.info("=== Moving on to next tutor. ===")
             continue
 
         # Finally, go ahead and try to contact the tutor
-        contact_success = contact_tutor(tutor=tutor, request=request)
+        contact_success = contact_tutor(current_tutor, request)
         if not contact_success:
-            logging.info("Failed to contact tutor: " + str(tutor))
-        # Either way we add the tutor to the list of tutors we've tried to contact
-        request.contacted_tutors.append(tutor)
+            logging.info("...failed to contact tutor: " + str(current_tutor))
         db_session.commit()
         # TODO : Try catch here
         sleep(SECONDS_BETWEEN_CONTACT_ATTEMPTS) # Wait a beat and then
         current_tutor = tutor_queue.pop(0) # Pop next tutor off the queue
-        
+        logging.info("Moving on to next tutor...")
+
+    logging.info("=== End of contacting for request: "+str(request.id)+" ===")
+    return
 
 ##############################
 # BEGIN Contact Tutor Helpers#
@@ -125,7 +126,6 @@ def contact_qualified_tutors(request_id):
 
 def prioritize_qualified_tutors(tutors):
     """ Orders the list of tutors from best to worst. """
-    logging.info("Number of tutors being prioritized: " + str(len(tutors)) )
     # TODO : Implement secret saucce prioritizing algorithm.
     return tutors
 
@@ -133,24 +133,27 @@ def contact_tutor(tutor, request):
     """ Takes in a turor and a requst and tries to reach the 
     tutor by all possible means. Returns True if the turor was 
     successfully contacted, False otherwise. """
-    logging.info("...requesting tutor: " + str(tutor))
+    logging.info("...contacting tutor: " + str(tutor))
+
+    if tutor.email_notification:
+        # TODO : send off a email
+        logging.info("...emailing")
+
+    if tutor.phone_number and tutor.text_notification:
+        # TODO : Send them a text
+        logging.info("...texting")
 
     # Append request to the tutor's outgoing_requests.    
     tutor.outgoing_requests.append(request)
+    # Add this tutor to the list of tutors tried by this request
+    request.contacted_tutors.append(tutor)
+
     try:
         db_session.commit()
     except:
         db_session.rollback()
-        logging.info("Failed to add the outgoing_request to the tutor.")
+        logging.info("Failed to add the request to tutor.outgoing_request in DB.")
         return False
-
-    if tutor.email_notification:
-        # TODO : send off a email
-        logging.info("DISABLED: Email sent to tutor: " + str(tutor))
-
-    if tutor.phone_number and tutor.text_notification:
-        # TODO : Send them a text
-        logging.info("Text sent to tutor: " + str(tutor))
 
     return True
 

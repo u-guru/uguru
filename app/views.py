@@ -116,7 +116,6 @@ def my_tutors():
 @app.route('/m/welcome/')
 @app.route('/welcome/')
 def welcome():
-
     # Track email click though
     campaign = request.args.get('camp')
     user_id = request.args.get('user_id')

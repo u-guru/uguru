@@ -13,6 +13,7 @@ import stripe
 import json
 import random
 import views
+import tasks
 import logging
 
 REQUEST_EXP_TIME_IN_SECONDS = 172800
@@ -31,7 +32,7 @@ PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 # TODO: GET returns a users requests 
 @app.route('/api/v1/requests', methods=['POST'])
 def request_web_api():
-    
+
     user = current_user()
     if not user:
         return json_response(http_code=401)
@@ -60,7 +61,7 @@ def request_web_api():
         return json_response(http_code=403, errors=[error_msg])
 
     # Create a request
-    from lib.utils import js_date_to_python_datetime # TODO : This isn't actually being used
+    from lib.utils import js_date_to_python_datetime # TODO : This isn't being used, ***
     _request = Request.create_request(
             student = user,
             skill_id = skill.id,
@@ -71,26 +72,21 @@ def request_web_api():
             remote = request.json.get('remote'),
             is_urgent = bool(int(request.json.get("is_urgent"))), # TODO : probably don't need to convert to int first, but lets be safe
             urgency = int(request.json.get('urgency')), # TODO : Depricate
-            start_time = request.json.get('start_time')
+            start_time = request.json.get('start_time') # TODO : *** should be used here
         )
 
-    #Check if there are no tutors
+    # Check if there are no tutors
     if _request.get_tutor_count() == 0:
         error_msg = "We have no tutors for " + skill_name.upper()
         return json_response(http_code=200, errors=[error_msg], redirect='no-tutors')
 
-    #Initiated delayed functions here.
-    from tasks import contact_qualified_tutors
-    try:
-        contact_qualified_tutors.delay(_request.id)
-    except:
-        #TODO, figure out way to test connection to redis in testing.
-        pass
+    # Begin contacting qualified tutors
+    tasks.contact_qualified_tutors.delay(_request.id)
 
-    #OK we are FINALLY good to send the return dictionary back to the 
+    # OK we are FINALLY good to send the return dictionary back to the 
     user.add_request_to_pending_requests(_request)
     request_return_dict = _request.get_return_dict(skill, user)
-    return json_response(http_code = 200, return_dict = request_return_dict)
+    return json_response(http_code=200, return_dict=request_return_dict)
 
 
 # Specific support route
