@@ -160,7 +160,7 @@ class User(Base):
     user_referral_code = Column(String)
     last_active = Column(DateTime)
     approved_by_admin = Column(Boolean)
-    # response_rate = Column(Float)
+    response_rate = Column(Float)
     auth_token = Column(String(64))
     apn_token = Column(String(64))
     fb_id = Column(String(64))
@@ -848,7 +848,6 @@ class Payment(Base):
     num_minutes = Column(Integer)
     num_hours = Column(Integer)
 
-
     #deprecated, but need to migrate shit from production
     time_amount = Column(Float)
     tutor_rate = Column(Float)
@@ -1082,11 +1081,13 @@ class Request(Base):
     # Begin association tables #
     ############################
 
+    # Tutors available/qualified to be contacted for this request
     requested_tutors = relationship('User', 
         secondary = tutor_request_table,
         backref = backref('requests', lazy='dynamic')
         )
 
+    # Tutors who we have already attempted to contact for this request
     contacted_tutors = relationship('User', 
         secondary = request_contacted_tutors_table)
 
@@ -1188,12 +1189,12 @@ class Request(Base):
         else:
             return '2+ hours'
 
-
     def process_student_reject(self, tutor_id):
         # Take the request out of the pending state
         self.pending_tutor_id = None
         self.time_pending_began = None
 
+        tutor = User.query.get(tutor_id)
         self.committed_tutors.remove(tutor)
         tutor.outgoing_requests.remove(self)
         try:
@@ -1202,10 +1203,8 @@ class Request(Base):
             db_session.rollback()
             raise
 
-
     def process_tutor_reject(self, tutor_id):
         tutor = User.query.get(tutor_id)
-
         self.committed_tutors.remove(tutor)
         tutor.outgoing_requests.remove(self)
         try:
