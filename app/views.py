@@ -122,7 +122,7 @@ def m_welcome():
 @app.route('/m/welcome/<campaign>/<_id>/')
 def m_welcome_campaign_track(campaign, _id):
     #SEND TO MP PANEL
-    return render_template('web/welcome.html')
+    return redirect(url_for('m_welcome'))
 
 @app.route('/m/login/')
 def m_login():
@@ -807,11 +807,11 @@ def admin_users(arg):
         if arg =='tutors':
             for u in User.query.all():
                 if u.is_a_guru() and u.email_notification:                    
-                    user_fields = [u.name, u.email]
+                    user_fields = [u.name, u.email, str(u.id)]
                     result_str += attr_to_row(user_fields)
                     count += 1
 
-        if arg =='active-tutors':
+        if arg =='active-tutors-skills':
             for u in User.query.all():
                 if u.is_a_guru() and u.email_notification \
                 and 'removed' not in u.email.lower():                    
@@ -822,18 +822,45 @@ def admin_users(arg):
                             last_name = ''
                             if len(full_name) > 1:
                                 last_name = full_name[1]
-                            user_fields = [u.name, first_name, last_name, u.email, n.skill_name.title(), u.id]
+                            user_fields = [u.name, first_name, last_name, u.email, n.skill_name.title(), str(u.id)]
                             result_str += attr_to_row(user_fields)
                             count += 1
-                            break
 
         if arg =='no-skills':
             for u in User.query.all():
                 if u.is_a_guru() and u.email_notification \
-                and 'removed' not in u.email.lower() and not u.skills:                    
+                and 'removed' not in u.email.lower() and u.skills:                    
+                    
                     user_fields = [u.email]
                     result_str += attr_to_row(user_fields)
                     count += 1
+
+        if arg =='skills':
+            for u in User.query.all():
+                if u.is_a_guru() and u.email_notification \
+                and 'removed' not in u.email.lower() and u.skills:                    
+                    skill_name = None
+                    for n in sorted(u.notifications, key=lambda n:n.time_created, reverse=True):
+                        if 'accepted' in n.feed_message or 'matched' in n.feed_message:
+                            skill_name = n.skill_name
+                            break
+                    if not skill_name:
+                        skill_name = u.skills[0].get_short_name()
+                    full_name = u.name.split(' ')
+                    first_name = full_name[0]
+                    last_name = ''
+                    if len(full_name) > 1:
+                        last_name = full_name[1]
+                    user_fields = [u.name, first_name, last_name, u.email, skill_name.title(), str(u.id)]
+                    result_str += attr_to_row(user_fields)
+                    count += 1
+
+        if arg =='skills-email':
+            for u in User.query.all():
+                if not u.skills and u.is_a_guru() and u.approved_by_admin: 
+                    user_fields = [u.email]
+                    result_str += attr_to_row(user_fields)
+
 
 
 
