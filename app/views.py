@@ -39,6 +39,10 @@ stripe_keys = {
 }
 stripe.api_key = stripe_keys['secret_key']
 
+# Mixpanel
+from mixpanel import Mixpanel
+mp = Mixpanel(os.environ['MIXPANEL_TOKEN']) 
+
 #################
 # New Web Views #
 #################
@@ -48,12 +52,10 @@ stripe.api_key = stripe_keys['secret_key']
 # - Go hard with views & integration
 @app.route('/m/desktop/')
 def desktop():
-
-    
     return render_template('web/home-desktop.html')
 
-
 @app.route('/m/home/')
+@app.route('/home/')
 def home():
     user = api.current_user()
     if not user:
@@ -112,10 +114,17 @@ def my_tutors():
 ##########################################################
 @app.route('/m/')
 @app.route('/m/welcome/')
-def m_welcome():
-    # user = api.current_user()
-    # if user:
-    #     return redirect(url_for('home'))
+@app.route('/welcome/')
+def welcome():
+
+    # Track email click though
+    campaign = request.args.get('camp')
+    user_id = request.args.get('user_id')
+    if campaign and user_id:
+        mp.track(user_id, 'Link Clicked', {
+            'Campaign': campaign
+            })
+        return redirect(url_for('welcome'))
 
     return render_template('web/welcome.html')
 
@@ -159,7 +168,7 @@ def m_signup():
 def m_logout():
     if session.get('user_id'):
         session.pop('user_id')
-    return redirect(url_for('m_welcome'))
+    return redirect(url_for('welcome'))
 
 #Content pages, example: Sorry, 'We have no tutors page'
 @app.route('/m/show/<event>/')
@@ -253,7 +262,6 @@ def add_courses(_hash=None):
 
     reset_flag = False
 
-    
     if 'reset' in request.url:
         
         user = User.query.filter_by(password=_hash).first()

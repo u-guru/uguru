@@ -31,79 +31,66 @@ PROMOTION_PAYMENT_PLANS = {0:[20, 25], 1:[45, 60], 2:[150, 200]}
 # TODO: GET returns a users requests 
 @app.route('/api/v1/requests', methods=['POST'])
 def request_web_api():
-
+    
     user = current_user()
     if not user:
         return json_response(http_code=401)
+
+    expected_parameters = ['skill_name', 'description', 'time_estimate','phone_number', 'location', 'urgency', 'is_urgent', 'start_time']
+    if not request_contains_all_valid_parameters(request.json, expected_parameters):
+        return json_response(422, errors=["Not all required parameters were supplied."])
+
+    # Check if this skill is registed in our DB
+    skill_name = request.json.get('skill_name')
+    skill = Skill.get_skill_from_name(skill_name)
+    if not skill: 
+        # TODO : this should still be logged in mixpanel!
+        error_msg = 'Sorry! This is not a supported skill, please choose one from the dropdown.'
+        return json_response(http_code=403, errors=[error_msg])
+
+    # Make sure they don't already a pending request for a skill
+    if user.already_has_pending_request_for_skill(skill):
+        error_msg = 'You already have a pending request for ' + skill_name.upper() + \
+            '. Please cancel your current one or wait for a tutor for the other one.'
+        return json_response(http_code=403, errors=[error_msg])
     
-    if request.method == 'POST':
-        
-        request_json = request.json
-        return_dict = {}
+    # Make sure user is not a tutor for this skill
+    if skill in user.skills:
+        error_msg = "You're already a tutor for " + skill_name.upper() + '!'
+        return json_response(http_code=403, errors=[error_msg])
 
-        expected_parameters = ['skill_name', 'description', 'time_estimate', 
-        'phone_number', 'location', 'urgency', 'start_time']
+    # Create a request
+    from lib.utils import js_date_to_python_datetime # TODO : This isn't actually being used
+    _request = Request.create_request(
+            student = user,
+            skill_id = skill.id,
+            description = request.json.get('description'),
+            time_estimate = request.json.get('time_estimate'),
+            phone_number = request.json.get('phone_number'),
+            location = request.json.get('location'),
+            remote = request.json.get('remote'),
+            is_urgent = bool(int(request.json.get("is_urgent"))), # TODO : probably don't need to convert to int first, but lets be safe
+            urgency = int(request.json.get('urgency')), # TODO : Depricate
+            start_time = request.json.get('start_time')
+        )
 
-        if request_contains_all_valid_parameters(request_json, expected_parameters):
+    #Check if there are no tutors
+    if _request.get_tutor_count() == 0:
+        error_msg = "We have no tutors for " + skill_name.upper()
+        return json_response(http_code=200, errors=[error_msg], redirect='no-tutors')
 
-            #Check if this skill is registed in our DB
-            skill_name = request_json.get('skill_name')
-            skill = Skill.get_skill_from_name(skill_name)
-            if not skill: #TODO, this should still be logged in mixpanel!
-                error_msg = 'Sorry! This is not a supported skill, please choose one from the dropdown.'
-                return json_response(http_code=403, errors=[error_msg])
+    #Initiated delayed functions here.
+    from tasks import contact_qualified_tutors
+    try:
+        contact_qualified_tutors.delay(_request.id)
+    except:
+        #TODO, figure out way to test connection to redis in testing.
+        pass
 
-            #Make sure they don't already a pending request for a skill
-            if user.already_has_pending_request_for_skill(skill):
-                error_msg = 'You already have a pending request for ' + skill_name.upper() + \
-                    '. Please cancel your current one or wait for a tutor for the other one.'
-                return json_response(http_code=403, errors=[error_msg])
-            
-            #Make sure user is not a tutor for this skill
-            if skill in user.skills:
-                error_msg = "You're already a tutor for " + skill_name.upper() + '!'
-                return json_response(http_code=403, errors=[error_msg])
-
-            #Create a request
-
-            from lib.utils import js_date_to_python_datetime
-
-            _request = Request.create_request(
-                    student = user,
-                    skill_id = skill.id,
-                    description = request_json.get('description'),
-                    time_estimate = request_json.get('time_estimate'),
-                    phone_number = request_json.get('phone_number'),
-                    location = request_json.get('location'),
-                    remote = request_json.get('remote'),
-                    urgency = int(request_json.get('urgency')),
-                    start_time = request_json.get('start_time')
-                )
-
-            #Check if there are no tutors
-            if _request.get_tutor_count() == 0:
-                error_msg = "We have no tutors for " + skill_name.upper()
-                return json_response(http_code=200, errors=[error_msg], \
-                    redirect='no-tutors')
-
-            #Initiated delayed functions here.
-            from tasks import contact_qualified_tutors
-            try:
-                contact_qualified_tutors.delay(_request.id)
-            except:
-                #TODO, figure out way to test connection to redis in testing.
-                pass
-
-            #OK we are FINALLY good to send the return dictionary back to the 
-            user.add_request_to_pending_requests(_request)
-            request_return_dict = _request.get_return_dict(skill, user)
-            return json_response(http_code = 200, return_dict = request_return_dict)
-
-        else:
-            #Invalid payload
-            return json_response(422)
-
-    return json_response(400)
+    #OK we are FINALLY good to send the return dictionary back to the 
+    user.add_request_to_pending_requests(_request)
+    request_return_dict = _request.get_return_dict(skill, user)
+    return json_response(http_code = 200, return_dict = request_return_dict)
 
 
 # Specific support route

@@ -1105,11 +1105,12 @@ class Request(Base):
         secondary = request_email_table)
 
     def __init__(self, student_id=None, skill_id=None, description=None, time_estimate=None, \
-        phone_number=None, location=None, remote=None, urgency=None, start_time=None):
+        phone_number=None, location=None, remote=None, is_urgent=False, urgency=None, start_time=None):
         self.student_id = student_id
         self.skill_id = skill_id
         self.description = description
-        self.urgency = urgency
+        self.is_urgent = is_urgent
+        self.urgency = urgency # TODO : Depreicate
         self.time_estimate = time_estimate
         self.time_created = datetime.now()
         self.start_time = start_time
@@ -1328,7 +1329,7 @@ class Request(Base):
     
     @staticmethod
     def create_request(student, skill_id, description, time_estimate, \
-        phone_number, location, remote=None, urgency=None, start_time=None):
+        phone_number, location, remote=None, is_urgent=False, urgency=None, start_time=None):
         
         #Convert from JS Date to Python Datetime
         from lib.utils import js_date_to_python_datetime
@@ -1342,7 +1343,8 @@ class Request(Base):
                 phone_number = phone_number,
                 location = location,
                 remote = remote,
-                urgency = urgency,
+                urgency = urgency, # TODO : Depricate
+                is_urgent = is_urgent,
                 start_time = start_time
             )
 
