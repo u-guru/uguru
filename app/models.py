@@ -145,7 +145,7 @@ class User(Base):
     password = Column(String(64))
     is_a_tutor = Column(Boolean, default = False)
     fb_account = Column(Boolean, default = False)
-    phone_number = Column(String(64), unique = True)
+    phone_number = Column(String(64))
     time_created = Column(DateTime)
     email_notification = Column(Boolean, default = True)
     text_notification = Column(Boolean, default = True)
@@ -160,7 +160,7 @@ class User(Base):
     user_referral_code = Column(String)
     last_active = Column(DateTime)
     approved_by_admin = Column(Boolean)
-    response_rate = Column(Float)
+    # response_rate = Column(Float)
     auth_token = Column(String(64))
     apn_token = Column(String(64))
     fb_id = Column(String(64))
@@ -776,10 +776,12 @@ class Notification(Base):
         payment = kwargs.get('payment')
         rating = kwargs.get('rating')
         other = kwargs.get('other')
+        status = kwargs.get('status')
         self.time_created = datetime.now()
-        assert bool(request) ^ bool(payment) ^ bool(rating) ^ bool(other), \
         'kwargs must specify *either* a request, payment or a rating'
         
+        if status:
+            self.status = status
         if request:
             self.request_id = request.id
         if payment:
@@ -1117,7 +1119,6 @@ class Request(Base):
         self.start_time = start_time
         self.remote = remote
         self.location = location
-        self.phone_number = phone_number
         self.requested_tutors = Skill.query.get(skill_id).tutors
 
     def __repr__(self):
@@ -1286,7 +1287,6 @@ class Request(Base):
         return User.query.get(self.student_id)
 
     def cancel(self, user, description=None):
-        self.is_canceled = True
         self.time_canceled = datetime.now();
         self.connected_tutor_id = self.student_id
         user.outgoing_requests.remove(self)
@@ -1317,7 +1317,7 @@ class Request(Base):
     def get_status(self):
         if not self.pending_tutor_id:
             return 'pending'
-        elif self.is_canceled:
+        elif self.time_canceled:
             return 'canceled'
         else:
             return 'matched'
@@ -1327,11 +1327,11 @@ class Request(Base):
         return Request.query.get(request_id)
     
     @staticmethod
-    def create_request(student, skill_id, description, time_estimate, \
-        phone_number, location, remote=None, is_urgent=False, urgency=None, start_time=None):
+    def create_request(student, skill_id, description, time_estimate, location, remote=None, is_urgent=False, urgency=None, start_time=None):
         
         #Convert from JS Date to Python Datetime
         from lib.utils import js_date_to_python_datetime
+        from datetime import datetime
         start_time = js_date_to_python_datetime(start_time)
 
         _request = Request(
@@ -1339,11 +1339,8 @@ class Request(Base):
                 skill_id = skill_id,
                 description = description,
                 time_estimate = time_estimate,
-                phone_number = phone_number,
                 location = location,
-                remote = remote,
-                urgency = urgency, # TODO : Depricate
-                is_urgent = is_urgent,
+                is_urgent = urgency, # TODO : Depricate
                 start_time = start_time
             )
 

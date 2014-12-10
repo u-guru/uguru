@@ -119,7 +119,7 @@ def reset_password_email(user):
     EMAIL_SPACE = ", "
     EMAIL_TO = [user.email]
 
-    reset_password_url = 'http://uguru.me/m/reset_password/' + \
+    reset_password_url = 'http://0.0.0.0:5000/m/reset_password/' + \
     md5(str(user.id)).hexdigest()
 
     to_emails = []

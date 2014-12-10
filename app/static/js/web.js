@@ -24,6 +24,7 @@ $(document).ready(function() {
         $(this).siblings('.active').removeClass('active');
         $(this).addClass('active');
     });
+
     
     $('body').on('touchstart', '.guru-confirm-session', function() {
         
@@ -86,7 +87,6 @@ $(document).ready(function() {
                 transition : "slide-in",
                 url : "/m/signup/"
             });
-            $('header').css('background-color','#343d3e')
     });
 
     //Send Message

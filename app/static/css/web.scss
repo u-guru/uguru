@@ -29,6 +29,9 @@ header {
   font-weight: 700;
 }
 
+a:focus, button:focus 
+{outline:0;}
+
 #message-contents {
   width:78%
 }

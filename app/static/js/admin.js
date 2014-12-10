@@ -9,7 +9,7 @@ $(document).ready(function() {
       data: JSON.stringify(data),
       dataType: "json",
       success: function(result) {
-        window.open('/activity/');
+        window.open('/m/login/');
       }
     });
   });
@@ -24,7 +24,7 @@ $(document).ready(function() {
       data: JSON.stringify(data),
       dataType: "json",
       success: function(result) {
-        window.open('/activity/');
+        window.open('/m/login/');
       }
     });
   });
@@ -39,7 +39,7 @@ $(document).ready(function() {
       data: JSON.stringify(data),
       dataType: "json",
       success: function(result) {
-        window.location.replace('/admin/');
+        window.location.replace('/m/login/');
       }
     });
   });
@@ -54,7 +54,7 @@ $(document).ready(function() {
       data: JSON.stringify(data),
       dataType: "json",
       success: function(result) {
-        window.open('/activity/');
+        window.open('/m/login/');
       }
     });
   });

@@ -29,21 +29,22 @@
   </div>
 
   <script>
+    $('header').css('background-color','#343d3e');
     $(document).ready(function() {
         $('#login-link').click(function(event) {
             $('#login-errors').hide();
             
+            //check if reset password is in effect.
+            if ($('#password-field:visible').length == 0 ) {
+              forgotPassword();
+              return;
+            }
+
+
             if (!($('#email-field').val() && $('#password-field').val())) {
               $('#login-errors').text('Please fill in all fields');
               $('#login-errors').show();
               return;
-            }
-
-            if ($('#login-link:visible').length == 0) {
-              
-              forgotPassword();
-              return;
-
             }
 
             payload = JSON.stringify({
@@ -85,12 +86,13 @@
                     $('#login-errors').text("We've sent an email to your address. Please confirm and change your password.");
                     
                     $('#login-errors').show();
-                    $('#login-errors').delay(750).fadeOut('slow');
-                    
-                    window.PUSH({
-                        transition : "slide-out",
-                        url : "/m/welcome/"
+                    $('#login-errors').delay(2000).fadeOut('slow', function() {
+                      window.PUSH({
+                          transition : "slide-out",
+                          url : "/m/welcome/"
+                      });
                     });
+                  
                 },
                 error: function (request) {
                     alert(request.responseJSON['errors']);
@@ -103,8 +105,7 @@
 
           $('#password-field-row').hide();
           $('#forgot-password-link').hide();
-          $('#login-link').attr('id', 'submit-password-link');
-          $('#submit-password-link').text('Submit');
+          $('#login-link').text('Submit');
           $('#login-header').text('Reset Password');
           $('#forgot-password-cancel').show();
           
@@ -115,7 +116,6 @@
 
           $('#password-field-row').show();
           $('#forgot-password-link').show();
-          $('#submit-password-link').attr('id', 'login-link');
           $('#submit-password-link').text('Login');
           $('#login-header').text('Login');
           $('#forgot-password-cancel').hide();

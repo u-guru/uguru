@@ -138,21 +138,19 @@ def m_login():
     user = api.current_user()
     if user:
         
-        #if tutor
-        accepted_requests = user.get_accepted_requests()
         if user.is_a_guru():
             return redirect(url_for('m_guru'))
-
-        # if student w/ requests
-        pending_requests = user.get_pending_requests()
-        if pending_requests:
-            pending_request_id = pending_requests[0].id
-            return redirect( \
-                url_for(endpoint='request_by_id', _id=pending_request_id))
-        
-        #Go to home page regardless
         else:
             return redirect(url_for('home'))
+
+        # if student w/ requests
+        # pending_requests = user.get_pending_requests()
+        # if pending_requests:
+        #     pending_request_id = pending_requests[0].id
+        #     return redirect( \
+        #         url_for(endpoint='request_by_id', _id=pending_request_id))
+        
+        
     
     return render_template('web/login.html')
 
@@ -262,13 +260,13 @@ def add_courses(_hash=None):
     reset_flag = False
 
     if 'reset' in request.url:
+        print request.url
         
         user = User.query.filter_by(password=_hash).first()
         print user
 
         if not user:
-            flash('Sorry! That reset link is no longer valid.\
-                please try resetting your password again.')
+            flash('Sorry! That reset link is no longer valid. Please try resetting your password again.')
             return redirect(url_for('m_login'))        
 
         #Reset password is successful.
@@ -476,7 +474,7 @@ def account_details():
     return render_template('web/account_details.html', user=user)
 
 
-
+# ONLY TUTORS ARE LEAD TO THIS ROUTE.
 @app.route('/m/r/<_id>/')
 @app.route('/m/confirm_request/<_id>/')
 @app.route('/m/guru/request/<_id>/')
@@ -785,7 +783,7 @@ def new_admin():
 @app.route('/admin/users/<arg>/')
 def admin_users(arg):
     if session.get('admin'):
-    
+        
         result_str = ''
         count = 0
 
@@ -810,6 +808,8 @@ def admin_users(arg):
                     user_fields = [u.email]
                     result_str += attr_to_row(user_fields)
                     count += 1
+
+
 
         if arg =='tutors':
             for u in User.query.all():
@@ -868,8 +868,30 @@ def admin_users(arg):
                     user_fields = [u.email]
                     result_str += attr_to_row(user_fields)
 
-
-
+        if arg == 'students-course':
+            for u in User.query.all():
+                skill_name = None
+                if not u.is_a_guru() and u.email_notification:
+                    
+                    for n in u.notifications:
+                        if n.request_id:
+                            skill_name = Skill.query.get(n.request_id).get_short_name().title()
+                            break
+                    full_name = u.name.split(' ')
+                    if len(full_name) == 0: 
+                        first_name = ''
+                        last_name = ''
+                    elif len(full_name) == 1:
+                        first_name = full_name[0].title()
+                        last_name = ''
+                    else: 
+                        first_name = full_name[0].title()
+                        last_name = full_name[1]
+                    if not skill_name:
+                        skill_name = ''
+                    user_fields = [u.email, str(u.id), first_name, last_name, skill_name]
+                    result_str += attr_to_row(user_fields)
+                    count += 1
 
     print 'results returned:', count
     return result_str
@@ -2734,13 +2756,14 @@ def send_twilio_msg(to_phone, body, user_id):
         user.texts.append(text)
         db_session.add(text)
         db_session.commit()
-        from tasks import check_msg_status
-        check_msg_status.apply_async(args=[text.id], countdown = 60)
+        # from tasks import check_msg_status
+        # check_msg_status.apply_async(args=[text.id], countdown = 60)
     except twilio.TwilioRestException:
+        raise
         logging.info("text message didn't go through")
     except:
         db_session.flush()
-        raise
+        False #return message didn't go through
     return message
 
 

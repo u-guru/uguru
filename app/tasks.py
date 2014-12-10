@@ -1,7 +1,8 @@
 from celery import Celery
+from texts import tutor_receives_student_request
 from celery.task import task, periodic_task
 from celery.schedules import crontab
-from app.database import *
+from database import *
 from models import *
 from views import *
 
@@ -17,12 +18,132 @@ celery.conf.update(
     BROKER_URL=REDIS_URL,
     CELERY_TASK_SERIALIZER='json',
     CELERY_ACCEPT_CONTENT=['json', 'msgpack', 'yaml'],
-    CELERY_TIMEZONE="America/Los_Angeles"
+    CELERY_TIMEZONE="America/Los_Angeles",
+    CELERY_ACKS_LATE
 )
 
-#################
-# REGULAR TASKS #
-#################
+DEFAULT_TUTOR_ACCEPT_TIME = 5 #*60
+DEFAULT_STUDENT_ACCEPT_TIME = 20 #*60
+ASAP_LIMIT = 60 * 120 # 2 hours
+# DEFAULT_CHECK_MSG_TIME = 60
+
+
+################
+# Helpers ######
+################
+
+#Returns best tutor based on sorting
+def get_best_queued_tutor(_request):
+    tutor_queue = get_qualified_tutors(_request)
+    return tutor_queue.pop(0)
+
+#Returns list of qualified tutors
+def get_qualified_tutors(_request):
+    return _request.requested_tutors
+
+################
+# Samir-Tasks #
+################
+
+# If Time:
+# Cancel a ASAP request automatically 2 hours after the request
+
+#Send request to tutor
+@task(name='tasks.send_student_request')
+def send_student_request(r_id):
+    _request = Request.query.get(r_id)
+
+    #If no more tutors
+    if not _request.requested_tutors:
+        return
+
+    #If request is canceled or there's a match, return.
+    if _request.connected_tutor_id or _request.time_connected:        
+        return
+
+    #
+    tutor = get_best_queued_tutor(_request)
+    tutor.outgoing_requests.append(_request)
+
+    #Update request with new tutor
+    _request.pending_tutor_id = tutor.id
+    _request.time_pending_began = datetime.now()
+    _request.contacted_tutors.append(tutor)
+
+    #Send to mixpanel
+    print
+    print '============================'
+    print 'Request #' + str(_request.id) + tutor.get_first_name().upper() + ' REQUEST RECEIVED'
+    print '============================'
+
+    #Check status ten minutes later
+    check_tutor_request_status.apply_async(\
+        args=[r_id, tutor.id], countdown=DEFAULT_TUTOR_ACCEPT_TIME)
+
+    #Send the text message
+    msg = tutor.get_first_name().upper() + tutor_receives_student_request(r_id)
+    from views import send_twilio_msg
+    twilio_msg = send_twilio_msg('8135009853', msg, tutor)
+
+    commit_to_db()
+
+    # check_tutor_msg_status.apply_async(args=[twilio_msg.sid], \
+    #     countdown = DEFAULT_TUTOR_ACCEPT_TIME)
+
+
+#Removes cancellation from tutor 
+@task(name='tasks.tutor_request_status')
+def check_tutor_request_status(r_id, tutor_id):
+    
+    # Tutor didn't reply 
+    _request = Request.query.get(r_id)
+    tutor = User.query.get(tutor_id)
+
+    SECONDS_IN_BETWEEN = (datetime.now() - _request.time_pending_began)
+
+    #If tutor accepted in time .... recall the function for seconds in between
+    if SECONDS_IN_BETWEEN < DEFAULT_STUDENT_ACCEPT_TIME and \
+        tutor in _request.committed_tutors:
+
+        check_tutor_request_status.apply_async(args=[_request.id, tutor.id], \
+            countdown = SECONDS_IN_BETWEEN)
+
+        print 'Request #' + str(_request.id) + ' ' + tutor.get_first_name().upper() + ' TIME CONTNUING'\
+        + ' FOR ' + SECONDS_IN_BETWEEN
+
+    elif _request.pending_tutor_id == tutor_id:
+        
+        print 
+        print '============================'
+        print 'Request #' + str(_request.id) + ' ' + tutor.get_first_name().upper() + ' TIME IS UP'
+        print '============================'
+
+
+        #Fire off the next one immediately
+        send_student_request(r_id)
+
+        #Update this tutor
+        tutor = User.query.get(tutor_id)
+        _request = Request.query.get(r_id)
+        tutor.outgoing_requests.remove(_request)
+
+        #Add notification, in-case we want to display them.
+        n = Notification()
+        n.status = 'late'
+        n.request_id = _request.id
+        tutor.notifications.append(n)
+        commit_to_db(n)
+    
+    else:
+        pass
+        #IDK? 
+
+
+
+
+#####################
+# CAM REGULAR TASKS #
+#####################
 
 @task(name='tasks.send_twilio_message_delayed')
 def send_twilio_message_delayed(phone, msg, user_id):
@@ -30,7 +151,7 @@ def send_twilio_message_delayed(phone, msg, user_id):
     send_twilio_msg(phone,msg, user_id)
 
 @task(name='tasks.check_text_msg_status')
-def check_msg_status(text_id):
+def check_msg_status(msg_id):
     from views import twilio_client, update_text
     text = Text.query.get(text_id)
     msg = twilio_client.messages.get(text.sid)
@@ -41,8 +162,13 @@ def check_msg_status(text_id):
         db_session.flush()
         raise
 
+
+# Samir --> Won't this use up all of our connections? 
+# Things like these will need attention of all of our workers.
+# For instance, student makes Math 1A request with 80 tutors...
+# I tried reading a best practices celery doc & couldn't find 
 @task(name='tasks.contact_qualified_tutors')
-def contact_qualified_tutors(request_id):
+def contact_qualified_tutors_outdated(request_id):
 
     request = Request.query.get(request_id)
     if not request:
@@ -135,13 +261,14 @@ def contact_tutor(tutor, request):
     successfully contacted, False otherwise. """
     logging.info("...contacting tutor: " + str(tutor))
 
-    if tutor.email_notification:
-        # TODO : send off a email
-        logging.info("...emailing")
 
     if tutor.phone_number and tutor.text_notification:
         # TODO : Send them a text
         logging.info("...texting")
+
+    # This is what we *should* do.  
+    if not tutor.phone_number and tutor.text_notification:
+        logging.info("...send an email saying they could have made money.")
 
     # Append request to the tutor's outgoing_requests.    
     tutor.outgoing_requests.append(request)
@@ -279,6 +406,8 @@ def expire_request_job(request_id, user_id):
     _request.time_expired = datetime.now()
     db_session.commit()
     # TODO : Try catch if commit fails!
+
+
 
 @task(name='tasks.send_delayed_email')
 def send_delayed_email(email_str, args):
