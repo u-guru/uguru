@@ -145,7 +145,8 @@
             'description': $('#request-description').val(),
             'phone_number': $('#request-phone-number').val(),
             'location': $('#request-location').val(),
-            'urgency': $('#asap-toggle').hasClass('active'),
+            'urgency': $('#asap-toggle').hasClass('active'), // TODO : Depricate
+            'is_urgent': $('#asap-toggle').hasClass('active'),
             'time_estimate': $('#request-time-estimate-button-group .control-item.active').index(), 
             'start_time': start_time, 
         });
