@@ -50,4 +50,4 @@
 
 **Run Tests**
 
-- nosetests tests.py 
+- honcho run nosetests tests.py 

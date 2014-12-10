@@ -47,7 +47,7 @@ _request = Request.create_request(
     description = 'Need last second polishing in ..... ',
     time_estimate = 2,
     location = 'Dwinelle' ,
-    is_urgent = False, # TODO : Depricate
+    is_urgent = False,
     start_time = '1418217122376'
 )
 
