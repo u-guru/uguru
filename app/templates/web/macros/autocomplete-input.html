@@ -35,7 +35,6 @@
     })
     .on('typeahead:selected', function() {
       if ($('#{{input_id}}').val()) {
-        mixpanel.track("Request Form Course Selected", $('#{{input_id}}').val());
         $('#{{input_id}}').addClass('selected-course');
         $('#request-description').focus();
       }
