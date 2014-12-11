@@ -19,7 +19,7 @@ celery.conf.update(
     CELERY_TASK_SERIALIZER='json',
     CELERY_ACCEPT_CONTENT=['json', 'msgpack', 'yaml'],
     CELERY_TIMEZONE="America/Los_Angeles",
-    CELERY_ACKS_LATE
+    CELERY_ACKS_LATE=True
 )
 
 DEFAULT_TUTOR_ACCEPT_TIME = 5 #*60

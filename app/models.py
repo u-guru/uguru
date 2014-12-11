@@ -160,7 +160,6 @@ class User(Base):
     user_referral_code = Column(String)
     last_active = Column(DateTime)
     approved_by_admin = Column(Boolean)
-    # response_rate = Column(Float)
     auth_token = Column(String(64))
     apn_token = Column(String(64))
     fb_id = Column(String(64))
@@ -1091,7 +1090,8 @@ class Request(Base):
 
     # Tutors who we have already attempted to contact for this request
     contacted_tutors = relationship('User', 
-        secondary = request_contacted_tutors_table)
+        secondary = request_contacted_tutors_table,
+        cascade = "all, delete-orphan")
 
     # TODO : DROP
     weekly_availability = relationship('Week',
