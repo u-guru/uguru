@@ -511,7 +511,7 @@ def create_mp_profile(user_id, campaign_id):
     elif len(full_name) == 1:
         first_name = full_name[0]
     
-    mp.people_set('12345', {
+    mp.people_set(user.id, {
         '$first_name'    : first_name,
         '$last_name'     : last_name,
         '$email'         : user.email,

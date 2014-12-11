@@ -33,6 +33,10 @@
 
   <script>
 
+  $(document).ready(function() {
+    $('.content, #header-bar').css('background-color', '#ffffff');
+  });
+
   $('.content, #header-bar').css('background-color', '#ffffff');
   $('#fb-login-btn').on('click', function() {
     FB.login(function(response) {
