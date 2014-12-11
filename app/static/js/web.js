@@ -25,13 +25,13 @@ $(document).ready(function() {
         $(this).addClass('active');
     });
 
-    var guru = $('.home-guru');
-       function runIt() {
-           guru.animate({top:'+=40'}, 5000);
-           guru.animate({top:'-=40'}, 5000, runIt);
-       }
+    // var guru = $('.home-guru');
+    //    function runIt() {
+    //        guru.animate({top:'+=40'}, 5000);
+    //        guru.animate({top:'-=40'}, 5000, runIt);
+    //    }
 
-    runIt();
+    // runIt();
 
     
     $('body').on('touchstart', '.guru-confirm-session', function() {
@@ -91,6 +91,7 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '#get-uguru-link', function(e) {
+            $('header').css('background-color','#2B3234');
             window.PUSH({
                 transition : "slide-in",
                 url : "/m/signup/"

@@ -573,7 +573,7 @@ def index(arg=None):
         user = User.query.get(session.get('user_id'))
         # if user.skills and len(user.notifications) < 2:
         #     return redirect(url_for('settings'))
-        return redirect(url_for('activity'))
+        return redirect(url_for('welcome'))
     if 'log_in' in request.url:
         modal_flag = 'login'
     if 'sign_up' in request.url:
@@ -633,6 +633,7 @@ def parents(arg=None):
 
 @app.route('/apply-guru/', methods=['GET', 'POST', 'PUT'])
 def apply_guru():
+    return redirect(url_for('welcome'))
     if session.get('user_id'):
         user = User.query.get(session.get('user_id'))
         return render_template('apply-guru.html', user=user)
@@ -1219,6 +1220,8 @@ def add_bank():
 
 @app.route('/submit-rating/', methods=('GET', 'POST'))
 def submit_rating():
+    return redirect(url_for('welcome'))
+
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
@@ -2295,6 +2298,7 @@ def admin_logout():
 
 @app.route('/payments/')
 def payments():
+    return redirect(url_for('welcome'))
     if session.get('user_id'):
         user = User.query.get(session.get('user_id'))
         return render_template('payments.html', user=user)
@@ -2425,6 +2429,7 @@ def activity_promotion():
 @app.route('/activity/', methods=('GET', 'POST'), defaults={'arg': None})
 @app.route('/activity/<arg>/')
 def activity(arg=None):
+    return redirect(url_for('welcome'))
     if not session.get('user_id'):
         session['redirect'] = '/activity/'
         return redirect('/log_in/')
@@ -2540,6 +2545,7 @@ def guru_rules():
 
 @app.route('/messages/')
 def messages():
+    return redirect(url_for('welcome'))
     if not session.get('user_id'):
         return redirect(url_for('index'))
     user_id = session['user_id']
@@ -2566,6 +2572,7 @@ def messages():
 
 @app.route('/settings/referral/')
 def settings_referral():
+    return redirect(url_for('welcome'))
     user_id = session.get('user_id')
     if not user_id:
         session['redirect'] = '/settings/#referral'
@@ -2575,6 +2582,7 @@ def settings_referral():
 
 @app.route('/settings/billing/')
 def settings_billing():
+    return redirect(url_for('welcome'))
     user_id = session.get('user_id')
     if not user_id:
         session['redirect'] = '/settings/#billing'
@@ -2584,6 +2592,7 @@ def settings_billing():
 
 @app.route('/settings/profile/')
 def settings_profile():
+    return redirect(url_for('welcome'))
     user_id = session.get('user_id')
     if not user_id:
         session['redirect'] = '/settings/#prof'
@@ -2594,6 +2603,7 @@ def settings_profile():
 
 @app.route('/settings/')
 def settings():
+    return redirect(url_for('welcome'))
     user_id = session.get('user_id')
     not_launched_flag = False
     logging.info(request.url)
