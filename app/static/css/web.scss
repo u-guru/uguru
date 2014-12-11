@@ -38,6 +38,10 @@ header {
   font-size:19px;
 }
 
+.li-body-background {
+  background-color:#343D3E;
+}
+
 
 
 .fb-icon {
@@ -285,6 +289,12 @@ textarea {
   margin-left: 3% !important;
 }
 
+.submit-request-guru-btn {
+  position:absolute;
+  bottom: 25px;
+  margin-left: 3% !important;
+}
+
 //Homepage CSS
 .home-guru {
   height:200px;
@@ -367,6 +377,14 @@ textarea {
   border-radius: 2px;
   display:inline-block;
   font-size:12px;
+}
+
+// Override olark code
+#habla_window_div #habla_topbar_div {
+  background: #69B3A5 none repeat scroll 0 0;
+  color: #FFF;
+  padding: 10px;
+  cursor: pointer;
 }
 
 

@@ -1165,6 +1165,10 @@ class Request(Base):
         if self.urgency:
             print self.start_time
             return 'ASAP'
+
+        #Debug soon 
+        if not self.start_time:
+            return ""
         
         #else case
         from datetime import datetime
@@ -1340,7 +1344,8 @@ class Request(Base):
                 description = description,
                 time_estimate = time_estimate,
                 location = location,
-                is_urgent = urgency, # TODO : Depricate
+                is_urgent = is_urgent, 
+                urgency = urgency, # TODO : Depricate
                 start_time = start_time
             )
 

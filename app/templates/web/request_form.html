@@ -13,7 +13,8 @@
 
 {% block main_content %}
 <div class="content should-hide-message-bar should-hide-tab-bar">
-  <ul class='table-view'>
+  <div id='request-errors' class='center error-text error-div margin-top-20'>Please fill in all fields</div>
+  <ul class='table-view no-margin-top'>
     <li class="table-view-cell overflow-visible ignore-table-view-margin">
       <input id='request-course' type="text" placeholder="Enter Course" class=' no-bottom-margin typeahead'/>
       <textarea id='request-description' style="margin-bottom:0px;text-color:#c0c0c0;" class='margin-top-10'placeholder='What do you need help with?'></textarea>
@@ -44,14 +45,14 @@
       </div>
     </li>
 
-    <li class="table-view-cell ignore-table-view-margin center">
+    <!-- <li class="table-view-cell ignore-table-view-margin center">
       <span style="font-size:16;color:#ffffff;">$</span>
       <span style="font-size:35;color:#ffffff;" id="request-estimated-cost">10</span>
       <br>
       <span style="color:#c0c0c0;">estimated cost</span>
-    </li>
+    </li> -->
   </ul>
-  <a class="btn btn-positive btn-block" id="confirm-button" href="#">
+  <a class="btn btn-positive btn-block submit-request-guru-btn" id="confirm-button" href="#">
     Submit Request
   </a>
 
@@ -126,6 +127,8 @@
 
   $('#confirm-button').on('click', function(){
 
+        $('#')
+        
         var start_time = NaN;
 
         if ($('#request-time-selection-cell:visible').length > 0) {
@@ -174,7 +177,8 @@
                 }
             },
             error: function (request) {
-                alert(request.responseJSON['errors']);
+                $('#request-errors').text(request.responseJSON['errors']);
+                $('#request-errors').show();
             }
         });
     });

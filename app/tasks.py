@@ -21,8 +21,8 @@ celery.conf.update(
     CELERY_TIMEZONE="America/Los_Angeles",
 )
 
-DEFAULT_TUTOR_ACCEPT_TIME = 5 #*60
-DEFAULT_STUDENT_ACCEPT_TIME = 20 #*60
+DEFAULT_TUTOR_ACCEPT_TIME = 5  *60
+DEFAULT_STUDENT_ACCEPT_TIME = 20 *60
 ASAP_LIMIT = 60 * 120 # 2 hours
 # DEFAULT_CHECK_MSG_TIME = 60
 
@@ -75,6 +75,9 @@ def send_student_request(r_id):
     #If request is canceled or there's a match, return.
     if _request.connected_tutor_id or _request.time_connected:        
         return
+
+    #We are not ready yet...
+    return
 
     tutor = get_best_queued_tutor(_request)
     tutor.outgoing_requests.append(_request)
@@ -490,7 +493,39 @@ def send_student_package_info(user_id, request_id):
     from app.emails import send_student_packages_email
     send_student_packages_email(user, tutor_name, skill_name)
     logging.info("Email sent to " + str(user) + " regarding student packages.")
+
+@task(name='tasks.create_mp_profile')
+def create_mp_profile(user_id, campaign_id):
+    import os
+    from mixpanel import Mixpanel
+    mp = Mixpanel(os.environ['MIXPANEL_TOKEN']) 
+
+    user = User.query.get(int(user_id))
     
+    full_name = user.name.split(' ')
+    first_name = None
+    last_name = None
+    if len(full_name) >= 2:
+        first_name = full_name[0]
+        last_name = full_name[1]
+    elif len(full_name) == 1:
+        first_name = full_name[0]
+    
+    mp.people_set('12345', {
+        '$first_name'    : first_name,
+        '$last_name'     : last_name,
+        '$email'         : user.email,
+        '$phone'         : user.phone_number,
+        '$guru'          : user.is_a_guru(),
+        '$profile_url'   : user.profile_url
+    })
+
+    mp.track(user_id, 'Link Clicked', {
+        'Fa14 Email Campaign': campaign_id
+        })
+
+    print 'campaign complete!'
+
 
 ##################
 # PERIODIC TASKS #

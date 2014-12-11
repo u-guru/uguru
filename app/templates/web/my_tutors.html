@@ -15,7 +15,24 @@
 {% block main_content %}
 <div class="content">
 
+    {% if not all_conversation_dicts['conversations'] %}
+        <ul class='table-view center'>
+            <li class='table-view-cell ignore-table-view-margin grey-shade-3'>
+              {% if not 'tutor' in request.url %}
+              <h1 style='margin-bottom:15px;'> No messages yet! </h1>
+              <br>
+              <p class='white-text'>Uguru will <span class='light-green-text'><u>text</u></span> you when <br> there is a a request.</p>
+              {% else %}
+              <h1 style='margin-bottom:15px;'> No Gurus Yet! </h1>
+              <br>
+              <p class='white-text'>Make a request for a course, and we'll try our best to accomodate you as quickly as possible.</p>
+              {% endif %}
+            </li>
+        </ul>
+    {% endif %}
+
     <ul class="table-view should-hide-message-bar" >      
+
       {% for conversation_dict in all_conversation_dicts['conversations'] %}
         {% set last_message =  conversation_dict.get('last_message') %} 
         

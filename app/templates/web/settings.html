@@ -67,11 +67,8 @@
               {% if user.customer_id %}
               <p class='grey-text'>*{{user.customer_last4}}</p>
               {% endif %}
-            <button class='btn btn-link green-shade-1 font-16'>
               {% if user.customer_id %}
-              Edit
-              {% else %}
-              Add
+                <button class='btn btn-link light-green-text'>
               {% endif %}
             </button>
           </a>
@@ -79,18 +76,15 @@
       {% if user.balance or user.recipient_id %}
       <li class="table-view-cell">
         <a class='navigate-right' href='/m/guru/cashout/' data-transition='slide-in'>
-              Cashout Card 
-              {% if user.recipient_id %}
-              <p class='grey-text'>*{{user.recipient_last4}}</p>
-              {% endif %}
-            <button class='btn btn-link green-shade-1 font-16'>
-              {% if user.recipient_last4 %}
-              Edit
-              {% else %}
-              Add
-              {% endif %}
-            </button>
-          </a>
+              Cashout Card <span class='grey-text'>*{{user.recipient_last4}}</span>
+              <button class='btn btn-link light-green-text font-16'>
+                {% if user.balance %}
+                 ${{user.balance}}
+                {% else %}
+                  Add
+                {% endif %}
+              </button>
+        </a>
       </li>
       {% endif %}
       {% if user.payments %}
@@ -118,6 +112,7 @@
                     transition : "fade",
                     url : "/m/welcome/"
                 });
+                $('.content, #header-bar').css('background-color', '#ffffff');
                 return;
             },
             error: function (request) {

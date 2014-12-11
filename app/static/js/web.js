@@ -25,6 +25,14 @@ $(document).ready(function() {
         $(this).addClass('active');
     });
 
+    var guru = $('.home-guru');
+       function runIt() {
+           guru.animate({top:'+=40'}, 5000);
+           guru.animate({top:'-=40'}, 5000, runIt);
+       }
+
+    runIt();
+
     
     $('body').on('touchstart', '.guru-confirm-session', function() {
         

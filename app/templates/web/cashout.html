@@ -11,7 +11,7 @@
 
 {% block main_header %}
 <header class="bar bar-nav">
-      <h1 class="title">Cashout Earnings</h1>
+      <h1 class="title">Cashout</h1>
       <a href='{{redirect_url}}' data-transition='slide-out' class='icon icon-left pull-left'></a>
 </header> 
 {% endblock %}
@@ -20,16 +20,16 @@
 {% block main_content %}
 <div class="content should-hide-message-bar should-hide-tab-bar">
       <ul class='table-view'>
-        <li class='table-view-cell'>
-          Next Steps
-          <p>
-            <br>
-            1. Start a timer when you meet your student. 
-            <br>
-            2. Enter the time for the session.
-            <br>
-            3. Confirm, and get paid immediately.
-          </p>
+        <li class='table-view-cell center ignore-table-view-margin'>
+          <h5> My Earnings </h5>
+          <h1 style='font-size:40px; margin-top:20px; font-weight:bold' class='light-green-text'> ${{user.balance}} </h1>
+        </li>
+        
+        <li class='table-view-cell ignore-table-view-margin'>
+          <a class='navigate-right' href='/m/add_cash_card/home/' data-transition='slide-in'>
+            <p>Debit Card **{{user.recipient_last4}}
+            </p>
+          </a>
         </li>
       </ul>
       <a data-user-id='{{user.id}}' id='guru-cashout-link' class="btn btn-positive btn-block">Cash Out</a>

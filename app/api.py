@@ -62,16 +62,20 @@ def request_web_api():
 
     # Create a request
     from lib.utils import js_date_to_python_datetime # TODO : This isn't being used, ***
+    
+    is_urgent = urgency = request.json.get("is_urgent")
+
+    user.phone_number = request.json.get('phone_number')
+
     _request = Request.create_request(
             student = user,
             skill_id = skill.id,
             description = request.json.get('description'),
             time_estimate = request.json.get('time_estimate'),
-            phone_number = request.json.get('phone_number'),
             location = request.json.get('location'),
             remote = request.json.get('remote'),
-            is_urgent = bool(int(request.json.get("is_urgent"))), # TODO : probably don't need to convert to int first, but lets be safe
-            urgency = int(request.json.get('urgency')), # TODO : Depricate
+            is_urgent = is_urgent, # TODO : probably don't need to convert to int first, but lets be safe
+            urgency = int(urgency), # TODO : Depricate
             start_time = request.json.get('start_time') # TODO : *** should be used here
         )
 

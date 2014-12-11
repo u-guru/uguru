@@ -26,265 +26,279 @@
         padding-left: 3px;
         font-size: 19px; }
 
-        .fb-icon {
-          font-size: 27px;
-          position: absolute;
-          left: 7%;
-          top: 20%;
-          font-weight: 700; }
+        .li-body-background {
+          background-color: #343D3E; }
 
-          a:focus, button:focus {
-            outline: 0; }
+          .fb-icon {
+            font-size: 27px;
+            position: absolute;
+            left: 7%;
+            top: 20%;
+            font-weight: 700; }
 
-            #message-contents {
-              width: 78%; }
+            a:focus, button:focus {
+              outline: 0; }
 
-              .no-bottom-margin {
-                margin-bottom: 0px !important; }
+              #message-contents {
+                width: 78%; }
 
-                .no-margin-top {
-                  margin-top: 0px !important; }
+                .no-bottom-margin {
+                  margin-bottom: 0px !important; }
 
-                  .margin-top-10 {
-                    margin-top: 10px; }
+                  .no-margin-top {
+                    margin-top: 0px !important; }
 
-                    .margin-bottom-10 {
-                      margin-bottom: 10px; }
+                    .margin-top-10 {
+                      margin-top: 10px; }
 
-                      .margin-top-20 {
-                        margin-top: 20px; }
+                      .margin-bottom-10 {
+                        margin-bottom: 10px; }
 
-                        .margin-top-15 {
-                          margin-top: 15px; }
+                        .margin-top-20 {
+                          margin-top: 20px; }
 
-                          .margin-bottom-20 {
-                            margin-bottom: 20px; }
+                          .margin-top-15 {
+                            margin-top: 15px; }
 
-                            .margin-5 {
-                              margin: 5px; }
+                            .margin-bottom-20 {
+                              margin-bottom: 20px; }
 
-                              .font-16 {
-                                font-size: 16px; }
+                              .margin-5 {
+                                margin: 5px; }
 
-                                .font-12 {
-                                  font-size: 12px; }
+                                .font-16 {
+                                  font-size: 16px; }
 
-                                  .font-20 {
-                                    font-size: 20px; }
+                                  .font-12 {
+                                    font-size: 12px; }
 
-                                    .profile-title-icon {
-                                      top: 10px;
-                                      position: absolute;
-                                      background-color: white; }
+                                    .font-20 {
+                                      font-size: 20px; }
 
-                                      .message-face, .table-view-face {
-                                        width: 42px;
-                                        height: 42px;
-                                        border-radius: 20px;
-                                        border: 2px solid white; }
+                                      .profile-title-icon {
+                                        top: 10px;
+                                        position: absolute;
+                                        background-color: white; }
 
-                                        .table-view-large-face {
-                                          height: 85px;
-                                          border-radius: 50px;
+                                        .message-face, .table-view-face {
+                                          width: 42px;
+                                          height: 42px;
+                                          border-radius: 20px;
                                           border: 2px solid white; }
 
-                                          .table-view-mini-face {
-                                            width: 24px;
-                                            height: 24px;
-                                            border-radius: 20px;
-                                            border: 1px solid white; }
+                                          .table-view-large-face {
+                                            height: 85px;
+                                            border-radius: 50px;
+                                            border: 2px solid white; }
 
-                                            .guru-photo {
-                                              height: 120px; }
+                                            .table-view-mini-face {
+                                              width: 24px;
+                                              height: 24px;
+                                              border-radius: 20px;
+                                              border: 1px solid white; }
 
-                                              .guru-home-photo {
-                                                height: 40%; }
+                                              .guru-photo {
+                                                height: 120px; }
 
-                                                .logo-container {
-                                                  margin-top: 15%;
-                                                  margin-bottom: 15%; }
+                                                .guru-home-photo {
+                                                  height: 40%; }
 
-                                                  .table-view-cell-photo {
-                                                    height: 20px; }
+                                                  .logo-container {
+                                                    margin-top: 15%;
+                                                    margin-bottom: 15%; }
 
-                                                    .red-text {
-                                                      color: red; }
+                                                    .table-view-cell-photo {
+                                                      height: 20px; }
 
-                                                      .grey-text {
-                                                        color: #8f8f94; }
+                                                      .red-text {
+                                                        color: red; }
 
-                                                        .negative-text {
-                                                          color: #CC792B; }
+                                                        .grey-text {
+                                                          color: #8f8f94; }
 
-                                                          .bar {
-                                                            display: block; }
+                                                          .negative-text {
+                                                            color: #CC792B; }
 
-                                                            .center {
-                                                              text-align: center; }
+                                                            .bar {
+                                                              display: block; }
 
-                                                              .table-view-cell-profile-photo {
-                                                                height: 25px; }
+                                                              .center {
+                                                                text-align: center; }
 
-                                                                .updated-text {
-                                                                  position: absolute;
-                                                                  left: 0;
-                                                                  right: 0;
-                                                                  padding: 10px 0;
-                                                                  font-size: 11px;
-                                                                  text-align: center; }
+                                                                .table-view-cell-profile-photo {
+                                                                  height: 25px; }
 
-                                                                  .toggle.toggle-inline {
-                                                                    display: inline-block; }
+                                                                  .updated-text {
+                                                                    position: absolute;
+                                                                    left: 0;
+                                                                    right: 0;
+                                                                    padding: 10px 0;
+                                                                    font-size: 11px;
+                                                                    text-align: center; }
 
-                                                                    .table-view-cell.message-cell, .table-view-cell.request-cell,
-                                                                    .ignore-table-view-margin {
-                                                                      padding: 10px 15px 10px 15px; }
+                                                                    .toggle.toggle-inline {
+                                                                      display: inline-block; }
 
-                                                                      .table-view-cell .icon {
-                                                                        color: #007aff; }
+                                                                      .table-view-cell.message-cell, .table-view-cell.request-cell,
+                                                                      .ignore-table-view-margin {
+                                                                        padding: 10px 15px 10px 15px; }
 
-                                                                        .icon.profile-star {
-                                                                          font-size: 14px; }
+                                                                        .table-view-cell .icon {
+                                                                          color: #007aff; }
 
-                                                                          .padding-top-5 {
-                                                                            padding-top: 5px; }
+                                                                          .icon.profile-star {
+                                                                            font-size: 14px; }
 
-                                                                            .bold {
-                                                                              font-weight: bold; }
+                                                                            .padding-top-5 {
+                                                                              padding-top: 5px; }
 
-                                                                              .no-border-top {
-                                                                                border-top: 0; }
+                                                                              .bold {
+                                                                                font-weight: bold; }
 
-                                                                                .black {
-                                                                                  color: black; }
+                                                                                .no-border-top {
+                                                                                  border-top: 0; }
 
-                                                                                  input#card-num, input#debit-card-num {
-                                                                                    background: url('/static/img/card.png') no-repeat;
-                                                                                    background-size: 32px 24px;
-                                                                                    background-position: 95%; }
+                                                                                  .black {
+                                                                                    color: black; }
 
-                                                                                    input#card-num.visa, input#debit-card-num.visa {
-                                                                                      background-image: url('/static/img/visa.png'); }
+                                                                                    input#card-num, input#debit-card-num {
+                                                                                      background: url('/static/img/card.png') no-repeat;
+                                                                                      background-size: 32px 24px;
+                                                                                      background-position: 95%; }
 
-                                                                                      input#card-num.mastercard, input#debit-card-num.mastercard {
-                                                                                        background-image: url('/static/img/mastercard.png'); }
+                                                                                      input#card-num.visa, input#debit-card-num.visa {
+                                                                                        background-image: url('/static/img/visa.png'); }
 
-                                                                                        input#card-num.discover, input#debit-card-num.discover {
-                                                                                          background-image: url('/static/img/discover.png'); }
+                                                                                        input#card-num.mastercard, input#debit-card-num.mastercard {
+                                                                                          background-image: url('/static/img/mastercard.png'); }
 
-                                                                                          input#card-num.amex, input#debit-card-num.amex {
-                                                                                            background-image: url('/static/img/amex.png'); }
+                                                                                          input#card-num.discover, input#debit-card-num.discover {
+                                                                                            background-image: url('/static/img/discover.png'); }
 
-                                                                                            .table-view.no-margin {
-                                                                                              margin-top: 0px !important; }
+                                                                                            input#card-num.amex, input#debit-card-num.amex {
+                                                                                              background-image: url('/static/img/amex.png'); }
 
-                                                                                              .auto-height {
-                                                                                                height: auto; }
+                                                                                              .table-view.no-margin {
+                                                                                                margin-top: 0px !important; }
 
-                                                                                                .hidden {
-                                                                                                  display: none; }
+                                                                                                .auto-height {
+                                                                                                  height: auto; }
 
-                                                                                                  input {
-                                                                                                    color: #000000; }
+                                                                                                  .hidden {
+                                                                                                    display: none; }
 
-                                                                                                    .white-text {
-                                                                                                      color: #fff; }
+                                                                                                    input {
+                                                                                                      color: #000000; }
 
-                                                                                                      .no-border-bottom {
-                                                                                                        border-bottom: 0px; }
+                                                                                                      .white-text {
+                                                                                                        color: #fff; }
 
-                                                                                                        textarea {
-                                                                                                          color: #000000; }
+                                                                                                        .no-border-bottom {
+                                                                                                          border-bottom: 0px; }
 
-                                                                                                          .tt-hint {
-                                                                                                            text-align: left !important; }
+                                                                                                          textarea {
+                                                                                                            color: #000000; }
 
-                                                                                                            .error-div {
-                                                                                                              font-size: 0.8em;
-                                                                                                              margin: 15px 5px 15px 5px;
-                                                                                                              display: none; }
+                                                                                                            .tt-hint {
+                                                                                                              text-align: left !important; }
 
-                                                                                                              .request-guru-btn {
-                                                                                                                position: absolute;
-                                                                                                                bottom: 65px;
-                                                                                                                margin-left: 3% !important; }
+                                                                                                              .error-div {
+                                                                                                                font-size: 0.8em;
+                                                                                                                margin: 15px 5px 15px 5px;
+                                                                                                                display: none; }
 
-                                                                                                                .home-guru {
-                                                                                                                  height: 200px; }
+                                                                                                                .request-guru-btn {
+                                                                                                                  position: absolute;
+                                                                                                                  bottom: 65px;
+                                                                                                                  margin-left: 3% !important; }
 
-                                                                                                                  #uguru-home-text {
-                                                                                                                    font-size: 44px;
-                                                                                                                    margin-top: -4%; }
+                                                                                                                  .submit-request-guru-btn {
+                                                                                                                    position: absolute;
+                                                                                                                    bottom: 25px;
+                                                                                                                    margin-left: 3% !important; }
 
-                                                                                                                    .home-guru-container {
-                                                                                                                      margin-top: 25%; }
+                                                                                                                    .home-guru {
+                                                                                                                      height: 200px; }
 
-                                                                                                                      .home-guru-btn-container {
-                                                                                                                        bottom: 2%;
-                                                                                                                        position: absolute;
-                                                                                                                        width: 100%; }
+                                                                                                                      #uguru-home-text {
+                                                                                                                        font-size: 44px;
+                                                                                                                        margin-top: -4%; }
 
-                                                                                                                        .attach-bottom {
-                                                                                                                          position: relative;
-                                                                                                                          margin-bottom: 0px; }
+                                                                                                                        .home-guru-container {
+                                                                                                                          margin-top: 25%; }
 
-                                                                                                                          .overflow-visible {
-                                                                                                                            overflow: visible !important; }
+                                                                                                                          .home-guru-btn-container {
+                                                                                                                            bottom: 2%;
+                                                                                                                            position: absolute;
+                                                                                                                            width: 100%; }
 
-                                                                                                                            .tt-suggestion.tt-cursor {
-                                                                                                                              background-color: white; }
+                                                                                                                            .attach-bottom {
+                                                                                                                              position: relative;
+                                                                                                                              margin-bottom: 0px; }
 
-                                                                                                                              .tt-suggestion.tt-cursor p {
-                                                                                                                                color: #343d3e; }
+                                                                                                                              .overflow-visible {
+                                                                                                                                overflow: visible !important; }
 
-                                                                                                                                .tt-suggestion p {
-                                                                                                                                  font-size: 20px; }
+                                                                                                                                .tt-suggestion.tt-cursor {
+                                                                                                                                  background-color: white; }
 
-                                                                                                                                  .tt-suggestion {
-                                                                                                                                    padding: 5px 15px;
-                                                                                                                                    border-bottom: 1px solid white; }
+                                                                                                                                  .tt-suggestion.tt-cursor p {
+                                                                                                                                    color: #343d3e; }
 
-                                                                                                                                    .twitter-typeahead, .tt-dropdown-menu {
-                                                                                                                                      width: 100%;
-                                                                                                                                      background-color: #636c6d; }
+                                                                                                                                    .tt-suggestion p {
+                                                                                                                                      font-size: 20px; }
 
-                                                                                                                                      #become-guru-course-input {
-                                                                                                                                        vertical-align: none; }
+                                                                                                                                      .tt-suggestion {
+                                                                                                                                        padding: 5px 15px;
+                                                                                                                                        border-bottom: 1px solid white; }
 
-                                                                                                                                        .guru-intro {
-                                                                                                                                          text-align: center;
-                                                                                                                                          line-height: 1.5;
-                                                                                                                                          font-size: 12.5px !important; }
+                                                                                                                                        .twitter-typeahead, .tt-dropdown-menu {
+                                                                                                                                          width: 100%;
+                                                                                                                                          background-color: #636c6d; }
 
-                                                                                                                                          .typeahead.selected-course {
-                                                                                                                                            background: url('/static/img/ok.png') no-repeat;
-                                                                                                                                            background-size: 24px 24px;
-                                                                                                                                            background-position: 95%;
-                                                                                                                                            background-color: white; }
+                                                                                                                                          #become-guru-course-input {
+                                                                                                                                            vertical-align: none; }
 
-                                                                                                                                            .course-tag, .year-tag {
-                                                                                                                                              margin: 6px 4px;
-                                                                                                                                              padding: 5px 10px;
-                                                                                                                                              color: white;
-                                                                                                                                              border: 1px solid white;
-                                                                                                                                              border-radius: 2px;
-                                                                                                                                              display: inline-block;
-                                                                                                                                              font-size: 12px; }
+                                                                                                                                            .guru-intro {
+                                                                                                                                              text-align: center;
+                                                                                                                                              line-height: 1.5;
+                                                                                                                                              font-size: 12.5px !important; }
 
-                                                                                                                                              .year-tag.active {
-                                                                                                                                                color: white;
-                                                                                                                                                background-color: #CC792B;
-                                                                                                                                                border-color: #CC792B !important; }
+                                                                                                                                              .typeahead.selected-course {
+                                                                                                                                                background: url('/static/img/ok.png') no-repeat;
+                                                                                                                                                background-size: 24px 24px;
+                                                                                                                                                background-position: 95%;
+                                                                                                                                                background-color: white; }
 
-                                                                                                                                                .year-tag.move-right.active {
+                                                                                                                                                .course-tag, .year-tag {
+                                                                                                                                                  margin: 6px 4px;
+                                                                                                                                                  padding: 5px 10px;
                                                                                                                                                   color: white;
-                                                                                                                                                  background-color: #CC792B;
-                                                                                                                                                  border-color: #CC792B !important;
-                                                                                                                                                  position: absolute;
-                                                                                                                                                  top: 6px;
-                                                                                                                                                  right: 60px; }
+                                                                                                                                                  border: 1px solid white;
+                                                                                                                                                  border-radius: 2px;
+                                                                                                                                                  display: inline-block;
+                                                                                                                                                  font-size: 12px; }
 
-                                                                                                                                                  .btn-positive.active, .btn-positive:active {
-                                                                                                                                                    color: #fff;
-                                                                                                                                                    background-color: #69B3A5;
-                                                                                                                                                    border: 0px; }
+                                                                                                                                                  #habla_window_div #habla_topbar_div {
+                                                                                                                                                    background: #69B3A5 none repeat scroll 0 0;
+                                                                                                                                                    color: #FFF;
+                                                                                                                                                    padding: 10px;
+                                                                                                                                                    cursor: pointer; }
+
+                                                                                                                                                    .year-tag.active {
+                                                                                                                                                      color: white;
+                                                                                                                                                      background-color: #CC792B;
+                                                                                                                                                      border-color: #CC792B !important; }
+
+                                                                                                                                                      .year-tag.move-right.active {
+                                                                                                                                                        color: white;
+                                                                                                                                                        background-color: #CC792B;
+                                                                                                                                                        border-color: #CC792B !important;
+                                                                                                                                                        position: absolute;
+                                                                                                                                                        top: 6px;
+                                                                                                                                                        right: 60px; }
+
+                                                                                                                                                        .btn-positive.active, .btn-positive:active {
+                                                                                                                                                          color: #fff;
+                                                                                                                                                          background-color: #69B3A5;
+                                                                                                                                                          border: 0px; }

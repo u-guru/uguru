@@ -121,11 +121,13 @@ def welcome():
     campaign = request.args.get('camp')
     user_id = request.args.get('user_id')
     if campaign and user_id:
-        mp.track(user_id, 'Link Clicked', {
-            'Campaign': campaign
-            })
+        #Create MP profile
+
+        from tasks import create_mp_profile
+        create_mp_profile.delay(user_id, campaign)
 
         session['email_user_id'] = user_id
+        print campaign, user_id
 
         return redirect(url_for('welcome'))
 
@@ -135,6 +137,15 @@ def welcome():
 def m_welcome_campaign_track(campaign, _id):
     #SEND TO MP PANEL
     return redirect(url_for('m_welcome'))
+
+@app.route('/m/guru/new/')
+@app.route('/m/guru/new/1/')
+def m_guru_new():
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('login'))
+        
+    return render_template('web/guru-new/guru-1.html')
 
 @app.route('/m/login/')
 def m_login():

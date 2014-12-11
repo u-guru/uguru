@@ -85,5 +85,6 @@ request_details_guru %}
 $('#negative-guru-request-btn').on('click touchstart', function() {
     alert('Sorry! Only one request at a time. Once you are connected with a Guru, you can make another one!');
 });
+mixpanel.identify('{{user.id}}');
 </script>
 {% endblock %}

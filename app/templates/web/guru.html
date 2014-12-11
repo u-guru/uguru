@@ -12,7 +12,9 @@
     <img id='guru-profile-photo' src='{{user.as_dict().profile_url}}'class="media-object pull-right table-view-mini-face profile-title-icon"/>
   </a>
   <h1 class="title">Guru {{user.get_first_name()}}</h1>
-  <a class='btn btn-link pull-right' data-transition='fade' href='/m/support/'>Help</a>
+  <!-- <a class='btn btn-link pull-right' id='guru-support-home' data-transition='fade' href='/m/guru/new/'>New!</a> -->
+  <a class='btn btn-link pull-right' id='guru-support-home' data-transition='fade' href='/m/guru/support/'>Support</a>
+
 </header>
 {% endblock %}
 
@@ -65,18 +67,6 @@
 
   </ul>
   {% endif %}
-  {% if user.balance %}
-  <ul class='table-view'>
-    <li class="table-view-cell">
-      <a class='navigate-right' {% if user.recipient_id %} href='/m/guru/cashout/home/'
-      {% else %} href='/m/add_cash_card/home/' {% endif %} data-transition='slide-in'
-      >
-      Your balance: <strong> ${{user.balance}} </strong>
-       <button class='btn btn-link'> Cash out  </button>
-      </a>
-    </li>
-  </ul>
-  {% endif %}
   <!-- Add flashed content -->
   {% include 'web/snippets/flash_alerts.html' %}
   <script>
@@ -113,7 +103,17 @@
       });
 
     });
+  
+  // Identify which user this is.
+  mixpanel.identify('{{user.id}}');
+  mixpanel.track_links("#profile-title-bar-icon", "Clicked guru profile icon");
+  mixpanel.track_links("#guru-home-footer", "Clicked guru home icon");
+  mixpanel.track_links("#guru-home-messages", "Clicked guru messages");
+  mixpanel.track_links("#guru-home-settings", "Clicked guru settings");
+  mixpanel.track_links("#guru-become-student", "Clicked become a student");
+  mixpanel.track_links("#guru-support-home", "Clicked support link");
 </script>
+
 
 
 </div><!-- /.content -->
