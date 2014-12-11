@@ -1,8 +1,9 @@
 import csv
-import geopy
+import json
 # from geopy.geocoders import Nominatim
 from geopy.geocoders import GoogleV3
 from tld import get_tld
+import pickle
 
 class School:
 	def __init__(self, row):
@@ -16,17 +17,38 @@ class School:
 		self.domain = get_tld("http://" + self.website, fail_silently=True) # Try to get likely email domain
 		self.latitude = None
 		self.longitude = None
-		self.data = row
 
 	def __repr__(self):
-		return "<School %s, %s, %s, %s, %s, %s >" % (self.name, self.address, self.city, self.state, self.website, self.phone)
+		return "<School - %s, %s, %s, %s, %s, %s, %s, (%s, %s) >" % (self.name, self.address, self.city, self.state, self.website, self.domain, self.phone, self.latitude, self.longitude)
 
+	def __hash__(self):
+		return hash(self.name) ^ hash(self.address)
+
+	def __eq__(self, other):
+		if self.name == other.name or self.address == other.address:
+			return True
+		return False
 
 	@staticmethod
-	def find_by_name(name, school_list=None):
-		return filter(lambda school: name.lower() in school.name.lower() , school_list)
+	def find_by_name(name, school_list=[]):
+		return filter(lambda school: name.lower() in school.name.lower(), school_list)
+	
+	@staticmethod
+	def find_by_address(address, school_list=[]):
+		return filter(lambda school: address.lower() in school.address.lower(), school_list)
 
+	@staticmethod
+	def nearbySchools(lat_long=(None, None), school_list=[], num_returned=3):
+		from geopy.distance import vincenty
 
+		discovered_schools = []
+		for school in school_list: # TODO : This can be massively optimized.
+			distance_between = vincenty(lat_long, (school.latitude, school.longitude) ).meters
+			distance_to_school = (distance_between, school)
+			discovered_schools.append(distance_to_school)
+
+		sorted_schools = sorted(discovered_schools, key=lambda x: x[0])
+		return sorted_schools[:num_returned]
 
 def load_data():
 	# Note : The most recent data can be pulled from this 
@@ -41,34 +63,37 @@ def load_data():
 	    	all_schools.append(s)
 	return all_schools
 
-
 def fetch_geo_info(school):
 	geolocator = GoogleV3()
-	print "fetching coordinates for " + str(school)
 	try:
 		location = geolocator.geocode(school.address + " " + school.city + " " + school.state)
 		if not location:
-			print "location not found!"
+			raise
 			return False
 	except Exception, e:
 		print e
 		return False
 	school.latitude = location.latitude
 	school.longitude = location.longitude
-	print "done."
 	return True
 
-def run_generator():
+def run(debug=False):
+	# Get all schools and get rid of non-institutions: trade schools, beauty schools, etc...
+	schools = load_data()
+	schools = filter(lambda x: x.type == "Institutional", schools)
+	schools = list(set(schools)) # Remove duplicates 
+	print "Total unique schools to fetch: " + str(len(schools))
 	
-	# Get all the schools
-	all_schools = load_data()
-
-	# Filter out non-institutions: trade schools, beauty schools, etc...
-	select_schools = filter(lambda x: x.type == "Institutional" , all_schools)
-
+	if debug:
+		print "DEBUG: Shuffling and limiting to 10 schools."
+		import random
+		random.shuffle(schools)
+		schools = schools[:10]
+	
 	schools_with_geo = []
 	schools_without_geo = []
-	for school in select_schools[:10]:
+	
+	for school in schools:
 		success = fetch_geo_info(school)
 		if success:
 			print "SUCCESS: " + str(school)
@@ -77,19 +102,20 @@ def run_generator():
 			print "FAIL: " + str(school)
 			schools_without_geo.append(school)
 
-	# Try again with failed schools
-	for school in schools_without_geo:
-		success = fetch_geo_info(school)
-		if success:
-			print "SUCCESS 2nd time: " + str(school)
-			schools_with_geo.append(school)
-			schools_without_geo.remove(school)
-		else:
-			print "FAIL 2nd time: " + str(school)
-
-	print
-	print "Schools successfully located: " + str(len(schools_with_geo))
+	# TODO : Try failed schools again with a different geolocator provider...
+	print "Schools located: " + str(len(schools_with_geo))
 	print "Schools not located: " + str(len(schools_without_geo))
+	saveToFile(schools_with_geo)
+	return schools_with_geo
+
+def saveToFile(school_list):
+	pickle.dump(school_list, open("schools.p", "wb"))
+	print "Saved to file."
+
+def loadFromFile():
+	imported_schools = pickle.load(open("schools.p", "rb"))
+	print "Loaded from file."
+	return imported_schools
 
 # Alternatives:
 # Google Nearby Search API
@@ -99,10 +125,3 @@ def run_generator():
 # http://univ.cc/search.php?dom=edu&key=berkeley&start=51
 # http://geoforms.org/country.php?uid=4ce32af065315&lang=en
 # http://opengeocode.org
-
-# # Abandoning this method 
-# from bs4 import BeautifulSoup
-# US_STATE_SCHOOLS_MOBILE_SITE = "http://en.m.wikipedia.org/wiki/List_of_state_universities_in_the_United_States"
-# def soupFromUrl(url):
-# 	soup = BeautifulSoup(open(url))
-# 	return soup
