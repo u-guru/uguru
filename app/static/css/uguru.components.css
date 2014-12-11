@@ -285,6 +285,10 @@ h1, h2, h3 {
   font-family: 'HelveticaNeue-Light'
 }
 
+.title.light-green-title {
+    color:#69B3A5;
+}
+
 /* request */
 .bar-nav .btn-link, .tab-item.active, .tab-item:active {
     color: #69B3A5;

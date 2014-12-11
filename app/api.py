@@ -900,6 +900,7 @@ def api(arg, _id):
 
     # sign_in logic
     if arg == 'sign_in' and request.method == 'POST':
+        from hashlib import md5
         email = request.json.get("email").lower()
         password = md5(request.json.get("password")).hexdigest()
         

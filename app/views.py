@@ -145,7 +145,7 @@ def m_guru_new():
     if not user:
         return redirect(url_for('m_login'))
         
-    return render_template('web/guru/new/guru-1.html')
+    return render_template('web/guru-new/guru-1.html')
 
 @app.route('/m/login/')
 def m_login():
