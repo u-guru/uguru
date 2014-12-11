@@ -44,13 +44,14 @@
         <a class="control-item" href="#"> 2hr + </a>
       </div>
     </li>
-
-    <!-- <li class="table-view-cell ignore-table-view-margin center">
-      <span style="font-size:16;color:#ffffff;">$</span>
-      <span style="font-size:35;color:#ffffff;" id="request-estimated-cost">10</span>
-      <br>
-      <span style="color:#c0c0c0;">estimated cost</span>
-    </li> -->
+    <li class='table-view-cell pricing-li ignore-table-view-margin'>
+      <p class='font-20 margin-top-5'>
+        Just <span class='white-text bold'> $5</span> for <span class='white-text bold'>15 Minutes</span> 
+        <br>
+        <div class='font-12 white-text center'>Billed on per minute basis.</div>
+      </p>
+    </li>
+  
   </ul>
   <a class="btn btn-positive btn-block submit-request-guru-btn" id="confirm-button" href="#">
     Submit Request
@@ -154,7 +155,7 @@
             'start_time': start_time, 
         });
 
-        mixpanel.track("Request Created", {
+        mixpanel.track("Request Created", 
           {
             'skill_name': $('#request-course').val(),
             'description': $('#request-description').val(),
@@ -164,8 +165,7 @@
             'is_urgent': $('#asap-toggle').hasClass('active'),
             'time_estimate': $('#request-time-estimate-button-group .control-item.active').index(), 
             'start_time': start_time, 
-          }          
-        });
+          });
 
         $.ajax({
             url: '/api/v1/requests',
