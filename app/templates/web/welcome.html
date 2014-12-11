@@ -20,7 +20,7 @@
       <button class="btn btn-positive btn-block sign-up home-page-btn">Sign up</button>
     </a>
     <a data-transition='slide-in' href='/m/login/'>
-      <button class="btn btn-positive btn-block login home-page-btn">Log in</button>
+      <button id='welcome-login-btn' class="btn btn-positive btn-block login home-page-btn">Log in</button>
     </a>
     <button type='submit' id='fb-login-btn' onlogin="beginFbConnect();" class="btn btn-positive btn-block fb-color center relative home-page-btn">
       <span class='fb-icon absolute'>f</span>Connect with Facebook
@@ -98,7 +98,10 @@
     });
   }
 
-
+  mixpanel.track_links("#fb-login-btn", "Clicked fb signup link");
+  mixpanel.track_links("#welcome-login-btn", "Clicked regular login");
+  mixpanel.track_links("#signup-btn", "Clicked regular login");
+  mixpanel.track_links("#welcome-login-btn", "Clicked big landing page button.");
   </script>
 
   <div id="fb-root"></div>

@@ -472,7 +472,7 @@ def guru_cancel_request_by_id(_id):
         request_dict=_request.get_return_dict())
     else:
         return render_template('web/guru_accept_request.html', user=user,\
-        request_dict=_request.get_return_dict())
+        request_dict=_request.get_return_wdict())
 
 
 @app.route('/m/guru/accept_request/<_id>/')

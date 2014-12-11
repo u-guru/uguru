@@ -35,6 +35,7 @@
     })
     .on('typeahead:selected', function() {
       if ($('#{{input_id}}').val()) {
+        mixpanel.track("Request Form Course Selected", $('#{{input_id}}').val());
         $('#{{input_id}}').addClass('selected-course');
         $('#request-description').focus();
       }
@@ -77,6 +78,8 @@
         alert('Please only add from the available options.');
         return;
     }
+
+    mixpanel.track("Guru Skill Added", course_name);
 
     //update server
     update_skill_ajax('add',course_name);
@@ -125,6 +128,7 @@
       //remove the space
 
       update_skill_ajax('remove',skill_name);
+      mixpanel.track("Guru Skill Removed", skill_name);
       
       //Remove & focus back on input
       $(this).parent().remove();

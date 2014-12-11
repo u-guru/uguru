@@ -86,5 +86,9 @@ $('#negative-guru-request-btn').on('click touchstart', function() {
     alert('Sorry! Only one request at a time. Once you are connected with a Guru, you can make another one!');
 });
 mixpanel.identify('{{user.id}}');
+mixpanel.track_links("#negative-guru-request-btn", "Negative guru request button clicked");
+mixpanel.track_links(".request-guru-btn", "Regular request guru button clicked");
+mixpanel.track_links("#profile-title-bar-icon", "Negative guru request button clicked");
+
 </script>
 {% endblock %}
