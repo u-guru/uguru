@@ -143,7 +143,7 @@ def m_welcome_campaign_track(campaign, _id):
 def m_guru_new():
     user = api.current_user()
     if not user:
-        return redirect(url_for('login'))
+        return redirect(url_for('m_login'))
         
     return render_template('web/guru-new/guru-1.html')
 
