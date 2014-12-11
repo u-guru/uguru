@@ -12,8 +12,10 @@
 
 <div class="content login-content should-hide-message-bar should-hide-tab-bar">
   <div class='center home-guru-container'>
+    {% if not request.MOBILE %}
     <div class='red-text font-20 bold'>Try Me!<br><span style='margin-top:5px; color:#FF3333; !important;'class="icon icon-down-nav"></span></div>
     <img class='home-guru' src="/static/img/hip_guru.svg"></img>
+    {% endif %}
   </div>
   <h1 id='uguru-home-text'class='center light-green-text open-sans-bold'> uguru </h1>
   <div class='center home-guru-btn-container'>
