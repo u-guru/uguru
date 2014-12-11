@@ -407,6 +407,7 @@ def _request():
 
     return render_template('web/request.html')
 
+@app.route('/m/guru/support/')
 @app.route('/m/support/')
 def support():
 
