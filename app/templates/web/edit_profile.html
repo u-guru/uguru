@@ -9,9 +9,9 @@ profile_year_html_li %}
 <header class="bar bar-nav">
   <h1 class="title">Edit Profile</h1>
   {% if user.is_a_guru() %}
-    <a class="icon icon-left-nav pull-left" href="/m/guru/" data-transition="slide-out"></a>
+    <a class="icon icon-left-nav pull-left" href="/m/guru/profile/{{user.id}}/" data-transition="slide-out"></a>
   {% else %}
-  <a class="icon icon-left-nav pull-left" href="/m/home/" data-transition="slide-out"></a>
+  <a class="icon icon-left-nav pull-left" href="/m/profile/{{user.id}}/" data-transition="slide-out"></a>
   {% endif %}
 </header>
 {% endblock %}

@@ -31,7 +31,7 @@ random_skill_id = 4841
 DEFAULT_TUTOR_TIME = 10 #10 minutes
 DEFAULT_ASAP_TUTOR_TIME = 10 #5 minutes
 
-skill = Skill.query.get(4841)
+skill = Skill.query.get(5116)
 student = User.query.get(1217)
 
 for _id in tutor_ids:

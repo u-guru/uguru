@@ -11,16 +11,16 @@
   <a class='btn btn-link' id='profile-title-bar-icon' data-transition='fade'href='/m/profile/{{user.id}}'>
     <img id='guru-profile-photo' src='{{user.as_dict().profile_url}}'class="media-object pull-right table-view-mini-face profile-title-icon"/>
   </a>
-  <h1 class="title uguru-logo">uguru</h1>
+  <h1 class="title">Guru {{user.get_first_name()}}</h1>
   <a class='btn btn-link pull-right' data-transition='fade' href='/m/support/'>Help</a>
 </header>
 {% endblock %}
 
 {% block main_content %}
 <div class="content should-hide-message-bar">
-  <div class='logo-container center content-padded'>
+  <div style = 'margin-top: 6%; margin-bottom: 0%;' class='logo-container center content-padded'>
     {% if not guru_accepted_requests and not scheduled_sessions %}
-      <img class="media-object guru-photo" src="/static/img/guru-new.svg">
+      <img class="media-object guru-home-photo" src="/static/img/guru-body.svg">
     {% endif %}
   </div>
 
@@ -54,18 +54,12 @@
   </ul>
   {% endif %}
   {% if not guru_requests and not scheduled_sessions %}
-  <!-- <ul class="table-view">    
-    <li class="table-view-cell">
-      <a class="navigate-right" data-transition='slide-in'>
-        Guru Getting-Started Guide
-      </a>
-    </li>
-  </ul> -->
   <ul class='table-view center'>
-    <li class='table-view-cell ignore-table-view-margin'>
-      No requests yet! <br>Our system will text you when there is a a request.
-      {% if user.phone_number %}
-        <br><br> <strong class='green-text'>You will only receive requests if you we have your phone number <strong>
+    <li class='table-view-cell ignore-table-view-margin grey-shade-2'>
+      <h1 style='margin-bottom:15px;'> No requests yet! </h1>
+      <p class='white-text'>Uguru will <span class='light-green-text'><u>text</u></span> you when <br> there is a a request.</p>
+      {% if not user.phone_number %}
+        <br><br> <strong class='green-text'>You will only receive requests if you we have your phone number </strong>
       {% endif %}
     </li>
 

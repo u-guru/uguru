@@ -10,19 +10,23 @@
 {% block main_content %}
 
 <div class="content should-hide-message-bar should-hide-tab-bar">
+    {% if no_pw_user  %}
+    <div id='signup-errors' style='display:block' class='center error-text error-div margin-top-20'>Please create a password!</div>
+    {% else %}
     <div id='signup-errors' class='center error-text error-div margin-top-20'>Please fill in all fields</div>
+    {% endif %}
     <form class="input-group" id="signup-form">
         <div class='input-row'>
             <label>First</label>
-            <input type="text" id="name-field" placeholder="your first name"></input>
+            <input type="text" id="name-field" value='{% if no_pw_user %}{{no_pw_user.get_first_name()}}{% endif %}' placeholder="your first name"></input>
         </div>
         <div class='input-row'>
             <label>Last</label>
-            <input type="email" id="name-field-last" placeholder="your last name"></input>
+            <input type="email" id="name-field-last" value='{% if no_pw_user %}{{no_pw_user.name.split(' ')[1]}}{% endif %}' placeholder="your last name"></input>
         </div>
         <div class='input-row'>
             <label>Email</label>
-            <input type="email" id="email-field" placeholder="peter.parker@berkeley.edu"></input>
+            <input type="email" value='{% if no_pw_user %}{{no_pw_user.email}}{% endif %}'id="email-field" placeholder="peter.parker@berkeley.edu"></input>
         </div>
     </form>
     <form class="input-group" id="signup-form">
@@ -33,6 +37,7 @@
 </form>
     <a class="btn btn-positive btn-block" data-transition='slide-in' href="#" id="signup-link">Join Uguru</a>
     <script>
+    $('header').css('background-color','#343d3e');
     $(document).ready(function() {
         $('#signup-link').click(function(){
             
@@ -51,7 +56,10 @@
             payload = JSON.stringify({
                 name     : name,
                 email    : $('#signup-form #email-field').val(),
-                password : $('#signup-form #password-field').val()
+                password : $('#signup-form #password-field').val(),
+                {% if no_pw_user %}
+                no_pwd_user: true
+                {% endif %} 
             });
 
             $.ajax({

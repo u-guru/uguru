@@ -40,7 +40,7 @@ def request_web_api():
     expected_parameters = ['skill_name', 'description', 'time_estimate','phone_number', 'location', 'urgency', 'is_urgent', 'start_time']
     if not request_contains_all_valid_parameters(request.json, expected_parameters):
         return json_response(422, errors=["Not all required parameters were supplied."])
-
+    
     # Check if this skill is registed in our DB
     skill_name = request.json.get('skill_name')
     skill = Skill.get_skill_from_name(skill_name)
@@ -81,7 +81,8 @@ def request_web_api():
         return json_response(http_code=200, errors=[error_msg], redirect='no-tutors')
 
     # Begin contacting qualified tutors
-    tasks.contact_qualified_tutors.delay(_request.id)
+    # tasks.contact_qualified_tutors.delay(_request.id)
+    tasks.send_student_request.delay(_request.id)
 
     # OK we are FINALLY good to send the return dictionary back to the 
     user.add_request_to_pending_requests(_request)
@@ -273,7 +274,6 @@ def api_signup():
         expected_parameters = ['name','email','password']
 
         if request_contains_all_valid_parameters(request.json, expected_parameters):
-            
             name = request.json.get('name').title()
             email = request.json.get('email')
             password = request.json.get('password')
@@ -304,6 +304,23 @@ def api_signup():
                     return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
                 else:
                     return json_response(http_code=403, errors=["Could not create user."])
+        
+        elif request.json.get('no_pwd_user') and session.get('email_user_id'):
+            
+            expected_parameters.append('no_pwd_user')
+
+            if request_contains_all_valid_parameters(request.json, expected_parameters):
+                from hashlib import md5 
+                user_id = int(session.get('email_user_id'))
+                user = User.query.get(user_id)
+
+                user.name = request.json.get('name')
+                user.password = md5(request.json.get('password')).hexdigest()
+                commit_to_db()
+                user.authenticate()
+                session.pop('email_user_id')
+                return json_response(http_code=200, return_dict=DEFAULT_SUCCESS_DICT)
+
         else:
             return json_response(http_code=422, errors=["Required parameters not supplied."])
 

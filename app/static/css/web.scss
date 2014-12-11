@@ -19,7 +19,26 @@ header {
 
 .relative {
   position:relative;
+  text-align:left;
 }
+
+.btn-course {
+  margin:3px 6px;
+  position:relative !important;
+  border-radius:1px;
+}
+
+.bar .btn-nav.pull-right .icon-right-nav {
+  margin-left: -3px;
+}
+.bar .btn .icon {
+  top: 1px;
+  padding: 0;
+  padding-left: 3px;
+  font-size:19px;
+}
+
+
 
 .fb-icon {
   font-size: 27px;
@@ -50,10 +69,25 @@ a:focus, button:focus
   margin-top:10px;
 }
 
+.margin-bottom-10 {
+  margin-bottom:10px;
+}
+
 .margin-top-20 {
   margin-top:20px;
 }
 
+.margin-top-15 {
+  margin-top:15px;
+}
+
+.margin-bottom-20 {
+  margin-bottom:20px;
+}
+
+.margin-5 {
+  margin:5px;
+}
 
 //font-stuff
 .font-16 { 
@@ -62,6 +96,10 @@ a:focus, button:focus
 
 .font-12 {
   font-size:12px;
+}
+
+.font-20 {
+  font-size:20px;
 }
 
 .profile-title-icon {
@@ -78,7 +116,7 @@ a:focus, button:focus
 }
 
 .table-view-large-face {
-  height:65px;
+  height:85px;
   border-radius:50px;
   border:2px solid white;
 }
@@ -98,6 +136,10 @@ a:focus, button:focus
   height:120px;
 }
 
+.guru-home-photo {
+  height:40%;
+}
+
 .logo-container {
   margin-top:15%;
   margin-bottom: 15%;
@@ -115,6 +157,9 @@ a:focus, button:focus
   color:#8f8f94;
 }
 
+.negative-text {
+  color: #CC792B;
+}
 
 .bar {
   display:block;
@@ -299,6 +344,11 @@ textarea {
   vertical-align: none;
 }
 
+.guru-intro {
+  text-align:center;
+  line-height:1.5;
+  font-size:12.5px !important;
+}
 
 //Request form css
 

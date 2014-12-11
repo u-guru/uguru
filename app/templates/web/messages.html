@@ -21,7 +21,7 @@
 {% endblock %}
 
 {% block main_content %}
-<div class="content should-hide-tab-bar" id='message-content-div' data-convo-id='{{convo.id}}' data-user-id='{{user.id}}'>
+<div class="content should-hide-tab-bar message-body" id='message-content-div' data-convo-id='{{convo.id}}' data-user-id='{{user.id}}'>
 
     <ul class="table-view no-margin" style='padding-bottom:40px'>
         {% for message_dict in all_message_dicts['messages'] %}
@@ -42,6 +42,14 @@
         {% endfor %}
     </ul>
     <script>
+    $(document).ready(function() {
+        $('.message-body').stop().animate({
+            scrollTop: $(".message-body")[0].scrollHeight
+        }, 1600, function() {
+            $("input[name='message-input']").focus().focus();
+        });
+     });
+
     $('body').on('click', '#send-message-link', function() {
         var convo_id = ($('#message-content-div').data().convoId).toString();
         var user_id = ($('#message-content-div').data().userId).toString();
