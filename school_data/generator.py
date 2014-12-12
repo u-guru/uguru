@@ -4,6 +4,7 @@ from tld import get_tld
 from datetime import datetime
 import pickle
 import time
+import random
 
 class School:
 	def __init__(self, row):
@@ -66,13 +67,14 @@ def load_data():
 
 def fetch_geo_info(school):
 	providers = [GoogleV3, Nominatim, ArcGIS, OpenMapQuest, Yandex]
+	random.shuffle(providers) # To avoid take limiting
 	location = None;
 	for geolocator in providers:	
 		try:
 			print "...trying prvider: "+ str(geolocator.__module__) + " for school " + str(school.name)
-			location = geolocator().geocode(school.address + " " + school.city + " " + school.state)
+			location = geolocator().geocode(school.address + " " + school.city + " " + school.state, timeout=2) # Give them a shot to respond
 		except Exception, e:
-			# print "......" + str(e)
+			print "......" + str(e)
 			continue
 		if location:
 			school.latitude = location.latitude
@@ -90,14 +92,13 @@ def run(batch_size=10):
 	print "Total unique schools to fetch: " + str(len(schools))
 	
 	# Shuffle them so we dont get the same order every run
-	import random
 	random.shuffle(schools)
 	schools = schools[:batch_size]
 	
 	school_cache = loadFromFile() # Pull in already computed schools from the cache
 
+	# Remove already computed/cached schools from the list to be computed 
 	intersection = list(set(schools) & set(school_cache))
-	# print "Cache Hits: "+str(len(intersection))
 	for c_school in intersection:
 		schools.remove(c_school)
 
@@ -109,9 +110,14 @@ def run(batch_size=10):
 		else:
 			print "SUCCESS: " + str(updated_school)
 			schools_with_geo.append(updated_school)
+		time.sleep(2) # To avoid rate limiting
 
 	all_schools = schools_with_geo + school_cache
 	saveToFile(all_schools)
+	# Beep
+	import sys
+	sys.stdout.write('\a')
+	sys.stdout.flush()
 
 def saveToFile(school_list):
 	print "Schools saved: " + str(len(school_list))
