@@ -43,7 +43,7 @@ request_details_guru, student_scheduled_session %}
         </a>
       </li>
     </ul>
-  {% else %}
+  {% elif scheduled_sessions %}
     {{student_scheduled_session(scheduled_sessions[0])}}
   {% endif %}
 

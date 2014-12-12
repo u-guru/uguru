@@ -1292,7 +1292,7 @@ def reminder_before_session(person_a, person_b, location, ending):
 #Was MEANT to send an error anytime there is a production. Not anymore I guess.
 def error(message):
 
-    EMAIL_TO = ["makhani.samir@gmail.com", "cameron@uguru.me"]
+    EMAIL_TO = ["makhani.samir@gmail.com"]
     logging.info(message)
 
     if os.environ.get('TESTING'):
