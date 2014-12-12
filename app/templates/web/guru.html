@@ -55,14 +55,11 @@
     </li>
   </ul>
   {% endif %}
-  {% if not guru_requests and not scheduled_sessions %}
+  {% if not guru_requests and not scheduled_sessions and not guru_incoming_requests %}
   <ul class='table-view center'>
     <li class='table-view-cell ignore-table-view-margin grey-shade-2'>
       <h1 style='margin-bottom:15px;'> No requests yet! </h1>
       <p class='white-text'>Uguru will <span class='light-green-text'><u>text</u></span> you when <br> there is a a request.</p>
-      {% if not user.phone_number %}
-        <br><br> <strong class='green-text'>You will only receive requests if you we have your phone number </strong>
-      {% endif %}
     </li>
 
   </ul>

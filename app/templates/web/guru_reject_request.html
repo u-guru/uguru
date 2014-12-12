@@ -12,8 +12,7 @@
 {% block main_content %}
 <div class="content should-hide-message-bar should-hide-tab-bar">
     {{guru_request_reject(request_dict)}}
-</div>
-<script>
+    <script>
     $('a.guru-reject-link').click(function() {
         url_components = window.location.pathname.split( '/' );
         request_id = url_components[url_components.length - 2];
@@ -40,4 +39,5 @@
         });
     });
 </script>
+</div>
 {% endblock %}

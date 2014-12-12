@@ -13,11 +13,36 @@ request_details_guru %}
 
 {% block main_content %}
 <div class="content should-hide-tab-bar should-hide-message-bar">
-    
+
 
         {{request_details_guru(request_dict)}}
 
 
+<script> 
+
+    countdown('countdown', {{(time / 60)|int}}, {{(time % 60)|int}});
+    function countdown(element, minutes, seconds) {
+        // set time for the particular countdown
+        var time = minutes*60 + seconds;
+        var interval = setInterval(function() {
+            var el = document.getElementById(element);
+            // if the time is 0 then end the counter
+            if(time == 0) {
+                $()
+                setTimeout(function(){ 
+                    el.innerHTML = "Sorry! Time is up. Redirecting...";
+                }, 10000);
+                window.location.replace('/m/guru/');
+                return;
+            }
+            var minutes = Math.floor( time / 60 );
+            var seconds = time % 60;
+            var text = minutes + ' min ' + seconds + ' sec';
+            el.innerHTML = text;
+            time--;
+        }, 1000);
+    }
+</script>
 </div>
 
 {% endblock %}

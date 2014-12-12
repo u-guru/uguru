@@ -57,10 +57,19 @@
                 contentType: 'application/json',
                 data: payload,
                 success: function(request){
-                    window.PUSH({
+                    console.log(request);
+                    if (request.redirect && request.redirect == 'admin') {
+                      
+                      window.location.replace('/admin/');
+
+                    } else {
+
+                      window.PUSH({
                         transition : "slide-in",
                         url : "/m/home/"
-                    });
+                      });
+
+                    }
                 },
                 error: function (request) {
                   $('#login-errors').text(request.responseJSON['errors']);

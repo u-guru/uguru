@@ -57,15 +57,23 @@
             </a>
       </li>
     </ul>
-    <a class='btn btn-negative btn-block decline' data-transition='slide-in' href='/m/reject_guru/{{request_dict["server_id"]}}/'> 
+
+    <a style='z-index:50;'class='btn btn-negative btn-block decline' data-transition='slide-in' href='/m/reject_guru/{{request_dict["server_id"]}}/'> 
           Reject
     </a>
-    <a class='btn btn-positive btn-block accept' href='/m/confirm_request/{{request_dict["server_id"]}}' data-transition='slide-in'> 
+    <a style='z-index:50;' class='btn btn-positive btn-block accept' data-tutor-id='{{guru["server_id"]}}'  href='/m/confirm_request/{{request_dict["server_id"]}}' data-transition='slide-in'> 
           Accept 
     </a>
+    
 {%- endmacro %}
 
 {% macro request_details_guru(request_dict) -%}
+    <ul class="table-view">
+      <li style='background-color:red;'class='table-view-cell ignore-table-view-margin center'>
+        <span class='font-20'id='countdown'></span><br>
+        <span class='font-12'>left to accept request</span>
+      </li>
+    </ul>
     <ul class="table-view table-view-scheduled">    
         <li class='table-view-cell'>
           <h1>{{request_dict['skill_name']}} 
@@ -194,6 +202,41 @@
         {{guru_confirm_session(_request, is_mobile)}}
       {% endif %}
 
+{%- endmacro %}
+
+{% macro student_scheduled_session(_request) -%}
+    {% set request_dict = _request.get_return_dict() %}
+      <ul class="table-view table-view-scheduled">    
+        <li class='table-view-cell'>
+          <h1>{{request_dict['skill_name']}} 
+            <span class='grey-text'>Session</span>
+          </h1>
+          <span class='red-text'>
+            {{request_dict['start_time']}} for {{request_dict['time_estimate']}}
+          </span>
+        </li>
+        <li class="table-view-cell media">
+          <a class='navigate-right'>
+                <img class="media-object pull-left table-view-face" src="{{request_dict['connected_tutor']['profile_url']}}">
+                <div class="media-body">
+                  {{request_dict['connected_tutor']['name']}}
+                    <p>
+                        <span class="icon icon-star-filled profile-star black"></span>
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                        <span class="icon icon-star-filled profile-star black"></span> 
+                    </p>
+                </div>
+          </a>
+        </li>
+        <li class='table-view-cell'>
+          Location: {{request_dict['location']}}
+        </li>
+        <li class='table-view-cell'>
+          $5 for every 15 minutes
+        </li>
+      </ul>
 {%- endmacro %}
 
 {% macro guru_confirm_session(_request, is_mobile) -%}

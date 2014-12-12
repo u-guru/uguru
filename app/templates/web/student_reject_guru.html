@@ -11,13 +11,13 @@
   <div class='content-padded'>
     <form>
       <textarea id='student-reject-guru-description' placeholder='Please tell us why, and we will try out best to send another Guru your way for this request.' rows="5"></textarea>
-      <a class='btn btn-positive btn-block' href='#' data-request-id='{{request_dict["server_id"]}}'data-tutor-id='{{request_dict["interested_tutors"][0]["server_id"]}}' id='student-reject-guru-link'>
+      <a class='btn btn-positive btn-block' href='#' data-request-id='{{request_dict["server_id"]}}' data-tutor-id='{{request_dict["interested_tutors"][0]["server_id"]}}' id='student-reject-guru-link'>
           Submit 
       </a>
     </form>
   </div>
   <script>
-    $('#student-reject-guru-link').on('touchstart', function() {
+    $('#student-reject-guru-link').on('click', function() {
 
         request_id = ($(this).data().requestId).toString();
         tutor_id = ($(this).data().tutorId).toString();

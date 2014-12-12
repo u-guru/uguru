@@ -418,7 +418,7 @@ class User(Base):
         from views import calc_avg_rating
         return calc_avg_rating(self)
 
-    def get_conversation_with(self, guru):
+    def get_conversation_with(self, guru):        
         for c in self.conversations:
             if c.guru == guru:
                 return c
@@ -500,6 +500,16 @@ class User(Base):
             if self.id == _request.student_id:
                 all_student_requests.append(_request)
         return all_student_requests
+
+    # When there are no gurus available
+    def process_end_request(self, _request):
+        self.outgoing_requests.remove(_request)
+        try: 
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
 
     #for guru to get all incoming requests
     def get_guru_requests(self):
@@ -1119,7 +1129,8 @@ class Request(Base):
         self.start_time = start_time
         self.remote = remote
         self.location = location
-        self.requested_tutors = Skill.query.get(skill_id).tutors
+        self.requested_tutors = self.filter_previous_gurus(\
+            Skill.query.get(skill_id).tutors, student_id)
 
     def __repr__(self):
         student_name = User.query.get(self.student_id).name
@@ -1160,6 +1171,19 @@ class Request(Base):
         c = Conversation.query.filter_by(student_id = self.student_id, \
             guru_id=self.connected_tutor_id).first()
         return c
+
+    @staticmethod
+    def filter_previous_gurus(guru_arr, student_id):
+        student = User.query.get(student_id)
+        c_gurus = [c.guru for c in student.conversations]
+        filtered_gurus = []
+        for guru in guru_arr:
+            if guru not in c_gurus:
+                filtered_gurus.append(guru)
+            else:
+                print 'guru removed', guru
+        return filtered_gurus
+
 
     def process_start_time(self):
         if self.urgency:
@@ -1202,6 +1226,11 @@ class Request(Base):
         tutor = User.query.get(tutor_id)
         self.committed_tutors.remove(tutor)
         tutor.outgoing_requests.remove(self)
+
+        from tasks import send_student_request
+        send_student_request.delay(self.id)
+        print "Student has rejected ", tutor
+
         try:
             db_session.commit()
         except:
@@ -1210,8 +1239,14 @@ class Request(Base):
 
     def process_tutor_reject(self, tutor_id):
         tutor = User.query.get(tutor_id)
-        self.committed_tutors.remove(tutor)
         tutor.outgoing_requests.remove(self)
+
+        self.pending_tutor_id = None
+        self.time_pending_began = None
+
+        from tasks import send_student_request
+        send_student_request(self.id)
+
         try:
             db_session.commit()
         except:
@@ -1229,8 +1264,11 @@ class Request(Base):
         student = User.get_user(self.student_id)
         skill = Skill.query.get(self.skill_id)
 
-        student.outgoing_requests.remove(self)
-        tutor.outgoing_requests.remove(self)
+        if self in tutor.outgoing_requests:
+            tutor.outgoing_requests.remove(self)
+        if self in student.outgoing_requests:
+            student.outgoing_requests.remove(self)
+        
 
         for tutor in (self.requested_tutors + self.committed_tutors):
             if self in tutor.outgoing_requests:
@@ -1253,6 +1291,14 @@ class Request(Base):
         self.pending_tutor_id = tutor.id
         self.pending_tutor_description = description
         self.time_pending_began = datetime.now()
+
+        from tasks import check_tutor_request_status
+        from tasks import DEFAULT_STUDENT_ACCEPT_TIME
+        check_tutor_request_status.apply_async(args=[self.id, tutor.id], 
+            countdown = DEFAULT_STUDENT_ACCEPT_TIME)
+
+        print 'Adding ' + DEFAULT_STUDENT_ACCEPT_TIME + ' seconds for student to accept'
+
         try:
             db_session.commit()
         except:
@@ -1319,7 +1365,7 @@ class Request(Base):
         return 
 
     def get_status(self):
-        if not self.pending_tutor_id:
+        if self.pending_tutor_id:
             return 'pending'
         elif self.time_canceled:
             return 'canceled'

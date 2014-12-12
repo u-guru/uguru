@@ -105,8 +105,6 @@ def my_tutors():
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
-
-    print user.get_all_conversations()
     
     return render_template('web/my_tutors.html', user=user)
 
@@ -269,6 +267,16 @@ def become_guru():
         return redirect(url_for('m_login'))
 
     return render_template('web/become_guru.html'\
+        , user=user)
+
+@app.route('/m/upcoming/')
+def upcoming_sessions():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/upcoming_sessions.html'\
         , user=user)
 
 @app.route('/m/add_courses/')
@@ -458,10 +466,6 @@ def guru_cancel_request_by_id(_id):
     if not user:
         return redirect(url_for('m_login'))
 
-    if not user == _request.get_student() and not _request.is_tutor_involved(user):
-        flash("Sorry! You don't have access to this page.")
-        return redirect(url_for('m_guru'))
-
     if 'reject' in request.url:
         return render_template('web/guru_reject_request.html', user=user,\
         request_dict=_request.get_return_dict())
@@ -473,7 +477,7 @@ def guru_cancel_request_by_id(_id):
         request_dict=_request.get_return_dict())
     else:
         return render_template('web/guru_accept_request.html', user=user,\
-        request_dict=_request.get_return_wdict())
+        request_dict=_request.get_return_dict())
 
 
 @app.route('/m/guru/accept_request/<_id>/')
@@ -520,14 +524,19 @@ def request_by_id(_id):
     if not user:
         return redirect(url_for('m_login'))
 
+    if not user == _request.get_student() and _request.pending_tutor_id != user.id\
+    and user in _request.contacted_tutors and not _request.time_canceled:
+        flash('Sorry! You missed your turn!')
+        return redirect(url_for('m_guru'))
+
     # request already canceled, guru can't accept
     if not user == _request.get_student() and \
-    _request.time_connected and user in _request.approved_tutors():
+    _request.time_canceled:
         flash('Sorry! The student has canceled this request')
         return redirect(url_for('m_guru'))
 
     #if Guru shouldn't see this.
-    if not user == _request.get_student() and not _request.is_tutor_involved(user):
+    if not user == _request.get_student() and not _request.pending_tutor_id == user.id:
         flash("Sorry! You don't have access to this page.")
         return redirect(url_for('m_guru'))
 
@@ -542,10 +551,16 @@ def request_by_id(_id):
         return render_template('web/confirm_request.html', user=user,\
         request_dict=_request.get_return_dict(),\
         stripe_key=stripe_keys['publishable_key'])
+
+    #Guru is looking at request
+    from datetime import datetime 
+    from tasks import DEFAULT_TUTOR_ACCEPT_TIME
+    guru_seconds_remaining = DEFAULT_TUTOR_ACCEPT_TIME - \
+    (datetime.now() - _request.time_pending_began).seconds
     
 
     return render_template('web/request_details.html', user=user,\
-     request_dict=_request.get_return_dict())
+     request_dict=_request.get_return_dict(), time=round(guru_seconds_remaining,2))
 
 @app.route('/log_in/')
 @app.route('/sign_up/')
@@ -2777,33 +2792,6 @@ def get_environment():
     if os.environ.get("TESTING"):
         environment = "TESTING"
     return environment
-
-def send_twilio_msg(to_phone, body, user_id):
-    ## Bug from before
-    if 'Meet at' in body:
-        return 
-    body = '[uGuru] ' + body
-    message = None;
-    try:
-        message = twilio_client.messages.create(
-            body_ = body,
-            to_ = to_phone,
-            from_ = TWILIO_DEFAULT_PHONE,
-            )
-        user = User.query.get(user_id)
-        text = update_text(message)
-        user.texts.append(text)
-        db_session.add(text)
-        db_session.commit()
-        # from tasks import check_msg_status
-        # check_msg_status.apply_async(args=[text.id], countdown = 60)
-    except twilio.TwilioRestException:
-        raise
-        logging.info("text message didn't go through")
-    except:
-        db_session.flush()
-        False #return message didn't go through
-    return message
 
 
 def create_referral_code(user):

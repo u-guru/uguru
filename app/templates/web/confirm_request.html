@@ -28,38 +28,44 @@
         {% endif %}
       </ul>
       {% if user.customer_id %}
-        <a id='student-accept-guru-link' class='btn btn-positive btn-block'> Confirm </a>
+        <a id='student-accept-guru-link' data-tutor-id='{{request_dict["interested_tutors"][0]["server_id"]}}'class='btn btn-positive btn-block'> Confirm </a>
       {% else %}
         <button class='btn btn-negative btn-block' disable> Confirm </button>
       {% endif %}
+
+
+      <script>
+      $(document).ready(function() {
+        $('#student-accept-guru-link').on('click', function() {
+              
+              url_components = window.location.pathname.split( '/' );
+              request_id = url_components[url_components.length - 2];
+
+              var tutor_id = ($('#student-accept-guru-link').data().tutorId).toString();
+
+              payload = JSON.stringify({
+                  action:'student-accept',
+                  tutor_id: tutor_id
+              });
+
+              $.ajax({
+                  url: '/api/v1/requests/' + request_id,
+                  type: 'PUT',
+                  contentType: 'application/json',
+                  data: payload,
+                  success: function(request){
+                      window.PUSH({
+                          transition : "fade",
+                          url : "/m/home/"
+                      });
+                  },
+                  error: function (request) {
+                      alert(request.responseJSON['errors']);
+                  }
+              });
+        });
+      });
+    </script>
+
 </div>
-<script>
-  $(document).ready(function() {
-    $('#student-accept-guru-link').on('click touchstart', function() {
-          
-          url_components = window.location.pathname.split( '/' );
-          request_id = url_components[url_components.length - 2];
-
-          payload = JSON.stringify({
-              action:'student-accept',
-          });
-
-          $.ajax({
-              url: '/api/v1/requests/' + request_id,
-              type: 'PUT',
-              contentType: 'application/json',
-              data: payload,
-              success: function(request){
-                  window.PUSH({
-                      transition : "fade",
-                      url : "/m/home/"
-                  });
-              },
-              error: function (request) {
-                  alert(request.responseJSON['errors']);
-              }
-          });
-    });
-  });
-</script>
 {% endblock %}
