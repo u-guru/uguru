@@ -38,6 +38,7 @@
   <!-- guru accepted sessions -->
   {% for _request in guru_accepted_requests %}
 
+    
     {% set request_dict = _request.get_return_dict() %}
     {{request_details_guru_waiting(request_dict)}}
 
@@ -55,13 +56,12 @@
     </li>
   </ul>
   {% endif %}
-  {% if not guru_requests and not scheduled_sessions and not guru_incoming_requests %}
+  {% if not guru_requests and not scheduled_sessions and not guru_incoming_requests and not guru_accepted_requests%}
   <ul class='table-view center'>
     <li class='table-view-cell ignore-table-view-margin grey-shade-2'>
       <h1 style='margin-bottom:15px;'> No requests yet! </h1>
       <p class='white-text'>Uguru will <span class='light-green-text'><u>text</u></span> you when <br> there is a a request.</p>
     </li>
-
   </ul>
   {% endif %}
   <!-- Add flashed content -->
@@ -102,13 +102,12 @@
     });
   
   // Identify which user this is.
-  mixpanel.identify('{{user.id}}');
-  // mixpanel.track_links("#profile-title-bar-icon", "Clicked guru profile icon");
-  mixpanel.track_links("#guru-home-footer", "Clicked guru home icon");
-  mixpanel.track_links("#guru-home-messages", "Clicked guru messages");
-  mixpanel.track_links("#guru-home-settings", "Clicked guru settings");
-  mixpanel.track_links("#guru-become-student", "Clicked become a student");
-  mixpanel.track_links("#guru-support-home", "Clicked support link");
+  // mixpanel.identify('{{user.id}}');
+  // mixpanel.track_links("#guru-home-footer", "Clicked guru home icon");
+  // mixpanel.track_links("#guru-home-messages", "Clicked guru messages");
+  // mixpanel.track_links("#guru-home-settings", "Clicked guru settings");
+  // mixpanel.track_links("#guru-become-student", "Clicked become a student");
+  // mixpanel.track_links("#guru-support-home", "Clicked support link");
 </script>
 
 

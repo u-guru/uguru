@@ -48,9 +48,6 @@
                 <img class="media-object pull-left table-view-face" src="{{guru['profile_url']}}">
                 <div class="media-body">
                     {{guru['name']}} can help!
-                    <p class='red-text'>
-                        Expires in 5 minutes
-                    </p>
                 </div>
                 <button class="btn btn-link">Profile</button>
             </a>
@@ -111,12 +108,15 @@
 {%-endmacro %}
 
 {% macro request_details_guru_waiting(request_dict) -%}
-  <ul class="table-view table-view-scheduled">
+  <ul class="table-view table-view-scheduled" style="position:relative;">    
+        <a style='top:10px; right:10px; position:absolute; z-index:100; color:grey;' class='icon icon-close'href='/m/guru/cancel_request/{{request_dict["server_id"]}}/' data-transition='slide-in'>
+      </a>
       <li class='table-view-cell'>
-        <h1>{{request_dict['skill_name']}}
+        <img class="media-object media pull-left table-view-medium-face" src="{{request_dict['student']['profile_url']}}">
+        <h2>{{request_dict['skill_name']}}
           <span class='grey-text'>Session</span>
-        </h1>
-        <p class='red-text'> 
+        </h2>
+        <p class='error-text'> 
           WAITING FOR STUDENT
         </p>
       </li>
@@ -133,9 +133,6 @@
         <p>
           {{request_dict['description']}}
         </p>
-        <a class='btn btn-outlined' href='/m/guru/cancel_request/{{request_dict["server_id"]}}/' data-transition='slide-in'>
-            Cancel Request
-        </a>
       </li>
   </ul>
 {%-endmacro %}
