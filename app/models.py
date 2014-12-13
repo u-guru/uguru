@@ -1228,7 +1228,7 @@ class Request(Base):
             return '15-30min'
         elif self.time_estimate == 1:
             return '30-60min'
-        elif self.time_estimate == 1:
+        elif self.time_estimate == 2:
             return '1-2hr'
         else:
             return '2+ hours'
