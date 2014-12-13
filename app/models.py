@@ -504,7 +504,8 @@ class User(Base):
 
     # When there are no gurus available
     def process_end_request(self, _request):
-        self.outgoing_requests.remove(_request)
+        if _request in self.outgoing_requests:
+            self.outgoing_requests.remove(_request)
         try: 
             db_session.commit()
         except:
@@ -1237,7 +1238,8 @@ class Request(Base):
 
         tutor = User.query.get(tutor_id)
         self.committed_tutors.remove(tutor)
-        tutor.outgoing_requests.remove(self)
+        if self in tutor.outgoing_requests:
+            tutor.outgoing_requests.remove(self)
 
         from tasks import send_student_request
         send_student_request.delay(self.id)
@@ -1253,7 +1255,9 @@ class Request(Base):
 
     def process_tutor_reject(self, tutor_id):
         tutor = User.query.get(tutor_id)
-        tutor.outgoing_requests.remove(self)
+
+        if self in tutor.outgoing_requests:
+            tutor.outgoing_requests.remove(self)
 
         self.pending_tutor_id = None
         self.time_pending_began = None
@@ -1359,7 +1363,9 @@ class Request(Base):
     def cancel(self, user, description=None):
         self.time_canceled = datetime.now();
         self.connected_tutor_id = self.student_id
-        user.outgoing_requests.remove(self)
+
+        if self in user.outgoing_requests:
+            user.outgoing_requests.remove(self)
         self.cancellation_reason = description
 
         
@@ -1379,7 +1385,8 @@ class Request(Base):
     # A guru who has committed, but is not anymore
     def guru_cancel(self, guru_id, description=None):
         guru = User.query.get(guru_id)
-        guru.outgoing_requests.remove(self)
+        if self in guru.outgoing_requests:
+            guru.outgoing_requests.remove(self)
         try:
             db_session.commit()
         except:
