@@ -109,6 +109,14 @@
 
                                 {{n['tutor']['name']}} was too late
 
+                            {% elif status =='tutor-clicked-text-link' %}
+
+                                {{n['tutor']['name']}} clicked the text message link.
+
+                            {% elif status =='tutor-viewed-request' %}
+
+                                {{n['tutor']['name']}} viewed the request
+
                             {% elif status =='tutor-accepted' %}
 
                                 {{n['tutor']['name']}} accepted {{r_dict['student']['name']}}'s request

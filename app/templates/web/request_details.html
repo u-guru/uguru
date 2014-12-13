@@ -42,7 +42,12 @@ request_details_guru %}
             time--;
         }, 1000);
     }
+
+
+    mixpanel.identify('{{user.id}}');
+    mixpanel.track("Guru Viewed Request", {"user_id":'{{user.id}}'});
 </script>
+
 </div>
 
 {% endblock %}

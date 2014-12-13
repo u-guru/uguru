@@ -232,8 +232,8 @@ def add_payment(r_id=None):
         user=user)
 
 @app.route('/m/guru/cashout/')
-@app.route('/m/guru/cashout/<redirect>/')
-def guru_cashout(redirect=None):
+@app.route('/m/guru/cashout/<redirect_id>/')
+def guru_cashout(redirect_id=None):
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
@@ -243,7 +243,7 @@ def guru_cashout(redirect=None):
         return redirect(url_for('m_guru'))
 
     return render_template('web/cashout.html',\
-        user=user, redirect=redirect)
+        user=user, redirect=redirect_id)
 
 @app.route('/m/add_cash_card/<home>/')
 @app.route('/m/add_cash_card/')
@@ -525,6 +525,12 @@ def request_by_id(_id):
     if not user:
         if _id:
             session['request-redirect'] = _id
+            _request.create_event_notification('tutor-clicked-text-link')
+            if get_environment() == 'PRODUCTION':
+                mp.track(_request.pending_tutor_id, 'Guru clicked text link', {
+                    'Request Id': _request.id
+                })
+
         return redirect(url_for('m_login'))
 
     if not user == _request.get_student() and _request.pending_tutor_id != user.id\
@@ -565,9 +571,12 @@ def request_by_id(_id):
     if session.get('request-redirect'):
         session.pop('request-redirect')
 
-    mp.track(user.id, 'View Student Request', {
-        'Request Id': _request.id
-    })
+    if get_environment() == 'PRODUCTION':
+        mp.track(user.id, 'View Student Request', {
+            'Request Id': _request.id
+        })
+
+    _request.create_event_notification('tutor-viewed-request')
 
     return render_template('web/request_details.html', user=user,\
      request_dict=_request.get_return_dict(), time=round(guru_seconds_remaining,2))
