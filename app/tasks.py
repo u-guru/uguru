@@ -26,7 +26,7 @@ celery.conf.update(
     CELERY_TIMEZONE="America/Los_Angeles",
 )
 
-DEFAULT_TUTOR_ACCEPT_TIME = 600   #*60
+DEFAULT_TUTOR_ACCEPT_TIME = 3000   #*60
 DEFAULT_STUDENT_ACCEPT_TIME = 3000 #*60
 # ASAP_LIMIT = 60 * 120 # 2 hours
 DEFAULT_CHECK_MSG_TIME = 60
@@ -63,6 +63,9 @@ def get_qualified_tutors(_request):
     commit_to_db()
     return qualified_tutors 
 
+@task(name='tasks.add_two')
+def add_two(num1, num2):
+    return num1 + num2 
 ################
 # Samir-Tasks #
 ################
@@ -81,7 +84,7 @@ def send_student_request(r_id):
         return
 
     #We are not ready yet...
-    return
+    # return
 
     tutor = get_best_queued_tutor(_request)
 
@@ -89,7 +92,8 @@ def send_student_request(r_id):
     # No more gurus left...must end the request
     if not tutor:
         no_tutors_msg = student_not_connected(_request.id)
-        send_twilio_msg.delay('8135009853', no_tutors_msg, _request.student_id)
+        student = User.query.get(_request.student_id)
+        send_twilio_msg.delay(student, no_tutors_msg, _request.student_id)
         student = User.query.get(_request.student_id)
         student.process_end_request(_request)
         return
@@ -105,13 +109,19 @@ def send_student_request(r_id):
     print "Request #", _request.id, "Contacting tutor #", str(len(_request.contacted_tutors)), tutor.name, tutor.id, _request.pending_tutor_id
 
 
+    #Send the text message
+    msg = tutor.get_first_name().upper() + tutor_receives_student_request(r_id)
+    twilio_msg = send_twilio_msg.delay(tutor.phone_number, msg, tutor.id)
+
     #Check status ten minutes later
     check_tutor_request_status.apply_async(\
         args=[r_id, tutor.id], countdown=DEFAULT_TUTOR_ACCEPT_TIME)
 
-    #Send the text message
-    msg = tutor.get_first_name().upper() + tutor_receives_student_request(r_id)
-    twilio_msg = send_twilio_msg.delay('8135009853', msg, tutor.id)
+    if twilio_msg:
+        _request.create_event_notification('text-sent')
+        print 'message sent!'
+    else:
+        print 'message NOT sent!'
 
     commit_to_db()
 
@@ -124,7 +134,7 @@ def check_tutor_request_status(r_id, tutor_id):
     _request = Request.query.get(r_id)
     tutor = User.query.get(tutor_id)
 
-    SECONDS_IN_BETWEEN = (datetime.now() - _request.time_pending_began).seconds
+    SECONDS_IN_BETWEEN = int((datetime.now() - _request.time_pending_began).seconds)
 
     #If tutor accepted in time .... recall the function for seconds in between
     if SECONDS_IN_BETWEEN <= DEFAULT_STUDENT_ACCEPT_TIME and \
@@ -141,7 +151,7 @@ def check_tutor_request_status(r_id, tutor_id):
             _request.time_canceled = datetime.now()
             
             canceled_msg = student_canceled(_request.id, tutor.id)
-            send_twilio_msg.delay('8135009853', msg, tutor.id)
+            send_twilio_msg.delay(tutor.phone_number, msg, tutor.id)
 
             commit_to_db()
     
@@ -151,21 +161,17 @@ def check_tutor_request_status(r_id, tutor_id):
 
         print "Request #", _request.id, "Tutor #", str(len(_request.contacted_tutors)), "ran out of time "
 
-        #Fire off the next one immediately
-        send_student_request(r_id)
+        #Fire off the next one immediately, but make sure it doesn't mess up the next one.
+        send_student_request.apply_async(args=[r_id], countdown=1)
 
         #Update this tutor
         tutor = User.query.get(tutor_id)
         _request = Request.query.get(r_id)
         tutor.outgoing_requests.remove(_request)
 
-        #Add notification, in-case we want to display them.
-        n = Notification()
-        n.status = 'late'
-        n.request_id = _request.id
-        tutor.notifications.append(n)
-        commit_to_db(n)
-    
+        #create notification to keep track of each event
+        _request.create_event_notification('tutor-late')
+
     else:
         pass
         #IDK? 
@@ -173,6 +179,16 @@ def check_tutor_request_status(r_id, tutor_id):
 @task(name='tasks.send_twilio_msg')
 def send_twilio_msg(to_phone, body, user_id):
     body = '[uGuru] ' + body
+    
+    from views import get_environment
+
+    #For local only
+    if get_environment() != 'PRODUCTION':
+        user = User.query.get(user_id)
+        to_phone = '8135009853'
+        body = '[TESTING]' + '[Intended Recipient: ' + str(user.get_first_name())\
+         + ', id: ' + str(user_id) + ') \n\n]'+ body
+
     message = None;
     try:
         message = twilio_client.messages.create(
@@ -190,6 +206,7 @@ def send_twilio_msg(to_phone, body, user_id):
         raise
     except:
         db_session.flush()
+    return message
 
 
 #####################
@@ -517,10 +534,10 @@ def create_mp_profile(user_id, campaign_id):
 # PERIODIC TASKS #
 ##################
 @periodic_task(run_every=crontab(minute=0, hour=0), name="tasks.daily_results_email") # Every midnight
-def daily_results_email():
-    if os.environ.get('PRODUCTION'):
-        from emails import daily_results_email
-        daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
+# def daily_results_email():
+#     if os.environ.get('PRODUCTION'):
+#         from emails import daily_results_email
+#         daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
 
 
 #TODO: Samir

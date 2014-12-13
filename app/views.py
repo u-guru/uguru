@@ -146,12 +146,11 @@ def m_guru_new():
     return render_template('web/guru-new/guru-1.html')
 
 @app.route('/m/login/')
-def m_login():
+def m_login(redirect=None):
 
     no_pw_user = None
     user = api.current_user()
     if user:
-        
         if user.is_a_guru():
             return redirect(url_for('m_guru'))
         else:
@@ -170,7 +169,7 @@ def m_login():
         #     return redirect( \
         #         url_for(endpoint='request_by_id', _id=pending_request_id))
     
-    return render_template('web/login.html', no_pw_user=no_pw_user)
+    return render_template('web/login.html', no_pw_user=no_pw_user, session=session)
 
 @app.route('/m/signup/')
 def m_signup():
@@ -361,6 +360,8 @@ def profile(_id):
 
     user = api.current_user()
     if not user:
+        if _id:
+            session['request-profile'] = _id
         return redirect(url_for('m_login'))
 
     #if guru is viewing their profile
@@ -522,6 +523,8 @@ def request_by_id(_id):
     #if tutor (should take up the whole page)
     user = api.current_user()
     if not user:
+        if _id:
+            session['request-redirect'] = _id
         return redirect(url_for('m_login'))
 
     if not user == _request.get_student() and _request.pending_tutor_id != user.id\
@@ -558,6 +561,9 @@ def request_by_id(_id):
     guru_seconds_remaining = DEFAULT_TUTOR_ACCEPT_TIME - \
     (datetime.now() - _request.time_pending_began).seconds
     
+    
+    if session.get('request-redirect'):
+        session.pop('request-redirect')
 
     return render_template('web/request_details.html', user=user,\
      request_dict=_request.get_return_dict(), time=round(guru_seconds_remaining,2))
@@ -1173,6 +1179,47 @@ def admin_requests():
         all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
         return render_template('admin/admin-requests.html', all_requests=all_requests, num_repeat_payments=num_repeat_payments)
     return redirect(url_for('index'))
+
+@app.route('/admin/requests/<r_id>/')
+def admin_requests_two(r_id):
+    if session.get('admin'):
+        from tasks import get_qualified_tutors, DEFAULT_TUTOR_ACCEPT_TIME
+        from datetime import datetime
+
+        r = Request.query.get(r_id)
+        skill = Skill.query.get(r.skill_id)
+        
+        current_tutor = None
+        current_tutor_id = r.pending_tutor_id
+        if current_tutor_id: 
+            current_tutor = User.query.get(current_tutor_id)
+
+        r_dict = r.get_return_dict()
+
+        r_dict['time-created'] = r.time_created.strftime('%h %d %Y, %I:%M:%S %p')
+        r_dict['tutors-available'] = len(get_qualified_tutors(r))
+        r_dict['tutors-contacted'] = len(r.contacted_tutors)
+        r_dict['tutors-committed'] = len(r.committed_tutors)
+        if current_tutor: 
+            r_dict['current-tutor'] = current_tutor.as_dict()
+            r_dict['time-remaining'] = int(DEFAULT_TUTOR_ACCEPT_TIME - (datetime.now() - r.time_pending_began).seconds)
+
+        r_notifications = Notification.query.filter_by(request_id = r.id).all()
+        r_notifications = sorted(r_notifications, key=lambda n:n.time_created)
+        r_notifications_arr = []
+        for n in r_notifications:
+            temp_dict = {
+                'server_id': n.id,
+                'status': n.status,
+                'time-created': n.time_created.strftime('%h %d %Y, %I:%M:%S %p')
+            }
+            if n.request_tutor_id:
+                temp_dict['tutor'] = User.query.get(n.request_tutor_id).as_dict()
+            r_notifications_arr.append(temp_dict)
+        
+        r_dict['notifications'] = r_notifications_arr
+
+        return render_template('admin/admin-detailed-request.html', r_dict = r_dict)
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
 def add_bank():

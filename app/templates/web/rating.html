@@ -97,10 +97,17 @@
             contentType: 'application/json',
             data: payload,
             success: function(request){
+                {% if is_student %}
                 window.PUSH({
                     transition : "fade",
                     url : "/m/home/"
                 });
+                {% else %}
+                window.PUSH({
+                    transition : "fade",
+                    url : "/m/guru/"
+                });
+                {% endif %}
             },
             error: function (request) {
             
@@ -109,4 +116,5 @@
       });
   });
   </script>
+</div>
 {% endblock %}

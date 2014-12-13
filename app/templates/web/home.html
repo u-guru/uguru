@@ -32,7 +32,19 @@ request_details_guru, student_scheduled_session %}
       {{request_details_student(request_dict, available_guru)}}
   {% endif %}
   
-  {% if student_requests and scheduled_sessions %}
+  {% if (student_requests and scheduled_sessions) %}
+    <ul class='table-view'>
+      <li class='table-view-cell'>
+        <a class='navigate-right' href='/m/upcoming/' data-transition='slide-out'>
+          See all scheduled sessions 
+          <span class='badge badge-negative'>
+            {{scheduled_sessions|length}}
+          </span>
+        </a>
+      </li>
+    </ul>
+  {% elif scheduled_sessions|length > 1 %}
+    {{student_scheduled_session(scheduled_sessions[0])}}
     <ul class='table-view'>
       <li class='table-view-cell'>
         <a class='navigate-right' href='/m/upcoming/' data-transition='slide-out'>
@@ -44,8 +56,11 @@ request_details_guru, student_scheduled_session %}
       </li>
     </ul>
   {% elif scheduled_sessions %}
-    {{student_scheduled_session(scheduled_sessions[0])}}
+  <ul class='table-view'>
+      {{student_scheduled_session(scheduled_sessions[0])}}
+  </ul>
   {% endif %}
+
 
 
   

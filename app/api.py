@@ -402,6 +402,18 @@ def api_login():
             
             #If it does, send success to client to redirect to home
             if user: 
+                
+
+                if session.get('request-redirect'):
+                    user.authenticate()
+                    error_msg = session.get('request-redirect')
+                    return json_response(http_code=200, errors = [error_msg], redirect='request')
+
+                if session.get('request-redirect'):
+                    user.authenticate()
+                    error_msg = session.get('request-profile')
+                    return json_response(http_code=200, errors = [error_msg], redirect='profile')
+
                 user.authenticate()
                 return_dict = DEFAULT_SUCCESS_DICT 
                 return json_response(200, return_dict)

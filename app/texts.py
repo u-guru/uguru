@@ -1,11 +1,14 @@
 #login on focus
 from app.models import *
-#login redirect
-#track mixpanel 
-#accept or reject
-BASE_URL = 'http://192.168.1.36:5000'
+    
 
 def tutor_receives_student_request(r_id):
+    from views import get_environment
+    if get_environment() != 'PRODUCTION':
+        BASE_URL = 'http://192.168.128.90:5000'
+    else:
+        BASE_URL = 'http://uguru.me'
+
     _request = Request.query.get(r_id)
     r_dict = _request.get_return_dict()
     student_name = r_dict['student']['name'].title()
@@ -24,11 +27,33 @@ def tutor_receives_student_request(r_id):
 
     return result_msg 
 
-def student_receives_guru_accept(): 
-    pass
+def student_receives_guru_accept(r_id): 
+    from views import get_environment
+    if get_environment() != 'PRODUCTION':
+        BASE_URL = 'http://192.168.2.124:5000'
+    else:
+        BASE_URL = 'http://uguru.me'
+
+
+    _request = Request.query.get(r_id)
+    r_dict = _request.get_return_dict()
+    tutor = User.query.get(_request.pending_tutor_id)
+    tutor_name = tutor.get_first_name()
+    student_name = r_dict['student']['name'].title()
+    skill_name = r_dict['skill_name']
+    num_tutors = str(len(_request.contacted_tutors))
+    return tutor_name + """ can help! Check out """ +  tutor_name + """'s""" + \
+    """ profile and confirm! \n\n""" + BASE_URL + """/m/p/""" + str(tutor.id) +"""/"""
+    return result_msg
 
 
 def student_not_connected(r_id):
+    from views import get_environment
+    if get_environment() != 'PRODUCTION':
+        BASE_URL = 'http://192.168.2.124:5000'
+    else:
+        BASE_URL = 'http://uguru.me'
+
     _request = Request.query.get(r_id)
     r_dict = _request.get_return_dict()
     student_name = r_dict['student']['name'].title()
@@ -40,6 +65,12 @@ def student_not_connected(r_id):
     """someone available, """ + """please reply 'Yes'."""
 
 def tutor_not_chosen(r_id, tutor_id):
+    from views import get_environment
+    if get_environment() != 'PRODUCTION':
+        BASE_URL = 'http://192.168.2.124:5000'
+    else:
+        BASE_URL = 'http://uguru.me'
+
     _request = Request.query.get(r_id)
     r_dict = _request.get_return_dict()
     tutor = User.query.get(tutor_id)
@@ -50,6 +81,12 @@ def tutor_not_chosen(r_id, tutor_id):
     not impact your rating! \n\nHave a great day."""
 
 def student_canceled(r_id, tutor_id):
+    from views import get_environment
+    if get_environment() != 'PRODUCTION':
+        BASE_URL = 'http://192.168.2.124:5000'
+    else:
+        BASE_URL = 'http://uguru.me'
+
     _request = Request.query.get(r_id)
     r_dict = _request.get_return_dict()
     tutor = User.query.get(tutor_id)
@@ -60,7 +97,14 @@ def student_canceled(r_id, tutor_id):
     """ another student needs help. \n\nHave a great day!"""
 
 def guru_is_selected():
-    _request = Request.query.get(r_id)
+    
+    from views import get_environment
+    if get_environment() != 'PRODUCTION':
+        BASE_URL = 'http://192.168.2.124:5000'
+    else:
+        BASE_URL = 'http://uguru.me'
+
+    _request = Request.query
     r_dict = _request.get_return_dict()
     tutor = User.query.get(tutor_id)
     student_name = r_dict['student']['name'].title()

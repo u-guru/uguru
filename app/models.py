@@ -463,6 +463,7 @@ class User(Base):
                 all_requests_by_date = sorted(c.requests, 
                     key=lambda c:c.time_created, reverse=True)
                 scheduled_sessions.append(all_requests_by_date[0])
+        scheduled_sessions = sorted(scheduled_sessions, key=lambda s:s.time_created, reverse=True)
         return scheduled_sessions
 
     #Helper function for /profile/<id> route
@@ -924,6 +925,7 @@ class Payment(Base):
         student.payments.append(payment)
         guru.payments.append(payment)
 
+        if not guru.balance: guru.balance = 0
         guru.balance = guru.balance + payment.tutor_received_amount
 
         try: 
@@ -1208,6 +1210,16 @@ class Request(Base):
             result_str += self.start_time.strftime('%I:%M %p')
         return result_str
 
+    def create_event_notification(self, status):
+        n = Notification()
+        n.status = status
+        n.request_tutor_id = self.pending_tutor_id
+        n.request_id = self.id
+        
+        tutor = User.query.get(self.pending_tutor_id)
+        tutor.notifications.append(n)
+        commit_to_db(n)
+
     def process_time_estimate(self):
         if not self.time_estimate:
             return '15-30min'
@@ -1229,6 +1241,8 @@ class Request(Base):
 
         from tasks import send_student_request
         send_student_request.delay(self.id)
+
+        self.create_event_notification('tutor-reject')
         print "Student has rejected ", tutor
 
         try:
@@ -1297,7 +1311,13 @@ class Request(Base):
         check_tutor_request_status.apply_async(args=[self.id, tutor.id], 
             countdown = DEFAULT_STUDENT_ACCEPT_TIME)
 
-        print 'Adding ' + DEFAULT_STUDENT_ACCEPT_TIME + ' seconds for student to accept'
+        from tasks import send_twilio_msg
+        from texts import student_receives_guru_accept
+        msg_body = student_receives_guru_accept(self.id)
+        text_msg = send_twilio_msg(tutor.phone_number, msg_body, tutor.id)
+        self.create_event_notification('tutor-accepted')
+
+        print 'Adding ' + str(DEFAULT_STUDENT_ACCEPT_TIME) + ' seconds for student to accept'
 
         try:
             db_session.commit()
@@ -1342,6 +1362,9 @@ class Request(Base):
         user.outgoing_requests.remove(self)
         self.cancellation_reason = description
 
+        
+        self.create_event_notification('student-canceled')
+
         #Clear this request from all tutors inbox
         for tutor in self.requested_tutors + self.committed_tutors:
             if self in tutor.outgoing_requests:
@@ -1365,10 +1388,10 @@ class Request(Base):
         return 
 
     def get_status(self):
-        if self.pending_tutor_id:
-            return 'pending'
-        elif self.time_canceled:
+        if self.time_canceled:
             return 'canceled'
+        elif self.pending_tutor_id:
+            return 'pending'
         else:
             return 'matched'
         

@@ -283,6 +283,11 @@ textarea {
   display:none;
 }
 
+.error-div.show {
+  font-size:0.8em;
+  margin:15px 5px 15px 5px;
+}
+
 .request-guru-btn {
   position:absolute;
   bottom: 65px;
