@@ -1214,11 +1214,13 @@ class Request(Base):
     def create_event_notification(self, status):
         n = Notification()
         n.status = status
-        n.request_tutor_id = self.pending_tutor_id
         n.request_id = self.id
         
-        tutor = User.query.get(self.pending_tutor_id)
-        tutor.notifications.append(n)
+        if self.pending_tutor_id:
+            n.request_tutor_id = self.pending_tutor_id
+            tutor = User.query.get(self.pending_tutor_id)
+            tutor.notifications.append(n)
+        
         commit_to_db(n)
 
     def process_time_estimate(self):
