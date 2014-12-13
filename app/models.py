@@ -623,7 +623,7 @@ class Conversation(Base):
         if last_message:
             return last_message.write_time
         else:
-            return False
+            return self.requests[0].time_created
 
     def get_last_message(self):
         if self.messages:
