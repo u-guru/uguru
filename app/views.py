@@ -1088,7 +1088,7 @@ def new_admin_ratings():
                     ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
                         'student-name':student.name.split(" ")[0]}
                     ratings_arr.append(r)
-        return render_template('admin/admin-ratings.html', ratings=ratings_arr, ratings_dict=ratings_dict)
+        return render_template('admin/admin-ratings.html', ratings=ratings_arr      , ratings_dict=ratings_dict)
     return redirect(url_for('index'))
 
 
@@ -1162,29 +1162,15 @@ def admin_requests():
         all_requests = []
         num_repeat_payments = 0
         for r in Request.query.all()[::-1]:
-            if get_environment() == 'PRODUCTION' and r.id < 313:
-                continue
-            request_dict = {}
-            request_dict['emails-seen'] = 0
-            request_dict['request'] = r
-            request_dict['date'] = pretty_date(r.time_created)
-            skill = Skill.query.get(r.skill_id)
-            request_dict['skill_name'] = skill.name
-            student = User.query.get(r.student_id)
-            request_dict['student'] = student
-            total_seen_count = 0
-            request_dict['pending-ratings'] = 0
-            request_dict['message-length'] = 0
-
-            if r.last_updated:
-                request_dict['last-updated'] = pretty_date(r.last_updated)
-            if r.connected_tutor_id:
-                tutor = User.query.get(r.connected_tutor_id)
-                request_dict['connected-tutor'] = tutor                        
-                request_dict['pending-ratings'] = 0
-            all_requests.append(request_dict)
+            if r.id > 900:
+                r_dict = r.get_return_dict()
+                r_dict['request'] = r
+                r_dict['phone-tutors'] = sum([int(bool(t.phone_number)) for t in r.requested_tutors])
+                r_dict['setting-tutors'] = sum([int(bool(t.phone_number) and t.text_notification) for t in r.requested_tutors])
+                r_dict['date'] = r.time_created.strftime('%h %d %Y, %I:%M:%S %p')
+                all_requests.append(r_dict)
         all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
-        return render_template('admin/admin-requests.html', all_requests=all_requests, num_repeat_payments=num_repeat_payments)
+        return render_template('admin/admin-requests.html', all_requests=all_requests)
     return redirect(url_for('index'))
 
 @app.route('/admin/requests/<r_id>/')

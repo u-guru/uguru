@@ -47,6 +47,8 @@ def get_best_queued_tutor(_request):
         return False
     
     tutor_queue = sorted(tutor_queue, key=lambda tutor:calc_avg_rating(tutor)[0], reverse=True)
+    for tutor in tutor_queue:
+        print tutor.name, tutor.total_earned, calc_avg_rating(tutor)[0]
 
     tutor = tutor_queue.pop(0)
     _request.requested_tutors.remove(tutor) 
@@ -59,7 +61,6 @@ def get_qualified_tutors(_request):
     for tutor in _request.requested_tutors:
         if tutor.text_notification and tutor.phone_number:
             qualified_tutors.append(tutor)
-    
     commit_to_db()
     return qualified_tutors
 
@@ -122,16 +123,6 @@ def send_student_request(r_id):
         print 'message NOT sent!'
 
     commit_to_db()
-
-
-@task(name='tasks.student_late_request')
-def student_late_request(request_id):
-    
-    from texts import student_late_request_msg
-
-    student = User.query.get(_request.student_id)
-    send_twilio_msg.delay(student.phone_number, msg, tutor.id)    
-
 
 
 
