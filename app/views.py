@@ -146,7 +146,7 @@ def m_guru_new():
     return render_template('web/guru-new/guru-1.html')
 
 @app.route('/m/login/')
-def m_login(redirect=None):
+def m_login():
 
     no_pw_user = None
     user = api.current_user()

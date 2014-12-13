@@ -61,11 +61,9 @@ def get_qualified_tutors(_request):
             qualified_tutors.append(tutor)
     
     commit_to_db()
-    return qualified_tutors 
+    return qualified_tutors
 
-@task(name='tasks.add_two')
-def add_two(num1, num2):
-    return num1 + num2 
+
 ################
 # Samir-Tasks #
 ################
@@ -124,6 +122,17 @@ def send_student_request(r_id):
         print 'message NOT sent!'
 
     commit_to_db()
+
+
+@task(name='tasks.student_late_request')
+def student_late_request(request_id):
+    
+    from texts import student_late_request_msg
+
+    student = User.query.get(_request.student_id)
+    send_twilio_msg.delay(student.phone_number, msg, tutor.id)    
+
+
 
 
 #Removes cancellation from tutor 

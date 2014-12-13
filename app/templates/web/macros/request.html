@@ -74,30 +74,31 @@
       </li>
     </ul>
     <ul class="table-view table-view-scheduled">    
-        <li class='table-view-cell'>
+        <li class='table-view-cell media'>
+          <img class="media-object pull-left table-view-medium-face" src="{{request_dict['student']['profile_url']}}">
           <h1>{{request_dict['skill_name']}} 
             <span class='grey-text'>Session</span>
           </h1>
-          <p class='grey-text'>
-            {{request_dict['start_time']}} for {{request_dict['time_estimate']}}
+          <p class='error-text'>
+            {{request_dict['student']['name']}} needs help {{request_dict['start_time']}} for {{request_dict['time_estimate']}}
           </p>
         </li>
         <li class='table-view-cell'>
-            Location: 
+          Details
+          <p>
+            {{request_dict['description']}}
+          </p>
+        </li>
+        <li class='table-view-cell'>
+            Location
             <p>
               {{request_dict['location']}}
             </p>
         </li>
-        <li class='table-view-cell'>
-          Description
-          <p>
-            {{request_dict['description']}}
-          </p>
-        </li>
         <li class='table-view-cell '>
-          Description
+          Pricing
           <p>
-            {{request_dict['description']}}
+            <span class='white-text'>$5</span> for every <span class='white-text'>$15</span> minutes.
           </p>
         </li>
     </ul>
