@@ -1602,17 +1602,20 @@ class Rating(Base):
     #TODO, make queries more optimal
     def get_payment_details_dict(self):
         _request = Request.query.get(self.request_id)
-        payment = Payment.query.get(_request.payment_id)
-        student = User.query.get(payment.student_id)
-        guru = User.query.get(payment.tutor_id)
-        skill = Skill.query.get(payment.skill_id)
+        
+        student = User.query.get(self.student_id)
+        guru = User.query.get(self.tutor_id)
+        skill = Skill.query.get(self.skill_id)
         payment_dict = {
             'student': student.as_dict(),
             'guru': guru.as_dict(),
-            'student_cost': payment.student_paid_amount,
-            'guru_earnings': payment.tutor_received_amount,
             'skill_name': skill.get_short_name()
         }
+
+        if _request.payment_id:
+            payment_dict['student_cost'] = payment.student_paid_amount
+            payment_dict['guru_earnings'] = payment.tutor_received_amount
+
         return payment_dict
 
 

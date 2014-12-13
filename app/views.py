@@ -1078,14 +1078,17 @@ def new_admin_tutors():
 def new_admin_ratings():
     if session.get('admin'):
         ratings_dict = {}
+        ratings_arr = []
         for r in Rating.query.all():
-            if r.skill_id and r.tutor_id and r.student_id:
+            if r.skill_id and r.tutor_id and r.student_id and r.time_created:
                 skill = Skill.query.get(r.skill_id)
                 tutor = User.query.get(r.tutor_id)
                 student = User.query.get(r.student_id)
-                ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
-                    'student-name':student.name.split(" ")[0]}
-        return render_template('admin/admin-ratings.html', ratings=Rating.query.all(), ratings_dict=ratings_dict)
+                if tutor and tutor.name and skill and skill.name and student and student.name:
+                    ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
+                        'student-name':student.name.split(" ")[0]}
+                    ratings_arr.append(r)
+        return render_template('admin/admin-ratings.html', ratings=ratings_arr, ratings_dict=ratings_dict)
     return redirect(url_for('index'))
 
 
