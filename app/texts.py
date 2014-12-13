@@ -20,10 +20,11 @@ def tutor_receives_student_request(r_id):
 
     if urgency: start_time = 'ASAP'
 
-    result_msg = student_name + " needs " + skill_name  + " help " + \
+    result_msg = "Congrats! You're currently first in-line to receive this student request.\n\n" \
+    + student_name + " needs " + skill_name  + " help " + \
     start_time + " for " + time_estimate + " at " + location + ". \n\n" +\
-    "You have 10 minutes to save a fellow bear, or we'll have to pass this opportunity to another Guru.\n\n" + \
-    "Accept/Reject/ or see more details here: \n " + BASE_URL +  "/m/r/" + str(r_dict['server_id'])
+    "You will have 10 minutes to save a fellow bear, or we will have to pass this opportunity to another Guru in line.\n\n" + \
+    "Accept or reject immediately through our mobile site: \n " + BASE_URL +  "/m/r/" + str(r_dict['server_id'])
 
     return result_msg 
 
