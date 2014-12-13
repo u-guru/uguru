@@ -46,12 +46,32 @@ def get_best_queued_tutor(_request):
     if not tutor_queue:
         return False
     
+    #Sort by ratings first
     tutor_queue = sorted(tutor_queue, key=lambda tutor:calc_avg_rating(tutor)[0], reverse=True)
+    
+    #Place tutors that view requests the most at the top
+    priority_tutor_arr = []
+    engagement_arr = ['tutor-clicked-text-link', 'tutor-viewed-request', 'tutor-accepted']
+    for t in tutor_queue:
+        engagement_score = 0
+        for n in t.notifications:
+            if n.status in engagement_arr:
+                engagement_score += 1
+        if engagement_score:
+            priority_tutor_arr.append((t, engagement_score))
+            tutor_queue.remove(t)
+
+    #sort it 
+    priority_tutor_arr_sorted = sorted(priority_tutor_arr, key=lambda t:t[1])
+
+    for tutor_tuple in priority_tutor_arr_sorted:
+        tutor_queue.insert(0, tutor_tuple[0])
+
     for tutor in tutor_queue:
         print tutor.name, tutor.total_earned, calc_avg_rating(tutor)[0]
 
     tutor = tutor_queue.pop(0)
-    _request.requested_tutors.remove(tutor) 
+    _request.requested_tutors.remove(tutor)
     commit_to_db()
     return tutor
 
@@ -61,7 +81,6 @@ def get_qualified_tutors(_request):
     for tutor in _request.requested_tutors:
         if tutor.text_notification and tutor.phone_number:
             qualified_tutors.append(tutor)
-    commit_to_db()
     return qualified_tutors
 
 

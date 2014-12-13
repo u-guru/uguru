@@ -1190,7 +1190,6 @@ class Request(Base):
 
     def process_start_time(self):
         if self.urgency:
-            print self.start_time
             return 'ASAP'
 
         #Debug soon 
