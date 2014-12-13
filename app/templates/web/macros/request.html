@@ -1,5 +1,7 @@
 {% macro request_details_student(request_dict, available_guru=False) -%}
-    <ul class="table-view table-view-scheduled">    
+    <ul class="table-view table-view-scheduled relative" style="position:relative;">    
+        <a style='top:10px; right:10px; position:absolute; z-index:100; color:grey;' class='icon icon-close absolute' href='/m/cancel_request/{{request_dict["server_id"]}}' data-transition='slide-in'>
+        </a>
         <li class='table-view-cell'>
           <h1>{{request_dict['skill_name']}} 
             <span class='grey-text'>Session</span>
@@ -29,9 +31,6 @@
           <p>
             {{request_dict['description'][0:100]}}...
           </p>
-          <a class='btn btn-outlined' href='/m/cancel_request/{{request_dict["server_id"]}}' data-transition='slide-in'>
-            Cancel Request
-          </a>
         </li>
         {% endif %}
     </ul>

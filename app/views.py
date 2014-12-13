@@ -493,7 +493,7 @@ def accept_request_by_id(_id):
         return redirect(url_for('m_login'))
 
     if not user == _request.get_student() and not _request.is_tutor_involved(user):
-        flash("Sorry! You don't have access to this page.")
+        flash("Sorry! You do not have access to this page.")
         return redirect(url_for('m_guru'))
 
     return render_template('web/guru_accept_request.html', user=user,\
@@ -540,7 +540,7 @@ def request_by_id(_id):
 
     #if Guru shouldn't see this.
     if not user == _request.get_student() and not _request.pending_tutor_id == user.id:
-        flash("Sorry! You don't have access to this page.")
+        flash("Sorry! You dont have access to this page.")
         return redirect(url_for('m_guru'))
 
     #Different page, same validation, might as well put in same route? 
@@ -564,6 +564,10 @@ def request_by_id(_id):
     
     if session.get('request-redirect'):
         session.pop('request-redirect')
+
+    mp.track(user.id, 'View Student Request', {
+        'Request Id': _request.id
+    })
 
     return render_template('web/request_details.html', user=user,\
      request_dict=_request.get_return_dict(), time=round(guru_seconds_remaining,2))
