@@ -128,7 +128,7 @@ def send_student_request(r_id):
 
 
     #Send the text message
-    msg = tutor.get_first_name().upper() + tutor_receives_student_request(r_id)
+    msg = tutor_receives_student_request(r_id)
     twilio_msg = send_twilio_msg.delay(tutor.phone_number, msg, tutor.id)
 
     #Check status ten minutes later
