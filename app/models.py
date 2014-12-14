@@ -740,13 +740,13 @@ class Message(Base):
         return message
 
     def as_dict(self):
-        from lib.utils import python_datetime_to_js_date
+        from lib.utils import python_datetime_to_js_date, pretty_date
         m_dict = {
             'server_id': self.id,
             'contents': self.contents,
             'sender': self.sender.as_dict(),
             'receiver': self.reciever.as_dict(),
-            'write_time': python_datetime_to_js_date(self.write_time)
+            'write_time': pretty_date(self.write_time)
         }
         return m_dict
 

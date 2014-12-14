@@ -44,12 +44,15 @@
 
             {% if message_dict['sender']['server_id'] == user.id %}
                 {% set side = 'pull-right' %}
+                {% set style = 'left:17px'%}
                 {% set image_url = message_dict['sender']['profile_url'] %}
             {% else %}
                 {% set side = 'pull-left' %}
+                {% set style = 'right:5px'%}
                 {% set image_url = message_dict['sender']['profile_url'] %}
             {% endif %}
-        <li class="table-view-cell message-cell media">
+        <li class="table-view-cell message-cell media" style='position:relative;'>
+            <span style='top:5px; position:absolute;font-size:10px; {{style}}'class='orange-text'>{{message_dict['write_time']~' ago'}}</span>
             <img class="media-object {{side}} message-face" src="{{image_url}}">
             <div class="media-body {{side}}">
                 <p>{{message_dict['contents']}}</p>

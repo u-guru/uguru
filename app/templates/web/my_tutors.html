@@ -37,9 +37,9 @@
         {% set last_message =  conversation_dict.get('last_message') %} 
         
           <li class="table-view-cell media" style='position:relative;'>
-            <span class='grey-text font-12' style='position:absolute;'>
-            {{}}
-        </span>
+            <span class='orange-text' style='position:absolute; right:31px; bottom:9px; font-size:10px;'>
+            {{last_message['write_time']}}
+            </span>
 
             <!-- TODO: Change to active -->
             {% if 'tutor' in request.url and conversation_dict['student']['server_id'] == user.id %}
@@ -47,10 +47,10 @@
             <a class="navigate-right" data-transition="slide-in" href='/m/conversation/{{conversation_dict["server_id"]}}'>
                 <img class="media-object pull-left message-face" src="{{conversation_dict['tutor']['profile_url']}}">
                 <div class="media-body">
-                    {{conversation_dict['tutor']['name']}}
+                    <span class='white-text'>{{conversation_dict['tutor']['name']}}</span>
                     <p>
                         {% if last_message %}
-                            {{conversation_dict['last_message']['contents'][:30]}}
+                            {{conversation_dict['last_message']['contents'][:50]}}
                         {% else %}
                             No messages yet.
                         {% endif %}
