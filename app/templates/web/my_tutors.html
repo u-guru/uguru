@@ -36,7 +36,10 @@
       {% for conversation_dict in all_conversation_dicts['conversations'] %}
         {% set last_message =  conversation_dict.get('last_message') %} 
         
-          <li class="table-view-cell media">
+          <li class="table-view-cell media" style='position:relative;'>
+            <span class='grey-text font-12' style='position:absolute;'>
+            {{}}
+        </span>
 
             <!-- TODO: Change to active -->
             {% if 'tutor' in request.url and conversation_dict['student']['server_id'] == user.id %}

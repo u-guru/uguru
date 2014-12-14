@@ -91,9 +91,20 @@
             <span class='font-16 negative-text'>{% if guru.major %}{{guru.major}}{% endif %}, {% if guru.year %}{{guru.year}}{%endif%}</span>
             {% endif %}
         </li>
-        {% if guru.tutor_introduction %}
-        <li class="table-view-cell media grey-shade-2 table-view-cell-no-bg ignore-table-view-margin border-bottom-grey guru-intro">
+        {% if _request and _request.pending_tutor_description %}
+        <li class="table-view-cell media grey-shade-2 table-view-cell-no-bg ignore-table-view-margin border-bottom-grey guru-intro" style='padding-bottom:20px;padding-top:20px'>
           
+          <div class='center grey-text font-12 margin-bottom-10'>PERSONAL NOTE</div>
+
+
+           <i>{{_request.pending_tutor_description}}</i>
+          
+        </li>
+        {% endif %}
+        {% if guru.tutor_introduction %}
+        <li class="table-view-cell media grey-shade-2 table-view-cell-no-bg ignore-table-view-margin border-bottom-grey guru-intro" style='padding-bottom:20px;padding-top:20px'>
+          
+          <div class='center grey-text font-12 margin-bottom-10'>BACKGROUND</div>
           
            {{guru.tutor_introduction}}
           

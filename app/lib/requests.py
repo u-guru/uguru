@@ -58,6 +58,7 @@ def user_obj_to_dict(user):
             'name': user.get_first_name(),
             'server_id': user.id,
             'profile_url': user.profile_url,
+            'guru_rating': user.calc_avg_rating()
     }
     return return_dict
 

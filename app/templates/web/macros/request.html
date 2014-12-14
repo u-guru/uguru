@@ -1,3 +1,4 @@
+{% from 'web/macros/profile.html' import get_guru_stars %}
 {% macro request_details_student(request_dict, available_guru=False) -%}
     <ul class="table-view table-view-scheduled relative" style="position:relative;">    
         <a style='top:10px; right:10px; position:absolute; z-index:100; color:grey;' class='icon icon-close absolute' href='/m/cancel_request/{{request_dict["server_id"]}}' data-transition='slide-in'>
@@ -14,8 +15,8 @@
             {{request_dict['start_time']}} for {{request_dict['time_estimate']}}
           </p>
           {% else %}
-          <p class='red-text'>
-            TUTOR IS AVAILABLE
+          <p class='error-text'>
+            TUTOR AVAILABLE
           </p>
           {% endif %}
         </li>
@@ -47,9 +48,10 @@
             <a class="navigate-right" href="/m/p/{{guru['server_id']}}/" data-transition='slide-in'>
                 <img class="media-object pull-left table-view-face" src="{{guru['profile_url']}}">
                 <div class="media-body">
-                    {{guru['name']}} can help!
+                    {{guru['name']}} can help! <br>
+                    {{get_guru_stars(guru_rating=guru['guru_rating'])}}
                 </div>
-                <button class="btn btn-link">Profile</button>
+                <button class="btn btn-primary">See Profile</button>
             </a>
       </li>
     </ul>
