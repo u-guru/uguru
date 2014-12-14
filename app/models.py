@@ -1287,6 +1287,14 @@ class Request(Base):
             tutor.outgoing_requests.remove(self)
         if self in student.outgoing_requests:
             student.outgoing_requests.remove(self)
+
+        from tasks import send_twilio_msg
+        from texts import guru_is_selected
+        msg_body = guru_is_selected(self.id)
+        text_msg = send_twilio_msg(tutor.phone_number, msg_body, tutor.id)
+        self.create_event_notification('student-accepted')
+        self.create_event_notification('guru-sent-accept-text')
+
         
 
         for tutor in (self.requested_tutors + self.committed_tutors):
