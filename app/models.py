@@ -1222,7 +1222,7 @@ class Request(Base):
             user = User.query.get(id_to_track)
             user.notifications.append(n)
         #default for student viewing the profile or clicking the link
-        elif 'student-viewed-profile' or status == 'student-clicked-text-link':
+        elif status == 'student-viewed-profile' or status == 'student-clicked-text-link':
             n.request_tutor_id = id_to_track
             student = User.query.get(self.student_id)
             student.notifications.append(n)
@@ -1339,7 +1339,7 @@ class Request(Base):
         from tasks import send_twilio_msg
         from texts import student_receives_guru_accept
         msg_body = student_receives_guru_accept(self.id)
-        text_msg = send_twilio_msg(tutor.phone_number, msg_body, tutor.id)
+        text_msg = send_twilio_msg(student.phone_number, msg_body, student.id)
         self.create_event_notification('tutor-accepted')
         self.create_event_notification('student-sent-accept-text')
 

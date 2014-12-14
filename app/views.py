@@ -151,7 +151,7 @@ def m_login():
     no_pw_user = None
     user = api.current_user()
     if user:
-        if user.is_a_guru():
+        if user.is_a_guru() and user.skills:
             return redirect(url_for('m_guru'))
         else:
             return redirect(url_for('home'))
