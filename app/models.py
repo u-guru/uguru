@@ -1227,7 +1227,7 @@ class Request(Base):
             student = User.query.get(self.student_id)
             student.notifications.append(n)
         #default 
-        elif n.pending_tutor_id:
+        elif self.pending_tutor_id:
             n.request_tutor_id = self.pending_tutor_id
             tutor = User.query.get(self.pending_tutor_id)
             tutor.notifications.append(n)
