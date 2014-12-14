@@ -29,6 +29,7 @@ request_details_guru, student_scheduled_session %}
 
 
   {% if student_requests %}
+      <div class='center error-text error-div margin-top-20 show' style='display:block;'>Please keep your phone on you. We will text you as soon as a tutor replies.</div>
       {{request_details_student(request_dict, available_guru)}}
   {% endif %}
   

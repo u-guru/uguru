@@ -1321,6 +1321,7 @@ class Request(Base):
         msg_body = student_receives_guru_accept(self.id)
         text_msg = send_twilio_msg(tutor.phone_number, msg_body, tutor.id)
         self.create_event_notification('tutor-accepted')
+        self.create_event_notification('student-sent-accept-text')
 
         print 'Adding ' + str(DEFAULT_STUDENT_ACCEPT_TIME) + ' seconds for student to accept'
 
