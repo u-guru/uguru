@@ -98,7 +98,7 @@ def student_canceled(r_id, tutor_id):
     """ has canceled the request. \n\nWe'll message you again if """ + \
     """ another student needs help. \n\nHave a great day!"""
 
-def guru_is_selected(r_id):
+def guru_is_selected(r_id, tutor):
     
     from views import get_environment
     if get_environment() != 'PRODUCTION':
@@ -108,7 +108,7 @@ def guru_is_selected(r_id):
 
     _request = Request.query.get(r_id)
     r_dict = _request.get_return_dict()
-    tutor = User.query.get(tutor_id)
+    tutor = User.query.get(tutor.id)
     student_name = r_dict['student']['name'].title()
     skill_name = r_dict['skill_name']
     tutor_name = tutor.get_first_name()

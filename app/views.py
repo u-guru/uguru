@@ -374,6 +374,15 @@ def profile(_id):
         return render_template('web/profile.html', \
         student=user, guru=None, _request=None)
 
+    # Make sure user can see gurus that they have conversations with
+    profile_user = User.query.get(_id)
+    results = user.get_conversation_with(profile_user)
+    if results:
+        guru = profile_user
+        _request = results.requests[0]
+        return render_template('web/profile.html', \
+        student=user, guru=guru, _request=_request)
+
     # Make sure user can see this tutor profile
     results = user.has_incoming_tutor_for_request(int(_id))
     if not results:

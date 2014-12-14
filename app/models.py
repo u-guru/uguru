@@ -1290,7 +1290,7 @@ class Request(Base):
 
         from tasks import send_twilio_msg
         from texts import guru_is_selected
-        msg_body = guru_is_selected(self.id)
+        msg_body = guru_is_selected(self.id, tutor)
         text_msg = send_twilio_msg(tutor.phone_number, msg_body, tutor.id)
         self.create_event_notification('student-accepted')
         self.create_event_notification('guru-sent-accept-text')
