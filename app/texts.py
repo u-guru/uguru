@@ -106,7 +106,7 @@ def guru_is_selected(r_id):
     else:
         BASE_URL = 'http://uguru.me'
 
-    _request = Request.queryget(r_id)
+    _request = Request.query.get(r_id)
     r_dict = _request.get_return_dict()
     tutor = User.query.get(tutor_id)
     student_name = r_dict['student']['name'].title()

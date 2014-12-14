@@ -165,14 +165,16 @@ def check_tutor_request_status(r_id, tutor_id):
     #If time goes over
     elif SECONDS_IN_BETWEEN >= DEFAULT_STUDENT_ACCEPT_TIME and \
         tutor in _request.committed_tutors and not _request.time_canceled:
+                
+            return
+            #TODO: come back
+            # from datetime import datetime
+            # _request.time_canceled = datetime.now(2)
             
-            from datetime import datetime
-            _request.time_canceled = datetime.now()
-            
-            canceled_msg = student_canceled(_request.id, tutor.id)
-            send_twilio_msg.delay(tutor.phone_number, msg, tutor.id)
+            # canceled_msg = student_canceled(_request.id, tutor.id)
+            # send_twilio_msg.delay(tutor.phone_number, msg, tutor.id)
 
-            commit_to_db()
+            # commit_to_db()
     
 
     elif _request.pending_tutor_id == tutor_id and SECONDS_IN_BETWEEN >= DEFAULT_TUTOR_ACCEPT_TIME \

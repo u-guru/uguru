@@ -178,20 +178,15 @@
                 </div>
         </li>
         <li class='table-view-cell'>
-          <a class='navigate-right' href='/m/guru/conversation/{{request_dict["conversation"]["server_id"]}}' data-transition='slide-in'> 
-            Location: {{request_dict['location']}}
-          </a>
+          <li class='table-view-cell'>
+          Location: {{request_dict['location']}}
+            <a class='btn btn-outline' href='/m/guru/conversation/{{request_dict["conversation"]["server_id"]}}' data-transition='slide-out'> Message {{request_dict['student']['name']}}
+            </a>
         </li>
         <li class='table-view-cell'>
           $4 for every 15 minutes 
-          {% if is_mobile %}
-            <a class='btn btn-primary' href='#guru-start-session-{{request_dict["server_id"]}}'>
-              Start Session
+            <a class='btn btn-primary' href='/m/guru/confirm/{{request_dict["server_id"]}}' data-transition='slide-out'> Start Session
             </a>
-            {% else %}
-            <a class='btn btn-primary' href='/m/guru/confirm/{{request_dict["server_id"]}}'> Start Session
-            </a>
-          {% endif %}
         </li>
       </ul>
 
