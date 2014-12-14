@@ -26,7 +26,7 @@
     {% if not all_message_dicts['messages'] %}
         <ul class='table-view center'>
             <li class='table-view-cell ignore-table-view-margin grey-shade-3'>
-              {% if not 'guru' in request.url %}
+              {% if not '/guru/' in request.url %}
               <h1 style='margin-bottom:15px;'> No conversation yet! </h1>
               <br>
               <p class='white-text'>Tell your Guru everything you would like them to prepare beforehand!</p>

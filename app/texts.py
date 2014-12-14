@@ -99,7 +99,6 @@ def student_canceled(r_id, tutor_id):
     """ another student needs help. \n\nHave a great day!"""
 
 def guru_is_selected(r_id, tutor):
-    
     from views import get_environment
     if get_environment() != 'PRODUCTION':
         BASE_URL = 'http://192.168.2.124:5000'
@@ -113,9 +112,9 @@ def guru_is_selected(r_id, tutor):
     skill_name = r_dict['skill_name']
     tutor_name = tutor.get_first_name()
     return """Congrats! """ + student_name + """, has chosen you """  + \
-    """ as their """ + skill_name + """ Guru! \n\nSee more details here at """ + BASE_URL +  """/m/r/ """ + \
-    str(r_dict['server_id']) + """\n\nThrough the Uguru app, you can message your student, """ + \
-    """, see the full request details, and bill your student with the tap of a button."""
+    """as their """ + skill_name + """ Guru! \n\nSee more details here at """ + BASE_URL +  """/m/guru/""" + \
+    """\n\nThrough the Uguru app, you can message your student, """ + \
+    """see the full request details, and bill your student with the tap of a button."""
 
 
 #TO DISCUSS: They don't need to see this.
