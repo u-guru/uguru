@@ -23,9 +23,9 @@ def tutor_receives_student_request(r_id):
     result_msg = "Congrats! You're currently first in-line to receive this student request.\n\n" \
     + student_name + " needs " + skill_name  + " help " + \
     start_time + " for " + time_estimate + " at " + location + ". \n\n" +\
-    "You will have 10 minutes to save a fellow bear, or we will have to pass this opportunity to another Guru in line.\n\n" + \
-    "Accept or reject immediately through our mobile site: \n " + BASE_URL +  "/m/r/" + str(r_dict['server_id']) + \
-    "\n\n New uGuru Hourly rate is $16/hr (minimum, can be more based on demand)."
+    "You will have 5 minutes to save a fellow bear, or we will have to pass this opportunity to another Guru in line.\n\n" + \
+    "Accept or reject immediately through our mobile site: \n\n" + BASE_URL +  "/m/r/" + str(r_dict['server_id']) + \
+    "\n\nNew uGuru Hourly rate is $16/hr (minimum, can be more based on demand)."
 
     return result_msg 
 
