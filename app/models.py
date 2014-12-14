@@ -1210,12 +1210,24 @@ class Request(Base):
             result_str += self.start_time.strftime('%I:%M %p')
         return result_str
 
-    def create_event_notification(self, status):
+    def create_event_notification(self, status, id_to_track=None, 
+        another_id_to_track=None):
         n = Notification()
         n.status = status
         n.request_id = self.id
         
-        if self.pending_tutor_id:
+        #For us to track the tutor clicked the link later (not necessarily on time.)
+        if status == 'tutor-viewed-request' or status == 'tutor-clicked-text-link':
+            n.request_tutor_id = id_to_track
+            user = User.query.get(id_to_track)
+            user.notifications.append(n)
+        #default for student viewing the profile or clicking the link
+        elif 'student-viewed-profile' or status == 'student-clicked-text-link':
+            n.request_tutor_id = id_to_track
+            student = User.query.get(self.student_id)
+            student.notifications.append(n)
+        #default 
+        else:
             n.request_tutor_id = self.pending_tutor_id
             tutor = User.query.get(self.pending_tutor_id)
             tutor.notifications.append(n)

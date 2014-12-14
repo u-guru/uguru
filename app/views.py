@@ -352,6 +352,20 @@ def edit_profile():
     return render_template('web/edit_profile.html',\
         user=user)
 
+@app.route('/m/r/<r_id>/p/<p_id>/')
+def profile_by_user_id_clicked(r_id, p_id):
+
+    _request = Request.get_request_by_id(int(r_id))
+
+    #Track student that clicked this link
+    _request.create_event_notification(status='student-clicked-text-link', \
+        id_to_track=p_id)
+    if get_environment() == 'PRODUCTION':
+        mp.track(_request.student_id, 'Student clicked guru text link', {
+            'Request Id': _request.id
+        })
+
+    return redirect(url_for('profile', _id=p_id))
 
 @app.route('/m/p/<_id>/')
 @app.route('/m/guru/profile/<_id>/')
@@ -391,6 +405,9 @@ def profile(_id):
     
     guru = results[0]
     _request = results[1]
+
+    _request.create_event_notification(status='student-viewed-profile', \
+        id_to_track=guru.id)
 
     return render_template('web/profile.html', \
         student=user, guru=guru, _request=_request)
@@ -517,6 +534,24 @@ def account_details():
     return render_template('web/account_details.html', user=user)
 
 
+@app.route('/m/r/<r_id>/u/<u_id>/')
+def request_by_user_id_clicked(r_id, u_id):
+
+    _request = Request.get_request_by_id(int(r_id))
+    if not _request:
+        
+        return redirect(url_for('home'))
+
+    #Track student that clicked this link
+    _request.create_event_notification(status='tutor-clicked-text-link', id_to_track=u_id)
+    if get_environment() == 'PRODUCTION':
+        mp.track(u_id, 'Guru clicked text link', {
+            'Request Id': _request.id
+        })
+
+    return redirect(url_for('request_by_id', _id=r_id))
+
+
 # ONLY TUTORS ARE LEAD TO THIS ROUTE.
 @app.route('/m/r/<_id>/')
 @app.route('/m/confirm_request/<_id>/')
@@ -534,11 +569,6 @@ def request_by_id(_id):
     if not user:
         if _id:
             session['request-redirect'] = _id
-            _request.create_event_notification('tutor-clicked-text-link')
-            if get_environment() == 'PRODUCTION':
-                mp.track(_request.pending_tutor_id, 'Guru clicked text link', {
-                    'Request Id': _request.id
-                })
 
         return redirect(url_for('m_login'))
 
@@ -585,7 +615,7 @@ def request_by_id(_id):
             'Request Id': _request.id
         })
 
-    _request.create_event_notification('tutor-viewed-request')
+    _request.create_event_notification('tutor-viewed-request', id_to_track=user.id)
 
     return render_template('web/request_details.html', user=user,\
      request_dict=_request.get_return_dict(), time=round(guru_seconds_remaining,2))
