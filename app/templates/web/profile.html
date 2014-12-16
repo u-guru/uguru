@@ -12,19 +12,18 @@
 
 {% block main_header %}
 <header class="bar bar-nav grey-shade-3 no-border-bottom">
-  {% if _request and guru and student %}
-  <h1 class="title">My Profile
-  </h1>
-  <a class="icon icon-left-nav pull-left" href="/m/home/" data-transition="slide-out"></a>
-  {% endif %}
-  {% if guru %}
+  {% if guru and not  _request%}
   <a class="icon icon-close pull-left" href="/m/guru/" data-transition="fade"></a>
   <a href="/m/guru/profile/edit/" data-transition="slide-in" class="btn btn-link btn-nav pull-right light-green-text" data-transition="slide-in">
     Edit
     <span class="icon icon-right-nav"></span>
   </a>
   {% endif %}
-  {% if student %}
+  {% if guru and  _request and student %}
+  <a class="icon icon-left-nav pull-left" href="/m/home/" data-transition="fade"></a>
+  {% endif %}
+
+  {% if student and not _request%}
   <h1 class="title">
     Edit Profile
   </h1>
@@ -73,7 +72,7 @@
         </li>
       </ul>
 
-    {% elif guru and not _request  %}
+    {% elif guru or _request  %}
 
     <ul class="table-view" style='margin-top:-10px;'>
         <li style='height:35%' class="table-view-cell media center ignore-table-view-margin grey-shade-3 table-view-cell-no-bg border-bottom-grey">
@@ -81,16 +80,36 @@
           <p class='white-text center font-20 margin-top-10'>
             {{guru.get_first_name()}} <br>
           </p>
-            {{get_guru_stars(guru)}}
-            <span class='font-16 negative-text'>{{guru.major}}, {{guru.year}}</span>
+            {% if guru_avg_rating %}
+              {{get_guru_stars(guru)}}
+            {% else %}
+              <br>
+              <span class='error-text'>NEW GURU</span>
+            {% endif %}
+
+            {% if guru.year or guru.major %}
+            <span class='font-16 negative-text'>{% if guru.major %}{{guru.major}}{% endif %}, {% if guru.year %}{{guru.year}}{%endif%}</span>
+            {% endif %}
         </li>
-        <li class="table-view-cell media grey-shade-2 table-view-cell-no-bg ignore-table-view-margin border-bottom-grey guru-intro">
+        {% if _request and _request.pending_tutor_description %}
+        <li class="table-view-cell media grey-shade-2 table-view-cell-no-bg ignore-table-view-margin border-bottom-grey guru-intro" style='padding-bottom:20px;padding-top:20px'>
           
-          {% if guru.tutor_introduction %}
+          <div class='center grey-text font-12 margin-bottom-10'>PERSONAL NOTE</div>
+
+
+           <i>{{_request.pending_tutor_description}}</i>
+          
+        </li>
+        {% endif %}
+        {% if guru.tutor_introduction %}
+        <li class="table-view-cell media grey-shade-2 table-view-cell-no-bg ignore-table-view-margin border-bottom-grey guru-intro" style='padding-bottom:20px;padding-top:20px'>
+          
+          <div class='center grey-text font-12 margin-bottom-10'>BACKGROUND</div>
+          
            {{guru.tutor_introduction}}
-          {% endif %}
           
         </li>
+        {% endif %}
         <li class="table-view-cell relative grey-shade-2 table-view-cell-no-bg ignore-table-view-margin" style='padding:20px;'>
           {% for skill in guru.skills[:3] %}
               {% set skill_name = skill.get_short_name() %}
@@ -100,45 +119,6 @@
       </ul>
 
     <!-- Student Viewing Guru -->
-    {% elif guru and _request  %}
-
-              {{guru.get_first_name()}} is a new to Guru
-
-          </h5>
-            {% if _request %}
-              {% if request_dict.get('incoming-tutor-replies') %}
-              <p>
-                <i>Hi Ben, I can definitely help you with this task. I've helped several students with this project. Don't worry, I got you.</i>
-              </p>
-              {% endif %}
-            {% endif %}
-
-            {{guru_avg_rating}} 
-                    | 
-            {{guru_num_sessions}}
-
-            {% if _request %}
-              <button class='btn btn-primary'>{{request_dict['skill_name']|upper}}</button>
-              {% for skill in guru.skills[:3] %}
-                
-                {% set skill_name = skill.get_short_name() %}
-                
-                {% if skill_name != request_dict['skill_name'] 
-                  and skill_name not in ['Writing Help', 'Career Help', 'Resume Help']
-                %}
-                  <button class='btn btn-outlined'>{{skill_name}}</button>
-                {% endif %}
-
-              {% endfor %}
-
-                {% for skill in guru.skills %}
-                
-                {% set skill_name = skill.get_short_name() %}
-                <button class='btn btn-outlined'>{{skill_name}}</button>
-                {% endfor %}
-            {% endif %}
-          {{guru.get_first_name()}}'s Introduction
-                  {{guru.tutor_introduction}}
 
     {% endif %}
     </ul>  

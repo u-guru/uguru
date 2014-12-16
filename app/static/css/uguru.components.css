@@ -11,7 +11,11 @@
 
 /*uGuru Color Scheme*/
 .grey-shade-5 {
-    background-color:#D46D6E !important;
+    background-color:#646D6E !important;
+}
+
+.grey-shade-5-text {
+    color:#646D6E !important;
 }
 .grey-shade-3 {
     background-color:#3E494C !important;
@@ -22,6 +26,14 @@
 }
 
 .green-shade-1 {
+    color:#69B3A5;
+}
+
+.light-grey-text {
+    color:#F7F7F7;
+}
+
+.light-green-text {
     color:#69B3A5;
 }
 
@@ -202,7 +214,6 @@ header .uguru-logo {
     font-family: 'HelveticaNeue-Light';
     font-size: 16px;
     padding-bottom:10px;
-
 }
 
 h1, h2, h3 {
@@ -229,6 +240,10 @@ h1, h2, h3 {
 /* home -> choose tutor */
 .green-text  {
     color: #45DA5E;
+}
+
+.orange-text {
+    color:#CC792B;
 }
 
 .btn.btn-primary {
@@ -271,6 +286,10 @@ h1, h2, h3 {
 .title {
   color: #fff;
   font-family: 'HelveticaNeue-Light'
+}
+
+.title.light-green-title {
+    color:#69B3A5;
 }
 
 /* request */

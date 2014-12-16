@@ -12,7 +12,9 @@
     <img id='guru-profile-photo' src='{{user.as_dict().profile_url}}'class="media-object pull-right table-view-mini-face profile-title-icon"/>
   </a>
   <h1 class="title">Guru {{user.get_first_name()}}</h1>
-  <a class='btn btn-link pull-right' data-transition='fade' href='/m/support/'>Help</a>
+  <!-- <a class='btn btn-link pull-right' id='guru-support-home' data-transition='fade' href='/m/guru/new/'>New!</a> -->
+  <a class='btn btn-link pull-right' id='guru-support-home' data-transition='fade' href='/m/guru/support/'>Support</a>
+
 </header>
 {% endblock %}
 
@@ -36,6 +38,7 @@
   <!-- guru accepted sessions -->
   {% for _request in guru_accepted_requests %}
 
+    
     {% set request_dict = _request.get_return_dict() %}
     {{request_details_guru_waiting(request_dict)}}
 
@@ -53,27 +56,11 @@
     </li>
   </ul>
   {% endif %}
-  {% if not guru_requests and not scheduled_sessions %}
+  {% if not guru_requests and not scheduled_sessions and not guru_incoming_requests and not guru_accepted_requests%}
   <ul class='table-view center'>
     <li class='table-view-cell ignore-table-view-margin grey-shade-2'>
       <h1 style='margin-bottom:15px;'> No requests yet! </h1>
       <p class='white-text'>Uguru will <span class='light-green-text'><u>text</u></span> you when <br> there is a a request.</p>
-      {% if not user.phone_number %}
-        <br><br> <strong class='green-text'>You will only receive requests if you we have your phone number </strong>
-      {% endif %}
-    </li>
-
-  </ul>
-  {% endif %}
-  {% if user.balance %}
-  <ul class='table-view'>
-    <li class="table-view-cell">
-      <a class='navigate-right' {% if user.recipient_id %} href='/m/guru/cashout/home/'
-      {% else %} href='/m/add_cash_card/home/' {% endif %} data-transition='slide-in'
-      >
-      Your balance: <strong> ${{user.balance}} </strong>
-       <button class='btn btn-link'> Cash out  </button>
-      </a>
     </li>
   </ul>
   {% endif %}
@@ -113,7 +100,16 @@
       });
 
     });
+  
+  // Identify which user this is.
+  mixpanel.identify('{{user.id}}');
+  // mixpanel.track_links("#guru-home-footer", "Clicked guru home icon");
+  // mixpanel.track_links("#guru-home-messages", "Clicked guru messages");
+  // mixpanel.track_links("#guru-home-settings", "Clicked guru settings");
+  // mixpanel.track_links("#guru-become-student", "Clicked become a student");
+  // mixpanel.track_links("#guru-support-home", "Clicked support link");
 </script>
+
 
 
 </div><!-- /.content -->

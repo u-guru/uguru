@@ -32,16 +32,24 @@ def request_obj_to_dict(_request, skill, student, tutor=None):
     #If request is in matched stage with a matched tutor
     if request_status == 'matched' and tutor:
         return_dict['connected_tutor'] = user_obj_to_dict(tutor)
-        return_dict['conversation'] = student.get_conversation_with(tutor).as_dict()
+        if student.get_conversation_with(tutor):
+            return_dict['conversation'] = student.get_conversation_with(tutor).as_dict()
 
     #If request is in pending stage with interested tutors
     interested_tutors = _request.get_interested_tutors()
     if request_status == 'pending' and len(interested_tutors) > 0:
         interested_tutors_arr = []
         for tutor in interested_tutors:
-            tutor_profile_info_dict = user_obj_to_dict(tutor)
-            interested_tutors_arr.append(tutor_profile_info_dict)
+            if student != tutor: # weird bug with committed tutors including the student
+                tutor_profile_info_dict = user_obj_to_dict(tutor)
+                interested_tutors_arr.append(tutor_profile_info_dict)
         return_dict['interested_tutors'] = interested_tutors_arr
+
+        from datetime import datetime 
+        from app.tasks import DEFAULT_STUDENT_ACCEPT_TIME
+        student_seconds_remaining = DEFAULT_STUDENT_ACCEPT_TIME - \
+        (datetime.now() - _request.time_pending_began).seconds
+        return_dict['time-to-choose'] = student_seconds_remaining
 
     return return_dict
 
@@ -50,6 +58,7 @@ def user_obj_to_dict(user):
             'name': user.get_first_name(),
             'server_id': user.id,
             'profile_url': user.profile_url,
+            'guru_rating': user.calc_avg_rating()
     }
     return return_dict
 

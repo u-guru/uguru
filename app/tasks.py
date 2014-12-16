@@ -1,16 +1,21 @@
 from celery import Celery
-from texts import tutor_receives_student_request
 from celery.task import task, periodic_task
+from twilio.rest import TwilioRestClient
 from celery.schedules import crontab
 from database import *
 from models import *
 from views import *
+from texts import *
 
 import time
 import logging
 import os
+import twilio
 from datetime import datetime
 from time import sleep
+
+TWILIO_DEFAULT_PHONE = "+15104661138"
+twilio_client = TwilioRestClient(os.environ['TWILIO_ACCOUNT_SID'], os.environ['TWILIO_AUTH_TOKEN'])
 
 celery = Celery('run')
 REDIS_URL = os.environ.get('REDISTOGO_URL')
@@ -21,10 +26,10 @@ celery.conf.update(
     CELERY_TIMEZONE="America/Los_Angeles",
 )
 
-DEFAULT_TUTOR_ACCEPT_TIME = 5 #*60
-DEFAULT_STUDENT_ACCEPT_TIME = 20 #*60
-ASAP_LIMIT = 60 * 120 # 2 hours
-# DEFAULT_CHECK_MSG_TIME = 60
+DEFAULT_TUTOR_ACCEPT_TIME = 300 #*60
+DEFAULT_STUDENT_ACCEPT_TIME = 3600 #*60
+# ASAP_LIMIT = 60 * 120 # 2 hours
+DEFAULT_CHECK_MSG_TIME = 60
 
 
 ################
@@ -37,11 +42,36 @@ def get_best_queued_tutor(_request):
     from views import calc_avg_rating
     
     tutor_queue = get_qualified_tutors(_request)
+
+    if not tutor_queue:
+        return False
     
+    #Sort by ratings first
     tutor_queue = sorted(tutor_queue, key=lambda tutor:calc_avg_rating(tutor)[0], reverse=True)
+    
+    #Place tutors that view requests the most at the top
+    priority_tutor_arr = []
+    engagement_arr = ['tutor-clicked-text-link', 'tutor-viewed-request', 'tutor-accepted']
+    for t in tutor_queue:
+        engagement_score = 0
+        for n in t.notifications:
+            if n.status in engagement_arr:
+                engagement_score += 1
+        if engagement_score:
+            priority_tutor_arr.append((t, engagement_score))
+            tutor_queue.remove(t)
+
+    #sort it 
+    priority_tutor_arr_sorted = sorted(priority_tutor_arr, key=lambda t:t[1])
+
+    for tutor_tuple in priority_tutor_arr_sorted:
+        tutor_queue.insert(0, tutor_tuple[0])
+
+    for tutor in tutor_queue:
+        print tutor.name, tutor.total_earned, calc_avg_rating(tutor)[0]
 
     tutor = tutor_queue.pop(0)
-    _request.requested_tutors.remove(tutor) 
+    _request.requested_tutors.remove(tutor)
     commit_to_db()
     return tutor
 
@@ -51,9 +81,8 @@ def get_qualified_tutors(_request):
     for tutor in _request.requested_tutors:
         if tutor.text_notification and tutor.phone_number:
             qualified_tutors.append(tutor)
-    
-    commit_to_db()
-    return qualified_tutors 
+    return qualified_tutors
+
 
 ################
 # Samir-Tasks #
@@ -68,15 +97,26 @@ def get_qualified_tutors(_request):
 def send_student_request(r_id):
     _request = Request.query.get(r_id)
 
-    #If no more tutors
-    if not _request.requested_tutors:
-        return
-
     #If request is canceled or there's a match, return.
     if _request.connected_tutor_id or _request.time_connected:        
         return
 
+    #We are not ready yet...
+    # return
+
     tutor = get_best_queued_tutor(_request)
+
+    
+    # No more gurus left...must end the request
+    if not tutor:
+        no_tutors_msg = student_not_connected(_request.id)
+        student = User.query.get(_request.student_id)
+        send_twilio_msg.delay(student, no_tutors_msg, _request.student_id)
+        student = User.query.get(_request.student_id)
+        student.process_end_request(_request)
+        return
+
+
     tutor.outgoing_requests.append(_request)
 
     #Update request with new tutor
@@ -84,82 +124,115 @@ def send_student_request(r_id):
     _request.time_pending_began = datetime.now()
     _request.contacted_tutors.append(tutor)
 
-    #Send to mixpanel
-    print
-    print '============================'
-    print 'Request #' + str(_request.id) + tutor.get_first_name().upper() + ' REQUEST RECEIVED: ' + str(tutor.calc_avg_rating()[0]) + 'stars'
-    print '============================'
+    print "Request #", _request.id, "Contacting tutor #", str(len(_request.contacted_tutors)), tutor.name, tutor.id, _request.pending_tutor_id
+
+
+    #Send the text message
+    msg = tutor_receives_student_request(r_id)
+    twilio_msg = send_twilio_msg.delay(tutor.phone_number, msg, tutor.id)
 
     #Check status ten minutes later
     check_tutor_request_status.apply_async(\
         args=[r_id, tutor.id], countdown=DEFAULT_TUTOR_ACCEPT_TIME)
 
-    #Send the text message
-    msg = tutor.get_first_name().upper() + tutor_receives_student_request(r_id)
-    from views import send_twilio_msg
-    # twilio_msg = send_twilio_msg(tutor.phone_number, msg, tutor)
+    if twilio_msg:
+        _request.create_event_notification('text-sent')
+        print 'message sent!'
+    else:
+        print 'message NOT sent!'
 
     commit_to_db()
+
 
 
 #Removes cancellation from tutor 
 @task(name='tasks.tutor_request_status')
 def check_tutor_request_status(r_id, tutor_id):
-    
+    from datetime import datetime
     # Tutor didn't reply 
     _request = Request.query.get(r_id)
     tutor = User.query.get(tutor_id)
 
-    SECONDS_IN_BETWEEN = (datetime.now() - _request.time_pending_began).seconds
+    SECONDS_IN_BETWEEN = int((datetime.now() - _request.time_pending_began).seconds)
 
     #If tutor accepted in time .... recall the function for seconds in between
-    if SECONDS_IN_BETWEEN < DEFAULT_STUDENT_ACCEPT_TIME and \
+    if SECONDS_IN_BETWEEN <= DEFAULT_STUDENT_ACCEPT_TIME and \
         tutor in _request.committed_tutors:
 
         check_tutor_request_status.apply_async(args=[_request.id, tutor.id], \
-            countdown = SECONDS_IN_BETWEEN)
+            countdown = DEFAULT_STUDENT_ACCEPT_TIME)
 
-        print 'Request #' + str(_request.id) + ' ' + tutor.get_first_name().upper() + ' TIME CONTNUING'\
-        + ' FOR ' + SECONDS_IN_BETWEEN
+    #If time goes over
+    elif SECONDS_IN_BETWEEN >= DEFAULT_STUDENT_ACCEPT_TIME and \
+        tutor in _request.committed_tutors and not _request.time_canceled:
+                
+            return
+            #TODO: come back
+            # from datetime import datetime
+            # _request.time_canceled = datetime.now(2)
+            
+            # canceled_msg = student_canceled(_request.id, tutor.id)
+            # send_twilio_msg.delay(tutor.phone_number, msg, tutor.id)
 
-    elif _request.pending_tutor_id == tutor_id:
-        
-        print 
-        print '============================'
-        print 'Request #' + str(_request.id) + ' ' + tutor.get_first_name().upper() + ' TIME IS UP'
-        print '============================'
+            # commit_to_db()
+    
 
+    elif _request.pending_tutor_id == tutor_id and SECONDS_IN_BETWEEN >= DEFAULT_TUTOR_ACCEPT_TIME \
+    and tutor not in _request.committed_tutors:
 
-        #Fire off the next one immediately
-        send_student_request(r_id)
+        print "Request #", _request.id, "Tutor #", str(len(_request.contacted_tutors)), "ran out of time "
+
+        #Fire off the next one immediately, but make sure it doesn't mess up the next one.
+        send_student_request.apply_async(args=[r_id], countdown=1)
 
         #Update this tutor
         tutor = User.query.get(tutor_id)
         _request = Request.query.get(r_id)
         tutor.outgoing_requests.remove(_request)
 
-        #Add notification, in-case we want to display them.
-        n = Notification()
-        n.status = 'late'
-        n.request_id = _request.id
-        tutor.notifications.append(n)
-        commit_to_db(n)
-    
+        #create notification to keep track of each event
+        _request.create_event_notification('tutor-late')
+
     else:
         pass
         #IDK? 
 
+@task(name='tasks.send_twilio_msg')
+def send_twilio_msg(to_phone, body, user_id):
+    body = '[uGuru] ' + body
+    
+    from views import get_environment
 
+    #For local only
+    if get_environment() != 'PRODUCTION':
+        user = User.query.get(user_id)
+        to_phone = '8135009853'
+        body = '[TESTING]' + '[Intended Recipient: ' + str(user.get_first_name())\
+         + ', id: ' + str(user_id) + ') \n\n]'+ body
+
+    message = None;
+    try:
+        message = twilio_client.messages.create(
+            body_ = body,
+            to_ = to_phone,
+            from_ = TWILIO_DEFAULT_PHONE,
+            )
+        user = User.query.get(user_id)
+        text = update_text(message)
+        user.texts.append(text)
+        db_session.add(text)
+        db_session.commit()
+    except twilio.TwilioRestException:
+        logging.info("text message didn't go through")
+        raise
+    except:
+        db_session.flush()
+    return message
 
 
 #####################
 # CAM REGULAR TASKS #
 #####################
-
-@task(name='tasks.send_twilio_message_delayed')
-def send_twilio_message_delayed(phone, msg, user_id):
-    from views import send_twilio_msg
-    send_twilio_msg(phone,msg, user_id)
 
 @task(name='tasks.check_text_msg_status')
 def check_msg_status(msg_id):
@@ -428,52 +501,6 @@ def send_delayed_email(email_str, args):
         skill_name = args[1]
         student_canceled_email(User.query.get(user_id), skill_name)
 
-@task(name='tasks.send_student_request_to_tutors')
-def send_student_request_to_tutors(tutor_id_arr, request_id, user_id, skill_name):
-    from views import MAX_REQUEST_TUTOR_LIMIT
-    r = Request.query.get(request_id)
-    if len(r.committed_tutors) == (MAX_REQUEST_TUTOR_LIMIT + 1):
-        logging.info('We have already accomodated this request. Tier 2 tutors will not get it anymore.')
-        return
-    student = User.query.get(user_id)
-    second_tier_tutors = []
-    for tutor_id in tutor_id_arr:
-        tutor = User.query.get(tutor_id)
-        second_tier_tutors.append(tutor)
-        r.requested_tutors.append(tutor)
-        logging.info(str(tutor) + ' received tier 2 request')
-        if tutor.text_notification and tutor.phone_number:
-            from emails import request_received_msg
-            message = request_received_msg(student, tutor, r, skill_name)
-            send_twilio_message_delayed.apply_async(args=[tutor.phone_number, message, tutor.id])
-        tutor.incoming_requests_to_tutor.append(r)
-        from app.notifications import tutor_request_offer
-        notification = tutor_request_offer(student, tutor, r, skill_name)
-        db_session.add(notification)
-        tutor.notifications.append(notification)
-
-    #Send email to tier 2 tutors
-    from emails import student_needs_help
-    mandrill_result, tutor_email_dict = student_needs_help(student, second_tier_tutors, skill_name, r)
-    for sent_email_dict in mandrill_result:
-        if tutor_email_dict.get(sent_email_dict['email']):
-            tutor = tutor_email_dict[sent_email_dict['email']]
-            logging.info(str(tutor) + ' received tier 2 email')
-            email = Email(
-                tag='tutor-request', 
-                user_id=tutor.id, 
-                time_created=datetime.now(), 
-                mandrill_id = sent_email_dict['_id']
-                )
-            db_session.add(email)
-            tutor.emails.append(email)
-            r.emails.append(email)
-
-    try:
-        db_session.commit()
-    except:
-        db_session.rollback()
-        raise 
 
 @task(name='tasks.send_student_package_info')
 def send_student_package_info(user_id, request_id):
@@ -490,16 +517,48 @@ def send_student_package_info(user_id, request_id):
     from app.emails import send_student_packages_email
     send_student_packages_email(user, tutor_name, skill_name)
     logging.info("Email sent to " + str(user) + " regarding student packages.")
+
+@task(name='tasks.create_mp_profile')
+def create_mp_profile(user_id, campaign_id):
+    import os
+    from mixpanel import Mixpanel
+    mp = Mixpanel(os.environ['MIXPANEL_TOKEN']) 
+
+    user = User.query.get(int(user_id))
     
+    full_name = user.name.split(' ')
+    first_name = None
+    last_name = None
+    if len(full_name) >= 2:
+        first_name = full_name[0]
+        last_name = full_name[1]
+    elif len(full_name) == 1:
+        first_name = full_name[0]
+    
+    mp.people_set(user.id, {
+        '$first_name'    : first_name,
+        '$last_name'     : last_name,
+        '$email'         : user.email,
+        '$phone'         : user.phone_number,
+        '$guru'          : user.is_a_guru(),
+        '$profile_url'   : user.profile_url
+    })
+
+    mp.track(user_id, 'Link Clicked', {
+        'Fa14 Email Campaign': campaign_id
+        })
+
+    print 'campaign complete!'
+
 
 ##################
 # PERIODIC TASKS #
 ##################
 @periodic_task(run_every=crontab(minute=0, hour=0), name="tasks.daily_results_email") # Every midnight
-def daily_results_email():
-    if os.environ.get('PRODUCTION'):
-        from emails import daily_results_email
-        daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
+# def daily_results_email():
+#     if os.environ.get('PRODUCTION'):
+#         from emails import daily_results_email
+#         daily_results_email('samir@uguru.me', 'uguru-core@googlegroups.com')
 
 
 #TODO: Samir

@@ -105,8 +105,6 @@ def my_tutors():
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
-
-    print user.get_all_conversations()
     
     return render_template('web/my_tutors.html', user=user)
 
@@ -121,11 +119,13 @@ def welcome():
     campaign = request.args.get('camp')
     user_id = request.args.get('user_id')
     if campaign and user_id:
-        mp.track(user_id, 'Link Clicked', {
-            'Campaign': campaign
-            })
+        #Create MP profile
+
+        from tasks import create_mp_profile
+        create_mp_profile.delay(user_id, campaign)
 
         session['email_user_id'] = user_id
+        print campaign, user_id
 
         return redirect(url_for('welcome'))
 
@@ -136,14 +136,22 @@ def m_welcome_campaign_track(campaign, _id):
     #SEND TO MP PANEL
     return redirect(url_for('m_welcome'))
 
+@app.route('/m/guru/new/')
+@app.route('/m/guru/new/1/')
+def m_guru_new():
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+        
+    return render_template('web/guru-new/guru-1.html')
+
 @app.route('/m/login/')
 def m_login():
 
     no_pw_user = None
     user = api.current_user()
     if user:
-        
-        if user.is_a_guru():
+        if user.is_a_guru() and user.skills:
             return redirect(url_for('m_guru'))
         else:
             return redirect(url_for('home'))
@@ -161,7 +169,7 @@ def m_login():
         #     return redirect( \
         #         url_for(endpoint='request_by_id', _id=pending_request_id))
     
-    return render_template('web/login.html', no_pw_user=no_pw_user)
+    return render_template('web/login.html', no_pw_user=no_pw_user, session=session)
 
 @app.route('/m/signup/')
 def m_signup():
@@ -224,8 +232,8 @@ def add_payment(r_id=None):
         user=user)
 
 @app.route('/m/guru/cashout/')
-@app.route('/m/guru/cashout/<redirect>/')
-def guru_cashout(redirect=None):
+@app.route('/m/guru/cashout/<redirect_id>/')
+def guru_cashout(redirect_id=None):
     user = api.current_user()
     if not user:
         return redirect(url_for('m_login'))
@@ -235,7 +243,7 @@ def guru_cashout(redirect=None):
         return redirect(url_for('m_guru'))
 
     return render_template('web/cashout.html',\
-        user=user, redirect=redirect)
+        user=user, redirect=redirect_id)
 
 @app.route('/m/add_cash_card/<home>/')
 @app.route('/m/add_cash_card/')
@@ -258,6 +266,16 @@ def become_guru():
         return redirect(url_for('m_login'))
 
     return render_template('web/become_guru.html'\
+        , user=user)
+
+@app.route('/m/upcoming/')
+def upcoming_sessions():
+
+    user = api.current_user()
+    if not user:
+        return redirect(url_for('m_login'))
+
+    return render_template('web/upcoming_sessions.html'\
         , user=user)
 
 @app.route('/m/add_courses/')
@@ -334,6 +352,20 @@ def edit_profile():
     return render_template('web/edit_profile.html',\
         user=user)
 
+@app.route('/m/r/<r_id>/p/<p_id>/')
+def profile_by_user_id_clicked(r_id, p_id):
+
+    _request = Request.get_request_by_id(int(r_id))
+
+    #Track student that clicked this link
+    _request.create_event_notification(status='student-clicked-text-link', \
+        id_to_track=p_id)
+    if get_environment() == 'PRODUCTION':
+        mp.track(_request.student_id, 'Student clicked guru text link', {
+            'Request Id': _request.id
+        })
+
+    return redirect(url_for('profile', _id=p_id))
 
 @app.route('/m/p/<_id>/')
 @app.route('/m/guru/profile/<_id>/')
@@ -342,6 +374,8 @@ def profile(_id):
 
     user = api.current_user()
     if not user:
+        if _id:
+            session['request-profile'] = _id
         return redirect(url_for('m_login'))
 
     #if guru is viewing their profile
@@ -354,6 +388,15 @@ def profile(_id):
         return render_template('web/profile.html', \
         student=user, guru=None, _request=None)
 
+    # Make sure user can see gurus that they have conversations with
+    profile_user = User.query.get(_id)
+    results = user.get_conversation_with(profile_user)
+    if results:
+        guru = profile_user
+        _request = results.requests[0]
+        return render_template('web/profile.html', \
+        student=user, guru=guru, _request=_request)
+
     # Make sure user can see this tutor profile
     results = user.has_incoming_tutor_for_request(int(_id))
     if not results:
@@ -362,6 +405,9 @@ def profile(_id):
     
     guru = results[0]
     _request = results[1]
+
+    _request.create_event_notification(status='student-viewed-profile', \
+        id_to_track=guru.id)
 
     return render_template('web/profile.html', \
         student=user, guru=guru, _request=_request)
@@ -396,6 +442,7 @@ def _request():
 
     return render_template('web/request.html')
 
+@app.route('/m/guru/support/')
 @app.route('/m/support/')
 def support():
 
@@ -446,10 +493,6 @@ def guru_cancel_request_by_id(_id):
     if not user:
         return redirect(url_for('m_login'))
 
-    if not user == _request.get_student() and not _request.is_tutor_involved(user):
-        flash("Sorry! You don't have access to this page.")
-        return redirect(url_for('m_guru'))
-
     if 'reject' in request.url:
         return render_template('web/guru_reject_request.html', user=user,\
         request_dict=_request.get_return_dict())
@@ -476,7 +519,7 @@ def accept_request_by_id(_id):
         return redirect(url_for('m_login'))
 
     if not user == _request.get_student() and not _request.is_tutor_involved(user):
-        flash("Sorry! You don't have access to this page.")
+        flash("Sorry! You do not have access to this page.")
         return redirect(url_for('m_guru'))
 
     return render_template('web/guru_accept_request.html', user=user,\
@@ -489,6 +532,24 @@ def account_details():
         return redirect(url_for('m_login'))
 
     return render_template('web/account_details.html', user=user)
+
+
+@app.route('/m/r/<r_id>/u/<u_id>/')
+def request_by_user_id_clicked(r_id, u_id):
+
+    _request = Request.get_request_by_id(int(r_id))
+    if not _request:
+        
+        return redirect(url_for('home'))
+
+    #Track student that clicked this link
+    _request.create_event_notification(status='tutor-clicked-text-link', id_to_track=u_id)
+    if get_environment() == 'PRODUCTION':
+        mp.track(u_id, 'Guru clicked text link', {
+            'Request Id': _request.id
+        })
+
+    return redirect(url_for('request_by_id', _id=r_id))
 
 
 # ONLY TUTORS ARE LEAD TO THIS ROUTE.
@@ -506,17 +567,25 @@ def request_by_id(_id):
     #if tutor (should take up the whole page)
     user = api.current_user()
     if not user:
+        if _id:
+            session['request-redirect'] = _id
+
         return redirect(url_for('m_login'))
+
+    if not user == _request.get_student() and _request.pending_tutor_id != user.id\
+    and user in _request.contacted_tutors and not _request.time_canceled:
+        flash('Sorry! You missed your turn!')
+        return redirect(url_for('m_guru'))
 
     # request already canceled, guru can't accept
     if not user == _request.get_student() and \
-    _request.time_connected and user in _request.approved_tutors():
+    _request.time_canceled:
         flash('Sorry! The student has canceled this request')
         return redirect(url_for('m_guru'))
 
     #if Guru shouldn't see this.
-    if not user == _request.get_student() and not _request.is_tutor_involved(user):
-        flash("Sorry! You don't have access to this page.")
+    if not user == _request.get_student() and not _request.pending_tutor_id == user.id:
+        flash("Sorry! You dont have access to this page.")
         return redirect(url_for('m_guru'))
 
     #Different page, same validation, might as well put in same route? 
@@ -530,10 +599,26 @@ def request_by_id(_id):
         return render_template('web/confirm_request.html', user=user,\
         request_dict=_request.get_return_dict(),\
         stripe_key=stripe_keys['publishable_key'])
+
+    #Guru is looking at request
+    from datetime import datetime 
+    from tasks import DEFAULT_TUTOR_ACCEPT_TIME
+    guru_seconds_remaining = DEFAULT_TUTOR_ACCEPT_TIME - \
+    (datetime.now() - _request.time_pending_began).seconds
     
+    
+    if session.get('request-redirect'):
+        session.pop('request-redirect')
+
+    if get_environment() == 'PRODUCTION':
+        mp.track(user.id, 'View Student Request', {
+            'Request Id': _request.id
+        })
+
+    _request.create_event_notification('tutor-viewed-request', id_to_track=user.id)
 
     return render_template('web/request_details.html', user=user,\
-     request_dict=_request.get_return_dict())
+     request_dict=_request.get_return_dict(), time=round(guru_seconds_remaining,2))
 
 @app.route('/log_in/')
 @app.route('/sign_up/')
@@ -562,7 +647,7 @@ def index(arg=None):
         user = User.query.get(session.get('user_id'))
         # if user.skills and len(user.notifications) < 2:
         #     return redirect(url_for('settings'))
-        return redirect(url_for('activity'))
+        return redirect(url_for('welcome'))
     if 'log_in' in request.url:
         modal_flag = 'login'
     if 'sign_up' in request.url:
@@ -622,6 +707,7 @@ def parents(arg=None):
 
 @app.route('/apply-guru/', methods=['GET', 'POST', 'PUT'])
 def apply_guru():
+    return redirect(url_for('welcome'))
     if session.get('user_id'):
         user = User.query.get(session.get('user_id'))
         return render_template('apply-guru.html', user=user)
@@ -1040,14 +1126,17 @@ def new_admin_tutors():
 def new_admin_ratings():
     if session.get('admin'):
         ratings_dict = {}
+        ratings_arr = []
         for r in Rating.query.all():
-            if r.skill_id and r.tutor_id and r.student_id:
+            if r.skill_id and r.tutor_id and r.student_id and r.time_created:
                 skill = Skill.query.get(r.skill_id)
                 tutor = User.query.get(r.tutor_id)
                 student = User.query.get(r.student_id)
-                ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
-                    'student-name':student.name.split(" ")[0]}
-        return render_template('admin/admin-ratings.html', ratings=Rating.query.all(), ratings_dict=ratings_dict)
+                if tutor and tutor.name and skill and skill.name and student and student.name:
+                    ratings_dict[r] = {'skill':skill.name, 'tutor-name':tutor.name.split(" ")[0], \
+                        'student-name':student.name.split(" ")[0]}
+                    ratings_arr.append(r)
+        return render_template('admin/admin-ratings.html', ratings=ratings_arr      , ratings_dict=ratings_dict)
     return redirect(url_for('index'))
 
 
@@ -1121,30 +1210,57 @@ def admin_requests():
         all_requests = []
         num_repeat_payments = 0
         for r in Request.query.all()[::-1]:
-            if get_environment() == 'PRODUCTION' and r.id < 313:
-                continue
-            request_dict = {}
-            request_dict['emails-seen'] = 0
-            request_dict['request'] = r
-            request_dict['date'] = pretty_date(r.time_created)
-            skill = Skill.query.get(r.skill_id)
-            request_dict['skill_name'] = skill.name
-            student = User.query.get(r.student_id)
-            request_dict['student'] = student
-            total_seen_count = 0
-            request_dict['pending-ratings'] = 0
-            request_dict['message-length'] = 0
-
-            if r.last_updated:
-                request_dict['last-updated'] = pretty_date(r.last_updated)
-            if r.connected_tutor_id:
-                tutor = User.query.get(r.connected_tutor_id)
-                request_dict['connected-tutor'] = tutor                        
-                request_dict['pending-ratings'] = 0
-            all_requests.append(request_dict)
+            if r.id > 900:
+                r_dict = r.get_return_dict()
+                r_dict['request'] = r
+                r_dict['phone-tutors'] = sum([int(bool(t.phone_number)) for t in r.requested_tutors])
+                r_dict['setting-tutors'] = sum([int(bool(t.phone_number) and t.text_notification) for t in r.requested_tutors])
+                r_dict['date'] = r.time_created.strftime('%h %d %Y, %I:%M:%S %p')
+                all_requests.append(r_dict)
         all_requests = sorted(all_requests, key=lambda d: d['request'].id, reverse=True)
-        return render_template('admin/admin-requests.html', all_requests=all_requests, num_repeat_payments=num_repeat_payments)
+        return render_template('admin/admin-requests.html', all_requests=all_requests)
     return redirect(url_for('index'))
+
+@app.route('/admin/requests/<r_id>/')
+def admin_requests_two(r_id):
+    if session.get('admin'):
+        from tasks import get_qualified_tutors, DEFAULT_TUTOR_ACCEPT_TIME
+        from datetime import datetime
+
+        r = Request.query.get(r_id)
+        skill = Skill.query.get(r.skill_id)
+        
+        current_tutor = None
+        current_tutor_id = r.pending_tutor_id
+        if current_tutor_id: 
+            current_tutor = User.query.get(current_tutor_id)
+
+        r_dict = r.get_return_dict()
+
+        r_dict['time-created'] = r.time_created.strftime('%h %d %Y, %I:%M:%S %p')
+        r_dict['tutors-available'] = len(get_qualified_tutors(r))
+        r_dict['tutors-contacted'] = len(r.contacted_tutors)
+        r_dict['tutors-committed'] = len(r.committed_tutors)
+        if current_tutor: 
+            r_dict['current-tutor'] = current_tutor.as_dict()
+            r_dict['time-remaining'] = int(DEFAULT_TUTOR_ACCEPT_TIME - (datetime.now() - r.time_pending_began).seconds)
+
+        r_notifications = Notification.query.filter_by(request_id = r.id).all()
+        r_notifications = sorted(r_notifications, key=lambda n:n.time_created)
+        r_notifications_arr = []
+        for n in r_notifications:
+            temp_dict = {
+                'server_id': n.id,
+                'status': n.status,
+                'time-created': n.time_created.strftime('%h %d %Y, %I:%M:%S %p')
+            }
+            if n.request_tutor_id:
+                temp_dict['tutor'] = User.query.get(n.request_tutor_id).as_dict()
+            r_notifications_arr.append(temp_dict)
+        
+        r_dict['notifications'] = r_notifications_arr
+
+        return render_template('admin/admin-detailed-request.html', r_dict = r_dict)
 
 @app.route('/add-bank/', methods=('GET', 'POST'))
 def add_bank():
@@ -1208,6 +1324,8 @@ def add_bank():
 
 @app.route('/submit-rating/', methods=('GET', 'POST'))
 def submit_rating():
+    return redirect(url_for('welcome'))
+
     if request.method == "POST":
         return_json = {}
         ajax_json = request.json
@@ -2284,6 +2402,7 @@ def admin_logout():
 
 @app.route('/payments/')
 def payments():
+    return redirect(url_for('welcome'))
     if session.get('user_id'):
         user = User.query.get(session.get('user_id'))
         return render_template('payments.html', user=user)
@@ -2414,6 +2533,7 @@ def activity_promotion():
 @app.route('/activity/', methods=('GET', 'POST'), defaults={'arg': None})
 @app.route('/activity/<arg>/')
 def activity(arg=None):
+    return redirect(url_for('welcome'))
     if not session.get('user_id'):
         session['redirect'] = '/activity/'
         return redirect('/log_in/')
@@ -2529,6 +2649,7 @@ def guru_rules():
 
 @app.route('/messages/')
 def messages():
+    return redirect(url_for('welcome'))
     if not session.get('user_id'):
         return redirect(url_for('index'))
     user_id = session['user_id']
@@ -2555,6 +2676,7 @@ def messages():
 
 @app.route('/settings/referral/')
 def settings_referral():
+    return redirect(url_for('welcome'))
     user_id = session.get('user_id')
     if not user_id:
         session['redirect'] = '/settings/#referral'
@@ -2564,6 +2686,7 @@ def settings_referral():
 
 @app.route('/settings/billing/')
 def settings_billing():
+    return redirect(url_for('welcome'))
     user_id = session.get('user_id')
     if not user_id:
         session['redirect'] = '/settings/#billing'
@@ -2573,6 +2696,7 @@ def settings_billing():
 
 @app.route('/settings/profile/')
 def settings_profile():
+    return redirect(url_for('welcome'))
     user_id = session.get('user_id')
     if not user_id:
         session['redirect'] = '/settings/#prof'
@@ -2583,6 +2707,7 @@ def settings_profile():
 
 @app.route('/settings/')
 def settings():
+    return redirect(url_for('welcome'))
     user_id = session.get('user_id')
     not_launched_flag = False
     logging.info(request.url)
@@ -2755,33 +2880,6 @@ def get_environment():
     if os.environ.get("TESTING"):
         environment = "TESTING"
     return environment
-
-def send_twilio_msg(to_phone, body, user_id):
-    ## Bug from before
-    if 'Meet at' in body:
-        return 
-    body = '[uGuru] ' + body
-    message = None;
-    try:
-        message = twilio_client.messages.create(
-            body_ = body,
-            to_ = to_phone,
-            from_ = TWILIO_DEFAULT_PHONE,
-            )
-        user = User.query.get(user_id)
-        text = update_text(message)
-        user.texts.append(text)
-        db_session.add(text)
-        db_session.commit()
-        # from tasks import check_msg_status
-        # check_msg_status.apply_async(args=[text.id], countdown = 60)
-    except twilio.TwilioRestException:
-        raise
-        logging.info("text message didn't go through")
-    except:
-        db_session.flush()
-        False #return message didn't go through
-    return message
 
 
 def create_referral_code(user):

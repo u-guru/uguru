@@ -9,7 +9,22 @@ $(document).ready(function() {
       data: JSON.stringify(data),
       dataType: "json",
       success: function(result) {
-        window.open('/m/login/');
+        window.open('/m/home/');
+      }
+    });
+  });
+  $('.container').on('click', 'a.login-m-user', function() {
+    var user_id = ($(this).data().userId).toString();
+    var request_id = ($(this).data().requestId).toString();
+    data = {'user-id': user_id};
+    $.ajax({
+      type: "POST",
+      contentType: 'application/json;charset=UTF-8',
+      url: '/admin-access/',
+      data: JSON.stringify(data),
+      dataType: "json",
+      success: function(result) {
+        window.open('/m/r/' + request_id) +'/';
       }
     });
   });

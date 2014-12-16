@@ -417,7 +417,7 @@ class User(Base):
         from views import calc_avg_rating
         return calc_avg_rating(self)
 
-    def get_conversation_with(self, guru):
+    def get_conversation_with(self, guru):        
         for c in self.conversations:
             if c.guru == guru:
                 return c
@@ -462,6 +462,7 @@ class User(Base):
                 all_requests_by_date = sorted(c.requests, 
                     key=lambda c:c.time_created, reverse=True)
                 scheduled_sessions.append(all_requests_by_date[0])
+        scheduled_sessions = sorted(scheduled_sessions, key=lambda s:s.time_created, reverse=True)
         return scheduled_sessions
 
     #Helper function for /profile/<id> route
@@ -499,6 +500,17 @@ class User(Base):
             if self.id == _request.student_id:
                 all_student_requests.append(_request)
         return all_student_requests
+
+    # When there are no gurus available
+    def process_end_request(self, _request):
+        if _request in self.outgoing_requests:
+            self.outgoing_requests.remove(_request)
+        try: 
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise 
+
 
     #for guru to get all incoming requests
     def get_guru_requests(self):
@@ -611,7 +623,7 @@ class Conversation(Base):
         if last_message:
             return last_message.write_time
         else:
-            return False
+            return self.requests[0].time_created
 
     def get_last_message(self):
         if self.messages:
@@ -727,13 +739,13 @@ class Message(Base):
         return message
 
     def as_dict(self):
-        from lib.utils import python_datetime_to_js_date
+        from lib.utils import python_datetime_to_js_date, pretty_date
         m_dict = {
             'server_id': self.id,
             'contents': self.contents,
             'sender': self.sender.as_dict(),
             'receiver': self.reciever.as_dict(),
-            'write_time': python_datetime_to_js_date(self.write_time)
+            'write_time': pretty_date(self.write_time)
         }
         return m_dict
 
@@ -913,6 +925,7 @@ class Payment(Base):
         student.payments.append(payment)
         guru.payments.append(payment)
 
+        if not guru.balance: guru.balance = 0
         guru.balance = guru.balance + payment.tutor_received_amount
 
         try: 
@@ -950,14 +963,14 @@ class Payment(Base):
 
 
     @staticmethod 
-    def calculate_student_price(hours, minutes):
+    def calculate_student_price(hours=0, minutes=0):
         total_hours = hours + float(minutes / 60.0)
         total_amount = 20 * total_hours
         rounded_total_amount = round(total_amount, 2)
         return rounded_total_amount
 
     @staticmethod 
-    def calculate_guru_price(hours, minutes):
+    def calculate_guru_price(hour=0, minutes=0):
         total_hours = hours + float(minutes / 60.0)
         total_amount = 16 * total_hours
         rounded_total_amount = round(total_amount, 2)
@@ -1119,7 +1132,8 @@ class Request(Base):
         self.start_time = start_time
         self.remote = remote
         self.location = location
-        self.requested_tutors = Skill.query.get(skill_id).tutors
+        self.requested_tutors = self.filter_previous_gurus(\
+            Skill.query.get(skill_id).tutors, student_id)
 
     def __repr__(self):
         student_name = User.query.get(self.student_id).name
@@ -1161,10 +1175,26 @@ class Request(Base):
             guru_id=self.connected_tutor_id).first()
         return c
 
+    @staticmethod
+    def filter_previous_gurus(guru_arr, student_id):
+        student = User.query.get(student_id)
+        c_gurus = [c.guru for c in student.conversations]
+        filtered_gurus = []
+        for guru in guru_arr:
+            if guru not in c_gurus:
+                filtered_gurus.append(guru)
+            else:
+                print 'guru removed', guru
+        return filtered_gurus
+
+
     def process_start_time(self):
         if self.urgency:
-            print self.start_time
             return 'ASAP'
+
+        #Debug soon 
+        if not self.start_time:
+            return ""
         
         #else case
         from datetime import datetime
@@ -1180,12 +1210,36 @@ class Request(Base):
             result_str += self.start_time.strftime('%I:%M %p')
         return result_str
 
+    def create_event_notification(self, status, id_to_track=None, 
+        another_id_to_track=None):
+        n = Notification()
+        n.status = status
+        n.request_id = self.id
+        
+        #For us to track the tutor clicked the link later (not necessarily on time.)
+        if status == 'tutor-viewed-request' or status == 'tutor-clicked-text-link':
+            n.request_tutor_id = id_to_track
+            user = User.query.get(id_to_track)
+            user.notifications.append(n)
+        #default for student viewing the profile or clicking the link
+        elif status == 'student-viewed-profile' or status == 'student-clicked-text-link':
+            n.request_tutor_id = id_to_track
+            student = User.query.get(self.student_id)
+            student.notifications.append(n)
+        #default 
+        elif self.pending_tutor_id:
+            n.request_tutor_id = self.pending_tutor_id
+            tutor = User.query.get(self.pending_tutor_id)
+            tutor.notifications.append(n)
+        
+        commit_to_db(n)
+
     def process_time_estimate(self):
         if not self.time_estimate:
             return '15-30min'
         elif self.time_estimate == 1:
             return '30-60min'
-        elif self.time_estimate == 1:
+        elif self.time_estimate == 2:
             return '1-2hr'
         else:
             return '2+ hours'
@@ -1197,7 +1251,15 @@ class Request(Base):
 
         tutor = User.query.get(tutor_id)
         self.committed_tutors.remove(tutor)
-        tutor.outgoing_requests.remove(self)
+        if self in tutor.outgoing_requests:
+            tutor.outgoing_requests.remove(self)
+
+        from tasks import send_student_request
+        send_student_request.delay(self.id)
+
+        self.create_event_notification('tutor-reject')
+        print "Student has rejected ", tutor
+
         try:
             db_session.commit()
         except:
@@ -1206,8 +1268,16 @@ class Request(Base):
 
     def process_tutor_reject(self, tutor_id):
         tutor = User.query.get(tutor_id)
-        self.committed_tutors.remove(tutor)
-        tutor.outgoing_requests.remove(self)
+
+        if self in tutor.outgoing_requests:
+            tutor.outgoing_requests.remove(self)
+
+        self.pending_tutor_id = None
+        self.time_pending_began = None
+
+        from tasks import send_student_request
+        send_student_request(self.id)
+
         try:
             db_session.commit()
         except:
@@ -1225,8 +1295,19 @@ class Request(Base):
         student = User.get_user(self.student_id)
         skill = Skill.query.get(self.skill_id)
 
-        student.outgoing_requests.remove(self)
-        tutor.outgoing_requests.remove(self)
+        if self in tutor.outgoing_requests:
+            tutor.outgoing_requests.remove(self)
+        if self in student.outgoing_requests:
+            student.outgoing_requests.remove(self)
+
+        from tasks import send_twilio_msg
+        from texts import guru_is_selected
+        msg_body = guru_is_selected(self.id, tutor)
+        text_msg = send_twilio_msg(tutor.phone_number, msg_body, tutor.id)
+        self.create_event_notification('student-accepted')
+        self.create_event_notification('guru-sent-accept-text')
+
+        
 
         for tutor in (self.requested_tutors + self.committed_tutors):
             if self in tutor.outgoing_requests:
@@ -1249,6 +1330,22 @@ class Request(Base):
         self.pending_tutor_id = tutor.id
         self.pending_tutor_description = description
         self.time_pending_began = datetime.now()
+
+        from tasks import check_tutor_request_status
+        from tasks import DEFAULT_STUDENT_ACCEPT_TIME
+        check_tutor_request_status.apply_async(args=[self.id, tutor.id], 
+            countdown = DEFAULT_STUDENT_ACCEPT_TIME)
+
+        from tasks import send_twilio_msg
+        from texts import student_receives_guru_accept
+        msg_body = student_receives_guru_accept(self.id)
+        student = User.query.get(self.student_id)
+        text_msg = send_twilio_msg(student.phone_number, msg_body, student.id)
+        self.create_event_notification('tutor-accepted')
+        self.create_event_notification('student-sent-accept-text')
+
+        print 'Adding ' + str(DEFAULT_STUDENT_ACCEPT_TIME) + ' seconds for student to accept'
+
         try:
             db_session.commit()
         except:
@@ -1289,8 +1386,13 @@ class Request(Base):
     def cancel(self, user, description=None):
         self.time_canceled = datetime.now();
         self.connected_tutor_id = self.student_id
-        user.outgoing_requests.remove(self)
+
+        if self in user.outgoing_requests:
+            user.outgoing_requests.remove(self)
         self.cancellation_reason = description
+
+        
+        self.create_event_notification('student-canceled')
 
         #Clear this request from all tutors inbox
         for tutor in self.requested_tutors + self.committed_tutors:
@@ -1306,7 +1408,8 @@ class Request(Base):
     # A guru who has committed, but is not anymore
     def guru_cancel(self, guru_id, description=None):
         guru = User.query.get(guru_id)
-        guru.outgoing_requests.remove(self)
+        if self in guru.outgoing_requests:
+            guru.outgoing_requests.remove(self)
         try:
             db_session.commit()
         except:
@@ -1315,10 +1418,10 @@ class Request(Base):
         return 
 
     def get_status(self):
-        if not self.pending_tutor_id:
-            return 'pending'
-        elif self.time_canceled:
+        if self.time_canceled:
             return 'canceled'
+        elif self.pending_tutor_id:
+            return 'pending'
         else:
             return 'matched'
         
@@ -1340,7 +1443,8 @@ class Request(Base):
                 description = description,
                 time_estimate = time_estimate,
                 location = location,
-                is_urgent = urgency, # TODO : Depricate
+                is_urgent = is_urgent, 
+                urgency = urgency, # TODO : Depricate
                 start_time = start_time
             )
 
@@ -1528,17 +1632,20 @@ class Rating(Base):
     #TODO, make queries more optimal
     def get_payment_details_dict(self):
         _request = Request.query.get(self.request_id)
-        payment = Payment.query.get(_request.payment_id)
-        student = User.query.get(payment.student_id)
-        guru = User.query.get(payment.tutor_id)
-        skill = Skill.query.get(payment.skill_id)
+        
+        student = User.query.get(self.student_id)
+        guru = User.query.get(self.tutor_id)
+        skill = Skill.query.get(self.skill_id)
         payment_dict = {
             'student': student.as_dict(),
             'guru': guru.as_dict(),
-            'student_cost': payment.student_paid_amount,
-            'guru_earnings': payment.tutor_received_amount,
             'skill_name': skill.get_short_name()
         }
+
+        if _request.payment_id:
+            payment_dict['student_cost'] = payment.student_paid_amount
+            payment_dict['guru_earnings'] = payment.tutor_received_amount
+
         return payment_dict
 
 

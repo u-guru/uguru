@@ -10,7 +10,7 @@
 
 {% block main_content %}
 <div class="content should-hide-message-bar should-hide-tab-bar">
-    <div id='login-errors' class='center error-text error-div margin-top-20'>Please fill in all fields</div>
+    <div id='login-errors' class='center error-text error-div margin-top-20 {% if session.get("request-redirect") or session.get("request-profile")%}show{%endif%}'>You will be redirected to your destination after logging in!</div>
     <form class="input-group" id="login-form" >
       <div class='input-row'>
           <label>EMAIL</label>
@@ -29,7 +29,7 @@
   </div>
 
   <script>
-    $('header').css('background-color','#343d3e');
+    $('header').css('background-color','#2B3234');
     $(document).ready(function() {
         $('#login-link').click(function(event) {
             $('#login-errors').hide();
@@ -57,10 +57,44 @@
                 contentType: 'application/json',
                 data: payload,
                 success: function(request){
-                    window.PUSH({
+                    console.log(request);
+                    if (request.redirect && request.redirect == 'admin') {
+                      
+                      window.location.replace('/admin/');
+
+                    } 
+                    else if (request.redirect && request.redirect == 'request' )
+
+                    {
+
+                      console.log(request.errors[0])
+                      
+                      window.PUSH({
+                        transition : "slide-in",
+                        url : "/m/r/" + request.errors[0]
+                      });
+
+                    } 
+                    else if (request.redirect && request.redirect == 'profile' )
+
+                    {
+
+                      console.log(request.errors[0])
+                      
+                      window.PUSH({
+                        transition : "slide-in",
+                        url : "/m/p/" + request.errors[0]
+                      })
+
+
+                    } else {
+
+                      window.PUSH({
                         transition : "slide-in",
                         url : "/m/home/"
-                    });
+                      });
+
+                    }
                 },
                 error: function (request) {
                   $('#login-errors').text(request.responseJSON['errors']);

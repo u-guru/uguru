@@ -119,7 +119,7 @@ def reset_password_email(user):
     EMAIL_SPACE = ", "
     EMAIL_TO = [user.email]
 
-    reset_password_url = 'http://0.0.0.0:5000/m/reset_password/' + \
+    reset_password_url = 'http://uguru.me/m/reset_password/' + \
     md5(str(user.id)).hexdigest()
 
     to_emails = []
@@ -1292,7 +1292,7 @@ def reminder_before_session(person_a, person_b, location, ending):
 #Was MEANT to send an error anytime there is a production. Not anymore I guess.
 def error(message):
 
-    EMAIL_TO = ["makhani.samir@gmail.com", "cameronehrlich@gmail.com"]
+    EMAIL_TO = ["makhani.samir@gmail.com"]
     logging.info(message)
 
     if os.environ.get('TESTING'):

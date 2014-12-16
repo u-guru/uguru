@@ -62,16 +62,20 @@ def request_web_api():
 
     # Create a request
     from lib.utils import js_date_to_python_datetime # TODO : This isn't being used, ***
+    
+    is_urgent = urgency = request.json.get("is_urgent")
+
+    user.phone_number = request.json.get('phone_number')
+
     _request = Request.create_request(
             student = user,
             skill_id = skill.id,
             description = request.json.get('description'),
             time_estimate = request.json.get('time_estimate'),
-            phone_number = request.json.get('phone_number'),
             location = request.json.get('location'),
             remote = request.json.get('remote'),
-            is_urgent = bool(int(request.json.get("is_urgent"))), # TODO : probably don't need to convert to int first, but lets be safe
-            urgency = int(request.json.get('urgency')), # TODO : Depricate
+            is_urgent = is_urgent, # TODO : probably don't need to convert to int first, but lets be safe
+            urgency = int(urgency), # TODO : Depricate
             start_time = request.json.get('start_time') # TODO : *** should be used here
         )
 
@@ -145,8 +149,8 @@ def request_by_id_web_api(request_id):
         if put_action == 'guru-accept':
             _request.process_tutor_acceptance(user, request.json.get('description'))
             flash('Request successfully sent to student! We have texted '\
-                    + _request.get_student().get_first_name() + ' will get back'\
-                    + 'to you if the student likes your profile.')
+                    + _request.get_student().get_first_name() + ', who will get back'\
+                    + 'to you they like your profile.')
 
         # Guru rejects incoming student request.
         # TODO: Active gurus should be rewarded
@@ -157,18 +161,19 @@ def request_by_id_web_api(request_id):
             else:
                 flash('Request successfully rejected!')
 
-            _request.process_tutor_reject(user)
+            _request.process_tutor_reject(user.id)
 
         
         # Student accepts guru 
         if put_action == 'student-accept':
-            expected_parameters = ['action']
+            expected_parameters = ['action', 'tutor_id']
             
             #invalid payload
             if not request_contains_all_valid_parameters(request_json, expected_parameters):
                 return json_response(422)
 
-            tutor = User.get_user(_request.pending_tutor_id)
+            tutor_id = request.json.get('tutor_id')
+            tutor = User.get_user(tutor_id)
             
             _request.process_student_acceptance(tutor)
 
@@ -383,6 +388,11 @@ def api_login():
             email = request.json.get('email')
             password = request.json.get('password')
 
+            if email == 'admin@uguru.me' and password == 'launchuguru':
+                error_msg = 'Logging into Admin...'
+                session['admin'] = True
+                return json_response(http_code=200, errors = [error_msg], redirect='admin')
+
             # If fields are left empty
             if not email or not password:
                 return json_response(http_code=403, errors=["Please fill in required fields."])
@@ -392,6 +402,18 @@ def api_login():
             
             #If it does, send success to client to redirect to home
             if user: 
+                
+
+                if session.get('request-redirect'):
+                    user.authenticate()
+                    error_msg = session.get('request-redirect')
+                    return json_response(http_code=200, errors = [error_msg], redirect='request')
+
+                if session.get('request-redirect'):
+                    user.authenticate()
+                    error_msg = session.get('request-profile')
+                    return json_response(http_code=200, errors = [error_msg], redirect='profile')
+
                 user.authenticate()
                 return_dict = DEFAULT_SUCCESS_DICT 
                 return json_response(200, return_dict)
@@ -896,6 +918,7 @@ def api(arg, _id):
 
     # sign_in logic
     if arg == 'sign_in' and request.method == 'POST':
+        from hashlib import md5
         email = request.json.get("email").lower()
         password = md5(request.json.get("password")).hexdigest()
         

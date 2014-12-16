@@ -22,9 +22,11 @@
             {{rating.time_created.strftime('%h %d %Y, %I:%M %p')}}
     </h6>
     {% if is_student %}
+    {% if payment_details_dict['student_cost'] %}
     <div class="rating-price">
         <p class='green-text'><span style='font-weight:100'>$</span>{{payment_details_dict['student_cost']}}</p>
     </div>
+    {% endif %}
     <div class="border-frame">
       <div class="border-line center">
           <span class='micro-grey-text'>
@@ -41,9 +43,11 @@
         </div>
     </div>
     {% else %}
+    {% if payment_details_dict['guru_earnings'] %}
     <div class="rating-price">
         <p class='green-text'><span style='font-weight:100'>$</span>{{payment_details_dict['guru_earnings']}}</p>
     </div>
+    {% endif %}
     <div class="border-frame">
       <div class="border-line center">
           <span class='micro-grey-text'>
@@ -53,7 +57,7 @@
     </div>
     <div class="rating-container relative">
         <div class='rating-person-container'>
-          <div class="table-view-face rating-face" style='background-image: url("{{payment_details_dict['student']['profile_url']}}")'></div>
+          <img class="media-object pull-left message-face" src="{{payment_details_dict['student']['profile_url']}}">
           <div class="rating-name">
                 <p>{{payment_details_dict['student']['name']}}, {{payment_details_dict['skill_name']}}</p>
           </div>
@@ -97,10 +101,17 @@
             contentType: 'application/json',
             data: payload,
             success: function(request){
+                {% if is_student %}
                 window.PUSH({
                     transition : "fade",
                     url : "/m/home/"
                 });
+                {% else %}
+                window.PUSH({
+                    transition : "fade",
+                    url : "/m/guru/"
+                });
+                {% endif %}
             },
             error: function (request) {
             
@@ -109,4 +120,5 @@
       });
   });
   </script>
+</div>
 {% endblock %}
