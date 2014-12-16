@@ -964,14 +964,14 @@ class Payment(Base):
 
 
     @staticmethod 
-    def calculate_student_price(hours, minutes):
+    def calculate_student_price(hours=0, minutes=0):
         total_hours = hours + float(minutes / 60.0)
         total_amount = 20 * total_hours
         rounded_total_amount = round(total_amount, 2)
         return rounded_total_amount
 
     @staticmethod 
-    def calculate_guru_price(hours, minutes):
+    def calculate_guru_price(hour=0, minutes=0):
         total_hours = hours + float(minutes / 60.0)
         total_amount = 16 * total_hours
         rounded_total_amount = round(total_amount, 2)
