@@ -1,0 +1,29 @@
+{% extends 'web/base.html' %}
+{% from 'web/macros/request.html' import student_scheduled_session %}
+{% set scheduled_sessions = user.get_scheduled_sessions_student() %}
+
+{% block main_header %}
+    <header class="bar bar-nav">
+        <h1 class="title">My Upcoming Sessions</h1>
+        <a class="icon icon-left-nav pull-left" href="/m/home/" data-transition="slide-out"></a>    
+    </header>
+{% endblock %}
+
+{% block main_content %}
+<div class="content should-hide-tab-bar should-hide-message-bar">
+        
+        {% for _request in scheduled_sessions %}
+          {{student_scheduled_session(scheduled_sessions[0])}}
+        {% endfor %}
+        {% for _request in scheduled_sessions %}
+          {{student_scheduled_session(scheduled_sessions[0])}}
+        {% endfor %}
+        {% for _request in scheduled_sessions %}
+          {{student_scheduled_session(scheduled_sessions[0])}}
+        {% endfor %}
+        {% for _request in scheduled_sessions %}
+          {{student_scheduled_session(scheduled_sessions[0])}}
+        {% endfor %}
+
+</div>
+{% endblock %}

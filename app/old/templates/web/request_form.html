@@ -1,0 +1,201 @@
+{% extends 'web/base.html' %}
+{% from 'web/macros/autocomplete-input.html' import autocomplete_input %}
+
+{% block main_header %}
+<header class="bar bar-nav">
+  <a class="icon icon-left pull-left" href="/m/home/" data-transition='slide-out'></a>
+  <h1 class="title">Find a Guru</h1>
+  <link href="/static/css/default.css" rel="stylesheet">
+  <link href="/static/css/default.time.css" rel="stylesheet">
+  <link href="/static/css/default.date.css" rel="stylesheet">
+</header>
+{% endblock %}
+
+{% block main_content %}
+<div class="content should-hide-message-bar should-hide-tab-bar">
+  <div id='request-errors' class='center error-text error-div margin-top-20'>Please fill in all fields</div>
+  <ul class='table-view no-margin-top'>
+    <li class="table-view-cell overflow-visible ignore-table-view-margin">
+      <input id='request-course' type="text" placeholder="Enter Course" class=' no-bottom-margin typeahead'/>
+      <textarea id='request-description' style="margin-bottom:0px;text-color:#c0c0c0;" class='margin-top-10'placeholder='What do you need help with?'></textarea>
+      <input id='request-phone-number' style="margin-top:0px;margin-bottom:0px;" type="text" placeholder="Your phone number" />
+      <input id='request-location' style="margin-top:10px;margin-bottom:0px;" type="text" placeholder="Select a location" />
+    </li>
+    <li class="table-view-cell">
+      <div id='asap-toggle' class="toggle active">
+        <div class="toggle-handle"></div>
+      </div>
+      <p>I need help ASAP!</p>
+    </li>
+    <li class="table-view-cell overflow-visible ignore-table-view-margin" id="request-time-selection-cell" style="display:none;">
+      Select Start Time <br>
+      <label>Date</label>
+      <input id='request-date' style='width:35%' placeholder='Today' class='form-control standard-input default-cursor'></input>
+      <label>Time</label>
+      <input id='request-time' style='width:35%' placeholder='Time' class='form-control standard-input default-cursor'></input>
+    </li>
+
+    <li class="table-view-cell ignore-table-view-margin">
+      <p style="margin-bottom:10px;">Session Length (estimated)</p>
+      <div class="segmented-control" id="request-time-estimate-button-group">
+        <a class="control-item" href="#"> 15m </a>
+        <a class="control-item active" href="#"> 30m </a>
+        <a class="control-item" href="#"> 1hr </a>
+        <a class="control-item" href="#"> 2hr + </a>
+      </div>
+    </li>
+    <li class='table-view-cell pricing-li ignore-table-view-margin'>
+      <p class='font-20 margin-top-5'>
+        Just <span class='white-text bold'> $5</span> for <span class='white-text bold'>15 Minutes</span> 
+        <br>
+        <div class='font-12 white-text center'>Billed on per minute basis.</div>
+      </p>
+    </li>
+  
+  </ul>
+  <a class="btn btn-positive btn-block submit-request-guru-btn" id="confirm-button" href="#">
+    Submit Request
+  </a>
+
+{{autocomplete_input('request-course')}}
+<script src="/static/js/picker.js"></script>
+<script src="/static/js/picker.time.js"></script>
+<script src="/static/js/picker.date.js"></script>
+
+<script> 
+  $('body').on('click', '#asap-toggle', function(){
+        var isSelected = $('#asap-toggle').hasClass('active');
+        if (isSelected) {
+            {% if not request.MOBILE %}
+              $(this).removeClass('active');
+              $('#request-time-selection-cell').show(250);
+              return;
+            {% endif %}
+            $('#request-time-selection-cell').hide(250);
+            //Desktop hacks
+        }else{
+            $('#request-time-selection-cell').show(250);
+            //Desktop hacks
+            {% if not request.MOBILE %}
+            $('#request-time-selection-cell').hide(250);
+            $(this).addClass('active');
+            {% endif %}
+        }
+  });
+
+  $('body').on('click', '#request-time-estimate-button-group', function(event) {
+    var selectedIndex = $('#request-time-estimate-button-group .control-item.active').index();
+    switch(selectedIndex) {
+      case 0:
+        $('#request-estimated-cost').text('5');
+        break;
+      case 1:
+        $('#request-estimated-cost').text('10');
+        break;
+      case 2:
+        $('#request-estimated-cost').text('20');
+        break;
+      case 3:
+        $('#request-estimated-cost').text('40');
+        break;
+      default:
+        // Do nothing
+    }
+  });
+
+    date_picker_input = $('#request-date').pickadate({
+    min:true,
+    max:1,
+    onSet: function(context) {
+        date_picker = date_picker_input.pickadate('picker');
+        date_selected = date_picker.get('select')['date'];
+        todays_date = new Date().getDate();
+        time_picker = time_picker_input.pickatime('picker');
+        if (todays_date != date_selected) {
+          time_picker.set({
+            'min': false, 
+            'highlight': [0,0]
+          });
+        } else {
+          time_picker.set('min', true);
+        }
+    }
+  });
+  
+  time_picker_input = $('#request-time').pickatime({
+    min:true
+  });
+
+  $('#confirm-button').on('click', function(){
+
+        $('#')
+        
+        var start_time = NaN;
+
+        if ($('#request-time-selection-cell:visible').length > 0) {
+          date_picker = date_picker_input.pickadate('picker');
+          date_picker_milliseconds = date_picker.get('select')['pick'];
+
+          time_picker = time_picker_input.pickatime('picker');
+          time_picker_minutes = time_picker.get('select')['pick'];
+          time_picker_milliseconds = time_picker_minutes * 60 * 1000;
+
+          total_time_epoch = time_picker_milliseconds + date_picker_milliseconds;
+          start_time = total_time_epoch;
+        }
+
+        payload = JSON.stringify({
+            'skill_name': $('#request-course').val(),
+            'description': $('#request-description').val(),
+            'phone_number': $('#request-phone-number').val(),
+            'location': $('#request-location').val(),
+            'urgency': $('#asap-toggle').hasClass('active'), // TODO : Depricate
+            'is_urgent': $('#asap-toggle').hasClass('active'),
+            'time_estimate': $('#request-time-estimate-button-group .control-item.active').index(), 
+            'start_time': start_time, 
+        });
+
+        mixpanel.track("Request Created", 
+          {
+            'skill_name': $('#request-course').val(),
+            'description': $('#request-description').val(),
+            'phone_number': $('#request-phone-number').val(),
+            'location': $('#request-location').val(),
+            'urgency': $('#asap-toggle').hasClass('active'), // TODO : Depricate
+            'is_urgent': $('#asap-toggle').hasClass('active'),
+            'time_estimate': $('#request-time-estimate-button-group .control-item.active').index(), 
+            'start_time': start_time, 
+          });
+
+        $.ajax({
+            url: '/api/v1/requests',
+            type: 'POST',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                if (request.errors) {
+                    console.log(request.errors);
+                    if (request.redirect && request.redirect == 'no-tutors') {
+                        window.PUSH({
+                            transition : "fade",
+                            url : "/m/show/no-tutors/"
+                        });
+                    }
+                }
+                else {
+                    window.PUSH({
+                        transition : "fade",
+                        url : '/m/home/'
+                    });
+                }
+            },
+            error: function (request) {
+                $('#request-errors').text(request.responseJSON['errors']);
+                $('#request-errors').show();
+            }
+        });
+    });
+</script>
+</div>
+{% endblock %}
+

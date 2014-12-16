@@ -1,0 +1,74 @@
+{% extends 'web/base.html' %}
+{% from 'web/macros/request.html' import guru_confirm_session %}
+
+{% block main_content %}
+
+<header class="bar bar-nav">
+    <h1 class="title">Confirm Session</h1>
+    <a href='/m/guru/' data-transition='slide-out' class='icon icon-left pull-left'></a>
+</header>
+
+<div class="content should-hide-message-bar should-hide-tab-bar">
+  <ul class='table-view'>
+    <li class='table-view-cell'>
+      Next Steps
+      <p>
+        <br>
+        1. Start a timer when you meet your student. 
+        <br>
+        2. Enter the time for the session.
+        <br>
+        3. Confirm, and get paid immediately.
+      </p>
+    </li>
+  </ul>
+
+
+      <form class="input-group" >
+            <div class='input-row'>
+                <label>Hours</label>
+                  <input type="number" id="confirm-hours-{{request_dict['server_id']}}" placeholder="Enter hours"></input>
+            </div>
+            <div class='input-row'>
+                <label>Minutes</label>
+                <input type="number" id="confirm-minutes-{{request_dict['server_id']}}" placeholder="Enter minutes"></input>
+            </div>
+      </form>
+
+    <a data-request-id='{{request_dict['server_id']}}' class="btn btn-positive btn-block guru-confirm-session">Confirm and Get Paid!</a>
+
+
+    <script>
+        $('.guru-confirm-session').on('click', function() {
+
+            var request_id = ($(this).data().requestId).toString();
+            var num_hours = parseInt($('#confirm-hours-' + request_id).val(), 10);
+            var num_minutes = parseInt($('#confirm-minutes-' + request_id).val(), 10);
+
+            payload = JSON.stringify({
+                action:'guru-confirm',
+                minutes: num_minutes,
+                hours: num_hours
+            });
+            
+            $.ajax({
+                url: '/api/v1/requests/' + request_id,
+                type: 'PUT',
+                contentType: 'application/json',
+                data: payload,
+                success: function(request){
+                    window.PUSH({
+                        transition : "fade",
+                        url : "/m/guru/"
+                    });
+                },
+                error: function (request) {
+                    alert(request.responseJSON['errors']);
+                }
+            });
+        });
+    </script>
+
+</div>
+{% endblock %}
+

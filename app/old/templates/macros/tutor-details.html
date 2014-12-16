@@ -1,0 +1,180 @@
+{% macro tutor_details(user, notif, request_dict, time, index, tutor_dict, variations) -%}                        
+{% from '/macros/payment-plans.html' import payment_plan %}
+{% from '/macros/student-confirm-tutor.html' import student_confirm_tutor %}
+{% set user_credit_balance = user.credit %}
+{% set total_cost = request_dict[notif.request_id]['request'].time_estimate * notif.request_tutor_amount_hourly %}
+
+{% if user_credit_balance < total_cost %}
+    {{payment_plan(user, notif, request_dict, index)}}        
+{% endif %}
+
+{% if notif.request_tutor_amount_hourly == 0 %}
+    {% set first_time_guru = true %}
+{% else %}
+    {% set first_time_guru = false %}
+{% endif %}
+
+{{student_confirm_tutor(user, notif, request_dict, time, index, tutor_dict, variations)}}
+
+{% set tutor = tutor_dict[notif] %}
+<div class='tutor-details-student-choose'>
+    {% if notif.custom ==  'student-accept-request' %}
+    <div class='row-fluid margin-top-20 block'>
+        <label class='font-20 green-text'> Next Steps </label>
+        <br>
+        <div id='guru-intro' class='block font-14'>
+            <p> 1. <a href='/messages/' class='blue-text'><u>Message</u></a> your Guru to confirm meeting time and location. </p>
+            <p> 2. Forget about cash, we will handle your payments, for FREE. </p>
+            <p> 3. Come back to give your Guru a nice review, or report any problems. </p>
+            <p class='red-text margin-top-20' style='margin-bottom:-20px'> If your session was cancelled and you need a refund, please email <span class='blue-text'>support@uguru.me</span>.</p>
+        </div>
+        <br>
+    </div>
+    <!-- <div class='row-fluid align-left font-14'>
+        <a class="cancel-request blue-text" href="javascript:void(0)"> <u>Need to Cancel? </u></a>
+    </div> -->
+    <hr>
+    {% endif %}
+    {% if notif.request_tutor_amount_hourly == 0 %}
+    <div class='row-fluid margin-top-20 block'>
+        <label class='font-20 green-text'> This Guru is New on Our Platform! </label>
+        <br>
+        <div id='guru-intro' class='block font-14'>
+            <p> This means that if you choose {{tutor.name.split(" ")[0]}}, your first session with this Guru will be <b>free</b>!
+            </p> 
+            <p> 
+                To learn more about why we do this, read more <a target='_blank' href='http://tinyurl.com/uguru-q-a/' class='blue-text'>here</a>.
+            </p> 
+        </div>
+        <br>
+    </div>
+    <hr style='margin:0px'>
+    {% endif %}
+    <div class='tutor-app-photo-container tutor-details-request margin-top-30 margin-bottom-15 block'>
+        <img id='tutor-app-photo' src='{{tutor.profile_url}}' height='130px'> 
+        <div class='guru-profile-attributes'> 
+            <div class='row'>
+                <span id='profile-name' class='font-20'>
+                    {{tutor.name.split(" ")[0]}} 
+                    
+                    {% if not first_time_guru %}
+                    <div class="profile-rating" style='display:inline-block'>
+                        <span>☆</span>
+                        <span>☆</span>
+                        <span>☆</span>
+                        <span>☆</span>
+                        <span>☆</span>
+                    </div>  
+                    <span class='underline blue-text font-16' >
+                        {{tutor.tutor_ratings|length}} ratings
+                    </span>
+                    {% else %}
+                    <span class='red-text font-20 light-grey-text'>
+                        New Guru! 
+                    </span>
+                    {% endif %}
+
+                </span>
+            </div>
+            <div class='row font-14 margin-top-10 green-text'>
+                {{tutor.year}}
+                &nbsp;&nbsp;&nbsp;
+                | 
+                &nbsp;&nbsp;&nbsp;
+                {{tutor.major}}
+            </div>
+            <div class='row'>
+                {% if tutor.ta_tutor %}
+                    <span class='tutor-profile-course-tag'>
+                        TA or GSI
+                    </span>
+                {% endif %}
+
+                {% if tutor.slc_tutor %}
+                    <span class='tutor-profile-course-tag'>
+                        SLC Tutor
+                    </span>
+                {% endif %}
+
+                {% if tutor.hkn_tutor %}
+                    <span class='tutor-profile-course-tag'>
+                        HKN Tutor
+                    </span>
+                {% endif %}
+
+                {% if tutor.la_tutor %}
+                    <span class='tutor-profile-course-tag'>
+                        Lab Assistant
+                    </span>
+                {% endif %}
+
+                {% if tutor.res_tutor %}
+                    <span class='tutor-profile-course-tag'>
+                        Res Hall Tutor
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class='row block margin-top-30' style='padding-left:16px'>
+        {% if notif.custom != 'student-accept-request' %}
+        <div class='row-fluid'>
+            <label class='font-20'> Courses {{tutor.name.split(" ")[0]|title}} can teach </label>
+            <br>
+            {% for skill in tutor.skills %}
+            <span class='tutor-profile-course-tag'>
+              <span>{{variations[skill.name]}}</span>
+            </span>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class='row-fluid margin-top-30'>
+            <label class='font-20'> {{tutor.name.split(" ")[0]}}'s bio </label>
+            <div id='guru-intro' class='block font-14'>
+                {{tutor.tutor_introduction}}
+            </div>
+        </div>
+        <hr>
+        <div class='row-fluidblock'>
+            <label class='green-text font-20'> {{tutor.name.split(" ")[0]}}'s Personal Note for You </label>
+            <div id='guru-intro' class='block font-14'>
+                {{notif.extra_detail}}
+            </div>
+            <br>
+        </div>
+        <hr>
+        <div class='row-fluid block font-14'>
+            <label class='font-20'> Availability and Pricing</label>
+            <div class='row-fluid block margin-top-10 margin-bottom-10'>
+                {{tutor.name.split(" ")[0]}} would like: 
+                {% if not first_time_guru %}
+                <span class='green-text'> ${{(notif.request_tutor_amount_hourly)}}/hr </span>
+                {% else %}
+                <span class='green-text'> <b>$0/hr</b> </span><br>
+                <span class='font-12 grey-text'>This Guru is free because they are new to the platform.</span>
+                {% endif %}
+                
+            </div>
+        </div>
+        {% if notif.custom !=  'student-accept-request' and notif.status != 'EXPIRED' and request_dict[notif.request_id]['request'].connected_tutor_id != notif.request_tutor_id %}
+        <div class='row-fluid font-20 margin-top-40 margin-bottom-20 center'>
+            <!-- <a {% if not user.customer_id %} data-toggle='modal' href='#' data-target='#credit-modal' {% else %} class='student-request-accept-btn' href="javascript:void(0);" {% endif %} id="{{notif.a_id_name}}-next-link">
+                <span class='blue-btn' style='padding:8px 60px'> Choose This Guru </span>
+            </a> -->
+            <a href='javascript:void(0);' {% if user_credit_balance < total_cost %} class='go-to-payment-plan' {% else %} class='go-to-confirmation' {% endif %}>
+                <span class='blue-btn clickable' style='padding:8px 60px'> Choose This Guru </span>
+            </a>
+        </div>
+        {% endif %}
+        {% if notif.custom ==  'student-accept-request' %}
+        <div class='row-fluid font-20 margin-top-40 margin-bottom-20 center'>
+            <a href="/messages/" >
+                <span class='blue-btn clickable' style='padding:8px 60px'> Message Your Guru </span>
+            </a>
+        </div>
+
+        {% endif %}
+
+    </div>
+</div>
+{% endmacro -%}

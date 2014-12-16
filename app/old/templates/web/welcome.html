@@ -1,0 +1,117 @@
+{% extends 'web/base.html' %}
+
+{% block main_content %}
+<script>
+
+
+</script>
+
+
+<header id='header-bar' class="bar bar-nav no-border-bottom">
+</header>
+
+<div class="content login-content should-hide-message-bar should-hide-tab-bar">
+  <div class='center home-guru-container'>
+    {% if not request.MOBILE %}
+    <div class='red-text font-20 bold'>Try Me!<br><span style='margin-top:5px; color:#FF3333; !important;'class="icon icon-down-nav"></span></div>
+    {% endif %}
+    <img class='home-guru' src="/static/img/hip_guru.svg"></img>
+  </div>
+  <h1 id='uguru-home-text'class='center light-green-text open-sans-bold'> uguru </h1>
+  <div class='center home-guru-btn-container'>
+    <a id='signup-btn'data-transition='slide-in' href='/m/signup/'>
+      <button class="btn btn-positive btn-block sign-up home-page-btn">Sign up</button>
+    </a>
+    <a data-transition='slide-in' id='welcome-login-btn' href='/m/login/'>
+      <button class="btn btn-positive btn-block login home-page-btn">Log in</button>
+    </a>
+    <button type='submit' id='fb-login-btn' onlogin="beginFbConnect();" class="btn btn-positive btn-block fb-color center relative home-page-btn">
+      <span class='fb-icon absolute'>f</span>Connect with Facebook
+    </button>
+    <p class='content-padded' style='color:#3E494C'> Uguru will NEVER post to your Facebook. </p>
+  </div>
+
+  <script>
+
+  $(document).ready(function() {
+    $('.content, #header-bar').css('background-color', '#ffffff');
+  });
+
+  $('.content, #header-bar').css('background-color', '#ffffff');
+  $('#fb-login-btn').on('click', function() {
+    FB.login(function(response) {
+      beginFbConnect();
+    });
+  });
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1416375518604557',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  }
+
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    if (response.status === 'connected') {
+
+      // Get general information
+      FB.api('/me', function(response) {
+        payload = response;
+
+        // Get profile picture
+        FB.api('/me/picture',{"type": "normal"}, function (response){
+          payload["profile_url"] = response["data"]["url"];
+
+          // Go try to create the user on the DB!
+          payload = JSON.stringify(payload);
+          $.ajax({
+            url: '/api/v1/fb_connect',
+            type: 'POST',
+            contentType: 'application/json',
+            data: payload,
+            success: function (request){
+              console.log(request);
+
+              window.location = "/m/home/";
+            },
+            error: function (request){
+              console.log("Error from API");
+            }
+          });
+        });
+      });
+    } else if (response.status === 'not_authorized') {
+      console.log("App not authorized");
+    } else {
+      console.log("Not logged in to FB");
+    }
+  }
+
+  function beginFbConnect() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  // mixpanel.track_links("#fb-login-btn", "Clicked fb signup link");
+  mixpanel.track_links("#welcome-login-btn", "Clicked regular login");
+  mixpanel.track_links("#signup-btn", "Clicked regular login");
+  mixpanel.track_links("#welcome-login-btn", "Clicked big landing page button.");
+  </script>
+
+  <div id="fb-root"></div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'web/base.html' %}
+
+{% block main_header %}
+<header class="bar bar-nav">
+  <h1 class="title">My Requests</h1>
+  <a class="icon icon-left-nav pull-left" href="/m/guru/" data-transition='slide-out'></a>
+</header>
+{% endblock %}
+
+{% block main_content %}
+<div class="content should-hide-tab-bar should-hide-message-bar">
+  <ul class="table-view">
+    {% for _request in user.get_guru_requests() %}
+    {% set request_dict = _request.get_return_dict() %}
+    <li class="table-view-cell media">
+        <a class="navigate-right" data-transition='slide-in' href='/m/guru/request/{{request_dict["server_id"]}}'>
+            <div class="media-object pull-left table-view-face" style='background-image: url("{{request_dict['student']['profile_url']}}")'></div>
+            <div class="media-body">
+                CS10 Session
+                <p class='green-text'>{{status}}</p>
+            </div>
+        </a>
+    </li>
+    {% endfor %}
+  </ul>
+
+</div><!-- /.content -->
+{% endblock %}

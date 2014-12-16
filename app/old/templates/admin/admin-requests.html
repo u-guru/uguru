@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <link href="/static/css/admin.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<ul style="margin:auto;float:center" class="nav nav-tabs">
+  <li><a href="/admin/">Today</a></li>
+  <li><a href="/admin/stats/"> Stats </a></li>
+  <li><a href="/admin/tutors/">Tutors</a></li>
+  <li><a href="/admin/students/">Students</a></li>
+  <li><a href="/admin/courses/" >Courses</a></li>
+  <li class='active'><a href="/admin/requests/">Requests</a></li>
+  <li><a href="/admin/conversations/">Conversations</a></li>
+  <!-- <li><a href="#notifications" data-toggle="tab">Notifications</a></li> -->
+  <li><a href="/admin/payments/"> Payments</a></li>
+  <li><a href="/admin/ratings/"> Ratings</a></li>
+  <li><a href="/admin/bank-transfers/" data-toggle="tab"> Bank Transfers</a></li>
+  <li><a href="/admin/texts/" data-toggle="tab"> Texts </a></li>
+  <li><a href="/admin/parents/" data-toggle="tab"> Parents </a></li>
+  <li><a href="/admin/unsubscribes/"> Unsubscribes </a></li>
+</ul>
+
+        <div class="container">
+            <div style="margin:20px; text-align:center" class="row">
+                <span style="color:red">Red</span> = Canceled, <span style="color:green">Green</span> = Matched, <span style="color:#69bf69">Dark Green</span> = Recurring Payments, <span style="color:#fcf8e3">Yellow</span> = Pending 
+            </div>
+            <div class="row-fluid">
+                <table class="table table-striped">
+                    <tr style="font-size:9px"class="info"> 
+                        <td> ID </td>
+                        <td> Student </td>
+                        <td> Time Created </td>
+                        <td> Class </td>
+                        <td> Start Time </td>
+                        <td> Time Length </td>
+                        <td> #Skill Tutors </td>
+                        <td> #Tutors Avail Phone </td>
+                        <td> #Tutors Avail Settings </td>
+                        <td> #Tutors Contacted </td>
+                        <td> #Tutors Replied </td>
+                        <td> Connected Tutor </td>
+                    </tr>
+                    {% for request_dict in all_requests %}
+                        {% if request_dict['request'].time_canceled %}
+                            {% set status = 'danger'%}
+                        {% elif request_dict.get('connected_tutor') %}
+                            {% set status = 'success'%}
+                        {% else %} 
+                            {% set status = 'warning'%}
+                        {% endif %}
+                        <tr class="{{status}}"> 
+                            <td>  
+                                <a target='_blank' href='/admin/requests/{{request_dict["request"].id}}/'>
+                                {{request_dict['request'].id}} </a>
+                            </td>
+                            <td>  
+                                <a href="javascript:void(0)" class="login-student-request">{{request_dict['student']['name']}}</a> (id:<span>{{request_dict['request'].student_id}}</span>)
+                            </td>
+                            <td>  
+                                {{request_dict['date']}}
+                            </td>
+                            <td> 
+                                {{request_dict['skill_name']}} 
+                            </td>
+                            <td>  
+                                {{request_dict['start_time']}} 
+                            </td>
+                            <td>  
+                                {{request_dict['time_estimate']}} 
+                            </td>
+                            <td>  
+                                {{request_dict['request'].requested_tutors|length}}
+                            </td>
+                            <td>  
+                                {{request_dict['phone-tutors']}}
+                            </td>
+                            <td>
+                                {{request_dict['setting-tutors']}}
+                            </td>
+                            <td>  
+                                {{(request_dict['request'].contacted_tutors|length)}} 
+                            </td>
+                            <td>  
+                                {{(request_dict['request'].committed_tutors|length)}} 
+                            </td>
+                            <td>  
+                                {% if request_dict.get('connected_tutor') %}
+                                    <a href="javascript:void(0)" class="login-tutor-request"> {{request_dict['connected_tutor']['name']}}</a> (id: <span> {{request_dict['connected_tutor']['server_id']}}</span>)
+                                {% else %}
+                                    None
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+  <div style="text-align:center;color:black" class="row">
+    <u><a href="/logout-admin/">Log out of admin</a></u>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+    <script src="/static/js/admin.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+{% endblock %}

@@ -1,0 +1,191 @@
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {  
+  #banner {
+    background: url('/static/img/background-1600.jpg') no-repeat;
+    background-size:cover;
+    height:450px;
+  }
+
+  .session-confirmation-container {
+    padding:20px 30px;
+    margin:0px;
+  }
+
+  #how-it-works-banner {
+    background: url('/static/img/background-1600-2.jpg') no-repeat;
+    background-size:cover;
+    height:300px; 
+  }
+
+  #parent-banner {
+    height:500px;
+    background: url('/static/img/mobile-parent-background.png') no-repeat;
+    background-size:cover;
+  }
+
+  .how-it-works-header {
+    font-size:24px;
+  }
+
+  li #powered-by-cal {
+    display:none; 
+  }
+
+  #main-container h1 {
+    margin-top:10px;
+  }
+  .testimonial-section {
+    padding:30px 10px; 
+  }
+
+  #parent-email-2 {
+    width:55% !important;
+  }
+
+  #student-email-2 {
+    width:55% !important;
+  }
+
+  .testimonial-section p span {
+    font-size:14px;
+  }
+
+  .testimonial-section-author {
+    margin-left:40px;
+    font-size:14px;
+  }
+
+  #login-modal-container {
+    padding:40px;
+  }
+
+  #guru-banner-subheader {
+    font-size:26px;
+    margin-top:20px;
+  }
+
+  #powered-by-cal-ul {
+    display:none;
+  }
+
+  #testimonials .container {
+    padding-right:0px;
+    padding-left:0px;
+  }
+
+  #tutor-preview-2 {
+    display:none;
+  }
+
+  #pencil-banner {
+    left:55px;
+  }
+
+  #shield-banner {
+    left:75px;
+  }
+  #guru-banner {
+    left:55px;
+  }
+  #course-input {
+    width:300px;
+    color:#484748;
+    font-family:"Roboto", sans-serif;
+    font-weight:100;
+    font-size:16px;
+    border-color:white;
+    /*margin-left:-80px;*/
+  }
+  #home .twitter-typeahead {
+    margin-left:-80px;
+  }
+
+  #request-form .twitter-typeahead {
+    display:block !important;
+  }
+
+  .modal-dialog {
+    margin-top:100px;
+    width:500px;
+  }
+
+  .sproul-signup-container {
+    padding-right:20% !important;
+    padding-left:20% !important;
+  }
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {  
+  #banner {
+    background: url('/static/img/background-1600.jpg') no-repeat;
+    background-size:cover;
+    height:550px;
+  }  
+
+  #parent-banner {
+    background: url('/static/img/parent-background-1600.png') no-repeat;
+    background-size:cover;
+    height:550px;
+  }
+  #how-it-works-banner {
+    background: url('/static/img/background-1600-2.jpg') no-repeat;
+    background-size:cover;
+    height:350px; 
+  }
+  .testimonial-section {
+    padding:25px 40px;
+  }
+  #testimonials .container {
+    padding-right:15px;
+    padding-left:15px;
+  }
+  #pencil-banner {
+    left:150px;
+  }
+
+  #powered-by-cal-ul {
+    display:block;
+  }
+
+  li #powered-by-cal {
+    display:block; 
+  }
+
+
+  #tutor-preview-2 {
+    display:block;
+  }
+
+  #shield-banner {
+    left:180px;
+  }
+  #guru-banner {
+    left:180px;
+  }
+
+  .how-it-works-header {
+    color:white;
+    font-size:32px;
+  }
+
+  .testimonial-section p span {
+    font-size:18px;
+  }
+
+  .testimonial-section-author {
+    margin-left:12px;
+    font-size:18px;
+  }
+
+  .sproul-signup-container {
+    padding-right:30% !important;
+    padding-left:30% !important;
+  }
+
+  #sproul-signup-container {
+    padding-right:20% !important;
+    padding-left:20% !important;
+  }
+}

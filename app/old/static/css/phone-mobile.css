@@ -1,0 +1,650 @@
+/* XS devices  */
+@media (max-width: 767px){  
+  #banner {
+    height:100%;
+    background: url('/static/img/mobile-background.png') no-repeat;
+    background-size:cover;
+  }
+
+  #parent-banner {
+    height:100%;
+    background: url('/static/img/mobile-parent-background.png') no-repeat;
+    background-size:cover;
+  }
+  #main-container h1 {
+    margin-top:-10px;
+    font-size:28px;
+  }
+  #course-input {
+    width:90%;
+    float:left;
+    color:#484748;
+    font-family:"Roboto", sans-serif;
+    font-weight:100;
+    font-size:16px;
+    border-color:white;
+  }
+
+  #earn-5-referral {
+    display:none;
+  }
+
+  .session-confirmation-container {
+    padding:20px 30px;
+    margin:0px;
+  }
+
+  #become-guru-nav {
+    text-decoration: none !important;
+  }
+
+  #activity-container-student {
+    margin-top:10px;
+    margin-bottom:5px;
+  }
+
+  .navbar-app.navbar-sproul {
+    padding-left:0px !important;
+  }
+
+  #default-activity-alert {
+    font-size:10px !important;
+  }
+
+  .profile-container {
+    padding:5px;
+  }
+
+  #student-credit-container {
+    margin-top:0px !important;
+  }
+
+  #profile-name {
+    font-size:18px;
+  }
+
+  #request-details-photo {
+    height:90px !important;
+  }
+
+  .asap-text {
+    font-size:10px !important;
+  }
+
+  .asap-img {
+    height:15px!important;
+  }
+
+  .margin-top-30-mobile {
+    margin-top:10px !important;
+  }
+
+  .margin-top-20-mobile {
+    margin-top:10px !important;
+  }
+
+  .margin-left {
+    margin-left:-5px;
+  }
+
+  .guru-profile-attributes {
+    position:absolute;
+    left:120px;
+    top:0px;
+  }
+
+  #student-credit {
+    font-size:16px !important;
+  }
+  #request-details-header {
+    margin-top:0px;
+  }
+
+  .back-button-container {
+    margin-top:10px;
+  }
+
+  .back-text {
+    display:none;
+  }
+
+  #want-to-be-guru-text {
+    font-size:10px;
+    margin-top:10px;
+  }
+
+  #guru-content {
+    padding-right:0px;
+    padding-left:0px;
+    margin-top:-25px;
+  }
+
+  .notification-container {
+    padding:0px;
+  }
+
+  #guru-needs-help-text {
+    font-size:12px;
+  }
+
+  #feed-message {
+    font-size:12px;
+    margin-top:-3px !important;
+  }
+
+  #feed-message-subtitle {
+    font-size:9px;
+    padding-left:45px;
+    width:100% !important;
+  }
+
+  .notification-time {
+    font-size:8px;
+    color:#a8a8a8;
+    top:12px;
+  }
+  .notification-expire {
+    position: absolute;
+    bottom: 25px;
+    right: 10px;
+    font-size:8px;
+  }
+
+  #guru-needs-help-text-container {
+    margin-top:0px !important;
+  }
+
+  #profile-img-dropdown {
+    display:none;
+  }
+
+  .twenty-five-percent-transaction {
+    font-size:8px !important;
+  }
+
+  .margin-top-40-mobile {
+    margin-top:25px !important;
+  }
+
+  .next-steps-guru-match {
+    margin-top:-15px !important;
+  }
+
+  br.mobile {
+    display:none;
+  }
+
+  .message-your-student-mobile {
+    font-size:14px !important;
+  }
+
+  .message-container-student {
+    margin-top:10px;
+  }
+
+  #main-feed {
+    padding-top:0px!important;
+  }
+
+  .user-photo {
+    width:45px;
+    height:45px;
+  }
+
+  #ace-your-class-student-btn {
+    font-size:14px !important;
+  }
+
+
+
+  .student-chose-you {
+    font-size:16px;
+  }
+
+  .guru-profile-attributes .margin-top-15 {
+    margin-top:5px !important;
+    font-size:10px;
+  }
+
+  .additional-details label{
+    font-size:16px;
+  }
+
+  .tutor-photo {
+    height:25px;
+    width:25px;
+  }
+
+  .contacted-tutors label{
+    font-size:16px;
+  }
+
+  .contacted-tutors {
+    margin-top:10px;
+  }
+
+  .additional-details #guru-intro {
+    font-size:10px;
+  }
+
+  .guru-profile-attributes div {
+    font-size:10px;
+  }
+
+  .request-details-attribute-container {
+    margin-top:5px !important;
+    margin-bottom:5px !important;
+  }
+
+  .request-details-attribute-container {
+    height:100px;
+  }
+
+  #base-logo-text {
+    font-size:36px;
+  }
+
+  #tutor-activity-container {
+    margin-top:0px !important;
+  }
+
+  #hello-tutor-text {
+    font-size:20px !important;
+  }
+
+  .mobile-dropdown {
+    display:block;
+  }
+
+  .navbar-app {
+    padding-left:30px;
+    width:100%;
+  }
+
+  #mobile-nav-button {
+    margin-top:10px;
+    margin-left:80px;
+  }
+
+  .navbar-default .container-fluid {
+    padding:0px 0px;
+  }
+
+  #home-search-class-container .twitter-typeahead {
+    float:left;
+    width:90%;
+  }
+
+  .login-input-container {
+    margin:10px 10px;
+  }
+
+  .navbar-default .navbar-nav > li > a {
+    color: white;
+    padding: 22px 0px 21px 25px;
+    font-size: 20px;
+  }
+
+  #home-search-class-container .typeahead.tt-hint {
+    width:90%;
+  }
+
+  #powered-by-cal-ul {
+    display:none;
+  }
+
+  .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: transparent;
+    outline:none;
+  }
+
+  li #powered-by-cal {
+    display:none; 
+  }
+
+  #home-search-class-container {
+    padding:0px 10px;
+    margin:0 auto;
+    margin-top:30px;
+  }
+
+  #tutor-demo-num-ratings-1 {
+    display:none;
+  }
+
+  .tutor-preview-content-tags {
+    display:block;
+    margin-top:5px;
+    margin-bottom:5px;
+  }
+  .tutor-preview-content-description {
+    margin-top: 0px;
+  }
+
+  .tutor-preview-content-major {
+    margin-top:10px;
+  }
+
+  .navbar-toggle {
+    margin-top:25px;
+  }
+  #home-course-submit {
+    margin:0 auto;
+    margin-top:10px;
+    display:block;
+    width:75px;
+  }
+
+  #apply-nav {
+    display:none;
+  }
+
+  #parents-nav {
+    display:none;
+  }
+
+  #home-course-submit-btn {
+    padding:8px 10px;
+    margin-left:-10px;
+  }
+  .tutor-preview-content-major p{
+    font-size:10px;
+  }
+  .mobile-tutor-content {
+    padding-right:5px;
+    padding-left:15px;
+  }
+  .tutor-preview-content-description {
+    font-size:10px;
+  }
+
+  #tutor-preview-2, #tutor-next-sneak{
+    display:none;
+  }
+
+  #testimonial-1, #testimonial-2, #testimonial-3 {
+    color: black;
+  }
+
+  .text-banner {
+    font-size:35px;
+    padding:20px;
+    text-align:center;
+  }
+  .text-banner b {
+    margin-left:65px;
+  }
+  #pencil-banner {
+    position:absolute;
+    left:10px;
+    bottom:0px;
+    height:80px;
+  }
+
+  #shield-banner {
+    position:absolute;
+    left:10px;
+    bottom:0px;
+    height:80px;
+  }
+
+  #guru-banner {
+    position:absolute;
+    left:10px;
+    bottom:0px;
+    height:80px;
+  }
+
+  .testimonial-section {
+    padding:20px 10px;
+  }
+
+  .testimonial-section-author {
+    margin-left:25px;
+    font-size:14px;
+  }
+
+  .testimonial-face {
+    left:30px !important;
+  }
+
+  .testimonial-section .testimonial-header{
+    padding:10px;
+    font-size:2em;
+    color:black;
+    font-weight:100;
+  }
+
+  #testimonial-1, #testimonial-2 {
+    border-bottom:1px solid grey;
+  }
+
+  .testimonial-section .how-it-works-header {
+    font-size:2em;
+    color:black;
+  }
+
+  #referral-banner {
+    height:150px !important;
+  }
+
+  #guru-banner {
+    height:110px;
+  }
+
+  #guru-banner-header {
+    font-size:26px;
+    margin-top:-30px;
+  }
+
+  #guru-banner-subheader {
+    font-size:12px;
+  }
+
+  .first-time-uguru {
+    font-size:26px;
+  }
+
+  .testimonial-section p span{
+    color:black;
+  }
+
+  .how-it-works-text-banner {
+    display:block;
+  }
+
+  .how-it-works-text-banner.how-it-works-parent-text-banner {
+    display:block;
+    background-color:#424341;
+  }
+
+  #main-banner-header {
+    font-size:26px;
+  }
+
+  #main-banner-parent-header {
+    margin-top:40px;
+    font-size:26px;
+  }
+
+  .package-option-header {
+    font-size:15px;
+  }
+
+  .package-option-subheader {
+    font-size:12px;
+  }
+
+  .package-option-detail {
+    font-size:10px;
+  }
+
+  #main-banner-parent-subheader {
+    font-size:16px;
+  }
+
+  #parent-name-1, #student-name-1 {
+    width:40% !important;
+    font-size:12px;
+  }
+
+  #package-header {
+    font-size:20px;
+  }
+
+  #package-header-subheader {
+    font-size:14px;
+    margin-top:10px;
+  }
+
+  #package-header-exp {
+    font-size:10px;
+  }
+
+  .blue-btn-mobile {
+    font-size:10px;
+  }
+
+  #parent-email-1, #student-email-1 {
+    width:55% !important;
+    font-size:12px;
+  }
+
+  #login-modal-container {
+    padding:20px 0px !important;
+  }
+
+  #parent-signup-1 span {
+    font-size:12px;
+    font-weight:bold;
+  }
+
+  #parent-name-2, #student-name-2 {
+    width:40% !important;
+    font-size:12px;
+  }
+
+  #parent-email-2, #student-email-2 {
+    width:55% !important;
+    font-size:12px;
+  }
+
+  #parent-signup-2 span {
+    font-size:12px;
+    font-weight:bold;
+  }
+
+  .text-banner.text-banner-parent {
+    background-color:#424341;
+  }
+
+  .footer.parent-footer {
+    background-color:#424341; 
+  }
+
+  #parent-signup-header-2 {
+    font-size:26px;
+  }
+
+  #parent-signup-subheader-2 {
+    font-size:16px;
+    color:#424341; 
+  }
+
+  .guru-banner-parent-header {
+    font-size:24px !important;
+  }
+
+  .signup-container.parents {
+    padding:20px 10px;
+  }
+
+  .how-it-works-parents-text {
+    display:none;
+  }
+
+  #main-banner-signup {
+    margin-top:10px;
+  }
+
+  .hiw-section {
+    font-size:1em;
+    padding:0px 10px;
+  }
+
+  .hiw-section h1 {
+    font-size:28px;
+    margin:25px auto 10px 0px;
+  }
+
+  .guarantee-container {
+    padding:10px;
+  }
+
+  .guarantee-text-container {
+    padding:0px 10px;
+  }
+
+  .guarantee-container h1 {
+    font-size:28px;
+    margin-bottom:15px;
+  }
+
+  .signup-container {
+    padding:20px;
+  }
+
+  .fb-btn-container {
+    margin:20px auto;
+    display:block;
+  }
+
+  .signup-btn-container {
+    margin-bottom:20px;
+  }
+
+  .or-container  {
+    margin:20px auto;
+    display:block;
+  }
+
+  .large-fb-blue-btn {
+    padding:12px 36px;
+  }
+  .footer {
+    padding:10px 0px;
+    font-size:13px;
+  }
+  .footer-link {
+    padding-left:5px;
+    padding-right:5px;
+  }
+  .navbar-collapse li {
+    border-bottom:1px solid white;
+  }
+  .request-form-extra-detail {
+    display:none;
+  }
+
+  #main-banner-subheader {
+    font-size:20px;
+  }
+
+  #post-signup-span-awesome {
+    font-size:16px !important;
+  }
+
+  #post-signup-span-thankyou {
+    font-size:12px !important;
+  }
+}
+
+
+@media (min-width: 450) and (max-width: 768) { 
+  #testimonial-1, #testimonial-2, #tutor-preview-2, #tutor-next-sneak {
+    display:block;
+  }
+  .signup-btn-container {
+    margin-top:20px;
+  }
+}

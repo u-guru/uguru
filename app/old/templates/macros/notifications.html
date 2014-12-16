@@ -1,0 +1,75 @@
+{% from '/macros/request-details.html' import request_details %}
+{% from '/macros/tutor-details.html' import tutor_details %}
+{% from '/macros/confirm-meeting.html' import confirm_meeting%}
+{% from '/macros/next-time.html' import next_time %}
+{% macro notification(n, user, pretty_dates) -%}
+<div class="row container-fluid">
+    <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+        {% if n.custom_tag == 'student-match' or n.custom_tag == 'tutor-match' %}
+        <a id="{{n.a_id_name}}" href="/messages/">
+        {% elif n.a_id_name == 'getting-started' and user.skills %}
+        <a target="_blank" id="getting-started-tutors" href="http://tinyurl.com/uguru-q-a">
+        {% elif n.custom_tag == 'tutor-receive-payment' or n.custom_tag =='student-payment-approval' or n.custom_tag == 'student-purchase-package' %}
+        <a href='/payments/' target='_blank' style="cursor:pointer!important;">
+        {% elif n.a_id_name == 'getting-started' or n.custom_tag == 'student-payment-approval' or n.custom_tag =='student-cap-reached' %}
+        <a class='main-feed-messages' style="cursor:default!important;" id="dont-do-anything" href="javascript:void(0)">
+        {% elif n.a_id_name == 'tip-photo' %}
+        <a class='main-feed-messages' href="/settings/#prof">
+        {% else %}
+        <a class='main-feed-messages'id="{{n.a_id_name}}" href="#{{n.a_id_name}}-detailed">
+        {% endif %}
+            <div {% if n.a_id_name == 'getting-started' %} style="cursor:default;" {%endif%}class="notification {% if not n.time_read %} grey-background shadow{% endif %}" align:"center">
+                <img src="{% if n.image_url %}{{n.image_url}}{% else %} {{user.profile_url}}{% endif%}" class="user-photo" style="float:left; margin-top:-10px">
+                    <div id='feed-message'class='font-16' style="width:75%; margin-top:2px">{{n.feed_message|safe}}</div>
+                    {% if n.feed_message_subtitle %}
+                        <div id='feed-message-subtitle' class='font-12'style="width:85%; margin-top:8px">{{n.feed_message_subtitle|safe}}</div>
+                    {% endif %}
+                <div class='notification-time font-12'>
+                    {{pretty_dates[n.id]}}
+                </div>
+                {% if n.status %}
+                <div class='notification-expire font-16 red-text'>
+                    {% if n.status == 'LATE'%}
+                        Too Late!
+                    {% else %}
+                        {{n.status|title}}
+                    {%endif%}
+                </div>
+                {% endif %}
+            </div>
+        </a>
+    </div>
+</div>
+{%- endmacro %}
+
+{% macro notification_details_template(user, notif, request_dict, time, index, tutor_dict=None, variations=None, tutor_avg_rating=None) -%}
+    <div id="{{notif.a_id_name}}-detailed" style='display:none'>
+        <div id='profile'>
+            <div class='profile-container'>
+                <div class='row'>
+                    <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6'>
+                        <div class='row font-16 back-button-container'>
+                            <a href='javascript:void(0)' class='blue-text feed-message-back-link'>
+                                <span class='glyphicon glyphicon-chevron-left'>
+                                </span> <span class='back-text'>Back</span>
+                            </a>
+                        </div>
+                        <div id='guru-content' class='margin-top-20 padding-horizontal-20 block'>
+                            <div class='notification-container'>
+                                {% if notif.custom_tag == 'student-request-help' or notif.custom_tag == 'tutor-request-offer'%}
+                                    {{request_details(user, notif, request_dict, time, index, tutor_avg_rating)}}
+                                {% elif notif.custom_tag == 'student-incoming-offer'%}
+                                    {{tutor_details(user, notif, request_dict, time, index, tutor_dict, variations)}}
+                                {% elif notif.custom_tag == 'confirm-meeting' %}
+                                    {{confirm_meeting(user, notif, request_dict, tutor_dict)}}
+                                {% elif notif.custom_tag == 'next-time' %}
+                                    {{next_time(user, notif, request_dict, tutor_dict)}}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro -%}

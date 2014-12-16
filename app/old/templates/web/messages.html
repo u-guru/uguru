@@ -1,0 +1,106 @@
+{% extends 'web/base.html' %}
+{% set all_message_dicts = convo.get_all_messages(_dict=True, sorted_by_time=True)%}
+
+{% if '/guru/' in request.url %}
+    {% set back_url = '/m/guru/students/'%}
+{% else %}
+    {% set back_url = '/m/tutors/'%}
+{% endif %}
+
+{% if convo.guru == user %}
+    {% set receiver_name = convo.student.get_first_name() %}
+{% else %}
+    {% set receiver_name = convo.guru.get_first_name() %}
+{% endif %}
+
+{% block main_header %}
+<header class="bar bar-nav">
+    <a class="icon icon-left-nav pull-left" href="{{back_url}}" data-transition="slide-out"></a>
+    <h1 class="title">{{receiver_name}}</h1>
+</header>
+{% endblock %}
+
+{% block main_content %}
+<div class="content should-hide-tab-bar message-body" id='message-content-div' data-convo-id='{{convo.id}}' data-user-id='{{user.id}}'>
+
+    {% if not all_message_dicts['messages'] %}
+        <ul class='table-view center'>
+            <li class='table-view-cell ignore-table-view-margin grey-shade-3'>
+              {% if not '/guru/' in request.url %}
+              <h1 style='margin-bottom:15px;'> No conversation yet! </h1>
+              <br>
+              <p class='white-text'>Tell your Guru everything you would like them to prepare beforehand!</p>
+              {% else %}
+              <h1 style='margin-bottom:15px;'> No conversation yet! </h1>
+              <br>
+              <p class='white-text'>Start one immediately and ask your student how you can best prepare for the session.</p>
+              {% endif %}
+            </li>
+        </ul>
+    {% endif %}
+    {% if all_message_dicts['messages'] %}
+    <ul class="table-view no-margin" style='padding-bottom:40px'>
+        {% for message_dict in all_message_dicts['messages'] %}
+
+            {% if message_dict['sender']['server_id'] == user.id %}
+                {% set side = 'pull-right' %}
+                {% set style = 'left:17px'%}
+                {% set image_url = message_dict['sender']['profile_url'] %}
+            {% else %}
+                {% set side = 'pull-left' %}
+                {% set style = 'right:5px'%}
+                {% set image_url = message_dict['sender']['profile_url'] %}
+            {% endif %}
+        <li class="table-view-cell message-cell media" style='position:relative;'>
+            <span style='top:5px; position:absolute;font-size:10px; {{style}}'class='orange-text'>{{message_dict['write_time']~' ago'}}</span>
+            <img class="media-object {{side}} message-face" src="{{image_url}}">
+            <div class="media-body {{side}}">
+                <p>{{message_dict['contents']}}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <script>
+    $(document).ready(function() {
+        $('.message-body').stop().animate({
+            scrollTop: $(".message-body")[0].scrollHeight
+        }, 1600, function() {
+            $("input[name='message-input']").focus().focus();
+        });
+     });
+
+    $('body').on('click', '#send-message-link', function() {
+        var convo_id = ($('#message-content-div').data().convoId).toString();
+        var user_id = ($('#message-content-div').data().userId).toString();
+
+        post_url = '/api/v1/users/' + user_id + '/conversations/' +
+            convo_id + '/messages';
+
+        payload = JSON.stringify({
+            contents: $('#message-contents').val()
+        });
+
+        $.ajax({
+            url: post_url,
+            type: 'POST',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    {% if convo.guru == user %}
+                    url : "/m/guru/conversation/" + convo_id
+                    {% else %}
+                    url : "/m/guru/conversation/" + convo_id
+                    {% endif %}
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+    </script>
+</div>
+{% endblock %}

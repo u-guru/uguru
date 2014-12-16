@@ -1,0 +1,85 @@
+{% macro student_confirm_tutor(user, notif, request_dict, time, index, tutor_dict, variations) -%}
+{% set tutor = tutor_dict[notif] %}
+{% set cost = request_dict[notif.request_id]['request'].time_estimate * notif.request_tutor_amount_hourly %}
+{% if notif.request_tutor_amount_hourly == 0 %}
+    {% set first_time_guru = true %}
+{% else %}
+    {% set first_time_guru = false %}
+{% endif %}
+    <div class='tutor-app-photo-container margin-top-30 margin-bottom-15 block student-confirm-tutor' style='display:none'>
+        <div class='font-32 normal-text center'> Session Confirmation</div>
+        
+        <p class='margin-top-20 font-16'> Your Guru: <span class='green-text'> {{tutor.name.split(" ")[0]}}
+        </p>
+
+        <p class='margin-top-20 font-16'> Hourly Rate <span class='green-text'> 
+            ${{(notif.request_tutor_amount_hourly)}}/hr
+        </p>
+
+        <p class='margin-top-20 font-16'> Total Hours <span class='green-text'> 
+            {{request_dict[notif.request_id]['request'].time_estimate}}
+        </p>
+        <hr>
+
+        <p class='font-16'>
+            Existing Credits: <span class='green-text'> $<span id='existing-credits-{{index}}'>{{user.credit}}</span> </span>
+        </p>
+        <p id='new-credits-purchased-{{index}}'class='font-16'>
+            New Credits Purchased: <span id='credits-purchased-{{index}}'class='green-text'> </span>
+        </p>
+        <p class='font-16' id='amount-to-be-billed-div-{{index}}'>
+            Amount to be billed: <span id='amount-to-be-billed-{{index}}'class='red-text'> </span>
+        </p>
+        <p class='font-16'>
+            Total Session Cost: <span class='red-text'> $<span id='session-cost-{{index}}'>{{cost}}</span> </span>
+        </p>
+        <hr id='second-hr-{{index}}'>
+
+        <p id='remaining-credits-div-{{index}}'class='font-20'>
+            Remaining Credits: <span id='remaining-credits-{{index}}' class='green-text'> </span>
+        </p>        
+
+        <hr>
+        {% if not first_time_guru %}
+        <p class='font-16'>
+            You will be fully refunded if you don't meet up. You will only be charged for a $5 deposit if you cancel within 5 hours before your schedule.
+        </p>
+        {% else %}
+        <p class='font-12 grey-text' id='first-time-guru-flaker-{{index}}'>
+            We charge a $5 cancellation fee if you choose to cancel with your tutor within 5 hours of the first session. <br>
+            This is why we still ask for your credit card information for free sessions.
+        </p>
+        {% endif %}
+        {% if not user.customer_id %}
+        <div id='change-credit-container' style='display:block' class='change-payment-information margin-top-20 margin-bottom-20'>
+              <label> Card Number </label>
+              <input placeholder="•••• •••• •••• ••••" style="width:100%" type="text" size="20" data-stripe="number" class='form-control standard-input credit-card-num-modal' id="credit-card-num-modal-{{index}}">
+              <label> Expiration Date </label>
+              <div class = 'row-fluid relative'>
+                <input placeholder="MM/YY" class='font-control standard-input exp-date-month credit-card-exp-date-modal' size="20"type="text" data-stripe="exp-month" id='credit-card-exp-date-modal-{{index}}'>
+                <img class='float-right absolute powered-by-stripe-settings'src='/static/img/powered-stripe.png'> </img>
+              </div>
+              <div id='add-credit-modal-alert-{{index}}' class='red-text font-12' style='display:none'>
+                    Please fill in all fields.
+              </div>
+              <div class='row-fluid margin-top-20'>
+                <a href='javascript:void(0);' class='submit-credit-card-modal' id='submit-credit-card-modal-{{index}}'>
+                  <span style='width:100%'class='blue-btn blue-btn-full margin-top-10 clickable'> Save & Submit Card</span>
+                </a>
+              </div>
+        </div>
+        {% else %}
+        <div class='row-fluid font-20 margin-top-40 margin-bottom-20 center'>
+            <a href="javascript:void(0);" class='student-request-accept-btn' >
+                <span class='blue-btn clickable' style='padding:8px 60px'> Confirm </span>
+            </a>
+        </div> 
+        <div id='student-request-accept-alert-{{index}}' class='red-text font-12' style='display:none'>
+        </div>
+        {% endif %}
+        <div class='row-fluid light-grey-text font-14  margin-top-5 center'>
+            We offer 100% satisfaction guaranteed policy. Read more <a href='tinyurl.com/uguru-q-a' target="_blank" class='blue-text' > here</a>.
+        </div>
+
+    </div>
+{%- endmacro %}

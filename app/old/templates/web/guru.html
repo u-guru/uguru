@@ -1,0 +1,117 @@
+{% extends 'web/base.html' %}
+{% from 'web/macros/request.html' import request_details_guru_waiting, guru_scheduled_session %}
+{% set guru_accepted_requests = user.get_accepted_requests() %}
+{% set guru_incoming_requests = user.get_guru_requests() %}
+{% set scheduled_sessions = user.get_scheduled_sessions_guru() %}
+
+
+
+{% block main_header %}
+<header class="bar bar-nav">
+  <a class='btn btn-link' id='profile-title-bar-icon' data-transition='fade'href='/m/profile/{{user.id}}'>
+    <img id='guru-profile-photo' src='{{user.as_dict().profile_url}}'class="media-object pull-right table-view-mini-face profile-title-icon"/>
+  </a>
+  <h1 class="title">Guru {{user.get_first_name()}}</h1>
+  <!-- <a class='btn btn-link pull-right' id='guru-support-home' data-transition='fade' href='/m/guru/new/'>New!</a> -->
+  <a class='btn btn-link pull-right' id='guru-support-home' data-transition='fade' href='/m/guru/support/'>Support</a>
+
+</header>
+{% endblock %}
+
+{% block main_content %}
+<div class="content should-hide-message-bar">
+  <div style = 'margin-top: 6%; margin-bottom: 0%;' class='logo-container center content-padded'>
+    {% if not guru_accepted_requests and not scheduled_sessions %}
+      <img class="media-object guru-home-photo" src="/static/img/guru-body.svg">
+    {% endif %}
+  </div>
+
+
+  <!-- guru scheduled sessions -->
+  {% for _request in scheduled_sessions %}
+
+    {{guru_scheduled_session(_request, request.MOBILE)}}
+
+  {% endfor %}
+
+
+  <!-- guru accepted sessions -->
+  {% for _request in guru_accepted_requests %}
+
+    
+    {% set request_dict = _request.get_return_dict() %}
+    {{request_details_guru_waiting(request_dict)}}
+
+  {% endfor %}
+
+
+  <!-- guru incoming requests -->
+  {% if guru_incoming_requests %}
+  <ul class="table-view">    
+    <li class="table-view-cell">
+      <a class="navigate-right" href='/m/guru/requests/' data-transition='slide-in'>
+        Incoming Requests
+        <span class="badge badge-negative">{{guru_incoming_requests|length}}</span>
+      </a>
+    </li>
+  </ul>
+  {% endif %}
+  {% if not guru_requests and not scheduled_sessions and not guru_incoming_requests and not guru_accepted_requests%}
+  <ul class='table-view center'>
+    <li class='table-view-cell ignore-table-view-margin grey-shade-2'>
+      <h1 style='margin-bottom:15px;'> No requests yet! </h1>
+      <p class='white-text'>Uguru will <span class='light-green-text'><u>text</u></span> you when <br> there is a a request.</p>
+    </li>
+  </ul>
+  {% endif %}
+  <!-- Add flashed content -->
+  {% include 'web/snippets/flash_alerts.html' %}
+  <script>
+    $(document).ready(function() {
+      $('.guru-confirm-session').on('click touchstart', function() {
+
+          var request_id = ($(this).data().requestId).toString();
+          var num_hours = parseInt($('#confirm-hours-' + request_id).val(), 10);
+          var num_minutes = parseInt($('#confirm-minutes-' + request_id).val(), 10);
+
+          payload = JSON.stringify({
+              action:'guru-confirm',
+              minutes: num_minutes,
+              hours: num_hours
+          });
+
+          console.log(payload);
+          
+          $.ajax({
+              url: '/api/v1/requests/' + request_id,
+              type: 'PUT',
+              contentType: 'application/json',
+              data: payload,
+              success: function(request){
+                  window.PUSH({
+                      transition : "fade",
+                      url : "/m/guru/"
+                  });
+              },
+              error: function (request) {
+                  alert(request.responseJSON['errors']);
+              }
+          });
+      });
+
+    });
+  
+  // Identify which user this is.
+  mixpanel.identify('{{user.id}}');
+  // mixpanel.track_links("#guru-home-footer", "Clicked guru home icon");
+  // mixpanel.track_links("#guru-home-messages", "Clicked guru messages");
+  // mixpanel.track_links("#guru-home-settings", "Clicked guru settings");
+  // mixpanel.track_links("#guru-become-student", "Clicked become a student");
+  // mixpanel.track_links("#guru-support-home", "Clicked support link");
+</script>
+
+
+
+</div><!-- /.content -->
+
+{% endblock %}

@@ -1,0 +1,127 @@
+{% extends 'web/base.html' %}
+{% from 'web/macros/profile.html' import get_guru_stars %}
+
+{% if _request %}
+  {% set request_dict = _request.get_return_dict() %}
+{% endif %}
+
+{% if guru %}
+  {% set guru_avg_rating = guru.calc_avg_rating()[0] %}
+  {% set guru_num_sessions = guru.calc_avg_rating()[1] %}
+{% endif %}
+
+{% block main_header %}
+<header class="bar bar-nav grey-shade-3 no-border-bottom">
+  {% if guru and not  _request%}
+  <a class="icon icon-close pull-left" href="/m/guru/" data-transition="fade"></a>
+  <a href="/m/guru/profile/edit/" data-transition="slide-in" class="btn btn-link btn-nav pull-right light-green-text" data-transition="slide-in">
+    Edit
+    <span class="icon icon-right-nav"></span>
+  </a>
+  {% endif %}
+  {% if guru and  _request and student %}
+  <a class="icon icon-left-nav pull-left" href="/m/home/" data-transition="fade"></a>
+  {% endif %}
+
+  {% if student and not _request%}
+  <h1 class="title">
+    Edit Profile
+  </h1>
+  <a class="icon icon-close pull-left" href="/m/home/" data-transition="fade"></a>
+  <a href="/m/profile/edit/" data-transition="slide-out" class="btn btn-link btn-nav pull-right light-green-text" data-transition="slide-in">
+    Edit
+    <span class="icon icon-right-nav"></span>
+  </a>
+  {% endif %}
+  
+</header>
+{% endblock %}
+
+{% block main_content %}
+<div class="content should-hide-message-bar should-hide-tab-bar">
+    
+    <!-- Student case -->
+    {% if student and not guru and not _request %}
+      <ul class="table-view" style='margin-top:-10px;'>
+        <li style='height:35%' class="table-view-cell-no-bg table-view-cell media center ignore-table-view-margin grey-shade-3">
+          <img class="media-object table-view-large-face" src="{{student.as_dict().profile_url}}">
+          <p class='white-text center font-20 margin-top-10'>
+            {{student.get_first_name()}} <br>
+            UC Berkeley
+          </p>
+        </li>
+        <li class="table-view-cell media grey-shade-2 table-view-cell-no-bg ignore-table-view-margin ">
+          <h2>Major 
+            {% if student.major %}
+            <span class='pull-right' style='color:#db7500'>{{student.major}}</span>
+            {% else %}
+            <a class='btn btn-link pull-right' href="/m/profile/edit/">add</a>
+            {% endif %}
+          </h2>
+          
+        </li>
+        <li class="table-view-cell table-view-cell-no-bg media grey-shade-2 ignore-table-view-margin">
+          <h2>Year 
+
+            {% if student.year %}
+            <span class='pull-right' style='color:#db7500'>{{student.year}}</span>
+            {% else %}
+            <a class='btn btn-link pull-right' href="/m/profile/edit/">add</a>
+            {% endif %}
+          </h2>
+        </li>
+      </ul>
+
+    {% elif guru or _request  %}
+
+    <ul class="table-view" style='margin-top:-10px;'>
+        <li style='height:35%' class="table-view-cell media center ignore-table-view-margin grey-shade-3 table-view-cell-no-bg border-bottom-grey">
+          <img class="media-object table-view-large-face" src="{{guru.as_dict().profile_url}}">
+          <p class='white-text center font-20 margin-top-10'>
+            {{guru.get_first_name()}} <br>
+          </p>
+            {% if guru_avg_rating %}
+              {{get_guru_stars(guru)}}
+            {% else %}
+              <br>
+              <span class='error-text'>NEW GURU</span>
+            {% endif %}
+
+            {% if guru.year or guru.major %}
+            <span class='font-16 negative-text'>{% if guru.major %}{{guru.major}}{% endif %}, {% if guru.year %}{{guru.year}}{%endif%}</span>
+            {% endif %}
+        </li>
+        {% if _request and _request.pending_tutor_description %}
+        <li class="table-view-cell media grey-shade-2 table-view-cell-no-bg ignore-table-view-margin border-bottom-grey guru-intro" style='padding-bottom:20px;padding-top:20px'>
+          
+          <div class='center grey-text font-12 margin-bottom-10'>PERSONAL NOTE</div>
+
+
+           <i>{{_request.pending_tutor_description}}</i>
+          
+        </li>
+        {% endif %}
+        {% if guru.tutor_introduction %}
+        <li class="table-view-cell media grey-shade-2 table-view-cell-no-bg ignore-table-view-margin border-bottom-grey guru-intro" style='padding-bottom:20px;padding-top:20px'>
+          
+          <div class='center grey-text font-12 margin-bottom-10'>BACKGROUND</div>
+          
+           {{guru.tutor_introduction}}
+          
+        </li>
+        {% endif %}
+        <li class="table-view-cell relative grey-shade-2 table-view-cell-no-bg ignore-table-view-margin" style='padding:20px;'>
+          {% for skill in guru.skills[:3] %}
+              {% set skill_name = skill.get_short_name() %}
+          <button class='btn btn-primary btn-course relative'>{{skill_name|upper}}</button>
+          {% endfor %}
+        </li>
+      </ul>
+
+    <!-- Student Viewing Guru -->
+
+    {% endif %}
+    </ul>  
+</div>
+{% endblock %}
+
