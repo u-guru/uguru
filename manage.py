@@ -1,5 +1,5 @@
 from app.models import *
-from app.database import init_db
+from app.database import init_db, db_session
 import sys
 
 
