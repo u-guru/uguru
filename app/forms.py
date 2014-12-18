@@ -20,4 +20,3 @@ class UserCreateForm(ModelForm):
 class SessionCreateForm(Form):
     email = StringField('email', validators=[DataRequired()])
     password = StringField('password', validators=[DataRequired()])
- 
