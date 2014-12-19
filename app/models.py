@@ -45,7 +45,7 @@ class User(Base):
     profile_url = Column(String)
     fb_id = Column(String)
     gender = Column(String)
-    password = Column(String, nullable=False)
+    password = Column(String)
     
     #Last active time 
     last_active = Column(DateTime)
@@ -84,11 +84,23 @@ class User(Base):
     tos_version = Column(Integer)
     tos_signed_date = Column(DateTime)
 
-    def __init__(self, email, password):
+    def __init__(self, name, email, profile_url, fb_id, \
+        password, gender):
         self.email = email
-        self.password = flask_bcrypt.generate_password_hash(password)
+        self.name = name
+        self.profile_url = profile_url
+        self.fb_id = fb_id
+        self.gender = gender
+        self.password = password
         self.time_created = datetime.now()
         self.last_active = datetime.now()
+
+        db_session.add(self)
+        db_session.commit()
+
+    def create_password(self, password):
+        self.password = flask_bcrypt.generate_password_hash(password)
+        db_session.commit()
  
     def __repr__(self):
         return "<User '%r', '%r', '%r'>" %\
