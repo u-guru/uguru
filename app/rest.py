@@ -6,7 +6,7 @@ from app.database import db_session
 from models import User
 from forms import UserCreateForm, SessionCreateForm
 from serializers import UserSerializer
-import logging
+import logging, json, urllib2
 
  
 @auth.verify_password
@@ -17,6 +17,17 @@ def verify_password(email, password):
     g.user = user
     return flask_bcrypt.check_password_hash(user.password, password)
  
+class UniversityListView(restful.Resource):
+    def get(self):
+        print request.headers.getlist("X-Forwarded-For")
+        print request.remote_addr
+
+        from static.data.universities_efficient import universities_dict
+        
+        return json.dumps(universities_dict), 200
+
+
+
 #Creating a user
 class UserView(restful.Resource):
     
@@ -68,28 +79,27 @@ class UserView(restful.Resource):
     @marshal_with(UserSerializer)
     def put(self):
         
-
-        logging.info(request.json)
         
         print request.json
-        
 
-        return jsonify({'errors':'Oops..Something went wrong.'}), 400
+        user = User.query.get(request.json.get('id'))
 
+        user.name = request.json.get('name')
+        user.password = user.create_password(request.json.get('password'))
+        user.email = request.json.get('email')
+        user.fb_id = request.json.get('fb_id')
+        user.gender = request.json.get('gender')
+        user.profile_url = request.json.get('profile_url')
+        user.guru_introduction = request.json.get('guru_introduction')
+        user.recent_latitude = request.json.get('recent_latitude')
+        user.recent_longitude = request.json.get('recent_longitude')
+        user.location_services_enabled = request.json.get('location_services_enabled')
 
+        if request.json.get('university_id'): user.university_id = request.json.get('university_id')
 
-        
-        
-        
- 
+        db_session.commit()
 
-
-# @app.route('/api/v1/fb_connect', methods=['POST'])
-# def api_fb_connect():
-
-#     logging.info(request.json)
-
-
+        return user, 200
 
 
 
@@ -110,4 +120,5 @@ class SessionView(restful.Resource):
  
 api.add_resource(UserView, '/api/v1/users')
 api.add_resource(SessionView, '/api/v1/sessions')
+api.add_resource(UniversityListView, '/api/v1/universities')
 

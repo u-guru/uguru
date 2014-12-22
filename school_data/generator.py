@@ -69,7 +69,7 @@ def fetch_geo_info(school):
 	providers = [GoogleV3, Nominatim, ArcGIS, OpenMapQuest, Yandex]
 	random.shuffle(providers) # To avoid take limiting
 	location = None;
-	for geolocator in providers:	
+	for geolocator in providers:
 		try:
 			print "...trying prvider: "+ str(geolocator.__module__) + " for school " + str(school.name)
 			location = geolocator().geocode(school.address + " " + school.city + " " + school.state, timeout=2) # Give them a shot to respond

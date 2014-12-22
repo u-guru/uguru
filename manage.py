@@ -11,6 +11,15 @@ else:
 def initialize():
     init_db()
     print 'db initialized'
+    from app.static.data.universities import universities_dict
+    from app.models import University
+
+    for name in universities_dict:
+        universities_dict[name]['name'] = name
+        University.admin_create(universities_dict[name])
+
+    print 'universities added'
+
 
 
 if arg == 'initialize':

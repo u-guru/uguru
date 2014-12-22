@@ -80,12 +80,28 @@ class User(Base):
         )
 
 
+    #user hardware permissions 
+    location_services_enabled = Column(Boolean)
+    push_notifications_enabled = Column(Boolean)
+
+    #user notifications
+    push_notifications = Column(Boolean, default = False)
+    email_notifications = Column(Boolean, default = True)
+
+
+    recent_latitude = Column(Float)
+    recent_longitude = Column(Float)
+    last_gps_activity = Column(DateTime)
+
     #Terms of service
     tos_version = Column(Integer)
     tos_signed_date = Column(DateTime)
 
     def __init__(self, name, email, profile_url, fb_id, \
         password, gender):
+            
+        if not email: email = ''
+
         self.email = email
         self.name = name
         self.profile_url = profile_url
@@ -101,6 +117,7 @@ class User(Base):
     def create_password(self, password):
         self.password = flask_bcrypt.generate_password_hash(password)
         db_session.commit()
+        return self.password
  
     def __repr__(self):
         return "<User '%r', '%r', '%r'>" %\
@@ -110,16 +127,21 @@ class User(Base):
 class University(Base):
     __tablename__  = 'university'
     id = Column(Integer, primary_key=True)
+    
+
     name = Column(String)
     state = Column(String)
     city = Column(String)
     address = Column(String)
     website = Column(String)
-    phone_number = Column(String)
     domain = Column(String)
     latitude = Column(Float)
     longitude = Column(Float)
-    
+    population = Column(Integer)
+    city_short = Column(String)
+    state_short = Column(String)
+    zip_code = Column(Integer)
+    logo_url = Column(String)
     last_updated = Column(DateTime)
 
     gurus = relationship("User",
@@ -135,13 +157,56 @@ class University(Base):
         backref = backref('universities', lazy='dynamic')
         )
 
-    def __init__(self, name):
+    admin_approved = Column(Boolean, default = False)
+    contributed_user_id = Column(Integer)
+
+    # User contributed university
+    def __init__(self, name=None, user_id=None):
         self.name = name 
         self.last_updated = datetime.now()
+        self.contributed_user_id = user_id
+
+        db_session.add(self)
+        db_session.commit()
+
+    @staticmethod
+    def admin_create(args_dict):
+        u = University.admin_update(University(), args_dict)
+    
+    @staticmethod
+    def admin_update(u, args):
+
+        u.name = args.get('name')
+        u.population = int(''.join(args.get('population').split(',')))
+        u.logo_url = args.get('logo_url')
+        u.last_updated = datetime.now()
+        u.admin_approved = True
+
+        if args.get('location'):
+            u.address = args.get('location').get('full_address')
+            u.state = args.get('location').get('state')
+            u.short_state = args.get('location').get('state_short')
+            u.city = args.get('location').get('city')
+            u.city_short = args.get('location').get('city_short')
+            u.latitude = args.get('location').get('latitude')
+            u.longitude = args.get('location').get('longitude')
+            u.latitude = args.get('location').get('latitude')
+            if args.get('location').get('zip_code'):
+                u.zip_code = int(args.get('location').get('zip_code').split("-")[0])
+ 
+        db_session.commit()
+        
+        return u
+
  
     def __repr__(self):
-        return "<University '%r', '%r'>" %\
-              (self.id, self.name)
+        return str(
+            {
+                'id':self.id,
+                'name':self.name,
+                'state':self.state,
+                'city':self.city,
+            })
 
 
 
@@ -150,10 +215,10 @@ class Major(Base):
     
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    admin_approved = Column(Boolean, default = False)
     time_added = Column(DateTime)
 
     #Id of user that suggested this major
+    admin_approved = Column(Boolean, default = False)
     contributed_user_id = Column(Integer, ForeignKey('user.id'))
     
 
