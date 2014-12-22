@@ -19,12 +19,16 @@ def verify_password(email, password):
  
 class UniversityListView(restful.Resource):
     def get(self):
-        print request.headers.getlist("X-Forwarded-For")
-        print request.remote_addr
 
         from static.data.universities_efficient import universities_dict
         
         return json.dumps(universities_dict), 200
+
+class MajorListView(restful.Resource):
+    def get(self):
+        from static.data.majors_general import majors
+        
+        return json.dumps({"majors":majors}), 200
 
 
 
@@ -121,4 +125,5 @@ class SessionView(restful.Resource):
 api.add_resource(UserView, '/api/v1/users')
 api.add_resource(SessionView, '/api/v1/sessions')
 api.add_resource(UniversityListView, '/api/v1/universities')
+api.add_resource(MajorListView, '/api/v1/majors')
 
