@@ -222,16 +222,29 @@ class Major(Base):
     contributed_user_id = Column(Integer, ForeignKey('user.id'))
     
 
-    def __init__(self, name, admin_approved=False, \
+    def __init__(self, name=None, admin_approved=False, \
         contributed_user_id=None):
         self.name = name 
         self.time_added = datetime.now()
         self.admin_approved = admin_approved
         self.contributed_user_id = contributed_user_id
+        db_session.add(self)
+        db_session.commit()
  
     def __repr__(self):
         return "<Major '%r', '%r'>" %\
               (self.id, self.name)
+
+    @staticmethod
+    def admin_create(name):
+        m = Major()
+        m.name = name
+        m.admin_approved = True
+
+        db_session.commit()
+    
+
+
 
 
 class Course(Base):
