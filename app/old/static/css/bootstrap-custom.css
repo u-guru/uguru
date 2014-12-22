@@ -1,0 +1,54 @@
+
+@media (min-width: 768px) {
+  .container {width: 750px;}
+}
+@media (min-width: 992px) {
+  .container {width: 970px;}
+}
+@media (min-width: 1200px) {
+  .container {width: 900px;}
+  .textbox .col-md-6 {margin-top: 80px;}
+  .phone-img .col-md-6 img {float: right;}
+  .phone-img .col-md-6 {padding-right: 50px;}
+}
+
+#header {
+  padding: 40px 0 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#footer li {
+float: left;
+height: 35px;
+margin-right: 7px;
+margin-top: 20px;
+overflow: hidden;
+}
+
+ul {
+  padding: 0px;
+}
+
+img {
+  margin: 10px 0px 10px;
+}
+
+/* component */
+
+.btn.uguru-landing{
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background: #48b7a6;
+  color: white;
+  padding: 12px 24px 12px 24px;
+  border-radius: 24px;
+  position: relative;
+}
+
+p.capital-grey {
+  font-size: 10px;
+  position: absolute;
+  bottom: -20px;
+  left: 26px;
+}

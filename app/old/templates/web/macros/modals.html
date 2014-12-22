@@ -1,0 +1,34 @@
+{% macro add_card_modal(user, stripe_key) -%}
+<div id="add-card-modal" class="modal">
+  <header class="bar bar-nav">
+        {% if not user.customer_id %}
+        <h1 class="title">Add Card</h1>
+        {% else %}
+        <h1 class="title">Add a New Card</h1>
+        {% endif %}
+        <a href='#add-card-modal'class='icon icon-close pull-right'></a>
+  </header>
+
+
+  <div class="content">
+        <ul class="table-view">
+          <form class="input-group">
+            <input id='card-num' type="text" placeholder="•••• •••• •••• ••••">
+            <input id='exp-date' type="text" placeholder="MM / YYYY">
+          </form>
+        </ul>
+        <a id='add-card-link' data-user-id='{{user.id}}' class="btn btn-positive btn-block">Submit</a>
+
+        <!-- Inject all stripe-related scripts --> 
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="/static/js/jquery.payment.js"></script>
+        <script src="https://js.stripe.com/v2/"></script>
+        <script type="text/javascript">Stripe.setPublishableKey("{{stripe_key}}");</script>
+        <script class='content-js'>
+          $('input#card-num').payment('formatCardNumber');
+          $('input#exp-date').payment('formatCardExpiry');
+        </script>
+  </div>
+
+</div>
+{%- endmacro %}

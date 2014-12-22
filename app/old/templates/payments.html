@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='guru-app-container container-fluid reg-text'>
+  <div class='row reg-text font-14'>
+    <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6'>
+      <div class='row-fluid font-16'>
+          <a href='/settings/#billing' class='blue-text feed-message-back-link'>
+              <span class='glyphicon glyphicon-chevron-left'>
+              </span> Back
+          </a>
+      </div>
+      <h1 class='reg-text center bold extra-margin-bottom'>
+                    My Transaction History
+      </h1>
+      <div class='row grey-text font-12 center margin-bottom-20' style='margin-top:-10px'>
+        Something seem wrong or need a refund? Email <a class='blue-text' href='mailto:support@uguru.me'>support@uguru.me</a> for a quick reply.
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Payment Description</th>
+              <th>Amount</th>
+              <th>Status</th>
+              {% if user.payments[0].student_id == user.id %}
+              <th>Receipt ID</th>
+              <th>Card</th>
+              {% endif %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for payment in user.payments|sort(attribute='time_created')|reverse %}
+            {% if payment.student_paid_amount %}
+            <tr>
+              <td>{{ payment.time_created.strftime('%h-%d-%Y') }}</td>
+              <td>
+                {% if payment.student_id == user.id %}
+                  {{payment.student_description}}
+                {% else %}
+                  {{payment.tutor_description}}
+                {% endif %}
+              </td>
+              <td>
+                {% if payment.student_id == user.id %}
+                  <span class='red-text'>
+                    -${{payment.student_paid_amount}}
+                  </span>
+                {% else %}
+                <span class='green-text'>
+                    {% if not payment.confirmed_time_amount %}
+                      {% if payment.student_paid_amount > 0 %}
+                        {% if payment.student_id == user.id %}
+                          +${{payment.student_paid_amount}}
+                        {% else %}
+                          +${{payment.tutor_received_amount}}
+                        {% endif %}
+                      {% else %}
+                        <span class='red-text'> -${% if payment.stripe_recipient_id %}{{payment.tutor_received_amount}}
+                          {% else %}
+                          {{payment.tutor_received_amount}} 
+                          {% endif %}
+                        </span>
+                      {% endif %}
+                    {% else %}
+                    +${{payment.tutor_received_amount}}
+                    {% endif %}
+                  </span>
+                {% endif %}
+              </td>
+              <td>
+                  <span class='green-text'>
+                    Successful
+                  </span>
+              </td>
+              {% if payment.student_id == user.id %}
+              <td>
+                {{payment.stripe_charge_id}}
+              </td>
+              <td>
+                {{user.customer_last4}}
+              </td>
+              {% endif %}
+            </tr>
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

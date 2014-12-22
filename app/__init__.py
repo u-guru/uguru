@@ -1,10 +1,13 @@
 import os
 from flask import Flask
+from flask.ext import restful
 from flask_sqlalchemy import SQLAlchemy
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
-from flask.ext.mobility import Mobility
-from flask.ext.assets import Environment, Bundle
+from flask.ext.restful import reqparse, Api
+from flask.ext.bcrypt import Bcrypt
+from flask.ext.httpauth import HTTPBasicAuth
+
 
 # Logging
 import logging
@@ -22,16 +25,17 @@ root.addHandler(ch)
 app = Flask(__name__)
 app.config.from_object('config')
 
-#Device Detection Plugin
-Mobility(app)
+# flask-restful
+api = restful.Api(app)
 
-#Flask pyScss
-assets = Environment(app)
-assets.url = app.static_url_path
-scss = Bundle('css/web.scss', filters='pyscss', output='css/all.css')
-# TODO: Use this line when we have more css files to bundble
-assets.register('scss_all', scss)
+# flask_becrypt
+flask_bcrypt = Bcrypt(app)
 
+# flash-httpauth
+auth = HTTPBasicAuth()
+
+
+#Flask sql alchemy 
 db = SQLAlchemy(app)
 
 # Migrations
@@ -39,4 +43,12 @@ migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
-from app import views, models, emails
+# Allows cross-origin. Allows us to host local server on different ports & share resources
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    return response
+
+from app import rest, models, emails, views

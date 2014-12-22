@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <link href="/static/css/admin.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<ul style="margin:auto;float:center" class="nav nav-tabs">
+  <li><a href="/admin/">Today</a></li>
+  <li><a href="/admin/stats/"> Stats </a></li>
+  <li><a href="/admin/tutors/">Tutors</a></li>
+  <li><a href="/admin/students/">Students</a></li>
+  <li><a href="/admin/courses/" >Courses</a></li>
+  <li><a href="/admin/requests/">Requests</a></li>
+  <li class='active'><a href="/admin/conversations/">Conversations</a></li>
+  <!-- <li><a href="#notifications" data-toggle="tab">Notifications</a></li> -->
+  <li><a href="/admin/payments/"> Payments</a></li>
+  <li><a href="/admin/ratings/"> Ratings</a></li>
+  <li><a href="/admin/bank-transfers/" data-toggle="tab"> Bank Transfers</a></li>
+  <li><a href="/admin/texts/" data-toggle="tab"> Texts </a></li>
+  <li><a href="/admin/parents/" data-toggle="tab"> Parents </a></li>
+  <li><a href="/admin/unsubscribes/"> Unsubscribes </a></li>
+</ul>
+        <div class="container">
+            <div class="row-fluid">
+                <table class="table table-striped">
+                    <tr class="info"> 
+                        <td> Id </td>
+                        <td> Requested Skill </td>
+                        <td> Student </td>
+                        <td> Tutor </td>
+                        <td> Message Count </td>
+                        <td> Last Message Time</td>
+                    </tr>
+                    {% for c in conversations %}
+                            <tr> 
+                                <td>  {{c['conversation'].id}} </td>
+                                <td> {{c['skill-name']}}
+                                <td> <a href="javascript:void(0)" class="view-student-message"> {{c['student'].name.split(" ")[0]}} </a> (id:<span>{{c['student'].id}}</span>)</td>
+                                <td> <a href="javascript:void(0)" class="view-tutor-message"> {{c['tutor'].name.split(" ")[0]}} </a>(id:<span>{{c['tutor'].id}}</span>) </td>
+                                <td> {{c['msg-count']}} </td>
+                                <td> {{c['last-message-time']}} </td>
+                            </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+  <div style="text-align:center;color:black" class="row">
+    <u><a href="/logout-admin/">Log out of admin</a></u>
+  </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+    <script src="/static/js/admin.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+{% endblock %}

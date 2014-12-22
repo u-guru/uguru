@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-title">
+   <h4 style="color:white;">BECOME A TUTOR</h4>
+  </div>
+
+<div style="padding:20px">
+	<div align="center">
+		<label for="name" class="h4" style="padding-right:55px;">NAME</label>
+		<input id="name" class="input-signup"></input>
+		<br>
+		<br>
+		<label for="email" class="h4" style="padding-right:45px">EMAIL&nbsp;&nbsp;&nbsp;</label>
+		<input id="email" class="input-signup" placeholder="@berkeley.edu"></input>
+		<br>
+		<br>
+		<label for="password" class="h4" style="padding-right:10px">PASSWORD</label>
+		<input id="password" class="input-signup"></input>
+	</div>
+</div>
+<div class="page-title">
+   <h4 style="color:white;">ADD YOUR SKILLS AND COURSES</h4>
+  </div>
+	<div id="skills" align="center" style="padding-top:30px;padding-bottom: 30px">
+        <div class="input-group">
+        <span><input class="add-skills" placeholder="I can teach..."></input></span>
+        <div class="btn-add" style="float:right;font-size:20px">+</div>
+      </div>
+      <hr>
+      <div style="align:center">
+        <span class="h4" style="color:#00a0cf;">CS 10</span>
+          <span class="btn-remove">--</span>
+       
+      </div>
+      </div>
+
+<div class="btn-request">SUBMIT</div>
+
+{% endblock %}

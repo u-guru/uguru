@@ -1,0 +1,169 @@
+{% extends 'web/base.html' %}
+{% from 'web/macros/autocomplete-input.html' import autocomplete_input_become_guru %}
+{% from 'web/macros/profile.html' import 
+profile_photo_html_li, profile_photo_js, profile_edit_courses_li,
+profile_introduction_li, profile_major_html_li,
+profile_year_html_li %}
+
+{% block main_header %}
+<header class="bar bar-nav">
+  <h1 class="title">Edit Profile</h1>
+  {% if user.is_a_guru() %}
+    <a class="icon icon-left-nav pull-left" href="/m/guru/profile/{{user.id}}/" data-transition="slide-out"></a>
+  {% else %}
+  <a class="icon icon-left-nav pull-left" href="/m/profile/{{user.id}}/" data-transition="slide-out"></a>
+  {% endif %}
+</header>
+{% endblock %}
+
+{% block main_content %}
+<div class="content should-hide-message-bar should-hide-tab-bar">
+  <ul class="table-view">
+    
+    {{profile_photo_html_li(user)}}
+    {{profile_year_html_li(user)}}
+    
+    {{profile_major_html_li(user)}}
+    </form>
+    
+    {% if user.is_a_guru() %}
+
+      {{ profile_edit_courses_li(user) }}
+      {{ profile_introduction_li(user)}}
+
+      <a href='#' id='save-guru-profile' data-transition='fade' data-user-id='{{user.id}}'class='btn btn-block btn-positive'>Save</a>
+
+    {% else %}
+
+    <a href='#' id='save-student-profile' data-transition='fade' data-user-id='{{user.id}}'class='btn btn-block btn-positive'>Save</a>
+
+    {% endif %}
+
+  </ul>
+
+  {{profile_photo_js(user)}}
+
+  
+  <!-- Guru profile save -->
+  {% if user.is_a_guru() %}
+    
+    {{autocomplete_input_become_guru("become-guru-course-input", "add-courses-container")}}
+
+    <script>
+
+    //Save profile
+    $('#save-guru-profile').on('click', function(){
+        var user_id = ($('#save-guru-profile').data().userId).toString();
+        
+        payload = JSON.stringify({
+            action: 'update-guru-profile',
+            tutor_introduction:$('#tutor-introduction').val(),
+            tutor_major :$('#tutor-major').val()
+        });
+
+        $.ajax({
+            url: '/api/v1/users/' + user_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/m/guru/"
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+
+      });
+
+    </script>
+
+  {% endif %}
+
+  <!-- For both Gurus and students  -->
+  <script>
+
+  //Immediately save their year as soon as they click it.
+
+    function save_year() {
+        
+        {% if user.is_a_guru() %}
+          var user_id = ($('#save-guru-profile').data().userId).toString();
+        {% else %}
+          var user_id = ($('#save-student-profile').data().userId).toString();
+        {% endif %}
+        
+        var year = $('.move-right:first').text().trim();
+
+        payload = JSON.stringify({
+            year : year
+        });
+        
+        $.ajax({
+                url: '/api/v1/users/' + user_id,
+                type: 'PUT',
+                contentType: 'application/json',
+                data: payload,
+                success: function(request){
+                    //do nothing, stay on the page
+                    return;
+                },
+                error: function (request) {
+                    alert(request.responseJSON['errors']);
+                }
+            });
+    }
+    
+
+
+    $('a.year-tag').on('click', function() {
+      $('.year-tag').removeClass('active').addClass('hidden');
+      $('.year-tag.hidden').hide();
+      $(this).addClass('active move-right').removeClass('hidden').show();
+      $('#edit-year-link').show();
+      save_year();
+    });
+
+    $('#edit-year-link').on('click', function() {
+      $('.initial-year-tag').remove();
+      $('#year-container').show();
+      $('.year-tag').removeClass('active').removeClass('hidden').removeClass('move-right');
+      $('.year-tag').show();
+      $(this).hide();
+    });
+
+    $('#save-student-profile').on('click', function(){
+        var user_id = ($('#save-student-profile').data().userId).toString();
+        
+        payload = JSON.stringify({
+            action: 'update-student-profile',
+            student_major :$('#student-major').val()
+        });
+
+        $.ajax({
+            url: '/api/v1/users/' + user_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : "/m/profile/" + user_id + '/'
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+         });
+
+      });
+
+    </script>
+
+</div>
+{% endblock %}
+
+    

@@ -48,6 +48,14 @@
 - Email: admin@uguru.me
 - Pass: launchuguru
 
+**Pip Dependancies**
+
+- % [sudo] pip install <dependancy>
+- % pip freeze > requirements.txt
+- to uninstall
+- % [sudo] pip uninstall <dependancy>
+- % pip freeze > requirements.txt
+
 **Run Tests**
 
-- nosetests tests.py 
+- honcho run nosetests tests.py 

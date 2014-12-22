@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <link href="/static/css/admin.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<ul style="margin:auto;float:center" class="nav nav-tabs">
+  <li class='active'><a href="/admin/">Today</a></li>
+  <li><a href="/admin/stats/"> Stats </a></li>
+  <li><a href="/admin/tutors/">Tutors</a></li>
+  <li><a href="/admin/students/">Students</a></li>
+  <li><a href="/admin/courses/">Courses</a></li>
+  <li><a href="/admin/requests/" >Requests</a></li>
+  <li><a href="/admin/conversations/" >Conversations</a></li>
+  <li><a href="/admin/payments/"> Payments</a></li>
+  <li><a href="/admin/ratings/"> Ratings</a></li>
+  <li><a href="/admin/bank-transfers/" data-toggle="tab"> Bank Transfers</a></li>
+  <li><a href="/admin/texts/" data-toggle="tab"> Texts </a></li>
+  <li><a href="/admin/parents/" data-toggle="tab"> Parents </a></li>
+  <li><a href="/admin/unsubscribes/"> Unsubscribes </a></li>
+</ul>
+
+
+
+
+<div class="container">
+            
+        {% for day in day_stats %}
+
+            <div style="margin:20px; text-align:center" class="row font-24 bold">
+            {% if loop.index == 1 %}
+              Today
+            {% else %}  
+              {{day['date']}}
+            {% endif %}
+            {% if loop.index != 8 %}
+              {% set previous_day = day_stats[loop.index]%}
+            {% endif %}
+            </div>
+            <div class="row-fluid">
+                <table class="table table-striped">
+                    <tr> 
+                        <td>  Student Requests</td>
+                        <td> {{day['requests']|length}}
+                          {% if previous_day and previous_day['requests']|length > day['requests']|length %}
+                            {% set span ='red-text' %}
+                            {% set sign = '-'%}
+                          {% elif previous_day %}
+                            {% set span ='green-text' %}
+                            {% set sign = '+'%}
+                          {% endif %}
+                            {% if previous_day %}
+                            (<span class='{{span}}'>{{sign}}{{day['requests']|length - previous_day['requests']|length}}</span>)
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td>  Total Signups </td>
+                        <td> {{day['student-signups']|length + day['tutor-signups']|length}} 
+                          {% if previous_day and (previous_day['student-signups']|length + previous_day['tutor-signups']|length) > 
+                          (day['student-signups']|length + day['tutor-signups']|length) %}
+                            {% set sign = '-'%}
+                            {% set span ='red-text' %}
+                          {% elif previous_day %}
+                            {% set sign = '+'%}
+                            {% set span ='green-text' %}
+                          {% endif %}
+                          {% if previous_day %}
+                          (<span class='{{span}}'>{{sign}}{{(day['student-signups']|length + day['tutor-signups']|length) - (previous_day['student-signups']|length + previous_day['tutor-signups']|length)}}</span>)
+                          {% endif %}
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td>  Student Signups </td>
+                        <td> {{day['student-signups']|length}} 
+                        {% if previous_day and previous_day['student-signups']|length > day['student-signups']|length %}
+                            {% set sign = '-'%}
+                            {% set span ='red-text' %}
+                          {% elif previous_day %}
+                            {% set sign = '+'%}
+                            {% set span ='green-text' %}
+                        {% endif %}
+                          {% if previous_day %}
+                          (<span class='{{span}}'>{{sign}}{{(day['student-signups']|length) - (previous_day['student-signups']|length)}}</span>)
+                          {% endif %}
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td style='padding-left:40px'>  Regular Signups </td>
+                        <td> {{day['student-signups-none']|length}} </td>
+                    </tr>
+                    <tr> 
+                        <td style='padding-left:40px'>  Fb Signups </td>
+                        <td> {{day['student-signups-fb']|length}} </td>
+                    </tr>
+                    <tr> 
+                        <td style='padding-left:40px'>  Sproul Signups </td>
+                        <td> {{day['student-signups-sproul']|length}} </td>
+                    </tr>
+                    <tr> 
+                        <td style='padding-left:40px'>  Piazza Signups </td>
+                        <td> {{day['student-signups-piazza']|length}} </td>
+                    </tr>
+                    <tr> 
+                        <td style='padding-left:40px'>  Cal Signups </td>
+                        <td> {{day['student-signups-cal']|length}} </td>
+                    </tr>
+                    <tr> 
+                        <td>  Tutor Signups </td>
+                        <td> {{day['tutor-signups']|length}} 
+                        {% if previous_day and previous_day['tutor-signups']|length > day['tutor-signups']|length %}
+                            {% set sign = '-'%}
+                            {% set span ='red-text' %}
+                          {% elif previous_day %}
+                            {% set sign = '+'%}
+                            {% set span ='green-text' %}
+                        {% endif %}
+                          {% if previous_day %}
+                          (<span class='{{span}}'>{{sign}}{{(day['tutor-signups']|length) - (previous_day['tutor-signups']|length)}}</span>)
+                          {% endif %}
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td style='padding-left:40px'>  Regular Signups </td>
+                        <td> {{day['student-signups-guru-none']|length}} </td>
+                    </tr>
+                    <tr> 
+                        <td style='padding-left:40px'>  Guru Signups </td>
+                        <td> {{day['student-signups-guru']|length}} </td>
+                    </tr>
+                </table>
+            </div>
+        {% endfor %}
+</div>
+
+
+  <div style="text-align:center;color:black" class="row">
+    <u><a href="/logout-admin/">Log out of admin</a></u>
+  </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+    <script src="/static/js/admin.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+{% endblock %}

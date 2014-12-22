@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <link href="/static/css/admin.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<ul style="margin:auto;float:center" class="nav nav-tabs">
+  <li><a href="/admin/">Today</a></li>
+  <li><a href="/admin/stats/"> Stats </a></li>
+  <li><a href="/admin/tutors/">Tutors</a></li>
+  <li><a href="/admin/students/">Students</a></li>
+  <li><a href="/admin/courses/" >Courses</a></li>
+  <li class='active'><a href="/admin/requests/">Requests</a></li>
+  <li><a href="/admin/conversations/">Conversations</a></li>
+  <!-- <li><a href="#notifications" data-toggle="tab">Notifications</a></li> -->
+  <li><a href="/admin/payments/"> Payments</a></li>
+  <li><a href="/admin/ratings/"> Ratings</a></li>
+  <li><a href="/admin/bank-transfers/" data-toggle="tab"> Bank Transfers</a></li>
+  <li><a href="/admin/texts/" data-toggle="tab"> Texts </a></li>
+  <li><a href="/admin/parents/" data-toggle="tab"> Parents </a></li>
+  <li><a href="/admin/unsubscribes/"> Unsubscribes </a></li>
+</ul>
+
+        <div class="container">
+            <div class="row-fluid">
+                <div class='center bold font-20'>Higher Level</div>
+                <table class="table table-striped">
+
+                    <tr> 
+                        <td> Request Id </td>
+                        <td> {{r_dict['server_id']}} </td>
+                    </tr>
+                    <tr>
+                        <td> Time Created </td>
+                        <td> {{r_dict['time-created']}} </td>
+                    </tr>
+                    <tr>
+                        <td> Number of Tutors </td>
+                        <td> {{r_dict['tutors-available']}} </td>
+                    </tr>
+                    <tr>
+                        <td> Number of Tutors Unvailable</td>
+                        <td> {{r_dict['tutors-contacted']- 1}} </td>
+                    </tr>
+                    <tr>
+                        <td> Number of Tutors Pending</td>
+                        <td> {{r_dict['tutors-available'] - r_dict['tutors-contacted']}} </td>
+                    </tr>
+                    <tr>
+                        <td> Number of Tutors Committed</td>
+                        <td> {{r_dict['tutors-committed']}}</td>
+                    </tr>
+                    <tr>
+                        <td> Status</td>
+                        <td> {{r_dict['status']}} </td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="row-fluid">
+                <div class='center bold font-20'>Current Statistics</div>
+                <table class="table table-striped">
+                    <tr> 
+                        <td> Current Tutor 
+                        </td>
+                            <td>
+                            {% if r_dict.get('current-tutor')%}
+                            <a href="javascript:void(0)" data-user-id="{{r_dict['current-tutor']['server_id']}}" target='_blank' class="login-m-user" data-request-id="{{r_dict['server_id']}}"> 
+                                {{r_dict['current-tutor']['name']}}, id:{{r_dict['current-tutor']['server_id']}}
+                            </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    
+                    <tr> 
+                        <td> Time Remaining </td>
+                        {% if r_dict.get('time-remaining') and r_dict.get('time-remaining') > 0 %}
+                        <td> {{(r_dict['time-remaining'] / 60)|int }} minutes, {{(r_dict['time-remaining'] % 60)|int}} seconds </td>
+                        {% endif %}
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="row-fluid">
+                <div class='center bold font-20'>Events</div>
+                <table class="table table-striped">
+                    <tr> 
+                        <td> {{r_dict['time-created']}} </td>
+                        <td> Request Created </td>
+                        <td> <td>
+                    </tr>
+                    {% for n in r_dict.get('notifications') %}
+                    <tr> 
+                        <td> {{n['time-created']}} </td>
+                        
+                            
+                        <td> {{n['status']}} </td>
+                        
+                        <td> 
+                            {% set status = n['status'] %}
+                                
+                            {% if status == 'text-sent' %}
+                                {{n['tutor']['name']}} was sent a text
+
+                            {% elif status =='tutor-late' %}
+
+                                {{n['tutor']['name']}} was too late
+
+                            {% elif status =='tutor-clicked-text-link' %}
+
+                                {{n['tutor']['name']}} clicked the text message link.
+
+                            {% elif status =='tutor-viewed-request' %}
+
+                                {{n['tutor']['name']}} viewed the request
+
+                            {% elif status =='tutor-accepted' %}
+
+                                {{n['tutor']['name']}} accepted {{r_dict['student']['name']}}'s request
+
+                            {% else %}
+                                Insert Detailed Version here 
+                            {% endif %}
+
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+  <div style="text-align:center;color:black" class="row">
+    <u><a href="/logout-admin/">Log out of admin</a></u>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+    <script src="/static/js/admin.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+{% endblock %}

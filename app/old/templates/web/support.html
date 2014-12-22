@@ -1,0 +1,75 @@
+{% extends 'web/base.html' %}
+
+{% block main_header %}
+<header class="bar bar-nav">
+  <h1 class="title">Support</h1>
+  <a class="icon icon-left-nav pull-left" href="/m/settings/" data-transition="slide-out"></a>
+</header>
+{% endblock %}  
+
+{% block main_content %}
+<div class="content should-hide-tab-bar should-hide-message-bar">
+  
+  <h6 class="content-padded">Options</h6>
+  <ul class="table-view">
+    <li class="table-view-cell ignore-table-view-margin">
+      <div class="segmented-control content-padded">
+        <a class="control-item active">Question</a>
+        <a class="control-item">Suggestion</a>
+        <a class="control-item">Refund</a>
+        <a class="control-item">Other</a>
+      </div>
+    </li>
+  </ul>
+  
+  <h6 class="content-padded">Description</h6>
+  <form class="input-group">
+    <textarea id='support-description' placeholder="Please provide all necessary details" rows="5"></textarea>
+  </form>
+  </ul>
+  <a id='submit-support-ticket' data-user-id='{{user.id}}' class="btn btn-positive btn-block">Submit</a>
+
+  <script>
+
+  $('#submit-support-ticket').on('click', function() {
+        var user_id = ($(this).data().userId).toString();
+        
+        payload = JSON.stringify({
+            action:'support',
+            description:$('#support-description').val(),
+            urgency: $('.toggle').hasClass('active')
+        });
+
+        $.ajax({
+            url: '/api/v1/users/' + user_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.PUSH({
+                    transition : "fade",
+                    url : '/m/home/'
+                });
+            },
+            error: function (request) {
+                alert(request.responseJSON['errors']);
+            }
+        });
+    });
+
+  </script>
+
+  {% if not request.MOBILE %}
+    <script>
+      $('.toggle').on('click', function(){
+          if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+          } else {
+            $(this).addClass('active');
+          }
+      });
+    </script>
+  {% endif %}
+  
+</div>     
+{% endblock %}
