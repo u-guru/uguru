@@ -11,6 +11,16 @@ university_fields['name'] = fields.String(attribute='name')
 university_fields['state'] = fields.String(attribute='state')
 university_fields['city'] = fields.String(attribute='city')
 
+major_fields = {}
+major_fields['id'] = fields.Integer(attribute='id')
+major_fields['name'] = fields.String(attribute='name')
+
+course_fields = {}
+course_fields['id'] = fields.Integer(attribute='id')
+course_fields['name'] = fields.String(attribute='name')
+
+
+
 UserSerializer = {
     'id': fields.Integer,
     'name':   fields.String,
@@ -26,7 +36,8 @@ UserSerializer = {
     'recent_latitude': fields.Float,
     'recent_longitude': fields.Float,
     'location_services_enabled': fields.Boolean,
-
+    'majors': fields.List(fields.Nested(major_fields)),
+    'guru_courses': fields.List(fields.Nested(course_fields))
 }
 
 

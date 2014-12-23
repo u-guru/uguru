@@ -250,8 +250,9 @@ class Major(Base):
 class Course(Base):
     __tablename__ = 'course'
     id = Column(Integer, primary_key=True)
+    time_added = Column(DateTime)
+    name = Column(String) #Usually department + course_number
 
-    full_name = Column(String) #Usually department + course_number
     short_name = Column(String) #Casual shorted version that students use
     department = Column(String)
     course_number = Column(String)
@@ -265,16 +266,26 @@ class Course(Base):
         backref = 'courses'
         )
 
-    def __init__(self, name, university_id, admin_approved=False,\
+    def __init__(self, name=None, university_id=None, admin_approved=False,\
         contributed_user_id=None):
         self.name = name 
         self.university_id = university_id
         self.admin_approved = admin_approved
         self.contributed_user_id = contributed_user_id
+        db_session.add(self)
+        db_session.commit()
  
     def __repr__(self):
         return "<Major '%r', '%r', '%r'>" %\
               (self.id, self.name, self.university.name)
+
+
+    @staticmethod
+    def admin_create(name):
+        c = Course()
+        c.name = name
+        c.admin_approved = True
+        db_session.commit()
 
 
 class Card(Base):

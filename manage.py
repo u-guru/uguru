@@ -13,6 +13,7 @@ def initialize():
     print 'db initialized'
     from app.static.data.universities import universities_dict
     from app.static.data.majors_general import majors
+    from app.static.data.courses_efficient import courses
     from app.models import University
 
     for name in universities_dict:
@@ -26,6 +27,11 @@ def initialize():
         Major.admin_create(major["name"])
 
     print len(Major.query.all()),'majors added'
+
+    for course in courses:
+        Course.admin_create(course["name"])
+
+    print len(Course.query.all()),'courses added'
 
 if arg == 'initialize':
     initialize()

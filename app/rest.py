@@ -3,7 +3,7 @@ from flask.ext import restful
 from flask.ext.restful import marshal_with
 from app import api, flask_bcrypt, auth
 from app.database import db_session
-from models import User
+from models import *
 from forms import UserCreateForm, SessionCreateForm
 from serializers import UserSerializer
 import logging, json, urllib2
@@ -31,14 +31,16 @@ class MajorListView(restful.Resource):
         return json.dumps({"majors":majors}), 200
 
 
+class CourseListView(restful.Resource):
+    def get(self):
+        from static.data.courses_efficient import courses
+        
+        return json.dumps({"courses":courses}), 200
 
-#Creating a user
 class UserView(restful.Resource):
     
     @marshal_with(UserSerializer)
     def post(self):
-        
-        # form = UserCreateForm()
 
         logging.info(request.json)
         
@@ -48,6 +50,12 @@ class UserView(restful.Resource):
         
         # Log previous user in 
         if user_from_fb_id:
+            
+            user_from_email.fb_id = request.json.get("id")
+            user_from_email.gender = request.json.get("gender")
+            user_from_email.profile_url = request.json.get("profile_url")
+            db_session.commit()
+
             logging.info('Incoming user (id %s) already has an account' % user_from_fb_id.id)
             return user_from_fb_id, 200
 
@@ -86,7 +94,7 @@ class UserView(restful.Resource):
         
         print request.json
 
-        user = User.query.get(request.json.get('id'))
+        user = User.query.get(int(request.json.get('id')))
 
         user.name = request.json.get('name')
         user.password = user.create_password(request.json.get('password'))
@@ -99,7 +107,17 @@ class UserView(restful.Resource):
         user.recent_longitude = request.json.get('recent_longitude')
         user.location_services_enabled = request.json.get('location_services_enabled')
 
+        #If university was uploaded by the student
         if request.json.get('university_id'): user.university_id = request.json.get('university_id')
+
+        #if the student uploaded a major
+        if request.json.get('major'): 
+            major = Major.query.get(request.json.get('major').get('id'))
+            user.majors.append(major)
+
+        if request.json.get('add_course_id'): 
+            course = Course.query.get(request.json.get('add_course_id'))
+            user.guru_courses.append(course)
 
         db_session.commit()
 
@@ -126,4 +144,5 @@ api.add_resource(UserView, '/api/v1/users')
 api.add_resource(SessionView, '/api/v1/sessions')
 api.add_resource(UniversityListView, '/api/v1/universities')
 api.add_resource(MajorListView, '/api/v1/majors')
+api.add_resource(CourseListView, '/api/v1/courses')
 
