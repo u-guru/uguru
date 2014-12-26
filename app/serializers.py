@@ -20,7 +20,6 @@ course_fields['id'] = fields.Integer(attribute='id')
 course_fields['name'] = fields.String(attribute='name')
 
 
-
 UserSerializer = {
     'id': fields.Integer,
     'name':   fields.String,
