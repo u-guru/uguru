@@ -111,8 +111,8 @@ class UserView(restful.Resource):
         if request.json.get('university_id'): user.university_id = request.json.get('university_id')
 
         #if the student uploaded a major
-        if request.json.get('major') and request.json.get('major').get('id'): 
-            major = Major.query.get(request.json.get('major').get('id'))
+        if request.json.get('majors'): 
+            major = Major.query.get(request.json.get('majors')[0].get('id'))
             print 'major', major
             user.majors.append(major)
             print user.majors
