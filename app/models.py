@@ -161,7 +161,9 @@ class University(Base):
     contributed_user_id = Column(Integer)
 
     # User contributed university
-    def __init__(self, name=None, user_id=None):
+    def __init__(self, name=None, user_id=None, _id=None):
+        if _id:
+            self.id = _id
         self.name = name 
         self.last_updated = datetime.now()
         self.contributed_user_id = user_id
@@ -170,8 +172,9 @@ class University(Base):
         db_session.commit()
 
     @staticmethod
-    def admin_create(args_dict):
-        u = University.admin_update(University(), args_dict)
+    def admin_create(args_dict, _id):
+        u = University.admin_update(University(_id=_id), args_dict)
+        return u
     
     @staticmethod
     def admin_update(u, args):
