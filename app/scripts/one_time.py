@@ -58,3 +58,33 @@ for u in University.query.all():
 
 with open('universities-efficient.json', 'wb') as fp:
     json.dump(u_dict, fp)
+
+
+#CD into app/static/data
+import json
+file = open('universities-scrape.json')
+u_dict = json.load(file)
+count = 0
+scrapeable_u = []
+for key in u_dict:
+    if 'scraping_info' in u_dict[key]\
+    and 'provided_fields' in u_dict[key]['scraping_info']\
+    and len(u_dict[key]['scraping_info']['provided_fields']) > 0:
+        u_dict[key]['name'] = key
+        scrapeable_u.append(u_dict[key])
+        print u_dict[key]
+        count += 1
+
+scrapeable_u = sorted(scrapeable_u, key=lambda k:int(k['forbes_rank']))
+for u in scrapeable_u:
+    if int(u['population'].replace(',','')) > 30000 and int(u['forbes_rank']) < 100:
+        print u['name'], u['forbes_rank'], u['population']
+
+
+
+
+
+
+
+        
+        

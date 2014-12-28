@@ -78,7 +78,7 @@ class UserView(restful.Resource):
                 name=request.json.get("name"), 
                 email=request.json.get("email"),
                 password=None,
-                profile_url=request.json.get("profle_url"),
+                profile_url=request.json.get("profile_url"),
                 fb_id=request.json.get("id"),
                 gender=request.json.get("gender")
             )
