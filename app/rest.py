@@ -6,6 +6,7 @@ from app.database import db_session
 from models import *
 from forms import UserCreateForm, SessionCreateForm
 from serializers import UserSerializer
+from datetime import datetime
 import logging, json, urllib2
 
  
@@ -106,6 +107,10 @@ class UserView(restful.Resource):
         user.recent_latitude = request.json.get('recent_latitude')
         user.recent_longitude = request.json.get('recent_longitude')
         user.location_services_enabled = request.json.get('location_services_enabled')
+
+        if request.json.get('tos_signed'):
+            user.tos_signed_date = datetime.now()
+            user.tos_version = 1
 
         #If university was uploaded by the student
         if request.json.get('university_id'): user.university_id = request.json.get('university_id')
