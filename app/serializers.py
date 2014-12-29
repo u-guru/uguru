@@ -7,7 +7,7 @@ from app.models import University
 
 university_fields = {}
 university_fields['id'] = fields.Integer(attribute='id')
-university_fields['name'] = fields.String(attribute='name')
+university_fields['title'] = fields.String(attribute='name')
 university_fields['state'] = fields.String(attribute='state')
 university_fields['city'] = fields.String(attribute='city')
 
@@ -30,6 +30,7 @@ UserSerializer = {
     'fb_id': fields.String,
     'password': fields.String,
     'guru_introduction': fields.String,
+    'tos_version': fields.Integer,
     'university_id': fields.Integer,
     'university': fields.Nested(university_fields),
     'recent_latitude': fields.Float,

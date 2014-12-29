@@ -21,9 +21,9 @@ def verify_password(email, password):
 class UniversityListView(restful.Resource):
     def get(self):
 
-        from static.data.universities_efficient import universities_dict
+        from static.data.universities_efficient import universities_arr
         
-        return json.dumps(universities_dict), 200
+        return json.dumps(universities_arr), 200
 
 class MajorListView(restful.Resource):
     def get(self):
@@ -98,7 +98,7 @@ class UserView(restful.Resource):
         user = User.query.get(int(request.json.get('id')))
 
         user.name = request.json.get('name')
-        user.password = user.create_password(request.json.get('password'))
+        # user.password = user.create_password(request.json.get('password'))
         user.email = request.json.get('email')
         user.fb_id = request.json.get('fb_id')
         user.gender = request.json.get('gender')
@@ -118,9 +118,7 @@ class UserView(restful.Resource):
         #if the student uploaded a major
         if request.json.get('majors'): 
             major = Major.query.get(request.json.get('majors')[0].get('id'))
-            print 'major', major
             user.majors.append(major)
-            print user.majors
 
         if request.json.get('add_course_id'): 
             course = Course.query.get(request.json.get('add_course_id'))

@@ -179,23 +179,25 @@ class University(Base):
     @staticmethod
     def admin_update(u, args):
 
-        u.name = args.get('name')
-        u.population = int(''.join(args.get('population').split(',')))
-        u.logo_url = args.get('logo_url')
+        u.name = args.get('title')
+        # u.population = int(''.join(args.get('population').split(',')))
+        # u.logo_url = args.get('logo_url')
         u.last_updated = datetime.now()
+        u.city = args.get('city')
+        u.state = args.get('state')
         u.admin_approved = True
 
-        if args.get('location'):
-            u.address = args.get('location').get('full_address')
-            u.state = args.get('location').get('state')
-            u.short_state = args.get('location').get('state_short')
-            u.city = args.get('location').get('city')
-            u.city_short = args.get('location').get('city_short')
-            u.latitude = args.get('location').get('latitude')
-            u.longitude = args.get('location').get('longitude')
-            u.latitude = args.get('location').get('latitude')
-            if args.get('location').get('zip_code'):
-                u.zip_code = int(args.get('location').get('zip_code').split("-")[0])
+        # if args.get('location'):
+        #     u.address = args.get('location').get('full_address')
+        #     u.state = args.get('location').get('state')
+        #     u.short_state = args.get('location').get('state_short')
+        #     u.city = args.get('location').get('city')
+        #     u.city_short = args.get('location').get('city_short')
+        #     u.latitude = args.get('location').get('latitude')
+        #     u.longitude = args.get('location').get('longitude')
+        #     u.latitude = args.get('location').get('latitude')
+        #     if args.get('location').get('zip_code'):
+        #         u.zip_code = int(args.get('location').get('zip_code').split("-")[0])
  
         db_session.commit()
         

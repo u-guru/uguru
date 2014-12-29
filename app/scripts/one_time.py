@@ -46,41 +46,47 @@ def add_location_to_university_json():
 
 def add_location_to_university_json2():
 
+
+
 from app.static.data.universities_efficient import universities_dict as uni_arr
 from geopy.geocoders import GoogleV3
 from pprint import pprint
 from time import sleep
+import json
 not_found = []
 count = 1
 num_universities = len(uni_arr)
 for university in uni_arr:
-    try: 
-        googlev3 = GoogleV3()
-        results = googlev3.geocode(university['title'])
-        if not results: 
-            not_found.append(university)
-            continue
-        results_dict = {}
-        results_dict['latitude'] = results.latitude
-        results_dict['longitude'] = results.longitude
-        results_dict['full_address'] = results.address
-        for component in results.raw['address_components']:
-            component_types = component.get('types')
-            if component_types:
-                if 'postal_code' in component_types:
-                    results_dict['zip_code'] =  component['short_name']
-                elif "administrative_area_level_1" in component_types:
-                    results_dict['state_short'] = component['short_name']
-                    results_dict['state'] = component['long_name']
-                elif ('locality' in component_types or 'neighborhood' in component_types)\
-                and 'country' not in component_types:
-                    results_dict['city_short'] =  component['short_name']
-                    results_dict['city'] =  component['long_name']
-        university['location'] = results_dict
-        print 
-        print count, '/', num_universities, 'processed'
-        count += 1
-        sleep(0.33)
+    googlev3 = GoogleV3()
+    results = googlev3.geocode(university['title'])
+    if not results: 
+        not_found.append(university)
+        continue
+    results_dict = {}
+    results_dict['latitude'] = results.latitude
+    results_dict['longitude'] = results.longitude
+    results_dict['full_address'] = results.address
+    for component in results.raw['address_components']:
+        component_types = component.get('types')
+        if component_types:
+            if 'postal_code' in component_types:
+                results_dict['zip_code'] =  component['short_name']
+            elif "administrative_area_level_1" in component_types:
+                results_dict['state_short'] = component['short_name']
+                results_dict['state'] = component['long_name']
+            elif ('locality' in component_types or 'neighborhood' in component_types)\
+            and 'country' not in component_types:
+                results_dict['city_short'] =  component['short_name']
+                results_dict['city'] =  component['long_name']
+    university['location'] = results_dict
+    print 
+    print count, '/', num_universities, 'processed'
+    count += 1
+    sleep(0.25)
+    with open('universities.json', 'wb') as fp:
+        json.dump(uni_arr, fp)
+
+
     except geopy.exc.GeocoderQuotaExceeded:
         raise
     except:
