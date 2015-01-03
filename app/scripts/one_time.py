@@ -140,8 +140,9 @@ for key in u_dict:
 
 scrapeable_u = sorted(scrapeable_u, key=lambda k:int(k['forbes_rank']))
 for u in scrapeable_u:
-    if int(u['population'].replace(',','')) > 20000 and int(u['forbes_rank']) < 100:
-        print u['name'], u['forbes_rank'], u['population']
+    print u['name'].replace(",", ""), ',', u['forbes_rank'], ',', u['population'].replace(",",""), ',', (" ".join(u["scraping_info"]['provided_fields'])).replace("majordepartment", "major department")
+    # if int(u['population'].replace(',','')) > 20000 and int(u['forbes_rank']) < 100:
+    #     print u['name'], u['forbes_rank'], u['population']
 
 
 
@@ -255,9 +256,32 @@ for uni in uni_arr:
                 json.dump(uni_arr, fp, sort_keys = True, indent = 4)
 
         
+from app.static.data.universities_master import universities_arr as uni_arr
+new_dict = {}
+for uni in uni_arr:
+    new_dict[str(uni["id"])] = uni
+    new_dict[str(uni["id"])].pop("id")
+
+with open('universities_majors_id.json', 'wb') as fp:
+    json.dump(uni_arr, fp, sort_keys = True, indent = 4)
 
 
 
+from universities_master import universities_arr
+count = 1
+for uni in universities_arr:
+    if uni.get('departments') and len(uni.get('departments')) > 0:
+        new_departments = []
+        for dept in uni.get('departments'):
+            new_departments.append(
+                {
+                    'id': count,
+                    'name': dept
+                })
+            count += 1
+        uni['departments'] = new_departments
 
+with open('universities_master.json', 'wb') as fp:
+    json.dump(universities_arr, fp, sort_keys = True, indent = 4)
 
 

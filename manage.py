@@ -17,16 +17,20 @@ def initialize():
     from app.models import University
     count = 0
     session_majors = []
+    majors_dict = []
     for university in universities_arr:
         u = University.admin_create(university, university['id'])
 
         #if major has departments
         if university.get('departments'):
+            uni_majors = []
             for dept in university.get('departments'):
-                m = Major.admin_create(dept)
+                m = Major.admin_create(dept["name"], dept["id"])
                 session_majors.append(m)
                 count += 1
 
+                if count % 10000 == 0:
+                    print count, 'majors processed'
     
     print count, "major objects created..."
 

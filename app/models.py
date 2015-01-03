@@ -228,7 +228,9 @@ class Major(Base):
     
 
     def __init__(self, name=None, admin_approved=False, \
-        contributed_user_id=None):
+        contributed_user_id=None, _id=None):
+        if _id:
+            self.id = _id
         self.name = name 
         self.time_added = datetime.now()
         self.admin_approved = admin_approved
@@ -240,8 +242,8 @@ class Major(Base):
               (self.id, self.name)
 
     @staticmethod
-    def admin_create(name):
-        m = Major()
+    def admin_create(name, _id):
+        m = Major(_id=_id)
         m.name = name
         m.admin_approved = True
 
