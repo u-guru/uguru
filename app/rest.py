@@ -38,6 +38,14 @@ class CourseListView(restful.Resource):
         
         return json.dumps({"courses":courses}), 200
 
+class UniversityMajorsView(restful.Resource):
+    def get(self, id):
+        from static.data.universities_major_efficient import uni_majors_dict
+        departments = uni_majors_dict[str(id)].get("departments")
+        return json.dumps({"departments":departments}), 200
+
+
+
 class UserView(restful.Resource):
     
     @marshal_with(UserSerializer)
@@ -148,6 +156,7 @@ class SessionView(restful.Resource):
 api.add_resource(UserView, '/api/v1/users')
 api.add_resource(SessionView, '/api/v1/sessions')
 api.add_resource(UniversityListView, '/api/v1/universities')
+api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:id>/majors')
 api.add_resource(MajorListView, '/api/v1/majors')
 api.add_resource(CourseListView, '/api/v1/courses')
 

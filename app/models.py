@@ -233,8 +233,7 @@ class Major(Base):
         self.time_added = datetime.now()
         self.admin_approved = admin_approved
         self.contributed_user_id = contributed_user_id
-        db_session.add(self)
-        db_session.commit()
+        # db_session.add(self)
  
     def __repr__(self):
         return "<Major '%r', '%r'>" %\
@@ -246,7 +245,8 @@ class Major(Base):
         m.name = name
         m.admin_approved = True
 
-        db_session.commit()
+        # db_session.commit()
+        return m
     
 
 

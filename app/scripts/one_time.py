@@ -163,7 +163,7 @@ for uni in uni_arr:
     if uni.get('location') and uni['location']['latitude'] != 0:
         count += 1
     else:
-        no_gps_uni.append(uni)
+        uni_arr.remove(uni)
 
 from geopy.geocoders import GoogleV3
 from pprint import pprint
@@ -210,8 +210,54 @@ for university in no_gps_uni:
         continue
 
 
+import json
+f = open('universities2.json')
+d = json.load(f)
+count = 0
+for uni in d:
+    for old_uni in uni_arr:
+        if uni['title'] == old_uni['title']:
+            uni_arr.remove(old_uni)
+            uni_arr.append(uni)
+            count += 1
+            break
+
+with open('universities-efficient.json', 'wb') as fp:
+    json.dump(no_gps_uni, fp, sort_keys = True, indent = 4)
 
 
+
+import urllib2, json
+from bs4 import BeautifulSoup
+from app.static.data.universities_efficient import universities_arr as uni_arr
+base_url = "http://www.ratemyprofessors.com/search.jsp?queryoption=HEADER&queryBy=schoolName&query="
+base_url_dept = "http://www.ratemyprofessors.com/teacher/getDepartmentListFromSchool?sid="
+count = 0
+results_found = 0
+for uni in uni_arr:
+    count += 1
+    title = uni['title']
+    title = title.replace(",", "").replace("&", "").replace("-", " ").replace(" ", "+")
+    full_url = base_url + str(title)
+    html_string = urllib2.urlopen(full_url).read()
+    soup = BeautifulSoup(html_string)
+    results = soup.select('.listings .listing a')
+    if results:
+        school_id = results[0]['href'].split('=')[-1]
+        if school_id:
+            full_url = base_url_dept + str(school_id)
+            dept_dict = json.load(urllib2.urlopen(full_url))
+            all_departments = [dept['name'] for dept in dept_dict['departments']]
+            uni['departments'] = all_departments
+            results_found += 1
+            print results_found, "/", count, "found"
+            with open('universities-master.json', 'wb') as fp:
+                json.dump(uni_arr, fp, sort_keys = True, indent = 4)
 
         
-        
+
+
+
+
+
+

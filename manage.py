@@ -11,18 +11,32 @@ else:
 def initialize():
     init_db()
     print 'db initialized'
-    from app.static.data.universities_efficient import universities_arr
+    from app.static.data.universities_master import universities_arr
     from app.static.data.majors_general import majors
     from app.static.data.courses_efficient import courses
     from app.models import University
-
+    count = 0
+    session_majors = []
     for university in universities_arr:
         u = University.admin_create(university, university['id'])
+
+        #if major has departments
+        if university.get('departments'):
+            for dept in university.get('departments'):
+                m = Major.admin_create(dept)
+                session_majors.append(m)
+                count += 1
+
     
+    print count, "major objects created..."
+
+    #save these majors
+    db_session.add_all(session_majors)
+
+    db_session.commit()
+
     print len(University.query.all()),'universities added'
 
-    for major in majors:
-        Major.admin_create(major["name"])
 
     print len(Major.query.all()),'majors added'
 
