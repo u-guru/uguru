@@ -40,7 +40,7 @@ class CourseListView(restful.Resource):
 
 class UniversityMajorsView(restful.Resource):
     def get(self, id):
-        from static.data.universities_major_efficient import uni_majors_dict
+        from static.data.universities_majors_efficient import uni_majors_dict
         departments = uni_majors_dict[str(id)].get("departments")
         return json.dumps(departments), 200
 
