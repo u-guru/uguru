@@ -10,10 +10,10 @@ if os.environ.get('DATABASE_URL'):
 else:
 	SQLALCHEMY_DATABASE_URI = 'postgresql://uguru:uguru@localhost/uguru_db'
 
-S3_LOCATION = os.environ['S3_LOCATION']
-S3_KEY = os.environ['S3_KEY']
-S3_SECRET = os.environ['S3_SECRET']
-S3_UPLOAD_DIRECTORY = '/'
+# S3_LOCATION = os.environ['S3_LOCATION']
+# S3_KEY = os.environ['S3_KEY']
+# S3_SECRET = os.environ['S3_SECRET']
+# S3_UPLOAD_DIRECTORY = '/'
 
 if os.environ.get('PRODUCTION'):
     S3_BUCKET = 'uguruprof'
