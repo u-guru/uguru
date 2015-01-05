@@ -51,3 +51,13 @@ def initialize():
 
 if arg == 'initialize':
     initialize()
+
+if arg == 'delete_users':
+    for u in User.query.all():
+        db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == u.id))
+        db_session.commit()
+        db_session.execute(user_major_table.delete(user_major_table.c.user_id == u.id))
+        db_session.commit()
+        db_session.delete(u)
+        db_session.commit()
+    print 'all users deleted'

@@ -256,14 +256,14 @@ for uni in uni_arr:
                 json.dump(uni_arr, fp, sort_keys = True, indent = 4)
 
         
-from app.static.data.universities_master import universities_arr as uni_arr
+from universities_master import universities_arr as uni_arr
 new_dict = {}
 for uni in uni_arr:
     new_dict[str(uni["id"])] = uni
     new_dict[str(uni["id"])].pop("id")
 
-with open('universities_majors_id.json', 'wb') as fp:
-    json.dump(uni_arr, fp, sort_keys = True, indent = 4)
+with open('universities_majors_efficient.json', 'wb') as fp:
+    json.dump(new_dict, fp, sort_keys = True, indent = 4)
 
 
 
@@ -283,5 +283,8 @@ for uni in universities_arr:
 
 with open('universities_master.json', 'wb') as fp:
     json.dump(universities_arr, fp, sort_keys = True, indent = 4)
+
+
+
 
 
