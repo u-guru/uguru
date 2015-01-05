@@ -251,8 +251,17 @@ class Major(Base):
         return m
     
 
+class Support(Base):
+    __tablename__ = 'support'
+    id = Column(Integer, primary_key=True)
+    message = Column(String)
+    user_id = Column(Integer, ForeignKey('user.id'))
+    time_created = Column(DateTime)
 
-
+    def __init__(self, user_id, message):
+        self.user_id = user_id
+        self.time_created = datetime.now()
+        self.message = message
 
 class Course(Base):
     __tablename__ = 'course'

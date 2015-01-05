@@ -32,6 +32,18 @@ class MajorListView(restful.Resource):
         return json.dumps({"majors":majors}), 200
 
 
+class SupportView(restful.Resource):
+    def post(self):
+
+        user_id = request.json.get('user_id')
+        msg = request.json.get('support_message')
+
+        support = Support(user_id, msg)
+        db_session.add(support)
+        db_session.commit()
+
+        return json.dumps({"success":True}), 200
+
 class CourseListView(restful.Resource):
     def get(self):
         from static.data.courses_efficient import courses
@@ -154,6 +166,7 @@ class SessionView(restful.Resource):
  
  
 api.add_resource(UserView, '/api/v1/users')
+api.add_resource(SupportView, '/api/v1/support')
 api.add_resource(SessionView, '/api/v1/sessions')
 api.add_resource(UniversityListView, '/api/v1/universities')
 api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:id>/majors')
