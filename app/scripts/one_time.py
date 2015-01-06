@@ -288,3 +288,54 @@ with open('universities_master.json', 'wb') as fp:
 
 
 
+
+#Sort each universities course by dictionary
+final_dict = {}
+count = 0
+for key in d:
+    school_courses = []
+    depts_dict = d[key]["departments"]
+    for dept in depts_dict.keys():
+        short_name = depts_dict[dept]["short_name"]
+        long_name = depts_dict[dept]["long_name"]
+        for course in depts_dict[dept]["courses"]:
+            course_info = depts_dict[dept]["courses"][course]
+            result = {
+                'dept_long': long_name, 
+                'dept_short': short_name, 
+                'code': course_info['code'],
+                'title': course_info['title'],
+                'id': count
+                }
+            school_courses.append(result)
+            count += 1
+    final_dict[key] = school_courses
+    print key, len(school_courses)
+
+print count
+
+#Sort each universities course by dictionary
+for key in final_dict:
+    courses = final_dict[key]
+    final_dict[key] = sorted(courses, key=lambda k:k['dept_short'])
+#Save
+with open('universities_courses.json', 'wb') as fp:
+    json.dump(final_dict, fp, sort_keys = True, indent = 4)
+
+#convert to the majors json file from before, but add courses
+import json
+f = open('universities_majors_efficient.json')
+f2 = open('universities_courses.json')
+u_majors_dict = json.load(f)
+u_courses_dict = json.load(f2)
+courses_count = 0
+for uni in u_courses_dict:
+    for uni_id in u_majors_dict:
+        if u_majors_dict[uni_id]["title"] == uni:
+            print uni, 'found in majors dict'
+            u_majors_dict[uni_id]["courses"] = u_courses_dict[uni]
+            courses_count += len(u_courses_dict[uni])
+
+
+
+

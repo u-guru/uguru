@@ -283,13 +283,15 @@ class Course(Base):
         )
 
     def __init__(self, name=None, university_id=None, admin_approved=False,\
-        contributed_user_id=None):
+        contributed_user_id=None, _id=None):
+        if _id:
+            self.id = _id
         self.name = name 
         self.university_id = university_id
         self.admin_approved = admin_approved
         self.contributed_user_id = contributed_user_id
-        db_session.add(self)
-        db_session.commit()
+        # db_session.add(self)
+        # db_session.commit()
  
     def __repr__(self):
         return "<Major '%r', '%r', '%r'>" %\
@@ -297,11 +299,12 @@ class Course(Base):
 
 
     @staticmethod
-    def admin_create(name):
-        c = Course()
+    def admin_create(name, _id):
+        c = Course(_id=_id)
         c.name = name
         c.admin_approved = True
-        db_session.commit()
+        return c
+        # db_session.commit()
 
 
 class Card(Base):
