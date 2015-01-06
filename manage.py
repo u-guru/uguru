@@ -31,6 +31,10 @@ def initialize():
 
                 if count % 10000 == 0:
                     print count, 'majors processed'
+
+            db_session.add_all(uni_majors)
+            db_session.commit()
+            print len(uni_majors), 'added to ', university['title']
     
     print count, "major objects created..."
 
@@ -61,3 +65,7 @@ if arg == 'delete_users':
         db_session.delete(u)
         db_session.commit()
     print 'all users deleted'
+    
+
+
+
