@@ -40,11 +40,15 @@ def initialize():
             # print len(uni_majors), 'majors added to ', university['title']
             # print major_count, 'processed out of', total_majors
 
+    db_session.commit()
+
+    print major_count, "major objects created..."
+    for university in universities_arr:
         if university.get('courses'):
             uni_courses = []
             for course in university.get('courses'):
                 if course.get('dept_short'):
-                    c = Course.admin_create(course["dept_short"] + " " + course["code"], course["id"])
+                    c = Course.admin_create(str(course["dept_short"] + " " + course["code"]), course["id"])
                     course_count += 1
                     uni_courses.append(c)
 
@@ -57,8 +61,6 @@ def initialize():
             # print course_count, 'processed out of', total_courses
             # print
 
-    
-    print major_count, "major objects created..."
     print course_count, "course objects created..."
 
     db_session.commit()
