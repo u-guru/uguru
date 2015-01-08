@@ -4,6 +4,7 @@ from app.database import *
 from models import *
 from twilio import *
 from twilio.rest import TwilioRestClient
+from flask import render_template
 
 # Twilio
 TWILIO_DEFAULT_PHONE = "+15104661138"
@@ -19,3 +20,8 @@ stripe.api_key = stripe_keys['secret_key']
 # Mixpanel
 from mixpanel import Mixpanel
 mp = Mixpanel(os.environ['MIXPANEL_TOKEN']) 
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
