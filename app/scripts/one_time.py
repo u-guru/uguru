@@ -337,5 +337,26 @@ for uni in u_courses_dict:
             courses_count += len(u_courses_dict[uni])
 
 
+from app.database import init_db
+init_db()
 
-
+from app.emails import send_campaign_email_test
+from app.models import *
+recipient = Recipient()
+recipient.first_name = "Samir"
+recipient.last_name = "Makhani"
+recipient.email = "samir@uguru.me"
+db_session.add(recipient)
+db_session.commit()
+options = {
+    "campaign_name": "Test campaign",
+    "template_name": "Fall-14 Gurus End Of Semester",
+    "subject": "Test subject",
+    "sender_email": "makhani.samir@gmail.com",
+    "reply_to_email": "support@uguru.me",
+    "sender_title": "Test Sender",
+    "track_opens_flag": True,
+    "track_clicks_flag": False,
+    "important_flag": True,
+}
+send_campaign_email_test(options, [recipient])

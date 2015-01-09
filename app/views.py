@@ -4,7 +4,7 @@ from app.database import *
 from models import *
 from twilio import *
 from twilio.rest import TwilioRestClient
-from flask import render_template
+from flask import render_template, redirect, url_for, session
 
 # Twilio
 TWILIO_DEFAULT_PHONE = "+15104661138"
@@ -25,3 +25,29 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/admin/')
+def admin():
+
+    if session.get('admin'):
+        return redirect(url_for('admin_dashboard'))
+
+    return render_template('admin.html')
+
+@app.route('/admin/dashboard/')
+def admin_dashboard():
+    from emails import mandrill_client, DEFAULT_SENDER_EMAIL, DEFAULT_SENDER_NAME 
+
+    templates = mandrill_client.templates.list()
+    batches = Batch.query.all()
+    test_accounts = Recipient.query.filter_by(admin_account=True).all()
+
+    
+    default_args = {
+        'default_sender_email': DEFAULT_SENDER_EMAIL,
+        'default_sender_name': DEFAULT_SENDER_NAME
+    }
+
+    return render_template('admin.dashboard.html',\
+        templates=templates, batches=batches, test_accounts=test_accounts\
+        ,default_args=default_args)

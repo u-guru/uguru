@@ -175,7 +175,7 @@ class University(Base):
     def admin_create(args_dict, _id):
         u = University.admin_update(University(_id=_id), args_dict)
         return u
-    
+
     @staticmethod
     def admin_update(u, args):
 
@@ -262,6 +262,64 @@ class Support(Base):
         self.user_id = user_id
         self.time_created = datetime.now()
         self.message = message
+
+class Campaign(Base):
+    __tablename__ = 'campaign'
+    id = Column(Integer, primary_key=True)
+    time_uploaded = Column(DateTime)
+    name = Column(String)
+
+    important = Column(Boolean)
+    track_opens = Column(Boolean)
+    track_clicks = Column(Boolean)
+    subject = Column(String)
+    sender_email = Column(String)
+    sender_name = Column(String)
+    mandrill_template_id = Column(String)
+
+    university_id = Column(Integer, ForeignKey('university.id'))
+    university  = relationship("University",
+        uselist = False,
+        primaryjoin = "University.id == Campaign.university_id",
+        backref = "campaigns"
+    )
+
+class Batch(Base):
+    __tablename__ = 'batch'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    
+    time_uploaded = Column(DateTime)
+    time_sent = Column(DateTime)
+
+    campaign_id = Column(Integer, ForeignKey('campaign.id'))
+    campaign = relationship("Campaign", 
+        uselist = False,
+        primaryjoin = "Campaign.id == Batch.campaign_id",
+        backref = 'batches'
+    )
+
+
+
+class Recipient(Base):
+    __tablename__ = 'recipient'
+    id = Column(Integer, primary_key=True)
+    email = Column(String)
+    first_name = Column(String)
+    last_name = Column(String)
+    fb_id = Column(String)
+
+    time_sent = Column(DateTime)
+    time_opened = Column(DateTime)
+
+    batch_id = Column(Integer, ForeignKey('batch.id'))
+    batch = relationship("Batch", 
+        uselist = False,
+        primaryjoin = "Batch.id == Recipient.batch_id",
+        backref = 'recipients'
+    )
+    admin_account = Column(Boolean, default = False)
+
 
 class Course(Base):
     __tablename__ = 'course'

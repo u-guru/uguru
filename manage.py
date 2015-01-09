@@ -15,6 +15,18 @@ def initialize():
     from app.static.data.majors_general import majors
     from app.static.data.courses_efficient import courses
     from app.models import University
+
+    from app.emails import TEST_EMAILS
+    for tester in TEST_EMAILS:
+        r = Recipient()
+        r.first_name = tester["name"].split(" ")[0].title()
+        r.last_name = tester["name"].split(" ").title()
+        r.email = tester["email"]
+        r.admin_account = True
+        db_session.add(r)
+        db_session.commit()
+    return
+
     major_count = 0
     course_count = 0
     session_majors = []
@@ -78,6 +90,40 @@ def initialize():
 if arg == 'initialize':
     initialize()
 
+if arg == "json_to_batch":
+    import json
+    relative_file_location = sys.argv[2]
+    file = open(relative_file_location)
+    batch_arr = json.load(file)
+    recipients = []
+    count = 0
+    batch_1 = Batch()
+    batch_2 = Batch()
+    batch_1.name = "UCLA Batch 1 [250 Students]"
+    batch_2.name = "UCLA Batch 2 [233 Students]"
+    db_session.add_all([batch_1, batch_2])
+    db_session.commit()
+    for student in batch_arr:
+        processed_name = student["name"].replace(",","").split(" ")[0]
+        if student.get("email"):
+            count += 1
+            r = Recipient()
+            r.first_name = processed_name[1]
+            r.last_name = processed_name[0]
+            r.email = student["email"]
+            r.fb_id = student["fb_id"]
+            recipients.append(r)            
+            if count > 250:
+                r.batch_id = batch_2.id
+            else:
+                r.batch_id = batch_1.id
+    db_session.add_all(recipients)
+    db_session.commit()
+    print len(recipients), "recipients added"
+
+
+
+
 if arg == 'delete_users':
     for u in User.query.all():
         db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == u.id))
@@ -87,7 +133,3 @@ if arg == 'delete_users':
         db_session.delete(u)
         db_session.commit()
     print 'all users deleted'
-    
-
-
-

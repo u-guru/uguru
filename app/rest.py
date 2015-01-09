@@ -1,4 +1,4 @@
-from flask import g, request, jsonify
+from flask import g, request, jsonify, session
 from flask.ext import restful
 from flask.ext.restful import marshal_with
 from app import api, flask_bcrypt, auth
@@ -170,10 +170,51 @@ class SessionView(restful.Resource):
             return user, 201
         return '', 401
  
+
+class AdminSessionView(restful.Resource):
+    def post(self):
+    
+        email = request.json.get('email')
+        password = request.json.get('password')
+
+        if email == "admin@uguru.me" and password == "launchuguru":
+
+            session['admin'] = True
+
+            return json.dumps({}),200
+
+        return json.dumps({}),400
+
+
+    def delete(self):
+
+        if session.get('user_id'):
+
+            session.pop('admin')
+
+            return json.dumps({}),200
+
+        return json.dumps({}),400
+
+class AdminSendView(restful.Resource):
+    def post(self):
+
+        from app.emails import send_campaign_email, send_campaign_email_test
+        
+
+        if request.json.get('test_id'):
+            recipient = Recipient.query.get(int(request.json.get('test_id')))
+            result = send_campaign_email_test(request.json, [recipient])
+        else:
+            print "supposed to send real email"
+
+        return json.dumps({}),200
  
 api.add_resource(UserView, '/api/v1/users')
 api.add_resource(SupportView, '/api/v1/support')
 api.add_resource(SessionView, '/api/v1/sessions')
+api.add_resource(AdminSessionView, '/api/admin')
+api.add_resource(AdminSendView, '/api/admin/send')
 api.add_resource(UniversityListView, '/api/v1/universities')
 api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:id>/majors')
 api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:id>/courses')

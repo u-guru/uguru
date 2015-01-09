@@ -4,31 +4,80 @@ from models import *
 MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
 mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
 
+DEFAULT_SENDER_EMAIL = 'jasmine@uguru.me'
+DEFAULT_SENDER_NAME = 'Jasmine from Uguru'
+DEFAULT_REPLY_TO = "jasmine@uguru.me"
+TEST_EMAILS = [
+                {   "name": "Robert Nievert", 
+                    "email": "robertneivert@gmail.com"
+                },
+                {   "name": "Jasmine Mir", 
+                    "email": "jasmine@uguru.me"
+                },
+                {
+                    "name": "Samir Makhani",
+                    "email": "samir@uguru.me"
+                }
+            ]
 
-def example_mandrill_email(user, tutor_name, skill_name):
-    user_first_name = user.name.split(" ")[0]
-    html = student_packages_html(user_first_name)
+# MVP Send an email
+# - Import template from Mandrill
+# Send test email
+
+# create data model
+
+# Form GUI Components
+# Defaults (Sender Name, Sender Email, Reply to email)
+# Per Campaign (subject, batch_id, campaign_name, checkboxes(important, track opens, track_clicks))
+# See if there is anything else interesting
+
+# Tutorial should include
+# Mailchimp signup
+# 
+
+def send_campaign_email(options, recipients):
+    campaign_name = options.get('campaign_name')
+    template_name = options.get('template_name')
+    subject = options.get('subject')
+    sender_email = options.get('sender_email')
+    reply_to_email = options.get('reply_to_email')
+    sender_title = options.get('sender_name')
+    track_opens_flag = options.get('track_opens')
+    track_clicks_flag = options.get('track_clicks')
+    important_flag = options.get('important')
+
     to_emails = []
-    to_emails.append({
-        'email':user.email,
-        'name':user.name,
-        'type': 'to'
-    })
+    for recipient in recipients:
+        to_emails.append({
+            'email':recipient.email,
+            'name':recipient.first_name,
+            'type': 'to'
+        })
 
     message = {
-        'html':html,
-        'subject': user_first_name + ', save at least $5 on your next ' + skill_name + ' session with ' + tutor_name,
-        'from_email': 'samir@uguru.me',
-        'from_name': 'Samir from uGuru',
+        'subject': subject,
+        'from_email': sender_email,
+        'from_name': sender_title,
         'to': to_emails,
-        'headers': {'Reply-To': 'samir@uguru.me'},
-        'important': True,
-        'track_opens': True,
-        'track_clicks': True,
+        'headers': {'Reply-To': reply_to_email},
+        'important': important_flag,
+        'track_opens': track_opens_flag,
+        'track_clicks': track_clicks_flag,
         'preserve_recipients':False,
-        'tags':['student-packages']
+        'tags':[campaign_name]
     }
 
-    result = mandrill_client.messages.send(message=message)
+    result = mandrill_client.messages.send_template(
+        template_name=template_name,
+        template_content=[],
+        message=message)
+
     return result
 
+def send_campaign_email_test(options, test_recipients):
+    test_prefix = "[TEST] "
+    options['subject'] = test_prefix + str(options.get('subject'))
+    options['campaign_name'] = test_prefix + options.get('campaign_name')
+    options['sender_email'] = str(options.get('sender_email'))
+    options['sender_name'] = str(options.get('sender_title'))
+    send_campaign_email(options, test_recipients)
