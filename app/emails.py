@@ -40,11 +40,12 @@ def send_campaign_email(options, recipients):
     template_name = options.get('template_name')
     subject = options.get('subject')
     sender_email = options.get('sender_email')
-    reply_to_email = options.get('reply_to_email')
-    sender_title = options.get('sender_name')
-    track_opens_flag = options.get('track_opens')
-    track_clicks_flag = options.get('track_clicks')
-    important_flag = options.get('important')
+    reply_to_email = 'jasmine@uguru.me'
+    # sender_title = options.get('sender_name')
+    sender_title = "Jasmine"
+    track_opens_flag = options.get('track_opens_flag')
+    track_clicks_flag = options.get('track_clicks_flag')
+    important_flag = options.get('important_flag')
 
     to_emails = []
     for recipient in recipients:
@@ -79,5 +80,5 @@ def send_campaign_email_test(options, test_recipients):
     options['subject'] = test_prefix + str(options.get('subject'))
     options['campaign_name'] = test_prefix + options.get('campaign_name')
     options['sender_email'] = str(options.get('sender_email'))
-    options['sender_name'] = str(options.get('sender_title'))
+    options['sender_name'] = str(options.get('sender_name'))
     send_campaign_email(options, test_recipients)

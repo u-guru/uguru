@@ -16,16 +16,15 @@ def initialize():
     from app.static.data.courses_efficient import courses
     from app.models import University
 
-    from app.emails import TEST_EMAILS
-    for tester in TEST_EMAILS:
-        r = Recipient()
-        r.first_name = tester["name"].split(" ")[0].title()
-        r.last_name = tester["name"].split(" ").title()
-        r.email = tester["email"]
-        r.admin_account = True
-        db_session.add(r)
-        db_session.commit()
-    return
+from app.emails import TEST_EMAILS
+for tester in TEST_EMAILS:
+    r = Recipient()
+    r.first_name = tester["name"].split(" ")[0].title()
+    r.last_name = tester["name"].split(" ")[1].title()
+    r.email = tester["email"]
+    r.admin_account = True
+    db_session.add(r)
+    db_session.commit()
 
     major_count = 0
     course_count = 0
