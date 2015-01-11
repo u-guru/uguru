@@ -340,23 +340,61 @@ for uni in u_courses_dict:
 from app.database import init_db
 init_db()
 
-from app.emails import send_campaign_email_test
+from app.emails import send_campaign_email
 from app.models import *
 recipient = Recipient()
 recipient.first_name = "Samir"
 recipient.last_name = "Makhani"
-recipient.email = "samir@uguru.me"
-db_session.add(recipient)
-db_session.commit()
+recipient.email = "makhani.samir@gmail.com"
 options = {
     "campaign_name": "Test campaign",
-    "template_name": "Fall-14 Gurus End Of Semester",
-    "subject": "Test subject",
-    "sender_email": "makhani.samir@gmail.com",
-    "reply_to_email": "support@uguru.me",
-    "sender_title": "Test Sender",
+    "template_name": "Hey *|FNAME|*, I've got a question for you",
+    "subject": "Hey *|FNAME|*, I've got a question for you",
+    "sender_email": "jasmine@uguru.me",
+    "reply_to_email": "jasmine@uguru.me",
+    "sender_title": "Jasmine",
     "track_opens_flag": True,
     "track_clicks_flag": False,
     "important_flag": True,
 }
-send_campaign_email_test(options, [recipient])
+send_campaign_email(options, [recipient])
+
+
+from app.emails import send_campaign_email
+from app.models import *
+import json
+options = {
+    "campaign_name": "UCLA ",
+    "template_name": "Quick Question",
+    "subject": "Quick Question",
+    "sender_email": "jasmine@uguru.me",
+    "reply_to_email": "jasmine@uguru.me",
+    "sender_title": "Jasmine",
+    "track_opens_flag": True,
+    "track_clicks_flag": False,
+    "important_flag": True,
+}
+send_campaign_email(options, [r])
+
+
+
+f = open("app/static/data/school/ucla/batch_1_500.json")
+recipient_arr = json.load(f)
+recipients = []
+for recipient in recipient_arr:
+    if recipient.get("email"):
+        first_name = recipient["name"].replace(",","").split(" ")[1].title()
+        last_name = recipient["name"].replace(",","").split(" ")[0].title()
+        email = recipient["email"].lower()
+        print first_name, last_name, email
+        r = Recipient()
+        r.first_name = first_name
+        r.last_name = last_name
+        r.email = email
+        recipients.append(r)
+
+send_campaign_email(options, recipients)
+
+
+
+

@@ -54,6 +54,8 @@ class UniversityMajorsView(restful.Resource):
     def get(self, id):
         from static.data.universities_majors_efficient import uni_majors_dict
         departments = uni_majors_dict[str(id)].get("departments")
+        from pprint import pprint 
+        # print pprint(departments)
         return json.dumps(departments), 200
 
 class UniversityCoursesView(restful.Resource):
@@ -142,9 +144,35 @@ class UserView(restful.Resource):
         if request.json.get('university_id'): user.university_id = request.json.get('university_id')
 
         #if the student uploaded a major
-        if request.json.get('majors'): 
-            major = Major.query.get(request.json.get('majors')[0].get('id'))
-            user.majors.append(major)
+        if 'majors' in request.json: 
+
+            all_major_ids = [int(major.get('id')) for major in request.json.get('majors')]
+        
+            #remove all courses
+            if not request.json.get('majors'):
+                user.majors = []
+                print "all courses removed by student"
+
+            # Add all relevant ones
+            for major in request.json.get('majors'):
+                
+                major_id = int(major.get('id'))
+                major = Major.query.get(major_id)
+                
+                if not major in user.majors:
+                    user.majors.append(major)
+                    print major.name, 'added by student'
+
+            # Remove all irrelevant ones
+            majors_to_remove = []
+            for major in user.majors:
+                if major.id not in all_major_ids:
+                    majors_to_remove.append(major)
+
+            for major in majors_to_remove:
+                user.majors.remove(major)
+                print major.name, 'removed by student'
+
 
         if request.json.get('add_course_id'): 
             course = Course.query.get(request.json.get('add_course_id'))
