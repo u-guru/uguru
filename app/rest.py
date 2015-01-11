@@ -60,8 +60,9 @@ class UniversityMajorsView(restful.Resource):
 
 class UniversityCoursesView(restful.Resource):
     def get(self, id):
-        from static.data.universities_courses_efficient import uni_courses_dict
-        courses = uni_courses_dict[str(id)].get("courses")
+        # from static.data.universities_courses_efficient import uni_courses_dict
+        # courses = uni_courses_dict[str(id)].get("courses")
+        from static.data.berkeley_courses import courses
         return json.dumps(courses), 200
 
 class UserView(restful.Resource):
@@ -149,7 +150,6 @@ class UserView(restful.Resource):
             #remove all courses
             if not request.json.get('majors'):
                 user.majors = []
-                print "all courses removed by student"
 
             # Add all relevant ones
             for major in request.json.get('majors'):
