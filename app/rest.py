@@ -61,10 +61,8 @@ class UniversityMajorsView(restful.Resource):
 class UniversityCoursesView(restful.Resource):
     def get(self, id):
         from static.data.universities_courses_efficient import uni_courses_dict
-        courses = uni_majors_dict[str(id)].get("courses")
+        courses = uni_courses_dict[str(id)].get("courses")
         return json.dumps(courses), 200
-
-
 
 class UserView(restful.Resource):
     
@@ -174,9 +172,38 @@ class UserView(restful.Resource):
                 print major.name, 'removed by student'
 
 
-        if request.json.get('add_course_id'): 
-            course = Course.query.get(request.json.get('add_course_id'))
-            user.guru_courses.append(course)
+        # if request.json.get('add_course_id'): 
+        #     course = Course.query.get(request.json.get('add_course_id'))
+        #     user.guru_courses.append(course)
+
+        if 'guru_courses' in request.json: 
+
+            all_course_id = [int(course.get('id')) for course in request.json.get('guru_courses')]
+        
+            #remove all courses
+            if not request.json.get('guru_courses'):
+                user.guru_courses = []
+                print "all courses removed by student"
+
+            # Add all relevant ones
+            for course in request.json.get('guru_courses'):
+                
+                course_id = int(course.get('id'))
+                course = Course.query.get(course_id)
+                
+                if not course in user.guru_courses:
+                    user.guru_courses.append(course)
+                    print course.name, 'added by student'
+
+            # Remove all irrelevant ones
+            courses_to_remove = []
+            for course in user.guru_courses:
+                if course.id not in all_course_id:
+                    courses_to_remove.append(course)
+
+            for course in courses_to_remove:
+                user.guru_courses.remove(course)
+                print course.name, 'removed by student'
 
         db_session.commit()
 

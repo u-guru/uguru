@@ -395,6 +395,26 @@ for recipient in recipient_arr:
 
 send_campaign_email(options, recipients)
 
-
+import json
+f = open('universities_courses_efficient.json')
+d = json.load(f)
+cache = []
+for key in d.keys():
+    if d[key].get("courses"):
+        courses = d[key]["courses"]
+        for course in courses:
+            searchable = []
+            if course.get("code") and course.get("dept_short"):
+                course_code = course.get("code")
+                dept_short = course.get("dept_short")
+                short_name = str(dept_short) + " " + str(course_code)
+                searchable.append(short_name)
+            if course.get("code") and course.get("dept_long"):
+                course_code = course.get("code")
+                dept_long = course.get("dept_long")
+                long_name = str(dept_long) + " " + str(course_code)
+                searchable.append(long_name)
+            course["searchable"] = searchable
+        cache.append(d[key])
 
 
