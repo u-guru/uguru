@@ -1,1 +1,510 @@
-majors = [{"id": 1, "name": "African American Studies"}, {"id": 2, "name": "American Studies"}, {"id": 3, "name": "Ancient Egyptian and Near Eastern Art and Archaeology"}, {"id": 4, "name": "Ancient Egyptian and Near Eastern Civilizations"}, {"id": 5, "name": "Anthropology"}, {"id": 6, "name": "Arabic"}, {"id": 7, "name": "Architecture"}, {"id": 8, "name": "Art, History of"}, {"id": 9, "name": "Art, Practice of"}, {"id": 10, "name": "Asian American and Asian Diaspora Studies"}, {"id": 11, "name": "Asian Studies"}, {"id": 12, "name": "Astrophysics"}, {"id": 13, "name": "Biochemistry and Molecular Biology"}, {"id": 14, "name": "Bioengineering"}, {"id": 15, "name": "Cell and Developmental Biology"}, {"id": 16, "name": "Celtic Studies"}, {"id": 17, "name": "Chemical Biology"}, {"id": 18, "name": "Chemical Engineering"}, {"id": 19, "name": "Chemistry"}, {"id": 20, "name": "Chicano Studies"}, {"id": 21, "name": "Chinese"}, {"id": 22, "name": "City and Regional Planning"}, {"id": 23, "name": "Civil and Environmental Engineering"}, {"id": 24, "name": "Classical Civilizations"}, {"id": 25, "name": "Classical Languages"}, {"id": 26, "name": "Cognitive Science"}, {"id": 27, "name": "Comparative Literature"}, {"id": 28, "name": "Computer Science"}, {"id": 29, "name": "Conservation and Resource Studies"}, {"id": 30, "name": "Creative Writing"}, {"id": 31, "name": "Czech, Polish, or Bosnian"}, {"id": 32, "name": "Dance and Performance Studies"}, {"id": 33, "name": "Demography"}, {"id": 34, "name": "Development Studies"}, {"id": 35, "name": "Disability Studies"}, {"id": 36, "name": "Dutch Studies"}, {"id": 37, "name": "Earth and Planetary Science"}, {"id": 38, "name": "Earth and Planetary Studies"}, {"id": 39, "name": "Economics"}, {"id": 40, "name": "Education"}, {"id": 41, "name": "Electrical Engineering and Computer Sciences"}, {"id": 42, "name": "Energy Engineering"}, {"id": 43, "name": "Energy and Resources"}, {"id": 44, "name": "Engineering Mathematics and Statistics"}, {"id": 45, "name": "Engineering Physics"}, {"id": 46, "name": "Engineering Undeclared"}, {"id": 47, "name": "English"}, {"id": 48, "name": "Environmental Design and Urbanism in Developing Countries"}, {"id": 49, "name": "Environmental Economics & Policy"}, {"id": 50, "name": "Environmental Economics and Policy"}, {"id": 51, "name": "Environmental Engineering"}, {"id": 52, "name": "Environmental Engineering Science"}, {"id": 53, "name": "Environmental Sciences"}, {"id": 54, "name": "Ethnic Studies"}, {"id": 55, "name": "European Studies"}, {"id": 56, "name": "Film"}, {"id": 57, "name": "Forestry and Natural Resources"}, {"id": 58, "name": "French"}, {"id": 59, "name": "French Civilization"}, {"id": 60, "name": "French Language Studies"}, {"id": 61, "name": "French Literature"}, {"id": 62, "name": "Gender and Womens Studies"}, {"id": 63, "name": "Genetics and Plant Biology"}, {"id": 64, "name": "Genetics, Genomics & Development"}, {"id": 65, "name": "Geoengineering"}, {"id": 66, "name": "Geographic Information Science and Technology"}, {"id": 67, "name": "Geographic Information Science and Techology"}, {"id": 68, "name": "Geography"}, {"id": 69, "name": "German"}, {"id": 70, "name": "Global Poverty and Practice"}, {"id": 71, "name": "Greek"}, {"id": 72, "name": "Hebrew"}, {"id": 73, "name": "Hispanic Languages and Bilingual Issues"}, {"id": 74, "name": "History"}, {"id": 75, "name": "History and Theory of Landscape Architecture & Environmental Planning - Not open for Landscape Architecture majors"}, {"id": 76, "name": "History of the Built Environment"}, {"id": 77, "name": "Iberian or Latin American Literatures"}, {"id": 78, "name": "Immunology and Pathology"}, {"id": 79, "name": "Industrial Engineering and Operations Research"}, {"id": 80, "name": "Integrative Biology"}, {"id": 81, "name": "Interdisciplinary Human Rights"}, {"id": 82, "name": "Interdisciplinary Studies"}, {"id": 83, "name": "Italian Studies"}, {"id": 84, "name": "Japanese"}, {"id": 85, "name": "Jewish Studies"}, {"id": 86, "name": "Landscape Architecture"}, {"id": 87, "name": "Latin"}, {"id": 88, "name": "Latin American Studies"}, {"id": 89, "name": "Legal Studies"}, {"id": 90, "name": "Lesbian, Gay, Bisexual, and Transgender Studies"}, {"id": 91, "name": "Linguistics"}, {"id": 92, "name": "Luso-Brazilian"}, {"id": 93, "name": "Luso-Brazilian Language and Literature"}, {"id": 94, "name": "Materials Science and Engineering"}, {"id": 95, "name": "Mathematics"}, {"id": 96, "name": "Mathematics, Applied"}, {"id": 97, "name": "Mechanical Engineering"}, {"id": 98, "name": "Media Studies"}, {"id": 99, "name": "Medieval Studies"}, {"id": 100, "name": "Microbial Biology"}, {"id": 101, "name": "Middle Eastern Studies"}, {"id": 102, "name": "Molecular Toxicology"}, {"id": 103, "name": "Molecular and Cell Biology"}, {"id": 104, "name": "Molecular and Environmental Biology"}, {"id": 105, "name": "Music"}, {"id": 106, "name": "Native American Studies"}, {"id": 107, "name": "Near Eastern Civilizations"}, {"id": 108, "name": "Near Eastern Languages and Literature"}, {"id": 109, "name": "Neurobiology"}, {"id": 110, "name": "Nuclear Engineering"}, {"id": 111, "name": "Nutritional Science"}, {"id": 112, "name": "Operations Research and Management Science"}, {"id": 113, "name": "Peace and Conflict Studies"}, {"id": 114, "name": "Persian"}, {"id": 115, "name": "Philosophy"}, {"id": 116, "name": "Physics"}, {"id": 117, "name": "Political Economy"}, {"id": 118, "name": "Political Science"}, {"id": 119, "name": "Psychology"}, {"id": 120, "name": "Public Health"}, {"id": 121, "name": "Religious Studies"}, {"id": 122, "name": "Rhetoric"}, {"id": 123, "name": "Russian Language"}, {"id": 124, "name": "Russian Language, Literature and Culture"}, {"id": 125, "name": "Russian Literature"}, {"id": 126, "name": "Scandinavian"}, {"id": 127, "name": "Slavic Languages and Literatures"}, {"id": 128, "name": "Social Welfare"}, {"id": 129, "name": "Social and Cultural Factors in Environmental Design"}, {"id": 130, "name": "Society and Environment"}, {"id": 131, "name": "Sociology"}, {"id": 132, "name": "South and Southeast Asian Studies"}, {"id": 133, "name": "Spanish Language and Literatures"}, {"id": 134, "name": "Spanish Linguistics"}, {"id": 135, "name": "Spanish and Spanish American"}, {"id": 136, "name": "Statistics"}, {"id": 137, "name": "Structural Engineering"}, {"id": 138, "name": "Sustainable Design"}, {"id": 139, "name": "Sustainable Environmental Design"}, {"id": 140, "name": "Theater and Performance Studies"}, {"id": 141, "name": "Toxicology"}, {"id": 142, "name": "Turkish"}, {"id": 143, "name": "Undeclared"}, {"id": 144, "name": "MBA"}, {"id": 145, "name": "Law"}]
+majors = [
+    {
+        "id": 1, 
+        "name": "Aerospace Engineering"
+    }, 
+    {
+        "id": 2, 
+        "name": "African American Studies"
+    }, 
+    {
+        "id": 3, 
+        "name": "African and Middle Eastern Studies"
+    }, 
+    {
+        "id": 4, 
+        "name": "African Languages"
+    }, 
+    {
+        "id": 5, 
+        "name": "American Indian Studies"
+    }, 
+    {
+        "id": 6, 
+        "name": "American Literature and Culture"
+    }, 
+    {
+        "id": 7, 
+        "name": "Ancient Near East and Egyptology"
+    }, 
+    {
+        "id": 8, 
+        "name": "Anthropology"
+    }, 
+    {
+        "id": 9, 
+        "name": "Anthropology"
+    }, 
+    {
+        "id": 10, 
+        "name": "Arabic"
+    }, 
+    {
+        "id": 11, 
+        "name": "Architectural Studies"
+    }, 
+    {
+        "id": 12, 
+        "name": "Art"
+    }, 
+    {
+        "id": 13, 
+        "name": "Art History"
+    }, 
+    {
+        "id": 14, 
+        "name": "Asian American Studies"
+    }, 
+    {
+        "id": 15, 
+        "name": "Asian Humanities"
+    }, 
+    {
+        "id": 16, 
+        "name": "Asian Religions"
+    }, 
+    {
+        "id": 17, 
+        "name": "Asian Studies"
+    }, 
+    {
+        "id": 18, 
+        "name": "Astrophysics"
+    }, 
+    {
+        "id": 19, 
+        "name": "Atmospheric, Oceanic and Environmental Sciences"
+    }, 
+    {
+        "id": 20, 
+        "name": "Biochemistry"
+    }, 
+    {
+        "id": 21, 
+        "name": "Bioengineering"
+    }, 
+    {
+        "id": 22, 
+        "name": "Biology"
+    }, 
+    {
+        "id": 23, 
+        "name": "Biophysics"
+    }, 
+    {
+        "id": 24, 
+        "name": "Business Economics"
+    }, 
+    {
+        "id": 25, 
+        "name": "Central and East European Languages and Cultures"
+    }, 
+    {
+        "id": 26, 
+        "name": "Chemical Engineering"
+    }, 
+    {
+        "id": 27, 
+        "name": "Chemistry"
+    }, 
+    {
+        "id": 28, 
+        "name": "Chemistry, General"
+    }, 
+    {
+        "id": 29, 
+        "name": "Chemistry/Materials Science"
+    }, 
+    {
+        "id": 30, 
+        "name": "Chicana and Chicano Studies"
+    }, 
+    {
+        "id": 31, 
+        "name": "Chinese"
+    }, 
+    {
+        "id": 32, 
+        "name": "Civil Engineering"
+    }, 
+    {
+        "id": 33, 
+        "name": "Classical Civilization"
+    }, 
+    {
+        "id": 34, 
+        "name": "Cognitive Science"
+    }, 
+    {
+        "id": 35, 
+        "name": "Communication Studies"
+    }, 
+    {
+        "id": 36, 
+        "name": "Comparative Literature"
+    }, 
+    {
+        "id": 37, 
+        "name": "Computational and Systems Biology "
+    }, 
+    {
+        "id": 38, 
+        "name": "Computer Science"
+    }, 
+    {
+        "id": 39, 
+        "name": "Computer Science and Engineering"
+    }, 
+    {
+        "id": 40, 
+        "name": "Dance"
+    }, 
+    {
+        "id": 41, 
+        "name": "Design and Media Arts"
+    }, 
+    {
+        "id": 42, 
+        "name": "Earth and Environmental Science"
+    }, 
+    {
+        "id": 43, 
+        "name": "Ecology, Behavior, and Evolution"
+    }, 
+    {
+        "id": 44, 
+        "name": "Economics"
+    }, 
+    {
+        "id": 45, 
+        "name": "Electrical Engineering"
+    }, 
+    {
+        "id": 46, 
+        "name": "English"
+    }, 
+    {
+        "id": 47, 
+        "name": "Environmental Science"
+    }, 
+    {
+        "id": 48, 
+        "name": "Ethnomusicology"
+    }, 
+    {
+        "id": 49, 
+        "name": "European Studies"
+    }, 
+    {
+        "id": 50, 
+        "name": "Film and Television"
+    }, 
+    {
+        "id": 51, 
+        "name": "French"
+    }, 
+    {
+        "id": 52, 
+        "name": "French and Linguistics"
+    }, 
+    {
+        "id": 53, 
+        "name": "Gender Studies"
+    }, 
+    {
+        "id": 54, 
+        "name": "Geography"
+    }, 
+    {
+        "id": 55, 
+        "name": "Geography/Environmental Studies"
+    }, 
+    {
+        "id": 56, 
+        "name": "Geology"
+    }, 
+    {
+        "id": 57, 
+        "name": "Geology/Engineering Geology"
+    }, 
+    {
+        "id": 58, 
+        "name": "Geology/Paleobiology"
+    }, 
+    {
+        "id": 59, 
+        "name": "Geophysics/Applied Geophysics"
+    }, 
+    {
+        "id": 60, 
+        "name": "Geophysics/Geophysics and Space Physics"
+    }, 
+    {
+        "id": 61, 
+        "name": "German"
+    }, 
+    {
+        "id": 62, 
+        "name": "Global Studies"
+    }, 
+    {
+        "id": 63, 
+        "name": "Greek"
+    }, 
+    {
+        "id": 64, 
+        "name": "Greek and Latin"
+    }, 
+    {
+        "id": 65, 
+        "name": "History"
+    }, 
+    {
+        "id": 66, 
+        "name": "Human Biology and Society"
+    }, 
+    {
+        "id": 67, 
+        "name": "Human Biology and Society"
+    }, 
+    {
+        "id": 68, 
+        "name": "International Development Studies"
+    }, 
+    {
+        "id": 69, 
+        "name": "Iranian Studies"
+    }, 
+    {
+        "id": 70, 
+        "name": "Italian"
+    }, 
+    {
+        "id": 71, 
+        "name": "Italian and Special Fields"
+    }, 
+    {
+        "id": 72, 
+        "name": "Japanese"
+    }, 
+    {
+        "id": 73, 
+        "name": "Jewish Studies"
+    }, 
+    {
+        "id": 74, 
+        "name": "Korean"
+    }, 
+    {
+        "id": 75, 
+        "name": "Latin"
+    }, 
+    {
+        "id": 76, 
+        "name": "Latin American Studies"
+    }, 
+    {
+        "id": 77, 
+        "name": "Linguistics"
+    }, 
+    {
+        "id": 78, 
+        "name": "Linguistics and Anthropology"
+    }, 
+    {
+        "id": 79, 
+        "name": "Linguistics and Asian Languages and Cultures"
+    }, 
+    {
+        "id": 80, 
+        "name": "Linguistics and Computer Science"
+    }, 
+    {
+        "id": 81, 
+        "name": "Linguistics and English"
+    }, 
+    {
+        "id": 82, 
+        "name": "Linguistics and French"
+    }, 
+    {
+        "id": 83, 
+        "name": "Linguistics and Italian"
+    }, 
+    {
+        "id": 84, 
+        "name": "Linguistics and Philosophy"
+    }, 
+    {
+        "id": 85, 
+        "name": "Linguistics and Psychology"
+    }, 
+    {
+        "id": 86, 
+        "name": "Linguistics and Scandinavian Languages"
+    }, 
+    {
+        "id": 87, 
+        "name": "Linguistics and Spanish"
+    }, 
+    {
+        "id": 88, 
+        "name": "Linguistics, Applied"
+    }, 
+    {
+        "id": 89, 
+        "name": "Marine Biology"
+    }, 
+    {
+        "id": 90, 
+        "name": "Materials Engineering"
+    }, 
+    {
+        "id": 91, 
+        "name": "Mathematics"
+    }, 
+    {
+        "id": 92, 
+        "name": "Mathematics, Applied"
+    }, 
+    {
+        "id": 93, 
+        "name": "Mathematics/Applied Science"
+    }, 
+    {
+        "id": 94, 
+        "name": "Mathematics/Atmospheric and Oceanic Sciences"
+    }, 
+    {
+        "id": 95, 
+        "name": "Mathematics/Economics"
+    }, 
+    {
+        "id": 96, 
+        "name": "Mathematics, Financial Actuarial"
+    }, 
+    {
+        "id": 97, 
+        "name": "Mathematics for Teaching"
+    }, 
+    {
+        "id": 98, 
+        "name": "Mathematics of Computation"
+    }, 
+    {
+        "id": 99, 
+        "name": "Mechanical Engineering"
+    }, 
+    {
+        "id": 100, 
+        "name": "Microbiology, Immunology, and Molecular Genetics"
+    }, 
+    {
+        "id": 101, 
+        "name": "Middle Eastern Studies"
+    }, 
+    {
+        "id": 102, 
+        "name": "Molecular, Cell, and Developmental Biology"
+    }, 
+    {
+        "id": 103, 
+        "name": "Music"
+    }, 
+    {
+        "id": 104, 
+        "name": "Music History"
+    }, 
+    {
+        "id": 105, 
+        "name": "Neuroscience"
+    }, 
+    {
+        "id": 106, 
+        "name": "Nursing"
+    }, 
+    {
+        "id": 107, 
+        "name": "Philosophy"
+    }, 
+    {
+        "id": 108, 
+        "name": "Physics"
+    }, 
+    {
+        "id": 109, 
+        "name": "Physiological Science"
+    }, 
+    {
+        "id": 110, 
+        "name": "Political Science"
+    }, 
+    {
+        "id": 111, 
+        "name": "Portuguese"
+    }, 
+    {
+        "id": 112, 
+        "name": "Psychobiology"
+    }, 
+    {
+        "id": 113, 
+        "name": "Psychology"
+    }, 
+    {
+        "id": 114, 
+        "name": "Religion, Study of"
+    }, 
+    {
+        "id": 115, 
+        "name": "Russian Language and Literature"
+    }, 
+    {
+        "id": 116, 
+        "name": "Russian Studies"
+    }, 
+    {
+        "id": 117, 
+        "name": "Scandinavian Languages and Cultures"
+    }, 
+    {
+        "id": 118, 
+        "name": "Sociology"
+    }, 
+    {
+        "id": 119, 
+        "name": "Spanish"
+    }, 
+    {
+        "id": 120, 
+        "name": "Spanish and Community and Culture"
+    }, 
+    {
+        "id": 121, 
+        "name": "Spanish and Linguistics"
+    }, 
+    {
+        "id": 122, 
+        "name": "Spanish and Portuguese"
+    }, 
+    {
+        "id": 123, 
+        "name": "Statistics"
+    }, 
+    {
+        "id": 124, 
+        "name": "Theater"
+    }, 
+    {
+        "id": 125, 
+        "name": "World Arts and Cultures"
+    }, 
+    {
+        "id": 126, 
+        "name": "Undeclared Engineering"
+    }, 
+    {
+        "id": 127, 
+        "name": "Individual Field of Concentration"
+    }
+]
