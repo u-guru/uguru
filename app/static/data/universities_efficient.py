@@ -43568,7 +43568,8 @@ universities_arr = [
             "state": "California", 
             "state_short": "CA", 
             "zip_code": "90095",
-        }, 
+        },
+        "keywords": "UCLA Los Angeles Bruins",
         "state": "CA", 
         "title": "University of California, Los Angeles"
     }
