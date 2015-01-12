@@ -24,6 +24,10 @@ def initialize():
     total_courses = 73000
     for university in universities_arr:
         u = University.admin_create(university, university['id'])
+        if university.get("short_name"):
+            u.short_name = university.get("short_name")
+
+    db_session.commit()
 
     for university in AVAILABLE_UNIVERSITIES:
         path = "app/static/data/school/" + university + "/"
@@ -35,11 +39,15 @@ def initialize():
         
         uni_major_arr = json.load(file)
 
+        
+        u = University.query.get(2752)
+
         for major in uni_major_arr:
             m = Major.admin_create(major)
             new_majors_arr.append(m)
             db_session.add(m)
-        
+            u.majors.append(m)
+
         db_session.commit()
 
         for major in new_majors_arr:

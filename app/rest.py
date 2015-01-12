@@ -7,7 +7,7 @@ from models import *
 from forms import UserCreateForm, SessionCreateForm
 from serializers import UserSerializer
 from datetime import datetime
-import logging, json, urllib2
+import logging, json, urllib2, importlib
 
  
 @auth.verify_password
@@ -52,11 +52,16 @@ class CourseListView(restful.Resource):
 
 class UniversityMajorsView(restful.Resource):
     def get(self, id):
-        from static.data.universities_majors_efficient import uni_majors_dict
-        departments = uni_majors_dict[str(id)].get("departments")
-        from pprint import pprint 
+        # from static.data.universities_majors_efficient import uni_majors_dict
+        # departments = uni_majors_dict[str(id)].get("departments")
+        # from pprint import pprint 
         # print pprint(departments)
-        return json.dumps(departments), 200
+        u = University.query.get(id)
+        departments = []
+        # if u.majors:
+        majors_module = importlib.import_module("app.static.data.school.%s.majors_id" % "ucla")
+            
+        return json.dumps(majors_module.majors), 200
 
 class UniversityCoursesView(restful.Resource):
     def get(self, id):

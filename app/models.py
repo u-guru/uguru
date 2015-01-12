@@ -139,6 +139,7 @@ class University(Base):
     
 
     name = Column(String)
+    short_name = Column(String)
     state = Column(String)
     city = Column(String)
     address = Column(String)

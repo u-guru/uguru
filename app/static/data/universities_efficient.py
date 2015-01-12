@@ -43571,6 +43571,7 @@ universities_arr = [
         },
         "keywords": "UCLA Los Angeles Bruins",
         "state": "CA", 
-        "title": "University of California, Los Angeles"
+        "title": "University of California, Los Angeles",
+        "short_title": "UCLA",
     }
 ]
