@@ -251,8 +251,11 @@ class Major(Base):
               (self.id, self.name)
 
     @staticmethod
-    def admin_create(name, _id):
-        m = Major(_id=_id)
+    def admin_create(name, _id=None):
+        if _id:
+            m = Major(_id=_id)
+        else:
+            m = Major()
         m.name = name
         m.admin_approved = True
 

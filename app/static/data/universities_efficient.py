@@ -43555,5 +43555,21 @@ universities_arr = [
         }, 
         "state": "VA", 
         "title": "Virginia State University"
+    },
+    {
+        "city": "Los Angeles", 
+        "id": 2752, 
+        "location": {
+            "city": "Los Angeles", 
+            "city_short": "LA", 
+            "full_address": "University of California, Los Angeles, Los Angeles, CA 90095, USA", 
+            "latitude": 34.068921, 
+            "longitude": -118.4451812, 
+            "state": "California", 
+            "state_short": "CA", 
+            "zip_code": "90095",
+        }, 
+        "state": "CA", 
+        "title": "University of California, Los Angeles"
     }
 ]

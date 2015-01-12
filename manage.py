@@ -1,7 +1,8 @@
 from app.models import *
 from app.database import init_db, db_session
-import sys
+import sys, os, json
 
+AVAILABLE_UNIVERSITIES = ["ucla"]
 
 if len(sys.argv) > 1:
     arg = sys.argv[1]
@@ -11,7 +12,7 @@ else:
 def initialize():
     init_db()
     print 'db initialized'
-    from app.static.data.universities_master import universities_arr
+    from app.static.data.universities_efficient import universities_arr
     from app.static.data.majors_general import majors
     from app.static.data.courses_efficient import courses
     from app.models import University
@@ -24,56 +25,85 @@ def initialize():
     for university in universities_arr:
         u = University.admin_create(university, university['id'])
 
+    for university in AVAILABLE_UNIVERSITIES:
+        path = "app/static/data/school/" + university + "/"
+        path_majors = path+ "majors.json"
+        path_majors_id = path+ "majors_id.json"
+        new_majors_arr = []
+        new_major_file = []
+        file = open(path_majors)
+        
+        uni_major_arr = json.load(file)
+
+        for major in uni_major_arr:
+            m = Major.admin_create(major)
+            new_majors_arr.append(m)
+            db_session.add(m)
+        
+        db_session.commit()
+
+        for major in new_majors_arr:
+            new_major_file.append({
+                    "name": major.name,
+                    "id": major.id
+                })
+
+        with open(path_majors_id, 'wb') as fp:
+            json.dump(new_major_file, fp, sort_keys = True, indent = 4)
+
+        print len(new_major_file), "majors added to " + university
+
+
         #if major has departments
-        if university.get('departments'):
-            uni_majors = []
-            for dept in university.get('departments'):
-                m = Major.admin_create(dept["name"], dept["id"])
-                uni_majors.append(m)
-                major_count += 1
+        # if university.get('departments'):
+        #     uni_majors = []
+        #     for dept in university.get('departments'):
+        #         m = Major.admin_create(dept["name"], dept["id"])
+        #         uni_majors.append(m)
+        #         major_count += 1
 
-                if major_count % 10000 == 0:
-                    print major_count, 'majors processed'
-                    print
+        #         if major_count % 10000 == 0:
+        #             print major_count, 'majors processed'
+        #             print
 
-            db_session.add_all(uni_majors)
+        #     db_session.add_all(uni_majors)
             # print len(uni_majors), 'majors added to ', university['title']
             # print major_count, 'processed out of', total_majors
 
-    db_session.commit()
+    # db_session.commit()
 
-    print major_count, "major objects created..."
-    for university in universities_arr:
-        if university.get('courses'):
-            uni_courses = []
-            for course in university.get('courses'):
-                if course.get('dept_short'):
-                    c = Course.admin_create(str(course["dept_short"] + " " + course["code"]), course["id"])
-                    course_count += 1
-                    uni_courses.append(c)
+    # print major_count, "major objects created..."
+    # for university in universities_arr:
+    #     if university.get('courses'):
+    #         uni_courses = []
+    #         for course in university.get('courses'):
+    #             if course.get('dept_short'):
+    #                 c = Course.admin_create(str(course["dept_short"] + " " + course["code"]), course["id"])
+    #                 course_count += 1
+    #                 uni_courses.append(c)
 
-                    if course_count % 10000 == 0:
-                        print course_count, 'courses processed'
-                        print
+    #                 if course_count % 10000 == 0:
+    #                     print course_count, 'courses processed'
+    #                     print
 
-            db_session.add_all(uni_courses)
+    #         db_session.add_all(uni_courses)
             # print len(uni_courses), 'courses added to ', university['title']
             # print course_count, 'processed out of', total_courses
             # print
 
-    print course_count, "course objects created..."
+    # print course_count, "course objects created..."
 
-    db_session.commit()
+    # db_session.commit()
 
     # #save these majors
     # db_session.add_all(session_majors)
 
 
-    print len(University.query.all()),'universities added'
+    # print len(University.query.all()),'universities added'
 
-    print len(Major.query.all()),'majors added'
+    # print len(Major.query.all()),'majors added'
 
-    print len(Course.query.all()),'courses added'
+    # print len(Course.query.all()),'courses added'
 
 if arg == 'initialize':
     initialize()

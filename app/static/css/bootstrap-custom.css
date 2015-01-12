@@ -34,6 +34,10 @@ background-color: transparent;
 border-color: transparent;
 }
 
+.navbar-dark {
+  background-color: rgba(43, 50, 52, 1); 
+}
+
 .center {
   text-align:center;
 }
@@ -253,3 +257,14 @@ h1 span.course {
   color: #838a8a;
 }
 
+.white-text {
+  color:white;
+}
+
+.green-text {
+  color:rgba(105, 179, 165, 1);
+}
+
+.center {
+  text-align:center;
+}

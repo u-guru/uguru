@@ -364,9 +364,9 @@ from app.emails import send_campaign_email
 from app.models import *
 import json
 options = {
-    "campaign_name": "UCLA ",
-    "template_name": "Quick Question",
-    "subject": "Quick Question",
+    "campaign_name": "UCLA Batch 4",
+    "template_name": "Hey *|FNAME|*",
+    "subject": "Hey *|FNAME|*",
     "sender_email": "jasmine@uguru.me",
     "reply_to_email": "jasmine@uguru.me",
     "sender_title": "Jasmine",
@@ -380,8 +380,10 @@ send_campaign_email(options, [r])
 
 f = open("app/static/data/school/ucla/batch_1_500.json")
 recipient_arr = json.load(f)
+import json
 recipients = []
-for recipient in recipient_arr:
+for recipient in batch_2:
+    recipient = json.loads(recipient[0])
     if recipient.get("email"):
         first_name = recipient["name"].replace(",","").split(" ")[1].title()
         last_name = recipient["name"].replace(",","").split(" ")[0].title()
@@ -420,6 +422,9 @@ for key in d.keys():
         cache.append(d[key])
 
 with open('universities_courses_efficient.json', 'wb') as fp:
+    json.dump(d, fp, sort_keys = True, indent = 4)
+
+with open('ucla_majors.json', 'wb') as fp:
     json.dump(d, fp, sort_keys = True, indent = 4)
 
 
