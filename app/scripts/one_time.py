@@ -408,13 +408,18 @@ for key in d.keys():
                 course_code = course.get("code")
                 dept_short = course.get("dept_short")
                 short_name = str(dept_short) + " " + str(course_code)
+                course["top_search"] = short_name
                 searchable.append(short_name)
             if course.get("code") and course.get("dept_long"):
                 course_code = course.get("code")
                 dept_long = course.get("dept_long")
                 long_name = str(dept_long) + " " + str(course_code)
+                course["second_search"] = long_name
                 searchable.append(long_name)
             course["searchable"] = searchable
         cache.append(d[key])
+
+with open('universities_courses_efficient.json', 'wb') as fp:
+    json.dump(d, fp, sort_keys = True, indent = 4)
 
 

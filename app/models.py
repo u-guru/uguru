@@ -89,6 +89,11 @@ class User(Base):
     email_notifications = Column(Boolean, default = True)
 
 
+    phone_number = Column(String)
+    phone_number_confirmed = Column(Boolean)
+    lower_pay_rate = Column(Float)
+    upper_pay_rate = Column(Float)
+
     recent_latitude = Column(Float)
     recent_longitude = Column(Float)
     last_gps_activity = Column(DateTime)
@@ -96,6 +101,10 @@ class User(Base):
     #Terms of service
     tos_version = Column(Integer)
     tos_signed_date = Column(DateTime)
+
+    guru_score = Column(Float)
+    referral_link = Column(String)
+
 
     def __init__(self, name, email, profile_url, fb_id, \
         password, gender):
@@ -249,6 +258,13 @@ class Major(Base):
 
         # db_session.commit()
         return m
+
+    @staticmethod
+    def user_create(name, contributed_user_id):
+        c = Major(name=name,contributed_user_id=contributed_user_id)
+        db_session.add(c)
+        db_session.commit()
+        return c 
     
 
 class Support(Base):
@@ -328,7 +344,10 @@ class Course(Base):
     name = Column(String) #Usually department + course_number
 
     short_name = Column(String) #Casual shorted version that students use
-    department = Column(String)
+    
+    department_id = ForeignKey("major.id")
+    department = Column(String) #user generated
+    
     course_number = Column(String)
     admin_approved = Column(Boolean, default = False)
     contributed_user_id = Column(Integer, ForeignKey('user.id'))
@@ -362,7 +381,46 @@ class Course(Base):
         c.name = name
         c.admin_approved = True
         return c
-        # db_session.commit()
+
+    @staticmethod
+    def user_create(name, university_id, contributed_user_id):
+        c = Course(name=name, university_id=university_id\
+            , contributed_user_id=contributed_user_id)
+        return c 
+
+
+class Referral(Base):
+    __tablename__ = 'referral'
+    id = Column(Integer, primary_key=True)
+    
+    sender_id = Column(Integer, ForeignKey('user.id'))
+    sender = relationship("User", 
+        primaryjoin = "User.id == Referral.sender_id",
+        backref="referrals")
+    
+    receiver_id = Column(Integer, ForeignKey('user.id'))
+    receiver = relationship("User",
+        primaryjoin = "User.id == Referral.receiver_id")
+    
+    reward = Column(Float)
+    details = Column(String)
+    time_redeemed = Column(DateTime)
+
+    def __init__(self, sender_id, receiver_id, ):
+        
+        self.sender_id = sender_id,
+        self.received_id = receiver_id,
+        self.card_type = card_type
+        self.stripe_recipient_id = stripe_recipient_id
+        self.stripe_customer_id = stripe_customer_id
+        self.time_added = datetime.now()
+        self.is_payment_card = is_payment_card
+        self.is_cashout_card = is_cashout_card
+ 
+    def __repr__(self):
+        return "<User Card '%r', '%r', '%r', '%r'>" %\
+              (self.id, self.user.name, self.card_type, \
+                self.card_last4)
 
 
 class Card(Base):

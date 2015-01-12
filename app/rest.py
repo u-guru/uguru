@@ -60,10 +60,38 @@ class UniversityMajorsView(restful.Resource):
 
 class UniversityCoursesView(restful.Resource):
     def get(self, id):
-        # from static.data.universities_courses_efficient import uni_courses_dict
-        # courses = uni_courses_dict[str(id)].get("courses")
-        from static.data.berkeley_courses import courses
+        from static.data.universities_courses_efficient import uni_courses_dict
+        courses = uni_courses_dict[str(id)].get("courses")
+        # from static.data.berkeley_courses import courses
         return json.dumps(courses), 200
+
+class UserPhoneView(restful.Resource):
+    def post(self):
+
+
+        user = User.query.get(int(request.json.get("id")))
+        first_name = user.name.split(" ")[0].title()
+        request
+        msg = "[Uguru] Hi " + first_name + " please reply back with the " + \
+            "four digit code provided in the application!"
+    
+        from views import TWILIO_DEFAULT_PHONE, twilio_client
+        to_phone = request.json.get('phone_number')
+
+        try:        
+            message = twilio_client.messages.create(
+                body_ = msg,
+                to_ = to_phone,
+                from_ = TWILIO_DEFAULT_PHONE,
+                )
+
+            return json.dumps({'success':True}), 200
+        
+        except:
+            return jsonify({'errors':'Oops..Something went wrong.'}), 400
+            
+
+
 
 class UserView(restful.Resource):
     
@@ -139,13 +167,16 @@ class UserView(restful.Resource):
             user.tos_signed_date = datetime.now()
             user.tos_version = 1
 
+        if request.json.get('phone_number'):
+            user.phone_number = request.json.get('phone_number')
+
         #If university was uploaded by the student
         if request.json.get('university_id'): user.university_id = request.json.get('university_id')
 
         #if the student uploaded a major
         if 'majors' in request.json: 
 
-            all_major_ids = [int(major.get('id')) for major in request.json.get('majors')]
+            all_major_ids = [major.get('id') for major in request.json.get('majors')]
         
             #remove all courses
             if not request.json.get('majors'):
@@ -154,8 +185,15 @@ class UserView(restful.Resource):
             # Add all relevant ones
             for major in request.json.get('majors'):
                 
-                major_id = int(major.get('id'))
-                major = Major.query.get(major_id)
+                
+                if major.get('id'):
+                    major_id = int(major.get('id'))
+                    major = Major.query.get(major_id)
+                else:
+                    major = Major.user_create(major.get("name"), user.id)
+                    user.majors.append(major)
+                    all_major_ids.append(major.id)
+                    print "user created customer major", major.get("name")
                 
                 if not major in user.majors:
                     user.majors.append(major)
@@ -266,6 +304,7 @@ class AdminSendView(restful.Resource):
         return json.dumps({}),200
  
 api.add_resource(UserView, '/api/v1/users')
+api.add_resource(UserPhoneView, '/api/v1/phone')
 api.add_resource(SupportView, '/api/v1/support')
 api.add_resource(SessionView, '/api/v1/sessions')
 api.add_resource(AdminSessionView, '/api/admin')
