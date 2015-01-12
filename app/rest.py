@@ -46,7 +46,7 @@ class SupportView(restful.Resource):
 
 class CourseListView(restful.Resource):
     def get(self):
-        from static.data.courses_efficient import courses
+        from static.data.berkeley_courses import courses
         
         return json.dumps({"courses":courses}), 200
 
