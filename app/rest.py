@@ -57,7 +57,6 @@ class UniversityMajorsView(restful.Resource):
         # from pprint import pprint 
         # print pprint(departments)
         u = University.query.get(id)
-        departments = []
         # if u.majors:
         majors_module = importlib.import_module("app.static.data.school.%s.majors_id" % "ucla")
             
@@ -65,10 +64,17 @@ class UniversityMajorsView(restful.Resource):
 
 class UniversityCoursesView(restful.Resource):
     def get(self, id):
-        from static.data.universities_courses_efficient import uni_courses_dict
-        courses = uni_courses_dict[str(id)].get("courses")
+        # from static.data.universities_courses_efficient import uni_courses_dict
+        
+
+        # courses = uni_courses_dict[str(id)].get("courses")
+        
+        u = University.query.get(id)
+        # if u.majors:
+        courses_module = importlib.import_module("app.static.data.school.%s.courses_id" % "ucla")
+
         # from static.data.berkeley_courses import courses
-        return json.dumps(courses), 200
+        return json.dumps(courses_module.courses), 200
 
 class UserPhoneView(restful.Resource):
     def post(self):

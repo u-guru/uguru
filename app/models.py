@@ -348,9 +348,11 @@ class Course(Base):
     name = Column(String) #Usually department + course_number
 
     short_name = Column(String) #Casual shorted version that students use
+    full_name = Column(String)
     
     department_id = ForeignKey("major.id")
-    department = Column(String) #user generated
+    department_short = Column(String) #user generated
+    department_long = Column(String)
     
     course_number = Column(String)
     admin_approved = Column(Boolean, default = False)
@@ -380,9 +382,18 @@ class Course(Base):
 
 
     @staticmethod
-    def admin_create(name, _id):
-        c = Course(_id=_id)
-        c.name = name
+    def admin_create(_id=None, department_short=None, 
+        department_long=None, course_number=None, full_name=None,\
+        short_name = None):
+        if _id:
+            c = Course(_id=_id)
+        else:
+            c = Course()
+        c.short_name = short_name
+        c.full_name = full_name
+        c.department_short = department_short
+        c.department_long = department_long
+        c.course_number = course_number
         c.admin_approved = True
         return c
 

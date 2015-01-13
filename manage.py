@@ -25,19 +25,25 @@ def initialize():
     for university in universities_arr:
         u = University.admin_create(university, university['id'])
         if university.get("short_name"):
-            u.short_name = university.get("short_name")
+            u.short_name = "ucla"
 
     db_session.commit()
 
     for university in AVAILABLE_UNIVERSITIES:
         path = "app/static/data/school/" + university + "/"
         path_majors = path+ "majors.json"
+        path_courses = path +"courses.json"
         path_majors_id = path+ "majors_id.json"
+        path_courses_id = path +"courses_id.json"
+        new_courses_arr = []
         new_majors_arr = []
+        new_course_file = []
         new_major_file = []
         file = open(path_majors)
+        file_2 = open(path_courses)
         
         uni_major_arr = json.load(file)
+        uni_course_arr = json.load(file_2)
 
         
         u = University.query.get(2752)
@@ -48,18 +54,47 @@ def initialize():
             db_session.add(m)
             u.majors.append(m)
 
+        for course in uni_course_arr:
+            
+        #     def admin_create(name, _id=None, department_short=None, 
+        # department_long=None, course_number=None, full_name=None,\
+            c = Course.admin_create(
+                    department_short = course["dept_short"],
+                    department_long = course["dept_long"],
+                    course_number = course["code"],
+                    full_name = course["title"]
+                )
+            new_courses_arr.append(c)
+            db_session.add(c)
+            u.courses.append(c)
+
         db_session.commit()
 
         for major in new_majors_arr:
             new_major_file.append({
                     "name": major.name,
-                    "id": major.id
+                    "id": major.id,
+                    "university": "UCLA"
                 })
+
+        for course in new_courses_arr:
+            new_course_file.append({
+                "id": course.id,
+                "title": course.full_name,
+                "short_name": course.department_short + " " +  course.course_number,
+                "long_name": (course.department_long + " " +  course.course_number),
+                "university": "UCLA"
+            })
 
         with open(path_majors_id, 'wb') as fp:
             json.dump(new_major_file, fp, sort_keys = True, indent = 4)
 
         print len(new_major_file), "majors added to " + university
+
+        with open(path_courses_id, 'wb') as fp:
+            json.dump(new_course_file, fp, sort_keys = True, indent = 4)
+
+        print len(new_course_file), "courses added to " + university
 
 
         #if major has departments

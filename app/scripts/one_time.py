@@ -427,4 +427,36 @@ with open('universities_courses_efficient.json', 'wb') as fp:
 with open('ucla_majors.json', 'wb') as fp:
     json.dump(d, fp, sort_keys = True, indent = 4)
 
+#shun to samir format
+import json
+file = open("ucla.json")
+d = json.load(file)
+get_school_departments = d[d.keys()[0]]['departments']
+school_arr = []
+for dept in get_school_departments:
+    dept_long_name = get_school_departments[dept]['long_name']
+    dept_short_name = get_school_departments[dept]['short_name']
+    for course in get_school_departments[dept]["courses"]:
+        course_info = get_school_departments[dept]['courses'][course]
+        course_code = course_info['code']
+        course_title = course_info['title']
+        variations_arr = []
+        if dept_long_name:
+            variations_arr.append(str(dept_long_name) + ' ' + str(course_code))
+        if dept_short_name:
+            variations_arr.append(str(dept_short_name) + ' ' + str(course_code))
+        school_arr.append({
+                'title': course_title,
+                'code': course_code,
+                'dept_short':dept_short_name,
+                'dept_long': dept_long_name,
+                'variations': variations_arr
+        })
 
+with open('courses.json', 'wb') as fp:
+    json.dump(school_arr, fp, sort_keys = True, indent = 4)
+
+
+
+from pprint import pprint
+pprint(d)
