@@ -61,6 +61,7 @@ def initialize():
             c = Course.admin_create(
                     department_short = course["dept_short"],
                     department_long = course["dept_long"],
+                    short_name = (course["dept_short"] + " " + course["code"]),
                     course_number = course["code"],
                     full_name = course["title"]
                 )

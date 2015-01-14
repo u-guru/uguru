@@ -17,7 +17,8 @@ major_fields['name'] = fields.String(attribute='name')
 
 course_fields = {}
 course_fields['id'] = fields.Integer(attribute='id')
-course_fields['name'] = fields.String(attribute='name')
+course_fields['name'] = fields.String(attribute='short_name')
+
 
 
 UserSerializer = {
