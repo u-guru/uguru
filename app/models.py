@@ -377,8 +377,8 @@ class Course(Base):
         # db_session.commit()
  
     def __repr__(self):
-        return "<Major '%r', '%r', '%r'>" %\
-              (self.id, self.name, self.university.name)
+        return "<Course '%r', '%r'>" %\
+              (self.id, self.short_name)
 
 
     @staticmethod

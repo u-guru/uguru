@@ -187,6 +187,9 @@ class UserView(restful.Resource):
         #if the student uploaded a major
         if 'majors' in request.json: 
 
+
+            print request.json.get('majors')
+
             all_major_ids = [major.get('id') for major in request.json.get('majors')]
         
             #remove all courses
@@ -227,7 +230,11 @@ class UserView(restful.Resource):
 
         if 'guru_courses' in request.json: 
 
+            print request.json.get('guru_courses')
+            print user.guru_courses
+
             all_course_id = [int(course.get('id')) for course in request.json.get('guru_courses')]
+            print all_course_id
         
             #remove all courses
             if not request.json.get('guru_courses'):
@@ -253,6 +260,9 @@ class UserView(restful.Resource):
             for course in courses_to_remove:
                 user.guru_courses.remove(course)
                 print course.name, 'removed by student'
+
+            print user.guru_courses
+            print user.majors
 
         db_session.commit()
 
