@@ -16,7 +16,7 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: payload,
             success: function(request){
-                window.location.replace('/admin/dashboard/');
+                window.location.replace('/admin/accounts/');
             },
             error: function (request) {
                 alert('Incorrect username or password, please try again');

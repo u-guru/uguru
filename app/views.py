@@ -36,6 +36,10 @@ def admin():
 
 @app.route('/admin/dashboard/')
 def admin_dashboard():
+    
+    if not session.get('admin'):
+        return redirect(url_for('admin'))
+
     from emails import mandrill_client, DEFAULT_SENDER_EMAIL, DEFAULT_SENDER_NAME 
 
     templates = mandrill_client.templates.list()
@@ -53,7 +57,10 @@ def admin_dashboard():
         ,default_args=default_args)
 
 @app.route('/admin/accounts/')
-def admin_dashboard():
+def admin_accounts():
+    if not session.get('admin'):
+        return redirect(url_for('admin'))
+
     from app.models import *
     from app.database import db_session
     ADMIN_NAMES = ["Samir Makhani", "Jasmine Mir", "Shun Kurosaki", "Robert Neivert", "Matias Baglieri"]
