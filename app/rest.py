@@ -203,11 +203,11 @@ class UserView(restful.Resource):
                 if major.get('id'):
                     major_id = int(major.get('id'))
                     major = Major.query.get(major_id)
-                else:
-                    major = Major.user_create(major.get("name"), user.id)
-                    user.majors.append(major)
-                    all_major_ids.append(major.id)
-                    print "user created customer major", major.get("name")
+                # else:
+                #     major = Major.user_create(major.get("name"), user.id)
+                #     user.majors.append(major)
+                #     all_major_ids.append(major.id)
+                #     print "user created customer major", major.get("name")
                 
                 if not major in user.majors:
                     user.majors.append(major)
@@ -341,6 +341,9 @@ class AdminUserView(restful.Resource):
             if support.user_id == u.id:
                 db_session.delete(support)
                 db_session.commit()
+        user_contributed_majors = Major.query.filter_by(contributed_user_id=u.id)
+        for major in user_contributed_majors:
+            db_session.delete(major)
         print u.name, u.email, "deleted"
         db_session.delete(u)
         db_session.commit()
