@@ -323,16 +323,43 @@ class AdminSendView(restful.Resource):
             print "supposed to send real email"
 
         return json.dumps({}),200
+
+
+class AdminUserView(restful.Resource):
+    
+    def put(self):
+
+        user_id = int(request.json.get('user_id'))
+        print user_id
+
+        u = User.query.filter_by(id=user_id).first()
+        db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == u.id))
+        db_session.commit()
+        db_session.execute(user_major_table.delete(user_major_table.c.user_id == u.id))
+        db_session.commit()
+        for support in Support.query.all():
+            if support.user_id == u.id:
+                db_session.delete(support)
+                db_session.commit()
+        print u.name, u.email, "deleted"
+        db_session.delete(u)
+        db_session.commit()
+
+        return json.dumps({}),200
  
 api.add_resource(UserView, '/api/v1/users')
 api.add_resource(UserPhoneView, '/api/v1/phone')
 api.add_resource(SupportView, '/api/v1/support')
 api.add_resource(SessionView, '/api/v1/sessions')
-api.add_resource(AdminSessionView, '/api/admin')
-api.add_resource(AdminSendView, '/api/admin/send')
 api.add_resource(UniversityListView, '/api/v1/universities')
 api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:id>/majors')
 api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:id>/courses')
 api.add_resource(MajorListView, '/api/v1/majors')
 api.add_resource(CourseListView, '/api/v1/courses')
+
+# Admin views
+api.add_resource(AdminSessionView, '/api/admin')
+api.add_resource(AdminUserView, '/api/admin/users/')
+api.add_resource(AdminSendView, '/api/admin/send')
+
 

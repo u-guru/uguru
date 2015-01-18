@@ -51,3 +51,17 @@ def admin_dashboard():
     return render_template('admin.dashboard.html',\
         templates=templates, batches=batches, test_accounts=test_accounts\
         ,default_args=default_args)
+
+@app.route('/admin/accounts/')
+def admin_dashboard():
+    from app.models import *
+    from app.database import db_session
+    ADMIN_NAMES = ["Samir Makhani", "Jasmine Mir", "Shun Kurosaki", "Robert Neivert", "Matias Baglieri"]
+    admin_users = []
+    for name in ADMIN_NAMES:
+        u = User.query.filter_by(name=name).first()
+        if not u: 
+            continue
+        else:
+            admin_users.append(u)
+    return render_template('admin-users.html', admin_users=admin_users)

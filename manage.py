@@ -186,7 +186,7 @@ if arg == "json_to_batch":
 
 
 
-if arg == 'delete_users':
+if arg == 'delete_all_users':
     from app.models import *
     for u in User.query.all():
         db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == u.id))
@@ -199,4 +199,24 @@ if arg == 'delete_users':
                 db_session.commit()
         db_session.delete(u)
         db_session.commit()
-    print 'all users deleted'
+        print 'all users deleted'
+
+if arg == 'delete_admin_users':
+    from app.models import *
+    from app.database import db_session
+    ADMIN_NAMES = ["Samir Makhani", "Jasmine Mir", "Shun Kurosaki", "Robert Neivert", "Matias Baglieri"]
+    for name in ADMIN_NAMES:
+        u = User.query.filter_by(name = name).first()
+        if not u: 
+            continue
+        db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == u.id))
+        db_session.commit()
+        db_session.execute(user_major_table.delete(user_major_table.c.user_id == u.id))
+        db_session.commit()
+        for support in Support.query.all():
+            if support.user_id == u.id:
+                db_session.delete(support)
+                db_session.commit()
+        print u.name, u.email, "deleted"
+        db_session.delete(u)
+        db_session.commit()

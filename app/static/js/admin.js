@@ -53,6 +53,30 @@ $(document).ready(function() {
         
     });
 
+    $('.reset-admin-account').click(function() {
+        
+        adminPayload = {};
+
+        //Add test account ID
+        var testAccountId = $(this).data('userId');
+        adminPayload["user_id"] = testAccountId;
+
+        $.ajax({
+            url: BASE_URL + '/users/',
+            type: "PUT",
+            contentType: 'application/json',
+            data: JSON.stringify(adminPayload ),
+            success: function(request){
+                alert('Admin account cleared');
+                window.location.replace('/admin/accounts/');
+            },
+            error: function (request) {
+                alert('Contact Samir, something went wrong');
+            }
+        });
+        
+    });
+
     var getSelectedDashboard = function() {
         var campaignName = $('#campaign-name').val();
         var subjectName = $('#subject_name').val();
