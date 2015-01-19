@@ -31,6 +31,12 @@ class MajorListView(restful.Resource):
         
         return json.dumps({"majors":majors}), 200
 
+class RankingsView(restful.Resource):
+    def get(self):
+        from static.data.ranking.guru import ranking_table
+        
+        return json.dumps({"rankings":ranking_table}), 200
+
 
 class SupportView(restful.Resource):
     def post(self):
@@ -173,6 +179,8 @@ class UserView(restful.Resource):
         user.recent_latitude = request.json.get('recent_latitude')
         user.recent_longitude = request.json.get('recent_longitude')
         user.location_services_enabled = request.json.get('location_services_enabled')
+        user.push_notifications = request.json.get('push_notifications')
+        user.ios_apn_token = request.json.get('ios_apn_token')
 
         if request.json.get('tos_signed'):
             user.tos_signed_date = datetime.now()
@@ -354,6 +362,7 @@ api.add_resource(UserView, '/api/v1/users')
 api.add_resource(UserPhoneView, '/api/v1/phone')
 api.add_resource(SupportView, '/api/v1/support')
 api.add_resource(SessionView, '/api/v1/sessions')
+api.add_resource(RankingsView, '/api/v1/rankings')
 api.add_resource(UniversityListView, '/api/v1/universities')
 api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:id>/majors')
 api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:id>/courses')

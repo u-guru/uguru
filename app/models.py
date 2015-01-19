@@ -80,13 +80,18 @@ class User(Base):
         )
 
 
-    #user hardware permissions 
+    #we have their device token based on device
     location_services_enabled = Column(Boolean)
     push_notifications_enabled = Column(Boolean)
 
-    #user notifications
+    #user notifications for our application
     push_notifications = Column(Boolean, default = False)
     email_notifications = Column(Boolean, default = True)
+
+    #to add
+    # device = Column(String)
+    # platform = Column(String)
+    # push_device_token = Column(String)
 
 
     phone_number = Column(String)
@@ -104,7 +109,6 @@ class User(Base):
 
     guru_score = Column(Float)
     referral_link = Column(String)
-
 
     def __init__(self, name, email, profile_url, fb_id, \
         password, gender):
