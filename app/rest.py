@@ -25,6 +25,13 @@ class UniversityListView(restful.Resource):
         
         return json.dumps(universities_arr), 200
 
+class VersionView(restful.Resource):
+    def get(self):
+        version_dict = {
+            'version':Version.query.get(1).ios
+        }
+        return json.dumps(version_dict), 200
+
 class MajorListView(restful.Resource):
     def get(self):
         from static.data.majors_general import majors
@@ -359,6 +366,7 @@ class AdminUserView(restful.Resource):
         return json.dumps({}),200
  
 api.add_resource(UserView, '/api/v1/users')
+api.add_resource(VersionView, '/api/v1/version')
 api.add_resource(UserPhoneView, '/api/v1/phone')
 api.add_resource(SupportView, '/api/v1/support')
 api.add_resource(SessionView, '/api/v1/sessions')

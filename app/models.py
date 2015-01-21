@@ -80,18 +80,13 @@ class User(Base):
         )
 
 
-    #we have their device token based on device
+    #user hardware permissions 
     location_services_enabled = Column(Boolean)
     push_notifications_enabled = Column(Boolean)
 
-    #user notifications for our application
+    #user notifications
     push_notifications = Column(Boolean, default = False)
     email_notifications = Column(Boolean, default = True)
-
-    #to add
-    # device = Column(String)
-    # platform = Column(String)
-    # push_device_token = Column(String)
 
 
     phone_number = Column(String)
@@ -109,6 +104,7 @@ class User(Base):
 
     guru_score = Column(Float)
     referral_link = Column(String)
+
 
     def __init__(self, name, email, profile_url, fb_id, \
         password, gender):
@@ -442,6 +438,13 @@ class Referral(Base):
                 self.card_last4)
 
 
+class Version(Base):
+    __tablename__ = 'version'
+    id = Column(Integer, primary_key=True)
+    android = Column(Float)
+    ios = Column(Float)
+    
+
 class Card(Base):
     __tablename__ = 'card'
     id = Column(Integer, primary_key=True)
@@ -489,5 +492,4 @@ class Card(Base):
         return "<User Card '%r', '%r', '%r', '%r'>" %\
               (self.id, self.user.name, self.card_type, \
                 self.card_last4)
-
 

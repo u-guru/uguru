@@ -9,9 +9,18 @@ if len(sys.argv) > 1:
 else:
     arg = ''
 
-def initialize():
+def init():
     init_db()
     print 'db initialized'
+
+def seed_db():
+    init_db()
+
+    v = Version()
+    v.ios = 1.0
+    v.android = 1.0
+    db_session.add(v)
+    db_session.commit()
     from app.static.data.universities_efficient import universities_arr
     from app.static.data.majors_general import majors
     from app.static.data.courses_efficient import courses
@@ -150,7 +159,10 @@ def initialize():
     # print len(Course.query.all()),'courses added'
 
 if arg == 'initialize':
-    initialize()
+    init()
+
+if arg =="seed":
+    seed_db()
 
 if arg == "json_to_batch":
     import json
