@@ -30,6 +30,41 @@ def index():
 def login():
     return render_template('admin/login.html')
 
+@app.route('/admin/home/')
+def admin_dashboard_home():
+    universities = [
+            {
+                'name': 'UCLA',
+                'emails_sent': 1000,
+                'total_emails': 10000
+            },
+
+            {
+                'name': 'Berkeley',
+                'emails_sent': 0,
+                'total_emails': 7000
+            },
+
+            {
+                'name': 'UT Austin',
+                'emails_sent': 1000,
+                'total_emails': 12000
+            },
+
+            {
+                'name': 'U Michigan',
+                'emails_sent': 1000,
+                'total_emails': 15000
+            }
+
+            ]
+
+    from emails import mandrill_client
+
+    return render_template('admin/form.html', 
+        mandrill_client=mandrill_client,
+        available_universities=universities)
+
 @app.route('/admin/dashboard/')
 def admin_dashboard():
     

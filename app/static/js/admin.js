@@ -3,81 +3,45 @@ BASE_URL = "/api/admin";
 
 $(document).ready(function() {
 
-    $('#admin-login-submit').click(function() {
+    alert('document is ready!');
+
+    var validateStepOne = function() {
+        // 1. make sure batch size is not empty
+        // 2
+    }
+
+    var validateStepTwo = function() {
         
-        var payload = JSON.stringify({
-            email: $('#admin-email').val(),
-            password: $('#admin-password').val()
-        });
+    }
 
-        $.ajax({
-            url: BASE_URL,
-            type: "POST",
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                window.location.replace('/admin/accounts/');
-            },
-            error: function (request) {
-                alert('Incorrect username or password, please try again');
-            }
-        });
-    });
-
-
-    $('#admin-logout-submit').click(function() {
-
-    });
-
-    $('.send-test-email').click(function() {
+    var validateStepThree = function() {
         
-        //Get testPayload
-        var testPayload = getSelectedDashboard();
+    }
 
-        //Add test account ID
-        var testAccountId = $(this).data('userId');
-        testPayload["test_id"] = testAccountId;
+    var validateAllSteps = function() {
+        if (validateStepOne && validateStepTwo && validateStepThree) {
+            return true; 
+        }
+        return false;
+    }
 
-        $.ajax({
-            url: BASE_URL + '/send',
-            type: "POST",
-            contentType: 'application/json',
-            data: JSON.stringify(testPayload),
-            success: function(request){
-                alert('Email successfully sent');
-            },
-            error: function (request) {
-                alert('Contact Samir, something went wrong');
-            }
-        });
-        
-    });
+    var sendTestEmail = function() {
 
-    $('.reset-admin-account').click(function() {
-        
-        adminPayload = {};
+    }
 
-        //Add test account ID
-        var testAccountId = $(this).data('userId');
-        adminPayload["user_id"] = testAccountId;
+    var showTestEmailResults = function() {
 
-        $.ajax({
-            url: BASE_URL + '/users/',
-            type: "PUT",
-            contentType: 'application/json',
-            data: JSON.stringify(adminPayload ),
-            success: function(request){
-                alert('Admin account cleared');
-                window.location.replace('/admin/accounts/');
-            },
-            error: function (request) {
-                alert('Contact Samir, something went wrong');
-            }
-        });
-        
-    });
+    }
 
-    var getSelectedDashboard = function() {
+    var sendCampaign = function() {
+
+    }
+
+    var getCampaignInfo = function() {
+
+    }
+
+    var getEmailCampaignInfo = function() {
         var campaignName = $('#campaign-name').val();
         var subjectName = $('#subject_name').val();
         var senderEmail = $('#default_sender_email').val();
