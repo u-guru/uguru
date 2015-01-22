@@ -26,13 +26,9 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 def index():
     return render_template('index.html')
 
-@app.route('/admin/')
-def admin():
-
-    if session.get('admin'):
-        return redirect(url_for('admin_dashboard'))
-
-    return render_template('admin.html')
+@app.route('/login/')
+def login():
+    return render_template('admin/login.html')
 
 @app.route('/admin/dashboard/')
 def admin_dashboard():
