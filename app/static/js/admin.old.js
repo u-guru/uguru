@@ -1,23 +1,4 @@
-$('#admin-login-submit').click(function() {
-        
-        var payload = JSON.stringify({
-            email: $('#admin-email').val(),
-            password: $('#admin-password').val()
-        });
 
-        $.ajax({
-            url: BASE_URL,
-            type: "POST",
-            contentType: 'application/json',
-            data: payload,
-            success: function(request){
-                window.location.replace('/admin/accounts/');
-            },
-            error: function (request) {
-                alert('Incorrect username or password, please try again');
-            }
-        });
-    });
 
 
     $('#admin-logout-submit').click(function() {

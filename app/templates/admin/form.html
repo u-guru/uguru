@@ -41,7 +41,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="index.html"><span>uguru</span></a>	
+				<a class="brand" href="/admin/form/"><span>uguru</span></a>	
 								
 				<!-- start: Header Menu -->
 				<div class="nav-no-collapse header-nav">
@@ -76,7 +76,7 @@
 			<div id="sidebar-left" class="span2">
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
-						<li class="active"><a href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Send a campaign</span></a></li>
+						<li class="active"><a href="/admin/form/"><i class="icon-edit"></i><span class="hidden-tablet"> Send a campaign</span></a></li>
 						<li>
 							<li><a href="/admin/api/"><i class="icon-cloud"></i><span class="hidden-tablet"> API</span></a></li>
 						</li>
@@ -100,12 +100,12 @@
 			<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
-					<a href="index.html">Home</a>
+					<a href="/admin/form/">Home</a>
 					<i class="icon-angle-right"></i> 
 				</li>
 				<li>
 					<i class="icon-edit"></i>
-					<a href="#">Send Campaign</a>
+					<a href="/admin/form/">Send Campaign</a>
 				</li>
 			</ul>
 
@@ -139,7 +139,7 @@
 								 <div class="control-group">
 									<label class="control-label" for="focusedInput">Select a Batch Size</label>
 									<div class="controls">
-									  <input class="input-xlarge focused" id="campaign-batch-size" type="text" placeholder="12345"/>
+									  <input class="input-xlarge focused" id="campaign-batch-size" type="text" placeholder="12345">
 									</div>
 								  </div>
 
@@ -182,7 +182,7 @@
 					</div>
 					<div class="box-content">
 						<div class="row-fluid text-center">
-							Send AB Test
+							<input type="checkbox" id="ab-test-checkbox" style="margin:0px 3px;" checked> Send AB Test
 						</div>
 						<hr>
 						<div class="row-fluid">
@@ -220,14 +220,14 @@
 								<div class="control-group">
 									<label class="control-label" for="focusedInput">Subject Two</label>
 									<div class="controls">
-									  <input class="input-xlarge focused" id="focusedInput" type="email" placeholder="Enter Subject Two here">
+									  <input class="input-xlarge focused" id="option-two-subject" type="email" placeholder="Enter Subject Two here">
 									  </input>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="selectError">Select a Template</label>
 									<div class="controls">
-									  <select id="selectError" data-rel="chosen">
+									  <select id="option-two-template" data-rel="chosen">
 										{% for template in template_names%}
 										<option>{{template}}</option>
 										{% endfor %}
@@ -260,6 +260,10 @@
 					<div class="box-content">
 						<div id="campaign-step-three-alert" class="alert alert-error" style="display:none;">
 							<strong>Oh snap!</strong> 
+							<span class="alert-body"> Enter alert message here </span>
+						</div>
+						<div id="campaign-step-three-alert-success" class="alert alert-success" style="display:none;">
+							<strong>Woohoo!</strong> 
 							<span class="alert-body"> Enter alert message here </span>
 						</div>
 
@@ -326,12 +330,12 @@
 									<label class="control-label">Send me campaign...</label>
 									<div class="controls">
 									  <label class="radio">
-										<div id="uniform-optionsRadios1"><span class="checked"><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""></span></div>
+										<div id="uniform-optionsRadios1"><span class="checked"><input type="radio" name="sendTestRadio" id="optionsRadios1" value="campaignA" checked=""></span></div>
 										Option one
 									  </label>
 									  <div style="clear:both"></div>
 									  <label class="radio">
-										<div id="uniform-optionsRadios2"><span><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"></span></div>
+										<div id="uniform-optionsRadios2"><span><input type="radio" name="sendTestRadio" id="optionsRadios2" value="campaignB"></span></div>
 										Option two
 									  </label>
 									</div>

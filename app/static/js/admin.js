@@ -3,8 +3,6 @@ BASE_URL = "/api/admin";
 
 $(document).ready(function() {
 
-    alert('document is ready!');
-
     var validateStepOne = function() {
         // 1. make sure batch size is not empty
         // 2
@@ -69,5 +67,26 @@ $(document).ready(function() {
         console.log(payload);
         return payload;
     };
+
+    $('#admin-login-submit').click(function() {
+        
+        var payload = JSON.stringify({
+            email: $('#admin-email').val(),
+            password: $('#admin-password').val()
+        });
+
+        $.ajax({
+            url: BASE_URL,
+            type: "POST",
+            contentType: 'application/json',
+            data: payload,
+            success: function(request){
+                window.location.replace('/admin/form/');
+            },
+            error: function (request) {
+                alert('Incorrect username or password, please try again');
+            }
+        });
+    });
 
 });

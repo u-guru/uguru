@@ -24,15 +24,19 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 
 @app.route('/')
 def index():
+    if 'admin.uguru.me' in request.url:
+        return redirect(url_form('admin_login'))
     return render_template('index.html')
 
 @app.route('/login/')
-def login():
+def admin_login():
     return render_template('admin/login.html')
 
 @app.route('/admin/form/')
 @app.route('/admin/home/')
 def admin_dashboard_home():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
     universities = [
             {
                 'name': 'UCLA',
@@ -71,7 +75,9 @@ def admin_dashboard_home():
         template_names=template_names)
 
 @app.route('/admin/api/')
-def login():
+def admin_api():
+    if not session.get('admin'):
+        return redirect(url_for('admin'))
     return render_template('admin/api.html')
 
 @app.route('/admin/dashboard/')
