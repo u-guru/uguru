@@ -16,60 +16,41 @@ $(document).ready(function() {
         var batch_input_value = $('#campaign-batch-size').val();
         
         if (!batch_input_value) {
-            
             showAlert('campaign-step-one-alert', 'Please enter the batch size');
-            changeBackgroundColor("campaign-step-one-background","65C939");
-            changeBorderColor("campaign-step-one-border","65C939");
-            showEdit();
-
         } 
 
         else if (isNaN(batch_input_value)) {
             showAlert('campaign-step-one-alert', 'Please enter a number');
-            changeBackgroundColor("campaign-step-one-background","65C939");
-            changeBorderColor("campaign-step-one-border","65C939");
-            showEdit();
         }
         
         else {
             $('#campaign-step-one-alert').hide();
             console.log(batch_input_value);
+            changeBackgroundColor("campaign-step-one-background","65C939");
+            changeBorderColor("campaign-step-one-border","65C939");
+            showEdit("one");
+            $("#campaign-batch-size").attr({ 
+              disabled: ""
+            });
+            $("#selectError").attr({ 
+              disabled: ""
+            });
         }
-
     });
 
     $('#campaign-step-one-edit').click(function() {
         
-        var batch_input_value = $('#campaign-batch-size').val();
-        
-        if (!batch_input_value) {
-            
-            showAlert('campaign-step-one-alert', 'Please enter the batch size');
-            changeBackgroundColor("campaign-step-one-background","578EBE");
-            changeBorderColor("campaign-step-one-border","578EBE");
-            showValidate();
-
-        } 
-
-        else if (isNaN(batch_input_value)) {
-            showAlert('campaign-step-one-alert', 'Please enter a number');
-            changeBackgroundColor("campaign-step-one-background","578EBE");
-            changeBorderColor("campaign-step-one-border","578EBE");
-            showValidate();
-        }
-        
-        else {
-            $('#campaign-step-one-alert').hide();
-            console.log(batch_input_value);
-        }
+        changeBackgroundColor("campaign-step-one-background","578EBE");
+        changeBorderColor("campaign-step-one-border","578EBE");
+        showValidate();
+        $("#campaign-batch-size").removeAttr("disabled");
+        $("#selectError").removeAttr("disabled");
 
     });
 
     $('#campaign-step-two-validate').click(function() {
         alert('Step two clicked!');
     });
-
-    
 
 });
 
@@ -90,16 +71,16 @@ var changeBorderColor = function(target_element, color) {
 }
 
 //General this to work for all...
-var showEdit = function() {
-    $('#campaign-step-one-validate').hide();
-    $('#campaign-step-one-edit').show();
-    $('#campaign-step-one-icon').show();
+var showEdit = function(num) {
+    $('#campaign-step-' + num + '-validate').hide();
+    $('#campaign-step-' + num + '-edit').show();
+    $('#campaign-step-' + num + '-icon').show();
 }
 
-var showValidate = function() {
-    $('#campaign-step-one-validate').show();
-    $('#campaign-step-one-edit').hide();
-    $('#campaign-step-one-icon').hide();
+var showValidate = function(num) {
+    $('#campaign-step-' + num + '-validate').show();
+    $('#campaign-step-' + num + '-edit').hide();
+    $('#campaign-step-' + num + '-icon').hide();
 }
 
 
