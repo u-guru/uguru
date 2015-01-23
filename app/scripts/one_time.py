@@ -1597,3 +1597,34 @@ for d in ucla_arr2:
 
 batch_6_arr = process_arr[500:750]
 batch_7_arr = process_arr[750:1000]
+
+
+import json
+from app.models import *
+from app.emails import send_campaign_email
+f = open('ucla_already_sent.json')
+f2 = open('ucla_popular.json')
+already_sent = json.load(f)
+fb_arr = json.load(f2)
+new_students = []
+for student in fb_arr:
+    if student.get('email') and student['email'].lower() not in already_sent:
+        new_students.append(student)
+
+processed_arr = []
+for student in new_students[:1500]:
+    r = Recipient()
+    r.first_name = student['name'].split(' ')[1].title()
+    r.email = student['email']
+    print r.first_name, r.email
+    processed_arr.append(r)
+
+
+r = Recipient
+r.first_name = 'Shun'
+r.email = 'jasmine@uguru.me'
+test_recipients = [r]
+
+send_campaign_email('UCLA Batch 12', 'Hey *|FNAME|*',
+    'Hey *|FNAME|*', 'jasmine@uguru.me', 'jasmine@uguru.me', 'Jasmine', 
+    True, True, True, already_sent):
