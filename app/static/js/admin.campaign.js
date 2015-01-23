@@ -42,7 +42,7 @@ $(document).ready(function() {
         
         changeBackgroundColor("campaign-step-one-background","578EBE");
         changeBorderColor("campaign-step-one-border","578EBE");
-        showValidate();
+        showValidate("one");
         $("#campaign-batch-size").removeAttr("disabled");
         $("#selectError").removeAttr("disabled");
 
