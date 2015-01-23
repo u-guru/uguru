@@ -304,20 +304,20 @@ class Campaign(Base):
         backref = "campaigns"
     )
 
-# class Batch(Base):
-#     __tablename__ = 'batch'
-#     id = Column(Integer, primary_key=True)
-#     name = Column(String)
+class Batch(Base):
+    __tablename__ = 'batch'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
     
-#     time_uploaded = Column(DateTime)
-#     time_sent = Column(DateTime)
+    time_uploaded = Column(DateTime)
+    time_sent = Column(DateTime)
 
-#     campaign_id = Column(Integer, ForeignKey('campaign.id'))
-#     campaign = relationship("Campaign", 
-#         uselist = False,
-#         primaryjoin = "Campaign.id == Batch.campaign_id",
-#         backref = 'batches'
-#     )
+    campaign_id = Column(Integer, ForeignKey('campaign.id'))
+    campaign = relationship("Campaign", 
+        uselist = False,
+        primaryjoin = "Campaign.id == Batch.campaign_id",
+        backref = 'batches'
+    )
 
 
 
@@ -332,19 +332,19 @@ class Recipient(Base):
     time_sent = Column(DateTime)
     time_opened = Column(DateTime)
 
-    # batch_id = Column(Integer, ForeignKey('batch.id'))
-    # batch = relationship("Batch", 
-    #     uselist = False,
-    #     primaryjoin = "Batch.id == Recipient.batch_id",
-    #     backref = 'recipients'
-    # )
-
-    university_id = Column(Integer, ForeignKey('university.id'))
-    university = relationship("University", 
+    batch_id = Column(Integer, ForeignKey('batch.id'))
+    batch = relationship("Batch", 
         uselist = False,
-        primaryjoin = "University.id == Recipient.university",
+        primaryjoin = "Batch.id == Recipient.batch_id",
         backref = 'recipients'
     )
+
+    # university_id = Column(Integer, ForeignKey('university.id'))
+    # university = relationship("University", 
+    #     uselist = False,
+    #     primaryjoin = "University.id == Recipient.university",
+    #     backref = 'recipients'
+    # )
     admin_account = Column(Boolean, default = False)
 
 

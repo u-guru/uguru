@@ -1,10 +1,13 @@
 // BASE_URL = "http://uguru-rest.herokuapp.com/api/admin/";
 BASE_URL = "/api/admin";
 
-//Resources to have along the process
-// 1. http://themifycloud.com/demos/templates/janux/ui.html
-// 2. http://getbootstrap.com/2.3.2/base-css.html#forms
-// 3. jquery docs (google it) 
+//Next Steps
+// 1. When user 'validates', the forms should be disabled for that campaign
+// 2. Add checkbox to 'Send AB test on Step 2 campaign'
+// 3. By default, all the inputs on the right column, should be disabled.
+// 4. If Jasmine checks, enable the right column inputs. Disable if she uncheks
+// 5. Validate step 2 campaign the right way.
+// 6. Generalize the show / edit mode
 
 $(document).ready(function() {
 
@@ -86,6 +89,7 @@ var changeBorderColor = function(target_element, color) {
     $(alert_target).css("border", "2px solid " + '#' + color)
 }
 
+//General this to work for all...
 var showEdit = function() {
     $('#campaign-step-one-validate').hide();
     $('#campaign-step-one-edit').show();
