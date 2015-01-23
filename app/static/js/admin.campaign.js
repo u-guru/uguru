@@ -2,12 +2,12 @@
 BASE_URL = "/api/admin";
 
 //Next Steps
-// 1. When user 'validates', the forms should be disabled for that campaign
-// 2. Add checkbox to 'Send AB test on Step 2 campaign'
-// 3. By default, all the inputs on the right column, should be disabled.
-// 4. If Jasmine checks, enable the right column inputs. Disable if she uncheks
-// 5. Validate step 2 campaign the right way.
-// 6. Generalize the show / edit mode
+// DONE 1. When user 'validates', the forms should be disabled for that campaign
+// DONE 2. Add checkbox to 'Send AB test on Step 2 campaign'
+// DONE 3. By default, all the inputs on the right column, should be disabled.
+// DONE 4. If Jasmine checks, enable the right column inputs. Disable if she uncheks
+// DONE 5. Validate step 2 campaign the right way.
+// DONE 6. Generalize the show / edit mode
 
 $(document).ready(function() {
 
@@ -48,9 +48,7 @@ $(document).ready(function() {
 
     });
 
-    $('#campaign-step-two-validate').click(function() {
-        alert('Step two clicked!');
-    });
+    $("input[type=checkbox]").on( "click", adminChecked );
 
 });
 
@@ -83,6 +81,30 @@ var showValidate = function(num) {
     $('#campaign-step-' + num + '-icon').hide();
 }
 
+var adminChecked = function() {
+    if($(this).prop('checked')) {
+        removeAttr("testbInput","disabled");
+        removeAttr("testbSelect","disabled");
+    }
+    else {
+        attrDisable('testbInput');
+        attrDisable('testbSelect');
+
+        $("#testbInput").val('');
+        $("#testbSelect").val('');
+
+    }
+}
+
+var attrDisable = function(target_element) {
+    $("#" + target_element).attr({
+        disabled: ""
+    });
+}
+
+var removeAttr = function(target_element, remove_element) {
+    $("#" + target_element).removeAttr(remove_element);
+}
 
 // Helper functions
 var validateStepOne = function() {

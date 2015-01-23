@@ -178,7 +178,7 @@
 					</div>
 					<div class="box-content">
 						<div class="row-fluid text-center">
-							Send AB Test
+							<input type="checkbox" id="inlineCheckbox1" value="checked" style="margin:0px 3px;"> Send AB Test
 						</div>
 						<hr>
 						<div class="row-fluid">
@@ -216,14 +216,14 @@
 								<div class="control-group">
 									<label class="control-label" for="focusedInput">Subject Two</label>
 									<div class="controls">
-									  <input class="input-xlarge focused" id="focusedInput" type="email" placeholder="Enter Subject Two here">
+									  <input class="input-xlarge focused" id="testbInput" type="email" placeholder="Enter Subject Two here" disabled="disabled">
 									  </input>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="selectError">Select a Template</label>
 									<div class="controls">
-									  <select id="selectError" data-rel="chosen">
+									  <select id="testbSelect" data-rel="chosen" disabled="disabled">
 										{% for template in template_names%}
 										<option>{{template}}</option>
 										{% endfor %}
