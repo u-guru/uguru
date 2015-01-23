@@ -337,7 +337,7 @@ class AdminSendView(restful.Resource):
         else:
             print "supposed to send real email"
 
-        return json.dumps({}),200
+        return json.dumps({}),200        
 
 
 class AdminUserView(restful.Resource):
@@ -364,6 +364,17 @@ class AdminUserView(restful.Resource):
         db_session.commit()
 
         return json.dumps({}),200
+
+class AdminMandrillTemplatesView(restful.Resource):
+
+    def get(self):
+        from emails import mandrill_client
+        templates = sorted(mandrill_client.templates.list(), 
+            key=lambda t:datetime.strptime(t['updated_at'], "%Y-%m-%d %H:%M:%S.%f"), reverse=True)
+        template_names = [t['name'] for t in templates]
+        template_names = sorted(template_names, key=lambda t:[''])
+        return json.dumps(template_names),200
+
  
 api.add_resource(UserView, '/api/v1/users')
 api.add_resource(VersionView, '/api/v1/version')
@@ -381,5 +392,6 @@ api.add_resource(CourseListView, '/api/v1/courses')
 api.add_resource(AdminSessionView, '/api/admin')
 api.add_resource(AdminUserView, '/api/admin/users/')
 api.add_resource(AdminSendView, '/api/admin/send')
+api.add_resource(AdminMandrillTemplatesView, '/api/admin/mandrill/templates')
 
 

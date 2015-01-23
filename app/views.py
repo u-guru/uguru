@@ -60,10 +60,14 @@ def admin_dashboard_home():
             ]
 
     from emails import mandrill_client
+    templates = sorted(mandrill_client.templates.list(),
+        key=lambda t:datetime.strptime(t['updated_at'], "%Y-%m-%d %H:%M:%S.%f"), reverse=True)
+    template_names = [t['name'] for t in templates]
 
     return render_template('admin/form.html', 
         mandrill_client=mandrill_client,
-        available_universities=universities)
+        available_universities=universities,
+        template_names=template_names)
 
 @app.route('/admin/dashboard/')
 def admin_dashboard():
