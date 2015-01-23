@@ -6,39 +6,59 @@ BASE_URL = "/api/admin";
 // 2. http://getbootstrap.com/2.3.2/base-css.html#forms
 // 3. jquery docs (google it) 
 
-// When the page is completely loaded, call this function.
 $(document).ready(function() {
 
-    // Validates campaign step one when you click validate button 
     $('#campaign-step-one-validate').click(function() {
         
         var batch_input_value = $('#campaign-batch-size').val();
         
-
-        // if batch_input_value is undefined
         if (!batch_input_value) {
             
-            // $('#campaign-step-one-alert .alert-body').text('Please enter the batch size');
-            // $('#campaign-step-one-alert').show();
             showAlert('campaign-step-one-alert', 'Please enter the batch size');
+            changeBackgroundColor("campaign-step-one-background","65C939");
+            changeBorderColor("campaign-step-one-border","65C939");
+            showEdit();
+
         } 
 
-        //make sure input is a number
         else if (isNaN(batch_input_value)) {
             showAlert('campaign-step-one-alert', 'Please enter a number');
+            changeBackgroundColor("campaign-step-one-background","65C939");
+            changeBorderColor("campaign-step-one-border","65C939");
+            showEdit();
         }
         
-        //validate is good!
         else {
             $('#campaign-step-one-alert').hide();
             console.log(batch_input_value);
         }
 
-        //Do not show the validate button 
-        //Show a edit button
-        //Change the top background color of the bar 'Step 1: '
-        //Add a Check icon to the top right of the top bar. 
-        //If user clicks edit, then go back to original version
+    });
+
+    $('#campaign-step-one-edit').click(function() {
+        
+        var batch_input_value = $('#campaign-batch-size').val();
+        
+        if (!batch_input_value) {
+            
+            showAlert('campaign-step-one-alert', 'Please enter the batch size');
+            changeBackgroundColor("campaign-step-one-background","578EBE");
+            changeBorderColor("campaign-step-one-border","578EBE");
+            showValidate();
+
+        } 
+
+        else if (isNaN(batch_input_value)) {
+            showAlert('campaign-step-one-alert', 'Please enter a number');
+            changeBackgroundColor("campaign-step-one-background","578EBE");
+            changeBorderColor("campaign-step-one-border","578EBE");
+            showValidate();
+        }
+        
+        else {
+            $('#campaign-step-one-alert').hide();
+            console.log(batch_input_value);
+        }
 
     });
 
@@ -55,6 +75,29 @@ var showAlert = function(target_element, msg) {
     $(alert_target + ' .alert-body').text(msg);
     $(alert_target).show();
 }
+
+var changeBackgroundColor = function(target_element, color) {
+    alert_target = '#' + target_element;
+    $(alert_target).css("background-color", '#' + color)
+}
+
+var changeBorderColor = function(target_element, color) {
+    alert_target = '#' + target_element;
+    $(alert_target).css("border", "2px solid " + '#' + color)
+}
+
+var showEdit = function() {
+    $('#campaign-step-one-validate').hide();
+    $('#campaign-step-one-edit').show();
+    $('#campaign-step-one-icon').show();
+}
+
+var showValidate = function() {
+    $('#campaign-step-one-validate').show();
+    $('#campaign-step-one-edit').hide();
+    $('#campaign-step-one-icon').hide();
+}
+
 
 // Helper functions
 var validateStepOne = function() {

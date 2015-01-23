@@ -106,9 +106,10 @@
 			</ul>
 
 			<div class="row-fluid sortable">
-				<div class="box span12">
-					<div class="box-header" data-original-title>
-						<h2><b>Step 1</b>: Select University & Size</h2>
+				<div class="box span12" id="campaign-step-one-border">
+					<div class="box-header" id="campaign-step-one-background" data-original-title>
+						<h2><b>Step 1</b>: Select University & Size </h2>
+						<i class="icon-ok-circle" style="display:none; float:right; color:white;" id="campaign-step-one-icon"></i>
 					</div>
 					<div class="box-content">
 						<div id="campaign-step-one-alert" class="alert alert-error" style="display:none;">
@@ -164,6 +165,7 @@
 							</div>
 						</div>
 						<button id="campaign-step-one-validate" class="btn btn-primary">Validate</button>
+						<button id="campaign-step-one-edit" class="btn btn-primary" style="display:none; background-color:#65C939; border-color:#65C939;">Edit</button>
 					</div>
 				</div><!--/span-->
 
