@@ -3,6 +3,10 @@ BASE_URL = "/api/admin";
 
 $(document).ready(function() {
 
+//*/*/*/*/*//
+//*/STEP1/*//
+//*/*/*/*/*//
+
     $('#campaign-step-one-validate').click(function() {
         
         var batch_input_value = $('#campaign-batch-size').val();
@@ -74,7 +78,8 @@ $(document).ready(function() {
 
         }
     });
-    $("input[type=checkbox]").on( "click", adminChecked );
+
+    $("input[id=ab-test-checkbox]").on( "click", adminChecked );
 
     $("input[name=sendTestRadio]:radio").change(function () {
         if ($(this).val() === 'campaignB') {
@@ -84,6 +89,66 @@ $(document).ready(function() {
             }
         }
     });
+
+//*/*/*/*/*//
+//*/STEP2/*//
+//*/*/*/*/*//
+
+    $("#campaign-step-two-validate").click(function() {
+
+        if ($('#ab-test-checkbox').prop('checked')) {
+            var option_one_subject_input_value = $('#option-one-subject').val();
+            var option_two_subject_input_value = $('#option-two-subject').val();
+            var option_two_template_input_value = $('#option-two-template').val();
+            
+            if (!option_one_subject_input_value || !option_two_subject_input_value || !option_two_template_input_value) {
+                showAlert('campaign-step-two-alert', 'Please enter the Subject One and Two, Template.');
+            }
+            
+            else {
+                $('#campaign-step-two-alert').hide();
+                changeBackgroundColor("campaign-step-two-background","65C939");
+                changeBorderColor("campaign-step-two-border","65C939");
+                showEdit("two");
+                attrDisable("option-one-subject");
+                attrDisable("option-one-template");
+                attrDisable("option-two-subject");
+                attrDisable("option-two-template");
+            }
+        }
+        else {
+            var option_one_subject_input_value = $('#option-one-subject').val();
+            
+            if (!option_one_subject_input_value) {
+                showAlert('campaign-step-two-alert', 'Please enter the Subject One');
+            } 
+            
+            else {
+                $('#campaign-step-two-alert').hide();
+                console.log(option_one_subject_input_value);
+                changeBackgroundColor("campaign-step-two-background","65C939");
+                changeBorderColor("campaign-step-two-border","65C939");
+                showEdit("two");
+                $("#option-one-subject").attr({ 
+                  disabled: ""
+                });
+                $("#option-one-template").attr({ 
+                  disabled: ""
+                });
+            }
+        }
+    });
+
+    $('#campaign-step-two-edit').click(function() {
+        
+        changeBackgroundColor("campaign-step-two-background","578EBE");
+        changeBorderColor("campaign-step-two-border","578EBE");
+        showValidate("two");
+        $("#option-one-subject").removeAttr("disabled");
+        $("#option-one-template").removeAttr("disabled");
+
+    });
+
 });
 
 var showAlert = function(target_element, msg) {
@@ -154,15 +219,15 @@ var showValidate = function(num) {
 
 var adminChecked = function() {
     if($(this).prop('checked')) {
-        removeAttr("testbInput","disabled");
-        removeAttr("testbSelect","disabled");
+        removeAttr("option-two-subject","disabled");
+        removeAttr("option-two-template","disabled");
     }
     else {
-        attrDisable('testbInput');
-        attrDisable('testbSelect');
+        attrDisable('option-two-subject');
+        attrDisable('option-two-template');
 
-        $("#testbInput").val('');
-        $("#testbSelect").val('');
+        $("#option-two-subject").val('');
+        $("#option-two-template").val('');
 
     }
 }
