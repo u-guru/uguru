@@ -77,8 +77,12 @@
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li class="active"><a href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Send a campaign</span></a></li>
+						<li>
+							<li><a href="/admin/api/"><i class="icon-cloud"></i><span class="hidden-tablet"> API</span></a></li>
+						</li>
 					</ul>
 				</div>
+
 			</div>
 			<!-- end: Main Menu -->
 			
@@ -188,14 +192,14 @@
 								<div class="control-group">
 									<label class="control-label" for="focusedInput">Subject One</label>
 									<div class="controls">
-									  <input class="input-xlarge focused" id="focusedInput" type="email" placeholder="Enter Subject One here">
+									  <input class="input-xlarge focused" id="option-one-subject" type="email" placeholder="Enter Subject One here">
 									  </input>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="selectError">Select a Template</label>
 									<div class="controls">
-									  <select id="selectError" data-rel="chosen">
+									  <select id="option-one-template" data-rel="chosen">
 										{% for template in template_names%}
 										<option>{{template}}</option>
 										{% endfor %}
@@ -254,6 +258,11 @@
 						<h2><b>Step 3</b>: Review & Set Defaults</h2>
 					</div>
 					<div class="box-content">
+						<div id="campaign-step-three-alert" class="alert alert-error" style="display:none;">
+							<strong>Oh snap!</strong> 
+							<span class="alert-body"> Enter alert message here </span>
+						</div>
+
 						<div class="row-fluid">
 
 							<div class="span6">
@@ -261,21 +270,21 @@
 								<div class="control-group">
 									<label class="control-label" for="focusedInput">Sender Email</label>
 									<div class="controls">
-									  <input class="input-xlarge focused" id="focusedInput" type="email" placeholder="name@domain.com" value="jasmine@uguru.me">
+									  <input class="input-xlarge focused" id="sender-email" type="email" placeholder="name@domain.com" value="jasmine@uguru.me">
 									  </input>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="focusedInput">Sender Name</label>
 									<div class="controls">
-									  <input class="input-xlarge focused" id="focusedInput" type="email" placeholder="name@domain.com" value="Jasmine">
+									  <input class="input-xlarge focused" id="sender-title" type="email" placeholder="name@domain.com" value="Jasmine">
 									  </input>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="focusedInput">Reply-To Email (when user clicks reply)</label>
 									<div class="controls">
-									  <input class="input-xlarge focused" id="focusedInput" type="email" placeholder="name@domain.com" value="jasmine@uguru.me">
+									  <input class="input-xlarge focused" id="reply-to-email" type="email" placeholder="name@domain.com" value="jasmine@uguru.me">
 									  </input>
 									</div>
 								</div>
@@ -285,13 +294,13 @@
 								<label class="control-label">Checkboxes</label>
 								<div class="controls">
 								  <label class="checkbox inline">
-									<div id="uniform-inlineCheckbox1"><span><input type="checkbox" id="inlineCheckbox1" value="option1" checked></span></div> Flag as Important
+									<div id="uniform-inlineCheckbox1"><span><input type="checkbox" id="important-checkbox" value="option1" checked></span></div> Flag as Important
 								  </label>
 								  <label class="checkbox inline">
-									<div id="uniform-inlineCheckbox2"><span><input type="checkbox" id="inlineCheckbox2" value="option2" checked></span></div> Track Opens
+									<div id="uniform-inlineCheckbox2"><span><input type="checkbox" id="opens-checkbox" value="option2" checked></span></div> Track Opens
 								  </label>
 								  <label class="checkbox inline">
-									<div id="uniform-inlineCheckbox3"><span><input type="checkbox" id="inlineCheckbox3" value="option3" checked></span></div> Track Replies
+									<div id="uniform-inlineCheckbox3"><span><input type="checkbox" id="clicks-checkbox" value="option3" checked></span></div> Track Clicks
 								  </label>
 								</div>
 							  </div>
@@ -300,14 +309,35 @@
 							</div>
 
 							<div class="span6">
-								<div class="control-group">
-									<label class="control-label" for="appendedInputButton">Send Test Email</label>
+								<form class="form-horizontal">
+								  <div class="control-group">
+									<label class="control-label" for="focusedInput">Test Email</label>
 									<div class="controls">
-									  <div class="input-append">
-										<input id="appendedInputButton" size="16" type="email" placeholder="email@domain.com"><button class="btn" type="button">Send</button>
-									  </div>
+									  <input class="input-xlarge focused" id="send-test-email" type="text" placeholder="test email address">
 									</div>
-							  	</div>
+								  </div>
+								  <div class="control-group">
+									<label class="control-label" for="focusedInput">Test Name</label>
+									<div class="controls">
+									  <input class="input-xlarge focused" id="send-test-name" type="text" placeholder="test full name">
+									</div>
+								  </div>
+								  <div class="control-group">
+									<label class="control-label">Send me campaign...</label>
+									<div class="controls">
+									  <label class="radio">
+										<div id="uniform-optionsRadios1"><span class="checked"><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""></span></div>
+										Option one
+									  </label>
+									  <div style="clear:both"></div>
+									  <label class="radio">
+										<div id="uniform-optionsRadios2"><span><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"></span></div>
+										Option two
+									  </label>
+									</div>
+								  </div>
+								</form>
+								<button id="send-test-campaign-button" type="submit" style="float:right"class="btn">Send Test</button>
 							</div>
 							
 						</div>

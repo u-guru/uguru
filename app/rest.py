@@ -329,15 +329,42 @@ class AdminSendView(restful.Resource):
     def post(self):
 
         from app.emails import send_campaign_email, send_campaign_email_test
+        from app.lib.api_utils import request_contains_all_valid_parameters 
         
+        required_general_parameters = ['sender_email', 'sender_title', 'template_name',
+        'subject', 'reply_to_email', 'track_opens', 'track_clicks', 'important']
 
-        if request.json.get('test_id'):
-            recipient = Recipient.query.get(int(request.json.get('test_id')))
-            result = send_campaign_email_test(request.json, [recipient])
+        #check if all parameters are here
+        if not request_contains_all_valid_parameters(request.json, required_general_parameters):
+            print 'parameters failed' 
+            return 404
+
+        ##Test route
+        if request.json.get('test_email'):
+            test_email = request.json.get('test_email')
+            test_name = request.json.get('test_name')
+            print request.json
+            send_campaign_email_test(
+                campaign_name = 'TEST',
+                template_name = request.json.get('template_name'),
+                subject = request.json.get('subject'),
+                sender_email = request.json.get('sender_email'),
+                sender_title = request.json.get('sender_title'),
+                reply_to_email = request.json.get('reply_to_email'),
+                track_opens = request.json.get('track_opens'),
+                track_clicks = request.json.get('track_clicks'),
+                important = request.json.get('important'),
+                test_email = test_email,
+                test_name = test_name
+            )
+
+        ##send regular campaign
         else:
-            print "supposed to send real email"
+            pass
 
-        return json.dumps({}),200        
+
+        return 400
+
 
 
 class AdminUserView(restful.Resource):

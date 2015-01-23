@@ -34,6 +34,12 @@ university_major_table = Table('university-major_assoc',
     Column('university_id', Integer, ForeignKey('university.id')),
     Column('major_id', Integer, ForeignKey('major.id'))
     )
+
+user_campaign_table = Table('user-campaign_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('campaign_id', Integer, ForeignKey('campaign.id'))
+    )
  
 class User(Base):
     __tablename__ = 'user'
@@ -76,6 +82,11 @@ class User(Base):
 
     majors = relationship("Major", 
         secondary = user_major_table,
+        backref = "users"
+        )
+
+    campaigns = relationship("Campaign", 
+        secondary = user_campaign_table,
         backref = "users"
         )
 
@@ -286,7 +297,9 @@ class Support(Base):
 class Campaign(Base):
     __tablename__ = 'campaign'
     id = Column(Integer, primary_key=True)
-    time_uploaded = Column(DateTime)
+    # time_uploaded = Column(DateTime)
+    time_scheduled = Column(DateTime)
+    time_created = Column(DateTime)
     name = Column(String)
 
     important = Column(Boolean)
@@ -303,6 +316,7 @@ class Campaign(Base):
         primaryjoin = "University.id == Campaign.university_id",
         backref = "campaigns"
     )
+
 
 class Batch(Base):
     __tablename__ = 'batch'
@@ -332,19 +346,19 @@ class Recipient(Base):
     time_sent = Column(DateTime)
     time_opened = Column(DateTime)
 
-    batch_id = Column(Integer, ForeignKey('batch.id'))
-    batch = relationship("Batch", 
-        uselist = False,
-        primaryjoin = "Batch.id == Recipient.batch_id",
-        backref = 'recipients'
-    )
-
-    # university_id = Column(Integer, ForeignKey('university.id'))
-    # university = relationship("University", 
+    # batch_id = Column(Integer, ForeignKey('batch.id'))
+    # batch = relationship("Batch", 
     #     uselist = False,
-    #     primaryjoin = "University.id == Recipient.university",
+    #     primaryjoin = "Batch.id == Recipient.batch_id",
     #     backref = 'recipients'
     # )
+
+    university_id = Column(Integer, ForeignKey('university.id'))
+    university = relationship("University", 
+        uselist = False,
+        primaryjoin = "University.id == Recipient.university_id",
+        backref = 'recipients'
+    )
     admin_account = Column(Boolean, default = False)
 
 

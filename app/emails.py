@@ -35,17 +35,18 @@ TEST_EMAILS = [
 # Mailchimp signup
 # 
 
-def send_campaign_email(options, recipients):
-    campaign_name = options.get('campaign_name')
-    template_name = options.get('template_name')
-    subject = options.get('subject')
-    sender_email = options.get('sender_email')
-    reply_to_email = 'jasmine@uguru.me'
-    # sender_title = options.get('sender_name')
-    sender_title = "Jasmine"
-    track_opens_flag = options.get('track_opens_flag')
-    track_clicks_flag = options.get('track_clicks_flag')
-    important_flag = options.get('important_flag')
+def send_campaign_email(campaign_name, template_name,
+    subject, sender_email, reply_to_email, sender_title, 
+    track_opens, track_clicks, important, recipients):
+    campaign_name = campaign_name
+    template_name = template_name
+    subject = subject
+    sender_email = sender_email
+    reply_to_email = reply_to_email
+    sender_title = sender_title
+    track_opens_flag = track_opens
+    track_clicks_flag = track_clicks
+    important_flag = important
 
     to_emails = []
     for recipient in recipients:
@@ -75,10 +76,13 @@ def send_campaign_email(options, recipients):
 
     return result
 
-def send_campaign_email_test(options, test_recipients):
-    test_prefix = "[TEST] "
-    options['subject'] = test_prefix + str(options.get('subject'))
-    options['campaign_name'] = test_prefix + options.get('campaign_name')
-    options['sender_email'] = str(options.get('sender_email'))
-    options['sender_name'] = str(options.get('sender_name'))
-    send_campaign_email(options, test_recipients)
+def send_campaign_email_test(campaign_name, template_name,
+    subject, sender_email, reply_to_email, sender_title, 
+    track_opens, track_clicks, important, test_email, test_name):
+    
+    r = Recipient()
+    r.first_name = test_name.split(" ")[0].title()
+    r.email = test_email
+    send_campaign_email(campaign_name, template_name,
+    subject, sender_email, reply_to_email, sender_title, 
+    track_opens, track_clicks, important, [r])

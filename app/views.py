@@ -30,6 +30,7 @@ def index():
 def login():
     return render_template('admin/login.html')
 
+@app.route('/admin/form/')
 @app.route('/admin/home/')
 def admin_dashboard_home():
     universities = [
@@ -68,6 +69,10 @@ def admin_dashboard_home():
         mandrill_client=mandrill_client,
         available_universities=universities,
         template_names=template_names)
+
+@app.route('/admin/api/')
+def login():
+    return render_template('admin/api.html')
 
 @app.route('/admin/dashboard/')
 def admin_dashboard():
