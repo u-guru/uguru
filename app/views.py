@@ -4,7 +4,7 @@ from app.database import *
 from models import *
 from twilio import *
 from twilio.rest import TwilioRestClient
-from flask import render_template, redirect, url_for, session
+from flask import render_template, redirect, url_for, session, request
 
 # Twilio
 TWILIO_DEFAULT_PHONE = "+15104661138"
