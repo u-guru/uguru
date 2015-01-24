@@ -415,6 +415,25 @@ class AdminMandrillCampaignDetailedView(restful.Resource):
         specific_campaign = mandrill_client.tags.info(tag=tag)
         return jsonify(campaign=specific_campaign)
 
+class AdminAppUpdateView(restful.Resource):
+    def put(self):
+
+        if request.json.get('ios'):
+            current_version_num = float(request.json.get('ios'))
+            new_version_num = current_version_num + 0.1
+            version = Version.query.get(1)
+            version.ios = new_version_num
+            db_session.commit()
+
+        if request.json.get('android'):
+            current_version_num = float(request.json.get('android'))
+            new_version_num = current_version_num + 0.1
+            version = Version.query.get(1)
+            version.ios = new_version_num
+            db_session.commit()
+
+        return jsonify(version=new_version_num)
+
  
 api.add_resource(UserView, '/api/v1/users')
 api.add_resource(VersionView, '/api/v1/version')
@@ -432,6 +451,7 @@ api.add_resource(CourseListView, '/api/v1/courses')
 api.add_resource(AdminSessionView, '/api/admin')
 api.add_resource(AdminUserView, '/api/admin/users/')
 api.add_resource(AdminSendView, '/api/admin/send')
+api.add_resource(AdminAppUpdateView, '/api/admin/app/update')
 api.add_resource(AdminMandrillTemplatesView, '/api/admin/mandrill/templates')
 api.add_resource(AdminMandrillCampaignsView, '/api/admin/mandrill/campaigns')
 api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/mandrill/campaigns/<string:tag>')
