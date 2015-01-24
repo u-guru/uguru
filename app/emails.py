@@ -1,7 +1,12 @@
 import os, mandrill
 from models import *
 
+
+
 MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
+if not os.environ.get('PRODUCTION'):
+    MANDRILL_API_KEY = "E3JtFuPUZC466EFpJY9-ag"
+
 mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
 
 DEFAULT_SENDER_EMAIL = 'jasmine@uguru.me'
