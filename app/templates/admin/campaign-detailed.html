@@ -77,8 +77,8 @@
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li><a href="/admin/form/"><i class="icon-edit"></i><span class="hidden-tablet"> Send a campaign</span></a></li>
-						<li><a href="/admin/campaigns/"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Campaign Stats</span></a></li>
-						<li class="active"><a href="/admin/api/"><i class="icon-cloud"></i><span class="hidden-tablet"> API</span></a></li>
+						<li class="active"><a href="/admin/campaigns/"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Campaign Stats</span></a></li>
+						<li><a href="/admin/api/"><i class="icon-cloud"></i><span class="hidden-tablet"> API</span></a></li>
 					</ul>
 				</div>
 
@@ -103,8 +103,13 @@
 					<i class="icon-angle-right"></i> 
 				</li>
 				<li>
-					<i class="icon-edit"></i>
-					<a href="#">API</a>
+					<i class="icon-bar-chart"></i>
+					<a href="/admin/campaigns/">Campaign Stats</a>
+					<i class="icon-angle-right"></i> 
+				</li>
+				<li>
+					<i class="icon-envelope-alt"></i>
+					<a href="/admin/campaigns/{{name}}">{{name}}</a>
 				</li>
 			</ul>
 
@@ -158,30 +163,11 @@
 											<td>Get list of all updated templates</td>
 											
 										</tr>
-										<tr class="warning">
-											<td>
-											<strong>GET</strong>
-												&nbsp;
-												&nbsp;
-												/api/admin/mandrill/campaigns/</td>
-											<td>Get list of all all Uguru sent campaigns</td>
-											<td>See <a href="https://mandrillapp.com/api/docs/tags.JSON.html#method=list" style="color:blue; text-decoration:underline;">here</a> </td>
-											
-										</tr>
-										<tr class="warning">
-											<td>
-											<strong>GET</strong>
-												&nbsp;
-												&nbsp;
-												/api/admin/mandrill/campaigns/<campaign_name>/</td>
-											<td>Get detailed info about one campaign</td>
-											<td>See <a style="color:blue; text-decoration:underline;" href="https://mandrillapp.com/api/docs/tags.JSON.html#method=info">here</a> </td>
-											
-										</tr>
 									  </tbody>
 								 </table>
 							</div>
 						</div>
+						<button id="campaign-step-one-validate" class="btn btn-primary">Validate</button>
 						<button id="campaign-step-one-edit" class="btn btn-primary" style="display:none; background-color:#65C939; border-color:#65C939;">Edit</button>
 					</div>
 				</div><!--/span-->
@@ -256,6 +242,7 @@
 								 </table>
 							</div>
 						</div>
+						<button id="campaign-step-one-validate" class="btn btn-primary">Validate</button>
 						<button id="campaign-step-one-edit" class="btn btn-primary" style="display:none; background-color:#65C939; border-color:#65C939;">Edit</button>
 					</div>
 				</div><!--/span-->

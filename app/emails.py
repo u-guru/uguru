@@ -4,10 +4,10 @@ from models import *
 
 
 MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
-if not os.environ.get('PRODUCTION'):
-    MANDRILL_API_KEY = "E3JtFuPUZC466EFpJY9-ag"
+MANDRILL_API_TEST_KEY = "E3JtFuPUZC466EFpJY9-ag"
 
 mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+mandrill_test_client = mandrill.Mandrill(MANDRILL_API_TEST_KEY)
 
 DEFAULT_SENDER_EMAIL = 'jasmine@uguru.me'
 DEFAULT_SENDER_NAME = 'Jasmine from Uguru'
@@ -74,10 +74,18 @@ def send_campaign_email(campaign_name, template_name,
         'tags':[campaign_name]
     }
 
-    result = mandrill_client.messages.send_template(
-        template_name=template_name,
-        template_content=[],
-        message=message)
+    if not os.environ.get('PRODUCTION'):
+        
+        result = mandrill_test_client.messages.send_template(
+            template_name=template_name,
+            template_content=[],
+            message=message)
+
+    else:
+        result = mandrill_client.messages.send_template(
+            template_name=template_name,
+            template_content=[],
+            message=message)
 
     return result
 

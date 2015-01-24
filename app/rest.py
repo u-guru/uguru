@@ -405,14 +405,16 @@ class AdminMandrillCampaignsView(restful.Resource):
 
     def get(self):
         from emails import mandrill_client
-        templates = sorted(mandrill_client.templates.list(), 
-            key=lambda t:datetime.strptime(t['updated_at'], "%Y-%m-%d %H:%M:%S.%f"), reverse=True)
-        template_names = [t['name'] for t in templates]
-        template_names = sorted(template_names, key=lambda t:[''])
-        return json.dumps(template_names),200
+        campaigns = mandrill_client.tags.list()
+        
+        return jsonify(campaigns=campaigns)
 
 class AdminMandrillCampaignDetailedView(restful.Resource):
-    pass
+    def get(self, tag):
+        from emails import mandrill_client
+        specific_campaign = mandrill_client.tags.info(tag=tag)
+        return jsonify(campaign=specific_campaign)
+
  
 api.add_resource(UserView, '/api/v1/users')
 api.add_resource(VersionView, '/api/v1/version')
@@ -432,6 +434,6 @@ api.add_resource(AdminUserView, '/api/admin/users/')
 api.add_resource(AdminSendView, '/api/admin/send')
 api.add_resource(AdminMandrillTemplatesView, '/api/admin/mandrill/templates')
 api.add_resource(AdminMandrillCampaignsView, '/api/admin/mandrill/campaigns')
-api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/mandrill/campaigns/<int:id>')
+api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/mandrill/campaigns/<string:tag>')
 
 

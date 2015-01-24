@@ -32,6 +32,20 @@ def index():
 def admin_login():
     return render_template('admin/login.html')
 
+@app.route('/admin/campaigns/')
+def admin_campaigns():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    return render_template('admin/campaigns.html')
+
+@app.route('/admin/campaigns/<name>/')
+def admin_campaigns_detailed(name):
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    return render_template('admin/campaign-detailed.html', name=name)
+
+
+
 @app.route('/admin/form/')
 @app.route('/admin/home/')
 def admin_dashboard_home():
