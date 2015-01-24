@@ -1612,19 +1612,22 @@ for student in fb_arr:
         new_students.append(student)
 
 processed_arr = []
-for student in new_students[:1500]:
+for student in new_students[1500:2000]:
     r = Recipient()
     r.first_name = student['name'].split(' ')[1].title()
     r.email = student['email']
     print r.first_name, r.email
     processed_arr.append(r)
 
-
 r = Recipient
-r.first_name = 'Shun'
+r.first_name = 'Jasmine'
 r.email = 'jasmine@uguru.me'
 test_recipients = [r]
 
-send_campaign_email('UCLA Batch 12', 'Hey *|FNAME|*',
+send_campaign_email('UCLA Batch 13', 'Hey *|FNAME|*',
     'Hey *|FNAME|*', 'jasmine@uguru.me', 'jasmine@uguru.me', 'Jasmine', 
-    True, True, True, already_sent):
+    True, True, True, processed_arr)
+
+send_campaign_email('UCLA Batch 13', 'Hey *|FNAME|*',
+    'Hey *|FNAME|*', 'jasmine@uguru.me', 'jasmine@uguru.me', 'Jasmine', 
+    True, True, True, test_recipients)

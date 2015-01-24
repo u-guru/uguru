@@ -11,7 +11,50 @@ else:
 
 def init():
     init_db()
-    print 'db initialized'
+    
+
+def seed_db_local():
+    init_db()
+    v = Version()
+    v.ios = 1.0
+    v.android = 1.0
+    db_session.add(v)
+    db_session.commit()
+    from app.static.data.universities_efficient import universities_arr
+    from app.static.data.majors_general import majors
+    from app.static.data.courses_efficient import courses
+    from app.models import University
+    major_count = 0
+    course_count = 0
+    session_majors = []
+    majors_dict = []
+    total_majors = 200000
+    total_courses = 73000
+    for university in universities_arr:
+        u = University.admin_create(university, university['id'])
+        if university.get("short_name"):
+            u.short_name = "ucla"
+
+    db_session.commit()
+
+    # Create campaigns
+
+    from datetime import datetime
+
+    for index in range(0, 10):
+        c = Campaign()
+        c.time_scheduled = datetime.now()
+        time_scheduled = Column(DateTime)
+        c.name = "UCLA "  + str(index)
+        c.important = True
+        c.track_opens = True
+        c.track_clicks = True
+        c.subject = "UCLA Subject" + str(index)
+        c.sender_email = "jasmine@uguru.me"
+        c.sender_name = "jasmine@uguru.me"
+        c.university = University.query.get(2752)
+        c.university_id = 2752
+
 
 def seed_db():
     init_db()

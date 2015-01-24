@@ -44,6 +44,13 @@ def admin_campaigns_detailed(name):
         return redirect(url_for('admin_login'))
     return render_template('admin/campaign-detailed.html', name=name)
 
+@app.route('/admin/development/')
+def admin_development():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    version = Version.query.get(1)
+    return render_template('admin/development.html', version=version)
+
 
 
 @app.route('/admin/form/')

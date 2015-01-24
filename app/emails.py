@@ -76,7 +76,7 @@ def send_campaign_email(campaign_name, template_name,
 
     if not os.environ.get('PRODUCTION'):
         
-        result = mandrill_test_client.messages.send_template(
+        result = mandrill_client.messages.send_template(
             template_name=template_name,
             template_content=[],
             message=message)
