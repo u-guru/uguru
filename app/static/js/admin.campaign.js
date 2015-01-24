@@ -16,6 +16,10 @@ BASE_URL = "/api/admin";
 
 $(document).ready(function() {
 
+//*/*/*/*/*//
+//*/STEP1/*//
+//*/*/*/*/*//
+
     $('#campaign-step-one-validate').click(function() {
         
         var batch_input_value = $('#campaign-batch-size').val();
@@ -53,41 +57,125 @@ $(document).ready(function() {
 
     });
 
-    // $('#campaign-step-two-validate').click(function() {
-    //     alert('Step two clicked!');
-    // });
+//*/*/*/*/*//
+//*/STEP2/*//
+//*/*/*/*/*//
+
+    $("input[id=ab-test-checkbox]").on( "click", adminChecked );
+
+    $("#campaign-step-two-validate").click(function() {
+
+        if ($('#ab-test-checkbox').prop('checked')) {
+            var option_one_subject_input_value = $('#option-one-subject').val();
+            var option_two_subject_input_value = $('#option-two-subject').val();
+            var option_two_template_input_value = $('#option-two-template').val();
+            
+            if (!option_one_subject_input_value || !option_two_subject_input_value || !option_two_template_input_value) {
+                showAlert('campaign-step-two-alert', 'Please enter the Subject One and Two, Template.');
+            }
+            
+            else {
+                $('#campaign-step-two-alert').hide();
+                changeBackgroundColor("campaign-step-two-background","65C939");
+                changeBorderColor("campaign-step-two-border","65C939");
+                showEdit("two");
+                attrDisable("option-one-subject");
+                attrDisable("option-one-template");
+                attrDisable("option-two-subject");
+                attrDisable("option-two-template");
+            }
+        }
+        else {
+            var option_one_subject_input_value = $('#option-one-subject').val();
+            
+            if (!option_one_subject_input_value) {
+                showAlert('campaign-step-two-alert', 'Please enter the Subject One');
+            } 
+            
+            else {
+                $('#campaign-step-two-alert').hide();
+                console.log(option_one_subject_input_value);
+                changeBackgroundColor("campaign-step-two-background","65C939");
+                changeBorderColor("campaign-step-two-border","65C939");
+                showEdit("two");
+                $("#option-one-subject").attr({ 
+                  disabled: ""
+                });
+                $("#option-one-template").attr({ 
+                  disabled: ""
+                });
+            }
+        }
+    });
+
+    $('#campaign-step-two-edit').click(function() {
+        
+        changeBackgroundColor("campaign-step-two-background","578EBE");
+        changeBorderColor("campaign-step-two-border","578EBE");
+        showValidate("two");
+
+        if ($('#ab-test-checkbox').prop('checked')) {
+            $("#option-one-subject").removeAttr("disabled");
+            $("#option-one-template").removeAttr("disabled");
+            $("#option-two-subject").removeAttr("disabled");
+            $("#option-two-template").removeAttr("disabled");
+        }
+        else {
+            $("#option-one-subject").removeAttr("disabled");
+            $("#option-one-template").removeAttr("disabled");   
+        }
+
+    });
+
+//*/*/*/*/*//
+//*/STEP3/*//
+//*/*/*/*/*//
 
     $('#send-test-campaign-button').click(function() {
         if (!$('#send-test-email').val() || !$('#send-test-name').val()) {
             showAlert('campaign-step-three-alert', 'Please enter both test name & test email');
         } else {
-            hideAlert('campaign-step-three-alert');
-            
-            var campaignOptionSelected = $("input[name=sendTestRadio]:radio:checked").val();
 
-            //if jasmine chose campaign A
-            if (campaignOptionSelected === 'campaignA') {
-                var payload_dict = getCampaignOptionOneInfo();
-            } else {
-                var payload_dict = getCampaignOptionTwoInfo();
+            var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+            var testName = /^[A-Z]+\s[A-Z]+$/i;
+            var send_test_email_val = $('#send-test-email').val();
+            var send_test_name_val = $('#send-test-name').val();
+            
+            if (testEmail.test(send_test_email_val) && testName.test(send_test_name_val)){
+
+                hideAlert('campaign-step-three-alert');
+                
+                var campaignOptionSelected = $("input[name=sendTestRadio]:radio:checked").val();
+                //if jasmine chose campaign A
+                if (campaignOptionSelected === 'campaignA') {
+                    var payload_dict = getCampaignOptionOneInfo();
+                } else {
+                    var payload_dict = getCampaignOptionTwoInfo();
+                }
+
+                $.ajax({
+                    url: BASE_URL + '/send',
+                    type: "POST",
+                    contentType: 'application/json',
+                    data: JSON.stringify(payload),
+                    success: function(request){
+                        showAlert('campaign-step-three-alert-success', 'Your email has successfully sent!');
+                    },
+                    error: function (request) {
+                        alert('Contact Samir, something went wrong');
+                    }
+                });
             }
 
-            $.ajax({
-                url: BASE_URL + '/send',
-                type: "POST",
-                contentType: 'application/json',
-                data: JSON.stringify(payload),
-                success: function(request){
-                    showAlert('campaign-step-three-alert-success', 'Your email has successfully sent!');
-                },
-                error: function (request) {
-                    alert('Contact Samir, something went wrong');
-                }
-            });
+            else if (!testEmail.test(send_test_email_val)){
+                showAlert('campaign-step-three-alert', 'Please enter email address.');
+            }
 
+            else {
+                showAlert('campaign-step-three-alert', 'Please enter full name.');
+            }   
         }
     });
-    $("input[type=checkbox]").on( "click", adminChecked );
 
     $("input[name=sendTestRadio]:radio").change(function () {
         if ($(this).val() === 'campaignB') {
@@ -97,6 +185,7 @@ $(document).ready(function() {
             }
         }
     });
+
 });
 
 var showAlert = function(target_element, msg) {
@@ -167,15 +256,15 @@ var showValidate = function(num) {
 
 var adminChecked = function() {
     if($(this).prop('checked')) {
-        removeAttr("testbInput","disabled");
-        removeAttr("testbSelect","disabled");
+        removeAttr("option-two-subject","disabled");
+        removeAttr("option-two-template","disabled");
     }
     else {
-        attrDisable('testbInput');
-        attrDisable('testbSelect');
+        attrDisable('option-two-subject');
+        attrDisable('option-two-template');
 
-        $("#testbInput").val('');
-        $("#testbSelect").val('');
+        $("#option-two-subject").val('');
+        $("#option-two-template").val('');
 
     }
 }
