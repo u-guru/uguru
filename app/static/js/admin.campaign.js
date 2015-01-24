@@ -1,6 +1,19 @@
 // BASE_URL = "http://uguru-rest.herokuapp.com/api/admin/";
 BASE_URL = "/api/admin";
 
+//0. Understand Samir's code
+//1. Step 2: Validate
+//     - if jasmine checks AB test, both subjects need to not be empty
+//     - If she selects from template dropdown, fill in the input above with the same text. 
+//     - Just like step1 , make the top bar green / hide the validate button 
+//     - Try to break your own code. If I can break your code 10 pushups
+//2. Step 3: Review & Set Defaults
+//     - When we click send-test 
+//     - When I click send-test, make sure that test_email input, is actually an email address. 
+//     - When I click sent-test, make sure test_name input, has more than a first name. 
+//3. Bonus
+//     - Push refresh button by 'select a template', and when Jasmine clicks, make API call w/ ajax, and show success that says 'Templates successfullly refreshed!'
+
 $(document).ready(function() {
 
     $('#campaign-step-one-validate').click(function() {
