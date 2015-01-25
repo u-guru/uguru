@@ -32,6 +32,10 @@ def index():
 def admin_login():
     return render_template('admin/login.html')
 
+@app.route('/app/')
+def app_route():
+    return redirect('http://uguru-rest.herokuapp.com/static/remote/index.html')
+
 @app.route('/admin/campaigns/')
 def admin_campaigns():
     if not session.get('admin'):

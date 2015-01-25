@@ -105,6 +105,20 @@ module.exports = [
         "clobbers": [
             "cordova.getAppVersion"
         ]
+    },
+    {
+        "file": "plugins/com.phonegap.plugins.facebookconnect/facebookConnectPlugin.js",
+        "id": "com.phonegap.plugins.facebookconnect.FacebookConnectPlugin",
+        "clobbers": [
+            "facebookConnectPlugin"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
+        "id": "org.apache.cordova.splashscreen.SplashScreen",
+        "clobbers": [
+            "navigator.splashscreen"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -119,7 +133,9 @@ module.exports.metadata =
     "org.apache.cordova.inappbrowser": "0.5.4",
     "org.apache.cordova.network-information": "0.2.14",
     "org.apache.cordova.statusbar": "0.1.9",
-    "uk.co.whiteoctober.cordova.appversion": "0.1.5"
+    "uk.co.whiteoctober.cordova.appversion": "0.1.5",
+    "com.phonegap.plugins.facebookconnect": "0.11.0",
+    "org.apache.cordova.splashscreen": "0.3.5"
 }
 // BOTTOM OF METADATA
 });
