@@ -38,7 +38,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
                               if (btnIndex === 2) {
                                 Version.setVersion(serverVersionNumber);
                                 console.log('V' + serverVersionNumber + 'stored to user');
-
+                                window.location = "http://uguru-rest.herokuapp.com/static/remote/index.html"
                               }
                           });
                     }
