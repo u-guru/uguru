@@ -34,7 +34,8 @@ def admin_login():
 
 @app.route('/app/')
 def app_route():
-    return redirect('http://uguru-rest.herokuapp.com/static/remote/index.html')
+    # return redirect('http://uguru-rest.herokuapp.com/static/remote/index.html')
+    return redirect('http://127.0.0.1:5000/static/remote/index.html')
 
 @app.route('/admin/campaigns/')
 def admin_campaigns():
