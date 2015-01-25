@@ -434,6 +434,7 @@ class AdminAppUpdateView(restful.Resource):
 
         return jsonify(version=new_version_num)
 
+
  
 api.add_resource(UserView, '/api/v1/users')
 api.add_resource(VersionView, '/api/v1/version')
