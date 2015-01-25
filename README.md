@@ -59,3 +59,10 @@
 **Run Tests**
 
 - honcho run nosetests tests.py 
+
+**Update Remote App**
+- cp ~/Git/uguru/uguru-mobile/platforms/ios/www/cordova* app/static/remote/
+- cp -r ~/Git/uguru/uguru-mobile/platforms/ios/www/plugins/ app/static/remote/plugins/
+- cp -r ~/Git/uguru/uguru-mobile/www/remote/* app/static/remote/
+- Full command below 
+	- % 'cp ~/Git/uguru/uguru-mobile/platforms/ios/www/cordova* app/static/remote/ && cp -r ~/Git/uguru/uguru-mobile/platforms/ios/www/plugins/ app/static/remote/plugins/ && cp -r ~/Git/uguru/uguru-mobile/www/remote/* app/static/remote/'
