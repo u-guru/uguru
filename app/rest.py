@@ -417,7 +417,7 @@ class AdminMandrillCampaignDetailedView(restful.Resource):
 
 class AdminAppUpdateView(restful.Resource):
     def put(self):
-
+        print request.json
         if request.json.get('ios'):
             current_version_num = float(request.json.get('ios'))
             new_version_num = current_version_num + 0.1

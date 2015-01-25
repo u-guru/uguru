@@ -10,7 +10,7 @@ $(document).ready(function() {
         console.log(payload);
     
         $.ajax({
-            url: BASE_URL + '/app/update/',
+            url: BASE_URL + '/app/update',
             type: "PUT",
             contentType: 'application/json',
             data: JSON.stringify(payload),
@@ -34,7 +34,7 @@ $(document).ready(function() {
 
     
         $.ajax({
-            url: BASE_URL + '/app/update/',
+            url: BASE_URL + '/app/update',
             type: "PUT",
             contentType: 'application/json',
             data: JSON.stringify(payload),
