@@ -111,8 +111,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   $urlRouterProvider.otherwise('/student/home');
 
   //Set up restangular provider
-  // RestangularProvider.setBaseUrl('http://uguru-rest.herokuapp.com/api/v1');
-  RestangularProvider.setBaseUrl('http://127.0.0.1:5000/api/v1');
+  RestangularProvider.setBaseUrl('http://uguru-rest.herokuapp.com/api/v1');
+  // RestangularProvider.setBaseUrl('http://127.0.0.1:5000/api/v1');
 
   //Client-side router
   $stateProvider
