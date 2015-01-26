@@ -37,6 +37,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
                               console.log(buttonIndex);
                               var btnIndex = buttonIndex;
                               if (btnIndex === 2) {
+                                $ionicHistory.clearCache();
+                                $ionicHistory.clearHistory();
+                                window.localStorage.clear();
                                 Version.setVersion(serverVersionNumber);
                                 console.log('V' + serverVersionNumber + 'stored to user');
                                 window.location = "http://uguru-rest.herokuapp.com/app/"
