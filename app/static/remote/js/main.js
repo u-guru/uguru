@@ -10,27 +10,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
     //Only when the app is opened after its been closed
     document.addEventListener("deviceready", function () {
 
-        var options = {
-        quality: 50,
-        destinationType: Camera.DestinationType.DATA_URL,
-        sourceType: Camera.PictureSourceType.CAMERA,
-        allowEdit: true,
-        encodingType: Camera.EncodingType.JPEG,
-        targetWidth: 100,
-        targetHeight: 100,
-        popoverOptions: CameraPopoverOptions,
-        saveToPhotoAlbum: false
-      };
 
-      console.log(JSON.stringify(Camera));
-
-      $cordovaCamera.getPicture(options).then(function(imageData) {
-        var image = document.getElementById('myImage');
-        image.src = "data:image/jpeg;base64," + imageData;
-      }, function(err) {
-        console.log('error');
-        console.log(JSON.stringify(err));
-      });
 
         console.log('hiding splash screen..');
         $cordovaSplashscreen.hide();
@@ -61,7 +41,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
                               if (btnIndex === 2) {
                                 Version.setVersion(serverVersionNumber);
                                 console.log('V' + serverVersionNumber + 'stored to user');
-                                window.location = "http://uguru-rest.herokuapp.com/static/remote/index.html"
+                                window.location = "http://uguru-rest.herokuapp.com/app/"
                               }
                           });
                     }
