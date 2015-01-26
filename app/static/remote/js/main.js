@@ -4,19 +4,17 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory, 
-  $cordovaDialogs, Version, $cordovaSplashscreen, $cordovaCamera) {
+  $cordovaDialogs, Version, $cordovaSplashscreen) {
   $ionicPlatform.ready(function() {
 
     //Only when the app is opened after its been closed
     document.addEventListener("deviceready", function () {
 
-
-
         console.log('hiding splash screen..');
         $cordovaSplashscreen.hide();
         var checkForAppUpdates = function () {
 
-          console.log('checking for app updates...');
+            console.log('checking for app updates...');
             Version.getUpdatedVersionNum().then(
               //if user gets the right version
               function(response) {
