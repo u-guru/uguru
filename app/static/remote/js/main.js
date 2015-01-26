@@ -133,6 +133,10 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         templateUrl: 'templates/student/student.home.html',
         controller: 'StudentHomeController'
   }).
+  state('root.student.request', {
+        url: '/request',
+        templateUrl: 'templates/student/student.request.html',
+  }).
   state('root.student.directory', {
         url: '/directory',
         templateUrl: 'templates/student/directory.html',

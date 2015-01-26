@@ -9,10 +9,12 @@ angular.module('uguru.student.controllers', [])
   '$ionicPopup',
   '$timeout',
   '$localstorage',
-  '$cordovaDialogs',
-  'Version',
+  '$ionicModal',
+  '$ionicTabsDelegate',
   function($scope, $state, $ionicPopup, $timeout, $localstorage, 
-  	$cordovaDialogs, Version) {
+ 	$ionicModal, $ionicTabsDelegate) {
+
+	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top')
 
     $scope.showWelcomePopup = function() {
 
@@ -43,10 +45,33 @@ angular.module('uguru.student.controllers', [])
 		console.log('clicked');
 	}
 
-	 //show popup after 1 second
-	 $timeout(function() {
-	 	$scope.showWelcomePopup();
-	 }, 1000);
+	 // //show popup after 1 second
+	 // $timeout(function() {
+	 // 	$scope.showWelcomePopup();
+	 // }, 1000);
+
+	$ionicModal.fromTemplateUrl('templates/addCourseModal.html', {
+	    scope: $scope,
+	    animation: 'slide-in-up'
+	}).then(function(modal) {
+	    $scope.addCourseModal = modal;
+	});
+
+	$ionicModal.fromTemplateUrl('templates/addUniversityModal.html', {
+	    scope: $scope,
+	    animation: 'slide-in-up'
+	}).then(function(modal) {
+	    $scope.addUniversityModal = modal;
+	});
+
+	$scope.$on('addUniversityModal.hidden', function() {
+    	console.log('University modal hidden');
+    	//send to server
+  	});
+
+  	$scope.$on('addCourseModal.hidden', function() {
+    	console.log('Add course modal hidden');
+  	});
     
 
   }

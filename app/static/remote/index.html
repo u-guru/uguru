@@ -33,6 +33,24 @@
           <img src="img/left-chevron.png" class='uguru-back-button'/>
         </ion-nav-back-button>
     </ion-nav-bar>
+    <script id="templates/root.html" type="text/ng-template">
+      <ion-nav-view animation="slide-left-right">
+      </ion-nav-view>
+    </script>
+    <script id="templates/student-root.html" type="text/ng-template">
+      <ion-nav-view animation="slide-left-right">
+      </ion-nav-view>
+    </script>
+
+    <script id="templates/wizard-root.html" type="text/ng-template">
+      <ion-nav-view animation="slide-left-right">
+      </ion-nav-view>
+    </script>
+
+    <script id="templates/guru-root.html" type="text/ng-template">
+      <ion-nav-view animation="slide-left-right">
+      </ion-nav-view>
+    </script>
 
     <script id="templates/signup.html" type="text/ng-template">
       <ion-view hide-nav-bar="true">
@@ -57,26 +75,8 @@
       </ion-view>
     </script>
 
-    <script id="templates/root.html" type="text/ng-template">
-      <ion-nav-view animation="slide-left-right">
-      </ion-nav-view>
-    </script>
-    <script id="templates/student-root.html" type="text/ng-template">
-      <ion-nav-view animation="slide-left-right">
-      </ion-nav-view>
-    </script>
-
-    <script id="templates/wizard-root.html" type="text/ng-template">
-      <ion-nav-view animation="slide-left-right">
-      </ion-nav-view>
-    </script>
-
-    <script id="templates/guru-root.html" type="text/ng-template">
-      <ion-nav-view animation="slide-left-right">
-      </ion-nav-view>
-    </script>
-
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+  </body>
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
     <script src="lib/lodash/dist/lodash.js"></script>
     <script src="lib/restangular/dist/restangular.js"></script>
@@ -152,5 +152,4 @@
       Templates are in the /templates folder (but you could also
       have templates inline in this html file if you'd like).
     -->
-  </body>
 </html>
