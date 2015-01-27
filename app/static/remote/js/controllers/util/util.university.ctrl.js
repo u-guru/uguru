@@ -17,17 +17,15 @@ angular.module('uguru.util.controllers', [])
   $cordovaKeyboard) {
 
     $scope.search_text = '';
+    $scope.keyboard_force_off = false;
     
-    var GetUniversityList = function() {
-      
-      if ($localstorage.getObject('universities').length > 0) {
-            
-        $timeout(function() {
-            $scope.setFocus();
-        }, 500);
-        return $localstorage.getObject('universities');
-
+    $scope.setFocus = function(target) {
+      if ($scope.search_text.length === 0 && !$scope.keyboard_force_off) {
+        document.getElementsByName("university-input")[0].focus();
       }
+    };
+
+    var GetUniversityList = function() {
 
       var universitiesLoaded = $q.defer();
 
@@ -38,8 +36,22 @@ angular.module('uguru.util.controllers', [])
             $scope.getUniversitiesFromServer(universitiesLoaded);
           }
 
+        if ($scope.addUniversityModal.isShown() &&
+
+            $localstorage.getObject('universities').length > 0) {
+            $scope.keyboard_force_off = false;
+            $timeout(function() {
+                $scope.setFocus();
+            }, 500);
+        }
 
       });
+
+      if ($localstorage.getObject('universities').length > 0) {
+            
+          return $localstorage.getObject('universities');
+
+      }
 
       return universitiesLoaded.promise;
     }
@@ -85,12 +97,6 @@ angular.module('uguru.util.controllers', [])
         $scope.search_text = '';
     };
 
-    $scope.setFocus = function(target) {
-      if ($scope.search_text.length === 0) {
-        document.getElementsByName("university-input")[0].focus();
-      }
-    };
-
     $scope.universitySelected = function(university) {
       $scope.user.university_id = university.id;
       $scope.user.university = university;
@@ -104,7 +110,7 @@ angular.module('uguru.util.controllers', [])
 
     $scope.hideUniversityModal = function() {
       if ($cordovaKeyboard.isVisible()) {
-        $scope.search_text = '';
+        $scope.keyboard_force_off = true;
         $scope.closeKeyboard();
         $timeout(function() {
           $scope.addUniversityModal.hide();

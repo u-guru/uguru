@@ -19,12 +19,13 @@ angular.module('uguru.util.controllers')
 
 	  $localstorage.setObject('courses', []);
     $scope.course_search_text = '';
-
-    $scope.setCourseFocus = function() {
-      if ($scope.course_search_text.length === 0) {
-          document.getElementsByName("course-input")[0].focus();
-        }
-    }
+    $scope.keyboard_force_off = false;
+    
+    $scope.setCourseFocus = function(target) {
+      if ($scope.course_search_text.length === 0 && !$scope.keyboard_force_off) {
+        document.getElementsByName("course-input")[0].focus();  
+      }
+    };
 
     $scope.getCoursesFromServer = function(promise) {
         var university_title = $scope.user.university.title;
@@ -104,7 +105,7 @@ angular.module('uguru.util.controllers')
         if ($scope.addCourseModal.isShown() && 
           !$scope.addUniversityModal.isShown() &&
           $localstorage.getObject('courses').length > 0) {
-
+          $scope.keyboard_force_off = false;
 
           $timeout(function() {
             $scope.setCourseFocus();
@@ -116,7 +117,8 @@ angular.module('uguru.util.controllers')
 
     $scope.hideCourseModal = function() {
       if ($cordovaKeyboard.isVisible()) {
-        console.log('keyboard is showing');
+        
+        $scope.keyboard_force_off = true;
         $scope.course_search_text = '';
         $scope.closeKeyboard();
         $timeout(function() {
@@ -133,10 +135,10 @@ angular.module('uguru.util.controllers')
 
 
       if (!$scope.user.student_courses) {
-          console.log('user added their first course');
           $scope.user.student_courses = [];
       }
 
+        $scope.keyboard_force_off = true;
         $scope.user.student_courses.push(course);
         $scope.course_search_text = '';
         $scope.closeKeyboard();

@@ -6,9 +6,9 @@
         <div class="col center"><img src='./img/setting.png' class='width'></div>
       </div>
   </div> -->
-  <ion-tabs class="tabs-positive tabs-icon-only" delegate-handle="student-home-tabs-bottom" style="background-color: rgb(43,50,52)">
+  <ion-tabs class="tabs-dark tabs-icon-only" delegate-handle="student-home-tabs-bottom" style="background-color: rgb(43,50,52)">
     
-    <ion-tab title="Home" icon-on="ion-ios7-home" icon-off="ion-ios7-home-outline" >
+    <ion-tab title="Home" icon-on="ion-ios7-home" icon-off="ion-ios7-home-outline" style="color:white; text-decoration:none;">
       <div ng-show="bottomTabsDelegate.selectedIndex() === 0" ng-include="base_url + 'templates/student/student.home.body.html'"></div>
     </ion-tab>
 

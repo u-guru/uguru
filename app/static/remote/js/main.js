@@ -47,8 +47,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                                 window.localStorage.clear();
                                 Version.setVersion(serverVersionNumber);
                                 console.log('V' + serverVersionNumber + 'stored to user');
-                                // window.location = "http://uguru-rest.herokuapp.com/app/"
                                 window.location = "http://uguru-rest.herokuapp.com/app/"
+                                // window.location = "http://uguru-rest.herokuapp.com/app/"
+                                // window.location = "http://192.168.1.233:8100/remote/index.html#/student/home"
 
                               }
                           });

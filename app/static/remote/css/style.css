@@ -549,3 +549,32 @@ p {
 .wizard-footer.button.disabled, .wizard-footer.button[disabled] {
   color:rgba(0,0,0,0.3) !important;
 }
+
+.tabs-dark > .tabs, .tabs.tabs-dark {
+  border-color: #363C3E;
+  background-color: #363C3E;
+  background-image: none;
+  color: #fff; }
+  .tabs-dark > .tabs .tab-item .badge, .tabs.tabs-dark .tab-item .badge {
+    background-color: #fff;
+    color: #444; }
+
+a:hover, a:focus {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+span.tab-title:first {
+  text-transform:uppercase;
+  font-family:"OpenSans-Bold";
+  bottom:2px;
+  
+}
+
+span.tab-title {
+  text-transform:uppercase;
+  font-family:"OpenSans-Bold";
+  bottom:4px;
+  width:110%;
+  margin-right:30px;
+}

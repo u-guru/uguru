@@ -4,13 +4,11 @@
     <div class="bar bar-subheader">
       <div class="row center">
         <div class="col border-bottom">ALL CLASSES</div>
-        <div class="col">BIO101</div>
-        <div class="col">CHEM101</div>
-        <div class="col">HIST302</div>
+        <div class="col" ng-repeat="course in user.student_courses" >{{course.short_name}}</div>
       </div>
     </div>
 
-    <ion-content>
+    <ion-content ng-show="user.gurus && user.gurus.length > 0">
       <div class="guru-book margin-top-40">
         <li class="item padding-6-15">
           <div class="icon"><img src='./img/shun.png' class='width'></div>
@@ -29,4 +27,11 @@
           </div>
         </li>
       </div>
+    </ion-content>
+    <ion-content ng-show="!user.gurus">
+        <div class="no-session margin-150-10 center">
+          <h2>No Gurus Yet.</h2>
+          <div class="gray">Request help to be matched with a Guru</div>
+          <div class="green" ng-click="addCourseModal.show()">+Request Help</div>
+        </div>
     </ion-content>
