@@ -10,7 +10,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory, 
-  $cordovaDialogs, Version, $cordovaSplashscreen) {
+  $cordovaDialogs, Version, $cordovaSplashscreen, $rootScope, $templateCache) {
   $ionicPlatform.ready(function() {
     //Only when the app is opened after its been closed
     document.addEventListener("deviceready", function () {
@@ -33,8 +33,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                     }
                     console.log('user v:' + currentVersion.toString() + '. Server v:' + serverVersionNumber);
                     if (serverVersionNumber != currentVersion) {
-                      var msg = 'This will improve your experience'
-                      var title = "App Update v" + serverVersionNumber;
+                      var msg = JSON.parse(response).ios_msg;
+                      var title = "New Updates! v" + serverVersionNumber;
                       $cordovaDialogs.confirm(msg, title, ['Not Now','Update'])
                           .then(function(buttonIndex) {
                             // no button = 0, 'OK' = 1, 'Cancel' = 2
@@ -44,10 +44,18 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                               if (btnIndex === 2) {
                                 $ionicHistory.clearCache();
                                 $ionicHistory.clearHistory();
+                                $cordovaSplashscreen.show();
                                 window.localStorage.clear();
+
+                                //remove all angular templates
+                                $templateCache.removeAll();
+
                                 Version.setVersion(serverVersionNumber);
+                                $localstorage.set('recently_updated', true);
                                 console.log('V' + serverVersionNumber + 'stored to user');
                                 window.location = "http://uguru-rest.herokuapp.com/app/"
+                                // window.location = "http://127.0.0.1:5000/app/";
+                                window.location.reload(true);
                                 // window.location = "http://uguru-rest.herokuapp.com/app/"
                                 // window.location = "http://192.168.1.233:8100/remote/index.html#/student/home"
 
@@ -107,6 +115,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         checkForAppUpdates();
 
     });
+
   })
 })
 

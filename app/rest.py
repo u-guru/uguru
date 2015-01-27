@@ -28,7 +28,8 @@ class UniversityListView(restful.Resource):
 class VersionView(restful.Resource):
     def get(self):
         version_dict = {
-            'version':Version.query.get(1).ios
+            'version':Version.query.get(1).ios,
+            'ios_msg': Version.query.get(1).ios_msg
         }
         return json.dumps(version_dict), 200
 
@@ -420,9 +421,10 @@ class AdminAppUpdateView(restful.Resource):
         print request.json
         if request.json.get('ios'):
             current_version_num = float(request.json.get('ios'))
-            new_version_num = current_version_num + 0.1
+            new_version_num = current_version_num
             version = Version.query.get(1)
             version.ios = new_version_num
+            version.ios_msg = request.json.get('msg')
             db_session.commit()
 
         if request.json.get('android'):
@@ -430,6 +432,7 @@ class AdminAppUpdateView(restful.Resource):
             new_version_num = current_version_num + 0.1
             version = Version.query.get(1)
             version.ios = new_version_num
+            version.ios_msg = request.json.get('android_msg')
             db_session.commit()
 
         return jsonify(version=new_version_num)

@@ -15,14 +15,17 @@ angular.module('uguru.student.controllers', [])
   '$cordovaProgress',
   '$q',
   'University',
+  '$templateCache',
   function($scope, $state, $ionicPopup, $timeout, $localstorage, 
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $cordovaProgress, $q,
- 	University) {
+ 	University, $templateCache) {
 
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
 	$scope.base_url =  BASE;
 	$scope.progress_active = false;
+
+	console.log($templateCache);
 
     $scope.showWelcomePopup = function() {
 

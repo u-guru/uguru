@@ -464,6 +464,8 @@ class Version(Base):
     id = Column(Integer, primary_key=True)
     android = Column(Float)
     ios = Column(Float)
+    ios_msg = Column(String)
+    android_msg = Column(String)
     
 
 class Card(Base):

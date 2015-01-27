@@ -6,7 +6,10 @@ $(document).ready(function() {
     $('#update-ios-btn').click(function() {
         console.log('ios udpated button clicked');
 
-        var payload = {'ios': $('#current-ios-version').val()}
+        var payload = {
+            'ios': $('#current-ios-version').val(),
+            'msg': $('#current-ios-version-msg').val()
+        }
         console.log(payload);
     
         $.ajax({
