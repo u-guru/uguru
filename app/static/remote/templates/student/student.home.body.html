@@ -1,0 +1,47 @@
+    <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
+        <h1 class="title">Find A Guru</h1>
+    </ion-header-bar>
+
+    <div class="bar bar-subheader">
+        <ion-tabs class="tabs-positive tabs-icon-only" delegate-handle="student-home-tabs-top">
+          <ion-tab title="My Classes">
+          </ion-tab>
+          <ion-tab title="Previous Sessions">
+          </ion-tab>
+        </ion-tabs>
+      <div class="row center">
+        <div class="col border-bottom">MY CLASSES</div>
+        <div class="col">PREVIOUS SESSIONS</div>
+      </div>
+    </div>
+  
+    <ion-content ng-show="topTabsDelegate.selectedIndex() === 0">
+      <div class="add-class margin-top-40" ng-show="topTabsDelegate.selectedIndex() === 0">
+        
+        <div class="lg-box" ui-sref="^.request" ng-repeat="course in user.student_courses">
+          <div class="course-name-box">
+            <div class="text">
+              {{course.short_name}}
+            </div>
+          </div>
+        </div>
+      
+        <div class="add-item-box" ng-click="addCourseModal.show()"> 
+          <div class="green-box"><span class="icon ion-plus"></span>
+          </div>
+          <div class="md-box">
+            <div class="text">
+              Add a class ...
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </ion-content>
+    <ion-content ng-show="topTabsDelegate.selectedIndex() === 1">
+        <div class="no-session margin-150-10 center">
+          <h2>No sessions yet.</h2>
+          <div class="gray">Add a class to get started.</div>
+          <div class="green" ng-click="addCourseModal.show()">+Add a class</div>
+        </div>
+    </ion-content>

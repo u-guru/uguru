@@ -11,11 +11,17 @@ angular.module('uguru.student.controllers', [])
   '$localstorage',
   '$ionicModal',
   '$ionicTabsDelegate',
+  '$cordovaKeyboard',
+  '$cordovaProgress',
+  '$q',
+  'University',
   function($scope, $state, $ionicPopup, $timeout, $localstorage, 
- 	$ionicModal, $ionicTabsDelegate) {
+ 	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $cordovaProgress, $q,
+ 	University) {
 
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
+	$scope.base_url =  BASE;
 
     $scope.showWelcomePopup = function() {
 
@@ -51,14 +57,14 @@ angular.module('uguru.student.controllers', [])
 	 // 	$scope.showWelcomePopup();
 	 // }, 1000);
 
-	$ionicModal.fromTemplateUrl('templates/components/modals/add-course.modal.html', {
+	$ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/add-course.modal.html', {
 	    scope: $scope,
 	    animation: 'slide-in-up'
 	}).then(function(modal) {
 	    $scope.addCourseModal = modal;
 	});
 
-	$ionicModal.fromTemplateUrl('templates/addUniversityModal.html', {
+	$ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/university.modal.html', {
 	    scope: $scope,
 	    animation: 'slide-in-up'
 	}).then(function(modal) {
@@ -67,15 +73,30 @@ angular.module('uguru.student.controllers', [])
 
 	$scope.$on('addUniversityModal.hidden', function() {
     	console.log('University modal hidden');
+    	$scope.closeKeyboard();
     	//send to server
   	});
 
   	$scope.$on('addCourseModal.hidden', function() {
     	console.log('Add course modal hidden');
+    	$scope.closeKeyboard();
   	});
+  	
+  	$scope.showSuccess = function(msg) {
+      $cordovaProgress.showSuccess(true, msg)
+      $timeout(function() {
+        $cordovaProgress.hide();
+      }, 1000);
+    }
+
+    $scope.closeKeyboard = function() {
+      if (window.cordova && window.cordova.plugins.Keyboard) {
+          $cordovaKeyboard.close();
+      }
+    }
+
     
 
   }
 
 ]);
-

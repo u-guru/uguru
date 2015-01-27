@@ -1,4 +1,4 @@
-angular.module('ionic.university', [])
+angular.module('uguru.rest', [])
 .factory('University', ['Restangular', function(Restangular) {
     var University;
     University = {

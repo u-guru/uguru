@@ -1,16 +1,21 @@
 // Uguru upp
-angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
-  'ngAnimate', 'uguru.student.controllers', 'uguru.version'])
+var LOCAL = false;
+var BASE = '';
+if (LOCAL) {
+  BASE = 'remote/';
+}
+angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
+  'ngAnimate', 'uguru.student.controllers', 'uguru.version', 'uguru.util.controllers',
+  'uguru.rest'])
 
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory, 
   $cordovaDialogs, Version, $cordovaSplashscreen) {
   $ionicPlatform.ready(function() {
-
     //Only when the app is opened after its been closed
     document.addEventListener("deviceready", function () {
 
-        console.log('hiding splash screen..');
+        console.log('hiding splash screens..');
         $cordovaSplashscreen.hide();
         var checkForAppUpdates = function () {
 
@@ -33,7 +38,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
                       $cordovaDialogs.confirm(msg, title, ['Not Now','Update'])
                           .then(function(buttonIndex) {
                             // no button = 0, 'OK' = 1, 'Cancel' = 2
-                              console.log('user lcicked button');
+                              console.log('user clicked button');
                               console.log(buttonIndex);
                               var btnIndex = buttonIndex;
                               if (btnIndex === 2) {
@@ -42,7 +47,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
                                 window.localStorage.clear();
                                 Version.setVersion(serverVersionNumber);
                                 console.log('V' + serverVersionNumber + 'stored to user');
+                                // window.location = "http://uguru-rest.herokuapp.com/app/"
                                 window.location = "http://uguru-rest.herokuapp.com/app/"
+
                               }
                           });
                     }
@@ -92,9 +99,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
        
         }, false);
 
-        document.addEventListener("pause", function() {
-            console.log("App is paused...");
-        }, false);
+        // document.addEventListener("pause", function() {
+        //     console.log("App is paused...");
+        // }, false);
 
         checkForAppUpdates();
 
@@ -124,8 +131,16 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         url: '',
         abstract: true,
         templateUrl: 'templates/root.html',
+        controller: function($scope, $localstorage) {
+          $scope.user = $localstorage.getObject('user');
+          if (Object.keys($scope.user).length === 0) {
+            console.log('user is new');
+            $scope.user = {};
+            $localstorage.setObject('user', $scope.user);
+            //TODO: Initialize user with device & constants
+          }
+        }
   }).
-  //TESTING PURPOSES ONLY
   state('root.student', {
         url: '/student',
         abstract: true,
@@ -133,15 +148,20 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   }).
   state('root.student.home', {
         url: '/home',
-        templateUrl: 'templates/student/student.home.html',
+        templateUrl: BASE + 'templates/student/student.home.html',
         controller: 'StudentHomeController'
   }).
   state('root.student.request', {
         url: '/request',
-        templateUrl: 'templates/student/student.request.html',
+        templateUrl: BASE +  'templates/student/student.request.html',
+        controller: 'StudentRequestController'
+  }).
+  state('root.student.settings', {
+        url: '/settings',
+        templateUrl: BASE + 'templates/student/student.settings.html',
   }).
   state('root.student.directory', {
         url: '/directory',
-        templateUrl: 'templates/student/directory.html',
+        templateUrl: BASE + 'templates/student/directory.html',
   })
 });
