@@ -22,6 +22,9 @@ angular.module('uguru.util.controllers', [])
       
       if ($localstorage.getObject('universities').length > 0) {
             
+        $timeout(function() {
+            $scope.setFocus();
+        }, 500);
         return $localstorage.getObject('universities');
 
       }
@@ -32,8 +35,9 @@ angular.module('uguru.util.controllers', [])
 
         if ($scope.addUniversityModal.isShown() && 
           $localstorage.getObject('universities').length === 0) {
-            getUniversitiesFromServer(universitiesLoaded);
+            $scope.getUniversitiesFromServer(universitiesLoaded);
           }
+
 
       });
 
@@ -42,14 +46,21 @@ angular.module('uguru.util.controllers', [])
 
     $scope.universities = GetUniversityList();
 
-    var getUniversitiesFromServer = function(promise) {
-        $cordovaProgress.showSimpleWithLabelDetail(true, "Loading", "Retrieving all US Universities....");
+    $scope.getUniversitiesFromServer = function(promise) {
+        if (!$scope.progress_active) {
+          $scope.progress_active = true;
+          $cordovaProgress.showSimpleWithLabelDetail(true, "Loading", "Retrieving all US Universities....");
+        } else {
+          console.log('progress spinner is already active!');
+        }
         University.get().then(
           function(universities) {
+              $cordovaProgress.hide();
+              $scope.progress_active = false;
+
               $timeout(function() {
-                $cordovaProgress.hide();
                 $scope.showSuccess('Success!');
-              }, 500)
+              }, 500);
 
               $timeout(function() {
                 $scope.setFocus();
@@ -102,22 +113,6 @@ angular.module('uguru.util.controllers', [])
         $scope.addUniversityModal.hide();
       }
     }
-
-    
-    $scope.$on('modal.shown', function() {
-
-        if ($scope.addUniversityModal.isShown() && 
-          $localstorage.getObject('universities').length > 0) {
-
-
-          $timeout(function() {
-            $scope.setFocus();
-          }, 500);
-
-        }
-
-    });
-
     //case 1: if universities do not exist in local storage ... go get them
     //case 2: if user has ios && user has not been prompted... , prompt the display to get access
     //case 3: if coordinates are available && nearest_universities are not displayed..., calculate the nearest gps

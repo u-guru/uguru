@@ -29,18 +29,25 @@ angular.module('uguru.util.controllers')
     $scope.getCoursesFromServer = function(promise) {
         var university_title = $scope.user.university.title;
         var msg_details = "Retrieving all " + university_title + ' courses'
-        $cordovaProgress.showSimpleWithLabelDetail(true, "Loading", msg_details);
+        
+        if (!$scope.progress_active) {
+          $scope.progress_active = true;
+          $cordovaProgress.showSimpleWithLabelDetail(true, "Loading", msg_details);
+        } else {
+          console.log('progress spinner is already active!');
+        }
         
         University.getCourses($scope.user.university_id).then(
                 function(courses) {
                   $cordovaProgress.hide();
+                  $scope.progress = false;
                     var courses = JSON.parse(courses);
                     console.log(courses.length + ' courses uploaded from ' + $scope.user.university.title);
 
-                    $timeout(function() {
-                    var courseSuccessMsg = courses.length + ' Courses Found!';
-                    $scope.showSuccess(courseSuccessMsg);
-                }, 500)
+                  $timeout(function() {
+                      var courseSuccessMsg = courses.length + ' Courses Found!';
+                      $scope.showSuccess(courseSuccessMsg);
+                  }, 500)
                             
                     if (promise) {
                     promise.resolve(courses);

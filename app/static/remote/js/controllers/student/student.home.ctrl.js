@@ -22,6 +22,7 @@ angular.module('uguru.student.controllers', [])
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
 	$scope.base_url =  BASE;
+	$scope.progress_active = false;
 
     $scope.showWelcomePopup = function() {
 
@@ -70,23 +71,19 @@ angular.module('uguru.student.controllers', [])
 	}).then(function(modal) {
 	    $scope.addUniversityModal = modal;
 	});
-
-	$scope.$on('addUniversityModal.hidden', function() {
-    	console.log('University modal hidden');
-    	$scope.closeKeyboard();
-    	//send to server
-  	});
-
-  	$scope.$on('addCourseModal.hidden', function() {
-    	console.log('Add course modal hidden');
-    	$scope.closeKeyboard();
-  	});
   	
   	$scope.showSuccess = function(msg) {
-      $cordovaProgress.showSuccess(true, msg)
-      $timeout(function() {
-        $cordovaProgress.hide();
-      }, 1000);
+      if (!$scope.progress_active)  {
+      		$scope.progress_active = true;
+      		$cordovaProgress.showSuccess(true, msg)
+	      	$timeout(function() {
+	        	$cordovaProgress.hide();
+	        	$scope.progress_active = false;
+	      	}, 1000);
+      } else {
+
+      	console.log('Show success cannot be shown because progress bar is already active');
+      }
     }
 
     $scope.closeKeyboard = function() {
