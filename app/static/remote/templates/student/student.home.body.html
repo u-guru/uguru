@@ -18,7 +18,7 @@
     <ion-content ng-show="topTabsDelegate.selectedIndex() === 0">
       <div class="add-class margin-top-40" ng-show="topTabsDelegate.selectedIndex() === 0">
         
-        <div class="lg-box" ui-sref="^.request" ng-repeat="course in user.student_courses">
+        <div class="lg-box" ng-repeat="course in user.student_courses" animation="slide-left-right" ng-click="goToRequest(course)">
           <div class="course-name-box">
             <div class="text">
               {{course.short_name}}

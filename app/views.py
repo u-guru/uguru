@@ -36,6 +36,7 @@ def admin_login():
 def app_route():
     version = Version.query.get(1).ios
     return redirect('http://uguru-rest.herokuapp.com/static/remote/index.html?version=' + str(version))
+    # return redirect('http://127.0.0.1:5000/static/remote/index.html?version=' + str(version))
     # return redirect('http://127.0.0.1:5000/static/remote/v2/')
 
 @app.route('/admin/campaigns/')

@@ -51,9 +51,13 @@ angular.module('uguru.util.controllers', [])
             
           return $localstorage.getObject('universities');
 
+      } else {
+        
+        return universitiesLoaded.promise;  
+      
       }
 
-      return universitiesLoaded.promise;
+      
     }
 
     $scope.universities = GetUniversityList();
@@ -69,6 +73,7 @@ angular.module('uguru.util.controllers', [])
           function(universities) {
               $cordovaProgress.hide();
               $scope.progress_active = false;
+              $scope.keyboard_force_off = false;
 
               $timeout(function() {
                 $scope.showSuccess('Success!');
@@ -100,6 +105,9 @@ angular.module('uguru.util.controllers', [])
     $scope.universitySelected = function(university) {
       $scope.user.university_id = university.id;
       $scope.user.university = university;
+      $scope.search_text = '';
+      $scope.keyboard_force_off = true;
+      $scope.rootUser.updateLocal($scope.user);
       $scope.closeKeyboard();
       $scope.showSuccess('University Saved!');
       $timeout(function() {

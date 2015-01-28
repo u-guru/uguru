@@ -16,16 +16,15 @@ angular.module('uguru.student.controllers', [])
   '$q',
   'University',
   '$templateCache',
+  '$ionicHistory',
   function($scope, $state, $ionicPopup, $timeout, $localstorage, 
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $cordovaProgress, $q,
- 	University, $templateCache) {
+ 	University, $templateCache, $ionicHistory) {
 
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
 	$scope.base_url =  BASE;
 	$scope.progress_active = false;
-
-	console.log($templateCache);
 
     $scope.showWelcomePopup = function() {
 
@@ -95,7 +94,19 @@ angular.module('uguru.student.controllers', [])
       }
     }
 
-    
+    $scope.goToRequest = function(course) {
+    	$state.go('^.request', {courseObj:JSON.stringify(course)});
+    }
+
+    $scope.clearCache = function() {
+    	$scope.user = {};
+    	$scope.rootUser.logout($scope.user);
+    	$ionicHistory.clearCache();
+    	$ionicHistory.clearHistory();
+    	window.localStorage.clear();
+    	$scope.bottomTabsDelegate.select(0);
+    	$scope.showSuccess('Cache Cleared! Please close the app & open again');
+    }
 
   }
 

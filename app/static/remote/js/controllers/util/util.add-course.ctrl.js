@@ -17,7 +17,6 @@ angular.module('uguru.util.controllers')
  	$ionicModal, $ionicTabsDelegate, $q, $cordovaProgress,
   $cordovaKeyboard, University) {
 
-	  $localstorage.setObject('courses', []);
     $scope.course_search_text = '';
     $scope.keyboard_force_off = false;
     
@@ -57,7 +56,6 @@ angular.module('uguru.util.controllers')
                 $timeout(function() {
                     $scope.setCourseFocus();
                   }, 1000);
-                console.log(courses[0]);
                 // $timeout(function() {
                 //     $cordovaProgress.hide();
                 //     $scope.showSuccess('Success!');
@@ -78,7 +76,21 @@ angular.module('uguru.util.controllers')
     var GetCoursesList = function() {
       
       if ($localstorage.getObject('courses').length > 0) {
-              
+          
+          $scope.$on('modal.shown', function() {
+
+          if ($scope.addCourseModal.isShown() && 
+            !$scope.addUniversityModal.isShown() &&
+              $localstorage.getObject('courses').length > 0) {
+              $scope.keyboard_force_off = false;
+
+              $timeout(function() {
+                $scope.setCourseFocus();
+              }, 500);
+
+            }
+          });
+          
           return $localstorage.getObject('courses');
 
       }
@@ -89,18 +101,23 @@ angular.module('uguru.util.controllers')
 
           if (!$scope.addUniversityModal.isShown() && 
             $scope.addCourseModal.isShown() &&
-            $scope.user.university_id &&
-              $localstorage.getObject('courses').length === 0) {
+            $scope.user.university_id) {
               
-              $scope.getCoursesFromServer(coursesLoaded);
-          }
+              //if there are no courses after university modal is shown;
+              if ($localstorage.getObject('courses').length === 0) {
+                $scope.getCoursesFromServer(coursesLoaded);
+              //if there are courses after the modal is shown
+              } else {
+                //show the keyboard
+                $timeout(function() {
+                  $scope.setCourseFocus();
+                }, 500);
+              }
+          } 
 
       });
 
-      return coursesLoaded.promise;
-    }
-
-    $scope.$on('modal.shown', function() {
+      $scope.$on('modal.shown', function() {
 
         if ($scope.addCourseModal.isShown() && 
           !$scope.addUniversityModal.isShown() &&
@@ -111,9 +128,22 @@ angular.module('uguru.util.controllers')
             $scope.setCourseFocus();
           }, 500);
 
+        } else 
+
+        if ($scope.addCourseModal.isShown() && 
+          !$scope.addUniversityModal.isShown() &&
+          $scope.user.university_id && 
+          $localstorage.getObject('courses').length === 0) {
+            
+          $scope.getCoursesFromServer(coursesLoaded);
         }
 
-    });
+      });
+
+      return coursesLoaded.promise;
+    }
+
+    $scope.courses = GetCoursesList();
 
     $scope.hideCourseModal = function() {
       if ($cordovaKeyboard.isVisible()) {
@@ -128,8 +158,7 @@ angular.module('uguru.util.controllers')
         $scope.addCourseModal.hide();
       }
     }
-    
-    $scope.courses = GetCoursesList();
+  
 
     $scope.courseSelected = function(course) {
 
@@ -140,6 +169,7 @@ angular.module('uguru.util.controllers')
 
         $scope.keyboard_force_off = true;
         $scope.user.student_courses.push(course);
+        $scope.rootUser.updateLocal($scope.user);
         $scope.course_search_text = '';
         $scope.closeKeyboard();
         $scope.showSuccess('Course Saved!');

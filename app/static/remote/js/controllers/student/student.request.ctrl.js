@@ -10,10 +10,43 @@ angular.module('uguru.student.controllers')
   '$localstorage',
   '$ionicModal',
   '$ionicTabsDelegate',
+  '$cordovaProgress',
+  '$stateParams',
   function($scope, $state, $timeout, $localstorage, 
- 	$ionicModal, $ionicTabsDelegate) {
+ 	$ionicModal, $ionicTabsDelegate, $cordovaProgress, $stateParams) {
 
-		console.log('sup');
+    $scope.time_checkbox = 0;
+    $scope.virtual_guru_checkbox = true;
+    $scope.person_guru_checkbox = false;
+    $scope.request_details = {};
+    $scope.course = JSON.parse($stateParams.courseObj);
+
+    $scope.checkboxClicked = function(index) {
+      $scope.time_checkbox = index;
+    }
+
+    $scope.toggleVirtualGuru = function() {
+      $scope.virtual_guru_checkbox = !$scope.virtual_guru_checkbox;
+    }
+
+    $scope.togglePersonGuru = function() {
+      $scope.person_guru_checkbox = !$scope.person_guru_checkbox;
+      if ($scope.person_guru_checkbox) {
+        $scope.showComingSoonProgress('top', function(){
+          $scope.person_guru_checkbox = false;
+        })
+      }
+    }
+
+    $scope.showComingSoonProgress = function(position, callback) {
+      $cordovaProgress.showText(false, "Coming Soon! Stay Tuned", position);
+        $timeout(function() {
+          $cordovaProgress.hide();
+          if (callback) {
+            callback();
+          }
+        }, 1000)
+    }
 
   }
 

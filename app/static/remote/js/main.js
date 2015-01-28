@@ -6,7 +6,7 @@ if (LOCAL) {
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.student.controllers', 'uguru.version', 'uguru.util.controllers',
-  'uguru.rest'])
+  'uguru.rest', 'uguru.user'])
 
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory, 
@@ -53,11 +53,12 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                                 Version.setVersion(serverVersionNumber);
                                 $localstorage.set('recently_updated', true);
                                 console.log('V' + serverVersionNumber + 'stored to user');
-                                window.location = "http://uguru-rest.herokuapp.com/app/"
+                                // window.location = "http://uguru-rest.herokuapp.com/app/"
                                 // window.location = "http://127.0.0.1:5000/app/";
+                                window.location = "http://192.168.1.233:8100/remote/index.html#/student/home"
                                 window.location.reload(true);
                                 // window.location = "http://uguru-rest.herokuapp.com/app/"
-                                // window.location = "http://192.168.1.233:8100/remote/index.html#/student/home"
+                                
 
                               }
                           });
@@ -141,13 +142,13 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '',
         abstract: true,
         templateUrl: 'templates/root.html',
-        controller: function($scope, $localstorage) {
+        controller: function($scope, $localstorage, User) {
           $scope.user = $localstorage.getObject('user');
+          $scope.rootUser = User;
+          console.log($scope.user);
           if (Object.keys($scope.user).length === 0) {
-            console.log('user is new');
+            console.log('new user created');
             $scope.user = {};
-            $localstorage.setObject('user', $scope.user);
-            //TODO: Initialize user with device & constants
           }
         }
   }).
@@ -162,7 +163,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         controller: 'StudentHomeController'
   }).
   state('root.student.request', {
-        url: '/request',
+        url: '/request/:courseObj',
         templateUrl: BASE +  'templates/student/student.request.html',
         controller: 'StudentRequestController'
   }).
