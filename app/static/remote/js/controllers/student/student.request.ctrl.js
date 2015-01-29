@@ -18,8 +18,18 @@ angular.module('uguru.student.controllers')
     $scope.time_checkbox = 0;
     $scope.virtual_guru_checkbox = true;
     $scope.person_guru_checkbox = false;
-    $scope.request_details = {};
+    $scope.request = {
+      note:null,
+      photo:null
+    };
     $scope.course = JSON.parse($stateParams.courseObj);
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/add-note.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.addRequestNoteModal = modal;
+    });
 
     $scope.checkboxClicked = function(index) {
       $scope.time_checkbox = index;

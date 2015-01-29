@@ -6,7 +6,7 @@ if (LOCAL) {
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.student.controllers', 'uguru.version', 'uguru.util.controllers',
-  'uguru.rest', 'uguru.user'])
+  'uguru.rest', 'uguru.user', 'uguru.root.services'])
 
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory, 
@@ -70,7 +70,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                   console.log('Version not loaded');
               }
           );
-
         }
       
         //Set platform in local store
@@ -142,9 +141,10 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '',
         abstract: true,
         templateUrl: 'templates/root.html',
-        controller: function($scope, $localstorage, User) {
+        controller: function($scope, $localstorage, User, RootService) {
           $scope.user = $localstorage.getObject('user');
           $scope.rootUser = User;
+          $scope.root = RootService;
           console.log($scope.user);
           if (Object.keys($scope.user).length === 0) {
             console.log('new user created');
@@ -174,5 +174,138 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   state('root.student.directory', {
         url: '/directory',
         templateUrl: BASE + 'templates/student/directory.html',
+  }).
+  state('root.student.animations', {
+        url: '/animations',
+        templateUrl: BASE + 'templates/student/animations.html',
+  }).
+  state('root.student.animation1', {
+      url: '/animation1',
+      templateUrl: BASE + 'templates/student/animation1.html',
+      controller: function($scope) {
+        $scope.startAnimation = function() {
+          var testarray = document.getElementsByClassName("sq");
+          for(var i = 0; i < testarray.length; i++)
+          {
+              testarray[i].className += " active";
+          }          
+        }
+        $scope.endAnimation = function() {
+          var testarray = document.getElementsByClassName("sq");
+          for(var i = 0; i < testarray.length; i++)
+          {
+              testarray[i].classList.remove("active");
+
+          }          
+        }
+      }
+  }).
+  state('root.student.animation2', {
+      url: '/animation2',
+      templateUrl: BASE + 'templates/student/animation2.html',
+      controller: function($scope) {
+        $scope.startAnimation = function() {
+          var testarray = document.getElementsByClassName("a");
+          for(var i = 0; i < testarray.length; i++)
+          {
+              testarray[i].className += " active";
+          }
+          document.getElementsByClassName("yon").className += " active";
+          document.getElementsByClassName("goo").className += " active";
+          document.getElementsByClassName("rok").className += " active";
+          document.getElementsByClassName("ryk").className += " active";
+          document.getElementsByClassName("x7").className += " active";
+          document.getElementsByClassName("x8").className += " active";
+          document.getElementsByClassName("x9").className += " active";
+        }
+        $scope.endAnimation = function() {
+          var testarray = document.getElementsByClassName("a");
+          for(var i = 0; i < testarray.length; i++)
+          {
+              testarray[i].classList.remove("active");
+          }          
+        }
+      }
+  }).
+  state('root.student.animation3', {
+      url: '/animation3',
+      templateUrl: BASE + 'templates/student/animation3.html',
+      controller: function($scope) {
+        $scope.startAnimation = function() {
+          !function () {
+            var boomTimeout;
+            var p = document.querySelector('p');
+
+            // dataset isn't well supported enough yet...
+            p.setAttribute('data-content', p.textContent);
+
+            function boom () {
+              p.className = 'boom';
+              window.clearTimeout(boomTimeout);
+              boomTimeout = window.setTimeout(unboom, 300);
+            }
+
+            function unboom () {
+              p.className = '';
+            }
+
+            setInterval(function () {r
+              boom();
+              setTimeout(boom, 400);
+            }, 1800);
+
+            boom();
+
+            p.addEventListener('click', boom, false);
+          }();
+        }
+        $scope.endAnimation = function() {
+          var testarray = document.getElementsByClassName("a");
+          for(var i = 0; i < testarray.length; i++)
+          {
+              testarray[i].classList.remove("active");
+          }          
+        }
+      }
+  }).
+  state('root.student.animation4', {
+      url: '/animation4',
+      templateUrl: BASE + 'templates/student/animation4.html',
+      controller: function($scope) {
+        $scope.startAnimation = function() {
+          
+              //Create the canvas
+              var canvas = document.getElementById("canvas");
+              var context = canvas.getContext("2d");
+              document.getElementsByClassName('animation-box')[0].appendChild(canvas);
+
+              setInterval(function() {
+                  //Generating random positions
+                  var posX = Math.floor(Math.random() * 200);
+                  var posY = Math.floor(Math.random() * 200);
+
+                  //Picking selected colors at random 
+                  var colors = ['rgba(220, 20, 60, 0.8)', 'rgba(255, 105, 180,0.6)', 'rgba(255, 20, 147, 0.8)', 'rgba(255, 140, 0,0.6)', 'rgba(143, 188, 143,0.7)'];
+                  var color = Math.floor(Math.random() * colors.length);
+
+                  //Drawing on the canvas
+                  context.beginPath();
+                  context.moveTo(200, 0);
+                  context.lineTo(1, -1);
+                  context.fillStyle = colors[color];
+                  context.arc(posX, posY, 0, 0, Math.PI * 2, true);
+                  context.closePath();
+                  context.fill();
+              }, 80);
+          
+        }
+        $scope.endAnimation = function() {
+          var testarray = document.getElementsByClassName("a");
+          for(var i = 0; i < testarray.length; i++)
+          {
+              testarray[i].classList.remove("active");
+          }          
+        }
+      }
   })
 });

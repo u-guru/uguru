@@ -51,14 +51,7 @@ angular.module('uguru.student.controllers', [])
 
 	};
 
-	$scope.launchCourseModal = function() {
-		console.log('clicked');
-	}
-
-	 // //show popup after 1 second
-	 // $timeout(function() {
-	 // 	$scope.showWelcomePopup();
-	 // }, 1000);
+	 
 
 	$ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/add-course.modal.html', {
 	    scope: $scope,

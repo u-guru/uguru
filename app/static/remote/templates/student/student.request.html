@@ -66,8 +66,15 @@
           </div>
         </li>
 
-        <li class="item padding-20-15 border-top-bottom font-green" ng-click="showComingSoonProgress('bottom')">
-          <div class="message">Add a note or photo...</div>
+        <li class="item padding-20-15 border-top-bottom font-green" ng-click="addRequestNoteModal.show()">
+          <div ng-click="takePhotoAndSave()" style="display:inline-block;" ng-show="!request.note && !request.photo"class="message">Add a note or photo...</div>
+          <div ng-click="takePhotoAndSave()" style="display:inline-block;" ng-show="!request.note && request.photo"class="message">Add a note...</div>
+          <div ng-show="request.note"class="message" style="display:inline-block;">Edit note
+          </div>
+          <span ng-show="request.photo" class="pull-right" style="font-size:26px; position:absolute; right:5px; top:15px; color:rgba(0,0,0,0.6)">
+            <img src="{{request.photo}}" height="20"/>
+            <i class="icon ion-paperclip"> </i>
+          </span>
         </li>
       </ul>
 
