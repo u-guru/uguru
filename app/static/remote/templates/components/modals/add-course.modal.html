@@ -20,7 +20,7 @@
             <li class="item bold" ng-repeat="course in matchingCourses" ng-click="courseSelected(course)">
               {{course.short_name}} <span class="gray">{{course.title}}</span>
             </li>
-            <li class="item green" ng-show="user.university">
+            <li class="item green" ng-show="user.university && false">
               Class not listed?</span>
             </li>
           </ul>

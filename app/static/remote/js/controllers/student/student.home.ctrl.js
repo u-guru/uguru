@@ -66,6 +66,13 @@ angular.module('uguru.student.controllers', [])
 	}).then(function(modal) {
 	    $scope.addUniversityModal = modal;
 	});
+
+  $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/ratings.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+  }).then(function(modal) {
+      $scope.ratingModal = modal;
+  });
   	
   	$scope.showSuccess = function(msg) {
       if (!$scope.progress_active)  {
@@ -91,14 +98,30 @@ angular.module('uguru.student.controllers', [])
     	$state.go('^.request', {courseObj:JSON.stringify(course)});
     }
 
+    $scope.goToActiveSession = function(session) {
+      $state.go('^.active-session', {sessionObj:JSON.stringify(session)});
+    }
+
     $scope.clearCache = function() {
-    	$scope.user = {};
+    	
+      $scope.user = {};
+      $localstorage.removeObject('courses');
+      $localstorage.removeObject('universities');
     	$scope.rootUser.logout($scope.user);
     	$ionicHistory.clearCache();
     	$ionicHistory.clearHistory();
     	window.localStorage.clear();
     	$scope.bottomTabsDelegate.select(0);
     	$scope.showSuccess('Cache Cleared! Please close the app & open again');
+    }
+
+    $scope.showComingSoon = function() {
+      $scope.progress_active = true;
+          $cordovaProgress.showText(false, "Coming Soon!", 'center');
+          $timeout(function() {
+            $cordovaProgress.hide();
+            $scope.progress_active = false;
+          }, 1000);
     }
 
   }

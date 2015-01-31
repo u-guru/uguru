@@ -29,7 +29,9 @@ angular.module('uguru.util.controllers')
 
     $scope.$on('modal.shown', function() {
 
-      $scope.root.keyboard.show('note-input', 500);
+      if ($scope.addRequestNoteModal.isShown()) {
+        $scope.root.keyboard.show('note-input', 500);
+      }
 
     });
 

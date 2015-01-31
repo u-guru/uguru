@@ -7,6 +7,17 @@ angular.module('uguru.root.services', [])
     '$cordovaProgress',
     function($cordovaKeyboard, $localstorage, $timeout, $cordovaProgress) {
     
+    this.util = {
+        objectFindByKey: function(array, key, value) {
+            for (var i = 0; i < array.length; i++) {
+                    if (array[i][key] === value) {
+                        return array[i];
+                    }
+            }
+            return null;
+        }
+    }
+
     this.keyboard =  {
         close: function(bool) {
           if (window.cordova && window.cordova.plugins.Keyboard) {

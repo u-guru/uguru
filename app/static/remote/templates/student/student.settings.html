@@ -1,9 +1,9 @@
     <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
         <h1 class="title">Settings</h1>
     </ion-header-bar>
-    <ion-content ng-show="user.id">
+    <ion-content>
       <div class="setting">
-        <div class="space-1 center">
+        <div class="space-1 center" ng-show="false">
           <div class="item">
             <div class="icon"><img src='./img/shun.png' class='width'></div>
             <div class="box-2 margin-top">
@@ -26,11 +26,11 @@
               <div class="sessions">
                 <div class="row">
                   <div class="col col-50">
-                    <div class="number">34</div>
+                    <div class="number">{{user.student_sessions.length}}</div>
                     <div class="detail">sessions</div>
                   </div>
                   <div class="col col-50">
-                    <div class="number">6</div>
+                    <div class="number">{{user.student_courses.length}}</div>
                     <div class="detail">classes</div>
                   </div>
                 </div>
@@ -39,38 +39,54 @@
             <li class="item padding-10-14">
               <div class="courses">
                 <span class="bold-font classes">CLASSES</span>
-                <span class="bold-font sm-box-orange">CS225</span>
-                <span class="bold-font sm-box-green">BIO101</span>
+                <span class="bold-font sm-box-orange" ng-repeat="course in user.student_courses">{{course.short_name}}</span>
+                <span class="bold-font sm-box-green" ng-click="addCourseModal.show();">ADD A CLASS</span>
               </div>
             </li>
             <div class="item item-divider">
               PROFILE SETTINGS
             </div>
-            <a class="item gray" href="#">
+            <a class="item gray" ng-click="showComingSoon()">
               Edit my profile & classes
-            </a>
-            <a class="item gray" href="#">
-              Guru Mode
             </a>
             <div class="item item-divider">
               PRIVACY SETTINGS
             </div>
-            <a class="item gray" href="#">
+            <a class="item gray" href="#" ng-click="showComingSoon()">
               Notification Settings
             </a>
+            <div class="item item-divider" >
+              PAYMENT SETTINGS
+            </div>
+            <a class="item gray" href="#" ng-click="showComingSoon()">
+              Credit Cards
+            </a>
+            <a class="item gray" href="#" ng-click="showComingSoon()">
+              Transaction History
+            </a>
+            <div class="item item-divider">
+              ACCOUNT SETTINGS
+            </div>
+            <a class="item gray" href="#" ng-click="showComingSoon()">
+              Logout
+            </a>
+            <a class="item gray" href="#" ng-click="showComingSoon()">
+              Delete Account
+            </a>
+            
+            <div class="item item-divider">
+              DEV SETTINGS
+            </div>
+            <a class="item gray" ng-click="clearCache()">
+              Clear Cache
+            </a>
+            <a class="item gray" ui-sref="^.animations">
+              Animation List
+            </a>
+          </ul>
           </ul>
         </div>
     </div>
-  </ion-content>
-  <ion-content>
-    <ul class="list">
-       <div class="item item-divider" ng-click="clearCache()">
-          CLEAR CACHE
-      </div>
-      <div class="item item-divider" ui-sref="^.animations">
-          ANIMATION LIST
-      </div>
-    </ul>
   </ion-content>
   <!-- <div class="bar bar-footer uguru-footer">
     <div class="row">

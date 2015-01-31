@@ -1,0 +1,42 @@
+ <ion-modal-view ng-controller="SignupController">
+      <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
+        <h1 class="title">Create Account</h1>
+        <button ng-click="closeSignupModal()" class="button button-clear button-positive">Cancel</button>
+      </ion-header-bar>
+      <ion-content>
+        <div class="account">
+          <div class="account-box center">
+            <div class="list margin-bottom-10">
+              <label class="item item-input">
+                <div class="tag">First</div><input name="signup-first-name" type="text" placeholder="your first name">
+              </label>
+              <label class="item item-input">
+                <div class="tag">last</div><input type="text" placeholder="your last name">
+              </label>
+              <label class="item item-input">
+                <div class="tag">email</div><input type="text" placeholder="peter.parker@berkeley.edu">
+              </label>
+            </div>
+            <div class="list">
+              <label class="item item-input">
+                <div class="tag">password</div><input type="text" placeholder="at least 6 characters">
+              </label>
+            </div>
+            <button ng-click="signupAccount()"class="button button-green-outline button-full">
+              join uguru
+            </button>
+            <div class="horizon">
+              <span class="box">
+                or try facebook
+              </span>
+            </div>
+            <button ng-click="signupFacebook()" class="button facebook-button button-full icon-left ion-social-facebook">
+              Connect With Facebook
+            </button>
+            <div class="message">
+              Uguru will NEVER post to your Facebook.
+            </div>
+          </div>
+        </div>
+      </ion-content>
+  </ion-modal-view>

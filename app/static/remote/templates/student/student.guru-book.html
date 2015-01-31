@@ -1,10 +1,12 @@
     <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
         <h1 class="title">Guru Book</h1>
     </ion-header-bar>
-    <div class="bar bar-subheader">
-      <div class="row center">
-        <div class="col border-bottom">ALL CLASSES</div>
-        <div class="col" ng-repeat="course in user.student_courses" >{{course.short_name}}</div>
+    <div class="bar bar-subheader" ng-show="user.student_courses.length > 0">
+        <ion-tabs class="tabs-dark tabs-icon-only" delegate-handle="student-home-tabs-top">
+          <ion-tab title="My Classes"></ion-tab>
+          <ion-tab title="{{course.short_name}}" ng-repeat="course in user.student_courses">
+          </ion-tab>
+        </ion-tabs>
       </div>
     </div>
 
@@ -28,10 +30,16 @@
         </li>
       </div>
     </ion-content>
-    <ion-content ng-show="!user.gurus">
+    <ion-content ng-show="user.gurus.length === 0">
         <div class="no-session margin-150-10 center">
           <h2>No Gurus Yet.</h2>
-          <div class="gray">Request help to be matched with a Guru</div>
-          <div class="green" ng-click="addCourseModal.show()">+Request Help</div>
+          <div ng-show="user.student_courses.length == 0">
+            <div class="gray">Add a course to be matched with a Guru</div>
+            <div class="green" ng-click="addCourseModal.show()">+Add A Course</div>
+          </div>
+          <div ng-show="user.student_courses.length > 0">
+            <div class="gray">Request help to be matched with a Guru</div>
+            <div class="green" ng-click="bottomTabsDelegate.select(0);">+Request Help</div>
+          </div>
         </div>
     </ion-content>

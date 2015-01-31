@@ -1,7 +1,9 @@
 <ion-nav-buttons side="primary">
-      <ion-nav-back-button class="button-clear" style="width:75px;">
+    <ion-nav-bar ng-controller="StudentRequestController">
+      <ion-nav-back-button class="button-clear" style="width:75px;" ng-click="goBackFromRequestsToHome()">
           <img src="./img/left-chevron.png" class='uguru-back-button'/>
       </ion-nav-back-button>
+    </ion-nav-bar>
   </ion-nav-buttons>
 <ion-view view-title="Request Help">
   <ion-content style="bottom:0px;">
@@ -80,16 +82,16 @@
 
 <!-- make icon opposit direction -->
 
-      <div class="row bottom center absolute" ng-show="request_details.location">
+      <div class="row bottom center absolute" ng-show="request.location">
         <div class="col">
-          <div class="font-size-16 gray-8"><span class="icon ion-navigate"></span>We'll meet at 198 Church St.</div>
+          <div class="font-size-16 gray-8"><span class="icon ion-navigate"></span>We'll meet at 375 Valencia St.</div>
         </div>
       </div>
     </div>
   </ion-content>
 
   <ion-footer-bar style="height: auto; background-color:transparent; background-image:none;" class="extra-padding-sides">
-    <button ng-click="" style="height:4em"class="button button-positive button-full button-outline"> Request Guru </button>
+    <button ng-click="requestHelp()" style="height:4em"class="button button-positive button-full button-outline"> Request Guru </button>
   </ion-footer-bar>
 
   <script id="templates/pushNotificationPopup.html" type="text/ng-template">
@@ -123,54 +125,6 @@
         </a>
       </div>
     </div>
-  </script>
-
-  <script id="templates/signupModal.html" type="text/ng-template">
-  <ion-modal-view>
-      <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
-        <h1 class="title">Add a class</h1>
-        <button ng-click="addCourseModal.hide()" class="button button-clear button-positive">Cancel</button>
-      </ion-header-bar>
-      <ion-content>
-        <div class="account">
-          <div class="account-box center">
-            <div class="list margin-bottom-10">
-              <label class="item item-input">
-                <div class="tag">First</div><input type="text" placeholder="your first name">
-              </label>
-              <label class="item item-input">
-                <div class="tag">last</div><input type="text" placeholder="your last name">
-              </label>
-              <label class="item item-input">
-                <div class="tag">email</div><input type="text" placeholder="peter.parker@berkeley.edu">
-              </label>
-            </div>
-            <div class="list">
-              <label class="item item-input">
-                <div class="tag">password</div><input type="text" placeholder="at least 6 characters">
-              </label>
-            </div>
-            <button ui-sref="^.sandbox4" class="button button-green-outline button-full">
-              join uguru
-            </button>
-            <div class="horizon">
-              <span class="box">
-                or try facebook
-              </span>
-            </div>
-            <button class="button facebook-button button-full icon-left ion-social-facebook">
-              Connect With Facebook
-            </button>
-            <div class="message">
-              Uguru will NEVER post to your Facebook.
-            </div>
-          </div>
-        </div>
-      </ion-content>
-        
-      <ion-footer-bar>
-      </ion-footer-bar>
-  </ion-modal-view>
   </script>
 
 </ion-view>

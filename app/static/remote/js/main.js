@@ -53,9 +53,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                                 Version.setVersion(serverVersionNumber);
                                 $localstorage.set('recently_updated', true);
                                 console.log('V' + serverVersionNumber + 'stored to user');
-                                // window.location = "http://uguru-rest.herokuapp.com/app/"
+                                window.location = "http://uguru-rest.herokuapp.com/app/"
                                 // window.location = "http://127.0.0.1:5000/app/";
-                                window.location = "http://192.168.1.233:8100/remote/index.html#/student/home"
+                                // window.location = "http://192.168.1.233:8101/remote/index.html#/student/home"
                                 window.location.reload(true);
                                 // window.location = "http://uguru-rest.herokuapp.com/app/"
                                 
@@ -142,14 +142,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         abstract: true,
         templateUrl: 'templates/root.html',
         controller: function($scope, $localstorage, User, RootService) {
-          $scope.user = $localstorage.getObject('user');
+          
+          // $localstorage.removeObject('user');
+          $scope.user = User.getLocal();
           $scope.rootUser = User;
           $scope.root = RootService;
-          console.log($scope.user);
-          if (Object.keys($scope.user).length === 0) {
-            console.log('new user created');
-            $scope.user = {};
-          }
         }
   }).
   state('root.student', {
@@ -167,6 +164,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE +  'templates/student/student.request.html',
         controller: 'StudentRequestController'
   }).
+  state('root.student.active-session', {
+        url: '/session/:sessionObj',
+        templateUrl: BASE +  'templates/student/student.active-session.html',
+        controller: 'StudentActiveSession'
+  }).
   state('root.student.settings', {
         url: '/settings',
         templateUrl: BASE + 'templates/student/student.settings.html',
@@ -174,6 +176,25 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   state('root.student.directory', {
         url: '/directory',
         templateUrl: BASE + 'templates/student/directory.html',
+  }).
+  state('root.student.add-payment', {
+        url: '/payment',
+        templateUrl: BASE + 'templates/student/add-payment.html',
+  }).
+  state('root.student.messages', {
+        url: '/messages/:sessionObj',
+        templateUrl: BASE + 'templates/student/student.messages.html',
+        controller: 'StudentMessagesController'
+  }).
+  state('root.student.guru-available', {
+        url: '/guru-available',
+        templateUrl: BASE + 'templates/student/student.guru-available.html',
+        controller: 'GuruAvailableController'
+  }).
+  state('root.student.guru-profile', {
+        url: '/guru-profile',
+        templateUrl: BASE + 'templates/student/student.guru-profile.html',
+        controller: 'GuruProfileController'
   }).
   state('root.student.animations', {
         url: '/animations',

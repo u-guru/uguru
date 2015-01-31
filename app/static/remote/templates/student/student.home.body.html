@@ -6,22 +6,56 @@
         <ion-tabs class="tabs-dark tabs-icon-only" delegate-handle="student-home-tabs-top">
           <ion-tab title="My Classes">
           </ion-tab>
-          <ion-tab title="Previous Sessions">
+          <ion-tab title="My Sessions">
           </ion-tab>
         </ion-tabs>
-      <div class="row center">
-        <div class="col border-bottom">MY CLASSES</div>
-        <div class="col">PREVIOUS SESSIONS</div>
-      </div>
     </div>
   
     <ion-content ng-show="topTabsDelegate.selectedIndex() === 0">
-      <div class="add-class margin-top-40" ng-show="topTabsDelegate.selectedIndex() === 0">
+      <div class="add-class margin-top-40" ng-show="user.active_sessions && user.active_sessions.length > 0">
+        <div class="session-progress" ng-repeat="session in user.active_sessions">
+          <li class="item padding-0 no-border">
+            <div class="course padding-10-15" style="border-radius:0px; border-bottom:0px;">
+              <div class="box-1">
+                <span class="name">{{session.course.short_name}}</span>
+                <span class="session">Session</span>
+              </div>
+              <div class="message">{{session.status}}</div>
+            </div>
+          </li>
+          <li class="item padding-6-15" style="border-radius:0px; border-bottom:0px; border-right: 1px solid rgba(0, 0, 0, 0.4);">
+            <div class="icon"><img src='./img/shun.png' class='width'></div>
+            <div class="box-2 margin-top">
+              <div class="name">{{session.guru.name}}
+                <span class="profile" style="font-size:14px !important;" ng-click="goToActiveSession(session)">view status</span>
+              </div>
+              <div class="stars">
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>
+              </div>
+            </div>
+          </li>
+          <li class="item padding-10-15" style="border-radius:0px; border-bottom:0px; border-right: 1px solid rgba(0, 0, 0, 0.4);">
+            <div class="location"><span class="icon ion-navigate"></span><span class="bold">Location:</span> {{session.location.address}}</div>
+          </li>
+          <li class="item padding-10-15" style="border-radius:0px; border-bottom:0px; border-right: 1px solid rgba(0, 0, 0, 0.4); border-bottom: 1px solid rgba(0, 0, 0, 0.4);">
+            <div class="tag"><span class="icon ion-pricetag"></span><span class="bold">${{session.price.amount}}</span> for every <span class="bold">{{session.price.minutes}} minutes</span></div>
+          </li>
+        </div>
+      </div>
+      <div class="add-class margin-top-40" ng-show="user.active_sessions.length === 0;">
         
         <div class="lg-box" ng-repeat="course in user.student_courses" animation="slide-left-right" ng-click="goToRequest(course)">
           <div class="course-name-box">
-            <div class="text">
+            <div class="text" ng-show="!course.active_requests">
               {{course.short_name}}
+            </div>
+            <div class="text" ng-show="course.active_requests" style="border-left: 4px solid gold;">
+              {{course.short_name}}
+              <span style="position:absolute; font-size:10px; right:5%;text-transform:uppercase; font-family:'OpenSans-Semibold';color:rgba(0,0,0,0.5);">SEE REQUEST STATUS</span>
             </div>
           </div>
         </div>
