@@ -7,23 +7,25 @@
 
     <!-- compiled css output -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="remote/css/ionic.app.css" rel="stylesheet">
+    <link href="remote/css/angular-strap.css" rel="stylesheet">
     <link href="remote/css/app.css" rel="stylesheet">
     <link href="remote/css/style.css" rel="stylesheet">
 
     <script src="cordova.js"></script>
     <script src="cordova_plugins.js"></script> 
 
-    <!-- compiled css libraries -->
-    <link href="lib/angular-loading-bar/angular-loading-bar.css" rel="stylesheet">
-
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
+    <script src='http://maps.googleapis.com/maps/api/js?libraries=places, geocoder&sensor=false&language=en&v=3.17'></script>
     <script src="lib/lodash/dist/lodash.js"></script>
+    <script src="remote/lib/angular-google-maps/angular-google-maps.min.js"></script>
     <script src="lib/restangular/dist/restangular.js"></script>
     <script src="lib/angular-local-storage/angular-local-storage.js"></script>
-    <script src="lib/angular-loading-bar/angular-loading-bar.js"></script>
+    <script src="remote/lib/angular-loading-bar/angular-loading-bar.js"></script>
+    <script src="remote/lib/angular-strap/angular-strap.min.js"></script>
+    <script src="lib/angular-strap/angular-strap.tpl.min.js"></script>
     <script src="lib/angular-animate/angular-animate.js"></script>
     <script src="lib/angular-payments/angular-payments.js"></script>
 
@@ -88,6 +90,7 @@
     <script type="text/javascript" src="remote/js/controllers/student/student.guru-profile.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/student.guru-available.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/student.active-session.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.request-status.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.university.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-course.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-note.ctrl.js"></script>
@@ -102,6 +105,8 @@
     <!-- uguru app services -->
     <script type="text/javascript" src="remote/js/services/AuthService.js"></script>
     <script type="text/javascript" src="remote/js/services/RootService.js"></script>
+    <script type="text/javascript" src="remote/js/services/Popup.js"></script>
+    <script type="text/javascript" src="remote/js/services/Popover.js"></script>
     <script type="text/javascript" src="remote/js/services/hardware/camera.js"></script>
     <script type="text/javascript" src="remote/js/services/hardware/location.js"></script>
 

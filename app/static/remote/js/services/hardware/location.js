@@ -19,6 +19,7 @@ angular.module('uguru.root.services')
                           .then(function (position) {
                             console.log('user is at ' + position.coords.latitude + ',' + position.coords.longitude);
                             $scope.user.position = position;
+                            $scope.requestPosition = position;
                             // $scope.rootUser.updateLocal($scope.user);
 
                             if (callback) {

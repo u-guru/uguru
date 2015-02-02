@@ -13,9 +13,10 @@ angular.module('uguru.util.controllers')
   '$cordovaProgress',
   '$cordovaKeyboard',
   'University',
+  'Popover',
   function($scope, $state, $timeout, $localstorage, 
  	$ionicModal, $ionicTabsDelegate, $q, $cordovaProgress,
-  $cordovaKeyboard, University) {
+  $cordovaKeyboard, University, Popover) {
 
     $scope.course_search_text = '';
     $scope.keyboard_force_off = false;
@@ -165,6 +166,21 @@ angular.module('uguru.util.controllers')
 
       if (!$scope.user.student_courses) {
           $scope.user.student_courses = [];
+          $timeout(function() {
+          popoverOptions = {
+            targetElement:'.student-course',
+            title: 'Tap to request help',
+            delay: 500,
+            animation:null,
+            placement: 'bottom',
+            body: "We'll find a Guru to help you out <br> in a matter of minutes.<br>",
+            buttonText: 'Got it',
+            dropshadow: true
+          }
+
+          Popover.tutorial.show($scope, popoverOptions);
+
+          }, 1500)
       }
 
         $scope.keyboard_force_off = true;

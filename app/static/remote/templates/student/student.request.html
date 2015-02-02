@@ -12,7 +12,7 @@
         <li class="item no-border padding-10-14">
           <div class="course padding-20-15" style="padding-top:15px; padding-bottom:15px;">
             <span class="name">{{course.short_name}}</span>
-            <span class="gurus" style="top:25px;font-family:'OpenSans-SemiBold'; font-size:0.7em">{{course.gurus.length}} GURUS AVAILABLE</span>
+            <span class="gurus">{{course.gurus.length}} GURUS AVAILABLE</span>
           </div>
         </li>
         <li class="item no-border padding-10-16">
@@ -84,7 +84,7 @@
 
       <div class="row bottom center absolute" ng-show="request.location">
         <div class="col">
-          <div class="font-size-16 gray-8"><span class="icon ion-navigate"></span>We'll meet at 375 Valencia St.</div>
+          <div class="font-size-16 gray-8"><span class="icon ion-navigate"></span>We'll meet at {{request.location}}</div>
         </div>
       </div>
     </div>
@@ -93,7 +93,6 @@
   <ion-footer-bar style="height: auto; background-color:transparent; background-image:none;" class="extra-padding-sides">
     <button ng-click="requestHelp()" style="height:4em"class="button button-positive button-full button-outline"> Request Guru </button>
   </ion-footer-bar>
-
   <script id="templates/pushNotificationPopup.html" type="text/ng-template">
     <div class='row'>
       <div class="col">

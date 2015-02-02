@@ -58,8 +58,9 @@ angular.module('uguru.student.controllers')
       $scope.person_guru_checkbox = !$scope.person_guru_checkbox;
       if ($scope.person_guru_checkbox) {
         $scope.user.position = null;
-        if (!$scope.user.position) {
+        if (!$scope.requestPosition) {
           //get location & fire the modal
+          
           Geolocation.getUserPosition($scope, $scope.showRequestMapModal);
         } 
         //user already has provided access to their location
@@ -99,30 +100,33 @@ angular.module('uguru.student.controllers')
         proposals: null,
         time_estimate: 0,
         note: null,
-        time_created: date
+        time_created: date,
+        location:null,
       };
     }
 
     $scope.saveRequestToUser = function() {
       $scope.request.status = 'pending';
       $scope.request.photo = null;
+      $scope.request.time_estimate = $scope.time_checkbox;
+      if ($scope.requestPosition) {
+        $scope.request.position = $scope.user.position;
+      }
+
       var user_course = $scope.root.util.objectFindByKey($scope.user.student_courses, 'short_name', $scope.course.short_name);
       if (!user_course.requests) {
         user_course.requests = [];
-        user_course.active_requests = [];
       }
       var user_course_request = $scope.root.util.objectFindByKey(user_course.requests, 'time_created', $scope.request.time_created);
       if (!user_course_request) {
         console.log('new request!')
         user_course.requests.push($scope.request);
-        user_course.active_requests.push($scope.request);
+        user_course.active_request = $scope.request;
       } else {
-        user_course_request.time_updated = 'now';
         user_course_request = $scope.request;
         console.log($scope.user.student_courses);
       }
       $scope.user.requests.push($scope.request);
-      $scope.user.active_requests.push($scope.request);
       $scope.rootUser.updateLocal($scope.user);
     }
 
@@ -162,9 +166,28 @@ angular.module('uguru.student.controllers')
     $scope.time_checkbox = 0;
     $scope.virtual_guru_checkbox = true;
     $scope.person_guru_checkbox = false;
+    $scope.requestPosition = null;
     $scope.course = JSON.parse($stateParams.courseObj);
     $scope.request = $scope.initRequestObj();
+    
+    //modal stuff
+    $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
+    $scope.options = {scrollwheel: false};
 
+    $scope.searchbox =  {
+        template: BASE + 'templates/components/inputs/searchbox.tpl.html',
+        options: {
+          autocomplete:true,
+          types: ['(cities)'],
+          componentRestrictions: {country: 'us'}
+        },
+        events: {
+        place_changed: function (autocomplete){
+            place = autocomplete.getPlace()
+            console.log(place);
+          }
+        }
+      }
   }
 
 ]);

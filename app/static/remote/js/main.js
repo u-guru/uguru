@@ -6,7 +6,7 @@ if (LOCAL) {
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.student.controllers', 'uguru.version', 'uguru.util.controllers',
-  'uguru.rest', 'uguru.user', 'uguru.root.services'])
+  'uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps', 'uguru.directives', 'mgcrea.ngStrap'])
 
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory, 
@@ -14,7 +14,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   $ionicPlatform.ready(function() {
     //Only when the app is opened after its been closed
     document.addEventListener("deviceready", function () {
-
         console.log('hiding splash screens..');
         $cordovaSplashscreen.hide();
         var checkForAppUpdates = function () {
@@ -119,13 +118,18 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   })
 })
 
-.config(function($stateProvider, $urlRouterProvider, RestangularProvider,
+.config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
   $cordovaFacebookProvider) {
-  if (!window.cordova) {
-      var appID = 1416375518604557;
-      var fbVersion = "v2.2"; // or leave blank and default is v2.0
-      $cordovaFacebookProvider.browserInit(appID, fbversion);
-  }
+  // if (!window.cordova) {
+  //     var appID = 1416375518604557;
+  //     var fbVersion = "v2.2"; // or leave blank and default is v2.0
+  //     $cordovaFacebookProvider.browserInit(appID, fbversion);
+  // }
+        
+
+  angular.extend($popoverProvider.defaults, {
+    html: true
+  });
 
   // if none of the above states are matched, use this as the fallback
   // $urlRouterProvider.otherwise('/tab/dash');
@@ -181,6 +185,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '/payment',
         templateUrl: BASE + 'templates/student/add-payment.html',
   }).
+  state('root.student.request-status', {
+        url: '/request-status/:courseObj',
+        templateUrl: BASE + 'templates/student/student.request-status.html',
+        controller: 'RequestStatusController'
+  }).
   state('root.student.messages', {
         url: '/messages/:sessionObj',
         templateUrl: BASE + 'templates/student/student.messages.html',
@@ -196,6 +205,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/student/student.guru-profile.html',
         controller: 'GuruProfileController'
   }).
+
   state('root.student.animations', {
         url: '/animations',
         templateUrl: BASE + 'templates/student/animations.html',

@@ -17,15 +17,19 @@ angular.module('uguru.student.controllers', [])
   'University',
   '$templateCache',
   '$ionicHistory',
+  'Popup',
+  '$popover',
+  'Popover',
+  '$ionicBackdrop',
   function($scope, $state, $ionicPopup, $timeout, $localstorage, 
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $cordovaProgress, $q,
- 	University, $templateCache, $ionicHistory) {
+ 	University, $templateCache, $ionicHistory, Popup, $popover, Popover, $ionicBackdrop) {
 
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
 	$scope.base_url =  BASE;
 	$scope.progress_active = false;
-
+    
     $scope.showWelcomePopup = function() {
 
 		var popupOptions = {
@@ -49,9 +53,7 @@ angular.module('uguru.student.controllers', [])
 		    });
 	   	}, 500);
 
-	};
-
-	 
+	 };	 
 
 	$ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/add-course.modal.html', {
 	    scope: $scope,
@@ -98,8 +100,16 @@ angular.module('uguru.student.controllers', [])
     	$state.go('^.request', {courseObj:JSON.stringify(course)});
     }
 
+    $scope.goToRequestStatus = function(course) {
+      $state.go('^.request-status', {courseObj:JSON.stringify(course)});
+    }
+
     $scope.goToActiveSession = function(session) {
       $state.go('^.active-session', {sessionObj:JSON.stringify(session)});
+    }
+
+    $scope.addGreenbar = function() {
+      console.log('this was clicked');
     }
 
     $scope.clearCache = function() {
@@ -123,6 +133,25 @@ angular.module('uguru.student.controllers', [])
             $scope.progress_active = false;
           }, 1000);
     }
+
+    $scope.showPopover = function() {
+      $scope.showTooltip();
+    }
+    $scope.init = function() {
+
+      var welcomePopupOptions = {
+        header:"Welcome!",
+        body: "We'd like to notify you when our Guru's<br>accept your requests for help.<br>Turn notifications on?",
+        positiveBtnText:"Sure!",
+        negativeBtnText:"No Thanks",
+        delay: 1500
+      }
+
+      if (!$scope.user.university_id) {
+        Popup.confirm.show($scope, welcomePopupOptions);
+      }
+
+    };
 
   }
 

@@ -8,8 +8,12 @@ angular.module('uguru.util.controllers')
   '$timeout',
   '$localstorage',
   '$ionicModal',
+  '$compile',
   function($scope, $state, $timeout, $localstorage, 
- 	$ionicModal) {
+ 	$ionicModal, $compile) {
+
+    $scope.refresh_map = false;
+    $scope.random  = null;
     
     $scope.hideRequestMapModal = function() {
       
@@ -28,20 +32,146 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.setLocation = function() {
-      $scope.request.location = "375 Valencia St San Francisco, CA 94103"
-      $scope.hideRequestMapModal();
+      
+
+      // $scope.request.location = ;
+      // $scope.hideRequestMapModal();
     }
 
-    // $scope.saveNote = function() {
-    //   $scope.addRequestNoteModal.hide();
-    // }
+    $scope.createGoogleLatLng = function(latCoord, longCoord) {
+      return new google.maps.LatLng(latCoord, longCoord);
+    }
+
+    $scope.setMarkerPosition = function(marker, latCoord, longCoord) {
+      marker.setPosition($scope.createGoogleLatLng(latCoord, longCoord));
+    }
+
+    $scope.getAddressFromLatLng = function(geocoderObj, latCoord, longCoord) {
+      
+      var googleLatLng = $scope.createGoogleLatLng(latCoord, longCoord);
+      geocoderObj.geocode({'latLng': googleLatLng}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (results[0]) {
+            $scope.map.setZoom(17);
+            $scope.setMarkerPosition($scope.marker, latCoord, longCoord);
+            $scope.request.autocomplete = results[0].formatted_address;
+            // var infowindow = new google.maps.InfoWindow();
+            // infowindow.setContent(results[0].formatted_address);
+            // infowindow.open($scope.map, $scope.marker);
+          } else {
+            alert('No results found');
+          }
+        } else {
+          alert('Geocoder failed due to: ' + status);
+        }
+      });
+    }
+
+    $scope.setMapCenter = function(map, latCoord, longCoord) {
+      $scope.map.setCenter($scope.createGoogleLatLng(latCoord, longCoord));
+    }
+
+    $scope.fixInput = function() {
+      $timeout(function() {
+            container = document.getElementsByClassName('pac-container');
+            console.log(container)
+            // disable ionic data tab
+            angular.element(container).attr('data-tap-disabled', 'true');
+            // leave input field if google-address-entry is selected
+            angular.element(container).on("click", function(){
+                console.log('it was clicked');
+                document.getElementById('type-selector').blur();
+            });
+
+          },1500);
+    }
 
     $scope.$on('modal.shown', function() {
 
-      if ($scope.addRequestNoteModal.isShown()) {
-        
-      }
+      if ($scope.requestMapModal.isShown()) {
 
+
+
+
+          var mapContainer = $scope.requestMapModal.$el.find("ion-pane")[0];
+          var initMapCoords;
+
+          if (!$scope.requestPosition) {
+            initMapCoords = $scope.createGoogleLatLng(
+                                $scope.requestPosition.coords.latitude, 
+                                $scope.requestPosition.coords.longitude 
+                            )
+          } else {
+
+            initMapCoords = $scope.createGoogleLatLng(
+                                $scope.user.university.location.latitude,
+                                $scope.user.university.location.longitude
+                            )
+
+          }
+
+          var mapOptions = { 
+            center: initMapCoords,
+            zoom: 17,
+            disableDefaultUI: true,
+            zoomControl: true,
+            zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
+          }
+          var actual_map = $scope.map.control.getGMap();
+          actual_map = new google.maps.Map(
+                  mapContainer, 
+                  mapOptions
+          )
+
+          // var input = document.getElementById('search-box-input');
+          // var searchBox = new google.maps.places.SearchBox(input);
+          var input = document.getElementById('search-box-input');
+          $scope.autocomplete = new google.maps.places.Autocomplete(input);
+          $scope.autocomplete.bindTo('bounds', actual_map);
+
+          google.maps.event.addListener($scope.autocomplete, 'place_changed', function() {
+            console.log('place changed');
+          });
+
+          $scope.marker = new google.maps.Marker({
+            position: initMapCoords,
+            map: actual_map,
+            draggable:true,
+            animation: google.maps.Animation.DROP
+          });
+
+          
+
+          // $scope.geocoder = new google.maps.Geocoder();
+          // if ($scope.requestPosition) {
+
+          //   $scope.getAddressFromLatLng(
+          //     $scope.geocoder,
+          //     $scope.requestPosition.coords.latitude, 
+          //     $scope.requestPosition.coords.longitude
+          //     );
+          // }
+
+          // } else {
+
+          //   $scope.getAddressFromLatLng(
+          //     $scope.geocoder,
+          //     $scope.user.university.location.latitude, 
+          //     $scope.user.university.location.longitude);
+
+          // }
+
+          // google.maps.event.addListener($scope.marker, 'dragend', function() 
+          // {
+          //     $scope.marker.setAnimation(google.maps.Animation.BOUNCE);
+          //     $scope.getAddressFromLatLng($scope.geocoder, $scope.marker.getPosition().lat(), $scope.marker.getPosition().lng())
+          //     $timeout(function() {
+          //       $scope.marker.setAnimation(null);
+          //     }, 1000)
+          // });
+
+      }
+       
     });
 
 

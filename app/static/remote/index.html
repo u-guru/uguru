@@ -10,6 +10,8 @@
     <link href="css/ionic.app.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/angular-strap.css" rel="stylesheet">
+    
 
     <script src="cordova.js"></script>
     <script src="cordova_plugins.js"></script> 
@@ -20,12 +22,15 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
     <script src="lib/lodash/dist/lodash.js"></script>
+    <script src="lib/angular-google-maps/angular-google-maps.min.js"></script>
     <script src="lib/restangular/dist/restangular.js"></script>
     <script src="lib/angular-local-storage/angular-local-storage.js"></script>
     <script src="lib/angular-loading-bar/angular-loading-bar.js"></script>
     <script src="lib/angular-animate/angular-animate.js"></script>
     <script src="lib/angular-payments/angular-payments.js"></script>
+    <script src="lib/ngAutocomplete/ngAutocomplete.js"></script>
 
     <script src="lib/stripe/stripe.js"></script>
     <script>
@@ -89,6 +94,7 @@
     <script type="text/javascript" src="js/controllers/student/student.guru-profile.ctrl.js"></script>
     <script type="text/javascript" src="js/controllers/student/student.guru-available.ctrl.js"></script>
     <script type="text/javascript" src="js/controllers/student/student.active-session.ctrl.js"></script>
+    <script type="text/javascript" src="js/controllers/student/student.request-status.ctrl.js"></script>
     <script type="text/javascript" src="js/controllers/util/util.university.ctrl.js"></script>
     <script type="text/javascript" src="js/controllers/util/util.add-course.ctrl.js"></script>
     <script type="text/javascript" src="js/controllers/util/util.add-note.ctrl.js"></script>
@@ -103,6 +109,8 @@
     <!-- uguru app services -->
     <script type="text/javascript" src="js/services/AuthService.js"></script>
     <script type="text/javascript" src="js/services/RootService.js"></script>
+    <script type="text/javascript" src="js/services/Popup.js"></script>
+    <script type="text/javascript" src="js/services/Popover.js"></script>
     <script type="text/javascript" src="js/services/hardware/camera.js"></script>
     <script type="text/javascript" src="js/services/hardware/location.js"></script>
 

@@ -462,18 +462,18 @@ p {
     position: relative;
 
     .name {
-      font-size: 36px;
+      font-size: 7vmin;
       font-family: $bold-font;
       line-height: 1;
     }
 
     .gurus {
-      font-size: 12px;
-      font-family: $reg-font;
+      font-size: 3vmin;
+      font-family: $semibold-font;
       vertical-align: middle;
       text-transform: uppercase;
       position: absolute;
-      top: 28px;
+      top: 19px;
       right: 14px;
     }
     .session {
@@ -627,7 +627,7 @@ hr {
 }
 
 .button-green-outline {
-  border: 1px solid $green;
+  border: 2px solid $green;
   color: $green;
 }
 
@@ -721,9 +721,16 @@ hr {
       .icon.ion-card.placeholder-icon.font-size {
         font-size: 28px;
       }
+      input[type="text"]{
+          line-height: 20px;
+        }
       .payment-box {
-        padding: 3px 0px 3px 14px;
+        color: $gray-4;
+        padding: 3px 0px 4px 5px;
         font-size: 16px;
+        width: 42px;
+        flex: none;
+        -webkit-flex: none;
       }
     }
     .item.item-input.margin-0 {
@@ -964,12 +971,12 @@ hr {
   padding: 10px;
   .item {
     background-color: #f2f2f2;
-    border-radius: 2px;
     border-left: 6px solid $green;
     position: relative;
     .course {
       border-left: 0px;
-
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 0px;
       .name {
         font-size: 30px;
         font-family: $bold-font;
@@ -1177,14 +1184,20 @@ hr {
     padding: 0px;
   }
   .row.center {
-    font-size: 10px;
+    font-size: 12px;
     color: white;
     background-color: #353d3e;
     height: 44px;
     padding-top: 7px;
-    .border-bottom {
+    .col.negative {
+      font-family: $bold-font;
+      color: rgba(115,118,119,1);
+    }
+    .col.active {
+      font-family: $bold-font;
       border-bottom: 3px solid $green;
     }
+
   }
 }
 
@@ -1518,6 +1531,11 @@ hr {
       border-left: 0px;
     }
   }
+  .md-box.active {
+    border-color: #a2a2a2;
+    background-color: #e5e5e5;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
   .course-name-box {
     height: 60px;
     font-size: 31px;
@@ -1535,10 +1553,11 @@ hr {
 
 .no-session {
   h2 {
-    color: $gray-8;
+    color: $gray-6;
     font-family: $bold-font;
   }
   .gray {
+    color: $gray-4;
     margin-bottom: 10px;
   }
   .green {
@@ -1549,15 +1568,16 @@ hr {
 
 .list-class {
   .bold {
-    font-family: $bold-font;
+    font-family: $semibold-font;
   }
   .item {
     .gray {
       font-family: $light-font;
       margin-left: 5px;
+      color: $gray-4;
     }
     .green {
-      font-family: $reg-font;
+      font-family: $semibold-font;
     }
     padding: 10px;
   }  
@@ -1732,7 +1752,7 @@ hr {
   p {
     position: absolute;
     top: 170%;
-    left: 20%;
+    left: 50%;
     box-sizing: border-box;
     margin: 0;
     padding: 0.7em 1.2em 0.54em;
@@ -1826,5 +1846,11 @@ hr {
       canvas {
           margin: 50px 42%;
       }
+  }
+}
+.tab-item {
+  max-width: none;
+  &.tab-item-active {
+    border-bottom: 4px solid $green;
   }
 }
