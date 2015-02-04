@@ -78,6 +78,17 @@ angular.module('uguru.root.services', [])
         }
     }
 
+    this.button = {
+        showButtonPressedAndHide: function(targetElement) {
+            targetElement.classList.add('active');
+            $timeout(
+                function() {
+                    var button = targetElement.classList.remove('active');
+                }, 
+            250)
+        }
+    }
+
     return this;
     
 }]);

@@ -1,5 +1,5 @@
     <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
-        <h1 class="title">Settings</h1>
+        <h1 id="settings-header" class="title">Settings</h1>
     </ion-header-bar>
     <ion-content>
       <div class="setting">
@@ -43,25 +43,22 @@
                 <span class="bold-font sm-box-green" ng-click="addCourseModal.show();">ADD A CLASS</span>
               </div>
             </li>
-            <div class="item item-divider">
-              PROFILE SETTINGS
-            </div>
-            <a class="item gray" ng-click="showComingSoon()">
+            <a class="item gray" ui-sref="^.settings-profile">
               Edit my profile & classes
             </a>
             <div class="item item-divider">
               PRIVACY SETTINGS
             </div>
-            <a class="item gray" href="#" ng-click="showComingSoon()">
+            <a class="item gray" href="#" ui-sref="^.settings-notifications">
               Notification Settings
             </a>
-            <div class="item item-divider" >
+            <div class="item item-divider">
               PAYMENT SETTINGS
             </div>
-            <a class="item gray" href="#" ng-click="showComingSoon()">
+            <a class="item gray" ui-sref="^.settings-card">
               Credit Cards
             </a>
-            <a class="item gray" href="#" ng-click="showComingSoon()">
+            <a class="item gray" ui-sref="^.settings-transactions">
               Transaction History
             </a>
             <div class="item item-divider">
@@ -79,6 +76,15 @@
             </div>
             <a class="item gray" ng-click="clearCache()">
               Clear Cache
+            </a>
+            <a class="item gray" ng-click="showPopupDev()">
+              Show Popup (Shun)
+            </a>
+            <a class="item gray" ng-click="showPopoverDev()">
+              Show Popover (Shun)
+            </a>
+            <a class="item gray" ng-click="ratingModal.show()">
+              Show Ratings Modal (Shun)
             </a>
             <a class="item gray" ui-sref="^.animations">
               Animation List

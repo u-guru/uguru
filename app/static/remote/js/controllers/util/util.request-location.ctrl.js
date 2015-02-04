@@ -33,9 +33,7 @@ angular.module('uguru.util.controllers')
 
     $scope.setLocation = function() {
       
-
-      // $scope.request.location = ;
-      // $scope.hideRequestMapModal();
+      $scope.hideRequestMapModal();
     }
 
     $scope.createGoogleLatLng = function(latCoord, longCoord) {
@@ -52,9 +50,10 @@ angular.module('uguru.util.controllers')
       geocoderObj.geocode({'latLng': googleLatLng}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           if (results[0]) {
-            $scope.map.setZoom(17);
-            $scope.setMarkerPosition($scope.marker, latCoord, longCoord);
-            $scope.request.autocomplete = results[0].formatted_address;
+            // $scope.actual_map.setZoom(17);
+            $scope.request.location = results[0].formatted_address;
+            // $scope.setMarkerPosition($scope.marker, latCoord, longCoord);
+            // $scope.request.autocomplete = results[0].formatted_address;
             // var infowindow = new google.maps.InfoWindow();
             // infowindow.setContent(results[0].formatted_address);
             // infowindow.open($scope.map, $scope.marker);
@@ -96,7 +95,7 @@ angular.module('uguru.util.controllers')
           var mapContainer = $scope.requestMapModal.$el.find("ion-pane")[0];
           var initMapCoords;
 
-          if (!$scope.requestPosition) {
+          if ($scope.requestPosition) {
             initMapCoords = $scope.createGoogleLatLng(
                                 $scope.requestPosition.coords.latitude, 
                                 $scope.requestPosition.coords.longitude 
@@ -123,15 +122,17 @@ angular.module('uguru.util.controllers')
                   mapOptions
           )
 
+          $scope.actual_map = actual_map
+
           // var input = document.getElementById('search-box-input');
           // var searchBox = new google.maps.places.SearchBox(input);
-          var input = document.getElementById('search-box-input');
-          $scope.autocomplete = new google.maps.places.Autocomplete(input);
-          $scope.autocomplete.bindTo('bounds', actual_map);
+          // var input = document.getElementById('search-box-input');
+          // $scope.autocomplete = new google.maps.places.Autocomplete(input);
+          // $scope.autocomplete.bindTo('bounds', actual_map);
 
-          google.maps.event.addListener($scope.autocomplete, 'place_changed', function() {
-            console.log('place changed');
-          });
+          // google.maps.event.addListener($scope.autocomplete, 'place_changed', function() {
+          //   console.log('place changed');
+          // });
 
           $scope.marker = new google.maps.Marker({
             position: initMapCoords,
@@ -142,15 +143,15 @@ angular.module('uguru.util.controllers')
 
           
 
-          // $scope.geocoder = new google.maps.Geocoder();
-          // if ($scope.requestPosition) {
+          $scope.geocoder = new google.maps.Geocoder();
+          if ($scope.requestPosition) {
 
-          //   $scope.getAddressFromLatLng(
-          //     $scope.geocoder,
-          //     $scope.requestPosition.coords.latitude, 
-          //     $scope.requestPosition.coords.longitude
-          //     );
-          // }
+            $scope.getAddressFromLatLng(
+              $scope.geocoder,
+              $scope.requestPosition.coords.latitude, 
+              $scope.requestPosition.coords.longitude
+              );
+          }
 
           // } else {
 
@@ -161,14 +162,15 @@ angular.module('uguru.util.controllers')
 
           // }
 
-          // google.maps.event.addListener($scope.marker, 'dragend', function() 
-          // {
-          //     $scope.marker.setAnimation(google.maps.Animation.BOUNCE);
-          //     $scope.getAddressFromLatLng($scope.geocoder, $scope.marker.getPosition().lat(), $scope.marker.getPosition().lng())
-          //     $timeout(function() {
-          //       $scope.marker.setAnimation(null);
-          //     }, 1000)
-          // });
+          google.maps.event.addListener($scope.marker, 'dragend', function() 
+          {
+              $scope.marker.setAnimation(google.maps.Animation.BOUNCE);
+              $scope.getAddressFromLatLng($scope.geocoder, $scope.marker.getPosition().lat(), $scope.marker.getPosition().lng())
+
+              $timeout(function() {
+                $scope.marker.setAnimation(null);
+              }, 1000)
+          });
 
       }
        

@@ -13,7 +13,6 @@ angular.module('uguru.root.services')
                           timeout: 10000,
                           enableHighAccuracy: false, //may cause high errors if true
                         };
-
                         $cordovaGeolocation
                           .getCurrentPosition(posOptions)
                           .then(function (position) {
@@ -21,13 +20,13 @@ angular.module('uguru.root.services')
                             $scope.user.position = position;
                             $scope.requestPosition = position;
                             // $scope.rootUser.updateLocal($scope.user);
-
                             if (callback) {
                               callback();
                             }
 
                             //TODO: user.last_positions.append(position + THE CURRENT TIME)
                           }, function(err) {
+                            console.log(err);
                             if (err.PEMISSION_DENIED) {
                               console.log('user denied permission');
                             }

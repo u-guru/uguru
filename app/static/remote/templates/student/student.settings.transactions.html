@@ -1,0 +1,12 @@
+  <ion-view title="Your Transaction History">
+    <ion-content>
+      <ion-list>
+        <ion-item ng-repeat="card in cards" class="item-button-right">
+          {{card.type}}, {{card.last_4}}, {{card.name}}
+           <button class="button button-positive" ui-sref="^.add-payment">
+              <i class="icon ion-edit"></i>
+            </button>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-view>

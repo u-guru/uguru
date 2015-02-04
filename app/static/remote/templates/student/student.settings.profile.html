@@ -1,0 +1,43 @@
+<ion-view title="Your Profile">
+    <ion-nav-buttons side="secondary">
+      <button ng-click="saveProfile()" class="button button-clear button-positive">Save</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="list">
+			<a class="item item-icon-right" ui-sref="^.settings-edit-courses">
+	    		My Courses
+	    		<p ng-show="user.student_courses && user.student_courses.length > 0">
+	    			{{user.student_courses.length}} total
+	    		</p>
+	    		 <i style="font-size:15px;"class="icon ion-chevron-right"></i>
+			</a>
+		</div>
+
+        <div class="account">
+          <div class="center">
+		        	<div class="list margin-bottom-10">
+			            <label class="item item-input">
+			                <div class="tag">First</div><input name="signup-first-name" type="text" ng-model="user.first_name" placeholder="your first name">
+			              </label>
+			              <label class="item item-input">
+			                <div class="tag">last</div><input name="signup-last-name" type="text" ng-model="user.last_name" placeholder="your last name">
+			              </label>
+			              <label class="item item-input">
+			                <div class="tag">email</div><input type="text" name="signup-email" ng-model="user.email" placeholder="peter.parker@berkeley.edu">
+			              </label>
+		            </div>
+		            <div class="list">
+		              <label class="item item-input">
+		                <div class="tag">Old Password</div><input type="password" name="signup-password" ng-model="signupForm.password" placeholder="at least 6 characters">
+		              </label>
+		              <label class="item item-input">
+		                <div class="tag">New Password</div><input type="password" name="signup-password" ng-model="signupForm.password" placeholder="at least 6 characters">
+		              </label>
+		              <button class="button button-full button-positive">
+		              	Save Password
+		              </button>
+		        	</div>
+		    </div>
+		</div>
+    </ion-content>
+  </ion-view>

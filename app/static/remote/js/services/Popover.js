@@ -28,6 +28,8 @@ angular.module('uguru.root.services')
 	            	body: options.body
 	            }
 
+
+
 	            scope.popoverButtonClicked = function() {
 	            	scope.hidePopover();
 	            }

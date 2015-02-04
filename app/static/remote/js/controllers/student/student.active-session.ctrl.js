@@ -22,6 +22,13 @@ angular.module('uguru.student.controllers')
     $scope.goToSessionMessages = function(session) {
       $state.go('^.messages', {sessionObj:JSON.stringify(session)});
     }
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/ratings.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.ratingModal = modal;
+    });
     
 
   }

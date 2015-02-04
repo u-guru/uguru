@@ -1,5 +1,28 @@
-<ion-view title="{{session.guru.name}}">
-  <ion-content class="background-black">
-    
+<ion-view title="Messages">
+  <ion-content scroll="true">
+    <div class="messages">
+      <ul class="list">
+          <li class="item {{message.class}}" ng-repeat="message in messages">
+            <div class="text">{{message.content}}</div>
+            <img src="{{message.img_src}}">
+          </li>
+          
+      </ul>
+    </div>
   </ion-content>
+  <ion-footer-bar class="bar-footer item-input-inset" keyboard-attach>
+    <label class="item-input-wrapper">
+        <i class="icon ion-ios7-search placeholder-icon"></i>
+
+        <input type="search" name="message-input" class="form-control"
+                placeholder="Enter a message"
+                ng-model="new_message.content"
+                ng-blur="setFocus()"
+        />
+    </label>
+
+    <button class="button button-clear button-positive" ng-show="new_message.content.length > 0" ng-click="sendMessage(new_message.content)">
+    Send
+    </button>  
+  </ion-footer-bar>
 </ion-view>

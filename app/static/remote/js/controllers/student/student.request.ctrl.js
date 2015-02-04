@@ -14,9 +14,10 @@ angular.module('uguru.student.controllers')
   '$stateParams',
   '$ionicNavBarDelegate',
   'Geolocation',
+  '$ionicPosition',
   function($scope, $state, $timeout, $localstorage, 
  	$ionicModal, $ionicTabsDelegate, $cordovaProgress, $stateParams,
-  $ionicNavBarDelegate, Geolocation) {
+  $ionicNavBarDelegate, Geolocation, $ionicPosition) {
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/add-note.modal.html', {
       scope: $scope,
@@ -46,8 +47,74 @@ angular.module('uguru.student.controllers')
         $scope.contactingGuruModal = modal;
     });
 
+
+    var checkbox0 = [document.getElementById('iconRecord0')];
+    var checkbox0_position = $ionicPosition.offset(checkbox0).left
+    var checkbox1 = [document.getElementById('iconRecord1')];
+    var checkbox1_position = $ionicPosition.offset(checkbox1).left
+    var half_box_size = (checkbox1_position - checkbox0_position) / 2 - 10
+
+    var from_position = checkbox0_position + half_box_size
+    var to_position = 0;
+
+    obj = document.getElementById('iconChecked');
+    obj.style.left = from_position + "px";
+    
     $scope.checkboxClicked = function(index) {
+
       $scope.time_checkbox = index;
+      
+      var iconRecord = "iconRecord" + index;
+      var checkbox_num = [document.getElementById(iconRecord)];
+      var checkbox_position = $ionicPosition.offset(checkbox_num).left;       
+      var to = half_box_size + checkbox_position
+      to_position = to;
+
+        // console.log($ionicPosition.position(checkbox));
+        // console.log($ionicPosition.offset(checkbox));
+      
+      animateMe();
+
+      function animateRight(obj, from, to){
+        if(from >= to){
+          obj.style.visibility = 'display';
+          return;
+        }
+        else {
+          var box = obj;
+          box.style.left = from + "px";
+          setTimeout(function(){
+              animateRight(obj, from + 2, to);
+          }, 1)
+        }
+      }
+
+      function animateLeft(obj, from, to){
+        if(from <= to){
+          obj.style.visibility = 'display';
+          return;
+        }
+        else {
+          var box = obj;
+          box.style.left = from + "px";
+          setTimeout(function(){
+              animateLeft(obj, from - 2, to);
+          }, 1)
+        }
+      }
+
+      function animateMe() {
+        console.log(from_position);
+        console.log(to_position);
+
+        if(to_position > from_position) {
+          animateRight(document.getElementById('iconChecked'), from_position, to_position);
+        }
+        else {
+          animateLeft(document.getElementById('iconChecked'), from_position, to_position);
+        }
+      }
+      from_position = to_position;
     }
 
     $scope.toggleVirtualGuru = function() {
@@ -87,7 +154,6 @@ angular.module('uguru.student.controllers')
 
     $scope.goBackFromRequestsToHome = function() {
       $scope.saveRequestToUser();
-      console.log('sup');
     };
 
     $scope.initRequestObj = function() {
@@ -187,8 +253,7 @@ angular.module('uguru.student.controllers')
             console.log(place);
           }
         }
-      }
+    }
   }
-
 ]);
 

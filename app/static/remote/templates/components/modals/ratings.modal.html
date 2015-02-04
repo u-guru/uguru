@@ -1,6 +1,42 @@
 <ion-modal-view ng-controller="RatingsController">
+    
+    <ion-content class="background-black-7" style="z-index:10">
+      <div class="complete">
+        <div class="complete-box center">
+          <div class="message">
+            Session<br>Completed!
+          </div>
+          <div class="horizon">
+            <span class="box">
+              {{rating.time}}
+            </span>
+          </div>
+          <div class="money">
+            ${{rating.amount}}
+          </div>
+          <div class="horizon">
+            <span class="box">
+              Rate your guru
+            </span>
+          </div>
+          <div class="item padding-6-52">
+            <div class="icon"><img src='./img/shun.png' class='width'></div>
+            <div class="box-2 margin-top">
+              <div class="name">{{guru.name}}</div>
+              <div class="course-name">{{guru.course.short_name}}</div>
+            </div>
+          </div>
+          <div class="horizon">
+          </div>
+          <div class="row center">
+            <div ng-click="starClicked($event)" class="col"><span value="1" class="icon ion-star"></span></div>
+            <div ng-click="starClicked($event)" class="col"><span value="2" class="icon ion-star"></span></div>
+            <div ng-click="starClicked($event)" class="col"><span value="3" class="icon ion-star"></span></div>
+            <div ng-click="starClicked($event)" class="col"><span value="4" class="icon ion-star"></span></div>
+            <div ng-click="starClicked($event)" class="col"><span value="5" class="icon ion-star"></span></div>
+          </div>
   
-  <ion-content class="background-black-7" >
+  <!-- <ion-content class="background-black-9" >
     <div class="complete">
       <div class="complete-box center">
         <div class="message">
@@ -12,14 +48,14 @@
           </span>
         </div>
         <div class="money">
-          $27
+          <span class="bucks">$</span>27
         </div>
         <div class="horizon">
           <span class="box">
             or try facebook
           </span>
         </div>
-        <div class="item padding-6-52">
+        <div class="item padding-6-92">
           <div class="icon"><img src='./img/shun.png' class='width'></div>
           <div class="box-2 margin-top">
             <div class="name">Shun Kurosaki</div>
@@ -29,14 +65,14 @@
         <div class="horizon">
         </div>
         <div class="row center">
-          <div class="col"><span class="icon ion-star"></span></div>
-          <div class="col"><span class="icon ion-star"></span></div>
-          <div class="col"><span class="icon ion-star"></span></div>
-          <div class="col"><span class="icon ion-star"></span></div>
-          <div class="col"><span class="icon ion-star"></span></div>
+          <div class="col"><span class="icon ion-star green" id="starOne"></span></div>
+          <div class="col"><span class="icon ion-star" id="starTwo"></span></div>
+          <div class="col"><span class="icon ion-star" id="starThree"></span></div>
+          <div class="col"><span class="icon ion-star" id="starFour"></span></div>
+          <div class="col"><span class="icon ion-star" id="starFive"></span></div>
         </div>
-      </div>
-    </div>
-  </ion-content>
+      </div> -->
+    </ion-content>
+
 
 </ion-modal-view>

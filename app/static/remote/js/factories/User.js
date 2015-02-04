@@ -17,12 +17,13 @@ angular.module('uguru.user', [])
         var user = {};
         properties = [
             'name', 'email', 'last_position', 'deactivated',
-            'university', 'university_id', 'onboarding',
+            'university', 'university_id', 'onboarding'
         ]
         one_to_many_properties = [
             'all_positions', 'active_sessions', 'student_sessions',
             'guru_sessions', 'conversations', 'devices', 'gurus',
-            'cards', 'requests', 'student_ratings', 'guru_ratings'
+            'cards', 'requests', 'student_ratings', 'guru_ratings',
+            'student_courses'
         ];
         for (var index = 0; index < properties.length; index++) {
             var property = properties[index];

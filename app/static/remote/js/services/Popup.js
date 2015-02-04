@@ -5,8 +5,8 @@ angular.module('uguru.root.services')
     '$timeout',
     '$ionicPopup',
     function($localstorage, $timeout, $ionicPopup) {
-
-    	this.confirm = {
+    	
+    	this.options = {
 	        show: function(scope, options) {
 	            var popupOptions = {
 	     
@@ -39,8 +39,9 @@ angular.module('uguru.root.services')
 				    });
 			   	}, options.delay);
 
-	        }
+	        },
 	    }
+
 	    return this;
 
 }]);

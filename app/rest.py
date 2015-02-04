@@ -9,6 +9,7 @@ from serializers import UserSerializer
 from datetime import datetime
 import logging, json, urllib2, importlib
 
+APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d31']
  
 @auth.verify_password
 def verify_password(email, password):
@@ -345,7 +346,7 @@ class AdminSendView(restful.Resource):
             test_email = request.json.get('test_email')
             test_name = request.json.get('test_name')
             print request.json
-            send_campaign_email_test(
+            result = send_campaign_email_test(
                 campaign_name = 'TEST',
                 template_name = request.json.get('template_name'),
                 subject = request.json.get('subject'),
@@ -358,6 +359,8 @@ class AdminSendView(restful.Resource):
                 test_email = test_email,
                 test_name = test_name
             )
+
+            return jsonify(results=result)
 
         ##send regular campaign
         else:
@@ -393,7 +396,11 @@ class AdminUserView(restful.Resource):
 
 class AdminMandrillTemplatesView(restful.Resource):
 
-    def get(self):
+    def get(self, auth_token):
+
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
         from emails import mandrill_client
         templates = sorted(mandrill_client.templates.list(), 
             key=lambda t:datetime.strptime(t['updated_at'], "%Y-%m-%d %H:%M:%S.%f"), reverse=True)
@@ -404,14 +411,22 @@ class AdminMandrillTemplatesView(restful.Resource):
 
 class AdminMandrillCampaignsView(restful.Resource):
 
-    def get(self):
+    def get(self, auth_token):
+
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
         from emails import mandrill_client
         campaigns = mandrill_client.tags.list()
         
         return jsonify(campaigns=campaigns)
 
 class AdminMandrillCampaignDetailedView(restful.Resource):
-    def get(self, tag):
+    def get(self, tag, auth_token):
+
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
         from emails import mandrill_client
         specific_campaign = mandrill_client.tags.info(tag=tag)
         return jsonify(campaign=specific_campaign)
@@ -437,6 +452,21 @@ class AdminAppUpdateView(restful.Resource):
 
         return jsonify(version=new_version_num)
 
+class AdminViewEmailsList(restful.Resource):
+    def get(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        default_goal = 20000
+        emails = {
+            'University of Michigan': {'count':15000, 'sent':1000, 'goal':default_goal},
+            'University of Miami': {'count':1000, 'sent':0, 'goal':default_goal},
+            'UCLA': {'count':3000, 'sent':0, 'goal':default_goal},
+            'UT Austin': {'count':20000, 'sent':0, 'goal':default_goal},
+            'University of Illinois': {'count':2237, 'sent':1000, 'goal':default_goal},
+            'UC Berkeley': {'count':40000, 'sent':0, 'goal':default_goal}
+        }
+        return jsonify(emails=emails)
 
  
 api.add_resource(UserView, '/api/v1/users')
@@ -454,10 +484,11 @@ api.add_resource(CourseListView, '/api/v1/courses')
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')
 api.add_resource(AdminUserView, '/api/admin/users/')
-api.add_resource(AdminSendView, '/api/admin/send')
+api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test')
 api.add_resource(AdminAppUpdateView, '/api/admin/app/update')
-api.add_resource(AdminMandrillTemplatesView, '/api/admin/mandrill/templates')
-api.add_resource(AdminMandrillCampaignsView, '/api/admin/mandrill/campaigns')
-api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/mandrill/campaigns/<string:tag>')
+api.add_resource(AdminMandrillTemplatesView, '/api/admin/<string:auth_token>/mandrill/templates')
+api.add_resource(AdminMandrillCampaignsView, '/api/admin/<string:auth_token>/mandrill/campaigns')
+api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/<string:auth_token>/mandrill/campaigns/<string:tag>')
+api.add_resource(AdminViewEmailsList, '/api/admin/<string:auth_token>/emails')
 
 

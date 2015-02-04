@@ -97,7 +97,18 @@ angular.module('uguru.student.controllers', [])
     }
 
     $scope.goToRequest = function(course) {
-    	$state.go('^.request', {courseObj:JSON.stringify(course)});
+      // $scope.root.button.showButtonPressedAndHide($event.target);
+      $state.go('^.request', {courseObj:JSON.stringify(course)});
+    }
+
+    $scope.showButtonPressed = function($event) {
+      document.getElementsByClassName('course-name-box')[0].classList.add('active')
+      // $event.target.classList.add('active')
+    }
+
+    $scope.showButtonReleased = function($event) {
+      document.getElementsByClassName('course-name-box')[0].classList.remove('active')
+      // $event.target.classList.add('active')
     }
 
     $scope.goToRequestStatus = function(course) {
@@ -134,22 +145,40 @@ angular.module('uguru.student.controllers', [])
           }, 1000);
     }
 
-    $scope.showPopover = function() {
-      $scope.showTooltip();
+    $scope.showPopupDev = function() {
+      // $scope.showTooltip();
+
+          var welcomePopupOptions = {
+              header:"Welcome!",
+              body: "We'd like your location to help locate a nearby Guru. Allow us to request for your location?",
+              positiveBtnText:"Sure!",
+              negativeBtnText:"No Thanks",
+              delay: 1500
+            }
+          
+          Popup.options.show($scope, welcomePopupOptions);
     }
+
+    $scope.showPopoverDev = function() {
+      // $scope.showTooltip();
+
+          popoverOptions = {
+            targetElement:'#settings-header',
+            title: 'Tap to request help',
+            delay: 500,
+            animation:null,
+            placement: 'bottom',
+            body: "We'll find a Guru to help you out <br> in a matter of minutes.<br>",
+            buttonText: 'Got it',
+            dropshadow: true
+          }
+
+          Popover.tutorial.show($scope, popoverOptions);
+    }
+
     $scope.init = function() {
 
-      var welcomePopupOptions = {
-        header:"Welcome!",
-        body: "We'd like to notify you when our Guru's<br>accept your requests for help.<br>Turn notifications on?",
-        positiveBtnText:"Sure!",
-        negativeBtnText:"No Thanks",
-        delay: 1500
-      }
-
-      if (!$scope.user.university_id) {
-        Popup.confirm.show($scope, welcomePopupOptions);
-      }
+      
 
     };
 

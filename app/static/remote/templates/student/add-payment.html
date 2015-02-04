@@ -8,14 +8,19 @@
       <div class="list list-inset">
         <label class="item item-input margin-0">
           <i class="icon ion-card placeholder-icon font-size"></i>
-          <input type="text" placeholder="1234" class="payment-box"　maxlength="4">
-          <input type="text" placeholder="5678" class="payment-box"　maxlength="4">
-          <input type="text" placeholder="9012" class="payment-box"　maxlength="4">
-          <input type="text" placeholder="3456" class="payment-box"　maxlength="4">
+          <input type="number" id="first-four" ng-change="firstFourChange()" ng-model="cardForm.first4" placeholder="1235" class="payment-box" ng-maxlength="4"></input>
+          <input type="number" id="second-four" ng-change="secondFourChange()" ng-model="cardForm.second4" placeholder="5678" class="payment-box"　ng-maxlength="4">
+          <input type="number" id="third-four" ng-change="thirdFourChange()" ng-model="cardForm.third4" placeholder="9012" class="payment-box"　ng-maxlength="4">
+          <input type="number" id="last-four" ng-change="lastFourChange()" ng-model="cardForm.last4" placeholder="3456" class="payment-box" ng-maxlength="4">
+          <input type="number" id="ccv" ng-change="ccvChange" ng-model="cardForm.ccv" placeholder="CCV" class="payment-box" ng-maxlength="4">
         </label>
       </div>
-      <div class="message green">OR SCAN YOUR CARD</div>
-      <div class="message center">his payment method will only be charged<br>when you request a Guru.</div>
+      <div class="message center">Your card will only be charged<br>when you request a Guru.</div>
+    </div>
+    <br>
+    <div ng-show="card">
+      <button class="button button-positive button-full" ng-click="setCardToDefault()"> Set Default </button>
+      <button class="button button-disabled button-full" ng-click="deleteCard()"> Remove Card </button>
     </div>
   </ion-content>
 

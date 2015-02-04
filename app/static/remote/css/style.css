@@ -734,3 +734,8 @@ input.ion-google-place[readonly]{
 .custom-prediction-label {
     font-style: italic;
 }*/
+
+.my-overlay {
+  background-color: #222;
+  opacity: 0.8;
+}

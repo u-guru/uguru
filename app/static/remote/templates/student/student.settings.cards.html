@@ -1,0 +1,16 @@
+  <ion-view title="Your Payment Cards">
+    <ion-content>
+    <div class="settings-cards">
+      <div class="your-account">your account</div>
+        <ion-list>
+          <ion-item class="item" ui-sref="^.add-payment"><span style="margin-left:10px;">Add a New Account</span>
+            <img src="./img/right-chevron.png" class="right-chevron">
+          </ion-item>
+          <ion-item ng-repeat="card in cards" class="cards-padding">
+            <img src="./img/{{card.type}}.png" class="cards"> ***{{card.last_4}} {{card.name}} <span ng-show="card.default" class="positive">Default</span>
+             <img src="./img/right-chevron.png" ng-click="goToEditCard(card)" class="right-chevron">
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-content>
+  </ion-view>

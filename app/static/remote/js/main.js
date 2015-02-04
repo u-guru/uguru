@@ -6,7 +6,8 @@ if (LOCAL) {
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.student.controllers', 'uguru.version', 'uguru.util.controllers',
-  'uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps', 'uguru.directives', 'mgcrea.ngStrap'])
+  'uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps', 'uguru.directives',
+  'mgcrea.ngStrap', 'ionic.contrib.frost'])
 
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory, 
@@ -175,14 +176,38 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   }).
   state('root.student.settings', {
         url: '/settings',
-        templateUrl: BASE + 'templates/student/student.settings.html',
+        templateUrl: BASE + 'templates/student/student.settings.html'
+  }).
+  state('root.student.settings-card', {
+        url: '/settings-cards',
+        templateUrl: BASE + 'templates/student/student.settings.cards.html',
+        controller: 'SettingsCardController'
+  }).
+  state('root.student.settings-profile', {
+        url: '/settings-profile',
+        templateUrl: BASE + 'templates/student/student.settings.profile.html',
+        controller: 'SettingsProfileController'
+  }).
+  state('root.student.settings-transactions', {
+        url: '/settings-transactions',
+        templateUrl: BASE + 'templates/student/student.settings.transactions.html',
+  }).
+  state('root.student.settings-notifications', {
+        url: '/settings-notifications',
+        templateUrl: BASE + 'templates/student/student.settings.notifications.html',
+        controller: 'SettingsNotificationsController'
+  }).
+  state('root.student.settings-edit-courses', {
+        url: '/settings-edit-courses',
+        templateUrl: BASE + 'templates/student/student.settings.edit-courses.html',
+        controller: 'SettingsEditCoursesController'
   }).
   state('root.student.directory', {
         url: '/directory',
         templateUrl: BASE + 'templates/student/directory.html',
   }).
   state('root.student.add-payment', {
-        url: '/payment',
+        url: '/payment/:cardObj',
         templateUrl: BASE + 'templates/student/add-payment.html',
   }).
   state('root.student.request-status', {
@@ -191,7 +216,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         controller: 'RequestStatusController'
   }).
   state('root.student.messages', {
-        url: '/messages/:sessionObj',
+        url: '/messages',
         templateUrl: BASE + 'templates/student/student.messages.html',
         controller: 'StudentMessagesController'
   }).
