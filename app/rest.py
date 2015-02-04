@@ -458,14 +458,14 @@ class AdminViewEmailsList(restful.Resource):
             return "UNAUTHORIZED", 401
 
         default_goal = 20000
-        emails = {
-            'University of Michigan': {'count':15000, 'sent':1000, 'goal':default_goal},
-            'University of Miami': {'count':1000, 'sent':0, 'goal':default_goal},
-            'UCLA': {'count':3000, 'sent':0, 'goal':default_goal},
-            'UT Austin': {'count':20000, 'sent':0, 'goal':default_goal},
-            'University of Illinois': {'count':2237, 'sent':1000, 'goal':default_goal},
-            'UC Berkeley': {'count':40000, 'sent':0, 'goal':default_goal}
-        }
+        emails = [
+            {'count':15000, 'sent':1000, 'name':'University of Michigan', 'goal':default_goal},
+            {'name': 'University of Miami', 'count':1000, 'sent':0, 'goal':default_goal},
+            {'name': 'UCLA', 'count':3000, 'sent':0, 'goal':default_goal},
+            {'name':'UT Austin', 'count':20000, 'sent':0, 'goal':default_goal},
+            {'name':'University of Illinois', 'count':2237, 'sent':1000, 'goal':default_goal},
+            {'name': 'UC Berkeley', 'count':40000, 'sent':0, 'goal':default_goal}
+        ]
         return jsonify(emails=emails)
 
  
