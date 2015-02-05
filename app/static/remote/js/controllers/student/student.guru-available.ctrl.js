@@ -52,13 +52,11 @@ angular.module('uguru.student.controllers')
       $state.go('^.home');
     }
 
-    // var lightSpeedIn = document.getElementById('lightSpeedIn')
-    // setTimeout(function() {
-    //   lightSpeedIn.classList.add('animated', 'lightSpeedIn');
-    //   setTimeout(function() {
-    //     lightSpeedIn.classList.remove('animated', 'lightSpeedIn');
-    //   }, 2000);
-    // }, 500);
+    var lightSpeedIn = document.getElementById('lightSpeedIn')
+    setTimeout(function() {
+      lightSpeedIn.classList.add('animated');
+      lightSpeedIn.classList.add('lightSpeedIn');
+    }, 5500);
 
   }
 

@@ -69,9 +69,6 @@ angular.module('uguru.student.controllers')
       var checkbox_position = $ionicPosition.offset(checkbox_num).left;       
       var to = half_box_size + checkbox_position
       to_position = to;
-
-        // console.log($ionicPosition.position(checkbox));
-        // console.log($ionicPosition.offset(checkbox));
       
       animateMe();
 
@@ -104,8 +101,6 @@ angular.module('uguru.student.controllers')
       }
 
       function animateMe() {
-        console.log(from_position);
-        console.log(to_position);
 
         if(to_position > from_position) {
           animateRight(document.getElementById('iconChecked'), from_position, to_position);
@@ -221,7 +216,7 @@ angular.module('uguru.student.controllers')
         $state.go('^.guru-available', {requestObj:JSON.stringify($scope.request)});
         $timeout(function() {
           $scope.contactingGuruModal.hide();
-        }, 2000);
+        }, 5000);
 
       }, 250);
 
@@ -255,6 +250,12 @@ angular.module('uguru.student.controllers')
           }
         }
     }
+
+    $scope.$on('$ionicView.enter', function(){
+      $timeout(function() {
+        $scope.checkboxClicked(1);
+      },1000)
+    });
   }
 ]);
 

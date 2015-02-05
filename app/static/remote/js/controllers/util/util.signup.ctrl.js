@@ -193,6 +193,10 @@ angular.module('uguru.util.controllers')
           $timeout(function() {
             $cordovaProgress.hide();
             $scope.progress_active = false;
+            var callRequestHelp = function() {
+              $scope.requestHelp();
+            }
+            $scope.closeSignupModal(callRequestHelp);
           }, 1000);
       } else {
 
@@ -211,13 +215,6 @@ angular.module('uguru.util.controllers')
         $scope.rootUser.updateLocal($scope.user);
 
         $scope.showSuccess('Account Created!');
-        
-        var callRequestHelp = function() {
-          $scope.requestHelp();
-        }
-        
-        $scope.closeSignupModal(callRequestHelp);
-
 
       }
     }

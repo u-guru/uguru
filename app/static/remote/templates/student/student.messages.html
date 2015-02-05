@@ -1,5 +1,6 @@
 <ion-view title="Messages">
-  <ion-content scroll="true">
+  <ion-content scroll="true" delegate-handle="message-scroll">
+    
     <div class="messages">
       <ul class="list">
           <li class="item {{message.class}}" ng-repeat="message in messages">

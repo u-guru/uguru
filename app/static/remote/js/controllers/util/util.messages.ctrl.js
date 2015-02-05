@@ -13,13 +13,14 @@ angular.module('uguru.student.controllers')
   '$cordovaProgress',
   '$stateParams',
   '$cordovaKeyboard',
+  '$ionicScrollDelegate',
   function($scope, $state, $timeout, $localstorage, 
-  $ionicModal, $ionicTabsDelegate, $cordovaProgress, $stateParams, $cordovaKeyboard) {
+  $ionicModal, $ionicTabsDelegate, $cordovaProgress,
+  $stateParams, $cordovaKeyboard, $ionicScrollDelegate) {
 
     $scope.default_img_one = "https://scontent-a-lax.xx.fbcdn.net/hphotos-xpf1/t31.0-8/10562663_885963074765104_3921025689053196901_o.jpg";
     $scope.default_img_two = "https://scontent-a-lax.xx.fbcdn.net/hphotos-xpa1/t31.0-8/10520798_883807624993289_354037221863580422_o.jpg"
     
-    $cordovaKeyboard.disableScroll(false);
     // $scope.session = JSON.parse($stateParams.sessionObj);
     // console.log($scope.session);
     $scope.new_message = {content: ''};
@@ -72,6 +73,10 @@ angular.module('uguru.student.controllers')
       },
     ]
 
+    $scope.setFocus = function() {
+      document.getElementsByName('message-input')[0].focus();
+    }
+
     // $scope.setFocus = function(event) {
     //   document.getElementsByName("message-input")[0].focus();
     // };
@@ -84,8 +89,19 @@ angular.module('uguru.student.controllers')
       })
 
       $scope.new_message.content = '';
-      $scope.root.keyboard.close();
+      // $scope.root.keyboard.close();
     }
+    $scope.$on('$ionicView.enter', function(){
+      
+      console.log('view has entered');
+      $scope.root.keyboard.show('message-input', 500);
+      
+      $timeout(function() {
+        $ionicScrollDelegate.$getByHandle('message-scroll').scrollBy(0, 600);
+        // $cordovaKeyboard.disableScroll(false);
+        
+      },500);
+    });
 
   }
 
