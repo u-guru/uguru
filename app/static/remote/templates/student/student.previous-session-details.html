@@ -1,0 +1,34 @@
+<ion-view title="{{session.course.short_name}} Session">
+    <ion-nav-buttons side="secondary">
+      
+      <button ng-click="goToSupport()" class="button button-clear button-positive">
+      	Support
+      </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="session-progress">
+          <li class="item padding-10-15 item-icon-right" ng-click="goToSessionMessages(session)">
+            <div class="location"><span class="bold">See Messages</span>
+              <i style="font-size:15px;"class="icon ion-chevron-right positive"></i>
+            </div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="location"><span class="bold">Course:</span> {{session.course.short_name}}</div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="location"><span class="bold">Location:</span> {{session.location.address}}</div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="tag"><span class="bold">Rate:</span> ${{session.price.amount}} for every {{session.price.minutes}} minutes</div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="location"><span class="bold">Session Length:</span> 23 minutes </div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="tag"><span class="bold">Total Cost:</span> $8</div>
+          </li>
+        </div>
+
+
+    </ion-content>
+  </ion-view>

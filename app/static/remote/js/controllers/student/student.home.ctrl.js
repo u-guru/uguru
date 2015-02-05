@@ -103,13 +103,17 @@ angular.module('uguru.student.controllers', [])
       $state.go('^.request', {courseObj:JSON.stringify(course)});
     }
 
-    $scope.showButtonPressed = function($event) {
-      document.getElementsByClassName('course-name-box')[0].classList.add('active')
+    $scope.showButtonPressed = function($event, class_name) {
+      // console.log($event.target);
+      // console.log($event.target.name)
+      // $event.target.classList.add('active');
+    document.getElementsByClassName(class_name)[0].classList.add('active')
       // $event.target.classList.add('active')
     }
 
-    $scope.showButtonReleased = function($event) {
-      document.getElementsByClassName('course-name-box')[0].classList.remove('active')
+    $scope.showButtonReleased = function($event, class_name) {
+      // $event.target.classList.remove('active');
+      document.getElementsByClassName(class_name)[0].classList.remove('active')
       // $event.target.classList.add('active')
     }
 
@@ -145,6 +149,10 @@ angular.module('uguru.student.controllers', [])
             $cordovaProgress.hide();
             $scope.progress_active = false;
           }, 1000);
+    }
+
+    $scope.goToPreviousSessionDetails = function(session) {
+      $state.go('^.previous-session-details', {sessionObj:JSON.stringify(session)});
     }
 
     $scope.showPopupDev = function() {

@@ -224,6 +224,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/student/student.request-status.html',
         controller: 'RequestStatusController'
   }).
+  state('root.student.previous-session-details', {
+        url: '/previous-session-details/:sessionObj',
+        templateUrl: BASE + 'templates/student/student.previous-session-details.html',
+        controller: 'PreviousSessionDetailsController'
+  }).
   state('root.student.messages', {
         url: '/messages',
         templateUrl: BASE + 'templates/student/student.messages.html',

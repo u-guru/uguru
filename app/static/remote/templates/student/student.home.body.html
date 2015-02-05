@@ -51,7 +51,7 @@
       <div class="add-class margin-top-40" ng-show="user.active_sessions.length === 0;">
         
         <div class="lg-box student-course" ng-repeat="course in user.student_courses" animation="slide-left-right">
-          <div class="course-name-box" on-touch="showButtonPressed($event)" on-release="showButtonReleased($event)" ng-click="goToRequest(course)">
+          <div class="course-name-box" on-touch="showButtonPressed($event, 'course-name-box')" on-release="showButtonReleased($event, 'course-name-box')" ng-click="goToRequest(course)">
             <div class="text" ng-show="!course.active_request || user.active_sessions.length === 0">
               {{course.short_name}}
             </div>
@@ -81,7 +81,7 @@
           <div class="green" ng-click="addCourseModal.show()">+Add a class</div>
         </div>
 
-        <div class="guru-book margin-top-40" ng-repeat="session in user.completed_sessions">
+        <div class="guru-book margin-top-40" ng-repeat="session in user.completed_sessions" ng-click="goToPreviousSessionDetails(session)">
           <li class="item padding-6-15">
             <div class="icon"><img src='./img/shun.png' class='width'></div>
             <div class="box-2 margin-top">
