@@ -1,6 +1,8 @@
  <ion-view ng-controller="AddPaymentController" title="Add Payment">
   <ion-nav-buttons side="secondary">
-      <button ng-click="savePayment()" class="button button-clear button-positive">save</button>
+      <button ng-click="addPaymentActionBtn()" class="button button-clear button-positive">
+        {{actionButtonText}}
+      </button>
   </ion-nav-buttons>
   
   <ion-content>
@@ -8,20 +10,15 @@
       <div class="list list-inset">
         <label class="item item-input margin-0">
           <i class="icon ion-card placeholder-icon font-size"></i>
-          <input type="number" id="first-four" ng-change="firstFourChange()" ng-model="cardForm.first4" placeholder="1235" class="payment-box" ng-maxlength="4"></input>
-          <input type="number" id="second-four" ng-change="secondFourChange()" ng-model="cardForm.second4" placeholder="5678" class="payment-box"　ng-maxlength="4">
-          <input type="number" id="third-four" ng-change="thirdFourChange()" ng-model="cardForm.third4" placeholder="9012" class="payment-box"　ng-maxlength="4">
-          <input type="number" id="last-four" ng-change="lastFourChange()" ng-model="cardForm.last4" placeholder="3456" class="payment-box" ng-maxlength="4">
-          <input type="number" id="ccv" ng-change="ccvChange" ng-model="cardForm.ccv" placeholder="CCV" class="payment-box" ng-maxlength="4">
+          <input style="border:0px; width:50%" max="20"name="card-input" id="card-input" class="payment-box" placeholder="1234 5678 9012 3456"></input>
+          <input max="4" style="border:0px; margin-left:20px;" id="ccv-input" placeholder="CCV" class="payment-box">
         </label>
       </div>
       <div class="message center">Your card will only be charged<br>when you request a Guru.</div>
     </div>
     <br>
-    <div ng-show="card">
-      <button class="button button-positive button-full" ng-click="setCardToDefault()"> Set Default </button>
-      <button class="button button-disabled button-full" ng-click="deleteCard()"> Remove Card </button>
-    </div>
+    <button ng-show="card" class="button button-positive button-full" ng-click="setDefault()"> Set Default </button>
+    <button ng-show="card" class="button button-disabled button-full" ng-click="removeCard()"> Remove Card </button>
   </ion-content>
 
 </ion-view>

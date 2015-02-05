@@ -9,8 +9,9 @@ angular.module('uguru.util.controllers')
   '$localstorage',
   '$ionicModal',
   '$cordovaProgress',
+  '$cordovaFacebook',
   function($scope, $state, $timeout, $localstorage, 
- 	$ionicModal, $cordovaProgress) {
+ 	$ionicModal, $cordovaProgress, $cordovaFacebook) {
     
     $scope.signupForm = {
       first_name: null,
@@ -38,6 +39,57 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.login = function () {
+
+        $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
+        // $cordovaFacebook.login(["user_education_history", "friends_education_history"]).then(function (success) {
+        $scope.loginInfo = success;
+        
+        console.log(success);
+
+        $scope.getMe();
+        console.log('Getting Facebook information...');
+
+        //get user information
+      },
+
+      //error function
+      function (error) {
+        $scope.error = error;
+        console.log('FB CONNECT FAILED...');
+        console.log('Error from logging from facebook:' + JSON.stringify(error));
+        $scope.logout();
+      });
+
+    };
+
+
+     $scope.getMe = function () {
+      $cordovaFacebook.api("/me", null).then(function (success) {
+
+
+        console.log(JSON.stringify(success));
+        
+        $scope.user.first_name = success.first_name;
+        $scope.user.last_name = success.last_name;
+        $scope.user.name = success.name;
+        $scope.user.email = success.email;
+        $scope.user.fb_id = success.id;
+
+        $scope.signupAccount();
+        
+
+      }, function (error) {
+        $scope.error = error;
+        console.log(error);
+      });
+    };
+
+    $scope.fbConnect = function () {
+      console.log('Attempting to login through facebook...');
+      $scope.login();
+    };
+
     $scope.$on('modal.shown', function() {
 
       if ($scope.signupModal.isShown()) {
@@ -48,7 +100,7 @@ angular.module('uguru.util.controllers')
     });
 
     $scope.signupFacebook = function() {
-      $scope.showComingSoon();
+      $scope.login();
     }
 
     $scope.showError = function(msg) {
@@ -72,6 +124,11 @@ angular.module('uguru.util.controllers')
       if (!formDict.first_name) {
         $scope.showError('Please enter your first name');
         document.getElementsByName('signup-first-name')[0].focus();
+        var shake = document.getElementById('input_first')
+        shake.classList.add('animated', 'shake');
+        setTimeout(function() {
+          shake.classList.remove('animated', 'shake');
+        }, 950);
         return false;
       } else {
         $scope.user.first_name = $scope.signupForm.first_name;
@@ -80,6 +137,11 @@ angular.module('uguru.util.controllers')
       if (!formDict.last_name) {
         $scope.showError('Please enter your last name');
         document.getElementsByName('signup-last-name')[0].focus();
+        var shake = document.getElementById('input_last')
+        shake.classList.add('animated', 'shake');
+        setTimeout(function() {
+          shake.classList.remove('animated', 'shake');
+        }, 950);
         return false;
       } else {
         $scope.user.last_name = $scope.signupForm.last_name; 
@@ -88,12 +150,22 @@ angular.module('uguru.util.controllers')
       if (!formDict.email) {
         $scope.showError('Please enter email');
         document.getElementsByName('signup-email')[0].focus();
+        var shake = document.getElementById('input_email')
+        shake.classList.add('animated', 'shake');
+        setTimeout(function() {
+          shake.classList.remove('animated', 'shake');
+        }, 950);
         return false;
       } 
 
       if (!validateEmail(formDict.email)) {
         $scope.showError('Please enter valid email address');
         document.getElementsByName('signup-password')[0].focus();
+        var shake = document.getElementById('input_password')
+        shake.classList.add('animated', 'shake');
+        setTimeout(function() {
+          shake.classList.remove('animated', 'shake');
+        }, 950);
         return false;
       } else {
         $scope.user.email = $scope.signupForm.email; 
@@ -130,7 +202,7 @@ angular.module('uguru.util.controllers')
 
     $scope.signupAccount = function() {
       
-      if ($scope.validateSignupForm()) {
+      if ($scope.user.fb_id || $scope.validateSignupForm()) {
       
         
         //Temporary user_id
@@ -161,5 +233,4 @@ angular.module('uguru.util.controllers')
 
   }
 
-
-])
+]);

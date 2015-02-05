@@ -51,7 +51,8 @@ angular.module('uguru.util.controllers')
         if (status == google.maps.GeocoderStatus.OK) {
           if (results[0]) {
             // $scope.actual_map.setZoom(17);
-            $scope.request.location = results[0].formatted_address;
+            var formatted_address = results[0].formatted_address;
+            $scope.request.location = formatted_address;
             // $scope.setMarkerPosition($scope.marker, latCoord, longCoord);
             // $scope.request.autocomplete = results[0].formatted_address;
             // var infowindow = new google.maps.InfoWindow();

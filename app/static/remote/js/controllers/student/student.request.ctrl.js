@@ -168,6 +168,7 @@ angular.module('uguru.student.controllers')
         note: null,
         time_created: date,
         location:null,
+        course: $scope.course
       };
     }
 
@@ -217,7 +218,7 @@ angular.module('uguru.student.controllers')
 
       $timeout(function() {
 
-        $state.go('^.guru-available');
+        $state.go('^.guru-available', {requestObj:JSON.stringify($scope.request)});
         $timeout(function() {
           $scope.contactingGuruModal.hide();
         }, 2000);

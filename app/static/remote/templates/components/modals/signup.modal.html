@@ -4,21 +4,22 @@
         <button ng-click="closeSignupModal()" class="button button-clear button-positive">Cancel</button>
       </ion-header-bar>
       <ion-content>
+
         <div class="account">
           <div class="account-box center">
             <div class="list margin-bottom-10">
-              <label class="item item-input">
+              <label class="item item-input" id="input_first">
                 <div class="tag">First</div><input name="signup-first-name" type="text" ng-model="signupForm.first_name" placeholder="your first name">
               </label>
-              <label class="item item-input">
+              <label class="item item-input" id="input_last">
                 <div class="tag">last</div><input name="signup-last-name" type="text" ng-model="signupForm.last_name" placeholder="your last name">
               </label>
-              <label class="item item-input">
+              <label class="item item-input" id="input_email">
                 <div class="tag">email</div><input type="text" name="signup-email" ng-model="signupForm.email" placeholder="peter.parker@berkeley.edu">
               </label>
             </div>
             <div class="list">
-              <label class="item item-input">
+              <label class="item item-input" id="input_password">
                 <div class="tag">password</div><input type="password" name="signup-password" ng-model="signupForm.password" placeholder="at least 6 characters">
               </label>
             </div>

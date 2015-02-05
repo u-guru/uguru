@@ -28,8 +28,6 @@ angular.module('uguru.root.services')
 	            	body: options.body
 	            }
 
-
-
 	            scope.popoverButtonClicked = function() {
 	            	scope.hidePopover();
 	            }
@@ -42,6 +40,7 @@ angular.module('uguru.root.services')
           		scope.showPopover = function() {
           			generalPopover.$promise.then(generalPopover.show)
           		}
+          		
           		scope.showPopover();
 
 

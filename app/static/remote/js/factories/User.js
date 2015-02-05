@@ -17,7 +17,7 @@ angular.module('uguru.user', [])
         var user = {};
         properties = [
             'name', 'email', 'last_position', 'deactivated',
-            'university', 'university_id', 'onboarding'
+            'university', 'university_id', 'onboarding', 'current_device'
         ]
         one_to_many_properties = [
             'all_positions', 'active_sessions', 'student_sessions',
@@ -61,6 +61,17 @@ angular.module('uguru.user', [])
             if (localUser.length === 0) {
                 var newUser = initUser();
                 $localstorage.setObject('user', newUser);
+
+                if (!newUser.devices || !newUser.current_device)  {
+
+                    var currentDevice = $localstorage.getObject('device')
+                    if (currentDevice) {
+                        newUser.devices.push(currentDevice);
+                        newUser.current_device = currentDevice; 
+                    }
+
+                }
+
                 return newUser;
             } else {
                 //old user from before

@@ -1,12 +1,117 @@
   <ion-view title="Your Transaction History">
     <ion-content>
       <ion-list>
-        <ion-item ng-repeat="card in cards" class="item-button-right">
+        <!-- <ion-item ng-repeat="card in cards" class="item-button-right">
           {{card.type}}, {{card.last_4}}, {{card.name}}
-           <button class="button button-positive" ui-sref="^.add-payment">
-              <i class="icon ion-edit"></i>
-            </button>
-        </ion-item>
+        </ion-item> -->
+        <div class="add-item-box transaction paddong-12" ng-click="addCourseModal.show()">
+          <div class="green-box"><span class="day">2</span><span class="month">SEP</span>
+          </div>
+          <div class="md-box"> <!-- add active later -->
+            <div class="text">
+              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
+              <span class="name">Today Fine</span>
+              <span class="status">Outgoing</span>
+              <span class="money" style="color: red;">- $52.24</span>
+            </div>
+          </div>
+        </div>
+        <div class="add-item-box transaction" ng-click="addCourseModal.show()">
+          <div class="green-box"><span class="day">3</span><span class="month">NOV</span>
+          </div>
+          <div class="md-box"> <!-- add active later -->
+            <div class="text">
+              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
+              <span class="name">Shun Kurosaki</span>
+              <span class="status">Outgoing</span>
+              <span class="money">+ $52.24</span>
+            </div>
+          </div>
+        </div>
+        <div class="add-item-box transaction" ng-click="addCourseModal.show()">
+          <div class="green-box"><span class="day">11</span><span class="month">AUG</span>
+          </div>
+          <div class="md-box"> <!-- add active later -->
+            <div class="text">
+              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
+              <span class="name">Haruka Kurosaki</span>
+              <span class="status">Outgoing</span>
+              <span class="money">+ $52.24</span>
+            </div>
+          </div>
+        </div>
+        <div class="add-item-box transaction paddong-12" ng-click="addCourseModal.show()">
+          <div class="green-box"><span class="day">2</span><span class="month">SEP</span>
+          </div>
+          <div class="md-box"> <!-- add active later -->
+            <div class="text">
+              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
+              <span class="name">Today Fine</span>
+              <span class="status">Outgoing</span>
+              <span class="money" style="color: red;">- $52.24</span>
+            </div>
+          </div>
+        </div>
+        <div class="add-item-box transaction" ng-click="addCourseModal.show()">
+          <div class="green-box"><span class="day">3</span><span class="month">NOV</span>
+          </div>
+          <div class="md-box"> <!-- add active later -->
+            <div class="text">
+              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
+              <span class="name">Shun Kurosaki</span>
+              <span class="status">Outgoing</span>
+              <span class="money">+ $52.24</span>
+            </div>
+          </div>
+        </div>
+        <div class="add-item-box transaction" ng-click="addCourseModal.show()">
+          <div class="green-box"><span class="day">11</span><span class="month">AUG</span>
+          </div>
+          <div class="md-box"> <!-- add active later -->
+            <div class="text">
+              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
+              <span class="name">Haruka Kurosaki</span>
+              <span class="status">Outgoing</span>
+              <span class="money">+ $52.24</span>
+            </div>
+          </div>
+        </div>
+        <div class="add-item-box transaction paddong-12" ng-click="addCourseModal.show()">
+          <div class="green-box"><span class="day">2</span><span class="month">SEP</span>
+          </div>
+          <div class="md-box"> <!-- add active later -->
+            <div class="text">
+              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
+              <span class="name">Today Fine</span>
+              <span class="status">Outgoing</span>
+              <span class="money" style="color: red;">- $52.24</span>
+            </div>
+          </div>
+        </div>
+        <div class="add-item-box transaction" ng-click="addCourseModal.show()">
+          <div class="green-box"><span class="day">3</span><span class="month">NOV</span>
+          </div>
+          <div class="md-box"> <!-- add active later -->
+            <div class="text">
+              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
+              <span class="name">Shun Kurosaki</span>
+              <span class="status">Outgoing</span>
+              <span class="money">+ $52.24</span>
+            </div>
+          </div>
+        </div>
+        <div class="add-item-box transaction" ng-click="addCourseModal.show()">
+          <div class="green-box"><span class="day">11</span><span class="month">AUG</span>
+          </div>
+          <div class="md-box"> <!-- add active later -->
+            <div class="text">
+              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
+              <span class="name">Haruka Kurosaki</span>
+              <span class="status">Outgoing</span>
+              <span class="money">+ $52.24</span>
+            </div>
+          </div>
+        </div>
       </ion-list>
     </ion-content>
   </ion-view>

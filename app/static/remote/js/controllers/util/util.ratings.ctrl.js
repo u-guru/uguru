@@ -11,9 +11,9 @@ angular.module('uguru.util.controllers')
   '$ionicFrostedDelegate',
   function($scope, $state, $timeout, $localstorage, 
  	$ionicModal, $ionicFrostedDelegate) {
+
     
-    var fakeTime = new Date()
-    var fateTimeUTC = fakeTime.getTime();
+    $scope.starsSelected;
 
     $scope.rating = {
       amount:27,
@@ -33,16 +33,52 @@ angular.module('uguru.util.controllers')
 
     $scope.starClicked = function($event) {
       var starNumber = $event.target.getAttribute('value');
+      console.log(starNumber)
+      $scope.showGreenStars(starNumber);
+      $scope.starsSelected = starNumber;
+    }
+
+    $scope.submitRating = function () {
       var currentActiveSession = $scope.user.active_sessions[0];
       $scope.user.active_sessions = [];
       $scope.user.completed_sessions = [];
       $scope.user.completed_sessions.push(currentActiveSession);
-      $scope.guru.student_rating = starNumber;
+      $scope.guru.student_rating = $scope.starsSelected;
       $scope.user.gurus.push(
         $scope.guru
       )
+      $state.go('^.home');
       $scope.rootUser.updateLocal($scope.user);
-      $scope.ratingModal.hide();
+      $timeout(function(){
+        $scope.ratingModal.hide();
+      }, 500)
+    }
+
+    function hasClass(element, cls) {
+      return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+    }
+
+    $scope.showGreenStars = function (value) {
+      var allStarElements = document.getElementsByClassName('ion-star-rating');
+      console.log(allStarElements);
+      for (var i = 0; i < value; i++) {
+        var tempStar = allStarElements[i];
+
+        if (!hasClass(tempStar, 'green')) {
+          tempStar.className = tempStar.className + ' green';
+        }
+
+      }
+
+      for (var j = value; j < 5; j++ ) {
+
+        var tempStar = allStarElements[j];
+        if (hasClass(tempStar, 'green')) {
+          tempStar.className= tempStar.className.replace("green","");
+        }
+
+      }
+
     }
 
 

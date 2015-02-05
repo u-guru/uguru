@@ -96,6 +96,8 @@ angular.module('uguru.student.controllers', [])
       }
     }
 
+    console.log($scope.user.active_sessions)
+
     $scope.goToRequest = function(course) {
       // $scope.root.button.showButtonPressedAndHide($event.target);
       $state.go('^.request', {courseObj:JSON.stringify(course)});
@@ -163,7 +165,7 @@ angular.module('uguru.student.controllers', [])
       // $scope.showTooltip();
 
           popoverOptions = {
-            targetElement:'#settings-header',
+            targetElement:'#home-header',
             title: 'Tap to request help',
             delay: 500,
             animation:null,
@@ -177,8 +179,6 @@ angular.module('uguru.student.controllers', [])
     }
 
     $scope.init = function() {
-
-      
 
     };
 

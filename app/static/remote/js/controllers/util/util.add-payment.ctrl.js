@@ -14,84 +14,95 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout, $localstorage, 
  	$ionicModal, $ionicHistory, $cordovaProgress, $stateParams) {
     
-    console.log($scope.user.cards);
     $scope.cardFormComplete = false;
+    $scope.progress_active = false;
+    $scope.actionButtonText = 'save';
 
     $scope.card = null;
     if ($stateParams.cardObj) {
       $scope.card = JSON.parse($stateParams.cardObj);
+      $scope.actionButtonText = 'clear';
+    }
+
+    $scope.clearCard = function() {
+      $scope.card = null;
+      $scope.cardInput.value = '';
+      $scope.ccvInput.value = '';
+      $scope.rootUser.updateLocal($scope.user);
+      $scope.root.keyboard.show('card-input', 500);
+    }
+
+    $scope.addPaymentActionBtn = function() {
+      if ($scope.actionButtonText === 'save') {
+        $scope.savePayment()
+      } else {
+        $scope.clearCard();
+      }
+      $scope.setActionButtonText();
+    }
+
+    $scope.setActionButtonText = function() {
+      if (!$scope.card) {
+        $scope.actionButtonText = 'save';
+      } else {
+        $scope.actionButtonText = 'clear';
+      }
+    }
+
+    $scope.setDefault 
+
+    $scope.showSuccess = function(msg) {
+        if (!$scope.progress_active)  {
+            $scope.progress_active = true;
+            $cordovaProgress.showSuccess(true, msg)
+            $timeout(function() {
+              $cordovaProgress.hide();
+              $scope.progress_active = false;
+              $ionicHistory.goBack();
+            }, 1000);
+        } else {
+          console.log('Show success cannot be shown because progress bar is already active');
+        }
     }
 
     $scope.savePayment = function() {
       
-      if (!$scope.validatedAddCardForm()) {
-        //show errors
+      var cardNum = $scope.cardInput.value.split(" ").join("")
+      var ccvNum = $scope.ccvInput.value;
+      var cardType = $scope.getCardType(cardNum);
+      
+      //check for errors
+      if (!$scope.validatedAddCardForm(cardNum, ccvNum)) {
+        //make card shake
       }
 
       $scope.user.cards.push({
-        last4: '4242',
-        type: 'visa'
-      })
+        last_4: cardNum.substring(12,16),
+        type: cardType
+      });
 
       $scope.rootUser.updateLocal($scope.user);
-
-      //show success --> go back
-
-      $ionicHistory.goBack();
+      $scope.showSuccess('Card Added!');
     }
 
-    $scope.setCardToDefault = function() {
-      $scope.card.default = true;
-
+    $scope.removeCard = function() {
+      var cardPosition = $scope.root.util.objectFindByIndexByKey($scope.user.cards, 'last_4', $scope.card.last_4);
+      $scope.user.cards.splice(cardPosition, 1);
+      $scope.showSuccess('Card Deleted');
     }
 
-    
-    $scope.firstFourChange = function() {
-      console.log('this is called');
-      var element = document.getElementById('first-four');
-      var elementValue = element.value;
-      if (elementValue.length === 4) {
-        var nextElement = document.getElementById("second-four");
-        console.log(nextElement);
-        nextElement.focus();
+    $scope.setDefault = function() {
+      var user_card = $scope.root.util.objectFindByKey($scope.user.cards, 'last_4', $scope.card.last_4);
+      user_card.default = true;
+      for (var i = 0; i < $scope.user.cards.length; i++) {
+        if (user_card.last_4 != $scope.user.cards[i].last_4) {
+          $scope.user.cards[i].default = false;
+        }
       }
-    }
 
-    $scope.secondFourChange = function() {
-      var element = document.getElementById('second-four');
-      var elementValue = element.value;
-      if (elementValue.length === 4) {
-        var nextElement = document.getElementById("third-four");
-        console.log(nextElement);
-        nextElement.focus();
-      }
-    }
-    $scope.thirdFourChange = function() {
-      var element = document.getElementById('third-four');
-      var elementValue = element.value;
-      if (elementValue.length === 4) {
-        var nextElement = document.getElementById("last-four");
-        console.log(nextElement);
-        nextElement.focus();
-      }
-    }
+      $scope.rootUser.updateLocal($scope.user);
+      $scope.showSuccess('Default Set!');
 
-    $scope.lastFourChange = function() {
-      var element = document.getElementById('last-four');
-      var elementValue = element.value;
-      if (elementValue.length === 4) {
-        var nextElement = document.getElementById("ccv");
-        console.log(nextElement);
-        nextElement.focus();
-      }
-    }
-
-    $scope.ccvChange = function() {
-      var element = document.getElementById('ccv');
-      var elementValue = element.value;
-      if (elementValue.length >= 3) {
-        $scope.cardFormComplete = true;
-      }
     }
 
     $scope.injectCardPngClass = function() {
@@ -102,19 +113,66 @@ angular.module('uguru.util.controllers')
       return 'visa';
     }
 
-    $scope.validatedAddCardForm = function() {
+    $scope.validatedAddCardForm = function(card_num, ccv) {
+      //validated card farm
       return true;
     }
 
-    
+    var checkInputState = function(event) {
 
-    $scope.cardForm = {
-      first4: '',
-      second4: '',
-      third4: '',
-      last4: '',
-      ccv: ''
-    }
+        var foo = $scope.cardInput.value.split(" ").join(""); // remove hyphens
+        var cardType = $scope.getCardType(foo);
+        // console.log(cardType);
+        if (cardType.length > 0) {
+          console.log
+        }
+
+        if (foo.length > 0) {
+          foo = foo.match(new RegExp('.{1,4}', 'g')).join(" ");
+        }
+        $scope.cardInput.value = foo;
+        if (foo.length === 19) {  
+          $scope.ccvInput.focus();
+        }
+      }
+
+      $scope.getCardType = function(number)
+        {            
+            var re = new RegExp("^4");
+            if (number.match(re) != null)
+                return "visa";
+ 
+            re = new RegExp("^(34|37)");
+            if (number.match(re) != null)
+                return "amex";
+ 
+            re = new RegExp("^5[1-5]");
+            if (number.match(re) != null)
+                return "master";
+ 
+            re = new RegExp("^6011");
+            if (number.match(re) != null)
+                return "discover";
+ 
+            return "";
+        }
+
+
+    $scope.$on('$ionicView.enter', function(){
+
+      $scope.cardInput = document.getElementById('card-input');
+      $scope.ccvInput = document.getElementById('ccv-input');
+
+      if ($scope.card) {
+        $scope.cardInput.value = '**** **** **** ' + $scope.card.last_4;
+        $scope.ccvInput.value = '***'
+      } else {
+        $scope.root.keyboard.show('card-input', 500);        
+      }
+
+      $scope.cardInput.addEventListener('keyup', checkInputState);
+
+    });
 
   }
 

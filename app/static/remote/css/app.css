@@ -1521,4 +1521,96 @@ hr {
     top: 15px;
     right: 20px; }
 
+.add-item-box.transaction {
+  padding: 6px 12px; }
+  .add-item-box.transaction.paddong-12 {
+    padding: 12px 12px 6px 12px; }
+  .add-item-box.transaction .bold {
+    font-family: "OpenSans-Bold"; }
+  .add-item-box.transaction .lg-box {
+    margin-bottom: 10px; }
+  .add-item-box.transaction .green-box {
+    float: left;
+    background-color: #69b3a5;
+    width: 60px;
+    height: 60px;
+    position: relative; }
+    .add-item-box.transaction .green-box .ion-plus {
+      font-size: 26px;
+      color: white;
+      position: absolute;
+      top: 17px;
+      left: 20px;
+      font-family: "OpenSans-Light"; }
+    .add-item-box.transaction .green-box .day {
+      color: white;
+      font-size: 20px;
+      font-family: "OpenSans-Bold";
+      position: absolute;
+      top: 12px;
+      left: 12px; }
+    .add-item-box.transaction .green-box .month {
+      color: white;
+      font-size: 16px;
+      font-family: "OpenSans-Regular";
+      position: absolute;
+      top: 32px;
+      left: 12px; }
+  .add-item-box.transaction .md-box {
+    font-family: "OpenSans-Light";
+    color: rgba(0, 0, 0, 0.3);
+    padding: 0px 0px 0px 60px;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1); }
+    .add-item-box.transaction .md-box .text {
+      height: 60px;
+      padding: 18px 0px 0px 10px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-left: 0px;
+      position: relative; }
+      .add-item-box.transaction .md-box .text .icon {
+        margin-top: -4px;
+        width: 32px;
+        border-radius: 100px;
+        border: 1px solid white;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1); }
+      .add-item-box.transaction .md-box .text .name {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 14px;
+        position: absolute;
+        font-family: "OpenSans-Semibold";
+        top: 13px;
+        left: 48px; }
+      .add-item-box.transaction .md-box .text .status {
+        color: rgba(0, 0, 0, 0.4);
+        font-size: 11px;
+        position: absolute;
+        top: 29px;
+        left: 48px; }
+      .add-item-box.transaction .md-box .text .money {
+        margin-right: 12px;
+        float: right;
+        color: #93e45f;
+        font-family: "OpenSans-Semibold";
+        font-size: 4vmin; }
+    .add-item-box.transaction .md-box.active {
+      border-color: #a2a2a2;
+      background-color: #e5e5e5;
+      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
+
+@keyframes shake {
+  0% {
+    transform: translateX(0); }
+  12.5% {
+    transform: translateX(-6px) rotateY(-5deg); }
+  37.5% {
+    transform: translateX(5px) rotateY(4deg); }
+  62.5% {
+    transform: translateX(-3px) rotateY(-2deg); }
+  87.5% {
+    transform: translateX(2px) rotateY(1deg); }
+  100% {
+    transform: translateX(0); } }
+.shake {
+  animation: shake 400ms ease-in-out; }
+
 /*# sourceMappingURL=app.css.map */

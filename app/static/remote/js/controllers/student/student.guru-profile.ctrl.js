@@ -10,9 +10,11 @@ angular.module('uguru.student.controllers')
   '$timeout',
   '$localstorage',
   '$ionicModal',
+  '$stateParams',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
- 	$ionicModal) {
-    
+ 	$ionicModal, $stateParams) {
+    	
+    	$scope.guru = JSON.parse($stateParams.guruObj);
   }
 
 ]);

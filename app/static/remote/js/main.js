@@ -75,6 +75,14 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         //Set platform in local store
         $localstorage.setObject('platform', ionic.Platform.platform());
         $localstorage.setObject('device', ionic.Platform.device());
+        
+        var local_user = $localstorage.getObject('user');
+        if (local_user) {
+          var currentDevice = ionic.Platform.device();
+          local_user.current_device = currentDevice;
+          local_user.devices.push(currentDevice);
+          $localstorage.setObject('user', local_user);
+        }
 
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -103,7 +111,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
         document.addEventListener("offline", function() {
        
-            console.log('device is offline...')
+            console.log('device is offline...');
             checkForAppUpdates();
        
         }, false);
@@ -121,11 +129,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
   $cordovaFacebookProvider) {
-  // if (!window.cordova) {
-  //     var appID = 1416375518604557;
-  //     var fbVersion = "v2.2"; // or leave blank and default is v2.0
-  //     $cordovaFacebookProvider.browserInit(appID, fbversion);
-  // }
+  if (!window.cordova) {
+      var appID = 1416375518604557;
+      var fbVersion = "v1.0"; // or leave blank and default is v2.0
+      $cordovaFacebookProvider.browserInit(appID, fbversion);
+  }
         
 
   angular.extend($popoverProvider.defaults, {
@@ -152,6 +160,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           $scope.user = User.getLocal();
           $scope.rootUser = User;
           $scope.root = RootService;
+
         }
   }).
   state('root.student', {
@@ -190,7 +199,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   }).
   state('root.student.settings-transactions', {
         url: '/settings-transactions',
-        templateUrl: BASE + 'templates/student/student.settings.transactions.html',
+        templateUrl: BASE + 'templates/student/student.settings.transactions.html'
   }).
   state('root.student.settings-notifications', {
         url: '/settings-notifications',
@@ -221,12 +230,12 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         controller: 'StudentMessagesController'
   }).
   state('root.student.guru-available', {
-        url: '/guru-available',
+        url: '/guru-available/:requestObj',
         templateUrl: BASE + 'templates/student/student.guru-available.html',
         controller: 'GuruAvailableController'
   }).
   state('root.student.guru-profile', {
-        url: '/guru-profile',
+        url: '/guru-profile/:guruObj',
         templateUrl: BASE + 'templates/student/student.guru-profile.html',
         controller: 'GuruProfileController'
   }).

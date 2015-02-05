@@ -20,14 +20,16 @@
                 <span class="name">{{session.course.short_name}}</span>
                 <span class="session">Session</span>
               </div>
-              <div class="message">{{session.status}}</div>
+              <div class="message">
+                <span ng-show="session.status === 'guru-transport'">GURU EN ROUTE</span>
+              </div>
             </div>
           </li>
           <li class="item padding-6-15">
             <div class="icon"><img src='./img/shun.png' class='width'></div>
             <div class="box-2 margin-top">
               <div class="name">{{session.guru.name}}
-                <span class="profile" style="font-size:12px;"ng-click="goToActiveSession(session)">view status</span>
+                <span class="profile" style="font-size:12px;"ng-click="goToActiveSession(session)">Details</span>
               </div>
               <div class="stars">
                 <span class="icon ion-star"></span>
@@ -60,7 +62,7 @@
           </div>
         </div>
       
-        <div class="add-item-box" ng-click="addCourseModal.show()">
+        <div class="add-item-box" ng-click="addCourseModal.show()" id="home-header">
           <div class="green-box"><span class="icon ion-plus"></span>
           </div>
           <div class="md-box"> <!-- add active later -->
@@ -73,9 +75,24 @@
       </div>
     </ion-content>
     <ion-content ng-show="topTabsDelegate.selectedIndex() === 1">
-        <div class="no-session margin-150-10 center" ng-show="ng-copmplet">
+        <div class="no-session margin-150-10 center" ng-show="!user.completed_sessions && user.completed_sessions.length ===0">
           <h2>No sessions yet.</h2>
           <div class="gray">Add a class to get started.</div>
           <div class="green" ng-click="addCourseModal.show()">+Add a class</div>
+        </div>
+
+        <div class="guru-book margin-top-40" ng-repeat="session in user.completed_sessions">
+          <li class="item padding-6-15">
+            <div class="icon"><img src='./img/shun.png' class='width'></div>
+            <div class="box-2 margin-top">
+              <div class="box-3">
+                <span class="name">Shun Kurosaki
+                </span>
+                <div class="stars">
+                  See details
+                </div>
+              </div>
+            </div>
+          </li>
         </div>
     </ion-content>

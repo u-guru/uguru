@@ -6,9 +6,9 @@
           <ion-item class="item" ui-sref="^.add-payment"><span style="margin-left:10px;">Add a New Account</span>
             <img src="./img/right-chevron.png" class="right-chevron">
           </ion-item>
-          <ion-item ng-repeat="card in cards" class="cards-padding">
-            <img src="./img/{{card.type}}.png" class="cards"> ***{{card.last_4}} {{card.name}} <span ng-show="card.default" class="positive">Default</span>
-             <img src="./img/right-chevron.png" ng-click="goToEditCard(card)" class="right-chevron">
+          <ion-item ng-repeat="card in cards" class="cards-padding" ng-click="goToEditCard(card)">
+            <img src="./img/{{card.type}}.png" class="cards"> ***{{card.last_4}} {{card.name}} <span ng-show="card.default" class="positive">&nbsp;&nbsp;Default</span>
+             <img src="./img/right-chevron.png" class="right-chevron">
           </ion-item>
         </ion-list>
       </div>

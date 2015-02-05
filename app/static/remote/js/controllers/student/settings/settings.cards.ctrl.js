@@ -8,7 +8,6 @@ angular.module('uguru.student.controllers')
   '$state',
   function($scope, $state) {
     
-    $scope.user.cards = [];
     $scope.rootUser.updateLocal($scope.user);
     if ($scope.user.cards.length === 0) {
         $scope.user.cards = [

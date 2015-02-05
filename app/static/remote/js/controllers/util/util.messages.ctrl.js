@@ -79,9 +79,10 @@ angular.module('uguru.student.controllers')
     $scope.sendMessage = function (content) {
       $scope.messages.push({
         'content':content,
-        'class': 'you',
+        'class': 'you animated bounceInUp', // Try "fadeInUp" if you don't like bounceInUp.
         'img_src': $scope.default_img_one
       })
+
       $scope.new_message.content = '';
       $scope.root.keyboard.close();
     }

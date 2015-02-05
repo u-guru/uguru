@@ -9,7 +9,20 @@ angular.module('uguru.student.controllers')
   '$ionicPopup',
   '$timeout',
   '$localstorage',
-  function($scope, $state, $ionicPopup, $timeout, $localstorage) {
+  '$stateParams',
+  function($scope, $state, $ionicPopup, $timeout, $localstorage, $stateParams) {
+
+    $scope.request = JSON.parse($stateParams.requestObj);
+
+    $scope.guru = {
+      first_name: 'Shun',
+      course:$scope.request.course.short_name,
+      guru_courses: $scope.user.student_courses
+    }
+
+    $scope.goToGuruProfile = function() {
+      $state.go('^.guru-profile', {guruObj:JSON.stringify($scope.guru)});
+    }
 
     $scope.acceptGuru = function() {
       if ($scope.user.cards.length === 0) {
@@ -19,7 +32,7 @@ angular.module('uguru.student.controllers')
 
       var session = {
           course: {short_name:'BIO101'},
-          status: 'Guru En Route',
+          status: 'guru-transport',
           guru: {name: 'Shun Kurosaki', guru_rating:4, id: 2},
           location: {address: '198 Church St'},
           price: {amount: 5, minutes:15},
@@ -38,6 +51,14 @@ angular.module('uguru.student.controllers')
     $scope.rejectGuru = function() {
       $state.go('^.home');
     }
+
+    // var lightSpeedIn = document.getElementById('lightSpeedIn')
+    // setTimeout(function() {
+    //   lightSpeedIn.classList.add('animated', 'lightSpeedIn');
+    //   setTimeout(function() {
+    //     lightSpeedIn.classList.remove('animated', 'lightSpeedIn');
+    //   }, 2000);
+    // }, 500);
 
   }
 
