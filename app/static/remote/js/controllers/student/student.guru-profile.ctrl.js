@@ -13,8 +13,12 @@ angular.module('uguru.student.controllers')
   '$stateParams',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams) {
-    	
-    	$scope.guru = JSON.parse($stateParams.guruObj);
+    	 
+      if ($stateParams) {
+        $scope.guru = JSON.parse($stateParams.guruObj);
+        $scope.showContactGuru = JSON.parse($stateParams.showContactGuru);
+      }
+      
   }
 
 ]);

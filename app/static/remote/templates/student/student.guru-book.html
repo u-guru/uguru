@@ -10,13 +10,13 @@
       </div>
     </div>
 
-    <ion-content ng-show="user.gurus && user.gurus.length > 0">
+    <ion-content ng-show="user.gurus && user.gurus.length > 0" ng-controller="GuruBookController">
       <div class="guru-book margin-top-40">
-        <li class="item padding-6-15">
+        <li class="item padding-6-15" ng-repeat="guru in user.gurus" ng-click="goToGuruProfile(guru)">
           <div class="icon"><img src='./img/shun.png' class='width'></div>
           <div class="box-2 margin-top">
             <div class="box-3">
-              <span class="name">Shun Kurosaki
+              <span class="name">{{guru.name}}
               </span>
               <div class="stars">
                 <span class="icon ion-star"></span>
@@ -33,7 +33,7 @@
     </ion-content>
     <ion-content ng-show="user.gurus.length === 0">
         <div class="no-session margin-150-10 center">
-          <h2>No Gurus Yet.</h2>
+          <h2>No gurus yet.</h2>
           <div ng-show="user.student_courses.length == 0">
             <div class="gray">Add a course to be matched with a Guru</div>
             <div class="green" ng-click="addCourseModal.show()">+Add A Course</div>

@@ -45,7 +45,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                                 $ionicHistory.clearCache();
                                 $ionicHistory.clearHistory();
                                 $cordovaSplashscreen.show();
-                                window.localStorage.clear();
+                                // window.localStorage.clear();
 
                                 //remove all angular templates
                                 $templateCache.removeAll();
@@ -240,7 +240,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         controller: 'GuruAvailableController'
   }).
   state('root.student.guru-profile', {
-        url: '/guru-profile/:guruObj',
+        url: '/guru-profile/:guruObj:showContactGuru',
         templateUrl: BASE + 'templates/student/student.guru-profile.html',
         controller: 'GuruProfileController'
   }).

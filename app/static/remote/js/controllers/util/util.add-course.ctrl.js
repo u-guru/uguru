@@ -164,7 +164,7 @@ angular.module('uguru.util.controllers')
     $scope.courseSelected = function(course) {
 
 
-      if (!$scope.user.student_courses) {
+      if ($scope.user.student_courses.length === 0) {
           $scope.user.student_courses = [];
           $timeout(function() {
           popoverOptions = {
