@@ -41,5 +41,3 @@ UserSerializer = {
     'guru_courses': fields.List(fields.Nested(course_fields))
 }
 
-
-
