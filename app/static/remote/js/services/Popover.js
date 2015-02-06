@@ -34,7 +34,7 @@ angular.module('uguru.root.services')
 
           		
 	            scope.hidePopover = function() {
-          			generalPopover.$promise.then(generalPopover.hide)
+          			generalPopover.$promise.then(generalPopover.hide); 
           		}
 
           		scope.showPopover = function() {

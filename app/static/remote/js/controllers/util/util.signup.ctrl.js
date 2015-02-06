@@ -93,8 +93,8 @@ angular.module('uguru.util.controllers')
     $scope.$on('modal.shown', function() {
 
       if ($scope.signupModal.isShown()) {
-        console.log('modal is shown');
-        $scope.root.keyboard.show('signup-first-name', 500);
+        // console.log('modal is shown');
+        // $scope.root.keyboard.show('signup-first-name', 500);
       }
 
     });

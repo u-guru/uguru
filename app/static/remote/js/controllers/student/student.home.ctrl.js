@@ -186,9 +186,33 @@ angular.module('uguru.student.controllers', [])
           Popover.tutorial.show($scope, popoverOptions);
     }
 
-    $scope.init = function() {
+    $scope.showGetStartedPopover = function() {
 
-    };
+      getStartedPopoverOptions = {
+            targetElement:'#home-header',
+            title: 'Tap to get started',
+            delay: 500,
+            animation:"am-flip-x",
+            placement: 'bottom',
+            body: "Just enter a course code,Uguru uses <br>your university's course lists<br> to help keep things simple.",
+            buttonText: 'Got it',
+            dropshadow: true
+          }
+
+      Popover.tutorial.show($scope, getStartedPopoverOptions);
+
+    }
+
+
+
+    $scope.$on('$ionicView.enter', function(){
+      
+      if (!$scope.user.university_id && $scope.user.student_courses.length === 0) {
+        $timeout(function() {
+          $scope.showGetStartedPopover();
+        }, 500)
+      }
+    });
 
   }
 

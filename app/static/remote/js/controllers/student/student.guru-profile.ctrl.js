@@ -14,10 +14,15 @@ angular.module('uguru.student.controllers')
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams) {
     	 
+      $scope.showContactGuru = null;
       if ($stateParams) {
         $scope.guru = JSON.parse($stateParams.guruObj);
-        $scope.showContactGuru = JSON.parse($stateParams.showContactGuru);
+        if ($stateParams.showContactGuru) {
+          $scope.showContactGuru = JSON.parse($stateParams.showContactGuru);
+        }
       }
+
+
       
   }
 

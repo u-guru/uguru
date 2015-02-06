@@ -33,6 +33,7 @@ angular.module('uguru.util.controllers')
 
     $scope.setLocation = function() {
       
+      
       $scope.hideRequestMapModal();
     }
 

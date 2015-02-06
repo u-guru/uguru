@@ -19,8 +19,18 @@ angular.module('uguru.student.controllers')
 
     $scope.session = JSON.parse($stateParams.sessionObj);
 
+    $scope.guru = {
+      first_name: 'Shun',
+      course:$scope.session.course.short_name,
+      guru_courses: $scope.user.student_courses
+    }
+
     $scope.goToSessionMessages = function(session) {
       $state.go('^.messages', {sessionObj:JSON.stringify(session)});
+    }
+
+    $scope.goToGuruProfile = function(guru) {
+      $state.go('^.guru-profile', {guruObj:JSON.stringify(guru)});
     }
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/ratings.modal.html', {

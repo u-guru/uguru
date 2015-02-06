@@ -82,11 +82,17 @@ angular.module('uguru.student.controllers')
     // };
 
     $scope.sendMessage = function (content) {
-      $scope.messages.push({
-        'content':content,
-        'class': 'you animated bounceInUp', // Try "fadeInUp" if you don't like bounceInUp.
-        'img_src': $scope.default_img_one
-      })
+
+      $timeout(function(){
+        $scope.messages.push({
+          'content':content,
+          'class': 'you', // Try "fadeInUp" if you don't like bounceInUp.
+          'img_src': $scope.default_img_one
+        })
+        $ionicScrollDelegate.$getByHandle('message-scroll').scrollBy(0, 200, true);
+      }, 100)
+
+      // animated bounceInUp
 
       $scope.new_message.content = '';
       // $scope.root.keyboard.close();

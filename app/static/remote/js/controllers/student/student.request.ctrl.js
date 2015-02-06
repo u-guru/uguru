@@ -47,7 +47,17 @@ angular.module('uguru.student.controllers')
         $scope.contactingGuruModal = modal;
     });
 
+    var checkbox0 = [document.getElementById('iconRecord0')];
+    var checkbox0_position = $ionicPosition.offset(checkbox0).left
+    var checkbox1 = [document.getElementById('iconRecord1')];
+    var checkbox1_position = $ionicPosition.offset(checkbox1).left
+    var half_box_size = (checkbox1_position - checkbox0_position) / 2 - 10
+    var from_position = checkbox0_position + half_box_size
+    var to_position = 0;
     $scope.checkboxClicked = function(index) {
+
+      obj = document.getElementById('iconChecked');
+      obj.style.left = from_position + "px";
 
       $scope.time_checkbox = index;
       
@@ -238,9 +248,11 @@ angular.module('uguru.student.controllers')
         }
     }
 
+    document.getElementById('iconChecked').style.visibility="hidden";
     $scope.$on('$ionicView.enter', function(){
       $timeout(function() {
-        $scope.checkboxClicked(1);
+        document.getElementById('iconChecked').style.visibility="visible";
+        $scope.checkboxClicked(0);
       },1000)
     
 

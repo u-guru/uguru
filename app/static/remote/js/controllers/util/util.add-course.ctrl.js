@@ -166,21 +166,21 @@ angular.module('uguru.util.controllers')
 
       if ($scope.user.student_courses.length === 0) {
           $scope.user.student_courses = [];
-          $timeout(function() {
-          popoverOptions = {
-            targetElement:'.student-course',
-            title: 'Tap to request help',
-            delay: 500,
-            animation:null,
-            placement: 'bottom',
-            body: "We'll find a Guru to help you out <br> in a matter of minutes.<br>",
-            buttonText: 'Got it',
-            dropshadow: true
-          }
+          // $timeout(function() {
+          // popoverOptions = {
+          //   targetElement:'.student-course',
+          //   title: 'Tap to request help',
+          //   delay: 500,
+          //   animation:null,
+          //   placement: 'bottom',
+          //   body: "We'll find a Guru to help you out <br> in a matter of minutes.<br>",
+          //   buttonText: 'Got it',
+          //   dropshadow: true
+          // }
 
-          Popover.tutorial.show($scope, popoverOptions);
+          // Popover.tutorial.show($scope, popoverOptions);
 
-          }, 1500)
+          // }, 1500)
       }
 
         $scope.keyboard_force_off = true;

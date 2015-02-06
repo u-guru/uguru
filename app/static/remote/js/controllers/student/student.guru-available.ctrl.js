@@ -13,6 +13,7 @@ angular.module('uguru.student.controllers')
   function($scope, $state, $ionicPopup, $timeout, $localstorage, $stateParams) {
 
     $scope.request = JSON.parse($stateParams.requestObj);
+    console.log($scope.request);
 
     $scope.guru = {
       first_name: 'Shun',
