@@ -495,8 +495,8 @@ class AdminUniversityDepartmentsView(restful.Resource):
                 c = Course()
                 c.department_short = d.code
                 c.department_long = d.title
-                c.short_name = c.department_short + ' ' + course['code']
-                c.course_number = course["code"]
+                c.short_name = course['code'].upper()
+                c.course_number = course["code"].upper().split(" ")[::-1][0]
                 c.full_name = course["title"]
                 c.university_id = uni_id
                 new_db_objs.append(c)
