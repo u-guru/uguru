@@ -1,60 +1,69 @@
 User
-- student_sessions
-- guru_sessions
-- requests
-- student_ratings
-- guru_ratings
-- last_position
-- all_positions
-- gurus
-- conversations
-- devices
-- deactivated
+- last_position xx
+- all_positions xx
+- relationships xx
+- devices xxx
+- deactivated xxx
+- requests xxx
+- student_sessions xx
+- guru_sessions xx
+- student_ratings xx
+- guru_ratings xx
 
-Session
-- length (int, minutes)
-- tutor 
-- student
-- active
-- position
-- messages
-- displayed/hidden (to user)
-- expiration date
-- status (Guru is on the way, Guru has arrived, Session is ongoing)
+Relationship
 
-Request
-- position
-- proposals
-- status (complete, incomplete, canceled, expired)
-- file
+Message xx
+- type (text, file) xx
+- displayed / hidden xx
+- time_created xx
+- time_read xx
 
-Proposal
-- guru
-- student
-- rank
+Conversation x
+- sessions x
+- messages (flat) x
+
+Rating x
+- Session x
+- Support x
+
+Position (all are doubles) xxx
+- Longitude x
+- Latitude x
+- Altitude x
+- Accuracy x
+- Altitude Accuracy x
+- Heading x
+- Speed x
+- Timestamp x
+
+Session xxx
+- length (int, minutes) x
+- tutor x
+- student x
+- position x
+- messages x
+- displayed/hidden (to user) x
+- expiration date x
+- status (Guru is on the way, Guru has arrived, Session is ongoing) x
+- events (ask rob) x
+
+Proposal xxx
+- guru xx
+- student xx
+- rank xx
 - status (active, expired, guru_accepted, guru_rejected, student_rejected)
 - events (sent to guru, opened by guru)
 
-Event
-- user_id
+Event x
+- user_id x
 
-File
+File xxx
 - type
-- name 
+- name
 - aws_url (where it's stored)
 - size
 
-Position (all are doubles)
-- Longitude
-- Latitude
-- Altitude
-- Accuracy
-- Altitude Accuracy
-- Heading
-- Speed
-- Timestamp
-
-Device
+Device xxxx
 - model
 - cordova (version)
 - platform
@@ -62,13 +71,14 @@ Device
 - version
 - name
 
-Conversation
-- sessions
-- messages (flat)
-
-Message
-- type (text, file)
-- 
+Request xxx
+- position xxx
+- proposals xxx
+- status (complete, incomplete, canceled, expired) xxx
+- files xxx
+- course xxx
+- student xxx
+- gurus xxx
 
 # Cases to solve
 - Student pings tutor, then what?
@@ -77,5 +87,3 @@ Message
 # Modular functions to create
 - user.update() (whole user)
 - user.updateAttr() part of a user
-
-	

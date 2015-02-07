@@ -1,10 +1,6 @@
 from flask.ext.restful import fields
 from app.models import University
 
-
-
-
-
 university_fields = {}
 university_fields['id'] = fields.Integer(attribute='id')
 university_fields['title'] = fields.String(attribute='name')
@@ -27,7 +23,7 @@ UserSerializer = {
     'email': fields.String,
     'time_created': fields.DateTime,
     'profile_url': fields.String,
-    'gender': fields.String, 
+    'gender': fields.String,
     'fb_id': fields.String,
     'password': fields.String,
     'guru_introduction': fields.String,
@@ -40,4 +36,3 @@ UserSerializer = {
     'majors': fields.List(fields.Nested(major_fields)),
     'guru_courses': fields.List(fields.Nested(course_fields))
 }
-
