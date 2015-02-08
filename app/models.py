@@ -53,6 +53,8 @@ class User(Base):
     gender = Column(String)
     password = Column(String)
 
+    auth_token = Column(String)
+
     #Last active time
     last_active = Column(DateTime)
     time_created = Column(DateTime)
@@ -120,8 +122,8 @@ class User(Base):
 
     last_position = relationship("Position", uselist=False)
 
-    def __init__(self, name, email, profile_url, fb_id, \
-        password, gender):
+    def __init__(self, name=None, email=None, profile_url=None, \
+        fb_id=None, password=None, gender=None):
 
         if not email: email = ''
 
@@ -182,6 +184,12 @@ class University(Base):
 
     admin_approved = Column(Boolean, default = False)
     contributed_user_id = Column(Integer)
+
+    num_courses = Column(Integer)
+    num_students = Column(Integer)
+    num_gurus = Column(Integer)
+    num_majors = Column(Integer)
+    num_emails = Column(Integer)
 
     # User contributed university
     def __init__(self, name=None, user_id=None, _id=None):
@@ -342,6 +350,7 @@ class Position(Base):
     __tablename__ = 'position'
     id = Column(Integer, primary_key=True)
     latitude = Column(Float)
+    longitude = Column(Float) #TODO
     altitude = Column(Float)
     accuracy = Column(Float)
     altitude_accuracy = Column(Float)

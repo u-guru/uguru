@@ -1,0 +1,65 @@
+{% extends "admin/base.html" %}
+{% block content %}
+            <noscript>
+                <div class="alert alert-block span10">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                </div>
+            </noscript>
+
+            <!-- start: Content -->
+            <div id="content" class="span10">
+
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">Home</a>
+                    <i class="icon-angle-right"></i>
+                </li>
+                <li>
+                    <a href="/admin/universities">Universities</a>
+                    <i class="icon-angle-right"></i>
+                </li>
+                <li>
+                    <a href="#">{{university.name}}</a>
+                </li>
+            </ul>
+
+            <div class="row-fluid">
+
+                <a class="quick-button metro purple span2">
+                    <i class="icon-group"></i>
+                    <p>Students</p>
+                    <span class="badge">{{university.num_students}}</span>
+                </a>
+                <a class="quick-button metro black span2">
+                    <i class="icon-book"></i>
+                    <p>Gurus</p>
+                    <span class="badge">{{university.num_gurus}}</span>
+                </a>
+                <a class="quick-button metro yellow span2">
+                    <i class="icon-envelope"></i>
+                    <p>Emails</p>
+                    <span class="badge">{{university.num_emails}}</span>
+                </a>
+                <a class="quick-button metro blue span2">
+                    <i class="icon-star"></i>
+                    <p>Majors</p>
+                    <span class="badge">{{university.num_majors}}</span>
+                </a>
+                <a class="quick-button metro red span2">
+                    <i class="icon-pencil"></i>
+                    <p>Courses</p>
+                    <span class="badge">{{university.num_courses}}</span>
+                </a>
+
+            </div>
+
+        </div>
+            <!-- end: Content -->
+    <!--/#content.span10-->
+    <!--/fluid-row-->
+
+    <!-- end: JavaScript-->
+{% endblock %}

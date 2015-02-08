@@ -1,13 +1,14 @@
-from flask import g, request, jsonify, session
+from flask import g, request, jsonify, session, abort
 from flask.ext import restful
 from flask.ext.restful import marshal_with
 from app import api, flask_bcrypt, auth
 from app.database import db_session
 from models import *
 from forms import UserCreateForm, SessionCreateForm
-from serializers import UserSerializer
+from serializers import UserSerializer, DeviceSerializer, CourseSerializer, UniversitySerializer
 from datetime import datetime
 import logging, json, urllib2, importlib
+from lib.api_utils import json_response
 
 APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d31']
 
@@ -75,9 +76,10 @@ class UniversityMajorsView(restful.Resource):
         # if u.majors:
         majors_module = importlib.import_module("app.static.data.school.%s.majors_id" % "ucla")
 
-        return json.dumps(majors_module.majors), 200
+        return json.dumps({}), 200
 
 class UniversityCoursesView(restful.Resource):
+    @marshal_with(CourseSerializer)
     def get(self, id):
         # from static.data.universities_courses_efficient import uni_courses_dict
 
@@ -85,11 +87,42 @@ class UniversityCoursesView(restful.Resource):
         # courses = uni_courses_dict[str(id)].get("courses")
 
         u = University.query.get(id)
-        # if u.majors:
-        courses_module = importlib.import_module("app.static.data.school.%s.courses_id" % "ucla")
+        uni_courses = u.courses
+        print uni_courses
+        if not u.courses:
+            courses_module = importlib.import_module("app.static.data.school.%s.courses_id" % "ucla")
+            return json.dumps(courses_module.courses), 200
+        else:
+            return uni_courses
+
 
         # from static.data.berkeley_courses import courses
-        return json.dumps(courses_module.courses), 200
+
+
+class DeviceView(restful.Resource):
+
+
+    @marshal_with(DeviceSerializer)
+    def post(self):
+
+        d = Device()
+        d.model = request.json.get('model')
+        d.cordova = request.json.get('cordova')
+        d.platform = request.json.get('platform')
+        d.uuid = request.json.get('uuid')
+        d.version = request.json.get('version')
+        d.name = request.json.get('name')
+        d.time_created = datetime.now()
+        d.last_accessed = datetime.now()
+
+        # if request.json.get('auth_token'):
+        #     # later
+        #     pass
+
+        db_session.add(d)
+        db_session.commit()
+
+        return d, 200
 
 class UserPhoneView(restful.Resource):
     def post(self):
@@ -117,6 +150,211 @@ class UserPhoneView(restful.Resource):
             return jsonify({'errors':'Oops..Something went wrong.'}), 400
 
 
+
+
+class UserOneView(restful.Resource):
+    # /user/1
+    @marshal_with(UserSerializer)
+    def get(self, _id):
+        user = User.query.get(_id)
+        # if not request.json.get('auth_token'):
+        #     abort(400)
+        if not user:
+            abort(400)
+        else:
+            return user, 200
+
+    @marshal_with(UserSerializer)
+    def put(self, _id):
+
+        if not request.json.get('auth_token'):
+            abort(400)
+
+        user = User.query.get(_id)
+        if not user:
+            abort(400)
+
+        if request.json.get('auth_token') != user.auth_token:
+            abort(400)
+
+        if request.json.get('university_id'):
+            user.university_id = request.json.get('university_id')
+
+        if request.json.get('email'):
+            user.email = request.json.get('email')
+
+        if request.json.get('change_password'):
+            pass
+
+
+        if request.json.get('add_student_course'):
+            course = request.json.get('course')
+            course_id = course.get('id')
+            if not course_id:
+                c = Course()
+                c.short_name = course.get('department') + ' ' + course.get('code')
+                c.department_short = course.get('department')
+                c.course_number = course.get('code')
+                c.admin_approved = False
+                user.student_courses.append(c)
+                db_session.add(c)
+                db_session.commit()
+            else:
+                c = Course.query.get(int(course_id))
+                user.student_courses.append(c)
+                db_session.commit()
+
+        if request.json.get('add_guru_course'):
+            course = request.json.get('course')
+            course_id = course.get('id')
+            if not course_id:
+                c = Course()
+                c.short_name = course.get('department') + ' ' + course.get('code')
+                c.department_short = course.get('department')
+                c.course_number = course.get('code')
+                c.admin_approved = False
+                c.contributed_user_id = user.id
+                db_session.add(c)
+                user.guru_courses.append(c)
+                db_session.commit()
+            else:
+                c = Course.query.get(int(course_id))
+                user.guru_courses.append(c)
+                db_session.commit()
+
+        if request.json.get('add_major'):
+            major = request.json.get('major')
+            major_id = major.get('id')
+            if not major_id:
+                m = Major()
+                m.name = major.get('name')
+                m.admin_approved = False
+                m.contributed_user_id = user.id
+                db_session.add(m)
+                user.majors.append(m)
+                db_session.commit()
+            else:
+                m = Major.query.get(int(major_id))
+                user.majors.append(m)
+                db_session.commit()
+
+        db_session.commit()
+        return user, 200
+
+    @marshal_with(UserSerializer)
+    def delete(self, _id):
+        if not request.json.get('auth_token'):
+            abort(400)
+
+        user = User.query.get(_id)
+        if not user:
+            abort(400)
+
+        if request.json.get('auth_token') != user.auth_token:
+            abort(400)
+
+        if request.json.get('university_id'):
+            user.university_id = None
+
+        if request.json.get('remove_student_course'):
+            course = request.json.get('course')
+            course_id = course.get('id')
+            c = Course.query.get(int(course_id))
+            c.contributed_user_id = user.id
+            user.student_courses.remove(c)
+            db_session.commit()
+
+        if request.json.get('remove_guru_course'):
+            course = request.json.get('course')
+            course_id = course.get('id')
+            c = Course.query.get(int(course_id))
+            user.guru_courses.remove(c)
+            db_session.commit()
+
+        if request.json.get('remove_major'):
+            major = request.json.get('major')
+            major_id = major.get('id')
+            m = Major.query.get(int(major_id))
+            user.majors.remove(m)
+            db_session.commit()
+
+        db_session.commit()
+        return user, 200
+
+
+class UserNewView(restful.Resource):
+    #create new user
+
+    @marshal_with(UserSerializer)
+    def post(self):
+
+        print request.json
+        fb_user = email_user = None
+
+        if request.json.get('email'):
+            email_user = User.query.filter_by(email=request.json.get('email')).first()
+
+        if request.json.get('fb_id'):
+            fb_user = User.query.filter_by(fb_id=request.json.get('fb_id')).first()
+
+
+        if email_user and not fb_user:
+            abort(409);
+            # return json_response(400, errors=["Account already exists"])
+
+        #we can go ahead and log them in.. for now..(TODO: MAKE MORE SECURE)
+        if fb_user:
+            fb_user.name = request.json.get('name')
+            fb_user.email = request.json.get('email')
+            fb_user.auth_token = uuid.uuid4().hex
+            fb_user.profile_url = request.json.get('profile_url')
+            db_session.commit()
+            return fb_user, 200
+
+
+        user = User(email=request.json.get('email'))
+        user.time_created = datetime.now()
+        user.name = request.json.get('name')
+        import uuid
+        user.auth_token = uuid.uuid4().hex
+
+        if request.json.get('fb_id'):
+            user.profile_url = request.json.get('profile_url')
+            user.fb_id = request.json.get('fb_id')
+
+        else:
+            from md5 import hashlib
+            password = md5(request.json.get('password')).hexdigest()
+
+        db_session.add(user)
+        db_session.commit()
+        return user, 200
+
+    #login
+    @marshal_with(UserSerializer)
+    def put(self):
+
+        if request.json.get('email'):
+            print request.json
+            from hashlib import md5
+            email_user = User.query.filter_by(
+                email=request.json.get('email'),
+                password=md5(request.json.get('password')).hexdigest()
+                ).first()
+
+            if email_user:
+                import uuid
+                email_user.auth_token = uuid.uuid4().hex
+                db_session.commit()
+                return email_user, 200
+            else:
+                abort(401)
+
+        else:
+            abort(422)
+
+
+        abort(400)
 
 
 class UserView(restful.Resource):
@@ -468,12 +706,49 @@ class AdminViewEmailsList(restful.Resource):
         ]
         return jsonify(emails=emails)
 
+class AdminViewUsersList(restful.Resource):
+
+    @marshal_with(UserSerializer)
+    def get(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        users = User.query.all()
+
+        return users, 200
+
+class AdminViewUniversitiesList(restful.Resource):
+
+    @marshal_with(UniversitySerializer)
+    def get(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        universities = University.query.all()
+
+        return universities, 200
+
+
 class AdminUniversityCoursesView(restful.Resource):
     def post(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
 
         return jsonify(success=[True])
+
+class AdminUniversityAddRecipientsView(restful.Resource):
+    def post(self, auth_token, uni_id):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        new_db_objs = []
+
+        students_arr = request.json.get('students')
+        d = Department()
+        d.code = department['code'].upper()
+        d.title = department['title']
+        d.university_id = uni_id
+        new_db_objs.append(d)
 
 class AdminUniversityDepartmentsView(restful.Resource):
     def post(self, auth_token, uni_id):
@@ -508,6 +783,9 @@ class AdminUniversityDepartmentsView(restful.Resource):
         return jsonify(success=results)
 
 api.add_resource(UserView, '/api/v1/users')
+api.add_resource(UserNewView, '/api/v1/user')
+api.add_resource(UserOneView, '/api/v1/user/<int:_id>')
+api.add_resource(DeviceView, '/api/v1/devices')
 api.add_resource(VersionView, '/api/v1/version')
 api.add_resource(UserPhoneView, '/api/v1/phone')
 api.add_resource(SupportView, '/api/v1/support')
@@ -530,5 +808,7 @@ api.add_resource(AdminMandrillTemplatesView, '/api/admin/<string:auth_token>/man
 api.add_resource(AdminMandrillCampaignsView, '/api/admin/<string:auth_token>/mandrill/campaigns')
 api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/<string:auth_token>/mandrill/campaigns/<string:tag>')
 api.add_resource(AdminViewEmailsList, '/api/admin/<string:auth_token>/emails')
+api.add_resource(AdminViewUsersList, '/api/admin/<string:auth_token>/users')
+api.add_resource(AdminViewUniversitiesList, '/api/admin/<string:auth_token>/universities')
 
 
