@@ -68,6 +68,8 @@ class User(Base):
 
     #Guru fields
     is_a_guru = Column(Boolean, default = False)
+    guru_mode = Column(Boolean, default = False)
+    guru_discoverability = Column(Boolean, default = True)
     guru_introduction = Column(String) #TODO: Research sufficient length
     guru_courses = relationship("Course",
         secondary = guru_courses_table,
@@ -143,6 +145,12 @@ class User(Base):
         self.password = flask_bcrypt.generate_password_hash(password)
         db_session.commit()
         return self.password
+
+    def request_active(self, course_id):
+        for _request in self.requests:
+            if _request.course_id == course_id and _request.is_active():
+                return True
+        return False
 
     def __repr__(self):
         return "<User '%r', '%r', '%r'>" %\
@@ -374,16 +382,52 @@ class Position(Base):
 
     request_id = Column(Integer, ForeignKey("request.id"))
 
+    @staticmethod
+    def initFromJson(position_json):
+        position = Position()
+        position.latitute = position_json.get('latitude')
+        position.longitude = position_json.get('longitude')
+        position.altitude = position_json.get('altitude')
+        position.accuracy = position_json.get('accuracy')
+        position.altitude_accuracy = position_json.get('altitude_accuracy')
+        position.heading = position_json.get('heading')
+        position.speed = position_json.get('speed')
+        position.timestamp = position_json.get('timestamp')
+        db_session.add(position)
+        db_session.commit()
+        return position
+
+
 
 
 class Request(Base):
     __tablename__ = 'request'
+
+    PROCESSING_GURUS = 0
+    STUDENT_RECEIVED_GURU = 1 #Guru accepted
+    STUDENT_ACCEPTED_GURU = 2 #Best case
+    STUDENT_CANCELED = 3
+    GURU_CANCELED_SEARCHING_AGAIN = 4
+    NO_GURUS_AVAILABLE = 4
+
+    GURU_CANCEL_SESSION = 5
+    STUDENT_RATED = 6
+    GURU_RATED = 7
+    BOTH_RATED = 8
+    STUDENT_REFUND = 9
+    GURU_NO_SHOW = 10
+    STUDENT_NO_SHOW = 11
+
     id = Column(Integer, primary_key=True)
 
     time_created = Column(DateTime)
-    description = Column(DateTime)
+    description= Column(String)
     status = Column(Integer, default = 0) #0 = pending, # 1 = matched, # 2 = canceled, # 3 = expired
     position = relationship("Position", uselist=False, backref="request")
+
+    in_person = Column(Boolean)
+    online = Column(Boolean)
+    time_estimate = Column(Integer)
 
     course_id = Column(Integer, ForeignKey('course.id'))
     course = relationship("Course",
@@ -401,6 +445,15 @@ class Request(Base):
 
     guru = relationship("User", uselist=False)
 
+    def process_proposal(self, proposal_json):
+        self.status = proposal_json.get('status')
+        db_session.commit()
+        return self
+
+    def is_active(self):
+        if self.status == 0 or self.status == 1:
+            return True
+        return False
 
 
 class Proposal(Base):
@@ -459,6 +512,19 @@ class File(Base):
 
     message_id = Column(Integer, ForeignKey("message.id"))
 
+    @staticmethod
+    def initFromJson(file_json):
+        _file = File()
+        _file.time_created = datetime.now()
+        _file.url = file_json.get('url')
+        _file._type = file_json.get('type')
+        _file.size = file_json.get('size')
+        _file.name = file_json.get('name')
+        db_session.add(_file)
+        db_session.commit()
+        return _file
+
+
 class Event(Base):
     __tablename__ = 'event'
     id = Column(Integer, primary_key=True)
@@ -500,9 +566,38 @@ class Event(Base):
         backref = "events"
     )
 
+    status = Column(Integer)
+
+    @staticmethod
+    def initFromDict(event_json):
+        event = Event()
+        event.time_created = datetime.now()
+        event.description = event_json.get('description')
+        event.user_id = event_json.get('user_id')
+        event.session_id = event_json.get('session_id')
+        event.request_id = event_json.get('request_id')
+        event.proposal_id = event_json.get('proposal_id')
+        event.relationship_id = event_json.get('relationship_id')
+        db_session.add(event)
+        return event
+
 class Session(Base):
     __tablename__ = 'session'
     id = Column(Integer, primary_key=True)
+
+    WAITING_GURU_REPLY = 0
+    GURU_ON_WAY = 1
+    GURU_START_SESSION = 2
+    GURU_END_SESSION = 3
+    STUDENT_CANCEL_SESSION = 4
+    GURU_CANCEL_SESSION = 5
+    STUDENT_RATED = 6
+    GURU_RATED = 7
+    BOTH_RATED = 8
+    STUDENT_REFUND = 9
+    GURU_NO_SHOW = 10
+    STUDENT_NO_SHOW = 11
+
 
     seconds = Column(Integer)
     minutes = Column(Integer)
@@ -520,6 +615,7 @@ class Session(Base):
                         uselist=False,
                         backref="guru_sessions")
 
+
     status = Column(Integer)
 
     guru_positions = relationship("Position",
@@ -530,12 +626,12 @@ class Session(Base):
         primaryjoin = "(Position.user_id == Session.student_id) & "\
                         "(Session.id == Position.session_id)")
 
-    student_id = Column(Integer, ForeignKey('user.id'))
-    student = relationship("User",
-        primaryjoin = "(User.id==Session.student_id) & "\
-                        "(User.is_a_guru==False)",
-                        uselist=False,
-                        backref="sessions")
+    # student_id = Column(Integer, ForeignKey('user.id'))
+    # student = relationship("User",
+    #     primaryjoin = "(User.id==Session.student_id) & "\
+    #                     "(User.is_a_guru==False)",
+    #                     uselist=False,
+    #                     backref="sessions")
 
     relationship_id = Column(Integer, ForeignKey('relationship.id'))
     _relationship = relationship("Relationship",
@@ -550,6 +646,21 @@ class Session(Base):
     time_updated = Column(DateTime)
 
     displayed = Column(Boolean, default=True) #whether the user 'removed' this session
+
+    @staticmethod
+    def initFromJson(session_json):
+        _session = Session()
+        _session.seconds = session_json.get('seconds')
+        _session.minutes = session_json.get('minutes')
+        _session.guru_id = session_json.get('guru_id')
+        _session.student_id = session_json.get('student_id')
+        _session.status = session_json.get('status')
+        _session.relationship_id = session_json.get('relationship_id')
+        _session.expiration_date = session_json.get('expiration_date')
+        _session.time_created = datetime.now()
+        db_session.add(_session)
+        db_session.commit()
+        return _session
 
 
 class Relationship(Base):
@@ -569,6 +680,16 @@ class Relationship(Base):
                         "(User.is_a_guru==False)",
                         uselist=False,
                         backref="guru_relationships")
+
+    @staticmethod
+    def initFromSession(session):
+        _relationship = Relationship()
+        _relationship.guru_id = session.guru_id
+        _relationship.student_id = session.student_id
+        db_session.add(_relationship)
+        db_session.commit()
+        return _relationship
+
 
 
 class Message(Base):
@@ -609,6 +730,21 @@ class Message(Base):
 
     _file = relationship("File", uselist=False)
 
+    @staticmethod
+    def initFromJson(message_json):
+        message = Message()
+        message.time_created = datetime.now()
+        message.time_sent = datetime.now()
+        message.contents = message_json.get('contents')
+        if message_json.get('type'):
+            doNothing = False
+
+        message.relationship_id = message_json.get('relationship_id')
+        message.session_id = message_json.get('session_id')
+        message.sender_id = message_json.get('sender_id')
+        message.receiver_id = message_json.get('received_id')
+        db_session.add(message)
+        db_session.commit()
 
 
 class Device(Base):
@@ -663,6 +799,15 @@ class Rating(Base):
         uselist=False,
         backref="student_ratings")
 
+    @staticmethod
+    def initFromSession(_session):
+        rating = Rating()
+        rating.guru_id = _session.guru_id
+        rating.student_id = _session.student_id
+        rating.session = _session
+        db_session.add(_session)
+        db_session.commit()
+        return rating
 
 class Batch(Base):
     __tablename__ = 'batch'
@@ -844,7 +989,7 @@ class Card(Base):
     #If user has not removed/deleted the card yet
     active = Column(Boolean, default = True)
 
-    def __init__(self, user_id, card_last4, card_type,\
+    def __init__(self, user_id=None, card_last4=None, card_type=None,\
         stripe_recipient_id=None, stripe_customer_id=None, \
         is_payment_card=False, is_cashout_card=False):
 
@@ -861,4 +1006,63 @@ class Card(Base):
         return "<User Card '%r', '%r', '%r', '%r'>" %\
               (self.id, self.user.name, self.card_type, \
                 self.card_last4)
+
+    @staticmethod
+    def initFromJson(card_json):
+        card = Card()
+        card.stripe_recipient_id = card_json.get('stripe_recipient_id')
+        card.stripe_customer_id = card_json.get('stripe_customer_id')
+        card.card_last4 = card_json.get('card_last4')
+        card.card_type = card_json.get('card_type')
+        card.time_added = card_json.get('time_added')
+        card.user_id = card_json.get('user').get('id')
+        card.is_default = card_json.get('is_default')
+        db_session.add(card)
+        db_session.commit()
+        return card
+
+class Transaction(Base):
+    __tablename__ = 'transaction'
+
+
+
+    id = Column(Integer, primary_key=True)
+
+    _type = Column(Integer) #session transaction, cashout transaction, credits purchase
+
+    time_created = Column(DateTime)
+    time_processed = Column(DateTime)
+    time_disputed = Column(DateTime)
+    time_refunded = Column(DateTime)
+
+    deactivated = Column(Boolean, default=False)
+
+    student_amount = Column(Float)
+    guru_amount = Column(Float)
+    stripe_amount = Column(Float)
+    profit = Column(Float)
+
+    guru_id = Column(Integer, ForeignKey('user.id'))
+    guru = relationship("User",
+        primaryjoin = "(User.id==Transaction.guru_id)",
+                        uselist=False,
+                        backref="guru_transactions")
+
+    student_id = Column(Integer, ForeignKey('user.id'))
+    student = relationship("User",
+        primaryjoin = "(User.id==Transaction.student_id)",
+                        uselist=False,
+                        backref="student_transactions")
+
+
+    card_id = Column(Integer, ForeignKey('card.id'))
+    card = relationship("Card",
+        uselist = False,
+        primaryjoin = "Card.id == Transaction.card_id",
+        backref = 'transactions'
+        )
+
+
+
+
 

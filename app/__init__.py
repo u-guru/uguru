@@ -35,7 +35,7 @@ flask_bcrypt = Bcrypt(app)
 auth = HTTPBasicAuth()
 
 
-#Flask sql alchemy 
+#Flask sql alchemy
 db = SQLAlchemy(app)
 
 # Migrations

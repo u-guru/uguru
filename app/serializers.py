@@ -24,6 +24,8 @@ guru_rating_fields = {}
 guru_rating_fields['id'] = fields.Integer(attribute='id')
 guru_rating_fields['guru_rating'] = fields.Integer(attribute='guru_rating')
 
+event_fields = {}
+event_fields['id'] = fields.Integer(attribute='id')
 
 guru_fields = {}
 guru_fields['name'] = fields.String(attribute='name')
@@ -36,9 +38,12 @@ guru_fields['guru_ratings'] = fields.List(fields.Nested(guru_rating_fields))
 request_fields = {}
 request_fields['latitude'] = fields.DateTime(attribute='time_created')
 request_fields['description'] = fields.String(attribute='description')
+request_fields['id'] = fields.String(attribute='id')
 request_fields['guru'] = fields.Nested(guru_fields)
 request_fields['position'] = fields.Nested(position_fields)
 request_fields['course'] = fields.Nested(course_fields)
+request_fields['status'] = fields.Integer(attribute='status')
+request_fields['events'] = fields.List(fields.Nested(event_fields))
 
 session_fields = {}
 session_fields['time_created'] = fields.DateTime(attribute='time_created')
@@ -88,6 +93,13 @@ DeviceSerializer = {
 CourseSerializer = {
     'short_name': fields.String,
     'title': fields.String(attribute='full_name'),
+    'code': fields.String(attribute='code'),
+    'name': fields.String(attribute='name'),
+    'id': fields.Integer
+}
+
+MajorSerializer = {
+    'name': fields.String,
     'id': fields.Integer
 }
 

@@ -5,7 +5,8 @@ from app import api, flask_bcrypt, auth
 from app.database import db_session
 from models import *
 from forms import UserCreateForm, SessionCreateForm
-from serializers import UserSerializer, DeviceSerializer, CourseSerializer, UniversitySerializer
+from serializers import UserSerializer, DeviceSerializer, \
+CourseSerializer, UniversitySerializer, MajorSerializer
 from datetime import datetime
 import logging, json, urllib2, importlib
 from lib.api_utils import json_response
@@ -67,16 +68,11 @@ class CourseListView(restful.Resource):
         return json.dumps({"courses":courses}), 200
 
 class UniversityMajorsView(restful.Resource):
+    @marshal_with(MajorSerializer)
     def get(self, id):
-        # from static.data.universities_majors_efficient import uni_majors_dict
-        # departments = uni_majors_dict[str(id)].get("departments")
-        # from pprint import pprint
-        # print pprint(departments)
-        u = University.query.get(id)
-        # if u.majors:
-        majors_module = importlib.import_module("app.static.data.school.%s.majors_id" % "ucla")
+        majors = Major.query.all()
 
-        return json.dumps({}), 200
+        return majors, 200
 
 class UniversityCoursesView(restful.Resource):
     @marshal_with(CourseSerializer)
@@ -84,16 +80,12 @@ class UniversityCoursesView(restful.Resource):
         # from static.data.universities_courses_efficient import uni_courses_dict
 
 
-        # courses = uni_courses_dict[str(id)].get("courses")
-
+        # courses = uni_courses_dict[str(id)].get("courses")s
         u = University.query.get(id)
-        uni_courses = u.courses
-        print uni_courses
         if not u.courses:
-            courses_module = importlib.import_module("app.static.data.school.%s.courses_id" % "ucla")
-            return json.dumps(courses_module.courses), 200
+            return u.departments, 200
         else:
-            return uni_courses
+            return u.courses, 200
 
 
         # from static.data.berkeley_courses import courses
@@ -260,26 +252,377 @@ class UserOneView(restful.Resource):
             course = request.json.get('course')
             course_id = course.get('id')
             c = Course.query.get(int(course_id))
-            c.contributed_user_id = user.id
-            user.student_courses.remove(c)
+            if c in user.student_courses:
+                user.student_courses.remove(c)
             db_session.commit()
 
         if request.json.get('remove_guru_course'):
             course = request.json.get('course')
             course_id = course.get('id')
             c = Course.query.get(int(course_id))
-            user.guru_courses.remove(c)
+            if c in user.guru_courses:
+                user.guru_courses.remove(c)
             db_session.commit()
 
         if request.json.get('remove_major'):
             major = request.json.get('major')
             major_id = major.get('id')
             m = Major.query.get(int(major_id))
-            user.majors.remove(m)
+            if m in user.majors:
+                user.majors.remove(m)
             db_session.commit()
 
         db_session.commit()
         return user, 200
+
+def get_user(user_id):
+    user = User.query.get(user_id)
+    return user
+
+class UserRequestView(restful.Resource):
+    @marshal_with(UserSerializer)
+    def post(self, user_id):
+
+        user = get_user(user_id)
+
+        if not user:
+            abort(404)
+
+
+        course = request.json.get('course')
+
+        #check if request is already active
+        if user.request_active(course.get('id')):
+            abort(409)
+
+        position = request.json.get('position')
+        _file = request.json.get('file')
+
+        if position:
+            position = Position.initFromJson(position)
+        if _file:
+            _file = File.initFromJson(_file)
+
+        _request = Request()
+        _request.course_id = course.get('id')
+        _request.position = position
+        _request.time_created = datetime.now()
+        _request.description = request.json.get('description')
+        _request.in_person = request.json.get('in_person')
+        _request.online = request.json.get('online')
+        _request.status = Request.PROCESSING_GURUS
+        _request.student = user
+
+        if _file:
+            _request.files.append(_file)
+
+        db_session.add(_request)
+        user.requests.append(_request)
+        db_session.commit()
+
+        return user, 200
+
+    @marshal_with(UserSerializer)
+    def put(self, user_id):
+
+        user = get_user(user_id)
+        if not user:
+            abort(404)
+
+        _request = Request.query.get(int(request.json.get('id')))
+
+        if not _request:
+            abort(404)
+
+        if request.json.get('proposal'):
+            proposal = request.json.get('proposal')
+            _request = _request.process_proposal(proposal)
+            return user, 200
+
+        if 'status' in request.json:
+            status = request.json.get('status')
+            if status == Request.STUDENT_RECEIVED_GURU:
+                event_dict = {'status': Request.STUDENT_RECEIVED_GURU, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+            elif status == Request.STUDENT_ACCEPTED_GURU:
+                event_dict = {'status': Request.STUDENT_ACCEPTED_GURU, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+            elif status == Request.STUDENT_CANCELED:
+                event_dict = {'status': Request.STUDENT_CANCELED, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+            elif status == Request.GURU_CANCELED_SEARCHING_AGAIN:
+                event_dict = {'status': Request.GURU_CANCELED_SEARCHING_AGAIN, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+            elif status == Request.NO_GURUS_AVAILABLE:
+                event_dict = {'status': Request.NO_GURUS_AVAILABLE, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+
+            _request.status = request.json.get('status')
+            db_session.commit()
+            print user.requests[0].status
+
+            return user, 200
+
+class UserSessionView(restful.Resource):
+    @marshal_with(UserSerializer)
+
+    #create a session
+    @marshal_with(UserSerializer)
+    def post(self, user_id):
+        user = get_user(user_id)
+
+        if not user:
+            abort(404)
+
+        session_json = request.json.get('session')
+        session = Session.initFromJson(session_json)
+
+        # Create relationship as well
+        if not session.relationship_id:
+            _relationship = Relationship.initFromSession(session)
+
+        #Contact the guru
+        else:
+            doNothing = True
+
+        return user, 200
+
+
+
+    #update a session
+    @marshal_with(UserSerializer)
+    def put(self, user_id):
+        #append student, guru_position updated
+
+        user = get_user(user_id)
+
+        if not user:
+            abort(404)
+
+        session_json = request.json.get('session')
+        _session = Session.query.get(session_json.get('id'))
+
+        #add updated position from student
+        if request.json.get('session_position_student'):
+            position_json = request.json.get('position')
+            position_json['session_id'] = session_json.get('id')
+            position = Position.initFromJson(position)
+
+            _session = Session.query.get(session_json.get('id'))
+            _session.student_positions.append(position)
+            db_session.commit()
+            return user, 200
+
+        #add updated position from student
+        if request.json.get('session_position_guru'):
+            position_json = request.json.get('position')
+            position_json['session_id'] = session_json.get('id')
+            position = Position.initFromJson(position)
+
+            _session.guru_positions.append(position)
+            db_session.commit()
+            return user, 200
+
+
+        if request.json.get('status'):
+            status = request.json.get('status')
+
+            # Should not happen, this is required by default
+            # if status == _session.GURU_ON_WAY:
+            #     doNothing = True
+
+            ## Guru is starting the session
+            if status == Session.GURU_START_SESSION:
+
+                event_dict = {'status': Request.GURU_START_SESSION, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+
+            ## Guru is ending the session
+            elif status == Session.GURU_END_SESSION:
+
+                event_dict = {'status': Request.GURU_END_SESSION, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+
+                rating = Rating.initFromSession(_session)
+
+            elif status == Session.STUDENT_CANCEL_SESSION:
+                # Consequences?
+                event_dict = {'status': Request.STUDENT_CANCEL_SESSION, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+
+            elif status == Session.GURU_CANCEL_SESSION:
+                event_dict = {'status': Request.GURU_CANCEL_SESSION, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+
+            elif status == Session.STUDENT_RATED:
+
+                event_dict = {'status': Request.STUDENT_RATED, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+                rating_json = request.json.get('rating')
+
+                #check if the session has a rating id
+                if not _session.rating_id:
+
+                    rating = Rating.initFromSession(_session)
+                    rating.student_rating = rating_json.get('student_rating')
+                    rating.student_time_rated = datetime.now()
+
+                #session already has a rating id
+                else:
+                    _session.rating.student_rating = rating_json.get('student_rating')
+                    _session.rating.student_time_rated = datetime.now()
+
+                #update status to both rated
+                if _session.rating.guru_rating:
+                    _session.status = Session.BOTH_RATED
+
+            elif status == _session.GURU_RATED:
+
+                event_dict = {'status': Request.GURU_RATED, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+
+                rating_json = request.json.get('rating')
+
+                #check if the session has a rating id
+                if not _session.rating_id:
+
+                    rating = Rating.initFromSession(_session)
+                    rating.student_rating = rating_json.get('student_rating')
+                    rating.student_time_rated = datetime.now()
+
+                #session already has a rating id
+                else:
+                    _session.rating.student_rating = rating_json.get('student_rating')
+                    _session.rating.student_time_rated = datetime.now()
+
+                #update status to both rated
+                if _session.rating.student_rating:
+                    _session.status = Session.BOTH_RATED
+
+            elif status == Session.STUDENT_REFUND:
+                event_dict = {'status': Request.STUDENT_REFUND, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+
+            elif status == Session.GURU_NO_SHOW:
+                event_dict = {'status': Request.GURU_NO_SHOW, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+
+            elif status == Session.STUDENT_NO_SHOW:
+
+                event_dict = {'status': Request.STUDENT_NO_SHOW, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+
+            _session.status = request.json.get('status')
+            db_session.commit()
+            return user, 200
+
+        abort(404)
+
+
+    @marshal_with(UserSerializer)
+    def delete(self, user_id):
+        pass
+
+#TODO Testing
+#TODO Create proposals proposals to gurus, Redis, guru ranking, re-initialize request if guru cancels
+#TODO Bank shit: Cashing_out, transactions from the bank, refunds, Stripe
+#TODO Later Queuing system + task actions for db_commits
+#TODO Later: Images & Files --> S3 Bucket
+
+class UserSessionMessageView(restful.Resource):
+    #create a message in a session
+    def post(self, user_id, session_id):
+        user = get_user(user_id)
+        _session = Session.query.get(session_id)
+        if not user or not _session:
+            abort(404)
+
+        #create a new message
+        if request.json.get('message'):
+            message_json = request.json.get('message')
+            message = Message.initFromJson(message_json)
+
+        return user, 200
+
+    def put(self, user_id, session_id):
+        user = get_user(user_id)
+        _session = Session.query.get(session_id)
+        if not user or not _session:
+            abort(404)
+
+        #create a new message
+        if request.json.get('message'):
+            message_json = request.json.get('message')
+            message = Message.query.get(message_json.get('id'))
+            message.time_read = datetime.now()
+            db_session.commit()
+
+        return user, 200
+
+
+class UserCardView(restful.Resource):
+    @marshal_with(UserSerializer)
+    def post(self, user_id):
+
+        user = get_user(user_id)
+
+        if not user:
+            abort(404)
+
+        card = request.json.get('card')
+        debit_card = request.json.get('debit_card')
+
+        # user is adding a card
+        if card:
+            if not user.cards:
+                card['is_default'] = True
+            card = Card.initFromJson(card)
+            return user, 200
+
+        if debit_card:
+            if not user.cards:
+                card['is_default'] = True
+            debit_card = Card.initFromJson(debit_card)
+            return user, 200
+
+        abort(404)
+
+    @marshal_with(UserSerializer)
+    def put(self, user_id):
+        user = get_user(user_id)
+
+        if not user:
+            abort(404)
+
+        card_json = request.json.get('card')
+        card = Card.query.get(card_json.get('id'))
+
+        if request.json.get('default'):
+            card.is_default = True
+
+            for other_card in user.cards:
+                if other_card != card:
+                    card.is_default = False
+            db_session.commit()
+
+        return user, 200
+
+    @marshal_with(UserSerializer)
+    def delete(self, user_id):
+        user = get_user(user_id)
+
+        if not user:
+            abort(404)
+
+        card_json = request.json.get('card')
+        card = Card.query.get(card_json.get('id'))
+        card.deactivated = True
+        user.cards.remove(card)
+        db_session.commit()
+
+        return user, 200
+
+
 
 
 class UserNewView(restful.Resource):
@@ -288,7 +631,6 @@ class UserNewView(restful.Resource):
     @marshal_with(UserSerializer)
     def post(self):
 
-        print request.json
         fb_user = email_user = None
 
         if request.json.get('email'):
@@ -323,7 +665,7 @@ class UserNewView(restful.Resource):
             user.fb_id = request.json.get('fb_id')
 
         else:
-            from md5 import hashlib
+            from hashlib import md5
             password = md5(request.json.get('password')).hexdigest()
 
         db_session.add(user)
@@ -744,11 +1086,18 @@ class AdminUniversityAddRecipientsView(restful.Resource):
         new_db_objs = []
 
         students_arr = request.json.get('students')
-        d = Department()
-        d.code = department['code'].upper()
-        d.title = department['title']
-        d.university_id = uni_id
-        new_db_objs.append(d)
+        for student in students_arr:
+            r = Recipient()
+            r.first_name = student['first_name'].strip().title()
+            r.last_name = student['last_name'].strip().title()
+            r.email = student['email'].strip().title()
+            new_db_objs.append(r)
+
+        db_session.add_all(new_db_objs)
+        db_session.commit()
+        results = {'message': str(len(new_db_objs)) + ' objects processed'}
+        return jsonify(success=results)
+
 
 class AdminUniversityDepartmentsView(restful.Resource):
     def post(self, auth_token, uni_id):
@@ -785,6 +1134,10 @@ class AdminUniversityDepartmentsView(restful.Resource):
 api.add_resource(UserView, '/api/v1/users')
 api.add_resource(UserNewView, '/api/v1/user')
 api.add_resource(UserOneView, '/api/v1/user/<int:_id>')
+api.add_resource(UserRequestView, '/api/v1/user/<int:user_id>/requests')
+api.add_resource(UserCardView, '/api/v1/user/<int:_id>/cards')
+api.add_resource(UserSessionView, '/api/v1/user/<int:_id>/sessions')
+api.add_resource(UserSessionMessageView, '/api/v1/user/<int:_id>/sessions/<int:_session>/messages')
 api.add_resource(DeviceView, '/api/v1/devices')
 api.add_resource(VersionView, '/api/v1/version')
 api.add_resource(UserPhoneView, '/api/v1/phone')
