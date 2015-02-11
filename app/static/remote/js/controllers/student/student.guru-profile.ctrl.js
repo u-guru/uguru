@@ -22,7 +22,9 @@ angular.module('uguru.student.controllers')
         }
       }
 
-
+      $scope.getNumber = function(num) {
+        return new Array(num);
+      }
       
   }
 

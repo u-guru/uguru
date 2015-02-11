@@ -15,10 +15,10 @@
     <link href="remote/css/animate.css" rel="stylesheet">
 
     <script src="cordova.js"></script>
-    <script src="cordova_plugins.js"></script> 
+    <script src="cordova_plugins.js"></script>
 
     <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="remote/lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
     <script src='http://maps.googleapis.com/maps/api/js?libraries=places, geocoder&sensor=false&language=en&v=3.17'></script>
     <script src="lib/lodash/dist/lodash.js"></script>
@@ -32,7 +32,7 @@
     <script src="lib/angular-payments/angular-payments.js"></script>
     <script src="remote/lib/ionic/contrib/ionic.contrib.frost.js"></script>
 
-    <script src="lib/stripe/stripe.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script>
       Stripe.setPublishableKey('pk_live_HgcccaWXL0sUpCRW86OzEcDi');
     </script>
@@ -60,10 +60,10 @@
 
 
     <script type="text/javascript" src="lib/facebook/facebookConnectPlugin.js"></script>
-    
+
 
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
-    
+
     <!-- cordova script (this will be a 404 during development) -->
 
     <!-- uguru app main js -->
@@ -76,6 +76,7 @@
     <!-- uguru app factories -->
     <script type="text/javascript" src="remote/js/factories/Session.js"></script>
     <script type="text/javascript" src="remote/js/factories/User.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Device.js"></script>
     <script type="text/javascript" src="remote/js/factories/University.js"></script>
     <script type="text/javascript" src="remote/js/factories/Major.js"></script>
     <script type="text/javascript" src="remote/js/factories/Phone.js"></script>
@@ -88,7 +89,7 @@
     <script type="text/javascript" src="remote/js/controllers/courses.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/bio.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/majors.ctrl.js"></script>
-    
+
     <!-- Uguru student controller -->
     <script type="text/javascript" src="remote/js/controllers/student/student.home.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/student.request.ctrl.js"></script>
@@ -97,8 +98,17 @@
     <script type="text/javascript" src="remote/js/controllers/student/student.active-session.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/student.request-status.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/student.previous-session-details.ctrl.js"></script>
+
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.onboarding.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.home.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.student-request.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.active-session.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.session-start.ctrl.js"></script>
+
     <script type="text/javascript" src="remote/js/controllers/util/util.university.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-course.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.add-major.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.add-guru-bio.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-note.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.request-location.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.signup.ctrl.js"></script>
@@ -107,13 +117,15 @@
     <script type="text/javascript" src="remote/js/controllers/util/util.messages.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.ratings.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.gurubook.ctrl.js"></script>
-    
-    
+    <script type="text/javascript" src="remote/js/controllers/util/util.studentbook.ctrl.js"></script>
+
+
     <!-- Uguru Student settings controller -->
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.cards.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.notifications.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.profile.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.edit-courses.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.edit-university.ctrl.js"></script>
 
     <!-- uguru app services -->
     <script type="text/javascript" src="remote/js/services/AuthService.js"></script>
@@ -123,12 +135,12 @@
     <script type="text/javascript" src="remote/js/services/hardware/camera.js"></script>
     <script type="text/javascript" src="remote/js/services/hardware/location.js"></script>
 
-  </head> 
+  </head>
   <body ng-app="uguru" animation="slide-left-right-ios7">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
-             
+
     <ion-nav-view animation="slide-left-right-ios7">
     </ion-nav-view>
     <ion-nav-bar class="bar-dark nav-bar-text bold-font">
@@ -151,6 +163,11 @@
       </ion-nav-view>
     </script>
 
+    <script id="templates/guru-root.html" type="text/ng-template">
+      <ion-nav-view animation="slide-left-right">
+      </ion-nav-view>
+    </script>
+
     <script id="templates/wizard-root.html" type="text/ng-template">
       <ion-nav-view animation="slide-left-right">
       </ion-nav-view>
@@ -164,8 +181,8 @@
     <script id="templates/signup.html" type="text/ng-template">
       <ion-view hide-nav-bar="true">
         <ion-content class="padding" scroll="false">
-        
-        <div class='row absolute absolute-center bottom-30-percent'> 
+
+        <div class='row absolute absolute-center bottom-30-percent'>
           <div class="col col-offset-25 col-50 padding" style="padding:1.5em">
             <img src='./img/uguru_home.png' class='inherit-width'>
           </div>

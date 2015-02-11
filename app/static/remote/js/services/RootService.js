@@ -1,12 +1,12 @@
 angular.module('uguru.root.services', [])
-.service('RootService', 
+.service('RootService',
     [
-    '$cordovaKeyboard', 
+    '$cordovaKeyboard',
     '$localstorage',
     '$timeout',
     '$cordovaProgress',
     function($cordovaKeyboard, $localstorage, $timeout, $cordovaProgress) {
-    
+
     this.util = {
         objectFindByKey: function(array, key, value) {
             for (var i = 0; i < array.length; i++) {
@@ -36,7 +36,7 @@ angular.module('uguru.root.services', [])
             return $cordovaKeyboard.isVisible();
         },
         show: function(target, delay) {
-          var delay_seconds = delay || 0.1;          
+          var delay_seconds = delay || 0.1;
           if (!this.forceOff()) {
             $timeout(function() {
                 document.getElementsByName(target)[0].focus();
@@ -45,7 +45,7 @@ angular.module('uguru.root.services', [])
         },
         forceOff: function(bool) {
             var currentState = $localstorage.get('keyboard_force_off', null);
-            
+
             //if currentState is not initialized, initialize it
             if (!currentState&& bool === null) {
                 $localstorage.setObject('keyboard_force_off', false);
@@ -54,12 +54,12 @@ angular.module('uguru.root.services', [])
             //user is getting
             else if (bool === null) {
                 return currentState;
-            } 
+            }
             //user is setting
             else {
                 $localstorage.setObject('keyboard_force_off', bool)
             }
-                
+
         },
     }
 
@@ -67,10 +67,10 @@ angular.module('uguru.root.services', [])
         //TODO
         showSuccess: function() {
             return false;
-        }, 
+        },
         isVisible: function(bool) {
             var currentState = $localstorage.get('is_progress_visible', null);
-            
+
             if (!currentState&& bool === null) {
                 $localstorage.setObject('is_progress_visible', false);
                 return false;
@@ -78,7 +78,7 @@ angular.module('uguru.root.services', [])
             //user is getting
             else if (bool === null) {
                 return currentState;
-            } 
+            }
             //user is setting
             else {
                 $localstorage.setObject('is_progress_visible', bool)
@@ -92,11 +92,11 @@ angular.module('uguru.root.services', [])
             $timeout(
                 function() {
                     var button = targetElement.classList.remove('active');
-                }, 
+                },
             250)
         }
     }
 
     return this;
-    
+
 }]);

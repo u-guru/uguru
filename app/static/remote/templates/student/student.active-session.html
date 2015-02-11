@@ -6,12 +6,12 @@
           Woohoo!
         </div>
         <div class="sm-box-2">
-          Shun is <br> on the way!
+          {{session.request.guru.name.split(" ")[0]}} is <br> on the way!
         </div>
       </div>
       <div class="row bottom center">
         <div class="col">
-          <div class="font-size-16"><span class="icon ion-navigate"></span>Meet at 375 Valencia St</div>
+          <div class="font-size-16"><span class="icon ion-navigate"></span>{{session.address}}</div>
         </div>
       </div>
       <hr>
@@ -19,15 +19,14 @@
         <li class="item padding-10-14">
           <div class="icon"><img src='./img/shun.png' class='width'></div>
           <div class="box">
-            <div class="name">Shun Kurosaki
-              <span class="profile" style="font-size:14px !important;" ng-click="goToGuruProfile(guru)" >view profile</span>
+            <div class="name">{{session.request.guru.name.split(" ")[0]}}
+              <span class="profile" style="font-size:14px !important;" ng-click="goToGuruProfile(session.request.guru)" >view profile</span>
             </div>
-            <div class="stars">
-              <span class="icon ion-star"></span>
-              <span class="icon ion-star"></span>
-              <span class="icon ion-star"></span>
-              <span class="icon ion-star"></span>
-              <span class="icon ion-star"></span>
+            <div class="stars" ng-show="guru.guru_avg_rating">
+                <span class="icon ion-star" ng-repeat="i in getNumber(session.request.guru.guru_avg_rating) track by $index"></span>
+              </div>
+              <div class="stars" ng-show="!session.request.guru.guru_avg_rating">
+                First Time Guru
             </div>
           </div>
         </li>

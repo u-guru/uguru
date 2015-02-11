@@ -14,42 +14,45 @@ angular.module('uguru.util.controllers')
   '$cordovaKeyboard',
   'University',
   'Popover',
-  function($scope, $state, $timeout, $localstorage, 
+  function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $q, $cordovaProgress,
   $cordovaKeyboard, University, Popover) {
 
     $scope.course_search_text = '';
     $scope.keyboard_force_off = false;
-    
+
     $scope.setCourseFocus = function(target) {
       if ($scope.course_search_text.length === 0 && !$scope.keyboard_force_off) {
-        document.getElementsByName("course-input")[0].focus();  
+        document.getElementsByName("course-input")[0].focus();
       }
     };
+
+    $scope.clearSearchInput = function() {
+      $scope.course_search_text = '';
+    }
 
     $scope.getCoursesFromServer = function(promise) {
         var university_title = $scope.user.university.title;
         var msg_details = "Retrieving all " + university_title + ' courses'
-        
+
         if (!$scope.progress_active) {
           $scope.progress_active = true;
           $cordovaProgress.showSimpleWithLabelDetail(true, "Loading", msg_details);
         } else {
           console.log('progress spinner is already active!');
         }
-        
+
         University.getCourses($scope.user.university_id).then(
                 function(courses) {
                   $cordovaProgress.hide();
                   $scope.progress = false;
-                    var courses = JSON.parse(courses);
                     console.log(courses.length + ' courses uploaded from ' + $scope.user.university.title);
 
                   $timeout(function() {
                       var courseSuccessMsg = courses.length + ' Courses Found!';
                       $scope.showSuccess(courseSuccessMsg);
                   }, 500)
-                            
+
                     if (promise) {
                     promise.resolve(courses);
                 }
@@ -64,7 +67,7 @@ angular.module('uguru.util.controllers')
 
               $scope.courses = courses;
               $localstorage.setObject('courses', $scope.courses);
-                
+
                 },
                 function(error) {
                     console.log('Courses NOT successfully loaded');
@@ -75,12 +78,12 @@ angular.module('uguru.util.controllers')
     }
 
     var GetCoursesList = function() {
-      
+
       if ($localstorage.getObject('courses').length > 0) {
-          
+
           $scope.$on('modal.shown', function() {
 
-          if ($scope.addCourseModal.isShown() && 
+          if ($scope.addCourseModal.isShown() &&
             !$scope.addUniversityModal.isShown() &&
               $localstorage.getObject('courses').length > 0) {
               $scope.keyboard_force_off = false;
@@ -91,7 +94,7 @@ angular.module('uguru.util.controllers')
 
             }
           });
-          
+
           return $localstorage.getObject('courses');
 
       }
@@ -100,10 +103,10 @@ angular.module('uguru.util.controllers')
 
       $scope.$on('modal.hidden', function() {
 
-          if (!$scope.addUniversityModal.isShown() && 
+          if (!$scope.addUniversityModal.isShown() &&
             $scope.addCourseModal.isShown() &&
             $scope.user.university_id) {
-              
+
               //if there are no courses after university modal is shown;
               if ($localstorage.getObject('courses').length === 0) {
                 $scope.getCoursesFromServer(coursesLoaded);
@@ -114,13 +117,13 @@ angular.module('uguru.util.controllers')
                   $scope.setCourseFocus();
                 }, 500);
               }
-          } 
+          }
 
       });
 
       $scope.$on('modal.shown', function() {
 
-        if ($scope.addCourseModal.isShown() && 
+        if ($scope.addCourseModal.isShown() &&
           !$scope.addUniversityModal.isShown() &&
           $localstorage.getObject('courses').length > 0) {
           $scope.keyboard_force_off = false;
@@ -129,13 +132,13 @@ angular.module('uguru.util.controllers')
             $scope.setCourseFocus();
           }, 500);
 
-        } else 
+        } else
 
-        if ($scope.addCourseModal.isShown() && 
+        if ($scope.addCourseModal.isShown() &&
           !$scope.addUniversityModal.isShown() &&
-          $scope.user.university_id && 
+          $scope.user.university_id &&
           $localstorage.getObject('courses').length === 0) {
-            
+
           $scope.getCoursesFromServer(coursesLoaded);
         }
 
@@ -148,7 +151,7 @@ angular.module('uguru.util.controllers')
 
     $scope.hideCourseModal = function() {
       if ($cordovaKeyboard.isVisible()) {
-        
+
         $scope.keyboard_force_off = true;
         $scope.course_search_text = '';
         $scope.closeKeyboard();
@@ -159,40 +162,45 @@ angular.module('uguru.util.controllers')
         $scope.addCourseModal.hide();
       }
     }
-  
 
     $scope.courseSelected = function(course) {
 
+      var is_guru_mode = $state.current.name === 'root.guru.wizard';
 
-      if ($scope.user.student_courses.length === 0) {
+      if (!$scope.user.student_courses && !is_guru_mode) {
           $scope.user.student_courses = [];
-          // $timeout(function() {
-          // popoverOptions = {
-          //   targetElement:'.student-course',
-          //   title: 'Tap to request help',
-          //   delay: 500,
-          //   animation:null,
-          //   placement: 'bottom',
-          //   body: "We'll find a Guru to help you out <br> in a matter of minutes.<br>",
-          //   buttonText: 'Got it',
-          //   dropshadow: true
-          // }
+      }
 
-          // Popover.tutorial.show($scope, popoverOptions);
+      if (!$scope.user.guru_courses && is_guru_mode) {
+          $scope.user.guru_courses = [];
+      }
 
-          // }, 1500)
+      if (is_guru_mode) {
+        $scope.calculateProgress($scope.user);
+        $scope.user.guru_courses.push(course);
+        $scope.user.updateAttr('add_guru_course', $scope.user, course);
+      } else {
+        $scope.user.student_courses.push(course);
+        $scope.user.updateAttr('add_student_course', $scope.user, course);
       }
 
         $scope.keyboard_force_off = true;
-        $scope.user.student_courses.push(course);
         $scope.rootUser.updateLocal($scope.user);
+        payload = {
+          add_student_course: true,
+          course: course,
+        }
+        serverSuccess = function(user) {
+          console.log(user);
+        }
+
         $scope.course_search_text = '';
         $scope.closeKeyboard();
         $scope.showSuccess('Course Saved!');
         $timeout(function() {
           $scope.addCourseModal.hide();
         }, 1000);
-    }
+      }
 
   }
 

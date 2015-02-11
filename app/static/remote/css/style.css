@@ -5,28 +5,28 @@
   font-family: "OpenSans-Bold";
   src: url("../fonts/OpenSans-Bold.ttf");
   font-weight: normal;
-  font-style: normal; 
+  font-style: normal;
 }
 
 @font-face {
   font-family: "OpenSans-Regular";
   src: url("../fonts/OpenSans-Regular.ttf");
   font-weight: normal;
-  font-style: normal; 
+  font-style: normal;
 }
 
 @font-face {
   font-family: "OpenSans-Semibold";
   src: url("../fonts/OpenSans-Semibold.ttf");
   font-weight: normal;
-  font-style: normal; 
+  font-style: normal;
 }
 
 @font-face {
   font-family: "OpenSans-Light";
   src: url("../fonts/OpenSans-Light.ttf");
   font-weight: normal;
-  font-style: normal; 
+  font-style: normal;
 }
 
 p {
@@ -123,14 +123,14 @@ p {
 .fb-button.active, .fb-button.activated {
     border-color: #38548C;
     background-color: #38548C;
-    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); 
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 .title {
   font-size:14px !important;
 }
 
-  
+
 
 .button.fb-button.icon-left:before {
     font-size:35px;
@@ -161,9 +161,9 @@ p {
   height: 20px;
 }
 
-[nav-bar-transition="ios"] [nav-bar="active"] .bar, 
+[nav-bar-transition="ios"] [nav-bar="active"] .bar,
 [nav-bar-transition="ios"] [nav-bar="entering"] .bar,
-[nav-bar-transition="android"] [nav-bar="active"] .bar, 
+[nav-bar-transition="android"] [nav-bar="active"] .bar,
 [nav-bar-transition="android"] [nav-bar="entering"] .bar
 {
   background-color: rgb(43,50,52);
@@ -174,7 +174,7 @@ p {
   padding-left:15px;
 }
 
-.icon.ion-ios7-arrow-back, .back-text, 
+.icon.ion-ios7-arrow-back, .back-text,
 .icon.ion-arrow-left-c {
     display:none !important;
 }
@@ -225,7 +225,7 @@ p {
 }
 
 .has-header {
-  background-color: rgba(0,0,0,0.04); 
+  background-color: rgba(0,0,0,0.04);
 }
 
 .nav-bar-text button {
@@ -296,7 +296,7 @@ p {
   font-family:"OpenSans-Bold";
   font-size:95%;
   white-space:normal;
-  
+
 }
 
 .extra-padding-sides {
@@ -309,7 +309,7 @@ p {
 }
 
 .primary-buttons button {
-  width: 75px;  
+  width: 75px;
   height: 30px;
 }
 
@@ -362,7 +362,7 @@ p {
 
 .white-title-text {
   color:white;
-  font-size:2.25em !important; 
+  font-size:2.25em !important;
   font-family:"OpenSans-Bold";
 }
 
@@ -568,7 +568,7 @@ span.tab-title:first {
   text-transform:uppercase;
   font-family:"OpenSans-Bold";
   bottom:2px;
-  
+
 }
 
 span.tab-title {
@@ -582,13 +582,13 @@ span.tab-title {
   position: absolute;
   font-size: 34px;
   left: 1em;
-  width: auto; 
+  width: auto;
   text-align: center;
   bottom: -37px;
   z-index: 6;
   color: #69b3a5;
-  border-radius: 150px; 
-  background-color:white;   
+  border-radius: 150px;
+  background-color:white;
 }
 
 .scroll = {height:100%;}

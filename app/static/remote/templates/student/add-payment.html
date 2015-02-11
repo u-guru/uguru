@@ -1,20 +1,23 @@
- <ion-view ng-controller="AddPaymentController" title="Add Payment">
+ <ion-view ng-controller="AddPaymentController" title="{{headerText}}">
   <ion-nav-buttons side="secondary">
       <button ng-click="addPaymentActionBtn()" class="button button-clear button-positive">
         {{actionButtonText}}
       </button>
   </ion-nav-buttons>
-  
+
   <ion-content>
     <div class="payment">
       <div class="list list-inset">
         <label class="item item-input margin-0">
           <i class="icon ion-card placeholder-icon font-size"></i>
           <input style="border:0px; width:50%" max="20"name="card-input" id="card-input" class="payment-box" placeholder="1234 5678 9012 3456"></input>
-          <input max="4" style="border:0px; margin-left:20px;" id="ccv-input" placeholder="CCV" class="payment-box">
+          <input max="2" style="border:0px; margin-left:20px;" id="mm-input" placeholder="MM" class="payment-box">
+          <input max="2" style="border:0px; margin-left:5px;" id="yy-input" placeholder="YY" class="payment-box">
         </label>
       </div>
-      <div class="message center">Your card will only be charged<br>when you request a Guru.</div>
+
+      <div ng-show="!user.guru_mode"class="message center">Your card will only be charged<br>when you request a Guru.</div>
+      <div ng-show="user.guru_mode"class="message center">Your Uguru balance will be <br> updated after this session.</div>
     </div>
     <br>
     <button ng-show="card" class="button button-positive button-full" ng-click="setDefault()"> Set Default </button>

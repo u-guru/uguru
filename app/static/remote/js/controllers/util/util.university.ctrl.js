@@ -12,13 +12,13 @@ angular.module('uguru.util.controllers', [])
   '$q',
   'University',
   '$cordovaKeyboard',
-  function($scope, $state, $timeout, $localstorage, 
+  function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $q, University,
   $cordovaKeyboard) {
 
     $scope.search_text = '';
     $scope.keyboard_force_off = false;
-    
+
     $scope.setFocus = function(target) {
       if ($scope.search_text.length === 0 && !$scope.keyboard_force_off) {
         document.getElementsByName("university-input")[0].focus();
@@ -31,7 +31,7 @@ angular.module('uguru.util.controllers', [])
 
       $scope.$on('modal.shown', function() {
 
-        if ($scope.addUniversityModal.isShown() && 
+        if ($scope.addUniversityModal.isShown() &&
           $localstorage.getObject('universities').length === 0) {
             $scope.getUniversitiesFromServer(universitiesLoaded);
           }
@@ -48,16 +48,16 @@ angular.module('uguru.util.controllers', [])
       });
 
       if ($localstorage.getObject('universities').length > 0) {
-            
+
           return $localstorage.getObject('universities');
 
       } else {
-        
-        return universitiesLoaded.promise;  
-      
+
+        return universitiesLoaded.promise;
+
       }
 
-      
+
     }
 
     $scope.universities = GetUniversityList();
@@ -82,13 +82,13 @@ angular.module('uguru.util.controllers', [])
               $timeout(function() {
                 $scope.setFocus();
               }, 1000);
-              
+
               universities = JSON.parse(universities);
               if (promise) {
                 promise.resolve(universities);
               }
               $scope.universities = universities;
-              
+
               $localstorage.setObject('universities', $scope.universities);
               console.log($scope.universities.length + ' universities successfully loaded');
           },
@@ -108,6 +108,7 @@ angular.module('uguru.util.controllers', [])
       $scope.search_text = '';
       $scope.keyboard_force_off = true;
       $scope.rootUser.updateLocal($scope.user);
+      $scope.user.updateAttr('university_id', $scope.user, $scope.user.university_id);
       $scope.closeKeyboard();
       $scope.showSuccess('University Saved!');
       $timeout(function() {

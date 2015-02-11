@@ -1,11 +1,12 @@
+RawBlameHistory   
 <ion-view title="Messages">
-  <ion-content scroll="true" delegate-handle="message-scroll">
+  <ion-content scroll="true" delegate-handle="message-scroll" ng-click="hideKeyboard()">
     
     <div class="messages">
       <ul class="list">
           <li class="item {{message.class}}" ng-repeat="message in messages">
             <div class="text">{{message.content}}</div>
-            <img src="{{message.img_src}}">
+            <img ng-src="{{message.img_src}}">
           </li>
           
       </ul>
@@ -18,6 +19,7 @@
         <input type="search" name="message-input" class="form-control"
                 placeholder="Enter a message"
                 ng-model="new_message.content"
+                ng-focus="setFocus()"
                 ng-blur="setFocus()"
         />
     </label>

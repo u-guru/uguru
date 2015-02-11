@@ -13,12 +13,10 @@ angular.module('uguru.student.controllers')
   function($scope, $state, $ionicPopup, $timeout, $localstorage, $stateParams) {
 
     $scope.request = JSON.parse($stateParams.requestObj);
-    console.log($scope.request);
+    $scope.guru = $scope.request.guru;
 
-    $scope.guru = {
-      first_name: 'Shun',
-      course:$scope.request.course.short_name,
-      guru_courses: $scope.user.student_courses
+    $scope.getNumber = function(num) {
+      return new Array(num);
     }
 
     $scope.goToGuruProfile = function() {
@@ -31,26 +29,38 @@ angular.module('uguru.student.controllers')
         return;
       }
 
-      var session = {
-          course: {short_name:'BIO101'},
-          status: 'guru-transport',
-          guru: {name: 'Shun Kurosaki', guru_rating:4, id: 2},
-          location: {address: '198 Church St'},
-          price: {amount: 5, minutes:15},
-          messages: [],
-      }
+      $scope.request.status = 1;
+      $scope.request.guru_id = $scope.guru.id;
 
-      $scope.user.sessions = [];
-      $scope.user.active_sessions = [];
-      $scope.user.sessions.push(session);
-      $scope.user.active_sessions.push(session);
-      $scope.rootUser.updateLocal($scope.user);
-      $state.go('^.home');
+      $scope.user.createObj($scope.user, 'sessions', $scope.request, $scope);
+      $scope.updateUserRequest($scope,$scope.request, 0) //update back to processing gurus
+
+      // $scope.user.sessions = [];
+      // $scope.user.active_sessions = [];
+      // $scope.user.sessions.push(session);
+      // $scope.user.active_sessions.push(session);
+      // $scope.rootUser.updateLocal($scope.user);
+      // $state.go('^.home');
 
     }
 
+    $scope.updateUserRequest = function(request, status) {
+      var user_requests = $scope.user.requests;
+      for (var i = 0; i < user_requests.length ; i++) {
+        var index_request = user_requests[i];
+        if (index_request.id === request.id) {
+          $scope.user.requests[i].status = 0;
+        }
+      }
+    }
+
     $scope.rejectGuru = function() {
+      requestObj = $scope.request;
+      requestObj.status = 3; //guru rejected
+      $scope.user.updateObj($scope.user, 'requests', requestObj, $scope);
+      $scope.updateUserRequest($scope,$scope.request, 0) //update back to processing gurus
       $state.go('^.home');
+      // $state.go('^.home');
     }
 
     var lightSpeedIn = document.getElementById('lightSpeedIn')

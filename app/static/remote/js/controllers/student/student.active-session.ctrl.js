@@ -13,11 +13,12 @@ angular.module('uguru.student.controllers')
   '$cordovaProgress',
   '$stateParams',
   'Geolocation',
-  function($scope, $state, $timeout, $localstorage, 
+  function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaProgress, $stateParams,
   Geolocation) {
 
     $scope.session = JSON.parse($stateParams.sessionObj);
+    console.log($scope.session);
 
     $scope.guru = {
       first_name: 'Shun',
@@ -39,7 +40,7 @@ angular.module('uguru.student.controllers')
     }).then(function(modal) {
         $scope.ratingModal = modal;
     });
-    
+
 
   }
 

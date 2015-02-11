@@ -406,9 +406,10 @@ class Request(Base):
     PROCESSING_GURUS = 0
     STUDENT_RECEIVED_GURU = 1 #Guru accepted
     STUDENT_ACCEPTED_GURU = 2 #Best case
-    STUDENT_CANCELED = 3
-    GURU_CANCELED_SEARCHING_AGAIN = 4
-    NO_GURUS_AVAILABLE = 4
+    STUDENT_REJECTED_GURU = 3
+    STUDENT_CANCELED = 4
+    GURU_CANCELED_SEARCHING_AGAIN = 5
+    NO_GURUS_AVAILABLE = 6
 
     GURU_CANCEL_SESSION = 5
     STUDENT_RATED = 6
@@ -423,8 +424,9 @@ class Request(Base):
     time_created = Column(DateTime)
     description= Column(String)
     status = Column(Integer, default = 0) #0 = pending, # 1 = matched, # 2 = canceled, # 3 = expired
+    session = relationship("Session", uselist=False, backref="request")
     position = relationship("Position", uselist=False, backref="request")
-
+    address = Column(String)
     in_person = Column(Boolean)
     online = Column(Boolean)
     time_estimate = Column(Integer)
@@ -460,6 +462,13 @@ class Proposal(Base):
     __tablename__ = 'proposal'
     id = Column(Integer, primary_key=True)
 
+    GURU_SENT = 0
+    GURU_SEEN = 1
+    GURU_ACCEPTED = 2
+    GURU_REJECTED = 3
+    GURU_EXPIRED = 4
+    GURU_CHOSEN = 5
+
     time_created = Column(DateTime)
     time_updated = Column(DateTime)
 
@@ -478,6 +487,21 @@ class Proposal(Base):
     )
     guru_rank = Column(Integer)
     status = Column(Integer) # Active, expired, guru_accepted, guru_rejected, student_rejected
+
+    def send_to_next_guru(self):
+        _request = self.request
+        pass
+
+    @staticmethod
+    def initProposal(request_id, guru_id):
+        proposal = Proposal()
+        proposal.status = 0
+        proposal.time_created = datetime.now()
+        proposal.guru_id = guru_id
+        proposal.request_id = request_id
+        db_session.add(proposal)
+        db_session.commit()
+        return proposal
 
 class File(Base):
     __tablename__ = 'file'
@@ -606,17 +630,22 @@ class Session(Base):
         primaryjoin = "(User.id==Session.guru_id) & "\
                         "(User.is_a_guru==True)",
                         uselist=False,
-                        backref="student_sessions")
+                        backref="guru_sessions")
 
     student_id = Column(Integer, ForeignKey('user.id'))
     student = relationship("User",
         primaryjoin = "(User.id==Session.student_id) & "\
                         "(User.is_a_guru==False)",
                         uselist=False,
-                        backref="guru_sessions")
+                        backref="student_sessions")
 
 
     status = Column(Integer)
+
+    address = Column(String)
+    in_person = Column(Boolean)
+    online = Column(Boolean)
+    time_estimate = Column(Integer)
 
     guru_positions = relationship("Position",
         primaryjoin = "(Position.user_id == Session.guru_id) & "\
@@ -640,6 +669,7 @@ class Session(Base):
                         backref="sessions")
 
     rating_id = Column(Integer, ForeignKey("rating.id"))
+    request_id = Column(Integer, ForeignKey("request.id"))
 
     expiration_date = Column(DateTime) #TBD
     time_created = Column(DateTime)
@@ -648,7 +678,7 @@ class Session(Base):
     displayed = Column(Boolean, default=True) #whether the user 'removed' this session
 
     @staticmethod
-    def initFromJson(session_json):
+    def initFromJson(session_json, is_request_json = None):
         _session = Session()
         _session.seconds = session_json.get('seconds')
         _session.minutes = session_json.get('minutes')
@@ -658,6 +688,12 @@ class Session(Base):
         _session.relationship_id = session_json.get('relationship_id')
         _session.expiration_date = session_json.get('expiration_date')
         _session.time_created = datetime.now()
+        if is_request_json:
+            _session.request_id = session_json.get('id')
+        _session.address = session_json.get('address')
+        _session.in_person = session_json.get('in_person')
+        _session.online = session_json.get('online')
+        _session.time_estimate = session_json.get('time_estimate')
         db_session.add(_session)
         db_session.commit()
         return _session

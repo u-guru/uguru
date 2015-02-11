@@ -17,7 +17,7 @@ angular.module('uguru.student.controllers')
   function($scope, $state, $timeout, $localstorage, 
   $ionicModal, $ionicTabsDelegate, $cordovaProgress,
   $stateParams, $cordovaKeyboard, $ionicScrollDelegate) {
-
+    $scope.hide_footer = false;
     $scope.default_img_one = "https://scontent-a-lax.xx.fbcdn.net/hphotos-xpf1/t31.0-8/10562663_885963074765104_3921025689053196901_o.jpg";
     $scope.default_img_two = "https://scontent-a-lax.xx.fbcdn.net/hphotos-xpa1/t31.0-8/10520798_883807624993289_354037221863580422_o.jpg"
     
@@ -74,7 +74,10 @@ angular.module('uguru.student.controllers')
     ]
 
     $scope.setFocus = function() {
-      document.getElementsByName('message-input')[0].focus();
+      if (!$scope.hide_footer) {
+        document.getElementsByName('message-input')[0].focus();
+        $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
+      }
     }
 
     // $scope.setFocus = function(event) {
@@ -82,34 +85,37 @@ angular.module('uguru.student.controllers')
     // };
 
     $scope.sendMessage = function (content) {
-
-      $timeout(function(){
-        $scope.messages.push({
-          'content':content,
-          'class': 'you', // Try "fadeInUp" if you don't like bounceInUp.
-          'img_src': $scope.default_img_one
-        })
-        $ionicScrollDelegate.$getByHandle('message-scroll').scrollBy(0, 200, true);
-      }, 100)
-
+      $scope.messages.push({
+        'content':content,
+        'class': 'you', // Try "fadeInUp" if you don't like bounceInUp.
+        'img_src': $scope.default_img_one
+      })
       // animated bounceInUp
 
       $scope.new_message.content = '';
+      $ionicScrollDelegate.$getByHandle('message-scroll').scrollBy(0, 200, true);
       // $scope.root.keyboard.close();
+    }
+
+    $scope.hideKeyboard = function() {
+      $scope.root.keyboard.close();
+      $scope.hide_footer = true;
+      $ionicScrollDelegate.$getByHandle('message-scroll').resize();
+      $timeout(function(){
+        $scope.hide_footer = false;
+      }, 500);
     }
     $scope.$on('$ionicView.enter', function(){
       
-      console.log('view has entered');
-      $scope.root.keyboard.show('message-input', 500);
+      // console.log('view has entered');
+      // $scope.root.keyboard.show('message-input', 100);
       
-      $timeout(function() {
-        $ionicScrollDelegate.$getByHandle('message-scroll').scrollBy(0, 600);
-        // $cordovaKeyboard.disableScroll(false);
+      // $timeout(function() {
+        $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
         
-      },500);
+      // },500);
     });
 
   }
 
 ]);
-

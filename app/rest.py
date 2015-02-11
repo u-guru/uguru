@@ -6,10 +6,12 @@ from app.database import db_session
 from models import *
 from forms import UserCreateForm, SessionCreateForm
 from serializers import UserSerializer, DeviceSerializer, \
-CourseSerializer, UniversitySerializer, MajorSerializer
+CourseSerializer, UniversitySerializer, MajorSerializer, \
+RequestSerializer
 from datetime import datetime
 import logging, json, urllib2, importlib
 from lib.api_utils import json_response
+from pprint import pprint
 
 APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d31']
 
@@ -158,22 +160,29 @@ class UserOneView(restful.Resource):
 
     @marshal_with(UserSerializer)
     def put(self, _id):
-
-        if not request.json.get('auth_token'):
-            abort(400)
+        print request.json
+        print request.headers
+        # if not request.json.get('auth_token'):
+        #     abort(400)
 
         user = User.query.get(_id)
         if not user:
             abort(400)
 
-        if request.json.get('auth_token') != user.auth_token:
-            abort(400)
+        # if request.json.get('auth_token') != user.auth_token:
+        #     abort(400)
 
         if request.json.get('university_id'):
             user.university_id = request.json.get('university_id')
 
         if request.json.get('email'):
             user.email = request.json.get('email')
+
+        if 'is_a_guru' in request.json:
+            user.is_a_guru = request.json.get('is_a_guru')
+
+        if 'guru_mode' in request.json:
+            user.is_a_guru = request.json.get('guru_mode')
 
         if request.json.get('change_password'):
             pass
@@ -194,6 +203,8 @@ class UserOneView(restful.Resource):
             else:
                 c = Course.query.get(int(course_id))
                 user.student_courses.append(c)
+                print user
+                print user.student_courses
                 db_session.commit()
 
         if request.json.get('add_guru_course'):
@@ -280,14 +291,14 @@ def get_user(user_id):
     return user
 
 class UserRequestView(restful.Resource):
-    @marshal_with(UserSerializer)
+    @marshal_with(RequestSerializer)
     def post(self, user_id):
 
+        pprint(request.json)
         user = get_user(user_id)
 
         if not user:
             abort(404)
-
 
         course = request.json.get('course')
 
@@ -307,11 +318,13 @@ class UserRequestView(restful.Resource):
         _request.course_id = course.get('id')
         _request.position = position
         _request.time_created = datetime.now()
-        _request.description = request.json.get('description')
+        _request.description = request.json.get('note')
         _request.in_person = request.json.get('in_person')
         _request.online = request.json.get('online')
+        _request.time_estimate = request.json.get('time_estimate')
+        _request.address = request.json.get('address')
         _request.status = Request.PROCESSING_GURUS
-        _request.student = user
+        _request.student_id = user_id
 
         if _file:
             _request.files.append(_file)
@@ -320,9 +333,16 @@ class UserRequestView(restful.Resource):
         user.requests.append(_request)
         db_session.commit()
 
-        return user, 200
+        available_gurus = _request.course.gurus.all()
+        for guru in available_gurus:
+            print guru
+            proposal = Proposal.initProposal(_request.id, guru.id)
+            event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
+            event = Event.initFromDict(event_dict)
 
-    @marshal_with(UserSerializer)
+        return _request, 200
+
+    @marshal_with(RequestSerializer)
     def put(self, user_id):
 
         user = get_user(user_id)
@@ -335,15 +355,32 @@ class UserRequestView(restful.Resource):
             abort(404)
 
         if request.json.get('proposal'):
-            proposal = request.json.get('proposal')
-            _request = _request.process_proposal(proposal)
-            return user, 200
+            proposal_json = request.json
+            proposal = Proposal.query.get(proposal_json.get('id'))
+            proposal.status = request.json.get('status')
+            db_session.commit()
+            if proposal.status ==Proposal.GURU_REJECTED:
+                proposal.send_to_next_guru()
+
+                event_dict = {'status': Proposal.GURU_REJECTED, 'proposal_id':proposal.id}
+                event = Event.initFromDict(event_dict)
+
+            if proposal.status == Proposal.GURU_ACCEPTED:
+                proposal.request.status = Request.STUDENT_RECEIVED_GURU
+                db_session.commit()
+
+            return _request, 200
 
         if 'status' in request.json:
             status = request.json.get('status')
             if status == Request.STUDENT_RECEIVED_GURU:
                 event_dict = {'status': Request.STUDENT_RECEIVED_GURU, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
+            elif status == Request.STUDENT_REJECTED_GURU:
+                event_dict = {'status': Request.STUDENT_REJECTED_GURU, 'request_id':_request.id}
+                event = Event.initFromDict(event_dict)
+                _request.status = Request.PROCESSING_GURUS
+                # TODO: SEND TO NEXT GURU
             elif status == Request.STUDENT_ACCEPTED_GURU:
                 event_dict = {'status': Request.STUDENT_ACCEPTED_GURU, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
@@ -359,23 +396,38 @@ class UserRequestView(restful.Resource):
 
             _request.status = request.json.get('status')
             db_session.commit()
-            print user.requests[0].status
 
-            return user, 200
+            return _request, 200
 
 class UserSessionView(restful.Resource):
-    @marshal_with(UserSerializer)
-
     #create a session
     @marshal_with(UserSerializer)
-    def post(self, user_id):
-        user = get_user(user_id)
+    def post(self, _id):
+        user = get_user(_id)
 
         if not user:
             abort(404)
 
-        session_json = request.json.get('session')
-        session = Session.initFromJson(session_json)
+        pprint(request.json)
+        session_json = request.json
+        _request = Request.query.get(request.json.get('id'))
+        _request.guru_id = request.json.get('guru_id')
+        _request.status = Request.STUDENT_ACCEPTED_GURU
+        session_json['student_id'] = _request.student_id
+        #create an event for it
+        event_dict = {'status': Request.STUDENT_ACCEPTED_GURU, 'request_id':_request.id}
+        event = Event.initFromDict(event_dict)
+
+        #create a session
+        session = Session.initFromJson(session_json, True)
+        #update the proposal from the request
+        for proposal in _request.proposals:
+            if proposal.guru_id == _request.guru_id:
+                proposal.status = Proposal.GURU_CHOSEN
+                event_dict = {'status': Proposal.GURU_CHOSEN, 'proposal_id':proposal.id}
+                event = Event.initFromDict(event_dict)
+                break
+        db_session.commit()
 
         # Create relationship as well
         if not session.relationship_id:
@@ -434,29 +486,29 @@ class UserSessionView(restful.Resource):
             ## Guru is starting the session
             if status == Session.GURU_START_SESSION:
 
-                event_dict = {'status': Request.GURU_START_SESSION, 'request_id':_request.id}
+                event_dict = {'status': Session.GURU_START_SESSION, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
 
             ## Guru is ending the session
             elif status == Session.GURU_END_SESSION:
 
-                event_dict = {'status': Request.GURU_END_SESSION, 'request_id':_request.id}
+                event_dict = {'status': Session.GURU_END_SESSION, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
 
                 rating = Rating.initFromSession(_session)
 
             elif status == Session.STUDENT_CANCEL_SESSION:
                 # Consequences?
-                event_dict = {'status': Request.STUDENT_CANCEL_SESSION, 'request_id':_request.id}
+                event_dict = {'status': Session.STUDENT_CANCEL_SESSION, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
 
             elif status == Session.GURU_CANCEL_SESSION:
-                event_dict = {'status': Request.GURU_CANCEL_SESSION, 'request_id':_request.id}
+                event_dict = {'status': Session.GURU_CANCEL_SESSION, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
 
             elif status == Session.STUDENT_RATED:
 
-                event_dict = {'status': Request.STUDENT_RATED, 'request_id':_request.id}
+                event_dict = {'status': Session.STUDENT_RATED, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
                 rating_json = request.json.get('rating')
 
@@ -562,9 +614,9 @@ class UserSessionMessageView(restful.Resource):
 
 class UserCardView(restful.Resource):
     @marshal_with(UserSerializer)
-    def post(self, user_id):
+    def post(self, _id):
 
-        user = get_user(user_id)
+        user = get_user(_id)
 
         if not user:
             abort(404)
@@ -575,8 +627,8 @@ class UserCardView(restful.Resource):
         # user is adding a card
         if card:
             if not user.cards:
-                card['is_default'] = True
-            card = Card.initFromJson(card)
+                request.json['is_default'] = True
+            card = Card.initFromJson(request.json)
             return user, 200
 
         if debit_card:
@@ -645,6 +697,7 @@ class UserNewView(restful.Resource):
             # return json_response(400, errors=["Account already exists"])
 
         #we can go ahead and log them in.. for now..(TODO: MAKE MORE SECURE)
+        import uuid
         if fb_user:
             fb_user.name = request.json.get('name')
             fb_user.email = request.json.get('email')
@@ -657,7 +710,6 @@ class UserNewView(restful.Resource):
         user = User(email=request.json.get('email'))
         user.time_created = datetime.now()
         user.name = request.json.get('name')
-        import uuid
         user.auth_token = uuid.uuid4().hex
 
         if request.json.get('fb_id'):
@@ -1070,6 +1122,17 @@ class AdminViewUniversitiesList(restful.Resource):
 
         return universities, 200
 
+class AdminViewUserList(restful.Resource):
+
+    @marshal_with(UserSerializer)
+    def get(self, auth_token, _id):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        user = User.query.get(_id)
+
+        return user, 200
+
 
 class AdminUniversityCoursesView(restful.Resource):
     def post(self, auth_token, uni_id):
@@ -1084,17 +1147,23 @@ class AdminUniversityAddRecipientsView(restful.Resource):
             return "UNAUTHORIZED", 401
 
         new_db_objs = []
-
-        students_arr = request.json.get('students')
+        students_arr = request.json.get('recipients')
+        index = 1
         for student in students_arr:
             r = Recipient()
             r.first_name = student['first_name'].strip().title()
             r.last_name = student['last_name'].strip().title()
             r.email = student['email'].strip().title()
+            r.university_id = uni_id
             new_db_objs.append(r)
+            index += 1
+            if index % 250 == 0:
+                print "250 processed & committed"
+                db_session.add_all(new_db_objs)
+                db_session.commit()
+                new_db_objs = []
 
-        db_session.add_all(new_db_objs)
-        db_session.commit()
+
         results = {'message': str(len(new_db_objs)) + ' objects processed'}
         return jsonify(success=results)
 
@@ -1155,6 +1224,7 @@ api.add_resource(AdminSessionView, '/api/admin')
 api.add_resource(AdminUserView, '/api/admin/users/')
 api.add_resource(AdminUniversityCoursesView, '/api/admin/<string:auth_token>/university/<int:uni_id>/courses')
 api.add_resource(AdminUniversityDepartmentsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/departments')
+api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients')
 api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test')
 api.add_resource(AdminAppUpdateView, '/api/admin/app/update')
 api.add_resource(AdminMandrillTemplatesView, '/api/admin/<string:auth_token>/mandrill/templates')
@@ -1163,5 +1233,6 @@ api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/<string:auth_tok
 api.add_resource(AdminViewEmailsList, '/api/admin/<string:auth_token>/emails')
 api.add_resource(AdminViewUsersList, '/api/admin/<string:auth_token>/users')
 api.add_resource(AdminViewUniversitiesList, '/api/admin/<string:auth_token>/universities')
+api.add_resource(AdminViewUserList, '/api/admin/<string:auth_token>/user/<int:_id>')
 
 

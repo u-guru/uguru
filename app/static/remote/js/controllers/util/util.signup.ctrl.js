@@ -10,9 +10,16 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   '$cordovaProgress',
   '$cordovaFacebook',
-  function($scope, $state, $timeout, $localstorage, 
- 	$ionicModal, $cordovaProgress, $cordovaFacebook) {
-    
+  'User',
+  function($scope, $state, $timeout, $localstorage,
+ 	$ionicModal, $cordovaProgress, $cordovaFacebook, User) {
+
+    $scope.loginMode = false;
+
+    $scope.toggleLoginMode = function() {
+      $scope.loginMode = !$scope.loginMode;
+    }
+
     $scope.signupForm = {
       first_name: null,
       last_name: null,
@@ -44,7 +51,7 @@ angular.module('uguru.util.controllers')
         $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
         // $cordovaFacebook.login(["user_education_history", "friends_education_history"]).then(function (success) {
         $scope.loginInfo = success;
-        
+
         console.log(success);
 
         $scope.getMe();
@@ -69,15 +76,23 @@ angular.module('uguru.util.controllers')
 
 
         console.log(JSON.stringify(success));
-        
+
         $scope.user.first_name = success.first_name;
         $scope.user.last_name = success.last_name;
         $scope.user.name = success.name;
         $scope.user.email = success.email;
         $scope.user.fb_id = success.id;
+        $scope.user.profile_url = "https://graph.facebook.com/" + success.id + "/picture?width=100&height=100";
 
-        $scope.signupAccount();
-        
+        $scope.signupForm.name = success.name;
+        $scope.signupForm.email = success.email;
+        $scope.signupForm.fb_id = success.id;
+        $scope.signupForm.profile_url = $scope.user.profile_url;
+        $scope.signupForm.gender = success.gender;
+
+
+        $scope.completeSignup();
+
 
       }, function (error) {
         $scope.error = error;
@@ -113,13 +128,66 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.validateLoginForm = function() {
+      var formDict = $scope.signupForm;
+
+      function validateEmail(email) {
+          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(email);
+      }
+
+      if (!formDict.email) {
+        $scope.showError('Please enter email');
+        document.getElementsByName('login-email')[0].focus();
+        var shake = document.getElementById('input_email_login')
+        shake.classList.add('animated', 'shake');
+        setTimeout(function() {
+          shake.classList.remove('animated', 'shake');
+        }, 950);
+        return false;
+      }
+
+      if (!validateEmail(formDict.email)) {
+        $scope.showError('Please enter valid email address');
+        document.getElementsByName('login-email')[0].focus();
+        var shake = document.getElementById('input_email_login')
+        shake.classList.add('animated', 'shake');
+        setTimeout(function() {
+          shake.classList.remove('animated', 'shake');
+        }, 950);
+        return false;
+      } else {
+        $scope.user.email = $scope.signupForm.email;
+      }
+
+      if (!formDict.password) {
+        $scope.showError('Please enter password');
+        document.getElementsByName('login-password')[0].focus();
+        var shake = document.getElementById('input_password_login')
+        shake.classList.add('animated', 'shake');
+        setTimeout(function() {
+          shake.classList.remove('animated', 'shake');
+        }, 950);
+        return false;
+      } else {
+        $scope.user.password = $scope.signupForm.password;
+      }
+
+      $scope.user.last_name = $scope.signupForm.last_name;
+      $scope.user.email = $scope.signupForm.email;
+      $scope.user.password = $scope.signupForm.password;
+
+      return true;
+
+    }
+
     $scope.validateSignupForm = function() {
       var formDict = $scope.signupForm;
 
-      function validateEmail(email) { 
+      function validateEmail(email) {
           var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return re.test(email);
-      } 
+      }
 
       if (!formDict.first_name) {
         $scope.showError('Please enter your first name');
@@ -144,7 +212,7 @@ angular.module('uguru.util.controllers')
         }, 950);
         return false;
       } else {
-        $scope.user.last_name = $scope.signupForm.last_name; 
+        $scope.user.last_name = $scope.signupForm.last_name;
       }
 
       if (!formDict.email) {
@@ -156,10 +224,24 @@ angular.module('uguru.util.controllers')
           shake.classList.remove('animated', 'shake');
         }, 950);
         return false;
-      } 
+      }
 
       if (!validateEmail(formDict.email)) {
         $scope.showError('Please enter valid email address');
+        document.getElementsByName('signup-email')[0].focus();
+        var shake = document.getElementById('input_email')
+        shake.classList.add('animated', 'shake');
+        setTimeout(function() {
+          shake.classList.remove('animated', 'shake');
+        }, 950);
+        return false;
+      } else {
+        $scope.user.email = $scope.signupForm.email;
+      }
+
+      if (!formDict.password) {
+        $scope.showError('Please enter password');
+        $scope.user.password = $scope.signupForm.password;
         document.getElementsByName('signup-password')[0].focus();
         var shake = document.getElementById('input_password')
         shake.classList.add('animated', 'shake');
@@ -168,20 +250,13 @@ angular.module('uguru.util.controllers')
         }, 950);
         return false;
       } else {
-        $scope.user.email = $scope.signupForm.email; 
+        $scope.user.password = $scope.signupForm.password;
       }
 
-      if (!formDict.password) {
-        $scope.showError('Please enter password');
-        return false;
-      } else {
-        $scope.user.password = $scope.signupForm.password; 
-      }
-      
       $scope.user.last_name = $scope.signupForm.last_name;
       $scope.user.email = $scope.signupForm.email;
       $scope.user.password = $scope.signupForm.password;
-      
+
       return true;
 
     }
@@ -190,13 +265,26 @@ angular.module('uguru.util.controllers')
       if (!$scope.progress_active)  {
           $scope.progress_active = true;
           $cordovaProgress.showSuccess(true, msg)
+
           $timeout(function() {
             $cordovaProgress.hide();
             $scope.progress_active = false;
-            var callRequestHelp = function() {
-              $scope.requestHelp();
+
+            // console.log($state.current)
+
+            if ($state.current.name === 'root.student.request') {
+                var callRequestHelp = function() {
+                  $scope.requestHelp();
+                }
+                $scope.closeSignupModal(callRequestHelp);
             }
-            $scope.closeSignupModal(callRequestHelp);
+
+            else {
+
+              $scope.closeSignupModal();
+
+            }
+
           }, 1000);
       } else {
 
@@ -204,20 +292,63 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $scope.signupAccount = function() {
-      
-      if ($scope.user.fb_id || $scope.validateSignupForm()) {
-      
-        
-        //Temporary user_id
-        $scope.user.id = -1;
+    $scope.loginUser = function() {
+      if (!$scope.validateLoginForm()) {
+        return;
+      }
 
-        $scope.rootUser.updateLocal($scope.user);
 
-        $scope.showSuccess('Account Created!');
+      var loginPayload = {
+        'email': $scope.signupForm.email,
+        'password': $scope.signupForm.password
+      }
+
+      User.login(loginPayload).then(function(user) {
+
+          $scope.user.id = user.id;
+          $scope.user.auth_token = user.auth_token;
+          $scope.showSuccess('Account Created!');
+          $scope.rootUser.updateLocal($scope.user);
+          console.log('data safely submitted to the server');
+
+      }, function(err) {
+        if (err.status === 401) {
+            $scope.showError('Invalid email or password');
+            $scope.signupForm.password = '';
+          }
+      });
+    }
+
+    $scope.completeSignup = function() {
+
+      if (!$scope.validateSignupForm()) {
+        return;
+      }
+
+      if ($scope.user.fb_id) {
+        $scope.showSuccess();
+      }
+        $scope.signupForm.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
+
+        User.create($scope.signupForm).then(function(user) {
+            $scope.user.id = user.id;
+            $scope.user.auth_token = user.auth_token;
+            if (!$scope.user.fb_id) {
+              $scope.showSuccess('Success');
+            };
+            $scope.rootUser.updateLocal($scope.user);
+
+            console.log('data safely submitted to the server');
+        },
+        function(err){
+          if (err.status === 409) {
+            $scope.showError('Email already has an account');
+            $scope.toggleLoginMode();
+            $scope.signupForm.password = '';
+          }
+        });
 
       }
-    }
 
     $scope.showComingSoon = function() {
       $scope.progress_active = true;

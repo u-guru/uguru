@@ -11,12 +11,17 @@ angular.module('uguru.util.controllers')
   '$ionicHistory',
   '$cordovaProgress',
   '$stateParams',
-  function($scope, $state, $timeout, $localstorage, 
+  function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicHistory, $cordovaProgress, $stateParams) {
-    
+
     $scope.cardFormComplete = false;
     $scope.progress_active = false;
     $scope.actionButtonText = 'save';
+    $scope.headerText = 'Add payment';
+
+    if ($scope.user.guru_mode) {
+      $scope.headerText = 'Add debit card';
+    }
 
     $scope.card = null;
     if ($stateParams.cardObj) {
@@ -49,8 +54,6 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $scope.setDefault 
-
     $scope.showSuccess = function(msg) {
         if (!$scope.progress_active)  {
             $scope.progress_active = true;
@@ -66,23 +69,48 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.savePayment = function() {
-      
+
       var cardNum = $scope.cardInput.value.split(" ").join("")
-      var ccvNum = $scope.ccvInput.value;
+      var expMM = $scope.cardMM.value;
+      var expYY = $scope.cardYY.value;
       var cardType = $scope.getCardType(cardNum);
-      
+      console.log(cardNum, expMM, expYY);
       //check for errors
-      if (!$scope.validatedAddCardForm(cardNum, ccvNum)) {
-        //make card shake
+      // if (!$scope.validatedAddCardForm(cardNum, ccvNum)) {
+      //   //make card shake
+      // }
+
+      var stripeResponseHandler = function(status, response) {
+        console.log(response);
+        if (response.error) {
+
+            $scope.progress_active = true;
+            $cordovaProgress.showSuccess(true, response.error.message);
+            $timeout(function() {
+              $cordovaProgress.hide();
+              $scope.progress_active = false;
+            }, 1000);
+
+        } else {
+
+          var cardInfo = {
+            stripe_customer_id: response.id,
+            card_last4: response.card.last4,
+            card_type: response.card.brand,
+            user: $scope.user,
+            card: true
+          }
+
+          $scope.user.createObj($scope.user, 'cards', cardInfo, $scope);
+          $scope.showSuccess("Card added!");
+        }
       }
 
-      $scope.user.cards.push({
-        last_4: cardNum.substring(12,16),
-        type: cardType
-      });
-
-      $scope.rootUser.updateLocal($scope.user);
-      $scope.showSuccess('Card Added!');
+      Stripe.card.createToken({
+        number: cardNum,
+        exp_month: expMM,
+        exp_year: expYY
+      }, stripeResponseHandler);
     }
 
     $scope.removeCard = function() {
@@ -106,7 +134,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.injectCardPngClass = function() {
-      
+
     }
 
     $scope.getCardType = function(number) {
@@ -121,6 +149,7 @@ angular.module('uguru.util.controllers')
     var checkInputState = function(event) {
 
         var foo = $scope.cardInput.value.split(" ").join(""); // remove hyphens
+        var mmInput = $scope.cardMM.value;
         var cardType = $scope.getCardType(foo);
         // console.log(cardType);
         if (cardType.length > 0) {
@@ -131,29 +160,32 @@ angular.module('uguru.util.controllers')
           foo = foo.match(new RegExp('.{1,4}', 'g')).join(" ");
         }
         $scope.cardInput.value = foo;
-        if (foo.length === 19) {  
-          $scope.ccvInput.focus();
+        if (foo.length === 19 && $scope.cardInput === document.activeElement) {
+          $scope.cardMM.focus();
+        }
+        if (mmInput.length === 2 && $scope.cardMM === document.activeElement) {
+          $scope.cardYY.focus();
         }
       }
 
       $scope.getCardType = function(number)
-        {            
+        {
             var re = new RegExp("^4");
             if (number.match(re) != null)
                 return "visa";
- 
+
             re = new RegExp("^(34|37)");
             if (number.match(re) != null)
                 return "amex";
- 
+
             re = new RegExp("^5[1-5]");
             if (number.match(re) != null)
                 return "master";
- 
+
             re = new RegExp("^6011");
             if (number.match(re) != null)
                 return "discover";
- 
+
             return "";
         }
 
@@ -161,16 +193,18 @@ angular.module('uguru.util.controllers')
     $scope.$on('$ionicView.enter', function(){
 
       $scope.cardInput = document.getElementById('card-input');
-      $scope.ccvInput = document.getElementById('ccv-input');
+      $scope.cardMM = document.getElementById('mm-input');
+      $scope.cardYY = document.getElementById('yy-input');
 
       if ($scope.card) {
         $scope.cardInput.value = '**** **** **** ' + $scope.card.last_4;
         $scope.ccvInput.value = '***'
       } else {
-        $scope.root.keyboard.show('card-input', 500);        
+        $scope.root.keyboard.show('card-input', 500);
       }
 
       $scope.cardInput.addEventListener('keyup', checkInputState);
+      $scope.cardMM.addEventListener('keyup', checkInputState);
 
     });
 

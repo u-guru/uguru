@@ -21,39 +21,55 @@ angular.module('uguru.student.controllers', [])
   '$popover',
   'Popover',
   '$ionicBackdrop',
-  function($scope, $state, $ionicPopup, $timeout, $localstorage, 
+  'User',
+  function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $cordovaProgress, $q,
- 	University, $templateCache, $ionicHistory, Popup, $popover, Popover, $ionicBackdrop) {
+ 	University, $templateCache, $ionaicHistory, Popup, $popover, Popover, $ionicBackdrop,
+  User) {
 
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
 	$scope.base_url =  BASE;
 	$scope.progress_active = false;
-    
-    $scope.showWelcomePopup = function() {
 
-		var popupOptions = {
-	     
-	     templateUrl: "templates/welcomePopup.html",
-	     cssClass: "popup-uguru",
-	     scope: $scope
-	   }
+  $scope.user.active_requests = [];
+    $scope.user.previous_requests = [];
 
-	   //initialize the popup
-	   $scope.popup = $ionicPopup.show(popupOptions);
+    $scope.processStudentRequests = function(user_requests) {
+        if (user_requests && $scope.user.requests.length > 0) {
+            for (var i = 0; i < $scope.user.requests.length; i ++) {
+              var index_request = user_requests[i];
+              if (index_request.status === 0) {
+                $scope.user.active_requests.push(index_request);
+              } else {
+                $scope.user.previous_requests.push(index_request);
+          }
+        }
+    }
 
-	   	$timeout(function() {
-	   		document.getElementById("popup-cancel-btn").addEventListener("click", function() {
-                console.log('negative clicked');
-                $scope.popup.close();
-		    });
-		    document.getElementById("popup-positive-btn").addEventListener("click", function() {
-		        console.log('positive clicked');
-		        $scope.popup.close();
-		    });
-	   	}, 500);
+  }
 
-	 };	 
+  $scope.checkCourseInActiveRequests = function(course) {
+    var active_requests = $scope.user.active_requests;
+    for (var i = 0; i < $scope.user.active_requests.length; i++) {
+      var index_request = active_requests[i];
+      if (index_request.course.short_name === course.short_name) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  $scope.getActiveRequestByCourse = function(course) {
+    var active_requests = $scope.user.active_requests;
+    for (var i = 0; i < $scope.user.active_requests.length; i++) {
+      var index_request = active_requests[i];
+      if (index_request.course.short_name === course.short_name) {
+        return index_request;
+      }
+    }
+    return false;
+  }
 
 	$ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/add-course.modal.html', {
 	    scope: $scope,
@@ -75,7 +91,21 @@ angular.module('uguru.student.controllers', [])
   }).then(function(modal) {
       $scope.ratingModal = modal;
   });
-  	
+
+  $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/signup.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+  }).then(function(modal) {
+      $scope.signupModal = modal;
+  });
+
+  $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/become-guru.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+  }).then(function(modal) {
+      $scope.becomeGuruModal = modal;
+  });
+
   	$scope.showSuccess = function(msg) {
       if (!$scope.progress_active)  {
       		$scope.progress_active = true;
@@ -96,7 +126,12 @@ angular.module('uguru.student.controllers', [])
       }
     }
 
-    console.log($scope.user.active_sessions)
+    $scope.switchToGuruMode = function() {
+      $scope.user.guru_mode = true;
+      $scope.rootUser.updateLocal($scope.user);
+      $scope.user.updateAttr('guru_mode', $scope.user, true);
+      $state.go('^.^.guru.home');
+    }
 
     $scope.goToRequest = function(course) {
       // $scope.root.button.showButtonPressedAndHide($event.target);
@@ -118,7 +153,8 @@ angular.module('uguru.student.controllers', [])
     }
 
     $scope.goToRequestStatus = function(course) {
-      $state.go('^.request-status', {courseObj:JSON.stringify(course)});
+      var active_request = $scope.getActiveRequestByCourse(course);
+      $state.go('^.request-status', {requestObj:JSON.stringify(active_request)});
     }
 
     $scope.goToActiveSession = function(session) {
@@ -129,8 +165,47 @@ angular.module('uguru.student.controllers', [])
       console.log('this was clicked');
     }
 
+    $scope.goToBecomeGuru = function() {
+      $state.go('^.^.guru.wizard');
+      $timeout(function() {
+        $scope.becomeGuruModal.hide();
+      }, 300);
+    }
+
+    $scope.goToNotifications = function() {
+      if (!$scope.user.auth_token) {
+        $scope.signupModal.show()
+      } else {
+        $state.go('^.settings-notifications');
+      }
+    }
+
+    $scope.goToTransactions = function() {
+      if (!$scope.user.auth_token) {
+        $scope.signupModal.show()
+      } else {
+        $state.go('^.settings-transactions')
+      }
+    }
+
+    $scope.goToCards = function() {
+      if (!$scope.user.auth_token) {
+        $scope.signupModal.show();
+      } else {
+        $state.go('^.settings-cards')
+      }
+    }
+
+    $scope.goToEditProfile = function() {
+      if (!$scope.user.auth_token) {
+        $scope.signupModal.show()
+      } else {
+        $state.go('^.settings-profile')
+      }
+    }
+
     $scope.clearCache = function() {
-    	
+
       $scope.user = {};
       $localstorage.removeObject('courses');
       $localstorage.removeObject('universities');
@@ -140,6 +215,13 @@ angular.module('uguru.student.controllers', [])
     	window.localStorage.clear();
     	$scope.bottomTabsDelegate.select(0);
     	$scope.showSuccess('Cache Cleared! Please close the app & open again');
+    }
+
+    $scope.logoutUser = function() {
+      $scope.rootUser.logout();
+      $scope.user = {}
+      $scope.showSuccess('You have been logged out!')
+      $scope.signupModal.show();
     }
 
     $scope.showComingSoon = function() {
@@ -165,51 +247,73 @@ angular.module('uguru.student.controllers', [])
               negativeBtnText:"No Thanks",
               delay: 1500
             }
-          
+
           Popup.options.show($scope, welcomePopupOptions);
     }
 
-    $scope.showPopoverDev = function() {
-      // $scope.showTooltip();
+    // $scope.showPopoverDev = function() {
+    //   // $scope.showTooltip();
 
-          popoverOptions = {
-            targetElement:'#home-header',
-            title: 'Tap to request help',
-            delay: 500,
-            animation:null,
-            placement: 'bottom',
-            body: "We'll find a Guru to help you out <br> in a matter of minutes.<br>",
-            buttonText: 'Got it',
-            dropshadow: true
-          }
+    //       popoverOptions = {
+    //         targetElement:'#home-header',
+    //         title: 'Tap to request help',
+    //         delay: 500,
+    //         animation:null,
+    //         placement: 'bottom',
+    //         body: "We'll find a Guru to help you out <br> in a matter of minutes.<br>",
+    //         buttonText: 'Got it',
+    //         dropshadow: true
+    //       }
 
-          Popover.tutorial.show($scope, popoverOptions);
-    }
+    //       Popover.tutorial.show($scope, popoverOptions);
+    // }
 
-    $scope.showGetStartedPopover = function() {
-
-      getStartedPopoverOptions = {
-            targetElement:'#home-header',
-            title: 'Tap to get started',
-            delay: 500,
-            animation:"am-flip-x",
-            placement: 'bottom',
-            body: "Just enter a course code,Uguru uses <br>your university's course lists<br> to help keep things simple.",
-            buttonText: 'Got it',
-            dropshadow: true
-          }
-
-      Popover.tutorial.show($scope, getStartedPopoverOptions);
-
-    }
-
-
+    // $scope.processStudentRequests($scope.user.requests);
 
     $scope.$on('$ionicView.enter', function(){
-      
-      if (!$scope.user.university_id && $scope.user.student_courses.length === 0) {
+      // $scope.processStudentRequests($scope.user.requests);
+      if ($scope.user.incoming_requests.length > 0) {
+        var first_incoming_request = $scope.user.incoming_requests[0];
+
+        var paramPayload = {
+          requestObj:JSON.stringify(first_incoming_request),
+        }
+
+        $state.go('^.guru-available', paramPayload);
+      }
+    });
+
+    $scope.$on('$ionicView.loaded', function(){
+      // console.log($scope.user);
+      if (!$scope.user.onboarding || !$scope.user.onboarding.get_started) {
+        $scope.user.onboarding = {};
+        $scope.user.onboarding.get_started = true;
         $timeout(function() {
-          $scope.showGetStartedPopover();
+
+
+          // getStartedPopoverOptions = {
+          //   targetElement:'#home-header',
+          //   title: 'Tap to get started',
+          //   delay: 500,
+          //   animation:"am-flip-x",
+          //   placement: 'bottom',
+          //   body: "Just enter a course code, Uguru uses <br>your university's course lists<br> to help keep things simple.",
+          //   buttonText: 'Got it',
+          //   dropshadow: true
+          // }
+
+          // var popover = Popover.tutorial.init($scope, getStartedPopoverOptions);
+
+          // $scope.showTooltip = function() {
+          //   popover.$promise.then(popover.show);
+          // };
+          // $scope.hideTooltip = function() {
+          //   popover.$promise.then(popover.hide);
+          // };
+
+          // $scope.showTooltip();
+          // $scope.hideTooltip();
+
         }, 500)
       }
     });

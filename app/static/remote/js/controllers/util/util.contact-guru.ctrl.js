@@ -8,7 +8,7 @@ angular.module('uguru.util.controllers')
   '$timeout',
   '$localstorage',
   '$ionicModal',
-  function($scope, $state, $timeout, $localstorage, 
+  function($scope, $state, $timeout, $localstorage,
  	$ionicModal) {
     $scope.$on('modal.shown', function() {
 
@@ -21,7 +21,6 @@ angular.module('uguru.util.controllers')
         }, 1000);
 
         setTimeout(function() {
-          console.log("shun");
           pulse.classList.add('animated', 'pulse');
           setTimeout(function() {
             pulse.classList.remove('animated', 'pulse');
@@ -29,7 +28,6 @@ angular.module('uguru.util.controllers')
         }, 2000);
 
         setTimeout(function() {
-          console.log("shun");
           pulse.classList.add('animated', 'pulse');
           setTimeout(function() {
             pulse.classList.remove('animated', 'pulse');
@@ -37,7 +35,6 @@ angular.module('uguru.util.controllers')
         }, 3000);
 
         setTimeout(function() {
-          console.log("shun");
           pulse.classList.add('animated', 'pulse');
           setTimeout(function() {
             pulse.classList.remove('animated', 'pulse');
@@ -47,15 +44,15 @@ angular.module('uguru.util.controllers')
       }
 
       console.log($localstorage.getObject('device'))
-      
+
       // if ($localstorage.getObject('device')) {
 
       // }
-      
+
     });
 
-    
-    
+
+
     $scope.closeContactGuruModal = function() {
 
       if ($scope.root.keyboard.isVisible()) {

@@ -9,14 +9,14 @@ angular.module('uguru.util.controllers')
   '$localstorage',
   '$ionicModal',
   '$compile',
-  function($scope, $state, $timeout, $localstorage, 
+  function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $compile) {
 
     $scope.refresh_map = false;
     $scope.random  = null;
-    
+
     $scope.hideRequestMapModal = function() {
-      
+
       if (!$scope.request.location) {
         $scope.togglePersonGuru();
       }
@@ -32,8 +32,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.setLocation = function() {
-      
-      
+      $scope.request.position = $scope.requestPosition;
       $scope.hideRequestMapModal();
     }
 
@@ -46,7 +45,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.getAddressFromLatLng = function(geocoderObj, latCoord, longCoord) {
-      
+
       var googleLatLng = $scope.createGoogleLatLng(latCoord, longCoord);
       geocoderObj.geocode({'latLng': googleLatLng}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
@@ -102,8 +101,8 @@ angular.module('uguru.util.controllers')
 
           if ($scope.requestPosition) {
             initMapCoords = $scope.createGoogleLatLng(
-                                $scope.requestPosition.coords.latitude, 
-                                $scope.requestPosition.coords.longitude 
+                                $scope.requestPosition.coords.latitude,
+                                $scope.requestPosition.coords.longitude
                             )
           } else {
 
@@ -114,7 +113,7 @@ angular.module('uguru.util.controllers')
 
           }
 
-          var mapOptions = { 
+          var mapOptions = {
             center: initMapCoords,
             zoom: 17,
             disableDefaultUI: true,
@@ -123,7 +122,7 @@ angular.module('uguru.util.controllers')
           }
           var actual_map = $scope.map.control.getGMap();
           actual_map = new google.maps.Map(
-                  mapContainer, 
+                  mapContainer,
                   mapOptions
           )
 
@@ -146,14 +145,14 @@ angular.module('uguru.util.controllers')
             animation: google.maps.Animation.DROP
           });
 
-          
+
 
           $scope.geocoder = new google.maps.Geocoder();
           if ($scope.requestPosition) {
 
             $scope.getAddressFromLatLng(
               $scope.geocoder,
-              $scope.requestPosition.coords.latitude, 
+              $scope.requestPosition.coords.latitude,
               $scope.requestPosition.coords.longitude
               );
           }
@@ -162,12 +161,12 @@ angular.module('uguru.util.controllers')
 
           //   $scope.getAddressFromLatLng(
           //     $scope.geocoder,
-          //     $scope.user.university.location.latitude, 
+          //     $scope.user.university.location.latitude,
           //     $scope.user.university.location.longitude);
 
           // }
 
-          google.maps.event.addListener($scope.marker, 'dragend', function() 
+          google.maps.event.addListener($scope.marker, 'dragend', function()
           {
               $scope.marker.setAnimation(google.maps.Animation.BOUNCE);
               $scope.getAddressFromLatLng($scope.geocoder, $scope.marker.getPosition().lat(), $scope.marker.getPosition().lng())
@@ -178,7 +177,7 @@ angular.module('uguru.util.controllers')
           });
 
       }
-       
+
     });
 
 

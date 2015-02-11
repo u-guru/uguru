@@ -6,14 +6,14 @@
           Oh yahh.
         </div>
         <div class="sm-box-2">
-          {{guru.first_name}} can help you<br>
+          {{guru.name.split(" ")[0]}} can help you<br>
           with <span class="white">{{request.course.short_name}}</span><br>
           right now.
         </div>
       </div>
       <div class="row bottom center">
         <div class="col">
-          <div class="font-size-14"><span class="icon ion-navigate"></span>We'll meet at {{request.location}}</div>
+          <div class="font-size-14"><span class="icon ion-navigate"></span>We'll meet at {{request.address}}</div>
         </div>
       </div>
       <hr>
@@ -21,16 +21,15 @@
         <li class="item padding-10-14">
           <div class="icon"><img src='./img/shun.png' class='width'></div>
           <div class="box">
-            <div class="name">Shun Kurosaki
-              <span class="profile" style="font-size:14px !important;" ng-click="goToGuruProfile()" >view profile</span>
+            <div class="name">{{guru.name.split(" ")[0]}}
+              <span class="profile" style="font-size:14px !important;" ng-click="goToGuruProfile(guru)" >view profile</span>
             </div>
-            <div class="stars">
-              <span class="icon ion-star"></span>
-              <span class="icon ion-star"></span>
-              <span class="icon ion-star"></span>
-              <span class="icon ion-star"></span>
-              <span class="icon ion-star"></span>
-            </div>
+            <div class="stars" ng-show="guru.guru_avg_rating">
+                <span class="icon ion-star" ng-repeat="i in getNumber(guru.student_avg_rating) track by $index"></span>
+              </div>
+              <div class="stars" ng-show="!request.guru.guru_avg_rating">
+                First Time Guru
+              </div>
           </div>
         </li>
         <li class="item padding-10-14 border-bottom-2">

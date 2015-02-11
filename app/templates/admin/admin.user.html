@@ -1,0 +1,268 @@
+{% extends "admin/base.html" %}
+{% block content %}
+
+            <noscript>
+                <div class="alert alert-block span10">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                </div>
+            </noscript>
+
+            <!-- start: Content -->
+            <div id="content" class="span10">
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>
+                        <a href="index.html">Home</a>
+                        <i class="icon-angle-right"></i>
+                    </li>
+                    <li>
+                        <a href="/admin/users/">Users</a>
+                        <i class="icon-angle-right"></i>
+                    </li>
+                    <li>
+                        <a href="#">{{user.name}}</a>
+                </ul>
+
+
+                <div class="row-fluid">
+                    <div class="box span12">
+                        <div class="box-header" data-original-title="">
+                            <h2><i class="halflings-icon white user"></i><span class="break"></span>{{user.name}}</h2>
+                            <div class="box-icon">
+                                <a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+                                <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+                                <a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <table class="table table-striped table-bordered bootstrap-database"id="user-table">
+                            </table>
+                            <!-- <table id="user-table" class="table table-striped table-bordered bootstrap-datatable datatable dataTable" aria-describedby="DataTables_Table_0_info">
+                              <thead>
+                                  <tr role="row">
+                                    <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column descending" style="width: 159px;">Name</th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Date registered: activate to sort column ascending" style="width: 233px;">Email</th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Role: activate to sort column ascending" style="width: 128px;">Majors</th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 136px;">Courses</th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 273px;">University</th></tr>
+                              </thead>
+
+                          <tbody role="alert" id="user-table-body" aria-live="polite" aria-relevant="all">
+                            <tr class="odd">
+                                    <td class=" sorting_1">Dennis Ji</td>
+                                    <td class="center ">2012/01/01</td>
+                                    <td class="center ">Member</td>
+                                    <td class="center ">
+                                        <span class="label label-success">Active</span>
+                                    </td>
+                                    <td class="center ">
+                                        <a class="btn btn-success" href="#">
+                                            <i class="halflings-icon white zoom-in"></i>
+                                        </a>
+                                        <a class="btn btn-info" href="#">
+                                            <i class="halflings-icon white edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="halflings-icon white trash"></i>
+                                        </a>
+                                    </td>
+                                </tr><tr class="even">
+                                    <td class=" sorting_1">Dennis Ji</td>
+                                    <td class="center ">2012/01/01</td>
+                                    <td class="center ">Member</td>
+                                    <td class="center ">
+                                        <span class="label label-success">Active</span>
+                                    </td>
+                                    <td class="center ">
+                                        <a class="btn btn-success" href="#">
+                                            <i class="halflings-icon white zoom-in"></i>
+                                        </a>
+                                        <a class="btn btn-info" href="#">
+                                            <i class="halflings-icon white edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="halflings-icon white trash"></i>
+                                        </a>
+                                    </td>
+                                </tr><tr class="odd">
+                                    <td class=" sorting_1">Dennis Ji</td>
+                                    <td class="center ">2012/01/01</td>
+                                    <td class="center ">Member</td>
+                                    <td class="center ">
+                                        <span class="label label-success">Active</span>
+                                    </td>
+                                    <td class="center ">
+                                        <a class="btn btn-success" href="#">
+                                            <i class="halflings-icon white zoom-in"></i>
+                                        </a>
+                                        <a class="btn btn-info" href="#">
+                                            <i class="halflings-icon white edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="halflings-icon white trash"></i>
+                                        </a>
+                                    </td>
+
+                                </tr><tr class="even">
+                                    <td class=" sorting_1">Dennis Ji</td>
+                                    <td class="center ">2012/01/01</td>
+                                    <td class="center ">Member</td>
+                                    <td class="center ">
+                                        <span class="label label-success">Active</span>
+                                    </td>
+                                    <td class="center ">
+                                        <a class="btn btn-success" href="#">
+                                            <i class="halflings-icon white zoom-in"></i>
+                                        </a>
+                                        <a class="btn btn-info" href="#">
+                                            <i class="halflings-icon white edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="halflings-icon white trash"></i>
+                                        </a>
+                                    </td>
+                                </tr><tr class="odd">
+                                    <td class=" sorting_1">Dennis Ji</td>
+                                    <td class="center ">2012/02/01</td>
+                                    <td class="center ">Staff</td>
+                                    <td class="center ">
+                                        <span class="label label-important">Banned</span>
+                                    </td>
+                                    <td class="center ">
+                                        <a class="btn btn-success" href="#">
+                                            <i class="halflings-icon white zoom-in"></i>
+                                        </a>
+                                        <a class="btn btn-info" href="#">
+                                            <i class="halflings-icon white edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="halflings-icon white trash"></i>
+                                        </a>
+                                    </td>
+                                </tr><tr class="even">
+                                    <td class=" sorting_1">Dennis Ji</td>
+                                    <td class="center ">2012/02/01</td>
+                                    <td class="center ">Staff</td>
+                                    <td class="center ">
+                                        <span class="label label-important">Banned</span>
+                                    </td>
+                                    <td class="center ">
+                                        <a class="btn btn-success" href="#">
+                                            <i class="halflings-icon white zoom-in"></i>
+                                        </a>
+                                        <a class="btn btn-info" href="#">
+                                            <i class="halflings-icon white edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="halflings-icon white trash"></i>
+                                        </a>
+                                    </td>
+                                </tr><tr class="odd">
+                                    <td class=" sorting_1">Dennis Ji</td>
+                                    <td class="center ">2012/03/01</td>
+                                    <td class="center ">Member</td>
+                                    <td class="center ">
+                                        <span class="label label-warning">Pending</span>
+                                    </td>
+                                    <td class="center ">
+                                        <a class="btn btn-success" href="#">
+                                            <i class="halflings-icon white zoom-in"></i>
+                                        </a>
+                                        <a class="btn btn-info" href="#">
+                                            <i class="halflings-icon white edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="halflings-icon white trash"></i>
+                                        </a>
+                                    </td>
+                                </tr><tr class="even">
+                                    <td class=" sorting_1">Dennis Ji</td>
+                                    <td class="center ">2012/03/01</td>
+                                    <td class="center ">Member</td>
+                                    <td class="center ">
+                                        <span class="label label-warning">Pending</span>
+                                    </td>
+                                    <td class="center ">
+                                        <a class="btn btn-success" href="#">
+                                            <i class="halflings-icon white zoom-in"></i>
+                                        </a>
+                                        <a class="btn btn-info" href="#">
+                                            <i class="halflings-icon white edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="halflings-icon white trash"></i>
+                                        </a>
+                                    </td>
+                                </tr><tr class="odd">
+                                    <td class=" sorting_1">Dennis Ji</td>
+                                    <td class="center ">2012/01/21</td>
+                                    <td class="center ">Staff</td>
+                                    <td class="center ">
+                                        <span class="label label-success">Active</span>
+                                    </td>
+                                    <td class="center ">
+                                        <a class="btn btn-success" href="#">
+                                            <i class="halflings-icon white zoom-in"></i>
+                                        </a>
+                                        <a class="btn btn-info" href="#">
+                                            <i class="halflings-icon white edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="halflings-icon white trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="even">
+                                    <td class=" sorting_1">Dennis Ji</td>
+                                    <td class="center ">2012/01/21</td>
+                                    <td class="center ">Staff</td>
+                                    <td class="center ">
+                                        <span class="label label-success">Active</span>
+                                    </td>
+                                    <td class="center ">
+                                        <a class="btn btn-success" href="#">
+                                            <i class="halflings-icon white zoom-in"></i>
+                                        </a>
+                                        <a class="btn btn-info" href="#">
+                                            <i class="halflings-icon white edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="halflings-icon white trash"></i>
+                                        </a>
+                                    </td>
+                                    <tr class="even">
+                                    <td class=" sorting_1">Dennis Ji</td>
+                                    <td class="center ">2012/01/21</td>
+                                    <td class="center ">Staff</td>
+                                    <td class="center ">
+                                        <span class="label label-success">Active</span>
+                                    </td>
+                                    <td class="center ">
+                                        <a class="btn btn-success" href="#">
+                                            <i class="halflings-icon white zoom-in"></i>
+                                        </a>
+                                        <a class="btn btn-info" href="#">
+                                            <i class="halflings-icon white edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="halflings-icon white trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tr></tbody></table> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div><!--/.fluid-container-->
+
+{% endblock %}
+
+{% block footer_scripts %}
+    <script>
+        var user_id = {{user.id}};
+    </script>
+    <script src="/static/admin/js/uguru.admin.user.js"></script>
+{% endblock %}

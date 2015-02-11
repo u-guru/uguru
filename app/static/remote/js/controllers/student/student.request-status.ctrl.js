@@ -10,10 +10,11 @@ angular.module('uguru.student.controllers')
   '$ionicModal',
   '$cordovaProgress',
   '$stateParams',
-  function($scope, $state, $timeout, $localstorage, 
+  function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $stateParams) {
-    
-    $scope.course = JSON.parse($stateParams.courseObj);
+
+    $scope.requestObj = JSON.parse($stateParams.requestObj);
+    $scope.course = $scope.requestObj.course;
     $scope.progress_active = false;
 
     $scope.convertTimeEstimate = function(time_int) {
@@ -34,19 +35,44 @@ angular.module('uguru.student.controllers')
         console.log('Show success cannot be shown because progress bar is already active');
       }
     }
+    $scope.removeRequestFromActive = function(request) {
+      var active_requests = $scope.user.active_requests;
+      for (var i = 0; i < active_requests.length ; i++) {
+        var index_request = active_requests[i];
+        if (index_request.id === request.id) {
+          $scope.user.active_requests.splice(i, i+1);
+        }
+      }
+    }
+
+    $scope.updateUserRequest = function(request) {
+      var user_requests = $scope.user.requests;
+      for (var i = 0; i < user_requests.length ; i++) {
+        var index_request = user_requests[i];
+        if (index_request.id === request.id) {
+          $scope.user.requests[i].status = 3;
+        }
+      }
+    }
 
     $scope.cancelRequest = function() {
-      
-      var student_course = $scope.root.util.objectFindByKey($scope.user.student_courses, 'short_name', $scope.course.short_name);
-      var student_request = $scope.root.util.objectFindByKey($scope.user.requests, 'time_created', $scope.course.active_request.time_created);
-      student_request.status = 'canceled';
-      student_course.active_request = null;
+
+      // var student_course = $scope.root.util.objectFindByKey($scope.user.student_courses, 'short_name', $scope.course.short_name);
+      // var student_request = $scope.root.util.objectFindByKey($scope.user.requests, 'time_created', $scope.course.active_request.time_created);
+
+      $scope.requestObj.status = 3;
+      $scope.user.updateObj($scope.user, 'requests', $scope.requestObj, $scope);
+
+      $scope.removeRequestFromActive($scope.requestObj);
+      $scope.updateUserRequest($scope.requestObj);
+      $scope.user.active_requests = [];
       $scope.rootUser.updateLocal($scope.user);
+
       var cancelMsg = $scope.course.short_name + ' request canceled';
       $scope.showSuccess(cancelMsg);
       $timeout(function() {
         $state.go('^.home');
-      }, 500);
+      }, 1000);
     }
 
   }

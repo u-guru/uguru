@@ -18,7 +18,7 @@
             doloremque landantium. totam<br>
             rem aperiam.
           </div>
-        </div>          
+        </div>
 
         <div class="space-2">
           <ul class="list">
@@ -43,51 +43,51 @@
                 <span class="bold-font sm-box-green" ng-click="addCourseModal.show();">ADD A CLASS</span>
               </div>
             </li>
-            <a class="item gray" ui-sref="^.settings-profile">
-              Edit my profile & classes
+            <a class="item gray" ng-click="goToEditProfile()">
+              Edit my profile, classes, university
+            </a>
+            <a class="item gray positive" ng-click="becomeGuruModal.show()" ng-show="!user.is_a_guru">
+              Become a Guru
+            </a>
+            <a class="item gray" ng-click="switchToStudentMode()" ng-show="user.is_a_guru && user.guru_mode">
+              Switch to Student Mode
+            </a>
+            <a class="item gray" ng-click="switchToGuruMode()" ng-show="user.is_a_guru && !user.guru_mode">
+              Switch to Guru Mode
             </a>
             <div class="item item-divider">
               PRIVACY SETTINGS
             </div>
-            <a class="item gray" href="#" ui-sref="^.settings-notifications">
+            <a class="item gray" ng-click="goToNotifications()">
               Notification Settings
             </a>
             <div class="item item-divider">
               PAYMENT SETTINGS
             </div>
-            <a class="item gray" ui-sref="^.settings-card">
+            <a class="item gray" ng-click="goToCards()">
               Credit Cards
             </a>
-            <a class="item gray" ui-sref="^.settings-transactions">
+            <a class="item gray" ng-click="goToTransactions()">
               Transaction History
             </a>
-            <div class="item item-divider">
+            <div class="item item-divider" >
               ACCOUNT SETTINGS
             </div>
-            <a class="item gray" href="#" ng-click="showComingSoon()">
+            <a class="item gray" href="#" ng-click="signupModal.show()" ng-show="!user.auth_token">
+              Create an Account
+            </a>
+            <a class="item gray" href="#" ng-click="signupModal.show()" ng-show="!user.auth_token">
+              Login
+            </a>
+            <a class="item gray" href="#" ng-click="logoutUser()" ng-show="user.auth_token">
               Logout
             </a>
-            <a class="item gray" href="#" ng-click="showComingSoon()">
-              Delete Account
-            </a>
-            
+
             <div class="item item-divider">
               DEV SETTINGS
             </div>
             <a class="item gray" ng-click="clearCache()">
               Clear Cache
-            </a>
-            <a class="item gray" ng-click="showPopupDev()">
-              Show Popup (Shun)
-            </a>
-            <a class="item gray" ng-click="showPopoverDev()">
-              Show Popover (Shun)
-            </a>
-            <a class="item gray" ng-click="ratingModal.show()">
-              Show Ratings Modal (Shun)
-            </a>
-            <a class="item gray" ui-sref="^.animations">
-              Animation List
             </a>
           </ul>
           </ul>

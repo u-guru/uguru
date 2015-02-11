@@ -5,13 +5,14 @@ if (LOCAL) {
   BASE = 'remote/';
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
-  'ngAnimate', 'uguru.student.controllers', 'uguru.version', 'uguru.util.controllers',
-  'uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps', 'uguru.directives',
-  'mgcrea.ngStrap', 'ionic.contrib.frost'])
+  'ngAnimate', 'uguru.student.controllers', 'uguru.guru.controllers', 'uguru.version',
+  'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
+  'uguru.directives', 'mgcrea.ngStrap', 'ionic.contrib.frost', 'ionic.device', 'ui.bootstrap'])
 
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
-  $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory, 
-  $cordovaDialogs, Version, $cordovaSplashscreen, $rootScope, $templateCache) {
+  $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
+  $cordovaDialogs, Version, $cordovaSplashscreen, $rootScope,
+  $templateCache, Device, User) {
   $ionicPlatform.ready(function() {
     //Only when the app is opened after its been closed
     document.addEventListener("deviceready", function () {
@@ -45,7 +46,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                                 $ionicHistory.clearCache();
                                 $ionicHistory.clearHistory();
                                 $cordovaSplashscreen.show();
-                                // window.localStorage.clear();
+                                window.localStorage.clear();
 
                                 //remove all angular templates
                                 $templateCache.removeAll();
@@ -58,7 +59,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                                 // window.location = "http://192.168.1.233:8101/remote/index.html#/student/home"
                                 window.location.reload(true);
                                 // window.location = "http://uguru-rest.herokuapp.com/app/"
-                                
+
 
                               }
                           });
@@ -66,22 +67,36 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                },
 
                //connectivity issues
-              function() {
+              function(error) {
+                  console.log(error);
                   console.log('Version not loaded');
               }
           );
         }
-      
+
         //Set platform in local store
         $localstorage.setObject('platform', ionic.Platform.platform());
         $localstorage.setObject('device', ionic.Platform.device());
-        
+
+
         var local_user = $localstorage.getObject('user');
-        if (local_user) {
+        if (!local_user.devices) {
+          local_user.devices = [];
+        }
+        if (local_user && local_user.devices.length ===0) {
           var currentDevice = ionic.Platform.device();
           local_user.current_device = currentDevice;
           local_user.devices.push(currentDevice);
           $localstorage.setObject('user', local_user);
+
+          if (!local_user.id) {
+            console.log('saving device to server');
+            Device.post(currentDevice).then(function(result) {
+              console.log('result received');
+              console.log(result.plain());
+            })
+          }
+
         }
 
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -96,29 +111,38 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         }
 
         document.addEventListener("resume", function() {
-       
+
             console.log('device is resuming....')
             checkForAppUpdates();
-       
+            console.log('Getting user from server')
+            User.getUserFromServer();
+
         }, false);
 
         document.addEventListener("online", function() {
-       
+
             console.log('device is online...')
             checkForAppUpdates();
-       
+            console.log('Getting user from server')
+            User.getUserFromServer();
+
         }, false);
 
         document.addEventListener("offline", function() {
-       
+
             console.log('device is offline...');
             checkForAppUpdates();
-       
+            console.log('getting updated user from server...');
+            User.getUserFromServer();
+
         }, false);
 
-        // document.addEventListener("pause", function() {
-        //     console.log("App is paused...");
-        // }, false);
+        document.addEventListener("pause", function() {
+            console.log('device is paused...')
+            checkForAppUpdates();
+            console.log('Getting user from server')
+            User.getUserFromServer();
+        }, false);
 
         checkForAppUpdates();
 
@@ -134,19 +158,14 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
       var fbVersion = "v1.0"; // or leave blank and default is v2.0
       $cordovaFacebookProvider.browserInit(appID, fbversion);
   }
-        
-
-  angular.extend($popoverProvider.defaults, {
-    html: true
-  });
 
   // if none of the above states are matched, use this as the fallback
   // $urlRouterProvider.otherwise('/tab/dash');
   $urlRouterProvider.otherwise('/student/home');
 
   //Set up restangular provider
-  RestangularProvider.setBaseUrl('http://uguru-rest.herokuapp.com/api/v1');
-  // RestangularProvider.setBaseUrl('http://127.0.0.1:5000/api/v1');
+  // RestangularProvider.setBaseUrl('http://uguru-rest.herokuapp.com/api/v1');
+  RestangularProvider.setBaseUrl('http://192.168.1.233:5000/api/v1');
 
   //Client-side router
   $stateProvider
@@ -155,11 +174,18 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         abstract: true,
         templateUrl: 'templates/root.html',
         controller: function($scope, $localstorage, User, RootService) {
-          
+
           // $localstorage.removeObject('user');
           $scope.user = User.getLocal();
+
+          $scope.user.updateAttr = User.updateAttrUser;
+          $scope.user.createObj = User.createObj;
+          $scope.user.updateObj = User.updateObj;
+
           $scope.rootUser = User;
           $scope.root = RootService;
+
+          User.getUserFromServer($scope);
 
         }
   }).
@@ -167,6 +193,26 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '/student',
         abstract: true,
         templateUrl: 'templates/student-root.html'
+  }).
+  state('root.guru', {
+        url: '/guru',
+        abstract: true,
+        templateUrl: 'templates/guru-root.html'
+  }).
+  state('root.guru.wizard', {
+        url: '/wizard',
+        templateUrl: BASE + 'templates/guru/guru.onboarding.html',
+        controller: 'BecomeGuruController'
+  }).
+  state('root.guru.home', {
+        url: '/home',
+        templateUrl: BASE + 'templates/guru/guru.home.html',
+        controller: 'GuruHomeController'
+  }).
+  state('root.guru.student-available', {
+        url: '/student-available/:requestObj:proposalObj',
+        templateUrl: BASE + 'templates/guru/guru.student-request.html',
+        controller: 'GuruIncomingRequestController'
   }).
   state('root.student.home', {
         url: '/home',
@@ -182,6 +228,16 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '/session/:sessionObj',
         templateUrl: BASE +  'templates/student/student.active-session.html',
         controller: 'StudentActiveSession'
+  }).
+  state('root.guru.session-start', {
+        url: '/session/:sessionObj',
+        templateUrl: BASE +  'templates/guru/guru.session-start.html',
+        controller: 'GuruSessionStartController'
+  }).
+  state('root.guru.active-session', {
+        url: '/session/:sessionObj',
+        templateUrl: BASE +  'templates/guru/guru.active-session.html',
+        controller: 'GuruActiveSession'
   }).
   state('root.student.settings', {
         url: '/settings',
@@ -211,6 +267,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/student/student.settings.edit-courses.html',
         controller: 'SettingsEditCoursesController'
   }).
+  state('root.student.settings-edit-university', {
+        url: '/settings-edit-courses',
+        templateUrl: BASE + 'templates/student/student.settings.edit-university.html',
+        controller: 'SettingsEditUniversityController'
+  }).
   state('root.student.directory', {
         url: '/directory',
         templateUrl: BASE + 'templates/student/directory.html',
@@ -220,7 +281,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/student/add-payment.html',
   }).
   state('root.student.request-status', {
-        url: '/request-status/:courseObj',
+        url: '/request-status/:requestObj',
         templateUrl: BASE + 'templates/student/student.request-status.html',
         controller: 'RequestStatusController'
   }).
@@ -258,7 +319,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           for(var i = 0; i < testarray.length; i++)
           {
               testarray[i].className += " active";
-          }          
+          }
         }
         $scope.endAnimation = function() {
           var testarray = document.getElementsByClassName("sq");
@@ -266,7 +327,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           {
               testarray[i].classList.remove("active");
 
-          }          
+          }
         }
       }
   }).
@@ -293,7 +354,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           for(var i = 0; i < testarray.length; i++)
           {
               testarray[i].classList.remove("active");
-          }          
+          }
         }
       }
   }).
@@ -334,7 +395,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           for(var i = 0; i < testarray.length; i++)
           {
               testarray[i].classList.remove("active");
-          }          
+          }
         }
       }
   }).
@@ -343,7 +404,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
       templateUrl: BASE + 'templates/student/animation4.html',
       controller: function($scope) {
         $scope.startAnimation = function() {
-          
+
               //Create the canvas
               var canvas = document.getElementById("canvas");
               var context = canvas.getContext("2d");
@@ -354,7 +415,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                   var posX = Math.floor(Math.random() * 200);
                   var posY = Math.floor(Math.random() * 200);
 
-                  //Picking selected colors at random 
+                  //Picking selected colors at random
                   var colors = ['rgba(220, 20, 60, 0.8)', 'rgba(255, 105, 180,0.6)', 'rgba(255, 20, 147, 0.8)', 'rgba(255, 140, 0,0.6)', 'rgba(143, 188, 143,0.7)'];
                   var color = Math.floor(Math.random() * colors.length);
 
@@ -367,14 +428,14 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                   context.closePath();
                   context.fill();
               }, 80);
-          
+
         }
         $scope.endAnimation = function() {
           var testarray = document.getElementsByClassName("a");
           for(var i = 0; i < testarray.length; i++)
           {
               testarray[i].classList.remove("active");
-          }          
+          }
         }
       }
   })

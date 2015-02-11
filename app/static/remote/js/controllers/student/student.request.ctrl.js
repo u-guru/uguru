@@ -15,7 +15,7 @@ angular.module('uguru.student.controllers')
   '$ionicNavBarDelegate',
   'Geolocation',
   '$ionicPosition',
-  function($scope, $state, $timeout, $localstorage, 
+  function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaProgress, $stateParams,
   $ionicNavBarDelegate, Geolocation, $ionicPosition) {
 
@@ -48,25 +48,26 @@ angular.module('uguru.student.controllers')
     });
 
     var checkbox0 = [document.getElementById('iconRecord0')];
-    var checkbox0_position = $ionicPosition.offset(checkbox0).left
-    var checkbox1 = [document.getElementById('iconRecord1')];
-    var checkbox1_position = $ionicPosition.offset(checkbox1).left
-    var half_box_size = (checkbox1_position - checkbox0_position) / 2 - 10
-    var from_position = checkbox0_position + half_box_size
-    var to_position = 0;
+      var checkbox0_position = $ionicPosition.offset(checkbox0).left
+      var checkbox1 = [document.getElementById('iconRecord1')];
+      var checkbox1_position = $ionicPosition.offset(checkbox1).left
+      var half_box_size = (checkbox1_position - checkbox0_position) / 2 - 10
+      var from_position = checkbox0_position + half_box_size
+      var to_position = 0;
+
     $scope.checkboxClicked = function(index) {
 
       obj = document.getElementById('iconChecked');
       obj.style.left = from_position + "px";
 
       $scope.time_checkbox = index;
-      
+
       var iconRecord = "iconRecord" + index;
       var checkbox_num = [document.getElementById(iconRecord)];
-      var checkbox_position = $ionicPosition.offset(checkbox_num).left;       
+      var checkbox_position = $ionicPosition.offset(checkbox_num).left;
       var to = half_box_size + checkbox_position
       to_position = to;
-      
+
       animateMe();
 
       function animateRight(obj, from, to){
@@ -119,9 +120,9 @@ angular.module('uguru.student.controllers')
         $scope.user.position = null;
         if (!$scope.requestPosition) {
           //get location & fire the modal
-          
+
           Geolocation.getUserPosition($scope, $scope.showRequestMapModal);
-        } 
+        }
         //user already has provided access to their location
         else {
           $scope.requestMapModal.show()
@@ -153,40 +154,46 @@ angular.module('uguru.student.controllers')
       date = date.getTime();
       return {
         position: null,
-        photo:null, 
-        status: 'incomplete',
+        photo:null,
+        status: 0,
         proposals: null,
         time_estimate: 0,
         note: null,
         time_created: date,
         location:null,
-        course: $scope.course
+        course: $scope.course,
+        online: true,
+        in_person: false
       };
     }
 
     $scope.saveRequestToUser = function() {
-      $scope.request.status = 'pending';
-      $scope.request.photo = null;
+      $scope.request.status = 0;
+      $scope.request._file = null;
+      $scope.request.online = $scope.virtual_guru_checkbox;
+      $scope.request.in_person = $scope.person_guru_checkbox;
       $scope.request.time_estimate = $scope.time_checkbox;
+      $scope.request.address = $scope.request.location;
       if ($scope.requestPosition) {
-        $scope.request.position = $scope.user.position;
+        $scope.request.position = $scope.user.position.coords;
       }
 
-      var user_course = $scope.root.util.objectFindByKey($scope.user.student_courses, 'short_name', $scope.course.short_name);
-      if (!user_course.requests) {
-        user_course.requests = [];
-      }
-      var user_course_request = $scope.root.util.objectFindByKey(user_course.requests, 'time_created', $scope.request.time_created);
-      if (!user_course_request) {
-        console.log('new request!')
-        user_course.requests.push($scope.request);
-        user_course.active_request = $scope.request;
-      } else {
-        user_course_request = $scope.request;
-        console.log($scope.user.student_courses);
-      }
-      $scope.user.requests.push($scope.request);
-      $scope.rootUser.updateLocal($scope.user);
+      $scope.user.createObj($scope.user, 'requests', $scope.request, $scope);
+
+      // var user_course = $scope.root.util.objectFindByKey($scope.user.student_courses, 'short_name', $scope.course.short_name);
+      // if (!user_course.requests) {
+      //   user_course.requests = [];
+      // }
+      // var user_course_request = $scope.root.util.objectFindByKey(user_course.requests, 'time_created', $scope.request.time_created);
+      // if (!user_course_request) {
+      //   console.log('new request!')
+      //   user_course.requests.push($scope.request);
+      //   user_course.active_request = $scope.request;
+      // } else {
+      //   user_course_request = $scope.request;
+      //   console.log($scope.user.student_courses);
+      // }
+
     }
 
     var validateRequestForm = function() {
@@ -194,12 +201,12 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.requestHelp = function() {
-      
+
 
       if (!$scope.user.id) {
         $scope.signupModal.show();
         return;
-      } 
+      }
 
       if (!validateRequestForm()) {
         console.log('form has errors');
@@ -210,7 +217,7 @@ angular.module('uguru.student.controllers')
 
       $timeout(function() {
 
-        $state.go('^.guru-available', {requestObj:JSON.stringify($scope.request)});
+        $state.go('^.home');
         $timeout(function() {
           $scope.contactingGuruModal.hide();
         }, 5000);
@@ -228,7 +235,7 @@ angular.module('uguru.student.controllers')
     $scope.requestPosition = null;
     $scope.course = JSON.parse($stateParams.courseObj);
     $scope.request = $scope.initRequestObj();
-    
+
     //modal stuff
     $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
     $scope.options = {scrollwheel: false};
@@ -254,7 +261,7 @@ angular.module('uguru.student.controllers')
         document.getElementById('iconChecked').style.visibility="visible";
         $scope.checkboxClicked(0);
       },1000)
-    
+
 
     });
   }

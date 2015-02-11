@@ -91,6 +91,14 @@ def admin_university(_id):
     else:
         return render_template("admin/login.html")
 
+@app.route('/admin/user/<_id>/')
+def admin_user(_id):
+    if(session.get("admin")):
+        user = User.query.get(_id)
+        return render_template("admin/admin.user.html", user=user)
+    else:
+        return render_template("admin/login.html")
+
 @app.route('/emails.html')
 def emails():
     if(session.get("admin")):
