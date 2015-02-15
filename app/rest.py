@@ -291,7 +291,7 @@ def get_user(user_id):
     return user
 
 class UserRequestView(restful.Resource):
-    @marshal_with(RequestSerializer)
+    @marshal_with(UserSerializer)
     def post(self, user_id):
 
         pprint(request.json)
@@ -340,9 +340,9 @@ class UserRequestView(restful.Resource):
             event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
             event = Event.initFromDict(event_dict)
 
-        return _request, 200
+        return user, 200
 
-    @marshal_with(RequestSerializer)
+    @marshal_with(UserSerializer)
     def put(self, user_id):
 
         user = get_user(user_id)
@@ -397,7 +397,7 @@ class UserRequestView(restful.Resource):
             _request.status = request.json.get('status')
             db_session.commit()
 
-            return _request, 200
+            return user, 200
 
 class UserSessionView(restful.Resource):
     #create a session
@@ -1148,22 +1148,23 @@ class AdminUniversityAddRecipientsView(restful.Resource):
 
         new_db_objs = []
         students_arr = request.json.get('recipients')
-        index = 1
         for student in students_arr:
+            check_exists = Recipient.query.filter_by(email=student['email']).first()
+            if check_exists:
+                continue
             r = Recipient()
             r.first_name = student['first_name'].strip().title()
             r.last_name = student['last_name'].strip().title()
             r.email = student['email'].strip().title()
             r.university_id = uni_id
             new_db_objs.append(r)
-            index += 1
-            if index % 250 == 0:
-                print "250 processed & committed"
-                db_session.add_all(new_db_objs)
-                db_session.commit()
-                new_db_objs = []
 
-
+        u = University.query.get(uni_id)
+        u.num_emails += len(new_db_objs)
+        db_session.commit()
+        print len(new_db_objs), 'added to', u.name
+        print u.name, 'now has', u.num_emails
+        print
         results = {'message': str(len(new_db_objs)) + ' objects processed'}
         return jsonify(success=results)
 

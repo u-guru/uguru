@@ -865,9 +865,15 @@ class Batch(Base):
 class Recipient(Base):
     __tablename__ = 'recipient'
     id = Column(Integer, primary_key=True)
+
     email = Column(String)
     first_name = Column(String)
     last_name = Column(String)
+    name = Column(String)
+    major = Column(String)
+    affiliations = Column(String)
+    title = Column(String)
+
     fb_id = Column(String)
 
     time_sent = Column(DateTime)
