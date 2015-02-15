@@ -1166,14 +1166,16 @@ class AdminUniversityAddRecipientsView(restful.Resource):
             if student.get('title'):
                 r.title = str(student['title']).strip().title()
 
-            r.university_id = uni_id
+            r.university_id = int(uni_id)
             new_db_objs.append(r)
 
+        print uni_id
         u = University.query.get(uni_id)
         u.num_emails += len(new_db_objs)
+        db_session.add_all(new_db_objs)
         db_session.commit()
         print len(new_db_objs), 'added to', u.name
-        print u.name, 'now has', u.num_emails
+        print u.name, 'now has', len(u.recipients)
         print
         results = {'message': str(len(new_db_objs)) + ' objects processed'}
         return jsonify(success=results)
