@@ -1153,9 +1153,19 @@ class AdminUniversityAddRecipientsView(restful.Resource):
             if check_exists:
                 continue
             r = Recipient()
-            r.first_name = student['first_name'].strip().title()
-            r.last_name = student['last_name'].strip().title()
-            r.email = student['email'].strip().title()
+            if student.get('first_name'):
+                r.first_name = student['first_name'].strip().title()
+            if student.get('last_name'):
+                r.last_name = student['last_name'].strip().title()
+            if student.get('email'):
+                r.email = student['email'].strip().title()
+            if student.get('major'):
+                r.major = student['major'].strip().title()
+            if student.get('affiliations'):
+                r.affiliations = str(student['affiliations']).strip().title()
+            if student.get('title'):
+                r.title = str(student['title']).strip().title()
+
             r.university_id = uni_id
             new_db_objs.append(r)
 
