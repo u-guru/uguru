@@ -1,4 +1,4 @@
-var uguru_base_url = "http://192.168.1.233:5000/api/admin/";
+var uguru_base_url = "http://uguru-rest.herokuapp.com/api/admin/";
 var auth_token = '9c1185a5c5e9fc54612808977ee8f548b2258d31';
 
 // "http://admin.uguru.me/api/admin/9c1185a5c5e9fc54612808977ee8f548b2258d31/users"
