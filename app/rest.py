@@ -33,7 +33,7 @@ class UniversityListView(restful.Resource):
 class VersionView(restful.Resource):
     def get(self):
         version_dict = {
-            'version':Version.query.get(1).ios,
+            'version':Version.most_recent_by_version(1, True),
             'ios_msg': Version.query.get(1).ios_msg
         }
         return json.dumps(version_dict), 200
@@ -1065,24 +1065,19 @@ class AdminMandrillCampaignDetailedView(restful.Resource):
 
 class AdminAppUpdateView(restful.Resource):
     def put(self):
-        print request.json
-        if request.json.get('ios'):
-            current_version_num = float(request.json.get('ios'))
-            new_version_num = current_version_num
-            version = Version.query.get(1)
-            version.ios = new_version_num
-            version.ios_msg = request.json.get('msg')
-            db_session.commit()
+        message = request.json.get('message')
+        is_major = request.json.get('is_major')
+        is_minor = request.json.get('is_minor')
+        _type = request.json.get('type')
+        is_android = request.json.get('is_android')
+        is_ios = request.json.get('is_ios')
 
-        if request.json.get('android'):
-            current_version_num = float(request.json.get('android'))
-            new_version_num = current_version_num + 0.1
-            version = Version.query.get(1)
-            version.ios = new_version_num
-            version.ios_msg = request.json.get('android_msg')
-            db_session.commit()
+        if is_major:
+            Version.new_major_build(1, message)
+        elif is_minor:
+            Version.new_minor_build(1, message)
 
-        return jsonify(version=new_version_num)
+        return jsonify(version=True)
 
 class AdminViewEmailsList(restful.Resource):
     def get(self, auth_token):

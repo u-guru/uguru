@@ -861,7 +861,6 @@ class Batch(Base):
     )
 
 
-
 class Recipient(Base):
     __tablename__ = 'recipient'
     id = Column(Integer, primary_key=True)
@@ -999,6 +998,118 @@ class Version(Base):
     ios = Column(Float)
     ios_msg = Column(String)
     android_msg = Column(String)
+    latest_android = Column(String)
+    latest_ios = Column(String)
+
+    @staticmethod
+    def most_recent_by_version(version_id, str_only=False):
+        recent_build = Version.get_most_recent_major_build(version_id)
+        result = [recent_build.version_id, recent_build.major_num, recent_build.minor_num, recent_build.message]
+        if str_only:
+            return "<v%r.%r.%r: %r>" %\
+              (recent_build.version_id, recent_build.major_num, recent_build.minor_num, recent_build.message)
+        return result
+
+    def get_num_major_builds(self):
+
+        version_query = Build.query.filter_by(version_id=self.id)
+        total_version_builds = len(version_query.all())
+        major_builds_count = len(version_query.filter_by(is_major =True).all())
+
+        return major_builds_count
+
+    @staticmethod
+    def new_major_build(version_id, message):
+        v = Version.query.get(version_id)
+        num_major_builds = v.get_num_major_builds()
+        new_major_build_num = num_major_builds + 1
+        b = Build(message=message, is_major=True, is_minor = False,
+            major_num=new_major_build_num, minor_num=0, version_id=version_id)
+        return b
+
+    @staticmethod
+    def get_most_recent_major_build(version_id):
+        v = Version.query.get(version_id)
+        all_major_builds = Build.query.filter_by(version_id=version_id, is_major=True).all()
+        latest_major_build = sorted(all_major_builds, key=lambda k:k.id)[-1]
+        return latest_major_build
+
+    @staticmethod
+    def new_minor_build(version_id, message):
+        v = Version.query.get(version_id)
+        latest_major_build = Version.get_most_recent_major_build(version_id)
+        new_major_build_num = latest_major_build.major_num
+        latest_minor_build_num = sorted(Build.query.filter_by(version_id=version_id,
+            major_num=new_major_build_num).all(), key=lambda k:k.id)[-1].minor_num
+        if latest_minor_build_num == 0:
+            new_minor_build_num = 1
+        else:
+            new_minor_build_num = latest_minor_build_num + 1
+        b = Build(message, is_major=False, is_minor = True,
+            major_num=new_major_build_num, minor_num=new_minor_build_num,
+            version_id=version_id)
+        return b
+
+    def get_version_by_build_id(self, build_id, str_only=False):
+        builds = self.builds
+        major_builds_count = 0
+        minor_builds_count = 0
+        for build in builds[0:build_id]:
+            if build.is_minor:
+                minor_builds_count += 1
+            elif build.is_major:
+                major_builds_count += 1
+        version_id = self.id
+
+        result = [version_id, major_builds_count, minor_builds_count]
+        if str_only:
+            result = [str(item) for item in [version_id, major_builds_count, minor_builds_count]]
+            return '.'.join(result)
+        return result
+
+
+    def __repr__(self):
+        recent_version =self.most_recent_by_version(self.id, True)
+        return recent_version
+
+class Build(Base):
+    __tablename__ = 'build'
+    id = Column(Integer, primary_key=True)
+    message = Column(String)
+    is_major = Column(Boolean, default=False)
+    major_num = Column(Integer)
+    minor_num = Column(Integer)
+    time_created = Column(DateTime)
+    is_minor = Column(Boolean, default=False)
+    android_supported = Column(Boolean)
+    ios_supported = Column(Boolean)
+    _type = Column(Integer)
+
+    version_id = Column(Integer, ForeignKey('version.id'))
+    version = relationship("Version",
+        uselist = False,
+        primaryjoin="Version.id == Build.version_id",
+        backref = 'builds')
+
+    def __repr__(self):
+        return "<v%r.%r.%r: %r>" %\
+              (self.version_id, self.major_num, self.minor_num, self.message)
+
+    def __init__(self, message, version_id = None, is_major = False, is_minor=True,
+        android_supported=False, ios_supported=False, _type=None, major_num= 0, minor_num = 0):
+        self.is_major = is_major
+        self.message = message
+        self.major_num = major_num
+        self.minor_num = minor_num
+        self.is_minor = is_minor
+        self.android_supported = android_supported
+        self.ios_supported = ios_supported
+        self.time_created = datetime.now()
+        self._type = _type
+        self.version_id = version_id
+        db_session.add(self)
+        db_session.commit()
+
 
 
 class Card(Base):
