@@ -9,9 +9,9 @@ angular.module('uguru.util.controllers')
   '$localstorage',
   '$ionicModal',
   'Camera',
-  function($scope, $state, $timeout, $localstorage, 
+  function($scope, $state, $timeout, $localstorage,
  	$ionicModal, Camera) {
-    
+
     $scope.hideAddNoteModal = function() {
       if ($scope.root.keyboard.isVisible()) {
         $scope.root.keyboard.close();
@@ -27,10 +27,28 @@ angular.module('uguru.util.controllers')
       $scope.addRequestNoteModal.hide();
     }
 
+    $scope.toggleShowTextArea = function() {
+      $scope.showAddNoteTextArea = !$scope.showAddNoteTextArea;
+      if ($scope.showAddNoteTextArea) {
+        $scope.root.keyboard.show('note-input', 500);
+      }
+    }
+
+
+    $scope.showAddNoteTextArea = function() {
+      $scope.root.keyboard.show('note-input', 500);
+    }
+
     $scope.$on('modal.shown', function() {
 
-      if ($scope.addRequestNoteModal.isShown()) {
-        $scope.root.keyboard.show('note-input', 500);
+      // if ($scope.addRequestNoteModal.isShown()) {
+      //   $scope.root.keyboard.show('note-input', 500);
+      // }
+
+      if (!$scope.request.note) {
+        $scope.showAddNoteTextArea = false;
+      } else {
+        $scope.showAddNoteTextArea = true;
       }
 
     });

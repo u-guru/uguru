@@ -1,3 +1,4 @@
+
 /* Empty. Add your own CSS if you like */
 
 
@@ -738,4 +739,44 @@ input.ion-google-place[readonly]{
 .my-overlay {
   background-color: #222;
   opacity: 0.8;
+}
+
+.lightest-grey {
+  background-color:rgba(0,0,0,0.04);
+}
+
+.mid-grey {
+  color: rgba(0,0,0, 0.5);
+}
+
+.font-bold {
+  font-family: "OpenSans-Bold";
+}
+
+.font-semibold {
+  font-family: "OpenSans-SemiBold";
+}
+
+.width-100 {
+  width:100%;
+}
+
+.extra-padding {
+  padding:20px;
+}
+
+.margin {
+  margin:10px;
+}
+
+.extra-margin {
+  margin:20px;
+}
+
+.no-padding-top {
+  padding-top:0px;
+}
+
+.no-padding-bottom {
+  padding-bottom:0px;
 }

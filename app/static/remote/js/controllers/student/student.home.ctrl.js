@@ -60,6 +60,8 @@ angular.module('uguru.student.controllers', [])
     return false;
   }
 
+
+
   $scope.getActiveRequestByCourse = function(course) {
     var active_requests = $scope.user.active_requests;
     for (var i = 0; i < $scope.user.active_requests.length; i++) {
@@ -271,15 +273,19 @@ angular.module('uguru.student.controllers', [])
     // $scope.processStudentRequests($scope.user.requests);
 
     $scope.$on('$ionicView.enter', function(){
-      // $scope.processStudentRequests($scope.user.requests);
-      if ($scope.user.incoming_requests.length > 0) {
-        var first_incoming_request = $scope.user.incoming_requests[0];
+      if ($scope.course && scope.course.active_requests && $scope.course.active_requests.length > 0) {
 
-        var paramPayload = {
-          requestObj:JSON.stringify(first_incoming_request),
+        var course = $scope.course.active_requests[0];
+        if ($scope.user.incoming_requests.length > 0) {
+          var first_incoming_request = $scope.user.incoming_requests[0];
+
+          var paramPayload = {
+            requestObj:JSON.stringify(first_incoming_request),
+          }
+
+          $state.go('^.guru-available', paramPayload);
         }
 
-        $state.go('^.guru-available', paramPayload);
       }
     });
 

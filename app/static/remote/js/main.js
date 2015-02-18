@@ -1,8 +1,12 @@
 // Uguru upp
 var LOCAL = false;
+var REST_URL = 'http://uguru-rest.herokuapp.com'
+var BASE_URL = 'http://uguru-rest.herokuapp.com'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
+  REST_URL = 'http://192.168.1.233:5000'
+  BASE_URL = 'http://192.168.1.233:8100'
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.student.controllers', 'uguru.guru.controllers', 'uguru.version',
@@ -34,35 +38,20 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                     }
                     console.log('user v:' + currentVersion.toString() + '. Server v:' + serverVersionNumber);
                     if (serverVersionNumber != currentVersion) {
-                      var msg = JSON.parse(response).ios_msg;
-                      var title = "New Updates! v" + serverVersionNumber;
-                      $cordovaDialogs.confirm(msg, title, ['Not Now','Update'])
-                          .then(function(buttonIndex) {
-                            // no button = 0, 'OK' = 1, 'Cancel' = 2
-                              console.log('user clicked button');
-                              console.log(buttonIndex);
-                              var btnIndex = buttonIndex;
-                              if (btnIndex === 2) {
-                                $ionicHistory.clearCache();
-                                $ionicHistory.clearHistory();
-                                $cordovaSplashscreen.show();
-                                window.localStorage.clear();
 
-                                //remove all angular templates
-                                $templateCache.removeAll();
+                      $ionicHistory.clearCache();
+                      $ionicHistory.clearHistory();
+                      $cordovaSplashscreen.show();
+                      window.localStorage.clear();
 
-                                Version.setVersion(serverVersionNumber);
-                                $localstorage.set('recently_updated', true);
-                                console.log('V' + serverVersionNumber + 'stored to user');
-                                window.location = "http://uguru-rest.herokuapp.com/app/"
-                                // window.location = "http://127.0.0.1:5000/app/";
-                                // window.location = "http://192.168.1.233:8101/remote/index.html#/student/home"
-                                window.location.reload(true);
-                                // window.location = "http://uguru-rest.herokuapp.com/app/"
+                      //remove all angular templates
+                      $templateCache.removeAll();
 
-
-                              }
-                          });
+                      Version.setVersion(serverVersionNumber);
+                      $localstorage.set('recently_updated', true);
+                      console.log('V' + serverVersionNumber + 'stored to user');
+                      window.location = BASE_URL + "/remote/index.html#/student/home"
+                      window.location.reload(true);
                     }
                },
 
@@ -96,7 +85,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
               console.log(result.plain());
             })
           }
-
         }
 
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -164,8 +152,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   $urlRouterProvider.otherwise('/student/home');
 
   //Set up restangular provider
-  // RestangularProvider.setBaseUrl('http://uguru-rest.herokuapp.com/api/v1');
-  RestangularProvider.setBaseUrl('http://192.168.1.233:5000/api/v1');
+  RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
+  // RestangularProvider.setBaseUrl('http://10.193.138.226:5000/api/v1');
 
   //Client-side router
   $stateProvider
@@ -184,8 +172,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
           $scope.rootUser = User;
           $scope.root = RootService;
-
-          User.getUserFromServer($scope);
 
         }
   }).
@@ -305,7 +291,22 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/student/student.guru-profile.html',
         controller: 'GuruProfileController'
   }).
-
+  state('root.student.guru-home-page', {
+        url: '/guru-home-page',
+        templateUrl: BASE + 'templates/student/student.guru-home-page.html'
+  }).
+  state('root.student.guru-timer', {
+        url: '/guru-timer',
+        templateUrl: BASE + 'templates/student/student.guru-timer.html'
+  }).
+  state('root.student.new-settings', {
+        url: '/new-settings',
+        templateUrl: BASE + 'templates/student/student.new-settings.html'
+  }).
+  state('root.student.guru-mode', {
+        url: '/guru-mode',
+        templateUrl: BASE + 'templates/student/student.guru-mode.html'
+  }).
   state('root.student.animations', {
         url: '/animations',
         templateUrl: BASE + 'templates/student/animations.html',

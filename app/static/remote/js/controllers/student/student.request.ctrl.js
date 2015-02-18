@@ -255,6 +255,7 @@ angular.module('uguru.student.controllers')
         }
     }
 
+
     document.getElementById('iconChecked').style.visibility="hidden";
     $scope.$on('$ionicView.enter', function(){
       $timeout(function() {
@@ -264,6 +265,7 @@ angular.module('uguru.student.controllers')
 
 
     });
+
   }
 ]);
 

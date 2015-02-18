@@ -181,9 +181,9 @@ angular.module('uguru.user', [])
                 Restangular
                     .one('user', userObj.id).one(param)
                     .customPOST(JSON.stringify(payload))
-                    .then(function(request){
-                        $scope.user.requests.push(request);
-                        $scope.rootUser.updateLocal($scope.user);
+                    .then(function(user){
+                        console.log(user);
+                        $scope.user = processResults(user);
                     }, function(err){
                         if (err.status === 409 ) {
                             console.log('already have an active request');
@@ -197,7 +197,6 @@ angular.module('uguru.user', [])
                     .one('user', userObj.id).one(param)
                     .customPOST(JSON.stringify(payload))
                     .then(function(user){
-                        console.log(user);
                         $scope.user.cards = user.cards;
                         console.log($scope.user.cards);
                         // $scope.user.requests.push(request);

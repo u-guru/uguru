@@ -65,21 +65,21 @@ def index():
 @app.route('/admin/users/')
 def admin_users():
     if(session.get("admin")):
-        return render_template("admin/admin.users., os=oshtml")
+        return render_template("admin/admin.users.html", os=os)
     else:
         return render_template("admin/login.html", os=os)
 
 @app.route('/admin/universities/')
 def admin_universities():
     if(session.get("admin")):
-        return render_template("admin/admin.universities., os=oshtml")
+        return render_template("admin/admin.universities.html", os=os)
     else:
         return render_template("admin/login.html", os=os)
 
 @app.route('/admin/emails/')
 def admin_emails():
     if(session.get("admin")):
-        return render_template("admin/admin.emails., os=oshtml")
+        return render_template("admin/admin.emails.html")
     else:
         return render_template("admin/login.html", os=os)
 
@@ -87,7 +87,7 @@ def admin_emails():
 def admin_university(_id):
     if(session.get("admin")):
         university = University.query.get(_id)
-        return render_template("admin/admin.university., os=oshtml", university=university)
+        return render_template("admin/admin.university.html", os=os, university=university)
     else:
         return render_template("admin/login.html", os=os)
 
@@ -95,7 +95,7 @@ def admin_university(_id):
 def admin_user(_id):
     if(session.get("admin")):
         user = User.query.get(_id)
-        return render_template("admin/admin.user., os=oshtml", user=user)
+        return render_template("admin/admin.user.html", user=user, os=os)
     else:
         return render_template("admin/login.html", os=os)
 
@@ -221,7 +221,7 @@ def calendar():
 @app.route('/file-manager.html')
 def filemanager():
     if(session.get("admin")):
-        return render_template('admin/file-manager., os=oshtml')
+        return render_template('admin/file-manager.html')
     else:
         return render_template("admin/login.html", os=os)
 
@@ -253,7 +253,7 @@ def app_route():
 def admin_campaign_results():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
-    return render_template('admin/admin.campaigns., os=oshtml')
+    return render_template('admin/admin.campaigns.html')
 
 @app.route('/admin/campaigns/create/')
 def admin_campaign_create():
@@ -265,7 +265,7 @@ def admin_campaign_create():
 def admin_campaigns_detailed(name):
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
-    return render_template('admin/campaign-detailed., os=oshtml', name=name)
+    return render_template('admin/campaign-detailed.html', name=name)
 
 @app.route('/admin/development/')
 def admin_development():
@@ -275,7 +275,7 @@ def admin_development():
     return render_template('admin/development.html', os=os, version=version)
 
 @app.route('/admin/issues/')
-def admin_development():
+def admin_issues():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
     version = Version.query.get(1)
