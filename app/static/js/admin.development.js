@@ -1,6 +1,8 @@
+
 $(document).ready(function() {
 
-    getIssues();
+    getOpenIssues();
+    getClosedIssues();
 
     $('#submit-github-issue-button').click(function() {
         createIssue();
@@ -19,7 +21,7 @@ $(document).ready(function() {
             'is_ios': $('input[name=iosCheckbox]').is(':checked')
         }
         $.ajax({
-            url: BASE_URL + '/app/update',
+            url: uguru_base_url + 'app/update',
             type: "PUT",
             contentType: 'application/json',
             data: JSON.stringify(payload),
@@ -57,7 +59,7 @@ $(document).ready(function() {
 });
 
 
-function getIssues() {
+function getOpenIssues() {
     $.ajax({
         url: uguru_base_url + auth_token + "/github/issues",
         type: 'GET',
