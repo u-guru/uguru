@@ -37,9 +37,9 @@ def default():
             'departments': {'count': 21361},
         }
 
-        return render_template("admin/index.html", statistics=statistics)
+        return render_template("admin/index.html", os=os, statistics=statistics)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/login',methods=["POST"])
 def trylogin():
@@ -53,184 +53,184 @@ def trylogin():
         session["admin"] = True
         return redirect(url_for('default'))
     else:
-        return render_template("admin/index.html")
+        return render_template("admin/index.html", os=os)
 
 @app.route('/index.html')
 def index():
     if(session.get("admin")):
         return redirect(url_for('default'))
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/admin/users/')
 def admin_users():
     if(session.get("admin")):
-        return render_template("admin/admin.users.html")
+        return render_template("admin/admin.users., os=oshtml")
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/admin/universities/')
 def admin_universities():
     if(session.get("admin")):
-        return render_template("admin/admin.universities.html")
+        return render_template("admin/admin.universities., os=oshtml")
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/admin/emails/')
 def admin_emails():
     if(session.get("admin")):
-        return render_template("admin/admin.emails.html")
+        return render_template("admin/admin.emails., os=oshtml")
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/admin/universities/<_id>')
 def admin_university(_id):
     if(session.get("admin")):
         university = University.query.get(_id)
-        return render_template("admin/admin.university.html", university=university)
+        return render_template("admin/admin.university., os=oshtml", university=university)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/admin/user/<_id>/')
 def admin_user(_id):
     if(session.get("admin")):
         user = User.query.get(_id)
-        return render_template("admin/admin.user.html", user=user)
+        return render_template("admin/admin.user., os=oshtml", user=user)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/emails.html')
 def emails():
     if(session.get("admin")):
-        return render_template("admin/emails.html")
+        return render_template("admin/emails.html", os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/campaigns.html')
 def campaigns():
     if(session.get("admin")):
-        return render_template("admin/campaigns.html")
+        return render_template("admin/campaigns.html", os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/createcampaigns.html')
 def createcampaigns():
     if(session.get("admin")):
-        return render_template("admin/createcampaigns.html")
+        return render_template("admin/createcampaigns.html", os=os)
     else:
-        return render_template('admin/login.html')
+        return render_template('admin/login.html', os=os)
 
 @app.route('/messages.html')
 def messages():
     if(session.get("admin")):
-        return render_template("admin/messages.html")
+        return render_template("admin/messages.html", os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/tasks.html')
 def tasks():
     if(session.get("admin")):
-        return render_template("admin/tasks.html")
+        return render_template("admin/tasks.html", os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/ui.html')
 def users():
     if(session.get("admin")):
-        return render_template("admin/ui.html")
+        return render_template("admin/ui.html", os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/widgets.html')
 def widgets():
     if(session.get("admin")):
-        return render_template("admin/widgets.html")
+        return render_template("admin/widgets.html", os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 # @app.route('/ui.html')
 # def ui():
 #     if(session.get("admin")):
-#         return render_template("admin/ui.html")
+#         return render_template("admin/ui.html", os=os)
 #     else:
-#         return render_template("admin/login.html")
+#         return render_template("admin/login.html", os=os)
 
 @app.route('/submenu.html')
 def submenu():
     if(session.get("admin")):
-        return render_template('admin/submenu.html')
+        return render_template('admin/submenu.html', os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/submenu2.html')
 def submenu2():
     if(session.get("admin")):
-        return render_template('admin/submenu2.html')
+        return render_template('admin/submenu2.html', os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/submenu3.html')
 def submenu3():
     if(session.get('admin')):
-        return render_template('admin/submenu3.html')
+        return render_template('admin/submenu3.html', os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/form.html')
 def form():
     if(session.get("admin")):
-        return render_template('admin/form.html')
+        return render_template('admin/form.html', os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/chart.html')
 def chart():
     if(session.get("admin")):
-        return render_template('admin/chart.html')
+        return render_template('admin/chart.html', os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/typography.html')
 def typo():
     if(session.get("admin")):
-        return render_template('admin/typography.html')
+        return render_template('admin/typography.html', os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/gallery.html')
 def gallery():
     if(session.get("admin")):
-        return render_template('admin/gallery.html')
+        return render_template('admin/gallery.html', os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/table.html')
 def table():
     if(session.get("admin")):
-        return render_template('admin/table.html')
+        return render_template('admin/table.html', os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/calendar.html')
 def calendar():
     if(session.get("admin")):
-        return render_template('admin/calendar.html')
+        return render_template('admin/calendar.html', os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/file-manager.html')
 def filemanager():
     if(session.get("admin")):
-        return render_template('admin/file-manager.html')
+        return render_template('admin/file-manager., os=oshtml')
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/icon.html')
 def icon():
     if(session.get("admin")):
-        return render_template('admin/icon.html')
+        return render_template('admin/icon.html', os=os)
     else:
-        return render_template("admin/login.html")
+        return render_template("admin/login.html", os=os)
 
 @app.route('/logout.html')
 def login():
@@ -240,7 +240,7 @@ def login():
 
 # @app.route('/login/')
 # def admin_login():
-#     return render_template('admin/login.html')
+#     return render_template('admin/login.html', os=os)
 
 @app.route('/app/')
 def app_route():
@@ -253,26 +253,33 @@ def app_route():
 def admin_campaign_results():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
-    return render_template('admin/admin.campaigns.html')
+    return render_template('admin/admin.campaigns., os=oshtml')
 
 @app.route('/admin/campaigns/create/')
 def admin_campaign_create():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
-    return render_template('admin/admin.create-campaigns.html')
+    return render_template('admin/admin.create-, os=oscampaigns.html')
 
 @app.route('/admin/campaigns/<name>/')
 def admin_campaigns_detailed(name):
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
-    return render_template('admin/campaign-detailed.html', name=name)
+    return render_template('admin/campaign-detailed., os=oshtml', name=name)
 
 @app.route('/admin/development/')
 def admin_development():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
     version = Version.query.get(1)
-    return render_template('admin/development.html', version=version)
+    return render_template('admin/development.html', os=os, version=version)
+
+@app.route('/admin/issues/')
+def admin_development():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    version = Version.query.get(1)
+    return render_template('admin/admin.issues.html', os=os, version=version)
 
 @app.route('/admin/web/')
 def index():
@@ -317,7 +324,7 @@ def admin_dashboard_home():
         key=lambda t:datetime.strptime(t['updated_at'], "%Y-%m-%d %H:%M:%S.%f"), reverse=True)
     template_names = [t['name'] for t in templates]
 
-    return render_template('admin/form.html',
+    return render_template('admin/form.html', os=os,
         mandrill_client=mandrill_client,
         available_universities=universities,
         template_names=template_names)
@@ -326,7 +333,7 @@ def admin_dashboard_home():
 def admin_api():
     if not session.get('admin'):
         return redirect(url_for('admin'))
-    return render_template('admin/api.html')
+    return render_template('admin/api.html', os=os)
 
 @app.route('/admin/dashboard/')
 def admin_dashboard():

@@ -94,6 +94,7 @@
             <!-- <li><a href="/admin/support"><i class="icon-envelope"></i><span class="hidden-tablet"> Customer Support </span></a></li> -->
 <!--             <li><a href="/admin/bugs"><i class="icon-envelope"></i><span class="hidden-tablet"> Product & Bugs </span></a></li> -->
             <li><a href="/admin/development/"><i class="icon-cogs"></i><span class="hidden-tablet"> Development </span></a></li>
+            <li><a href="/admin/issues/"><i class="icon-plus"></i><span class="hidden-tablet"> Report a Bug </span></a></li>
             <li><a href="/admin/web"><i class="icon-cloud"></i><span class="hidden-tablet"> New Website </span></a></li>
           </ul>
         </div>
@@ -196,6 +197,16 @@
     <script src="/static/admin/js/retina.js"></script>
 
     <script src="/static/admin/js/custom.js"></script>
+    <script>
+      var auth_token = '9c1185a5c5e9fc54612808977ee8f548b2258d31';
+
+      {% if os.environ.get('PRODUCTION') %}
+        var uguru_base_url = "http://uguru-rest.herokuapp.com/api/admin/";
+      {% else %}
+        var uguru_base_url = "http://127.0.0.1:5000/api/admin/";
+      {% endif %}
+
+    </script>
     {% block footer_scripts %}{% endblock %}
 </body>
 </html>

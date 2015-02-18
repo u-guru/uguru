@@ -1,8 +1,3 @@
-var uguru_base_url = "http://uguru-rest.herokuapp.com/api/admin/";
-var auth_token = '9c1185a5c5e9fc54612808977ee8f548b2258d31';
-
-"http://admin.uguru.me/api/admin/9c1185a5c5e9fc54612808977ee8f548b2258d31/users"
-
 $(document).ready(function() {
 	getEmails();
 });

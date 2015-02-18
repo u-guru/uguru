@@ -1129,6 +1129,81 @@ class AdminViewUserList(restful.Resource):
         return user, 200
 
 
+
+class AdminViewGithubLabels(restful.Resource):
+
+    # get all labels
+    def get(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        pass
+
+    #create a label BONUS DO NOT DO YET
+    def post(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        pass
+
+
+class AdminViewGithubIssues(restful.Resource):
+
+    #get all issues + labels
+    def get(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        from app.lib.github_client import init_github, get_issues, get_labels, \
+        issue_to_json, label_to_json, UGURU_TEAM
+
+        g_repo = init_github()
+
+        issues = get_issues(g_repo, state="open")
+        issues_json = [issue_to_json(issue) for issue in issues]
+
+        labels = get_labels(g_repo)
+        labels_json = [label_to_json(label) for label in labels]
+
+        return_dict = {
+            'labels': labels_json,
+            'issues': issues_json,
+            'team': UGURU_TEAM
+        }
+
+        return jsonify(response=return_dict)
+
+    #create an issue
+    def post(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        labels = request.json.get('labels')
+        title = request.json.get('title')
+        body = request.json.get('body')
+
+        from app.lib.github_client import init_github, create_issue
+        g_repo = init_github()
+        issue = create_issue(g_repo, labels, title, body)
+
+        return jsonify(success=True)
+
+    #Delete an issue
+    def delete(self, auth_token):
+        print request.json
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        issue_number = int(request.json.get('number'))
+
+        from app.lib.github_client import init_github, get_issue, close_issue
+        g_repo = init_github()
+        issue = get_issue(g_repo, issue_number)
+        close_issue(issue) #todo make this a delayed task
+        return jsonify(success=True)
+
+
+
 class AdminUniversityCoursesView(restful.Resource):
     def post(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
@@ -1242,5 +1317,10 @@ api.add_resource(AdminViewEmailsList, '/api/admin/<string:auth_token>/emails')
 api.add_resource(AdminViewUsersList, '/api/admin/<string:auth_token>/users')
 api.add_resource(AdminViewUniversitiesList, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminViewUserList, '/api/admin/<string:auth_token>/user/<int:_id>')
+
+# Admin views github
+
+api.add_resource(AdminViewGithubIssues, '/api/admin/<string:auth_token>/github/issues')
+api.add_resource(AdminViewGithubLabels, '/api/admin/<string:auth_token>/github/labels')
 
 
