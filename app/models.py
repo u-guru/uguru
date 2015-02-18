@@ -1004,6 +1004,8 @@ class Version(Base):
     @staticmethod
     def most_recent_by_version(version_id, str_only=False):
         recent_build = Version.get_most_recent_major_build(version_id)
+        if not recent_build:
+            recent_build = Build.query.all()[-1]
         result = [recent_build.version_id, recent_build.major_num, recent_build.minor_num, recent_build.message]
         if str_only:
             return "<v%r.%r.%r: %r>" %\

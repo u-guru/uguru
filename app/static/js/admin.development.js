@@ -2,7 +2,7 @@
 $(document).ready(function() {
 
     getOpenIssues();
-    // getClosedIssues();
+    getClosedIssues();
 
     $('#submit-github-issue-button').click(function() {
         createIssue();
@@ -92,7 +92,9 @@ function getOpenIssues() {
                 var user_attr_arr = [issue.time_created, issue.title, issue.body,
                 issue.contributor, issue.severity, processListObjToString(issue.labels, 'name'), issue.number];
                 var user_row_string = computeTableRowUser(user_attr_arr, i)
-                $('#view-issue-table-body').append(user_row_string);
+                if (issue.state === 'open') {
+                    $('#view-issue-table-body').append(user_row_string);
+                }
             }
 
             $('#view-issue-table').DataTable({"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
@@ -106,6 +108,47 @@ function getOpenIssues() {
                     deleteIssue($(this).data().attrDeleteId);
                 }
             });
+
+            $('.resolve-issue-link').on('click', function() {
+                if(confirm('Are you sure this issue is resolved?')) {
+                    resolveIssue($(this).data().attrResolveId);
+                }
+            });
+
+        },
+        error: function(err){
+            console.log(err);
+        }
+    })
+}
+
+function getClosedIssues() {
+    $.ajax({
+        url: uguru_base_url + auth_token + "/github/issues",
+        type: 'GET',
+        dataType: 'json',
+        success: function(response){
+            var issues = response.response.issues;
+            $('#view-closed-issue-table').html("");
+            var header_row_attr = ['Time Closed', 'Title', 'Description', 'Posted By','Priority', 'Labels', 'Status'];
+            var user_row_header = computeTableHeaderIssues(header_row_attr, true);
+            $('#view-closed-issue-table').append(user_row_header);
+            for(i = 0; i < issues.length; i++){
+                var issue = issues[i];
+                console.log(issue.labels);
+                var user_attr_arr = [issue.time_closed, issue.title, issue.body,
+                issue.contributor, issue.severity, processListObjToString(issue.labels, 'name'), 'SOLVED'];
+                var user_row_string = computeTableRowUser(user_attr_arr, i, true)
+                if (issue.state === 'closed' && issue.number > 26) {
+                    $('#view-closed-issue-table-body').append(user_row_string);
+                }
+            }
+
+            $('#view-closed-issue-table').DataTable({"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
+            "sPaginationType": "bootstrap",
+            "aaSorting": [[0, 'desc']],
+            "oLanguage": {
+            "sLengthMenu": "_MENU_ records per page"}});
 
         },
         error: function(err){
@@ -137,7 +180,7 @@ function createIssue() {
         contentType: 'application/json;charset=UTF-8',
         data: JSON.stringify(payload),
         success: function(response){
-            window.location.replace('/admin/development/');
+            window.location.replace('/admin/issues/');
         },
         error: function(err){
             console.log(err);
@@ -153,7 +196,7 @@ function deleteIssue(issue_number) {
         dataType: 'json',
         data:JSON.stringify({number: issue_number}),
         success: function(response){
-            window.location.replace('/admin/development/');
+            window.location.replace('/admin/issues/');
         },
         error: function(err){
             console.log(err);
@@ -161,7 +204,23 @@ function deleteIssue(issue_number) {
     });
 }
 
-function computeTableRowUser(attr_arr, table_index) {
+function resolveIssue(issue_number) {
+    $.ajax({
+        url: uguru_base_url + auth_token + "/github/issues",
+        type: 'PUT',
+        contentType: 'application/json;charset=UTF-8',
+        dataType: 'json',
+        data:JSON.stringify({number: issue_number}),
+        success: function(response){
+            window.location.replace('/admin/issues/');
+        },
+        error: function(err){
+            console.log(err);
+        }
+    });
+}
+
+function computeTableRowUser(attr_arr, table_index, is_closed) {
     var result_str = ''
 
     if (table_index % 2 === 1) {
@@ -174,8 +233,8 @@ function computeTableRowUser(attr_arr, table_index) {
         if (j === 0) {
             result_str += '<td class="sorting_1"> ' + attr_arr[j] + ' </td>';
         }
-        else if (j === attr_arr.length - 1) {
-            result_str += '<td><a class="delete-issue-link" data-attr-delete-id="' + attr_arr[j] +'"href="javascript:void(0);"><i class="icon-trash"></i></a></td>';
+        else if (j === attr_arr.length - 1 && !is_closed) {
+            result_str += '<td><a class="delete-issue-link" data-attr-delete-id="' + attr_arr[j] +'"href="javascript:void(0);"><i class="icon-trash"></i></a>  <a class="resolve-issue-link" data-attr-resolve-id="' + attr_arr[j] +'"href="javascript:void(0);">  <i class="icon-check"></i></a></td>';
         }
         else {
             result_str += '<td class="class"> ' + attr_arr[j] + ' </td>';
@@ -198,7 +257,7 @@ function processListObjToString(objList, attr) {
     return result_str;
 }
 
-function computeTableHeaderIssues(header_row, table_index) {
+function computeTableHeaderIssues(header_row, is_closed) {
     var result_str = '<thead><tr role="row">'
 
     for (j = 0; j < header_row.length; j++) {
@@ -208,7 +267,10 @@ function computeTableHeaderIssues(header_row, table_index) {
             result_str += '<th class="sorting"> ' + header_row[j] + ' </th>';
         }
     }
-
-    result_str += '</tr></thead><tbody id="view-issue-table-body"></tbody>'
+    if (!is_closed) {
+        result_str += '</tr></thead><tbody id="view-issue-table-body"></tbody>'
+    } else {
+        result_str += '</tr></thead><tbody id="view-closed-issue-table-body"></tbody>'
+    }
     return result_str
 }

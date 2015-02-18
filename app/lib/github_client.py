@@ -34,7 +34,8 @@ def remove_attr_from_labels(labels):
     stripped_labels = []
     for label in labels:
         #see if it's a special label
-        if 'urgency' in label.name.lower() or 'contributor' in label.name.lower():
+        if 'urgency' in label.name.lower() or 'contributor' in label.name.lower() \
+        or 'resolved' in label.name.lower():
             continue
         else:
             stripped_labels.append(label)
@@ -53,6 +54,9 @@ def get_contributor_from_labels(labels):
     return 'Samir'
 
 def issue_to_json(issue):
+    closed_at = None
+    if issue.closed_at:
+        closed_at = issue.closed_at.strftime('%I:%M %p, %a %b %d')
     return {
         'time_created': issue.created_at.strftime('%I:%M %p, %a %b %d'),
         'labels': [label_to_json(label) for label in remove_attr_from_labels(issue.labels)],
@@ -60,7 +64,9 @@ def issue_to_json(issue):
         'body': issue.body,
         'severity': get_severity_from_labels(issue.labels),
         'number': issue.number,
-        'contributor': get_contributor_from_labels(issue.labels)
+        'contributor': get_contributor_from_labels(issue.labels),
+        'state': issue.state,
+        'time_closed': closed_at
     }
 
 def get_issue(repo, number):
@@ -69,6 +75,12 @@ def get_issue(repo, number):
 def close_issue(issue, comment="team member deleted issue"):
     issue.edit(state="closed")
     issue.create_comment(comment)
+    return issue
+
+def resolve_issue(issue, comment="Samir resolved this issue"):
+    issue.edit(state="closed")
+    issue.create_comment(comment)
+    issue.add_to_labels(['resolved'])
     return issue
 
 def label_to_json(label):

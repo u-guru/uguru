@@ -1159,7 +1159,7 @@ class AdminViewGithubIssues(restful.Resource):
 
         g_repo = init_github()
 
-        issues = get_issues(g_repo, state="open")
+        issues = get_issues(g_repo, state="all")
         issues_json = [issue_to_json(issue) for issue in issues]
 
         labels = get_labels(g_repo)
