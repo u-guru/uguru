@@ -1031,6 +1031,8 @@ class Version(Base):
     def get_most_recent_major_build(version_id):
         v = Version.query.get(version_id)
         all_major_builds = Build.query.filter_by(version_id=version_id, is_major=True).all()
+        if not all_major_builds:
+            return None
         latest_major_build = sorted(all_major_builds, key=lambda k:k.id)[-1]
         return latest_major_build
 
@@ -1038,9 +1040,13 @@ class Version(Base):
     def new_minor_build(version_id, message):
         v = Version.query.get(version_id)
         latest_major_build = Version.get_most_recent_major_build(version_id)
-        new_major_build_num = latest_major_build.major_num
-        latest_minor_build_num = sorted(Build.query.filter_by(version_id=version_id,
-            major_num=new_major_build_num).all(), key=lambda k:k.id)[-1].minor_num
+        if not latest_major_build:
+            new_major_build_num = 0
+            latest_minor_build_num = 0
+        else:
+            new_major_build_num = latest_major_build.major_num
+            latest_minor_build_num = sorted(Build.query.filter_by(version_id=version_id,
+                major_num=new_major_build_num).all(), key=lambda k:k.id)[-1].minor_num
         if latest_minor_build_num == 0:
             new_minor_build_num = 1
         else:

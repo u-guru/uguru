@@ -2,7 +2,7 @@
 $(document).ready(function() {
 
     getOpenIssues();
-    getClosedIssues();
+    // getClosedIssues();
 
     $('#submit-github-issue-button').click(function() {
         createIssue();
