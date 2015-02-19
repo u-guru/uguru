@@ -25,7 +25,7 @@
               <span class="profile" style="font-size:14px !important;" ng-click="goToGuruProfile(guru)" >view profile</span>
             </div>
             <div class="stars" ng-show="guru.guru_avg_rating">
-                <span class="icon ion-star" ng-repeat="i in getNumber(guru.student_avg_rating) track by $index"></span>
+                <span class="icon ion-star" ng-repeat="i in getNumber(guru.guru_avg_rating) track by $index"></span>
               </div>
               <div class="stars" ng-show="!request.guru.guru_avg_rating">
                 First Time Guru

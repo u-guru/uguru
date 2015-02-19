@@ -10,7 +10,8 @@ angular.module('uguru.student.controllers')
   '$timeout',
   '$localstorage',
   '$stateParams',
-  function($scope, $state, $ionicPopup, $timeout, $localstorage, $stateParams) {
+  '$cordovaDialogs',
+  function($scope, $state, $ionicPopup, $timeout, $localstorage, $stateParams, $cordovaDialogs) {
 
     $scope.request = JSON.parse($stateParams.requestObj);
     $scope.guru = $scope.request.guru;
@@ -54,12 +55,25 @@ angular.module('uguru.student.controllers')
       }
     }
 
+    $scope.guruRejectConfirmDialog = function() {
+        var rejectGuruCallback = function() {
+          requestObj = $scope.request;
+          requestObj.status = 3;
+          $scope.user.updateObj($scope.user, 'requests', requestObj, $scope);
+          $scope.updateUserRequest($scope,$scope.request, 0);
+      }
+
+
+          dialog_title = "Are you sure?";
+          dialog_message = "You may not hear from this Guru again for this request";
+          button_arr = ['Cancel', 'Sure'];
+          $scope.root.dialog.confirm(dialog_message, dialog_title, button_arr, [null, rejectGuruCallback])
+    }
+
     $scope.rejectGuru = function() {
-      requestObj = $scope.request;
-      requestObj.status = 3; //guru rejected
-      $scope.user.updateObj($scope.user, 'requests', requestObj, $scope);
-      $scope.updateUserRequest($scope,$scope.request, 0) //update back to processing gurus
-      $state.go('^.home');
+
+      $scope.guruRejectConfirmDialog();
+       //update back to processing gurus
       // $state.go('^.home');
     }
 

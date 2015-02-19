@@ -105,6 +105,8 @@ angular.module('uguru.util.controllers', [])
     $scope.universitySelected = function(university) {
       $scope.user.university_id = university.id;
       $scope.user.university = university;
+      $scope.user.university.latitude = university.location.latitude;
+      $scope.user.university.longitude = university.location.longitude;
       $scope.search_text = '';
       $scope.keyboard_force_off = true;
       $scope.rootUser.updateLocal($scope.user);

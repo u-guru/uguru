@@ -28,11 +28,26 @@ angular.module('uguru.user', [])
                 user.active_requests.push(index_request);
               }
               else if (index_request.status === 1) {
-                user.incoming_requests.push(index_request);
-              }
-              else {
+              //   if (user.incoming_requests.length === 0) {
+              //       index_request = user.requests[0];
+              //       index_request.status = 1;
+              //       index_request.guru = {
+              //           guru_sessions : [1,2,3,4,5],
+              //           guru_courses : user.student_courses,
+              //           name : 'Samir Makhani',
+              //           guru_avg_rating : 4
+              //       }
+              //       console.log(index_request);
+              //       user.incoming_requests.push(index_request);
+              //   }
+
+              //   user.incoming_requests.push(index_request);
+
+              // }
+              // else {
                 user.previous_requests.push(index_request);
-              }
+              // }
+                }
             }
         }
 
@@ -153,7 +168,7 @@ angular.module('uguru.user', [])
                 }
               }
         },
-        getUserFromServer: function($scope) {
+        getUserFromServer: function($scope, callback) {
 
             if ($scope) {
                 var scope_user_id = $scope.user.id;
@@ -163,11 +178,15 @@ angular.module('uguru.user', [])
 
             Restangular.one('user', scope_user_id).customGET().then(
                 function(user) {
+                    console.log(user.plain());
                     var processed_user = processResults(user.plain());
                     if ($scope) {
                         $scope.user = processed_user;
                     } else {
                         $localstorage.setObject('user', processed_user);
+                    }
+                    if (callback) {
+                        callback($scope);
                     }
                 },
                 function(error) {
@@ -182,8 +201,8 @@ angular.module('uguru.user', [])
                     .one('user', userObj.id).one(param)
                     .customPOST(JSON.stringify(payload))
                     .then(function(user){
-                        console.log(user);
                         $scope.user = processResults(user);
+                        $localstorage.setObject('user', $scope.user);
                     }, function(err){
                         if (err.status === 409 ) {
                             console.log('already have an active request');
@@ -226,8 +245,10 @@ angular.module('uguru.user', [])
                 Restangular
                     .one('user', userObj.id).one(param)
                     .customPUT(JSON.stringify(payload))
-                    .then(function(request){
-
+                    .then(function(user){
+                        console.log(user);
+                        $scope.user = processResults(user);
+                        $state.go('^.home');
                         // $scope.user.requests.push(request);
                         // $scope.rootUser.updateLocal($scope.user);
                     }, function(err){

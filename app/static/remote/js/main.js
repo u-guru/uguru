@@ -165,7 +165,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
           // $localstorage.removeObject('user');
           $scope.user = User.getLocal();
-
           $scope.user.updateAttr = User.updateAttrUser;
           $scope.user.createObj = User.createObj;
           $scope.user.updateObj = User.updateObj;

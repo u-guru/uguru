@@ -5,7 +5,8 @@ angular.module('uguru.root.services', [])
     '$localstorage',
     '$timeout',
     '$cordovaProgress',
-    function($cordovaKeyboard, $localstorage, $timeout, $cordovaProgress) {
+    '$cordovaDialogs',
+    function($cordovaKeyboard, $localstorage, $timeout, $cordovaProgress, $cordovaDialogs) {
 
     this.util = {
         objectFindByKey: function(array, key, value) {
@@ -94,6 +95,32 @@ angular.module('uguru.root.services', [])
                     var button = targetElement.classList.remove('active');
                 },
             250)
+        }
+    }
+
+    this.dialog = {
+        alert: function(msg, title, button_name, callback) {
+          $cordovaDialogs.alert(msg, title, button_name).then(function() {
+            if (callback) {
+              callback();
+            }
+          });
+        },
+        confirm: function(msg, title, button_array, arr_callback) {
+          $cordovaDialogs.confirm(msg, title, button_array).then(function(button_index) {
+
+            if (button_index === 1) {
+                if (arr_callback[0]) {
+                    arr_callback[0]();
+                }
+            }
+
+            if (button_index === 2) {
+                console.log('sup');
+                arr_callback[1]();
+            }
+
+          });
         }
     }
 

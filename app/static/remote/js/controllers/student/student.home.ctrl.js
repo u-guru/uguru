@@ -22,32 +22,33 @@ angular.module('uguru.student.controllers', [])
   'Popover',
   '$ionicBackdrop',
   'User',
+  '$ionicHistory',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $cordovaProgress, $q,
  	University, $templateCache, $ionaicHistory, Popup, $popover, Popover, $ionicBackdrop,
-  User) {
+  User, $ionicHistory) {
 
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
 	$scope.base_url =  BASE;
 	$scope.progress_active = false;
 
-  $scope.user.active_requests = [];
-    $scope.user.previous_requests = [];
+  // $scope.user.active_requests = [];
+  //   $scope.user.previous_requests = [];
 
-    $scope.processStudentRequests = function(user_requests) {
-        if (user_requests && $scope.user.requests.length > 0) {
-            for (var i = 0; i < $scope.user.requests.length; i ++) {
-              var index_request = user_requests[i];
-              if (index_request.status === 0) {
-                $scope.user.active_requests.push(index_request);
-              } else {
-                $scope.user.previous_requests.push(index_request);
-          }
-        }
-    }
+  //   $scope.processStudentRequests = function(user_requests) {
+  //       if (user_requests && $scope.user.requests.length > 0) {
+  //           for (var i = 0; i < $scope.user.requests.length; i ++) {
+  //             var index_request = user_requests[i];
+  //             if (index_request.status === 0) {
+  //               $scope.user.active_requests.push(index_request);
+  //             } else {
+  //               $scope.user.previous_requests.push(index_request);
+  //         }
+  //       }
+  //   }
 
-  }
+  // }
 
   $scope.checkCourseInActiveRequests = function(course) {
     var active_requests = $scope.user.active_requests;
@@ -272,25 +273,36 @@ angular.module('uguru.student.controllers', [])
 
     // $scope.processStudentRequests($scope.user.requests);
 
+    $scope.$on('$ionicView.beforeEnter', function(){
+      console.log('student home view before Enter');
+      User.getUserFromServer($scope);
+    });
+
     $scope.$on('$ionicView.enter', function(){
-      if ($scope.course && scope.course.active_requests && $scope.course.active_requests.length > 0) {
+      console.log('student home view has entered');
 
-        var course = $scope.course.active_requests[0];
-        if ($scope.user.incoming_requests.length > 0) {
-          var first_incoming_request = $scope.user.incoming_requests[0];
+      var checkForIncomingRequests = function($scope) {
+        if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
 
-          var paramPayload = {
-            requestObj:JSON.stringify(first_incoming_request),
+          // var course = $scope.course.active_requests[0];
+          if ($scope.user.incoming_requests.length > 0) {
+            var first_incoming_request = $scope.user.incoming_requests[0];
+
+            var paramPayload = {
+              requestObj:JSON.stringify(first_incoming_request),
+            }
+
+            $state.go('^.guru-available', paramPayload);
           }
 
-          $state.go('^.guru-available', paramPayload);
         }
-
       }
+
+      User.getUserFromServer($scope, checkForIncomingRequests);
     });
 
     $scope.$on('$ionicView.loaded', function(){
-      // console.log($scope.user);
+      console.log('view has loaded');
       if (!$scope.user.onboarding || !$scope.user.onboarding.get_started) {
         $scope.user.onboarding = {};
         $scope.user.onboarding.get_started = true;

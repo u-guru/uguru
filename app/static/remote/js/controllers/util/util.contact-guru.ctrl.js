@@ -8,8 +8,9 @@ angular.module('uguru.util.controllers')
   '$timeout',
   '$localstorage',
   '$ionicModal',
+  'User',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal) {
+ 	$ionicModal, User) {
     $scope.$on('modal.shown', function() {
 
       if ($scope.contactingGuruModal.isShown()) {
@@ -17,12 +18,14 @@ angular.module('uguru.util.controllers')
 
         pulse.classList.add('animated', 'pulse');
         setTimeout(function() {
+          console.log('shit is pulsating 1 sec passed');
           pulse.classList.remove('animated', 'pulse');
         }, 1000);
 
         setTimeout(function() {
           pulse.classList.add('animated', 'pulse');
           setTimeout(function() {
+            console.log('shit is pulsating 3 second has passed');
             pulse.classList.remove('animated', 'pulse');
           }, 2000);
         }, 2000);
@@ -42,12 +45,6 @@ angular.module('uguru.util.controllers')
         }, 4000);
 
       }
-
-      console.log($localstorage.getObject('device'))
-
-      // if ($localstorage.getObject('device')) {
-
-      // }
 
     });
 
