@@ -321,7 +321,7 @@ angular.module('uguru.util.controllers')
 
     $scope.completeSignup = function() {
 
-      if (!$scope.validateSignupForm()) {
+      if (!$scope.validateSignupForm() && !$scope.signupForm.fb_id) {
         return;
       }
 

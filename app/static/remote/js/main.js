@@ -5,7 +5,7 @@ var BASE_URL = 'http://uguru-rest.herokuapp.com'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  REST_URL = 'http://192.168.1.233:5000'
+  REST_URL = 'http://uguru-rest.herokuapp.com'
   BASE_URL = 'http://192.168.1.233:8100'
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',

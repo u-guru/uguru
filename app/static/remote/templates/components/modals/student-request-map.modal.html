@@ -1,5 +1,9 @@
 <ion-modal-view ng-controller='RequestLocationController' class="map-modal" disable-tap>
     <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)" ng-init="init()">
+        <button style="font-size:20px !important;" ng-show="location_error" ng-click="toggleLocationService()" class="button button-clear button-stable icon ion-navigate"></button>
+
+        <button style="font-size:20px !important;" ng-show="!location_error" ng-click="toggleLocationService()" class="button button-clear button-positive icon ion-navigate"></button>
+
         <h1 class="title">Select Location</h1>
         <button ng-click="hideRequestMapModal()" class="button button-clear button-positive">cancel</button>
     </ion-header-bar>

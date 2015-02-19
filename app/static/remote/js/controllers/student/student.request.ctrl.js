@@ -15,9 +15,10 @@ angular.module('uguru.student.controllers')
   '$ionicNavBarDelegate',
   'Geolocation',
   '$ionicPosition',
+  '$cordovaDialogs',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaProgress, $stateParams,
-  $ionicNavBarDelegate, Geolocation, $ionicPosition) {
+  $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs) {
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/add-note.modal.html', {
       scope: $scope,
@@ -229,7 +230,36 @@ angular.module('uguru.student.controllers')
       //validate the form?
     }
 
+    $scope.showDialog = function(msg, title, button_name, callback) {
+      $cordovaDialogs.alert(msg, title, button_name).then(function() {
+        if (callback) {
+          callback();
+        }
+      });
+    }
+    $scope.toggleLocationService = function() {
+      if (!$scope.location_error) {
+        $scope.location_error = 'turned-off';
+      } else {
+        var location_error =  $scope.location_error;
+        if (location_error == 'denied') {
+          var callbackSuccess = function() {
+            $scope.requestMapModal.hide()
+          }
+          $scope.showDialog('Please go to privacy settings, turn on location services for Uguru, and try again', 'Location Error', 'OK', callbackSuccess);
+        } else if (location_error == 'unavailable') {
+          $scope.showDialog('Sorry, GPS is currently unavailable for your phone at the moment. Please try again later', 'Location Error', 'OK');
+        } else if (location_error == 'timeout') {
+          $scope.showDialog('Sorry, GPS is currently unavailable for your phone at the moment. Please try again later', 'Location Error', 'OK');
+        } else {
+          Geolocation.getUserPosition($scope, $scope.showRequestMapModal);
+          $scope.location_error = null;
+        }
+      }
+    }
+
     $scope.time_checkbox = 0;
+    $scope.location_error = null;
     $scope.virtual_guru_checkbox = true;
     $scope.person_guru_checkbox = false;
     $scope.requestPosition = null;
