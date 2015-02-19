@@ -293,7 +293,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.loginUser = function() {
-      if (!$scope.validateLoginForm()) {
+      if (!$scope.validateLoginForm() && !$scope.user.fb_id) {
         return;
       }
 

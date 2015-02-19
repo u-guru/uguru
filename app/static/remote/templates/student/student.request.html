@@ -41,19 +41,19 @@
           <div class="row">
             <div class="col col-25 relative">
               <!-- <div class="icon ion-checkmark-circled" id="iconChecked"></div> -->
-              <img src='./img/checkbutton.png' class="checkmark-circled" id="iconChecked">
+              <img src='./img/checkbutton.png' ng-show="time_checkbox === 0" class="checkmark-circled" id="iconChecked">
               <div ng-click="checkboxClicked(0)" class="icon ion-record" id="iconRecord0"></div>
             </div>
             <div class="col col-25 relative">
-              <!-- <div ng-show="time_checkbox == 1" class="icon ion-checkmark-circled"></div> -->
+              <img ng-show="time_checkbox === 1" src='./img/checkbutton.png' class="checkmark-circled" ></img>
               <div ng-click="checkboxClicked(1)" class="icon ion-record" id="iconRecord1"></div>
             </div>
             <div class="col col-25 relative">
-              <!-- <div ng-show="time_checkbox == 2" class="icon ion-checkmark-circled"></div> -->
+              <img ng-show="time_checkbox === 2"src='./img/checkbutton.png' class="checkmark-circled" >
               <div ng-click="checkboxClicked(2)" class="icon ion-record" id="iconRecord2"></div>
             </div>
             <div class="col col-25 relative">
-              <!-- <div ng-show="time_checkbox == 3" class="icon ion-checkmark-circled"></div> -->
+              <img ng-show="time_checkbox === 3" src='./img/checkbutton.png' class="checkmark-circled" >
               <div ng-click="checkboxClicked(3)" class="icon ion-record" id="iconRecord3"></div>
             </div>
           </div>
@@ -99,7 +99,7 @@
     <div class='row'>
       <div class="col">
         <div class="center">
-            <img style="background:rgba(105, 179, 165, 1)" src='./img/uguru-04.png' width="60%" class="uguru_glass center">        
+            <img style="background:rgba(105, 179, 165, 1)" src='./img/uguru-04.png' width="60%" class="uguru_glass center">
         </div>
       </div>
     </div>

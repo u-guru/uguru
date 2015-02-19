@@ -58,58 +58,58 @@ angular.module('uguru.student.controllers')
       var to_position = 0;
 
     $scope.checkboxClicked = function(index) {
-
-      obj = document.getElementById('iconChecked');
-      obj.style.left = from_position + "px";
+      console.log('shit was clicked', index);
+      // obj = document.getElementById('iconChecked');
+      // obj.style.left = from_position + "px";
 
       $scope.time_checkbox = index;
 
-      var iconRecord = "iconRecord" + index;
-      var checkbox_num = [document.getElementById(iconRecord)];
-      var checkbox_position = $ionicPosition.offset(checkbox_num).left;
-      var to = half_box_size + checkbox_position
-      to_position = to;
+      // var iconRecord = "iconRecord" + index;
+      // var checkbox_num = [document.getElementById(iconRecord)];
+      // var checkbox_position = $ionicPosition.offset(checkbox_num).left;
+      // var to = half_box_size + checkbox_position
+      // to_position = to;
 
-      animateMe();
+      // animateMe();
 
-      function animateRight(obj, from, to){
-        if(from >= to){
-          obj.style.visibility = 'display';
-          return;
-        }
-        else {
-          var box = obj;
-          box.style.left = from + "px";
-          setTimeout(function(){
-              animateRight(obj, from + 2, to);
-          }, 1)
-        }
-      }
+      // function animateRight(obj, from, to){
+      //   if(from >= to){
+      //     obj.style.visibility = 'display';
+      //     return;
+      //   }
+      //   else {
+      //     var box = obj;
+      //     box.style.left = from + "px";
+      //     setTimeout(function(){
+      //         animateRight(obj, from + 2, to);
+      //     }, 1)
+      //   }
+      // }
 
-      function animateLeft(obj, from, to){
-        if(from <= to){
-          obj.style.visibility = 'display';
-          return;
-        }
-        else {
-          var box = obj;
-          box.style.left = from + "px";
-          setTimeout(function(){
-              animateLeft(obj, from - 2, to);
-          }, 1)
-        }
-      }
+      // function animateLeft(obj, from, to){
+      //   if(from <= to){
+      //     obj.style.visibility = 'display';
+      //     return;
+      //   }
+      //   else {
+      //     var box = obj;
+      //     box.style.left = from + "px";
+      //     setTimeout(function(){
+      //         animateLeft(obj, from - 2, to);
+      //     }, 1)
+      //   }
+      // }
 
-      function animateMe() {
+      // function animateMe() {
 
-        if(to_position > from_position) {
-          animateRight(document.getElementById('iconChecked'), from_position, to_position);
-        }
-        else {
-          animateLeft(document.getElementById('iconChecked'), from_position, to_position);
-        }
-      }
-      from_position = to_position;
+      //   if(to_position > from_position) {
+      //     animateRight(document.getElementById('iconChecked'), from_position, to_position);
+      //   }
+      //   else {
+      //     animateLeft(document.getElementById('iconChecked'), from_position, to_position);
+      //   }
+      // }
+      // from_position = to_position;
     }
 
     $scope.toggleVirtualGuru = function() {
