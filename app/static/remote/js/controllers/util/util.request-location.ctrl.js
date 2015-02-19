@@ -53,6 +53,8 @@ angular.module('uguru.util.controllers')
             // $scope.actual_map.setZoom(17);
             var formatted_address = results[0].formatted_address;
             $scope.request.location = formatted_address;
+            $scope.requestPosition.coords.latitude = latCoord;
+            $scope.requestPosition.coords.longitude = longCoord;
             $timeout(function() {
               $scope.request.location = formatted_address;
             }, 500);
@@ -92,9 +94,6 @@ angular.module('uguru.util.controllers')
     $scope.$on('modal.shown', function() {
 
       if ($scope.requestMapModal.isShown()) {
-
-
-
 
           var mapContainer = $scope.requestMapModal.$el.find("ion-pane")[0];
           var initMapCoords;

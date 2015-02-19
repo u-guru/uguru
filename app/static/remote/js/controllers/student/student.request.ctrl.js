@@ -16,9 +16,10 @@ angular.module('uguru.student.controllers')
   'Geolocation',
   '$ionicPosition',
   '$cordovaDialogs',
+  '$cordovaGeolocation',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaProgress, $stateParams,
-  $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs) {
+  $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation) {
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/add-note.modal.html', {
       scope: $scope,
@@ -118,17 +119,57 @@ angular.module('uguru.student.controllers')
     $scope.togglePersonGuru = function() {
       $scope.person_guru_checkbox = !$scope.person_guru_checkbox;
       if ($scope.person_guru_checkbox) {
-        $scope.user.position = null;
+        // $scope.user.position = null;
+
+        $scope.checkLocationStatus();
+
         if (!$scope.requestPosition) {
           //get location & fire the modal
-
           Geolocation.getUserPosition($scope, $scope.showRequestMapModal);
         }
         //user already has provided access to their location
         else {
-          $scope.requestMapModal.show()
+          $scope.requestMapModal.show();
         }
       }
+    }
+
+    $scope.checkLocationStatus = function() {
+
+      console.log('current location status is..', $scope.location_error);
+      if ($scope.location_error === 'turned-off') {
+        console.log('skipping status check upon user request...');
+        return;
+      } else {
+
+      }
+      var posOptions = {
+          timeout: 10000,
+          enableHighAccuracy: false, //may cause high errors if true
+      };
+
+      console.log('checking status of user location services...')
+
+      $cordovaGeolocation
+        .getCurrentPosition(posOptions)
+        .then(function (position) {
+          $scope.location_error = null;
+          console.log('user has it turned on');
+
+        }, function(err) {
+          if (err.code === 1) {
+            $scope.location_error = 'denied';
+            console.log('user has denied...');
+          }
+          if (err.code === 2) {
+            $scope.location_error = 'unavailable';
+            console.log('it is unavailable...');
+          }
+          if (err.code === 3) {
+            console.log('it is unavailable...');
+            $scope.location_error = 'timeout';
+          }
+      });
     }
 
 
