@@ -41,7 +41,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
                       $ionicHistory.clearCache();
                       $ionicHistory.clearHistory();
-                      $cordovaSplashscreen.show();
+                      // $cordovaSplashscreen.show();
                       window.localStorage.clear();
 
                       //remove all angular templates
