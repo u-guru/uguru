@@ -1044,7 +1044,7 @@ class Version(Base):
         latest_major_build = Version.get_most_recent_major_build(version_id)
         if not latest_major_build:
             new_major_build_num = 0
-            latest_minor_build_num = 0
+            latest_minor_build_num = sorted(Build.query.all(), key=lambda k:k.id)[-1].minor_num
         else:
             new_major_build_num = latest_major_build.major_num
             latest_minor_build_num = sorted(Build.query.filter_by(version_id=version_id,
