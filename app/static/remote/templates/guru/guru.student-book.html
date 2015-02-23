@@ -30,7 +30,11 @@
         </li>
       </div>
     </ion-content>
-    <ion-content ng-show="user.pending_proposals.length > 0 || user.active_proposals.length > 0"
+
+
+
+
+    <ion-content ng-show="user.pending_proposals.length > 0 || user.active_proposals.length > 0 || user.active_guru_sessions.length > 0"
     ng-controller="StudentBookController">
         <!-- <div class="no-session margin-150-10 center">
           <h2>No sessions yet</h2>
@@ -39,8 +43,45 @@
           </div>
         </div> -->
 
-      <div class="add-class margin-top-40" ng-repeat="proposal in user.pending_proposals">
+      <div class="add-class margin-top-40" ng-repeat="session in user.active_guru_sessions">
         <div class="session-progress" ng-click="goToActiveSession(session)">
+          <li class="item padding-0 no-border">
+            <div class="course padding-10-15">
+              <div class="box-1">
+                <span class="name">{{session.request.course.short_name}}</span>
+                <span class="session">Session</span>
+              </div>
+              <div class="message">
+                <span style="color:red;" ng-show="session.status === 1">STUDENT EN ROUTE</span>
+                <span style="color:red;" ng-show="session.status === 2">SESSION IN PROGRESS</span>
+              </div>
+            </div>
+          </li>
+          <li class="item padding-6-15">
+            <div class="icon"><img src='./img/shun.png' class='width'></div>
+            <div class="box-2 margin-top">
+              <div class="name">{{session.request.student.name.split(" ")[0]}}
+                <!-- <span class="profile" style="font-size:12px;">Details</span> -->
+              </div>
+              <div class="stars" ng-show="session.request.student.student_avg_rating">
+                <span class="icon ion-star" ng-repeat="i in getNumber(session.request.student.student_avg_rating) track by $index"></span>
+              </div>
+              <div class="stars" ng-show="!session.request.student.student_avg_rating">
+                First time using uGuru
+              </div>
+            </div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="location" style="white-space: normal;"><span class="icon ion-navigate"></span><span class="bold">Location:</span> {{session.request.address}}</div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="tag"><span class="icon ion-pricetag"></span>You'll earn <span class="bold">$4</span> for every <span class="bold">15 minutes</span></div>
+          </li>
+        </div>
+      </div>
+
+      <div class="add-class margin-top-40" ng-repeat="proposal in user.pending_proposals">
+        <div class="session-progress">
           <li class="item padding-0 no-border">
             <div class="course padding-10-15">
               <div class="box-1">
@@ -48,7 +89,7 @@
                 <span class="session">Session</span>
               </div>
               <div class="message">
-                <span ng-show="proposal.status === 2">WAITING FOR STUDENT</span>
+                <span style="color:red;" ng-show="proposal.status === 2">WAITING FOR STUDENT</span>
               </div>
             </div>
           </li>
@@ -114,7 +155,7 @@
 
     </ion-content>
 
-     <ion-content ng-show="user.active_proposals.length === 0 && user.pending_proposals.length == 0">
+     <ion-content ng-show="user.active_proposals.length === 0 && user.pending_proposals.length == 0 && user.active_guru_sessions.length === 0 && previous_guru_sessions.length === 0">
         <div class="no-session margin-150-10 center">
           <h2>No sessions yet</h2>
           <div ng-show="user.student_courses.length > 0">

@@ -19,17 +19,7 @@ angular.module('uguru.student.controllers')
 
     $scope.session = JSON.parse($stateParams.sessionObj);
 
-    $scope.session = {
-      course: {short_name: 'CS10'},
-      guru: {first_name: 'Samir'}
-    }
-
-    $scope.guru = {
-      first_name: 'Shun',
-      course:$scope.session.course.short_name,
-      guru_courses: $scope.user.student_courses,
-      student: {first_name: 'Samir'}
-    }
+    $scope.timer = {minutes: $scope.session.minutes, seconds: $scope.session.seconds, hours:$scope.session.hours, active:false};
 
     $scope.goToSessionMessages = function(session) {
       $state.go('^.^.student.messages', {sessionObj:JSON.stringify(session)});
@@ -43,13 +33,101 @@ angular.module('uguru.student.controllers')
       $state.go('^.guru-session', {sessionObj:JSON.stringify(session)});
     }
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/ratings.modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.ratingModal = modal;
-    });
 
+    $scope.startTimer = function() {
+      $scope.timer.active = true;
+      $scope.addOneSecond();
+    }
+
+    $scope.incrementMinute = function() {
+      $scope.timer.minutes += 1;
+    }
+
+    $scope.decrementMinute = function() {
+      $scope.timer.minutes -= 1;
+    }
+
+    $scope.incrementHour = function() {
+      $scope.timer.hours += 1;
+    }
+
+    $scope.decrementHour = function() {
+      $scope.timer.hours -= 1;
+    }
+
+    $scope.resetTimer = function() {
+      var successCallback = function() {
+        $scope.timer.seconds = 0;
+        $scope.timer.hours = 0;
+        $scope.timer.minutes = 0;
+      }
+
+      var arr_callback = [null, successCallback];
+
+      $scope.root.dialog.confirm('You will lose track of all progress', 'Are you sure?', ['Cancel', 'Yes'], arr_callback);
+    }
+
+    $scope.addOneSecond = function() {
+      $timeout(function() {
+
+
+        $scope.timer.seconds += 1;
+        $scope.updateTimer();
+
+        if ($scope.timer.active) {
+          $scope.addOneSecond();
+        }
+
+      },1000)
+    }
+
+    $scope.updateTimer = function() {
+      if ($scope.timer.seconds > 59) {
+        $scope.timer.seconds = 0;
+        $scope.timer.minutes += 1;
+      }
+      if ($scope.timer.minutes > 59) {
+        $scope.timer.minutes = 0;
+        $scope.timer.hours += 1
+      }
+    }
+
+    $scope.pauseTimer = function() {
+      $scope.timer.active = false;
+    }
+
+    $scope.setTimer = function(seconds, minutes, hours) {
+        $scope.timer.hours = hours;
+        $scope.timer.minutes = minutes;
+        $scope.timer.seconds = seconds;
+    }
+
+    $scope.submitTimeToServer = function() {
+      //guru start session
+        $scope.session.status = 3;
+        $scope.session.minutes = $scope.timer.minutes;
+        $scope.session.seconds = $scope.timer.seconds;
+
+
+        var sessionPayload = {session: $scope.session}
+
+        var updateObjCallback = function() {
+          $state.go('^.home');
+        }
+
+        $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope, updateObjCallback);
+    }
+
+    $scope.submitTime = function() {
+
+      var successCallback = function() {
+        $scope.submitTimeToServer();
+      }
+
+      var arr_callback = [null, successCallback];
+
+      $scope.root.dialog.confirm('The student will be billed', 'Are you sure?', ['Cancel', 'Yes'], arr_callback);
+    }
 
   }
 

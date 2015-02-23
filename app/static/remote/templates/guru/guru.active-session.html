@@ -1,45 +1,55 @@
-<ion-view title="Your {{session.course.short_name}} Session">
-  <ion-content class="background-black" style="background-color:black; opacity:0.8">
+<ion-view title="Your {{session.request.course.short_name}} Session" disable-tap>
+    <ion-header-bar style="height:30px; text-align:center;" class="bar-subheader bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)" >
+
+      <div style="margin-top:5px; width:100%; white-space:no-wrap; overflow: hidden; text-overflow: ellipsis;text-transform:none; font-size:12px;">
+        Last updated: {{last_updated}}
+      </div>
+
+    </ion-header-bar>
+
+
+  <ion-content class="background-black" style="background-color:black; opacity:0.8; top:88px;">
     <div class="oh relative">
-      <div class="md-box-1 center">
-        <div class="sm-box-1">
-          Woohoo!
+      <div class="md-box-1 center" ng-show="session.status === 1">
+         <ion-pane id="map_canvas" style="height: 60%;width: 100%;margin: 0px;">
+          <ui-gmap-google-map center="map.center" control="map.control" zoom="map.zoom"  pan="true" options="options">
+            <!-- <ui-gmap-search-box options="searchbox.options" template="searchbox.template" events="searchbox.events" parentdiv="searchbox.parentdiv"></ui-gmap-search-box> -->
+          </ui-gmap-google-map>
+          </ion-pane>
+      </div>
+      <div class="md-box-1 center" ng-show="session.status === 2">
+        <div class="sm-box-1 center">
+          Session <br><br> Progress
         </div>
         <div class="sm-box-2">
-          Shun is <br> on the way!
-        </div>
-      </div>
-      <div class="row bottom center">
-        <div class="col">
-          <div class="font-size-16"><span class="icon ion-navigate"></span>Meet at 375 Valencia St</div>
+
+          {{session.hours}}h, {{session.minutes}}m, {{session.seconds}}s
         </div>
       </div>
       <hr>
-      <ul class="list">
-        <li class="item padding-10-14">
-          <div class="icon"><img src='./img/shun.png' class='width'></div>
-          <div class="box">
-            <div class="name">Shun Kurosaki
-              <span class="profile" style="font-size:14px !important;" ng-click="goToGuruProfile(student)" >view profile</span>
-            </div>
-            <div class="stars">
-              <span class="icon ion-star"></span>
-              <span class="icon ion-star"></span>
-              <span class="icon ion-star"></span>
-              <span class="icon ion-star"></span>
-              <span class="icon ion-star"></span>
-            </div>
-          </div>
-        </li>
+      <ul class="list" ng-show="session.status === 1">
         <li class="item padding-0-4">
           <button class="button button-full button-positive" ng-click="goToSessionMessages(session)">
             Message {{session.guru.first_name}}
           </button>
-          <button class="button button-full button-positive button-outline" ng-click="goToSessionTimer(session)">
+          <button class="button button-full button-positive button-outline" ng-click="startSessionTimer(session)">
             Start Session
           </button>
           <button class="button button-full button-disabled button-outline" ng-click="processCancelSession()">
             Cancel Session
+          </button>
+        </li>
+      </ul>
+      <ul class="list" ng-show="session.status === 2">
+        <li class="item padding-0-4">
+          <button class="button button-full button-positive" ng-click="startSessionTimer(session)">
+            Resume Session
+          </button>
+          <button class="button button-full button-positive button-outline" ng-click="goToSessionMessages(session)">
+            View Message with {{session.guru.name.split(" ")[0]}}
+          </button>
+          <button class="button button-full button-positive button-outline">
+            Options
           </button>
         </li>
       </ul>

@@ -17,9 +17,10 @@ angular.module('uguru.student.controllers')
   '$ionicPosition',
   '$cordovaDialogs',
   '$cordovaGeolocation',
+  '$ionicHistory',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaProgress, $stateParams,
-  $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation) {
+  $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation, $ionicHistory) {
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/add-note.modal.html', {
       scope: $scope,
@@ -185,7 +186,7 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.goBackFromRequestsToHome = function() {
-      $scope.saveRequestToUser();
+      $ionicHistory.goBack();
     };
 
     $scope.initRequestObj = function() {

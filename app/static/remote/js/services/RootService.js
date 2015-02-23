@@ -116,7 +116,6 @@ angular.module('uguru.root.services', [])
             }
 
             if (button_index === 2) {
-                console.log('sup');
                 arr_callback[1]();
             }
 

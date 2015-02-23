@@ -51,7 +51,7 @@ angular.module('uguru.student.controllers', [])
   // }
 
   $scope.checkCourseInActiveRequests = function(course) {
-    var active_requests = $scope.user.active_requests;
+    var active_requests = $scope.user.active_requests || [];
     for (var i = 0; i < $scope.user.active_requests.length; i++) {
       var index_request = active_requests[i];
       if (index_request.course.short_name === course.short_name) {
@@ -131,9 +131,10 @@ angular.module('uguru.student.controllers', [])
 
     $scope.switchToGuruMode = function() {
       $scope.user.guru_mode = true;
-      $scope.rootUser.updateLocal($scope.user);
-      $scope.user.updateAttr('guru_mode', $scope.user, true);
-      $state.go('^.^.guru.home');
+      var goToGuruHome = function() {
+        $state.go('^.^.guru.home');
+      }
+      $scope.user.updateAttr('guru_mode', $scope.user, true, goToGuruHome, $scope);
     }
 
     $scope.goToRequest = function(course) {
@@ -227,6 +228,7 @@ angular.module('uguru.student.controllers', [])
       $scope.signupModal.show();
     }
 
+
     $scope.showComingSoon = function() {
       $scope.progress_active = true;
           $cordovaProgress.showText(false, "Coming Soon!", 'center');
@@ -275,34 +277,12 @@ angular.module('uguru.student.controllers', [])
 
     $scope.$on('$ionicView.beforeEnter', function(){
       console.log('student home view before Enter');
-      User.getUserFromServer($scope);
-    });
-
-    $scope.$on('$ionicView.enter', function(){
-      console.log('student home view has entered');
-
-      var checkForIncomingRequests = function($scope) {
-        if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
-
-          // var course = $scope.course.active_requests[0];
-          if ($scope.user.incoming_requests.length > 0) {
-            var first_incoming_request = $scope.user.incoming_requests[0];
-
-            var paramPayload = {
-              requestObj:JSON.stringify(first_incoming_request),
-            }
-
-            $state.go('^.guru-available', paramPayload);
-          }
-
-        }
-      }
-
-      User.getUserFromServer($scope, checkForIncomingRequests);
+      User.getUserFromServer($scope, null, $state);
+      $scope.user.guru_mode = false;
     });
 
     $scope.$on('$ionicView.loaded', function(){
-      console.log('view has loaded');
+      $scope.user.guru_mode = false;
       if (!$scope.user.onboarding || !$scope.user.onboarding.get_started) {
         $scope.user.onboarding = {};
         $scope.user.onboarding.get_started = true;

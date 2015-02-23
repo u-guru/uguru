@@ -1,6 +1,13 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
+        "file": "plugins/com.appgiraffe.plugins.applicationPreferences/www/applicationPreferences.js",
+        "id": "com.appgiraffe.plugins.applicationPreferences.applicationPreferences",
+        "clobbers": [
+            "appgiraffe.plugins.applicationPreferences"
+        ]
+    },
+    {
         "file": "plugins/com.ionic.keyboard/www/keyboard.js",
         "id": "com.ionic.keyboard.keyboard",
         "clobbers": [
@@ -303,6 +310,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/uk.co.whiteoctober.cordova.appversion/www/AppVersionPlugin.js",
+        "id": "uk.co.whiteoctober.cordova.appversion.AppVersionPlugin",
+        "clobbers": [
+            "cordova.getAppVersion"
+        ]
+    },
+    {
         "file": "plugins/com.phonegap.plugins.facebookconnect/facebookConnectPlugin.js",
         "id": "com.phonegap.plugins.facebookconnect.FacebookConnectPlugin",
         "clobbers": [
@@ -320,6 +334,7 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
+    "com.appgiraffe.plugins.applicationPreferences": "0.1.0",
     "com.ionic.keyboard": "1.0.3",
     "com.ohh2ahh.plugins.appavailability": "0.3.1",
     "com.plugin.datepicker": "0.5.0",
@@ -343,6 +358,7 @@ module.exports.metadata =
     "org.pushandplay.cordova.apprate": "1.1.6",
     "org.transistorsoft.cordova.background-geolocation": "0.3.6",
     "uk.co.ilee.touchid": "0.2.0",
+    "uk.co.whiteoctober.cordova.appversion": "0.1.5",
     "com.phonegap.plugins.facebookconnect": "0.11.0",
     "org.apache.cordova.device": "0.2.13"
 }

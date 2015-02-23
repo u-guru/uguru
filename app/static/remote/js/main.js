@@ -1,12 +1,12 @@
 // Uguru upp
 var LOCAL = false;
 var REST_URL = 'http://uguru-rest.herokuapp.com'
-var BASE_URL = 'http://uguru-rest.herokuapp.com'
+var BASE_URL = 'http://uguru-rest.herokuapp.com/app/'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  REST_URL = 'http://uguru-rest.herokuapp.com'
-  BASE_URL = 'http://192.168.1.233:8100'
+  REST_URL = 'http://10.248.146.36:5000'
+  BASE_URL = 'http://10.248.146.36:8100/remote/index.html#/student/home'
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.student.controllers', 'uguru.guru.controllers', 'uguru.version',
@@ -22,46 +22,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
     document.addEventListener("deviceready", function () {
         console.log('hiding splash screens..');
         $cordovaSplashscreen.hide();
-        var checkForAppUpdates = function () {
 
-            console.log('checking for app updates...');
-            Version.getUpdatedVersionNum().then(
-              //if user gets the right version
-              function(response) {
-                    var serverVersionNumber = JSON.parse(response).version;
-                    var currentVersion = Version.getVersion()
-                    //if brand new user with no version set
-                    if ((typeof currentVersion) === "undefined") {
-                      console.log('First time opening app - set version to 1.0');
-                      currentVersion = 1.0
-                      Version.setVersion(1.0);
-                    }
-                    console.log('user v:' + currentVersion.toString() + '. Server v:' + serverVersionNumber);
-                    if (serverVersionNumber != currentVersion) {
-
-                      $ionicHistory.clearCache();
-                      $ionicHistory.clearHistory();
-                      // $cordovaSplashscreen.show();
-                      window.localStorage.clear();
-
-                      //remove all angular templates
-                      $templateCache.removeAll();
-
-                      Version.setVersion(serverVersionNumber);
-                      $localstorage.set('recently_updated', true);
-                      console.log('V' + serverVersionNumber + 'stored to user');
-                      window.location = BASE_URL + "/remote/index.html#/student/home"
-                      window.location.reload(true);
-                    }
-               },
-
-               //connectivity issues
-              function(error) {
-                  console.log(error);
-                  console.log('Version not loaded');
-              }
-          );
-        }
 
         //Set platform in local store
         $localstorage.setObject('platform', ionic.Platform.platform());
@@ -98,41 +59,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           StatusBar.styleLightContent();
         }
 
-        document.addEventListener("resume", function() {
 
-            console.log('device is resuming....')
-            checkForAppUpdates();
-            console.log('Getting user from server')
-            User.getUserFromServer();
 
-        }, false);
-
-        document.addEventListener("online", function() {
-
-            console.log('device is online...')
-            checkForAppUpdates();
-            console.log('Getting user from server')
-            User.getUserFromServer();
-
-        }, false);
-
-        document.addEventListener("offline", function() {
-
-            console.log('device is offline...');
-            checkForAppUpdates();
-            console.log('getting updated user from server...');
-            User.getUserFromServer();
-
-        }, false);
-
-        document.addEventListener("pause", function() {
-            console.log('device is paused...')
-            checkForAppUpdates();
-            console.log('Getting user from server')
-            User.getUserFromServer();
-        }, false);
-
-        checkForAppUpdates();
+      checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
 
     });
 
@@ -161,7 +90,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '',
         abstract: true,
         templateUrl: 'templates/root.html',
-        controller: function($scope, $localstorage, User, RootService) {
+        controller: function($scope, $state, $localstorage, User, RootService, Version, $ionicHistory, $templateCache) {
 
           // $localstorage.removeObject('user');
           $scope.user = User.getLocal();
@@ -171,6 +100,43 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
           $scope.rootUser = User;
           $scope.root = RootService;
+
+          document.addEventListener("deviceready", function () {
+
+            User.getUserFromServer($scope, null, $state);
+            document.addEventListener("resume", function() {
+
+                console.log('device is resuming....')
+                 checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+                console.log('Getting user from server')
+                User.getUserFromServer($scope, null, 5000, $state);
+
+
+            }, false);
+
+            document.addEventListener("online", function() {
+
+                console.log('device is online...')
+              checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+                console.log('Getting user from server')
+                User.getUserFromServer($scope);
+
+            }, false);
+
+            document.addEventListener("offline", function() {
+
+                console.log('device is offline...');
+              checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+                console.log('getting updated user from server...');
+                User.getUserFromServer($scope);
+
+            }, false);
+
+            document.addEventListener("pause", function() {
+                console.log('device is paused...')
+              // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+            }, false);
+          });
 
         }
   }).
@@ -210,17 +176,17 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         controller: 'StudentRequestController'
   }).
   state('root.student.active-session', {
-        url: '/session/:sessionObj',
+        url: '/active-session/:sessionObj',
         templateUrl: BASE +  'templates/student/student.active-session.html',
         controller: 'StudentActiveSession'
   }).
   state('root.guru.session-start', {
-        url: '/session/:sessionObj',
+        url: '/start-session/:sessionObj',
         templateUrl: BASE +  'templates/guru/guru.session-start.html',
         controller: 'GuruSessionStartController'
   }).
   state('root.guru.active-session', {
-        url: '/session/:sessionObj',
+        url: '/active-session/:sessionObj',
         templateUrl: BASE +  'templates/guru/guru.active-session.html',
         controller: 'GuruActiveSession'
   }).
@@ -276,7 +242,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         controller: 'PreviousSessionDetailsController'
   }).
   state('root.student.messages', {
-        url: '/messages',
+        url: '/messages/:sessionObj',
         templateUrl: BASE + 'templates/student/student.messages.html',
         controller: 'StudentMessagesController'
   }).
@@ -440,3 +406,44 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
       }
   })
 });
+
+var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $localstorage) {
+
+            console.log('checking for app updates...');
+            Version.getUpdatedVersionNum().then(
+              //if user gets the right version
+              function(response) {
+                    var serverVersionNumber = JSON.parse(response).version;
+                    var currentVersion = Version.getVersion()
+                    //if brand new user with no version set
+                    if ((typeof currentVersion) === "undefined") {
+                      console.log('First time opening app - set version to 1.0');
+                      currentVersion = 1.0
+                      Version.setVersion(1.0);
+                    }
+                    console.log('user v:' + currentVersion.toString() + '. Server v:' + serverVersionNumber);
+                    if (serverVersionNumber != currentVersion) {
+
+                      $ionicHistory.clearCache();
+                      $ionicHistory.clearHistory();
+                      // $cordovaSplashscreen.show();
+                      window.localStorage.clear();
+
+                      //remove all angular templates
+                      $templateCache.removeAll();
+
+                      Version.setVersion(serverVersionNumber);
+                      $localstorage.set('recently_updated', true);
+                      console.log('V' + serverVersionNumber + 'stored to user');
+                      window.location = BASE_URL;
+                      window.location.reload(true);
+                    }
+               },
+
+               //connectivity issues
+              function(error) {
+                  console.log(error);
+                  console.log('Version not loaded');
+              }
+          );
+        }

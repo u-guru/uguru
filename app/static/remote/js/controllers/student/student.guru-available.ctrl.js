@@ -25,16 +25,36 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.acceptGuru = function() {
-      if ($scope.user.cards.length === 0) {
-        $state.go('^.add-payment');
-        return;
+      // if ($scope.user.cards.length === 0) {
+      //   $state.go('^.add-payment');
+      //   return;
+      // }
+
+      var acceptGuruCallback = function() {
+
+        $scope.request.guru_id = $scope.guru.id;
+
+        console.log('print request request before submitting');
+        console.log($scope.request)
+
+        var callbackSuccess = function($scope, processed_user) {
+            $scope.user.active_student_sessions = processed_user.active_student_sessions;
+            $scope.user.active_requests = processed_user.active_requests;
+            $scope.user.incoming_requests = processed_user.incoming_requests;
+            $state.go('^.home')
+        }
+
+        $scope.user.createObj($scope.user, 'sessions', $scope.request, $scope, callbackSuccess);
+
+
       }
 
-      $scope.request.status = 1;
-      $scope.request.guru_id = $scope.guru.id;
 
-      $scope.user.createObj($scope.user, 'sessions', $scope.request, $scope);
-      $scope.updateUserRequest($scope,$scope.request, 0) //update back to processing gurus
+      dialog_title = "Accept this Student";
+      dialog_message = "You will not be billed until the end of the session & 100% satisfaction guaranteed";
+      button_arr = ['Not ready', 'Yes'];
+      $scope.root.dialog.confirm(dialog_message, dialog_title, button_arr, [null, acceptGuruCallback])
+
 
       // $scope.user.sessions = [];
       // $scope.user.active_sessions = [];
@@ -45,23 +65,21 @@ angular.module('uguru.student.controllers')
 
     }
 
-    $scope.updateUserRequest = function(request, status) {
-      var user_requests = $scope.user.requests;
-      for (var i = 0; i < user_requests.length ; i++) {
-        var index_request = user_requests[i];
-        if (index_request.id === request.id) {
-          $scope.user.requests[i].status = 0;
-        }
-      }
-    }
-
     $scope.guruRejectConfirmDialog = function() {
         var rejectGuruCallback = function() {
           requestObj = $scope.request;
           requestObj.status = 3;
-          $scope.user.updateObj($scope.user, 'requests', requestObj, $scope);
-          $scope.updateUserRequest($scope,$scope.request, 0);
-      }
+
+          var updateObjRequestGuruCallback = function($scope, processed_user) {
+            $scope.user.active_requests = processed_user.active_requests;
+            $scope.user.incoming_requests = processed_user.incoming_requests;
+            console.log($scope.user);
+          }
+
+          $scope.user.updateObj($scope.user, 'requests', requestObj, $scope, updateObjRequestGuruCallback);
+
+
+        }
 
 
           dialog_title = "Are you sure?";

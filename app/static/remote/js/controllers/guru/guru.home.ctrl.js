@@ -21,9 +21,11 @@ angular.module('uguru.guru.controllers')
   '$popover',
   'Popover',
   '$ionicBackdrop',
+  'User',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $cordovaProgress, $q,
- 	University, $templateCache, $ionicHistory, Popup, $popover, Popover, $ionicBackdrop) {
+ 	University, $templateCache, $ionicHistory, Popup, $popover, Popover,
+  $ionicBackdrop, User) {
 
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
@@ -90,7 +92,10 @@ angular.module('uguru.guru.controllers')
 
     $scope.switchToStudentMode = function() {
       $scope.user.guru_mode = false;
-      $state.go('^.^.student.home');
+      $scope.user.updateAttr('guru_mode', $scope.user, false, goToGuruHome, $scope);
+      var goToGuruHome = function() {
+        $state.go('^.^.student.home');
+      }
     }
 
 
@@ -228,23 +233,20 @@ angular.module('uguru.guru.controllers')
 
           Popup.options.show($scope, welcomePopupOptions);
     }
-    $scope.user.updateAttr('is_a_guru', $scope.user, true);
+
+    $scope.$on('$ionicView.beforeEnter', function(){
+      console.log('guru home view before Enter');
+      User.getUserFromServer($scope, null, $state);
+    });
+
     $scope.$on('$ionicView.enter', function(){
 
       $scope.user.guru_mode = true;
+      $scope.user.updateAttr('is_a_guru', $scope.user, true);
+      $scope.user.updateAttr('guru_mode', $scope.user, true);
       $scope.user.is_a_guru = true;
-
-      if ($scope.user.active_proposals.length > 0) {
-        var first_active_proposal = $scope.user.active_proposals[0];
-
-        var paramPayload = {
-          requestObj:JSON.stringify(first_active_proposal.request),
-          proposalObj: JSON.stringify(first_active_proposal)
-        }
-
-        $state.go('^.student-available', paramPayload);
-      }
-
+      console.log('view enter is entering ')
+      console.log($scope.user);
     });
 
   }

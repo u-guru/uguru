@@ -1,13 +1,22 @@
 <ion-view title="Your {{session.course.short_name}} Session">
   <ion-content class="padding">
-    <div class="container" style="position:absolute; width:100%; margin-top:90%;">
-      <button class="button button-full button-positive" >
+    <div class="container center">
+      <span>{{timer.hours}}:{{timer.minutes}}:{{timer.seconds}}</span>
+    </div>
+    <div class="container" style="position:absolute; width:100%; margin-top:80%;">
+      <button class="button button-full button-positive" ng-click="startTimer()" ng-show="!timer.active">
           Start Timer
       </button>
-      <button class="button button-full button-positive button-outline" >
+      <button class="button button-full button-positive" ng-click="pauseTimer()" ng-show="timer.active">
+          Pause Timer
+      </button>
+      <button class="button button-full button-positive button-outline" ng-click="setTimer(59,59,59)" ng-show="!timer.active">
+          Set Timer
+      </button>
+      <button class="button button-full button-positive button-outline" ng-click="resetTimer()" ng-show="!timer.active">
           Reset Timer
       </button>
-      <button class="button button-full button-disabled button-outline">
+      <button class="button button-full button-positive button-outline" ng-click="submitTime()" ng-show="!timer.active">
           Submit Time
       </button>
     </div>
