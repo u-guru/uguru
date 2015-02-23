@@ -383,9 +383,9 @@ class Position(Base):
     request_id = Column(Integer, ForeignKey("request.id"))
 
     @staticmethod
-    def initFromJson(position_json):
+    def initFromJson(position_json, user_id):
         position = Position()
-        position.latitute = position_json.get('latitude')
+        position.latitude = position_json.get('latitude')
         position.longitude = position_json.get('longitude')
         position.altitude = position_json.get('altitude')
         position.accuracy = position_json.get('accuracy')
@@ -393,6 +393,7 @@ class Position(Base):
         position.heading = position_json.get('heading')
         position.speed = position_json.get('speed')
         position.timestamp = position_json.get('timestamp')
+        position.user_id = user_id
         db_session.add(position)
         db_session.commit()
         return position
@@ -468,6 +469,8 @@ class Proposal(Base):
     GURU_REJECTED = 3
     GURU_EXPIRED = 4
     GURU_CHOSEN = 5
+    GURU_ACCEPT_STUDENT_CANCELED = 6
+    GURU_SENT_STUDENT_CANCELED = 7
 
     time_created = Column(DateTime)
     time_updated = Column(DateTime)
@@ -625,6 +628,8 @@ class Session(Base):
 
     seconds = Column(Integer)
     minutes = Column(Integer)
+    hours = Column(Integer)
+
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
         primaryjoin = "(User.id==Session.guru_id) & "\
@@ -634,8 +639,7 @@ class Session(Base):
 
     student_id = Column(Integer, ForeignKey('user.id'))
     student = relationship("User",
-        primaryjoin = "(User.id==Session.student_id) & "\
-                        "(User.is_a_guru==False)",
+        primaryjoin = "(User.id==Session.student_id)",
                         uselist=False,
                         backref="student_sessions")
 
@@ -667,6 +671,13 @@ class Session(Base):
         primaryjoin = "Relationship.id == Session.relationship_id",
                         uselist=False,
                         backref="sessions")
+
+    card_id = Column(Integer, ForeignKey('card.id'))
+    card = relationship("Card",
+        uselist = False,
+        primaryjoin = "Card.id == Session.card_id",
+        backref = 'sessions'
+        )
 
     rating_id = Column(Integer, ForeignKey("rating.id"))
     request_id = Column(Integer, ForeignKey("request.id"))
@@ -778,7 +789,7 @@ class Message(Base):
         message.relationship_id = message_json.get('relationship_id')
         message.session_id = message_json.get('session_id')
         message.sender_id = message_json.get('sender_id')
-        message.receiver_id = message_json.get('received_id')
+        message.receiver_id = message_json.get('receiver_id')
         db_session.add(message)
         db_session.commit()
 

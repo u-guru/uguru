@@ -17,8 +17,9 @@ course_fields['short_name'] = fields.String(attribute='short_name')
 course_fields['title'] = fields.String(attribute='full_name')
 
 position_fields = {}
+position_fields['id'] = fields.Integer(attribute='id')
 position_fields['latitude'] = fields.Float(attribute='latitude')
-position_fields['longitude'] = fields.Float(attribute='latitude')
+position_fields['longitude'] = fields.Float(attribute='longitude')
 
 guru_rating_fields = {}
 guru_rating_fields['id'] = fields.Integer(attribute='id')
@@ -34,11 +35,19 @@ guru_fields['guru_courses'] = fields.List(fields.Nested(course_fields))
 guru_fields['majors'] = fields.List(fields.Nested(major_fields))
 guru_fields['guru_introduction'] = fields.String(attribute='guru_introduction')
 guru_fields['guru_ratings'] = fields.List(fields.Nested(guru_rating_fields))
+guru_fields['profile_url'] = fields.String(attribute='profile_url')
 # guru_fields['guru_sessions'] = fields.List(fields.Nested(session_fields))
 
 student_fields = {}
 student_fields['name'] = fields.String(attribute='name')
 student_fields['id'] = fields.Integer(attribute='id')
+student_fields['profile_url'] = fields.String(attribute='profile_url')
+
+
+message_user_fields = {}
+message_user_fields['name'] = fields.String(attribute='name')
+message_user_fields['id'] = fields.Integer(attribute='id')
+message_user_fields['profile_url'] = fields.String(attribute='profile_url')
 
 request_fields = {}
 request_fields['latitude'] = fields.DateTime(attribute='time_created')
@@ -70,10 +79,24 @@ card_fields['id'] = fields.Integer(attribute='id')
 card_fields['is_payment_card'] = fields.Boolean(attribute='is_payment_card')
 card_fields['is_cashout_card'] = fields.Boolean(attribute='is_cashout_card')
 
+message_fields = {}
+message_fields['sender'] = fields.Nested(message_user_fields)
+message_fields['receiver'] = fields.Nested(message_user_fields)
+message_fields['time_created'] = fields.DateTime(attribute='time_created')
+message_fields['time_sent'] = fields.DateTime(attribute='time_sent')
+message_fields['time_seen'] = fields.DateTime(attribute='time_seen')
+message_fields['id'] = fields.Integer(attribute='id')
+message_fields['contents'] = fields.String(attribute = 'contents')
+message_fields['session_id'] = fields.Integer(attribute='session_id')
+
+
+
 session_fields = {}
 session_fields['time_created'] = fields.DateTime(attribute='time_created')
 session_fields['time_updated'] = fields.DateTime(attribute='time_updated')
 session_fields['guru'] = fields.Nested(guru_fields)
+session_fields['id'] = fields.Integer(attribute='id')
+session_fields['relationship_id'] = fields.Integer(attribute='relationship_id')
 session_fields['student_positions'] = fields.Nested(position_fields)
 session_fields['guru_positions'] = fields.Nested(position_fields)
 session_fields['course'] = fields.Nested(course_fields)
@@ -84,6 +107,7 @@ session_fields['address'] = fields.String(attribute='address')
 session_fields['in_person'] = fields.Boolean(attribute='in_person')
 session_fields['online'] = fields.Boolean(attribute='online')
 session_fields['request'] = fields.Nested(request_fields)
+session_fields['messages'] = fields.List(fields.Nested(message_fields))
 session_fields['time_estimate'] = fields.Integer(attribute='time_estimate')
 
 
@@ -129,6 +153,20 @@ DeviceSerializer = {
     'name': fields.String,
     'time_created': fields.DateTime,
     'last_accessed': fields.DateTime
+}
+
+SessionSerializer = {
+    'id': fields.Integer,
+    'messages': fields.List(fields.Nested(message_fields)),
+    'student': fields.Nested(student_fields),
+    'minutes': fields.Integer,
+    'seconds': fields.Integer,
+    'status': fields.Integer,
+    'hours': fields.Integer,
+    'guru': fields.Nested(guru_fields),
+    'guru_positions': fields.List(fields.Nested(position_fields)),
+    'student_positions': fields.List(fields.Nested(position_fields)),
+
 }
 
 CourseSerializer = {

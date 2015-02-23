@@ -7,7 +7,7 @@ from models import *
 from forms import UserCreateForm, SessionCreateForm
 from serializers import UserSerializer, DeviceSerializer, \
 CourseSerializer, UniversitySerializer, MajorSerializer, \
-RequestSerializer
+RequestSerializer, SessionSerializer
 from datetime import datetime
 import logging, json, urllib2, importlib
 from lib.api_utils import json_response
@@ -151,6 +151,7 @@ class UserOneView(restful.Resource):
     @marshal_with(UserSerializer)
     def get(self, _id):
         user = User.query.get(_id)
+        db_session.refresh(user)
         # if not request.json.get('auth_token'):
         #     abort(400)
         if not user:
@@ -161,7 +162,6 @@ class UserOneView(restful.Resource):
     @marshal_with(UserSerializer)
     def put(self, _id):
         print request.json
-        print request.headers
         # if not request.json.get('auth_token'):
         #     abort(400)
 
@@ -182,7 +182,7 @@ class UserOneView(restful.Resource):
             user.is_a_guru = request.json.get('is_a_guru')
 
         if 'guru_mode' in request.json:
-            user.is_a_guru = request.json.get('guru_mode')
+            user.guru_mode = request.json.get('guru_mode')
 
         if request.json.get('change_password'):
             pass
@@ -346,39 +346,57 @@ class UserRequestView(restful.Resource):
     def put(self, user_id):
 
         user = get_user(user_id)
+        print user
         if not user:
-            abort(404)
-
-        _request = Request.query.get(int(request.json.get('id')))
-
-        if not _request:
             abort(404)
 
         if request.json.get('proposal'):
             proposal_json = request.json
+            print request.json
             proposal = Proposal.query.get(proposal_json.get('id'))
             proposal.status = request.json.get('status')
             db_session.commit()
             if proposal.status ==Proposal.GURU_REJECTED:
                 proposal.send_to_next_guru()
-
                 event_dict = {'status': Proposal.GURU_REJECTED, 'proposal_id':proposal.id}
                 event = Event.initFromDict(event_dict)
 
             if proposal.status == Proposal.GURU_ACCEPTED:
                 proposal.request.status = Request.STUDENT_RECEIVED_GURU
+                event_dict = {'status': Proposal.GURU_ACCEPTED, 'proposal_id':proposal.id}
+                event = Event.initFromDict(event_dict)
                 db_session.commit()
 
-            return _request, 200
+            return user, 200
+
+        _request = Request.query.get(int(request.json.get('id')))
+        print request.json
+
+        if not _request:
+            abort(404)
 
         if 'status' in request.json:
             status = request.json.get('status')
+            guru_json = request.json.get('guru')
+
+            #Default set the status before
+            _request.status = request.json.get('status')
+
             if status == Request.STUDENT_RECEIVED_GURU:
                 event_dict = {'status': Request.STUDENT_RECEIVED_GURU, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
             elif status == Request.STUDENT_REJECTED_GURU:
                 event_dict = {'status': Request.STUDENT_REJECTED_GURU, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
+
+                #update guru that was rejected
+                for proposal in _request.proposals:
+                    if proposal.status == proposal.GURU_ACCEPTED and proposal.guru_id == int(guru_json.get('id')):
+                        print "Guru has been rejected"
+                        #Switch back
+                        proposal.status = 3
+                        event_dict = {'status': Proposal.GURU_REJECTED, 'proposal_id':proposal.id}
+                        event = Event.initFromDict(event_dict)
                 _request.status = Request.PROCESSING_GURUS
                 # TODO: SEND TO NEXT GURU
             elif status == Request.STUDENT_ACCEPTED_GURU:
@@ -387,6 +405,14 @@ class UserRequestView(restful.Resource):
             elif status == Request.STUDENT_CANCELED:
                 event_dict = {'status': Request.STUDENT_CANCELED, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
+                for proposal in _request.proposals:
+                    if proposal.status == proposal.GURU_ACCEPTED:
+                        event_dict = {'status': Proposal.GURU_ACCEPT_STUDENT_CANCELED, 'proposal_id':proposal.id}
+                        event = Event.initFromDict(event_dict)
+                    if proposal.status == proposal.GURU_SENT:
+                        event_dict = {'status': Proposal.GURU_SENT_STUDENT_CANCELED, 'proposal_id':proposal.id}
+                        event = Event.initFromDict(event_dict)
+
             elif status == Request.GURU_CANCELED_SEARCHING_AGAIN:
                 event_dict = {'status': Request.GURU_CANCELED_SEARCHING_AGAIN, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
@@ -394,7 +420,6 @@ class UserRequestView(restful.Resource):
                 event_dict = {'status': Request.NO_GURUS_AVAILABLE, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
 
-            _request.status = request.json.get('status')
             db_session.commit()
 
             return user, 200
@@ -408,10 +433,12 @@ class UserSessionView(restful.Resource):
         if not user:
             abort(404)
 
+        #print so we can see it
         pprint(request.json)
+
         session_json = request.json
         _request = Request.query.get(request.json.get('id'))
-        _request.guru_id = request.json.get('guru_id')
+        _request.guru = User.query.get(request.json.get('guru_id'))
         _request.status = Request.STUDENT_ACCEPTED_GURU
         session_json['student_id'] = _request.student_id
         #create an event for it
@@ -431,7 +458,8 @@ class UserSessionView(restful.Resource):
 
         # Create relationship as well
         if not session.relationship_id:
-            _relationship = Relationship.initFromSession(session)
+            session._relationship = Relationship.initFromSession(session)
+            db_session.commit()
 
         #Contact the guru
         else:
@@ -442,11 +470,11 @@ class UserSessionView(restful.Resource):
 
 
     #update a session
-    @marshal_with(UserSerializer)
-    def put(self, user_id):
+    @marshal_with(SessionSerializer)
+    def put(self, _id):
         #append student, guru_position updated
 
-        user = get_user(user_id)
+        user = get_user(_id)
 
         if not user:
             abort(404)
@@ -458,26 +486,35 @@ class UserSessionView(restful.Resource):
         if request.json.get('session_position_student'):
             position_json = request.json.get('position')
             position_json['session_id'] = session_json.get('id')
-            position = Position.initFromJson(position)
+            position = Position.initFromJson(position_json, user.id)
 
             _session = Session.query.get(session_json.get('id'))
             _session.student_positions.append(position)
             db_session.commit()
-            return user, 200
+            return _session, 200
 
         #add updated position from student
         if request.json.get('session_position_guru'):
             position_json = request.json.get('position')
             position_json['session_id'] = session_json.get('id')
-            position = Position.initFromJson(position)
+            position = Position.initFromJson(position_json, user.id)
 
             _session.guru_positions.append(position)
             db_session.commit()
-            return user, 200
+            return _session, 200
 
+        if request.json.get('session_update_time'):
+            _session.seconds = request.json.get('seconds')
+            _session.hours = request.json.get('hours')
+            _session.minutes = request.json.get('minutes')
+            db_session.commit()
 
-        if request.json.get('status'):
-            status = request.json.get('status')
+            return _session, 200
+
+        if session_json.get('status'):
+            status = session_json.get('status')
+
+            _session.status = session_json.get('status')
 
             # Should not happen, this is required by default
             # if status == _session.GURU_ON_WAY:
@@ -486,16 +523,20 @@ class UserSessionView(restful.Resource):
             ## Guru is starting the session
             if status == Session.GURU_START_SESSION:
 
-                event_dict = {'status': Session.GURU_START_SESSION, 'request_id':_request.id}
+                event_dict = {'status': Session.GURU_START_SESSION, 'request_id':_session.request.id}
                 event = Event.initFromDict(event_dict)
+
 
             ## Guru is ending the session
             elif status == Session.GURU_END_SESSION:
 
-                event_dict = {'status': Session.GURU_END_SESSION, 'request_id':_request.id}
+                event_dict = {'status': Session.GURU_END_SESSION, 'request_id':_session.request.id}
                 event = Event.initFromDict(event_dict)
 
-                rating = Rating.initFromSession(_session)
+                # rating = Rating.initFromSession(_session)
+                _session.seconds = session_json.get('seconds')
+                _session.hours = request.json.get('hours')
+                _session.minutes = session_json.get('minutes')
 
             elif status == Session.STUDENT_CANCEL_SESSION:
                 # Consequences?
@@ -564,15 +605,14 @@ class UserSessionView(restful.Resource):
                 event_dict = {'status': Request.STUDENT_NO_SHOW, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
 
-            _session.status = request.json.get('status')
             db_session.commit()
-            return user, 200
+            return _session, 200
 
         abort(404)
 
 
     @marshal_with(UserSerializer)
-    def delete(self, user_id):
+    def delete(self, _id):
         pass
 
 #TODO Testing
@@ -582,10 +622,24 @@ class UserSessionView(restful.Resource):
 #TODO Later: Images & Files --> S3 Bucket
 
 class UserSessionMessageView(restful.Resource):
+
+    @marshal_with(SessionSerializer)
+    def get(self, _id, _session):
+        user = get_user(_id)
+        _session = Session.query.get(_session)
+        if not user or not _session:
+            abort(404)
+
+        [db_session.refresh(message) for message in _session.messages]
+        return _session, 200
+
+
     #create a message in a session
-    def post(self, user_id, session_id):
-        user = get_user(user_id)
-        _session = Session.query.get(session_id)
+    @marshal_with(UserSerializer)
+    def post(self, _id, _session):
+        user = get_user(_id)
+        print request.json
+        _session = Session.query.get(_session)
         if not user or not _session:
             abort(404)
 
@@ -596,9 +650,10 @@ class UserSessionMessageView(restful.Resource):
 
         return user, 200
 
+    @marshal_with(UserSerializer)
     def put(self, user_id, session_id):
-        user = get_user(user_id)
-        _session = Session.query.get(session_id)
+        user = get_user(_id)
+        _session = Session.query.get(_session)
         if not user or not _session:
             abort(404)
 
