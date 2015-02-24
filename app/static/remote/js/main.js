@@ -78,7 +78,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
   // if none of the above states are matched, use this as the fallback
   // $urlRouterProvider.otherwise('/tab/dash');
-  $urlRouterProvider.otherwise('/guru/home');
+  $urlRouterProvider.otherwise('/student/home');
 
   //Set up restangular provider
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
@@ -108,8 +108,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
                 console.log('device is resuming....')
                  checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                console.log('Getting user from server')
-                User.getUserFromServer($scope, null, 5000, $state);
+                // User.getUserFromServer($scope, null, $state);
 
 
             }, false);
@@ -119,16 +118,16 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                 console.log('device is online...')
               checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
                 console.log('Getting user from server')
-                User.getUserFromServer($scope);
+                // User.getUserFromServer($scope);
 
             }, false);
 
             document.addEventListener("offline", function() {
 
                 console.log('device is offline...');
-              checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                console.log('getting updated user from server...');
-                User.getUserFromServer($scope);
+                checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+                // console.log('getting updated user from server...');
+                // User.getUserFromServer($scope);
 
             }, false);
 

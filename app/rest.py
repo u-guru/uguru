@@ -161,7 +161,6 @@ class UserOneView(restful.Resource):
 
     @marshal_with(UserSerializer)
     def put(self, _id):
-        print request.json
         # if not request.json.get('auth_token'):
         #     abort(400)
 

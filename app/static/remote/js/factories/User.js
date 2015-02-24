@@ -16,6 +16,7 @@ angular.module('uguru.user', [])
     var processResults = function(user) {
         user.active_requests = [];
         user.pending_guru_ratings = [];
+        user.pending_student_ratings = [];
         user.incoming_requests = [];
         user.previous_requests = [];
         user.active_student_sessions = [];
@@ -122,8 +123,6 @@ angular.module('uguru.user', [])
 
                         if ($state.current.name === 'root.guru.home') {
                             $state.go('^.student-available', paramPayload);
-                        } else {
-                            user.guru_mode = false;
                         }
                     }, 500)
 
@@ -174,6 +173,10 @@ angular.module('uguru.user', [])
                 .one('user')
                 .customPUT(JSON.stringify(user));
         },
+        process_results: function(user) {
+            user = processResults(user);
+            return user;
+        },
         update: function(user) {
         console.log('user saved remotely!');
            return Restangular
@@ -186,7 +189,6 @@ angular.module('uguru.user', [])
                 .customPUT(JSON.stringify(payload));
         },
         updateLocal: function(user) {
-           console.log('user saved locally!');
            $localstorage.setObject('user', user);
         },
         getPayload: function(arg, user, obj) {
@@ -227,6 +229,7 @@ angular.module('uguru.user', [])
             }
             if (!scope_user_id) {
                 console.log('Cant fetch user, user not logged in');
+                $scope.guru_mode = false;
                 return;
             }
 
@@ -245,8 +248,9 @@ angular.module('uguru.user', [])
                         callback($scope);
                     } else {
                         //add all cases
-                        if ($scope.user.pending_guru_ratings.length > 0 && !user.guru_mode ||
-                            $scope.user.pending_student_ratings.length > 0 && user.guru_mode) {
+                        if (($scope.user.pending_guru_ratings || $scope.user.pending_student_ratings) &&
+                            (($scope.user.pending_guru_ratings.length > 0 && !user.guru_mode) ||
+                            ($scope.user.pending_student_ratings.length > 0 && user.guru_mode))) {
 
                             $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/ratings.modal.html', {
                                   scope: $scope,
@@ -263,6 +267,16 @@ angular.module('uguru.user', [])
 
 
                         }
+
+                        //otherwise they're already home
+                        if ($scope.user.guru_mode && $state.current.name === 'root.student.home') {
+                            $state.go('^.^.guru.home');
+                        }
+
+                        if (!$scope.user.guru_mode && $state.current.name === 'root.guru.home') {
+                            $state.go('^.^.student.home');
+                        }
+
                     }
 
 
@@ -280,11 +294,7 @@ angular.module('uguru.user', [])
             if ($state.current.name === 'root.student.home' ||
                 $state.current.name === 'root.guru.home') {
                 $timeout(function() {
-                    if ($scope.background_refresh) {
-                        User.getUserFromServer($scope, null, $state);
-                    } else {
-                        console.log('tried to refresh but background refresh is off..')
-                    }
+                    User.getUserFromServer($scope, null, $state);
                 }, 20000);
             }
 

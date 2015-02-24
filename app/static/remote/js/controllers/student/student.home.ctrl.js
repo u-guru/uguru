@@ -52,7 +52,7 @@ angular.module('uguru.student.controllers', [])
 
   $scope.checkCourseInActiveRequests = function(course) {
     var active_requests = $scope.user.active_requests || [];
-    for (var i = 0; i < $scope.user.active_requests.length; i++) {
+    for (var i = 0; i < active_requests.length; i++) {
       var index_request = active_requests[i];
       if (index_request.course.short_name === course.short_name) {
         return true;
@@ -65,7 +65,7 @@ angular.module('uguru.student.controllers', [])
 
   $scope.getActiveRequestByCourse = function(course) {
     var active_requests = $scope.user.active_requests;
-    for (var i = 0; i < $scope.user.active_requests.length; i++) {
+    for (var i = 0; i < active_requests.length; i++) {
       var index_request = active_requests[i];
       if (index_request.course.short_name === course.short_name) {
         return index_request;
@@ -130,10 +130,11 @@ angular.module('uguru.student.controllers', [])
     }
 
     $scope.switchToGuruMode = function() {
-      $scope.user.guru_mode = true;
       var goToGuruHome = function() {
+        $scope.bottomTabsDelegate.select(0);
         $state.go('^.^.guru.home');
       }
+      $scope.user.guru_mode = true;
       $scope.user.updateAttr('guru_mode', $scope.user, true, goToGuruHome, $scope);
     }
 
@@ -276,8 +277,6 @@ angular.module('uguru.student.controllers', [])
     // $scope.processStudentRequests($scope.user.requests);
 
     $scope.$on('$ionicView.beforeEnter', function(){
-      $scope.backgroundRefresh = true;
-      console.log('starting background refresh user');
       User.getUserFromServer($scope, null, $state);
       $scope.user.guru_mode = false;
     });
@@ -287,25 +286,18 @@ angular.module('uguru.student.controllers', [])
     });
 
     $scope.$on('modal.shown', function() {
-      $scope.backgroundRefresh = false;
       $scope.ratingModalShown = true;
-      console.log('stopping background refresh');
     });
 
     $scope.$on('modal.hidden', function() {
-      $scope.backgroundRefresh = true;
       $scope.ratingModalShown = false;
-      console.log('starting background refresh');
     });
 
     $scope.$on('$ionicView.loaded', function(){
-      $scope.user.guru_mode = false;
       if (!$scope.user.onboarding || !$scope.user.onboarding.get_started) {
         $scope.user.onboarding = {};
         $scope.user.onboarding.get_started = true;
         $timeout(function() {
-
-
           // getStartedPopoverOptions = {
           //   targetElement:'#home-header',
           //   title: 'Tap to get started',

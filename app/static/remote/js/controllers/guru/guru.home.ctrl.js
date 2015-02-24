@@ -91,11 +91,13 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.switchToStudentMode = function() {
+      var goToGuruHome = function() {
+        $scope.bottomTabsDelegate.select(0);
+        $state.go('^.^.student.home');
+
+      }
       $scope.user.guru_mode = false;
       $scope.user.updateAttr('guru_mode', $scope.user, false, goToGuruHome, $scope);
-      var goToGuruHome = function() {
-        $state.go('^.^.student.home');
-      }
     }
 
 
@@ -249,7 +251,7 @@ angular.module('uguru.guru.controllers')
     $scope.$on('$ionicView.beforeEnter', function(){
       console.log('guru home view before Enter');
       User.getUserFromServer($scope, null, $state);
-    });
+  });
 
     $scope.$on('$ionicView.enter', function(){
 

@@ -52,8 +52,6 @@ angular.module('uguru.util.controllers')
         // $cordovaFacebook.login(["user_education_history", "friends_education_history"]).then(function (success) {
         $scope.loginInfo = success;
 
-        console.log(success);
-
         $scope.getMe();
         console.log('Getting Facebook information...');
 
@@ -280,8 +278,10 @@ angular.module('uguru.util.controllers')
             }
 
             else {
-
-              $scope.closeSignupModal();
+              User.getUserFromServer($scope, null, $state);
+              $scope.closeSignupModal(function() {
+                $scope.bottomTabsDelegate.select(0);
+              });
 
             }
 
@@ -305,11 +305,21 @@ angular.module('uguru.util.controllers')
 
       User.login(loginPayload).then(function(user) {
 
-          $scope.user.id = user.id;
-          $scope.user.auth_token = user.auth_token;
-          $scope.showSuccess('Account Created!');
-          $scope.rootUser.updateLocal($scope.user);
-          console.log('data safely submitted to the server');
+          processed_user = User.process_results(user.plain());
+          $scope.user.id = processed_user.id;
+          $scope.user.student_courses = processed_user.student_courses;
+          $scope.user.active_requests = processed_user.active_requests;
+          $scope.user.pending_guru_ratings = processed_user.pending_guru_ratings;
+          $scope.user.pending_student_ratings = processed_user.pending_student_ratings;
+          $scope.user.incoming_requests = processed_user.incoming_requests;
+          $scope.user.previous_requests = processed_user.previous_requests;
+          $scope.user.active_student_sessions = processed_user.active_student_sessions;
+          $scope.user.previous_student_sessions = processed_user.previous_student_sessions;
+
+
+          $localstorage.setObject('user', $scope.user);
+
+          $scope.showSuccess('Success');
 
       }, function(err) {
         if (err.status === 401) {
@@ -325,30 +335,35 @@ angular.module('uguru.util.controllers')
         return;
       }
 
-      if ($scope.user.fb_id) {
-        $scope.showSuccess();
-      }
-        $scope.signupForm.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
 
-        User.create($scope.signupForm).then(function(user) {
-            $scope.user.id = user.id;
-            $scope.user.auth_token = user.auth_token;
-            if (!$scope.user.fb_id) {
-              $scope.showSuccess('Success');
-            };
-            $scope.rootUser.updateLocal($scope.user);
+      $scope.signupForm.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
 
-            console.log('data safely submitted to the server');
-        },
-        function(err){
-          if (err.status === 409) {
-            $scope.showError('Email already has an account');
-            $scope.toggleLoginMode();
-            $scope.signupForm.password = '';
-          }
-        });
+      User.create($scope.signupForm).then(function(user) {
+          processed_user = User.process_results(user.plain());
+          $scope.user.id = processed_user.id;
+          $scope.user.student_courses = processed_user.student_courses;
+          $scope.user.active_requests = processed_user.active_requests;
+          $scope.user.pending_guru_ratings = processed_user.pending_guru_ratings;
+          $scope.user.pending_student_ratings = processed_user.pending_student_ratings;
+          $scope.user.incoming_requests = processed_user.incoming_requests;
+          $scope.user.previous_requests = processed_user.previous_requests;
+          $scope.user.active_student_sessions = processed_user.active_student_sessions;
+          $scope.user.previous_student_sessions = processed_user.previous_student_sessions;
 
-      }
+
+          $localstorage.setObject('user', $scope.user);
+
+          $scope.showSuccess('Success');
+      },
+      function(err){
+        if (err.status === 409) {
+          $scope.showError('Email already has an account');
+          $scope.toggleLoginMode();
+          $scope.signupForm.password = '';
+        }
+      });
+
+    }
 
     $scope.showComingSoon = function() {
       $scope.progress_active = true;
