@@ -308,7 +308,7 @@ class UserRequestView(restful.Resource):
         _file = request.json.get('file')
 
         if position:
-            position = Position.initFromJson(position)
+            position = Position.initFromJson(position, user.id)
         if _file:
             _file = File.initFromJson(_file)
 
