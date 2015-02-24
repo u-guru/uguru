@@ -95,7 +95,7 @@ angular.module('uguru.util.controllers')
 
       if ($scope.requestMapModal.isShown()) {
 
-          var mapContainer = document.find("ion-pane")[0];
+          var mapContainer = $scope.requestMapModal.$el.find("ion-pane")[0];
           var initMapCoords;
 
           if ($scope.requestPosition) {

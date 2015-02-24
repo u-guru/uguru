@@ -107,6 +107,7 @@ angular.module('uguru.student.controllers')
         $scope.session.status = 3;
         $scope.session.minutes = $scope.timer.minutes;
         $scope.session.seconds = $scope.timer.seconds;
+        $scope.session.hours = $scope.timer.hours;
 
 
         var sessionPayload = {session: $scope.session}

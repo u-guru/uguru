@@ -78,7 +78,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
   // if none of the above states are matched, use this as the fallback
   // $urlRouterProvider.otherwise('/tab/dash');
-  $urlRouterProvider.otherwise('/student/home');
+  $urlRouterProvider.otherwise('/guru/home');
 
   //Set up restangular provider
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
@@ -194,7 +194,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '/settings',
         templateUrl: BASE + 'templates/student/student.settings.html'
   }).
-  state('root.student.settings-card', {
+  state('root.student.settings-cards', {
         url: '/settings-cards',
         templateUrl: BASE + 'templates/student/student.settings.cards.html',
         controller: 'SettingsCardController'

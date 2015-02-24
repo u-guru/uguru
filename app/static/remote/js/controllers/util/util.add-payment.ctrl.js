@@ -94,7 +94,7 @@ angular.module('uguru.util.controllers')
         } else {
 
           var cardInfo = {
-            stripe_customer_id: response.id,
+            stripe_token: response.id,
             card_last4: response.card.last4,
             card_type: response.card.brand,
             user: $scope.user,

@@ -1188,8 +1188,10 @@ class Card(Base):
 
         card = Card()
         card.stripe_token = card_json.get('stripe_token')
-        card.stripe_customer_id = create_customer(user, card.stripe_token)
-        card.stripe_recipient_id = create_recipient(user, card.stripe_token)
+        if card_json.get('card'):
+            card.stripe_customer_id = create_customer(user, card.stripe_token)
+        if card_json.get('debit_card'):
+            card.stripe_recipient_id = create_recipient(user, card.stripe_token)
         card.card_last4 = card_json.get('card_last4')
         card.card_type = card_json.get('card_type')
         card.time_added = card_json.get('time_added')
@@ -1261,7 +1263,7 @@ class Transaction(Base):
 
     @staticmethod
     def initTransferTransaction(amount, user):
-        # from app.lib.stripe_client import transfer_funds
+        from app.lib.stripe_client import transfer_funds
 
         transaction = Transaction()
         transaction.time_created = datetime.now()
@@ -1290,7 +1292,7 @@ class Transaction(Base):
 
     @staticmethod
     def initFromSession(_session, user):
-        # from app.lib.stripe_client import charge_customer
+        from app.lib.stripe_client import charge_customer
 
         transaction = Transaction()
         transaction.time_created = datetime.now()

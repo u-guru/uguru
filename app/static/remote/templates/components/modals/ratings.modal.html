@@ -7,22 +7,29 @@
         </div>
         <div class="horizon">
           <span class="box">
-            or try facebook
+            {{rating.session.time_created}}
           </span>
         </div>
         <div class="money">
           <span class="bucks">$</span>27
         </div>
         <div class="horizon">
-          <span class="box">
+          <span class="box" ng-show="!user.guru_mode">
             Rate your guru
+          </span>
+          <span class="box" ng-show="user.guru_mode">
+            Rate your student
           </span>
         </div>
         <div class="item padding-6-92">
           <div class="icon"><img src='./img/shun.png' class='width'></div>
-          <div class="box-2 margin-top">
-            <div class="name">Shun Kurosaki</div>
-            <div class="course-name">BIO 101</div>
+          <div class="box-2 margin-top" ng-show="!user.guru_mode">
+            <div class="name">{{rating.session.guru.name.split(" ")[0]}}</div>
+            <div class="course-name">{{rating.session.request.course.short_name}}</div>
+          </div>
+          <div class="box-2 margin-top" ng-show="user.guru_mode">
+            <div class="name">{{rating.session.request.student.name.split(" ")[0]}}</div>
+            <div class="course-name">{{rating.session.request.course.short_name}}</div>
           </div>
         </div>
         <div class="horizon">
@@ -37,12 +44,12 @@
       </div>
 
       <div class="container padding" ng-show="starsSelected">
-        <button class="button button-full button-positive" ng-click="submitRating()" style="height:2.5em">
+        <button class="button button-full button-positive" ng-click="submitRating()">
           Submit
         </button>
-        <button class="button button-full button-positive button-outline" style="height:2.5em">
+        <!-- <button class="button button-full button-positive button-outline" style="height:2.5em">
           Contact Support
-        </button>
+        </button> -->
       </div>
 
     </ion-content>

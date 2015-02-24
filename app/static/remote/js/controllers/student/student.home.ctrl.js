@@ -88,12 +88,12 @@ angular.module('uguru.student.controllers', [])
 	    $scope.addUniversityModal = modal;
 	});
 
-  $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/ratings.modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-  }).then(function(modal) {
-      $scope.ratingModal = modal;
-  });
+  // $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/ratings.modal.html', {
+  //     scope: $scope,
+  //     animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //     $scope.ratingModal = modal;
+  // });
 
   $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/signup.modal.html', {
       scope: $scope,
@@ -276,9 +276,26 @@ angular.module('uguru.student.controllers', [])
     // $scope.processStudentRequests($scope.user.requests);
 
     $scope.$on('$ionicView.beforeEnter', function(){
-      console.log('student home view before Enter');
+      $scope.backgroundRefresh = true;
+      console.log('starting background refresh user');
       User.getUserFromServer($scope, null, $state);
       $scope.user.guru_mode = false;
+    });
+
+    $scope.$on('$ionicView.beforeLeave', function(){
+      console.log('leaving...');
+    });
+
+    $scope.$on('modal.shown', function() {
+      $scope.backgroundRefresh = false;
+      $scope.ratingModalShown = true;
+      console.log('stopping background refresh');
+    });
+
+    $scope.$on('modal.hidden', function() {
+      $scope.backgroundRefresh = true;
+      $scope.ratingModalShown = false;
+      console.log('starting background refresh');
     });
 
     $scope.$on('$ionicView.loaded', function(){

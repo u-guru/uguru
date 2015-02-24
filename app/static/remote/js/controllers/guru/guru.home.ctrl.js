@@ -234,6 +234,18 @@ angular.module('uguru.guru.controllers')
           Popup.options.show($scope, welcomePopupOptions);
     }
 
+    $scope.$on('modal.shown', function() {
+      $scope.backgroundRefresh = false;
+      $scope.ratingModalShown = true;
+      console.log('stopping background refresh');
+    });
+
+    $scope.$on('modal.hidden', function() {
+      $scope.backgroundRefresh = true;
+      $scope.ratingModalShown = false;
+      console.log('starting background refresh');
+    });
+
     $scope.$on('$ionicView.beforeEnter', function(){
       console.log('guru home view before Enter');
       User.getUserFromServer($scope, null, $state);

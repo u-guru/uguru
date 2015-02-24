@@ -7,7 +7,7 @@ def create_customer(user, token):
 
     try:
         stripe_customer = stripe.Customer.create(
-          description="Customer for " + str(user.name) + ', ' + str(user.email)
+          description="Customer for " + str(user.name) + ', ' + str(user.email),
           source=token
         )
 
@@ -42,7 +42,7 @@ def create_recipient(user, token):
 
     try:
         stripe_recipient = stripe.Recipient.create(
-          description="Recipient for " + str(user.name) + ', ' + str(user.email)
+          description="Recipient for " + str(user.name) + ', ' + str(user.email),
           type="individual",
           name=user.name,
           card=token
@@ -82,9 +82,9 @@ def charge_customer(user, amount):
 
     try:
         stripe_charge = stripe.Charge.create(
-          amount=amount * 100,
+          amount=int(amount * 100),
           currency="usd",
-          source=user.customer_id, # obtained with Stripe.js
+          customer=user.cards[2].stripe_customer_id, # obtained with Stripe.js
           description="Charge for " + str(user.name) + ", " + str(user.email)
         )
 
@@ -111,10 +111,10 @@ def charge_customer(user, amount):
 
         print "Status is: %s" % e.http_status
         print "Type is: %s" % err['type']
-        print "Code is: %s" % err['code']
-        # param is '' in this case
-        print "Param is: %s" % err['param']
-        print "Message is: %s" % err['message']
+        # print "Code is: %s" % err['code']
+        # # param is '' in this case
+        # print "Param is: %s" % err['param']
+        # print "Message is: %s" % err['message']
         return str(e.json_body)
 
 
@@ -123,7 +123,7 @@ def transfer_funds(user, amount):
 
     try:
         stripe_transfer = stripe.Transfer.create(
-          amount=amount * 100,
+          amount=int(amount * 100),
           currency="usd",
           recipient=user.recipient_id,
           description="Transfer for " + str(user.name) + ", " + str(user.email)

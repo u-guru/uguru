@@ -102,6 +102,7 @@ session_fields['guru_positions'] = fields.Nested(position_fields)
 session_fields['course'] = fields.Nested(course_fields)
 session_fields['status'] = fields.Integer(attribute='status')
 session_fields['seconds'] = fields.Integer(attribute='seconds')
+session_fields['hours'] = fields.Integer(attribute='hours')
 session_fields['minutes'] = fields.Integer(attribute='minutes')
 session_fields['address'] = fields.String(attribute='address')
 session_fields['in_person'] = fields.Boolean(attribute='in_person')
@@ -118,6 +119,15 @@ rating_fields['student_rating'] = fields.Integer(attribute='student_rating')
 rating_fields['guru_rating'] = fields.Integer(attribute='guru_rating')
 rating_fields['session'] = fields.Nested(session_fields)
 
+transaction_fields = {}
+transaction_fields['student_amount'] = fields.Float(attribute = 'student_amount')
+transaction_fields['guru_amount'] = fields.Float(attribute = 'guru_amount')
+transaction_fields['session'] = fields.Nested(session_fields)
+transaction_fields['time_created'] = fields.DateTime(attribute='time_created')
+transaction_fields['guru'] = fields.Nested(guru_fields)
+transaction_fields['student'] = fields.Nested(student_fields)
+transaction_fields['card'] = fields.Nested(card_fields)
+
 
 UserSerializer = {
     'id': fields.Integer,
@@ -127,6 +137,8 @@ UserSerializer = {
     'is_a_guru': fields.Boolean,
     'guru_mode': fields.Boolean,
     'gender': fields.String,
+    'customer_id': fields.String,
+    'recipient_id': fields.String,
     'auth_token': fields.String,
     'fb_id': fields.String,
     'password': fields.String,
@@ -151,7 +163,9 @@ UserSerializer = {
     'requests': fields.List(fields.Nested(request_fields)),
     'sessions': fields.List(fields.Nested(session_fields)),
     'proposals': fields.List(fields.Nested(proposal_fields)),
-    'cards': fields.List(fields.Nested(card_fields))
+    'cards': fields.List(fields.Nested(card_fields)),
+    'student_transactions': fields.List(fields.Nested(transaction_fields)),
+    'guru_transactions': fields.List(fields.Nested(transaction_fields))
 }
 
 DeviceSerializer = {

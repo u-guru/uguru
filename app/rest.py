@@ -565,20 +565,17 @@ class UserSessionView(restful.Resource):
 
             ## Guru is ending the session
             elif status == Session.GURU_END_SESSION:
-
                 event_dict = {'status': Session.GURU_END_SESSION, 'request_id':_session.request.id}
                 event = Event.initFromDict(event_dict)
 
-                rating = Rating.initFromSession(_session)
-
-                transaction = Transaction.initFromSession(_session)
-
+                # rating = Rating.initFromSession(_session)
+                _session.seconds = session_json.get('seconds')
+                _session.hours = session_json.get('hours')
+                _session.minutes = session_json.get('minutes')
                 _session.time_completed = datetime.now()
 
+                transaction = Transaction.initFromSession(_session, user)
 
-                _session.seconds = session_json.get('seconds')
-                _session.hours = request.json.get('hours')
-                _session.minutes = session_json.get('minutes')
 
             elif status == Session.STUDENT_CANCEL_SESSION:
                 # Consequences?
@@ -717,7 +714,7 @@ class UserCardView(restful.Resource):
 
         if not user:
             abort(404)
-
+        print request.json
         card = request.json.get('card')
         debit_card = request.json.get('debit_card')
 

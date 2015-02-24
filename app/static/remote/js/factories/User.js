@@ -1,6 +1,6 @@
 angular.module('uguru.user', [])
-.factory('User', ['$localstorage', 'Restangular', '$state', '$timeout',
-    function($localstorage, Restangular, $state, $timeout) {
+.factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal',
+    function($localstorage, Restangular, $state, $timeout, $ionicModal) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -54,7 +54,6 @@ angular.module('uguru.user', [])
               }
             }
         }
-
 
         if (user.incoming_requests.length > 0 && !user.guru_mode) {
             var first_incoming_request = user.incoming_requests[0];
@@ -244,8 +243,28 @@ angular.module('uguru.user', [])
                     }
                     if (callback) {
                         callback($scope);
+                    } else {
+                        //add all cases
+                        if ($scope.user.pending_guru_ratings.length > 0 && !user.guru_mode ||
+                            $scope.user.pending_student_ratings.length > 0 && user.guru_mode) {
+
+                            $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/ratings.modal.html', {
+                                  scope: $scope,
+                                  animation: 'slide-in-up'
+                            }).then(function(modal) {
+                                  $scope.ratingModal = modal;
+                            });
+
+                            $timeout(function() {
+                                if (!$scope.ratingModal.isShown() && !$scope.ratingModalShown) {
+                                    $scope.ratingModal.show();
+                                }
+                            }, 1000);
+
+
+                        }
                     }
-                    $scope.user.guru_mode = true;
+
 
                     // if ($state.current.name === 'root.student.messages') {
                     //     $scope.user.active_student_sessions = processed_user.active_student_sessions;
@@ -261,7 +280,11 @@ angular.module('uguru.user', [])
             if ($state.current.name === 'root.student.home' ||
                 $state.current.name === 'root.guru.home') {
                 $timeout(function() {
-                    User.getUserFromServer($scope, null, $state);
+                    if ($scope.background_refresh) {
+                        User.getUserFromServer($scope, null, $state);
+                    } else {
+                        console.log('tried to refresh but background refresh is off..')
+                    }
                 }, 20000);
             }
 
@@ -363,6 +386,28 @@ angular.module('uguru.user', [])
                         $scope.session = session.plain();
                         if (callback_success) {
                             callback_success();
+                        }
+
+                    }, function(err){
+                    if (err.status === 409 ) {
+                            console.log('already have an active request');
+                        } else {
+                            console.log(err);
+                            console.log('error...something happened with the server;')
+                        }
+                    });
+            }
+
+            if (param === 'ratings') {
+                Restangular
+                    .one('user', userObj.id).one(param)
+                    .customPUT(JSON.stringify(payload))
+                    .then(function(user){
+                        var processed_user = processResults(user);
+                        $localstorage.setObject('user', processed_user);
+
+                        if (callback_success) {
+                            callback_success($scope, processed_user)
                         }
 
                     }, function(err){

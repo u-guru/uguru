@@ -1,5 +1,5 @@
 import os
-# import mandrill
+import mandrill
 from models import *
 
 
@@ -7,8 +7,8 @@ from models import *
 MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
 MANDRILL_API_TEST_KEY = "E3JtFuPUZC466EFpJY9-ag"
 
-# mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
-# mandrill_test_client = mandrill.Mandrill(MANDRILL_API_TEST_KEY)
+mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+mandrill_test_client = mandrill.Mandrill(MANDRILL_API_TEST_KEY)
 
 DEFAULT_SENDER_EMAIL = 'jasmine@uguru.me'
 DEFAULT_SENDER_NAME = 'Jasmine from Uguru'
