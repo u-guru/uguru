@@ -187,7 +187,6 @@ class UserOneView(restful.Resource):
         if request.json.get('change_password'):
             pass
 
-
         if request.json.get('add_student_course'):
             course = request.json.get('course')
             course_id = course.get('id')
@@ -424,6 +423,43 @@ class UserRequestView(restful.Resource):
 
             return user, 200
 
+class UserTransactionsView(restful.Resource):
+
+    #create new transaction (transfer or charge)
+    @marshal_with(UserSerializer)
+    def post(self, _id):
+        pass
+
+    #refunds, status of charge
+    @marshal_with(UserSerializer)
+    def put(self, _id):
+        pass
+
+
+class UserRatingView(restful.Resource):
+
+    @marshal_with(UserSerializer)
+    def put(self, _id):
+        user = get_user(_id)
+        if not user:
+            abort(404)
+
+        print request.json
+        rating_json = request.json
+        rating = Rating.query.get(request.json.get('id'))
+
+        if rating_json.get('student_rate_guru'):
+            rating.guru_rating = rating_json.get('guru_rating')
+            rating.student_time_rated = datetime.now()
+        if rating_json.get('guru_rate_student'):
+            rating.student_rating = rating_json.get('student_rating')
+            rating.guru_time_rated = datetime.now()
+
+        db_session.commit()
+        return user, 200
+
+
+
 class UserSessionView(restful.Resource):
     #create a session
     @marshal_with(UserSerializer)
@@ -534,6 +570,12 @@ class UserSessionView(restful.Resource):
                 event = Event.initFromDict(event_dict)
 
                 rating = Rating.initFromSession(_session)
+
+                transaction = Transaction.initFromSession(_session)
+
+                _session.time_completed = datetime.now()
+
+
                 _session.seconds = session_json.get('seconds')
                 _session.hours = request.json.get('hours')
                 _session.minutes = session_json.get('minutes')
@@ -683,13 +725,13 @@ class UserCardView(restful.Resource):
         if card:
             if not user.cards:
                 request.json['is_default'] = True
-            card = Card.initFromJson(request.json)
+            card = Card.initFromJson(request.json, user)
             return user, 200
 
         if debit_card:
             if not user.cards:
                 card['is_default'] = True
-            debit_card = Card.initFromJson(debit_card)
+            debit_card = Card.initFromJson(debit_card, user)
             return user, 200
 
         abort(404)
@@ -1344,6 +1386,8 @@ api.add_resource(UserOneView, '/api/v1/user/<int:_id>')
 api.add_resource(UserRequestView, '/api/v1/user/<int:user_id>/requests')
 api.add_resource(UserCardView, '/api/v1/user/<int:_id>/cards')
 api.add_resource(UserSessionView, '/api/v1/user/<int:_id>/sessions')
+api.add_resource(UserTransactionsView, '/api/v1/user/<int:_id>/transactions')
+api.add_resource(UserRatingView, '/api/v1/user/<int:_id>/ratings')
 api.add_resource(UserSessionMessageView, '/api/v1/user/<int:_id>/sessions/<int:_session>/messages')
 api.add_resource(DeviceView, '/api/v1/devices')
 api.add_resource(VersionView, '/api/v1/version')

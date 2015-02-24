@@ -1,5 +1,4 @@
-import os, hashlib
-import stripe
+import os, hashlib, stripe
 from app.database import *
 from models import *
 from twilio import *

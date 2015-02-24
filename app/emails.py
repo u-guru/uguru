@@ -1,4 +1,5 @@
-import os, mandrill
+import os
+# import mandrill
 from models import *
 
 
@@ -6,17 +7,17 @@ from models import *
 MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
 MANDRILL_API_TEST_KEY = "E3JtFuPUZC466EFpJY9-ag"
 
-mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
-mandrill_test_client = mandrill.Mandrill(MANDRILL_API_TEST_KEY)
+# mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+# mandrill_test_client = mandrill.Mandrill(MANDRILL_API_TEST_KEY)
 
 DEFAULT_SENDER_EMAIL = 'jasmine@uguru.me'
 DEFAULT_SENDER_NAME = 'Jasmine from Uguru'
 DEFAULT_REPLY_TO = "jasmine@uguru.me"
 TEST_EMAILS = [
-                {   "name": "Robert Nievert", 
+                {   "name": "Robert Nievert",
                     "email": "robertneivert@gmail.com"
                 },
-                {   "name": "Jasmine Mir", 
+                {   "name": "Jasmine Mir",
                     "email": "jasmine@uguru.me"
                 },
                 {
@@ -38,10 +39,10 @@ TEST_EMAILS = [
 
 # Tutorial should include
 # Mailchimp signup
-# 
+#
 
 def send_campaign_email(campaign_name, template_name,
-    subject, sender_email, reply_to_email, sender_title, 
+    subject, sender_email, reply_to_email, sender_title,
     track_opens, track_clicks, important, recipients):
     campaign_name = campaign_name
     template_name = template_name
@@ -75,7 +76,7 @@ def send_campaign_email(campaign_name, template_name,
     }
 
     if not os.environ.get('PRODUCTION'):
-        
+
         result = mandrill_client.messages.send_template(
             template_name=template_name,
             template_content=[],
@@ -90,12 +91,12 @@ def send_campaign_email(campaign_name, template_name,
     return result
 
 def send_campaign_email_test(campaign_name, template_name,
-    subject, sender_email, reply_to_email, sender_title, 
+    subject, sender_email, reply_to_email, sender_title,
     track_opens, track_clicks, important, test_email, test_name):
-    
+
     r = Recipient()
     r.first_name = test_name.split(" ")[0].title()
     r.email = test_email
     send_campaign_email(campaign_name, template_name,
-    subject, sender_email, reply_to_email, sender_title, 
+    subject, sender_email, reply_to_email, sender_title,
     track_opens, track_clicks, important, [r])

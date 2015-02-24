@@ -110,6 +110,14 @@ session_fields['request'] = fields.Nested(request_fields)
 session_fields['messages'] = fields.List(fields.Nested(message_fields))
 session_fields['time_estimate'] = fields.Integer(attribute='time_estimate')
 
+rating_fields = {}
+rating_fields['guru_id'] = fields.Integer(attribute='guru_id')
+rating_fields['student_id'] = fields.Integer(attribute='student_id')
+rating_fields['id'] = fields.Integer(attribute='id')
+rating_fields['student_rating'] = fields.Integer(attribute='student_rating')
+rating_fields['guru_rating'] = fields.Integer(attribute='guru_rating')
+rating_fields['session'] = fields.Nested(session_fields)
+
 
 UserSerializer = {
     'id': fields.Integer,
@@ -133,6 +141,8 @@ UserSerializer = {
     'guru_courses': fields.List(fields.Nested(course_fields)),
     'student_courses': fields.List(fields.Nested(course_fields)),
     'student_sessions': fields.List(fields.Nested(session_fields)),
+    'guru_ratings': fields.List(fields.Nested(rating_fields)),
+    'student_ratings': fields.List(fields.Nested(rating_fields)),
     'guru_sessions': fields.List(fields.Nested(session_fields)),
     'push_notifications': fields.Boolean,
     'push_notifications_enabled': fields.Boolean,

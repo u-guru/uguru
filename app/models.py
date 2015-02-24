@@ -681,10 +681,12 @@ class Session(Base):
 
     rating_id = Column(Integer, ForeignKey("rating.id"))
     request_id = Column(Integer, ForeignKey("request.id"))
+    transaction_id = Column(Integer, ForeignKey("transaction.id"))
 
     expiration_date = Column(DateTime) #TBD
     time_created = Column(DateTime)
     time_updated = Column(DateTime)
+    time_completed = Column(DateTime)
 
     displayed = Column(Boolean, default=True) #whether the user 'removed' this session
 
@@ -841,8 +843,7 @@ class Rating(Base):
 
     student_id = Column(Integer, ForeignKey('user.id'))
     student = relationship("User",
-        primaryjoin = "(User.id==Rating.student_id) & "\
-                        "(User.is_a_guru==False)",
+        primaryjoin = "(User.id==Rating.student_id)",
         uselist=False,
         backref="student_ratings")
 
@@ -1148,6 +1149,8 @@ class Card(Base):
     is_payment_card = Column(Boolean)
     is_cashout_card = Column(Boolean)
 
+    stripe_token = Column(String)
+
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship("User",
         uselist = False,
@@ -1180,10 +1183,13 @@ class Card(Base):
                 self.card_last4)
 
     @staticmethod
-    def initFromJson(card_json):
+    def initFromJson(card_json, user):
+        from app.lib.stripe_client import create_customer, create_recipient
+
         card = Card()
-        card.stripe_recipient_id = card_json.get('stripe_recipient_id')
-        card.stripe_customer_id = card_json.get('stripe_customer_id')
+        card.stripe_token = card_json.get('stripe_token')
+        card.stripe_customer_id = create_customer(user, card.stripe_token)
+        card.stripe_recipient_id = create_recipient(user, card.stripe_token)
         card.card_last4 = card_json.get('card_last4')
         card.card_type = card_json.get('card_type')
         card.time_added = card_json.get('time_added')
@@ -1196,7 +1202,10 @@ class Card(Base):
 class Transaction(Base):
     __tablename__ = 'transaction'
 
-
+    SESSION_TRANSACTION = 0
+    CASHOUT_TRANSACTION = 1
+    CREDIT_PURCHASE = 2
+    HOURLY_PRICE = 20
 
     id = Column(Integer, primary_key=True)
 
@@ -1212,7 +1221,13 @@ class Transaction(Base):
     student_amount = Column(Float)
     guru_amount = Column(Float)
     stripe_amount = Column(Float)
+    stripe_error_string = Column(String)
     profit = Column(Float)
+
+    charge_id = Column(String)
+    transfer_id = Column(String)
+
+    session = relationship("Session", uselist=False, backref="transaction")
 
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
@@ -1234,7 +1249,72 @@ class Transaction(Base):
         backref = 'transactions'
         )
 
+    @staticmethod
+    def calculateStudentPriceFromSession(_session):
+        minutes = _session.minutes
+        hours = _session.hours
+        seconds = _session.seconds
+
+        total_hours = hours + (float(minutes / 60.0) ) + (float(seconds / 3600.00))
+        total = Transaction.HOURLY_PRICE * total_hours
+        return total
+
+    @staticmethod
+    def initTransferTransaction(amount, user):
+        # from app.lib.stripe_client import transfer_funds
+
+        transaction = Transaction()
+        transaction.time_created = datetime.now()
+        transaction._type = 1
+        transaction.guru_amount = amount
+
+        transaction.balance_before = user.balance
 
 
+        stripe_transfer = transfer_funds(user, amount)
+
+        if type(stripe_transfer) is str:
+            transaction.stripe_error_string = stripe_transfer
+        else:
+            transaction.transfer_id = stripe_transfer.id
+            transaction.stripe_fee = 0.25
+            user.balance = 0
+
+        transaction.guru_id = _session.guru_id
+        transaction.student_id = _session.guru_id
+        transaction.card_id = _session.card_id
+
+        db_session.add(transaction)
+        db_session.commit()
+
+
+    @staticmethod
+    def initFromSession(_session, user):
+        # from app.lib.stripe_client import charge_customer
+
+        transaction = Transaction()
+        transaction.time_created = datetime.now()
+        transaction._type = 0
+        transaction.student_amount = Transaction.calculateStudentPriceFromSession(_session)
+        transaction.guru_amount = transaction.student_amount * 0.8
+
+        stripe_charge = charge_customer(user, transaction.student_amount)
+
+        if type(stripe_charge) is str:
+            transaction.stripe_error_string = stripe_charge
+
+        else:
+            transaction.charge_id = stripe_charge.id
+            transaction.stripe_fee = (transaction.student_amount * .029) + 0.3
+            transaction.profit = transaction.student_amount - transaction.guru_amount - transaction.stripe_fee
+
+        transaction.guru_id = _session.guru_id
+        transaction.student_id = _session.guru_id
+        transaction.card_id = _session.card_id
+
+        db_session.add(transaction)
+        db_session.commit()
+
+        return transaction
 
 
