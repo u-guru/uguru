@@ -60,19 +60,14 @@ angular.module('uguru.student.controllers')
       // var student_course = $scope.root.util.objectFindByKey($scope.user.student_courses, 'short_name', $scope.course.short_name);
       // var student_request = $scope.root.util.objectFindByKey($scope.user.requests, 'time_created', $scope.course.active_request.time_created);
 
-      $scope.requestObj.status = 3;
+      $scope.requestObj.status = 4;
       $scope.user.updateObj($scope.user, 'requests', $scope.requestObj, $scope);
-
-      $scope.removeRequestFromActive($scope.requestObj);
-      $scope.updateUserRequest($scope.requestObj);
-      $scope.user.active_requests = [];
-      $scope.rootUser.updateLocal($scope.user);
 
       var cancelMsg = $scope.course.short_name + ' request canceled';
       $scope.showSuccess(cancelMsg);
-      $timeout(function() {
-        $state.go('^.home');
-      }, 1000);
+      // $timeout(function() {
+      //   $state.go('^.home');
+      // }, 1000);
     }
 
   }
