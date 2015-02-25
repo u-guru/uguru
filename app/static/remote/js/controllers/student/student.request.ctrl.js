@@ -254,7 +254,8 @@ angular.module('uguru.student.controllers')
 
       $scope.saveRequestToUser();
       $scope.contactingGuruModal.show();
-
+      console.log('right before contacting guru modal is hidden');
+      console.log($scope.user);
       $timeout(function() {
 
         $state.go('^.home');

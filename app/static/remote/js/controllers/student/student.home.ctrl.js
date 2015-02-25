@@ -23,10 +23,11 @@ angular.module('uguru.student.controllers', [])
   '$ionicBackdrop',
   'User',
   '$ionicHistory',
+  '$cordovaBackgroundGeolocation',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $cordovaProgress, $q,
  	University, $templateCache, $ionaicHistory, Popup, $popover, Popover, $ionicBackdrop,
-  User, $ionicHistory) {
+  User, $ionicHistory, $cordovaBackgroundGeolocation) {
 
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
@@ -308,31 +309,15 @@ angular.module('uguru.student.controllers', [])
       if (!$scope.user.onboarding || !$scope.user.onboarding.get_started) {
         $scope.user.onboarding = {};
         $scope.user.onboarding.get_started = true;
-        $timeout(function() {
-          // getStartedPopoverOptions = {
-          //   targetElement:'#home-header',
-          //   title: 'Tap to get started',
-          //   delay: 500,
-          //   animation:"am-flip-x",
-          //   placement: 'bottom',
-          //   body: "Just enter a course code, Uguru uses <br>your university's course lists<br> to help keep things simple.",
-          //   buttonText: 'Got it',
-          //   dropshadow: true
-          // }
 
-          // var popover = Popover.tutorial.init($scope, getStartedPopoverOptions);
-
-          // $scope.showTooltip = function() {
-          //   popover.$promise.then(popover.show);
-          // };
-          // $scope.hideTooltip = function() {
-          //   popover.$promise.then(popover.hide);
-          // };
-
-          // $scope.showTooltip();
-          // $scope.hideTooltip();
-
-        }, 500)
+        options =  {
+        desiredAccuracy: 5,
+        stationaryRadius: 20,
+        distanceFilter: 30,
+        activityType: 'Fitness',
+        debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
+        stopOnTerminate: false
+      }
       }
     });
 

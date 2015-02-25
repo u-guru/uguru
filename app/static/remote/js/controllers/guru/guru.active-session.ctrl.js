@@ -283,6 +283,26 @@ angular.module('uguru.student.controllers')
         $scope.ratingModal = modal;
     });
 
+    options =  {
+        desiredAccuracy: 5,
+        stationaryRadius: 20,
+        distanceFilter: 30,
+        activityType: 'Fitness',
+        debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
+        stopOnTerminate: false
+      }
+      $cordovaBackgroundGeolocation.configure(options)
+      .then(
+        function(success) {
+          console.log(success);
+        }, // Background never resolves
+        function (err) { // error callback
+          console.error(err);
+        },
+        function (location) { // notify callback
+          console.log(location);
+        });
+
 
     $scope.$on('$ionicView.beforeLeave', function(){
       $scope.bgGeo.stop();

@@ -33,15 +33,16 @@ angular.module('uguru.student.controllers')
       var acceptGuruCallback = function() {
 
         $scope.request.guru_id = $scope.guru.id;
-
+        $scope.request.status = 2;
         console.log('print request request before submitting');
         console.log($scope.request)
+        $scope.user.incoming_requests = [];
 
         var callbackSuccess = function($scope, processed_user) {
             $scope.user.active_student_sessions = processed_user.active_student_sessions;
             $scope.user.active_requests = processed_user.active_requests;
             $scope.user.incoming_requests = processed_user.incoming_requests;
-            $state.go('^.home')
+            $state.go('^.home');
         }
 
         $scope.user.createObj($scope.user, 'sessions', $scope.request, $scope, callbackSuccess);
@@ -50,7 +51,7 @@ angular.module('uguru.student.controllers')
       }
 
 
-      dialog_title = "Accept this Student";
+      dialog_title = "Accept this Guru";
       dialog_message = "You will not be billed until the end of the session & 100% satisfaction guaranteed";
       button_arr = ['Not ready', 'Yes'];
       $scope.root.dialog.confirm(dialog_message, dialog_title, button_arr, [null, acceptGuruCallback])

@@ -225,6 +225,7 @@ angular.module('uguru.user', [])
             if ($scope) {
                 var scope_user_id = $scope.user.id;
             } else {
+                console.log('accessing user from local..')
                 scope_user_id = $localstorage.getObject('user')['id']
             }
             if (!scope_user_id) {
@@ -240,7 +241,9 @@ angular.module('uguru.user', [])
             Restangular.one('user', scope_user_id).customGET().then(
                 function(user) {
                     var processed_user = processResults(user.plain());
-                    console.log(user);
+                    console.log('most recently processed user..');
+                    console.log(processed_user);
+                    console.log('');
                     if ($scope) {
                         $scope.user = processed_user;
                         $localstorage.setObject('user', $scope.user);
@@ -334,9 +337,10 @@ angular.module('uguru.user', [])
                     .one('user', userObj.id).one(param)
                     .customPOST(JSON.stringify(payload))
                     .then(function(user){
-                        var processed_user = processResults(user)
+                        var processed_user = processResults(user.plain())
                         $localstorage.setObject('user', processed_user);
-
+                        console.log('student has accepted guru');
+                        console.log(processed_user)
                         if (callback_success) {
                             callback_success($scope, processed_user)
                         }

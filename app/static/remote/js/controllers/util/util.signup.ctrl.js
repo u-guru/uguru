@@ -314,7 +314,7 @@ angular.module('uguru.util.controllers')
           $scope.user.previous_requests = processed_user.previous_requests;
           $scope.user.active_student_sessions = processed_user.active_student_sessions;
           $scope.user.previous_student_sessions = processed_user.previous_student_sessions;
-
+          $scope.user.student_courses = processed_user.student_courses;
 
           $localstorage.setObject('user', $scope.user);
 
@@ -339,6 +339,8 @@ angular.module('uguru.util.controllers')
 
       User.create($scope.signupForm).then(function(user) {
           processed_user = User.process_results(user.plain());
+          console.log('user created and returned from server...')
+          console.log(processed_user)
           $scope.user.id = processed_user.id;
           $scope.user.auth_token = processed_user.auth_token;
           $scope.user.active_requests = processed_user.active_requests;
@@ -349,18 +351,32 @@ angular.module('uguru.util.controllers')
           $scope.user.active_student_sessions = processed_user.active_student_sessions;
           $scope.user.previous_student_sessions = processed_user.previous_student_sessions;
 
-          //update server with courses & university that the student has added
-          for (var i = 0; i < $scope.user.student_courses.length; i++) {
+          $scope.user.updateAttr = processed_user.updateAttr;
+          $scope.user.createObj = processed_user.createObj;
+          $scope.user.updateObj = processed_user.updateObj;
+
+          //if new user signed up before request and is not on records
+          if (processed_user.student_courses.length === 0 && $scope.user.student_courses && $scope.user.student_courses.length > 0)
+          {
+            for (var i = 0; i < $scope.user.student_courses.length; i++) {
               var course = $scope.user.student_courses[i];
               $scope.user.updateAttr('add_student_course', $scope.user, course);
               console.log(course.short_name, 'sent to server')
+            }
+
+            //update server with university_id
+            if ($scope.user.university_id) {
+              $scope.user.updateAttr('university_id', $scope.user, $scope.user.university_id);
+            }
+
+
+          } else {
+
+            $scope.user.student_courses = processed_user.student_courses;
+
           }
 
-          //update server with university_id
-          if ($scope.user.university_id) {
-            $scope.user.updateAttr('university_id', $scope.user, $scope.user.university_id);
-          }
-
+          $scope.user.updateAttr('guru_mode', $scope.user, false);
 
           // $localstorage.setObject('user', $scope.user);
 
