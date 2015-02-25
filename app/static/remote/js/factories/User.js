@@ -58,7 +58,7 @@ angular.module('uguru.user', [])
 
         if (user.incoming_requests.length > 0 && !user.guru_mode) {
             var first_incoming_request = user.incoming_requests[0];
-
+            console.log(first_incoming_request);
             var paramPayload = {
                 requestObj:JSON.stringify(first_incoming_request),
             }
@@ -240,6 +240,7 @@ angular.module('uguru.user', [])
             Restangular.one('user', scope_user_id).customGET().then(
                 function(user) {
                     var processed_user = processResults(user.plain());
+                    console.log(user);
                     if ($scope) {
                         $scope.user = processed_user;
                         $localstorage.setObject('user', $scope.user);

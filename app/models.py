@@ -446,7 +446,9 @@ class Request(Base):
         backref="requests"
     )
 
-    guru = relationship("User", uselist=False)
+    guru_id = Column(Integer, ForeignKey('user.id'))
+    guru = relationship("User", uselist=False,
+        primaryjoin = "User.id == Request.guru_id")
 
     def process_proposal(self, proposal_json):
         self.status = proposal_json.get('status')

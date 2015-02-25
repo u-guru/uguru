@@ -333,7 +333,6 @@ class UserRequestView(restful.Resource):
 
         available_gurus = _request.course.gurus.all()
         for guru in available_gurus:
-            print guru
             proposal = Proposal.initProposal(_request.id, guru.id)
             event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
             event = Event.initFromDict(event_dict)
@@ -361,6 +360,7 @@ class UserRequestView(restful.Resource):
 
             if proposal.status == Proposal.GURU_ACCEPTED:
                 proposal.request.status = Request.STUDENT_RECEIVED_GURU
+                proposal.request.guru_id = user_id
                 event_dict = {'status': Proposal.GURU_ACCEPTED, 'proposal_id':proposal.id}
                 event = Event.initFromDict(event_dict)
                 db_session.commit()
