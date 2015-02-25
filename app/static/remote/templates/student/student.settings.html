@@ -46,7 +46,7 @@
             <a class="item gray" ng-click="goToEditProfile()">
               Edit my profile, classes, university
             </a>
-            <a class="item gray positive" ng-click="becomeGuruModal.show()" ng-show="!user.is_a_guru">
+            <a class="item gray positive" ng-click="goToGuruMode()" ng-show="!user.is_a_guru">
               Become a Guru
             </a>
             <a class="item gray" ng-click="switchToStudentMode()" ng-show="user.is_a_guru && user.guru_mode">

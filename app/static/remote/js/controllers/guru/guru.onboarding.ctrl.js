@@ -109,8 +109,9 @@ angular.module('uguru.guru.controllers', [])
 
     $scope.submitGuruOnboarding = function() {
       $scope.user.is_a_guru = true;
-      $scope.rootUser.updateLocal($scope.user);
+      $scope.user.guru_mode = true;
       $scope.user.updateAttr('is_a_guru', $scope.user, true);
+      $scope.user.updateAttr('guru_mode', $scope.user, true);
       $state.go('^.home');
     }
 

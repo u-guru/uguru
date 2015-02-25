@@ -340,6 +340,7 @@ angular.module('uguru.util.controllers')
       User.create($scope.signupForm).then(function(user) {
           processed_user = User.process_results(user.plain());
           $scope.user.id = processed_user.id;
+          $scope.user.auth_token = processed_user.auth_token;
           $scope.user.active_requests = processed_user.active_requests;
           $scope.user.pending_guru_ratings = processed_user.pending_guru_ratings;
           $scope.user.pending_student_ratings = processed_user.pending_student_ratings;
@@ -356,10 +357,12 @@ angular.module('uguru.util.controllers')
           }
 
           //update server with university_id
-          $scope.user.updateAttr('university_id', $scope.user, $scope.user.university.id);
+          if ($scope.user.university_id) {
+            $scope.user.updateAttr('university_id', $scope.user, $scope.user.university_id);
+          }
 
 
-          $localstorage.setObject('user', $scope.user);
+          // $localstorage.setObject('user', $scope.user);
 
           $scope.showSuccess('Success');
       },

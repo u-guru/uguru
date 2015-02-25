@@ -170,8 +170,11 @@ angular.module('uguru.student.controllers', [])
       console.log('this was clicked');
     }
 
+
+
     $scope.goToBecomeGuru = function() {
       $state.go('^.^.guru.wizard');
+      $scope.bottomTabsDelegate.select(0);
       $timeout(function() {
         $scope.becomeGuruModal.hide();
       }, 300);
@@ -182,6 +185,14 @@ angular.module('uguru.student.controllers', [])
         $scope.signupModal.show()
       } else {
         $state.go('^.settings-notifications');
+      }
+    }
+
+    $scope.goToGuruMode = function() {
+      if (!$scope.user.auth_token) {
+        $scope.signupModal.show();
+      } else {
+        $scope.becomeGuruModal.show();
       }
     }
 
