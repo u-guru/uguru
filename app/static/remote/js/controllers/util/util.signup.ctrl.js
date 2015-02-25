@@ -307,7 +307,6 @@ angular.module('uguru.util.controllers')
 
           processed_user = User.process_results(user.plain());
           $scope.user.id = processed_user.id;
-          $scope.user.student_courses = processed_user.student_courses;
           $scope.user.active_requests = processed_user.active_requests;
           $scope.user.pending_guru_ratings = processed_user.pending_guru_ratings;
           $scope.user.pending_student_ratings = processed_user.pending_student_ratings;
@@ -341,7 +340,6 @@ angular.module('uguru.util.controllers')
       User.create($scope.signupForm).then(function(user) {
           processed_user = User.process_results(user.plain());
           $scope.user.id = processed_user.id;
-          $scope.user.student_courses = processed_user.student_courses;
           $scope.user.active_requests = processed_user.active_requests;
           $scope.user.pending_guru_ratings = processed_user.pending_guru_ratings;
           $scope.user.pending_student_ratings = processed_user.pending_student_ratings;
@@ -349,6 +347,16 @@ angular.module('uguru.util.controllers')
           $scope.user.previous_requests = processed_user.previous_requests;
           $scope.user.active_student_sessions = processed_user.active_student_sessions;
           $scope.user.previous_student_sessions = processed_user.previous_student_sessions;
+
+          //update server with courses & university that the student has added
+          for (var i = 0; i < $scope.user.student_courses.length; i++) {
+              var course = $scope.user.student_courses[i];
+              $scope.user.updateAttr('add_student_course', $scope.user, course);
+              console.log(course.short_name, 'sent to server')
+          }
+
+          //update server with university_id
+          $scope.user.updateAttr('university_id', $scope.user, $scope.user.university.id);
 
 
           $localstorage.setObject('user', $scope.user);
