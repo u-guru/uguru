@@ -200,8 +200,7 @@ angular.module('uguru.student.controllers')
         $scope.map.student_marker = new google.maps.Marker({
             position: studentCoords,
             map: map,
-            draggable:true,
-            animation: google.maps.Animation.DROP
+            draggable:true
           });
 
       }
@@ -216,10 +215,16 @@ angular.module('uguru.student.controllers')
         $scope.map.guru_marker = new google.maps.Marker({
             position: guruCoords,
             map: map,
-            draggable:true,
-            animation: google.maps.Animation.DROP
+            draggable:true
           });
 
+      }
+
+      if (position_a && position_b) {
+          var bounds = new google.maps.LatLngBounds();
+          bounds.extend(guruCoords);
+          bounds.extend(studentCoords);
+          map.fitBounds(bounds);
       }
 
     }

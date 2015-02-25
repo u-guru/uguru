@@ -25,6 +25,21 @@ angular.module('uguru.student.controllers')
     $scope.session = JSON.parse($stateParams.sessionObj);
     $scope.new_message = {content: ''};
 
+    $scope.getCurrentDate = function() {
+        var d = new Date();
+        var hour = d.getHours() % 12;
+        var minutes = d.getMinutes();
+        if (d.getHours() >= 12)  {
+          ending = 'PM'
+        } else {
+          ending = 'AM'
+        }
+        result = hour + ':' + minutes + ' ' + ending
+        return result
+    }
+
+    $scope.last_updated = $scope.getCurrentDate();
+
     $scope.sortMessageComparator = function(msg_a, msg_b) {
         return msg_a.id - msg_b.id;
     }
@@ -34,7 +49,7 @@ angular.module('uguru.student.controllers')
       var messages = messages;
       for (var i = 0; i < messages.length; i ++ ) {
         var current_message = messages[i];
-        if (current_message.receiver.id === $scope.user.id) {
+        if (current_message.sender.id === $scope.user.id) {
           current_message.class = 'you';
           current_message.profile_url = $scope.default_img_one;
         } else {

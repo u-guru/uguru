@@ -567,7 +567,7 @@ class UserSessionView(restful.Resource):
                 event_dict = {'status': Session.GURU_END_SESSION, 'request_id':_session.request.id}
                 event = Event.initFromDict(event_dict)
 
-                # rating = Rating.initFromSession(_session)
+                rating = Rating.initFromSession(_session)
                 _session.seconds = session_json.get('seconds')
                 _session.hours = session_json.get('hours')
                 _session.minutes = session_json.get('minutes')

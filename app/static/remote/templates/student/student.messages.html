@@ -9,11 +9,11 @@
     <ion-header-bar id="request-location" style="height:30px; text-align:center;" class="bar-subheader bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)" ng-init="init()">
 
       <div style="margin-top:5px; width:100%; white-space:no-wrap; overflow: hidden; text-overflow: ellipsis;text-transform:none; font-size:12px;">
-        Last updated: {{messages[messages.length - 1].time_created}}
+        Last updated: {{last_updated}}
       </div>
 
     </ion-header-bar>
-  <ion-content scroll="true" delegate-handle="message-scroll" ng-click="hideKeyboard()">
+  <ion-content scroll="true" delegate-handle="message-scroll" ng-click="hideKeyboard()" style="background-color:rgba(0,0,0,0.04); top:88px;">
 
     <div class="messages">
       <ul class="list">
