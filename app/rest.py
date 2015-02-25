@@ -151,7 +151,11 @@ class UserOneView(restful.Resource):
     @marshal_with(UserSerializer)
     def get(self, _id):
         user = User.query.get(_id)
+        [db_session.refresh(_request) for _request in user.requests]
+        [db_session.refresh(_session) for _session in user.guru_sessions]
+        [db_session.refresh(_session) for _session in user.student_sessions]
         db_session.refresh(user)
+
         # if not request.json.get('auth_token'):
         #     abort(400)
         if not user:
