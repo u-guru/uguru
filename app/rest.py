@@ -736,9 +736,9 @@ class UserSessionMessageView(restful.Resource):
 
 class UserCardView(restful.Resource):
     @marshal_with(UserSerializer)
-    def post(self, _id):
+    def post(self, user_id):
 
-        user = get_user(_id)
+        user = get_user(user_id)
 
         if not user:
             abort(404)
@@ -747,15 +747,15 @@ class UserCardView(restful.Resource):
         debit_card = request.json.get('debit_card')
 
         # user is adding a card
-        if card:
+        if debit_card:
             if not user.get_transfer_cards():
-                request.json['is_default_payment'] = True
+                request.json['is_default_transfer'] = True
             card = Card.initFromJson(request.json, user)
             return user, 200
 
-        if debit_card:
+        if card:
             if not user.get_payment_cards():
-                request.json['is_default_transfer'] = True
+                request.json['is_default_payment'] = True
             debit_card = Card.initFromJson(request.json, user)
             return user, 200
 

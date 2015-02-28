@@ -111,6 +111,7 @@ class User(Base):
 
     balance = Column(Float)
     total_earned = Column(Float)
+    total_cashed_out = Column(Float) # TODO ADD
     credits = Column(Float)
 
     recent_latitude = Column(Float)
@@ -1174,7 +1175,7 @@ class Card(Base):
     time_added = Column(String)
 
     is_payment_card = Column(Boolean, default=False)
-    is_cashout_card = Column(Boolean, default=False)
+    is_transfer_card = Column(Boolean, default=False)
 
     stripe_token = Column(String)
 
