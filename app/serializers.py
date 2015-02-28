@@ -79,7 +79,7 @@ card_fields['is_default_payment'] = fields.Boolean(attribute='is_default_payment
 card_fields['is_default_transfer'] = fields.Boolean(attribute='is_default_transfer')
 card_fields['id'] = fields.Integer(attribute='id')
 card_fields['is_payment_card'] = fields.Boolean(attribute='is_payment_card')
-card_fields['is_cashout_card'] = fields.Boolean(attribute='is_cashout_card')
+card_fields['is_transfer_card'] = fields.Boolean(attribute='is_transfer_card')
 
 message_fields = {}
 message_fields['sender'] = fields.Nested(message_user_fields)
@@ -103,6 +103,7 @@ transaction_fields['guru'] = fields.Nested(guru_fields)
 transaction_fields['session'] = fields.Nested(session_fields_transaction)
 transaction_fields['student'] = fields.Nested(student_fields)
 transaction_fields['card'] = fields.Nested(card_fields)
+transaction_fields['transfer_status'] = fields.String(attribute='transfer_status')
 
 session_fields = {}
 session_fields['time_created'] = fields.DateTime(attribute='time_created')
@@ -169,7 +170,8 @@ UserSerializer = {
     'proposals': fields.List(fields.Nested(proposal_fields)),
     'cards': fields.List(fields.Nested(card_fields)),
     'student_transactions': fields.List(fields.Nested(transaction_fields)),
-    'guru_transactions': fields.List(fields.Nested(transaction_fields))
+    'guru_transactions': fields.List(fields.Nested(transaction_fields)),
+    'transfer_transactions': fields.List(fields.Nested(transaction_fields))
 }
 
 DeviceSerializer = {

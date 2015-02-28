@@ -110,8 +110,8 @@ class User(Base):
     upper_pay_rate = Column(Float)
 
     balance = Column(Float)
-    total_earned = Column(Float)
-    total_cashed_out = Column(Float) # TODO ADD
+    total_earned = Column(Float, default = 0)
+    total_cashed_out = Column(Float, default = 0)
     credits = Column(Float)
 
     recent_latitude = Column(Float)
@@ -1226,7 +1226,7 @@ class Card(Base):
         card.card_last4 = card_json.get('card_last4')
         card.card_type = card_json.get('card_type')
         card.time_added = card_json.get('time_added')
-        card.is_cashout_card = card_json.get('is_cashout_card')
+        card.is_transfer_card = card_json.get('is_transfer_card')
         card.is_payment_card = card_json.get('is_payment_card')
         card.user_id = user.id
         card.is_default_payment = card_json.get('is_default_payment')
@@ -1238,9 +1238,15 @@ class Card(Base):
 class Transaction(Base):
     __tablename__ = 'transaction'
 
+    # Types
     SESSION_TRANSACTION = 0
     CASHOUT_TRANSACTION = 1
     CREDIT_PURCHASE = 2
+
+
+    TRANSFER_INITIATED = 3
+    TRANSFER_PROCESSED = 4
+    TRANSFER_ERROR = 5
     HOURLY_PRICE = 20
 
     id = Column(Integer, primary_key=True)
@@ -1249,6 +1255,7 @@ class Transaction(Base):
 
     time_created = Column(DateTime)
     time_processed = Column(DateTime)
+    time_updated = Column(DateTime)
     time_disputed = Column(DateTime)
     time_refunded = Column(DateTime)
 
@@ -1263,6 +1270,12 @@ class Transaction(Base):
     charge_id = Column(String)
     transfer_id = Column(String)
 
+    balance_before = Column(Float)
+    balance_after = Column(Float)
+
+    transfer_status = Column(String)
+    charge_status = Column(String)
+
     session = relationship("Session", uselist=False, backref="transaction")
 
     guru_id = Column(Integer, ForeignKey('user.id'))
@@ -1276,6 +1289,12 @@ class Transaction(Base):
         primaryjoin = "(User.id==Transaction.student_id)",
                         uselist=False,
                         backref="student_transactions")
+
+    cashout_guru_id = Column(Integer, ForeignKey('user.id'))
+    cashout_guru = relationship("User",
+        primaryjoin = "(User.id==Transaction.cashout_guru_id)",
+                        uselist=False,
+                        backref="transfer_transactions")
 
 
     card_id = Column(Integer, ForeignKey('card.id'))
@@ -1296,29 +1315,35 @@ class Transaction(Base):
         return total
 
     @staticmethod
-    def initTransferTransaction(amount, user):
+    def initTransferTransaction(user, card):
         from app.lib.stripe_client import transfer_funds
 
         transaction = Transaction()
         transaction.time_created = datetime.now()
         transaction._type = 1
-        transaction.guru_amount = amount
 
+        user.balance = 100
         transaction.balance_before = user.balance
 
-
-        stripe_transfer = transfer_funds(user, amount)
+        stripe_transfer = transfer_funds(user, 100)
 
         if type(stripe_transfer) is str:
             transaction.stripe_error_string = stripe_transfer
         else:
             transaction.transfer_id = stripe_transfer.id
+            transaction.transfer_status = stripe_transfer.status
             transaction.stripe_fee = 0.25
+            transaction.guru_amount = user.balance
+
+            if not user.total_cashed_out: user.total_cashed_out = 0
+            user.total_cashed_out += user.balance
             user.balance = 0
 
-        transaction.guru_id = _session.guru_id
-        transaction.student_id = _session.guru_id
-        transaction.card_id = _session.card_id
+        transaction.card_id = card.id
+
+        transaction.balance_after = user.balance
+
+        transaction.cashout_guru_id = user.id
 
         db_session.add(transaction)
         db_session.commit()
@@ -1332,7 +1357,13 @@ class Transaction(Base):
         transaction.time_created = datetime.now()
         transaction._type = 0
         transaction.student_amount = Transaction.calculateStudentPriceFromSession(_session)
+
         transaction.guru_amount = transaction.student_amount * 0.8
+        transaction.guru.balance += guru_amount
+
+        if not transaction.guru.total_earned: transaction.guru.total_earned = 0
+        transaction.guru.total_earned += guru_amount
+
         stripe_charge = charge_customer(_session.student, transaction.student_amount)
         transaction.session = _session
 

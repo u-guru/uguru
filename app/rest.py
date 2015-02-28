@@ -397,7 +397,6 @@ class UserRequestView(restful.Resource):
             return user, 200
 
         _request = Request.query.get(int(request.json.get('id')))
-        print request.json
 
         if not _request:
             abort(404)
@@ -456,7 +455,21 @@ class UserTransactionsView(restful.Resource):
     #create new transaction (transfer or charge)
     @marshal_with(UserSerializer)
     def post(self, _id):
-        pass
+        user = get_user(_id)
+        if not user:
+            abort(404)
+
+        if request.json.get('transaction'):
+            print request.json
+
+            transaction_json = request.json
+            selected_card = Card.query.get(transaction_json.get('card_id'))
+
+            Transaction.initTransferTransaction(user, selected_card);
+
+            return user, 200
+
+        abort(400)
 
     #refunds, status of charge
     @marshal_with(UserSerializer)
@@ -795,11 +808,11 @@ class UserCardView(restful.Resource):
             card = Card.query.get(card_json.get('id'))
             user.cards.remove(card)
 
-            if card.is_transfer_card and len(user.num_transfer_cards()) == 1:
+            if card.is_transfer_card and user.num_transfer_cards() == 1:
 
                 user.get_transfer_cards()[0].is_default_transfer = True
 
-            if card.is_payment_card and len(user.num_payment_cards()) == 1:
+            if card.is_payment_card and user.num_payment_cards() == 1:
 
                 user.get_payment_cards()[0].is_default_payment = True
 

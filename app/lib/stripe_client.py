@@ -82,7 +82,7 @@ def charge_customer(user, amount):
 
     default_card = None
     for card in user.cards:
-        if card.is_default:
+        if card.is_default_payment:
             default_card = card
 
     try:
@@ -126,11 +126,16 @@ def charge_customer(user, amount):
 
 def transfer_funds(user, amount):
 
+    default_card = None
+    for card in user.cards:
+        if card.is_default_transfer:
+            default_card = card
+
     try:
         stripe_transfer = stripe.Transfer.create(
           amount=int(amount * 100),
           currency="usd",
-          recipient=user.recipient_id,
+          recipient=default_card.stripe_recipient_id,
           description="Transfer for " + str(user.name) + ", " + str(user.email)
         )
 
