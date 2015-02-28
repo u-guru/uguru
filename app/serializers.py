@@ -1,5 +1,5 @@
 from flask.ext.restful import fields
-from app.models import University
+from app.models import University, Session, Transaction
 
 university_fields = {}
 university_fields['id'] = fields.Integer(attribute='id')
@@ -75,6 +75,7 @@ card_fields = {}
 card_fields['time_created'] = fields.DateTime(attribute='time_created')
 card_fields['card_last4'] = fields.String(attribute='card_last4')
 card_fields['card_type'] = fields.String(attribute='card_type')
+card_fields['is_default'] = fields.Boolean(attribute='is_default')
 card_fields['id'] = fields.Integer(attribute='id')
 card_fields['is_payment_card'] = fields.Boolean(attribute='is_payment_card')
 card_fields['is_cashout_card'] = fields.Boolean(attribute='is_cashout_card')
@@ -90,6 +91,17 @@ message_fields['contents'] = fields.String(attribute = 'contents')
 message_fields['session_id'] = fields.Integer(attribute='session_id')
 
 
+session_fields_transaction = {}
+session_fields_transaction['request'] = fields.Nested(request_fields)
+
+transaction_fields = {}
+transaction_fields['student_amount'] = fields.Float(attribute = 'student_amount')
+transaction_fields['guru_amount'] = fields.Float(attribute = 'guru_amount')
+transaction_fields['time_created'] = fields.DateTime(attribute='time_created')
+transaction_fields['guru'] = fields.Nested(guru_fields)
+transaction_fields['session'] = fields.Nested(session_fields_transaction)
+transaction_fields['student'] = fields.Nested(student_fields)
+transaction_fields['card'] = fields.Nested(card_fields)
 
 session_fields = {}
 session_fields['time_created'] = fields.DateTime(attribute='time_created')
@@ -108,6 +120,7 @@ session_fields['address'] = fields.String(attribute='address')
 session_fields['in_person'] = fields.Boolean(attribute='in_person')
 session_fields['online'] = fields.Boolean(attribute='online')
 session_fields['request'] = fields.Nested(request_fields)
+session_fields['transaction'] = fields.Nested(transaction_fields)
 session_fields['messages'] = fields.List(fields.Nested(message_fields))
 session_fields['time_estimate'] = fields.Integer(attribute='time_estimate')
 
@@ -118,16 +131,6 @@ rating_fields['id'] = fields.Integer(attribute='id')
 rating_fields['student_rating'] = fields.Integer(attribute='student_rating')
 rating_fields['guru_rating'] = fields.Integer(attribute='guru_rating')
 rating_fields['session'] = fields.Nested(session_fields)
-
-transaction_fields = {}
-transaction_fields['student_amount'] = fields.Float(attribute = 'student_amount')
-transaction_fields['guru_amount'] = fields.Float(attribute = 'guru_amount')
-transaction_fields['session'] = fields.Nested(session_fields)
-transaction_fields['time_created'] = fields.DateTime(attribute='time_created')
-transaction_fields['guru'] = fields.Nested(guru_fields)
-transaction_fields['student'] = fields.Nested(student_fields)
-transaction_fields['card'] = fields.Nested(card_fields)
-
 
 UserSerializer = {
     'id': fields.Integer,

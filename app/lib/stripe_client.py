@@ -80,11 +80,16 @@ def create_recipient(user, token):
 
 def charge_customer(user, amount):
 
+    default_card = None
+    for card in user.cards:
+        if card.is_default:
+            default_card = card
+
     try:
         stripe_charge = stripe.Charge.create(
           amount=int(amount * 100),
           currency="usd",
-          customer=user.cards[2].stripe_customer_id, # obtained with Stripe.js
+          customer=default_card.stripe_customer_id, # obtained with Stripe.js
           description="Charge for " + str(user.name) + ", " + str(user.email)
         )
 

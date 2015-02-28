@@ -227,6 +227,31 @@ class UserOneView(restful.Resource):
                 user.guru_courses.append(c)
                 db_session.commit()
 
+        if request.json.get('remove_student_course'):
+            course = request.json.get('course')
+            course_id = course.get('id')
+            c = Course.query.get(int(course_id))
+            if c in user.student_courses:
+                user.student_courses.remove(c)
+            db_session.commit()
+
+        if request.json.get('remove_guru_course'):
+            course = request.json.get('course')
+            course_id = course.get('id')
+            c = Course.query.get(int(course_id))
+            if c in user.guru_courses:
+                user.guru_courses.remove(c)
+            db_session.commit()
+
+        if request.json.get('remove_major'):
+            major = request.json.get('major')
+            major_id = major.get('id')
+            m = Major.query.get(int(major_id))
+            if m in user.majors:
+                user.majors.remove(m)
+            db_session.commit()
+
+
         if request.json.get('add_major'):
             major = request.json.get('major')
             major_id = major.get('id')
@@ -717,21 +742,21 @@ class UserCardView(restful.Resource):
 
         if not user:
             abort(404)
-        print request.json
+
         card = request.json.get('card')
         debit_card = request.json.get('debit_card')
 
         # user is adding a card
         if card:
-            if not user.cards:
-                request.json['is_default'] = True
+            if not user.get_transfer_cards():
+                request.json['is_default_payment'] = True
             card = Card.initFromJson(request.json, user)
             return user, 200
 
         if debit_card:
-            if not user.cards:
-                card['is_default'] = True
-            debit_card = Card.initFromJson(debit_card, user)
+            if not user.get_payment_cards():
+                request.json['is_default_transfer'] = True
+            debit_card = Card.initFromJson(request.json, user)
             return user, 200
 
         abort(404)
@@ -746,13 +771,40 @@ class UserCardView(restful.Resource):
         card_json = request.json.get('card')
         card = Card.query.get(card_json.get('id'))
 
-        if request.json.get('default'):
-            card.is_default = True
+        if card_json.get('default_payment'):
 
+            card.is_default_payment = True
             for other_card in user.cards:
-                if other_card != card:
-                    card.is_default = False
+                if other_card.is_payment_card and other_card.id != card.id:
+                    other_card.is_default_payment = False
+
             db_session.commit()
+
+        if card_json.get('default_transfer'):
+
+            card.is_default_transfer = True
+            for other_card in user.cards:
+                if other_card.is_transfer_card and other_card.id != card.id:
+                    other_card.is_default_transfer = False
+
+            db_session.commit()
+
+        if card_json.get('remove_card'):
+
+            card_json = request.json.get('card')
+            card = Card.query.get(card_json.get('id'))
+            user.cards.remove(card)
+
+            if card.is_transfer_card and len(user.num_transfer_cards()) == 1:
+
+                user.get_transfer_cards()[0].is_default_transfer = True
+
+            if card.is_payment_card and len(user.num_payment_cards()) == 1:
+
+                user.get_payment_cards()[0].is_default_payment = True
+
+            db_session.commit()
+
 
         return user, 200
 
@@ -812,6 +864,17 @@ class UserNewView(restful.Resource):
         if request.json.get('fb_id'):
             user.profile_url = request.json.get('profile_url')
             user.fb_id = request.json.get('fb_id')
+
+        if request.json.get('student_courses'):
+
+            print len(user.student_courses) + ' before'
+            for course in request.json.get('student_courses'):
+                course_obj = Course.query.get(int(course.id))
+                user.student_courses.append(course_obj)
+            db_session.commit()
+            print len(user.student_courses) + ' after'
+
+
 
         else:
             from hashlib import md5
@@ -1384,7 +1447,7 @@ api.add_resource(UserView, '/api/v1/users')
 api.add_resource(UserNewView, '/api/v1/user')
 api.add_resource(UserOneView, '/api/v1/user/<int:_id>')
 api.add_resource(UserRequestView, '/api/v1/user/<int:user_id>/requests')
-api.add_resource(UserCardView, '/api/v1/user/<int:_id>/cards')
+api.add_resource(UserCardView, '/api/v1/user/<int:user_id>/cards')
 api.add_resource(UserSessionView, '/api/v1/user/<int:_id>/sessions')
 api.add_resource(UserTransactionsView, '/api/v1/user/<int:_id>/transactions')
 api.add_resource(UserRatingView, '/api/v1/user/<int:_id>/ratings')

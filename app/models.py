@@ -109,6 +109,10 @@ class User(Base):
     lower_pay_rate = Column(Float)
     upper_pay_rate = Column(Float)
 
+    balance = Column(Float)
+    total_earned = Column(Float)
+    credits = Column(Float)
+
     recent_latitude = Column(Float)
     recent_longitude = Column(Float)
     last_gps_activity = Column(DateTime)
@@ -145,6 +149,27 @@ class User(Base):
         self.password = flask_bcrypt.generate_password_hash(password)
         db_session.commit()
         return self.password
+
+    def num_payment_cards(self):
+        count = 0
+        for card in self.cards:
+            if card.is_payment_card:
+                count += 1
+        return count
+
+    def num_transfer_cards(self):
+        count = 0
+        for card in self.cards:
+            if card.is_transfer_card:
+                count += 1
+        return count
+
+    def get_payment_cards(self):
+        return [card for card in self.cards if card.is_payment_card]
+
+
+    def get_transfer_cards(self):
+        return [card for card in self.cards if card.is_transfer_card]
 
     def request_active(self, course_id):
         for _request in self.requests:
@@ -855,7 +880,7 @@ class Rating(Base):
         rating.guru_id = _session.guru_id
         rating.student_id = _session.student_id
         rating.session = _session
-        db_session.add(_session)
+        db_session.add(rating)
         db_session.commit()
         return rating
 
@@ -1148,8 +1173,8 @@ class Card(Base):
     card_type = Column(String) #i.e, Visa
     time_added = Column(String)
 
-    is_payment_card = Column(Boolean)
-    is_cashout_card = Column(Boolean)
+    is_payment_card = Column(Boolean, default=False)
+    is_cashout_card = Column(Boolean, default=False)
 
     stripe_token = Column(String)
 
@@ -1160,8 +1185,11 @@ class Card(Base):
         backref = 'cards'
         )
 
-    #If is card default
-    is_default = Column(Boolean, default=False)
+    #If is card default payment
+    is_default_payment = Column(Boolean, default=False)
+
+    #If is card default transfer
+    is_default_transfer = Column(Boolean, default=False)
 
     #If user has not removed/deleted the card yet
     active = Column(Boolean, default = True)
@@ -1197,8 +1225,11 @@ class Card(Base):
         card.card_last4 = card_json.get('card_last4')
         card.card_type = card_json.get('card_type')
         card.time_added = card_json.get('time_added')
-        card.user_id = card_json.get('user').get('id')
-        card.is_default = card_json.get('is_default')
+        card.is_cashout_card = card_json.get('is_cashout_card')
+        card.is_payment_card = card_json.get('is_payment_card')
+        card.user_id = user.id
+        card.is_default_payment = card_json.get('is_default_payment')
+        card.is_default_transfer = card_json.get('is_default_transfer')
         db_session.add(card)
         db_session.commit()
         return card
@@ -1301,8 +1332,8 @@ class Transaction(Base):
         transaction._type = 0
         transaction.student_amount = Transaction.calculateStudentPriceFromSession(_session)
         transaction.guru_amount = transaction.student_amount * 0.8
-
-        stripe_charge = charge_customer(user, transaction.student_amount)
+        stripe_charge = charge_customer(_session.student, transaction.student_amount)
+        transaction.session = _session
 
         if type(stripe_charge) is str:
             transaction.stripe_error_string = stripe_charge
