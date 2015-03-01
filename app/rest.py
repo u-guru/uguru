@@ -600,13 +600,13 @@ class UserSessionView(restful.Resource):
             ## Guru is starting the session
             if status == Session.GURU_START_SESSION:
 
-                event_dict = {'status': Session.GURU_START_SESSION, 'request_id':_session.request.id}
+                event_dict = {'status': Session.GURU_START_SESSION, 'session_id':_session.id}
                 event = Event.initFromDict(event_dict)
 
 
             ## Guru is ending the session
             elif status == Session.GURU_END_SESSION:
-                event_dict = {'status': Session.GURU_END_SESSION, 'request_id':_session.request.id}
+                event_dict = {'status': Session.GURU_END_SESSION, 'session_id':_session.id}
                 event = Event.initFromDict(event_dict)
 
                 rating = Rating.initFromSession(_session)
@@ -620,11 +620,21 @@ class UserSessionView(restful.Resource):
 
             elif status == Session.STUDENT_CANCEL_SESSION:
                 # Consequences?
-                event_dict = {'status': Session.STUDENT_CANCEL_SESSION, 'request_id':_request.id}
+                event_dict = {
+                                'status': Session.STUDENT_CANCEL_SESSION,
+                                'session_id':_session.id,
+                                'user_id':user.id,
+                                'impacted_user_id': _session.guru.id
+                            }
                 event = Event.initFromDict(event_dict)
 
             elif status == Session.GURU_CANCEL_SESSION:
-                event_dict = {'status': Session.GURU_CANCEL_SESSION, 'request_id':_request.id}
+                event_dict = {
+                                'status': Session.STUDENT_CANCEL_SESSION,
+                                'session_id':_session.id,
+                                'user_id':user.id,
+                                'impacted_user_id': _session.student.id
+                            }
                 event = Event.initFromDict(event_dict)
 
             elif status == Session.STUDENT_RATED:

@@ -586,12 +586,21 @@ class Event(Base):
     time_created = Column(DateTime)
     description = Column(DateTime)
 
+    ## User that did the event
     user_id = Column(Integer, ForeignKey("user.id"))
     user = relationship("User",
         uselist = False,
         primaryjoin = "User.id == Event.user_id",
         backref = "events"
     )
+
+    ## User who was impacted by this events
+    impacted_user_id = Column(Integer, ForeignKey("user.id"))
+    impacted_user = relationship("User",
+        uselist = False,
+        primaryjoin = "User.id == Event.impacted_user_id",
+        backref="impact_events")
+    impacted_user_notified = Column(Boolean, default=False)
 
     session_id = Column(Integer, ForeignKey("session.id"))
     session = relationship("Session",
@@ -629,7 +638,9 @@ class Event(Base):
         event.time_created = datetime.now()
         event.description = event_json.get('description')
         event.user_id = event_json.get('user_id')
+        event.impacted_user_id = event_json.get('impacted_user_id')
         event.session_id = event_json.get('session_id')
+        event.status = event_json.get('status')
         event.request_id = event_json.get('request_id')
         event.proposal_id = event_json.get('proposal_id')
         event.relationship_id = event_json.get('relationship_id')

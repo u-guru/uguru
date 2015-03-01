@@ -27,6 +27,10 @@ guru_rating_fields['guru_rating'] = fields.Integer(attribute='guru_rating')
 
 event_fields = {}
 event_fields['id'] = fields.Integer(attribute='id')
+event_fields['status'] = fields.Integer(attribute='status')
+event_fields['user_id'] = fields.Integer(attribute='user_id')
+event_fields['impacted_user_id'] = fields.Integer(attribute='impacted_user_id')
+event_fields['impacted_user_notified'] = fields.Boolean(attribute='impacted_user_notified')
 
 guru_fields = {}
 guru_fields['name'] = fields.String(attribute='name')
@@ -171,7 +175,8 @@ UserSerializer = {
     'cards': fields.List(fields.Nested(card_fields)),
     'student_transactions': fields.List(fields.Nested(transaction_fields)),
     'guru_transactions': fields.List(fields.Nested(transaction_fields)),
-    'transfer_transactions': fields.List(fields.Nested(transaction_fields))
+    'transfer_transactions': fields.List(fields.Nested(transaction_fields)),
+    'impact_events': fields.List(fields.Nested(event_fields))
 }
 
 DeviceSerializer = {
