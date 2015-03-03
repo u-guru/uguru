@@ -252,7 +252,9 @@ class University(Base):
 
     school_color_one = Column(String)
     school_color_two = Column(String)
-    school_logo = Column(String)
+    school_logo_image_url = Column(String)
+
+    us_news_ranking = Column(Integer)
 
     school_casual_name = Column(String)
     school_mascot_name = Column(String)
@@ -676,6 +678,7 @@ class Event(Base):
     )
 
     #status = 0
+    # estimated_rank_before = Column(Integer) TODO
     estimated_rank_after = Column(Integer)
 
     #status = 1
