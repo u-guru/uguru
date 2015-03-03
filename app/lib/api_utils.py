@@ -1,4 +1,6 @@
 from flask import Response, jsonify
+import boto
+
 def request_contains_all_valid_parameters(request_json, arr_parameters):
     sorted_request_json_keys = sorted([key for key in request_json])
     sorted_arr_parameters = sorted(arr_parameters)
@@ -45,3 +47,11 @@ def get_default_error_message(http_code):
         return '422 UNPROCESSABLE ENTITY'
     else:
         return '500 INTERNAL SERVER ERROR'
+
+def upload_file_to_amazon(filename, file_string, s3_key, s3_secret, s3_bucket):
+    conn = boto.connect_s3(s3_key, s3_secret)
+    b = conn.get_bucket(s3_bucket)
+    sml = b.new_key("/".join(["/",filename]))
+    sml.set_contents_from_string(file_string)
+    sml.set_metadata('Content-Type', 'image/jpeg')
+    sml.set_acl('public-read')

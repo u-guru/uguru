@@ -1,13 +1,12 @@
+# -*- coding: utf-8 -*-
 from flask import g, request, jsonify, session, abort
 from flask.ext import restful
 from flask.ext.restful import marshal_with
 from app import api, flask_bcrypt, auth
 from app.database import db_session
 from models import *
+from serializers import *
 from forms import UserCreateForm, SessionCreateForm
-from serializers import UserSerializer, DeviceSerializer, \
-CourseSerializer, UniversitySerializer, MajorSerializer, \
-RequestSerializer, SessionSerializer
 from datetime import datetime
 import logging, json, urllib2, importlib
 from lib.api_utils import json_response
@@ -251,6 +250,14 @@ class UserOneView(restful.Resource):
                 user.majors.remove(m)
             db_session.commit()
 
+        if request.json.get('impact_event'):
+            print len(user.impact_events)
+            event = Event.query.get(request.json.get('event_id'))
+            event.impacted_user_id = None
+            db_session.commit()
+            print len(user.impact_events)
+
+
 
         if request.json.get('add_major'):
             major = request.json.get('major')
@@ -334,12 +341,9 @@ class UserRequestView(restful.Resource):
             abort(409)
 
         position = request.json.get('position')
-        _file = request.json.get('file')
 
         if position:
             position = Position.initFromJson(position, user.id)
-        if _file:
-            _file = File.initFromJson(_file)
 
         _request = Request()
         _request.course_id = course.get('id')
@@ -353,12 +357,18 @@ class UserRequestView(restful.Resource):
         _request.status = Request.PROCESSING_GURUS
         _request.student_id = user_id
 
-        if _file:
-            _request.files.append(_file)
-
         db_session.add(_request)
         user.requests.append(_request)
         db_session.commit()
+
+        if request.json.get('files'):
+            files_json = request.json.get('files')
+
+            for file_json in request.json.get('files'):
+                file_obj = File.query.get(file_json.get('id'))
+                file_obj.request_id = _request.id
+
+            db_session.commit()
 
         available_gurus = _request.course.gurus.all()
         for guru in available_gurus:
@@ -499,6 +509,59 @@ class UserRatingView(restful.Resource):
         db_session.commit()
         return user, 200
 
+class FileView(restful.Resource):
+    # serializer for file
+    # request POST, add file url if exists
+    # parse file accordingly
+
+    @marshal_with(FileSerializer)
+
+    def post(self):
+
+        # user = get_user(user_id)
+        # if not user:
+        #     abort(404)
+
+
+        file = request.files.get('file')
+        print request.headers
+        file_string= request.values.get('file')
+        filename = 'jpeg'
+
+        if file_string:
+
+            from app.lib.api_utils import upload_file_to_amazon
+            from app import app
+            import imghdr, base64
+
+            s3_key = app.config['S3_KEY']
+            s3_secret = app.config['S3_SECRET']
+            s3_bucket = app.config['S3_BUCKET']
+
+            file_obj = File.initEmptyFile()
+            file_string_base64 = base64.b64decode(file_string)
+            file_extension = imghdr.what(None,file_string_base64)
+            file_name = 'request_file_id_' + str(file_obj.id) + '.' + file_extension
+
+            upload_file_to_amazon(file_name, file_string_base64, s3_key, s3_secret, s3_bucket)
+
+            # extension = filename.split('.')[1]
+            # destination_filename = md5(str(user_id)).hexdigest() + "." + extension
+
+            #save this to the db
+            if os.environ.get('PRODUCTION'):
+                amazon_url = "https://s3.amazonaws.com/uguruprof/"+file_name
+            else:
+                amazon_url = "https://s3.amazonaws.com/uguruproftest/"+file_name
+
+            file_obj.url = amazon_url
+            db_session.commit()
+
+            return file_obj, 200
+
+        abort(400)
+
+
 
 
 class UserSessionView(restful.Resource):
@@ -518,6 +581,7 @@ class UserSessionView(restful.Resource):
         _request.guru = User.query.get(request.json.get('guru_id'))
         _request.status = Request.STUDENT_ACCEPTED_GURU
         session_json['student_id'] = _request.student_id
+        session_json['guru_id'] = _request.guru.id
         #create an event for it
         event_dict = {'status': Request.STUDENT_ACCEPTED_GURU, 'request_id':_request.id}
         event = Event.initFromDict(event_dict)
@@ -620,11 +684,15 @@ class UserSessionView(restful.Resource):
 
             elif status == Session.STUDENT_CANCEL_SESSION:
                 # Consequences?
+                if not _session.guru or not _session.student:
+                    _session.guru_id = 118
+                    _session.student_id = 118
+                    db_session.commit()
                 event_dict = {
                                 'status': Session.STUDENT_CANCEL_SESSION,
                                 'session_id':_session.id,
                                 'user_id':user.id,
-                                'impacted_user_id': _session.guru.id
+                                'impacted_user_id': _session.guru_id
                             }
                 event = Event.initFromDict(event_dict)
 
@@ -633,7 +701,7 @@ class UserSessionView(restful.Resource):
                                 'status': Session.STUDENT_CANCEL_SESSION,
                                 'session_id':_session.id,
                                 'user_id':user.id,
-                                'impacted_user_id': _session.student.id
+                                'impacted_user_id': _session.student_id
                             }
                 event = Event.initFromDict(event_dict)
 
@@ -1469,6 +1537,7 @@ class AdminUniversityDepartmentsView(restful.Resource):
 api.add_resource(UserView, '/api/v1/users')
 api.add_resource(UserNewView, '/api/v1/user')
 api.add_resource(UserOneView, '/api/v1/user/<int:_id>')
+api.add_resource(FileView, '/api/v1/files')
 api.add_resource(UserRequestView, '/api/v1/user/<int:user_id>/requests')
 api.add_resource(UserCardView, '/api/v1/user/<int:user_id>/cards')
 api.add_resource(UserSessionView, '/api/v1/user/<int:_id>/sessions')

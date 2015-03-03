@@ -29,8 +29,14 @@ event_fields = {}
 event_fields['id'] = fields.Integer(attribute='id')
 event_fields['status'] = fields.Integer(attribute='status')
 event_fields['user_id'] = fields.Integer(attribute='user_id')
+event_fields['session_id'] = fields.Integer(attribute='session_id')
 event_fields['impacted_user_id'] = fields.Integer(attribute='impacted_user_id')
 event_fields['impacted_user_notified'] = fields.Boolean(attribute='impacted_user_notified')
+
+file_fields = {}
+file_fields['id'] = fields.Integer(attribute='id')
+file_fields['url'] = fields.String(attribute='url')
+file_fields['request_id'] = fields.Integer(attribute='request_id')
 
 guru_fields = {}
 guru_fields['name'] = fields.String(attribute='name')
@@ -54,7 +60,7 @@ message_user_fields['id'] = fields.Integer(attribute='id')
 message_user_fields['profile_url'] = fields.String(attribute='profile_url')
 
 request_fields = {}
-request_fields['latitude'] = fields.DateTime(attribute='time_created')
+request_fields['time_created'] = fields.DateTime(attribute='time_created')
 request_fields['description'] = fields.String(attribute='description')
 request_fields['online'] = fields.Boolean(attribute='online')
 request_fields['in_person'] = fields.Boolean(attribute='in_person')
@@ -67,6 +73,7 @@ request_fields['student'] = fields.Nested(student_fields)
 request_fields['position'] = fields.Nested(position_fields)
 request_fields['course'] = fields.Nested(course_fields)
 request_fields['status'] = fields.Integer(attribute='status')
+request_fields['files'] = fields.List(fields.Nested(file_fields))
 # request_fields['events'] = fields.List(fields.Nested(event_fields))
 
 proposal_fields = {}
@@ -138,6 +145,11 @@ rating_fields['student_rating'] = fields.Integer(attribute='student_rating')
 rating_fields['guru_rating'] = fields.Integer(attribute='guru_rating')
 rating_fields['session'] = fields.Nested(session_fields)
 
+relationship_fields = {}
+relationship_fields['student'] = fields.Nested(student_fields)
+relationship_fields['guru'] = fields.Nested(guru_fields)
+relationship_fields['sessions'] = fields.Nested(session_fields)
+
 UserSerializer = {
     'id': fields.Integer,
     'name':   fields.String,
@@ -176,7 +188,9 @@ UserSerializer = {
     'student_transactions': fields.List(fields.Nested(transaction_fields)),
     'guru_transactions': fields.List(fields.Nested(transaction_fields)),
     'transfer_transactions': fields.List(fields.Nested(transaction_fields)),
-    'impact_events': fields.List(fields.Nested(event_fields))
+    'impact_events': fields.List(fields.Nested(event_fields)),
+    'guru_relationships': fields.List(fields.Nested(relationship_fields)),
+    'student_relationships': fields.List(fields.Nested(relationship_fields))
 }
 
 DeviceSerializer = {
@@ -241,4 +255,9 @@ RequestSerializer = {
     'student': fields.Nested(student_fields),
     'student_id': fields.Integer,
     'guru_id': fields.Integer
+}
+
+FileSerializer = {
+    'id': fields.Integer,
+    'url': fields.String
 }

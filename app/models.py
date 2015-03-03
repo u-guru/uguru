@@ -94,6 +94,15 @@ class User(Base):
         backref = "users"
         )
 
+    # conducted every night at midnight
+    estimated_guru_score = Column(Integer)
+    estimated_guru_rank = Column(Integer)
+    estimated_guru_rank_last_updated = Column(DateTime)
+
+    # conducted every night at midnight
+    official_guru_score = Column(Integer)
+    official_guru_rank = Column(Integer)
+    official_guru_rank_last_updated = Column(DateTime)
 
     #user hardware permissions
     location_services_enabled = Column(Boolean)
@@ -165,6 +174,13 @@ class User(Base):
                 count += 1
         return count
 
+    def calculate_guru_rank_estimated(self):
+        from app.lib.guru_rank import calculate_guru_rank_one_user
+
+        self.estimated_guru_rank = calculate_guru_rank_one_user(user)
+        self.estimated_guru_rank_last_updated = datetime.now()
+        db_session.commit()
+
     def get_payment_cards(self):
         return [card for card in self.cards if card.is_payment_card]
 
@@ -216,14 +232,34 @@ class University(Base):
         backref = backref('universities', lazy='dynamic')
         )
 
+    popular_courses = relationship("Course",
+        uselist = False,
+        primaryjoin = "(Course.university_id==University.id) & "\
+                        "(Course.is_popular==True)")
+
     admin_approved = Column(Boolean, default = False)
     contributed_user_id = Column(Integer)
 
+    num_popular_courses = Column(Integer)
     num_courses = Column(Integer)
     num_students = Column(Integer)
     num_gurus = Column(Integer)
     num_majors = Column(Integer)
     num_emails = Column(Integer)
+
+    ready_to_launch = Column(Boolean)
+    emails_student_only = Column(Boolean)
+
+    school_color_one = Column(String)
+    school_color_two = Column(String)
+    school_logo = Column(String)
+
+    school_casual_name = Column(String)
+    school_mascot_name = Column(String)
+    school_population = Column(Integer)
+    is_public = Column(Boolean)
+
+
 
     # User contributed university
     def __init__(self, name=None, user_id=None, _id=None):
@@ -568,13 +604,14 @@ class File(Base):
     message_id = Column(Integer, ForeignKey("message.id"))
 
     @staticmethod
-    def initFromJson(file_json):
+    def initEmptyFile():
         _file = File()
         _file.time_created = datetime.now()
-        _file.url = file_json.get('url')
-        _file._type = file_json.get('type')
-        _file.size = file_json.get('size')
-        _file.name = file_json.get('name')
+        # _file.url = s3_url
+        # _file.user_id = user.id
+        # _file._type = file_json.get('type')
+        # _file.size = file_json.get('size')
+        # _file.name = file_json.get('name')
         db_session.add(_file)
         db_session.commit()
         return _file
@@ -596,11 +633,11 @@ class Event(Base):
 
     ## User who was impacted by this events
     impacted_user_id = Column(Integer, ForeignKey("user.id"))
+    impacted_user_notified = Column(Boolean, default=False)
     impacted_user = relationship("User",
         uselist = False,
         primaryjoin = "User.id == Event.impacted_user_id",
         backref="impact_events")
-    impacted_user_notified = Column(Boolean, default=False)
 
     session_id = Column(Integer, ForeignKey("session.id"))
     session = relationship("Session",
@@ -630,7 +667,37 @@ class Event(Base):
         backref = "events"
     )
 
+    ## User that did the event
+    rank_guru_id = Column(Integer, ForeignKey("user.id"))
+    rank_guru = relationship("User",
+        uselist = False,
+        primaryjoin = "User.id == Event.rank_guru_id",
+        backref = "guru_rank_events"
+    )
+
+    #status = 0
+    estimated_rank_after = Column(Integer)
+
+    #status = 1
+    official_rank_before = Column(Integer)
+    official_rank_after = Column(Integer)
+
     status = Column(Integer)
+
+    @staticmethod
+    def initGuruRankEvent(guru_id, off_rank_before=None, off_rank_after=None,\
+        est_rank_after=None, est_rank_before=None, status=None):
+        event = Event()
+        event.time_created = datetime.now()
+        event.rank_guru_id = guru_id
+        event.estimated_rank_before = est_rank_before
+        event.estimated_rank_after = est_rank_after
+        event.official_rank_before = off_rank_before
+        event.official_rank_after = off_rank_after
+        event.status = status
+        db_session.add(event)
+        return event
+
 
     @staticmethod
     def initFromDict(event_json):
@@ -957,6 +1024,8 @@ class Course(Base):
     department_id = ForeignKey("major.id")
     department_short = Column(String) #user generated
     department_long = Column(String)
+
+    is_popular = Column(Boolean)
 
     course_number = Column(String)
     admin_approved = Column(Boolean, default = False)
