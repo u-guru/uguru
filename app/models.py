@@ -175,9 +175,9 @@ class User(Base):
         return count
 
     def calculate_guru_rank_estimated(self):
-        from app.lib.guru_rank import calculate_guru_rank_one_user
+        from app.lib.guru_rank import calculate_guru_score
 
-        self.estimated_guru_rank = calculate_guru_rank_one_user(user)
+        self.estimated_guru_rank = calculate_guru_score(user)
         self.estimated_guru_rank_last_updated = datetime.now()
         db_session.commit()
 
