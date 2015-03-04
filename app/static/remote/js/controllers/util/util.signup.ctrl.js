@@ -303,10 +303,8 @@ angular.module('uguru.util.controllers')
       User.login(loginPayload).then(function(user) {
 
           var processed_user = User.process_results(user.plain());
-          console.log('processed users');
-          console.log(processed_user)
           User.assign_properties_to_root_scope($scope, processed_user)
-
+          $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
 
           $scope.showSuccess('Success');
@@ -336,7 +334,7 @@ angular.module('uguru.util.controllers')
           var processed_user = User.process_results(user.plain());
           console.log(JSON.stringify($scope.user));
           User.assign_properties_to_root_scope($scope, processed_user)
-
+          $scope.user.guru_mode = false;
           // $scope.user.updateAttr('guru_mode', $scope.user, false);
 
           $localstorage.setObject('user', $scope.user);
