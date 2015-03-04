@@ -65,7 +65,10 @@
               PAYMENT SETTINGS
             </div>
             <a class="item gray" ng-click="goToCards()">
-              Credit Cards
+              Payment / Bank Cards
+            </a>
+            <a class="item gray" ng-click="goToTransferFunds()" ng-show="user.balance">
+              Cash Out <strong class="positive">${{user.balance}}</strong>
             </a>
             <a class="item gray" ng-click="goToTransactions()">
               Transaction History

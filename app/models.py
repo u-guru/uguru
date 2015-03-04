@@ -366,17 +366,34 @@ class Major(Base):
 
 class Support(Base):
     __tablename__ = 'support'
+
     id = Column(Integer, primary_key=True)
     message = Column(String)
     user_id = Column(Integer, ForeignKey('user.id'))
+    user = relationship("User",
+        uselist = False,
+        primaryjoin = "User.id == Support.user_id",
+        backref = "support_tickets"
+    )
+
     rating_id = Column(Integer, ForeignKey('rating.id'))
+    transaction_id = Column(Integer, ForeignKey('transaction.id'))
+    session_id = Column(Integer, ForeignKey('session.id'))
     time_created = Column(DateTime)
     time_resolved = Column(DateTime)
 
-    def __init__(self, user_id, message):
-        self.user_id = user_id
-        self.time_created = datetime.now()
-        self.message = message
+    @staticmethod
+    def init(user, message, support_json):
+        support = Support()
+        support.user_id = user.id
+        support.time_created = datetime.now()
+        support.transaction_id = support_json.get('transaction_id')
+        support.session_id = support_json.get('session_id')
+        support.rating_id = support_json.get('rating_id')
+        support.message = message
+        db_session.add(support)
+        db_session.commit()
+        return support
 
 class Department(Base):
     __tablename__ = "department"
@@ -443,6 +460,8 @@ class Position(Base):
         primaryjoin = "Session.id == Position.session_id",
         backref="positions"
     )
+
+
 
     request_id = Column(Integer, ForeignKey("request.id"))
 
@@ -538,6 +557,14 @@ class Proposal(Base):
     GURU_ACCEPT_STUDENT_CANCELED = 6
     GURU_SENT_STUDENT_CANCELED = 7
 
+    GURU_SENT_RECURRING = 8
+    GURU_ACCEPTED_RECURRING = 9
+
+    # end of the session
+    GURU_REJECTED_RECURRING = 10
+
+    GURU_NO_REPLY_RECURRING = 11
+
     time_created = Column(DateTime)
     time_updated = Column(DateTime)
 
@@ -547,6 +574,8 @@ class Proposal(Base):
         primaryjoin = "Request.id == Proposal.request_id",
         backref="proposals"
     )
+
+    session = relationship("Session", uselist=False, backref="proposal")
 
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
@@ -560,6 +589,17 @@ class Proposal(Base):
     def send_to_next_guru(self):
         _request = self.request
         pass
+
+    @staticmethod
+    def initRecurringSessionProposal(_session):
+        proposal = Proposal()
+        proposal.status = Proposal.GURU_SENT_RECURRING
+        proposal.time_created = datetime.now()
+        proposal.guru_id = _session.guru_id
+        proposal.session = _session
+        db_session.add(proposal)
+        db_session.commit()
+        return proposal
 
     @staticmethod
     def initProposal(request_id, guru_id):
@@ -595,6 +635,12 @@ class File(Base):
     user = relationship("User",
         uselist = False,
         primaryjoin="User.id == File.user_id",
+        backref= "files")
+
+    session_id = Column(Integer, ForeignKey("session.id"))
+    session = relationship("Session",
+        uselist = False,
+        primaryjoin="Session.id == File.session_id",
         backref= "files")
 
     relationship_id = Column(Integer, ForeignKey("relationship.id"))
@@ -721,7 +767,6 @@ class Session(Base):
     __tablename__ = 'session'
     id = Column(Integer, primary_key=True)
 
-    WAITING_GURU_REPLY = 0
     GURU_ON_WAY = 1
     GURU_START_SESSION = 2
     GURU_END_SESSION = 3
@@ -733,6 +778,10 @@ class Session(Base):
     STUDENT_REFUND = 9
     GURU_NO_SHOW = 10
     STUDENT_NO_SHOW = 11
+
+    RECURRING_SESSION = 12
+    GURU_ACCEPT_RECURRING_SESSION = 13
+    GURU_REJECT_RECURRING_SESSION = 13
 
 
     seconds = Column(Integer)
@@ -760,6 +809,9 @@ class Session(Base):
     online = Column(Boolean)
     time_estimate = Column(Integer)
 
+    description= Column(String)
+    request_position = relationship("Position", uselist=False)
+
     guru_positions = relationship("Position",
         primaryjoin = "(Position.user_id == Session.guru_id) & "\
                         "(Session.id == Position.session_id)")
@@ -767,13 +819,6 @@ class Session(Base):
     student_positions = relationship("Position",
         primaryjoin = "(Position.user_id == Session.student_id) & "\
                         "(Session.id == Position.session_id)")
-
-    # student_id = Column(Integer, ForeignKey('user.id'))
-    # student = relationship("User",
-    #     primaryjoin = "(User.id==Session.student_id) & "\
-    #                     "(User.is_a_guru==False)",
-    #                     uselist=False,
-    #                     backref="sessions")
 
     relationship_id = Column(Integer, ForeignKey('relationship.id'))
     _relationship = relationship("Relationship",
@@ -791,6 +836,9 @@ class Session(Base):
     rating_id = Column(Integer, ForeignKey("rating.id"))
     request_id = Column(Integer, ForeignKey("request.id"))
     transaction_id = Column(Integer, ForeignKey("transaction.id"))
+    proposal_id = Column(Integer, ForeignKey("proposal.id"))
+
+    support = relationship("Support", uselist=False, backref="session")
 
     expiration_date = Column(DateTime) #TBD
     time_created = Column(DateTime)
@@ -804,6 +852,7 @@ class Session(Base):
         _session = Session()
         _session.seconds = session_json.get('seconds')
         _session.minutes = session_json.get('minutes')
+        _session.hours = session_json.get('hours')
         _session.guru_id = session_json.get('guru_id')
         _session.student_id = session_json.get('student_id')
         _session.status = session_json.get('status')
@@ -820,6 +869,24 @@ class Session(Base):
         db_session.commit()
         return _session
 
+    #TODO CLEAN UP THIS LATER
+    @staticmethod
+    def initRecurringSession(session_json):
+        _session = Session()
+        _session.guru_id = session_json.get('guru_id')
+        _session.student_id = session_json.get('student_id')
+        _session.status = Session.RECURRING_SESSION
+        _session.relationship_id = session_json.get('relationship_id')
+        _session.expiration_date = session_json.get('expiration_date')
+        _session.time_created = datetime.now()
+        _session.address = session_json.get('address')
+        _session.in_person = session_json.get('in_person')
+        _session.online = session_json.get('online')
+        _session.time_estimate = session_json.get('time_estimate')
+        _session.description = session_json.get('description')
+        db_session.add(_session)
+        db_session.commit()
+        return _session
 
 class Relationship(Base):
     __tablename__ = 'relationship'
@@ -1344,6 +1411,7 @@ class Transaction(Base):
 
     deactivated = Column(Boolean, default=False)
 
+    amount_refunded = Column(Float)
     student_amount = Column(Float)
     guru_amount = Column(Float)
     stripe_amount = Column(Float)
@@ -1352,6 +1420,8 @@ class Transaction(Base):
 
     charge_id = Column(String)
     transfer_id = Column(String)
+    refund_id = Column(String)
+    balance_transaction_id = Column(String)
 
     balance_before = Column(Float)
     balance_after = Column(Float)
@@ -1360,6 +1430,8 @@ class Transaction(Base):
     charge_status = Column(String)
 
     session = relationship("Session", uselist=False, backref="transaction")
+
+    support = relationship("Support", uselist=False, backref="transaction")
 
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",

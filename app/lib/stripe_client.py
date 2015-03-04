@@ -3,6 +3,11 @@ import stripe, os
 # stripe.api_key = os.environ.get('STRIPE_PUBLISHABLE_KEY')
 stripe.api_key = 'sk_test_3PFFx8W4mSRwDaJ4JKkZMKtW'
 
+def refund_charge(charge_id, amount_cents):
+    charge = stripe.Charge.retrieve(charge_id)
+    refund = charge.refunds.create(amount=amount_cents)
+    return refund
+
 def create_customer(user, token):
 
     try:

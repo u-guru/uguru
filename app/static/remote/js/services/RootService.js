@@ -24,6 +24,27 @@ angular.module('uguru.root.services', [])
                     }
             }
             return null;
+        },
+        updateObjectByKey: function(array, key, value, update_key, new_value) {
+            for (var i = 0; i < array.length; i++) {
+                    if (array[i][key] === value) {
+                        array[i][update_key] = new_value;
+                        return true;
+                    }
+            }
+            console.log('object not found for key', key, 'value', value);
+            return null;
+        },
+        removeObjectByKey: function(array, key, value) {
+            for (var i = 0; i < array.length; i++) {
+                    if (array[i][key] === value) {
+                        array.splice(i, 1);
+                        return;
+                    }
+            }
+            console.log('object not found for key', key, 'value', value);
+            return null;
+
         }
     }
 

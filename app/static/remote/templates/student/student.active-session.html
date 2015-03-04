@@ -48,18 +48,18 @@
           <button class="button button-full button-positive" ng-click="goToSessionMessages(session)">
             Message {{session.guru.short_name}}
           </button>
-          <button class="button button-full button-positive button-outline" ng-click="ratingModal.show()">
-            End Session
+          <button class="button button-full button-positive button-outline" ng-click="cancelSession(session)">
+            Cancel
           </button>
         </li>
       </ul>
       <ul class="list" ng-show="session.status === 2">
         <li class="item padding-0-4">
-          <button class="button button-full button-positive" ng-click="ratingModal.show()">
-            End Session
+          <button class="button button-full button-positive" ng-click="goToSessionMessages(session)">
+            See Messages
           </button>
-          <button class="button button-full button-positive button-outline">
-            Options
+          <button class="button button-full button-positive button-outline" ng-click="cancelSession(session)">
+            Cancel
           </button>
         </li>
       </ul>

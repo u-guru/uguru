@@ -178,10 +178,10 @@ angular.module('uguru.util.controllers')
       if (is_guru_mode) {
         $scope.calculateProgress($scope.user);
         $scope.user.guru_courses.push(course);
-        $scope.user.updateAttr('add_guru_course', $scope.user, course);
+        $scope.user.updateAttr('add_guru_course', $scope.user, course, null, $scope);
       } else {
         $scope.user.student_courses.push(course);
-        $scope.user.updateAttr('add_student_course', $scope.user, course);
+        $scope.user.updateAttr('add_student_course', $scope.user, course, null, $scope);
       }
 
         $scope.keyboard_force_off = true;

@@ -51,16 +51,20 @@ class RankingsView(restful.Resource):
 
 
 class SupportView(restful.Resource):
-    def post(self):
 
-        user_id = request.json.get('user_id')
-        msg = request.json.get('support_message')
+    @marshal_with(UserSerializer)
+    def post(self, user_id):
 
-        support = Support(user_id, msg)
-        db_session.add(support)
-        db_session.commit()
+        user = get_user(user_id)
 
-        return json.dumps({"success":True}), 200
+        if not user:
+            abort(404)
+
+        msg = request.json.get('message')
+
+        support = Support(user, msg, request.json)
+
+        return user, 200
 
 class CourseListView(restful.Resource):
     def get(self):
@@ -484,7 +488,33 @@ class UserTransactionsView(restful.Resource):
     #refunds, status of charge
     @marshal_with(UserSerializer)
     def put(self, _id):
-        pass
+        user = get_user(_id)
+        if not user:
+            abort(404)
+
+        if request.json.get('transaction'):
+
+            transaction_json = request.json.get('transaction')
+
+            if transaction_json.get('refund'):
+
+                from api.lib.stripe_client import refund_charge
+
+                charge_id = transaction_json.get('charge_id')
+                refund_amount_cents = transaction_json.get('refund') * 100
+
+                refund_obj = refund_charge(charge_id, refund_amount_cents)
+
+                transaction = Transaction.query.get(transaction_json.get('id'))
+                transaction.refund_id = refund_obj.id
+                transaction.balance_transaction_id = refund_obj.balance_transaction_id
+
+                db_session.commit()
+
+                return user, 200
+
+
+
 
 
 class UserRatingView(restful.Resource):
@@ -576,6 +606,71 @@ class UserSessionView(restful.Resource):
         #print so we can see it
         pprint(request.json)
 
+        #if this is recurring session betwen a guru & a user
+        if request.json.get('recurring_session'):
+            session_json = request.json
+
+            recurring_session = Session.initRecurringSession(session_json)
+
+            #needs contents, relationship, session_id, sender_id, receiver_id
+            if request.json.get('message'):
+                message_json = request.json.get('message')
+
+                #update with new session
+                message_json['session_id'] = recurring_session.id
+                message = Message.initFromJson(message_json)
+
+            position = None
+            if request.json.get('position'):
+                position = Position.initFromJson(request.json.get('position'), user.id)
+
+            #create new proposal_id for the recurring guru
+            proposal = Proposal.initRecurringSessionProposal(recurring_session)
+
+            if request.json.get('concurrent_request'):
+
+                course = request.json.get('course')
+
+                _request = Request()
+                _request.course_id = course.get('id')
+                _request.position = position
+                _request.time_created = datetime.now()
+                _request.description = request.json.get('note')
+                _request.in_person = request.json.get('in_person')
+                _request.online = request.json.get('online')
+                _request.time_estimate = request.json.get('time_estimate')
+                _request.address = request.json.get('address')
+                _request.status = Request.PROCESSING_GURUS
+                _request.student_id = user_id
+
+                db_session.add(_request)
+                user.requests.append(_request)
+                db_session.commit()
+
+                if request.json.get('files'):
+                    files_json = request.json.get('files')
+
+                    for file_json in request.json.get('files'):
+                        file_obj = File.query.get(file_json.get('id'))
+                        file_obj.request_id = _request.id
+
+
+                #contact all available gurus (except the ones that the student is not already connected with)
+                available_gurus = _request.course.gurus.all()
+                for guru in available_gurus:
+
+                    #student & guru are already connected
+                    if guru.id in [relationship.guru_id for relationship in user.guru_relationships]:
+                        continue
+
+                    proposal = Proposal.initProposal(_request.id, guru.id)
+                    event_dict = {'status': Proposal.GURU_SENT_RECURRING, 'proposal_id':proposal.id}
+                    event = Event.initFromDict(event_dict)
+
+            db_session.commit()
+            return user, 200
+
+
         session_json = request.json
         _request = Request.query.get(request.json.get('id'))
         _request.guru = User.query.get(request.json.get('guru_id'))
@@ -622,6 +717,27 @@ class UserSessionView(restful.Resource):
 
         session_json = request.json.get('session')
         _session = Session.query.get(session_json.get('id'))
+
+        if request.json.get('recurring_session_guru_accept'):
+            proposal_id = request.json.get('proposal_id')
+            proposal = Proposal.query.get(proposal_id)
+            _session.status = Session.GURU_ACCEPT_RECURRING_SESSION
+            _proposal.status = Proposal.GURU_ACCEPTED_RECURRING
+            event_dict = {'status': Session.GURU_ACCEPT_RECURRING_SESSION, 'session_id':_session.id}
+            event = Event.initFromDict(event_dict)
+            db_session.commit()
+            return _session, 200
+
+        if request.json.get('recurring_session_guru_reject'):
+            proposal_id = request.json.get('proposal_id')
+            proposal = Proposal.query.get(proposal_id)
+            _session.status = Session.GURU_REJECT_RECURRING_SESSION
+            _proposal.status = Proposal.GURU_REJECTED_RECURRING
+
+            event_dict = {'session_id': session_id, 'status': _session.status, 'impacted_user_id': _session.student_id}
+            event = Event.initFromDict(event_dict)
+            db_session.commit()
+            return _session, 200
 
         #add updated position from student
         if request.json.get('session_position_student'):

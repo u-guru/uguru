@@ -1,11 +1,13 @@
 from flask.ext.restful import fields
 from app.models import University, Session, Transaction
+from app.lib.guru_rank import GRADE_CUTOFFS, GURU_SCORE_OPPORTUNITIES, remove_functions_from_opportunities
 
 university_fields = {}
 university_fields['id'] = fields.Integer(attribute='id')
 university_fields['title'] = fields.String(attribute='name')
 university_fields['state'] = fields.String(attribute='state')
 university_fields['city'] = fields.String(attribute='city')
+university_fields['num_gurus'] = fields.Integer(attribute='num_gurus')
 
 major_fields = {}
 major_fields['id'] = fields.Integer(attribute='id')
@@ -190,7 +192,15 @@ UserSerializer = {
     'transfer_transactions': fields.List(fields.Nested(transaction_fields)),
     'impact_events': fields.List(fields.Nested(event_fields)),
     'guru_relationships': fields.List(fields.Nested(relationship_fields)),
-    'student_relationships': fields.List(fields.Nested(relationship_fields))
+    'student_relationships': fields.List(fields.Nested(relationship_fields)),
+    'estimated_guru_score': fields.Integer,
+    'estimated_guru_rank': fields.Integer,
+    'estimated_guru_rank_last_updated': fields.DateTime,
+    'official_guru_rank': fields.Integer,
+    'official_guru_score': fields.Integer,
+    'official_guru_rank_last_updated': fields.DateTime,
+    'grade_dict': fields.Raw(GRADE_CUTOFFS),
+    'guru_score_opportunities': fields.Raw(remove_functions_from_opportunities(GURU_SCORE_OPPORTUNITIES))
 }
 
 DeviceSerializer = {

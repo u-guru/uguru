@@ -27,14 +27,20 @@ def calculate_guru_score(user):
     guru_score = 20
 
     for key in GURU_SCORE_OPPORTUNITIES:
-        func = GURU_SCORE_OPPORTUNITIES[key]['function']
-        points = GURU_SCORE_OPPORTUNITIES[key]['points']
-        limit = GURU_SCORE_OPPORTUNITIES[key]['limit']
-        guru_score += func(user, points, limit)
+        if GURU_SCORE_OPPORTUNITIES[key].get('function'):
+            func = GURU_SCORE_OPPORTUNITIES[key]['function']
+            points = GURU_SCORE_OPPORTUNITIES[key]['points']
+            limit = GURU_SCORE_OPPORTUNITIES[key]['limit']
+            guru_score += func(user, points, limit)
 
     return guru_score
 
 def calculate_grade_based_on_rank(score, total):
+    for letter_grade, points_grade in GRADE_CUTOFFS:
+        if score >= points_grade:
+            return letter_grade
+
+def calculate_grade_based_on_score(score, total):
     for letter_grade, points_grade in GRADE_CUTOFFS:
         if score >= points_grade:
             return letter_grade
@@ -56,14 +62,37 @@ def guru_rank_response_rate(user, points, limit):
 
     return guru_points
 
+def remove_functions_from_opportunities(opportunities):
+    for opp in opportunities.keys():
+        if opportunities[opp].get('function'):
+            opportunities[opp].pop('function')
+    return opportunities
+
 GURU_SCORE_OPPORTUNITIES = {
-    'Response Rate': {
-        'points': 2,
-        'description': "Respond to incoming student requests. Doesn't matter if you accept or reject.",
-        'limit': None,
-        'impact_level': 3,
-        'function': guru_rank_response_rate,
-    }
+    "response_rate": {
+        "points": 2,
+        "details": {
+            "title": "Increase Your Response Rate",
+            "description":"Respond to incoming student requests. Doesn't matter if you accept or reject.",
+        },
+        "limit": None,
+        "impact_level": 3,
+        "function": guru_rank_response_rate,
+    },
+    "profile": {
+        "details":  {
+            "title": "Complete Profile Information",
+            "description": "Add a profile picture, introduction, Guru courses, and majors"
+        },
+        "impact_level": 1
+    },
+    "referral": {
+        "details":  {
+            "title": "Bring on 5 other Gurus",
+            "description": "Students need more Gurus. You can't save everyone!"
+        },
+        "impact_level": 1,
+    },
     # },
     # 'Ratings': {
     #     'points': "> 10",

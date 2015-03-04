@@ -25,23 +25,20 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.acceptGuru = function() {
-      // if ($scope.user.cards.length === 0) {
-      //   $state.go('^.add-payment');
-      //   return;
-      // }
+      if ($scope.user.cards.length === 0) {
+        $state.go('^.add-payment');
+        return;
+      }
 
       var acceptGuruCallback = function() {
 
         $scope.request.guru_id = $scope.guru.id;
-        $scope.request.status = 2;
-        console.log('print request request before submitting');
-        console.log($scope.request)
-        $scope.user.incoming_requests = [];
+        $scope.request.status = 1;
+
+        //remove request from array
+        $scope.root.util.removeObjectByKey($scope.user.incoming_requests, 'id', $scope.request.id);
 
         var callbackSuccess = function($scope, processed_user) {
-            $scope.user.active_student_sessions = processed_user.active_student_sessions;
-            $scope.user.active_requests = processed_user.active_requests;
-            $scope.user.incoming_requests = processed_user.incoming_requests;
             $state.go('^.home');
         }
 
@@ -71,13 +68,12 @@ angular.module('uguru.student.controllers')
           requestObj = $scope.request;
           requestObj.status = 3;
 
-          var updateObjRequestGuruCallback = function($scope, processed_user) {
-            $scope.user.active_requests = processed_user.active_requests;
-            $scope.user.incoming_requests = processed_user.incoming_requests;
-            console.log($scope.user);
-          }
+          //remove request from array
+          $scope.root.util.removeObjectByKey($scope.user.incoming_requests, 'id', $scope.request.id);
 
-          $scope.user.updateObj($scope.user, 'requests', requestObj, $scope, updateObjRequestGuruCallback);
+          $scope.root.util.updateObjectByKey($scope.user.requests, 'id', $scope.request.id, 'status', 0);
+
+          $scope.user.updateObj($scope.user, 'requests', requestObj, $scope);
 
 
         }

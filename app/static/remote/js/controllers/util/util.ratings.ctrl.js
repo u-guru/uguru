@@ -49,9 +49,11 @@ angular.module('uguru.util.controllers')
 
         $scope.rating.guru_rate_student = true;
         $scope.rating.student_rating = $scope.starsSelected;
+        $scope.root.util.removeObjectByKey($scope.user.pending_student_ratings, 'id', $scope.rating.id);
       } else {
         $scope.rating.student_rate_guru = true;
         $scope.rating.guru_rating = $scope.starsSelected;
+        $scope.root.util.removeObjectByKey($scope.user.pending_guru_ratings, 'id', $scope.rating.id);
       }
 
       var ratingPayload = $scope.rating;

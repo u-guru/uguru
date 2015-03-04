@@ -76,21 +76,21 @@
       </div>
     </ion-content>
     <ion-content ng-show="topTabsDelegate.selectedIndex() === 1">
-        <div class="no-session margin-150-10 center" ng-show="!user.completed_sessions">
+        <div class="no-session margin-150-10 center" ng-show="!user.previous_student_sessions">
           <h2>No sessions yet.</h2>
           <div class="gray">Add a class to get started.</div>
           <div class="green" ng-click="addCourseModal.show()">+Add a class</div>
         </div>
 
-        <div class="guru-book margin-top-40" ng-repeat="session in user.completed_sessions" ng-click="goToPreviousSessionDetails(session)">
+        <div class="guru-book margin-top-40" ng-repeat="session in user.previous_student_sessions" ng-click="goToPreviousSessionDetails(session)" ng-show="user.previous_student_sessions.length && user.previous_student_sessions.length > 0 && !user.guru_mode">
           <li class="item padding-6-15">
-            <div class="icon"><img src='./img/shun.png' class='width'></div>
+            <div class="icon"><img ng-src='{{session.guru.profile_url}}' class='width'></div>
             <div class="box-2 margin-top">
               <div class="box-3">
-                <span class="name">Shun Kurosaki
+                <span class="name">{{session.guru.name.split(" ")[0]}}
                 </span>
-                <div class="stars">
-                  See details
+                <div class="stars" ng-show="session.guru.guru_avg_rating">
+                  <span class="icon ion-star" ng-repeat="i in getNumber(session.guru.guru_avg_rating) track by $index"></span>
                 </div>
               </div>
             </div>

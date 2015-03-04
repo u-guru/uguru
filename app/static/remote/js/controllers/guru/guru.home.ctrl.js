@@ -100,6 +100,15 @@ angular.module('uguru.guru.controllers')
       $scope.user.updateAttr('guru_mode', $scope.user, false, goToGuruHome, $scope);
     }
 
+    $scope.goToTransferFunds = function() {
+
+      if (!$scope.user.auth_token) {
+        $scope.signupModal.show();
+      } else {
+        $state.go('^.settings-transfer');
+      }
+
+    }
 
     $scope.showButtonPressed = function($event, class_name) {
       // console.log($event.target);
@@ -120,6 +129,8 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.goToActiveSession = function(session) {
+      console.log('pring the session & shit');
+      console.log($scope.session);
       $state.go('^.active-session', {sessionObj:JSON.stringify(session)});
     }
 
@@ -255,12 +266,10 @@ angular.module('uguru.guru.controllers')
 
     $scope.$on('$ionicView.enter', function(){
 
-      $scope.user.guru_mode = true;
-      $scope.user.updateAttr('is_a_guru', $scope.user, true);
-      $scope.user.updateAttr('guru_mode', $scope.user, true);
-      $scope.user.is_a_guru = true;
-      console.log('view enter is entering ')
-      console.log($scope.user);
+      // $scope.user.guru_mode = true;
+      // $scope.user.updateAttr('is_a_guru', $scope.user, true);
+      // $scope.user.updateAttr('guru_mode', $scope.user, true);
+      // $scope.user.is_a_guru = true;
     });
 
   }

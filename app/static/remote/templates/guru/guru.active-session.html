@@ -35,7 +35,7 @@
           <button class="button button-full button-positive button-outline" ng-click="startSessionTimer(session)">
             Start Session
           </button>
-          <button class="button button-full button-disabled button-outline" ng-click="processCancelSession()">
+          <button class="button button-full button-disabled button-outline" ng-click="cancelSession()">
             Cancel Session
           </button>
         </li>
@@ -48,8 +48,8 @@
           <button class="button button-full button-positive button-outline" ng-click="goToSessionMessages(session)">
             View Message with {{session.guru.name.split(" ")[0]}}
           </button>
-          <button class="button button-full button-positive button-outline">
-            Options
+          <button class="button button-full button-positive button-outline" ng-click="cancelSession(session)">
+            Cancel
           </button>
         </li>
       </ul>

@@ -30,31 +30,6 @@ angular.module('uguru.guru.controllers')
       $state.go('^.guru.home');
     }
 
-    $scope.acceptGuru = function() {
-      if ($scope.user.cashout_cards.length === 0) {
-        $state.go('^.^.student.add-payment');
-        return;
-      }
-
-      var session = {
-          course: $scope.request.course,
-          status: 'guru-transport',
-          guru: $scope.guru,
-          location: $scope.request.location,
-          price: {amount: 5, minutes:15},
-          messages: [],
-      }
-
-      $scope.user.sessions = [];
-      $scope.user.active_sessions = [];
-      $scope.user.sessions.push(session);
-      $scope.user.active_sessions.push(session);
-      $scope.rootUser.updateLocal($scope.user);
-      $state.go('^.home');
-
-    }
-
-
 
     $scope.deleteProposalFromList = function(proposal, proposal_list) {
       for(i = 0; i < proposal_list.length; i++) {
@@ -75,16 +50,22 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.acceptStudent = function() {
+      if ($scope.user.transfer_cards.length === 0) {
+        $state.go('^.^.student.add-payment');
+        return;
+      }
+
       proposalObj = $scope.proposal;
       proposalObj.status = 2; //guru accepted
       proposalObj.proposal = true;
 
+      //fake it for now...
       $scope.deleteProposalFromList($scope.proposal, $scope.user.active_proposals);
       if (!$scope.user.pending_proposals) {
         $scope.user.pending_proposals = [];
       }
-
       $scope.user.pending_proposals.push(proposalObj);
+
       $scope.user.updateObj($scope.user, 'requests', proposalObj, $scope);
       $scope.root.dialog.alert("Student request accepted. We'll let you know if they choose you! \n See below for progress", 'Sweet!', 'OK');
     }

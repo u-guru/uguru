@@ -1,6 +1,6 @@
 <ion-view title="{{session.course.short_name}} Session">
     <ion-nav-buttons side="secondary">
-      
+
       <button ng-click="goToSupport()" class="button button-clear button-positive">
       	Support
       </button>
@@ -12,20 +12,34 @@
               <i style="font-size:15px;"class="icon ion-chevron-right positive"></i>
             </div>
           </li>
+          <li class="item padding-10-15 item-icon-right" ui-sref="^.^.student.settings-transactions">
+            <div class="location"><span class="bold">Go to Transaction Details</span>
+              <i style="font-size:15px;"class="icon ion-chevron-right positive"></i>
+            </div>
+          </li>
           <li class="item padding-10-15">
             <div class="location"><span class="bold">Course:</span> {{session.course.short_name}}</div>
           </li>
           <li class="item padding-10-15">
-            <div class="location"><span class="bold">Location:</span> {{session.location.address}}</div>
+            <div class="location"><span class="bold">Location:</span> {{session.address}}</div>
           </li>
           <li class="item padding-10-15">
-            <div class="tag"><span class="bold">Rate:</span> ${{session.price.amount}} for every {{session.price.minutes}} minutes</div>
+            <div class="location"><span class="bold">Session Type:</span> Virtual: {{session.online}} In-person: {{session.in_person}}</div>
+          </li>
+          <li class="item padding-10-15" ng-show="!user.guru_mode">
+            <div class="tag"><span class="bold">Rate:</span> ${{session.transaction.student_rate}} for every 15 minutes</div>
+          </li>
+          <li class="item padding-10-15" ng-show="user.guru_mode">
+            <div class="tag"><span class="bold">Earning Rate:</span> ${{session.transaction.guru_rate}} for every 15 minutes</div>
           </li>
           <li class="item padding-10-15">
-            <div class="location"><span class="bold">Session Length:</span> 23 minutes </div>
+            <div class="location"><span class="bold">Session Length:</span> {{session.hours}}, {{session.minutes}}m, {{session.seconds}}s </div>
           </li>
-          <li class="item padding-10-15">
-            <div class="tag"><span class="bold">Total Cost:</span> $8</div>
+          <li class="item padding-10-15" ng-show="user.guru_mode">
+            <div class="tag"><span class="bold">Total Earnings:</span> ${{session.transaction.guru_amount}}</div>
+          </li>
+          <li class="item padding-10-15" ng-show="!user.guru_mode">
+            <div class="tag"><span class="bold">Total Cost:</span> ${{session.transaction.student_amount}}</div>
           </li>
         </div>
 

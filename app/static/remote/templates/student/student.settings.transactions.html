@@ -1,114 +1,46 @@
   <ion-view title="Your Transaction History">
+    <ion-header-bar class="bar bar-subheader">
+        <ion-tabs class="tabs-dark tabs-icon-only" delegate-handle="transactions-delegate" ng-show="user.guru_mode">
+          <ion-tab title="Transactions"></ion-tab>
+          <ion-tab title="Transfers"></ion-tab>
+        </ion-tabs>
+    </ion-header-bar>
+
     <ion-content>
       <ion-list>
-        <!-- <ion-item ng-repeat="card in cards" class="item-button-right">
-          {{card.type}}, {{card.last_4}}, {{card.name}}
-        </ion-item> -->
-        <div class="add-item-box transaction paddong-12" ng-click="addCourseModal.show()">
-          <div class="green-box"><span class="day">2</span><span class="month">SEP</span>
+        <div class="add-item-box transaction padding-12" ng-repeat="transaction in user.guru_transactions" ng-show="transactionsDelegate.selectedIndex() === 0 && user.guru_mode">
+          <div class="green-box"><span class="day">{{transaction.time.date}}</span><span class="month">{{transaction.time.month}}</span>
           </div>
           <div class="md-box"> <!-- add active later -->
             <div class="text">
-              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
-              <span class="name">Today Fine</span>
-              <span class="status">Outgoing</span>
-              <span class="money" style="color: red;">- $52.24</span>
+              <img src="{{transaction.student.profile_url}}" class="icon">
+              <span class="name">{{transaction.student.name}}</span>
+              <span class="status">{{transaction.session.request.course.short_name}} session</span>
+              <span class="money">+ ${{transaction.guru_amount}}</span>
             </div>
           </div>
         </div>
-        <div class="add-item-box transaction" ng-click="addCourseModal.show()">
-          <div class="green-box"><span class="day">3</span><span class="month">NOV</span>
+        <div class="add-item-box transaction" ng-repeat="transaction in user.student_transactions" ng-show="transactionsDelegate.selectedIndex() === 1">
+          <div class="green-box"><span class="day">{{transaction.time.date}}</span><span class="month" >{{transaction.time.month}}</span>
           </div>
           <div class="md-box"> <!-- add active later -->
             <div class="text">
-              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
-              <span class="name">Shun Kurosaki</span>
-              <span class="status">Outgoing</span>
-              <span class="money">+ $52.24</span>
+              <img src="{{transaction.guru.profile_url}}" class="icon">
+              <span class="name">{{transaction.student.name}}</span>
+              <span class="status">{{transaction.session.request.course.short_name}} session</span>
+              <span class="money" style="color: red;">- ${{transaction.student_amount}}</span>
             </div>
           </div>
         </div>
-        <div class="add-item-box transaction" ng-click="addCourseModal.show()">
-          <div class="green-box"><span class="day">11</span><span class="month">AUG</span>
+        <div class="add-item-box transaction" ng-repeat="transaction in user.transfer_transactions" ng-show="transactionsDelegate.selectedIndex() === 1 && user.guru_mode">
+          <div class="green-box"><span class="day">{{transaction.time.date}}</span><span class="month" >{{transaction.time.month}}</span>
           </div>
           <div class="md-box"> <!-- add active later -->
             <div class="text">
-              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
-              <span class="name">Haruka Kurosaki</span>
-              <span class="status">Outgoing</span>
-              <span class="money">+ $52.24</span>
-            </div>
-          </div>
-        </div>
-        <div class="add-item-box transaction paddong-12" ng-click="addCourseModal.show()">
-          <div class="green-box"><span class="day">2</span><span class="month">SEP</span>
-          </div>
-          <div class="md-box"> <!-- add active later -->
-            <div class="text">
-              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
-              <span class="name">Today Fine</span>
-              <span class="status">Outgoing</span>
-              <span class="money" style="color: red;">- $52.24</span>
-            </div>
-          </div>
-        </div>
-        <div class="add-item-box transaction" ng-click="addCourseModal.show()">
-          <div class="green-box"><span class="day">3</span><span class="month">NOV</span>
-          </div>
-          <div class="md-box"> <!-- add active later -->
-            <div class="text">
-              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
-              <span class="name">Shun Kurosaki</span>
-              <span class="status">Outgoing</span>
-              <span class="money">+ $52.24</span>
-            </div>
-          </div>
-        </div>
-        <div class="add-item-box transaction" ng-click="addCourseModal.show()">
-          <div class="green-box"><span class="day">11</span><span class="month">AUG</span>
-          </div>
-          <div class="md-box"> <!-- add active later -->
-            <div class="text">
-              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
-              <span class="name">Haruka Kurosaki</span>
-              <span class="status">Outgoing</span>
-              <span class="money">+ $52.24</span>
-            </div>
-          </div>
-        </div>
-        <div class="add-item-box transaction paddong-12" ng-click="addCourseModal.show()">
-          <div class="green-box"><span class="day">2</span><span class="month">SEP</span>
-          </div>
-          <div class="md-box"> <!-- add active later -->
-            <div class="text">
-              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
-              <span class="name">Today Fine</span>
-              <span class="status">Outgoing</span>
-              <span class="money" style="color: red;">- $52.24</span>
-            </div>
-          </div>
-        </div>
-        <div class="add-item-box transaction" ng-click="addCourseModal.show()">
-          <div class="green-box"><span class="day">3</span><span class="month">NOV</span>
-          </div>
-          <div class="md-box"> <!-- add active later -->
-            <div class="text">
-              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
-              <span class="name">Shun Kurosaki</span>
-              <span class="status">Outgoing</span>
-              <span class="money">+ $52.24</span>
-            </div>
-          </div>
-        </div>
-        <div class="add-item-box transaction" ng-click="addCourseModal.show()">
-          <div class="green-box"><span class="day">11</span><span class="month">AUG</span>
-          </div>
-          <div class="md-box"> <!-- add active later -->
-            <div class="text">
-              <img src="https://avatars2.githubusercontent.com/u/7764947?v=3&s=460" class="icon">
-              <span class="name">Haruka Kurosaki</span>
-              <span class="status">Outgoing</span>
-              <span class="money">+ $52.24</span>
+              <img src="{{transaction.guru.profile_url}}" class="icon">
+              <span class="name">{{transaction.guru.name}}</span>
+              <span class="status">{{transaction.card.card_last4}}, {{transaction.transfer_status}}</span>
+              <span class="money positive">+ ${{transaction.guru_amount}}</span>
             </div>
           </div>
         </div>

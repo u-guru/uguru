@@ -100,6 +100,37 @@ angular.module('uguru.student.controllers')
         stopOnTerminate: false // <-- enable this to clear background location settings when the app terminates
     });
 
+    $scope.cancelSession = function(session) {
+
+      var dialogCallBackSuccess = function() {
+        //guru cancels session
+        $scope.session.status = 4;
+
+        var sessionPayload = {session: $scope.session}
+
+        $scope.user.previous_student_sessions.push($scope.session);
+
+        //remove session locally from active guru session
+        $scope.root.util.removeObjectByKey($scope.user.active_student_sessions, 'id', $scope.session.id);
+
+        //update session locally
+        $scope.root.util.updateObjectByKey($scope.user.student_sessions, 'id', $scope.session.id, 'status', 4);
+
+        $state.go('^.home');
+
+        $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope);
+      }
+
+      var dialog = {
+        message: "Are you sure? This will be closely investigated by us and may impact your Student ranking.",
+        title: "Cancel Session",
+        button_arr: ['Never Mind', 'Cancel Session'],
+        callback_arr: [null, dialogCallBackSuccess]
+      }
+
+      $scope.root.dialog.confirm(dialog.message, dialog.title, dialog.button_arr, dialog.callback_arr);
+    }
+
 
 
     $scope.getCurrentPositionAndSync = function(time) {

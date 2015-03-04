@@ -16,8 +16,10 @@
           Guru Mode is <span class="positive">ON</span>
         </div>
         <ul class="list">
-          <li class="item guru-list">
-            Guru Mode
+          <li class="item guru-list item-icon-right" ui-sref="^.opportunities">
+            Guru Ranking: <strong class="positive">{{user.official_guru_grade}}</strong>
+            <p class="">You are the {{user.official_guru_rank}}th best Guru at <br>{{user.university.title}}</p>
+            <i class="item-note icon ion-chevron-right"></i>
           </li>
           <ion-toggle class="guru-list"
                     ng-model="user.guru_discoverability"

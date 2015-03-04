@@ -21,6 +21,7 @@ angular.module('uguru.student.controllers')
   Geolocation, $cordovaGeolocation, $cordovaBackgroundGeolocation, Restangular) {
 
     $scope.session = JSON.parse($stateParams.sessionObj);
+    console.log($scope.session.status);
 
     $scope.goToSessionMessages = function(session) {
       $state.go('^.^.student.messages', {sessionObj:JSON.stringify(session)});
@@ -30,6 +31,37 @@ angular.module('uguru.student.controllers')
       $state.go('^.^.student.guru-profile', {guruObj:JSON.stringify(session.student)});
     }
 
+
+    $scope.cancelSession = function(session) {
+
+      var dialogCallBackSuccess = function() {
+        //guru cancels session
+        $scope.session.status = 5;
+
+        var sessionPayload = {session: $scope.session}
+
+        $scope.user.previous_guru_sessions.push($scope.session);
+
+        //remove session locally from active guru session
+        $scope.root.util.removeObjectByKey($scope.user.active_guru_sessions, 'id', $scope.session.id);
+
+        //update session locally
+        $scope.root.util.updateObjectByKey($scope.user.guru_sessions, 'id', $scope.session.id, 'status', 5);
+
+        $state.go('^.home');
+
+        $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope);
+      }
+
+      var dialog = {
+        message: "Are you sure? This will be closely investigated by us and may impact your Guru ranking.",
+        title: "Cancel Session",
+        button_arr: ['Never Mind', 'Cancel Session'],
+        callback_arr: [null, dialogCallBackSuccess]
+      }
+
+      $scope.root.dialog.confirm(dialog.message, dialog.title, dialog.button_arr, dialog.callback_arr);
+    }
 
     $scope.startSessionTimer = function(session) {
 

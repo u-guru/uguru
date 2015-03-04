@@ -103,6 +103,27 @@ angular.module('uguru.util.controllers', [])
     };
 
     $scope.universitySelected = function(university) {
+
+      var successCallback = function() {
+        console.log('cleared previous universities courses from the cache')
+          //TODO COME BACK TO THIS
+          $scope.user.guru_courses = [];
+          $scope.user.student_courses = [];
+          $localstorage.removeObject('courses');
+
+      }
+
+      //if they have already selected one
+      if ($scope.user.university_id && university.id !== $scope.user.university_id) {
+        var dialog = {
+          msg: 'Are you sure you want to change universities? This will deactive your current courses.',
+          title: 'Warning',
+          button_arr: ['No Thanks', "I'm sure"],
+          arr_callback: [null, successCallback]
+        }
+        $scope.root.dialog.confirm(dialog.msg, dialog.title, dialog.button_arr, dialog.arr_callback);
+      }
+
       $scope.user.university_id = university.id;
       $scope.user.university = university;
       $scope.user.university.latitude = university.location.latitude;

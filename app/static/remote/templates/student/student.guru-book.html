@@ -2,7 +2,7 @@
         <h1 class="title">Guru Book</h1>
     </ion-header-bar>
     <div class="bar bar-subheader" ng-show="user.student_courses.length > 0">
-        <ion-tabs class="tabs-dark tabs-icon-only" delegate-handle="student-home-tabs-top">
+        <ion-tabs class="tabs-dark tabs-icon-only" delegate-handle="student-guru-book-tabs-top">
           <ion-tab title="My Classes"></ion-tab>
           <ion-tab title="{{course.short_name}}" ng-repeat="course in user.student_courses">
           </ion-tab>
@@ -10,13 +10,13 @@
       </div>
     </div>
 
-    <ion-content ng-show="user.gurus && user.gurus.length > 0" ng-controller="GuruBookController">
+    <ion-content ng-show="user.gurus && user.gurus.length > 0 && topGuruBookTabsDelegate.selectedIndex() === 0" ng-controller="GuruBookController">
       <div class="guru-book margin-top-40">
         <li class="item padding-6-15" ng-repeat="guru in user.gurus" ng-click="goToGuruProfile(guru)">
-          <div class="icon"><img src='./img/shun.png' class='width'></div>
+          <div class="icon"><img src='{{guru.profile_url}}' class='width'></div>
           <div class="box-2 margin-top">
             <div class="box-3">
-              <span class="name">{{guru.name}}
+              <span class="name">{{guru.name}} <br>{{guru.sessions[0].course.short_name}}
               </span>
               <div class="stars">
                 <span class="icon ion-star"></span>
@@ -31,7 +31,39 @@
         </li>
       </div>
     </ion-content>
-    <ion-content ng-show="user.gurus.length === 0">
+    <ion-content ng-repeat="course in user.student_courses" ng-controller="GuruBookController">
+      <div class="guru-book margin-top-40" ng-show="user.course_guru_dict[course.short_name].length > 0 && (root.util.objectFindByIndexByKey(user.student_courses, 'short_name', course.short_name) === (topGuruBookTabsDelegate.selectedIndex() - 1)) ">
+        <li class="item padding-6-15" ng-repeat="guru in user.course_guru_dict[course.short_name]" ng-click="goToGuruProfile(guru)">
+          <div class="icon"><img src='{{guru.profile_url}}' class='width'></div>
+          <div class="box-2 margin-top">
+            <div class="box-3">
+              <span class="name">{{guru.name}} <br>{{guru.sessions[0].course.short_name}}
+              </span>
+              <div class="stars">
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>&nbsp;&nbsp;
+                <span style="color:grey;"class="icon ion-chevron-right"></span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </div>
+      <div class="no-session margin-150-10 center" ng-show="user.course_guru_dict.course.length === 0">
+          <h2>No gurus yet.</h2>
+          <div ng-show="user.student_courses.length == 0">
+            <div class="gray">Add a course to be matched with a Guru</div>
+            <div class="green" ng-click="addCourseModal.show()">+Add A Course</div>
+          </div>
+          <div ng-show="user.student_courses.length > 0">
+            <div class="gray">Request help to be matched with a Guru</div>
+            <div class="green" ng-click="bottomTabsDelegate.select(0);">+Request Help</div>
+          </div>
+      </div>
+    </ion-content>
+    <ion-content ng-show="user.gurus.length === 0"ng-controller="GuruBookController">
         <div class="no-session margin-150-10 center">
           <h2>No gurus yet.</h2>
           <div ng-show="user.student_courses.length == 0">

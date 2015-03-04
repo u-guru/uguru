@@ -6,31 +6,10 @@ angular.module('uguru.student.controllers')
   //All imported packages go here
   '$scope',
   '$state',
-  function($scope, $state) {
-    
-    $scope.cards = [
-      {
-        type: 'visa',
-        last_4: '8531',
-        default: false,
-      },
-      {
-        type: 'master',
-        last_4: '8121',
-        default: true,
-      },
-      {
-        type: 'amex',
-        last_4: '8531',
-        default: false,
-      },
-      {
-        type: 'discovery',
-        last_4: '8512',
-        default: false,
-      }
-    ]
-
+  '$ionicTabsDelegate',
+  function($scope, $state, $ionicTabsDelegate) {
+    $scope.transactionsDelegate = $ionicTabsDelegate.$getByHandle('transactions-delegate');
+    console.log($scope.user.guru_transactions);
   }
 
 ]);

@@ -23,33 +23,19 @@ angular.module('uguru.student.controllers', [])
   '$ionicBackdrop',
   'User',
   '$ionicHistory',
-  '$cordovaBackgroundGeolocation',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $cordovaProgress, $q,
  	University, $templateCache, $ionaicHistory, Popup, $popover, Popover, $ionicBackdrop,
-  User, $ionicHistory, $cordovaBackgroundGeolocation) {
+  User, $ionicHistory) {
 
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
 	$scope.base_url =  BASE;
 	$scope.progress_active = false;
 
-  // $scope.user.active_requests = [];
-  //   $scope.user.previous_requests = [];
-
-  //   $scope.processStudentRequests = function(user_requests) {
-  //       if (user_requests && $scope.user.requests.length > 0) {
-  //           for (var i = 0; i < $scope.user.requests.length; i ++) {
-  //             var index_request = user_requests[i];
-  //             if (index_request.status === 0) {
-  //               $scope.user.active_requests.push(index_request);
-  //             } else {
-  //               $scope.user.previous_requests.push(index_request);
-  //         }
-  //       }
-  //   }
-
-  // }
+  $scope.getNumber = function(num) {
+      return new Array(num);
+  }
 
   $scope.checkCourseInActiveRequests = function(course) {
     var active_requests = $scope.user.active_requests || [];
@@ -61,8 +47,6 @@ angular.module('uguru.student.controllers', [])
     }
     return false;
   }
-
-
 
   $scope.getActiveRequestByCourse = function(course) {
     var active_requests = $scope.user.active_requests;
@@ -167,11 +151,6 @@ angular.module('uguru.student.controllers', [])
       $state.go('^.active-session', {sessionObj:JSON.stringify(session)});
     }
 
-    $scope.addGreenbar = function() {
-      console.log('this was clicked');
-    }
-
-
 
     $scope.goToBecomeGuru = function() {
       $state.go('^.^.guru.wizard');
@@ -197,6 +176,16 @@ angular.module('uguru.student.controllers', [])
       }
     }
 
+    $scope.goToTransferFunds = function() {
+
+      if (!$scope.user.auth_token) {
+        $scope.signupModal.show();
+      } else {
+        $state.go('^.settings-transfer');
+      }
+
+    }
+
     $scope.goToTransactions = function() {
       if (!$scope.user.auth_token) {
         $scope.signupModal.show()
@@ -212,6 +201,8 @@ angular.module('uguru.student.controllers', [])
         $state.go('^.settings-cards')
       }
     }
+
+
 
     $scope.goToEditProfile = function() {
       if (!$scope.user.auth_token) {
@@ -309,7 +300,6 @@ angular.module('uguru.student.controllers', [])
       if (!$scope.user.onboarding || !$scope.user.onboarding.get_started) {
         $scope.user.onboarding = {};
         $scope.user.onboarding.get_started = true;
-
         options =  {
         desiredAccuracy: 5,
         stationaryRadius: 20,
@@ -320,6 +310,8 @@ angular.module('uguru.student.controllers', [])
       }
       }
     });
+
+    console.log($scope.user);
 
   }
 

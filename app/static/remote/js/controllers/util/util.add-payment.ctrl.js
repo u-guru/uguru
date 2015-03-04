@@ -14,12 +14,14 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicHistory, $cordovaProgress, $stateParams) {
 
+    $scope.debitCardOnly = ($stateParams && $stateParams.debitCardOnly) || $scope.user.guru_mode;
+
     $scope.cardFormComplete = false;
     $scope.progress_active = false;
     $scope.actionButtonText = 'save';
     $scope.headerText = 'Add payment';
 
-    if ($scope.user.guru_mode) {
+    if ($scope.user.guru_mode || $scope.debitCardOnly) {
       $scope.headerText = 'Add debit card';
     }
 
@@ -74,14 +76,13 @@ angular.module('uguru.util.controllers')
       var expMM = $scope.cardMM.value;
       var expYY = $scope.cardYY.value;
       var cardType = $scope.getCardType(cardNum);
-      console.log(cardNum, expMM, expYY);
       //check for errors
       // if (!$scope.validatedAddCardForm(cardNum, ccvNum)) {
       //   //make card shake
       // }
 
       var stripeResponseHandler = function(status, response) {
-        console.log(response);
+
         if (response.error) {
 
             $scope.progress_active = true;
@@ -91,15 +92,37 @@ angular.module('uguru.util.controllers')
               $scope.progress_active = false;
             }, 1000);
 
-        } else {
+        }
+        else if ($scope.debitCardOnly && response.card.funding !== "debit") {
+
+          $scope.progress_active = true;
+            $cordovaProgress.showSuccess(true, "Please Enter a Debit Card. This one appears to be credit.");
+            $timeout(function() {
+              $cordovaProgress.hide();
+              $scope.progress_active = false;
+          }, 1000);
+
+        }
+
+        else {
 
           var cardInfo = {
             stripe_token: response.id,
             card_last4: response.card.last4,
             card_type: response.card.brand,
-            user: $scope.user,
-            card: true
           }
+
+          if ($scope.debitCardOnly) {
+            cardInfo.debit_card = true;
+            cardInfo.is_transfer_card = true;
+            $scope.user.transfer_cards.push(cardInfo)
+          } else {
+            cardInfo.card = true;
+            cardInfo.is_payment_card = true;
+            $scope.user.payment_cards.push(cardInfo)
+          }
+
+          $scope.user.cards.push(cardInfo);
 
           $scope.user.createObj($scope.user, 'cards', cardInfo, $scope);
           $scope.showSuccess("Card added!");
@@ -116,19 +139,47 @@ angular.module('uguru.util.controllers')
     $scope.removeCard = function() {
       var cardPosition = $scope.root.util.objectFindByIndexByKey($scope.user.cards, 'last_4', $scope.card.last_4);
       $scope.user.cards.splice(cardPosition, 1);
-      $scope.showSuccess('Card Deleted');
-    }
 
-    $scope.setDefault = function() {
-      var user_card = $scope.root.util.objectFindByKey($scope.user.cards, 'last_4', $scope.card.last_4);
-      user_card.default = true;
-      for (var i = 0; i < $scope.user.cards.length; i++) {
-        if (user_card.last_4 != $scope.user.cards[i].last_4) {
-          $scope.user.cards[i].default = false;
+      var cardInfo = {
+        card: {
+          id: $scope.card.id,
+          remove_card: true
         }
       }
 
-      $scope.rootUser.updateLocal($scope.user);
+      $scope.user.updateObj($scope.user, 'cards', cardInfo, $scope);
+
+      $scope.showSuccess('Card Deleted');
+    }
+    $scope.setDefault = function() {
+
+      var cardInfo = {
+        card: {
+          id: $scope.card.id
+        }
+      }
+
+      var user_card = $scope.card;
+
+      if ($scope.debitCardOnly) {
+        for (var i = 0; i < $scope.user.transfer_cards.length; i++) {
+          if (user_card.id != $scope.user.transfer_cards[i].id) {
+            $scope.user.transfer_cards[i].is_default_transfer = false;
+          }
+        }
+        cardInfo.default_transfer = true;
+      } else {
+
+        for (var i = 0; i < $scope.user.payment_cards.length; i++) {
+          if (user_card.id != $scope.user.payment_cards[i].id) {
+            $scope.user.payment_cards[i].is_default_payment = false;
+          }
+        }
+        cardInfo.default_payment = true;
+
+      }
+
+      $scope.user.updateObj($scope.user, 'cards', cardInfo, $scope);
       $scope.showSuccess('Default Set!');
 
     }
@@ -197,8 +248,9 @@ angular.module('uguru.util.controllers')
       $scope.cardYY = document.getElementById('yy-input');
 
       if ($scope.card) {
-        $scope.cardInput.value = '**** **** **** ' + $scope.card.last_4;
-        $scope.ccvInput.value = '***'
+        $scope.cardInput.value = '**** **** **** ' + $scope.card.card_last4;
+        $scope.cardMM.value = '**';
+        $scope.cardYY.value = '**';
       } else {
         $scope.root.keyboard.show('card-input', 500);
       }

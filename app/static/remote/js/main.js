@@ -5,9 +5,9 @@ var BASE_URL = 'http://uguru-rest.herokuapp.com/app/'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  // REST_URL = 'http://10.248.146.36:5000'
-  var REST_URL = 'http://uguru-rest.herokuapp.com';
-  BASE_URL = 'http://10.248.146.36:8100/remote/index.html#/student/home'
+  REST_URL = 'http://192.168.0.104:5000'
+  // var REST_URL = 'http://uguru-rest.herokuapp.com';
+  BASE_URL = 'http://192.168.0.104:8100/remote/index.html#/student/home'
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.student.controllers', 'uguru.guru.controllers', 'uguru.version',
@@ -17,13 +17,45 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
   $cordovaDialogs, Version, $cordovaSplashscreen, $rootScope,
-  $templateCache, Device, User) {
+  $templateCache, Device, User, $cordovaLocalNotification) {
   $ionicPlatform.ready(function() {
     //Only when the app is opened after its been closed
+
+    $cordovaLocalNotification.hasPermission().then(function(granted) {
+
+      $cordovaLocalNotification.cancelAll();
+      if (!granted) {
+        $cordovaLocalNotification.promptForPermission();
+      };
+    });
+
+    getDeviceToken = function(){
+          var device = ionic.Platform.device()
+          console.log(device);
+          console.log(typeof cordova);
+          if(typeof device != "undefined" && typeof cordova === "object"){
+              console.log('gets this far');
+              var getToken = function(types, success, fail){
+                cordova.exec(success, fail, "PushToken", "getToken", types);
+              }
+          getToken(["getToken"], function(token){
+                  console.log('sup');
+                  device.token = token;
+                  return token;
+           }, function(e){
+             console.log("cannot get device token: "+e);
+             return false;
+           });
+          }else{
+              console.log("device not ready, or not a native app");
+          return false;
+          }
+      }
+
+
     document.addEventListener("deviceready", function () {
         console.log('hiding splash screens..');
         $cordovaSplashscreen.hide();
-
 
         //Set platform in local store
         $localstorage.setObject('platform', ionic.Platform.platform());
@@ -59,8 +91,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           StatusBar.overlaysWebView(true);
           StatusBar.styleLightContent();
         }
-
-
 
       checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
 
@@ -103,8 +133,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           $scope.root = RootService;
 
           document.addEventListener("deviceready", function () {
-
-            User.getUserFromServer($scope, null, $state);
+            window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+            console.log('file', window.requestFileSystem);
+            // User.getUserFromServer($scope, null, $state);
             document.addEventListener("resume", function() {
 
                 console.log('device is resuming....')
@@ -160,6 +191,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/guru/guru.home.html',
         controller: 'GuruHomeController'
   }).
+  state('root.guru.opportunities', {
+        url: '/opportunities',
+        templateUrl: BASE + 'templates/guru/guru.opportunities.html',
+        controller: 'GuruOpportunitiesController'
+  }).
   state('root.guru.student-available', {
         url: '/student-available/:requestObj:proposalObj',
         templateUrl: BASE + 'templates/guru/guru.student-request.html',
@@ -206,7 +242,13 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   }).
   state('root.student.settings-transactions', {
         url: '/settings-transactions',
-        templateUrl: BASE + 'templates/student/student.settings.transactions.html'
+        templateUrl: BASE + 'templates/student/student.settings.transactions.html',
+        controller: 'SettingsTransactionsController'
+  }).
+  state('root.student.settings-transfer', {
+        url: '/settings-transfer',
+        templateUrl: BASE + 'templates/student/student.settings.transfers.html',
+        controller: 'SettingsTransfersController'
   }).
   state('root.student.settings-notifications', {
         url: '/settings-notifications',
@@ -228,7 +270,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/student/directory.html',
   }).
   state('root.student.add-payment', {
-        url: '/payment/:cardObj',
+        url: '/payment/:cardObj:debitCardOnly',
         templateUrl: BASE + 'templates/student/add-payment.html',
   }).
   state('root.student.request-status', {
@@ -238,6 +280,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   }).
   state('root.student.previous-session-details', {
         url: '/previous-session-details/:sessionObj',
+        templateUrl: BASE + 'templates/student/student.previous-session-details.html',
+        controller: 'PreviousSessionDetailsController'
+  }).
+  state('root.guru.previous-session-details', {
+        url: '/previous-session-details-guru/:sessionObj',
         templateUrl: BASE + 'templates/student/student.previous-session-details.html',
         controller: 'PreviousSessionDetailsController'
   }).

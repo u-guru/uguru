@@ -72,9 +72,6 @@ angular.module('uguru.util.controllers')
      $scope.getMe = function () {
       $cordovaFacebook.api("/me", null).then(function (success) {
 
-
-        console.log(JSON.stringify(success));
-
         $scope.user.first_name = success.first_name;
         $scope.user.last_name = success.last_name;
         $scope.user.name = success.name;
@@ -305,16 +302,10 @@ angular.module('uguru.util.controllers')
 
       User.login(loginPayload).then(function(user) {
 
-          processed_user = User.process_results(user.plain());
-          $scope.user.id = processed_user.id;
-          $scope.user.active_requests = processed_user.active_requests;
-          $scope.user.pending_guru_ratings = processed_user.pending_guru_ratings;
-          $scope.user.pending_student_ratings = processed_user.pending_student_ratings;
-          $scope.user.incoming_requests = processed_user.incoming_requests;
-          $scope.user.previous_requests = processed_user.previous_requests;
-          $scope.user.active_student_sessions = processed_user.active_student_sessions;
-          $scope.user.previous_student_sessions = processed_user.previous_student_sessions;
-          $scope.user.student_courses = processed_user.student_courses;
+          var processed_user = User.process_results(user.plain());
+          console.log('processed users');
+          console.log(processed_user)
+          User.assign_properties_to_root_scope($scope, processed_user)
 
           $localstorage.setObject('user', $scope.user);
 
@@ -337,48 +328,18 @@ angular.module('uguru.util.controllers')
 
       $scope.signupForm.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
 
+      $scope.signupForm.student_courses = $scope.user.student_courses;
+      $scope.signupForm.university_id = $scope.user.university_id;
+      $scope.signupForm.guru_mode = false;
+
       User.create($scope.signupForm).then(function(user) {
-          processed_user = User.process_results(user.plain());
-          console.log('user created and returned from server...')
-          console.log(processed_user)
-          $scope.user.id = processed_user.id;
-          $scope.user.auth_token = processed_user.auth_token;
-          $scope.user.active_requests = processed_user.active_requests;
-          $scope.user.pending_guru_ratings = processed_user.pending_guru_ratings;
-          $scope.user.pending_student_ratings = processed_user.pending_student_ratings;
-          $scope.user.incoming_requests = processed_user.incoming_requests;
-          $scope.user.previous_requests = processed_user.previous_requests;
-          $scope.user.active_student_sessions = processed_user.active_student_sessions;
-          $scope.user.previous_student_sessions = processed_user.previous_student_sessions;
+          var processed_user = User.process_results(user.plain());
+          console.log(JSON.stringify($scope.user));
+          User.assign_properties_to_root_scope($scope, processed_user)
 
-          $scope.user.updateAttr = processed_user.updateAttr;
-          $scope.user.createObj = processed_user.createObj;
-          $scope.user.updateObj = processed_user.updateObj;
+          // $scope.user.updateAttr('guru_mode', $scope.user, false);
 
-          //if new user signed up before request and is not on records
-          if (processed_user.student_courses.length === 0 && $scope.user.student_courses && $scope.user.student_courses.length > 0)
-          {
-            for (var i = 0; i < $scope.user.student_courses.length; i++) {
-              var course = $scope.user.student_courses[i];
-              $scope.user.updateAttr('add_student_course', $scope.user, course);
-              console.log(course.short_name, 'sent to server')
-            }
-
-            //update server with university_id
-            if ($scope.user.university_id) {
-              $scope.user.updateAttr('university_id', $scope.user, $scope.user.university_id);
-            }
-
-
-          } else {
-
-            $scope.user.student_courses = processed_user.student_courses;
-
-          }
-
-          $scope.user.updateAttr('guru_mode', $scope.user, false);
-
-          // $localstorage.setObject('user', $scope.user);
+          $localstorage.setObject('user', $scope.user);
 
           $scope.showSuccess('Success');
       },

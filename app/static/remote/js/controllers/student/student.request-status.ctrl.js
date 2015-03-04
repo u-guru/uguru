@@ -17,6 +17,8 @@ angular.module('uguru.student.controllers')
     $scope.course = $scope.requestObj.course;
     $scope.progress_active = false;
 
+    console.log('request status', $scope.requestObj);
+
     $scope.convertTimeEstimate = function(time_int) {
       var time_options = ['30 minutes', '1 Hour', '1.5 hours', '2+ hours'];
       return time_options[time_int];
