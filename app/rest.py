@@ -1041,6 +1041,8 @@ class UserNewView(restful.Resource):
 
         fb_user = email_user = None
 
+        print request.json
+
         if request.json.get('email'):
             email_user = User.query.filter_by(email=request.json.get('email')).first()
 
@@ -1072,6 +1074,13 @@ class UserNewView(restful.Resource):
             user.profile_url = request.json.get('profile_url')
             user.fb_id = request.json.get('fb_id')
 
+        else:
+            from hashlib import md5
+            password = md5(request.json.get('password')).hexdigest()
+
+        db_session.add(user)
+        db_session.commit()
+
         if request.json.get('student_courses'):
 
             print len(user.student_courses) + ' before'
@@ -1081,14 +1090,6 @@ class UserNewView(restful.Resource):
             db_session.commit()
             print len(user.student_courses) + ' after'
 
-
-
-        else:
-            from hashlib import md5
-            password = md5(request.json.get('password')).hexdigest()
-
-        db_session.add(user)
-        db_session.commit()
         return user, 200
 
     #login
