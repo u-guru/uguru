@@ -79,8 +79,9 @@ angular.module('uguru.util.controllers')
         $scope.user.fb_id = success.id;
         $scope.user.profile_url = "https://graph.facebook.com/" + success.id + "/picture?width=100&height=100";
 
-        $scope.signupForm.name = success.name;
         $scope.signupForm.email = success.email;
+        $scope.signupForm.first_name = $scope.user.first_name;
+        $scope.signupForm.last_name = $scope.user.last_name;
         $scope.signupForm.fb_id = success.id;
         $scope.signupForm.profile_url = $scope.user.profile_url;
         $scope.signupForm.gender = success.gender;

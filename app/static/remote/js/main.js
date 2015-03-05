@@ -39,7 +39,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                 cordova.exec(success, fail, "PushToken", "getToken", types);
               }
           getToken(["getToken"], function(token){
-                  console.log('sup');
                   device.token = token;
                   return token;
            }, function(e){
@@ -104,7 +103,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   if (!window.cordova) {
       var appID = 1416375518604557;
       var fbVersion = "v1.0"; // or leave blank and default is v2.0
-      $cordovaFacebookProvider.browserInit(appID, fbversion);
+      $cordovaFacebookProvider.browserInit(appID, fbVersion);
   }
 
   // if none of the above states are matched, use this as the fallback
@@ -133,8 +132,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           $scope.root = RootService;
 
           document.addEventListener("deviceready", function () {
-            window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
-            console.log('file', window.requestFileSystem);
+
             // User.getUserFromServer($scope, null, $state);
             document.addEventListener("resume", function() {
 

@@ -311,8 +311,6 @@ angular.module('uguru.student.controllers', [])
       }
     });
 
-    console.log($scope.user);
-
   }
 
 ]);

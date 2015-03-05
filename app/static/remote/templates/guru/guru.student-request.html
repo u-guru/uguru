@@ -19,7 +19,7 @@
       <hr>
       <ul class="list">
         <li class="item padding-10-14">
-          <div class="icon"><img src='./img/shun.png' class='width'></div>
+          <div class="icon"><img ng-src='{{request.student.profile_url}}' class='width'></div>
           <div class="box">
             <div class="name">{{request.student.name.split(" ")[0]}}
               <span class="profile" style="font-size:14px !important;" ng-click="goToGuruRequestDetails(request)" >See Details</span>

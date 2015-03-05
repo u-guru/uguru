@@ -157,6 +157,7 @@ class UserOneView(restful.Resource):
         [db_session.refresh(_request) for _request in user.requests]
         [db_session.refresh(_session) for _session in user.guru_sessions]
         [db_session.refresh(_session) for _session in user.student_sessions]
+        [db_session.refresh(proposal) for proposal in user.proposals]
         db_session.refresh(user)
 
         # if not request.json.get('auth_token'):
