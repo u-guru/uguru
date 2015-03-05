@@ -108,9 +108,10 @@ angular.module('uguru.util.controllers')
             $scope.requestPosition = { coords: { latitude: $scope.user.university.latitude, longitude: $scope.user.university.longitude}}
 
 
+            console.log($scope.user.university.latitude, $scope.user.university.longitude);
             initMapCoords = $scope.createGoogleLatLng(
-                                $scope.user.university.location.latitude,
-                                $scope.user.university.location.longitude
+                                $scope.user.university.latitude,
+                                $scope.user.university.longitude
                             )
 
           }

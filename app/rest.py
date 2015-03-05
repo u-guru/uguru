@@ -1083,12 +1083,17 @@ class UserNewView(restful.Resource):
 
         if request.json.get('student_courses'):
 
-            print len(user.student_courses) + ' before'
+            print str(len(user.student_courses)) + ' before'
             for course in request.json.get('student_courses'):
-                course_obj = Course.query.get(int(course.id))
+                course_obj = Course.query.get(int(course.get('id')))
                 user.student_courses.append(course_obj)
             db_session.commit()
-            print len(user.student_courses) + ' after'
+            print str(len(user.student_courses)) + ' after'
+
+        if request.json.get('university_id'):
+
+            user.university_id = request.json.get('university_id')
+            db_session.commit()
 
         return user, 200
 
