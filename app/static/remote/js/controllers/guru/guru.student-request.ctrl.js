@@ -30,6 +30,11 @@ angular.module('uguru.guru.controllers')
       $state.go('^.guru.home');
     }
 
+    $scope.goToGuruRequestDetails = function(request) {
+      var doNothing = true;
+      // $scope.root.dialog.alert()
+    }
+
 
     $scope.deleteProposalFromList = function(proposal, proposal_list) {
       for(i = 0; i < proposal_list.length; i++) {
