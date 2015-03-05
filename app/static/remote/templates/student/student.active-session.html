@@ -28,7 +28,7 @@
       <hr>
       <ul class="list" ng-show="session.status === 1">
         <li class="item padding-10-14">
-          <div class="icon"><img src='./img/shun.png' class='width'></div>
+          <div class="icon"><img ng-src='{{session.request.guru.profile_url}}' class='width'></div>
           <div class="box">
             <div class="name">{{session.request.guru.name.split(" ")[0]}}
               <span class="profile" style="font-size:14px !important;" ng-click="goToGuruProfile(session.request.guru)" >view profile</span>

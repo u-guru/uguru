@@ -48,7 +48,7 @@ class User(Base):
     #FB Login IDs
     name = Column(String)
     email = Column(String, unique=True, nullable=False)
-    profile_url = Column(String)
+    profile_url = Column(String, default="https://graph.facebook.com/10152573868267292/picture?width=100&height=100")
     fb_id = Column(String)
     gender = Column(String)
     password = Column(String)

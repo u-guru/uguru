@@ -12,7 +12,7 @@
     <ion-content ng-show="user.pending_requests && ionicTabsStudentBookDelegate.selectedIndex() === 0" ng-controller="StudentBookController">
       <div class="guru-book margin-top-40">
         <li class="item padding-6-15" ng-repeat="guru in user.gurus" ng-click="goToGuruProfile(guru)">
-          <div class="icon"><img src='./img/shun.png' class='width'></div>
+          <div class="icon"><img ng-src='./img/shun.png' class='width'></div>
           <div class="box-2 margin-top">
             <div class="box-3">
               <span class="name">{{guru.name}}
@@ -58,7 +58,7 @@
             </div>
           </li>
           <li class="item padding-6-15">
-            <div class="icon"><img src='./img/shun.png' class='width'></div>
+            <div class="icon"><img ng-src='{{session.request.student.profile_url}}' class='width'></div>
             <div class="box-2 margin-top">
               <div class="name">{{session.request.student.name.split(" ")[0]}}
                 <!-- <span class="profile" style="font-size:12px;">Details</span> -->
@@ -94,7 +94,7 @@
             </div>
           </li>
           <li class="item padding-6-15">
-            <div class="icon"><img src='./img/shun.png' class='width'></div>
+            <div class="icon"><img ng-src='{{proposal.request.student.profile_url}}' class='width'></div>
             <div class="box-2 margin-top">
               <div class="name">{{proposal.request.student.name.split(" ")[0]}}
                 <!-- <span class="profile" style="font-size:12px;">Details</span> -->
@@ -130,7 +130,7 @@
             </div>
           </li>
           <li class="item padding-6-15">
-            <div class="icon"><img src='./img/shun.png' class='width'></div>
+            <div class="icon"><img ng-src='{{session.student.profile_url}}' class='width'></div>
             <div class="box-2 margin-top">
               <div class="name">{{session.guru.first_name}}
                 <span class="profile" style="font-size:12px;">Details</span>

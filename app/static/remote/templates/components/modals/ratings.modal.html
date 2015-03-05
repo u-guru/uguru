@@ -22,7 +22,8 @@
           </span>
         </div>
         <div class="item padding-6-92">
-          <div class="icon"><img src='./img/shun.png' class='width'></div>
+          <div class="icon"><img ng-src='{{rating.session.guru.profile_url}}' ng-show="!user.guru_mode"class='width'></div>
+          <div class="icon"><img ng-src='{{rating.session.request.student.profile_url}}' ng-show="user.guru_mode"class='width'></div>
           <div class="box-2 margin-top" ng-show="!user.guru_mode">
             <div class="name">{{rating.session.guru.name.split(" ")[0]}}</div>
             <div class="course-name">{{rating.session.request.course.short_name}}</div>

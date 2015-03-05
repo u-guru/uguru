@@ -49,12 +49,19 @@ angular.module('uguru.student.controllers')
       var messages = messages;
       for (var i = 0; i < messages.length; i ++ ) {
         var current_message = messages[i];
+        console.log(messages[i]);
         if (current_message.sender.id === $scope.user.id) {
           current_message.class = 'you';
-          current_message.profile_url = $scope.default_img_one;
+          current_message.profile_url = messages[i].sender.profile_url;
+          if (!current_message.profile_url) {
+            current_message.profile_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100';
+          }
         } else {
           current_message.class = 'sender';
-          current_message.profile_url = $scope.default_img_two;
+          current_message.profile_url = messages[i].receiver.profile_url;
+          if (!current_message.profile_url) {
+            current_message.profile_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100';
+          }
         }
       }
       messages.sort($scope.sortMessageComparator);

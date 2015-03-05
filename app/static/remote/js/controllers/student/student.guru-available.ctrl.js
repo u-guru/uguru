@@ -16,6 +16,10 @@ angular.module('uguru.student.controllers')
     $scope.request = JSON.parse($stateParams.requestObj);
     $scope.guru = $scope.request.guru;
 
+    if ($scope.guru && !$scope.guru.profile_url) {
+      $scope.guru.profile_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100';
+    }
+
     $scope.getNumber = function(num) {
       return new Array(num);
     }

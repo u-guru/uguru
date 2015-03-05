@@ -13,7 +13,7 @@
           </div>
           <div class="md-box"> <!-- add active later -->
             <div class="text">
-              <img src="{{transaction.student.profile_url}}" class="icon">
+              <img ng-src="{{transaction.student.profile_url}}" class="icon">
               <span class="name">{{transaction.student.name}}</span>
               <span class="status">{{transaction.session.request.course.short_name}} session</span>
               <span class="money">+ ${{transaction.guru_amount}}</span>
@@ -25,7 +25,7 @@
           </div>
           <div class="md-box"> <!-- add active later -->
             <div class="text">
-              <img src="{{transaction.guru.profile_url}}" class="icon">
+              <img ng-src="{{transaction.guru.profile_url}}" class="icon">
               <span class="name">{{transaction.student.name}}</span>
               <span class="status">{{transaction.session.request.course.short_name}} session</span>
               <span class="money" style="color: red;">- ${{transaction.student_amount}}</span>

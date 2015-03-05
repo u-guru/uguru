@@ -27,7 +27,7 @@
             </div>
           </li>
           <li class="item padding-6-15">
-            <div class="icon"><img src='./img/shun.png' class='width'></div>
+            <div class="icon"><img ng-src="{{session.guru.profile_url}}" class='width'></div>
             <div class="box-2 margin-top">
               <div class="name">{{session.request.guru.name.split(" ")[0]}}
                 <span class="profile" style="font-size:14px !important;" >Details</span>
@@ -84,7 +84,7 @@
 
         <div class="guru-book margin-top-40" ng-repeat="session in user.previous_student_sessions" ng-click="goToPreviousSessionDetails(session)" ng-show="user.previous_student_sessions.length && user.previous_student_sessions.length > 0 && !user.guru_mode">
           <li class="item padding-6-15">
-            <div class="icon"><img ng-src='{{session.guru.profile_url}}' class='width'></div>
+            <div class="icon"><img ng-src="{{session.guru.profile_url}}" class='width'></div>
             <div class="box-2 margin-top">
               <div class="box-3">
                 <span class="name">{{session.guru.name.split(" ")[0]}}
