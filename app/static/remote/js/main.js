@@ -1,12 +1,15 @@
 // Uguru upp
 var LOCAL = false;
-var REST_URL = 'http://uguru-rest.herokuapp.com'
-var BASE_URL = 'http://uguru-rest.herokuapp.com/app/'
+// var REST_URL = 'http://uguru-rest.herokuapp.com'
+// var BASE_URL = 'http://uguru-rest.herokuapp.com/app/'
+BASE_URL = 'http://192.168.0.104:8100/remote/index.html#/student/home'
+REST_URL = 'http://192.168.0.104:5000'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  // REST_URL = 'http://192.168.0.104:5000'
-  var REST_URL = 'http://uguru-rest.herokuapp.com';
+  REST_URL = 'http://192.168.0.104:5000'
+  // var REST_URL = 'http://uguru-rest.herokuapp.com';
+  // var BASE_URL = 'http://uguru-rest.herokuapp.com/app/'
   BASE_URL = 'http://192.168.0.104:8100/remote/index.html#/student/home'
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
@@ -21,35 +24,35 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   $ionicPlatform.ready(function() {
     //Only when the app is opened after its been closed
 
-    $cordovaLocalNotification.hasPermission().then(function(granted) {
+    // $cordovaLocalNotification.hasPermission().then(function(granted) {
 
-      $cordovaLocalNotification.cancelAll();
-      if (!granted) {
-        $cordovaLocalNotification.promptForPermission();
-      };
-    });
+    //   $cordovaLocalNotification.cancelAll();
+    //   if (!granted) {
+    //     $cordovaLocalNotification.promptForPermission();
+    //   };
+    // });
 
-    getDeviceToken = function(){
-          var device = ionic.Platform.device()
-          console.log(device);
-          console.log(typeof cordova);
-          if(typeof device != "undefined" && typeof cordova === "object"){
-              console.log('gets this far');
-              var getToken = function(types, success, fail){
-                cordova.exec(success, fail, "PushToken", "getToken", types);
-              }
-          getToken(["getToken"], function(token){
-                  device.token = token;
-                  return token;
-           }, function(e){
-             console.log("cannot get device token: "+e);
-             return false;
-           });
-          }else{
-              console.log("device not ready, or not a native app");
-          return false;
-          }
-      }
+    // getDeviceToken = function(){
+    //       var device = ionic.Platform.device()
+    //       console.log(device);
+    //       console.log(typeof cordova);
+    //       if(typeof device != "undefined" && typeof cordova === "object"){
+    //           console.log('gets this far');
+    //           var getToken = function(types, success, fail){
+    //             cordova.exec(success, fail, "PushToken", "getToken", types);
+    //           }
+    //       getToken(["getToken"], function(token){
+    //               device.token = token;
+    //               return token;
+    //        }, function(e){
+    //          console.log("cannot get device token: "+e);
+    //          return false;
+    //        });
+    //       }else{
+    //           console.log("device not ready, or not a native app");
+    //       return false;
+    //       }
+    //   }
 
 
     document.addEventListener("deviceready", function () {

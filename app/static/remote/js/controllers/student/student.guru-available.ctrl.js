@@ -2,7 +2,6 @@ angular.module('uguru.student.controllers')
 
 //ALL student controllers
 .controller('GuruAvailableController', [
-
   //All imported packages go here
   '$scope',
   '$state',
