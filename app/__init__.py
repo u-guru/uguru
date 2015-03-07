@@ -9,7 +9,7 @@ from flask.ext.bcrypt import Bcrypt
 from flask.ext.httpauth import HTTPBasicAuth
 from flask.ext.compress import Compress
 
-import newrelic.agent
+# import newrelic.agent
 
 # Logging
 import logging
