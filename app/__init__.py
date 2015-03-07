@@ -35,7 +35,7 @@ flask_bcrypt = Bcrypt(app)
 
 compress = Compress(app)
 
-new_relic = newrelic.agent.WSGIApplicationWrapper(app)
+# new_relic = newrelic.agent.WSGIApplicationWrapper(app)
 
 # flash-httpauth
 auth = HTTPBasicAuth()
