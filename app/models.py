@@ -788,6 +788,7 @@ class Session(Base):
     minutes = Column(Integer)
     hours = Column(Integer)
 
+
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
         primaryjoin = "(User.id==Session.guru_id) & "\
@@ -1195,7 +1196,10 @@ class Version(Base):
     def most_recent_by_version(version_id, str_only=False):
         recent_build = Version.get_most_recent_major_build(version_id)
         if not recent_build:
-            recent_build = Build.query.all()[-1]
+            recent_build = Build.query.all()
+            if not recent_build:
+                return 1
+            recent_build = recent_build[-1]
         result = [recent_build.version_id, recent_build.major_num, recent_build.minor_num, recent_build.message]
         if str_only:
             return "<v%r.%r.%r: %r>" %\
@@ -1513,11 +1517,15 @@ class Transaction(Base):
         transaction._type = 0
         transaction.student_amount = Transaction.calculateStudentPriceFromSession(_session)
 
+        transaction.guru = _session.guru
         transaction.guru_amount = transaction.student_amount * 0.8
-        transaction.guru.balance += guru_amount
 
         if not transaction.guru.total_earned: transaction.guru.total_earned = 0
-        transaction.guru.total_earned += guru_amount
+        if not transaction.guru.balance: transaction.guru.balance = 0
+
+        transaction.guru.balance += transaction.guru_amount
+
+        transaction.guru.total_earned += transaction.guru_amount
 
         stripe_charge = charge_customer(_session.student, transaction.student_amount)
         transaction.session = _session

@@ -209,9 +209,38 @@ class UserOneView(restful.Resource):
             else:
                 c = Course.query.get(int(course_id))
                 user.student_courses.append(c)
-                print user
-                print user.student_courses
                 db_session.commit()
+
+        if request.json.get('add_guru_intro'):
+            user.guru_introduction = request.json.get('introduction')
+            print user.guru_introduction
+
+        if request.json.get('add_user_major'):
+            major = request.json.get('major')
+            major_id = major.get('id')
+            if not major_id:
+                abort(404)
+            else:
+                major_obj = Major.query.get(int(major_id))
+                user.majors.append(major_obj)
+                db_session.commit()
+                # create major case
+            # course = request.json.get('course')
+            # course_id = course.get('id')
+            # if not course_id:
+            #     c = Course()
+            #     c.short_name = course.get('department') + ' ' + course.get('code')
+            #     c.department_short = course.get('department')
+            #     c.course_number = course.get('code')
+            #     c.admin_approved = False
+            #     c.contributed_user_id = user.id
+            #     db_session.add(c)
+            #     user.guru_courses.append(c)
+            #     db_session.commit()
+            # else:
+            #     c = Course.query.get(int(course_id))
+            #     user.guru_courses.append(c)
+            #     db_session.commit()
 
         if request.json.get('add_guru_course'):
             course = request.json.get('course')
@@ -718,6 +747,8 @@ class UserSessionView(restful.Resource):
 
         session_json = request.json.get('session')
         _session = Session.query.get(session_json.get('id'))
+        if request.json.get('session'):
+            print session_json
 
         if request.json.get('recurring_session_guru_accept'):
             proposal_id = request.json.get('proposal_id')
@@ -780,7 +811,6 @@ class UserSessionView(restful.Resource):
 
             ## Guru is starting the session
             if status == Session.GURU_START_SESSION:
-
                 event_dict = {'status': Session.GURU_START_SESSION, 'session_id':_session.id}
                 event = Event.initFromDict(event_dict)
 

@@ -7,7 +7,9 @@ from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.restful import reqparse, Api
 from flask.ext.bcrypt import Bcrypt
 from flask.ext.httpauth import HTTPBasicAuth
+from flask.ext.compress import Compress
 
+import newrelic.agent
 
 # Logging
 import logging
@@ -30,6 +32,10 @@ api = restful.Api(app)
 
 # flask_becrypt
 flask_bcrypt = Bcrypt(app)
+
+compress = Compress(app)
+
+new_relic = newrelic.agent.WSGIApplicationWrapper(app)
 
 # flash-httpauth
 auth = HTTPBasicAuth()

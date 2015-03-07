@@ -4,6 +4,8 @@ SECRET_KEY = '\xc8]{\x9e\xb7\x93\xc1X\xab#\x8b"K\xe8\xd2\xc5\x17C!I\r$\xca\x7f'
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+COMPRESS_MIMETYPES = ['text/html', 'text/css', 'text/xml', 'application/json', 'application/javascript']
+
 # Detects if on Heroku
 if os.environ.get('DATABASE_URL'):
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
