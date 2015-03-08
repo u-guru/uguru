@@ -1,0 +1,29 @@
+ <ion-modal-view ng-controller="SignupController">
+    <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
+      <h1 class="title" ng-show="!loginMode">Create Account</h1>
+      <h1 class="title" ng-show="loginMode">Login</h1>
+      <button ng-click="closeSignupModal()" class="button button-clear button-positive">Cancel</button>
+    </ion-header-bar>
+    <ion-content class="background-green">
+
+      <div class="timer">
+        <div class="timer-box center">
+          <div class="md-box-1 center animated lightSpeedIn" id="lightSpeedIn">
+            <div class="sm-box-1">
+              <span class="icon ion-arrow-right-b"></span>
+            </div>
+          </div>
+          <span class="number">15</span><span class="min">m</span>
+          <div class="button-space">
+            <button class="button button-full button-green-outline footer-button">
+              RESET
+            </button>
+            <button class="button button-full button-green footer-button">
+              SUBMIT
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </ion-content>
+</ion-modal-view>

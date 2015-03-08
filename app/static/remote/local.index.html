@@ -14,130 +14,6 @@
     <link href="remote/css/style.css" rel="stylesheet">
     <link href="remote/css/animate.css" rel="stylesheet">
 
-    <script src="cordova.js"></script>
-    <script src="cordova_plugins.js"></script>
-
-    <!-- ionic/angularjs js -->
-    <script src="remote/lib/ionic/js/ionic.bundle.js"></script>
-    <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
-    <script src='http://maps.googleapis.com/maps/api/js?libraries=places, geocoder&sensor=false&language=en&v=3.17'></script>
-    <script src="lib/lodash/dist/lodash.js"></script>
-    <script src="remote/lib/angular-google-maps/angular-google-maps.min.js"></script>
-    <script src="lib/restangular/dist/restangular.js"></script>
-    <script src="lib/angular-local-storage/angular-local-storage.js"></script>
-    <script src="remote/lib/angular-loading-bar/angular-loading-bar.js"></script>
-    <script src="remote/lib/angular-strap/angular-strap.min.js"></script>
-    <script src="lib/angular-strap/angular-strap.tpl.min.js"></script>
-    <script src="lib/angular-animate/angular-animate.js"></script>
-    <script src="lib/angular-payments/angular-payments.js"></script>
-    <script src="remote/lib/ionic/contrib/ionic.contrib.frost.js"></script>
-
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-    <script>
-      Stripe.setPublishableKey('pk_test_OHHalLRCnwixc5YXc9O29h3j');
-    </script>
-
-    <!-- Facebook Plugin for web-development -->
-    <div id="fb-root"></div>
-    <script>
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '1416375518604557',
-          cookie     : true,
-          xfbml      : true,
-          version    : 'v1.0'
-        });
-      }
-  </script>
-
-
-    <script type="text/javascript" src="lib/facebook/facebookConnectPlugin.js"></script>
-
-
-    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
-
-    <!-- uguru app main js -->
-    <script src="remote/js/main.js"></script>
-
-    <!-- uguru app directives -->
-    <script type="text/javascript" src="remote/js/directives/angularFastMatcher.js"></script>
-    <script type="text/javascript" src="remote/js/directives/customDirectives.js"></script>
-
-    <!-- uguru app factories -->
-    <script type="text/javascript" src="remote/js/factories/Session.js"></script>
-    <script type="text/javascript" src="remote/js/factories/User.js"></script>
-    <script type="text/javascript" src="remote/js/factories/Device.js"></script>
-    <script type="text/javascript" src="remote/js/factories/University.js"></script>
-    <script type="text/javascript" src="remote/js/factories/Major.js"></script>
-    <script type="text/javascript" src="remote/js/factories/Phone.js"></script>
-    <script type="text/javascript" src="remote/js/factories/Version.js"></script>
-    <script type="text/javascript" src="remote/js/factories/Support.js"></script>
-    <script type="text/javascript" src="remote/js/factories/Course.js"></script>
-    <script type="text/javascript" src="remote/js/factories/Static.js"></script>
-    <script type="text/javascript" src="remote/js/factories/LocalStorage.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/facebook.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/courses.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/bio.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/majors.ctrl.js"></script>
-
-    <!-- Uguru student controller -->
-    <script type="text/javascript" src="remote/js/controllers/student/student.home.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/student/student.request.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/student/student.guru-profile.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/student/student.guru-available.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/student/student.active-session.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/student/student.request-status.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/student/student.previous-session-details.ctrl.js"></script>
-
-    <script type="text/javascript" src="remote/js/controllers/guru/guru.onboarding.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/guru/guru.home.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/guru/guru.opportunities.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/guru/guru.student-request.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/guru/guru.active-session.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/guru/guru.session-start.ctrl.js"></script>
-
-    <script type="text/javascript" src="remote/js/controllers/util/util.university.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.add-course.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.add-major.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.add-guru-bio.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.add-note.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.request-location.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.signup.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.add-payment.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.contact-guru.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.messages.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.ratings.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.gurubook.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.studentbook.ctrl.js"></script>
-
-
-    <!-- Uguru Student settings controller -->
-    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.cards.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.notifications.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.transfers.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.profile.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.edit-courses.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.edit-university.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.transactions.ctrl.js"></script>
-
-    <!-- uguru app services -->
-    <script type="text/javascript" src="remote/js/services/AuthService.js"></script>
-    <script type="text/javascript" src="remote/js/services/RootService.js"></script>
-    <script type="text/javascript" src="remote/js/services/Popup.js"></script>
-    <script type="text/javascript" src="remote/js/services/Popover.js"></script>
-    <script type="text/javascript" src="remote/js/services/hardware/camera.js"></script>
-    <script type="text/javascript" src="remote/js/services/hardware/location.js"></script>
-
   </head>
   <body ng-app="uguru" animation="slide-left-right-ios7">
     <!--
@@ -203,6 +79,125 @@
         </ion-content>
       </ion-view>
     </script>
+
+    <script src="remote/lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
+    <script src='http://maps.googleapis.com/maps/api/js?libraries=places, geocoder&sensor=false&language=en&v=3.17'></script>
+    <script src="lib/lodash/dist/lodash.js"></script>
+    <script src="remote/lib/angular-google-maps/angular-google-maps.min.js"></script>
+    <script src="lib/restangular/dist/restangular.js"></script>
+    <script src="lib/angular-local-storage/angular-local-storage.js"></script>
+    <script src="remote/lib/angular-loading-bar/angular-loading-bar.js"></script>
+    <script src="remote/lib/angular-strap/angular-strap.min.js"></script>
+    <script src="lib/angular-strap/angular-strap.tpl.min.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-payments/angular-payments.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="remote/lib/ionic/contrib/ionic.contrib.frost.js"></script>
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script>
+      Stripe.setPublishableKey('pk_test_OHHalLRCnwixc5YXc9O29h3j');
+    </script>
+
+    <!-- Facebook Plugin for web-development -->
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1416375518604557',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v1.0'
+        });
+      }
+  </script>
+
+    <script type="text/javascript" src="lib/facebook/facebookConnectPlugin.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) <script src="cordova_plugins.js"></script> -->
+    <script src="cordova.js"></script>
+
+    <!-- uguru app main js -->
+    <script src="remote/js/main.js"></script>
+
+    <!-- uguru app directives -->
+    <script type="text/javascript" src="remote/js/directives/angularFastMatcher.js"></script>
+    <script type="text/javascript" src="remote/js/directives/customDirectives.js"></script>
+
+    <!-- uguru app factories -->
+    <script type="text/javascript" src="remote/js/factories/Session.js"></script>
+    <script type="text/javascript" src="remote/js/factories/User.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Device.js"></script>
+    <script type="text/javascript" src="remote/js/factories/University.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Major.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Phone.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Version.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Support.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Course.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Static.js"></script>
+    <script type="text/javascript" src="remote/js/factories/LocalStorage.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/facebook.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/courses.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/bio.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/majors.ctrl.js"></script>
+
+    <!-- uguru app services -->
+    <script type="text/javascript" src="remote/js/services/RootService.js"></script>
+    <script type="text/javascript" src="remote/js/services/AuthService.js"></script>
+    <script type="text/javascript" src="remote/js/services/Popup.js"></script>
+    <script type="text/javascript" src="remote/js/services/Popover.js"></script>
+    <script type="text/javascript" src="remote/js/services/hardware/camera.js"></script>
+    <script type="text/javascript" src="remote/js/services/hardware/location.js"></script>
+
+
+    <!-- Uguru student controller-->
+    <script type="text/javascript" src="remote/js/controllers/student/student.home.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.request.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.guru-profile.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.guru-available.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.active-session.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.request-status.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.previous-session-details.ctrl.js"></script>
+
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.onboarding.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.home.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.opportunities.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.student-request.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.active-session.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.session-start.ctrl.js"></script>
+
+    <script type="text/javascript" src="remote/js/controllers/util/util.university.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.add-course.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.add-major.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.add-guru-bio.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.add-note.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.request-location.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.signup.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.add-payment.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.contact-guru.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.messages.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.ratings.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.gurubook.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.studentbook.ctrl.js"></script>
+
+
+    <!-- Uguru Student settings controller -->
+    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.cards.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.notifications.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.transfers.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.profile.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.edit-courses.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.edit-university.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/settings/settings.transactions.ctrl.js"></script>
 
   </body>
 

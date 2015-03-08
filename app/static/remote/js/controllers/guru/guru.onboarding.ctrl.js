@@ -115,6 +115,10 @@ angular.module('uguru.guru.controllers', [])
       $state.go('^.home');
     }
 
+    $scope.$on('$ionicView.beforeEnter', function(){
+        $scope.calculateProgress($scope.user);
+    });
+
 
   }
 

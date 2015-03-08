@@ -1,0 +1,56 @@
+<ion-view hide-back-button="true" hide-nav-bar = "true">
+  <ion-content class="background-black" style="background-color:black; opacity:0.8">
+    <div class="oh relative">
+      <div class="md-box-1 center animated lightSpeedIn" id="lightSpeedIn">
+        <div class="sm-box-1">
+          HELP!
+        </div>
+        <div class="sm-box-2">
+          <span class="white">{{request.student.name.split(" ")[0]}}</span> needs help in<br>
+          with <span class="white">{{request.course.short_name}}</span><br>
+          right now.
+        </div>
+      </div>
+      <div class="row bottom center">
+        <div class="col">
+          <div class="font-size-14"><span class="icon ion-navigate"></span>We'll meet at {{request.address}}</div>
+        </div>
+      </div>
+      <hr>
+      <ul class="list">
+        <li class="item padding-10-14">
+          <div class="icon"><img ng-src='{{request.student.profile_url}}' class='width'></div>
+          <div class="box">
+            <div class="name">{{request.student.name.split(" ")[0]}}
+              <span class="profile" style="font-size:14px !important;" ng-click="goToGuruRequestDetails(request)" >See Details</span>
+            </div>
+            <div class="stars" ng-show="request.student.student_avg_rating">
+              <span class="icon ion-star" ng-repeat="i in getNumber(request.student.student_avg_rating) track by $index"></span>
+            </div>
+            <div class="stars" ng-show="!request.student.student_avg_rating">
+              First time using uGuru
+            </div>
+          </div>
+        </li>
+        <li class="item padding-10-14 border-bottom-2">
+          You'll earn <span class="bold-font">$5</span> every <span class="bold-font">15 Minutes</span>
+          <span ng-show="user.transfer_cards.length > 0"> to <strong> {{user.default_transfer_card.card_last4}} </strong> </span>
+        </li>
+        <li class="item padding-0-4">
+          <div class="row">
+            <div class="col center">
+              <button ng-click="acceptStudent()" class="button button-positive-half">
+                Accept
+              </button>
+            </div>
+            <div class="col center">
+              <button ng-click="rejectStudent()" class="button button-outline-half">
+                Decline
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </ion-content>
+</ion-view>

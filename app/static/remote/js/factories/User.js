@@ -245,7 +245,7 @@ angular.module('uguru.user', [])
         $scope.user.fb_id = user.fb_id;
         $scope.user.default_card = user.default_card;
         $scope.user.password = user.password;
-        $scope.user.guru_introduction = user.introduction;
+        $scope.user.guru_introduction = user.guru_introduction;
         $scope.user.tos_version = user.tos_version;
         $scope.user.university_id = user.university_id;
         $scope.user.university = user.university;
@@ -459,6 +459,18 @@ angular.module('uguru.user', [])
                         'add_guru_course': true
                   }
               }
+              if (arg === 'add_user_major') {
+                  return {
+                        major: obj,
+                        'add_user_major': true
+                  }
+              }
+              if (arg === 'add_guru_intro') {
+                  return {
+                        introduction: obj,
+                        'add_guru_intro': true
+                  }
+              }
               if (arg === 'impact_event') {
                 return {
                     event_id: obj,
@@ -661,7 +673,9 @@ angular.module('uguru.user', [])
                     .one('user', userObj.id).one(param)
                     .customPUT(JSON.stringify(payload))
                     .then(function(session){
-                        $scope.session = session.plain();
+                        var processed_user = processResults(user);
+                        assignPropertiesToRootScope($scope, processed_user)
+                        delegateActionsFromProcessedUser($scope);
                         if (callback_success) {
                             callback_success();
                         }

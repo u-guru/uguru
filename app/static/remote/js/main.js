@@ -1,21 +1,20 @@
 // Uguru upp
 var LOCAL = false;
-// var REST_URL = 'http://uguru-rest.herokuapp.com'
-// var BASE_URL = 'http://uguru-rest.herokuapp.com/app/'
-BASE_URL = 'http://192.168.0.104:8100/remote/index.html#/student/home'
-REST_URL = 'http://192.168.0.104:5000'
+var BASE_URL = 'http://uguru-rest.herokuapp.com/app/';
+var REST_URL = 'http://uguru-rest.herokuapp.com';
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  REST_URL = 'http://192.168.0.104:5000'
+  REST_URL = 'http://161.82.64.66:5000';
   // var REST_URL = 'http://uguru-rest.herokuapp.com';
   // var BASE_URL = 'http://uguru-rest.herokuapp.com/app/'
-  BASE_URL = 'http://192.168.0.104:8100/remote/index.html#/student/home'
+  BASE_URL = 'http://161.82.64.66:5000/app/';
+  // BASE_URL = 'http://161.82.64.66:8100/remote/index.html#/student/home';
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.student.controllers', 'uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
-  'uguru.directives', 'mgcrea.ngStrap', 'ionic.contrib.frost', 'ionic.device', 'ui.bootstrap'])
+  'uguru.directives', 'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap'])
 
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
@@ -59,6 +58,20 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         console.log('hiding splash screens..');
         $cordovaSplashscreen.hide();
 
+        var networkState = navigator.connection.type;
+
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.CELL]     = 'Cell generic connection';
+        states[Connection.NONE]     = 'No network connection';
+
+        console.log('Connection type: ' + states[networkState]);
+
         //Set platform in local store
         $localstorage.setObject('platform', ionic.Platform.platform());
         $localstorage.setObject('device', ionic.Platform.device());
@@ -79,7 +92,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
             Device.post(currentDevice).then(function(result) {
               console.log('result received');
               console.log(result.plain());
-            })
+            });
           }
         }
 
@@ -98,7 +111,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
     });
 
-  })
+  });
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
@@ -139,7 +152,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
             // User.getUserFromServer($scope, null, $state);
             document.addEventListener("resume", function() {
 
-                console.log('device is resuming....')
+                console.log('device is resuming....');
                  checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
                 // User.getUserFromServer($scope, null, $state);
 
@@ -148,10 +161,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
             document.addEventListener("online", function() {
 
-                console.log('device is online...')
+                console.log('device is online...');
               checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                console.log('Getting user from server')
-                // User.getUserFromServer($scope);
+                console.log('Getting user from server');
 
             }, false);
 
@@ -165,7 +177,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
             }, false);
 
             document.addEventListener("pause", function() {
-                console.log('device is paused...')
+                console.log('device is paused...');
               // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
             }, false);
           });
@@ -204,7 +216,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   }).
   state('root.student.home', {
         url: '/home',
-        templateUrl: BASE + 'templates/student/student.home.html',
+        templateUrl: BASE + 'templates/student.home.html',
         controller: 'StudentHomeController'
   }).
   state('root.student.request', {
@@ -319,140 +331,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   state('root.student.guru-mode', {
         url: '/guru-mode',
         templateUrl: BASE + 'templates/student/student.guru-mode.html'
-  }).
-  state('root.student.animations', {
-        url: '/animations',
-        templateUrl: BASE + 'templates/student/animations.html',
-  }).
-  state('root.student.animation1', {
-      url: '/animation1',
-      templateUrl: BASE + 'templates/student/animation1.html',
-      controller: function($scope) {
-        $scope.startAnimation = function() {
-          var testarray = document.getElementsByClassName("sq");
-          for(var i = 0; i < testarray.length; i++)
-          {
-              testarray[i].className += " active";
-          }
-        }
-        $scope.endAnimation = function() {
-          var testarray = document.getElementsByClassName("sq");
-          for(var i = 0; i < testarray.length; i++)
-          {
-              testarray[i].classList.remove("active");
-
-          }
-        }
-      }
-  }).
-  state('root.student.animation2', {
-      url: '/animation2',
-      templateUrl: BASE + 'templates/student/animation2.html',
-      controller: function($scope) {
-        $scope.startAnimation = function() {
-          var testarray = document.getElementsByClassName("a");
-          for(var i = 0; i < testarray.length; i++)
-          {
-              testarray[i].className += " active";
-          }
-          document.getElementsByClassName("yon").className += " active";
-          document.getElementsByClassName("goo").className += " active";
-          document.getElementsByClassName("rok").className += " active";
-          document.getElementsByClassName("ryk").className += " active";
-          document.getElementsByClassName("x7").className += " active";
-          document.getElementsByClassName("x8").className += " active";
-          document.getElementsByClassName("x9").className += " active";
-        }
-        $scope.endAnimation = function() {
-          var testarray = document.getElementsByClassName("a");
-          for(var i = 0; i < testarray.length; i++)
-          {
-              testarray[i].classList.remove("active");
-          }
-        }
-      }
-  }).
-  state('root.student.animation3', {
-      url: '/animation3',
-      templateUrl: BASE + 'templates/student/animation3.html',
-      controller: function($scope) {
-        $scope.startAnimation = function() {
-          !function () {
-            var boomTimeout;
-            var p = document.querySelector('p');
-
-            // dataset isn't well supported enough yet...
-            p.setAttribute('data-content', p.textContent);
-
-            function boom () {
-              p.className = 'boom';
-              window.clearTimeout(boomTimeout);
-              boomTimeout = window.setTimeout(unboom, 300);
-            }
-
-            function unboom () {
-              p.className = '';
-            }
-
-            setInterval(function () {r
-              boom();
-              setTimeout(boom, 400);
-            }, 1800);
-
-            boom();
-
-            p.addEventListener('click', boom, false);
-          }();
-        }
-        $scope.endAnimation = function() {
-          var testarray = document.getElementsByClassName("a");
-          for(var i = 0; i < testarray.length; i++)
-          {
-              testarray[i].classList.remove("active");
-          }
-        }
-      }
-  }).
-  state('root.student.animation4', {
-      url: '/animation4',
-      templateUrl: BASE + 'templates/student/animation4.html',
-      controller: function($scope) {
-        $scope.startAnimation = function() {
-
-              //Create the canvas
-              var canvas = document.getElementById("canvas");
-              var context = canvas.getContext("2d");
-              document.getElementsByClassName('animation-box')[0].appendChild(canvas);
-
-              setInterval(function() {
-                  //Generating random positions
-                  var posX = Math.floor(Math.random() * 200);
-                  var posY = Math.floor(Math.random() * 200);
-
-                  //Picking selected colors at random
-                  var colors = ['rgba(220, 20, 60, 0.8)', 'rgba(255, 105, 180,0.6)', 'rgba(255, 20, 147, 0.8)', 'rgba(255, 140, 0,0.6)', 'rgba(143, 188, 143,0.7)'];
-                  var color = Math.floor(Math.random() * colors.length);
-
-                  //Drawing on the canvas
-                  context.beginPath();
-                  context.moveTo(200, 0);
-                  context.lineTo(1, -1);
-                  context.fillStyle = colors[color];
-                  context.arc(posX, posY, 0, 0, Math.PI * 2, true);
-                  context.closePath();
-                  context.fill();
-              }, 80);
-
-        }
-        $scope.endAnimation = function() {
-          var testarray = document.getElementsByClassName("a");
-          for(var i = 0; i < testarray.length; i++)
-          {
-              testarray[i].classList.remove("active");
-          }
-        }
-      }
-  })
+  });
 });
 
 var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $localstorage) {
@@ -462,11 +341,11 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
               //if user gets the right version
               function(response) {
                     var serverVersionNumber = JSON.parse(response).version;
-                    var currentVersion = Version.getVersion()
+                    var currentVersion = Version.getVersion();
                     //if brand new user with no version set
                     if ((typeof currentVersion) === "undefined") {
                       console.log('First time opening app - set version to 1.0');
-                      currentVersion = 1.0
+                      currentVersion = 1.0;
                       Version.setVersion(1.0);
                     }
                     console.log('user v:' + currentVersion.toString() + '. Server v:' + serverVersionNumber);
@@ -478,7 +357,7 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
                       window.localStorage.clear();
 
                       //remove all angular templates
-                      $templateCache.removeAll();
+                      // $templateCache.removeAll();
 
                       Version.setVersion(serverVersionNumber);
                       $localstorage.set('recently_updated', true);
@@ -494,4 +373,4 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
                   console.log('Version not loaded');
               }
           );
-        }
+        };

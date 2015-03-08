@@ -15,11 +15,16 @@ angular.module('uguru.util.controllers')
 
     $scope.starsSelected;
 
+
+
     if ($scope.user.guru_mode) {
       $scope.rating = $scope.user.pending_student_ratings[0];
     } else {
       $scope.rating = $scope.user.pending_guru_ratings[0];
     }
+
+    // console.log(JSON.stringify($scope.rating));
+    console.log(JSON.stringify($scope.rating.session.id));
 
     $scope.saveInfo = function() {
       $scope.ratingModal.hide();
@@ -27,7 +32,6 @@ angular.module('uguru.util.controllers')
 
     $scope.starClicked = function($event) {
       var starNumber = $event.target.getAttribute('value');
-      console.log(starNumber)
       $scope.showGreenStars(starNumber, $event.target);
       $scope.starsSelected = starNumber;
     }
@@ -68,7 +72,6 @@ angular.module('uguru.util.controllers')
 
     $scope.showGreenStars = function (value, element) {
       var allStarElements = element.parentNode.parentNode.querySelectorAll(":scope > .col");
-      console.log(allStarElements);
       for (var i = 0; i < value; i++) {
         var tempStar = allStarElements[i];
 

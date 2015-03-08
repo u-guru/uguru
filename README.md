@@ -1,5 +1,5 @@
 **Setup Environment**
- 
+
 - Install heroku toolbelt (https://toolbelt.heroku.com)
 - Install Homebrew (http://brew.sh)
 - % pip install virtualenvwrapper
@@ -12,7 +12,7 @@
 
 - % git clone https://github.com/sam1rm/uguru
 - % cd uguru
-- % pip install -r requirements.txt 
+- % pip install -r requirements.txt
 
 **Set up local DB**
 
@@ -32,7 +32,7 @@
 - % psql (enters shell with prompt: User=#)
 - User=# DROP DATABASE uguru_db;
 - DROP DATABASE
-- User=# \q 
+- User=# \q
 - % createdb -U uguru -E utf-8 -O uguru uguru_db
 - % pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump
 - (it's okay if it prints out that there were errors ignored)
@@ -58,11 +58,14 @@
 
 **Run Tests**
 
-- honcho run nosetests tests.py 
+- honcho run nosetests tests.py
 
 **Update Remote App**
-- cp ~/Git/uguru/uguru-mobile/platforms/ios/www/cordova* app/static/remote/
-- cp -r ~/Git/uguru/uguru-mobile/platforms/ios/www/plugins/ app/static/remote/plugins/
-- cp -r ~/Git/uguru/uguru-mobile/www/remote/* app/static/remote/
-- Full command below 
+- Set local to 'False' on main.js
+- Compile everything through Gulp Calling this command in uguru-mobile directory
+    'gulp -b && cp dest/scripts/*.js www/remote/js/app.js && cp dest/styles/*.css www/remote/css/app_version.css'
+- uw
+- Copy all contents from uguru-mobile
 	- % 'cp -r ~/Git/uguru/uguru-mobile/platforms/ios/www/plugins/ app/static/remote/plugins/ && cp -r ~/Git/uguru/uguru-mobile/www/remote/* app/static/remote/ && cp ~/Git/uguru/uguru-mobile/platforms/ios/www/cordova* app/static/remote/'
+
+

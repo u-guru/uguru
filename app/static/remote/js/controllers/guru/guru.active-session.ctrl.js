@@ -71,8 +71,12 @@ angular.module('uguru.student.controllers')
       }
 
       var dialogCallBackSuccess = function() {
+
+        var serverCallback = function() {
+          $state.go('^.session-start', {sessionObj:JSON.stringify(session)});
+        }
+
         //guru start session
-        $state.go('^.session-start', {sessionObj:JSON.stringify(session)});
         $scope.session.status = 2;
         $scope.session.minutes = 0;
         $scope.session.hours = 0;

@@ -22,13 +22,7 @@ angular.module('uguru.util.controllers')
     $scope.keyboard_force_off = false;
 
     $scope.submitGuruBio = function() {
-        $scope.user.guru_introduction = $scope.user.guru_introduction;
-        $scope.rootUser.updateLocal($scope.user);
-
-        //save progress
-        $scope.calculateProgress($scope.user);
-
-        $scope.closeKeyboard();
+        $scope.user.updateAttr('add_guru_intro', $scope.user, $scope.user.guru_introduction, null, $scope);
         $scope.showSuccess('Bio Saved!');
         $timeout(function() {
           $scope.addGuruIntroModal.hide();

@@ -5,23 +5,17 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
-    <!-- compiled css output -->
+    <!-- compiled css output
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/ionic.app.css" rel="stylesheet">
     <link href="css/lib/ionic.contrib.frost.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/angular-strap.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet"> -->
 
-
-    <script src="cordova.js"></script>
-    <script src="cordova_plugins.js"></script>
-
-    <!-- compiled css libraries -->
-    <link href="lib/angular-loading-bar/angular-loading-bar.css" rel="stylesheet">
-
-    <!-- ionic/angularjs js -->
+    <link href="css/app_version.css" rel="stylesheet">
+    <!-- ionic/angularjs js
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
     <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
@@ -36,49 +30,23 @@
     <script src="lib/angular-payments/angular-payments.js"></script>
     <script src="lib/ngAutocomplete/ngAutocomplete.js"></script>
     <script src="lib/ionic/contrib/ionic.contrib.frost.js"></script>
+    -->
 
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-    <script>
-      Stripe.setPublishableKey('pk_test_OHHalLRCnwixc5YXc9O29h3j');
-    </script>
-
-    <!-- Facebook Plugin for web-development -->
-    <div id="fb-root"></div>
-    <script>
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '1416375518604557',
-          cookie     : true,
-          xfbml      : true,
-          version    : 'v2.2'
-        });
-      }
-  </script>
-
-
-    <script type="text/javascript" src="lib/facebook/facebookConnectPlugin.js"></script>
-
-
-    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
 
-    <!-- uguru app main js -->
-    <script src="js/main.js"></script>
+    <!-- uguru app main js
 
-    <!-- uguru app directives -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="js/main.js"></script>
+    -->
+
+    <!-- uguru app directives
     <script type="text/javascript" src="js/directives/angularFastMatcher.js"></script>
     <script type="text/javascript" src="js/directives/customDirectives.js"></script>
+    -->
 
-    <!-- uguru app factories -->
+    <!-- uguru app factories
     <script type="text/javascript" src="js/factories/Session.js"></script>
     <script type="text/javascript" src="js/factories/User.js"></script>
     <script type="text/javascript" src="js/factories/Device.js"></script>
@@ -90,7 +58,9 @@
     <script type="text/javascript" src="js/factories/Course.js"></script>
     <script type="text/javascript" src="js/factories/Static.js"></script>
     <script type="text/javascript" src="js/factories/LocalStorage.js"></script>
+    -->
 
+    <!-- student controllers
     <script type="text/javascript" src="js/controllers/facebook.ctrl.js"></script>
     <script type="text/javascript" src="js/controllers/courses.ctrl.js"></script>
     <script type="text/javascript" src="js/controllers/bio.ctrl.js"></script>
@@ -101,9 +71,9 @@
     <script type="text/javascript" src="js/controllers/student/student.guru-available.ctrl.js"></script>
     <script type="text/javascript" src="js/controllers/student/student.active-session.ctrl.js"></script>
     <script type="text/javascript" src="js/controllers/student/student.request-status.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/student.previous-session-details.ctrl.js"></script>
+    <script type="text/javascript" src="js/controllers/student/student.previous-session-details.ctrl.js"></script> -->
 
-    <!-- guru controllers -->
+    <!-- guru controllers
     <script type="text/javascript" src="js/controllers/guru/guru.onboarding.ctrl.js"></script>
     <script type="text/javascript" src="js/controllers/guru/guru.home.ctrl.js"></script>
     <script type="text/javascript" src="js/controllers/guru/guru.opportunities.ctrl.js"></script>
@@ -131,8 +101,8 @@
     <script type="text/javascript" src="js/controllers/student/settings/settings.edit-courses.ctrl.js"></script>
     <script type="text/javascript" src="js/controllers/student/settings/settings.edit-university.ctrl.js"></script>
     <script type="text/javascript" src="js/controllers/student/settings/settings.transactions.ctrl.js"></script>
-
-    <!-- uguru app services -->
+    -->
+    <!-- uguru app services
     <script type="text/javascript" src="js/services/AuthService.js"></script>
     <script type="text/javascript" src="js/services/RootService.js"></script>
     <script type="text/javascript" src="js/services/Popup.js"></script>
@@ -140,6 +110,7 @@
     <script type="text/javascript" src="js/services/hardware/camera.js"></script>
     <script type="text/javascript" src="js/services/hardware/push.js"></script>
     <script type="text/javascript" src="js/services/hardware/location.js"></script>
+    -->
 
 
   </head>
@@ -197,6 +168,39 @@
         </ion-content>
       </ion-view>
     </script>
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script>
+      Stripe.setPublishableKey('pk_test_OHHalLRCnwixc5YXc9O29h3j');
+    </script>
+
+    <!-- Facebook Plugin for web-development -->
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1416375518604557',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v2.2'
+        });
+      }
+    </script>
+
+    <script type="text/javascript" src="lib/facebook/facebookConnectPlugin.js"></script>
+
+    <script src="js/app.js"></script>
+
+    <script src="cordova.js"></script>
+
 
   </body>
 

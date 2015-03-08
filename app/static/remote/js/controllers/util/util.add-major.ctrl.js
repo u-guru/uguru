@@ -184,10 +184,11 @@ angular.module('uguru.util.controllers')
 
           // }, 1500)
       }
+        $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
 
         $scope.keyboard_force_off = true;
         $scope.user.majors.push(major);
-        $scope.rootUser.updateLocal($scope.user);
+
         $scope.major_search_text = '';
         $scope.closeKeyboard();
         $scope.showSuccess('Major Saved!');

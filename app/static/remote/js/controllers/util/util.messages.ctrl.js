@@ -49,7 +49,6 @@ angular.module('uguru.student.controllers')
       var messages = messages;
       for (var i = 0; i < messages.length; i ++ ) {
         var current_message = messages[i];
-        console.log(messages[i]);
         if (current_message.sender.id === $scope.user.id) {
           current_message.class = 'you';
           current_message.profile_url = messages[i].sender.profile_url;
