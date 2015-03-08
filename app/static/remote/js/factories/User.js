@@ -360,7 +360,7 @@ angular.module('uguru.user', [])
                             (($scope.user.pending_guru_ratings.length > 0 && !$scope.user.guru_mode) ||
                             ($scope.user.pending_student_ratings.length > 0 && $scope.user.guru_mode))) {
 
-            $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/ratings.modal.html', {
+            $ionicModal.fromTemplateUrl(BASE + 'templates/ratings.modal.html', {
                   scope: $scope,
                   animation: 'slide-in-up'
             }).then(function(modal) {

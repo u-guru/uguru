@@ -32,28 +32,28 @@ angular.module('uguru.guru.controllers')
 	$scope.base_url =  BASE;
 	$scope.progress_active = false;
 
-	$ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/add-course.modal.html', {
+	$ionicModal.fromTemplateUrl(BASE + 'templates/add-course.modal.html', {
 	    scope: $scope,
 	    animation: 'slide-in-up'
 	}).then(function(modal) {
 	    $scope.addCourseModal = modal;
 	});
 
-	$ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/university.modal.html', {
+	$ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
 	    scope: $scope,
 	    animation: 'slide-in-up'
 	}).then(function(modal) {
 	    $scope.addUniversityModal = modal;
 	});
 
-  $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/signup.modal.html', {
+  $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
       scope: $scope,
       animation: 'slide-in-up'
   }).then(function(modal) {
       $scope.signupModal = modal;
   });
 
-  $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/become-guru.modal.html', {
+  $ionicModal.fromTemplateUrl(BASE + 'templates/become-guru.modal.html', {
       scope: $scope,
       animation: 'slide-in-up'
   }).then(function(modal) {

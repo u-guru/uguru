@@ -55,28 +55,28 @@ angular.module('uguru.guru.controllers', [])
     $scope.progressValue = $scope.calculateProgress($scope.user);
 
     console.log($scope.user.guru_courses);
-    $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/add-course.modal.html', {
+    $ionicModal.fromTemplateUrl(BASE + 'templates/add-course.modal.html', {
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function(modal) {
         $scope.addCourseModal = modal;
     });
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/add-major.modal.html', {
+    $ionicModal.fromTemplateUrl(BASE + 'templates/add-major.modal.html', {
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function(modal) {
         $scope.addMajorModal = modal;
     });
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/university.modal.html', {
+    $ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function(modal) {
         $scope.addUniversityModal = modal;
     });
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/guru-intro.modal.html', {
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru-intro.modal.html', {
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function(modal) {

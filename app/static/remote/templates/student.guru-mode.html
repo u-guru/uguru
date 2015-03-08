@@ -25,13 +25,13 @@
 
   <ion-tabs class="tabs-dark tabs-icon-only" delegate-handle="student-home-tabs-bottom" style="background-color: rgb(43,50,52)">
     <ion-tab title="Home" icon-on="ion-ios7-home" icon-off="ion-ios7-home-outline" style="color:white; text-decoration:none;">
-      <div ng-show="bottomTabsDelegate.selectedIndex() === 0" ng-include="base_url + 'templates/student/guru.home.body.html'"></div>
+      <div ng-show="bottomTabsDelegate.selectedIndex() === 0" ng-include="base_url + 'templates/guru.home.body.html'"></div>
     </ion-tab>
     <ion-tab title="Guru Book" icon-on="ion-ios7-bookmarks" icon-off="ion-ios7-bookmarks-outline" badge="user.pending_proposals.length" badge-style="badge-positive">
-        <div ng-show="bottomTabsDelegate.selectedIndex() === 1" ng-include="base_url + 'templates/guru/guru.student-book.html'"></div>
+        <div ng-show="bottomTabsDelegate.selectedIndex() === 1" ng-include="base_url + 'templates/guru.student-book.html'"></div>
     </ion-tab>
     <ion-tab title="Settings" icon-on="ion-ios7-gear" icon-off="ion-ios7-gear-outline">
-      <div ng-show="bottomTabsDelegate.selectedIndex() === 2"ng-include="base_url + 'templates/student/student.settings.html'"></div>
+      <div ng-show="bottomTabsDelegate.selectedIndex() === 2"ng-include="base_url + 'templates/student.settings.html'"></div>
     </ion-tab>
   </ion-tabs>
 </ion-view>

@@ -22,7 +22,7 @@ angular.module('uguru.student.controllers')
 		$scope.showSuccess('Saved!');
 	}
 
-	$ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/university.modal.html', {
+	$ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
 	    scope: $scope,
 	    animation: 'slide-in-up'
 	}).then(function(modal) {

@@ -15,7 +15,7 @@ angular.module('uguru.student.controllers')
   	$ionicModal, $cordovaKeyboard) {
     $scope.editMode = false;
 	$scope.progress_active = false;
-	
+
 
 	$scope.saveCourses = function() {
 		$scope.rootUser.updateLocal($scope.user);
@@ -26,7 +26,7 @@ angular.module('uguru.student.controllers')
 		$scope.editMode = !$scope.editMode;
 		if ($scope.editMode) {
 			$scope.shouldShowDelete = true;
-		} 
+		}
 		//save clicked
 		else {
 			$scope.shouldShowDelete = false;
@@ -34,14 +34,14 @@ angular.module('uguru.student.controllers')
 		}
 	}
 
-	$ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/add-course.modal.html', {
+	$ionicModal.fromTemplateUrl(BASE + 'templates/add-course.modal.html', {
 	    scope: $scope,
 	    animation: 'slide-in-up'
 	}).then(function(modal) {
 	    $scope.addCourseModal = modal;
 	});
 
-	$ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/university.modal.html', {
+	$ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
 	    scope: $scope,
 	    animation: 'slide-in-up'
 	}).then(function(modal) {

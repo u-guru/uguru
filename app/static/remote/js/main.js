@@ -9,7 +9,7 @@ if (LOCAL) {
   var REST_URL = 'http://uguru-rest.herokuapp.com';
   var BASE_URL = 'http://uguru-rest.herokuapp.com/app/'
   // BASE_URL = 'http://161.82.64.66:5000/app/';
-  // BASE_URL = 'http://161.82.64.66:8100/remote/index.html#/student/home';
+  // BASE_URL = 'http://161.82.64.66:8100/remote/index.html#/home';
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.student.controllers', 'uguru.guru.controllers', 'uguru.version',
@@ -124,7 +124,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
   // if none of the above states are matched, use this as the fallback
   // $urlRouterProvider.otherwise('/tab/dash');
-  $urlRouterProvider.otherwise('/student/home');
+  $urlRouterProvider.otherwise('/home');
 
   //Set up restangular provider
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
@@ -196,22 +196,22 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   }).
   state('root.guru.wizard', {
         url: '/wizard',
-        templateUrl: BASE + 'templates/guru/guru.onboarding.html',
+        templateUrl: BASE + 'templates/guru.onboarding.html',
         controller: 'BecomeGuruController'
   }).
   state('root.guru.home', {
         url: '/home',
-        templateUrl: BASE + 'templates/guru/guru.home.html',
+        templateUrl: BASE + 'templates/guru.home.html',
         controller: 'GuruHomeController'
   }).
   state('root.guru.opportunities', {
         url: '/opportunities',
-        templateUrl: BASE + 'templates/guru/guru.opportunities.html',
+        templateUrl: BASE + 'templates/guru.opportunities.html',
         controller: 'GuruOpportunitiesController'
   }).
   state('root.guru.student-available', {
         url: '/student-available/:requestObj:proposalObj',
-        templateUrl: BASE + 'templates/guru/guru.student-request.html',
+        templateUrl: BASE + 'templates/guru.student-request.html',
         controller: 'GuruIncomingRequestController'
   }).
   state('root.student.home', {
@@ -221,116 +221,116 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   }).
   state('root.student.request', {
         url: '/request/:courseObj',
-        templateUrl: BASE +  'templates/student/student.request.html',
+        templateUrl: BASE +  'templates/student.request.html',
         controller: 'StudentRequestController'
   }).
   state('root.student.active-session', {
         url: '/active-session/:sessionObj',
-        templateUrl: BASE +  'templates/student/student.active-session.html',
+        templateUrl: BASE +  'templates/student.active-session.html',
         controller: 'StudentActiveSession'
   }).
   state('root.guru.session-start', {
         url: '/start-session/:sessionObj',
-        templateUrl: BASE +  'templates/guru/guru.session-start.html',
+        templateUrl: BASE +  'templates/guru.session-start.html',
         controller: 'GuruSessionStartController'
   }).
   state('root.guru.active-session', {
         url: '/active-session/:sessionObj',
-        templateUrl: BASE +  'templates/guru/guru.active-session.html',
+        templateUrl: BASE +  'templates/guru.active-session.html',
         controller: 'GuruActiveSession'
   }).
   state('root.student.settings', {
         url: '/settings',
-        templateUrl: BASE + 'templates/student/student.settings.html'
+        templateUrl: BASE + 'templates/student.settings.html'
   }).
   state('root.student.settings-cards', {
         url: '/settings-cards',
-        templateUrl: BASE + 'templates/student/student.settings.cards.html',
+        templateUrl: BASE + 'templates/student.settings.cards.html',
         controller: 'SettingsCardController'
   }).
   state('root.student.settings-profile', {
         url: '/settings-profile',
-        templateUrl: BASE + 'templates/student/student.settings.profile.html',
+        templateUrl: BASE + 'templates/student.settings.profile.html',
         controller: 'SettingsProfileController'
   }).
   state('root.student.settings-transactions', {
         url: '/settings-transactions',
-        templateUrl: BASE + 'templates/student/student.settings.transactions.html',
+        templateUrl: BASE + 'templates/student.settings.transactions.html',
         controller: 'SettingsTransactionsController'
   }).
   state('root.student.settings-transfer', {
         url: '/settings-transfer',
-        templateUrl: BASE + 'templates/student/student.settings.transfers.html',
+        templateUrl: BASE + 'templates/student.settings.transfers.html',
         controller: 'SettingsTransfersController'
   }).
   state('root.student.settings-notifications', {
         url: '/settings-notifications',
-        templateUrl: BASE + 'templates/student/student.settings.notifications.html',
+        templateUrl: BASE + 'templates/student.settings.notifications.html',
         controller: 'SettingsNotificationsController'
   }).
   state('root.student.settings-edit-courses', {
         url: '/settings-edit-courses',
-        templateUrl: BASE + 'templates/student/student.settings.edit-courses.html',
+        templateUrl: BASE + 'templates/student.settings.edit-courses.html',
         controller: 'SettingsEditCoursesController'
   }).
   state('root.student.settings-edit-university', {
         url: '/settings-edit-courses',
-        templateUrl: BASE + 'templates/student/student.settings.edit-university.html',
+        templateUrl: BASE + 'templates/student.settings.edit-university.html',
         controller: 'SettingsEditUniversityController'
   }).
   state('root.student.directory', {
         url: '/directory',
-        templateUrl: BASE + 'templates/student/directory.html',
+        templateUrl: BASE + 'templates/directory.html',
   }).
   state('root.student.add-payment', {
         url: '/payment/:cardObj:debitCardOnly',
-        templateUrl: BASE + 'templates/student/add-payment.html',
+        templateUrl: BASE + 'templates/add-payment.html',
   }).
   state('root.student.request-status', {
         url: '/request-status/:requestObj',
-        templateUrl: BASE + 'templates/student/student.request-status.html',
+        templateUrl: BASE + 'templates/student.request-status.html',
         controller: 'RequestStatusController'
   }).
   state('root.student.previous-session-details', {
         url: '/previous-session-details/:sessionObj',
-        templateUrl: BASE + 'templates/student/student.previous-session-details.html',
+        templateUrl: BASE + 'templates/student.previous-session-details.html',
         controller: 'PreviousSessionDetailsController'
   }).
   state('root.guru.previous-session-details', {
         url: '/previous-session-details-guru/:sessionObj',
-        templateUrl: BASE + 'templates/student/student.previous-session-details.html',
+        templateUrl: BASE + 'templates/student.previous-session-details.html',
         controller: 'PreviousSessionDetailsController'
   }).
   state('root.student.messages', {
         url: '/messages/:sessionObj',
-        templateUrl: BASE + 'templates/student/student.messages.html',
+        templateUrl: BASE + 'templates/student.messages.html',
         controller: 'StudentMessagesController'
   }).
   state('root.student.guru-available', {
         url: '/guru-available/:requestObj',
-        templateUrl: BASE + 'templates/student/student.guru-available.html',
+        templateUrl: BASE + 'templates/student.guru-available.html',
         controller: 'GuruAvailableController'
   }).
   state('root.student.guru-profile', {
         url: '/guru-profile/:guruObj:showContactGuru',
-        templateUrl: BASE + 'templates/student/student.guru-profile.html',
+        templateUrl: BASE + 'templates/student.guru-profile.html',
         controller: 'GuruProfileController'
   }).
   state('root.student.guru-home-page', {
         url: '/guru-home-page',
-        templateUrl: BASE + 'templates/student/student.guru-home-page.html'
+        templateUrl: BASE + 'templates/student.guru-home-page.html'
   }).
   state('root.student.guru-timer', {
         url: '/guru-timer',
-        templateUrl: BASE + 'templates/student/student.guru-timer.html'
+        templateUrl: BASE + 'templates/student.guru-timer.html'
   }).
   state('root.student.new-settings', {
         url: '/new-settings',
-        templateUrl: BASE + 'templates/student/student.new-settings.html'
+        templateUrl: BASE + 'templates/student.new-settings.html'
   }).
   state('root.student.guru-mode', {
         url: '/guru-mode',
-        templateUrl: BASE + 'templates/student/student.guru-mode.html'
+        templateUrl: BASE + 'templates/student.guru-mode.html'
   });
 });
 

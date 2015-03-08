@@ -274,7 +274,7 @@ angular.module('uguru.student.controllers')
       $state.go('^.guru-profile', {guruObj:JSON.stringify(guru)});
     }
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/ratings.modal.html', {
+    $ionicModal.fromTemplateUrl(BASE + 'templates/ratings.modal.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {

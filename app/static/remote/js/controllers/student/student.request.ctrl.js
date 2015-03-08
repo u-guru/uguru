@@ -22,28 +22,28 @@ angular.module('uguru.student.controllers')
  	$ionicModal, $ionicTabsDelegate, $cordovaProgress, $stateParams,
   $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation, $ionicHistory) {
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/add-note.modal.html', {
+    $ionicModal.fromTemplateUrl(BASE + 'templates/add-note.modal.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
         $scope.addRequestNoteModal = modal;
     });
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/student-request-map.modal.html', {
+    $ionicModal.fromTemplateUrl(BASE + 'templates/student-request-map.modal.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
         $scope.requestMapModal = modal;
     });
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/signup.modal.html', {
+    $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
         $scope.signupModal = modal;
     });
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/components/modals/contact-guru.modal.html', {
+    $ionicModal.fromTemplateUrl(BASE + 'templates/contact-guru.modal.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
@@ -309,7 +309,7 @@ angular.module('uguru.student.controllers')
     $scope.options = {scrollwheel: false};
 
     $scope.searchbox =  {
-        template: BASE + 'templates/components/inputs/searchbox.tpl.html',
+        template: BASE + 'templates/searchbox.tpl.html',
         options: {
           autocomplete:true,
           types: ['(cities)'],
