@@ -5,10 +5,10 @@ var REST_URL = 'http://uguru-rest.herokuapp.com';
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  REST_URL = 'http://161.82.64.66:5000';
-  // var REST_URL = 'http://uguru-rest.herokuapp.com';
-  // var BASE_URL = 'http://uguru-rest.herokuapp.com/app/'
-  BASE_URL = 'http://161.82.64.66:5000/app/';
+  // REST_URL = 'http://161.82.64.66:5000';
+  var REST_URL = 'http://uguru-rest.herokuapp.com';
+  var BASE_URL = 'http://uguru-rest.herokuapp.com/app/'
+  // BASE_URL = 'http://161.82.64.66:5000/app/';
   // BASE_URL = 'http://161.82.64.66:8100/remote/index.html#/student/home';
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
