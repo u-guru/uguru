@@ -1,16 +1,16 @@
 angular.module('uguru.root.services')
-.service('Popup', 
+.service('Popup',
     [
     '$localstorage',
     '$timeout',
     '$ionicPopup',
     function($localstorage, $timeout, $ionicPopup) {
-    	
+
     	this.options = {
 	        show: function(scope, options) {
 	            var popupOptions = {
-	     
-				     templateUrl: BASE + "templates/components/details/generalConfirmPopup.html",
+
+				     templateUrl: BASE + "templates/generalConfirmPopup.html",
 				     cssClass: "popup-uguru",
 				     scope: scope
 				}

@@ -11,7 +11,7 @@ angular.module('uguru.student.controllers', [])
   '$localstorage',
   '$ionicModal',
   '$ionicTabsDelegate',
-  function($scope, $state, $ionicPopup, $timeout, $localstorage, 
+  function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate) {
 
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
@@ -20,7 +20,7 @@ angular.module('uguru.student.controllers', [])
     $scope.showWelcomePopup = function() {
 
 		var popupOptions = {
-	     
+
 	     templateUrl: "templates/welcomePopup.html",
 	     cssClass: "popup-uguru",
 	     scope: $scope
@@ -46,7 +46,7 @@ angular.module('uguru.student.controllers', [])
 		console.log('clicked');
 	}
 
-	$ionicModal.fromTemplateUrl('templates/components/modals/add-course.modal.html', {
+	$ionicModal.fromTemplateUrl('templates/add-course.modal.html', {
 	    scope: $scope,
 	    animation: 'slide-in-up'
 	}).then(function(modal) {
@@ -68,7 +68,7 @@ angular.module('uguru.student.controllers', [])
   	$scope.$on('addCourseModal.hidden', function() {
     	console.log('Add course modal hidden');
   	});
-    
+
 
   }
 

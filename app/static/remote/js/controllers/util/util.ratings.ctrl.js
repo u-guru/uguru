@@ -8,9 +8,8 @@ angular.module('uguru.util.controllers')
   '$timeout',
   '$localstorage',
   '$ionicModal',
-  '$ionicFrostedDelegate',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $ionicFrostedDelegate) {
+ 	$ionicModal) {
 
 
     $scope.starsSelected;
@@ -23,8 +22,8 @@ angular.module('uguru.util.controllers')
       $scope.rating = $scope.user.pending_guru_ratings[0];
     }
 
-    // console.log(JSON.stringify($scope.rating));
-    console.log(JSON.stringify($scope.rating.session.id));
+    // // console.log(JSON.stringify($scope.rating));
+    // console.log(JSON.stringify($scope.rating.session.id));
 
     $scope.saveInfo = function() {
       $scope.ratingModal.hide();

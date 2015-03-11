@@ -11,7 +11,7 @@ else:
 
 def init():
     init_db()
-    
+
 
 def seed_db_local():
     init_db()
@@ -93,11 +93,11 @@ def seed_db():
         new_major_file = []
         file = open(path_majors)
         file_2 = open(path_courses)
-        
+
         uni_major_arr = json.load(file)
         uni_course_arr = json.load(file_2)
 
-        
+
         u = University.query.get(2752)
 
         for major in uni_major_arr:
@@ -107,8 +107,8 @@ def seed_db():
             u.majors.append(m)
 
         for course in uni_course_arr:
-            
-        #     def admin_create(name, _id=None, department_short=None, 
+
+        #     def admin_create(name, _id=None, department_short=None,
         # department_long=None, course_number=None, full_name=None,\
             c = Course.admin_create(
                     department_short = course["dept_short"],
@@ -229,7 +229,7 @@ if arg == "json_to_batch":
             r.last_name = processed_name[0]
             r.email = student["email"]
             r.fb_id = student["fb_id"]
-            recipients.append(r)            
+            recipients.append(r)
             if count > 250:
                 r.batch_id = batch_2.id
             else:
@@ -243,8 +243,20 @@ if arg == "json_to_batch":
 
 if arg == 'delete_all_users':
     from app.models import *
+
+    for m in Major.query.all():
+        if m.contributed_user_id:
+            m.contributed_user_id = None
+
+    for m in Message.query.all():
+        m.receiver_id = None
+        m.sender_id = None
+
     for u in User.query.all():
+
         db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == u.id))
+        db_session.commit()
+        db_session.execute(user_major_table.delete(user_major_table.c.user_id == u.id))
         db_session.commit()
         db_session.execute(user_major_table.delete(user_major_table.c.user_id == u.id))
         db_session.commit()
@@ -262,7 +274,7 @@ if arg == 'delete_admin_users':
     ADMIN_NAMES = ["Samir Makhani", "Jasmine Mir", "Shun Kurosaki", "Robert Neivert", "Matias Baglieri"]
     for name in ADMIN_NAMES:
         u = User.query.filter_by(name = name).first()
-        if not u: 
+        if not u:
             continue
         db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == u.id))
         db_session.commit()

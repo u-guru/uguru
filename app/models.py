@@ -193,7 +193,6 @@ class User(Base):
     def get_payment_cards(self):
         return [card for card in self.cards if card.is_payment_card]
 
-
     def get_transfer_cards(self):
         return [card for card in self.cards if card.is_transfer_card]
 
@@ -217,6 +216,88 @@ class User(Base):
     def __repr__(self):
         return "<User '%r', '%r', '%r'>" %\
               (self.id, self.name, self.email)
+
+class Calendar(Base):
+
+    __tablename__  = 'calendar'
+    id = Column(Integer, primary_key=True)
+
+    time_created = Column(DateTime)
+    time_modified = Column(DateTime)
+
+    request_id = Column(Integer, ForeignKey('request.id'))
+    request = relationship("Request",
+        uselist=False,
+        primaryjoin = "Request.id == Calendar.request_id"
+    )
+
+
+    proposal_id = Column(Integer, ForeignKey('proposal.id'))
+    proposal = relationship("Proposal",
+        uselist=False,
+        primaryjoin = "Proposal.id == Calendar.proposal_id"
+    )
+
+    start_day = Column(DateTime)
+    number_of_days = Column(Integer)
+
+
+    @staticmethod
+    def initFromRequest(_request, number_of_days = 2):
+        c = Calendar()
+        c.time_created = datetime.now()
+        c.request_id = _request.id
+        c.number_of_days = number_of_days
+        db_session.add(c)
+        db_session.commit()
+        return c
+
+    @staticmethod
+    def initFromProposal(_proposal, number_of_days = 2):
+        c = Calendar()
+        c.time_created = datetime.now()
+        c.proposal_id = proposal.id
+        c.number_of_days = number_of_days
+        db_session.add(c)
+        db_session.commit()
+        return c
+
+
+class Calendar_Event(Base):
+
+    __tablename__  = 'calendar_event'
+    id = Column(Integer, primary_key=True)
+
+
+    calendar_id = Column(Integer, ForeignKey('calendar.id'))
+    calendar = relationship("Calendar",
+        primaryjoin = "Calendar.id == Calendar_Event.calendar_id",
+        backref="calendar_events"
+    )
+
+    time_created = Column(DateTime)
+
+    start_time = Column(DateTime)
+    end_time = Column(DateTime)
+    location = Column(String)
+
+    @staticmethod
+    def initFromJson(event_json):
+        calendar_event = Calendar_Event()
+
+        calendar_event.start_time = event_json.get('start_time')
+        calendar_event.end_time = event_json.get('end_time')
+        calendar_event.location = event_json.get('location')
+
+        calendar_event.time_created = datetime.now()
+
+        db_session.add(calendar_event)
+        db_session.commit()
+
+        return calendar_event
+
+
+
 
 class University(Base):
     __tablename__  = 'university'

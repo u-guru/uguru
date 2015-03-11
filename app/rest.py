@@ -633,9 +633,6 @@ class UserSessionView(restful.Resource):
         if not user:
             abort(404)
 
-        #print so we can see it
-        pprint(request.json)
-
         #if this is recurring session betwen a guru & a user
         if request.json.get('recurring_session'):
             session_json = request.json

@@ -94,6 +94,8 @@ angular.module('uguru.guru.controllers')
 
     $scope.$on('$ionicView.beforeEnter', function(){
       console.log('guru home view before Enter');
+      console.log(JSON.stringify($scope.proposal));
+      console.log(JSON.stringify($scope.proposal.request.address));
       User.getUserFromServer($scope, null, $state);
     });
 

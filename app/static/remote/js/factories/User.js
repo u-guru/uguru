@@ -37,7 +37,6 @@ angular.module('uguru.user', [])
             if (card.is_payment_card) {
                 user.payment_cards.push(card);
             }
-
             //transfer cards processing
             if (card.is_transfer_card) {
                 user.transfer_cards.push(card);
@@ -78,7 +77,7 @@ angular.module('uguru.user', [])
                 var index_relationship = guru_relationships[i];
                 var session_course = index_relationship.sessions[0].course
                 if (user.course_guru_dict[session_course.short_name]) {
-                    user.course_guru_dict.short_name.push(index_relationship);
+                    user.course_guru_dict[session_course.short_name].push(index_relationship);
                 } else {
                     user.course_guru_dict[session_course.short_name] = [index_relationship];
                 }
@@ -87,7 +86,7 @@ angular.module('uguru.user', [])
 
         var student_ratings = user.student_ratings;
         if (student_ratings && student_ratings.length > 0) {
-            for (var i = 0; i < student_ratings.length; i ++) {
+            for (var i = 0; i < studentnt_ratings.length; i ++) {
               var index_rating = student_ratings[i];
               if (index_rating.guru_rating === 0 && user.id === index_rating.student_id) {
                 if (index_rating.session && index_rating.session.transaction) {
@@ -274,6 +273,7 @@ angular.module('uguru.user', [])
         $scope.user.default_transfer_card = user.default_transfer_card;
         $scope.user.course_guru_dict = user.course_guru_dict;
         $scope.user.gurus = user.gurus;
+        $scope.user.guru_relationships = $scope.user.guru_relationships;
 
         $scope.user.active_proposals = user.active_proposals;
         $scope.user.impact_events = user.impact_events;

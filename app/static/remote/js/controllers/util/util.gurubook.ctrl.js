@@ -13,7 +13,17 @@ angular.module('uguru.util.controllers')
     $scope.goToGuruProfile = function(guru) {
       $state.go('^.guru-profile', {guruObj:JSON.stringify(guru), showContactGuru:true});
     }
-    console.log($scope.user);
+
+    if ($scope.user.gurus) {
+      for (var i = 0; i < $scope.user.gurus.length; i++) {
+        if (!$scope.user.gurus[i].profile_url) {
+          $scope.user.gurus[i].profile_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100'
+          console.log($scope.user.gurus[i].profile_url);
+          console.log($scope.user.gurus[i].name);
+        }
+      }
+    }
+
 
     $scope.topGuruBookTabsDelegate = $ionicTabsDelegate.$getByHandle('student-guru-book-tabs-top');
 
