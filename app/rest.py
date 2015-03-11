@@ -395,6 +395,15 @@ class UserRequestView(restful.Resource):
         user.requests.append(_request)
         db_session.commit()
 
+        calendar = Calendar.initFromRequest(_request, 2)
+        calendar_events_json = request.json.get('calendar_events')
+
+        if calendar_events_json:
+
+            for event_json in calendar_events_json:
+                calendar_event = Calendar_Event.initFromJson(event_json)
+
+
         if request.json.get('files'):
             files_json = request.json.get('files')
 

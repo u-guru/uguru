@@ -276,20 +276,26 @@ class Calendar_Event(Base):
     )
 
     time_created = Column(DateTime)
+    is_student = Column(Boolean)
+    is_guru = Column(Boolean)
+    is_mutual = Column(Boolean)
 
     start_time = Column(DateTime)
     end_time = Column(DateTime)
     location = Column(String)
 
     @staticmethod
-    def initFromJson(event_json):
+    def initFromJson(event_json, calendar):
         calendar_event = Calendar_Event()
 
         calendar_event.start_time = event_json.get('start_time')
         calendar_event.end_time = event_json.get('end_time')
         calendar_event.location = event_json.get('location')
+        calendar_event.is_student = event_json.get('is_student')
 
         calendar_event.time_created = datetime.now()
+
+        calendar_event.calendar_id = calendar.id
 
         db_session.add(calendar_event)
         db_session.commit()
@@ -611,6 +617,7 @@ class Request(Base):
     status = Column(Integer, default = 0) #0 = pending, # 1 = matched, # 2 = canceled, # 3 = expired
     session = relationship("Session", uselist=False, backref="request")
     position = relationship("Position", uselist=False, backref="request")
+    calendar = relationship("Calendar", uselist=False)
     address = Column(String)
     in_person = Column(Boolean)
     online = Column(Boolean)
