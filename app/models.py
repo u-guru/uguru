@@ -268,20 +268,23 @@ class University(Base):
     num_emails = Column(Integer)
 
     ready_to_launch = Column(Boolean)
+
+    # new
+    email_attributes = Column(String)
     emails_student_only = Column(Boolean)
+
+    us_news_ranking = Column(Integer)
+
+    public_school_ranking = Column(Integer)
 
     school_color_one = Column(String)
     school_color_two = Column(String)
     school_logo_image_url = Column(String)
 
-    us_news_ranking = Column(Integer)
-
     school_casual_name = Column(String)
     school_mascot_name = Column(String)
     school_population = Column(Integer)
     is_public = Column(Boolean)
-
-
 
     # User contributed university
     def __init__(self, name=None, user_id=None, _id=None):

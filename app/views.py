@@ -241,6 +241,10 @@ def login():
 # def admin_login():
 #     return render_template('admin/login.html', os=os)
 
+@app.route('/flex/')
+def app_route():
+    return render_template("flex.html")
+
 @app.route('/app/')
 def app_route():
     version = Version.query.get(1).ios
