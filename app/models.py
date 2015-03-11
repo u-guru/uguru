@@ -104,6 +104,8 @@ class User(Base):
     official_guru_rank = Column(Integer)
     official_guru_rank_last_updated = Column(DateTime)
 
+
+
     #user hardware permissions
     location_services_enabled = Column(Boolean)
     push_notifications_enabled = Column(Boolean)
@@ -132,7 +134,14 @@ class User(Base):
     tos_signed_date = Column(DateTime)
 
     guru_score = Column(Float)
-    referral_link = Column(String)
+
+    #referral stuff
+    referral_code = Column(String)
+
+    #referred_by
+    referred_by_id = Column(Integer, ForeignKey('user.id'))
+    referred_by = relationship("User", uselist=False, remote_side=[id])
+
 
     deactivated = Column(Boolean, default=False)
 
@@ -193,6 +202,17 @@ class User(Base):
             if _request.course_id == course_id and _request.is_active():
                 return True
         return False
+
+    @staticmethod
+    def generate_referral_code(name):
+        first_name = name.split(" ")[0]
+        referral_exists = User.query.filter_by(referral_code = first_name).all()
+        if referral_exists:
+            import uuid
+            code = uuid.uuid4().hex[0:5]
+            return code
+        else:
+            return first_name
 
     def __repr__(self):
         return "<User '%r', '%r', '%r'>" %\
@@ -480,9 +500,6 @@ class Position(Base):
         db_session.add(position)
         db_session.commit()
         return position
-
-
-
 
 class Request(Base):
     __tablename__ = 'request'
@@ -1165,21 +1182,21 @@ class Referral(Base):
     details = Column(String)
     time_redeemed = Column(DateTime)
 
-    def __init__(self, sender_id, receiver_id, ):
+    # def __init__(self, sender_id, receiver_id, ):
 
-        self.sender_id = sender_id,
-        self.received_id = receiver_id,
-        self.card_type = card_type
-        self.stripe_recipient_id = stripe_recipient_id
-        self.stripe_customer_id = stripe_customer_id
-        self.time_added = datetime.now()
-        self.is_payment_card = is_payment_card
-        self.is_cashout_card = is_cashout_card
+    #     self.sender_id = sender_id,
+    #     self.received_id = receiver_id,
+    #     self.card_type = card_type
+    #     self.stripe_recipient_id = stripe_recipient_id
+    #     self.stripe_customer_id = stripe_customer_id
+    #     self.time_added = datetime.now()
+    #     self.is_payment_card = is_payment_card
+    #     self.is_cashout_card = is_cashout_card
 
-    def __repr__(self):
-        return "<User Card '%r', '%r', '%r', '%r'>" %\
-              (self.id, self.user.name, self.card_type, \
-                self.card_last4)
+    # def __repr__(self):
+    #     return "<User Referral '%r', '%r', '%r', '%r'>" %\
+    #           (self.id, self.user.name, self.card_type, \
+    #             self.card_last4)
 
 
 class Version(Base):

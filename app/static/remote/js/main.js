@@ -5,11 +5,8 @@ var REST_URL = 'http://uguru-rest.herokuapp.com';
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  // REST_URL = 'http://161.82.64.66:5000';
-  var REST_URL = 'http://uguru-rest.herokuapp.com';
-  var BASE_URL = 'http://uguru-rest.herokuapp.com/app/'
-  // BASE_URL = 'http://161.82.64.66:5000/app/';
-  // BASE_URL = 'http://161.82.64.66:8100/remote/index.html#/home';
+  BASE_URL = 'http://192.168.0.101:8100/remote/';
+  REST_URL = 'http://192.168.0.101:5000'
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.student.controllers', 'uguru.guru.controllers', 'uguru.version',

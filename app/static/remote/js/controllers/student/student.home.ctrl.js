@@ -226,8 +226,11 @@ angular.module('uguru.student.controllers', [])
     }
 
     $scope.logoutUser = function() {
-      $scope.rootUser.logout();
-      $scope.user = {}
+      $localstorage.setObject('user', []);
+      $scope.user = User.getLocal();
+      $scope.user.updateAttr = User.updateAttrUser;
+      $scope.user.createObj = User.createObj;
+      $scope.user.updateObj = User.updateObj;
       $scope.showSuccess('You have been logged out!')
       $scope.signupModal.show();
     }

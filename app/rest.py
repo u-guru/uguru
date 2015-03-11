@@ -1090,6 +1090,7 @@ class UserNewView(restful.Resource):
         if fb_user:
             fb_user.name = request.json.get('name')
             fb_user.email = request.json.get('email')
+            fb_user.referral_code = User.generate_referral_code(fb_user.name)
             fb_user.auth_token = uuid.uuid4().hex
             fb_user.profile_url = request.json.get('profile_url')
             db_session.commit()
@@ -1099,6 +1100,7 @@ class UserNewView(restful.Resource):
         user = User(email=request.json.get('email'))
         user.time_created = datetime.now()
         user.name = request.json.get('name')
+        user.referral_code = User.generate_referral_code(user.name)
         user.auth_token = uuid.uuid4().hex
 
         if request.json.get('fb_id'):
