@@ -384,6 +384,7 @@ class University(Base):
     us_news_ranking = Column(Integer)
 
     public_school_ranking = Column(Integer)
+    notes = Column(String)
 
     school_color_one = Column(String)
     school_color_two = Column(String)
