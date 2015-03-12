@@ -1,10 +1,38 @@
 
-===Todo (priority)===
-- go through entire request workflow
-[minor, client] - guru can't see their previous sessions'
+===Todo features end-to-end(priority)===
+- calendar, stable build (by 6:30)
+- timer (scope out)
+- push to production + share with varada
+- guru re-request
+- [major, server] - push notification
 
 ===feature (functionality / interface )===
 [major, server] - calendar
+    - spec it out [9:48]
+        - data-model  (request_calendar, proposal_calendar)
+            - Calendar
+                - time_zone
+                - status
+                - request_id / request
+                - start_day
+                - number_of_days
+                - time_created
+                - time_modified
+            - Events
+                - start_date
+                - end_date
+                - location
+        - rest-api
+            - student adds calendar
+            - student modifies calendar
+            - guru readjusts calendar
+        - client-side (when get here scope it out)
+            - calendar view
+            - edit-mode (+ save)
+            - view-mode
+
+    - implement server side
+    - client-side
 [medium] -- add your own major/course / university
 [settings for guru courses + major]
 [major, server] - push notification
@@ -21,6 +49,7 @@
 [minor, client] - student client looks hella jank after they add their card
 [minor] - student / guru relationships are created twice
 [medium, client] - student client looks hella jank after they add their card
+[medium, server] - timezone not supported
 
 ===ux / appearance / style / enhancements===
 
@@ -33,6 +62,7 @@
 [medium] if location not found, let user enter their location after default is the university location
 [client, minor] switch debit card phone input to pin mode
 [client, minor] background location, when to turn off & on
+[calendar for gurus, students, etc]
 
 ==edge cases==
 - what if user turns off location during the active session
@@ -47,11 +77,14 @@
 
 
 ===Varada screens===
-- Promo code? sign up workflow
+- First time user workflow when they download the app
+- Promo code?
 - First time experience --> login / already have an account super subtle
 - First time for everyone (high school parent, teacher, etc)
 - Homepage when there is a request + courses
 - Message empty state
+- calendar views
+
 
 ===Samir Product===
 Take a first pass on
@@ -63,6 +96,9 @@ Take a first pass on
     - work your way up to awesome rewards (give students the ability to instant book!)
     -
 - student
+    - business model mocks
+
+- community average is this amount
 
 
 ===Flex todo===

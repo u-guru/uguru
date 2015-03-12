@@ -225,18 +225,18 @@ class Calendar(Base):
     time_created = Column(DateTime)
     time_modified = Column(DateTime)
 
-    request_id = Column(Integer, ForeignKey('request.id'))
-    request = relationship("Request",
-        uselist=False,
-        primaryjoin = "Request.id == Calendar.request_id"
-    )
+    # request_id = Column(Integer, ForeignKey('request.id'))
+    # request = relationship("Request",
+    #     uselist=False,
+    #     primaryjoin = "Request.id == Calendar.request_id"
+    # )
 
 
-    proposal_id = Column(Integer, ForeignKey('proposal.id'))
-    proposal = relationship("Proposal",
-        uselist=False,
-        primaryjoin = "Proposal.id == Calendar.proposal_id"
-    )
+    # proposal_id = Column(Integer, ForeignKey('proposal.id'))
+    # proposal = relationship("Proposal",
+    #     uselist=False,
+    #     primaryjoin = "Proposal.id == Calendar.proposal_id"
+    # )
 
     start_day = Column(DateTime)
     number_of_days = Column(Integer)
@@ -285,13 +285,34 @@ class Calendar_Event(Base):
     location = Column(String)
 
     @staticmethod
-    def initFromJson(event_json, calendar):
+    def initFromJson(event_json, calendar, day_offset):
+
+
+        if not event_json.get('start_time'):
+            return
+
         calendar_event = Calendar_Event()
 
-        calendar_event.start_time = event_json.get('start_time')
-        calendar_event.end_time = event_json.get('end_time')
+        start_time = event_json.get('start_time')
+        end_time = event_json.get('end_time')
+
+        date_now = datetime.now()
+        print 'date_now', date_now
+
+        day_offset = date_now.replace(day=(date_now.day + day_offset), minute=0, second=0, microsecond=0)
+        print 'day_offset', day_offset
+
+        print start_time, end_time
+        print type(start_time), type(end_time)
+
+        calendar_event.start_time = day_offset.replace(hour=start_time)
+        calendar_event.end_time = day_offset.replace(hour=end_time)
+
+
         calendar_event.location = event_json.get('location')
         calendar_event.is_student = event_json.get('is_student')
+        calendar_event.is_guru = event_json.get('is_guru')
+        calendar_event.is_mutual = event_json.get('is_mutual')
 
         calendar_event.time_created = datetime.now()
 
@@ -617,7 +638,19 @@ class Request(Base):
     status = Column(Integer, default = 0) #0 = pending, # 1 = matched, # 2 = canceled, # 3 = expired
     session = relationship("Session", uselist=False, backref="request")
     position = relationship("Position", uselist=False, backref="request")
-    calendar = relationship("Calendar", uselist=False)
+
+    student_calendar_id = Column(Integer, ForeignKey('calendar.id'))
+    student_calendar = relationship("Calendar",
+        primaryjoin="Calendar.id==Request.student_calendar_id",
+        uselist=False)
+
+
+    guru_calendar_id = Column(Integer, ForeignKey('calendar.id'))
+    guru_calendar = relationship("Calendar",
+        primaryjoin="Calendar.id==Request.guru_calendar_id",
+        uselist=False
+        )
+
     address = Column(String)
     in_person = Column(Boolean)
     online = Column(Boolean)

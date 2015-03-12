@@ -399,9 +399,9 @@ class UserRequestView(restful.Resource):
         calendar_events_json = request.json.get('calendar_events')
 
         if calendar_events_json:
-
-            for event_json in calendar_events_json:
-                calendar_event = Calendar_Event.initFromJson(event_json)
+            for day_arr in calendar_events_json:
+                for hour_json in day_arr:
+                    calendar_event = Calendar_Event.initFromJson(hour_json, calendar, calendar_events_json.index(day_arr))
 
 
         if request.json.get('files'):
