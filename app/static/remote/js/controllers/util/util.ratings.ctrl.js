@@ -112,18 +112,6 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.$on('modal.shown', function() {
-
-      if ($scope.ratingModal.isShown()) {
-        $timeout(function() {
-          $ionicFrostedDelegate.update();
-        }, 1000)
-      }
-
-    });
-
-
-
   }
 
 

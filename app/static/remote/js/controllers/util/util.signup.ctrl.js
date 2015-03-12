@@ -11,8 +11,9 @@ angular.module('uguru.util.controllers')
   '$cordovaProgress',
   '$cordovaFacebook',
   'User',
+  '$rootScope',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $cordovaProgress, $cordovaFacebook, User) {
+ 	$ionicModal, $cordovaProgress, $cordovaFacebook, User, $rootScope) {
 
     $scope.loginMode = false;
 

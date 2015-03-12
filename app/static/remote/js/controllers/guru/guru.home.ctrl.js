@@ -207,11 +207,17 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.logoutUser = function() {
-      $localstorage.setObject('user', []);
-      $scope.user = User.getLocal();
+      //create a brand new user
+      $scope.user = User.initUser();
       $scope.user.updateAttr = User.updateAttrUser;
       $scope.user.createObj = User.createObj;
       $scope.user.updateObj = User.updateObj;
+
+      $localstorage.removeObject('courses');
+      $localstorage.removeObject('universities');
+      $localstorage.removeObject('user');
+
+
       $scope.showSuccess('You have been logged out!')
       $scope.signupModal.show();
     }

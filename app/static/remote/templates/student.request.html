@@ -80,6 +80,17 @@
             <i class="icon ion-paperclip"> </i>
           </span>
         </li>
+        <li class="item padding-20-15 border-top-bottom font-green" ng-click="calendarModal.show()" ng-show="calendar && !calendar.num_selected">
+          <div style="display:inline-block;">Go To Calendar</div>
+          <div ng-show="calendar && calendar.num_selected" style="display:inline-block;">Edit Calender</div>
+        </li>
+        <li class="item padding-20-15 border-top-bottom font-green" ng-click="calendarModal.show()" ng-show="calendar && calendar.num_selected">
+
+          <div ng-show="calendar && calendar.num_selected" style="display:inline-block;">Edit Calender</div>
+          <p>{{calendar.num_selected}} times selected</p>
+
+        </li>
+
       </ul>
 
 <!-- make icon opposit direction -->

@@ -11,9 +11,6 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout, $localstorage, $ionicTabsDelegate) {
 
     $scope.ionicTabsStudentBookDelegate = $ionicTabsDelegate.$getByHandle('student-book-tabs-top');
-    $scope.user.active_proposals = [];
-    $scope.user.pending_proposals = [];
-    $scope.user.active_guru_sessions = [];
 
     $scope.getNumber = function(num) {
       return new Array(num);

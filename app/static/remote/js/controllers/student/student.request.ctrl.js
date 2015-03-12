@@ -50,6 +50,14 @@ angular.module('uguru.student.controllers')
         $scope.contactingGuruModal = modal;
     });
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/calendar.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.calendarModal = modal;
+    });
+
+
     // var checkbox0 = [document.getElementById('iconRecord0')];
     //   var checkbox0_position = $ionicPosition.offset(checkbox0).left
     //   var checkbox1 = [document.getElementById('iconRecord1')];
@@ -203,8 +211,14 @@ angular.module('uguru.student.controllers')
         location:null,
         course: $scope.course,
         online: true,
-        in_person: false
+        in_person: false,
       };
+    }
+
+    $scope.calendar = {
+          width: 2,
+          height: 24,
+          num_selected:0
     }
 
     $scope.saveRequestToUser = function() {
@@ -214,25 +228,17 @@ angular.module('uguru.student.controllers')
       $scope.request.in_person = $scope.person_guru_checkbox;
       $scope.request.time_estimate = $scope.time_checkbox;
       $scope.request.address = $scope.request.location;
+
+      if ($scope.calendar && $scope.calendar.num_selected > 0) {
+        $scope.request.calendar = $scope.calendar;
+        $scope.request.calendar_events = $scope.calendar.data;
+      }
+
       if ($scope.requestPosition) {
         $scope.request.position = $scope.user.position.coords;
       }
 
       $scope.user.createObj($scope.user, 'requests', $scope.request, $scope);
-
-      // var user_course = $scope.root.util.objectFindByKey($scope.user.student_courses, 'short_name', $scope.course.short_name);
-      // if (!user_course.requests) {
-      //   user_course.requests = [];
-      // }
-      // var user_course_request = $scope.root.util.objectFindByKey(user_course.requests, 'time_created', $scope.request.time_created);
-      // if (!user_course_request) {
-      //   console.log('new request!')
-      //   user_course.requests.push($scope.request);
-      //   user_course.active_request = $scope.request;
-      // } else {
-      //   user_course_request = $scope.request;
-      //   console.log($scope.user.student_courses);
-      // }
 
     }
 

@@ -14,7 +14,7 @@ angular.module('uguru.util.controllers')
   '$cordovaKeyboard',
   'University',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $ionicTabsDelegate, $q, $cordovaProgress,
+  $ionicModal, $ionicTabsDelegate, $q, $cordovaProgress,
   $cordovaKeyboard, University) {
 
     $scope.major_search_text = '';

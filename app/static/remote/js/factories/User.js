@@ -26,6 +26,7 @@ angular.module('uguru.user', [])
         user.course_guru_dict = {};
         user.gurus = [];
 
+
         var user_cards = user.cards;
         for (var i = 0; i < user_cards.length; i++) {
             var card = user_cards[i];
@@ -86,7 +87,7 @@ angular.module('uguru.user', [])
 
         var student_ratings = user.student_ratings;
         if (student_ratings && student_ratings.length > 0) {
-            for (var i = 0; i < studentnt_ratings.length; i ++) {
+            for (var i = 0; i < student_ratings.length; i ++) {
               var index_rating = student_ratings[i];
               if (index_rating.guru_rating === 0 && user.id === index_rating.student_id) {
                 if (index_rating.session && index_rating.session.transaction) {
@@ -422,6 +423,10 @@ angular.module('uguru.user', [])
                 .one('user')
                 .customPUT(JSON.stringify(user));
         },
+        initUser: function() {
+            var newUser = initUser();
+            return newUser;
+        },
         process_results: function(user) {
             user = processResults(user);
             return user;
@@ -672,7 +677,7 @@ angular.module('uguru.user', [])
                 Restangular
                     .one('user', userObj.id).one(param)
                     .customPUT(JSON.stringify(payload))
-                    .then(function(session){
+                    .then(function(user){
                         var processed_user = processResults(user);
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);

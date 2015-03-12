@@ -135,6 +135,13 @@ angular.module('uguru.student.controllers')
 
     $scope.getCurrentPositionAndSync = function(time) {
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
+
+      if ($state.current.name != 'root.student.active-session') {
+        $scope.bgGeo.stop();
+        console.log('do not run background script anymore');
+        return;
+      }
+
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
         .then(function (position) {
@@ -172,6 +179,13 @@ angular.module('uguru.student.controllers')
         .one('user', $scope.user.id).one('sessions')
         .customPUT(JSON.stringify(payload))
         .then(function(session){
+
+            if ($state.current.name != 'root.guru.active-session') {
+              $scope.bgGeo.stop();
+              console.log('do not run background script anymore');
+              return;
+            }
+
             $scope.session = session.plain();
             $scope.session.student_positions.sort($scope.sortPositionComparator)
             $scope.session.guru_positions.sort($scope.sortPositionComparator)
