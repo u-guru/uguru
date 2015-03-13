@@ -10,11 +10,10 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   '$ionicTabsDelegate',
   '$q',
-  '$cordovaProgress',
   '$cordovaKeyboard',
   'University',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $cordovaProgress, $cordovaKeyboard) {
+ 	$ionicModal, $cordovaKeyboard) {
 
 
     $scope.guru_introduction = '';

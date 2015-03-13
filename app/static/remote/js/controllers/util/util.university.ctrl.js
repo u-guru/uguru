@@ -12,9 +12,10 @@ angular.module('uguru.util.controllers', [])
   '$q',
   'University',
   '$cordovaKeyboard',
+  '$ionicLoading',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $q, University,
-  $cordovaKeyboard) {
+  $cordovaKeyboard, $ionicLoading) {
 
     $scope.search_text = '';
     $scope.keyboard_force_off = false;
@@ -64,15 +65,11 @@ angular.module('uguru.util.controllers', [])
 
     $scope.getUniversitiesFromServer = function(promise) {
         if (!$scope.progress_active) {
-          $scope.progress_active = true;
-          $cordovaProgress.showSimpleWithLabelDetail(true, "Loading", "Retrieving all US Universities....");
-        } else {
-          console.log('progress spinner is already active!');
+          $scope.loader.show();
         }
         University.get().then(
           function(universities) {
-              $cordovaProgress.hide();
-              $scope.progress_active = false;
+              $scope.loader.hide();
               $scope.keyboard_force_off = false;
 
               $timeout(function() {

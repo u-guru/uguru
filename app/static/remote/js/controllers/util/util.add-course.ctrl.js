@@ -10,12 +10,11 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   '$ionicTabsDelegate',
   '$q',
-  '$cordovaProgress',
   '$cordovaKeyboard',
   'University',
   'Popover',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $ionicTabsDelegate, $q, $cordovaProgress,
+ 	$ionicModal, $ionicTabsDelegate, $q,
   $cordovaKeyboard, University, Popover) {
 
     $scope.course_search_text = '';
@@ -35,23 +34,13 @@ angular.module('uguru.util.controllers')
         var university_title = $scope.user.university.title;
         var msg_details = "Retrieving all " + university_title + ' courses'
 
-        if (!$scope.progress_active) {
-          $scope.progress_active = true;
-          $cordovaProgress.showSimpleWithLabelDetail(true, "Loading", msg_details);
-        } else {
-          console.log('progress spinner is already active!');
-        }
+        $scope.loader.show();
 
         University.getCourses($scope.user.university_id).then(
                 function(courses) {
-                  $cordovaProgress.hide();
+                  $scope.loader.hide();
                   $scope.progress = false;
                     console.log(courses.length + ' courses uploaded from ' + $scope.user.university.title);
-
-                  $timeout(function() {
-                      var courseSuccessMsg = courses.length + ' Courses Found!';
-                      $scope.showSuccess(courseSuccessMsg);
-                  }, 500)
 
                     if (promise) {
                     promise.resolve(courses);
@@ -60,10 +49,6 @@ angular.module('uguru.util.controllers')
                 $timeout(function() {
                     $scope.setCourseFocus();
                   }, 1000);
-                // $timeout(function() {
-                //     $cordovaProgress.hide();
-                //     $scope.showSuccess('Success!');
-                // }, 500)
 
               $scope.courses = courses;
               $localstorage.setObject('courses', $scope.courses);

@@ -10,11 +10,10 @@ angular.module('uguru.student.controllers')
   '$localstorage',
   '$ionicModal',
   '$ionicTabsDelegate',
-  '$cordovaProgress',
   '$stateParams',
   'Geolocation',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $ionicTabsDelegate, $cordovaProgress, $stateParams,
+ 	$ionicModal, $ionicTabsDelegate, $stateParams,
   Geolocation) {
 
     $scope.session = JSON.parse($stateParams.sessionObj);

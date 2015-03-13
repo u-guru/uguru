@@ -1,10 +1,10 @@
 
 ===Todo features end-to-end(priority)===
-- calendar, stable build (by 6:30)
-- timer (scope out)
-- push to production + share with varada
+- finish calendar (guru/student availability) [come back to this!]
+- push notifications
+- timer (javascript)
 - guru re-request
-- [major, server] - push notification
+- forms css
 
 ===feature (functionality / interface )===
 [major, server] - calendar
@@ -108,3 +108,8 @@ Take a first pass on
 
 ===Flex cool resources===
 http://www.smashingmagazine.com/2015/03/02/harnessing-flexbox-for-todays-web-apps/
+
+
+
+
+=== push notification resources ====

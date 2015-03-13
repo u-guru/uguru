@@ -6,7 +6,6 @@ angular.module('uguru.student.controllers')
   //All imported packages go here
   '$scope',
   '$state',
-  '$cordovaProgress',
   '$timeout',
   '$ionicHistory',
   '$ionicModal',
@@ -54,20 +53,20 @@ angular.module('uguru.student.controllers')
       }
     }
 
-	$scope.showSuccess = function(msg) {
-      if (!$scope.progress_active)  {
-      		$scope.progress_active = true;
-      		$cordovaProgress.showSuccess(true, msg)
-	      	$timeout(function() {
-	        	$cordovaProgress.hide();
-	        	$scope.progress_active = false;
-	        	$ionicHistory.goBack();
-	      	}, 1000);
-      } else {
+	// $scope.showSuccess = function(msg) {
+ //      if (!$scope.progress_active)  {
+ //      		$scope.progress_active = true;
+ //      		$cordovaProgress.showSuccess(true, msg)
+	//       	$timeout(function() {
+	//         	$cordovaProgress.hide();
+	//         	$scope.progress_active = false;
+	//         	$ionicHistory.goBack();
+	//       	}, 1000);
+ //      } else {
 
-      	console.log('Show success cannot be shown because progress bar is already active');
-      }
-    }
+ //      	console.log('Show success cannot be shown because progress bar is already active');
+ //      }
+ //    }
 
   }
 

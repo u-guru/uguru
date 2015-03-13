@@ -710,12 +710,19 @@ class Proposal(Base):
     time_created = Column(DateTime)
     time_updated = Column(DateTime)
 
+
+
     request_id = Column(Integer, ForeignKey('request.id'))
     request = relationship("Request",
         uselist=False,
         primaryjoin = "Request.id == Proposal.request_id",
         backref="proposals"
     )
+
+    student_calendar_id = Column(Integer, ForeignKey('calendar.id'))
+    student_calendar = relationship("Calendar",
+        primaryjoin="Calendar.id==Proposal.student_calendar_id",
+        uselist=False)
 
     session = relationship("Session", uselist=False, backref="proposal")
 
@@ -744,9 +751,10 @@ class Proposal(Base):
         return proposal
 
     @staticmethod
-    def initProposal(request_id, guru_id):
+    def initProposal(request_id, guru_id, calendar_id):
         proposal = Proposal()
         proposal.status = 0
+        proposal.student_calendar_id = calendar_id
         proposal.time_created = datetime.now()
         proposal.guru_id = guru_id
         proposal.request_id = request_id

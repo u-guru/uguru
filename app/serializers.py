@@ -64,7 +64,7 @@ calendar_event_fields['end_time'] = fields.DateTime(attribute='end_time')
 
 calendar_fields = {}
 calendar_fields['id'] = fields.Integer(attribute='id')
-calendar_fields['student_calendar'] = fields.List(fields.Nested(calendar_event_fields))
+calendar_fields['calendar_events'] = fields.List(fields.Nested(calendar_event_fields))
 
 message_user_fields = {}
 message_user_fields['name'] = fields.String(attribute='name')
@@ -86,7 +86,7 @@ request_fields['position'] = fields.Nested(position_fields)
 request_fields['course'] = fields.Nested(course_fields)
 request_fields['status'] = fields.Integer(attribute='status')
 request_fields['files'] = fields.List(fields.Nested(file_fields))
-request_fields['calendar'] = fields.List(fields.Nested(calendar_fields))
+request_fields['student_calendar'] = fields.List(fields.Nested(calendar_fields))
 # request_fields['files'] = fields.List(fields.Nested(file_fields))
 # request_fields['events'] = fields.List(fields.Nested(event_fields))
 
@@ -95,6 +95,7 @@ proposal_fields['time_created'] = fields.DateTime(attribute='time_created')
 proposal_fields['request'] = fields.Nested(request_fields)
 proposal_fields['status'] = fields.Integer(attribute='status')
 proposal_fields['id'] = fields.Integer(attribute='id')
+proposal_fields['student_calendar'] = fields.List(fields.Nested(calendar_fields))
 
 card_fields = {}
 card_fields['time_created'] = fields.DateTime(attribute='time_created')

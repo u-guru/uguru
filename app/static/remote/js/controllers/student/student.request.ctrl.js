@@ -10,7 +10,6 @@ angular.module('uguru.student.controllers')
   '$localstorage',
   '$ionicModal',
   '$ionicTabsDelegate',
-  '$cordovaProgress',
   '$stateParams',
   '$ionicNavBarDelegate',
   'Geolocation',
@@ -19,7 +18,7 @@ angular.module('uguru.student.controllers')
   '$cordovaGeolocation',
   '$ionicHistory',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $ionicTabsDelegate, $cordovaProgress, $stateParams,
+ 	$ionicModal, $ionicTabsDelegate, $stateParams,
   $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation, $ionicHistory) {
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/add-note.modal.html', {
@@ -176,17 +175,6 @@ angular.module('uguru.student.controllers')
             $scope.location_error = 'timeout';
           }
       });
-    }
-
-
-    $scope.showComingSoonProgress = function(position, callback) {
-      $cordovaProgress.showText(false, "Coming Soon! Stay Tuned", position);
-        $timeout(function() {
-          $cordovaProgress.hide();
-          if (callback) {
-            callback();
-          }
-        }, 1000)
     }
 
     $scope.showRequestMapModal = function() {

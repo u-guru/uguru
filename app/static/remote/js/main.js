@@ -5,8 +5,8 @@ var REST_URL = 'http://uguru-rest.herokuapp.com';
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.0.101:8100/remote/';
-  REST_URL = 'http://192.168.0.101:5000'
+  BASE_URL = 'http://192.168.0.104:8100/remote/';
+  REST_URL = 'http://192.168.0.104:5000'
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.student.controllers', 'uguru.guru.controllers', 'uguru.version',
@@ -16,43 +16,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
   $cordovaDialogs, Version, $cordovaSplashscreen, $rootScope,
-  $templateCache, Device, User, $cordovaLocalNotification) {
+  $templateCache, Device, User, $cordovaLocalNotification, $cordovaPush) {
   $ionicPlatform.ready(function() {
-    //Only when the app is opened after its been closed
-
-    // $cordovaLocalNotification.hasPermission().then(function(granted) {
-
-    //   $cordovaLocalNotification.cancelAll();
-    //   if (!granted) {
-    //     $cordovaLocalNotification.promptForPermission();
-    //   };
-    // });
-
-    // getDeviceToken = function(){
-    //       var device = ionic.Platform.device()
-    //       console.log(device);
-    //       console.log(typeof cordova);
-    //       if(typeof device != "undefined" && typeof cordova === "object"){
-    //           console.log('gets this far');
-    //           var getToken = function(types, success, fail){
-    //             cordova.exec(success, fail, "PushToken", "getToken", types);
-    //           }
-    //       getToken(["getToken"], function(token){
-    //               device.token = token;
-    //               return token;
-    //        }, function(e){
-    //          console.log("cannot get device token: "+e);
-    //          return false;
-    //        });
-    //       }else{
-    //           console.log("device not ready, or not a native app");
-    //       return false;
-    //       }
-    //   }
-
-
     document.addEventListener("deviceready", function () {
-        console.log('hiding splash screens..');
         $cordovaSplashscreen.hide();
 
         var networkState = navigator.connection.type;
@@ -68,6 +34,23 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         states[Connection.NONE]     = 'No network connection';
 
         console.log('Connection type: ' + states[networkState]);
+
+        var iosConfig = {
+          "badge": true,
+          "sound": true,
+          "alert": true,
+        };
+
+        //TODO put this somewhere else
+          $cordovaPush.register(iosConfig).then(function(result) {
+            // Success -- send deviceToken to server, and store for future use
+            console.log("result: " + result)
+            // $http.post("http://server.co/", {user: "Bob", tokenID: result.deviceToken})
+          }, function(err) {
+            console.log("Registration error: " + err)
+          });
+
+
 
         //Set platform in local store
         $localstorage.setObject('platform', ionic.Platform.platform());
@@ -133,7 +116,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '',
         abstract: true,
         templateUrl: 'templates/root.html',
-        controller: function($scope, $state, $localstorage, User, RootService, Version, $ionicHistory, $templateCache) {
+        controller: function($ionicPlatform, $scope, $state, $localstorage, User,
+          RootService, Version, $ionicHistory, $templateCache, $ionicLoading) {
 
           // $localstorage.removeObject('user');
           $scope.user = User.getLocal();
@@ -144,8 +128,29 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           $scope.rootUser = User;
           $scope.root = RootService;
 
-          document.addEventListener("deviceready", function () {
+          $scope.loader = {
+            show: function() {
+              $ionicLoading.show({
+                template: '<ion-spinner icon="lines" class="spinner-positive"></ion-spinner>'
+              });
+            },
+            hide: function(){
+              $ionicLoading.hide();
+            }
+          }
 
+          $ionicPlatform.ready(function() {
+
+              $scope.platform = {
+                ios: ionic.Platform.isIOS(),
+                android: ionic.Platform.isAndroid(),
+                mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid(),
+                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid()),
+              }
+          });
+
+          document.addEventListener("deviceready", function () {
+            console.log(JSON.stringify(ionic.Platform.device()));
             // User.getUserFromServer($scope, null, $state);
             document.addEventListener("resume", function() {
 
@@ -274,10 +279,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '/settings-edit-courses',
         templateUrl: BASE + 'templates/student.settings.edit-university.html',
         controller: 'SettingsEditUniversityController'
-  }).
-  state('root.student.directory', {
-        url: '/directory',
-        templateUrl: BASE + 'templates/directory.html',
   }).
   state('root.student.add-payment', {
         url: '/payment/:cardObj:debitCardOnly',

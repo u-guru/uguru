@@ -6,13 +6,12 @@ angular.module('uguru.student.controllers')
   //All imported packages go here
   '$scope',
   '$state',
-  '$cordovaProgress',
   '$timeout',
   '$ionicHistory',
   '$ionicModal',
   '$cordovaKeyboard',
   '$stateParams',
-  function($scope, $state, $cordovaProgress, $timeout, $ionicHistory,
+  function($scope, $state, $timeout, $ionicHistory,
   	$ionicModal, $cordovaKeyboard, $stateParams) {
 
 

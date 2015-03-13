@@ -415,7 +415,7 @@ class UserRequestView(restful.Resource):
 
         available_gurus = _request.course.gurus.all()
         for guru in available_gurus:
-            proposal = Proposal.initProposal(_request.id, guru.id)
+            proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
             event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
             event = Event.initFromDict(event_dict)
 

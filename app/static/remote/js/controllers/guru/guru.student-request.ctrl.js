@@ -11,7 +11,8 @@ angular.module('uguru.guru.controllers')
   '$localstorage',
   '$stateParams',
   'User',
-  function($scope, $state, $ionicPopup, $timeout, $localstorage, $stateParams, User) {
+  '$ionicModal',
+  function($scope, $state, $ionicPopup, $timeout, $localstorage, $stateParams, User, $ionicModal) {
 
     $scope.request = JSON.parse($stateParams.requestObj);
     $scope.proposal = JSON.parse($stateParams.proposalObj);
@@ -45,6 +46,12 @@ angular.module('uguru.guru.controllers')
       }
     }
 
+    $scope.calendar = {
+          width: 2,
+          height: 24,
+          num_selected:0
+    }
+
     $scope.updateProposalFromList = function(proposal, proposal_list) {
       for(i = 0; i < proposal_list.length; i++) {
         if(proposal_list[i].id === proposal.id) {
@@ -52,6 +59,17 @@ angular.module('uguru.guru.controllers')
           return;
         }
       }
+    }
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/calendar.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.calendarModal = modal;
+    });
+
+    $scope.showCalendar = function(){
+
     }
 
     $scope.acceptStudent = function() {
@@ -86,6 +104,18 @@ angular.module('uguru.guru.controllers')
 
     }
 
+    $scope.convertPythonDateStrToJsDate = function(calendar_events) {
+
+      for (var i = 0; i < calendar_events.length; i++) {
+        var dateTime = calendar_events[i]['start_time']
+        var jsDate = new Date(Date.parse(dateTime));
+        calendar_events[i]['start_time'] = jsDate.getHours();
+        calendar_events[i]['end_time'] = jsDate.getHours();
+      }
+      return calendar_events;
+
+    }
+
     var lightSpeedIn = document.getElementById('lightSpeedIn')
     setTimeout(function() {
       lightSpeedIn.classList.add('animated');
@@ -93,10 +123,16 @@ angular.module('uguru.guru.controllers')
     }, 5500);
 
     $scope.$on('$ionicView.beforeEnter', function(){
-      console.log('guru home view before Enter');
-      console.log(JSON.stringify($scope.proposal));
-      console.log(JSON.stringify($scope.proposal.request.address));
-      User.getUserFromServer($scope, null, $state);
+
+      //calendar json from the server
+      var studentCalendarJson = $scope.proposal.student_calendar[0].calendar_events;
+      var studentCalendarDates = $scope.convertPythonDateStrToJsDate(studentCalendarJson);
+
+      $scope.student_calendar = studentCalendarDates;
+      console.log(JSON.stringify($scope.student_calendar));
+
+
+
     });
 
   }

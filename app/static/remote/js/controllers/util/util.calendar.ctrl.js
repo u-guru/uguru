@@ -23,7 +23,6 @@ angular.module('uguru.util.controllers')
     }
 
     if (!$scope.calendar) {
-
       $scope.calendar = {
           width: 2,
           height: 24,
@@ -162,7 +161,22 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.processStudentCalendar = function(student_calendar) {
+      num_columns = student_calendar.length;
+      for (var i = 0; i < num_columns; i ++) {
+          start_time = student_calendar[i]['start_time']
+          end_time = student_calendar[i]['end_time']
+          console.log(start_time, end_time);
+      }
+      return student_calendar;
+    }
+
     $scope.$on('modal.shown', function(){
+      console.log($scope.student_calendar);
+      if ($scope.student_calendar) {
+        $scope.calendar.student_request = $scope.student_calendar;
+        $scope.processStudentCalendar($scope.calendar.student_request);
+      }
 
       if ($scope.calendarModal.isShown() && !$scope.modalShown) {
         $scope.modalShown = true;

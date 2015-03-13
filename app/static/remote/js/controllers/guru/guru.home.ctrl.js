@@ -12,7 +12,6 @@ angular.module('uguru.guru.controllers')
   '$ionicModal',
   '$ionicTabsDelegate',
   '$cordovaKeyboard',
-  '$cordovaProgress',
   '$q',
   'University',
   '$templateCache',
@@ -23,7 +22,7 @@ angular.module('uguru.guru.controllers')
   '$ionicBackdrop',
   'User',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
- 	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $cordovaProgress, $q,
+ 	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $q,
  	University, $templateCache, $ionicHistory, Popup, $popover, Popover,
   $ionicBackdrop, User) {
 
@@ -60,18 +59,19 @@ angular.module('uguru.guru.controllers')
       $scope.becomeGuruModal = modal;
   });
 
-  	$scope.showSuccess = function(msg) {
-      if (!$scope.progress_active)  {
-      		$scope.progress_active = true;
-      		$cordovaProgress.showSuccess(true, msg)
-	      	$timeout(function() {
-	        	$cordovaProgress.hide();
-	        	$scope.progress_active = false;
-	      	}, 1000);
-      } else {
-      	console.log('Show success cannot be shown because progress bar is already active');
-      }
-    }
+  	// $scope.showSuccess = function(msg) {
+   //    if (!$scope.progress_active)  {
+   //    		$scope.progress_active = true;
+
+   //    		$cordovaProgress.showSuccess(true, msg)
+	  //     	$timeout(function() {
+	  //       	$cordovaProgress.hide();
+	  //       	$scope.progress_active = false;
+	  //     	}, 1000);
+   //    } else {
+   //    	console.log('Show success cannot be shown because progress bar is already active');
+   //    }
+   //  }
 
     $scope.closeKeyboard = function() {
       if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -199,7 +199,7 @@ angular.module('uguru.guru.controllers')
     	$ionicHistory.clearHistory();
     	window.localStorage.clear();
     	$scope.bottomTabsDelegate.select(0);
-    	$scope.showSuccess('Cache Cleared! Please close the app & open again');
+    	alert('Cache Cleared! Please close the app & open again');
     }
 
     $scope.guruDiscoverabilityChange = function() {
@@ -218,17 +218,8 @@ angular.module('uguru.guru.controllers')
       $localstorage.removeObject('user');
 
 
-      $scope.showSuccess('You have been logged out!')
+      alert('You have been logged out!');
       $scope.signupModal.show();
-    }
-
-    $scope.showComingSoon = function() {
-      $scope.progress_active = true;
-          $cordovaProgress.showText(false, "Coming Soon!", 'center');
-          $timeout(function() {
-            $cordovaProgress.hide();
-            $scope.progress_active = false;
-          }, 1000);
     }
 
     $scope.goToPreviousSessionDetails = function(session) {

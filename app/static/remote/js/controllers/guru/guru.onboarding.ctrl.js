@@ -9,10 +9,9 @@ angular.module('uguru.guru.controllers', [])
   '$timeout',
   '$localstorage',
   '$ionicModal',
-  '$cordovaProgress',
   '$cordovaKeyboard',
   function($scope, $state, $timeout, $localstorage, $ionicModal,
-    $cordovaProgress, $cordovaKeyboard) {
+    $cordovaKeyboard) {
 
     $scope.progressMax = 4;
 
@@ -83,19 +82,19 @@ angular.module('uguru.guru.controllers', [])
         $scope.addGuruIntroModal = modal;
     });
 
-    $scope.showSuccess = function(msg) {
-      if (!$scope.progress_active)  {
-          $scope.progress_active = true;
-          $cordovaProgress.showSuccess(true, msg)
-          $timeout(function() {
-            $cordovaProgress.hide();
-            $scope.progress_active = false;
-          }, 1000);
-      } else {
+    // $scope.showSuccess = function(msg) {
+    //   if (!$scope.progress_active)  {
+    //       $scope.progress_active = true;
+    //       $cordovaProgress.showSuccess(true, msg)
+    //       $timeout(function() {
+    //         $cordovaProgress.hide();
+    //         $scope.progress_active = false;
+    //       }, 1000);
+    //   } else {
 
-        console.log('Show success cannot be shown because progress bar is already active');
-      }
-    }
+    //     console.log('Show success cannot be shown because progress bar is already active');
+    //   }
+    // }
 
     $scope.closeKeyboard = function() {
       if (window.cordova && window.cordova.plugins.Keyboard) {
