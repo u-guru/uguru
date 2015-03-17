@@ -71,6 +71,23 @@ message_user_fields['name'] = fields.String(attribute='name')
 message_user_fields['id'] = fields.Integer(attribute='id')
 message_user_fields['profile_url'] = fields.String(attribute='profile_url')
 
+
+
+device_fields = {}
+device_fields['id'] = fields.Integer(attribute='id')
+device_fields['model'] = fields.String(attribute='model')
+device_fields['platform'] = fields.String(attribute='platform')
+device_fields['uuid'] = fields.String(attribute='uuid')
+device_fields['version'] = fields.String(attribute='version')
+device_fields['name'] = fields.String(attribute='name')
+device_fields['time_created'] = fields.DateTime(attribute='time_created')
+device_fields['last_accessed'] = fields.DateTime(attribute='last_accessed')
+device_fields['push_notif'] = fields.String(attribute='push_notif')
+device_fields['push_notif_enabled'] = fields.Boolean(attribute='push_notif_enabled')
+device_fields['background_location_enabled'] = fields.Boolean(attribute='background_location_enabled')
+device_fields['location_enabled'] = fields.Boolean(attribute='location_enabled')
+device_fields['camera_enabled'] = fields.Boolean(attribute='camera_enabled')
+
 request_fields = {}
 request_fields['time_created'] = fields.DateTime(attribute='time_created')
 request_fields['description'] = fields.String(attribute='description')
@@ -213,7 +230,9 @@ UserSerializer = {
     'official_guru_score': fields.Integer,
     'official_guru_rank_last_updated': fields.DateTime,
     'grade_dict': fields.Raw(GRADE_CUTOFFS),
-    'guru_score_opportunities': fields.Raw(remove_functions_from_opportunities(GURU_SCORE_OPPORTUNITIES))
+    'referred_by_id': fields.Integer,
+    'guru_score_opportunities': fields.Raw(remove_functions_from_opportunities(GURU_SCORE_OPPORTUNITIES)),
+    'current_device': fields.Nested(device_fields)
 }
 
 DeviceSerializer = {
@@ -224,7 +243,12 @@ DeviceSerializer = {
     'version': fields.String,
     'name': fields.String,
     'time_created': fields.DateTime,
-    'last_accessed': fields.DateTime
+    'last_accessed': fields.DateTime,
+    'push_notif': fields.String,
+    'push_notif_enabled': fields.Boolean,
+    'background_location_enabled': fields.Boolean,
+    'location_enabled': fields.Boolean,
+    'camera_enabled': fields.Boolean
 }
 
 SessionSerializer = {

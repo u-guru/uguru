@@ -1,0 +1,252 @@
+$primary-color: #69b2a5;
+$banner-color: #2D3440;
+$school-banner-color: #2D3440;
+$stat-square-1:#608283;
+$stat-square-2:#9E817A;
+$stat-square-3:#627363;
+$stat-square-4:#A59F9B;
+$popular-course-1: $stat-square-2;
+$popular-course-2: #6B8D8E;
+$popular-course-3: $stat-square-3;
+$popular-course-4: $stat-square-4;
+$popular-course-5: #DFAE91;
+$popular-course-6: $stat-square-1;
+$popular-course-7: #728372;
+$popular-course-8: #817160;
+$popular-course-9: #716169;
+$popular-course-10: #839081;
+$popular-course-11: #777281;
+$popular-course-12: #837F70;
+$testimonial-1: #4C6F6E;
+$testimonial-2: #687689;
+
+$font-stack: Helvetica, sans-serif;
+
+body {
+    font: 100% $font-stack;
+    color: $primary-color;
+}
+
+
+.no-xspace {
+  padding:0px;
+  margin:0px;
+}
+
+.center {
+  text-align:center;
+}
+
+//import all fonts
+@font-face {
+  font-family: "Antonio-Light";
+  src: url("../../fonts/Antonio-Light.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("../../fonts/OpenSans-Bold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenSans-Light";
+  src: url("../../fonts/OpenSans-Light.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenSans-Semibold";
+  src: url("../../fonts/OpenSans-Semibold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url("../../fonts/OpenSans-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.antonio-light {
+  font-family: "Antonio-Light";
+}
+
+.splash {
+  font-family:"OpenSans-Regular";
+}
+
+.header {
+
+  .home-menu {
+     height:10%;
+  }
+
+}
+
+
+.header.subheader .home-menu{
+    top:10%;
+    height:7%;
+    background-color: $school-banner-color;
+}
+
+.splash-container {
+  background-image: url("/static/img/splash-background.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  top:17%;
+  height:65%;
+  position:absolute;
+  .content {
+    padding:0px;
+    height:100%;
+    // top:17%;
+  }
+
+  .pure-g {
+    @extend .center;
+    width:100%;
+    height:100%;
+    opacity:0.75;
+
+    .pure-u-1:nth-child(1) {
+      background-color:$popular-course-1;
+    }
+
+    .pure-u-1:nth-child(2) {
+      background-color:$popular-course-2;
+    }
+
+    .pure-u-1:nth-child(3) {
+      background-color:$popular-course-3;
+    }
+
+  }
+
+}
+
+
+
+.content-wrapper {
+  top: 81%;
+  background-color:transparent;
+
+  .content {
+    @extend .no-xspace;
+  }
+
+  .stat-container {
+    height:200px;
+  }
+
+  .content {
+    .stats.pure-g {
+      height:100%;
+      .pure-u-1:nth-child(1) {
+        background-color:$stat-square-1;
+      }
+      .pure-u-1:nth-child(2) {
+        background-color:$stat-square-2;
+      }
+      .pure-u-1:nth-child(3) {
+        background-color:$stat-square-3;
+      }
+      .pure-u-1:nth-child(4) {
+        background-color:$stat-square-4;
+      }
+
+    }
+
+    .popular-courses
+    {
+
+      .banner {
+        height:60px;
+        background-color:$school-banner-color;
+      }
+
+      .pure-g:first {
+        height:100%;
+        color:white;
+      }
+
+      .course-row.pure-g {
+        height:60px;
+        .pure-u-1-6:nth-child(1) {
+          background-color:$popular-course-1;
+        }
+        .pure-u-1-6:nth-child(2) {
+          background-color:$popular-course-2;
+        }
+        .pure-u-1-6:nth-child(3) {
+          background-color:$popular-course-3;
+        }
+        .pure-u-1-6:nth-child(4) {
+          background-color:$popular-course-4;
+        }
+        .pure-u-1-6:nth-child(5) {
+          background-color:$popular-course-5;
+        }
+        .pure-u-1-6:nth-child(6) {
+          background-color:$popular-course-6;
+        }
+
+      }
+
+      .course-row-2.pure-g {
+        height:60px;
+        .pure-u-1-6:nth-child(1) {
+          background-color:$popular-course-7;
+        }
+        .pure-u-1-6:nth-child(2) {
+          background-color:$popular-course-8;
+        }
+        .pure-u-1-6:nth-child(3) {
+          background-color:$popular-course-9;
+        }
+        .pure-u-1-6:nth-child(4) {
+          background-color:$popular-course-10;
+        }
+        .pure-u-1-6:nth-child(5) {
+          background-color:$popular-course-11;
+        }
+        .pure-u-1-6:nth-child(6) {
+          background-color:$popular-course-12;
+        }
+
+      }
+
+
+    }
+
+  }
+
+}
+//   .pure-g {
+//     top:17%;
+//     position:fixed;
+//     width:100%;
+//     height:100%;
+
+//     .pure-u-1:nth-child(1) {
+//       background-color:$popular-course-1;
+//     }
+
+//     .pure-u-1:nth-child(2) {
+//       background-color:$popular-course-2;
+//     }
+
+//     .pure-u-1:nth-child(3) {
+//       background-color:$popular-course-3;
+//     }
+
+//   }
+
+// }

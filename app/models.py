@@ -94,6 +94,9 @@ class User(Base):
         backref = "users"
         )
 
+
+    current_device = relationship("Device", uselist=False)
+
     # conducted every night at midnight
     estimated_guru_score = Column(Integer)
     estimated_guru_rank = Column(Integer)
@@ -631,6 +634,7 @@ class Request(Base):
     STUDENT_REFUND = 9
     GURU_NO_SHOW = 10
     STUDENT_NO_SHOW = 11
+    DEFAULT_PRICE = 20
 
     id = Column(Integer, primary_key=True)
 
@@ -690,6 +694,30 @@ class Proposal(Base):
     __tablename__ = 'proposal'
     id = Column(Integer, primary_key=True)
 
+    if os.environ.get('PRODUCTION'):
+        BUFFER = 30
+        GURU_STATE_0_EXP_TIME = 300
+        GURU_STATE_1_EXP_TIME = 300
+        GURU_STATE_2_EXP_TIME = 3600
+    else:
+        BUFFER = 5
+        GURU_STATE_0_EXP_TIME = 10
+        GURU_STATE_1_EXP_TIME = 10
+        GURU_STATE_2_EXP_TIME = 10
+
+    GURU_STATE_EXP_TIME_ARR = [
+        GURU_STATE_0_EXP_TIME + BUFFER,
+        GURU_STATE_1_EXP_TIME + BUFFER,
+        GURU_STATE_2_EXP_TIME + BUFFER
+    ]
+    GURU_STATE_EXP_TIME_ARR_WITHOUT_BUFFER = [
+        GURU_STATE_0_EXP_TIME,
+        GURU_STATE_1_EXP_TIME,
+        GURU_STATE_2_EXP_TIME
+    ]
+
+    STUDENT_EXP_TIME_SECONDS = 10
+
     GURU_SENT = 0
     GURU_SEEN = 1
     GURU_ACCEPTED = 2
@@ -709,8 +737,6 @@ class Proposal(Base):
 
     time_created = Column(DateTime)
     time_updated = Column(DateTime)
-
-
 
     request_id = Column(Integer, ForeignKey('request.id'))
     request = relationship("Request",
@@ -732,6 +758,10 @@ class Proposal(Base):
         primaryjoin = "User.id == Proposal.guru_id",
         backref="proposals"
     )
+
+
+
+
     guru_rank = Column(Integer)
     status = Column(Integer) # Active, expired, guru_accepted, guru_rejected, student_rejected
 
@@ -1135,6 +1165,13 @@ class Device(Base):
 
     time_created = Column(DateTime)
     last_accessed = Column(DateTime)
+
+    push_notif = Column(String)
+    push_notif_enabled = Column(Boolean)
+    location_enabled = Column(Boolean)
+    background_location_enabled = Column(Boolean)
+    camera_enabled = Column(Boolean)
+    is_current = Column(Boolean, default= False)
 
     user_id = Column(Integer, ForeignKey('user.id'))
     user  = relationship("User",

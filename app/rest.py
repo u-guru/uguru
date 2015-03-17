@@ -95,12 +95,28 @@ class UniversityCoursesView(restful.Resource):
 
         # from static.data.berkeley_courses import courses
 
-
-class DeviceView(restful.Resource):
-
-
+class OneDeviceView(restful.Resource):
     @marshal_with(DeviceSerializer)
     def post(self):
+
+
+        uuid = request.json.get('uuid')
+        print request.json
+
+        new_device = Device.query.filter_by(uuid = uuid).first()
+
+        if new_device:
+            print 'device already exists', new_device.id
+            if new_device.user_id:
+
+                print 'and has a user', new_device.user.name
+                new_device.user.current_device = new_device
+
+                db_session.commit()
+
+            return new_device, 200
+
+
 
         d = Device()
         d.model = request.json.get('model')
@@ -120,6 +136,31 @@ class DeviceView(restful.Resource):
         db_session.commit()
 
         return d, 200
+
+
+class DeviceView(restful.Resource):
+
+    @marshal_with(DeviceSerializer)
+    def put(self, device_id):
+
+        device = Device.query.get(device_id)
+
+        if not device:
+            abort(404)
+
+        print request.json
+        device.push_notif_enabled = request.json.get('push_notif_enabled')
+        device.push_notif = request.json.get('push_notif')
+        device.location_enabled = request.json.get('location_enabled')
+        device.camera_enabled = request.json.get('camera_enabled')
+        device.background_location_enabled = request.json.get('background_location_enabled')
+
+        db_session.commit()
+
+
+        return device, 200
+
+
 
 class UserPhoneView(restful.Resource):
     def post(self):
@@ -225,22 +266,7 @@ class UserOneView(restful.Resource):
                 user.majors.append(major_obj)
                 db_session.commit()
                 # create major case
-            # course = request.json.get('course')
-            # course_id = course.get('id')
-            # if not course_id:
-            #     c = Course()
-            #     c.short_name = course.get('department') + ' ' + course.get('code')
-            #     c.department_short = course.get('department')
-            #     c.course_number = course.get('code')
-            #     c.admin_approved = False
-            #     c.contributed_user_id = user.id
-            #     db_session.add(c)
-            #     user.guru_courses.append(c)
-            #     db_session.commit()
-            # else:
-            #     c = Course.query.get(int(course_id))
-            #     user.guru_courses.append(c)
-            #     db_session.commit()
+
 
         if request.json.get('add_guru_course'):
             course = request.json.get('course')
@@ -268,6 +294,10 @@ class UserOneView(restful.Resource):
                 user.student_courses.remove(c)
             db_session.commit()
 
+        if request.json.get('current_device_id'):
+            user.current_device_id = request.json.get('current_device_id')
+
+
         if request.json.get('remove_guru_course'):
             course = request.json.get('course')
             course_id = course.get('id')
@@ -283,6 +313,22 @@ class UserOneView(restful.Resource):
             if m in user.majors:
                 user.majors.remove(m)
             db_session.commit()
+
+        #TODO PROMO CODES ARE WORKING
+
+        if request.json.get('student_promo_code'):
+            promo_code = request.json.get('student_promo_code')
+            promo_user_exists = User.query.filter_by(referral_code = promo_code).all()
+
+            if promo_user_exists:
+                if not user.credits:
+                    user.credits = 5
+                else:
+                    user.credits += 5
+            else:
+                abort(409)
+
+
 
         if request.json.get('impact_event'):
             print len(user.impact_events)
@@ -1078,8 +1124,6 @@ class UserNewView(restful.Resource):
 
         fb_user = email_user = None
 
-        print request.json
-
         if request.json.get('email'):
             email_user = User.query.filter_by(email=request.json.get('email')).first()
 
@@ -1093,12 +1137,21 @@ class UserNewView(restful.Resource):
 
         #we can go ahead and log them in.. for now..(TODO: MAKE MORE SECURE)
         import uuid
+
+        device = None
+        if request.json.get('current_device'):
+            current_device_id = request.json.get('current_device').get('id')
+            device = Device.query.get(current_device_id)
+
         if fb_user:
             fb_user.name = request.json.get('name')
             fb_user.email = request.json.get('email')
             fb_user.referral_code = User.generate_referral_code(fb_user.name)
             fb_user.auth_token = uuid.uuid4().hex
             fb_user.profile_url = request.json.get('profile_url')
+            if device:
+                fb_user.current_device = device
+                device.user_id = fb_user.id
             db_session.commit()
             return fb_user, 200
 
@@ -1120,6 +1173,13 @@ class UserNewView(restful.Resource):
         db_session.add(user)
         db_session.commit()
 
+        if device:
+            user.current_device = device
+            device.user_id = user.id
+            db_session.commit()
+
+
+
         if request.json.get('student_courses'):
 
             print str(len(user.student_courses)) + ' before'
@@ -1133,6 +1193,7 @@ class UserNewView(restful.Resource):
 
             user.university_id = request.json.get('university_id')
             db_session.commit()
+
 
         return user, 200
 
@@ -1151,14 +1212,45 @@ class UserNewView(restful.Resource):
             if email_user:
                 import uuid
                 email_user.auth_token = uuid.uuid4().hex
-                db_session.commit()
-                return email_user, 200
+
+                if request.json.get('current_device'):
+                    current_device_id = request.json.get('current_device').get('id')
+                    device = Device.query.get(current_device_id)
+                    if device:
+                        email_user.current_device = device
+                        device.user_id = email_user.id
+
+                if request.json.get('add_student_course'):
+                    course = request.json.get('course')
+                    course_id = course.get('id')
+                if not course_id:
+                    c = Course()
+                    c.short_name = course.get('department') + ' ' + course.get('code')
+                    c.department_short = course.get('department')
+                    c.course_number = course.get('code')
+                    c.admin_approved = False
+                    user.student_courses.append(c)
+                    db_session.add(c)
+                    db_session.commit()
+                else:
+                    c = Course.query.get(int(course_id))
+                    user.student_courses.append(c)
+                    db_session.commit()
+
+                if request.json.get('current_device_id'):
+                    user.current_device_id = request.json.get('current_device_id')
+
+                if request.json.get('university_id'):
+                    user.university_id = request.json.get('university_id')
+
+
+                    db_session.commit()
+                    return email_user, 200
             else:
                 abort(401)
 
         else:
             abort(422)
-
 
         abort(400)
 
@@ -1173,6 +1265,7 @@ class UserView(restful.Resource):
 
         user_from_fb_id = User.query.filter_by(fb_id=request.json.get("id")).first()
         user_from_email = User.query.filter_by(email=request.json.get("email")).first()
+
 
         # Log previous user in
         if user_from_fb_id:
@@ -1705,7 +1798,8 @@ api.add_resource(UserSessionView, '/api/v1/user/<int:_id>/sessions')
 api.add_resource(UserTransactionsView, '/api/v1/user/<int:_id>/transactions')
 api.add_resource(UserRatingView, '/api/v1/user/<int:_id>/ratings')
 api.add_resource(UserSessionMessageView, '/api/v1/user/<int:_id>/sessions/<int:_session>/messages')
-api.add_resource(DeviceView, '/api/v1/devices')
+api.add_resource(OneDeviceView, '/api/v1/device')
+api.add_resource(DeviceView, '/api/v1/devices/<int:device_id>')
 api.add_resource(VersionView, '/api/v1/version')
 api.add_resource(UserPhoneView, '/api/v1/phone')
 api.add_resource(SupportView, '/api/v1/support')

@@ -79,7 +79,6 @@
 ===Varada screens===
 - First time user workflow when they download the app
 - Promo code?
-- First time experience --> login / already have an account super subtle
 - First time for everyone (high school parent, teacher, etc)
 - Homepage when there is a request + courses
 - Message empty state
@@ -110,6 +109,59 @@ Take a first pass on
 http://www.smashingmagazine.com/2015/03/02/harnessing-flexbox-for-todays-web-apps/
 
 
+import time
+from apns import APNs, Frame, Payload
+apns = APNs(use_sandbox=True, cert_file='push_cert.pem', key_file='push_key_no_pass.pem')
+token_hex = '22def699260bb1b43666e6ec89074bd1bc1134ad70108ac27272a9d01680ae58'
+payload = Payload(alert="Hello World!", sound="default", badge=1)
+apns.gateway_server.send_notification(token_hex, payload)
+
+android_api_key = "AIzaSyDwyrdLCMru6MrmFZqAjIDEwRsPTON4lPc"
+
+from gcm import GCM
+
+gcm = GCM(API_KEY)
+data = {'message': 'Hello World', 'message': 'value2'}
+
+# Plaintext request
+reg_id = ''
+gcm.plaintext_request(registration_id=reg_id, data=data)
+
+## Push for Android
+##
+
+## Push
+## [MVP] Student needs help --> you can make this much
+## [MVP] Guru can help! --> You can make this much
+## [MVP] Student you need this many messages
+## [TODO: Your session is starting in 15 minutes]
+## Push (full feature)
+## - detect when student / user has not enabled push notifications
+## -
 
 
 === push notification resources ====
+
+
+
+from app.models import User
+from app.lib.push_notif import *
+user = User.query.get(130)
+notif_key = 'student_request'
+args_tuple = ('50', 'CS10', 'Mami', '20min')
+send_push_for_user_devices(user, notif_key, args_tuple)
+
+from app.tasks import *
+from app.models import *
+student = User.query.get(1)
+course = Course.query.get(139)
+available_gurus = _request.course.gurus.all()
+print available_gurus
+# for guru in available_gurus:
+
+#     proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
+#     event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
+#     event = Event.initFromDict(event_dict)
+
+
+

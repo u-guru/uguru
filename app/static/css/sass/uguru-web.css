@@ -1,0 +1,123 @@
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #69b2a5; }
+
+.no-xspace, .content-wrapper .content {
+  padding: 0px;
+  margin: 0px; }
+
+.center, .splash-container .pure-g {
+  text-align: center; }
+
+@font-face {
+  font-family: "Antonio-Light";
+  src: url("../../fonts/Antonio-Light.ttf");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("../../fonts/OpenSans-Bold.ttf");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: "OpenSans-Light";
+  src: url("../../fonts/OpenSans-Light.ttf");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: "OpenSans-Semibold";
+  src: url("../../fonts/OpenSans-Semibold.ttf");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url("../../fonts/OpenSans-Regular.ttf");
+  font-weight: normal;
+  font-style: normal; }
+.antonio-light {
+  font-family: "Antonio-Light"; }
+
+.splash {
+  font-family: "OpenSans-Regular"; }
+
+.header .home-menu {
+  height: 10%; }
+
+.header.subheader .home-menu {
+  top: 10%;
+  height: 7%;
+  background-color: #2D3440; }
+
+.splash-container {
+  background-image: url("/static/img/splash-background.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 17%;
+  height: 65%;
+  position: absolute; }
+  .splash-container .content {
+    padding: 0px;
+    height: 100%; }
+  .splash-container .pure-g {
+    width: 100%;
+    height: 100%;
+    opacity: 0.75; }
+    .splash-container .pure-g .pure-u-1:nth-child(1) {
+      background-color: #9E817A; }
+    .splash-container .pure-g .pure-u-1:nth-child(2) {
+      background-color: #6B8D8E; }
+    .splash-container .pure-g .pure-u-1:nth-child(3) {
+      background-color: #627363; }
+
+.content-wrapper {
+  top: 81%;
+  background-color: transparent; }
+  .content-wrapper .stat-container {
+    height: 200px; }
+  .content-wrapper .content .stats.pure-g {
+    height: 100%; }
+    .content-wrapper .content .stats.pure-g .pure-u-1:nth-child(1) {
+      background-color: #608283; }
+    .content-wrapper .content .stats.pure-g .pure-u-1:nth-child(2) {
+      background-color: #9E817A; }
+    .content-wrapper .content .stats.pure-g .pure-u-1:nth-child(3) {
+      background-color: #627363; }
+    .content-wrapper .content .stats.pure-g .pure-u-1:nth-child(4) {
+      background-color: #A59F9B; }
+  .content-wrapper .content .popular-courses .banner {
+    height: 60px;
+    background-color: #2D3440; }
+  .content-wrapper .content .popular-courses .pure-g:first {
+    height: 100%;
+    color: white; }
+  .content-wrapper .content .popular-courses .course-row.pure-g {
+    height: 60px; }
+    .content-wrapper .content .popular-courses .course-row.pure-g .pure-u-1-6:nth-child(1) {
+      background-color: #9E817A; }
+    .content-wrapper .content .popular-courses .course-row.pure-g .pure-u-1-6:nth-child(2) {
+      background-color: #6B8D8E; }
+    .content-wrapper .content .popular-courses .course-row.pure-g .pure-u-1-6:nth-child(3) {
+      background-color: #627363; }
+    .content-wrapper .content .popular-courses .course-row.pure-g .pure-u-1-6:nth-child(4) {
+      background-color: #A59F9B; }
+    .content-wrapper .content .popular-courses .course-row.pure-g .pure-u-1-6:nth-child(5) {
+      background-color: #DFAE91; }
+    .content-wrapper .content .popular-courses .course-row.pure-g .pure-u-1-6:nth-child(6) {
+      background-color: #608283; }
+  .content-wrapper .content .popular-courses .course-row-2.pure-g {
+    height: 60px; }
+    .content-wrapper .content .popular-courses .course-row-2.pure-g .pure-u-1-6:nth-child(1) {
+      background-color: #728372; }
+    .content-wrapper .content .popular-courses .course-row-2.pure-g .pure-u-1-6:nth-child(2) {
+      background-color: #817160; }
+    .content-wrapper .content .popular-courses .course-row-2.pure-g .pure-u-1-6:nth-child(3) {
+      background-color: #716169; }
+    .content-wrapper .content .popular-courses .course-row-2.pure-g .pure-u-1-6:nth-child(4) {
+      background-color: #839081; }
+    .content-wrapper .content .popular-courses .course-row-2.pure-g .pure-u-1-6:nth-child(5) {
+      background-color: #777281; }
+    .content-wrapper .content .popular-courses .course-row-2.pure-g .pure-u-1-6:nth-child(6) {
+      background-color: #837F70; }
+
+/*# sourceMappingURL=uguru-web.css.map */

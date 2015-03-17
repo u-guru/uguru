@@ -28,6 +28,14 @@ celery.conf.update(
 ## What TASKS should be used for
 ## Heavy database tasks
 
+## Queueing system
+## - Guru is sent a notification
+## - [task --> expire in 12 minutes]
+## - Once they open the notification
+#### [client] start the 5 minute timer (let server know they opened it),
+#### [client -> server] Notify it's been opened
+## - [task -> expire in 6 minutes]
+
 ################
 #### TASKS #####
 ################
@@ -35,6 +43,74 @@ celery.conf.update(
 @task(name='tasks.example_task')
 def example_task(args):
     pass
+
+### Send out all of them at the same time
+@task(name='tasks.process_request_gurus_and_send')
+def sort_gurus_by_rank(request_id):
+    _request = Request.query.get(request_id)
+    request_gurus = _request.gurus
+
+    # 1. sort gurus
+    from guru_rank import sort_gurus_by_rank
+    sorted_gurus = sort_gurus_by_rank(request_gurus)
+    return sorted_gurus
+
+    # 2. send gurus push notifications one by one
+    ###  (let them know where they are on the queue)
+
+    # 3.
+
+    # 4.
+
+
+    ### helper functions to
+    sorted_gurus = []
+
+    ## TODO sort gurus
+    return sorted_gurus
+
+@task(name='tasks.check_proposal_status')
+def check_proposal_status(proposal_id, previous_status):
+    from app.models import Proposal
+    from app.database import db_session
+    proposal = Proposal.query.get(proposal_id)
+    db_session.refresh(proposal)
+
+    print proposal_id, previous_status
+
+    seconds_since_update = get_seconds_since_last_update(proposal)
+    print "seconds since:", seconds_since_update
+
+    if proposal.status != previous_status:
+        print "status before:", previous_status, "status after:", proposal.status
+
+    if proposal.status == previous_status \
+    and seconds_since_update > Proposal.GURU_STATE_EXP_TIME_ARR_WITHOUT_BUFFER[previous_status]:
+
+        print "expiring proposal...buffer has been passed\n"
+        expire_proposal(proposal, proposal.GURU_EXPIRED)
+
+        print "checking for other gurus \n"
+        next_best_guru = get_best_guru(proposal.request)
+
+        # no more gurus
+        if not next_best_guru:
+            print "no more gurus...\n"
+            event_dict = {'status': Request.NO_GURUS_AVAILABLE, 'request_id':proposal.request.id}
+            event = Event.initFromDict(event_dict)
+            proposal.request.guru_id = None
+            proposal.request.status = proposal.request.NO_GURUS_AVAILABLE
+            db_session.commit()
+            # send push notification to user
+            print "request complete, no gurus found"
+
+        #there are gurus left
+        print 'proposing with id', proposal.id, 'to guru', next_best_guru.id, 'for request ', proposal.request.id, '\n'
+        proposal = create_guru_proposal(proposal.request, next_best_guru, proposal.request.student_calendar)
+        print proposal.status, proposal.GURU_STATE_EXP_TIME_ARR[proposal.status]
+        check_proposal_status.apply_async(args=[proposal.id, proposal.status], countdown=proposal.GURU_STATE_EXP_TIME_ARR[proposal.status])
+        print "checking status in ", proposal.GURU_STATE_EXP_TIME_ARR[proposal.status], 'seconds \n'
+        return
 
 
 @periodic_task(run_every=crontab(minute=0, hour=0), name="tasks.update_university_guru_rankings")
@@ -95,3 +171,56 @@ def update_university_guru_rankings():
 #         print 'Not enough funds to deposit revenue this month :('
 #     return
 #
+
+
+#########################
+#### Helper Methods #####
+#########################
+
+def get_seconds_since_last_update(proposal):
+    # guru has been sent but not seen
+    last_updated = None
+
+    # if status
+    if not proposal.time_updated and proposal.status == 0:
+        last_updated = proposal.time_created
+    else:
+        last_updated = proposal.time_updated
+
+    seconds_difference = (datetime.now() - last_updated).seconds
+    return seconds_difference
+
+def expire_proposal(proposal, proposal_status):
+    proposal.status = proposal_status
+    proposal.request.guru_id = None
+    db_session.commit()
+
+def create_guru_proposal(_request, guru, calendar):
+    proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
+    event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
+    event = Event.initFromDict(event_dict)
+    return proposal
+
+def get_best_guru(_request):
+    from lib.guru_rank import calculate_guru_score
+
+    gurus_already_contacted = [proposal.guru for proposal in _request.proposals]
+    all_course_gurus = _request.course.gurus.all()
+
+    gurus_remaining = [guru for guru in all_course_gurus if guru not in gurus_already_contacted]
+
+    print len(gurus_already_contacted), 'gurus already contacted', len(gurus_remaining), 'remaining out of', len(all_course_gurus), 'total'
+
+    #calculate most up-to-date score
+    for guru in gurus_remaining:
+        guru.official_guru_score = calculate_guru_score(guru)
+
+    sorted_available_gurus = sorted(gurus_remaining, key=lambda g:g.official_guru_rank, reverse=True)
+
+    if not sorted_available_gurus:
+        return None
+
+    # if gurus do exist
+    most_qualified_guru = sorted_available_gurus[0]
+
+    return most_qualified_guru

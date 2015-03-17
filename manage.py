@@ -239,7 +239,9 @@ if arg == "json_to_batch":
     print len(recipients), "recipients added"
 
 
-
+if arg == 'guru_alg':
+    from app.tests.test_guru_algorithm import run_algo
+    run_algo()
 
 if arg == 'delete_all_users':
     from app.models import *
