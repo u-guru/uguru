@@ -1,154 +1,448 @@
-$primary-color: #69b2a5;
-$banner-color: #2D3440;
+//partials
+$font-stack: "OpenSans-Regular",
+             "OpenSans-Bold",
+             "OpenSans-Semibold",
+             "OpenSans-Light",
+             "Antonio-Light";
+
+$primary-color: #3D9988;
+$negative-color: #F47F7F;
+$light-background: #F5F4F0;
+$banner-color: #343C49;
 $school-banner-color: #2D3440;
-$stat-square-1:#608283;
-$stat-square-2:#9E817A;
-$stat-square-3:#627363;
-$stat-square-4:#A59F9B;
+$stat-square-1:#6B8D8E;
+$stat-square-2:#A88C85;
+$stat-square-3:#6D7E6E;
+$stat-square-4:#AEA9A5;
 $popular-course-1: $stat-square-2;
-$popular-course-2: #6B8D8E;
+$popular-course-2: $stat-square-1;
 $popular-course-3: $stat-square-3;
 $popular-course-4: $stat-square-4;
-$popular-course-5: #DFAE91;
+$popular-course-5: #E3B79C;
 $popular-course-6: $stat-square-1;
-$popular-course-7: #728372;
-$popular-course-8: #817160;
-$popular-course-9: #716169;
-$popular-course-10: #839081;
-$popular-course-11: #777281;
+$popular-course-7: #7D8E7D;
+$popular-course-8: #8C7D6B;
+$popular-course-9: #7C6C74;
+$popular-course-10: #8E9B8C;
+$popular-course-11: #827D8C;
 $popular-course-12: #837F70;
-$testimonial-1: #4C6F6E;
+$testimonial-1: #567A79;
 $testimonial-2: #687689;
+$student-value-prop-1: #343C49;
+$student-value-prop-2: #6B9990;
+$student-value-prop-3: #6B838C;
+$student-value-prop-4: #6D7E6E;
 
-$font-stack: Helvetica, sans-serif;
+@font-face {
+  font-family: nth($font-stack,1);
+  src: url("../../fonts/OpenSans-Regular.ttf");
+}
 
+@font-face {
+  font-family: nth($font-stack, 2);
+  src: url("../../fonts/OpenSans-Bold.ttf");
+}
+
+@font-face {
+  font-family: nth($font-stack, 3);
+  src: url("../../fonts/OpenSans-Semibold.ttf");
+}
+
+@font-face {
+  font-family: nth($font-stack, 4);
+  src: url("../../fonts/OpenSans-Light.ttf");
+}
+
+//import all fonts
+@font-face {
+  font-family: nth($font-stack, 5);
+  src: url("../../fonts/Antonio-Light.ttf");
+}
+
+.pure-g [class *="pure-u"] {
+  font-family: "OpenSans-Regular";
+}
+
+//elements
 body {
     font: 100% $font-stack;
     color: $primary-color;
 }
 
+h4 {
+  font-family: "OpenSans-Regular";
+  font-weight:100;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-size:70%;
+  margin-top:5px;
+}
 
 .no-xspace {
   padding:0px;
   margin:0px;
 }
 
+.full-height {
+  height:100%;
+}
+
+.margin-1em {
+  margin:1em;
+}
+
+.margin-2em {
+  margin:2em;
+}
+
 .center {
   text-align:center;
 }
 
-//import all fonts
-@font-face {
-  font-family: "Antonio-Light";
-  src: url("../../fonts/Antonio-Light.ttf");
-  font-weight: normal;
-  font-style: normal;
+.padding-1em {
+  padding:1em;
 }
 
-@font-face {
-  font-family: "OpenSans-Bold";
-  src: url("../../fonts/OpenSans-Bold.ttf");
-  font-weight: normal;
-  font-style: normal;
+.left-1em {
+  padding-left:2em;
 }
 
-@font-face {
-  font-family: "OpenSans-Light";
-  src: url("../../fonts/OpenSans-Light.ttf");
-  font-weight: normal;
-  font-style: normal;
+.padding-2em {
+  padding:2em;
 }
 
-@font-face {
-  font-family: "OpenSans-Semibold";
-  src: url("../../fonts/OpenSans-Semibold.ttf");
-  font-weight: normal;
-  font-style: normal;
+.flex-container {
+  display:flex;
 }
 
-@font-face {
-  font-family: "OpenSans-Regular";
-  src: url("../../fonts/OpenSans-Regular.ttf");
-  font-weight: normal;
-  font-style: normal;
+.flex-container-center {
+  @extend .flex-container;
+  justify-content: center;
+  align-items:center;
+  align-content:center;
+}
+
+.flex-container-col-reverse {
+  flex-direction: column-reverse;
 }
 
 .antonio-light {
   font-family: "Antonio-Light";
+  letter-spacing: 2px;
 }
 
 .splash {
   font-family:"OpenSans-Regular";
 }
 
-.header {
+.button {
+  border-radius: 32px;
+  font-size:0.65em;
+  padding:10px 35px;
+}
 
-  .home-menu {
-     height:10%;
-  }
+.button-positive {
+  @extend .button;
+  color:#ffffff;
+  background-color: $primary-color;
+}
+
+.button-positive-outline {
+  @extend .button, .button-positive;
+  color:$primary-color;
+  background-color: white;
+  border: 1px solid $primary-color;
 
 }
 
 
-.header.subheader .home-menu{
-    top:10%;
-    height:7%;
-    background-color: $school-banner-color;
+//grid
+//mixins
+@mixin open-sans($type) {
+  font-family: $type;
+}
+
+.header {
+     padding:1em;
+     background:#ffffff;
+     width:100%;
+     position:fixed;
+     top:0;
+     left:0;
+     z-index:11;
+
+     .menu-text {
+      font-size:80%;
+     }
+
+     .menu-left {
+        @extend .flex-container;
+        align-items:center;
+        .left-header-item {
+          display:inline-block;
+          margin: 0 0.5em;
+        }
+     }
+
+     .menu-link {
+        font-size: 10px; /* change this value to increase/decrease button size */
+        z-index: 10;
+        width: 2em;
+        height: auto;
+        color: $primary-color;
+        padding: 2.0em 1.2em;
+        border:1px solid $primary-color;
+        border-radius:100px;
+      }
+
+      .menu-link:hover,
+      .menu-link:focus {
+          background: $primary-color;
+          color: white;
+      }
+
+      .menu-link span {
+          position: relative;
+          display: block;
+      }
+
+      .menu-link span,
+      .menu-link span:before,
+      .menu-link span:after {
+          background-color: $primary-color;
+          width: 100%;
+          height: 0.2em;
+      }
+
+          .menu-link span:before,
+          .menu-link span:after {
+              position: absolute;
+              margin-top: -0.6em;
+              content: " ";
+          }
+
+          .menu-link span:after {
+              margin-top: 0.6em;
+          }
+
+     .pure-g
+     .buttons-right {
+      @extend .flex-container;
+      justify-content: flex-end;
+      flex-wrap:no-wrap;
+      align-items:center;
+
+      .flex-item {
+        margin:0px 0.75em;
+
+      }
+
+      // a {
+      //   @extend .no-xspace;
+      // }
+
+      .flex-item:last-child {
+        margin-right:3em;
+      }
+
+      img {
+        height:40px;
+      }
+
+     }
+}
+
+.become-a-guru.content
+{
+  z-index:10;
+  position:fixed;
+  width:100%;
+  top:10%;
+  height:5%;
+  background-color:$school-banner-color;
+}
+
+
+.guru-main-value-prop.content {
+  height:600px;
+  position:relative;
+  .pure-g {
+    .guru-value-prop-header {
+
+      height:30%;
+      position:absolute;
+      background-color:$school-banner-color;
+
+    }
+
+    .guru-value-prop-content {
+      background-color:$school-banner-color;
+      opacity:0.95;
+      height: 70%;
+      top: 30%;
+      position:absolute;
+
+    }
+  }
+}
+
+.guru-second-value-prop-header.content {
+  height:150px;
+  .pure-g {
+    height:100%;
+    .guru-second-value-prop-header-content {
+      background-color:$popular-course-2;
+    }
+  }
+}
+
+.guru-second-value-prop-content.content {
+  height:250px;
+  .pure-g {
+    height:100%;
+    .guru-second-value-prop-content-third:nth-child(1) {
+      background-color:$popular-course-2;
+      opacity:0.5;
+    }
+    .guru-second-value-prop-content-third:nth-child(2) {
+      background-color:$popular-course-2;
+      opacity:0.7;
+    }
+    .guru-second-value-prop-content-third:nth-child(3) {
+      background-color:$popular-course-2;
+      opacity:0.9;
+    }
+  }
+}
+
+.student-value-prop.content
+.pure-g
+{
+  height:600px;
+
+  h2 {
+      color:white;
+      font-family: "OpenSans-Light";
+      text-align:center;
+    }
+
+  h5 {
+    color:rgba(255,255,255, 0.5);
+    text-align:center;
+  }
+
+  .pure-u-1 {
+    @extend .flex-container;
+    text-align:center;
+    flex-direction: column;
+    flex-wrap:nowrap;
+  }
+
+  &.row-1 .pure-u-1:nth-child(1) {
+    background-color:$student-value-prop-1;
+    .flex-item {
+      height:20%;
+    }
+    .flex-item:nth-child(1) {
+      height:10%;
+    }
+    height:100%;
+    &.flex-container .flex-item:last-child {
+      height:20%;
+      background-color:$student-value-prop-3;
+    }
+  }
+  &.row-1 .pure-u-1:nth-child(2) {
+    background-color:$student-value-prop-2;
+    flex-direction: column;
+    flex-wrap:nowrap;
+    height:100%;
+    .flex-item:nth-child(1) {
+      height:10%;
+    }
+    h2 {
+      padding-top:10px;
+    }
+  }
+  &.row-2 .pure-u-1:nth-child(1) {
+    background-color:$student-value-prop-3;
+    align-content: center;
+    justify-content: center;
+    height:100%;
+    .flex-item {
+      height:20%;
+    }
+  }
+  &.row-2 .pure-u-1:nth-child(2) {
+    background-color:$student-value-prop-4;
+    align-content: center;
+    justify-content: center;
+    height:100%;
+    .flex-item {
+      height:20%;
+    }
+    h2 {
+      padding-top:20px;
+    }
+  }
+
+
 }
 
 .splash-container {
   background-image: url("/static/img/splash-background.png");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  top:17%;
-  height:65%;
-  position:absolute;
-  .content {
-    padding:0px;
-    height:100%;
-    // top:17%;
-  }
-
-  .pure-g {
-    @extend .center;
-    width:100%;
-    height:100%;
-    opacity:0.75;
-
-    .pure-u-1:nth-child(1) {
-      background-color:$popular-course-1;
-    }
-
-    .pure-u-1:nth-child(2) {
-      background-color:$popular-course-2;
-    }
-
-    .pure-u-1:nth-child(3) {
-      background-color:$popular-course-3;
-    }
-
-  }
-
+  // height:85%;
+  height:450px;
+  z-index: 1;
+  top:78px;
+  position:relative;
 }
 
 
 
-.content-wrapper {
-  top: 81%;
-  background-color:transparent;
-
-  .content {
+  .stat-container {
     @extend .no-xspace;
   }
 
-  .stat-container {
-    height:200px;
+  .stat-container-wrapper {
+    margin-top:127px;
   }
 
   .content {
     .stats.pure-g {
       height:100%;
+      color:white;
+      text-align:center;
+
+      .pure-u-1.stat
+      .inner-stat{
+        @extend .flex-container;
+          flex-direction:column;
+        h2 {
+          @extend .no-xspace;
+          margin-top:4px;
+          font-weight:100;
+          font-size:20px;
+          font-family: "OpenSans-SemiBold";
+          letter-spacing:1.5px;
+        }
+        p {
+          font-family: "OpenSans-Regular";
+          font-weight:100;
+          text-transform:uppercase;
+          letter-spacing:1px;
+          font-size:70%;
+          margin-top:5px;
+        }
+
+        img {
+          height:80px;
+          width:auto;
+          padding:0.5em;
+        }
+
+      }
+
       .pure-u-1:nth-child(1) {
         background-color:$stat-square-1;
       }
@@ -163,10 +457,11 @@ body {
       }
 
     }
+  }
 
-    .popular-courses
-    {
-
+    // .popular-courses
+    // {
+  .content {
       .banner {
         height:60px;
         background-color:$school-banner-color;
@@ -177,76 +472,271 @@ body {
         color:white;
       }
 
+      h4 {
+        @extend .no-xspace;
+      }
+
       .course-row.pure-g {
-        height:60px;
-        .pure-u-1-6:nth-child(1) {
+        // height:60px;
+        color:white;
+        .pure-u-md-1-6:nth-child(1) {
           background-color:$popular-course-1;
         }
-        .pure-u-1-6:nth-child(2) {
+        .pure-u-md-1-6:nth-child(2) {
           background-color:$popular-course-2;
         }
-        .pure-u-1-6:nth-child(3) {
+        .pure-u-md-1-6:nth-child(3) {
           background-color:$popular-course-3;
         }
-        .pure-u-1-6:nth-child(4) {
+        .pure-u-md-1-6:nth-child(4) {
           background-color:$popular-course-4;
         }
-        .pure-u-1-6:nth-child(5) {
+        .pure-u-md-1-6:nth-child(5) {
           background-color:$popular-course-5;
         }
-        .pure-u-1-6:nth-child(6) {
+        .pure-u-md-1-6:nth-child(6) {
           background-color:$popular-course-6;
         }
 
       }
 
       .course-row-2.pure-g {
-        height:60px;
-        .pure-u-1-6:nth-child(1) {
+        color:white;
+        .pure-u-md-1-6:nth-child(1) {
           background-color:$popular-course-7;
         }
-        .pure-u-1-6:nth-child(2) {
+        .pure-u-md-1-6:nth-child(2) {
           background-color:$popular-course-8;
         }
-        .pure-u-1-6:nth-child(3) {
+        .pure-u-md-1-6:nth-child(3) {
           background-color:$popular-course-9;
         }
-        .pure-u-1-6:nth-child(4) {
+        .pure-u-md-1-6:nth-child(4) {
           background-color:$popular-course-10;
         }
-        .pure-u-1-6:nth-child(5) {
+        .pure-u-md-1-6:nth-child(5) {
           background-color:$popular-course-11;
         }
-        .pure-u-1-6:nth-child(6) {
+        .pure-u-md-1-6:nth-child(6) {
           background-color:$popular-course-12;
         }
 
       }
 
+    }
+
+  // }
+
+
+.testimonials.pure-g {
+
+  height:250px;
+
+  .pure-u-1:nth-child(1) {
+    background-color:$testimonial-1;
+  }
+
+  .pure-u-1:nth-child(2) {
+    background-color:$testimonial-2;
+  }
+
+}
+
+.available-now-banner.pure-g {
+  height:300px;
+  .pure-u-1 {
+    background-color: $school-banner-color;
+  }
+}
+
+.footer.pure-g {
+  height:150px;
+  background-color:white;
+
+}
+
+//University specific css
+.university.pure-g {
+  background-color:$banner-color;
+  color:white;
+  position:absolute;
+  top:78px;
+  width:100%;
+  .pure-u-1 {
+    text-transform: uppercase;
+    padding:1.5em;
+    text-align:center;
+    color:white;
+    font-size:70%;
+  }
+}
+
+.university.splash-container {
+  top:127px;
+  height:395px;
+
+  .pure-g {
+    height:100%;
+  }
+  .flex-container {
+    display:flex;
+    text-align:center;
+    flex-direction: row;
+    flex-direction:column;
+    justify-content: center;
+
+    &.get-a-tutor, &.be-a-tutor {
+      flex-direction: column;
+      height:100%;
+      align-items:center;
+      align-content:center;
+      justify-content: center;
+
+      h2 {
+        font-family: "OpenSans-Light";
+        color:$school-banner-color;
+        margin-top:-5px;
+      }
+    }
+
+    button {
+      text-transform: uppercase;
+      padding:10px 32px;
+      font-size:70%;
+    }
+
+    img.banner-school-specific {
+      height:225px;
+    }
+
+    &.university-banner {
+      flex-direction: column;
+      // align-items:flex-start;
+      align-content:flex-start;
+      justify-content:flex-start;
+    }
+
+    .banner-school-content-container {
+      margin-top:-200px;
+      justify-content: column;
+      align-content:center;
+      align-items:center;
+      img {
+        height:80px;
+      }
+      h2 {
+        font-family: "OpenSans-Bold";
+        font-size:200%;
+        color:$primary-color;
+        margin-top:0px;
+        margin-bottom:5px;
+      }
+      h4 {
+        @extend .no-xspace;
+        color: #343C49;
+        padding:5px 10px;
+        width:150px;
+        font-family:"OpenSans-Semibold"
+      }
 
     }
 
   }
+}
+
+.popular-course-wrapper {
+
+  .banner {
+    @extend .flex-container-center;
+    background-color:$banner-color;
+    color:white;
+    h4 {
+      @extend .no-xspace;
+      text-transform: uppercase;
+      text-align:center;
+    }
+  }
+
+  .popular-courses
+  .popular-course {
+    h4 {
+      color:white;
+    }
+  }
 
 }
-//   .pure-g {
-//     top:17%;
-//     position:fixed;
-//     width:100%;
-//     height:100%;
 
-//     .pure-u-1:nth-child(1) {
-//       background-color:$popular-course-1;
-//     }
+.available-now-banner {
+  h1 {
+    color:white;
+    font-family: "OpenSans-Light";
+    letter-spacing:1px;
+    // font-weight:100;
+    font-size:150%;
+  }
 
-//     .pure-u-1:nth-child(2) {
-//       background-color:$popular-course-2;
-//     }
+  p {
+    text-align:center;
+    color:white;
+    opacity:0.4;
+    font-family: "OpenSans-Light";
+    font-weight:normal;
+  }
 
-//     .pure-u-1:nth-child(3) {
-//       background-color:$popular-course-3;
-//     }
+  .text-input-container
+  .pure-u-1 {
+    background-color:white;
+    margin:3% 10%;
 
-//   }
+    .text-box {
+      padding:0.76em;
+      width:60%;
+      outline:none;
+      border:none;
+    }
 
-// }
+    .text-box-submit {
+      width:20%;
+      display:inline-block;
+      margin-left: 4px;
+      color:white;
+      margin-bottom: -15px;
+      padding:12px 19px;
+      text-align:center;
+      cursor:pointer;
+      background-color: $primary-color;
+    }
+  }
+}
+
+.menu-left .menu-text {
+  font-size:200%;
+  font-family: "OpenSans-Bold";
+  font-weight: bold;
+  letter-spacing:1.5px;
+}
+
+
+@media screen and (max-width: 35.5em) {
+  .buttons-right,
+  .course-row-2,
+  .splash-container {
+    display:none !important;
+  }
+
+  #get-started-now-header{
+    font-size:120%;
+  }
+
+  .available-now-banner .text-input-container .pure-u-1 .text-box-submit {
+      width:18%;
+      display:inline-block;
+      margin-left: 7px;
+      color:white;
+      margin-bottom: -15px;
+      padding:12px 14px;
+      text-align:center;
+      cursor:pointer;
+      background-color: $primary-color;
+    }
+}

@@ -25,7 +25,7 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 
 
 @app.route('/admin/home/')
-@app.route('/')
+@app.route('/login/')
 def default():
     if('admin' in session and session["admin"] == True):
 
@@ -241,9 +241,25 @@ def login():
 # def admin_login():
 #     return render_template('admin/login.html', os=os)
 
-@app.route('/flex/')
+@app.route('/university/')
 def app_flex():
-    return render_template("flex.html")
+    return render_template("web/university.html")
+
+@app.route('/')
+def student_home():
+    return render_template("web/student.index.html")
+
+@app.route('/guru/')
+def guru_home():
+    return render_template("web/guru.index.html")
+
+@app.route('/web/app/')
+def app_home():
+    return render_template("web/app.index.html")
+
+@app.route('/universities/')
+def app_home():
+    return render_template("web/app.index.html")
 
 @app.route('/app/')
 def app_route():

@@ -1,123 +1,523 @@
-body {
-  font: 100% Helvetica, sans-serif;
-  color: #69b2a5; }
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url("../../fonts/OpenSans-Regular.ttf"); }
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("../../fonts/OpenSans-Bold.ttf"); }
+@font-face {
+  font-family: "OpenSans-Semibold";
+  src: url("../../fonts/OpenSans-Semibold.ttf"); }
+@font-face {
+  font-family: "OpenSans-Light";
+  src: url("../../fonts/OpenSans-Light.ttf"); }
+@font-face {
+  font-family: "Antonio-Light";
+  src: url("../../fonts/Antonio-Light.ttf"); }
+.pure-g [class*="pure-u"] {
+  font-family: "OpenSans-Regular"; }
 
-.no-xspace, .content-wrapper .content {
+body {
+  font: 100% "OpenSans-Regular", "OpenSans-Bold", "OpenSans-Semibold", "OpenSans-Light", "Antonio-Light";
+  color: #3D9988; }
+
+h4 {
+  font-family: "OpenSans-Regular";
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 70%;
+  margin-top: 5px; }
+
+.no-xspace, .stat-container, .content .stats.pure-g .pure-u-1.stat
+.inner-stat h2, .content h4, .university.splash-container .flex-container .banner-school-content-container h4, .university.splash-container .flex-container-center .banner-school-content-container h4, .university.splash-container .popular-course-wrapper .banner .banner-school-content-container h4, .popular-course-wrapper .university.splash-container .banner .banner-school-content-container h4, .university.splash-container .header .menu-left .banner-school-content-container h4, .header .university.splash-container .menu-left .banner-school-content-container h4, .university.splash-container .header .pure-g .buttons-right .banner-school-content-container h4, .header .pure-g .university.splash-container .buttons-right .banner-school-content-container h4, .university.splash-container .student-value-prop.content
+.pure-g .pure-u-1 .banner-school-content-container h4, .student-value-prop.content
+.pure-g .university.splash-container .pure-u-1 .banner-school-content-container h4, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat .banner-school-content-container h4, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat .banner-school-content-container h4, .popular-course-wrapper .banner h4 {
   padding: 0px;
   margin: 0px; }
 
-.center, .splash-container .pure-g {
+.full-height {
+  height: 100%; }
+
+.margin-1em {
+  margin: 1em; }
+
+.margin-2em {
+  margin: 2em; }
+
+.center {
   text-align: center; }
 
-@font-face {
-  font-family: "Antonio-Light";
-  src: url("../../fonts/Antonio-Light.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: "OpenSans-Bold";
-  src: url("../../fonts/OpenSans-Bold.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: "OpenSans-Light";
-  src: url("../../fonts/OpenSans-Light.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: "OpenSans-Semibold";
-  src: url("../../fonts/OpenSans-Semibold.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: "OpenSans-Regular";
-  src: url("../../fonts/OpenSans-Regular.ttf");
-  font-weight: normal;
-  font-style: normal; }
+.padding-1em {
+  padding: 1em; }
+
+.left-1em {
+  padding-left: 2em; }
+
+.padding-2em {
+  padding: 2em; }
+
+.flex-container, .flex-container-center, .popular-course-wrapper .banner, .header .menu-left, .header .pure-g
+.buttons-right, .student-value-prop.content
+.pure-g .pure-u-1, .content .stats.pure-g .pure-u-1.stat
+.inner-stat {
+  display: flex; }
+
+.flex-container-center, .popular-course-wrapper .banner {
+  justify-content: center;
+  align-items: center;
+  align-content: center; }
+
+.flex-container-col-reverse {
+  flex-direction: column-reverse; }
+
 .antonio-light {
-  font-family: "Antonio-Light"; }
+  font-family: "Antonio-Light";
+  letter-spacing: 2px; }
 
 .splash {
   font-family: "OpenSans-Regular"; }
 
-.header .home-menu {
-  height: 10%; }
+.button, .button-positive, .button-positive-outline {
+  border-radius: 32px;
+  font-size: 0.65em;
+  padding: 10px 35px; }
 
-.header.subheader .home-menu {
+.button-positive, .button-positive-outline {
+  color: #ffffff;
+  background-color: #3D9988; }
+
+.button-positive-outline {
+  color: #3D9988;
+  background-color: white;
+  border: 1px solid #3D9988; }
+
+.header {
+  padding: 1em;
+  background: #ffffff;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11; }
+  .header .menu-text {
+    font-size: 80%; }
+  .header .menu-left {
+    align-items: center; }
+    .header .menu-left .left-header-item {
+      display: inline-block;
+      margin: 0 0.5em; }
+  .header .menu-link {
+    font-size: 10px;
+    /* change this value to increase/decrease button size */
+    z-index: 10;
+    width: 2em;
+    height: auto;
+    color: #3D9988;
+    padding: 2.0em 1.2em;
+    border: 1px solid #3D9988;
+    border-radius: 100px; }
+  .header .menu-link:hover,
+  .header .menu-link:focus {
+    background: #3D9988;
+    color: white; }
+  .header .menu-link span {
+    position: relative;
+    display: block; }
+  .header .menu-link span,
+  .header .menu-link span:before,
+  .header .menu-link span:after {
+    background-color: #3D9988;
+    width: 100%;
+    height: 0.2em; }
+  .header .menu-link span:before,
+  .header .menu-link span:after {
+    position: absolute;
+    margin-top: -0.6em;
+    content: " "; }
+  .header .menu-link span:after {
+    margin-top: 0.6em; }
+  .header .pure-g
+  .buttons-right {
+    justify-content: flex-end;
+    flex-wrap: no-wrap;
+    align-items: center; }
+    .header .pure-g
+    .buttons-right .flex-item {
+      margin: 0px 0.75em; }
+    .header .pure-g
+    .buttons-right .flex-item:last-child {
+      margin-right: 3em; }
+    .header .pure-g
+    .buttons-right img {
+      height: 40px; }
+
+.become-a-guru.content {
+  z-index: 10;
+  position: fixed;
+  width: 100%;
   top: 10%;
-  height: 7%;
+  height: 5%;
   background-color: #2D3440; }
+
+.guru-main-value-prop.content {
+  height: 600px;
+  position: relative; }
+  .guru-main-value-prop.content .pure-g .guru-value-prop-header {
+    height: 30%;
+    position: absolute;
+    background-color: #2D3440; }
+  .guru-main-value-prop.content .pure-g .guru-value-prop-content {
+    background-color: #2D3440;
+    opacity: 0.95;
+    height: 70%;
+    top: 30%;
+    position: absolute; }
+
+.guru-second-value-prop-header.content {
+  height: 150px; }
+  .guru-second-value-prop-header.content .pure-g {
+    height: 100%; }
+    .guru-second-value-prop-header.content .pure-g .guru-second-value-prop-header-content {
+      background-color: #6B8D8E; }
+
+.guru-second-value-prop-content.content {
+  height: 250px; }
+  .guru-second-value-prop-content.content .pure-g {
+    height: 100%; }
+    .guru-second-value-prop-content.content .pure-g .guru-second-value-prop-content-third:nth-child(1) {
+      background-color: #6B8D8E;
+      opacity: 0.5; }
+    .guru-second-value-prop-content.content .pure-g .guru-second-value-prop-content-third:nth-child(2) {
+      background-color: #6B8D8E;
+      opacity: 0.7; }
+    .guru-second-value-prop-content.content .pure-g .guru-second-value-prop-content-third:nth-child(3) {
+      background-color: #6B8D8E;
+      opacity: 0.9; }
+
+.student-value-prop.content
+.pure-g {
+  height: 600px; }
+  .student-value-prop.content
+  .pure-g h2 {
+    color: white;
+    font-family: "OpenSans-Light";
+    text-align: center; }
+  .student-value-prop.content
+  .pure-g h5 {
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center; }
+  .student-value-prop.content
+  .pure-g .pure-u-1 {
+    text-align: center;
+    flex-direction: column;
+    flex-wrap: nowrap; }
+  .student-value-prop.content
+  .pure-g.row-1 .pure-u-1:nth-child(1) {
+    background-color: #343C49;
+    height: 100%; }
+    .student-value-prop.content
+    .pure-g.row-1 .pure-u-1:nth-child(1) .flex-item {
+      height: 20%; }
+    .student-value-prop.content
+    .pure-g.row-1 .pure-u-1:nth-child(1) .flex-item:nth-child(1) {
+      height: 10%; }
+    .student-value-prop.content
+    .pure-g.row-1 .pure-u-1:nth-child(1).flex-container .flex-item:last-child, .student-value-prop.content
+    .pure-g.row-1 .pure-u-1.flex-container-center:nth-child(1) .flex-item:last-child, .student-value-prop.content
+    .pure-g.row-1 .popular-course-wrapper .pure-u-1.banner:nth-child(1) .flex-item:last-child, .popular-course-wrapper .student-value-prop.content
+    .pure-g.row-1 .pure-u-1.banner:nth-child(1) .flex-item:last-child, .student-value-prop.content
+    .pure-g.row-1 .header .pure-u-1.menu-left:nth-child(1) .flex-item:last-child, .header .student-value-prop.content
+    .pure-g.row-1 .pure-u-1.menu-left:nth-child(1) .flex-item:last-child, .header .student-value-prop.content
+    .pure-g.row-1 .pure-u-1.buttons-right:nth-child(1) .flex-item:last-child, .student-value-prop.content
+    .pure-g.row-1 .pure-u-1:nth-child(1) .flex-item:last-child, .student-value-prop.content
+    .pure-g.row-1 .stats.pure-g .pure-u-1.stat .pure-u-1.inner-stat:nth-child(1) .flex-item:last-child {
+      height: 20%;
+      background-color: #6B838C; }
+  .student-value-prop.content
+  .pure-g.row-1 .pure-u-1:nth-child(2) {
+    background-color: #6B9990;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100%; }
+    .student-value-prop.content
+    .pure-g.row-1 .pure-u-1:nth-child(2) .flex-item:nth-child(1) {
+      height: 10%; }
+    .student-value-prop.content
+    .pure-g.row-1 .pure-u-1:nth-child(2) h2 {
+      padding-top: 10px; }
+  .student-value-prop.content
+  .pure-g.row-2 .pure-u-1:nth-child(1) {
+    background-color: #6B838C;
+    align-content: center;
+    justify-content: center;
+    height: 100%; }
+    .student-value-prop.content
+    .pure-g.row-2 .pure-u-1:nth-child(1) .flex-item {
+      height: 20%; }
+  .student-value-prop.content
+  .pure-g.row-2 .pure-u-1:nth-child(2) {
+    background-color: #6D7E6E;
+    align-content: center;
+    justify-content: center;
+    height: 100%; }
+    .student-value-prop.content
+    .pure-g.row-2 .pure-u-1:nth-child(2) .flex-item {
+      height: 20%; }
+    .student-value-prop.content
+    .pure-g.row-2 .pure-u-1:nth-child(2) h2 {
+      padding-top: 20px; }
 
 .splash-container {
   background-image: url("/static/img/splash-background.png");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  top: 17%;
-  height: 65%;
-  position: absolute; }
-  .splash-container .content {
-    padding: 0px;
-    height: 100%; }
-  .splash-container .pure-g {
-    width: 100%;
-    height: 100%;
-    opacity: 0.75; }
-    .splash-container .pure-g .pure-u-1:nth-child(1) {
-      background-color: #9E817A; }
-    .splash-container .pure-g .pure-u-1:nth-child(2) {
-      background-color: #6B8D8E; }
-    .splash-container .pure-g .pure-u-1:nth-child(3) {
-      background-color: #627363; }
+  height: 450px;
+  z-index: 1;
+  top: 78px;
+  position: relative; }
 
-.content-wrapper {
-  top: 81%;
-  background-color: transparent; }
-  .content-wrapper .stat-container {
-    height: 200px; }
-  .content-wrapper .content .stats.pure-g {
-    height: 100%; }
-    .content-wrapper .content .stats.pure-g .pure-u-1:nth-child(1) {
-      background-color: #608283; }
-    .content-wrapper .content .stats.pure-g .pure-u-1:nth-child(2) {
-      background-color: #9E817A; }
-    .content-wrapper .content .stats.pure-g .pure-u-1:nth-child(3) {
-      background-color: #627363; }
-    .content-wrapper .content .stats.pure-g .pure-u-1:nth-child(4) {
-      background-color: #A59F9B; }
-  .content-wrapper .content .popular-courses .banner {
-    height: 60px;
+.stat-container-wrapper {
+  margin-top: 127px; }
+
+.content .stats.pure-g {
+  height: 100%;
+  color: white;
+  text-align: center; }
+  .content .stats.pure-g .pure-u-1.stat
+  .inner-stat {
+    flex-direction: column; }
+    .content .stats.pure-g .pure-u-1.stat
+    .inner-stat h2 {
+      margin-top: 4px;
+      font-weight: 100;
+      font-size: 20px;
+      font-family: "OpenSans-SemiBold";
+      letter-spacing: 1.5px; }
+    .content .stats.pure-g .pure-u-1.stat
+    .inner-stat p {
+      font-family: "OpenSans-Regular";
+      font-weight: 100;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 70%;
+      margin-top: 5px; }
+    .content .stats.pure-g .pure-u-1.stat
+    .inner-stat img {
+      height: 80px;
+      width: auto;
+      padding: 0.5em; }
+  .content .stats.pure-g .pure-u-1:nth-child(1) {
+    background-color: #6B8D8E; }
+  .content .stats.pure-g .pure-u-1:nth-child(2) {
+    background-color: #A88C85; }
+  .content .stats.pure-g .pure-u-1:nth-child(3) {
+    background-color: #6D7E6E; }
+  .content .stats.pure-g .pure-u-1:nth-child(4) {
+    background-color: #AEA9A5; }
+
+.content .banner {
+  height: 60px;
+  background-color: #2D3440; }
+.content .pure-g:first {
+  height: 100%;
+  color: white; }
+.content .course-row.pure-g {
+  color: white; }
+  .content .course-row.pure-g .pure-u-md-1-6:nth-child(1) {
+    background-color: #A88C85; }
+  .content .course-row.pure-g .pure-u-md-1-6:nth-child(2) {
+    background-color: #6B8D8E; }
+  .content .course-row.pure-g .pure-u-md-1-6:nth-child(3) {
+    background-color: #6D7E6E; }
+  .content .course-row.pure-g .pure-u-md-1-6:nth-child(4) {
+    background-color: #AEA9A5; }
+  .content .course-row.pure-g .pure-u-md-1-6:nth-child(5) {
+    background-color: #E3B79C; }
+  .content .course-row.pure-g .pure-u-md-1-6:nth-child(6) {
+    background-color: #6B8D8E; }
+.content .course-row-2.pure-g {
+  color: white; }
+  .content .course-row-2.pure-g .pure-u-md-1-6:nth-child(1) {
+    background-color: #7D8E7D; }
+  .content .course-row-2.pure-g .pure-u-md-1-6:nth-child(2) {
+    background-color: #8C7D6B; }
+  .content .course-row-2.pure-g .pure-u-md-1-6:nth-child(3) {
+    background-color: #7C6C74; }
+  .content .course-row-2.pure-g .pure-u-md-1-6:nth-child(4) {
+    background-color: #8E9B8C; }
+  .content .course-row-2.pure-g .pure-u-md-1-6:nth-child(5) {
+    background-color: #827D8C; }
+  .content .course-row-2.pure-g .pure-u-md-1-6:nth-child(6) {
+    background-color: #837F70; }
+
+.testimonials.pure-g {
+  height: 250px; }
+  .testimonials.pure-g .pure-u-1:nth-child(1) {
+    background-color: #567A79; }
+  .testimonials.pure-g .pure-u-1:nth-child(2) {
+    background-color: #687689; }
+
+.available-now-banner.pure-g {
+  height: 300px; }
+  .available-now-banner.pure-g .pure-u-1 {
     background-color: #2D3440; }
-  .content-wrapper .content .popular-courses .pure-g:first {
-    height: 100%;
-    color: white; }
-  .content-wrapper .content .popular-courses .course-row.pure-g {
-    height: 60px; }
-    .content-wrapper .content .popular-courses .course-row.pure-g .pure-u-1-6:nth-child(1) {
-      background-color: #9E817A; }
-    .content-wrapper .content .popular-courses .course-row.pure-g .pure-u-1-6:nth-child(2) {
-      background-color: #6B8D8E; }
-    .content-wrapper .content .popular-courses .course-row.pure-g .pure-u-1-6:nth-child(3) {
-      background-color: #627363; }
-    .content-wrapper .content .popular-courses .course-row.pure-g .pure-u-1-6:nth-child(4) {
-      background-color: #A59F9B; }
-    .content-wrapper .content .popular-courses .course-row.pure-g .pure-u-1-6:nth-child(5) {
-      background-color: #DFAE91; }
-    .content-wrapper .content .popular-courses .course-row.pure-g .pure-u-1-6:nth-child(6) {
-      background-color: #608283; }
-  .content-wrapper .content .popular-courses .course-row-2.pure-g {
-    height: 60px; }
-    .content-wrapper .content .popular-courses .course-row-2.pure-g .pure-u-1-6:nth-child(1) {
-      background-color: #728372; }
-    .content-wrapper .content .popular-courses .course-row-2.pure-g .pure-u-1-6:nth-child(2) {
-      background-color: #817160; }
-    .content-wrapper .content .popular-courses .course-row-2.pure-g .pure-u-1-6:nth-child(3) {
-      background-color: #716169; }
-    .content-wrapper .content .popular-courses .course-row-2.pure-g .pure-u-1-6:nth-child(4) {
-      background-color: #839081; }
-    .content-wrapper .content .popular-courses .course-row-2.pure-g .pure-u-1-6:nth-child(5) {
-      background-color: #777281; }
-    .content-wrapper .content .popular-courses .course-row-2.pure-g .pure-u-1-6:nth-child(6) {
-      background-color: #837F70; }
+
+.footer.pure-g {
+  height: 150px;
+  background-color: white; }
+
+.university.pure-g {
+  background-color: #343C49;
+  color: white;
+  position: absolute;
+  top: 78px;
+  width: 100%; }
+  .university.pure-g .pure-u-1 {
+    text-transform: uppercase;
+    padding: 1.5em;
+    text-align: center;
+    color: white;
+    font-size: 70%; }
+
+.university.splash-container {
+  top: 127px;
+  height: 395px; }
+  .university.splash-container .pure-g {
+    height: 100%; }
+  .university.splash-container .flex-container, .university.splash-container .flex-container-center, .university.splash-container .popular-course-wrapper .banner, .popular-course-wrapper .university.splash-container .banner, .university.splash-container .header .menu-left, .header .university.splash-container .menu-left, .university.splash-container .header .pure-g .buttons-right, .header .pure-g .university.splash-container .buttons-right, .university.splash-container .student-value-prop.content
+  .pure-g .pure-u-1, .student-value-prop.content
+  .pure-g .university.splash-container .pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat {
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    flex-direction: column;
+    justify-content: center; }
+    .university.splash-container .flex-container.get-a-tutor, .university.splash-container .get-a-tutor.flex-container-center, .university.splash-container .popular-course-wrapper .get-a-tutor.banner, .popular-course-wrapper .university.splash-container .get-a-tutor.banner, .university.splash-container .header .get-a-tutor.menu-left, .header .university.splash-container .get-a-tutor.menu-left, .university.splash-container .header .pure-g .get-a-tutor.buttons-right, .header .pure-g .university.splash-container .get-a-tutor.buttons-right, .university.splash-container .student-value-prop.content
+    .pure-g .get-a-tutor.pure-u-1, .student-value-prop.content
+    .pure-g .university.splash-container .get-a-tutor.pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1.stat .get-a-tutor.inner-stat, .content .stats.pure-g .pure-u-1.stat .university.splash-container .get-a-tutor.inner-stat, .university.splash-container .flex-container.be-a-tutor, .university.splash-container .be-a-tutor.flex-container-center, .university.splash-container .popular-course-wrapper .be-a-tutor.banner, .popular-course-wrapper .university.splash-container .be-a-tutor.banner, .university.splash-container .header .be-a-tutor.menu-left, .header .university.splash-container .be-a-tutor.menu-left, .university.splash-container .header .pure-g .be-a-tutor.buttons-right, .header .pure-g .university.splash-container .be-a-tutor.buttons-right, .university.splash-container .student-value-prop.content
+    .pure-g .be-a-tutor.pure-u-1, .student-value-prop.content
+    .pure-g .university.splash-container .be-a-tutor.pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1.stat .be-a-tutor.inner-stat, .content .stats.pure-g .pure-u-1.stat .university.splash-container .be-a-tutor.inner-stat {
+      flex-direction: column;
+      height: 100%;
+      align-items: center;
+      align-content: center;
+      justify-content: center; }
+      .university.splash-container .flex-container.get-a-tutor h2, .university.splash-container .get-a-tutor.flex-container-center h2, .university.splash-container .popular-course-wrapper .get-a-tutor.banner h2, .popular-course-wrapper .university.splash-container .get-a-tutor.banner h2, .university.splash-container .header .get-a-tutor.menu-left h2, .header .university.splash-container .get-a-tutor.menu-left h2, .university.splash-container .header .pure-g .get-a-tutor.buttons-right h2, .header .pure-g .university.splash-container .get-a-tutor.buttons-right h2, .university.splash-container .student-value-prop.content
+      .pure-g .get-a-tutor.pure-u-1 h2, .student-value-prop.content
+      .pure-g .university.splash-container .get-a-tutor.pure-u-1 h2, .university.splash-container .content .stats.pure-g .pure-u-1.stat .get-a-tutor.inner-stat h2, .content .stats.pure-g .pure-u-1.stat .university.splash-container .get-a-tutor.inner-stat h2, .university.splash-container .flex-container.be-a-tutor h2, .university.splash-container .be-a-tutor.flex-container-center h2, .university.splash-container .popular-course-wrapper .be-a-tutor.banner h2, .popular-course-wrapper .university.splash-container .be-a-tutor.banner h2, .university.splash-container .header .be-a-tutor.menu-left h2, .header .university.splash-container .be-a-tutor.menu-left h2, .university.splash-container .header .pure-g .be-a-tutor.buttons-right h2, .header .pure-g .university.splash-container .be-a-tutor.buttons-right h2, .university.splash-container .student-value-prop.content
+      .pure-g .be-a-tutor.pure-u-1 h2, .student-value-prop.content
+      .pure-g .university.splash-container .be-a-tutor.pure-u-1 h2, .university.splash-container .content .stats.pure-g .pure-u-1.stat .be-a-tutor.inner-stat h2, .content .stats.pure-g .pure-u-1.stat .university.splash-container .be-a-tutor.inner-stat h2 {
+        font-family: "OpenSans-Light";
+        color: #2D3440;
+        margin-top: -5px; }
+    .university.splash-container .flex-container button, .university.splash-container .flex-container-center button, .university.splash-container .popular-course-wrapper .banner button, .popular-course-wrapper .university.splash-container .banner button, .university.splash-container .header .menu-left button, .header .university.splash-container .menu-left button, .university.splash-container .header .pure-g .buttons-right button, .header .pure-g .university.splash-container .buttons-right button, .university.splash-container .student-value-prop.content
+    .pure-g .pure-u-1 button, .student-value-prop.content
+    .pure-g .university.splash-container .pure-u-1 button, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat button, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat button {
+      text-transform: uppercase;
+      padding: 10px 32px;
+      font-size: 70%; }
+    .university.splash-container .flex-container img.banner-school-specific, .university.splash-container .flex-container-center img.banner-school-specific, .university.splash-container .popular-course-wrapper .banner img.banner-school-specific, .popular-course-wrapper .university.splash-container .banner img.banner-school-specific, .university.splash-container .header .menu-left img.banner-school-specific, .header .university.splash-container .menu-left img.banner-school-specific, .university.splash-container .header .pure-g .buttons-right img.banner-school-specific, .header .pure-g .university.splash-container .buttons-right img.banner-school-specific, .university.splash-container .student-value-prop.content
+    .pure-g .pure-u-1 img.banner-school-specific, .student-value-prop.content
+    .pure-g .university.splash-container .pure-u-1 img.banner-school-specific, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat img.banner-school-specific, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat img.banner-school-specific {
+      height: 225px; }
+    .university.splash-container .flex-container.university-banner, .university.splash-container .university-banner.flex-container-center, .university.splash-container .popular-course-wrapper .university-banner.banner, .popular-course-wrapper .university.splash-container .university-banner.banner, .university.splash-container .header .university-banner.menu-left, .header .university.splash-container .university-banner.menu-left, .university.splash-container .header .pure-g .university-banner.buttons-right, .header .pure-g .university.splash-container .university-banner.buttons-right, .university.splash-container .student-value-prop.content
+    .pure-g .university-banner.pure-u-1, .student-value-prop.content
+    .pure-g .university.splash-container .university-banner.pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1.stat .university-banner.inner-stat, .content .stats.pure-g .pure-u-1.stat .university.splash-container .university-banner.inner-stat {
+      flex-direction: column;
+      align-content: flex-start;
+      justify-content: flex-start; }
+    .university.splash-container .flex-container .banner-school-content-container, .university.splash-container .flex-container-center .banner-school-content-container, .university.splash-container .popular-course-wrapper .banner .banner-school-content-container, .popular-course-wrapper .university.splash-container .banner .banner-school-content-container, .university.splash-container .header .menu-left .banner-school-content-container, .header .university.splash-container .menu-left .banner-school-content-container, .university.splash-container .header .pure-g .buttons-right .banner-school-content-container, .header .pure-g .university.splash-container .buttons-right .banner-school-content-container, .university.splash-container .student-value-prop.content
+    .pure-g .pure-u-1 .banner-school-content-container, .student-value-prop.content
+    .pure-g .university.splash-container .pure-u-1 .banner-school-content-container, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat .banner-school-content-container, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat .banner-school-content-container {
+      margin-top: -200px;
+      justify-content: column;
+      align-content: center;
+      align-items: center; }
+      .university.splash-container .flex-container .banner-school-content-container img, .university.splash-container .flex-container-center .banner-school-content-container img, .university.splash-container .popular-course-wrapper .banner .banner-school-content-container img, .popular-course-wrapper .university.splash-container .banner .banner-school-content-container img, .university.splash-container .header .menu-left .banner-school-content-container img, .header .university.splash-container .menu-left .banner-school-content-container img, .university.splash-container .header .pure-g .buttons-right .banner-school-content-container img, .header .pure-g .university.splash-container .buttons-right .banner-school-content-container img, .university.splash-container .student-value-prop.content
+      .pure-g .pure-u-1 .banner-school-content-container img, .student-value-prop.content
+      .pure-g .university.splash-container .pure-u-1 .banner-school-content-container img, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat .banner-school-content-container img, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat .banner-school-content-container img {
+        height: 80px; }
+      .university.splash-container .flex-container .banner-school-content-container h2, .university.splash-container .flex-container-center .banner-school-content-container h2, .university.splash-container .popular-course-wrapper .banner .banner-school-content-container h2, .popular-course-wrapper .university.splash-container .banner .banner-school-content-container h2, .university.splash-container .header .menu-left .banner-school-content-container h2, .header .university.splash-container .menu-left .banner-school-content-container h2, .university.splash-container .header .pure-g .buttons-right .banner-school-content-container h2, .header .pure-g .university.splash-container .buttons-right .banner-school-content-container h2, .university.splash-container .student-value-prop.content
+      .pure-g .pure-u-1 .banner-school-content-container h2, .student-value-prop.content
+      .pure-g .university.splash-container .pure-u-1 .banner-school-content-container h2, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat .banner-school-content-container h2, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat .banner-school-content-container h2 {
+        font-family: "OpenSans-Bold";
+        font-size: 200%;
+        color: #3D9988;
+        margin-top: 0px;
+        margin-bottom: 5px; }
+      .university.splash-container .flex-container .banner-school-content-container h4, .university.splash-container .flex-container-center .banner-school-content-container h4, .university.splash-container .popular-course-wrapper .banner .banner-school-content-container h4, .popular-course-wrapper .university.splash-container .banner .banner-school-content-container h4, .university.splash-container .header .menu-left .banner-school-content-container h4, .header .university.splash-container .menu-left .banner-school-content-container h4, .university.splash-container .header .pure-g .buttons-right .banner-school-content-container h4, .header .pure-g .university.splash-container .buttons-right .banner-school-content-container h4, .university.splash-container .student-value-prop.content
+      .pure-g .pure-u-1 .banner-school-content-container h4, .student-value-prop.content
+      .pure-g .university.splash-container .pure-u-1 .banner-school-content-container h4, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat .banner-school-content-container h4, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat .banner-school-content-container h4 {
+        color: #343C49;
+        padding: 5px 10px;
+        width: 150px;
+        font-family: "OpenSans-Semibold"; }
+
+.popular-course-wrapper .banner {
+  background-color: #343C49;
+  color: white; }
+  .popular-course-wrapper .banner h4 {
+    text-transform: uppercase;
+    text-align: center; }
+.popular-course-wrapper .popular-courses
+.popular-course h4 {
+  color: white; }
+
+.available-now-banner h1 {
+  color: white;
+  font-family: "OpenSans-Light";
+  letter-spacing: 1px;
+  font-size: 150%; }
+.available-now-banner p {
+  text-align: center;
+  color: white;
+  opacity: 0.4;
+  font-family: "OpenSans-Light";
+  font-weight: normal; }
+.available-now-banner .text-input-container
+.pure-u-1 {
+  background-color: white;
+  margin: 3% 10%; }
+  .available-now-banner .text-input-container
+  .pure-u-1 .text-box {
+    padding: 0.76em;
+    width: 60%;
+    outline: none;
+    border: none; }
+  .available-now-banner .text-input-container
+  .pure-u-1 .text-box-submit {
+    width: 20%;
+    display: inline-block;
+    margin-left: 4px;
+    color: white;
+    margin-bottom: -15px;
+    padding: 12px 19px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #3D9988; }
+
+.menu-left .menu-text {
+  font-size: 200%;
+  font-family: "OpenSans-Bold";
+  font-weight: bold;
+  letter-spacing: 1.5px; }
+
+@media screen and (max-width: 35.5em) {
+  .buttons-right,
+  .course-row-2,
+  .splash-container {
+    display: none !important; }
+
+  #get-started-now-header {
+    font-size: 120%; }
+
+  .available-now-banner .text-input-container .pure-u-1 .text-box-submit {
+    width: 18%;
+    display: inline-block;
+    margin-left: 7px;
+    color: white;
+    margin-bottom: -15px;
+    padding: 12px 14px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #3D9988; } }
 
 /*# sourceMappingURL=uguru-web.css.map */
