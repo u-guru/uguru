@@ -244,7 +244,7 @@ def app_flex():
 
     return render_template("web/university.html", university=supported_universities['virginia'])
 
-@app.route('/u/<name>/', methods=["GET"])
+@app.route('/<name>/', methods=["GET"])
 def one_university(name):
     from lib.university_data import supported_universities
     university_names = supported_universities.keys()

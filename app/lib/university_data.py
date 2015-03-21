@@ -24,7 +24,8 @@ supported_universities = {
             "departments": "186",
             "courses": "8,392",
             "rating": "4.8"
-        }
+        },
+        "logo": "msu.jpeg"
     },
     "ucla": {
         "popular_courses": ["MGMT1B", "HONOR17", "SOC20", "LGBTS167", "COMM371","CS175", \
@@ -37,7 +38,8 @@ supported_universities = {
             "departments": "186",
             "courses": "8,392",
             "rating": "4.8"
-        }
+        },
+        "logo": "ucla.png"
     },
     "uwmadison": {
         "popular_courses": ["ECON101", "PSYCH202", "NS132", "MHR300", "AFR210","CHEM104", \
@@ -50,7 +52,8 @@ supported_universities = {
             "departments": "186",
             "courses": "8,392",
             "rating": "4.8"
-        }
+        },
+        "logo": "UnivofWisconsin.jpeg"
     },
     "virginiatech": {
         "popular_courses": ["ACIS1504", "GEOG1014", "BIOL2804", "PHYS2306", "CHEM1045","ESM2204", \
@@ -63,7 +66,8 @@ supported_universities = {
             "departments": "186",
             "courses": "8,392",
             "rating": "4.8"
-        }
+        },
+        "logo": "VT_Logo.png"
     },
     "chapelhill": {
         "popular_courses": ["ECON434", "CHEM241", "COMP401", "POLI218", "BIOL202","PLCY101", \
@@ -76,7 +80,8 @@ supported_universities = {
             "departments": "186",
             "courses": "8,392",
             "rating": "4.8"
-        }
+        },
+        "logo": "UnivOfNorthCarolinaCharlotte.png"
     },
     "vermont": {
         "popular_courses": ["CHEM031", "PSYCH001", "MATH023", "STAT141", "CALC19","BCOR103", \
@@ -89,7 +94,8 @@ supported_universities = {
             "departments": "186",
             "courses": "8,392",
             "rating": "4.8"
-        }
+        },
+        "logo": "UnivOfVermont.jpeg"
     },
     "ucsc": {
         "popular_courses": ["AMS11", "MATH21", "PSYCH165", "CMPS101", "ECON137","FMST20", \
@@ -102,7 +108,8 @@ supported_universities = {
             "departments": "186",
             "courses": "8,392",
             "rating": "4.8"
-        }
+        },
+        "logo": "univOfsouthcarolina.png"
     },
     "ua": {
         "popular_courses": ["MATH301", "CJ100", "EC110", "APR231", "FI302","CS102", \
@@ -115,7 +122,8 @@ supported_universities = {
             "departments": "186",
             "courses": "8,392",
             "rating": "4.8"
-        }
+        },
+        "logo": "UniOfAlabamaTuscaloosa.jpg"
     },
     "umass": {
         "popular_courses": ["BIO111", "MATH135", "CHEM115", "ANTH105", "POLSCI220","AF211", \
@@ -128,7 +136,8 @@ supported_universities = {
             "departments": "186",
             "courses": "8,392",
             "rating": "4.8"
-        }
+        },
+        "logo": "UnivOfMassachusettesLowell.png"
     },
     "wm": {
         "popular_courses": ["PSYC201", "BIOL312", "ECON150", "CSCI141", "MATH111","GOVT203", \
@@ -141,6 +150,7 @@ supported_universities = {
             "departments": "186",
             "courses": "8,392",
             "rating": "4.8"
-        }
-    }
+        },
+        "logo": "collegeOfWilliamnMary.jpeg"
+    },
 }
