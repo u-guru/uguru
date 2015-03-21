@@ -113,6 +113,10 @@ h4 {
 
 .flex-container {
   display:flex;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;
 }
 
 .no-overflow {
@@ -122,12 +126,28 @@ h4 {
 .flex-container-center {
   @extend .flex-container;
   justify-content: center;
+  -ms-flex-justify-content: center;
+  -webkit-justify-content: center;
+  -webkit-box-justify-content: center;
+  -moz-box-justify-content: center;
   align-items:center;
+  -moz-box-align-items:center;
+  -webkit-box-align-items:center;
+  -webkit-align-items:center;
+  -ms-flex-align-items:center;
   align-content:center;
+  -ms-flex-align-content:center;
+  -webkit-align-content:center;
+  -webkit-box-align-content:center;
+  -moz-box-align-content:center;
 }
 
 .flex-container-col-reverse {
   flex-direction: column-reverse;
+  -webkit-flex-direction: column-reverse;
+  -moz-box-flex-direction: column-reverse;
+  -webkit-box-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
 }
 
 .antonio-light {
@@ -182,6 +202,10 @@ h4 {
      .menu-left {
         @extend .flex-container;
         align-items:center;
+        -moz-box-align-items:center;
+        -webkit-box-align-items:center;
+        -webkit-align-items:center;
+        -ms-flex-align-items:center;
         .left-header-item {
           display:inline-block;
           margin: 0 0.5em;
@@ -233,8 +257,16 @@ h4 {
      .buttons-right {
       @extend .flex-container;
       justify-content: flex-end;
+      -ms-flex-justify-content: flex-end;
+      -webkit-justify-content: flex-end;
+      -webkit-box-justify-content: flex-end;
+      -moz-box-justify-content: flex-end;
       flex-wrap:no-wrap;
       align-items:center;
+      -moz-box-align-items:center;
+      -webkit-box-align-items:center;
+      -webkit-align-items:center;
+      -ms-flex-align-items:center;
 
       .flex-item {
         margin:0px 0.75em;
@@ -355,6 +387,10 @@ h4 {
     @extend .flex-container;
     text-align:center;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    -moz-box-flex-direction: column;
+    -webkit-box-flex-direction: column;
+    -ms-flex-direction: column;
     flex-wrap:nowrap;
   }
 
@@ -375,6 +411,10 @@ h4 {
   &.row-1 .pure-u-1:nth-child(2) {
     background-color:$student-value-prop-2;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    -moz-box-flex-direction: column;
+    -webkit-box-flex-direction: column;
+    -ms-flex-direction: column;
     flex-wrap:nowrap;
     height:100%;
     .flex-item:nth-child(1) {
@@ -387,7 +427,15 @@ h4 {
   &.row-2 .pure-u-1:nth-child(1) {
     background-color:$student-value-prop-3;
     align-content: center;
+    -ms-flex-align-content: center;
+    -webkit-align-content: center;
+    -webkit-box-align-content: center;
+    -moz-box-align-content: center;
     justify-content: center;
+    -ms-flex-justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-box-justify-content: center;
+    -moz-box-justify-content: center;
     height:100%;
     .flex-item {
       height:20%;
@@ -396,7 +444,15 @@ h4 {
   &.row-2 .pure-u-1:nth-child(2) {
     background-color:$student-value-prop-4;
     align-content: center;
+    -ms-flex-align-content: center;
+    -webkit-align-content: center;
+    -webkit-box-align-content: center;
+    -moz-box-align-content: center;
     justify-content: center;
+    -ms-flex-justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-box-justify-content: center;
+    -moz-box-justify-content: center;
     height:100%;
     .flex-item {
       height:20%;
@@ -438,6 +494,10 @@ h4 {
       .inner-stat{
         @extend .flex-container;
           flex-direction:column;
+          -webkit-flex-direction:column;
+          -moz-box-flex-direction:column;
+          -webkit-box-flex-direction:column;
+          -ms-flex-direction:column;
         h2 {
           @extend .no-xspace;
           margin-top:4px;
@@ -600,17 +660,49 @@ h4 {
   }
   .flex-container {
     display:flex;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;
     text-align:center;
     flex-direction: row;
+    -webkit-flex-direction: row;
+    -moz-box-flex-direction: row;
+    -webkit-box-flex-direction: row;
+    -ms-flex-direction: row;
     flex-direction:column;
+    -webkit-flex-direction:column;
+    -moz-box-flex-direction:column;
+    -webkit-box-flex-direction:column;
+    -ms-flex-direction:column;
     justify-content: center;
+    -ms-flex-justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-box-justify-content: center;
+    -moz-box-justify-content: center;
 
     &.get-a-tutor, &.be-a-tutor {
       flex-direction: column;
+      -webkit-flex-direction: column;
+      -moz-box-flex-direction: column;
+      -webkit-box-flex-direction: column;
+      -ms-flex-direction: column;
       height:100%;
       align-items:center;
+      -moz-box-align-items:center;
+      -webkit-box-align-items:center;
+      -webkit-align-items:center;
+      -ms-flex-align-items:center;
       align-content:center;
+      -ms-flex-align-content:center;
+      -webkit-align-content:center;
+      -webkit-box-align-content:center;
+      -moz-box-align-content:center;
       justify-content: center;
+      -ms-flex-justify-content: center;
+      -webkit-justify-content: center;
+      -webkit-box-justify-content: center;
+      -moz-box-justify-content: center;
 
       h2 {
         font-family: "OpenSans-Light";
@@ -631,16 +723,44 @@ h4 {
 
     &.university-banner {
       flex-direction: column;
+      -webkit-flex-direction: column;
+      -moz-box-flex-direction: column;
+      -webkit-box-flex-direction: column;
+      -ms-flex-direction: column;
       // align-items:flex-start;
+      // -moz-box-// align-items:flex-start;
+      // -webkit-box-// align-items:flex-start;
+      // -webkit-// align-items:flex-start;
+      // -ms-flex-// align-items:flex-start;
       align-content:flex-start;
+      -ms-flex-align-content:flex-start;
+      -webkit-align-content:flex-start;
+      -webkit-align-box-content:flex-start;
+      -moz-align-box-content:flex-start;
       justify-content:flex-start;
+      -ms-flex-justify-content:flex-start;
+      -webkit-justify-content:flex-start;
+      -webkit-box-justify-content:flex-start;
+      -moz-box-justify-content:flex-start;
     }
 
     .banner-school-content-container {
       margin-top:-200px;
       justify-content: column;
+      -ms-flex-justify-content: column;
+      -webkit-justify-content: column;
+      -webkit-box-justify-content: column;
+      -moz-box-justify-content: column;
       align-content:center;
+      -ms-flex-align-content:center;
+      -webkit-align-content:center;
+      -webkit-box-align-content:center;
+      -moz-box-align-content:center;
       align-items:center;
+      -moz-box-align-items:center;
+      -webkit-box-align-items:center;
+      -webkit-align-items:center;
+      -ms-flex-align-items:center;
       img {
         height:80px;
       }
@@ -689,7 +809,6 @@ h4 {
 
 #post-started-university {
   display:none;
-  // height:300ps;
 }
 .available-now-banner {
   h1 {
@@ -698,6 +817,10 @@ h4 {
     letter-spacing:1px;
     // font-weight:100;
     font-size:150%;
+  }
+
+  .flex-container-center {
+    height:300px;
   }
 
   p {
@@ -710,7 +833,7 @@ h4 {
 
   .text-input-container
   .pure-u-1 {
-    background-color:white;
+    background-color:$primary-color;
     margin:3% 10%;
 
     .text-box {
@@ -726,7 +849,7 @@ h4 {
       margin-left: 4px;
       color:white;
       margin-bottom: -15px;
-      padding:12px 19px;
+      padding:12px 1.19em;
       text-align:center;
       cursor:pointer;
       background-color: $primary-color;
