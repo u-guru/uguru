@@ -28,10 +28,10 @@ h4 {
   font-size: 70%;
   margin-top: 5px; }
 
-.no-xspace, .stat-container, .content .stats.pure-g .pure-u-1.stat
+.no-xspace, .stat-container, .content .stats.pure-g .pure-u-1-2.stat
 .inner-stat h2, .content h4, .university.splash-container .flex-container .banner-school-content-container h4, .university.splash-container .flex-container-center .banner-school-content-container h4, .university.splash-container .popular-course-wrapper .banner .banner-school-content-container h4, .popular-course-wrapper .university.splash-container .banner .banner-school-content-container h4, .university.splash-container .header .menu-left .banner-school-content-container h4, .header .university.splash-container .menu-left .banner-school-content-container h4, .university.splash-container .header .pure-g .buttons-right .banner-school-content-container h4, .header .pure-g .university.splash-container .buttons-right .banner-school-content-container h4, .university.splash-container .student-value-prop.content
 .pure-g .pure-u-1 .banner-school-content-container h4, .student-value-prop.content
-.pure-g .university.splash-container .pure-u-1 .banner-school-content-container h4, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat .banner-school-content-container h4, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat .banner-school-content-container h4, .popular-course-wrapper .banner h4 {
+.pure-g .university.splash-container .pure-u-1 .banner-school-content-container h4, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .inner-stat .banner-school-content-container h4, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .inner-stat .banner-school-content-container h4, .popular-course-wrapper .banner h4 {
   padding: 0px;
   margin: 0px; }
 
@@ -58,9 +58,12 @@ h4 {
 
 .flex-container, .flex-container-center, .popular-course-wrapper .banner, .header .menu-left, .header .pure-g
 .buttons-right, .student-value-prop.content
-.pure-g .pure-u-1, .content .stats.pure-g .pure-u-1.stat
+.pure-g .pure-u-1, .content .stats.pure-g .pure-u-1-2.stat
 .inner-stat {
   display: flex; }
+
+.no-overflow {
+  overflow: hidden; }
 
 .flex-container-center, .popular-course-wrapper .banner {
   justify-content: center;
@@ -196,7 +199,20 @@ h4 {
 
 .student-value-prop.content
 .pure-g {
-  height: 600px; }
+  height: 700px; }
+  .student-value-prop.content
+  .pure-g .pure-img {
+    margin: 0 auto; }
+  .student-value-prop.content
+  .pure-g.row-1 {
+    overflow: visible; }
+  .student-value-prop.content
+  .pure-g.row-2 {
+    height: 800px;
+    overflow: hidden; }
+  .student-value-prop.content
+  .pure-g .pure-img-container {
+    z-index: 3; }
   .student-value-prop.content
   .pure-g h2 {
     color: white;
@@ -205,7 +221,8 @@ h4 {
   .student-value-prop.content
   .pure-g h5 {
     color: rgba(255, 255, 255, 0.5);
-    text-align: center; }
+    text-align: center;
+    padding-bottom: 10px; }
   .student-value-prop.content
   .pure-g .pure-u-1 {
     text-align: center;
@@ -220,7 +237,7 @@ h4 {
       height: 20%; }
     .student-value-prop.content
     .pure-g.row-1 .pure-u-1:nth-child(1) .flex-item:nth-child(1) {
-      height: 10%; }
+      height: 5%; }
     .student-value-prop.content
     .pure-g.row-1 .pure-u-1:nth-child(1).flex-container .flex-item:last-child, .student-value-prop.content
     .pure-g.row-1 .pure-u-1.flex-container-center:nth-child(1) .flex-item:last-child, .student-value-prop.content
@@ -230,7 +247,7 @@ h4 {
     .pure-g.row-1 .pure-u-1.menu-left:nth-child(1) .flex-item:last-child, .header .student-value-prop.content
     .pure-g.row-1 .pure-u-1.buttons-right:nth-child(1) .flex-item:last-child, .student-value-prop.content
     .pure-g.row-1 .pure-u-1:nth-child(1) .flex-item:last-child, .student-value-prop.content
-    .pure-g.row-1 .stats.pure-g .pure-u-1.stat .pure-u-1.inner-stat:nth-child(1) .flex-item:last-child {
+    .pure-g.row-1 .stats.pure-g .pure-u-1-2.stat .pure-u-1.inner-stat:nth-child(1) .flex-item:last-child {
       height: 20%;
       background-color: #6B838C; }
   .student-value-prop.content
@@ -241,7 +258,7 @@ h4 {
     height: 100%; }
     .student-value-prop.content
     .pure-g.row-1 .pure-u-1:nth-child(2) .flex-item:nth-child(1) {
-      height: 10%; }
+      height: 5%; }
     .student-value-prop.content
     .pure-g.row-1 .pure-u-1:nth-child(2) h2 {
       padding-top: 10px; }
@@ -281,17 +298,17 @@ h4 {
   height: 100%;
   color: white;
   text-align: center; }
-  .content .stats.pure-g .pure-u-1.stat
+  .content .stats.pure-g .pure-u-1-2.stat
   .inner-stat {
     flex-direction: column; }
-    .content .stats.pure-g .pure-u-1.stat
+    .content .stats.pure-g .pure-u-1-2.stat
     .inner-stat h2 {
       margin-top: 4px;
       font-weight: 100;
       font-size: 20px;
       font-family: "OpenSans-SemiBold";
       letter-spacing: 1.5px; }
-    .content .stats.pure-g .pure-u-1.stat
+    .content .stats.pure-g .pure-u-1-2.stat
     .inner-stat p {
       font-family: "OpenSans-Regular";
       font-weight: 100;
@@ -299,18 +316,18 @@ h4 {
       letter-spacing: 1px;
       font-size: 70%;
       margin-top: 5px; }
-    .content .stats.pure-g .pure-u-1.stat
+    .content .stats.pure-g .pure-u-1-2.stat
     .inner-stat img {
       height: 80px;
       width: auto;
       padding: 0.5em; }
-  .content .stats.pure-g .pure-u-1:nth-child(1) {
+  .content .stats.pure-g .pure-u-1-2:nth-child(1) {
     background-color: #6B8D8E; }
-  .content .stats.pure-g .pure-u-1:nth-child(2) {
+  .content .stats.pure-g .pure-u-1-2:nth-child(2) {
     background-color: #A88C85; }
-  .content .stats.pure-g .pure-u-1:nth-child(3) {
+  .content .stats.pure-g .pure-u-1-2:nth-child(3) {
     background-color: #6D7E6E; }
-  .content .stats.pure-g .pure-u-1:nth-child(4) {
+  .content .stats.pure-g .pure-u-1-2:nth-child(4) {
     background-color: #AEA9A5; }
 
 .content .banner {
@@ -384,7 +401,7 @@ h4 {
     height: 100%; }
   .university.splash-container .flex-container, .university.splash-container .flex-container-center, .university.splash-container .popular-course-wrapper .banner, .popular-course-wrapper .university.splash-container .banner, .university.splash-container .header .menu-left, .header .university.splash-container .menu-left, .university.splash-container .header .pure-g .buttons-right, .header .pure-g .university.splash-container .buttons-right, .university.splash-container .student-value-prop.content
   .pure-g .pure-u-1, .student-value-prop.content
-  .pure-g .university.splash-container .pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat {
+  .pure-g .university.splash-container .pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .inner-stat, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .inner-stat {
     display: flex;
     text-align: center;
     flex-direction: row;
@@ -392,9 +409,9 @@ h4 {
     justify-content: center; }
     .university.splash-container .flex-container.get-a-tutor, .university.splash-container .get-a-tutor.flex-container-center, .university.splash-container .popular-course-wrapper .get-a-tutor.banner, .popular-course-wrapper .university.splash-container .get-a-tutor.banner, .university.splash-container .header .get-a-tutor.menu-left, .header .university.splash-container .get-a-tutor.menu-left, .university.splash-container .header .pure-g .get-a-tutor.buttons-right, .header .pure-g .university.splash-container .get-a-tutor.buttons-right, .university.splash-container .student-value-prop.content
     .pure-g .get-a-tutor.pure-u-1, .student-value-prop.content
-    .pure-g .university.splash-container .get-a-tutor.pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1.stat .get-a-tutor.inner-stat, .content .stats.pure-g .pure-u-1.stat .university.splash-container .get-a-tutor.inner-stat, .university.splash-container .flex-container.be-a-tutor, .university.splash-container .be-a-tutor.flex-container-center, .university.splash-container .popular-course-wrapper .be-a-tutor.banner, .popular-course-wrapper .university.splash-container .be-a-tutor.banner, .university.splash-container .header .be-a-tutor.menu-left, .header .university.splash-container .be-a-tutor.menu-left, .university.splash-container .header .pure-g .be-a-tutor.buttons-right, .header .pure-g .university.splash-container .be-a-tutor.buttons-right, .university.splash-container .student-value-prop.content
+    .pure-g .university.splash-container .get-a-tutor.pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .get-a-tutor.inner-stat, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .get-a-tutor.inner-stat, .university.splash-container .flex-container.be-a-tutor, .university.splash-container .be-a-tutor.flex-container-center, .university.splash-container .popular-course-wrapper .be-a-tutor.banner, .popular-course-wrapper .university.splash-container .be-a-tutor.banner, .university.splash-container .header .be-a-tutor.menu-left, .header .university.splash-container .be-a-tutor.menu-left, .university.splash-container .header .pure-g .be-a-tutor.buttons-right, .header .pure-g .university.splash-container .be-a-tutor.buttons-right, .university.splash-container .student-value-prop.content
     .pure-g .be-a-tutor.pure-u-1, .student-value-prop.content
-    .pure-g .university.splash-container .be-a-tutor.pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1.stat .be-a-tutor.inner-stat, .content .stats.pure-g .pure-u-1.stat .university.splash-container .be-a-tutor.inner-stat {
+    .pure-g .university.splash-container .be-a-tutor.pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .be-a-tutor.inner-stat, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .be-a-tutor.inner-stat {
       flex-direction: column;
       height: 100%;
       align-items: center;
@@ -402,42 +419,42 @@ h4 {
       justify-content: center; }
       .university.splash-container .flex-container.get-a-tutor h2, .university.splash-container .get-a-tutor.flex-container-center h2, .university.splash-container .popular-course-wrapper .get-a-tutor.banner h2, .popular-course-wrapper .university.splash-container .get-a-tutor.banner h2, .university.splash-container .header .get-a-tutor.menu-left h2, .header .university.splash-container .get-a-tutor.menu-left h2, .university.splash-container .header .pure-g .get-a-tutor.buttons-right h2, .header .pure-g .university.splash-container .get-a-tutor.buttons-right h2, .university.splash-container .student-value-prop.content
       .pure-g .get-a-tutor.pure-u-1 h2, .student-value-prop.content
-      .pure-g .university.splash-container .get-a-tutor.pure-u-1 h2, .university.splash-container .content .stats.pure-g .pure-u-1.stat .get-a-tutor.inner-stat h2, .content .stats.pure-g .pure-u-1.stat .university.splash-container .get-a-tutor.inner-stat h2, .university.splash-container .flex-container.be-a-tutor h2, .university.splash-container .be-a-tutor.flex-container-center h2, .university.splash-container .popular-course-wrapper .be-a-tutor.banner h2, .popular-course-wrapper .university.splash-container .be-a-tutor.banner h2, .university.splash-container .header .be-a-tutor.menu-left h2, .header .university.splash-container .be-a-tutor.menu-left h2, .university.splash-container .header .pure-g .be-a-tutor.buttons-right h2, .header .pure-g .university.splash-container .be-a-tutor.buttons-right h2, .university.splash-container .student-value-prop.content
+      .pure-g .university.splash-container .get-a-tutor.pure-u-1 h2, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .get-a-tutor.inner-stat h2, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .get-a-tutor.inner-stat h2, .university.splash-container .flex-container.be-a-tutor h2, .university.splash-container .be-a-tutor.flex-container-center h2, .university.splash-container .popular-course-wrapper .be-a-tutor.banner h2, .popular-course-wrapper .university.splash-container .be-a-tutor.banner h2, .university.splash-container .header .be-a-tutor.menu-left h2, .header .university.splash-container .be-a-tutor.menu-left h2, .university.splash-container .header .pure-g .be-a-tutor.buttons-right h2, .header .pure-g .university.splash-container .be-a-tutor.buttons-right h2, .university.splash-container .student-value-prop.content
       .pure-g .be-a-tutor.pure-u-1 h2, .student-value-prop.content
-      .pure-g .university.splash-container .be-a-tutor.pure-u-1 h2, .university.splash-container .content .stats.pure-g .pure-u-1.stat .be-a-tutor.inner-stat h2, .content .stats.pure-g .pure-u-1.stat .university.splash-container .be-a-tutor.inner-stat h2 {
+      .pure-g .university.splash-container .be-a-tutor.pure-u-1 h2, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .be-a-tutor.inner-stat h2, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .be-a-tutor.inner-stat h2 {
         font-family: "OpenSans-Light";
         color: #2D3440;
         margin-top: -5px; }
     .university.splash-container .flex-container button, .university.splash-container .flex-container-center button, .university.splash-container .popular-course-wrapper .banner button, .popular-course-wrapper .university.splash-container .banner button, .university.splash-container .header .menu-left button, .header .university.splash-container .menu-left button, .university.splash-container .header .pure-g .buttons-right button, .header .pure-g .university.splash-container .buttons-right button, .university.splash-container .student-value-prop.content
     .pure-g .pure-u-1 button, .student-value-prop.content
-    .pure-g .university.splash-container .pure-u-1 button, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat button, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat button {
+    .pure-g .university.splash-container .pure-u-1 button, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .inner-stat button, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .inner-stat button {
       text-transform: uppercase;
       padding: 10px 32px;
       font-size: 70%; }
     .university.splash-container .flex-container img.banner-school-specific, .university.splash-container .flex-container-center img.banner-school-specific, .university.splash-container .popular-course-wrapper .banner img.banner-school-specific, .popular-course-wrapper .university.splash-container .banner img.banner-school-specific, .university.splash-container .header .menu-left img.banner-school-specific, .header .university.splash-container .menu-left img.banner-school-specific, .university.splash-container .header .pure-g .buttons-right img.banner-school-specific, .header .pure-g .university.splash-container .buttons-right img.banner-school-specific, .university.splash-container .student-value-prop.content
     .pure-g .pure-u-1 img.banner-school-specific, .student-value-prop.content
-    .pure-g .university.splash-container .pure-u-1 img.banner-school-specific, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat img.banner-school-specific, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat img.banner-school-specific {
+    .pure-g .university.splash-container .pure-u-1 img.banner-school-specific, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .inner-stat img.banner-school-specific, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .inner-stat img.banner-school-specific {
       height: 225px; }
     .university.splash-container .flex-container.university-banner, .university.splash-container .university-banner.flex-container-center, .university.splash-container .popular-course-wrapper .university-banner.banner, .popular-course-wrapper .university.splash-container .university-banner.banner, .university.splash-container .header .university-banner.menu-left, .header .university.splash-container .university-banner.menu-left, .university.splash-container .header .pure-g .university-banner.buttons-right, .header .pure-g .university.splash-container .university-banner.buttons-right, .university.splash-container .student-value-prop.content
     .pure-g .university-banner.pure-u-1, .student-value-prop.content
-    .pure-g .university.splash-container .university-banner.pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1.stat .university-banner.inner-stat, .content .stats.pure-g .pure-u-1.stat .university.splash-container .university-banner.inner-stat {
+    .pure-g .university.splash-container .university-banner.pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .university-banner.inner-stat, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .university-banner.inner-stat {
       flex-direction: column;
       align-content: flex-start;
       justify-content: flex-start; }
     .university.splash-container .flex-container .banner-school-content-container, .university.splash-container .flex-container-center .banner-school-content-container, .university.splash-container .popular-course-wrapper .banner .banner-school-content-container, .popular-course-wrapper .university.splash-container .banner .banner-school-content-container, .university.splash-container .header .menu-left .banner-school-content-container, .header .university.splash-container .menu-left .banner-school-content-container, .university.splash-container .header .pure-g .buttons-right .banner-school-content-container, .header .pure-g .university.splash-container .buttons-right .banner-school-content-container, .university.splash-container .student-value-prop.content
     .pure-g .pure-u-1 .banner-school-content-container, .student-value-prop.content
-    .pure-g .university.splash-container .pure-u-1 .banner-school-content-container, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat .banner-school-content-container, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat .banner-school-content-container {
+    .pure-g .university.splash-container .pure-u-1 .banner-school-content-container, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .inner-stat .banner-school-content-container, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .inner-stat .banner-school-content-container {
       margin-top: -200px;
       justify-content: column;
       align-content: center;
       align-items: center; }
       .university.splash-container .flex-container .banner-school-content-container img, .university.splash-container .flex-container-center .banner-school-content-container img, .university.splash-container .popular-course-wrapper .banner .banner-school-content-container img, .popular-course-wrapper .university.splash-container .banner .banner-school-content-container img, .university.splash-container .header .menu-left .banner-school-content-container img, .header .university.splash-container .menu-left .banner-school-content-container img, .university.splash-container .header .pure-g .buttons-right .banner-school-content-container img, .header .pure-g .university.splash-container .buttons-right .banner-school-content-container img, .university.splash-container .student-value-prop.content
       .pure-g .pure-u-1 .banner-school-content-container img, .student-value-prop.content
-      .pure-g .university.splash-container .pure-u-1 .banner-school-content-container img, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat .banner-school-content-container img, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat .banner-school-content-container img {
+      .pure-g .university.splash-container .pure-u-1 .banner-school-content-container img, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .inner-stat .banner-school-content-container img, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .inner-stat .banner-school-content-container img {
         height: 80px; }
       .university.splash-container .flex-container .banner-school-content-container h2, .university.splash-container .flex-container-center .banner-school-content-container h2, .university.splash-container .popular-course-wrapper .banner .banner-school-content-container h2, .popular-course-wrapper .university.splash-container .banner .banner-school-content-container h2, .university.splash-container .header .menu-left .banner-school-content-container h2, .header .university.splash-container .menu-left .banner-school-content-container h2, .university.splash-container .header .pure-g .buttons-right .banner-school-content-container h2, .header .pure-g .university.splash-container .buttons-right .banner-school-content-container h2, .university.splash-container .student-value-prop.content
       .pure-g .pure-u-1 .banner-school-content-container h2, .student-value-prop.content
-      .pure-g .university.splash-container .pure-u-1 .banner-school-content-container h2, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat .banner-school-content-container h2, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat .banner-school-content-container h2 {
+      .pure-g .university.splash-container .pure-u-1 .banner-school-content-container h2, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .inner-stat .banner-school-content-container h2, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .inner-stat .banner-school-content-container h2 {
         font-family: "OpenSans-Bold";
         font-size: 200%;
         color: #3D9988;
@@ -445,7 +462,7 @@ h4 {
         margin-bottom: 5px; }
       .university.splash-container .flex-container .banner-school-content-container h4, .university.splash-container .flex-container-center .banner-school-content-container h4, .university.splash-container .popular-course-wrapper .banner .banner-school-content-container h4, .popular-course-wrapper .university.splash-container .banner .banner-school-content-container h4, .university.splash-container .header .menu-left .banner-school-content-container h4, .header .university.splash-container .menu-left .banner-school-content-container h4, .university.splash-container .header .pure-g .buttons-right .banner-school-content-container h4, .header .pure-g .university.splash-container .buttons-right .banner-school-content-container h4, .university.splash-container .student-value-prop.content
       .pure-g .pure-u-1 .banner-school-content-container h4, .student-value-prop.content
-      .pure-g .university.splash-container .pure-u-1 .banner-school-content-container h4, .university.splash-container .content .stats.pure-g .pure-u-1.stat .inner-stat .banner-school-content-container h4, .content .stats.pure-g .pure-u-1.stat .university.splash-container .inner-stat .banner-school-content-container h4 {
+      .pure-g .university.splash-container .pure-u-1 .banner-school-content-container h4, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .inner-stat .banner-school-content-container h4, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .inner-stat .banner-school-content-container h4 {
         color: #343C49;
         padding: 5px 10px;
         width: 150px;
@@ -460,6 +477,10 @@ h4 {
 .popular-course-wrapper .popular-courses
 .popular-course h4 {
   color: white; }
+
+#post-started-university {
+  display: none;
+  height: 300px; }
 
 .available-now-banner h1 {
   color: white;
@@ -518,6 +539,26 @@ h4 {
     padding: 12px 14px;
     text-align: center;
     cursor: pointer;
-    background-color: #3D9988; } }
+    background-color: #3D9988; }
+
+  .flex-item .pure-img {
+    height: 250px; }
+
+  .student-value-prop.content .pure-g {
+    height: 800px; }
+
+  .hide-mobile {
+    display: none; }
+
+  #student-value-prop-1,
+  #student-value-prop-2,
+  #student-value-prop-3,
+  #student-value-prop-4 {
+    height: 400px; }
+    #student-value-prop-1 .flex-item,
+    #student-value-prop-2 .flex-item,
+    #student-value-prop-3 .flex-item,
+    #student-value-prop-4 .flex-item {
+      z-index: 5; } }
 
 /*# sourceMappingURL=uguru-web.css.map */

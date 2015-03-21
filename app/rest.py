@@ -1716,6 +1716,34 @@ class AdminUniversityCoursesView(restful.Resource):
 
         return jsonify(success=[True])
 
+class UserEmailView(restful.Resource):
+    def put (self):
+        email_user_id = session.get('email_user_id')
+        email_address = request.json.get('email_address')
+        print request.json
+        print email_user_id, email_address
+
+        if email_user_id:
+            email_user = Email_User.query.get(email_user_id).first()
+            email_user.signed_up = True
+            return jsonify(success=[True])
+
+        elif email_address:
+            email_user = Email_User.query.filter_by(email=email_address).first()
+
+            if email_user:
+                email_user.signed_up = True
+                db_session.commit()
+                return jsonify(success=[True])
+
+            else:
+                email_user = Email_User.initEmailUser(email_address)
+                email_user.signed_up = True
+                db_session.commit()
+                return jsonify(success=[True])
+
+        abort(404)
+
 class AdminUniversityAddRecipientsView(restful.Resource):
     def post(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
@@ -1810,6 +1838,7 @@ api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:id>/majors')
 api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:id>/courses')
 api.add_resource(MajorListView, '/api/v1/majors')
 api.add_resource(CourseListView, '/api/v1/courses')
+api.add_resource(UserEmailView, '/api/v1/user_emails')
 
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')

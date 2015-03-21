@@ -115,6 +115,10 @@ h4 {
   display:flex;
 }
 
+.no-overflow {
+  overflow:hidden;
+}
+
 .flex-container-center {
   @extend .flex-container;
   justify-content: center;
@@ -318,7 +322,22 @@ h4 {
 .student-value-prop.content
 .pure-g
 {
-  height:600px;
+  height:700px;
+  .pure-img {
+    margin: 0 auto;
+  }
+  &.row-1 {
+    overflow:visible;
+  }
+
+  &.row-2 {
+    height:800px;
+    overflow:hidden;
+  }
+
+  .pure-img-container {
+    z-index:3;
+  }
 
   h2 {
       color:white;
@@ -329,6 +348,7 @@ h4 {
   h5 {
     color:rgba(255,255,255, 0.5);
     text-align:center;
+    padding-bottom:10px;
   }
 
   .pure-u-1 {
@@ -344,7 +364,7 @@ h4 {
       height:20%;
     }
     .flex-item:nth-child(1) {
-      height:10%;
+      height:5%;
     }
     height:100%;
     &.flex-container .flex-item:last-child {
@@ -358,7 +378,7 @@ h4 {
     flex-wrap:nowrap;
     height:100%;
     .flex-item:nth-child(1) {
-      height:10%;
+      height:5%;
     }
     h2 {
       padding-top:10px;
@@ -414,7 +434,7 @@ h4 {
       color:white;
       text-align:center;
 
-      .pure-u-1.stat
+      .pure-u-1-2.stat
       .inner-stat{
         @extend .flex-container;
           flex-direction:column;
@@ -443,16 +463,16 @@ h4 {
 
       }
 
-      .pure-u-1:nth-child(1) {
+      .pure-u-1-2:nth-child(1) {
         background-color:$stat-square-1;
       }
-      .pure-u-1:nth-child(2) {
+      .pure-u-1-2:nth-child(2) {
         background-color:$stat-square-2;
       }
-      .pure-u-1:nth-child(3) {
+      .pure-u-1-2:nth-child(3) {
         background-color:$stat-square-3;
       }
-      .pure-u-1:nth-child(4) {
+      .pure-u-1-2:nth-child(4) {
         background-color:$stat-square-4;
       }
 
@@ -666,6 +686,11 @@ h4 {
 
 }
 
+
+#post-started-university {
+  display:none;
+  height:300px;
+}
 .available-now-banner {
   h1 {
     color:white;
@@ -738,5 +763,30 @@ h4 {
       text-align:center;
       cursor:pointer;
       background-color: $primary-color;
+    }
+
+
+
+
+    .flex-item .pure-img {
+      height:250px;
+    }
+
+    .student-value-prop.content .pure-g {
+      height: 800px;
+    }
+
+    .hide-mobile {
+      display:none;
+    }
+
+    #student-value-prop-1,
+    #student-value-prop-2,
+    #student-value-prop-3,
+    #student-value-prop-4, {
+      .flex-item {
+        z-index:5;
+      }
+      height: 400px;
     }
 }

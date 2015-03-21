@@ -20,19 +20,8 @@
 {% block content %}
 {% endblock %}
 
-<script>
-app.yui.use('node-base', 'node-event-delegate', function (Y) {
-    // This just makes sure that the href="#" attached to the <a> elements
-    // don't scroll you back up the page.
-    Y.one('body').delegate('click', function (e) {
-        e.preventDefault();
-    }, 'a[href="#"]');
-});
 </script>
 {% block footer_scripts %}
 {% endblock %}
-
-<div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important"></div>
-
 </body>
 </html>

@@ -245,6 +245,26 @@ def login():
 def app_flex():
     return render_template("web/university.html")
 
+@app.route('/u/<name>/', methods=["GET"])
+def one_university(name):
+    from lib.university_data import supported_universities
+    university_names = supported_universities.keys()
+
+    if request.args.get("email", None) is not None:
+
+        email = request.args.get("email")
+        email_user = Email_User.initEmailUser(email)
+        session['email_user'] = email
+        session['email_user_id'] = email_user.id
+
+        return redirect(request.path)
+
+    if name in university_names:
+        return render_template("web/university.html", university=supported_universities[name])
+    else:
+        return redirect(url_for('app_flex'))
+
+
 @app.route('/')
 def student_home():
     return render_template("web/student.index.html")

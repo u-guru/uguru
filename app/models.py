@@ -1237,6 +1237,45 @@ class Batch(Base):
     )
 
 
+class Email_User(Base):
+    __tablename__ = 'email_user'
+    id = Column(Integer, primary_key=True)
+
+    #mandrill fields
+    time_open = Column(DateTime)
+    time_clicked = Column(DateTime)
+
+    #after they visit the website
+    time_visited = Column(DateTime)
+    email = Column(String)
+
+    signed_up = Column(Boolean, default=False)
+    num_clicks = Column(Integer, default = 0)
+
+    def increment_clicks(self):
+        self.num_clicks += 1
+        db_session.commit()
+
+    @staticmethod
+    def initEmailUser(email):
+
+        #see if it already exists
+        email_user = Email_User.query.filter_by(email = email).first()
+        if email_user:
+            email_user.num_clicks += 1
+            db_session.commit()
+            return
+
+        email_user = Email_User()
+        email_user.time_visited = datetime.now()
+        email_user.num_clicks = 1
+        email_user.email = email
+        db_session.add(email_user)
+        db_session.commit()
+        return email_user
+
+
+
 class Recipient(Base):
     __tablename__ = 'recipient'
     id = Column(Integer, primary_key=True)
