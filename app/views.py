@@ -253,8 +253,8 @@ def one_university(name):
 
         email = request.args.get("email")
         email_user = Email_User.initEmailUser(email)
-        session['email_user'] = email
-        session['email_user_id'] = email_user.id
+        # session['email_user'] = email
+        # session['email_user_id'] = email_user.id
 
         return redirect(request.path)
 
