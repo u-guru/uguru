@@ -1723,12 +1723,13 @@ class UserEmailView(restful.Resource):
         print request.json
         print email_user_id, email_address
 
-        if email_user_id:
-            email_user = Email_User.query.get(email_user_id).first()
-            email_user.signed_up = True
-            return jsonify(success=[True])
+        # if email_user_id:
+        #     email_user = Email_User.query.get(email_user_id).first()
+        #     email_user.signed_up = True
+        #     db_session.commit()
+        #     return jsonify(success=[True])
 
-        elif email_address:
+        if email_address:
             email_user = Email_User.query.filter_by(email=email_address).first()
 
             if email_user:
