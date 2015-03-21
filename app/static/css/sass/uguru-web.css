@@ -118,11 +118,7 @@ h4 {
   border: 1px solid #3D9988; }
 
 .pure-g {
-  flex-wrap: no-wrap !important;
   display: flex; }
-
-.pure-g .pure-u-1 {
-  flex-flow: row nowrap; }
 
 .header {
   background: #ffffff;

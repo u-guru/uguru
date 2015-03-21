@@ -236,14 +236,13 @@ def login():
     session.pop("admin")
     return render_template("login.html")
 
-
-# @app.route('/login/')
-# def admin_login():
-#     return render_template('admin/login.html', os=os)
-
 @app.route('/university/')
 def app_flex():
-    return render_template("web/university.html")
+
+    from lib.university_data import supported_universities
+    university_names = supported_universities.keys()
+
+    return render_template("web/university.html", university=supported_universities['virginia'])
 
 @app.route('/u/<name>/', methods=["GET"])
 def one_university(name):
