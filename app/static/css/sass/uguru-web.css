@@ -60,41 +60,41 @@ h4 {
 .buttons-right, .student-value-prop.content
 .pure-g .pure-u-1, .content .stats.pure-g .pure-u-1-2.stat
 .inner-stat {
-  display: flex;
   display: -webkit-box;
   /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box;
   /* OLD - Firefox 19- (buggy but mostly works) */
   display: -ms-flexbox;
   /* TWEENER - IE 10 */
-  display: -webkit-flex; }
+  display: -webkit-flex;
+  display: flex; }
 
 .no-overflow {
   overflow: hidden; }
 
 .flex-container-center, .popular-course-wrapper .banner {
-  justify-content: center;
   -ms-flex-justify-content: center;
   -webkit-justify-content: center;
   -webkit-box-justify-content: center;
   -moz-box-justify-content: center;
-  align-items: center;
+  justify-content: center;
   -moz-box-align-items: center;
   -webkit-box-align-items: center;
   -webkit-align-items: center;
   -ms-flex-align-items: center;
-  align-content: center;
+  align-items: center;
   -ms-flex-align-content: center;
   -webkit-align-content: center;
   -webkit-box-align-content: center;
-  -moz-box-align-content: center; }
+  -moz-box-align-content: center;
+  align-content: center; }
 
 .flex-container-col-reverse {
-  flex-direction: column-reverse;
   -webkit-flex-direction: column-reverse;
   -moz-box-flex-direction: column-reverse;
   -webkit-box-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse; }
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse; }
 
 .antonio-light {
   font-family: "Antonio-Light";
@@ -117,8 +117,14 @@ h4 {
   background-color: white;
   border: 1px solid #3D9988; }
 
+.pure-g {
+  flex-wrap: no-wrap !important;
+  display: flex; }
+
+.pure-g .pure-u-1 {
+  flex-flow: row nowrap; }
+
 .header {
-  padding: 1em;
   background: #ffffff;
   width: 100%;
   position: fixed;
@@ -135,7 +141,8 @@ h4 {
     -ms-flex-align-items: center; }
     .header .menu-left .left-header-item {
       display: inline-block;
-      margin: 0 0.5em; }
+      margin: 0 0.5em;
+      padding: 0.5em; }
   .header .menu-link {
     font-size: 10px;
     /* change this value to increase/decrease button size */
@@ -465,7 +472,6 @@ h4 {
   .university.splash-container .flex-container, .university.splash-container .flex-container-center, .university.splash-container .popular-course-wrapper .banner, .popular-course-wrapper .university.splash-container .banner, .university.splash-container .header .menu-left, .header .university.splash-container .menu-left, .university.splash-container .header .pure-g .buttons-right, .header .pure-g .university.splash-container .buttons-right, .university.splash-container .student-value-prop.content
   .pure-g .pure-u-1, .student-value-prop.content
   .pure-g .university.splash-container .pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .inner-stat, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .inner-stat {
-    display: flex;
     display: -webkit-box;
     /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box;
@@ -473,48 +479,34 @@ h4 {
     display: -ms-flexbox;
     /* TWEENER - IE 10 */
     display: -webkit-flex;
+    display: flex;
     text-align: center;
-    flex-direction: row;
-    -webkit-flex-direction: row;
-    -moz-box-flex-direction: row;
-    -webkit-box-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: column;
     -webkit-flex-direction: column;
     -moz-box-flex-direction: column;
     -webkit-box-flex-direction: column;
     -ms-flex-direction: column;
-    justify-content: center;
-    -ms-flex-justify-content: center;
-    -webkit-justify-content: center;
-    -webkit-box-justify-content: center;
-    -moz-box-justify-content: center; }
+    flex-direction: column; }
     .university.splash-container .flex-container.get-a-tutor, .university.splash-container .get-a-tutor.flex-container-center, .university.splash-container .popular-course-wrapper .get-a-tutor.banner, .popular-course-wrapper .university.splash-container .get-a-tutor.banner, .university.splash-container .header .get-a-tutor.menu-left, .header .university.splash-container .get-a-tutor.menu-left, .university.splash-container .header .pure-g .get-a-tutor.buttons-right, .header .pure-g .university.splash-container .get-a-tutor.buttons-right, .university.splash-container .student-value-prop.content
     .pure-g .get-a-tutor.pure-u-1, .student-value-prop.content
     .pure-g .university.splash-container .get-a-tutor.pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .get-a-tutor.inner-stat, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .get-a-tutor.inner-stat, .university.splash-container .flex-container.be-a-tutor, .university.splash-container .be-a-tutor.flex-container-center, .university.splash-container .popular-course-wrapper .be-a-tutor.banner, .popular-course-wrapper .university.splash-container .be-a-tutor.banner, .university.splash-container .header .be-a-tutor.menu-left, .header .university.splash-container .be-a-tutor.menu-left, .university.splash-container .header .pure-g .be-a-tutor.buttons-right, .header .pure-g .university.splash-container .be-a-tutor.buttons-right, .university.splash-container .student-value-prop.content
     .pure-g .be-a-tutor.pure-u-1, .student-value-prop.content
     .pure-g .university.splash-container .be-a-tutor.pure-u-1, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .be-a-tutor.inner-stat, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .be-a-tutor.inner-stat {
-      flex-direction: column;
-      -webkit-flex-direction: column;
-      -moz-box-flex-direction: column;
-      -webkit-box-flex-direction: column;
-      -ms-flex-direction: column;
       height: 100%;
-      align-items: center;
       -moz-box-align-items: center;
       -webkit-box-align-items: center;
       -webkit-align-items: center;
       -ms-flex-align-items: center;
-      align-content: center;
+      align-items: center;
       -ms-flex-align-content: center;
       -webkit-align-content: center;
       -webkit-box-align-content: center;
       -moz-box-align-content: center;
-      justify-content: center;
+      align-content: center;
       -ms-flex-justify-content: center;
       -webkit-justify-content: center;
       -webkit-box-justify-content: center;
-      -moz-box-justify-content: center; }
+      -moz-box-justify-content: center;
+      justify-content: center; }
       .university.splash-container .flex-container.get-a-tutor h2, .university.splash-container .get-a-tutor.flex-container-center h2, .university.splash-container .popular-course-wrapper .get-a-tutor.banner h2, .popular-course-wrapper .university.splash-container .get-a-tutor.banner h2, .university.splash-container .header .get-a-tutor.menu-left h2, .header .university.splash-container .get-a-tutor.menu-left h2, .university.splash-container .header .pure-g .get-a-tutor.buttons-right h2, .header .pure-g .university.splash-container .get-a-tutor.buttons-right h2, .university.splash-container .student-value-prop.content
       .pure-g .get-a-tutor.pure-u-1 h2, .student-value-prop.content
       .pure-g .university.splash-container .get-a-tutor.pure-u-1 h2, .university.splash-container .content .stats.pure-g .pure-u-1-2.stat .get-a-tutor.inner-stat h2, .content .stats.pure-g .pure-u-1-2.stat .university.splash-container .get-a-tutor.inner-stat h2, .university.splash-container .flex-container.be-a-tutor h2, .university.splash-container .be-a-tutor.flex-container-center h2, .university.splash-container .popular-course-wrapper .be-a-tutor.banner h2, .popular-course-wrapper .university.splash-container .be-a-tutor.banner h2, .university.splash-container .header .be-a-tutor.menu-left h2, .header .university.splash-container .be-a-tutor.menu-left h2, .university.splash-container .header .pure-g .be-a-tutor.buttons-right h2, .header .pure-g .university.splash-container .be-a-tutor.buttons-right h2, .university.splash-container .student-value-prop.content

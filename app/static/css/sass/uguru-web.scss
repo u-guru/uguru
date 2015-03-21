@@ -112,11 +112,11 @@ h4 {
 }
 
 .flex-container {
-  display:flex;
   display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
   display: -ms-flexbox;      /* TWEENER - IE 10 */
   display: -webkit-flex;
+  display:flex;
 }
 
 .no-overflow {
@@ -125,29 +125,33 @@ h4 {
 
 .flex-container-center {
   @extend .flex-container;
-  justify-content: center;
+
   -ms-flex-justify-content: center;
   -webkit-justify-content: center;
   -webkit-box-justify-content: center;
   -moz-box-justify-content: center;
-  align-items:center;
+  justify-content: center;
+
   -moz-box-align-items:center;
   -webkit-box-align-items:center;
   -webkit-align-items:center;
   -ms-flex-align-items:center;
-  align-content:center;
+  align-items:center;
+
   -ms-flex-align-content:center;
   -webkit-align-content:center;
   -webkit-box-align-content:center;
   -moz-box-align-content:center;
+  align-content:center;
 }
 
 .flex-container-col-reverse {
-  flex-direction: column-reverse;
+
   -webkit-flex-direction: column-reverse;
   -moz-box-flex-direction: column-reverse;
   -webkit-box-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
 }
 
 .antonio-light {
@@ -179,6 +183,14 @@ h4 {
 
 }
 
+.pure-g {
+  // flex-wrap: no-wrap !important;
+  display:flex;
+}
+
+.pure-g .pure-u-1 {
+  flex-flow: row nowrap;
+}
 
 //grid
 //mixins
@@ -187,7 +199,6 @@ h4 {
 }
 
 .header {
-     padding:1em;
      background:#ffffff;
      width:100%;
      position:fixed;
@@ -209,6 +220,7 @@ h4 {
         .left-header-item {
           display:inline-block;
           margin: 0 0.5em;
+          padding:0.5em;
         }
      }
 
@@ -272,10 +284,6 @@ h4 {
         margin:0px 0.75em;
 
       }
-
-      // a {
-      //   @extend .no-xspace;
-      // }
 
       .flex-item:last-child {
         margin-right:3em;
@@ -642,6 +650,7 @@ h4 {
   position:absolute;
   top:78px;
   width:100%;
+
   .pure-u-1 {
     text-transform: uppercase;
     padding:1.5em;
@@ -658,51 +667,45 @@ h4 {
   .pure-g {
     height:100%;
   }
+
+
+
   .flex-container {
-    display:flex;
     display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;
+    display:flex;
+
     text-align:center;
-    flex-direction: row;
-    -webkit-flex-direction: row;
-    -moz-box-flex-direction: row;
-    -webkit-box-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction:column;
+
     -webkit-flex-direction:column;
     -moz-box-flex-direction:column;
     -webkit-box-flex-direction:column;
     -ms-flex-direction:column;
-    justify-content: center;
-    -ms-flex-justify-content: center;
-    -webkit-justify-content: center;
-    -webkit-box-justify-content: center;
-    -moz-box-justify-content: center;
+    flex-direction:column;
 
     &.get-a-tutor, &.be-a-tutor {
-      flex-direction: column;
-      -webkit-flex-direction: column;
-      -moz-box-flex-direction: column;
-      -webkit-box-flex-direction: column;
-      -ms-flex-direction: column;
       height:100%;
-      align-items:center;
       -moz-box-align-items:center;
       -webkit-box-align-items:center;
       -webkit-align-items:center;
       -ms-flex-align-items:center;
-      align-content:center;
+      align-items:center;
+
+
       -ms-flex-align-content:center;
       -webkit-align-content:center;
       -webkit-box-align-content:center;
       -moz-box-align-content:center;
-      justify-content: center;
+      align-content:center;
+
+
       -ms-flex-justify-content: center;
       -webkit-justify-content: center;
       -webkit-box-justify-content: center;
       -moz-box-justify-content: center;
+      justify-content: center;
 
       h2 {
         font-family: "OpenSans-Light";
@@ -727,11 +730,6 @@ h4 {
       -moz-box-flex-direction: column;
       -webkit-box-flex-direction: column;
       -ms-flex-direction: column;
-      // align-items:flex-start;
-      // -moz-box-// align-items:flex-start;
-      // -webkit-box-// align-items:flex-start;
-      // -webkit-// align-items:flex-start;
-      // -ms-flex-// align-items:flex-start;
       align-content:flex-start;
       -ms-flex-align-content:flex-start;
       -webkit-align-content:flex-start;
