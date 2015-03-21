@@ -25,5 +25,18 @@ supported_universities = {
             "courses": "8,392",
             "rating": "4.8"
         }
+    },
+    "ucla": {
+        "popular_courses": ["MGMT1B", "HONOR17", "SOC20", "LGBTS167", "COMM371","CS175", \
+                            "CHEM 14A", "HIST2C", "LS2", "PHYS10", "PSYCH135", "FILM130"],
+        "edu": "ucla.edu",
+        "local_name": "UCLA",
+        "name": "University of California, Los Angeles",
+        "stats": {
+            "population": "41,000",
+            "departments": "186",
+            "courses": "8,392",
+            "rating": "4.8"
+        }
     }
 }
