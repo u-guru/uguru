@@ -65,7 +65,8 @@ angular.module('uguru.student.controllers')
       $scope.user.updateObj($scope.user, 'requests', $scope.requestObj, $scope);
 
       var cancelMsg = $scope.course.short_name + ' request canceled';
-      $scope.showSuccess(cancelMsg);
+      alert(cancelMsg)
+      // $scope.showSuccess(cancelMsg);
       // $timeout(function() {
       //   $state.go('^.home');
       // }, 1000);

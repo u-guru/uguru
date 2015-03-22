@@ -5,17 +5,17 @@
       </ion-nav-back-button>
     </ion-nav-bar>
   </ion-nav-buttons>
-<ion-view view-title="Request Help">
-  <ion-content style="bottom:0px;">
+<ion-view view-title="{{course.short_name}} Request">
+  <ion-content>
     <div class="relative">
       <ul class="list find-guru">
-        <li class="item no-border padding-10-14">
+        <!-- <li class="item no-border padding-10-14">
           <div class="course padding-20-15" style="padding-top:15px; padding-bottom:15px;">
             <span class="name">{{course.short_name}}</span>
             <span class="gurus">{{course.gurus.length}} GURUS AVAILABLE</span>
           </div>
-        </li>
-        <li class="item no-border padding-10-16">
+        </li> -->
+        <li class="item no-border padding-10-16" style="margin-top:20px;">
           <div class="message">I can meet my tutor...</div>
           <!-- <h1 class="animated flipOutY">Example</h1> -->
         </li>
@@ -90,6 +90,10 @@
           <p>{{calendar.num_selected}} times selected</p>
 
         </li>
+
+        <ion-toggle ng-model="pushToggle.checked" ng-checked="pushToggle.checked" ng-change="checkPush()"class="positive" ng-show="user.requests.length > 0 && user.current_device && platform.mobile && user.current_device.push_token === false">
+          Push Notifications
+        </ion-toggle>
 
       </ul>
 

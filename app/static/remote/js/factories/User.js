@@ -274,7 +274,10 @@ angular.module('uguru.user', [])
         $scope.user.default_transfer_card = user.default_transfer_card;
         $scope.user.course_guru_dict = user.course_guru_dict;
         $scope.user.gurus = user.gurus;
-        $scope.user.guru_relationships = $scope.user.guru_relationships;
+        $scope.user.guru_relationships = user.guru_relationships;
+        $scope.user.referred_by = user.referred_by;
+        $scope.user.current_device = user.current_device;
+        $scope.user.devices = user.devices;
 
         $scope.user.active_proposals = user.active_proposals;
         $scope.user.impact_events = user.impact_events;
@@ -641,6 +644,20 @@ angular.module('uguru.user', [])
                     });
             }
 
+            else if (param === 'device') {
+                Restangular
+                    .one(param)
+                    .customPOST(JSON.stringify(payload))
+                    .then(function(device){
+                        $scope.user.current_device = device;
+                        $localstorage.setObject('user', $scope.user);
+
+                    }, function(err){
+                        console.log(err);
+                        console.log('error...something happened with the server;')
+                    });
+            }
+
 
 
         },
@@ -664,7 +681,7 @@ angular.module('uguru.user', [])
                         }
 
                     }, function(err){
-                    if (err.status === 409 ) {
+                    if (err.status === 409) {
                             console.log('already have an active request');
                         } else {
                             console.log(err);
@@ -731,6 +748,32 @@ angular.module('uguru.user', [])
                         if (callback_success) {
                             callback_success($scope, processed_user)
                         }
+
+                    }, function(err){
+                    if (err.status === 409 ) {
+                            console.log('already have an active request');
+                        } else {
+                            console.log(err);
+                            console.log('error...something happened with the server;')
+                        }
+                    });
+            }
+            if (param === 'devices') {
+                Restangular
+                    .one('devices', userObj.id)
+                    .customPUT(JSON.stringify(payload))
+                    .then(function(device){
+                        $scope.user.current_device = device;
+                        // if (!$scope.user.devices) {
+                        //     $scope.user.devices = []
+                        // }
+                        // $scope.user.devices.push(device)
+                        $localstorage.setObject('user', $scope.user);
+                        // $localstorage.setObject('user', $scope.user);
+
+                        // if (callback_success) {
+                        //     callback_success($scope, processed_user)
+                        // }
 
                     }, function(err){
                     if (err.status === 409 ) {

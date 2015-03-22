@@ -10,11 +10,10 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   '$ionicTabsDelegate',
   '$q',
-  '$cordovaProgress',
   '$cordovaKeyboard',
   'University',
   function($scope, $state, $timeout, $localstorage,
-  $ionicModal, $ionicTabsDelegate, $q, $cordovaProgress,
+  $ionicModal, $ionicTabsDelegate, $q,
   $cordovaKeyboard, University) {
 
     $scope.major_search_text = '';
@@ -34,22 +33,25 @@ angular.module('uguru.util.controllers')
         var university_title = $scope.user.university.title;
         var msg_details = "Retrieving all " + university_title + ' majors'
 
-        if (!$scope.progress_active) {
-          $scope.progress_active = true;
-          $cordovaProgress.showSimpleWithLabelDetail(true, "Loading", msg_details);
-        } else {
-          console.log('progress spinner is already active!');
-        }
+        // if (!$scope.progress_active) {
+        //   $scope.progress_active = true;
+        //   $cordovaProgress.showSimpleWithLabelDetail(true, "Loading", msg_details);
+        // } else {
+        //   console.log('progress spinner is already active!');
+        // }
+
+        $scope.loader.show()
 
         University.getMajors($scope.user.university_id).then(
                 function(majors) {
-                  $cordovaProgress.hide();
+                  // $cordovaProgress.hide();
+                  $scope.loader.hide()
                   $scope.progress = false;
                     console.log(majors.length + ' majors uploaded from ' + $scope.user.university.title);
 
                   $timeout(function() {
                       var majorSuccessMsg = majors.length + ' majors Found!';
-                      $scope.showSuccess(majorSuccessMsg);
+                      // $scope.showSuccess(majorSuccessMsg);
                   }, 500)
 
                     if (promise) {
@@ -191,7 +193,7 @@ angular.module('uguru.util.controllers')
 
         $scope.major_search_text = '';
         $scope.closeKeyboard();
-        $scope.showSuccess('Major Saved!');
+        // $scope.showSuccess('Major Saved!');
         $timeout(function() {
           $scope.addMajorModal.hide();
         }, 1000);

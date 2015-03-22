@@ -18,7 +18,7 @@ angular.module('uguru.student.controllers')
 
 	$scope.saveUniversity = function() {
 		$scope.rootUser.updateLocal($scope.user);
-		$scope.showSuccess('Saved!');
+		// $scope.showSuccess('Saved!');
 	}
 
 	$ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {

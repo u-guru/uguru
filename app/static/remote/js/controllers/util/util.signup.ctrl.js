@@ -258,48 +258,22 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.showSuccess = function(msg) {
-      if (!$scope.progress_active)  {
-          $scope.progress_active = true;
-          $cordovaProgress.showSuccess(true, msg)
-
-          $timeout(function() {
-            $cordovaProgress.hide();
-            $scope.progress_active = false;
-
-            // console.log($state.current)
-
-            if ($state.current.name === 'root.student.request') {
-                var callRequestHelp = function() {
-                  $scope.requestHelp();
-                }
-                $scope.closeSignupModal(callRequestHelp);
-            }
-
-            else {
-              User.getUserFromServer($scope, null, $state);
-              $scope.closeSignupModal(function() {
-                $scope.bottomTabsDelegate.select(0);
-              });
-
-            }
-
-          }, 1000);
-      } else {
-
-        console.log('Show success cannot be shown because progress bar is already active');
-      }
-    }
-
     $scope.loginUser = function() {
       if (!$scope.validateLoginForm() && !$scope.user.fb_id) {
         return;
       }
 
-
       var loginPayload = {
         'email': $scope.signupForm.email,
         'password': $scope.signupForm.password
+      }
+
+      $scope.loginPayload.student_courses = $scope.user.student_courses;
+      $scope.loginPayload.university_id = $scope.user.university_id;
+      $scope.loginPayload.current_device = $scope.user.current_device;
+
+      if ($scope.user.current_device && $scope.user.current_device.id) {
+        $scope.loginPayload.current_device_id = $scope.user.current_device.id;
       }
 
       User.login(loginPayload).then(function(user) {
@@ -308,8 +282,6 @@ angular.module('uguru.util.controllers')
           User.assign_properties_to_root_scope($scope, processed_user)
           $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
-
-          $scope.showSuccess('Success');
 
       }, function(err) {
         if (err.status === 401) {
@@ -330,6 +302,12 @@ angular.module('uguru.util.controllers')
 
       $scope.signupForm.student_courses = $scope.user.student_courses;
       $scope.signupForm.university_id = $scope.user.university_id;
+      $scope.signupForm.current_device = $scope.user.current_device;
+
+      if ($scope.user.current_device && $scope.user.current_device.id) {
+        $scope.signupForm.current_device_id = $scope.user.current_device.id;
+      }
+
       $scope.signupForm.guru_mode = false;
 
       User.create($scope.signupForm).then(function(user) {
@@ -341,7 +319,22 @@ angular.module('uguru.util.controllers')
 
           $localstorage.setObject('user', $scope.user);
 
-          $scope.showSuccess('Success');
+
+          //if we are about to create a request
+          if ($state.current.name === 'root.student.request') {
+                var callRequestHelp = function() {
+                  $scope.requestHelp();
+                }
+                $scope.closeSignupModal(callRequestHelp);
+            }
+
+            else {
+              User.getUserFromServer($scope, null, $state);
+              $scope.closeSignupModal(function() {
+                $scope.bottomTabsDelegate.select(0);
+              });
+
+          }
       },
       function(err){
         if (err.status === 409) {

@@ -58,7 +58,7 @@ angular.module('uguru.util.controllers')
             $timeout(function() {
               $scope.request.location = formatted_address;
             }, 500);
-            // $scope.setMarkerPosition($scope.marker, latCoord, longCoord);
+            $scope.setMarkerPosition($scope.marker, latCoord, longCoord);
             // $scope.request.autocomplete = results[0].formatted_address;
             // var infowindow = new google.maps.InfoWindow();
             // infowindow.setContent(results[0].formatted_address);

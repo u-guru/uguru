@@ -22,22 +22,29 @@ angular.module('uguru.root.services')
 					negativeBtnText: options.negativeBtnText
 				}
 
-				scope.popup = $ionicPopup.show(popupOptions);
+				scope.popup;
 
-			   	$timeout(function() {
-			   		document.getElementById("popup-cancel-btn").addEventListener("click", function() {
-		                if (options.onFailure) {
-				        	options.onFailure()
-				        }
-				        scope.popup.close();
-				    });
-				    document.getElementById("popup-positive-btn").addEventListener("click", function() {
-				        if (options.onSuccess) {
-				        	options.onSuccess()
-				        }
-				        scope.popup.close();
-				    });
-			   	}, options.delay);
+				$timeout(function(){
+
+					scope.popup = $ionicPopup.show(popupOptions);
+
+					$timeout(function() {
+			   			document.getElementById("popup-cancel-btn").addEventListener("click", function() {
+		                	if (options.onFailure) {
+				        		options.onFailure()
+				        	}
+				        	scope.popup.close();
+				    	});
+				    	document.getElementById("popup-positive-btn").addEventListener("click", function() {
+				        	if (options.onSuccess) {
+				        		options.onSuccess()
+				        	}
+				        	scope.popup.close();
+				    	});
+			   		}, options.delay);
+
+				}, options.pre_delay);
+
 
 	        },
 	    }

@@ -181,7 +181,7 @@ angular.module('uguru.util.controllers')
 
         $scope.course_search_text = '';
         $scope.closeKeyboard();
-        $scope.showSuccess('Course Saved!');
+        // $scope.showSuccess('Course Saved!');s
         $timeout(function() {
           $scope.addCourseModal.hide();
         }, 1000);

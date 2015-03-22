@@ -17,9 +17,15 @@ angular.module('uguru.student.controllers')
   '$cordovaDialogs',
   '$cordovaGeolocation',
   '$ionicHistory',
+  'CordovaPushWrapper',
+  '$ionicPlatform',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $stateParams,
-  $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation, $ionicHistory) {
+  $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
+  $ionicHistory, CordovaPushWrapper, $ionicPlatform) {
+
+    //TODO: ADD ACTION BAR W / FILE SUPPORT
+    //TODO: IF NOT PUSH NOTIFICATIONS, SHOW IT HERE AS PART OF THE FORM
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/add-note.modal.html', {
       scope: $scope,
@@ -68,53 +74,6 @@ angular.module('uguru.student.controllers')
     $scope.checkboxClicked = function(index) {
 
       $scope.time_checkbox = index;
-
-      // var iconRecord = "iconRecord" + index;
-      // var checkbox_num = [document.getElementById(iconRecord)];
-      // var checkbox_position = $ionicPosition.offset(checkbox_num).left;
-      // var to = half_box_size + checkbox_position
-      // to_position = to;
-
-      // animateMe();
-
-      // function animateRight(obj, from, to){
-      //   if(from >= to){
-      //     obj.style.visibility = 'display';
-      //     return;
-      //   }
-      //   else {
-      //     var box = obj;
-      //     box.style.left = from + "px";
-      //     setTimeout(function(){
-      //         animateRight(obj, from + 2, to);
-      //     }, 1)
-      //   }
-      // }
-
-      // function animateLeft(obj, from, to){
-      //   if(from <= to){
-      //     obj.style.visibility = 'display';
-      //     return;
-      //   }
-      //   else {
-      //     var box = obj;
-      //     box.style.left = from + "px";
-      //     setTimeout(function(){
-      //         animateLeft(obj, from - 2, to);
-      //     }, 1)
-      //   }
-      // }
-
-      // function animateMe() {
-
-      //   if(to_position > from_position) {
-      //     animateRight(document.getElementById('iconChecked'), from_position, to_position);
-      //   }
-      //   else {
-      //     animateLeft(document.getElementById('iconChecked'), from_position, to_position);
-      //   }
-      // }
-      // from_position = to_position;
     }
 
     $scope.toggleVirtualGuru = function() {
@@ -126,9 +85,8 @@ angular.module('uguru.student.controllers')
       if ($scope.person_guru_checkbox) {
         // $scope.user.position = null;
 
-        $scope.checkLocationStatus();
-
-        if (!$scope.requestPosition) {
+        // $scope.checkLocationStatus();
+        if (!$scope.requestPosition && !$scope.user.current_device.location_enabled) {
           //get location & fire the modal
           Geolocation.getUserPosition($scope, $scope.showRequestMapModal);
         }
@@ -231,6 +189,21 @@ angular.module('uguru.student.controllers')
     }
 
     var validateRequestForm = function() {
+      if ($scope.calendar.num_selected === 0) {
+        alert('Please fill in Calendar');
+        return false;
+      }
+
+      if (!($scope.virtual_guru_checkbox || $scope.person_guru_checkbox)) {
+        alert('Please check guru or virtual');
+        return false;
+      }
+
+      if (!$scope.request.note) {
+        alert('Please add a description');
+        return false;
+      }
+
       return true;
     }
 
@@ -243,7 +216,7 @@ angular.module('uguru.student.controllers')
       }
 
       if (!validateRequestForm()) {
-        console.log('form has errors');
+        return;
       }
 
       $scope.saveRequestToUser();
@@ -251,15 +224,9 @@ angular.module('uguru.student.controllers')
       $timeout(function() {
 
         $state.go('^.home');
-        $timeout(function() {
-          $scope.contactingGuruModal.hide();
-        }, 5000);
 
-      }, 250);
+      }, 3000);
 
-      //are push notifications enabled?
-
-      //validate the form?
     }
 
     $scope.showDialog = function(msg, title, button_name, callback) {
@@ -315,6 +282,57 @@ angular.module('uguru.student.controllers')
           }
         }
     }
+
+
+    $scope.$on('$ionicView.Enter', function(){
+
+      console.log($state.current.name, 'enter')
+
+    });
+
+    $scope.$on('$ionicView.beforeEnter', function(){
+      $scope.loader.show();
+      console.log($state.current.name, 'before enter');
+
+      // if ($scope.platform.mobile) {
+      //   $scope.user.current_device = ionic.Platform.device();
+      // }
+
+      // if ($scope.platform.mobile && $scope.platform.ios
+      //   && $scope.user.current_device && $scope.user.current_device.location_enabled === false) {
+
+      //   console.log('checking notifications');
+
+      //   CordovaPushWrapper.register($scope);
+
+      // }
+
+    });
+
+    $scope.pushToggle = {checked: false};
+    $scope.checkPush = function() {
+      if ($scope.platform.mobile) {
+        $scope.user.current_device = ionic.Platform.device();
+        CordovaPushWrapper.register($scope);
+      }
+      if (!$scope.user.current_device.push_token) {
+        $scope.root.dialog.alert('Go to your settings & enable push notifications', 'Please Enable', 'Got it',
+          function() {$scope.pushToggle.checked = false;});
+      } else {
+        $scope.pushToggle.checked = true;
+      }
+    }
+
+    $scope.$on('$ionicView.afterEnter', function(){
+      console.log($state.current.name, 'after enter')
+      console.log('device', JSON.stringify($scope.user.current_device));
+      $scope.loader.hide();
+
+    });
+
+    $scope.$on('$ionicView.loaded', function(){
+
+    });
 
   }
 ]);

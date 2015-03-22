@@ -5,7 +5,7 @@ var REST_URL = 'http://uguru-rest.herokuapp.com';
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.0.104:8100/remote/';
+  BASE_URL = 'http://192.168.0.104:8100';
   REST_URL = 'http://192.168.0.104:5000'
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
@@ -16,7 +16,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
   $cordovaDialogs, Version, $cordovaSplashscreen, $rootScope,
-  $templateCache, Device, User, $cordovaLocalNotification, $cordovaPush) {
+  $templateCache, Device, User, $cordovaLocalNotification) {
   $ionicPlatform.ready(function() {
     document.addEventListener("deviceready", function () {
         $cordovaSplashscreen.hide();
@@ -29,52 +29,15 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         states[Connection.WIFI]     = 'WiFi connection';
         states[Connection.CELL_2G]  = 'Cell 2G connection';
         states[Connection.CELL_3G]  = 'Cell 3G connection';
-        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';2
         states[Connection.CELL]     = 'Cell generic connection';
         states[Connection.NONE]     = 'No network connection';
 
         console.log('Connection type: ' + states[networkState]);
 
-        var iosConfig = {
-          "badge": true,
-          "sound": true,
-          "alert": true,
-        };
-
-        //TODO put this somewhere else
-          $cordovaPush.register(iosConfig).then(function(result) {
-            // Success -- send deviceToken to server, and store for future use
-            console.log("result: " + result)
-            // $http.post("http://server.co/", {user: "Bob", tokenID: result.deviceToken})
-          }, function(err) {
-            console.log("Registration error: " + err)
-          });
-
-
-
         //Set platform in local store
         $localstorage.setObject('platform', ionic.Platform.platform());
         $localstorage.setObject('device', ionic.Platform.device());
-
-
-        var local_user = $localstorage.getObject('user');
-        if (!local_user.devices) {
-          local_user.devices = [];
-        }
-        if (local_user && local_user.devices.length ===0) {
-          var currentDevice = ionic.Platform.device();
-          local_user.current_device = currentDevice;
-          local_user.devices.push(currentDevice);
-          $localstorage.setObject('user', local_user);
-
-          if (!local_user.id) {
-            console.log('saving device to server');
-            Device.post(currentDevice).then(function(result) {
-              console.log('result received');
-              console.log(result.plain());
-            });
-          }
-        }
 
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -82,9 +45,13 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
           cordova.plugins.Keyboard.disableScroll(true);
         }
-        if (window.StatusBar) {
+
+        if (ionic.Platform.isIOS() && window.StatusBar) {
+
           StatusBar.overlaysWebView(true);
           StatusBar.styleLightContent();
+        } else {
+          console.log('skipping status bar because its only for android 5+');
         }
 
       checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
@@ -117,7 +84,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         abstract: true,
         templateUrl: 'templates/root.html',
         controller: function($ionicPlatform, $scope, $state, $localstorage, User,
-          RootService, Version, $ionicHistory, $templateCache, $ionicLoading) {
+          RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
+          CordovaPushWrapper, $cordovaPush) {
 
           // $localstorage.removeObject('user');
           $scope.user = User.getLocal();
@@ -147,6 +115,30 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                 mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid(),
                 web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid()),
               }
+
+              console.log('user is on mobile:', $scope.platform.mobile);
+
+
+              // attempt to register device APN notifications for android .. immediately!
+
+              if ($scope.platform.mobile) {
+                $scope.user.current_device = ionic.Platform.device();
+                $scope.user.current_device.user_id = $scope.user.id;
+                console.log('saving user device...', $scope.user.current_device);
+                $scope.user.createObj($scope.user.current_device, 'device', $scope.user.current_device, $scope);
+
+              }
+
+              if ($scope.platform.mobile && $scope.platform.android) {
+                CordovaPushWrapper.register($scope);
+
+                $rootScope.$on('pushNotificationReceived', function(event, notification) {
+                  CordovaPushWrapper.received($scope, event, notification);
+
+                });
+
+              }
+
           });
 
           document.addEventListener("deviceready", function () {
@@ -347,6 +339,11 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
                       Version.setVersion(1.0);
                     }
                     console.log('user v:' + currentVersion.toString() + '. Server v:' + serverVersionNumber);
+
+                    if (LOCAL) {
+                      $templateCache.removeAll();
+                    }
+
                     if (serverVersionNumber != currentVersion) {
 
                       $ionicHistory.clearCache();
@@ -355,7 +352,7 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
                       window.localStorage.clear();
 
                       //remove all angular templates
-                      // $templateCache.removeAll();
+                      $templateCache.removeAll();
 
                       Version.setVersion(serverVersionNumber);
                       $localstorage.set('recently_updated', true);

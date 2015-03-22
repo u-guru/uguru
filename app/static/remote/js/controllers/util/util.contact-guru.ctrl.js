@@ -9,9 +9,12 @@ angular.module('uguru.util.controllers')
   '$localstorage',
   '$ionicModal',
   'User',
+  'CordovaPushWrapper',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, User) {
+ 	$ionicModal, User, CordovaPushWrapper) {
     $scope.$on('modal.shown', function() {
+
+
 
       if ($scope.contactingGuruModal.isShown()) {
         var pulse = document.getElementById('pulse')
@@ -24,18 +27,41 @@ angular.module('uguru.util.controllers')
 
         setTimeout(function() {
           pulse.classList.add('animated', 'pulse');
+
           setTimeout(function() {
             console.log('shit is pulsating 3 second has passed');
             pulse.classList.remove('animated', 'pulse');
+
           }, 2000);
         }, 2000);
 
-        setTimeout(function() {
-          pulse.classList.add('animated', 'pulse');
-          setTimeout(function() {
-            pulse.classList.remove('animated', 'pulse');
-          }, 3000);
-        }, 3000);
+
+        if ($scope.platform.mobile && $scope.platform.ios) {
+
+              if (!$scope.user.current_device) {
+
+                  $scope.user.current_device = ionic.Platform.device();
+
+              }
+
+              CordovaPushWrapper.register($scope,
+                function() {
+                     setTimeout(function() {
+                        pulse.classList.add('animated', 'pulse');
+
+                        setTimeout(function() {
+                          console.log('shit is pulsating 3 second has passed');
+                          pulse.classList.remove('animated', 'pulse');
+                          $scope.closeContactGuruModal();
+                        }, 2000);
+                      }, 2000);
+              });
+
+
+
+        }
+
+        //TODO --> Cancel guru functioninality working
 
         setTimeout(function() {
           pulse.classList.add('animated', 'pulse');

@@ -64,17 +64,11 @@ angular.module('uguru.util.controllers', [])
     $scope.universities = GetUniversityList();
 
     $scope.getUniversitiesFromServer = function(promise) {
-        if (!$scope.progress_active) {
-          $scope.loader.show();
-        }
+        $scope.loader.show();
         University.get().then(
           function(universities) {
               $scope.loader.hide();
               $scope.keyboard_force_off = false;
-
-              $timeout(function() {
-                $scope.showSuccess('Success!');
-              }, 500);
 
               $timeout(function() {
                 $scope.setFocus();
@@ -130,7 +124,7 @@ angular.module('uguru.util.controllers', [])
       $scope.rootUser.updateLocal($scope.user);
       $scope.user.updateAttr('university_id', $scope.user, $scope.user.university_id);
       $scope.closeKeyboard();
-      $scope.showSuccess('University Saved!');
+      // $scope.showSuccess('University Saved!');
       $timeout(function() {
         $scope.addUniversityModal.hide();
       }, 1000);

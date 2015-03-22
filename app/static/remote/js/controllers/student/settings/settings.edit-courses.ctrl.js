@@ -10,7 +10,7 @@ angular.module('uguru.student.controllers')
   '$ionicHistory',
   '$ionicModal',
   '$cordovaKeyboard',
-  function($scope, $state, $cordovaProgress, $timeout, $ionicHistory,
+  function($scope, $state, $timeout, $ionicHistory,
   	$ionicModal, $cordovaKeyboard) {
     $scope.editMode = false;
 	$scope.progress_active = false;
@@ -18,7 +18,7 @@ angular.module('uguru.student.controllers')
 
 	$scope.saveCourses = function() {
 		$scope.rootUser.updateLocal($scope.user);
-		$scope.showSuccess('Saved!');
+		// $scope.showSuccess('Saved!');
 	}
 
 	$scope.toggleEditMode = function() {
@@ -32,6 +32,8 @@ angular.module('uguru.student.controllers')
 			$scope.rootUser.updateLocal($scope.user);
 		}
 	}
+
+    //TODO: EDIT COURSES for GURUS / STUDENTS + SERVER PERSISTENCE
 
 	$ionicModal.fromTemplateUrl(BASE + 'templates/add-course.modal.html', {
 	    scope: $scope,

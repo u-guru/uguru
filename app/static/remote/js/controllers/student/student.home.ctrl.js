@@ -22,10 +22,16 @@ angular.module('uguru.student.controllers', [])
   '$ionicBackdrop',
   'User',
   '$ionicHistory',
+  'CordovaPushWrapper',
+  '$ionicPlatform',
+  '$rootScope',
+  '$cordovaPush',
+  '$ionicPlatform',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $q,
  	University, $templateCache, $ionaicHistory, Popup, $popover, Popover, $ionicBackdrop,
-  User, $ionicHistory) {
+  User, $ionicHistory, CordovaPushWrapper, $ionicPlatform, $rootScope, $cordovaPush,
+  $ionicPlatform) {
 
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
@@ -128,6 +134,7 @@ angular.module('uguru.student.controllers', [])
 
     $scope.goToRequest = function(course) {
       // $scope.root.button.showButtonPressedAndHide($event.target);
+      $scope.loader.show();
       $state.go('^.request', {courseObj:JSON.stringify(course)});
     }
 
@@ -261,7 +268,7 @@ angular.module('uguru.student.controllers', [])
 
     //       popoverOptions = {
     //         targetElement:'#home-header',
-    //         title: 'Tap to request help',
+  //         title: 'Tap to request help',
     //         delay: 500,
     //         animation:null,
     //         placement: 'bottom',
@@ -281,7 +288,7 @@ angular.module('uguru.student.controllers', [])
     });
 
     $scope.$on('$ionicView.beforeLeave', function(){
-      console.log('leaving...');
+      console.log($state.current.name, 'leaving...');
     });
 
     $scope.$on('modal.shown', function() {
@@ -293,19 +300,11 @@ angular.module('uguru.student.controllers', [])
     });
 
     $scope.$on('$ionicView.loaded', function(){
-      if (!$scope.user.onboarding || !$scope.user.onboarding.get_started) {
-        $scope.user.onboarding = {};
-        $scope.user.onboarding.get_started = true;
-        options =  {
-        desiredAccuracy: 5,
-        stationaryRadius: 20,
-        distanceFilter: 30,
-        activityType: 'Fitness',
-        debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
-        stopOnTerminate: false
-      }
-      }
+
+
+
     });
+
 
   }
 

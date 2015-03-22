@@ -9,10 +9,9 @@ angular.module('uguru.util.controllers')
   '$localstorage',
   '$ionicModal',
   '$ionicHistory',
-  '$cordovaProgress',
   '$stateParams',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $ionicHistory, $cordovaProgress, $stateParams) {
+ 	$ionicModal, $ionicHistory, $stateParams) {
 
     $scope.debitCardOnly = ($stateParams && $stateParams.debitCardOnly) || $scope.user.guru_mode;
 
@@ -86,24 +85,12 @@ angular.module('uguru.util.controllers')
         if (response.error) {
 
             $scope.progress_active = true;
-            $cordovaProgress.showSuccess(true, response.error.message);
-            $timeout(function() {
-              $cordovaProgress.hide();
-              $scope.progress_active = false;
-            }, 1000);
+            alert(response.error.message);
 
         }
         else if ($scope.debitCardOnly && response.card.funding !== "debit") {
-
-          $scope.progress_active = true;
-            $cordovaProgress.showSuccess(true, "Please Enter a Debit Card. This one appears to be credit.");
-            $timeout(function() {
-              $cordovaProgress.hide();
-              $scope.progress_active = false;
-          }, 1000);
-
+            alert("Please Enter a Debit Card. This one appears to be credit.");
         }
-
         else {
 
           var cardInfo = {
@@ -125,7 +112,7 @@ angular.module('uguru.util.controllers')
           $scope.user.cards.push(cardInfo);
 
           $scope.user.createObj($scope.user, 'cards', cardInfo, $scope);
-          $scope.showSuccess("Card added!");
+          alert("Card successfully added!");
         }
       }
 
@@ -149,7 +136,7 @@ angular.module('uguru.util.controllers')
 
       $scope.user.updateObj($scope.user, 'cards', cardInfo, $scope);
 
-      $scope.showSuccess('Card Deleted');
+      alert('Card Successfully Deleted');
     }
     $scope.setDefault = function() {
 
@@ -180,7 +167,7 @@ angular.module('uguru.util.controllers')
       }
 
       $scope.user.updateObj($scope.user, 'cards', cardInfo, $scope);
-      $scope.showSuccess('Default Set!');
+      alert('Card Default Set!');
 
     }
 

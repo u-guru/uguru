@@ -14,7 +14,7 @@ angular.module('uguru.student.controllers')
 	$scope.saveProfile = function() {
 		console.log($scope.user.email);
 		$scope.rootUser.updateLocal($scope.user);
-		$scope.showSuccess('Saved!');
+		// $scope.showSuccess('Saved!');
 	}
 
 	// $scope.showSuccess = function(msg) {
