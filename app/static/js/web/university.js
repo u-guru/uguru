@@ -1,5 +1,5 @@
 
-
+var button_clicked = false;
 //jquery shiz
 $(document).ready(function() {
     $('.go-to-call-action').click(function() {
@@ -14,6 +14,7 @@ $(document).ready(function() {
     })
 
     $('#get-app-button-clicked').click(function() {
+        button_clicked = true;
          $(".main").moveTo(5);
     });
 });

@@ -194,7 +194,9 @@
        pagination: false,
        updateURL: false,
        beforeMove: function(index) {
-
+            if (index == 5 && !button_clicked) {
+                $(".main").moveTo(4);
+            }
             if (index == 5) {
                 $('.call-to-action-button').hide();
                 $('.opt-out-button').show();
