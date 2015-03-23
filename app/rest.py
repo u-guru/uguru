@@ -1733,7 +1733,8 @@ class UserEmailView(restful.Resource):
             email_user = Email_User.query.filter_by(email=email_address).first()
 
             if email_user:
-                email_user.signed_up = True
+                # email_user.signed_up = True
+                email_user.call_to_action_clicked = True
                 db_session.commit()
                 return jsonify(success=[True])
 

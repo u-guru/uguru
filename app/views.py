@@ -271,7 +271,6 @@ def one_university_mobile(name):
     email= None
 
     if request.args.get("email", None) is not None:
-
         email = request.args.get("email")
         email_user = Email_User.initEmailUser(email)
         session['email'] = email
@@ -282,6 +281,8 @@ def one_university_mobile(name):
         first_name = session.get("name")
     if session.get("email"):
         email = session.get("email")
+
+    print email, first_name
 
     if name in university_names:
         return render_template("web/university_mobile.html", \

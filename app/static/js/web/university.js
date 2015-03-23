@@ -14,6 +14,10 @@ $(document).ready(function() {
     })
 
     $('#get-app-button-clicked').click(function() {
+        email_address_str = $('#get-app-button-clicked').data().attrEmail;
+        if (email_address_str && email_address_str.length > 0) {
+            sendEmailToServer(email_address_str);
+        }
         button_clicked = true;
          $(".main").moveTo(5);
     });

@@ -1249,6 +1249,7 @@ class Email_User(Base):
     time_visited = Column(DateTime)
     email = Column(String)
 
+    call_to_action_clicked = Column(Boolean, default=False)
     signed_up = Column(Boolean, default=False)
     num_clicks = Column(Integer, default = 0)
 
