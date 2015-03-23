@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="yui3-js-enabled"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A layout example that shows off a responsive product landing page.">
+
+<title>{% block title_text %}{% endblock %}</title>
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+<link rel="stylesheet" href="/static/css/web/lib/onepagescroll.css">
+<link rel="stylesheet" href="/static/css/sass/uguru-web.css">
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="/static/js/web/lib/onepagescroll.min.js"></script>
+<script src="/static/js/web/university.js"></script>
+<body id="mobile-university">
+  <div class="main">
+    <section class="pure-g">
+        <div class="pure-u-1 flex-item">
+            <div class="padding-1em">
+                <h2> Affordable academic help at your fingertips </h2>
+                <h4>Sessions with your perfect tutor from $3 every 15 min.</h4>
+            </div>
+        </div>
+        <div class="pure-u-1 flex-item">
+            <div class="padding-1em">
+                <img src="/static/img/phone1.png"/>
+            </div>
+        </div>
+    </section>
+
+    <section class="pure-g">
+        <div class="pure-u-1 flex-item">
+            <div class="padding-1em">
+                <h2> Affordable academic help at your fingertips </h2>
+                <h4>Sessions with your perfect tutor from $3 every 15 min.</h4>
+            </div>
+        </div>
+        <div class="pure-u-1 flex-item">
+            <div class="padding-1em">
+                <img src="/static/img/phone2.png"/>
+            </div>
+        </div>
+    </section>
+
+    <section class="pure-g">
+        <div class="pure-u-1 flex-item">
+            <div class="padding-1em">
+                <h2> Affordable academic help at your fingertips </h2>
+                <h4>Sessions with your perfect tutor from $3 every 15 min.</h4>
+            </div>
+        </div>
+        <div class="pure-u-1 flex-item">
+            <div class="padding-1em">
+                <img src="/static/img/phone3.png"/>
+            </div>
+        </div>
+    </section>
+
+    <section class="pure-g">
+        <div class="pure-u-1 flex-item">
+            <div class="padding-1em">
+                <h2>Uguru is open 24/7</h2>
+                <h4>Sessions with your perfect tutor from $3 every 15 min.</h4>
+            </div>
+        </div>
+        <div class="pure-u-1 flex-item">
+            <div class="padding-1em">
+                <img src="/static/img/phone4.png"/>
+            </div>
+        </div>
+    </section>
+    <section class="pure-g last-mobile-slider-action">
+        <div class="pure-u-1 flex-item enter-email-wrapper">
+            <div class="padding-1em">
+                <h1>Add your email to get early access</h1>
+            </div>
+        </div>
+        <div class="pure-u-1 flex-item enter-email-wrapper">
+            <div>
+                <div class="pure-g university-banner-wrapper">
+                    <div class="pure-u-1 pure-u-sm-1-3 pure-u-md-1-3 university-
+                    banner">
+                        <img class="banner-school-specific" src="/static/img/guru-school-banner-beige.svg"/>
+                        <div class="banner-school-content-container flex-container">
+                            <img src="/static/img/guru-logo-school-banner-01.svg"/>
+                            <h2> uguru </h2>
+                            <h4> {{university["name"]}} </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pure-u-1 flex-item enter-email-wrapper">
+            <div class="padding-1em">
+                <h4> First gurus on platform make <u>most money</u> </h4>
+                <div class="text-input-container pure-g">
+                    <div class="pure-u-1 flex-item">
+                        <input class="padding-1em text-box" id="university-email-input" placeholder="enter @{{university['edu']}}">
+                        </input>
+                        <div class="padding-1em text-box-submit" id="submit-university-email">
+                            Submit
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pure-u-1 flex-item enter-email-wrapper popular-course-wrapper content">
+            <div class="pure-g course-row">
+                <div class="pure-u-1 popular-courses-text padding-1em">
+                    <h5>Most popular this week</h5>
+                </div>
+                <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][0]}}</h4>
+                    </div>
+                </div>
+
+                <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][1]}}</h4>
+                    </div>
+                </div>
+
+                <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][2]}}</h4>
+                    </div>
+                </div>
+
+                <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][3]}}</h4>
+                    </div>
+                </div>
+
+                <div class="pure-u-1-3 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][4]}}</h4>
+                    </div>
+                </div>
+
+                <div class="pure-u-1-3 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][5]}}</h4>
+                    </div>
+                </div>
+            </div>
+                <div class="pure-g course-row-2">
+                    <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                        <div class="padding-1em flex-container-center">
+                            <h4>{{university["popular_courses"][6]}}</h4>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                        <div class="padding-1em flex-container-center">
+                            <h4>{{university["popular_courses"][7]}}</h4>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                        <div class="padding-1em flex-container-center">
+                            <h4>{{university["popular_courses"][8]}}</h4>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                        <div class="padding-1em flex-container-center">
+                            <h4>{{university["popular_courses"][9]}}</h4>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-3 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
+                        <div class="padding-1em flex-container-center">
+                            <h4>{{university["popular_courses"][10]}}</h4>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-3 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
+                        <div class="padding-1em flex-container-center">
+                            <h4>{{university["popular_courses"][11]}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <section>...</section> -->
+  </div>
+  <button class="call-to-action-button" id="get-app-button-clicked">
+    <h1> Get app now</h1>
+  </button>
+    <script>
+    $(".main").onepage_scroll({
+   sectionContainer: "section",
+   easing: "ease",
+   animationTime: 1000,
+   pagination: false,
+   updateURL: true,
+   beforeMove: function(index) {
+        if (index == 5) {
+            $('.call-to-action-button').hide();
+        } else {
+            $('.call-to-action-button').show();
+        }
+    },
+   afterMove: function(index) {},  //todo, update analytics
+   loop: false,
+   keyboard: true,
+   responsiveFallback: false,
+   direction: "horizontal"
+});
+
+    </script>
+</body>
+
+{% include 'web/components/analytics-tools.html' %}
+</body>
+</html>

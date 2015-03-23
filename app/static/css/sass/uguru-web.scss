@@ -915,3 +915,216 @@ h4 {
       height: 400px;
     }
 }
+
+#mobile-university {
+
+  .call-to-action-button {
+      @extend .flex-container-center;
+      position: fixed;
+      height: 15%;
+      background-color: $primary-color;
+      color:white;
+      bottom: 0px;
+      width: 100%;
+      border:0px;
+      // border-top: 8px solid #62B5A5;
+  }
+
+  .call-to-action-button:active
+  {
+    border-top:0px;
+    border-bottom:8px solid #035A49;
+    background-color:rgba(255,255,255,0.9);
+    color: $primary-color;
+  }
+
+  section:nth-child(1) {
+      background-color:$student-value-prop-1;
+  }
+  section:nth-child(2) {
+      background-color:$student-value-prop-2;
+  }
+  section:nth-child(3) {
+      background-color:$student-value-prop-3;
+  }
+  section:nth-child(4) {
+      background-color:$student-value-prop-4;
+  }
+
+  .flex-item:nth-child(1) {
+    @extend .flex-container-center;
+    height:20%;
+    color:rgba(255,255,255,1);
+    text-align:center;
+    h4 {
+      color:rgba(255,255,255,0.8);
+    }
+  }
+
+  .flex-item:nth-child(2) {
+    @extend .flex-container-center;
+    justify-content: flex-start;
+    flex-direction:column;
+    height:80%;
+    color:rgba(255,255,255,0.9);
+    text-align:center;
+  }
+
+  .last-mobile-slider-action {
+    text-align:center;
+    flex-direction:flex-start;
+    justify-content:flex-center;
+    height:100%;
+    color: $primary-color;
+    background-color:$school-banner-color;
+
+    #university-email-input {
+      color:$primary-color;
+    }
+
+    .text-input-container
+    .pure-u-1 {
+      background-color:$primary-color;
+      .text-box {
+        padding:0.76em;
+        width:60%;
+        outline:none;
+        border:none;
+      }
+
+      .text-box-submit {
+        width:20%;
+        display:inline-block;
+        margin-left: 4px;
+        color:white;
+        padding:12px 1.19em;
+        text-align:center;
+        cursor:pointer;
+        background-color: $primary-color;
+      }
+    }
+    #submit-university-email {
+      background-color: $primary-color;
+    }
+  }
+  .flex-item.enter-email-wrapper:nth-child(1) {
+
+    height:15%;
+    color:rgba(255,255,255,1);
+    background-color:$school-banner-color;
+    h1 {
+      @extend .no-xspace;
+      font-size:150%;
+    }
+    padding:1em;
+  }
+
+  .flex-item.enter-email-wrapper:nth-child(2) {
+    height:30%;
+    color:rgba(255,255,255,1);
+    img.banner-school-specific {
+      height:160px;
+    }
+    background-color:$school-banner-color;
+    margin-top:-1px;
+
+    .university-banner-wrapper {
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      -moz-box-flex-direction: column;
+      -webkit-box-flex-direction: column;
+      -ms-flex-direction: column;
+      align-content:flex-start;
+      -ms-flex-align-content:flex-start;
+      -webkit-align-content:flex-start;
+      -webkit-align-box-content:flex-start;
+      -moz-align-box-content:flex-start;
+      justify-content:flex-start;
+      -ms-flex-justify-content:flex-start;
+      -webkit-justify-content:flex-start;
+      -webkit-box-justify-content:flex-start;
+      -moz-box-justify-content:flex-start;
+    }
+
+    .banner-school-content-container {
+      flex-direction:column;
+      margin-top:-160px;
+      justify-content: column;
+      -ms-flex-justify-content: column;
+      -webkit-justify-content: column;
+      -webkit-box-justify-content: column;
+      -moz-box-justify-content: column;
+      align-content:center;
+      -ms-flex-align-content:center;
+      -webkit-align-content:center;
+      -webkit-box-align-content:center;
+      -moz-box-align-content:center;
+      align-items:center;
+      -moz-box-align-items:center;
+      -webkit-box-align-items:center;
+      -webkit-align-items:center;
+      -ms-flex-align-items:center;
+    }
+      img {
+        margin-top:5px;
+        height:50px;
+      }
+      h2 {
+        @extend .no-xspace;
+        font-family: "OpenSans-Bold";
+        font-size:115%;
+        color:$primary-color;
+        margin-bottom:5px;
+      }
+      h4 {
+        @extend .no-xspace;
+        color: #343C49;
+        padding:10px 10px;
+        width:150px;
+        font-family:"OpenSans-Semibold"
+      }
+
+  }
+  .flex-item.enter-email-wrapper:nth-child(3) {
+    margin-top:-1px;
+    height:20%;
+    color:rgba(255,255,255,1);
+    h4 {
+      color:rgba(255,255,255,0.8);
+      font-size:60%;
+    }
+    background-color:$school-banner-color;
+
+  }
+
+  .flex-item.enter-email-wrapper:nth-child(4) {
+    height:30%;
+    // margin-top:-5%;
+    background-color:$school-banner-color;
+    z-index:10;
+    .popular-courses-text {
+      h5 {
+        @extend .no-xspace;
+        color:rgba(255,255,255,0.6);
+
+      }
+    }
+    .pure-g {
+      align-content:center;
+      background-color:$school-banner-color;
+      justify-content:center;
+      align-items:center;
+      flex-direction:row;
+      z-index:10;
+      &.course-row-2 {
+        display:flex !important;
+      }
+      .padding-1em {
+        padding:0.5em;
+      }
+    }
+  }
+
+
+
+}

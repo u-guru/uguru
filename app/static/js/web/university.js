@@ -12,6 +12,10 @@ $(document).ready(function() {
         var email_string = $('#university-email-input').val();
         sendEmailToServer(email_string);
     })
+
+    $('#get-app-button-clicked').click(function() {
+        alert('button was clicked')
+    });
 });
 
 var sendEmailToServer = function(email_text)  {
