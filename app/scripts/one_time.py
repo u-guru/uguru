@@ -165,3 +165,13 @@ print available_gurus
 
 
 
+import mandrill, json
+MANDRILL_API_KEY = 'JgZAGUHchIAIlJmOCrE_4w'
+mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+all_virginia_emails_sent = []
+from pprint import pprint
+message_results = mandrill_client.messages.search(query="email:virginia.edu",limit=1000)
+for email in message_results:
+    all_virginia_emails_sent.append(email['email'])
+with open('emails_sent/university_of_virginia.json', 'wb') as fp:
+    json.dump(all_virginia_emails_sent, fp, indent = 4)

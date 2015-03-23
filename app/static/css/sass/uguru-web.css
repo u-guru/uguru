@@ -241,7 +241,9 @@ h4 {
 .pure-g {
   height: 700px; }
   .student-value-prop.content
-  .pure-g .pure-img {
+  .pure-g .pure-img, .student-value-prop.content
+  .pure-g #mobile-university .phone-img, #mobile-university .student-value-prop.content
+  .pure-g .phone-img {
     margin: 0 auto; }
   .student-value-prop.content
   .pure-g.row-1 {
@@ -658,7 +660,7 @@ h4 {
     cursor: pointer;
     background-color: #3D9988; }
 
-  .flex-item .pure-img {
+  .flex-item .pure-img, .flex-item #mobile-university .phone-img, #mobile-university .flex-item .phone-img {
     height: 250px; }
 
   .student-value-prop.content .pure-g {
@@ -685,11 +687,51 @@ h4 {
   bottom: 0px;
   width: 100%;
   border: 0px; }
+  #mobile-university .call-to-action-button .pure-u-1 .inner-container {
+    position: absolute;
+    width: 100%;
+    top: 10%;
+    line-height: 0px; }
+  #mobile-university .call-to-action-button .pure-u-1 h1 {
+    padding-top: 0.5em; }
+  #mobile-university .call-to-action-button .ios-app-store img {
+    padding-top: 5%; }
+  #mobile-university .call-to-action-button .android-app-store img {
+    height: 45px;
+    padding-top: 5%; }
+  #mobile-university .call-to-action-button .info, #mobile-university .call-to-action-button #controls, #mobile-university .call-to-action-button #slides, #mobile-university .call-to-action-button #active, #mobile-university .call-to-action-button #active label, #mobile-university .call-to-action-button .info h3, #mobile-university .call-to-action-button .desktop, #mobile-university .call-to-action-button .tablet, #mobile-university .call-to-action-button .mobile {
+    -webkit-transform: translateZ(0);
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out; }
+  #mobile-university .call-to-action-button #active label {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #126F5D; }
+  #mobile-university .call-to-action-button #active label.active {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.5) !important; }
 #mobile-university .call-to-action-button:active {
   border-top: 0px;
   border-bottom: 8px solid #035A49;
   background-color: rgba(255, 255, 255, 0.9);
   color: #3D9988; }
+#mobile-university h2 {
+  font-size: 120%;
+  padding-top: 1em;
+  margin-bottom: 0.5em; }
+#mobile-university h4 {
+  font-size: 50%;
+  padding-top: 0px;
+  padding-bottom: 0.5em; }
+#mobile-university .phone-img {
+  width: 13em;
+  height: auto !important; }
 #mobile-university section:nth-child(1) {
   background-color: #343C49; }
 #mobile-university section:nth-child(2) {
@@ -719,6 +761,16 @@ h4 {
   background-color: #2D3440; }
   #mobile-university .last-mobile-slider-action #university-email-input {
     color: #3D9988; }
+  #mobile-university .last-mobile-slider-action .popular-course h4 {
+    color: white !important; }
+  #mobile-university .last-mobile-slider-action .popular-courses-text {
+    padding: 0px;
+    margin-bottom: -10px;
+    color: rgba(255, 255, 255, 0.6); }
+    #mobile-university .last-mobile-slider-action .popular-courses-text h5 {
+      font-size: 65%; }
+  #mobile-university .last-mobile-slider-action .course-row-2 {
+    display: flex; }
   #mobile-university .last-mobile-slider-action .text-input-container
   .pure-u-1 {
     background-color: #3D9988; }
@@ -741,9 +793,14 @@ h4 {
   #mobile-university .last-mobile-slider-action #submit-university-email {
     background-color: #3D9988; }
 #mobile-university .flex-item.enter-email-wrapper:nth-child(1) {
-  height: 15%;
+  height: 50%;
   color: white;
   background-color: #2D3440;
+  align-content: flex-start;
+  -ms-flex-align-content: flex-start;
+  -webkit-align-content: flex-start;
+  -webkit-align-box-content: flex-start;
+  -moz-align-box-content: flex-start;
   padding: 1em; }
   #mobile-university .flex-item.enter-email-wrapper:nth-child(1) h1 {
     font-size: 150%; }

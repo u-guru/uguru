@@ -14,7 +14,7 @@ $(document).ready(function() {
     })
 
     $('#get-app-button-clicked').click(function() {
-        alert('button was clicked')
+         $(".main").moveTo(5);
     });
 });
 

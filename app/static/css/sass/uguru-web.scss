@@ -927,7 +927,49 @@ h4 {
       bottom: 0px;
       width: 100%;
       border:0px;
-      // border-top: 8px solid #62B5A5;
+      .pure-u-1 {
+        .inner-container {
+          position:absolute;
+          width:100%;
+          top:10%;
+          line-height:0px;
+        }
+        h1 {
+          padding-top:0.5em;
+        }
+      }
+
+      .ios-app-store img{
+        padding-top:5%;
+      }
+
+      .android-app-store img {
+        height:45px;
+        padding-top:5%;
+      }
+
+      .info, #controls, #slides, #active, #active label, .info h3, .desktop, .tablet, .mobile {
+        -webkit-transform: translateZ(0);
+        -webkit-transition: all 0.5s ease-out;
+        -moz-transition: all 0.5s ease-out;
+        -o-transition: all 0.5s ease-out;
+        transition: all 0.5s ease-out;
+      }
+
+      #active label {
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: #126F5D;
+      }
+
+      #active label.active{
+        background: rgba(255,255,255,0.5);
+        border-color: rgba(255,255,255,0.5) !important;
+      }
   }
 
   .call-to-action-button:active
@@ -936,6 +978,24 @@ h4 {
     border-bottom:8px solid #035A49;
     background-color:rgba(255,255,255,0.9);
     color: $primary-color;
+  }
+
+  h2 {
+    font-size:120%;
+    padding-top:1em;
+    margin-bottom:0.5em;
+  }
+
+  h4 {
+    font-size:50%;
+    padding-top:0px;
+    padding-bottom:0.5em;
+  }
+
+  .phone-img {
+    @extend .pure-img;
+    width:13em;
+    height:auto !important;
   }
 
   section:nth-child(1) {
@@ -982,6 +1042,23 @@ h4 {
       color:$primary-color;
     }
 
+    .popular-course h4{
+      color:white !important;
+    }
+
+    .popular-courses-text {
+      padding:0px;
+      margin-bottom:-10px;
+      color:rgba(255,255,255,0.6);
+      h5 {
+        font-size:65%;
+      }
+    }
+
+    .course-row-2 {
+      display:flex;
+    }
+
     .text-input-container
     .pure-u-1 {
       background-color:$primary-color;
@@ -1009,9 +1086,14 @@ h4 {
   }
   .flex-item.enter-email-wrapper:nth-child(1) {
 
-    height:15%;
+    height:50%;
     color:rgba(255,255,255,1);
     background-color:$school-banner-color;
+    align-content:flex-start;
+    -ms-flex-align-content:flex-start;
+    -webkit-align-content:flex-start;
+    -webkit-align-box-content:flex-start;
+    -moz-align-box-content:flex-start;
     h1 {
       @extend .no-xspace;
       font-size:150%;

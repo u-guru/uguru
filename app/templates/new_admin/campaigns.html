@@ -1,0 +1,131 @@
+{% extends 'new_admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/new_admin/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            View Campaigns<br>
+            <small>This is where we can view campaign results & status</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/new_admin/"><i class="fa fa-dashboard"></i> Home </a></li>
+            <li class="active">Campaigns</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Campaign Statistics 2015</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover bootstrap-database" id="view-campaigns">
+
+                  </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div>
+          </div>
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/new_admin/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="/static/new_admin/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="/static/js/new_admin/tables.js" type="text/javascript"></script>
+
+<script>
+    $(document).ready(function() {
+
+        $.ajax({
+            url: "https://mandrillapp.com/api/1.0/tags/list.json",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify({key: "JgZAGUHchIAIlJmOCrE_4w"}),
+            success: function(all_tags){
+                wanted_tags = filter_tags(all_tags, true);
+                var new_table = create_table(['Campaign Name', 'Emails Sent', 'Unique Opens', 'Unique Clicks', 'Open Rate %', "Click Rate %"], wanted_tags,
+                    {
+                        "tag":true,
+                        "sent": true,
+                        "unique_opens":true,
+                        "unique_clicks": true,
+                        "click_through":true,
+                        "open_rate": true,
+                    }
+                );
+
+                $('#view-campaigns').append(new_table);
+                $('#view-campaigns').DataTable({
+                    "bInfo": false,
+                    "bPaginate": false,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "aaSorting": [[1, 'desc']]
+                });
+            },
+            error: function (request) {
+                alert('Incorrect username or password, please try again');
+            }
+        });
+
+        var filter_tags = function(tags_list, process_extra) {
+
+            var unwanted_tags = ['ucla', 'test', 'support', 'student-signup'];
+            var wanted_tags = [];
+            for (var i = 0; i < tags_list.length; i ++ ) {
+                current_tag_name = tags_list[i].tag.toLowerCase();
+                //check if current_tag_name is one of the unwanted
+                var unwanted_found = false;
+                for (var j = 0; j < unwanted_tags.length; j++) {
+                    current_unwanted_tag = unwanted_tags[j]
+                    //if it does exist
+                    if (current_tag_name.indexOf(current_unwanted_tag) !== -1) {
+                        unwanted_found = true;
+                    }
+                }
+                if (!unwanted_found) {
+                    if (process_extra) {
+
+                        tags_list[i]["open_rate"] = Math.round(tags_list[i]["unique_opens"] /  tags_list[i]["sent"] * 100);
+                        tags_list[i]["click_through"] = Math.round(tags_list[i]["unique_clicks"] /  tags_list[i]["sent"] * 100);
+                        tags_list[i]["ctor"] = Math.round(tags_list[i]["click_through"] / tags_list[i]["open_rate"] * 100);
+                    }
+                    wanted_tags.push(tags_list[i]);
+                }
+            }
+            wanted_tags.splice(0,2);
+            return wanted_tags;
+        }
+
+        // $('#example').dataTable( {
+        //       "ajax": {
+        //         "url": "https://mandrillapp.com/api/1.0/tags/list.json",
+        //         "type": "POST",
+        //         "contentType": 'application/json',
+        //         "data": JSON.stringify({key: "JgZAGUHchIAIlJmOCrE_4w"}),
+        //         "dataSrc": "",
+        //         success: function(result) {
+        //             console.log(result);
+        //         },
+        //         error: function(result) {
+        //             alert(result);
+        //         }
+        //       }
+        //     } );
+    } );
+</script>
+
+{% endblock %}

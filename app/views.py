@@ -68,6 +68,15 @@ def admin_users():
     else:
         return render_template("admin/login.html", os=os)
 
+@app.route('/new_admin/')
+@app.route('/new_admin/campaigns/')
+def new_admin():
+    return render_template("new_admin/campaigns.html")
+
+@app.route('/lte/')
+def lte_theme():
+    return redirect("/static/new_admin/index2.html")
+
 @app.route('/admin/universities/')
 def admin_universities():
     if(session.get("admin")):
@@ -244,20 +253,40 @@ def app_flex():
 
     return render_template("web/university.html", university=supported_universities['virginia'])
 
+def parse_user_agent(ua_str):
+    if 'iphone' in ua_str.lower():
+        return 'iphone'
+    if 'android' in ua_str.lower():
+        return 'android'
+    else:
+        return 'web'
+
 @app.route('/m/<name>/', methods=["GET"])
 def one_university_mobile(name):
     from lib.university_data import supported_universities
     university_names = supported_universities.keys()
 
+    os = parse_user_agent(request.headers['User-Agent'])
+    first_name= None
+    email= None
+
     if request.args.get("email", None) is not None:
 
         email = request.args.get("email")
         email_user = Email_User.initEmailUser(email)
-
+        session['email'] = email
+        session['name'] = request.args.get("name")
         return redirect(request.path)
 
+    if session.get("name"):
+        first_name = session.get("name")
+    if session.get("email"):
+        email = session.get("email")
+
     if name in university_names:
-        return render_template("web/university_mobile.html", university=supported_universities[name])
+        return render_template("web/university_mobile.html", \
+            university=supported_universities[name], os=os, name=first_name\
+            , email=email)
     else:
         return redirect(url_for('app_flex'))
 
