@@ -157,13 +157,6 @@ student = User.query.get(1)
 course = Course.query.get(139)
 available_gurus = _request.course.gurus.all()
 print available_gurus
-# for guru in available_gurus:
-
-#     proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
-#     event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
-#     event = Event.initFromDict(event_dict)
-
-
 
 import mandrill, json
 MANDRILL_API_KEY = 'JgZAGUHchIAIlJmOCrE_4w'

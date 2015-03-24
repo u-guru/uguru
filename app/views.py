@@ -73,6 +73,15 @@ def admin_users():
 def new_admin():
     return render_template("new_admin/campaigns.html")
 
+@app.route('/new_admin/campaigns/<campaign_name>/')
+def new_admin_one_campaign(campaign_name):
+    return render_template("new_admin/one_campaign.html", tag_name=campaign_name)
+
+@app.route('/new_admin/team/')
+@app.route('/new_admin/team/action_items/')
+def new_admin_team():
+    return render_template("new_admin/team-action-items.html", team=[])
+
 @app.route('/lte/')
 def lte_theme():
     return redirect("/static/new_admin/index2.html")

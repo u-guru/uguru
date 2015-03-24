@@ -100,17 +100,42 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ul class="sidebar-menu">
             <li class="header">ADMIN COMPONENTS</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active treeview">
-              <a href="#"><span>Email Campaigns</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-envelope"></i>
+                <span>Email Campaigns</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li class="active">
-                  <a href="/new_admin/campaigns/">View Campaign</a>
+                  <a href="/new_admin/campaigns/">
+                    <i class="fa fa-circle-o"></i>
+                    View Campaign</a>
                 </li>
                 <li>
-                  <a href="#/new_admin/campaigns/create/">Create Campaign</a>
+                  <a href="#/new_admin/campaigns/create/"><i class="fa fa-circle-o"></i>Create Campaign</a>
                 </li>
                 <li>
-                  <a href="#/new_admin/campaigns/scheduled/">Scheduled Campaign</a>
+                  <a href="#/new_admin/campaigns/scheduled/"><i class="fa fa-circle-o"></i>Scheduled Campaign</a>
+                </li>
+              </ul>
+            </li>
+            <li class="active treeview">
+              <a href="#">
+                <i class="fa fa-group"></i>
+                <span>Team</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li class="active">
+                  <a href="/new_admin/campaigns/">
+                    <i class="fa fa-circle-o"></i>
+                    Action Items
+                    <i class="fa fa-check pull-right positive"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="/new_admin/campaigns/">
+                    <i class="fa fa-circle-o"></i>
+                    Details
+                    <i class="fa fa-file-text pull-right"></i>
+                  </a>
                 </li>
               </ul>
             </li>
@@ -125,11 +150,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Main Footer -->
       <footer class="main-footer">
         <!-- To the right -->
-        <div class="pull-right hidden-xs">
+        <!-- <div class="pull-right hidden-xs">
           Anything you want
-        </div>
+        </div> -->
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2015 <a href="#">Uguru</a>.</strong> All rights reserved.
       </footer>
 
     </div><!-- ./wrapper -->
