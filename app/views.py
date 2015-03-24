@@ -68,7 +68,6 @@ def admin_users():
     else:
         return render_template("admin/login.html", os=os)
 
-@app.route('/new_admin/')
 @app.route('/new_admin/campaigns/')
 def new_admin():
     return render_template("new_admin/campaigns.html")
@@ -77,6 +76,7 @@ def new_admin():
 def new_admin_one_campaign(campaign_name):
     return render_template("new_admin/one_campaign.html", tag_name=campaign_name)
 
+@app.route('/new_admin/')
 @app.route('/new_admin/team/')
 @app.route('/new_admin/team/action_items/')
 def new_admin_team():
