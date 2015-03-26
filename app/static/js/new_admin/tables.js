@@ -14,7 +14,11 @@ var create_table = function(arr_columns, data_arr, column_options) {
                 one_row_str += '<td>' + one_obj[current_key];
                 //todo: check if type object and has keys
                 if (column_options[current_key] && j === 0) {
-                    one_row_str += " <a href='/new_admin/campaigns/" + one_obj[current_key] + "/'><i class='fa fa-expand'></a>"
+                    if (arr_columns[j] === 'Campaign Name') {
+                        one_row_str += " <a href='/new_admin/campaigns/" + one_obj[current_key] + "/'><i class='fa fa-expand'></a>"
+                    } else {
+                        one_row_str += " <a href='/new_admin/campaigns/" + one_obj[current_key] + "/'></a>"
+                    }
                 }
                 one_row_str += '</td>';
             }

@@ -165,6 +165,29 @@ all_virginia_emails_sent = []
 from pprint import pprint
 message_results = mandrill_client.messages.search(query="email:virginia.edu",limit=1000)
 for email in message_results:
+
     all_virginia_emails_sent.append(email['email'])
 with open('emails_sent/university_of_virginia.json', 'wb') as fp:
     json.dump(all_virginia_emails_sent, fp, indent = 4)
+
+import requests, json
+url = 'https://api.sendgrid.com/api/newsletter/lists/email/add.json'
+api_user = 'sam1rm'
+api_password = 'launchuguru1'
+params = {"list":"virginia_sent_emails", "api_user":api_user,"api_key":api_password, "data":all_virginia_emails_sent[:50]}
+result = requests.post(url=url, params=params)
+
+# create a list
+#
+
+import requests
+url = 'https://api.sendgrid.com/api/newsletter/lists/add.json'
+api_user = 'sam1rm'
+api_password = 'launchuguru1'
+params = {"list": "virginia_sent_emails", "api_user": api_user, "api_key": api_password}
+result = requests.get(url=url, params=params)
+
+# add emails to a list
+
+
+

@@ -46,13 +46,13 @@
 		if (this.$element.parent('.input-append, .input-prepend').find('.add-on').length) {
 			this.$element.parent('.input-append, .input-prepend').find('.add-on').on({
 			  'click.timepicker': $.proxy(this.showWidget, this)
-			});		
+			});
 		} else {
 			this.$element.closest(this.containerClass).find('.add-on').on({
 			  'click.timepicker': $.proxy(this.showWidget, this)
-			});		
+			});
 		}
-		
+
         this.$element.on({
           'focus.timepicker': $.proxy(this.highlightUnit, this),
           'click.timepicker': $.proxy(this.highlightUnit, this),
@@ -348,6 +348,9 @@
 
     getTime: function() {
       return this.formatTime(this.hour, this.minute, this.second, this.meridian);
+    },
+    getTimeArr: function() {
+      return [this.hour, this.minute, this.second, this.meridian];
     },
 
     hideWidget: function() {

@@ -24,7 +24,48 @@ from mixpanel import Mixpanel
 mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 
 
+###############
+## NEW ADMIN ##
+###############
+
+@app.route('/admin/login')
+def admin_login():
+    return render_template("new_admin/login.html")
+
+@app.route('/admin/campaigns/')
+def admin_view_campaigns():
+    return render_template("new_admin/campaigns.html")
+
+@app.route('/admin/campaigns/create/')
+def admin_create():
+    return render_template("new_admin/create-campaign.html")
+
+@app.route('/admin/campaigns/scheduled/')
+def admin_scheduled():
+    return render_template("new_admin/scheduled-campaigns.html")
+
+@app.route('/admin/campaigns/<campaign_name>/')
+def admin_one_campaign(campaign_name):
+    return render_template("new_admin/one_campaign.html", tag_name=campaign_name)
+
+@app.route('/admin/coming-soon/')
+def admin_coming_soon():
+    return render_template("new_admin/admin-coming-soon.html")
+
+@app.route('/')
+@app.route('/admin/')
 @app.route('/admin/home/')
+@app.route('/admin/team/')
+@app.route('/admin/team/action_items/')
+def admin_team():
+    return render_template("new_admin/team-action-items.html", team=[])
+
+@app.route('/lte/')
+def lte_theme():
+    return redirect("/static/new_admin/index2.html")
+
+
+@app.route('/old_admin/home/')
 @app.route('/login/')
 def default():
     if('admin' in session and session["admin"] == True):
@@ -61,46 +102,33 @@ def index():
     else:
         return render_template("admin/login.html", os=os)
 
-@app.route('/admin/users/')
+@app.route('/old_admin/users/')
 def admin_users():
     if(session.get("admin")):
         return render_template("admin/admin.users.html", os=os)
     else:
         return render_template("admin/login.html", os=os)
 
-@app.route('/new_admin/campaigns/')
-def new_admin():
-    return render_template("new_admin/campaigns.html")
+@app.route('/old_admin/campaigns/')
+def old_admin():
+    return render_template("admin/campaigns.html")
 
-@app.route('/new_admin/campaigns/<campaign_name>/')
-def new_admin_one_campaign(campaign_name):
-    return render_template("new_admin/one_campaign.html", tag_name=campaign_name)
 
-@app.route('/new_admin/')
-@app.route('/new_admin/team/')
-@app.route('/new_admin/team/action_items/')
-def new_admin_team():
-    return render_template("new_admin/team-action-items.html", team=[])
-
-@app.route('/lte/')
-def lte_theme():
-    return redirect("/static/new_admin/index2.html")
-
-@app.route('/admin/universities/')
+@app.route('/old_admin/universities/')
 def admin_universities():
     if(session.get("admin")):
         return render_template("admin/admin.universities.html", os=os)
     else:
         return render_template("admin/login.html", os=os)
 
-@app.route('/admin/emails/')
+@app.route('/old_admin/emails/')
 def admin_emails():
     if(session.get("admin")):
         return render_template("admin/admin.emails.html")
     else:
         return render_template("admin/login.html", os=os)
 
-@app.route('/admin/universities/<_id>')
+@app.route('/old_admin/universities/<_id>')
 def admin_university(_id):
     if(session.get("admin")):
         university = University.query.get(_id)
@@ -108,7 +136,7 @@ def admin_university(_id):
     else:
         return render_template("admin/login.html", os=os)
 
-@app.route('/admin/user/<_id>/')
+@app.route('/old_admin/user/<_id>/')
 def admin_user(_id):
     if(session.get("admin")):
         user = User.query.get(_id)
@@ -344,46 +372,46 @@ def app_route():
     # return redirect('http://192.168.0.104:5000/static/remote/index.html')
     # return redirect('http://192.168.0.104:8100')
 
-@app.route('/admin/campaigns/results/')
+@app.route('/old_admin/campaigns/results/')
 def admin_campaign_results():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template('admin/admin.campaigns.html')
 
-@app.route('/admin/campaigns/create/')
+@app.route('/old_admin/campaigns/create/')
 def admin_campaign_create():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template('admin/admin.create-, os=oscampaigns.html')
 
-@app.route('/admin/campaigns/<name>/')
+@app.route('/old_admin/campaigns/<name>/')
 def admin_campaigns_detailed(name):
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template('admin/campaign-detailed.html', name=name)
 
-@app.route('/admin/development/')
+@app.route('/old_admin/development/')
 def admin_development():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
     version = Version.query.get(1)
     return render_template('admin/development.html', os=os, version=version)
 
-@app.route('/admin/issues/')
+@app.route('/old_admin/issues/')
 def admin_issues():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
     version = Version.query.get(1)
     return render_template('admin/admin.issues.html', os=os, version=version)
 
-@app.route('/admin/web/')
+@app.route('/old_admin/web/')
 def index():
     return render_template('index.html')
 
 
 
-@app.route('/admin/form/')
-@app.route('/admin/home/')
+@app.route('/old_admin/form/')
+@app.route('/old_admin/home/')
 def admin_dashboard_home():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
@@ -424,13 +452,13 @@ def admin_dashboard_home():
         available_universities=universities,
         template_names=template_names)
 
-@app.route('/admin/api/')
+@app.route('/old_admin/api/')
 def admin_api():
     if not session.get('admin'):
         return redirect(url_for('admin'))
     return render_template('admin/api.html', os=os)
 
-@app.route('/admin/dashboard/')
+@app.route('/old_admin/dashboard/')
 def admin_dashboard():
 
     if not session.get('admin'):
@@ -452,7 +480,7 @@ def admin_dashboard():
         templates=templates, batches=batches, test_accounts=test_accounts\
         ,default_args=default_args)
 
-@app.route('/admin/accounts/')
+@app.route('/old_admin/accounts/')
 def admin_accounts():
     if not session.get('admin'):
         return redirect(url_for('admin'))

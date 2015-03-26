@@ -1,0 +1,116 @@
+{% extends 'new_admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/new_admin/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            View Campaigns<br>
+            <small>This is where we can view campaign results & status</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/new_admin/"><i class="fa fa-dashboard"></i> Home </a></li>
+            <li class="active">Campaigns</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Let the fun & games begin</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover bootstrap-database" id="view-campaigns">
+
+                  </table>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" id="cancel-scheduled-email" class="btn btn-danger">Cancel All</button>
+                </div>
+              </div><!-- /.box -->
+            </div>
+          </div>
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/new_admin/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="/static/new_admin/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="/static/js/new_admin/mandrill.js" type="text/javascript"></script>
+<script src="/static/js/new_admin/tables.js" type="text/javascript"></script>
+
+<script>
+    $(document).ready(function() {
+
+        var cancel_all_scheduled = function() {
+          $('tbody tr').each(
+            function(index, element) {
+              var message_id = $(this).children('td:first').text().trim();
+              console.log(message_id);
+            $.ajax({
+                url: "https://mandrillapp.com/api/1.0/messages/cancel-scheduled.json",
+                type: "POST",
+                contentType: 'application/json',
+                data: JSON.stringify({key: MANDRILL_API_KEY, id:message_id}),
+                success: function(scheduled_msgs){
+                  // window.location.replace('/admin/campaigns/scheduled/');
+                },
+                error: function(error) {
+                  console.log(JSON.stringify(error));
+                }
+              });
+            })
+
+        }
+
+        $.ajax({
+            url: "https://mandrillapp.com/api/1.0/messages/list-scheduled.json",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify({key: MANDRILL_API_KEY}),
+            success: function(scheduled_msgs){
+                var new_table = create_table(['Message Id', 'Time Created', 'Scheduled Time','Sender', 'Receiver', 'Subject'], scheduled_msgs,
+                    {
+                        "_id":true,
+                        "created_at": true,
+                        "send_at":true,
+                        "from_email": true,
+                        "to":true,
+                        "subject": true,
+                        }
+                );
+
+                $('#view-campaigns').append(new_table);
+                $('#view-campaigns').DataTable({
+                    "bInfo": false,
+                    "bPaginate": false,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "aaSorting": [[1, 'desc']]
+                });
+
+                $('#cancel-scheduled-email').click(function() {
+                  if (confirm('are you sure?')) {
+                    cancel_all_scheduled();
+                  }
+                })
+            },
+            error: function (request) {
+                alert('Incorrect username or password, please try again');
+            }
+        });
+    } );
+</script>
+
+{% endblock %}
