@@ -171,6 +171,18 @@
                     </div>
                 </div>
                 <div class="box box-success">
+                  <div class="row" id='test-email-success-modal-2' style="margin-top:25px;display:none;">
+                      <div class="col-xs-12">
+                        <div class="box box-solid box-info">
+                          <div class="box-header">
+                              <h3 class="box-title">Test Message Sent!</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            Good job you're valuable!
+                          </div><!-- /.box-body -->
+                        </div>
+                      </div>
+                    </div>
                     <div class="box-header">
                       <h3 class="box-title">Step 6:
                         <strong> Schedule Time & Send</strong>
@@ -408,7 +420,8 @@
           type: "DELETE",
           success: function(response) {
             console.log(email_to_delete, 'deleted');
-            if (i === 99) {
+            if (i === 100) {
+              $('#test-email-success-modal-2').show();
               window.replace.location('/admin/campaigns/scheduled/')
             }
           },
