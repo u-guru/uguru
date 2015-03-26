@@ -139,6 +139,18 @@
                     </div>
                 </div>
                 <div class="box box-success">
+                    <div class="row" id='test-email-success-modal' style="margin-top:25px;display:none;">
+                      <div class="col-xs-12">
+                        <div class="box box-solid box-info">
+                          <div class="box-header">
+                              <h3 class="box-title">Test Message Sent!</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            Good job you're valuable!
+                          </div><!-- /.box-body -->
+                        </div>
+                      </div>
+                    </div>
                     <div class="box-header">
                       <h3 class="box-title">Step 5:
                         <strong> Send Test </strong>
@@ -328,9 +340,13 @@
 
         }
 
+        // $('#mailchimp-templates option').on('selected', function() {
+        //   alert('shit was selected');
+        // })
+
         $('#send-test-email').click(function() {
           var test_email_options = send_email(true);
-          postMandrillAPI(test_email_options, is_test);
+          postMandrillAPI(test_email_options, true);
         });
 
         $('#send-campaign-email').click(function() {
@@ -372,8 +388,53 @@
           alert(JSON.parse(error.responseText).message);
         }
       });
-
     }
+
+    var deleteMailGunMembers = function(arr_emails, university_name) {
+      for (var i = 0; i < arr_emails.length; i ++) {
+        var email_to_delete = arr_emails[i].email;
+        var url = "https://api:key-bfe01b1e2cb76d45e086c2fa5e813781@api.mailgun.net/v2/lists/" + university_name +"@nationalacademicresearch.org/members/" + email_to_delete;
+        $.ajax({
+          url: url,
+          type: "DELETE",
+          success: function(response) {
+            console.log(email_to_delete, 'deleted');
+            if (i === 99) {
+              window.replace.location('/admin/campaigns/scheduled/')
+            }
+          },
+          error: function(error) {
+            alert(JSON.parse(error.responseText).message);
+          }
+        });
+      }
+    }
+
+    // var addMailGunMembers = function(arr_emails, university_name) {
+    //   for (var i = 0; i < arr_emails.length; i ++) {
+    //     var email_to_add = arr_emails[i].email;
+    //     var url = "https://api:key-bfe01b1e2cb76d45e086c2fa5e813781@api.mailgun.net/v2/lists/" + university_name +"@nationalacademicresearch.org/members";
+    //     params = {
+    //       subscribed:true,
+    //       address: email_to_add,
+    //       name: arr_emails[i].name
+    //     }
+    //     $.ajax({
+    //       url: url,
+    //       type: "POST",
+
+    //       success: function(response) {
+    //         console.log(email_to_delete, 'deleted');
+    //         if (i === 99) {
+    //           window.replace.location('/admin/campaigns/scheduled/')
+    //         }
+    //       },
+    //       error: function(error) {
+    //         alert(JSON.parse(error.responseText).message);
+    //       }
+    //     });
+    //   }
+    // }
 
     var processVirginiaEmailsMailgun = function(email_objs) {
       mandrill_result_format = [];
@@ -399,7 +460,12 @@
         contentType: 'application/json',
         data: JSON.stringify(payload),
         success: function(response) {
-          window.location.replace('/admin/campaigns/scheduled/');
+          if (! is_test) {
+            deleteMailGunMembers(payload.message.to, 'virginia');
+          } else {
+            $('#test-email-success-modal').show();
+          }
+
         },
         error: function(error) {
           alert(JSON.parse(error.responseText).message);
