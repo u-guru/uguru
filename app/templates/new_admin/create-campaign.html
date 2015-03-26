@@ -59,7 +59,7 @@
                           <div class="row padding" id="button-tags">
                               &nbsp;
                               <button class="btn btn-md bg-navy margin tag">virginia</button>
-                              <button class="btn btn-md bg-olive tag">100 emails</button>
+                              <button class="btn btn-md bg-olive tag">100-emails</button>
                               <button class="btn btn-md bg-maroon margin tag">Mar-26-2014</button>
                               <br>
                               &nbsp;
@@ -280,8 +280,17 @@
           if (is_test) {
             return ["TEST"];
           } else {
-            return ["TEST"];
+            return grab_all_tags();
           }
+        }
+
+        var grab_all_tags = function() {
+          all_tags = [];
+          $('#button-tags').children('button').each(function(index, element) {
+            all_tags.push($(this).text().trim());
+          });
+          all_tags.push(all_tags.join('|'));
+          return all_tags;
         }
 
         var send_email = function(is_test) {
@@ -465,7 +474,6 @@
           } else {
             $('#test-email-success-modal').show();
           }
-
         },
         error: function(error) {
           alert(JSON.parse(error.responseText).message);
