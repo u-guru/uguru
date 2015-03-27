@@ -304,12 +304,11 @@ def one_university_mobile_dev(name):
     first_name= None
     email= None
 
-    print os
     if os == "iphone":
-        return redirect('http://itunes.com/apps/snapchat')
+        return redirect('https://itunes.com/apps/uguru')
 
     if os == "android":
-        return redirect('http://play.google.com/store/apps/details?id=com.snapchat.android')
+        return redirect('https://play.google.com/store/apps/details?id=com.Uguru.Uguru')
 
     return redirect('/m/' + name)
 
