@@ -165,7 +165,6 @@ all_virginia_emails_sent = []
 from pprint import pprint
 message_results = mandrill_client.messages.search(query="email:virginia.edu",limit=1000)
 for email in message_results:
-
     all_virginia_emails_sent.append(email['email'])
 with open('emails_sent/university_of_virginia.json', 'wb') as fp:
     json.dump(all_virginia_emails_sent, fp, indent = 4)
@@ -176,6 +175,14 @@ api_user = 'sam1rm'
 api_password = 'launchuguru1'
 params = {"list":"virginia_sent_emails", "api_user":api_user,"api_key":api_password, "data":all_virginia_emails_sent[:50]}
 result = requests.post(url=url, params=params)
+
+import requests
+def create_mailing_list():
+    return requests.post(
+        "https://api.mailgun.net/v2/lists",
+        auth=('api', 'key-bfe01b1e2cb76d45e086c2fa5e813781'),
+        data={'address': 'LIST@berkeleyguru.org',
+              'description': "Mailgun developers list"})
 
 # create a list
 #

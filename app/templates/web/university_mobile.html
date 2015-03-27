@@ -179,8 +179,6 @@
                 <label></label>
                 <label></label>
                 <label></label>
-                <!-- <label></label> -->
-
             </div>
         </div>
     </div>
@@ -194,6 +192,9 @@
        pagination: false,
        updateURL: false,
        beforeMove: function(index) {
+            if (index == 5) {
+                window.location.replace('http://itunes.com/apps/snapchat');
+            }
             if (index == 5 && !button_clicked) {
                 $(".main").moveTo(4);
             }

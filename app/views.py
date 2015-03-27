@@ -298,6 +298,21 @@ def parse_user_agent(ua_str):
     else:
         return 'web'
 
+@app.route('/dev/m/<name>/', methods=["GET"])
+def one_university_mobile_dev(name):
+    os = parse_user_agent(request.headers['User-Agent'])
+    first_name= None
+    email= None
+
+    print os
+    if os == "iphone":
+        return redirect('http://itunes.com/apps/snapchat')
+
+    if os == "android":
+        return redirect('http://play.google.com/store/apps/details?id=com.snapchat.android')
+
+    return redirect('/m/' + name)
+
 @app.route('/m/<name>/', methods=["GET"])
 def one_university_mobile(name):
     from lib.university_data import supported_universities
