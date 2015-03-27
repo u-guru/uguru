@@ -11,7 +11,6 @@
         <section class="content-header">
           <h1>
             Team Action Items<br>
-            <small>You can view everyone's action items here</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="/new_admin/"><i class="fa fa-dashboard"></i> Home </a></li>
@@ -28,103 +27,13 @@
 
             <!-- Richard Todos -->
             <div class="col-md-6">
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Richard</h3>
-                </div><!-- /.box-header -->
-                <div class="box-body no-padding">
-                  <table class="table table-condensed">
-                    <tbody><tr>
-                      <th style="width: 10px">#</th>
-                      <th>Task</th>
-                      <th>Due Date</th>
-                    </tr>
-                    <tr>
-                        <td>1.</td>
-                        <td>Heatmaps</td>
-                        <td>
-                            <span class="badge bg-red">3/24/2015</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2.</td>
-                        <td>First email in conversation funnel</td>
-                        <td>
-                            <span class="badge bg-red">3/24/2015</span>
-                        </td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                        <td>Go over dashboard</td>
-                        <td>
-                            <span class="badge bg-red">3/24/2015</span>
-                        </td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>Samir Copy</td>
-                        <td>
-                            <span class="badge bg-red">3/24/2015</span>
-                        </td>
-                    </tr>
-                  </tbody></table>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            </div><!-- /.col -->
+              <div class="box-body" id="todo-lists">
 
-            <div class="col-md-6">
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Varada</h3>
-                </div><!-- /.box-header -->
-                <div class="box-body no-padding">
-                  <table class="table table-condensed">
-                    <tbody><tr>
-                      <th style="width: 10px">#</th>
-                      <th>Task</th>
-                      <th>Due Date</th>
-                    </tr>
-                    <tr>
-                        <td>1.</td>
-                        <td>Latest Flinto of Updated Work</td>
-                        <td>
-                            <span class="badge bg-red">3/24/2015</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2.</td>
-                        <td>Student Referral (Lighter Design)</td>
-                        <td>
-                            <span class="badge bg-red">3/24/2015</span>
-                        </td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                        <td>Guru Referral (Darker Design)</td>
-                        <td>
-                            <span class="badge bg-red">3/24/2015</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4.</td>
-                        <td>Student Home</td>
-                        <td>
-                            <span class="badge bg-red">3/24/2015</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5.</td>
-                        <td>Guru Home</td>
-                        <td>
-                            <span class="badge bg-red">3/24/2015</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>*</td>
-                        <td>Update Flinto whenever a mock is finished</td>
-                    </tr>
-                  </tbody></table>
+
                 </div><!-- /.box-body -->
+                <div class="box-footer clearfix no-border">
+                  <button class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+                </div>
               </div><!-- /.box -->
             </div><!-- /.col -->
           </div>
@@ -138,8 +47,61 @@
 <script src="/static/js/new_admin/tables.js" type="text/javascript"></script>
 
 <script>
+    TRELLO_API_KEY = '5c2c46b0d7987a904b459330e2edd41a';
+    all_trello_list_id_objs = [];
     $(document).ready(function() {
 
+
+      var get_all_boards = function() {
+        $.ajax({
+            url: "https://api.trello.com/1/boards/8zend7RA?lists=open&list_fields=name&fields=name,desc&key=" + TRELLO_API_KEY,
+            type: "GET",
+            contentType: 'application/json',
+            success: function(board){
+              all_trello_list_id_objs = board.lists;
+              process_list_objs(all_trello_list_id_objs);
+            }
+        });
+      }
+
+      var process_list_objs = function(list_objs) {
+        if (!list_objs) {
+          return;
+        }
+        for (var i = 0; i < list_objs.length; i ++) {
+          console.log(list_objs[i]);
+          get_one_list_item(list_objs[i]);
+        }
+      }
+
+      var get_one_list_item = function(list_obj) {
+        console.log('getting ', list_obj);
+        $.ajax({
+            url: "https://api.trello.com/1/lists/" +list_obj.id + "?fields=name&cards=open&card_fields=name&key=" + TRELLO_API_KEY,
+            type: "GET",
+            contentType: 'application/json',
+            success: function(list){
+              list_obj.cards = list.cards;
+              create_trello_list(list_obj);
+            }
+        });
+      }
+
+      var create_trello_list = function(list_obj) {
+        list_header = "<ul class='todo-list'><li><h5 class='box-title'><i class='ion ion-clipboard'></i> &nbsp;&nbsp;" + list_obj.name + "'s List</h5></li>"
+
+        list_body = "";
+        for (var i = 0; i < list_obj.cards.length; i ++ ) {
+          card = list_obj.cards[i];
+          list_body += '<li><input type="checkbox" value="" name=""/><span class="text">' + card.name + '</span>'
+        }
+        list_footer = '</ul><br><br>'
+
+        $('#todo-lists').append(list_header + list_body + list_footer);
+
+      }
+
+      get_all_boards();
 
     } );
 </script>
