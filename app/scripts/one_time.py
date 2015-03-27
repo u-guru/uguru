@@ -198,3 +198,42 @@ result = requests.get(url=url, params=params)
 
 
 
+import mandrill, json
+MANDRILL_API_KEY = 'JgZAGUHchIAIlJmOCrE_4w'
+mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+all_templates = mandrill_client.templates.list()
+all_relevant_templates = []
+all_relevant_template_slugs = []
+for template in all_templates:
+    if 't' in template['name'].lower()[0:1] and ':' in template['name'].lower():
+        all_relevant_templates.append(template)
+        all_relevant_template_slugs(template['slug'])
+        print template['slug']
+
+
+# all_tds = [template for template in all_relevant_templates if 'D:' in template['name']]
+# all_t1s = [template for template in all_relevant_templates if 'D:' not in template['name']]
+# print len(all_tds)
+# print len(all_t1s)
+# for t1 in all_t1s:
+#     print t1.keys()
+    # get all recipients
+    # send to all recipients
+# from pprint import pprint
+# for td in all_tds:
+    # get all recipients
+    # send to all recipients
+
+# search messages YESTERDAY --> filter by subject tag, print tags joined by a space
+import mandrill, json
+MANDRILL_API_KEY = 'JgZAGUHchIAIlJmOCrE_4w'
+mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+
+messages = mandrill_client.messages.search(limit=1000, date_from='2015-03-26', query='email:virginia.edu')
+for m in messages:
+# get all templates by name
+#
+
+
+
+
