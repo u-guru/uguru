@@ -1,4 +1,5 @@
 MANDRILL_API_KEY = "JgZAGUHchIAIlJmOCrE_4w";
+MANDRILL_TEMPLATES = {};
 var parse_mandrill_user_agent = function(ua_string) {
     var ua_tuple = [];
     if (ua_string.toLowerCase().indexOf('mobile') !== -1) {
@@ -29,9 +30,9 @@ var getMandrillTemplateList = function() {
     contentType: 'application/json',
     data: JSON.stringify({key: MANDRILL_API_KEY}),
     success: function(all_templates) {
-      console.log(all_templates);
       $('#mailchimp-templates option:gt(0)').remove();
        $.each(all_templates, function(index, template) {
+        MANDRILL_TEMPLATES[template.name] = template;
         var js_date = new Date(template.updated_at);
         $option = $("<option></option>")
           .attr("value", template.value)
@@ -41,5 +42,26 @@ var getMandrillTemplateList = function() {
       });
     }
   });
+}
 
+var searchMandrillMessage = function(query, date_from, date_to, start, end, callback) {
+  console.log(query, date_from, date_to, start, end);
+  payload = {
+    key: MANDRILL_API_KEY,
+    date_from: date_from,
+    date_to: date_to,
+    limit: 1000
+  }
+
+  $.ajax({
+    url: "https://mandrillapp.com/api/1.0/messages/search.json",
+    type: "POST",
+    contentType: 'application/json',
+    data: JSON.stringify(payload),
+    success: function(result) {
+      if (callback) {
+        callback(result.slice(start, end));
+      }
+    }
+  });
 }

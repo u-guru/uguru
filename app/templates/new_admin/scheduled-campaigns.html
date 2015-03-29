@@ -80,6 +80,7 @@
             contentType: 'application/json',
             data: JSON.stringify({key: MANDRILL_API_KEY}),
             success: function(scheduled_msgs){
+                parse_scheduled_messages(scheduled_msgs);
                 var new_table = create_table(['Message Id', 'Time Created', 'Scheduled Time','Sender', 'Receiver', 'Subject'], scheduled_msgs,
                     {
                         "_id":true,
@@ -110,6 +111,16 @@
                 alert('Incorrect username or password, please try again');
             }
         });
+
+        var parse_scheduled_messages = function(messages) {
+
+        }
+
+        // 1. get unique subjects
+        // 2. get an email address with that subject, and look for messages sent in the past
+        // 3. filter by templates
+        // 4. get batch number, multiply it by size of dict from array 1
+
     } );
 </script>
 

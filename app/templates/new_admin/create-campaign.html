@@ -28,11 +28,13 @@
         <section class="content">
 
           <div class="row">
-            <div class="col-xs-12 col-md-6 col-md-offset-3">
-                <div class="box box-success">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+              <div class="row">
+                <div class="col-xs-12 col-md-6">
+                  <div class="box box-success">
                     <div class="box-header">
-                      <h3 class="box-title">Step 1:
-                        <strong> Choose a university</strong>
+                      <h3 class="box-title">Step 1.1:
+                        <strong> Select university & size</strong>
                       </h3>
                     </div>
                     <div class="box-body">
@@ -41,40 +43,76 @@
                                 <option>University of Virginia</option>
                             </select>
                         </div>
-                        <h3 class="box-title">
-                          Add Relevant Tags
-                        </h3>
-                          <div class="row">
-                            <div class="col-xs-6">
-                              <div class="input-group input-group-md">
-                                <input type="text" id="add-custom-tag-input" class="form-control" placeholder="Add Custom Tag">
-                                <span class="input-group-btn">
-                                  <button class="btn btn-success btn-flat" id="add-custom-tag" type="button">Add</button>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <br>
-                          <small> Default ones (can't change) </small>
-                          <div class="row padding" id="button-tags">
-                              &nbsp;
-                              <button class="btn btn-md bg-navy margin tag">virginia</button>
-                              <button class="btn btn-md bg-olive tag">100-emails</button>
-                              <button class="btn btn-md bg-maroon margin tag">Mar-26-2014</button>
-                              <br>
-                              &nbsp;
-                          </div>
+                        <input id="num_emails" type="text" name="num_emails" value="" />
                     </div>
+                  </div>
                 </div>
-                <div class="box box-success">
+
+                <div class="col-xs-12 col-md-6">
+                  <div class="box box-success">
                     <div class="box-header">
-                      <h3 class="box-title">Step 2:
-                        <strong> How Many Emails?  </strong>
+                      <h3 class="box-title">Step 1.2:
+                        <strong> Select Previous Batch </strong>
                       </h3>
                     </div>
                     <div class="box-body">
-                        <input id="num_emails" type="text" name="num_emails" value="" />
+                        <div class="form-group">
+                            <select class="form-control" id='campaign-batches'>
+
+                            </select>
+                        </div>
                     </div>
+                  </div>
+                </div>
+
+              </div>
+                <div class="box box-success">
+                  <div class="box-header">
+                    <h3 class="box-title">Step 2:
+                      <strong> Select Relevant Tags</strong>
+                    </h3>
+                  </div>
+                  <div class="box-body">
+                        <h6> <u>Popular tags</u></h6>
+                        <div class="row padding">
+
+                              &nbsp;
+                              <button class="btn btn-xs bg-gray margin popular-tag">Brackets</button>
+                              <button class="btn btn-xs bg-gray popular-tag">Urgent</button>
+                              <button class="btn btn-xs bg-gray margin popular-tag">Gossip</button>
+                              <button class="btn btn-xs bg-gray popular-tag">Risky</button>
+                              <button class="btn btn-xs bg-gray margin popular-tag">Memes</button>
+                              <button class="btn btn-xs bg-gray popular-tag">Students</button>
+                              <button class="btn btn-xs bg-gray margin popular-tag">Gurus</button>
+                              <br>
+                              &nbsp;
+                              <button class="btn btn-xs bg-gray margin popular-tag">Informative</button>
+                              <button class="btn btn-xs bg-gray popular-tag">News</button>
+                              <br>
+                              &nbsp;
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-6">
+                            <div class="input-group input-group-md">
+                              <input type="text" id="add-custom-tag-input" class="form-control" placeholder="Add Custom Tag">
+                              <span class="input-group-btn">
+                                <button class="btn btn-success btn-flat" id="add-custom-tag" type="button">Add</button>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <hr>
+                        <div class="text-center">Blue = default, yellow = custom, pink = used before</div>
+                        <div class="row padding" id="button-tags">
+                            &nbsp;
+                            <button class="btn btn-md bg-navy margin tag">virginia</button>
+                            <button class="btn btn-md bg-navy tag">100-emails</button>
+                            <button class="btn btn-md bg-navy margin tag">Mar-26-2014</button>
+                            <br>
+                            &nbsp;
+                        </div>
+                  </div>
                 </div>
                 <div class="box box-success">
                     <div class="box-header">
@@ -83,6 +121,11 @@
                       </h3>
                     </div>
                     <div class="box-body">
+                        <div class="alert alert-danger alert-dismissable" style="display:none;" id ='mailchimp-template-subject-alert'>
+                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                          <h4>  <i class="icon fa fa-ban"></i> No subject defined</h4>
+                          Go <a href='https://mandrillapp.com/templates/'>here</a> and define one. <br> <strong>username</strong>: uguru@mandrill.com <br> <strong>password:</strong> JgZAGUHchIAIlJmOCrE_4w
+                        </div>
                         <div class="form-group">
                             <label>Mailchimp Template</label>
                             <select class="form-control" id="mailchimp-templates">
@@ -90,8 +133,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                          <label>Subject</label>
-                          <input type="text" class="form-control" id="email-template-subject" placeholder="Enter ...">
+                          <label>Template Subject <i class="fa fa-check bg-olive" id='template-subject-check' style="display:none;"></i></label>
+                          <input type="text" class="form-control" id="email-template-subject" placeholder="Enter ..." disabled>
                         </div>
                     </div>
 
@@ -110,7 +153,7 @@
                         </div>
                         <div class="form-group">
                           <label>Sender Name</label>
-                          <input type="text" class="form-control" id="sender-name" placeholder="First Name" value="chloe">
+                          <input type="text" class="form-control" id="sender-name" placeholder="First Name" value="Chloe">
                         </div>
                         <div class="form-group">
                           <label>Reply - To Email</label>
@@ -138,86 +181,91 @@
                         </div>
                     </div>
                 </div>
-                <div class="box box-success">
-                    <div class="row" id='test-email-success-modal' style="margin-top:25px;display:none;">
-                      <div class="col-xs-12">
-                        <div class="box box-solid box-info">
-                          <div class="box-header">
-                              <h3 class="box-title">Test Message Sent!</h3>
-                          </div><!-- /.box-header -->
-                          <div class="box-body">
-                            Good job you're valuable!
-                          </div><!-- /.box-body -->
+                <div class="row">
+                  <div class="col-xs-12 col-md-6">
+                    <div class="box box-success">
+                        <div class="row" id='test-email-success-modal' style="margin-top:25px;display:none;">
+                          <div class="col-xs-12">
+                            <div class="box box-solid box-info">
+                              <div class="box-header">
+                                  <h3 class="box-title">Test Message Sent!</h3>
+                              </div><!-- /.box-header -->
+                              <div class="box-body">
+                                Good job you're valuable!
+                              </div><!-- /.box-body -->
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="box-header">
-                      <h3 class="box-title">Step 5:
-                        <strong> Send Test </strong>
-                      </h3>
-                    </div>
-                    <div class="box-body">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Recipient Email</label>
-                          <input type="email" class="form-control" id="test-email-input" placeholder="samir@uguru.me" value="samir@uguru.me">
+                        <div class="box-header">
+                          <h3 class="box-title">Step 5.1:
+                            <strong> Send Test </strong>
+                          </h3>
                         </div>
-                        <div class="form-group">
-                          <label>Receiver Name</label>
-                          <input type="text" class="form-control" id="test-email-name" placeholder="Samir">
-                        </div>
-                    </div>
-                    <div class="box-footer">
-                        <button type="submit" id="send-test-email" class="btn btn-warning">Send Test Email</button>
-                    </div>
-                </div>
-                <div class="box box-success">
-                  <div class="row" id='test-email-success-modal-2' style="margin-top:25px;display:none;">
-                      <div class="col-xs-12">
-                        <div class="box box-solid box-info">
-                          <div class="box-header">
-                              <h3 class="box-title">Test Message Sent!</h3>
-                          </div><!-- /.box-header -->
-                          <div class="box-body">
-                            Good job you're valuable!
-                          </div><!-- /.box-body -->
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-header">
-                      <h3 class="box-title">Step 6:
-                        <strong> Schedule Time & Send</strong>
-                      </h3>
-                      <br>
-                      <h6> Cuz mandrill sucks a lot</h6>
-                    </div>
-                    <div class="box-body">
-
-                        <div class="form-group">
-                            <label>Date range:</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" class="form-control pull-right" id="calendar">
-                            </div><!-- /.input group -->
-                        </div>
-
-                        <div class="bootstrap-timepicker">
+                        <div class="box-body">
                             <div class="form-group">
-                              <label>Time picker:</label>
-                              <div class="input-group">
-                                <div class="input-group-addon">
-                                  <i class="fa fa-clock-o"></i>
-                                </div>
-                                <input type="text" class="form-control timepicker"/>
-                              </div><!-- /.input group -->
-                            </div><!-- /.form group -->
+                              <label for="exampleInputEmail1">Recipient Email</label>
+                              <input type="email" class="form-control" id="test-email-input"placeholder="riakhmerov@gmail.com" value="riakhmerov@gmail.com">
+                            </div>
+                            <div class="form-group">
+                              <label>Receiver Name</label>
+                              <input type="text" class="form-control" id="test-email-name" placeholder="Samir" value="Richard">
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" id="send-test-email" class="btn btn-warning">Send Test Email</button>
                         </div>
                     </div>
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-primary" id="send-campaign-email">Send New Email</button>
+                  </div>
+                  <div class="col-xs-12 col-md-6">
+                    <div class="box box-success">
+                      <div class="row" id='test-email-success-modal-2' style="margin-top:25px;display:none;">
+                          <div class="col-xs-12 col-sm-6">
+                            <div class="box box-solid box-info">
+                              <div class="box-header">
+                                  <h3 class="box-title">Test Message Sent!</h3>
+                              </div><!-- /.box-header -->
+                              <div class="box-body">
+                                Good job you're valuable!
+                              </div><!-- /.box-body -->
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-header">
+                          <h3 class="box-title">Step 5.2:
+                            <strong> Schedule Time & Send</strong>
+                          </h3>
+                        </div>
+                        <div class="box-body">
+
+                            <div class="form-group">
+                                <label>Date range:</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="calendar">
+                                </div><!-- /.input group -->
+                            </div>
+
+                            <div class="bootstrap-timepicker">
+                                <div class="form-group">
+                                  <label>Time picker:</label>
+                                  <div class="input-group">
+                                    <div class="input-group-addon">
+                                      <i class="fa fa-clock-o"></i>
+                                    </div>
+                                    <input type="text" class="form-control timepicker"/>
+                                  </div><!-- /.input group -->
+                                </div><!-- /.form group -->
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary" id="send-campaign-email">Send New Email</button>
+                        </div>
                     </div>
+                  </div>
                 </div>
+              </div>
           </div>
 
         </section><!-- /.content -->
@@ -273,6 +321,23 @@
         });
         $("#calendar").datepicker({
             autoclose:true
+        });
+
+        $("#mailchimp-templates").change(function() {
+          var mandrill_template = MANDRILL_TEMPLATES[$('#mailchimp-templates').val()];
+          if (!mandrill_template.subject) {
+            $('#mailchimp-template-subject-alert').show();
+            $('#template-subject-check').hide();
+          } else {
+            $('#mailchimp-template-subject-alert').hide();
+            $('#template-subject-check').show();
+            $('#email-template-subject').val(mandrill_template.subject);
+          }
+        });
+
+        $('#campaign-batches').change(function() {
+          index_option = parseInt($('#campaign-batches').find(":selected").attr('value'));
+          getBatchEmails(null, index_option);
         });
 
 
@@ -393,6 +458,17 @@
           custom_tag_text = $('#add-custom-tag-input').val('');
         });
 
+        $('.popular-tag').click(function() {
+          var custom_btn_string = "<button class='btn btn-md remove-tag bg-maroon margin tag'>" + $(this).text() + "&nbsp;&nbsp;<i class='fa fa-remove padding'></i></button>"
+          $('#button-tags').append(custom_btn_string);
+        });
+
+        //Add batcher filter to select
+        for (var i = 0; i < batch_filter_arr.length; i++) {
+          current_batch_name = batch_filter_arr[i];
+          $("#campaign-batches").append('<option value="' + i + '"> Batch ' + (i + 1) + ': ' +  current_batch_name.split("-").join(" ") + '</option>');
+        }
+
     } );
 
 
@@ -409,6 +485,29 @@
           alert(JSON.parse(error.responseText).message);
         }
       });
+    }
+
+
+    var processOldBatchResults = function(results) {
+      next_hundred_emails = [];
+      for (var i = 0; i < results.length; i ++) {
+        info_dict = {
+          address: results[i].email
+        };
+        if (results[i].name) {
+          info_dict.name = results[i].name
+        }
+        next_hundred_emails.push(info_dict);
+      }
+      console.log(next_hundred_emails);
+    }
+
+    var getBatchEmails = function(batch_name, batch_id) {
+      //if old batch id
+      if (!batch_name) {
+        old_batch_dict = batch_filter[(batch_id + 1) + ''];
+        searchMandrillMessage(null, old_batch_dict.date_from, old_batch_dict.date_to, old_batch_dict.start, old_batch_dict.end, processOldBatchResults);
+      }
     }
 
     var deleteMailGunMembers = function(arr_emails, university_name) {
@@ -432,57 +531,63 @@
       }
     }
 
-    // var addMailGunMembers = function(arr_emails, university_name) {
-    //   for (var i = 0; i < arr_emails.length; i ++) {
-    //     var email_to_add = arr_emails[i].email;
-    //     var url = "https://api:key-bfe01b1e2cb76d45e086c2fa5e813781@api.mailgun.net/v2/lists/" + university_name +"@nationalacademicresearch.org/members";
-    //     params = {
-    //       subscribed:true,
-    //       address: email_to_add,
-    //       name: arr_emails[i].name
-    //     }
-    //     $.ajax({
-    //       url: url,
-    //       type: "POST",
 
-    //       success: function(response) {
-    //         console.log(email_to_delete, 'deleted');
-    //         if (i === 99) {
-    //           window.replace.location('/admin/campaigns/scheduled/')
-    //         }
-    //       },
-    //       error: function(error) {
-    //         alert(JSON.parse(error.responseText).message);
-    //       }
-    //     });
-    //   }
-    // }
+
+    batch_filter = {
+      '1': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 0, end:100},
+      '2': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 100, end:200},
+      '3': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 200, end:300},
+      '4': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 300, end:400},
+      '5': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 400, end:500},
+      '6': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 500, end:600},
+      '7': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 600, end:700},
+      '8': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 0, end:100},
+      '9': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 100, end:200},
+      '10': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 200, end:300},
+      '11': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 300, end:400},
+      '12': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 400, end:500}
+    }
+
+    var batch_filter_arr = ['hey-fname-i-have-a-question-for-you', 'uva-platform-10-free-access-code', 'uva-alert-new-jobs-for-20-hour', 'uva-alert-new-platform-launched', 'free-10-to-try-exclusive-uva-platform', 'hear-about-the-uva-kid-who-partied-too-hard', 'average-uva-work-study-12-this-one-is', 't8-hear-about-the-uva-kid-who-partied-too-hard', 't9-uva-it-s-like-cheating-but-we-encourage-i', 't10-frats-use-this-to-get-perfect-grades', 't11-perfect-grades-and-parties-at-the-same-damn', 't12-urgent-uva-students-needed-at-20-hour'];
 
     var processVirginiaEmailsMailgun = function(email_objs) {
       mandrill_result_format = [];
       for (var i = 0; i < email_objs.length; i ++) {
         email_obj = email_objs[i];
         if (email_obj.address) {
-          mandrill_result_format.push({
-            email: email_obj.address,
-            name: email_obj.name.split(' ')[1]
-          });
+          info_dict = {
+            email: email_obj.address
+          }
+          if (email_obj.name) {
+            info_dict.name = email_obj.name.split(' ')[1];
+          }
+          mandrill_result_format.push(info_dict);
         }
       }
       return mandrill_result_format;
     }
 
-    var postMandrillAPI = function(payload, is_test, tags) {
+    var postMandrillAPI = function(payload, is_test, num_emails) {
       if (! is_test) {
         payload.message.to = processVirginiaEmailsMailgun(next_hundred_emails);
+        payload.message.metadata = {
+          batch_size: next_hundred_emails.length,
+          tags: payload.message.tags.join(" "),
+          batch_campaign_id: 2,
+          university: "virginia"
+        }
       }
+
       $.ajax({
         url: "https://mandrillapp.com/api/1.0/messages/send-template.json",
         type: "POST",
         contentType: 'application/json',
         data: JSON.stringify(payload),
         success: function(response) {
-          if (! is_test) {
+          if (is_drip) {
+            window.replace.location('/admin/campaigns/scheduled/');
+          }
+          if (! is_test && !is_drip) {
             deleteMailGunMembers(payload.message.to, 'virginia');
           } else {
             $('#test-email-success-modal').show();

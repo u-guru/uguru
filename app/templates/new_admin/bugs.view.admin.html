@@ -1,0 +1,175 @@
+{% extends 'new_admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/new_admin/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            View Bugs
+            <br>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/new_admin/"><i class="fa fa-dashboard"></i> Home </a></li>
+            <li class="active">Bugs</li>
+            <a class="btn btn-primary btn-xs pull-right" style="position: absolute;right: 10px;bottom: 4px;" href='/admin/bugs/'>
+            <i class="fa fa-plus"></i>&nbsp;&nbsp;
+                Create a Bug
+            </a>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="box box-warning box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">All Bugs</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  </div><!-- /.box-tools -->
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover bootstrap-database" id="view-all-issues">
+                    </table>
+                </div><!-- /.box-body -->
+            </div>
+
+            <div class="box box-info box-solid collapsed-box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Application Bugs</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  </div><!-- /.box-tools -->
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover bootstrap-database" id="view-all-issues">
+
+                    </table>
+                </div><!-- /.box-body -->
+            </div>
+
+            <div class="box box-solid">
+                <div class="box-header bg-olive with-border">
+                  <h3 class="box-title">Dashboard Bugs</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  </div><!-- /.box-tools -->
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover bootstrap-database" id="view-all-issues">
+
+                    </table>
+                </div><!-- /.box-body -->
+            </div>
+
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/js/new_admin/github_wrapper.js" type="text/javascript"></script>
+<script src="/static/js/new_admin/github.js" type="text/javascript"></script>
+
+<script>
+    $(document).ready(function() {
+        get_issues_gh_api(format_view_issues_gh_table);
+
+    } );
+
+    var format_view_issues_gh_table = function(issues_arr) {
+
+                var column_headers = ['#','Title', 'Time Created', 'Platform', 'Severity', 'Contributor', 'Other']
+                var github_obj_column_keys = ['number', 'title', 'created_at'];
+
+                formatted_table_str = format_gh_issue_table(column_headers, github_obj_column_keys, issues_arr);
+
+
+
+                $('#view-all-issues').append(formatted_table_str);
+
+
+                $('#view-all-issues').DataTable({
+                    "bInfo": false,
+                    "bPaginate": false,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "aaSorting": [[0, 'desc']]
+                });
+
+        }
+
+        var format_gh_issue_table = function(header_arr, column_keys_arr, issues_arr) {
+
+            //create header
+            result = "<thead></tr>"
+            for (var i = 0; i < header_arr.length; i ++) {
+                result += "<th>" + header_arr[i] + "</th>"
+            }
+            result += "</tr></thead>"
+
+
+            result += '<tbody>'
+            //generate body
+            for (var j = 0; j < issues_arr.length; j++) {
+                current_issue = issues_arr[j];
+                current_issue_labels = current_issue.labels;
+                one_row_str = '<tr>';
+                for (var k = 0; k < header_arr.length; k ++) {
+                    one_row_str += '<td>'
+                    if (k < 3) {
+                        current_key = column_keys_arr[k];
+                        one_row_str += current_issue[current_key];
+                    }
+                    else
+                    //platforms
+                    if (k === 3) {
+                        one_row_str += process_issue_labels('platform', current_issue_labels);
+                    }
+                    else
+                    //severity
+                    if (k === 4) {
+                        one_row_str += process_issue_labels('severity', current_issue_labels);
+                    }
+                    else
+                    //contributors
+                    if (k === 5) {
+                        one_row_str += process_issue_labels('contributor', current_issue_labels);
+                    }
+                    //labels
+                    if (k === 6) {
+                        one_row_str += process_issue_labels('other', current_issue_labels);
+                    }
+                    one_row_str += '</td>';
+
+                }
+                one_row_str += '</tr>';
+                result += one_row_str;
+
+            }
+            result += '</tbody>'
+            return result;
+        }
+
+        var process_issue_labels = function(label_type, labels) {
+            result_labels = [];
+            for (var l = 0; l < labels.length; l++ ) {
+                label = labels[l];
+                if (label.name.split(':').length === 1 && label_type === 'other') {
+                    result_labels.push(label.name);
+                } else
+                if (label.name.indexOf(label_type) !== -1) {
+                    result_labels.push(label.name.split(':')[1]);
+                }
+            }
+            return result_labels.join(' ');
+        }
+
+</script>
+
+{% endblock %}

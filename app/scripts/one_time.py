@@ -211,8 +211,9 @@ for template in all_templates:
         print template['slug']
 
 
-# all_tds = [template for template in all_relevant_templates if 'D:' in template['name']]
-# all_t1s = [template for template in all_relevant_templates if 'D:' not in template['name']]
+all_tds = [template for template in all_relevant_templates if 'D:' in template['name']]
+all_t1s = [template for template in all_relevant_templates if 'D:' not in template['name']]
+all_t1_slugs = [template['slug'] for template in all_relevant_templates]
 # print len(all_tds)
 # print len(all_t1s)
 # for t1 in all_t1s:
@@ -225,12 +226,29 @@ for template in all_templates:
     # send to all recipients
 
 # search messages YESTERDAY --> filter by subject tag, print tags joined by a space
+
+
+[]
+['t10-frats-use-this-to-get-perfect-grades', 't11-perfect-grades-and-parties-at-the-same-damn', 't12-urgent-uva-students-needed-at-20-hour', 't8-hear-about-the-uva-kid-who-partied-too-hard', 't9-uva-it-s-like-cheating-but-we-encourage-i']
+
+
+
+
 import mandrill, json
 MANDRILL_API_KEY = 'JgZAGUHchIAIlJmOCrE_4w'
 mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
-
-messages = mandrill_client.messages.search(limit=1000, date_from='2015-03-26', query='email:virginia.edu')
+messages = mandrill_client.messages.search(limit=1000, date_from='2015-03-27', date_to='2015-03-28', query='email:virginia.ed')
+index = 0
+_dict = {}
 for m in messages:
+    index += 1
+    template_name = m['template']
+    subject_name = m['subject']
+    if not _dict.get(template_name):
+        _dict[template_name] = [m]
+    else:
+        _dict[template_name].append(m)
+
 # get all templates by name
 #
 

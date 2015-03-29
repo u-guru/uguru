@@ -28,9 +28,33 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 ## NEW ADMIN ##
 ###############
 
-@app.route('/admin/login')
+@app.route('/admin/login/')
 def admin_login():
-    return render_template("new_admin/login.html")
+    error = None
+    if request.args.get("email", None) and request.args.get("password"):
+        email = request.args.get("email")
+        password = request.args.get("password")
+
+        from app.lib.admin import admin_info
+        print email, password
+        if check_admin_password(email, password):
+            session['user'] = admin_info[email]
+            return redirect(request.path)
+        else:
+            session['error'] = 'incorrect username & password'
+            return redirect(request.path)
+
+    if session.get('error'):
+        error = 'incorrect username & password'
+        session.pop('error')
+
+    if session.get('user'):
+        return redirect(url_for('admin_team'))
+
+
+    return render_template("new_admin/login.html", error=error)
+
+
 
 @app.route('/admin/campaigns/')
 def admin_view_campaigns():
@@ -54,8 +78,8 @@ def admin_coming_soon():
 
 @app.route('/')
 @app.route('/admin/')
-@app.route('/admin/home/')
 @app.route('/admin/team/')
+@app.route('/admin/home/')
 @app.route('/admin/team/action_items/')
 def admin_team():
     return render_template("new_admin/team-action-items.html", team=[])
@@ -63,6 +87,21 @@ def admin_team():
 @app.route('/lte/')
 def lte_theme():
     return redirect("/static/new_admin/index2.html")
+
+
+@app.route('/admin/bugs/')
+def admin_bugs():
+    return render_template("new_admin/bugs.admin.html", team=[])
+
+@app.route('/admin/bugs/view/')
+def admin_bugs_view():
+    return render_template("new_admin/bugs.view.admin.html", team=[])
+
+@app.route('/admin/logout/')
+def admin_logout():
+    if session.get('user'):
+        session.pop('user')
+    return redirect(url_for('admin_login'))
 
 
 @app.route('/old_admin/home/')
@@ -80,20 +119,6 @@ def default():
         return render_template("admin/index.html", os=os, statistics=statistics)
     else:
         return render_template("admin/login.html", os=os)
-
-@app.route('/login',methods=["POST"])
-def trylogin():
-    username = request.form['username']
-    password = request.form['password']
-    hashed = hashlib.sha224(username + password).hexdigest()
-
-    #test if login is correct
-    if hashed != admin_authkey:
-        #successful authentication!
-        session["admin"] = True
-        return redirect(url_for('default'))
-    else:
-        return render_template("admin/index.html", os=os)
 
 @app.route('/index.html')
 def index():
@@ -510,3 +535,14 @@ def admin_accounts():
         else:
             admin_users.append(u)
     return render_template('admin-users.html', admin_users=admin_users)
+
+
+def check_admin_password(email, password):
+    from app.lib.admin import admin_info
+    print email, password
+    if admin_info.get(email):
+        email_user_info = admin_info[email]
+        first_name = email_user_info['name'].split(' ')[0].lower()
+        if password == first_name + '-uguru-1':
+            return True
+    return False
