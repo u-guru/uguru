@@ -48,22 +48,110 @@
 <script src="/static/js/new_admin/tables.js" type="text/javascript"></script>
 
 <script>
+    next_hundred_emails = [];
+    batch_results_dict = {};
     $(document).ready(function() {
-
         $.ajax({
             url: "https://mandrillapp.com/api/1.0/tags/list.json",
             type: "POST",
             contentType: 'application/json',
             data: JSON.stringify({key: MANDRILL_API_KEY}),
             success: function(all_tags){
-                wanted_tags = filter_tags(all_tags, true);
-                var new_table = create_table(['Campaign Name', 'Emails Sent', 'Unique Opens', 'Unique Clicks', 'Open Rate %', "Click Rate %"], wanted_tags,
+
+            }
+
+        })
+
+        var getAllBatchStatistics = function() {
+            default_batch_length  = 100;
+            current_batch_length = get_batch_length();
+            results = [];
+
+            if (!current_batch_length) {
+                current_batch_length = default_batch_length;
+            }
+
+            console.log('batch-length', current_batch_length);
+
+            for (var i = 1; i < (current_batch_length + 1); i ++) {
+                if (i < 13) {
+                    all_emails = getBatchEmails(null, (i - 1));
+                }
+                else {
+                    //query mandrill for batch 13 or until there is no more
+                }
+            }
+        }
+
+        var query_mandrill_by_metadata = function(batch_id) {
+
+        }
+
+        var get_batch_length = function() {
+            return null;
+        }
+
+        var getBatchEmails = function(batch_name, batch_id) {
+          //if old batch id
+          console.log('getting batch_emails for', batch_id);
+          if (!batch_name) {
+            old_batch_dict = batch_filter[(batch_id + 1) + ''];
+            searchMandrillMessage(null, old_batch_dict.date_from, old_batch_dict.date_to, old_batch_dict.start, old_batch_dict.end, processOldBatchResults, batch_id);
+          }
+        }
+
+        var processOldBatchResults = function(results, batch_id) {
+          next_hundred_emails = [];
+          batch_results_dict[(batch_id + 1) + ''] = {
+            emails: results
+          }
+          console.log(batch_id);
+          console.log(Object.keys(batch_results_dict).length);
+          if (Object.keys(batch_results_dict).length === 12) {
+            create_batch_table(batch_results_dict, 12);
+          }
+          return next_hundred_emails;
+        }
+
+        var create_batch_table = function(results_dict, num_batches) {
+
+            header_columns = ['Batch Number', 'Subject', 'Size', 'Unique Opens', 'Clicks', 'Open Rate', 'Click Rate'];
+            unique_opens = 0;
+            unique_clicks = 0;
+            batches = [];
+            for (var i = 1; i < num_batches + 1; i ++) {
+                result_emails = results_dict[i + ''].emails;
+                unique_opens = 0;
+                unique_clicks = 0;
+                for (var j = 0; j < result_emails.length; j++) {
+                    current_email = result_emails[j];
+                    if (current_email["opens"] > 0) {
+                        unique_opens += 1
+                    }
+
+                    if (current_email["clicks"] > 0) {
+                        unique_clicks += 1
+                    }
+                }
+                batches.push({
+                    "batch_num": i,
+                    "subject": result_emails[0].subject,
+                    "batch_size": result_emails.length,
+                    "unique_opens": unique_opens,
+                    "unique_clicks": unique_clicks,
+                    "open_rate": Math.round(unique_opens/result_emails.length * 100),
+                    "click_rate": Math.round(unique_clicks/result_emails.length * 100),
+                })
+                console.log(batches);
+            }
+            var new_table = create_table(header_columns, batches,
                     {
-                        "tag":true,
-                        "sent": true,
+                        "batch_num":true,
+                        "subject": true,
+                        "batch_size": true,
                         "unique_opens":true,
                         "unique_clicks": true,
-                        "click_through":true,
+                        "click_rate":true,
                         "open_rate": true,
                     }
                 );
@@ -74,13 +162,45 @@
                     "bPaginate": false,
                     "bLengthChange": false,
                     "bFilter": false,
-                    "aaSorting": [[1, 'desc']]
+                    "aaSorting": [[2, 'desc']]
                 });
-            },
-            error: function (request) {
-                alert('Incorrect username or password, please try again');
-            }
-        });
+
+        }
+
+
+
+
+        // $.ajax({
+        //     url: "https://mandrillapp.com/api/1.0/tags/list.json",
+        //     type: "POST",
+        //     contentType: 'application/json',
+        //     data: JSON.stringify({key: MANDRILL_API_KEY}),
+        //     success: function(all_tags){
+        //         wanted_tags = filter_tags(all_tags, true);
+        //         var new_table = create_table(['Campaign Name', 'Emails Sent', 'Unique Opens', 'Unique Clicks', 'Open Rate %', "Click Rate %"], wanted_tags,
+        //             {
+        //                 "tag":true,
+        //                 "sent": true,
+        //                 "unique_opens":true,
+        //                 "unique_clicks": true,
+        //                 "click_through":true,
+        //                 "open_rate": true,
+        //             }
+        //         );
+
+        //         $('#view-campaigns').append(new_table);
+        //         $('#view-campaigns').DataTable({
+        //             "bInfo": false,
+        //             "bPaginate": false,
+        //             "bLengthChange": false,
+        //             "bFilter": false,
+        //             "aaSorting": [[1, 'desc']]
+        //         });
+        //     },
+        //     error: function (request) {
+        //         alert('Incorrect username or password, please try again');
+        //     }
+        // });
 
         var filter_tags = function(tags_list, process_extra) {
 
@@ -126,7 +246,49 @@
         //         }
         //       }
         //     } );
+
+        getAllBatchStatistics();
     } );
+
+
+    batch_filter = {
+      '1': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 0, end:100},
+      '2': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 100, end:200},
+      '3': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 200, end:300},
+      '4': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 300, end:400},
+      '5': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 400, end:500},
+      '6': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 500, end:600},
+      '7': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 600, end:700},
+      '8': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 0, end:100},
+      '9': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 100, end:200},
+      '10': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 200, end:300},
+      '11': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 300, end:400},
+      '12': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 400, end:500}
+    }
+
+    var batch_filter_arr = ['hey-fname-i-have-a-question-for-you', 'uva-platform-10-free-access-code', 'uva-alert-new-jobs-for-20-hour', 'uva-alert-new-platform-launched', 'free-10-to-try-exclusive-uva-platform', 'hear-about-the-uva-kid-who-partied-too-hard', 'average-uva-work-study-12-this-one-is', 't8-hear-about-the-uva-kid-who-partied-too-hard', 't9-uva-it-s-like-cheating-but-we-encourage-i', 't10-frats-use-this-to-get-perfect-grades', 't11-perfect-grades-and-parties-at-the-same-damn', 't12-urgent-uva-students-needed-at-20-hour'];
+
+    var searchMandrillMessage = function(query, date_from, date_to, start, end, callback, batch_id) {
+          console.log(query, date_from, date_to, start, end);
+          payload = {
+            key: MANDRILL_API_KEY,
+            date_from: date_from,
+            date_to: date_to,
+            limit: 1000
+          }
+
+          $.ajax({
+            url: "https://mandrillapp.com/api/1.0/messages/search.json",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify(payload),
+            success: function(result) {
+              if (callback) {
+                callback(result.slice(start, end), batch_id);
+              }
+            }
+          });
+        }
 </script>
 
 {% endblock %}
