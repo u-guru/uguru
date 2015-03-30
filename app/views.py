@@ -125,7 +125,7 @@ def admin_bugs_view():
 def admin_development_style():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/bugs.view.admin.html", team=[])
+    return render_template("new_admin/style.development.admin.html", team=[])
 
 @app.route('/admin/logout/')
 def admin_logout():
