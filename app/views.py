@@ -96,6 +96,12 @@ def admin_team():
         return redirect(url_for('admin_login'))
     return render_template("new_admin/team-action-items.html", team=[])
 
+@app.route('/admin/team/calendar/')
+def admin_team_calendar():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/team-calendar.html")
+
 @app.route('/lte/')
 def lte_theme():
     if not session.get('user'):
