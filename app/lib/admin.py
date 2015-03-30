@@ -24,7 +24,7 @@ admin_info = {
         'profile_url': '/static/img/admin/geet.png'
     },
     'pardo@uguru.me': {
-        'name': 'Walter Pardo',
+        'name': 'Pardo Walter',
         'profile_url': '/static/img/admin/pardo.png'
     },
     'varada@uguru.me': {
