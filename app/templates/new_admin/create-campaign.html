@@ -643,7 +643,7 @@
           batch_size: next_hundred_emails.length,
           tags: payload.message.tags.join(" "),
           batch_id: drip_batch_id,
-          campaign_id: highest_campaign_number_mandrill,
+          campaign_id: highest_campaign_number_mandrill + 1,
           batch_campaign_id: 2,
           university: "virginia"
         }
@@ -655,8 +655,8 @@
         payload.message.metadata = {
           batch_size: next_hundred_emails.length,
           tags: payload.message.tags.join(" "),
-          batch_id: highest_batch_number_mandrill,
-          campaign_id: highest_campaign_number_mandrill,
+          batch_id: highest_batch_number_mandrill + 1,
+          campaign_id: highest_campaign_number_mandrill + 1,
           batch_campaign_id: 1,
           university: "virginia"
         }
