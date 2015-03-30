@@ -165,11 +165,19 @@ class User(Base):
         self.last_active = datetime.now()
 
         db_session.add(self)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
     def create_password(self, password):
         self.password = flask_bcrypt.generate_password_hash(password)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return self.password
 
     def num_payment_cards(self):
@@ -191,7 +199,11 @@ class User(Base):
 
         self.estimated_guru_rank = calculate_guru_score(user)
         self.estimated_guru_rank_last_updated = datetime.now()
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
     def get_payment_cards(self):
         return [card for card in self.cards if card.is_payment_card]
@@ -252,7 +264,11 @@ class Calendar(Base):
         c.request_id = _request.id
         c.number_of_days = number_of_days
         db_session.add(c)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return c
 
     @staticmethod
@@ -262,7 +278,11 @@ class Calendar(Base):
         c.proposal_id = proposal.id
         c.number_of_days = number_of_days
         db_session.add(c)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return c
 
 
@@ -322,7 +342,11 @@ class Calendar_Event(Base):
         calendar_event.calendar_id = calendar.id
 
         db_session.add(calendar_event)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
         return calendar_event
 
@@ -407,7 +431,11 @@ class University(Base):
         self.contributed_user_id = user_id
 
         db_session.add(self)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
     @staticmethod
     def admin_create(args_dict, _id):
@@ -437,7 +465,11 @@ class University(Base):
         #     if args.get('location').get('zip_code'):
         #         u.zip_code = int(args.get('location').get('zip_code').split("-")[0])
 
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
         return u
 
@@ -488,14 +520,22 @@ class Major(Base):
         m.name = name
         m.admin_approved = True
 
-        # db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return m
 
     @staticmethod
     def user_create(name, contributed_user_id):
         c = Major(name=name,contributed_user_id=contributed_user_id)
         db_session.add(c)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return c
 
 
@@ -527,7 +567,11 @@ class Support(Base):
         support.rating_id = support_json.get('rating_id')
         support.message = message
         db_session.add(support)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return support
 
 class Department(Base):
@@ -613,7 +657,11 @@ class Position(Base):
         position.timestamp = position_json.get('timestamp')
         position.user_id = user_id
         db_session.add(position)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return position
 
 class Request(Base):
@@ -681,7 +729,11 @@ class Request(Base):
 
     def process_proposal(self, proposal_json):
         self.status = proposal_json.get('status')
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return self
 
     def is_active(self):
@@ -777,7 +829,11 @@ class Proposal(Base):
         proposal.guru_id = _session.guru_id
         proposal.session = _session
         db_session.add(proposal)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return proposal
 
     @staticmethod
@@ -789,7 +845,11 @@ class Proposal(Base):
         proposal.guru_id = guru_id
         proposal.request_id = request_id
         db_session.add(proposal)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return proposal
 
 class File(Base):
@@ -841,7 +901,11 @@ class File(Base):
         # _file.size = file_json.get('size')
         # _file.name = file_json.get('name')
         db_session.add(_file)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return _file
 
 
@@ -1047,7 +1111,11 @@ class Session(Base):
         _session.online = session_json.get('online')
         _session.time_estimate = session_json.get('time_estimate')
         db_session.add(_session)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return _session
 
     #TODO CLEAN UP THIS LATER
@@ -1066,7 +1134,11 @@ class Session(Base):
         _session.time_estimate = session_json.get('time_estimate')
         _session.description = session_json.get('description')
         db_session.add(_session)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return _session
 
 class Relationship(Base):
@@ -1093,7 +1165,11 @@ class Relationship(Base):
         _relationship.guru_id = session.guru_id
         _relationship.student_id = session.student_id
         db_session.add(_relationship)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return _relationship
 
 
@@ -1150,7 +1226,11 @@ class Message(Base):
         message.sender_id = message_json.get('sender_id')
         message.receiver_id = message_json.get('receiver_id')
         db_session.add(message)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
 
 class Device(Base):
@@ -1218,7 +1298,11 @@ class Rating(Base):
         rating.student_id = _session.student_id
         rating.session = _session
         db_session.add(rating)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return rating
 
 class Batch(Base):
@@ -1255,7 +1339,11 @@ class Email_User(Base):
 
     def increment_clicks(self):
         self.num_clicks += 1
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
     @staticmethod
     def initEmailUser(email):
@@ -1264,7 +1352,11 @@ class Email_User(Base):
         email_user = Email_User.query.filter_by(email = email).first()
         if email_user:
             email_user.num_clicks += 1
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
             return
 
         email_user = Email_User()
@@ -1272,7 +1364,11 @@ class Email_User(Base):
         email_user.num_clicks = 1
         email_user.email = email
         db_session.add(email_user)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return email_user
 
 
@@ -1345,7 +1441,11 @@ class Course(Base):
         self.admin_approved = admin_approved
         self.contributed_user_id = contributed_user_id
         # db_session.add(self)
-        # db_session.commit()
+        # try:
+        #     db_session.commit()
+        # except:
+        #     db_session.rollback()
+        #     raise
 
     def __repr__(self):
         return "<Course '%r', '%r'>" %\
@@ -1537,7 +1637,11 @@ class Build(Base):
         self._type = _type
         self.version_id = version_id
         db_session.add(self)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
 
 
@@ -1613,7 +1717,11 @@ class Card(Base):
         card.is_default_payment = card_json.get('is_default_payment')
         card.is_default_transfer = card_json.get('is_default_transfer')
         db_session.add(card)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return card
 
 class Transaction(Base):
@@ -1732,7 +1840,11 @@ class Transaction(Base):
         transaction.cashout_guru_id = user.id
 
         db_session.add(transaction)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
 
     @staticmethod
@@ -1770,7 +1882,11 @@ class Transaction(Base):
         transaction.card_id = _session.card_id
 
         db_session.add(transaction)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
         return transaction
 

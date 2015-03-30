@@ -51,6 +51,7 @@
     next_hundred_emails = [];
     batch_results_dict = {};
     batch_limit_reached = false;
+    var highest_batch_number_mandrill;
     $(document).ready(function() {
         $.ajax({
             url: "https://mandrillapp.com/api/1.0/tags/list.json",
@@ -63,30 +64,6 @@
 
         })
 
-        var getAllBatchStatistics = function() {
-            default_batch_length  = 100;
-            current_batch_length = get_batch_length();
-            results = [];
-
-            if (!current_batch_length) {
-                current_batch_length = default_batch_length;
-            }
-
-            for (var i = 1; i < (current_batch_length + 1); i ++) {
-                if (i < 13) {
-                    all_emails = getBatchEmails(null, (i - 1));
-                }
-                else {
-                    if (batch_limit_reached) {
-                        console.log('no more batches released');
-                        return;
-                    } else {
-                        searchMandrillByBatch(i);
-                    }
-                }
-            }
-        }
-
         var query_mandrill_by_metadata = function(batch_id) {
 
         }
@@ -94,29 +71,6 @@
         var get_batch_length = function() {
             return 20;
         }
-
-        var getBatchEmails = function(batch_name, batch_id) {
-          //if old batch id
-          if (!batch_name) {
-            old_batch_dict = batch_filter[(batch_id + 1) + ''];
-            searchMandrillMessage(null, old_batch_dict.date_from, old_batch_dict.date_to, old_batch_dict.start, old_batch_dict.end, processOldBatchResults, batch_id);
-          }
-        }
-
-        var processOldBatchResults = function(results, batch_id) {
-          next_hundred_emails = [];
-          batch_results_dict[(batch_id + 1) + ''] = {
-            emails: results
-          }
-          // if (Object.keys(batch_results_dict).length === 12) {
-          //   create_batch_table(batch_results_dict, 12);
-          // }
-          return next_hundred_emails;
-        }
-
-
-
-
 
         // $.ajax({
         //     url: "https://mandrillapp.com/api/1.0/tags/list.json",
@@ -195,9 +149,36 @@
         //       }
         //     } );
 
-        getAllBatchStatistics();
+        console.log('waiting 3 seconds for first poll...');
+        setTimeout(function(){
+            pollForBatchResults();
+        }, 3000)
+
+        // highest_batch_number_mandrill = 13;
+        get_highest_batch_number_mandrill(13);
+
     } );
 
+    var pollForBatchResults = function() {
+        setTimeout(function(){
+            if (Object.keys(batch_results_dict).length === highest_batch_number_mandrill) {
+                console.log(batch_results_dict);
+                console.log('limit reached!');
+                create_batch_table(batch_results_dict);
+                return;
+            } else {
+                pollForBatchResults();
+            }
+      }, 1000);
+    }
+
+    var getBatchEmails = function(batch_name, batch_id) {
+          //if old batch id
+          if (!batch_name) {
+            old_batch_dict = batch_filter[(batch_id + 1) + ''];
+            searchMandrillMessage(null, old_batch_dict.date_from, old_batch_dict.date_to, old_batch_dict.start, old_batch_dict.end, processOldBatchResults, batch_id);
+          }
+        }
 
     batch_filter = {
       '1': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 0, end:100},
@@ -238,6 +219,38 @@
           });
         }
 
+    var processOldBatchResults = function(results, batch_id) {
+          next_hundred_emails = [];
+          batch_results_dict[(batch_id + 1) + ''] = {
+            emails: results
+          }
+          // if (Object.keys(batch_results_dict).length === 12) {
+          //   create_batch_table(batch_results_dict, 12);
+          // }
+          return next_hundred_emails;
+    }
+
+    var getAllBatchStatistics = function() {
+            default_batch_length  = highest_batch_number_mandrill;
+            results = [];
+
+            current_batch_length = highest_batch_number_mandrill
+
+            for (var i = 1; i < (current_batch_length + 1); i ++) {
+                if (i < 13) {
+                    all_emails = getBatchEmails(null, (i - 1));
+                }
+                else {
+                    if (batch_limit_reached) {
+                        console.log('no more batches released');
+                        return;
+                    } else {
+                        searchMandrillByBatch(i);
+                    }
+                }
+            }
+        }
+
     var create_batch_table = function(results_dict, num_batches) {
 
             header_columns = ['Batch Number', 'Subject', 'Size', 'Unique Opens', 'Clicks', 'Open Rate', 'Click Rate'];
@@ -245,7 +258,6 @@
             unique_clicks = 0;
             batches = [];
             for (var i = 1; i < Object.keys(results_dict).length + 1; i ++) {
-                console.log(results_dict[i + '']);
                 result_emails = results_dict[i + ''].emails;
                 unique_opens = 0;
                 unique_clicks = 0;
@@ -287,10 +299,37 @@
                     "bPaginate": false,
                     "bLengthChange": false,
                     "bFilter": false,
-                    "aaSorting": [[2, 'desc']]
+                    "aaSorting": [[5, 'desc']]
                 });
 
         }
+
+    var get_highest_batch_number_mandrill = function(index) {
+        if (highest_batch_number_mandrill) {
+          return
+        }
+        payload = {
+          key: MANDRILL_API_KEY,
+          query: "u_batch_id:" + index
+        }
+        $.ajax({
+          url: "https://mandrillapp.com/api/1.0/messages/search.json",
+          type: "POST",
+          contentType: 'application/json',
+          data: JSON.stringify(payload),
+          success: function(result) {
+            if (result.length === 0) {
+              highest_batch_number_mandrill = (index - 1);
+              console.log('highest_batch_number_mandrill', highest_batch_number_mandrill);
+              getAllBatchStatistics();
+
+              return;
+            } else {
+              get_highest_batch_number_mandrill(index + 1);
+            }
+          }
+        });
+    }
 
     var searchMandrillByBatch = function(batch_id) {
         payload = {
@@ -305,18 +344,14 @@
             contentType: 'application/json',
             data: JSON.stringify(payload),
             success: function(result) {
-                if (result.length === 0) {
-                    batch_limit_reached = true;
 
-                } else {
-                    console.log('batch_result', batch_id, result);
-
-                    // batch_results_dict[(batch_id + 1) + ''] = {
-                    //     emails: result
-                    // }
-
-                    create_batch_table(batch_results_dict, 0);
+                console.log('batch_result', batch_id, result.length);
+                if (result.length > 0) {
+                    batch_results_dict[(batch_id) + ''] = {
+                        emails: result
+                    }
                 }
+
             },
             error: function(err) {
                 console.log(err);
