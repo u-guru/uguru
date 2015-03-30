@@ -249,6 +249,27 @@ for m in messages:
     else:
         _dict[template_name].append(m)
 
+
+import datetime
+one_day_later = datetime.datetime.now() + datetime.timedelta(days=1)
+one_day_later.utcnow()
+import mandrill, json
+MANDRILL_API_KEY = 'JgZAGUHchIAIlJmOCrE_4w'
+mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+message = {
+    'subject': 'test',
+    'from_email': 'samir@uguru.me',
+    'from_name': 'samir makhani',
+    'to': [{'email':'makhani.samir@gmail.com', 'type':'to'}],
+    'headers': {'Reply-To': 'samir@uguru.me'},
+    'important': True,
+    'track_opens': True,
+    'track_clicks': True,
+    'preserve_recipients':False,
+    'tags':['test']
+}
+messages = mandrill_client.messages.send(message=message, send_at=one_day_later)
+
 # get all templates by name
 #
 

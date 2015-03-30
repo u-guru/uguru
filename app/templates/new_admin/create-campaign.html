@@ -417,11 +417,19 @@
 
             // format date
             var formatted_time = $(".timepicker").data("timepicker").getTime().split(" ")[0] + ':00';
+            var am_or_pm = $(".timepicker").data("timepicker").getTime().split(" ")[1];
             result_date = $("#calendar").datepicker('getUTCDate');
             result_date_formatted = result_date.getFullYear() + '-' + (result_date.getMonth() + 1) + '-' + (result_date.getDate() + 1);
             full_date_formatted_utc = result_date_formatted + ' ' + formatted_time;
-            test_email_options.send_at = full_date_formatted_utc;
 
+            new_date = new Date(full_date_formatted_utc)
+            console.log(new_date);
+
+            if (am_or_pm.toLowerCase() == 'pm') {
+              new_date = new Date(new_date.getTime() + 12 * 60000 * 60);
+            }
+
+            test_email_options.send_at = new_date.toJSON().toString();
 
           }
 
