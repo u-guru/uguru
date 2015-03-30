@@ -44,8 +44,9 @@
     all_trello_list_id_objs = [];
     {% if session.get('user') and session['user']['name'] %}
       var first_name = "{{session['user']['name'].split(" ")[0]|title}}";
+    {% else %}
+      var first_name = "guest account";
     {% endif %}
-
     //3. Check --> Post to trello
     //4. Visuals: Alignment + collapsable + photos
 
@@ -65,7 +66,6 @@
         $.ajax({
             url: "https://api.trello.com/1/boards/8zend7RA?lists=open&list_fields=name&fields=name,desc&key=" + TRELLO_API_KEY,
             type: "GET",
-            contentType: 'application/json',
             success: function(board){
               all_trello_list_id_objs = board.lists;
               process_list_objs(all_trello_list_id_objs);
@@ -86,7 +86,6 @@
         $.ajax({
             url: "https://api.trello.com/1/lists/" +list_obj.id + "?fields=name&cards=open&card_fields=name,labels,desc&key=" + TRELLO_API_KEY,
             type: "GET",
-            contentType: 'application/json',
             success: function(list){
               list_obj.cards = list.cards;
               create_trello_list(list_obj);

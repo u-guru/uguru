@@ -490,9 +490,13 @@
 
     var getMailgunList = function(university_name, callback) {
       var url = "https://api:key-bfe01b1e2cb76d45e086c2fa5e813781@api.mailgun.net/v2/lists/" + university_name +"@nationalacademicresearch.org/members";
+      console.log(url);
       $.ajax({
         url: url,
         type: "GET",
+        beforeSend: function (xhr){
+          xhr.setRequestHeader('Authorization', "Basic " + btoa("api" + ":" + "key-bfe01b1e2cb76d45e086c2fa5e813781"));
+        },
         success: function(response) {
           next_hundred_emails = response.items;
           total_emails_remaining = response.total_count;
@@ -540,7 +544,6 @@
           contentType: 'application/json',
           data: JSON.stringify(payload),
           success: function(result) {
-            console.log(result);
             if (result.length === 0) {
               highest_batch_number_mandrill = index;
               return;
