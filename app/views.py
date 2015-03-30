@@ -58,22 +58,32 @@ def admin_login():
 
 @app.route('/admin/campaigns/')
 def admin_view_campaigns():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
     return render_template("new_admin/campaigns.html")
 
 @app.route('/admin/campaigns/create/')
 def admin_create():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
     return render_template("new_admin/create-campaign.html")
 
 @app.route('/admin/campaigns/scheduled/')
 def admin_scheduled():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
     return render_template("new_admin/scheduled-campaigns.html")
 
 @app.route('/admin/campaigns/<campaign_name>/')
 def admin_one_campaign(campaign_name):
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
     return render_template("new_admin/one_campaign.html", tag_name=campaign_name)
 
 @app.route('/admin/coming-soon/')
 def admin_coming_soon():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
     return render_template("new_admin/admin-coming-soon.html")
 
 @app.route('/')
@@ -82,19 +92,27 @@ def admin_coming_soon():
 @app.route('/admin/home/')
 @app.route('/admin/team/action_items/')
 def admin_team():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
     return render_template("new_admin/team-action-items.html", team=[])
 
 @app.route('/lte/')
 def lte_theme():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
     return redirect("/static/new_admin/index2.html")
 
 
 @app.route('/admin/bugs/')
 def admin_bugs():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
     return render_template("new_admin/bugs.admin.html", team=[])
 
 @app.route('/admin/bugs/view/')
 def admin_bugs_view():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
     return render_template("new_admin/bugs.view.admin.html", team=[])
 
 @app.route('/admin/logout/')
