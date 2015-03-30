@@ -268,7 +268,11 @@ message = {
     'preserve_recipients':False,
     'tags':['test']
 }
-messages = mandrill_client.messages.send(message=message, send_at=one_day_later)
+
+import mandrill, json
+MANDRILL_API_KEY = 'JgZAGUHchIAIlJmOCrE_4w'
+mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+messages = mandrill_client.messages.search(query='u_batch_id:14')
 
 # get all templates by name
 #

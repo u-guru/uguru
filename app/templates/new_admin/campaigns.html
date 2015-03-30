@@ -50,6 +50,7 @@
 <script>
     next_hundred_emails = [];
     batch_results_dict = {};
+    batch_limit_reached = false;
     $(document).ready(function() {
         $.ajax({
             url: "https://mandrillapp.com/api/1.0/tags/list.json",
@@ -71,14 +72,17 @@
                 current_batch_length = default_batch_length;
             }
 
-            console.log('batch-length', current_batch_length);
-
             for (var i = 1; i < (current_batch_length + 1); i ++) {
                 if (i < 13) {
                     all_emails = getBatchEmails(null, (i - 1));
                 }
                 else {
-                    //query mandrill for batch 13 or until there is no more
+                    if (batch_limit_reached) {
+                        console.log('no more batches released');
+                        return;
+                    } else {
+                        searchMandrillByBatch(i);
+                    }
                 }
             }
         }
@@ -88,12 +92,11 @@
         }
 
         var get_batch_length = function() {
-            return null;
+            return 20;
         }
 
         var getBatchEmails = function(batch_name, batch_id) {
           //if old batch id
-          console.log('getting batch_emails for', batch_id);
           if (!batch_name) {
             old_batch_dict = batch_filter[(batch_id + 1) + ''];
             searchMandrillMessage(null, old_batch_dict.date_from, old_batch_dict.date_to, old_batch_dict.start, old_batch_dict.end, processOldBatchResults, batch_id);
@@ -105,67 +108,12 @@
           batch_results_dict[(batch_id + 1) + ''] = {
             emails: results
           }
-          console.log(batch_id);
-          console.log(Object.keys(batch_results_dict).length);
-          if (Object.keys(batch_results_dict).length === 12) {
-            create_batch_table(batch_results_dict, 12);
-          }
+          // if (Object.keys(batch_results_dict).length === 12) {
+          //   create_batch_table(batch_results_dict, 12);
+          // }
           return next_hundred_emails;
         }
 
-        var create_batch_table = function(results_dict, num_batches) {
-
-            header_columns = ['Batch Number', 'Subject', 'Size', 'Unique Opens', 'Clicks', 'Open Rate', 'Click Rate'];
-            unique_opens = 0;
-            unique_clicks = 0;
-            batches = [];
-            for (var i = 1; i < num_batches + 1; i ++) {
-                result_emails = results_dict[i + ''].emails;
-                unique_opens = 0;
-                unique_clicks = 0;
-                for (var j = 0; j < result_emails.length; j++) {
-                    current_email = result_emails[j];
-                    if (current_email["opens"] > 0) {
-                        unique_opens += 1
-                    }
-
-                    if (current_email["clicks"] > 0) {
-                        unique_clicks += 1
-                    }
-                }
-                batches.push({
-                    "batch_num": i,
-                    "subject": result_emails[0].subject,
-                    "batch_size": result_emails.length,
-                    "unique_opens": unique_opens,
-                    "unique_clicks": unique_clicks,
-                    "open_rate": Math.round(unique_opens/result_emails.length * 100),
-                    "click_rate": Math.round(unique_clicks/result_emails.length * 100),
-                })
-                console.log(batches);
-            }
-            var new_table = create_table(header_columns, batches,
-                    {
-                        "batch_num":true,
-                        "subject": true,
-                        "batch_size": true,
-                        "unique_opens":true,
-                        "unique_clicks": true,
-                        "click_rate":true,
-                        "open_rate": true,
-                    }
-                );
-
-                $('#view-campaigns').append(new_table);
-                $('#view-campaigns').DataTable({
-                    "bInfo": false,
-                    "bPaginate": false,
-                    "bLengthChange": false,
-                    "bFilter": false,
-                    "aaSorting": [[2, 'desc']]
-                });
-
-        }
 
 
 
@@ -289,6 +237,92 @@
             }
           });
         }
+
+    var create_batch_table = function(results_dict, num_batches) {
+
+            header_columns = ['Batch Number', 'Subject', 'Size', 'Unique Opens', 'Clicks', 'Open Rate', 'Click Rate'];
+            unique_opens = 0;
+            unique_clicks = 0;
+            batches = [];
+            for (var i = 1; i < Object.keys(results_dict).length + 1; i ++) {
+                console.log(results_dict[i + '']);
+                result_emails = results_dict[i + ''].emails;
+                unique_opens = 0;
+                unique_clicks = 0;
+                for (var j = 0; j < result_emails.length; j++) {
+                    current_email = result_emails[j];
+                    if (current_email["opens"] > 0) {
+                        unique_opens += 1
+                    }
+
+                    if (current_email["clicks"] > 0) {
+                        unique_clicks += 1
+                    }
+                }
+                batches.push({
+                    "batch_num": i,
+                    "subject": result_emails[0].subject,
+                    "batch_size": result_emails.length,
+                    "unique_opens": unique_opens,
+                    "unique_clicks": unique_clicks,
+                    "open_rate": Math.round(unique_opens/result_emails.length * 100),
+                    "click_rate": Math.round(unique_clicks/result_emails.length * 100),
+                })
+            }
+            var new_table = create_table(header_columns, batches,
+                    {
+                        "batch_num":true,
+                        "subject": true,
+                        "batch_size": true,
+                        "unique_opens":true,
+                        "unique_clicks": true,
+                        "click_rate":true,
+                        "open_rate": true,
+                    }
+                );
+
+                $('#view-campaigns').append(new_table);
+                $('#view-campaigns').DataTable({
+                    "bInfo": false,
+                    "bPaginate": false,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "aaSorting": [[2, 'desc']]
+                });
+
+        }
+
+    var searchMandrillByBatch = function(batch_id) {
+        payload = {
+            key: MANDRILL_API_KEY,
+            query: 'u_batch_id:' + batch_id,
+            limit: 1000
+          }
+
+          $.ajax({
+            url: "https://mandrillapp.com/api/1.0/messages/search.json",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify(payload),
+            success: function(result) {
+                if (result.length === 0) {
+                    batch_limit_reached = true;
+
+                } else {
+                    console.log('batch_result', batch_id, result);
+
+                    // batch_results_dict[(batch_id + 1) + ''] = {
+                    //     emails: result
+                    // }
+
+                    create_batch_table(batch_results_dict, 0);
+                }
+            },
+            error: function(err) {
+                console.log(err);
+            }
+          });
+    }
 </script>
 
 {% endblock %}
