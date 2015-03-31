@@ -660,6 +660,11 @@
           batch_campaign_id: 1,
           university: "virginia"
         }
+        payload.message.to.push({email:'batch-' + highest_batch_number_mandrill + '@uguru.me', name:'uguru batch tracker'})
+      }
+
+      if (is_test) {
+        payload.message.tags = ['TEST']
       }
       console.log(payload);
 

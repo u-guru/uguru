@@ -278,5 +278,23 @@ messages = mandrill_client.messages.search(query='u_batch_id:14')
 #
 
 
+import mandrill, json
+MANDRILL_API_KEY = 'JgZAGUHchIAIlJmOCrE_4w'
+mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+message = {
+        'subject': 'test',
+        'from_email': 'chloe@uguru.me',
+        'from_name': 'chloe',
+        'to': [{'type':'to', 'email':'batch-14@uguru.me'}],
+        'headers': {'Reply-To': 'chlose@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':['TEST']
+    }
+
+
+
 
 
