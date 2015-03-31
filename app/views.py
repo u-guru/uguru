@@ -86,7 +86,6 @@ def admin_coming_soon():
         return redirect(url_for('admin_login'))
     return render_template("new_admin/admin-coming-soon.html")
 
-@app.route('/')
 @app.route('/admin/')
 @app.route('/admin/team/')
 @app.route('/admin/home/')
@@ -337,6 +336,7 @@ def login():
     session.pop("admin")
     return render_template("login.html")
 
+@app.route('/')
 @app.route('/university/')
 def app_flex():
 

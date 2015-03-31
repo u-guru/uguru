@@ -92,7 +92,7 @@
 
     var format_view_issues_gh_table = function(issues_arr) {
 
-                var column_headers = ['#','Title', 'Contributor', 'Severity', 'Platform', 'Other']
+                var column_headers = ['#','Title', 'Contributor', 'Severity', 'Platform', 'Other', 'Action']
                 var github_obj_column_keys = ['number', 'title', 'created_at'];
 
                 //process this as well;
@@ -207,6 +207,10 @@
                     //labels
                     if (k === 5) {
                         one_row_str += process_issue_labels('other', current_issue_labels);
+                    }
+
+                    if (k === 6) {
+                        one_row_str += "<i class='fa fa-web'></i>"
                     }
                     one_row_str += '</td>';
 
