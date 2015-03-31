@@ -189,7 +189,7 @@ class User(Base):
     msg_notif = Column(Integer, default = 0)
     feed_notif = Column(Integer, default = 0)
     settings_notif = Column(Integer, default = 0)
-    
+
     #Stripe Fields
     customer_id = Column(String)
     customer_last4 = Column(String(4))
@@ -197,13 +197,13 @@ class User(Base):
     recipient_id = Column(String)
     recipient_last4 = Column(String(4))
     recipient_card_type = Column(String(4))
-    
-    outgoing_requests = relationship('Request', 
+
+    outgoing_requests = relationship('Request',
         secondary = student_request_table)
-    incoming_requests_to_tutor = relationship('Request', 
+    incoming_requests_to_tutor = relationship('Request',
         secondary = tutor_request_table,
         backref = backref('users', lazy='dynamic'))
-    incoming_requests_from_tutors = relationship('Request', 
+    incoming_requests_from_tutors = relationship('Request',
         secondary = committed_tutor_request_table)
     skills = relationship("Skill",
         secondary = user_skill_table,
@@ -230,11 +230,11 @@ class User(Base):
 
 
 
-    #Gets called when you create a new User() 
+    #Gets called when you create a new User()
     def __init__(self, name = None, email = None, password = None, \
         phone_number = None, is_a_tutor = None, profile_url = None, \
         fb_id = None, fb_account = None, gender = None):
-        
+
         self.name = name
         self.email = email
         self.password = password
@@ -250,7 +250,7 @@ class User(Base):
     def __repr__(self):
         return "<User " + str(self.id) + " " + str(self.name) + " " + str(self.email) + ">"
 
-    
+
     # Returns [] if doesn't exist, otherwise User Object
     @staticmethod
     def does_email_exist(email):
@@ -268,30 +268,30 @@ class User(Base):
         # TODO : VALIDATE SHIT BITCH
         if fb_id:
             user = User(
-                name=name, 
-                email=email, 
-                password=None, 
-                profile_url=profile_url, 
+                name=name,
+                email=email,
+                password=None,
+                profile_url=profile_url,
                 fb_id=fb_id,
-                fb_account=True, 
+                fb_account=True,
                 gender=gender)
         else:
             user = User(
-                name=name, 
-                email=email, 
+                name=name,
+                email=email,
                 password=User.encrypted_password(password),
                 gender=gender)
-        try: 
+        try:
             db_session.add(user)
             db_session.commit()
         except:
             db_session.rollback()
-            raise 
+            raise
 
         #TODO: Remove this later, I don't know why this prevents me from creating messages/
         user_mailbox = Mailbox(user)
 
-        try: 
+        try:
             db_session.add(user_mailbox)
             db_session.commit()
         except:
@@ -313,12 +313,12 @@ class User(Base):
 
     #TODO: Add more as needed
     def as_dict(self):
-        
+
         #if no uploaded photo, use base
         profile_url = self.profile_url
         if not self.profile_url:
             profile_url = '/static/img/default-photo.jpg'
-        
+
         u_dict = {
             'server_id': self.id,
             'name': self.get_first_name(),
@@ -332,7 +332,7 @@ class User(Base):
     #Create stripe customer
     def add_payment_card(self, token):
         from lib.payments import create_stripe_customer
-        
+
         result = create_stripe_customer(token, self)
 
         if result:
@@ -361,7 +361,7 @@ class User(Base):
 
             payment = Payment.create_cashout_payment(self)
             self.payments.append(payment)
-            
+
             #Update total earned
             self.total_earned = self.total_earned + self.balance
             self.balance = 0
@@ -387,7 +387,7 @@ class User(Base):
                 db_session.rollback()
                 raise
 
-        return result 
+        return result
 
     def get_all_conversations(self, _dict=None, sorted_by_time=None):
         conversations = self.conversations
@@ -409,7 +409,7 @@ class User(Base):
     def logout_user(self):
         from flask import session
         session.pop('user_id')
-    
+
     def get_first_name(self):
         return self.name.split(' ')[0].title()
 
@@ -417,11 +417,11 @@ class User(Base):
         from views import calc_avg_rating
         return calc_avg_rating(self)
 
-    def get_conversation_with(self, guru):        
+    def get_conversation_with(self, guru):
         for c in self.conversations:
             if c.guru == guru:
                 return c
-        return 
+        return
 
     def get_all_transactions(self):
         user_payments = self.payments
@@ -431,9 +431,9 @@ class User(Base):
 
 
 
-    # Go through user.outgoing_requests, filter the ones 
+    # Go through user.outgoing_requests, filter the ones
     # that Gurus have accepted, but student hasn't.
-    #HACKED for now, will change 
+    #HACKED for now, will change
     def get_accepted_requests(self):
         accepted_requests = []
         for _request in self.outgoing_requests:
@@ -448,7 +448,7 @@ class User(Base):
         scheduled_sessions = []
         for c in self.conversations:
             if c.is_active and self == c.guru:
-                all_requests_by_date = sorted(c.requests, 
+                all_requests_by_date = sorted(c.requests,
                     key=lambda c:c.time_created, reverse=True)
                 scheduled_sessions.append(all_requests_by_date[0])
         return scheduled_sessions
@@ -459,7 +459,7 @@ class User(Base):
         scheduled_sessions = []
         for c in self.conversations:
             if c.is_active and self == c.student:
-                all_requests_by_date = sorted(c.requests, 
+                all_requests_by_date = sorted(c.requests,
                     key=lambda c:c.time_created, reverse=True)
                 scheduled_sessions.append(all_requests_by_date[0])
         scheduled_sessions = sorted(scheduled_sessions, key=lambda s:s.time_created, reverse=True)
@@ -476,19 +476,19 @@ class User(Base):
 
     def add_skill(self, skill):
         self.skills.append(skill)
-        try: 
+        try:
             db_session.commit()
         except:
             db_session.rollback()
-            raise 
+            raise
 
     def add_request_to_pending_requests(self, _request):
         self.outgoing_requests.append(_request)
-        try: 
+        try:
             db_session.commit()
         except:
             db_session.rollback()
-            raise 
+            raise
 
     # Active requests is not expired, or not canceled (yet), or not matched.
     def get_pending_requests(self):
@@ -505,11 +505,11 @@ class User(Base):
     def process_end_request(self, _request):
         if _request in self.outgoing_requests:
             self.outgoing_requests.remove(_request)
-        try: 
+        try:
             db_session.commit()
         except:
             db_session.rollback()
-            raise 
+            raise
 
 
     #for guru to get all incoming requests
@@ -533,7 +533,7 @@ class User(Base):
         pending_requests_skill_ids = [_request.skill_id for _request in pending_requests]
         if skill.id in pending_requests_skill_ids:
             return True
-        
+
 
     #return all notifications
     def get_all_notifications(self):
@@ -565,7 +565,7 @@ class Conversation(Base):
     is_read = Column(Boolean, default = False)
     is_active = Column(Boolean)
     last_updated = Column(DateTime)
-    
+
     skill_id = Column(Integer, ForeignKey('skill.id'))
     skill = relationship("Skill",
         uselist = False,
@@ -573,14 +573,14 @@ class Conversation(Base):
         backref = "conversations")
 
     guru_id = Column(Integer, ForeignKey('user.id'))
-    guru = relationship("User", 
-        uselist = False, 
+    guru = relationship("User",
+        uselist = False,
         primaryjoin = "User.id == Conversation.guru_id",
         backref = "guru_conversations")
 
     student_id = Column(Integer, ForeignKey('user.id'))
-    student = relationship("User", 
-        uselist = False, 
+    student = relationship("User",
+        uselist = False,
         primaryjoin = "User.id == Conversation.student_id",
         backref = "student_conversations")
 
@@ -656,7 +656,7 @@ class Conversation(Base):
         }
 
         last_message = self.get_last_message()
-        if last_message: 
+        if last_message:
             c_dict['last_message'] = last_message.as_dict()
 
         return c_dict
@@ -701,7 +701,7 @@ class Message(Base):
         primaryjoin = 'Message.conversation_id == Conversation.id',
         backref = "messages")
 
-    mailboxes = relationship("Mailbox", 
+    mailboxes = relationship("Mailbox",
         secondary = mailbox_message_table,
         backref = "messages")
     users = relationship("User",
@@ -730,12 +730,12 @@ class Message(Base):
         else:
             receiver = conversation.student
         message = Message(contents, conversation, sender, receiver)
-        try: 
+        try:
             db_session.add(message)
             db_session.commit()
         except:
             db_session.rollback()
-            raise 
+            raise
         return message
 
     def as_dict(self):
@@ -757,11 +757,11 @@ class Message(Base):
             (self.sender_id, self.reciever_id, str(self.write_time))
 
 class Notification(Base):
-    __tablename__ = 'notification'    
+    __tablename__ = 'notification'
     id = Column(Integer, primary_key = True)
     feed_id = Column(Integer)
-    
-    request_id = Column(Integer)        
+
+    request_id = Column(Integer)
     request_tutor_amount_hourly = Column(Float)
     request_tutor_id = Column(Float)
     skill_name = Column(String)
@@ -769,13 +769,13 @@ class Notification(Base):
     custom_tag = Column(String)
 
     extra_detail = Column(String(2500))
-    
+
     time_created = Column(DateTime)
     time_read = Column(DateTime) #Set to now if it doesn't need to be read
-    
+
     feed_message = Column(String(1000))
     feed_message_subtitle = Column(String(1000))
-    
+
     payment_id = Column(Integer)
     rating_id = Column(Integer)
     a_id_name = Column(String) #div to display
@@ -790,7 +790,7 @@ class Notification(Base):
         status = kwargs.get('status')
         self.time_created = datetime.now()
         'kwargs must specify *either* a request, payment or a rating'
-        
+
         if status:
             self.status = status
         if request:
@@ -806,17 +806,17 @@ class Tag(Base):
     __tablename__ = 'tag'
     name = Column(String(16))
 
-    message_id = Column(Integer, 
-        ForeignKey('message.id'), 
-        primary_key = True, 
+    message_id = Column(Integer,
+        ForeignKey('message.id'),
+        primary_key = True,
         default = 0)
     message = relationship("Message",
         uselist = False,
         primaryjoin = 'Tag.message_id == Message.id',
         backref = "tags")
 
-    conversation_id = Column(Integer, 
-        ForeignKey('conversation.id'), 
+    conversation_id = Column(Integer,
+        ForeignKey('conversation.id'),
         primary_key = True,
         default = 0)
     conversation = relationship("Conversation",
@@ -844,12 +844,12 @@ class Tag(Base):
 class Payment(Base):
     __tablename__ = 'payment'
     id = Column(Integer, primary_key = True)
-    
+
     #in use as of 12/4/14
     student_id = Column(Integer)
     tutor_id = Column(Integer)
     request_id = Column(Integer)
-    skill_id = Column(Integer)    
+    skill_id = Column(Integer)
     time_created = Column(DateTime)
     stripe_charge_id = Column(String)
     stripe_recipient_id = Column(String)
@@ -879,7 +879,7 @@ class Payment(Base):
     @staticmethod
     def bill_student(student, total):
         import stripe
-        try: 
+        try:
             charge = stripe.Charge.create(
                 amount = int(total*100),
                 currency="usd",
@@ -888,7 +888,7 @@ class Payment(Base):
             )
         except stripe.error.CardError, e:
             return False
-        
+
         #Success case
         return charge['id']
 
@@ -905,16 +905,16 @@ class Payment(Base):
         payment.num_hours = hours
         payment.num_minutes = minutes
         payment.request_id = _request.id
-        
+
         student = _request.get_student()
         guru = User.query.get(_request.connected_tutor_id)
-        
+
         payment.student_paid_amount = Payment.calculate_student_price(hours, minutes)
         payment.tutor_received_amount = Payment.calculate_guru_price(hours, minutes)
 
         bill_student_result = Payment.bill_student(student, payment.student_paid_amount)
         #TODO, if a Guru already has a debit card, just cash out for them.
-        
+
         #Charge succeeded
         if bill_student_result:
             payment.stripe_charge_id = bill_student_result
@@ -928,23 +928,23 @@ class Payment(Base):
         if not guru.balance: guru.balance = 0
         guru.balance = guru.balance + payment.tutor_received_amount
 
-        try: 
+        try:
             db_session.add(payment)
             db_session.commit()
         except:
             db_session.rollback()
-            raise 
+            raise
 
         return payment
 
-    @staticmethod 
+    @staticmethod
     def create_cashout_payment(user):
-        
+
         from lib.payments import create_stripe_transfer
-        from datetime import datetime 
-        
+        from datetime import datetime
+
         transfer = create_stripe_transfer(user.balance, user)
-        
+
         payment = Payment()
         payment.stripe_recipient_id = transfer.id
         payment.time_created = datetime.now()
@@ -952,34 +952,34 @@ class Payment(Base):
         payment.tutor_received_amount = user.balance
         payment.tutor_id = user.id
 
-        try: 
+        try:
             db_session.add(payment)
             db_session.commit()
         except:
             db_session.rollback()
-            raise 
+            raise
 
         return payment
 
 
-    @staticmethod 
+    @staticmethod
     def calculate_student_price(hours=0, minutes=0):
         total_hours = hours + float(minutes / 60.0)
         total_amount = 20 * total_hours
         rounded_total_amount = round(total_amount, 2)
         return rounded_total_amount
 
-    @staticmethod 
+    @staticmethod
     def calculate_guru_price(hour=0, minutes=0):
         total_hours = hours + float(minutes / 60.0)
         total_amount = 16 * total_hours
         rounded_total_amount = round(total_amount, 2)
         return rounded_total_amount
-    
+
     def get_payment_type(self, user):
         if self.student_id == user.id and self.tutor_id:
             return 'student'
-        
+
         #payment.student_id is None for cashout transations
         if self.tutor_id == user.id and \
         not self.student_id:
@@ -1000,7 +1000,7 @@ class Payment(Base):
             return_dict = {
 
                 'type': _type,
-                'skill_name': Skill.get_skill_from_name(skill.name), 
+                'skill_name': Skill.get_skill_from_name(skill.name),
                 'guru': User.query.get(_request.connected_tutor_id).as_dict(),
                 'time': self.time_created.strftime('%h %d %Y'),
                 'amount': self.student_paid_amount
@@ -1023,7 +1023,7 @@ class Payment(Base):
 
         elif _type == 'cashout':
             return_dict = {
-                
+
                 'type': _type,
                 'time': self.time_created.strftime('%h %d %Y'),
                 'amount': self.tutor_received_amount,
@@ -1046,8 +1046,8 @@ class Payment(Base):
 class Request(Base):
     __tablename__ = 'request'
     id = Column(Integer, primary_key = True)
-    
-    student_id = Column(Integer) 
+
+    student_id = Column(Integer)
     skill_id = Column(Integer)
     professor = Column(String)
     student_estimated_hour = Column(Integer)
@@ -1058,7 +1058,7 @@ class Request(Base):
     time_estimate = Column(Float)
     remote = Column(Boolean)
     is_urgent = Column(Boolean) # TODO : migrate to using this eventually
-    urgency = Column(SmallInteger) # TODO : Depricate and Drop - Run a script that moves all > 0 to mean is_urgent is True 
+    urgency = Column(SmallInteger) # TODO : Depricate and Drop - Run a script that moves all > 0 to mean is_urgent is True
     payment_id = Column(Integer)
     time_created = Column(DateTime)
     last_updated = Column(DateTime)
@@ -1078,7 +1078,7 @@ class Request(Base):
     # If time_canceled is not None, the request is considered canceled
     time_canceled = Column(DateTime)
     cancellation_reason = Column(String)
-    
+
     # If time_expired is not None, the request is expired.
     time_expired = Column(DateTime)
 
@@ -1087,22 +1087,22 @@ class Request(Base):
     available_time = Column(String) # TODO : DROP
     student_secret_code = Column(String) # TODO : DROP
     connected_tutor_hourly = Column(Float) # TODO : DROP
-    frequency = Column(SmallInteger) # TODO : DROP - 0 is once, 1 is regular 
+    frequency = Column(SmallInteger) # TODO : DROP - 0 is once, 1 is regular
     actual_hourly = Column(Float) # TODO : DROP
     actual_time = Column(Float) # TODO : DROP
-    
+
     ############################
     # Begin association tables #
     ############################
 
     # Tutors available/qualified to be contacted for this request
-    requested_tutors = relationship('User', 
+    requested_tutors = relationship('User',
         secondary = tutor_request_table,
         backref = backref('requests', lazy='dynamic')
         )
 
     # Tutors who we have already attempted to contact for this request
-    contacted_tutors = relationship('User', 
+    contacted_tutors = relationship('User',
         secondary = request_contacted_tutors_table,
         cascade = "all, delete-orphan")
 
@@ -1110,7 +1110,7 @@ class Request(Base):
     weekly_availability = relationship('Week',
         secondary = request_weeks_table,
         backref='request', lazy='dynamic')
- 
+
     # TODO : DROP - This is contriversial, but it shouldn't be needed in the new queuing system
     committed_tutors = relationship('User',
         secondary = committed_tutor_request_table,
@@ -1138,12 +1138,12 @@ class Request(Base):
     def __repr__(self):
         student_name = User.query.get(self.student_id).name
         skill_name = Skill.query.get(self.skill_id).name
-        
-        if self.connected_tutor_id: 
+
+        if self.connected_tutor_id:
             tutor_name = User.query.filter_by(id=self.connected_tutor_id).first().name
         else:
             tutor_name = "Inactive"
-        
+
         return "%s <Student: %s, Tutor: %s, Skill: %s,\
         \n Time Created: %s, Time Estimated: %s hours>" %\
         (str(self.id), student_name, tutor_name, skill_name, \
@@ -1158,7 +1158,7 @@ class Request(Base):
             student = User.query.get(self.student_id)
         if self.connected_tutor_id:
             tutor = User.query.get(self.connected_tutor_id)
-        
+
         return request_obj_to_dict(self, skill, student, tutor)
 
     def get_tutor_count(self):
@@ -1192,10 +1192,10 @@ class Request(Base):
         if self.urgency:
             return 'ASAP'
 
-        #Debug soon 
+        #Debug soon
         if not self.start_time:
             return ""
-        
+
         #else case
         from datetime import datetime
         result_str = ''
@@ -1203,19 +1203,19 @@ class Request(Base):
             result_str += 'Today, '
         else:
             result_str += 'Tomorrow, '
-        
+
         if not self.start_time.minute:
             result_str += self.start_time.strftime('%I%p')
         else:
             result_str += self.start_time.strftime('%I:%M %p')
         return result_str
 
-    def create_event_notification(self, status, id_to_track=None, 
+    def create_event_notification(self, status, id_to_track=None,
         another_id_to_track=None):
         n = Notification()
         n.status = status
         n.request_id = self.id
-        
+
         #For us to track the tutor clicked the link later (not necessarily on time.)
         if status == 'tutor-viewed-request' or status == 'tutor-clicked-text-link':
             n.request_tutor_id = id_to_track
@@ -1226,12 +1226,12 @@ class Request(Base):
             n.request_tutor_id = id_to_track
             student = User.query.get(self.student_id)
             student.notifications.append(n)
-        #default 
+        #default
         elif self.pending_tutor_id:
             n.request_tutor_id = self.pending_tutor_id
             tutor = User.query.get(self.pending_tutor_id)
             tutor.notifications.append(n)
-        
+
         commit_to_db(n)
 
     def process_time_estimate(self):
@@ -1307,7 +1307,7 @@ class Request(Base):
         self.create_event_notification('student-accepted')
         self.create_event_notification('guru-sent-accept-text')
 
-        
+
 
         for tutor in (self.requested_tutors + self.committed_tutors):
             if self in tutor.outgoing_requests:
@@ -1333,7 +1333,7 @@ class Request(Base):
 
         from tasks import check_tutor_request_status
         from tasks import DEFAULT_STUDENT_ACCEPT_TIME
-        check_tutor_request_status.apply_async(args=[self.id, tutor.id], 
+        check_tutor_request_status.apply_async(args=[self.id, tutor.id],
             countdown = DEFAULT_STUDENT_ACCEPT_TIME)
 
         from tasks import send_twilio_msg
@@ -1361,7 +1361,7 @@ class Request(Base):
         Rating.create_rating(self)
 
         # Make conversation inactive
-        self.get_conversation().is_active = False 
+        self.get_conversation().is_active = False
 
         try:
             db_session.commit()
@@ -1391,7 +1391,7 @@ class Request(Base):
             user.outgoing_requests.remove(self)
         self.cancellation_reason = description
 
-        
+
         self.create_event_notification('student-canceled')
 
         #Clear this request from all tutors inbox
@@ -1403,7 +1403,7 @@ class Request(Base):
         except:
             db_session.rollback()
             raise
-        return 
+        return
 
     # A guru who has committed, but is not anymore
     def guru_cancel(self, guru_id, description=None):
@@ -1415,7 +1415,7 @@ class Request(Base):
         except:
             db_session.rollback()
             raise
-        return 
+        return
 
     def get_status(self):
         if self.time_canceled:
@@ -1424,14 +1424,14 @@ class Request(Base):
             return 'pending'
         else:
             return 'matched'
-        
+
     @staticmethod
     def get_request_by_id(request_id):
         return Request.query.get(request_id)
-    
+
     @staticmethod
     def create_request(student, skill_id, description, time_estimate, location, remote=None, is_urgent=False, urgency=None, start_time=None):
-        
+
         #Convert from JS Date to Python Datetime
         from lib.utils import js_date_to_python_datetime
         from datetime import datetime
@@ -1443,17 +1443,17 @@ class Request(Base):
                 description = description,
                 time_estimate = time_estimate,
                 location = location,
-                is_urgent = is_urgent, 
+                is_urgent = is_urgent,
                 urgency = urgency, # TODO : Depricate
                 start_time = start_time
             )
 
-        try: 
+        try:
             db_session.add(_request)
             db_session.commit()
         except:
             db_session.rollback()
-            raise 
+            raise
 
         return _request
 
@@ -1592,16 +1592,16 @@ class Rating(Base):
 
         student = User.query.get(_request.student_id)
         tutor = User.query.get(_request.connected_tutor_id)
-        
+
         student.pending_ratings.append(rating)
         tutor.pending_ratings.append(rating)
 
-        try: 
+        try:
             db_session.add(rating)
             db_session.commit()
         except:
             db_session.rollback()
-            raise         
+            raise
 
     def update_student_rating(self, rating_num):
         self.student_rating = rating_num
@@ -1610,11 +1610,11 @@ class Rating(Base):
         guru = User.query.get(self.tutor_id)
         guru.pending_ratings.remove(self)
 
-        try: 
+        try:
             db_session.commit()
         except:
             db_session.rollback()
-            raise        
+            raise
 
     def update_guru_rating(self, rating_num):
         self.tutor_rating = rating_num
@@ -1623,16 +1623,16 @@ class Rating(Base):
         student = User.query.get(self.student_id)
         student.pending_ratings.remove(self)
 
-        try: 
+        try:
             db_session.commit()
         except:
             db_session.rollback()
-            raise        
+            raise
 
     #TODO, make queries more optimal
     def get_payment_details_dict(self):
         _request = Request.query.get(self.request_id)
-        
+
         student = User.query.get(self.student_id)
         guru = User.query.get(self.tutor_id)
         skill = Skill.query.get(self.skill_id)
@@ -1696,11 +1696,11 @@ class Course(Base):
 
 #General models helper functions
 def commit_to_db(obj=None):
-    try: 
+    try:
         if obj:
             db_session.add(obj)
         db_session.commit()
     except:
         db_session.rollback()
-        raise 
+        raise
 

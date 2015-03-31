@@ -285,16 +285,18 @@ message = {
         'subject': 'test',
         'from_email': 'chloe@uguru.me',
         'from_name': 'chloe',
-        'to': [{'type':'to', 'email':'batch-14@uguru.me'}],
+        'to': [{'type':'to', 'email':'batch-15@uguru.me'}],
         'headers': {'Reply-To': 'chlose@uguru.me'},
         'important': True,
         'track_opens': True,
         'track_clicks': True,
         'preserve_recipients':False,
-        'tags':['TEST']
+        'tags':['TEST'],
+        'metadata': {
+            'batch_id': 15
+        }
     }
-
-
+message = mandrill_client.messages.send(message=message)
 
 
 

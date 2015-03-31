@@ -52,12 +52,13 @@
 
 <script>
     batch_results_dict = {};
-
+    var all_scheduled_batch_ids = [];
     next_hundred_emails = [];
     batch_results_dict = {};
     scheduled_batch_results_dict_count = 0;
     batch_limit_reached = false;
     var highest_batch_number_mandrill;
+    var first_part_accomplished = false;
 
     $(document).ready(function() {
 
@@ -78,7 +79,8 @@
 
     var pollForBatchResults = function() {
         setTimeout(function(){
-            if (Object.keys(batch_results_dict).length === highest_batch_number_mandrill) {
+            console.log('polling once more...');
+            if (Object.keys(batch_results_dict).length === highest_batch_number_mandrill && !first_part_accomplished) {
                 console.log(batch_results_dict);
                 console.log('limit reached!');
                 var batch_results_keys = Object.keys(batch_results_dict)
@@ -88,13 +90,15 @@
                   sample_email_arr_batch.push(email);
                 }
                 check_scheduled_emails_from_batch(sample_email_arr_batch);
+                first_part_accomplished = true;
+                pollForBatchResults();
 
             } else if (Object.keys(batch_results_dict).length === highest_batch_number_mandrill && scheduled_batch_results_dict_count === highest_batch_number_mandrill)
             {
 
               console.log(batch_results_dict);
               console.log('final limits reached!');
-              create_scheduled_batch_table(batch_results_dict);
+              create_scheduled_batch_table(all_scheduled_batch_ids);
 
               return;
             }else {
@@ -196,32 +200,31 @@
             });
         }
 
-        var create_scheduled_batch_table = function(results_batch_ids, num_batches) {
+        var create_scheduled_batch_table = function(scheduled_batch_ids) {
 
             header_columns = ['Batch Number', 'Subject', 'Time Scheduled','Time Created', 'Size', 'Cancel?'];
             unique_opens = 0;
             unique_clicks = 0;
             batches = [];
-            for (var i = 0; i < num_batches; i ++) {
-                batch_num = results_batch_ids[i];
-                result_emails = batch_results_dict[batch_num + ''].scheduled_emails;
-                unique_opens = 0;
-                unique_clicks = 0;
-                for (var j = 0; j < result_emails.length; j++) {
-                    current_email = result_emails[j];
-                    if (current_email["opens"] > 0) {
-                        unique_opens += 1
-                    }
 
-                    if (current_email["clicks"] > 0) {
-                        unique_clicks += 1
-                    }
-                }
+            console.log('starting table...', scheduled_batch_ids);
+            for (var i = 0; i < scheduled_batch_ids.length; i ++) {
+                result_emails = batch_results_dict[scheduled_batch_ids[i] + ''].scheduled_emails;
+                batch_num = scheduled_batch_ids[i];
+
+                gmt_send_at = new Date(result_emails[0].send_at);
+                pst_send_at = new Date(gmt_send_at);
+                pst_send_at.setHours(gmt_send_at.getHours() - 7);
+
+                gmt_created_at = new Date(result_emails[0].created_at);
+                pst_created_at = new Date(gmt_created_at);
+                pst_created_at.setHours(gmt_created_at.getHours() - 7);
+
                 batches.push({
                     "batch_num": batch_num,
                     "subject": result_emails[0].subject,
-                    "send_at": new Date(result_emails[0].send_at).toJSON().toString(),
-                    "created_at": new Date(result_emails[0].created_at).toJSON().toString(),
+                    "send_at": pst_send_at,
+                    "created_at": pst_created_at,
                     "batch_size": batch_results_dict[batch_num + ''].emails.length,
                     "cancel": "<a href'#' class='cancel-batch-schedule'>cancel</a>"
                 })
@@ -243,7 +246,7 @@
                     "bPaginate": false,
                     "bLengthChange": false,
                     "bFilter": false,
-                    "aaSorting": [[2, 'desc']]
+                    "aaSorting": [[1, 'desc']]
                 });
 
         }
@@ -251,7 +254,6 @@
         //create function checks whether there is a scheduled batch to be
         // sent out based on one email sent
         var check_scheduled_emails_from_batch = function(batch_email_arr) {
-          var all_scheduled_batch_ids = [];
           for (var i = 0 ; i < batch_email_arr.length; i ++) {
 
             current_email = batch_email_arr[i].email;
@@ -261,26 +263,26 @@
               to: current_email
             }
             console.log('attempting', current_email, 'from batch', i);
+            check_email_if_scheduled(current_email, i);
+          }
 
-            $.ajax({
+        }
+
+        var check_email_if_scheduled = function(email, index) {
+          $.ajax({
               url: "https://mandrillapp.com/api/1.0/messages/list-scheduled.json",
               type: "POST",
               contentType: 'application/json',
               data: JSON.stringify(payload),
               success: function(scheduled_msgs){
-                  batch_results_dict[i + ''].scheduled_emails = scheduled_msgs;
+                  batch_results_dict[(index + 1) + ''].scheduled_emails = scheduled_msgs;
                   scheduled_batch_results_dict_count += 1;
-                  console.log(scheduled_batch_results_dict_count);
+                  console.log('count for checking scheduled',scheduled_batch_results_dict_count);
                   if (scheduled_msgs.length > 0) {
-
-                    all_scheduled_batch_ids.push(i);
-
+                    all_scheduled_batch_ids.push((index + 1));
                   }
               }
             });
-
-          }
-
         }
 
   batch_filter = {

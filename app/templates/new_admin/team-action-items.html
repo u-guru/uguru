@@ -128,7 +128,7 @@
 
         // check if description exists
         desc = card.desc;
-        if (desc && desc.length > 0) {
+        if (desc && desc.length > 0 && list_body.indexOf('private') === -1) {
           list_body += '<p style="display:none;padding-left:40px;" class="padding margin todo-description"><u>Description</u><br>' + desc + '</p>'
         }
 

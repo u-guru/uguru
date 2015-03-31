@@ -31,4 +31,8 @@ admin_info = {
         'name': 'Varada Gavasker',
         'profile_url': '/static/img/admin/varada.png'
     },
+    'ben@uguru.me': {
+        'name': 'Ben Dalal',
+        'profile_url': 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100'
+    }
 }
