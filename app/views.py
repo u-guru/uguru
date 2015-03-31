@@ -353,7 +353,7 @@ def parse_user_agent(ua_str):
     else:
         return 'web'
 
-@app.route('/dev/m/<name>/', methods=["GET"])
+@app.route('/new/dev/m/<name>/', methods=["GET"])
 def one_university_mobile_dev(name):
     os = parse_user_agent(request.headers['User-Agent'])
     first_name= None
@@ -367,6 +367,7 @@ def one_university_mobile_dev(name):
 
     return redirect('/m/' + name)
 
+@app.route('/dev/m/<name>/', methods=["GET"])
 @app.route('/m/<name>/', methods=["GET"])
 def one_university_mobile(name):
     from lib.university_data import supported_universities

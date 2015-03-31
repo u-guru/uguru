@@ -272,20 +272,36 @@ message = {
 import mandrill, json
 MANDRILL_API_KEY = 'JgZAGUHchIAIlJmOCrE_4w'
 mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
-messages = mandrill_client.messages.search(query='u_batch_id:14')
+messages = mandrill_client.messages.list_scheduled()
+batch_14_message_template = messages[50:51][0]
+batch_15_message_template = messages[150:151][0]
+batch_16_message_template = messages[250:251][0]
+batch_17_message_template = messages[350:351][0]
+batch_18_message_template = messages[450:451][0]
+all_batches_scheduled = [batch_14_message_template, batch_15_message_template,\
+batch_16_message_template, batch_17_message_template, batch_18_message_template]
+all_batches_scheduled_subjects = [template['subject'] for template in all_batches_scheduled]
+for batch_template in all_batches_scheduled:
+    print batch_template['subject'], batch_template['send_at'], batch_template['created_at']
+
+
+
+#send out test RIGHT NOW for batch 16 + batch 17
 
 # get all templates by name
 #
+
+
 
 
 import mandrill, json
 MANDRILL_API_KEY = 'JgZAGUHchIAIlJmOCrE_4w'
 mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
 message = {
-        'subject': 'test',
+        'subject': '[URGENT] UVA Students Needed at $20/hour',
         'from_email': 'chloe@uguru.me',
         'from_name': 'chloe',
-        'to': [{'type':'to', 'email':'batch-15@uguru.me'}],
+        'to': [{'type':'to', 'email':'batch-16@uguru.me'}],
         'headers': {'Reply-To': 'chlose@uguru.me'},
         'important': True,
         'track_opens': True,
@@ -293,10 +309,115 @@ message = {
         'preserve_recipients':False,
         'tags':['TEST'],
         'metadata': {
-            'batch_id': 15
+            'batch_id': 16
         }
     }
 message = mandrill_client.messages.send(message=message)
 
 
+for message in mandrill_client.messages.list_scheduled():
+    m = mandrill_client.messages.cancel_scheduled(id=message['_id'])
+    print m
+
+from app.lib.mailgun import *
+import json
+result = list_members('virginia')
+f = json.loads(result.content)
+all_emails = f['items']
+
+from app.lib.mailgun import *
+all_members = get_n_list_members(750)
+
+
+m = mandrill_client.messages.search(query='u_batch_id:17')
+
+
+
+
+
+def mailgun_list_to_mandrill_recipients(arr):
+    result = []
+    for recipient in arr:
+        result.append{
+            'email': recipient['address']
+        }
+
+
+from app.lib.mailgun import *
+all_members = get_n_list_members(3100)
+
+messages = mandrill_client.messages.list_scheduled()
+for m in messages:
+    mandrill_client.messages.cancel_scheduled(id=m['_id'])
+
+import mandrill, json
+MANDRILL_API_KEY = 'JgZAGUHchIAIlJmOCrE_4w'
+mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+messages = mandrill_client.messages.list_scheduled()
+batch_14_message_template = messages[50:51][0]
+batch_15_message_template = messages[150:151][0]
+batch_16_message_template = messages[250:251][0]
+batch_17_message_template = messages[350:351][0]
+batch_18_message_template = messages[450:451][0]
+all_batches_scheduled = [batch_14_message_template, batch_15_message_template,\
+batch_16_message_template, batch_18_message_template, batch_17_message_template]
+all_batches_lengths = [(0,750), (750, 1500), (1500, 2250), (2250, 3000), (3000,3100)]
+all_batches_subjects = ['[URGENT] UVA Students Needed at $20/hour','Hear about the UVA kid who partied too hard?', 'Hear about the UVA kid who partied too hard?','Hear about the UVA kid who partied too hard?', 'This UVA kid parties way too hard']
+all_batches_templates = ['T19: [URGENT] UVA Students Needed at $20/hour','Hear about the UVA kid who partied too hard?', 'Hear about the UVA kid who partied too hard?','Hear about the UVA kid who partied too hard?', 'T18: This UVA kid parties way too hard']
+all_batches_scheduled_subjects = [template['subject'] for template in all_batches_scheduled]
+for batch_template in all_batches_scheduled:
+    print batch_template['subject'], batch_template['send_at'], batch_template['created_at']
+
+
+
+for index in range(14,19):
+    batch_template = all_batches_scheduled[index - 14]
+    recipients = all_members[all_batches_lengths[index-14][0]:all_batches_lengths[index-14][1]]
+    recipients.append({'name': 'uguru batch tracker', 'email':'batch-' + str(index) + '@uguru.me'})
+    tags = ['Virginia', 'Mar-30']
+    message = {
+        'from_email': 'chloe@uguru.me',
+        'from_name': 'Chloe',
+        'headers': {'Reply-To': 'chloe@uguru.me'},
+        'important': True,
+        'track_opens': True,
+        'subject': all_batches_subjects[index - 14],
+        'track_clicks': True,
+        'preserve_recipients': False,
+        'tags': tags,
+        'to': recipients,
+        'metadata': {
+            'batch_size': len(recipients) - 1,
+            'tags': ' '.join(tags),
+            'batch_id': index,
+            'campaign_id': index,
+            'batch_campaign_id': 1,
+            'university': "virginia"
+        }
+    }
+    template_name =all_batches_templates[index - 14]
+    send_at = '2015-03-31 20:00:00'
+    result = mandrill_client.messages.send_template(message=message, template_name=template_name, template_content=[], send_at=send_at)
+    print
+    pprint(result)
+
+
+
+for member in all_members:
+    delete_member_inList(member['address'], 'virginia')
+
+    # result = mandrill_client.messages.send(message=message, template_name=template_name, send_at=send_at)
+
+
+### TODO delete mailgun after
+
+# import requests
+#  requests.post(
+#     "https://api.mailgun.net/v2/lists",
+#     auth=('api', 'key-bfe01b1e2cb76d45e086c2fa5e813781'),
+#     data={'address': 'LIST@berkeleyguru.org',
+#           'description': "Mailgun developers list"})
+
+
+# cancel scripts
 
