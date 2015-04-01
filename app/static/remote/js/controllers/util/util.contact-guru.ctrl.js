@@ -31,6 +31,7 @@ angular.module('uguru.util.controllers')
           setTimeout(function() {
             console.log('shit is pulsating 3 second has passed');
             pulse.classList.remove('animated', 'pulse');
+            $scope.closeContactGuruModal();
 
           }, 2000);
         }, 2000);
@@ -59,10 +60,7 @@ angular.module('uguru.util.controllers')
 
 
 
-        } else {
-          $scope.closeContactGuruModal();
         }
-
         //TODO --> Cancel guru functioninality working
 
         setTimeout(function() {

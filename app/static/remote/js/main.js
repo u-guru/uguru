@@ -6,7 +6,8 @@ var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
   BASE_URL = 'http://192.168.42.66:8100';
-  REST_URL = 'http://192.168.42.66:5000'
+  REST_URL = 'http://192.168.42.66:5000';
+  var REST_URL = 'http://uguru-rest.herokuapp.com';
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.student.controllers', 'uguru.guru.controllers', 'uguru.version',
