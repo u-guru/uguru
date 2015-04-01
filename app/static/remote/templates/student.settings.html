@@ -97,10 +97,10 @@
             <div class="item item-divider" >
               ACCOUNT SETTINGS
             </div>
-            <a class="item gray" href="#" ng-click="signupModal.show()" ng-show="!user.auth_token">
+            <a class="item gray" href="#" ng-click="showSignupModal()" ng-show="!user.auth_token">
               Create an Account
             </a>
-            <a class="item gray" href="#" ng-click="signupModal.show()" ng-show="!user.auth_token">
+            <a class="item gray" href="#" ng-click="showLoginModal()" ng-show="!user.auth_token">
               Login
             </a>
             <a class="item gray" href="#" ng-click="logoutUser()" ng-show="user.auth_token">

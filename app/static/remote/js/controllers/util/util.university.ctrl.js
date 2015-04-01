@@ -96,6 +96,7 @@ angular.module('uguru.util.controllers', [])
     $scope.universitySelected = function(university) {
 
       var successCallback = function() {
+        console.log('callback executed');
         console.log('cleared previous universities courses from the cache')
           //TODO COME BACK TO THIS
           $scope.user.guru_courses = [];
@@ -110,8 +111,14 @@ angular.module('uguru.util.controllers', [])
           msg: 'Are you sure you want to change universities? This will deactive your current courses.',
           title: 'Warning',
           button_arr: ['No Thanks', "I'm sure"],
-          arr_callback: [null, successCallback]
         }
+
+        if ($scope.platform.mobile) {
+            dialog.arr_callback = [null, successCallback];
+        } else {
+            dialog.arr_callback = [successCallback, successCallback];
+        }
+
         $scope.root.dialog.confirm(dialog.msg, dialog.title, dialog.button_arr, dialog.arr_callback);
       }
 
@@ -131,8 +138,10 @@ angular.module('uguru.util.controllers', [])
 
     }
 
+
+
     $scope.hideUniversityModal = function() {
-      if ($cordovaKeyboard.isVisible()) {
+      if ($scope.platform.mobile && $cordovaKeyboard.isVisible()) {
         $scope.keyboard_force_off = true;
         $scope.closeKeyboard();
         $timeout(function() {

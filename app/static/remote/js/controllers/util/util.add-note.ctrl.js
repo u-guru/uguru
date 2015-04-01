@@ -54,7 +54,42 @@ angular.module('uguru.util.controllers')
     });
 
     $scope.takePhoto = function() {
-      Camera.takePicture($scope);
+      if ($scope.platform.mobile) {
+        Camera.takePicture($scope);
+      } else {
+        var element = document.getElementById('file-input-web')
+        element.click();
+      }
+    }
+
+    $scope.file_changed = function(element, $scope) {
+        var photofile = element.files[0];
+         var reader = new FileReader();
+         reader.onload = function(e) {
+          console.log(e);
+         };
+         reader.readAsDataURL(photofile);
+
+         var formData = new FormData();
+        // formData.append('file', image.src);
+        formData.append('file', photofile);
+        formData.append('filename', photofile.name);
+        $scope.user.createObj($scope.user, 'files', formData, $scope);
+    };
+
+    $scope.saveImgToTag = function() {
+      var image = document.getElementById('requestPhotoImg');
+      image.src = "data:image/jpeg;base64," + imageData;
+      var image2 = document.getElementById('requestPhotoImgNoteExists');
+      image2.src = "data:image/jpeg;base64," + imageData;
+      $scope.request.photo = image.src;
+
+      var formData = new FormData();
+      // formData.append('file', image.src);
+      formData.append('file', imageData);
+      formData.append('filename', 'sup.jpg');
+
+      $scope.user.createObj($scope.user, 'files', formData, $scope);
     }
 
   }

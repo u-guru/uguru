@@ -8,10 +8,13 @@ angular.module('uguru.root.services')
 
         deviceCamera = {
                     takePicture: function($scope) {
+
+                      if ($scope.platform.mobile) {
+                        var source_type = 1;
+                      }
                         var options = {
                           quality: 100,
                           destinationType: Camera.DestinationType.DATA_URL,
-                          // sourceType: 2,
                           sourceType: Camera.PictureSourceType.CAMERA,
                           allowEdit: true,
                           encodingType: Camera.EncodingType.JPEG,

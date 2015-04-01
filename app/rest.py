@@ -1168,7 +1168,7 @@ class UserNewView(restful.Resource):
 
         else:
             from hashlib import md5
-            password = md5(request.json.get('password')).hexdigest()
+            user.password = md5(request.json.get('password')).hexdigest()
 
         db_session.add(user)
         db_session.commit()

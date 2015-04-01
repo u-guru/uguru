@@ -212,14 +212,20 @@ angular.module('uguru.student.controllers', [])
       }
     }
 
+    $scope.showLoginModal = function() {
+      $scope.userClickedLoginModal = true;
+      $scope.signupModal.show();
+    }
+
+    $scope.showSignupModal = function() {
+      $scope.userClickedLoginModal = false;
+      $scope.signupModal.show();
+    }
+
 
 
     $scope.goToEditProfile = function() {
-      if (!$scope.user.auth_token) {
-        $scope.signupModal.show()
-      } else {
-        $state.go('^.settings-profile')
-      }
+      $state.go('^.settings-profile');
     }
 
     $scope.clearCache = function() {

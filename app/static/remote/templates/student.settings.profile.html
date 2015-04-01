@@ -1,7 +1,4 @@
 <ion-view title="Your Profile">
-    <ion-nav-buttons side="secondary">
-      <button ng-click="saveProfile()" class="button button-clear button-positive">Save</button>
-    </ion-nav-buttons>
     <ion-content>
         <div class="list">
             <a class="item item-icon-right" ui-sref="^.settings-edit-university">
@@ -32,6 +29,9 @@
 			              <label class="item item-input">
 			                <div class="tag">email</div><input type="text" name="signup-email" ng-model="user.email" placeholder="peter.parker@berkeley.edu">
 			              </label>
+                            <button class="button button-full button-positive">
+                                Save Information
+                            </button>
 		            </div>
 		            <div class="list">
 		              <label class="item item-input">

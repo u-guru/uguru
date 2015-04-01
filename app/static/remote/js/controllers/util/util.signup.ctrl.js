@@ -15,7 +15,9 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User, $rootScope) {
 
-    $scope.loginMode = false;
+    if (!$scope.loginMode) {
+      $scope.loginMode = false;
+    }
 
     $scope.toggleLoginMode = function() {
       $scope.loginMode = !$scope.loginMode;
@@ -28,9 +30,18 @@ angular.module('uguru.util.controllers')
       password:null
     }
 
+    $scope.resetSignupForm = function() {
+      $scope.signupForm = {
+        first_name: null,
+        last_name: null,
+        email: null,
+        password:null
+      }
+    }
+
     $scope.closeSignupModal = function(callback) {
 
-      if ($scope.root.keyboard.isVisible()) {
+      if ($scope.platform.mobile && $scope.root.keyboard.isVisible()) {
         $scope.root.keyboard.close();
         $timeout(function() {
           $scope.signupModal.hide();
@@ -44,6 +55,7 @@ angular.module('uguru.util.controllers')
           callback();
         }
       }
+      $scope.resetSignupForm();
 
     }
 
@@ -107,22 +119,17 @@ angular.module('uguru.util.controllers')
       if ($scope.signupModal.isShown()) {
         // console.log('modal is shown');
         // $scope.root.keyboard.show('signup-first-name', 500);
+        if ($scope.userClickedLoginModal) {
+          $scope.loginMode = true;
+        } else {
+          $scope.loginMode = false;
+        }
       }
 
     });
 
     $scope.signupFacebook = function() {
       $scope.login();
-    }
-
-    $scope.showError = function(msg) {
-      $scope.progress_active = true;
-      $cordovaProgress.showText(false, msg, 'top');
-      $timeout(function() {
-        $cordovaProgress.hide();
-        $scope.progress_active = false;
-      }, 1000);
-
     }
 
     $scope.validateLoginForm = function() {
@@ -268,9 +275,9 @@ angular.module('uguru.util.controllers')
         'password': $scope.signupForm.password
       }
 
-      $scope.loginPayload.student_courses = $scope.user.student_courses;
-      $scope.loginPayload.university_id = $scope.user.university_id;
-      $scope.loginPayload.current_device = $scope.user.current_device;
+      loginPayload.student_courses = $scope.user.student_courses;
+      loginPayload.university_id = $scope.user.university_id;
+      loginPayload.current_device = $scope.user.current_device;
 
       if ($scope.user.current_device && $scope.user.current_device.id) {
         $scope.loginPayload.current_device_id = $scope.user.current_device.id;
@@ -285,8 +292,9 @@ angular.module('uguru.util.controllers')
 
       }, function(err) {
         if (err.status === 401) {
-            $scope.showError('Invalid email or password');
             $scope.signupForm.password = '';
+            $scope.root.dialog.alert('Incorrect username or password', 'Sorry!', 'OK');
+            alert('Incorrect username or password');
           }
       });
     }
@@ -325,6 +333,7 @@ angular.module('uguru.util.controllers')
                 var callRequestHelp = function() {
                   $scope.requestHelp();
                 }
+
                 $scope.closeSignupModal(callRequestHelp);
             }
 
@@ -337,6 +346,7 @@ angular.module('uguru.util.controllers')
           }
       },
       function(err){
+        console.log(err);
         if (err.status === 409) {
           $scope.showError('Email already has an account');
           $scope.toggleLoginMode();

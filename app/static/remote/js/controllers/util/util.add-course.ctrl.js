@@ -135,7 +135,7 @@ angular.module('uguru.util.controllers')
     $scope.courses = GetCoursesList();
 
     $scope.hideCourseModal = function() {
-      if ($cordovaKeyboard.isVisible()) {
+      if ($scope.platform.mobile && $cordovaKeyboard.isVisible()) {
 
         $scope.keyboard_force_off = true;
         $scope.course_search_text = '';

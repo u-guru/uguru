@@ -120,6 +120,8 @@ angular.module('uguru.root.services', [])
     }
 
     this.dialog = {
+        //IMPORTANT: WEB-ONLY QUIRK: Confirm does not have a button index if canceled
+
         alert: function(msg, title, button_name, callback) {
           $cordovaDialogs.alert(msg, title, button_name).then(function() {
             if (callback) {
@@ -127,9 +129,9 @@ angular.module('uguru.root.services', [])
             }
           });
         },
+
         confirm: function(msg, title, button_array, arr_callback) {
           $cordovaDialogs.confirm(msg, title, button_array).then(function(button_index) {
-
             if (button_index === 1) {
                 if (arr_callback[0]) {
                     arr_callback[0]();

@@ -59,6 +59,8 @@ angular.module('uguru.util.controllers')
 
 
 
+        } else {
+          $scope.closeContactGuruModal();
         }
 
         //TODO --> Cancel guru functioninality working
@@ -78,7 +80,7 @@ angular.module('uguru.util.controllers')
 
     $scope.closeContactGuruModal = function() {
 
-      if ($scope.root.keyboard.isVisible()) {
+      if ($scope.platform.mobile && $scope.root.keyboard.isVisible()) {
         $scope.root.keyboard.close();
         $timeout(function() {
           $scope.contactingGuruModal.hide();
