@@ -404,7 +404,18 @@ for index in range(14,19):
 
 
 for member in all_members:
-    delete_member_inList(member['address'], 'virginia')
+    delete_member_in_list(member['email'], 'virginia')
+
+
+def add_members_from_arr(arr):
+    formatted_arr = format_json_to_mailgun_member_format(arr, "university_of_virginia")
+
+    return requests.post(
+        "https://api.mailgun.net/v2/lists/virginia-already-sent@nationalacademicresearch.org/members.json",
+        auth=('api', 'key-bfe01b1e2cb76d45e086c2fa5e813781'),
+        data={'upsert': True,
+              'members': json.dumps(formatted_arr)})
+
 
     # result = mandrill_client.messages.send(message=message, template_name=template_name, send_at=send_at)
 

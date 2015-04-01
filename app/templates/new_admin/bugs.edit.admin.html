@@ -1,0 +1,199 @@
+{% extends 'new_admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/new_admin/plugins/ionslider/ion.rangeSlider.css" rel="stylesheet" type="text/css" />
+    <!-- ion slider Nice -->
+    <link href="/static/new_admin/plugins/ionslider/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css" />
+    <link href="/static/new_admin/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="/static/new_admin/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Report a Bug<br>
+            <small>Anything wrong with the app, including the admin dashboard, report a bug here</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/admin/"><i class="fa fa-dashboard"></i> Home </a></li>
+            <li> <a class="/admin/bugs/">Bugs</a></li>
+            <li> <a class="#">Create</a></li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">1.Background</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                  <div class="box-body">
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                          <label>Your Name</label>
+                          <select class="form-control" id="contributor-dropdown">
+
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Bug Type</label>
+                          <select class="form-control" id="type-dropdown">
+
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Which part of the app does this involve?</label>
+                          <select class="form-control" id="story-dropdown">
+                            <option> None </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                          <label>How Annoying/Important Is This to You?</label>
+                          <select class="form-control" id="severity-dropdown">
+
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Relevant Platform(s)</label>
+                          <select multiple="" class="form-control" id="platforms-dropdown">
+
+                          </select>
+                          <p class="help-block">Hold down cmd (MAC) or ctrl (Windows) when selecting more than one.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="form-group text-center">
+                      <label>Choose other labels that apply to this bug</label>
+                      <div class="row margin" id="other-labels" style="color:white;">
+                      </div>
+                    </div>
+
+                  </div><!-- /.box-body -->
+
+                </form>
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">2. Details</h3>
+                </div><!-- /.box-header -->
+
+                <div class="box box-solid box-danger padding" id="bug-input-alert" style="display:none;">
+                  <div class="box-header">
+                    <h3 class="box-title">ERROR</h3>
+                  </div><!-- /.box-header -->
+                  <div class="box-body">
+                    Please fill in relevant platform(s) above, and all text boxes below
+                  </div><!-- /.box-body -->
+                </div>
+                <!-- form start -->
+                <form role="form">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label>VERY SHORT Description</label>
+                      <input type="text" id="title-input" class="form-control" placeholder="Enter ...">
+                    </div>
+                    <div class="form-group">
+                      <label>Describe EXACT Steps to reproduce</label>
+                      <small>(optional, but encouraged)</small>
+                      <textarea class="form-control" rows="3" id="description-input" placeholder="Enter ..."></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>How would YOU solve this?</label>
+                      <small>(optional, but encouraged)</small>
+                      <input type="text" id="suggestion-input" class="form-control" placeholder="Enter ...">
+                    </div>
+
+                    <!-- <div class="form-group">
+                      <label for="exampleInputFile">If possible, add an image</label>
+                      <input type="file" id="exampleInputFile">
+                      <p class="help-block">Any app screenshots are greatly helpful</p>
+                    </div> -->
+                  </div><!-- /.box-body -->
+
+                </form>
+
+                <div class="box-footer">
+                    <button type="submit" id='submit-bug-btn' class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/js/new_admin/github_wrapper.js" type="text/javascript"></script>
+<script src="/static/js/new_admin/github.js" type="text/javascript"></script>
+
+
+<script>
+
+  get_labels_gh_api();
+
+  $(document).ready(function() {
+
+    $('#submit-bug-btn').click(function() {
+
+      all_fields = get_all_bug_submit_form_fields();
+      console.log(all_fields);
+      if (!all_fields.title) {
+        $('#bug-input-alert').show();
+      } else {
+        $('#bug-input-alert').hide();
+        create_github_issue(all_fields);
+      }
+
+    });
+
+
+
+  });
+
+  var get_all_bug_submit_form_fields = function() {
+    var result = {
+      platforms: process_platform_dropdown($('#platforms-dropdown option:selected')),
+      contributor: 'contributor:' + $('#contributor-dropdown').val(),
+      type: 'type:' + $('#type-dropdown').val(),
+      story: 'story:' + $('#story-dropdown').val(),
+      severity: 'severity:' + $('#severity-dropdown').val(),
+      other: process_other_labels(),
+      title: $('#title-input').val(),
+      description: $('#description-input').val(),
+      suggestion: $('#suggestion-input').val()
+    }
+    return result;
+  }
+
+  var process_platform_dropdown = function(selected_elements) {
+    result_labels = [];
+    for (var i = 0; i < selected_elements.length; i++) {
+      current_elem = $(selected_elements[i]);
+      label_str = 'platform:' + current_elem.val();
+      result_labels.push(label_str);
+    }
+    return result_labels;
+  }
+
+  var process_other_labels = function() {
+    result_labels = [];
+    $('.btn-label.btn-primary').each(function(index, element){
+      result_labels.push($(element).text());
+    })
+    return result_labels;
+  }
+
+
+</script>
+{% endblock %}

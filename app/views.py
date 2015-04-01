@@ -437,10 +437,10 @@ def app_home():
 @app.route('/app/')
 def app_route():
     version = Version.query.get(1).ios
-    return redirect('http://uguru-rest.herokuapp.com/static/remote/index.html?version=' + str(version))
+    # return redirect('http://uguru-rest.herokuapp.com/static/remote/index.html?version=' + str(version))
     # return redirect('http://161.82.64.66:5000/static/remote/index.html?version=' + str(version))
     # return redirect('http://192.168.0.104:5000/static/remote/index.html')
-    # return redirect('http://192.168.0.104:8100')
+    return redirect('http://192.168.42.66:8100/remote/')
 
 @app.route('/old_admin/campaigns/results/')
 def admin_campaign_results():
