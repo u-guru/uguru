@@ -336,7 +336,6 @@ def login():
     session.pop("admin")
     return render_template("login.html")
 
-@app.route('/')
 @app.route('/university/')
 def app_flex():
 
@@ -345,6 +344,23 @@ def app_flex():
 
     return render_template("web/university.html", university=supported_universities['virginia'])
 
+@app.route('/')
+def app_student_home():
+
+
+    from lib.university_data import supported_universities
+    university_names = supported_universities.keys()
+
+    return render_template("web/student_home.index.html", university=supported_universities['virginia'])
+
+@app.route('/guru/')
+def guru_home():
+
+    from lib.university_data import supported_universities
+    university_names = supported_universities.keys()
+
+    return render_template("web/guru_home.index.html", university=supported_universities['virginia'])
+
 def parse_user_agent(ua_str):
     if 'iphone' in ua_str.lower():
         return 'iphone'
@@ -352,6 +368,14 @@ def parse_user_agent(ua_str):
         return 'android'
     else:
         return 'web'
+
+@app.route('/hybrid-app/')
+def hybrid_app():
+
+    from lib.university_data import supported_universities
+    university_names = supported_universities.keys()
+
+    return render_template('web/hybrid.app.html', university=supported_universities['virginia'])
 
 @app.route('/new/dev/m/<name>/', methods=["GET"])
 def one_university_mobile_dev(name):
@@ -417,14 +441,6 @@ def one_university(name):
     else:
         return redirect(url_for('app_flex'))
 
-
-@app.route('/')
-def student_home():
-    return render_template("web/student.index.html")
-
-@app.route('/guru/')
-def guru_home():
-    return render_template("web/guru.index.html")
 
 @app.route('/web/app/')
 def app_home():

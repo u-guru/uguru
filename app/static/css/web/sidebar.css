@@ -24,10 +24,36 @@ body.active .menu-link {
     left: 25%;
 }
 
+body.active #dropshadow {
+    z-index:999;
+    width: 100%;
+    display:block;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+
 /*
 The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
 appears on the left side of the page.
 */
+
+#dropshadow {
+    /*margin-left: 25%;*/
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    z-index:0;
+    opacity:0;
+    display:none;
+    overflow:auto;
+    background: black;
+    -webkit-overflow-scrolling:touch;
+}
 
 #menu {
     margin-left: -25%; /* "#menu" width */
@@ -37,18 +63,12 @@ appears on the left side of the page.
     left: 0;
     bottom: 0;
     z-index: 1000; /* so the menu or its navicon stays above all content */
-    background: #191818;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
     /*
     All anchors inside the menu should be styled like this.
     */
-    #menu a {
-        color: #999;
-        border: none;
-        padding: 0.6em 0 0.6em 0.6em;
-    }
 
     /*
     Remove all background/borders, since we are applying them to #menu.
@@ -73,6 +93,8 @@ appears on the left side of the page.
         #menu .pure-menu li a:focus {
             background: #333;
         }
+
+
 
     /*
     This styles the selected menu item `<li>`.
@@ -123,6 +145,9 @@ small screens.
     */
     body.active {
         position: relative;
-        left: 25%;
+    }
+
+    body.active #menu {
+        width: 50%;
     }
 }

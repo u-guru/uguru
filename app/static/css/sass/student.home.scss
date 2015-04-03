@@ -1,0 +1,129 @@
+$primary-color: #3D9988;
+#student-home-page
+{
+
+    button {
+        background-color:transparent;
+        padding:0;
+        margin:0;
+    }
+
+    .full-area {
+        height:100%;
+        width:100%;
+    }
+
+    .main-container {
+        width:85%;
+        height:75%;
+        background-color: #F5F4F0;
+        box-shadow: -8px 8px 0px 0px $primary-color;
+    }
+
+    #get-started-university  {
+        padding: 5%;
+        background-color:#2D3440;
+
+        .input-container {
+            padding:1em 0em;
+            input {
+                  padding: 0.66em 0.75em;
+                  font-size: 85%;
+                  width: 25%;
+                  color:$primary-color;
+                  outline:none;
+                }
+                button {
+                    margin-left:-0.2em;
+                    padding: 1em 2.5em;
+                    background-color:$primary-color;
+                    color:white;
+                    font-size:75%;
+                }
+            }
+
+        h1 {
+            margin:10px;
+            font-size:166%;
+            font-family:"OpenSans-Light";
+            font-weight:300;
+            opacity:0.8;
+        }
+
+        h3 {
+            font-size:85%;
+        }
+
+        .available-app-store-container {
+            padding:0%;
+            img {
+                height:30px;
+                width:100px;
+            }
+        }
+    }
+
+    .available-now-banner {
+        color:white;
+    }
+
+    .splash-container.university {
+        top:86px;
+        height:400px;
+
+        h2 {
+            font-family: "OpenSans-Bold";
+            color:black;
+            border-bottom:4px solid black;
+            display:inline-block;
+            margin-top:0px;
+            padding:20px 0px;
+        }
+
+        hr {
+            margin-top:-20px;
+            border:0.1em solid rgba(0,0,0,0.4);
+            width:50%;
+        }
+
+        h1 {
+            color:black;
+            font-family:"OpenSans-Light";
+            opacity:0.8;
+            font-size:166%;
+            margin:5px;
+        }
+
+        h1.first-h1 {
+            margin-top:20px;
+        }
+
+        h4 {
+            font-family: "OpenSans-Regular";
+            font-weight:400;
+            color:black;
+            opacity:0.8;
+            letter-spacing: 0px;
+            font-size:80%;
+            margin-top:15px;
+            margin-bottom:25px;
+        }
+
+        .app-icons-horizontal {
+            a {
+                text-decoration: none;
+                margin:0px 2px;
+            }
+            img {
+                width:130px;
+                height:40px;
+            }
+        }
+
+    }
+
+    .stat-container-wrapper {
+        margin-top:86px;
+    }
+
+}

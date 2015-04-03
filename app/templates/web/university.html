@@ -4,17 +4,14 @@
     {{university["local_name"]}} uguru
 {% endblock %}
 
-{% block header_scripts %}
-    <link rel="stylesheet" href="/static/css/web/sidebar.css">
-{% endblock %}
-
 {% block content %}
 
 
 {% include 'web/components/header.html' %}
 
 <div class="pure-g university">
-    <div class="pure-u-1">
+    <div class="pure-u-1 relative-container">
+        <img src='/static/img/banner-close.svg' class='absolute absolute-right close-banner padding'/>
         <!-- 86% of a students who grabbed a Guru aced their class -->
         Find a {{university['local_name']}} Guru in minutes, ace your test today.
         <!-- aww yeah. uguru is now available at {{university["local_name"]}} -->
@@ -28,15 +25,32 @@
                 <a href="#get-started-university" class="go-to-call-action">
                     <button href="get-started-university"class="button-positive pure-button flex-item">Get Started</button>
                 </a>
+                <h5 class='margin-1em'><a href='/' class='no-decoration'>Learn More</a></h5>
             </div>
             </div>
             <div class="pure-u-1 pure-u-sm-1-3 pure-u-md-1-3 university-banner flex-container">
                 <img class="banner-school-specific" src="/static/img/guru-school-banner-beige.svg"/>
                 <div class="banner-school-content-container flex-container">
-                    <img src="/static/img/guru-logo-school-banner-01.svg"/>
+                    <!-- <img src="/static/img/guru-logo-school-banner-01.svg"/> -->
+                    <img src="/static/img/logos/{{university['logo']}}"/>
+                    <!-- "logo": "virginia.jpeg" -->
                     <h2> uguru </h2>
                     <h4> {{university["name"]}} </h4>
                 </div>
+<!--                 <div class =""> -->
+                <div class='pure-g'>
+                    <div class='pure-u-1'>
+                       <div class='padding-1em app-icons-stacked'>
+                            <a href='https://itunes.com/apps/uguru' class='apple-link' target='_blank'>
+                                <img class='img-pure' src='/static/img/apple_app_store.svg'/>
+                            </a>
+                            <a class='android-link' href='https://play.google.com/store/apps/details?id=com.Uguru.Uguru' target='_blank'>
+                                <img class='img-pure' src='/static/img/android_play.png'/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div> -->
             </div>
             <div class="pure-u-1 pure-u-sm-1-3 pure-u-md-1-3 be-a-tutor flex-container">
                 <div class="padding-1em">
@@ -47,6 +61,10 @@
                     <a href="#get-started-university" class="go-to-call-action">
                         <button class="button-positive pure-button flex-item">Become a Guru</button>
                     </a>
+                    <h5 class='margin-1em'>
+                        <a class='no-decoration' href='/guru/'>Learn More
+                        </a>
+                    </h5>
                 </div>
             </div>
         </div>
@@ -267,54 +285,93 @@
             </div>
 
     </div>
+    <div class="content">
 
+        <div class="pure-g testimonials white-text">
+
+            <div class="testimonial-container pure-u-1 pure-u-md-1-2">
+                <div class='testimonial-content-container'>
+                    <h4 class='uppercase opacity-50'>
+                        Students Love Uguru
+                    </h4>
+                    <h1 class='sans-light'>
+                        I got the grades I wanted, <br>
+                        and spent less time studying!
+                    </h1>
+                    <div class='pure-g'>
+                        <div class='pure-u-1'>
+                            <div class='flex-container testimonial-card'>
+                                <img class='img-pure img-center testimonial-photo' src='/static/img/admin/rob.png'>
+                                <div class='flex-item'>
+                                    <h3 class='no-xspace'> Rob N. </h3>
+                                    <h5 class='opacity-50 no-xspace'><strong>Philosophy Major</strong> at <strong>UC Berkeley</strong></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="testimonial-container pure-u-1 pure-u-md-1-2">
+                <div class='testimonial-content-container'>
+                    <h4 class='uppercase opacity-50'>
+                        Gurus Love Making Money
+                    </h4>
+                    <h1 class='sans-light'>
+                        I've been a CHEM tutor for <br>
+                        3 years and I friggin love it.
+                    </h1>
+                    <div class='pure-g'>
+                        <div class='pure-u-1'>
+                            <div class='flex-container testimonial-card'>
+                                <img class='img-pure img-center testimonial-photo' src='/static/img/admin/varada.png'>
+                                <div class='flex-item'>
+                                    <h3 class='no-xspace'> Varada G. </h3>
+                                    <h5 class='opacity-50 no-xspace'><strong>Chemistry Major</strong> at <strong>UC Berkeley</strong></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
     <div class="content">
         <div class="pure-g available-now-banner" id="get-started-university">
-            <div class="pure-u-1 flex-container-center">
-                <div class="flex-item">
-                    <h1 class="flex-item" id="get-started-now-header">Check your university to get in on this</h1>
-                    <p> Get in on this before things get too busy </p>
-                    <div class="text-input-container pure-g">
-                        <div class="pure-u-1">
-                            <input class="padding-1em text-box" id="university-email-input" placeholder="enter @{{university['edu']}}">
-                            </input>
-                            <div class="padding-1em text-box-submit" id="submit-university-email">
-                                Submit
+            <div class="pure-u-1 center">
+                <div class='available-app-store-container white-text'>
+                    <h1>Uguru is available on your iPhone or Android Device.</h1>
+                    <h3 class='opacity-50'> Get in on this before the semester is over!</h3>
+                    <div class='row-g'>
+                        <div class='pure-u-1'>
+                            <div class='app-icons-horizontal'>
+                                <a href='https://itunes.com/apps/uguru' class='apple-link' target='_blank'>
+                                    <img class='img-pure' src='/static/img/apple_app_store.svg'/>
+                                </a>
+                                <a class='android-link' href='https://play.google.com/store/apps/details?id=com.Uguru.Uguru' target='_blank'>
+                                    <img class='img-pure' src='/static/img/android_play.png'/>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="pure-g available-now-banner" id="post-started-university">
-            <div class="pure-u-1 flex-container-center">
-                <div class="flex-item">
-                    <h1 class="flex-item" id="get-started-now-header">Awesome! You're one of the first.</h1>
-                    <p> We'll keep you in the loop. </p>
-                </div>
-            </div>
-        </div>
     </div>
-    <!-- <div class="content">
-
-        <div class="pure-g testimonials">
-
-            <div class="pure-u-1 pure-u-md-1-2">
-
-            </div>
-
-            <div class="pure-u-1 pure-u-md-1-2">
-
-            </div>
-
-        </div>
-
-    </div> -->
-    <!-- {% include 'web/components/footer.html' %} -->
+    {% include 'web/components/footer.html' %}
 {% endblock %}
 
 {% block footer_scripts %}
-    <!--<script src="/static/js/web/sidebar.js"></script>-->
+    <script src="/static/js/web/sidebar.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="/static/js/web/university.js"></script>
+    <script>
+    $('body').addClass('active');
+    $('#close-sidebar').click(function() {
+        $('body').removeClass('active');
+    })
+    </script>
 {% endblock %}

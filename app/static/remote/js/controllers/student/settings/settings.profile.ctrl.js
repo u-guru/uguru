@@ -1,4 +1,4 @@
-angular.module('uguru.student.controllers')
+    angular.module('uguru.student.controllers')
 
 //ALL student controllers
 .controller('SettingsProfileController', [
@@ -13,7 +13,7 @@ angular.module('uguru.student.controllers')
 	   $scope.progress_active = false;
 	   $scope.saveProfile = function() {
 
-             $scope.rootUser.updateLocal($scope.user);
+             // $scope.rootUser.updateLocal($scope.user);
 		// $scope.showSuccess('Saved!');
         }
     }

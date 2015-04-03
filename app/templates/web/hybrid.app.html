@@ -1,0 +1,137 @@
+{% extends 'web/components/base.html' %}
+
+{% block title_text %}
+    {{university["local_name"]}} uguru
+{% endblock %}
+
+{% block header_scripts %}
+<link rel="stylesheet" href="/static/css/sass/hybrid.app.css">
+{% endblock %}
+
+{% block content %}
+
+
+
+<div id="overlay">
+
+    <div class='flex-container-center full-area'>
+        <div class='modal-container'>
+            <div class='input-container flex-container-center'>
+                <input class="pure-input-1" type="text" placeholder="Enter your phone number or email">
+                <button id='submit-university' type="submit" class="pure-button ">Search</button>
+            </div>
+
+            <div class='app-icons-horizontal'>
+                <a href='https://itunes.com/apps/uguru' class='apple-link' target='_blank'>
+                    <img class='img-pure' src='/static/img/apple_app_store.svg'/>
+                </a>
+                <a class='android-link' href='https://play.google.com/store/apps/details?id=com.Uguru.Uguru' target='_blank'>
+                    <img class='img-pure' src='/static/img/android_play.png'/>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div id="dropshadow">
+
+    <div class='pure-g'>
+        <!-- skip this one, the menu is over this -->
+        <div class='pure-u-md-1-3'>
+        </div>
+
+        <!-- phone area -->
+        <div class='pure-u-md-1-3 phone-container-wrapper flex-container'>
+            <div class='hybrid-phone-template-container relative'>
+                <img src='/static/img/hybrid-phone-template.png' class='pure-img'/>
+            </div>
+        </div>
+
+        <!-- hybrid push notifications -->
+        <div class='pure-u-md-1-3 flex-container hybrid-push-wrapper'>
+            <div class='hybrid-push-notif center white-text'>
+                <div class='top-half-notif flex-center-container'>
+                    <h4> Good News! </h4>
+                    <h6>
+                        Uguru is available on Android and iOS right now! Want us to send you a link?
+                    </h6>
+                </div>
+                <div class='bottom-half-notif flex-container'>
+                    <div class='container'>
+                        <button class="button pure-button send-link">Send Link!</button>
+                        <button class="button pure-button no-thanks">No Thanks</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="menu" class='hybrid-menu'>
+    <div class="pure-menu white-text">
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <div class='flex-container uguru-header-title-menu'>
+                    <div class='menu-logo-container hr-container'>
+                        <h2 class='white-text relative'>
+                            <img src='/static/img/guru-logo-school-banner-01.svg' class='header-logo-menu' />
+                                uguru
+                        </h2>
+                        <hr>
+                    </div>
+                </div>
+                <div class='pure-u-1'>
+                    <div class='padding-2em mid-menu-link-container'>
+                        <h5 class='menu-mid-link'>
+                        SIGN UP NOW
+                        </h5>
+                        <h5 class='menu-mid-link'>
+                            BECOME A GURU
+                        </h5>
+                        <hr>
+                        <h5 class='menu-mid-link'>
+                            Supported Universities
+                        </h5>
+                        <h5 class='menu-mid-link'>
+                            Parents and Credits
+                        </h5>
+                        <h5 class='menu-mid-link'>
+                            Contact
+                        </h5>
+                        <h5 class='menu-mid-link'>
+                            Faq
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-footer white-text">
+        <div class='pure-g'>
+            <div class="pure-u-1">
+                <div class="extra-padding flex-container-center">
+                    <img src='/static/img/guru-logo-school-banner-black.svg' class='header-logo-menu' />
+                    <h5> Too legit to quit </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer_scripts %}
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+    <script>
+    $('body').addClass('active');
+    $('#close-sidebar').click(function() {
+        $('body').removeClass('active');
+    })
+    </script>
+{% endblock %}

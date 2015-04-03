@@ -11,7 +11,8 @@ supported_universities = {
             "departments": "186",
             "courses": "8,392",
             "rating": "4.8"
-        }
+        },
+        "logo": "virginia.png"
     },
     "msu": {
         "popular_courses": ["MTH116", "ISS210", "WRA130", "SOC100", "ACC201", "EC201",\

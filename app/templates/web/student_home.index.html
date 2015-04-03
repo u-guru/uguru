@@ -1,0 +1,372 @@
+{% extends 'web/components/base.html' %}
+
+{% block title_text %}
+Uguru Home Page
+{% endblock %}
+
+{% block header_scripts %}
+<link rel="stylesheet" href="/static/css/sass/student.home.css">
+{% endblock %}
+
+{% block content %}
+
+
+
+{% include 'web/components/header.html' %}
+<div class='page-wrapper' id='student-home-page'>
+
+
+<div class="splash-container university">
+    <div class='flex-container-center full-area'>
+        <div class='main-container'>
+            <h2>
+                uguru
+            </h2>
+            <hr>
+            <h1 class='first-h1'>
+                Find a tutor today.
+            </h1>
+            <h1>
+                Ace the course tomorrow.
+            </h1>
+            <h4>
+                Say hello to your new secret weapon.
+            </h4>
+
+            <div class='app-icons-horizontal'>
+                <a href='https://itunes.com/apps/uguru' class='apple-link' target='_blank'>
+                    <img class='img-pure' src='/static/img/apple_app_store.svg'/>
+                </a>
+                <a class='android-link' href='https://play.google.com/store/apps/details?id=com.Uguru.Uguru' target='_blank'>
+                    <img class='img-pure' src='/static/img/android_play.png'/>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="pure-g university">
+    <div class="pure-u-1 relative-container">
+        <img src='/static/img/banner-close.svg' class='absolute absolute-right close-banner padding'/>
+        Want a flexible Part-Time College Job?
+        <button class='button button-pure'>Become a Guru</button>
+    </div>
+</div> -->
+
+
+<div class="content stat-container-wrapper">
+        <div class="stat-container">
+            <div class="stats pure-g">
+                <div class="pure-u-1-2 stat pure-u-sm-1-2 pure-u-md-1-4 pure-u-lg-1-4">
+                    <div class="padding-1em inner-stat flex-container">
+                        <img class="pure-img" src="/static/img/campus-stat.svg"/>
+                        </img>
+                        <h2>{{university["stats"]["population"]}}</h2>
+                        <p>Campus Students</p>
+                    </div>
+                </div>
+                <div class="pure-u-1-2 stat pure-u-sm-1-2 pure-u-md-1-4 pure-u-lg-1-4">
+                    <div class="padding-1em inner-stat">
+                        <img class="pure-img" src="/static/img/dept-stat.svg"/>
+                        <h2>{{university["stats"]["departments"]}}</h2>
+                        <p>Supported Departments</p>
+                    </div>
+                </div>
+                <div class="pure-u-1-2 stat pure-u-sm-1-2 pure-u-md-1-4 pure-u-lg-1-4">
+
+                    <div class="padding-1em inner-stat">
+                        <img class="pure-img" src="/static/img/courses-stat.svg"/>
+                        <h2>{{university["stats"]["courses"]}}</h2>
+                        <p>Supported Courses</p>
+                    </div>
+
+                </div>
+                <div class="pure-u-1-2 stat pure-u-sm-1-2 pure-u-md-1-4 pure-u-lg-1-4">
+
+                    <div class="padding-1em inner-stat">
+                        <img class="pure-img" src="/static/img/star-stat.svg"/>
+                        <h2><h2>{{university["stats"]["rating"]}}</h2></h2>
+                        <p>Average Guru Rating</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="student-value-prop content">
+        <div class="pure-g row-1">
+            <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-2 flex-container" id="student-value-prop-1">
+                <div class="flex-item hide-mobile">
+
+                </div>
+                <div class="flex-item padding-1em pure-img-container">
+                    <h2>
+                        Affordable academic help <br>
+                        at your fingertips
+                    </h2>
+                    <h5>
+                        Sessions with your perfect tutor from $3 every 15 min.
+                    </h5>
+                    <img src="/static/img/phone1.png"/ class="pure-img">
+                </div>
+                <div class="flex-item pure-u-0">
+                </div>
+                <div class="flex-item pure-u-0">
+                </div>
+                <div class="flex-item pure-u-0">
+                </div>
+                <div class="flex-item pure-u-0 hide-mobile">
+                </div>
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-2 flex-container" id="student-value-prop-2">
+                <div class="flex-item">
+
+                </div>
+                <div class="flex-item padding-1em pure-img-container">
+                    <h2>
+                        Uguru is open 24/7
+                    </h2>
+                    <h5>
+                        No more last second freakouts the night before. <br>
+                        Book a Guru this minute, or some time later this week.
+                    </h5>
+                    <img src="/static/img/phone2.png" class="pure-img"/>
+                </div>
+                <div class="flex-item pure-u-0">
+                </div>
+                <div class="flex-item pure-u-0">
+                </div>
+                <div class="flex-item pure-u-0">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="student-value-prop content">
+        <div class="pure-g row-2">
+            <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-2 flex-container" id="student-value-prop-3">
+                <div class="flex-item padding-1em">
+                    <h2>
+                        Your Guru has aced <br> the same exact class
+                    </h2>
+                    <h5>
+                        Maybe even had the same professor.
+                    </h5>
+                    <img src="/static/img/phone3.png" class="pure-img"/>
+                </div>
+                <div class="flex-item padding-1em pure-u-0">
+                </div>
+                <div class="flex-item padding-1em pure-u-0">
+                </div>
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-2 flex-container" id="student-value-prop-4">
+
+                <div class="flex-item padding-1em">
+                    <h2>
+                        Safe and cashless checkout
+                    </h2>
+                    <h5>
+                        Finish your session and get back to <br>
+                        your life, not the ATM.
+                    </h5>
+                    <img src="/static/img/phone4.png" class="pure-img">
+                </div>
+
+                <div class="flex-item padding-1em pure-u-0">
+                </div>
+                <div class="flex-item padding-1em pure-u-0">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content popular-course-wrapper">
+
+
+            <div class="banner pure-g university-popular-courses">
+
+                <div class="pure-u-1">
+                    <div class="padding-1em">
+                        <h4> most requested courses this week at UVA </h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pure-g course-row">
+
+
+                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][0]}}</h4>
+                    </div>
+                </div>
+
+                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][1]}}</h4>
+                    </div>
+                </div>
+
+                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][2]}}</h4>
+                    </div>
+                </div>
+
+                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][3]}}</h4>
+                    </div>
+                </div>
+
+                <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][4]}}</h4>
+                    </div>
+                </div>
+
+                <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][5]}}</h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pure-g course-row-2">
+                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][6]}}</h4>
+                    </div>
+                </div>
+                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][7]}}</h4>
+                    </div>
+                </div>
+                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][8]}}</h4>
+                    </div>
+                </div>
+                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][9]}}</h4>
+                    </div>
+                </div>
+                <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][10]}}</h4>
+                    </div>
+                </div>
+                <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
+                    <div class="padding-1em flex-container-center">
+                        <h4>{{university["popular_courses"][11]}}</h4>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    <div class="content">
+
+        <div class="pure-g testimonials white-text">
+
+            <div class="testimonial-container pure-u-1 pure-u-md-1-2">
+                <div class='testimonial-content-container'>
+                    <h4 class='uppercase opacity-50'>
+                        Students Love Uguru
+                    </h4>
+                    <h1 class='sans-light'>
+                        I got the grades I wanted, <br>
+                        and spent less time studying!
+                    </h1>
+                    <div class='pure-g'>
+                        <div class='pure-u-1'>
+                            <div class='flex-container testimonial-card'>
+                                <img class='img-pure img-center testimonial-photo' src='/static/img/admin/rob.png'>
+                                <div class='flex-item'>
+                                    <h3 class='no-xspace'> Rob N. </h3>
+                                    <h5 class='opacity-50 no-xspace'><strong>Philosophy Major</strong> at <strong>UC Berkeley</strong></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="testimonial-container pure-u-1 pure-u-md-1-2">
+                <div class='testimonial-content-container'>
+                    <h4 class='uppercase opacity-50'>
+                        Gurus Love Making Money
+                    </h4>
+                    <h1 class='sans-light'>
+                        I've been a CHEM tutor for <br>
+                        3 years and I friggin love it.
+                    </h1>
+                    <div class='pure-g'>
+                        <div class='pure-u-1'>
+                            <div class='flex-container testimonial-card'>
+                                <img class='img-pure img-center testimonial-photo' src='/static/img/admin/varada.png'>
+                                <div class='flex-item'>
+                                    <h3 class='no-xspace'> Varada G. </h3>
+                                    <h5 class='opacity-50 no-xspace'><strong>Chemistry Major</strong> at <strong>UC Berkeley</strong></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="content">
+        <div class="pure-g available-now-banner" id="get-started-university">
+            <div class="pure-u-1 center">
+                <div class='available-app-store-container white-text'>
+                    <div class='row-g'>
+                        <div class='pure-u-1'>
+                            <div class='app-icons-horizontal'>
+                                <a href='https://itunes.com/apps/uguru' class='apple-link' target='_blank'>
+                                    <img class='img-pure' src='/static/img/apple_app_store.svg'/>
+                                </a>
+                                <a class='android-link' href='https://play.google.com/store/apps/details?id=com.Uguru.Uguru' target='_blank'>
+                                    <img class='img-pure' src='/static/img/android_play.png'/>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h1>Check your university to get in on this.</h1>
+                <h3 class='opacity-50'> Uguru may already be available at your university!</h3>
+                <div class='input-container flex-container-center'>
+                    <input class="pure-input-1" type="text" placeholder="Enter your university">
+                    <button id='submit-university' type="submit" class="pure-button ">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {% include 'web/components/footer.html' %}
+{% endblock %}
+
+
+{% block footer_scripts %}
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="/static/js/web/sidebar.js"></script>
+
+    <script>
+    // $('.menu-link').click(function() {
+    //     $('#dropshadow').show();
+    // });
+
+    $('#close-sidebar').click(function() {
+        $('body').removeClass('active');
+    })
+    </script>
+{% endblock %}

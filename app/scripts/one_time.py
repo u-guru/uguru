@@ -420,15 +420,8 @@ def add_members_from_arr(arr):
     # result = mandrill_client.messages.send(message=message, template_name=template_name, send_at=send_at)
 
 
-### TODO delete mailgun after
-
-# import requests
-#  requests.post(
-#     "https://api.mailgun.net/v2/lists",
-#     auth=('api', 'key-bfe01b1e2cb76d45e086c2fa5e813781'),
-#     data={'address': 'LIST@berkeleyguru.org',
-#           'description': "Mailgun developers list"})
-
-
-# cancel scripts
+# guru page MVP (20 minutes)
+# student page MVP (20 minutes)
+# we're at ... MVP (20 minutes + modals)
+# components polishing / css / friendly
 

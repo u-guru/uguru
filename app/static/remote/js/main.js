@@ -1,12 +1,12 @@
 // Uguru upp
-var LOCAL = false;
+var LOCAL = true;
 var BASE_URL = 'http://uguru-rest.herokuapp.com/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com';
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.42.66:8100';
-  REST_URL = 'http://192.168.42.66:5000';
+  BASE_URL = 'http://192.168.42.66:8100/';
+  // REST_URL = 'http://192.168.42.66:5000';
   var REST_URL = 'http://uguru-rest.herokuapp.com';
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
@@ -197,6 +197,36 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '/guru',
         abstract: true,
         templateUrl: 'templates/guru-root.html'
+  }).
+  state('root.onboarding-loading', {
+        url: '/onboarding-loading',
+        templateUrl: BASE + 'templates/onboarding.loading.html',
+        // controller: 'OnboardingLoadingController'
+  }).
+  state('root.onboarding-request-location', {
+        url: '/onboarding-loading',
+        templateUrl: BASE + 'templates/onboarding.request-location.html',
+        // controller: 'OnboardingLoadingController'
+  }).
+  state('root.onboarding-prompt-location', {
+        url: '/onboarding-loading',
+        templateUrl: BASE + 'templates/onboarding.prompt-location.html',
+        // controller: 'OnboardingLoadingController'
+  }).
+  state('root.onboarding-university', {
+        url: '/onboarding-loading',
+        templateUrl: BASE + 'templates/onboarding.university.html',
+        // controller: 'OnboardingLoadingController'
+  }).
+  state('root.student.new-request', {
+        url: '/onboarding-loading',
+        templateUrl: BASE + 'templates/student.request.new.html',
+        // controller: 'OnboardingLoadingController'
+  }).
+  state('root.guru.new-home', {
+        url: '/onboarding-loading',
+        templateUrl: BASE + 'templates/guru.home.new.html',
+        // controller: 'OnboardingLoadingController'
   }).
   state('root.guru.wizard', {
         url: '/wizard',
