@@ -1,6 +1,6 @@
 // Uguru upp
 var LOCAL = false;
-var BASE_URL = 'http://uguru-rest.herokuapp.com/app/';
+var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com';
 var BASE = '';
 if (LOCAL) {
