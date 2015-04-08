@@ -88,8 +88,9 @@ class UniversityCoursesView(restful.Resource):
         # courses = uni_courses_dict[str(id)].get("courses")s
         u = University.query.get(id)
         if not u.courses:
+            #just grab ucla courses
             u = University.query.get(2752)
-            return u.departments, 200
+            return u.courses, 200
         else:
             return u.courses, 200
 

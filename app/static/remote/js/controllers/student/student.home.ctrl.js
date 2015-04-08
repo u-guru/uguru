@@ -249,7 +249,7 @@ angular.module('uguru.student.controllers', [])
 
 
     $scope.goToEditProfile = function() {
-      $state.go('^.settings-profile');
+      $state.go('^.student-settings-profile');
     }
 
     $scope.clearCache = function() {

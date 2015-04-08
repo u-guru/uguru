@@ -1,12 +1,18 @@
+
+<ion-view>
   <ion-header-bar class='header-bar'>
     <h5 class="title">My Sessions</h5>
     <a class='button button-clear' ng-click="addCourseModal.show()"></a>
   </ion-header-bar>
-  <ion-tabs class="tabs-stable tabs-striped tabs-top session-tabs">
-    <ion-tab title="Sessions">
-
+  <ion-tabs class="tabs-stable tabs-striped tabs-top session-tabs" delegate-handle="student-home-tabs-top">
+    <ion-tab title="Sessions" topTabsDelegate.selectedIndex() === 0>
     </ion-tab>
 
-    <ion-tab title="Completed">
+    <ion-tab title="Completed" ng-show="topTabsDelegate.selectedIndex() === 1">
     </ion-tab>
   </ion-tabs>
+
+  <ion-content class='pure-g-c flex-column center' scroll="False">
+    No sessions yet! <br> Try <strong> requesting help </strong> below
+  </ion-content>
+</ion-view>

@@ -339,7 +339,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/student.settings.cards.html',
         controller: 'SettingsCardController'
   }).
-  state('root.student.settings-profile', {
+  state('root.student-settings-profile', {
         url: '/settings-profile',
         templateUrl: BASE + 'templates/student.settings.profile.html',
         controller: 'SettingsProfileController'
