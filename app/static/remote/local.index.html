@@ -6,11 +6,13 @@
     <title></title>
 
     <!-- compiled css output -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="remote/css/ionic.app.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
     <!-- <link href="remote/css/angular-strap.css" rel="stylesheet"> -->
-    <link href="remote/css/lib/ionic.contrib.frost.css" rel="stylesheet">
-    <link href="remote/css/app.css" rel="stylesheet">
+    <!-- <link href="remote/css/lib/ionic.contrib.frost.css" rel="stylesheet"> -->
+    <!-- <link href="remote/css/ionic.app.css" rel="stylesheet"> -->
+    <link href="remote/css/ionic.app.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <!-- <link href="remote/css/app.css" rel="stylesheet"> -->
     <link href="remote/css/animate.css" rel="stylesheet">
     <link href="remote/css/sass/new.css" rel="stylesheet">
 
@@ -86,7 +88,6 @@
 
     <script src="remote/lib/ionic/js/ionic.bundle.min.js"></script>
     <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
-    <script src='http://maps.googleapis.com/maps/api/js?libraries=places, geocoder&sensor=false&language=en&v=3.17'></script>
     <script src="lib/lodash/dist/lodash.js"></script>
     <script src="remote/lib/angular-google-maps/angular-google-maps.min.js"></script>
     <script src="lib/restangular/dist/restangular.js"></script>
@@ -98,14 +99,16 @@
     <script src="lib/angular-payments/angular-payments.js"></script>
     <script src="remote/lib/ionic/contrib/ionic.contrib.frost.js"></script>
 
+
+    <!--
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script>
       Stripe.setPublishableKey('pk_test_OHHalLRCnwixc5YXc9O29h3j');
-    </script>
+    </script> -->
 
     <!-- Facebook Plugin for web-development -->
     <div id="fb-root"></div>
-    <script>
+    <!--<script>
       (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -122,13 +125,13 @@
           version    : 'v2.0'
         });
       }
-  </script>
+  </script> -->
 
     <script type="text/javascript" src="lib/facebook/facebookConnectPlugin.js"></script>
 
     <!-- cordova script (this will be a 404 during development) <script src="cordova_plugins.js"></script> -->
 
-    <script src="cordova.js"></script>
+     <script src="cordova.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
 
     <!-- uguru app main js -->
@@ -180,6 +183,10 @@
     <script type="text/javascript" src="remote/js/controllers/guru/guru.student-request.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.active-session.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.session-start.ctrl.js"></script>
+
+    <script type="text/javascript" src="remote/js/controllers/onboarding/onboarding.request-location.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/onboarding/onboarding.nearest-university.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/onboarding/onboarding.loading.ctrl.js"></script>
 
     <script type="text/javascript" src="remote/js/controllers/util/util.university.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.calendar.ctrl.js"></script>

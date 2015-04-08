@@ -1,29 +1,32 @@
 
+  <div class='confirm-popover-prompt'>
     <div class='row'>
-      <div class="col">
-        <div class="center">
-            <img style="background:rgba(105, 179, 165, 1)" src='./img/uguru-04.png' width="180px" class="uguru_glass center">
+      <div class="col padding-2em">
+        <div class="center img-container padding-2em">
+            <img src='./img/uguru-04.png' class='pure-img'>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <p style="font-size:10vmin; color:rgba(0,0,0,0.7)"class="bold-font center font-24 line-height-120">{{confirmPopupOptions.header}}</p>
+        <h1 id='popover-header' class='center'>{{confirmPopupOptions.header}}
+          </h1>
       </div>
     </div>
     <div class='row'>
       <div class="col">
-        <p style="font-size:15px;"class="osreg-font center grey" ng-bind-html="confirmPopupOptions.body">
+        <p ng-bind-html="confirmPopupOptions.body" class='center margin-half'>
         </p>
       </div>
     </div>
-    <div class='row'>
+    <div class='row call-to-action'>
       <div class="col">
-        <button class="button button-full button-positive footer-button" id="popup-positive-btn">
-          {{confirmPopupOptions.positiveBtnText}}
+        <button class="button button-full button-positive button-prompt" id="popup-positive-btn">
+          {{confirmPopupOptions.positiveBtnText}}!
         </button>
-        <a class="button button-full button-outline" style="background-color:white; border:0px;color:rgba(105, 179, 165, 1); min-height:0px !important;height:30px;" id="popup-cancel-btn">
+        <a class="prompt-cancel" id="popup-cancel-btn">
           {{confirmPopupOptions.negativeBtnText}}
         </a>
       </div>
     </div>
+  </div>

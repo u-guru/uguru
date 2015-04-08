@@ -450,6 +450,8 @@ def app_home():
 def app_home():
     return render_template("web/app.index.html")
 
+@app.route('/production/app/')
+@app.route('/app/production/')
 @app.route('/app/')
 def app_route():
     version = Version.query.get(1).ios

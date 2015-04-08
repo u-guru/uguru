@@ -1,8 +1,625 @@
+// TODO flex-box helpers
+// TODO GO BACK AND ADD IMAGES
 
 
-.bar.bar-dark {
-  border-color: white;
-  background-color: green;
-  background-image: linear-gradient(0deg, #111, #111 50%, transparent 50%);
+$background-color:#3f4a4d;
+$header-color:#2b3234;
+$tab-bar-color:#363d3f;
+$text-color-2: #ffffff;
+$positive: #68b2a5;
+$negative: white;
+
+/* iPhone 6+ */
+@media all and (min-width: 400px) and (max-width:500px){
+    body {
+        font-size: 18px; /* 1.5x default size */
+    }
+}
+
+/* iPhone 6*/
+@media all and (max-width: 400px) { /* screen size until 1000px */
+    body {
+        font-size: 16px; /* 1.2x default size */
+        }
+    }
+
+/* iPhone 4/5*/
+@media all and (max-width: 320px) { /* screen size until 500px */
+    body {
+        font-size: 14px; /* 0.8x default size */
+        }
+    }
+
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url("../../fonts/OpenSans-Regular.ttf"); }
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("../../fonts/OpenSans-Bold.ttf"); }
+@font-face {
+  font-family: "OpenSans-Semibold";
+  src: url("../../fonts/OpenSans-Semibold.ttf"); }
+@font-face {
+  font-family: "OpenSans-Light";
+  src: url("../../fonts/OpenSans-Light.ttf"); }
+
+body,
+h1,h2,h3,h4,h5,h6 {
+    font-family:"OpenSans-Regular";
+}
+
+h5 {
+  font-size:100%;
+}
+
+button {
+  text-transform: uppercase;
+  font-family:"OpenSans-Semibold";
+}
+
+p {
+
+}
+
+.button.button-full.button-positive {
+  border-color: $positive;
+  background-color: $positive;
+  width:90%;
+  left:5%;
   color: #fff;
+}
+
+.button.button-positive:hover
+  {
+    color:#fff;
+    text-decoration:none
+  }
+
+.button.button-positive.activated,
+.button.button-positive.active
+{
+  border-color:#429486;
+  background-color:#429486;
+  box-shadow:inset 0 3px 5px rgba(0,0,0,.2)
+}
+
+.button.button-positive.button-clear{
+  border-color:transparent;
+  background:0 0;
+  box-shadow:none;
+  color:#6AB1A5;
+}
+
+.button.button-positive.button-icon{
+  border-color:transparent;
+  background:0 0
+}
+.button.button-positive.button-outline{
+  border-color:$positive;
+  background:0 0;
+  color:$positive}
+
+.button.button-positive.button-outline.activated,
+.button.button-positive.button-outline.active{
+
+  background-color:$positive;
+  box-shadow:none;
+  color:#fff;
+}
+
+.button.button-negative {
+  border-color: $negative;
+  background-color: $negative;
+  width:90%;
+  left:5%;
+  color: $positive;
+}
+
+.checkbox input:checked+.checkbox-icon:before, .checkbox input:checked:before {
+  background: $positive;
+  border-color: $positive;
+}
+
+.checkbox input:after, .checkbox-icon:after {
+  -webkit-transition: opacity .05s ease-in-out;
+  transition: opacity .05s ease-in-out;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 39%;
+  left: 24%;
+  display: table;
+  width: 14px;
+  height: 6px;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-right: 0;
+  content: ' ';
+  opacity: 0;
+}
+
+.header {
+  line-height:1.75em;
+  font-family: "OpenSans-Semibold";
+  text-align:center;
+}
+
+.center {
+    text-align:center;
+}
+
+.f-wrap {
+  flex-wrap:wrap;
+}
+
+.white-nav {
+  background-color:white;
+}
+
+.spinner.spinner-positive {
+  stroke:$positive;
+  fill:$positive;
+}
+
+.relative {
+      position:relative;
+}
+
+.white-text {
+  color:white;
+}
+
+.semibold {
+  font-family: "OpenSans-SemiBold";
+}
+
+.no-margin {
+  margin:0px;
+}
+
+.no-padding {
+  padding:0px;
+}
+
+.subheader {
+  color:rgba(0,0,0,0.5);
+  margin:0.3em;
+}
+
+.pure-g-c {
+    display: -webkit-flex;
+    display:flex;
+    // flex-flow:column-wrap;
+    -webkit-align-items: stretch;
+    align-items:stretch;
+
+    -webkit-align-content: center;
+    align-content:center;
+
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+
+    height:100%;
+}
+
+.flex-item-c {
+  -webkit-flex-grow:1;
+  flex-grow:1;
+
+  display:flex;
+  display: -webkit-flex;
+
+  -webkit-justify-content:center;
+  justify-content: center;
+
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.flex-column {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.uppercase {
+    text-transform:uppercase;
+}
+
+.padding-1em {
+    padding:1em;
+}
+
+.padding-2em {
+    padding:2em;
+}
+
+.padding-3em {
+    padding:3em;
+}
+
+.padding-half {
+  padding:0.5em;
+}
+
+.padding-quarter {
+  padding:0.25em;
+}
+.padding-third {
+  padding:0.333em;
+}
+
+.no-padding-vertical {
+    padding: 0px inherit;
+}
+
+.margin-1em {
+    margin:1em;
+}
+
+.margin-half {
+    margin:0.5em;
+}
+
+.img-placeholder-lg {
+    background-color:black;
+    height:200px;
+    width:200px;
+}
+
+.img-placeholder-sm {
+    background-color:black;
+    height:50px;
+    width:50px;
+    display:inline-block;
+}
+
+.onboarding-university-wrapper {
+  .guru-logo-container
+  img {
+    padding:0% 25% 5% 25%;
+  }
+
+  .university-mini-logo-container {
+  padding:0% 5% 5% %5;
+  align-self:center;
+    img {
+      margin:5px 10px;
+      opacity:0.75;
+      flex-shrink:1;
+      height:2.33em;
+      max-width:2.33em;
+    }
+  }
+
+  h6 {
+    font-size:60%;
+    text-align:center;
+    color:rgba(0,0,0,0.8);
+  }
+}
+
+
+.onboarding-nearest {
+
+  .header-bar {
+    border-bottom:1px solid rgba(0,0,0,0.1);
+    h1 {
+      height:auto;
+      font-size:120%;
+      font-family:"OpenSans-Semibold";
+    }
+
+    .button-back {
+      font-family:"OpenSans-Regular";
+      color:rgba(0,0,0,0.8);
+      font-size:13px;
+      text-transform: none;
+    }
+
+  }
+
+  .container.relative {
+
+    .name {
+        font-family: "OpenSans-SemiBold";
+        opacity:0.9;
+        line-height:1.5em;
+        padding-top:5px;
+        width:75%;
+        white-space:normal;
+    }
+
+    .city {
+      opacity:0.7;
+    }
+
+    .absolute.miles {
+      top:8px;
+      right:0px;
+      color:$positive;
+      position:absolute;
+      height:115%;
+    }
+
+  }
+
+  .enter-university {
+      color:rgba(0,0,0,0.4);
+  }
+
+}
+
+.onboarding-prompt-location {
+  background-color: $positive;
+  .button-back {
+      font-family:"OpenSans-Regular";
+      color:rgba(155,255,255,0.8);
+      font-size:13px;
+      text-transform: none;
+      position:absolute;
+      margin: 0 auto;
+      bottom: 2%;
+      width: 100%;
+  }
+}
+
+.onboarding-confirm {
+  .onboarding-confirm-header,
+  .popular-courses-header {
+    background-color:#2E3541;
+  }
+
+  .courses-container {
+    letter-spacing:inherit;
+  }
+
+  .row {
+    margin: 0;
+    padding:0;
+  }
+  .course-row-1 {
+    .course {
+      padding-top:8px;
+    }
+
+    .course:nth-child(2) {
+      background-color: rgba(0,0,0,0.2);
+    }
+  }
+  .course-row-2 {
+    .course {
+      padding-top:8px;
+    }
+    .course:nth-child(1),
+    .course:nth-child(3) {
+      background-color: rgba(0,0,0,0.2);
+    }
+  }
+  .course {
+    @extend .white-text;
+    background-color: rgba(0,0,0,0.3);
+    line-height:1.5em;
+  }
+
+  .university-banner {
+    position:absolute;
+    top:0px;
+    width:40%;
+    margin:0 auto;
+    left:30%
+  }
+
+  .onboarding-confirm-header {
+    h1 {
+      font-family: "OpenSans-SemiBold";
+    }
+  }
+
+  .container {
+    overflow:hidden;
+  }
+
+  .background-splash-img {
+    opacity:0.7;
+  }
+
+}
+
+
+.onboarding-loading {
+  position:relative;
+  #desk {
+    bottom:8%;
+    position:absolute;
+    height:64.3%;
+  }
+  #_1 {
+    top:32.25%;
+    right:20%;
+    height:4.33%;
+  }
+
+  #_2 {
+    top:7%;
+    right:10%;
+    width:12%;
+  }
+
+  #_3 {
+    bottom:16.5%;
+    left: 27%;
+    height:4.6%;
+  }
+  #_4 {
+    top:26%;
+    left:22%;
+    height:10.8%;
+  }
+  #_5 {
+    bottom:40%;
+    right:10%;
+    height:4.19%;
+  }
+  #_6 {
+    top:50.0%;
+    right:17%;
+    height:5.9%;
+  }
+  #_7 {
+    left:18%;
+    top:41.5%;
+    height:18%;
+  }
+  #_8 {
+    top:46%;
+    right:29%;
+    height:11.0%;
+  }
+  #_9 {
+    top:57%;
+    left:50%;
+    height:3.3%;
+  }
+  #_10 {
+      top:46%;
+      left:45%;
+      top:57%;
+      height:3.3%;
+  }
+
+  .component {
+    position:absolute;
+    display:none;
+  }
+  .header {
+    display:none;
+  }
+}
+
+.backdrop.visible.active {
+  background-color: rgba(0,0,0,.7)
+}
+
+.popup-container
+  {
+
+    .popup-header {
+
+    }
+
+    h1 {
+      font-family: "OpenSans-Bold";
+      color:rgba(0,0,0,.65);
+      margin:0px;
+      padding:0px;
+      margin-bottom:0px !important;
+    }
+
+    .call-to-action {
+      margin:0;
+      padding:0;
+    }
+    p {
+      color:rgba(0,0,0,0.45);
+      font-family:"OpenSans-Semibold";
+    }
+
+    .button-full
+    .button-positive
+    .button-prompt {
+      width:100% !important;
+      left:0px;
+      right:0px;
+      top:0px;
+      margin:0 auto;
+    }
+
+    .popup-container
+    h1 {
+          font-family: "OpenSans-Bold";
+          color:rgba(0,0,0,.65);
+          margin:0px;
+          padding:0px;
+          margin-bottom:0px !important;
+      }
+
+    #popover-header {
+      margin-top:-20px;
+    }
+
+    .popup {
+      min-width:90%;
+      border-radius: 0.5em;
+      height: 70%;
+      bottom: 0px;
+      position: absolute;
+      margin: 0 auto;
+      bottom: 10%;
+      left: 0;
+      right: 0;
+      opacity:1;
+      background-color: rgba(255,255,255,1);
+    }
+    .popup-body {
+      margin-top:-40%;
+      opacity:1;
+    }
+
+    .popup-head {
+      border-bottom:0px;
+      margin: 0 auto;
+      width: 90%;
+      text-align: center;
+      font-family: "OpenSans-Bold";
+      font-weight:700;
+    }
+
+    #popup-positive-btn {
+      font-size: 13px;
+      font-weight:700px;
+    }
+
+    .prompt-cancel {
+        position: absolute;
+        color: $positive;
+        margin: 0 auto;
+        width: 90%;
+        text-align: center;
+        font-family: "OpenSans-Semibold";
+        line-height: 2em;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+  }
+
+.confirm-popover-prompt {
+  .img-container {
+    border-radius:50%;
+    background-color:$positive;
+    border:5px solid white;
+  }
+}
+
+.university-modal {
+  .bar.bar-header {
+    background-color:$positive;
+    color:white;
+    margin:0em;
+    a.button.button-clear {
+      color:white;
+      font-family:"OpenSans-Regular";
+      font-size:14px;
+    }
+    h1 {
+      text-transform: uppercase;
+      color:white;
+      font-family:"OpenSans-Semibold";
+      font-weight:bold;
+      font-size:15px;
+    }
+  }
+  .search-button {
+    color:$positive !important;
+  }
 }

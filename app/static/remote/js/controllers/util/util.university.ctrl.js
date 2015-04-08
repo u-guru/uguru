@@ -93,7 +93,13 @@ angular.module('uguru.util.controllers', [])
         $scope.search_text = '';
     };
 
-    $scope.universitySelected = function(university) {
+    $scope.universitySelected = function(university, $event) {
+
+      if ($scope.onboarding === true) {
+        console.log(university);
+        $scope.nearestUniversitySelected($event, university);
+        return;
+      }
 
       var successCallback = function() {
         console.log('callback executed');

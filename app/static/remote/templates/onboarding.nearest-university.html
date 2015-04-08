@@ -1,0 +1,41 @@
+
+
+
+<ion-view hide-nav-bar='true' class='onboarding-nearest'>
+    <ion-header-bar class="header-bar bar-white">
+
+        <!-- <div class="buttons">
+            <button class="button button-clear button-back">Back</button>
+        </div> -->
+
+
+        <h1 class="title uppercase">Schools Nearby</h1>
+    </ion-header-bar>
+
+    <ion-content>
+        <div class="list list-inset">
+
+            <div class="item item-checkbox pure-g" ng-repeat="n_university in n_universities" ng-click="nearestUniversitySelected($event, n_university)">
+                <div class='pure-u-1'>
+                    <div class='padding-half'>
+                        <label class="checkbox positive">
+                           <input type="checkbox">
+                         </label>
+                        <div class="container relative">
+                            <h4 class='name'>{{n_university.title}}</h4>
+                            <h4 class='city'>{{n_university.city}}, {{n_university.state}}</h4>
+                            <h4 class='absolute miles'>{{n_university.miles}} mi</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item pure-g" ng-click="addUniversityModal.show()">
+                <div class="pure-u-1 padding-half">
+                    <h4 class='enter-university'> Or enter your university </h4>
+                </div>
+            </div>
+
+        </div>
+    </ion-content>
+
+</ion-view>

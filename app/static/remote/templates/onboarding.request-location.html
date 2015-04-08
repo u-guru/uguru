@@ -1,6 +1,40 @@
 
 
+<ion-view hide-nav-bar="true">
+  <ion-content class='onboarding-university-wrapper' scroll="false">
+    <!-- stretch this -->
+    <div class="pure-g-c flex-column">
+        <!-- <div class='pure-u-1'> -->
+            <div class="padding-1em">
+              <h5 class="header center">
+                Find instant help from your class mates, <br>
+                in seconds.
+              </h5>
+            </div>
+            <div class='guru-logo-container'>
+              <img class="pure-img" ng-src="remote/img/onboarding.find-university.logo.png">
+            </div>
+            <button class="button button-full button-positive" ng-click="togglePersonGuru()">
+              Find My University
+            </button>
+            <div class='university-mini-logo-container'>
+                <div class='pure-g-c'>
+                  <img ng-src="remote/img/logos/UnivOfColoradoBoulder.png" class="img-pure"/>
+                  <img ng-src="remote/img/logos/UnivOfHouston.png" class="img-pure"/>
+                  <img ng-src="remote/img/logos/UnivOfIlliniosChicago.png" class="img-pure"/>
+                  <img ng-src="remote/img/logos/UnivOfKansas.png" class="img-pure"/>
+                  <img ng-src="remote/img/logos/UnivOfRhodeIsland.png" class="img-pure"/>
+                </div>
+                <div class='pure-g-c'>
+                  <img ng-src="remote/img/logos/UnivOfMaine.png" class="img-pure"/>
+                  <img ng-src="remote/img/logos/UnivOfMissouriColumbia.png" class="img-pure"/>
+                  <img ng-src="remote/img/logos/UnivOfNebraska.png" class="img-pure"/>
+                  <img ng-src="remote/img/logos/UnivOfTennMartin.png" class="img-pure"/>
+                  <img ng-src="remote/img/logos/UnivOfNorthCarolinaCharlotte.png" class="img-pure"/>
+                </div>
+                <h6 class='footer'>Now at <u>100</u> universities!</h6>
+            </div>
+    </div>
 
-<ion-view title="Your {{session.request.course.short_name}} Session" disable-tap>
-
+  </ion-content>
 </ion-view>

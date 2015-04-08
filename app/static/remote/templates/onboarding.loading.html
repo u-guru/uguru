@@ -1,58 +1,23 @@
-<ion-view title="Your {{session.request.course.short_name}} Session" disable-tap>
-    <ion-header-bar style="height:30px; text-align:center;" class="bar-subheader bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)" >
-
-      <div style="margin-top:5px; width:100%; white-space:no-wrap; overflow: hidden; text-overflow: ellipsis;text-transform:none; font-size:12px;">
-        Last updated: {{last_updated}}
-      </div>
-
-    </ion-header-bar>
 
 
-  <ion-content class="background-black" style="background-color:black; opacity:0.8; top:88px;">
-    <div class="oh relative">
-      <div class="md-box-1 center" ng-show="session.status === 1">
-         <ion-pane id="map_canvas" style="height: 60%;width: 100%;margin: 0px;">
-          <ui-gmap-google-map center="map.center" control="map.control" zoom="map.zoom"  pan="true" options="options">
-            <!-- <ui-gmap-search-box options="searchbox.options" template="searchbox.template" events="searchbox.events" parentdiv="searchbox.parentdiv"></ui-gmap-search-box> -->
-          </ui-gmap-google-map>
-          </ion-pane>
-      </div>
-      <div class="md-box-1 center" ng-show="session.status === 2">
-        <div class="sm-box-1 center">
-          Session <br><br>Paused
+<ion-view hide-nav-bar="true">
+  <ion-content class='onboarding-loading' scroll='false'>
+    <!-- stretch this -->
+    <div class="pure-g-c flex-column">
+        <div class='padding-1em'>
+          <img id="desk" class='pure-img' src='/remote/img/onboarding/desk.svg'/>
+          <img id='_2' class='component pure-img' src='/remote/img/onboarding/guru-love.svg'/>
+          <img id='_1' class='component pure-img' src='/remote/img/onboarding/cranberry.svg'/>
+          <img id='_3' class='component pure-img' src='/remote/img/onboarding/heineken-fallen-left.svg'/>
+          <img id='_4' class='component pure-img' src='/remote/img/onboarding/heineken-upright.svg'/>
+          <img id='_5' class='component pure-img' src='/remote/img/onboarding/heineken-fallen.svg'/>
+          <img id='_6' class='component pure-img' src='/remote/img/onboarding/pbr-single.svg'/>
+          <img id='_7' class='component pure-img' src='/remote/img/onboarding/pbr-tower-taller.svg'/>
+          <img id='_8' class='component pure-img' src='/remote/img/onboarding/solocups.svg'/>
+          <img id='_9' class='component pure-img' src='/remote/img/onboarding/tequila.svg'/>
+          <img id='_10' class='component pure-img' src='/remote/img/onboarding/tequila.svg'/>
         </div>
-        <div class="sm-box-2">
-
-          {{session.hours}}h, {{session.minutes}}m, {{session.seconds}}s
-        </div>
-      </div>
-      <hr>
-      <ul class="list" ng-show="session.status === 1">
-        <li class="item padding-0-4">
-          <button class="button button-full button-positive" ng-click="goToSessionMessages(session)">
-            Message {{session.guru.first_name}}
-          </button>
-          <button class="button button-full button-positive button-outline" ng-click="startSessionTimer(session)">
-            Start Session
-          </button>
-          <button class="button button-full button-disabled button-outline" ng-click="cancelSession()">
-            Cancel Session
-          </button>
-        </li>
-      </ul>
-      <ul class="list" ng-show="session.status === 2">
-        <li class="item padding-0-4">
-          <button class="button button-full button-positive" ng-click="startSessionTimer(session)">
-            Resume Session
-          </button>
-          <button class="button button-full button-positive button-outline" ng-click="goToSessionMessages(session)">
-            View Message with {{session.guru.name.split(" ")[0]}}
-          </button>
-          <button class="button button-full button-positive button-outline" ng-click="cancelSession(session)">
-            Cancel
-          </button>
-        </li>
-      </ul>
     </div>
+
   </ion-content>
 </ion-view>

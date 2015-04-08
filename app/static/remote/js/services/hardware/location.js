@@ -8,11 +8,12 @@ angular.module('uguru.root.services')
     'Popup',
     function($localstorage, $timeout, $cordovaGeolocation, RootService, Popup) {
 
-        var getLocation = function($scope, callback) {
+        var getLocation = function($scope, successCallback, failureCallback, $state) {
           var posOptions = {
               timeout: 10000,
               enableHighAccuracy: false, //may cause high errors if true
           };
+          $scope.loader.show();
           $cordovaGeolocation
             .getCurrentPosition(posOptions)
             .then(function (position) {
@@ -23,15 +24,18 @@ angular.module('uguru.root.services')
               $scope.user.current_device.location_enabled = true;
               $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
               // $scope.rootUser.updateLocal($scope.user);
-              if (callback) {
-                callback();
-              }
+              getNearestUniversity(position.coords.latitude, position.coords.longitude, $scope.universities, 100, $localstorage, $scope, successCallback, $state);
+
+
+              // if (successCallback) {
+              //   successCallback();
+              // }
 
               //TODO: user.last_positions.append(position + THE CURRENT TIME)
             }, function(err) {
               console.log(err);
-              if (callback) {
-                  callback();
+              if (failureCallback) {
+                  failureCallback();
               }
               if (err.code === 1) {
                 console.log('user denied permission');
@@ -56,29 +60,36 @@ angular.module('uguru.root.services')
         }
 
         deviceGPS = {
-                      getUserPosition: function($scope, callback) {
-                        console.log('location')
+                      getUserPosition: function($scope, successCallback, failureCallback, $state) {
+
                         if ($scope.platform.ios &&
                           !$scope.user.current_device.location_enabled) {
 
                           Popup.options.show($scope, {
-                            header: 'Mind if we grab your location',
-                            body: 'We need it just cuz',
-                            positiveBtnText: 'OK',
-                            negativeBtnText: 'Nah',
+                            header: 'Mind if we use your location?',
+                            body: 'uGuru uses your location to match you up with students on campus.',
+                            positiveBtnText: 'SURE',
+                            negativeBtnText: 'NO THANKS',
                             delay: 500,
                             onFailure: function() {
+                              console.log('failed to get device location');
                               $scope.user.current_device.location_enabled = false;
-                              $scope.user.updateObj($scope.user, 'devices', $scope.user.current_device, $scope);
+                              if ($state.current.name !== 'root.onboarding-location') {
+                                $scope.user.updateObj($scope.user, 'devices', $scope.user.current_device, $scope);
+                              }
+                              failureCallback($scope, $state);
                             },
-                            onSuccess: function() {getLocation($scope, callback)},
+                            onSuccess: function() {
+                              console.log('succeeded in getting device location');
+                              getLocation($scope, successCallback, failureCallback, $state);
+                            },
                           })
 
                         }
 
                         else if ($scope.user.current_device.location_enabled) {
 
-                          getLocation($scope, callback);
+                          getLocation($scope, successCallback, failureCallback, $state);
 
                         }
 

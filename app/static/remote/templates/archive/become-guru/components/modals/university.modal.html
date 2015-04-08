@@ -1,9 +1,9 @@
-<ion-modal-view ng-controller='AddUniversityController'>
-    <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
+<ion-modal-view ng-controller='AddUniversityController' class='university-modal'>
+    <ion-header-bar>
         <h1 class="title">Select University</h1>
         <button ng-click="hideUniversityModal()" class="button button-clear button-positive">Cancel</button>
       </ion-header-bar>
-      <ion-content>
+    <ion-content>
 
         <div class="list">
           <li class="item" ng-repeat="university in matchingUniversities" ng-click="universitySelected(university)">
@@ -30,11 +30,11 @@
       </div>
 
 
-    </ion-content> 
+    </ion-content>
 
 
     <ion-footer-bar class="bar-footer item-input-inset" keyboard-attach>
-          
+
           <label class="item-input-wrapper">
               <i class="icon ion-ios7-search placeholder-icon"></i>
 
@@ -55,7 +55,7 @@
 
           <button class="button button-clear button-positive" ng-show="search_text.length" ng-click="clearSearchInput()">
           Clear
-          </button>  
+          </button>
 
     </ion-footer-bar>
   </ion-modal-view>

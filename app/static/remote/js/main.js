@@ -10,18 +10,21 @@ if (LOCAL) {
   var REST_URL = 'http://uguru-rest.herokuapp.com';
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
-  'ngAnimate', 'uguru.student.controllers', 'uguru.guru.controllers', 'uguru.version',
+  'ngAnimate', 'uguru.student.controllers','uguru.onboarding.controllers', 'uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
   'uguru.directives', 'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap'])
 
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
-  $cordovaDialogs, Version, $cordovaSplashscreen, $rootScope,
+  $cordovaDialogs, Version, $rootScope, $cordovaSplashscreen,
   $templateCache, Device, User, $cordovaLocalNotification) {
   $ionicPlatform.ready(function() {
-    document.addEventListener("deviceready", function () {
-        $cordovaSplashscreen.hide();
 
+    //platform is ready
+    // console.log('checkpoint 1');
+    // console.log('device is ready 1', ionic.Platform.platform());
+
+    document.addEventListener("deviceready", function () {
         var networkState = navigator.connection.type;
 
         var states = {};
@@ -70,9 +73,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
       $cordovaFacebookProvider.browserInit(appID, fbVersion);
   }
 
-  // if none of the above states are matched, use this as the fallback
-  // $urlRouterProvider.otherwise('/tab/dash');
-  $urlRouterProvider.otherwise('/student/home');
+
 
   //Set up restangular provider
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
@@ -86,9 +87,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: 'templates/root.html',
         controller: function($ionicPlatform, $scope, $state, $localstorage, User,
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
-          CordovaPushWrapper, $cordovaPush) {
+          CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
+          $cordovaSplashscreen, $timeout) {
 
-          // $localstorage.removeObject('user');
           $scope.user = User.getLocal();
           $scope.user.updateAttr = User.updateAttrUser;
           $scope.user.createObj = User.createObj;
@@ -96,6 +97,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
           $scope.rootUser = User;
           $scope.root = RootService;
+          $scope.static = {};
+          $scope.static.nearest_universities = [];
+
+          //get objects from server
+          on_app_open_retrieve_objects($scope, $localstorage, University)
 
           $scope.loader = {
             show: function() {
@@ -118,13 +124,20 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           }
 
           $ionicPlatform.ready(function() {
-
               $scope.platform = {
                 ios: ionic.Platform.isIOS(),
                 android: ionic.Platform.isAndroid(),
                 mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid(),
                 web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid()),
               }
+
+
+              // if (window.cordova && window.cordova.plugins.Keyboard) {
+              //   cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+              //   cordova.plugins.Keyboard.disableScroll(true);
+              //   StatusBar.overlaysWebView(true);
+              //   StatusBar.styleLightContent();
+              // }
 
               console.log('user is on mobile:', $scope.platform.mobile);
 
@@ -136,11 +149,23 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                 $scope.user.current_device.user_id = $scope.user.id;
                 console.log('saving user device...', $scope.user.current_device);
                 $scope.user.createObj($scope.user.current_device, 'device', $scope.user.current_device, $scope);
-
+              }
+              if (window.StatusBar) {
+                StatusBar.overlaysWebView(true);
+                StatusBar.styleDefault();
               }
 
+              // console.log($cordovaStatusbar);
+              // $cordovaStatusbar.overlaysWebView(true);
+              // $cordovaStatusbar.styleColor('black');
+              // if ($scope.platform.ios) {
+              //   console.log('sup');
+              //     StatusBar.overlaysWebView(true);
+              //     StatusBar.styleLightContent();
+              // }
+
               if ($scope.platform.mobile && $scope.platform.android) {
-                CordovaPushWrapper.register($scope);
+                // CordovaPushWrapper.register($scope);
 
                 $rootScope.$on('pushNotificationReceived', function(event, notification) {
                   CordovaPushWrapper.received($scope, event, notification);
@@ -152,6 +177,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           });
 
           document.addEventListener("deviceready", function () {
+
             console.log(JSON.stringify(ionic.Platform.device()));
             // User.getUserFromServer($scope, null, $state);
             document.addEventListener("resume", function() {
@@ -188,10 +214,15 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
         }
   }).
-  state('root.student', {
-        url: '/student',
-        abstract: true,
-        templateUrl: 'templates/student-root.html'
+  // state('root.student', {
+  //       url: '/student',
+  //       abstract: true,
+  //       templateUrl: 'templates/student-root.html'
+  // }).
+  state('root.student-home', {
+        url: '/home',
+        templateUrl: BASE + 'templates/student.home.html',
+        controller: 'StudentHomeController'
   }).
   state('root.guru', {
         url: '/guru',
@@ -201,33 +232,37 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   state('root.onboarding-loading', {
         url: '/onboarding-loading',
         templateUrl: BASE + 'templates/onboarding.loading.html',
-        // controller: 'OnboardingLoadingController'
+        controller: 'OnboardingLoadingController'
   }).
-  state('root.onboarding-request-location', {
-        url: '/onboarding-loading',
+  state('root.onboarding-location', {
+        url: '/onboarding-location',
         templateUrl: BASE + 'templates/onboarding.request-location.html',
-        // controller: 'OnboardingLoadingController'
+        controller: 'OnboardingRequestLocationController'
   }).
-  state('root.onboarding-prompt-location', {
-        url: '/onboarding-loading',
-        templateUrl: BASE + 'templates/onboarding.prompt-location.html',
-        // controller: 'OnboardingLoadingController'
+  state('root.prompt-location', {
+        url: '/prompt-location',
+        templateUrl: BASE + 'templates/prompt.location.html'
+  }).
+  state('root.onboarding-nearest-university', {
+        url: '/onboarding-nearest',
+        templateUrl: BASE + 'templates/onboarding.nearest-university.html',
+        controller: 'OnboardingNearestUniversityController'
   }).
   state('root.onboarding-university', {
-        url: '/onboarding-loading',
+        url: '/onboarding-university',
         templateUrl: BASE + 'templates/onboarding.university.html',
         // controller: 'OnboardingLoadingController'
   }).
   state('root.student.new-request', {
-        url: '/onboarding-loading',
+        url: '/onboarding-request-new',
         templateUrl: BASE + 'templates/student.request.new.html',
         // controller: 'OnboardingLoadingController'
   }).
-  state('root.guru.new-home', {
-        url: '/onboarding-loading',
-        templateUrl: BASE + 'templates/guru.home.new.html',
-        // controller: 'OnboardingLoadingController'
-  }).
+  // state('root.guru.new-home', {
+  //       url: '/onboarding-loading',
+  //       templateUrl: BASE + 'templates/guru.home.new.html',
+  //       // controller: 'OnboardingLoadingController'
+  // }).
   state('root.guru.wizard', {
         url: '/wizard',
         templateUrl: BASE + 'templates/guru.onboarding.html',
@@ -247,11 +282,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '/student-available/:requestObj:proposalObj',
         templateUrl: BASE + 'templates/guru.student-request.html',
         controller: 'GuruIncomingRequestController'
-  }).
-  state('root.student.home', {
-        url: '/home',
-        templateUrl: BASE + 'templates/student.home.html',
-        controller: 'StudentHomeController'
   }).
   state('root.student.request', {
         url: '/request/:courseObj',
@@ -362,11 +392,17 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '/guru-mode',
         templateUrl: BASE + 'templates/student.guru-mode.html'
   });
+
+  // if none of the above states are matched, use this as the fallback
+  // $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/onboarding-loading');
+
 });
 
 var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $localstorage) {
 
             console.log('checking for app updates...');
+            console.log('device is ready 4');
             Version.getUpdatedVersionNum().then(
               //if user gets the right version
               function(response) {
@@ -409,3 +445,91 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
               }
           );
         };
+
+//background loading stuff
+
+var on_app_open_retrieve_objects = function($scope, $localstorage, University) {
+  console.log('getting university from server');
+  // $cordovaSplashscreen.hide();
+  University.get().then(
+      function(universities) {
+          console.log('universities successfully loaded');
+          universities = JSON.parse(universities);
+          $scope.universities = universities;
+          $localstorage.setObject('universities', $scope.universities);
+          console.log($scope.universities.length + ' universities successfully loaded');
+      },
+      function() {
+          console.log('Universities NOT successfully loaded');
+      }
+  );
+}
+
+function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+  var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+  var dLon = deg2rad(lon2-lon1);
+
+  var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+  Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+  Math.sin(dLon/2) * Math.sin(dLon/2);
+
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  var d = R * c; // Distance in km
+  return d;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180);
+}
+
+function getNearestUniversity(user_lat, user_long, uni_list, limit, local_storage, $scope, callback, $state) {
+
+
+    var sort = function(array) {
+      var len = array.length;
+      if(len < 2) {
+        return array;
+      }
+      var pivot = Math.ceil(len/2);
+      var results = merge(sort(array.slice(0,pivot)), sort(array.slice(pivot)));
+      return results;
+    };
+
+    var merge = function(left, right) {
+      var result = [];
+      while((left.length > 0) && (right.length > 0)) {
+
+
+            uni_1_lat = left[0].location.latitude;
+            uni_1_long = left[0].location.longitude;
+            uni_2_lat = right[0].location.latitude;
+            uni_2_long = right[0].location.longitude;
+
+            d1 = getDistanceFromLatLonInKm(user_lat, user_long, uni_1_lat, uni_1_long);
+            d2 = getDistanceFromLatLonInKm(user_lat, user_long, uni_2_lat, uni_2_long);
+            left[0].miles = parseInt(d1 / 0.62 * 10) / 10;
+            right[0].miles = parseInt(d2 / 0.62 * 10) / 10;
+            if ( d1 < d2 ) {
+                result.push(left.shift());
+            }
+            else {
+              result.push(right.shift());
+            }
+      }
+
+      result = result.concat(left, right);
+      return result;
+    };
+
+    var largeList = sort(uni_list);
+
+    // $scope.nearest_universities = largeList;
+    $scope.static.nearest_universities = largeList;
+    console.log($scope, $state);
+    if (callback) {
+      callback($scope, $state);
+    }
+    return largeList.slice(0,10);
+
+}
