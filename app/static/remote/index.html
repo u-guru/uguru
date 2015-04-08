@@ -146,6 +146,20 @@
       </ion-nav-view>
     </script>
 
+    <script id="templates/gettingStartedPopover.html" type="text/ng-template">
+      <ion-popover-view class='uguru-popover'>
+        <ion-header-bar>
+          <h1 class="title">Tap to get started.</h1>
+        </ion-header-bar>
+        <ion-content scroll='false'>
+          <p>Just enter a course code. Uguru uses <br>
+          your university course catalogs to help <br>
+          keep things simple</p>
+          <button ng-click="closePopover();"class='button button-full button-positive button-popover'>Got it.</button>
+        </ion-content>
+      </ion-popover-view>
+    </script>
+
     <script id="templates/signup.html" type="text/ng-template">
       <ion-view hide-nav-bar="true">
         <ion-content class="padding" scroll="false">

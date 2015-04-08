@@ -8,12 +8,19 @@ angular.module('uguru.root.services')
     'Popup',
     function($localstorage, $timeout, $cordovaGeolocation, RootService, Popup) {
 
+
+
         var getLocation = function($scope, successCallback, failureCallback, $state) {
+
           var posOptions = {
               timeout: 10000,
               enableHighAccuracy: false, //may cause high errors if true
-          };
-          $scope.loader.show();
+          }
+
+          if (!$scope.platform.android) {
+            console.log('showing loader on platform...', $scope.platform);
+            $scope.loader.show();
+          }
           $cordovaGeolocation
             .getCurrentPosition(posOptions)
             .then(function (position) {
@@ -24,6 +31,7 @@ angular.module('uguru.root.services')
               $scope.user.current_device.location_enabled = true;
               $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
               // $scope.rootUser.updateLocal($scope.user);
+
               getNearestUniversity(position.coords.latitude, position.coords.longitude, $scope.universities, 100, $localstorage, $scope, successCallback, $state);
 
 
@@ -91,6 +99,8 @@ angular.module('uguru.root.services')
 
                           getLocation($scope, successCallback, failureCallback, $state);
 
+                        } else if ($scope.platform.android) {
+                          getLocation($scope, successCallback, failureCallback, $state);
                         }
 
                       }

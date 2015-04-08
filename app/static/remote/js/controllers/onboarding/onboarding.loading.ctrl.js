@@ -15,8 +15,40 @@ angular.module('uguru.onboarding.controllers')
      Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
      $ionicPlatform, $cordovaSplashscreen) {
 
+    $scope.intervals = 10;
+    $scope.time_length = 500;
+    $scope.extra_delay = 3500;
+    $scope.img_components = [];
+
+    $scope.$on('$ionicView.loaded', function(){
+
+    });
+
+    $scope.startIntervals = function(intervals, time_length, targets, $timeout) {
+      for (var i = 0; i < intervals; i++) {
+        showTargetComponentAtIndex(targets[i], i, time_length * (i + 1), $timeout)
+      }
+    }
+
+
     $ionicPlatform.ready(function() {
 
+          //web version
+          if ($scope.platform.web) {
+            console.log('web version.. skip delays!');
+            var img_targets = getComponents();
+              //
+            $scope.startIntervals($scope.intervals, $scope.time_length, img_targets, $timeout);
+
+              //automatically
+            $timeout(function() {
+              $state.go('^.onboarding-location');
+            }, ($scope.intervals * $scope.time_length + 1000))
+            return;
+          }
+
+
+          //mobile version
           console.log('ready to hide the splash screen! We are currently in ', $state.current.name);
           console.log('waiting two seconds..');
           $timeout(function() {
@@ -41,23 +73,6 @@ angular.module('uguru.onboarding.controllers')
           //   $cordovaSplashscreen.hide();
           // },4000)
     });
-
-    $scope.intervals = 10;
-    $scope.time_length = 500;
-    $scope.extra_delay = 3500;
-    $scope.img_components = [];
-
-    $scope.$on('$ionicView.loaded', function(){
-
-    });
-
-
-
-    $scope.startIntervals = function(intervals, time_length, targets, $timeout) {
-      for (var i = 0; i < intervals; i++) {
-        showTargetComponentAtIndex(targets[i], i, time_length * (i + 1), $timeout)
-      }
-    }
 
 }]);
 

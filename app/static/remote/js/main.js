@@ -1,16 +1,16 @@
 // Uguru upp
-var LOCAL = true;
+var LOCAL = false;
 var BASE_URL = 'http://uguru-rest.herokuapp.com/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com';
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.42.66:8100/';
+  BASE_URL = 'http://192.168.42.66:8100';
   // REST_URL = 'http://192.168.42.66:5000';
   var REST_URL = 'http://uguru-rest.herokuapp.com';
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
-  'ngAnimate', 'uguru.student.controllers','uguru.onboarding.controllers', 'uguru.guru.controllers', 'uguru.version',
+  'ngAnimate', 'uguru.onboarding.controllers', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
   'uguru.directives', 'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap'])
 
@@ -88,7 +88,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         controller: function($ionicPlatform, $scope, $state, $localstorage, User,
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
-          $cordovaSplashscreen, $timeout) {
+          $cordovaSplashscreen, $timeout, Geolocation) {
 
           $scope.user = User.getLocal();
           $scope.user.updateAttr = User.updateAttrUser;
@@ -97,11 +97,12 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
           $scope.rootUser = User;
           $scope.root = RootService;
+          $scope.root.vars = {};
           $scope.static = {};
           $scope.static.nearest_universities = [];
 
           //get objects from server
-          on_app_open_retrieve_objects($scope, $localstorage, University)
+          on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation)
 
           $scope.loader = {
             show: function() {
@@ -166,7 +167,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
               if ($scope.platform.mobile && $scope.platform.android) {
                 // CordovaPushWrapper.register($scope);
-
+                // console.log('attempting to get android geo location early');
+                // Geolocation.getUserPosition($scope, null, null, $state);
                 $rootScope.$on('pushNotificationReceived', function(event, notification) {
                   CordovaPushWrapper.received($scope, event, notification);
 
@@ -221,7 +223,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   // }).
   state('root.student-home', {
         url: '/home',
-        templateUrl: BASE + 'templates/student.home.html',
+        templateUrl: BASE + 'templates/student.home.new.html',
         controller: 'StudentHomeController'
   }).
   state('root.guru', {
@@ -253,10 +255,35 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/onboarding.university.html',
         // controller: 'OnboardingLoadingController'
   }).
-  state('root.student.new-request', {
-        url: '/onboarding-request-new',
+  state('root.student-request', {
+        url: '/student-request:courseObj',
         templateUrl: BASE + 'templates/student.request.new.html',
-        // controller: 'OnboardingLoadingController'
+        controller: 'StudentRequestController'
+  }).
+  state('root.request-guru-type', {
+        url: '/request-guru-type',
+        templateUrl: BASE + 'templates/student.request.guru-type.html',
+        controller: 'StudentRequestGuruTypeController'
+  }).
+  state('root.request-session-length', {
+        url: '/request-session-length',
+        templateUrl: BASE + 'templates/student.request.session-length.html',
+        controller: 'StudentRequestSessionLengthController'
+  }).
+  state('root.request-calendar', {
+        url: '/request-calendar',
+        templateUrl: BASE + 'templates/student.request.calendar.html',
+        controller: 'CalendarModalController'
+  }).
+  state('root.request-location', {
+        url: '/request-location',
+        templateUrl: BASE + 'templates/student.request.location.html',
+        // controller: 'RequestLocationController'
+  }).
+  state('root.request-description', {
+        url: '/request-description',
+        templateUrl: BASE + 'templates/student.request.description.html',
+        controller: 'AddNoteController'
   }).
   // state('root.guru.new-home', {
   //       url: '/onboarding-loading',
@@ -283,11 +310,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/guru.student-request.html',
         controller: 'GuruIncomingRequestController'
   }).
-  state('root.student.request', {
-        url: '/request/:courseObj',
-        templateUrl: BASE +  'templates/student.request.html',
-        controller: 'StudentRequestController'
-  }).
+  // state('root.student.request', {
+  //       url: '/request/:courseObj',
+  //       templateUrl: BASE +  'templates/student.request.html',
+  //       controller: 'StudentRequestController'
+  // }).
   state('root.student.active-session', {
         url: '/active-session/:sessionObj',
         templateUrl: BASE +  'templates/student.active-session.html',
@@ -448,7 +475,7 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
 
 //background loading stuff
 
-var on_app_open_retrieve_objects = function($scope, $localstorage, University) {
+var on_app_open_retrieve_objects = function($scope, $state, $localstorage, University, callback, Geolocation) {
   console.log('getting university from server');
   // $cordovaSplashscreen.hide();
   University.get().then(
@@ -458,6 +485,9 @@ var on_app_open_retrieve_objects = function($scope, $localstorage, University) {
           $scope.universities = universities;
           $localstorage.setObject('universities', $scope.universities);
           console.log($scope.universities.length + ' universities successfully loaded');
+          if ($scope.platform.android) {
+            Geolocation.getUserPosition($scope, null, null, $state);
+          }
       },
       function() {
           console.log('Universities NOT successfully loaded');

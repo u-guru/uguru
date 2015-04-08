@@ -7,8 +7,9 @@ angular.module('uguru.util.controllers')
   '$localstorage',
   '$ionicModal',
   '$ionicTabsDelegate',
+  '$ionicHistory',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $ionicTabsDelegate) {
+ 	$ionicModal, $ionicTabsDelegate, $ionicHistory) {
 
       $scope.day_split_segments = 24;
       $scope.default_num_days = 2;
@@ -21,6 +22,23 @@ angular.module('uguru.util.controllers')
         $scope.calendarModal.hide();
       }
     }
+
+    $scope.goBackToRequests = function() {
+      $ionicHistory.goBack();
+    };
+
+    $scope.validateForm = function() {
+
+      if ($scope.calendar.num_selected > 0) {
+        $ionicHistory.goBack();
+      } else {
+        alert('Please select at least one option');
+      }
+    }
+
+    $scope.goBackToRequests = function() {
+      $ionicHistory.goBack();
+    };
 
     if (!$scope.calendar) {
       $scope.calendar = {
@@ -62,9 +80,11 @@ angular.module('uguru.util.controllers')
             calendar_grid[j][i] = false;
             var target = $scope.getElementbyCalenderWidthHeight(j, i);
             target.style.background = 'white';
+            target.style.color = 'inherit';
           }
         }
       }
+      $scope.root.vars.request.calendar_selected = false;
       return count;
     }
 
@@ -200,16 +220,19 @@ angular.module('uguru.util.controllers')
     $scope.clickCalendarGridElement = function($event, calendar_x, calendar_y) {
       var target = $event.target;
       var targetBgColor = target.style.background;
-      if (targetBgColor == 'white') {
+      if (!targetBgColor || targetBgColor === 'white') {
         $scope.calendar.data[calendar_x][calendar_y] = true;
-        target.style.background = 'green';
+        target.style.background = '#6C87B0';
+        target.style.color = 'white';
       } else {
         $scope.calendar.data[calendar_x][calendar_y] = false;
         target.style.background = 'white';
+        target.style.color = 'rgba(0,0,0,0.8)';
 
       }
 
       $scope.calendar.num_selected = $scope.countCalendarSelected($scope.calendar.data);
+      $scope.root.vars.request.calendar_selected = true;
     }
 
   }

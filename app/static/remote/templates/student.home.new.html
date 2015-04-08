@@ -1,0 +1,33 @@
+
+<ion-view class="student-home" hide-nav-bar="true">
+
+  <ion-header-bar class='header-bar'>
+    <h5 class="title">uguru</h5>
+    <a class='button button-clear' ng-click="addCourseModal.show()">Add</a>
+  </ion-header-bar>
+
+  <ion-tabs class="tabs-positive tabs-top tabs-striped tabs-background-positive tabs-color-dark">
+    <ion-tab title="Courses">
+          <div ng-include="base_url + 'templates/student.home.courses.html'"></div>
+    </ion-tab>
+
+    <ion-tab title="Sessions">
+    </ion-tab>
+  </ion-tabs>
+
+  <ion-tabs class="tabs-positive">
+
+    <ion-tab title="SESSIONS" icon-on="home-icon" icon-off="home-icon">
+      Home
+    </ion-tab>
+
+    <ion-tab title="About" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline">
+      <!-- Tab 2 content -->
+    </ion-tab>
+
+    <ion-tab title="Settings" icon-on="ion-ios-gear" icon-off="ion-ios-gear-outline">
+      <!-- Tab 3 content -->
+    </ion-tab>
+  </ion-tabs>
+
+</ion-view>

@@ -16,9 +16,6 @@ angular.module('uguru.student.controllers', [])
   'University',
   '$templateCache',
   '$ionicHistory',
-  'Popup',
-  '$popover',
-  'Popover',
   '$ionicBackdrop',
   'User',
   '$ionicHistory',
@@ -27,16 +24,43 @@ angular.module('uguru.student.controllers', [])
   '$rootScope',
   '$cordovaPush',
   '$ionicPlatform',
+  '$ionicBackdrop',
+  '$document',
+  '$ionicPopover',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $q,
- 	University, $templateCache, $ionaicHistory, Popup, $popover, Popover, $ionicBackdrop,
+ 	University, $templateCache, $ionaicHistory, $ionicBackdrop,
   User, $ionicHistory, CordovaPushWrapper, $ionicPlatform, $rootScope, $cordovaPush,
-  $ionicPlatform) {
+  $ionicPlatform, $ionicBackdrop, $document, $ionicPopover) {
 
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
 	$scope.base_url =  BASE;
 	$scope.progress_active = false;
+
+  // .fromTemplate() method
+
+  // if (!$scope.user.university && !$scope.user.university_id) {
+  //   $state.go('^.onboarding-location');
+  // }
+
+  $ionicPopover.fromTemplateUrl('templates/gettingStartedPopover.html', {
+    scope: $scope
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
+
+  $scope.openPopover = function($event) {
+    $scope.popover.show($event);
+  };
+
+  $scope.closePopover = function() {
+    $scope.popover.hide();
+  };
+
+  $scope.testBackdrop = function($event) {
+
+  }
 
   $scope.getNumber = function(num) {
       return new Array(num);
@@ -135,7 +159,7 @@ angular.module('uguru.student.controllers', [])
     $scope.goToRequest = function(course) {
       // $scope.root.button.showButtonPressedAndHide($event.target);
       $scope.loader.show();
-      $state.go('^.request', {courseObj:JSON.stringify(course)});
+      $state.go('^.student-request', {courseObj:JSON.stringify(course)});
     }
 
     $scope.showButtonPressed = function($event, class_name) {
@@ -254,39 +278,6 @@ angular.module('uguru.student.controllers', [])
     $scope.goToPreviousSessionDetails = function(session) {
       $state.go('^.previous-session-details', {sessionObj:JSON.stringify(session)});
     }
-
-    $scope.showPopupDev = function() {
-      // $scope.showTooltip();
-
-          var welcomePopupOptions = {
-              header:"Welcome!",
-              body: "We'd like your location to help locate a nearby Guru. Allow us to request for your location?",
-              positiveBtnText:"Sure!",
-              negativeBtnText:"No Thanks",
-              delay: 1500
-            }
-
-          Popup.options.show($scope, welcomePopupOptions);
-    }
-
-    // $scope.showPopoverDev = function() {
-    //   // $scope.showTooltip();
-
-    //       popoverOptions = {
-    //         targetElement:'#home-header',
-  //         title: 'Tap to request help',
-    //         delay: 500,
-    //         animation:null,
-    //         placement: 'bottom',
-    //         body: "We'll find a Guru to help you out <br> in a matter of minutes.<br>",
-    //         buttonText: 'Got it',
-    //         dropshadow: true
-    //       }
-
-    //       Popover.tutorial.show($scope, popoverOptions);
-    // }
-
-    // $scope.processStudentRequests($scope.user.requests);
 
     $scope.$on('$ionicView.beforeEnter', function(){
       User.getUserFromServer($scope, null, $state);

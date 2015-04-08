@@ -9,8 +9,40 @@ angular.module('uguru.util.controllers')
   '$localstorage',
   '$ionicModal',
   '$compile',
+  '$ionicHistory',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $compile) {
+ 	$ionicModal, $compile, $ionicHistory) {
+
+    $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
+    $scope.options = {scrollwheel: false};
+
+    $scope.goBackToRequests = function() {
+      $ionicHistory.goBack();
+    }
+
+    $scope.validateForm = function() {
+
+      if ($scope.root.vars.request.location) {
+        $ionicHistory.goBack();
+      } else {
+        alert('Please select a location');
+      }
+    }
+
+    $scope.searchbox =  {
+        template: BASE + 'templates/searchbox.tpl.html',
+        options: {
+          autocomplete:true,
+          types: ['(cities)'],
+          componentRestrictions: {country: 'us'}
+        },
+        events: {
+        place_changed: function (autocomplete){
+            place = autocomplete.getPlace()
+          }
+        }
+    }
+
 
     $scope.refresh_map = false;
     $scope.random  = null;
@@ -32,8 +64,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.setLocation = function() {
-      $scope.request.position = $scope.requestPosition;
-      $scope.hideRequestMapModal();
+      $scope.root.vars.request.position = $scope.requestPosition;
+      $ionicHistory.goBack();
     }
 
     $scope.createGoogleLatLng = function(latCoord, longCoord) {
@@ -52,11 +84,11 @@ angular.module('uguru.util.controllers')
           if (results[0]) {
             // $scope.actual_map.setZoom(17);
             var formatted_address = results[0].formatted_address;
-            $scope.request.location = formatted_address;
+            $scope.root.vars.request.location = formatted_address;
             $scope.requestPosition.coords.latitude = latCoord;
             $scope.requestPosition.coords.longitude = longCoord;
             $timeout(function() {
-              $scope.request.location = formatted_address;
+              $scope.root.vars.request.location = formatted_address;
             }, 500);
             $scope.setMarkerPosition($scope.marker, latCoord, longCoord);
             // $scope.request.autocomplete = results[0].formatted_address;
@@ -91,11 +123,11 @@ angular.module('uguru.util.controllers')
           },1500);
     }
 
-    $scope.$on('modal.shown', function() {
+    $scope.$on('$ionicView.enter', function() {
 
-      if ($scope.requestMapModal.isShown()) {
+      // if ($scope.requestMapModal.isShown()) {
 
-          var mapContainer = $scope.requestMapModal.$el.find("ion-pane")[0];
+          var mapContainer = document.getElementsByTagName("ion-pane")[0];
           var initMapCoords;
 
           if ($scope.requestPosition) {
@@ -123,7 +155,8 @@ angular.module('uguru.util.controllers')
             zoomControl: true,
             zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
           }
-          var actual_map = $scope.map.control.getGMap();
+          // console.log(mapOptions);
+          // var actual_map = $scope.map.control.getGMap();
           actual_map = new google.maps.Map(
                   mapContainer,
                   mapOptions
@@ -179,7 +212,7 @@ angular.module('uguru.util.controllers')
               }, 1000)
           });
 
-      }
+      // }
 
     });
 

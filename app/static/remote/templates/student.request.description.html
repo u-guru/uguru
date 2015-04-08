@@ -1,0 +1,49 @@
+
+
+<ion-view hide-nav-bar="true" class="student-request-form">
+
+    <ion-header-bar class='header-bar'>
+        <a class="button button-clear button-back" ui-sref='^.request-location'>Back</a>
+        <h5 class="title">Description</h5>
+        <a class="button button-clear button-back" ng-click='goToStudentRequest()'>Next</a>
+    </ion-header-bar>
+
+    <ion-content class='request-description-container' scroll="false">
+        <div class="pure-g-c flex-column flex-space-between">
+            <div class='container textarea-wrapper'>
+                <div class='padding-1em'>
+                    <h5 class='bold'> What do you need help with?</h5>
+                </div>
+                <div class='pure-g'>
+                    <div class="pure-u-1 padding-1em">
+                        <div class="checkbox-container pure-g">
+                            <div class="pure-u-1">
+                                <div class="textarea-container pure-g">
+                                    <textarea rows="6" ng-model='root.vars.request.description'> </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='flex-item-c'>
+                <div class='padding-1em'>
+                    <h5> Attachments </h5>
+                </div>
+                <div class='pure-g'>
+                    <div class="pure-u-1 padding-1em">
+                        <img class="attachment-container">
+                        </img>
+                    </div>
+                </div>
+            </div>
+            <div class='flex-item-c'>
+                <button class='button button-full button-positive' ng-click='takePhoto()'>
+                    <i class='icon ion-camera'></i> &nbsp;&nbsp;Add Photo
+                </button>
+            </div>
+        </div>
+    </ion-content>
+    <input type='file' id='file-input-web' onchange="angular.element(this).scope().file_changed(this)">
+
+</ion-view>

@@ -9,8 +9,9 @@ angular.module('uguru.util.controllers')
   '$localstorage',
   '$ionicModal',
   'Camera',
+  '$ionicHistory',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, Camera) {
+ 	$ionicModal, Camera, $ionicHistory) {
 
     $scope.hideAddNoteModal = function() {
       if ($scope.root.keyboard.isVisible()) {
@@ -20,6 +21,21 @@ angular.module('uguru.util.controllers')
         }, 300)
       } else {
         $scope.addRequestNoteModal.hide();
+      }
+    }
+
+    $scope.goBackToRequests = function() {
+      $ionicHistory.goBack();
+    };
+
+    $scope.root.vars.request.description = "I have a midterm tomorrow, that covers every-thing that we talked about last time plus some other worksheet he gave us that wasn't in the reading. Unfortunately idk anything and it would be cool if you could just take it for me? I'll give you my ID, we look pretty similar, I can pay like 200x what this app will."
+
+    $scope.validateForm = function() {
+
+      if ($scope.root.vars.request.description.length > 0) {
+        $ionicHistory.goBack();
+      } else {
+        alert('Please fill out description.');
       }
     }
 
@@ -33,6 +49,10 @@ angular.module('uguru.util.controllers')
         $scope.root.keyboard.show('note-input', 500);
       }
     }
+
+    $scope.goToStudentRequest = function() {
+      $state.go('^.student-request', {courseObj:JSON.stringify($scope.root.vars.request.course)});
+    };
 
 
     $scope.showAddNoteTextArea = function() {
@@ -62,7 +82,7 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $scope.file_changed = function(element, $scope) {
+    $scope.file_changed = function(element) {
         var photofile = element.files[0];
          var reader = new FileReader();
          reader.onload = function(e) {
@@ -74,14 +94,15 @@ angular.module('uguru.util.controllers')
         // formData.append('file', image.src);
         formData.append('file', photofile);
         formData.append('filename', photofile.name);
-        $scope.user.createObj($scope.user, 'files', formData, $scope);
+        // $scope.user.createObj($scope.user, 'files', formData, $scope);
+        $scope.saveImgToTag.saveImgToTag(photoFile);
     };
 
-    $scope.saveImgToTag = function() {
-      var image = document.getElementById('requestPhotoImg');
+    $scope.saveImgToTag = function(imageData) {
+      var image = document.getElementsByClassName('attachment-container')[0];
       image.src = "data:image/jpeg;base64," + imageData;
-      var image2 = document.getElementById('requestPhotoImgNoteExists');
-      image2.src = "data:image/jpeg;base64," + imageData;
+      // var image2 = document.getElementById('requestPhotoImgNoteExists');
+      // image2.src = "data:image/jpeg;base64," + imageData;
       $scope.request.photo = image.src;
 
       var formData = new FormData();

@@ -24,6 +24,7 @@ angular.module('uguru.student.controllers')
   $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
   $ionicHistory, CordovaPushWrapper, $ionicPlatform) {
 
+    $scope.isRequestFormComplete = false;
     //TODO: ADD ACTION BAR W / FILE SUPPORT
     //TODO: IF NOT PUSH NOTIFICATIONS, SHOW IT HERE AS PART OF THE FORM
 
@@ -264,6 +265,21 @@ angular.module('uguru.student.controllers')
     $scope.requestPosition = null;
     $scope.course = JSON.parse($stateParams.courseObj);
     $scope.request = $scope.initRequestObj();
+
+    if (!$scope.root.vars.request) {
+      $scope.root.vars.request = {
+        type: {
+          in_person: true,
+          online: true
+        },
+        _length: {},
+        calendar_selected:false,
+        course: $scope.course,
+        description:null,
+        location: null
+      }
+      console.log($scope.root.vars.request.length);
+    }
 
     //modal stuff
     $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };

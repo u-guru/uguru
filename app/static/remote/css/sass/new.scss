@@ -8,6 +8,8 @@ $tab-bar-color:#363d3f;
 $text-color-2: #ffffff;
 $positive: #68b2a5;
 $negative: white;
+$tabs-background: #E6E6E5;
+$tabs-text: #4D4D4D;
 
 /* iPhone 6+ */
 @media all and (min-width: 400px) and (max-width:500px){
@@ -202,6 +204,17 @@ p {
     height:100%;
 }
 
+.toast.toast-positive {
+  background-color:$positive;
+  color:white;
+  width:100%;
+}
+
+.flex-space-between {
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
 .flex-item-c {
   -webkit-flex-grow:1;
   flex-grow:1;
@@ -274,9 +287,17 @@ p {
 }
 
 .onboarding-university-wrapper {
+
+  h5.header.center {
+    opacity:0.9;
+  }
+
   .guru-logo-container
   img {
-    padding:0% 25% 5% 25%;
+      padding-top:0em;
+  }
+  .button-padding {
+    padding:1em 0em;
   }
 
   .university-mini-logo-container {
@@ -622,4 +643,360 @@ p {
   .search-button {
     color:$positive !important;
   }
+}
+
+.student-home {
+
+  .header-bar {
+    border-bottom:1px solid rgba(0,0,0,0.1);
+
+    h5 {
+      height:auto;
+      opacity:0.8;
+      font-size:95%;
+      text-transform: uppercase;
+      font-family:"OpenSans-Semibold";
+    }
+
+    a.button.button-clear {
+      font-family:"OpenSans-Regular";
+      color:rgba(0,0,0,0.8);
+      font-size:13px;
+      text-transform: none;
+    }
+
+  }
+
+  .tabs-background-positive {
+    background-color:$tabs-background;
+  }
+}
+
+p {
+  letter-spacing:0px;
+  margin:0px;
+  line-height:1.5em;
+}
+
+.course-list-container {
+
+  .referral-toast {
+    .toast-container {
+      width:100%;
+      text-align:center;
+      p {
+        font-size: 80%;
+      }
+      .icon.absolute {
+        right:5%;
+        bottom:27.5%;
+        font-size:80%;
+        position:absolute;
+      }
+    }
+  }
+
+  .list-inset
+  .item.course-item {
+    margin:0.75em 0em;
+    border-width:3px;
+    padding:12px;
+    h5 {
+      font-family:"OpenSans-Semibold";
+      font-size: 80%;
+      margin:0px;
+      opacity:0.7;
+    }
+  }
+
+  .item-icon-right .icon-right {
+      right: 0;
+      font-size: 80%;
+      opacity: 0.4;
+  }
+
+  .item.course-item.add-course-item h5 {
+    padding-left:1em;
+    line-height:1em;
+    color:$positive;
+    opacity:1;
+  }
+  .item-icon-left .icon-left {
+      color:$positive;
+      opacity: 1;
+      font-size: 80%;
+      left:0px;
+  }
+
+  .add-course-item {
+    color:$positive;
+    padding:4px;
+    .icon:nth-child(1) {
+      opacity:1;
+    }
+    h5.inline {
+      margin-right:10px;
+    }
+  }
+}
+
+.inline {
+  display:inline-block;
+}
+
+.tabs-striped .tabs {
+  border-bottom:0px;
+}
+
+.tab-item {
+  max-width:100%;
+  text-transform: uppercase;
+  font-family: "OpenSans-Semibold";
+}
+
+.tabs-striped.tabs-color-dark .tab-item.tab-item-active {
+  color:$tabs-text !important;
+}
+
+// .tabs-striped.tabs-color-dark .tab-item {
+//   color: rgba(68,68,68,.4);
+//   opacity: 1;
+// }
+
+.tabs-top.tabs-striped .tab-item.tab-item-active {
+  margin-top: 1px;
+  border-width: 0 0 4px!important;
+  border-style: solid;
+  border-color: $positive;
+}
+
+.tabs-striped.tabs-background-positive .tabs {
+  background-color: $tabs-background;
+}
+
+.popover-backdrop {
+
+  padding:1em;
+  text-align:center;
+  .uguru-popover {
+    height:170px;
+  }
+  h1.title {
+    font-family:"OpenSans-Bold";
+    opacity:0.8;
+    top:10px;
+  }
+  p {
+    font-size:63%;
+    opacity:0.65;
+    padding:5px 1.5em;
+    line-height: 1.5em;
+  }
+  .button-popover {
+    text-transform:none;
+  }
+}
+
+.student-request-form {
+  .header-bar {
+    border-bottom:1px solid rgba(0,0,0,0.1);
+    h1 {
+      height:auto;
+      font-size:100%;
+      font-family:"OpenSans-Semibold";
+      text-transform: uppercase;
+      text-align:center;
+    }
+  }
+
+  h5.inactive {
+    opacity:0.3 !important;
+  }
+
+  h5.inline {
+    display:inline-block;
+  }
+
+  .list-inset
+  .item.request-item {
+    margin:0.75em 0em;
+    border-width:2px;
+    padding:12px;
+    h5 {
+      font-family:"OpenSans-Semibold";
+      font-size: 80%;
+      margin:0px;
+      opacity:0.7;
+    }
+  }
+
+
+
+  #selected-course,
+  .green-border {
+    border-left:4px solid $positive !important;
+  }
+
+  .selected-course {
+    border-left:4px solid $positive !important;
+  }
+
+  .item-icon-right .icon-right {
+      right: 0;
+      font-size: 80%;
+      opacity: 0.4;
+  }
+
+  .button-back {
+    font-family:"OpenSans-Regular";
+    color:rgba(0,0,0,0.8);
+    font-size:13px !important;
+    text-transform: none;
+  }
+
+}
+
+.request-guru-type {
+  .checkbox {
+    width:100%;
+  }
+
+  .checkbox-container {
+    border:1px solid rgba(0,0,0,0.2);
+  }
+
+  .checkbox span {
+    width: 80px;
+    top: 0.8em;
+    margin-left: 1em;
+    position: absolute;
+    font-family: "OpenSans-Regular";
+    color: rgba(0,0,0,0.7);
+    font-size: 105%;
+  }
+
+  .checkbox input, .checkbox-icon {
+    display: inline-block;
+  }
+
+  .checkbox input:before, .checkbox-icon:before {
+    // display: table;
+    // width: 100%;
+    // height: 100%;
+    border-width: 1px;
+    // border-style: solid;
+    border-radius: 3px;
+    // background: #fff;
+    // content: ' ';
+    // -webkit-transition: background-color 20ms ease-in-out;
+    // transition: background-color 20ms ease-in-out;
+  }
+
+  h5 {
+    font-size:100%;
+    margin-bottom:0px;
+  }
+}
+
+
+.auto-margin {
+  margin:auto;
+}
+
+
+.student-request-calendar {
+  .calendar-subheader {
+    background-color:$tabs-background;
+  }
+
+  .button-back {
+    font-family:"OpenSans-Regular";
+    color:rgba(0,0,0,0.8);
+    font-size:13px !important;
+    text-transform: none;
+  }
+
+  .one-day {
+    border: 1px solid rgba(0,0,0,0.2);
+    padding:1.2em;
+    border-bottom:0px;
+  }
+
+  .time {
+    position:absolute;
+    top:7px;
+    left:8px;
+  }
+
+  .calendar-row .pure-u-1-2{
+    border-bottom:0px;
+    padding:1.33em;
+  }
+
+  .calendar-col {
+    border-right:1px solid rgba(0,0,0,0.2);
+    position:relative;
+  }
+
+  .calendar-col-2 {
+    position:relative;
+  }
+
+  .calendar-header {
+    text-transform:uppercase;
+  }
+
+  h5.title {
+    text-transform:uppercase;
+  }
+}
+
+.textarea-container {
+  height:30%;
+}
+
+.request-description-container {
+  .textarea-container {
+    border: 1px solid rgba(0,0,0,0.2);
+  }
+  textarea {
+    width:100%;
+    padding:0.5em;
+    resize:none;
+    outline:none;
+  }
+  .textarea-wrapper {
+    padding-top:1em;
+  }
+  h5 {
+    margin:0px;
+  }
+  .attachment-container {
+    height:100px;
+    width:75px;
+    background-color:black;
+  }
+}
+
+.angular-google-map-container { height: 100%; }
+
+.map-modal{top:  0}
+
+
+.map-modal .bar .button-block
+{
+margin: 0;
+}
+
+.tabs .tab-item .icon.home-icon {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 10px;
+  background-image: url('/remote/img/tabs-icon-1.svg');
+  background-size:contain;
+
+}
+
+.tab-title {
+
 }
