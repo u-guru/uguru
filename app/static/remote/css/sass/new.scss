@@ -1072,3 +1072,27 @@ margin: 0;
 .flip-button.hover .front {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg); }
+
+
+.signup-form {
+  .item.item-input input{
+    text-transform:capitalize;
+    margin-left:20px;
+    margin-top:5px;
+  }
+}
+
+.contacting-guru {
+  .sleeping-guru {
+
+    margin:0 auto;
+    max-width:100%;
+    width:50%;
+    padding-top:20%;
+
+  }
+  h1 {
+    font-size:250% !important;
+    font-weight:bold;
+  }
+}

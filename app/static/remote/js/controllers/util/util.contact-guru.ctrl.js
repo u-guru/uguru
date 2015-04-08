@@ -14,14 +14,7 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, User, CordovaPushWrapper, $timeout) {
 
-    if ($scope.platform.mobile && $scope.root.keyboard.isVisible()) {
-        $scope.root.keyboard.close();
-        $timeout(function() {
-          $scope.contactingGuruModal.hide();
-        }, 300)
-      } else {
-        $scope.contactingGuruModal.hide();
-    }
+
 
     $scope.$on('modal.shown', function() {
 

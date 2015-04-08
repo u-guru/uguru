@@ -1,6 +1,20 @@
  <ion-modal-view ng-controller="ContactGuruController">
-    <ion-content style="background-color:#f2f2f2; border-top:20px solid black;">
-    <div class="success">
+    <!-- <ion-content style="background-color:#f2f2f2; border-top:20px solid black;"> -->
+    <ion-content class='contacting-guru'>
+      <div class='pure-g-c flex-column'>
+
+        <div class='flex-item-c padding-1em'>
+          <img src='remote/img/guru-sleeping.svg' class='pure-img sleeping-guru padding-2em'>
+        </div>
+
+        <div class='flex-item-c center'>
+          <h1> Sit tight </h1>
+          <h4> We'll notify you when your Guru replies. </h4>
+        </div>
+      </div>
+
+
+      <!-- <div class="success">
       <div class='row'>
         <div class="width margin-auto center">
           <img src='./img/uguru-06.png' class='inherit-width' id="pulse">
@@ -8,12 +22,8 @@
       </div>
       <div class='row absolute bottom-35-percent'>
         <div class="width margin-auto center">
-          <div class="message">Contacting your Guru</div>
+          <div class="pure-img">Contacting your Guru</div>
         </div>
       </div>
-    </div>
+    </div> -->
   </ion-content>
-  <ion-footer-bar style="height: auto; background-color:#f2f2f2;" class="extra-padding-sides">
-    <button ng-click="closeContactGuruModal()" style="height:4em"class="button button-positive button-full button-outline">cancel request </button>
-  </ion-footer-bar>
-  </ion-modal-view>

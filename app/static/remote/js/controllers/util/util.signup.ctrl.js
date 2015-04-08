@@ -141,6 +141,7 @@ angular.module('uguru.util.controllers')
       }
 
       if (!formDict.email) {
+        alert('Please enter your email');
         document.getElementsByName('login-email')[0].focus();
         var shake = document.getElementById('input_email_login')
         shake.classList.add('animated', 'shake');
@@ -149,6 +150,7 @@ angular.module('uguru.util.controllers')
         }, 950);
         return false;
       }
+
 
       if (!validateEmail(formDict.email)) {
         document.getElementsByName('login-email')[0].focus();
@@ -162,6 +164,7 @@ angular.module('uguru.util.controllers')
         $scope.user.email = $scope.signupForm.email;
       }
 
+      alert('Please enter all fields.');
       if (!formDict.password) {
         document.getElementsByName('login-password')[0].focus();
         var shake = document.getElementById('input_password_login')
@@ -329,7 +332,7 @@ angular.module('uguru.util.controllers')
 
 
           //if we are about to create a request
-          if ($state.current.name === 'root.student.request') {
+          if ($state.current.name === 'root.student-request') {
                 var callRequestHelp = function() {
                   $scope.requestHelp();
                 }

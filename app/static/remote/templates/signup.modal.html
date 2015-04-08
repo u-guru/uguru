@@ -1,9 +1,14 @@
- <ion-modal-view ng-controller="SignupController">
-      <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
+ <ion-modal-view ng-controller="SignupController" class='signup-form'>
+      <ion-header-bar class='header-bar'>
+        <h1 class="title">Find A Guru</h1>
+        <a class="button button-clear button-back"ng-click='closeSignupModal()'>Cancel</a>
+      </ion-header-bar>
+
+      <!-- <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
         <h1 class="title" ng-show="!loginMode">Create Account</h1>
         <h1 class="title" ng-show="loginMode">Login</h1>
         <button ng-click="closeSignupModal()" class="button button-clear button-positive">Cancel</button>
-      </ion-header-bar>
+      </ion-header-bar> -->
       <ion-content>
 
         <div class="account">
@@ -38,7 +43,7 @@
             <button ng-show="loginMode" ng-click="loginUser()"class="button button-green-outline button-full">
               Login
             </button>
-            <div class="horizon">
+            <!-- <div class="horizon">
               <span class="box">
                 or try facebook
               </span>
@@ -48,7 +53,7 @@
             </div>
             <button ng-click="signupFacebook()" class="button facebook-button button-full icon-left ion-social-facebook">
               Connect With Facebook
-            </button>
+            </button> -->
             <button ng-click="toggleLoginMode()" ng-show="!loginMode" class="button button-full button-outlined button-disabled">
               Login
             </button>

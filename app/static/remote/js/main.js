@@ -3,11 +3,14 @@ var LOCAL = false;
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com';
 var BASE = '';
+var img_base = '';
 if (LOCAL) {
   BASE = 'remote/';
   BASE_URL = 'http://192.168.42.66:8100';
   // REST_URL = 'http://192.168.42.66:5000';
   var REST_URL = 'http://uguru-rest.herokuapp.com';
+} else {
+  img_base = '/static/'
 }
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.onboarding.controllers', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',

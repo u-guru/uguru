@@ -298,8 +298,6 @@ angular.module('uguru.student.controllers', [])
 
     $scope.$on('$ionicView.loaded', function(){
 
-
-
     });
 
 

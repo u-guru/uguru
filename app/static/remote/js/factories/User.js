@@ -552,7 +552,7 @@ angular.module('uguru.user', [])
                     .customPOST(JSON.stringify(payload))
                     .then(function(user){
                         var processed_user = processResults(user.plain());
-                        assignPropertiesToRootScope($scope, processed_user)
+                        assignPropertiesToRootScope($scope, processed_user);
                         delegateActionsFromProcessedUser($scope);
                     }, function(err){
                         if (err.status === 409 ) {

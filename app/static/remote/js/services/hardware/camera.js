@@ -26,14 +26,7 @@ angular.module('uguru.root.services')
 
                         $cordovaCamera.getPicture(options).then(function(imageData) {
                           var image = document.getElementsByClassName('attachment-container')[0];
-
-                          var reader = new FileReader();
-
-                          reader.onload = function (e) {
-                              image.src = imageData.target.result;
-                          };
-
-                          reader.readAsDataURL(imageData);
+                          image.src = "data:image/jpeg;base64," + imageData;
 
 
 

@@ -218,8 +218,6 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.requestHelp = function() {
-
-
       if (!$scope.user.id) {
         $scope.signupModal.show();
         console.log('show form they are not signed in yet')
@@ -233,6 +231,10 @@ angular.module('uguru.student.controllers')
 
       $scope.saveRequestToUser();
       $scope.contactingGuruModal.show();
+      $timeout(function() {
+        $scope.contactingGuruModal.hide();
+      }, 5000)
+
 
     }
 
@@ -315,7 +317,8 @@ angular.module('uguru.student.controllers')
 
     $scope.$on('$ionicView.Enter', function(){
 
-      console.log($state.current.name, 'enter')
+      console.log($state.current.name, 'enter');
+
 
     });
 
