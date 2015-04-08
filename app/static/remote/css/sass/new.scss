@@ -962,6 +962,7 @@ margin: 0;
 {
       border-color: $positive;
       background-color: $positive;
+      background-image:none;
 }
 
 .student-home
@@ -1095,4 +1096,40 @@ margin: 0;
     font-size:250% !important;
     font-weight:bold;
   }
+}
+
+.student-sessions {
+  .list {
+      margin-bottom:-5px !important;
+  }
+  .upcoming-session-card {
+    h2 {
+      font-size:125%;
+      margin:10px 0px;
+    }
+    h4.pending {
+      text-transform:uppercase;
+      color:$positive;
+      font-size:100%;
+    }
+    h4.scheduled {
+      text-transform:capitalize;
+      color:rgba(0,0,0,0.5);
+      font-size:100%;
+    }
+    img {
+      top:28px;
+      right:20px;
+      max-width:25px !important;
+      max-height:25px !important;
+    }
+  }
+  .tabs-striped.tabs-stable .tabs {
+    background-color: #E6E6E5;
+  }
+
+  .item {
+    border-width:0;
+  }
+
 }

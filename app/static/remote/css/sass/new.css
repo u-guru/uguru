@@ -651,7 +651,8 @@ p {
 
 .bottom-tabs.tabs-positive > .tabs, .tabs.tabs-positive {
   border-color: #68b2a5;
-  background-color: #68b2a5; }
+  background-color: #68b2a5;
+  background-image: none; }
 
 .student-home .bottom-tabs.tabs-positive .tabs .tab-item .icon.session-icon {
   background-repeat: no-repeat;
@@ -750,3 +751,26 @@ p {
 .contacting-guru h1 {
   font-size: 250% !important;
   font-weight: bold; }
+
+.student-sessions .list {
+  margin-bottom: -5px !important; }
+.student-sessions .upcoming-session-card h2 {
+  font-size: 125%;
+  margin: 10px 0px; }
+.student-sessions .upcoming-session-card h4.pending {
+  text-transform: uppercase;
+  color: #68b2a5;
+  font-size: 100%; }
+.student-sessions .upcoming-session-card h4.scheduled {
+  text-transform: capitalize;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 100%; }
+.student-sessions .upcoming-session-card img {
+  top: 28px;
+  right: 20px;
+  max-width: 25px !important;
+  max-height: 25px !important; }
+.student-sessions .tabs-striped.tabs-stable .tabs {
+  background-color: #E6E6E5; }
+.student-sessions .item {
+  border-width: 0; }

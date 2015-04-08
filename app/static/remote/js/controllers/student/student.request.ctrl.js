@@ -231,6 +231,7 @@ angular.module('uguru.student.controllers')
 
       $scope.saveRequestToUser();
       $scope.contactingGuruModal.show();
+      $state.go('^.home');
       $timeout(function() {
         $scope.contactingGuruModal.hide();
       }, 5000)
