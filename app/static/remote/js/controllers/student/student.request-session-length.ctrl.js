@@ -13,7 +13,7 @@ angular.module('uguru.student.controllers')
  	$ionicHistory) {
     console.log($scope.root.vars.request);
     $scope.validateForm = function() {
-      console.log($scope.root.vars.request._length.hours, $scope.root.vars.request._length.minutes);
+      // console.log($scope.root.vars.request._length.hours, $scope.root.vars.request._length.minutes);
       if (($scope.root.vars.request._length.hours !== null) && ($scope.root.vars.request._length.minutes !==null)) {
         $ionicHistory.goBack();
       } else {

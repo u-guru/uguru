@@ -141,7 +141,6 @@ angular.module('uguru.util.controllers')
       }
 
       if (!formDict.email) {
-        $scope.showError('Please enter email');
         document.getElementsByName('login-email')[0].focus();
         var shake = document.getElementById('input_email_login')
         shake.classList.add('animated', 'shake');
@@ -152,7 +151,6 @@ angular.module('uguru.util.controllers')
       }
 
       if (!validateEmail(formDict.email)) {
-        $scope.showError('Please enter valid email address');
         document.getElementsByName('login-email')[0].focus();
         var shake = document.getElementById('input_email_login')
         shake.classList.add('animated', 'shake');
@@ -165,7 +163,6 @@ angular.module('uguru.util.controllers')
       }
 
       if (!formDict.password) {
-        $scope.showError('Please enter password');
         document.getElementsByName('login-password')[0].focus();
         var shake = document.getElementById('input_password_login')
         shake.classList.add('animated', 'shake');
@@ -194,7 +191,7 @@ angular.module('uguru.util.controllers')
       }
 
       if (!formDict.first_name) {
-        $scope.showError('Please enter your first name');
+        alert('Please fill in all fields!');
         document.getElementsByName('signup-first-name')[0].focus();
         var shake = document.getElementById('input_first')
         shake.classList.add('animated', 'shake');
@@ -207,7 +204,7 @@ angular.module('uguru.util.controllers')
       }
 
       if (!formDict.last_name) {
-        $scope.showError('Please enter your last name');
+        alert('Please fill in all fields!');
         document.getElementsByName('signup-last-name')[0].focus();
         var shake = document.getElementById('input_last')
         shake.classList.add('animated', 'shake');
@@ -220,7 +217,7 @@ angular.module('uguru.util.controllers')
       }
 
       if (!formDict.email) {
-        $scope.showError('Please enter email');
+        alert('Please fill in all fields!');
         document.getElementsByName('signup-email')[0].focus();
         var shake = document.getElementById('input_email')
         shake.classList.add('animated', 'shake');
@@ -231,7 +228,7 @@ angular.module('uguru.util.controllers')
       }
 
       if (!validateEmail(formDict.email)) {
-        $scope.showError('Please enter valid email address');
+        alert('Please fill in all fields!');
         document.getElementsByName('signup-email')[0].focus();
         var shake = document.getElementById('input_email')
         shake.classList.add('animated', 'shake');
@@ -244,7 +241,7 @@ angular.module('uguru.util.controllers')
       }
 
       if (!formDict.password) {
-        $scope.showError('Please enter password');
+        alert('Please fill in all fields!');
         $scope.user.password = $scope.signupForm.password;
         document.getElementsByName('signup-password')[0].focus();
         var shake = document.getElementById('input_password')
@@ -320,8 +317,11 @@ angular.module('uguru.util.controllers')
 
       User.create($scope.signupForm).then(function(user) {
           var processed_user = User.process_results(user.plain());
+
           console.log(JSON.stringify($scope.user));
+
           User.assign_properties_to_root_scope($scope, processed_user)
+
           $scope.user.guru_mode = false;
           // $scope.user.updateAttr('guru_mode', $scope.user, false);
 
@@ -340,7 +340,7 @@ angular.module('uguru.util.controllers')
             else {
               User.getUserFromServer($scope, null, $state);
               $scope.closeSignupModal(function() {
-                $scope.bottomTabsDelegate.select(0);
+                // $scope.bottomTabsDelegate.select(0);
               });
 
           }
@@ -348,7 +348,7 @@ angular.module('uguru.util.controllers')
       function(err){
         console.log(err);
         if (err.status === 409) {
-          $scope.showError('Email already has an account');
+          alert('Email already exists in our system! Login?');
           $scope.toggleLoginMode();
           $scope.signupForm.password = '';
         }

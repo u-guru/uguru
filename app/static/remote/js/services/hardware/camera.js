@@ -25,18 +25,28 @@ angular.module('uguru.root.services')
                         };
 
                         $cordovaCamera.getPicture(options).then(function(imageData) {
-                          var image = document.getElementById('requestPhotoImg');
-                          image.src = "data:image/jpeg;base64," + imageData;
-                          var image2 = document.getElementById('requestPhotoImgNoteExists');
-                          image2.src = "data:image/jpeg;base64," + imageData;
-                          $scope.request.photo = image.src;
+                          var image = document.getElementsByClassName('attachment-container')[0];
+
+                          var reader = new FileReader();
+
+                          reader.onload = function (e) {
+                              image.src = imageData.target.result;
+                          };
+
+                          reader.readAsDataURL(imageData);
+
+
+
+                          // $scope.request.photo = image.src;
 
                           var formData = new FormData();
                           // formData.append('file', image.src);
+                          imageData = "data:image/jpeg;base64," + imageData;
+
                           formData.append('file', imageData);
                           formData.append('filename', 'sup.jpg');
 
-                          $scope.user.createObj($scope.user, 'files', formData, $scope);
+                          // $scope.user.createObj($scope.user, 'files', formData, $scope);
 
                         }, function(err) {
                           console.log(err);

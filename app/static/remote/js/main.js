@@ -278,7 +278,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   state('root.request-location', {
         url: '/request-location',
         templateUrl: BASE + 'templates/student.request.location.html',
-        // controller: 'RequestLocationController'
+        controller: 'RequestLocationController'
   }).
   state('root.request-description', {
         url: '/request-description',

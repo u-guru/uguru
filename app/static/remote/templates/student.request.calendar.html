@@ -3,7 +3,7 @@
 <ion-view hide-nav-bar="true" class="student-request-calendar" >
 
     <ion-header-bar class='header-bar'>
-        <a class='button button-clear button-back' ng-click='goBackToRequests()'>Back</a>
+        <a class='button button-clear button-back' nav-direction="back" href="#/student-request">Back</a>
         <h5 class="title">Availability</h5>
         <a class='button button-clear button-back' ui-sref='^.request-location'>Next</a>
     </ion-header-bar>
@@ -29,17 +29,17 @@
 
     </ion-tabs> -->
 
-    <ion-content style='background-color' class='course-list-container'>
+    <ion-content style='background-color' class='course-list-container' >
       <ion-list>
         <ion-item class="item" ng-repeat="hour_int in day_rows" style="padding:0px; margin:0px;">
           <div class='pure-g-c calendar-row'>
             <div class='pure-u-1-2 calendar-col relative' id="0,{{hour_int}}"ng-click='clickCalendarGridElement($event, 0, hour_int)'>
-                <span class='time'>
+                <span class='time' ng-click='triggerCalendarClick($event, 0, hour_int)'>
                     {{getTimeFromHourInt(hour_int).replace(' ','').toUpperCase()}}
                 </span>
             </div>
             <div class='pure-u-1-2 calendar-col-2 relative' id="1,{{hour_int}}" ng-click='clickCalendarGridElement($event, 1, hour_int)'>
-                <span class='time'>
+                <span class='time' ng-click='triggerCalendarClick($event, 1, hour_int)'>
                     {{getTimeFromHourInt(hour_int).replace(' ', '').toUpperCase()}}
                 </span>
             </div>

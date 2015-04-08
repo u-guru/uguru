@@ -10,10 +10,28 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   'User',
   'CordovaPushWrapper',
+  '$timeout',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, User, CordovaPushWrapper) {
+ 	$ionicModal, User, CordovaPushWrapper, $timeout) {
+
+    if ($scope.platform.mobile && $scope.root.keyboard.isVisible()) {
+        $scope.root.keyboard.close();
+        $timeout(function() {
+          $scope.contactingGuruModal.hide();
+        }, 300)
+      } else {
+        $scope.contactingGuruModal.hide();
+    }
+
     $scope.$on('modal.shown', function() {
 
+      $scope.closeContactGuruModal = function() {
+
+      $timeout(function() {
+        $scope.contactingGuruModal.hide();
+        $state.go('^.home');
+
+        } , 2500);
 
 
       if ($scope.contactingGuruModal.isShown()) {
@@ -45,18 +63,18 @@ angular.module('uguru.util.controllers')
 
               }
 
-              CordovaPushWrapper.register($scope,
-                function() {
-                     setTimeout(function() {
-                        pulse.classList.add('animated', 'pulse');
+              // CordovaPushWrapper.register($scope,
+              //   function() {
+              //        setTimeout(function() {
+              //           pulse.classList.add('animated', 'pulse');
 
-                        setTimeout(function() {
-                          console.log('shit is pulsating 3 second has passed');
-                          pulse.classList.remove('animated', 'pulse');
-                          $scope.closeContactGuruModal();
-                        }, 2000);
-                      }, 2000);
-              });
+              //           setTimeout(function() {
+              //             console.log('shit is pulsating 3 second has passed');
+              //             pulse.classList.remove('animated', 'pulse');
+              //             $scope.closeContactGuruModal();
+              //           }, 2000);
+              //         }, 2000);
+              // });
 
 
 
@@ -72,24 +90,10 @@ angular.module('uguru.util.controllers')
 
       }
 
-    });
-
-
-
-    $scope.closeContactGuruModal = function() {
-
-      if ($scope.platform.mobile && $scope.root.keyboard.isVisible()) {
-        $scope.root.keyboard.close();
-        $timeout(function() {
-          $scope.contactingGuruModal.hide();
-        }, 300)
-      } else {
-        $scope.contactingGuruModal.hide();
-      }
-
     }
+  });
 
-  }
+}
 
 
 ])

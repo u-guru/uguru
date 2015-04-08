@@ -1,0 +1,31 @@
+    <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
+        <h1 class="title">Find A Guru</h1>
+    </ion-header-bar>
+
+    <ion-content style='background-color' class='course-list-container has-subheader' scroll="false">
+      <div class='container pure-g-c flex-column flex-space-between'>
+        <div class="list list-inset course-list">
+
+            <a class="item course-item item-icon-right" ng-repeat="course in user.student_courses" ng-click="goToRequest(course)">
+              <h5>{{course.short_name}}</h5>
+              <i class="icon icon-right ion-chevron-right"></i>
+            </a>
+            <a class="item course-item item-icon-right" ng-show="checkCourseInActiveRequests(course)" style="border-left: 4px solid gold;" ng-click="goToRequestStatus(course)">
+              <h5>{{course.short_name}}</h5>
+              <i class="icon icon-right ion-chevron-right"></i>
+            </a>
+            <a id="add-course-item" class="item item-icon-left course-item add-course-item item-icon-right" ng-click='addCourseModal.show()'>
+              <i class="icon icon-left ion-plus"></i>
+              <h5 class='inline'> New course </h5>
+              <i class="icon icon-right ion-chevron-right"></i>
+            </a>
+
+        </div>
+        <!-- <div class='pure-g toast toast-positive referral-toast'>
+          <a class='padding-1em relative toast-container'>
+            <p> Want free tutoring? Why use your own $$</p>
+            <i class="icon ion-chevron-right absolute"></i>
+          </a>
+        </div> -->
+      </div>
+    </ion-content>

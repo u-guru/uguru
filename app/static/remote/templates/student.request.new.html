@@ -3,10 +3,10 @@
 <ion-view hide-nav-bar="true" class="student-request-form">
 
     <ion-header-bar class='header-bar'>
-        <h1 class="title">Find A Guru</h1>
         <div class="buttons" ng-click="goBackFromRequestsToHome()">
-            <button class="button button-clear button-back">Back</button>
+            <a class="button button-clear button-back" nav-direction="back" href="#/home">Back</a>
         </div>
+        <h1 class="title">Find A Guru</h1>
     </ion-header-bar>
 
     <ion-content class='request-list-container' scroll="false">
@@ -17,65 +17,81 @@
                     <h5>{{course.short_name}}</h5>
                 </a>
                 <div class='container'>
-                    <a ng-show='!(root.vars.request.type.in_person || root.vars.request.type.online)' class="item request-item item-icon-right" ui-sref='^.request-guru-type'>
+                    <a ng-show='!(root.vars.request.type.in_person || root.vars.request.type.online)' class="item request-item item-icon-right" href='#/request-guru-type' nav-direction="forward">
                         <h5>Can you meet online, in-person, or both?</h5>
                         <i class="icon icon-right ion-chevron-right"></i>
                     </a>
-                    <a ng-show='(root.vars.request.type.in_person && root.vars.request.type.online)' class="green-border item request-item item-icon-right" ui-sref='^.request-guru-type'>
+                    <a ng-show='(root.vars.request.type.in_person && root.vars.request.type.online)' class="green-border item request-item item-icon-right" href='#/request-guru-type' nav-direction="forward">
                         <h5>Either in-person or online</h5>
                         <i class="icon icon-right ion-chevron-right"></i>
                     </a>
-                    <a ng-show='(root.vars.request.type.in_person && !root.vars.request.type.online)' class="green-border item request-item item-icon-right" ui-sref='^.request-guru-type'>
+                    <a ng-show='(root.vars.request.type.in_person && !root.vars.request.type.online)' class="green-border item request-item item-icon-right" href='#/request-guru-type' nav-direction="forward">
                         <h5>In-Person only</h5>
                         <i class="icon icon-right ion-chevron-right"></i>
                     </a>
-                    <a ng-show='(!root.vars.request.type.in_person && root.vars.request.type.online)' class="green-border item request-item item-icon-right" ui-sref='^.request-guru-type'>
+                    <a ng-show='(!root.vars.request.type.in_person && root.vars.request.type.online)' class="green-border item request-item item-icon-right" href='#/request-guru-type' nav-direction="forward">
                         <h5>In-Person only</h5>
                         <i class="icon icon-right ion-chevron-right"></i>
                     </a>
                 </div>
                 <div class='container'>
-                    <a ng-show='!((root.vars.request._length.minutes) || (root.vars.request._length.hours))'class="item request-item item-icon-right" ui-sref='^.request-session-length'>
+                    <a ng-show='!root.vars.request._length.minutes && !root.vars.request._length.hours'class="item request-item item-icon-right" href='#/request-session-length' nav-direction="forward">
                         <h5>How long should the session last?</h5>
                         <i class="icon icon-right ion-chevron-right"></i>
                     </a>
-                    <a ng-show='root.vars.request._length.minutes && root.vars.request._length.hours' class="item green-border request-item item-icon-right" ui-sref='^.request-session-length'>
-                        <h5>For at least {{root.vars.request._length.hours}} hours {{root.vars.request._length.minutes}} minutes</h5>
+                    <a ng-show='root.vars.request._length.hours && (root.vars.request._length.minutes !== 1)' class="item green-border request-item item-icon-right" href='#/request-session-length' nav-direction="forward">
+                        <h5>For at least {{root.vars.request._length.hours}} hrs {{valueToMinutes[root.vars.request._length.minutes - 1]}} min</h5>
+                        <i class="icon icon-right ion-chevron-right"></i>
+                    </a>
+                    <a ng-show='root.vars.request._length.hours && (root.vars.request._length.minutes == 1)' class="item green-border request-item item-icon-right" href='#/request-session-length' nav-direction="forward">
+                        <h5>For at least {{root.vars.request._length.hours}} hr </h5>
                         <i class="icon icon-right ion-chevron-right"></i>
                     </a>
 
                 </div>
                 <div class='container'>
-                    <a ng-show='!root.vars.request.calendar_selected' class="item request-item item-icon-left item-icon-right" ui-sref='^.request-calendar'>
+                    <a ng-show='!root.vars.request.calendar_selected' class="item request-item item-icon-left item-icon-right" href='#/request-calendar' nav-direction="forward">
                         <i class='icon ion-ios7-calendar'></i>
                         <h5 class='inline'>Select your availability</h5>
                         <i class="icon icon-right ion-chevron-right"></i>
                     </a>
-                    <a ng-show='root.vars.request.calendar_selected' class="item request-item item-icon-left item-icon-right green-border" ui-sref='^.request-calendar'>
+                    <a ng-show='root.vars.request.calendar_selected' class="item request-item item-icon-left item-icon-right green-border" href='#/request-calendar' nav-direction="forward">
                         <i class='icon ion-ios7-calendar'></i>
                         <h5 class='inline'>Availability Selected</h5>
                         <i class="icon icon-right ion-chevron-right"></i>
                     </a>
                 </div>
                 <div class='container'>
-                    <a class="item request-item item-icon-right" ui-sref='^.request-location'>
+                    <a ng-show='!root.vars.request.location' class="item request-item item-icon-right" href='#/request-location' nav-direction="forward">
                         <h5 class='inline'>Where do you want to meet?</h5>
                         <i class="icon icon-right ion-chevron-right"></i>
                     </a>
+                    <a ng-show='root.vars.request.location' class="item request-item item-icon-right green-border" href='#/request-location' nav-direction="forward">
+                        <h5 class='inline'>{{root.vars.request.location.split(' ').slice(0,3).join(' ').replace(',','')}}</h5>
+                        <i class="icon icon-right ion-chevron-right"></i>
+                    </a>
                 </div>
-                <a ng-show='!root.vars.request.description' class="item request-item item-icon-right" ui-sref='^.request-description'>
+                <a ng-show='!root.vars.request.description' class="item request-item item-icon-right" href='#/request-description' nav-direction="forward">
                     <h5 class='inline'>Add a Description</h5>
                     <i class="icon icon-right ion-chevron-right"></i>
                 </a>
-                <a ng-show='root.vars.request.description' class="green-label item request-item item-icon-right" ui-sref='^.request-description'>
-                    <h5 class='inline'>Add a Description</h5>
+                <a ng-show='root.vars.request.description' class="item request-item item-icon-right green-border"href='#/request-description' nav-direction="forward">
+                    <h5 class='inline'>{{root.vars.request.description.substring(0, 35)}}..."</h5>
                     <i class="icon icon-right ion-chevron-right"></i>
                 </a>
             </div>
             <div class='flex-item-c'>
-                <button class='submit-request button button-full button-positive flex-space-between'>
+                <button ng-disabled='!(root.vars.request.description && root.vars.request.location && (root.vars.request.type.in_person || root.vars.request.type.online) && root.vars.request._length.hours && root.vars.request.calendar_selected)' class='submit-request button button-full button-positive flex-space-between' ng-click='requestHelp()'>
                     Submit Request
                 </button>
+                <!-- <div class='container flip-button' onclick="this.classList.toggle('hover')">
+                    <div class="button button-full button-positive icon icon-right ion-chevron-right front" style="width:90%">
+                        Submit Request
+                    </div>
+                    <div class="button button-balanced button-full back">
+                        Submit Request
+                    </div>
+                </div> -->
             </div>
         </div>
     </ion-content>

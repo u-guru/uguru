@@ -185,25 +185,34 @@ angular.module('uguru.student.controllers')
         $scope.request.position = $scope.user.position.coords;
       }
 
-      $scope.user.createObj($scope.user, 'requests', $scope.request, $scope);
+      $scope.failureFunction = function($scope) {
+        $scope.contactingGuruModal.hide();
+      };
+
+      $scope.user.createObj($scope.user, 'requests', $scope.request, $scope, null, $scope.failureFunction);
 
     }
 
     var validateRequestForm = function() {
-      if ($scope.calendar.num_selected === 0) {
-        alert('Please fill in Calendar');
+      if (!($scope.root.vars.request.description && $scope.root.vars.request.location && ($scope.root.vars.request.type.in_person || $scope.root.vars.request.type.online) && $scope.root.vars.request._length.hours && $scope.root.vars.request.calendar_selected)) {
+        alert('Please fill in all fields');
         return false;
       }
+      // old request later
+      // if ($scope.calendar.num_selected === 0) {
+      //   alert('Please fill in Calendar');
+      //   return false;
+      // }
 
-      if (!($scope.virtual_guru_checkbox || $scope.person_guru_checkbox)) {
-        alert('Please check guru or virtual');
-        return false;
-      }
+      // if (!($scope.virtual_guru_checkbox || $scope.person_guru_checkbox)) {
+      //   alert('Please check guru or virtual');
+      //   return false;
+      // }
 
-      if (!$scope.request.note) {
-        alert('Please add a description');
-        return false;
-      }
+      // if (!$scope.request.note) {
+      //   alert('Please add a description');
+      //   return false;
+      // }
 
       return true;
     }
@@ -213,20 +222,17 @@ angular.module('uguru.student.controllers')
 
       if (!$scope.user.id) {
         $scope.signupModal.show();
+        console.log('show form they are not signed in yet')
         return;
       }
 
       if (!validateRequestForm()) {
+        console.log('form is not validated')
         return;
       }
 
       $scope.saveRequestToUser();
       $scope.contactingGuruModal.show();
-      $timeout(function() {
-
-        $state.go('^.home');
-
-      }, 3000);
 
     }
 
@@ -263,10 +269,11 @@ angular.module('uguru.student.controllers')
     $scope.virtual_guru_checkbox = true;
     $scope.person_guru_checkbox = false;
     $scope.requestPosition = null;
-    $scope.course = JSON.parse($stateParams.courseObj);
+
     $scope.request = $scope.initRequestObj();
 
     if (!$scope.root.vars.request) {
+      $scope.course = JSON.parse($stateParams.courseObj);
       $scope.root.vars.request = {
         type: {
           in_person: true,
@@ -277,9 +284,15 @@ angular.module('uguru.student.controllers')
         course: $scope.course,
         description:null,
         location: null
+        }
       }
-      console.log($scope.root.vars.request.length);
+      else {
+        $scope.course = $scope.root.vars.request.course;
     }
+
+    console.log($scope.root.vars.request.description);
+
+    $scope.valueToMinutes = [null, '15', '30', '45'];
 
     //modal stuff
     $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };

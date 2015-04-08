@@ -217,18 +217,33 @@ angular.module('uguru.util.controllers')
       return count;
     }
 
-    $scope.clickCalendarGridElement = function($event, calendar_x, calendar_y) {
-      var target = $event.target;
-      var targetBgColor = target.style.background;
+    $scope.triggerCalendarClick = function($event, calendar_x, calendar_y) {
+      console.log($event.target.parentNode);
+      $scope.clickCalendarGridElement(null, calendar_x, calendar_y, $event.target.parentNode);
+    }
+
+    $scope.clickCalendarGridElement = function($event, calendar_x, calendar_y, _target) {
+      if ($event) {
+        var target = $event.target;
+        var targetBgColor = target.style.background;
+      } else {
+        var target = _target;
+        var targetBgColor = target.style.background;
+      }
+
+      //A calendar item was selected
       if (!targetBgColor || targetBgColor === 'white') {
         $scope.calendar.data[calendar_x][calendar_y] = true;
         target.style.background = '#6C87B0';
         target.style.color = 'white';
-      } else {
+        target.childNodes[0].background = '#6C87B0';
+      }
+      //A calendar item was not selected
+      else {
         $scope.calendar.data[calendar_x][calendar_y] = false;
         target.style.background = 'white';
         target.style.color = 'rgba(0,0,0,0.8)';
-
+        target.childNodes[0].background = 'white';
       }
 
       $scope.calendar.num_selected = $scope.countCalendarSelected($scope.calendar.data);

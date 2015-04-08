@@ -95,15 +95,22 @@ angular.module('uguru.util.controllers')
         formData.append('file', photofile);
         formData.append('filename', photofile.name);
         // $scope.user.createObj($scope.user, 'files', formData, $scope);
-        $scope.saveImgToTag.saveImgToTag(photoFile);
+        $scope.saveImgToTag(photofile);
     };
 
     $scope.saveImgToTag = function(imageData) {
       var image = document.getElementsByClassName('attachment-container')[0];
-      image.src = "data:image/jpeg;base64," + imageData;
-      // var image2 = document.getElementById('requestPhotoImgNoteExists');
-      // image2.src = "data:image/jpeg;base64," + imageData;
-      $scope.request.photo = image.src;
+      // image.src = "data:image/jpeg;base64," + imageData;
+
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        image.src = e.target.result;
+      };
+
+       reader.readAsDataURL(imageData);
+
+      // $scope.request.photo = image.src;
 
       var formData = new FormData();
       // formData.append('file', image.src);

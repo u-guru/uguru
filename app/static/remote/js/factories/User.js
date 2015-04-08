@@ -545,7 +545,7 @@ angular.module('uguru.user', [])
             }
 
         },
-        createObj: function(userObj, param, payload, $scope, callback_success) {
+        createObj: function(userObj, param, payload, $scope, callback_success, callback_failure) {
             if (param === 'requests') {
                 Restangular
                     .one('user', userObj.id).one(param)
@@ -556,9 +556,17 @@ angular.module('uguru.user', [])
                         delegateActionsFromProcessedUser($scope);
                     }, function(err){
                         if (err.status === 409 ) {
-                            console.log('already have an active request');
+                            if (callback_success) {
+                                callback_failure($scope);
+                                alert('already have an active request for this course!');
+                            }
+
                         } else {
                             console.log(err);
+                            if (callback_failure) {
+                                callback_failure($scope);
+                                alert('already have an active request for this course!');
+                            }
                             console.log('error...something happened with the server;')
                         }
                     });

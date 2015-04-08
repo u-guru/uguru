@@ -1,6 +1,6 @@
 <ion-view hide-nav-bar='true'>
     <ion-header-bar class='header-bar'>
-        <a class='button button-clear button-back' ng-click='goBackToRequests()'>Back</a>
+        <a class='button button-clear button-back' nav-direction="back" href="#/student-request">Back</a>
         <h5 class='title'>Add Your Location</h5>
         <a class='button button-clear button-back' ui-sref='^.request-description'>Next</a>
     </ion-header-bar>
@@ -17,6 +17,6 @@
     </ion-content>
 
     <ion-footer-bar style="height: auto; background-color:transparent; z-index:20;" class="extra-padding-sides">
-      <button ng-click="setLocation()" style="height:4em"class="button button-positive button-full button-positive"><span class="icon ion-navigate"></span>Set Location </button>
+      <button ui-sref='^.request-description' style="height:4em"class="button button-positive button-full button-positive"><span class="icon ion-navigate"></span>Set Location </button>
     </ion-footer-bar>
 </ion-view>

@@ -85,6 +85,7 @@ angular.module('uguru.util.controllers')
             // $scope.actual_map.setZoom(17);
             var formatted_address = results[0].formatted_address;
             $scope.root.vars.request.location = formatted_address;
+            console.log($scope.root.vars.request.location);
             $scope.requestPosition.coords.latitude = latCoord;
             $scope.requestPosition.coords.longitude = longCoord;
             $timeout(function() {
@@ -211,6 +212,15 @@ angular.module('uguru.util.controllers')
                 $scope.marker.setAnimation(null);
               }, 1000)
           });
+
+          // google.maps.event.addListener($scope.marker, 'drag', function()
+          // {
+          //     $scope.getAddressFromLatLng($scope.geocoder, $scope.marker.getPosition().lat(), $scope.marker.getPosition().lng())
+
+          //     $timeout(function() {
+          //       $scope.marker.setAnimation(null);
+          //     }, 1000)
+          // });
 
       // }
 
