@@ -1,11 +1,21 @@
 
 
-<ion-view hide-nav-bar="true">
-  <ion-content class='onboarding-university-wrapper' scroll="false">
-    <!-- stretch this -->
-    <div class="pure-g-c flex-column">
+<ion-view hide-nav-bar="true" class='guru-home'>
 
-    </div>
 
-  </ion-content>
+    <ion-tabs class="bottom-tabs tabs-dark" delegate-handle="student-home-tabs-bottom">
+
+        <ion-tab title="Inbox" badge="user.active_requests.length" badge-style='badge-danger' icon-on="ion-ios7-home" icon-off="ion-ios7-home-outline" style="color:white; text-decoration:none;">
+          <div ng-show="bottomTabsDelegate.selectedIndex() === 0" ng-include="base_url + 'templates/guru.home.body.html'"></div>
+        </ion-tab>
+
+        <ion-tab title="Guru Book" icon-on="request-icon" icon-off="request-icon" badge="user.pending_proposals.length || user.active_guru_sessions.length" badge-style="badge-positive">
+          <div ng-show="bottomTabsDelegate.selectedIndex() === 1" ng-include="base_url + 'templates/guru.student-book.html'"></div>
+        </ion-tab>
+
+        <ion-tab title="Settings" ng-show="bottomTabsDelegate.selectedIndex() === 2" icon-on="settings-icon" icon-off="settings-icon">
+          <div ng-show="bottomTabsDelegate.selectedIndex() === 2"ng-include="'remote/templates/student.settings.html'"></div>
+        </ion-tab>
+    </ion-tabs>
+
 </ion-view>

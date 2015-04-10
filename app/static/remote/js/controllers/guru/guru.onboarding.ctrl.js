@@ -109,9 +109,9 @@ angular.module('uguru.guru.controllers', [])
     $scope.submitGuruOnboarding = function() {
       $scope.user.is_a_guru = true;
       $scope.user.guru_mode = true;
-      $scope.user.updateAttr('is_a_guru', $scope.user, true);
-      $scope.user.updateAttr('guru_mode', $scope.user, true);
-      $state.go('^.home');
+      $scope.user.updateAttr('is_a_guru', $scope.user, true, null, $scope);
+      $scope.user.updateAttr('guru_mode', $scope.user, true, null, $scope);
+      $state.go('^.guru-home');
     }
 
     $scope.$on('$ionicView.beforeEnter', function(){

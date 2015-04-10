@@ -4,6 +4,7 @@
 
 $background-color:#3f4a4d;
 $header-color:#2b3234;
+$dark: rgb(43,50,52);
 $tab-bar-color:#363d3f;
 $text-color-2: #ffffff;
 $positive: #68b2a5;
@@ -26,11 +27,52 @@ $tabs-text: #4D4D4D;
     }
 
 /* iPhone 4/5*/
-@media all and (max-width: 320px) { /* screen size until 500px */
+@media all and (max-width: 321px) { /* screen size until 500px */
     body {
         font-size: 14px; /* 0.8x default size */
         }
+
+    .onboarding-confirm {
+      h1 {
+        font-size:200%;
+        padding-top:20px;
+      }
+      .popular-courses-header {
+        padding:0em;
+      }
+      button {
+        width:120%;
+        left:12%;
+      }
     }
+
+    #desk {
+      left:12%;
+    }
+
+    .onboarding-prompt-location .button-back {
+        margin: -15px auto !important;
+        color:rgba(255,255,255, 0.7) !important;
+    }
+
+    .popup-container #popover-header {
+      font-size: 180%;
+      margin-top:-30px !important;
+    }
+    .popup-body {
+      p {
+        font-size:80%;
+        margin:0;
+      }
+      button {
+        margin-top:-5px !important;
+      }
+      .prompt-cancel {
+        margin-top: 15px !important;
+        color:white !important;
+      }
+    }
+  }
 
 @font-face {
   font-family: "OpenSans-Regular";
@@ -699,10 +741,10 @@ p {
   .list-inset
   .item.course-item {
     margin:0.75em 0em;
-    border-width:3px;
+    border-width:1px;
     padding:12px;
     h5 {
-      font-family:"OpenSans-Semibold";
+      font-family:"OpenSans-Bold";
       font-size: 80%;
       margin:0px;
       opacity:0.7;
@@ -825,6 +867,14 @@ p {
   }
 
 }
+
+.button-back {
+  font-family:"OpenSans-Regular";
+  color:rgba(0,0,0,0.8);
+  font-size:13px !important;
+  text-transform: none;
+}
+
 
 .request-guru-type {
   .checkbox {
@@ -958,6 +1008,15 @@ p {
 margin: 0;
 }
 
+.guru-home
+.bottom-tabs.tabs-positive>.tabs, .tabs.tabs-positive
+{
+      border-color: $dark;
+      background-color: $dark;
+      background-image:none;
+}
+
+.student-home
 .bottom-tabs.tabs-positive>.tabs, .tabs.tabs-positive
 {
       border-color: $positive;
@@ -965,15 +1024,23 @@ margin: 0;
       background-image:none;
 }
 
-.student-home
-.bottom-tabs.tabs-positive {
+.guru-home {
+  .guru-home-content {
+    color:white;
+  }
+  .guru-home-img {
+    margin-top:45%;
+  }
 
-      .tabs .tab-item .icon.session-icon
+  ion-content {
+    background-color:#4c4c4c;
+  }
+  .tabs .tab-item .icon
       {
         background-repeat: no-repeat;
         background-position: 50%;
         height: 15px;
-        background-image: url('/static/remote/img/tabs-icon-1.svg');
+        background-image: url('../img/tabs-icon-1.svg');
         background-size:contain;
         position: absolute;
         width: 100%;
@@ -984,10 +1051,11 @@ margin: 0;
         background-repeat: no-repeat;
         background-position: 50%;
         height: 15px;
-        background-image: url('/static/remote/img/tabs-icon-3.svg');
+        background-image: url('../img/tabs-icon-3.svg');
         background-size:contain;
         position: absolute;
         width: 100%;
+        font-weight:bold;
       }
 
       .tabs .tab-item .icon.settings-icon
@@ -995,7 +1063,60 @@ margin: 0;
         background-repeat: no-repeat;
         background-position: 50%;
         height: 15px;
-        background-image: url('/static/remote/img/tabs-icon-2.svg');
+        background-image: url('../img/tabs-icon-2.svg');
+        background-size:contain;
+        position: absolute;
+        width: 100%;
+      }
+
+      .tab-item {
+        position:relative;
+        padding-top:8px;
+        margin-top:-1px;
+      }
+
+      .tab-item-active {
+        background-color: #609C8F;
+      }
+
+      .tab-title {
+          text-transform: capitalize;
+          font-size: 11px;
+      }
+}
+
+.student-home,
+.bottom-tabs.tabs-positive {
+
+      .tabs .tab-item .icon.session-icon
+      {
+        background-repeat: no-repeat;
+        background-position: 50%;
+        height: 15px;
+        background-image: url('../img/tabs-icon-1.svg');
+        background-size:contain;
+        position: absolute;
+        width: 100%;
+      }
+
+      .tabs .tab-item .icon.request-icon
+      {
+        background-repeat: no-repeat;
+        background-position: 50%;
+        height: 15px;
+        background-image: url('../img/tabs-icon-3.svg');
+        background-size:contain;
+        position: absolute;
+        width: 100%;
+        font-weight:bold;
+      }
+
+      .tabs .tab-item .icon.settings-icon
+      {
+        background-repeat: no-repeat;
+        background-position: 50%;
+        height: 15px;
+        background-image: url('../img/tabs-icon-2.svg');
         background-size:contain;
         position: absolute;
         width: 100%;
@@ -1102,6 +1223,15 @@ margin: 0;
   .list {
       margin-bottom:-5px !important;
   }
+
+  .full-height {
+    height:100%;
+  }
+
+  .main-container {
+    margin-bottom:15% !important;
+  }
+
   .upcoming-session-card {
     h2 {
       font-size:125%;
@@ -1132,4 +1262,98 @@ margin: 0;
     border-width:0;
   }
 
+}
+
+.request-status {
+  .button-light {
+    border: 1px solid rgba(0,0,0,0.01);
+    width:100%;
+    text-transform:initial;
+    background-color:#E2E2DE;
+    font-family:"OpenSans-Regular";
+    padding:0px;
+    margin:0px;
+  }
+  .row-details {
+    margin:10px 0px;
+  }
+
+  .map-container {
+    width:100%;
+    background-color:black;
+    height:100px;
+    display:block;
+
+  }
+
+  .header-bar .title {
+    font-size:100%;
+    font-weight:700;
+  }
+}
+
+.j-start {
+  webkit-justify-content: flex-start;
+  justify-content: start;
+}
+
+.j-start-end {
+  webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+.become-guru {
+  h5.title {
+    font-size:80%;
+    font-weight:700;
+  }
+  img {
+    width:40%;
+  }
+  button {
+    border-width:2px;
+    font-size:80%;
+    font-family:"OpenSans-Semibold";
+  }
+  .guru-content {
+    h1 {
+      font-family: "OpenSans-Bold";
+      font-weight:500;
+    }
+    p {
+      color: rgba(0,0,0,0.7);
+    }
+  }
+}
+
+.a-c {
+  align-content:center;
+  -webkit-align-content: center;
+  align-items:center;
+  -webkit-align-items: center;
+}
+
+.guru-onboarding {
+  .item-content-container {
+    white-space:normal;
+    font-family:"OpenSans-Regular";
+    line-height:1.5em;
+  }
+  .icon {
+      font-size:80%;
+      color:$positive;
+  }
+}
+
+.uguru-settings {
+  .button-outline {
+    border-width:2px;
+  }
+  .padding-half {
+    padding-bottom:0px;
+  }
+  .become-guru-wrapper {
+    padding:0em 1em;
+
+  }
 }

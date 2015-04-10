@@ -12,19 +12,24 @@ angular.module('uguru.onboarding.controllers')
     '$ionicPlatform',
     '$ionicModal',
     '$cordovaKeyboard',
+    '$cordovaStatusbar',
   function($scope, $state, $timeout, $localstorage,
      Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
-     $ionicPlatform, $ionicModal, $cordovaKeyboard) {
+     $ionicPlatform, $ionicModal, $cordovaKeyboard, $cordovaStatusbar) {
 
     $scope.nearest_universities = $scope.static.nearest_universities;
 
     $scope.n_universities = $scope.nearest_universities.slice(0,10);
     //to let modal know that this is onboarding
     $scope.onboarding = true;
+    console.log($scope.static.nearest_universities.length);
+    if ($scope.nearest_universities.length === 0) {
+        $scope.n_universities = $scope.static.universities;
+    }
 
     $scope.nearestUniversitySelected = function($event, n_university) {
 
-        if (!$scope.addUniversityModal.isShown()) {
+        // if (!$scope.addUniversityModal.isShown()) {
 
             var elems = document.querySelectorAll(".selected");
 
@@ -37,7 +42,7 @@ angular.module('uguru.onboarding.controllers')
 
             $event.target.classList.add("selected");
 
-        }
+        // }
 
         $scope.user.university_id = n_university.id;
         $scope.user.university = n_university;
@@ -46,11 +51,16 @@ angular.module('uguru.onboarding.controllers')
         $scope.search_text = '';
         $scope.keyboard_force_off = true;
 
-        $scope.user.updateAttr('university_id', $scope.user, $scope.user.university_id);
+        $scope.user.updateAttr('university_id', $scope.user, $scope.user.university_id, null, $scope);
         $scope.closeKeyboard();
         $scope.loader.show();
         $timeout(function() {
-            $scope.addUniversityModal.hide();
+
+            if (window.StatusBar) {
+                StatusBar.styleLightContent();
+            }
+
+            // $scope.addUniversityModal.hide();
             $scope.loader.hide();
             $state.go('^.onboarding-university');
         }, 1000);
@@ -62,12 +72,12 @@ angular.module('uguru.onboarding.controllers')
       }
     }
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.addUniversityModal = modal;
-    });
+    // $ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
+    //     scope: $scope,
+    //     animation: 'slide-in-up'
+    // }).then(function(modal) {
+    //     $scope.addUniversityModal = modal;
+    // });
 
 }]);
 

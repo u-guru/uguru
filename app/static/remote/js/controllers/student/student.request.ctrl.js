@@ -23,7 +23,6 @@ angular.module('uguru.student.controllers')
  	$ionicModal, $ionicTabsDelegate, $stateParams,
   $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
   $ionicHistory, CordovaPushWrapper, $ionicPlatform) {
-
     $scope.isRequestFormComplete = false;
     //TODO: ADD ACTION BAR W / FILE SUPPORT
     //TODO: IF NOT PUSH NOTIFICATIONS, SHOW IT HERE AS PART OF THE FORM
@@ -171,19 +170,27 @@ angular.module('uguru.student.controllers')
     $scope.saveRequestToUser = function() {
       $scope.request.status = 0;
       $scope.request._file = null;
-      $scope.request.online = $scope.virtual_guru_checkbox;
-      $scope.request.in_person = $scope.person_guru_checkbox;
-      $scope.request.time_estimate = $scope.time_checkbox;
-      $scope.request.address = $scope.request.location;
+      $scope.request.online = $scope.root.vars.request.type.online;
+      $scope.request.in_person = $scope.root.vars.request.type.in_person;
+      $scope.request.time_estimate = (parseInt($scope.root.vars.request._length.hours) * 60) + parseInt($scope.valueToMinutes[$scope.root.vars.request._length.minutes]);
+      $scope.request.address = $scope.root.vars.request.location;
+      $scope.request.position = $scope.root.vars.request.position;
+      $scope.request.calendar = $scope.root.vars.request.calendar;
+      $scope.request.calendar_events = $scope.calendar.data;
+      $scope.request.course = $scope.root.vars.request.course;
+      $scope.request.note = $scope.root.vars.request.description;
+      $scope.request.files = $scope.root.vars.request.files;
 
-      if ($scope.calendar && $scope.calendar.num_selected > 0) {
-        $scope.request.calendar = $scope.calendar;
-        $scope.request.calendar_events = $scope.calendar.data;
-      }
+      console.log($scope.request);
 
-      if ($scope.requestPosition) {
-        $scope.request.position = $scope.user.position.coords;
-      }
+      // if ($scope.calendar && $scope.calendar.num_selected > 0) {
+      //   $scope.request.calendar = $scope.calendar;
+      //   $scope.request.calendar_events = $scope.calendar.data;
+      // }
+
+      // if ($scope.requestPosition) {
+      //   $scope.request.position = $scope.user.position.coords;
+      // }
 
       $scope.failureFunction = function($scope) {
         $scope.contactingGuruModal.hide();
@@ -231,7 +238,7 @@ angular.module('uguru.student.controllers')
 
       $scope.saveRequestToUser();
       $scope.contactingGuruModal.show();
-      $state.go('^.home');
+      $state.go('^.student-home');
       $timeout(function() {
         $scope.contactingGuruModal.hide();
       }, 5000)

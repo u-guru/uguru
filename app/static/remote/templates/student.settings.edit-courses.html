@@ -1,11 +1,12 @@
-<ion-view title="Edit Courses">
-    <ion-nav-buttons side="secondary">
-
-      <button ng-click="toggleEditMode()" class="button button-clear button-positive">
-      	<span ng-show="editMode">Save</span>
-      	<span ng-show="!editMode">Edit</span>
-      </button>
-    </ion-nav-buttons>
+<ion-view hide-nav-bar='true'>
+    <ion-header-bar class='header-bar'>
+      <a class='button button-clear positive' nav-direction="back" href="#/home">Back</a>
+      <h5 class="title">Settings</h5>
+      <a ng-click="toggleEditMode()" class="button button-clear button-positive">
+        <span ng-show="editMode">Save</span>
+        <span ng-show="!editMode">Edit</span>
+      </a>
+    </ion-header-bar>
     <ion-content>
       <ion-list class="list" show-delete="shouldShowDelete">
         <div class="item item-divider" ng-show="user.guru_mode">

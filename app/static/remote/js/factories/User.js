@@ -229,6 +229,10 @@ angular.module('uguru.user', [])
     var assignPropertiesToRootScope = function($scope, processed_user) {
         var user = processed_user;
 
+        if (!$scope.user) {
+            $scope.user === initUser();
+        }
+
         $scope.user.updateAttr = User.updateAttrUser;
         $scope.user.createObj = User.createObj;
         $scope.user.updateObj = User.updateObj;
@@ -551,6 +555,7 @@ angular.module('uguru.user', [])
                     .one('user', userObj.id).one(param)
                     .customPOST(JSON.stringify(payload))
                     .then(function(user){
+
                         var processed_user = processResults(user.plain());
                         assignPropertiesToRootScope($scope, processed_user);
                         delegateActionsFromProcessedUser($scope);
@@ -565,7 +570,6 @@ angular.module('uguru.user', [])
                             console.log(err);
                             if (callback_failure) {
                                 callback_failure($scope);
-                                alert('already have an active request for this course!');
                             }
                             console.log('error...something happened with the server;')
                         }
@@ -682,7 +686,7 @@ angular.module('uguru.user', [])
                         $localstorage.setObject('user', $scope.user);
 
                         //TODO GET RID OF THIS
-                        $state.go('^.home');
+                        // $state.go('^.home');
 
                         if (callback_success) {
                             callback_success($scope, processed_user)

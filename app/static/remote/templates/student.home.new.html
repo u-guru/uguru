@@ -3,16 +3,16 @@
 
   <ion-tabs class="bottom-tabs tabs-positive" delegate-handle="student-home-tabs-bottom">
 
-    <ion-tab title="Sessions" ng-show="bottomTabsDelegate.selectedIndex() === 0" class='session-icon-extra' icon-on="session-icon" icon-off="session-icon">
-      <div ng-show="bottomTabsDelegate.selectedIndex() === 0" ng-include="base_url + 'templates/student.home.sessions.html'"></div>
+    <ion-tab title="Sessions" badge="user.active_requests.length" badge-style='badge-danger' class='session-icon-extra' icon-on="session-icon" icon-off="session-icon">
+      <div ng-show="bottomTabsDelegate.selectedIndex() === 0" ng-include="'./templates/student.home.sessions.html'"></div>
     </ion-tab>
 
-    <ion-tab title="Request" ng-show="bottomTabsDelegate.selectedIndex() === 1" icon-on="request-icon" icon-off="request-icon">
-      <div ng-show="bottomTabsDelegate.selectedIndex() === 1" ng-include="base_url + 'templates/student.home.request-courses.html'"></div>
+    <ion-tab title="Request" icon-on="request-icon" icon-off="request-icon">
+      <div ng-show="bottomTabsDelegate.selectedIndex() === 1" ng-include="'./templates/student.home.request-courses.html'"></div>
     </ion-tab>
 
     <ion-tab title="Settings" ng-show="bottomTabsDelegate.selectedIndex() === 2" icon-on="settings-icon" icon-off="settings-icon">
-      <div ng-show="bottomTabsDelegate.selectedIndex() === 2"ng-include="base_url + 'templates/student.settings.html'"></div>
+      <div ng-show="bottomTabsDelegate.selectedIndex() === 2"ng-include="'./templates/student.settings.html'"></div>
     </ion-tab>
   </ion-tabs>
 

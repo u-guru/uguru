@@ -86,7 +86,7 @@ angular.module('uguru.guru.controllers')
     $scope.switchToStudentMode = function() {
       var goToGuruHome = function() {
         $scope.bottomTabsDelegate.select(0);
-        $state.go('^.^.student.home');
+        $state.go('^.student-home');
 
       }
       $scope.user.guru_mode = false;
@@ -132,7 +132,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.goToBecomeGuru = function() {
-      $state.go('^.^.guru.wizard');
+      $state.go('^.guru.wizard');
       $timeout(function() {
         $scope.becomeGuruModal.hide();
       }, 300);
@@ -144,7 +144,7 @@ angular.module('uguru.guru.controllers')
       } else {
         if ($scope.user.guru_mode) {
 
-          $state.go('^.^.student.settings-notifications');
+          $state.go('^.settings-notifications');
 
         }
         else {
@@ -158,7 +158,7 @@ angular.module('uguru.guru.controllers')
         $scope.signupModal.show()
       } else {
         if ($scope.user.guru_mode) {
-          $state.go('^.^.student.settings-transactions');
+          $state.go('^.settings-transactions');
         } else {
           $state.go('^.settings-transactions')
         }
@@ -170,7 +170,7 @@ angular.module('uguru.guru.controllers')
         $scope.signupModal.show();
       } else {
         if ($scope.user.guru_mode) {
-          $state.go('^.^.student.settings-cards')
+          $state.go('^.settings-cards')
         } else {
           $state.go('^.settings-cards')
         }
@@ -182,7 +182,7 @@ angular.module('uguru.guru.controllers')
         $scope.signupModal.show()
       } else {
         if ($scope.user.guru_mode) {
-          $state.go('^.^.student.settings-profile');
+          $state.go('^.settings-profile');
         } else {
           $state.go('^.settings-profile');
         }

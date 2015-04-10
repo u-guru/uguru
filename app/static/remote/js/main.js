@@ -1,6 +1,7 @@
 // Uguru upp
 var LOCAL = false;
-var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
+// var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
+BASE_URL = 'http://192.168.42.66:5000/production/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com';
 var BASE = '';
 var img_base = '';
@@ -81,7 +82,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   //Set up restangular provider
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
   // RestangularProvider.setBaseUrl('http://10.193.138.226:5000/api/v1');
-
+  $urlRouterProvider.otherwise('/onboarding-loading');
   //Client-side router
   $stateProvider
   .state('root', {
@@ -92,7 +93,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
           $cordovaSplashscreen, $timeout, Geolocation) {
-
           $scope.user = User.getLocal();
           $scope.user.updateAttr = User.updateAttrUser;
           $scope.user.createObj = User.createObj;
@@ -229,11 +229,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/student.home.new.html',
         controller: 'StudentHomeController'
   }).
-  state('root.guru', {
-        url: '/guru',
-        abstract: true,
-        templateUrl: 'templates/guru-root.html'
-  }).
+  // state('root.guru', {
+  //       url: '/guru',
+  //       abstract: true,
+  //       templateUrl: 'templates/guru-root.html'
+  // }).
   state('root.onboarding-loading', {
         url: '/onboarding-loading',
         templateUrl: BASE + 'templates/onboarding.loading.html',
@@ -246,7 +246,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   }).
   state('root.prompt-location', {
         url: '/prompt-location',
-        templateUrl: BASE + 'templates/prompt.location.html'
+        templateUrl: BASE + 'templates/prompt.location.html',
+        controller: 'PromptLocationController'
   }).
   state('root.onboarding-nearest-university', {
         url: '/onboarding-nearest',
@@ -293,17 +294,17 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   //       templateUrl: BASE + 'templates/guru.home.new.html',
   //       // controller: 'OnboardingLoadingController'
   // }).
-  state('root.guru.wizard', {
+  state('root.guru-wizard', {
         url: '/wizard',
         templateUrl: BASE + 'templates/guru.onboarding.html',
         controller: 'BecomeGuruController'
   }).
-  state('root.guru.home', {
-        url: '/home',
-        templateUrl: BASE + 'templates/guru.home.html',
+  state('root.guru-home', {
+        url: '/guru-home',
+        templateUrl: BASE + 'templates/guru.home.new.html',
         controller: 'GuruHomeController'
   }).
-  state('root.guru.opportunities', {
+  state('root.guru-opportunities', {
         url: '/opportunities',
         templateUrl: BASE + 'templates/guru.opportunities.html',
         controller: 'GuruOpportunitiesController'
@@ -318,75 +319,75 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   //       templateUrl: BASE +  'templates/student.request.html',
   //       controller: 'StudentRequestController'
   // }).
-  state('root.student.active-session', {
+  state('root.student-active-session', {
         url: '/active-session/:sessionObj',
         templateUrl: BASE +  'templates/student.active-session.html',
         controller: 'StudentActiveSession'
   }).
-  state('root.guru.session-start', {
+  state('root.guru-session-start', {
         url: '/start-session/:sessionObj',
         templateUrl: BASE +  'templates/guru.session-start.html',
         controller: 'GuruSessionStartController'
   }).
-  state('root.guru.active-session', {
+  state('root.guru-active-session', {
         url: '/active-session/:sessionObj',
         templateUrl: BASE +  'templates/guru.active-session.html',
         controller: 'GuruActiveSession'
   }).
-  state('root.student.settings', {
+  state('root.student-settings', {
         url: '/settings',
         templateUrl: BASE + 'templates/student.settings.html'
   }).
-  state('root.student.settings-cards', {
+  state('root.student-settings-cards', {
         url: '/settings-cards',
         templateUrl: BASE + 'templates/student.settings.cards.html',
         controller: 'SettingsCardController'
   }).
-  state('root.student-settings-profile', {
+  state('root.settings-profile', {
         url: '/settings-profile',
         templateUrl: BASE + 'templates/student.settings.profile.html',
         controller: 'SettingsProfileController'
   }).
-  state('root.student.settings-transactions', {
+  state('root.settings-transactions', {
         url: '/settings-transactions',
         templateUrl: BASE + 'templates/student.settings.transactions.html',
         controller: 'SettingsTransactionsController'
   }).
-  state('root.student.settings-transfer', {
+  state('root.settings-transfer', {
         url: '/settings-transfer',
         templateUrl: BASE + 'templates/student.settings.transfers.html',
         controller: 'SettingsTransfersController'
   }).
-  state('root.student.settings-notifications', {
+  state('root.settings-notifications', {
         url: '/settings-notifications',
         templateUrl: BASE + 'templates/student.settings.notifications.html',
         controller: 'SettingsNotificationsController'
   }).
-  state('root.student.settings-edit-courses', {
+  state('root.settings-edit-courses', {
         url: '/settings-edit-courses',
         templateUrl: BASE + 'templates/student.settings.edit-courses.html',
         controller: 'SettingsEditCoursesController'
   }).
-  state('root.student.settings-edit-university', {
-        url: '/settings-edit-courses',
+  state('root.settings-edit-university', {
+        url: '/settings-edit-university',
         templateUrl: BASE + 'templates/student.settings.edit-university.html',
         controller: 'SettingsEditUniversityController'
   }).
-  state('root.student.add-payment', {
+  state('root.add-payment', {
         url: '/payment/:cardObj:debitCardOnly',
         templateUrl: BASE + 'templates/add-payment.html',
   }).
-  state('root.student.request-status', {
+  state('root.student-request-status', {
         url: '/request-status/:requestObj',
         templateUrl: BASE + 'templates/student.request-status.html',
         controller: 'RequestStatusController'
   }).
-  state('root.student.previous-session-details', {
+  state('root.previous-session-details', {
         url: '/previous-session-details/:sessionObj',
         templateUrl: BASE + 'templates/student.previous-session-details.html',
         controller: 'PreviousSessionDetailsController'
   }).
-  state('root.guru.previous-session-details', {
+  state('root.guru-previous-session-details', {
         url: '/previous-session-details-guru/:sessionObj',
         templateUrl: BASE + 'templates/student.previous-session-details.html',
         controller: 'PreviousSessionDetailsController'
@@ -418,14 +419,14 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '/new-settings',
         templateUrl: BASE + 'templates/student.new-settings.html'
   }).
-  state('root.student.guru-mode', {
+  state('root.guru-mode', {
         url: '/guru-mode',
         templateUrl: BASE + 'templates/student.guru-mode.html'
   });
 
   // if none of the above states are matched, use this as the fallback
   // $urlRouterProvider.otherwise('/tab/dash');
-  $urlRouterProvider.otherwise('/onboarding-loading');
+
 
 });
 
@@ -485,10 +486,10 @@ var on_app_open_retrieve_objects = function($scope, $state, $localstorage, Unive
       function(universities) {
           console.log('universities successfully loaded');
           universities = JSON.parse(universities);
-          $scope.universities = universities;
-          $localstorage.setObject('universities', $scope.universities);
-          console.log($scope.universities.length + ' universities successfully loaded');
-          if ($scope.platform.android) {
+          $scope.static.universities = universities;
+          $localstorage.setObject('universities', $scope.static.universities);
+          console.log($scope.static.universities.length + ' universities successfully loaded');
+          if ($scope && $scope.platform && $scope.platform.android) {
             Geolocation.getUserPosition($scope, null, null, $state);
           }
       },

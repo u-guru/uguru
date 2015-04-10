@@ -27,16 +27,12 @@ angular.module('uguru.student.controllers', [])
   '$ionicBackdrop',
   '$document',
   '$ionicPopover',
+  '$cordovaStatusbar',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $q,
  	University, $templateCache, $ionaicHistory, $ionicBackdrop,
   User, $ionicHistory, CordovaPushWrapper, $ionicPlatform, $rootScope, $cordovaPush,
-  $ionicPlatform, $ionicBackdrop, $document, $ionicPopover) {
-
-	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
-	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
-	$scope.base_url =  BASE;
-	$scope.progress_active = false;
+  $ionicPlatform, $ionicBackdrop, $document, $ionicPopover, $cordovaStatusbar) {
 
   // .fromTemplate() method
 
@@ -44,11 +40,13 @@ angular.module('uguru.student.controllers', [])
   //   $state.go('^.onboarding-location');
   // }
 
-  $ionicPopover.fromTemplateUrl('templates/gettingStartedPopover.html', {
-    scope: $scope
-  }).then(function(popover) {
-    $scope.popover = popover;
-  });
+  // console.log($scope.user);
+
+  // $ionicPopover.fromTemplateUrl('templates/gettingStartedPopover.html', {
+  //   scope: $scope
+  // }).then(function(popover) {
+  //   $scope.popover = popover;
+  // });
 
   $scope.openPopover = function($event) {
     $scope.popover.show($event);
@@ -66,16 +64,17 @@ angular.module('uguru.student.controllers', [])
       return new Array(num);
   }
 
-  $scope.checkCourseInActiveRequests = function(course) {
-    var active_requests = $scope.user.active_requests || [];
-    for (var i = 0; i < active_requests.length; i++) {
-      var index_request = active_requests[i];
-      if (index_request.course.short_name === course.short_name) {
-        return true;
-      }
-    }
-    return false;
-  }
+  // $scope.checkCourseInActiveRequests = function(course) {
+  //   console.log(course);
+  //   var active_requests = $scope.user.active_requests || [];
+  //   for (var i = 0; i < active_requests.length; i++) {
+  //     var index_request = active_requests[i];
+  //     if (index_request.course.short_name === course.short_name) {
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // }
 
   $scope.getActiveRequestByCourse = function(course) {
     var active_requests = $scope.user.active_requests;
@@ -142,7 +141,7 @@ angular.module('uguru.student.controllers', [])
    //  }
 
     $scope.closeKeyboard = function() {
-      if (window.cordova && window.cordova.plugins.Keyboard) {
+      if ((window.cordova && window.cordova.plugins.Keyboard) || $scope.platform && $scope.platform.android) {
           $cordovaKeyboard.close();
       }
     }
@@ -150,7 +149,7 @@ angular.module('uguru.student.controllers', [])
     $scope.switchToGuruMode = function() {
       var goToGuruHome = function() {
         $scope.bottomTabsDelegate.select(0);
-        $state.go('^.^.guru.home');
+        $state.go('^.guru-home');
       }
       $scope.user.guru_mode = true;
       $scope.user.updateAttr('guru_mode', $scope.user, true, goToGuruHome, $scope);
@@ -177,8 +176,9 @@ angular.module('uguru.student.controllers', [])
     }
 
     $scope.goToRequestStatus = function(course) {
+      console.log('course');
       var active_request = $scope.getActiveRequestByCourse(course);
-      $state.go('^.request-status', {requestObj:JSON.stringify(active_request)});
+      $state.go('^.student-request-status', {requestObj:JSON.stringify(active_request)});
     }
 
     $scope.goToActiveSession = function(session) {
@@ -187,7 +187,7 @@ angular.module('uguru.student.controllers', [])
 
 
     $scope.goToBecomeGuru = function() {
-      $state.go('^.^.guru.wizard');
+      $state.go('^.guru-wizard');
       $scope.bottomTabsDelegate.select(0);
       $timeout(function() {
         $scope.becomeGuruModal.hide();
@@ -249,7 +249,7 @@ angular.module('uguru.student.controllers', [])
 
 
     $scope.goToEditProfile = function() {
-      $state.go('^.student-settings-profile');
+      $state.go('^.settings-profile');
     }
 
     $scope.clearCache = function() {
@@ -275,6 +275,8 @@ angular.module('uguru.student.controllers', [])
       $scope.signupModal.show();
     }
 
+    // $scope.bottomTabsDelegate.select(1);
+
     $scope.goToPreviousSessionDetails = function(session) {
       $state.go('^.previous-session-details', {sessionObj:JSON.stringify(session)});
     }
@@ -282,6 +284,14 @@ angular.module('uguru.student.controllers', [])
     $scope.$on('$ionicView.beforeEnter', function(){
       User.getUserFromServer($scope, null, $state);
       $scope.user.guru_mode = false;
+      if (window.StatusBar) {
+          StatusBar.styleDefault();
+      }
+
+
+      $scope.base_url =  BASE;
+      $scope.progress_active = false;
+
     });
 
     $scope.$on('$ionicView.beforeLeave', function(){
@@ -297,9 +307,17 @@ angular.module('uguru.student.controllers', [])
     });
 
     $scope.$on('$ionicView.loaded', function(){
+      console.log($scope.user);
 
     });
 
+    $scope.loader.show();
+    $timeout(function() {
+      $scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
+      $scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
+      $scope.bottomTabsDelegate.select(1);
+      $scope.loader.hide();
+  },1000)
 
   }
 

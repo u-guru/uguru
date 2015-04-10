@@ -6,9 +6,8 @@ angular.module('uguru.root.services')
     '$cordovaGeolocation',
     'RootService',
     'Popup',
-    function($localstorage, $timeout, $cordovaGeolocation, RootService, Popup) {
-
-
+    'University',
+    function($localstorage, $timeout, $cordovaGeolocation, RootService, Popup, University) {
 
         var getLocation = function($scope, successCallback, failureCallback, $state) {
 
@@ -18,7 +17,6 @@ angular.module('uguru.root.services')
           }
 
           if (!$scope.platform.android) {
-            console.log('showing loader on platform...', $scope.platform);
             $scope.loader.show();
           }
           $cordovaGeolocation
@@ -28,11 +26,19 @@ angular.module('uguru.root.services')
               $scope.user.position = position;
               $scope.requestPosition = position;
               $scope.location_error = null;
-              $scope.user.current_device.location_enabled = true;
-              $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+              if ($scope.user && $scope.user.current_device) {
+                $scope.user.current_device.location_enabled = true;
+                $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+              }
               // $scope.rootUser.updateLocal($scope.user);
 
-              getNearestUniversity(position.coords.latitude, position.coords.longitude, $scope.universities, 100, $localstorage, $scope, successCallback, $state);
+              if ($scope.static.universities && $scope.static.universities.length > 0) {
+                console.log('universities already loaded! Calculating nearest university...')
+                getNearestUniversity(position.coords.latitude, position.coords.longitude, $scope.static.universities, 100, $localstorage, $scope, successCallback, $state);
+              } else {
+                console.log('universities not loaded :( :( trying to get again..')
+                on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation);
+              }
 
 
               // if (successCallback) {
@@ -43,7 +49,7 @@ angular.module('uguru.root.services')
             }, function(err) {
               console.log(err);
               if (failureCallback) {
-                  failureCallback();
+                  failureCallback($scope, $state);
               }
               if (err.code === 1) {
                 console.log('user denied permission');
@@ -69,7 +75,6 @@ angular.module('uguru.root.services')
 
         deviceGPS = {
                       getUserPosition: function($scope, successCallback, failureCallback, $state) {
-
                         if ($scope.platform.ios &&
                           !$scope.user.current_device.location_enabled) {
 
@@ -95,11 +100,16 @@ angular.module('uguru.root.services')
 
                         }
 
-                        else if ($scope.user.current_device.location_enabled) {
+                        else if ($scope.user && $scope.user.current_device && $scope.user.current_device.location_enabled) {
 
                           getLocation($scope, successCallback, failureCallback, $state);
 
                         } else if ($scope.platform.android) {
+                          getLocation($scope, successCallback, failureCallback, $state);
+                        }
+                        //desktop version
+                        else if ($scope.platform.web && navigator.geolocation){
+                          console.log('user is on desktop');
                           getLocation($scope, successCallback, failureCallback, $state);
                         }
 

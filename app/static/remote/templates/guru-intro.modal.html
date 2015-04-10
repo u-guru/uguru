@@ -1,7 +1,7 @@
 <ion-modal-view ng-controller="GuruIntroController">
 
     <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
-        <h1 class="title">Add a class</h1>
+        <h1 class="title">INTRODUCTION</h1>
         <button ng-click="submitGuruBio()" class="button button-clear button-positive">Save</button>
     </ion-header-bar>
 
@@ -9,7 +9,7 @@
 
     <div class="list">
       <div class="item item-thumbnail-left bio-list-item first-item-bio">
-        <img ng-hide="user.profile_url"ng-src="{{user.profile_url}}||" style="max-width:65px; max-height:65px; margin:5px; border-radius:4px;">
+        <img ng-hide="user.profile_url"ng-src="{{user.profile_url}}" style="max-width:65px; max-height:65px; margin:5px; border-radius:4px;">
         <div class="white-bio-name-text" ng-show="user.name">{{user.name}}
           <span class="guru-tag">Guru</span>
         </div>

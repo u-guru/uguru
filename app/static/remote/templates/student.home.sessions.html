@@ -1,7 +1,7 @@
 
 <ion-view class='student-sessions'>
   <ion-header-bar class='header-bar'>
-    <h5 class="title">My Sessions</h5>
+    <h5 class="title">Guru Sessions</h5>
     <a class='button button-clear' ng-click="addCourseModal.show()"></a>
   </ion-header-bar>
   <ion-tabs class="tabs-stable tabs-striped tabs-top session-tabs" delegate-handle="student-home-tabs-top">
@@ -12,32 +12,29 @@
     </ion-tab>
   </ion-tabs>
 
-  <ion-content class='pure-g-c flex-column center' scroll="False" ng-show=''>
-    No sessions yet! <br> Try <strong> requesting help </strong> below
-  </ion-content>
+  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 0' scroll="false">
 
-  <ion-content class='has-subheader'>
-    <div class="list">
-      <a class="item item-avatar-right upcoming-session-card">
-        <img ng-src="{{img_base + '/remote/img/shun.png'}}">
-        <h2>Peter, Bio 1A</h2>
+    <div class='pure-g-c flex-column center full-height' ng-show='!user.active_requests || user.active_requests.length === 0'>
+      <div class='container padding-1em'>
+        No sessions yet! <br> Try <strong> requesting help </strong> below
+      </div>
+    </div>
+
+    <div class="list" ng-show='user.active_requests.length > 0'>
+      <a class="item item-avatar-right upcoming-session-card" ng-repeat='session in user.active_requests' ng-click='goToRequestStatus(session.course)'>
+        <img ng-src="./img/guru-profile.svg">
+        <h2>Guru {{session.course.short_name}}</h2>
         <h4 class='pending'> PENDING </h4>
       </a>
     </div>
-    <div class="list">
-      <a class="item item-avatar-right upcoming-session-card">
-        <img ng-src="{{img_base + '/remote/img/shun.png'}}">
-        <h2>Peter, Bio 1A</h2>
-        <h4 class='scheduled'> Tuesday at 2:00pm </h4>
-      </a>
+  </ion-content>
+
+  <ion-content class='pure-g-c flex-column center' ng-show='topTabsDelegate.selectedIndex() === 1'>
+
+    <div class='center main-container'>
+      No completed sessions yet! <br> Try <strong> requesting help </strong> below
     </div>
-    <div class="list">
-      <a class="item item-avatar-right upcoming-session-card">
-        <img ng-src="{{img_base + '/remote/img/shun.png'}}">
-        <h2>Peter, Bio 1A</h2>
-        <h4 class='scheduled'> Tuesday at 2:00pm </h4>
-      </a>
-    </div>
+
   </ion-content>
 
 </ion-view>

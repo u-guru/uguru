@@ -8,18 +8,20 @@
                 <h4 class='header white-text'> We'd love to find you a guru! </h4>
             </span>
             <!-- <span class='flex-item-c'> -->
-                <img id='guru-love' class='pure-img' src='/static/remote/img/onboarding/guru-love-green.svg'/>
-                <!-- <img ng-src='/remote/img/prompt-location-guru.svg' class="pure-img"> -->
+                <!-- <img id='guru-love' class='pure-img' ng-src='{{img_base + "remote/img/onboarding/guru-love-green.svg"}}'/> -->
+                <img ng-src='./img/prompt-location-guru.svg' class="pure-img">
             <!-- </span> -->
 
             <span class="flex-item-c">
                 <p class="center padding-1em">
                     But first we need to know where you are so your guru can find you. Please enable Location Services for Uguru.
                 </p>
-                <button class="button button-negative button-full">
+                <button class="button button-negative button-full" ng-click='goToSettings()'>
                     Go to Settings
                 </button>
-                <button class="button button-clear button-back" ui-sref="^.onboarding-nearest-university">Skip</button>
+                <button id='skip-button' class="button button-clear button-back" ui-sref="^.onboarding-nearest-university">
+                    Skip
+                </button>
             </span>
         </div>
     </ion-content>

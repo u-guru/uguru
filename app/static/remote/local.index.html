@@ -58,11 +58,6 @@
       </ion-nav-view>
     </script>
 
-    <script id="templates/guru-root.html" type="text/ng-template">
-      <ion-nav-view animation="slide-left-right">
-      </ion-nav-view>
-    </script>
-
     <script id="templates/gettingStartedPopover.html" type="text/ng-template">
       <ion-popover-view class='uguru-popover'>
         <ion-header-bar>
@@ -83,28 +78,7 @@
       </ion-popover-view>
     </script>
 
-    <script id="templates/signup.html" type="text/ng-template">
-      <ion-view hide-nav-bar="true">
-        <ion-content class="padding" scroll="false">
 
-        <div class='row absolute absolute-center bottom-30-percent'>
-          <div class="col col-offset-25 col-50 padding" style="padding:1.5em">
-            <img src='./img/uguru_home.png' class='inherit-width'>
-          </div>
-        </div>
-
-        <div class='row fixed fixed-center bottom-0'>
-          <div class="col">
-            <button onlogin="beginFbConnect()" ng-click="fbConnect()" class="button button-block reg-font icon-left ion-social-facebook fb-button">
-                Connect with Facebook
-            </button>
-            <p class="reg-font center grey-uguru font-14"> Uguru will NEVER post to your Facebook.</p>
-          </div>
-        </div>
-        <span style="font-size:8px;position:absolute; auto;bottom:0px; right:46.5%; color:rgba(0,0,0,0.4)">{{currentVersion}}</span>
-        </ion-content>
-      </ion-view>
-    </script>
 
     <script src="remote/lib/ionic/js/ionic.bundle.min.js"></script>
     <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
@@ -210,6 +184,7 @@
     <script type="text/javascript" src="remote/js/controllers/onboarding/onboarding.request-location.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/onboarding/onboarding.nearest-university.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/onboarding/onboarding.loading.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/onboarding/onboarding.prompt-location.ctrl.js"></script>
 
     <script type="text/javascript" src="remote/js/controllers/util/util.university.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.calendar.ctrl.js"></script>

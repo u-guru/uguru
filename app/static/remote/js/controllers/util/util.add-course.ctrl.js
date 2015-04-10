@@ -21,9 +21,13 @@ angular.module('uguru.util.controllers')
     $scope.keyboard_force_off = false;
 
     $scope.setCourseFocus = function(target) {
+
       if ($scope.course_search_text.length === 0 && !$scope.keyboard_force_off) {
         document.getElementsByName("course-input")[0].focus();
       }
+      // if ($scope.platform && $scope.platform.android) {
+      //   $cordovaKeyboard.show();
+      // }
     };
 
     $scope.clearSearchInput = function() {
@@ -150,7 +154,7 @@ angular.module('uguru.util.controllers')
 
     $scope.courseSelected = function(course) {
 
-      var is_guru_mode = $state.current.name === 'root.guru.wizard';
+      var is_guru_mode = $state.current.name === 'root.guru-wizard';
 
       if (!$scope.user.student_courses && !is_guru_mode) {
           $scope.user.student_courses = [];
@@ -168,7 +172,7 @@ angular.module('uguru.util.controllers')
         $scope.user.student_courses.push(course);
         $scope.user.updateAttr('add_student_course', $scope.user, course, null, $scope);
       }
-
+        document.getElementsByName("course-input")[0].blur();
         $scope.keyboard_force_off = true;
         $scope.rootUser.updateLocal($scope.user);
         payload = {
@@ -180,7 +184,10 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.course_search_text = '';
-        $scope.closeKeyboard();
+        $timeout(function() {
+          $scope.closeKeyboard();
+        },500)
+
         // $scope.showSuccess('Course Saved!');s
         $timeout(function() {
           $scope.addCourseModal.hide();

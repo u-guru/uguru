@@ -9,14 +9,18 @@ angular.module('uguru.student.controllers')
   '$localstorage',
   '$ionicModal',
   '$stateParams',
+  '$ionicHistory',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $stateParams) {
+ 	$ionicModal, $stateParams, $ionicHistory) {
 
     $scope.requestObj = JSON.parse($stateParams.requestObj);
     $scope.course = $scope.requestObj.course;
     $scope.progress_active = false;
 
     console.log('request status', $scope.requestObj);
+    $scope.goBack = function() {
+      // $state.go
+    }
 
     $scope.convertTimeEstimate = function(time_int) {
       var time_options = ['30 minutes', '1 Hour', '1.5 hours', '2+ hours'];
@@ -67,9 +71,9 @@ angular.module('uguru.student.controllers')
       var cancelMsg = $scope.course.short_name + ' request canceled';
       alert(cancelMsg)
       // $scope.showSuccess(cancelMsg);
-      // $timeout(function() {
-      //   $state.go('^.home');
-      // }, 1000);
+      $timeout(function() {
+        $state.go('^.student-home');
+      }, 1000);
     }
 
   }

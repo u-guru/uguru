@@ -1,123 +1,85 @@
-    <ion-nav-back-button class="button-clear" style="width:75px;">
-          <img src="./img/left-chevron.png" class='uguru-back-button'/>
-    </ion-nav-back-button>
-    <ion-content>
-      <div class="new-setting">
-        <div class="space-2">
+    <ion-view class='uguru-settings'>
+      <ion-header-bar class='header-bar'>
 
-          <ul class="list">
-            <li class="item padding-2-14 center background-black-8" ng-show="user.guru_mode">
-
-              <div class="black-box">
-                <div class="profile">
-
-                  <div><img ng-src='{{user.profile_url}}' class="icon"></div>
-                  <div class="name">{{user.name}}
-
-                    <span class="guru" ng-show="user.guru_mode">GURU</span>
-                    <span class="guru" ng-show="!user.guru_mode">STUDENT</span>
-                  </div>
-
-                  <div class="major">{{user.university.title}} <br>
-                    <span ng-show="user.majors && user.majors.length > 0">
-                      ({{user.majors[0].name}})
-                    </span>
-                  </div>
-
-                </div>
-              </div>
-              <div class="message" ng-show="user.guru_mode && user.guru_introduction">{{user.guru_introduction}}</div>
-            </li>
-
-            <li class="item padding-2-14 center">
-              <div class="sessions">
-                <div class="row">
-                  <div class="col col-50">
-                    <div class="number">{{user.student_sessions.length}}</div>
-                    <div class="detail">sessions</div>
-                  </div>
-                  <div class="col col-50">
-                    <div class="number">{{user.student_courses.length}}</div>
-                    <div class="detail">classes</div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <a class="item gray item-icon-right" ng-click="goToEditProfile()">
-              Edit my profile, classes, university
-              <i style="font-size:14px;" class="icon item-note ion-chevron-right positive"></i>
-            </a>
-            <div class="item item-divider" ng-show="user.guru_mode">
-              GURU COURSES
-            </div>
-            <a class="item gray" ng-show="user.guru_mode">
-              <div class="courses">
-                <span class="bold-font sm-box-orange" ng-repeat="course in user.guru_courses">{{course.short_name}}</span>
-                <span class="bold-font sm-box-green" ng-click="addCourseModal.show();">ADD A CLASS</span>
-              </div>
-            </a>
-            <div class="item item-divider" ng-show="user.guru_mode">
-              STUDENT COURSES
-            </div>
-            <a class="item gray" ng-show="user.guru_mode">
-              <div class="courses">
-                <span class="bold-font sm-box-orange" ng-repeat="course in user.student_courses">{{course.short_name}}</span>
-                <span class="bold-font sm-box-green" ng-click="addCourseModal.show();">ADD A CLASS</span>
-              </div>
-            </a>
-            <a class="item item-icon-right gray" ng-click="switchToStudentMode()" ng-show="user.is_a_guru && user.guru_mode">
-              Switch to Student Mode
-              <i style="font-size:14px;" class="icon item-note ion-chevron-right positive"></i>
-            </a>
-            <a class="item item-icon-right gray" ng-click="switchToGuruMode()" ng-show="user.is_a_guru && !user.guru_mode">
-              Switch to Guru Mode
-              <i style="font-size:14px;" class="icon item-note ion-chevron-right positive"></i>
-            </a>
-            <a class="item gray positive" ng-click="goToGuruMode()" ng-show="!user.is_a_guru">
-              Become a Guru
-            </a>
+        <h5 class="title">Settings</h5>
+        <a class='button button-clear positive' ng-show="user.id && user.auth_token" ng-click="logoutUser()">Logout</a>
+        <a class='button button-clear positive' ng-click="addCourseModal.show()" ng-hide='true'>Support</a>
+      </ion-header-bar>
+      <ion-content>
+        <ion-list >
             <div class="item item-divider">
-              PRIVACY SETTINGS
+                PROFILE SETTINGS
             </div>
-            <a class="item gray" ng-click="goToNotifications()">
-              Notification Settings
+            <a class="item gray item-icon-right" href="#/settings-edit-university" nav-direction='forward'>
+              Edit university
+              <i style="font-size:14px;" class="icon item-note ion-chevron-right positive"></i>
             </a>
-            <div class="item item-divider">
-              PAYMENT SETTINGS
+            <a class="item gray item-icon-right" href="#/settings-edit-courses" nav-direction='forward'>
+              Edit courses
+              <i style="font-size:14px;" class="icon item-note ion-chevron-right positive"></i>
+            </a>
+            <a class="item gray item-icon-right" href="#/settings-profile" nav-direction='forward'>
+              Edit account
+              <i style="font-size:14px;" class="icon item-note ion-chevron-right positive"></i>
+            </a>
+              <div class="item item-divider">
+                  ACCOUNT TYPES
+              </div>
+              <a class="item item-icon-right gray" ng-show="user.is_a_guru && user.guru_mode" href='#/home' nav-direction="forward">
+                Switch to Student Mode
+                <i style="font-size:14px;" class="icon item-note ion-chevron-right positive"></i>
+              </a>
+              <a class="item item-icon-right gray"  ng-show="user.is_a_guru && !user.guru_mode" href='#/guru-home' nav-direction="forward">
+                Switch to Guru Mode
+                <i style="font-size:14px;" class="icon item-note ion-chevron-right positive"></i>
+              </a>
+            <div class='container privacy-settings' ng-show='false'>
+              <div class="item item-divider">
+                  PRIVACY SETTINGS
+              </div>
+              <a class="item gray" ng-click="goToNotifications()">
+                  Notification Settings
+              </a>
             </div>
-            <a class="item gray" ng-click="goToCards()">
-              Payment / Bank Cards
-            </a>
-            <a class="item gray" ng-click="goToTransferFunds()" ng-show="user.balance">
-              Cash Out <strong class="positive">${{user.balance}}</strong>
-            </a>
-            <a class="item gray" ng-click="goToTransactions()">
+            <div class='container' ng-show='user.id && user.auth_token && user.cards && user.cards.length > 0'>
+              <div class="item item-divider">
+                  PAYMENT SETTINGS
+              </div>
+              <a class="item gray" ng-click="goToCards()">
+                Payment / Bank Cards
+              </a>
+              <a class="item gray" ng-click="goToTransferFunds()" ng-show="user.balance">
+                Cash Out <strong class="positive">${{user.balance}}</strong>
+              </a>
+              <a class="item gray" ng-click="goToTransactions()">
               Transaction History
-            </a>
-            <div class="item item-divider" >
-              ACCOUNT SETTINGS
+              </a>
             </div>
-            <a class="item gray" href="#" ng-click="showSignupModal()" ng-show="!user.auth_token">
-              Create an Account
-            </a>
-            <a class="item gray" href="#" ng-click="showLoginModal()" ng-show="!user.auth_token">
-              Login
-            </a>
-            <a class="item gray" href="#" ng-click="logoutUser()" ng-show="user.auth_token">
-              Logout
-            </a>
-
-            <div class="item item-divider">
-              DEV SETTINGS
-            </div>
-            <a class="item gray" ng-click="clearCache()">
-              Clear Cache
-            </a>
-          </ul>
+            </ul>
           </ul>
         </div>
-    </div>
-  </ion-content>
+      </div>
+        <div class='pure-g'>
+          <div class='pure-u-1-2 padding-half' ng-show='!user.id'>
+            <button class='button button-positive button-full button-outline' href="#" ng-click="showSignupModal()" ng-show="!user.auth_token">
+              Signup
+            </button>
+          </div>
+          <div class='pure-u-1-2 padding-half' ng-show='!user.id'>
+            <a href="#" ng-click="showLoginModal()" ng-show="!user.auth_token" class='button button-positive button-full button-outline'>
+              Login
+            </a>
+          </div>
+          <div class='pure-u-1 become-guru-wrapper' ng-show='!user.is_a_guru'>
+            <button class='button button-dark button-full' ng-click='goToGuruMode()'>
+              Become a Guru
+            </button>
+          </div>
+        </div>
+
+      </ion-content>
+    </ion-view>
+  <!-- </ion-content> -->
   <!-- <div class="bar bar-footer uguru-footer">
     <div class="row">
       <div class="col center"><img src='./img/glass.png' class='width'></div>

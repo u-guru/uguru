@@ -13,9 +13,10 @@ angular.module('uguru.util.controllers', [])
   'University',
   '$cordovaKeyboard',
   '$ionicLoading',
+  '$cordovaStatusbar',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $q, University,
-  $cordovaKeyboard, $ionicLoading) {
+  $cordovaKeyboard, $ionicLoading, $cordovaStatusbar) {
 
     $scope.search_text = '';
     $scope.keyboard_force_off = false;
@@ -31,6 +32,10 @@ angular.module('uguru.util.controllers', [])
       var universitiesLoaded = $q.defer();
 
       $scope.$on('modal.shown', function() {
+
+        if (window.StatusBar) {
+            StatusBar.styleLightContent();
+        }
 
         if ($scope.addUniversityModal.isShown() &&
           $localstorage.getObject('universities').length === 0) {
@@ -96,9 +101,13 @@ angular.module('uguru.util.controllers', [])
     $scope.universitySelected = function(university, $event) {
 
       if ($scope.onboarding === true) {
-        console.log(university);
+
         $scope.nearestUniversitySelected($event, university);
         return;
+      }
+
+      if (window.StatusBar) {
+          StatusBar.styleDefault();
       }
 
       var successCallback = function() {
@@ -135,6 +144,7 @@ angular.module('uguru.util.controllers', [])
       $scope.search_text = '';
       $scope.keyboard_force_off = true;
       $scope.rootUser.updateLocal($scope.user);
+
       $scope.user.updateAttr('university_id', $scope.user, $scope.user.university_id);
       $scope.closeKeyboard();
       // $scope.showSuccess('University Saved!');
@@ -147,6 +157,10 @@ angular.module('uguru.util.controllers', [])
 
 
     $scope.hideUniversityModal = function() {
+      if (window.StatusBar) {
+          StatusBar.styleDefault();
+      }
+
       if ($scope.platform.mobile && $cordovaKeyboard.isVisible()) {
         $scope.keyboard_force_off = true;
         $scope.closeKeyboard();

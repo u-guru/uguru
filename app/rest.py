@@ -417,6 +417,7 @@ class UserRequestView(restful.Resource):
             abort(404)
 
         course = request.json.get('course')
+        print "course received!", course
 
         #check if request is already active
         if user.request_active(course.get('id')):
@@ -424,8 +425,12 @@ class UserRequestView(restful.Resource):
 
         position = request.json.get('position')
 
+        print "position received!", position
+
         if position:
             position = Position.initFromJson(position, user.id)
+
+        print "position processed!", position
 
         _request = Request()
         _request.course_id = course.get('id')
@@ -443,13 +448,19 @@ class UserRequestView(restful.Resource):
         user.requests.append(_request)
         db_session.commit()
 
-        calendar = Calendar.initFromRequest(_request, 2)
-        calendar_events_json = request.json.get('calendar_events')
+        print "request committed!", position
 
-        if calendar_events_json:
-            for day_arr in calendar_events_json:
-                for hour_json in day_arr:
-                    calendar_event = Calendar_Event.initFromJson(hour_json, calendar, calendar_events_json.index(day_arr))
+        calendar = Calendar.initFromRequest(_request, 2)
+        print "calendar created !", calendar
+        calendar_events_json = request.json.get('calendar_events')
+        print "json calendar pulled !", calendar
+
+        # if calendar_events_json:
+        #     for day_arr in calendar_events_json:
+        #         for hour_json in day_arr:
+        #             calendar_event = Calendar_Event.initFromJson(hour_json, calendar, calendar_events_json.index(day_arr))
+
+        print "longass json calendar figured out", calendar
 
 
         if request.json.get('files'):
@@ -461,12 +472,15 @@ class UserRequestView(restful.Resource):
 
             db_session.commit()
 
+        print "long as files for-loop figured out", calendar
+
         available_gurus = _request.course.gurus.all()
         for guru in available_gurus:
             proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
             event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
             event = Event.initFromDict(event_dict)
 
+        pprint('request is finished like a G')
         return user, 200
 
     @marshal_with(UserSerializer)

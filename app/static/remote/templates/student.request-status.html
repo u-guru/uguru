@@ -1,6 +1,45 @@
-<ion-view title="Request Status">
-  <ion-content>
-    <div class="session-progress">
+<ion-view class='request-status' hide-nav-bar='true'>
+
+  <ion-header-bar class="header-bar">
+
+        <a class="button button-clear button-back"  nav-direction='back' href='#/home'>Back</a>
+        <h5 class="title uppercase">My Sessions</h5>
+  </ion-header-bar>
+
+  <ion-content scroll="false">
+    <div class='pure-g-c flex-column flex-space-between'>
+      <div class='padding-1em flex-item-c j-start'>
+        <div class='pure-g row-details'>
+          <div class='pure-u-1-5 grey-subject-text'>Class</div>
+          <div class='pure-u-4-5'>{{course.short_name}}</div>
+        </div>
+        <div class='pure-g row-details'>
+          <div class='pure-u-1-5'>Date</div>
+          <div class='pure-u-4-5'>{{course.active_request.time_created}}</div>
+        </div>
+        <div class='pure-g row-details'>
+          <div class='pure-u-1-5'>Time</div>
+          <div class='pure-u-4-5'>See Time</div>
+        </div>
+        <div class='pure-g row-details'>
+          <div class='pure-u-1-5'>Location</div>
+          <div class='pure-u-4-5'>{{course.active_request.address}}</div>
+          <div class='pure-u-1 padding-1em'>
+            <div class='map-container'>
+
+            </div>
+          </div>
+        </div>
+        <div class='pure-g row-details'>
+          <div class='pure-u-1-5'>Details</div>
+          <div class='pure-u-4-5'>{{course.active_request.description}}</div>
+        </div>
+      </div>
+      <div class='cancel-session-container' ng-click="cancelRequest()">
+        <button class='button button-full button-light'> Cancel Session </button>
+      </div>
+    </div>
+    <!-- <div class="session-progress">
       <li class="item padding-0 no-border">
         <div class="course padding-10-15" style="border-radius:0px; border-bottom:0px;">
           <div class="box-1">
@@ -23,6 +62,6 @@
       <button class="button button-full button-outline button-positive" ng-click="cancelRequest()">
         Cancel Request
       </button>
-    </div>
+    </div> -->
   </ion-content>
 </ion-view>
