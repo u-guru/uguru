@@ -455,8 +455,8 @@ def app_home():
 @app.route('/app/')
 def app_route():
     version = Version.query.get(1).ios
-    # return redirect('http://u.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
-    return redirect('http://192.168.42.66:5000/static/remote/index.html?version=' + str(version) + str(13213))
+    return redirect('http://u.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
+    # return redirect('http://192.168.42.66:5000/static/remote/index.html?version=' + str(version) + str(13213))
     # return redirect('http://192.168.0.104:5000/static/remote/index.html')
     # return redirect('http://192.168.42.66:8100/remote/')
 
