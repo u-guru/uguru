@@ -18,6 +18,38 @@ angular.module('uguru.util.controllers')
 
     $scope.$on('modal.shown', function() {
 
+
+      if ($scope.platform.mobile && $scope.platform.ios) {
+              // if (!$scope.user.current_device) {
+
+              //     $scope.user.current_device = ionic.Platform.device();
+
+              // }
+
+              $timeout(function() {
+
+
+                CordovaPushWrapper.register($scope,
+
+                  function() {
+                     setTimeout(function() {
+                        pulse.classList.add('animated', 'pulse');
+
+                        setTimeout(function() {
+                          console.log('shit is pulsating 3 second has passed');
+                          pulse.classList.remove('animated', 'pulse');
+                          $scope.closeContactGuruModal();
+                        }, 2000);
+                      }, 2000);
+                });
+
+
+
+              } , 2500);
+
+      };
+
+
       $scope.closeContactGuruModal = function() {
 
       $timeout(function() {
@@ -47,31 +79,6 @@ angular.module('uguru.util.controllers')
           }, 2000);
         }, 2000);
 
-
-        if ($scope.platform.mobile && $scope.platform.ios) {
-
-              if (!$scope.user.current_device) {
-
-                  $scope.user.current_device = ionic.Platform.device();
-
-              }
-
-              // CordovaPushWrapper.register($scope,
-              //   function() {
-              //        setTimeout(function() {
-              //           pulse.classList.add('animated', 'pulse');
-
-              //           setTimeout(function() {
-              //             console.log('shit is pulsating 3 second has passed');
-              //             pulse.classList.remove('animated', 'pulse');
-              //             $scope.closeContactGuruModal();
-              //           }, 2000);
-              //         }, 2000);
-              // });
-
-
-
-        }
         //TODO --> Cancel guru functioninality working
 
         setTimeout(function() {

@@ -62,7 +62,7 @@ angular.module('uguru.root.services')
           if ($scope.platform.ios &&
               !$scope.user.current_device.push_notif_enabled) {
 
-                Popup.options.show($scope, {
+                $scope.popupScope.push_options = {
                         header: 'Be notified immediately',
                         body: 'Gurus will reply to your request and are also busy. We want to make sure that you never miss any opportunity to connect.',
                         positiveBtnText: 'OK',
@@ -79,7 +79,9 @@ angular.module('uguru.root.services')
                         onSuccess: function() {
                             registerGPSDevice($scope, callback)
                         },
-                })
+                }
+
+                Popup.options.show($scope.popupScope, $scope.popupScope.push_options);
 
            }
            //register for android

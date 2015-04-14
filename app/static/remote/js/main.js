@@ -1,5 +1,5 @@
 // Uguru upp
-var LOCAL = false;
+var LOCAL = true;
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com';
 // BASE_URL = 'http://192.168.42.66:5000/static/remote/index.html';
@@ -37,7 +37,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
   if (!window.cordova) {
       var appID = 1416375518604557;
-      var fbVersion = "v1.0"; // or leave blank and default is v2.0
+      var fbVersion = "v2.2"; // or leave blank and default is v2.0
       $cordovaFacebookProvider.browserInit(appID, fbVersion);
   }
 
@@ -69,6 +69,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           $scope.user.updateAttr = User.updateAttrUser;
           $scope.user.createObj = User.createObj;
           $scope.user.updateObj = User.updateObj;
+          $scope.popupScope = {};
 
           if (LOCAL) {
             $scope.img_base = 'remote/'
@@ -117,6 +118,10 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
           }
 
+          $scope.platform = {
+            mobile: false
+          }
+
 
           $ionicPlatform.ready(function() {
 
@@ -129,8 +134,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
             }
 
             if (!$scope.user.university_id) {
-              // $state.go('^.onboarding-loading');
-              $state.go('^.student-home');
+              $state.go('^.onboarding-loading');
+              // $state.go('^.student-home');
             }
             console.log('user is on device:', ionic.Platform.platform());
 

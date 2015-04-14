@@ -1438,9 +1438,15 @@ margin: 0;
     font-size:150%;
   }
 
-  .hour-offset
+  .hours-offset,
   {
     padding-right:0.5em;
+    color: rgba(0,0,0,0.4);
+  }
+
+  .minutes-offset {
+    padding-left:0.75em;
+    color: rgba(0,0,0,0.4);
   }
 
   .main-minutes

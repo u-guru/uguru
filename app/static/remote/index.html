@@ -216,7 +216,7 @@
           var userAgent = navigator.userAgent || navigator.vendor || window.opera;
           if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
           {
-            injectJs('cordova.js');
+            // injectJs('cordova.js');
             return 'iOS';
 
           }
@@ -240,8 +240,8 @@
           scr.src=link;
           document.getElementsByTagName('head')[0].appendChild(scr)
       }
-      injectJs('/static/remote/cordova.js');
-      getMobileOperatingSystem();
+      // injectJs('/static/remote/cordova.js');
+      console.log(getMobileOperatingSystem())
 
     </script>
     <!--<script src="cordova.js"></script>-->

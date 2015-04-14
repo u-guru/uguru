@@ -967,8 +967,12 @@ p {
 .student-request-duration .icon {
   color: #68b2a5;
   font-size: 150%; }
-.student-request-duration .hour-offset {
-  padding-right: 0.5em; }
+.student-request-duration .hours-offset {
+  padding-right: 0.5em;
+  color: rgba(0, 0, 0, 0.4); }
+.student-request-duration .minutes-offset {
+  padding-left: 0.75em;
+  color: rgba(0, 0, 0, 0.4); }
 .student-request-duration .main-minutes {
   padding-left: 0.5em; }
 .student-request-duration .min-scroll {

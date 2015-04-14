@@ -66,6 +66,12 @@ angular.module('uguru.util.controllers', [])
 
     }
 
+    $scope.$on('modal.hidden', function() {
+      if (window.StatusBar) {
+            StatusBar.styleDefault();
+        }
+    });
+
     $scope.universities = GetUniversityList();
 
     $scope.getUniversitiesFromServer = function(promise) {

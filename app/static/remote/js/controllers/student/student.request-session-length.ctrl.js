@@ -32,7 +32,6 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.incrementHour = function() {
-      console.log($scope.root.vars.request._length.hours);
       if ($scope.root.vars.request._length.hours <= 9) {
         $scope.root.vars.request._length.hours += 1;
       }
@@ -45,14 +44,13 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.decrementMinute = function() {
-      if ($scope.root.vars.request._length.minutes > 0) {
+      if ($scope.root.vars.request._length.minutes > 0 ) {
         $scope.root.vars.request._length.minutes -= 1;
       }
     }
 
     $scope.incrementMinute = function() {
       if ($scope.root.vars.request._length.minutes <= 2) {
-        console.log($scope.root.vars.request._length.minutes);
         $scope.root.vars.request._length.minutes += 1;
       }
     }
