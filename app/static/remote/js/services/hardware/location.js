@@ -9,6 +9,17 @@ angular.module('uguru.root.services')
     'University',
     function($localstorage, $timeout, $cordovaGeolocation, RootService, Popup, University) {
 
+        var failureCallbackLocal = function($scope, $state) {
+          $scope.loader.hide();
+          $state.go('^.prompt-location');
+        }
+
+        var callbackSuccessLocal = function($scope, $state) {
+          $scope.loader.hide();
+          $state.go('^.onboarding-nearest-university');
+        }
+
+
         var getLocation = function($scope, successCallback, failureCallback, $state) {
 
           var posOptions = {
@@ -16,7 +27,7 @@ angular.module('uguru.root.services')
               enableHighAccuracy: false, //may cause high errors if true
           }
 
-          if (!$scope.platform.android) {
+          if (!$scope.platform.android && !($state.current.name === 'root.onboarding-loading')) {
             $scope.loader.show();
           }
           $cordovaGeolocation
@@ -34,10 +45,13 @@ angular.module('uguru.root.services')
 
               if ($scope.static.universities && $scope.static.universities.length > 0) {
                 console.log('universities already loaded! Calculating nearest university...')
+                if (!successCallback) {
+                  successCallback = callbackSuccessLocal;
+                }
                 getNearestUniversity(position.coords.latitude, position.coords.longitude, $scope.static.universities, 100, $localstorage, $scope, successCallback, $state);
               } else {
                 console.log('universities not loaded :( :( trying to get again..')
-                on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation);
+                on_app_open_retrieve_objects($scope, $state, $localstorage, University, callbackSuccessLocal, $cordovaGeolocation);
               }
 
 
@@ -47,6 +61,7 @@ angular.module('uguru.root.services')
 
               //TODO: user.last_positions.append(position + THE CURRENT TIME)
             }, function(err) {
+              $scope.loader.hide();
               console.log(err);
               if (failureCallback) {
                   failureCallback($scope, $state);

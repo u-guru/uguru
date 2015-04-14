@@ -82,4 +82,53 @@
 #student-home-page .stat-container-wrapper {
   margin-top: 86px; }
 
+.university-input-typeahead-wrapper {
+  width: 100%; }
+  .university-input-typeahead-wrapper input.typeahead {
+    color: #3D9988;
+    outline: none;
+    width: 88%;
+    padding: 1em 1.5em;
+    font-size: 85%;
+    border: 0px;
+    display: inline-block !important; }
+  .university-input-typeahead-wrapper .twitter-typeahead {
+    width: 100%; }
+
+.search-button {
+  width: 100%;
+  height: inherit;
+  padding: 1em 1.5em;
+  line-height: 1em;
+  background-color: #3D9988;
+  color: white;
+  font-family: "OpenSans-Regular"; }
+
+.tt-dropdown-menu {
+  border: 2px solid #3D9988;
+  background-color: white;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "OpenSans-Regular"; }
+
+.tt-suggestion {
+  padding: 0em 1.5em;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .tt-suggestion .title {
+    font-size: 120%;
+    display: block;
+    margin-bottom: 0.25em;
+    color: rgba(0, 0, 0, 0.8); }
+  .tt-suggestion a {
+    text-decoration: none;
+    color: inherit; }
+
+.tt-suggestion.tt-cursor {
+  background-color: #3D9988;
+  color: white;
+  font-family: "OpenSans-Semibold"; }
+  .tt-suggestion.tt-cursor .title {
+    color: white; }
+
 /*# sourceMappingURL=student.home.css.map */

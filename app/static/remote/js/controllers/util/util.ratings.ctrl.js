@@ -42,7 +42,12 @@ angular.module('uguru.util.controllers')
     $scope.submitRatingToServer = function() {
 
       var serverCallback = function($scope, user) {
-        $state.go('^.home');
+        if ($scope.user.guru_mode) {
+          $state.go('^.guru-home');
+        } else {
+          $state.go('^.student-home');
+        }
+
         $timeout(function(){
           $scope.ratingModal.hide();
         }, 500)

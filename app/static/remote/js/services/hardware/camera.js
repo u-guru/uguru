@@ -32,14 +32,16 @@ angular.module('uguru.root.services')
 
                           // $scope.request.photo = image.src;
 
+                          $scope.root.vars.request.files.push(true);
                           var formData = new FormData();
                           // formData.append('file', image.src);
                           imageData = "data:image/jpeg;base64," + imageData;
 
                           formData.append('file', imageData);
-                          formData.append('filename', 'sup.jpg');
+                          var file_name = new Date().getTime().toString();
+                          formData.append('filename', file_name);
 
-                          // $scope.user.createObj($scope.user, 'files', formData, $scope);
+                          $scope.user.createObj($scope.user, 'files', formData, $scope);
 
                         }, function(err) {
                           console.log(err);

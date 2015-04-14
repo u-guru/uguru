@@ -289,3 +289,17 @@ if arg == 'delete_admin_users':
         print u.name, u.email, "deleted"
         db_session.delete(u)
         db_session.commit()
+
+if arg == 'count':
+    import json
+    f = open('temp.json')
+    d = json.load(f)
+    results = {}
+    for school in d.keys():
+        if d[school].get('popular_courses') and d[school].get('logo') and d[school].get('school_color_one')\
+        and d[school].get('school_color_two'):
+            d[school]['local_name'] = school
+            results[school] = d[school]
+    print len(results.keys()), 'schools ready'
+    with open('app/lib/university_data.json', 'wb') as fp:
+        json.dump(results, fp, sort_keys = True, indent = 4)

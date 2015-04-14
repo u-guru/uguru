@@ -10,7 +10,7 @@
 
     <ion-content class='request-description-container' scroll="false">
         <div class="pure-g-c flex-column flex-space-between">
-            <div class='container textarea-wrapper'>
+            <div class='container textarea-wrapper flex-item-c j-start'>
                 <div class='padding-1em'>
                     <h5 class='bold'> What do you need help with?</h5>
                 </div>
@@ -19,14 +19,14 @@
                         <div class="checkbox-container pure-g">
                             <div class="pure-u-1">
                                 <div class="textarea-container pure-g">
-                                    <textarea rows="6" ng-model='root.vars.request.description'>{{root.vars.request.description}}</textarea>
+                                    <textarea rows="6" ng-model='root.vars.request.description' autofocus>{{root.vars.request.description}}</textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class='flex-item-c'>
+            <div class='flex-item-c' ng-show='root.vars.request.files.length > 0'>
                 <div class='padding-1em'>
                     <h5> Attachments </h5>
                 </div>
@@ -37,9 +37,11 @@
                     </div>
                 </div>
             </div>
-            <div class='flex-item-c'>
+            <div class='flex-item-c j-start-end j-end'>
                 <button class='button button-full button-positive' ng-click='takePhoto()'>
-                    <i class='icon ion-camera'></i> &nbsp;&nbsp;Add Photo
+                    <i class='icon ion-camera'></i> &nbsp;&nbsp;
+                    <span ng-show='root.vars.request.files.length === 0'>Add Photo</span>
+                    <span ng-show='root.vars.request.files.length > 0'>Change Photo</span>
                 </button>
             </div>
         </div>

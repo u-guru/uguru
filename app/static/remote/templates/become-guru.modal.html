@@ -1,15 +1,16 @@
-<ion-modal-view ng-controller="BecomeGuruController" class='become-guru'>
-    <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)" ng-init="init()">
-            <h5 class="title uppercase">Become a Guru</h5>
-        <button ng-click="becomeGuruModal.hide()" class="button button-clear button-positive">cancel</button>
+<ion-modal-view class='become-guru'>
+    <ion-header-bar class="header-bar dark-header">
+            <h5 class="title">Become a Guru</h5>
+        <a class='button button-clear positive' ng-click='becomeGuruModal.hide()'>CLOSE</a>
     </ion-header-bar>
 
     <ion-content scroll="false">
         <div class='pure-g-c flex-column flex-space-between center'>
 
-            <div class='flex-item-c a-c padding-2em'>
-                <img src='./img/uguru_splash.png' class="pure-img">
-            </div>
+            <!-- <div class='flex-item-c a-c'> -->
+
+        <img src='./img/uguru_splash.png' class="pure-img padding-2em">
+            <!-- </div> -->
 
             <div class="pure-g flex-item-c guru-content">
                 <div class='pure-u-1 padding-1em center'>

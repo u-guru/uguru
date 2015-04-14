@@ -5,12 +5,12 @@
 
     <ion-tabs class="bottom-tabs tabs-dark" delegate-handle="student-home-tabs-bottom">
 
-        <ion-tab title="Inbox" badge="user.active_requests.length" badge-style='badge-danger' icon-on="ion-ios7-home" icon-off="ion-ios7-home-outline" style="color:white; text-decoration:none;">
-          <div ng-show="bottomTabsDelegate.selectedIndex() === 0" ng-include="base_url + 'templates/guru.home.body.html'"></div>
+        <ion-tab title="Inbox" badge="user.active_requests.length" badge-style='badge-danger' icon-on="session-icon" icon-off="session-icon" style="color:white; text-decoration:none;">
+        <div ng-show="bottomTabsDelegate.selectedIndex() === 0" ng-include="base_url + 'templates/guru.home.body.html'"></div>
         </ion-tab>
 
-        <ion-tab title="Guru Book" icon-on="request-icon" icon-off="request-icon" badge="user.pending_proposals.length || user.active_guru_sessions.length" badge-style="badge-positive">
-          <div ng-show="bottomTabsDelegate.selectedIndex() === 1" ng-include="base_url + 'templates/guru.student-book.html'"></div>
+        <ion-tab title="Sessions" icon-on="request-icon" icon-off="request-icon" badge="user.active_proposals.length + user.active_guru_sessions.length" badge-style="badge-positive">
+          <div ng-show="bottomTabsDelegate.selectedIndex() === 1" ng-include="base_url + 'templates/guru.home.sessions.html'"></div>
         </ion-tab>
 
         <ion-tab title="Settings" ng-show="bottomTabsDelegate.selectedIndex() === 2" icon-on="settings-icon" icon-off="settings-icon">

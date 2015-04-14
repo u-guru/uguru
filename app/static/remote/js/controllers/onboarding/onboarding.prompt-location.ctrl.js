@@ -181,11 +181,18 @@ angular.module('uguru.onboarding.controllers')
       }
     }
 
-    $timeout(function() {
-      if (window.StatusBar) {
-        StatusBar.styleLightContent();
-      }
+    $scope.$on('$ionicView.beforeEnter', function(){
+        console.log('before view has entered');
+        if ($scope.platform.ios && window.StatusBar) {
+            StatusBar.styleLightContent();;
+        }
     });
+
+    $timeout(function() {
+      if ($scope.loader) {
+        $scope.loader.hide();
+      }
+    }, 500);
 }]);
 
 

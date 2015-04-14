@@ -1,4 +1,4 @@
-angular.module('uguru.student.controllers')
+angular.module('uguru.guru.controllers')
 
 //ALL student controllers
 .controller('GuruSessionStartController', [
@@ -63,7 +63,13 @@ angular.module('uguru.student.controllers')
 
       var arr_callback = [null, successCallback];
 
-      $scope.root.dialog.confirm('You will lose track of all progress', 'Are you sure?', ['Cancel', 'Yes'], arr_callback);
+      if ($scope.platform.web) {
+        if (confirm('Are you sure? \n You will lose track of all progress')) {
+          successCallback();
+        }
+      } else {
+        $scope.root.dialog.confirm('You will lose track of all progress', 'Are you sure?', ['Cancel', 'Yes'], arr_callback);
+      }
     }
 
     $scope.addOneSecond = function() {
@@ -125,8 +131,13 @@ angular.module('uguru.student.controllers')
       }
 
       var arr_callback = [null, successCallback];
-
-      $scope.root.dialog.confirm('The student will be billed', 'Are you sure?', ['Cancel', 'Yes'], arr_callback);
+      if ($scope.platform.web) {
+        if (confirm('Are you sure? \n The student will be billed.')) {
+          successCallback();
+        }
+      } else {
+        $scope.root.dialog.confirm('The student will be billed', 'Are you sure?', ['Cancel', 'Yes'], arr_callback);
+      }
     }
 
   }

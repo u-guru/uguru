@@ -25,7 +25,7 @@ angular.module('uguru.guru.controllers')
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $q,
  	University, $templateCache, $ionicHistory, Popup, $popover, Popover,
   $ionicBackdrop, User) {
-
+    console.log($scope.user)
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
 	$scope.base_url =  BASE;
@@ -122,9 +122,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.goToActiveSession = function(session) {
-      console.log('pring the session & shit');
-      console.log($scope.session);
-      $state.go('^.active-session', {sessionObj:JSON.stringify(session)});
+      $state.go('^.guru-active-session', {sessionObj:JSON.stringify(session)});
     }
 
     $scope.addGreenbar = function() {
@@ -200,7 +198,7 @@ angular.module('uguru.guru.controllers')
     	window.localStorage.clear();
     	$scope.bottomTabsDelegate.select(0);
     	alert('Cache Cleared! Please close the app & open again');
-    }
+  }
 
     $scope.guruDiscoverabilityChange = function() {
       $scope.rootUser.updateLocal($scope.user);
@@ -220,6 +218,10 @@ angular.module('uguru.guru.controllers')
 
       alert('You have been logged out!');
       $scope.signupModal.show();
+    }
+
+    $scope.goToProposalDetails = function(proposal) {
+      $state.go('^.guru-proposal-details', {proposalObj:JSON.stringify(proposal)});
     }
 
     $scope.goToPreviousSessionDetails = function(session) {
@@ -258,12 +260,21 @@ angular.module('uguru.guru.controllers')
   });
 
     $scope.$on('$ionicView.enter', function(){
-
+      console.log($scope.user.active_proposals);
       // $scope.user.guru_mode = true;
       // $scope.user.updateAttr('is_a_guru', $scope.user, true);
       // $scope.user.updateAttr('guru_mode', $scope.user, true);
       // $scope.user.is_a_guru = true;
     });
+
+    $timeout(function() {
+      $scope.bottomTabsDelegate.select(1);
+      $timeout(function() {
+        document.querySelectorAll('.session-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-1.svg')";
+        document.querySelectorAll('.request-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-3.svg')";
+        document.querySelectorAll('.settings-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-2.svg')";
+      }, 250);
+    },1000)
 
   }
 

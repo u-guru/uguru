@@ -10,9 +10,12 @@
     <!-- <link href="remote/css/angular-strap.css" rel="stylesheet"> -->
     <!-- <link href="remote/css/lib/ionic.contrib.frost.css" rel="stylesheet"> -->
     <!-- <link href="remote/css/ionic.app.css" rel="stylesheet"> -->
+    <!-- <link href="remote/css/app.css" rel="stylesheet"> -->
+
+
     <link href="remote/css/ionic.app.min.css" rel="stylesheet">
     <link rel="stylesheet" href="remote/css/pure-min.css">
-    <!-- <link href="remote/css/app.css" rel="stylesheet"> -->
+
     <link href="remote/css/animate.css" rel="stylesheet">
     <link href="remote/css/sass/new.css" rel="stylesheet">
 
@@ -59,7 +62,7 @@
     </script>
 
     <script id="templates/gettingStartedPopover.html" type="text/ng-template">
-      <ion-popover-view class='uguru-popover'>
+      <ion-popover-view class='uguru-popover platform-ios platform-arrow'>
         <ion-header-bar>
           <h1 class="title">Tap to get started.</h1>
         </ion-header-bar>
@@ -78,8 +81,29 @@
       </ion-popover-view>
     </script>
 
+    <script id="templates/gettingStartedRequestHelpPopover.html" type="text/ng-template">
+      <ion-popover-view class='uguru-popover platform-ios platform-arrow'>
+        <ion-header-bar>
+          <h1 class="title">Tap to request help.</h1>
+        </ion-header-bar>
+        <ion-content scroll='false'>
+          <div class="pure-g-c flex-column">
+            <div class="flex-item-c">
+              <p>Any time you need help in <strong>{{user.student_courses[0].short_name}}</strong>,<br> we got your back!</p>
+            </div>
+            <div class="flex-item-c">
+              <button ng-click="closePopoverTwo();"class='button button-full button-positive button-popover'>Got it.</button>
+            </div>
+          </div>
+        </ion-content>
+      </ion-popover-view>
+    </script>
 
 
+    <script>
+    LOCAL = true;
+    BASE = '/remote';
+    </script>
     <script src="remote/lib/ionic/js/ionic.bundle.min.js"></script>
     <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
     <script src="lib/lodash/dist/lodash.js"></script>
@@ -95,11 +119,11 @@
     <script src="remote/lib/ionic/contrib/ionic.contrib.frost.js"></script>
 
 
-    <!--
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+    <script type="text/javascript" src="remote/lib/stripe/stripe.js"></script>
     <script>
       Stripe.setPublishableKey('pk_test_OHHalLRCnwixc5YXc9O29h3j');
-    </script> -->
+    </script>
 
     <!-- Facebook Plugin for web-development -->
     <div id="fb-root"></div>
@@ -180,6 +204,7 @@
     <script type="text/javascript" src="remote/js/controllers/guru/guru.student-request.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.active-session.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.session-start.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.proposal-details.ctrl.js"></script>
 
     <script type="text/javascript" src="remote/js/controllers/onboarding/onboarding.request-location.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/onboarding/onboarding.nearest-university.ctrl.js"></script>

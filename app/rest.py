@@ -410,7 +410,7 @@ class UserRequestView(restful.Resource):
     @marshal_with(UserSerializer)
     def post(self, user_id):
 
-        pprint(request.json)
+        # pprint(request.json)
         user = get_user(user_id)
 
         if not user:
@@ -477,6 +477,9 @@ class UserRequestView(restful.Resource):
         available_gurus = _request.course.gurus.all()
         for guru in available_gurus:
             proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
+            #send push notification is user has permitted device
+            from app.lib.push_notif import send_student_request_to_guru
+            send_student_request_to_guru(_request, guru)
             event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
             event = Event.initFromDict(event_dict)
 
@@ -505,6 +508,14 @@ class UserRequestView(restful.Resource):
             if proposal.status == Proposal.GURU_ACCEPTED:
                 proposal.request.status = Request.STUDENT_RECEIVED_GURU
                 proposal.request.guru_id = user_id
+
+                student = proposal.request.student
+
+                #send push notification to all student devices
+                from app.lib.push_notif import send_guru_proposal_to_student
+                send_guru_proposal_to_student(proposal, proposal.request.student)
+
+
                 event_dict = {'status': Proposal.GURU_ACCEPTED, 'proposal_id':proposal.id}
                 event = Event.initFromDict(event_dict)
                 db_session.commit()
@@ -529,7 +540,6 @@ class UserRequestView(restful.Resource):
             elif status == Request.STUDENT_REJECTED_GURU:
                 event_dict = {'status': Request.STUDENT_REJECTED_GURU, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
-
                 #update guru that was rejected
                 for proposal in _request.proposals:
                     if proposal.status == proposal.GURU_ACCEPTED and proposal.guru_id == int(guru_json.get('id')):
@@ -539,6 +549,7 @@ class UserRequestView(restful.Resource):
                         event_dict = {'status': Proposal.GURU_REJECTED, 'proposal_id':proposal.id}
                         event = Event.initFromDict(event_dict)
                 _request.status = Request.PROCESSING_GURUS
+                _request.guru_id = None
                 # TODO: SEND TO NEXT GURU
             elif status == Request.STUDENT_ACCEPTED_GURU:
                 event_dict = {'status': Request.STUDENT_ACCEPTED_GURU, 'request_id':_request.id}
@@ -768,7 +779,7 @@ class UserSessionView(restful.Resource):
             db_session.commit()
             return user, 200
 
-
+        #non-recurring session
         session_json = request.json
         _request = Request.query.get(request.json.get('id'))
         _request.guru = User.query.get(request.json.get('guru_id'))
@@ -781,6 +792,7 @@ class UserSessionView(restful.Resource):
 
         #create a session
         session = Session.initFromJson(session_json, True)
+
         #update the proposal from the request
         for proposal in _request.proposals:
             if proposal.guru_id == _request.guru_id:
@@ -795,9 +807,9 @@ class UserSessionView(restful.Resource):
             session._relationship = Relationship.initFromSession(session)
             db_session.commit()
 
-        #Contact the guru
-        else:
-            doNothing = True
+        #send push notification to guru
+        from app.lib.push_notif import send_student_has_accepted_to_guru
+        send_student_has_accepted_to_guru(session, session.request.guru)
 
         return user, 200
 

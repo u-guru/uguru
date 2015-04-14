@@ -1,4 +1,9 @@
-<ion-view class="background-gray">
+<ion-view hide-nav-bar = 'true'>
+  <ion-header-bar class='header-bar'>
+    <a class="button button-clear button-back"  nav-direction='back' ng-click="goBack()">Back</a>
+    <h5 class="title">Guru {{guru.name.split(' ')[0]}}</h5>
+
+  </ion-header-bar>
   <ion-content>
     <div class="view-profile">
       <div class="space-1 center">

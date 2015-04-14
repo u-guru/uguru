@@ -9,58 +9,46 @@
   <ion-content scroll="false">
     <div class='pure-g-c flex-column flex-space-between'>
       <div class='padding-1em flex-item-c j-start'>
-        <a class='item pure-g row-details' ng-click='goToGuruProfile({{request.guru}})'>
-          <div class='pure-u-1-5 grey-subject-text'>Guru</div>
-          <div class='pure-u-4-5 item-avatar-right'>{{request.guru.name}}
-              <img ng-src="{{request.guru.profile_url}}">
-          </div>
-        </a>
         <div class='pure-g row-details'>
           <div class='pure-u-1-5 grey-subject-text'>Class</div>
-          <div class='pure-u-4-5'>{{course.short_name}}</div>
+          <div class='pure-u-4-5'>{{proposal.request.course.short_name}}</div>
         </div>
         <div class='pure-g row-details'>
           <div class='pure-u-1-5'>Date</div>
-          <div class='pure-u-4-5'>{{request.time_created}}</div>
+          <div class='pure-u-4-5'>{{proposal.request.time_created}}</div>
         </div>
         <div class='pure-g row-details'>
           <div class='pure-u-1-5'>Time Length</div>
-          <div class='pure-u-4-5'>{{request.time_estimate}} minutes</div>
+          <div class='pure-u-4-5'>{{proposal.request.time_estimate}} minutes</div>
         </div>
         <div class='pure-g row-details'>
           <div class='pure-u-1-5'>In-Person</div>
-          <div class='pure-u-4-5'>{{request.in_person}}</div>
+          <div class='pure-u-4-5'>{{proposal.request.in_person}}</div>
         </div>
         <div class='pure-g row-details'>
           <div class='pure-u-1-5'>Online</div>
-          <div class='pure-u-4-5'>{{request.online}}</div>
-        </div>
-        <div class='pure-g row-details' ng-show='request.status === 1'>
-          <div class='pure-u-1-5'>Card Info</div>
-          <div class='pure-u-4-5'>{{user.cards[0].card_last4}}, {{user.cards[0].card_type}}</div>
+          <div class='pure-u-4-5'>{{proposal.request.online}}</div>
         </div>
         <div class='pure-g row-details'>
           <div class='pure-u-1-5'>Location</div>
-          <div class='pure-u-4-5'>{{request.address.split(', ').slice(0,3).join(', ')}}</div>
+          <div class='pure-u-4-5'>{{proposal.request.address.split(', ').slice(0,3).join(', ')}}</div>
           <div class='pure-u-1 padding-1em'>
             <div class='map-container'>
+
             </div>
           </div>
         </div>
         <div class='pure-g row-details'>
           <div class='pure-u-1-5'>Details</div>
-          <div class='pure-u-4-5'>{{request.description}}</div>
+          <div class='pure-u-4-5'>{{proposal.request.description}}</div>
         </div>
       </div>
-      <div class='cancel-session-container' ng-click="cancelRequest()" ng-show='request.status === 0'>
-        <button class='button button-full button-light'> Cancel Session </button>
-      </div>
-      <div class='incoming-request-container pure-g' ng-show='request.status === 1'>
+      <div class='cancel-session-container pure-g'>
           <div class='pure-u-1-2'>
-              <button class='button button-full button-light' ng-click='rejectGuru()'> Reject </button>
+              <button class='button button-full button-light' ng-click='rejectStudent()'> Reject </button>
           </div>
           <div class='pure-u-1-2'>
-              <button class='button button-full button-light' ng-click='acceptGuru()'> Accept
+              <button class='button button-full button-light' ng-click='acceptStudent()'> Accept
               </button>
           </div>
       </div>

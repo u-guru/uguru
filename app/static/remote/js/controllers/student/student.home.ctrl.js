@@ -28,12 +28,14 @@ angular.module('uguru.student.controllers', [])
   '$document',
   '$ionicPopover',
   '$cordovaStatusbar',
-  function($scope, $state, $ionicPopup, $timeout, $localstorage,
+  '$ionicViewSwitcher',
+function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $q,
  	University, $templateCache, $ionaicHistory, $ionicBackdrop,
   User, $ionicHistory, CordovaPushWrapper, $ionicPlatform, $rootScope, $cordovaPush,
-  $ionicPlatform, $ionicBackdrop, $document, $ionicPopover, $cordovaStatusbar) {
-
+  $ionicPlatform, $ionicBackdrop, $document, $ionicPopover, $cordovaStatusbar,
+  $ionicViewSwitcher) {
+    console.log($scope.user);
   // .fromTemplate() method
 
   // if (!$scope.user.university && !$scope.user.university_id) {
@@ -42,11 +44,17 @@ angular.module('uguru.student.controllers', [])
 
   // console.log($scope.user);
 
-  // $ionicPopover.fromTemplateUrl('templates/gettingStartedPopover.html', {
-  //   scope: $scope
-  // }).then(function(popover) {
-  //   $scope.popover = popover;
-  // });
+  $ionicPopover.fromTemplateUrl('templates/gettingStartedPopover.html', {
+    scope: $scope
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
+
+  $ionicPopover.fromTemplateUrl('templates/gettingStartedRequestHelpPopover.html', {
+    scope: $scope
+  }).then(function(popover) {
+    $scope.popoverTwo = popover;
+  });
 
   $scope.openPopover = function($event) {
     $scope.popover.show($event);
@@ -56,12 +64,24 @@ angular.module('uguru.student.controllers', [])
     $scope.popover.hide();
   };
 
+  $scope.openPopoverTwo = function($event) {
+    $scope.popoverTwo.show($event);
+  };
+
+  $scope.closePopoverTwo = function() {
+    $scope.popoverTwo.hide();
+  };
+
   $scope.testBackdrop = function($event) {
 
   }
 
   $scope.getNumber = function(num) {
       return new Array(num);
+  }
+
+  $scope.tabClicked = function() {
+    console.log('sup');
   }
 
   // $scope.checkCourseInActiveRequests = function(course) {
@@ -158,6 +178,7 @@ angular.module('uguru.student.controllers', [])
     $scope.goToRequest = function(course) {
       // $scope.root.button.showButtonPressedAndHide($event.target);
       $scope.loader.show();
+      $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
       $state.go('^.student-request', {courseObj:JSON.stringify(course)});
     }
 
@@ -175,14 +196,13 @@ angular.module('uguru.student.controllers', [])
       // $event.target.classList.add('active')
     }
 
-    $scope.goToRequestStatus = function(course) {
-      console.log('course');
-      var active_request = $scope.getActiveRequestByCourse(course);
-      $state.go('^.student-request-status', {requestObj:JSON.stringify(active_request)});
+    $scope.goToRequestStatus = function(request) {
+      // var active_request = $scope.getActiveRequestByCourse(request);
+      $state.go('^.student-request-status', {requestObj:JSON.stringify(request)});
     }
 
     $scope.goToActiveSession = function(session) {
-      $state.go('^.active-session', {sessionObj:JSON.stringify(session)});
+      $state.go('^.active-student-session', {sessionObj:JSON.stringify(session)});
     }
 
 
@@ -281,6 +301,8 @@ angular.module('uguru.student.controllers', [])
       $state.go('^.previous-session-details', {sessionObj:JSON.stringify(session)});
     }
 
+
+
     $scope.$on('$ionicView.beforeEnter', function(){
       User.getUserFromServer($scope, null, $state);
       $scope.user.guru_mode = false;
@@ -298,6 +320,28 @@ angular.module('uguru.student.controllers', [])
       console.log($state.current.name, 'leaving...');
     });
 
+
+    $scope.showOnboardingAddClass = function() {
+
+      if ($scope.user.student_courses && $scope.user.student_courses.length === 0)
+      $timeout(function() {
+        var element = document.getElementById("add-course-item")
+        $scope.openPopover(element);
+      }, 1000);
+
+    }
+
+    $scope.showOnboardingRequestHelp = function() {
+
+      if ($scope.user.student_courses && $scope.user.student_courses.length === 0)
+      $timeout(function() {
+        var element = document.getElementById("add-course-item")
+        $scope.openPopover(element);
+      }, 1000);
+
+    }
+
+
     $scope.$on('modal.shown', function() {
       $scope.ratingModalShown = true;
     });
@@ -306,18 +350,19 @@ angular.module('uguru.student.controllers', [])
       $scope.ratingModalShown = false;
     });
 
-    $scope.$on('$ionicView.loaded', function(){
-      console.log($scope.user);
-
-    });
-
     $scope.loader.show();
     $timeout(function() {
       $scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
       $scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
       $scope.bottomTabsDelegate.select(1);
+      $scope.showOnboardingAddClass();
       $scope.loader.hide();
-  },1000)
+      // $timeout(function() {
+      //   document.querySelectorAll('.session-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-1.svg')";
+      //   document.querySelectorAll('.request-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-3.svg')";
+      //   document.querySelectorAll('.settings-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-2.svg')";
+      // }, 250);
+    },1000)
 
   }
 

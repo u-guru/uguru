@@ -1,15 +1,16 @@
 // Uguru upp
 var LOCAL = false;
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
-// BASE_URL = 'http://192.168.42.66:5000/production/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com';
+// BASE_URL = 'http://192.168.42.66:5000/static/remote/index.html';
+// REST_URL = 'http://192.168.42.66:5000';
 var BASE = '';
 var img_base = '';
 if (LOCAL) {
   BASE = 'remote/';
   BASE_URL = 'http://192.168.42.66:8100';
-  // REST_URL = 'http://192.168.42.66:5000';
-  var REST_URL = 'http://uguru-rest.herokuapp.com';
+  REST_URL = 'http://192.168.42.66:5000';
+  // var REST_URL = 'http://uguru-rest.herokuapp.com';
 } else {
   img_base = '/static/'
 }
@@ -22,67 +23,29 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
   $cordovaDialogs, Version, $rootScope, $cordovaSplashscreen,
   $templateCache, Device, User, $cordovaLocalNotification) {
-  $ionicPlatform.ready(function() {
 
-    //platform is ready
-    // console.log('checkpoint 1');
-    // console.log('device is ready 1', ionic.Platform.platform());
 
-    document.addEventListener("deviceready", function () {
-        var networkState = navigator.connection.type;
+  // $ionicPlatform.ready(function() {
 
-        var states = {};
-        states[Connection.UNKNOWN]  = 'Unknown connection';
-        states[Connection.ETHERNET] = 'Ethernet connection';
-        states[Connection.WIFI]     = 'WiFi connection';
-        states[Connection.CELL_2G]  = 'Cell 2G connection';
-        states[Connection.CELL_3G]  = 'Cell 3G connection';
-        states[Connection.CELL_4G]  = 'Cell 4G connection';2
-        states[Connection.CELL]     = 'Cell generic connection';
-        states[Connection.NONE]     = 'No network connection';
 
-        console.log('Connection type: ' + states[networkState]);
+  //   });
 
-        //Set platform in local store
-        $localstorage.setObject('platform', ionic.Platform.platform());
-        $localstorage.setObject('device', ionic.Platform.device());
-
-        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-        // for form inputs)
-        if (window.cordova && window.cordova.plugins.Keyboard) {
-          cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-          cordova.plugins.Keyboard.disableScroll(true);
-        }
-
-        if (ionic.Platform.isIOS() && window.StatusBar) {
-
-          StatusBar.overlaysWebView(true);
-          StatusBar.styleLightContent();
-        } else {
-          console.log('skipping status bar because its only for android 5+');
-        }
-
-      checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-
-    });
-
-  });
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
-  $cordovaFacebookProvider) {
+  $cordovaFacebookProvider, $ionicConfigProvider) {
+
   if (!window.cordova) {
       var appID = 1416375518604557;
       var fbVersion = "v1.0"; // or leave blank and default is v2.0
       $cordovaFacebookProvider.browserInit(appID, fbVersion);
   }
 
-
+  $ionicConfigProvider.views.swipeBackEnabled(false);
 
   //Set up restangular provider
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
   // RestangularProvider.setBaseUrl('http://10.193.138.226:5000/api/v1');
-  $urlRouterProvider.otherwise('/onboarding-loading');
   //Client-side router
   $stateProvider
   .state('root', {
@@ -93,19 +56,46 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
           $cordovaSplashscreen, $timeout, Geolocation) {
+
+
+          $scope.network_speed = null;
+          $scope.platform_ready = false;
+
+
+          //how to make platform ready...
+          console.log('hiding splash screen and going to first screen');
+
           $scope.user = User.getLocal();
           $scope.user.updateAttr = User.updateAttrUser;
           $scope.user.createObj = User.createObj;
           $scope.user.updateObj = User.updateObj;
 
+          if (LOCAL) {
+            $scope.img_base = 'remote/'
+          } else {
+            $scope.img_base = '';
+          }
           $scope.rootUser = User;
           $scope.root = RootService;
           $scope.root.vars = {};
           $scope.static = {};
           $scope.static.nearest_universities = [];
+          $scope.static.universities = [];
 
-          //get objects from server
-          on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation)
+          console.log('getting most up to date universities + user from server..')
+          var local_universities = $localstorage.getObject('universities');
+          if (!local_universities || local_universities.length === 0) {
+
+            User.getUserFromServer($scope, null, $state);
+            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation);
+          } else {
+            $scope.static.universities = $localstorage.getObject('universities')
+            if ($scope.static.universities && $scope.static.universities.length > 0) {
+              console.log('universities already loaded');
+            } else {
+              console.log('something funky is going on...')
+            }
+          }
 
           $scope.loader = {
             show: function() {
@@ -127,94 +117,96 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
           }
 
+
           $ionicPlatform.ready(function() {
-              $scope.platform = {
+
+            $scope.platform = {
                 ios: ionic.Platform.isIOS(),
                 android: ionic.Platform.isAndroid(),
                 mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid(),
                 web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid()),
-              }
+                device: ionic.Platform.device(),
+            }
+
+            if (!$scope.user.university_id) {
+              // $state.go('^.onboarding-loading');
+              $state.go('^.student-home');
+            }
+            console.log('user is on device:', ionic.Platform.platform());
+
+            //performing mobile tasks
+            console.log('STARTING MOBILE ONLY tasks below \n\n');
+
+            if ($scope.platform.mobile) {
 
 
-              // if (window.cordova && window.cordova.plugins.Keyboard) {
-              //   cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-              //   cordova.plugins.Keyboard.disableScroll(true);
-              //   StatusBar.overlaysWebView(true);
-              //   StatusBar.styleLightContent();
-              // }
-
-              console.log('user is on mobile:', $scope.platform.mobile);
+                //hiding the splash screen
+                console.log('1. hiding splashscreen on mobile devices \n\n');
+                $cordovaSplashscreen.hide();
 
 
-              // attempt to register device APN notifications for android .. immediately!
+                //grabbing nextwork speed
+                $scope.network_speed = getNetworkSpeed();
+                console.log('2. grabbing network speed which is: ', $scope.network_speed, '\n\n');
 
-              if ($scope.platform.mobile) {
+
+                //save device
+                console.log('3. Saving device to server:', $scope.platform.device.model, '\n\n')
                 $scope.user.current_device = ionic.Platform.device();
                 $scope.user.current_device.user_id = $scope.user.id;
-                console.log('saving user device...', $scope.user.current_device);
                 $scope.user.createObj($scope.user.current_device, 'device', $scope.user.current_device, $scope);
-              }
-              if (window.StatusBar) {
-                StatusBar.overlaysWebView(true);
-                StatusBar.styleDefault();
-              }
-
-              // console.log($cordovaStatusbar);
-              // $cordovaStatusbar.overlaysWebView(true);
-              // $cordovaStatusbar.styleColor('black');
-              // if ($scope.platform.ios) {
-              //   console.log('sup');
-              //     StatusBar.overlaysWebView(true);
-              //     StatusBar.styleLightContent();
-              // }
-
-              if ($scope.platform.mobile && $scope.platform.android) {
-                // CordovaPushWrapper.register($scope);
-                // console.log('attempting to get android geo location early');
-                // Geolocation.getUserPosition($scope, null, null, $state);
-                $rootScope.$on('pushNotificationReceived', function(event, notification) {
-                  CordovaPushWrapper.received($scope, event, notification);
-
-                });
-
-              }
-
-          });
-
-          document.addEventListener("deviceready", function () {
-
-            console.log(JSON.stringify(ionic.Platform.device()));
-            // User.getUserFromServer($scope, null, $state);
-            document.addEventListener("resume", function() {
-
-                console.log('device is resuming....');
-                 checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                // User.getUserFromServer($scope, null, $state);
 
 
-            }, false);
+                //keyboard settings for android / ios
+                console.log('4. Setting up ios keyboard default + status bars..');
+                if (window.cordova.plugins.Keyboard) {
+                  cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                  cordova.plugins.Keyboard.disableScroll(true);
+                }
 
-            document.addEventListener("online", function() {
+                //styling status bars
+                if ($scope.platform.ios) {
 
-                console.log('device is online...');
-              checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                console.log('Getting user from server');
+                  if (window.StatusBar) {
+                    console.log('Extra #1. Styling iOS status bar to black \n\n');
+                    StatusBar.styleDefault();
+                  }
 
-            }, false);
+                }
 
-            document.addEventListener("offline", function() {
+                if ($scope.platform.android) {
 
-                console.log('device is offline...');
-                checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                // console.log('getting updated user from server...');
-                // User.getUserFromServer($scope);
+                  console.log('Extra #2. Android push notifications need to be registered')
+                  $rootScope.$on('pushNotificationReceived', function(event, notification) {
+                    CordovaPushWrapper.received($scope, event, notification);
 
-            }, false);
+                  });
 
-            document.addEventListener("pause", function() {
-                console.log('device is paused...');
-              // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-            }, false);
+                }
+          }
+
+          console.log('ENDING MOBILE ONLY tasks below \n\n');
+
+
+
+            //might come useful sometime
+            //   document.addEventListener("online", function() {
+            //       console.log('device is online...');
+            //       checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+            //   }, false);
+
+            //   document.addEventListener("offline", function() {
+            //       console.log('device is offline...');
+            //   }, false);
+
+            //   document.addEventListener("pause", function() {
+            //       console.log('device is paused...');
+            //   }, false);
+
+            // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+
+
+
           });
 
         }
@@ -257,7 +249,16 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   state('root.onboarding-university', {
         url: '/onboarding-university',
         templateUrl: BASE + 'templates/onboarding.university.html',
-        // controller: 'OnboardingLoadingController'
+        controller: function($scope, $cordovaStatusbar) {
+          $scope.$on('$ionicView.beforeEnter', function(){
+              console.log('before view has entered');
+              $scope.universities = $scope.static.universities;
+
+              if ($scope.platform.ios && window.StatusBar) {
+                  StatusBar.styleLightContent();
+              }
+          });
+        }
   }).
   state('root.student-request', {
         url: '/student-request:courseObj',
@@ -305,12 +306,12 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         controller: 'GuruHomeController'
   }).
   state('root.guru-opportunities', {
-        url: '/opportunities',
+        url: '/guru-opportunities',
         templateUrl: BASE + 'templates/guru.opportunities.html',
         controller: 'GuruOpportunitiesController'
   }).
-  state('root.guru.student-available', {
-        url: '/student-available/:requestObj:proposalObj',
+  state('root.guru-student-available', {
+        url: '/guru-student-available/:requestObj:proposalObj',
         templateUrl: BASE + 'templates/guru.student-request.html',
         controller: 'GuruIncomingRequestController'
   }).
@@ -319,8 +320,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   //       templateUrl: BASE +  'templates/student.request.html',
   //       controller: 'StudentRequestController'
   // }).
-  state('root.student-active-session', {
-        url: '/active-session/:sessionObj',
+  state('root.active-student-session', {
+        url: '/student-active-session/:sessionObj',
         templateUrl: BASE +  'templates/student.active-session.html',
         controller: 'StudentActiveSession'
   }).
@@ -330,7 +331,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         controller: 'GuruSessionStartController'
   }).
   state('root.guru-active-session', {
-        url: '/active-session/:sessionObj',
+        url: '/guru-active-session/:sessionObj',
         templateUrl: BASE +  'templates/guru.active-session.html',
         controller: 'GuruActiveSession'
   }).
@@ -382,17 +383,17 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/student.request-status.html',
         controller: 'RequestStatusController'
   }).
-  state('root.previous-session-details', {
-        url: '/previous-session-details/:sessionObj',
-        templateUrl: BASE + 'templates/student.previous-session-details.html',
-        controller: 'PreviousSessionDetailsController'
+  state('root.guru-proposal-details', {
+        url: '/guru-proposal-details/:proposalObj',
+        templateUrl: BASE + 'templates/guru.proposal-details.html',
+        controller: 'ProposalDetailsActionController'
   }).
   state('root.guru-previous-session-details', {
         url: '/previous-session-details-guru/:sessionObj',
         templateUrl: BASE + 'templates/student.previous-session-details.html',
         controller: 'PreviousSessionDetailsController'
   }).
-  state('root.student.messages', {
+  state('root.messages', {
         url: '/messages/:sessionObj',
         templateUrl: BASE + 'templates/student.messages.html',
         controller: 'StudentMessagesController'
@@ -402,7 +403,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/student.guru-available.html',
         controller: 'GuruAvailableController'
   }).
-  state('root.student.guru-profile', {
+  state('root.guru-profile', {
         url: '/guru-profile/:guruObj:showContactGuru',
         templateUrl: BASE + 'templates/student.guru-profile.html',
         controller: 'GuruProfileController'
@@ -426,14 +427,13 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
   // if none of the above states are matched, use this as the fallback
   // $urlRouterProvider.otherwise('/tab/dash');
-
+  // $urlRouterProvider.otherwise('/onboarding-loading');
+  $urlRouterProvider.otherwise('/home');
 
 });
 
 var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $localstorage) {
 
-            console.log('checking for app updates...');
-            console.log('device is ready 4');
             Version.getUpdatedVersionNum().then(
               //if user gets the right version
               function(response) {
@@ -448,6 +448,7 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
                     console.log('user v:' + currentVersion.toString() + '. Server v:' + serverVersionNumber);
 
                     if (LOCAL) {
+                      console.log('it gets here');
                       $templateCache.removeAll();
                     }
 
@@ -489,6 +490,10 @@ var on_app_open_retrieve_objects = function($scope, $state, $localstorage, Unive
           $scope.static.universities = universities;
           $localstorage.setObject('universities', $scope.static.universities);
           console.log($scope.static.universities.length + ' universities successfully loaded');
+          if ($scope.user && $scope.user.position && $scope.user.position.coords) {
+            getNearestUniversity($scope.user.position.coords.latitude, $scope.user.position.coords.longitude, $scope.static.universities, 100,
+              $localstorage, $scope, callback, $state);
+          } else
           if ($scope && $scope.platform && $scope.platform.android) {
             Geolocation.getUserPosition($scope, null, null, $state);
           }
@@ -511,6 +516,26 @@ function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   var d = R * c; // Distance in km
   return d;
+}
+
+var getNetworkSpeed = function() {
+
+    var networkState = navigator.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.CELL]     = 'Cell generic connection';
+    states[Connection.NONE]     = 'No network connection';
+
+    console.log('Connection type: ' + states[networkState]);
+
+    return networkState;
+
 }
 
 function deg2rad(deg) {
@@ -560,7 +585,6 @@ function getNearestUniversity(user_lat, user_long, uni_list, limit, local_storag
 
     // $scope.nearest_universities = largeList;
     $scope.static.nearest_universities = largeList;
-    console.log($scope, $state);
     if (callback) {
       callback($scope, $state);
     }

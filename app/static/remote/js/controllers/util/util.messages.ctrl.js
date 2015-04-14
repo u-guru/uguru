@@ -15,15 +15,22 @@ angular.module('uguru.student.controllers')
   '$cordovaKeyboard',
   '$ionicScrollDelegate',
   'Restangular',
+  '$ionicHistory',
   function($scope, $state, $timeout, $localstorage,
   $ionicModal, $ionicTabsDelegate, $cordovaProgress,
-  $stateParams, $cordovaKeyboard, $ionicScrollDelegate, Restangular) {
-    $scope.hide_footer = false;
-    $scope.default_img_one = "https://scontent-a-lax.xx.fbcdn.net/hphotos-xpf1/t31.0-8/10562663_885963074765104_3921025689053196901_o.jpg";
-    $scope.default_img_two = "https://scontent-a-lax.xx.fbcdn.net/hphotos-xpa1/t31.0-8/10520798_883807624993289_354037221863580422_o.jpg"
+  $stateParams, $cordovaKeyboard, $ionicScrollDelegate,
+  Restangular, $ionicHistory) {
 
+
+    $scope.hide_footer = false;
     $scope.session = JSON.parse($stateParams.sessionObj);
     $scope.new_message = {content: ''};
+
+    console.log($scope.session);
+
+    $scope.goBack = function() {
+      $ionicHistory.goBack();
+    };
 
     $scope.getCurrentDate = function() {
         var d = new Date();
@@ -49,25 +56,17 @@ angular.module('uguru.student.controllers')
       var messages = messages;
       for (var i = 0; i < messages.length; i ++ ) {
         var current_message = messages[i];
+        current_message.profile_url = messages[i].sender.profile_url;
         if (current_message.sender.id === $scope.user.id) {
-          current_message.class = 'you';
-          current_message.profile_url = messages[i].sender.profile_url;
-          if (!current_message.profile_url) {
-            current_message.profile_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100';
-          }
+          current_message.class = 'item-avatar-right';
         } else {
-          current_message.class = 'sender';
-          current_message.profile_url = messages[i].receiver.profile_url;
-          if (!current_message.profile_url) {
-            current_message.profile_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100';
-          }
+          current_message.class = 'item-avatar-left';
         }
       }
       messages.sort($scope.sortMessageComparator);
+      $scope.loader.hide();
       return messages;
     }
-
-    $scope.messages = $scope.processMessages($scope.session.messages);
 
     $scope.setFocus = function() {
       if (!$scope.hide_footer) {
@@ -181,7 +180,9 @@ angular.module('uguru.student.controllers')
     });
 
     $scope.$on('$ionicView.beforeEnter', function(){
-      $scope.getMessagesFromServer(10000);
+      $scope.loader.show();
+      $scope.messages = $scope.processMessages($scope.session.messages);
+      // $scope.getMessagesFromServer(10000);
     });
 
 

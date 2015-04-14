@@ -1,10 +1,10 @@
 
 
-<ion-view hide-nav-bar="true" class="student-request-form">
+<ion-view hide-nav-bar="true">
 
     <ion-header-bar class='header-bar'>
-        <a class="button button-clear button-back" nav-direction="back" href="#/student-request">Back</button>
-        <h1 class="title">Session Type</h1>
+        <a class="button button-clear button-back" nav-direction="back" href="#/student-request">Back</a>
+        <h5 class="title">Guru Type</h5>
         <a class="button button-clear button-back" ui-sref="^.request-session-length">Next</a>
     </ion-header-bar>
 
@@ -24,7 +24,7 @@
                             </div>
                             <div class="pure-u-1">
                                 <label class="checkbox">
-                                    <input type="checkbox" ng-model="root.vars.request.type.virtual"/> <span class='checkbox-label-text'> Online </span>
+                                    <input type="checkbox" ng-model="root.vars.request.type.online"/> <span class='checkbox-label-text'> Online </span>
                                  </label>
                             </div>
                         </div>

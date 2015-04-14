@@ -25,8 +25,6 @@
   .onboarding-confirm button {
     width: 120%;
     left: 12%; }
-  #desk {
-    left: 12%; }
   .onboarding-prompt-location .button-back {
     margin: -15px auto !important;
     color: rgba(255, 255, 255, 0.7) !important; }
@@ -263,6 +261,9 @@ button {
   font-size: 60%;
   text-align: center;
   color: rgba(0, 0, 0, 0.8); }
+
+.header-bar h5 {
+  text-transform: uppercase; }
 
 .onboarding-nearest .header-bar {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
@@ -521,7 +522,6 @@ p {
   font-size: 80%;
   opacity: 0.4; }
 .course-list-container .item.course-item.add-course-item h5 {
-  padding-left: 1em;
   line-height: 1em;
   color: #68b2a5;
   opacity: 1; }
@@ -541,11 +541,19 @@ p {
 .inline {
   display: inline-block; }
 
+.popover-backdrop.active {
+  background-color: rgba(0, 0, 0, 0.6); }
+
 .popover-backdrop {
   padding: 1em;
   text-align: center; }
   .popover-backdrop .uguru-popover {
-    height: 170px; }
+    height: 170px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+    border-radius: 10px; }
+  .popover-backdrop .bar-header {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px; }
   .popover-backdrop h1.title {
     font-family: "OpenSans-Bold";
     opacity: 0.8;
@@ -616,9 +624,6 @@ p {
 .request-guru-type .checkbox input:before, .request-guru-type .checkbox-icon:before {
   border-width: 1px;
   border-radius: 3px; }
-.request-guru-type h5 {
-  font-size: 100%;
-  margin-bottom: 0px; }
 
 .auto-margin {
   margin: auto; }
@@ -734,7 +739,7 @@ p {
   background-repeat: no-repeat;
   background-position: 50%;
   height: 15px;
-  background-image: url('../img/tabs-icon-1.svg');
+  background-image: url('../../img/tabs-icon-1.svg');
   background-size: contain;
   position: absolute;
   width: 100%; }
@@ -742,7 +747,7 @@ p {
   background-repeat: no-repeat;
   background-position: 50%;
   height: 15px;
-  background-image: url('../img/tabs-icon-3.svg');
+  background-image: url('../../img/tabs-icon-3.svg');
   background-size: contain;
   position: absolute;
   width: 100%;
@@ -751,7 +756,7 @@ p {
   background-repeat: no-repeat;
   background-position: 50%;
   height: 15px;
-  background-image: url('../img/tabs-icon-2.svg');
+  background-image: url('../../img/tabs-icon-2.svg');
   background-size: contain;
   position: absolute;
   width: 100%; }
@@ -876,18 +881,28 @@ p {
   font-weight: 700; }
 
 .j-start {
-  webkit-justify-content: flex-start;
-  justify-content: start; }
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start; }
 
-.j-start-end {
-  webkit-justify-content: flex-end;
+.j-start-end, .j-end {
+  -webkit-justify-content: flex-end;
   justify-content: flex-end; }
 
-.become-guru h5.title {
-  font-size: 80%;
-  font-weight: 700; }
+.header-bar.dark-header {
+  background-color: #2b3234;
+  color: rgba(255, 255, 255, 0.8); }
+  .header-bar.dark-header h5 {
+    color: white;
+    font-family: "OpenSans-Bold";
+    font-size: 105%; }
+  .header-bar.dark-header a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 11px !important; }
+
 .become-guru img {
-  width: 40%; }
+  width: 50%;
+  margin-top: 10%;
+  margin-left: 25%; }
 .become-guru button {
   border-width: 2px;
   font-size: 80%;
@@ -918,3 +933,44 @@ p {
   padding-bottom: 0px; }
 .uguru-settings .become-guru-wrapper {
   padding: 0em 1em; }
+
+.guru-sessions {
+  background-color: white; }
+
+.item-avatar-right div {
+  text-align: right; }
+.item-avatar-right img {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  max-width: 40px;
+  max-height: 40px;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; }
+
+.student-request-duration .scroll-container {
+  padding: 1em 3em;
+  border: 2px solid rgba(0, 0, 0, 0.2); }
+.student-request-duration .hour-scroll {
+  text-align: right;
+  padding-right: 1em; }
+.student-request-duration .flex-item-c {
+  padding: 0.5em 0em;
+  font-size: 150%;
+  display: inline-block; }
+.student-request-duration .main-hours, .student-request-duration .main-minutes {
+  border-top: 1.5px solid black;
+  border-bottom: 1.5px solid black; }
+.student-request-duration .main-hours {
+  padding-right: 0.5em; }
+.student-request-duration .icon {
+  color: #68b2a5;
+  font-size: 150%; }
+.student-request-duration .hour-offset {
+  padding-right: 0.5em; }
+.student-request-duration .main-minutes {
+  padding-left: 0.5em; }
+.student-request-duration .min-scroll {
+  text-align: left;
+  padding-left: 1em; }

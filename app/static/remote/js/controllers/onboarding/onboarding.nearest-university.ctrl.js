@@ -17,15 +17,56 @@ angular.module('uguru.onboarding.controllers')
      Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
      $ionicPlatform, $ionicModal, $cordovaKeyboard, $cordovaStatusbar) {
 
+    $scope.search_text = '';
+    $scope.header_text = 'Nearby Schools'
+
+    $scope.$on('$ionicView.beforeEnter', function(){
+        console.log('before view has entered');
+        $scope.universities = $scope.static.universities;
+
+        if ($scope.platform.ios && window.StatusBar) {
+            StatusBar.styleDefault();
+        }
+    });
+
+    $scope.$on('$ionicView.afterEnter', function(){
+        console.log('after view has entered');
+
+        $scope.setFocus = function(target) {
+          if ($scope.search_text.length === 0 && !$scope.keyboard_force_off) {
+            document.getElementsByName("university-input")[0].focus();
+            $scope.search_active = true;
+          } else {
+            $scope.search_active = false;
+          }
+        };
+
+        $scope.clearSearchInput = function() {
+            $scope.search_text = '';
+        };
+
+
+        if ($scope.static.nearest_universities.length === 0) {
+            console.log(document.getElementsByName("university-input")[0].focus());
+
+            $scope.search_active = ($scope.static.universities && $scope.static.universities.length > 0)
+            if ($scope.search_active) {
+                $scope.header_text = 'Select University';
+                $scope.setFocus();
+            }
+        }
+    });
+
+    $scope.hideKeyboard = function() {
+        $scope.closeKeyboard();
+    }
+
+
     $scope.nearest_universities = $scope.static.nearest_universities;
 
     $scope.n_universities = $scope.nearest_universities.slice(0,10);
     //to let modal know that this is onboarding
     $scope.onboarding = true;
-    console.log($scope.static.nearest_universities.length);
-    if ($scope.nearest_universities.length === 0) {
-        $scope.n_universities = $scope.static.universities;
-    }
 
     $scope.nearestUniversitySelected = function($event, n_university) {
 
@@ -55,10 +96,6 @@ angular.module('uguru.onboarding.controllers')
         $scope.closeKeyboard();
         $scope.loader.show();
         $timeout(function() {
-
-            if (window.StatusBar) {
-                StatusBar.styleLightContent();
-            }
 
             // $scope.addUniversityModal.hide();
             $scope.loader.hide();

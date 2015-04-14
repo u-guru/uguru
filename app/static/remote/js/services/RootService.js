@@ -6,7 +6,8 @@ angular.module('uguru.root.services', [])
     '$timeout',
     '$cordovaProgress',
     '$cordovaDialogs',
-    function($cordovaKeyboard, $localstorage, $timeout, $cordovaProgress, $cordovaDialogs) {
+    '$ionicHistory',
+    function($cordovaKeyboard, $localstorage, $timeout, $cordovaProgress, $cordovaDialogs, $ionicHistory) {
 
     this.util = {
         objectFindByKey: function(array, key, value) {

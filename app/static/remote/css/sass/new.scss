@@ -46,9 +46,9 @@ $tabs-text: #4D4D4D;
       }
     }
 
-    #desk {
-      left:12%;
-    }
+    // #desk {
+    //   left:12%;
+    // }
 
     .onboarding-prompt-location .button-back {
         margin: -15px auto !important;
@@ -361,6 +361,9 @@ p {
   }
 }
 
+.header-bar h5 {
+  text-transform: uppercase;
+}
 
 .onboarding-nearest {
 
@@ -758,7 +761,6 @@ p {
   }
 
   .item.course-item.add-course-item h5 {
-    padding-left:1em;
     line-height:1em;
     color:$positive;
     opacity:1;
@@ -786,13 +788,23 @@ p {
   display:inline-block;
 }
 
-.popover-backdrop {
+.popover-backdrop.active {
+    background-color: rgba(0,0,0,.6);
+}
 
+.popover-backdrop {
   padding:1em;
   text-align:center;
   .uguru-popover {
     height:170px;
+    box-shadow:0 0 40px rgba(0,0,0,.08);
+    border-radius:10px;
   }
+  .bar-header {
+    border-top-right-radius:10px;
+    border-top-left-radius:10px;
+  }
+
   h1.title {
     font-family:"OpenSans-Bold";
     opacity:0.8;
@@ -912,10 +924,10 @@ p {
     // transition: background-color 20ms ease-in-out;
   }
 
-  h5 {
-    font-size:100%;
-    margin-bottom:0px;
-  }
+  // h5 {
+  //   font-size:100%;
+  //   margin-bottom:0px;
+  // }
 }
 
 
@@ -1093,7 +1105,7 @@ margin: 0;
         background-repeat: no-repeat;
         background-position: 50%;
         height: 15px;
-        background-image: url('../img/tabs-icon-1.svg');
+        background-image: url('../../img/tabs-icon-1.svg');
         background-size:contain;
         position: absolute;
         width: 100%;
@@ -1104,9 +1116,10 @@ margin: 0;
         background-repeat: no-repeat;
         background-position: 50%;
         height: 15px;
-        background-image: url('../img/tabs-icon-3.svg');
+        background-image: url('../../img/tabs-icon-3.svg');
         background-size:contain;
         position: absolute;
+        // border:2px solid rgba(219,113,51,1);
         width: 100%;
         font-weight:bold;
       }
@@ -1116,7 +1129,7 @@ margin: 0;
         background-repeat: no-repeat;
         background-position: 50%;
         height: 15px;
-        background-image: url('../img/tabs-icon-2.svg');
+        background-image: url('../../img/tabs-icon-2.svg');
         background-size:contain;
         position: absolute;
         width: 100%;
@@ -1293,22 +1306,35 @@ margin: 0;
 }
 
 .j-start {
-  webkit-justify-content: flex-start;
-  justify-content: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
 }
 
-.j-start-end {
-  webkit-justify-content: flex-end;
+.j-start-end, .j-end {
+  -webkit-justify-content: flex-end;
   justify-content: flex-end;
 }
 
-.become-guru {
-  h5.title {
-    font-size:80%;
-    font-weight:700;
+
+.header-bar.dark-header {
+  background-color: rgb(43,50,52);
+  color:rgba(255,255,255,0.8);
+  h5 {
+    color:white;
+    font-family: "OpenSans-Bold";
+    font-size:105%;
   }
+  a {
+    color:rgba(255,255,255,0.7);
+    font-size:11px !important;
+  }
+}
+
+.become-guru {
   img {
-    width:40%;
+    width:50%;
+    margin-top:10%;
+    margin-left:25%;
   }
   button {
     border-width:2px;
@@ -1355,5 +1381,75 @@ margin: 0;
   .become-guru-wrapper {
     padding:0em 1em;
 
+  }
+}
+
+.guru-sessions {
+  background-color:white;
+}
+
+.item-avatar-right
+{
+  div {
+    text-align:right;
+  }
+  img
+  {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    max-width: 40px;
+    max-height: 40px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+}
+
+.student-request-duration {
+  .scroll-container {
+    padding:1em 3em;
+    border:2px solid rgba(0,0,0,0.2);
+  }
+
+  .hour-scroll {
+    text-align: right;
+    padding-right:1em;
+  }
+
+  .flex-item-c {
+    padding:0.5em 0em;
+    font-size:150%;
+    display:inline-block;
+  }
+
+  .main-hours,
+  .main-minutes {
+    border-top:1.5px solid black;
+    border-bottom:1.5px solid black;
+  }
+
+  .main-hours {
+    padding-right:0.5em;
+  }
+
+  .icon {
+    color:$positive;
+    font-size:150%;
+  }
+
+  .hour-offset
+  {
+    padding-right:0.5em;
+  }
+
+  .main-minutes
+  {
+    padding-left:0.5em;
+  }
+
+  .min-scroll {
+    text-align: left;
+    padding-left:1em;
   }
 }

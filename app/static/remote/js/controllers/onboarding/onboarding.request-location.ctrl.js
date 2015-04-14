@@ -25,6 +25,32 @@ angular.module('uguru.onboarding.controllers', [])
       $state.go('^.onboarding-nearest-university');
     }
 
+    $scope.$on('$ionicView.loaded', function(){
+      var header = document.getElementById('header');
+      var body = document.getElementById('body');
+      var footer_1 = document.getElementById('footer_1');
+      var footer_2 = document.getElementById('footer_2');
+
+
+      $timeout(function() {
+        $timeout(function() {
+        header.classList.add('bounceInDown');
+        }, 1000);
+
+        $timeout(function() {
+          body.classList.add('lightSpeedIn');
+        }, 1500);
+
+        $timeout(function() {
+          footer_1.classList.add('fadeInLeftBig');
+        }, 2000);
+
+        $timeout(function() {
+          footer_2.classList.add('fadeInRightBig');
+        }, 2500);
+      }, 1000)
+    });
+
     $scope.togglePersonGuru = function() {
       //if user is ios.. prompt
 

@@ -11,13 +11,49 @@ angular.module('uguru.student.controllers')
   '$ionicHistory',
   function($scope, $state, $timeout, $localstorage,
  	$ionicHistory) {
-    console.log($scope.root.vars.request);
+
+    $scope.indexToValueMinutes = [0, 15, 30, 45];
+
     $scope.validateForm = function() {
       // console.log($scope.root.vars.request._length.hours, $scope.root.vars.request._length.minutes);
       if (($scope.root.vars.request._length.hours !== null) && ($scope.root.vars.request._length.minutes !==null)) {
         $ionicHistory.goBack();
       } else {
         alert('Please select at least one option');
+      }
+    }
+
+    if (!$scope.root.vars.request._length.hours) {
+      $scope.root.vars.request._length.hours = 2;
+    }
+
+    if (!$scope.root.vars.request._length.minutes) {
+      $scope.root.vars.request._length.minutes = 1;
+    }
+
+    $scope.incrementHour = function() {
+      console.log($scope.root.vars.request._length.hours);
+      if ($scope.root.vars.request._length.hours <= 9) {
+        $scope.root.vars.request._length.hours += 1;
+      }
+    }
+
+    $scope.decrementHour = function() {
+      if ($scope.root.vars.request._length.hours > 0) {
+        $scope.root.vars.request._length.hours -= 1;
+      }
+    }
+
+    $scope.decrementMinute = function() {
+      if ($scope.root.vars.request._length.minutes > 0) {
+        $scope.root.vars.request._length.minutes -= 1;
+      }
+    }
+
+    $scope.incrementMinute = function() {
+      if ($scope.root.vars.request._length.minutes <= 2) {
+        console.log($scope.root.vars.request._length.minutes);
+        $scope.root.vars.request._length.minutes += 1;
       }
     }
 

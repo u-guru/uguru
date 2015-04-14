@@ -1,0 +1,50 @@
+
+<ion-view class='guru-sessions'>
+  <ion-header-bar class='header-bar'>
+    <h5 class="title">Guru Sessions</h5>
+    <a class='button button-clear' ng-click="addCourseModal.show()"></a>
+  </ion-header-bar>
+  <ion-tabs class="tabs-stable tabs-striped tabs-top session-tabs" delegate-handle="student-home-tabs-top">
+    <ion-tab title="Incoming" ng-show="topTabsDelegate.selectedIndex() === 0">
+    </ion-tab>
+
+    <ion-tab title="Scheduled" ng-show="topTabsDelegate.selectedIndex() === 1">
+    </ion-tab>
+    <ion-tab title="Past" ng-show="topTabsDelegate.selectedIndex() === 2">
+    </ion-tab>
+  </ion-tabs>
+
+  <!-- incoming proposals -->
+  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 0' scroll="false" style='background-color:white;'>
+
+    <div class='pure-g-c flex-column center full-height' ng-show='!user.active_proposals || user.active_proposals.length === 0'>
+      <div class='container padding-1em'>
+        No incoming requests yet! <br> Try <strong> requesting help </strong> below
+      </div>
+    </div>
+
+    <div class="list" ng-show='user.active_proposals.length > 0'>
+      <a class="item item-avatar-right upcoming-session-card" ng-repeat='proposal in user.active_proposals' ng-click='goToProposalDetails(proposal)'>
+        <img ng-src="{{proposal.request.student.profile_url}}">
+        <h2>{{proposal.request.student.name}} <strong>{{proposal.request.course.short_name}}</strong></h2>
+        <h4 class='pending'> PENDING </h4>
+      </a>
+    </div>
+  </ion-content>
+
+  <!-- scheduled sessions -->
+  <ion-content class='has-subheader pure-g flex-column full-height' ng-show='topTabsDelegate.selectedIndex() === 1' scroll='false'>
+
+    <ion-scroll class='pure-u-1 full-height'>
+      <div class="list" ng-show='user.active_guru_sessions.length > 0'>
+        <a class="item item-avatar-right upcoming-session-card" ng-repeat='session in user.active_guru_sessions' ng-click='goToActiveSession(session)'>
+          <img ng-src="{{session.request.student.profile_url}}">
+          <h2>{{session.request.student.name}} <strong>{{session.request.course.short_name}}</strong></h2>
+          <h4 class='pending'> Starting Soon! </h4>
+        </a>
+      </div>
+    </ion-scroll>
+
+  </ion-content>
+
+</ion-view>

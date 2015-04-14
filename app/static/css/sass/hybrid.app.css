@@ -4,6 +4,7 @@ body,
   opacity: 1; }
 
 #overlay {
+  display: none;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -104,13 +105,25 @@ h5 {
 #dropshadow .phone-container-wrapper {
   height: 100%;
   align-content: center;
-  justify-content: center; }
-  #dropshadow .phone-container-wrapper .hybrid-phone-template-container {
+  justify-content: center;
+  position: relative; }
+  #dropshadow .phone-container-wrapper .hybrid-phone-template-container,
+  #dropshadow .phone-container-wrapper .phone-template-overlay {
     padding: 2em 0em;
     position: relative; }
-    #dropshadow .phone-container-wrapper .hybrid-phone-template-container img {
-      min-height: 400px;
-      max-height: 550px; }
+    #dropshadow .phone-container-wrapper .hybrid-phone-template-container img,
+    #dropshadow .phone-container-wrapper .phone-template-overlay img {
+      min-height: 600px; }
+  #dropshadow .phone-container-wrapper .phone-template-overlay {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    width: 94%;
+    margin-left: 3.1%;
+    margin-top: 30.5%;
+    top: 0px;
+    z-index: 100;
+    min-height: 563px;
+    border: 0px; }
 #dropshadow .hybrid-push-wrapper {
   flex-direction: column-reverse;
   -webkit-flex-direction: column-reverse;

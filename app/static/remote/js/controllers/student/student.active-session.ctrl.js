@@ -13,56 +13,20 @@ angular.module('uguru.student.controllers')
   '$stateParams',
   'Geolocation',
   '$cordovaGeolocation',
-  '$cordovaBackgroundGeolocation',
   'Restangular',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $stateParams,
-  Geolocation, $cordovaGeolocation, $cordovaBackgroundGeolocation,
-  Restangular) {
+  Geolocation, $cordovaGeolocation, Restangular) {
 
     $scope.session = JSON.parse($stateParams.sessionObj);
-
-    $scope.guru = {
-      first_name: 'Shun',
-      course:$scope.session.course.short_name,
-      guru_courses: $scope.user.student_courses
-    }
-
-    $scope.bgGeo = window.plugins.backgroundGeoLocation;
+    $scope.recursive_delay = 60000;
+    $scope.guru = {};
 
     $scope.student_position = null;
     $scope.guru_position = null;
 
     $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
     $scope.options = {scrollwheel: false};
-
-    $scope.startBackgroundGeolocation = function() {
-
-      options =  {
-        desiredAccuracy: 5,
-        stationaryRadius: 20,
-        distanceFilter: 30,
-        activityType: 'Fitness',
-        debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
-        stopOnTerminate: false
-      }
-      $cordovaBackgroundGeolocation.configure(options)
-      .then(
-        function(success) {
-          console.log(success);
-        }, // Background never resolves
-        function (err) { // error callback
-          console.error(err);
-        },
-        function (location) { // notify callback
-          console.log(location);
-        });
-    }
-
-    $scope.finishBackgroundTask = function() {
-        console.log('closing background task...');
-        $scope.bgGeo.finish();
-    };
 
     $scope.getCurrentDate = function() {
         var d = new Date();
@@ -76,28 +40,6 @@ angular.module('uguru.student.controllers')
         result = hour + ':' + minutes + ' ' + ending
         return result
     }
-
-    $scope.geoCallbackFn = function(location) {
-        console.log('[js] BackgroundGeoLocation callback:  ' + location.latitude + ',' + location.longitude);
-        // Do your HTTP request here to POST location to your server.
-        //
-        //
-
-        $scope.syncPositionWithServer(location, $scope.finishBackgroundTask);
-    };
-
-    $scope.geoFailureFn = function(error) {
-        console.log('BackgroundGeoLocation error');
-    }
-
-    $scope.bgGeo.configure($scope.geoCallbackFn, $scope.geoFailureFn, {
-        desiredAccuracy: 1,
-        stationaryRadius: 20,
-        distanceFilter: 30,
-        activityType: 'Fitness',
-        debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
-        stopOnTerminate: false // <-- enable this to clear background location settings when the app terminates
-    });
 
     $scope.cancelSession = function(session) {
 
@@ -207,7 +149,15 @@ angular.module('uguru.student.controllers')
       return new google.maps.LatLng(latCoord, longCoord);
     }
 
-    $scope.drawGoogleMap = function(pos_a, pos_b) {
+    $scope.drawGoogleMap = function(pos_a, pos_b, markers_option) {
+
+          if (!pos_a) {
+            pos_a = {
+              latitude: $scope.user.university.latitude,
+              longitude: $scope.user.university.longitude
+            }
+          }
+
           var mapContainer = document.getElementById("map_canvas");
           var initMapCoords = $scope.createGoogleLatLng(
                                 parseFloat(pos_a.latitude),
@@ -222,17 +172,21 @@ angular.module('uguru.student.controllers')
             zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
           }
 
-          var actual_map = $scope.map.control.getGMap();
-          actual_map = new google.maps.Map(
+          var actual_map = new google.maps.Map(
                   mapContainer,
                   mapOptions
           )
 
-          $scope.actual_map = actual_map
+          $scope.actual_map = actual_map;
 
-          $scope.drawGoogleMarkers(pos_a, pos_b, actual_map);
+          //if this is passed in as an argument
+          if (markers_option) {
 
+            $scope.drawGoogleMarkers(pos_a, pos_b, actual_map);
+
+          }
     }
+
 
     $scope.drawGoogleMarkers = function(position_a, position_b, map) {
       if (position_a) {
@@ -273,13 +227,33 @@ angular.module('uguru.student.controllers')
 
     }
 
-    $scope.calculateDistance = function(position_a, position_b) {
+    $scope.getUserRecentLocation = function(recursive_delay) {
+
+      $cordovaGeolocation
+      .getCurrentPosition($scope.geoOptions)
+      .then(function (position) {
+
+        $scope.user.last_position = position.coords;
+
+        console.log('user is at ' + $scope.user.last_position.latitude + ',' + $scope.user.last_position.longitude);
+
+        $scope.drawGoogleMap($scope.user.last_position, $scope.guru.last_position, true);
+
+        if (recursive_delay) {
+          $timeout(function() {
+            $scope.getUserRecentLocation(recursive_delay);
+          }, recursive_delay);
+        }
+
+      }, function(err) {
+          console.log('error from gps', err);
+          $scope.showGeoLocationError(err);
+
+      });
 
     }
 
     $scope.goToSessionMessages = function(session) {
-      console.log('going to session messages..')
-      console.log(session);
       $state.go('^.messages', {sessionObj:JSON.stringify(session)});
     }
 
@@ -287,24 +261,14 @@ angular.module('uguru.student.controllers')
       $state.go('^.guru-profile', {guruObj:JSON.stringify(guru)});
     }
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/ratings.modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.ratingModal = modal;
-    });
-
-
-    $scope.$on('$ionicView.beforeLeave', function(){
-      $scope.bgGeo.stop();
-      console.log('stopping background');
-    });
-
     $scope.$on('$ionicView.beforeEnter', function(){
-      console.log('starting background...')
-      $scope.getCurrentPositionAndSync(20000);
-      $scope.last_updated = $scope.getCurrentDate
-      $scope.bgGeo.start();
+      $scope.drawGoogleMap();
+
+      if (!$scope.user.last_position || !$scope.user.last_position.latitude) {
+        console.log('no last position on record... starting now every', $scope.recursive_delay, 'seconds');
+        $scope.getUserRecentLocation($scope.recursive_delay);
+      }
+
     });
 
   }

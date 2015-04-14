@@ -1,19 +1,52 @@
-<ion-view title="Your {{session.request.course.short_name}} Session" disable-tap>
-    <ion-header-bar style="height:30px; text-align:center;" class="bar-subheader bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)" >
+<ion-view hide-nav-bar='true' class='guru-active-session'>
+    <ion-header-bar class="header-bar">
+
+        <a class="button button-clear button-back"  nav-direction='back' href='#/guru-home'>Back</a>
+        <h5 class="title uppercase">{{session.request.course.short_name}} Session w/ {{session.request.student.name.split(' ')[0]}} </h5>
+    </ion-header-bar>
+    <!-- <ion-header-bar style="height:30px; text-align:center;" class="bar-subheader bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)" >
 
       <div style="margin-top:5px; width:100%; white-space:no-wrap; overflow: hidden; text-overflow: ellipsis;text-transform:none; font-size:12px;">
         Last updated: {{last_updated}}
       </div>
 
     </ion-header-bar>
+ -->
+
+  <ion-content class="has-header" scroll='false'>
+    <div class='pure-g-c flex-column flex-space-between'>
+      <div class='flex-item-c'>
+        <ion-pane id="map_canvas" style="auto;width: 100%;margin: 0px;">
+              <ui-gmap-google-map center="map.center" control="map.control" zoom="map.zoom"  pan="true" options="options">
+              </ui-gmap-google-map>
+        </ion-pane>
+      </div>
+      <div class='pure-g flex-item-c j-end' style='height:40%;'>
+        <ul>
+          <li class="item padding-0-4">
+            <button class="button button-full button-positive" ng-click="goToSessionMessages(session)">
+              Message {{session.guru.first_name}}
+            </button>
+            <button class="button button-full button-positive button-outline" ng-click="continueSession(session)" ng-show='session.status===2'>
+              Continue Session
+            </button>
+            <button class="button button-full button-positive button-outline" ng-click="startSessionTimer(session)" ng-show='session.status===1'>
+              Start Session
+            </button>
+            <button class="button button-full button-disabled button-outline" ng-click="cancelSession()">
+              Cancel Session
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
 
 
-  <ion-content class="background-black" style="background-color:black; opacity:0.8; top:88px;">
+    <!--
     <div class="oh relative">
       <div class="md-box-1 center" ng-show="session.status === 1">
          <ion-pane id="map_canvas" style="height: 60%;width: 100%;margin: 0px;">
           <ui-gmap-google-map center="map.center" control="map.control" zoom="map.zoom"  pan="true" options="options">
-            <!-- <ui-gmap-search-box options="searchbox.options" template="searchbox.template" events="searchbox.events" parentdiv="searchbox.parentdiv"></ui-gmap-search-box> -->
           </ui-gmap-google-map>
           </ion-pane>
       </div>
@@ -53,6 +86,6 @@
           </button>
         </li>
       </ul>
-    </div>
+    </div>-->
   </ion-content>
 </ion-view>

@@ -8,6 +8,7 @@ body,
 
 #overlay
 {
+    display:none;
     height:100%;
     width:100%;
     position:fixed;
@@ -136,14 +137,27 @@ h5 {
     height:100%;
     align-content:center;
     justify-content: center;
+    position:relative;
 
-    .hybrid-phone-template-container {
+    .hybrid-phone-template-container,
+    .phone-template-overlay {
       padding:2em 0em;
       position:relative;
       img {
-        min-height:400px;
-        max-height:550px;
+        min-height:600px;
+        // max-height:550px;
       }
+    }
+    .phone-template-overlay {
+        background-color: rgba(0,0,0,0.8);
+        position: absolute;
+        width: 94%;
+        margin-left: 3.1%;
+        margin-top: 30.5%;
+        top:0px;
+        z-index: 100;
+        min-height: 563px;
+        border:0px;
     }
 
   }

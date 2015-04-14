@@ -27,16 +27,14 @@ def compose_push_notif_message(notif_key, args_tuple):
     return str(push_notif_copy[notif_key] % args_tuple)
 
 def send_push_for_user_devices(user, notif_key, args_tuple):
-
+    #TODO add delay
     message = compose_push_notif_message(notif_key, args_tuple)
-
+    print "user has", len(user.devices), "devices -- sending this message below:"
+    print message
     for device in user.devices:
-        print device.platform, device.push_notif
-        device_os = device.platform.lower()
-
         # if device is ios & push enabled
-        if device.push_notif_enabled and device.push_notif:
-
+        if device.platform and device.push_notif and device.push_notif_enabled:
+            device_os = device.platform.lower()
             if device_os == 'ios':
 
                 user_apns_token = device.push_notif
@@ -49,6 +47,50 @@ def send_push_for_user_devices(user, notif_key, args_tuple):
 
 
 
+def send_message_to_receiver(sender, receiver, course, delay_seconds):
+    args_tuple(
+        sender.name.split(' ')[0].title(),
+        course.short_name.upper()
+        )
+    if not delay_seconds:
+        send_push_for_user_devices(receiver, 'message_received', args_tuple)
+    else:
+        send_push_for_user_devices.delay(user=receiver, \
+            notif_key='message_received',
+            args_tuple=args_tuple,
+            countdown= delay_seconds )
+
+def send_student_has_accepted_to_guru(session, guru, delay_seconds=None):
+
+    total_hours = session.hours
+    if session.minutes:
+        total_hours += int((session.minutes / 60.0 * 100)/100)
+    estimated_price = session.request.DEFAULT_PRICE * total_hours
+    args_tuple(
+        str(estimated_price)
+        )
+    if not delay_seconds:
+        send_push_for_user_devices(guru, 'student_chose_guru', args_tuple)
+    else:
+        send_push_for_user_devices.delay(user=guru, \
+            notif_key='student_chose_guru',
+            args_tuple=args_tuple,
+            countdown= delay_seconds )
+
+def send_guru_proposal_to_student(proposal, student, delay_seconds=None):
+    args_tuple = (
+        proposal.guru.name.split(' ')[0].title(),
+        str(10)
+    )
+
+    if not delay_seconds:
+        send_push_for_user_devices(student, 'guru_can_help', args_tuple)
+    else:
+        send_push_for_user_devices.delay(user=student, \
+            notif_key='guru_can_help',
+            args_tuple=args_tuple,
+            countdown= delay_seconds )
+
 def send_student_request_to_guru(_request, guru, delay_seconds=None):
     args_tuple = (
         _request.DEFAULT_PRICE,
@@ -58,7 +100,7 @@ def send_student_request_to_guru(_request, guru, delay_seconds=None):
     )
 
     # send push to to guru
-    if delay:
+    if not delay_seconds:
         send_push_for_user_devices(guru, 'student_request', args_tuple)
     else:
         send_push_for_user_devices.delay(user=guru, \
@@ -79,7 +121,7 @@ push_notif_copy = {
 
     "guru_student_canceled": "",
     "guru_student_rejected": "",
-    "message_received":"",
+    "message_received":"""You have one new message from %s about %s""",
     "message_received_nudged": "",
 
 }

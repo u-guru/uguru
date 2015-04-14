@@ -27,19 +27,19 @@ angular.module('uguru.student.controllers')
     //TODO: ADD ACTION BAR W / FILE SUPPORT
     //TODO: IF NOT PUSH NOTIFICATIONS, SHOW IT HERE AS PART OF THE FORM
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/add-note.modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.addRequestNoteModal = modal;
-    });
+    // $ionicModal.fromTemplateUrl(BASE + 'templates/add-note.modal.html', {
+    //   scope: $scope,
+    //   animation: 'slide-in-up'
+    // }).then(function(modal) {
+    //     $scope.addRequestNoteModal = modal;
+    // });
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/student-request-map.modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.requestMapModal = modal;
-    });
+    // $ionicModal.fromTemplateUrl(BASE + 'templates/student-request-map.modal.html', {
+    //   scope: $scope,
+    //   animation: 'slide-in-up'
+    // }).then(function(modal) {
+    //     $scope.requestMapModal = modal;
+    // });
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
       scope: $scope,
@@ -55,12 +55,12 @@ angular.module('uguru.student.controllers')
         $scope.contactingGuruModal = modal;
     });
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/calendar.modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.calendarModal = modal;
-    });
+    // $ionicModal.fromTemplateUrl(BASE + 'templates/calendar.modal.html', {
+    //   scope: $scope,
+    //   animation: 'slide-in-up'
+    // }).then(function(modal) {
+    //     $scope.calendarModal = modal;
+    // });
 
 
     // var checkbox0 = [document.getElementById('iconRecord0')];
@@ -293,7 +293,8 @@ angular.module('uguru.student.controllers')
         calendar_selected:false,
         course: $scope.course,
         description:null,
-        location: null
+        location: null,
+        files: []
         }
       }
       else {

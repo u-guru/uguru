@@ -170,6 +170,15 @@ angular.module('uguru.util.controllers')
         $scope.user.updateAttr('add_guru_course', $scope.user, course, null, $scope);
       } else {
         $scope.user.student_courses.push(course);
+
+        if ($scope.user.student_courses.length === 1 && $scope.user.requests.length === 0) {
+          $timeout(function() {
+            var element = document.getElementsByClassName('course-item')[0];
+            console.log(element);
+            $scope.openPopoverTwo(element);
+          }, 3000)
+        }
+
         $scope.user.updateAttr('add_student_course', $scope.user, course, null, $scope);
       }
         document.getElementsByName("course-input")[0].blur();

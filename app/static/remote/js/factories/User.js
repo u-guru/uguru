@@ -1,6 +1,6 @@
 angular.module('uguru.user', [])
-.factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal',
-    function($localstorage, Restangular, $state, $timeout, $ionicModal) {
+.factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory',
+    function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -25,7 +25,6 @@ angular.module('uguru.user', [])
         user.transfer_cards = [];
         user.course_guru_dict = {};
         user.gurus = [];
-
 
         var user_cards = user.cards;
         for (var i = 0; i < user_cards.length; i++) {
@@ -132,17 +131,17 @@ angular.module('uguru.user', [])
         }
 
 
-        if (user.incoming_requests.length > 0 && !user.guru_mode) {
-            var first_incoming_request = user.incoming_requests[0];
-            var paramPayload = {
-                requestObj:JSON.stringify(first_incoming_request),
-            }
-            if ($state.current.name != 'root.student.guru-available') {
-                 $state.go('^.^.student.guru-available', paramPayload);
-            } else {
-                $state.go('^.guru-available', paramPayload);
-            }
-        }
+        // if (user.incoming_requests.length > 0 && !user.guru_mode) {
+        //     var first_incoming_request = user.incoming_requests[0];
+        //     var paramPayload = {
+        //         requestObj:JSON.stringify(first_incoming_request),
+        //     }
+        //     if ($state.current.name != 'root.student.guru-available') {
+        //          $state.go('^.^.student.guru-available', paramPayload);
+        //     } else {
+        //         $state.go('^.guru-available', paramPayload);
+        //     }
+        // }
         // user.guru_mode = true;
         if (user.is_a_guru && user.guru_mode) {
             user.active_proposals = [];
@@ -313,18 +312,18 @@ angular.module('uguru.user', [])
 
     var delegateActionsFromProcessedUser = function($scope) {
 
-        //student actions
-        if ($scope.user.incoming_requests.length > 0 && !$scope.user.guru_mode) {
-            var first_incoming_request = $scope.user.incoming_requests[0];
-            var paramPayload = {
-                requestObj:JSON.stringify(first_incoming_request),
-            }
-            if ($state.current.name != 'root.student.guru-available') {
-                 $state.go('^.^.student.guru-available', paramPayload);
-            } else {
-                $state.go('^.guru-available', paramPayload);
-            }
-        }
+        //student actionsif ($scope.user.incoming_requests.length > 0 && !$scope.user.guru_mode) {
+        //     var first_incoming_request = $scope.user.incoming_requests[0];
+        //     var paramPayload = {
+        //         requestObj:JSON.stringify(first_incoming_request),
+        //     }
+        //     if ($state.current.name != 'root.student.guru-available') {
+        //          $state.go('^.^.student.guru-available', paramPayload);
+        //     } else {
+        //         $state.go('^.guru-available', paramPayload);
+        //     }
+        // }
+        //
 
         if ($scope.user.impact_events.length > 0) {
             var impact_event = $scope.user.impact_events[0];
@@ -529,6 +528,11 @@ angular.module('uguru.user', [])
                     if ($scope) {
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);
+
+                        if ($scope.loader) {
+                            $scope.loader.hide();
+                        }
+
                         if (callback) {
                             callback($scope);
                         }

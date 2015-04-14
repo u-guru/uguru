@@ -1,8 +1,9 @@
 
 <ion-view hide-nav-bar='true' class='guru-onboarding'>
 
-    <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)" ng-init="init()">
-        <h5 class="title uppercase">Become a Guru</h5>
+    <ion-header-bar class="header-bar dark-header">
+        <a class='button button-clear positive' nav-direction="back" href="#/student-home">BACK</a>
+        <h5 class="title">Become a Guru</h5>
     </ion-header-bar>
 
         <!-- <ion-nav-bar class="bar-dark nav-bar-text bold-font" animation="slide-left-right">
@@ -22,9 +23,18 @@
 
         <ion-content>
 
-        <ion-list class="list list-inset">
+        <div class="list list-inset">
 
-            <a class="item item-icon-right item-thumbnail-right" ng-click="addUniversityModal.show()">
+            <a class="item item-button-right" ng-click="addUniversityModal.show()">
+                <div ng-show="!user.university_id">
+                        What university are you attending?
+                </div>
+                    <div ng-show="user.university_id">
+                    Attending <strong>{{user.university.title}} </strong>
+                </div>
+            </a>
+
+            <!-- <a class="item item-icon-right item-thumbnail-right" ng-click="addUniversityModal.show()">
                 <div class='item-content-container'>
                     <div class='pure-u-1'>
                         <div ng-show="!user.university_id" class="regular-text">
@@ -37,8 +47,8 @@
                 </div>
                 <i class='icon ion-chevron-right'></i>
             </a>
-
-            <a class="item item-icon-right item-thumbnail-right ng-class:{'item-wizard-disabled': !user.university.id}" ng-click="addMajorModal.show()">
+ -->
+            <!-- <a class="item item-icon-right item-thumbnail-right ng-class:{'item-wizard-disabled': !user.university.id}" ng-click="addMajorModal.show()">
                 <div class='item-content-container'>
                     <div class='pure-u-1'>
                         <div ng-show="!user.majors[0].id" class="regular-text">
@@ -76,8 +86,8 @@
                 Bio <stro>edited</strong>. Looking good.
                 </div>
                 <i class='icon ion-chevron-right'></i>
-            </a>
-        </ion-list>
+            </a> -->
+        </div>
 
     </ion-content>
     <ion-footer-bar style="height:auto; background-image:none; background-color:transparent;margin-bottom:-10px;padding:10px 16px;" class="padding">

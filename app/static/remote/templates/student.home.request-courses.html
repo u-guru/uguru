@@ -7,7 +7,7 @@
       <div class='container pure-g-c flex-column flex-space-between'>
         <div class="list list-inset course-list">
 
-            <a class="item course-item item-icon-right" ng-repeat="course in user.student_courses" ng-click="goToRequest(course)">
+            <a class="item course-item item-icon-right" ng-repeat="course in user.student_courses"  ng-click='goToRequest(course)'>
               <h5>{{course.short_name}}</h5>
               <i class="icon icon-right ion-chevron-right"></i>
             </a>
@@ -16,9 +16,8 @@
               <i class="icon icon-right ion-chevron-right"></i>
             </a>
             <a id="add-course-item" class="item item-icon-left course-item add-course-item item-icon-right" ng-click='addCourseModal.show()'>
-              <i class="icon icon-left ion-plus"></i>
-              <h5 class='inline'> New course </h5>
-              <i class="icon icon-right ion-chevron-right"></i>
+              <h5 class='inline'> Add a new course </h5>
+              <i class="icon icon-right ion-plus"></i>
             </a>
 
         </div>

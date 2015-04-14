@@ -346,12 +346,17 @@ def app_flex():
 
 @app.route('/')
 def app_student_home():
-
-
     from lib.university_data import supported_universities
     university_names = supported_universities.keys()
 
-    return render_template("web/student_home.index.html", university=supported_universities['virginia'])
+    university_statistics = {
+        "schools": len(university_names),
+        "courses": 753986,
+        "gurus": 100,
+        "rating": 4.8
+    }
+
+    return render_template("web/student_home.index.html", university_statistics=university_statistics, university=supported_universities['virginia'])
 
 @app.route('/guru/')
 def guru_home():
@@ -455,8 +460,8 @@ def app_home():
 @app.route('/app/')
 def app_route():
     version = Version.query.get(1).ios
-    return redirect('http://u.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
-    # return redirect('http://192.168.42.66:5000/static/remote/index.html?version=' + str(version) + str(13213))
+    # return redirect('http://u.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
+    return redirect('http://192.168.42.66:5000/static/remote/index.html?version=' + str(version) + str(13213))
     # return redirect('http://192.168.0.104:5000/static/remote/index.html')
     # return redirect('http://192.168.42.66:8100/remote/')
 

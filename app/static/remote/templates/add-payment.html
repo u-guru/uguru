@@ -1,9 +1,10 @@
- <ion-view ng-controller="AddPaymentController" title="{{headerText}}">
-  <ion-nav-buttons side="secondary">
-      <button ng-click="addPaymentActionBtn()" class="button button-clear button-positive">
-        {{actionButtonText}}
-      </button>
-  </ion-nav-buttons>
+ <ion-view ng-controller="AddPaymentController" hide-nav-bar="true">
+  <ion-header-bar class="header-bar">
+
+        <a class="button button-clear button-back"  nav-direction='back' href='#/home'>Back</a>
+        <h5 class="title uppercase">{{headerText}}</h5>
+        <a class="button button-clear button-back" ng-click="addPaymentActionBtn()">{{actionButtonText}}</a>
+  </ion-header-bar>
 
   <ion-content>
     <div class="payment">

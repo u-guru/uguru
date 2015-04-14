@@ -28,7 +28,7 @@ angular.module('uguru.util.controllers')
       $ionicHistory.goBack();
     };
 
-    $scope.root.vars.request.description = "I have a midterm tomorrow, that covers every-thing that we talked about last time plus some other worksheet he gave us that wasn't in the reading. Unfortunately idk anything and it would be cool if you could just take it for me? I'll give you my ID, we look pretty similar, I can pay like 200x what this app will."
+    $scope.root.vars.request.description = "";
 
     $scope.validateForm = function() {
 

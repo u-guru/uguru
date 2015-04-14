@@ -63,23 +63,23 @@ Uguru Home Page
                     <div class="padding-1em inner-stat flex-container">
                         <img class="pure-img" src="/static/img/campus-stat.svg"/>
                         </img>
-                        <h2>{{university["stats"]["population"]}}</h2>
-                        <p>Campus Students</p>
+                        <h2>{{university_statistics["schools"]}}</h2>
+                        <p>Total Campuses</p>
                     </div>
                 </div>
                 <div class="pure-u-1-2 stat pure-u-sm-1-2 pure-u-md-1-4 pure-u-lg-1-4">
                     <div class="padding-1em inner-stat">
                         <img class="pure-img" src="/static/img/dept-stat.svg"/>
-                        <h2>{{university["stats"]["departments"]}}</h2>
-                        <p>Supported Departments</p>
+                        <h2>{{university_statistics["courses"]}}</h2>
+                        <p>Supported Courses</p>
                     </div>
                 </div>
                 <div class="pure-u-1-2 stat pure-u-sm-1-2 pure-u-md-1-4 pure-u-lg-1-4">
 
                     <div class="padding-1em inner-stat">
                         <img class="pure-img" src="/static/img/courses-stat.svg"/>
-                        <h2>{{university["stats"]["courses"]}}</h2>
-                        <p>Supported Courses</p>
+                        <h2>{{university_statistics["gurus"]}}</h2>
+                        <p>Gurus / School</p>
                     </div>
 
                 </div>
@@ -344,9 +344,24 @@ Uguru Home Page
                 </div>
                 <h1>Check your university to get in on this.</h1>
                 <h3 class='opacity-50'> Uguru may already be available at your university!</h3>
-                <div class='input-container flex-container-center'>
-                    <input class="pure-input-1" type="text" placeholder="Enter your university">
+                <!-- <div class='input-container flex-container-center'>
+                    <input id='university-input' autocomplete="off" class="pure-input-1" type="text" placeholder="Enter your university">
                     <button id='submit-university' type="submit" class="pure-button ">Search</button>
+                </div> -->
+                <div id='university-input-2' class='pure-g'>
+                    <div class='pure-u-md-1-3'></div>
+                    <div class='pure-u-1 pure-u-md-1-3'>
+                        <div class='pure-g'>
+                            <div class='pure-u-3-4'>
+                                <div class='university-input-typeahead-wrapper'>
+                                    <input class='typeahead' type="text" placeholder="Enter your university"/>
+                                </div>
+                            </div>
+                            <div class='pure-u-1-4' >
+                                <a class="pure-button search-button" href="#">Search</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -358,15 +373,84 @@ Uguru Home Page
 
 {% block footer_scripts %}
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="/static/js/web/lib/typeahead.min.js"></script>
+
     <script src="/static/js/web/sidebar.js"></script>
+    <script src="/static/js/web/lib/handlebars.js"></script>
+
 
     <script>
-    // $('.menu-link').click(function() {
-    //     $('#dropshadow').show();
-    // });
 
-    $('#close-sidebar').click(function() {
-        $('body').removeClass('active');
-    })
+        var all_universities;
+
+        $(document).ready(function() {
+
+
+            //close click handler for jquery
+            $('#close-sidebar').click(function() {
+                $('body').removeClass('active');
+            })
+
+        });
+
+
+        // Instantiate the Typeahead UI
+        {% raw %}
+
+                var movies = new Bloodhound({
+                    datumTokenizer: function (datum) {
+                        return Bloodhound.tokenizers.whitespace(datum.title);
+                    },
+                    limit: 5,
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    prefetch: {
+                        url: '/static/data/universities_updated.json',
+                        filter: function (response) {
+                            // Map the remote source JSON array to a JavaScript object array
+
+                            return $.map(response, function (university) {
+                                // console.log(university);
+                                return {
+                                    title: university.title,
+                                    city: university.city,
+                                    state: university.state,
+                                    _short: university.short
+                                };
+                            });
+                        }
+                    },
+                    sorter: function compare(a,b) {
+                        if (a.title > b.title) {
+                          return 1;
+                        }
+                        if (b.title < a.title) {
+                          return -1;
+                        }
+                        return 0 ;
+                    }
+                });
+
+                // Initialize the Bloodhound suggestion engine
+                movies.initialize();
+
+                $('.typeahead').typeahead({
+                    minLength: 1,
+                    highlight:true,
+                    hint:true
+                }, {
+                    displayKey: 'title',
+                    source: movies.ttAdapter(),
+                    templates: {
+                    empty: [
+                      '<div class="empty-message">',
+                      'unable to find any Best Picture winners that match the current query',
+                      '</div>'
+                    ].join('\n'),
+                        suggestion: Handlebars.compile("<a href='/{{_short}}/'><p><span class='title'>{{title}}</span>{{city}}, {{state}}</p></a>")
+                    }
+                });
+
+
+            {% endraw %}
     </script>
 {% endblock %}

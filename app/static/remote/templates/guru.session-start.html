@@ -1,4 +1,10 @@
-<ion-view title="Your {{session.course.short_name}} Session">
+<ion-view hide-nav-bar='true'>
+
+    <ion-header-bar class="header-bar">
+      <a class="button button-clear button-back" nav-direction='back' href='#/guru-active-session'>Back</a>
+      <h5 class="title uppercase">{{session.request.course.short_name}} Session w/ {{session.request.student.name.split(' ')[0]}} </h5>
+    </ion-header-bar>
+
   <ion-content class="padding">
     <div class="container center">
       <span>{{timer.hours}}:{{timer.minutes}}:{{timer.seconds}}</span>
