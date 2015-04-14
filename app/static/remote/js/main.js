@@ -62,6 +62,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           $scope.platform_ready = false;
 
 
+
           //how to make platform ready...
           console.log('hiding splash screen and going to first screen');
 
@@ -79,6 +80,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           $scope.rootUser = User;
           $scope.root = RootService;
           $scope.root.vars = {};
+          $scope.root.vars.onboarding = false;
           $scope.static = {};
           $scope.static.nearest_universities = [];
           $scope.static.universities = [];
@@ -133,17 +135,12 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                 device: ionic.Platform.device(),
             }
 
-            if (!$scope.user.university_id) {
-              $state.go('^.onboarding-loading');
-              // $state.go('^.student-home');
-            }
             console.log('user is on device:', ionic.Platform.platform());
 
             //performing mobile tasks
             console.log('STARTING MOBILE ONLY tasks below \n\n');
 
             if ($scope.platform.mobile) {
-
 
                 //hiding the splash screen
                 console.log('1. hiding splashscreen on mobile devices \n\n');
@@ -432,8 +429,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
   // if none of the above states are matched, use this as the fallback
   // $urlRouterProvider.otherwise('/tab/dash');
-  // $urlRouterProvider.otherwise('/onboarding-loading');
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/onboarding-loading');
+  // $urlRouterProvider.otherwise('/home');
 
 });
 

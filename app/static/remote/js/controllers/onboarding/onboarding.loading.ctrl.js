@@ -18,6 +18,7 @@ angular.module('uguru.onboarding.controllers')
 
     $scope.intervals = 10;
     $scope.time_length = 500;
+    $scope.root.vars.onboarding = true;
     $scope.extra_delay = 3500;
     $scope.img_components = [];
 
@@ -36,7 +37,12 @@ angular.module('uguru.onboarding.controllers')
 
         //automatically
         $timeout(function() {
-          $state.go('^.onboarding-location');
+          if ($scope.user.university_id) {
+            $state.go('^.student-home');
+            $scope.loader.show();
+          } else {
+            $state.go('^.onboarding-location');
+          }
         }, ($scope.intervals * $scope.time_length + 1000))
 
     }, 1000);

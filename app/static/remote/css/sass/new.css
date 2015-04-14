@@ -422,7 +422,7 @@ button {
 .popup-container .popup {
   min-width: 90%;
   border-radius: 0.5em;
-  height: 70%;
+  height: 48%;
   bottom: 0px;
   position: absolute;
   margin: 0 auto;
@@ -432,7 +432,7 @@ button {
   opacity: 1;
   background-color: white; }
 .popup-container .popup-body {
-  margin-top: -40%;
+  margin-top: -60%;
   opacity: 1; }
 .popup-container .popup-head {
   border-bottom: 0px;
@@ -978,3 +978,9 @@ p {
 .student-request-duration .min-scroll {
   text-align: left;
   padding-left: 1em; }
+
+.hide {
+  display: none; }
+
+.show {
+  display: block; }

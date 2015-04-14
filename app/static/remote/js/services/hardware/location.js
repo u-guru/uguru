@@ -90,8 +90,8 @@ angular.module('uguru.root.services')
 
         deviceGPS = {
                       getUserPosition: function($scope, successCallback, failureCallback, $state) {
-                        if ($scope.platform.ios &&
-                          !$scope.user.current_device.location_enabled) {
+                        if ($scope.platform.ios ||
+                          $scope.user.current_device.location_enabled) {
 
                           Popup.options.show($scope, {
                             header: 'Mind if we use your location?',

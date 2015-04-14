@@ -320,6 +320,10 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       console.log($state.current.name, 'leaving...');
     });
 
+    $scope.$on('$ionicView.afterEnter', function(){
+      $scope.loader.hide();
+    });
+
 
     $scope.showOnboardingAddClass = function() {
 
