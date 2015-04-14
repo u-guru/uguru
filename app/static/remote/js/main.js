@@ -1,9 +1,9 @@
 // Uguru upp
 var LOCAL = false;
-// var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
-// var REST_URL = 'http://uguru-rest.herokuapp.com';
-BASE_URL = 'http://192.168.42.66:5000/static/remote/index.html';
-REST_URL = 'http://192.168.42.66:5000';
+var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
+var REST_URL = 'http://uguru-rest.herokuapp.com';
+// BASE_URL = 'http://192.168.42.66:5000/static/remote/index.html';
+// REST_URL = 'http://192.168.42.66:5000';
 var BASE = '';
 var img_base = '';
 if (LOCAL) {
