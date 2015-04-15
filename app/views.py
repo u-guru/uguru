@@ -461,9 +461,10 @@ def app_home():
 def app_route():
     version = Version.query.get(1).ios
     if os.environ.get('PRODUCTION'):
+        print "woohoo we're in production"
         return redirect('http://u.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
-    else:
-        return redirect('http://192.168.42.66:5000/static/remote/index.html?version=' + str(version) + str(13213))
+    # else:
+    #     return redirect('http://192.168.42.66:5000/static/remote/index.html?version=' + str(version) + str(13213))
     # return redirect('http://192.168.0.104:5000/static/remote/index.html')
     # return redirect('http://192.168.42.66:8100/remote/')
 

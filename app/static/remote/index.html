@@ -212,36 +212,36 @@
     </script> -->
     <script>
 
-      function getMobileOperatingSystem() {
-          var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-          if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
-          {
-            // injectJs('cordova.js');
-            return 'iOS';
+      // function getMobileOperatingSystem() {
+      //     var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      //     if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
+      //     {
+      //       injectJs('cordova.js');
+      //       return 'iOS';
 
-          }
-          else if( userAgent.match( /Android/i ) )
-          {
+      //     }
+      //     else if( userAgent.match( /Android/i ) )
+      //     {
 
-            console.log('not injecting cordova...');
-            // injectJs('cordova.js');
+      //       console.log('not injecting cordova...');
+      //       // injectJs('cordova.js');
 
-            return 'Android';
-          }
-          else
-          {
-            return 'unknown';
-          }
-        }
+      //       return 'Android';
+      //     }
+      //     else
+      //     {
+      //       return 'unknown';
+      //     }
+      //   }
 
-      function injectJs(link) {
-          var scr = document.createElement('script');
-          scr.type="text/javascript";
-          scr.src=link;
-          document.getElementsByTagName('head')[0].appendChild(scr)
-      }
+      // function injectJs(link) {
+      //     var scr = document.createElement('script');
+      //     scr.type="text/javascript";
+      //     scr.src=link;
+      //     document.getElementsByTagName('head')[0].appendChild(scr)
+      // }
       // injectJs('/static/remote/cordova.js');
-      console.log(getMobileOperatingSystem())
+      // console.log(getMobileOperatingSystem())
 
     </script>
     <script src="cordova.js"></script>
