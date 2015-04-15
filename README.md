@@ -62,6 +62,6 @@
     'gulp -b && cp dest/scripts/*.js www/remote/js/app.js && cp dest/styles/*.css www/remote/css/app_version.css'
 - uw
 - Copy all contents from uguru-mobile
-	- % 'cp -r ~/Git/uguru/uguru-mobile/platforms/ios/www/plugins/ app/static/remote/plugins/ && cp -r ~/Git/uguru/uguru-mobile/www/remote/* app/static/remote/ && cp ~/Git/uguru/uguru-mobile/platforms/ios/www/cordova* app/static/remote/'
+	- % 'cp -r ~/Git/uguru/uguru-mobile/www/remote/* app/static/remote/ &&  cp -r ~/Git/uguru/uguru-mobile/platforms/ios/www/plugins/ app/static/remote/plugins/ && cp ~/Git/uguru/uguru-mobile/platforms/ios/www/cordova* app/static/remote/'
 
 
