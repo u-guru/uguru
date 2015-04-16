@@ -52,9 +52,12 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                 //hiding the splash screen
                 console.log('1. hiding splashscreen on mobile devices \n\n');
 
-
+                console.log('window.cordova.plugins', JSON.stringify(window.cordova.plugins));
+                console.log('cordova.plugins', JSON.stringify(cordova.plugins));
+                console.log('navigator', JSON.stringify(navigator), JSON.stringify(navigator.connection));
+                console.log('splashScreen', JSON.stringify($cordovaSplashscreen));
                 if (navigator.splashscreen) {
-                  console.log('hide the splash screen on ios via cordova navigator');
+                  console.log('hide the splash screen on ios via cordova navigator v2');
                   navigator.splashscreen.hide();
                   // $cordovaSplashscreen.hide();
                 } else {
