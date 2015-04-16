@@ -110,11 +110,8 @@
     <script type="text/javascript" src="js/services/hardware/camera.js"></script>
     <script type="text/javascript" src="js/services/hardware/push.js"></script>
     <script type="text/javascript" src="js/services/hardware/location.js"></script>
-    --> <div id="fb-root"></div>
-     <script type="text/javascript" src="lib/facebook/facebookConnectPlugin.js"></script>
-     <script src="cordova.js"></script>
-     <script src="cordova_plugins.js"></script>
-     <script src="js/app.js"></script>
+    -->
+
 
   </head>
   <body ng-app="uguru" animation="slide-left-right-ios7">
@@ -194,6 +191,7 @@
     </script> -->
 
     <!-- Facebook Plugin for web-development -->
+    <div id="fb-root"></div>
     <!--<script>
       (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -212,40 +210,48 @@
         });
       }
     </script> -->
-    <script>
+    <!--<script>
 
-      // function getMobileOperatingSystem() {
-      //     var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      //     if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
-      //     {
+      function getMobileOperatingSystem() {
+          var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+          if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
+          {
 
-      //       // injectJs('/static/remote/cordova.js');
-      //       return 'iOS';
+            injectJs('cordova_plugins.js');
+            injectJs('cordova.js');
+            // injectJs('/static/remote/cordova.js');
+            return 'iOS';
 
-      //     }
-      //     else if( userAgent.match( /Android/i ) )
-      //     {
+          }
+          else if( userAgent.match( /Android/i ) )
+          {
 
-      //       console.log('not injecting cordova...');
-      //       // injectJs('cordova.js');
+            console.log('not injecting cordova...');
+            // injectJs('cordova.js');
 
-      //       return 'Android';
-      //     }
-      //     else
-      //     {
-      //       return 'unknown';
-      //     }
-      //   }
+            return 'Android';
+          }
+          else
+          {
+            return 'unknown';
+          }
+        }
 
-      // function injectJs(link) {
-      //     var scr = document.createElement('script');
-      //     scr.type="text/javascript";
-      //     scr.src=link;
-      //     document.getElementsByTagName('head')[0].appendChild(scr)
-      // }
-      // console.log(getMobileOperatingSystem())
+      function injectJs(link) {
+          var scr = document.createElement('script');
+          scr.type="text/javascript";
+          scr.src=link;
+          document.getElementsByTagName('head')[0].appendChild(scr)
+      }
+      console.log(getMobileOperatingSystem())
 
-    </script>
+    </script>-->
+
+    <!-- <script type="text/javascript" src="lib/facebook/facebookConnectPlugin.js"></script>-->
+
+    <!--<script src="cordova_plugins.js"></script>-->
+    <script src="cordova.js"></script>
+    <script src="js/app.js"></script>
 
 
 

@@ -23,12 +23,23 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
   $cordovaDialogs, Version, $rootScope, $cordovaSplashscreen,
-  $templateCache, Device, User, $cordovaLocalNotification) {
+  $templateCache, Device, User, $cordovaLocalNotification, $cordovaGeolocation) {
 
 
+$ionicPlatform.ready(function() {
+  document.addEventListener("deviceready", function () {
 
-  $ionicPlatform.ready(function() {
 
+           $cordovaSplashscreen.hide();
+
+            $cordovaGeolocation
+            .getCurrentPosition(posOptions)
+            .then(function (position) {
+              console.log('user is at ' + position.coords.latitude + ',' + position.coords.longitude);
+
+            }, function(err) {
+              console.log(err);
+            });
 
             $rootScope.platform = {
                 ios: ionic.Platform.isIOS(),
@@ -105,7 +116,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                 }
           }
 
-
+    });
   });
 
 })
@@ -227,24 +238,42 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
             }
 
 
-            //might come useful sometime
-            //   document.addEventListener("online", function() {
-            //       console.log('device is online...');
-            //       checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-            //   }, false);
-
-            //   document.addEventListener("offline", function() {
-            //       console.log('device is offline...');
-            //   }, false);
-
-            //   document.addEventListener("pause", function() {
-            //       console.log('device is paused...');
-            //   }, false);
-
-            // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+          });
 
 
+          document.addEventListener("deviceready", function () {
+            console.log(JSON.stringify(ionic.Platform.device()));
+            // User.getUserFromServer($scope, null, $state);
+            document.addEventListener("resume", function() {
 
+                console.log('device is resuming....');
+                 checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+                // User.getUserFromServer($scope, null, $state);
+
+
+            }, false);
+
+            document.addEventListener("online", function() {
+
+                console.log('device is online...');
+              checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+                console.log('Getting user from server');
+
+            }, false);
+
+            document.addEventListener("offline", function() {
+
+                console.log('device is offline...');
+                checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+                // console.log('getting updated user from server...');
+                // User.getUserFromServer($scope);
+
+            }, false);
+
+            document.addEventListener("pause", function() {
+                console.log('device is paused...');
+              // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+            }, false);
           });
 
         }
