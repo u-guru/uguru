@@ -14,7 +14,7 @@ angular.module('uguru.onboarding.controllers')
     '$cordovaStatusbar',
   function($scope, $state, $timeout, $localstorage,
      Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
-     $ionicPlatform, $cordovaSplashscreen, $cordovaStatusbar) {
+     $ionicPlatform, $cordovaSplashscreen, $cordovaStatusbar, $rootScope) {
 
     $scope.intervals = 10;
     $scope.time_length = 500;

@@ -13,7 +13,7 @@ angular.module('uguru.onboarding.controllers', [])
     '$cordovaStatusbar',
   function($scope, $state, $timeout, $localstorage,
      Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
-     $ionicPlatform) {
+     $ionicPlatform, $rootScope) {
 
     var failureCallback = function($scope, $state) {
       $scope.loader.hide();
@@ -56,11 +56,13 @@ angular.module('uguru.onboarding.controllers', [])
 
       // $scope.loader.show();
 
-      if ($scope.platform.ios || !$scope.platform.mobile) {
+      //if web
+      console.log('we are about to launch the location picker and are on the platform', JSON.stringify($scope.platform));
+      if (!$scope.platform.mobile) {
 
         Geolocation.getUserPosition($scope, callbackSuccess, failureCallback, $state);
       }
-
+      //if android
       else if
         ($scope.platform.android) {
           if ($scope.nearest_universities && $scope.nearest_universities.length > 0) {
@@ -70,16 +72,21 @@ angular.module('uguru.onboarding.controllers', [])
           }
       }
 
+      //if ios
+      else if ($scope.platform.ios) {
+          //do prompt for ios & then run geolocation for background;
 
-      // if ($scope.platform.isIOS()) {
-      //     //do prompt for ios & then run geolocation for background;
-      //     console.log('I am testing through ios app.')
-      // }
-      // else if ($scope.platform.web)  {
-      //         console.log('I am testing through the web.')
-      // } else {
-      //     $state.go('^.onboarding-nearest-university');
-      // }
+          if (ionic.Platform && ionic.Platform.device()) {
+            $scope.user.current_device = ionic.Platform.device();
+          }
+          console.log('launching location service on ios.');
+          Geolocation.getUserPosition($scope, callbackSuccess, failureCallback, $state);
+      }
+      else if ($scope.platform.web)  {
+              console.log('I am testing through the web.')
+      } else {
+          $state.go('^.onboarding-nearest-university');
+      }
     }
 
 

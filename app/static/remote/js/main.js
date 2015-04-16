@@ -8,7 +8,8 @@ var BASE = '';
 var img_base = '';
 if (LOCAL) {
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.42.66:8100';
+  // BASE_URL = 'http://192.168.42.66:8100';
+  BASE_URL = 'http://192.168.42.66:5000/app/production/';
   REST_URL = 'http://192.168.42.66:5000';
   // var REST_URL = 'http://uguru-rest.herokuapp.com';
 } else {
@@ -25,12 +26,83 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   $templateCache, Device, User, $cordovaLocalNotification) {
 
 
-  // $ionicPlatform.ready(function() {
-    if ($cordovaSplashscreen) {
-      console.log('this exists');
-    }
 
-  //   });
+  $ionicPlatform.ready(function() {
+
+
+            $rootScope.platform = {
+                ios: ionic.Platform.isIOS(),
+                android: ionic.Platform.isAndroid(),
+                mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid(),
+                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid()),
+                device: ionic.Platform.device(),
+            }
+
+            console.log('user is on device:', ionic.Platform.platform());
+
+            //performing mobile tasks
+            console.log('STARTING MOBILE ONLY tasks below \n\n');
+
+            if (!window.cordova) {
+              console.log('sorry aint no cordova up in here');
+            }
+
+            if (window.cordova && $rootScope.platform.mobile) {
+
+                //hiding the splash screen
+                console.log('1. hiding splashscreen on mobile devices \n\n');
+
+
+                if ($cordovaSplashscreen) {
+                  console.log('hide the splash screen on ios');
+                  $cordovaSplashscreen.hide();
+                } else {
+                  console.log('did not hide the splash screen on device since there is none?');
+                }
+
+
+                //grabbing nextwork speed
+                if ($cordovaNetwork) {
+                  $rootScope.network_speed = getNetworkSpeed();
+                  console.log('2. grabbing network speed which is: ', $rootScope.network_speed, '\n\n');
+                }
+
+
+                //save device
+                console.log('3. Saving device to server:', $rootScope.platform.device.model, '\n\n')
+                $rootScope.current_device = ionic.Platform.device();
+
+
+                //keyboard settings for android / ios
+                console.log('4. Setting up ios keyboard default + status bars..');
+                if (window.cordova.plugins.Keyboard) {
+                  cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                  cordova.plugins.Keyboard.disableScroll(true);
+                }
+
+                //styling status bars
+                if ($rootScope.platform.ios) {
+
+                  if (window.StatusBar) {
+                    console.log('Extra #1. Styling iOS status bar to black \n\n');
+                    StatusBar.styleDefault();
+                  }
+
+                }
+
+                if ($rootScope.platform.android) {
+
+                  console.log('Extra #2. Android push notifications need to be registered')
+                  $rootScope.$on('pushNotificationReceived', function(event, notification) {
+                    CordovaPushWrapper.received($scope, event, notification);
+
+                  });
+
+                }
+          }
+
+
+  });
 
 })
 
@@ -62,8 +134,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
           $scope.network_speed = null;
           $scope.platform_ready = false;
+          if ($rootScope.platform) {
 
-
+          }
 
           //how to make platform ready...
           console.log('hiding splash screen and going to first screen');
@@ -74,11 +147,13 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           $scope.user.updateObj = User.updateObj;
           $scope.popupScope = {};
 
+
           if (LOCAL) {
             $scope.img_base = 'remote/'
           } else {
             $scope.img_base = '';
           }
+
           $scope.rootUser = User;
           $scope.root = RootService;
           $scope.root.vars = {};
@@ -123,12 +198,18 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           }
 
           $scope.platform = {
-            mobile: false
+            mobile:false,
+            web:true,
+            device: false,
+            android: false,
+            ios: false
           }
 
 
           $ionicPlatform.ready(function() {
 
+
+            console.log('ENDING MOBILE ONLY tasks below \n\n');
             $scope.platform = {
                 ios: ionic.Platform.isIOS(),
                 android: ionic.Platform.isAndroid(),
@@ -137,61 +218,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                 device: ionic.Platform.device(),
             }
 
-            console.log('user is on device:', ionic.Platform.platform());
-
-            //performing mobile tasks
-            console.log('STARTING MOBILE ONLY tasks below \n\n');
-
-            if ($scope.platform.mobile) {
-
-                //hiding the splash screen
-                console.log('1. hiding splashscreen on mobile devices \n\n');
-
-                navigator.splashscreen.hide();
-
-
-                //grabbing nextwork speed
-                $scope.network_speed = getNetworkSpeed();
-                console.log('2. grabbing network speed which is: ', $scope.network_speed, '\n\n');
-
-
-                //save device
-                console.log('3. Saving device to server:', $scope.platform.device.model, '\n\n')
-                $scope.user.current_device = ionic.Platform.device();
-                $scope.user.current_device.user_id = $scope.user.id;
-                $scope.user.createObj($scope.user.current_device, 'device', $scope.user.current_device, $scope);
-
-
-                //keyboard settings for android / ios
-                console.log('4. Setting up ios keyboard default + status bars..');
-                if (window.cordova.plugins.Keyboard) {
-                  cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                  cordova.plugins.Keyboard.disableScroll(true);
-                }
-
-                //styling status bars
-                if ($scope.platform.ios) {
-
-                  if (window.StatusBar) {
-                    console.log('Extra #1. Styling iOS status bar to black \n\n');
-                    StatusBar.styleDefault();
-                  }
-
-                }
-
-                if ($scope.platform.android) {
-
-                  console.log('Extra #2. Android push notifications need to be registered')
-                  $rootScope.$on('pushNotificationReceived', function(event, notification) {
-                    CordovaPushWrapper.received($scope, event, notification);
-
-                  });
-
-                }
-          }
-
-          console.log('ENDING MOBILE ONLY tasks below \n\n');
-
+            if ($rootScope.current_device && $scope.user) {
+              $scope.user.current_device = ionic.Platform.device();
+              $scope.user.current_device.user_id = $rootScope.user.id;
+              $rootScope.user.createObj($rootScope.user.current_device, 'device', $rootScope.user.current_device, $rootScope);
+            }
 
 
             //might come useful sometime
