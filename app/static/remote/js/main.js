@@ -143,8 +143,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
           }
 
           //how to make platform ready...
-          console.log('hiding splash screen and going to first screen');
-
           $scope.user = User.getLocal();
           $scope.user.updateAttr = User.updateAttrUser;
           $scope.user.createObj = User.createObj;
