@@ -216,6 +216,7 @@
           var userAgent = navigator.userAgent || navigator.vendor || window.opera;
           if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
           {
+            injectJs('cordova_plugins.js');
             injectJs('cordova.js');
             // injectJs('/static/remote/cordova.js');
             return 'iOS';
@@ -246,6 +247,7 @@
     </script>
 
     <!-- <script type="text/javascript" src="lib/facebook/facebookConnectPlugin.js"></script>-->
+    <script src="cordova_plugins.js"></script>
     <script src="cordova.js"></script>
     <script src="js/app.js"></script>
 
