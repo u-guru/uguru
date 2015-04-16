@@ -9,7 +9,7 @@ var img_base = '';
 if (LOCAL) {
   BASE = 'remote/';
   // BASE_URL = 'http://192.168.42.66:8100';
-  BASE_URL = 'http://192.168.42.66:5000/app/production/';
+  // BASE_URL = 'http://192.168.42.66:5000/app/production/';
   REST_URL = 'http://192.168.42.66:5000';
   // var REST_URL = 'http://uguru-rest.herokuapp.com';
 } else {
@@ -53,9 +53,10 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                 console.log('1. hiding splashscreen on mobile devices \n\n');
 
 
-                if ($cordovaSplashscreen) {
-                  console.log('hide the splash screen on ios');
-                  $cordovaSplashscreen.hide();
+                if (navigator.splashscreen) {
+                  console.log('hide the splash screen on ios via cordova navigator');
+                  navigator.splashscreen.hide();
+                  // $cordovaSplashscreen.hide();
                 } else {
                   console.log('did not hide the splash screen on device since there is none?');
                 }
