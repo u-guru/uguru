@@ -27,6 +27,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
 
 $ionicPlatform.ready(function() {
+
   document.addEventListener("deviceready", function () {
 
 
@@ -50,7 +51,6 @@ $ionicPlatform.ready(function() {
             }
 
             console.log('user is on device:', ionic.Platform.platform());
-
             //performing mobile tasks
             console.log('STARTING MOBILE ONLY tasks below \n\n');
 

@@ -1,7 +1,7 @@
 {% extends 'web/components/base.html' %}
 
 {% block title_text %}
-    {{university["local_name"]}} uguru
+     Uguru App
 {% endblock %}
 
 {% block content %}
@@ -22,8 +22,8 @@
         <div class="pure-g"><div class="pure-u-1 pure-u-sm-1-3 pure-u-md-1-3 get-a-tutor flex-container">
             <div class="padding-1em">
                 <h2>Get a tutor, <br>Ace the course.</h2>
-                <a href="#get-started-university" class="go-to-call-action">
-                    <button href="get-started-university"class="button-positive pure-button flex-item">Get Started</button>
+                <a href="/hybrid-app/" class="go-to-call-action">
+                    <button class="button-positive pure-button flex-item">Get Started</button>
                 </a>
                 <h5 class='margin-1em'><a href='/' class='no-decoration'>Learn More</a></h5>
             </div>
@@ -58,7 +58,7 @@
                         Make money <br>
                         tutoring today
                     </h2>
-                    <a href="#get-started-university" class="go-to-call-action">
+                    <a href="/hybrid-app/" class="go-to-call-action">
                         <button class="button-positive pure-button flex-item">Become a Guru</button>
                     </a>
                     <h5 class='margin-1em'>
@@ -348,10 +348,10 @@
                     <div class='row-g'>
                         <div class='pure-u-1'>
                             <div class='app-icons-horizontal'>
-                                <a href='https://itunes.com/apps/uguru' class='apple-link' target='_blank'>
+                                <a href='/hybrid-app/' class='apple-link' target='_blank'>
                                     <img class='img-pure' src='/static/img/apple_app_store.svg'/>
                                 </a>
-                                <a class='android-link' href='https://play.google.com/store/apps/details?id=com.Uguru.Uguru' target='_blank'>
+                                <a class='android-link' href=/'hybrid-app/' target='_blank'>
                                     <img class='img-pure' src='/static/img/android_play.png'/>
                                 </a>
                             </div>
@@ -369,7 +369,6 @@
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="/static/js/web/university.js"></script>
     <script>
-    $('body').addClass('active');
     $('#close-sidebar').click(function() {
         $('body').removeClass('active');
     })

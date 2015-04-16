@@ -34,8 +34,7 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	University, $templateCache, $ionaicHistory, $ionicBackdrop,
   User, $ionicHistory, CordovaPushWrapper, $ionicPlatform, $rootScope, $cordovaPush,
   $ionicPlatform, $ionicBackdrop, $document, $ionicPopover, $cordovaStatusbar,
-  $ionicViewSwitcher) {
-    console.log($scope.user);
+  $ionicViewSwitcher)     {
   // .fromTemplate() method
 
   // if (!$scope.user.university && !$scope.user.university_id) {

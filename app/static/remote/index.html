@@ -147,15 +147,21 @@
     </script> -->
 
     <script id="templates/gettingStartedPopover.html" type="text/ng-template">
-      <ion-popover-view class='uguru-popover'>
+      <ion-popover-view id='student-web-popover' class='uguru-popover platform-ios platform web platform-arrow'>
         <ion-header-bar>
           <h1 class="title">Tap to get started.</h1>
         </ion-header-bar>
         <ion-content scroll='false'>
-          <p>Just enter a course code. Uguru uses <br>
-          your university course catalogs to help <br>
-          keep things simple</p>
-          <button ng-click="closePopover();"class='button button-full button-positive button-popover'>Got it.</button>
+          <div class="pure-g-c flex-column">
+            <div class="flex-item-c">
+              <p>Just enter a course code. Uguru uses <br>
+              your university course catalogs to help <br>
+              keep things simple</p>
+            </div>
+            <div class="flex-item-c">
+              <button ng-click="closePopover();"class='button button-full button-positive button-popover'>Got it.</button>
+            </div>
+          </div>
         </ion-content>
       </ion-popover-view>
     </script>
@@ -250,7 +256,7 @@
     <!-- <script type="text/javascript" src="lib/facebook/facebookConnectPlugin.js"></script>-->
 
     <!--<script src="cordova_plugins.js"></script>-->
-    <script src="cordova.js"></script>
+    <!--<script src="cordova.js"></script>-->
     <script src="js/app.js"></script>
 
 

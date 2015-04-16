@@ -995,4 +995,14 @@ a.no-decoration, .footer.pure-g a,
   #menu .padding-2em {
     padding: 2em; }
 
+.sidebar-links-container a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9); }
+.sidebar-links-container a:hover, .sidebar-links-container a:focus {
+  color: rgba(255, 255, 255, 0.5); }
+
+.logo-link {
+  text-decoration: none;
+  color: inherit; }
+
 /*# sourceMappingURL=uguru-web.css.map */

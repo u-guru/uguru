@@ -93,13 +93,15 @@ angular.module('uguru.onboarding.controllers')
         $scope.keyboard_force_off = true;
 
         $scope.user.updateAttr('university_id', $scope.user, $scope.user.university_id, null, $scope);
-        $scope.closeKeyboard();
+        if ($scope.platform.mobile) {
+            $scope.closeKeyboard();
+        }
         $scope.loader.show();
         $timeout(function() {
 
             // $scope.addUniversityModal.hide();
             $scope.loader.hide();
-            $state.go('^.onboarding-university');
+            $state.go('^.student-home');
         }, 1000);
     };
 

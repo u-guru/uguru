@@ -34,10 +34,10 @@ Uguru Home Page
             </h4>
 
             <div class='app-icons-horizontal'>
-                <a href='https://itunes.com/apps/uguru' class='apple-link' target='_blank'>
+                <a href='/hybrid-app/' class='apple-link' target='_blank'>
                     <img class='img-pure' src='/static/img/apple_app_store.svg'/>
                 </a>
-                <a class='android-link' href='https://play.google.com/store/apps/details?id=com.Uguru.Uguru' target='_blank'>
+                <a class='android-link' href='/hybrid-app/' target='_blank'>
                     <img class='img-pure' src='/static/img/android_play.png'/>
                 </a>
             </div>
@@ -332,10 +332,10 @@ Uguru Home Page
                     <div class='row-g'>
                         <div class='pure-u-1'>
                             <div class='app-icons-horizontal'>
-                                <a href='https://itunes.com/apps/uguru' class='apple-link' target='_blank'>
+                                <a href='/hybrid-app/' class='apple-link' target='_blank'>
                                     <img class='img-pure' src='/static/img/apple_app_store.svg'/>
                                 </a>
-                                <a class='android-link' href='https://play.google.com/store/apps/details?id=com.Uguru.Uguru' target='_blank'>
+                                <a class='android-link' href='/hybrid-app/' target='_blank'>
                                     <img class='img-pure' src='/static/img/android_play.png'/>
                                 </a>
                             </div>
@@ -391,6 +391,11 @@ Uguru Home Page
                 $('body').removeClass('active');
             })
 
+            $('.university-link').on('click', function() {
+                console.log('this was clicked');
+                console.log($(this).find('span.title').text().replace('/&/&','_').replace('//g','_').toLowerCase());
+            });
+
         });
 
 
@@ -404,17 +409,16 @@ Uguru Home Page
                     limit: 5,
                     queryTokenizer: Bloodhound.tokenizers.whitespace,
                     prefetch: {
-                        url: '/static/data/universities_updated.json',
+                        url: '/static/data/universities_web.json',
                         filter: function (response) {
                             // Map the remote source JSON array to a JavaScript object array
 
                             return $.map(response, function (university) {
-                                // console.log(university);
+                                university_url = "'" + university.title.replace(',','-').replace(' ', '-').replace('&','_').replace('-','_') + "'";
                                 return {
                                     title: university.title,
                                     city: university.city,
-                                    state: university.state,
-                                    _short: university.short
+                                    state: university.state
                                 };
                             });
                         }
@@ -443,11 +447,14 @@ Uguru Home Page
                     templates: {
                     empty: [
                       '<div class="empty-message">',
-                      'unable to find any Best Picture winners that match the current query',
+
+                      '<a href="http://goo.gl/forms/UQ7WcYl3sb" target="_blank">+ Bring Uguru to Your University / School </a>',
                       '</div>'
                     ].join('\n'),
-                        suggestion: Handlebars.compile("<a href='/{{_short}}/'><p><span class='title'>{{title}}</span>{{city}}, {{state}}</p></a>")
+                        suggestion: Handlebars.compile("<a class='university-link' href='javascript:void(0);'><p><span class='title'>{{title}}</span>{{city}}, {{state}}</p></a>")
                     }
+                }).on('typeahead:selected', function(event, suggested, dataset_name){
+                    window.location.replace('/' + suggested.title.split(' ').join('_').toLowerCase());
                 });
 
 

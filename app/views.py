@@ -441,10 +441,10 @@ def one_university(name):
 
         return redirect(request.path)
 
-    if name in university_names:
-        return render_template("web/university.html", university=supported_universities[name])
-    else:
-        return redirect(url_for('app_flex'))
+    # if name in university_names:
+    return render_template("web/university.html", university=supported_universities['virginia'])
+    # else:
+    #     return redirect(url_for('app_flex'))
 
 
 @app.route('/web/app/')

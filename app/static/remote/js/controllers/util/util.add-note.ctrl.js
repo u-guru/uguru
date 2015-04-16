@@ -89,7 +89,8 @@ angular.module('uguru.util.controllers')
           console.log(e);
          };
          reader.readAsDataURL(photofile);
-
+         var image = document.getElementsByClassName('attachment-container')[0];
+                          image.src = "data:image/jpeg;base64," + photofile;
          var formData = new FormData();
         // formData.append('file', image.src);
         formData.append('file', photofile);

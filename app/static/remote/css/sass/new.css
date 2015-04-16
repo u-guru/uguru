@@ -342,7 +342,9 @@ button {
   .onboarding-loading #desk {
     bottom: 8%;
     position: absolute;
-    height: 64.3%; }
+    height: 64.3%;
+    left: 8.5%;
+    width: 83%; }
   .onboarding-loading #_1 {
     top: 32.25%;
     right: 20%;
@@ -542,7 +544,7 @@ p {
   display: inline-block; }
 
 .popover-backdrop.active {
-  background-color: rgba(0, 0, 0, 0.6); }
+  background-color: rgba(0, 0, 0, 0.2); }
 
 .popover-backdrop {
   padding: 1em;
@@ -963,7 +965,7 @@ p {
   border-top: 1.5px solid black;
   border-bottom: 1.5px solid black; }
 .student-request-duration .main-hours {
-  padding-right: 0.5em; }
+  padding-right: 0.95em; }
 .student-request-duration .icon {
   color: #68b2a5;
   font-size: 150%; }
@@ -984,3 +986,26 @@ p {
 
 .show {
   display: block; }
+
+#student-web-popover, #student-request-help-popover {
+  left: 7.5% !important;
+  width: 85% !important; }
+  #student-web-popover .bar-header, #student-request-help-popover .bar-header {
+    border-bottom-width: 0px; }
+  #student-web-popover h1.title, #student-request-help-popover h1.title {
+    font-size: 155%;
+    top: 8px; }
+  #student-web-popover p, #student-request-help-popover p {
+    font-size: 80%; }
+
+.platform-ios .popover-arrow {
+  position: absolute;
+  display: block;
+  top: -17px;
+  width: 30px;
+  height: 19px;
+  overflow: hidden; }
+
+tabs-positive > .tabs .tab-item .badge, .tabs.tabs-positive .tab-item .badge {
+  background-color: red;
+  color: white; }

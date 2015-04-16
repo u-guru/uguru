@@ -115,14 +115,14 @@ h5 {
     #dropshadow .phone-container-wrapper .phone-template-overlay img {
       min-height: 600px; }
   #dropshadow .phone-container-wrapper .phone-template-overlay {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
     position: absolute;
     width: 94%;
     margin-left: 3.1%;
     margin-top: 30.5%;
     top: 0px;
     z-index: 100;
-    min-height: 563px;
+    min-height: 469px;
     border: 0px; }
 #dropshadow .hybrid-push-wrapper {
   flex-direction: column-reverse;

@@ -1386,3 +1386,20 @@ a.no-decoration,
   }
 
 }
+
+
+.sidebar-links-container {
+  a {
+    text-decoration:none;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  a:hover, a:focus {
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.logo-link {
+  text-decoration: none;
+  color:inherit;
+}

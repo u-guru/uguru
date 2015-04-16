@@ -57,10 +57,13 @@ angular.module('uguru.onboarding.controllers', [])
       // $scope.loader.show();
 
       //if web
+
+
       console.log('we are about to launch the location picker and are on the platform', JSON.stringify($scope.platform));
       if (!$scope.platform.mobile) {
 
-        Geolocation.getUserPosition($scope, callbackSuccess, failureCallback, $state);
+        $state.go('^.onboarding-nearest-university');
+
       }
       //if android
       else if

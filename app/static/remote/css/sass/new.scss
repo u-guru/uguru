@@ -498,6 +498,8 @@ p {
     bottom:8%;
     position:absolute;
     height:64.3%;
+    left:8.5%;
+    width:83%;
   }
   #_1 {
     top:32.25%;
@@ -789,7 +791,7 @@ p {
 }
 
 .popover-backdrop.active {
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0,0,0,.2);
 }
 
 .popover-backdrop {
@@ -1430,7 +1432,7 @@ margin: 0;
   }
 
   .main-hours {
-    padding-right:0.5em;
+    padding-right:0.95em;
   }
 
   .icon {
@@ -1466,4 +1468,38 @@ margin: 0;
 
 .show {
   display:block;
+}
+
+
+#student-web-popover,
+#student-request-help-popover {
+    left: 7.5% !important;
+    width:85% !important;
+
+    .bar-header {
+      border-bottom-width:0px;
+    }
+
+    h1.title {
+      font-size:155%;
+      top:8px;
+    }
+
+    p {
+      font-size:80%;
+    }
+}
+
+.platform-ios .popover-arrow {
+  position: absolute;
+  display: block;
+  top: -17px;
+  width: 30px;
+  height: 19px;
+  overflow: hidden;
+}
+
+tabs-positive>.tabs .tab-item .badge, .tabs.tabs-positive .tab-item .badge {
+  background-color: red;
+  color: white;
 }
