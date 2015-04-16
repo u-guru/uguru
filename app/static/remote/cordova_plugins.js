@@ -692,7 +692,7 @@ module.exports = [
         ]
     }
 ];
-module.exports.metadata =
+module.exports.metadata = 
 // TOP OF METADATA
 {
     "com.appgiraffe.plugins.applicationPreferences": "0.1.0",

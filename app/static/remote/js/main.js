@@ -117,6 +117,7 @@ $ionicPlatform.ready(function() {
           }
 
     });
+    checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
   });
 
 })
