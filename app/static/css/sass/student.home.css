@@ -88,7 +88,7 @@
     color: #3D9988;
     outline: none;
     width: 88%;
-    padding: 1em 1.5em;
+    padding: 3.5% 6%;
     font-size: 85%;
     border: 0px;
     display: inline-block !important; }
@@ -96,7 +96,9 @@
     width: 100%; }
 
 .search-button {
-  width: 100%;
+  width: 102%;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
   height: inherit;
   padding: 1em 1.5em;
   line-height: 1em;
@@ -130,5 +132,10 @@
   font-family: "OpenSans-Semibold"; }
   .tt-suggestion.tt-cursor .title {
     color: white; }
+
+.home-search-wrapper.pure-g {
+  height: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px; }
 
 /*# sourceMappingURL=student.home.css.map */

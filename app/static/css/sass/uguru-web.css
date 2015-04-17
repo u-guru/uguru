@@ -89,6 +89,13 @@ a.no-decoration, .footer.pure-g a,
 .padding-1em {
   padding: 1em; }
 
+.padding-bottom-2em {
+  padding-bottom: 2em; }
+
+.padding-bottom-3em {
+  padding-bottom: 3em; }
+
+.padding-bottom
 .left-1em {
   padding-left: 2em; }
 
@@ -1004,5 +1011,136 @@ a.no-decoration, .footer.pure-g a,
 .logo-link {
   text-decoration: none;
   color: inherit; }
+
+.content.stat-container-wrapper.university-specific {
+  display: none; }
+
+.popular-department-wrapper {
+  margin-top: 127px; }
+
+.half-opacity {
+  opacity: 0.5; }
+
+.opacity-3-4 {
+  opacity: 0.75; }
+
+.search-universities-banner {
+  z-index: 1;
+  position: relative;
+  background-color: #687689;
+  min-height: 225px; }
+  .search-universities-banner .header-text {
+    font-family: "OpenSans-Light"; }
+
+.university-input-typeahead-wrapper {
+  width: 100%; }
+  .university-input-typeahead-wrapper input.typeahead {
+    color: #3D9988;
+    outline: none;
+    width: 85%;
+    padding: 4.5% 7.5%;
+    font-size: 85%;
+    border: 0px;
+    display: inline-block !important; }
+  .university-input-typeahead-wrapper .twitter-typeahead {
+    width: 100%; }
+
+.search-button {
+  width: 100%;
+  height: inherit;
+  padding: 16% 4%;
+  line-height: 1em;
+  background-color: #3D9988;
+  color: white;
+  font-family: "OpenSans-Regular"; }
+
+.tt-dropdown-menu {
+  border: 2px solid #3D9988;
+  background-color: white;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "OpenSans-Regular"; }
+
+.tt-suggestion {
+  padding: 0em 1.5em;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .tt-suggestion .title {
+    font-size: 120%;
+    display: block;
+    margin-bottom: 0.25em;
+    color: rgba(0, 0, 0, 0.8); }
+  .tt-suggestion a {
+    text-decoration: none;
+    color: inherit; }
+
+.tt-suggestion.tt-cursor {
+  background-color: #3D9988;
+  color: white;
+  font-family: "OpenSans-Semibold"; }
+  .tt-suggestion.tt-cursor .title {
+    color: white; }
+
+.universities-container {
+  margin-top: 130px; }
+  .universities-container .university-list-content h1 {
+    color: #2D3440;
+    font-family: "OpenSans-Light"; }
+  .universities-container .university-list-content h6 {
+    padding: 0px;
+    margin: 0px;
+    font-size: 50%; }
+
+.faqs-container {
+  margin-top: 80px; }
+  .faqs-container h5 {
+    text-align: left;
+    margin: 1em;
+    margin-bottom: 0.5em;
+    font-family: "OpenSans-Bold";
+    color: #2D3440; }
+  .faqs-container p {
+    color: rgba(0, 0, 0, 0.9);
+    text-align: left;
+    margin: 1em 1em 2.75em 1.5em; }
+
+.content-header-banner {
+  background-color: #687689;
+  padding: 0.5em;
+  color: white;
+  font-family: "OpenSans-Light"; }
+
+.terms-container {
+  margin-top: 80px; }
+  .terms-container h2.privacy-policy {
+    font-family: "OpenSans-Light";
+    text-align: center;
+    font-size: 200%;
+    padding: 0.5em;
+    opacity: 0.5; }
+  .terms-container h2.privacy-policy:hover {
+    font-family: "OpenSans-Light";
+    text-align: center;
+    font-size: 200%;
+    padding: 0.5em;
+    opacity: 1; }
+  .terms-container h5 {
+    text-align: left;
+    margin: 1em;
+    margin-bottom: 0.5em;
+    font-family: "OpenSans-Regular";
+    color: #2D3440;
+    margin-bottom: 1em;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center; }
+  .terms-container h3 {
+    text-align: left;
+    margin-left: 1em;
+    color: #2D3440; }
+  .terms-container p {
+    color: rgba(0, 0, 0, 0.5);
+    text-align: left;
+    margin: 1em 1em 1em 1.5em; }
 
 /*# sourceMappingURL=uguru-web.css.map */

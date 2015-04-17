@@ -425,3 +425,21 @@ def add_members_from_arr(arr):
 # we're at ... MVP (20 minutes + modals)
 # components polishing / css / friendly
 
+
+
+import json
+f = open('university_data_dict_more_condensed.json')
+school_dict = json.load(f)
+new_dict = {}
+for school_id in school_dict.keys():
+    new_dict[str(school_id)] = {
+            'id': int(school_id),
+            'professors': school_dict[school_id]['top_professors_names'],
+            'city': school_dict[school_id]['city'],
+            'state': school_dict[school_id]['state'],
+            'popular_courses': school_dict[school_id]['unique_courses'][0:24],
+            'thumbnail': school_dict[school_id]['thumbnail']
+    }
+
+with open('all_schools_updated.py', 'wb') as fp:
+    json.dump(new_dict, fp, indent = 4)

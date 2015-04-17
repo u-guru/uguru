@@ -6,7 +6,8 @@ body,
     opacity:1;
 }
 
-#overlay
+#overlay-background,
+#overlay-modal
 {
     display:none;
     height:100%;
@@ -16,7 +17,7 @@ body,
     left:0;
     bottom:0;
     z-index:2000;
-    opacity:1;
+    opacity:0.7;
     overflow:auto;
     background: black;
     -webkit-overflow-scrolling:touch;
@@ -24,9 +25,19 @@ body,
       height:100%;
       width:100%;
     }
+}
+
+
+#overlay-modal {
+    opacity:1;
+    z-index:2001;
+    background-color:transparent;
     .modal-container {
       width:40%;
       height:30%;
+      position:absolute;
+      left: 30%;
+      top:35%;
       background-color: #F5F4F0;
       box-shadow: -8px 8px 0px 0px $primary-color;
       .app-icons-horizontal {
@@ -60,9 +71,11 @@ body,
                     font-size:75%;
                 }
     }
-
 }
 
+#full-close-modal-button {
+
+}
 
 #menu.hybrid-menu
 {
@@ -145,18 +158,20 @@ h5 {
       position:relative;
       img {
         min-height:600px;
-        // max-height:550px;
+        min-width:320px;
+        max-height:700px;
       }
     }
     .phone-template-overlay {
         background-color: rgba(0,0,0,0.9);
         position: absolute;
         width: 94%;
+        min-width:302px;
         margin-left: 3.1%;
         margin-top: 30.5%;
         top:0px;
         z-index: 100;
-        min-height: 469px;
+        min-height: 485px;
         border:0px;
     }
 
@@ -165,8 +180,8 @@ h5 {
   .hybrid-push-wrapper {
     flex-direction: column-reverse;
     -webkit-flex-direction: column-reverse;
-    -webkit-justify-content: flex-start;
-    justify-content: flex-start;
+    -webkit-justify-content: center;
+    justify-content: center;
     -webkit-align-content: center;
     align-content: center;;
     -webkit-align-items: center;
@@ -230,3 +245,81 @@ h5 {
 
 }
 
+
+
+.header-modal-message {
+  h2 {
+    font-size:130%;
+    color:#2D3440;
+    margin:0px;
+    padding:0px;
+    margin-top:1em;
+  }
+}
+
+.header-modal-message-post-callback {
+  h2 {
+    margin-top:30px;
+  }
+  h5 {
+    color:#2D3440;
+    text-transform:normal;
+  }
+}
+
+#submit-email-full {
+  width:40%;
+  left:30%;
+  background-color:$primary-color;
+  color:white;
+}
+
+.hide {
+  display:none;
+}
+
+.show {
+  display:block;
+}
+
+
+@media (max-width: 35.5em) {
+    /* Only apply this when the window is small. Otherwise, the following
+    case results in extra padding on the left:
+        * Make the window small.
+        * Tap the menu to trigger the active state.
+        * Make the window large again.
+    */
+    #dropshadow .phone-container-wrapper .hybrid-phone-template-container,
+    #dropshadow .phone-container-wrapper .phone-template-overlay {
+      padding:0px;
+      .pure-img {
+        display:none;
+      }
+    }
+    .hybrid-push-wrapper {
+      display:none;
+    }
+    .hybrid-phone-template-container {
+        padding: 0px !important;
+        width: 100%;
+        margin: 0px !important;
+        max-width: 35.5em;
+        height: 100%;
+    }
+    #dropshadow .phone-container-wrapper {
+      height:100%;
+    }
+    #dropshadow .phone-container-wrapper .phone-template-overlay {
+      position:relative;
+      width:100%;
+      max-width:35.5em;
+      max-height:736px;
+      height:100%;
+      margin:0 auto;
+    }
+
+    #desk {
+      bottom:10%;
+    }
+}

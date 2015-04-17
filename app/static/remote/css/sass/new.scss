@@ -17,6 +17,9 @@ $tabs-text: #4D4D4D;
     body {
         font-size: 18px; /* 1.5x default size */
     }
+    .onboarding-loading #desk {
+      bottom:10%;
+    }
 }
 
 /* iPhone 6*/
@@ -24,6 +27,9 @@ $tabs-text: #4D4D4D;
     body {
         font-size: 16px; /* 1.2x default size */
         }
+    }
+    .onboarding-loading #desk {
+      bottom:10%;
     }
 
 /* iPhone 4/5*/
@@ -44,6 +50,9 @@ $tabs-text: #4D4D4D;
         width:120%;
         left:12%;
       }
+    }
+    .onboarding-loading #desk {
+      bottom:10%;
     }
 
     // #desk {

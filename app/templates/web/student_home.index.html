@@ -18,11 +18,11 @@ Uguru Home Page
 
 <div class="splash-container university">
     <div class='flex-container-center full-area'>
-        <div class='main-container'>
-            <h2>
+        <div class='main-container padding-1em'>
+            <!-- <h2>
                 uguru
-            </h2>
-            <hr>
+            </h2> -->
+            <!-- <hr> -->
             <h1 class='first-h1'>
                 Find a tutor today.
             </h1>
@@ -33,13 +33,31 @@ Uguru Home Page
                 Say hello to your new secret weapon.
             </h4>
 
-            <div class='app-icons-horizontal'>
-                <a href='/hybrid-app/' class='apple-link' target='_blank'>
-                    <img class='img-pure' src='/static/img/apple_app_store.svg'/>
-                </a>
-                <a class='android-link' href='/hybrid-app/' target='_blank'>
-                    <img class='img-pure' src='/static/img/android_play.png'/>
-                </a>
+            <div id='flex-item-c' class='pure-g-c'>
+                <div class='flex-item-c'>
+                    <div class='pure-u-1 pure-u-md-3-5 padding-1em padding-bottom-2em'>
+                        <div class='pure-g home-search-wrapper'>
+                                <div class='pure-u-4-5'>
+                                    <div class='university-input-typeahead-wrapper'>
+                                        <input class='typeahead' type="text" placeholder="Enter your university" autofocus>
+                                    </div>
+                                </div>
+                                <div class='pure-u-1-5'>
+                                    <a class="pure-button search-button" href="#">Search</a>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='flex-item-c'>
+                    <div class='app-icons-horizontal opacity-3-4'>
+                        <a href='/hybrid-app/' class='apple-link' target='_blank'>
+                            <img class='img-pure' src='/static/img/apple_app_store.svg'/>
+                        </a>
+                        <a class='android-link' href='/hybrid-app/' target='_blank'>
+                            <img class='img-pure' src='/static/img/android_play.png'/>
+                        </a>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -63,23 +81,23 @@ Uguru Home Page
                     <div class="padding-1em inner-stat flex-container">
                         <img class="pure-img" src="/static/img/campus-stat.svg"/>
                         </img>
-                        <h2>{{university_statistics["schools"]}}</h2>
-                        <p>Total Campuses</p>
+                        <h1>1000+</h1>
+                        <p>Supported Schools</p>
                     </div>
                 </div>
                 <div class="pure-u-1-2 stat pure-u-sm-1-2 pure-u-md-1-4 pure-u-lg-1-4">
                     <div class="padding-1em inner-stat">
                         <img class="pure-img" src="/static/img/dept-stat.svg"/>
-                        <h2>{{university_statistics["courses"]}}</h2>
-                        <p>Supported Courses</p>
+                        <h1 data-attr-num='652487'>50k+</h1>
+                        <p>Courses Covered</p>
                     </div>
                 </div>
                 <div class="pure-u-1-2 stat pure-u-sm-1-2 pure-u-md-1-4 pure-u-lg-1-4">
 
                     <div class="padding-1em inner-stat">
                         <img class="pure-img" src="/static/img/courses-stat.svg"/>
-                        <h2>{{university_statistics["gurus"]}}</h2>
-                        <p>Gurus / School</p>
+                        <h1 data-attr-num='652487' >650k+</h1>
+                        <p>Professors Searchable</p>
                     </div>
 
                 </div>
@@ -87,8 +105,8 @@ Uguru Home Page
 
                     <div class="padding-1em inner-stat">
                         <img class="pure-img" src="/static/img/star-stat.svg"/>
-                        <h2><h2>{{university["stats"]["rating"]}}</h2></h2>
-                        <p>Average Guru Rating</p>
+                        <h1>4.8+</h1>
+                        <p>Avg Quality Rating</p>
                     </div>
 
                 </div>
@@ -190,7 +208,7 @@ Uguru Home Page
 
                 <div class="pure-u-1">
                     <div class="padding-1em">
-                        <h4> most requested courses this week at UVA </h4>
+                        <h4> We have Gurus at {{university['name']}} in these departments</h4>
                     </div>
                 </div>
 
@@ -201,37 +219,37 @@ Uguru Home Page
 
                 <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
-                        <h4>{{university["popular_courses"][0]}}</h4>
+                        <h4>{{departments[0]}}</h4>
                     </div>
                 </div>
 
                 <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
-                        <h4>{{university["popular_courses"][1]}}</h4>
+                        <h4>{{departments[1]}}</h4>
                     </div>
                 </div>
 
                 <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
-                        <h4>{{university["popular_courses"][2]}}</h4>
+                        <h4>{{departments[2]}}</h4>
                     </div>
                 </div>
 
                 <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
-                        <h4>{{university["popular_courses"][3]}}</h4>
+                        <h4>{{departments[3]}}</h4>
                     </div>
                 </div>
 
                 <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
-                        <h4>{{university["popular_courses"][4]}}</h4>
+                        <h4>{{departments[4]}}</h4>
                     </div>
                 </div>
 
                 <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
-                        <h4>{{university["popular_courses"][5]}}</h4>
+                        <h4>{{departments[5]}}</h4>
                     </div>
                 </div>
 
@@ -240,115 +258,47 @@ Uguru Home Page
             <div class="pure-g course-row-2">
                 <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
-                        <h4>{{university["popular_courses"][6]}}</h4>
+                        <h4>{{departments[6]}}</h4>
                     </div>
                 </div>
                 <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
-                        <h4>{{university["popular_courses"][7]}}</h4>
+                        <h4>{{departments[7]}}</h4>
                     </div>
                 </div>
                 <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
-                        <h4>{{university["popular_courses"][8]}}</h4>
+                        <h4>{{departments[8]}}</h4>
                     </div>
                 </div>
                 <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
-                        <h4>{{university["popular_courses"][9]}}</h4>
+                        <h4>{{departments[9]}}</h4>
                     </div>
                 </div>
                 <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
-                        <h4>{{university["popular_courses"][10]}}</h4>
+                        <h4>{{departments[10]}}</h4>
                     </div>
                 </div>
                 <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
-                        <h4>{{university["popular_courses"][11]}}</h4>
+                        <h4>{{departments[11]}}</h4>
                     </div>
                 </div>
             </div>
-
-    </div>
-    <div class="content">
-
-        <div class="pure-g testimonials white-text">
-
-            <div class="testimonial-container pure-u-1 pure-u-md-1-2">
-                <div class='testimonial-content-container'>
-                    <h4 class='uppercase opacity-50'>
-                        Students Love Uguru
-                    </h4>
-                    <h1 class='sans-light'>
-                        I got the grades I wanted, <br>
-                        and spent less time studying!
-                    </h1>
-                    <div class='pure-g'>
-                        <div class='pure-u-1'>
-                            <div class='flex-container testimonial-card'>
-                                <img class='img-pure img-center testimonial-photo' src='/static/img/admin/rob.png'>
-                                <div class='flex-item'>
-                                    <h3 class='no-xspace'> Rob N. </h3>
-                                    <h5 class='opacity-50 no-xspace'><strong>Philosophy Major</strong> at <strong>UC Berkeley</strong></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="testimonial-container pure-u-1 pure-u-md-1-2">
-                <div class='testimonial-content-container'>
-                    <h4 class='uppercase opacity-50'>
-                        Gurus Love Making Money
-                    </h4>
-                    <h1 class='sans-light'>
-                        I've been a CHEM tutor for <br>
-                        3 years and I friggin love it.
-                    </h1>
-                    <div class='pure-g'>
-                        <div class='pure-u-1'>
-                            <div class='flex-container testimonial-card'>
-                                <img class='img-pure img-center testimonial-photo' src='/static/img/admin/varada.png'>
-                                <div class='flex-item'>
-                                    <h3 class='no-xspace'> Varada G. </h3>
-                                    <h5 class='opacity-50 no-xspace'><strong>Chemistry Major</strong> at <strong>UC Berkeley</strong></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
 
     </div>
     <div class="content">
         <div class="pure-g available-now-banner" id="get-started-university">
             <div class="pure-u-1 center">
-                <div class='available-app-store-container white-text'>
-                    <div class='row-g'>
-                        <div class='pure-u-1'>
-                            <div class='app-icons-horizontal'>
-                                <a href='/hybrid-app/' class='apple-link' target='_blank'>
-                                    <img class='img-pure' src='/static/img/apple_app_store.svg'/>
-                                </a>
-                                <a class='android-link' href='/hybrid-app/' target='_blank'>
-                                    <img class='img-pure' src='/static/img/android_play.png'/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <h1>Check your university to get in on this.</h1>
-                <h3 class='opacity-50'> Uguru may already be available at your university!</h3>
+                <h1>Go to your custom university page to learn more</h1>
+                <h3 class='opacity-50'> Uguru is most likely already there.</h3>
                 <!-- <div class='input-container flex-container-center'>
                     <input id='university-input' autocomplete="off" class="pure-input-1" type="text" placeholder="Enter your university">
                     <button id='submit-university' type="submit" class="pure-button ">Search</button>
                 </div> -->
-                <div id='university-input-2' class='pure-g'>
+                <!-- <div id='university-input-2' class='pure-g'>
                     <div class='pure-u-md-1-3'></div>
                     <div class='pure-u-1 pure-u-md-1-3'>
                         <div class='pure-g'>
@@ -360,6 +310,32 @@ Uguru Home Page
                             <div class='pure-u-1-4' >
                                 <a class="pure-button search-button" href="#">Search</a>
                             </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div id='flex-item-c' class='pure-g-c'>
+                    <div class='flex-item-c'>
+                        <div class='pure-u-1 pure-u-md-3-5 padding-1em padding-bottom-2em'>
+                            <div class='pure-g home-search-wrapper'>
+                                    <div class='pure-u-4-5'>
+                                        <div class='university-input-typeahead-wrapper'>
+                                            <input class='typeahead' type="text" placeholder="Enter your university" autofocus>
+                                        </div>
+                                    </div>
+                                    <div class='pure-u-1-5'>
+                                        <a class="pure-button search-button" href="#">Search</a>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='flex-item-c'>
+                        <div class='app-icons-horizontal opacity-3-4'>
+                            <a href='/hybrid-app/' class='apple-link' target='_blank'>
+                                <img class='img-pure' src='/static/img/apple_app_store.svg'/>
+                            </a>
+                            <a class='android-link' href='/hybrid-app/' target='_blank'>
+                                <img class='img-pure' src='/static/img/android_play.png'/>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -414,7 +390,7 @@ Uguru Home Page
                             // Map the remote source JSON array to a JavaScript object array
 
                             return $.map(response, function (university) {
-                                university_url = "'" + university.title.replace(',','-').replace(' ', '-').replace('&','_').replace('-','_') + "'";
+                                // university_url = "'" + university.title.replace(',','-').replace(' ', '-').replace('&','_').replace('-','_') + "'";
                                 return {
                                     title: university.title,
                                     city: university.city,
@@ -453,8 +429,8 @@ Uguru Home Page
                     ].join('\n'),
                         suggestion: Handlebars.compile("<a class='university-link' href='javascript:void(0);'><p><span class='title'>{{title}}</span>{{city}}, {{state}}</p></a>")
                     }
-                }).on('typeahead:selected', function(event, suggested, dataset_name){
-                    window.location.replace('/' + suggested.title.split(' ').join('_').toLowerCase());
+                }).focus().on('typeahead:selected', function(event, suggested, dataset_name){
+                    window.location.replace('/u/' + suggested.title.split(' ').join('_').toLowerCase());
                 });
 
 

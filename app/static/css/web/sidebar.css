@@ -148,6 +148,40 @@ small screens.
     }
 
     body.active #menu {
-        width: 50%;
+        width: 33%;
     }
 }
+
+@media (max-width: 48em) {
+    /* Only apply this when the window is small. Otherwise, the following
+    case results in extra padding on the left:
+        * Make the window small.
+        * Tap the menu to trigger the active state.
+        * Make the window large again.
+    */
+    body.active {
+        position: relative;
+    }
+
+    body.active #menu {
+        width: 33%;
+    }
+}
+
+@media (max-width: 35.5em) {
+    /* Only apply this when the window is small. Otherwise, the following
+    case results in extra padding on the left:
+        * Make the window small.
+        * Tap the menu to trigger the active state.
+        * Make the window large again.
+    */
+    body.active {
+        position: relative;
+    }
+
+    body.active #menu {
+        width: 0%;
+    }
+}
+
+

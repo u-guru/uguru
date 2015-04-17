@@ -1,0 +1,247 @@
+{% extends 'web/components/base.html' %}
+
+{% block title_text %}
+     Uguru App
+{% endblock %}
+
+{% block content %}
+
+
+{% include 'web/components/header.html' %}
+
+<div class="pure-g university universities-uguru-banner">
+    <div class="pure-u-1 relative-container">
+        <img src='/static/img/banner-close.svg' class='absolute absolute-right close-banner padding'/>
+        Want a flexible part-time college job?
+        <!-- <button class='button button-pure'>Become a Guru</button> -->
+    </div>
+</div>
+
+
+<div class='pure-g-c flex-column universities-container'>
+
+    <div class="search-universities-banner flex-item-c">
+        <div class='pure-g-c flex-space-between padding-2em'>
+            <div class="flex-item-c center">
+                <div class="pure-u-1">
+                    <h1 class='white-text header-text'>Check to see if Uguru is at your school.</h1>
+                </div>
+            </div>
+            <div id='flex-item-c' class='pure-g'>
+                    <div class='pure-u-md-1-3'>
+                    </div>
+                    <div class='pure-u-1 pure-u-md-1-3 padding-1em padding-bottom-3em'>
+                        <div class='pure-g'>
+                                <div class='pure-u-3-4'>
+                                    <div class='university-input-typeahead-wrapper'>
+                                        <input class='typeahead' type="text" placeholder="Enter your university"/>
+                                    </div>
+                                </div>
+                                <div class='pure-u-1-4'>
+                                    <a class="pure-button search-button" href="#">Search</a>
+                                </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='pure-g center university-list-content'>
+        <div class='pure-u-1 padding-2em'>
+            <div class='pure-g-c'>
+
+                <div class='flex-item-c padding-bottom-2em'>
+                    <h1> Uguru now supports these universities. </h1>
+                </div>
+
+            </div>
+            <div class='pure-g all-universities'>
+                {% set fifth = ((universities|length) / 5.0)|int %}
+                <div class='pure-u-1-5'>
+                    {% for university_title in universities[0:fifth] %}
+                    <h6>{{university_title|title}}</h6>
+                    {% endfor %}
+                </div>
+                <div class='pure-u-1-5'>
+                    {% for university_title in universities[fifth:2*fifth] %}
+                    <h6>{{university_title|title}}</h6>
+                    {% endfor %}
+                </div>
+                <div class='pure-u-1-5'>
+                    {% for university_title in universities[2*fifth:3*fifth] %}
+                    <h6>{{university_title|title}}</h6>
+                    {% endfor %}
+                </div>
+                <div class='pure-u-1-5'>
+                    {% for university_title in universities[3*fifth:4*fifth] %}
+                    <h6>{{university_title|title}}</h6>
+                    {% endfor %}
+                </div>
+                <div class='pure-u-1-5'>
+                    {% for university_title in universities[4*fifth:5*fifth] %}
+                    <h6>{{university_title|title}}</h6>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="pure-g testimonials white-text">
+
+        <div class="testimonial-container pure-u-1 pure-u-md-1-2">
+                <div class='testimonial-content-container'>
+                    <h4 class='uppercase opacity-50'>
+                        Students Love Uguru
+                    </h4>
+                    <h1 class='sans-light'>
+                        I got the grades I wanted, <br>
+                        and spent less time studying!
+                    </h1>
+                    <div class='pure-g'>
+                        <div class='pure-u-1'>
+                            <div class='flex-container testimonial-card'>
+                                <img class='img-pure img-center testimonial-photo' src='/static/img/admin/rob.png'>
+                                <div class='flex-item'>
+                                    <h3 class='no-xspace'> Rob N. </h3>
+                                    <h5 class='opacity-50 no-xspace'><strong>Philosophy Major</strong> at <strong>UC Berkeley</strong></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="testimonial-container pure-u-1 pure-u-md-1-2">
+                <div class='testimonial-content-container'>
+                    <h4 class='uppercase opacity-50'>
+                        Gurus Love Making Money
+                    </h4>
+                    <h1 class='sans-light'>
+                        I've been a CHEM tutor for <br>
+                        3 years and I friggin love it.
+                    </h1>
+                    <div class='pure-g'>
+                        <div class='pure-u-1'>
+                            <div class='flex-container testimonial-card'>
+                                <img class='img-pure img-center testimonial-photo' src='/static/img/admin/varada.png'>
+                                <div class='flex-item'>
+                                    <h3 class='no-xspace'> Varada G. </h3>
+                                    <h5 class='opacity-50 no-xspace'><strong>Chemistry Major</strong> at <strong>UC Berkeley</strong></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+
+</div>
+
+{% include 'web/components/footer.html' %}
+{% endblock %}
+
+{% block footer_scripts %}
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="/static/js/web/lib/typeahead.min.js"></script>
+
+    <script src="/static/js/web/sidebar.js"></script>
+    <script src="/static/js/web/lib/handlebars.js"></script>
+    <script src="/static/js/web/university.js"></script>
+
+
+    <script>
+
+        var all_universities;
+
+        $(document).ready(function() {
+
+
+            //close click handler for jquery
+            $('#close-sidebar').click(function() {
+                $('body').removeClass('active');
+            })
+
+            $('.university-link').on('click', function() {
+                console.log('this was clicked');
+                console.log($(this).find('span.title').text().replace('/&/&','_').replace('//g','_').toLowerCase());
+            });
+
+        });
+
+
+        // Instantiate the Typeahead UI
+        {% raw %}
+
+                var movies = new Bloodhound({
+                    datumTokenizer: function (datum) {
+                        return Bloodhound.tokenizers.whitespace(datum.title);
+                    },
+                    limit: 5,
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    prefetch: {
+                        url: '/static/data/universities_web.json',
+                        filter: function (response) {
+                            // Map the remote source JSON array to a JavaScript object array
+
+                            return $.map(response, function (university) {
+                                // university_url = "'" + university.title.replace(',','-').replace(' ', '-').replace('&','_').replace('-','_') + "'";
+                                return {
+                                    title: university.title,
+                                    city: university.city,
+                                    state: university.state
+                                };
+                            });
+                        }
+                    },
+                    sorter: function compare(a,b) {
+                        if (a.title > b.title) {
+                          return 1;
+                        }
+                        if (b.title < a.title) {
+                          return -1;
+                        }
+                        return 0 ;
+                    }
+                });
+
+                // Initialize the Bloodhound suggestion engine
+                movies.initialize();
+
+                $('.typeahead').typeahead({
+                    minLength: 1,
+                    highlight:true,
+                    hint:true
+                }, {
+                    displayKey: 'title',
+                    source: movies.ttAdapter(),
+                    templates: {
+                    empty: [
+                      '<div class="empty-message">',
+
+                      '<a href="http://goo.gl/forms/UQ7WcYl3sb" target="_blank">+ Bring Uguru to Your University / School </a>',
+                      '</div>'
+                    ].join('\n'),
+                        suggestion: Handlebars.compile("<a class='university-link' href='javascript:void(0);'><p><span class='title'>{{title}}</span>{{city}}, {{state}}</p></a>")
+                    }
+                }).on('typeahead:selected', function(event, suggested, dataset_name){
+                    window.location.replace('/u/' + suggested.title.split(' ').join('_').toLowerCase());
+                });
+
+
+            {% endraw %}
+
+
+
+    </script>
+
+    <script src="/static/js/web/sidebar.js"></script>
+
+    </script>
+
+
+{% endblock %}

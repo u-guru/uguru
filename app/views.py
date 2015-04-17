@@ -344,10 +344,24 @@ def app_flex():
 
     return render_template("web/university.html", university=supported_universities['virginia'])
 
+@app.route('/faqs/')
+def uguru_faqs():
+    return render_template("web/content/faq.html")
+
+@app.route('/terms/')
+def uguru_terms():
+    return render_template("web/content/terms.html")
+
 @app.route('/')
 def app_student_home():
     from lib.university_data import supported_universities
+    from random import sample
+    from app.lib.gen_departments import departments
+
     university_names = supported_universities.keys()
+
+
+    departments = sample(departments, 12)
 
     university_statistics = {
         "schools": len(university_names),
@@ -356,7 +370,7 @@ def app_student_home():
         "rating": 4.8
     }
 
-    return render_template("web/student_home.index.html", university_statistics=university_statistics, university=supported_universities['virginia'])
+    return render_template("web/student_home.index.html", university_statistics=university_statistics, university=supported_universities['virginia'], departments=departments)
 
 @app.route('/guru/')
 def guru_home():
@@ -427,33 +441,45 @@ def one_university_mobile(name):
     else:
         return redirect(url_for('app_flex'))
 
-@app.route('/<name>/', methods=["GET"])
+@app.route('/u/<name>/', methods=["GET"])
 def one_university(name):
+
     from lib.university_data import supported_universities
     university_names = supported_universities.keys()
 
-    if request.args.get("email", None) is not None:
-
-        email = request.args.get("email")
-        email_user = Email_User.initEmailUser(email)
-        # session['email_user'] = email
-        # session['email_user_id'] = email_user.id
-
-        return redirect(request.path)
-
-    # if name in university_names:
-    return render_template("web/university.html", university=supported_universities['virginia'])
-    # else:
-    #     return redirect(url_for('app_flex'))
+    from app.static.data.universities_efficient import universities_arr
+    u_titles = [university['title'].lower() for university in universities_arr]
 
 
-@app.route('/web/app/')
-def app_home():
-    return render_template("web/app.index.html")
+    formatted_name = name.replace('_', ' ')
+
+    if not formatted_name:
+        return redirect(url_for('app_student_home'))
+
+    university = {
+        'name': formatted_name.title(),
+        'stats': {'population':'24212', 'departments':'1231', 'courses':'23132', 'rating':'4.8'}
+    }
+
+    if formatted_name in u_titles:
+        from random import sample
+        from app.lib.gen_departments import departments
+        departments = sample(departments, 12)
+
+        return render_template("web/university.html", university=university, departments=departments)
+    else:
+        return redirect(url_for('app_student_home'))
+
+
+
 
 @app.route('/universities/')
 def app_home():
-    return render_template("web/app.index.html")
+
+    from app.static.data.universities_efficient import universities_arr
+    u_titles = [university['title'].lower() for university in universities_arr]
+
+    return render_template("web/universities.html", universities=u_titles)
 
 @app.route('/production/app/')
 @app.route('/app/production/')
