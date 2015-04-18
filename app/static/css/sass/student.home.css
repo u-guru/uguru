@@ -43,7 +43,7 @@
 #student-home-page .available-now-banner {
   color: white; }
 #student-home-page .splash-container.university {
-  top: 86px;
+  top: 0px;
   height: 400px; }
   #student-home-page .splash-container.university h2 {
     font-family: "OpenSans-Bold";
@@ -80,7 +80,7 @@
     width: 130px;
     height: 40px; }
 #student-home-page .stat-container-wrapper {
-  margin-top: 86px; }
+  margin-top: 0px; }
 
 .university-input-typeahead-wrapper {
   width: 100%; }
@@ -137,5 +137,36 @@
   height: 100%;
   border: 2px solid rgba(0, 0, 0, 0.1);
   border-radius: 2px; }
+
+#student-home-page .splash-container.university h1.main-header-home {
+  font-family: "OpenSans-Light";
+  color: #2D3440;
+  zoom: 1;
+  padding: 0px;
+  margin-top: 0.75em;
+  letter-spacing: normal;
+  font-size: 225%;
+  opacity: 1;
+  word-spacing: normal;
+  text-rendering: optimizeLegibility; }
+  #student-home-page .splash-container.university h1.main-header-home .changing-header {
+    font-family: "OpenSans-Bold";
+    font-weight: 400;
+    border-bottom: 4px dotted #F47F7F; }
+
+h3.main-subheader-home {
+  margin-top: 1.5em;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 100%;
+  font-family: "OpenSans-Semibold"; }
+
+#course-header-wrapper {
+  overflow: hide; }
+
+#course-header-text,
+#university-header-text {
+  -webkit-animation-duration: 2s;
+  /* Chrome, Safari, Opera */
+  animation-duration: 2s; }
 
 /*# sourceMappingURL=student.home.css.map */

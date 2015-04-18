@@ -6,6 +6,8 @@ Uguru Home Page
 
 {% block header_scripts %}
 <link rel="stylesheet" href="/static/css/sass/student.home.css">
+<link rel="stylesheet" href="/static/css/web/lib/animate.min.css">
+<link rel="stylesheet" href="/static/css/sass/mobile.css">
 {% endblock %}
 
 {% block content %}
@@ -23,26 +25,25 @@ Uguru Home Page
                 uguru
             </h2> -->
             <!-- <hr> -->
-            <h1 class='first-h1'>
-                Find a tutor today.
+            <h1 class='main-header-home'>
+                Get instant
+                <span id='course-header-wrapper'class='changing-header'><span id='course-header-text'>CS10</span></span>
+                help at <span class='changing-header header-university'><span id='university-header-text'>Berkeley</span></span>
             </h1>
-            <h1>
-                Ace the course tomorrow.
-            </h1>
-            <h4>
-                Say hello to your new secret weapon.
-            </h4>
+            <h3 class='main-subheader-home'>
+                Peers helping peers for <strong>FREE</strong> or cheaper than ever before.
+            </h3>
 
             <div id='flex-item-c' class='pure-g-c'>
                 <div class='flex-item-c'>
-                    <div class='pure-u-1 pure-u-md-3-5 padding-1em padding-bottom-2em'>
+                    <div class='pure-u-1 pure-u-sm-4-5 pure-u-md-3-5 padding-1em padding-bottom-2em'>
                         <div class='pure-g home-search-wrapper'>
-                                <div class='pure-u-4-5'>
+                                <div class='pure-u-2-3 pure-sm-3-5 pure-u-md-4-5'>
                                     <div class='university-input-typeahead-wrapper'>
-                                        <input class='typeahead' type="text" placeholder="Enter your university" autofocus>
+                                        <input class='typeahead' id='typeahead-input-1' type="text" placeholder="Enter your university" autofocus>
                                     </div>
                                 </div>
-                                <div class='pure-u-1-5'>
+                                <div class='pure-u-1-3 pure-sm-2-5 pure-u-md-1-5'>
                                     <a class="pure-button search-button" href="#">Search</a>
                                 </div>
                         </div>
@@ -208,7 +209,7 @@ Uguru Home Page
 
                 <div class="pure-u-1">
                     <div class="padding-1em">
-                        <h4> We have Gurus at {{university['name']}} in these departments</h4>
+                        <h4> We have Gurus in several departments</h4>
                     </div>
                 </div>
 
@@ -217,37 +218,37 @@ Uguru Home Page
             <div class="pure-g course-row">
 
 
-                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
                         <h4>{{departments[0]}}</h4>
                     </div>
                 </div>
 
-                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
                         <h4>{{departments[1]}}</h4>
                     </div>
                 </div>
 
-                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
                         <h4>{{departments[2]}}</h4>
                     </div>
                 </div>
 
-                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
                         <h4>{{departments[3]}}</h4>
                     </div>
                 </div>
 
-                <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
+                <div class="pure-u-1-3 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
                         <h4>{{departments[4]}}</h4>
                     </div>
                 </div>
 
-                <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
+                <div class="pure-u-1-3 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
                         <h4>{{departments[5]}}</h4>
                     </div>
@@ -256,32 +257,32 @@ Uguru Home Page
             </div>
 
             <div class="pure-g course-row-2">
-                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
                         <h4>{{departments[6]}}</h4>
                     </div>
                 </div>
-                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
                         <h4>{{departments[7]}}</h4>
                     </div>
                 </div>
-                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
                         <h4>{{departments[8]}}</h4>
                     </div>
                 </div>
-                <div class="pure-u-1 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
+                <div class="pure-u-1-3 pure-u-sm-1-4 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
                         <h4>{{departments[9]}}</h4>
                     </div>
                 </div>
-                <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
+                <div class="pure-u-1-3 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
                         <h4>{{departments[10]}}</h4>
                     </div>
                 </div>
-                <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
+                <div class="pure-u-1-3 pure-u-sm-1-2 pure-u-md-1-6 popular-course">
                     <div class="padding-1em flex-container-center">
                         <h4>{{departments[11]}}</h4>
                     </div>
@@ -292,43 +293,25 @@ Uguru Home Page
     <div class="content">
         <div class="pure-g available-now-banner" id="get-started-university">
             <div class="pure-u-1 center">
-                <h1>Go to your custom university page to learn more</h1>
-                <h3 class='opacity-50'> Uguru is most likely already there.</h3>
-                <!-- <div class='input-container flex-container-center'>
-                    <input id='university-input' autocomplete="off" class="pure-input-1" type="text" placeholder="Enter your university">
-                    <button id='submit-university' type="submit" class="pure-button ">Search</button>
-                </div> -->
-                <!-- <div id='university-input-2' class='pure-g'>
-                    <div class='pure-u-md-1-3'></div>
-                    <div class='pure-u-1 pure-u-md-1-3'>
-                        <div class='pure-g'>
-                            <div class='pure-u-3-4'>
-                                <div class='university-input-typeahead-wrapper'>
-                                    <input class='typeahead' type="text" placeholder="Enter your university"/>
+                <h1>Search your university to learn more</h1>
+                <h3 class='opacity-50'> Uguru is most likely already there!</h3>
+
+                <div id='flex-item-c' class='pure-g-c'>
+                    <div class='flex-item-c' style="margin-top:1em;">
+                        <div class='pure-u-4-5 pure-u-sm-4-5 pure-u-md-3-5 padding-1em padding-bottom-2em home-search-wrapper-wrapper'>
+                            <div class='pure-g home-search-wrapper' id='home-search-wrapper-footer'>
+                                <div class='pure-u-3-5 pure-u-sm-4-5 pure-u-md-4-5'>
+                                    <div class='university-input-typeahead-wrapper'>
+                                        <input class='typeahead' type="text" id='typeahead-input-2' placeholder="Enter your university" autofocus>
+                                    </div>
+                                </div>
+                                <div class='pure-u-2-5 pure-u-sm-4-5 pure-u-md-4-5'>
+                                    <a class="pure-button search-button" href="#" id='search-button-2'>Search</a>
                                 </div>
                             </div>
-                            <div class='pure-u-1-4' >
-                                <a class="pure-button search-button" href="#">Search</a>
-                            </div>
                         </div>
                     </div>
-                </div> -->
-                <div id='flex-item-c' class='pure-g-c'>
-                    <div class='flex-item-c'>
-                        <div class='pure-u-1 pure-u-md-3-5 padding-1em padding-bottom-2em'>
-                            <div class='pure-g home-search-wrapper'>
-                                    <div class='pure-u-4-5'>
-                                        <div class='university-input-typeahead-wrapper'>
-                                            <input class='typeahead' type="text" placeholder="Enter your university" autofocus>
-                                        </div>
-                                    </div>
-                                    <div class='pure-u-1-5'>
-                                        <a class="pure-button search-button" href="#">Search</a>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='flex-item-c'>
+                    <div class='flex-item-c' style="margin-top:1em;">
                         <div class='app-icons-horizontal opacity-3-4'>
                             <a href='/hybrid-app/' class='apple-link' target='_blank'>
                                 <img class='img-pure' src='/static/img/apple_app_store.svg'/>
@@ -339,6 +322,7 @@ Uguru Home Page
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -359,6 +343,10 @@ Uguru Home Page
 
         var all_universities;
 
+        var header_titles = ['Berkeley','UTAustin', 'Stanford', 'UCLA', 'Harvard'];
+        var header_courses = ['CS 10','BIO11', 'POLI3', 'ENG14', 'CS 50'];
+        var header_index = 1;
+
         $(document).ready(function() {
 
 
@@ -367,12 +355,35 @@ Uguru Home Page
                 $('body').removeClass('active');
             })
 
+            $('.box-shadow-menu').click(function() {
+                $('body').addClass('active');
+            });
+
             $('.university-link').on('click', function() {
                 console.log('this was clicked');
                 console.log($(this).find('span.title').text().replace('/&/&','_').replace('//g','_').toLowerCase());
             });
 
+            animateUniversityAndCourses();
+
         });
+
+        var animateUniversityAndCourses = function() {
+            $('#course-header-text').addClass('animated fadeOut');
+            $('#university-header-text').addClass('animated fadeOut');
+            setTimeout(function() {
+                header_index += 1;
+                $('#course-header-text').removeClass('animated fadeOut').addClass('animated fadeIn');;
+                $('#course-header-text').text(header_courses[header_index % 4]);
+                $('#university-header-text').removeClass('animated fadeOut').addClass('animated fadeIn');;
+                $('#university-header-text').text(header_titles[header_index % 4]);
+            }, 3000)
+            setTimeout(function() {
+                $('#course-header-text').removeClass('animated fadeIn');
+                $('#university-header-text').removeClass('animated fadeIn');
+                animateUniversityAndCourses();
+            }, 4000);
+        }
 
 
         // Instantiate the Typeahead UI
@@ -429,7 +440,7 @@ Uguru Home Page
                     ].join('\n'),
                         suggestion: Handlebars.compile("<a class='university-link' href='javascript:void(0);'><p><span class='title'>{{title}}</span>{{city}}, {{state}}</p></a>")
                     }
-                }).focus().on('typeahead:selected', function(event, suggested, dataset_name){
+                }).on('typeahead:selected', function(event, suggested, dataset_name){
                     window.location.replace('/u/' + suggested.title.split(' ').join('_').toLowerCase());
                 });
 

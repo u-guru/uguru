@@ -2,6 +2,7 @@
 Add transition to containers so they can push in and out.
 */
 body,
+#mobile-menu,
 #menu,
 .menu-link {
     -webkit-transition: all 0.2s ease-out;
@@ -16,6 +17,11 @@ This is the parent `<div>` that contains the menu and the content area.
 */
 
 body.active #menu {
+    left: 25%;
+    width: 25%;
+}
+
+body.active #mobile-menu {
     left: 25%;
     width: 25%;
 }
@@ -55,7 +61,8 @@ appears on the left side of the page.
     -webkit-overflow-scrolling:touch;
 }
 
-#menu {
+#menu,
+#mobile-menu {
     margin-left: -25%; /* "#menu" width */
     width: 25%;
     position: fixed;
@@ -180,7 +187,7 @@ small screens.
     }
 
     body.active #menu {
-        width: 0%;
+        width: 75%;
     }
 }
 
