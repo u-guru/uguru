@@ -16,6 +16,7 @@ angular.module('uguru.onboarding.controllers')
      Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
      $ionicPlatform, $cordovaSplashscreen, $cordovaStatusbar, $rootScope) {
 
+    console.log('loading page has processed');
     $scope.intervals = 10;
     $scope.time_length = 500;
     $scope.root.vars.onboarding = true;
