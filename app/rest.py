@@ -228,6 +228,40 @@ class UserOneView(restful.Resource):
         if request.json.get('email'):
             user.email = request.json.get('email')
 
+        if request.json.get('profile_info'):
+            profile_info_dict = request.json.get('profile_info')
+            email = profile_info_dict.get('email')
+            name = profile_info_dict.get('first_name').title() + ' ' + profile_info_dict.get('last_name').title()
+            user.email = email
+            user.name = name
+            db_session.commit()
+
+
+        if request.json.get('change_password'):
+            print request.json.get('change_password')
+            change_password_dict = request.json.get('change_password')
+
+            email = change_password_dict.get('email')
+            old_password = change_password_dict.get('old_password')
+            new_password = change_password_dict.get('new_password')
+
+
+            from hashlib import md5
+
+            user_exists = User.query.filter_by(
+                email=change_password_dict.get('email'),
+                password=md5(change_password_dict.get('old_password')).hexdigest()
+                ).first()
+
+            print user_exists
+
+            if not user_exists:
+                abort(401)
+
+            user.password = md5(request.json.get('new_password')).hexdigest()
+            db_session.commit()
+
+
         if 'is_a_guru' in request.json:
             user.is_a_guru = request.json.get('is_a_guru')
 

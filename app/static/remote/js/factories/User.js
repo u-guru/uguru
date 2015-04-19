@@ -238,6 +238,7 @@ angular.module('uguru.user', [])
 
         $scope.user.id = user.id;
         $scope.user.name = user.name;
+        $scope.user.email = user.email;
         $scope.user.profile_url = user.profile_url;
         $scope.user.is_a_guru = user.is_a_guru;
         $scope.user.guru_mode = user.guru_mode;
@@ -810,8 +811,8 @@ angular.module('uguru.user', [])
 
             var payload = User.getPayload(arg, user, obj);
             User.updateAttr(payload, user.id).then(function(user) {
-
                 var processed_user = processResults(user.plain());
+                console.log(processed_user);
                 assignPropertiesToRootScope($scope, processed_user)
                 delegateActionsFromProcessedUser($scope);
 
