@@ -164,7 +164,6 @@ angular.module('uguru.util.controllers')
         $scope.user.email = $scope.signupForm.email;
       }
 
-      alert('Please enter all fields.');
       if (!formDict.password) {
         document.getElementsByName('login-password')[0].focus();
         var shake = document.getElementById('input_password_login')
@@ -293,9 +292,8 @@ angular.module('uguru.util.controllers')
       }, function(err) {
         if (err.status === 401) {
             $scope.signupForm.password = '';
-            $scope.root.dialog.alert('Incorrect username or password', 'Sorry!', 'OK');
-            alert('Incorrect username or password');
-          }
+            alert('Incorrect username or password', 'Sorry!', 'OK');
+        }
       });
     }
 

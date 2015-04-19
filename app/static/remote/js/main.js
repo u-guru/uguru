@@ -25,13 +25,17 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   $cordovaDialogs, Version, $rootScope, $cordovaSplashscreen,
   $templateCache, Device, User, $cordovaLocalNotification, $cordovaGeolocation) {
 
-
 $ionicPlatform.ready(function() {
-
+  console.log('list of all plugins checkpoint 1', JSON.stringify(cordova.require("cordova/plugin_list").metadata));
   document.addEventListener("deviceready", function () {
-
+        console.log('list of all plugins checkpoint 2', JSON.stringify(cordova.require("cordova/plugin_list").metadata));
 
            $cordovaSplashscreen.hide();
+
+            var posOptions = {
+              timeout: 2000,
+              enableHighAccuracy: false, //may cause high errors if true
+            }
 
             $cordovaGeolocation
             .getCurrentPosition(posOptions)
@@ -41,6 +45,7 @@ $ionicPlatform.ready(function() {
             }, function(err) {
               console.log(err);
             });
+            console.log('GEOLOCATION plugin',$cordovaGeolocation);
 
             $rootScope.platform = {
                 ios: ionic.Platform.isIOS(),
@@ -63,10 +68,6 @@ $ionicPlatform.ready(function() {
                 //hiding the splash screen
                 console.log('1. hiding splashscreen on mobile devices \n\n');
 
-                console.log('window.cordova.plugins', JSON.stringify(window.cordova.plugins));
-                console.log('cordova.plugins', JSON.stringify(cordova.plugins));
-                console.log('navigator', JSON.stringify(navigator), JSON.stringify(navigator.connection));
-                console.log('splashScreen', JSON.stringify($cordovaSplashscreen));
                 if (navigator.splashscreen) {
                   console.log('hide the splash screen on ios via cordova navigator v2');
                   navigator.splashscreen.hide();

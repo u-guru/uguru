@@ -2,7 +2,9 @@
 @media all and (min-width: 400px) and (max-width: 500px) {
   body {
     font-size: 18px;
-    /* 1.5x default size */ } }
+    /* 1.5x default size */ }
+  .onboarding-loading #desk {
+    bottom: 10%; } }
 
 /* iPhone 6*/
 @media all and (max-width: 400px) {
@@ -10,6 +12,9 @@
   body {
     font-size: 16px;
     /* 1.2x default size */ } }
+
+.onboarding-loading #desk {
+  bottom: 10%; }
 
 /* iPhone 4/5*/
 @media all and (max-width: 321px) {
@@ -25,6 +30,8 @@
   .onboarding-confirm button {
     width: 120%;
     left: 12%; }
+  .onboarding-loading #desk {
+    bottom: 10%; }
   .onboarding-prompt-location .button-back {
     margin: -15px auto !important;
     color: rgba(255, 255, 255, 0.7) !important; }
@@ -675,7 +682,8 @@ p {
 .request-description-container .attachment-container {
   height: 100px;
   width: 75px;
-  background-color: black; }
+  background-color: white;
+  border-color: white; }
 
 .angular-google-map-container {
   height: 100%; }

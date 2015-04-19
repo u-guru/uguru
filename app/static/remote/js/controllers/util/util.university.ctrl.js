@@ -169,7 +169,9 @@ angular.module('uguru.util.controllers', [])
 
       if ($scope.platform.mobile && $cordovaKeyboard.isVisible()) {
         $scope.keyboard_force_off = true;
-        $scope.closeKeyboard();
+        if (!$scope.platform.mobile) {
+          $scope.closeKeyboard();
+        }
         $timeout(function() {
           $scope.addUniversityModal.hide();
         }, 300)

@@ -16,18 +16,18 @@
 			              <label class="item item-input">
 			                <div class="tag">email</div><input type="text" name="signup-email" ng-model="user.email" placeholder="peter.parker@berkeley.edu">
 			              </label>
-                            <button class="button button-full button-positive">
+                            <button class="button button-full button-positive" ng-click="saveProfile()">
                                 Save Information
                             </button>
 		            </div>
 		            <div class="list">
 		              <label class="item item-input">
-		                <div class="tag">Old Password</div><input type="password" name="signup-password" ng-model="signupForm.password" placeholder="at least 6 characters">
+		                <div class="tag">Old Password</div><input type="password" name="signup-password" ng-model="changePasswordForm.old_password" placeholder="at least 6 characters">
 		              </label>
 		              <label class="item item-input">
-		                <div class="tag">New Password</div><input type="password" name="signup-password" ng-model="signupForm.password" placeholder="at least 6 characters">
+		                <div class="tag">New Password</div><input type="password" name="signup-password" ng-model="changePasswordForm.new_password" placeholder="at least 6 characters">
 		              </label>
-		              <button class="button button-full button-positive">
+		              <button class="button button-full button-positive" ng-click='changePassword()'>
 		              	Save Password
 		              </button>
 		        	</div>

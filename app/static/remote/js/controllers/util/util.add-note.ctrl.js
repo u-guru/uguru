@@ -84,41 +84,45 @@ angular.module('uguru.util.controllers')
 
     $scope.file_changed = function(element) {
         var photofile = element.files[0];
-         var reader = new FileReader();
-         reader.onload = function(e) {
-          console.log(e);
-         };
-         reader.readAsDataURL(photofile);
-         var image = document.getElementsByClassName('attachment-container')[0];
-                          image.src = "data:image/jpeg;base64," + photofile;
-         var formData = new FormData();
+        var reader = new FileReader();
+        var image = document.getElementsByClassName('attachment-container')[0];
+
+        reader.onload = function(e) {
+            image.src = e.target.result;
+        };
+
+        reader.readAsDataURL(photofile);
+        $scope.root.vars.request.files.push(true);
+
+        // var formData = new FormData();
         // formData.append('file', image.src);
-        formData.append('file', photofile);
-        formData.append('filename', photofile.name);
+      // formData.append('file', photofile);
+        // formData.append('filename', photofile.name);
+
         // $scope.user.createObj($scope.user, 'files', formData, $scope);
-        $scope.saveImgToTag(photofile);
+        // $scope.saveImgToTag(photofile);
     };
 
     $scope.saveImgToTag = function(imageData) {
       var image = document.getElementsByClassName('attachment-container')[0];
-      // image.src = "data:image/jpeg;base64," + imageData;
+      image.src = imageData;
 
-      var reader = new FileReader();
+      // var reader = new FileReader();
 
-      reader.onload = function (e) {
-        image.src = e.target.result;
-      };
+      // reader.onload = function (e) {
+      //   image.src = e.target.result;
+      // };
 
-       reader.readAsDataURL(imageData);
+      //  reader.readAsDataURL(imageData);
 
-      // $scope.request.photo = image.src;
+      // // $scope.request.photo = image.src;
 
-      var formData = new FormData();
-      // formData.append('file', image.src);
-      formData.append('file', imageData);
-      formData.append('filename', 'sup.jpg');
+      // var formData = new FormData();
+      // // formData.append('file', image.src);
+      // formData.append('file', imageData);
+      // formData.append('filename', 'sup.jpg');
 
-      $scope.user.createObj($scope.user, 'files', formData, $scope);
+      // $scope.user.createObj($scope.user, 'files', formData, $scope);
     }
 
   }
