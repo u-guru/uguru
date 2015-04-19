@@ -1,6 +1,7 @@
 // Uguru upp
-var LOCAL = false;
+var LOCAL = false; //local to the 8100 codebase
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
+// BASE = 'remote/'
 var REST_URL = 'http://uguru-rest.herokuapp.com';
 // BASE_URL = 'http://192.168.42.66:5000/static/remote/index.html';
 // REST_URL = 'http://192.168.42.66:5000';
