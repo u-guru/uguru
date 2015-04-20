@@ -441,8 +441,9 @@ def one_university_mobile(name):
     else:
         return redirect(url_for('app_flex'))
 
-@app.route('/u/<name>/', methods=["GET"])
-def one_university(name):
+@app.route('/u/<name>/<_id>/', methods=["GET"])
+def one_university(name, _id):
+    import random
 
     from lib.university_data import supported_universities
     university_names = supported_universities.keys()
@@ -450,25 +451,30 @@ def one_university(name):
     from app.static.data.universities_efficient import universities_arr
     u_titles = [university['title'].lower() for university in universities_arr]
 
-
-    formatted_name = name.replace('_', ' ')
-
-    if not formatted_name:
+    if not name or not _id:
         return redirect(url_for('app_student_home'))
 
-    university = {
-        'name': formatted_name.title(),
-        'stats': {'population':'24212', 'departments':'1231', 'courses':'23132', 'rating':'4.8'}
-    }
+    from lib.all_schools_updated import school_dict
 
-    if formatted_name in u_titles:
-        from random import sample
-        from app.lib.gen_departments import departments
-        departments = sample(departments, 12)
+    print name, _id
+    university = school_dict.get(str(_id))
 
-        return render_template("web/university.html", university=university, departments=departments)
-    else:
+    if not university:
         return redirect(url_for('app_student_home'))
+
+    university['name'] = name.replace('_', ' ').title()
+    university['stats'] =  {'population':'24212', 'departments':'1231', 'courses':'23132', 'rating':'4.8'}
+
+
+    popular_courses = []
+    print university['popular_courses']
+    for popular_course in university['popular_courses']:
+        if len(popular_course) >= 5 and len(popular_course) <= 9 and not all(char.isdigit() for char in popular_course):
+            popular_courses.append(popular_course)
+    popular_courses = random.sample(popular_courses, 12)
+
+    return render_template("web/university.html", university=university, departments=popular_courses)
+
 
 
 

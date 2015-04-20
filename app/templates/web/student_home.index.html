@@ -21,17 +21,13 @@ Uguru Home Page
 <div class="splash-container university">
     <div class='flex-container-center full-area'>
         <div class='main-container padding-1em'>
-            <!-- <h2>
-                uguru
-            </h2> -->
-            <!-- <hr> -->
             <h1 class='main-header-home'>
                 Get instant
                 <span id='course-header-wrapper'class='changing-header'><span id='course-header-text'>CS10</span></span>
                 help at <span class='changing-header header-university'><span id='university-header-text'>Berkeley</span></span>
             </h1>
             <h3 class='main-subheader-home'>
-                Peers helping peers for <strong>FREE</strong> or cheaper than ever before.
+                Peers helping peers for <strong>FREE</strong>, trade, or a little side cash.
             </h3>
 
             <div id='flex-item-c' class='pure-g-c'>
@@ -395,7 +391,7 @@ Uguru Home Page
                     limit: 5,
                     queryTokenizer: Bloodhound.tokenizers.whitespace,
                     prefetch: {
-                        url: '/static/data/universities_web.json',
+                        url: '/static/data/universities_web3.json',
                         filter: function (response) {
                             // Map the remote source JSON array to a JavaScript object array
 
@@ -404,7 +400,9 @@ Uguru Home Page
                                 return {
                                     title: university.title,
                                     city: university.city,
-                                    state: university.state
+                                    state: university.state,
+                                    thumbnail: university.thumbnail,
+                                    _id: university.id
                                 };
                             });
                         }
@@ -432,15 +430,17 @@ Uguru Home Page
                     source: movies.ttAdapter(),
                     templates: {
                     empty: [
-                      '<div class="empty-message">',
+                      '<div class="tt-suggestion">',
 
-                      '<a href="http://goo.gl/forms/UQ7WcYl3sb" target="_blank">+ Bring Uguru to Your University / School </a>',
+                      '<a href="http://goo.gl/forms/UQ7WcYl3sb" class="university-link" target="_blank"><p><span class="title">No results found (yet!) </span> Click to Bring Uguru to Your University / School<img class="pure-img" src="/static/img/guru-logo-red.svg"/></p></a>',
                       '</div>'
                     ].join('\n'),
-                        suggestion: Handlebars.compile("<a class='university-link' href='javascript:void(0);'><p><span class='title'>{{title}}</span>{{city}}, {{state}}</p></a>")
+                        suggestion: Handlebars.compile("<a class='university-link' href='javascript:void(0);'><p><span class='title'>{{title}}</span>{{city}}, {{state}} <img class='pure-img' src='{{thumbnail.source}}'/></p></a>")
                     }
                 }).on('typeahead:selected', function(event, suggested, dataset_name){
-                    window.location.replace('/u/' + suggested.title.split(' ').join('_').toLowerCase());
+                    window.location.replace('/u/' + suggested.title.replace(',','').split(' ').join('_').toLowerCase() + '/' + suggested._id + '/');
+                }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
+                    $('.tt-suggestion.tt-cursor img').addClass('animated wobble');
                 });
 
 

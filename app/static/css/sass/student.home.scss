@@ -1,7 +1,7 @@
 $primary-color: #3D9988;
 #student-home-page
 {
-
+    margin-top:80px;
     button {
         background-color:transparent;
         padding:0;
@@ -138,6 +138,7 @@ $primary-color: #3D9988;
         font-size: 85%;
         border:0px;
         display:inline-block !important;
+        text-transform: capitalize;
     }
 
     .twitter-typeahead {
@@ -150,7 +151,6 @@ $primary-color: #3D9988;
     border-top-left-radius:0px;
     border-bottom-left-radius:0px;
     height:inherit;
-    padding: 1em 1.5em;
     line-height:1em;
     background-color:$primary-color;
     color:white;
@@ -169,11 +169,15 @@ $primary-color: #3D9988;
   }
 
   .tt-suggestion {
+        position:relative;
+        z-index:20;
         .title {
             font-size:120%;
             display:block;
             margin-bottom:0.25em;
             color:rgba(0,0,0,0.8);
+            width:80%;
+            overflow: ellipsis;
         }
         padding: 0em 1.5em;
         text-align:left;
@@ -183,10 +187,24 @@ $primary-color: #3D9988;
             color:inherit;
 
         }
+
+        img {
+            position:absolute;
+            right:1em;
+            top:0.75em;
+            max-height:50px;
+        }
+
+        p {
+            padding:0.75em;
+            margin:0;
+        }
   }
 
   .tt-suggestion.tt-cursor {
     background-color: $primary-color;
+    margin-top:0px;
+    padding-top:0px;
     color:white;
     font-family:"OpenSans-Semibold";
     .title {
@@ -233,4 +251,7 @@ h3.main-subheader-home {
 #university-header-text {
     -webkit-animation-duration: 2s; /* Chrome, Safari, Opera */
     animation-duration: 2s;
+}
+#student-value-prop-1, #student-value-prop-2 {
+    z-index:0;
 }

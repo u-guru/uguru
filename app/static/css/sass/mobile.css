@@ -1,6 +1,15 @@
+.mobile-header {
+  display: none; }
+
 @media screen and (max-width: 35.4em) {
+  #student-home-page {
+    margin-top: 0px; }
+
   .class-guru-icon {
     display: none; }
+
+  .splash-container {
+    top: 0px !important; }
 
   .header {
     display: none; }
@@ -130,7 +139,20 @@
       width: auto !important; }
 
   .tt-dropdown {
-    width: 150%; } }
+    width: 150%;
+    font-size: 60%; }
+
+  .tt-suggestion {
+    font-size: 50%;
+    border-width: 1px; }
+    .tt-suggestion img {
+      max-height: 20px; }
+
+  .tt-dropdown-menu {
+    border-width: 1px; }
+
+  #typeahead-input-2 {
+    padding: 8.5% 6% !important; } }
 @media screen and (min-width: 35.5em) and (max-width: 48em) {
   #student-home-page .splash-container.university h1.main-header-home {
     margin-top: 0.25em;

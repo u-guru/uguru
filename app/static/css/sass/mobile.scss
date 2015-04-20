@@ -1,7 +1,20 @@
 $primary-color: #3D9988;
+.mobile-header {
+    display:none;
+}
 @media screen and (max-width: 35.4em) {
+    #student-home-page {
+        margin-top: 0px;
+    }
     .class-guru-icon {
         display:none;
+    }
+
+    .get-a-tutor {
+    }
+
+    .splash-container {
+        top:0px!important;
     }
 
     .header {
@@ -187,7 +200,25 @@ $primary-color: #3D9988;
 
     .tt-dropdown{
         width:150%;
+        font-size:60%;
     }
+
+    .tt-suggestion {
+        font-size: 50%;
+        img {
+            max-height:20px;
+        }
+        border-width:1px;
+    }
+
+    .tt-dropdown-menu {
+        border-width:1px;
+    }
+
+    #typeahead-input-2 {
+        padding: 8.5% 6% !important;
+    }
+
 }
 //small
 @media screen and (min-width: 35.5em) and (max-width: 48em){

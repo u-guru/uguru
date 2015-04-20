@@ -3,6 +3,7 @@
     var layout   = document.body,
         menu     = document.getElementById('menu'),
         menuLink = document.getElementById('menuLink');
+        menuLinkMobile =document.getElementById('menuLinkMobile')
 
     function toggleClass(element, className) {
         var classes = element.className.split(/\s+/),
@@ -24,6 +25,14 @@
     }
 
     menuLink.onclick = function (e) {
+        var active = 'active';
+        e.preventDefault();
+        toggleClass(layout, active);
+        toggleClass(menu, active);
+        toggleClass(menuLink, active);
+    };
+
+    menuLinkMobile.onclick = function (e) {
         var active = 'active';
         e.preventDefault();
         toggleClass(layout, active);

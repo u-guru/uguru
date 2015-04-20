@@ -435,6 +435,7 @@ for school_id in school_dict.keys():
     new_dict[str(school_id)] = {
             'id': int(school_id),
             'professors': school_dict[school_id]['top_professors_names'],
+            'title': school_dict[school_id]['title'],
             'city': school_dict[school_id]['city'],
             'state': school_dict[school_id]['state'],
             'popular_courses': school_dict[school_id]['unique_courses'][0:24],
@@ -456,3 +457,36 @@ for user_info in school_arr:
 with open('ucla_reg_emails.py', 'wb') as fp:
     json.dump(new_arr, fp, indent = 4)
 print len(new_arr), 'emails processed'
+
+
+
+import json
+f = open('all_schools_updated.json')
+school_dict = json.load(f)
+new_dict = {}
+for school_id in school_dict.keys():
+    new_dict[str(school_id)] = {
+            'id': int(school_id),
+            'professors': school_dict[school_id]['top_professors_names'],
+            'title': school_dict[school_id]['title'],
+            'city': school_dict[school_id]['city'],
+            'state': school_dict[school_id]['state'],
+            'popular_courses': school_dict[school_id]['unique_courses'][0:24],
+            'thumbnail': school_dict[school_id]['thumbnail']
+    }
+
+import json
+from all_schools_updated import school_dict
+school_dict = json.loads(f)
+final_arr = []
+for school_id in school_dict.keys():
+    final_arr.append({
+            'id': int(school_id),
+            'title': school_dict[school_id]['title'],
+            'city': school_dict[school_id]['city'],
+            'state': school_dict[school_id]['state'],
+            'thumbnail': school_dict[school_id]['thumbnail']
+    })
+with open('universities_web2.json', 'wb') as fp:
+    json.dump(final_arr, fp, indent = 4)
+
