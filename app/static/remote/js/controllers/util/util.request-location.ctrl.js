@@ -124,7 +124,7 @@ angular.module('uguru.util.controllers')
           },1500);
     }
 
-    $scope.$on('$ionicView.enter', function() {
+    $scope.$on('$ionicView.loaded', function() {
 
       // if ($scope.requestMapModal.isShown()) {
 

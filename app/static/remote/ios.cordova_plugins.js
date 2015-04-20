@@ -15,6 +15,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/com.keepe.cardio/www/cdv-plugin-card-io.js",
+        "id": "com.keepe.cardio.CardIO",
+        "clobbers": [
+            "CardIO"
+        ]
+    },
+    {
         "file": "plugins/com.ohh2ahh.plugins.appavailability/www/AppAvailability.js",
         "id": "com.ohh2ahh.plugins.appavailability.AppAvailability",
         "clobbers": [
@@ -685,11 +692,12 @@ module.exports = [
         ]
     }
 ];
-module.exports.metadata =
+module.exports.metadata = 
 // TOP OF METADATA
 {
     "com.appgiraffe.plugins.applicationPreferences": "0.1.0",
     "com.ionic.keyboard": "1.0.3",
+    "com.keepe.cardio": "1.0.5",
     "com.ohh2ahh.plugins.appavailability": "0.3.1",
     "com.phonegap.plugins.PushPlugin": "2.4.0",
     "com.plugin.datepicker": "0.5.0",

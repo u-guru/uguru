@@ -25,9 +25,14 @@ angular.module('uguru.util.controllers')
       if ($scope.course_search_text.length === 0 && !$scope.keyboard_force_off) {
         document.getElementsByName("course-input")[0].focus();
       }
-      // if ($scope.platform && $scope.platform.android) {
-      //   $cordovaKeyboard.show();
-      // }
+
+      if ($scope.platform && $scope.platform.android) {
+        $timeout(function() {
+          if (!$cordovaKeyboard.isVisible) {
+            $cordovaKeyboard.show();
+          }
+        }, 500);
+      }
     };
 
     $scope.clearSearchInput = function() {

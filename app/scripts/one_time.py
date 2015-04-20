@@ -443,3 +443,16 @@ for school_id in school_dict.keys():
 
 with open('all_schools_updated.py', 'wb') as fp:
     json.dump(new_dict, fp, indent = 4)
+
+
+import json
+f = open('ucla.json')
+school_arr = json.load(f)
+new_arr = []
+for user_info in school_arr:
+    if 'ucla.edu' not in user_info.get('email').lower():
+        split_name = user_info.get('name').lower().replace(',','').split(' ')
+        new_arr.append({'first_name': split_name[1],'last_name': split_name[0],'name': split_name[1] + ' ' split_name[0],'email': user_info.get('email').lower()})
+with open('ucla_reg_emails.py', 'wb') as fp:
+    json.dump(new_arr, fp, indent = 4)
+print len(new_arr), 'emails processed'

@@ -18,88 +18,9 @@
 
     <link href="remote/css/animate.css" rel="stylesheet">
     <link href="remote/css/sass/new.css" rel="stylesheet">
+    <link href="remote/css/ios.css" rel="stylesheet">
 
-  </head>
-  <body ng-app="uguru" animation="slide-left-right-ios7">
-    <!--
-      The nav bar that will be updated as we navigate between views.
-    -->
-
-    <ion-nav-view animation="slide-left-right-ios7">
-    </ion-nav-view>
-    <ion-nav-bar class="bar-dark nav-bar-text bold-font">
-      <ion-nav-back-button class="button-clear" style="width:75px;">
-          <img src="./img/left-chevron.png" class='uguru-back-button'/>
-      </ion-nav-back-button>
-    </ion-nav-bar>
-
-
-    <script id="templates/root.html" type="text/ng-template">
-      <ion-nav-view animation="slide-left-right">
-
-      </ion-nav-view>
-      <ion-nav-back-button class="button-clear" style="width:75px;">
-          <img src="./img/left-chevron.png" class='uguru-back-button'/>
-      </ion-nav-back-button>
-    </script>
-    <script id="templates/student-root.html" type="text/ng-template">
-      <ion-nav-view animation="slide-left-right">
-      </ion-nav-view>
-    </script>
-    <script id="templates/web-root.html" type="text/ng-template">
-      <ion-nav-view animation="slide-left-right">
-      </ion-nav-view>
-    </script>
-
-    <script id="templates/guru-root.html" type="text/ng-template">
-      <ion-nav-view animation="slide-left-right">
-      </ion-nav-view>
-    </script>
-
-    <script id="templates/wizard-root.html" type="text/ng-template">
-      <ion-nav-view animation="slide-left-right">
-      </ion-nav-view>
-    </script>
-
-    <script id="templates/gettingStartedPopover.html" type="text/ng-template">
-      <ion-popover-view id='student-web-popover' class='uguru-popover platform-ios platform web platform-arrow'>
-        <ion-header-bar>
-          <h1 class="title">Tap to get started.</h1>
-        </ion-header-bar>
-        <ion-content scroll='false'>
-          <div class="pure-g-c flex-column">
-            <div class="flex-item-c">
-              <p>Just enter a course code. Uguru uses <br>
-              your university course catalogs to help <br>
-              keep things simple</p>
-            </div>
-            <div class="flex-item-c">
-              <button ng-click="closePopover();"class='button button-full button-positive button-popover'>Got it.</button>
-            </div>
-          </div>
-        </ion-content>
-      </ion-popover-view>
-    </script>
-
-    <script id="templates/gettingStartedRequestHelpPopover.html" type="text/ng-template">
-      <ion-popover-view id='student-request-help-popover' class='uguru-popover platform-ios platform web platform-arrow'>
-        <ion-header-bar>
-          <h1 class="title">Tap to request help.</h1>
-        </ion-header-bar>
-        <ion-content scroll='false'>
-          <div class="pure-g-c flex-column">
-            <div class="flex-item-c">
-              <p>Any time you need help in <strong>{{user.student_courses[0].short_name}}</strong>,<br> we got your back!</p>
-            </div>
-            <div class="flex-item-c">
-              <button ng-click="closePopoverTwo();"class='button button-full button-positive button-popover'>Got it.</button>
-            </div>
-          </div>
-        </ion-content>
-      </ion-popover-view>
-    </script>
-
-    <script>
+     <script>
     LOCAL = true;
     BASE = '/remote';
     </script>
@@ -149,8 +70,8 @@
 
     <!-- cordova script (this will be a 404 during development) <script src="cordova_plugins.js"></script> -->
 
-    <script src="cordova.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
 
     <!-- uguru app main js -->
     <script src="remote/js/main.js"></script>
@@ -236,6 +157,88 @@
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.edit-courses.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.edit-university.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.transactions.ctrl.js"></script>
+
+  </head>
+  <body ng-app="uguru" animation="slide-left-right-ios7">
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+
+    <ion-nav-view animation="slide-left-right-ios7">
+    </ion-nav-view>
+    <ion-nav-bar class="bar-dark nav-bar-text bold-font">
+      <ion-nav-back-button class="button-clear" style="width:75px;">
+          <img src="./img/left-chevron.png" class='uguru-back-button'/>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+
+
+    <script id="templates/root.html" type="text/ng-template">
+      <ion-nav-view animation="slide-left-right">
+
+      </ion-nav-view>
+      <ion-nav-back-button class="button-clear" style="width:75px;">
+          <img src="./img/left-chevron.png" class='uguru-back-button'/>
+      </ion-nav-back-button>
+    </script>
+    <script id="templates/student-root.html" type="text/ng-template">
+      <ion-nav-view animation="slide-left-right">
+      </ion-nav-view>
+    </script>
+    <script id="templates/web-root.html" type="text/ng-template">
+      <ion-nav-view animation="slide-left-right">
+      </ion-nav-view>
+    </script>
+
+    <script id="templates/guru-root.html" type="text/ng-template">
+      <ion-nav-view animation="slide-left-right">
+      </ion-nav-view>
+    </script>
+
+    <script id="templates/wizard-root.html" type="text/ng-template">
+      <ion-nav-view animation="slide-left-right">
+      </ion-nav-view>
+    </script>
+
+    <script id="templates/gettingStartedPopover.html" type="text/ng-template">
+      <ion-popover-view id='student-web-popover' class='uguru-popover platform-ios platform web platform-arrow'>
+        <ion-header-bar>
+          <h1 class="title">Tap to get started.</h1>
+        </ion-header-bar>
+        <ion-content scroll='false'>
+          <div class="pure-g-c flex-column">
+            <div class="flex-item-c">
+              <p>Just enter a course code. Uguru uses <br>
+              your university course catalogs to help <br>
+              keep things simple</p>
+            </div>
+            <div class="flex-item-c">
+              <button ng-click="closePopover();"class='button button-full button-positive button-popover'>Got it.</button>
+            </div>
+          </div>
+        </ion-content>
+      </ion-popover-view>
+    </script>
+
+    <script id="templates/gettingStartedRequestHelpPopover.html" type="text/ng-template">
+      <ion-popover-view id='student-request-help-popover' class='uguru-popover platform-ios platform web platform-arrow'>
+        <ion-header-bar>
+          <h1 class="title">Tap to request help.</h1>
+        </ion-header-bar>
+        <ion-content scroll='false'>
+          <div class="pure-g-c flex-column">
+            <div class="flex-item-c">
+              <p>Any time you need help in <strong>{{user.student_courses[0].short_name}}</strong>,<br> we got your back!</p>
+            </div>
+            <div class="flex-item-c">
+              <button ng-click="closePopoverTwo();"class='button button-full button-positive button-popover'>Got it.</button>
+            </div>
+          </div>
+        </ion-content>
+      </ion-popover-view>
+    </script>
+
+
 
   </body>
 

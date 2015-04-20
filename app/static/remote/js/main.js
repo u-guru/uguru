@@ -6,10 +6,9 @@ var REST_URL = 'http://uguru-rest.herokuapp.com';
 // BASE_URL = 'http://192.168.42.66:5000/static/remote/index.html';
 // REST_URL = 'http://192.168.42.66:5000';
 var BASE = '';
-var img_base = '';
 if (LOCAL) {
   BASE = 'remote/';
-  // BASE_URL = 'http://192.168.42.66:8100';
+  BASE_URL = 'http://192.168.42.66:8100';
   // BASE_URL = 'http://192.168.42.66:5000/app/production/';
   REST_URL = 'http://192.168.42.66:5000';
   // var REST_URL = 'http://uguru-rest.herokuapp.com';
@@ -27,7 +26,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   $templateCache, Device, User, $cordovaLocalNotification, $cordovaGeolocation) {
 
 $ionicPlatform.ready(function() {
-  console.log('list of all plugins checkpoint 1', JSON.stringify(cordova.require("cordova/plugin_list").metadata));
+
   document.addEventListener("deviceready", function () {
         console.log('list of all plugins checkpoint 2', JSON.stringify(cordova.require("cordova/plugin_list").metadata));
 
@@ -37,16 +36,6 @@ $ionicPlatform.ready(function() {
               timeout: 2000,
               enableHighAccuracy: false, //may cause high errors if true
             }
-
-            $cordovaGeolocation
-            .getCurrentPosition(posOptions)
-            .then(function (position) {
-              console.log('user is at ' + position.coords.latitude + ',' + position.coords.longitude);
-
-            }, function(err) {
-              console.log(err);
-            });
-            console.log('GEOLOCATION plugin',$cordovaGeolocation);
 
             $rootScope.platform = {
                 ios: ionic.Platform.isIOS(),
@@ -106,20 +95,10 @@ $ionicPlatform.ready(function() {
                   }
 
                 }
-
-                if ($rootScope.platform.android) {
-
-                  console.log('Extra #2. Android push notifications need to be registered')
-                  $rootScope.$on('pushNotificationReceived', function(event, notification) {
-                    CordovaPushWrapper.received($scope, event, notification);
-
-                  });
-
-                }
           }
 
     });
-    checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+    // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
   });
 
 })
@@ -134,6 +113,7 @@ $ionicPlatform.ready(function() {
   }
 
   $ionicConfigProvider.views.swipeBackEnabled(false);
+  $ionicConfigProvider.tabs.position("bottom");
 
   //Set up restangular provider
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
@@ -152,9 +132,6 @@ $ionicPlatform.ready(function() {
 
           $scope.network_speed = null;
           $scope.platform_ready = false;
-          if ($rootScope.platform) {
-
-          }
 
           //how to make platform ready...
           $scope.user = User.getLocal();
@@ -234,10 +211,23 @@ $ionicPlatform.ready(function() {
                 device: ionic.Platform.device(),
             }
 
-            if ($rootScope.current_device && $scope.user) {
+            if ($rootScope.platform.android) {
+
+                  console.log('Extra #2. Android push notifications need to be registered')
+                  $rootScope.$on('pushNotificationReceived', function(event, notification) {
+                    CordovaPushWrapper.received($rootScope, event, notification);
+                    console.log('android notifications registered',event, notification);
+                  });
+
+                  //grab geolocation super early for android devices
+                  on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation);
+
+              }
+
+            if ($rootScope.platform && $scope.user) {
               $scope.user.current_device = ionic.Platform.device();
-              $scope.user.current_device.user_id = $rootScope.user.id;
-              $rootScope.user.createObj($rootScope.user.current_device, 'device', $rootScope.user.current_device, $rootScope);
+              $scope.user.current_device.user_id = $scope.user.id;
+              $scope.user.createObj($scope.user, 'device', $scope.user.current_device, $scope);
             }
 
 
@@ -259,7 +249,7 @@ $ionicPlatform.ready(function() {
             document.addEventListener("online", function() {
 
                 console.log('device is online...');
-              checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+              // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
                 console.log('Getting user from server');
 
             }, false);
@@ -267,7 +257,7 @@ $ionicPlatform.ready(function() {
             document.addEventListener("offline", function() {
 
                 console.log('device is offline...');
-                checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+                // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
                 // console.log('getting updated user from server...');
                 // User.getUserFromServer($scope);
 

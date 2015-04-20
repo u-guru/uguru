@@ -23,7 +23,7 @@ angular.module('uguru.root.services')
         var getLocation = function($scope, successCallback, failureCallback, $state) {
 
           var posOptions = {
-              timeout: 2000,
+              timeout: 10000,
               enableHighAccuracy: false, //may cause high errors if true
           }
 
