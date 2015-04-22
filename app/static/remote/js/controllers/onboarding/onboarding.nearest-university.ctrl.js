@@ -18,7 +18,7 @@ angular.module('uguru.onboarding.controllers')
      $ionicPlatform, $ionicModal, $cordovaKeyboard, $cordovaStatusbar) {
 
     $scope.search_text = '';
-    $scope.header_text = 'Nearby Schools'
+    $scope.header_text = 'Nearby Schools';
 
     $scope.$on('$ionicView.beforeEnter', function(){
         console.log('before view has entered');

@@ -4,15 +4,36 @@
 <ion-view hide-nav-bar='true' class='onboarding-nearest'>
     <ion-header-bar class="header-bar bar-white">
 
-        <!-- <div class="buttons">
+        <div class="buttons">
             <button class="button button-clear button-back">Back</button>
-        </div> -->
+        </div>
 
-
-        <h1 class="title uppercase">{{header_text}}</h1>
+        <h5 class="default-header title">{{header_text}}</h5>
     </ion-header-bar>
 
     <ion-content ng-click='hideKeyboard()'>
+
+        <div ng-hide='search_text.length > 0 || matchingUniversities.length > 0' class="choose-among-container margin-1em padding-top-1-5em">
+          <p class='center'> Choose from among <span class='default-positive'>2700+</span> schools <br>
+            across the nation </p>
+          <div class='pure-g padding-1em select-university-logo-container'>
+            <div class='pure-u-1-5 flex flex-row j-center'>
+              <img class='pure-img' src='{{img_base}}./img/logos/UnivOfRhodeIsland.png'/>
+            </div>
+            <div class='pure-u-1-5 flex flex-row j-center'>
+              <img class='pure-img' src='{{img_base}}./img/logos/univOfNebraska.png'/>
+            </div>
+            <div class='pure-u-1-5 flex flex-row j-center'>
+              <img class='pure-img' src='{{img_base}}./img/logos/UnivOfTennMartin.png'/>
+            </div>
+            <div class='pure-u-1-5 flex flex-row j-center'>
+              <img class='pure-img' src='{{img_base}}./img/logos/UnivOfMaine.png'/>
+            </div>
+            <div class='pure-u-1-5 flex flex-row j-center'>
+              <img class='pure-img' src='{{img_base}}./img/logos/UnivOfKansas.png'/>
+            </div>
+          </div>
+        </div>
 
         <div class="list" ng-show='search_active || search_text.length > 0'>
           <a class="item" ng-repeat="university in matchingUniversities" ng-click="nearestUniversitySelected($event, university)">
@@ -48,10 +69,10 @@
 
     <ion-footer-bar class="bar-footer item-input-inset" keyboard-attach>
 
-          <label class="item-input-wrapper">
-              <i class="icon ion-ios7-search placeholder-icon"></i>
+           <label class="item-input-wrapper">
+              <i class="icon ion-search placeholder-icon"></i>
 
-              <input type="search" name="university-input" class="form-control"
+              <input type="search" id='university-input' name="university-input" class="form-control"
                       fast-matcher
                       fast-matcher-source="static.universities"
                       fast-matcher-output="matchingUniversities"

@@ -2,6 +2,7 @@
 // TODO GO BACK AND ADD IMAGES
 
 
+$default-background:rgba(0,0,0,0.04);
 $background-color:#3f4a4d;
 $header-color:#2b3234;
 $dark: rgb(43,50,52);
@@ -174,17 +175,17 @@ p {
 }
 
 .checkbox input:after, .checkbox-icon:after {
-  -webkit-transition: opacity .05s ease-in-out;
-  transition: opacity .05s ease-in-out;
+  -webkit-transition: opacity 0.05s ease-in-out;
+  transition: opacity 0.05s ease-in-out;
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
   position: absolute;
-  top: 39%;
+  top: 35%;
   left: 24%;
   display: table;
   width: 14px;
-  height: 6px;
-  border: 2px solid #fff;
+  height: 8px;
+  border: 0.25em solid #fff;
   border-top: 0;
   border-right: 0;
   content: ' ';
@@ -343,6 +344,10 @@ p {
     opacity:0.9;
   }
 
+  h5.header {
+    font-family: "OpenSans-Regular";
+  }
+
   .guru-logo-container
   img {
       padding-top:0em;
@@ -402,10 +407,11 @@ p {
         padding-top:5px;
         width:75%;
         white-space:normal;
+        font-size:90%;
     }
 
     .city {
-      opacity:0.7;
+      opacity:0.4;
     }
 
     .absolute.miles {
@@ -504,7 +510,7 @@ p {
 .onboarding-loading {
   position:relative;
   #desk {
-    bottom:8%;
+    bottom:10%;
     position:absolute;
     height:64.3%;
     left:8.5%;
@@ -800,7 +806,7 @@ p {
 }
 
 .popover-backdrop.active {
-    background-color: rgba(0,0,0,.2);
+    background-color: rgba(0,0,0,.6);
 }
 
 .popover-backdrop {
@@ -891,11 +897,13 @@ p {
 
 }
 
-.button-back {
+.bar .button.button-clear {
   font-family:"OpenSans-Regular";
-  color:rgba(0,0,0,0.8);
-  font-size:13px !important;
+  color:rgba(0,0,0,0.9);
   text-transform: none;
+  padding-right:0.5em;
+  padding-left:0.5em;
+  font-size:90%;
 }
 
 
@@ -921,7 +929,6 @@ p {
   .checkbox input, .checkbox-icon {
     display: inline-block;
   }
-
   .checkbox input:before, .checkbox-icon:before {
     // display: table;
     // width: 100%;
@@ -1223,8 +1230,6 @@ margin: 0;
 
 .signup-form {
   .item.item-input input{
-    text-transform:capitalize;
-    margin-left:20px;
     margin-top:5px;
   }
 }
@@ -1247,6 +1252,10 @@ margin: 0;
 .student-sessions {
   .list {
       margin-bottom:-5px !important;
+  }
+
+  .sleeping-guru {
+    max-height:125px;
   }
 
   .full-height {
@@ -1512,4 +1521,219 @@ margin: 0;
 tabs-positive>.tabs .tab-item .badge, .tabs.tabs-positive .tab-item .badge {
   background-color: red;
   color: white;
+}
+
+.typewriter-text {
+    padding:20% 30% 10% 10%;
+    line-height:1.5em;
+    position:absolute;
+    letter-spacing:0.5px;
+}
+
+.scroll-content {
+  background-color: $default-background;
+}
+
+.pure-white {
+  background-color:white;
+}
+
+.tinted-white {
+  background-color:rgba(0,0,0,0.04);
+}
+
+.choose-among-container {
+  background-color:white;
+  border:1px solid #ddd;
+  padding:1.5em 0.5em 1em 0.5em;
+}
+
+.padding-top-1-5em {
+  padding-top:1.5em;
+}
+
+.flex-row {
+  flex-direction: row;
+  -webkit-flex-direction:row;
+}
+
+.choose-among-container {
+  p {
+    font-size:105%;
+  }
+}
+
+.default-positive {
+  color:$positive;
+}
+
+.select-university-logo-container {
+  margin-top:2em;
+
+  img {
+    height:30px;
+  }
+}
+
+.flex {
+  display:flex;
+  -webkit-display:flex;
+}
+
+.flex-row {
+  flex-direction:row;
+  -webkit-flex-direction:row;
+}
+
+.j-center {
+  justify-content:center;
+}
+
+#university-input {
+  background:white;
+  width:100%;
+  padding-right:0;
+  margin:0;
+}
+
+.item-input-wrapper {
+  padding:0;
+  background:none;
+}
+
+.item-checkbox {
+  padding-top:0.25em;
+  padding-bottom:0.25em;
+}
+
+.header-bar h5 {
+  @extend .title;
+  height: auto;
+  font-size: 90% !important;
+  font-family: "OpenSans-SemiBold";
+  font-weight: 400;
+  text-transform:uppercase;
+  text-align:center;
+}
+
+.list-inset {
+  background-color: transparent;
+}
+
+.light-opacity {
+  opacity:0.4;
+}
+
+.mid-opacity {
+  opacity:0.6;
+}
+
+.dark-opacity {
+  opacity:0.8;
+}
+
+.flex-direction-init {
+  flex-direction:initial;
+  -webkit-flex-direction: initial;
+}
+
+.bottom-tabs-home
+.tab-item.tab-item-active {
+  .tab-title {
+      text-transform: capitalize;
+      font-size: 12px;
+      position: absolute;
+      left: 31px;
+      top: 12px;
+      font-family: "OpenSans-SemiBold";
+    }
+}
+
+.bottom-tabs-home
+.tab-item {
+  .tab-title {
+      text-transform: capitalize;
+      font-size: 12px;
+      position: absolute;
+      left: 34px;
+      top: 12px;
+      font-family: "OpenSans-Light";
+    }
+}
+
+.item.settings-divider-item {
+  background-color: white;
+  font-family: OpenSans-SemiBold;
+  line-height: 0;
+  padding-top: 27px;
+  font-size: 88%;
+  color: rgba(0,0,0,0.6);
+}
+
+.item.settings-item {
+  background-color: inherit;
+  color: rgba(0,0,0,0.65);
+  font-size: 120%;
+  line-height: 0.6em;
+  border-bottom-style: inset;
+  border-top-style: none;
+}
+
+.ion-chevron-right.positive {
+  color:$positive;
+}
+
+.button.button-positive.button-outline {
+  border-color: #68b2a5;
+  background: 0 0;
+  color: #68b2a5;
+  border-width: 1px !important;
+}
+div.signup-tag {
+  text-transform: uppercase;
+  font-size: 76% !important;
+  font-family: OpenSans-SemiBold;
+  margin-top: 3px;
+  width: 30px;
+}
+
+.signup-form {
+  input {
+    margin-left: 20% !important;
+  }
+}
+
+.button.button-positive-outline.button-full {
+  border: 2px solid $positive;
+  background-color:transparent;
+  color:$positive;
+  font-family: "OpenSans-Bold";
+}
+
+// .button.button-positive-outline.button-full:hover {
+//       background-color:$positive ;
+//       text-decoration: none;
+//       color:white ;
+// }
+
+.button.button-positive-outline.button-full.active, .button.button-positive-outline.button-full.activated {
+      background-color: $positive;
+      border: 0px;
+      color: white;
+      font-size:14px;
+}
+
+.fb-message {
+  padding: 2em 0 0 0;
+  font-size: 60%;
+  font-family: "OpenSans-Bold";
+  color: rgba(0,0,0,0.4);
+  letter-spacing: 0.5px;
+}
+
+.button.button-full.facebook-button {
+  width:90%;
+  left:5%;
+  background-color: #405F97;
+  color:white;
 }

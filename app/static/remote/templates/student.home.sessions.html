@@ -13,11 +13,15 @@
     </ion-tab> -->
   </ion-tabs>
 
-  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 1' scroll="false">
+  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 0' scroll="false">
 
-    <div class='pure-g-c flex-column center full-height' ng-show='!(user.active_requests.length === 0) && !(user.incoming_requests.length === 0)'>
-      <div class='container padding-1em'>
-        No sessions yet! <br> Try <strong> requesting help </strong> below
+    <div class='pure-g-c flex-column center full-height' ng-show='!(user.active_requests.length === 0)'>
+      <div class='padding-1em padding-1em flex-item-c'> </div>
+      <div class='flex-item-c sleeping-guru light-opacity'>
+        <img class='pure-img animated swing' ng-src='{{img_base}}./img/guru-sleeping.svg' >
+      </div>
+      <div class='flex-item-c light-opacity padding-1em flex-direction-init '>
+        No current sessions yet! <br> Try requesting help below
       </div>
     </div>
 
@@ -29,19 +33,28 @@
       </a>
     </div>
 
-    <div class="list" ng-show='user.incoming_requests.length > 0'>
+    <!-- <div class="list" ng-show='user.incoming_requests.length > 0'>
       <a class="item item-avatar-right upcoming-session-card" ng-repeat='request in user.incoming_requests' ng-click='goToRequestStatus(request)'>
         <img ng-src="{{img_base}}./img/guru-profile.svg">
         <h2>Guru {{session.course.short_name}}</h2>
         <h4 class='pending'> 1 Guru Available </h4>
       </a>
-    </div>
+    </div> -->
 
   </ion-content>
 
-  <ion-content class='has-subheader pure-g flex-column full-height' ng-show='topTabsDelegate.selectedIndex() === 0' scroll='false'>
+  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 1' scroll='false'>
 
-    <ion-scroll class='pure-u-1 full-height'>
+      <div class='pure-g-c flex-column center full-height' ng-show='user.active_student_sessions.length === 0'>
+        <div class='padding-1em padding-1em flex-item-c'> </div>
+        <div class='flex-item-c sleeping-guru light-opacity'>
+          <img class='pure-img animated swing' ng-src='{{img_base}}./img/guru-sleeping.svg'>
+        </div>
+        <div class='flex-item-c light-opacity padding-1em flex-direction-init'>
+          No upcoming sessions yet! <br> Try requesting help below
+        </div>
+      </div>
+
       <div class="list" ng-show='user.active_student_sessions.length > 0'>
         <a class="item item-avatar-right upcoming-session-card" ng-repeat='session in user.active_student_sessions' ng-click='goToActiveSession(session)'>
           <img ng-src="{{session.request.student.profile_url}}">
@@ -49,7 +62,6 @@
           <h4 class='pending'> Starting Soon! </h4>
         </a>
       </div>
-    </ion-scroll>
 
   </ion-content>
 

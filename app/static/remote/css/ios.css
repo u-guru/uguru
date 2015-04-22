@@ -2,7 +2,7 @@
   background-repeat: no-repeat;
   background-position: 50%;
   height: 15px;
-  background-image: url('/static/remote/img/tabs-icon-1.svg');
+  background-image: url('/static/remote/img/sessions-tab.svg');
   background-size: contain;
   position: absolute;
   width: 100%; }
@@ -10,7 +10,7 @@
   background-repeat: no-repeat;
   background-position: 50%;
   height: 15px;
-  background-image: url('/static/remote/img/tabs-icon-3.svg');
+  background-image: url('/static/remote/img/request-tab.svg');
   background-size: contain;
   position: absolute;
   width: 100%;
@@ -19,7 +19,7 @@
   background-repeat: no-repeat;
   background-position: 50%;
   height: 15px;
-  background-image: url('/static/remote/img/tabs-icon-2.svg');
+  background-image: url('/static/remote/img/settings-tab.svg');
   background-size: contain;
   position: absolute;
   width: 100%; }

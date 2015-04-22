@@ -499,12 +499,12 @@ class UserRequestView(restful.Resource):
 
         if request.json.get('files'):
             files_json = request.json.get('files')
+            if type(files_json) != bool:
+                for file_json in request.json.get('files'):
+                    file_obj = File.query.get(file_json.get('id'))
+                    file_obj.request_id = _request.id
 
-            for file_json in request.json.get('files'):
-                file_obj = File.query.get(file_json.get('id'))
-                file_obj.request_id = _request.id
-
-            db_session.commit()
+                db_session.commit()
 
         print "long as files for-loop figured out", calendar
 

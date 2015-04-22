@@ -2,15 +2,15 @@
 var LOCAL = false; //local to the 8100 codebase
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 // BASE = 'remote/'
-var REST_URL = 'http://uguru-rest.herokuapp.com';
-// BASE_URL = 'http://192.168.42.66:5000/static/remote/index.html';
-// REST_URL = 'http://192.168.42.66:5000';
+// var REST_URL = 'http://uguru-rest.herokuapp.com';
+BASE_URL = 'http://192.168.42.78:5000/static/remote/index.html';
+REST_URL = 'http://192.168.42.78:5000';
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.42.66:8100';
+  BASE_URL = 'http://192.168.42.78:8100';
   // BASE_URL = 'http://192.168.42.66:5000/app/production/';
-  REST_URL = 'http://192.168.42.66:5000';
+  REST_URL = 'http://192.168.42.78:5000';
   // var REST_URL = 'http://uguru-rest.herokuapp.com';
 } else {
   img_base = '/static/'
@@ -211,7 +211,7 @@ $ionicPlatform.ready(function() {
                 device: ionic.Platform.device(),
             }
 
-            if ($rootScope.platform.android) {
+            if ($scope.platform.android) {
 
                   console.log('Extra #2. Android push notifications need to be registered')
                   $rootScope.$on('pushNotificationReceived', function(event, notification) {
@@ -224,7 +224,7 @@ $ionicPlatform.ready(function() {
 
               }
 
-            if ($rootScope.platform && $scope.user) {
+            if ($scope.platform && $scope.user) {
               $scope.user.current_device = ionic.Platform.device();
               $scope.user.current_device.user_id = $scope.user.id;
               $scope.user.createObj($scope.user, 'device', $scope.user.current_device, $scope);

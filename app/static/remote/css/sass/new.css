@@ -126,12 +126,12 @@ button {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
   position: absolute;
-  top: 39%;
+  top: 35%;
   left: 24%;
   display: table;
   width: 14px;
-  height: 6px;
-  border: 2px solid #fff;
+  height: 8px;
+  border: 0.25em solid #fff;
   border-top: 0;
   border-right: 0;
   content: ' ';
@@ -251,6 +251,8 @@ button {
 
 .onboarding-university-wrapper h5.header.center {
   opacity: 0.9; }
+.onboarding-university-wrapper h5.header {
+  font-family: "OpenSans-Regular"; }
 .onboarding-university-wrapper .guru-logo-container img {
   padding-top: 0em; }
 .onboarding-university-wrapper .button-padding {
@@ -289,9 +291,10 @@ button {
   line-height: 1.5em;
   padding-top: 5px;
   width: 75%;
-  white-space: normal; }
+  white-space: normal;
+  font-size: 90%; }
 .onboarding-nearest .container.relative .city {
-  opacity: 0.7; }
+  opacity: 0.4; }
 .onboarding-nearest .container.relative .absolute.miles {
   top: 8px;
   right: 0px;
@@ -347,7 +350,7 @@ button {
 .onboarding-loading {
   position: relative; }
   .onboarding-loading #desk {
-    bottom: 8%;
+    bottom: 10%;
     position: absolute;
     height: 64.3%;
     left: 8.5%;
@@ -551,7 +554,7 @@ p {
   display: inline-block; }
 
 .popover-backdrop.active {
-  background-color: rgba(0, 0, 0, 0.2); }
+  background-color: rgba(0, 0, 0, 0.6); }
 
 .popover-backdrop {
   padding: 1em;
@@ -610,11 +613,13 @@ p {
   font-size: 13px !important;
   text-transform: none; }
 
-.button-back {
+.bar .button.button-clear {
   font-family: "OpenSans-Regular";
-  color: rgba(0, 0, 0, 0.8);
-  font-size: 13px !important;
-  text-transform: none; }
+  color: rgba(0, 0, 0, 0.9);
+  text-transform: none;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  font-size: 90%; }
 
 .request-guru-type .checkbox {
   width: 100%; }
@@ -662,7 +667,7 @@ p {
   position: relative; }
 .student-request-calendar .calendar-header {
   text-transform: uppercase; }
-.student-request-calendar h5.title {
+.student-request-calendar h5.title, .student-request-calendar .header-bar h5, .header-bar .student-request-calendar h5 {
   text-transform: uppercase; }
 
 .textarea-container {
@@ -831,8 +836,6 @@ p {
   transform: rotateY(180deg); }
 
 .signup-form .item.item-input input {
-  text-transform: capitalize;
-  margin-left: 20px;
   margin-top: 5px; }
 
 .contacting-guru .sleeping-guru {
@@ -846,6 +849,8 @@ p {
 
 .student-sessions .list {
   margin-bottom: -5px !important; }
+.student-sessions .sleeping-guru {
+  max-height: 125px; }
 .student-sessions .full-height {
   height: 100%; }
 .student-sessions .main-container {
@@ -886,7 +891,7 @@ p {
   background-color: black;
   height: 100px;
   display: block; }
-.request-status .header-bar .title {
+.request-status .header-bar .title, .request-status .header-bar .header-bar h5, .header-bar .request-status .header-bar h5 {
   font-size: 100%;
   font-weight: 700; }
 
@@ -1016,4 +1021,167 @@ p {
 
 tabs-positive > .tabs .tab-item .badge, .tabs.tabs-positive .tab-item .badge {
   background-color: red;
+  color: white; }
+
+.typewriter-text {
+  padding: 20% 30% 10% 10%;
+  line-height: 1.5em;
+  position: absolute;
+  letter-spacing: 0.5px; }
+
+.scroll-content {
+  background-color: rgba(0, 0, 0, 0.04); }
+
+.pure-white {
+  background-color: white; }
+
+.tinted-white {
+  background-color: rgba(0, 0, 0, 0.04); }
+
+.choose-among-container {
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 1.5em 0.5em 1em 0.5em; }
+
+.padding-top-1-5em {
+  padding-top: 1.5em; }
+
+.flex-row {
+  flex-direction: row;
+  -webkit-flex-direction: row; }
+
+.choose-among-container p {
+  font-size: 105%; }
+
+.default-positive {
+  color: #68b2a5; }
+
+.select-university-logo-container {
+  margin-top: 2em; }
+  .select-university-logo-container img {
+    height: 30px; }
+
+.flex {
+  display: flex;
+  -webkit-display: flex; }
+
+.flex-row {
+  flex-direction: row;
+  -webkit-flex-direction: row; }
+
+.j-center {
+  justify-content: center; }
+
+#university-input {
+  background: white;
+  width: 100%;
+  padding-right: 0;
+  margin: 0; }
+
+.item-input-wrapper {
+  padding: 0;
+  background: none; }
+
+.item-checkbox {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em; }
+
+.header-bar h5 {
+  height: auto;
+  font-size: 90% !important;
+  font-family: "OpenSans-SemiBold";
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center; }
+
+.list-inset {
+  background-color: transparent; }
+
+.light-opacity {
+  opacity: 0.4; }
+
+.mid-opacity {
+  opacity: 0.6; }
+
+.dark-opacity {
+  opacity: 0.8; }
+
+.flex-direction-init {
+  flex-direction: initial;
+  -webkit-flex-direction: initial; }
+
+.bottom-tabs-home .tab-item.tab-item-active .tab-title {
+  text-transform: capitalize;
+  font-size: 12px;
+  position: absolute;
+  left: 31px;
+  top: 12px;
+  font-family: "OpenSans-SemiBold"; }
+
+.bottom-tabs-home .tab-item .tab-title {
+  text-transform: capitalize;
+  font-size: 12px;
+  position: absolute;
+  left: 34px;
+  top: 12px;
+  font-family: "OpenSans-Light"; }
+
+.item.settings-divider-item {
+  background-color: white;
+  font-family: OpenSans-SemiBold;
+  line-height: 0;
+  padding-top: 27px;
+  font-size: 88%;
+  color: rgba(0, 0, 0, 0.6); }
+
+.item.settings-item {
+  background-color: inherit;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 120%;
+  line-height: 0.6em;
+  border-bottom-style: inset;
+  border-top-style: none; }
+
+.ion-chevron-right.positive {
+  color: #68b2a5; }
+
+.button.button-positive.button-outline {
+  border-color: #68b2a5;
+  background: 0 0;
+  color: #68b2a5;
+  border-width: 1px !important; }
+
+div.signup-tag {
+  text-transform: uppercase;
+  font-size: 76% !important;
+  font-family: OpenSans-SemiBold;
+  margin-top: 3px;
+  width: 30px; }
+
+.signup-form input {
+  margin-left: 20% !important; }
+
+.button.button-positive-outline.button-full {
+  border: 2px solid #68b2a5;
+  background-color: transparent;
+  color: #68b2a5;
+  font-family: "OpenSans-Bold"; }
+
+.button.button-positive-outline.button-full.active, .button.button-positive-outline.button-full.activated {
+  background-color: #68b2a5;
+  border: 0px;
+  color: white;
+  font-size: 14px; }
+
+.fb-message {
+  padding: 2em 0 0 0;
+  font-size: 60%;
+  font-family: "OpenSans-Bold";
+  color: rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.5px; }
+
+.button.button-full.facebook-button {
+  width: 90%;
+  left: 5%;
+  background-color: #405F97;
   color: white; }

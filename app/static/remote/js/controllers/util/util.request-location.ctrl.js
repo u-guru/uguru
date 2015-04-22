@@ -13,8 +13,6 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $compile, $ionicHistory) {
 
-    $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
-    $scope.options = {scrollwheel: false};
 
     $scope.goBackToRequests = function() {
       $ionicHistory.goBack();
@@ -124,9 +122,12 @@ angular.module('uguru.util.controllers')
           },1500);
     }
 
-    $scope.$on('$ionicView.loaded', function() {
+    $scope.$on('$ionicView.afterEnter', function() {
 
       // if ($scope.requestMapModal.isShown()) {
+
+          $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
+          $scope.options = {scrollwheel: false};
 
           var mapContainer = document.getElementsByTagName("ion-pane")[0];
           var initMapCoords;
@@ -208,9 +209,9 @@ angular.module('uguru.util.controllers')
               $scope.marker.setAnimation(google.maps.Animation.BOUNCE);
               $scope.getAddressFromLatLng($scope.geocoder, $scope.marker.getPosition().lat(), $scope.marker.getPosition().lng())
 
-              $timeout(function() {
-                $scope.marker.setAnimation(null);
-              }, 1000)
+              // $timeout(function() {
+              //   $scope.marker.setAnimation(null);
+              // }, 1000)
           });
 
           // google.maps.event.addListener($scope.marker, 'drag', function()

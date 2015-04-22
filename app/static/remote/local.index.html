@@ -17,13 +17,15 @@
     <link rel="stylesheet" href="remote/css/pure-min.css">
 
     <link href="remote/css/animate.css" rel="stylesheet">
+    <link href="remote/css/uguru-animate.css" rel="stylesheet">
     <link href="remote/css/sass/new.css" rel="stylesheet">
-    <link href="remote/css/ios.css" rel="stylesheet">
+    <link href="remote/css/web.css" rel="stylesheet">
 
      <script>
     LOCAL = true;
     BASE = '/remote';
     </script>
+    <script src="remote/lib/windows/winstore-jscompat.js"></script>
     <script src="remote/lib/ionic/js/ionic.bundle.min.js"></script>
     <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
     <script src="lib/lodash/dist/lodash.js"></script>
@@ -158,6 +160,64 @@
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.edit-university.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.transactions.ctrl.js"></script>
 
+     <script>
+
+      function getMobileOperatingSystem() {
+          var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+          if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
+          {
+
+            injectJs('ios.cordova_plugins.js');
+            injectJs('ios.cordova.js');
+            injectCss('ios.css');
+            // injectJs('/static/remote/cordova.js');
+            return 'iOS';
+
+          }
+          else if( userAgent.match( /Android/i ) )
+          {
+
+            console.log('injecting android specific css & js');
+            injectJs('android.cordova.js');
+            injectCss('android.css');
+
+            return 'Android';
+          }
+          else if( userAgent.match( /Windows/i ) )
+          {
+
+            console.log('injecting windows specific css & js');
+            injectJs('windows.cordova.js');
+            // injectCss('android.css');
+
+            return 'Android';
+          }
+          else
+          {
+            console.log('hard to determine identifies')
+            return 'unknown';
+          }
+        }
+
+      function injectJs(link) {
+          var scr = document.createElement('script');
+          scr.type="text/javascript";
+          scr.src=link;
+          document.getElementsByTagName('head')[0].appendChild(scr)
+      }
+
+      function injectCss(file) {
+        var link = document.createElement("link");
+        link.href = file;
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        document.getElementsByTagName("head")[0].appendChild(link);
+      }
+
+      console.log(getMobileOperatingSystem());
+
+    </script>
+
   </head>
   <body ng-app="uguru" animation="slide-left-right-ios7">
     <!--
@@ -205,7 +265,7 @@
         <ion-header-bar>
           <h1 class="title">Tap to get started.</h1>
         </ion-header-bar>
-        <ion-content scroll='false'>
+        <ion-content scroll='false' class='pure-white'>
           <div class="pure-g-c flex-column">
             <div class="flex-item-c">
               <p>Just enter a course code. Uguru uses <br>
@@ -225,7 +285,7 @@
         <ion-header-bar>
           <h1 class="title">Tap to request help.</h1>
         </ion-header-bar>
-        <ion-content scroll='false'>
+        <ion-content scroll='false' class='pure-white'>
           <div class="pure-g-c flex-column">
             <div class="flex-item-c">
               <p>Any time you need help in <strong>{{user.student_courses[0].short_name}}</strong>,<br> we got your back!</p>
