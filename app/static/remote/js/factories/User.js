@@ -558,9 +558,9 @@ angular.module('uguru.user', [])
 
             if ($state.current.name === 'root.student.home' ||
                 $state.current.name === 'root.guru.home') {
-                $timeout(function() {
-                    User.getUserFromServer($scope, null, $state);
-                }, 20000);
+                // $timeout(function() {
+                //     User.getUserFromServer($scope, null, $state);
+                // }, 20000);
             }
 
         },
