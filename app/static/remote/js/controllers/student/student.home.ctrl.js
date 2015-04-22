@@ -36,7 +36,7 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
   $ionicPlatform, $ionicBackdrop, $document, $ionicPopover, $cordovaStatusbar,
   $ionicViewSwitcher)     {
   // .fromTemplate() method
-
+  console.log($scope.user);
   // if (!$scope.user.university && !$scope.user.university_id) {
   //   $state.go('^.onboarding-location');
   // }
@@ -54,6 +54,22 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
   }).then(function(popover) {
     $scope.popoverTwo = popover;
   });
+
+  $scope.openGeneralPopover = function($event, options) {
+    $scope.genPopup = {options: options} ;
+    $ionicPopover.fromTemplateUrl('templates/generalPopup.html', {
+      scope: $scope
+    }).then(function(popover) {
+      $scope.genPopup.popover = popover;
+      //show immediately
+      $scope.genPopup.popover.show($event);
+    });
+
+  }
+
+  $scope.closeGenPopup = function() {
+    $scope.genPopup.popover.hide();
+  }
 
   $scope.openPopover = function($event) {
     $scope.popover.show($event);
@@ -197,7 +213,9 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
     $scope.goToRequestStatus = function(request) {
       // var active_request = $scope.getActiveRequestByCourse(request);
+      $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
       $state.go('^.student-request-status', {requestObj:JSON.stringify(request)});
+
     }
 
     $scope.goToActiveSession = function(session) {
@@ -320,8 +338,33 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     });
 
     $scope.$on('$ionicView.afterEnter', function(){
+
+      //start fake shit
+      // $ionicModal.fromTemplateUrl(BASE + 'templates/contact-guru.modal.html', {
+      //     scope: $scope,
+      //     animation: 'slide-in-up'
+      // }).then(function(modal) {
+      //     $scope.contactingGuruModal = modal;
+      //     $scope.contactingGuruModal.show();
+      //     $scope.root.vars.request_form_recently_hidden = true;
+      //     $timeout(function() {
+      //       $scope.contactingGuruModal.hide();
+      //     }, 2000)
+      // });
+
+      //end fake shit
       $scope.loader.hide();
     });
+
+    $scope.showBouncingRedAlert = function(wait_for, show_for) {
+      $timeout(function() {
+        console.log('this is when the animation should happen');
+        document.querySelectorAll('.badge-danger')[0].className = "badge badge-danger animated bounce infinite";
+        $timeout(function() {
+          document.querySelectorAll('.badge-danger')[0].className = "badge badge-danger";
+        }, show_for)
+      },wait_for)
+    };
 
 
     $scope.showOnboardingAddClass = function() {
@@ -331,6 +374,8 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
         var element = document.getElementById("add-course-item")
         $scope.openPopover(element);
       }, 1000);
+
+
 
     }
 
@@ -346,12 +391,34 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
 
     $scope.$on('modal.shown', function() {
-      $scope.ratingModalShown = true;
-    });
 
-    $scope.$on('modal.hidden', function() {
+    // $scope.$on('modal.hidden', function() {
+    //   console.log('modal is hidden');
+    //   console.log($scope.user);
+    //   if ($scope.root.vars.request_form_recently_hidden) {
+    //     //make it null after
+    //     $scope.root.vars.request_form_recently_hidden = null;
+    //     var showFor = 4500;
+    //     var waitFor = 1500;
+    //     $scope.showBouncingRedAlert(waitFor, showFor);
+    //     $scope.showFirstTimeRequestSessionPopup()
+
+    //   }
       $scope.ratingModalShown = false;
     });
+
+    $scope.showFirstTimeRequestSessionPopup = function () {
+      var options = {
+          header: 'Sit back and relax',
+          body: 'Anytime you request help, click here to check your status',
+          closeButtonText: 'Got it',
+          targetName: 'bottom-sessions-tab'
+        }
+        var element = document.getElementById("bottom-sessions-tab");
+        $timeout(function() {
+          $scope.openGeneralPopover(element, options);
+        }, 3000);
+    }
 
     $scope.loader.show();
     $timeout(function() {

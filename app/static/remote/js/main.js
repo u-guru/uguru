@@ -3,14 +3,13 @@ var LOCAL = false; //local to the 8100 codebase
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 // BASE = 'remote/'
 // var REST_URL = 'http://uguru-rest.herokuapp.com';
-BASE_URL = 'http://192.168.42.78:5000/static/remote/index.html';
-REST_URL = 'http://192.168.42.78:5000';
+// BASE_URL = 'http://192.168.42.66:5000/static/remote/index.html';
+// REST_URL = 'http://192.168.42.66:5000';
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.42.78:8100';
-  // BASE_URL = 'http://192.168.42.66:5000/app/production/';
-  REST_URL = 'http://192.168.42.78:5000';
+  BASE_URL = 'http://192.168.42.66:8100';
+  REST_URL = 'http://192.168.42.66:5000';
   // var REST_URL = 'http://uguru-rest.herokuapp.com';
 } else {
   img_base = '/static/'
@@ -132,13 +131,16 @@ $ionicPlatform.ready(function() {
 
           $scope.network_speed = null;
           $scope.platform_ready = false;
-
           //how to make platform ready...
           $scope.user = User.getLocal();
           $scope.user.updateAttr = User.updateAttrUser;
           $scope.user.createObj = User.createObj;
           $scope.user.updateObj = User.updateObj;
           $scope.popupScope = {};
+
+          if ($scope.user && $scope.user.id) {
+            User.getUserFromServer($scope, null, $state);
+          }
 
 
           if (LOCAL) {

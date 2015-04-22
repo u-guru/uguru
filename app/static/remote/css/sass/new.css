@@ -4,6 +4,9 @@
     font-size: 18px;
     /* 1.5x default size */ }
   .onboarding-loading #desk {
+    bottom: 10%; }
+  .popup-container .popup {
+    height: 467px;
     bottom: 10%; } }
 
 /* iPhone 6*/
@@ -434,17 +437,17 @@ button {
 .popup-container .popup {
   min-width: 90%;
   border-radius: 0.5em;
-  height: 48%;
+  height: 310px;
   bottom: 0px;
   position: absolute;
   margin: 0 auto;
-  bottom: 10%;
+  bottom: 20%;
   left: 0;
   right: 0;
   opacity: 1;
   background-color: white; }
 .popup-container .popup-body {
-  margin-top: -60%;
+  margin-top: -52%;
   opacity: 1; }
 .popup-container .popup-head {
   border-bottom: 0px;
@@ -560,7 +563,7 @@ p {
   padding: 1em;
   text-align: center; }
   .popover-backdrop .uguru-popover {
-    height: 170px;
+    height: 200px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
     border-radius: 10px; }
   .popover-backdrop .bar-header {
@@ -838,44 +841,57 @@ p {
 .signup-form .item.item-input input {
   margin-top: 5px; }
 
-.contacting-guru .sleeping-guru {
-  margin: 0 auto;
-  max-width: 100%;
-  width: 50%;
-  padding-top: 20%; }
-.contacting-guru h1 {
-  font-size: 250% !important;
-  font-weight: bold; }
+.contacting-guru {
+  background-color: #E3F0F7 !important; }
+  .contacting-guru .sleeping-guru {
+    margin: 0 auto;
+    max-width: 100%;
+    width: 50%; }
+  .contacting-guru h1 {
+    font-size: 250% !important;
+    font-weight: bold; }
 
-.student-sessions .list {
-  margin-bottom: -5px !important; }
-.student-sessions .sleeping-guru {
-  max-height: 125px; }
-.student-sessions .full-height {
-  height: 100%; }
-.student-sessions .main-container {
-  margin-bottom: 15% !important; }
-.student-sessions .upcoming-session-card h2 {
-  font-size: 125%;
-  margin: 10px 0px; }
-.student-sessions .upcoming-session-card h4.pending {
-  text-transform: uppercase;
-  color: #68b2a5;
-  font-size: 100%; }
-.student-sessions .upcoming-session-card h4.scheduled {
-  text-transform: capitalize;
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 100%; }
-.student-sessions .upcoming-session-card img {
-  top: 28px;
-  right: 20px;
-  max-width: 25px !important;
-  max-height: 25px !important; }
-.student-sessions .tabs-striped.tabs-stable .tabs {
-  background-color: #E6E6E5; }
-.student-sessions .item {
-  border-width: 0; }
+.student-sessions {
+  font-family: "OpenSans-Regular"; }
+  .student-sessions .list {
+    margin-bottom: -5px !important; }
+  .student-sessions .has-header {
+    margin-top: 4px; }
+  .student-sessions .sleeping-guru {
+    max-height: 125px; }
+  .student-sessions .full-height {
+    height: 100%; }
+  .student-sessions .main-container {
+    margin-bottom: 15% !important; }
+  .student-sessions .upcoming-session-card h2 {
+    font-size: 125%;
+    margin: 10px 0px;
+    font-family: OpenSans-SemiBold;
+    opacity: 0.7; }
+  .student-sessions .upcoming-session-card h4.pending {
+    text-transform: uppercase;
+    color: #68b2a5;
+    font-size: 100%; }
+  .student-sessions .upcoming-session-card h4.scheduled {
+    text-transform: capitalize;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 100%; }
+  .student-sessions .upcoming-session-card img {
+    top: 16px;
+    right: 20px;
+    max-width: 25px !important;
+    max-height: 25px !important; }
+  .student-sessions .tabs-striped.tabs-stable .tabs {
+    background-color: #E6E6E5; }
+  .student-sessions .item {
+    border-width: 0;
+    padding-top: 6px; }
 
+.request-status .grey-subject-text {
+  font-family: OpenSans-Regular;
+  color: rgba(0, 0, 0, 0.4); }
+.request-status .header-bar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
 .request-status .button-light {
   border: 1px solid rgba(0, 0, 0, 0.01);
   width: 100%;
@@ -892,8 +908,7 @@ p {
   height: 100px;
   display: block; }
 .request-status .header-bar .title, .request-status .header-bar .header-bar h5, .header-bar .request-status .header-bar h5 {
-  font-size: 100%;
-  font-weight: 700; }
+  font-size: 100%; }
 
 .j-start {
   -webkit-justify-content: flex-start;
@@ -1000,15 +1015,15 @@ p {
 .show {
   display: block; }
 
-#student-web-popover, #student-request-help-popover {
+.uguru-popover #student-web-popover, #student-request-help-popover {
   left: 7.5% !important;
   width: 85% !important; }
-  #student-web-popover .bar-header, #student-request-help-popover .bar-header {
+  .uguru-popover #student-web-popover .bar-header, #student-request-help-popover .bar-header {
     border-bottom-width: 0px; }
-  #student-web-popover h1.title, #student-request-help-popover h1.title {
-    font-size: 155%;
+  .uguru-popover #student-web-popover h1.title, #student-request-help-popover h1.title {
+    font-size: 162.5%;
     top: 8px; }
-  #student-web-popover p, #student-request-help-popover p {
+  .uguru-popover #student-web-popover p, #student-request-help-popover p {
     font-size: 80%; }
 
 .platform-ios .popover-arrow {
@@ -1118,6 +1133,9 @@ tabs-positive > .tabs .tab-item .badge, .tabs.tabs-positive .tab-item .badge {
   top: 12px;
   font-family: "OpenSans-SemiBold"; }
 
+.bottom-tabs-home {
+  overflow: visible; }
+
 .bottom-tabs-home .tab-item .tab-title {
   text-transform: capitalize;
   font-size: 12px;
@@ -1185,3 +1203,89 @@ div.signup-tag {
   left: 5%;
   background-color: #405F97;
   color: white; }
+
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+  margin-top: 5px; }
+
+/* iPhone 6+ */
+@media all and (min-width: 400px) and (max-width: 500px) {
+  body {
+    font-size: 18px;
+    /* 1.5x default size */ }
+  .onboarding-loading #desk {
+    bottom: 10%; }
+  .popup-container .popup {
+    height: 467px;
+    bottom: 10%; } }
+
+.self-flex-end {
+  -webkit-align-self: flex-end;
+  align-self: flex-end; }
+
+.self-flex-start {
+  -webkit-align-self: flex-start;
+  align-self: flex-start; }
+
+.contact-guru-sleeping-guru {
+  margin-bottom: -3em !important;
+  z-index: 20;
+  -webkit-animation-duration: 8s;
+  animation-duration: 8s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s; }
+
+.puffy-cloud {
+  width: 100%;
+  right: 0%;
+  position: absolute;
+  max-width: none;
+  bottom: -15%;
+  -webkit-animation-duration: 6s;
+  animation-duration: 6s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s; }
+
+.puffy-cloud {
+  width: 100%;
+  right: 0%;
+  position: absolute;
+  max-width: none;
+  bottom: -15%;
+  -webkit-animation-duration: 6s;
+  animation-duration: 6s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  z-index: 5; }
+
+.rocket-fire {
+  max-width: none;
+  width: 10%;
+  right: 0%;
+  position: absolute;
+  bottom: 23%;
+  right: 45%;
+  -webkit-animation-duration: 6s;
+  animation-duration: 6s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s; }
+
+.badge.badge-danger {
+  background-color: red !important;
+  color: white !important;
+  z-index: 20 !important; }
+
+#general-popup .popover-arrow {
+  left: 34px !important; }
+#general-popup .pure-white.bottom-sessions-tab p {
+  font-size: 95% !important;
+  margin-top: 3em; }
+
+.request-status {
+  font-family: "OpenSans-Regular" !important; }
+  .request-status .pure-g .pure-u-4-5 {
+    padding-left: 2em !important; }
+  .request-status button.button-full.button-light {
+    text-transform: uppercase;
+    font-family: OpenSans-Bold;
+    font-size: 85%;
+    color: rgba(0, 0, 0, 0.5); }

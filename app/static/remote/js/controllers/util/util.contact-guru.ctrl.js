@@ -19,7 +19,7 @@ angular.module('uguru.util.controllers')
     $scope.$on('modal.shown', function() {
 
 
-      if ($scope.platform.mobile && $scope.platform.ios) {
+      if ($scope.contactingGuruModal.isShown() && $scope.platform.mobile && $scope.platform.ios) {
               // if (!$scope.user.current_device) {
 
               //     $scope.user.current_device = ionic.Platform.device();

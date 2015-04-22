@@ -1,29 +1,17 @@
  <ion-modal-view ng-controller="ContactGuruController">
     <!-- <ion-content style="background-color:#f2f2f2; border-top:20px solid black;"> -->
-    <ion-content class='contacting-guru'>
-      <div class='pure-g-c flex-column'>
+    <ion-content class='contacting-guru' scroll="false">
+      <div class='pure-g-c flex-column flex-space-between'>
 
-        <div class='flex-item-c padding-1em'>
-          <img src='{{img_base}}./img/guru-sleeping.svg' class='pure-img sleeping-guru padding-2em'>
-        </div>
-
-        <div class='flex-item-c center'>
+        <div class='flex-item-c center padding-2em'>
           <h1> Sit tight </h1>
           <h4> We'll notify you when your Guru replies. </h4>
         </div>
-      </div>
 
-
-      <!-- <div class="success">
-      <div class='row'>
-        <div class="width margin-auto center">
-          <img src='./img/uguru-06.png' class='inherit-width' id="pulse">
+        <div class='pure-g-c padding-1em'>
+          <img src='{{img_base}}./img/Rocket-body.svg' class='pure-img sleeping-guru padding-2em self-flex-start animated slideInUp contact-guru-sleeping-guru'>
         </div>
+        <img src='{{img_base}}./img/Puffy-Cloud.svg' class='pure-img puffy-cloud flex-self-send animated slideInUp'>
+        <img src='{{img_base}}./img/Fire.svg' class='pure-img rocket-fire flex-self-send animated slideInUp'>
       </div>
-      <div class='row absolute bottom-35-percent'>
-        <div class="width margin-auto center">
-          <div class="pure-img">Contacting your Guru</div>
-        </div>
-      </div>
-    </div> -->
   </ion-content>

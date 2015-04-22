@@ -16,8 +16,25 @@ angular.module('uguru.student.controllers')
     $scope.requestObj = JSON.parse($stateParams.requestObj);
 
     $scope.request = $scope.requestObj;
+
+
     $scope.course = $scope.requestObj.course;
     $scope.progress_active = false;
+
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var days = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    var date = new Date($scope.request.time_created);
+    $scope.formatted_time_created = days[date.getDay()] + ", " + months[date.getMonth()] + ' ' + date.getDate();
+    $scope.formatted_time_estimated_hours = Math.round(($scope.request.time_estimate / 60), 2);
+
+    if ($scope.request.online && $scope.request.in_person) {
+      $scope.formatted_request_type = 'In-person and online';
+    } else if ($scope.request.online) {
+      $scope.formatted_request_type = 'Online only';
+    } else if ($scope.request.in_person) {
+      $scope.formatted_request_type = 'In-person only';
+    }
 
     console.log('request status', $scope.requestObj);
     $scope.goBack = function() {
@@ -32,6 +49,14 @@ angular.module('uguru.student.controllers')
       var time_options = ['30 minutes', '1 Hour', '1.5 hours', '2+ hours'];
       return time_options[time_int];
     }
+
+    // $scope.parseJSTime = function(time_str) {
+    //   if (!$scope.formatted_time_created) {
+    //     date = new Date(time_str);
+    //     $scope.formatted_time_created =
+    //   }
+    //   return
+    // }
 
     $scope.acceptGuru = function() {
       if ($scope.user.cards.length === 0) {
@@ -81,7 +106,6 @@ angular.module('uguru.student.controllers')
           $scope.root.util.updateObjectByKey($scope.user.requests, 'id', $scope.request.id, 'status', 0);
 
           $scope.user.updateObj($scope.user, 'requests', requestObj, $scope);
-
 
         }
 

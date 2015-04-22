@@ -238,10 +238,11 @@ angular.module('uguru.student.controllers')
 
       $scope.saveRequestToUser();
       $scope.contactingGuruModal.show();
+      $scope.root.vars.request_form_recently_hidden = true;
       $state.go('^.student-home');
       $timeout(function() {
         $scope.contactingGuruModal.hide();
-      }, 5000)
+      }, 12000)
 
 
     }

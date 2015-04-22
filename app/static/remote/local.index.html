@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="remote/css/pure-min.css">
 
     <link href="remote/css/animate.css" rel="stylesheet">
-    <link href="remote/css/uguru-animate.css" rel="stylesheet">
     <link href="remote/css/sass/new.css" rel="stylesheet">
     <link href="remote/css/web.css" rel="stylesheet">
+    <link href="remote/css/uguru-animate.css" rel="stylesheet">
 
      <script>
     LOCAL = true;
@@ -274,6 +274,24 @@
             </div>
             <div class="flex-item-c">
               <button ng-click="closePopover();"class='button button-full button-positive button-popover'>Got it.</button>
+            </div>
+          </div>
+        </ion-content>
+      </ion-popover-view>
+    </script>
+
+    <script id="templates/generalPopup.html" type="text/ng-template">
+      <ion-popover-view id='general-popup' class='uguru-popover platform-ios platform web platform-arrow'>
+        <ion-header-bar>
+          <h1 class="title">{{genPopup.options.header}}</h1>
+        </ion-header-bar>
+        <ion-content scroll='false' class='pure-white {{genPopup.options.targetName}}'>
+          <div class="pure-g-c flex-column">
+            <div class="flex-item-c">
+              <p>{{genPopup.options.body}}</p>
+            </div>
+            <div class="flex-item-c">
+              <button ng-click="closeGenPopup();"class='button button-full button-positive button-popover'>{{genPopup.options.closeButtonText}}</button>
             </div>
           </div>
         </ion-content>

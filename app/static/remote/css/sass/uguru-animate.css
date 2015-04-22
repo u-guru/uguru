@@ -16,4 +16,9 @@
   -o-animation: lightSpeedIn 3s;
   animation: lightSpeedIn 3s; }
 
+#contact-guru-sleeping-guru {
+  -vendor-animation-duration: 3s;
+  -vendor-animation-delay: 2s;
+  -vendor-animation-iteration-count: infinite; }
+
 /*# sourceMappingURL=uguru-animate.css.map */

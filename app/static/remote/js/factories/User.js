@@ -308,6 +308,7 @@ angular.module('uguru.user', [])
         $scope.user.guru_score_opportunities = user.guru_score_opportunities;
         // $scope.user.guru_mode = true;
         // $scope.user.is_a_guru = true;
+        $localstorage.setObject('user', $scope.user);
     }
 
     var delegateActionsFromProcessedUser = function($scope) {
@@ -571,7 +572,7 @@ angular.module('uguru.user', [])
                     .then(function(user){
 
                         var processed_user = processResults(user.plain());
-                        assignPropertiesToRootScope($scope, processed_user);
+                        assignPropertiesToRootScope($scope, processed_user);;
                         delegateActionsFromProcessedUser($scope);
                     }, function(err){
                         if (err.status === 409 ) {

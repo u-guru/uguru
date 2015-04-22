@@ -21,6 +21,11 @@ $tabs-text: #4D4D4D;
     .onboarding-loading #desk {
       bottom:10%;
     }
+
+    .popup-container .popup {
+      height:467px;
+      bottom:10%;
+    }
 }
 
 /* iPhone 6*/
@@ -633,18 +638,18 @@ p {
     .popup {
       min-width:90%;
       border-radius: 0.5em;
-      height: 48%;
+      height: 310px;
       bottom: 0px;
       position: absolute;
       margin: 0 auto;
-      bottom: 10%;
+      bottom: 20%;
       left: 0;
       right: 0;
       opacity:1;
       background-color: rgba(255,255,255,1);
     }
     .popup-body {
-      margin-top:-60%;
+      margin-top:-52%;
       opacity:1;
     }
 
@@ -813,7 +818,7 @@ p {
   padding:1em;
   text-align:center;
   .uguru-popover {
-    height:170px;
+    height:200px;
     box-shadow:0 0 40px rgba(0,0,0,.08);
     border-radius:10px;
   }
@@ -1235,12 +1240,12 @@ margin: 0;
 }
 
 .contacting-guru {
+  background-color:#E3F0F7 !important;
   .sleeping-guru {
 
     margin:0 auto;
     max-width:100%;
     width:50%;
-    padding-top:20%;
 
   }
   h1 {
@@ -1250,8 +1255,15 @@ margin: 0;
 }
 
 .student-sessions {
+
+  font-family: "OpenSans-Regular";
+
   .list {
       margin-bottom:-5px !important;
+  }
+
+  .has-header {
+    margin-top: 4px;
   }
 
   .sleeping-guru {
@@ -1270,6 +1282,8 @@ margin: 0;
     h2 {
       font-size:125%;
       margin:10px 0px;
+      font-family: OpenSans-SemiBold;
+      opacity:0.7;
     }
     h4.pending {
       text-transform:uppercase;
@@ -1282,7 +1296,7 @@ margin: 0;
       font-size:100%;
     }
     img {
-      top:28px;
+      top:16px;
       right:20px;
       max-width:25px !important;
       max-height:25px !important;
@@ -1294,11 +1308,22 @@ margin: 0;
 
   .item {
     border-width:0;
+    padding-top:6px;
   }
+
+
 
 }
 
 .request-status {
+  .grey-subject-text {
+    font-family: OpenSans-Regular;
+    color: rgba(0,0,0,0.4);
+  }
+
+  .header-bar {
+      border-bottom: 1px solid rgba(0,0,0,0.2);
+  }
   .button-light {
     border: 1px solid rgba(0,0,0,0.01);
     width:100%;
@@ -1322,7 +1347,7 @@ margin: 0;
 
   .header-bar .title {
     font-size:100%;
-    font-weight:700;
+    // font-weight:700;
   }
 }
 
@@ -1490,6 +1515,7 @@ margin: 0;
 }
 
 
+.uguru-popover
 #student-web-popover,
 #student-request-help-popover {
     left: 7.5% !important;
@@ -1500,7 +1526,7 @@ margin: 0;
     }
 
     h1.title {
-      font-size:155%;
+      font-size:162.5%;
       top:8px;
     }
 
@@ -1649,6 +1675,10 @@ tabs-positive>.tabs .tab-item .badge, .tabs.tabs-positive .tab-item .badge {
     }
 }
 
+.bottom-tabs-home {
+  overflow:visible;
+}
+
 .bottom-tabs-home
 .tab-item {
   .tab-title {
@@ -1736,4 +1766,122 @@ div.signup-tag {
   left:5%;
   background-color: #405F97;
   color:white;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader)>* {
+  margin-top:5px;
+}
+
+
+
+/* iPhone 6+ */
+@media all and (min-width: 400px) and (max-width:500px){
+    body {
+        font-size: 18px; /* 1.5x default size */
+    }
+    .onboarding-loading #desk {
+      bottom:10%;
+    }
+
+    .popup-container .popup {
+      height:467px;
+      bottom:10%;
+    }
+}
+
+.self-flex-end {
+  -webkit-align-self:flex-end;
+  align-self:flex-end;
+}
+
+.self-flex-start {
+  -webkit-align-self:flex-start;
+  align-self:flex-start;
+}
+
+.contact-guru-sleeping-guru {
+  margin-bottom:-3em!important;
+  z-index:20;
+  -webkit-animation-duration: 8s;
+  animation-duration:8s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  // -webkit-animation-iteration-count: infinite;
+  // animation-iteration-count:infinite;
+}
+
+.puffy-cloud {
+  width:100%;
+  right: 0%;
+  position: absolute;
+  max-width: none;
+  bottom: -15%;
+  -webkit-animation-duration: 6s;
+  animation-duration:6s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+.puffy-cloud {
+  width:100%;
+  right: 0%;
+  position: absolute;
+  max-width: none;
+  bottom: -15%;
+  -webkit-animation-duration: 6s;
+  animation-duration:6s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  z-index:5;
+}
+
+.rocket-fire {
+  max-width: none;
+  width: 10%;
+  right: 0%;
+  position: absolute;
+  bottom: 23%;
+  right: 45%;
+  -webkit-animation-duration: 6s;
+  animation-duration:6s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+.badge.badge-danger {
+  background-color:red !important;
+  color:white !important;
+  z-index:20 !important;
+}
+
+// .badge.badge-danger.animated.bounce {
+//   -webkit-animation-duration: 5s;
+//   animation-duration:5s;
+//   opacity:1 !important;
+// }
+
+#general-popup {
+  .popover-arrow {
+    left:34px !important;
+  }
+  .pure-white.bottom-sessions-tab {
+    p {
+      font-size: 95% !important;
+      margin-top:3em;
+    }
+  }
+}
+
+.request-status {
+  font-family: "OpenSans-Regular" !important;
+  .pure-g
+  .pure-u-4-5 {
+    padding-left:2em !important;
+  }
+  button.button-full.button-light {
+      text-transform: uppercase;
+      font-family: OpenSans-Bold;
+      font-size: 85%;
+      color: rgba(0,0,0,0.5);
+  }
 }
