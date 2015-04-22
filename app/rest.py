@@ -501,8 +501,9 @@ class UserRequestView(restful.Resource):
             files_json = request.json.get('files')
             if type(files_json) != bool:
                 for file_json in request.json.get('files'):
-                    file_obj = File.query.get(file_json.get('id'))
-                    file_obj.request_id = _request.id
+                    if file_json != bool:
+                        file_obj = File.query.get(file_json.get('id'))
+                        file_obj.request_id = _request.id
 
                 db_session.commit()
 
@@ -717,7 +718,7 @@ class FileView(restful.Resource):
             file_obj = File.initEmptyFile()
             file_string_base64 = base64.b64decode(file_string)
             file_extension = imghdr.what(None,file_string_base64)
-            file_name = 'request_file_id_' + str(file_obj.id) + '.' + file_extension
+            file_name = 'request_file_id_' + str(file_obj.get('id')) + '.' + file_extension
 
             upload_file_to_amazon(file_name, file_string_base64, s3_key, s3_secret, s3_bucket)
 
