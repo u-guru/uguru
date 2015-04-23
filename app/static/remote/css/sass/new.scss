@@ -134,6 +134,12 @@ p {
     text-decoration:none
   }
 
+.item.settings-item.activated,
+.item.settings-item.active {
+  background-color:rgba(0,0,0,0.1);
+  border-color: rgba(0,0,0,0.4);
+}
+
 .button.button-positive.activated,
 .button.button-positive.active
 {
@@ -1768,11 +1774,6 @@ div.signup-tag {
   color:white;
 }
 
-.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader)>* {
-  margin-top:5px;
-}
-
-
 
 /* iPhone 6+ */
 @media all and (min-width: 400px) and (max-width:500px){
@@ -1885,3 +1886,9 @@ div.signup-tag {
       color: rgba(0,0,0,0.5);
   }
 }
+
+.icon.ion-plus.positive,
+a.button.button-clear.positive {
+  color: $positive;
+}
+

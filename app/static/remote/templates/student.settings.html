@@ -2,8 +2,8 @@
       <ion-header-bar class='header-bar'>
 
         <h5 class="title" style='left:0px !important; right:0px !important;'>Settings</h5>
-        <a class='button button-clear positive' ng-show="user.id && user.auth_token" ng-click="logoutUser()">Logout</a>
         <a class='button button-clear positive' ng-click="addCourseModal.show()" ng-hide='true'>Support</a>
+        <a class='button button-clear positive positive' ng-show="user.id && user.auth_token" ng-click="logoutUser()">Logout</a>
       </ion-header-bar>
       <ion-content>
         <div class='pure-g-c flex-column flex-space-between'>

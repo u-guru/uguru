@@ -599,3 +599,28 @@ with open('web_university5.json', 'wb') as fp:
 # local variations
 # append url from before w/ width & height
 # append popular courses here from schools_updated
+
+
+
+from pprint import pprint
+import json
+from app.models import *
+from app.lib.all_schools_updated import school_dict
+arr = json.load(open('wikipedia_university_data.json'))
+count = 0
+for uni in arr:
+    u = University.query.filter_by(name=uni['db_name']).first()
+    uni['state'] = u.state
+    uni['city'] = u.city
+    school_dict_uni = school_dict.get(str(u.id))
+    if school_dict_uni and school_dict_uni.get('popular_courses') and school_dict_uni.get('professors'):
+        uni['popular_courses'] = school_dict[str(u.id)]["popular_courses"]
+        uni['id'] = u.id
+        uni['title'] = u.name
+        uni['professors'] = school_dict[str(u.id)]["professors"]
+        if uni.get('images') and not uni['images'].get('all') and school_dict_uni.get('thumbnail'):
+            uni['images']['all'] = [school_dict_uni.get('thumbnail')]
+        count += 1
+
+with open('university_master_data.json', 'wb') as fp:
+    json.dump(arr, fp, indent = 4)

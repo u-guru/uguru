@@ -20,6 +20,8 @@
     <link href="remote/css/sass/new.css" rel="stylesheet">
     <link href="remote/css/web.css" rel="stylesheet">
     <link href="remote/css/uguru-animate.css" rel="stylesheet">
+    <link href="remote/css/android.css" rel="stylesheet">
+    <link href="remote/css/responsive.css" rel="stylesheet">
 
      <script>
     LOCAL = true;
@@ -159,64 +161,6 @@
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.edit-courses.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.edit-university.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.transactions.ctrl.js"></script>
-
-     <script>
-
-      function getMobileOperatingSystem() {
-          var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-          if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
-          {
-
-            injectJs('ios.cordova_plugins.js');
-            injectJs('ios.cordova.js');
-            injectCss('ios.css');
-            // injectJs('/static/remote/cordova.js');
-            return 'iOS';
-
-          }
-          else if( userAgent.match( /Android/i ) )
-          {
-
-            console.log('injecting android specific css & js');
-            injectJs('android.cordova.js');
-            injectCss('android.css');
-
-            return 'Android';
-          }
-          else if( userAgent.match( /Windows/i ) )
-          {
-
-            console.log('injecting windows specific css & js');
-            injectJs('windows.cordova.js');
-            // injectCss('android.css');
-
-            return 'Android';
-          }
-          else
-          {
-            console.log('hard to determine identifies')
-            return 'unknown';
-          }
-        }
-
-      function injectJs(link) {
-          var scr = document.createElement('script');
-          scr.type="text/javascript";
-          scr.src=link;
-          document.getElementsByTagName('head')[0].appendChild(scr)
-      }
-
-      function injectCss(file) {
-        var link = document.createElement("link");
-        link.href = file;
-        link.type = "text/css";
-        link.rel = "stylesheet";
-        document.getElementsByTagName("head")[0].appendChild(link);
-      }
-
-      console.log(getMobileOperatingSystem());
-
-    </script>
 
   </head>
   <body ng-app="uguru" animation="slide-left-right-ios7">

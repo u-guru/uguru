@@ -169,6 +169,13 @@ angular.module('uguru.util.controllers')
           $scope.user.guru_courses = [];
       }
 
+      // console.log(course);
+      // if () {
+
+      // }
+
+      // return;
+
       if (is_guru_mode) {
         $scope.calculateProgress($scope.user);
         $scope.user.guru_courses.push(course);

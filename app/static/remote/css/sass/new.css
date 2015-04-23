@@ -87,6 +87,10 @@ button {
   color: #fff;
   text-decoration: none; }
 
+.item.settings-item.activated, .item.settings-item.active {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.4); }
+
 .button.button-positive.activated, .button.button-positive.active {
   border-color: #429486;
   background-color: #429486;
@@ -1204,9 +1208,6 @@ div.signup-tag {
   background-color: #405F97;
   color: white; }
 
-.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
-  margin-top: 5px; }
-
 /* iPhone 6+ */
 @media all and (min-width: 400px) and (max-width: 500px) {
   body {
@@ -1289,3 +1290,6 @@ div.signup-tag {
     font-family: OpenSans-Bold;
     font-size: 85%;
     color: rgba(0, 0, 0, 0.5); }
+
+.icon.ion-plus.positive, a.button.button-clear.positive {
+  color: #68b2a5; }

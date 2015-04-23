@@ -33,7 +33,7 @@
         				<i style="font-size:14px;"class="icon ion-plus positive"></i>
       			<!-- </button> -->
   			</a>
-			<ion-item class="item-thumbnail-right" ng-repeat="course in user.student_courses">
+			<ion-item ng-repeat="course in user.student_courses">
 				{{course.short_name}}
 				 <ion-delete-button  ng-click="user.student_courses.splice($index, 1)" class="ion-minus-circled"></ion-delete-button>
 			</ion-item>

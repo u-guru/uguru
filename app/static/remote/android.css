@@ -49,3 +49,18 @@
   background-size: contain;
   position: absolute;
   width: 100%; }
+
+  .onboarding-loading #desk {
+    bottom: 8%;
+    position: absolute;
+    height: 64.3%;
+    left: 8.5%;
+    width: 83%;
+  }
+
+  .typewriter-text {
+    padding: 12% 30% 10% 10%;
+    line-height: 1.5em;
+    position: absolute;
+    letter-spacing: 0.5px;
+  }
