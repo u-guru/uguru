@@ -22,7 +22,7 @@ angular.module('uguru.onboarding.controllers')
     $scope.root.vars.onboarding = true;
     $scope.extra_delay = 3500;
     $scope.img_components = [];
-    var typewriterStringOne = "<p id='typewriter-1' class='typewriter-text'>College is known to be the <br><b>BEST 4 yours of your life</b>.</p>"
+    var typewriterStringOne = "<p id='typewriter-1' class='typewriter-text'>College is known to be the <br><b>BEST 4 years of your life</b>.</p>"
     var typewriterStringTwo = "<p id='typewriter-2' class='typewriter-text'>Let Uguru help you stay on top of your academic life.</p>"
 
     $scope.startIntervals = function(intervals, time_length, targets, $timeout) {
