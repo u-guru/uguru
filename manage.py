@@ -303,3 +303,38 @@ if arg == 'count':
     print len(results.keys()), 'schools ready'
     with open('app/lib/university_data.json', 'wb') as fp:
         json.dump(results, fp, sort_keys = True, indent = 4)
+
+if arg == 'parse_uni':
+    from app.lib.wikipedia import *
+
+    university_names = [university.name for university in University.query.all()]
+    results = scrape_all_universities(university_names)
+
+if arg == 'parse_uni_updated':
+    import json
+    wikipedia_data = open('wikipedia_university_data_updated.json')
+    wiki_json = json.load(wikipedia_data)
+    rmp_schools = []
+    result_schools = []
+    from app.models import *
+    from app.lib.all_schools_updated import school_dict
+    for school in wiki_json:
+
+
+    #import the id
+        if school.get('images') and len(school['images']['all']) > 0:
+            db_university = University.query.get(int(school["id"]))
+            result_schools.append({
+                    "id": school['id'],
+                    "logo": school['images']['all'][0],
+                    "title": school["title"],
+                    "city": db_university.city,
+                    "state": db_university.state,
+                    "variations": school["variations"]
+                })
+        else:
+            print "no images found for", school['title']
+
+
+    with open('web_university4.json', 'wb') as fp:
+        json.dump(result_schools, fp, indent = 4)

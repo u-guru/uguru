@@ -27,7 +27,7 @@ Uguru Home Page
                 help at <span class='changing-header header-university'><span id='university-header-text'>Berkeley</span></span>
             </h1>
             <h3 class='main-subheader-home'>
-                Peers helping peers for <strong>FREE</strong>, trade, or a little side cash.
+                Peers helping peers for <strong>free</strong>, barter, or side cash.
             </h3>
 
             <div id='flex-item-c' class='pure-g-c'>
@@ -329,6 +329,7 @@ Uguru Home Page
 {% block footer_scripts %}
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="/static/js/web/lib/typeahead.min.js"></script>
+    <script src="/static/js/web/lib/fastmatcher.js"></script>
 
     <script src="/static/js/web/sidebar.js"></script>
     <script src="/static/js/web/lib/handlebars.js"></script>
@@ -341,6 +342,7 @@ Uguru Home Page
         var header_titles = ['Berkeley','UTAustin', 'Stanford', 'UCLA', 'Harvard'];
         var header_courses = ['CS 10','BIO11', 'POLI3', 'ENG14', 'CS 50'];
         var header_index = 1;
+        var matcher;
 
         $(document).ready(function() {
 
@@ -361,7 +363,41 @@ Uguru Home Page
 
             animateUniversityAndCourses();
 
+
+            universities_arr = readAndParseJSON('/static/data/universities_web3.json');
+            matcher = initMatcher(universities_arr);
+            initTypeahead(matcher, universities_arr);
         });
+
+        function readAndParseJSON(file) {
+            var request = new XMLHttpRequest();
+            request.open('GET', file, false);
+            request.send(null);
+            if (request.status == 200)
+                universities_arr = JSON.parse(request.responseText);
+                return universities_arr;
+        }
+
+        var initMatcher = function(arr) {
+            var matcher = new FastMatcher(arr, {
+              // the property, or array of properties, to base matches on
+              selector: 'title',
+
+              // duh, what do you think this does?
+              caseInsensitive: true,
+
+              // return matches in their original order
+              preserveOrder: false,
+
+              // whether to match against any word (not just first) for each string
+              anyWord: true,
+
+              // how many matches to find at a time
+              limit: 5
+            });
+            return matcher;
+        }
+
 
         var animateUniversityAndCourses = function() {
             $('#course-header-text').addClass('animated fadeOut');
@@ -383,43 +419,50 @@ Uguru Home Page
 
         // Instantiate the Typeahead UI
         {% raw %}
+            var initTypeahead = function(matcher, source) {
 
-                var movies = new Bloodhound({
-                    datumTokenizer: function (datum) {
-                        return Bloodhound.tokenizers.whitespace(datum.title);
-                    },
-                    limit: 5,
-                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    prefetch: {
-                        url: '/static/data/universities_web3.json',
-                        filter: function (response) {
-                            // Map the remote source JSON array to a JavaScript object array
+                // var matcherTokenizer = function(tokenizer) {
+                //     return function (query) {
+                //         matcher.getMatches(tokenizer)
+                //     };
+                // }
 
-                            return $.map(response, function (university) {
-                                // university_url = "'" + university.title.replace(',','-').replace(' ', '-').replace('&','_').replace('-','_') + "'";
-                                return {
-                                    title: university.title,
-                                    city: university.city,
-                                    state: university.state,
-                                    thumbnail: university.thumbnail,
-                                    _id: university.id
-                                };
-                            });
-                        }
-                    },
-                    sorter: function compare(a,b) {
-                        if (a.title > b.title) {
-                          return 1;
-                        }
-                        if (b.title < a.title) {
-                          return -1;
-                        }
-                        return 0 ;
-                    }
-                });
+                // var movies = new Bloodhound({
+                //     datumTokenizer: function (datum) {
+                //         return Bloodhound.tokenizers.whitespace(datum.title);
+                //     },
+                //     limit: 5,
+                //     queryTokenizer: matcherTokenizer,
+                //     prefetch: {
+                //         url: '/static/data/universities_web3.json',
+                //         filter: function (response) {
+                //             // Map the remote source JSON array to a JavaScript object array
 
-                // Initialize the Bloodhound suggestion engine
-                movies.initialize();
+                //             return $.map(response, function (university) {
+                //                 // university_url = "'" + university.title.replace(',','-').replace(' ', '-').replace('&','_').replace('-','_') + "'";
+                //                 return {
+                //                     title: university.title,
+                //                     city: university.city,
+                //                     state: university.state,
+                //                     thumbnail: university.thumbnail,
+                //                     _id: university.id
+                //                 };
+                //             });
+                //         }
+                //     },
+                //     sorter: function compare(a,b) {
+                //         if (a.title > b.title) {
+                //           return 1;
+                //         }
+                //         if (b.title < a.title) {
+                //           return -1;
+                //         }
+                //         return 0 ;
+                //     }
+                // });
+
+                // // Initialize the Bloodhound suggestion engine
+                // movies.initialize();
 
                 $('.typeahead').typeahead({
                     minLength: 1,
@@ -427,7 +470,7 @@ Uguru Home Page
                     hint:true
                 }, {
                     displayKey: 'title',
-                    source: movies.ttAdapter(),
+                    source: function(q, cb) {cb(matcher.getMatches(q))},
                     templates: {
                     empty: [
                       '<div class="tt-suggestion">',
@@ -438,11 +481,13 @@ Uguru Home Page
                         suggestion: Handlebars.compile("<a class='university-link' href='javascript:void(0);'><p><span class='title'>{{title}}</span>{{city}}, {{state}} <img class='pure-img' src='{{thumbnail.source}}'/></p></a>")
                     }
                 }).on('typeahead:selected', function(event, suggested, dataset_name){
-                    window.location.replace('/u/' + suggested.title.replace(',','').split(' ').join('_').toLowerCase() + '/' + suggested._id + '/');
+                    // console.log(event, suggested,dataset_name);
+                    var full_url = '/u/' + suggested.title.replace(',','').split(' ').join('_').toLowerCase() + '/' + suggested.id + '/'
+                    window.location.replace(full_url);
                 }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
                     $('.tt-suggestion.tt-cursor img').addClass('animated wobble');
                 });
-
+            };
 
             {% endraw %}
     </script>

@@ -490,3 +490,112 @@ for school_id in school_dict.keys():
 with open('universities_web2.json', 'wb') as fp:
     json.dump(final_arr, fp, indent = 4)
 
+
+web3_dict =  {
+        "id": 1948,
+        "city": "Baltimore",
+        "state": "MD",
+        "thumbnail": {
+            "source": "http://upload.wikimedia.org/wikipedia/commons/thumb/0/06/UMB_Davidge_Hall.jpg/50px-UMB_Davidge_Hall.jpg",
+            "width": 50,
+            "height": 35
+        },
+        "title": "University of Maryland, Baltimore"
+}
+
+import json
+wikipedia_data = open('wikipedia_university_data.json')
+wiki_json = json.load(wikipedia_data)
+from app.models import *
+from app.lib.all_schools_updated import school_dict
+for school in wiki_json:
+
+    #import the id
+
+    title = school.get('db_name')
+    u = University.query.filter_by(name=title).all()
+    if u and len(u) == 1:
+        school['id'] = u[0].id
+    if len(u) > 1:
+        print "more than one ", title
+    if not u:
+        print "none for", title
+
+
+    if school['id']:
+        uni_school_dict = school_dict(str(school['id']))
+        school['popular_courses'] = uni_school_dict['school_dict']
+        school['professors'] = uni_school_dict['professors']
+        school['rmp_title'] = uni_school_dict['title']
+        if uni_school_dict.get('thumbnail'):
+            thumbnail = uni_school_dict.get('thumbnail')
+            school['images']['all'].append({
+                'url': thumbnail['source'],
+                'height': thumbnail['height'],
+                'width': thumbnail['width']
+            })
+
+
+    school['variations'] = []
+    articles = ['of', ',', 'and', '-', 'the']
+    # website shortened name
+    if school.get('website'):
+        school['variations'].append(school.get('website'))
+
+    school_title = school['title']
+
+    #normalized version
+    normalized_version = school_title.replace('of', '').replace(',','').replace('and','').replace('-','').replace('the', '').replace('  ',' ')
+    school['variations'].append(normalized_version)
+
+    # acronym version
+    first_letter_normalized = [word[0][0] for word in normalized_version]
+    school['variations'].append(''.join(first_letter_normalized))
+
+    print ' '.join(school['variations'])
+
+
+
+
+    # sanitize all dashes + print the one's with dashes
+
+    # add the website
+    # add the acronym without articles
+
+    # add local variations
+
+
+import json
+from app.models import *
+f = open('app/static/data/universities_web3.json')
+arr = json.load(f)
+web_unis = arr
+web_ids = [uni['id'] for uni in arr]
+f = open('web_university4.json')
+arr = json.load(f)
+wiki_unis = arr
+wiki_ids = [uni['id'] for uni in wiki_unis]
+count = 0
+index = 0
+for _id in wiki_ids:
+    if _id not in web_ids:
+        web_unis.append({
+            "id": wiki_unis[index]['id'],
+            "thumbnail": wiki_unis[index]["logo"],
+            "title": wiki_unis[index]["title"],
+            "city": wiki_unis[index]["city"],
+            "state": wiki_unis[index]["state"],
+            "variations": wiki_unis[index]["variations"]
+        })
+    else:
+        web_index = web_ids.index(_id)
+        web_uni = web_unis[web_index]
+        web_uni['variations'] = wiki_unis[index]["variations"]
+        web_uni['thumbnail'] = wiki_unis[index]["logo"]
+    index += 1
+with open('web_university5.json', 'wb') as fp:
+    json.dump(web_unis, fp, indent = 4)
+
+# local variations
+# append url from before w/ width & height
+# append popular courses here from schools_updated

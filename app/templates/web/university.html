@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block header_scripts %}
+<link rel="stylesheet" href="/static/css/web/lib/animate.min.css">
 <link rel="stylesheet" href="/static/css/sass/university.home.css">
 {% endblock%}
 
@@ -30,14 +31,36 @@
             </div>
             </div>
             <div class="pure-u-1 pure-u-md-1-3 university-banner flex-container">
-                <img class="banner-school-specific" src="/static/img/guru-school-banner-beige.svg"/>
-                <div class="banner-school-content-container flex-item-c flex-container">
-                    <!-- <img src="/static/img/guru-logo-school-banner-01.svg"/> -->
-                    <h4 class='uguru-intro flex-item-c'> uguru is now at </h4>
-                    <img src="{{university['thumbnail']['source']}}" class='university-logo flex-item-c'/>
-                    <!-- <img src="/static/img/logos/{{university['logo']}}"/> -->
-                    <!-- "logo": "virginia.jpeg" -->
-                    <h4 class='uguru-university-name flex-item-c'> {{university["name"]}} </h4>
+                <div class='university-banner-wrapper'>
+                    <svg version="1.1" id="background-banner-three" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="300px" height="338.418px" viewBox="0 0 300 338.418" enable-background="new 0 0 300 338.418" xml:space="preserve">
+                    <polygon class="polygon" fill="#F5F4F0" points="300,338.418 150,303.535 0,338.418 0,0 300,0 "/>
+                    </svg>
+                    <svg version="1.1" id="background-banner-one" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="300px" height="338.418px" viewBox="0 0 300 338.418" enable-background="new 0 0 300 338.418" xml:space="preserve">
+                    <polygon class="polygon" fill="#F5F4F0" points="300,338.418 150,303.535 0,338.418 0,0 300,0 "/>
+                    </svg>
+                    <svg version="1.1" id="background-banner-two" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="305x" height="338.418px" viewBox="0 0 300 338.418" enable-background="new 0 0 300 338.418" xml:space="preserve">
+                    <polygon class="polygon" fill="#F5F4F0" points="300,338.418 150,303.535 0,338.418 0,0 300,0 "/>
+                    </svg>
+
+                    <div class="banner-school-content-container flex-item-c flex-container">
+                        <h4 class='uguru-intro flex-item-c'> uguru is now at </h4>
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front">
+                                    <img style="padding:6px 0px;"src="/static/img/guru-logo-school-banner-01.svg"/>
+                                </div>
+                                <div class="back">
+                                    <img style="padding-bottom:15px;" src="{{university['thumbnail']['source']}}" class='university-logo flex-item-c'/>
+                                    <!-- <img src="/static/img/logos/{{university['logo']}}"/> -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- "logo": "virginia.jpeg" -->
+                        <h4 class='uguru-university-name flex-item-c'> {{university["name"]}} </h4>
+                    </div>
                 </div>
 <!--                 <div class =""> -->
                 <div class='pure-g flex-item-c'>
@@ -376,5 +399,17 @@
     $('#close-sidebar').click(function() {
         $('body').removeClass('active');
     })
+
+    $(document).ready(function() {
+        $('.university-banner-wrapper').addClass('animated slideInDown');
+        setTimeout(function() {
+            $('.flip-container').addClass("hover");
+
+            setTimeout(function() {
+                $('.flip-container').addClass("animated tada");
+            },1000)
+
+        }, 4000);
+    });
     </script>
 {% endblock %}
