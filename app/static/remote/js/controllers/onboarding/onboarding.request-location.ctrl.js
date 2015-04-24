@@ -79,11 +79,14 @@ angular.module('uguru.onboarding.controllers', [])
       else if ($scope.platform.ios) {
           //do prompt for ios & then run geolocation for background;
 
-          if (ionic.Platform && ionic.Platform.device()) {
-            $scope.user.current_device = ionic.Platform.device();
-          }
-          console.log('launching location service on ios.');
-          Geolocation.getUserPosition($scope, callbackSuccess, failureCallback, $state);
+          // if (ionic.Platform && ionic.Platform.device()) {
+          //   $scope.user.current_device = ionic.Platform.device();
+          // }
+          // console.log('launching location service on ios.');
+
+          // Temporary
+          $state.go('^.onboarding-nearest-university');
+          // Geolocation.getUserPosition($scope, callbackSuccess, failureCallback, $state);
       }
       else if ($scope.platform.web)  {
               console.log('I am testing through the web.')

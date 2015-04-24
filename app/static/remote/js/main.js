@@ -1,5 +1,5 @@
 // Uguru upp
-var LOCAL = true; //local to the 8100 codebase
+var LOCAL = false; //local to the 8100 codebase
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 // BASE = 'remote/'ionic
 var REST_URL = 'http://uguru-rest.herokuapp.com';
@@ -91,7 +91,7 @@ $ionicPlatform.ready(function() {
                   if (window.StatusBar) {
                     console.log('Extra #1. Styling iOS status bar to black \n\n');
                     StatusBar.styleDefault();
-                    StatusBar.overlaysWebView(false);
+                    StatusBar.overlaysWebView(true);
                   }
 
                 }
