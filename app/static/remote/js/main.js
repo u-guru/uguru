@@ -1,5 +1,5 @@
 // Uguru upp
-var LOCAL = false; //local to the 8100 codebase
+var LOCAL = true; //local to the 8100 codebase
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 // BASE = 'remote/'ionic
 var REST_URL = 'http://uguru-rest.herokuapp.com';
