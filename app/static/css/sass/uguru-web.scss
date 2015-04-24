@@ -1573,8 +1573,10 @@ a.no-decoration,
     margin:1em 1em 1em 1.5em;
   }
 }
-
-.app-icons-horizontal:hover,
-.app-icons-horizontal:focus {
+.app-icons-horizontal .apple-link:focus,
+.app-icons-horizontal .apple-link:hover,
+.app-icons-horizontal .android-link:hover,
+.app-icons-horizontal .android-link:focus,
+{
   opacity:1;
 }
