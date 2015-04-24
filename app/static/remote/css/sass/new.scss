@@ -3,6 +3,8 @@
 
 
 $default-background:rgba(0,0,0,0.04);
+$guru-background: #3F4A4D;
+$guru-button:#4D5456;
 $background-color:#3f4a4d;
 $header-color:#2b3234;
 $dark: rgb(43,50,52);
@@ -12,6 +14,7 @@ $positive: #68b2a5;
 $negative: white;
 $tabs-background: #E6E6E5;
 $tabs-text: #4D4D4D;
+$course-color: #D97142;
 
 /* iPhone 6+ */
 @media all and (min-width: 400px) and (max-width:500px){
@@ -1412,6 +1415,20 @@ margin: 0;
 }
 
 .guru-onboarding {
+
+  font-family: "OpenSans-Light";
+
+  .course-tag {
+    background-color: $course-color;
+    color:white;
+    padding:6px 10px;
+    font-family: "OpenSans-Bold";
+    font-size:90%;
+    white-space:normal;
+    display:inline-block;
+    margin: 5px;
+  }
+
   .item-content-container {
     white-space:normal;
     font-family:"OpenSans-Regular";
@@ -1420,6 +1437,32 @@ margin: 0;
   .icon {
       font-size:80%;
       color:$positive;
+  }
+
+  .item {
+    margin:20px 10px;
+    white-space:normal;
+    overflow: none;
+    font-size:100%;
+  }
+
+  .edit-guru-course-button  {
+    margin-top:0px !important;
+  }
+
+  .sans-bold {
+    font-family: "OpenSans-Semibold";
+  }
+
+  .list-edit {
+    margin-top:10px;
+    border: 1px solid rgba(0,0,0,0.2) !important;
+    border-radius:3px;
+    font-size:85;
+  }
+
+  .list-text {
+    white-space: normal;
   }
 }
 
@@ -1892,3 +1935,91 @@ a.button.button-clear.positive {
   color: $positive;
 }
 
+.san-bold {
+  font-family: "OpenSans-Bold";
+}
+
+.white-text {
+  color:white;
+}
+
+.no-margin-top {
+    margin-top:0px !important;
+  }
+
+  .no-margin-bottom {
+    margin-bottom:0px !important;
+  }
+
+.opacity-3-4 {
+  opacity:0.3;
+}
+
+.header-bar-dark {
+  background-color: $guru-background;
+  border-bottom:0px;
+  a.button.button-clear.button-back {
+    color:white;
+  }
+  h5{
+    color:white !important;
+  }
+}
+
+.guru-background {
+  background-color: $guru-background;
+}
+
+.guru-background.has-header {
+  border-top:0px;
+}
+
+.icon-small {
+  font-size:70% !important;
+}
+
+.guru-incoming-request-card {
+
+}
+
+.no-border {
+  border-width:0px;
+}
+
+
+.guru-incoming-request-card {
+  border: 2px solid rgba(255,255,255,0.2);
+  padding:1em;
+  .grey-subject-text {
+    color: rgba(255,255,255,0.5);
+    font-size:80%;
+  }
+  .item.item-avatar-left {
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    margin-top:0px;
+  }
+  .pure-u-4-5 {
+    color:white;
+    font-size:80%;
+  }
+}
+
+.margin-2em {
+  margin:2em;
+}
+
+.button-thin {
+  font-family: "OpenSans-Light";
+}
+
+.button-semibold {
+  font-family: "OpenSans-Semibold";
+}
+
+.button-guru {
+  background-color:$guru-button;
+  color:white;
+  border: 1px solid $guru-background;
+  margin:0;
+}

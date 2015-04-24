@@ -953,13 +953,40 @@ p {
   align-items: center;
   -webkit-align-items: center; }
 
-.guru-onboarding .item-content-container {
-  white-space: normal;
-  font-family: "OpenSans-Regular";
-  line-height: 1.5em; }
-.guru-onboarding .icon {
-  font-size: 80%;
-  color: #68b2a5; }
+.guru-onboarding {
+  font-family: "OpenSans-Light"; }
+  .guru-onboarding .course-tag {
+    background-color: #D97142;
+    color: white;
+    padding: 6px 10px;
+    font-family: "OpenSans-Bold";
+    font-size: 90%;
+    white-space: normal;
+    display: inline-block;
+    margin: 5px; }
+  .guru-onboarding .item-content-container {
+    white-space: normal;
+    font-family: "OpenSans-Regular";
+    line-height: 1.5em; }
+  .guru-onboarding .icon {
+    font-size: 80%;
+    color: #68b2a5; }
+  .guru-onboarding .item {
+    margin: 20px 10px;
+    white-space: normal;
+    overflow: none;
+    font-size: 100%; }
+  .guru-onboarding .edit-guru-course-button {
+    margin-top: 0px !important; }
+  .guru-onboarding .sans-bold {
+    font-family: "OpenSans-Semibold"; }
+  .guru-onboarding .list-edit {
+    margin-top: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    border-radius: 3px;
+    font-size: 85; }
+  .guru-onboarding .list-text {
+    white-space: normal; }
 
 .uguru-settings .button-outline {
   border-width: 2px; }
@@ -1293,3 +1320,67 @@ div.signup-tag {
 
 .icon.ion-plus.positive, a.button.button-clear.positive {
   color: #68b2a5; }
+
+.san-bold {
+  font-family: "OpenSans-Bold"; }
+
+.white-text, .onboarding-confirm .course {
+  color: white; }
+
+.no-margin-top {
+  margin-top: 0px !important; }
+
+.no-margin-bottom {
+  margin-bottom: 0px !important; }
+
+.opacity-3-4 {
+  opacity: 0.3; }
+
+.header-bar-dark {
+  background-color: #3F4A4D;
+  border-bottom: 0px; }
+  .header-bar-dark a.button.button-clear.button-back {
+    color: white; }
+  .header-bar-dark h5 {
+    color: white !important; }
+
+.guru-background {
+  background-color: #3F4A4D; }
+
+.guru-background.has-header {
+  border-top: 0px; }
+
+.icon-small {
+  font-size: 70% !important; }
+
+.no-border {
+  border-width: 0px; }
+
+.guru-incoming-request-card {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 1em; }
+  .guru-incoming-request-card .grey-subject-text {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 80%; }
+  .guru-incoming-request-card .item.item-avatar-left {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 0px; }
+  .guru-incoming-request-card .pure-u-4-5 {
+    color: white;
+    font-size: 80%; }
+
+.margin-2em {
+  margin: 2em; }
+
+.button-thin {
+  font-family: "OpenSans-Light"; }
+
+.button-semibold {
+  font-family: "OpenSans-Semibold"; }
+
+.button-guru {
+  background-color: #4D5456;
+  color: white;
+  border: 1px solid #3F4A4D;
+  margin: 0; }

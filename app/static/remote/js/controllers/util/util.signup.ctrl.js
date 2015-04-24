@@ -116,6 +116,12 @@ angular.module('uguru.util.controllers')
 
     $scope.$on('modal.shown', function() {
 
+
+      if (window.StatusBar) {
+          StatusBar.styleDefault();
+      }
+
+
       if ($scope.signupModal.isShown()) {
         // console.log('modal is shown');
         // $scope.root.keyboard.show('signup-first-name', 500);
@@ -337,6 +343,16 @@ angular.module('uguru.util.controllers')
 
                 $scope.closeSignupModal(callRequestHelp);
             }
+
+
+          if ($scope.becomeGuruButtonClicked) {
+
+            $scope.closeSignupModal(function() {
+                $scope.becomeGuruModal.show();
+            });
+
+          }
+
 
             else {
               User.getUserFromServer($scope, null, $state);

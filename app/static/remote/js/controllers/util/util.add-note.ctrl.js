@@ -92,15 +92,15 @@ angular.module('uguru.util.controllers')
         };
 
         reader.readAsDataURL(photofile);
-        $scope.root.vars.request.files.push(true);
+        // $scope.root.vars.request.files.push(true);
 
-        // var formData = new FormData();
-        // formData.append('file', image.src);
-      // formData.append('file', photofile);
-        // formData.append('filename', photofile.name);
+        var formData = new FormData();
 
-        // $scope.user.createObj($scope.user, 'files', formData, $scope);
-        // $scope.saveImgToTag(photofile);
+        formData.append('file', photofile);
+        var file_name = new Date().getTime().toString();
+        formData.append('filename', file_name);
+
+        $scope.user.createObj($scope.user, 'files', formData, $scope);
     };
 
     $scope.saveImgToTag = function(imageData) {

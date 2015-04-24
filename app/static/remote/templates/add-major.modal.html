@@ -1,8 +1,17 @@
 <ion-modal-view ng-controller="AddMajorController">
-      <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
+      <ion-header-bar class="header-bar dark-header">
+        <h5 class="title">Add a major</h5>
+        <a class='button button-clear positive' ng-click="addMajorModal.hide()">Cancel</a>
+      </ion-header-bar>
+
+      <!-- <ion-header-bar class="header-bar bar-dark">
+
+      </ion-header-bar> -->
+
+      <!-- <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
         <h1 class="title">Add a major</h1>
         <button ng-click="addMajorModal.hide()" class="button button-clear button-positive">Cancel</button>
-      </ion-header-bar>
+      </ion-header-bar> -->
       <ion-content>
         <div class="add-class margin-top-20" ng-click="addUniversityModal.show()" ng-show="!user.university">
           <div style="color: rgba(0, 0, 0, 0.6); margin:10px 10px 10px 0px; font-size:16px; text-align:left"> First, tell us where you go to school.
@@ -33,7 +42,7 @@
       <ion-footer-bar class="bar-footer item-input-inset" keyboard-attach ng-show="user.university">
 
           <label class="item-input-wrapper">
-              <i class="icon ion-ios7-search placeholder-icon"></i>
+              <i class="icon ion-search placeholder-icon"></i>
 
               <input type="search" name="major-input" class="form-control"
                       fast-matcher

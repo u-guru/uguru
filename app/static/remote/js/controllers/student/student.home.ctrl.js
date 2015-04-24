@@ -36,7 +36,6 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
   $ionicPlatform, $ionicBackdrop, $document, $ionicPopover, $cordovaStatusbar,
   $ionicViewSwitcher)     {
   // .fromTemplate() method
-  console.log($scope.user);
   // if (!$scope.user.university && !$scope.user.university_id) {
   //   $state.go('^.onboarding-location');
   // }
@@ -241,6 +240,7 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
     $scope.goToGuruMode = function() {
       if (!$scope.user.auth_token) {
+        $scope.becomeGuruButtonClicked = true;
         $scope.signupModal.show();
       } else {
         $scope.becomeGuruModal.show();
@@ -322,7 +322,12 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
     $scope.$on('$ionicView.beforeEnter', function(){
       User.getUserFromServer($scope, null, $state);
-      $scope.user.guru_mode = false;
+
+      // if ($scope.user.guru_mode) {
+      //   $state.go('^.guru-home');
+      // }
+
+
       if (window.StatusBar) {
           StatusBar.styleDefault();
       }
@@ -338,7 +343,7 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     });
 
     $scope.$on('$ionicView.afterEnter', function(){
-
+      $scope.loader.hide();
       //start fake shit
       // $ionicModal.fromTemplateUrl(BASE + 'templates/contact-guru.modal.html', {
       //     scope: $scope,
@@ -391,7 +396,10 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
 
     $scope.$on('modal.shown', function() {
+      if ($scope.becomeGuruModal.isShown()) {
+        StatusBar.styleLightContent();
 
+      }
     // $scope.$on('modal.hidden', function() {
     //   console.log('modal is hidden');
     //   console.log($scope.user);
@@ -425,8 +433,11 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       $scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
       $scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
       $scope.bottomTabsDelegate.select(1);
-      $scope.showOnboardingAddClass();
-      $scope.loader.hide();
+
+      if ($scope.bottomTabsDelegate.selectedIndex() === 1) {
+        $scope.showOnboardingAddClass();
+      }
+
       // $timeout(function() {
       //   document.querySelectorAll('.session-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-1.svg')";
       //   document.querySelectorAll('.request-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-3.svg')";

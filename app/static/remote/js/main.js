@@ -1,5 +1,5 @@
 // Uguru upp
-var LOCAL = true; //local to the 8100 codebase
+var LOCAL = false; //local to the 8100 codebase
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 // BASE = 'remote/'ionic
 var REST_URL = 'http://uguru-rest.herokuapp.com';
@@ -232,7 +232,6 @@ $ionicPlatform.ready(function() {
               $scope.user.current_device.user_id = $scope.user.id;
               $scope.user.createObj($scope.user, 'device', $scope.user.current_device, $scope);
             }
-
 
           });
 
@@ -490,7 +489,7 @@ $ionicPlatform.ready(function() {
 
   // if none of the above states are matched, use this as the fallback
   // $urlRouterProvider.otherwise('/tab/dash');
-  $urlRouterProvider.otherwise('/onboarding-loading');
+  $urlRouterProvider.otherwise('/guru-home');
   // $urlRouterProvider.otherwise('/home');
 
 });

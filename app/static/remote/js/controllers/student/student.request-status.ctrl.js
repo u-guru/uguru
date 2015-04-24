@@ -36,13 +36,17 @@ angular.module('uguru.student.controllers')
       $scope.formatted_request_type = 'In-person only';
     }
 
-    console.log('request status', $scope.requestObj);
+    console.log('request status', $scope.request);
     $scope.goBack = function() {
       // $state.go
     }
 
     $scope.goToGuruProfile = function(guru) {
       $state.go('^.guru-profile', {guruObj:JSON.stringify(guru)});
+    }
+
+    $scope.createGoogleLatLng = function(latCoord, longCoord) {
+      return new google.maps.LatLng(latCoord, longCoord);
     }
 
     $scope.convertTimeEstimate = function(time_int) {
@@ -179,7 +183,52 @@ angular.module('uguru.student.controllers')
       }, 1000);
     }
 
+    $scope.showGoogleMap = function() {
+      console.log($scope.request);
+      if (!$scope.request.position || !$scope.request.position.latitude || !$scope.request.position.longitude) {
+        console.log('no coordinates... forget about it');
+        return;
+      }
+
+      $scope.map = {center: {latitude: $scope.request.position.latitude, longitude: $scope.request.position.longitude }, zoom: 14, control: {} };
+      $scope.options = {scrollwheel: false};
+
+      var mapContainer = document.getElementById("map_canvas");
+      var initMapCoords;
+
+
+      initMapCoords = $scope.createGoogleLatLng($scope.request.position.latitude,$scope.request.position.longitude)
+
+      var mapOptions = {
+        center: initMapCoords,
+        zoom: 17,
+        disableDefaultUI: true,
+        zoomControl: false,
+        zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
+      }
+      actual_map = new google.maps.Map(
+              mapContainer,
+              mapOptions
+      )
+
+      $scope.marker = new google.maps.Marker({
+            position: initMapCoords,
+            map: actual_map
+      });
+
+      $scope.actual_map = actual_map
+    }
+
+    $scope.$on('$ionicView.enter', function(){
+      console.log('entering...');
+      $scope.showGoogleMap();
+      $timeout(function() {
+
+      }, 3000);
+    });
+
   }
+
 
 
 ])

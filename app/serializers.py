@@ -110,6 +110,7 @@ request_fields['student_calendar'] = fields.List(fields.Nested(calendar_fields))
 proposal_fields = {}
 proposal_fields['time_created'] = fields.DateTime(attribute='time_created')
 proposal_fields['request'] = fields.Nested(request_fields)
+proposal_fields['files'] = fields.Nested(file_fields)
 proposal_fields['status'] = fields.Integer(attribute='status')
 proposal_fields['id'] = fields.Integer(attribute='id')
 proposal_fields['student_calendar'] = fields.List(fields.Nested(calendar_fields))

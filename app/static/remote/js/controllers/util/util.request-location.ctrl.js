@@ -82,12 +82,12 @@ angular.module('uguru.util.controllers')
           if (results[0]) {
             // $scope.actual_map.setZoom(17);
             var formatted_address = results[0].formatted_address;
-            $scope.root.vars.request.location = formatted_address;
+            $scope.root.vars.request.address = formatted_address;
             console.log($scope.root.vars.request.location);
             $scope.requestPosition.coords.latitude = latCoord;
             $scope.requestPosition.coords.longitude = longCoord;
             $timeout(function() {
-              $scope.root.vars.request.location = formatted_address;
+              $scope.root.vars.request.address = formatted_address;
             }, 500);
             $scope.setMarkerPosition($scope.marker, latCoord, longCoord);
             // $scope.request.autocomplete = results[0].formatted_address;
@@ -137,11 +137,14 @@ angular.module('uguru.util.controllers')
                                 $scope.requestPosition.coords.latitude,
                                 $scope.requestPosition.coords.longitude
                             )
+
+            $scope.root.vars.request.location = {latitude: $scope.requestPosition.coords.latitude, longitude: $scope.requestPosition.coords.longitude};
           } else {
 
             $scope.requestPosition = { coords: { latitude: $scope.user.university.latitude, longitude: $scope.user.university.longitude}}
 
 
+            $scope.root.vars.request.location = { latitude: $scope.user.university.latitude, longitude: $scope.user.university.longitude};
             console.log($scope.user.university.latitude, $scope.user.university.longitude);
             initMapCoords = $scope.createGoogleLatLng(
                                 $scope.user.university.latitude,

@@ -385,13 +385,13 @@ angular.module('uguru.user', [])
         }
 
         //otherwise they're already home
-        if ($scope.user.guru_mode && $state.current.name === 'root.student.home') {
-            $state.go('^.^.guru.home');
-        }
+        // if ($scope.user.guru_mode && $state.current.name === 'root.student.home') {
+        //     $state.go('^.^.guru.home');
+        // }
 
-        if (!$scope.user.guru_mode && $state.current.name === 'root.guru.home') {
-            $state.go('^.^.student.home');
-        }
+        // if (!$scope.user.guru_mode && $state.current.name === 'root.guru.home') {
+        //     $state.go('^.^.student.home');
+        // }
 
     }
 
@@ -532,14 +532,13 @@ angular.module('uguru.user', [])
             else {
                 // console.log('Fetching user from ', $state.current.name);
             }
-
             Restangular.one('user', scope_user_id).customGET().then(
                 function(user) {
                     var processed_user = processResults(user.plain());
                     if ($scope) {
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);
-
+                        $scope.loader.hide();
                         if ($scope.loader) {
                             $scope.loader.hide();
                         }
@@ -627,8 +626,8 @@ angular.module('uguru.user', [])
                     .withHttpConfig({transformRequest: angular.identity})
                     .customPOST(payload,'',undefined,{'Content-Type': undefined})
                     .then(function(file){
-                        $scope.request.files = [file.plain()];
-
+                        // $scope.request.files = [file.plain()];
+                        $scope.root.vars.request.files = [file.plain()];
 
                     }, function(err){
                         console.log(err);

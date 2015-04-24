@@ -22,6 +22,25 @@ angular.module('uguru.guru.controllers')
       return time_options[time_int];
     }
 
+    $scope.createGoogleLatLng = function(latCoord, longCoord) {
+      return new google.maps.LatLng(latCoord, longCoord);
+    }
+
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var days = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    var date = new Date($scope.proposal.request.time_created);
+    $scope.formatted_time_created = days[date.getDay()] + ", " + months[date.getMonth()] + ' ' + date.getDate();
+    $scope.formatted_time_estimated_hours = Math.round(($scope.proposal.request.time_estimate / 60), 2);
+
+    if ($scope.proposal.request.online && $scope.proposal.request.in_person) {
+      $scope.formatted_request_type = 'In-person and online';
+    } else if ($scope.proposal.request.online) {
+      $scope.formatted_request_type = 'Online only';
+    } else if ($scope.proposal.request.in_person) {
+      $scope.formatted_request_type = 'In-person only';
+    }
+
     // $scope.showSuccess = function(msg) {
     //   if (!$scope.progress_active)  {
     //       $scope.progress_active = true;
@@ -103,20 +122,53 @@ angular.module('uguru.guru.controllers')
 
     }
 
-    $scope.cancelRequest = function() {
+    $scope.showGoogleMap = function() {
+      console.log($scope.request);
+      if (!$scope.proposal.request.position || !$scope.proposal.request.position.latitude || !$scope.proposal.request.position.longitude) {
+        console.log('no coordinates... forget about it');
+        return;
+      }
 
-      // var student_course = $scope.root.util.objectFindByKey($scope.user.student_courses, 'short_name', $scope.course.short_name);
-      // var student_request = $scope.root.util.objectFindByKey($scope.user.requests, 'time_created', $scope.course.active_request.time_created);
+      $scope.map = {center: {latitude: $scope.proposal.request.position.latitude, longitude: $scope.proposal.request.position.longitude }, zoom: 14, control: {} };
+      $scope.options = {scrollwheel: false};
 
-      $scope.requestObj.status = 4;
-      $scope.user.updateObj($scope.user, 'requests', $scope.requestObj, $scope);
+      var mapContainer = document.getElementById("map_canvas");
+      var initMapCoords;
 
-      var cancelMsg = $scope.course.short_name + ' request canceled';
-      alert(cancelMsg)
-      // $scope.showSuccess(cancelMsg);
+
+      initMapCoords = $scope.createGoogleLatLng($scope.proposal.request.position.latitude,$scope.proposal.request.position.longitude)
+
+      var mapOptions = {
+        center: initMapCoords,
+        zoom: 17,
+        disableDefaultUI: true,
+        zoomControl: false,
+        zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
+      }
+      actual_map = new google.maps.Map(
+              mapContainer,
+              mapOptions
+      )
+
+      $scope.marker = new google.maps.Marker({
+            position: initMapCoords,
+            map: actual_map
+      });
+
+      $scope.actual_map = actual_map
+    }
+
+    $scope.$on('$ionicView.enter', function(){
+      console.log('entering...');
+      $scope.showGoogleMap();
       $timeout(function() {
-        $state.go('^.student-home');
-      }, 1000);
+
+      }, 3000);
+    });
+
+    $scope.goToStudentCalendar = function (calendar) {
+      console.log(calendar);
+      console.log('this was clicked')
     }
 
   }

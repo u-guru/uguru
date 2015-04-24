@@ -58,6 +58,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.calendar.data = generateCalendarDataStorage($scope.calendar.width, $scope.calendar.height)
+    $scope.root.vars.request.calendar.data = generateCalendarDataStorage($scope.calendar.width, $scope.calendar.height);
 
     $scope.day_rows = generateCalendarDataStorage($scope.calendar.height, 1);
     $scope.day_columns = generateCalendarDataStorage($scope.calendar.width, 1);
@@ -234,6 +235,7 @@ angular.module('uguru.util.controllers')
       //A calendar item was selected
       if (!targetBgColor || targetBgColor === 'white') {
         $scope.calendar.data[calendar_x][calendar_y] = true;
+        $scope.root.vars.request.calendar.data[calendar_x][calendar_y] = true;
         target.style.background = '#6C87B0';
         target.style.color = 'white';
         target.childNodes[0].background = '#6C87B0';
@@ -241,10 +243,12 @@ angular.module('uguru.util.controllers')
       //A calendar item was not selected
       else {
         $scope.calendar.data[calendar_x][calendar_y] = false;
+        $scope.root.vars.request.calendar.data[calendar_x][calendar_y] = false;
         target.style.background = 'white';
         target.style.color = 'rgba(0,0,0,0.8)';
         target.childNodes[0].background = 'white';
       }
+
 
       $scope.calendar.num_selected = $scope.countCalendarSelected($scope.calendar.data);
       $scope.root.vars.request.calendar_selected = true;

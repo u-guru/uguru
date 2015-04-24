@@ -173,15 +173,13 @@ angular.module('uguru.student.controllers')
       $scope.request.online = $scope.root.vars.request.type.online;
       $scope.request.in_person = $scope.root.vars.request.type.in_person;
       $scope.request.time_estimate = (parseInt($scope.root.vars.request._length.hours) * 60) + parseInt($scope.valueToMinutes[$scope.root.vars.request._length.minutes]);
-      $scope.request.address = $scope.root.vars.request.location;
-      $scope.request.position = $scope.root.vars.request.position;
+      $scope.request.address = $scope.root.vars.request.address;
+      $scope.request.position = $scope.root.vars.request.location;
       $scope.request.calendar = $scope.root.vars.request.calendar;
-      $scope.request.calendar_events = $scope.calendar.data;
+      $scope.request.calendar_events = $scope.root.vars.request.calendar.data;
       $scope.request.course = $scope.root.vars.request.course;
       $scope.request.note = $scope.root.vars.request.description;
       $scope.request.files = $scope.root.vars.request.files;
-
-      console.log($scope.request);
 
       // if ($scope.calendar && $scope.calendar.num_selected > 0) {
       //   $scope.request.calendar = $scope.calendar;
@@ -205,22 +203,6 @@ angular.module('uguru.student.controllers')
         alert('Please fill in all fields');
         return false;
       }
-      // old request later
-      // if ($scope.calendar.num_selected === 0) {
-      //   alert('Please fill in Calendar');
-      //   return false;
-      // }
-
-      // if (!($scope.virtual_guru_checkbox || $scope.person_guru_checkbox)) {
-      //   alert('Please check guru or virtual');
-      //   return false;
-      // }
-
-      // if (!$scope.request.note) {
-      //   alert('Please add a description');
-      //   return false;
-      // }
-
       return true;
     }
 
@@ -295,14 +277,17 @@ angular.module('uguru.student.controllers')
         course: $scope.course,
         description:null,
         location: null,
-        files: []
+        files: [],
+        calendar: {
+          data: {},
+          calendar_selected: false
+        }
         }
       }
       else {
         $scope.course = $scope.root.vars.request.course;
     }
 
-    console.log($scope.root.vars.request.description);
 
     $scope.valueToMinutes = [null, '15', '30', '45'];
 

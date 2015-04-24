@@ -482,21 +482,32 @@ class UserRequestView(restful.Resource):
         user.requests.append(_request)
         db_session.commit()
 
+        print request.json
         print "request committed!", position
-
         calendar = Calendar.initFromRequest(_request, 2)
         print "calendar created !", calendar
         calendar_events_json = request.json.get('calendar_events')
-        print "json calendar pulled !", calendar
 
-        # if calendar_events_json:
-        #     for day_arr in calendar_events_json:
-        #         for hour_json in day_arr:
-        #             calendar_event = Calendar_Event.initFromJson(hour_json, calendar, calendar_events_json.index(day_arr))
+        if calendar_events_json:
+            day_index = 0
+            for day_arr in calendar_events_json:
+                index = 0
+                for boolean in day_arr:
+
+                    time_json = {'start_time':None, 'end_time': None}
+
+                    if boolean:
+                        time_json['start_time'] = index
+                        time_json['end_time'] = index + 1
+                    print time_json
+                    calendar_event = Calendar_Event.initFromJson(time_json, calendar, day_index)
+                    index += 1
+                day_index += 1
 
         print "longass json calendar figured out", calendar
 
 
+        print request.json.get('files')
         if request.json.get('files'):
             files_json = request.json.get('files')
             if type(files_json) != bool:
@@ -510,7 +521,9 @@ class UserRequestView(restful.Resource):
         print "long as files for-loop figured out", calendar
 
         available_gurus = _request.course.gurus.all()
+        print "number of gurus available", len(available_gurus)
         for guru in available_gurus:
+            guru.id, guru.name, guru.time_created, 'contacted'
             proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
             #send push notification is user has permitted device
             from app.lib.push_notif import send_student_request_to_guru
@@ -701,12 +714,9 @@ class FileView(restful.Resource):
 
 
         file = request.files.get('file')
-        print request.headers
         file_string= request.values.get('file')
         filename = 'jpeg'
-
         if file_string:
-
             from app.lib.api_utils import upload_file_to_amazon
             from app import app
             import imghdr, base64
@@ -718,7 +728,7 @@ class FileView(restful.Resource):
             file_obj = File.initEmptyFile()
             file_string_base64 = base64.b64decode(file_string)
             file_extension = imghdr.what(None,file_string_base64)
-            file_name = 'request_file_id_' + str(file_obj.id) + '.' + str(file_extension)
+            file_name = 'request_file_id_' + str(file_obj.id) + '.png'
 
             upload_file_to_amazon(file_name, file_string_base64, s3_key, s3_secret, s3_bucket)
 
@@ -732,6 +742,7 @@ class FileView(restful.Resource):
                 amazon_url = "https://s3.amazonaws.com/uguruproftest/"+file_name
 
             file_obj.url = amazon_url
+            print amazon_url
             db_session.commit()
 
             return file_obj, 200

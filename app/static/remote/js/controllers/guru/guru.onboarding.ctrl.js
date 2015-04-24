@@ -10,8 +10,9 @@ angular.module('uguru.guru.controllers', [])
   '$localstorage',
   '$ionicModal',
   '$cordovaKeyboard',
+  '$cordovaStatusbar',
   function($scope, $state, $timeout, $localstorage, $ionicModal,
-    $cordovaKeyboard) {
+    $cordovaKeyboard, $cordovaStatusbar) {
 
     $scope.progressMax = 4;
 
@@ -111,11 +112,15 @@ angular.module('uguru.guru.controllers', [])
       $scope.user.guru_mode = true;
       $scope.user.updateAttr('is_a_guru', $scope.user, true, null, $scope);
       $scope.user.updateAttr('guru_mode', $scope.user, true, null, $scope);
-      $state.go('^.guru-home');
+      $state.go('^.student-home');
     }
 
     $scope.$on('$ionicView.beforeEnter', function(){
-        $scope.calculateProgress($scope.user);
+      console.log('before view enter...')
+
+      if (window.StatusBar) {
+        StatusBar.styleLightContent();
+      }
     });
 
 

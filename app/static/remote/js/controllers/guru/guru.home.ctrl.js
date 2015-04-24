@@ -25,7 +25,7 @@ angular.module('uguru.guru.controllers')
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $q,
  	University, $templateCache, $ionicHistory, Popup, $popover, Popover,
   $ionicBackdrop, User) {
-    console.log($scope.user)
+  console.log($scope.user)
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
 	$scope.base_url =  BASE;
@@ -84,13 +84,13 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.switchToStudentMode = function() {
-      var goToGuruHome = function() {
-        $scope.bottomTabsDelegate.select(0);
-        $state.go('^.student-home');
+      $state.go('^.student-home');
+      // var goToGuruHome = function() {
+      //   $scope.user.guru_mode = false;
+      //   $scope.bottomTabsDelegate.select(1);
 
-      }
-      $scope.user.guru_mode = false;
-      $scope.user.updateAttr('guru_mode', $scope.user, false, goToGuruHome, $scope);
+      // }
+      // $scope.user.updateAttr('guru_mode', $scope.user, false, goToGuruHome, $scope);
     }
 
     $scope.goToTransferFunds = function() {
@@ -257,7 +257,7 @@ angular.module('uguru.guru.controllers')
     $scope.$on('$ionicView.beforeEnter', function(){
       console.log('guru home view before Enter');
       User.getUserFromServer($scope, null, $state);
-  });
+    });
 
     $scope.$on('$ionicView.enter', function(){
       console.log($scope.user.active_proposals);

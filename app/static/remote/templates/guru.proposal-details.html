@@ -1,81 +1,72 @@
-<ion-view class='request-status' hide-nav-bar='true'>
+<ion-view class='request-status' hide-nav-bar='true' cache-view='false'>
 
-  <ion-header-bar class="header-bar">
+  <ion-header-bar class="header-bar header-bar-dark">
 
         <a class="button button-clear button-back"  nav-direction='back' href='#/home'>Back</a>
-        <h5 class="title uppercase">My Sessions</h5>
+        <h5 class="title uppercase">{{proposal.request.course.short_name}} Request</h5>
   </ion-header-bar>
 
-  <ion-content scroll="false">
+  <ion-content scroll="false" class='guru-background'>
     <div class='pure-g-c flex-column flex-space-between'>
-      <div class='padding-1em flex-item-c j-start'>
-        <div class='pure-g row-details'>
-          <div class='pure-u-1-5 grey-subject-text'>Class</div>
-          <div class='pure-u-4-5'>{{proposal.request.course.short_name}}</div>
-        </div>
-        <div class='pure-g row-details'>
-          <div class='pure-u-1-5'>Date</div>
-          <div class='pure-u-4-5'>{{proposal.request.time_created}}</div>
-        </div>
-        <div class='pure-g row-details'>
-          <div class='pure-u-1-5'>Time Length</div>
-          <div class='pure-u-4-5'>{{proposal.request.time_estimate}} minutes</div>
-        </div>
-        <div class='pure-g row-details'>
-          <div class='pure-u-1-5'>In-Person</div>
-          <div class='pure-u-4-5'>{{proposal.request.in_person}}</div>
-        </div>
-        <div class='pure-g row-details'>
-          <div class='pure-u-1-5'>Online</div>
-          <div class='pure-u-4-5'>{{proposal.request.online}}</div>
-        </div>
-        <div class='pure-g row-details'>
-          <div class='pure-u-1-5'>Location</div>
-          <div class='pure-u-4-5'>{{proposal.request.address.split(', ').slice(0,3).join(', ')}}</div>
-          <div class='pure-u-1 padding-1em'>
-            <div class='map-container'>
+      <div class='margin-2em flex-item-c j-start guru-incoming-request-card'>
 
+        <a class='item item-avatar-left item-icon-right pure-g row-details no-border guru-background' ng-show='proposal.request.student.name'>
+          <img ng-src="{{proposal.request.student.profile_url}}">
+          <span class='pure-u-1 white-text'>{{proposal.request.student.name.split(' ')[0]}}
+          </span>
+          <span class='pure-u-1 white-text opacity-3-4'> New to Uguru!
+          </span>
+          <i class='icon icon-small ion-chevron-right positive'></i>
+        </a>
+
+        <div class='pure-g row-details'>
+          <div class='pure-u-1-5 grey-subject-text'>Time</div>
+          <div class='pure-u-4-5'> <a ng-click= 'goToStudentCalendar(proposal.student_calendar)'>See Student Availability &nbsp;&nbsp;&nbsp;<i class='icon ion-chevron-right positive icon-small'></i></a></div>
+        </div>
+        <div class='pure-g row-details'>
+          <div class='pure-u-1-5 grey-subject-text'>Length</div>
+          <div class='pure-u-4-5'>{{formatted_time_estimated_hours}} hours, {{proposal.request.time_estimate % 60}} minutes</div>
+        </div>
+        <div class='pure-g row-details'>
+          <div class='pure-u-1-5 grey-subject-text'>Type</div>
+          <div class='pure-u-4-5'>{{formatted_request_type}}</div>
+        </div>
+        <div class='pure-g row-details' ng-show='proposal.request.status === 1'>
+          <div class='pure-u-1-5 grey-subject-text'>Card Info</div>
+          <div class='pure-u-4-5'>{{user.cards[0].card_last4}}, {{user.cards[0].card_type}}</div>
+        </div>
+        <div class='pure-g row-details'>
+          <div class='pure-u-1-5 grey-subject-text'>Details</div>
+          <div class='pure-u-4-5'>{{proposal.request.description}}</div>
+          <div class='pure-u-1-5 grey-subject-text'></div>
+          <div ng-show="proposal.request.files && proposal.request.files.length > 0" class='pure-u-4-5'><span class='opacity-3-4'><i class='icon ion-paperclip'></i>&nbsp;{{proposal.request.files.length}} Attachment </span></div>
+        </div>
+        <div class='pure-g row-details'>
+          <div class='pure-u-1-5 grey-subject-text'>Location</div>
+          <div class='pure-u-4-5'>{{proposal.request.address.split(', ').slice(0,3).join(', ')}}</div>
+          <!-- <div class='pure-u-1 padding-1em'>
+            <div class='map-container'>
+            </div>
+          </div> -->
+          <div class='pure-u-1' style='margin-top:1em;'>
+            <div id="map_canvas" style="height: 100px;width: 100%;">
+              <ui-gmap-google-map center="map.center" control="map.control" zoom="map.zoom"  pan="true" options="options">
+                <!-- <ui-gmap-search-box options="searchbox.options" template="searchbox.template" events="searchbox.events" parentdiv="searchbox.parentdiv"></ui-gmap-search-box> -->
+              </ui-gmap-google-map>
             </div>
           </div>
         </div>
-        <div class='pure-g row-details'>
-          <div class='pure-u-1-5'>Details</div>
-          <div class='pure-u-4-5'>{{proposal.request.description}}</div>
-        </div>
       </div>
-      <div class='cancel-session-container pure-g'>
+        <!-- <button class='button button-full button-light'> Cancel Session </button> -->
+        <div class='cancel-session-container pure-g'>
           <div class='pure-u-1-2'>
-              <button class='button button-full button-light' ng-click='rejectStudent()'> Reject </button>
+              <button class='button button-full button-thin button-guru' ng-click='rejectStudent()'> Reject </button>
           </div>
           <div class='pure-u-1-2'>
-              <button class='button button-full button-light' ng-click='acceptStudent()'> Accept
+              <button class='button button-full button-guru button-semibold' ng-click='acceptStudent()'> Accept
               </button>
           </div>
-      </div>
-    </div>
-    <!-- <div class="session-progress">
-      <li class="item padding-0 no-border">
-        <div class="course padding-10-15" style="border-radius:0px; border-bottom:0px;">
-          <div class="box-1">
-            <span class="name">{{course.short_name}}</span>
-            <span class="session">Request</span>
-          </div>
-          <div class="message">Searching for gurus</div>
-          <div class="message" style="font-size:10px; color:rgba(0,0,0,0.4); text-transform:none; padding:0px; margin:-3px 0px !important;">We'll get back to you by midnight</div>
         </div>
-      </li>
-      <li class="item padding-10-15" style="border-radius:0px; border-bottom:0px; border-right: 1px solid rgba(0, 0, 0, 0.4);border-bottom: 1px solid rgba(0, 0, 0, 0.4);" ng-show="course.active_request.time_estimate">
-        <div class="location"><span class="icon ion-ios7-clock"></span><span class="bold">Estimated Time:</span> {{convertTimeEstimate(course.active_request.time_estimate)}}</div>
-      </li>
-      <li class="item padding-10-15" style="border-radius:0px; border-bottom:0px; border-right: 1px solid rgba(0, 0, 0, 0.4);border-bottom: 1px solid rgba(0, 0, 0, 0.4);" ng-show="course.active_request.location">
-        <div class="location"><span class="icon ion-navigate"></span><span class="bold">Location:</span> {{course.active_request.location}}</div>
-      </li>
-      <li class="item padding-10-15" style="border-radius:0px; border-bottom:0px; border-right: 1px solid rgba(0, 0, 0, 0.4);border-bottom: 1px solid rgba(0, 0, 0, 0.4); white-space:normal;" ng-show="course.active_request.note">
-        <div class="location"><span class="icon ion-document"></span><span class="bold">Note:</span> {{course.active_request.note}}</div>
-      </li>
-      <button class="button button-full button-outline button-positive" ng-click="cancelRequest()">
-        Cancel Request
-      </button>
-    </div> -->
+    </div>
   </ion-content>
 </ion-view>

@@ -26,11 +26,11 @@
               <div class="item settings-divider-item" ng-show="user.is_a_guru && user.guru_mode">
                   ACCOUNT TYPES
               </div>
-              <a class="item item-icon-right gray" ng-show="user.is_a_guru && user.guru_mode" href='#/home' nav-direction="forward">
+              <a class="item item-icon-right gray"  href='#/home' nav-direction="forward">
                 Switch to Student Mode
                 <i style="font-size:14px;" class="icon item-note ion-chevron-right positive"></i>
               </a>
-              <a class="item item-icon-right gray"  ng-show="user.is_a_guru && !user.guru_mode" href='#/guru-home' nav-direction="forward">
+              <a class="item item-icon-right gray"  href='#/guru-home' nav-direction="forward">
                 Switch to Guru Mode
                 <i style="font-size:14px;" class="icon item-note ion-chevron-right positive"></i>
               </a>
@@ -71,11 +71,11 @@
               Login
             </a>
           </div>
-          <!-- <div class='pure-u-1 become-guru-wrapper' ng-show='!user.is_a_guru'>
-            <button class='button button-dark button-full' ng-click='goToGuruMode()'>
+        <div class='pure-u-1 become-guru-wrapper' ng-show='!user.is_a_guru'>
+            <button class='button button-positive button-full' ng-click='goToGuruMode()'>
               Become a Guru
             </button>
-          </div> -->
+          </div>
         </div>
 
       </ion-content>
