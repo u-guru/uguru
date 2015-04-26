@@ -1,16 +1,16 @@
 
 <ion-view class='guru-sessions'>
-  <ion-header-bar class='header-bar'>
-    <h5 class="title">Guru Sessions</h5>
+  <ion-header-bar class='header-bar header-bar-dark bar-dark'>
+    <h5 class="title uppercase">Guru Sessions</h5>
     <a class='button button-clear' ng-click="addCourseModal.show()"></a>
   </ion-header-bar>
   <ion-tabs class="tabs-stable tabs-striped tabs-top session-tabs" delegate-handle="student-home-tabs-top">
-    <ion-tab title="Incoming" ng-show="topTabsDelegate.selectedIndex() === 0">
+    <ion-tab title="Incoming" >
     </ion-tab>
 
-    <ion-tab title="Scheduled" ng-show='user.active_guru_sessions.length > 0' ng-show="topTabsDelegate.selectedIndex() === 1">
+    <ion-tab title="Scheduled">
     </ion-tab>
-    <ion-tab title="Past" ng-show='false' ng-show="topTabsDelegate.selectedIndex() === 2">
+    <ion-tab title="Past" ng-show='false'>
     </ion-tab>
   </ion-tabs>
 
@@ -18,8 +18,12 @@
   <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 0' scroll="false" style='background-color:white;'>
 
     <div class='pure-g-c flex-column center full-height' ng-show='!user.active_proposals || user.active_proposals.length === 0'>
-      <div class='container padding-1em'>
-        No incoming requests yet! <br> Try <strong> requesting help </strong> below
+      <div class='padding-1em padding-1em flex-item-c'> </div>
+      <div class='flex-item-c sleeping-guru light-opacity'>
+        <img class='pure-img animated swing' ng-src='{{img_base}}./img/guru-sleeping.svg' >
+      </div>
+      <div class='flex-item-c light-opacity padding-1em flex-direction-init '>
+        No current sessions yet! <br> Try requesting help below
       </div>
     </div>
 

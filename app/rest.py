@@ -742,8 +742,15 @@ class FileView(restful.Resource):
                 amazon_url = "https://s3.amazonaws.com/uguruproftest/"+file_name
 
             file_obj.url = amazon_url
-            print amazon_url
+
             db_session.commit()
+
+            if request.values.get('profile_url'):
+
+                user = User.query.get(int(request.values.get('profile_url')))
+
+                user.profile_url = file_obj.url
+                print user.name,'saved', file_obj.url
 
             return file_obj, 200
 

@@ -22,7 +22,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
   $cordovaDialogs, Version, $rootScope, $cordovaSplashscreen,
-  $templateCache, Device, User, $cordovaLocalNotification, $cordovaGeolocation) {
+  $templateCache, Device, User, $cordovaLocalNotification,
+  $cordovaGeolocation) {
 
 $ionicPlatform.ready(function() {
 
@@ -489,7 +490,7 @@ $ionicPlatform.ready(function() {
 
   // if none of the above states are matched, use this as the fallback
   // $urlRouterProvider.otherwise('/tab/dash');
-  $urlRouterProvider.otherwise('/guru-home');
+  $urlRouterProvider.otherwise('/onboarding-loading');
   // $urlRouterProvider.otherwise('/home');
 
 });

@@ -5,4 +5,4 @@ app.debug = True
 
 if __name__ == '__main__':
 	# manager.run()
-    app.run(host='192.168.42.66', port=5000)
+    app.run(host='10.248.146.115', port=5000)

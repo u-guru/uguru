@@ -5,7 +5,7 @@
 
     <ion-tabs class="bottom-tabs tabs-dark" delegate-handle="student-home-tabs-bottom">
 
-        <ion-tab title="Inbox" badge="user.active_requests.length" badge-style='badge-danger' icon-on="session-icon" icon-off="session-icon" style="color:white; text-decoration:none;">
+        <ion-tab title="Home" badge="user.active_requests.length" badge-style='badge-danger' icon-on="session-icon" icon-off="session-icon" style="color:white; text-decoration:none;">
         <div ng-show="bottomTabsDelegate.selectedIndex() === 0" ng-include="base_url + 'templates/guru.home.body.html'"></div>
         </ion-tab>
 
