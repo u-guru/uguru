@@ -487,6 +487,10 @@ def app_home():
 
     return render_template("web/universities.html", universities=u_titles)
 
+@app.route('/itunes/app/')
+def itunes_app():
+    return redirect('https://www.dropbox.com/s/1tvzqjmsu0657nf/Uguru.ipa?dl=0')
+
 @app.route('/production/app/')
 @app.route('/app/production/')
 @app.route('/app/')
@@ -497,7 +501,7 @@ def app_route():
         return redirect('http://u.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
-        return redirect('http://10.248.146.115:5000/static/remote/index.html?version=' + str(version) + str(13213))
+        return redirect('http://192.168.42.66:5000/static/remote/index.html?version=' + str(version) + str(13213))
     # return redirect('http://192.168.0.104:5000/static/remote/index.html')
     # return redirect('http://192.168.42.66:8100/remote/')
 

@@ -65,7 +65,7 @@
 
             </a>
 
-             <a class="item item-icon-right item-thumbnail-right"  ng-click="addGuruIntroModal.show()">
+             <!-- <a class="item item-icon-right item-thumbnail-right"  ng-click="addGuruIntroModal.show()">
 
                 <div ng-show="!user.guru_introduction" class="regular-text">
                 Edit your Guru bio
@@ -75,7 +75,7 @@
                 Bio <stro>edited</strong>. Looking good.
                 </div>
                 <i class='icon ion-chevron-right'></i>
-            </a>
+            </a> -->
         </div>
 
     </ion-content>
@@ -92,33 +92,3 @@
 
     </ion-footer-bar>
 </ion-view>
-
-<script id="templates/wizardWelcomePopup.html" type="text/ng-template">
-    <div class='row'>
-      <div class="col">
-        <div class="center">
-            <img style="background:rgba(105, 179, 165, 1)" src='./img/uguru-04.png' width="60%" class="uguru_glass center">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <p style="font-size:2.25em; color:rgba(0,0,0,0.7)"class="bold-font center font-24 line-height-120">Let's get this<br>show on the road!</p>
-      </div>
-    </div>
-    <div class='row'>
-      <div class="col">
-        <p style="font-size:15px;"class=".osreg-font center grey-font">We just need a little info about you before you can start tutoring and earning money.
-      </div>
-    </div>
-    <div class='row'>
-      <div class="col">
-        <button class="button button-full button-positive footer-button" ng-click="$confirmPopup.close();">
-          Get Started
-        </button>
-        <a class="button button-full button-outline" ng-click="goToStudentAction();" style="background-color:white; border:0px;color:rgba(105, 179, 165, 1); min-height:0px !important;height:30px;">
-          No Thanks
-        </a>
-      </div>
-    </div>
-</script>

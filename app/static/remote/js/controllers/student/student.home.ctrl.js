@@ -257,13 +257,13 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
     }
 
-    $scope.goToTransactions = function() {
-      if (!$scope.user.auth_token) {
-        $scope.signupModal.show()
-      } else {
-        $state.go('^.settings-transactions')
-      }
-    }
+    // $scope.goToTransactions = function() {
+    //   if (!$scope.user.auth_token) {
+    //     $scope.signupModal.show()
+    //   } else {
+    //     $state.go('^.settings-transactions')
+    //   }
+    // }
 
     $scope.goToCards = function() {
       if (!$scope.user.auth_token) {
@@ -338,26 +338,34 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
     });
 
+    $scope.$on('$ionicView.enter', function(){
+      console.log('view is entered');
+      $scope.user.guru_mode = false;
+      $scope.root.vars.guru_mode = false;
+      $localstorage.setObject('user', $scope.user);
+
+
+      $timeout(function() {
+
+        if ($scope.root.vars.request_form_recently_hidden) {
+            //make it null after
+            $scope.root.vars.request_form_recently_hidden = null;
+            var showFor = 4500;
+            var waitFor = 1500;
+            $scope.showBouncingRedAlert(waitFor, showFor);
+            $scope.showFirstTimeRequestSessionPopup()
+
+          }
+
+      }, 8000);
+    });
+
     $scope.$on('$ionicView.beforeLeave', function(){
       console.log($state.current.name, 'leaving...');
     });
 
     $scope.$on('$ionicView.afterEnter', function(){
       $scope.loader.hide();
-      //start fake shit
-      // $ionicModal.fromTemplateUrl(BASE + 'templates/contact-guru.modal.html', {
-      //     scope: $scope,
-      //     animation: 'slide-in-up'
-      // }).then(function(modal) {
-      //     $scope.contactingGuruModal = modal;
-      //     $scope.contactingGuruModal.show();
-      //     $scope.root.vars.request_form_recently_hidden = true;
-      //     $timeout(function() {
-      //       $scope.contactingGuruModal.hide();
-      //     }, 2000)
-      // });
-
-      //end fake shit
       $scope.loader.hide();
     });
 
@@ -396,23 +404,12 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
 
     $scope.$on('modal.shown', function() {
-      if ($scope.becomeGuruModal.isShown()) {
-        StatusBar.styleLightContent();
 
-      }
-    // $scope.$on('modal.hidden', function() {
-    //   console.log('modal is hidden');
-    //   console.log($scope.user);
-    //   if ($scope.root.vars.request_form_recently_hidden) {
-    //     //make it null after
-    //     $scope.root.vars.request_form_recently_hidden = null;
-    //     var showFor = 4500;
-    //     var waitFor = 1500;
-    //     $scope.showBouncingRedAlert(waitFor, showFor);
-    //     $scope.showFirstTimeRequestSessionPopup()
-
-    //   }
-      $scope.ratingModalShown = false;
+        if (window.StatusBar) {
+          console.log('status bar exists');
+          StatusBar.styleLightContent();
+        }
+          $scope.ratingModalShown = false;
     });
 
     $scope.showFirstTimeRequestSessionPopup = function () {
@@ -428,12 +425,11 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
         }, 3000);
     }
 
-    $scope.loader.show();
     $timeout(function() {
       $scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
       $scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
       $scope.bottomTabsDelegate.select(1);
-
+      console.log($scope.user.id);
       if ($scope.bottomTabsDelegate.selectedIndex() === 1) {
         $scope.showOnboardingAddClass();
       }

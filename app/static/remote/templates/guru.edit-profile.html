@@ -1,0 +1,56 @@
+
+
+<ion-view hide-nav-bar="true" class='edit-guru-profile'>
+    <ion-header-bar class="header-bar dark-header">
+      <a class='button button-clear button-back button-white' nav-direction="back" href="#/guru-profile">Back</a>
+        <h5 class="title">Your Details</h5>
+      <a class='button button-clear positive bold uppercase' ng-click='saveProfile()'>Save</a>
+    </ion-header-bar>
+  <ion-content>
+      <div class='list'>
+
+        <div class='item item-avatar-left item-button-right'>
+          <img ng-src='{{user.profile_url}}' class='guru-profile-container'></img>
+          <span>Your Profile Picture</span>
+          <button class='button button-clear button-positive' ng-click='takePhoto()'>edit</button>
+        </div>
+
+        <div class='item description-item'>
+          <div class='pure-g'>
+            <div class='pure-u-1'>
+            Description
+            </div>
+          </div>
+          <div class='pure-g'>
+            <textarea class='pure-u-1' ng-model='user.guru_introduction'placeholder="you have 144 characters to sell yourself">{{user.guru_introduction}}</textarea>
+          </div>
+        </div>
+        <ion-item style='padding-right:0px;'class='icon item-button-right' href='#/settings-edit-courses' nav-direction="forward">
+          Guru Courses
+          <p ng-show='user.guru_courses && user.guru_courses.length > 0'>{{user.guru_courses.length}} total</p>
+          <button class='button button-clear button-positive'>edit</button>
+        </ion-item>
+        <ion-item class='icon item-button-right' ng-click='addMajorModal.show()'>
+          My Major
+          <p ng-show='user.majors && user.majors.length > 0'> {{user.majors[0].name}} </p>
+          <button class='button button-clear button-positive'>edit</button>
+        </ion-item>
+        <!-- <ion-item class='icon item-button-right'>
+          My weekly availability
+          <button class='button button-clear button-positive'>edit</button>
+        </ion-item>
+        <ion-toggle ng-model="user.remove_friendly" ng-change="
+          updateUser()" toggle-class="toggle-positive">I can tutor this Summer 2015
+        </ion-toggle>
+        <ion-toggle ng-model="user.remove_friendly" ng-change="
+          updateUser()" toggle-class="toggle-positive">Remote-friendly
+            <p class='white push-body'>I can help students remotely</p>
+        </ion-toggle>
+        <ion-toggle ng-model="user.in_person_friendly" ng-change="
+          updateUser()" toggle-class="toggle-positive">In-Person only
+            <p class='white push-body'>I can help in-person</p>
+        </ion-toggle> -->
+      </div>
+      <input type="file" id="guru-file-input-web" class='hide' onchange="angular.element(this).scope().file_changed(this)"></input>
+  </ion-content>
+</ion-view>

@@ -1,10 +1,10 @@
-<ion-view hide-nav-bar='true' class='student-active-session'>
+<ion-view hide-nav-bar='true' class='student-active-session' cache-view="false">
     <ion-header-bar class="header-bar">
         <a class="button button-clear button-back"  nav-direction='back' href='#/home'>Back</a>
-        <h5 class="title uppercase">{{session.request.course.short_name}} Session w/ {{session.request.student.name.split(' ')[0]}} </h5>
+        <h5 class="title uppercase">{{session.request.course.short_name}} Session w/ {{session.request.guru.name.split(' ')[0]}} </h5>
     </ion-header-bar>
 
-    <ion-content class="has-header" scroll='false'>
+    <ion-content class="has-header">
     <div class='pure-g-c flex-column flex-space-between'>
       <div class='flex-item-c'>
         <ion-pane id="map_canvas" style="auto;width: 100%;margin: 0px;">

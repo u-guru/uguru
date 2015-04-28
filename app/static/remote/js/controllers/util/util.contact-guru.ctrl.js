@@ -56,7 +56,7 @@ angular.module('uguru.util.controllers')
         $scope.contactingGuruModal.hide();
         $state.go('^.home');
 
-        } , 2500);
+        } , 500);
 
 
       if ($scope.contactingGuruModal.isShown()) {

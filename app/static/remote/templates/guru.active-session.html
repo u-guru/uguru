@@ -1,7 +1,7 @@
-<ion-view hide-nav-bar='true' class='guru-active-session'>
-    <ion-header-bar class="header-bar">
+<ion-view hide-nav-bar='true' class='guru-active-session' cache-view='false'>
+    <ion-header-bar class="header-bar bar-dark">
 
-        <a class="button button-clear button-back"  nav-direction='back' href='#/guru-home'>Back</a>
+        <a class="button button-clear button-back button-white"  nav-direction='back' href='#/guru-home'>Back</a>
         <h5 class="title uppercase">{{session.request.course.short_name}} Session w/ {{session.request.student.name.split(' ')[0]}} </h5>
     </ion-header-bar>
     <!-- <ion-header-bar style="height:30px; text-align:center;" class="bar-subheader bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)" >
@@ -22,22 +22,24 @@
         </ion-pane>
       </div>
       <div class='pure-g flex-item-c j-end' style='height:40%;'>
+        <div class='pure-u-1'>
         <ul>
           <li class="item padding-0-4">
-            <button class="button button-full button-positive" ng-click="goToSessionMessages(session)">
+            <button class="button button-full button-positive" ng-click="startSessionTimer(session)" ng-show='session.status===1'>
+              Start
+            </button>
+            <button class="button button-full button-positive button-outline" ng-click="goToSessionMessages(session)">
               Message {{session.guru.first_name}}
             </button>
             <button class="button button-full button-positive button-outline" ng-click="continueSession(session)" ng-show='session.status===2'>
               Continue Session
             </button>
-            <button class="button button-full button-positive button-outline" ng-click="startSessionTimer(session)" ng-show='session.status===1'>
-              Start Session
-            </button>
-            <button class="button button-full button-disabled button-outline" ng-click="cancelSession()">
-              Cancel Session
+            <button class="button button-full button-clear button-outline" ng-click="cancelSession()">
+              Cancel
             </button>
           </li>
         </ul>
+        </div>
       </div>
     </div>
 

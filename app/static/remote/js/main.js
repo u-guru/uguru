@@ -1,10 +1,9 @@
 // Uguru upp
 var LOCAL = false; //local to the 8100 codebase
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
-// BASE = 'remote/'ionic
-var REST_URL = 'http://uguru-rest.herokuapp.com';
-// BASE_URL = 'http://192.168.42.66:5000/static/remote/index.html';
+var REST_URL = 'http://uguru-rest.herokuapp.com'
 // REST_URL = 'http://192.168.42.66:5000';
+// BASE_URL = 'http://192.168.42.66:5000/app/production/';
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
@@ -28,7 +27,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 $ionicPlatform.ready(function() {
 
   document.addEventListener("deviceready", function () {
-        console.log('list of all plugins checkpoint 2', JSON.stringify(cordova.require("cordova/plugin_list").metadata));
+        // console.log('list of all plugins checkpoint 2', JSON.stringify(cordova.require("cordova/plugin_list").metadata));
 
            $cordovaSplashscreen.hide();
 
@@ -45,42 +44,42 @@ $ionicPlatform.ready(function() {
                 device: ionic.Platform.device(),
             }
 
-            console.log('user is on device:', ionic.Platform.platform());
+            // console.log('user is on device:', ionic.Platform.platform());
             //performing mobile tasks
-            console.log('STARTING MOBILE ONLY tasks below \n\n');
+            // console.log('STARTING MOBILE ONLY tasks below \n\n');
 
             if (!window.cordova) {
-              console.log('sorry aint no cordova up in here');
+              // console.log('sorry aint no cordova up in here');
             }
 
             if (window.cordova && $rootScope.platform.mobile) {
 
                 //hiding the splash screen
-                console.log('1. hiding splashscreen on mobile devices \n\n');
+                // console.log('1. hiding splashscreen on mobile devices \n\n');
 
                 if (navigator.splashscreen) {
-                  console.log('hide the splash screen on ios via cordova navigator v2');
+                  // console.log('hide the splash screen on ios via cordova navigator v2');
                   navigator.splashscreen.hide();
                   // $cordovaSplashscreen.hide();
                 } else {
-                  console.log('did not hide the splash screen on device since there is none?');
+                  // console.log('did not hide the splash screen on device since there is none?');
                 }
 
 
                 //grabbing nextwork speed
                 if ($cordovaNetwork) {
                   $rootScope.network_speed = getNetworkSpeed();
-                  console.log('2. grabbing network speed which is: ', $rootScope.network_speed, '\n\n');
+                  // console.log('2. grabbing network speed which is: ', $rootScope.network_speed, '\n\n');
                 }
 
 
                 //save device
-                console.log('3. Saving device to server:', $rootScope.platform.device.model, '\n\n')
+                // console.log('3. Saving device to server:', $rootScope.platform.device.model, '\n\n')
                 $rootScope.current_device = ionic.Platform.device();
 
 
                 //keyboard settings for android / ios
-                console.log('4. Setting up ios keyboard default + status bars..');
+                // console.log('4. Setting up ios keyboard default + status bars..');
                 if (window.cordova.plugins.Keyboard) {
                   cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                   cordova.plugins.Keyboard.disableScroll(true);
@@ -90,7 +89,7 @@ $ionicPlatform.ready(function() {
                 if ($rootScope.platform.ios) {
 
                   if (window.StatusBar) {
-                    console.log('Extra #1. Styling iOS status bar to black \n\n');
+                    // console.log('Extra #1. Styling iOS status bar to black \n\n');
                     StatusBar.styleDefault();
                     StatusBar.overlaysWebView(true);
                   }
@@ -155,6 +154,7 @@ $ionicPlatform.ready(function() {
           $scope.root = RootService;
           $scope.root.vars = {};
           $scope.root.vars.onboarding = false;
+          $scope.root.vars.guru_mode = $scope.user.guru_mode;
           $scope.static = {};
           $scope.static.nearest_universities = [];
           $scope.static.universities = [];
@@ -202,11 +202,10 @@ $ionicPlatform.ready(function() {
             ios: false
           }
 
-
           $ionicPlatform.ready(function() {
 
 
-            console.log('ENDING MOBILE ONLY tasks below \n\n');
+            // console.log('ENDING MOBILE ONLY tasks below \n\n');
             $scope.platform = {
                 ios: ionic.Platform.isIOS(),
                 android: ionic.Platform.isAndroid(),
@@ -217,10 +216,10 @@ $ionicPlatform.ready(function() {
 
             if ($scope.platform.android) {
 
-                  console.log('Extra #2. Android push notifications need to be registered')
+                  // console.log('Extra #2. Android push notifications need to be registered')
                   $rootScope.$on('pushNotificationReceived', function(event, notification) {
                     CordovaPushWrapper.received($rootScope, event, notification);
-                    console.log('android notifications registered',event, notification);
+                    // console.log('android notifications registered',event, notification);
                   });
 
                   //grab geolocation super early for android devices
@@ -238,28 +237,28 @@ $ionicPlatform.ready(function() {
 
 
           document.addEventListener("deviceready", function () {
-            console.log(JSON.stringify(ionic.Platform.device()));
+            // console.log(JSON.stringify(ionic.Platform.device()));
             // User.getUserFromServer($scope, null, $state);
             document.addEventListener("resume", function() {
 
-                console.log('device is resuming....');
-                 checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                // User.getUserFromServer($scope, null, $state);
-
+                // console.log('device is resuming....');
+                 // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+                User.getUserFromServer($scope, null, $state);
 
             }, false);
 
             document.addEventListener("online", function() {
 
-                console.log('device is online...');
+                // console.log('device is online...');
               // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                console.log('Getting user from server');
+                // console.log('Getting user from server');
+                User.getUserFromServer($scope, null, $state);
 
             }, false);
 
             document.addEventListener("offline", function() {
 
-                console.log('device is offline...');
+                // console.log('device is offline...');
                 // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
                 // console.log('getting updated user from server...');
                 // User.getUserFromServer($scope);
@@ -267,7 +266,7 @@ $ionicPlatform.ready(function() {
             }, false);
 
             document.addEventListener("pause", function() {
-                console.log('device is paused...');
+                // console.log('device is paused...');
               // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
             }, false);
           });
@@ -343,6 +342,11 @@ $ionicPlatform.ready(function() {
         templateUrl: BASE + 'templates/student.request.calendar.html',
         controller: 'CalendarModalController'
   }).
+  state('root.request-contact-method', {
+        url: '/request-contact-method',
+        templateUrl: BASE + 'templates/student.contact.method.html',
+        controller: 'StudentRequestContactController'
+  }).
   state('root.request-location', {
         url: '/request-location',
         templateUrl: BASE + 'templates/student.request.location.html',
@@ -367,6 +371,11 @@ $ionicPlatform.ready(function() {
         url: '/guru-home',
         templateUrl: BASE + 'templates/guru.home.new.html',
         controller: 'GuruHomeController'
+  }).
+  state('root.guru-verification', {
+        url: '/guru-verification',
+        templateUrl: BASE + 'templates/guru.verification.html',
+        controller: 'GuruVerificationController'
   }).
   state('root.guru-opportunities', {
         url: '/guru-opportunities',
@@ -466,10 +475,25 @@ $ionicPlatform.ready(function() {
         templateUrl: BASE + 'templates/student.guru-available.html',
         controller: 'GuruAvailableController'
   }).
+  state('root.guru-confirm-proposal', {
+        url: '/guru-confirm-proposal/:proposalObj',
+        templateUrl: BASE + 'templates/guru.confirm-proposal.html',
+        controller: 'GuruConfirmProposalController'
+  }).
+  state('root.guru-profile-edit', {
+        url: '/guru-profile-edit',
+        templateUrl: BASE + 'templates/guru.edit-profile.html',
+        controller: 'GuruEditProfileController'
+  }).
   state('root.guru-profile', {
-        url: '/guru-profile/:guruObj:showContactGuru',
-        templateUrl: BASE + 'templates/student.guru-profile.html',
+        url: '/guru-profile',
+        templateUrl: BASE + 'templates/guru.profile.html',
         controller: 'GuruProfileController'
+  }).
+  state('root.student-guru-profile', {
+        url: '/student-guru-profile/:guruObj:showContactGuru',
+        templateUrl: BASE + 'templates/student.view-guru-profile.html',
+        controller: 'StudentViewGuruProfileController'
   }).
   state('root.student.guru-home-page', {
         url: '/guru-home-page',
@@ -504,7 +528,7 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
                     var currentVersion = Version.getVersion();
                     //if brand new user with no version set
                     if ((typeof currentVersion) === "undefined") {
-                      console.log('First time opening app - set version to 1.0');
+                      // console.log('First time opening app - set version to 1.0');
                       currentVersion = 1.0;
                       Version.setVersion(1.0);
                     }

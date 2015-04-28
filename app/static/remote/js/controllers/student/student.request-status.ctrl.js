@@ -38,11 +38,11 @@ angular.module('uguru.student.controllers')
 
     console.log('request status', $scope.request);
     $scope.goBack = function() {
-      // $state.go
+      $ionicHistory.goBack()
     }
 
     $scope.goToGuruProfile = function(guru) {
-      $state.go('^.guru-profile', {guruObj:JSON.stringify(guru)});
+      $state.go('^.student-guru-profile', {guruObj:JSON.stringify(guru)});
     }
 
     $scope.createGoogleLatLng = function(latCoord, longCoord) {
@@ -72,12 +72,8 @@ angular.module('uguru.student.controllers')
 
         $scope.request.guru_id = $scope.request.guru.id;
         $scope.request.status = 1;
-
-        var callbackSuccess = function() {
-            $ionicHistory.goBack();
-        }
-
-        $scope.user.createObj($scope.user, 'sessions', $scope.request, $scope, callbackSuccess);
+        $scope.user.createObj($scope.user, 'sessions', $scope.request, $scope);
+        $ionicHistory.goBack();
 
       }
 
@@ -221,10 +217,9 @@ angular.module('uguru.student.controllers')
 
     $scope.$on('$ionicView.enter', function(){
       console.log('entering...');
-      $scope.showGoogleMap();
       $timeout(function() {
-
-      }, 3000);
+        $scope.showGoogleMap();
+      }, 1000);
     });
 
   }

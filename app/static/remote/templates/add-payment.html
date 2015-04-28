@@ -1,7 +1,7 @@
  <ion-view ng-controller="AddPaymentController" hide-nav-bar="true">
   <ion-header-bar class="header-bar">
 
-        <a class="button button-clear button-back"  nav-direction='back' href='#/home'>Back</a>
+        <a class="button button-clear button-back"  ng-click='goBack()'>Back</a>
         <h5 class="title uppercase">{{headerText}}</h5>
         <a class="button button-clear button-back" ng-click="addPaymentActionBtn()">{{actionButtonText}}</a>
   </ion-header-bar>

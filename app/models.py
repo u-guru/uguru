@@ -709,6 +709,10 @@ class Request(Base):
     online = Column(Boolean)
     time_estimate = Column(Integer)
 
+    # contact_email = Column(Boolean) TODO
+    # contact_push = Column(Boolean) TODO
+    # contact_text = Column(Boolean) TODO  (ADD ALL AT ONCE)
+
     course_id = Column(Integer, ForeignKey('course.id'))
     course = relationship("Course",
         uselist=False,
@@ -1089,8 +1093,10 @@ class Session(Base):
 
     expiration_date = Column(DateTime) #TBD
     time_created = Column(DateTime)
-    time_updated = Column(DateTime)
-    time_completed = Column(DateTime)
+
+
+    time_updated = Column(DateTime) #alias for start time
+    time_completed = Column(DateTime) # alias for pause / stop / cancel, etc
 
     displayed = Column(Boolean, default=True) #whether the user 'removed' this session
 
@@ -1233,6 +1239,7 @@ class Message(Base):
         except:
             db_session.rollback()
             raise
+        return message
 
 
 class Device(Base):

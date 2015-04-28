@@ -258,7 +258,7 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.goToGuruProfile = function(guru) {
-      $state.go('^.guru-profile', {guruObj:JSON.stringify(guru)});
+      $state.go('^.student-guru-profile', {guruObj:JSON.stringify(guru)});
     }
 
     $scope.$on('$ionicView.beforeEnter', function(){

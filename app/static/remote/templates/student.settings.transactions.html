@@ -1,14 +1,14 @@
-  <ion-view title="Your Transaction History">
-    <ion-header-bar class="bar bar-subheader">
-        <ion-tabs class="tabs-dark tabs-icon-only" delegate-handle="transactions-delegate" ng-show="user.guru_mode">
-          <ion-tab title="Transactions"></ion-tab>
-          <ion-tab title="Transfers"></ion-tab>
-        </ion-tabs>
+  <ion-view hide-nav-bar="true" class='transactions-settings'>
+    <ion-header-bar class="header-bar ng-class:{'bar-dark': user.guru_mode}">
+      <a class="button button-clear button-back"  nav-direction="back" ng-show='!user.guru-mode' href="#/home">Back</a>
+      <a class="button button-clear button-back ng-class:{'button-white': user.guru_mode}"  nav-direction="back" ng-show='user.guru-mode' href="#/guru-home">
+        Back
+      </a>
+      <h5 class="title uppercase">Transactions</h5>
     </ion-header-bar>
-
     <ion-content>
       <ion-list>
-        <div class="add-item-box transaction padding-12" ng-repeat="transaction in user.guru_transactions" ng-show="transactionsDelegate.selectedIndex() === 0 && user.guru_mode">
+        <div class="add-item-box transaction padding-12" ng-repeat="transaction in user.guru_transactions" ng-show="user.guru_mode">
           <div class="green-box"><span class="day">{{transaction.time.date}}</span><span class="month">{{transaction.time.month}}</span>
           </div>
           <div class="md-box"> <!-- add active later -->
@@ -20,7 +20,7 @@
             </div>
           </div>
         </div>
-        <div class="add-item-box transaction" ng-repeat="transaction in user.student_transactions" ng-show="transactionsDelegate.selectedIndex() === 1">
+        <div class="add-item-box transaction" ng-repeat="transaction in user.student_transactions" ng-show="!user.guru_mode">
           <div class="green-box"><span class="day">{{transaction.time.date}}</span><span class="month" >{{transaction.time.month}}</span>
           </div>
           <div class="md-box"> <!-- add active later -->

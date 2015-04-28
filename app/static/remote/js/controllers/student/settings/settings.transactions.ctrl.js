@@ -7,9 +7,12 @@ angular.module('uguru.student.controllers')
   '$scope',
   '$state',
   '$ionicTabsDelegate',
-  function($scope, $state, $ionicTabsDelegate) {
-    $scope.transactionsDelegate = $ionicTabsDelegate.$getByHandle('transactions-delegate');
-    console.log($scope.user.guru_transactions);
+  '$ionicHistory',
+  function($scope, $state, $ionicTabsDelegate, $ionicHistory) {
+    // $scope.transactionsDelegate = $ionicTabsDelegate.$getByHandle('transactions-delegate');
+    $scope.goBack = function() {
+        $ionicHistory.goBack();
+    }
   }
 
 ]);

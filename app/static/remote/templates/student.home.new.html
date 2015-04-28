@@ -1,9 +1,9 @@
 
-<ion-view class="student-home" hide-nav-bar="true">
+<ion-view class="student-home" hide-nav-bar="true" cache-view='false'>
 
   <ion-tabs class="bottom-tabs tabs-positive" delegate-handle="student-home-tabs-bottom">
 
-    <ion-tab id='bottom-sessions-tab' title="Sessions" badge="user.active_requests.length" badge-style='badge-danger' class='session-icon-extra bottom-tabs-home' icon-on="session-icon" icon-off="session-icon">
+    <ion-tab id='bottom-sessions-tab' title="Sessions" badge="user.active_requests.length + user.incoming_requests.length" badge-style='badge-danger' class='session-icon-extra bottom-tabs-home' icon-on="session-icon" icon-off="session-icon">
       <div ng-show="bottomTabsDelegate.selectedIndex() === 0" ng-include="img_base + './templates/student.home.sessions.html'"></div>
     </ion-tab>
 

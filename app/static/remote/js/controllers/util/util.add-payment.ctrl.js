@@ -38,8 +38,12 @@ angular.module('uguru.util.controllers')
       $scope.root.keyboard.show('card-input', 500);
     }
 
+    $scope.goBack = function() {
+      $ionicHistory.goBack();
+    }
+
     $scope.addPaymentActionBtn = function() {
-      if ($scope.actionButtonText === 'save') {
+      if ($scope.actionButtonText.toLowerCase() === 'save') {
         $scope.savePayment()
       } else {
         $scope.clearCard();
@@ -113,6 +117,7 @@ angular.module('uguru.util.controllers')
 
           $scope.user.createObj($scope.user, 'cards', cardInfo, $scope);
           alert("Card successfully added!");
+          $ionicHistory.goBack();
         }
       }
 

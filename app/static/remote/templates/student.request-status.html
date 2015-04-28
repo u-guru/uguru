@@ -5,7 +5,7 @@
         <h5 class="title">My Sessions</h5>
   </ion-header-bar>
 
-  <ion-content scroll="false">
+  <ion-content>
     <div class='pure-g-c flex-column flex-space-between'>
       <div class='padding-1em flex-item-c j-start'>
         <a class='item pure-g row-details' ng-click='goToGuruProfile({{request.guru}})' ng-show='request.guru.name'>
@@ -23,14 +23,14 @@
           <div class='pure-u-4-5'>{{formatted_time_created}}</div>
         </div>
         <div class='pure-g row-details'>
-          <div class='pure-u-1-5 grey-subject-text'>Time Length</div>
+          <div class='pure-u-1-5 grey-subject-text'>Estimate</div>
           <div class='pure-u-4-5'>{{formatted_time_estimated_hours}} hours, {{request.time_estimate % 60}} minutes</div>
         </div>
         <div class='pure-g row-details'>
           <div class='pure-u-1-5 grey-subject-text'>Type</div>
           <div class='pure-u-4-5'>{{formatted_request_type}}</div>
         </div>
-        <div class='pure-g row-details' ng-show='request.status === 1'>
+        <div class='pure-g row-details' ng-show='request.status === 1 && user.cards && user.cards.length > 0 '>
           <div class='pure-u-1-5 grey-subject-text'>Card Info</div>
           <div class='pure-u-4-5'>{{user.cards[0].card_last4}}, {{user.cards[0].card_type}}</div>
         </div>
@@ -38,7 +38,9 @@
           <div class='pure-u-1-5 grey-subject-text'>Details</div>
           <div class='pure-u-4-5'>{{request.description}}</div>
           <div class='pure-u-1-5 grey-subject-text'></div>
-          <div ng-show="request.files && request.files.length > 0" class='pure-u-4-5'><span class='opacity-3-4'><i class='icon ion-paperclip'></i>&nbsp;{{request.files.length}} Attachment </span></div>
+          <div ng-show="request.files && request.files.length > 0" class='pure-u-4-5 relative'><span class='opacity-3-4'><i class='icon ion-paperclip'></i>&nbsp;{{request.files.length}} Attachment </span>
+            <img class='pure-img attachment-img' ng-src="{{request.files[0].url}}"/>
+          </div>
         </div>
         <div class='pure-g row-details'>
           <div class='pure-u-1-5 grey-subject-text'>Location</div>
@@ -71,6 +73,12 @@
               </button>
           </div>
       </div>
+      <div class='cancel-session-container pure-g' ng-show='proposal.status === 1'>
+          <div class='pure-u-1 padding-1em center white-text'>
+              Proposal Accepted! We'll keep you updated
+          </div>
+      </div>
+
     </div>
 
   </ion-content>

@@ -13,9 +13,10 @@ angular.module('uguru.util.controllers')
   '$cordovaKeyboard',
   'University',
   'Popover',
+  '$cordovaStatusbar',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $q,
-  $cordovaKeyboard, University, Popover) {
+  $cordovaKeyboard, University, Popover, $cordovaStatusbar) {
 
     $scope.course_search_text = '';
     $scope.keyboard_force_off = false;
@@ -117,6 +118,10 @@ angular.module('uguru.util.controllers')
 
       $scope.$on('modal.shown', function() {
 
+        if (window.StatusBar) {
+            StatusBar.styleLightContent();
+        }
+
         if ($scope.addCourseModal.isShown() &&
           !$scope.addUniversityModal.isShown() &&
           $localstorage.getObject('courses').length > 0) {
@@ -159,7 +164,7 @@ angular.module('uguru.util.controllers')
 
     $scope.courseSelected = function(course) {
 
-      var is_guru_mode = $state.current.name === 'root.guru-wizard';
+      var is_guru_mode = $scope.user.guru_mode || ($state.current.name === 'root.guru-wizard');
 
       if (!$scope.user.student_courses && !is_guru_mode) {
           $scope.user.student_courses = [];
@@ -177,7 +182,6 @@ angular.module('uguru.util.controllers')
       // return;
 
       if (is_guru_mode) {
-        $scope.calculateProgress($scope.user);
         $scope.user.guru_courses.push(course);
         $scope.user.updateAttr('add_guru_course', $scope.user, course, null, $scope);
       } else {
@@ -215,6 +219,12 @@ angular.module('uguru.util.controllers')
           $scope.addCourseModal.hide();
         }, 1000);
       }
+
+      $scope.$on('modal.hidden', function() {
+        if (window.StatusBar) {
+              StatusBar.styleDefault();
+          }
+      });
 
   }
 

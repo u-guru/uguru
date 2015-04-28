@@ -1,7 +1,7 @@
 angular.module('uguru.student.controllers')
 
 //ALL student controllers
-.controller('GuruProfileController', [
+.controller('StudentViewGuruProfileController', [
 
   //All imported packages go here
   '$scope',

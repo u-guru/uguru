@@ -24,11 +24,11 @@ angular.module('uguru.guru.controllers')
     $scope.guru = {};
     console.log($scope.session);
     $scope.goToSessionMessages = function(session) {
-      $state.go('^.^.student.messages', {sessionObj:JSON.stringify(session)});
+      $state.go('^.messages', {sessionObj:JSON.stringify(session)});
     }
 
     $scope.goToGuruProfile = function(guru) {
-      $state.go('^.^.student.guru-profile', {guruObj:JSON.stringify(session.student)});
+      $state.go('^.guru-profile', {guruObj:JSON.stringify(session.student)});
     }
 
     $scope.goBack = function() {
@@ -89,7 +89,7 @@ angular.module('uguru.guru.controllers')
 
         var sessionPayload = {session: $scope.session}
 
-        $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope);
+        $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope, serverCallback);
       }
 
       var dialog = {
@@ -110,7 +110,6 @@ angular.module('uguru.guru.controllers')
 
     }
 
-    // $scope.bgGeo = window.plugins.backgroundGeoLocation;
 
     $scope.student_position = null;
     $scope.guru_position = null;
@@ -118,33 +117,6 @@ angular.module('uguru.guru.controllers')
     $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
     $scope.options = {scrollwheel: false};
 
-    $scope.startBackgroundGeolocation = function() {
-
-      options =  {
-        desiredAccuracy: 5,
-        stationaryRadius: 20,
-        distanceFilter: 30,
-        activityType: 'Fitness',
-        debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
-        stopOnTerminate: false
-      }
-      $cordovaBackgroundGeolocation.configure(options)
-      .then(
-        function(success) {
-          console.log(success);
-        }, // Background never resolves
-        function (err) { // error callback
-          console.error(err);
-        },
-        function (location) { // notify callback
-          console.log(location);
-        });
-    }
-
-    $scope.finishBackgroundTask = function() {
-        console.log('closing background task...');
-        $scope.bgGeo.finish();
-    };
 
     $scope.getCurrentDate = function() {
         var d = new Date();
@@ -159,27 +131,10 @@ angular.module('uguru.guru.controllers')
         return result
     }
 
-    $scope.geoCallbackFn = function(location) {
-        console.log('[js] BackgroundGeoLocation callback:  ' + location.latitude + ',' + location.longitude);
-        // Do your HTTP request here to POST location to your server.
-        //
-        //
 
-        $scope.syncPositionWithServer(location, $scope.finishBackgroundTask);
-    };
-
-    $scope.geoFailureFn = function(error) {
-        console.log('BackgroundGeoLocation error');
-    }
 
     $scope.getCurrentPositionAndSync = function(time) {
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
-
-      if ($state.current.name != 'root.guru.active-session') {
-        $scope.bgGeo.stop();
-        console.log('do not run background script anymore');
-        return;
-      }
 
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
@@ -218,12 +173,6 @@ angular.module('uguru.guru.controllers')
         .one('user', $scope.user.id).one('sessions')
         .customPUT(JSON.stringify(payload))
         .then(function(session){
-
-            if ($state.current.name != 'root.guru.active-session') {
-              $scope.bgGeo.stop();
-              console.log('do not run background script anymore');
-              return;
-            }
 
             $scope.session = session.plain();
             $scope.session.student_positions.sort($scope.sortPositionComparator)

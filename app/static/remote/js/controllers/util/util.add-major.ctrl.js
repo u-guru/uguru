@@ -136,8 +136,6 @@ angular.module('uguru.util.controllers')
         } else
 
         if ($scope.addMajorModal.isShown() &&
-          !$scope.addUniversityModal.isShown() &&
-          $scope.user.university_id &&
           $localstorage.getObject('majors').length === 0) {
 
           $scope.getMajorsFromServer(majorsLoaded);
@@ -151,7 +149,7 @@ angular.module('uguru.util.controllers')
     $scope.majors = GetMajorsList();
 
     $scope.hidemajorModal = function() {
-      if ($cordovaKeyboard.isVisible()) {
+      if ($scope.platform.mobile && $cordovaKeyboard.isVisible()) {
 
         $scope.keyboard_force_off = true;
         $scope.major_search_text = '';

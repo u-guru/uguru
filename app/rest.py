@@ -228,6 +228,9 @@ class UserOneView(restful.Resource):
         if request.json.get('email'):
             user.email = request.json.get('email')
 
+        if request.json.get('phone_number'):
+            user.phone_number = request.json.get('phone_number')
+
         if request.json.get('profile_info'):
             profile_info_dict = request.json.get('profile_info')
             email = profile_info_dict.get('email')
@@ -478,6 +481,11 @@ class UserRequestView(restful.Resource):
         _request.status = Request.PROCESSING_GURUS
         _request.student_id = user_id
 
+
+        # _request.contact_email = request.json.get('contact_email')
+        # _request.contact_text = request.json.get('contact_text')
+        # _request.contact_push = request.json.get('contact_push')
+
         db_session.add(_request)
         user.requests.append(_request)
         db_session.commit()
@@ -711,11 +719,16 @@ class FileView(restful.Resource):
         # user = get_user(user_id)
         # if not user:
         #     abort(404)
-
-
+        print request.headers
         file = request.files.get('file')
         file_string= request.values.get('file')
         filename = 'jpeg'
+
+
+        import base64
+        if file and not file_string:
+            file_string = base64.b64encode(file.read())
+
         if file_string:
             from app.lib.api_utils import upload_file_to_amazon
             from app import app
@@ -726,7 +739,7 @@ class FileView(restful.Resource):
             s3_bucket = app.config['S3_BUCKET']
 
             file_obj = File.initEmptyFile()
-            file_string_base64 = base64.b64decode(file_string)
+            file_string_base64 = base64.urlsafe_b64decode(file_string.encode("utf-8"))
             file_extension = imghdr.what(None,file_string_base64)
             file_name = 'request_file_id_' + str(file_obj.id) + '.png'
 
@@ -742,17 +755,19 @@ class FileView(restful.Resource):
                 amazon_url = "https://s3.amazonaws.com/uguruproftest/"+file_name
 
             file_obj.url = amazon_url
+            print file_obj.url
 
             db_session.commit()
 
             if request.values.get('profile_url'):
-
+                print 'profile url detected'
                 user = User.query.get(int(request.values.get('profile_url')))
 
                 user.profile_url = file_obj.url
                 print user.name,'saved', file_obj.url
 
             return file_obj, 200
+
 
         abort(400)
 
@@ -869,7 +884,7 @@ class UserSessionView(restful.Resource):
 
 
     #update a session
-    @marshal_with(SessionSerializer)
+    @marshal_with(UserSerializer)
     def put(self, _id):
         #append student, guru_position updated
 
@@ -883,6 +898,22 @@ class UserSessionView(restful.Resource):
         if request.json.get('session'):
             print session_json
 
+        if request.json.get('start_timer'):
+            _session.time_updated = datetime.now()
+            print 'Guru started timer @', time_updated
+
+        if request.json.get('reset_timer'):
+            _session.time_updated = None
+            print 'Guru RESET timer update received'
+
+        if request.json.get('update_timer'):
+            _session.time_updated = datetime.now()
+            print 'Guru timer update received', time_updated
+
+        if request.json.get('pause_timer'):
+            _session.time_completed = datetime.now()
+            print 'Guru pause timer @', time_completed
+
         if request.json.get('recurring_session_guru_accept'):
             proposal_id = request.json.get('proposal_id')
             proposal = Proposal.query.get(proposal_id)
@@ -891,7 +922,7 @@ class UserSessionView(restful.Resource):
             event_dict = {'status': Session.GURU_ACCEPT_RECURRING_SESSION, 'session_id':_session.id}
             event = Event.initFromDict(event_dict)
             db_session.commit()
-            return _session, 200
+            return user, 200
 
         if request.json.get('recurring_session_guru_reject'):
             proposal_id = request.json.get('proposal_id')
@@ -902,7 +933,7 @@ class UserSessionView(restful.Resource):
             event_dict = {'session_id': session_id, 'status': _session.status, 'impacted_user_id': _session.student_id}
             event = Event.initFromDict(event_dict)
             db_session.commit()
-            return _session, 200
+            return user, 200
 
         #add updated position from student
         if request.json.get('session_position_student'):
@@ -913,7 +944,7 @@ class UserSessionView(restful.Resource):
             _session = Session.query.get(session_json.get('id'))
             _session.student_positions.append(position)
             db_session.commit()
-            return _session, 200
+            return user, 200
 
         #add updated position from student
         if request.json.get('session_position_guru'):
@@ -923,7 +954,7 @@ class UserSessionView(restful.Resource):
 
             _session.guru_positions.append(position)
             db_session.commit()
-            return _session, 200
+            return user, 200
 
         if request.json.get('session_update_time'):
             _session.seconds = request.json.get('seconds')
@@ -931,7 +962,7 @@ class UserSessionView(restful.Resource):
             _session.minutes = request.json.get('minutes')
             db_session.commit()
 
-            return _session, 200
+            return user, 200
 
         if session_json.get('status'):
             status = session_json.get('status')
@@ -1044,7 +1075,7 @@ class UserSessionView(restful.Resource):
                 event = Event.initFromDict(event_dict)
 
             db_session.commit()
-            return _session, 200
+            return user, 200
 
         abort(404)
 
@@ -1069,7 +1100,7 @@ class UserSessionMessageView(restful.Resource):
             abort(404)
 
         [db_session.refresh(message) for message in _session.messages]
-        return _session, 200
+        return user, 200
 
 
     #create a message in a session
@@ -1085,6 +1116,9 @@ class UserSessionMessageView(restful.Resource):
         if request.json.get('message'):
             message_json = request.json.get('message')
             message = Message.initFromJson(message_json)
+
+            from app.lib.push_notif import send_message_to_receiver
+            send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
 
         return user, 200
 

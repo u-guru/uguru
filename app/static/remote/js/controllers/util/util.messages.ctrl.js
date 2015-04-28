@@ -21,7 +21,6 @@ angular.module('uguru.student.controllers')
   $stateParams, $cordovaKeyboard, $ionicScrollDelegate,
   Restangular, $ionicHistory) {
 
-
     $scope.hide_footer = false;
     $scope.session = JSON.parse($stateParams.sessionObj);
     $scope.new_message = {content: ''};
@@ -70,32 +69,46 @@ angular.module('uguru.student.controllers')
 
     $scope.setFocus = function() {
       if (!$scope.hide_footer) {
+        $scope.hide_footer = false;
         document.getElementsByName('message-input')[0].focus();
         $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
       }
+    }
+
+    $scope.setUnfocus = function() {
+      $scope.hide_footer = true;
+      if ($scope.platform.mobile  && $cordovaKeyboard) {
+        $cordovaKeyboard.close();
+        $ionicScrollDelegate.$getByHandle('message-scroll').scrollTop();
+      }
+      $timeout(function() {
+        $scope.hide_footer = false;
+      }, 500)
     }
 
 
 
     $scope.sendMessage = function (content) {
 
-      //local push
       // $scope.messages.push({
       //   'contents':content,
       //   'class': 'you', // Try "fadeInUp" if you don't like bounceInUp.
       //   'profile_url': $scope.default_img_one
       // })
 
-      $scope.new_message.content = '';
+      console.log(content);
+
+      // $scope.new_message.content = '';
       $ionicScrollDelegate.$getByHandle('message-scroll').scrollBy(0, 200, true);
 
       var messagePayload = $scope.getMessagePayload(content);
 
       $scope.sendMessageToServer(messagePayload);
 
-      messagePayload.message.class = 'you';
-      messagePayload.message.profile_url= $scope.default_img_one;
-
+      messagePayload.message.class = 'item-avatar-right';
+      messagePayload.message.profile_url= $scope.user.profile_url;
+      console.log(messagePayload.message.class, messagePayload.message.profile_url);
+      $scope.new_message.content = '';
       $scope.messages.push(messagePayload.message);
     }
 
@@ -169,14 +182,21 @@ angular.module('uguru.student.controllers')
         $scope.hide_footer = false;
       }, 500);
     }
-    $scope.$on('$ionicView.enter', function(){
-      // console.log('view has entered');
+    $scope.$on('$ionicView.beforeEnter', function(){
+      console.log('view has entered');
       // $scope.root.keyboard.show('message-input', 100);
 
-      // $timeout(function() {
+      if (window.cordova.plugins.Keyboard) {
+
+          console.log('keyboard exists!');
+          // $cordovaKeyboard.hideKeyboardAccessoryBar(true);
+          window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+          window.cordova.plugins.Keyboard.disableScroll(true);
+      }
+      $timeout(function() {
         $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
 
-      // },500);
+      },500);
     });
 
     $scope.$on('$ionicView.beforeEnter', function(){

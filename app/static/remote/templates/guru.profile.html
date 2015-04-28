@@ -1,0 +1,59 @@
+
+
+<ion-view hide-nav-bar="true" class='edit-guru-profile'>
+    <ion-header-bar class="header-bar dark-header">
+      <a class='button button-clear button-back button-white' nav-direction="back" href="#/guru-home">Back</a>
+        <h5 class="title">GURU PROFILE</h5>
+      <a class='button button-clear positive bold' nav-direction="forward" href="#/guru-profile-edit">EDIT</a>
+    </ion-header-bar>
+  <ion-content>
+    <div class='pure-g-c flex-column flex-space-between'>
+      <div class='pure-g flex-item-c relative'>
+        <div class='guru-prof-pic' style='background-image: url("{{user.profile_url}}");'> </div>
+        <a class='camera-icon absolute' ng-click='takePhoto()'><i class='icon ion-camera white-text'></i></a>
+      </div>
+    </div>
+    <div class='pure-g center'>
+      <div class='pure-u-1-3 padding-1em'>
+        <span class='guru-profile-number' ng-hide='!user.guru_avg_rating'>
+        {{user.guru_avg_rating}}</span>
+        <span class='guru-profile-number' ng-show='!user.guru_avg_rating'>
+        0</span>
+        <br>
+        <span class='number-subheader'>
+        rating
+        </span>
+      </div>
+      <div class='pure-u-1-3 padding-1em'>
+        <span class='guru-profile-number'>
+        {{user.guru_sessions.length}} </span>
+        <br>
+        <span class='number-subheader'>
+        sessions
+        </span>
+      </div>
+      <div class='pure-u-1-3 padding-1em'>
+        <span class='guru-profile-number'>
+        ${{user.current_hourly}}</span>
+        <br>
+        <span class='number-subheader'>
+          hourly
+        </span>
+      </div>
+    </div>
+    <div class='pure-g-c center'>
+      <div class='pure-u-1 align-left padding-1em'>
+        <!-- <span class='course-tag' ng-repreat="course in user.guru_courses">{{course.short_name}}</span> -->
+
+        <span class='course-tag' ng-repeat='course in user.guru_courses'> {{course.short_name}} </span>
+      </div>
+    </div>
+    <div class='pure-g-c center guru-intro-wrapper'>
+      <div class='pure-u-1 white-text align-left'>
+        <p>
+        {{user.guru_introduction}}</p>
+      </div>
+    </div>
+  </ion-content>
+  <input type="file" id="guru-file-input-web" class='hide' onchange="angular.element(this).scope().file_changed(this)"></input>
+</ion-view>

@@ -208,6 +208,7 @@ angular.module('uguru.student.controllers')
 
     $scope.requestHelp = function() {
       if (!$scope.user.id) {
+        console.log($scope.root.vars.request);
         $scope.signupModal.show();
         console.log('show form they are not signed in yet')
         return;
@@ -272,7 +273,7 @@ angular.module('uguru.student.controllers')
           in_person: true,
           online: true
         },
-        _length: {},
+        _length: {hours:2, minutes:15},
         calendar_selected:false,
         course: $scope.course,
         description:null,
@@ -281,8 +282,21 @@ angular.module('uguru.student.controllers')
         calendar: {
           data: {},
           calendar_selected: false
+        },
+        contact: {
+          email:false,
+          phone: false,
+          push_notif: false,
+          email_address: '',
+          phone_number: ''
         }
         }
+
+        //set it to the current token (if it exists);
+        if ($scope.platform.mobile) {
+          $scope.root.vars.request.contact.push_notif = $scope.user.current_device.push_notif;
+        }
+
       }
       else {
         $scope.course = $scope.root.vars.request.course;

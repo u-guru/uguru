@@ -12,9 +12,11 @@ angular.module('uguru.guru.controllers')
   '$ionicTabsDelegate',
   '$stateParams',
   'Geolocation',
+  '$ionicHistory',
+  '$cordovaActionSheet',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $stateParams,
-  Geolocation) {
+  Geolocation, $ionicHistory, $cordovaActionSheet) {
 
     $scope.session = JSON.parse($stateParams.sessionObj);
 
@@ -22,6 +24,10 @@ angular.module('uguru.guru.controllers')
 
     $scope.goToSessionMessages = function(session) {
       $state.go('^.^.student.messages', {sessionObj:JSON.stringify(session)});
+    }
+
+    $scope.goBack = function() {
+      $ionicHistory.goBack()
     }
 
     $scope.goToGuruProfile = function(guru) {
@@ -35,7 +41,64 @@ angular.module('uguru.guru.controllers')
 
     $scope.startTimer = function() {
       $scope.timer.active = true;
+
+      $scope.session.start_timer = true;
+      $scope.user.updateObj($scope.user, 'sessions', $scope.session, $scope);
+
       $scope.addOneSecond();
+
+
+      // $scope.timer_seconds.animate(0.5);  // Number from 0.0 to 1.0
+
+    }
+
+    $scope.startTimerFromZero = function () {
+      setInterval(function() {
+          var second = new Date().getSeconds();
+          seconds.animate(second / 60, function() {
+
+          });
+      }, 1000);
+    }
+
+    var options = {
+      title: 'What do you want with this image?',
+      buttonLabels: ['Share via Facebook', 'Share via Twitter'],
+      addCancelButtonWithLabel: 'Cancel',
+      androidEnableCancelButton : true,
+      winphoneEnableCancelButton : true,
+      addDestructiveButtonWithLabel : 'Delete it'
+    };
+
+
+    document.addEventListener("deviceready", function () {
+
+      $scope.showTimerActionSheet = function() {
+
+        options = {
+          title: 'Options',
+          buttonLabels: ['Reset', 'Set Timer'],
+          addCancelButtonWithLabel: 'Cancel',
+          androidEnableCancelButton : true,
+          winphoneEnableCancelButton : true
+        };
+
+
+          $cordovaActionSheet.show(options)
+          .then(function(btnIndex) {
+            var index = btnIndex;
+            console.log(index);
+            if (index === 1) {
+              $scope.resetTimer()
+            } else if (index === 2) {
+              $scope.setTimer(59,59,59);
+            }
+          });
+        }
+    }, false);
+
+    $scope.startTimerFromX = function (second) {
+      $scope.timer_seconds.animate(second / 60, {duration:1000});
     }
 
     $scope.incrementMinute = function() {
@@ -59,6 +122,11 @@ angular.module('uguru.guru.controllers')
         $scope.timer.seconds = 0;
         $scope.timer.hours = 0;
         $scope.timer.minutes = 0;
+        $scope.pauseTimer();
+        $scope.session.reset_timer = true;
+        $scope.startTimerFromX(-1);
+        $scope.user.updateObj($scope.user, 'sessions', $scope.session, $scope);
+
       }
 
       var arr_callback = [null, successCallback];
@@ -78,6 +146,7 @@ angular.module('uguru.guru.controllers')
 
         $scope.timer.seconds += 1;
         $scope.updateTimer();
+        $scope.startTimerFromX($scope.timer.seconds);
 
         if ($scope.timer.active) {
           $scope.addOneSecond();
@@ -95,7 +164,19 @@ angular.module('uguru.guru.controllers')
         $scope.timer.minutes = 0;
         $scope.timer.hours += 1
       }
+
     }
+
+     $scope.$on('$ionicView.beforeEnter', function(){
+      console.log('timer initializer');
+      $scope.timer_seconds = new ProgressBar.Circle('#timer-container', {
+            color: '#FFFFFF',
+            strokeWidth: 3.1,
+            duration: 200,
+            trailColor:'#A1D5CC'
+      });
+     });
+
 
     $scope.pauseTimer = function() {
       $scope.timer.active = false;
@@ -105,6 +186,9 @@ angular.module('uguru.guru.controllers')
         $scope.timer.hours = hours;
         $scope.timer.minutes = minutes;
         $scope.timer.seconds = seconds;
+
+        $scope.session.update_timer = $scope.timer;
+        $scope.user.updateObj($scope.user, 'sessions', $scope.session, $scope);
     }
 
     $scope.submitTimeToServer = function() {
@@ -118,7 +202,7 @@ angular.module('uguru.guru.controllers')
         var sessionPayload = {session: $scope.session}
 
         var updateObjCallback = function() {
-          $state.go('^.home');
+          $state.go('^.guru-home');
         }
 
         $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope, updateObjCallback);

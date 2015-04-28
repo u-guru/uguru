@@ -84,24 +84,31 @@ angular.module('uguru.util.controllers')
 
     $scope.file_changed = function(element) {
         var photofile = element.files[0];
+
+
+        //let's view the image locally
         var reader = new FileReader();
         var image = document.getElementsByClassName('attachment-container')[0];
+        // var name = photofile.name;
 
         reader.onload = function(e) {
             image.src = e.target.result;
         };
-
         reader.readAsDataURL(photofile);
-        // $scope.root.vars.request.files.push(true);
+
 
         var formData = new FormData();
 
         formData.append('file', photofile);
-        var file_name = new Date().getTime().toString();
-        formData.append('filename', file_name);
+
+        // var file_name = new Date().getTime().toString();
+        formData.append('filename', name);
+        // $scope.root.vars.request.files.push(true);
 
         $scope.user.createObj($scope.user, 'files', formData, $scope);
     };
+
+
 
     $scope.saveImgToTag = function(imageData) {
       var image = document.getElementsByClassName('attachment-container')[0];

@@ -1,30 +1,38 @@
-<ion-view hide-nav-bar='true'>
+<ion-view hide-nav-bar='true' class='session-start-timer'>
 
-    <ion-header-bar class="header-bar">
-      <a class="button button-clear button-back" nav-direction='back' href='#/guru-active-session'>Back</a>
-      <h5 class="title uppercase">{{session.request.course.short_name}} Session w/ {{session.request.student.name.split(' ')[0]}} </h5>
+    <ion-header-bar class="header-bar positive-header">
+      <a class="button button-clear button-back white-text" nav-direction='back' ng-click='goBack()'>Back</a>
+      <h5 class="title uppercase white-text">{{session.request.course.short_name}} Session w/ {{session.request.student.name.split(' ')[0]}} </h5>
+      <a class="button button-clear button-back bold uppercase" nav-direction='back' ng-click='showTimerActionSheet()'>Options</a>
     </ion-header-bar>
 
-  <ion-content class="padding">
-    <div class="container center">
-      <span>{{timer.hours}}:{{timer.minutes}}:{{timer.seconds}}</span>
+  <ion-content>
+    <div class='pure-g-c flex-column center'>
+      <div class='flex-item-c white-text padding-2em'>
+        <div id="timer-container"></div>
+        <i class='ion ion-class'
+      </div>
+      <div class='flex-item-c'>
+          <div class='pure-u-1 padding-1em'>
+            <span ng-show='timer.hours && timer.hours > 0'class='timer-hours'>{{timer.hours}}</span>
+            <span ng-show='timer.hours && timer.hours > 0' class='timer-hours-h'>h</span>
+            <span class='timer-minutes'>{{timer.minutes}}</span>
+            <span class='timer-minutes-m'>m</span>
+          </div>
+      </div>
     </div>
-    <div class="container" style="position:absolute; width:100%; margin-top:80%;">
-      <button class="button button-full button-positive" ng-click="startTimer()" ng-show="!timer.active">
+
+    <!-- <div class="container center">
+
+    </div> -->
+      <button class="button button-full button-positive button-positive-inverted" ng-click="startTimer()" ng-show="!timer.active">
           Start Timer
       </button>
       <button class="button button-full button-positive" ng-click="pauseTimer()" ng-show="timer.active">
           Pause Timer
       </button>
-      <button class="button button-full button-positive button-outline" ng-click="setTimer(59,59,59)" ng-show="!timer.active">
-          Set Timer
-      </button>
-      <button class="button button-full button-positive button-outline" ng-click="resetTimer()" ng-show="!timer.active">
-          Reset Timer
-      </button>
-      <button class="button button-full button-positive button-outline" ng-click="submitTime()" ng-show="!timer.active">
+      <button class="button button-full button-positive" ng-click="submitTime()" ng-show="!timer.active">
           Submit Time
       </button>
-    </div>
   </ion-content>
 </ion-view>

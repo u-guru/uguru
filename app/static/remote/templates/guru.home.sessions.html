@@ -1,5 +1,5 @@
 
-<ion-view class='guru-sessions'>
+<ion-view class='guru-sessions' cache-view='false'>
   <ion-header-bar class='header-bar header-bar-dark bar-dark'>
     <h5 class="title uppercase">Guru Sessions</h5>
     <a class='button button-clear' ng-click="addCourseModal.show()"></a>
@@ -10,28 +10,39 @@
 
     <ion-tab title="Scheduled">
     </ion-tab>
-    <ion-tab title="Past" ng-show='false'>
-    </ion-tab>
+    <!-- <ion-tab title="Past" ng-show='false'>
+    </ion-tab> -->
   </ion-tabs>
 
   <!-- incoming proposals -->
-  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 0' scroll="false" style='background-color:white;'>
+  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 0' scroll="false">
 
-    <div class='pure-g-c flex-column center full-height' ng-show='!user.active_proposals || user.active_proposals.length === 0'>
+    <!-- No sessions yet -->
+    <div class='pure-g-c flex-column center full-height' ng-show='(!user.active_proposals && !user.pending_proposals) || (user.active_proposals.length === 0 && user.pending_proposals.length===0)'>
       <div class='padding-1em padding-1em flex-item-c'> </div>
       <div class='flex-item-c sleeping-guru light-opacity'>
-        <img class='pure-img animated swing' ng-src='{{img_base}}./img/guru-sleeping.svg' >
+        <img class='pure-img animated swing' ng-src='{{img_base}}./img/guru-sleeping-guru-mode.svg' >
       </div>
       <div class='flex-item-c light-opacity padding-1em flex-direction-init '>
-        No current sessions yet! <br> Try requesting help below
+        No sessions yet! <br> Try requesting help below
       </div>
     </div>
 
+    <!-- Incoming Student Proposal -->
     <div class="list" ng-show='user.active_proposals.length > 0'>
       <a class="item item-avatar-right upcoming-session-card" ng-repeat='proposal in user.active_proposals' ng-click='goToProposalDetails(proposal)'>
         <img ng-src="{{proposal.request.student.profile_url}}">
         <h2>{{proposal.request.student.name}} {{proposal.request.course.short_name}}</h2>
-        <h4 class='pending'> PENDING </h4>
+        <h4 class='pending'> EXPIRING SOON</h4>
+      </a>
+    </div>
+
+    <!-- Guru is waiting for student response -->
+    <div class="list" ng-show='user.pending_proposals.length > 0'>
+      <a class="item item-avatar-right upcoming-session-card" ng-repeat='proposal in user.pending_proposals' ng-click='goToProposalDetails(proposal)'>
+        <img ng-src="{{proposal.request.student.profile_url}}">
+        <h2>{{proposal.request.student.name}} {{proposal.request.course.short_name}}</h2>
+        <h4 class='pending'> WAITING FOR STUDENT </h4>
       </a>
     </div>
   </ion-content>
@@ -40,7 +51,7 @@
   <ion-content class='has-subheader pure-g flex-column full-height' ng-show='topTabsDelegate.selectedIndex() === 1' scroll='false'>
 
     <ion-scroll class='pure-u-1 full-height'>
-      <div class="list" ng-show='user.active_guru_sessions.length > 0'>
+    <div class="list" ng-show='user.active_guru_sessions.length > 0'>
         <a class="item item-avatar-right upcoming-session-card" ng-repeat='session in user.active_guru_sessions' ng-click='goToActiveSession(session)'>
           <img ng-src="{{session.request.student.profile_url}}">
           <h2>{{session.request.student.name}} <strong>{{session.request.course.short_name}}</strong></h2>

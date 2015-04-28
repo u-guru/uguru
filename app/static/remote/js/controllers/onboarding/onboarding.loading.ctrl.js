@@ -16,9 +16,20 @@ angular.module('uguru.onboarding.controllers')
      Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
      $ionicPlatform, $cordovaSplashscreen, $cordovaStatusbar, $rootScope) {
 
-    console.log('loading page has processed');
+
+    if ($scope.user.university_id && $scope.user.guru_mode) {
+      console.log('going to guru mode');
+      $state.go('^.guru-home')
+      return;
+    } else if ($scope.user.university_id && !$scope.user.guru_mode) {
+      console.log('going to student mode');
+      $state.go('^.student-home');
+      return;
+    }
+
+
     $scope.intervals = 10;
-    $scope.time_length = 1000;
+    $scope.time_length = 700;
     $scope.root.vars.onboarding = true;
     $scope.extra_delay = 3500;
     $scope.img_components = [];
@@ -43,7 +54,6 @@ angular.module('uguru.onboarding.controllers')
         $timeout(function() {
           if ($scope.user.university_id) {
             $state.go('^.student-home');
-            $scope.loader.show();
           } else {
             $state.go('^.onboarding-location');
           }

@@ -40,7 +40,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.closeSignupModal = function(callback) {
-
+      $scope.loader.hide();
       if ($scope.platform.mobile && $scope.root.keyboard.isVisible()) {
         $scope.root.keyboard.close();
         $timeout(function() {
@@ -61,6 +61,7 @@ angular.module('uguru.util.controllers')
 
     $scope.login = function () {
 
+        $scope.loader.show();
         $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
         // $cordovaFacebook.login(["user_education_history", "friends_education_history"]).then(function (success) {
         $scope.loginInfo = success;

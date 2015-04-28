@@ -109,10 +109,13 @@ angular.module('uguru.guru.controllers', [])
 
     $scope.submitGuruOnboarding = function() {
       $scope.user.is_a_guru = true;
-      $scope.user.guru_mode = true;
+      $localstorage.setObject('user', $scope.user);
+      $state.go('^.guru-home');
       $scope.user.updateAttr('is_a_guru', $scope.user, true, null, $scope);
-      $scope.user.updateAttr('guru_mode', $scope.user, true, null, $scope);
-      $state.go('^.student-home');
+      // $scope.user.guru_mode = true;
+
+      //save to local
+
     }
 
     $scope.$on('$ionicView.beforeEnter', function(){

@@ -6,16 +6,12 @@
         <div class="buttons" ng-click="goBackFromRequestsToHome()">
             <a class="button button-clear button-back" nav-direction="back" href="#/home">Back</a>
         </div>
-        <h1 class="title">Find A Guru</h1>
+        <h1 class="title">{{course.short_name}}</h1>
     </ion-header-bar>
 
     <ion-content class='request-list-container' scroll="false">
         <div class='container pure-g-c flex-column flex-space-between'>
             <div class="list list-inset request-list">
-
-                <a class="item request-item item-icon-right" id='selected-course'>
-                    <h5>{{course.short_name}}</h5>
-                </a>
                 <div class='container'>
                     <a ng-show='!(root.vars.request.type.in_person || root.vars.request.type.online)' class="item request-item item-icon-right" href='#/request-guru-type' nav-direction="forward">
                         <h5>Can you meet online, in-person, or both?</h5>
@@ -79,11 +75,20 @@
                     <h5 class='inline'>{{root.vars.request.description.substring(0, 35)}}..."</h5>
                     <i class="icon icon-right ion-chevron-right"></i>
                 </a>
+                <a ng-show='!(root.vars.request.contact.email || root.vars.request.contact.phone || root.vars.request.contact.push_notif)' class="item request-item item-icon-right" href='#/request-contact-method' nav-direction="forward">
+                    <h5 class='inline'>How should we contact you?</h5>
+                    <i class="icon icon-right ion-chevron-right"></i>
+                </a>
+                <a ng-show='(root.vars.request.contact.email || root.vars.request.contact.phone || root.vars.request.contact.push_notif)' class="item request-item item-icon-right green-border"  href='#/request-contact-method' nav-direction="forward">
+                    <h5 class='inline'>Contact Method Selected</h5>
+                    <i class="icon icon-right ion-chevron-right"></i>
+                </a>
             </div>
             <div class='flex-item-c'>
                 <button ng-disabled='!(root.vars.request.description && root.vars.request.location && (root.vars.request.type.in_person || root.vars.request.type.online) && root.vars.request._length.hours && root.vars.request.calendar_selected)' class='submit-request button button-full button-positive flex-space-between' ng-click='requestHelp()'>
                     Submit Request
                 </button>
+
                 <!-- <div class='container flip-button' onclick="this.classList.toggle('hover')">
                     <div class="button button-full button-positive icon icon-right ion-chevron-right front" style="width:90%">
                         Submit Request

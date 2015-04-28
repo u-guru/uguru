@@ -13,9 +13,10 @@ angular.module('uguru.onboarding.controllers')
     '$ionicModal',
     '$cordovaKeyboard',
     '$cordovaStatusbar',
+    '$ionicViewSwitcher',
   function($scope, $state, $timeout, $localstorage,
      Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
-     $ionicPlatform, $ionicModal, $cordovaKeyboard, $cordovaStatusbar) {
+     $ionicPlatform, $ionicModal, $cordovaKeyboard, $cordovaStatusbar, $ionicViewSwitcher) {
 
     $scope.search_text = '';
     $scope.header_text = 'Nearby Schools';
@@ -101,6 +102,7 @@ angular.module('uguru.onboarding.controllers')
 
             // $scope.addUniversityModal.hide();
             $scope.loader.hide();
+            $ionicViewSwitcher.nextDirection('forward');
             $state.go('^.student-home');
         }, 1000);
     };

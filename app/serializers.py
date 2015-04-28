@@ -152,6 +152,7 @@ transaction_fields['transfer_status'] = fields.String(attribute='transfer_status
 session_fields = {}
 session_fields['time_created'] = fields.DateTime(attribute='time_created')
 session_fields['time_updated'] = fields.DateTime(attribute='time_updated')
+session_fields['time_completed'] = fields.DateTime(attribute='time_completed')
 session_fields['guru'] = fields.Nested(guru_fields)
 session_fields['id'] = fields.Integer(attribute='id')
 session_fields['relationship_id'] = fields.Integer(attribute='relationship_id')

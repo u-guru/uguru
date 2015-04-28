@@ -4,8 +4,41 @@
 @media only screen
   and (min-device-width: 320px)
   and (max-device-width: 480px)
+  and (min-device-height: 320px)
+  and (max-device-height: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
+
+    .onboarding-loading #_4 {
+        top: 25.5%;
+        left: 24%;
+        height: 10.8%;
+    }
+
+    .onboarding-loading #_1 {
+      top: 32%;
+      right: 23%;
+      height: 4.33%;
+    }
+
+    .popover {
+      width: 80%!important;
+      left:10% !important;
+    }
+
+    .popover-backdrop
+
+      .title {
+        font-size:150% !important;
+
+      }
+
+    .popover-backdrop
+
+      p {
+        font-size:90% !important;
+        opacity:0.4;
+      }
 }
 
 /* Portrait */
@@ -14,6 +47,7 @@
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) {
+
 }
 
 /* Landscape */
@@ -31,8 +65,41 @@
 @media only screen
   and (min-device-width: 320px)
   and (max-device-width: 568px)
+  and (min-device-height: 481px)
   and (-webkit-min-device-pixel-ratio: 2) {
+    .onboarding-loading #_1 {
+      top: 34.25%;
+      right: 20%;
+      height: 4.33%;
+    }
+    .onboarding-loading #_4 {
+      top: 28%;
+      left: 22%;
+      height: 10.8%;
+    }
 
+    .popover {
+      width: 80%!important;
+      left:10% !important;
+    }
+
+    .popover-backdrop
+
+      .title {
+        font-size:150% !important;
+
+      }
+
+    .popover-backdrop
+
+      p {
+        font-size:90% !important;
+        opacity:0.4;
+      }
+
+    .popover-arrow {
+      left:45%;
+    }
 }
 
 /* Portrait */
@@ -56,9 +123,43 @@
 
 /* Portrait and Landscape */
 @media only screen
-  and (min-device-width: 375px)
+  and (min-device-width: 568px)
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
+
+    .onboarding-loading #_1 {
+      top: 34.25%;
+      right: 20%;
+      height: 4.33%;
+    }
+    .onboarding-loading #_4 {
+      top: 28%;
+      left: 22%;
+      height: 10.8%;
+    }
+
+    .popover {
+      width: 80%!important;
+      left:10% !important;
+    }
+
+    .popover-backdrop
+
+      .title {
+        font-size:150% !important;
+
+      }
+
+    .popover-backdrop
+
+      p {
+        font-size:90% !important;
+        opacity:0.4;
+      }
+
+    .popover-arrow {
+      left:45%;
+    }
 
 }
 
@@ -84,9 +185,20 @@
 
 /* Portrait and Landscape */
 @media only screen
-  and (min-device-width: 414px)
+  and (min-device-width: 667px)
   and (max-device-width: 736px)
   and (-webkit-min-device-pixel-ratio: 3) {
+
+    .onboarding-loading #_1 {
+      top: 34.25%;
+      right: 20%;
+      height: 4.33%;
+    }
+    .onboarding-loading #_4 {
+      top: 28%;
+      left: 22%;
+      height: 10.8%;
+    }
 
 }
 

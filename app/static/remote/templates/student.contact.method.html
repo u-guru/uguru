@@ -1,0 +1,31 @@
+    <ion-view hide-nav-bar='true'>
+      <ion-header-bar class='header-bar'>
+        <a class="button button-clear button-back" nav-direction="back" href="#/student-request">Back</a>
+        <h5 class="title">Contact Method</h5>
+        <a class="button button-clear button-back" ng-click='saveAndGoToRequest()'>Next</a>
+      </ion-header-bar>
+      <ion-content>
+        <div class='pure-g-c padding-half positive'>
+          <div class='pure-u-1 flex-item-c'>
+            <h5 class='contact-method-warning-text positive'>Please choose at least one </h5>
+          </div>
+        </div>
+        <ion-list class='list-inset'>
+          <ion-toggle ng-model="root.vars.request.contact.phone" ng-change='toggleTextMessageInput()' toggle-class="toggle-calm">Text Message</ion-toggle>
+
+           <label class="item item-input" ng-show='root.vars.request.contact.phone'>
+            <span class="input-label">Phone Number</span>
+            <input type="number" type="{{user.phone_number}}" placeholder="(510) 123 - 3123">
+          </label>
+
+          <ion-toggle ng-model="root.vars.request.contact.email" ng-change='toggleEmailInput()' toggle-class="toggle-calm">Email
+            <p class='white-space-wrap unrecommended-text'> Not recommended unless you're an email pro </p>
+          </ion-toggle>
+          <label class="item item-input" ng-show='root.vars.request.contact.email'>
+            <span class="input-label">Email Address</span>
+            <input type="email" ng-value="user.email" placeholder="school@berkeley.edu">
+          </label>
+          <ion-toggle ng-show='!platform.web' ng-change="requestPushNotifications()" ng-model="root.vars.request.contact.push_notif" toggle-class="toggle-calm">Push Notifications</ion-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-view>

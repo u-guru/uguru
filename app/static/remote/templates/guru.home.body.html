@@ -1,5 +1,5 @@
     <ion-header-bar class="bar-dark header-bar">
-        <h1 class="title uppercase">Guru Mode</h1>
+        <h5 class="title uppercase">Guru Mode</h5>
     </ion-header-bar>
 
    <!--  <ion-header-bar class="header-bar header-bar-dark">
@@ -8,25 +8,32 @@
         <h5 class="title uppercase">{{proposal.request.course.short_name}} Request</h5>
     </ion-header-bar> -->
 
-    <ion-content scroll='false' class='guru-home-content'>
-      <div class='pure-g-c flex-column'>
+    <ion-content class='guru-home-content'>
 
-        <div class='container'>
-          <div class="pure-u-1-3"></div>
-          <div class="pure-u-1-3">
-            <img src='{{img_base}}./img/uguru-03.png' class="pure-img guru-home-img">
+        <div class='profile-percent-wrapper pure-g flex-column'>
+          <span class='pure-u-1 white your-ranking-header-text center opacity-3-4'> Your ranking </span>
+          <h1 class='positive profile-complete-percentage center'>
+            B
+          </h1>
+        </div>
+        <div class='pure-g-c flex-column space-between'>
+
+          <p class='pure-subheader-text center j-start'> You can charge <span class='sans-bold white price-range'>$0 - $10</span><br>with 0 reviews and 0 sessions.</p>
+
+          <div class='list list-guru-profile j-end'>
+            <a class='item white item-badge-right item-icon-right' href='#/guru-verification' nav-direction="forward" >
+              How to increase your ranking
+              <i class='icon ion-chevron-right icon-small'></i>
+            </a>
+            <a class='item white item-badge-right item-icon-right' href="#/guru-profile" nav-direction="forward">
+              Complete your profile
+              <span class='complete-profile-badge badge badge-danger'>60%</span>
+              <i class='icon ion-chevron-right icon-small'></i>
+            </a>
+            <ion-toggle ng-model="user.current_device.push_notif_enabled" ng-show='(platform.ios || platform.android) && !user.current_device.push_notif_enabled' ng-change="registerPush()" toggle-class="toggle-positive" class='white'>Turn on notifications
+            <p class='white push-body'> And we can start advertising you!</p>
+            </ion-toggle>
           </div>
         </div>
-
-        <div class='pure-g flex-item-c'>
-          <div class='pure-u-1'>
-            <div class="guru-message center">
-              Sit tight, relax for a bit.<br>
-              Uguru will notify you as soon as<br>
-              a student needs your help.
-            </div>
-          </div>
-        </div>
-
-      </div>
     </ion-content>
+

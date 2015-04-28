@@ -4,7 +4,8 @@ angular.module('uguru.root.services')
     '$localstorage',
     '$timeout',
     '$cordovaCamera',
-    function($localstorage, $timeout, $cordovaCamera) {
+    '$state',
+    function($localstorage, $timeout, $cordovaCamera, $state) {
 
         deviceCamera = {
                     takePicture: function($scope) {
@@ -25,14 +26,21 @@ angular.module('uguru.root.services')
                         };
 
                         $cordovaCamera.getPicture(options).then(function(imageData) {
-                          var image = document.getElementsByClassName('attachment-container')[0];
+                          console.log($state.current.name);
+                          if ($state.current.name === 'root.guru-home') {
+
+                            var image = document.getElementsByClassName('guru-profile-container')[0];
+
+                          } else {
+                            var image = document.getElementsByClassName('attachment-container')[0];
+
                           image.src = "data:image/jpeg;base64," + imageData;
 
 
 
                           // $scope.request.photo = image.src;
 
-                          $scope.root.vars.request.files.push(true);
+                          // $scope.root.vars.request.files.push(true);
                           var formData = new FormData();
                           // formData.append('file', image.src);
                           // imageData = "data:image/jpeg;base64," + imageData;

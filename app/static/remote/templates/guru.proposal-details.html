@@ -2,7 +2,7 @@
 
   <ion-header-bar class="header-bar header-bar-dark">
 
-        <a class="button button-clear button-back"  nav-direction='back' href='#/home'>Back</a>
+        <a class="button button-clear button-back"  nav-direction='back' href='#/guru-home'>Back</a>
         <h5 class="title uppercase">{{proposal.request.course.short_name}} Request</h5>
   </ion-header-bar>
 
@@ -14,14 +14,11 @@
           <img ng-src="{{proposal.request.student.profile_url}}">
           <span class='pure-u-1 white-text'>{{proposal.request.student.name.split(' ')[0]}}
           </span>
-          <span class='pure-u-1 white-text opacity-3-4'> New to Uguru!
-          </span>
-          <i class='icon icon-small ion-chevron-right positive'></i>
         </a>
 
         <div class='pure-g row-details'>
           <div class='pure-u-1-5 grey-subject-text'>Time</div>
-          <div class='pure-u-4-5'> <a ng-click= 'goToStudentCalendar(proposal.student_calendar)'>See Student Availability &nbsp;&nbsp;&nbsp;<i class='icon ion-chevron-right positive icon-small'></i></a></div>
+        <div class='pure-u-4-5'> <a ng-click= 'goToStudentCalendar(proposal.student_calendar)'>See Student Availability &nbsp;&nbsp;&nbsp;<i class='icon ion-chevron-right positive icon-small'></i></a></div>
         </div>
         <div class='pure-g row-details'>
           <div class='pure-u-1-5 grey-subject-text'>Length</div>
@@ -31,7 +28,7 @@
           <div class='pure-u-1-5 grey-subject-text'>Type</div>
           <div class='pure-u-4-5'>{{formatted_request_type}}</div>
         </div>
-        <div class='pure-g row-details' ng-show='proposal.request.status === 1'>
+        <div class='pure-g row-details' ng-show='proposal.request.status === 1 && user.cards.length > 0'>
           <div class='pure-u-1-5 grey-subject-text'>Card Info</div>
           <div class='pure-u-4-5'>{{user.cards[0].card_last4}}, {{user.cards[0].card_type}}</div>
         </div>
@@ -55,16 +52,24 @@
               </ui-gmap-google-map>
             </div>
           </div>
+          <div class='pure-u-1 padding-1em' ng-show='session.request.files && session.request.files.length > 0'>
+            <a ng-click="openAttachment()" class='button button-stable button-full'> View Attachment </a>
+          </div>
         </div>
       </div>
         <!-- <button class='button button-full button-light'> Cancel Session </button> -->
-        <div class='cancel-session-container pure-g'>
+        <div class='cancel-session-container pure-g' ng-show='proposal.status === 0'>
           <div class='pure-u-1-2'>
               <button class='button button-full button-thin button-guru' ng-click='rejectStudent()'> Reject </button>
           </div>
           <div class='pure-u-1-2'>
-              <button class='button button-full button-guru button-semibold' ng-click='acceptStudent()'> Accept
+              <button class='button button-full button-guru button-semibold' ng-click='goToConfirmProposal(proposal)'> Accept
               </button>
+          </div>
+        </div>
+        <div class='cancel-session-container pure-g' ng-show='proposal.status === 2'>
+          <div class='pure-u-1 padding-1em center white-text'>
+              Proposal Accepted! We'll keep you updated
           </div>
         </div>
     </div>

@@ -13,6 +13,18 @@ angular.module('uguru.user', [])
         Object.defineProperty(obj, name, config);
     }
 
+    var calcAverage = function(ratings_arr) {
+                if (ratings_arr.length === 0)  {
+                    return 0;
+                }
+                result = 0;
+                for (var i = 0; i < ratings_arr.length; i ++) {
+                    result += ratings_arr[i].student_rating;
+                }
+                result = (result / ratings_arr.length).toFixed(2);
+                return result;
+    }
+
     var processResults = function(user) {
         user.active_requests = [];
         user.pending_guru_ratings = [];
@@ -25,6 +37,7 @@ angular.module('uguru.user', [])
         user.transfer_cards = [];
         user.course_guru_dict = {};
         user.gurus = [];
+        user.current_hourly = 10;
 
         var user_cards = user.cards;
         for (var i = 0; i < user_cards.length; i++) {
@@ -98,6 +111,7 @@ angular.module('uguru.user', [])
               }
             }
         }
+        user.student_avg_rating = calcAverage(student_ratings);
 
         var student_transactions = user.student_transactions;
         MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
@@ -130,20 +144,9 @@ angular.module('uguru.user', [])
             user.transfer_transactions[i].guru_amount = parseFloat(user.transfer_transactions[i].guru_amount).toFixed(2);
         }
 
-
-        // if (user.incoming_requests.length > 0 && !user.guru_mode) {
-        //     var first_incoming_request = user.incoming_requests[0];
-        //     var paramPayload = {
-        //         requestObj:JSON.stringify(first_incoming_request),
-        //     }
-        //     if ($state.current.name != 'root.student.guru-available') {
-        //          $state.go('^.^.student.guru-available', paramPayload);
-        //     } else {
-        //         $state.go('^.guru-available', paramPayload);
-        //     }
-        // }
         // user.guru_mode = true;
-        if (user.is_a_guru && user.guru_mode) {
+        if (user.is_a_guru) {
+            console.log('processing guru');
             user.active_proposals = [];
             user.pending_proposals = [];
             user.active_guru_sessions = [];
@@ -151,6 +154,11 @@ angular.module('uguru.user', [])
             user.previous_guru_sessions = [];
 
             var guru_ratings = user.guru_ratings;
+            user.guru_avg_rating = calcAverage(guru_ratings);
+            console.log()
+            if (!user.guru_avg_rating) {
+                user.guru_avg_rating = 0;
+            }
             if (guru_ratings && guru_ratings.length > 0) {
                 for (var i = 0; i < guru_ratings.length; i ++) {
                   var index_rating = guru_ratings[i];
@@ -240,7 +248,7 @@ angular.module('uguru.user', [])
         $scope.user.name = user.name;
         $scope.user.profile_url = user.profile_url;
         $scope.user.is_a_guru = user.is_a_guru;
-        $scope.user.guru_mode = user.guru_mode;
+        // $scope.user.guru_mode = user.guru_mode;
         $scope.user.gender = user.gender;
         $scope.user.customer_id = user.customer_id;
         $scope.user.recipient_id = user.recipient_id;
@@ -281,6 +289,7 @@ angular.module('uguru.user', [])
         $scope.user.referred_by = user.referred_by;
         $scope.user.current_device = user.current_device;
         $scope.user.devices = user.devices;
+        $scope.user.current_hourly = user.current_hourly;
 
         $scope.user.active_proposals = user.active_proposals;
         $scope.user.impact_events = user.impact_events;
@@ -302,6 +311,10 @@ angular.module('uguru.user', [])
         $scope.user.official_guru_score = user.official_guru_score;
         $scope.user.estimated_guru_rank_last_updated = user.estimated_guru_rank_last_updated;
         $scope.user.official_guru_rank_last_updated = user.official_guru_rank_last_updated;
+        $scope.user.guru_avg_rating = user.guru_avg_rating;
+        $scope.user.student_avg_rating = user.student_avg_rating;
+        $scope.user.student_ratings = user.student_ratings;
+        $scope.user.guru_ratings = user.guru_ratings;
 
         $scope.user.official_guru_grade = user.official_guru_grade;
         $scope.user.grade_dict = user.grade_dict;
@@ -471,6 +484,18 @@ angular.module('uguru.user', [])
                         'add_guru_course': true
                   }
               }
+              if (arg === 'email') {
+                  return {
+                        email: obj,
+                        'email': true
+                  }
+              }
+              if (arg === 'phone_number') {
+                  return {
+                        phone_number: obj,
+                        'phone_number': true
+                  }
+              }
               if (arg === 'add_user_major') {
                   return {
                         major: obj,
@@ -525,7 +550,6 @@ angular.module('uguru.user', [])
             }
             if (!scope_user_id) {
                 console.log('Cant fetch user, user not logged in');
-                $scope.guru_mode = false;
                 return;
             }
 
@@ -626,8 +650,14 @@ angular.module('uguru.user', [])
                     .withHttpConfig({transformRequest: angular.identity})
                     .customPOST(payload,'',undefined,{'Content-Type': undefined})
                     .then(function(file){
+                        console.log(JSON.stringify(file.plain()));
                         // $scope.request.files = [file.plain()];
-                        $scope.root.vars.request.files = [file.plain()];
+                        if ($state.current.name === 'root.guru-profile-edit') {
+                            $scope.user.profile_url = file.plain().url;
+                        } else {
+                            $scope.root.vars.request.files = [file.plain()];
+                        }
+
 
                     }, function(err){
                         console.log(err);

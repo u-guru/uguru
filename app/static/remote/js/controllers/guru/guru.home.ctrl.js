@@ -21,10 +21,14 @@ angular.module('uguru.guru.controllers')
   'Popover',
   '$ionicBackdrop',
   'User',
+  'Camera',
+  '$cordovaPush',
+  '$ionicViewSwitcher',
+  '$cordovaStatusbar',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $q,
  	University, $templateCache, $ionicHistory, Popup, $popover, Popover,
-  $ionicBackdrop, User) {
+  $ionicBackdrop, User, Camera, $cordovaPush, $ionicViewSwitcher, $cordovaStatusbar) {
   console.log($scope.user)
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
@@ -58,6 +62,88 @@ angular.module('uguru.guru.controllers')
   }).then(function(modal) {
       $scope.becomeGuruModal = modal;
   });
+
+  // $scope.registerPushCordova = function () {
+
+
+  // }
+  $scope.registerPush = function() {
+      if (!$scope.user.current_device.push_notif_enabled && !$scope.user.current_device.push_notif) {
+        console.log('user turning OFF first time, never even said yes');
+        // $scope.user.current_device.push_notif_enabled = false;
+        $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+      }
+
+      //if user is turning off push notifications because they are annoyed
+      if (!$scope.user.current_device.push_notif_enabled && $scope.user.current_device.push_notif) {
+        console.log('user turning OFF push by choice');
+        // $scope.user.current_device.push_notif_enabled = false;
+        $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+      }
+
+      //if user is turning it back on again
+      if ($scope.user.current_device.push_notif_enabled && $scope.user.current_device.push_notif) {
+        console.log('user turning on push.. again');
+        // $scope.user.current_device.push_notif_enabled = true;
+        var iosConfig = {
+        "badge": true,
+        "sound": true,
+        "alert": true,
+      }
+
+        console.log('user turning on push for the first time');
+
+        // $scope.user.current_device.push_notif_enabled = true;
+        $cordovaPush.register(iosConfig).then(function(deviceToken) {
+        // Success -- send deviceToken to server, and store for future use
+        console.log("deviceToken: " + deviceToken)
+
+        console.log("Register success " + deviceToken);
+
+        if ($scope.platform.ios) {
+          console.log('updating the server...');
+            $scope.user.push_notifications = true;
+            $scope.user.current_device.push_notif = deviceToken;
+            $scope.user.current_device.push_notif_enabled = true;
+            $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+        }
+
+      }, function(err) {
+        console.log('there is an error');
+        alert("Please go to your Settings > Notifications > Uguru and 'Allow Notifications'");
+      });
+      }
+
+      //first time user is turning it on
+      if ($scope.user.current_device.push_notif_enabled && !$scope.user.current_device.push_notif) {
+
+      var iosConfig = {
+        "badge": true,
+        "sound": true,
+        "alert": true,
+      }
+
+        console.log('user turning on push for the first time');
+        // $scope.user.current_device.push_notif_enabled = true;
+        $cordovaPush.register(iosConfig).then(function(deviceToken) {
+        // Success -- send deviceToken to server, and store for future use
+        console.log("deviceToken: " + deviceToken)
+
+        console.log("Register success " + deviceToken);
+        $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+        if ($scope.platform.ios) {
+            $scope.user.push_notifications = true;
+            $scope.user.current_device.push_notif = deviceToken;
+            $scope.user.current_device.push_notif_enabled = true;
+            $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+        }
+
+      }, function(err) {
+        console.log('there is an error');
+        alert("Please go to your Settings > Notifications > Uguru and 'Allow Notifications'");
+      });
+      }
+  }
 
   	// $scope.showSuccess = function(msg) {
    //    if (!$scope.progress_active)  {
@@ -116,6 +202,17 @@ angular.module('uguru.guru.controllers')
       document.getElementsByClassName(class_name)[0].classList.remove('active')
       // $event.target.classList.add('active')
     }
+
+    $scope.goToIncreaseRanking = function() {
+      $ionicViewSwitcher.nextDirection('forward');
+      $state.go('^.guru-verification');
+    }
+
+    $scope.goToProfileEdit = function() {
+      $ionicViewSwitcher.nextDirection('forward');
+      $state.go('^.guru-profile-edit');
+    }
+
 
     $scope.goToRequestStatus = function(course) {
       $state.go('^.request-status', {courseObj:JSON.stringify(course)});
@@ -218,8 +315,8 @@ angular.module('uguru.guru.controllers')
 
       alert('You have been logged out!');
       $scope.signupModal.show();
+      $state.go('^.student-home');
     }
-
     $scope.goToProposalDetails = function(proposal) {
       $state.go('^.guru-proposal-details', {proposalObj:JSON.stringify(proposal)});
     }
@@ -242,11 +339,17 @@ angular.module('uguru.guru.controllers')
           Popup.options.show($scope, welcomePopupOptions);
     }
 
+    $scope.calculateGuruProfilePercentage = function() {
+      return 50;
+    }
+
     $scope.$on('modal.shown', function() {
       $scope.backgroundRefresh = false;
       $scope.ratingModalShown = true;
       console.log('stopping background refresh');
     });
+
+
 
     $scope.$on('modal.hidden', function() {
       $scope.backgroundRefresh = true;
@@ -255,26 +358,26 @@ angular.module('uguru.guru.controllers')
     });
 
     $scope.$on('$ionicView.beforeEnter', function(){
-      console.log('guru home view before Enter');
       User.getUserFromServer($scope, null, $state);
+      // $scope.guru.profile_percent_complete = $scope.calculateGuruProfilePercentage();
+      console.log('guru home view before Enter');
+      if (window.StatusBar) {
+          StatusBar.styleLightContent();
+      }
+
+      console.log(JSON.stringify($scope.user.current_device));
+      // User.getUserFromServer($scope, null, $state);
     });
 
     $scope.$on('$ionicView.enter', function(){
-      console.log($scope.user.active_proposals);
-      // $scope.user.guru_mode = true;
-      // $scope.user.updateAttr('is_a_guru', $scope.user, true);
-      // $scope.user.updateAttr('guru_mode', $scope.user, true);
-      // $scope.user.is_a_guru = true;
-    });
+      $scope.user.guru_mode = true;
+      $scope.root.vars.guru_mode = true;
+      $localstorage.setObject('user', $scope.user);
+      console.log('printing guru stuff', $scope.user.active_proposals);
 
-    $timeout(function() {
-      $scope.bottomTabsDelegate.select(1);
-      $timeout(function() {
-        document.querySelectorAll('.session-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-1.svg')";
-        document.querySelectorAll('.request-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-3.svg')";
-        document.querySelectorAll('.settings-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-2.svg')";
-      }, 250);
-    },1000)
+      //check if user already has push notification token
+
+    });
 
   }
 

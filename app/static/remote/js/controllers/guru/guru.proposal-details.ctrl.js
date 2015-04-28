@@ -14,8 +14,18 @@ angular.module('uguru.guru.controllers')
  	$ionicModal, $stateParams, $ionicHistory) {
 
     $scope.proposal = JSON.parse($stateParams.proposalObj);
+
+    if ($scope.proposal.request.files && $scope.proposal.request.files.length > 0) {
+      var file_url = $scope.proposal.request.files[0].url;
+    }
+
     $scope.course = $scope.proposal.request;
     $scope.progress_active = false;
+
+    $scope.openAttachment = function() {
+      var result = window.open(file_url, '_system', 'location=yes');
+      return false;
+    }
 
     $scope.convertTimeEstimate = function(time_int) {
       var time_options = ['30 minutes', '1 Hour', '1.5 hours', '2+ hours'];
@@ -142,6 +152,7 @@ angular.module('uguru.guru.controllers')
         center: initMapCoords,
         zoom: 17,
         disableDefaultUI: true,
+        draggable: false,
         zoomControl: false,
         zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
       }
@@ -160,15 +171,18 @@ angular.module('uguru.guru.controllers')
 
     $scope.$on('$ionicView.enter', function(){
       console.log('entering...');
-      $scope.showGoogleMap();
       $timeout(function() {
-
-      }, 3000);
+        $scope.showGoogleMap();
+      }, 1000);
     });
 
     $scope.goToStudentCalendar = function (calendar) {
       console.log(calendar);
       console.log('this was clicked')
+    }
+
+    $scope.goToConfirmProposal = function(proposal) {
+      $state.go('^.guru-confirm-proposal', {proposalObj:JSON.stringify(proposal)});
     }
 
   }

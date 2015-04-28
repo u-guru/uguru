@@ -21,6 +21,10 @@ angular.module('uguru.student.controllers')
 		// $scope.showSuccess('Saved!');
 	}
 
+    $scope.goBack = function() {
+        $ionicHistory.goBack();
+    }
+
 	$scope.toggleEditMode = function() {
 		$scope.editMode = !$scope.editMode;
 		if ($scope.editMode) {

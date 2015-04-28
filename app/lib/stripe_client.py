@@ -90,6 +90,9 @@ def charge_customer(user, amount):
         if card.is_default_payment:
             default_card = card
 
+    if amount < 50:
+        amount = 50
+
     try:
         stripe_charge = stripe.Charge.create(
           amount=int(amount * 100),
