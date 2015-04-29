@@ -49,7 +49,20 @@ class User(Base):
     name = Column(String)
     email = Column(String, unique=True, nullable=False)
     profile_url = Column(String, default="https://graph.facebook.com/10152573868267292/picture?width=100&height=100")
+
+
     fb_id = Column(String)
+    # uber_id = Column(String) # TODO SAMIR
+    # github_id = Column(String) # TODO SAMIR
+    # linkedin_id = Column(String) # TODO SAMIR
+    # instagram_id = Column(String) # TODO SAMIR
+    # box_id = Column(String) # TODO SAMIR
+    # reddit_id = Column(String) # TODO SAMIR
+    # twitter_id = Column(String) # TODO SAMIR
+    # salesforce_id = Column(String) # TODO SAMIR
+    # spotify_id = Column(String) # TODO SAMIR
+    # uber_id = Column(String) # TODO SAMIR
+
     gender = Column(String)
     password = Column(String)
 
@@ -58,6 +71,13 @@ class User(Base):
     #Last active time
     last_active = Column(DateTime)
     time_created = Column(DateTime)
+
+
+    # current_hourly = Column(Float) # TODO SAMIR
+    # uber_friendly = Column(Boolean) # TODO SAMIR
+    # summer_15 = Column(Boolean) # TODO SAMIR
+    # outside university = Column(Boolean) # TODO SAMIR
+
 
     #Student fields
     student_introduction = Column(String)
@@ -275,7 +295,7 @@ class Calendar(Base):
     def initFromProposal(_proposal, number_of_days = 2):
         c = Calendar()
         c.time_created = datetime.now()
-        c.proposal_id = proposal.id
+        c.proposal_id = _proposal.id
         c.number_of_days = number_of_days
         db_session.add(c)
         try:
@@ -709,8 +729,8 @@ class Request(Base):
     online = Column(Boolean)
     time_estimate = Column(Integer)
 
-    # contact_email = Column(Boolean) TODO
-    # contact_push = Column(Boolean) TODO
+    # contact_email = Column(Boolean) TODO SAMIR
+    # contact_push = Column(Boolean) TODO SAMIR
     # contact_text = Column(Boolean) TODO  (ADD ALL AT ONCE)
 
     course_id = Column(Integer, ForeignKey('course.id'))
@@ -867,6 +887,7 @@ class File(Base):
     time_created = Column(String)
     time_updated = Column(String)
     name = Column(String)
+
 
     request_id = Column(Integer, ForeignKey("request.id"))
     request = relationship("Request",

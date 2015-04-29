@@ -1,6 +1,6 @@
 <ion-view hide-nav-bar='true'>
     <ion-header-bar class='header-bar'>
-      <a class='button button-clear' ng-click='goBack();'>Back</a>
+      <a class='button button-clear' ng-click='goBack()'>Back</a>
       <h5 class="title">Settings</h5>
       <a ng-click="toggleEditMode()" class="button button-clear positive">
         <span ng-show="editMode">Save</span>
@@ -18,14 +18,14 @@
           <i style="font-size:14px;"class="icon ion-plus positive"></i>
 
         </a>
-        <ion-item ng-repeat="course in user.guru_courses">
+        <ion-item ng-repeat="course in user.guru_courses" ng-show='user.guru_mode'>
         {{course.short_name}}
-          <ion-delete-button  ng-click="user.student_courses.splice($index, 1)" class="ion-minus-circled"></ion-delete-button>
+          <ion-delete-button  ng-click="guruCourseDeleteUpdate($index)" class="ion-minus-circled"></ion-delete-button>
         </ion-item>
         <div class="item item-divider" ng-show="!user.guru_mode">
         </div>
         <div class="item item-divider" ng-show="!user.guru_mode">
-              STUDENT_COURSES
+              STUDENT COURSES
         </div>
   			<a class="item item-icon-right" ng-show='!user.guru_mode'ng-click="addCourseModal.show()">
   				Add a course
@@ -35,7 +35,7 @@
   			</a>
 			<ion-item ng-repeat="course in user.student_courses" ng-show='!user.guru_mode'>
 				{{course.short_name}}
-				 <ion-delete-button  ng-click="user.student_courses.splice($index, 1)" class="ion-minus-circled"></ion-delete-button>
+				 <ion-delete-button  ng-click="studentCourseDeleteUpdate($index)" class="ion-minus-circled"></ion-delete-button>
 			</ion-item>
 		</div>
     </ion-content>

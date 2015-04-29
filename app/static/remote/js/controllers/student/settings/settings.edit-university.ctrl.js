@@ -10,13 +10,24 @@ angular.module('uguru.student.controllers')
   '$ionicHistory',
   '$ionicModal',
   '$cordovaKeyboard',
+  '$ionicViewSwitcher',
   function($scope, $state, $timeout, $ionicHistory,
-  	$ionicModal, $cordovaKeyboard) {
+  	$ionicModal, $cordovaKeyboard, $ionicViewSwitcher) {
     $scope.editMode = false;
 	$scope.progress_active = false;
 
 
-	$scope.saveUniversity = function() {
+	$scope.goBack = function() {
+      $ionicViewSwitcher.nextDirection('back'); // 'forward', 'back', etc.
+      if ($scope.user.guru_mode) {
+        $state.go('^.guru-home');
+      }
+      if (!$scope.user.guru_mode) {
+        $state.go('^.student-home');
+      }
+     }
+
+    $scope.saveUniversity = function() {
 		$scope.rootUser.updateLocal($scope.user);
 		// $scope.showSuccess('Saved!');
 	}

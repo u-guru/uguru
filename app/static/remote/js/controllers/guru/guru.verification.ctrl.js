@@ -10,18 +10,32 @@ angular.module('uguru.guru.controllers')
   '$ionicModal',
   '$stateParams',
   '$ionicHistory',
+  '$cordovaOauth',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $stateParams, $ionicHistory) {
+ 	$ionicModal, $stateParams, $ionicHistory, $cordovaOauth) {
 
-    // $scope.$on('modal.shown', function() {
-    //   if ($scope.becomeGuruModal.isShown()) {
-    //     StatusBar.styleLightContent();
+    var UBER_CLIENT_ID = "f6pThzslRv6jZomDd4npfQfejIeY7pHc";
 
-    //   }
-    // }
+    $scope.$on('modal.shown', function() {
+      if ($scope.becomeGuruModal.isShown()) {
+        StatusBar.styleLightContent();
+
+      }
+    });
+
+
+
+
+    $scope.fireUberApi = function() {
+      $cordovaOauth.uber(UBER_CLIENT_ID, $scope, {}).then(function(result) {
+        console.log(result);
+      }, function(err) {
+        console.log(err);
+      });
+    }
 
 
   }
 
 
-])
+]);

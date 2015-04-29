@@ -185,13 +185,20 @@ $ionicPlatform.ready(function() {
             }
           }
 
-          $scope.toast = {
-            show: function() {
+          $scope.success = {
+            show: function(delay, duration, message) {
+              if (!message) {
+                  message = 'Saved!';
+              }
               $ionicLoading.show({
-                template: 'Saved!'
+                template: message,
+                delay: delay,
+                duration: duration
               });
             },
-
+            hide: function(){
+              $ionicLoading.hide();
+            }
           }
 
           $scope.platform = {
@@ -338,7 +345,7 @@ $ionicPlatform.ready(function() {
         controller: 'StudentRequestSessionLengthController'
   }).
   state('root.request-calendar', {
-        url: '/request-calendar',
+        url: '/request-calendar:proposalObj',
         templateUrl: BASE + 'templates/student.request.calendar.html',
         controller: 'CalendarModalController'
   }).
@@ -564,7 +571,6 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
               }
           );
         };
-
 //background loading stuff
 
 var on_app_open_retrieve_objects = function($scope, $state, $localstorage, University, callback, Geolocation) {

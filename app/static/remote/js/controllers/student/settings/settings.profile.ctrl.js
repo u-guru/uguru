@@ -8,13 +8,24 @@
   '$state',
   '$timeout',
   '$ionicHistory',
-  function($scope, $state, $timeout, $ionicHistory) {
+  '$ionicViewSwitcher',
+  function($scope, $state, $timeout, $ionicHistory, $ionicViewSwitcher) {
 
 	   $scope.progress_active = false;
 
      $scope.changePasswordForm = {
       new_password:'',
       old_password:''
+     }
+
+     $scope.goBack = function() {
+      $ionicViewSwitcher.nextDirection('back'); // 'forward', 'back', etc.
+      if ($scope.user.guru_mode) {
+        $state.go('^.guru-home');
+      }
+      if (!$scope.user.guru_mode) {
+        $state.go('^.student-home');
+      }
      }
 
 	   $scope.saveProfile = function() {

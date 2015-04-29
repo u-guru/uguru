@@ -14,23 +14,34 @@ angular.module('uguru.root.services')
                         var source_type = 1;
                       }
                         var options = {
-                          quality: 100,
+                          quality: 40,
                           destinationType: Camera.DestinationType.DATA_URL,
                           sourceType: Camera.PictureSourceType.CAMERA,
-                          allowEdit: true,
+                          allowEdit: false,
                           encodingType: Camera.EncodingType.JPEG,
-                          targetWidth: 1024,
-                          targetHeight: 1024,
-                          popoverOptions: CameraPopoverOptions,
+                          targetWidth: 500,
+                          targetHeight: 500,
+                          // popoverOptions: CameraPopoverOptions,
                           saveToPhotoAlbum: false
                         };
 
-                        $cordovaCamera.getPicture(options).then(function(imageData) {
-                          if ($state.current.name !== 'root.request-description') {
+                          $cordovaCamera.getPicture(options).then(function(imageData) {
+                          console.log($state.current.name);
+
+                          //guru profile
+                          // guru profile #2
+                          //student profile #1
+                          if ($state.current.name === 'root.guru-profile-edit') {
 
                             var image = document.getElementsByClassName('guru-profile-container')[0];
 
-                          } else {
+                          } else if ($state.current.name === 'root.guru-profile') {
+                            var image = document.getElementsByClassName('guru-prof-pic')[0];
+                          } else if ($state.current.name === 'root.student-home') {
+                            var image = document.getElementsByClassName('student-prof-pic')[0];
+                          }
+                          else
+                          {
                             var image = document.getElementsByClassName('attachment-container')[0];
                           }
 
@@ -44,15 +55,21 @@ angular.module('uguru.root.services')
                           var formData = new FormData();
                           // formData.append('file', image.src);
                           // imageData = "data:image/jpeg;base64," + imageData;
-
+                          $scope.loader.show();
                           formData.append('file', imageData);
                           var file_name = new Date().getTime().toString();
                           formData.append('filename', file_name);
+                          if ($state.current.name !== 'root.request-description') {
+                            formData.append('profile_url', $scope.user.id);
+                          }
 
                           $scope.user.createObj($scope.user, 'files', formData, $scope);
 
                         }, function(err) {
                           console.log(err);
+                          if ('No camera available' === err) {
+                            alert('Sorry! It appears that there is no Camera or Photo Library Accessible. Please contact support.');
+                          }
                         });
                     }
                 };

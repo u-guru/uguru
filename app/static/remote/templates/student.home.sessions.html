@@ -1,5 +1,5 @@
 
-<ion-view class='student-sessions' cache-view='false'>
+<ion-view class='student-sessions'>
   <ion-header-bar class='header-bar'>
     <h5 class="title">Your Sessions</h5>
     <a class='button button-clear' ng-click="addCourseModal.show()"></a>
@@ -36,7 +36,7 @@
     <div class="list" ng-show='user.incoming_requests.length > 0'>
       <a class="item item-avatar-right upcoming-session-card" ng-repeat='request in user.incoming_requests' ng-click='goToRequestStatus(request)'>
         <img ng-src="{{img_base}}./img/guru-profile.svg">
-        <h2>Guru {{session.course.short_name}}</h2>
+        <h2>Guru {{request.course.short_name}}</h2>
         <h4 class='pending'> 1 Guru Available </h4>
       </a>
     </div>

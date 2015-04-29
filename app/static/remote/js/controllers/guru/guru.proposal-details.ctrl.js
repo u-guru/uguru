@@ -10,8 +10,9 @@ angular.module('uguru.guru.controllers')
   '$ionicModal',
   '$stateParams',
   '$ionicHistory',
+  '$ionicViewSwitcher',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $stateParams, $ionicHistory) {
+ 	$ionicModal, $stateParams, $ionicHistory, $ionicViewSwitcher) {
 
     $scope.proposal = JSON.parse($stateParams.proposalObj);
 
@@ -118,17 +119,25 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.rejectStudent = function() {
-      proposalObj = $scope.proposal;
-      $scope.deleteProposalFromList($scope.proposal, $scope.user.active_proposals);
-      proposalObj.status = 3; //guru rejected
-      proposalObj.proposal = true;
+
 
       var callbackFunction = function() {
-        $ionicHistory.goBack();
+        proposalObj = $scope.proposal;
+        $scope.deleteProposalFromList($scope.proposal, $scope.user.active_proposals);
+        proposalObj.status = 3; //guru rejected
+        proposalObj.proposal = true;
+        $scope.user.updateObj($scope.user, 'requests', proposalObj, $scope);
+        $scope.success.show(0, 2000, 'Success!');
+        $state.go('^.guru-home');
       }
 
-      $scope.user.updateObj($scope.user, 'requests', proposalObj, $scope);
-      $scope.root.dialog.alert('Student request rejected. This increases your response rate!', 'Maybe Next Time', 'OK', callbackFunction);
+      if ($scope.platform.mobile) {
+        $scope.root.dialog.confirm('Are you sure? You cannot undo this!', 'Cancel', 'Yes', callbackFunction);
+      } else {
+        if (confirm('Are you sure? You cannot undo this!')) {
+          callbackFunction();
+        }
+      }
 
     }
 
@@ -177,8 +186,9 @@ angular.module('uguru.guru.controllers')
     });
 
     $scope.goToStudentCalendar = function (calendar) {
-      console.log(calendar);
-      console.log('this was clicked')
+      $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
+      console.log('sending student proposal', $scope.proposal);
+      $state.go('^.request-calendar', {proposalObj:JSON.stringify($scope.proposal)});
     }
 
     $scope.goToConfirmProposal = function(proposal) {

@@ -10,8 +10,9 @@ angular.module('uguru.student.controllers')
   '$ionicModal',
   '$stateParams',
   '$ionicHistory',
+  '$ionicViewSwitcher',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $stateParams, $ionicHistory) {
+ 	$ionicModal, $stateParams, $ionicHistory, $ionicViewSwitcher) {
 
     $scope.requestObj = JSON.parse($stateParams.requestObj);
 
@@ -43,6 +44,11 @@ angular.module('uguru.student.controllers')
 
     $scope.goToGuruProfile = function(guru) {
       $state.go('^.student-guru-profile', {guruObj:JSON.stringify(guru)});
+    }
+
+    $scope.goToStudentCalendar = function () {
+      $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
+      $state.go('^.request-calendar', {proposalObj:JSON.stringify($scope.request)});
     }
 
     $scope.createGoogleLatLng = function(latCoord, longCoord) {
@@ -106,7 +112,7 @@ angular.module('uguru.student.controllers')
           $scope.root.util.updateObjectByKey($scope.user.requests, 'id', $scope.request.id, 'status', 0);
 
           $scope.user.updateObj($scope.user, 'requests', requestObj, $scope);
-
+          $scope.show.success(0, 2000, 'Guru successfully rejected');
         }
 
 
@@ -172,8 +178,9 @@ angular.module('uguru.student.controllers')
       $scope.user.updateObj($scope.user, 'requests', $scope.requestObj, $scope);
 
       var cancelMsg = $scope.course.short_name + ' request canceled';
-      alert(cancelMsg)
+      $scope.success.show(0, 2000, cancelMsg);
       // $scope.showSuccess(cancelMsg);
+      $scope.root.util.removeObjectByKey($scope.user.active_requests, 'id', $scope.request.id);
       $timeout(function() {
         $state.go('^.student-home');
       }, 1000);
@@ -215,11 +222,10 @@ angular.module('uguru.student.controllers')
       $scope.actual_map = actual_map
     }
 
-    $scope.$on('$ionicView.enter', function(){
-      console.log('entering...');
+    $scope.$on('$ionicView.loaded', function(){
       $timeout(function() {
         $scope.showGoogleMap();
-      }, 1000);
+      }, 500);
     });
 
   }

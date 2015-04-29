@@ -18,6 +18,7 @@ angular.module('uguru.student.controllers')
 
     $scope.saveProfile = function() {
       $scope.user.updateAttr('add_guru_intro', $scope.user, $scope.user.guru_introduction, null, $scope);
+      $scope.success.show(0, 1500);
     }
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/add-major.modal.html', {
@@ -53,7 +54,7 @@ angular.module('uguru.student.controllers')
         formData.append('file', photofile);
         // var file_name = new Date().getTime().toString();
         formData.append('profile_url', $scope.user.id);
-
+        $scope.loader.show();
         $scope.user.createObj($scope.user, 'files', formData, $scope);
     };
 

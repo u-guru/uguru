@@ -122,11 +122,28 @@ angular.module('uguru.util.controllers')
           },1500);
     }
 
-    $scope.$on('$ionicView.afterEnter', function() {
+    $scope.$on('$ionicView.loaded', function() {
+      console.log('is entering location view before entering');
+      $timeout(function() {
+        $scope.showGoogleMap();
+        $scope.mapAlreadyLoaded = true;
+        $scope.loader.hide();
+      }, 500);
+    });
 
-      // if ($scope.requestMapModal.isShown()) {
 
-          $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
+    // $scope.$on('$ionicView.loaded', function() {
+    //   console.log('is entering location view after loaded');
+    //   $timeout(function() {
+    //     if (!$scope.mapAlreadyLoaded) {
+    //       $scope.showGoogleMap();
+    //       $scope.mapAlreadyLoaded = false;
+    //     }
+    //   }, 500);
+    // });
+
+    $scope.showGoogleMap = function() {
+      $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
           $scope.options = {scrollwheel: false};
 
           var mapContainer = document.getElementsByTagName("ion-pane")[0];
@@ -160,8 +177,7 @@ angular.module('uguru.util.controllers')
             zoomControl: true,
             zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
           }
-          // console.log(mapOptions);
-          // var actual_map = $scope.map.control.getGMap();
+
           actual_map = new google.maps.Map(
                   mapContainer,
                   mapOptions
@@ -169,24 +185,12 @@ angular.module('uguru.util.controllers')
 
           $scope.actual_map = actual_map
 
-          // var input = document.getElementById('search-box-input');
-          // var searchBox = new google.maps.places.SearchBox(input);
-          // var input = document.getElementById('search-box-input');
-          // $scope.autocomplete = new google.maps.places.Autocomplete(input);
-          // $scope.autocomplete.bindTo('bounds', actual_map);
-
-          // google.maps.event.addListener($scope.autocomplete, 'place_changed', function() {
-          //   console.log('place changed');
-          // });
-
           $scope.marker = new google.maps.Marker({
             position: initMapCoords,
             map: actual_map,
             draggable:true,
-            animation: google.maps.Animation.DROP
+            // animation: google.maps.Animation.DROP
           });
-
-
 
           $scope.geocoder = new google.maps.Geocoder();
           if ($scope.requestPosition) {
@@ -197,36 +201,22 @@ angular.module('uguru.util.controllers')
               $scope.requestPosition.coords.longitude
               );
           }
+    }
 
-          // } else {
 
-          //   $scope.getAddressFromLatLng(
-          //     $scope.geocoder,
-          //     $scope.user.university.location.latitude,
-          //     $scope.user.university.location.longitude);
+    $scope.$on('$ionicView.afterEnter', function() {
 
-          // }
 
-          google.maps.event.addListener($scope.marker, 'dragend', function()
-          {
-              $scope.marker.setAnimation(google.maps.Animation.BOUNCE);
-              $scope.getAddressFromLatLng($scope.geocoder, $scope.marker.getPosition().lat(), $scope.marker.getPosition().lng())
 
-              // $timeout(function() {
-              //   $scope.marker.setAnimation(null);
-              // }, 1000)
-          });
 
-          // google.maps.event.addListener($scope.marker, 'drag', function()
+          // google.maps.event.addListener($scope.marker, 'dragend', function()
           // {
+          //     $scope.marker.setAnimation(google.maps.Animation.BOUNCE);
           //     $scope.getAddressFromLatLng($scope.geocoder, $scope.marker.getPosition().lat(), $scope.marker.getPosition().lng())
 
-          //     $timeout(function() {
-          //       $scope.marker.setAnimation(null);
-          //     }, 1000)
+
           // });
 
-      // }
 
     });
 

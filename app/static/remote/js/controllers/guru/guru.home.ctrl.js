@@ -64,9 +64,60 @@ angular.module('uguru.guru.controllers')
   });
 
   // $scope.registerPushCordova = function () {
-
+    $scope.user.summmer_15 = false;
+    $scope.user.uber_friendly = false;
 
   // }
+
+  $scope.measureCompletedProfile = function(user) {
+
+    var attributes = ['name', 'email', 'majors', 'guru_courses', 'push_notifications', 'guru_description', 'summmer_15', 'uber_friendly', 'profile_url'];
+    count = 0;
+    if (user.name.length > 0) {
+      count += 1;
+    }
+
+    if (user.email && user.email.length > 0) {
+      count += 1;
+    }
+
+    if (user.majors && user.majors.length > 0) {
+      count += 1;
+    }
+
+    if (user.guru_courses && user.guru_courses.length > 0) {
+      count += 1;
+    }
+
+    if (user.current_device && user.current_device.push_notif_enabled) {
+      count += 1;
+    }
+
+    if (user.guru_description && user.guru_description.length > 0) {
+      count += 1
+    }
+
+    if (user.summer_15) {
+      count += 1;
+    }
+
+    if (user.uber_friendly) {
+      count += 1;
+    }
+
+
+    if (user.profile_url && user.profile_url !== "https://graph.facebook.com/10152573868267292/picture?width=100&height=100") {
+      count += 1
+    }
+
+
+    return parseInt((count / attributes.length) * 100);
+
+  }
+
+  $scope.completedProfilePercentage = $scope.measureCompletedProfile($scope.user);
+
+
   $scope.registerPush = function() {
       if (!$scope.user.current_device.push_notif_enabled && !$scope.user.current_device.push_notif) {
         console.log('user turning OFF first time, never even said yes');
@@ -360,6 +411,8 @@ angular.module('uguru.guru.controllers')
     $scope.$on('$ionicView.beforeEnter', function(){
       User.getUserFromServer($scope, null, $state);
       // $scope.guru.profile_percent_complete = $scope.calculateGuruProfilePercentage();
+
+
       console.log('guru home view before Enter');
       if (window.StatusBar) {
           StatusBar.styleLightContent();

@@ -1,4 +1,4 @@
-angular.module('uguru.student.controllers')
+angular.module('uguru.guru.controllers')
 
 //ALL student controllers
 .controller('GuruProfileController', [
@@ -42,7 +42,8 @@ angular.module('uguru.student.controllers')
         formData.append('file', photofile);
         // var file_name = new Date().getTime().toString();
         formData.append('profile_url', $scope.user.id);
-
+        formData.append('profile_url', $scope.user.id);
+        $scope.loader.show();
         $scope.user.createObj($scope.user, 'files', formData, $scope);
     };
 

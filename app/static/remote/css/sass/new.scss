@@ -2160,7 +2160,7 @@ a.sans-bold {
   }
   .guru-intro-wrapper {
     p {
-      color:rgba(255,255,255,0.9);
+      color:rgba(0,0,0,1) !important;
     }
   }
 }
@@ -2390,4 +2390,71 @@ p {
 .button-positive.button-full.button-positive-inverted.activate, {
   background-color:white;
   color:$positive;
+}
+
+.settings-mobile #support-button{
+  color: $positive !important;
+  text-transform:uppercase;
+  font-weight:bold;
+  font-family: "OpenSans-Bold";
+  position:relative;
+  .student-profile-item {
+    .name {
+      text-transform: capitalize !important;
+    }
+  }
+}
+
+.role-tag {
+  background-color:transparent;
+  padding:0px 6px !important;
+  line-height:2.0em;
+  border: 1px solid $course-color;
+  color:$course-color;
+  font-family: "OpenSans-Bold";
+  text-transform: uppercase;
+  opacity:1;
+  font-size:50%;
+  position:absolute;
+  right:1.25em;
+  top:1.75em;
+}
+
+.settings-mobile .camera-icon-link {
+  position:absolute;
+  bottom:1.75em;
+  right: 0em;
+  z-index:20;
+  opacity:0.25;
+}
+
+.settings-mobile .icon.ion-camera {
+  font-size: 1.66em;
+}
+
+.settings-profile {
+  input {
+    padding-left: 1.5em;
+  }
+}
+
+.payment-cards {
+
+  .cards-container.item-avatar-left {
+    position:relative;
+    min-height:0 !important;
+  }
+
+  .default-card-class {
+    float:right;
+  }
+
+  .card-img{
+    position:absolute;
+    width: auto !important;
+    height:20px !important;
+    border-radius:0px !important;
+
+  }
+
 }

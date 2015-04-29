@@ -1,4 +1,4 @@
-<ion-view class='request-status' hide-nav-bar='true' cache-view='false'>
+<ion-view class='request-status' hide-nav-bar='true'>
 
   <ion-header-bar class="header-bar header-bar-dark">
 
@@ -63,7 +63,7 @@
               <button class='button button-full button-thin button-guru' ng-click='rejectStudent()'> Reject </button>
           </div>
           <div class='pure-u-1-2'>
-              <button class='button button-full button-guru button-semibold' ng-click='goToConfirmProposal(proposal)'> Accept
+              <button class='button button-full button-guru button-semibold' ng-click='goToStudentCalendar(proposal.student_calendar)'> Accept
               </button>
           </div>
         </div>

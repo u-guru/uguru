@@ -39,17 +39,17 @@ angular.module('uguru.student.controllers')
 
     $scope.requestPushNotifications = function() {
 
+      var iosConfig = {
+          "badge": true,
+          "sound": true,
+          "alert": true,
+      }
+
       $cordovaPush.register(iosConfig).then(function(deviceToken) {
         // Success -- send deviceToken to server, and store for future use
         console.log("deviceToken: " + deviceToken)
 
         console.log("Register success " + deviceToken);
-
-        var iosConfig = {
-          "badge": true,
-          "sound": true,
-          "alert": true,
-        }
 
 
         if ($scope.platform.ios) {
@@ -60,7 +60,9 @@ angular.module('uguru.student.controllers')
             $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
         }
 
-      })
+      }, function(err) {
+        console.log(err);
+      });
 
     };
   }

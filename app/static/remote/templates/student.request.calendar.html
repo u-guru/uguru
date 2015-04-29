@@ -1,12 +1,20 @@
 
 
-<ion-view hide-nav-bar="true" class="student-request-calendar" >
+<ion-view hide-nav-bar="true" class="student-request-calendar">
 
-    <ion-header-bar class='header-bar'>
-        <a class='button button-clear button-back' nav-direction="back" href="#/student-request">Back</a>
+    <ion-header-bar class='header-bar' ng-hide='user.guru_mode'>
+        <a ng-show='!viewOnly' class='button button-clear button-back' nav-direction="back" href="#/student-request">Back</a>
+        <a ng-show='viewOnly' class='button button-clear button-back' ng-click='goBack()'>Back</a>
         <h5 class="title">Availability</h5>
-        <a class='button button-clear button-back' ui-sref='^.request-location'>Next</a>
+        <a ng-show='!viewOnly'class='button button-clear button-back' nav-direction='forward' href='#/request-location'>Next</a>
     </ion-header-bar>
+
+    <ion-header-bar class='header-bar' ng-show='user.guru_mode'>
+        <a  class='button button-clear button-back' ng-click='goBack()'>Back</a>
+            <h5 class="title">Availability</h5>
+        <a class='button button-clear button-back' ng-click='goToConfirmProposal()'>Next</a>
+    </ion-header-bar>
+
     <ion-header-bar class='bar-subheader calendar-subheader'>
         <div class='pure-g-c center'>
             <div class='pure-u-1-2 auto-margin'>
@@ -29,7 +37,7 @@
 
     </ion-tabs> -->
 
-    <ion-content style='background-color' class='course-list-container' >
+    <ion-content style='background-color' class='course-list-container'>
       <ion-list>
         <ion-item class="item" ng-repeat="hour_int in day_rows" style="padding:0px; margin:0px;">
           <div class='pure-g-c calendar-row'>

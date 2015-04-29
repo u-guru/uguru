@@ -1,8 +1,8 @@
  <ion-view ng-controller="AddPaymentController" hide-nav-bar="true">
-  <ion-header-bar class="header-bar">
+  <ion-header-bar class='header-bar' ng-click='goBack()'>
 
-        <a class="button button-clear button-back"  ng-click='goBack()'>Back</a>
-        <h5 class="title uppercase">{{headerText}}</h5>
+        <a class='button button-clear button-back' ng-click='goBack()'>Back</a>
+        <h5 class="title bold sans-bold" style='left:0px !important; right:0px !important;'>{{headerText}}</h5>
         <a class="button button-clear button-back" ng-click="addPaymentActionBtn()">{{actionButtonText}}</a>
   </ion-header-bar>
 
@@ -11,9 +11,9 @@
       <div class="list list-inset">
         <label class="item item-input margin-0">
           <i class="icon ion-card placeholder-icon font-size"></i>
-          <input style="border:0px; width:50%" max="20"name="card-input" id="card-input" class="payment-box" placeholder="1234 5678 9012 3456"></input>
-          <input max="2" style="border:0px; margin-left:20px;" id="mm-input" placeholder="MM" class="payment-box">
-          <input max="2" style="border:0px; margin-left:5px;" id="yy-input" placeholder="YY" class="payment-box">
+          <input style="border:0px; width:50%" max="20"name="card-input" id="card-input" type="number"class="payment-box" placeholder="1234 5678 9012 3456"></input>
+          <input max="2" style="border:0px; margin-left:20px;" id="mm-input" placeholder="MM" type="number" class="payment-box">
+          <input max="2" style="border:0px; margin-left:5px;" id="yy-input" placeholder="YY" type="number" class="payment-box">
         </label>
       </div>
 

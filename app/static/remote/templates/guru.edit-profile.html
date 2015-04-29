@@ -31,9 +31,9 @@
           <button class='button button-clear button-positive'>edit</button>
         </ion-item>
         <ion-item class='icon item-button-right' ng-click='addMajorModal.show()'>
-          My Major
-          <p ng-show='user.majors && user.majors.length > 0'> {{user.majors[0].name}} </p>
-          <button class='button button-clear button-positive'>edit</button>
+          My Majors
+          <p ng-show='user.majors && user.majors.length > 0'> <div ng-repeat="major in user.majors">{{major.name}} </div></p>
+          <button class='button button-clear button-positive'>ADD</button>
         </ion-item>
         <!-- <ion-item class='icon item-button-right'>
           My weekly availability

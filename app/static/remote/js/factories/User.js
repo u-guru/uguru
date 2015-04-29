@@ -38,6 +38,8 @@ angular.module('uguru.user', [])
         user.course_guru_dict = {};
         user.gurus = [];
         user.current_hourly = 10;
+        user.uber_friendly = false;
+        user.summer_15 = false;
 
         var user_cards = user.cards;
         for (var i = 0; i < user_cards.length; i++) {
@@ -315,6 +317,8 @@ angular.module('uguru.user', [])
         $scope.user.student_avg_rating = user.student_avg_rating;
         $scope.user.student_ratings = user.student_ratings;
         $scope.user.guru_ratings = user.guru_ratings;
+        $scope.user.summer_15 = user.summer_15;
+        $scope.user.uber_friendly = user.uber_friendly;
 
         $scope.user.official_guru_grade = user.official_guru_grade;
         $scope.user.grade_dict = user.grade_dict;
@@ -362,20 +366,20 @@ angular.module('uguru.user', [])
         }
 
         //student proposals
-        if ($scope.user.guru_mode && $scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
+        // if ($scope.user.guru_mode && $scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
 
-            $timeout(function() {
-              var first_active_proposal = $scope.user.active_proposals[0];
-              var paramPayload = {
-                requestObj:JSON.stringify(first_active_proposal.request),
-                proposalObj: JSON.stringify(first_active_proposal)
-              }
+        //     $timeout(function() {
+        //       var first_active_proposal = $scope.user.active_proposals[0];
+        //       var paramPayload = {
+        //         requestObj:JSON.stringify(first_active_proposal.request),
+        //         proposalObj: JSON.stringify(first_active_proposal)
+        //       }
 
-                if ($state.current.name === 'root.guru.home') {
-                    $state.go('^.student-available', paramPayload);
-                }
-            }, 500)
-        }
+        //         if ($state.current.name === 'root.guru.home') {
+        //             $state.go('^.student-available', paramPayload);
+        //         }
+        //     }, 500)
+        // }
 
         if (($scope.user.pending_guru_ratings || $scope.user.pending_student_ratings) &&
                             (($scope.user.pending_guru_ratings.length > 0 && !$scope.user.guru_mode) ||
@@ -482,6 +486,18 @@ angular.module('uguru.user', [])
                   return {
                         course: obj,
                         'add_guru_course': true
+                  }
+              }
+              if (arg === 'remove_guru_course') {
+                  return {
+                        course: obj,
+                        'remove_guru_course': true
+                  }
+              }
+              if (arg === 'remove_student_course') {
+                  return {
+                        course: obj,
+                        'remove_student_course': true
                   }
               }
               if (arg === 'email') {
@@ -651,13 +667,17 @@ angular.module('uguru.user', [])
                     .customPOST(payload,'',undefined,{'Content-Type': undefined})
                     .then(function(file){
                         console.log(JSON.stringify(file.plain()));
-                        // $scope.request.files = [file.plain()];
-                        if ($state.current.name === 'root.guru-profile-edit') {
-                            $scope.user.profile_url = file.plain().url;
-                        } else {
-                            $scope.root.vars.request.files = [file.plain()];
-                        }
+                            // $scope.request.files = [file.plain()];
 
+
+                            if ($scope.root.vars.request || $state.current.name === 'root.student-request') {
+                                $scope.root.vars.request.files = [file.plain()];
+                            } else {
+                                $scope.user.profile_url = file.plain().url;
+                                $localstorage.setObject('user', $scope.user);
+                            }
+                            $scope.loader.hide();
+                            $scope.success.show(0, 1500);
 
                     }, function(err){
                         console.log(err);

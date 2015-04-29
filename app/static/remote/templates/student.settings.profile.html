@@ -1,11 +1,10 @@
-<ion-view title="Your Profile" hide-nav-bar='true'>
-    <ion-header-bar class='header-bar'>
-        <a class='button button-clear positive' nav-direction="back" href="#/home">Back</a>
+<ion-view hide-nav-bar='true' class='settings-profile'>
+        <ion-header-bar class='header-bar'>
+            <a class='button button-clear positive' ng-click="goBack()">Back</a>
         <h5 class="title">Profile</h5>
       </ion-header-bar>
     <ion-content>
     <div class="account">
-          <div class="center">
 		        	<div class="list margin-bottom-10">
 			            <label class="item item-input">
 			                <div class="tag">First</div><input name="signup-first-name" type="text" ng-model="user.first_name" placeholder="your first name">
@@ -32,6 +31,5 @@
 		              </button>
 		        	</div>
 		    </div>
-		</div>
     </ion-content>
   </ion-view>

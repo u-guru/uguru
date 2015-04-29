@@ -205,10 +205,17 @@ class UserOneView(restful.Resource):
 
         # if not request.json.get('auth_token'):
         #     abort(400)
+
         if not user:
             abort(400)
         else:
+
+            if not user.profile_url:
+                user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
+                db_session.commit()
+
             return user, 200
+
 
     @marshal_with(UserSerializer)
     def put(self, _id):
@@ -226,10 +233,13 @@ class UserOneView(restful.Resource):
             user.university_id = request.json.get('university_id')
 
         if request.json.get('email'):
-            user.email = request.json.get('email')
 
-        if request.json.get('phone_number'):
-            user.phone_number = request.json.get('phone_number')
+            if not user.email:
+                user.email = request.json.get('email_address')
+
+        if not user.phone_number:
+            if request.json.get('phone_number'):
+                user.phone_number = request.json.get('phone_number')
 
         if request.json.get('profile_info'):
             profile_info_dict = request.json.get('profile_info')
@@ -298,6 +308,7 @@ class UserOneView(restful.Resource):
         if request.json.get('add_user_major'):
             major = request.json.get('major')
             major_id = major.get('id')
+            print major, major_id
             if not major_id:
                 abort(404)
             else:
@@ -340,9 +351,18 @@ class UserOneView(restful.Resource):
         if request.json.get('remove_guru_course'):
             course = request.json.get('course')
             course_id = course.get('id')
+            print course, course_id
             c = Course.query.get(int(course_id))
-            if c in user.guru_courses:
-                user.guru_courses.remove(c)
+            if user in c.gurus:
+                # c.gurus.remove(user)
+                from app.models import guru_courses_table
+                db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == user.id))
+                # user.guru_courses.remove(c)
+            # for user_course in user.guru_courses:
+            #     if user_course.id == c.id:
+            #         user_course.student_id = None
+            #         db_session.commit()
+            #         print c.short_name, 'removed'
             db_session.commit()
 
         if request.json.get('remove_major'):
@@ -550,6 +570,7 @@ class UserRequestView(restful.Resource):
         if not user:
             abort(404)
 
+        print request.json
         if request.json.get('proposal'):
             proposal_json = request.json
             print request.json
@@ -564,6 +585,22 @@ class UserRequestView(restful.Resource):
             if proposal.status == Proposal.GURU_ACCEPTED:
                 proposal.request.status = Request.STUDENT_RECEIVED_GURU
                 proposal.request.guru_id = user_id
+
+                calendar = Calendar.initFromProposal(proposal, 2)
+                proposal.request.guru_calendar_id = calendar.id
+                calendar_events_json = proposal_json.get('guru_calendar')
+
+                if calendar_events_json:
+                    day_index = 0
+                    for day_arr in calendar_events_json:
+                        index = 0
+                        for time_json in day_arr:
+                            if time_json.get('is_guru') and time_json.get('start_time'):
+                                calendar_event = Calendar_Event.initFromJson(time_json, calendar, day_index)
+                            index += 1
+                        day_index += 1
+
+
 
                 student = proposal.request.student
 
@@ -765,6 +802,7 @@ class FileView(restful.Resource):
 
                 user.profile_url = file_obj.url
                 print user.name,'saved', file_obj.url
+                db_session.commit()
 
             return file_obj, 200
 
@@ -1409,7 +1447,7 @@ class UserView(restful.Resource):
             logging.info('Incoming user (fb_id %s) now has a Uguru account' % request.json.get("id"))
             #create new user
             new_user = User(
-                name=request.json.get("name"),
+                name=request.json.get("name").title(),
                 email=request.json.get("email"),
                 password=None,
                 profile_url=request.json.get("profile_url"),

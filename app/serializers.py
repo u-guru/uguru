@@ -104,6 +104,7 @@ request_fields['course'] = fields.Nested(course_fields)
 request_fields['status'] = fields.Integer(attribute='status')
 request_fields['files'] = fields.List(fields.Nested(file_fields))
 request_fields['student_calendar'] = fields.List(fields.Nested(calendar_fields))
+request_fields['guru_calendar'] = fields.List(fields.Nested(calendar_fields))
 # request_fields['files'] = fields.List(fields.Nested(file_fields))
 # request_fields['events'] = fields.List(fields.Nested(event_fields))
 

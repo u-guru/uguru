@@ -39,7 +39,7 @@
                         <h5>For at least {{root.vars.request._length.hours}} hrs {{valueToMinutes[root.vars.request._length.minutes - 1]}} min</h5>
                         <i class="icon icon-right ion-chevron-right"></i>
                     </a>
-                    <a ng-show='root.vars.request._length.hours && (root.vars.request._length.minutes == 1)' class="item green-border request-item item-icon-right" href='#/request-session-length' nav-direction="forward">
+                    <a ng-show='root.vars.request._length.hours && (root.vars.request._length.minutes === 1 || root.vars.request._length.minutes === 0)' class="item green-border request-item item-icon-right" href='#/request-session-length' nav-direction="forward">
                         <h5>For at least {{root.vars.request._length.hours}} hr </h5>
                         <i class="icon icon-right ion-chevron-right"></i>
                     </a>

@@ -217,6 +217,7 @@ angular.module('uguru.util.controllers')
         // $scope.showSuccess('Course Saved!');s
         $timeout(function() {
           $scope.addCourseModal.hide();
+          $scope.success.show(0, 1500);
         }, 1000);
       }
 

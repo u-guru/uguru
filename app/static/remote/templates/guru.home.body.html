@@ -25,9 +25,9 @@
               How to increase your ranking
               <i class='icon ion-chevron-right icon-small'></i>
             </a>
-            <a class='item white item-badge-right item-icon-right' href="#/guru-profile" nav-direction="forward">
+            <a class='item white item-badge-right item-icon-right' href="#/guru-profile" nav-direction="forward" >
               Complete your profile
-              <span class='complete-profile-badge badge badge-danger'>60%</span>
+              <span class='complete-profile-badge badge badge-danger'>{{(100 - completedProfilePercentage)}}%</span>
               <i class='icon ion-chevron-right icon-small'></i>
             </a>
             <ion-toggle ng-model="user.current_device.push_notif_enabled" ng-show='(platform.ios || platform.android) && !user.current_device.push_notif_enabled' ng-change="registerPush()" toggle-class="toggle-positive" class='white'>Turn on notifications

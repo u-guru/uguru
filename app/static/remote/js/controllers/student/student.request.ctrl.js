@@ -140,7 +140,10 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.goBackFromRequestsToHome = function() {
-      $ionicHistory.goBack();
+      if (confirm('Are you sure? Request progress will be lost')) {
+        $ionicHistory.goBack();
+        $scope.root.vars.request = null;
+      }
     };
 
     $scope.initRequestObj = function() {
@@ -264,43 +267,42 @@ angular.module('uguru.student.controllers')
     $scope.person_guru_checkbox = false;
     $scope.requestPosition = null;
 
-    $scope.request = $scope.initRequestObj();
+      $scope.request = $scope.initRequestObj();
 
-    if (!$scope.root.vars.request) {
-      $scope.course = JSON.parse($stateParams.courseObj);
-      $scope.root.vars.request = {
-        type: {
-          in_person: true,
-          online: true
-        },
-        _length: {hours:2, minutes:15},
-        calendar_selected:false,
-        course: $scope.course,
-        description:null,
-        location: null,
-        files: [],
-        calendar: {
-          data: {},
-          calendar_selected: false
-        },
-        contact: {
-          email:false,
-          phone: false,
-          push_notif: false,
-          email_address: '',
-          phone_number: ''
+      if (!$scope.root.vars.request) {
+
+        $scope.root.vars.request = {
+            type: {
+              in_person: true,
+              online: true
+            },
+            _length: {hours:2, minutes:1},
+            calendar_selected:false,
+            course: $scope.course || JSON.parse($stateParams.courseObj),
+            description:null,
+            location: null,
+            files: [],
+            calendar: {
+              data: {},
+              calendar_selected: false
+            },
+            contact: {
+              email:false,
+              phone: false,
+              push_notif: false,
+              email_address: '',
+              phone_number: ''
+             }
+          }
         }
+        else {
+          $scope.course = $scope.root.vars.request.course;
+          if ($scope.platform.mobile) {
+            $scope.root.vars.request.contact.push_notif = $scope.user.current_device.push_notif;
+          }
         }
 
         //set it to the current token (if it exists);
-        if ($scope.platform.mobile) {
-          $scope.root.vars.request.contact.push_notif = $scope.user.current_device.push_notif;
-        }
-
-      }
-      else {
-        $scope.course = $scope.root.vars.request.course;
-    }
 
 
     $scope.valueToMinutes = [null, '15', '30', '45'];

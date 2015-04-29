@@ -10,19 +10,22 @@ angular.module('uguru.student.controllers')
   '$ionicHistory',
   '$ionicModal',
   '$cordovaKeyboard',
+  '$ionicViewSwitcher',
   function($scope, $state, $timeout, $ionicHistory,
-  	$ionicModal, $cordovaKeyboard) {
+  	$ionicModal, $cordovaKeyboard, $ionicViewSwitcher) {
     $scope.editMode = false;
 	$scope.progress_active = false;
 
 
 	$scope.saveCourses = function() {
 		$scope.rootUser.updateLocal($scope.user);
-		// $scope.showSuccess('Saved!');
+		$scope.success.show(0, 1500);
 	}
 
     $scope.goBack = function() {
+        $ionicViewSwitcher.nextDirection('back'); // 'forward', 'back', etc.
         $ionicHistory.goBack();
+        // $(state).go('^.student-home');
     }
 
 	$scope.toggleEditMode = function() {
@@ -34,6 +37,7 @@ angular.module('uguru.student.controllers')
 		else {
 			$scope.shouldShowDelete = false;
 			$scope.rootUser.updateLocal($scope.user);
+            $scope.success.show(0, 1500);
 		}
 	}
 
@@ -57,6 +61,20 @@ angular.module('uguru.student.controllers')
       if (window.cordova && window.cordova.plugins.Keyboard) {
           $cordovaKeyboard.close();
       }
+    }
+
+    $scope.studentCourseDeleteUpdate = function(index) {
+        var student_course = $scope.user.student_courses[index];
+        $scope.user.student_courses.splice(index, 1);
+        $scope.user.updateAttr('remove_student_course', $scope.user, student_course, null, $scope);
+        $scope.success.show(0, 1500);
+    }
+
+    $scope.guruCourseDeleteUpdate = function(index) {
+        var guru_course = $scope.user.guru_courses[index];
+        $scope.user.guru_courses.splice(index, 1);
+        $scope.user.updateAttr('remove_guru_course', $scope.user, guru_course, null, $scope);
+        $scope.success.show(0, 1500);
     }
 
 	// $scope.showSuccess = function(msg) {

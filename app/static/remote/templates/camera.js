@@ -14,14 +14,14 @@ angular.module('uguru.root.services')
                         var source_type = 1;
                       }
                         var options = {
-                          quality: 100,
+                          quality: 30,
                           destinationType: Camera.DestinationType.DATA_URL,
                           sourceType: Camera.PictureSourceType.CAMERA,
                           allowEdit: true,
                           encodingType: Camera.EncodingType.JPEG,
-                          targetWidth: 1024,
-                          targetHeight: 1024,
-                          popoverOptions: CameraPopoverOptions,
+                          // targetWidth: 1024,
+                          // targetHeight: 1024,
+                          // popoverOptions: CameraPopoverOptions,
                           saveToPhotoAlbum: false
                         };
 
@@ -31,8 +31,14 @@ angular.module('uguru.root.services')
 
                             var image = document.getElementsByClassName('guru-profile-container')[0];
 
-                          } else {
+                          } else if ($state.current.name === 'root.student-home') {
+                            var image = document.getElementsByClassName('student-prof-pic')[0];
+                          }
+                          else
+                          {
                             var image = document.getElementsByClassName('attachment-container')[0];
+                          }
+
 
                           image.src = "data:image/jpeg;base64," + imageData;
 
@@ -49,6 +55,10 @@ angular.module('uguru.root.services')
                           var file_name = new Date().getTime().toString();
                           formData.append('filename', file_name);
 
+                          if (!$scope.root.vars.request) {
+                            formData.append('profile_url', $scope.user.id);
+                          }
+                          $scope.loader.show();
                           $scope.user.createObj($scope.user, 'files', formData, $scope);
                         }, function(err) {
                           console.log(err);

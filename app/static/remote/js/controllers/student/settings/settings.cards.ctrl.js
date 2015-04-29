@@ -6,9 +6,12 @@ angular.module('uguru.student.controllers')
   //All imported packages go here
   '$scope',
   '$state',
-  function($scope, $state) {
+  '$ionicHistory',
+  '$ionicViewSwitcher',
+  function($scope, $state, $ionicHistory, $ionicViewSwitcher) {
 
     $scope.goToEditCard = function(card) {
+
         $state.go('^.add-payment', {cardObj:JSON.stringify(card)});
     }
 

@@ -85,7 +85,6 @@ angular.module('uguru.util.controllers')
           $scope.$on('modal.shown', function() {
 
           if ($scope.addMajorModal.isShown() &&
-            !$scope.addUniversityModal.isShown() &&
               $localstorage.getObject('majors').length > 0) {
               $scope.keyboard_force_off = false;
 
@@ -188,9 +187,8 @@ angular.module('uguru.util.controllers')
 
         $scope.keyboard_force_off = true;
         $scope.user.majors.push(major);
-
+        $scope.success.show(0, 1000);
         $scope.major_search_text = '';
-        $scope.closeKeyboard();
         // $scope.showSuccess('Major Saved!');
         $timeout(function() {
           $scope.addMajorModal.hide();

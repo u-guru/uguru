@@ -29,12 +29,13 @@ angular.module('uguru.student.controllers', [])
   '$ionicPopover',
   '$cordovaStatusbar',
   '$ionicViewSwitcher',
+  'Camera',
 function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $q,
  	University, $templateCache, $ionaicHistory, $ionicBackdrop,
   User, $ionicHistory, CordovaPushWrapper, $ionicPlatform, $rootScope, $cordovaPush,
   $ionicPlatform, $ionicBackdrop, $document, $ionicPopover, $cordovaStatusbar,
-  $ionicViewSwitcher)     {
+  $ionicViewSwitcher, Camera)     {
   // .fromTemplate() method
   // if (!$scope.user.university && !$scope.user.university_id) {
   //   $state.go('^.onboarding-location');
@@ -181,18 +182,46 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     }
 
     $scope.switchToGuruMode = function() {
-      var goToGuruHome = function() {
-        $scope.bottomTabsDelegate.select(0);
-        $state.go('^.guru-home');
-      }
+      $scope.bottomTabsDelegate.select(1);
+      // var goToGuruHome = function() {
+
+      // }
       $scope.user.guru_mode = true;
-      $scope.user.updateAttr('guru_mode', $scope.user, true, goToGuruHome, $scope);
+      $ionicHistory.nextViewOptions({
+        historyRoot: true
+      });
+      console.log('going to guru mode');
+      $state.go('^.guru-home');
+      $scope.user.updateAttr('guru_mode', $scope.user, true, null, $scope);
     }
 
     $scope.goToRequest = function(course) {
       // $scope.root.button.showButtonPressedAndHide($event.target);
       $scope.loader.show();
       $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
+      $scope.root.vars.request = {
+            type: {
+              in_person: true,
+              online: true
+            },
+            _length: {hours:2, minutes:1},
+            calendar_selected:false,
+            description:null,
+            location: null,
+            files: [],
+            calendar: {
+              data: {},
+              calendar_selected: false
+            },
+            contact: {
+              email:false,
+              phone: false,
+              push_notif: false,
+              email_address: '',
+              phone_number: ''
+             }
+          }
+      $scope.root.vars.request.course = course;
       $state.go('^.student-request', {courseObj:JSON.stringify(course)});
     }
 
@@ -269,7 +298,7 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       if (!$scope.user.auth_token) {
         $scope.signupModal.show();
       } else {
-        $state.go('^.settings-cards')
+        $state.go('^.student-settings-cards');
       }
     }
 
@@ -283,9 +312,38 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       $scope.signupModal.show();
     }
 
+    $scope.takePhoto = function() {
+    if ($scope.platform.mobile) {
+      Camera.takePicture($scope);
+    } else {
+      var element = document.getElementById('guru-file-input-web')
+      element.click();
+    }
+  }
 
+  $scope.file_changed = function(element) {
+        var photofile = element.files[0];
+        var reader = new FileReader();
+        var image = document.getElementsByClassName('settings-prof-pic')[0];
+
+        reader.onload = function(e) {
+            image.src = e.target.result;
+        };
+
+        reader.readAsDataURL(photofile);
+        // $scope.root.vars.request.files.push(true);
+
+        var formData = new FormData();
+
+        formData.append('file', photofile);
+        // var file_name = new Date().getTime().toString();
+        formData.append('profile_url', $scope.user.id);
+
+        $scope.user.createObj($scope.user, 'files', formData, $scope);
+    };
 
     $scope.goToEditProfile = function() {
+      $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
       $state.go('^.settings-profile');
     }
 
@@ -433,7 +491,7 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       if ($scope.bottomTabsDelegate.selectedIndex() === 1) {
         $scope.showOnboardingAddClass();
       }
-
+      console.log($scope.user.profile_url);
       // $timeout(function() {
       //   document.querySelectorAll('.session-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-1.svg')";
       //   document.querySelectorAll('.request-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-3.svg')";

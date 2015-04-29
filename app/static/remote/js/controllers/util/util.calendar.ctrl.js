@@ -8,19 +8,81 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   '$ionicTabsDelegate',
   '$ionicHistory',
+  '$stateParams',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $ionicTabsDelegate, $ionicHistory) {
+ 	$ionicModal, $ionicTabsDelegate, $ionicHistory, $stateParams) {
 
-      $scope.day_split_segments = 24;
-      $scope.default_num_days = 2;
-      $scope.day_rows = [];
-      $scope.modalShown = false;
+    $scope.day_split_segments = 24;
+    $scope.default_num_days = 2;
+    $scope.day_rows = [];
+    $scope.modalShown = false;
+    // $scope.root.vars.request = {calendar: {}};
+
+    //guru mode only - ignore for now
+    $scope.proposal = null;
 
     $scope.hideModal = function() {
       if ($scope.modalShown) {
         $scope.modalShown = false;
         $scope.calendarModal.hide();
       }
+    }
+
+    $scope.paint = function(calendar_grid, color) {
+      if (!calendar_grid) {
+        calendar_grid = $scope.calendar.data;
+      }
+
+      if ($scope.user.guru_mode) {
+        console.log('calendar_grid', calendar_grid);
+      }
+
+      var count = 0;
+      var todays_date = new Date().getUTCDate()
+      $timeout(function() {
+
+        for (var i = 0; i < calendar_grid.length; i++) {
+        js_time = new Date(calendar_grid[i].start_time);
+        event_date = js_time.getUTCDate();
+        event_hours = js_time.getUTCHours();
+        offset_date = event_date - todays_date;
+        console.log(event_date, offset_date);
+        var target = $scope.getElementbyCalenderWidthHeight(offset_date, event_hours);
+        console.log(target);
+        if (!color) {
+          target.style.background = 'grey';
+          target.style.color = 'white';
+          target.childNodes[0].background = 'grey';
+        } else {
+          target.style.background = '#68b2a5';
+          target.style.color = 'white';
+          target.childNodes[0].background = '#68b2a5';
+        }
+      }
+
+      },1000)
+
+        // if (calendar_grid[j][i].start_time) {
+        //   var target = $scope.getElementbyCalenderWidthHeight(j, i);
+        //   target.style.background = 'grey';
+        //   target.style.color = 'inherit';
+        // }
+    }
+
+    $scope.processStudentCalendar = function(student_calendar) {
+      num_columns = student_calendar.length;
+      for (var i = 0; i < num_columns; i ++) {
+          start_time = student_calendar[i]['start_time']
+          end_time = student_calendar[i]['end_time']
+          console.log(start_time, end_time);
+      }
+      return student_calendar;
+    }
+
+     $scope.getElementbyCalenderWidthHeight = function(width, height) {
+      var target_element_str = width + ',' + height;
+      var target_element = document.getElementById(target_element_str);
+      return target_element;
     }
 
     $scope.goBackToRequests = function() {
@@ -36,19 +98,71 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $scope.goBackToRequests = function() {
+
+    $scope.goBack = function() {
       $ionicHistory.goBack();
     };
 
-    if (!$scope.calendar) {
-      $scope.calendar = {
-          width: 2,
-          height: 24,
-          num_selected:0
+    $scope.initCalendar = function() {
+      if ($scope.user.guru_mode && $stateParams && $stateParams.proposalObj) {
+        $scope.calendar = {
+              width: 2,
+              height: 24,
+              num_selected:0
+        }
+
+        console.log('proposal', $scope.proposal);
+        $scope.proposal = JSON.parse($stateParams.proposalObj);
+        //create student_calendar
+        $scope.student_calendar = $scope.processStudentCalendar($scope.proposal.student_calendar[0].calendar_events);
+
+
+        $scope.paint($scope.student_calendar);
+        //parse the proposal
+        console.log($scope.student_calendar);
+        $scope.root.vars.request = {}
+        $scope.root.vars.request.calendar = $scope.calendar;
       }
 
+      else if (!$scope.user.guru_mode && $stateParams.proposalObj) {
+
+          $scope.calendar = {
+              width: 2,
+              height: 24,
+              num_selected:0
+          }
+
+          $scope.request = JSON.parse($stateParams.proposalObj);
+          console.log('request',$scope.request);
+
+          $scope.guru_calendar = $scope.processStudentCalendar($scope.request.guru_calendar[0].calendar_events);
+          $scope.student_calendar = $scope.processStudentCalendar($scope.request.student_calendar[0].calendar_events);
+          $scope.paint($scope.student_calendar);
+          $scope.paint($scope.guru_calendar, '#68b2a5');
+          $scope.viewOnly = true;
+
+          $scope.root.vars.request = {}
+          $scope.root.vars.request.calendar = $scope.calendar;
+      }
+      //if no calendar
+      if (!$scope.calendar) {
+          $scope.calendar = {
+              width: 2,
+              height: 24,
+              num_selected:0
+          }
+      }
 
     }
+
+    $scope.goToConfirmProposal = function() {
+
+      // console.log($scope.formatCalendarEventJson($scope.calendar.data));
+      $scope.proposal.guru_calendar = $scope.formatCalendarEventJson($scope.calendar.data).slice();
+      console.log('guru calendar', JSON.stringify($scope.proposal.guru_calendar[0][3]));
+      $state.go('^.guru-confirm-proposal', {proposalObj:JSON.stringify($scope.proposal)});
+    }
+
     var generateCalendarDataStorage = function(width, height) {
           var data_arr = new Array(width);
             for (var i = 0; i < width; i++) {
@@ -56,6 +170,9 @@ angular.module('uguru.util.controllers')
           }
           return data_arr;
     }
+
+    //initiate calendar
+    $scope.initCalendar();
 
     $scope.calendar.data = generateCalendarDataStorage($scope.calendar.width, $scope.calendar.height)
     $scope.root.vars.request.calendar.data = generateCalendarDataStorage($scope.calendar.width, $scope.calendar.height);
@@ -89,12 +206,6 @@ angular.module('uguru.util.controllers')
       return count;
     }
 
-    $scope.getElementbyCalenderWidthHeight = function(width, height) {
-      var target_element_str = width + ',' + height;
-      var target_element = document.getElementById(target_element_str);
-      return target_element;
-    }
-
 
     $scope.hideModalAndSave = function() {
       if (!$scope.calendar.num_selected) {
@@ -110,12 +221,6 @@ angular.module('uguru.util.controllers')
     }
 
 
-
-    $scope.getSelectedCalendarCoordinates = function() {
-
-
-
-    }
 
     // return string format of time --> 0 --> "12:00am"
     $scope.generateDaySegmentArr = function(size) {
@@ -174,22 +279,13 @@ angular.module('uguru.util.controllers')
           }
         }
       }
+      return calendar_grid;
 
     }
 
     //give me that 'day' of the month. So if today was March 11, 2015, just give me 11, nothing else;
     $scope.getDayTimeFromNumDays = function(num) {
 
-    }
-
-    $scope.processStudentCalendar = function(student_calendar) {
-      num_columns = student_calendar.length;
-      for (var i = 0; i < num_columns; i ++) {
-          start_time = student_calendar[i]['start_time']
-          end_time = student_calendar[i]['end_time']
-          console.log(start_time, end_time);
-      }
-      return student_calendar;
     }
 
     $scope.$on('modal.shown', function(){
@@ -210,9 +306,14 @@ angular.module('uguru.util.controllers')
       var count = 0
       for (var i = 0; i < calendar_grid[0].length; i++) {
         for (var j = 0; j < calendar_grid.length; j++) {
-          if (calendar_grid[j][i]) {
+          if (!$scope.user.guru_mode && calendar_grid[j][i]) {
             count += 1;
           }
+
+          if ($scope.user.guru_mode && typeof(calendar_grid[j][i]) === "boolean" && calendar_grid[j][i]) {
+            count += 1;
+          }
+
         }
       }
       return count;
@@ -224,6 +325,12 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.clickCalendarGridElement = function($event, calendar_x, calendar_y, _target) {
+
+      if ($scope.viewOnly) {
+        return;
+      }
+
+      //get color of clicked target
       if ($event) {
         var target = $event.target;
         var targetBgColor = target.style.background;
@@ -233,14 +340,28 @@ angular.module('uguru.util.controllers')
       }
 
       //A calendar item was selected
-      if (!targetBgColor || targetBgColor === 'white') {
+      console.log(targetBgColor);
+      //if student mode & clicked
+      if (!$scope.user.guru_mode && (!targetBgColor || targetBgColor === 'white')) {
         $scope.calendar.data[calendar_x][calendar_y] = true;
         $scope.root.vars.request.calendar.data[calendar_x][calendar_y] = true;
         target.style.background = '#6C87B0';
         target.style.color = 'white';
         target.childNodes[0].background = '#6C87B0';
+      } else if ($scope.user.guru_mode && (targetBgColor === 'rgb(128, 128, 128)')) {
+        $scope.calendar.data[calendar_x][calendar_y] = true;
+        $scope.root.vars.request.calendar.data[calendar_x][calendar_y] = true;
+        target.style.background = '#6C87B0';
+        target.style.color = 'white';
+        target.childNodes[0].background = '#6C87B0';
+      } else if ($scope.user.guru_mode && targetBgColor === 'rgb(108, 135, 176)') {
+        $scope.calendar.data[calendar_x][calendar_y] = false;
+        $scope.root.vars.request.calendar.data[calendar_x][calendar_y] = false;
+        target.style.background = 'rgb(128, 128, 128)';
+        target.style.color = 'white';
+        target.childNodes[0].background = 'rgb(128, 128, 128)';
       }
-      //A calendar item was not selected
+      //A calendar item was unselected selected
       else {
         $scope.calendar.data[calendar_x][calendar_y] = false;
         $scope.root.vars.request.calendar.data[calendar_x][calendar_y] = false;
@@ -251,7 +372,10 @@ angular.module('uguru.util.controllers')
 
 
       $scope.calendar.num_selected = $scope.countCalendarSelected($scope.calendar.data);
+      console.log($scope.calendar.num_selected);
       $scope.root.vars.request.calendar_selected = true;
+
+      // $scope.formatCalendarEventJson($scope.calendar.data);
     }
 
   }
