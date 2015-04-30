@@ -357,7 +357,7 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     	$ionicHistory.clearHistory();
     	window.localStorage.clear();
     	$scope.bottomTabsDelegate.select(0);
-    	alert('Cache Cleared! Please close the app & open again');
+    	$scope.success.show(0,10000, 'Cache successfully cleared! Please close the app completely & open again.');
     }
 
     $scope.logoutUser = function() {
