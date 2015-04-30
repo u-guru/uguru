@@ -527,7 +527,8 @@ class UserRequestView(restful.Resource):
                     if boolean:
                         time_json['start_time'] = index
                         time_json['end_time'] = index + 1
-                    print time_json
+                    print 'time_json', time_json
+                    print 'day_offset', day_index
                     calendar_event = Calendar_Event.initFromJson(time_json, calendar, day_index)
                     index += 1
                 day_index += 1

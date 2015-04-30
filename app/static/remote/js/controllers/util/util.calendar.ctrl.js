@@ -201,6 +201,12 @@ angular.module('uguru.util.controllers')
             target.style.background = 'white';
             target.style.color = 'inherit';
             target.childNodes[0].background = 'white';
+          } else {
+            calendar_grid[j][i] = false;
+            var target = $scope.getElementbyCalenderWidthHeight(j, i);
+            target.style.background = 'white';
+            target.style.color = 'inherit';
+            target.childNodes[0].background = 'white';
           }
         }
       }

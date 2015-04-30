@@ -341,8 +341,13 @@ class Calendar_Event(Base):
 
         date_now = datetime.now()
         print 'date_now', date_now
+        try:
+            day_offset = date_now.replace(day=(date_now.day + day_offset), minute=0, second=0, microsecond=0)
+        except ValueError:
+            print 'Value Error! Resolving it now...'
+            if date_now.day >= 27:
+                day_offset = date_now.replace(month=date_now.month + 1, day=day_offset, minute=0, second=0, microsecond=0)
 
-        day_offset = date_now.replace(day=(date_now.day + day_offset), minute=0, second=0, microsecond=0)
         print 'day_offset', day_offset
 
         print start_time, end_time
