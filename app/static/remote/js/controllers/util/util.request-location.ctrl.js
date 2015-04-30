@@ -122,7 +122,7 @@ angular.module('uguru.util.controllers')
           },1500);
     }
 
-    $scope.$on('$ionicView.beforeEnter', function() {
+    $scope.$on('$ionicView.enter', function() {
       console.log('is entering location view before entering');
       if ($scope.root.vars.request.location && $scope.root.vars.request.location.latitude) {
           console.log('previous already stored, no need to re-draw');
@@ -135,6 +135,8 @@ angular.module('uguru.util.controllers')
 
       }
     });
+
+
 
 
     // $scope.$on('$ionicView.loaded', function() {
@@ -208,10 +210,40 @@ angular.module('uguru.util.controllers')
           }
     }
 
+    $scope.$on('$ionicView.loaded', function() {
+
+      if (document.getElementsByClassName('gm-style').length === 0) {
+            $timeout(function() {
+              $scope.showGoogleMap();
+              $scope.loader.hide();
+            }, 500);
+      }
+    });
+
 
     $scope.$on('$ionicView.afterEnter', function() {
 
 
+          if (document.getElementsByClassName('gm-style').length === 0) {
+            $timeout(function() {
+              $scope.showGoogleMap();
+              $scope.loader.hide();
+            }, 500);
+          }
+
+          $timeout(function() {
+              if (document.getElementsByClassName('gm-style').length === 0) {
+                $scope.showGoogleMap();
+                $scope.loader.hide();
+              }
+            }, 1000);
+
+          $timeout(function() {
+              if (document.getElementsByClassName('gm-style').length === 0) {
+                $scope.showGoogleMap();
+                $scope.loader.hide();
+              }
+            }, 1500);
 
 
           google.maps.event.addListener($scope.marker, 'dragend', function()

@@ -193,7 +193,14 @@ angular.module('uguru.student.controllers')
       // if ($scope.requestPosition) {
       //   $scope.request.position = $scope.user.position.coords;
       // }
+      //how to make sure the request shows
+      $scope.user.active_requests.push($scope.request);
+      User.getUserFromServer($scope, null, $state);
 
+
+      $scope.root.vars.request = null;
+      $scope.root.vars.request_form_recently_hidden = true;
+      $scope.root.vars.calendar_should_be_empty = true;
       $scope.failureFunction = function($scope) {
         $scope.contactingGuruModal.hide();
       };
@@ -225,9 +232,7 @@ angular.module('uguru.student.controllers')
 
       $scope.saveRequestToUser();
       $scope.contactingGuruModal.show();
-      $scope.root.vars.request = null;
-      $scope.root.vars.request_form_recently_hidden = true;
-      $scope.root.vars.calendar_should_be_empty = true;
+      $scope.root.vars.calendar
       $state.go('^.student-home');
       $timeout(function() {
         $scope.contactingGuruModal.hide();
