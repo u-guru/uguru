@@ -14,7 +14,7 @@
         </ion-tab>
 
         <ion-tab title="Settings" ng-show="bottomTabsDelegate.selectedIndex() === 2" icon-on="settings-icon" icon-off="settings-icon">
-          <div ng-show="bottomTabsDelegate.selectedIndex() === 2"ng-include="'remote/templates/student.settings.html'"></div>
+          <div ng-show="bottomTabsDelegate.selectedIndex() === 2"ng-include="base_url + 'templates/student.settings.html'"></div>
         </ion-tab>
     </ion-tabs>
 
