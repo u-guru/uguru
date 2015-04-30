@@ -356,7 +356,7 @@ class UserOneView(restful.Resource):
             if user in c.gurus:
                 # c.gurus.remove(user)
                 from app.models import guru_courses_table
-                db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == user.id))
+                db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == user.id and guru_courses_table.c.course_id == c.id))
                 # user.guru_courses.remove(c)
             # for user_course in user.guru_courses:
             #     if user_course.id == c.id:
