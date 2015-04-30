@@ -122,13 +122,18 @@ angular.module('uguru.util.controllers')
           },1500);
     }
 
-    $scope.$on('$ionicView.loaded', function() {
+    $scope.$on('$ionicView.beforeEnter', function() {
       console.log('is entering location view before entering');
-      $timeout(function() {
-        $scope.showGoogleMap();
-        $scope.mapAlreadyLoaded = true;
-        $scope.loader.hide();
-      }, 500);
+      if ($scope.root.vars.request.location && $scope.root.vars.request.location.latitude) {
+          console.log('previous already stored, no need to re-draw');
+      } else {
+
+        $timeout(function() {
+          $scope.showGoogleMap();
+          $scope.loader.hide();
+        }, 500);
+
+      }
     });
 
 
@@ -209,13 +214,13 @@ angular.module('uguru.util.controllers')
 
 
 
-          // google.maps.event.addListener($scope.marker, 'dragend', function()
-          // {
-          //     $scope.marker.setAnimation(google.maps.Animation.BOUNCE);
-          //     $scope.getAddressFromLatLng($scope.geocoder, $scope.marker.getPosition().lat(), $scope.marker.getPosition().lng())
+          google.maps.event.addListener($scope.marker, 'dragend', function()
+          {
+              // $scope.marker.setAnimation(google.maps.Animation.BOUNCE);
+              $scope.getAddressFromLatLng($scope.geocoder, $scope.marker.getPosition().lat(), $scope.marker.getPosition().lng())
 
 
-          // });
+          });
 
 
     });

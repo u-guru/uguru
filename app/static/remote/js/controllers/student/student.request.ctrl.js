@@ -141,8 +141,9 @@ angular.module('uguru.student.controllers')
 
     $scope.goBackFromRequestsToHome = function() {
       if (confirm('Are you sure? Request progress will be lost')) {
-        $ionicHistory.goBack();
-        $scope.root.vars.request = null;
+
+        $scope.root.vars.calendar_should_be_empty = true;
+        $state.go('^.student-home');
       }
     };
 
@@ -220,17 +221,17 @@ angular.module('uguru.student.controllers')
       if (!validateRequestForm()) {
         console.log('form is not validated')
         return;
-      }
+      };
 
       $scope.saveRequestToUser();
       $scope.contactingGuruModal.show();
+      $scope.root.vars.request = null;
       $scope.root.vars.request_form_recently_hidden = true;
+      $scope.root.vars.calendar_should_be_empty = true;
       $state.go('^.student-home');
       $timeout(function() {
         $scope.contactingGuruModal.hide();
       }, 12000)
-
-
     }
 
     $scope.showDialog = function(msg, title, button_name, callback) {

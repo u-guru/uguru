@@ -41,7 +41,7 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
   //   $state.go('^.onboarding-location');
   // }
 
-  // console.log($scope.user);
+  // console.log($scope.user);t
 
   $ionicPopover.fromTemplateUrl('templates/gettingStartedPopover.html', {
     scope: $scope

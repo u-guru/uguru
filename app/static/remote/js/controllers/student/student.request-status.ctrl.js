@@ -206,6 +206,7 @@ angular.module('uguru.student.controllers')
         center: initMapCoords,
         zoom: 17,
         disableDefaultUI: true,
+        draggable: false,
         zoomControl: false,
         zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
       }
@@ -222,9 +223,13 @@ angular.module('uguru.student.controllers')
       $scope.actual_map = actual_map
     }
 
-    $scope.$on('$ionicView.loaded', function(){
+    $scope.$on('$ionicView.beforeEnter', function(){
       $timeout(function() {
-        $scope.showGoogleMap();
+        if (!$scope.actual_map) {
+          $scope.showGoogleMap();
+        } else {
+          console.log('map already displayed yo');
+        }
       }, 500);
     });
 

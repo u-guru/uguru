@@ -187,7 +187,7 @@ angular.module('uguru.guru.controllers')
 
     $scope.goToStudentCalendar = function (calendar) {
       $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
-      console.log('sending student proposal', $scope.proposal);
+
       $state.go('^.request-calendar', {proposalObj:JSON.stringify($scope.proposal)});
     }
 

@@ -190,9 +190,9 @@ angular.module('uguru.util.controllers')
         if ($scope.user.student_courses.length === 1 && $scope.user.requests.length === 0) {
           $timeout(function() {
             var element = document.getElementsByClassName('course-item')[0];
-            if ($state.current.name === 'root.student-home') {
-              $scope.openPopoverTwo(element);
-            }
+            // if ($state.current.name === 'root.student-home') {
+            //   // $scope.openPopoverTwo(element);
+            // }
           }, 2000)
         }
 

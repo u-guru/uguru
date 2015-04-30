@@ -14,7 +14,7 @@ angular.module('uguru.root.services')
                         var source_type = 1;
                       }
                         var options = {
-                          quality: 40,
+                          quality: 15,
                           destinationType: Camera.DestinationType.DATA_URL,
                           sourceType: Camera.PictureSourceType.CAMERA,
                           allowEdit: false,

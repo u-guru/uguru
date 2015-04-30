@@ -12,6 +12,8 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $ionicHistory, $stateParams) {
 
+
+
     $scope.day_split_segments = 24;
     $scope.default_num_days = 2;
     $scope.day_rows = [];
@@ -119,7 +121,6 @@ angular.module('uguru.util.controllers')
 
         $scope.paint($scope.student_calendar);
         //parse the proposal
-        console.log($scope.student_calendar);
         $scope.root.vars.request = {}
         $scope.root.vars.request.calendar = $scope.calendar;
       }
@@ -199,6 +200,7 @@ angular.module('uguru.util.controllers')
             var target = $scope.getElementbyCalenderWidthHeight(j, i);
             target.style.background = 'white';
             target.style.color = 'inherit';
+            target.childNodes[0].background = 'white';
           }
         }
       }
@@ -377,6 +379,20 @@ angular.module('uguru.util.controllers')
 
       // $scope.formatCalendarEventJson($scope.calendar.data);
     }
+
+    $scope.$on('$ionicView.beforeEnter', function(){
+      if ($scope.root.vars.calendar_should_be_empty) {
+        $scope.clear();
+        $scope.root.vars.calendar_should_be_empty = null;
+        $scope.initCalendar();
+
+        $scope.calendar.data = generateCalendarDataStorage($scope.calendar.width, $scope.calendar.height)
+        $scope.root.vars.request.calendar.data = generateCalendarDataStorage($scope.calendar.width, $scope.calendar.height);
+
+        // $scope.day_rows = generateCalendarDataStorage($scope.calendar.height, 1);
+        // $scope.day_columns = generateCalendarDataStorage($scope.calendar.width, 1);
+      }
+    });
 
   }
 
