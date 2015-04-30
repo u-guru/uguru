@@ -19,10 +19,11 @@ angular.module('uguru.student.controllers')
   '$ionicHistory',
   'CordovaPushWrapper',
   '$ionicPlatform',
+  'User',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $stateParams,
   $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
-  $ionicHistory, CordovaPushWrapper, $ionicPlatform) {
+  $ionicHistory, CordovaPushWrapper, $ionicPlatform, User) {
     $scope.isRequestFormComplete = false;
     //TODO: ADD ACTION BAR W / FILE SUPPORT
     //TODO: IF NOT PUSH NOTIFICATIONS, SHOW IT HERE AS PART OF THE FORM
@@ -195,17 +196,26 @@ angular.module('uguru.student.controllers')
       // }
       //how to make sure the request shows
       $scope.user.active_requests.push($scope.request);
-      User.getUserFromServer($scope, null, $state);
+      $scope.root.vars.calendar
 
+      $timeout(function() {
+        $scope.user.createObj($scope.user, 'requests', $scope.request, $scope, null, $scope.failureFunction);
+        User.getUserFromServer($scope, null, $state);
+        $state.go('^.student-home');
+      }, 1000)
 
-      $scope.root.vars.request = null;
-      $scope.root.vars.request_form_recently_hidden = true;
-      $scope.root.vars.calendar_should_be_empty = true;
+      $scope.contactingGuruModal.show();
+
+      $timeout(function() {
+        $scope.contactingGuruModal.hide();
+        $scope.root.vars.request = null;
+        $scope.root.vars.request_form_recently_hidden = true;
+        $scope.root.vars.calendar_should_be_empty = true;
+      }, 12000)
+
       $scope.failureFunction = function($scope) {
         $scope.contactingGuruModal.hide();
       };
-
-      $scope.user.createObj($scope.user, 'requests', $scope.request, $scope, null, $scope.failureFunction);
 
     }
 
@@ -230,13 +240,8 @@ angular.module('uguru.student.controllers')
         return;
       };
 
+
       $scope.saveRequestToUser();
-      $scope.contactingGuruModal.show();
-      $scope.root.vars.calendar
-      $state.go('^.student-home');
-      $timeout(function() {
-        $scope.contactingGuruModal.hide();
-      }, 12000)
     }
 
     $scope.showDialog = function(msg, title, button_name, callback) {
