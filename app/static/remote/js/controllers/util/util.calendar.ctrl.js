@@ -211,6 +211,7 @@ angular.module('uguru.util.controllers')
         }
       }
       $scope.root.vars.request.calendar_selected = false;
+      $scope.root.vars.calendar_should_be_empty = null;
       return count;
     }
 
@@ -389,7 +390,7 @@ angular.module('uguru.util.controllers')
     $scope.$on('$ionicView.beforeEnter', function(){
       if ($scope.root.vars.calendar_should_be_empty) {
         $scope.clear();
-        $scope.root.vars.calendar_should_be_empty = null;
+
         $scope.initCalendar();
 
         $scope.calendar.data = generateCalendarDataStorage($scope.calendar.width, $scope.calendar.height)
