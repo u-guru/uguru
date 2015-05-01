@@ -13,24 +13,6 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicHistory, $stateParams) {
 
-    $scope.debitCardOnly = ($stateParams && $stateParams.debitCardOnly) || $scope.user.guru_mode;
-
-    $scope.cardFormComplete = false;
-    $scope.progress_active = false;
-    $scope.actionButtonText = 'save';
-    $scope.headerText = 'Add payment';
-    $scope.placeholderValue = '4242 4242 4242 4242';
-
-    if ($scope.user.guru_mode || $scope.debitCardOnly) {
-      $scope.headerText = 'Add debit card';
-      $scope.placeholderValue = '4000 0566 5566 5556';
-    }
-
-    $scope.card = null;
-    if ($stateParams.cardObj) {
-      $scope.card = JSON.parse($stateParams.cardObj);
-      $scope.actionButtonText = 'clear';
-    }
 
     $scope.clearCard = function() {
       $scope.card = null;
@@ -161,6 +143,7 @@ angular.module('uguru.util.controllers')
       $scope.user.updateObj($scope.user, 'cards', cardInfo, $scope);
 
       alert('Card Successfully Deleted');
+      $ionicHistory.goBack();
     }
     $scope.setDefault = function() {
 
@@ -192,6 +175,7 @@ angular.module('uguru.util.controllers')
 
       $scope.user.updateObj($scope.user, 'cards', cardInfo, $scope);
       alert('Card Default Set!');
+      $ionicHistory.goBack();
 
     }
 
@@ -253,6 +237,27 @@ angular.module('uguru.util.controllers')
 
 
     $scope.$on('$ionicView.enter', function(){
+
+      $scope.debitCardOnly = ($stateParams && $stateParams.debitCardOnly) || $scope.user.guru_mode;
+
+      $scope.cardFormComplete = false;
+      $scope.progress_active = false;
+      $scope.actionButtonText = 'save';
+      $scope.headerText = 'Add payment';
+      $scope.placeholderValue = '4242 4242 4242 4242';
+
+      if ($scope.user.guru_mode || $scope.debitCardOnly) {
+        $scope.headerText = 'Add debit card';
+        $scope.placeholderValue = '4000 0566 5566 5556';
+      }
+
+      $scope.card = null;
+      if ($stateParams.cardObj) {
+        $scope.card = JSON.parse($stateParams.cardObj);
+        $scope.actionButtonText = 'clear';
+      }
+
+
       console.log('entering view...');
       $scope.cardInput = document.getElementById('card-input');
       $scope.cardMM = document.getElementById('mm-input');

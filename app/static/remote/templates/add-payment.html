@@ -17,10 +17,10 @@
                 <input max="20"name="card-input" id="card-input" type="tel"class="payment-box positive" placeholder="{{placeholderValue}}" autofocus></input>
             </div>
             <div class='pure-u-1-5'>
-              <input max="2" style="border:0px; margin-left:20px;" id="mm-input" placeholder="MM" type="tel" class="payment-box positive">
+              <input maxlength="2" style="border:0px; margin-left:20px;" id="mm-input" placeholder="MM" type="tel" class="payment-box positive">
             </div>
             <div class='pure-u-1-5'>
-              <input max="2" style="border:0px; margin-left:5px;" id="yy-input" placeholder="YY" type="tel" class="payment-box positive">
+              <input maxlength="2" style="border:0px; margin-left:5px;" id="yy-input" placeholder="YY" type="tel" class="payment-box positive">
             </div>
           </div>
         </label>
@@ -30,7 +30,7 @@
     </div>
     <br>
     <button ng-show="card" class="button button-positive button-full" ng-click="setDefault()"> Set Default </button>
-    <button ng-show="card" class="button button-positive-outline button-full" ng-click="removeCard()"> Remove Card </button>
+    <button ng-show="card" class="credit-card-remove-button button button-positive-outline button-full" ng-click="removeCard()"> Remove Card </button>
   </ion-content>
 
 </ion-view>
