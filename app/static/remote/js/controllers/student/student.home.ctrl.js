@@ -407,19 +407,16 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       $localstorage.setObject('user', $scope.user);
 
 
-      $timeout(function() {
+      if ($scope.root.vars.request_form_recently_hidden) {
+          //make it null after
+          $scope.root.vars.request_form_recently_hidden = null;
+          var showFor = 4500;
+          var waitFor = 1500;
+          $scope.showBouncingRedAlert(waitFor, showFor);
+          $scope.showFirstTimeRequestSessionPopup()
 
-        if ($scope.root.vars.request_form_recently_hidden) {
-            //make it null after
-            $scope.root.vars.request_form_recently_hidden = null;
-            var showFor = 4500;
-            var waitFor = 1500;
-            $scope.showBouncingRedAlert(waitFor, showFor);
-            $scope.showFirstTimeRequestSessionPopup()
+        }
 
-          }
-
-      }, 8000);
     });
 
     $scope.$on('$ionicView.beforeLeave', function(){
@@ -427,7 +424,6 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     });
 
     $scope.$on('$ionicView.afterEnter', function(){
-      $scope.loader.hide();
       $scope.loader.hide();
     });
 
