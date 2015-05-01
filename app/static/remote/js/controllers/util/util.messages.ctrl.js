@@ -24,6 +24,7 @@ angular.module('uguru.student.controllers')
     $scope.hide_footer = false;
     $scope.session = JSON.parse($stateParams.sessionObj);
     $scope.new_message = {content: ''};
+    $scope.default_profile_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100';
 
     console.log($scope.session);
 
@@ -52,7 +53,7 @@ angular.module('uguru.student.controllers')
 
     $scope.processMessages = function(messages) {
 
-      var messages = messages;
+      // var messages = messages;
       for (var i = 0; i < messages.length; i ++ ) {
         var current_message = messages[i];
         current_message.profile_url = messages[i].sender.profile_url;
@@ -131,8 +132,13 @@ angular.module('uguru.student.controllers')
         .one('user', $scope.user.id).one('sessions', $scope.session.id).one('messages')
         .customGET()
         .then(function(response){
+
+            console.log('response from server', response.plain());
             var server_messages = $scope.processMessages(response.messages);
             server_messages.sort($scope.sortMessageComparator);
+            if (server_messages.length > $scope.messages.length) {
+              $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
+            }
             $scope.messages = server_messages;
             if ($state.current.name = 'root.student.messages' && !one_time) {
               $timeout(function() {
@@ -186,7 +192,7 @@ angular.module('uguru.student.controllers')
       console.log('view has entered');
       // $scope.root.keyboard.show('message-input', 100);
 
-      if (window.cordova.plugins.Keyboard) {
+      if ($scope.platform.mobile && window.cordova && window.cordova.plugins.Keyboard) {
 
           console.log('keyboard exists!');
           // $cordovaKeyboard.hideKeyboardAccessoryBar(true);
@@ -202,7 +208,9 @@ angular.module('uguru.student.controllers')
     $scope.$on('$ionicView.beforeEnter', function(){
       $scope.loader.show();
       $scope.messages = $scope.processMessages($scope.session.messages);
-      // $scope.getMessagesFromServer(10000);
+      // $timeout(function() {
+      //   $scope.getMessagesFromServer(5000);
+      // }, 5000)
     });
 
 

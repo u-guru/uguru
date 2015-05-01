@@ -50,16 +50,23 @@ angular.module('uguru.util.controllers')
         offset_date = event_date - todays_date;
         console.log(event_date, offset_date);
         var target = $scope.getElementbyCalenderWidthHeight(offset_date, event_hours);
-        console.log(target);
         if (!color) {
           target.style.background = 'grey';
           target.style.color = 'white';
           target.childNodes[0].background = 'grey';
-        } else {
-          target.style.background = '#68b2a5';
-          target.style.color = 'white';
-          target.childNodes[0].background = '#68b2a5';
+          $timeout(function() {
+            var template_string = '<span style="background-color:grey; padding:0px 15px;">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;Times student has chosen</br><br>Tap any of these that you can also make!</span>'
+            $scope.success.show(1000,2000, template_string);
+          })
         }
+        // else {
+          if (target) {
+            // console.log(JSON.stringify(target));
+            // target.background = '#68b2a5';
+            // target.style.color = 'white';
+            // target.childNodes[0].background = '#68b2a5';
+          }
+        // }
       }
 
       },1000)
@@ -113,8 +120,8 @@ angular.module('uguru.util.controllers')
               num_selected:0
         }
 
-        console.log('proposal', $scope.proposal);
         $scope.proposal = JSON.parse($stateParams.proposalObj);
+        console.log('proposal', $scope.proposal);
         //create student_calendar
         $scope.student_calendar = $scope.processStudentCalendar($scope.proposal.student_calendar[0].calendar_events);
 
@@ -125,6 +132,8 @@ angular.module('uguru.util.controllers')
         $scope.root.vars.request.calendar = $scope.calendar;
       }
 
+
+      //student is viewing the calendar
       else if (!$scope.user.guru_mode && $stateParams.proposalObj) {
 
           $scope.calendar = {
@@ -136,10 +145,9 @@ angular.module('uguru.util.controllers')
           $scope.request = JSON.parse($stateParams.proposalObj);
           console.log('request',$scope.request);
 
-          $scope.guru_calendar = $scope.processStudentCalendar($scope.request.guru_calendar[0].calendar_events);
           $scope.student_calendar = $scope.processStudentCalendar($scope.request.student_calendar[0].calendar_events);
           $scope.paint($scope.student_calendar);
-          $scope.paint($scope.guru_calendar, '#68b2a5');
+          // $scope.paint($scope.guru_calendar, '#68b2a5');
           $scope.viewOnly = true;
 
           $scope.root.vars.request = {}

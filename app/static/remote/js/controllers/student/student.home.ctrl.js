@@ -297,7 +297,11 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     $scope.goToCards = function() {
       if (!$scope.user.auth_token) {
         $scope.signupModal.show();
-      } else {
+      } else if ($scope.user.payment_cards && $scope.user.payment_cards.length === 0){
+        $ionicViewSwitcher.nextDirection('forward')
+        $state.go('^.add-payment');
+      } else
+       {
         $state.go('^.student-settings-cards');
       }
     }

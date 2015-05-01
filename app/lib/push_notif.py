@@ -8,7 +8,6 @@ gcm_client = GCM(ANDROID_API_KEY)
 apns_client = APNs(use_sandbox=True, cert_file='app/lib/certs/push_cert.pem', key_file='app/lib/certs/push_key_no_pass.pem')
 
 ### TODO: SEND TO USERS MULTIPLE DEVICES
-
 ### Edge Test Push Cases:
 ### 1. User has multiple devices (they receive all of them)
 
@@ -46,8 +45,6 @@ def send_push_for_user_devices(user, notif_key, args_tuple):
 
                 android_reg_id = device.push_notif
                 send_ios_notification(message, android_reg_id)
-
-
 
 def send_message_to_receiver(sender, receiver, course, delay_seconds=None):
     args_tuple = (

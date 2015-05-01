@@ -1139,7 +1139,7 @@ class UserSessionMessageView(restful.Resource):
             abort(404)
 
         [db_session.refresh(message) for message in _session.messages]
-        return user, 200
+        return _session, 200
 
 
     #create a message in a session
@@ -1157,7 +1157,7 @@ class UserSessionMessageView(restful.Resource):
             message = Message.initFromJson(message_json)
 
             from app.lib.push_notif import send_message_to_receiver
-            send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
+            # send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
 
         return user, 200
 

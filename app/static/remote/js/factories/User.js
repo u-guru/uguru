@@ -621,7 +621,7 @@ angular.module('uguru.user', [])
                             }
 
                         } else {
-                            console.log(err);
+                            console.log(JSON.stringify(err));
                             if (callback_failure) {
                                 callback_failure($scope);
                             }

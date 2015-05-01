@@ -1,8 +1,8 @@
+
 angular.module('uguru.student.controllers')
-
 //ALL student controllers
-.controller('SettingsEditCoursesController', [
 
+.controller('SettingsEditCoursesController', [
   //All imported packages go here
   '$scope',
   '$state',

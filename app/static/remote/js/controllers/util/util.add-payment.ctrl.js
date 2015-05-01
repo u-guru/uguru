@@ -19,9 +19,11 @@ angular.module('uguru.util.controllers')
     $scope.progress_active = false;
     $scope.actionButtonText = 'save';
     $scope.headerText = 'Add payment';
+    $scope.placeholderValue = '4242 4242 4242 4242';
 
     if ($scope.user.guru_mode || $scope.debitCardOnly) {
       $scope.headerText = 'Add debit card';
+      $scope.placeholderValue = '4000 0566 5566 5556';
     }
 
     $scope.card = null;
@@ -39,7 +41,14 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.goBack = function() {
-      $ionicHistory.goBack();
+      if (!$ionicHistory.backView() && !$scope.guru_mode) {
+        $state.go('^.student-home');
+      } else if (!$ionicHistory.backView() && $scope.guru_mode) {
+        $state.go('^.guru-home');
+      }
+      else {
+        $ionicHistory.goBack();
+      }
     }
 
     $scope.addPaymentActionBtn = function() {
@@ -87,13 +96,23 @@ angular.module('uguru.util.controllers')
       var stripeResponseHandler = function(status, response) {
 
         if (response.error) {
-
+            $scope.error_msg = true;
             $scope.progress_active = true;
-            alert(response.error.message);
+            $scope.success.show(0, 2000, response.error.message);
+            $timeout(function() {
+              $scope.error_msg = null;
+            },2000);
+            $scope.cardYY.value = '';
+            $scope.cardMM.value = '';
+            $scope.cardInput.value = '';
+            // alert(response.error.message);
 
         }
         else if ($scope.debitCardOnly && response.card.funding !== "debit") {
-            alert("Please Enter a Debit Card. This one appears to be credit.");
+            $scope.success.show(0, 2000, "Please Enter a Debit Card. This one appears to be credit.");
+            $scope.cardYY.value = '';
+            $scope.cardMM.value = '';
+            $scope.cardInput.value = '';
         }
         else {
 
@@ -119,7 +138,7 @@ angular.module('uguru.util.controllers')
           alert("Card successfully added!");
           $ionicHistory.goBack();
         }
-      }
+    }
 
       Stripe.card.createToken({
         number: cardNum,
@@ -191,7 +210,7 @@ angular.module('uguru.util.controllers')
 
     var checkInputState = function(event) {
 
-        var foo = $scope.cardInput.value.split(" ").join(""); // remove hyphens
+      var foo = $scope.cardInput.value.split(" ").join(""); // remove hyphens
         var mmInput = $scope.cardMM.value;
         var cardType = $scope.getCardType(foo);
         // console.log(cardType);
@@ -234,10 +253,11 @@ angular.module('uguru.util.controllers')
 
 
     $scope.$on('$ionicView.enter', function(){
-
+      console.log('entering view...');
       $scope.cardInput = document.getElementById('card-input');
       $scope.cardMM = document.getElementById('mm-input');
       $scope.cardYY = document.getElementById('yy-input');
+      console.log($scope.cardInput);
 
       if ($scope.card) {
         $scope.cardInput.value = '**** **** **** ' + $scope.card.card_last4;

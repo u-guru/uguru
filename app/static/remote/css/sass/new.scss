@@ -1426,6 +1426,13 @@ margin: 0;
     margin: 5px;
   }
 
+.legend-tag
+    {
+      @extend .course-tag;
+      background-color: grey;
+    }
+
+
 .guru-onboarding {
 
   font-family: "OpenSans-Light";
@@ -2457,4 +2464,74 @@ p {
 
   }
 
+}
+
+.payment-card {
+  input {
+    color:$positive;
+  }
+}
+
+.negative {
+  color:red;
+}
+
+.button-full.button-positive-outline {
+  width:90%;
+  // margin-left:5%;
+}
+
+a.uppercase {
+  text-transform: uppercase !important;
+  font-family:"OpenSans-Bold" !important;
+}
+
+li.item.item-avatar-left.message-item,
+li.item.item-avatar-right.message-item {
+  border:0px;
+  img {
+    height:30px;
+    width:30px;
+    max-height:30px;
+    max-width:30px;
+    top:5px;
+  }
+}
+
+li.item.item-avatar-right.message-item {
+  margin-left:20%;
+  // padding:0px 55px 0px 0px;
+  padding-right:55px;
+  padding-bottom:0px;
+  padding-top:5px;
+  .text {
+      background-color: #68b2a5;
+      margin-bottom: 12px;
+      color:white;
+      padding:1em 0.75em;
+      border-radius:8px;
+      white-space:normal;
+      text-align:left;
+  }
+}
+
+li.item.item-avatar-left.message-item {
+  margin-right:20%;
+  padding-left:55px;
+  padding-top:0px;
+  padding-bottom:0px;
+  .text {
+      background-color: #E3E5E6;
+      margin-bottom: 12px;
+      color:rgba(0,0,0, 0.8);
+      padding:1em 0.75em;
+      border-radius:8px;
+      white-space:normal;
+      text-align:left;
+      top:5px;
+  }
+}
+
+.message-item-list {
+  background-color:white;
 }

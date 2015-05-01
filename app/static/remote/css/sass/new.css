@@ -953,7 +953,7 @@ p {
   align-items: center;
   -webkit-align-items: center; }
 
-.guru-course-tag, .course-tag {
+.guru-course-tag, .course-tag, .legend-tag {
   background-color: #D97142;
   color: white;
   padding: 6px 10px;
@@ -962,6 +962,9 @@ p {
   white-space: normal;
   display: inline-block;
   margin: 5px; }
+
+.legend-tag {
+  background-color: grey; }
 
 .guru-onboarding {
   font-family: "OpenSans-Light"; }
@@ -1686,3 +1689,57 @@ a.sans-bold {
   width: auto !important;
   height: 20px !important;
   border-radius: 0px !important; }
+
+.payment-card input {
+  color: #68b2a5; }
+
+.negative {
+  color: red; }
+
+.button-full.button-positive-outline {
+  width: 90%; }
+
+a.uppercase {
+  text-transform: uppercase !important;
+  font-family: "OpenSans-Bold" !important; }
+
+li.item.item-avatar-left.message-item, li.item.item-avatar-right.message-item {
+  border: 0px; }
+  li.item.item-avatar-left.message-item img, li.item.item-avatar-right.message-item img {
+    height: 30px;
+    width: 30px;
+    max-height: 30px;
+    max-width: 30px;
+    top: 5px; }
+
+li.item.item-avatar-right.message-item {
+  margin-left: 20%;
+  padding-right: 55px;
+  padding-bottom: 0px;
+  padding-top: 5px; }
+  li.item.item-avatar-right.message-item .text {
+    background-color: #68b2a5;
+    margin-bottom: 12px;
+    color: white;
+    padding: 1em 0.75em;
+    border-radius: 8px;
+    white-space: normal;
+    text-align: left; }
+
+li.item.item-avatar-left.message-item {
+  margin-right: 20%;
+  padding-left: 55px;
+  padding-top: 0px;
+  padding-bottom: 0px; }
+  li.item.item-avatar-left.message-item .text {
+    background-color: #E3E5E6;
+    margin-bottom: 12px;
+    color: rgba(0, 0, 0, 0.8);
+    padding: 1em 0.75em;
+    border-radius: 8px;
+    white-space: normal;
+    text-align: left;
+    top: 5px; }
+
+.message-item-list {
+  background-color: white; }

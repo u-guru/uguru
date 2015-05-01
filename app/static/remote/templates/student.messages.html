@@ -1,7 +1,7 @@
 
 <ion-view class='messages' hide-nav-bar = 'true' cache-view="false">
 
-  <ion-header-bar class="header-bar ng-class:{'bar-dark': user.guru_mode}">
+  <ion-header-bar class="header-bar ng-class:{'bar-dark': user.guru_mode}" cache-view='false'>
     <a class="button button-clear button-back ng-class:{'button-white': user.guru_mode}"  ng-click='goBack()'>Back</a>
     <h5 class="title">Messages with {{messages[0].receiver.name.split(' ')[0]}}</h5>
   </ion-header-bar>
@@ -22,10 +22,10 @@
   <ion-content delegate-handle="message-scroll" ng-click='setUnfocus()'>
 
     <!-- <ion-scroll class="messages" ng-click="hideKeyboard()"> -->
-      <ul class="list">
-          <li class="item {{message.class}}" ng-repeat="message in messages">
+      <ul class="list message-item-list">
+          <li class="item {{message.class}} message-item" ng-repeat="message in messages">
             <img ng-src="{{message.profile_url}}" ng-show='message.class === "item-avatar-left"'>
-            <div class="text"><strong ng-show='message.sender.id !== user.id'>{{message.sender.name}}</strong> {{message.contents}}</div>
+            <div class="text"><strong ng-show='message.sender.id !== user.id && message.sender.profile_url === default_profile_url'>{{message.sender.name.split(' ')[0]}}</strong> {{message.contents}}</div>
             <img ng-src="{{message.profile_url}}" ng-show='message.class === "item-avatar-right"'>
           </li>
       </ul>

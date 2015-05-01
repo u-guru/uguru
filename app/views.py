@@ -9,7 +9,7 @@ from flask import render_template, redirect, url_for, session, request
 TWILIO_DEFAULT_PHONE = "+15104661138"
 twilio_client = TwilioRestClient(os.environ['TWILIO_ACCOUNT_SID'], os.environ['TWILIO_AUTH_TOKEN'])
 
-admin_authkey = 'fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6'          #hash for username
+admin_authkey = 'fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6' #hash for username
 
 
 # Stripe

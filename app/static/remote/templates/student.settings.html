@@ -70,13 +70,14 @@
                   Notification Settings
               </a>
             </div>
+            <a class="item gray settings-item item-icon-right" ng-show='user && user.id && !user.guru_mode'ng-click="goToCards()">
+                Add a Payment Card
+                <i style="font-size:14px;" class="icon item-note ion-chevron-right positive"></i>
+            </a>
             <div class='container' ng-show='user.id && user.auth_token && user.cards && user.cards.length > 0 '>
               <div class="item settings-divider-item">
                   PAYMENT SETTINGS
               </div>
-              <a class="item gray settings-item" ng-click="goToCards()">
-                Payment / Bank Cards
-              </a>
               <a class="item gray settings-item" ng-click="goToTransferFunds()" ng-show="user.balance">
                 Cash Out <strong class="positive">${{user.balance}}</strong>
               </a>

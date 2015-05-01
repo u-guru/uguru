@@ -1,29 +1,36 @@
- <ion-view ng-controller="AddPaymentController" hide-nav-bar="true">
+ <ion-view ng-controller="AddPaymentController" hide-nav-bar="true" class='payment-card'>
   <ion-header-bar class='header-bar' ng-click='goBack()'>
 
         <a class='button button-clear button-back' ng-click='goBack()'>Back</a>
         <h5 class="title bold sans-bold" style='left:0px !important; right:0px !important;'>{{headerText}}</h5>
-        <a class="button button-clear button-back" ng-click="addPaymentActionBtn()">{{actionButtonText}}</a>
+        <a class="button button-clear button-back positive uppercase" ng-click="addPaymentActionBtn()">{{actionButtonText}}</a>
   </ion-header-bar>
 
   <ion-content>
     <div class="payment">
       <div class="list list-inset">
-        <label class="item item-input margin-0">
-          <i class="icon ion-card placeholder-icon font-size"></i>
-          <input style="border:0px; width:50%" max="20"name="card-input" id="card-input" type="number"class="payment-box" placeholder="1234 5678 9012 3456"></input>
-          <input max="2" style="border:0px; margin-left:20px;" id="mm-input" placeholder="MM" type="number" class="payment-box">
-          <input max="2" style="border:0px; margin-left:5px;" id="yy-input" placeholder="YY" type="number" class="payment-box">
+        <label class="item item-icon-left">
+          <i class="icon ion-card placeholder-icon font-size ng-class:{'positive animated tada':cardYY.value.length > 0, 'negative animated shake':error_msg}"></i>
+          <div class='pure-g'>
+            <div class='pure-u-3-5'>
+
+                <input max="20"name="card-input" id="card-input" type="tel"class="payment-box positive" placeholder="{{placeholderValue}}" autofocus></input>
+            </div>
+            <div class='pure-u-1-5'>
+              <input max="2" style="border:0px; margin-left:20px;" id="mm-input" placeholder="MM" type="tel" class="payment-box positive">
+            </div>
+            <div class='pure-u-1-5'>
+              <input max="2" style="border:0px; margin-left:5px;" id="yy-input" placeholder="YY" type="tel" class="payment-box positive">
+            </div>
+          </div>
         </label>
       </div>
 
-      <div ng-show="!user.guru_mode"class="message center">Your card will only be charged<br>when you request a Guru.</div>
       <div ng-show="user.guru_mode"class="message center">Your Uguru balance will be <br> updated after this session.</div>
-      <div class="message center"> Test Debit Card: 4000 0566 5566 5556 09/15<br>Test Credit Card: 4242 4242 4242 4242 09/15</div>
     </div>
     <br>
     <button ng-show="card" class="button button-positive button-full" ng-click="setDefault()"> Set Default </button>
-    <button ng-show="card" class="button button-disabled button-full" ng-click="removeCard()"> Remove Card </button>
+    <button ng-show="card" class="button button-positive-outline button-full" ng-click="removeCard()"> Remove Card </button>
   </ion-content>
 
 </ion-view>

@@ -132,7 +132,7 @@ angular.module('uguru.guru.controllers')
       }
 
       if ($scope.platform.mobile) {
-        $scope.root.dialog.confirm('Are you sure? You cannot undo this!', 'Cancel', 'Yes', callbackFunction);
+        $scope.root.dialog.confirm('You cannot undo this!', 'Are you sure?', ['Cancel', 'Yes'], [null, callbackFunction]);
       } else {
         if (confirm('Are you sure? You cannot undo this!')) {
           callbackFunction();
