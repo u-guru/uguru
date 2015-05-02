@@ -59,19 +59,14 @@ angular.module('uguru.util.controllers')
       $scope.root.keyboard.show('note-input', 500);
     }
 
-    // $scope.$on('modal.shown', function() {
 
-    //   // if ($scope.addRequestNoteModal.isShown()) {
-    //   //   $scope.root.keyboard.show('note-input', 500);
-    //   // }
-
-    //   if (!$scope.request.note) {
-    //     $scope.showAddNoteTextArea = false;
-    //   } else {
-    //     $scope.showAddNoteTextArea = true;
-    //   }
-
-    // });
+    $scope.$on('$ionicView.beforeEnter', function() {
+      if ($scope.root.vars.files_should_be_cleared) {
+        var photo_container = document.getElementsByClassName('attachment-container')[0]
+        photo_container.src = null;
+        $scope.root.vars.files_should_be_cleared = false;
+      }
+    })
 
     $scope.takePhoto = function() {
       if ($scope.platform.mobile) {

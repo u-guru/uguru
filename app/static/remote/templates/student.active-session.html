@@ -26,71 +26,10 @@
               <button class="button button-full button-positive" ng-click="goToSessionMessages(session)">
                 Message {{session.guru.name.split(' ')[0]}}
               </button>
-              <button class="button button-full button-disabled button-outline" ng-click="cancelSession()">
-                Cancel Session
-              </button>
             </li>
           </ul>
         </div>
       </div>
     </div>
   </ion-content>
-
-  <!-- <ion-content class="background-black" style="background-color:black; opacity:0.8; top:88px;">
-    <div class="oh relative" style="margin-top:0px; padding-top:0px;">
-      <div class="md-box-1 center" ng-show="session.status === 1">
-         <ion-pane id="map_canvas" style="height: 50%;width: 100%;margin: 0px;">
-          <ui-gmap-google-map center="map.center" control="map.control" zoom="map.zoom"  pan="true" options="options">
-          </ui-gmap-google-map>
-          </ion-pane>
-      </div>
-      <div class="md-box-1 center" ng-show="session.status === 2" style="margin-top:20px;">
-        <div class="sm-box-1 center">
-          Session <br><br> Progress
-        </div>
-        <div class="sm-box-2">
-
-          {{session.hours}}h, {{session.minutes}}m, {{session.seconds}}s
-        </div>
-      </div>
-      <hr>
-      <ul class="list" ng-show="session.status === 1">
-        <li class="item padding-10-14">
-          <div class="icon"><img ng-src='{{session.request.guru.profile_url}}' class='width'></div>
-          <div class="box">
-            <div class="name">{{session.request.guru.name.split(" ")[0]}}
-              <span class="profile" style="font-size:14px !important;" ng-click="goToGuruProfile(session.request.guru)" >view profile</span>
-            </div>
-            <div class="stars" ng-show="guru.guru_avg_rating">
-                <span class="icon ion-star" ng-repeat="i in getNumber(session.request.guru.guru_avg_rating) track by $index"></span>
-              </div>
-              <div class="stars" ng-show="!session.request.guru.guru_avg_rating">
-                First Time Guru
-            </div>
-          </div>
-        </li>
-        <li class="item padding-10-14 border-bottom-2">
-          Just <span class="bold-font">$5</span> for every <span class="bold-font">15 Minutes</span>
-        </li>
-        <li class="item padding-0-4">
-          <button class="button button-full button-positive" ng-click="goToSessionMessages(session)">
-            Message {{session.guru.short_name}}
-          </button>
-          <button class="button button-full button-positive button-outline" ng-click="cancelSession(session)">
-            Cancel
-          </button>
-        </li>
-      </ul>
-      <ul class="list" ng-show="session.status === 2">
-        <li class="item padding-0-4">
-          <button class="button button-full button-positive" ng-click="goToSessionMessages(session)">
-            See Messages
-          </button>
-          <button class="button button-full button-positive button-outline" ng-click="cancelSession(session)">
-            Cancel
-          </button>
-        </li>
-      </ul>
-    </div>
-  </ion-content> -->
 </ion-view>

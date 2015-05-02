@@ -23,13 +23,6 @@ angular.module('uguru.student.controllers')
 
     $ionicPlatform.ready(function() {
 
-      if (window.StatusBar) {
-                    // console.log('Extra #1. Styling iOS status bar to black \n\n');
-        StatusBar.styleLightContent();
-        StatusBar.overlaysWebView(true);
-      }
-
-
        var options = {
           title: 'Session Options',
           buttonLabels: ['Request Details'],
@@ -335,7 +328,7 @@ angular.module('uguru.student.controllers')
       console.log('before enter, parsing the session obj..')
       $scope.session = JSON.parse($stateParams.sessionObj);
       $scope.recursive_delay = 60000;
-      $scope.guru = {};
+      $scope.guru = $scope.session.guru;
 
       $scope.student_position = null;
       $scope.guru_position = null;
@@ -348,7 +341,14 @@ angular.module('uguru.student.controllers')
         enableHighAccuracy: false, //may cause high errors if true
       }
 
-      $scope.drawGoogleMap(null,null, true);
+      if ($scope.user.last_position && $scope.user.last_position.latitude) {
+        $scope.drawGoogleMap($scope.user.last_position,null, true);
+      } else {
+        // $scope.drawGoogleMap(null,null, true);
+        $scope.getUserRecentLocation($scope.recursive_delay);
+      }
+
+      $scope.loadMapDelayed();
 
       if (!$scope.user.last_position || !$scope.user.last_position.latitude) {
         console.log('no last position on record... starting now every', $scope.recursive_delay, 'seconds');
@@ -390,12 +390,12 @@ angular.module('uguru.student.controllers')
 
     $scope.$on('$ionicView.loaded', function() {
 
-      console.log('loaded');
-      $scope.loadMapDelayed();
-      if (!$scope.user.last_position || !$scope.user.last_position.latitude) {
-        console.log('no last position on record... starting now every', $scope.recursive_delay, 'seconds');
-        $scope.getUserRecentLocation($scope.recursive_delay);
-      }
+      // console.log('loaded');
+      // $scope.loadMapDelayed();
+      // if (!$scope.user.last_position || !$scope.user.last_position.latitude) {
+      //   console.log('no last position on record... starting now every', $scope.recursive_delay, 'seconds');
+      //   $scope.getUserRecentLocation($scope.recursive_delay);
+      // }
 
     });
 

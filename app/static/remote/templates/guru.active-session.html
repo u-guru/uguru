@@ -40,52 +40,5 @@
         </div>
       </div>
     </div>
-
-
-    <!--
-    <div class="oh relative">
-      <div class="md-box-1 center" ng-show="session.status === 1">
-         <ion-pane id="map_canvas" style="height: 60%;width: 100%;margin: 0px;">
-          <ui-gmap-google-map center="map.center" control="map.control" zoom="map.zoom"  pan="true" options="options">
-          </ui-gmap-google-map>
-          </ion-pane>
-      </div>
-      <div class="md-box-1 center" ng-show="session.status === 2">
-        <div class="sm-box-1 center">
-          Session <br><br>Paused
-        </div>
-        <div class="sm-box-2">
-
-          {{session.hours}}h, {{session.minutes}}m, {{session.seconds}}s
-        </div>
-      </div>
-      <hr>
-      <ul class="list" ng-show="session.status === 1">
-        <li class="item padding-0-4">
-          <button class="button button-full button-positive" ng-click="goToSessionMessages(session)">
-            Message {{session.guru.first_name}}
-          </button>
-          <button class="button button-full button-positive button-outline" ng-click="startSessionTimer(session)">
-            Start Session
-          </button>
-          <button class="button button-full button-disabled button-outline" ng-click="cancelSession()">
-            Cancel Session
-          </button>
-        </li>
-      </ul>
-      <ul class="list" ng-show="session.status === 2">
-        <li class="item padding-0-4">
-          <button class="button button-full button-positive" ng-click="startSessionTimer(session)">
-            Resume Session
-          </button>
-          <button class="button button-full button-positive button-outline" ng-click="goToSessionMessages(session)">
-            View Message with {{session.guru.name.split(" ")[0]}}
-          </button>
-          <button class="button button-full button-positive button-outline" ng-click="cancelSession(session)">
-            Cancel
-          </button>
-        </li>
-      </ul>
-    </div>-->
   </ion-content>
 </ion-view>
