@@ -198,20 +198,21 @@ angular.module('uguru.student.controllers')
       $scope.user.active_requests.push($scope.request);
       $scope.root.vars.calendar
 
+      $scope.contactingGuruModal.show();
+
       $timeout(function() {
         $scope.user.createObj($scope.user, 'requests', $scope.request, $scope, null, $scope.failureFunction);
         User.getUserFromServer($scope, null, $state);
+        console.log('going home...');
         $state.go('^.student-home');
       }, 1000)
-
-      $scope.contactingGuruModal.show();
 
       $timeout(function() {
         $scope.contactingGuruModal.hide();
         $scope.root.vars.request = null;
         $scope.root.vars.request_form_recently_hidden = true;
         $scope.root.vars.calendar_should_be_empty = true;
-      }, 12000)
+      }, 10000);
 
       $scope.failureFunction = function($scope) {
         $scope.contactingGuruModal.hide();

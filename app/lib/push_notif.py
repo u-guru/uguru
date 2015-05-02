@@ -39,12 +39,12 @@ def send_push_for_user_devices(user, notif_key, args_tuple):
             if device_os == 'ios':
 
                 user_apns_token = device.push_notif
-                send_ios_notification(message, user_apns_token)
+                # send_ios_notification(message, user_apns_token)
 
             if device_os == 'android':
 
                 android_reg_id = device.push_notif
-                send_ios_notification(message, android_reg_id)
+                # send_ios_notification(message, android_reg_id)
 
 def send_message_to_receiver(sender, receiver, course, delay_seconds=None):
     args_tuple = (
