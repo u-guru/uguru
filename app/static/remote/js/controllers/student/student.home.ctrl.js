@@ -377,7 +377,15 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
     $scope.goToPreviousSessionDetails = function(session) {
       $state.go('^.previous-session-details', {sessionObj:JSON.stringify(session)});
-    }
+    };
+
+
+    $scope.$on('$ionicView.beforeEnter', function() {
+      if ($scope.root.vars.select_bottom_one) {
+        console.log('view before enter');
+        $scope.bottomTabsDelegate.select(0);
+      }
+    })
 
     $scope.$on('$ionicView.enter', function() {
 

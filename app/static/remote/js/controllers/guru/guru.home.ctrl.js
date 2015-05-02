@@ -25,15 +25,27 @@ angular.module('uguru.guru.controllers')
   '$cordovaPush',
   '$ionicViewSwitcher',
   '$cordovaStatusbar',
+  '$ionicPlatform',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $q,
  	University, $templateCache, $ionicHistory, Popup, $popover, Popover,
-  $ionicBackdrop, User, Camera, $cordovaPush, $ionicViewSwitcher, $cordovaStatusbar) {
+  $ionicBackdrop, User, Camera, $cordovaPush, $ionicViewSwitcher, $cordovaStatusbar,
+  $ionicPlatform) {
   console.log($scope.user)
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
 	$scope.base_url =  BASE;
 	$scope.progress_active = false;
+
+  $ionicPlatform.ready(function() {
+
+    if (window.StatusBar) {
+                  // console.log('Extra #1. Styling iOS status bar to black \n\n');
+      StatusBar.styleLightContent();
+      StatusBar.overlaysWebView(true);
+    }
+
+  });
 
 	$ionicModal.fromTemplateUrl(BASE + 'templates/add-course.modal.html', {
 	    scope: $scope,

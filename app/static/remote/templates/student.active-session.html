@@ -1,10 +1,11 @@
-<ion-view hide-nav-bar='true' class='student-active-session' cache-view="false">
+<ion-view hide-nav-bar='true' class='guru-active-session' cache-view="false">
     <ion-header-bar class="header-bar">
         <a class="button button-clear button-back"  nav-direction='back' href='#/home'>Back</a>
-        <h5 class="title uppercase">{{session.request.course.short_name}} Session w/ {{session.request.guru.name.split(' ')[0]}} </h5>
+        <h5 class="title uppercase">{{session.request.course.short_name}} Session </h5>
+        <a class="button button-clear button-back uppercase positive" ng-click='showOptions()'>Options</a>
     </ion-header-bar>
 
-    <ion-content class="has-header">
+    <ion-content class="has-header" scroll='false'>
     <div class='pure-g-c flex-column flex-space-between'>
       <div class='flex-item-c'>
         <ion-pane id="map_canvas" style="auto;width: 100%;margin: 0px;">
@@ -18,7 +19,7 @@
 
             <a class="item item-avatar-right upcoming-session-card"  ng-click="goToGuruProfile(session.request.guru)">
               <img ng-src="{{session.request.guru.profile_url}}">
-              <h2>{{session.guru.name.split(' ')[0]}}, {{session.request.course.short_name}}</h2>
+              <h2>{{session.guru.name.split(' ')[0]}} <br> {{session.request.course.short_name}} Guru</h2>
             </a>
 
             <li class="item padding-0-4">

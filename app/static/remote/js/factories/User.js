@@ -587,7 +587,7 @@ angular.module('uguru.user', [])
                 function(user) {
                     var processed_user = processResults(user.plain());
                     if ($scope) {
-                        console.log('user successfully fetched from user, turning mutex off');
+                        console.log($scope.user.university);
                         $scope.root.vars.fetch_user_server_mutex = false;
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);

@@ -25,7 +25,7 @@ angular.module('uguru.util.controllers')
 
     $scope.goBack = function() {
       // $ionicHistory.goBack();
-      if (!$ionicHistory.backView() && !$scope.guru_mode) {
+      if (!$ionicHistory.backView() && !$scope.user.guru_mode) {
         console.log('back view doesnt exist');
         $ionicViewSwitcher.nextDirection('back');
         $scope.loader.show();

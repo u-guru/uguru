@@ -38,8 +38,11 @@ angular.module('uguru.student.controllers')
     }
 
     console.log('request status', $scope.request);
+
     $scope.goBack = function() {
-      $ionicHistory.goBack()
+      $ionicViewSwitcher.nextDirection('back');
+      $scope.root.vars.select_bottom_one = true;
+      $state.go('^.student-home');
     }
 
     $scope.goToGuruProfile = function(guru) {
@@ -79,7 +82,7 @@ angular.module('uguru.student.controllers')
         $scope.request.guru_id = $scope.request.guru.id;
         $scope.request.status = 1;
         $scope.user.createObj($scope.user, 'sessions', $scope.request, $scope);
-        $ionicHistory.goBack();
+        $scope.goBack();
 
       }
 
@@ -223,14 +226,61 @@ angular.module('uguru.student.controllers')
       $scope.actual_map = actual_map
     }
 
-    $scope.$on('$ionicView.beforeEnter', function(){
-      $timeout(function() {
-        if (!$scope.actual_map) {
-          $scope.showGoogleMap();
-        } else {
-          console.log('map already displayed yo');
-        }
-      }, 500);
+    $scope.map_loaded = false;
+
+    $scope.$on('$ionicView.loaded', function() {
+
+            $timeout(function() {
+              if (document.getElementsByClassName('gm-style').length === 0) {
+                $scope.map_loaded = true;
+                console.log("500-loaded: map hasn't been drawn yet, attempting to redraw");
+                $scope.showGoogleMap();
+                $scope.loader.hide();
+              }
+            }, 500);
+
+          $timeout(function() {
+              if (document.getElementsByClassName('gm-style').length === 0) {
+                $scope.map_loaded = true;
+                console.log("1000-loaded: map hasn't been drawn yet, attempting to redraw");
+                $scope.showGoogleMap();
+                $scope.loader.hide();
+              }
+            }, 1000);
+
+
+            $timeout(function() {
+              if (document.getElementsByClassName('gm-style').length === 0) {
+                $scope.map_loaded = true;
+                console.log("1500-loaded: map hasn't been drawn yet, attempting to redraw");
+                $scope.showGoogleMap();
+                $scope.loader.hide();
+              }
+            }, 1500);
+    });
+
+    $scope.$on('$ionicView.afterEnter', function() {
+           console.log('view has entered');
+
+           $timeout(function() {
+
+              if (document.getElementsByClassName('gm-style').length === 0 || !$scope.map_loaded) {
+                console.log('it gets here');
+                $scope.showGoogleMap();
+                $scope.loader.hide();
+              }
+
+           }, 1000)
+
+          // google.maps.event.addListener($scope.marker, 'dragend', function()
+          // {
+          //     // $scope.marker.setAnimation(google.maps.Animation.BOUNCE);
+          //     $scope.getAddressFromLatLng($scope.geocoder, $scope.marker.getPosition().lat(), $scope.marker.getPosition().lng())
+
+
+          // });
+
+
     });
 
   }

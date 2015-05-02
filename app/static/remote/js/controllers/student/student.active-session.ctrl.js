@@ -14,19 +14,45 @@ angular.module('uguru.student.controllers')
   'Geolocation',
   '$cordovaGeolocation',
   'Restangular',
+  '$ionicPlatform',
+  '$cordovaActionSheet',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $stateParams,
-  Geolocation, $cordovaGeolocation, Restangular) {
+  Geolocation, $cordovaGeolocation, Restangular,
+  $ionicPlatform, $cordovaActionSheet) {
 
-    $scope.session = JSON.parse($stateParams.sessionObj);
-    $scope.recursive_delay = 60000;
-    $scope.guru = {};
+    $ionicPlatform.ready(function() {
 
-    $scope.student_position = null;
-    $scope.guru_position = null;
+      if (window.StatusBar) {
+                    // console.log('Extra #1. Styling iOS status bar to black \n\n');
+        StatusBar.styleLightContent();
+        StatusBar.overlaysWebView(true);
+      }
 
-    $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
-    $scope.options = {scrollwheel: false};
+
+       var options = {
+          title: 'Session Options',
+          buttonLabels: ['Request Details'],
+          addCancelButtonWithLabel: 'Close',
+          androidEnableCancelButton : true,
+          winphoneEnableCancelButton : true,
+          addDestructiveButtonWithLabel : 'Cancel Request'
+        };
+
+         $scope.showOptions = function() {
+
+            $cordovaActionSheet.show(options)
+              .then(function(btnIndex) {
+                if (btnIndex === 1) {
+                  if ($scope.session) {
+                    cancelSession($scope.session);
+                  }
+                }
+              });
+
+          }
+
+    });
 
     $scope.getCurrentDate = function() {
         var d = new Date();
@@ -150,7 +176,6 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.drawGoogleMap = function(pos_a, pos_b, markers_option) {
-
           if (!pos_a) {
             pos_a = {
               latitude: $scope.user.university.latitude,
@@ -158,7 +183,9 @@ angular.module('uguru.student.controllers')
             }
           }
 
+
           var mapContainer = document.getElementById("map_canvas");
+
           var initMapCoords = $scope.createGoogleLatLng(
                                 parseFloat(pos_a.latitude),
                                 parseFloat(pos_a.longitude)
@@ -168,8 +195,11 @@ angular.module('uguru.student.controllers')
             center: initMapCoords,
             zoom: 15,
             disableDefaultUI: true,
-            zoomControl: true,
             zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
+          }
+
+          if ($scope.platform.web) {
+            mapOptions.zoomControl = true;
           }
 
           var actual_map = new google.maps.Map(
@@ -227,6 +257,45 @@ angular.module('uguru.student.controllers')
 
     }
 
+    $scope.drawMapWithSchoolCoordinates = function() {
+
+          var mapContainer = document.getElementById("map_canvas");
+          var initMapCoords = $scope.createGoogleLatLng(
+                                parseFloat($scope.user.university.latitude),
+                                parseFloat($scope.user.university.longitude)
+                            )
+
+          var mapOptions = {
+            center: initMapCoords,
+            zoom: 15,
+            disableDefaultUI: true,
+            zoomControl: true,
+            zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
+          }
+
+          var actual_map = new google.maps.Map(
+                  mapContainer,
+                  mapOptions
+          )
+
+          $scope.actual_map = actual_map;
+
+          //draw google markers
+
+          var studentCoords = $scope.createGoogleLatLng(
+                                parseFloat($scope.user.university.latitude),
+                                parseFloat($scope.user.university.longitude)
+                            )
+
+
+          $scope.map.student_marker = new google.maps.Marker({
+              position: studentCoords,
+              map: actual_map,
+              draggable:true
+            });
+          // $scope.drawGoogleMarkers(parseFloat($scope.user.university.latitude), parseFloat($scope.user.university.longitude), actual_map);
+    }
+
     $scope.getUserRecentLocation = function(recursive_delay) {
 
       $cordovaGeolocation
@@ -247,7 +316,8 @@ angular.module('uguru.student.controllers')
 
       }, function(err) {
           console.log('error from gps', err);
-          $scope.showGeoLocationError(err);
+
+          $scope.drawMapWithSchoolCoordinates();
 
       });
 
@@ -262,8 +332,66 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.$on('$ionicView.beforeEnter', function(){
-      $scope.drawGoogleMap();
+      console.log('before enter, parsing the session obj..')
+      $scope.session = JSON.parse($stateParams.sessionObj);
+      $scope.recursive_delay = 60000;
+      $scope.guru = {};
 
+      $scope.student_position = null;
+      $scope.guru_position = null;
+      $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
+      $scope.options = {scrollwheel: false};
+
+
+      $scope.geoOptions = {
+        timeout: 10000,
+        enableHighAccuracy: false, //may cause high errors if true
+      }
+
+      $scope.drawGoogleMap(null,null, true);
+
+      if (!$scope.user.last_position || !$scope.user.last_position.latitude) {
+        console.log('no last position on record... starting now every', $scope.recursive_delay, 'seconds');
+        $scope.getUserRecentLocation($scope.recursive_delay);
+      }
+
+    });
+
+    $scope.loadMapDelayed = function () {
+
+        $timeout(function() {
+
+              if (document.getElementsByClassName('gm-style').length === 0) {
+                console.log("500-loaded: map hasn't been drawn yet, attempting to redraw");
+                $scope.drawGoogleMap(null,null, true);
+                $scope.loader.hide();
+              }
+            }, 500);
+
+          $timeout(function() {
+              if (document.getElementsByClassName('gm-style').length === 0) {
+                console.log("1000-loaded: map hasn't been drawn yet, attempting to redraw");
+                $scope.drawGoogleMap(null,null, true);
+                $scope.loader.hide();
+              }
+            }, 1000);
+
+
+            $timeout(function() {
+              if (document.getElementsByClassName('gm-style').length === 0) {
+                console.log("1500-loaded: map hasn't been drawn yet, attempting to redraw");
+                $scope.drawGoogleMap(null,null, true);
+                $scope.loader.hide();
+              }
+            }, 1500);
+    }
+
+
+
+    $scope.$on('$ionicView.loaded', function() {
+
+      console.log('loaded');
+      $scope.loadMapDelayed();
       if (!$scope.user.last_position || !$scope.user.last_position.latitude) {
         console.log('no last position on record... starting now every', $scope.recursive_delay, 'seconds');
         $scope.getUserRecentLocation($scope.recursive_delay);

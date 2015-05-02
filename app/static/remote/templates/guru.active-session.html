@@ -3,6 +3,7 @@
 
         <a class="button button-clear button-back button-white"  nav-direction='back' href='#/guru-home'>Back</a>
         <h5 class="title uppercase">{{session.request.course.short_name}} Session w/ {{session.request.student.name.split(' ')[0]}} </h5>
+        <a class="button button-clear button-back uppercase positive" ng-click='showOptions()'>Options</a>
     </ion-header-bar>
     <!-- <ion-header-bar style="height:30px; text-align:center;" class="bar-subheader bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)" >
 
@@ -28,14 +29,11 @@
             <button class="button button-full button-positive" ng-click="startSessionTimer(session)" ng-show='session.status===1'>
               Start
             </button>
-            <button class="button button-full button-positive button-outline" ng-click="goToSessionMessages(session)">
-              Message {{session.guru.first_name}}
-            </button>
-            <button class="button button-full button-positive button-outline" ng-click="continueSession(session)" ng-show='session.status===2'>
+            <button class="button button-full button-positive" ng-click="continueSession(session)" ng-show='session.status===2'>
               Continue Session
             </button>
-            <button class="button button-full button-clear button-outline" ng-click="cancelSession()">
-              Cancel
+            <button class="button button-full button-positive button-outline" ng-click="goToSessionMessages(session)">
+              Message {{session.guru.first_name}}
             </button>
           </li>
         </ul>
