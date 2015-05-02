@@ -11,8 +11,7 @@ angular.module('uguru.student.controllers')
   function($scope, $state, $ionicHistory, $ionicViewSwitcher) {
 
     $scope.goToEditCard = function(card) {
-
-        $state.go('^.add-payment', {cardObj:JSON.stringify(card)});
+      $state.go('^.add-payment', {cardObj:JSON.stringify(card)});
     }
 
     $scope.deleteCard = function() {

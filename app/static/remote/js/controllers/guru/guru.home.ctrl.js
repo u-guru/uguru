@@ -221,6 +221,9 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.switchToStudentMode = function() {
+      // $ionicHistory.clearHistory();
+      $scope.root.vars.recent_switched_modes = true;
+      $scope.user.guru_mode = false;
       $state.go('^.student-home');
       // var goToGuruHome = function() {
       //   $scope.user.guru_mode = false;
@@ -409,6 +412,7 @@ angular.module('uguru.guru.controllers')
     });
 
     $scope.$on('$ionicView.beforeEnter', function(){
+      $scope.loader.show();
       User.getUserFromServer($scope, null, $state);
       // $scope.guru.profile_percent_complete = $scope.calculateGuruProfilePercentage();
 
@@ -430,6 +434,13 @@ angular.module('uguru.guru.controllers')
 
       //check if user already has push notification token
 
+    });
+
+    $scope.$on('$ionicView.loaded', function() {
+      $scope.loader.hide();
+    });
+    $scope.$on('$ionicView.afterEnter', function() {
+      $scope.loader.hide();
     });
 
   }

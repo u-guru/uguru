@@ -122,33 +122,6 @@ angular.module('uguru.util.controllers')
           },1500);
     }
 
-    // $scope.$on('$ionicView.enter', function() {
-    //   console.log('is entering location view before entering');
-    //   if ($scope.root.vars.request.location && $scope.root.vars.request.location.latitude) {
-    //       console.log('previous already stored, no need to re-draw');
-    //   } else {
-
-    //     $timeout(function() {
-    //       $scope.showGoogleMap();
-    //       $scope.loader.hide();
-    //     }, 500);
-
-    //   }
-    // });
-
-
-
-
-    // $scope.$on('$ionicView.loaded', function() {
-    //   console.log('is entering location view after loaded');
-    //   $timeout(function() {
-    //     if (!$scope.mapAlreadyLoaded) {
-    //       $scope.showGoogleMap();
-    //       $scope.mapAlreadyLoaded = false;
-    //     }
-    //   }, 500);
-    // });
-
     $scope.showGoogleMap = function() {
       $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
           $scope.options = {scrollwheel: false};
@@ -209,6 +182,14 @@ angular.module('uguru.util.controllers')
               );
           }
     }
+
+    $scope.$on('$ionicView.enter', function() {
+      if (!$scope.root.vars.request.location) {
+            console.log('redrawing google map from previously cached version');
+            $scope.showGoogleMap();
+            $scope.loader.hide();
+      }
+    });
 
     $scope.$on('$ionicView.loaded', function() {
 

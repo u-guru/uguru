@@ -10,8 +10,9 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   '$ionicHistory',
   '$stateParams',
+  '$ionicViewSwitcher',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $ionicHistory, $stateParams) {
+ 	$ionicModal, $ionicHistory, $stateParams, $ionicViewSwitcher) {
 
 
     $scope.clearCard = function() {
@@ -23,14 +24,19 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.goBack = function() {
+      // $ionicHistory.goBack();
       if (!$ionicHistory.backView() && !$scope.guru_mode) {
+        console.log('back view doesnt exist');
+        $ionicViewSwitcher.nextDirection('back');
+        $scope.loader.show();
         $state.go('^.student-home');
-      } else if (!$ionicHistory.backView() && $scope.guru_mode) {
-        $state.go('^.guru-home');
       }
-      else {
-        $ionicHistory.goBack();
-      }
+      // } else if (!$ionicHistory.backView() && $scope.guru_mode) {
+      //   $state.go('^.guru-home');
+      // }
+      // else {
+      //   $ionicHistory.goBack();
+      // }
     }
 
     $scope.addPaymentActionBtn = function() {
@@ -236,7 +242,12 @@ angular.module('uguru.util.controllers')
         }
 
 
-    $scope.$on('$ionicView.enter', function(){
+    $scope.$on('$ionicView.beforeEnter', function(){
+      $scope.loader.show();
+
+      $timeout(function() {
+        $scope.loader.hide()
+        }, 3000);
 
       $scope.debitCardOnly = ($stateParams && $stateParams.debitCardOnly) || $scope.user.guru_mode;
 
@@ -275,6 +286,10 @@ angular.module('uguru.util.controllers')
       $scope.cardInput.addEventListener('keyup', checkInputState);
       $scope.cardMM.addEventListener('keyup', checkInputState);
 
+    });
+
+    $scope.$on('$ionicView.afterEnter', function(){
+      $scope.loader.hide();
     });
 
   }

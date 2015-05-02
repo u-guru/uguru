@@ -558,6 +558,16 @@ angular.module('uguru.user', [])
         },
         getUserFromServer: function($scope, callback, $state) {
 
+            if ($scope && $scope.root && $scope.root.vars.fetch_user_server_mutex) {
+                console.log('There is already a server process updating the user');
+                console.log('Exiting...');
+                return;
+            } else if ($scope && $scope.root && !$scope.root.vars.fetch_user_server_mutex) {
+                console.log('No mutex set, setting to true');
+                console.log('Mutex on, fetching user');
+                $scope.root.vars.fetch_user_server_mutex = true;
+            }
+
             if ($scope) {
                 var scope_user_id = $scope.user.id;
             } else {
@@ -572,10 +582,13 @@ angular.module('uguru.user', [])
             else {
                 // console.log('Fetching user from ', $state.current.name);
             }
+
             Restangular.one('user', scope_user_id).customGET().then(
                 function(user) {
                     var processed_user = processResults(user.plain());
                     if ($scope) {
+                        console.log('user successfully fetched from user, turning mutex off');
+                        $scope.root.vars.fetch_user_server_mutex = false;
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);
                         $scope.loader.hide();

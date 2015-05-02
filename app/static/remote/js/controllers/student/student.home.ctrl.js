@@ -186,13 +186,12 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       // var goToGuruHome = function() {
 
       // }
+      // $ionicHistory.nextViewOptions({
+      //   historyRoot: true
+      // });
+      $ionicViewSwitcher.nextDirection('forward');
       $scope.user.guru_mode = true;
-      $ionicHistory.nextViewOptions({
-        historyRoot: true
-      });
-      console.log('going to guru mode');
       $state.go('^.guru-home');
-      $scope.user.updateAttr('guru_mode', $scope.user, true, null, $scope);
     }
 
     $scope.goToRequest = function(course) {
@@ -380,14 +379,44 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       $state.go('^.previous-session-details', {sessionObj:JSON.stringify(session)});
     }
 
+    $scope.$on('$ionicView.enter', function() {
+
+      console.log('view has entered', $scope.root.vars.recent_switched_modes);
+      $localstorage.setObject('user', $scope.user);
+      User.getUserFromServer($scope, null, $state);
+      $scope.root.vars.fetch_user_server_mutex = true;
+
+      $scope.loader.hide();
+      $scope.user.guru_mode = false;
+      $scope.root.vars.guru_mode = false;
 
 
-    $scope.$on('$ionicView.beforeEnter', function(){
+
+      // if ($scope.root.vars.request_form_recently_hidden) {
+      //     //make it null after
+      //     $scope.root.vars.request_form_recently_hidden = null;
+      //     var showFor = 4500;
+      //     var waitFor = 1500;
+      //     $scope.showBouncingRedAlert(waitFor, showFor);
+      //     $scope.showFirstTimeRequestSessionPopup()
+
+      // }
+
+
+    });
+
+    $scope.$on('$ionicView.loaded', function(){
+      console.log('view has loaded');
       User.getUserFromServer($scope, null, $state);
 
-      // if ($scope.user.guru_mode) {
-      //   $state.go('^.guru-home');
-      // }
+      $scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
+      $scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
+      $scope.bottomTabsDelegate.select(1);
+
+
+      if ($scope.bottomTabsDelegate.selectedIndex() === 1) {
+        $scope.showOnboardingAddClass();
+      }
 
 
       if (window.StatusBar) {
@@ -397,25 +426,6 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
       $scope.base_url =  BASE;
       $scope.progress_active = false;
-
-    });
-
-    $scope.$on('$ionicView.enter', function(){
-      console.log('view is entered');
-      $scope.user.guru_mode = false;
-      $scope.root.vars.guru_mode = false;
-      $localstorage.setObject('user', $scope.user);
-
-
-      if ($scope.root.vars.request_form_recently_hidden) {
-          //make it null after
-          $scope.root.vars.request_form_recently_hidden = null;
-          var showFor = 4500;
-          var waitFor = 1500;
-          $scope.showBouncingRedAlert(waitFor, showFor);
-          $scope.showFirstTimeRequestSessionPopup()
-
-        }
 
     });
 
@@ -482,22 +492,6 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
           $scope.openGeneralPopover(element, options);
         }, 3000);
     }
-
-    $timeout(function() {
-      $scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
-      $scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
-      $scope.bottomTabsDelegate.select(1);
-      console.log($scope.user.id);
-      if ($scope.bottomTabsDelegate.selectedIndex() === 1) {
-        $scope.showOnboardingAddClass();
-      }
-      console.log($scope.user.profile_url);
-      // $timeout(function() {
-      //   document.querySelectorAll('.session-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-1.svg')";
-      //   document.querySelectorAll('.request-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-3.svg')";
-      //   document.querySelectorAll('.settings-icon')[0].style.backgroundImage = "url('/remote/img/tabs-icon-2.svg')";
-      // }, 250);
-    },1000)
 
   }
 
