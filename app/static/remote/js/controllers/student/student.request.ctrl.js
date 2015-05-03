@@ -211,6 +211,7 @@ angular.module('uguru.student.controllers')
         $scope.contactingGuruModal.hide();
         $scope.root.vars.request = null;
         $scope.root.vars.request_form_recently_hidden = true;
+        $scope.root.vars.files_should_be_cleared = true;
         $scope.root.vars.calendar_should_be_empty = true;
       }, 10000);
 

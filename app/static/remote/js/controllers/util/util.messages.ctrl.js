@@ -126,8 +126,8 @@ angular.module('uguru.student.controllers')
       return payload;
     }
 
-    $scope.getMessagesFromServer = function(time_between, one_time) {
-
+    $scope.getMessagesFromServer = function(time_between, one_time, callback) {
+      console.log('getting message from server');
       Restangular
         .one('user', $scope.user.id).one('sessions', $scope.session.id).one('messages')
         .customGET()
@@ -144,6 +144,10 @@ angular.module('uguru.student.controllers')
               $timeout(function() {
                 $scope.getMessagesFromServer(time_between);
               }, time_between);
+            }
+
+            if (callback) {
+              callback();
             }
 
         }, function(err){
@@ -205,12 +209,28 @@ angular.module('uguru.student.controllers')
       },500);
     });
 
+    $scope.doRefresh = function() {
+        var callback = function() {
+          $scope.$broadcast('scroll.refreshComplete');
+          $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
+        }
+        console.log('getting message from server');
+        $scope.getMessagesFromServer(null ,true,callback);
+
+        $timeout(function() {
+          console.log('shutting off anyways incase its not');
+
+          $scope.$broadcast('scroll.refreshComplete');
+          $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
+        }, 3000)
+    }
+
     $scope.$on('$ionicView.beforeEnter', function(){
       $scope.loader.show();
       $scope.messages = $scope.processMessages($scope.session.messages);
-      // $timeout(function() {
-      //   $scope.getMessagesFromServer(5000);
-      // }, 5000)
+      $timeout(function() {
+        $scope.getMessagesFromServer(30000);
+      }, 5000)
     });
 
 

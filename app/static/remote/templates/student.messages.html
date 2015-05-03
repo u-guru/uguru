@@ -19,13 +19,19 @@
       </div> -->
 
     </ion-header-bar>
-  <ion-content delegate-handle="message-scroll" ng-click='setUnfocus()'>
-
+  <ion-content delegate-handle="message-scroll" ng-click='setUnfocus()' class='white-background'>
+      <ion-refresher
+        pulling-icon="guru-profile-icon"
+        pulling-text="Pull to refresh..."
+        on-refresh="doRefresh()">
+      </ion-refresher>
     <!-- <ion-scroll class="messages" ng-click="hideKeyboard()"> -->
       <ul class="list message-item-list">
           <li class="item {{message.class}} message-item" ng-repeat="message in messages">
             <img ng-src="{{message.profile_url}}" ng-show='message.class === "item-avatar-left"'>
-            <div class="text"><strong ng-show='message.sender.id !== user.id && message.sender.profile_url === default_profile_url'>{{message.sender.name.split(' ')[0]}}</strong> {{message.contents}}</div>
+            <div class="text">
+              <!-- <span class='sans-semibold' ng-show='message.sender.id !== user.id && message.sender.profile_url === default_profile_url'>{{message.sender.name.split(' ')[0]}}:</span> -->
+              {{message.contents}}</div>
             <img ng-src="{{message.profile_url}}" ng-show='message.class === "item-avatar-right"'>
           </li>
       </ul>

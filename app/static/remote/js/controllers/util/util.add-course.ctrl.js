@@ -14,9 +14,10 @@ angular.module('uguru.util.controllers')
   'University',
   'Popover',
   '$cordovaStatusbar',
+  '$ionicPlatform',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $q,
-  $cordovaKeyboard, University, Popover, $cordovaStatusbar) {
+  $cordovaKeyboard, University, Popover, $cordovaStatusbar, $ionicPlatform) {
 
     $scope.course_search_text = '';
     $scope.keyboard_force_off = false;
@@ -116,10 +117,23 @@ angular.module('uguru.util.controllers')
 
       });
 
+      $ionicPlatform.ready(function() {
+
+        $scope.switchStatusBariOS = function() {
+
+          if (window.StatusBar) {
+                        // console.log('Extra #1. Styling iOS status bar to black \n\n');
+            StatusBar.styleLightContent();
+            StatusBar.overlaysWebView(true);
+          }
+
+        }
+      });
+
       $scope.$on('modal.shown', function() {
 
-        if (window.StatusBar) {
-            StatusBar.styleLightContent();
+        if ($scope.switchStatusBariOS) {
+          $scope.switchStatusBariOS();
         }
 
         if ($scope.addCourseModal.isShown() &&

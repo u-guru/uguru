@@ -559,12 +559,12 @@ angular.module('uguru.user', [])
         getUserFromServer: function($scope, callback, $state) {
 
             if ($scope && $scope.root && $scope.root.vars.fetch_user_server_mutex) {
-                console.log('There is already a server process updating the user');
-                console.log('Exiting...');
+                // console.log('There is already a server process updating the user');
+                // console.log('Exiting...');
                 return;
             } else if ($scope && $scope.root && !$scope.root.vars.fetch_user_server_mutex) {
-                console.log('No mutex set, setting to true');
-                console.log('Mutex on, fetching user');
+                // console.log('No mutex set, setting to true');
+                // console.log('Mutex on, fetching user');
                 $scope.root.vars.fetch_user_server_mutex = true;
             }
 
