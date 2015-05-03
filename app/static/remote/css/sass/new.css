@@ -1752,3 +1752,34 @@ li.item.item-avatar-left.message-item {
 
 .text .sans-semibold {
   font-family: "OpenSans-SemiBold"; }
+
+.icon.guru-profile-icon {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 15px;
+  background-image: url('../../img/guru-profile.svg');
+  background-size: contain;
+  position: absolute;
+  width: 100%; }
+
+.timer-bar {
+  border: none;
+  background-image: none !important; }
+
+.icon.icon-xl {
+  font-size: 5em; }
+
+a .timer-icon {
+  top: 40%; }
+
+a .timer-icon.ion-play {
+  right: 42%; }
+
+a .timer-icon.ion-pause {
+  right: 46%; }
+
+.icon.absolute {
+  position: absolute; }
+
+.button-submit-timer {
+  bottom: 0px; }

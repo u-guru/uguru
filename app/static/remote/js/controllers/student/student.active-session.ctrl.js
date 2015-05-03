@@ -96,7 +96,7 @@ angular.module('uguru.student.controllers')
     $scope.getCurrentPositionAndSync = function(time) {
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
 
-      if ($state.current.name != 'root.student.active-session') {
+      if ($state.current.name != 'root.student-active-session') {
         $scope.bgGeo.stop();
         console.log('do not run background script anymore');
         return;
@@ -107,7 +107,7 @@ angular.module('uguru.student.controllers')
         .then(function (position) {
           $scope.syncPositionWithServer(position);
           $scope.student_position = position;
-          if (time) {
+          if (time && $state.current.name === 'root.student-active-session') {
               $timeout(function() {
               $scope.getCurrentPositionAndSync(time)
             }, time);
@@ -350,10 +350,10 @@ angular.module('uguru.student.controllers')
 
       $scope.loadMapDelayed();
 
-      if (!$scope.user.last_position || !$scope.user.last_position.latitude) {
-        console.log('no last position on record... starting now every', $scope.recursive_delay, 'seconds');
-        $scope.getUserRecentLocation($scope.recursive_delay);
-      }
+      // if (!$scope.user.last_position || !$scope.user.last_position.latitude) {
+      //   console.log('no last position on record... starting now every', $scope.recursive_delay, 'seconds');
+      //   $scope.getUserRecentLocation($scope.recursive_delay);
+      // }
 
     });
 
@@ -388,16 +388,6 @@ angular.module('uguru.student.controllers')
 
 
 
-    $scope.$on('$ionicView.loaded', function() {
-
-      // console.log('loaded');
-      // $scope.loadMapDelayed();
-      // if (!$scope.user.last_position || !$scope.user.last_position.latitude) {
-      //   console.log('no last position on record... starting now every', $scope.recursive_delay, 'seconds');
-      //   $scope.getUserRecentLocation($scope.recursive_delay);
-      // }
-
-    });
 
   }
 

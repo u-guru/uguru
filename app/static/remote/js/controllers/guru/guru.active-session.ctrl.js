@@ -77,13 +77,24 @@ angular.module('uguru.guru.controllers')
         enableHighAccuracy: false, //may cause high errors if true
       }
 
+      if ($scope.user.last_position && $scope.user.last_position.latitude) {
+        $scope.drawGoogleMap($scope.user.last_position,null, true);
+      } else {
+        // $scope.drawGoogleMap(null,null, true);
+        $scope.getUserRecentLocation($scope.recursive_delay);
+      }
+
+      $scope.loadMapDelayed();
+
+
+
     });
 
     $scope.loadMapDelayed = function () {
       $timeout(function() {
               if (document.getElementsByClassName('gm-style').length === 0) {
                 console.log("500-loaded: map hasn't been drawn yet, attempting to redraw");
-                $scope.drawGoogleMap();
+                $scope.drawGoogleMap(null,null, true);
                 $scope.loader.hide();
               }
             }, 500);
@@ -91,7 +102,7 @@ angular.module('uguru.guru.controllers')
           $timeout(function() {
               if (document.getElementsByClassName('gm-style').length === 0) {
                 console.log("1000-loaded: map hasn't been drawn yet, attempting to redraw");
-                $scope.drawGoogleMap();
+                $scope.drawGoogleMap(null,null, true);
                 $scope.loader.hide();
               }
             }, 1000);
@@ -100,23 +111,23 @@ angular.module('uguru.guru.controllers')
             $timeout(function() {
               if (document.getElementsByClassName('gm-style').length === 0) {
                 console.log("1500-loaded: map hasn't been drawn yet, attempting to redraw");
-                $scope.drawGoogleMap();
+                $scope.drawGoogleMap(null,null, true);
                 $scope.loader.hide();
               }
             }, 1500);
     }
 
-    $scope.$on('$ionicView.loaded', function() {
+    // $scope.$on('$ionicView.loaded', function() {
 
 
-      $scope.loadMapDelayed();
 
-      if (!$scope.user.last_position || !$scope.user.last_position.latitude) {
-        console.log('no last position on record... starting now every', $scope.recursive_delay, 'seconds');
-        $scope.getUserRecentLocation($scope.recursive_delay);
-      }
 
-    });
+    //   if (!$scope.user.last_position || !$scope.user.last_position.latitude) {
+    //     console.log('no last position on record... starting now every', $scope.recursive_delay, 'seconds');
+    //     $scope.getUserRecentLocation($scope.recursive_delay);
+    //   }
+
+    // });
 
 
     $scope.goToSessionMessages = function(session) {

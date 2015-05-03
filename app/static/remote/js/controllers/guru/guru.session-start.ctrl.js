@@ -41,11 +41,11 @@ angular.module('uguru.guru.controllers')
 
     $scope.startTimer = function() {
       $scope.timer.active = true;
+      $scope.addOneSecond();
 
       $scope.session.start_timer = true;
       $scope.user.updateObj($scope.user, 'sessions', $scope.session, $scope);
 
-      $scope.addOneSecond();
 
 
       // $scope.timer_seconds.animate(0.5);  // Number from 0.0 to 1.0
@@ -146,9 +146,8 @@ angular.module('uguru.guru.controllers')
 
         $scope.timer.seconds += 1;
         $scope.updateTimer();
-        $scope.startTimerFromX($scope.timer.seconds);
-
         if ($scope.timer.active) {
+          $scope.startTimerFromX($scope.timer.seconds);
           $scope.addOneSecond();
         }
 
@@ -167,19 +166,38 @@ angular.module('uguru.guru.controllers')
 
     }
 
-     $scope.$on('$ionicView.beforeEnter', function(){
-      console.log('timer initializer');
-      $scope.timer_seconds = new ProgressBar.Circle('#timer-container', {
-            color: '#FFFFFF',
-            strokeWidth: 3.1,
-            duration: 200,
-            trailColor:'#A1D5CC'
-      });
-     });
+   $scope.$on('$ionicView.beforeEnter', function(){
+    if (!$scope.timer_seconds) {
+      $scope.initTimer();
+    }
+    console.log('timer initializer');
+   });
 
+   $scope.$on('$ionicView.loaded', function(){
+     if (!$scope.timer_seconds) {
+        $scope.initTimer();
+      }
+   });
+
+   $scope.initTimer = function() {
+
+      $scope.timer_seconds = new ProgressBar.Circle('#timer-container', {
+        color: '#FFFFFF',
+        strokeWidth: 3.1,
+        trailColor:'#A1D5CC'
+      });
+
+      $timeout(function(){
+        $scope.timer_seconds.animate(1, function() {
+          $scope.timer_seconds.set(0.001);
+        });
+      }, 1000);
+
+   }
 
     $scope.pauseTimer = function() {
       $scope.timer.active = false;
+      $scope.timer_seconds.stop();
     }
 
     $scope.setTimer = function(seconds, minutes, hours) {
