@@ -51,17 +51,17 @@ class User(Base):
     profile_url = Column(String, default="https://graph.facebook.com/10152573868267292/picture?width=100&height=100")
 
 
+    #admin fields
+    is_admin = Column(Boolean)
+    is_support_admin = Column(Boolean)
+
+
     fb_id = Column(String)
-    # uber_id = Column(String) # TODO SAMIR
-    # github_id = Column(String) # TODO SAMIR
-    # linkedin_id = Column(String) # TODO SAMIR
-    # instagram_id = Column(String) # TODO SAMIR
-    # box_id = Column(String) # TODO SAMIR
-    # reddit_id = Column(String) # TODO SAMIR
-    # twitter_id = Column(String) # TODO SAMIR
-    # salesforce_id = Column(String) # TODO SAMIR
-    # spotify_id = Column(String) # TODO SAMIR
-    # uber_id = Column(String) # TODO SAMIR
+    uber_id = Column(String)
+    github_id = Column(String)
+    linkedin_id = Column(String)
+    instagram_id = Column(String)
+    spotify_id = Column(String)
 
     gender = Column(String)
     password = Column(String)
@@ -73,10 +73,10 @@ class User(Base):
     time_created = Column(DateTime)
 
 
-    # current_hourly = Column(Float) # TODO SAMIR
-    # uber_friendly = Column(Boolean) # TODO SAMIR
-    # summer_15 = Column(Boolean) # TODO SAMIR
-    # outside university = Column(Boolean) # TODO SAMIR
+    current_hourly = Column(Float)
+    uber_friendly = Column(Boolean)
+    summer_15 = Column(Boolean)
+    outside_university = Column(Boolean)
 
 
     #Student fields
@@ -136,6 +136,7 @@ class User(Base):
     #user notifications
     push_notifications = Column(Boolean, default = False)
     email_notifications = Column(Boolean, default = True)
+    text_notifications = Column(Boolean, default = False)
 
 
     phone_number = Column(String)
@@ -576,11 +577,21 @@ class Support(Base):
         backref = "support_tickets"
     )
 
+    assigned_admin_id = Column(Integer, ForeignKey('user.id'))
+    assigned_admin = relationship("User",
+        uselist = False,
+        primaryjoin = "User.id == Support.assigned_admin_id",
+        backref = "admin_support_tickets"
+    )
+
     rating_id = Column(Integer, ForeignKey('rating.id'))
     transaction_id = Column(Integer, ForeignKey('transaction.id'))
     session_id = Column(Integer, ForeignKey('session.id'))
     time_created = Column(DateTime)
     time_resolved = Column(DateTime)
+    time_updated = Column(DateTime)
+
+
 
     @staticmethod
     def init(user, message, support_json):
@@ -734,9 +745,9 @@ class Request(Base):
     online = Column(Boolean)
     time_estimate = Column(Integer)
 
-    # contact_email = Column(Boolean) TODO SAMIR
-    # contact_push = Column(Boolean) TODO SAMIR
-    # contact_text = Column(Boolean) TODO  (ADD ALL AT ONCE)
+    contact_email = Column(Boolean)
+    contact_push = Column(Boolean)
+    contact_text = Column(Boolean)
 
     course_id = Column(Integer, ForeignKey('course.id'))
     course = relationship("Course",
@@ -819,6 +830,11 @@ class Proposal(Base):
     time_created = Column(DateTime)
     time_updated = Column(DateTime)
 
+    student_price = Column(Float)
+    guru_price = Column(Float)
+    guru_proposed_price = Column(Float) #rebuttal
+    guru_description = Column(Float)
+
     request_id = Column(Integer, ForeignKey('request.id'))
     request = relationship("Request",
         uselist=False,
@@ -839,9 +855,6 @@ class Proposal(Base):
         primaryjoin = "User.id == Proposal.guru_id",
         backref="proposals"
     )
-
-
-
 
     guru_rank = Column(Integer)
     status = Column(Integer) # Active, expired, guru_accepted, guru_rejected, student_rejected
@@ -998,7 +1011,7 @@ class Event(Base):
     )
 
     #status = 0
-    # estimated_rank_before = Column(Integer) TODO
+    estimated_rank_before = Column(Integer)
     estimated_rank_after = Column(Integer)
 
     #status = 1
@@ -1231,6 +1244,13 @@ class Message(Base):
     session = relationship("Session",
         uselist = False,
         primaryjoin = "Session.id == Message.session_id",
+        backref = "messages"
+    )
+
+    support_ticket_id = Column(Integer, ForeignKey("support.id"))
+    support_ticket = relationship("Support",
+        uselist = False,
+        primaryjoin = "Support.id == Message.support_ticket_id",
         backref = "messages"
     )
 
@@ -1509,6 +1529,11 @@ class Course(Base):
             , contributed_user_id=contributed_user_id)
         return c
 
+
+###################
+#### OUTDATED #####
+#### NOT USED #####
+###################
 
 class Referral(Base):
     __tablename__ = 'referral'

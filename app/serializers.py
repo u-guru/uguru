@@ -212,6 +212,8 @@ UserSerializer = {
     'guru_ratings': fields.List(fields.Nested(rating_fields)),
     'student_ratings': fields.List(fields.Nested(rating_fields)),
     'guru_sessions': fields.List(fields.Nested(session_fields)),
+    # 'text_notifications': fields.Boolean,
+    'email_notifications': fields.Boolean,
     'push_notifications': fields.Boolean,
     'push_notifications_enabled': fields.Boolean,
     'guru_score': fields.Float,
@@ -220,6 +222,7 @@ UserSerializer = {
     'sessions': fields.List(fields.Nested(session_fields)),
     'proposals': fields.List(fields.Nested(proposal_fields)),
     'cards': fields.List(fields.Nested(card_fields)),
+    'phone_number': fields.String,
     'student_transactions': fields.List(fields.Nested(transaction_fields)),
     'guru_transactions': fields.List(fields.Nested(transaction_fields)),
     'transfer_transactions': fields.List(fields.Nested(transaction_fields)),
@@ -264,8 +267,7 @@ SessionSerializer = {
     'hours': fields.Integer,
     'guru': fields.Nested(guru_fields),
     'guru_positions': fields.List(fields.Nested(position_fields)),
-    'student_positions': fields.List(fields.Nested(position_fields)),
-
+    'student_positions': fields.List(fields.Nested(position_fields))
 }
 
 CourseSerializer = {

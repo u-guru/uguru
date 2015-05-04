@@ -151,11 +151,17 @@ class DeviceView(restful.Resource):
             abort(404)
 
         print request.json
+        previous_push_notif_value = device.push_notif
+
         device.push_notif_enabled = request.json.get('push_notif_enabled')
         device.push_notif = request.json.get('push_notif')
         device.location_enabled = request.json.get('location_enabled')
         device.camera_enabled = request.json.get('camera_enabled')
         device.background_location_enabled = request.json.get('background_location_enabled')
+
+        # there is a token that was recently added, enable user push notifications
+        if device.push_notif and len(device.push_notif) > 5 and device.user and not previous_push_notif_value:
+            device.user.push_notifications = True
 
         db_session.commit()
 
@@ -249,7 +255,6 @@ class UserOneView(restful.Resource):
             user.name = name
             db_session.commit()
 
-
         if request.json.get('change_password'):
             print request.json.get('change_password')
             change_password_dict = request.json.get('change_password')
@@ -266,8 +271,6 @@ class UserOneView(restful.Resource):
                 password=md5(change_password_dict.get('old_password')).hexdigest()
                 ).first()
 
-            print user_exists
-
             if not user_exists:
                 abort(401)
 
@@ -278,11 +281,18 @@ class UserOneView(restful.Resource):
         if 'is_a_guru' in request.json:
             user.is_a_guru = request.json.get('is_a_guru')
 
+        if 'push_notifications' in request.json:
+            user.push_notifications = request.json.get('push_notifications')
+
+        if 'text_notifications' in request.json:
+            user.text_notifications = request.json.get('text_notifications')
+            print 'coming soon!'
+
+        if 'email_notifications' in request.json:
+            user.email_notifications = request.json.get('email_notifications')
+
         if 'guru_mode' in request.json:
             user.guru_mode = request.json.get('guru_mode')
-
-        if request.json.get('change_password'):
-            pass
 
         if request.json.get('add_student_course'):
             course = request.json.get('course')
@@ -554,9 +564,21 @@ class UserRequestView(restful.Resource):
         for guru in available_gurus:
             guru.id, guru.name, guru.time_created, 'contacted'
             proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
+
             #send push notification is user has permitted device
-            from app.lib.push_notif import send_student_request_to_guru
-            send_student_request_to_guru(_request, guru)
+            if user.push_notifications:
+                from app.lib.push_notif import send_student_request_to_guru
+                send_student_request_to_guru(_request, guru)
+
+            if user.email_notifications and user.email:
+
+                from app.emails import send_student_request_to_guru
+                send_student_request_to_guru(_request, guru)
+
+
+            if user.text_notifications and user.phone_number:
+                print "should send a text here"
+
             event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
             event = Event.initFromDict(event_dict)
 
@@ -605,10 +627,17 @@ class UserRequestView(restful.Resource):
 
                 student = proposal.request.student
 
-                #send push notification to all student devices
-                from app.lib.push_notif import send_guru_proposal_to_student
-                send_guru_proposal_to_student(proposal, proposal.request.student)
+                if user.push_notifications:
 
+                    #send push notification to all student devices
+                    from app.lib.push_notif import send_guru_proposal_to_student
+                    send_guru_proposal_to_student(proposal, proposal.request.student)
+
+                if user.email_notifications and user.email:
+                    print "should send an email here"
+
+                if user.text_notifications and user.phone_number:
+                    print "should send a text here"
 
                 event_dict = {'status': Proposal.GURU_ACCEPTED, 'proposal_id':proposal.id}
                 event = Event.initFromDict(event_dict)
@@ -914,9 +943,17 @@ class UserSessionView(restful.Resource):
             session._relationship = Relationship.initFromSession(session)
             db_session.commit()
 
-        #send push notification to guru
-        from app.lib.push_notif import send_student_has_accepted_to_guru
-        send_student_has_accepted_to_guru(session, session.request.guru)
+        #send notifications to Guru
+        if user.push_notifications:
+            from app.lib.push_notif import send_student_has_accepted_to_guru
+            send_student_has_accepted_to_guru(session, session.request.guru)
+
+        if user.email_notifications and user.email:
+            from app.emails import send_student_has_accepted_to_guru
+            send_student_has_accepted_to_guru(session, session.request.guru)
+
+        if user.text_notifications and user.phone_number:
+            print "should send a text here"  #TODO SAMIR
 
         return user, 200
 
@@ -1156,8 +1193,18 @@ class UserSessionMessageView(restful.Resource):
             message_json = request.json.get('message')
             message = Message.initFromJson(message_json)
 
-            from app.lib.push_notif import send_message_to_receiver
-            send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
+            if user.push_notifications:
+                #send push notification to all student devices
+                from app.lib.push_notif import send_message_to_receiver
+                send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
+
+
+            # if user.email_notifications and user.email:
+            #     from app.emails import send_message_to_receiver
+            #     send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
+
+            if user.text_notifications and user.phone_number:
+                print "should send a text here"
 
         return user, 200
 
