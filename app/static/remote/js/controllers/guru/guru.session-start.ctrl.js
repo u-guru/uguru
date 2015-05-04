@@ -19,6 +19,10 @@ angular.module('uguru.guru.controllers')
   Geolocation, $ionicHistory, $cordovaActionSheet) {
 
     $scope.session = JSON.parse($stateParams.sessionObj);
+    $scope.set_timer_mode = false;
+
+    $scope.max_hour = new Array(10);
+    $scope.max_minutes = new Array(60);
 
     $scope.timer = {minutes: $scope.session.minutes, seconds: $scope.session.seconds, hours:$scope.session.hours, active:false};
 
@@ -28,6 +32,26 @@ angular.module('uguru.guru.controllers')
 
     $scope.goBack = function() {
       $ionicHistory.goBack()
+    }
+
+    function elementInViewport2(el) {
+      var top = el.offsetTop;
+      var left = el.offsetLeft;
+      var width = el.offsetWidth;
+      var height = el.offsetHeight;
+
+      while(el.offsetParent) {
+        el = el.offsetParent;
+        top += el.offsetTop;
+        left += el.offsetLeft;
+      }
+
+      return (
+        top < (window.pageYOffset + window.innerHeight) &&
+        left < (window.pageXOffset + window.innerWidth) &&
+        (top + height) > window.pageYOffset &&
+        (left + width) > window.pageXOffset
+      );
     }
 
     $scope.goToGuruProfile = function(guru) {
@@ -220,9 +244,11 @@ angular.module('uguru.guru.controllers')
         var sessionPayload = {session: $scope.session}
 
         var updateObjCallback = function() {
+          $scope.root.vars.check_for_ratings_modal = true;
+          $scope.loader.hide();
           $state.go('^.guru-home');
         }
-
+        $scope.loader.show();
         $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope, updateObjCallback);
     }
 

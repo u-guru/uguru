@@ -208,20 +208,6 @@ angular.module('uguru.guru.controllers')
       }
   }
 
-  	// $scope.showSuccess = function(msg) {
-   //    if (!$scope.progress_active)  {
-   //    		$scope.progress_active = true;
-
-   //    		$cordovaProgress.showSuccess(true, msg)
-	  //     	$timeout(function() {
-	  //       	$cordovaProgress.hide();
-	  //       	$scope.progress_active = false;
-	  //     	}, 1000);
-   //    } else {
-   //    	console.log('Show success cannot be shown because progress bar is already active');
-   //    }
-   //  }
-
     $scope.closeKeyboard = function() {
       if (window.cordova && window.cordova.plugins.Keyboard) {
           $cordovaKeyboard.close();
@@ -423,6 +409,31 @@ angular.module('uguru.guru.controllers')
       console.log('starting background refresh');
     });
 
+    $scope.checkForRatings = function() {
+
+       if (($scope.user.pending_guru_ratings || $scope.user.pending_student_ratings) &&
+                            (($scope.user.pending_guru_ratings.length > 0 && !$scope.user.guru_mode) ||
+                            ($scope.user.pending_student_ratings.length > 0 && $scope.user.guru_mode))) {
+
+            $ionicModal.fromTemplateUrl(BASE + 'templates/ratings.modal.html', {
+                  scope: $scope,
+                  animation: 'slide-in-up'
+            }).then(function(modal) {
+                  $scope.ratingModal = modal;
+            });
+
+            $timeout(function() {
+                if (!$scope.ratingModal.isShown() && !$scope.ratingModalShown) {
+                    $scope.ratingModal.show();
+                }
+            }, 1000);
+
+
+        }
+
+
+    }
+
     $scope.$on('$ionicView.beforeEnter', function(){
       $scope.loader.show();
       User.getUserFromServer($scope, null, $state);
@@ -453,6 +464,9 @@ angular.module('uguru.guru.controllers')
     });
     $scope.$on('$ionicView.afterEnter', function() {
       $scope.loader.hide();
+
+      $scope.checkForRatings();
+
     });
 
   }

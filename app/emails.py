@@ -114,7 +114,7 @@ def send_transactional_email(subject, content, receiver, tags):
 
     if os.environ.get('PRODUCTION'):
 
-        print "email skipped intended for", receiver.email
+        print "email skipped intended for", receiver.email, subject, tags
 
     else:
         result = mandrill_client.messages.send(message=message)
@@ -122,6 +122,29 @@ def send_transactional_email(subject, content, receiver, tags):
 
 def compose_email_notif_message(notif_key, args_tuple):
     return str(email_notif_copy[notif_key] % args_tuple)
+
+def send_reset_password_email(user, raw_password):
+    email_subject = '[IMPORTANT] Your Uguru Password Has Been Reset'
+    args_tuple = (user.name.split(' ')[0].title(), str(raw_password))
+    email_message = compose_email_notif_message('reset_password', args_tuple)
+    email_receiver = user
+    email_tags = "student-reset-password"
+    result = send_transactional_email(email_subject, email_message, email_receiver, email_tags)
+    print result
+
+
+def send_message_to_receiver_support(sender, receiver):
+    args_tuple = (
+        sender.name.split(' ')[0].title()
+    )
+
+    email_subject = 'Uguru Support: 1 New Message'
+    email_content = 'You have 1 new message from Uguru support. <br><br> Please login to the app to see more details.<br><br> Best, <br> Uguru Support Team'
+    email_receiver = receiver
+    email_tags = 'support-message-to-user'
+
+    result = send_transactional_email(email_subject, email_message, email_receiver, email_tags)
+    print result
 
 def send_student_request_to_guru(_request, guru):
     args_tuple = (
@@ -205,5 +228,6 @@ email_notif_copy = {
     "guru_student_rejected": "",
     "message_received":"""You have one new message from %s about %s""",
     "message_received_nudged": "",
+    "reset_password": """Hi %s,<br><br> Your re-generated Uguru password is <b>%s</b>.<br><br> If you didn't regenerate your password, please contact support immediately by directly replying to this email.<br><br> Best, <br><br>uGuru Support """
 
 }

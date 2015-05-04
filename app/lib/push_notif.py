@@ -47,6 +47,20 @@ def send_push_for_user_devices(user, notif_key, args_tuple):
                 android_reg_id = device.push_notif
                 send_android_notification(message, android_reg_id)
 
+def send_message_to_receiver_support(sender, receiver):
+
+    args_tuple = (
+        sender.name.split(' ')[0].title()
+        )
+
+    if not delay_seconds:
+        send_push_for_user_devices(receiver, 'support_message_received', args_tuple)
+    else:
+        send_push_for_user_devices.delay(user=receiver, \
+            notif_key='support_message_received',
+            args_tuple=args_tuple,
+            countdown= delay_seconds )
+
 def send_message_to_receiver(sender, receiver, course, delay_seconds=None):
     args_tuple = (
         sender.name.split(' ')[0].title(),
@@ -128,6 +142,7 @@ push_notif_copy = {
     "guru_student_canceled": "",
     "guru_student_rejected": "",
     "message_received":"""You have one new message from %s about %s""",
+    "support_message_received":"""You have 1 new message from Uguru Support""",
     "message_received_nudged": "",
 
 }

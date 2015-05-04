@@ -7,7 +7,9 @@ angular.module('uguru.root.services', [])
     '$cordovaProgress',
     '$cordovaDialogs',
     '$ionicHistory',
-    function($cordovaKeyboard, $localstorage, $timeout, $cordovaProgress, $cordovaDialogs, $ionicHistory) {
+    '$ionicViewSwitcher',
+    '$state',
+    function($cordovaKeyboard, $localstorage, $timeout, $cordovaProgress, $cordovaDialogs, $ionicHistory, $ionicViewSwitcher, $state) {
 
     this.util = {
         objectFindByKey: function(array, key, value) {
@@ -117,6 +119,14 @@ angular.module('uguru.root.services', [])
                     var button = targetElement.classList.remove('active');
                 },
             250)
+        }
+    }
+
+    this.nav = {
+        goBack: function() {
+            console.log('root nav go back was clicked');
+            $ionicViewSwitcher.nextDirection('back');
+            $state.go('^.student-home');
         }
     }
 

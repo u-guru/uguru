@@ -293,6 +293,11 @@ angular.module('uguru.user', [])
         $scope.user.devices = user.devices;
         $scope.user.current_hourly = user.current_hourly;
 
+        $scope.user.text_notifications = user.text_notifications;
+        $scope.user.email_notifications = user.email_notifications;
+        $scope.user.email = user.email;
+        $scope.user.push_notifications = user.push_notifications;
+        $scope.user.phone_number = user.phone_number;
         $scope.user.active_proposals = user.active_proposals;
         $scope.user.impact_events = user.impact_events;
         $scope.user.pending_proposals = user.pending_proposals;
@@ -380,26 +385,6 @@ angular.module('uguru.user', [])
         //         }
         //     }, 500)
         // }
-
-        if (($scope.user.pending_guru_ratings || $scope.user.pending_student_ratings) &&
-                            (($scope.user.pending_guru_ratings.length > 0 && !$scope.user.guru_mode) ||
-                            ($scope.user.pending_student_ratings.length > 0 && $scope.user.guru_mode))) {
-
-            $ionicModal.fromTemplateUrl(BASE + 'templates/ratings.modal.html', {
-                  scope: $scope,
-                  animation: 'slide-in-up'
-            }).then(function(modal) {
-                  $scope.ratingModal = modal;
-            });
-
-            $timeout(function() {
-                if (!$scope.ratingModal.isShown() && !$scope.ratingModalShown) {
-                    $scope.ratingModal.show();
-                }
-            }, 1000);
-
-
-        }
 
         //otherwise they're already home
         // if ($scope.user.guru_mode && $state.current.name === 'root.student.home') {
@@ -553,6 +538,30 @@ angular.module('uguru.user', [])
               if (arg === 'change_password') {
                 return {
                     'change_password': obj
+                }
+              }
+
+              if (arg === 'push_notifications') {
+                return {
+                    'push_notifications': obj
+                }
+              }
+
+              if (arg === 'email_notifications') {
+                return {
+                    'email_notifications': obj
+                }
+              }
+
+              if (arg === 'text_notifications') {
+                return {
+                    'text_notifications': obj
+                }
+              }
+
+              if (arg === 'phone_number') {
+                return {
+                    'phone_number': obj
                 }
               }
         },

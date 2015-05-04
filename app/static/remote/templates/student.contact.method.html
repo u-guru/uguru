@@ -2,7 +2,7 @@
       <ion-header-bar class='header-bar'>
         <a class="button button-clear button-back" nav-direction="back" href="#/student-request">Back</a>
         <h5 class="title">Contact Method</h5>
-        <a class="button button-clear button-back" ng-click='saveAndGoToRequest()'>Next</a>
+        <a class="button button-clear button-back bold positive uppercase" ng-click='saveAndGoToRequest()'>Next</a>
       </ion-header-bar>
       <ion-content>
         <div class='pure-g-c padding-half positive'>
@@ -11,21 +11,27 @@
           </div>
         </div>
         <ion-list class='list-inset'>
-          <ion-toggle ng-model="root.vars.request.contact.phone" ng-change='toggleTextMessageInput()' toggle-class="toggle-calm">Text Message</ion-toggle>
-
-           <label class="item item-input" ng-show='root.vars.request.contact.phone'>
-            <span class="input-label">Phone Number</span>
-            <input type="number" type="{{user.phone_number}}" placeholder="(510) 123 - 3123">
-          </label>
-
-          <ion-toggle ng-model="root.vars.request.contact.email" ng-change='toggleEmailInput()' toggle-class="toggle-calm">Email
-            <p class='white-space-wrap unrecommended-text'> Not recommended unless you're an email pro </p>
+          <ion-toggle ng-model="root.vars.request.contact.phone" ng-change='toggleTextMessageInput()' toggle-class="toggle-calm" class='ng-class:{"item-icon-left": root.vars.request.contact.phone} '>
+          <i class='icon ion-checkmark icon-medium icon-positive' ng-show='root.vars.request.contact.phone'></i>
+          Text Message
+          <p ng-show='user.phone_number'> {{user.phone_number}} </p>
           </ion-toggle>
-          <label class="item item-input" ng-show='root.vars.request.contact.email'>
-            <span class="input-label">Email Address</span>
-            <input type="email" ng-value="user.email" placeholder="school@berkeley.edu">
+
+          <label class="item item-input item-icon-left positive" ng-show='root.vars.request.contact.phone && !user.phone_number'>
+            <span class="input-label">Phone Number</span>
+            <input type="number" class='positive' placeholder="(510) 123 - 3123">
           </label>
-          <ion-toggle ng-show='!platform.web' ng-change="requestPushNotifications()" ng-model="root.vars.request.contact.push_notif" toggle-class="toggle-calm">Push Notifications</ion-toggle>
+
+          <ion-toggle ng-model="root.vars.request.contact.email" ng-change='toggleTextMessageInput()' toggle-class="toggle-calm" class='ng-class:{"item-icon-left": root.vars.request.contact.email} '>
+          <i class='icon ion-checkmark icon-medium icon-positive' ng-show='root.vars.request.contact.email'></i>
+          Email Notification
+          <p ng-show='user.email'> {{user.email}} </p>
+          </ion-toggle>
+          <label class="item item-input item-icon-left positive" ng-show='root.vars.request.contact.email && !user.email'>
+            <span class="input-label">Phone Number</span>
+            <input type="email" placeholder="@school.edu">
+          </label>
+          <ion-toggle ng-change="requestPushNotifications()" ng-model="root.vars.request.contact.push_notif" toggle-class="toggle-calm">Push Notifications</ion-toggle>
         </ion-list>
       </ion-content>
     </ion-view>

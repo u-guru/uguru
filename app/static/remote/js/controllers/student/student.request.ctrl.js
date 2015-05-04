@@ -300,9 +300,9 @@ angular.module('uguru.student.controllers')
               calendar_selected: false
             },
             contact: {
-              email:false,
-              phone: false,
-              push_notif: false,
+              email:$scope.user.email_notifications,
+              phone: $scope.user.text_notifications,
+              push_notif: $scope.user.push_notifications,
               email_address: '',
               phone_number: ''
              }

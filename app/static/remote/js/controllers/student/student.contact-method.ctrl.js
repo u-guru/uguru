@@ -23,7 +23,7 @@ angular.module('uguru.student.controllers')
     $scope.saveAndGoToRequest = function() {
       if ($scope.user.phone_number && $scope.user.phone_number.length > 0)  {
         $scope.user.updateAttr('phone_number', $scope.user, $scope.user.phone_number, null, $scope);
-        $scope.root.vars.request.contact.email = true;
+        $scope.root.vars.request.contact.phone = true;
       }
 
       if ($scope.user.email && $scope.user.email.length > 0) {

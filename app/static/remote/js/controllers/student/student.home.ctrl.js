@@ -259,11 +259,8 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     }
 
     $scope.goToNotifications = function() {
-      if (!$scope.user.auth_token) {
-        $scope.signupModal.show()
-      } else {
-        $state.go('^.settings-notifications');
-      }
+      $ionicViewSwitcher.nextDirection('forward');
+      $state.go('^.settings-notifications');
     }
 
     $scope.goToGuruMode = function() {
@@ -379,13 +376,27 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       $state.go('^.previous-session-details', {sessionObj:JSON.stringify(session)});
     };
 
+    $scope.goToSettingsTab = function() {
+      $scope.root.vars.select_bottom_three = true;
+      $scope.bottomTabsDelegate.select(2);
+    }
+
 
     $scope.$on('$ionicView.beforeEnter', function() {
       if ($scope.root.vars.select_bottom_one) {
         console.log('view before enter');
         $scope.bottomTabsDelegate.select(0);
+        $scope.root.vars.select_bottom_one = null;
+      } else if ($scope.root.vars.select_bottom_three) {
+        $scope.bottomTabsDelegate.select(2);
+        $scope.root.vars.select_bottom_three = null;
       }
-    })
+        else if ($scope.root.vars.select_bottom_two) {
+          $scope.bottomTabsDelegate.select(1);
+          $scope.root.vars.select_bottom_two = null;
+      }
+
+    });
 
     $scope.$on('$ionicView.enter', function() {
 

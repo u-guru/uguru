@@ -1,12 +1,22 @@
-  <ion-view title="Notification Settings">
-    <ion-content>
-        
-        <ion-toggle ng-repeat="item in settingsList"
-                    ng-model="item.checked" 
-                    ng-checked="item.checked"
-                    ng-change="item.changed(item.checked)">
-          {{ item.text }}
-        </ion-toggle>
+  <ion-view hide-nav-bar="true">
+    <ion-header-bar class='header-bar item-button-left'>
+        <a class="button button-clear button-back" ng-click='root.nav.goBack()'>Back</a>
+        <h5 class="title bold sans-bold" style='left:0px !important; right:0px !important;'>My Profile & Settings</h5>
+    </ion-header-bar>
+    <ion-content scroll='false'>
+
+        <ion-list class='list-inset'>
+          <ion-toggle ng-model="user.text_notifications" ng-change='textNotificationChange()' toggle-class="toggle-calm" class='ng-class:{"item-icon-left": root.vars.request.contact.phone} '>
+          Text Message
+          <p ng-show='user.phone_number'> {{user.phone_number}} </p>
+          </ion-toggle>
+
+          <ion-toggle ng-model="user.email_notifications" ng-change='emailNotificationChange()' toggle-class="toggle-calm" class='ng-class:{"item-icon-left": root.vars.request.contact.email} '>
+          Email Notification
+          <p ng-show='user.email'> {{user.email}} </p>
+          </ion-toggle>
+          <ion-toggle ng-change="user.push_notifications" ng-model="root.vars.request.contact.push_notif" toggle-class="toggle-calm">Push Notifications</ion-toggle>
+        </ion-list>
 
     </ion-content>
   </ion-view>

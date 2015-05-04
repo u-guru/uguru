@@ -11,7 +11,7 @@
       <div ng-show="bottomTabsDelegate.selectedIndex() === 1" ng-include="img_base + './templates/student.home.request-courses.html'"></div>
     </ion-tab>
 
-    <ion-tab class='bottom-tabs-home' title="Settings" icon-on="settings-icon" icon-off="settings-icon">
+    <ion-tab class='bottom-tabs-home' title="Settings" icon-on="settings-icon" icon-off="settings-icon" ng-click='goToSettingsTab()'>
       <div ng-include="img_base + './templates/student.settings.html'" ng-show="bottomTabsDelegate.selectedIndex() === 2"></div>
     </ion-tab>
   </ion-tabs>

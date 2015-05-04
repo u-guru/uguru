@@ -33,6 +33,8 @@ angular.module('uguru.util.controllers')
       var starNumber = $event.target.getAttribute('value');
       $scope.showGreenStars(starNumber, $event.target);
       $scope.starsSelected = starNumber;
+      console.log(starNumber);
+      $scope.showSubmitButton = true;
     }
 
     $scope.submitRating = function () {
@@ -40,7 +42,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.submitRatingToServer = function() {
-
+      $scope.loader.show();
       var serverCallback = function($scope, user) {
         if ($scope.user.guru_mode) {
           $state.go('^.guru-home');
@@ -50,6 +52,7 @@ angular.module('uguru.util.controllers')
 
         $timeout(function(){
           $scope.ratingModal.hide();
+          $scope.loader.hide();
         }, 500)
       }
 
@@ -75,7 +78,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.showGreenStars = function (value, element) {
-      var allStarElements = element.parentNode.parentNode.querySelectorAll(":scope > .col");
+      var allStarElements = element.parentNode.parentNode.querySelectorAll(":scope > .pure-u-1-5");
       for (var i = 0; i < value; i++) {
         var tempStar = allStarElements[i];
 

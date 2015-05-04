@@ -383,17 +383,21 @@ class UserOneView(restful.Resource):
                 user.majors.remove(m)
             db_session.commit()
 
-        #TODO PROMO CODES ARE WORKING
-
-        if request.json.get('student_promo_code'):
+        #
+        if request.json.get('submit_referral_code'):
             promo_code = request.json.get('student_promo_code')
             promo_user_exists = User.query.filter_by(referral_code = promo_code).all()
 
             if promo_user_exists:
+
                 if not user.credits:
                     user.credits = 5
                 else:
                     user.credits += 5
+
+                user.referred_by_id = promo_user_exists.id
+
+                db_session.commit()
             else:
                 abort(409)
 
@@ -512,9 +516,9 @@ class UserRequestView(restful.Resource):
         _request.student_id = user_id
 
 
-        # _request.contact_email = request.json.get('contact_email')
-        # _request.contact_text = request.json.get('contact_text')
-        # _request.contact_push = request.json.get('contact_push')
+        _request.contact_email = request.json.get('contact_email')
+        _request.contact_text = request.json.get('contact_text')
+        _request.contact_push = request.json.get('contact_push')
 
         db_session.add(_request)
         user.requests.append(_request)
@@ -562,8 +566,11 @@ class UserRequestView(restful.Resource):
         available_gurus = _request.course.gurus.all()
         print "number of gurus available", len(available_gurus)
         for guru in available_gurus:
+
             guru.id, guru.name, guru.time_created, 'contacted'
             proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
+
+            proposal.student_price = request.json.get('student_proposed_price')
 
             #send push notification is user has permitted device
             if user.push_notifications:
@@ -577,10 +584,13 @@ class UserRequestView(restful.Resource):
 
 
             if user.text_notifications and user.phone_number:
-                print "should send a text here"
+                from app.texts import send_student_request_to_guru
+                send_student_request_to_guru(_request, guru)
 
             event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
             event = Event.initFromDict(event_dict)
+
+            db_session.commit()
 
         pprint('request is finished like a G')
         return user, 200
@@ -609,6 +619,7 @@ class UserRequestView(restful.Resource):
                 proposal.request.status = Request.STUDENT_RECEIVED_GURU
                 proposal.request.guru_id = user_id
 
+                proposal.guru_price = proposal_json.get('guru_price')
                 calendar = Calendar.initFromProposal(proposal, 2)
                 proposal.request.guru_calendar_id = calendar.id
                 calendar_events_json = proposal_json.get('guru_calendar')
@@ -634,10 +645,12 @@ class UserRequestView(restful.Resource):
                     send_guru_proposal_to_student(proposal, proposal.request.student)
 
                 if user.email_notifications and user.email:
-                    print "should send an email here"
+                    from app.emails import send_guru_proposal_to_student
+                    send_guru_proposal_to_student(proposal, proposal.request.student)
 
                 if user.text_notifications and user.phone_number:
-                    print "should send a text here"
+                    from app.texts import send_guru_proposal_to_student
+                    send_guru_proposal_to_student(proposal, proposal.request.student)
 
                 event_dict = {'status': Proposal.GURU_ACCEPTED, 'proposal_id':proposal.id}
                 event = Event.initFromDict(event_dict)
@@ -863,7 +876,7 @@ class UserSessionView(restful.Resource):
 
                 #update with new session
                 message_json['session_id'] = recurring_session.id
-                message = Message.initFromJson(message_json)
+                message = Message.initFromJson(message_json, False)
 
             position = None
             if request.json.get('position'):
@@ -953,6 +966,8 @@ class UserSessionView(restful.Resource):
             send_student_has_accepted_to_guru(session, session.request.guru)
 
         if user.text_notifications and user.phone_number:
+            from app.texts import send_student_has_accepted_to_guru
+            send_student_has_accepted_to_guru(session, session.request.guru)
             print "should send a text here"  #TODO SAMIR
 
         return user, 200
@@ -1176,7 +1191,7 @@ class UserSessionMessageView(restful.Resource):
             abort(404)
 
         [db_session.refresh(message) for message in _session.messages]
-        return _sessionherl, 200
+        return session, 200
 
 
     #create a message in a session
@@ -1191,7 +1206,7 @@ class UserSessionMessageView(restful.Resource):
         #create a new message
         if request.json.get('message'):
             message_json = request.json.get('message')
-            message = Message.initFromJson(message_json)
+            message = Message.initFromJson(message_json, False)
 
             if user.push_notifications:
                 #send push notification to all student devices
@@ -1204,7 +1219,8 @@ class UserSessionMessageView(restful.Resource):
             #     send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
 
             if user.text_notifications and user.phone_number:
-                print "should send a text here"
+                from app.texts import send_message_to_receiver
+                send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
 
         return user, 200
 
@@ -1221,6 +1237,37 @@ class UserSessionMessageView(restful.Resource):
             message = Message.query.get(message_json.get('id'))
             message.time_read = datetime.now()
             db_session.commit()
+
+        return user, 200
+
+class UserSupportMessageView(restful.Resource):
+
+    @marshal_with(UserSerializer)
+    def post(self, _id, _support):
+        user = get_user(_id)
+
+        support = Support.query.get(_support)
+        if not user or not support:
+            abort(404)
+
+        #create a new message
+        if request.json.get('message'):
+            message_json = request.json.get('message')
+            message = Message.initFromJson(message_json, True)
+
+            if user.push_notifications:
+                #send push notification to all student devices
+                from app.lib.push_notif import send_message_to_receiver_support
+                send_message_to_receiver_support(message.sender, message.receiver)
+
+
+            if user.email_notifications and user.email:
+                from app.emails import send_message_to_receiver_support
+                send_message_to_receiver_support(message.sender, message.receiver)
+
+            if user.text_notifications and user.phone_number:
+                from app.texts import send_message_to_receiver_support
+                send_message_to_receiver_support(message.sender, message.receiver)
 
         return user, 200
 
@@ -1401,6 +1448,25 @@ class UserNewView(restful.Resource):
     #login
     @marshal_with(UserSerializer)
     def put(self):
+
+        if request.json.get('email') and request.json.get('forgot_password'):
+            email_user = User.query.filter_by(email=request.json.get('email')).first()
+
+            if email_user:
+                from hashlib import md5
+                import uuid
+                raw_password = uuid.uuid4().hex[0:5]
+                email_user.password = md5(raw_password).hexdigest()
+                db_session.commit()
+                from app.emails import send_reset_password_email
+                send_reset_password_email(email_user, raw_password)
+
+                return email_user, 200
+
+
+            else:
+                # no email found
+                abort(404)
 
         if request.json.get('email'):
             print request.json
@@ -2029,6 +2095,7 @@ api.add_resource(UserSessionView, '/api/v1/user/<int:_id>/sessions')
 api.add_resource(UserTransactionsView, '/api/v1/user/<int:_id>/transactions')
 api.add_resource(UserRatingView, '/api/v1/user/<int:_id>/ratings')
 api.add_resource(UserSessionMessageView, '/api/v1/user/<int:_id>/sessions/<int:_session>/messages')
+api.add_resource(UserSupportMessageView, '/api/v1/user/<int:_id>/support/<int:_support>/messages')
 api.add_resource(OneDeviceView, '/api/v1/device')
 api.add_resource(DeviceView, '/api/v1/devices/<int:device_id>')
 api.add_resource(VersionView, '/api/v1/version')

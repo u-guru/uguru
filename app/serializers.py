@@ -15,6 +15,7 @@ major_fields = {}
 major_fields['id'] = fields.Integer(attribute='id')
 major_fields['name'] = fields.String(attribute='name')
 
+
 course_fields = {}
 course_fields['id'] = fields.Integer(attribute='id')
 course_fields['short_name'] = fields.String(attribute='short_name')
@@ -115,6 +116,8 @@ proposal_fields['files'] = fields.Nested(file_fields)
 proposal_fields['status'] = fields.Integer(attribute='status')
 proposal_fields['id'] = fields.Integer(attribute='id')
 proposal_fields['student_calendar'] = fields.List(fields.Nested(calendar_fields))
+proposal_fields['student_price'] = fields.Float(attribute='student_price')
+proposal_fields['guru_price'] = fields.Float(attribute='guru_price')
 
 card_fields = {}
 card_fields['time_created'] = fields.DateTime(attribute='time_created')
@@ -135,6 +138,14 @@ message_fields['time_seen'] = fields.DateTime(attribute='time_seen')
 message_fields['id'] = fields.Integer(attribute='id')
 message_fields['contents'] = fields.String(attribute = 'contents')
 message_fields['session_id'] = fields.Integer(attribute='session_id')
+
+support_fields = {}
+support_fields['id'] = fields.Integer(attribute='id')
+support_fields['time_created'] = fields.DateTime(attribute='time_created')
+support_fields['time_updated'] = fields.DateTime(attribute='time_resolved')
+support_fields['time_resolved'] = fields.DateTime(attribute='time_resolved')
+support_fields['message'] = fields.String(attribute='message')
+support_fields['messages'] = fields.List(fields.Nested(message_fields))
 
 
 session_fields_transaction = {}
@@ -191,6 +202,8 @@ UserSerializer = {
     'email': fields.String,
     'profile_url': fields.String,
     'is_a_guru': fields.Boolean,
+    'is_admin': fields.Boolean,
+    'is_support_admin': fields.Boolean,
     'guru_mode': fields.Boolean,
     'gender': fields.String,
     'customer_id': fields.String,
@@ -212,7 +225,7 @@ UserSerializer = {
     'guru_ratings': fields.List(fields.Nested(rating_fields)),
     'student_ratings': fields.List(fields.Nested(rating_fields)),
     'guru_sessions': fields.List(fields.Nested(session_fields)),
-    # 'text_notifications': fields.Boolean,
+    'text_notifications': fields.Boolean,
     'email_notifications': fields.Boolean,
     'push_notifications': fields.Boolean,
     'push_notifications_enabled': fields.Boolean,
@@ -238,7 +251,10 @@ UserSerializer = {
     'grade_dict': fields.Raw(GRADE_CUTOFFS),
     'referred_by_id': fields.Integer,
     'guru_score_opportunities': fields.Raw(remove_functions_from_opportunities(GURU_SCORE_OPPORTUNITIES)),
-    'current_device': fields.Nested(device_fields)
+    'current_device': fields.Nested(device_fields),
+    'referral_code': fields.String,
+    'support_tickets': fields.List(fields.Nested(support_fields))
+
 }
 
 DeviceSerializer = {
