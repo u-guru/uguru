@@ -1,3 +1,13 @@
+ var processFileType = function(file_string) {
+  if (file_string.indexOf('image/') !== -1) {
+    return file_string.split('/')[1];
+  }
+}
+
+var processFileSize = function(file_string) {
+  return Math.round((parseInt(file_string) / 1000), 2)
+}
+
 angular.module('uguru.root.services')
 .service('Camera',
     [
@@ -8,7 +18,7 @@ angular.module('uguru.root.services')
     function($localstorage, $timeout, $cordovaCamera, $state) {
 
         deviceCamera = {
-                    takePicture: function($scope) {
+                    takePicture: function($scope, index) {
 
                       if ($scope.platform.mobile) {
                         var source_type = 1;
@@ -16,7 +26,7 @@ angular.module('uguru.root.services')
                         var options = {
                           quality: 15,
                           destinationType: Camera.DestinationType.DATA_URL,
-                          sourceType: Camera.PictureSourceType.CAMERA,
+                          sourceType: index,
                           allowEdit: false,
                           encodingType: Camera.EncodingType.JPEG,
                           targetWidth: 500,
@@ -26,7 +36,6 @@ angular.module('uguru.root.services')
                         };
 
                           $cordovaCamera.getPicture(options).then(function(imageData) {
-                          console.log($state.current.name);
 
                           //guru profile
                           // guru profile #2
@@ -42,7 +51,9 @@ angular.module('uguru.root.services')
                           }
                           else
                           {
-                            var image = document.getElementsByClassName('attachment-container')[0];
+                            $scope.attached_files.push({type:"jpeg", size:processFileSize(imageData.length)});
+                            $scope.initTimer($scope.file_index);
+                            var image = document.getElementsByClassName('attachment-container')[$scope.file_index];
                           }
 
                           image.src = "data:image/jpeg;base64," + imageData;
@@ -55,12 +66,20 @@ angular.module('uguru.root.services')
                           var formData = new FormData();
                           // formData.append('file', image.src);
                           // imageData = "data:image/jpeg;base64," + imageData;
-                          $scope.loader.show();
+                          // $scope.loader.show();
                           formData.append('file', imageData);
                           var file_name = new Date().getTime().toString();
                           formData.append('filename', file_name);
                           if ($state.current.name !== 'root.request-description') {
                             formData.append('profile_url', $scope.user.id);
+                          } else {
+
+                            $scope.file_index += 1;
+
+                            $timeout(function() {
+                               $scope.attached_files[$scope.file_index - 1].show = true;
+                            }, 3000);
+
                           }
 
                           $scope.user.createObj($scope.user, 'files', formData, $scope);

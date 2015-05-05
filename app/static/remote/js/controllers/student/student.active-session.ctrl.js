@@ -97,7 +97,6 @@ angular.module('uguru.student.controllers')
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
 
       if ($state.current.name != 'root.student-active-session') {
-        $scope.bgGeo.stop();
         console.log('do not run background script anymore');
         return;
       }
@@ -141,7 +140,6 @@ angular.module('uguru.student.controllers')
         .then(function(session){
 
             if ($state.current.name != 'root.guru.active-session') {
-              $scope.bgGeo.stop();
               console.log('do not run background script anymore');
               return;
             }

@@ -91,13 +91,13 @@ angular.module('uguru.util.controllers')
         $scope.user.name = success.name;
         $scope.user.email = success.email;
         $scope.user.fb_id = success.id;
-        // $scope.user.profile_url = "https://graph.facebook.com/" + success.id + "/picture?width=100&height=100";
+        $scope.user.profile_url = "https://graph.facebook.com/" + success.id + "/picture?width=100&height=100";
 
         $scope.signupForm.email = success.email;
         $scope.signupForm.first_name = $scope.user.first_name;
         $scope.signupForm.last_name = $scope.user.last_name;
         $scope.signupForm.fb_id = success.id;
-        $scope.signupForm.profile_url = $scope.user.profile_url;
+        // $scope.signupForm.profile_url = $scope.user.profile_url;
         $scope.signupForm.gender = success.gender;
 
 
@@ -322,7 +322,7 @@ angular.module('uguru.util.controllers')
       }
 
       $scope.signupForm.guru_mode = false;
-
+      $scope.loader.show();
       User.create($scope.signupForm).then(function(user) {
           var processed_user = User.process_results(user.plain());
 
@@ -340,6 +340,7 @@ angular.module('uguru.util.controllers')
           if ($state.current.name === 'root.student-request') {
                 var callRequestHelp = function() {
                   $scope.requestHelp();
+                  $scope.loader.hide();
                 }
 
                 $scope.closeSignupModal(callRequestHelp);
@@ -349,6 +350,7 @@ angular.module('uguru.util.controllers')
           if ($scope.becomeGuruButtonClicked) {
 
             $scope.closeSignupModal(function() {
+                $scope.loader.hide();
                 $scope.becomeGuruModal.show();
             });
 
@@ -358,7 +360,11 @@ angular.module('uguru.util.controllers')
             else {
               User.getUserFromServer($scope, null, $state);
               $scope.closeSignupModal(function() {
-                // $scope.bottomTabsDelegate.select(0);
+                $timeout(function() {
+                  $scope.loader.hide();
+                }, 500);
+
+                $scope.bottomTabsDelegate.select(1);
               });
 
           }

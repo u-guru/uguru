@@ -699,7 +699,9 @@ angular.module('uguru.user', [])
                                 $localstorage.setObject('user', $scope.user);
                             }
                             $scope.loader.hide();
-                            $scope.success.show(0, 1500);
+                            if ($state.current.name !== 'root.request-description') {
+                                $scope.success.show(0, 1500);
+                            }
 
                     }, function(err){
                         console.log(err);

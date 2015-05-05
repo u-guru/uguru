@@ -16,10 +16,15 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, Camera, $ionicHistory, $ionicTabsDelegate, $cordovaActionSheet, $ionicActionSheet) {
 
-    // $scope.root.vars.request = { description: "test description", files: []};
+    $scope.root.vars.request = { description: "test description", files: []};
     $scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 
     $scope.file_index = 0;
+    if ($scope.root.vars.request) {
+      $scope.root.vars.request.attached_files = [];
+    }
+    $scope.attached_files = [];
+
 
     document.addEventListener("deviceready", function () {
 
@@ -30,7 +35,7 @@ angular.module('uguru.util.controllers')
 
               options = {
                 title: 'Options',
-                buttonLabels: ['Reset', 'Set Timer'],
+                buttonLabels: ['Use Camera', 'Choose from Library'],
                 addCancelButtonWithLabel: 'Cancel',
                 androidEnableCancelButton : true,
                 winphoneEnableCancelButton : true
@@ -40,9 +45,10 @@ angular.module('uguru.util.controllers')
             $cordovaActionSheet.show(options)
             .then(function(btnIndex) {
               var index = btnIndex;
-              console.log(index);
               if (index === 1) {
-                $scope.resetTimer()
+                $scope.takePhoto(1)
+              } else if (index === 2) {
+                $scope.takePhoto(0);
               }
             });
 
@@ -67,17 +73,21 @@ angular.module('uguru.util.controllers')
    // Show the action sheet
      $scope.hideSheet = $ionicActionSheet.show({
        buttons: [
-         { text: '<b>Share</b> This' },
-         { text: 'Move' }
+         { text: 'Attach Local File' },
        ],
-       destructiveText: 'Delete',
-       titleText: 'Modify your album',
+       titleText: 'File Options',
        cancelText: 'Cancel',
        cancel: function() {
-            // add cancel code..
-          },
+          $scope.hideSheet();
+        },
        buttonClicked: function(index) {
-         return true;
+         console.log(index);
+         if (index === 0) {
+            $scope.takePhoto();
+            $timeout(function() {
+              $scope.hideSheet();
+            }, 500);
+         }
        }
      });
 
@@ -138,21 +148,63 @@ angular.module('uguru.util.controllers')
       }
     })
 
-    $scope.takePhoto = function() {
+    $scope.takePhoto = function(index) {
       if ($scope.platform.mobile) {
-        Camera.takePicture($scope);
+        Camera.takePicture($scope, index);
       } else {
         var element = document.getElementById('file-input-web')
         element.click();
       }
     }
 
-    $scope.file_changed = function(element, file_index) {
+    var processFileType = function(file_string) {
+      if (file_string.indexOf('image/') !== -1) {
+        return file_string.split('/')[1];
+      }
+    }
+
+    var processFileSize = function(file_string) {
+      return Math.round((parseInt(file_string) / 1000), 2)
+    }
+
+    $scope.initTimer = function(index) {
+      $scope.timer_seconds = new ProgressBar.Circle('#file-loader-container-' + index.toString(), {
+        color: '#68b2a5',
+        strokeWidth: 10,
+        trailColor:'#FFFFFF',
+        easing: 'easeInOut',
+        duration:2500
+      });
+
+        $scope.timer_seconds.animate(1, function() {
+          $scope.timer_seconds.destroy();
+        });
+
+
+      // $scope.timer_seconds = new ProgressBar.Circle('#timer-container', {
+      //   color: '#FFFFFF',
+      //   strokeWidth: 3.1,
+      //   trailColor:'#A1D5CC'
+      // });
+
+      // $timeout(function(){
+      //   $scope.timer_seconds.animate(1, function() {
+      //     $scope.timer_seconds.set(0.001);
+      //   });
+      // }, 1000);
+    }
+
+    $scope.file_changed = function(element) {
         var photofile = element.files[0];
+
+        $scope.attached_files.push({type:processFileType(photofile.type), size:processFileSize(photofile.size)});
+        $scope.root.vars.request.attached_files.push({type:processFileType(photofile.type), size:processFileSize(photofile.size)});
+
+        $scope.initTimer($scope.file_index);
 
         //let's view the image locally
         var reader = new FileReader();
-        var image = document.getElementsByClassName('attachment-container')[file_index];
+        var image = document.getElementsByClassName('attachment-container')[$scope.file_index];
         // var name = photofile.name;
 
         reader.onload = function(e) {
@@ -167,7 +219,13 @@ angular.module('uguru.util.controllers')
 
         // var file_name = new Date().getTime().toString();
         formData.append('filename', name);
+
         $scope.file_index += 1;
+
+        $timeout(function() {
+           $scope.attached_files[$scope.file_index - 1].show = true;
+
+        }, 3000);
 
         $scope.user.createObj($scope.user, 'files', formData, $scope);
     };

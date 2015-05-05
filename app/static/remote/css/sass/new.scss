@@ -2784,3 +2784,62 @@ a.timer-icon-link {
 .opacity-1-2 {
   opacity:0.5;
 }
+
+.attachment-container-overlay {
+  // max-width: 100%;
+  height: auto;
+  display: block;
+  z-index: 1000;
+  background-color: black;
+  height: 100px;
+  width: 75px;
+  position: absolute;
+  top: 0px;
+  opacity: 0.7;
+}
+
+.file-info {
+  text-transform: uppercase;
+  font-size: 80%;
+  font-family: "OpenSans-Bold";
+  color: rgba(0,0,0,0.4);
+}
+
+.file-close {
+  font-size:1.33em;
+  position:absolute;
+  top:0.3em;
+  right:0.3em;
+  opacity:0.5;
+}
+
+.file-edit {
+  font-size:2em;
+  position:absolute;
+  bottom: 5%;
+  left:32.5%;
+}
+
+.file-edit-text {
+  font-size:0.4em;
+  text-transform: uppercase;
+}
+
+.file-loader-container {
+    width: 50%;
+    margin-left: 24%;
+    height: 100px;
+    position: absolute;
+    z-index: 2000;
+    top:2em;
+}
+
+.file-loader-container > svg {
+    width: 100%;
+    display: block;
+}
+
+.attachment-wrapper {
+  width:75px;
+  margin:0.5em;
+}
