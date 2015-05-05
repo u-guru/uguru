@@ -9,8 +9,8 @@
     </ion-tab>
     <ion-tab title="Upcoming" ng-show="topTabsDelegate.selectedIndex() === 1">
     </ion-tab>
-    <!-- <ion-tab title="Completed" ng-show="topTabsDelegate.selectedIndex() === 2">
-    </ion-tab> -->
+    <ion-tab title="History" ng-show="topTabsDelegate.selectedIndex() === 2">
+    </ion-tab>
   </ion-tabs>
 
   <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 0' scroll="false">
@@ -62,6 +62,27 @@
           <h4 class='pending'> Starting Soon! </h4>
         </a>
       </div>
+
+  </ion-content>
+
+  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 2' scroll='false'>
+    <div class='pure-g-c flex-column center full-height' ng-show='user.previous_requests.length === 0'>
+        <div class='padding-1em padding-1em flex-item-c'> </div>
+        <div class='flex-item-c sleeping-guru light-opacity'>
+          <img class='pure-img animated swing' ng-src='{{img_base}}./img/guru-sleeping.svg'>
+        </div>
+        <div class='flex-item-c light-opacity padding-1em flex-direction-init'>
+          No past sessions yet! <br> Try requesting help below
+        </div>
+    </div>
+
+    <div class="list" ng-show='user.previous_requests.length > 0'>
+        <a class="item item-avatar-right upcoming-session-card" ng-repeat='request in user.previous_requests' ng-click='goToRequestStatus(request)'>
+        <img ng-src="{{img_base}}./img/guru-profile.svg">
+        <h2>{{request.course.short_name}}</span> Request</h2>
+        <h4 ng-show='request.status === 4'class='danger'> Canceled </h4>
+      </a>
+    </div>
 
   </ion-content>
 

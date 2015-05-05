@@ -43,6 +43,26 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
   // console.log($scope.user);t
 
+  $ionicPlatform.ready(function() {
+
+    $scope.turnStatusBarWhite = function() {
+      if (window.StatusBar) {
+                  // console.log('Extra #1. Styling iOS status bar to black \n\n');
+        StatusBar.styleLightContent();
+        StatusBar.overlaysWebView(true);
+      }
+    }
+
+    $scope.turnStatusBarBlack = function() {
+      if (window.StatusBar) {
+                  // console.log('Extra #1. Styling iOS status bar to black \n\n');
+        StatusBar.styleDefault();
+        StatusBar.overlaysWebView(true);
+      }
+    }
+
+  });
+
   $ionicPopover.fromTemplateUrl('templates/gettingStartedPopover.html', {
     scope: $scope
   }).then(function(popover) {
@@ -268,7 +288,11 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
         $scope.becomeGuruButtonClicked = true;
         $scope.signupModal.show();
       } else {
+         if ($scope.turnStatusBarWhite) {
+            $scope.turnStatusBarWhite();
+        }
         $scope.becomeGuruModal.show();
+
       }
     }
 
@@ -427,7 +451,7 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     $scope.$on('$ionicView.loaded', function(){
       console.log('view has loaded');
       User.getUserFromServer($scope, null, $state);
-
+      console.log($scope.user.previous_requests);
       $scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
       $scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
       $scope.bottomTabsDelegate.select(1);
@@ -490,8 +514,13 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     }
 
 
+
+
     $scope.$on('modal.shown', function() {
 
+        if ($scope.turnStatusBarWhite) {
+          $scope.turnStatusBarWhite()
+        }
         if (window.StatusBar) {
           console.log('status bar exists');
           StatusBar.styleLightContent();

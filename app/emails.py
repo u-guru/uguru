@@ -112,7 +112,7 @@ def send_transactional_email(subject, content, receiver, tags):
         'html': content
     }
 
-    if os.environ.get('PRODUCTION'):
+    if not os.environ.get('PRODUCTION'):
 
         print "email skipped intended for", receiver.email, subject, tags
 

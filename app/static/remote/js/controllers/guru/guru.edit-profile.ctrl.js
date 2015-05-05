@@ -13,8 +13,22 @@ angular.module('uguru.student.controllers')
   '$stateParams',
   '$ionicHistory',
   'Camera',
+  '$ionicPlatform',
+  '$cordovaStatusbar',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
- 	$ionicModal, $stateParams, $ionicHistory, Camera) {
+ 	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicPlatform, $cordovaStatusbar) {
+
+    $scope.uberFriendlyChange = function() {
+      $scope.user.updateAttr('uber_friendly', $scope.user, $scope.user.uber_friendly, null, $scope);
+    }
+
+    $scope.outsideSchoolChange = function() {
+      $scope.user.updateAttr('outside_university', $scope.user, $scope.user.outside_university, null, $scope);
+    }
+
+    $scope.summer15Change = function() {
+      $scope.user.updateAttr('summer_15', $scope.user, $scope.user.summer_15, null, $scope);
+    }
 
     $scope.saveProfile = function() {
       $scope.user.updateAttr('add_guru_intro', $scope.user, $scope.user.guru_introduction, null, $scope);

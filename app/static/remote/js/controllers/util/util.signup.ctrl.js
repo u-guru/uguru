@@ -91,13 +91,13 @@ angular.module('uguru.util.controllers')
         $scope.user.name = success.name;
         $scope.user.email = success.email;
         $scope.user.fb_id = success.id;
-        $scope.user.profile_url = "https://graph.facebook.com/" + success.id + "/picture?width=100&height=100";
+        console.log($scope.user.profile_url);
 
         $scope.signupForm.email = success.email;
         $scope.signupForm.first_name = $scope.user.first_name;
         $scope.signupForm.last_name = $scope.user.last_name;
         $scope.signupForm.fb_id = success.id;
-        // $scope.signupForm.profile_url = $scope.user.profile_url;
+        $scope.signupForm.profile_url = "https://graph.facebook.com/" + success.id + "/picture?width=100&height=100";
         $scope.signupForm.gender = success.gender;
 
 
@@ -330,6 +330,9 @@ angular.module('uguru.util.controllers')
 
           User.assign_properties_to_root_scope($scope, processed_user)
 
+          // if (!$scope.user.profile_url) {
+          //   $scope.user.profile_url = $scope.signupForm.profile_url;
+          // }
           $scope.user.guru_mode = false;
           // $scope.user.updateAttr('guru_mode', $scope.user, false);
 

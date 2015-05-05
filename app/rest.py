@@ -247,6 +247,8 @@ class UserOneView(restful.Resource):
             if request.json.get('phone_number'):
                 user.phone_number = request.json.get('phone_number')
 
+
+
         if request.json.get('profile_info'):
             profile_info_dict = request.json.get('profile_info')
             email = profile_info_dict.get('email')
@@ -280,6 +282,15 @@ class UserOneView(restful.Resource):
 
         if 'is_a_guru' in request.json:
             user.is_a_guru = request.json.get('is_a_guru')
+
+        if 'uber_friendly' in request.json:
+            user.uber_friendly = request.json.get('uber_friendly')
+
+        if 'outside_university' in request.json:
+            user.outside_university = request.json.get('outside_university')
+
+        if 'summer_15' in request.json:
+            user.summer_15 = request.json.get('summer_15')
 
         if 'push_notifications' in request.json:
             user.push_notifications = request.json.get('push_notifications')
@@ -1396,7 +1407,9 @@ class UserNewView(restful.Resource):
             fb_user.email = request.json.get('email')
             fb_user.referral_code = User.generate_referral_code(fb_user.name)
             fb_user.auth_token = uuid.uuid4().hex
-            fb_user.profile_url = request.json.get('profile_url')
+            print fb_user.profile_url
+            if not fb_user.profile_url and request.json.get('profile_url'):
+                fb_user.profile_url = request.json.get('profile_url')
             if device:
                 fb_user.current_device = device
                 device.user_id = fb_user.id

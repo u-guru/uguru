@@ -22,6 +22,18 @@ angular.module('uguru.util.controllers')
     $scope.course_search_text = '';
     $scope.keyboard_force_off = false;
 
+    $ionicPlatform.ready(function() {
+
+      $scope.turnStatusBarWhiteText = function() {
+
+        if (window.StatusBar) {
+          StatusBar.styleLightContent();
+          StatusBar.overlaysWebView(true);
+        }
+      }
+
+    });
+
     $scope.setCourseFocus = function(target) {
 
       if ($scope.course_search_text.length === 0 && !$scope.keyboard_force_off) {
@@ -78,10 +90,15 @@ angular.module('uguru.util.controllers')
       if ($localstorage.getObject('courses').length > 0) {
 
           $scope.$on('modal.shown', function() {
-
           if ($scope.addCourseModal.isShown() &&
             !$scope.addUniversityModal.isShown() &&
               $localstorage.getObject('courses').length > 0) {
+
+
+              if ($scope.turnStatusBarWhiteText) {
+                $scope.turnStatusBarWhiteText();
+              }
+
               $scope.keyboard_force_off = false;
 
               $timeout(function() {
@@ -132,8 +149,9 @@ angular.module('uguru.util.controllers')
 
       $scope.$on('modal.shown', function() {
 
-        if ($scope.switchStatusBariOS) {
+        if ($scope.switchStatusBariOS || $scope.turnStatusBarWhiteText()) {
           $scope.switchStatusBariOS();
+          $scope.turnStatusBarWhiteText();
         }
 
         if ($scope.addCourseModal.isShown() &&
@@ -235,11 +253,11 @@ angular.module('uguru.util.controllers')
         }, 1000);
       }
 
-      $scope.$on('modal.hidden', function() {
-        if (window.StatusBar) {
-              StatusBar.styleDefault();
-          }
-      });
+      // $scope.$on('modal.hidden', function() {
+      //   if (window.StatusBar) {
+      //         StatusBar.styleDefault();
+      //   }
+      // });
 
   }
 

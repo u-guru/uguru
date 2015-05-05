@@ -65,6 +65,19 @@
 
             </a>
 
+            <ion-toggle ng-model="user.uber_friendly" class='item' ng-change='uberFriendlyChange()' toggle-class="toggle-positive">
+            <img class='uber-logo' src='{{img_base}}./img/uber_logo.svg'/>
+            <div class='avatar-text' style='padding-left:30px;'>
+                I'm cool with <span class='sans-bold'>Uber</span> driving me to student sessions.
+            </div>
+            </ion-toggle>
+
+            <ion-toggle ng-model="user.summer_15" ng-change='summer15Change()' toggle-class="toggle-positive">I'm around school during Summer 2015
+            </ion-toggle>
+
+            <ion-toggle ng-model="user.outside_university" ng-change='outsideSchoolChange()' toggle-class="toggle-positive">I'm interested tutoring outside of school (SAT, MCAT, etc).
+            </ion-toggle>
+
              <!-- <a class="item item-icon-right item-thumbnail-right"  ng-click="addGuruIntroModal.show()">
 
                 <div ng-show="!user.guru_introduction" class="regular-text">

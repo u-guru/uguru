@@ -11,8 +11,9 @@ angular.module('uguru.guru.controllers', [])
   '$ionicModal',
   '$cordovaKeyboard',
   '$cordovaStatusbar',
+  '$ionicPlatform',
   function($scope, $state, $timeout, $localstorage, $ionicModal,
-    $cordovaKeyboard, $cordovaStatusbar) {
+    $cordovaKeyboard, $cordovaStatusbar, $ionicPlatform) {
 
     $scope.progressMax = 4;
 
@@ -23,6 +24,16 @@ angular.module('uguru.guru.controllers', [])
     if (!$scope.user.guru_courses) {
       $scope.user.guru_courses = [];
     }
+
+    $ionicPlatform.ready(function() {
+
+      if (window.StatusBar) {
+                    // console.log('Extra #1. Styling iOS status bar to black \n\n');
+        StatusBar.styleLightContent();
+        StatusBar.overlaysWebView(true);
+      }
+
+    });
 
     $scope.calculateProgress = function(user) {
       count = 0;
@@ -116,6 +127,18 @@ angular.module('uguru.guru.controllers', [])
 
       //save to local
 
+    }
+
+    $scope.uberFriendlyChange = function() {
+      $scope.user.updateAttr('uber_friendly', $scope.user, $scope.user.uber_friendly, null, $scope);
+    }
+
+    $scope.outsideSchoolChange = function() {
+      $scope.user.updateAttr('outside_university', $scope.user, $scope.user.outside_university, null, $scope);
+    }
+
+    $scope.summer15Change = function() {
+      $scope.user.updateAttr('summer_15', $scope.user, $scope.user.summer_15, null, $scope);
     }
 
     $scope.$on('$ionicView.beforeEnter', function(){

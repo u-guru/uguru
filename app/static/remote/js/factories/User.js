@@ -38,8 +38,8 @@ angular.module('uguru.user', [])
         user.course_guru_dict = {};
         user.gurus = [];
         user.current_hourly = 10;
-        user.uber_friendly = false;
-        user.summer_15 = false;
+        // user.uber_friendly = false;
+        // user.summer_15 = false;
 
         var user_cards = user.cards;
         for (var i = 0; i < user_cards.length; i++) {
@@ -70,6 +70,8 @@ angular.module('uguru.user', [])
               }
               else if (index_request.status === 1) {
                 user.incoming_requests.push(index_request);
+                } else {
+                    user.previous_requests.push(index_request);
                 }
             }
         }
@@ -152,6 +154,7 @@ angular.module('uguru.user', [])
             user.active_proposals = [];
             user.pending_proposals = [];
             user.active_guru_sessions = [];
+            user.previous_guru_proposals = [];
             user.pending_student_ratings = [];
             user.previous_guru_sessions = [];
 
@@ -203,7 +206,10 @@ angular.module('uguru.user', [])
             if (user.proposals && user.proposals.length > 0) {
                 for (var i = 0; i < user_proposals.length; i ++) {
                     var index_proposal = user_proposals[i];
-                    if (index_proposal.status === 0) {
+                    if (index_proposal.status === 0 && index_proposal.request.status !==0) {
+                        user.previous_guru_proposals.push(index_proposal);
+                    }
+                    if (index_proposal.status === 0 && index_proposal.request.status === 0) {
                         user.active_proposals.push(index_proposal);
                     }
                     if (index_proposal.status === 2) {
@@ -292,6 +298,7 @@ angular.module('uguru.user', [])
         $scope.user.current_device = user.current_device;
         $scope.user.devices = user.devices;
         $scope.user.current_hourly = user.current_hourly;
+        $scope.user.previous_guru_proposals = user.previous_guru_proposals;
 
         $scope.user.text_notifications = user.text_notifications;
         $scope.user.email_notifications = user.email_notifications;
@@ -324,6 +331,7 @@ angular.module('uguru.user', [])
         $scope.user.guru_ratings = user.guru_ratings;
         $scope.user.summer_15 = user.summer_15;
         $scope.user.uber_friendly = user.uber_friendly;
+        $scope.user.outside_university = user.outside_university;
 
         $scope.user.official_guru_grade = user.official_guru_grade;
         $scope.user.grade_dict = user.grade_dict;
@@ -564,6 +572,24 @@ angular.module('uguru.user', [])
                     'phone_number': obj
                 }
               }
+
+              if (arg === 'uber_friendly') {
+                return {
+                    'uber_friendly': obj
+                }
+              }
+
+              if (arg === 'summer_15') {
+                return {
+                    'summer_15': obj
+                }
+              }
+
+              if (arg === 'outside_university') {
+                return {
+                    'outside_university': obj
+                }
+              }
         },
         getUserFromServer: function($scope, callback, $state) {
 
@@ -693,7 +719,7 @@ angular.module('uguru.user', [])
 
 
                             if ($scope.root.vars.request || $state.current.name === 'root.student-request') {
-                                $scope.root.vars.request.files = [file.plain()];
+                                $scope.root.vars.request.files.push(file.plain());
                             } else {
                                 $scope.user.profile_url = file.plain().url;
                                 $localstorage.setObject('user', $scope.user);

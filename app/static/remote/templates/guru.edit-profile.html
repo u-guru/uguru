@@ -35,21 +35,17 @@
           <p ng-show='user.majors && user.majors.length > 0'> <div ng-repeat="major in user.majors">{{major.name}} </div></p>
           <button class='button button-clear button-positive'>ADD</button>
         </ion-item>
-        <!-- <ion-item class='icon item-button-right'>
-          My weekly availability
-          <button class='button button-clear button-positive'>edit</button>
-        </ion-item>
-        <ion-toggle ng-model="user.remove_friendly" ng-change="
-          updateUser()" toggle-class="toggle-positive">I can tutor this Summer 2015
+        <ion-toggle ng-model="user.uber_friendly" class='item item-thumbnail-right toggle-right first-toggle' ng-change='uberFriendlyChange()' toggle-class="toggle-positive">
+          <img class='uber-logo' src='{{img_base}}./img/uber_logo.svg'/>
+          <div class='avatar-text' style='padding-left:30px; padding-right:50px;'>
+              I'm cool with <span class='sans-bold'>Uber</span> driving me to student sessions.
+          </div>
         </ion-toggle>
-        <ion-toggle ng-model="user.remove_friendly" ng-change="
-          updateUser()" toggle-class="toggle-positive">Remote-friendly
-            <p class='white push-body'>I can help students remotely</p>
+        <ion-toggle ng-model="user.summer_15" ng-change='summer15Change()' class='item padding-2em second-toggle' toggle-class="toggle-positive">  <div class='toggle-text'> I'm around school during Summer 2015 </div>
         </ion-toggle>
-        <ion-toggle ng-model="user.in_person_friendly" ng-change="
-          updateUser()" toggle-class="toggle-positive">In-Person only
-            <p class='white push-body'>I can help in-person</p>
-        </ion-toggle> -->
+        <ion-toggle ng-model="user.outside_university" ng-change='outsideSchoolChange()' class='padding-2em' toggle-class="toggle-positive">
+        <div class='toggle-text'>I'm interested tutoring outside of school (SAT, MCAT, etc).</div>
+        </ion-toggle>
       </div>
       <input type="file" id="guru-file-input-web" class='hide' onchange="angular.element(this).scope().file_changed(this)"></input>
   </ion-content>

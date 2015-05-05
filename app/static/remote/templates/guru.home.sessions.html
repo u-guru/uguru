@@ -10,8 +10,8 @@
 
     <ion-tab title="Scheduled">
     </ion-tab>
-    <!-- <ion-tab title="Past" ng-show='false'>
-    </ion-tab> -->
+    <ion-tab title="Past">
+    </ion-tab>
   </ion-tabs>
 
   <!-- incoming proposals -->
@@ -48,7 +48,7 @@
   </ion-content>
 
   <!-- scheduled sessions -->
-  <ion-content class='has-subheader pure-g flex-column full-height' ng-show='topTabsDelegate.selectedIndex() === 1' scroll='false'>
+  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 1'>
 
     <ion-scroll class='pure-u-1 full-height'>
     <div class="list" ng-show='user.active_guru_sessions.length > 0'>
@@ -56,6 +56,21 @@
           <img ng-src="{{session.request.student.profile_url}}">
           <h2>{{session.request.student.name}} <strong>{{session.request.course.short_name}}</strong></h2>
           <h4 class='pending'> Starting Soon! </h4>
+        </a>
+      </div>
+    </ion-scroll>
+
+  </ion-content>
+
+  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 2'>
+
+    <ion-scroll class='pure-u-1 full-height'>
+    <div class="list" ng-show='user.previous_guru_proposals.length > 0'>
+        <a class="item item-avatar-right upcoming-session-card" ng-repeat='proposal in user.previous_guru_proposals' ng-click='goToProposalDetails(proposal)'>
+        <img ng-src="{{proposal.request.student.profile_url}}">
+        <h2>{{proposal.request.student.name}} {{proposal.request.course.short_name}}</h2>
+        <h4 ng-show='proposal.request.status === 4'class='danger'>User Canceled Request</h4>
+        <h4 ng-show='proposal.request.status !== 4'class='danger'>User Chose Another Guru</h4>
         </a>
       </div>
     </ion-scroll>

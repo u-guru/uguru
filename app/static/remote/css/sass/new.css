@@ -965,6 +965,17 @@ p {
   display: inline-block;
   margin: 5px; }
 
+.danger {
+  color: white;
+  font-family: "OpenSans-Bold";
+  font-size: 80%;
+  background-color: red;
+  padding: 0.5em;
+  display: inline-block;
+  text-transform: uppercase;
+  margin-top: 0.5em !important;
+  margin-bottom: -0.5em !important; }
+
 .legend-tag {
   background-color: grey; }
 
@@ -1946,3 +1957,38 @@ a.timer-icon-link {
 .attachment-wrapper {
   width: 75px;
   margin: 0.5em; }
+
+.toggle.toggle-positive input:checked + .track {
+  border-color: #68b2a5 !important;
+  background-color: #68b2a5 !important; }
+
+.guru-onboarding .item-toggle .toggle, .edit-guru-profile .item-toggle .toggle {
+  position: absolute;
+  top: 18px;
+  right: 10px;
+  z-index: 3; }
+.guru-onboarding .item-toggle, .guru-onboarding .item-toggle.item-complex .item-content, .edit-guru-profile .item-toggle, .edit-guru-profile .item-toggle.item-complex .item-content {
+  padding-right: 71px;
+  padding-top: 1em; }
+.guru-onboarding .uber-logo, .edit-guru-profile .uber-logo {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  right: 4em;
+  top: 1em; }
+
+.edit-guru-profile .first-toggle {
+  padding-right: 100px;
+  margin-bottom: -27px !important;
+  padding-top: 1em; }
+
+.edit-guru-profile .avatar-text {
+  margin-left: -30px;
+  margin-right: 0px;
+  white-space: normal;
+  padding-right: 0px !important; }
+
+.edit-guru-profile .toggle-text {
+  margin-left: -15px;
+  white-space: normal;
+  margin-bottom: -10px; }

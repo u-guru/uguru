@@ -16,7 +16,7 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, Camera, $ionicHistory, $ionicTabsDelegate, $cordovaActionSheet, $ionicActionSheet) {
 
-    $scope.root.vars.request = { description: "test description", files: []};
+    // $scope.root.vars.request = { description: "test description", files: []};
     $scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 
     $scope.file_index = 0;

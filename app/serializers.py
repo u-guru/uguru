@@ -253,7 +253,10 @@ UserSerializer = {
     'guru_score_opportunities': fields.Raw(remove_functions_from_opportunities(GURU_SCORE_OPPORTUNITIES)),
     'current_device': fields.Nested(device_fields),
     'referral_code': fields.String,
-    'support_tickets': fields.List(fields.Nested(support_fields))
+    'support_tickets': fields.List(fields.Nested(support_fields)),
+    'uber_friendly': fields.Boolean,
+    'summer_15': fields.Boolean,
+    'outside_university': fields.Boolean
 
 }
 

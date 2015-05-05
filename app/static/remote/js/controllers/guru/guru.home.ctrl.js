@@ -461,6 +461,7 @@ angular.module('uguru.guru.controllers')
 
     $scope.$on('$ionicView.loaded', function() {
       $scope.loader.hide();
+      console.log($scope.user.guru_proposals);
     });
     $scope.$on('$ionicView.afterEnter', function() {
       $scope.loader.hide();
