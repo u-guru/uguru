@@ -1,0 +1,38 @@
+  <ion-view hide-nav-bar = 'true' class='apps-page' ng-controller='AppsController'>
+    <ion-header-bar class='header-bar'>
+        <h5 class="title">Uguru Apps</h5>
+      </ion-header-bar>
+
+    <ion-content style='background-color' class='course-list-container'>
+        <div class='pure-g'>
+          <!-- column 1 -->
+          <div class='pure-u-1-2 app-card-wrapper flex-item-c'>
+              <a class='list card app-card pure-g-c flex-column pure-u-1' ng-click='goToRequest()'>
+                  <img class='flex-item-c padding-1em' src='{{img_base}}./img/apps/cloud_file.svg'/>
+                  <div class='flex-item-c center padding-1em'>Request</div>
+              </a>
+              <a class='list card app-card pure-g-c flex-column pure-u-1' ng-click='goToSearch()'>
+                <img class='flex-item-c padding-1em' src='{{img_base}}./img/apps/cloud_file.svg'/>
+                <div class='flex-item-c center padding-1em'>Search</div>
+              </a>
+              <a class='list card app-card pure-g-c flex-column pure-u-1' ng-click='goToFiles()'>
+                <img class='flex-item-c padding-1em' src='{{img_base}}./img/apps/cloud_file.svg'/>
+                <a class='flex-item-c center padding-1em'> Cloud</div>
+              </a>
+          </div>
+
+          <!-- column 2 -->
+          <div class='pure-u-1-2 app-card-wrapper flex-item-c'>
+              <a class='list card app-card pure-g-c flex-column pure-u-1' ng-click='goToAskQuestion()'>
+                  <img class='flex-item-c padding-1em' src='{{img_base}}./img/apps/cloud_file.svg'/>
+                  <div class='flex-item-c center padding-1em'>Ask</div>
+              </a>
+              <a class='list card app-card pure-g-c flex-column pure-u-1' ng-click='goToBakery()'>
+                <img class='flex-item-c padding-1em' src='{{img_base}}./img/apps/cloud_file.svg'/>
+                <div class='flex-item-c center padding-1em'>Bakery</div>
+              </a>
+          </div>
+
+        </div>
+    </ion-content>
+  </ion-view>

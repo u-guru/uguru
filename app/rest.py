@@ -569,6 +569,7 @@ class UserRequestView(restful.Resource):
                     if file_json != bool:
                         file_obj = File.query.get(file_json.get('id'))
                         file_obj.request_id = _request.id
+                        file_obj.user_id = _request.student_id
 
                 db_session.commit()
 

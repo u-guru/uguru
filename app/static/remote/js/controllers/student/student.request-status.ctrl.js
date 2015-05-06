@@ -14,36 +14,24 @@ angular.module('uguru.student.controllers')
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, $ionicViewSwitcher) {
 
-    $scope.requestObj = JSON.parse($stateParams.requestObj);
-
-    $scope.request = $scope.requestObj;
-
-
-    $scope.course = $scope.requestObj.course;
-    $scope.progress_active = false;
-
-    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    var days = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-    var date = new Date($scope.request.time_created);
-    $scope.formatted_time_created = days[date.getDay()] + ", " + months[date.getMonth()] + ' ' + date.getDate();
-    $scope.formatted_time_estimated_hours = Math.round(($scope.request.time_estimate / 60), 2);
-
-    if ($scope.request.online && $scope.request.in_person) {
-      $scope.formatted_request_type = 'In-person and online';
-    } else if ($scope.request.online) {
-      $scope.formatted_request_type = 'Online only';
-    } else if ($scope.request.in_person) {
-      $scope.formatted_request_type = 'In-person only';
-    }
-
-    console.log('request status', $scope.request);
+    $ionicModal.fromTemplateUrl(BASE + 'templates/view-files.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.viewFilesModal = modal;
+    });
 
     $scope.goBack = function() {
       $ionicViewSwitcher.nextDirection('back');
       $scope.root.vars.select_bottom_one = true;
       $state.go('^.student-home');
     }
+
+    $scope.openAttachment = function(file_url) {
+      var result = window.open(file_url, '_system', 'location=yes');
+      return false;
+    }
+
 
     $scope.goToGuruProfile = function(guru) {
       $state.go('^.student-guru-profile', {guruObj:JSON.stringify(guru)});
@@ -196,15 +184,15 @@ angular.module('uguru.student.controllers')
         return;
       }
 
-      $scope.map = {center: {latitude: $scope.request.position.latitude, longitude: $scope.request.position.longitude }, zoom: 14, control: {} };
+      $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
       $scope.options = {scrollwheel: false};
 
       var mapContainer = document.getElementById("map_canvas");
       var initMapCoords;
 
 
-      initMapCoords = $scope.createGoogleLatLng($scope.request.position.latitude,$scope.request.position.longitude)
-
+      initMapCoords = $scope.createGoogleLatLng(parseFloat($scope.request.position.latitude),parseFloat($scope.request.position.longitude))
+      console.log(initMapCoords);
       var mapOptions = {
         center: initMapCoords,
         zoom: 17,
@@ -228,60 +216,91 @@ angular.module('uguru.student.controllers')
 
     $scope.map_loaded = false;
 
-    $scope.$on('$ionicView.loaded', function() {
 
-            $timeout(function() {
-              if (document.getElementsByClassName('gm-style').length === 0) {
-                $scope.map_loaded = true;
-                console.log("500-loaded: map hasn't been drawn yet, attempting to redraw");
-                $scope.showGoogleMap();
-                $scope.loader.hide();
-              }
-            }, 500);
-
-          $timeout(function() {
-              if (document.getElementsByClassName('gm-style').length === 0) {
-                $scope.map_loaded = true;
-                console.log("1000-loaded: map hasn't been drawn yet, attempting to redraw");
-                $scope.showGoogleMap();
-                $scope.loader.hide();
-              }
-            }, 1000);
+    $scope.$on('$ionicView.beforeEnter', function() {
+      console.log('befoe enter')
 
 
-            $timeout(function() {
-              if (document.getElementsByClassName('gm-style').length === 0) {
-                $scope.map_loaded = true;
-                console.log("1500-loaded: map hasn't been drawn yet, attempting to redraw");
-                $scope.showGoogleMap();
-                $scope.loader.hide();
-              }
-            }, 1500);
+
+      $scope.requestObj = JSON.parse($stateParams.requestObj);
+
+      $scope.request = $scope.requestObj;
+
+
+      $scope.course = $scope.requestObj.course;
+      $scope.progress_active = false;
+
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var days = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+      var date = new Date($scope.request.time_created);
+      $scope.formatted_time_created = days[date.getDay()] + ", " + months[date.getMonth()] + ' ' + date.getDate();
+      $scope.formatted_time_estimated_hours = Math.round(($scope.request.time_estimate / 60), 2);
+
+      if ($scope.request.online && $scope.request.in_person) {
+        $scope.formatted_request_type = 'In-person and online';
+      } else if ($scope.request.online) {
+        $scope.formatted_request_type = 'Online only';
+      } else if ($scope.request.in_person) {
+        $scope.formatted_request_type = 'In-person only';
+      }
+
+      $timeout(function() {
+        $scope.showGoogleMap();
+      }, 1500);
+
+      if (!$scope.loadMapDelayedCalled) {
+        console.log('calling delayed map')
+        $scope.loadMapDelayed();
+        $scope.loadMapDelayedCalled = true;
+      }
     });
 
     $scope.$on('$ionicView.afterEnter', function() {
-           console.log('view has entered');
-
-           $timeout(function() {
-
-              if (document.getElementsByClassName('gm-style').length === 0 || !$scope.map_loaded) {
-                console.log('it gets here');
-                $scope.showGoogleMap();
-                $scope.loader.hide();
-              }
-
-           }, 1000)
-
-          // google.maps.event.addListener($scope.marker, 'dragend', function()
-          // {
-          //     // $scope.marker.setAnimation(google.maps.Animation.BOUNCE);
-          //     $scope.getAddressFromLatLng($scope.geocoder, $scope.marker.getPosition().lat(), $scope.marker.getPosition().lng())
-
-
-          // });
-
-
+      $scope.showGoogleMap();
+      console.log('after enter')
+      if (!$scope.loadMapDelayedCalled) {
+        $scope.loadMapDelayed();
+        $scope.loadMapDelayedCalled = true;
+      }
     });
+
+    // $scope.$on('$ionicView.loaded', function() {
+    //   $scope.showGoogleMap();
+    //   if (!$scope.loadMapDelayedCalled) {
+    //     $scope.loadMapDelayed();
+    //     $scope.loadMapDelayedCalled = true;
+    //   }
+    // });
+
+    $scope.loadMapDelayed = function () {
+
+      $timeout(function() {
+
+            if (document.getElementsByClassName('gm-style').length === 0) {
+              console.log("500-loaded: map hasn't been drawn yet, attempting to redraw");
+              $scope.showGoogleMap();
+              $scope.loader.hide();
+            }
+          }, 500);
+
+        $timeout(function() {
+            if (document.getElementsByClassName('gm-style').length === 0) {
+              console.log("1000-loaded: map hasn't been drawn yet, attempting to redraw");
+              $scope.showGoogleMap();
+              $scope.loader.hide();
+            }
+          }, 1000);
+
+
+          $timeout(function() {
+            if (document.getElementsByClassName('gm-style').length === 0) {
+              console.log("1500-loaded: map hasn't been drawn yet, attempting to redraw");
+              $scope.showGoogleMap();
+              $scope.loader.hide();
+            }
+          }, 1500);
+    }
 
   }
 

@@ -13,7 +13,7 @@
     </ion-tab>
   </ion-tabs>
 
-  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 0' scroll="false">
+  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 0'>
 
     <div class='pure-g-c flex-column center full-height' ng-hide='user.active_requests.length > 0 || user.incoming_requests.length > 0'>
       <div class='padding-1em padding-1em flex-item-c'> </div>
@@ -43,7 +43,7 @@
 
   </ion-content>
 
-  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 1' scroll='false'>
+  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 1'>
 
       <div class='pure-g-c flex-column center full-height' ng-show='!user.active_student_sessions || user.active_student_sessions.length === 0'>
         <div class='padding-1em padding-1em flex-item-c'> </div>
@@ -65,8 +65,8 @@
 
   </ion-content>
 
-  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 2' scroll='false'>
-    <div class='pure-g-c flex-column center full-height' ng-show='user.previous_requests.length === 0'>
+  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 2'>
+    <div class='pure-g-c flex-column center full-height' ng-show='!user.previous_student_sessions || user.previous_requests.length === 0'>
         <div class='padding-1em padding-1em flex-item-c'> </div>
         <div class='flex-item-c sleeping-guru light-opacity'>
           <img class='pure-img animated swing' ng-src='{{img_base}}./img/guru-sleeping.svg'>

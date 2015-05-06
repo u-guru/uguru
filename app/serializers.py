@@ -42,6 +42,9 @@ file_fields = {}
 file_fields['id'] = fields.Integer(attribute='id')
 file_fields['url'] = fields.String(attribute='url')
 file_fields['request_id'] = fields.Integer(attribute='request_id')
+file_fields['description'] = fields.String(attribute='description')
+file_fields['size'] = fields.String(attribute='size')
+file_fields['name'] = fields.String(attribute='name')
 
 guru_fields = {}
 guru_fields['name'] = fields.String(attribute='name')
@@ -202,6 +205,7 @@ UserSerializer = {
     'email': fields.String,
     'profile_url': fields.String,
     'is_a_guru': fields.Boolean,
+    'files': fields.List(fields.Nested(file_fields)),
     'is_admin': fields.Boolean,
     'is_support_admin': fields.Boolean,
     'guru_mode': fields.Boolean,

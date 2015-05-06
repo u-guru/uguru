@@ -2381,7 +2381,7 @@ p {
   right:0px;
   max-height:30px;
   max-width:30px;
-  top:-10px;
+  top:-15px;
 }
 
 #general-popup .popover-arrow{
@@ -2902,4 +2902,15 @@ a.timer-icon-link {
   margin-left: -15px;
   white-space: normal;
   margin-bottom:-10px;
+}
+
+.apps-page {
+  .app-card-wrapper {
+    align-items:center;
+    -webkit-align-items: center;
+    .app-card {
+      height:120px;
+      width:120px;
+    }
+  }
 }

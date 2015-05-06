@@ -14,7 +14,15 @@ angular.module('uguru.guru.controllers')
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, $ionicViewSwitcher) {
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/view-files.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.viewFilesModal = modal;
+    });
+
     $scope.proposal = JSON.parse($stateParams.proposalObj);
+    $scope.request = $scope.proposal.request;
 
     if ($scope.proposal.request.files && $scope.proposal.request.files.length > 0) {
       var file_url = $scope.proposal.request.files[0].url;

@@ -31,7 +31,7 @@
             <span class="input-label">Phone Number</span>
             <input type="email" placeholder="@school.edu">
           </label>
-          <ion-toggle ng-change="requestPushNotifications()" ng-model="root.vars.request.contact.push_notif" toggle-class="toggle-calm">Push Notifications</ion-toggle>
+          <ion-toggle ng-change="requestPushNotifications()" ng-show='platform.mobile'ng-model="root.vars.request.contact.push_notif" toggle-class="toggle-calm">Push Notifications</ion-toggle>
         </ion-list>
       </ion-content>
     </ion-view>

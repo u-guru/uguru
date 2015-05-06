@@ -195,14 +195,14 @@ angular.module('uguru.student.controllers')
       //   $scope.request.position = $scope.user.position.coords;
       // }
       //how to make sure the request shows
-      $scope.user.active_requests.push($scope.request);
-      $scope.root.vars.calendar
+      // $scope.user.active_requests.push($scope.request);
+      // $scope.root.vars.calendar
 
       $scope.contactingGuruModal.show();
 
       $timeout(function() {
         $scope.user.createObj($scope.user, 'requests', $scope.request, $scope, null, $scope.failureFunction);
-        User.getUserFromServer($scope, null, $state);
+        // User.getUserFromServer($scope, null, $state);
         console.log('going home...');
         $state.go('^.student-home');
       }, 1000)

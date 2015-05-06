@@ -43,6 +43,8 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
   // console.log($scope.user);t
 
+  console.log($scope.user)
+
   $ionicPlatform.ready(function() {
 
     $scope.turnStatusBarWhite = function() {
@@ -407,6 +409,15 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
 
     $scope.$on('$ionicView.beforeEnter', function() {
+      if (!$scope.topTabsDelegate) {
+        $scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
+      }
+
+      if (!$scope.bottomTabsDelegate) {
+        $scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
+      }
+
+
       if ($scope.root.vars.select_bottom_one) {
         console.log('view before enter');
         $scope.bottomTabsDelegate.select(0);

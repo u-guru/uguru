@@ -366,8 +366,6 @@ angular.module('uguru.util.controllers')
                 $timeout(function() {
                   $scope.loader.hide();
                 }, 500);
-
-                $scope.bottomTabsDelegate.select(1);
               });
 
           }

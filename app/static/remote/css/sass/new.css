@@ -1627,7 +1627,7 @@ a.sans-bold {
   right: 0px;
   max-height: 30px;
   max-width: 30px;
-  top: -10px; }
+  top: -15px; }
 
 #general-popup .popover-arrow {
   left: 22px !important;
@@ -1992,3 +1992,10 @@ a.timer-icon-link {
   margin-left: -15px;
   white-space: normal;
   margin-bottom: -10px; }
+
+.apps-page .app-card-wrapper {
+  align-items: center;
+  -webkit-align-items: center; }
+  .apps-page .app-card-wrapper .app-card {
+    height: 120px;
+    width: 120px; }

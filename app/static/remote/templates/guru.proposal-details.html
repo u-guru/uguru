@@ -25,6 +25,10 @@
           <div class='pure-u-4-5'>{{formatted_time_estimated_hours}} hours, {{proposal.request.time_estimate % 60}} minutes</div>
         </div>
         <div class='pure-g row-details'>
+          <div class='pure-u-1-5 grey-subject-text'>Files</div>
+          <div class='pure-u-4-5'>{{proposal.request.files.length}} attachments <a class='positive' style='text-align:right;' ng-click='viewFilesModal.show()'>View</a></div>
+        </div>
+        <div class='pure-g row-details'>
           <div class='pure-u-1-5 grey-subject-text'>Type</div>
           <div class='pure-u-4-5'>{{formatted_request_type}}</div>
         </div>

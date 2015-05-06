@@ -262,6 +262,7 @@ angular.module('uguru.user', [])
         $scope.user.recipient_id = user.recipient_id;
         $scope.user.auth_token = user.auth_token;
         $scope.user.fb_id = user.fb_id;
+        $scope.user.files = user.files;
         $scope.user.default_card = user.default_card;
         $scope.user.password = user.password;
         $scope.user.guru_introduction = user.guru_introduction;

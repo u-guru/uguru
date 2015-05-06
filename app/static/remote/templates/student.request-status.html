@@ -1,11 +1,11 @@
-<ion-view class='request-status' hide-nav-bar='true' cache-view='false'>
+<ion-view class='request-status' hide-nav-bar='true'>
 
   <ion-header-bar class="header-bar">
         <a class="button button-clear button-back" ng-click='goBack()'>Back</a>
         <h5 class="title">My Sessions</h5>
   </ion-header-bar>
 
-  <ion-content>
+  <ion-content scroll='false'>
     <div class='pure-g-c flex-column flex-space-between'>
       <div class='padding-1em flex-item-c j-start'>
         <a class='item pure-g row-details' ng-click='goToGuruProfile({{request.guru}})' ng-show='request.guru.name'>
@@ -45,7 +45,8 @@
           <div class='pure-u-4-5'>{{request.description}}</div>
           <div class='pure-u-1-5 grey-subject-text'></div>
           <div ng-show="request.files && request.files.length > 0" class='pure-u-4-5 relative'><span class='opacity-3-4'><i class='icon ion-paperclip'></i>&nbsp;{{request.files.length}} Attachment </span>
-            <img class='pure-img attachment-img' ng-src="{{request.files[0].url}}"/>
+            <a class='button button-clear button-positive attachment-img' ng-click='viewFilesModal.show();'> view </a>
+            <!-- <img class='pure-img attachment-img' ng-src="{{request.files[0].url}}"/> -->
           </div>
         </div>
         <div class='pure-g row-details'>
@@ -58,7 +59,6 @@
           <div class='pure-u-1' style='margin-top:1em;'>
             <div id="map_canvas" style="height: 100px;width: 100%;">
               <ui-gmap-google-map center="map.center" control="map.control" zoom="map.zoom"  pan="true" options="options">
-                <!-- <ui-gmap-search-box options="searchbox.options" template="searchbox.template" events="searchbox.events" parentdiv="searchbox.parentdiv"></ui-gmap-search-box> -->
               </ui-gmap-google-map>
             </div>
           </div>
