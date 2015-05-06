@@ -105,7 +105,7 @@ $ionicPlatform.ready(function() {
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
-  $cordovaFacebookProvider, $ionicConfigProvider) {
+  $cordovaFacebookProvider, $ionicConfigProvider, $compileProvider) {
 
   if (!window.cordova) {
       var appID = 1416375518604557;
@@ -115,6 +115,8 @@ $ionicPlatform.ready(function() {
 
   $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");
+
+  $compileProvider.imgSrcSanitizationWhitelist('CapturedImagesCache/');
 
   //Set up restangular provider
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
@@ -128,7 +130,7 @@ $ionicPlatform.ready(function() {
         controller: function($ionicPlatform, $scope, $state, $localstorage, User,
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
-          $cordovaSplashscreen, $timeout, Geolocation) {
+          $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush) {
 
 
           $scope.network_speed = null;
@@ -217,7 +219,8 @@ $ionicPlatform.ready(function() {
             $scope.platform = {
                 ios: ionic.Platform.isIOS(),
                 android: ionic.Platform.isAndroid(),
-                mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid(),
+                windows: ionic.Platform.isWindowsPhone(),
+                mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone(),
                 web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid()),
                 device: ionic.Platform.device(),
             }
@@ -235,11 +238,61 @@ $ionicPlatform.ready(function() {
 
               }
 
+            if ($scope.platform.windows && cordovaPush) {
+
+                  $cordovaPush.register(
+                      channelHandler,
+                      errorHandler,
+                      {
+                          "channelName": "123723560",
+                          "ecb": "onNotificationWP8",
+                          "uccb": "channelHandler",
+                          "errcb": "jsonErrorHandler"
+                      });
+
+              function channelHandler(event) {
+
+                  console.log();
+                  var uri = event.uri;
+                  console.log("channelHandler uri: " + uri);
+
+              }
+              function errorHandler(error) {
+                 // document.getElementById('app-status-ul').appendChild(document.createElement(error));
+                  console.log("Error Handle :" ,error);
+              }
+              function onNotificationWP8(e) {
+
+                  if (e.type == "toast" && e.jsonContent) {
+                      pushNotification.showToastNotification(successHandler, errorHandler,
+                      {
+                          "Title": e.jsonContent["wp:Text1"],
+                          "Subtitle": e.jsonContent["wp:Text2"],
+                          "NavigationUri": e.jsonContent["wp:Param"]
+                      });
+                  }
+
+                  if (e.type == "raw" && e.jsonContent) {
+                      alert(e.jsonContent.Body);
+                  }
+              }
+              function jsonErrorHandler(error) {
+                  //document.getElementById('app-status-ul').appendChild(document.createElement(error.code));
+                  //document.getElementById('app-status-ul').appendChild(document.createElement(error.message));
+                  console.log("ERROR: ", error.code);
+                  console.log("ERROR: ", error.message);
+              }
+
+            }
+
             if ($scope.platform && $scope.user) {
               $scope.user.current_device = ionic.Platform.device();
               $scope.user.current_device.user_id = $scope.user.id;
               $scope.user.createObj($scope.user, 'device', $scope.user.current_device, $scope);
             }
+
+
+
 
           });
 
