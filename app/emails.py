@@ -114,11 +114,12 @@ def send_transactional_email(subject, content, receiver, tags):
 
     if not os.environ.get('PRODUCTION'):
 
-        print "email skipped intended for", receiver.email, subject, tags
+        print "testing: email skipped intended for", receiver.email, subject, tags
 
     else:
-        result = mandrill_client.messages.send(message=message)
-        return result
+        print "production: for now: email skipped intended for", receiver.email, subject, tags
+        # result = mandrill_client.messages.send(message=message)
+        # return result
 
 def compose_email_notif_message(notif_key, args_tuple):
     return str(email_notif_copy[notif_key] % args_tuple)
