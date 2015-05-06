@@ -94,12 +94,15 @@ angular.module('uguru.student.controllers')
 
 
     $scope.getCurrentPositionAndSync = function(time) {
+
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
 
-      if ($state.current.name != 'root.student-active-session') {
+      if ($state.current.name !== 'root.active-student-session') {
         console.log('do not run background script anymore');
         return;
       }
+
+
 
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
@@ -139,11 +142,6 @@ angular.module('uguru.student.controllers')
         .customPUT(JSON.stringify(payload))
         .then(function(session){
 
-            if ($state.current.name != 'root.guru.active-session') {
-              console.log('do not run background script anymore');
-              return;
-            }
-
             $scope.session = session.plain();
             $scope.session.student_positions.sort($scope.sortPositionComparator)
             $scope.session.guru_positions.sort($scope.sortPositionComparator)
@@ -152,6 +150,12 @@ angular.module('uguru.student.controllers')
             $scope.student_position = $scope.session.student_positions[$scope.session.student_positions.length-2, $scope.session.student_positions.length-1];
             $scope.last_updated = $scope.getCurrentDate();
             $scope.drawGoogleMap($scope.student_position, $scope.guru_position);
+
+            if ($state.current.name !== 'root.active-student-session') {
+              console.log('do not run background script anymore');
+              return;
+            }
+
             if (callback) {
               callback(position)
             }
@@ -289,6 +293,11 @@ angular.module('uguru.student.controllers')
 
     $scope.getUserRecentLocation = function(recursive_delay) {
 
+      $scope.geoOptions = {
+        timeout: 10000,
+        enableHighAccuracy: false, //may cause high errors if true
+      }
+
       $cordovaGeolocation
       .getCurrentPosition($scope.geoOptions)
       .then(function (position) {
@@ -298,7 +307,14 @@ angular.module('uguru.student.controllers')
         console.log('user is at ' + $scope.user.last_position.latitude + ',' + $scope.user.last_position.longitude);
 
         $scope.drawGoogleMap($scope.user.last_position, $scope.guru.last_position, true);
+        $scope.loader.hide();
 
+
+        if (!$state.current.name !== 'root.active-student-session') {
+            console.log('do not run background script anymore');
+            return;
+        }
+        console.log('rechecking the location in', recursive_delay, 'seconds');
         if (recursive_delay) {
           $timeout(function() {
             $scope.getUserRecentLocation(recursive_delay);
@@ -334,55 +350,40 @@ angular.module('uguru.student.controllers')
       $scope.options = {scrollwheel: false};
 
 
-      $scope.geoOptions = {
-        timeout: 10000,
-        enableHighAccuracy: false, //may cause high errors if true
-      }
 
-      if ($scope.user.last_position && $scope.user.last_position.latitude) {
-        $scope.drawGoogleMap($scope.user.last_position,null, true);
-      } else {
-        // $scope.drawGoogleMap(null,null, true);
-        $scope.getUserRecentLocation($scope.recursive_delay);
-      }
-
-      $scope.loadMapDelayed();
-
-      // if (!$scope.user.last_position || !$scope.user.last_position.latitude) {
-      //   console.log('no last position on record... starting now every', $scope.recursive_delay, 'seconds');
-      //   $scope.getUserRecentLocation($scope.recursive_delay);
-      // }
+      $scope.loader.show();
+      $scope.getUserRecentLocation($scope.recursive_delay);
 
     });
 
-    $scope.loadMapDelayed = function () {
+    // $scope.loadMapDelayed = function () {
 
-        $timeout(function() {
+    //     $timeout(function() {
 
-              if (document.getElementsByClassName('gm-style').length === 0) {
-                console.log("500-loaded: map hasn't been drawn yet, attempting to redraw");
-                $scope.drawGoogleMap(null,null, true);
-                $scope.loader.hide();
-              }
-            }, 500);
+    //           if (document.getElementsByClassName('gm-style').length === 0) {
+    //             console.log("500-loaded: map hasn't been drawn yet, attempting to redraw");
+    //             $scope.drawGoogleMap(null,null, true);
+    //             $scope.loader.hide();
+    //           }
+    //         }, 500);
 
-          $timeout(function() {
-              if (document.getElementsByClassName('gm-style').length === 0) {
-                console.log("1000-loaded: map hasn't been drawn yet, attempting to redraw");
-                $scope.drawGoogleMap(null,null, true);
-                $scope.loader.hide();
-              }
-            }, 1000);
+    //       $timeout(function() {
+    //           if (document.getElementsByClassName('gm-style').length === 0) {
+    //             console.log("1000-loaded: map hasn't been drawn yet, attempting to redraw");
+    //             $scope.drawGoogleMap(null,null, true);
+    //             $scope.loader.hide();
+    //           }
+    //         }, 1000);
 
 
-            $timeout(function() {
-              if (document.getElementsByClassName('gm-style').length === 0) {
-                console.log("1500-loaded: map hasn't been drawn yet, attempting to redraw");
-                $scope.drawGoogleMap(null,null, true);
-                $scope.loader.hide();
-              }
-            }, 1500);
-    }
+    //         $timeout(function() {
+    //           if (document.getElementsByClassName('gm-style').length === 0) {
+    //             console.log("1500-loaded: map hasn't been drawn yet, attempting to redraw");
+    //             $scope.drawGoogleMap(null,null, true);
+    //             $scope.loader.hide();
+    //           }
+    //         }, 1500);
+    // }
 
 
 

@@ -21,6 +21,10 @@ angular.module('uguru.guru.controllers')
         $scope.viewFilesModal = modal;
     });
 
+    $scope.getNumber = function(num) {
+        return new Array(num);
+    }
+
     $scope.proposal = JSON.parse($stateParams.proposalObj);
     $scope.request = $scope.proposal.request;
 

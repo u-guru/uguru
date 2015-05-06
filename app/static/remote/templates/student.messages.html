@@ -1,9 +1,9 @@
 
-<ion-view class='messages' hide-nav-bar = 'true' cache-view="false">
+<ion-view class='messages' hide-nav-bar = 'true' cache-view='false'>
 
-  <ion-header-bar class="header-bar ng-class:{'bar-dark': user.guru_mode}" cache-view='false'>
+  <ion-header-bar class="header-bar ng-class:{'bar-dark': user.guru_mode}">
     <a class="button button-clear button-back ng-class:{'button-white': user.guru_mode}"  ng-click='goBack()'>Back</a>
-    <h5 class="title">{{messages[0].receiver.name.split(' ')[0]}}</h5>
+    <h5 class="title">{{message_name}}</h5>
   </ion-header-bar>
 
     <!-- <ion-nav-buttons side="secondary">

@@ -116,7 +116,7 @@ $ionicPlatform.ready(function() {
   $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");
 
-  // $compileProvider.imgSrcSanitizationWhitelist('CapturedImagesCache/');
+  // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
   //Set up restangular provider
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
@@ -334,21 +334,11 @@ $ionicPlatform.ready(function() {
 
         }
   }).
-  // state('root.student', {
-  //       url: '/student',
-  //       abstract: true,
-  //       templateUrl: 'templates/student-root.html'
-  // }).
   state('root.student-home', {
         url: '/home',
         templateUrl: BASE + 'templates/student.home.new.html',
         controller: 'StudentHomeController'
   }).
-  // state('root.guru', {
-  //       url: '/guru',
-  //       abstract: true,
-  //       templateUrl: 'templates/guru-root.html'
-  // }).
   state('root.onboarding-loading', {
         url: '/onboarding-loading',
         templateUrl: BASE + 'templates/onboarding.loading.html',

@@ -14,6 +14,9 @@
           <img ng-src="{{proposal.request.student.profile_url}}">
           <span class='pure-u-1 white-text'>{{proposal.request.student.name.split(' ')[0]}}
           </span>
+          <span class='pure-u-1-2'>
+            <span class='pure-u-1-5'><i class='ion-star gray-star' ng-repeat='star in getNumber(5) track by $index'></i>&nbsp;{{proposal.request.student.student_ratings.length}}</span>
+          </span>
         </a>
 
         <div class='pure-g row-details'>
@@ -23,10 +26,6 @@
         <div class='pure-g row-details'>
           <div class='pure-u-1-5 grey-subject-text'>Length</div>
           <div class='pure-u-4-5'>{{formatted_time_estimated_hours}} hours, {{proposal.request.time_estimate % 60}} minutes</div>
-        </div>
-        <div class='pure-g row-details'>
-          <div class='pure-u-1-5 grey-subject-text'>Files</div>
-          <div class='pure-u-4-5'>{{proposal.request.files.length}} attachments <a class='positive' style='text-align:right;' ng-click='viewFilesModal.show()'>View</a></div>
         </div>
         <div class='pure-g row-details'>
           <div class='pure-u-1-5 grey-subject-text'>Type</div>
@@ -40,7 +39,7 @@
           <div class='pure-u-1-5 grey-subject-text'>Details</div>
           <div class='pure-u-4-5'>{{proposal.request.description}}</div>
           <div class='pure-u-1-5 grey-subject-text'></div>
-          <div ng-show="proposal.request.files && proposal.request.files.length > 0" class='pure-u-4-5'><span class='opacity-3-4'><i class='icon ion-paperclip'></i>&nbsp;{{proposal.request.files.length}} Attachment </span></div>
+          <div ng-show="proposal.request.files && proposal.request.files.length > 0" class='pure-u-4-5'><span class='opacity-3-4'><i class='icon ion-paperclip'></i>&nbsp;{{proposal.request.files.length}} Attachment <a class='positive' style='text-align:right;' ng-click='viewFilesModal.show()'>View</a></span></div>
         </div>
         <div class='pure-g row-details'>
           <div class='pure-u-1-5 grey-subject-text'>Location</div>

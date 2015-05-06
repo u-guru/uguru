@@ -8,7 +8,7 @@
   <ion-content scroll='false'>
     <div class='pure-g-c flex-column flex-space-between'>
       <div class='padding-1em flex-item-c j-start'>
-        <a class='item pure-g row-details' ng-click='goToGuruProfile({{request.guru}})' ng-show='request.guru.name'>
+        <a class='item pure-g row-details' ng-click='goToGuruProfile(request.guru)' ng-show='request.guru.name'>
           <div class='pure-u-1-5 grey-subject-text'>Guru</div>
           <div class='pure-u-4-5 item-avatar-right'>{{request.guru.name}}
               <img ng-src="{{request.guru.profile_url}}">

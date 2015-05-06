@@ -16,17 +16,35 @@ angular.module('uguru.student.controllers')
   '$ionicScrollDelegate',
   'Restangular',
   '$ionicHistory',
+  '$cordovaStatusbar',
+  '$ionicPlatform',
   function($scope, $state, $timeout, $localstorage,
   $ionicModal, $ionicTabsDelegate, $cordovaProgress,
   $stateParams, $cordovaKeyboard, $ionicScrollDelegate,
-  Restangular, $ionicHistory) {
+  Restangular, $ionicHistory, $cordovaStatusbar, $ionicPlatform) {
 
     $scope.hide_footer = false;
     $scope.session = JSON.parse($stateParams.sessionObj);
     $scope.new_message = {content: ''};
     $scope.default_profile_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100';
 
-    console.log($scope.session);
+    //user is the guru
+    if ($scope.session.guru.id === $scope.user.id) {
+      $scope.message_name = $scope.session.request.student.name.split(' ')[0];
+    } else {
+      $scope.message_name = $scope.session.guru.name.split(' ')[0];
+    }
+
+
+    $ionicPlatform.ready(function() {
+
+      if (window.StatusBar && $scope.user.guru_mode) {
+                    // console.log('Extra #1. Styling iOS status bar to black \n\n');
+        StatusBar.styleLightContent();
+        StatusBar.overlaysWebView(true);
+      }
+
+    });
 
     $scope.goBack = function() {
       $ionicHistory.goBack();
@@ -97,8 +115,6 @@ angular.module('uguru.student.controllers')
       //   'profile_url': $scope.default_img_one
       // })
 
-      console.log(content);
-
       // $scope.new_message.content = '';
       $ionicScrollDelegate.$getByHandle('message-scroll').scrollBy(0, 200, true);
 
@@ -133,14 +149,14 @@ angular.module('uguru.student.controllers')
         .customGET()
         .then(function(response){
 
-            console.log('response from server', response.plain());
+            console.log('response from server', JSON.stringify(response.plain()));
             var server_messages = $scope.processMessages(response.messages);
             server_messages.sort($scope.sortMessageComparator);
             if (server_messages.length > $scope.messages.length) {
               $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
             }
             $scope.messages = server_messages;
-            if ($state.current.name = 'root.student.messages' && !one_time) {
+            if ($state.current.name === 'root.student-messages' && !one_time) {
               $timeout(function() {
                 $scope.getMessagesFromServer(time_between);
               }, time_between);
@@ -232,6 +248,19 @@ angular.module('uguru.student.controllers')
         $scope.getMessagesFromServer(30000);
       }, 5000)
     });
+
+    $scope.$on('$ionicView.afterEnter', function(){
+      //show/set focus on the  the keyboard
+      $timeout(function() {
+          if ($scope.platform.ios) {
+              $scope.setFocus();
+          } else if ($scope.platform.android) {
+            $cordovaKeyboard.show();
+
+          };
+      } , 1000)
+    });
+
 
 
   }

@@ -121,6 +121,31 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     console.log('sup');
   }
 
+  $scope.checkForRatings = function() {
+
+       if (($scope.user.pending_guru_ratings || $scope.user.pending_student_ratings) &&
+                            (($scope.user.pending_guru_ratings.length > 0 && !$scope.user.guru_mode) ||
+                            ($scope.user.pending_student_ratings.length > 0 && $scope.user.guru_mode))) {
+
+            $ionicModal.fromTemplateUrl(BASE + 'templates/ratings.modal.html', {
+                  scope: $scope,
+                  animation: 'slide-in-up'
+            }).then(function(modal) {
+                  $scope.ratingModal = modal;
+            });
+
+            $timeout(function() {
+                if (!$scope.ratingModal.isShown() && !$scope.ratingModalShown) {
+                    $scope.ratingModal.show();
+                }
+            }, 1000);
+
+
+        }
+
+
+    }
+
   // $scope.checkCourseInActiveRequests = function(course) {
   //   console.log(course);
   //   var active_requests = $scope.user.active_requests || [];
@@ -480,6 +505,8 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
       $scope.base_url =  BASE;
       $scope.progress_active = false;
+
+      $scope.checkForRatings();
 
     });
 

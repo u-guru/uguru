@@ -8,12 +8,23 @@ angular.module('uguru.util.controllers')
   '$timeout',
   '$localstorage',
   '$ionicModal',
+  '$cordovaStatusbar',
+  '$ionicPlatform',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal) {
+ 	$ionicModal, $cordovaStatusbar, $ionicPlatform) {
 
 
     $scope.starsSelected;
 
+    $ionicPlatform.ready(function() {
+
+      if (window.StatusBar && $scope.user.guru_mode) {
+                    // console.log('Extra #1. Styling iOS status bar to black \n\n');
+        StatusBar.styleLightContent();
+        StatusBar.overlaysWebView(true);
+      }
+
+    });
 
 
     if ($scope.user.guru_mode) {

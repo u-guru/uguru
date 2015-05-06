@@ -1203,7 +1203,7 @@ class UserSessionMessageView(restful.Resource):
             abort(404)
 
         [db_session.refresh(message) for message in _session.messages]
-        return session, 200
+        return _session, 200
 
 
     #create a message in a session
@@ -2144,5 +2144,7 @@ api.add_resource(AdminViewUserList, '/api/admin/<string:auth_token>/user/<int:_i
 
 api.add_resource(AdminViewGithubIssues, '/api/admin/<string:auth_token>/github/issues')
 api.add_resource(AdminViewGithubLabels, '/api/admin/<string:auth_token>/github/labels')
+
+
 
 

@@ -11,8 +11,9 @@ angular.module('uguru.student.controllers')
   '$stateParams',
   '$ionicHistory',
   '$ionicViewSwitcher',
+  '$cordovaStatusbar',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $stateParams, $ionicHistory, $ionicViewSwitcher) {
+ 	$ionicModal, $stateParams, $ionicHistory, $ionicViewSwitcher, $cordovaStatusbar) {
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/view-files.modal.html', {
       scope: $scope,
@@ -20,6 +21,21 @@ angular.module('uguru.student.controllers')
     }).then(function(modal) {
         $scope.viewFilesModal = modal;
     });
+
+    $scope.$on('modal.shown', function() {
+
+        if (window.StatusBar) {
+            StatusBar.styleLightContent();
+        }
+    });
+
+    $scope.$on('modal.hidden', function() {
+
+        if (window.StatusBar) {
+            StatusBar.styleDefault();
+        }
+    });
+
 
     $scope.goBack = function() {
       $ionicViewSwitcher.nextDirection('back');

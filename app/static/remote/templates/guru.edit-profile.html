@@ -46,6 +46,10 @@
         <ion-toggle ng-model="user.outside_university" ng-change='outsideSchoolChange()' class='padding-2em' toggle-class="toggle-positive">
         <div class='toggle-text'>I'm interested tutoring outside of school (SAT, MCAT, etc).</div>
         </ion-toggle>
+        <a class='item white item-badge-right item-icon-right' href='#/guru-verification' nav-direction="forward" >
+              How to increase your ranking
+              <i class='icon ion-chevron-right icon-small'></i>
+        </a>
       </div>
       <input type="file" id="guru-file-input-web" class='hide' onchange="angular.element(this).scope().file_changed(this)"></input>
   </ion-content>

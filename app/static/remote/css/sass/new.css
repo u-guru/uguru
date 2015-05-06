@@ -1997,5 +1997,17 @@ a.timer-icon-link {
   align-items: center;
   -webkit-align-items: center; }
   .apps-page .app-card-wrapper .app-card {
-    height: 120px;
-    width: 120px; }
+    height: 160px;
+    width: 125px; }
+
+.ion-star.white-star {
+  color: white; }
+
+.ion-star.gray-star {
+  color: rgba(255, 255, 255, 0.75); }
+
+.padding-half {
+  padding: 0.5em; }
+
+.sans-light {
+  font-family: "OpenSans-Light" !important; }

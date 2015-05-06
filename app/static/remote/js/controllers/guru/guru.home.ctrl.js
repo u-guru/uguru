@@ -401,7 +401,9 @@ angular.module('uguru.guru.controllers')
       console.log('stopping background refresh');
     });
 
-
+    $scope.onCardInputSelect = function() {
+      console.log('it detects its ebeen tapped');
+    }
 
     $scope.$on('modal.hidden', function() {
       $scope.backgroundRefresh = true;
@@ -438,7 +440,9 @@ angular.module('uguru.guru.controllers')
       $scope.loader.show();
       User.getUserFromServer($scope, null, $state);
       // $scope.guru.profile_percent_complete = $scope.calculateGuruProfilePercentage();
-
+      if ($scope.root.vars.guru_selected_index) {
+        $scope.bottomTabsDelegate.select($scope.root.vars.guru_selected_index);
+      }
 
       console.log('guru home view before Enter');
       if (window.StatusBar) {
@@ -466,6 +470,15 @@ angular.module('uguru.guru.controllers')
     $scope.$on('$ionicView.afterEnter', function() {
       $scope.loader.hide();
 
+      $scope.checkForRatings();
+
+    });
+
+    $scope.$on('$ionicView.beforeLeave', function() {
+      $scope.loader.hide();
+      if ($scope.bottomTabsDelegate) {
+        $scope.root.vars.guru_selected_index = $scope.bottomTabsDelegate.selectedIndex();
+      }
       $scope.checkForRatings();
 
     });

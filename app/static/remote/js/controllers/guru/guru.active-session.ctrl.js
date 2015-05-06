@@ -77,14 +77,16 @@ angular.module('uguru.guru.controllers')
         enableHighAccuracy: false, //may cause high errors if true
       }
 
-      if ($scope.user.last_position && $scope.user.last_position.latitude) {
-        $scope.drawGoogleMap($scope.user.last_position,null, true);
-      } else {
-        // $scope.drawGoogleMap(null,null, true);
-        $scope.getUserRecentLocation($scope.recursive_delay);
-      }
+      $scope.loader.show();
+      $scope.getUserRecentLocation($scope.recursive_delay);
 
-      $scope.loadMapDelayed();
+      // if ($scope.user.last_position && $scope.user.last_position.latitude) {
+      //   $scope.drawGoogleMap($scope.user.last_position,null, true);
+      // } else {
+      //   // $scope.drawGoogleMap(null,null, true);
+      // }
+
+      // $scope.loadMapDelayed();
 
 
 
@@ -281,6 +283,12 @@ angular.module('uguru.guru.controllers')
             $scope.student_position = $scope.session.student_positions[$scope.session.student_positions.length-2, $scope.session.student_positions.length-1];
             $scope.last_updated = $scope.getCurrentDate();
             $scope.drawGoogleMap($scope.guru_position, $scope.student_position);
+            $scope.loader.hide();
+            if ($state.current.name !== 'root.guru-active-session') {
+              console.log('do not run background script anymore');
+              return;
+            }
+
             if (callback) {
               callback(position)
             }
@@ -433,6 +441,11 @@ angular.module('uguru.guru.controllers')
 
     $scope.getUserRecentLocation = function(recursive_delay) {
 
+      $scope.geoOptions = {
+        timeout: 10000,
+        enableHighAccuracy: false, //may cause high errors if true
+      }
+
       $cordovaGeolocation
       .getCurrentPosition($scope.geoOptions)
       .then(function (position) {
@@ -442,6 +455,13 @@ angular.module('uguru.guru.controllers')
         console.log('user is at ' + $scope.user.last_position.latitude + ',' + $scope.user.last_position.longitude);
 
         $scope.drawGoogleMap($scope.user.last_position, $scope.guru.last_position, true);
+        $scope.loader.hide();
+
+        if (!$state.current.name !== 'root.guru-active-session') {
+            console.log('do not run background script anymore');
+            return;
+        }
+
 
         if (recursive_delay) {
           $timeout(function() {
