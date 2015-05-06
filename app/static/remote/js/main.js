@@ -116,7 +116,7 @@ $ionicPlatform.ready(function() {
   $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");
 
-  $compileProvider.imgSrcSanitizationWhitelist('CapturedImagesCache/');
+  // $compileProvider.imgSrcSanitizationWhitelist('CapturedImagesCache/');
 
   //Set up restangular provider
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
