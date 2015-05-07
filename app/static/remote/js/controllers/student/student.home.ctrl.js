@@ -242,16 +242,6 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     $scope.goToRequest = function(course) {
       // $scope.root.button.showButtonPressedAndHide($event.target);
 
-      pos = $scope.user.active_requests.map(function(request) { return request.course.short_name; }).indexOf(course.short_name);
-      if (pos !== -1) {
-        var callback = function() {
-          $scope.success.show(1500, 2500, 'You already have a request for' + course.short_name + '. Please cancel before you make a new one.');
-        }
-        $scope.goToRequestStatus($scope.user.requests[pos], callback);
-        return;
-      }
-
-
       $scope.loader.show();
       $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
       $scope.root.vars.request = {
