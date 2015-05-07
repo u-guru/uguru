@@ -49,7 +49,7 @@ def admin_login():
         session.pop('error')
 
     if session.get('user'):
-        return redirect(url_for('admin_team'))
+        return redirect(url_for('admin_requests'))
 
 
     return render_template("new_admin/login.html", error=error)
@@ -75,7 +75,7 @@ def admin_requests():
     from app.models import *
 
     unfiltered_requests = Request.query.all()
-    real_before_170 = [167, 166, 163, 161, 160, 159, 158, 157, 149, 146, 143,142, 141, 139, 122, 112, 92, 78, 71]
+    real_before_170 = [167, 166, 163, 161, 160, 159, 149, 146, 143,141, 139, 112, 92, 78]
     student_requests = []
     for _request in unfiltered_requests:
         if _request.id in real_before_170 or _request.id > 170:
