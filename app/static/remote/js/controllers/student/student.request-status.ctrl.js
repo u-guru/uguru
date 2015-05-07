@@ -49,7 +49,13 @@ angular.module('uguru.student.controllers')
         $scope.formatted_request_type = 'In-person only';
       }
 
-
+      if ($scope.root.vars.request_status_callback) {
+        console.log('sup');
+        $timeout(function() {
+          $scope.success.show(0, 5000, 'You already have a request for this class. Please cancel before you make a new one.');
+        }, 2000)
+        // $scope.root.vars.request_status_callback();
+      }
 
     $scope.$on('modal.shown', function() {
 
@@ -270,9 +276,10 @@ angular.module('uguru.student.controllers')
 
 
     $scope.$on('$ionicView.enter', function(){
-      console.log('entering...');
+      $scope.loader.show();
       $timeout(function() {
         $scope.showGoogleMap();
+        $scope.loader.hide();
       }, 1000);
     });
 

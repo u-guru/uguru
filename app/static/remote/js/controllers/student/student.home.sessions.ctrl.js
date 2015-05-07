@@ -6,11 +6,10 @@ angular.module('uguru.student.controllers')
   //All imported packages go here
   '$scope',
   '$state',
+  '$ionicHistory',
 function($scope, $state) {
 
-  console.log('new controller')
-  $ionicHistory.clearHistory();
-  $ionicHistory.clearCache();
+
 
   }
 

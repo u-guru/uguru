@@ -443,6 +443,7 @@ $ionicPlatform.ready(function() {
   //       templateUrl: BASE +  'templates/student.request.html',
   //       controller: 'StudentRequestController'
   // }).
+
   state('root.active-student-session', {
         url: '/student-active-session/:sessionObj',
         templateUrl: BASE +  'templates/student.active-session.html',

@@ -622,12 +622,12 @@ angular.module('uguru.user', [])
             Restangular.one('user', scope_user_id).customGET().then(
                 function(user) {
                     var processed_user = processResults(user.plain());
+                console.log('retrieved user from server');
                     if ($scope) {
-                        console.log($scope.user.university);
+
                         $scope.root.vars.fetch_user_server_mutex = false;
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);
-                        $scope.loader.hide();
                         if ($scope.loader) {
                             $scope.loader.hide();
                         }

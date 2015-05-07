@@ -22,10 +22,15 @@ angular.module('uguru.student.controllers')
 		$scope.success.show(0, 1500);
 	}
 
+
     $scope.goBack = function() {
-        $ionicViewSwitcher.nextDirection('back'); // 'forward', 'back', etc.
-        $ionicHistory.goBack();
-        // $(state).go('^.student-home');
+      $ionicViewSwitcher.nextDirection('back');
+        $scope.root.vars.select_bottom_three = true;
+        if ($scope.user.guru_mode) {
+          $state.go('^.guru-home');
+        } else {
+          $state.go('^.student-home');
+        }
     }
 
 	$scope.toggleEditMode = function() {

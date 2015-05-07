@@ -58,28 +58,46 @@ angular.module('uguru.guru.controllers')
 
     });
 
-    $scope.$on('$ionicView.beforeEnter', function() {
-      console.log('before enter, parsing the session obj..')
+    $scope.$on('$ionicView.enter', function(){
+
       $scope.session = JSON.parse($stateParams.sessionObj);
       $scope.recursive_delay = 60000;
-      $scope.guru = {};
+      $scope.guru = $scope.session.guru;
 
-
-      //initializing stuff
       $scope.student_position = null;
       $scope.guru_position = null;
-
       $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
       $scope.options = {scrollwheel: false};
 
-      $scope.geoOptions = {
-        timeout: 10000,
-        enableHighAccuracy: false, //may cause high errors if true
-      }
 
       $timeout(function() {
         $scope.getUserRecentLocation($scope.recursive_delay);
       }, 1000);
+
+    });
+
+    // $scope.$on('$ionicView.beforeEnter', function() {
+    //   console.log('before enter, parsing the session obj..')
+    //   $scope.session = JSON.parse($stateParams.sessionObj);
+    //   $scope.recursive_delay = 60000;
+    //   $scope.guru = {};
+
+
+    //   //initializing stuff
+    //   $scope.student_position = null;
+    //   $scope.guru_position = null;
+
+    //   $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
+    //   $scope.options = {scrollwheel: false};
+
+    //   $scope.geoOptions = {
+    //     timeout: 10000,
+    //     enableHighAccuracy: false, //may cause high errors if true
+    //   }
+
+    //   $timeout(function() {
+    //     $scope.getUserRecentLocation($scope.recursive_delay);
+    //   }, 1000);
 
       // if ($scope.user.last_position && $scope.user.last_position.latitude) {
       //   $scope.drawGoogleMap($scope.user.last_position,null, true);
@@ -91,34 +109,8 @@ angular.module('uguru.guru.controllers')
 
 
 
-    });
+    // });
 
-    $scope.loadMapDelayed = function () {
-      $timeout(function() {
-              if (document.getElementsByClassName('gm-style').length === 0) {
-                console.log("500-loaded: map hasn't been drawn yet, attempting to redraw");
-                $scope.drawGoogleMap(null,null, true);
-                $scope.loader.hide();
-              }
-            }, 500);
-
-          $timeout(function() {
-              if (document.getElementsByClassName('gm-style').length === 0) {
-                console.log("1000-loaded: map hasn't been drawn yet, attempting to redraw");
-                $scope.drawGoogleMap(null,null, true);
-                $scope.loader.hide();
-              }
-            }, 1000);
-
-
-            $timeout(function() {
-              if (document.getElementsByClassName('gm-style').length === 0) {
-                console.log("1500-loaded: map hasn't been drawn yet, attempting to redraw");
-                $scope.drawGoogleMap(null,null, true);
-                $scope.loader.hide();
-              }
-            }, 1500);
-    }
 
     // $scope.$on('$ionicView.loaded', function() {
 
@@ -274,14 +266,52 @@ angular.module('uguru.guru.controllers')
       Restangular
         .one('user', $scope.user.id).one('sessions')
         .customPUT(JSON.stringify(payload))
-        .then(function(session){
+        .then(function(user){
 
-            $scope.session = session.plain();
+
+
+
+
+
+            // $scope.user = user.plain();
+
+            // // go through all student sessions, pick out this one programmatically
+            // console.log('explaining me the', $scope.session, $scope.session.id);
+            // pos = $scope.user.student_sessions.map(function(session) { return session.id; }).indexOf($scope.session.id);
+
+            // // yay we found it!
+            // if (pos !== -1) {
+            //   $scope.indexed_session = $scope.user.student_sessions[pos];
+            // }
+
+            // console.log(pos);
+
+            // //very simple!
+
+
+            // $scope.session = $scope.indexed_session;
+
+
+
+
+
+            // console.log($scope.session);
+
+            // //we found it!!
+            // console.log('session found!', $scope.session.id, $scope.session);
+
+             pos = user.plain().student_sessions.map(function(session) { return session.student_id; }).indexOf(user.id);
+              if (pos !== -1) {
+                $scope.session = user.student_sessions[pos];
+              }
+
+
             $scope.session.student_positions.sort($scope.sortPositionComparator)
             $scope.session.guru_positions.sort($scope.sortPositionComparator)
 
             $scope.guru_position = $scope.session.guru_positions[$scope.session.guru_positions.length-2, $scope.session.guru_positions.length -1];
             $scope.student_position = $scope.session.student_positions[$scope.session.student_positions.length-2, $scope.session.student_positions.length-1];
+            console.log($scope.guru_position, $scope.student_position);
             $scope.last_updated = $scope.getCurrentDate();
             $scope.drawGoogleMap($scope.guru_position, $scope.student_position);
             $scope.loader.hide();
@@ -458,17 +488,20 @@ angular.module('uguru.guru.controllers')
         $scope.drawGoogleMap($scope.user.last_position, $scope.guru.last_position, true);
         $scope.loader.hide();
 
-        if (!$state.current.name !== 'root.guru-active-session') {
+        if ($state.current.name !== 'root.guru-active-session') {
             console.log('do not run background script anymore');
             return;
         }
 
 
-        if (recursive_delay) {
-          $timeout(function() {
-            $scope.getUserRecentLocation(recursive_delay);
-          }, recursive_delay);
-        }
+        console.log('synchronize server locations in 15minutes')
+         $scope.syncPositionWithServer($scope.user.last_position);
+
+        // if (recursive_delay) {
+        //   $timeout(function() {
+        //     $scope.getUserRecentLocation(recursive_delay);
+        //   }, recursive_delay);
+        // }
 
       }, function(err) {
           console.log('error from gps', err);

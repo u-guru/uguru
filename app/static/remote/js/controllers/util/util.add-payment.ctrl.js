@@ -1,4 +1,4 @@
-angular.module('uguru.util.controllers')
+  angular.module('uguru.util.controllers')
 
 .controller('AddPaymentController', [
 
@@ -24,22 +24,34 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.goBack = function() {
-      if (!$ionicHistory.backView() && !$scope.user.guru_mode) {
-        console.log('back view doesnt exist');
+
+
         $ionicViewSwitcher.nextDirection('back');
-        $scope.loader.show();
-        $state.go('^.student-home');
-      } else {
-        $ionicViewSwitcher.nextDirection('back');
-        $ionicHistory.goBack();
+        $scope.root.vars.select_bottom_three = true;
+        if ($scope.user.guru_mode) {
+          $state.go('^.guru-home');
+        } else {
+          $state.go('^.student-home');
+        }
+
       }
+
+      // if (!$ionicHistory.backView() && !$scope.user.guru_mode) {
+      //   console.log('back view doesnt exist');
+      //   $ionicViewSwitcher.nextDirection('back');
+      //   $scope.loader.show();
+      //   $state.go('^.student-home');
+      // } else {
+      //   $ionicViewSwitcher.nextDirection('back');
+      //   $ionicHistory.goBack();
+      // }
       // } else if (!$ionicHistory.backView() && $scope.guru_mode) {
       //   $state.go('^.guru-home');
       // }
       // else {
       //   $ionicHistory.goBack();
       // }
-    }
+    // }
 
     $scope.addPaymentActionBtn = function() {
       if ($scope.actionButtonText.toLowerCase() === 'save') {

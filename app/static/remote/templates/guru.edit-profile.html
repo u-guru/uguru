@@ -11,8 +11,11 @@
 
         <div class='item item-avatar-left item-button-right'>
           <img ng-src='{{user.profile_url}}' class='guru-profile-container'></img>
-          <span>Your Profile Picture</span>
+          <span class='capitalize'>{{user.name.split(' ')[0] + ' ' +  user.name.split(' ')[1][0]}}.</span>
+          <span class='pure-u-1'><i class='ion-star gold-student-star' ng-repeat='star in getNumber(5) track by $index'></i>
+          </span>
           <button class='button button-clear button-positive' ng-click='takePhoto()'>edit</button>
+          <p style='font-size:12px;'>{{user.university.title}} </p>
         </div>
 
         <div class='item description-item'>
@@ -46,10 +49,10 @@
         <ion-toggle ng-model="user.outside_university" ng-change='outsideSchoolChange()' class='padding-2em' toggle-class="toggle-positive">
         <div class='toggle-text'>I'm interested tutoring outside of school (SAT, MCAT, etc).</div>
         </ion-toggle>
-        <a class='item white item-badge-right item-icon-right' href='#/guru-verification' nav-direction="forward" >
+        <!-- <a class='item white item-badge-right item-icon-right' href='#/guru-verification' nav-direction="forward" >
               How to increase your ranking
               <i class='icon ion-chevron-right icon-small'></i>
-        </a>
+        </a> -->
       </div>
       <input type="file" id="guru-file-input-web" class='hide' onchange="angular.element(this).scope().file_changed(this)"></input>
   </ion-content>

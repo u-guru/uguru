@@ -1501,8 +1501,9 @@ margin: 0;
   }
 }
 
-.guru-sessions {
-  background-color:white;
+.guru-sessions .sleeping-guru{
+  max-height:125px;
+  margin-top:30%;
 }
 
 .item-avatar-right
@@ -2491,18 +2492,18 @@ p {
 }
 
 .role-tag {
-  background-color:transparent;
-  padding:0px 6px !important;
-  line-height:2.0em;
-  border: 1px solid $course-color;
-  color:$course-color;
+  background-color: transparent;
+  padding: 0px 6px !important;
+  line-height: 2em;
+  border: 1px solid #D97142;
+  color: #D97142;
   font-family: "OpenSans-Bold";
   text-transform: uppercase;
-  opacity:1;
-  font-size:50%;
-  position:absolute;
-  right:1.25em;
-  top:1.75em;
+  opacity: 1;
+  font-size: 50%;
+  position: fixed;
+  margin-left: 5px;
+  margin-top: 2px;
 }
 
 .settings-mobile .camera-icon-link {
@@ -2928,4 +2929,61 @@ a.timer-icon-link {
 
 .sans-light {
   font-family: "OpenSans-Light" !important;
+}
+
+
+
+
+.ion-star.gray-student-star {
+  margin:0.15em;
+  opacity:0.6;
+  font-size:110%;
+}
+
+.ion-star.gold-student-star {
+  margin:0.25em;
+  opacity:0.6;
+  font-size:110%;
+}
+
+.ratings-student-length {
+  font-size:90%;
+}
+
+.student-profile-item .item p {
+  font-size:11px;
+  white-space:normal;
+}
+
+.gold-student-star {
+  color: #DAA520;
+}
+
+.capitalize {
+  text-transform:capitalize;
+}
+
+.edit-guru-profile  .item {
+  border-bottom: 2px;
+
+  .description .item {
+    border-bottom: 2px;
+  }
+}
+
+
+.item .description-item {
+  border-bottom:2px !important;
+}
+
+.item-complex {
+  border-width: 2px;
+}
+
+.button.button-positive.button-clear {
+  border-color: transparent;
+  background: 0 0;
+  box-shadow: none;
+  margin-top: 0.5em;
+  color: #6AB1A5;
 }

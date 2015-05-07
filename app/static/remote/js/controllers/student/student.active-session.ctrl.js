@@ -98,20 +98,22 @@ angular.module('uguru.student.controllers')
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
 
       if ($state.current.name !== 'root.active-student-session') {
-        console.log('do not run background script anymore');
+        console.log('do not run background script anymore... quitting');
         return;
       }
-
 
 
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
         .then(function (position) {
-          $scope.syncPositionWithServer(position);
-          $scope.student_position = position;
-          if (time && $state.current.name === 'root.student-active-session') {
-              $timeout(function() {
-              $scope.getCurrentPositionAndSync(time)
+          console.log('STUDENT SYNC', position.coords, 'NEXT TIME IN', time, 'SECONDS');
+          console.log('syncing new location wit the server');
+          $scope.syncPositionWithServer(position.coords);
+          // $scope.student_position = position.coords;
+          // console.log('results returned student position, which is', JSON.stringify(position));
+          if (time && $state.current.name === 'root.active--session') {
+            $timeout(function() {
+                $scope.getCurrentPositionAndSync(time)
             }, time);
           }
         }, function(err) {
@@ -124,32 +126,36 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.syncPositionWithServer = function(position, callback) {
-      if (!callback) {
-        var payload = {
-          session_position_student: true,
-          position: position.coords,
-          session: $scope.session
-        }
-      } else {
-        var payload = {
-          session_position_student: true,
-          position: position,
-          session: $scope.session
-        }
+      var payload = {
+        session_position_student: true,
+        position: position,
+        session: $scope.session
       }
       Restangular
         .one('user', $scope.user.id).one('sessions')
         .customPUT(JSON.stringify(payload))
-        .then(function(session){
+        .then(function(user){
 
-            $scope.session = session.plain();
+              pos = user.plain().student_sessions.map(function(session) { return session.student_id; }).indexOf(user.id);
+              if (pos !== -1) {
+                $scope.session = user.student_sessions[pos];
+              }
+
+            // $scope.session = session.plain();
+            console.log($scope.session);
             $scope.session.student_positions.sort($scope.sortPositionComparator)
             $scope.session.guru_positions.sort($scope.sortPositionComparator)
 
             $scope.guru_position = $scope.session.guru_positions[$scope.session.guru_positions.length-2, $scope.session.guru_positions.length -1];
             $scope.student_position = $scope.session.student_positions[$scope.session.student_positions.length-2, $scope.session.student_positions.length-1];
             $scope.last_updated = $scope.getCurrentDate();
-            $scope.drawGoogleMap($scope.student_position, $scope.guru_position);
+
+            var guru_coords = $scope.guru_position || $scope.guru_position.coords;
+
+            console.log('drawing sync map, studentt coords are:', $scope.student_position);
+            console.log('drawing sync map, guru coords are:', guru_coords);
+
+            $scope.drawGoogleMap($scope.student_position, guru_coords, true);
 
             if ($state.current.name !== 'root.active-student-session') {
               console.log('do not run background script anymore');
@@ -170,16 +176,18 @@ angular.module('uguru.student.controllers')
       return new google.maps.LatLng(latCoord, longCoord);
     }
 
+
+    //pos_a == cordinates
     $scope.drawGoogleMap = function(pos_a, pos_b, markers_option) {
 
 
           if (!pos_a) {
+            console.log('no position using the university...');
             pos_a = {
               latitude: $scope.user.university.latitude,
               longitude: $scope.user.university.longitude
             }
           }
-
 
           var mapContainer = document.getElementById("map_canvas");
 
@@ -209,9 +217,11 @@ angular.module('uguru.student.controllers')
           //if this is passed in as an argument
           if (markers_option) {
 
-            $scope.drawGoogleMarkers(pos_a, pos_b, actual_map);
+            $scope.drawGoogleMarkers(pos_a, pos_b, $scope.actual_map);
 
           }
+
+          $scope.loader.hide();
     }
 
 
@@ -225,7 +235,8 @@ angular.module('uguru.student.controllers')
         $scope.map.student_marker = new google.maps.Marker({
             position: studentCoords,
             map: map,
-            draggable:true
+            draggable:true,
+            icon: 'http://maps.gstatic.com/intl/en_ALL/mapfiles/dd-start.png'
           });
 
       }
@@ -240,7 +251,8 @@ angular.module('uguru.student.controllers')
         $scope.map.guru_marker = new google.maps.Marker({
             position: guruCoords,
             map: map,
-            draggable:true
+            draggable:true,
+            icon: 'https://maps.google.com/mapfiles/kml/shapes/schools_maps.png'
           });
 
       }
@@ -263,11 +275,13 @@ angular.module('uguru.student.controllers')
                             )
 
           var mapOptions = {
-            center: initMapCoords,
-            zoom: 15,
-            disableDefaultUI: true,
-            zoomControl: true,
-            zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
+
+              center: initMapCoords,
+              zoom: 15,
+              disableDefaultUI: true,
+              zoomControl: true,
+              zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
+
           }
 
           var actual_map = new google.maps.Map(
@@ -288,7 +302,8 @@ angular.module('uguru.student.controllers')
           $scope.map.student_marker = new google.maps.Marker({
               position: studentCoords,
               map: actual_map,
-              draggable:true
+              draggable:true,
+              icon: '{{img_base}}./img/onboarding/cranberry.svg'
             });
           // $scope.drawGoogleMarkers(parseFloat($scope.user.university.latitude), parseFloat($scope.user.university.longitude), actual_map);
     }
@@ -308,20 +323,28 @@ angular.module('uguru.student.controllers')
 
         console.log('user is at ' + $scope.user.last_position.latitude + ',' + $scope.user.last_position.longitude);
 
-        $scope.drawGoogleMap($scope.user.last_position, $scope.guru.last_position, true);
-        $scope.loader.hide();
+
+        $scope.drawGoogleMap($scope.user.last_position, null, true);
 
 
-        if (!$state.current.name !== 'root.active-student-session') {
+        if ($state.current.name !== 'root.active-student-session') {
             console.log('do not run background script anymore');
             return;
         }
         console.log('rechecking the location in', recursive_delay, 'seconds');
-        if (recursive_delay) {
-          $timeout(function() {
-            $scope.getUserRecentLocation(recursive_delay);
-          }, recursive_delay);
-        }
+
+
+
+        console.log('synchronize both student & guru in 1 minutes');
+        $scope.getCurrentPositionAndSync(10000);
+
+
+
+        // if (recursive_delay) {
+        //   $timeout(function() {
+        //     $scope.getUserRecentLocation(recursive_delay);
+        //   }, recursive_delay);
+        // }
 
       }, function(err) {
           console.log('error from gps', err);
@@ -341,10 +364,11 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.$on('$ionicView.enter', function(){
-      console.log($scope.session.guru);
+
       $scope.session = JSON.parse($stateParams.sessionObj);
-      $scope.recursive_delay = 60000;
+      $scope.recursive_delay = 5000;
       $scope.guru = $scope.session.guru;
+      console.log($scope.guru);
 
       $scope.student_position = null;
       $scope.guru_position = null;
@@ -352,45 +376,15 @@ angular.module('uguru.student.controllers')
       $scope.options = {scrollwheel: false};
 
 
-
-      // $scope.loader.show();
+      $scope.loader.show();
       $timeout(function() {
         $scope.getUserRecentLocation($scope.recursive_delay);
+        $timeout(function() {
+          $scope.loader.hide()
+        }, 500)
       }, 1000);
 
     });
-
-    // $scope.loadMapDelayed = function () {
-
-    //     $timeout(function() {
-
-    //           if (document.getElementsByClassName('gm-style').length === 0) {
-    //             console.log("500-loaded: map hasn't been drawn yet, attempting to redraw");
-    //             $scope.drawGoogleMap(null,null, true);
-    //             $scope.loader.hide();
-    //           }
-    //         }, 500);
-
-    //       $timeout(function() {
-    //           if (document.getElementsByClassName('gm-style').length === 0) {
-    //             console.log("1000-loaded: map hasn't been drawn yet, attempting to redraw");
-    //             $scope.drawGoogleMap(null,null, true);
-    //             $scope.loader.hide();
-    //           }
-    //         }, 1000);
-
-
-    //         $timeout(function() {
-    //           if (document.getElementsByClassName('gm-style').length === 0) {
-    //             console.log("1500-loaded: map hasn't been drawn yet, attempting to redraw");
-    //             $scope.drawGoogleMap(null,null, true);
-    //             $scope.loader.hide();
-    //           }
-    //         }, 1500);
-    // }
-
-
-
 
   }
 

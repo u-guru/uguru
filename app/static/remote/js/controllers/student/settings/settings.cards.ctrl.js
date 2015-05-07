@@ -10,6 +10,17 @@ angular.module('uguru.student.controllers')
   '$ionicViewSwitcher',
   function($scope, $state, $ionicHistory, $ionicViewSwitcher) {
 
+    $scope.goBack = function() {
+      $ionicViewSwitcher.nextDirection('back');
+      $scope.root.vars.select_bottom_three = true;
+      if ($scope.user.guru_mode) {
+        $state.go('^.student-home');
+      } else {
+        $state.go('^.guru-home');
+      }
+
+    }
+
     $scope.goToEditCard = function(card) {
       $state.go('^.add-payment', {cardObj:JSON.stringify(card)});
     }

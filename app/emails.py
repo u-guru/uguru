@@ -169,7 +169,7 @@ def send_guru_proposal_to_student(proposal, student):
         str(10)
     )
 
-    email_subject = '1 ' + _request.course.short_name.upper() + ' Guru can Help! Read More'
+    email_subject = '1 ' + proposal.request.course.short_name.upper() + ' Guru can Help! Read More'
     email_message = compose_email_notif_message('guru_can_help', args_tuple)
     email_receiver = student
     email_tags = "student-receives-guru-proposal"
@@ -196,7 +196,7 @@ def send_student_has_accepted_to_guru(session, guru):
     student_name = session.student.name.split(' ')[0].title()
 
 
-    email_subject = 'Congrats! ' + student_name + ' has accepted your ' + session.course.short_name.upper + ' Request'
+    email_subject = 'Congrats! ' + student_name + ' has accepted your ' + session.request.course.short_name.upper + ' Request'
     email_message = compose_email_notif_message('student_chose_guru', args_tuple)
     email_receiver = guru
     email_tags = "student-accepts-guru"

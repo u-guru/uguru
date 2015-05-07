@@ -18,8 +18,10 @@
       old_password:''
      }
 
+
      $scope.goBack = function() {
       $ionicViewSwitcher.nextDirection('back'); // 'forward', 'back', etc.
+      $scope.root.vars.select_bottom_three = true;
       if ($scope.user.guru_mode) {
         $state.go('^.guru-home');
       }
@@ -31,7 +33,7 @@
 	   $scope.saveProfile = function() {
 
         if (!$scope.user.email || !$scope.user.first_name || !$scope.user.last_name) {
-          alert('please fill in all fields');
+          $scope.success.show(0, 1500, 'Success\n\n!');
           return;
         }
 

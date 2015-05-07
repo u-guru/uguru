@@ -1049,7 +1049,7 @@ class UserSessionView(restful.Resource):
             db_session.commit()
             return user, 200
 
-        #add updated position from student
+        #add updated position from guru
         if request.json.get('session_position_guru'):
             position_json = request.json.get('position')
             position_json['session_id'] = session_json.get('id')

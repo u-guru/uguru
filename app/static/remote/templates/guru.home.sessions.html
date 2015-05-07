@@ -18,13 +18,13 @@
   <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 0'>
 
     <!-- No sessions yet -->
-    <div class='pure-g-c flex-column center' ng-show='(!user.active_proposals && !user.pending_proposals) || (user.active_proposals.length === 0 && user.pending_proposals.length===0)'>
+    <div class='scroll pure-g-c flex-column center full-height' ng-show='(!user.active_proposals && !user.pending_proposals) || (user.active_proposals.length === 0 && user.pending_proposals.length===0)'>
       <div class='padding-1em padding-1em flex-item-c'> </div>
       <div class='flex-item-c sleeping-guru light-opacity'>
         <img class='pure-img animated swing' ng-src='{{img_base}}./img/guru-sleeping-guru-mode.svg' >
       </div>
       <div class='flex-item-c light-opacity padding-1em flex-direction-init '>
-        No sessions yet! <br> Try requesting help below
+        No sessions yet!
       </div>
     </div>
 

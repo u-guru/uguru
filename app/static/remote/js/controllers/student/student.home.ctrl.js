@@ -121,6 +121,10 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     console.log('sup');
   }
 
+  $scope.getNumber = function(num) {
+        return new Array(num);
+    }
+
   $scope.checkForRatings = function() {
 
        if (($scope.user.pending_guru_ratings || $scope.user.pending_student_ratings) &&
@@ -230,12 +234,6 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
     $scope.switchToGuruMode = function() {
       $scope.bottomTabsDelegate.select(1);
-      // var goToGuruHome = function() {
-
-      // }
-      // $ionicHistory.nextViewOptions({
-      //   historyRoot: true
-      // });
       $ionicViewSwitcher.nextDirection('forward');
       $scope.user.guru_mode = true;
       $state.go('^.guru-home');
@@ -243,6 +241,17 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
     $scope.goToRequest = function(course) {
       // $scope.root.button.showButtonPressedAndHide($event.target);
+
+      pos = $scope.user.active_requests.map(function(request) { return request.course.short_name; }).indexOf(course.short_name);
+      if (pos !== -1) {
+        var callback = function() {
+          $scope.success.show(1500, 2500, 'You already have a request for' + course.short_name + '. Please cancel before you make a new one.');
+        }
+        $scope.goToRequestStatus($scope.user.requests[pos], callback);
+        return;
+      }
+
+
       $scope.loader.show();
       $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
       $scope.root.vars.request = {
@@ -285,9 +294,10 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       // $event.target.classList.add('active')
     }
 
-    $scope.goToRequestStatus = function(request) {
+    $scope.goToRequestStatus = function(request,callback) {
       // var active_request = $scope.getActiveRequestByCourse(request);
       $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
+      $scope.root.vars.request_status_callback = callback;
       $state.go('^.student-request-status', {requestObj:JSON.stringify(request)});
 
     }
@@ -485,9 +495,7 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     });
 
     $scope.$on('$ionicView.loaded', function(){
-      console.log('view has loaded');
       User.getUserFromServer($scope, null, $state);
-      console.log($scope.user.previous_requests);
       $scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
       $scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
       $scope.bottomTabsDelegate.select(1);

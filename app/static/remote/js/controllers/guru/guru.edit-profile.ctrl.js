@@ -22,6 +22,10 @@ angular.module('uguru.student.controllers')
       $scope.user.updateAttr('uber_friendly', $scope.user, $scope.user.uber_friendly, null, $scope);
     }
 
+    $scope.getNumber = function(num) {
+        return new Array(num)
+    }
+
     $scope.outsideSchoolChange = function() {
       $scope.user.updateAttr('outside_university', $scope.user, $scope.user.outside_university, null, $scope);
     }
@@ -32,7 +36,8 @@ angular.module('uguru.student.controllers')
 
     $scope.saveProfile = function() {
       $scope.user.updateAttr('add_guru_intro', $scope.user, $scope.user.guru_introduction, null, $scope);
-      $scope.success.show(0, 1500);
+      $scope.success.show(0, 1500, 'Saved! Great job.');
+      $state.go('^.root.guru-profile');
     }
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/add-major.modal.html', {

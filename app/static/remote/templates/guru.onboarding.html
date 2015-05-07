@@ -2,7 +2,7 @@
 <ion-view hide-nav-bar='true' class='guru-onboarding'>
 
     <ion-header-bar class="header-bar dark-header">
-        <a class='button button-clear positive' nav-direction="back" href="#/home">BACK</a>
+        <a class='button button-clear button-white button-back positive' nav-direction="back" href="#/home">Back</a>
         <h5 class="title">Become a Guru</h5>
     </ion-header-bar>
 
@@ -67,8 +67,8 @@
 
             <ion-toggle ng-model="user.uber_friendly" class='item' ng-change='uberFriendlyChange()' toggle-class="toggle-positive">
             <img class='uber-logo' src='{{img_base}}./img/uber_logo.svg'/>
-            <div class='avatar-text' style='padding-left:30px;'>
-                I'm cool with <span class='sans-bold'>Uber</span> driving me to student sessions.
+            <div class='avatar-text'>
+                I'm cool with <span class='sans-bold'>Uber</span> driving <br> me to student sessions.
             </div>
             </ion-toggle>
 
