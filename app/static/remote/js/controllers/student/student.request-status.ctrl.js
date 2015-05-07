@@ -15,12 +15,41 @@ angular.module('uguru.student.controllers')
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, $ionicViewSwitcher, $cordovaStatusbar) {
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/view-files.modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.viewFilesModal = modal;
-    });
+
+
+
+      $scope.requestObj = JSON.parse($stateParams.requestObj);
+
+      $scope.request = $scope.requestObj;
+
+      if ($scope.request.files && $scope.request.files.length > 0) {
+        $ionicModal.fromTemplateUrl(BASE + 'templates/view-files.modal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.viewFilesModal = modal;
+        });
+      }
+
+      $scope.course = $scope.requestObj.course;
+      $scope.progress_active = false;
+
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var days = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+      var date = new Date($scope.request.time_created);
+      $scope.formatted_time_created = days[date.getDay()] + ", " + months[date.getMonth()] + ' ' + date.getDate();
+      $scope.formatted_time_estimated_hours = Math.round(($scope.request.time_estimate / 60), 2);
+
+      if ($scope.request.online && $scope.request.in_person) {
+        $scope.formatted_request_type = 'In-person and online';
+      } else if ($scope.request.online) {
+        $scope.formatted_request_type = 'Online only';
+      } else if ($scope.request.in_person) {
+        $scope.formatted_request_type = 'In-person only';
+      }
+
+
 
     $scope.$on('modal.shown', function() {
 
@@ -194,7 +223,7 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.showGoogleMap = function() {
-      console.log($scope.request);
+
       if (!$scope.request.position || !$scope.request.position.latitude || !$scope.request.position.longitude) {
         console.log('no coordinates... forget about it');
         return;
@@ -208,14 +237,13 @@ angular.module('uguru.student.controllers')
 
 
       initMapCoords = $scope.createGoogleLatLng(parseFloat($scope.request.position.latitude),parseFloat($scope.request.position.longitude))
-      console.log(initMapCoords);
       var mapOptions = {
         center: initMapCoords,
         zoom: 17,
         disableDefaultUI: true,
         draggable: false,
         zoomControl: false,
-        zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
+        // zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
       }
       actual_map = new google.maps.Map(
               mapContainer,
@@ -233,55 +261,43 @@ angular.module('uguru.student.controllers')
     $scope.map_loaded = false;
 
 
-    $scope.$on('$ionicView.beforeEnter', function() {
-      console.log('befoe enter')
+    // $scope.$on('$ionicView.beforeEnter', function() {
+    //   console.log('coming in frmo before....')
+    //   $scope.loader.show();
+    // });
+
+    // $scope.$on('$ionicView.enter', function() {
 
 
-
-      $scope.requestObj = JSON.parse($stateParams.requestObj);
-
-      $scope.request = $scope.requestObj;
-
-
-      $scope.course = $scope.requestObj.course;
-      $scope.progress_active = false;
-
-      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      var days = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-      var date = new Date($scope.request.time_created);
-      $scope.formatted_time_created = days[date.getDay()] + ", " + months[date.getMonth()] + ' ' + date.getDate();
-      $scope.formatted_time_estimated_hours = Math.round(($scope.request.time_estimate / 60), 2);
-
-      if ($scope.request.online && $scope.request.in_person) {
-        $scope.formatted_request_type = 'In-person and online';
-      } else if ($scope.request.online) {
-        $scope.formatted_request_type = 'Online only';
-      } else if ($scope.request.in_person) {
-        $scope.formatted_request_type = 'In-person only';
-      }
-
+    $scope.$on('$ionicView.enter', function(){
+      console.log('entering...');
       $timeout(function() {
         $scope.showGoogleMap();
-      }, 1500);
-
-      if (!$scope.loadMapDelayedCalled) {
-        console.log('calling delayed map')
-        $scope.loadMapDelayed();
-        $scope.loadMapDelayedCalled = true;
-      }
+      }, 1000);
     });
 
-    $scope.$on('$ionicView.afterEnter', function() {
-      $scope.showGoogleMap();
-      console.log('after enter')
-      if (!$scope.loadMapDelayedCalled) {
-        $scope.loadMapDelayed();
-        $scope.loadMapDelayedCalled = true;
-      }
-    });
+
+    // });
+
+    // $scope.$on('$ionicView.afterEnter', function() {
+    //   $scope.showGoogleMap();
+    //   console.log('after enter')
+    //   if (!$scope.loadMapDelayedCalled) {
+    //     $scope.loadMapDelayed();
+    //     $scope.loadMapDelayedCalled = true;
+    //   }
+    // });
 
     // $scope.$on('$ionicView.loaded', function() {
+
+
+    //   $scope.requestObj = JSON.parse($stateParams.requestObj);
+
+    //   $scope.request = $scope.requestObj;
+
+
+    //   $scope.course = $scope.requestObj.course;
+
     //   $scope.showGoogleMap();
     //   if (!$scope.loadMapDelayedCalled) {
     //     $scope.loadMapDelayed();

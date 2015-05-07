@@ -24,12 +24,14 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.goBack = function() {
-      // $ionicHistory.goBack();
       if (!$ionicHistory.backView() && !$scope.user.guru_mode) {
         console.log('back view doesnt exist');
         $ionicViewSwitcher.nextDirection('back');
         $scope.loader.show();
         $state.go('^.student-home');
+      } else {
+        $ionicViewSwitcher.nextDirection('back');
+        $ionicHistory.goBack();
       }
       // } else if (!$ionicHistory.backView() && $scope.guru_mode) {
       //   $state.go('^.guru-home');
@@ -59,7 +61,7 @@ angular.module('uguru.util.controllers')
     $scope.showSuccess = function(msg) {
         if (!$scope.progress_active)  {
             $scope.progress_active = true;
-            $cordovaProgress.showSuccess(true, msg)
+            $cordovaProgress.showSuccess(true, msg);
             $timeout(function() {
               $cordovaProgress.hide();
               $scope.progress_active = false;
@@ -123,8 +125,8 @@ angular.module('uguru.util.controllers')
           $scope.user.cards.push(cardInfo);
 
           $scope.user.createObj($scope.user, 'cards', cardInfo, $scope);
-          alert("Card successfully added!");
-          $ionicHistory.goBack();
+          $scope.success.show(500, 2000, 'Your card was successfully added!');
+          $scope.goBack();
         }
     }
 

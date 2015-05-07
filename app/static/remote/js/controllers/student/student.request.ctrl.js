@@ -204,6 +204,8 @@ angular.module('uguru.student.controllers')
         $scope.user.createObj($scope.user, 'requests', $scope.request, $scope, null, $scope.failureFunction);
         // User.getUserFromServer($scope, null, $state);
         console.log('going home...');
+        $ionicHistory.clearHistory();
+        $ionicHistory.clearCache();
         $state.go('^.student-home');
       }, 1000)
 

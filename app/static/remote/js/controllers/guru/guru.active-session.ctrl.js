@@ -77,8 +77,9 @@ angular.module('uguru.guru.controllers')
         enableHighAccuracy: false, //may cause high errors if true
       }
 
-      $scope.loader.show();
-      $scope.getUserRecentLocation($scope.recursive_delay);
+      $timeout(function() {
+        $scope.getUserRecentLocation($scope.recursive_delay);
+      }, 1000);
 
       // if ($scope.user.last_position && $scope.user.last_position.latitude) {
       //   $scope.drawGoogleMap($scope.user.last_position,null, true);

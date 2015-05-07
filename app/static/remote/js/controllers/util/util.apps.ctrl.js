@@ -12,6 +12,23 @@ angular.module('uguru.util.controllers')
       console.log('this works');
     }
 
+    $scope.goToRequest = function() {
+      $ionicViewSwitcher.nextDirection('forward');
+      $scope.success.show(0, 1500, 'Coming Soon!')
+    }
+
+    $scope.goToSearch = function() {
+      $scope.success.show(0, 1500, 'Coming Soon!')
+    }
+
+    $scope.goToAskQuestion = function() {
+      $scope.success.show(0, 1500, 'Coming Soon!')
+    }
+
+    $scope.goToBakery = function() {
+      $scope.success.show(0, 1500, 'Coming Soon!')
+    }
+
   }
 
 ])

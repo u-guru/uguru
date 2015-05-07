@@ -171,6 +171,8 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.drawGoogleMap = function(pos_a, pos_b, markers_option) {
+
+
           if (!pos_a) {
             pos_a = {
               latitude: $scope.user.university.latitude,
@@ -338,8 +340,8 @@ angular.module('uguru.student.controllers')
       $state.go('^.student-guru-profile', {guruObj:JSON.stringify(guru)});
     }
 
-    $scope.$on('$ionicView.beforeEnter', function(){
-      console.log('before enter, parsing the session obj..')
+    $scope.$on('$ionicView.enter', function(){
+      console.log($scope.session.guru);
       $scope.session = JSON.parse($stateParams.sessionObj);
       $scope.recursive_delay = 60000;
       $scope.guru = $scope.session.guru;
@@ -351,8 +353,10 @@ angular.module('uguru.student.controllers')
 
 
 
-      $scope.loader.show();
-      $scope.getUserRecentLocation($scope.recursive_delay);
+      // $scope.loader.show();
+      $timeout(function() {
+        $scope.getUserRecentLocation($scope.recursive_delay);
+      }, 1000);
 
     });
 
