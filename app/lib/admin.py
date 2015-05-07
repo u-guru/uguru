@@ -15,7 +15,7 @@ admin_info = {
         'name': 'Richard Akhmerov',
         'profile_url': '/static/img/admin/richard.png'
     },
-    'umi@uguru.me': {
+    'jon@uguru.me': {
         'name': 'Jon Lewis',
         'profile_url': '/static/img/admin/umi.png'
     },
