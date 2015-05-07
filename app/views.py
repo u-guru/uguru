@@ -73,7 +73,13 @@ def admin_requests():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     from app.models import *
-    student_requests = Request.query.all()
+
+    unfiltered_requests = Request.query.all()
+    real_before_170 = [167, 166, 163, 161, 160, 159, 158, 157, 149, 146, 143,142, 141, 139, 122, 112, 92, 78, 71]
+    student_requests = []
+    for _request in unfiltered_requests:
+        if _request.id in real_before_170 or _request.id > 170:
+            student_requests.append(_request)
     return render_template('new_admin/student.requests.html', requests=student_requests[::-1])
 
 
