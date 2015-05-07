@@ -16,7 +16,7 @@ admin_info = {
         'profile_url': '/static/img/admin/richard.png'
     },
     'umi@uguru.me': {
-        'name': 'Umi Lewis',
+        'name': 'Jon Lewis',
         'profile_url': '/static/img/admin/umi.png'
     },
     'geet@uguru.me': {
@@ -34,5 +34,9 @@ admin_info = {
     'ben@uguru.me': {
         'name': 'Ben Dalal',
         'profile_url': 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100'
+    },
+    'jason@uguru.me': {
+        'name': 'Jason Huang',
+        'profile_url': 'https://s3.amazonaws.com/uguruprof/request_file_id_122.png'
     }
 }

@@ -68,6 +68,15 @@ def admin_create():
         return redirect(url_for('admin_login'))
     return render_template("new_admin/create-campaign.html")
 
+@app.route('/admin/requests/')
+def admin_requests():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    from app.models import *
+    student_requests = Request.query.all()
+    return render_template('new_admin/student.requests.html', requests=student_requests[::-1])
+
+
 @app.route('/admin/campaigns/scheduled/')
 def admin_scheduled():
     if not session.get('user'):
