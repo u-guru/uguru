@@ -36,7 +36,8 @@ angular.module('uguru.student.controllers')
 		$scope.user.balance = 0;
 
 		$scope.user.createObj($scope.user, 'transactions', transactionPayload, $scope);
-
+	    //mixpanel track
+		mixpanel.track("Setting.transactions");
 		$state.go('^.settings-transactions');
 	}
 

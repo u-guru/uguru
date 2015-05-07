@@ -130,7 +130,9 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $scope.goToStudentRequest = function() {
+    $scope.goToStudentRequest = function () {
+        //mixpanel track
+        mixpanel.track("Student.request");
       $state.go('^.student-request', {courseObj:JSON.stringify($scope.root.vars.request.course)});
     };
 

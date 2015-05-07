@@ -75,6 +75,8 @@ angular.module('uguru.student.controllers')
     $scope.goBack = function() {
       $ionicViewSwitcher.nextDirection('back');
       $scope.root.vars.select_bottom_one = true;
+        //mixpanel track
+      mixpanel.track("Student.home");
       $state.go('^.student-home');
     }
 
@@ -85,11 +87,16 @@ angular.module('uguru.student.controllers')
 
 
     $scope.goToGuruProfile = function(guru) {
+
+        //mixpanel track
+        mixpanel.track("Student.guru.profile");
       $state.go('^.student-guru-profile', {guruObj:JSON.stringify(guru)});
     }
 
     $scope.goToStudentCalendar = function () {
-      $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
+        $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
+        //mixpanel track
+        mixpanel.track("Request.calendar");
       $state.go('^.request-calendar', {proposalObj:JSON.stringify($scope.request)});
     }
 
@@ -111,7 +118,9 @@ angular.module('uguru.student.controllers')
     // }
 
     $scope.acceptGuru = function() {
-      if ($scope.user.cards.length === 0) {
+        if ($scope.user.cards.length === 0) {
+            //mixpanel track
+            mixpanel.track("Add.payment");
         $state.go('^.add-payment');
         return;
       }
@@ -223,7 +232,9 @@ angular.module('uguru.student.controllers')
       $scope.success.show(0, 2000, cancelMsg);
       // $scope.showSuccess(cancelMsg);
       $scope.root.util.removeObjectByKey($scope.user.active_requests, 'id', $scope.request.id);
-      $timeout(function() {
+      $timeout(function () {
+          //mixpanel track
+          mixpanel.track("Student.home");
         $state.go('^.student-home');
       }, 1000);
     }

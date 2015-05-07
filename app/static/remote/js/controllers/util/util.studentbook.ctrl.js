@@ -16,7 +16,9 @@ angular.module('uguru.util.controllers')
       return new Array(num);
     }
 
-    $scope.goToGuruProfile = function(guru) {
+    $scope.goToGuruProfile = function (guru) {
+        //mixpanel track
+        mixpanel.track("Guru.profile");
       $state.go('^.guru-profile', {guruObj:JSON.stringify(guru), showContactGuru:true});
     }
 

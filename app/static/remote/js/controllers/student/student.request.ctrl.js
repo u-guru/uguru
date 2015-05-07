@@ -143,7 +143,9 @@ angular.module('uguru.student.controllers')
     $scope.goBackFromRequestsToHome = function() {
       if (confirm('Are you sure? Request progress will be lost')) {
 
-        $scope.root.vars.calendar_should_be_empty = true;
+          $scope.root.vars.calendar_should_be_empty = true;
+          //mixpanel track
+          mixpanel.track("Student.home");
         $state.go('^.student-home');
       }
     };
@@ -204,8 +206,12 @@ angular.module('uguru.student.controllers')
         $scope.user.createObj($scope.user, 'requests', $scope.request, $scope, null, $scope.failureFunction);
         // User.getUserFromServer($scope, null, $state);
         console.log('going home...');
+
         $ionicHistory.clearHistory();
         $ionicHistory.clearCache();
+
+          //mixpanel track
+        mixpanel.track("Student.home");
         $state.go('^.student-home');
       }, 1000)
 

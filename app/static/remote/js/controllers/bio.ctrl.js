@@ -19,6 +19,8 @@ function($scope, $state, $localstorage, User, user, $ionicHistory,
         
         //save progress
         $scope.calculateProgress(user);
+//mixpanel
+        mixpanel.track("List");
 
         $state.go('^.list');
     };

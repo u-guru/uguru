@@ -7,13 +7,16 @@ var REST_URL = 'http://uguru-rest.herokuapp.com'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.42.66:8100';
-  REST_URL = 'http://192.168.42.66:5000';
+ // BASE_URL = 'http://192.168.42.66:8100';
+ // REST_URL = 'http://192.168.42.66:5000';
+  BASE_URL = 'http://192.168.42.83:8100';
+  REST_URL = 'http://192.168.42.83:8100';
   // var REST_URL = 'http://uguru-rest.herokuapp.com'
-  // var REST_URL = 'http://uguru-rest.herokuapp.com';
+   var REST_URL = 'http://uguru-rest.herokuapp.com';
 } else {
   img_base = '/static/'
 }
+mixpanel.track("App Launch");
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.onboarding.controllers', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',

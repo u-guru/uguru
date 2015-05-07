@@ -1,3 +1,4 @@
+
 angular.module('uguru.onboarding.controllers', [])
 
 .controller('OnboardingRequestLocationController', [
@@ -16,13 +17,17 @@ angular.module('uguru.onboarding.controllers', [])
      $ionicPlatform, $rootScope) {
 
     var failureCallback = function($scope, $state) {
-      $scope.loader.hide();
+        $scope.loader.hide();
+        //mixpanel track
+        mixpanel.track("Onboarding.prompt");
       $state.go('^.prompt-location');
     }
 
     var callbackSuccess = function($scope, $state) {
-      $scope.loader.hide();
-      $state.go('^.onboarding-nearest-university');
+        $scope.loader.hide();
+        //mixpanel track
+        mixpanel.track("Onboarding.nearest");
+        $state.go('^.onboarding-nearest-university');
     }
 
     $scope.$on('$ionicView.loaded', function(){
@@ -52,16 +57,11 @@ angular.module('uguru.onboarding.controllers', [])
     });
 
     $scope.togglePersonGuru = function() {
-      //if user is ios.. prompt
-
-      // $scope.loader.show();
-
-      //if web
-
 
       console.log('we are about to launch the location picker and are on the platform', JSON.stringify($scope.platform));
       if (!$scope.platform.mobile) {
-
+          //mixpanel track
+          mixpanel.track("Onboarding.nearest");
         $state.go('^.onboarding-nearest-university');
 
       }
@@ -69,8 +69,12 @@ angular.module('uguru.onboarding.controllers', [])
       else if
         ($scope.platform.android) {
           if ($scope.nearest_universities && $scope.nearest_universities.length > 0) {
+              //mixpanel track
+              mixpanel.track("Onboarding.nearest");
             $state.go('^.onboarding-nearest-university');
           } else {
+              //mixpanel track
+              mixpanel.track("Onboarding.nearest");
             $state.go('^.onboarding-nearest-university');
           }
       }
@@ -85,12 +89,16 @@ angular.module('uguru.onboarding.controllers', [])
           // console.log('launching location service on ios.');
 
           // Temporary
+          //mixpanel track
+          mixpanel.track("Onboarding.nearest");
           $state.go('^.onboarding-nearest-university');
           // Geolocation.getUserPosition($scope, callbackSuccess, failureCallback, $state);
       }
       else if ($scope.platform.web)  {
               console.log('I am testing through the web.')
       } else {
+          //mixpanel track
+          mixpanel.track("Onboarding.nearest");
           $state.go('^.onboarding-nearest-university');
       }
     }

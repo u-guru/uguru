@@ -21,16 +21,20 @@ angular.module('uguru.student.controllers')
 
     }
 
-    $scope.goToEditCard = function(card) {
-      $state.go('^.add-payment', {cardObj:JSON.stringify(card)});
-    }
+      $scope.goToEditCard = function (card) {
+
+          mixpanel.track("add.payment");
+          $state.go('^.add-payment', {cardObj:JSON.stringify(card)});
+      }
 
     $scope.deleteCard = function() {
         // $scope.card from $scope
         //delete this card from $scope.user.cards
     }
 
-    $scope.goToAddTransferMethod = function(bool) {
+    $scope.goToAddTransferMethod = function (bool) {
+        //mixpanel track
+        mixpanel.track("add.payment");
       $state.go('^.add-payment', {debitCardOnly:JSON.stringify(bool)});
     }
 

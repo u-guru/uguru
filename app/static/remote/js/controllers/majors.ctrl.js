@@ -133,6 +133,8 @@ angular.module('uguru.major.ctrl', [])
 
     $scope.saveMajor = function() {
         updateUser(user, $localstorage, User, null, null);
+        //Mixpanel Track
+        mixpanel.track("List");
         $state.go('^.list');
     };
 

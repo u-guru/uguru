@@ -39,6 +39,8 @@ angular.module('uguru.guru.controllers')
       console.log('server-ready-calendar', JSON.stringify(proposalObj.guru_calendar));
       $scope.user.updateObj($scope.user, 'requests', proposalObj, $scope);
       alert("Student request accepted. We'll let you know if they choose you! \n See below for progress");
+        //Mixpanel Track
+      mixpanel.track("Guru.home");
       $state.go('^.guru-home');
     }
 

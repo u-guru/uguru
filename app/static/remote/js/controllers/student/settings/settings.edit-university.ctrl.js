@@ -19,12 +19,18 @@ angular.module('uguru.student.controllers')
 
 	$scope.goBack = function() {
 
-    $ionicViewSwitcher.nextDirection('back');
-    $scope.root.vars.select_bottom_three = true;
-    $state.go('^.student-home')
-
-  }
-
+      $ionicViewSwitcher.nextDirection('back'); // 'forward', 'back', etc.
+      if ($scope.user.guru_mode) {
+          //mixpanel track
+          mixpanel.track("Guru.home");
+        $state.go('^.guru-home');
+      }
+      if (!$scope.user.guru_mode) {
+          //mixpanel track
+          mixpanel.track("Student.home");
+        $state.go('^.student-home');
+      }
+     }
   $scope.saveUniversity = function() {
 		$scope.rootUser.updateLocal($scope.user);
 		// $scope.showSuccess('Saved!');

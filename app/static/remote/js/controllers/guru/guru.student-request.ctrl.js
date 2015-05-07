@@ -24,10 +24,15 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.goToGuruProfile = function() {
-      $state.go('^.guru-profile', {guruObj:JSON.stringify($scope.guru)});
+        //Mixpanel Track
+        mixpanel.track("Guru.profile");
+        $state.go('^.guru-profile', { guruObj: JSON.stringify($scope.guru) });
+
     }
 
-    $scope.declineRequest = function() {
+    $scope.declineRequest = function () {
+        //Mixpanel Track
+        mixpanel.track("Guru.home");
       $state.go('^.guru.home');
     }
 
@@ -73,7 +78,9 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.acceptStudent = function() {
-      if ($scope.user.transfer_cards.length === 0) {
+        if ($scope.user.transfer_cards.length === 0) {
+            //Mixpanel Track
+            mixpanel.track("Student.add-payment");
         $state.go('^.^.student.add-payment');
         return;
       }

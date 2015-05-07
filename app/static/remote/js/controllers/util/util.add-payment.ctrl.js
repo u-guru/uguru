@@ -29,8 +29,10 @@
         $ionicViewSwitcher.nextDirection('back');
         $scope.root.vars.select_bottom_three = true;
         if ($scope.user.guru_mode) {
+          mixpanel.track("Guru.home");
           $state.go('^.guru-home');
         } else {
+          mixpanel.track("Student.home");
           $state.go('^.student-home');
         }
 

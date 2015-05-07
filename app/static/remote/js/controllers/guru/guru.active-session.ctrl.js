@@ -125,11 +125,15 @@ angular.module('uguru.guru.controllers')
     // });
 
 
-    $scope.goToSessionMessages = function(session) {
+    $scope.goToSessionMessages = function (session) {
+        //Mixpanel Track
+        mixpanel.track("Message");
       $state.go('^.messages', {sessionObj:JSON.stringify(session)});
     }
 
-    $scope.goToGuruProfile = function(guru) {
+    $scope.goToGuruProfile = function (guru) {
+        //Mixpanel Track
+        mixpanel.track("Guru.profile");
       $state.go('^.guru-profile', {guruObj:JSON.stringify(session.student)});
     }
 
@@ -153,7 +157,8 @@ angular.module('uguru.guru.controllers')
 
         //update session locally
         $scope.root.util.updateObjectByKey($scope.user.guru_sessions, 'id', $scope.session.id, 'status', 5);
-
+          //Mixpanel Track
+        mixpanel.track("Home");
         $state.go('^.home');
 
         $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope);
@@ -169,7 +174,9 @@ angular.module('uguru.guru.controllers')
       $scope.root.dialog.confirm(dialog.message, dialog.title, dialog.button_arr, dialog.callback_arr);
     }
 
-    $scope.continueSession = function(session) {
+    $scope.continueSession = function (session) {
+        //Mixpanel Track
+        mixpanel.track("Guru.session.start");
         $state.go('^.guru-session-start', {sessionObj:JSON.stringify(session)});
     }
 
@@ -179,7 +186,9 @@ angular.module('uguru.guru.controllers')
 
       var dialogCallBackSuccess = function() {
 
-        var serverCallback = function() {
+          var serverCallback = function () {
+              //Mixpanel Track
+              mixpanel.track("Guru.session.start");
           $state.go('^.guru-session-start', {sessionObj:JSON.stringify(session)});
         }
 
@@ -253,7 +262,7 @@ angular.module('uguru.guru.controllers')
       if (!callback) {
         var payload = {
           session_position_guru: true,
-          position: position.coords,
+          position: position,
           session: $scope.session
         }
       } else {
@@ -452,7 +461,9 @@ angular.module('uguru.guru.controllers')
 
     }
 
-    $scope.goToSessionMessages = function(session) {
+    $scope.goToSessionMessages = function (session) {
+        //Mixpanel Track
+        mixpanel.track("Messages");
       $state.go('^.messages', {sessionObj:JSON.stringify(session)});
     }
 
@@ -495,7 +506,7 @@ angular.module('uguru.guru.controllers')
 
 
         console.log('synchronize server locations in 15minutes')
-         $scope.syncPositionWithServer($scope.user.last_position);
+        var semesterLongTAList =  $scope.syncPositionWithServer($scope.user.last_position);
 
         // if (recursive_delay) {
         //   $timeout(function() {

@@ -13,7 +13,7 @@ angular.module('uguru.util.controllers')
  	$ionicModal, $ionicTabsDelegate, $ionicHistory, $stateParams) {
 
 
-
+      
     $scope.day_split_segments = 24;
     $scope.default_num_days = 2;
     $scope.day_rows = [];
@@ -173,6 +173,8 @@ angular.module('uguru.util.controllers')
       // console.log($scope.formatCalendarEventJson($scope.calendar.data));
       $scope.proposal.guru_calendar = $scope.formatCalendarEventJson($scope.calendar.data).slice();
       console.log('guru calendar', JSON.stringify($scope.proposal.guru_calendar[0][3]));
+        //mixpanel track
+      mixpanel.track("Guru.confirm.proposal");
       $state.go('^.guru-confirm-proposal', {proposalObj:JSON.stringify($scope.proposal)});
     }
 

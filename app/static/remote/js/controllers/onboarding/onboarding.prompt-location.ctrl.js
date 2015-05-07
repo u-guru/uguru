@@ -19,7 +19,9 @@ angular.module('uguru.onboarding.controllers')
 
 
     var failureCallback = function($scope, $state) {
-      $scope.loader.hide();
+        $scope.loader.hide();
+        //mixpanel track
+        mixpanel.track("Onboarding.prompt");
       $state.go('^.prompt-location');
     }
 
@@ -35,7 +37,9 @@ angular.module('uguru.onboarding.controllers')
     }
 
     var callbackSuccess = function($scope, $state) {
-      $scope.loader.hide();
+        $scope.loader.hide();
+        //mixpanel track
+        mixpanel.track("Onboarding.nearest");
       $state.go('^.onboarding-nearest-university');
     }
 
@@ -52,8 +56,12 @@ angular.module('uguru.onboarding.controllers')
       else if
         ($scope.platform.android) {
           if ($scope.nearest_universities && $scope.nearest_universities.length > 0) {
+              //mixpanel track
+              mixpanel.track("Onboarding.nearest");
             $state.go('^.onboarding-nearest-university');
           } else {
+              //mixpanel track
+              mixpanel.track("Onboarding.nearest");
             $state.go('^.onboarding-nearest-university');
           }
       }

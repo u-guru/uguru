@@ -222,6 +222,8 @@ angular.module('uguru.guru.controllers')
       // $ionicHistory.clearHistory();
       $scope.root.vars.recent_switched_modes = true;
       $scope.user.guru_mode = false;
+        //Mixpanel Track
+      mixpanel.track("Student.home");
       $state.go('^.student-home');
       // var goToGuruHome = function() {
       //   $scope.user.guru_mode = false;
@@ -236,6 +238,8 @@ angular.module('uguru.guru.controllers')
       if (!$scope.user.auth_token) {
         $scope.signupModal.show();
       } else {
+          //Mixpanel Track
+          mixpanel.track("Setting.transfer");
         $state.go('^.settings-transfer');
       }
 
@@ -256,21 +260,29 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.goToIncreaseRanking = function() {
-      $ionicViewSwitcher.nextDirection('forward');
+        $ionicViewSwitcher.nextDirection('forward');
+        //Mixpanel Track
+        mixpanel.track("Guru.verification");
       $state.go('^.guru-verification');
     }
 
     $scope.goToProfileEdit = function() {
-      $ionicViewSwitcher.nextDirection('forward');
+        $ionicViewSwitcher.nextDirection('forward');
+        //Mixpanel Track
+        mixpanel.track("Guru.profile.edit");
       $state.go('^.guru-profile-edit');
     }
 
 
-    $scope.goToRequestStatus = function(course) {
+    $scope.goToRequestStatus = function (course) {
+        //Mixpanel Track
+        mixpanel.track("Reqiest.status");
       $state.go('^.request-status', {courseObj:JSON.stringify(course)});
     }
 
-    $scope.goToActiveSession = function(session) {
+    $scope.goToActiveSession = function (session) {
+        //Mixpanel Track
+        mixpanel.track("Guru.active.session");
       $state.go('^.guru-active-session', {sessionObj:JSON.stringify(session)});
     }
 
@@ -278,7 +290,9 @@ angular.module('uguru.guru.controllers')
       console.log('this was clicked');
     }
 
-    $scope.goToBecomeGuru = function() {
+    $scope.goToBecomeGuru = function () {
+        //Mixpanel Track
+        mixpanel.track("Guru.wizard");
       $state.go('^.guru.wizard');
       $timeout(function() {
         $scope.becomeGuruModal.hide();
@@ -290,11 +304,14 @@ angular.module('uguru.guru.controllers')
         $scope.signupModal.show()
       } else {
         if ($scope.user.guru_mode) {
-
+            //Mixpanel Track
+            mixpanel.track("Settings.notifications");
           $state.go('^.settings-notifications');
 
         }
         else {
+            //Mixpanel Track
+            mixpanel.track("Settings.notifications");
           $state.go('^.settings-notifications');
         }
       }
@@ -304,9 +321,13 @@ angular.module('uguru.guru.controllers')
       if (!$scope.user.auth_token) {
         $scope.signupModal.show()
       } else {
-        if ($scope.user.guru_mode) {
+          if ($scope.user.guru_mode) {
+              //Mixpanel Track
+              mixpanel.track("Settings.notifications");
           $state.go('^.settings-transactions');
-        } else {
+          } else {
+              //Mixpanel Track
+              mixpanel.track("Settings.notifications");
           $state.go('^.settings-transactions')
         }
       }
@@ -316,9 +337,13 @@ angular.module('uguru.guru.controllers')
       if (!$scope.user.auth_token) {
         $scope.signupModal.show();
       } else {
-        if ($scope.user.guru_mode) {
+          if ($scope.user.guru_mode) {
+              //Mixpanel Track
+              mixpanel.track("Settings.cards");
           $state.go('^.settings-cards')
-        } else {
+          } else {
+              //Mixpanel Track
+              mixpanel.track("Settings.cards");
           $state.go('^.settings-cards')
         }
       }
@@ -328,9 +353,13 @@ angular.module('uguru.guru.controllers')
       if (!$scope.user.auth_token) {
         $scope.signupModal.show()
       } else {
-        if ($scope.user.guru_mode) {
+          if ($scope.user.guru_mode) {
+              //Mixpanel Track
+              mixpanel.track("Settings.profile");
           $state.go('^.settings-profile');
-        } else {
+          } else {
+              //Mixpanel Track
+              mixpanel.track("Settings.profile");
           $state.go('^.settings-profile');
         }
       }
@@ -367,13 +396,19 @@ angular.module('uguru.guru.controllers')
 
       alert('You have been logged out!');
       $scope.signupModal.show();
+        //Mixpanel Track
+      mixpanel.track("Stidemt.home");
       $state.go('^.student-home');
     }
-    $scope.goToProposalDetails = function(proposal) {
+    $scope.goToProposalDetails = function (proposal) {
+        //Mixpanel Track
+        mixpanel.track("Guru.proposal.detail");
       $state.go('^.guru-proposal-details', {proposalObj:JSON.stringify(proposal)});
     }
 
-    $scope.goToPreviousSessionDetails = function(session) {
+    $scope.goToPreviousSessionDetails = function (session) {
+        //Mixpanel Track
+        mixpanel.track("Previous.session.details");
       $state.go('^.previous-session-details', {sessionObj:JSON.stringify(session)});
     }
 

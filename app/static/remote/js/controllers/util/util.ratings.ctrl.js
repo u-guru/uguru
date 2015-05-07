@@ -55,9 +55,13 @@ angular.module('uguru.util.controllers')
     $scope.submitRatingToServer = function() {
       $scope.loader.show();
       var serverCallback = function($scope, user) {
-        if ($scope.user.guru_mode) {
-          $state.go('^.guru-home');
-        } else {
+          if ($scope.user.guru_mode) {
+              //mixpanel track
+              mixpanel.track("Guru.home");
+                $state.go('^.guru-home');
+          } else {
+        //mixpanel track
+              mixpanel.track("Guru.home");
           $state.go('^.student-home');
         }
 

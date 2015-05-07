@@ -10,7 +10,9 @@ angular.module('uguru.util.controllers')
   '$ionicTabsDelegate',
   function($scope, $state, $timeout, $localstorage, $ionicTabsDelegate) {
 
-    $scope.goToGuruProfile = function(guru) {
+      $scope.goToGuruProfile = function (guru) {
+      //mixpanel track
+      mixpanel.track("Guru.profile");
       $state.go('^.guru-profile', {guruObj:JSON.stringify(guru), showContactGuru:true});
     }
 

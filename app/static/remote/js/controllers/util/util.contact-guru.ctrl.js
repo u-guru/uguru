@@ -52,7 +52,9 @@ angular.module('uguru.util.controllers')
 
       $scope.closeContactGuruModal = function() {
 
-      $timeout(function() {
+          $timeout(function () {
+              //mixpanel track
+              mixpanel.track("Home");
         $state.go('^.home');
         $scope.contactingGuruModal.hide();
 

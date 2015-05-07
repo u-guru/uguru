@@ -114,13 +114,17 @@ angular.module('uguru.guru.controllers', [])
       }
     }
 
-    $scope.goToGuruHome = function() {
+    $scope.goToGuruHome = function () {
+        //Mixpanel Track
+        mixpanel.track("Home");
       $state.go('^.home');
     }
 
     $scope.submitGuruOnboarding = function() {
       $scope.user.is_a_guru = true;
       $localstorage.setObject('user', $scope.user);
+        //Mixpanel Track
+      mixpanel.track("Guru.home");
       $state.go('^.guru-home');
       $scope.user.updateAttr('is_a_guru', $scope.user, true, null, $scope);
       // $scope.user.guru_mode = true;

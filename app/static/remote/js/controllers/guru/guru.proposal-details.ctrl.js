@@ -140,6 +140,8 @@ angular.module('uguru.guru.controllers')
         proposalObj.proposal = true;
         $scope.user.updateObj($scope.user, 'requests', proposalObj, $scope);
         $scope.success.show(0, 2000, 'Success!');
+          //Mixpanel Track
+        mixpanel.track("Guru.home");
         $state.go('^.guru-home');
       }
 
@@ -199,11 +201,14 @@ angular.module('uguru.guru.controllers')
 
     $scope.goToStudentCalendar = function (calendar) {
       $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
-
+        //Mixpanel Track
+      mixpanel.track("Request.calendar");
       $state.go('^.request-calendar', {proposalObj:JSON.stringify($scope.proposal)});
     }
 
-    $scope.goToConfirmProposal = function(proposal) {
+    $scope.goToConfirmProposal = function (proposal) {
+        //Mixpanel Track
+        mixpanel.track("Guru.confirm.proposal");
       $state.go('^.guru-confirm-proposal', {proposalObj:JSON.stringify(proposal)});
     }
 

@@ -26,7 +26,9 @@ angular.module('uguru.guru.controllers')
 
     $scope.timer = {minutes: $scope.session.minutes, seconds: $scope.session.seconds, hours:$scope.session.hours, active:false};
 
-    $scope.goToSessionMessages = function(session) {
+    $scope.goToSessionMessages = function (session) {
+        //Mixpanel Track
+        mixpanel.track("Student.messages");
       $state.go('^.^.student.messages', {sessionObj:JSON.stringify(session)});
     }
 
@@ -54,11 +56,15 @@ angular.module('uguru.guru.controllers')
       );
     }
 
-    $scope.goToGuruProfile = function(guru) {
+    $scope.goToGuruProfile = function (guru) {
+        //Mixpanel Track
+        mixpanel.track("Student.guru.profile");
       $state.go('^.^.student.guru-profile', {guruObj:JSON.stringify(session.student)});
     }
 
-    $scope.goToSessionTimer = function(session) {
+    $scope.goToSessionTimer = function (session) {
+        //Mixpanel Track
+        mixpanel.track("Student.guru.session");
       $state.go('^.guru-session', {sessionObj:JSON.stringify(session)});
     }
 
@@ -246,6 +252,8 @@ angular.module('uguru.guru.controllers')
         var updateObjCallback = function() {
           $scope.root.vars.check_for_ratings_modal = true;
           $scope.loader.hide();
+            //Mixpanel Track
+          mixpanel.track("Giri.home");
           $state.go('^.guru-home');
         }
         $scope.loader.show();

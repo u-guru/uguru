@@ -236,11 +236,23 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       $scope.bottomTabsDelegate.select(1);
       $ionicViewSwitcher.nextDirection('forward');
       $scope.user.guru_mode = true;
+        //mixpanel track
+      mixpanel.track("Guru.home");
       $state.go('^.guru-home');
     }
 
     $scope.goToRequest = function(course) {
       // $scope.root.button.showButtonPressedAndHide($event.target);
+
+      // pos = $scope.user.active_requests.map(function(request) { return request.course.short_name; }).indexOf(course.short_name);
+      // if (pos !== -1) {
+      //   var callback = function() {
+      //     $scope.success.show(1500, 2500, 'You already have a request for' + course.short_name + '. Please cancel before you make a new one.');
+      //   }
+      //   $scope.goToRequestStatus($scope.user.requests[pos], callback);
+      //   return;
+      // }
+
 
       $scope.loader.show();
       $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
@@ -267,6 +279,8 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
              }
           }
       $scope.root.vars.request.course = course;
+        //mixpanel track
+      mixpanel.track("Student.request");
       $state.go('^.student-request', {courseObj:JSON.stringify(course)});
     }
 
@@ -286,18 +300,25 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
     $scope.goToRequestStatus = function(request,callback) {
       // var active_request = $scope.getActiveRequestByCourse(request);
+
       $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
       $scope.root.vars.request_status_callback = callback;
+        $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
+        mixpanel.track("Student.request.status");
       $state.go('^.student-request-status', {requestObj:JSON.stringify(request)});
 
     }
 
-    $scope.goToActiveSession = function(session) {
+    $scope.goToActiveSession = function (session) {
+        //mixpanel track
+        mixpanel.track("Student.session");
       $state.go('^.active-student-session', {sessionObj:JSON.stringify(session)});
     }
 
 
-    $scope.goToBecomeGuru = function() {
+    $scope.goToBecomeGuru = function () {
+        //mixpanel track
+        mixpanel.track("Guru.wizard");
       $state.go('^.guru-wizard');
       $scope.bottomTabsDelegate.select(0);
       $timeout(function() {
@@ -306,7 +327,9 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     }
 
     $scope.goToNotifications = function() {
-      $ionicViewSwitcher.nextDirection('forward');
+        $ionicViewSwitcher.nextDirection('forward');
+        //mixpanel track
+        mixpanel.track("Settings.notifications");
       $state.go('^.settings-notifications');
     }
 
@@ -328,6 +351,8 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       if (!$scope.user.auth_token) {
         $scope.signupModal.show();
       } else {
+          //mixpanel track
+          mixpanel.track("Setting.transfer");
         $state.go('^.settings-transfer');
       }
 
@@ -345,10 +370,14 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       if (!$scope.user.auth_token) {
         $scope.signupModal.show();
       } else if ($scope.user.payment_cards && $scope.user.payment_cards.length === 0){
-        $ionicViewSwitcher.nextDirection('forward')
+          $ionicViewSwitcher.nextDirection('forward')
+          //mixpanel track
+          mixpanel.track("Add.payment");
         $state.go('^.add-payment');
       } else
-       {
+      {
+          //mixpanel track
+          mixpanel.track("Student.setting.cards");
         $state.go('^.student-settings-cards');
       }
     }
@@ -375,7 +404,7 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
   $scope.file_changed = function(element) {
         var photofile = element.files[0];
         var reader = new FileReader();
-        var image = document.getElementsByClassName('settings-prof-pic')[0];
+        var image = document.getElementsByClassName('Settings-prof-pic')[0];
 
         reader.onload = function(e) {
             image.src = e.target.result;
@@ -394,7 +423,9 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     };
 
     $scope.goToEditProfile = function() {
-      $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
+        $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
+        //mixpanel track
+        mixpanel.track("Setting.profile");
       $state.go('^.settings-profile');
     }
 
@@ -423,7 +454,9 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
     // $scope.bottomTabsDelegate.select(1);
 
-    $scope.goToPreviousSessionDetails = function(session) {
+    $scope.goToPreviousSessionDetails = function (session) {
+        //mixpanel track
+        mixpanel.track("Previous.session.details");
       $state.go('^.previous-session-details', {sessionObj:JSON.stringify(session)});
     };
 

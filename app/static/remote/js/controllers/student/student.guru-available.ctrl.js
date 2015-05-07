@@ -23,12 +23,16 @@ angular.module('uguru.student.controllers')
       return new Array(num);
     }
 
-    $scope.goToGuruProfile = function() {
+    $scope.goToGuruProfile = function () {
+        //mixpanel track
+        mixpanel.track("Guru.profile");
       $state.go('^.guru-profile', {guruObj:JSON.stringify($scope.guru)});
     }
 
     $scope.acceptGuru = function() {
-      if ($scope.user.cards.length === 0) {
+        if ($scope.user.cards.length === 0) {
+            //mixpanel track
+            mixpanel.track("Add.payment");
         $state.go('^.add-payment');
         return;
       }
@@ -41,7 +45,9 @@ angular.module('uguru.student.controllers')
         //remove request from array
         $scope.root.util.removeObjectByKey($scope.user.incoming_requests, 'id', $scope.request.id);
 
-        var callbackSuccess = function($scope, processed_user) {
+        var callbackSuccess = function ($scope, processed_user) {
+            //mixpanel track
+            mixpanel.track("Home");
             $state.go('^.home');
         }
 

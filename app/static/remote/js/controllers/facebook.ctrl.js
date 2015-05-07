@@ -166,6 +166,8 @@ angular.module('uguru.facebook.ctrl', [])
             StaticDataService.getStaticData(user);
 
             if (!user.tos_version) {
+                //mixpanel track
+                mixpanel.track("Passowrd");
                 $state.go('^.password');
             }
 
@@ -174,19 +176,24 @@ angular.module('uguru.facebook.ctrl', [])
                 $scope.user.guru_introduction &&
                 $scope.user.majors.length > 0 &&
                 $scope.user.university_id) {
-
+                //mixpanel track
+                mixpanel.track("Guru.complete");
                 $state.go('^.guru.complete');
 
             }
             
             //User does have password and has already begun application
-            else if (user.tos_version && user.university_id){
+            else if (user.tos_version && user.university_id) {
+                //mixpanel track
+                mixpanel.track("Wizard.list");
                 $state.go('^.wizard.list');
                 return;
             }
             
             //They haven't started yet
             else {
+                //mixpanel track
+                mixpanel.track("Wizard.splash");
                 $state.go('^.wizard-splash');
             }
             
@@ -206,6 +213,7 @@ angular.module('uguru.facebook.ctrl', [])
     $scope.checkOffline = function() {
             console.log('checking network status..');
             if ($localstorage.getObject('network') === 'offline') {
+
                 $state.transitionTo('root.offline');
             }
     };
@@ -221,7 +229,9 @@ angular.module('uguru.facebook.ctrl', [])
         
         StaticDataService.getStaticData($scope.user);
 
-        if (! $scope.user.tos_version) {
+        if (!$scope.user.tos_version) {
+            //mixpanel track
+            mixpanel.track("Password");
             $state.go('^.password');
         }
 
@@ -229,18 +239,23 @@ angular.module('uguru.facebook.ctrl', [])
             $scope.user.guru_introduction &&
             $scope.user.majors.length > 0 &&
             $scope.user.university_id) {
-
+            //mixpanel track
+            mixpanel.track("Guru.complete");
             $state.go('^.guru.complete');
 
         }
         //User does have password and is not a guru
-        else if ($scope.user.tos_version && $scope.user.university_id){
+        else if ($scope.user.tos_version && $scope.user.university_id) {
+            //mixpanel track
+            mixpanel.track("Wizard.list");
             $state.go('^.wizard.list');
             $ionicHistory.clearHistory();
             return;
         }
         //User is already a guru 
         else {
+            //mixpanel track
+            mixpanel.track("Wizard.splash");
             $state.go('^.wizard-splash');
         }
         return;

@@ -18,9 +18,13 @@ angular.module('uguru.student.controllers')
     $scope.session = JSON.parse($stateParams.sessionObj);
 
 	  $scope.goToSessionMessages = function(session) {
-      if ($scope.user.guru_mode) {
+	if ($scope.user.guru_mode) {
+	    //mixpanel track
+	    mixpanel.track("Student.messages");
         $state.go('^.^.student.messages', {sessionObj:JSON.stringify(session)});
-      } else {
+	} else {
+	    //mixpanel track
+	    mixpanel.track("Message");
         $state.go('^.messages', {sessionObj:JSON.stringify(session)});
       }
     }

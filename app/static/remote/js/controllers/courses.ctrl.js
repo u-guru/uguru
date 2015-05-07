@@ -108,6 +108,8 @@ angular.module('uguru.course.ctrl', [])
 
     $scope.saveCourses = function() {
         updateUser(user, $localstorage, User, null, null);
+        //mixpanel track
+        mixpanel.track("List");
         $state.go('^.list');
     };
 

@@ -103,6 +103,8 @@ angular.module('uguru.onboarding.controllers')
             // $scope.addUniversityModal.hide();
             $scope.loader.hide();
             $ionicViewSwitcher.nextDirection('forward');
+            //mixpanel track
+            mixpanel.track("Student.home");
             $state.go('^.student-home');
         }, 1000);
     };

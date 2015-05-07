@@ -32,6 +32,8 @@ angular.module('uguru.student.controllers')
       }
 
       $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.
+        //mixpanel track
+      mixpanel.track("Student.request");
       $state.go('^.student-request');
 
     }
