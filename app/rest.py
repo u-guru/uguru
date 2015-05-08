@@ -1491,8 +1491,10 @@ class UserNewView(restful.Resource):
                 ).first()
 
             if email_user:
+
                 import uuid
                 email_user.auth_token = uuid.uuid4().hex
+                course_id = None
 
                 if request.json.get('current_device'):
                     current_device_id = request.json.get('current_device').get('id')
@@ -1504,19 +1506,19 @@ class UserNewView(restful.Resource):
                 if request.json.get('add_student_course'):
                     course = request.json.get('course')
                     course_id = course.get('id')
-                if not course_id:
-                    c = Course()
-                    c.short_name = course.get('department') + ' ' + course.get('code')
-                    c.department_short = course.get('department')
-                    c.course_number = course.get('code')
-                    c.admin_approved = False
-                    user.student_courses.append(c)
-                    db_session.add(c)
-                    db_session.commit()
-                else:
-                    c = Course.query.get(int(course_id))
-                    user.student_courses.append(c)
-                    db_session.commit()
+                    if not course_id:
+                        c = Course()
+                        c.short_name = course.get('department') + ' ' + course.get('code')
+                        c.department_short = course.get('department')
+                        c.course_number = course.get('code')
+                        c.admin_approved = False
+                        user.student_courses.append(c)
+                        db_session.add(c)
+                        db_session.commit()
+                    else:
+                        c = Course.query.get(int(course_id))
+                        user.student_courses.append(c)
+                        db_session.commit()
 
                 if request.json.get('current_device_id'):
                     user.current_device_id = request.json.get('current_device_id')
@@ -1525,8 +1527,8 @@ class UserNewView(restful.Resource):
                     user.university_id = request.json.get('university_id')
 
 
-                    db_session.commit()
-                    return email_user, 200
+                db_session.commit()
+                return email_user, 200
             else:
                 abort(401)
 

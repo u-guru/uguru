@@ -489,6 +489,8 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
           $scope.root.vars.select_bottom_two = null;
       }
 
+      $scope.loader.hide();
+
     });
 
     $scope.$on('$ionicView.enter', function() {
@@ -498,7 +500,6 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       User.getUserFromServer($scope, null, $state);
       $scope.root.vars.fetch_user_server_mutex = true;
 
-      $scope.loader.hide();
       $scope.user.guru_mode = false;
       $scope.root.vars.guru_mode = false;
 

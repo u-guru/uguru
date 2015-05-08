@@ -148,7 +148,7 @@ angular.module('uguru.util.controllers')
       }
 
       if (!formDict.email) {
-        alert('Please enter your email');
+        $scope.success.show(0,2000,'Please enter your email');
         document.getElementsByName('login-email')[0].focus();
         var shake = document.getElementById('input_email_login')
         shake.classList.add('animated', 'shake');
@@ -200,7 +200,7 @@ angular.module('uguru.util.controllers')
       }
 
       if (!formDict.first_name) {
-        alert('Please fill in all fields!');
+        $scope.success.show(0,2000,'Please fill in all fields!');
         document.getElementsByName('signup-first-name')[0].focus();
         var shake = document.getElementById('input_first')
         shake.classList.add('animated', 'shake');
@@ -213,7 +213,7 @@ angular.module('uguru.util.controllers')
       }
 
       if (!formDict.last_name) {
-        alert('Please fill in all fields!');
+        $scope.success.show(0,2000,'Please fill in all fields!');
         document.getElementsByName('signup-last-name')[0].focus();
         var shake = document.getElementById('input_last')
         shake.classList.add('animated', 'shake');
@@ -226,7 +226,7 @@ angular.module('uguru.util.controllers')
       }
 
       if (!formDict.email) {
-        alert('Please fill in all fields!');
+        $scope.success.show(0,2000,'Please fill in all fields!');
         document.getElementsByName('signup-email')[0].focus();
         var shake = document.getElementById('input_email')
         shake.classList.add('animated', 'shake');
@@ -237,7 +237,7 @@ angular.module('uguru.util.controllers')
       }
 
       if (!validateEmail(formDict.email)) {
-        alert('Please fill in all fields!');
+        $scope.success.show(0,2000,'Please fill in all fields!');
         document.getElementsByName('signup-email')[0].focus();
         var shake = document.getElementById('input_email')
         shake.classList.add('animated', 'shake');
@@ -250,7 +250,7 @@ angular.module('uguru.util.controllers')
       }
 
       if (!formDict.password) {
-        alert('Please fill in all fields!');
+        $scope.success.show(0,2000,'Please fill in all fields!');
         $scope.user.password = $scope.signupForm.password;
         document.getElementsByName('signup-password')[0].focus();
         var shake = document.getElementById('input_password')
@@ -275,31 +275,35 @@ angular.module('uguru.util.controllers')
       if (!$scope.validateLoginForm() && !$scope.user.fb_id) {
         return;
       }
-
-      var loginPayload = {
+      console.log('login attmepted');
+      $scope.loginPayload = {
         'email': $scope.signupForm.email,
         'password': $scope.signupForm.password
       }
 
-      loginPayload.student_courses = $scope.user.student_courses;
-      loginPayload.university_id = $scope.user.university_id;
-      loginPayload.current_device = $scope.user.current_device;
+      $scope.loginPayload.student_courses = $scope.user.student_courses;
+      $scope.loginPayload.university_id = $scope.user.university_id;
+      $scope.loginPayload.current_device = $scope.user.current_device;
 
       if ($scope.user.current_device && $scope.user.current_device.id) {
         $scope.loginPayload.current_device_id = $scope.user.current_device.id;
       }
 
-      User.login(loginPayload).then(function(user) {
+      User.login($scope.loginPayload).then(function(user) {
 
           var processed_user = User.process_results(user.plain());
           User.assign_properties_to_root_scope($scope, processed_user)
           $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
+          var callback = function() {
+            $scope.success.show(0, 2000, 'Login Successful!');
+          }
+          $scope.closeSignupModal(callback);
 
       }, function(err) {
         if (err.status === 401) {
             $scope.signupForm.password = '';
-            alert('Incorrect username or password', 'Sorry!', 'OK');
+            $scope.success.show(0, 1000, 'Incorrect username or password');
         }
       });
     }

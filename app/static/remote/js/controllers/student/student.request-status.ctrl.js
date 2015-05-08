@@ -85,9 +85,7 @@ angular.module('uguru.student.controllers')
       return false;
     }
 
-
-    $scope.goToGuruProfile = function(guru) {
-
+    $scope.goToGuruProfile = function (guru) {
         //mixpanel track
         mixpanel.track("Student.guru.profile");
       $state.go('^.student-guru-profile', {guruObj:JSON.stringify(guru)});
