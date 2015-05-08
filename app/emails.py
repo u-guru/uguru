@@ -92,11 +92,12 @@ def send_campaign_email(campaign_name, template_name,
 
 def send_transactional_email(subject, content, receiver, tags):
 
-    receiver_info = [{
-        'email':'makhani.samir@gmail.com',
-        'name':receiver.name,
-        'type': 'to'
-    }]
+    if receiver.email:
+        receiver_info = [{
+            'email':receiver.email,
+            'name':receiver.name,
+            'type': 'to'
+        }]
 
     message = {
         'subject': subject,

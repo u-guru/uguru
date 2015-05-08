@@ -195,7 +195,6 @@ $ionicPlatform.ready(function() {
             $scope.root.vars.user_refresh = true;
             User.getUserFromServer($scope, null, $state);
 
-
             $timeout(function() {
               if ($scope.root.vars.user_refresh) {
                 console.log('refresh still is taking longer than 3 seconds...');

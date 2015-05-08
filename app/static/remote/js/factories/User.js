@@ -633,6 +633,7 @@ angular.module('uguru.user', [])
                 // console.log('Fetching user from ', $state.current.name);
             }
 
+
             Restangular.one('user', scope_user_id).customGET().then(
                 function(user) {
                     var processed_user = processResults(user.plain());
@@ -682,10 +683,12 @@ angular.module('uguru.user', [])
                         assignPropertiesToRootScope($scope, processed_user);;
                         delegateActionsFromProcessedUser($scope);
 
+                        $scope.doRefresh();
+                        $scope.loader.hide();
+
                         if (callback_success) {
                             callback_success($scope, $state);
                         }
-                        $scope.loader.hide();
 
                     }, function(err){
                         if (err.status === 409 ) {

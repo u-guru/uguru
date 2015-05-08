@@ -25,12 +25,7 @@
           <ion-toggle ng-model="root.vars.request.contact.email" ng-change='toggleTextMessageInput()' toggle-class="toggle-calm" class='ng-class:{"item-icon-left": root.vars.request.contact.email} '>
           <i class='icon ion-checkmark icon-medium icon-positive' ng-show='root.vars.request.contact.email'></i>
           Email Notification
-          <p ng-show='user.email'> {{user.email}} </p>
           </ion-toggle>
-          <label class="item item-input item-icon-left positive" ng-show='root.vars.request.contact.email && !user.email'>
-            <span class="input-label">Phone Number</span>
-            <input type="email" placeholder="@school.edu">
-          </label>
           <ion-toggle ng-change="requestPushNotifications()" ng-show='platform.mobile'ng-model="root.vars.request.contact.push_notif" toggle-class="toggle-calm">Push Notifications</ion-toggle>
         </ion-list>
       </ion-content>

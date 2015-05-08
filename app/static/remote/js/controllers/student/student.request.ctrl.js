@@ -348,24 +348,11 @@ angular.module('uguru.student.controllers')
     });
 
     $scope.$on('$ionicView.beforeEnter', function(){
-      // $scope.loader.show();
+
       console.log($scope.root.vars.request_cache);
       if ($scope.root.vars.request_cache[$scope.course.short_name.toLowerCase().toString()]) {
         $scope.root.vars.request = $scope.root.vars.request_cache[$scope.course.short_name.toLowerCase().toString()]
       }
-
-      // if ($scope.platform.mobile) {
-      //   $scope.user.current_device = ionic.Platform.device();
-      // }
-
-      // if ($scope.platform.mobile && $scope.platform.ios
-      //   && $scope.user.current_device && $scope.user.current_device.location_enabled === false) {
-
-      //   console.log('checking notifications');
-
-      //   CordovaPushWrapper.register($scope);
-
-      // }
 
     });
 
