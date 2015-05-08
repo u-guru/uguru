@@ -108,7 +108,7 @@ angular.module('uguru.util.controllers')
       $ionicHistory.goBack();
     };
 
-    $scope.root.vars.request.description = "";
+    // $scope.root.vars.request.description = "";
 
     $scope.validateForm = function() {
 
@@ -143,6 +143,11 @@ angular.module('uguru.util.controllers')
 
 
     $scope.$on('$ionicView.beforeEnter', function() {
+      if (!$scope.root.vars.request.description) {
+        $scope.root.vars.request.description = "";
+      }
+
+
       if ($scope.root.vars.files_should_be_cleared) {
         var photo_container = document.getElementsByClassName('attachment-container')[0]
         photo_container.src = null;

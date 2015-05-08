@@ -260,7 +260,9 @@ UserSerializer = {
     'support_tickets': fields.List(fields.Nested(support_fields)),
     'uber_friendly': fields.Boolean,
     'summer_15': fields.Boolean,
-    'outside_university': fields.Boolean
+    'outside_university': fields.Boolean,
+    'balance': fields.Float,
+    'total_earned': fields.Float
 
 }
 
@@ -336,3 +338,4 @@ FileSerializer = {
     'id': fields.Integer,
     'url': fields.String
 }
+

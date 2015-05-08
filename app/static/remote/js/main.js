@@ -1,5 +1,5 @@
 // Uguru upp
-var LOCAL = false; //local to the 8100 codebase
+var LOCAL = false; //local to the 8100 codebasebir
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com'
 // REST_URL = 'http://192.168.42.66:5000';
@@ -158,6 +158,7 @@ $ionicPlatform.ready(function() {
           $scope.root = RootService;
           $scope.root.vars = {};
           $scope.root.vars.onboarding = false;
+          $scope.root.vars.request_cache = {};
           $scope.root.vars.guru_mode = $scope.user.guru_mode;
           $scope.static = {};
           $scope.static.nearest_universities = [];
@@ -187,6 +188,22 @@ $ionicPlatform.ready(function() {
             hide: function(){
               $ionicLoading.hide();
             }
+          }
+
+          $scope.doRefresh = function() {
+
+            $scope.root.vars.user_refresh = true;
+            User.getUserFromServer($scope, null, $state);
+
+
+            $timeout(function() {
+              if ($scope.root.vars.user_refresh) {
+                console.log('refresh still is taking longer than 3 seconds...');
+              } else {
+                console.log('refresh successful, no need to debug..');
+              }
+
+            }, 3000)
           }
 
           $scope.success = {

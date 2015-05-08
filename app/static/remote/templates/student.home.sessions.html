@@ -15,6 +15,13 @@
 
   <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 0'>
 
+
+    <ion-refresher
+      on-pulling="doRefresh()"
+      spinner="ios"
+      on-refresh="doRefresh()">
+    </ion-refresher>
+
     <div class='scroll pure-g-c flex-column center full-height' ng-hide='user.active_requests.length > 0 || user.incoming_requests.length > 0'>
       <div class='padding-1em padding-1em flex-item-c'> </div>
       <div class='flex-item-c sleeping-guru light-opacity'>
@@ -44,6 +51,12 @@
   </ion-content>
 
   <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 1'>
+
+    <ion-refresher
+      on-pulling="doRefresh()"
+      spinner="ios"
+      on-refresh="doRefresh()">
+    </ion-refresher>
   <ion-scroll>
       <div class='pure-g-c flex-column center svrofull-height' ng-show='!user.active_student_sessions || user.active_student_sessions.length === 0'>
         <div class='padding-1em padding-1em flex-item-c'> </div>
@@ -66,6 +79,15 @@
   </ion-content>
 
   <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 2'>
+
+
+      <ion-refresher
+        on-pulling="doRefresh()"
+        spinner="circles"
+        pulling-icon="ion-arrow-down-c"
+        on-refresh="doRefresh()">
+      </ion-refresher>
+
     <div class='pure-g-c flex-column center full-height' ng-show='!user.previous_student_sessions || user.previous_requests.length === 0'>
         <div class='padding-1em padding-1em flex-item-c'> </div>
         <div class='flex-item-c sleeping-guru light-opacity'>

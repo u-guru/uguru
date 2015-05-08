@@ -9,16 +9,25 @@ angular.module('uguru.util.controllers')
   '$ionicTabsDelegate',
   '$ionicHistory',
   '$stateParams',
+  '$ionicScrollDelegate',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $ionicTabsDelegate, $ionicHistory, $stateParams) {
+ 	$ionicModal, $ionicTabsDelegate, $ionicHistory, $stateParams, $ionicScrollDelegate) {
 
 
-      
+
     $scope.day_split_segments = 24;
     $scope.default_num_days = 2;
     $scope.day_rows = [];
     $scope.modalShown = false;
     // $scope.root.vars.request = {calendar: {}};
+
+    var current_date = new Date();
+    var current_month = current_date.getMonth() + 1;
+    var current_day = current_date.getDate();
+    $scope.day_one = current_month + '/' + current_day;
+    $scope.day_two = current_month + '/' + (current_day + 1);
+    $scope.hours_past = current_date.getHours() + 1;
+
 
     //guru mode only - ignore for now
     $scope.proposal = null;
@@ -363,7 +372,7 @@ angular.module('uguru.util.controllers')
       }
 
       //A calendar item was selected
-      console.log(targetBgColor);
+      console.log(targetBgColor, target, target.childNodes);
       //if student mode & clicked
       if (!$scope.user.guru_mode && (!targetBgColor || targetBgColor === 'white')) {
         $scope.calendar.data[calendar_x][calendar_y] = true;
@@ -371,6 +380,7 @@ angular.module('uguru.util.controllers')
         target.style.background = '#6C87B0';
         target.style.color = 'white';
         target.childNodes[0].background = '#6C87B0';
+        // target.childNodes[1].background = '#6C87B0';
       } else if ($scope.user.guru_mode && (targetBgColor === 'rgb(128, 128, 128)')) {
         $scope.calendar.data[calendar_x][calendar_y] = true;
         $scope.root.vars.request.calendar.data[calendar_x][calendar_y] = true;
@@ -391,15 +401,28 @@ angular.module('uguru.util.controllers')
         target.style.background = 'white';
         target.style.color = 'rgba(0,0,0,0.8)';
         target.childNodes[0].background = 'white';
+        target.childNodes[1].background = 'white';
       }
 
 
       $scope.calendar.num_selected = $scope.countCalendarSelected($scope.calendar.data);
-      console.log($scope.calendar.num_selected);
       $scope.root.vars.request.calendar_selected = true;
 
       // $scope.formatCalendarEventJson($scope.calendar.data);
     }
+
+
+    $scope.scrollHalfway = function() {
+
+      var content_half_height = Math.round((document.getElementsByClassName('has-header')[0].scrollHeight/ 2) * 1.3, 2);
+      $ionicScrollDelegate.scrollBy(0, content_half_height , true);
+    }
+
+    $scope.$on('$ionicView.loaded', function() {
+      $timeout(function() {
+        $scope.scrollHalfway();
+      }, 500);
+    });
 
     $scope.$on('$ionicView.beforeEnter', function(){
       if ($scope.root.vars.calendar_should_be_empty) {

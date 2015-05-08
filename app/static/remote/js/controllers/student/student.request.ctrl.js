@@ -20,10 +20,11 @@ angular.module('uguru.student.controllers')
   'CordovaPushWrapper',
   '$ionicPlatform',
   'User',
+  '$ionicViewSwitcher',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $stateParams,
   $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
-  $ionicHistory, CordovaPushWrapper, $ionicPlatform, User) {
+  $ionicHistory, CordovaPushWrapper, $ionicPlatform, User, $ionicViewSwitcher) {
     $scope.isRequestFormComplete = false;
     //TODO: ADD ACTION BAR W / FILE SUPPORT
     //TODO: IF NOT PUSH NOTIFICATIONS, SHOW IT HERE AS PART OF THE FORM
@@ -55,22 +56,6 @@ angular.module('uguru.student.controllers')
     }).then(function(modal) {
         $scope.contactingGuruModal = modal;
     });
-
-    // $ionicModal.fromTemplateUrl(BASE + 'templates/calendar.modal.html', {
-    //   scope: $scope,
-    //   animation: 'slide-in-up'
-    // }).then(function(modal) {
-    //     $scope.calendarModal = modal;
-    // });
-
-
-    // var checkbox0 = [document.getElementById('iconRecord0')];
-    //   var checkbox0_position = $ionicPosition.offset(checkbox0).left
-    //   var checkbox1 = [document.getElementById('iconRecord1')];
-    //   var checkbox1_position = $ionicPosition.offset(checkbox1).left
-    //   var half_box_size = (checkbox1_position - checkbox0_position) / 2 - 10
-    //   var from_position = checkbox0_position + half_box_size
-    //   var to_position = 0;
 
     $scope.checkboxClicked = function(index) {
 
@@ -141,13 +126,17 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.goBackFromRequestsToHome = function() {
-      if (confirm('Are you sure? Request progress will be lost')) {
+      // if (confirm('Are you sure? Request progress will be lost')) {
 
-          $scope.root.vars.calendar_should_be_empty = true;
-          //mixpanel track
-          mixpanel.track("Student.home");
-        $state.go('^.student-home');
-      }
+      $scope.root.vars.calendar_should_be_empty = true;
+      //     //mixpanel track
+      //     mixpanel.track("Student.home");
+
+      $scope.root.vars.request_cache[$scope.course.short_name.toLowerCase().toString()] = $scope.root.vars.request;
+      console.log('course ', $scope.course.short_name, 'saved to local cache here is entire object saved:', $scope.root.vars.request);
+      $scope.root.vars.request = null;
+      $ionicViewSwitcher.nextDirection('back');
+      $state.go('^.student-home');
     };
 
     $scope.initRequestObj = function() {
@@ -199,6 +188,9 @@ angular.module('uguru.student.controllers')
       //how to make sure the request shows
       // $scope.user.active_requests.push($scope.request);
       // $scope.root.vars.calendar
+
+      //clear course cache
+      $scope.root.vars.request_cache[$scope.course.short_name.toLowerCase().toString()] = null;
 
       $scope.contactingGuruModal.show();
 
@@ -297,12 +289,13 @@ angular.module('uguru.student.controllers')
               in_person: true,
               online: true
             },
-            _length: {hours:2, minutes:1},
+            _length: {hours:2, minutes:0},
             calendar_selected:false,
             course: $scope.course || JSON.parse($stateParams.courseObj),
             description:null,
             location: null,
             files: [],
+            price_slider: 0,
             calendar: {
               data: {},
               calendar_selected: false
@@ -355,8 +348,11 @@ angular.module('uguru.student.controllers')
     });
 
     $scope.$on('$ionicView.beforeEnter', function(){
-      $scope.loader.show();
-      console.log($state.current.name, 'before enter');
+      // $scope.loader.show();
+      console.log($scope.root.vars.request_cache);
+      if ($scope.root.vars.request_cache[$scope.course.short_name.toLowerCase().toString()]) {
+        $scope.root.vars.request = $scope.root.vars.request_cache[$scope.course.short_name.toLowerCase().toString()]
+      }
 
       // if ($scope.platform.mobile) {
       //   $scope.user.current_device = ionic.Platform.device();

@@ -113,7 +113,6 @@ class OneDeviceView(restful.Resource):
 
                 print 'and has a user', new_device.user.name
                 new_device.user.current_device = new_device
-
                 db_session.commit()
 
             return new_device, 200
@@ -160,8 +159,9 @@ class DeviceView(restful.Resource):
         device.background_location_enabled = request.json.get('background_location_enabled')
 
         # there is a token that was recently added, enable user push notifications
-        if device.push_notif and len(device.push_notif) > 5 and device.user and not previous_push_notif_value:
-            device.user.push_notifications = True
+        # if device.push_notif and len(device.push_notif) > 5 and device.user and not previous_push_notif_value:
+        device.user.push_notifications = True
+
 
         db_session.commit()
 
@@ -582,7 +582,7 @@ class UserRequestView(restful.Resource):
             guru.id, guru.name, guru.time_created, 'contacted'
             proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
 
-            proposal.student_price = request.json.get('student_proposed_price')
+            proposal.student_price = request.json.get('price_slider')
 
             #send push notification is user has permitted device
             if user.push_notifications:

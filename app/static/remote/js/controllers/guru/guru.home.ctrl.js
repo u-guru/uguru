@@ -426,6 +426,26 @@ angular.module('uguru.guru.controllers')
           Popup.options.show($scope, welcomePopupOptions);
     }
 
+    $scope.startBackgroundRefreshTime = 60000;
+
+    $scope.startBackgroundRefresh = function(time) {
+      $timeout(function() {
+        if ($scope.backgroundRefresh) {
+          console.log('starting background refresh after', time, 'seconds + scheduling next one.');
+          $scope.doRefresh();
+
+          $scope.startBackgroundRefresh($scope.startBackgroundRefreshTime);
+
+        } else {
+          console.log('background refresh has been turned off since last time');
+        }
+
+      }, time);
+
+    };
+
+
+
     $scope.calculateGuruProfilePercentage = function() {
       return 50;
     }
@@ -500,16 +520,24 @@ angular.module('uguru.guru.controllers')
 
     $scope.$on('$ionicView.loaded', function() {
       $scope.loader.hide();
-      console.log($scope.user.guru_proposals);
     });
     $scope.$on('$ionicView.afterEnter', function() {
       $scope.loader.hide();
 
       $scope.checkForRatings();
 
+      $scope.backgroundRefresh = true;
+      $scope.startBackgroundRefresh($scope.startBackgroundRefreshTime);
+
     });
 
+
+
+
     $scope.$on('$ionicView.beforeLeave', function() {
+      console.log('LEAVING VIEW');
+      console.log('making background refresh false so it doesnt go anymore')
+      $scope.backgroundRefresh = false;
       $scope.loader.hide();
       if ($scope.bottomTabsDelegate) {
         $scope.root.vars.guru_selected_index = $scope.bottomTabsDelegate.selectedIndex();

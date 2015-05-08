@@ -542,12 +542,33 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
     });
 
+     $scope.startBackgroundRefresh = function(time) {
+      $timeout(function() {
+        if ($scope.backgroundRefresh) {
+          console.log('starting background refresh after', time, 'seconds + scheduling next one.');
+          $scope.doRefresh();
+
+          $scope.startBackgroundRefresh($scope.startBackgroundRefreshTime);
+
+        } else {
+          console.log('background refresh has been turned off since last time');
+        }
+
+      }, time);
+
+    };
+
     $scope.$on('$ionicView.beforeLeave', function(){
       console.log($state.current.name, 'leaving...');
     });
 
     $scope.$on('$ionicView.afterEnter', function(){
       $scope.loader.hide();
+      if (!$scope.backgroundRefresh) {
+        $scope.backgroundRefresh = true;
+        $scope.startBackgroundRefreshTime = 60000;
+        $scope.startBackgroundRefresh($scope.startBackgroundRefreshTime);
+      }
     });
 
     $scope.showBouncingRedAlert = function(wait_for, show_for) {

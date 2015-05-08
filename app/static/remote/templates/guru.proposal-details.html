@@ -18,11 +18,10 @@
             <span class='pure-u-1-5'><i class='ion-star gray-star' ng-repeat='star in getNumber(5) track by $index'></i>&nbsp;{{proposal.request.student.student_ratings.length}}</span>
           </span>
         </a>
-
-        <!-- <div class='pure-g row-details'>
-          <div class='pure-u-1-5 grey-subject-text'>Time</div>
-        <div class='pure-u-4-5'> <a ng-click= 'goToStudentCalendar(proposal.student_calendar)'>See Student Availability &nbsp;&nbsp;&nbsp;<i class='icon ion-chevron-right positive icon-small'></i></a></div>
-        </div> -->
+        <div class='pure-g row-details'>
+          <div class='pure-u-1-5 grey-subject-text'>You can make</div>
+          <div class='pure-u-4-5'>${{proposal.student_price}}</div>
+        </div>
         <div class='pure-g row-details'>
           <div class='pure-u-1-5 grey-subject-text'>Length</div>
           <div class='pure-u-4-5'>{{formatted_time_estimated_hours}} hours, {{proposal.request.time_estimate % 60}} minutes</div>

@@ -1,6 +1,6 @@
 
 
-<ion-view hide-nav-bar="true" class="student-request-form">
+<ion-view hide-nav-bar="true" class="student-request-form" cache-view='false'>
 
     <ion-header-bar class='header-bar'>
         <div class="buttons">
@@ -83,6 +83,12 @@
                     <h5 class='inline'>Contact Method Selected</h5>
                     <i class="icon icon-right ion-chevron-right"></i>
                 </a>
+                 <div class="item request-item request-price-slider range range-positive relative">
+                Price
+                    <p> Price is <span class='sans-bold'>optional</span>! Our algorithm optimizes great value for cheapest price. </p>
+                    <input type="range" name="volume" min="0" max="100" ng-model="root.vars.request.price_slider" value="0"><span class='full-price'>
+                    $<span class='price-only'>{{root.vars.request.price_slider}}</span>
+                </div>
             </div>
             <div class='flex-item-c'>
                 <button ng-disabled='!(root.vars.request.description && root.vars.request.location && (root.vars.request.type.in_person || root.vars.request.type.online) && root.vars.request._length.hours && root.vars.request.calendar_selected)' class='submit-request button button-full button-positive flex-space-between' ng-click='requestHelp()'>

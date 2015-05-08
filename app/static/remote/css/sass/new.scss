@@ -2987,3 +2987,45 @@ a.timer-icon-link {
   margin-top: 0.5em;
   color: #6AB1A5;
 }
+
+.unclickable-calendar-element {
+  background-color: rgba(0,0,0,0.6);
+  .time {
+    color:white;
+  }
+  pointer-events: none;
+}
+
+.student-request-form .list-inset
+.item.request-price-slider {
+    padding: 10px 15px 0px 15px;
+    margin: 0px;
+    font-size:80%;
+    span.full-price {
+      color: $positive;
+      font-family: "OpenSans-Light";
+      font-size:200%;
+    }
+    span.full-price .price-only {
+      font-family: "OpenSans-Bold";
+      font-size:100% !important;
+    }
+
+    p {
+        position: absolute;
+        left: 0;
+        font-size: 8px;
+        width: 95%;
+        left: 4.5%;
+        top: 10%;
+    }
+}
+
+.spinner {
+ z-index:1000;
+ stroke: #444;
+ fill: #444; }
+.spinner svg {
+ width: 28px;
+ z-index:1000;
+ height: 28px; }

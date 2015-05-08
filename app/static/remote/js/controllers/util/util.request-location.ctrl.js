@@ -173,7 +173,6 @@ angular.module('uguru.util.controllers')
         enableHighAccuracy: false, //may cause high errors if true
       }
 
-      $scope.loader.show();
       $cordovaGeolocation.getCurrentPosition(posOptions).then(function( position) {
 
         //typical find GPS & show

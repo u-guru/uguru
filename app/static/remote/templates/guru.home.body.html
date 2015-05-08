@@ -1,5 +1,6 @@
-    <ion-header-bar class="bar-dark header-bar">
-        <h5 class="title uppercase">Guru Mode</h5>
+    <ion-header-bar class='header-bar'>
+        <h5 style='left:0px !important; right:0px !important;' class="title">Guru Mode</h5>
+        <a class="button button-clear button-back bold positive uppercase"><span class='full-price'>$</span><span class='price-only'>{{user.balance}}</span></a>
     </ion-header-bar>
 
    <!--  <ion-header-bar class="header-bar header-bar-dark">
@@ -9,7 +10,12 @@
     </ion-header-bar> -->
 
     <ion-content class='guru-home-content'>
-
+        <ion-refresher
+          on-pulling="doRefresh()"
+          pulling-icon="ion-arrow-down-c"
+          spinner="circles"
+          on-refresh="doRefresh()">
+        </ion-refresher>
         <div class='profile-percent-wrapper pure-g flex-column'>
           <span class='pure-u-1 white your-ranking-header-text center opacity-3-4'> Your ranking </span>
           <h1 class='positive profile-complete-percentage center'>

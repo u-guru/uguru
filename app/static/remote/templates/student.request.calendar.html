@@ -18,10 +18,10 @@
     <ion-header-bar class='bar-subheader calendar-subheader'>
         <div class='pure-g-c center'>
             <div class='pure-u-1-2 auto-margin'>
-                <div class='calendar-header'>Today</div>
+                <div class='calendar-header'>Today <span class='opacity-1-2'> {{day_one}} </span></div>
             </div>
             <div class='pure-u-1-2 auto-margin'>
-                <div class='calendar-header auto-margin'>Tomorrow</div>
+                <div class='calendar-header auto-margin'>Tomorrow <span class='opacity-1-2'> {{day_two}} </span></div>
             </div>
         </div>
     </ion-header-bar>
@@ -41,13 +41,13 @@
       <ion-list>
         <ion-item class="item" ng-repeat="hour_int in day_rows" style="padding:0px; margin:0px;">
           <div class='pure-g-c calendar-row'>
-            <div class='pure-u-1-2 calendar-col relative' id="0,{{hour_int}}"ng-click='clickCalendarGridElement($event, 0, hour_int)'>
-                <span class='time' ng-click='triggerCalendarClick($event, 0, hour_int)'>
+            <div class="pure-u-1-2 calendar-col relative ng-class:{'unclickable-calendar-element':hour_int < hours_past} " id="0,{{hour_int}}"ng-click='clickCalendarGridElement($event, 0, hour_int)'>
+                <span class='time' ng-click='triggerCalendarClick($event.target.parentNode, 0, hour_int)'>
                     {{getTimeFromHourInt(hour_int).replace(' ','').toUpperCase()}}
                 </span>
             </div>
             <div class='pure-u-1-2 calendar-col-2 relative' id="1,{{hour_int}}" ng-click='clickCalendarGridElement($event, 1, hour_int)'>
-                <span class='time' ng-click='triggerCalendarClick($event, 1, hour_int)'>
+                <span class='time' ng-click='triggerCalendarClick($event.target.parentNode, 1, hour_int)'>
                     {{getTimeFromHourInt(hour_int).replace(' ', '').toUpperCase()}}
                 </span>
             </div>

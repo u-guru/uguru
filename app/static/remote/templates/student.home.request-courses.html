@@ -4,6 +4,14 @@
       </ion-header-bar>
 
     <ion-content style='background-color' class='course-list-container'>
+
+      <ion-refresher
+        on-pulling="doRefresh()"
+        pulling-icon="ion-arrow-down-c"
+        spinner="circles"
+        on-refresh="doRefresh()">
+      </ion-refresher>
+
       <div class='container pure-g-c flex-column flex-space-between'>
         <div class="list list-inset course-list">
 

@@ -744,6 +744,7 @@ class Request(Base):
     in_person = Column(Boolean)
     online = Column(Boolean)
     time_estimate = Column(Integer)
+    # student_price = Column(Float) #TODO SAMIR
 
     contact_email = Column(Boolean)
     contact_push = Column(Boolean)

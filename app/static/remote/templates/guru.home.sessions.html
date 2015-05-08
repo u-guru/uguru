@@ -16,7 +16,12 @@
 
   <!-- incoming proposals -->
   <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 0'>
-
+    <ion-refresher
+        on-pulling="doRefresh()"
+        pulling-icon="ion-arrow-down-c"
+        spinner="circles"
+        on-refresh="doRefresh()">
+    </ion-refresher>
     <!-- No sessions yet -->
     <div class='scroll pure-g-c flex-column center full-height' ng-show='(!user.active_proposals && !user.pending_proposals) || (user.active_proposals.length === 0 && user.pending_proposals.length===0)'>
       <div class='padding-1em padding-1em flex-item-c'> </div>
@@ -50,6 +55,12 @@
 
   <!-- scheduled sessions -->
   <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 1'>
+      <ion-refresher
+        on-pulling="doRefresh()"
+        pulling-icon="ion-arrow-down-c"
+        spinner="circles"
+        on-refresh="doRefresh()">
+      </ion-refresher>
     <div class="list" ng-show='user.active_guru_sessions.length > 0'>
         <a class="item item-avatar-right upcoming-session-card" ng-repeat='session in user.active_guru_sessions' ng-click='goToActiveSession(session)'>
           <img ng-src="{{session.request.student.profile_url}}">
@@ -61,7 +72,12 @@
   </ion-content>
 
   <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 2'>
-
+    <ion-refresher
+        on-pulling="doRefresh()"
+        pulling-icon="ion-arrow-down-c"
+        spinner="circles"
+        on-refresh="doRefresh()">
+      </ion-refresher>
     <div class="list" ng-show='user.previous_guru_proposals.length > 0'>
         <a class="item item-avatar-right upcoming-session-card" ng-repeat='proposal in user.previous_guru_proposals' ng-click='goToProposalDetails(proposal)'>
         <img ng-src="{{proposal.request.student.profile_url}}">

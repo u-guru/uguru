@@ -150,7 +150,14 @@ angular.module('uguru.user', [])
 
         // user.guru_mode = true;
         if (user.is_a_guru) {
-            console.log('processing guru');
+            if (!user.balance) {
+                user.balance = 0;
+            } else {
+                Math.round(user.balance, 2);
+            }
+            if (!user.total_earned) {
+                user.total_earned = 0;
+            }
             user.active_proposals = [];
             user.pending_proposals = [];
             user.active_guru_sessions = [];
@@ -320,6 +327,7 @@ angular.module('uguru.user', [])
         $scope.user.active_student_sessions = user.active_student_sessions;
         $scope.user.previous_student_sessions = user.previous_student_sessions;
         $scope.user.balance = user.balance;
+        $scope.user.total_earned = user.total_earned;
         $scope.user.estimated_guru_rank = user.estimated_guru_rank;
         $scope.user.official_guru_rank = user.official_guru_rank;
         $scope.user.estimated_guru_score = user.estimated_guru_score;
@@ -601,6 +609,7 @@ angular.module('uguru.user', [])
             if ($scope && $scope.root && $scope.root.vars.fetch_user_server_mutex) {
                 // console.log('There is already a server process updating the user');
                 // console.log('Exiting...');
+                $scope.$broadcast('scroll.refreshComplete');
                 return;
             } else if ($scope && $scope.root && !$scope.root.vars.fetch_user_server_mutex) {
                 // console.log('No mutex set, setting to true');
@@ -616,6 +625,7 @@ angular.module('uguru.user', [])
             }
             if (!scope_user_id) {
                 console.log('Cant fetch user, user not logged in');
+                $scope.$broadcast('scroll.refreshComplete');
                 return;
             }
 
@@ -626,7 +636,12 @@ angular.module('uguru.user', [])
             Restangular.one('user', scope_user_id).customGET().then(
                 function(user) {
                     var processed_user = processResults(user.plain());
-                console.log('retrieved user from server');
+                    console.log('retrieved user from server');
+                    $scope.$broadcast('scroll.refreshComplete');
+                    if ($scope.root.vars.user_refresh) {
+                        console.log('pull to refresh successful!');
+                        $scope.root.vars.user_refresh = false;
+                    }
                     if ($scope) {
 
                         $scope.root.vars.fetch_user_server_mutex = false;

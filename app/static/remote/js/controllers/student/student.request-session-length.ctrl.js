@@ -12,7 +12,7 @@ angular.module('uguru.student.controllers')
   function($scope, $state, $timeout, $localstorage,
  	$ionicHistory) {
 
-    $scope.indexToValueMinutes = [0, 15, 30, 45];
+    $scope.indexToValueMinutes = [null, 0, 15, 30, 45];
 
     $scope.validateForm = function() {
       // console.log($scope.root.vars.request._length.hours, $scope.root.vars.request._length.minutes);
@@ -28,7 +28,7 @@ angular.module('uguru.student.controllers')
     }
 
     if (!$scope.root.vars.request._length.minutes) {
-      $scope.root.vars.request._length.minutes = 1;
+      $scope.root.vars.request._length.minutes = 0;
     }
 
     $scope.incrementHour = function() {
@@ -44,13 +44,13 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.decrementMinute = function() {
-      if ($scope.root.vars.request._length.minutes > 0 ) {
+      if ($scope.root.vars.request._length.minutes > 1 ) {
         $scope.root.vars.request._length.minutes -= 1;
       }
     }
 
     $scope.incrementMinute = function() {
-      if ($scope.root.vars.request._length.minutes <= 2) {
+      if ($scope.root.vars.request._length.minutes <= 3) {
         $scope.root.vars.request._length.minutes += 1;
       }
     }

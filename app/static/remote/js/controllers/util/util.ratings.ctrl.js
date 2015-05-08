@@ -58,7 +58,11 @@ angular.module('uguru.util.controllers')
           if ($scope.user.guru_mode) {
               //mixpanel track
               mixpanel.track("Guru.home");
-                $state.go('^.guru-home');
+              $state.go('^.guru-home');
+
+              var temp_balance = $scope.guru.balance;
+              $scope.guru.balance +=  $scope.rating.session.transaction.guru_amount;
+              console.log('balance before', temp_balance, '. balance after', $scope.guru.balance);
           } else {
         //mixpanel track
               mixpanel.track("Guru.home");
