@@ -591,6 +591,10 @@ angular.module('uguru.user', [])
                     'outside_university': obj
                 }
               }
+
+              if (arg === 'devices') {
+                return obj;
+              }
         },
         getUserFromServer: function($scope, callback, $state) {
 
