@@ -1495,6 +1495,7 @@ class UserNewView(restful.Resource):
                 import uuid
                 email_user.auth_token = uuid.uuid4().hex
                 course_id = None
+                user = email_user
 
                 if request.json.get('current_device'):
                     current_device_id = request.json.get('current_device').get('id')

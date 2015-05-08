@@ -127,11 +127,18 @@ angular.module('uguru.student.controllers')
 
         $scope.request.guru_id = $scope.request.guru.id;
         $scope.request.status = 1;
-        $scope.user.createObj($scope.user, 'sessions', $scope.request, $scope);
-        $scope.goBack();
+        $scope.loader.show();
 
+        var acceptGuruPostRequest = function($scope, $state) {
+          $scope.request.guru_id = $scope.request.guru.id;
+          $scope.request.status = 2;
+          $scope.loader.hide();
+          $scope.root.vars.select_bottom_one;
+          $state.go('^.student-home');
+        }
+
+        $scope.user.createObj($scope.user, 'sessions', $scope.request, $scope, acceptGuruPostRequest);
       }
-
 
       //remove request from array
       dialog_title = "Accept this Guru";

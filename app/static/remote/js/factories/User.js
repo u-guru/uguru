@@ -662,10 +662,16 @@ angular.module('uguru.user', [])
                         var processed_user = processResults(user.plain());
                         assignPropertiesToRootScope($scope, processed_user);;
                         delegateActionsFromProcessedUser($scope);
+
+                        if (callback_success) {
+                            callback_success($scope, $state);
+                        }
+                        $scope.loader.hide();
+
                     }, function(err){
                         if (err.status === 409 ) {
                             if (callback_success) {
-                                callback_failure($scope);
+                                callback_success($scope);
                                 alert('already have an active request for this course!');
                             }
 
