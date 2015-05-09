@@ -7,7 +7,8 @@ angular.module('uguru.root.services')
     '$cordovaMedia',
     '$cordovaDialogs',
     'Popup',
-    function($localstorage, $timeout, $cordovaPush, $cordovaMedia, $cordovaDialogs, Popup) {
+    '$ionicPlatform',
+    function($localstorage, $timeout, $cordovaPush, $cordovaMedia, $cordovaDialogs, Popup, $ionicPlatform) {
 
         var iosConfig = {
           "badge": true,
@@ -99,10 +100,20 @@ angular.module('uguru.root.services')
             console.log("In foreground " + notification.foreground  + " Coldstart " + notification.coldstart);
             if (notification.event == "registered") {
                 var regId = notification.regid;
+                console.log(regId);
+                if (!$scope.user) {
+                    $scope.user = $localstorage.getObject('user');
+                }
+
+                if (!$scope.user.current_device && $scope.platform && $scope.user) {
+                      $scope.user.current_device = ionic.Platform.device();
+                      $scope.user.current_device.user_id = $scope.user.id;
+                      $scope.user.createObj($scope.user, 'device', $scope.user.current_device, $scope);
+                }
+
 
                 $scope.user.current_device.push_notif = regId;
                 $scope.user.current_device.push_notif_enabled = true;
-                console.log(regId);
             }
             else if (notification.event == "message") {
                 $cordovaDialogs.alert(notification.message, "Push Notification Received");

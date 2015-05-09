@@ -258,10 +258,25 @@ $ionicPlatform.ready(function() {
 
             if ($scope.platform.android) {
 
-                  // console.log('Extra #2. Android push notifications need to be registered')
+                  var androidConfig = {
+                    "senderID": "413826461390",
+                    'ecb': "angular.element(document.body).injector().get('$cordovaPush').onNotification"
+                  }
+
+                  $cordovaPush.register(androidConfig).then(function(deviceToken) {
+
+                    console.log('android notifications');
+
+                  }, function(err){
+
+                    console.log(err)
+
+                  });
+
+                  console.log('Extra #2. Android push notifications need to be registered')
                   $rootScope.$on('pushNotificationReceived', function(event, notification) {
                     CordovaPushWrapper.received($rootScope, event, notification);
-                    // console.log('android notifications registered',event, notification);
+                    console.log('android notifications registered',event, notification);
                   });
 
                   //grab geolocation super early for android devices
