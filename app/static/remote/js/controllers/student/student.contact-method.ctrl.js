@@ -23,7 +23,7 @@ angular.module('uguru.student.controllers')
       }
 
       if ($scope.user.email && $scope.user.email.length > 0) {
-        $scope.user.updateAttr('email_notifications', $scope.user, $scope.user.email, null, $scope);
+        $scope.user.updateAttr('email_notifications', $scope.user, $scope.user.email_notifications, null, $scope);
         $scope.root.vars.request.contact.email = true;
       }
 

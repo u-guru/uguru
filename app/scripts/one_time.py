@@ -633,8 +633,6 @@ for user in User.query.all():
     if user.devices:
         for device in user.devices:
             if device.platform == 'iOS' and device.push_notif:
-                    device.push_notif = None
-                    device.push_notif_enabled = None
-                    device.uuid = None
+                    print user.id, user.name, device.push_notif
 from app.database import db_session
 db_session.commit()

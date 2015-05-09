@@ -1431,6 +1431,7 @@ class UserNewView(restful.Resource):
         user.name = request.json.get('name')
         user.referral_code = User.generate_referral_code(user.name)
         user.auth_token = uuid.uuid4().hex
+        user.email_notifications = True
 
         if request.json.get('fb_id'):
             user.profile_url = request.json.get('profile_url')
