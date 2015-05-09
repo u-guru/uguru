@@ -63,7 +63,7 @@ angular.module('uguru.util.controllers')
           target.style.background = 'grey';
           target.style.color = 'white';
           target.childNodes[0].background = 'grey';
-          if ($scope.user.proposals.length < 2) {
+          if ($scope.user.proposals.length < 5) {
 
             $timeout(function() {
               var template_string = '<span style="background-color:grey; padding:0px 15px;">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;Times student has chosen</br><br>Tap any of these that you can also make!</span>'

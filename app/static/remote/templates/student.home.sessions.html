@@ -1,5 +1,5 @@
 
-<ion-view class='student-sessions' cache-view='false'>
+<ion-view  hide-nar-bar='true' class='student-sessions' cache-view='false'>
   <ion-header-bar class='header-bar'>
     <h5 class="title">Your Sessions</h5>
     <a class='button button-clear' ng-click="addCourseModal.show()"></a>
@@ -17,8 +17,8 @@
 
 
     <ion-refresher
-      on-pulling="doRefresh()"
       spinner="ios"
+      spinner="circles"
       on-refresh="doRefresh()">
     </ion-refresher>
 
@@ -53,7 +53,6 @@
   <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 1'>
 
     <ion-refresher
-      on-pulling="doRefresh()"
       spinner="ios"
       on-refresh="doRefresh()">
     </ion-refresher>
@@ -82,7 +81,6 @@
 
 
       <ion-refresher
-        on-pulling="doRefresh()"
         spinner="circles"
         pulling-icon="ion-arrow-down-c"
         on-refresh="doRefresh()">

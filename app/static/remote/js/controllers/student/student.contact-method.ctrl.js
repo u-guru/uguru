@@ -16,10 +16,6 @@ angular.module('uguru.student.controllers')
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicHistory, $cordovaPush, $ionicViewSwitcher) {
 
-    if ($scope.user.current_device.push_notif_enabled) {
-      $scope.root.vars.request.contact.push = true;
-    }
-
     $scope.saveAndGoToRequest = function() {
       if ($scope.user.phone_number && $scope.user.phone_number.length > 0)  {
         $scope.user.updateAttr('phone_number', $scope.user, $scope.user.phone_number, null, $scope);
@@ -27,7 +23,7 @@ angular.module('uguru.student.controllers')
       }
 
       if ($scope.user.email && $scope.user.email.length > 0) {
-        $scope.user.updateAttr('email', $scope.user, $scope.user.email, null, $scope);
+        $scope.user.updateAttr('email_notifications', $scope.user, $scope.user.email, null, $scope);
         $scope.root.vars.request.contact.email = true;
       }
 
@@ -39,7 +35,19 @@ angular.module('uguru.student.controllers')
     }
 
 
+    $scope.emailNotificationChange = function() {
+      $scope.user.updateAttr('email_notifications', $scope.user, $scope.user.email_notifications, null, $scope);
+    }
+
+
+
     $scope.requestPushNotifications = function() {
+
+      if (!$scope.user.push_notifications) {
+        console.log('push notifications are false');
+        $scope.user.updateAttr('push_notifications', $scope.user, $scope.user.push_notifications, null, $scope);
+        return;
+      }
 
       var iosConfig = {
           "badge": true,
@@ -60,6 +68,7 @@ angular.module('uguru.student.controllers')
             $scope.user.current_device.push_notif = deviceToken;
             $scope.user.current_device.push_notif_enabled = true;
             $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+            $scope.user.updateAttr('push_notifications', $scope.user, $scope.user.push_notifications, null, $scope);
         }
 
       }, function(err) {

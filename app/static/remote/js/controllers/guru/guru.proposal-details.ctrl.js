@@ -64,19 +64,6 @@ angular.module('uguru.guru.controllers')
       $scope.formatted_request_type = 'In-person only';
     }
 
-    // $scope.showSuccess = function(msg) {
-    //   if (!$scope.progress_active)  {
-    //       $scope.progress_active = true;
-    //       $cordovaProgress.showSuccess(true, msg)
-    //       $timeout(function() {
-    //         $cordovaProgress.hide();
-    //         $scope.progress_active = false;
-    //       }, 2000);
-    //   } else {
-
-    //     console.log('Show success cannot be shown because progress bar is already active');
-    //   }
-    // }
     $scope.removeRequestFromActive = function(request) {
       var active_requests = $scope.user.active_requests;
       for (var i = 0; i < active_requests.length ; i++) {
@@ -155,8 +142,15 @@ angular.module('uguru.guru.controllers')
 
     }
 
+    $scope.$on('$ionicView.enter', function(){
+      $scope.loader.show();
+      $timeout(function() {
+        $scope.showGoogleMap();
+        $scope.loader.hide();
+      }, 1000);
+    });
+
     $scope.showGoogleMap = function() {
-      console.log($scope.request);
       if (!$scope.proposal.request.position || !$scope.proposal.request.position.latitude || !$scope.proposal.request.position.longitude) {
         console.log('no coordinates... forget about it');
         return;
@@ -191,13 +185,6 @@ angular.module('uguru.guru.controllers')
 
       $scope.actual_map = actual_map
     }
-
-    $scope.$on('$ionicView.enter', function(){
-      console.log('entering...');
-      $timeout(function() {
-        $scope.showGoogleMap();
-      }, 1000);
-    });
 
     $scope.goToStudentCalendar = function (calendar) {
       $ionicViewSwitcher.nextDirection('forward'); // 'forward', 'back', etc.

@@ -17,16 +17,10 @@
           <p ng-show='user.phone_number'> {{user.phone_number}} </p>
           </ion-toggle> -->
 
-          <label class="item item-input item-icon-left positive" ng-show='root.vars.request.contact.phone && !user.phone_number'>
-            <span class="input-label">Phone Number</span>
-            <input type="number" class='positive' placeholder="(510) 123 - 3123">
-          </label>
-
-          <ion-toggle ng-model="root.vars.request.contact.email" ng-change='toggleTextMessageInput()' toggle-class="toggle-calm" class='ng-class:{"item-icon-left": root.vars.request.contact.email} '>
-          <i class='icon ion-checkmark icon-medium icon-positive' ng-show='root.vars.request.contact.email'></i>
+          <ion-toggle ng-model="user.email_notifications" ng-change='emailNotificationChange()' toggle-class="toggle-calm">
           Email Notification
           </ion-toggle>
-          <ion-toggle ng-change="requestPushNotifications()" ng-show='platform.mobile'ng-model="root.vars.request.contact.push_notif" toggle-class="toggle-calm">Push Notifications</ion-toggle>
+          <ion-toggle ng-change="requestPushNotifications()" ng-show='platform.mobile' ng-model="user.push_notifications" toggle-class="toggle-calm">Push Notifications</ion-toggle>
         </ion-list>
       </ion-content>
     </ion-view>

@@ -17,7 +17,6 @@
   <!-- incoming proposals -->
   <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 0'>
     <ion-refresher
-        on-pulling="doRefresh()"
         pulling-icon="ion-arrow-down-c"
         spinner="circles"
         on-refresh="doRefresh()">
@@ -56,7 +55,6 @@
   <!-- scheduled sessions -->
   <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 1'>
       <ion-refresher
-        on-pulling="doRefresh()"
         pulling-icon="ion-arrow-down-c"
         spinner="circles"
         on-refresh="doRefresh()">
@@ -73,7 +71,6 @@
 
   <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 2'>
     <ion-refresher
-        on-pulling="doRefresh()"
         pulling-icon="ion-arrow-down-c"
         spinner="circles"
         on-refresh="doRefresh()">

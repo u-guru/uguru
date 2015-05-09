@@ -624,3 +624,17 @@ for uni in arr:
 
 with open('university_master_data.json', 'wb') as fp:
     json.dump(arr, fp, indent = 4)
+
+
+test_devices = ['6e38ba59724d7d99d3851e7e16e9b3cc0578671317d3414b178b2c99f3de76ab', \
+'2b884303d8cbae68d6e355c2beb18ca5ad005680394671dc175d0e10b1b34f55', '22def699260bb1b43666e6ec89074bd1bc1134ad70108ac27272a9d01680ae58',
+'717126ba8a841d8ae5aff1324d2c7b479522753f5264d39fe7cdc4a88bfbcdb4', '3f03a3c3e68ab64ec8425a4b17648f02a3dd8dc802263a778b6d411fb46528e9']
+for user in User.query.all():
+    if user.devices:
+        for device in user.devices:
+            if device.platform == 'iOS' and device.push_notif:
+                    device.push_notif = None
+                    device.push_notif_enabled = None
+                    device.uuid = None
+from app.database import db_session
+db_session.commit()

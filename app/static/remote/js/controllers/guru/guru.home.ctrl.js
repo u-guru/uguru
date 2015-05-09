@@ -426,34 +426,12 @@ angular.module('uguru.guru.controllers')
           Popup.options.show($scope, welcomePopupOptions);
     }
 
-    $scope.startBackgroundRefreshTime = 60000;
-
-    $scope.startBackgroundRefresh = function(time) {
-      $timeout(function() {
-        if ($scope.backgroundRefresh) {
-          console.log('starting background refresh after', time, 'seconds + scheduling next one.');
-          $scope.doRefresh();
-
-          $scope.startBackgroundRefresh($scope.startBackgroundRefreshTime);
-
-        } else {
-          console.log('background refresh has been turned off since last time');
-        }
-
-      }, time);
-
-    };
-
-
-
     $scope.calculateGuruProfilePercentage = function() {
       return 50;
     }
 
     $scope.$on('modal.shown', function() {
-      $scope.backgroundRefresh = false;
       $scope.ratingModalShown = true;
-      console.log('stopping background refresh');
     });
 
     $scope.onCardInputSelect = function() {
@@ -461,9 +439,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.$on('modal.hidden', function() {
-      $scope.backgroundRefresh = true;
       $scope.ratingModalShown = false;
-      console.log('starting background refresh');
     });
 
     $scope.checkForRatings = function() {
@@ -513,6 +489,7 @@ angular.module('uguru.guru.controllers')
       $scope.root.vars.guru_mode = true;
       $localstorage.setObject('user', $scope.user);
       console.log('printing guru stuff', $scope.user.active_proposals);
+      $scope.backgroundRefresh();
 
       //check if user already has push notification token
 
@@ -526,18 +503,12 @@ angular.module('uguru.guru.controllers')
 
       $scope.checkForRatings();
 
-      $scope.backgroundRefresh = true;
-      $scope.startBackgroundRefresh($scope.startBackgroundRefreshTime);
-
     });
 
 
 
 
     $scope.$on('$ionicView.beforeLeave', function() {
-      console.log('LEAVING VIEW');
-      console.log('making background refresh false so it doesnt go anymore')
-      $scope.backgroundRefresh = false;
       $scope.loader.hide();
       if ($scope.bottomTabsDelegate) {
         $scope.root.vars.guru_selected_index = $scope.bottomTabsDelegate.selectedIndex();

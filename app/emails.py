@@ -197,7 +197,7 @@ def send_student_has_accepted_to_guru(session, guru):
     student_name = session.student.name.split(' ')[0].title()
 
 
-    email_subject = 'Congrats! ' + student_name + ' has accepted your ' + session.request.course.short_name.upper + ' Request'
+    email_subject = 'Congrats! ' + student_name + ' has accepted your ' + session.request.course.short_name.upper() + ' Request'
     email_message = compose_email_notif_message('student_chose_guru', args_tuple)
     email_receiver = guru
     email_tags = "student-accepts-guru"

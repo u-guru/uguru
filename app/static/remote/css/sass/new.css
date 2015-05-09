@@ -893,9 +893,21 @@ p {
     border-width: 0;
     padding-top: 6px; }
 
+.request-status.proposal-details .row-details {
+  margin: 5px 20px;
+  color: white; }
+.request-status.proposal-details .grey-subject-text {
+  color: rgba(255, 255, 255, 0.5); }
+
+.student-sessions .row-details {
+  margin: 5px 20px;
+  color: black; }
+.student-sessions .grey-subject-text {
+  color: rgba(255, 255, 255, 0.5); }
+
 .request-status .grey-subject-text {
   font-family: "OpenSans-Regular";
-  color: rgba(0, 0, 0, 0.4); }
+  color: rgba(255, 255, 255, 0.5); }
 .request-status .header-bar {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
 .request-status .button-light {
@@ -906,8 +918,6 @@ p {
   font-family: "OpenSans-Regular";
   padding: 0px;
   margin: 0px; }
-.request-status .row-details {
-  margin: 5px 0px; }
 .request-status .map-container {
   width: 100%;
   background-color: black;
@@ -2087,4 +2097,21 @@ a.timer-icon-link {
 .spinner svg {
   width: 28px;
   z-index: 1000;
-  height: 28px; }
+  height: 28px;
+  border-bottom: rgba(255, 255, 255, 0.9); }
+
+.ionic-css-range .ionic-css-range:themecolor {
+  background-color: #68b2a5; }
+
+.request-status.student-view .row-details {
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 90%;
+  padding: 0.5em 0em; }
+.request-status.student-view .grey-subject-text {
+  color: rgba(0, 0, 0, 0.4); }
+
+.proposal-details .cancel-session-container {
+  padding: 0.5em; }
+
+.margin-half {
+  margin: 0.5em; }

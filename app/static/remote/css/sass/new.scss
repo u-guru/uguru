@@ -1327,10 +1327,33 @@ margin: 0;
 
 }
 
+.request-status.proposal-details {
+  .row-details {
+    margin:5px 20px;
+    color:white;
+  }
+  .grey-subject-text {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+}
+
+
+
+.student-sessions {
+  .row-details  {
+    margin:5px 20px;
+    color:black;
+  }
+  .grey-subject-text {
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
 .request-status {
   .grey-subject-text {
-    font-family: "OpenSans-Regular";
-    color: rgba(0,0,0,0.4);
+      font-family: "OpenSans-Regular";
+      color: rgba(255, 255, 255, 0.5);
   }
 
   .header-bar {
@@ -1345,10 +1368,6 @@ margin: 0;
     padding:0px;
     margin:0px;
   }
-  .row-details {
-    margin:5px 0px;
-  }
-
   .map-container {
     width:100%;
     background-color:black;
@@ -3028,4 +3047,33 @@ a.timer-icon-link {
 .spinner svg {
  width: 28px;
  z-index:1000;
- height: 28px; }
+ height: 28px;
+ // width: 83%;
+ border-bottom: rgba(255,255,255, 0.9);
+}
+
+.ionic-css-range
+.ionic-css-range:themecolor {
+  background-color: $positive;
+}
+
+.request-status.student-view {
+
+  .row-details {
+    color:rgba(0,0,0,0.85);
+    font-size: 90%;
+    padding:0.5em 0em;
+  }
+  .grey-subject-text {
+    color:rgba(0,0,0,0.4);
+  }
+}
+
+.proposal-details
+.cancel-session-container {
+  padding:0.5em;
+}
+
+.margin-half {
+  margin:0.5em;
+}

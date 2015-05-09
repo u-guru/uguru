@@ -152,16 +152,24 @@ class DeviceView(restful.Resource):
         print request.json
         previous_push_notif_value = device.push_notif
 
-        device.push_notif_enabled = request.json.get('push_notif_enabled')
-        device.push_notif = request.json.get('push_notif')
-        device.location_enabled = request.json.get('location_enabled')
-        device.camera_enabled = request.json.get('camera_enabled')
-        device.background_location_enabled = request.json.get('background_location_enabled')
+        if 'push_notif_enabled' in request.json:
+            device.push_notif_enabled = request.json.get('push_notif_enabled')
+
+        if 'push_notif' in request.json:
+            device.push_notif = request.json.get('push_notif')
+
+        if 'location_enabled' in request.json:
+            device.location_enabled = request.json.get('location_enabled')
+        if 'camera_enabled' in request.json:
+            device.camera_enabled = request.json.get('camera_enabled')
+        if 'background_location_enabled':
+            device.background_location_enabled = request.json.get('background_location_enabled')
 
         # there is a token that was recently added, enable user push notifications
-        # if device.push_notif and len(device.push_notif) > 5 and device.user and not previous_push_notif_value:
-        device.user.push_notifications = True
+        if device.push_notif and len(device.push_notif) > 5 and device.user and not previous_push_notif_value:
+            device.user.push_notifications = True
 
+        print 'push notifications', device.push_notif_enabled, device.push_notif
 
         db_session.commit()
 
@@ -582,7 +590,7 @@ class UserRequestView(restful.Resource):
             guru.id, guru.name, guru.time_created, 'contacted'
             proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
 
-            proposal.student_price = request.json.get('price_slider')
+            proposal.student_price = float(request.json.get('price_slider'))
 
             #send push notification is user has permitted device
             if user.push_notifications:

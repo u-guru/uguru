@@ -1,8 +1,8 @@
-<ion-view class='request-status' hide-nav-bar='true' cache-view='false'>
+<ion-view class='request-status student-view' hide-nav-bar='true' cache-view='false'>
 
   <ion-header-bar class="header-bar">
         <a class="button button-clear button-back" ng-click='goBack()'>Back</a>
-        <h5 class="title">My Sessions</h5>
+        <h5 class="title">{{course.short_name}}</h5>
   </ion-header-bar>
 
   <ion-content scroll="false">
@@ -14,10 +14,10 @@
               <img ng-src="{{request.guru.profile_url}}">
           </div>
         </a>
-        <div class='pure-g row-details'>
+        <!-- <div class='pure-g row-details'>
           <div class='pure-u-1-5 grey-subject-text'>Class</div>
-          <div class='pure-u-4-5'>{{course.short_name}}</div>
-        </div>
+          <div class='pure-u-4-5'></div>
+        </div> -->
         <div class='pure-g row-details'>
           <div class='pure-u-1-5 grey-subject-text'>Date</div>
           <div class='pure-u-4-5'>{{formatted_time_created}}</div>
@@ -68,7 +68,7 @@
         <button class='button button-full button-light'> Cancel Session </button>
       </div>
       <div class='incoming-request-container pure-g' ng-show='request.status === 1'>
-          <div class='pure-u-1-2'>
+          <div class='pure-u-1-2 margin-half'>
               <button class='button button-full button-light' ng-click='rejectGuru()'> Reject </button>
           </div>
           <div class='pure-u-1-2'>

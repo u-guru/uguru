@@ -9,9 +9,9 @@
         <a ng-show='!viewOnly'class="button button-clear button-back bold positive uppercase" nav-direction='forward' href='#/request-location'>Next</a>
     </ion-header-bar>
 
-    <ion-header-bar class='header-bar' ng-show='user.guru_mode'>
+    <ion-header-bar class='header-bar header-bar-dark' ng-show='user.guru_mode'>
         <a  class='button button-clear button-back' ng-click='goBack()'>Back</a>
-            <h5 class="title">Availability</h5>
+            <h5 class="title">{{proposal.request.student.name.split(' ')[0]}}'s Calendar</h5>
         <a class='button button-clear button-back' ng-click='goToConfirmProposal()'>Next</a>
     </ion-header-bar>
 

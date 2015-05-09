@@ -639,10 +639,6 @@ angular.module('uguru.user', [])
                     var processed_user = processResults(user.plain());
                     console.log('retrieved user from server');
                     $scope.$broadcast('scroll.refreshComplete');
-                    if ($scope.root.vars.user_refresh) {
-                        console.log('pull to refresh successful!');
-                        $scope.root.vars.user_refresh = false;
-                    }
                     if ($scope) {
 
                         $scope.root.vars.fetch_user_server_mutex = false;
@@ -918,25 +914,28 @@ angular.module('uguru.user', [])
                     .one('devices', userObj.id)
                     .customPUT(JSON.stringify(payload))
                     .then(function(device){
+                        console.log('device returned from server');
+                        console.log(JSON.stringify(device));
                         $scope.user.current_device = device;
-                        // if (!$scope.user.devices) {
-                        //     $scope.user.devices = []
-                        // }
-                        // $scope.user.devices.push(device)
+                        $scope.user.push_notifications = $scope.user.current_device.push_notif_enabled;
+                        console.log('user push notifications are now', $scope.user.push_notifications);
+                        if (!$scope.user.devices) {
+                            $scope.user.devices = []
+                        }
+
+                        $scope.user.devices.push(device)
+
                         $localstorage.setObject('user', $scope.user);
-                        // $localstorage.setObject('user', $scope.user);
+                    },
+                    function(err) {
 
-                        // if (callback_success) {
-                        //     callback_success($scope, processed_user)
-                        // }
-
-                    }, function(err){
-                    if (err.status === 409 ) {
+                        if (err.status === 409 ) {
                             console.log('already have an active request');
                         } else {
                             console.log(err);
                             console.log('error...something happened with the server;')
                         }
+
                     });
             }
 

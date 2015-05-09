@@ -176,6 +176,7 @@ angular.module('uguru.student.controllers')
       $scope.request.course = $scope.root.vars.request.course;
       $scope.request.note = $scope.root.vars.request.description;
       $scope.request.files = $scope.root.vars.request.files;
+      $scope.request.price_slider = $scope.root.vars.request.price_slider;
 
       // if ($scope.calendar && $scope.calendar.num_selected > 0) {
       //   $scope.request.calendar = $scope.calendar;
@@ -339,16 +340,8 @@ angular.module('uguru.student.controllers')
         }
     }
 
-
-    $scope.$on('$ionicView.Enter', function(){
-
-      console.log($state.current.name, 'enter');
-
-
-    });
-
     $scope.$on('$ionicView.beforeEnter', function(){
-
+      $scope.loader.show();
       console.log($scope.root.vars.request_cache);
       if ($scope.root.vars.request_cache[$scope.course.short_name.toLowerCase().toString()]) {
         $scope.root.vars.request = $scope.root.vars.request_cache[$scope.course.short_name.toLowerCase().toString()]
@@ -369,6 +362,13 @@ angular.module('uguru.student.controllers')
         $scope.pushToggle.checked = true;
       }
     }
+
+    $scope.$on('$ionicView.enter', function() {
+      $scope.loader.hide();
+      $timeout(function() {
+        $scope.root.vars.request.price_slider = 0;
+      }, 250);
+    });
 
     $scope.$on('$ionicView.afterEnter', function(){
       console.log($state.current.name, 'after enter')

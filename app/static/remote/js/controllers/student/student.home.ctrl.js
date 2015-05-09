@@ -489,15 +489,19 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
           $scope.root.vars.select_bottom_two = null;
       }
 
-      $scope.loader.hide();
 
     });
+
+
 
     $scope.$on('$ionicView.enter', function() {
 
       console.log('view has entered', $scope.root.vars.recent_switched_modes);
       $localstorage.setObject('user', $scope.user);
-      User.getUserFromServer($scope, null, $state);
+
+
+      // User.getUserFromServer($scope, null, $state);
+      $scope.backgroundRefresh();
       $scope.root.vars.fetch_user_server_mutex = true;
 
       $scope.user.guru_mode = false;
@@ -519,7 +523,6 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     });
 
     $scope.$on('$ionicView.loaded', function(){
-      User.getUserFromServer($scope, null, $state);
       $scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
       $scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
       $scope.bottomTabsDelegate.select(1);
@@ -542,34 +545,10 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
     });
 
-     $scope.startBackgroundRefresh = function(time) {
-      $timeout(function() {
-        if ($scope.backgroundRefresh) {
-          console.log('starting background refresh after', time, 'seconds + scheduling next one.');
-          $scope.doRefresh();
-
-          $scope.startBackgroundRefresh($scope.startBackgroundRefreshTime);
-
-        } else {
-          console.log('background refresh has been turned off since last time');
-        }
-
-      }, time);
-
-    };
-
     $scope.$on('$ionicView.beforeLeave', function(){
       console.log($state.current.name, 'leaving...');
     });
 
-    $scope.$on('$ionicView.afterEnter', function(){
-      $scope.loader.hide();
-      if (!$scope.backgroundRefresh) {
-        $scope.backgroundRefresh = true;
-        $scope.startBackgroundRefreshTime = 60000;
-        $scope.startBackgroundRefresh($scope.startBackgroundRefreshTime);
-      }
-    });
 
     $scope.showBouncingRedAlert = function(wait_for, show_for) {
       $timeout(function() {

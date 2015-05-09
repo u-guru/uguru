@@ -35,9 +35,11 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.saveProfile = function() {
-      $scope.user.updateAttr('add_guru_intro', $scope.user, $scope.user.guru_introduction, null, $scope);
+      var callback = function() {
+        $state.go('^.root.guru-profile');
+      }
+      $scope.user.updateAttr('add_guru_intro', $scope.user, $scope.user.guru_introduction, callback, $scope);
       $scope.success.show(0, 1500, 'Saved! Great job.');
-      $state.go('^.root.guru-profile');
     }
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/add-major.modal.html', {
