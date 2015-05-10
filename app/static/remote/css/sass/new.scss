@@ -1720,10 +1720,10 @@ tabs-positive>.tabs .tab-item .badge, .tabs.tabs-positive .tab-item .badge {
   padding:1.5em 0.5em 1em 0.5em;
 }
 
-.padding-top-1-5em {
+.-5em {
   padding-top:1.5em;
 }
-
+padding-top-1
 .flex-row {
   flex-direction: row;
   -webkit-flex-direction:row;
@@ -2586,6 +2586,7 @@ a.uppercase {
 
 li.item.item-avatar-left.message-item,
 li.item.item-avatar-right.message-item {
+
   border:0px;
   img {
     height:30px;
@@ -3125,4 +3126,8 @@ a.timer-icon-link {
   font-weight: 500;
   opacity: 1;
   margin-top: 0px;
+}
+
+.padding-top-1em {
+  padding-top: 1em;
 }

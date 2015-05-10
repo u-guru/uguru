@@ -6,7 +6,7 @@
   </ion-header-bar>
 
   <ion-content>
-    <div class='pure-g-c flex-column flex-space-between'>
+    <div class='pure-g-c flex-column flex-space-between padding-1em'>
 
 
       <a class='item item-avatar-left item-icon-right pure-g no-border margin-half request-status-student-card' ng-click='goToGuruProfile(request.guru)' ng-show='request.guru.name'>
@@ -19,9 +19,9 @@
         <i class='icon icon-small ion-chevron-right positive'></i>
       </a>
 
-      <hr style='border: 1px solid rgba(0,0,0,0.2); width:90%;'>
+      <hr style='border: 1px solid rgba(0,0,0,0.2); width:90%;' ng-show='request.guru.name'>
 
-      <div class='pure-g-c flex-column flex-space-between'>
+      <!-- <div class='pure-g-c flex-column flex-space-between'> -->
         <!-- <a class='item pure-g row-details' ng-click='goToGuruProfile(request.guru)' ng-show='request.guru.name'>
           <div class='pure-u-1-5 grey-subject-text'>Guru</div>
           <div class='pure-u-4-5 item-avatar-right'>{{request.guru.name}}
@@ -32,15 +32,15 @@
           <div class='pure-u-1-5 grey-subject-text'>Class</div>
           <div class='pure-u-4-5'></div>
         </div> -->
-        <div class='padding-1em flex-item-c j-start'>
-        <div class='pure-g row-details'>
-          <div class='pure-u-1-5 grey-subject-text'>Date</div>
-          <div class='pure-u-4-5'>{{formatted_time_created}}</div>
-        </div>
-        <div class='pure-g row-details'>
-          <div class='pure-u-1-5 grey-subject-text'>Estimate</div>
-          <div class='pure-u-4-5'>{{formatted_time_estimated_hours}} hours, {{request.time_estimate % 60}} minutes</div>
-        </div>
+        <!-- <div class='flex-item-c j-start'> -->
+          <div class='pure-g row-details'>
+            <div class='pure-u-1-5 grey-subject-text'>Date</div>
+            <div class='pure-u-4-5'>{{formatted_time_created}}</div>
+          </div>
+          <div class='pure-g row-details'>
+            <div class='pure-u-1-5 grey-subject-text'>Estimate</div>
+            <div class='pure-u-4-5'>{{formatted_time_estimated_hours}} hours, {{request.time_estimate % 60}} minutes</div>
+          </div>
         <!-- <div class='pure-g row-details'>
           <div class='pure-u-1-5 grey-subject-text'>Calendar</div>
           <a ng-click='goToStudentCalendar()'class='pure-u-4-5 item-icon-right'>See Calendar
@@ -78,9 +78,11 @@
           </div>
         </div>
 
-      </div>
-      <div class='cancel-session-container padding-1em' ng-click="cancelRequest()" ng-show='request.status === 0'>
-        <button class='button button-full button-light'> Cancel Session </button>
+      <!-- </div> -->
+      <div class='pure-g flex-item-c j-start-end' ng-click="cancelRequest()" ng-show='request.status === 0'>
+        <div class='pure-u-1'>
+          <button class='button button-full button-light'> Cancel Session </button>
+        </div>
       </div>
       <div class='incoming-request-container pure-g' ng-show='request.status === 1'>
           <div class='pure-u-1-2'>

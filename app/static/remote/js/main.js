@@ -1,5 +1,5 @@
 // Uguru upp
-var LOCAL = false; //local to the 8100 codebasebir
+var LOCAL = false; //local to the 8100 codebasebirbir
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com'
 // REST_URL = 'http://192.168.42.66:5000';
@@ -159,6 +159,7 @@ $ionicPlatform.ready(function() {
           $scope.root.vars = {};
           $scope.root.vars.onboarding = false;
           $scope.root.vars.request_cache = {};
+          $scope.root.vars.onboarding_cache = {};
           $scope.root.vars.guru_mode = $scope.user.guru_mode;
           $scope.static = {};
           $scope.static.nearest_universities = [];
@@ -184,9 +185,18 @@ $ionicPlatform.ready(function() {
               $ionicLoading.show({
                 template: '<ion-spinner icon="lines" class="spinner-positive"></ion-spinner>'
               });
+              $scope.root.vars.loaderOn = true;
+              $timeout(function() {
+                if ($scope.root.vars.loaderOn) {
+                  $scope.loader.hide();
+                  $scope.root.vars.loaderOn = false;
+                  $scope.success.show(0, 2000, 'Something went wrong. Please try again or contact support.');
+                }
+              }, 3000);
             },
             hide: function(){
               $ionicLoading.hide();
+              $scope.root.vars.loaderOn = false;
             }
           }
 

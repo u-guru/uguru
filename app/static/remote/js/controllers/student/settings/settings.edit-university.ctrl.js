@@ -20,6 +20,7 @@ angular.module('uguru.student.controllers')
 	$scope.goBack = function() {
 
       $ionicViewSwitcher.nextDirection('back'); // 'forward', 'back', etc.
+      $scope.root.vars.select_bottom_three = true;
       if ($scope.user.guru_mode) {
           //mixpanel track
           mixpanel.track("Guru.home");

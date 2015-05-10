@@ -460,7 +460,7 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
     };
 
     $scope.goToSettingsTab = function() {
-      $scope.root.vars.select_bottom_three = true;
+      // $scope.root.vars.select_bottom_three = true;
       $scope.bottomTabsDelegate.select(2);
     }
 
@@ -527,7 +527,7 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       $scope.bottomTabsDelegate.select(1);
 
 
-      if ($scope.bottomTabsDelegate.selectedIndex() === 1) {
+      if ($scope.bottomTabsDelegate.selectedIndex() === 1 && !$scope.root.vars.onboarding_cache.add_class) {
         $scope.showOnboardingAddClass();
       }
 
@@ -564,11 +564,10 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
       if ($scope.user.student_courses && $scope.user.student_courses.length === 0)
       $timeout(function() {
+        $scope.root.vars.onboarding_cache.add_class = true;
         var element = document.getElementById("add-course-item")
         $scope.openPopover(element);
       }, 1000);
-
-
 
     }
 
@@ -581,9 +580,6 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       }, 1000);
 
     }
-
-
-
 
     $scope.$on('modal.shown', function() {
 
