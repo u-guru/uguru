@@ -338,3 +338,111 @@ if arg == 'parse_uni_updated':
 
     with open('web_university4.json', 'wb') as fp:
         json.dump(result_schools, fp, indent = 4)
+
+
+if arg =='migrate':
+
+    from app.models import *
+    import json
+    from datetime import datetime
+    user_arr = json.load(open('uguru_old_db.json'))
+
+    for user in user_arr:
+
+        try:
+
+            if not user['email']:
+                continue
+
+            if len(user['email']) < 5:
+                continue
+
+            if 'removed' in user['email'].lower():
+                continue
+
+            u = User.query.filter_by(email=user['email']).first()
+            if not u:
+                u = User(user['email'])
+                db_session.add(u)
+                db_session.commit()
+            u.password = user['password']
+            u.phone_number =  user['phone_number']
+            u.time_created = user['time_created']
+            u.email_notifications = user['email_notifications']
+            u.text_notifications = user['text_notifications']
+            u.profile_url = user['profile_url']
+            u.guru_introduction = user['guru_introduction']
+            u.balance = user['balance']
+            u.ta_tutor = user['ta_tutor']
+            u.hkn_tutor = user['hkn_tutor']
+            u.slc_tutor = user['slc_tutor']
+            u.previous_tutor = user['previous_tutor']
+            u.major = user['major']
+            u.year = user['year']
+            u.res_tutor = user['res_tutor']
+            u.la_tutor = user['la_tutor']
+            u.last_active = user['last_active']
+            u.total_earned = user['total_earned']
+            u.approved_by_admin = user['approved_by_admin']
+            u.high_school_tutor = user['high_school_tutor']
+            u.credits = user['credit']
+            u.university_id = 2307
+
+
+
+
+            if user.get('customer_id'):
+
+                c = Card()
+                c.stripe_customer_id = user['customer_id']
+                c.card_last4 = user['customer_last4']
+                c.user_id = u.id
+                db_session.add(c)
+                u.cards.append(c)
+                db_session.commit()
+
+            if user.get('recipient_id'):
+
+                c = Card()
+                c.stripe_recipient_id = user['recipient_id']
+                c.user_id = u.id
+                db_session.add(c)
+                u.cards.append(c)
+                db_session.commit()
+
+            for rating in user['student_ratings']:
+
+                r = Rating()
+                r.student_rating = rating['student_rating']
+                r.guru_rating = rating['tutor_rating']
+                r.student_rating = rating['student_rating']
+                r.guru_rating_description = rating['tutor_rating_description']
+                r.student_rating_description = rating['student_rating_description']
+                u.student_ratings.append(r)
+                db_session.add(r)
+                db_session.commit()
+
+
+
+            for rating in user['guru_ratings']:
+
+                r = Rating()
+                r.student_rating = rating['student_rating']
+                r.guru_rating = rating['tutor_rating']
+                r.student_rating = rating['student_rating']
+                r.guru_rating_description = rating['tutor_rating_description']
+                r.student_rating_description = rating['student_rating_description']
+                u.student_ratings.append(r)
+                db_session.add(r)
+                db_session.commit()
+        except:
+            print "error with", user['email']
+            db_session.rollback()
+            continue
+
+
+
+
+            # 'skills': get_user_skills(user),
+            # 'conversations': get_user_conversations(user),
+            # 'payments': get_user_payments(user),

@@ -149,6 +149,8 @@ class User(Base):
     total_cashed_out = Column(Float, default = 0)
     credits = Column(Float)
 
+
+
     recent_latitude = Column(Float)
     recent_longitude = Column(Float)
     last_gps_activity = Column(DateTime)
@@ -171,7 +173,7 @@ class User(Base):
 
     last_position = relationship("Position", uselist=False)
 
-    def __init__(self, name=None, email=None, profile_url=None, \
+    def __init__(self,  email, name=None, profile_url=None, \
         fb_id=None, password=None, gender=None):
 
         if not email: email = ''

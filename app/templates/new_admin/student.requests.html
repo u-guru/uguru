@@ -40,7 +40,7 @@
                                   <tbody><tr>
                                     <th style="width: 10px">#</th>
                                     <th style='width: 145px;'>Time Created</th>
-                                    <th style='max-width:120px;'>Student Name</th>
+                                    <th style='max-width:140px;'>Student Name</th>
                                     <th style=''>University</th>
                                     <th>Course</th>
                                     <th>Description</th>
@@ -51,7 +51,7 @@
                                   <tr>
                                     <td>{{request.id}}</td>
                                     <td>{{request.time_created.strftime('%I:%M %p, %a %b %d')}}</td>
-                                    <td style='max-width:100px;'>{{request.student.name}}</td>
+                                    <td style='max-width:100px;'>{{request.student.name}} <a href='/admin/users/{{request.student.id}}'><i style='opacity:0.7;'class="fa fa-fw fa-expand"></i></a></td>
                                     <td style='max-width:120px;'>{{request.student.university.name}}</td>
                                     <td style='max-width:120px;'>{{request.course.short_name|upper}}</td>
                                     <td style='max-width:120px;'><p>{{request.description}}</p></td>

@@ -341,7 +341,7 @@ angular.module('uguru.user', [])
         $scope.user.summer_15 = user.summer_15;
         $scope.user.uber_friendly = user.uber_friendly;
         $scope.user.outside_university = user.outside_university;
-
+        $scope.user.credits = user.credits;
         $scope.user.official_guru_grade = user.official_guru_grade;
         $scope.user.grade_dict = user.grade_dict;
         $scope.user.guru_score_opportunities = user.guru_score_opportunities;

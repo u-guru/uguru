@@ -68,6 +68,16 @@ def admin_create():
         return redirect(url_for('admin_login'))
     return render_template("new_admin/create-campaign.html")
 
+@app.route('/admin/users/<_id>/')
+def admin_users(_id):
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    from app.models import User
+    user = User.query.get(_id)
+    return render_template("new_admin/admin.users.one.html", user=user)
+
+
+
 @app.route('/admin/requests/')
 def admin_requests():
     if not session.get('user'):
@@ -75,10 +85,10 @@ def admin_requests():
     from app.models import *
 
     unfiltered_requests = Request.query.all()
-    real_before_170 = [167, 166, 163, 161, 160, 159, 149, 146, 143,141, 139, 112, 92, 78]
+    real_before_220 = [167, 166, 163, 161, 160, 159, 149, 146, 143,141, 139, 112, 92, 78, 222, 219, 220, 216, 197]
     student_requests = []
     for _request in unfiltered_requests:
-        if _request.id in real_before_170 or _request.id > 170:
+        if _request.id in real_before_220 or _request.id > 220:
             student_requests.append(_request)
     return render_template('new_admin/student.requests.html', requests=student_requests[::-1])
 
@@ -171,12 +181,12 @@ def index():
     else:
         return render_template("admin/login.html", os=os)
 
-@app.route('/old_admin/users/')
-def admin_users():
-    if(session.get("admin")):
-        return render_template("admin/admin.users.html", os=os)
-    else:
-        return render_template("admin/login.html", os=os)
+# @app.route('/old_admin/users/')
+# def admin_users():
+#     if(session.get("admin")):
+#         return render_template("admin/admin.users.html", os=os)
+#     else:
+#         return render_template("admin/login.html", os=os)
 
 @app.route('/old_admin/campaigns/')
 def old_admin():

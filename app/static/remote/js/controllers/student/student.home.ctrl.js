@@ -179,7 +179,6 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 	}).then(function(modal) {
 	    $scope.addCourseModal = modal;
 	});
-
 	$ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
 	    scope: $scope,
 	    animation: 'slide-in-up'

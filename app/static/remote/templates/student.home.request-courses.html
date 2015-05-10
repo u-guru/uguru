@@ -1,7 +1,8 @@
   <ion-view hide-nav-bar = 'true' cache-view='false'>
-    <ion-header-bar class='header-bar'>
-        <h5 class="title">REQUEST HELP</h5>
-      </ion-header-bar>
+    <ion-header-bar class='header-bar item-button-right'>
+      <h5 class="title bold sans-bold" style='left:0px !important; right:0px !important;'>Request Help</h5>
+        <a ng-show='user.credits' id='credits-button'class='button button-clear button-positive uppercase bold'>${{user.credits}}</a>
+    </ion-header-bar>
 
     <ion-content style='background-color' class='course-list-container'>
 
