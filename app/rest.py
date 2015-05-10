@@ -32,7 +32,7 @@ class UniversityListView(restful.Resource):
 class VersionView(restful.Resource):
     def get(self):
         version_dict = {
-            'version':Version.most_recent_by_version(1, True),
+            'version':len(Version.query.get(1).builds),
             'ios_msg': Version.query.get(1).ios_msg
         }
         return json.dumps(version_dict), 200

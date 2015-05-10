@@ -3,9 +3,9 @@ angular.module('uguru.version', [])
 	'$localstorage',
 	'Restangular',
 	function($localstorage, Restangular) {
-	    
+
 	    var Version;
-	    
+
 	    Version = {
 
 	    		setVersion: function(version_num) {

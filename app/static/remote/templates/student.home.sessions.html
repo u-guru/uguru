@@ -18,6 +18,7 @@
 
     <ion-refresher
       spinner="ios"
+      pulling-icon="ion-arrow-down-c"
       spinner="circles"
       on-refresh="doRefresh()">
     </ion-refresher>
@@ -52,12 +53,14 @@
 
   <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 1'>
 
-    <ion-refresher
-      spinner="ios"
-      on-refresh="doRefresh()">
-    </ion-refresher>
-  <ion-scroll>
-      <div class='pure-g-c flex-column center svrofull-height' ng-show='!user.active_student_sessions || user.active_student_sessions.length === 0'>
+      <div class='pure-g-c flex-column center full-height' ng-show='!user.active_student_sessions || user.active_student_sessions.length === 0'>
+        <ion-refresher
+          spinner="ios"
+          pulling-icon="ion-arrow-down-c"
+          spinner="circles"
+          on-refresh="doRefresh()">
+        </ion-refresher>
+
         <div class='padding-1em padding-1em flex-item-c'> </div>
         <div class='flex-item-c sleeping-guru light-opacity'>
           <img class='pure-img animated swing' ng-src='{{img_base}}./img/guru-sleeping.svg'>
@@ -66,7 +69,7 @@
           No upcoming sessions yet! <br> Try requesting help below
         </div>
       </div>
-  </ion-scroll>
+
       <div class="list" ng-show='user.active_student_sessions.length > 0'>
         <a class="item item-avatar-right upcoming-session-card" ng-repeat='session in user.active_student_sessions' ng-click='goToActiveSession(session)'>
           <img ng-src="{{session.request.student.profile_url}}">

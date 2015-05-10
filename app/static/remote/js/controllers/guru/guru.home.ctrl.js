@@ -492,7 +492,6 @@ angular.module('uguru.guru.controllers')
       $scope.root.vars.guru_mode = true;
       $localstorage.setObject('user', $scope.user);
       console.log('printing guru stuff', $scope.user.active_proposals);
-      $scope.backgroundRefresh();
 
       //check if user already has push notification token
 

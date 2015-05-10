@@ -3,6 +3,14 @@
         <h5 class="title bold sans-bold" style='left:0px !important; right:0px !important;'>My Profile & Settings</h5>
       </ion-header-bar>
       <ion-content>
+
+        <ion-refresher
+          spinner="ios"
+          pulling-icon="ion-arrow-down-c"
+          spinner="circles"
+          on-refresh="doRefresh()">
+        </ion-refresher>
+
         <div class='pure-g-c flex-column flex-space-between'>
         <ion-list>
           <div class='item item-avatar-left student-profile-item item-icon-right relative' ng-show='user.id && !user.guru_mode'>
@@ -89,8 +97,9 @@
             <div class="item settings-divider-item">
                OTHER
             </div>
+            <a class="item gray settings-item" ng-click="showVersion()">About</a>
             <a class="item gray settings-item" ng-show="user.id && user.auth_token" ng-click="logoutUser()">Logout</a>
-            <a class="item gray settings-item" ng-click="clearCache()">Clear Cache</a>
+            <!-- <a class="item gray settings-item" ng-click="clearCache()">Clear Cache</a> -->
             </ul>
           </ul>
         </ion-list>

@@ -134,6 +134,10 @@ $ionicPlatform.ready(function() {
           $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush) {
 
 
+          console.log('1. checking for app updates\n');
+          checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
+
+
           $scope.network_speed = null;
           $scope.platform_ready = false;
           //how to make platform ready...
@@ -200,22 +204,22 @@ $ionicPlatform.ready(function() {
             }
           }
 
-          $scope.backgroundRefresh = function() {
+          // $scope.backgroundRefresh = function() {
 
-            //check if they are in these particular views and user_refresh is false
-             if (( $state.current.name === 'root.student-home' ||
-                  $state.current.name === 'root.guru-home') &&
-                  !$scope.root.vars.user_refresh) {
+          //   //check if they are in these particular views and user_refresh is false
+          //    if (( $state.current.name === 'root.student-home' ||
+          //         $state.current.name === 'root.guru-home') &&
+          //         !$scope.root.vars.user_refresh) {
 
-                $scope.root.vars.user_refresh = true;
-                $timeout(function() {
-                  $scope.doRefresh(true);
-                }, 15000)
+          //       $scope.root.vars.user_refresh = true;
+          //       $timeout(function() {
+          //         $scope.doRefresh(true);
+          //       }, 15000)
 
-             } else if ($scope.root.vars.user_refresh) {
-                console.log('background refresh is already happening bro, check again in 15seconds');
-             }
-          }
+          //    } else if ($scope.root.vars.user_refresh) {
+          //       console.log('background refresh is already happening bro, check again in 15seconds');
+          //    }
+          // }
 
           $scope.doRefresh = function(repeat) {
             $scope.root.vars.user_refresh = true;
@@ -224,7 +228,6 @@ $ionicPlatform.ready(function() {
               User.getUserFromServer($scope, null, $state);
               if (repeat) {
                 $scope.root.vars.user_refresh = false;
-                $scope.backgroundRefresh(); //as needed
               }
             }
           }
@@ -359,7 +362,7 @@ $ionicPlatform.ready(function() {
             document.addEventListener("resume", function() {
 
                 // console.log('device is resuming....');
-                 // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+                checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
                 User.getUserFromServer($scope, null, $state);
 
             }, false);
@@ -367,7 +370,7 @@ $ionicPlatform.ready(function() {
             document.addEventListener("online", function() {
 
                 // console.log('device is online...');
-              // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+                // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
                 // console.log('Getting user from server');
                 User.getUserFromServer($scope, null, $state);
 
@@ -633,27 +636,32 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
               //if user gets the right version
               function(response) {
                     var serverVersionNumber = JSON.parse(response).version;
+                    console.log('server number', serverVersionNumber);
                     var currentVersion = Version.getVersion();
+
                     //if brand new user with no version set
                     if ((typeof currentVersion) === "undefined") {
                       // console.log('First time opening app - set version to 1.0');
                       currentVersion = 1.0;
                       Version.setVersion(1.0);
                     }
-                    console.log('user v:' + currentVersion.toString() + '. Server v:' + serverVersionNumber);
 
-                    if (LOCAL) {
-                      console.log('it gets here');
-                      $templateCache.removeAll();
-                    }
+                    // if (LOCAL) {
+                    //   console.log('it gets here');
+                    //   $templateCache.removeAll();
+                    // }
 
                     if (serverVersionNumber != currentVersion) {
 
+                      console.log('versions are different...\n');
+
                       $ionicHistory.clearCache();
                       $ionicHistory.clearHistory();
+                      $localstorage.removeObject('user');
+                      $localstorage.removeObject('courses');
+                      $localstorage.removeObject('universities');
                       // $cordovaSplashscreen.show();
                       window.localStorage.clear();
-
                       //remove all angular templates
                       $templateCache.removeAll();
 

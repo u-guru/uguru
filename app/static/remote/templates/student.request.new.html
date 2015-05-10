@@ -10,6 +10,13 @@
     </ion-header-bar>
 
     <ion-content class='request-list-container'>
+        <ion-refresher
+          spinner="ios"
+          pulling-icon="ion-arrow-down-c"
+          spinner="circles"
+          on-refresh="doRefresh()">
+        </ion-refresher>
+
         <div class='container pure-g-c flex-column flex-space-between'>
             <div class="list list-inset request-list">
                 <div class='container'>

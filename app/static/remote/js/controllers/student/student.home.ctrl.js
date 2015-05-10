@@ -428,6 +428,12 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       $state.go('^.settings-profile');
     }
 
+    $scope.showVersion = function() {
+      $scope.version = $localstorage.get('version');
+      var message = 'You are using Uguru v1.0.' + $scope.version;
+      $scope.success.show(0, 1000, message);
+    }
+
     $scope.clearCache = function() {
 
       $scope.user = {};
@@ -499,8 +505,8 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
       $localstorage.setObject('user', $scope.user);
 
 
-      // User.getUserFromServer($scope, null, $state);
-      $scope.backgroundRefresh();
+      User.getUserFromServer($scope, null, $state);
+      // $scope.backgroundRefresh();
       $scope.root.vars.fetch_user_server_mutex = true;
 
       $scope.user.guru_mode = false;
