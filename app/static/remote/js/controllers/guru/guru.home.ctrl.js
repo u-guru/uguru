@@ -383,22 +383,25 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.logoutUser = function() {
-      //create a brand new user
-      $scope.user = User.initUser();
+
+
+      $scope.success.show(0, 2000, 'You have been successfully logged out!')
+      $localstorage.setObject('user', []);
       $scope.user.updateAttr = User.updateAttrUser;
       $scope.user.createObj = User.createObj;
       $scope.user.updateObj = User.updateObj;
+      $ionicHistory.clearCache();
+      $ionicHistory.clearHistory();
 
-      $localstorage.removeObject('courses');
-      $localstorage.removeObject('universities');
-      $localstorage.removeObject('user');
+      $timeout(function() {
+        $scope.user = User.getLocal();
+        $state.go('^.student-home');
+      }, 500);
 
 
-      alert('You have been logged out!');
-      $scope.signupModal.show();
-        //Mixpanel Track
-      mixpanel.track("Stidemt.home");
-      $state.go('^.student-home');
+      // $scope.signupModal.show();
+      // $localstorage.setObject('user', []);
+      // mixpanel.track("Student.home");
     }
     $scope.goToProposalDetails = function (proposal) {
         //Mixpanel Track

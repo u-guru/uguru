@@ -1,7 +1,7 @@
  <ion-modal-view ng-controller="SignupController" class='signup-form'>
       <ion-header-bar class='header-bar'>
         <h5 class="title">WELCOME</h5>
-        <a class="button button-clear button-back"ng-click='closeSignupModal()'>Cancel</a>
+        <a class="button button-clear button-back"ng-click='signupModal.hide()'>Cancel</a>
       </ion-header-bar>
 
       <!-- <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
@@ -15,7 +15,7 @@
           <div class="account-box center">
             <div class="list-inset margin-bottom-10" ng-show="loginMode">
               <label class="item item-inset item-input" id="input_email_login">
-                <div class="signup-tag">email</div><input type="text" name="login-email" ng-model="signupForm.email" placeholder="peter.parker@berkeley.edu">
+                <div class="signup-tag">email</div><input style='text-transform: lowercase;' type="text" name="login-email" ng-model="signupForm.email" placeholder="peter.parker@berkeley.edu">
               </label>
               <label class="item item-inset item-input" id="input_password_login">
                 <div class="signup-tag">password</div><input type="password" name="login-password" ng-model="signupForm.password" placeholder="at least 6 characters">

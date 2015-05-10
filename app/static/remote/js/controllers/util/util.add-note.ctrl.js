@@ -201,6 +201,13 @@ angular.module('uguru.util.controllers')
       // }, 1000);
     }
 
+    $scope.deleteFile = function(index) {
+      if (confirm('Are you sure you want to delete this photo?')) {
+        $scope.attached_files.splice(index, 1);
+        $scope.file_index -= 1;
+      }
+    }
+
     $scope.file_changed = function(element) {
         var photofile = element.files[0];
 

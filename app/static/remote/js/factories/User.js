@@ -224,23 +224,23 @@ angular.module('uguru.user', [])
                     }
                 }
 
-                //guru has incoming proposal
-                if (user.active_proposals && user.active_proposals.length > 0) {
+                // //guru has incoming proposal
+                // if (user.active_proposals && user.active_proposals.length > 0) {
 
-                    $timeout(function() {
-                      var first_active_proposal = user.active_proposals[0];
+                //     $timeout(function() {
+                //       var first_active_proposal = user.active_proposals[0];
 
-                      var paramPayload = {
-                        requestObj:JSON.stringify(first_active_proposal.request),
-                        proposalObj: JSON.stringify(first_active_proposal)
-                      }
+                //       var paramPayload = {
+                //         requestObj:JSON.stringify(first_active_proposal.request),
+                //         proposalObj: JSON.stringify(first_active_proposal)
+                //       }
 
-                        if ($state.current.name === 'root.guru.home') {
-                            $state.go('^.student-available', paramPayload);
-                        }
-                    }, 500)
+                //         if ($state.current.name === 'root.guru.home') {
+                //             $state.go('^.student-available', paramPayload);
+                //         }
+                //     }, 500)
 
-                }
+                // }
 
             }
 
