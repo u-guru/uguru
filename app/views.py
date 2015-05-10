@@ -111,6 +111,12 @@ def admin_coming_soon():
         return redirect(url_for('admin_login'))
     return render_template("new_admin/admin-coming-soon.html")
 
+@app.route('/admin/product/testing/')
+def admin_testing():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin.product.testing.html")
+
 @app.route('/admin/')
 @app.route('/admin/team/')
 @app.route('/admin/home/')

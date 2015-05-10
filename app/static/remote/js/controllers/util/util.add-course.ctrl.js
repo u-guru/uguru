@@ -202,21 +202,23 @@ angular.module('uguru.util.controllers')
           $scope.user.student_courses = [];
       }
 
-      if (!$scope.user.guru_courses && is_guru_mode) {
-          $scope.user.guru_courses = [];
-      }
+      //check if course is already added;
 
-      // console.log(course);
-      // if () {
-
-      // }
-
-      // return;
 
       if (is_guru_mode) {
+        if ($scope.root.util.objectFindByKey($scope.user.guru_courses, 'short_name', course.short_name)) {
+          $scope.success.show(0, 1000, 'You have already added ' + course.short_name + '!');
+          return;
+        }
         $scope.user.guru_courses.push(course);
         $scope.user.updateAttr('add_guru_course', $scope.user, course, null, $scope);
       } else {
+        console.log('does course exist', $scope.root.util.objectFindByKey($scope.user.student_courses, 'short_name', course.short_name));
+        if ($scope.root.util.objectFindByKey($scope.user.student_courses, 'short_name', course.short_name)) {
+          $scope.success.show(0, 1000, 'You have already added ' + course.short_name + '!');
+          return;
+        }
+
         $scope.user.student_courses.push(course);
 
         if ($scope.user.student_courses.length === 1 && $scope.user.requests.length === 0) {
