@@ -588,9 +588,15 @@ class UserRequestView(restful.Resource):
         for guru in available_gurus:
 
             guru.id, guru.name, guru.time_created, 'contacted'
+
             proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
 
             proposal.student_price = float(request.json.get('price_slider'))
+
+            event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
+            event = Event.initFromDict(event_dict)
+
+            db_session.commit()
 
             #send push notification is user has permitted device
             if user.push_notifications:
@@ -606,11 +612,6 @@ class UserRequestView(restful.Resource):
             if user.text_notifications and user.phone_number:
                 from app.texts import send_student_request_to_guru
                 send_student_request_to_guru(_request, guru)
-
-            event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
-            event = Event.initFromDict(event_dict)
-
-            db_session.commit()
 
         pprint('request is finished like a G')
         return user, 200

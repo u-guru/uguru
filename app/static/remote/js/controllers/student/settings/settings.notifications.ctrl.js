@@ -9,9 +9,7 @@ angular.module('uguru.student.controllers')
   '$ionicViewSwitcher',
   '$timeout',
   '$cordovaPush',
-  'CordovaPushWrapper',
-  '$rootScope',
-  function($scope, $state, $ionicViewSwitcher, $timeout, $cordovaPush, CordovaPushWrapper, $rootScope) {
+  function($scope, $state, $ionicViewSwitcher, $timeout, $cordovaPush) {
 
     $scope.goBack = function() {
       $ionicViewSwitcher.nextDirection('back');
@@ -38,63 +36,40 @@ angular.module('uguru.student.controllers')
   	$scope.pushNotificationChange = function() {
       $timeout(function() {
 
-        if (!$scope.user.push_notifications) {
-          console.log('push notifications are false');
-          $scope.user.updateAttr('push_notifications', $scope.user, $scope.user.push_notifications, null, $scope);
-          return;
-        }
-        var iosConfig = {
-            "badge": true,
-            "sound": true,
-            "alert": true,
-        }
+      if (!$scope.user.push_notifications) {
+        console.log('push notifications are false');
+        $scope.user.updateAttr('push_notifications', $scope.user, $scope.user.push_notifications, null, $scope);
+        return;
+      }
+      var iosConfig = {
+          "badge": true,
+          "sound": true,
+          "alert": true,
+      }
+      $cordovaPush.register(iosConfig).then(function(deviceToken) {
+        // Success -- send deviceToken to server, and store for future use
+        console.log('push notifications are true');
+        console.log("deviceToken: " + deviceToken)
+
+        console.log("Register success " + deviceToken);
+
+
         if ($scope.platform.ios) {
-          $cordovaPush.register(iosConfig).then(function(deviceToken) {
-            // Success -- send deviceToken to server, and store for future use
-            console.log('push notifications are true');
-            console.log("deviceToken: " + deviceToken)
+          console.log('updating the server...');
+            $scope.user.push_notifications = true;
+            $scope.user.current_device.push_notif = deviceToken;
+            $scope.user.current_device.push_notif_enabled = true;
+            $scope.user.updateAttr('devices', $scope.user.current_device, $scope.user.current_device, null, $scope);
+            $scope.user.updateAttr('push_notifications', $scope.user.push_notifications, $scope.user, null, $scope);
+        }
 
-            console.log("Register success " + deviceToken);
-
-
-
-              console.log('updating the server...');
-                $scope.user.push_notifications = true;
-                $scope.user.current_device.push_notif = deviceToken;
-                $scope.user.current_device.push_notif_enabled = true;
-                $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
-                $scope.user.updateAttr('push_notifications', $scope.user, $scope.user.push_notifications, null, $scope);
-          },  function(err) {
-          console.log(err);
-          $scope.user.updateAttr('devices', $scope.user.current_device, $scope.user.current_device, null, $scope);
-          });
+      }, function(err) {
+        console.log(err);
+        $scope.user.updateAttr('devices', $scope.user.current_device, $scope.user.current_device, null, $scope);
+      });
 
 
-          } else if ($scope.platform.android) {
-
-            var androidConfig = {
-                    "senderID": "413826461390",
-                    'ecb': "angular.element(document.body).injector().get('$cordovaPush').onNotification"
-                  }
-
-                  $cordovaPush.register(androidConfig).then(function(deviceToken) {
-
-                    console.log('android notifications');
-
-                  }, function(err){
-
-                    console.log(err)
-
-                  });
-
-          }
-          else {
-
-            $scope.user.updateAttr('push_notifications', $scope.user, $scope.user.push_notifications, null, $scope);
-          }
-
-      }, 500);
-
+      }, 500)
   	}
 
   }
