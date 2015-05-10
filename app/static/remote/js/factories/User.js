@@ -637,13 +637,14 @@ angular.module('uguru.user', [])
             Restangular.one('user', scope_user_id).customGET().then(
                 function(user) {
                     var processed_user = processResults(user.plain());
-                    console.log('retrieved user from server');
                     $scope.$broadcast('scroll.refreshComplete');
                     if ($scope) {
 
                         $scope.root.vars.fetch_user_server_mutex = false;
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);
+                        console.log('retrieved user from server');
+
                         if ($scope.loader) {
                             $scope.loader.hide();
                         }
@@ -679,7 +680,7 @@ angular.module('uguru.user', [])
                         assignPropertiesToRootScope($scope, processed_user);;
                         delegateActionsFromProcessedUser($scope);
 
-                        $scope.doRefresh();
+                        // $scope.doRefresh();
                         $scope.loader.hide();
 
                         if (callback_success) {

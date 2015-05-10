@@ -173,7 +173,7 @@ class User(Base):
 
     last_position = relationship("Position", uselist=False)
 
-    def __init__(self,  email, name=None, profile_url=None, \
+    def __init__(self, name=None, email=None, profile_url=None, \
         fb_id=None, password=None, gender=None):
 
         if not email: email = ''
@@ -1270,7 +1270,7 @@ class Message(Base):
     _file = relationship("File", uselist=False)
 
     @staticmethod
-    def initFromJson(message_json):
+    def initFromJson(message_json, optional):
         message = Message()
         message.time_created = datetime.now()
         message.time_sent = datetime.now()

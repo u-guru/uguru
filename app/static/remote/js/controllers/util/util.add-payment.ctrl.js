@@ -25,6 +25,10 @@
 
     $scope.goBack = function() {
 
+        if ($scope.root.vars.student_payment)  {
+          $ionicViewSwitcher.nextDirection('back');
+          $ionicHistory.goBack();
+        }
 
         $ionicViewSwitcher.nextDirection('back');
         $scope.root.vars.select_bottom_three = true;

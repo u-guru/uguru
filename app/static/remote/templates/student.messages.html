@@ -26,7 +26,22 @@
         on-refresh="doRefresh()">
       </ion-refresher>
     <!-- <ion-scroll class="messages" ng-click="hideKeyboard()"> -->
-      <ul class="list message-item-list">
+
+
+      <div class='scroll pure-g-c flex-column center full-height' ng-show='!messages || messages.length === 0'>
+        <div class='padding-1em padding-1em flex-item-c'> </div>
+        <div class='flex-item-c sleeping-guru light-opacity'>
+          <img class='pure-img animated swing message-default-image' ng-src='{{img_base}}./img/guru-sleeping.svg' >
+        </div>
+        <div class='flex-item-c light-opacity padding-1em flex-direction-init '>
+          <br>
+          No messages yet.<br>
+          <br>
+          Start one with {{message_name}} now!
+        </div>
+      </div>
+
+      <ul class="list message-item-list" style='margin-top:1em;'>
           <li class="item {{message.class}} message-item" ng-repeat="message in messages">
             <img ng-src="{{message.profile_url}}" ng-show='message.class === "item-avatar-left"'>
             <div class="text">
@@ -37,7 +52,7 @@
       </ul>
     <!-- </ion-scroll> -->
   </ion-content>
-  <ion-footer-bar class="bar-footer item-input-inset" keyboard-attach>
+  <ion-footer-bar class="bar-footer item-input-inset messages-footer-bar" keyboard-attach>
     <label class="item-input-wrapper">
         <i class="icon ion-search placeholder-icon"></i>
         <input type="search" name="message-input" class="form-control"
@@ -48,7 +63,7 @@
         />
     </label>
 
-    <button class="button button-clear button-positive positive" ng-show="new_message.content.length > 0" ng-click="sendMessage(new_message.content)">
+    <button class="button button-clear button-positive positive button-search" ng-show="new_message.content.length > 0" ng-click="sendMessage(new_message.content)">
     Send
     </button>
   </ion-footer-bar>

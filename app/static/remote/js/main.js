@@ -208,7 +208,7 @@ $ionicPlatform.ready(function() {
           }
 
           $scope.doRefresh = function(repeat) {
-
+            $scope.root.vars.user_refresh = true;
             if ($scope.root.vars.user_refresh || !repeat) {
 
               User.getUserFromServer($scope, null, $state);

@@ -240,6 +240,10 @@ class UserOneView(restful.Resource):
         if not user:
             abort(400)
 
+        from datetime import datetime
+        user.last_active = datetime.now()
+        db_session.commit()
+
         # if request.json.get('auth_token') != user.auth_token:
         #     abort(400)
 

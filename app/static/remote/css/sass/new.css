@@ -2121,3 +2121,29 @@ a.timer-icon-link {
   right: 0em;
   font-size: 1.2em !important;
   opacity: 0.4; }
+
+.request-status.student-view .request-status-student-card {
+  background-color: transparent; }
+  .request-status.student-view .request-status-student-card .gold-student-star {
+    margin: 0.2em; }
+.request-status.student-view hr {
+  margin-top: -0.5em; }
+
+.messages-footer-bar {
+  border-top: 1.5px solid rgba(0, 0, 0, 0.2); }
+
+.message-default-image {
+  height: 35%;
+  width: 35%;
+  align-self: center;
+  margin-top: 20%; }
+
+.button.button-positive.button-clear.button-search {
+  border-color: transparent;
+  background: 0 0;
+  box-shadow: none;
+  margin-top: 0.5em;
+  color: #6AB1A5;
+  font-weight: 500;
+  opacity: 1;
+  margin-top: 0px; }

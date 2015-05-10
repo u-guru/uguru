@@ -85,10 +85,10 @@ def admin_requests():
     from app.models import *
 
     unfiltered_requests = Request.query.all()
-    real_before_220 = [167, 166, 163, 161, 160, 159, 149, 146, 143,141, 139, 112, 92, 78, 222, 219, 220, 216, 197]
+    real_before_220 = [167, 166, 163, 161, 160, 159, 149, 146, 143,141, 139, 112, 92, 78, 222, 219, 220, 216, 197, 225]
     student_requests = []
     for _request in unfiltered_requests:
-        if _request.id in real_before_220 or _request.id > 220:
+        if _request.id in real_before_220 or _request.id > 226:
             student_requests.append(_request)
     return render_template('new_admin/student.requests.html', requests=student_requests[::-1])
 

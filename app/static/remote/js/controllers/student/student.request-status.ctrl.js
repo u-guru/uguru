@@ -115,29 +115,34 @@ angular.module('uguru.student.controllers')
     //   return
     // }
 
+    $scope.getNumber = function(num) {
+        return new Array(num);
+    }
+
     $scope.acceptGuru = function() {
         if ($scope.user.cards.length === 0) {
             //mixpanel track
             mixpanel.track("Add.payment");
+            $scope.root.vars.request_payment = true;
         $state.go('^.add-payment');
         return;
       }
+
 
       var acceptGuruCallback = function() {
 
         $scope.request.guru_id = $scope.request.guru.id;
         $scope.request.status = 1;
         $scope.loader.show();
+        $scope.user.createObj($scope.user, 'sessions', $scope.request, $scope, null);
 
-        var acceptGuruPostRequest = function($scope, $state) {
-          $scope.request.guru_id = $scope.request.guru.id;
-          $scope.request.status = 2;
-          $scope.loader.hide();
-          $scope.root.vars.select_bottom_one;
-          $state.go('^.student-home');
-        }
 
-        $scope.user.createObj($scope.user, 'sessions', $scope.request, $scope, acceptGuruPostRequest);
+        $scope.request.guru_id = $scope.request.guru.id;
+        $scope.request.status = 2;
+        $scope.loader.show();
+        $scope.root.vars.select_bottom_one = true;
+        $state.go('^.student-home');
+
       }
 
       //remove request from array
