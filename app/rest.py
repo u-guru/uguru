@@ -603,17 +603,17 @@ class UserRequestView(restful.Resource):
             db_session.commit()
 
             #send push notification is user has permitted device
-            if user.push_notifications:
+            if guru.push_notifications:
                 from app.lib.push_notif import send_student_request_to_guru
                 send_student_request_to_guru(_request, guru)
 
-            if user.email_notifications and user.email:
+            if guru.email_notifications and guru.email:
 
                 from app.emails import send_student_request_to_guru
                 send_student_request_to_guru(_request, guru)
 
 
-            if user.text_notifications and user.phone_number:
+            if guru.text_notifications and guru.phone_number:
                 from app.texts import send_student_request_to_guru
                 send_student_request_to_guru(_request, guru)
 
@@ -663,17 +663,17 @@ class UserRequestView(restful.Resource):
 
                 student = proposal.request.student
 
-                if user.push_notifications:
+                if student.push_notifications:
 
                     #send push notification to all student devices
                     from app.lib.push_notif import send_guru_proposal_to_student
                     send_guru_proposal_to_student(proposal, proposal.request.student)
 
-                if user.email_notifications and user.email:
+                if student.email_notifications and student.email:
                     from app.emails import send_guru_proposal_to_student
                     send_guru_proposal_to_student(proposal, proposal.request.student)
 
-                if user.text_notifications and user.phone_number:
+                if student.text_notifications and student.phone_number:
                     from app.texts import send_guru_proposal_to_student
                     send_guru_proposal_to_student(proposal, proposal.request.student)
 
@@ -982,15 +982,15 @@ class UserSessionView(restful.Resource):
             db_session.commit()
 
         #send notifications to Guru
-        if user.push_notifications:
+        if session.request.guru.push_notifications:
             from app.lib.push_notif import send_student_has_accepted_to_guru
             send_student_has_accepted_to_guru(session, session.request.guru)
 
-        if user.email_notifications and user.email:
+        if session.request.guru.email_notifications and user.email:
             from app.emails import send_student_has_accepted_to_guru
             send_student_has_accepted_to_guru(session, session.request.guru)
 
-        if user.text_notifications and user.phone_number:
+        if session.request.guru.text_notifications and user.phone_number:
             from app.texts import send_student_has_accepted_to_guru
             send_student_has_accepted_to_guru(session, session.request.guru)
             print "should send a text here"  #TODO SAMIR
@@ -1233,7 +1233,7 @@ class UserSessionMessageView(restful.Resource):
             message_json = request.json.get('message')
             message = Message.initFromJson(message_json, False)
 
-            if user.push_notifications:
+            if message.receiver.push_notifications:
                 #send push notification to all student devices
                 from app.lib.push_notif import send_message_to_receiver
                 send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
@@ -1243,7 +1243,7 @@ class UserSessionMessageView(restful.Resource):
             #     from app.emails import send_message_to_receiver
             #     send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
 
-            if user.text_notifications and user.phone_number:
+            if message.receiver.text_notifications and user.phone_number:
                 from app.texts import send_message_to_receiver
                 send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
 
@@ -1280,17 +1280,17 @@ class UserSupportMessageView(restful.Resource):
             message_json = request.json.get('message')
             message = Message.initFromJson(message_json, True)
 
-            if user.push_notifications:
+            if message.receiver.push_notifications:
                 #send push notification to all student devices
                 from app.lib.push_notif import send_message_to_receiver_support
                 send_message_to_receiver_support(message.sender, message.receiver)
 
 
-            if user.email_notifications and user.email:
+            if message.receiver.email_notifications and message.receiver.email:
                 from app.emails import send_message_to_receiver_support
                 send_message_to_receiver_support(message.sender, message.receiver)
 
-            if user.text_notifications and user.phone_number:
+            if message.receiver.text_notifications and message.receiver.phone_number:
                 from app.texts import send_message_to_receiver_support
                 send_message_to_receiver_support(message.sender, message.receiver)
 
