@@ -82,11 +82,11 @@
                     <h5 class='inline'>{{root.vars.request.description.substring(0, 35)}}..."</h5>
                     <i class="icon icon-right ion-chevron-right"></i>
                 </a>
-                <a ng-show='!(root.vars.request.contact.email || root.vars.request.contact.phone || root.vars.request.contact.push_notif)' class="item request-item item-icon-right" href='#/request-contact-method' nav-direction="forward">
+                <a ng-show='!user.push_notifications && !user.email_notifications' class="item request-item item-icon-right" href='#/request-contact-method' nav-direction="forward">
                     <h5 class='inline'>How should we contact you?</h5>
                     <i class="icon icon-right ion-chevron-right"></i>
                 </a>
-                <a ng-show='(root.vars.request.contact.email || root.vars.request.contact.phone || root.vars.request.contact.push_notif)' class="item request-item item-icon-right green-border"  href='#/request-contact-method' nav-direction="forward">
+                <a ng-show='user.push_notifications || user.email_notifications' class="item request-item item-icon-right green-border"  href='#/request-contact-method' nav-direction="forward">
                     <h5 class='inline'>Contact Method Selected</h5>
                     <i class="icon icon-right ion-chevron-right"></i>
                 </a>
