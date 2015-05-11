@@ -419,9 +419,17 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.$on('$ionicView.loaded', function() {
-      $timeout(function() {
-        $scope.scrollHalfway();
-      }, 500);
+      console.log('loaded');
+    });
+
+    $scope.$on('$ionicView.enter', function() {
+      if ($scope.calendar.num_selected === 0) {
+        $scope.success.show(500, 1500, 'Tap any white dates that you are available!');
+      }
+    })
+
+    $scope.$on('$ionicView.afterEnter', function() {
+      console.log('after view has loaded');
     });
 
     $scope.$on('$ionicView.beforeEnter', function(){
@@ -436,6 +444,17 @@ angular.module('uguru.util.controllers')
         // $scope.day_rows = generateCalendarDataStorage($scope.calendar.height, 1);
         // $scope.day_columns = generateCalendarDataStorage($scope.calendar.width, 1);
       }
+    });
+
+    // $timeout(function() {
+
+    // }, 500);
+    console.log('scrolling halfway...');
+
+    ionic.DomUtil.ready(function(){
+      // only happens the first time
+      $scope.scrollHalfway();
+
     });
 
   }

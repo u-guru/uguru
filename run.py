@@ -1,7 +1,12 @@
 from app import app
 from app import manager
+import os
 
-app.debug = True
+
+if os.environ.get('DATABASE_URL'):
+    app.debug = False
+else:
+    app.debug = True
 
 if __name__ == '__main__':
 	# manager.run()
