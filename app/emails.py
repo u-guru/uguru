@@ -118,7 +118,6 @@ def send_transactional_email(subject, content, receiver, tags):
         print "testing: email skipped intended for", receiver.email, subject, tags
 
     else:
-        print "production: for now: email skipped intended for", receiver.email, subject, tags
         result = mandrill_client.messages.send(message=message)
         return result
 

@@ -154,6 +154,8 @@ class DeviceView(restful.Resource):
 
         if 'push_notif_enabled' in request.json:
             device.push_notif_enabled = request.json.get('push_notif_enabled')
+            if device.user:
+                device.user.push_notifications = True
 
         if 'push_notif' in request.json:
             device.push_notif = request.json.get('push_notif')
@@ -166,8 +168,8 @@ class DeviceView(restful.Resource):
             device.background_location_enabled = request.json.get('background_location_enabled')
 
         # there is a token that was recently added, enable user push notifications
-        if device.push_notif and len(device.push_notif) > 5 and device.user and not previous_push_notif_value:
-            device.user.push_notifications = True
+        # if device.push_notif and len(device.push_notif) > 5 and device.user and not previous_push_notif_value:
+
 
         print 'push notifications', device.push_notif_enabled, device.push_notif
 

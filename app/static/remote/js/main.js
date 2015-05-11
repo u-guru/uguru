@@ -362,7 +362,7 @@ $ionicPlatform.ready(function() {
             document.addEventListener("resume", function() {
 
                 // console.log('device is resuming....');
-                checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+                // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
                 User.getUserFromServer($scope, null, $state);
 
             }, false);
@@ -646,10 +646,10 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
                       Version.setVersion(1.0);
                     }
 
-                    // if (LOCAL) {
-                    //   console.log('it gets here');
-                    //   $templateCache.removeAll();
-                    // }
+                    if (LOCAL) {
+                      console.log('it gets here');
+                      $templateCache.removeAll();
+                    }
 
                     if (serverVersionNumber != currentVersion) {
 

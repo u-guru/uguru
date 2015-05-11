@@ -134,7 +134,7 @@ class User(Base):
     push_notifications_enabled = Column(Boolean)
 
     #user notifications
-    push_notifications = Column(Boolean, default = False)
+    push_notifications = Column(Boolean, default = True)
     email_notifications = Column(Boolean, default = True)
     text_notifications = Column(Boolean, default = False)
 

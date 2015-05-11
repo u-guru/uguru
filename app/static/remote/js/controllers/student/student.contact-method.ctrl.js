@@ -68,7 +68,11 @@ angular.module('uguru.student.controllers')
             $scope.user.current_device.push_notif = deviceToken;
             $scope.user.current_device.push_notif_enabled = true;
             $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
-            $scope.user.updateAttr('push_notifications', $scope.user, $scope.user.push_notifications, null, $scope);
+
+            payload = {
+              'push_notifications': true
+            }
+            $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
         }
 
       }, function(err) {
