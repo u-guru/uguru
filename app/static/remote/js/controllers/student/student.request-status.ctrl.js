@@ -249,6 +249,8 @@ angular.module('uguru.student.controllers')
       }, 1000);
     }
 
+
+
     $scope.showGoogleMap = function() {
 
       if (!$scope.request.position || !$scope.request.position.latitude || !$scope.request.position.longitude) {

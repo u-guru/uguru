@@ -37,7 +37,7 @@
       <a class="item item-avatar-right upcoming-session-card" ng-repeat='proposal in user.active_proposals' ng-click='goToProposalDetails(proposal)'>
         <img ng-src="{{proposal.request.student.profile_url}}">
         <h2>{{proposal.request.student.name}} {{proposal.request.course.short_name}}</h2>
-        <h4 class='pending'> EXPIRING SOON</h4>
+        <h4 class='pending'> EXPIRING SOON</h4> <p class='inline italic'>{{proposal.formatted_time}} ago</p>
       </a>
 
     <!-- Guru is waiting for student response -->

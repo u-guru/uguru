@@ -80,6 +80,7 @@ angular.module('uguru.student.controllers')
         } else {
           current_message.class = 'item-avatar-left';
         }
+        current_message.formatted_time = $scope.root.time.since(new Date(current_message.time_created))
       }
       messages.sort($scope.sortMessageComparator);
       $scope.loader.hide();
@@ -98,7 +99,7 @@ angular.module('uguru.student.controllers')
       $scope.hide_footer = true;
       if ($scope.platform.mobile  && $cordovaKeyboard) {
         $cordovaKeyboard.close();
-        $ionicScrollDelegate.$getByHandle('message-scroll').scrollTop();
+        $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
       }
       $timeout(function() {
         $scope.hide_footer = false;
@@ -116,17 +117,20 @@ angular.module('uguru.student.controllers')
       // })
 
       // $scope.new_message.content = '';
-      $ionicScrollDelegate.$getByHandle('message-scroll').scrollBy(0, 200, true);
+
 
       var messagePayload = $scope.getMessagePayload(content);
-
       $scope.sendMessageToServer(messagePayload);
 
-      messagePayload.message.class = 'item-avatar-right';
+      // $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
+
+      messagePayload.message.class = 'item-avatar-right animated fadeInUp';
       messagePayload.message.profile_url= $scope.user.profile_url;
-      console.log(messagePayload.message.class, messagePayload.message.profile_url);
+      messagePayload.message.formatted_time = 'a couple seconds ago';
       $scope.new_message.content = '';
       $scope.messages.push(messagePayload.message);
+      // $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
+      $ionicScrollDelegate.$getByHandle('message-scroll').scrollBy(0, 100, true);
     }
 
     $scope.getMessagePayload = function (content) {
@@ -225,28 +229,37 @@ angular.module('uguru.student.controllers')
       },500);
     });
 
+    $scope.checkSubmission = function(keyEvent) {
+      if (keyEvent.which === 13)
+        $scope.sendMessage($scope.new_message.content);
+    }
+
     $scope.doRefresh = function() {
         var callback = function() {
-          $scope.$broadcast('scroll.refreshComplete');
-          $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
+          $timeout(function() {
+            $scope.$broadcast('scroll.refreshComplete');
+            $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
+          }, 3000);
         }
-        console.log('getting message from server');
+        // console.log('getting message from server');
         $scope.getMessagesFromServer(null ,true,callback);
 
-        $timeout(function() {
-          console.log('shutting off anyways incase its not');
+        // $timeout(function() {
+        //   console.log('shutting off anyways incase its not');
 
-          $scope.$broadcast('scroll.refreshComplete');
-          $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
-        }, 3000)
+        //   $scope.$broadcast('scroll.refreshComplete');
+        //   $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
+        // }, 3000)
     }
 
     $scope.$on('$ionicView.beforeEnter', function(){
       $scope.loader.show();
       $scope.messages = $scope.processMessages($scope.session.messages);
+
       $timeout(function() {
         $scope.getMessagesFromServer(30000);
-      }, 5000)
+      }, 30000)
+
     });
 
     $scope.$on('$ionicView.afterEnter', function(){

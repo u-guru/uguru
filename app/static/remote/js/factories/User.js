@@ -1,6 +1,6 @@
 angular.module('uguru.user', [])
-.factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory',
-    function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory) {
+.factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory', 'RootService',
+    function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -66,6 +66,7 @@ angular.module('uguru.user', [])
             for (var i = 0; i < user_requests.length; i ++) {
               var index_request = user_requests[i];
               if (index_request.status === 0) {
+                index_request.formatted_time = RootService.time.since(new Date(index_request.time_created));
                 user.active_requests.push(index_request);
               }
               else if (index_request.status === 1) {
@@ -217,6 +218,7 @@ angular.module('uguru.user', [])
                         user.previous_guru_proposals.push(index_proposal);
                     }
                     if (index_proposal.status === 0 && index_proposal.request.status === 0) {
+                        index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
                         user.active_proposals.push(index_proposal);
                     }
                     if (index_proposal.status === 2) {

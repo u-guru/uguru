@@ -484,7 +484,6 @@ angular.module('uguru.guru.controllers')
       }
 
       console.log(JSON.stringify($scope.user.current_device));
-      // User.getUserFromServer($scope, null, $state);
     });
 
     $scope.$on('$ionicView.enter', function(){
@@ -492,6 +491,7 @@ angular.module('uguru.guru.controllers')
       $scope.root.vars.guru_mode = true;
       $localstorage.setObject('user', $scope.user);
       console.log('printing guru stuff', $scope.user.active_proposals);
+      User.getUserFromServer($scope, null, $state);
 
       //check if user already has push notification token
 

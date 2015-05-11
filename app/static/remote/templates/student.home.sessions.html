@@ -37,7 +37,7 @@
       <a class="item item-avatar-right upcoming-session-card" ng-repeat='request in user.active_requests' ng-click='goToRequestStatus(request)'>
         <img ng-src="{{img_base}}./img/guru-profile.svg">
         <h2>{{request.course.short_name}}</span> Request</h2>
-        <h4 class='pending'> CONTACTING GURUS </h4>
+        <h4 class='pending'> CONTACTING GURUS </h4> <p class='inline italic'>{{request.formatted_time}} ago</p>
       </a>
     </div>
 

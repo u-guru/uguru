@@ -86,7 +86,7 @@
               </a>
               <a class="item gray settings-item item-icon-right" ng-show='user && user.id && !user.guru_mode'ng-click="goToCards()">
                 <span ng-show='user.cards.length === 0'>Add a Payment Card</span>
-                <span ng-show='user.cards.length >= 0'>Your Payment Cards</span>
+                <!-- <span ng-show='user.cards.length >= 0'>Your Payment Cards</span> -->
                 <i style="font-size:14px;" class="icon item-note ion-chevron-right positive"></i>
               </a>
               <a class="item gray settings-item item-icon-right" ng-show="user.student_transactions && user.student_transactions.length > 0" href="#/settings-transactions" nav-direction="forward">
@@ -98,7 +98,7 @@
                OTHER
             </div>
             <a class="item gray settings-item" ng-click="showVersion()">About</a>
-            <a class="item gray settings-item" ng-show="user.id && user.auth_token" ng-click="logoutUser()">Logout</a>
+            <a class="item gray settings-item" ng-show="user.id" ng-click="logoutUser()">Logout</a>
             <a class="item gray settings-item" ng-click="clearCache()">Clear Cache</a>
             </ul>
           </ul>

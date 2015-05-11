@@ -1150,7 +1150,7 @@ tabs-positive > .tabs .tab-item .badge, .tabs.tabs-positive .tab-item .badge {
 .padding-top-1-5em {
   padding-top: 1.5em; }
 
-.flex-row {
+padding-top-1 .flex-row {
   flex-direction: row;
   -webkit-flex-direction: row; }
 
@@ -2111,8 +2111,7 @@ a.timer-icon-link {
   color: rgba(0, 0, 0, 0.4); }
 
 .proposal-details .cancel-session-container {
-  padding: 0.5em;
-  padding-top: 1em; }
+  padding: 0.5em; }
 
 .margin-half {
   margin: 0.5em; }
@@ -2148,3 +2147,21 @@ a.timer-icon-link {
   font-weight: 500;
   opacity: 1;
   margin-top: 0px; }
+
+.padding-top-1em {
+  padding-top: 1em; }
+
+.message-header-bar.header-bar.bar {
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.2) !important; }
+
+.message-content {
+  border-top: 2px solid black; }
+
+.text-time {
+  font-size: 75%;
+  opacity: 0.3;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: "OpenSans-Bold";
+  margin-right: 0.3em;
+  margin-top: -0.5em; }

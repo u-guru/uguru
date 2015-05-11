@@ -1720,7 +1720,7 @@ tabs-positive>.tabs .tab-item .badge, .tabs.tabs-positive .tab-item .badge {
   padding:1.5em 0.5em 1em 0.5em;
 }
 
-.-5em {
+.padding-top-1-5em {
   padding-top:1.5em;
 }
 padding-top-1
@@ -3130,4 +3130,22 @@ a.timer-icon-link {
 
 .padding-top-1em {
   padding-top: 1em;
+}
+
+.message-header-bar.header-bar.bar {
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+.message-content {
+  border-top:2px solid rgba(0,0,0, 1);
+}
+
+.text-time {
+  font-size:75%;
+  opacity:0.3;
+  text-transform:uppercase;
+  font-weight:bold;
+  font-family: "OpenSans-Bold";
+  margin-right:0.3em;
+  margin-top:-0.5em;
 }

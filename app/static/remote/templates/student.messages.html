@@ -1,7 +1,7 @@
 
 <ion-view class='messages' hide-nav-bar = 'true' cache-view='false'>
 
-  <ion-header-bar class="header-bar ng-class:{'bar-dark': user.guru_mode}">
+  <ion-header-bar class="message-header-bar header-bar ng-class:{'bar-dark': user.guru_mode}">
     <a class="button button-clear button-back ng-class:{'button-white': user.guru_mode}"  ng-click='goBack()'>Back</a>
     <h5 class="title">{{message_name}}</h5>
   </ion-header-bar>
@@ -19,7 +19,7 @@
       </div> -->
 
     </ion-header-bar>
-  <ion-content delegate-handle="message-scroll" ng-click='setUnfocus()' class='white-background'>
+  <ion-content delegate-handle="message-scroll" ng-click='setUnfocus()' class='white-background message-content'>
       <ion-refresher
         pulling-icon="ion-arrow-down-c"
         spinner="circles"
@@ -28,7 +28,7 @@
     <!-- <ion-scroll class="messages" ng-click="hideKeyboard()"> -->
 
 
-      <div class='scroll pure-g-c flex-column center full-height' ng-show='!messages || messages.length === 0'>
+      <div class='scroll pure-g-c flex-column center full-height message-content' ng-show='!messages || messages.length === 0'>
         <div class='padding-1em padding-1em flex-item-c'> </div>
         <div class='flex-item-c sleeping-guru light-opacity'>
           <img class='pure-img animated swing message-default-image' ng-src='{{img_base}}./img/guru-sleeping.svg' >
@@ -47,6 +47,9 @@
             <div class="text">
               <!-- <span class='sans-semibold' ng-show='message.sender.id !== user.id && message.sender.profile_url === default_profile_url'>{{message.sender.name.split(' ')[0]}}:</span> -->
               {{message.contents}}</div>
+              <div class='text-time' ng-show='$index === messages.length - 1'>
+                {{message.formatted_time}} ago
+              </div>
             <img ng-src="{{message.profile_url}}" ng-show='message.class === "item-avatar-right"'>
           </li>
       </ul>
@@ -60,6 +63,7 @@
                 ng-model="new_message.content"
                 ng-focus="setFocus()"
                 ng-blur="setFocus()"
+                ng-keypress="checkSubmission($event)"
         />
     </label>
 

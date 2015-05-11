@@ -1225,6 +1225,8 @@ class UserSessionMessageView(restful.Resource):
     @marshal_with(UserSerializer)
     def post(self, _id, _session):
         user = get_user(_id)
+
+
         print request.json
         _session = Session.query.get(_session)
         if not user or not _session:
@@ -1235,10 +1237,25 @@ class UserSessionMessageView(restful.Resource):
             message_json = request.json.get('message')
             message = Message.initFromJson(message_json, False)
 
-            if message.receiver.push_notifications:
+            _relationship = Relationship.query.get(message.relationship_id)
+
+            #guru sent it
+            if user.id == message.receiver_id:
+
+                #student is the one 'receiving the message'
+                message_receiver = message.sender
+                message_sender = message.receiver
+
+            #student sent it
+            else:
+                #student is the one 'receiving the message'
+                message_receiver = message.receiver
+                message_sender = message.sender
+
+            if message_receiver.push_notifications:
                 #send push notification to all student devices
                 from app.lib.push_notif import send_message_to_receiver
-                send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
+                send_message_to_receiver(message_sender, message_receiver, message._relationship.sessions[0].request.course)
 
 
             # if user.email_notifications and user.email:
@@ -1247,7 +1264,7 @@ class UserSessionMessageView(restful.Resource):
 
             if message.receiver.text_notifications and user.phone_number:
                 from app.texts import send_message_to_receiver
-                send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
+                send_message_to_receiver(message_sender, message_receiver, message._relationship.sessions[0].request.course)
 
         return user, 200
 
