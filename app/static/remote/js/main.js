@@ -134,8 +134,8 @@ $ionicPlatform.ready(function() {
           $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush) {
 
 
-          console.log('1. checking for app updates\n');
-          checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
+          // console.log('1. checking for app updates\n');
+          // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
 
 
           $scope.network_speed = null;
