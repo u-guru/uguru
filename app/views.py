@@ -117,6 +117,14 @@ def admin_testing():
         return redirect(url_for('admin_login'))
     return render_template("new_admin/admin.product.testing.html")
 
+@app.route('/admin/support/tickets/')
+def admin_testing():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    from app.models import Support
+    support_tickets = Support.query.all()
+    return render_template("new_admin/admin.support.tickets.html", support_tickets=support_tickets[::-1])
+
 @app.route('/admin/')
 @app.route('/admin/team/')
 @app.route('/admin/home/')

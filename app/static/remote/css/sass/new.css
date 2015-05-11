@@ -2157,6 +2157,11 @@ a.timer-icon-link {
 .message-content {
   border-top: 2px solid black; }
 
+.support-textarea {
+  resize: none;
+  padding: 0.5em;
+  font-size: 115%; }
+
 .text-time {
   font-size: 75%;
   opacity: 0.3;

@@ -53,16 +53,16 @@ class RankingsView(restful.Resource):
 class SupportView(restful.Resource):
 
     @marshal_with(UserSerializer)
-    def post(self, user_id):
+    def post(self):
 
-        user = get_user(user_id)
+        user = get_user(request.json.get('user_id'))
 
         if not user:
             abort(404)
 
         msg = request.json.get('message')
 
-        support = Support(user, msg, request.json)
+        support = Support.init(user, msg, request.json)
 
         return user, 200
 

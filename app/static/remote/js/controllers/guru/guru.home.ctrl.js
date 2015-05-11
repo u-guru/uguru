@@ -75,6 +75,14 @@ angular.module('uguru.guru.controllers')
       $scope.becomeGuruModal = modal;
   });
 
+  $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.supportModal = modal;
+    });
+
+
   // $scope.registerPushCordova = function () {
     $scope.user.summmer_15 = false;
     $scope.user.uber_friendly = false;
@@ -506,6 +514,24 @@ angular.module('uguru.guru.controllers')
       $scope.checkForRatings();
 
     });
+
+
+    $scope.launchSupport = function() {
+      $scope.supportModal.show();
+    }
+
+
+    $scope.supportTicket = {message: null};
+
+    $scope.submitSupport = function() {
+      $scope.supportTicket.user_id = $scope.user.id;
+      Support.create($scope.supportTicket).then(function(){
+        $scope.success.show(0, 2000, 'Your support message has been submitted. We will get back to you very soon!');
+        $scope.supportModal.hide();
+      }, function(err) {
+        console.log('error from server', err);
+      } );
+    }
 
 
 

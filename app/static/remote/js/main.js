@@ -190,13 +190,13 @@ $ionicPlatform.ready(function() {
                 template: '<ion-spinner icon="lines" class="spinner-positive"></ion-spinner>'
               });
               $scope.root.vars.loaderOn = true;
-              $timeout(function() {
-                if ($scope.root.vars.loaderOn) {
-                  $scope.loader.hide();
-                  $scope.root.vars.loaderOn = false;
-                  $scope.success.show(0, 2000, 'Something went wrong. Please try again or contact support.');
-                }
-              }, 10000);
+              // $timeout(function() {
+              //   if ($scope.root.vars.loaderOn) {
+              //     $scope.loader.hide();
+              //     $scope.root.vars.loaderOn = false;
+              //     $scope.success.show(0, 2000, 'Something went wrong. Please try again or contact support.');
+              //   }
+              // }, 10000);
             },
             hide: function(){
               $ionicLoading.hide();

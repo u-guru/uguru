@@ -1,6 +1,7 @@
     <ion-view show-nav-bar='false' class="settings-mobile student-settings support-button ng-class:{'bar-dark': user.guru_mode}">
-      <ion-header-bar class='header-bar item-button-right'>
+      <ion-header-bar class='header-bar'>
         <h5 class="title bold sans-bold" style='left:0px !important; right:0px !important;'>My Profile & Settings</h5>
+        <a ng-show='user.id' class='button button-clear button-back' ng-click='launchSupport()'>Support</a>
       </ion-header-bar>
       <ion-content>
 

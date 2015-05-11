@@ -92,6 +92,7 @@ angular.module('uguru.util.controllers')
           $scope.$on('modal.shown', function() {
           if ($scope.addCourseModal.isShown() &&
             !$scope.addUniversityModal.isShown() &&
+            !$scope.supportModal.isShown() &&
               $localstorage.getObject('courses').length > 0) {
 
 
@@ -149,9 +150,12 @@ angular.module('uguru.util.controllers')
 
       $scope.$on('modal.shown', function() {
 
-        if ($scope.switchStatusBariOS || $scope.turnStatusBarWhiteText()) {
-          $scope.switchStatusBariOS();
-          $scope.turnStatusBarWhiteText();
+
+        if ($scope.turnStatusBarWhiteText) {
+          if (!$scope.supportModal.isShown() && $scope.switchStatusBariOS || $scope.turnStatusBarWhiteText()) {
+            $scope.switchStatusBariOS();
+            $scope.turnStatusBarWhiteText();
+          }
         }
 
         if ($scope.addCourseModal.isShown() &&

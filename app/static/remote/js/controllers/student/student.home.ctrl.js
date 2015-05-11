@@ -30,12 +30,13 @@ angular.module('uguru.student.controllers', [])
   '$cordovaStatusbar',
   '$ionicViewSwitcher',
   'Camera',
+  'Support',
 function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $cordovaKeyboard, $q,
  	University, $templateCache, $ionaicHistory, $ionicBackdrop,
   User, $ionicHistory, CordovaPushWrapper, $ionicPlatform, $rootScope, $cordovaPush,
   $ionicPlatform, $ionicBackdrop, $document, $ionicPopover, $cordovaStatusbar,
-  $ionicViewSwitcher, Camera)     {
+  $ionicViewSwitcher, Camera, Support)     {
   // .fromTemplate() method
   // if (!$scope.user.university && !$scope.user.university_id) {
   //   $state.go('^.onboarding-location');
@@ -185,6 +186,13 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 	}).then(function(modal) {
 	    $scope.addUniversityModal = modal;
 	});
+
+  $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.supportModal = modal;
+        });
 
   // $ionicModal.fromTemplateUrl(BASE + 'templates/ratings.modal.html', {
   //     scope: $scope,
@@ -357,6 +365,18 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
     }
 
+    $scope.supportTicket = {message: null};
+
+    $scope.submitSupport = function() {
+      $scope.supportTicket.user_id = $scope.user.id;
+      Support.create($scope.supportTicket).then(function(){
+        $scope.success.show(0, 2000, 'Your support message has been submitted. We will get back to you very soon!');
+        $scope.supportModal.hide();
+      }, function(err) {
+        console.log('error from server', err);
+      } );
+    }
+
     // $scope.goToTransactions = function() {
     //   if (!$scope.user.auth_token) {
     //     $scope.signupModal.show()
@@ -496,6 +516,10 @@ function($scope, $state, $ionicPopup, $timeout, $localstorage,
 
 
     });
+
+    $scope.launchSupport = function() {
+      $scope.supportModal.show();
+    }
 
 
 
