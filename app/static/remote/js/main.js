@@ -196,7 +196,7 @@ $ionicPlatform.ready(function() {
                   $scope.root.vars.loaderOn = false;
                   $scope.success.show(0, 2000, 'Something went wrong. Please try again or contact support.');
                 }
-              }, 3000);
+              }, 10000);
             },
             hide: function(){
               $ionicLoading.hide();
