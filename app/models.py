@@ -41,6 +41,45 @@ user_campaign_table = Table('user-campaign_assoc',
     Column('campaign_id', Integer, ForeignKey('campaign.id'))
     )
 
+queue_guru_table = Table('guru-queue_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('queue_id', Integer, ForeignKey('queue.id'))
+    )
+
+request_tag_table = Table('request-tag_assoc',
+    Base.metadata,
+    Column('request_id', Integer, ForeignKey('request.id')),
+    Column('tag_id', Integer, ForeignKey('tag.id'))
+    )
+
+course_tag_table = Table('course-tag_assoc',
+    Base.metadata,
+    Column('course_id', Integer, ForeignKey('course.id')),
+    Column('tag_id', Integer, ForeignKey('tag.id'))
+    )
+
+user_tag_table = Table('user-tag_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('tag_id', Integer, ForeignKey('tag.id')))
+
+student_resource_table = Table('user-resource_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('resource_id', Integer, ForeignKey('resource.id')))
+
+guru_resource_table = Table('guru-resource_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('resource_id', Integer, ForeignKey('resource.id'))
+    )
+
+resource_tag_table = Table('resource-tag_assoc',
+    Base.metadata,
+    Column('resource_id', Integer, ForeignKey('resource.id')),
+    Column('tag_id', Integer, ForeignKey('tag.id')))
+
 class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
@@ -85,6 +124,14 @@ class User(Base):
         secondary = student_courses_table,
         backref = backref('students', lazy='dynamic')
         )
+
+    student_resources = relationship("Resource",
+        secondary= student_resource_table,
+        backref='students', lazy='dynamic')
+
+    guru_resources = relationship("Resource",
+        secondary= guru_resource_table,
+        backref='gurus', lazy='dynamic')
 
     #Guru fields
     is_a_guru = Column(Boolean, default = False)
@@ -652,6 +699,9 @@ class Campaign(Base):
     )
 
 
+
+
+
 class Position(Base):
     __tablename__ = 'position'
     id = Column(Integer, primary_key=True)
@@ -702,6 +752,114 @@ class Position(Base):
             raise
         return position
 
+
+class Resource(Base):
+    __tablename__ = 'resource'
+
+    id = Column(Integer, primary_key=True)
+
+    _type = Column(Integer, default = 0)
+    status = Column(Integer, default = 0)
+
+    file_type = Column(String)
+    file_url = Column(String)
+    file_size = Column(String)
+    handwritten = Boolean(String)
+
+    course_id = Column(Integer, ForeignKey('course.id'))
+    course = relationship("Course",
+        primaryjoin="Course.id==Resource.course_id",
+        uselist=False)
+
+    contributed_user_id = Column(Integer, ForeignKey('user.id'))
+    contributed_user = relationship("User",
+        primaryjoin="User.id==Resource.contributed_user_id",
+        uselist=False)
+
+
+
+    time_uploaded = Column(DateTime)
+    times_accessed = Column(Integer)
+    upvotes = Column(Integer, default = 0)
+    downvotes = Column(Integer, default = 0)
+
+    file_id = Column(Integer, ForeignKey("file.id"))
+    _file = relationship("File",
+        primaryjoin="File.id==Resource.file_id")
+
+    semester_id = Column(Integer)
+
+    year_id = Column(Integer)
+
+    professor_name = Column(String)
+
+    course_string = Column(String)
+
+
+
+
+class Queue(Base):
+    __tablename__ = 'queue'
+    GURUS_ONLY = 0
+
+    id = Column(Integer, primary_key = True)
+
+    request_id = Column(Integer, ForeignKey("request.id"))
+
+    _type = Column(Integer, default = 0)
+
+    gurus = relationship("User",
+        secondary= queue_guru_table,
+        backref = backref('gurus', lazy='dynamic'))
+
+    status = Column(Integer, default = 0)
+
+    time_created = Column(DateTime)
+    last_updated = Column(DateTime)
+
+class Tag(Base):
+    __tablename__ = 'tag'
+
+    id = Column(Integer, primary_key = True)
+
+    times_referenced = Column(Integer)
+
+    name = Column(String)
+    time_created = Column(String)
+    last_referenced = Column(String)
+
+    linked_tags = Column(String)
+
+    rank = Column(Integer)
+
+    time_created = Column(DateTime)
+
+    creator_id = Column(Integer, ForeignKey('user.id'))
+    creator = relationship("User",
+        primaryjoin="User.id==Tag.creator_id",
+        uselist=False)
+
+    courses = relationship("Course",
+        secondary= course_tag_table,
+        backref = backref('tags', lazy="dynamic"))
+
+    requests = relationship("Request",
+        secondary= request_tag_table,
+        backref = backref('tags', lazy="dynamic"))
+
+    users = relationship("User",
+        secondary = user_tag_table,
+        backref = backref("tags", lazy="dynamic"))
+
+    resources = relationship("Resource",
+        secondary = resource_tag_table,
+        backref = backref("tags", lazy="dynamic"))
+
+
+
+
+
+
 class Request(Base):
     __tablename__ = 'request'
 
@@ -722,6 +880,10 @@ class Request(Base):
     STUDENT_NO_SHOW = 11
     DEFAULT_PRICE = 20
 
+    GURU_REQUEST = 0
+    QUESTION = 1
+
+
     id = Column(Integer, primary_key=True)
 
     time_created = Column(DateTime)
@@ -729,6 +891,7 @@ class Request(Base):
     status = Column(Integer, default = 0) #0 = pending, # 1 = matched, # 2 = canceled, # 3 = expired
     session = relationship("Session", uselist=False, backref="request")
     position = relationship("Position", uselist=False, backref="request")
+    queue = relationship("Queue", uselist=False, backref="request")
 
     student_calendar_id = Column(Integer, ForeignKey('calendar.id'))
     student_calendar = relationship("Calendar",
@@ -751,6 +914,15 @@ class Request(Base):
     contact_email = Column(Boolean)
     contact_push = Column(Boolean)
     contact_text = Column(Boolean)
+    anonymous = Column(Boolean)
+    public_post = Column(Boolean)
+    urgency = Column(Integer, default = 0)
+
+    student_price = Column(Float)
+
+    _type = Column(Integer, default = 0)
+
+    giphy_url = Column(String)
 
     course_id = Column(Integer, ForeignKey('course.id'))
     course = relationship("Course",
@@ -897,6 +1069,36 @@ class Proposal(Base):
             raise
         return proposal
 
+class Game(Base):
+    __tablename__ = 'game'
+
+    id = Column(Integer, primary_key = True)
+
+    user_id = Column(Integer, ForeignKey('user.id'))
+    user = relationship("User",
+        uselist=False,
+        primaryjoin = "User.id == Game.user_id",
+        backref="games"
+    )
+
+    _type = Column(Integer, default = 0)
+
+    score = Column(Float)
+    time = Column(Float)
+    time_started = Column(DateTime)
+    time_completed = Column(DateTime)
+    length_seconds = Column(Integer)
+
+    level_reached = Column(Integer)
+
+    university_id = Column(Integer, ForeignKey('university.id'))
+    university = relationship("University",
+        uselist = False,
+        primaryjoin = "University.id == Game.university_id",
+        backref = 'games'
+    )
+
+
 class File(Base):
     __tablename__ = 'file'
     id = Column(Integer, primary_key=True)
@@ -1011,6 +1213,14 @@ class Event(Base):
         uselist = False,
         primaryjoin = "User.id == Event.rank_guru_id",
         backref = "guru_rank_events"
+    )
+
+    ## User that did the event
+    queue_id = Column(Integer, ForeignKey("queue.id"))
+    queue = relationship("Queue",
+        uselist = False,
+        primaryjoin = "Queue.id == Event.queue_id",
+        backref = "events"
     )
 
     #status = 0
@@ -1279,9 +1489,11 @@ class Message(Base):
             doNothing = False
 
         message.relationship_id = message_json.get('relationship_id')
+
         message.session_id = message_json.get('session_id')
         message.sender_id = message_json.get('sender_id')
         message.receiver_id = message_json.get('receiver_id')
+
         db_session.add(message)
         try:
             db_session.commit()
