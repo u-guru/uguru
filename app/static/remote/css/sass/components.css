@@ -203,7 +203,7 @@ textarea {
     margin-bottom: 2px;
     border-radius: 4px; }
 .location-modal .current-location-item {
-  padding: 10px 12px 10px 45px; }
+  padding: 14px 14px 15px 45px; }
 .location-modal p {
   line-height: 1em; }
 
@@ -706,11 +706,16 @@ img.custom-icon.list-custom-icon.request-icon {
   opacity: 1; }
 
 .blue.blue-left-margin {
-  font-family: "OpenSans-SemiBold";
-  color: #68A7CF; }
+  font-family: "OpenSans-SemiBold"; }
 
 .availability-modal .scroll {
   -webkit-transform: translate3d(0px, 0px, 0px) scale(1);
+  transform: translate3d(0px, 0px, 0px) scale(1);
   width: 100%;
   display: flex;
-  flex-direction: row; }
+  -webkit-display: flex;
+  flex-direction: row;
+  -webkit-flex-direction: row; }
+
+.tag-input-wrapper .item-input {
+  padding: 11px 0px 7px 15px !important; }

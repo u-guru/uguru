@@ -14,13 +14,13 @@
           <ion-item class='dark-bg'>
           <!-- <ui-gmap-search-box template="searchbox.template" events="searchbox.events"></ui-gmap-search-box> -->
             <div id='searchBoxParent'>
-              <input type="text" id='location-input' placeholder="Enter preferred location" ng-model='location_search_text.value' >
+              <input type="text" id='location-input'   placeholder="Enter preferred location" ng-model='location_search_text.value' >
             </div>
 
           </ion-item>
 
           <ion-item class='item-icon-left current-location-item' ng-click='attemptToGetLocation()' ng-show='!user.recent_position || !user.recent_position.coords'>
-            <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='/remote/img/icons/location.svg'>
+            <img   style='margin-top: 0.4em;' class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/location.svg'>
             <p> Current Location</p>
           </ion-item>
           <ion-item ng-repeat='location in root.vars.nearby_locations' class='location-item item-icon-right' ng-click='saveLocationAndClose(location)'>

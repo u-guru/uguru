@@ -4,7 +4,8 @@
         <div class='pure-g-c flex-column height-40 j-center'>
             <div class='pure-g center no-margin'>
               <div class='pure-u-1 center'>
-                <img class='pure-img profile-img sidebar-img'  src='{{img_base}}./img/verbs/session.svg'/>
+                <img ng-show='user && !user.id'class='pure-img profile-img sidebar-img'  src='https://graph.facebook.com/10152573868267292/picture?width=100&height=100'/>
+                <img ng-show='user && user.profile_url'class='pure-img profile-img sidebar-img'  src='user.profile_url'/>
               </div>
             </div>
             <div class='pure-g'>

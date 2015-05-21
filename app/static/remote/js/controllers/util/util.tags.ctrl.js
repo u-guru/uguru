@@ -43,11 +43,26 @@ angular.module('uguru.util.controllers')
 
     $scope.$on('modal.shown', function() {
 
-      // if ($scope.tagsModal && $scope.tagsModal.isShown()) {
-      //   if ($scope.request.tags & $scope.request.tags.length) {
-      //     $scope.input_tags = $scope.request.tags
-      //   }
-      // }
+      if ($scope.tagsModal && $scope.tagsModal.isShown()) {
+
+        $timeout(function() {
+
+            //focus on keyboard
+            var tags_input = document.getElementById('tags-input')
+
+            //focus the input
+            tags_input.focus();
+
+            tags_input.addEventListener( 'keyup', function( e ) {
+                if(e.which === 13 && tags_input.value.length > 0) {
+                    $scope.saveTag();
+                }
+            } );
+
+        }, 500);
+
+
+      }
 
     });
 

@@ -87,6 +87,22 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.$on('modal.shown', function() {
+
+      if ($scope.descriptionModal && $scope.descriptionModal.isShown()) {
+
+        $timeout(function() {
+
+            //focus on keyboard
+            document.getElementById("description-input").focus();
+
+
+        }, 500);
+
+      }
+
+    })
+
     var processFileSize = function(file_string) {
       return Math.round((parseInt(file_string) / 1000), 2)
     }
