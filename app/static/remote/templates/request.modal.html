@@ -6,7 +6,7 @@
     </div>
     <h1 class="title">Request a Session</h1>
     <div class="buttons">
-      <button class="button button-clear button-header-link submit-button" ng-click='launchContactingModal()'>
+      <button class="button button-clear button-header-link submit-button" ng-click='submitRequest()'>
         <span ng-show='!progress'>Done </span>
         <span class='blue' ng-show='progress'>Okay</span>
       </button>
@@ -35,8 +35,8 @@
 
             <!-- ng-change="updateProgress()" -->
             <a ng-click='toggleYourCourses()'>
-              <img ng-show='show_student_courses' class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='/remote/img/icons/chevron-filled-down.svg'>
-              <img ng-show='!show_student_courses && user.student_courses && user.student_courses.length > 0'class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='/remote/img/icons/chevron-filled.svg'>
+              <img ng-show='show_student_courses' class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='{{img_base}}./img/icons/chevron-filled-down.svg'>
+              <img ng-show='!show_student_courses && user.student_courses && user.student_courses.length > 0'class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='{{img_base}}./img/icons/chevron-filled.svg'>
             </a>
           </ion-item>
 
@@ -150,8 +150,9 @@
 
           <ion-item ng-hide='progress || request.urgency' >
             <a ng-click='launchAvailabilityModal()' style='width:100%; height:100%;'>
-              <p class='inline'> When are you available </p>
-              <p class='align-right blue item-right-text'>Pick a Time</p>
+              <p class='inline'> When are you available? </p>
+              <p ng-show='!request.calendar.start_time.hours && !request.calendar.start_time.minutes'class='align-right blue item-right-text'>Pick a Time</p>
+              <p ng-show='request.calendar.start_time.hours || request.calendar.start_time.minutes' class='align-right blue item-right-text'>{{request.calendar.date.formatted_date}}, {{request.calendar.start_time.hours}} </p>
             </a>
           </ion-item>
 
@@ -159,13 +160,13 @@
           </div>
           <ion-item class='relative item-icon-right' ng-hide='progress' ng-click='launchDescriptionModal()'>
             <div class='empty-description-wrapper' ng-hide='progress || request.description'>
-              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='/remote/img/icons/paperclip.svg'>
+              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip.svg'>
               <span class="input-label no-padding-top"><p> Describe your problem (optional)</p></span>
               <div class='pure-u-1 padding-1em'> </div>
             </div>
 
             <div class='description-wrapper item-icon-right' ng-hide='progress || (!request.description && !request.attached_files.length > 0)'>
-              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='/remote/img/icons/paperclip.svg'>
+              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip.svg'>
               <p class='black' ng-show='request.description'>
                 {{request.description}}
               </p>
@@ -186,7 +187,7 @@
 
           </ion-item>
           <ion-item class='item-icon-left' ng-hide='progress' ng-click='launchTagsModal()'>
-            <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='/remote/img/icons/tags.svg'>
+            <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/tags.svg'>
             <p class='tags-wrapper' style='white-space:normal; padding-left:1em;'>&nbsp;<span class='blue request-tag' ng-repeat='tag in request.tags'>#{{tag}} </span> </p>
           </ion-item>
       </ion-list>

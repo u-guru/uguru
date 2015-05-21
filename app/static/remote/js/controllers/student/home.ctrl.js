@@ -20,7 +20,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicSideMenuDelegate, $ionicBackdrop)     {
 
 
-
   $ionicPlatform.ready(function() {
 
         $scope.turnStatusBarWhite = function() {
@@ -36,6 +35,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.turnStatusBarBlack = function() {
           if (window.StatusBar) {
                       // console.log('Extra #1. Styling iOS status bar to black \n\n');
+
             StatusBar.styleDefault();
             StatusBar.overlaysWebView(true);
           }

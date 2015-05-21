@@ -20,14 +20,33 @@ angular.module('uguru.util.controllers')
 
     $scope.showDateTabs = false;
     $scope.weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    $scope.hours = ['12 am', '1 am', '2 am', '3 am', '4 am', '5 am', '6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12pm',
+                    '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm', '8 pm', '9 pm', '10 pm', '11 pm'];
     $scope.calendar = {
 
-                        date: {offset: 0},
+                        date: {offset: 0, date:today.getDate(), month: today.getMonth() + 1},
                         selected_custom_date:'Date',
                         weekday_offset: (today.getDay()) + 2 % 7,
                         start_date: (today.getDate()) + 2,
                         next_month_length: nextMonthDays,
                         offset_length: 12,
+                        selected_time: {
+                          start_time: {
+                            hour: null,
+                            minute:null
+                          },
+                          end_time: {
+                            hour: null,
+                            minute: null
+                          }
+                        },
+                        coords: {
+                          calendarTopY: null,
+                          calendarBottomY: null,
+                          currentTopY: null,
+                          currentHeight: null,
+                          chunkHeights: {hour:null, thirty:null},
+                        },
                       };
 
     $scope.handle = $ionicTabsDelegate.$getByHandle('availability-handle');
@@ -52,23 +71,34 @@ angular.module('uguru.util.controllers')
           initDraggables();
         }, 1000);
 
-
         $scope.onAvailabilityTabSelected = function(date_index, actual_date) {
           var index = $scope.handle.selectedIndex();
           if (index < 2) {
             $scope.calendar.date.offset = index;
             $scope.toggleCalendarHeight(false);
+            var date = today.getDate() + index;
+            $scope.calendar.date.date = date;
+            var weekday = $scope.weekdays[(date + $scope.calendar.weekday_offset) % 7];
+            $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
+            $scope.calendar.date.formatted_date = $scope.calendar.selected_custom_date;
           } else
           if (index === 2 && !date_index) {
             $scope.showDateTabs = true;
             $scope.toggleCalendarHeight(true);
+            var date = today.getDate() + index;
+            $scope.calendar.date.date = date;
+            var weekday = $scope.weekdays[(date + $scope.calendar.weekday_offset) % 7];
+            $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
+            $scope.calendar.date.formatted_date = $scope.calendar.selected_custom_date;
           }
           else {
             $scope.toggleCalendarHeight(false);
             $scope.calendar.date.offset = index + date_index;
             var weekday = $scope.weekdays[(date_index + $scope.calendar.weekday_offset) % 7];
             var date = actual_date;
+            $scope.calendar.date.date = date;
             $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
+            $scope.calendar.date.formatted_date = $scope.calendar.selected_custom_date;
             $scope.showDateTabs = false;
             $scope.date_index = null;
           }
@@ -76,6 +106,44 @@ angular.module('uguru.util.controllers')
       }
 
     });
+
+
+    function getPosition(element) {
+      var xPosition = 0;
+      var yPosition = 0;
+
+      while(element) {
+          xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+          yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+          element = element.offsetParent;
+      }
+      return { x: xPosition, y: yPosition };
+    }
+
+    $scope.getCalendarEventRect = function() {
+      var calendar_rows = document.getElementById('calendar-rows');
+      var client_rect = calendar_rows.getBoundingClientRect();
+      var element = getPosition(calendar_rows);
+
+    }
+
+    $scope.getChunksInBetween = function() {
+      //get calendar rect
+      //get current top height
+      //get bottom height
+      //
+    }
+
+
+    //updates all the numbers in between (the blue)
+    $scope.postDragCalendarUpdate = function() {
+
+    }
+
+
+
+    //updates the blue text at the end of drag move
+    // $scope.get
 
     var generateTargets = function () {
       //grab first row
@@ -87,6 +155,18 @@ angular.module('uguru.util.controllers')
       ending_point = last_row.getBoundingClientRect().top + last_row.getBoundingClientRect().height;
 
       height = (ending_point - starting_point) / 48;
+
+      $scope.calendar.coords.calendarTopY = Math.round(starting_point);
+      $scope.calendar.coords.calendarBottomY = Math.round(ending_point);
+
+
+      $scope.calendar.coords.chunkHeights.hours = Math.round(height * 2);
+      $scope.calendar.coords.chunkHeights.thirty = Math.round(height);
+
+      calendar_event_rect = document.getElementById('calendar-event').getBoundingClientRect();
+      $scope.calendar.coords.currentTopY = Math.round(calendar_event_rect.top - $scope.calendar.coords.calendarTopY);
+      $scope.calendar.coords.currentHeight = Math.round(calendar_event_rect.height);
+
 
       var result_targets = [];
       //grab last row
@@ -125,6 +205,9 @@ angular.module('uguru.util.controllers')
       // update the posiion attributes
       target.setAttribute('data-x', x);
       target.setAttribute('data-y', y);
+
+      $scope.updateCalendarMargins();
+
     }
 
     // window.dragMoveListener = dragMoveListener;
@@ -135,21 +218,7 @@ angular.module('uguru.util.controllers')
     var initDraggables = function() {
 
       var snap_targets = generateTargets();
-      $timeout(function() {
-        if (!$scope.calendarMoversShown) {
-          document.getElementById('drag-point-top').style.display = "absolute";
-          document.getElementById('drag-point-bottom').style.display = "absolute";
-          $timeout(function() {
-            var new_event = new Event('drag');
-            new_event.initTouchEvent();
 
-            document.getElementById('drag-point-top').dispatchEvent(new_event);
-          }, 500)
-          // $timeout(function() {
-          //   document.getElementById('drag-point-top').click();
-          // }, 250);
-        }
-      }, 500)
 
       interact('.draggable-event')
         .draggable({
@@ -174,16 +243,15 @@ angular.module('uguru.util.controllers')
           }
         }).on('resizemove', function(event) {
 
-            if (!$scope.calendarMoversShown) {
-              document.getElementById('drag-point-top').style.display = "inline-block"
-              document.getElementById('drag-point-bottom').style.display = "inline-block"
-              $scope.calendarMoversShown = true;
-            }
+            // if (!$scope.calendarMoversShown) {
+            //   document.getElementById('drag-point-top').style.display = "inline-block"
+            //   document.getElementById('drag-point-bottom').style.display = "inline-block"
+            //   $scope.calendarMoversShown = true;
+            // }
 
            var target = event.target,
             x = (parseFloat(target.getAttribute('data-x')) || 0),
             y = (parseFloat(target.getAttribute('data-y')) || 0);
-
 
 
             // update the element's style
@@ -194,6 +262,8 @@ angular.module('uguru.util.controllers')
             x += event.deltaRect.left;
             y += (event.deltaRect.top  * 1);
 
+
+
             target.style.webkitTransform = target.style.transform =
                 'translate(' + x + 'px,' + y + 'px)';
 
@@ -201,15 +271,108 @@ angular.module('uguru.util.controllers')
             target.setAttribute('data-y', y );
             $scope.resize_mode = false;
 
+            $scope.updateCalendarMargins();
+
+
+            // $scope.getCalendarEventRect()
+
         })
 
     }
 
+    $scope.saveRequestInfo = function() {
+      $scope.saveRequestInfo();
+    }
+
+
+    $scope.updateCalendarMargins = function() {
+      calendar_event_rect = document.getElementById('calendar-event').getBoundingClientRect();
+      $scope.calendar.coords.currentTopY = Math.round(calendar_event_rect.top - $scope.calendar.coords.calendarTopY);
+      $scope.calendar.coords.currentHeight = Math.round(calendar_event_rect.height);
+      $scope.$apply();
+    }
+
+    $scope.formatMinutes = function(minutes) {
+      console.log('minutes',minutes)
+      if (minutes === 0) {
+        return "00";
+      } else {
+        return "30";
+      }
+    }
+
+    $scope.formatHours = function(hours) {
+      hours = Math.round(hours, 2);
+      result = ''
+      if (hours === 0) {
+          return "12 PM";
+      } else if (hours < 12) {
+
+          return hours + 'AM';
+      }
+
+      else if (hours === 12 ) {
+        return "12 PM";
+      }
+
+      else if (hours < 24 ){
+
+        return (12 % hours) + "PM" ;
+
+      }
+    }
+
+
+    $scope.saveRequestInfo = function() {
+
+
+      // var start_time_hours = $scope.calendar.coords.currentTopY / $scope.calendar.coords.chunkHeights.hours;
 
 
 
+      // var start_time_minutes = $scope.formatMinutes($scope.calendar.coords.currentTopY / $scope.calendar.coords.chunkHeights.thirty);
+
+
+
+
+      $scope.request.calendar.start_time.hours = null;
+      $scope.request.calendar.start_time.minutes = 0;
+      //calculations ==
+      $scope.request.calendar.start_time.hours = ($scope.calendar.coords.currentTopY) / $scope.calendar.coords.chunkHeights.hours;
+
+      $scope.request.calendar.start_time.hours = $scope.formatHours(Math.round($scope.request.calendar.start_time.hours, 2));
+
+      // var session_length_hours = $scope.calendar.coords.currentHeight  / $scope.calendar.coords.chunkHeights.hours;
+
+      // var num_hours = Math.round((session_length_hours * 2), 2) / 2;
+
+      // $scope.request.calendar.end_time.hours = $scope.formatHours(Math.floor(num_hours)  + $scope.request.calendar.start_time.hours);
+
+      // if (Math.floor(num_hours) !== num_hours) {
+      //   $scope.request.calendar.end_time.minutes = $scope.formatMinutes(0.5 * 60);
+      // }
+
+
+      if (!$scope.calendar.date.formatted_date) {
+
+            var date = today.getDate();
+            $scope.calendar.date.date = date;
+            var weekday = $scope.weekdays[(date + $scope.calendar.weekday_offset) % 7];
+            $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
+            $scope.request.calendar.date.formatted_date = $scope.calendar.selected_custom_date;
+
+      } else {
+        $scope.request.calendar.date.formatted_date = $scope.calendar.date.formatted_date;
+      }
+
+      $scope.request.calendar.date.day = $scope.calendar.date.date;
+      $scope.request.calendar.date.month = today.getMonth();
+      $scope.request.calendar.date.year = today.getYear();
+      $scope.closeAvailabilityModal();
 
   }
+
+}
 
 
 ])

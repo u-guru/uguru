@@ -6,8 +6,8 @@
     </div>
     <h1 class="title micro-text modal-header-text">When Are You Available?</h1>
     <div class="buttons">
-      <button class="button button-clear button-header-link">
-        <span ng-show='progress'>Done </span>
+      <button class="button button-clear button-header-link button-submit button-blue" ng-click='saveRequestInfo()'>
+        Done
       </button>
     </div>
   </ion-header-bar>
@@ -28,7 +28,7 @@
 
           <ion-scroll direction="x" ng-show='showDateTabs' class="tabs home-request-tabs-top tabs-top bar-subheader date-tabs-top" delegate-handle='date-handle' scrollbar-x="false" style='border-top:1px solid grey; overflow-x: hidden;'>
           <!-- <div  > -->
-                <a class="tab-item uppercase dark-bg white-text calendar-tab-item center" ng-click='onAvailabilityTabSelected($index, ($index + calendar.start_date + calendar.offset_date) % calendar.next_month_length)' ng-repeat='time in getNumber(14) track by $index'>
+                <a class="tab-item uppercase dark-bg white-text calendar-tab-item center" ng-click='onAvailabilityTabSelected($index, ($index + calendar.start_date + calendar.offset_date) % calendar.next_month_length)' ng-repeat='time in getNumber(7) track by $index'>
                   <div class='calendar-date'>
                     <span class='nano-text'>{{weekdays[($index + calendar.weekday_offset) % 7]}}</span> <br>
                     <span class='date white-text semibold'>{{($index + calendar.start_date + calendar.offset_date) % calendar.next_month_length}}  </span>
@@ -50,18 +50,18 @@
             <!-- left date column -->
             <div class='pure-u-1-6'>
               <div class='pure-u-1 padding-1em calendar-date-label relative' ng-repeat='time in getNumber(24) track by $index'>&nbsp;
-                <span class='calendar-date-label-text'>{{$index}} pm</span>
+                <span  ng-show='$index > 0'class='calendar-date-label-text ng-class:{"blue blue-left-margin full-opacity": ($index * calendar.coords.chunkHeights.hour) >= calendar.coords.currentTopY && ($index * calendar.coords.chunkHeights.hour) < (calendar.coords.currentTopY + calendar.coords.currentHeight * 1.1)}'>{{hours[$index]}}</span>
               </div>
             </div>
             <!-- left column -->
-            <div class='pure-u-7-8 calendar-date-row-wrapper'>
-              <div class='pure-u-1 padding-1em calendar-date-row' ng-repeat='time in getNumber(24) track by $index'>
+            <div class='pure-u-7-8 calendar-date-row-wrapper' >
+              <div class='pure-u-1 padding-1em calendar-date-row' id='calendar-rows' ng-repeat='time in getNumber(24) track by $index'>
                 <div class='pure-g full-height'>
                   <div class='pure-u-1 calendar-hour-half-row'>&nbsp;</div>
                   <div class='pure-u-2-24 calendar-hour-half-row border-top'>&nbsp;</div>
                 </div>
               </div>
-              <div class='draggable-event pure-u-1 padding-1em calendar-date-row' data-tap-disabled ="true">
+              <div class='draggable-event pure-u-1 padding-1em calendar-date-row' id='calendar-event'data-tap-disabled ="true">
                 <div class='pure-g full-height'>
                     <span class='drag-point' id='drag-point-top'> </span>
                     <span class='drag-point' id='drag-point-bottom'> </span>

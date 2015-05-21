@@ -29,6 +29,15 @@ angular.module('uguru.util.controllers')
       urgency: false,
       tags:[],
       availability_edit: false,
+      calendar: {
+        start_time: {hours: 0, minutes:0},
+        end_time: {hours: 0, minutes:0},
+        date: {
+          day: 1,
+          month: 1,
+          year: 15
+        }
+      },
       availability: {hours: 2, minutes:"00"},
     }
 
@@ -361,7 +370,7 @@ angular.module('uguru.util.controllers')
 
         if ($scope.auto_choose_first_location) {
           $scope.auto_choose_first_location = false;
-          var location = $scope.root.vars.nearby_locations[0]
+          var location = $scope.root.vars.nearby_locations[0];
 
           $scope.request.address = location.local_name;
           $scope.request.city_info = location.city_info;
@@ -372,6 +381,22 @@ angular.module('uguru.util.controllers')
         $scope.$apply();
       }
 
+      $scope.submitRequest = function() {
+
+        $scope.root.vars.request = $scope.request;
+
+        $scope.launchContactingModal();
+
+        $timeout(function() {
+          $scope.closeRequestModal();
+          $scope.verbModal.hide();
+        }, 2000);
+
+        $timeout(function() {
+          $scope.closeContactingModal();
+        }, 5000);
+
+      }
 
 
   }
