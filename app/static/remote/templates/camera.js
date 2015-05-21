@@ -8,15 +8,15 @@ angular.module('uguru.root.services')
     function($localstorage, $timeout, $cordovaCamera, $state) {
 
         deviceCamera = {
-                    takePicture: function($scope) {
+                    takePicture: function($scope, index) {
 
                       if ($scope.platform.mobile) {
-                        var source_type = 1;
+                        var source_type = index;
                       }
                         var options = {
                           quality: 30,
                           destinationType: Camera.DestinationType.DATA_URL,
-                          sourceType: Camera.PictureSourceType.CAMERA,
+                          sourceType: index,
                           allowEdit: true,
                           encodingType: Camera.EncodingType.JPEG,
                           // targetWidth: 1024,
@@ -26,42 +26,30 @@ angular.module('uguru.root.services')
                         };
 
                         $cordovaCamera.getPicture(options).then(function(imageData) {
-                          console.log($state.current.name);
-                          if ($state.current.name === 'root.guru-home') {
-
-                            var image = document.getElementsByClassName('guru-profile-container')[0];
-
-                          } else if ($state.current.name === 'root.student-home') {
-                            var image = document.getElementsByClassName('student-prof-pic')[0];
-                          }
-                          else
-                          {
-                            var image = document.getElementsByClassName('attachment-container')[0];
-                          }
-
-
-                          image.src = "data:image/jpeg;base64," + imageData;
 
 
 
-                          // $scope.request.photo = image.src;
 
-                          // $scope.root.vars.request.files.push(true);
+
+
                           var formData = new FormData();
-                          // formData.append('file', image.src);
-                          // imageData = "data:image/jpeg;base64," + imageData;
 
                           formData.append('file', imageData);
+
                           var file_name = new Date().getTime().toString();
+
                           formData.append('filename', file_name);
 
                           if (!$scope.root.vars.request) {
                             formData.append('profile_url', $scope.user.id);
                           }
-                          $scope.loader.show();
+
                           $scope.user.createObj($scope.user, 'files', formData, $scope);
+
                         }, function(err) {
+
                           console.log(err);
+
                         });
                     }
                 };

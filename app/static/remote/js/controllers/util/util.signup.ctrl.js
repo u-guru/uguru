@@ -61,7 +61,7 @@ angular.module('uguru.util.controllers')
 
     $scope.login = function () {
 
-        $scope.loader.show();
+        // $scope.loader.show();
         $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
         // $cordovaFacebook.login(["user_education_history", "friends_education_history"]).then(function (success) {
         $scope.loginInfo = success;

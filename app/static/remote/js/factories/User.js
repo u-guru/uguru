@@ -742,11 +742,11 @@ angular.module('uguru.user', [])
                     .customPOST(payload,'',undefined,{'Content-Type': undefined})
                     .then(function(file){
                         console.log(JSON.stringify(file.plain()));
-                            // $scope.request.files = [file.plain()];
 
 
-                            if ($scope.root.vars.request || $state.current.name === 'root.student-request') {
-                                $scope.root.vars.request.files.push(file.plain());
+
+                            if ($state.current.name === 'root.home') {
+                                $scope.request.attached_files.push(file.plain());
                             } else {
                                 $scope.user.profile_url = file.plain().url;
                                 $localstorage.setObject('user', $scope.user);
@@ -786,7 +786,7 @@ angular.module('uguru.user', [])
                     .then(function(user){
                         var processed_user = processResults(user)
                         $localstorage.setObject('user', processed_user);
-
+                        $scope.$broadcast('scroll.refreshComplete');
                         if (callback_success) {
                             callback_success($scope, processed_user)
                         }

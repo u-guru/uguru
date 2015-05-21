@@ -22,13 +22,21 @@
     <link href="remote/css/android.css" rel="stylesheet">
     <!-- <link href="remote/css/ios.css" rel="stylesheet"> -->
     <link href="remote/css/responsive.css" rel="stylesheet">
+    <link href="remote/css/sass/components.css" rel="stylesheet">
+    <link href="remote/css/spinning-wheel.css" rel="stylesheet">
 
      <script>
     LOCAL = true;
     BASE = '/remote';
     </script>
       <!-- start Mixpanel -->
-    <script type="text/javascript">
+
+
+      <script type="text/javascript">
+
+
+               // <!-- start Mixpanel -->
+
             (function (f, b) {
             if (!b.__SV) {
             var a, e, i, g; window.mixpanel = b; b._i = []; b.init = function (a, e, d) {
@@ -39,13 +47,22 @@
             })(document, window.mixpanel || []);
         mixpanel.init("e64d1b8ce3beb846af8dc9afc8b9d888");
     </script><!-- end Mixpanel -->
+
+
+      </script>
+
     <script src="remote/lib/windows/winstore-jscompat.js"></script>
     <script src="remote/lib/ionic/js/ionic.bundle.min.js"></script>
     <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
     <script src="lib/lodash/dist/lodash.js"></script>
-    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
-    <script src="remote/lib/angular-google-maps/angular-google-maps.min.js"></script>
+    <script src='remote/lib/angular-google-maps/angular-google-maps.min.js'></script>
+    <script src='remote/lib/spinningwheel/spinning-wheel.min.js'></script>
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+
+    <!--<script src='//maps.googleapis.com/maps/api/js?sensor=false'></script> -->
+    <!--<script src="remote/lib/angular-google-maps/angular-google-maps.min.js"></script> -->
     <script src="lib/restangular/dist/restangular.js"></script>
+    <script src="remote/lib/interact/interact.min.js"></script>
     <script src="lib/angular-local-storage/angular-local-storage.js"></script>
     <script src="remote/lib/angular-loading-bar/angular-loading-bar.js"></script>
     <script src="remote/lib/angular-strap/angular-strap.min.js"></script>
@@ -54,8 +71,7 @@
     <script src="lib/angular-payments/angular-payments.js"></script>
     <script src="remote/lib/progressbar/progressbar.min.js"></script>
     <script src="remote/lib/ionic/contrib/ionic.contrib.frost.js"></script>
-
-
+    <script src="remote/lib/angular-google-maps/ion-google-place.js"></script>
 
     <script type="text/javascript" src="remote/lib/stripe/stripe.js"></script>
     <script>
@@ -123,7 +139,6 @@
     <script type="text/javascript" src="remote/js/services/hardware/location.js"></script>
     <script type="text/javascript" src="remote/js/services/hardware/push.js"></script>
 
-
     <!-- Uguru student controller-->
     <script type="text/javascript" src="remote/js/controllers/student/student.home.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/student.request.ctrl.js"></script>
@@ -136,6 +151,9 @@
     <script type="text/javascript" src="remote/js/controllers/student/student.previous-session-details.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/student.contact-method.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/student.home.sessions.ctrl.js"></script>
+
+<!--      New Uguru Student Controllers -->
+    <script type="text/javascript" src="remote/js/controllers/student/home.ctrl.js"></script>
 
 
     <script type="text/javascript" src="remote/js/controllers/guru/guru.onboarding.ctrl.js"></script>
@@ -168,9 +186,16 @@
     <script type="text/javascript" src="remote/js/controllers/util/util.calendar.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.messages.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.ratings.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.request.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.browse.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.courses.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.availability.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.gurubook.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.studentbook.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.apps.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.location.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.description.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.tags.ctrl.js"></script>
 
 
     <!-- Uguru Student settings controller -->
@@ -188,17 +213,24 @@
       The nav bar that will be updated as we navigate between views.
     -->
 
-    <ion-nav-view animation="slide-left-right-ios7">
-    </ion-nav-view>
+    <ion-side-menus>
+      <ion-side-menu-content>
+        <ion-nav-view animation="slide-left-right-ios7">
+        </ion-nav-view>
+      </ion-side-menu-content>
+        <ion-side-menu side="right" width='200'>
+          <div ng-include="img_base + 'remote/templates/components.side-menu.html'"></div>
+        </ion-side-menu>
+    </ion-side-menus>
     <ion-nav-bar class="bar-dark nav-bar-text bold-font">
-      <ion-nav-back-button class="button-clear" style="width:75px;">
+      <ion-nav-back-button class="button-clear" style="width:140px;">
           <img src="./img/left-chevron.png" class='uguru-back-button'/>
       </ion-nav-back-button>
     </ion-nav-bar>
       <script type="text/javascript">
-    mixpanel.track_links("#nav a", "click nav link", {
-        "referrer": document.referrer
-    });
+    // mixpanel.track_links("#nav a", "click nav link", {
+    //     "referrer": document.referrer
+    // });
       </script>
 
     <script id="templates/root.html" type="text/ng-template">

@@ -81,13 +81,11 @@ angular.module('uguru.util.controllers')
           $scope.hideSheet();
         },
        buttonClicked: function(index) {
-         console.log(index);
-         if (index === 0) {
-            $scope.takePhoto();
-            $timeout(function() {
-              $scope.hideSheet();
-            }, 500);
-         }
+          if (index === 1) {
+              $scope.takePhoto(1)
+          } else if (index === 2) {
+            $scope.takePhoto(0);
+          }
        }
      });
 
@@ -231,7 +229,6 @@ angular.module('uguru.util.controllers')
 
         formData.append('file', photofile);
 
-        // var file_name = new Date().getTime().toString();
         formData.append('filename', name);
 
         $scope.file_index += 1;

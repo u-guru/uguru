@@ -14,7 +14,10 @@ if (LOCAL) {
 } else {
   img_base = '/static/'
 }
-mixpanel.track("App Launch");
+
+mixpanel = window.mixpanel || null;
+
+if (mixpanel) mixpanel.track("App Launch");
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
   'ngAnimate', 'uguru.onboarding.controllers', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
@@ -106,7 +109,14 @@ $ionicPlatform.ready(function() {
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
-  $cordovaFacebookProvider, $ionicConfigProvider, $compileProvider) {
+  $cordovaFacebookProvider, $ionicConfigProvider, $compileProvider, uiGmapGoogleMapApiProvider) {
+
+  uiGmapGoogleMapApiProvider.configure({
+        //    key: 'your api key',
+        v: '3.17',
+        libraries: 'places'
+    });
+  // })
 
   if (!window.cordova) {
       var appID = 1416375518604557;
@@ -114,7 +124,7 @@ $ionicPlatform.ready(function() {
       $cordovaFacebookProvider.browserInit(appID, fbVersion);
   }
 
-  $ionicConfigProvider.views.swipeBackEnabled(false);
+  if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
@@ -161,6 +171,7 @@ $ionicPlatform.ready(function() {
           $scope.rootUser = User;
           $scope.root = RootService;
           $scope.root.vars = {};
+          $scope.root.vars.remote_cache = [];
           $scope.root.vars.onboarding = false;
           $scope.root.vars.request_cache = {};
           $scope.root.vars.onboarding_cache = {};
@@ -168,6 +179,23 @@ $ionicPlatform.ready(function() {
           $scope.static = {};
           $scope.static.nearest_universities = [];
           $scope.static.universities = [];
+
+
+
+
+          //check if local courses exists
+          if (!$scope.root.vars.courses) {
+            University.getCourses(2732).then(
+                  function(courses) {
+                      $scope.root.vars.courses = courses;
+                      console.log(courses.length, 'courses successfully loaded');
+                },
+                  function(error) {
+                      console.log('Courses NOT successfully loaded');
+                      console.log(error);
+                }
+            );
+          }
 
           console.log('getting most up to date universities + user from server..')
           var local_universities = $localstorage.getObject('universities');
@@ -203,7 +231,6 @@ $ionicPlatform.ready(function() {
               $scope.root.vars.loaderOn = false;
             }
           }
-
           // $scope.backgroundRefresh = function() {
 
           //   //check if they are in these particular views and user_refresh is false
@@ -398,6 +425,11 @@ $ionicPlatform.ready(function() {
         templateUrl: BASE + 'templates/student.home.new.html',
         controller: 'StudentHomeController'
   }).
+  state('root.home', {
+        url: '/new-home',
+        templateUrl: BASE + 'templates/home.html',
+        controller: 'HomeController'
+  }).
   state('root.onboarding-loading', {
         url: '/onboarding-loading',
         templateUrl: BASE + 'templates/onboarding.loading.html',
@@ -437,6 +469,16 @@ $ionicPlatform.ready(function() {
         templateUrl: BASE + 'templates/student.request.new.html',
         controller: 'StudentRequestController'
   }).
+  state('root.browse', {
+        url: '/browse',
+        templateUrl: BASE + 'templates/browse.html',
+        // controller: 'BrowseController'
+  }).
+  state('root.courses', {
+        url: '/courses',
+        templateUrl: BASE + 'templates/courses.html',
+        controller: 'CoursesController'
+  }).
   state('root.request-guru-type', {
         url: '/request-guru-type',
         templateUrl: BASE + 'templates/student.request.guru-type.html',
@@ -467,11 +509,6 @@ $ionicPlatform.ready(function() {
         templateUrl: BASE + 'templates/student.request.description.html',
         controller: 'AddNoteController'
   }).
-  // state('root.guru.new-home', {
-  //       url: '/onboarding-loading',
-  //       templateUrl: BASE + 'templates/guru.home.new.html',
-  //       // controller: 'OnboardingLoadingController'
-  // }).
   state('root.guru-wizard', {
         url: '/wizard',
         templateUrl: BASE + 'templates/guru.onboarding.html',
@@ -625,7 +662,7 @@ $ionicPlatform.ready(function() {
 
   // if none of the above states are matched, use this as the fallback
   // $urlRouterProvider.otherwise('/tab/dash');
-  $urlRouterProvider.otherwise('/onboarding-loading');
+  $urlRouterProvider.otherwise('/new-home');
   // $urlRouterProvider.otherwise('/home');
 
 });

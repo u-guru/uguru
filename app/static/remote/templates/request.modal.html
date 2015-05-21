@@ -1,0 +1,194 @@
+<ion-modal-view class='request-modal' ng-controller="RequestController">
+
+  <ion-header-bar align-title="center" class='dark-bg-header mini-header'>
+    <div class="buttons">
+      <button class="button button-clear button-header-link cancel-button" ng-click='closeRequestModal()'>Cancel</button>
+    </div>
+    <h1 class="title">Request a Session</h1>
+    <div class="buttons">
+      <button class="button button-clear button-header-link submit-button" ng-click='launchContactingModal()'>
+        <span ng-show='!progress'>Done </span>
+        <span class='blue' ng-show='progress'>Okay</span>
+      </button>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class='rounded-corners'>
+      <ion-list class='standard-bg'>
+
+          <ion-item class='item-avatar-left item-mini course-input-item item-icon-right'>
+            <img class='pure-img'  src='{{img_base}}./img/verbs/session.svg'/>
+            <input type='text' name="course-input" class='light input-lg course-input form-control'id='course-input'
+                fast-matcher
+                fast-matcher-source="root.vars.courses"
+                fast-matcher-output="root.vars.matchingCourses"
+                fast-matcher-properties="short_name, title"
+                fast-matcher-any-word="true"
+                fast-matcher-limit="5"
+                fast-matcher-preserve-order="true"
+                fast-matcher-case-insensitive="true"
+                placeholder="Enter course"
+                ng-model = "course_search_text"
+                ng-change = "updateProgress(course_search_text)"
+
+            />
+
+            <!-- ng-change="updateProgress()" -->
+            <a ng-click='toggleYourCourses()'>
+              <img ng-show='show_student_courses' class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='/remote/img/icons/chevron-filled-down.svg'>
+              <img ng-show='!show_student_courses && user.student_courses && user.student_courses.length > 0'class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='/remote/img/icons/chevron-filled.svg'>
+            </a>
+          </ion-item>
+
+          <div class='autocomplete-wrapper' ng-show='progress && root.vars.matchingCourses.length > 0'>
+            <div class='item item-divider course-divider'>
+              <p class='uppercase opacity-3-4 micro-text'> Suggestions </p>
+            </div>
+            <ion-item class='course-item' ng-repeat='course in root.vars.matchingCourses' ng-click='addSelectedCourse(course, course_search_text)'>
+              <span class='course-name'> {{course.short_name}} </span> <span class='course-title'> {{course.title}} </span>
+            </ion-item>
+          </div>
+
+          <div class='your-courses-wrapper' ng-show='show_student_courses && user.student_courses.length > 0'>
+            <div class='item item-divider course-divider'>
+              <p class='uppercase opacity-3-4 micro-text'> Your Courses </p>
+            </div>
+            <ion-item class='course-item' ng-repeat='student_course in user.student_courses' ng-click='addSelectedStudentCourse(student_course)'>
+              <span class='course-name blue'> {{student_course.short_name}} </span> <span class='course-title'> {{student_course.title}} </span>
+            </ion-item>
+            <div class='item item-divider course-divider'>
+              <p class='micro-text'>&nbsp;</p>
+            </div>
+          </div>
+
+            <ion-item class='item-icon-right' ng-click='launchLocationModal()' ng-hide='progress || request.address'>
+              <p> Location </p>
+            </ion-item>
+
+            <ion-item ng-show='request.address && !progress' class='item-button-right' id='location-filled-item' >
+              <a class='request-location-wrapper-link' ng-click='clearLocationButton()'>
+                <p>{{request.address}}<br>
+                  <span class='nano-text'>
+                    <!-- {{request.location.city}}, {{request.location.state}}, {{request.location.country}} -->
+                    {{request.city_info}}
+                  </span>
+                </p>
+              </a>
+              <button class='button button-clear' ng-click='resetLocation()'> <i class='icon ion-close icon-small opacity-1-2'></i>
+              </button>
+            </ion-item>
+
+          <ion-toggle ng-hide='progress' ng-model='request.urgency'>
+            <p> Is this session urgent? </p>
+          </ion-toggle>
+
+          <div class='item item-divider' ng-hide='progress'>
+          </div>
+          <ion-item ng-hide='progress' ng-click='toggleAvailability()'>
+            <p class='inline'> How much time do you need?
+            </p>
+            <p class='align-right blue item-right-text'>{{request.time_estimate.hours}} hours <span ng-show='request.time_estimate.minutes > 0'>{{request.time_estimate.minutes}} min</span></p>
+          </ion-item>
+
+          <ion-item  ng-show='request.availability_edit && !progress' class='scroll-availability-section relative' data-tap-disabled="true">
+            <div id='test' style='margin-top:238px; margin-left:27%; position:absolute; margin-bottom:-260px;'> </div>
+            <div class='pure-u-1 padding-2em'> </div>
+            <div class='pure-u-1 padding-2em'> </div>
+            <div class='pure-g'>
+              <div class='pure-u-3-5 i-think-text'>
+
+                I think I need...
+
+              </div>
+              <div class='pure-u-1-5'>
+                <!-- <div class='request-availability-container absolute'>
+                  <span class='length-hours blue light font-1-25em '>
+                    <ion-scroll>
+                      <div class='pure-g-c flex-space-between flex-column availability-scroller availability-scroller-left'>
+                        <div class='pure-u-1'> 1 </div>
+                        <div class='pure-u-1'> 2 </div>
+                        <div class='pure-u-1'> 3 </div>
+                        <div class='pure-u-1'> 4 </div>
+                        <div class='pure-u-1'> 5 </div>
+                        <div class='pure-u-1'> 6 </div>
+                        <div class='pure-u-1'> 7 </div>
+                        <div class='pure-u-1'> 8 </div>
+                        <div class='pure-u-1'> 9 </div>
+                        <div class='pure-u-1'> 10 </div>
+                        <div class='pure-u-1'></div>
+                        <div class='pure-u-1'></div>
+                        <div class='pure-u-1'></div>
+                        <div class='pure-u-1'></div>
+                      </div>
+                    </ion-scroll>
+                  </span>:
+                  <span class='length-minutes blue light font-1-25em '>
+                    <ion-scroll>
+                      <div class='pure-g-c flex-column availability-scroller availability-scroller-left'>
+                        <div class='pure-u-1'> 00 </div>
+                        <div class='pure-u-1'> 15 </div>
+                        <div class='pure-u-1'> 30 </div>
+                        <div class='pure-u-1'> 45 </div>
+                        <div class='pure-u-1'></div>
+                        <div class='pure-u-1'></div>
+                        <div class='pure-u-1'></div>
+                        <div class='pure-u-1'></div>
+                        <div class='pure-u-1'></div>
+                      </div>
+                    </ion-scroll>
+                  </span>:
+                </div> -->
+              </div>
+              <div class='pure-u-1-5 i-think-text'>
+                Hours
+              </div>
+            </div>
+            <div class='pure-u-1 padding-2em'> </div>
+            <div class='pure-u-1 padding-2em'> </div>÷÷
+
+          </ion-item>
+
+          <ion-item ng-hide='progress || request.urgency' >
+            <a ng-click='launchAvailabilityModal()' style='width:100%; height:100%;'>
+              <p class='inline'> When are you available </p>
+              <p class='align-right blue item-right-text'>Pick a Time</p>
+            </a>
+          </ion-item>
+
+          <div class='item item-divider' ng-hide='progress'>
+          </div>
+          <ion-item class='relative item-icon-right' ng-hide='progress' ng-click='launchDescriptionModal()'>
+            <div class='empty-description-wrapper' ng-hide='progress || request.description'>
+              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='/remote/img/icons/paperclip.svg'>
+              <span class="input-label no-padding-top"><p> Describe your problem (optional)</p></span>
+              <div class='pure-u-1 padding-1em'> </div>
+            </div>
+
+            <div class='description-wrapper item-icon-right' ng-hide='progress || (!request.description && !request.attached_files.length > 0)'>
+              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='/remote/img/icons/paperclip.svg'>
+              <p class='black' ng-show='request.description'>
+                {{request.description}}
+              </p>
+
+              <div class='pure-u-1'>
+                <div class='pure-u-1-4' ng-repeat='file in request.attached_files track by $index' ng-show='true || request && request.files && request.files.length > 0'>
+                  <div class='attach-img-wrapper padding-1em relative'>
+                    <a ng-click='deleteFile($index)' >
+                      <i class='icon absolute-icon ion-close attach-icon'></i>
+                    </a>
+                    <div class="attach-img" style='background-image:url("{{file.url}}")'>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </ion-item>
+          <ion-item class='item-icon-left' ng-hide='progress' ng-click='launchTagsModal()'>
+            <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='/remote/img/icons/tags.svg'>
+            <p class='tags-wrapper' style='white-space:normal; padding-left:1em;'>&nbsp;<span class='blue request-tag' ng-repeat='tag in request.tags'>#{{tag}} </span> </p>
+          </ion-item>
+      </ion-list>
+  </ion-content>
+</ion-modal-view>
