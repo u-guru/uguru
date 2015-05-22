@@ -111,11 +111,17 @@ def admin_coming_soon():
         return redirect(url_for('admin_login'))
     return render_template("new_admin/admin-coming-soon.html")
 
-@app.route('/admin/product/testing/')
-def admin_testing():
+@app.route('/admin/product/releases/')
+def admin_product_releases():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/admin.product.testing.html")
+    return render_template("new_admin/admin.product.releases.html")
+
+@app.route('/admin/product/practices/')
+def admin_best_practices():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin.product.practices.html")
 
 @app.route('/admin/support/tickets/')
 def admin_testing():
