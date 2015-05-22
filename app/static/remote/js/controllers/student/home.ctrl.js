@@ -19,7 +19,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop)     {
 
-
   $ionicPlatform.ready(function() {
 
         $scope.turnStatusBarWhite = function() {
@@ -93,13 +92,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.contactingModal.hide();
     }
 
-    // $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
-    //           scope: $scope,
-    //           animation: 'slide-in-up'
-    //       }).then(function(modal) {
-    //         $scope.availabilityModal = modal;
-    //         $scope.availabilityModal.show();
-    //     });
+  // $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
+  //           scope: $scope,
+  //           animation: 'slide-in-up'
+  //       }).then(function(modal) {
+  //         $scope.availabilityModal = modal;
+  //         $scope.availabilityModal.show();
+  //     });
 
   }
 

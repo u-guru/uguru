@@ -129,18 +129,22 @@ input.input-lg:-ms-input-placeholder {
 
 .request-modal .item-toggle .toggle {
   position: absolute;
-  top: 3px;
-  right: 16px;
-  z-index: 3; }
+  top: 6px;
+  right: 13px;
+  z-index: 3;
+  line-height: 1em; }
+.request-modal .request-form-item {
+  min-height: 46px; }
 .request-modal .item {
-  padding: 8px 12px; }
+  padding: 12px 12px; }
 .request-modal .input-lg {
   line-height: 1.5em; }
 .request-modal .course-input-item {
   padding: 16px; }
 .request-modal .item p {
   opacity: 0.5;
-  margin: 0px; }
+  margin: 0px;
+  margin-right: 0.5em; }
 
 .course-input {
   margin-left: 2.25em; }
@@ -507,14 +511,16 @@ input.dark-search {
 .action-sheet .action-sheet-group {
   border-radius: 3px; }
 .action-sheet .action-sheet-cancel button {
-  font-family: "OpenSans-Bold";
+  font-family: "OpenSans-SemiBold";
   text-transform: capitalize;
   font-size: 0.85em;
   text-align: center;
   padding-left: 1em;
   color: rgba(0, 0, 0, 0.6); }
-.action-sheet button.activated, .action-sheet button.active {
-  font-weight: bold;
+.action-sheet button.activated, .action-sheet button.active, .action-sheet .action-sheet-group .button.active {
+  font-family: "OpenSans-Bold";
+  color: rgba(0, 0, 0, 0.6) !important; }
+.action-sheet button:hover, .action-sheet button:focus {
   color: rgba(0, 0, 0, 0.6) !important; }
 
 .attach-img {
@@ -693,7 +699,7 @@ img.custom-icon {
 img.custom-icon.chevron-filled-left, img.custom-icon.chevron-filled-down {
   height: 18px;
   top: 39%;
-  right: 3%; }
+  right: 0.55em; }
 
 img.custom-icon.list-custom-icon {
   margin-top: 0.25em; }
@@ -706,16 +712,23 @@ img.custom-icon.list-custom-icon.request-icon {
   opacity: 1; }
 
 .blue.blue-left-margin {
-  font-family: "OpenSans-SemiBold"; }
+  font-family: "OpenSans-SemiBold";
+  color: #68A7CF; }
 
 .availability-modal .scroll {
   -webkit-transform: translate3d(0px, 0px, 0px) scale(1);
   transform: translate3d(0px, 0px, 0px) scale(1);
   width: 100%;
   display: flex;
-  -webkit-display: flex;
+  display: -webkit-flex;
   flex-direction: row;
   -webkit-flex-direction: row; }
 
 .tag-input-wrapper .item-input {
   padding: 11px 0px 7px 15px !important; }
+
+.description-item {
+  min-height: 8em !important; }
+
+.course-input-item.active, .course-input-item.activated {
+  background-color: white; }

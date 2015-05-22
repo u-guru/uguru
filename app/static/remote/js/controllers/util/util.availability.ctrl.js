@@ -287,8 +287,11 @@ angular.module('uguru.util.controllers')
 
     $scope.updateCalendarMargins = function() {
       calendar_event_rect = document.getElementById('calendar-event').getBoundingClientRect();
+
       $scope.calendar.coords.currentTopY = Math.round(calendar_event_rect.top - $scope.calendar.coords.calendarTopY);
+
       $scope.calendar.coords.currentHeight = Math.round(calendar_event_rect.height);
+      console.log('current y', $scope.calendar.coords.currentTopY, $scope.calendar.coords.chunkHeights.hours);
       $scope.$apply();
     }
 

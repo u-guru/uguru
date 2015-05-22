@@ -13,12 +13,12 @@
     </div>
   </ion-header-bar>
 
-  <ion-content class='rounded-corners'>
+  <ion-content class='rounded-corners' >
       <ion-list class='standard-bg'>
 
-          <ion-item class='item-avatar-left item-mini course-input-item item-icon-right'>
-            <img class='pure-img'  src='{{img_base}}./img/verbs/session.svg'/>
-            <input type='text' name="course-input" class='light input-lg course-input form-control'id='course-input'
+          <ion-item class='item-avatar-left item-mini course-input-item item-icon-right' ng-click='focusCourseInput()'>
+            <img class='pure-img'  src='{{img_base}}./img/verbs/session.svg' class=''/>
+            <input type='text' name="course-input" class='light input-lg course-input form-control'id='course-input' ng-click='focusCourseInput()'
                 fast-matcher
                 fast-matcher-source="root.vars.courses"
                 fast-matcher-output="root.vars.matchingCourses"
@@ -61,11 +61,11 @@
             </div>
           </div>
 
-            <ion-item class='item-icon-right' ng-click='launchLocationModal()' ng-hide='progress || request.address'>
+            <ion-item class='item-icon-right request-form-item' ng-click='launchLocationModal()' ng-hide='progress || request.address'>
               <p> Location </p>
             </ion-item>
 
-            <ion-item ng-show='request.address && !progress' class='item-button-right' id='location-filled-item' >
+            <ion-item ng-show='request.address && !progress' class='item-button-right request-form-item' id='location-filled-item' >
               <a class='request-location-wrapper-link' ng-click='clearLocationButton()'>
                 <p>{{request.address}}<br>
                   <span class='nano-text'>
@@ -74,24 +74,24 @@
                   </span>
                 </p>
               </a>
-              <button class='button button-clear' ng-click='resetLocation()'>
+              <button class='button button-clear' ng-click='resetLocation()' style='margin-right: -8px;'>
                 <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' style='margin-top:-0.3em;' src='{{img_base}}./img/icons/close_icon.svg'>
               </button>
             </ion-item>
 
-          <ion-toggle ng-hide='progress' ng-model='request.urgency'>
+          <ion-toggle ng-hide='progress' ng-model='request.urgency' class='request-form-item'>
             <p> Is this session urgent? </p>
           </ion-toggle>
 
           <div class='item item-divider' ng-hide='progress'>
           </div>
-          <ion-item ng-hide='progress' ng-click='toggleAvailability()'>
+          <ion-item ng-hide='progress' ng-click='toggleAvailability()' class='request-form-item'>
             <p class='inline'> How much time do you need?
             </p>
             <p class='align-right blue item-right-text'>{{request.time_estimate.hours}} hours <span ng-show='request.time_estimate.minutes > 0'>{{request.time_estimate.minutes}} min</span></p>
           </ion-item>
 
-          <ion-item  ng-show='request.availability_edit && !progress' class='scroll-availability-section relative' data-tap-disabled="true">
+          <ion-item  ng-show='request.availability_edit && !progress' class='scroll-availability-section relative request-form-item' data-tap-disabled="true">
             <div id='test' style='margin-top:238px; margin-left:27%; position:absolute; margin-bottom:-260px;'> </div>
             <div class='pure-u-1 padding-2em'> </div>
             <div class='pure-u-1 padding-2em'> </div>
@@ -149,8 +149,8 @@
 
           </ion-item>
 
-          <ion-item ng-hide='progress || request.urgency' >
-            <a ng-click='launchAvailabilityModal()' style='width:100%; height:100%;'>
+          <ion-item ng-hide='progress || request.urgency' ng-click='launchAvailabilityModal()' class='request-form-item'>
+            <a style='width:100%; height:100%;'>
               <p class='inline'> When are you available? </p>
               <p ng-show='!request.calendar.start_time.hours && !request.calendar.start_time.minutes'class='align-right blue item-right-text'>Pick a Time</p>
               <p ng-show='request.calendar.start_time.hours || request.calendar.start_time.minutes' class='align-right blue item-right-text'>{{request.calendar.date.formatted_date}}, {{request.calendar.start_time.hours}} </p>
@@ -159,14 +159,15 @@
 
           <div class='item item-divider' ng-hide='progress'>
           </div>
-          <ion-item class='relative item-icon-right' ng-hide='progress' ng-click='launchDescriptionModal()'>
+          <ion-item class='relative item-icon-right description-item request-form-item' ng-hide='progress' ng-click='launchDescriptionModal()' >
             <div class='empty-description-wrapper' ng-hide='progress || request.description'>
-              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip.svg'>
+              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip.svg' style='margin-right: 0.29em;'>
               <span class="input-label no-padding-top"><p> Describe your problem (optional)</p></span>
-              <div class='pure-u-1 padding-1em'> </div>
+              <div class='pure-u-1 padding-1em'>&nbsp;<br></div>
+              <div class='pure-u-1 padding-1em'>&nbsp;<br></div>
             </div>
 
-            <div class='description-wrapper item-icon-right' ng-hide='progress || (!request.description && !request.attached_files.length > 0)'>
+            <div class='description-wrapper item-icon-right' ng-hide='progress || (!request.description && !request.attached_files.length > 0)' style='margin-right: 0.29em;'>
               <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip.svg'>
               <p class='black' ng-show='request.description'>
                 {{request.description}}
@@ -188,7 +189,7 @@
 
           </ion-item>
           <ion-item class='item-icon-left' ng-hide='progress' ng-click='launchTagsModal()'>
-            <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/tags.svg'>
+            <img style='margin-top:0.4em;'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/tags.svg'>
             <p class='tags-wrapper' style='white-space:normal; padding-left:1em;'>&nbsp;<span class='blue request-tag' ng-repeat='tag in request.tags'>#{{tag}} </span> </p>
           </ion-item>
       </ion-list>

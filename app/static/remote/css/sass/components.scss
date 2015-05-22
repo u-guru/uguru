@@ -184,13 +184,18 @@ input.input-lg:-ms-input-placeholder {
 .request-modal {
     .item-toggle .toggle {
       position: absolute;
-      top: 3px;
-      right: 16px;
+      top: 6px;
+      right: 13px;
       z-index: 3;
+      line-height:1em;
+    }
+
+    .request-form-item {
+        min-height:46px;
     }
 
     .item {
-        padding: 8px 12px;
+        padding: 12px 12px;
     }
 
     .input-lg {
@@ -204,6 +209,7 @@ input.input-lg:-ms-input-placeholder {
     .item p {
         opacity:0.5;
         margin:0px;
+        margin-right: 0.5em;
     }
 }
 
@@ -753,7 +759,7 @@ input.dark-search {
 
     .action-sheet-cancel
     button{
-        font-family: "OpenSans-Bold";
+        font-family: "OpenSans-SemiBold";
         text-transform: capitalize;
         font-size: 0.85em;
           text-align: center;
@@ -761,9 +767,13 @@ input.dark-search {
           color: rgba(0,0,0,0.6);
     }
 
-    button.activated, button.active {
-        font-weight:bold;
+    button.activated, button.active, .action-sheet-group .button.active {
+        font-family: "OpenSans-Bold";
         color: rgba(0,0,0,0.6) !important;
+    }
+
+    button:hover, button:focus {
+        color:rgba(0,0,0,0.6) !important;
     }
 }
 
@@ -1000,7 +1010,7 @@ img.custom-icon.chevron-filled-left,
 img.custom-icon.chevron-filled-down, {
     height: 18px;
     top: 39%;
-    right: 3%;
+    right: 0.55em;
 }
 
 img.custom-icon.list-custom-icon, {
@@ -1018,7 +1028,7 @@ img.custom-icon.list-custom-icon.request-icon {
 
 .blue.blue-left-margin {
     font-family: "OpenSans-SemiBold";
-
+    color:$blue;
 }
 
 .availability-modal {
@@ -1027,7 +1037,7 @@ img.custom-icon.list-custom-icon.request-icon {
     transform:translate3d(0px, 0px, 0px) scale(1);
     width: 100%;
     display: flex;
-    -webkit-display: flex;
+    display: -webkit-flex;
     flex-direction: row;
     -webkit-flex-direction: row;
 }
@@ -1038,4 +1048,14 @@ img.custom-icon.list-custom-icon.request-icon {
     .item-input {
         padding: 11px 0px 7px 15px !important;
     }
+}
+
+
+
+.description-item {
+    min-height:8em !important;
+}
+
+.course-input-item.active, .course-input-item.activated {
+    background-color:white;
 }

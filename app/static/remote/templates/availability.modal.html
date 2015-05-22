@@ -50,7 +50,7 @@
             <!-- left date column -->
             <div class='pure-u-1-6'>
               <div class='pure-u-1 padding-1em calendar-date-label relative' ng-repeat='time in getNumber(24) track by $index'>&nbsp;
-                <span  ng-show='$index > 0'class='calendar-date-label-text ng-class:{"blue blue-left-margin full-opacity": ($index * calendar.coords.chunkHeights.hour) >= calendar.coords.currentTopY && ($index * calendar.coords.chunkHeights.hour) < (calendar.coords.currentTopY + calendar.coords.currentHeight * 1.1)}'>{{hours[$index]}}</span>
+                <span  ng-show='$index > 0'class='calendar-date-label-text ng-class:{"blue blue-left-margin full-opacity" : ($index * calendar.coords.chunkHeights.hours) >= calendar.coords.currentTopY && ($index * calendar.coords.chunkHeights.hours) < (calendar.coords.currentTopY + calendar.coords.currentHeight) }'>{{hours[$index]}}</span>
               </div>
             </div>
             <!-- left column -->

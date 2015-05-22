@@ -45,6 +45,19 @@ angular.module('uguru.util.controllers')
       $scope.locationModal.show();
     }
 
+    $scope.$on('modal.shown', function() {
+
+      if ($scope.requestModal && $scope.requestModal.isShown()) {
+        $timeout(function() {
+
+          var course_input = document.getElementById('course-input')
+          course_input.focus();
+
+        }, 500);
+      }
+
+    })
+
     $scope.toggleYourCourses = function() {
 
       $scope.show_student_courses = !$scope.show_student_courses;
@@ -197,6 +210,14 @@ angular.module('uguru.util.controllers')
       //   $scope.progress = false;
       // }
     }
+
+    $scope.focusCourseInput = function () {
+      var input = document.getElementById('course-input');
+      if (input) {
+        input.focus();
+      }
+    }
+
 
     $scope.setCourseFocus = function(target) {
         console.log($scope.matchingCourses)
