@@ -7,7 +7,7 @@
     <h1 class="title">Request a Session</h1>
     <div class="buttons">
       <button class="button button-clear button-header-link submit-button" ng-click='submitRequest()'>
-        <span ng-show='!progress'>Done </span>
+        <span ng-show='!progress' class='ng-class:{"grey-text":!request.address}'>Done </span>
         <span class='blue' ng-show='progress'>Okay</span>
       </button>
     </div>
@@ -79,19 +79,19 @@
               </button>
             </ion-item>
 
-          <ion-toggle ng-hide='progress' ng-model='request.urgency' class='request-form-item'>
+          <ion-toggle ng-hide='progress' ng-model='request.urgency' class='request-form-item' ng-click='request.availability_edit = false;'>
             <p> Is this session urgent? </p>
           </ion-toggle>
 
-          <div class='item item-divider' ng-hide='progress'>
+          <div class='item item-divider' ng-hide='progress' ng-click='!request.availability_edit || toggleAvailability()'>
           </div>
-          <ion-item ng-hide='progress' ng-click='toggleAvailability()' class='request-form-item'>
+          <a ng-hide='progress' ng-blur='toggleAvailability()' ng-click='toggleAvailability()' class='item request-form-item'>
             <p class='inline'> How much time do you need?
             </p>
             <p class='align-right blue item-right-text'>{{request.time_estimate.hours}} hours <span ng-show='request.time_estimate.minutes > 0'>{{request.time_estimate.minutes}} min</span></p>
-          </ion-item>
+          </a>
 
-          <ion-item  ng-show='request.availability_edit && !progress' class='scroll-availability-section relative request-form-item' data-tap-disabled="true">
+          <ion-item  ng-show='request.availability_edit && !progress' class='scroll-availability-section relative item request-form-item' data-tap-disabled="true">
             <div id='test' style='margin-top:238px; margin-left:27%; position:absolute; margin-bottom:-260px;'> </div>
             <div class='pure-u-1 padding-2em'> </div>
             <div class='pure-u-1 padding-2em'> </div>
@@ -157,7 +157,7 @@
             </a>
           </ion-item>
 
-          <div class='item item-divider' ng-hide='progress'>
+          <div class='item item-divider' ng-hide='progress' ng-click='!request.availability_edit || toggleAvailability()'>
           </div>
           <ion-item class='relative item-icon-right description-item request-form-item' ng-hide='progress' ng-click='launchDescriptionModal()' >
             <div class='empty-description-wrapper' ng-hide='progress || request.description'>

@@ -1,24 +1,29 @@
-<ion-view hide-nav-bar='true' class='courses' ng-controller='HomeController'>
+<ion-view hide-nav-bar='true' class='courses' ng-controller='CoursesController'>
   <ion-header-bar class='dark-bg-header item-button-left item-icon-right'>
         <!-- <button ng-click='launchVerbModal()' class="button button-clear button-blue">Edit</button> -->
         <h1 class="title">My Courses</h1>
         <div class="buttons">
-        <button ng-click='launchVerbModal()' class='button-img'><img class='icon ion-plus-custom blue pure-img custom-icon' src='{{img_base}}./img/icons/blue_add.svg'></img></button>
-      </div>
+          <a ng-click='launchVerbModal()'>
+            <img class='icon ion-plus-custom blue custom-icon' style='top:0.33em !important;' src='{{img_base}}./img/icons/blue_add.svg'></img>
+          </a>
+        </div>
   </ion-header-bar>
 <ion-content class='dark-bg'>
 
     <div class='pure-g-c flex-column flex-space-between' ng-show='user.student_courses && user.student_courses.length > 0'>
-      <div class='pure-g'>
-        <ion-list class='no-horizontal-padding dark-bg pure-u-1'>
+      <div class='flex-item-c '>
+        <ion-list class='no-horizontal-padding dark-bg pure-u-1' show-delete="shouldShowDelete" can-swipe='listCanSwipe' >
           <ion-item class='uppercase light item-icon-right dark-bg add-course-item' ng-repeat='course in user.student_courses'>
             {{course.short_name}}
-            <i class='icon ion-chevron-right icon-small'></i>
+            <ion-option-button class='item-options'
+                       ng-click="user.student_courses.splice($index, 1)">
+              Delete
+            </ion-option-button>
           </ion-item>
 
         </ion-list>
       </div>
-        <div class='flex-item-c pure-g-c'>
+        <div class='pure-g j-start'>
             <div class='pure-u-1 add-more-courses-button-wrapper'>
                <a ng-click='launchVerbModal()'>
                   <img class='pure-img guru-bg-img' src='{{img_base}}./img/verbs/session.svg'>

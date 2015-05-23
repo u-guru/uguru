@@ -41,7 +41,9 @@ angular.module('uguru.util.controllers')
       availability: {hours: 2, minutes:"00"},
     }
 
+
     $scope.launchLocationModal = function() {
+      !$scope.request.availability_edit || $scope.toggleAvailability();
       $scope.locationModal.show();
     }
 
@@ -64,6 +66,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchDescriptionModal = function() {
+      !$scope.request.availability_edit || $scope.toggleAvailability();
       $scope.descriptionModal.show();
     }
 
@@ -92,10 +95,16 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchAvailabilityModal = function() {
+      !$scope.request.availability_edit || $scope.toggleAvailability();
       $scope.availabilityModal.show();
     }
 
     $scope.launchTagsModal = function() {
+      if ($scope.descriptionModal.isShown()) {
+        $timeout(function() {
+          $scope.closeDescriptionModal();
+        }, 1000);
+      }
       $scope.tagsModal.show();
     }
 
@@ -402,10 +411,39 @@ angular.module('uguru.util.controllers')
         $scope.$apply();
       }
 
+      $scope.validateForm = function() {
+
+        if (!$scope.request.course || !$scope.request.course.short_name) {
+          $scope.success.show(0, 1250, 'Please enter a course');
+          return false;
+        }
+
+        if (!$scope.request.address) {
+          $scope.success.show(0, 1250, 'Please enter a location');
+          return false;
+        }
+
+        //if request is urgent and availability is not filled out./
+        if (!$scope.request.urgency && !$scope.request.calendar.start_time.hours
+          && !$scope.request.calendar.start_time.minutes) {
+          $scope.success.show(0, 1250, 'Please fill out your availability');
+
+          return false;
+        }
+
+        return true;
+
+      }
+
       $scope.submitRequest = function() {
 
-        $scope.root.vars.request = $scope.request;
+        if (!$scope.validateForm()) {
+          console.log('Form is not complete')
+          return;
+        }
 
+        $scope.root.vars.request = $scope.request;
+        !$scope.request.availability_edit || $scope.toggleAvailability();
         $scope.launchContactingModal();
 
         $timeout(function() {

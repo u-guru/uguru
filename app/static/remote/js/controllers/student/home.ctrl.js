@@ -76,6 +76,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           }).then(function(modal) {
             $scope.requestModal = modal;
             $scope.requestModal.show();
+
+            if ($scope.verbModal.isShown()) {
+              $timeout(function() {
+                $scope.verbModal.hide();
+              }, 2000);
+            }
+
           });
 
       } else {

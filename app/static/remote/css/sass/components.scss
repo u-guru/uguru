@@ -686,6 +686,10 @@ input.dark-search {
     margin-top:40%;
 }
 
+.courses .item-content {
+    background-color:inherit;
+}
+
 .courses .add-more-courses-button-wrapper {
     img {
         height:80px;
@@ -696,6 +700,8 @@ input.dark-search {
         font-family: "OpenSans-Semibold";
         font-size:65%;
     }
+
+
 }
 
 .courses {
@@ -986,6 +992,7 @@ input.ion-google-place[readonly]{
     opacity:1 !important;
     .request-tag {
         font-family: "OpenSans-Regular";
+        padding-right:1em;
     }
 }
 
@@ -1058,4 +1065,19 @@ img.custom-icon.list-custom-icon.request-icon {
 
 .course-input-item.active, .course-input-item.activated {
     background-color:white;
+}
+
+
+
+.item-options {
+    background-color:#e42012;
+    color:white;
+}
+
+.tag-input-wrapper .item-input {
+  padding: 15px 0px 15px 15px !important;
+}
+
+.grey-text {
+    color:grey;
 }

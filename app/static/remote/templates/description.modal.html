@@ -27,7 +27,7 @@
 
   <ion-footer-bar class="bar-footer" keyboard-attach style='height:auto;'>
     <div class='pure-g full-width'>
-      <div class='pure-u-1'>
+      <div class='pure-u-1' ng-show='request.attached_files && request.attached_files.length > 0'>
         <div class='pure-u-1-4' ng-repeat='file in request.attached_files track by $index' ng-show='true || request && request.files && request.files.length > 0'>
           <div class='attach-img-wrapper padding-1em relative'>
             <a ng-click='deleteFile($index)' >

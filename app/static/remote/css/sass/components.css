@@ -469,6 +469,9 @@ input.dark-search {
 .add-more-courses-button-wrapper {
   margin-top: 40%; }
 
+.courses .item-content {
+  background-color: inherit; }
+
 .courses .add-more-courses-button-wrapper img {
   height: 80px; }
 .courses .add-more-courses-button-wrapper #add-more-courses-text {
@@ -681,7 +684,8 @@ input.ion-google-place[readonly] {
   margin-left: 7% !important;
   opacity: 1 !important; }
   .tags-wrapper .request-tag {
-    font-family: "OpenSans-Regular"; }
+    font-family: "OpenSans-Regular";
+    padding-right: 1em; }
 
 .no-background-image {
   background-image: none; }
@@ -732,3 +736,13 @@ img.custom-icon.list-custom-icon.request-icon {
 
 .course-input-item.active, .course-input-item.activated {
   background-color: white; }
+
+.item-options {
+  background-color: #e42012;
+  color: white; }
+
+.tag-input-wrapper .item-input {
+  padding: 15px 0px 15px 15px !important; }
+
+.grey-text {
+  color: grey; }
