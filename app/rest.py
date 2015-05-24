@@ -532,10 +532,14 @@ class UserRequestView(restful.Resource):
         _request.course_id = course.get('id')
         _request.position = position
         _request.time_created = datetime.now()
-        _request.description = request.json.get('note')
+        _request.description = request.json.get('description')
         _request.in_person = request.json.get('in_person')
         _request.online = request.json.get('online')
-        _request.time_estimate = request.json.get('time_estimate')
+
+        hours = int(request.json.get('time_estimate').get('hours'))
+        minutes = int(request.json.get('time_estimate').get('minutes'))
+
+        _request.time_estimate = hours * 60  + minutes
         _request.address = request.json.get('address')
         _request.status = Request.PROCESSING_GURUS
         _request.student_id = user_id
@@ -597,7 +601,7 @@ class UserRequestView(restful.Resource):
 
             proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
 
-            proposal.student_price = float(request.json.get('price_slider'))
+            # proposal.student_price = float(request.json.get('price_slider'))
 
             event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
             event = Event.initFromDict(event_dict)

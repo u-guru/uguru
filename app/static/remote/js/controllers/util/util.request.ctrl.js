@@ -29,9 +29,13 @@ angular.module('uguru.util.controllers')
       urgency: false,
       tags:[],
       availability_edit: false,
+      calendar_edit:false,
       calendar: {
+        weekday: "Today",
         start_time: {hours: 0, minutes:0},
         end_time: {hours: 0, minutes:0},
+        formatted_start_time: null,
+        formatted_end_time: null,
         date: {
           day: 1,
           month: 1,
@@ -49,14 +53,22 @@ angular.module('uguru.util.controllers')
 
     $scope.$on('modal.shown', function() {
 
-      if ($scope.requestModal && $scope.requestModal.isShown()) {
-        $timeout(function() {
+      $timeout(function() {
 
-          var course_input = document.getElementById('course-input')
-          course_input.focus();
+        if ($scope.requestModal && $scope.requestModal.isShown()
+        && $scope.course_search_text.length === 0 && !$scope.locationModal.isShown()
+        && !$scope.tagsModal.isShown() && !$scope.availabilityModal.isShown()
+        &&! $scope.descriptionModal.isShown()) {
 
-        }, 500);
-      }
+          $timeout(function() {
+
+            var course_input = document.getElementById('course-input')
+            course_input.focus();
+
+          }, 1500);
+        }
+
+      }, 500)
 
     })
 
@@ -96,7 +108,9 @@ angular.module('uguru.util.controllers')
 
     $scope.launchAvailabilityModal = function() {
       !$scope.request.availability_edit || $scope.toggleAvailability();
+
       $scope.availabilityModal.show();
+
     }
 
     $scope.launchTagsModal = function() {
@@ -437,6 +451,8 @@ angular.module('uguru.util.controllers')
 
       $scope.submitRequest = function() {
 
+        $scope.user.createObj($scope.user, 'requests', $scope.request, $scope);
+
         if (!$scope.validateForm()) {
           console.log('Form is not complete')
           return;
@@ -453,6 +469,7 @@ angular.module('uguru.util.controllers')
 
         $timeout(function() {
           $scope.closeContactingModal();
+          console.log('saved request', $scope.root.vars.request)
         }, 5000);
 
       }

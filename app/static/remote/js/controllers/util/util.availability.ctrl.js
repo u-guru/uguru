@@ -11,8 +11,9 @@ angular.module('uguru.util.controllers')
   '$cordovaKeyboard',
   '$ionicModal',
   '$ionicTabsDelegate',
+  '$ionicScrollDelegate',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
-    $cordovaKeyboard, $ionicModal,$ionicTabsDelegate) {
+    $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicScrollDelegate) {
 
     var today = new Date();
     var nextMonthDays = new Date(today.getYear(), today.getMonth(), 0).getDate();
@@ -20,6 +21,7 @@ angular.module('uguru.util.controllers')
 
     $scope.showDateTabs = false;
     $scope.weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    $scope.full_weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     $scope.hours = ['12 am', '1 am', '2 am', '3 am', '4 am', '5 am', '6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12pm',
                     '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm', '8 pm', '9 pm', '10 pm', '11 pm'];
     $scope.calendar = {
@@ -79,7 +81,9 @@ angular.module('uguru.util.controllers')
             var date = today.getDate() + index;
             $scope.calendar.date.date = date;
             var weekday = $scope.weekdays[(date + $scope.calendar.weekday_offset) % 7];
+            var full_weekday = $scope.full_weekdays[(date + $scope.calendar.weekday_offset) % 7];
             $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
+            $scope.calendar.date.weekday = full_weekday.toString();
             $scope.calendar.date.formatted_date = $scope.calendar.selected_custom_date;
           } else
           if (index === 2 && !date_index) {
@@ -88,6 +92,8 @@ angular.module('uguru.util.controllers')
             var date = today.getDate() + index;
             $scope.calendar.date.date = date;
             var weekday = $scope.weekdays[(date + $scope.calendar.weekday_offset) % 7];
+            var full_weekday = $scope.full_weekdays[(date + $scope.calendar.weekday_offset) % 7];
+            $scope.calendar.date.weekday = full_weekday.toString();
             $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
             $scope.calendar.date.formatted_date = $scope.calendar.selected_custom_date;
           }
@@ -95,6 +101,8 @@ angular.module('uguru.util.controllers')
             $scope.toggleCalendarHeight(false);
             $scope.calendar.date.offset = index + date_index;
             var weekday = $scope.weekdays[(date_index + $scope.calendar.weekday_offset) % 7];
+            var full_weekday = $scope.full_weekdays[(date + $scope.calendar.weekday_offset) % 7];
+            $scope.calendar.date.weekday = full_weekday.toString();
             var date = actual_date;
             $scope.calendar.date.date = date;
             $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
@@ -103,6 +111,21 @@ angular.module('uguru.util.controllers')
             $scope.date_index = null;
           }
         }
+
+        $timeout(function() {
+
+          if (!$scope.request.calendar_edit) {
+            var _7am_row = document.getElementById('8AM');
+            height  = _7am_row.getBoundingClientRect().top;
+            console.log(_7am_row.getBoundingClientRect());
+            console.log(height, 'height')
+            console.log($ionicScrollDelegate.$getByHandle('calendar').getScrollPosition());
+            $ionicScrollDelegate.$getByHandle('calendar').scrollTo(0, height * 0.7);
+          }
+
+
+        }, 500);
+
       }
 
     });
@@ -291,12 +314,14 @@ angular.module('uguru.util.controllers')
       $scope.calendar.coords.currentTopY = Math.round(calendar_event_rect.top - $scope.calendar.coords.calendarTopY);
 
       $scope.calendar.coords.currentHeight = Math.round(calendar_event_rect.height);
-      console.log('current y', $scope.calendar.coords.currentTopY, $scope.calendar.coords.chunkHeights.hours);
+      if ($scope.request && !$scope.request.calendar_edit) {
+        $scope.request.calendar_edit = true;
+        window.location.hash = '';
+      }
       $scope.$apply();
     }
 
     $scope.formatMinutes = function(minutes) {
-      console.log('minutes',minutes)
       if (minutes === 0) {
         return "00";
       } else {
@@ -343,13 +368,21 @@ angular.module('uguru.util.controllers')
       //calculations ==
       $scope.request.calendar.start_time.hours = ($scope.calendar.coords.currentTopY) / $scope.calendar.coords.chunkHeights.hours;
 
-      $scope.request.calendar.start_time.hours = $scope.formatHours(Math.round($scope.request.calendar.start_time.hours, 2));
+      $scope.request.calendar.start_time.hours = Math.round($scope.request.calendar.start_time.hours, 2);
+
+      $scope.request.calendar.end_time.hours = $scope.request.calendar.start_time.hours + $scope.request.time_estimate.hours;
+
+      $scope.request.calendar.formatted_start_time = $scope.formatHours($scope.request.calendar.start_time.hours);
+      $scope.request.calendar.formatted_end_time = $scope.formatHours($scope.request.calendar.end_time.hours);
+
+      console.log('formatted start_time', $scope.request.calendar.formatted_start_time);
+      console.log('formatted end_time', $scope.request.calendar.formatted_end_time);
 
       // var session_length_hours = $scope.calendar.coords.currentHeight  / $scope.calendar.coords.chunkHeights.hours;
 
       // var num_hours = Math.round((session_length_hours * 2), 2) / 2;
 
-      // $scope.request.calendar.end_time.hours = $scope.formatHours(Math.floor(num_hours)  + $scope.request.calendar.start_time.hours);
+      // $scope.request.calendar.end_time.hours = $scope.request.time_estimate.hours;
 
       // if (Math.floor(num_hours) !== num_hours) {
       //   $scope.request.calendar.end_time.minutes = $scope.formatMinutes(0.5 * 60);

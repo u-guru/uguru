@@ -25,7 +25,7 @@
 
 <ion-content class='dark-bg has-subheader request-form-tags-offset' scroll='false'>
     <div class='pure-g-c flex-column flex-space-between'>
-        <div class='flex-item-c pure-g center'>
+        <div class='flex-item-c pure-g center' ng-show='!user.active_requests || user.active_requests.length === 0'>
             <div class='pure-u-1'>
                 <img class='pure-img guru-bg-img' src='{{img_base}}./img/general/logo-01.svg'/>
             </div>
@@ -43,6 +43,68 @@
                   Request
               </div>
             </a>
+        </div>
+        <div class='pure-g' ng-show='user.active_requests.length > 0'>
+
+          <ion-list class='pure-u-1' can-swipe="true">
+
+              <div class='active-request-card-item-wrapper' ng-repeat='request in user.active_requests'>
+                <ion-item class='item-avatar item-icon-right request-card-item' on-hold="cancelRequest(request)">
+                  <img class='pure-img' ng-src='{{img_base}}./img/verbs/session.svg' />
+                  <div class='request-card-content'>
+                    <p class='course-text'>
+                      {{request.course.short_name}} <span class='request-tag-status'> finding a guru </span>
+                    </p>
+                    <p class='location-text'> {{request.address}}</p>
+                  </div>
+                  <!-- <i class='icon ion-chevron-right icon-small'> </i> -->
+                </ion-item>
+
+                <ion-item class='item-wrap-text' on-hold="cancelRequest(request)">
+                <!-- <ion-item class='item-avatar item-wrap-text'> -->
+                  <p class='request-description'>
+
+                    <!-- required -->
+                    <strong> {{request.calendar.weekday}}
+                    </strong>
+
+                    <!-- not all have calendars -->
+                    <span class='calendar-availability-contact' ng-show='request.calendar.formatted_start_time'>
+                       between <strong>{{request.calendar.formatted_start_time}} & {{request.calendar.formatted_end_time}}</strong>
+                    </span>
+
+
+                    <!-- required -->
+                    for <strong>3.5 hours</strong>.
+
+                     <span ng-show="request.description">
+                      <strong>Description</strong>
+                     </span>
+
+                     <span ng-show='request.description && request.files_attached.length > 0 '>
+                     and
+                     </span>
+
+                      <span ng-show="request.files_attached.length > 0">
+                        <strong>Attachments</strong>
+                      </span>
+
+                      <span ng-show='request.description && request.files_attached.length > 0 '>
+                        have been added.
+                      </span>
+                      <span ng-show='!request.description && request.files_attached.length > 0 '>
+                        have been added.
+                      </span>
+                      <span ng-show='request.description && !request.files_attached.length > 0 '>
+                        has been added.
+                      </span>
+                  </p>
+                </ion-item>
+              </div>
+
+            </ion-list>
+
+
         </div>
     </div>
     <!-- bottom tabs -->

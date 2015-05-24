@@ -19,6 +19,23 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop)     {
 
+  if ($scope.user && $scope.user.active_requests && $scope.user.active_requests.length > 0) {
+    $ionicSideMenuDelegate.canDragContent(false);
+
+    $scope.cancelRequest = function(request) {
+      if (confirm('Are you sure you want to cancel this request?')) {
+        request.status = 4;
+        $scope.user.updateObj($scope.user, 'requests', request, $scope);
+
+        var cancelMsg = request.course.short_name + ' request canceled';
+        $scope.success.show(0, 2000, cancelMsg);
+        $scope.root.util.removeObjectByKey($scope.user.active_requests, 'id', request.id);
+      }
+    }
+
+  }
+
+
   $ionicPlatform.ready(function() {
 
         $scope.turnStatusBarWhite = function() {
@@ -99,13 +116,17 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.contactingModal.hide();
     }
 
-  // $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
-  //           scope: $scope,
-  //           animation: 'slide-in-up'
-  //       }).then(function(modal) {
-  //         $scope.availabilityModal = modal;
-  //         $scope.availabilityModal.show();
-  //     });
+
+    // $scope.root.vars.request = {
+    //   course: {short_name: 'CS10'},
+    //   address: "Ferry Building",
+    //   calendar: {weekday: "Thursday", formatted_start_time: '12:00pm', formatted_end_time: "3:00pm", },
+    //   files_attached: [true],
+    //   description: "yo there is a description"
+    // }
+    // $timeout(function() {
+    //   $scope.launchContactingModal();
+    // }, 500)
 
   }
 

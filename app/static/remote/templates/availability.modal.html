@@ -43,14 +43,14 @@
 
   </ion-header-bar>
 
-  <ion-content class='has-header has-subheader calendar-bg' id='calendar-content' style='margin-top:-20px;'>
+  <ion-content class='has-header has-subheader calendar-bg' id='calendar-content' delegate-handle='calendar'style='margin-top:-20px;'>
 
     <div class='pure-g flex-space-between flex-column'>
         <div class='pure-g center' style='margin-top:5px;'>
             <!-- left date column -->
             <div class='pure-u-1-6'>
               <div class='pure-u-1 padding-1em calendar-date-label relative' ng-repeat='time in getNumber(24) track by $index'>&nbsp;
-                <span  ng-show='$index > 0'class='calendar-date-label-text ng-class:{"blue blue-left-margin full-opacity" : ($index * calendar.coords.chunkHeights.hours) >= calendar.coords.currentTopY && ($index * calendar.coords.chunkHeights.hours) < (calendar.coords.currentTopY + calendar.coords.currentHeight) }'>{{hours[$index]}}</span>
+                <span  id='{{hours[$index].replace(" ", "").toUpperCase()}}' ng-show='$index > 0'class='calendar-date-label-text ng-class:{"blue blue-left-margin full-opacity" : ($index * calendar.coords.chunkHeights.hours) >= calendar.coords.currentTopY && ($index * calendar.coords.chunkHeights.hours) < (calendar.coords.currentTopY + calendar.coords.currentHeight) }'>{{hours[$index]}}</span>
               </div>
             </div>
             <!-- left column -->

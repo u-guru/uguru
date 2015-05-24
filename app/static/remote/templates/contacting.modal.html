@@ -43,20 +43,56 @@
 
               <ion-list>
 
-                <ion-item class='item-avatar item-icon-right request-card-item'>
-                  <img class='pure-img' ng-src='{{img_base}}./img/verbs/session.svg' />
+                <ion-item class='item-icon-right request-card-item'>
+                <!-- <ion-item class='item-avatar item-icon-right request-card-item'> -->
+                  <!-- <img class='pure-img' ng-src='{{img_base}}./img/verbs/session.svg' /> -->
                   <div class='request-card-content'>
                     <p class='course-text'>
-                      Astro 110 <span class='request-tag-status'> finding a guru </span>
+                      {{root.vars.request.course.short_name}} <span class='request-tag-status'> finding a guru </span>
                     </p>
-                    <p class='location-text'> Ferry Building</p>
+                    <p class='location-text'> {{root.vars.request.address}}</p>
                   </div>
                   <!-- <i class='icon ion-chevron-right icon-small'> </i> -->
                 </ion-item>
 
-                <ion-item class='item-avatar item-wrap-text'>
+                <ion-item class='item-wrap-text'>
+                <!-- <ion-item class='item-avatar item-wrap-text'> -->
                   <p class='request-description'>
-                    <strong> Thursday </strong> between <strong>12:00 pm & 3:30 pm</strong> for <strong>3.5 hours</strong>. <strong>Description</strong> and <strong>attachments</strong> have been added.
+
+                    <!-- required -->
+                    <strong> {{root.vars.request.calendar.weekday}}
+                    </strong>
+
+                    <!-- not all have calendars -->
+                    <span class='calendar-availability-contact' ng-show='root.vars.request.calendar.formatted_start_time'>
+                       between <strong>{{root.vars.request.calendar.formatted_start_time}} & {{root.vars.request.calendar.formatted_end_time}}</strong>
+                    </span>
+
+
+                    <!-- required -->
+                    for <strong>3.5 hours</strong>.
+
+                     <span ng-show="root.vars.request.description">
+                      <strong>Description</strong>
+                     </span>
+
+                     <span ng-show='root.vars.request.description && root.vars.request.files_attached.length > 0 '>
+                     and
+                     </span>
+
+                      <span ng-show="root.vars.request.files_attached.length > 0">
+                        <strong>Attachments</strong>
+                      </span>
+
+                      <span ng-show='root.vars.request.description && root.vars.request.files_attached.length > 0 '>
+                        have been added.
+                      </span>
+                      <span ng-show='!root.vars.request.description && root.vars.request.files_attached.length > 0 '>
+                        have been added.
+                      </span>
+                      <span ng-show='root.vars.request.description && !root.vars.request.files_attached.length > 0 '>
+                        has been added.
+                      </span>
                   </p>
                 </ion-item>
 

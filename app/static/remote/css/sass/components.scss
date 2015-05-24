@@ -829,13 +829,16 @@ input.dark-search {
     }
 }
 
-.contacting-modal {
+.contacting-modal, #home-page {
     .icon-row {
 
         width: 120%;
         overflow-x: visible;
         margin-left: -10%;
 
+    }
+    .active-request-card-item-wrapper {
+        margin-bottom:1em;
     }
 
     .request-card-item {
@@ -1080,4 +1083,10 @@ img.custom-icon.list-custom-icon.request-icon {
 
 .grey-text {
     color:grey;
+}
+
+#home-page {
+    .list {
+        margin-top: -3px;
+    }
 }

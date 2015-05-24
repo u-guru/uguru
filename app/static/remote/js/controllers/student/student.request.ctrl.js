@@ -196,7 +196,7 @@ angular.module('uguru.student.controllers')
       $scope.contactingGuruModal.show();
 
       $timeout(function() {
-        $scope.user.createObj($scope.user, 'requests', $scope.request, $scope, null, $scope.failureFunction);
+        // $scope.user.createObj($scope.user, 'requests', $scope.request, $scope, null, $scope.failureFunction);
         // User.getUserFromServer($scope, null, $state);
         console.log('going home...');
 

@@ -562,28 +562,30 @@ input.dark-search {
   font-size: 0.8em;
   padding: 8px 12px; }
 
-.contacting-modal .icon-row {
+.contacting-modal .icon-row, #home-page .icon-row {
   width: 120%;
   overflow-x: visible;
   margin-left: -10%; }
-.contacting-modal .request-card-item p.course-text {
+.contacting-modal .active-request-card-item-wrapper, #home-page .active-request-card-item-wrapper {
+  margin-bottom: 1em; }
+.contacting-modal .request-card-item p.course-text, #home-page .request-card-item p.course-text {
   font-size: 1.5em;
   text-transform: uppercase;
   font-family: "OpenSans-Light";
   position: relative; }
-.contacting-modal .request-card-item img {
+.contacting-modal .request-card-item img, #home-page .request-card-item img {
   top: 22px; }
-.contacting-modal .request-card-item p.location-text {
+.contacting-modal .request-card-item p.location-text, #home-page .request-card-item p.location-text {
   font-family: "OpenSans-SemiBold";
   margin-top: -0.5em;
   font-size: 0.7em;
   color: black;
   opacity: 0.7; }
-.contacting-modal p.request-description {
+.contacting-modal p.request-description, #home-page p.request-description {
   white-space: normal;
   font-weight: rgba(0, 0, 0, 0.5);
   font-size: 0.7em; }
-.contacting-modal .request-tag-status {
+.contacting-modal .request-tag-status, #home-page .request-tag-status {
   font-size: 0.4em;
   font-family: OpenSans-Regular;
   color: orange;
@@ -746,3 +748,6 @@ img.custom-icon.list-custom-icon.request-icon {
 
 .grey-text {
   color: grey; }
+
+#home-page .list {
+  margin-top: -3px; }
