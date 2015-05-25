@@ -133,9 +133,9 @@ angular.module('uguru.util.controllers')
     $scope.$on('modal.shown', function() {
 
 
-      if (window.StatusBar) {
-          StatusBar.styleDefault();
-      }
+      // if (window.StatusBar) {
+      //     StatusBar.styleDefault();
+      // }
 
 
       if ($scope.signupModal && $scope.signupModal.isShown()) {

@@ -76,6 +76,24 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.contactingModal = modal;
     });
 
+        $ionicModal.fromTemplateUrl(BASE + 'templates/task_verbs.home.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.taskVerbModal = modal;
+    });
+
+    $scope.launchTaskVerbModal = function() {
+      $timeout(function() {
+        $scope.closeVerbModal();
+      }, 500);
+      $scope.taskVerbModal.show();
+    }
+
+    $scope.hideTaskVerbModal = function() {
+      $scope.taskVerbModal.hide();
+    }
+
     $scope.launchVerbModal = function() {
       $scope.verbModal.show();
     }
@@ -84,10 +102,14 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $ionicSideMenuDelegate.toggleRight();
     };
 
-    $scope.launchRequestModal = function() {
+    $scope.launchRequestModal = function(index, verb_index) {
       if ($scope.root.vars.courses) {
 
-          console.log('instantiated first request form');
+          $scope.root.vars.last_verb_index_clicked = index;
+          if (verb_index) {
+            $scope.root.vars.detailed_verbs_index_clicked = verb_index;
+          }
+
           $ionicModal.fromTemplateUrl(BASE + 'templates/request.modal.html', {
               scope: $scope,
               animation: 'slide-in-up'
@@ -98,6 +120,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             if ($scope.verbModal.isShown()) {
               $timeout(function() {
                 $scope.verbModal.hide();
+              }, 2000);
+            }
+
+            if ($scope.taskVerbModal.isShown()) {
+              $timeout(function() {
+                $scope.taskVerbModal.hide();
               }, 2000);
             }
 
@@ -113,8 +141,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
 
 
-    $scope.closeContactingModal = function() {
-      $scope.contactingModal.hide();
+    $scope.closeVerbModal = function() {
+      $scope.verbModal.hide();
     }
 
 

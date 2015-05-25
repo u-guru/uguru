@@ -4,20 +4,20 @@
     <div class="buttons">
       <button class="button button-clear button-header-link cancel-button" ng-click='closeRequestModal()'>Cancel</button>
     </div>
-    <h1 class="title">Request a Session</h1>
+    <h1 class="title">{{request_fields.title}}</h1>
     <div class="buttons">
       <button class="button button-clear button-header-link submit-button" ng-click='submitRequest()'>
-        <span ng-show='!progress' class='ng-class:{"grey-text":!request.address}'>Done </span>
+        <span ng-show='!progress' class='ng-class:{"grey-text":!validateFormVanilla()}'>Done </span>
         <span class='blue' ng-show='progress'>Okay</span>
       </button>
     </div>
   </ion-header-bar>
 
-  <ion-content class='rounded-corners standard-bg'>
+  <ion-content ng-class='rounded-corners'>
       <ion-list class='standard-bg'>
 
           <ion-item class='item-avatar-left item-mini course-input-item item-icon-right' ng-click='focusCourseInput()'>
-            <img class='pure-img'  src='{{img_base}}./img/verbs/session.svg' class=''/>
+            <img class='pure-img'  src='{{img_base}}./img/verbs/{{request_fields.img}}' class=''/>
             <input type='text' name="course-input" class='light input-lg course-input form-control'id='course-input' ng-click='focusCourseInput()'
                 fast-matcher
                 fast-matcher-source="root.vars.courses"
@@ -27,7 +27,7 @@
                 fast-matcher-limit="5"
                 fast-matcher-preserve-order="true"
                 fast-matcher-case-insensitive="true"
-                placeholder="Enter course"
+                placeholder="{{request_fields.course_placeholder}}"
                 ng-model = "course_search_text"
                 ng-change = "updateProgress(course_search_text)"
 
@@ -36,7 +36,7 @@
             <!-- ng-change="updateProgress()" -->
             <a ng-click='toggleYourCourses()'>
               <img ng-show='show_student_courses' class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='{{img_base}}./img/icons/chevron-filled-down.svg'>
-              <img ng-show='!show_student_courses && user.student_courses && user.student_courses.length > 0'class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='{{img_base}}./img/icons/chevron-filled.svg'>
+              <img ng-show='!show_student_courses && user.student_courses && user.student_courses.length > 0 && root.vars.last_verb_index_clicked !== 2'class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='{{img_base}}./img/icons/chevron-filled.svg'>
             </a>
           </ion-item>
 
@@ -61,7 +61,7 @@
             </div>
           </div>
 
-            <ion-item class='item-icon-right request-form-item' ng-click='launchLocationModal()' ng-hide='progress || request.address'>
+            <ion-item class='item-icon-right request-form-item' ng-click='launchLocationModal()' ng-hide='progress || request.address || !request_fields.show_location'>
               <p> Location </p>
             </ion-item>
 
@@ -79,13 +79,13 @@
               </button>
             </ion-item>
 
-          <ion-toggle ng-hide='progress' ng-model='request.urgency' class='request-form-item' ng-click='request.availability_edit = false;'>
+          <ion-toggle ng-hide='progress || !request_fields.show_urgency' ng-model='request.urgency' class='request-form-item' ng-click='request.availability_edit = false;'>
             <p> Is this session urgent? </p>
           </ion-toggle>
 
-          <div class='item item-divider' ng-hide='progress' ng-click='!request.availability_edit || toggleAvailability()'>
+          <div class='item item-divider' ng-hide='progress || !request_fields.show_divider_one' ng-click='!request.availability_edit || toggleAvailability()'>
           </div>
-          <a ng-hide='progress' ng-blur='toggleAvailability()' ng-click='toggleAvailability()' class='item request-form-item'>
+          <a ng-hide='progress || !request_fields.show_estimate' ng-blur='toggleAvailability()' ng-click='toggleAvailability()' class='item request-form-item'>
             <p class='inline'> How much time do you need?
             </p>
             <p class='align-right blue item-right-text'>{{request.time_estimate.hours}} hours <span ng-show='request.time_estimate.minutes > 0'>{{request.time_estimate.minutes}} min</span></p>
@@ -102,43 +102,7 @@
 
               </div>
               <div class='pure-u-1-5'>
-                <!-- <div class='request-availability-container absolute'>
-                  <span class='length-hours blue light font-1-25em '>
-                    <ion-scroll>
-                      <div class='pure-g-c flex-space-between flex-column availability-scroller availability-scroller-left'>
-                        <div class='pure-u-1'> 1 </div>
-                        <div class='pure-u-1'> 2 </div>
-                        <div class='pure-u-1'> 3 </div>
-                        <div class='pure-u-1'> 4 </div>
-                        <div class='pure-u-1'> 5 </div>
-                        <div class='pure-u-1'> 6 </div>
-                        <div class='pure-u-1'> 7 </div>
-                        <div class='pure-u-1'> 8 </div>
-                        <div class='pure-u-1'> 9 </div>
-                        <div class='pure-u-1'> 10 </div>
-                        <div class='pure-u-1'></div>
-                        <div class='pure-u-1'></div>
-                        <div class='pure-u-1'></div>
-                        <div class='pure-u-1'></div>
-                      </div>
-                    </ion-scroll>
-                  </span>:
-                  <span class='length-minutes blue light font-1-25em '>
-                    <ion-scroll>
-                      <div class='pure-g-c flex-column availability-scroller availability-scroller-left'>
-                        <div class='pure-u-1'> 00 </div>
-                        <div class='pure-u-1'> 15 </div>
-                        <div class='pure-u-1'> 30 </div>
-                        <div class='pure-u-1'> 45 </div>
-                        <div class='pure-u-1'></div>
-                        <div class='pure-u-1'></div>
-                        <div class='pure-u-1'></div>
-                        <div class='pure-u-1'></div>
-                        <div class='pure-u-1'></div>
-                      </div>
-                    </ion-scroll>
-                  </span>:
-                </div> -->
+
               </div>
               <div class='pure-u-1-5 i-think-text'>
                 Hours
@@ -149,7 +113,7 @@
 
           </ion-item>
 
-          <ion-item ng-hide='progress || request.urgency' ng-click='launchAvailabilityModal()' class='request-form-item'>
+          <ion-item ng-hide='progress || request.urgency || !request_fields.show_availability' ng-click='launchAvailabilityModal()' class='request-form-item'>
             <a style='width:100%; height:100%;'>
               <p class='inline'> When are you available? </p>
               <p ng-show='!request.calendar.start_time.hours && !request.calendar.start_time.minutes'class='align-right blue item-right-text'>Pick a Time</p>
@@ -157,12 +121,12 @@
             </a>
           </ion-item>
 
-          <div class='item item-divider' ng-hide='progress' ng-click='!request.availability_edit || toggleAvailability()'>
+          <div class='item item-divider' ng-hide='progress || !request_fields.show_divider_two' ng-click='!request.availability_edit || toggleAvailability()'>
           </div>
           <ion-item class='relative item-icon-right description-item request-form-item' ng-hide='progress' ng-click='launchDescriptionModal()' >
             <div class='empty-description-wrapper' ng-hide='progress || request.description'>
               <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip.svg' style='margin-right: 0.33em; margin-top:0.4em;'>
-              <span class="input-label no-padding-top"><p> Describe your problem (optional)</p></span>
+              <span><p class='white-space-normal' style='padding-right:2em;'> {{request_fields.description_placeholder}}</p></span>
               <div class='pure-u-1 padding-1em'>&nbsp;<br></div>
               <div class='pure-u-1 padding-1em'>&nbsp;<br></div>
             </div>
@@ -190,6 +154,7 @@
           </ion-item>
           <ion-item class='item-icon-left' ng-hide='progress' ng-click='launchTagsModal()'>
             <img style='margin-top:0.4em;'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/tags.svg'>
+            <p class='empty-tags-placeholder' ng-show='!request.tags || request.tags.length === 0'>Add some tags (optional)</p>
             <p class='tags-wrapper' style='white-space:normal; padding-left:1em;'>&nbsp;<span class='blue request-tag' ng-repeat='tag in request.tags'>#{{tag}} </span> </p>
           </ion-item>
       </ion-list>

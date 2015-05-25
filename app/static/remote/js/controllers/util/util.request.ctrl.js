@@ -20,6 +20,10 @@ angular.module('uguru.util.controllers')
     $scope.show_student_courses = false;
     $scope.availability_scroll_init = false;
 
+    if (!$scope.root.vars.detailed_verbs_index_clicked) {
+      $scope.root.vars.detailed_verbs_index_clicked = 0;
+    }
+
 
 
 
@@ -47,6 +51,60 @@ angular.module('uguru.util.controllers')
       },
       availability: {hours: 2, minutes:"00"},
     }
+
+    var detailed_verbs = ['chores.svg', 'items.svg', 'food.svg', 'skilled_task.svg', 'specific.svg'];
+    var detailed_verb_placeholders = ['My laundry + dishes', 'Get bread from safeway', 'I want ice cream', 'Please fix my iPhone', 'Wait this line for me'];
+
+    var verb_arr = [
+      //verb 1 --> session
+      {
+        img: 'session.svg',
+        course_placeholder: 'Enter course',
+        description_placeholder: "Describe your problem (optional)",
+        show_location: true,
+        show_urgency: true,
+        show_estimate: true,
+        show_availability: true,
+        show_divider_one: true,
+        show_divider_two: true,
+        show_tags: true,
+        background_class:'standard-bg',
+        title: 'Request a Session',
+      },
+      //verb 2 --> question
+      {
+        img: 'question.svg',
+        course_placeholder: 'Enter course',
+        description_placeholder: "What's your question? Try to be specific as possible so we can help you find the best answer",
+        show_location: false,
+        show_urgency: false,
+        show_estimate: false,
+        show_availability: false,
+        show_divider_one: false,
+        show_divider_two: false,
+        show_description: true,
+        show_tags: true,
+        background_class:'dark-bg',
+        title: 'Ask a Question',
+      },
+      //verb 3 --> general
+      {
+        img: detailed_verbs[$scope.root.vars.detailed_verbs_index_clicked],
+        course_placeholder: detailed_verb_placeholders[$scope.root.vars.detailed_verbs_index_clicked],
+        description_placeholder: "Describe your task in more detail",
+        show_location: true,
+        show_urgency: true,
+        show_estimate: true,
+        show_availability: true,
+        show_divider_one: true,
+        show_divider_two: true,
+        show_description: true,
+        show_tags: true,
+        title: 'Request a Task'
+      }
+    ];
+
+    $scope.request_fields = verb_arr[$scope.root.vars.last_verb_index_clicked];
 
 
     $scope.launchLocationModal = function() {
@@ -230,13 +288,7 @@ angular.module('uguru.util.controllers')
     });
 
     $scope.updateProgress = function(input_text) {
-      $scope.progress = input_text.length > 0;
-      // var courseInput = document.getElementById('course-input');
-      // if (courseInput === document.activeElement) {
-      //   $scope.progress = true;
-      // } else {
-      //   $scope.progress = false;
-      // }
+      $scope.progress = (input_text.length > 0) && ($scope.root.vars.last_verb_index_clicked === 0 || $scope.root.vars.last_verb_index_clicked === 1);
     }
 
     $scope.focusCourseInput = function () {
@@ -432,24 +484,63 @@ angular.module('uguru.util.controllers')
         $scope.$apply();
       }
 
+      $timeout(function() {
+
+        $scope.validateFormVanilla = function() {
+          if ($scope.root.vars.last_verb_index_clicked === 1) {
+            result =  ($scope.request.course && $scope.request.course.short_name) && ($scope.request.description.length > 0);
+            return result;
+          } else {
+            course_input_value = document.getElementById('course-input').value;
+            result = (($scope.request.course && $scope.request.course.short_name) || (course_input_value.length > 0)) && ($scope.request.address && $scope.request.address.length > 0);
+            return result;
+          }
+          return false;
+        }
+
+      }, 500)
+
       $scope.validateForm = function() {
+        course_input_value = document.getElementById('course-input').value;
+        result = (($scope.request.course && $scope.request.course.short_name) || (course_input_value.length > 0)) && ($scope.request.address && $scope.request.address.length > 0);
+        if (!result) {
+          //if is a task
+          if ($scope.root.vars.last_verb_index_clicked === 2) {
+            $scope.success.show(0, 1250, 'Please enter a task title');
+          } else {
+            $scope.success.show(0, 1250, 'Please enter a course');
+          }
 
-        if (!$scope.request.course || !$scope.request.course.short_name) {
-          $scope.success.show(0, 1250, 'Please enter a course');
           return false;
         }
 
-        if (!$scope.request.address) {
-          $scope.success.show(0, 1250, 'Please enter a location');
-          return false;
+        //is a question
+        if ($scope.root.vars.last_verb_index_clicked === 1) {
+
+          if (!$scope.request.description) {
+            $scope.success.show(0, 1250, 'Please enter a question');
+              return false;
+          }
+
         }
 
-        //if request is urgent and availability is not filled out./
-        if (!$scope.request.urgency && !$scope.request.calendar.start_time.hours
-          && !$scope.request.calendar.start_time.minutes) {
-          $scope.success.show(0, 1250, 'Please fill out your availability');
+        //is a session or a task
+        else {
 
-          return false;
+          if (!$scope.request.address) {
+            $scope.success.show(0, 1250, 'Please enter a location');
+            return false;
+          }
+
+          //if request is urgent and availability is not filled out./
+          if (!$scope.request.urgency && !$scope.request.calendar.start_time.hours
+            && !$scope.request.calendar.start_time.minutes) {
+
+            $scope.success.show(0, 1250, 'Please fill out your availability');
+
+            return false;
+          }
+
         }
 
         return true;

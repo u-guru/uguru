@@ -1126,3 +1126,13 @@ img.custom-icon.list-custom-icon.request-icon {
 .relative {
     position:relative;
 }
+
+.no-padding-horizontal {
+    padding-right:0px;
+    padding-left:0px;
+}
+
+.empty-tags-placeholder {
+    position: absolute;
+    left: 3em;
+}
