@@ -12,8 +12,10 @@ angular.module('uguru.util.controllers')
   '$cordovaFacebook',
   'User',
   '$rootScope',
+  '$controller',
+  '$ionicSideMenuDelegate',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $cordovaProgress, $cordovaFacebook, User, $rootScope) {
+ 	$ionicModal, $cordovaProgress, $cordovaFacebook, User, $rootScope, $controller, $ionicSideMenuDelegate) {
 
     if (!$scope.loginMode) {
       $scope.loginMode = false;
@@ -39,6 +41,8 @@ angular.module('uguru.util.controllers')
       }
     }
 
+
+
     $scope.closeSignupModal = function(callback) {
       $scope.loader.hide();
       if ($scope.platform.mobile && $scope.root.keyboard.isVisible()) {
@@ -59,12 +63,19 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.comingSoon = function() {
+      $scope.success.show(0, 1500, 'Coming Soon!');
+    }
+
+
+
     $scope.login = function () {
 
         // $scope.loader.show();
         $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
         // $cordovaFacebook.login(["user_education_history", "friends_education_history"]).then(function (success) {
         $scope.loginInfo = success;
+        console.log(success);
 
         $scope.getMe();
         console.log('Getting Facebook information...');
@@ -127,7 +138,7 @@ angular.module('uguru.util.controllers')
       }
 
 
-      if ($scope.signupModal.isShown()) {
+      if ($scope.signupModal && $scope.signupModal.isShown()) {
         // console.log('modal is shown');
         // $scope.root.keyboard.show('signup-first-name', 500);
         if ($scope.userClickedLoginModal) {
@@ -140,6 +151,7 @@ angular.module('uguru.util.controllers')
     });
 
     $scope.signupFacebook = function() {
+      console.log('printing user', JSON.stringify($scope.user));
       $scope.login();
     }
 
@@ -358,25 +370,35 @@ angular.module('uguru.util.controllers')
             }
 
 
-          if ($scope.becomeGuruButtonClicked) {
-
-            $scope.closeSignupModal(function() {
-                $scope.loader.hide();
-                $scope.becomeGuruModal.show();
-            });
-
-          }
 
 
-            else {
-              User.getUserFromServer($scope, null, $state);
-              $scope.closeSignupModal(function() {
-                $timeout(function() {
-                  $scope.loader.hide();
-                }, 500);
+
+            User.getUserFromServer($scope, null, $state);
+            $ionicSideMenuDelegate.toggleRight();
+
+            if ($scope.root.vars.pending_request)  {
+
+
+
+              $scope.root.vars.pending_request = false;
+
+              $ionicModal.fromTemplateUrl(BASE + 'templates/contacting.modal.html', {
+                      scope: $scope,
+                      animation: 'slide-in-up'
+                  }).then(function(modal) {
+                      $scope.contactingModal = modal;
+                      $scope.contactingModal.show();
               });
 
-          }
+              $scope.user.createObj($scope.user, 'requests', $scope.root.vars.request, $scope);
+
+              $timeout(function() {
+                $scope.contactingModal.hide();
+                console.log('saved request', $scope.root.vars.request);
+              }, 5000);
+
+            }
+
       },
       function(err){
         console.log(err);

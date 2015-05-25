@@ -49,10 +49,10 @@
           <ion-list class='pure-u-1' can-swipe="true">
 
               <div class='active-request-card-item-wrapper' ng-repeat='request in user.active_requests'>
-                <ion-item class='item-avatar item-icon-right request-card-item' on-hold="cancelRequest(request)">
+                <ion-item class='item-avatar request-card-item' on-hold="cancelRequest(request)">
                   <img class='pure-img' ng-src='{{img_base}}./img/verbs/session.svg' />
-                  <div class='request-card-content'>
-                    <p class='course-text'>
+                  <div class='request-card-content relative'>
+                    <p class='course-text relative'>
                       {{request.course.short_name}} <span class='request-tag-status'> finding a guru </span>
                     </p>
                     <p class='location-text'> {{request.address}}</p>
@@ -62,7 +62,7 @@
 
                 <ion-item class='item-wrap-text' on-hold="cancelRequest(request)">
                 <!-- <ion-item class='item-avatar item-wrap-text'> -->
-                  <p class='request-description'>
+                  <p class='request-description white-space-normal'>
 
                     <!-- required -->
                     <strong> {{request.calendar.weekday}}
@@ -73,7 +73,7 @@
                        between <strong>{{request.calendar.formatted_start_time}} & {{request.calendar.formatted_end_time}}</strong>
                     </span>
 
-
+                    Today between <strong> 12:00pm & 3:30pm </strong>
                     <!-- required -->
                     for <strong>3.5 hours</strong>.
 

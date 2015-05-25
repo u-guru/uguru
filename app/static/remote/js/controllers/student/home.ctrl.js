@@ -19,6 +19,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop)     {
 
+
   if ($scope.user && $scope.user.active_requests && $scope.user.active_requests.length > 0) {
     $ionicSideMenuDelegate.canDragContent(false);
 

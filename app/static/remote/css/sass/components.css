@@ -7,6 +7,9 @@
 .blue-bg {
   background-color: #68A7CF; }
 
+p {
+  white-space: normal; }
+
 .dark-bg-header {
   background-color: #2B3233; }
   .dark-bg-header h1 {
@@ -315,7 +318,7 @@ textarea {
   height: 20%; }
 
 .no-margin {
-  margin: 0 auto; }
+  margin: 0 auto !important; }
 
 .profile-img.sidebar-img {
   height: 70px;
@@ -562,41 +565,30 @@ input.dark-search {
   font-size: 0.8em;
   padding: 8px 12px; }
 
-.contacting-modal .icon-row, #home-page .icon-row {
+.contacting-modal .icon-row {
   width: 120%;
   overflow-x: visible;
   margin-left: -10%; }
-.contacting-modal .active-request-card-item-wrapper, #home-page .active-request-card-item-wrapper {
+.contacting-modal .active-request-card-item-wrapper {
   margin-bottom: 1em; }
-.contacting-modal .request-card-item p.course-text, #home-page .request-card-item p.course-text {
-  font-size: 1.5em;
-  text-transform: uppercase;
-  font-family: "OpenSans-Light";
-  position: relative; }
-.contacting-modal .request-card-item img, #home-page .request-card-item img {
-  top: 22px; }
-.contacting-modal .request-card-item p.location-text, #home-page .request-card-item p.location-text {
-  font-family: "OpenSans-SemiBold";
-  margin-top: -0.5em;
-  font-size: 0.7em;
-  color: black;
-  opacity: 0.7; }
-.contacting-modal p.request-description, #home-page p.request-description {
+
+p.request-description {
   white-space: normal;
   font-weight: rgba(0, 0, 0, 0.5);
   font-size: 0.7em; }
-.contacting-modal .request-tag-status, #home-page .request-tag-status {
-  font-size: 0.4em;
-  font-family: OpenSans-Regular;
-  color: orange;
-  border: 1px solid orange;
+
+.request-tag-status {
+  font-size: 0.5em;
+  font-family: "OpenSans-Bold";
+  color: #FAB96C;
+  border: 1px solid #FAB96C;
   padding: 3px 4px;
-  position: fixed;
+  position: absolute;
   line-height: 1em;
-  font-weight: bold;
   border-radius: 2px;
-  margin-top: 10px;
-  margin-left: 10px; }
+  margin-top: 8px;
+  margin-left: 10px;
+  opacity: 1; }
 
 .angular-google-map-container {
   height: 400px; }
@@ -687,7 +679,8 @@ input.ion-google-place[readonly] {
   opacity: 1 !important; }
   .tags-wrapper .request-tag {
     font-family: "OpenSans-Regular";
-    padding-right: 1em; }
+    padding-right: 1em;
+    display: inline-block; }
 
 .no-background-image {
   background-image: none; }
@@ -749,5 +742,36 @@ img.custom-icon.list-custom-icon.request-icon {
 .grey-text {
   color: grey; }
 
-#home-page .list {
+#home-page .active-request-card-item-wrapper:nth-child(1) {
   margin-top: -3px; }
+#home-page .active-request-card-item-wrapper {
+  margin-bottom: 1em; }
+
+.request-card-item p.course-text {
+  font-size: 1.5em;
+  text-transform: uppercase;
+  font-family: "OpenSans-Light";
+  position: relative; }
+.request-card-item img {
+  top: 22px; }
+.request-card-item p.location-text {
+  font-family: "OpenSans-SemiBold";
+  margin-top: -0.5em;
+  font-size: 0.7em;
+  color: black;
+  opacity: 0.7; }
+
+.float-center {
+  float: center !important; }
+
+.no-padding-bottom {
+  padding-bottom: 0px; }
+
+.white-space-normal {
+  white-space: normal !important; }
+
+.inline {
+  display: inline-block; }
+
+.relative {
+  position: relative; }

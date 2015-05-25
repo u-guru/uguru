@@ -18,7 +18,7 @@
     <link href="remote/css/animate.css" rel="stylesheet">
     <link href="remote/css/sass/new.css" rel="stylesheet">
     <link href="remote/css/web.css" rel="stylesheet">
-    <link href="remote/css/uguru-animate.css" rel="stylesheet">
+    <!-- <link href="remote/css/uguru-animate.css" rel="stylesheet"> -->
     <link href="remote/css/android.css" rel="stylesheet">
     <!-- <link href="remote/css/ios.css" rel="stylesheet"> -->
     <link href="remote/css/responsive.css" rel="stylesheet">
@@ -197,6 +197,8 @@
     <script type="text/javascript" src="remote/js/controllers/util/util.description.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.tags.ctrl.js"></script>
 
+    <script type="text/javascript" src="remote/js/controllers/util/util.root.ctrl.js"></script>
+
 
     <!-- Uguru Student settings controller -->
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.cards.ctrl.js"></script>
@@ -214,13 +216,10 @@
     -->
 
     <ion-side-menus>
-      <ion-side-menu-content>
+
         <ion-nav-view animation="slide-left-right-ios7">
         </ion-nav-view>
-      </ion-side-menu-content>
-        <ion-side-menu side="right" width='200' drag-content="false">
-          <div ng-include="img_base + 'remote/templates/components.side-menu.html'"></div>
-        </ion-side-menu>
+
     </ion-side-menus>
     <ion-nav-bar class="bar-dark nav-bar-text bold-font">
       <ion-nav-back-button class="button-clear" style="width:140px;">
@@ -234,12 +233,17 @@
       </script>
 
     <script id="templates/root.html" type="text/ng-template">
+      <ion-side-menu-content>
       <ion-nav-view animation="slide-left-right">
 
       </ion-nav-view>
+      </ion-side-menu-content>
       <ion-nav-back-button class="button-clear" style="width:75px;">
           <img src="./img/left-chevron.png" class='uguru-back-button'/>
       </ion-nav-back-button>
+      <ion-side-menu side="right" width='window.width * 0.8' drag-content="false">
+          <div ng-include="'remote/templates/components.side-menu.html'"></div>
+      </ion-side-menu>
     </script>
     <script id="templates/student-root.html" type="text/ng-template">
       <ion-nav-view animation="slide-left-right">

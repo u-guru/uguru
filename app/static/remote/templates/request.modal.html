@@ -13,7 +13,7 @@
     </div>
   </ion-header-bar>
 
-  <ion-content class='rounded-corners' >
+  <ion-content class='rounded-corners standard-bg'>
       <ion-list class='standard-bg'>
 
           <ion-item class='item-avatar-left item-mini course-input-item item-icon-right' ng-click='focusCourseInput()'>
@@ -65,7 +65,7 @@
               <p> Location </p>
             </ion-item>
 
-            <ion-item ng-show='request.address && !progress' class='item-button-right request-form-item' id='location-filled-item' >
+            <ion-item ng-show='request.address && !progress' class='item-button-right request-form-item'  id='location-filled-item' >
               <a class='request-location-wrapper-link' ng-click='clearLocationButton()'>
                 <p>{{request.address}}<br>
                   <span class='nano-text'>
@@ -153,7 +153,7 @@
             <a style='width:100%; height:100%;'>
               <p class='inline'> When are you available? </p>
               <p ng-show='!request.calendar.start_time.hours && !request.calendar.start_time.minutes'class='align-right blue item-right-text'>Pick a Time</p>
-              <p ng-show='request.calendar.start_time.hours || request.calendar.start_time.minutes' class='align-right blue item-right-text'>{{request.calendar.date.formatted_date}}, {{request.calendar.start_time.formatted_start_time}} </p>
+              <p ng-show='request.calendar.start_time.hours || request.calendar.start_time.minutes' class='align-right blue item-right-text'>{{request.calendar.date.formatted_date}}, {{request.calendar.formatted_start_time}} </p>
             </a>
           </ion-item>
 
@@ -169,7 +169,7 @@
 
             <div class='description-wrapper item-icon-right' ng-hide='progress || (!request.description && !request.attached_files.length > 0)' style='margin-right: 0.33em;'>
               <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip.svg'>
-              <p class='black' ng-show='request.description'>
+              <p class='black white-space-normal' ng-show='request.description'>
                 {{request.description}}
               </p>
 
@@ -194,4 +194,5 @@
           </ion-item>
       </ion-list>
   </ion-content>
+
 </ion-modal-view>

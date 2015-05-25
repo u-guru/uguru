@@ -1,6 +1,7 @@
 
 $blue: #68A7CF;
 $dark: #2B3233;
+$orange: #FAB96C;
 
 .blue {
     color:#68A7CF;
@@ -12,6 +13,10 @@ $dark: #2B3233;
 
 .blue-bg {
     background-color:$blue;
+}
+
+p {
+    white-space:normal;
 }
 
 .dark-bg-header {
@@ -478,7 +483,7 @@ textarea {
 }
 
 .no-margin {
-    margin:0 auto;
+    margin:0 auto !important;
 }
 
 .profile-img {
@@ -829,7 +834,7 @@ input.dark-search {
     }
 }
 
-.contacting-modal, #home-page {
+.contacting-modal {
     .icon-row {
 
         width: 120%;
@@ -841,47 +846,29 @@ input.dark-search {
         margin-bottom:1em;
     }
 
-    .request-card-item {
-        p.course-text {
-            font-size: 1.5em;
-            text-transform: uppercase;
-            font-family: "OpenSans-Light";
-            position:relative;
-        }
+}
 
-        img {
-            top:22px;
-        }
-
-        p.location-text {
-            font-family: "OpenSans-SemiBold";
-            margin-top:-0.5em;
-            font-size:0.7em;
-            color:black;
-            opacity:0.7;
-        }
-
-    }
-
-    p.request-description {
+p.request-description {
         white-space:normal;
         font-weight: rgba(0,0,0,0.5);
         font-size:0.7em;
     }
 
-    .request-tag-status {
-        font-size: 0.4em;
-        font-family: OpenSans-Regular;
-        color: orange;
-        border: 1px solid orange;
-        padding: 3px 4px;
-        position: fixed;
-        line-height: 1em;
-        font-weight: bold;
-        border-radius: 2px;
-        margin-top: 10px;
-        margin-left: 10px;
-    }
+.request-tag-status {
+    font-size: 0.5em;
+    font-family: "OpenSans-Bold";
+    color: $orange;
+    border: 1px solid $orange;
+    padding: 3px 4px;
+    position: absolute;
+    line-height: 1em;
+    // font-weight: bold;
+    border-radius: 2px;
+    margin-top: 8px;
+    margin-left: 10px;
+    opacity:1;
+
+    // letter-spacing: -0.1em;
 }
 
 
@@ -996,6 +983,7 @@ input.ion-google-place[readonly]{
     .request-tag {
         font-family: "OpenSans-Regular";
         padding-right:1em;
+        display:inline-block;
     }
 }
 
@@ -1086,7 +1074,55 @@ img.custom-icon.list-custom-icon.request-icon {
 }
 
 #home-page {
-    .list {
+    .active-request-card-item-wrapper:nth-child(1) {
         margin-top: -3px;
     }
+
+    .active-request-card-item-wrapper {
+        margin-bottom:1em;
+    }
+}
+
+.request-card-item {
+    p.course-text {
+        font-size: 1.5em;
+        text-transform: uppercase;
+        font-family: "OpenSans-Light";
+        position:relative;
+    }
+
+    img {
+        top:22px;
+    }
+
+    p.location-text {
+        font-family: "OpenSans-SemiBold";
+        margin-top:-0.5em;
+        font-size:0.7em;
+        color:black;
+        opacity:0.7;
+    }
+
+
+
+}
+
+.float-center {
+    float:center !important;
+}
+
+.no-padding-bottom {
+    padding-bottom:0px;
+}
+
+.white-space-normal {
+    white-space:normal!important;
+}
+
+.inline {
+    display:inline-block;
+}
+
+.relative {
+    position:relative;
 }

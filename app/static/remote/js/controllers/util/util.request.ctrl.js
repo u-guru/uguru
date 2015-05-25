@@ -12,12 +12,15 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   '$ionicGesture',
   '$cordovaGeolocation',
+  '$ionicSideMenuDelegate',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
-    $cordovaKeyboard, $ionicModal, $ionicGesture, $cordovaGeolocation) {
+    $cordovaKeyboard, $ionicModal, $ionicGesture, $cordovaGeolocation, $ionicSideMenuDelegate) {
 
     $scope.course_search_text = '';
     $scope.show_student_courses = false;
     $scope.availability_scroll_init = false;
+
+
 
 
      $scope.request = {
@@ -214,6 +217,8 @@ angular.module('uguru.util.controllers')
 
     }
 
+
+
     $ionicPlatform.ready(function() {
 
       if (window.StatusBar && $scope.user.guru_mode) {
@@ -240,6 +245,8 @@ angular.module('uguru.util.controllers')
         input.focus();
       }
     }
+
+
 
 
     $scope.setCourseFocus = function(target) {
@@ -451,26 +458,50 @@ angular.module('uguru.util.controllers')
 
       $scope.submitRequest = function() {
 
-        $scope.user.createObj($scope.user, 'requests', $scope.request, $scope);
-
         if (!$scope.validateForm()) {
           console.log('Form is not complete')
           return;
         }
 
+
+
         $scope.root.vars.request = $scope.request;
-        !$scope.request.availability_edit || $scope.toggleAvailability();
-        $scope.launchContactingModal();
 
-        $timeout(function() {
-          $scope.closeRequestModal();
-          $scope.verbModal.hide();
-        }, 2000);
+        if (!$scope.user.id) {
+          $scope.root.vars.pending_request = true;
+          $scope.success.show(0, 1500, 'Please create an account first');
+          $timeout(function() {
+              $scope.closeRequestModal();
+              $scope.verbModal.hide();
 
-        $timeout(function() {
-          $scope.closeContactingModal();
-          console.log('saved request', $scope.root.vars.request)
-        }, 5000);
+              $timeout(function() {
+
+                $ionicSideMenuDelegate.toggleRight();
+
+              },250);
+
+          }, 2000);
+          return;
+        }
+         else {
+          !$scope.request.availability_edit || $scope.toggleAvailability();
+
+            $scope.launchContactingModal();
+
+            $scope.user.createObj($scope.user, 'requests', $scope.request, $scope);
+
+            $timeout(function() {
+              $scope.closeRequestModal();
+              $scope.verbModal.hide();
+            }, 2000);
+
+            $timeout(function() {
+              $scope.closeContactingModal();
+              console.log('saved request', $scope.root.vars.request)
+            }, 5000);
+
+         }
+
 
       }
 
