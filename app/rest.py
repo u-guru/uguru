@@ -517,7 +517,7 @@ class UserRequestView(restful.Resource):
 
         #check if request is already active
 
-        if course.get('id') and user.request_active(course.get('id')):
+        if course and course.get('id') and user.request_active(course.get('id')):
             abort(409)
 
         position = request.json.get('position')
@@ -538,7 +538,7 @@ class UserRequestView(restful.Resource):
         _request.in_person = request.json.get('in_person')
         _request.online = request.json.get('online')
 
-        if course.get('id'):
+        if course and course.get('id'):
             _request.course_id = course.get('id')
 
         hours = int(request.json.get('time_estimate').get('hours'))
