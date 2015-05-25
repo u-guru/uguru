@@ -83,6 +83,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.taskVerbModal = modal;
     });
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/price.home.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.choosePriceModal = modal;
+    });
+
     $scope.launchTaskVerbModal = function() {
       $timeout(function() {
         $scope.closeVerbModal();
@@ -140,10 +147,27 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.contactingModal.show();
     }
 
+    $scope.launchChoosePriceModal = function() {
+      $scope.choosePriceModal.show();
+    }
+
+    $scope.closeChoosePriceModal = function() {
+      $scope.choosePriceModal.hide();
+    }
+
+    $scope.closeContactingModal = function() {
+      $scope.contactingModal.hide();
+    }
+
 
     $scope.closeVerbModal = function() {
       $scope.verbModal.hide();
     }
+
+
+    // $timeout(function() {
+    //   $scope.launchChoosePriceModal()
+    // }, 500);
 
 
     // $scope.root.vars.request = {

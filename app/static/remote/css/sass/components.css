@@ -783,3 +783,29 @@ img.custom-icon.list-custom-icon.request-icon {
 .empty-tags-placeholder {
   position: absolute;
   left: 3em; }
+
+.button.button-full.button-blue {
+  border-color: #68A7CF;
+  font-family: "OpenSans-Light";
+  text-transform: none;
+  color: white; }
+
+.button.button-full.button-blue.active, .button.button-full.button-blue.activated {
+  background-color: #68A7CF;
+  opacity: 0.7;
+  color: white; }
+
+.price-choice {
+  border-right: 1px solid rgba(0, 0, 0, 0.1); }
+
+.price-choice.active {
+  background-color: #68A7CF;
+  color: white;
+  border: 1px solid #68A7CF; }
+
+.padding-horizontal-2em {
+  padding-right: 2em;
+  padding-left: 2em; }
+
+.opacity-6-10 {
+  opacity: 0.6; }

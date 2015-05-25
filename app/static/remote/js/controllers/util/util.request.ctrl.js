@@ -14,7 +14,19 @@ angular.module('uguru.util.controllers')
   '$cordovaGeolocation',
   '$ionicSideMenuDelegate',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
-    $cordovaKeyboard, $ionicModal, $ionicGesture, $cordovaGeolocation, $ionicSideMenuDelegate) {
+    $cordovaKeyboard, $ionicModal, $ionicGesture, $cordovaGeolocation,
+    $ionicSideMenuDelegate) {
+
+
+      $scope.selectedPriceTable = [0, 1, 2, 5];
+      // $scope.selected_price_option = 1;
+
+      $scope.setPriceOption = function(index) {
+        // if ($scope.root.vars.request) {
+          $scope.request.selected_price_option = index;
+          // $scope.root.vars.request.selected_price_option = index;
+        // }
+      }
 
     $scope.course_search_text = '';
     $scope.show_student_courses = false;
@@ -37,6 +49,7 @@ angular.module('uguru.util.controllers')
       tags:[],
       availability_edit: false,
       calendar_edit:false,
+      selected_price_option: null,
       calendar: {
         weekday: "Today",
         start_time: {hours: 0, minutes:0},
@@ -116,14 +129,16 @@ angular.module('uguru.util.controllers')
 
       $timeout(function() {
 
+        var course_input = document.getElementById('course-input');
+
         if ($scope.requestModal && $scope.requestModal.isShown()
-        && $scope.course_search_text.length === 0 && !$scope.locationModal.isShown()
+        && course_input.value && course_input.value.length === 0 && !$scope.locationModal.isShown()
         && !$scope.tagsModal.isShown() && !$scope.availabilityModal.isShown()
-        &&! $scope.descriptionModal.isShown()) {
+        && !$scope.descriptionModal.isShown()) {
 
           $timeout(function() {
 
-            var course_input = document.getElementById('course-input')
+
             course_input.focus();
 
           }, 1500);
@@ -185,6 +200,21 @@ angular.module('uguru.util.controllers')
 
     $scope.closeTagsModal = function() {
       $scope.tagsModal.hide();
+    }
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/price.home.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.choosePriceModal = modal;
+    });
+
+    $scope.launchChoosePriceModal = function() {
+      $scope.choosePriceModal.show();
+    }
+
+    $scope.closeChoosePriceModal = function() {
+      $scope.choosePriceModal.hide();
     }
 
     $scope.closeAvailabilityModal = function() {
@@ -503,7 +533,7 @@ angular.module('uguru.util.controllers')
       $scope.validateForm = function() {
         course_input_value = document.getElementById('course-input').value;
         result = (($scope.request.course && $scope.request.course.short_name) || (course_input_value.length > 0)) && ($scope.request.address && $scope.request.address.length > 0);
-        if (!result) {
+        if (!result && $scope.root.vars.last_verb_index_clicked !== 1) {
           //if is a task
           if ($scope.root.vars.last_verb_index_clicked === 2) {
             $scope.success.show(0, 1250, 'Please enter a task title');
@@ -553,16 +583,22 @@ angular.module('uguru.util.controllers')
           console.log('Form is not complete')
           return;
         }
-
-
+        if (!$scope.request.selected_price_option && $scope.root.vars.last_verb_index_clicked > 0) {
+          $scope.launchChoosePriceModal();
+          return;
+        }
 
         $scope.root.vars.request = $scope.request;
 
         if (!$scope.user.id) {
           $scope.root.vars.pending_request = true;
           $scope.success.show(0, 1500, 'Please create an account first');
+
+
+
           $timeout(function() {
               $scope.closeRequestModal();
+              $scope.closeChoosePriceModal();
               $scope.verbModal.hide();
 
               $timeout(function() {
@@ -584,6 +620,9 @@ angular.module('uguru.util.controllers')
             $timeout(function() {
               $scope.closeRequestModal();
               $scope.verbModal.hide();
+              if ($scope.choosePriceModal) {
+                $scope.closeChoosePriceModal();
+              }
             }, 2000);
 
             $timeout(function() {
