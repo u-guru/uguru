@@ -909,7 +909,7 @@ class Request(Base):
     in_person = Column(Boolean)
     online = Column(Boolean)
     time_estimate = Column(Integer)
-    # student_price = Column(Float) #TODO SAMIR
+
 
     contact_email = Column(Boolean)
     contact_push = Column(Boolean)
@@ -921,6 +921,11 @@ class Request(Base):
     student_price = Column(Float)
 
     _type = Column(Integer, default = 0)
+
+    task_title = Column(String)
+    verb_image = Column(String)
+    inital_status = Column(String)
+
 
     giphy_url = Column(String)
 

@@ -109,6 +109,12 @@ request_fields['status'] = fields.Integer(attribute='status')
 request_fields['files'] = fields.List(fields.Nested(file_fields))
 request_fields['student_calendar'] = fields.List(fields.Nested(calendar_fields))
 request_fields['guru_calendar'] = fields.List(fields.Nested(calendar_fields))
+request_fields['_type'] = fields.Integer(attribute='_type')
+request_fields['student_price'] = fields.Float(attribute='student_price')
+request_fields['task_title'] = fields.String(attribute='task_title')
+request_fields['verb_image'] = fields.String(attribute='verb_image')
+request_fields['initial_status'] = fields.String(attribute='inital_status')
+
 # request_fields['files'] = fields.List(fields.Nested(file_fields))
 # request_fields['events'] = fields.List(fields.Nested(event_fields))
 

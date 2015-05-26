@@ -513,6 +513,8 @@ class UserRequestView(restful.Resource):
             abort(404)
 
         course = request.json.get('course')
+
+
         print "course received!", course
 
         #check if request is already active
@@ -537,6 +539,19 @@ class UserRequestView(restful.Resource):
         _request.description = request.json.get('description')
         _request.in_person = request.json.get('in_person')
         _request.online = request.json.get('online')
+        _request.student_price = request.json.get('student_price')
+        _request.task_title = request.json.get('task_title')
+
+        if request.json.get('fields'):
+            _request.verb_image = request.json.get('fields').get('img')
+            _request.inital_status = request.json.get('fields').get('initial_status')
+
+
+        if request.json.get('type'):
+            _request._type = request.json.get('type').get('value')
+
+
+        _request.student_price = request.json.get('student_price')
 
         if course and course.get('id'):
             _request.course_id = course.get('id')
@@ -558,30 +573,30 @@ class UserRequestView(restful.Resource):
         user.requests.append(_request)
         db_session.commit()
 
-        print request.json
-        print "request committed!", position
-        calendar = Calendar.initFromRequest(_request, 2)
-        print "calendar created !", calendar
-        calendar_events_json = request.json.get('calendar_events')
+        # print request.json
+        # print "request committed!", position
+        # calendar = Calendar.initFromRequest(_request, 2)
+        # print "calendar created !", calendar
+        # calendar_events_json = request.json.get('calendar_events')
 
-        if calendar_events_json:
-            day_index = 0
-            for day_arr in calendar_events_json:
-                index = 0
-                for boolean in day_arr:
+        # if calendar_events_json:
+        #     day_index = 0
+        #     for day_arr in calendar_events_json:
+        #         index = 0
+        #         for boolean in day_arr:
 
-                    time_json = {'start_time':None, 'end_time': None}
+        #             time_json = {'start_time':None, 'end_time': None}
 
-                    if boolean:
-                        time_json['start_time'] = index
-                        time_json['end_time'] = index + 1
-                    print 'time_json', time_json
-                    print 'day_offset', day_index
-                    calendar_event = Calendar_Event.initFromJson(time_json, calendar, day_index)
-                    index += 1
-                day_index += 1
+        #             if boolean:
+        #                 time_json['start_time'] = index
+        #                 time_json['end_time'] = index + 1
+        #             print 'time_json', time_json
+        #             print 'day_offset', day_index
+        #             calendar_event = Calendar_Event.initFromJson(time_json, calendar, day_index)
+        #             index += 1
+        #         day_index += 1
 
-        print "longass json calendar figured out", calendar
+        # print "longass json calendar figured out", calendar
 
 
         print request.json.get('files')
@@ -595,8 +610,6 @@ class UserRequestView(restful.Resource):
                         file_obj.user_id = _request.student_id
 
                 db_session.commit()
-
-        print "long as files for-loop figured out", calendar
 
         if _request.course:
 

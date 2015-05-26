@@ -155,7 +155,7 @@
           <ion-item class='item-icon-left' ng-hide='progress' ng-click='launchTagsModal()'>
             <img style='margin-top:0.4em;'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/tags.svg'>
             <p class='empty-tags-placeholder' ng-show='!request.tags || request.tags.length === 0'>Add some tags (optional)</p>
-            <p class='tags-wrapper' style='white-space:normal; padding-left:1em;'>&nbsp;<span class='blue request-tag' ng-repeat='tag in request.tags'>#{{tag}} </span> </p>
+            <p class='tags-wrapper'>&nbsp;<span class='blue request-tag' ng-repeat='tag in request.tags'>#{{tag}} </span> </p>
           </ion-item>
       </ion-list>
   </ion-content>

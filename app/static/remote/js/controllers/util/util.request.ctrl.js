@@ -24,6 +24,7 @@ angular.module('uguru.util.controllers')
       $scope.setPriceOption = function(index) {
         // if ($scope.root.vars.request) {
           $scope.request.selected_price_option = index;
+          $scope.request.student_price = $scope.selectedPriceTable[index];
           // $scope.root.vars.request.selected_price_option = index;
         // }
       }
@@ -42,6 +43,7 @@ angular.module('uguru.util.controllers')
      $scope.request = {
       location: null,
       course: null,
+      title: null,
       attached_files: [],
       description: '',
       time_estimate: {hours: 2, minutes:0},
@@ -92,6 +94,7 @@ angular.module('uguru.util.controllers')
         show_tags: true,
         background_class:'standard-bg',
         title: 'Request a Session',
+        initial_status: "finding a guru"
       },
       //verb 2 --> question
       {
@@ -108,6 +111,7 @@ angular.module('uguru.util.controllers')
         show_tags: true,
         background_class:'dark-bg',
         title: 'Ask a Question',
+        initial_status: "finding an answer"
       },
       //verb 3 --> general
       {
@@ -122,11 +126,13 @@ angular.module('uguru.util.controllers')
         show_divider_two: true,
         show_description: true,
         show_tags: true,
-        title: 'Request a Task'
+        title: 'Request a Task',
+        initial_status: "getting help"
       }
     ];
 
     $scope.request_fields = verb_arr[$scope.root.vars.last_verb_index_clicked];
+    $scope.request.fields  = $scope.request_fields;
 
 
     $scope.launchLocationModal = function() {
@@ -597,7 +603,13 @@ angular.module('uguru.util.controllers')
           return;
         }
 
+        if ($scope.request.type.task) {
+          var course_input = document.getElementById('course-input');
+          $scope.request.task_title = course_input.value;
+        }
+
         $scope.root.vars.request = $scope.request;
+
 
         if (!$scope.user.id) {
           $scope.root.vars.pending_request = true;

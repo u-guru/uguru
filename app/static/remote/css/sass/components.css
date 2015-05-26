@@ -676,7 +676,9 @@ input.ion-google-place[readonly] {
 
 .tags-wrapper {
   margin-left: 7% !important;
-  opacity: 1 !important; }
+  opacity: 1 !important;
+  white-space: normal;
+  padding-left: 1em; }
   .tags-wrapper .request-tag {
     font-family: "OpenSans-Regular";
     padding-right: 1em;
@@ -809,3 +811,9 @@ img.custom-icon.list-custom-icon.request-icon {
 
 .opacity-6-10 {
   opacity: 0.6; }
+
+.transform-normal {
+  text-transform: none; }
+
+.transform-capitalize {
+  text-transform: capitalize; }
