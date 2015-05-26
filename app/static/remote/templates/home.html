@@ -1,0 +1,133 @@
+<ion-view hide-nav-bar='true' class='request' id='home-page'>
+  <ion-header-bar align-title="center" class='dark-bg-header item-icon-right'>
+        <h1 class="title">Requests</h1>
+        <div class="buttons">
+          <img class='icon ion-plus-custom blue custom-icon' style='top:0.33em !important;' src='{{img_base}}./img/icons/blue_add.svg'></img>
+        </div>
+  </ion-header-bar>
+
+  <ion-header-bar align-title="center" class='dark-bg-header item-icon-right'>
+      <h1 class="title">Requests</h1>
+      <div class="buttons">
+        <button ng-click='launchVerbModal()' class='button-img'><img  style='top:0.4em !important;' class='icon ion-plus-custom blue pure-img custom-icon' src='{{img_base}}./img/icons/blue_add.svg'></img></button>
+      </div>
+  </ion-header-bar>
+
+<div class="tabs home-request-tabs-top tabs-top">
+      <a class="tab-item uppercase blue-bg white-text">
+        Upcoming
+      </a>
+      <a class="tab-item uppercase opacity-1-2" ng-click='success.show(0,1000,"Coming Soon!")'>
+        Previous
+      </a>
+</div>
+
+
+<ion-content class='dark-bg has-subheader request-form-tags-offset' scroll='false'>
+    <div class='pure-g-c flex-column flex-space-between'>
+        <div class='flex-item-c pure-g center' ng-show='!user.active_requests || user.active_requests.length === 0'>
+            <div class='pure-u-1'>
+                <img class='pure-img guru-bg-img' src='{{img_base}}./img/general/logo-01.svg'/>
+            </div>
+            <div class='pure-u-1 margin-top-half'>
+                <p class='light-font center white-text padding-1em content-header-text'>
+                    Aww, you haven't made <br>
+                    any requests yet. <br> Need anything?
+                </p>
+            </div>
+            <a ng-click='launchVerbModal()'>
+              <div class='pure-u-1 margin-top-half'>
+                  <img class='pure-img home-request-button' src='{{img_base}}./img/request/button-01.svg'>
+              </div>
+              <div class='pure-u-1 micro-text center blue-text' id='request-button-text'>
+                  Request
+              </div>
+            </a>
+        </div>
+        <div class='pure-g' ng-show='user.active_requests.length > 0'>
+
+          <ion-list class='pure-u-1' can-swipe="true">
+
+              <div class='active-request-card-item-wrapper' ng-repeat='request in user.active_requests'>
+                <ion-item class='item-avatar request-card-item' on-hold="cancelRequest(request)">
+                  <img class='pure-img' ng-src='{{img_base}}./img/verbs/session.svg' />
+                  <div class='request-card-content relative'>
+                    <p class='course-text relative'>
+                      {{request.course.short_name}} <span class='request-tag-status'> finding a guru </span>
+                    </p>
+                    <p class='location-text'> {{request.address}}</p>
+                  </div>
+                  <!-- <i class='icon ion-chevron-right icon-small'> </i> -->
+                </ion-item>
+
+                <ion-item class='item-wrap-text' on-hold="cancelRequest(request)">
+                <!-- <ion-item class='item-avatar item-wrap-text'> -->
+                  <p class='request-description white-space-normal'>
+
+                    <!-- required -->
+                    <strong> {{request.calendar.weekday}}
+                    </strong>
+
+                    <!-- not all have calendars -->
+                    <span class='calendar-availability-contact' ng-show='request.calendar.formatted_start_time'>
+                       between <strong>{{request.calendar.formatted_start_time}} & {{request.calendar.formatted_end_time}}</strong>
+                    </span>
+
+                    Today between <strong> 12:00pm & 3:30pm </strong>
+                    <!-- required -->
+                    for <strong>3.5 hours</strong>.
+
+                     <span ng-show="request.description">
+                      <strong>Description</strong>
+                     </span>
+
+                     <span ng-show='request.description && request.files_attached.length > 0 '>
+                     and
+                     </span>
+
+                      <span ng-show="request.files_attached.length > 0">
+                        <strong>Attachments</strong>
+                      </span>
+
+                      <span ng-show='request.description && request.files_attached.length > 0 '>
+                        have been added.
+                      </span>
+                      <span ng-show='!request.description && request.files_attached.length > 0 '>
+                        have been added.
+                      </span>
+                      <span ng-show='request.description && !request.files_attached.length > 0 '>
+                        has been added.
+                      </span>
+                  </p>
+                </ion-item>
+              </div>
+
+            </ion-list>
+
+
+        </div>
+    </div>
+    <!-- bottom tabs -->
+<div class="tabs tabs-icon-only dark-bg">
+  <a class="tab-item" id='home-button'>
+    <img class='pure-img icon' src='{{img_base}}./img/request/house-icon-blue.svg'></i>
+  </a>
+  <a class="tab-item" href='#/courses' nav-direction='swap' id='courses-button'>
+    <img class='pure-img icon' src='{{img_base}}./img/request/guru_book.svg'></i>
+  </a>
+  <!-- <a class="tab-item" href='#/browse' nav-direction='swap' id='browse-button'>
+    <img class='pure-img icon' src='{{img_base}}./img/request/search.svg'></i>
+  </a> -->
+  <a class="tab-item">
+  </a>
+  <a class="tab-item">
+  </a>
+  <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
+    <img class='pure-img icon' src='{{img_base}}./img/request/settings.svg'></i>
+  </a>
+</div>
+
+</ion-content>
+
+
+</ion-view>

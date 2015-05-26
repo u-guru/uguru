@@ -22,6 +22,7 @@ angular.module('uguru.util.controllers')
     $scope.course_search_text = '';
     $scope.keyboard_force_off = false;
 
+
     $ionicPlatform.ready(function() {
 
       $scope.turnStatusBarWhiteText = function() {

@@ -1,0 +1,65 @@
+<ion-modal-view class='side-menu-right'>
+  <ion-content class='white-text' scroll='false' ng-controller='SignupController'>
+    <div class='pure-g-c flex-column flex-space-between'>
+        <div class='pure-g-c flex-column height-40 j-end padding-2em'>
+            <div class='center no-margin'>
+              <div class='pure-u-1 center float-center'>
+                <img ng-show='user && !user.id'class='pure-img profile-img sidebar-img inline'  src='https://graph.facebook.com/10152573868267292/picture?width=100&height=100'/>
+                <img ng-show='user && user.profile_url'class='pure-img profile-img sidebar-img inline'  src='{{user.profile_url}}'/>
+              </div>
+            </div>
+            <div class='pure-g'>
+              <div class='pure-u-1' ng-show='!user.id'>
+                <br>
+                <p class='micro-text uppercase semibold grey center'>We need proof <br> you're wonderful & human</p>
+              </div>
+            </div>
+            <div class='pure-g'>
+              <div class='pure-u-1' ng-show='user && user.name.length > 0'>
+                <h1 class='header-text semibold black center user-name'> {{user.name}} </h1>
+              </div>
+            </div>
+            <div class='pure-g center'>
+              <div class='pure-u-1' ng-show='user && user.university.title.length > 0'>
+                <p class='micro-text uppercase semibold grey'>Uc Berkeley</p>
+              </div>
+            </div>
+          </div>
+
+          <div class='flex-item-c flex-column height-40 j-start' ng-show='user && user.id'>
+              <ion-list>
+                <!-- <ion-item class='item-icon-right balance-menu'>
+                    <p class='semibold black nano-text inline'>$26.00 in Uguru</p>
+                    <p class='inline align-right blue bold nano-text'>Cash Out <i class='icon ion-right-chevron'></i> </p>
+                </ion-item> -->
+
+                <!-- <ion-item ng-click=''>
+                  <p class='nano-text black'> Settings </p>
+                </ion-item>
+
+                <ion-item ng-click=''>
+                  <p class='nano-text black'> Transaction History </p>
+                </ion-item>
+                <ion-item ng-click=''>
+                  <p class='nano-text black'> Invite Friends </p>
+                </ion-item> -->
+                <ion-item ng-click='logoutUser()'>
+                  <p class='nano-text black'> Logout </p>
+                </ion-item>
+
+              </ion-list>
+          </div>
+
+          <div class='pure-g-c flex-column j-start height-20' ng-show='user && !user.id'>
+            <div class='pure-u-1 padding-1em no-padding-bottom' ng-click='signupFacebook()'>
+              <button class='button button-full button-black micro-text'>Continue with Facebook</button>
+            </div>
+            <div class='pure-u-1 padding-half' ng-click='comingSoon()'>
+              <div class='center grey uppercase semibold nano-text'> or with email </div>
+            </div>
+          </div>
+
+    </div>
+
+  </ion-content>
+</ion-modal-view>

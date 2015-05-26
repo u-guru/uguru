@@ -1,4 +1,4 @@
-mixpanel.track("Onboarding.loading");
+
 angular.module('uguru.onboarding.controllers')
 .controller('OnboardingLoadingController', [
     '$scope',

@@ -21,10 +21,11 @@ angular.module('uguru.student.controllers')
   '$ionicPlatform',
   'User',
   '$ionicViewSwitcher',
+  '$ionicSideMenuDelegate',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $stateParams,
   $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
-  $ionicHistory, CordovaPushWrapper, $ionicPlatform, User, $ionicViewSwitcher) {
+  $ionicHistory, CordovaPushWrapper, $ionicPlatform, User, $ionicViewSwitcher, $ionicSideMenuDelegate) {
     $scope.isRequestFormComplete = false;
     //TODO: ADD ACTION BAR W / FILE SUPPORT
     //TODO: IF NOT PUSH NOTIFICATIONS, SHOW IT HERE AS PART OF THE FORM

@@ -780,3 +780,7 @@ input.ion-google-place[readonly]{
 .no-padding-bottom {
   padding-bottom:0px;
 }
+
+.ion-plus:before{
+  content:"\f220"
+}

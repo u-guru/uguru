@@ -516,7 +516,8 @@ class UserRequestView(restful.Resource):
         print "course received!", course
 
         #check if request is already active
-        if user.request_active(course.get('id')):
+
+        if course and course.get('id') and user.request_active(course.get('id')):
             abort(409)
 
         position = request.json.get('position')
@@ -529,13 +530,21 @@ class UserRequestView(restful.Resource):
         print "position processed!", position
 
         _request = Request()
-        _request.course_id = course.get('id')
+
+
         _request.position = position
         _request.time_created = datetime.now()
-        _request.description = request.json.get('note')
+        _request.description = request.json.get('description')
         _request.in_person = request.json.get('in_person')
         _request.online = request.json.get('online')
-        _request.time_estimate = request.json.get('time_estimate')
+
+        if course and course.get('id'):
+            _request.course_id = course.get('id')
+
+        hours = int(request.json.get('time_estimate').get('hours'))
+        minutes = int(request.json.get('time_estimate').get('minutes'))
+
+        _request.time_estimate = hours * 60  + minutes
         _request.address = request.json.get('address')
         _request.status = Request.PROCESSING_GURUS
         _request.student_id = user_id
@@ -589,35 +598,39 @@ class UserRequestView(restful.Resource):
 
         print "long as files for-loop figured out", calendar
 
-        available_gurus = _request.course.gurus.all()
-        print "number of gurus available", len(available_gurus)
-        for guru in available_gurus:
+        if _request.course:
 
-            guru.id, guru.name, guru.time_created, 'contacted'
+            available_gurus = _request.course.gurus.all()
+            print "number of gurus available", len(available_gurus)
+            for guru in available_gurus:
 
-            proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
+                guru.id, guru.name, guru.time_created, 'contacted'
 
-            proposal.student_price = float(request.json.get('price_slider'))
+                proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
 
-            event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
-            event = Event.initFromDict(event_dict)
+                # proposal.student_price = float(request.json.get('price_slider'))
 
-            db_session.commit()
+                event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
+                event = Event.initFromDict(event_dict)
 
-            #send push notification is user has permitted device
-            if guru.push_notifications:
-                from app.lib.push_notif import send_student_request_to_guru
-                send_student_request_to_guru(_request, guru)
+                db_session.commit()
 
-            if guru.email_notifications and guru.email:
+                #send push notification is user has permitted device
+                if guru.push_notifications:
+                    from app.lib.push_notif import send_student_request_to_guru
+                    send_student_request_to_guru(_request, guru)
 
-                from app.emails import send_student_request_to_guru
-                send_student_request_to_guru(_request, guru)
+                if guru.email_notifications and guru.email:
+
+                    from app.emails import send_student_request_to_guru
+                    send_student_request_to_guru(_request, guru)
 
 
-            if guru.text_notifications and guru.phone_number:
-                from app.texts import send_student_request_to_guru
-                send_student_request_to_guru(_request, guru)
+                if guru.text_notifications and guru.phone_number:
+                    from app.texts import send_student_request_to_guru
+                    send_student_request_to_guru(_request, guru)
+        else:
+            print "This is a task, not a session or question"
 
         pprint('request is finished like a G')
         return user, 200
