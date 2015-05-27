@@ -18,7 +18,7 @@ admin_info = {
     'jourdan@uguru.me': {
         'name': 'Jourdan *',
         'profile_url': 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100'
-    }
+    },
     'randy@uguru.me': {
         'name': 'Randy Kim',
         'profile_url': 'http://i.imgur.com/JwVzEaz.jpg'
