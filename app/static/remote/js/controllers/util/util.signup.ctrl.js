@@ -117,7 +117,7 @@ angular.module('uguru.util.controllers')
             $scope.user.push_notifications = true;
             $scope.user.current_device.push_notif = deviceToken;
             $scope.user.current_device.push_notif_enabled = true;
-            $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+            // $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
 
             payload = {
               'push_notifications': true
@@ -142,7 +142,7 @@ angular.module('uguru.util.controllers')
 
         $scope.getMe();
         console.log('Getting Facebook information...');
-
+        $scope.loader.hide();hje
         //get user information
       },
 
@@ -155,6 +155,7 @@ angular.module('uguru.util.controllers')
         if ($cordovaFacebook) {
           $cordovaFacebook.logout();
         }
+        $scope.loader.hide();
         // $scope.logout();
       });
 
@@ -180,6 +181,7 @@ angular.module('uguru.util.controllers')
 
 
         $scope.completeSignup();
+        $scope.loader.hide();
 
 
       }, function (error) {
