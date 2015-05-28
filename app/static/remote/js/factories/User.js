@@ -476,6 +476,9 @@ angular.module('uguru.user', [])
                 .one('user', user_id)
                 .customPUT(JSON.stringify(payload));
         },
+        clearAttr: function(payload, user_id) {
+            return Restangular.one('user', user_id).customDELETE();
+        },
         updateLocal: function(user) {
            $localstorage.setObject('user', user);
         },
@@ -940,6 +943,26 @@ angular.module('uguru.user', [])
 
                     });
             }
+
+        },
+        clearAttrUser: function(payload, $scope) {
+
+            User.clearAttr(payload, user.id).then(function(user) {
+
+                var processed_user = processResults(user.plain());
+
+                assignPropertiesToRootScope($scope, processed_user)
+
+                delegateActionsFromProcessedUser($scope);
+
+                $localstorage.setObject('user', $scope.user);
+
+
+            }, function(err){
+
+                    console.log(err);
+                    console.log('error...something happened with the server;')
+            });
 
         },
         updateAttrUser: function(arg, user, obj, success_callback, $scope) {

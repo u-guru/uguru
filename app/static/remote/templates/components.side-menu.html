@@ -1,5 +1,6 @@
-<ion-modal-view class='side-menu-right'>
-  <ion-content class='white-text' scroll='false' ng-controller='SignupController'>
+
+<ion-modal-view class='side-menu-right' id="side_menu" ng-controller='SignupController'>
+  <ion-content class='white-text' scroll='false'>
     <div class='pure-g-c flex-column flex-space-between'>
         <div class='pure-g-c flex-column height-40 j-end padding-2em'>
             <div class='center no-margin'>
@@ -43,6 +44,21 @@
                 <ion-item ng-click=''>
                   <p class='nano-text black'> Invite Friends </p>
                 </ion-item> -->
+
+                <ion-toggle ng-model="user.email_notifications" ng-change='emailNotificationChange()' toggle-class="toggle-calm">
+                  <p class='nano-text black'>
+                    Email Notifications
+                  </p>
+                  <p class='opacity-6-10 nano-text'> {{user.email}}</p>
+                </ion-toggle>
+                <ion-toggle ng-change="requestPushNotifications()" ng-show='platform.mobile' ng-model="user.push_notifications" toggle-class="toggle-calm">
+
+                  <p style='padding-bottom:0.5em; padding-top:0.5em'class='black nano-text'> Push Notifications </p>
+                </ion-toggle>
+                <ion-item ng-click='resetAccount()'>
+                  <p class='nano-text black'> Reset Account </p>
+                </ion-item>
+
                 <ion-item ng-click='logoutUser()'>
                   <p class='nano-text black'> Logout </p>
                 </ion-item>
@@ -51,11 +67,11 @@
           </div>
 
           <div class='pure-g-c flex-column j-start height-20' ng-show='user && !user.id'>
-            <div class='pure-u-1 padding-1em no-padding-bottom' ng-click='signupFacebook()'>
-              <button class='button button-full button-black micro-text'>Continue with Facebook</button>
+            <div class='pure-u-1 padding-1em no-padding-bottom'>
+              <button class='button button-full button-black micro-text'  ng-click='signupFacebook()'>Continue with Facebook</button>
             </div>
-            <div class='pure-u-1 padding-half' ng-click='comingSoon()'>
-              <div class='center grey uppercase semibold nano-text'> or with email </div>
+            <div class='pure-u-1 padding-half'>
+              <div class='center grey uppercase semibold nano-text'  ng-click='comingSoon()'> or with email </div>
             </div>
           </div>
 

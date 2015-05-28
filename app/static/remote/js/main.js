@@ -1,5 +1,5 @@
 // Uguru upp
-var LOCAL = false; //local to the 8100 codebasebirbirbir
+var LOCAL = false; //local to the 8100 codebasebirbir
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com'
 // REST_URL = 'http://192.168.42.66:5000';
@@ -7,8 +7,8 @@ var REST_URL = 'http://uguru-rest.herokuapp.com'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
- BASE_URL = 'http://192.168.42.66:8100';
- REST_URL = 'http://192.168.42.66:5000';
+  BASE_URL = 'http://192.168.42.66:8100';
+  REST_URL = 'http://192.168.42.66:5000';
 } else {
   img_base = '/static/'
 }

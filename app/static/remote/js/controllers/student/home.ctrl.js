@@ -22,7 +22,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   console.log($scope.user);
 
   if ($scope.user && $scope.user.active_requests && $scope.user.active_requests.length > 0) {
-    $ionicSideMenuDelegate.canDragContent(false);
+    // $ionicSideMenuDelegate.canDragContent(false);
 
     $scope.cancelRequest = function(request) {
       if (confirm('Are you sure you want to cancel this request?')) {
