@@ -458,42 +458,59 @@ class UserOneView(restful.Resource):
 
     @marshal_with(UserSerializer)
     def delete(self, _id):
-        if not request.json.get('auth_token'):
-            abort(400)
+        # # print request.json.get('requests');
+        # if not request.json.get('auth_token'):
+        #     abort(400)
 
         user = User.query.get(_id)
         if not user:
             abort(400)
 
-        if request.json.get('auth_token') != user.auth_token:
-            abort(400)
+        print user
 
-        if request.json.get('university_id'):
-            user.university_id = None
+        # if request.json.get('auth_token') != user.auth_token:
+        #     abort(400)
 
-        if request.json.get('remove_student_course'):
-            course = request.json.get('course')
-            course_id = course.get('id')
-            c = Course.query.get(int(course_id))
-            if c in user.student_courses:
-                user.student_courses.remove(c)
-            db_session.commit()
+        # if request.json.get('university_id'):
+        #     user.university_id = None
 
-        if request.json.get('remove_guru_course'):
-            course = request.json.get('course')
-            course_id = course.get('id')
-            c = Course.query.get(int(course_id))
-            if c in user.guru_courses:
-                user.guru_courses.remove(c)
-            db_session.commit()
+        user.requests = [];
 
-        if request.json.get('remove_major'):
-            major = request.json.get('major')
-            major_id = major.get('id')
-            m = Major.query.get(int(major_id))
-            if m in user.majors:
-                user.majors.remove(m)
-            db_session.commit()
+        user.university_id = None;
+
+        for course in user.student_courses + user.guru_courses:
+            c = course
+            from app.models import guru_courses_table, student_courses_table
+            if course in user.guru_courses:
+                db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == user.id and guru_courses_table.c.course_id == c.id))
+                db_session.execute(student_courses_table.delete(student_courses_table.c.user_id == user.id and student_courses_table.c.course_id == c.id))
+            if course in user.student_courses:
+                db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == user.id and guru_courses_table.c.course_id == c.id))
+                db_session.execute(student_courses_table.delete(student_courses_table.c.user_id == user.id and student_courses_table.c.course_id == c.id))
+
+        # if request.json.get('remove_student_course'):
+        #     course = request.json.get('course')
+        #     course_id = course.get('id')
+        #     c = Course.query.get(int(course_id))
+        #     if c in user.student_courses:
+        #         user.student_courses.remove(c)
+        #     db_session.commit()
+
+        # if request.json.get('remove_guru_course'):
+        #     course = request.json.get('course')
+        #     course_id = course.get('id')
+        #     c = Course.query.get(int(course_id))
+        #     if c in user.guru_courses:
+        #         user.guru_courses.remove(c)
+        #     db_session.commit()
+
+        # if request.json.get('remove_major'):
+        #     major = request.json.get('major')
+        #     major_id = major.get('id')
+        #     m = Major.query.get(int(major_id))
+        #     if m in user.majors:
+        #         user.majors.remove(m)
+        #     db_session.commit()
 
         db_session.commit()
         return user, 200

@@ -304,6 +304,27 @@ if arg == 'count':
     with open('app/lib/university_data.json', 'wb') as fp:
         json.dump(results, fp, sort_keys = True, indent = 4)
 
+if arg == 'init_admin':
+    admin_accounts = ['makhani.samir@gmail.com']
+    u = University.query.filter_by(name='Uguru University').first()
+
+    len_universities = len(University.query.all())
+
+
+    if not u:
+        u = University()
+        u.name = 'Uguru University'
+        u.id = len_universities + 1000
+        db_session.add(u)
+        db_session.commit()
+
+    for account_email in admin_accounts:
+        user = User.query.filter_by(email=account_email).first()
+        print user.email + ' initiated as admin for ' + u.name
+        if user:
+            user.university_id = u.id
+            db_session.commit()
+
 if arg == 'parse_uni':
     from app.lib.wikipedia import *
 
@@ -439,6 +460,7 @@ if arg =='migrate':
             print "error with", user['email']
             db_session.rollback()
             continue
+
 
 
 

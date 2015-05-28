@@ -498,19 +498,19 @@ class University(Base):
     is_public = Column(Boolean)
 
     # User contributed university
-    def __init__(self, name=None, user_id=None, _id=None):
-        if _id:
-            self.id = _id
-        self.name = name
-        self.last_updated = datetime.now()
-        self.contributed_user_id = user_id
+    # def __init__(self, name=None, user_id=None, _id=None):
+    #     if _id:
+    #         self.id = _id
+    #     self.name = name
+    #     self.last_updated = datetime.now()
+    #     self.contributed_user_id = user_id
 
-        db_session.add(self)
-        try:
-            db_session.commit()
-        except:
-            db_session.rollback()
-            raise
+    #     db_session.add(self)
+    #     try:
+    #         db_session.commit()
+    #     except:
+    #         db_session.rollback()
+    #         raise
 
     @staticmethod
     def admin_create(args_dict, _id):
