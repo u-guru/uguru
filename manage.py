@@ -307,6 +307,7 @@ if arg == 'count':
 if arg == 'init_admin':
     admin_accounts = ['makhani.samir@gmail.com']
     u = University.query.filter_by(name='Uguru University').first()
+    m = Major.query.get(91)
 
     len_universities = len(University.query.all())
 
@@ -314,7 +315,9 @@ if arg == 'init_admin':
     if not u:
         u = University()
         u.name = 'Uguru University'
+
         u.id = len_universities + 1000
+        u.majors.append(m)
         db_session.add(u)
         db_session.commit()
 
@@ -322,6 +325,10 @@ if arg == 'init_admin':
         user = User.query.filter_by(email=account_email).first()
         print user.email + ' initiated as admin for ' + u.name
         if user:
+
+            print m.name, 'added to user major list'
+
+            user.majors.append(m)
             user.university_id = u.id
             db_session.commit()
 
