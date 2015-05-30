@@ -357,6 +357,7 @@ if arg == 'init_admin':
 
             user.majors.append(m)
             user.university_id = u.id
+            user.is_a_guru = True
             db_session.commit()
 
 if arg == 'parse_uni':
