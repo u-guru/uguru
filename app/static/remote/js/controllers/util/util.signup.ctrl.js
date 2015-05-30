@@ -145,14 +145,13 @@ angular.module('uguru.util.controllers')
         $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
         // $cordovaFacebook.login(["user_education_history", "friends_education_history"]).then(function (success) {
         $scope.loginInfo = success;
-        console.log(success);
+        console.log('success', success);
 
         $scope.getMe();
         console.log('Getting Facebook information...');
         $scope.loader.hide();
         //get user information
       },
-
       //error function
       function (error) {
         $scope.error = error;

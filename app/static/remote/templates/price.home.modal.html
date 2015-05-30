@@ -80,7 +80,7 @@
                 </button>
 
                 <button class='button button-full button-blue blue-bg white-text center' ng-click='addCard()' ng-show='user.cards &&user.cards.length === 0'>
-                  <div class='pure-u-1 item-icon-left item-icon-right'>
+                  <div class='pure-u-1 item-icon-left item-icon-right' style='font-size:90%;'>
                     <i class='icon ion-card icon'> </i>
 
                      Add a card
@@ -101,13 +101,16 @@
         </div>
 
       </div>
+      <div class='pure-u-1 absolute' ng-show='root.vars.version'>
+        v1.0.{{root.vars.version}}
+      </div>
   </ion-content>
 </ion-modal-view>
 </ion-side-menu-content>
 
 
 <ion-side-menu side="right" width='300' >
-              <div ng-include="BASE + 'templates/components.side-menu.html'"></div>
+              <div ng-include="img_base + BASE + 'templates/components.side-menu.html'"></div>
 </ion-side-menu>
 
 </ion-side-menus>

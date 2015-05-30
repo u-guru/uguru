@@ -304,6 +304,33 @@ if arg == 'count':
     with open('app/lib/university_data.json', 'wb') as fp:
         json.dump(results, fp, sort_keys = True, indent = 4)
 
+if arg == 'update':
+    v = Version.query.get(1)
+
+    latest_version = v.latest_ios
+
+    if not latest_version:
+        v.latest_ios = "1"
+        db_session.commit()
+
+
+    else:
+
+        current_version = float(latest_version)
+
+        current_version += 1
+
+        v.latest_ios = str(current_version)
+        # latest_version = v.latest_ios
+        db_session.commit()
+
+
+    if os.environ.get('PRODUCTION'):
+        env = 'production'
+    else:
+        env = 'local'
+    print v.latest_ios, 'updated to', env
+
 if arg == 'init_admin':
     admin_accounts = ['makhani.samir@gmail.com']
     u = University.query.filter_by(name='Uguru University').first()

@@ -60,11 +60,52 @@ angular.module('uguru.util.controllers')
           $scope.root.vars.onboarding = false;
           $scope.root.vars.request_cache = {};
           $scope.root.vars.onboarding_cache = {};
+
           $scope.root.vars.guru_mode = $scope.user.guru_mode;
           $scope.static = {};
           $scope.static.nearest_universities = [];
           $scope.static.universities = [];
 
+
+
+          local_version = $localstorage.getObject('version');
+          Version.getUpdatedVersionNum().then(
+              //if user gets the right version
+              function(response) {
+                var serverVersionNumber = parseFloat(JSON.parse(response).version);
+                $scope.root.vars.version = serverVersionNumber;
+
+
+                console.log('server', serverVersionNumber, typeof(serverVersionNumber));
+                console.log('local', local_version, typeof(local_version));
+
+                if (local_version !== serverVersionNumber) {
+                      if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.show) {
+                        $cordovaSplashscreen.show();
+                      }
+
+                      $ionicHistory.clearCache();
+                      $ionicHistory.clearHistory();
+                      $templateCache.removeAll();
+
+                      window.localStorage.clear();
+                      //remove all angular templates
+
+                      $localstorage.setObject('version', $scope.root.vars.version);
+                      console.log('updating version to', serverVersionNumber, '...');
+
+                      window.location = BASE_URL;
+                      window.location.reload(true);
+
+                }
+
+
+
+                $localstorage.setObject('version', $scope.root.vars.version);
+
+              }, function(err) {
+                console.log(err);
+              })
 
 
           $scope.logoutUser = function() {
@@ -201,6 +242,10 @@ angular.module('uguru.util.controllers')
                 mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone(),
                 web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid()),
                 device: ionic.Platform.device(),
+            }
+
+            if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.hide) {
+              $cordovaSplashscreen.hide();
             }
 
             if ($scope.platform.android) {

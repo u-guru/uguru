@@ -32,7 +32,11 @@ $ionicPlatform.ready(function() {
   document.addEventListener("deviceready", function () {
         // console.log('list of all plugins checkpoint 2', JSON.stringify(cordova.require("cordova/plugin_list").metadata));
 
-           $cordovaSplashscreen.hide();
+
+          if ($cordovaSplashscreen && $cordovaSplashscreen.hide) {
+            $cordovaSplashscreen.hide();
+          }
+
 
             var posOptions = {
               timeout: 2000,

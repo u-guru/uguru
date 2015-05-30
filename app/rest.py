@@ -32,8 +32,8 @@ class UniversityListView(restful.Resource):
 class VersionView(restful.Resource):
     def get(self):
         version_dict = {
-            'version':len(Version.query.get(1).builds),
-            'ios_msg': Version.query.get(1).ios_msg
+            'version':Version.query.get(1).latest_ios,
+            'ios_msg': Version.query.get(1).latest_ios
         }
         return json.dumps(version_dict), 200
 
@@ -213,6 +213,8 @@ class UserOneView(restful.Resource):
     @marshal_with(UserSerializer)
     def get(self, _id):
         user = User.query.get(_id)
+        v = Version.query.get(1)
+        db_session.refresh(v)
         [db_session.refresh(_request) for _request in user.requests]
         [db_session.refresh(_session) for _session in user.guru_sessions]
         [db_session.refresh(_session) for _session in user.student_sessions]

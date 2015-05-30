@@ -645,7 +645,7 @@ angular.module('uguru.user', [])
                     var processed_user = processResults(user.plain());
                     $scope.$broadcast('scroll.refreshComplete');
                     if ($scope) {
-                        $scope.$apply();
+
                         $scope.root.vars.fetch_user_server_mutex = false;
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);
