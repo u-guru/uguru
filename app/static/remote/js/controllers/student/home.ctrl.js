@@ -156,27 +156,15 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
     // $timeout(function() {
-    //   $scope.launchContactingModal();
-    // }, 500);
 
-
-    // $scope.root.vars.request = {
-    //   course: {short_name: 'CS10!'},
-    //   task_title: 'Fix my bike!',
-    //   address: "Ferry Building",
-    //   calendar: {weekday: "Thursday", formatted_start_time: '12:00pm', formatted_end_time: "3:00pm", },
-    //   files_attached: [true],
-    //   description: "yo there is a description",
-    //   fields: {img:  'question.svg', initial_status:'getting help'},
-    //   student_price: 5,
-    //   type: {
-    //     question:true
-    //   },
-    //   tags: ['mars'],
-    // }
-    // $timeout(function() {
-    //   $scope.launchContactingModal();
-    // }, 500)
+    //   $ionicModal.fromTemplateUrl(BASE + 'templates/price.home.modal.html', {
+    //           scope: $scope,
+    //           animation: 'slide-in-up'
+    //       }).then(function(modal) {
+    //         $scope.priceModal = modal;
+    //         $scope.priceModal.show();
+    //   }, 500);
+    // });
 
   }
 

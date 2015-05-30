@@ -25,25 +25,47 @@
                 <p class='micro-text uppercase semibold grey'>Uc Berkeley</p>
               </div>
             </div>
+
+            <div class='pure-g center'>
+              <div class='pure-u-1' ng-show='user && user.is_admin > 0'>
+                <p class='micro-text uppercase semibold grey'>Uguru University</p>
+              </div>
+            </div>
           </div>
 
           <div class='flex-item-c flex-column height-40 j-start' ng-show='user && user.id'>
-              <ion-list>
-                <!-- <ion-item class='item-icon-right balance-menu'>
-                    <p class='semibold black nano-text inline'>$26.00 in Uguru</p>
-                    <p class='inline align-right blue bold nano-text'>Cash Out <i class='icon ion-right-chevron'></i> </p>
-                </ion-item> -->
+              <ion-scroll ng-show='root.vars.show_price_fields' ng-controller='PaymentsController'>
+                <div class='pure-g'>
+                  <div class='pure-u-1' ng-show='user && user.name.length > 0'>
+                    <h4 class='semibold black center uppercase opacity-1-2 padding-1em'> Add Card Information </h4>
+                  </div>
+                </div>
+                <div class='pure-u-1'>
+                  <label class="item item-input item-icon-right">
+                    <input type="tel" id='card-input' ng-model='card_input_text' placeholder='•••• •••• •••• ••••'></input>
+                    <i class="icon ion-card placeholder-icon"></i>
+                  </label>
+                </div>
+                <div class='pure-u-3-5'>
+                  <label class="item item-input item-icon-right">
+                    <input type="tel" id='mm-input' ng-model='mm_input_text'  placeholder='MM'></input>
+                  </label>
+                </div>
+                <div class='pure-u-2-5'>
+                  <label class="item item-input item-icon-right">
+                    <input type="tel" id='yy-input' ng-model='yy_input_text' placeholder='YY'></input>
+                  </label>
+                </div>
 
-                <!-- <ion-item ng-click=''>
-                  <p class='nano-text black'> Settings </p>
-                </ion-item>
+                <div class='pure-u-1 padding-1em no-padding-bottom'>
+                  <button class='button button-full button-black micro-text' ng-click='savePayment()'>Become a Guru</button>
+                </div>
 
-                <ion-item ng-click=''>
-                  <p class='nano-text black'> Transaction History </p>
-                </ion-item>
-                <ion-item ng-click=''>
-                  <p class='nano-text black'> Invite Friends </p>
-                </ion-item> -->
+
+              </ion-scroll>
+
+              <ion-list ng-show='!root.vars.show_price_fields'>
+
 
                 <ion-toggle ng-model="user.email_notifications" ng-change='emailNotificationChange()' toggle-class="toggle-calm">
                   <p class='nano-text black'>
@@ -72,6 +94,18 @@
             </div>
             <div class='pure-u-1 padding-half'>
               <div class='center grey uppercase semibold nano-text'  ng-click='comingSoon()'> or with email </div>
+            </div>
+          </div>
+
+          <div class='pure-g-c flex-column j-start height-20' ng-show='true && root.vars.guru_mode'>
+            <div class='pure-u-1 padding-1em no-padding-bottom' >
+              <button class='button button-full button-black micro-text' ng-click='goToGuruMode()'>Become a Guru</button>
+            </div>
+          </div>
+
+          <div class='pure-g-c flex-column j-start height-20' ng-show='true && root.vars.guru_mode'>
+            <div class='pure-u-1 padding-1em no-padding-bottom' >
+              <button class='button button-full button-black micro-text' ng-click='goToGuruMode()'>Back to student mode</button>
             </div>
           </div>
 

@@ -1,6 +1,6 @@
   angular.module('uguru.util.controllers')
 
-.controller('AddPaymentController', [
+.controller('PaymentsController', [
 
   //All imported packages go here
   '$scope',
@@ -11,9 +11,15 @@
   '$ionicHistory',
   '$stateParams',
   '$ionicViewSwitcher',
+  '$ionicSideMenuDelegate',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $ionicHistory, $stateParams, $ionicViewSwitcher) {
+ 	$ionicModal, $ionicHistory, $stateParams, $ionicViewSwitcher, $ionicSideMenuDelegate) {
 
+
+
+    // console.log();
+    $scope.user.cards = [];
+    $scope.user_has_card = $scope.user.cards && $scope.user.cards.length > 0;
 
     $scope.clearCard = function() {
       $scope.card = null;
@@ -23,41 +29,25 @@
       $scope.root.keyboard.show('card-input', 500);
     }
 
-    $scope.goBack = function() {
+    $scope.addCard = function() {
+      $scope.root.vars.show_price_fields = true;
 
-        if ($scope.root.vars.student_payment)  {
-          $ionicViewSwitcher.nextDirection('back');
-          $ionicHistory.goBack();
-        }
+      $timeout(function() {
 
-        $ionicViewSwitcher.nextDirection('back');
-        $scope.root.vars.select_bottom_three = true;
-        if ($scope.user.guru_mode) {
-          mixpanel.track("Guru.home");
-          $state.go('^.guru-home');
-        } else {
-          mixpanel.track("Student.home");
-          $state.go('^.student-home');
-        }
+        $scope.$apply();
+      }, 500)
 
-      }
+      $timeout(function() {
+         console.log('shit triggered');
+         var payment_input = document.getElementById('card-input');
+         payment_input.focus();
+         console.log(payment_input);
+         $scope.beforeEnterFunctionTrigger();
+      }, 1000)
 
-      // if (!$ionicHistory.backView() && !$scope.user.guru_mode) {
-      //   console.log('back view doesnt exist');
-      //   $ionicViewSwitcher.nextDirection('back');
-      //   $scope.loader.show();
-      //   $state.go('^.student-home');
-      // } else {
-      //   $ionicViewSwitcher.nextDirection('back');
-      //   $ionicHistory.goBack();
-      // }
-      // } else if (!$ionicHistory.backView() && $scope.guru_mode) {
-      //   $state.go('^.guru-home');
-      // }
-      // else {
-      //   $ionicHistory.goBack();
-      // }
-    // }
+      $ionicSideMenuDelegate.toggleRight();
+
+    }
 
     $scope.addPaymentActionBtn = function() {
       if ($scope.actionButtonText.toLowerCase() === 'save') {
@@ -92,14 +82,26 @@
 
     $scope.savePayment = function() {
 
-      var cardNum = $scope.cardInput.value.split(" ").join("")
-      var expMM = $scope.cardMM.value;
-      var expYY = $scope.cardYY.value;
-      var cardType = $scope.getCardType(cardNum);
+
+
+      // $scope.cardInput = document.getElementById('card-input');
+      // $scope.cardMM = document.getElementById('mm-input');
+      // $scope.cardYY = document.getElementById('yy-input');
+
+      // var cardNum = $scope.cardInput.value.split(" ").join("")
+      // var expMM = $scope.cardMM.value;
+      // var expYY = $scope.cardYY.value;
+      // var cardType = $scope.getCardType(cardNum);
+      // console.log($scope.card_input_text, expMM, expYY);
       //check for errors
       // if (!$scope.validatedAddCardForm(cardNum, ccvNum)) {
       //   //make card shake
       // }
+
+      var cardNum = $scope.card_input_text;
+      var expMM = $scope.mm_input_text;
+      var expYY = $scope.yy_input_text;
+      console.log(cardNum, expMM, expYY);
 
       var stripeResponseHandler = function(status, response) {
 
@@ -110,9 +112,9 @@
             $timeout(function() {
               $scope.error_msg = null;
             },2000);
-            $scope.cardYY.value = '';
-            $scope.cardMM.value = '';
-            $scope.cardInput.value = '';
+            $scope.card_input_text = '';
+            $scope.card_mm_text = '';
+            $scope.card_yy_text = '';
             // alert(response.error.message);
 
         }
@@ -123,7 +125,6 @@
             $scope.cardInput.value = '';
         }
         else {
-
           var cardInfo = {
             stripe_token: response.id,
             card_last4: response.card.last4,
@@ -133,18 +134,25 @@
           if ($scope.debitCardOnly) {
             cardInfo.debit_card = true;
             cardInfo.is_transfer_card = true;
-            $scope.user.transfer_cards.push(cardInfo)
+            if (!$scope.user.transfer_cards) {
+              $scope.user.transfer_cards = [];
+            }
+            $scope.user.transfer_cards.push(cardInfo);
           } else {
             cardInfo.card = true;
             cardInfo.is_payment_card = true;
-            $scope.user.payment_cards.push(cardInfo)
+            if (!$scope.user.payment_cards) {
+              $scope.user.payment_cards = [];
+            }
+            $scope.user.payment_cards.push(cardInfo);
+            // $scope.user.payment_cards.push(cardInfo)
           }
 
           $scope.user.cards.push(cardInfo);
 
           $scope.user.createObj($scope.user, 'cards', cardInfo, $scope);
           $scope.success.show(500, 2000, 'Your card was successfully added!');
-          $scope.goBack();
+          $ionicSideMenuDelegate.toggleRight();
         }
     }
 
@@ -262,12 +270,12 @@
         }
 
 
-    $scope.$on('$ionicView.beforeEnter', function(){
-      $scope.loader.show();
+    $scope.beforeEnterFunctionTrigger = function() {
+      // $scope.loader.show();
 
-      $timeout(function() {
-        $scope.loader.hide()
-        }, 3000);
+      // $timeout(function() {
+      //   $scope.loader.hide()
+      //   }, 3000);
 
       $scope.debitCardOnly = ($stateParams && $stateParams.debitCardOnly) || $scope.user.guru_mode;
 
@@ -288,23 +296,26 @@
         $scope.actionButtonText = 'clear';
       }
 
-
-      console.log('entering view...');
       $scope.cardInput = document.getElementById('card-input');
       $scope.cardMM = document.getElementById('mm-input');
       $scope.cardYY = document.getElementById('yy-input');
-      console.log($scope.cardInput);
+
 
       if ($scope.card) {
         $scope.cardInput.value = '**** **** **** ' + $scope.card.card_last4;
         $scope.cardMM.value = '**';
         $scope.cardYY.value = '**';
       } else {
-        $scope.root.keyboard.show('card-input', 500);
+        $scope.cardInput.focus();
       }
 
-      $scope.cardInput.addEventListener('keyup', checkInputState);
-      $scope.cardMM.addEventListener('keyup', checkInputState);
+      // $scope.cardInput.addEventListener('keyup', checkInputState);
+      // $scope.cardMM.addEventListener('keyup', checkInputState);
+    }
+
+    $scope.$on('$ionicView.beforeEnter', function(){
+
+      $scope.beforeEnterFunctionTrigger()
 
     });
 

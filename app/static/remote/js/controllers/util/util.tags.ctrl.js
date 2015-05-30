@@ -59,7 +59,7 @@ angular.module('uguru.util.controllers')
                 }
             } );
 
-        }, 500);
+        }, 1500);
 
 
       }

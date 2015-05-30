@@ -309,6 +309,7 @@ angular.module('uguru.user', [])
         $scope.user.devices = user.devices;
         $scope.user.current_hourly = user.current_hourly;
         $scope.user.previous_guru_proposals = user.previous_guru_proposals;
+        $scope.user.is_admin = user.is_admin;
 
         $scope.user.text_notifications = user.text_notifications;
         $scope.user.email_notifications = user.email_notifications;
@@ -644,7 +645,7 @@ angular.module('uguru.user', [])
                     var processed_user = processResults(user.plain());
                     $scope.$broadcast('scroll.refreshComplete');
                     if ($scope) {
-
+                        $scope.$apply();
                         $scope.root.vars.fetch_user_server_mutex = false;
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);
@@ -656,6 +657,7 @@ angular.module('uguru.user', [])
                         if (callback) {
                             callback($scope);
                         }
+
                     }
 
                 },
@@ -719,7 +721,7 @@ angular.module('uguru.user', [])
                         $localstorage.setObject('user', $scope.user);
 
                     }, function(err){
-                        console.log(err);
+                        console.log(JSON.stringify(err));
                         console.log('error...something happened with the server;')
                     });
             } else if (param === 'transactions') {
@@ -735,6 +737,7 @@ angular.module('uguru.user', [])
                         $localstorage.setObject('user', $scope.user);
 
                     }, function(err){
+                        console.log(JSON.stringify(err));
                         console.log(err);
                         console.log('error...something happened with the server;')
                     });

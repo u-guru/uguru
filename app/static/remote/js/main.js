@@ -148,6 +148,16 @@ $ionicPlatform.ready(function() {
         templateUrl: BASE + 'templates/home.html',
         controller: 'HomeController'
   }).
+  state('root.guru', {
+        url: '/guru',
+        templateUrl: BASE + 'templates/guru.html',
+        controller: 'GuruController'
+  }).
+  state('root.guru-questions', {
+        url: '/guru-questions',
+        templateUrl: BASE + 'templates/guru.questions.html',
+        controller: 'GuruQuestionsController'
+  }).
   state('root.onboarding-loading', {
         url: '/onboarding-loading',
         templateUrl: BASE + 'templates/onboarding.loading.html',

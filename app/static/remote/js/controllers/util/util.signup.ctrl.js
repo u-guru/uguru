@@ -131,6 +131,13 @@ angular.module('uguru.util.controllers')
     };
 
 
+    $scope.goToGuruMode = function() {
+      $ionicSideMenuDelegate.toggleRight();
+      $timeout(function() {
+          $state.go('^.guru');
+          $scope.root.vars.guru_mode = true;
+      }, 500);
+    }
 
     $scope.login = function () {
 
@@ -142,7 +149,7 @@ angular.module('uguru.util.controllers')
 
         $scope.getMe();
         console.log('Getting Facebook information...');
-        $scope.loader.hide();hje
+        $scope.loader.hide();
         //get user information
       },
 
@@ -219,6 +226,8 @@ angular.module('uguru.util.controllers')
       console.log('printing user', JSON.stringify($scope.user));
       $scope.login();
     }
+
+
 
     $scope.validateLoginForm = function() {
       var formDict = $scope.signupForm;
@@ -484,6 +493,17 @@ angular.module('uguru.util.controllers')
             $scope.progress_active = false;
           }, 1000);
     }
+
+
+    //if price modal
+    if ($scope.root.vars.show_price_fields) {
+      $scope.root.vars.show_profile_fields = false;
+      $scope.hide_defaults = true;
+
+    }
+
+
+
 
   }
 

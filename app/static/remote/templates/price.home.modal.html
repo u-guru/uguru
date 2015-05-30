@@ -1,5 +1,7 @@
-<ion-modal-view hide-nav-bar ='true' class='verb-modal'>
-  <ion-content class='white-text dark-bg' scroll='false' >
+<ion-side-menus>
+<ion-side-menu-content>
+  <ion-modal-view hide-nav-bar ='true' class='price-modal' ng-controller='PaymentsController'>
+    <ion-content class='white-text dark-bg' scroll='false' >
       <div class='pure-g-c flex-column flex-space-between'>
 
         <div class='flex-item-c j-end padding-2em'>
@@ -62,7 +64,7 @@
               <div class='pure-u-1-12'>
               </div>
 
-              <p class='center micro-text opacity-6-10 white-text white-space-normal'>We'll only charge you after <br> your question is answered.</p>
+              <p class='center micro-text opacity-6-10 white-text white-space-normal'>We'll only charge <span ng-show='user.cards && user.cards.length > 0'>**- {{user.default_payment_card.card_last4}}</span> after <br> your question is answered.</p>
             </div>
           </div>
         </div>
@@ -73,8 +75,17 @@
             <div class='pure-g'>
               <div class='pure-u-1 padding-horizontal-2em'>
 
-                <button class='button button-full button-blue blue-bg white-text center' ng-click='submitRequest()'>
+                <button class='button button-full button-blue blue-bg white-text center' ng-click='submitRequest()' ng-show='user.cards &&user.cards.length > 0'>
                   Submit my question!
+                </button>
+
+                <button class='button button-full button-blue blue-bg white-text center' ng-click='addCard()' ng-show='user.cards &&user.cards.length === 0'>
+                  <div class='pure-u-1 item-icon-left item-icon-right'>
+                    <i class='icon ion-card icon'> </i>
+
+                     Add a card
+                     <i class='icon ion-arrow-right-b icon-small'> </i>
+                  </div>
                 </button>
 
               </div>
@@ -92,3 +103,11 @@
       </div>
   </ion-content>
 </ion-modal-view>
+</ion-side-menu-content>
+
+
+<ion-side-menu side="right" width='300' >
+              <div ng-include="'remote/templates/components.side-menu.html'"></div>
+</ion-side-menu>
+
+</ion-side-menus>

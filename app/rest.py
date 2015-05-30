@@ -1389,6 +1389,8 @@ class UserCardView(restful.Resource):
             debit_card = Card.initFromJson(request.json, user)
             return user, 200
 
+        return user, 200
+
         abort(404)
 
     @marshal_with(UserSerializer)

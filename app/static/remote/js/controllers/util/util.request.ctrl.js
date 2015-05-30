@@ -205,12 +205,24 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchTagsModal = function() {
+
+
+
+
+
+        // var description_input = document.getElementById('description-input');
+        // description_input.blur();
+
+        $timeout(function(){
+
+            $scope.tagsModal.show();
+
+        },250);
       if ($scope.descriptionModal.isShown()) {
         $timeout(function() {
           $scope.closeDescriptionModal();
         }, 1000);
       }
-      $scope.tagsModal.show();
     }
 
     $scope.closeTagsModal = function() {
@@ -259,7 +271,7 @@ angular.module('uguru.util.controllers')
 
       $ionicModal.fromTemplateUrl(BASE + 'templates/description.modal.html', {
           scope: $scope,
-          animation: 'slide-in-up'
+          animation: 'fade'
       }).then(function(modal) {
           $scope.descriptionModal = modal;
       });
@@ -338,6 +350,14 @@ angular.module('uguru.util.controllers')
 
     $scope.focusCourseInput = function () {
       var input = document.getElementById('course-input');
+      if (input) {
+        input.focus();
+      }
+    }
+
+    $scope.tagsInputFocus = function() {
+
+      var input = document.getElementById('tags-input');
       if (input) {
         input.focus();
       }

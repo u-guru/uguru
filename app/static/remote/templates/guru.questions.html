@@ -1,0 +1,66 @@
+<ion-view hide-nav-bar='true' class='request' id='guru-questions'>
+
+
+  <ion-header-bar align-title="center" class='dark-bg-header item-icon-right'>
+      <h1 class="title">Answer Questions</h1>
+  </ion-header-bar>
+
+<ion-tabs class="home-request-tabs-top tabs-top">
+      <ion-tab class="uppercase blue-bg white-text" title='Newest'>
+
+      </ion-tab>
+
+      <ion-tab class="uppercase white-bg black opacity-1-2" title='Expire'>
+
+      </ion-tab>
+</ion-tabs>
+
+
+<ion-content class='white-bg has-subheader' scroll='false'>
+  <ion-scroll class='full-height'>
+
+    <ion-list>
+      <ion-item ng-repeat='question in questions' class='item-avatar-left question-item' ng-click='goToQuestionResponse(question)'>
+
+         <img class='pure-img verb-img' ng-src='{{img_base}}./img/icons/question.svg' ng-show='question.student_price === 0'/>
+         <img class='pure-img verb-img stack_circle' ng-src='{{img_base}}./img/icons/stacks_circled.svg' ng-show='question.student_price > 0'/>
+         <h4 class='black uppercase semibold'> {{question.course.short_name}} </h4>
+         <h4 class='black white-space-normal nano-text regular'>{{question.description}}</h4>
+
+         <p class='tags-wrapper nano-text'>
+            <span class='blue request-tag' ng-repeat='tag in question.tags'>#{{tag}}
+            </span>
+          </p>
+
+        <h4 class='blue-art tap-to-reply-link'>  <a class='blue uppercase micro-text margin-top-1em'>Tap to reply</a> </h4>
+
+      </ion-item>
+    </ion-list>
+  </ion-scroll>
+
+
+<div class="tabs tabs-icon-only white-bg" id='guru-tab-bar'>
+  <a class="tab-item" href='#/guru' nav-direction='swap' id='guru-home-button'>
+    <img class='pure-img icon' src='{{img_base}}./img/request/house-icon-outline.svg'></i>
+  </a>
+  <a class="tab-item" href='#/guru-questions' nav-direction='swap' id='guru-questions-button'>
+    <img class='pure-img icon' src='{{img_base}}./img/icons/question-blue.svg'></i>
+  </a>
+  <a class="tab-item" href='#/browse' nav-direction='swap' id='browse-button'>
+    <img class='pure-img icon' src='{{img_base}}./img/icons/task.svg'></i>
+  </a>
+  <a class="tab-item">
+    &nbsp;
+  </a>
+  <a class="tab-item">
+  </a>
+  <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
+    <img class='pure-img icon' src='{{img_base}}./img/settings-tab-guru.svg'/>
+  </a>
+</div>
+
+
+</ion-content>
+
+
+</ion-view>
