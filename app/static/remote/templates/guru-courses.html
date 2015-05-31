@@ -41,9 +41,9 @@
         <ion-list class='no-horizontal-padding standard-bg black opacity-1-2 pure-u-1' show-delete="shouldShowDelete" can-swipe='listCanSwipe' >
           <ion-item class='uppercase item-icon-right standard-bg' ng-repeat='course in user.guru_courses'>
             {{course.short_name}}
-            <ion-option-button class='item-options' ng-click="user.guru_courses.splice($index, 1)">
+            <!-- <ion-option-button class='item-options' ng-click="removeGuruCourseAndUpdate($index)">
               Delete
-            </ion-option-button>
+            </ion-option-button> -->
           </ion-item>
 
         </ion-list>

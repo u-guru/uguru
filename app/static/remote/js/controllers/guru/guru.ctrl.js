@@ -20,6 +20,16 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicSideMenuDelegate, $ionicBackdrop)     {
 
 
+  document.addEventListener("deviceready", function () {
+    if (window.StatusBar) {
+      $timeout(function() {
+        StatusBar.overlaysWebView(true);
+        StatusBar.styleLightContent();
+      }, 250)
+    }
+  });
+
+
     console.log($scope.user);
 
 
@@ -160,6 +170,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             return new google.maps.LatLng(latCoord, longCoord);
         }
 
+
+
         $scope.showGoogleMap = function() {
 
           $scope.proposal.request.position.latitude = 51.219053;
@@ -221,22 +233,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         });
 
 
-        $scope.$on('$ionicView.afterEnter', function() {
 
-
-            if ($scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
-              $scope.processActiveProposalsGuru($scope.user.active_proposals);
-            }
-
-            if ($scope.user.pending_proposals && $scope.user.pending_proposals.length > 0) {
-              $timeout(function(){
-                $scope.processPendingProposals($scope.user.pending_proposals);
-              }, 2000);
-              $scope.processPendingProposals($scope.user.pending_proposals);
-            }
-
-
-      });
 
 
   }

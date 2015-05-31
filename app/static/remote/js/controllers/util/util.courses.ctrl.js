@@ -17,7 +17,7 @@ angular.module('uguru.util.controllers')
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
     $ionicSideMenuDelegate) {
 
-    $scope.shouldShowDelete = false;;
+    $scope.shouldShowDelete = false;
     $scope.listCanSwipe = true;
     $ionicSideMenuDelegate.canDragContent(false);
 
@@ -61,11 +61,19 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.removeGuruCourseAndUpdate = function(index) {
+
+
+      var guru_course = $scope.user.guru_courses[index];
+      $scope.user.guru_courses.splice(index, 1);
+      $scope.user.updateAttr('remove_guru_course', $scope.user, guru_course, null, $scope);
+    }
+
     $scope.addSelectedGuruCourse = function(course, input_text) {
       $scope.course_search_text = course.short_name.toUpperCase();
-      console.log(course, input_text);
+
       //set the local request.course object to this course
-      $scope.request.course = course;
+      // $scope.request.course = course;
 
       //clear the search input
       input_text = '';

@@ -286,7 +286,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     $scope.$on('modal.shown', function() {
 
-          if ($scope.incomingGuruModal.isShown()) {
+          if ($scope.incomingGuruModal && $scope.incomingGuruModal.isShown()) {
             $timeout(function() {
               if (window.StatusBar) {
                 StatusBar.overlaysWebView(true);
