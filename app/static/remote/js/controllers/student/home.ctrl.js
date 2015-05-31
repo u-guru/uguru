@@ -154,6 +154,164 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.verbModal.hide();
     }
 
+    $scope.initAndShowIncomingRequestModal = function() {
+
+        $ionicModal.fromTemplateUrl(BASE + 'templates/student.request.incoming.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.incomingGuruModal = modal;
+            $scope.incomingGuruModal.show();
+        });
+
+    }
+
+    $scope.processTimeEstimate = function(minutes) {
+        num_hours = Math.floor(Math.round((minutes / 60.0) * 100) / 100);
+        minutes = minutes % 60;
+        return [num_hours, minutes];
+
+    }
+
+    $scope.processIncomingRequests = function(incoming_requests) {
+
+      if (incoming_requests.length === 0) {
+        return;
+      }
+
+
+      //get first one out of array
+      var incoming_request = incoming_requests[0];
+
+      //get rid of the first one
+      incoming_requests.shift();
+
+      //get first one out of array
+      $scope.incoming_request = incoming_request;
+
+      //get first one out of array
+      $scope.initAndShowIncomingRequestModal();
+
+
+      var processed_time = $scope.processTimeEstimate($scope.incoming_request.time_estimate);
+
+      $scope.incoming_request.time_estimate = {hours: processed_time[0], minutes:processed_time[1]};
+
+      $scope.incoming_request.tags = ['milleniumfalcon'];
+
+    }
+
+     $scope.createGoogleLatLng = function(latCoord, longCoord) {
+            return new google.maps.LatLng(latCoord, longCoord);
+        }
+
+
+
+      $scope.showGoogleMap = function() {
+
+        $scope.incoming_request.position.latitude = 51.219053;
+        $scope.incoming_request.position.longitude = 4.404418;
+
+
+        if (!$scope.incoming_request.position || !$scope.incoming_request.position.latitude || !$scope.incoming_request.position.longitude) {
+          console.log('no coordinates... forget about it');
+          return;
+        }
+
+        $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
+        $scope.options = {scrollwheel: false};
+
+        var mapContainer = document.getElementById("map_canvas");
+        var initMapCoords;
+
+
+        initMapCoords = $scope.createGoogleLatLng(parseFloat($scope.incoming_request.position.latitude),parseFloat($scope.incoming_request.position.longitude))
+        var mapOptions = {
+          center: initMapCoords,
+          zoom: 17,
+          disableDefaultUI: true,
+          draggable: false,
+          zoomControl: false,
+          // zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
+        }
+        actual_map = new google.maps.Map(
+                mapContainer,
+                mapOptions
+        )
+
+        $scope.marker = new google.maps.Marker({
+              position: initMapCoords,
+              map: actual_map
+        });
+
+        $scope.actual_map = actual_map
+      }
+
+    //todo
+    $scope.acceptIncomingGuru = function() {
+      var doNothing;
+    }
+
+
+    //todo
+    $scope.rejectIncomingGuru = function() {
+
+      var rejectGuruCallback = function() {
+          requestObj = $scope.incoming_request;
+          requestObj.status = 3;
+
+          //remove request from array
+          $scope.root.util.removeObjectByKey($scope.user.incoming_requests, 'id', $scope.incoming_request.id);
+
+          $scope.root.util.updateObjectByKey($scope.user.requests, 'id', $scope.incoming_request.id, 'status', 0);
+
+          $scope.user.updateObj($scope.user, 'requests', requestObj, $scope);
+          $scope.success.show(0, 2000, 'Guru successfully rejected');
+
+          $scope.incomingGuruModal.hide();
+      }
+
+
+      dialog_title = "Are you sure?";
+      dialog_message = "You may not hear from this Guru again for this request";
+      button_arr = ['Cancel', 'Sure'];
+      if ($scope.platform.web) {
+        if (confirm('Are you sure? \n' + dialog_message)) {
+          rejectGuruCallback();
+        }
+      } else {
+        $scope.root.dialog.confirm(dialog_message, dialog_title, button_arr, [null, rejectGuruCallback])
+      }
+    }
+
+    $scope.$on('modal.shown', function() {
+
+          if ($scope.incomingGuruModal.isShown()) {
+            $timeout(function() {
+              if (window.StatusBar) {
+                StatusBar.overlaysWebView(true);
+                StatusBar.styleLightContent();
+              }
+
+              $scope.showGoogleMap();
+
+            }, 100);
+
+
+
+          }
+
+      });
+
+     $scope.$on('$ionicView.afterEnter', function() {
+
+        //user has incoming request for help
+        if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
+          $scope.processIncomingRequests($scope.user.incoming_requests);
+        }
+
+    });
+
 
     // $timeout(function() {
 

@@ -131,11 +131,21 @@ angular.module('uguru.util.controllers')
     };
 
 
+
+
     $scope.goToGuruMode = function() {
       $ionicSideMenuDelegate.toggleRight();
       $timeout(function() {
           $state.go('^.guru');
           $scope.root.vars.guru_mode = true;
+      }, 500);
+    }
+
+    $scope.goToStudentMode = function() {
+      $ionicSideMenuDelegate.toggleRight();
+      $timeout(function() {
+          $state.go('^.home');
+          $scope.root.vars.guru_mode = false;
       }, 500);
     }
 
@@ -185,7 +195,7 @@ angular.module('uguru.util.controllers')
         $scope.signupForm.profile_url = "https://graph.facebook.com/" + success.id + "/picture?width=100&height=100";
         $scope.signupForm.gender = success.gender;
 
-
+        $scope.success.show(0, 2000, 'Login Successful');
         $scope.completeSignup();
         $scope.loader.hide();
 

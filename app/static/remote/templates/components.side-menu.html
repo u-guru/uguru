@@ -88,24 +88,24 @@
               </ion-list>
           </div>
 
-          <div class='pure-g-c flex-column j-start height-20' ng-show='user && !user.id'>
-            <div class='pure-u-1 padding-1em no-padding-bottom'>
+          <div class='pure-g-c flex-column j-start height-20'>
+            <div class='pure-u-1 padding-1em no-padding-bottom' ng-show='user && !user.id'>
               <button class='button button-full button-black micro-text'  ng-click='signupFacebook()'>Continue with Facebook</button>
             </div>
-            <div class='pure-u-1 padding-half'>
+            <div class='pure-u-1 padding-half' ng-show='user && !user.id'>
               <div class='center grey uppercase semibold nano-text'  ng-click='comingSoon()'> or with email </div>
             </div>
           </div>
 
-          <div class='pure-g-c flex-column j-start height-20' ng-show='true && root.vars.guru_mode'>
+          <div class='pure-g-c flex-column j-start height-20' ng-show='user.is_a_guru && !root.vars.guru_mode'>
             <div class='pure-u-1 padding-1em no-padding-bottom' >
-              <button class='button button-full button-black micro-text' ng-click='goToGuruMode()'>Become a Guru</button>
+              <button class='button button-full button-black micro-text' ng-click='goToGuruMode()'>Switch to Guru</button>
             </div>
           </div>
 
-          <div class='pure-g-c flex-column j-start height-20' ng-show='true && root.vars.guru_mode'>
+          <div class='pure-g-c flex-column j-start height-20' ng-show='user.is_a_guru && root.vars.guru_mode'>
             <div class='pure-u-1 padding-1em no-padding-bottom' >
-              <button class='button button-full button-black micro-text' ng-click='goToGuruMode()'>Back to student mode</button>
+              <button class='button button-full button-black micro-text' ng-click='goToStudentMode()'>Back to student mode</button>
             </div>
           </div>
 

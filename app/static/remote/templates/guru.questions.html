@@ -16,7 +16,7 @@
 </ion-tabs>
 
 
-<ion-content class='white-bg has-subheader' scroll='false'>
+<ion-content class='white-bg has-subheader flex-item flex-direction' scroll='false'>
   <ion-scroll class='full-height'>
 
     <ion-list>
@@ -43,16 +43,17 @@
   <a class="tab-item" href='#/guru' nav-direction='swap' id='guru-home-button'>
     <img class='pure-img icon' src='{{img_base}}./img/request/house-icon-outline.svg'></i>
   </a>
+  <a class="tab-item" id='guru-courses-button' href='#/guru-courses' nav-direction='swap'>
+    <img class='pure-img icon' src='{{img_base}}./img/request/guru_book_outline.svg'></i>
+  </a>
   <a class="tab-item" href='#/guru-questions' nav-direction='swap' id='guru-questions-button'>
     <img class='pure-img icon' src='{{img_base}}./img/icons/question-blue.svg'></i>
   </a>
-  <a class="tab-item" href='#/browse' nav-direction='swap' id='browse-button'>
+  <a class="tab-item" id='browse-button'>
     <img class='pure-img icon' src='{{img_base}}./img/icons/task.svg'></i>
   </a>
   <a class="tab-item">
     &nbsp;
-  </a>
-  <a class="tab-item">
   </a>
   <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
     <img class='pure-img icon' src='{{img_base}}./img/settings-tab-guru.svg'/>

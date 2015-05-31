@@ -211,6 +211,11 @@ $ionicPlatform.ready(function() {
         templateUrl: BASE + 'templates/courses.html',
         controller: 'CoursesController'
   }).
+  state('root.guru-courses', {
+        url: '/guru-courses',
+        templateUrl: BASE + 'templates/guru-courses.html',
+        controller: 'CoursesController'
+  }).
   state('root.request-guru-type', {
         url: '/request-guru-type',
         templateUrl: BASE + 'templates/student.request.guru-type.html',

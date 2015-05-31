@@ -911,3 +911,48 @@ h4.tap-to-reply-link {
   line-height: 2em;
   height: 43px;
   color: rgba(0, 0, 0, 0.4); }
+
+.guru-course-input-wrapper {
+  padding-left: 1em; }
+
+.button-full.button-blue.button-submit {
+  text-transform: uppercase;
+  font-size: 90%;
+  color: white;
+  font-family: "OpenSans-Bold"; }
+
+.incoming-proposal .profile-img.sidebar-img {
+  border: 3px solid white;
+  margin-left: -8px;
+  margin-right: -8px; }
+
+.proposal-card-request .proposal-header {
+  font-size: 24px; }
+.proposal-card-request .course-header {
+  font-size: 24px; }
+.proposal-card-request .tags-wrapper {
+  margin-left: 0px !important;
+  padding-left: 0px !important; }
+.proposal-card-request .guru-proposal-profile {
+  margin-top: -15%; }
+
+ion-list.list-inset.visible-overflow.proposal-card-request.disable-user-behavior {
+  margin: 0 auto !important;
+  float: center !important;
+  margin-top: 5%; }
+
+.gm-style-cc {
+  display: none; }
+
+.no-border {
+  border-width: 0px !important; }
+
+.can-help-text {
+  padding-left: 3em; }
+
+.can-help-profile-img {
+  max-height: 60px !important;
+  max-width: 60px !important; }
+
+.padding-top-half {
+  padding-top: 0.25em; }

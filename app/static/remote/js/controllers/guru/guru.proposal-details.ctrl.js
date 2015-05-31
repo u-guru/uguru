@@ -128,7 +128,7 @@ angular.module('uguru.guru.controllers')
         $scope.user.updateObj($scope.user, 'requests', proposalObj, $scope);
         $scope.success.show(0, 2000, 'Success!');
           //Mixpanel Track
-        mixpanel.track("Guru.home");
+        // mixpanel.track("Guru.home");
         $state.go('^.guru-home');
       }
 

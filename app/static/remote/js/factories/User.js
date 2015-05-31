@@ -19,7 +19,11 @@ angular.module('uguru.user', [])
                 }
                 result = 0;
                 for (var i = 0; i < ratings_arr.length; i ++) {
-                    result += ratings_arr[i].student_rating;
+                    if (ratings_arr[i].student_rating) {
+                        result += ratings_arr[i].student_rating;
+                    } else {
+                        result += ratings_arr[i].guru_rating;
+                    }
                 }
                 result = (result / ratings_arr.length).toFixed(2);
                 return result;
@@ -70,7 +74,8 @@ angular.module('uguru.user', [])
                 user.active_requests.push(index_request);
               }
               else if (index_request.status === 1) {
-                user.incoming_requests.push(index_request);
+                    index_request.guru.guru_avg_rating = parseInt(calcAverage(index_request.guru.guru_ratings));
+                    user.incoming_requests.push(index_request);
                 } else {
                     user.previous_requests.push(index_request);
                 }

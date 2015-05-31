@@ -22,10 +22,12 @@ angular.module('uguru.util.controllers')
   'Geolocation',
   '$cordovaPush',
   '$ionicSideMenuDelegate',
+  '$ionicViewSwitcher',
   function($ionicPlatform, $scope, $state, $localstorage, User,
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
-          $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush, $ionicSideMenuDelegate) {
+          $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush,
+          $ionicSideMenuDelegate, $ionicViewSwitcher) {
 
           // console.log('1. checking for app updates\n');
           // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
@@ -145,6 +147,10 @@ angular.module('uguru.util.controllers')
             );
           }
 
+          $scope.toggleRightSideMenu = function() {
+            $ionicSideMenuDelegate.toggleRight();
+          };
+
           console.log('getting most up to date universities + user from server..')
           var local_universities = $localstorage.getObject('universities');
           if (!local_universities || local_universities.length === 0) {
@@ -206,6 +212,37 @@ angular.module('uguru.util.controllers')
               }
             }
           }
+
+          //returns empty array of length
+          $scope.getNumber = function(num) {
+            return new Array(num);
+          }
+
+          $scope.checkCourses = function() {
+            var is_courses_loaded = $scope.root.vars && $scope.root.vars.courses && $scope.root.vars.courses.length > 0;
+            if (is_courses_loaded) {
+              $ionicViewSwitcher.nextDirection('fade');
+              $state.go('^.guru-courses');
+            } else {
+              $scope.success.show(0, 2000, 'Loading courses. One moment...');
+              $timeout(function() {
+                $scope.checkCourses();
+              }, 2000);
+            }
+          };
+
+           $scope.deleteProposalFromList = function(proposal, proposal_list) {
+              for(i = 0; i < proposal_list.length; i++) {
+                if(proposal_list[i].id === proposal.id) {
+                  proposal_list.splice(i, i+1);
+                  return;
+                }
+              }
+            }
+
+
+
+
 
           $scope.success = {
             show: function(delay, duration, message) {
@@ -338,6 +375,17 @@ angular.module('uguru.util.controllers')
           document.addEventListener("deviceready", function () {
             // console.log(JSON.stringify(ionic.Platform.device()));
             // User.getUserFromServer($scope, null, $state);
+
+
+            $scope.toggleLightStatusBar = function() {
+
+
+              if (window.StatusBar) {
+                StatusBar.styleLightContent();
+              }
+
+            }
+
             document.addEventListener("resume", function() {
 
                 // console.log('device is resuming....');

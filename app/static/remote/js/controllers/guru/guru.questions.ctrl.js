@@ -27,6 +27,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         tags: ['heavy water', 'D20'],
         time_created: '',
         student_price: 0,
+        time_expired:0
       },
       {
         description: 'Can you please explain the stable marriage algorithm using my extended family? Maybe ill finally make the connection.',

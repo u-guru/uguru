@@ -362,13 +362,11 @@ angular.module('uguru.student.controllers')
       $scope.session = JSON.parse($stateParams.sessionObj);
       $scope.recursive_delay = 60000;
       $scope.guru = $scope.session.guru;
-      console.log($scope.guru);
 
       $scope.student_position = null;
       $scope.guru_position = null;
       $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
       $scope.options = {scrollwheel: false};
-
 
       $scope.loader.show();
       $timeout(function() {

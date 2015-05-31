@@ -1,0 +1,102 @@
+  <ion-modal-view hide-nav-bar ='true' class='dark-bg incoming-proposal'>
+
+    <ion-header-bar align-title="center" class='dark-bg-header calendar-top-header mini-header' hide-nav-bar='true'>
+      <div class="buttons">
+        <button class="button button-clear button-header-link grey opacity-1-2" ng-click='rejectStudent()'>Cancel</button>
+      </div>
+    </ion-header-bar>
+
+  <ion-content class='white-text dark-bg request-form-tags-offset visible-overflow' scroll='false' >
+
+
+        <ion-scroll class='full-height visible-overflow'>
+          <div class='pure-g-c flex-column flex-space-between'>
+              <div class='flex-item-c pure-g'>
+                <!-- 1. create inset list, offset it by -5% margin-top -->
+                <ion-list class='list-inset visible-overflow proposal-card-request' style='margin-top:5%;' >
+
+                  <!-- 2.  padding 2em h1 format bold, SemiBold, relative-->
+                  <ion-item class='padding-1em absolute padding-vertical-1em float-center visible-overflow center' style='padding-bottom:2em;'>
+                    <img class='home-card-profile guru-proposal-profile pure-img profile-img sidebar-img inline'  src='{{proposal.request.student.profile_url}}'/>
+                    <img class='home-card-profile guru-proposal-profile pure-img profile-img sidebar-img inline'  src='{{user.profile_url}}'/>
+                    <!-- <h2> &nbsp; </h2> -->
+                    <h2 class='capitalize proposal-header' style='margin-top:0.5em;'>Session with <strong>{{proposal.request.student.name.split(' ')[0]}}</strong></h2>
+                  <!-- 3. Absolute positioning item, jack it from settings -->
+                  </ion-item>
+                  <!-- 4.  jack dfrom student, put hashtags, icon right-->
+                  <ion-item class='item-avatar item-icon-right session course-details'>
+                    <img class='pure-img verb-img' ng-src='{{img_base}}./img/verbs/{{proposal.request.verb_image}}' />
+                      <h2 class='uppercase course-header'>{{proposal.request.course.short_name}}</h2>
+                      <p class='tags-wrapper'>
+                        <span class='blue proposal.request-tag' ng-repeat='tag in proposal.request.tags'>#{{tag}}
+                        </span>
+                      </p>
+                    <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon proposal.request-icon' src='{{img_base}}./img/icons/paperclip-outline-blue.svg' style='margin-right: 0.33em; margin-top:0.4em;'>
+
+                  </ion-item>
+
+                  <ion-item class='item-avatar-left card-item-left'>
+                    <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
+                      <div class='pure-u-1-4'>
+                        <p class='inline'>
+                          <span ng-show='proposal.request.time_estimate.hours && !proposal.request.time_estimate.minutes'>
+                            {{proposal.request.time_estimate.hours}} hours
+                          </span>
+                          <span ng-show='proposal.request.time_estimate.minutes && !proposal.request.time_estimate.hours'>
+                            {{proposal.request.time_estimate.minutes}} min
+                          </span>
+                          <span ng-show='proposal.request.time_estimate.minutes && proposal.request.time_estimate.hours'>
+                            {{proposal.request.time_estimate.hour}}hr {{proposal.request.time_estimate.minutes}}m
+                          </span>
+                        </p>
+                      </div>
+                      <div class='pure-u-3-4 micro-text' style='padding-left:1em; opacity:0.8;'>
+
+                        <strong>Thursday</strong>, May 14th, <br>
+                        Between <strong>12:00 pm - 3:30 pm </strong>
+
+                      </div>
+                  </ion-item>
+
+                  <!-- 5.  Same old but no orange> -->
+                  <ion-item class='item-avatar-left card-item-left'>
+                    <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/marker.svg'>
+                    <p class='inline'> Meet up </p>
+                    <p class='inline black' style='padding-left:1em'> {{proposal.request.address}} </p>
+                  </ion-item>
+
+                  <!-- 5.  Formalize list button-->
+
+                  <div class='pure-u-1'>
+                    <div id="map_canvas" style="height:100px;width: 100%;">
+                      <ui-gmap-google-map center="map.center" control="map.control" zoom="map.zoom"  pan="true" options="options">
+                      </ui-gmap-google-map>
+                    </div>
+                  </div>
+
+
+
+
+                  <div class='pure-u-1'>
+                      <button class='button button-full button-blue blue-bg button-submit white-text center' ng-click='acceptIncomingStudentProposal()'>
+                          Confirm this session
+                      </button>
+                  </div>
+
+
+                </ion-list>
+
+              </div>
+
+<!--
+        <div class='flex-item-c pure-g j-start'>
+
+        </div> -->
+
+
+    </div>
+  </ion-scrolL>
+
+
+    </ion-content>
+</ion-modal-view>

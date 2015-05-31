@@ -1,4 +1,4 @@
-<ion-view hide-nav-bar='true' class='courses' ng-controller='CoursesController'>
+<ion-view hide-nav-bar='true' class='courses' ng-controller='HomeController'>
   <ion-header-bar class='dark-bg-header item-button-left item-icon-right'>
         <!-- <button ng-click='launchVerbModal()' class="button button-clear button-blue">Edit</button> -->
         <h1 class="title">My Courses</h1>
@@ -8,7 +8,7 @@
           </a>
         </div>
   </ion-header-bar>
-<ion-content class='dark-bg'>
+<ion-content class='dark-bg' ng-controller='CoursesController'>
 
     <div class='pure-g-c flex-column flex-space-between' ng-show='user.student_courses && user.student_courses.length > 0'>
       <div class='flex-item-c '>
@@ -60,10 +60,10 @@
 </ion-content>
 
 <div class="tabs tabs-icon-only dark-bg">
-  <a class="tab-item" href='#/new-home' nav-direction='swap' id='home-button'>
+  <a class="tab-item" id='home-button' href='#/new-home' nav-direction="swap">
     <img class='pure-img icon' src='{{img_base}}./img/request/house-icon.svg'></i>
   </a>
-  <a class="tab-item" href='#/courses' nav-direction='swap' id='courses-button'>
+  <a class="tab-item" href='#/courses' nav-direction='swap' id='questions-button'>
     <img class='pure-img icon' src='{{img_base}}./img/request/guru_book_blue.svg'></i>
   </a>
   <!-- <a class="tab-item" href='#/browse' nav-direction='swap' id='browse-button'>
@@ -73,9 +73,9 @@
   </a>
   <a class="tab-item">
   </a>
-  <!-- <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
-    <img class='pure-img icon' src='{{img_base}}./img/request/settings.svg'></i>
-  </a> -->
+  <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
+    <img class='pure-img icon' src='{{img_base}}./img/request/settings.svg'/>
+  </a>
 </div>
 
 

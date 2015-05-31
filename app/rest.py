@@ -621,7 +621,7 @@ class UserRequestView(restful.Resource):
         #         day_index += 1
 
         # print "longass json calendar figured out", calendar
-
+        calendar = None ###temp
 
         print request.json.get('files')
         if request.json.get('files'):
@@ -641,9 +641,13 @@ class UserRequestView(restful.Resource):
             print "number of gurus available", len(available_gurus)
             for guru in available_gurus:
 
-                guru.id, guru.name, guru.time_created, 'contacted'
+                print guru.id, guru.name, guru.time_created, 'contacted'
 
-                proposal = Proposal.initProposal(_request.id, guru.id, calendar.id)
+                calendar_id = None
+                if calendar:
+                    calendar_id = calendar.id
+
+                proposal = Proposal.initProposal(_request.id, guru.id, calendar_id)
 
                 # proposal.student_price = float(request.json.get('price_slider'))
 
