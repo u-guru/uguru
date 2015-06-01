@@ -162,6 +162,16 @@ $ionicPlatform.ready(function() {
         templateUrl: BASE + 'templates/guru.questions.html',
         controller: 'GuruQuestionsController'
   }).
+  state('root.student-session', {
+        url: '/student-session:sessionObj',
+        templateUrl: BASE + 'templates/student.session.html',
+        controller: 'StudentSessionController'
+  }).
+  state('root.guru-session', {
+        url: '/guru-session:sessionObj',
+        templateUrl: BASE + 'templates/guru.session.html',
+        controller: 'GuruSessionController'
+  }).
   state('root.onboarding-loading', {
         url: '/onboarding-loading',
         templateUrl: BASE + 'templates/onboarding.loading.html',

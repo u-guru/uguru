@@ -30,6 +30,10 @@ guru_rating_fields = {}
 guru_rating_fields['id'] = fields.Integer(attribute='id')
 guru_rating_fields['guru_rating'] = fields.Integer(attribute='guru_rating')
 
+student_rating_fields = {}
+student_rating_fields['id'] = fields.Integer(attribute='id')
+student_rating_fields['student_rating'] = fields.Integer(attribute='student_rating')
+
 event_fields = {}
 event_fields['id'] = fields.Integer(attribute='id')
 event_fields['status'] = fields.Integer(attribute='status')
@@ -54,12 +58,16 @@ guru_fields['majors'] = fields.List(fields.Nested(major_fields))
 guru_fields['guru_introduction'] = fields.String(attribute='guru_introduction')
 guru_fields['guru_ratings'] = fields.List(fields.Nested(guru_rating_fields))
 guru_fields['profile_url'] = fields.String(attribute='profile_url')
+guru_fields['university'] = fields.Nested(university_fields)
 # guru_fields['guru_sessions'] = fields.List(fields.Nested(session_fields))
 
 student_fields = {}
 student_fields['name'] = fields.String(attribute='name')
 student_fields['id'] = fields.Integer(attribute='id')
 student_fields['profile_url'] = fields.String(attribute='profile_url')
+student_fields['student_ratings'] = fields.List(fields.Nested(student_rating_fields))
+student_fields['university'] = fields.Nested(university_fields)
+student_fields['majors'] = fields.List(fields.Nested(major_fields))
 
 calendar_event_fields = {}
 calendar_event_fields['id'] = fields.Integer(attribute='id')
@@ -175,6 +183,7 @@ session_fields['time_created'] = fields.DateTime(attribute='time_created')
 session_fields['time_updated'] = fields.DateTime(attribute='time_updated')
 session_fields['time_completed'] = fields.DateTime(attribute='time_completed')
 session_fields['guru'] = fields.Nested(guru_fields)
+session_fields['student'] = fields.Nested(student_fields)
 session_fields['id'] = fields.Integer(attribute='id')
 session_fields['relationship_id'] = fields.Integer(attribute='relationship_id')
 session_fields['student_positions'] = fields.Nested(position_fields)

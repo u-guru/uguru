@@ -86,6 +86,7 @@ angular.module('uguru.user', [])
             for (var i = 0; i < student_sessions.length; i ++) {
               var index_session = student_sessions[i];
               if (index_session.status === 0 || index_session.status === 1 || index_session.status === 2) {
+                index_session.guru.guru_avg_rating = parseInt(calcAverage(index_session.guru.guru_ratings));
                 user.active_student_sessions.push(index_session);
               } else if (index_session.status === 6 || index_session.status === 7 || index_session.status === 8 ) {
                 user.previous_student_sessions.push(index_session);
@@ -208,6 +209,7 @@ angular.module('uguru.user', [])
                 for (var i = 0; i < guru_sessions.length; i ++) {
                   var index_session = guru_sessions[i];
                   if (index_session.status === 0 || index_session.status === 1 || index_session.status === 2) {
+                    index_session.student.student_avg_rating = parseInt(calcAverage(index_session.student.student_ratings));
                     user.active_guru_sessions.push(index_session);
                   } else if (index_session.status === 6 || index_session.status === 7 || index_session.status === 8 ) {
                     user.previous_guru_sessions.push(index_session);

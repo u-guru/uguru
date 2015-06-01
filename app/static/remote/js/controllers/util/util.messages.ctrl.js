@@ -241,15 +241,7 @@ angular.module('uguru.student.controllers')
             $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
           }, 3000);
         }
-        // console.log('getting message from server');
         $scope.getMessagesFromServer(null ,true,callback);
-
-        // $timeout(function() {
-        //   console.log('shutting off anyways incase its not');
-
-        //   $scope.$broadcast('scroll.refreshComplete');
-        //   $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
-        // }, 3000)
     }
 
     $scope.$on('$ionicView.beforeEnter', function(){

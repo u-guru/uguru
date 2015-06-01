@@ -1382,3 +1382,52 @@ ion-list.list-inset.visible-overflow.proposal-card-request.disable-user-behavior
 .padding-top-half {
     padding-top:0.25em;
 }
+
+.guru-info-wrapper {
+    color:white;
+    h2 {
+        font-size:1.5em;
+        color:white;
+        opacity:0.7;
+    }
+    p {
+        color:white;
+        opacity:0.7;
+        font-size:70%;
+    }
+    margin-left:25%;
+}
+
+.student-session-course-name {
+    font-size: 1.5em !important;
+    line-height: 1.5em;
+    font-family: OpenSans-Light;
+    opacity: 0.8;
+}
+
+.pico-text {
+    font-size:70% !important;
+}
+
+.padding-right-half {
+    padding-right:0.5em;
+}
+
+.padding-top-half {
+    padding-top:0.5em;
+}
+
+.guru-session-footer {
+    border-top: 1px solid rgba(0,0,0,0.1);
+    min-height:62px;
+    button {
+
+        margin-bottom:0;
+        margin:0.5em !important;
+    }
+
+}
+
+.opacity-65 {
+    opacity.0.65;
+}

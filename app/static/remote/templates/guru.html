@@ -19,25 +19,26 @@
 
 
 <ion-content class='white-bg has-subheader request-form-tags-offset' scroll='false'>
-    <ion-scroll class='full-height has-header visible-overflow'>
-    <div class='pure-g'>
+    <div class='pure-g-c flex-column flex-space-between'>
+      <ion-scroll class='has-header visible-overflow'>
+        <div class='pure-g'>
         <!-- <div class='flex-item-c pure-g'> -->
           <!-- 1. create inset list, offset it by -5% margin-top -->
-          <ion-list class='list-inset visible-overflow' style='margin-top:-5%; margin-bottom:10%; padding-top:5%;' ng-repeat='proposal in user.pending_proposals'>
+          <ion-list class='list-inset visible-overflow pure-u-1' style='margin-top:-5%; margin-bottom:10%; padding-top:5%;' ng-repeat='session in user.active_guru_sessions' ng-click='goToSessionDetails(session);'>
 
             <!-- 2.  padding 2em h1 format bold, SemiBold, relative-->
             <ion-item class='padding-2em absolute padding-vertical-1em float-center visible-overflow center'>
-              <img class='home-card-profile pure-img profile-img sidebar-img inline no-border'  src='{{proposal.request.student.profile_url}}'/>
+              <img class='home-card-profile pure-img profile-img sidebar-img inline no-border'  src='{{session.request.student.profile_url}}'/>
               <!-- <h2> &nbsp; </h2> -->
-              <h2 style='margin-top:0.5em;'>Session with <strong>{{proposal.request.student.name.split(' ')[0]}}</strong></h2>
+              <h2 style='margin-top:0.5em;'>Session with <strong>{{session.request.student.name.split(' ')[0]}}</strong></h2>
             <!-- 3. Absolute positioning item, jack it from settings -->
             </ion-item>
             <!-- 4.  jack dfrom student, put hashtags, icon right-->
             <ion-item class='item-avatar item-icon-right session course-details'>
-              <img class='pure-img verb-img' ng-src='{{img_base}}./img/verbs/{{proposal.request.verb_image}}' />
-                <h2 class='uppercase'>{{proposal.request.course.short_name}}</h2>
+              <img class='pure-img verb-img' ng-src='{{img_base}}./img/verbs/{{session.request.verb_image}}' />
+                <h2 class='uppercase'>{{session.request.course.short_name}}</h2>
                 <p class='tags-wrapper'>
-                  <span class='blue request-tag' ng-repeat='tag in proposal.request.tags'>#{{tag}}
+                  <span class='blue request-tag' ng-repeat='tag in session.request.tags'>#{{tag}}
                   </span>
                 </p>
               <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip-outline-blue.svg' style='margin-right: 0.33em; margin-top:0.4em;'>
@@ -47,18 +48,18 @@
             <ion-item class='item-avatar-left card-item-left'>
               <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
               <p class='inline'> Starts in </p>
-              <p class='inline time-until' style='padding-left:1em'> {{proposal.request.schedule_time}} minutes </p>
+              <p class='inline time-until' style='padding-left:1em'> {{session.request.schedule_time}} minutes </p>
             </ion-item>
 
             <!-- 5.  Same old but no orange> -->
             <ion-item class='item-avatar-left card-item-left'>
               <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/marker.svg'>
               <p class='inline'> Meet up </p>
-              <p class='inline black' style='padding-left:1em'> {{proposal.request.address}} </p>
+              <p class='inline black' style='padding-left:1em'> {{session.request.address}} </p>
             </ion-item>
 
             <!-- 5.  Formalize list button-->
-            <ion-item class='button-only'>
+            <ion-item class='button-only' style='margin-bottom:1em;'>
               <button class='button button-full button-bright'>
                 Tap to start session!
               </button>
@@ -69,6 +70,7 @@
         <!-- </div> -->
     </div>
     </ion-scroll>
+  </div>
     <!-- bottom tabs -->
 <div class="tabs tabs-icon-only white-bg" id='guru-tab-bar'>
   <a class="tab-item" id='home-button'>

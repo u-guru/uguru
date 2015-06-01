@@ -19,56 +19,56 @@
       </div> -->
 
     </ion-header-bar>
-  <ion-content delegate-handle="message-scroll" ng-click='setUnfocus()' class='white-background message-content'>
-      <ion-refresher
-        pulling-icon="ion-arrow-down-c"
-        spinner="circles"
-        on-refresh="doRefresh()">
-      </ion-refresher>
-    <!-- <ion-scroll class="messages" ng-click="hideKeyboard()"> -->
+    <ion-content delegate-handle="message-scroll" ng-click='setUnfocus()' class='white-background message-content'>
+        <ion-refresher
+          pulling-icon="ion-arrow-down-c"
+          spinner="circles"
+          on-refresh="doRefresh()">
+        </ion-refresher>
+      <!-- <ion-scroll class="messages" ng-click="hideKeyboard()"> -->
 
 
-      <div class='scroll pure-g-c flex-column center full-height message-content' ng-show='!messages || messages.length === 0'>
-        <div class='padding-1em padding-1em flex-item-c'> </div>
-        <div class='flex-item-c sleeping-guru light-opacity'>
-          <img class='pure-img animated swing message-default-image' ng-src='{{img_base}}./img/guru-sleeping.svg' >
+        <div class='scroll pure-g-c flex-column center full-height message-content' ng-show='!messages || messages.length === 0'>
+          <div class='padding-1em padding-1em flex-item-c'> </div>
+          <div class='flex-item-c sleeping-guru light-opacity'>
+            <img class='pure-img animated swing message-default-image' ng-src='{{img_base}}./img/guru-sleeping.svg' >
+          </div>
+          <div class='flex-item-c light-opacity padding-1em flex-direction-init '>
+            <br>
+            No messages yet.<br>
+            <br>
+            Start one with {{message_name}} now!
+          </div>
         </div>
-        <div class='flex-item-c light-opacity padding-1em flex-direction-init '>
-          <br>
-          No messages yet.<br>
-          <br>
-          Start one with {{message_name}} now!
-        </div>
-      </div>
 
-      <ul class="list message-item-list" style='margin-top:1em;'>
-          <li class="item {{message.class}} message-item" ng-repeat="message in messages">
-            <img ng-src="{{message.profile_url}}" ng-show='message.class === "item-avatar-left"'>
-            <div class="text">
-              <!-- <span class='sans-semibold' ng-show='message.sender.id !== user.id && message.sender.profile_url === default_profile_url'>{{message.sender.name.split(' ')[0]}}:</span> -->
-              {{message.contents}}</div>
-              <div class='text-time' ng-show='$index === messages.length - 1'>
-                {{message.formatted_time}} ago
-              </div>
-            <img ng-src="{{message.profile_url}}" ng-show='message.class === "item-avatar-right"'>
-          </li>
-      </ul>
-    <!-- </ion-scroll> -->
-  </ion-content>
-  <ion-footer-bar class="bar-footer item-input-inset messages-footer-bar" keyboard-attach>
-    <label class="item-input-wrapper">
-        <i class="icon ion-search placeholder-icon"></i>
-        <input type="search" name="message-input" class="form-control"
-                placeholder="Enter a message"
-                ng-model="new_message.content"
-                ng-focus="setFocus()"
-                ng-blur="setFocus()"
-                ng-keypress="checkSubmission($event)"
-        />
-    </label>
+        <ul class="list message-item-list" style='margin-top:1em;'>
+            <li class="item {{message.class}} message-item" ng-repeat="message in messages">
+              <img ng-src="{{message.profile_url}}" ng-show='message.class === "item-avatar-left"'>
+              <div class="text">
+                <!-- <span class='sans-semibold' ng-show='message.sender.id !== user.id && message.sender.profile_url === default_profile_url'>{{message.sender.name.split(' ')[0]}}:</span> -->
+                {{message.contents}}</div>
+                <div class='text-time' ng-show='$index === messages.length - 1'>
+                  {{message.formatted_time}} ago
+                </div>
+              <img ng-src="{{message.profile_url}}" ng-show='message.class === "item-avatar-right"'>
+            </li>
+        </ul>
+      <!-- </ion-scroll> -->
+    </ion-content>
+    <ion-footer-bar class="bar-footer item-input-inset messages-footer-bar" keyboard-attach>
+      <label class="item-input-wrapper">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" name="message-input" class="form-control"
+                  placeholder="Enter a message"
+                  ng-model="new_message.content"
+                  ng-focus="setFocus()"
+                  ng-blur="setFocus()"
+                  ng-keypress="checkSubmission($event)"
+          />
+      </label>
 
-    <button class="button button-clear button-positive positive button-search" ng-show="new_message.content.length > 0" ng-click="sendMessage(new_message.content)">
-    Send
-    </button>
-  </ion-footer-bar>
+      <button class="button button-clear button-positive positive button-search" ng-show="new_message.content.length > 0" ng-click="sendMessage(new_message.content)">
+      Send
+      </button>
+    </ion-footer-bar>
 </ion-view>

@@ -15,14 +15,17 @@ angular.module('uguru.student.controllers')
   '$localstorage',
   '$ionicSideMenuDelegate',
   '$ionicBackdrop',
+  '$ionicViewSwitcher',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
-  $ionicSideMenuDelegate, $ionicBackdrop)     {
+  $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher)     {
 
   console.log($scope.user);
 
+
+  //case-specific functions
   if ($scope.user && $scope.user.active_requests && $scope.user.active_requests.length > 0) {
-    // $ionicSideMenuDelegate.canDragContent(false);
+
 
     $scope.cancelRequest = function(request) {
       if (confirm('Are you sure you want to cancel this request?')) {
@@ -35,6 +38,14 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
     }
 
+  }
+
+  //student specific functions
+  if ($scope.user && $scope.user.active_student_sessions && $scope.user.active_student_sessions.length > 0) {
+    $scope.goToSessionDetails = function(session) {
+      $ionicViewSwitcher.nextDirection('forward');
+      $state.go('^.student-session', {sessionObj:JSON.stringify(session)})
+    }
   }
 
 
@@ -154,6 +165,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.verbModal.hide();
     }
 
+
+
     $scope.initAndShowIncomingRequestModal = function() {
 
         $ionicModal.fromTemplateUrl(BASE + 'templates/student.request.incoming.modal.html', {
@@ -249,7 +262,37 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     //todo
     $scope.acceptIncomingGuru = function() {
-      var doNothing;
+
+      var acceptGuruCallback = function() {
+
+        $scope.incoming_request.guru_id = $scope.incoming_request.guru.id;
+        $scope.incoming_request.status = 1;
+        $scope.user.createObj($scope.user, 'sessions', $scope.incoming_request, $scope, null);
+
+
+
+        $scope.incoming_request.status = 2;
+
+        $scope.incomingGuruModal.hide();
+
+      }
+
+      $scope.root.util.removeObjectByKey($scope.user.incoming_requests, 'id', $scope.incoming_request.id);
+
+      //remove request from array
+      dialog_title = "Accept this Guru?";
+      dialog_message = "You will not be billed until the end of the session & 100% satisfaction guaranteed";
+      button_arr = ['Not ready', 'Yes'];
+
+      if ($scope.platform.web) {
+        if (confirm('Are you sure? \n' + dialog_message)) {
+            acceptGuruCallback();
+        }
+
+      } else {
+            $scope.root.dialog.confirm(dialog_message, dialog_title, button_arr, [null, acceptGuruCallback])
+      }
+
     }
 
 

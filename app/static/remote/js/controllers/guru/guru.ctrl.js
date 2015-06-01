@@ -15,22 +15,34 @@ angular.module('uguru.guru.controllers')
   '$localstorage',
   '$ionicSideMenuDelegate',
   '$ionicBackdrop',
+  '$ionicViewSwitcher',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
-  $ionicSideMenuDelegate, $ionicBackdrop)     {
+  $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher)     {
 
 
   document.addEventListener("deviceready", function () {
-    if (window.StatusBar) {
+    $scope.turnStatusBarWhiteText = function() {
       $timeout(function() {
         StatusBar.overlaysWebView(true);
         StatusBar.styleLightContent();
-      }, 250)
+      }, 250);
+    }
+
+    if (window.StatusBar) {
+        $scope.turnStatusBarWhiteText();
     }
   });
 
+  if ($scope.user && $scope.user.active_guru_sessions && $scope.user.active_guru_sessions.length > 0) {
+    $scope.goToSessionDetails = function(session) {
+      $ionicViewSwitcher.nextDirection('forward');
+      $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
+    }
+  }
 
-    console.log($scope.user);
+
+
 
 
     $scope.root.vars.guru_mode = true;
@@ -229,6 +241,15 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
           }
+
+        });
+
+        $scope.$on('$ionicView.afterEnter', function() {
+
+            //user has incoming request for help
+            if ($scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
+              $scope.processActiveProposalsGuru($scope.user.active_proposals);
+            }
 
         });
 
