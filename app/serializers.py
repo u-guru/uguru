@@ -176,6 +176,7 @@ transaction_fields['guru'] = fields.Nested(guru_fields)
 transaction_fields['session'] = fields.Nested(session_fields_transaction)
 transaction_fields['student'] = fields.Nested(student_fields)
 transaction_fields['card'] = fields.Nested(card_fields)
+transaction_fields['id'] = fields.Integer(attribute='id')
 transaction_fields['transfer_status'] = fields.String(attribute='transfer_status')
 
 session_fields = {}
