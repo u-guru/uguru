@@ -27,8 +27,15 @@
 
     <div class='pure-g-c flex-column flex-space-between'>
 
-      <ion-scroll>
-        <div class='flex-item-c pure-g center' ng-show='!user.active_requests || user.active_requests.length === 0 && !user.active_student_sessions'>
+      <ion-scroll class='full-height'>
+
+        <ion-refresher
+          pulling-icon="ion-arrow-down-c"
+          spinner="circles"
+          on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <div class='flex-item-c pure-g center full-height' ng-show='(!user.active_requests || user.active_requests.length === 0) && (!user.active_student_sessions.length || user.active_student_sessions.length === 0)'>
             <div class='pure-u-1'>
                 <img class='pure-img guru-bg-img' src='{{img_base}}./img/general/logo-01.svg'/>
             </div>
@@ -163,6 +170,7 @@
         </div>
       </ion-scroll>
     </div>
+  </div>
     <!-- bottom tabs -->
 <div class="tabs tabs-icon-only dark-bg">
   <a class="tab-item" id='home-button'>

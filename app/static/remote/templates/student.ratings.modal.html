@@ -12,7 +12,7 @@
         </div>
         <div class='padding-2em flex-item-c center'>
           <div class='pure-u-1'>
-              <h1 style='font-size:400%' class='white-text'><span class="bucks sans-light">$</span><span class='sans-bold'>{{pending_rating.session.transaction.guru_amount}} </span>
+              <h1 style='font-size:400%' class='white-text'><span class="bucks sans-light">$</span><span class='sans-bold'>{{pending_rating.session.transaction.student_amount}} </span>
               </h1>
           </div>
         </div>
@@ -24,7 +24,7 @@
               <div class='pure-u-3-4 margin-1em'>
 
                 <div class='item item-avatar-left transparent-background no-border white-text align-left'>
-                  <img src='{{pending_rating.session.request.student.profile_url}}' class='pure-img'/>
+                  <img src='{{pending_rating.session.request.guru.profile_url}}' class='pure-img'/>
                   <span class='sans-regular'>
                     {{pending_rating.session.guru.name.split(" ")[0]}}
                   </span>
@@ -45,7 +45,7 @@
           </div>
           <div class='pure-u-1 padding-2em' ng-show='!starsSelected'> </div>
           <div class='pure-u-1'>
-            <button class='button button-full button-positive-outline' style='width:100%;' ng-click='submitRatingToServer()' ng-show='starsSelected'>
+            <button class='button button-full button-positive-outline' style='width:100%;' ng-click='closeStudentRatingsModal()' ng-show='starsSelected'>
               Submit
             </button>
           </div>

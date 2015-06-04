@@ -18,7 +18,13 @@
 </div>
 
 
-<ion-content class='white-bg has-subheader request-form-tags-offset' scroll='false'>
+<ion-content class='white-bg has-subheader request-form-tags-offset'>
+    <ion-refresher
+        pulling-icon="ion-arrow-down-c"
+        spinner="circles"
+        on-refresh="doRefresh()">
+    </ion-refresher>
+
     <div class='pure-g-c flex-column flex-space-between'>
       <ion-scroll class='has-header visible-overflow'>
         <div class='pure-g'>

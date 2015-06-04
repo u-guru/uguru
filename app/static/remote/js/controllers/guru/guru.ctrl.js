@@ -16,9 +16,11 @@ angular.module('uguru.guru.controllers')
   '$ionicSideMenuDelegate',
   '$ionicBackdrop',
   '$ionicViewSwitcher',
+  '$ionicActionSheet',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
-  $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher)     {
+  $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
+  $ionicActionSheet)     {
 
 
   document.addEventListener("deviceready", function () {
@@ -34,13 +36,239 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
   });
 
-  if ($scope.user && $scope.user.active_guru_sessions && $scope.user.active_guru_sessions.length > 0) {
-    $scope.goToSessionDetails = function(session) {
-      $ionicViewSwitcher.nextDirection('forward');
-      $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
-    }
-  }
+  if ($scope.user && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
 
+
+          // functions relevant to these sections
+          $scope.goToSessionDetails = function(session) {
+            $ionicViewSwitcher.nextDirection('forward');
+            $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
+          }
+
+
+          // functions relevant to these sections
+          $scope.launchGuruInSessionModal = function() {
+
+
+            $ionicModal.fromTemplateUrl(BASE + 'templates/guru.in-session.modal.html', {
+                  scope: $scope,
+                  animation: 'slide-in-up'
+              }).then(function(modal) {
+                  $scope.guruInSessionModal = modal;
+                  $scope.guruInSessionModal.show();
+              });
+
+          }
+
+          $scope.launchGuruSessionDetailsModal = function() {
+
+
+            $ionicModal.fromTemplateUrl(BASE + 'templates/guru.session.modal.html', {
+                  scope: $scope,
+                  animation: 'slide-in-up'
+              }).then(function(modal) {
+                  $scope.guruSessionDetailsModal = modal;
+                  $scope.guruSessionDetailsModal.show();
+              });
+
+          }
+
+          $scope.launchGuruRatingsModal = function(rating) {
+
+
+            $ionicModal.fromTemplateUrl(BASE + 'templates/guru.ratings.modal.html', {
+                  scope: $scope,
+                  animation: 'slide-in-up'
+              }).then(function(modal) {
+                  $scope.pending_rating = rating;
+                  $scope.starsSelected;
+                  $scope.guruRatingsModal = modal;
+                  $scope.guruRatingsModal.show();
+              });
+
+          }
+
+          $scope.closeGuruRatingsModal = function() {
+            $scope.loader.show();
+            $scope.guruRatingsModal.hide();
+
+            $scope.submitGuruRatingServer();
+
+            //check to see if there are anymore active sessions or pending ratings
+
+
+          }
+
+          $scope.goBack = function() {
+            $scope.guruSessionDetailsModal.hide();
+          }
+
+          $scope.cancelGuruActiveSession = function(session) {
+
+              //guru goes back to session 'pending', maybe clicked start by accident
+              $scope.session.status = 1;
+
+              var sessionPayload = {session: $scope.session}
+
+                //Mixpanel Track
+
+              $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope);
+
+              $scope.closeAttachActionSheet();
+
+              $ionicViewSwitcher.nextDirection('forward');
+              $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
+
+              $timeout(function() {
+                $scope.guruInSessionModal.hide()
+              }, 500)
+
+
+          }
+
+          $scope.submitGuruRatingServer = function () {
+            if ($scope.root.vars.guru_mode) {
+
+              $scope.pending_rating.guru_rate_student = true;
+              $scope.pending_rating.student_rating = parseInt($scope.root.vars.starsSelected);
+
+
+            } else {
+              $scope.pending_rating.student_rate_guru = true;
+              $scope.pending_rating.guru_rating = parseInt($scope.root.vars.starsSelected);
+
+            }
+
+            var ratingPayload = $scope.pending_rating;
+
+            var serverCallback = function() {
+              $scope.loader.hide();
+              $scope.launchPendingActions();
+            }
+
+            $scope.loader.show();
+
+            console.log('payload to be submitted', ratingPayload);
+
+            $scope.user.updateObj($scope.user, 'ratings', ratingPayload, $scope, serverCallback);
+          }
+
+
+          $scope.endSessionGuru = function() {
+              //guru start session
+                $scope.session.status = 3;
+
+
+                //todo later
+                if ($scope.timer) {
+                  $scope.session.minutes = $scope.timer.minutes;
+                  $scope.session.seconds = $scope.timer.seconds;
+                  $scope.session.hours = $scope.timer.hours;
+                }
+
+                var sessionPayload = {session: $scope.session}
+
+                $scope.loader.show();
+
+                var postServerCallback = function() {
+
+                  $scope.launchPendingActions();
+
+
+                }
+
+                console.log(sessionPayload);
+
+                $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope, postServerCallback);
+
+          }
+
+          $scope.showAttachActionSheet = function() {
+
+            var options = [{ text: 'Undo Start Session' }, {text: 'View Session Details'}, { text: 'Support' }];
+
+              // Show the action sheet
+              $scope.closeAttachActionSheet = $ionicActionSheet.show({
+                  buttons: options,
+                  cancelText: 'Cancel',
+                  cancel: function() {
+                      $scope.closeAttachActionSheet();
+                  },
+                  buttonClicked: function(index) {
+                    console.log(index);
+                    if (index === 0 && confirm('Are you sure? You will lose all session progress')) {
+
+
+                      $timeout(function() {
+                        $scope.cancelGuruActiveSession($scope.session);
+                      }, 500)
+
+                    }
+                    if (index === 1) {
+                      $scope.launchGuruSessionDetailsModal();
+                      $scope.closeAttachActionSheet();
+                    }
+
+                    if (index === 2) {
+                      $scope.success.show(0, 2000, 'Coming Soon!');
+                      $scope.closeAttachActionSheet();
+                    }
+                  }
+            });
+          }
+
+
+          $scope.launchPendingActions = function() {
+
+            //priority 1: see if any ratings are allowed
+
+            if ($scope.user.pending_student_ratings.length > 0) {
+
+              var rating = $scope.user.pending_student_ratings[0];
+
+              //pop the first item
+
+              $scope.user.pending_student_ratings.shift();
+
+              $scope.pending_rating = rating;
+
+              $scope.launchGuruRatingsModal(rating);
+
+              //no reason to
+              return;
+
+            }
+
+            //see if any sessions are going on right now
+
+            for (var i = 0 ; i < $scope.user.active_guru_sessions.length; i ++) {
+
+                  var session = $scope.user.active_guru_sessions[i];
+                  if (session.status === 2) {
+                    $scope.session = session;
+                    $timeout(function() {
+
+                      $scope.details = {show: true};
+
+
+                      $scope.launchGuruInSessionModal();
+
+
+                    }, 500);
+                  }
+
+            }
+
+          }
+
+
+
+          $scope.launchPendingActions();
+
+          //check to see if any of the guru sessions are active
+
+
+  }
 
 
 
@@ -183,7 +411,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
 
-
         $scope.showGoogleMap = function() {
 
           $scope.proposal.request.position.latitude = 51.219053;
@@ -226,7 +453,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         $scope.$on('modal.shown', function() {
 
-          if ($scope.incomingStudentSessionProposal.isShown()) {
+
+            //show this
             console.log('modal is shown')
             $timeout(function() {
               if (window.StatusBar) {
@@ -234,13 +462,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 StatusBar.styleLightContent();
               }
 
-              $scope.showGoogleMap();
-
             }, 100);
 
 
-
-          }
+            if ($scope.incomingStudentSessionProposal && $scope.incomingStudentSessionProposal.isShown()) {
+                $scope.showGoogleMap();
+            }
 
         });
 

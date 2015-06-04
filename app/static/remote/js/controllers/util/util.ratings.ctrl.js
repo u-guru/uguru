@@ -14,8 +14,6 @@ angular.module('uguru.util.controllers')
  	$ionicModal, $cordovaStatusbar, $ionicPlatform) {
 
 
-    $scope.starsSelected;
-
     $ionicPlatform.ready(function() {
 
       if (window.StatusBar && $scope.user.guru_mode) {
@@ -33,9 +31,6 @@ angular.module('uguru.util.controllers')
       $scope.rating = $scope.user.pending_guru_ratings[0];
     }
 
-    // // console.log(JSON.stringify($scope.rating));
-    // console.log(JSON.stringify($scope.rating.session.id));
-
     $scope.saveInfo = function() {
       $scope.ratingModal.hide();
     }
@@ -44,52 +39,9 @@ angular.module('uguru.util.controllers')
       var starNumber = $event.target.getAttribute('value');
       $scope.showGreenStars(starNumber, $event.target);
       $scope.starsSelected = starNumber;
+      $scope.root.vars.starsSelected = starNumber;
       console.log(starNumber);
       $scope.showSubmitButton = true;
-    }
-
-    $scope.submitRating = function () {
-      $scope.submitRatingToServer();
-    }
-
-    $scope.submitRatingToServer = function() {
-      $scope.loader.show();
-      var serverCallback = function($scope, user) {
-          if ($scope.user.guru_mode) {
-              //mixpanel track
-              mixpanel.track("Guru.home");
-              $state.go('^.guru-home');
-
-              var temp_balance = $scope.guru.balance;
-              $scope.guru.balance +=  $scope.rating.session.transaction.guru_amount;
-              console.log('balance before', temp_balance, '. balance after', $scope.guru.balance);
-          } else {
-        //mixpanel track
-              mixpanel.track("Guru.home");
-          $state.go('^.student-home');
-        }
-
-        $timeout(function(){
-          $scope.ratingModal.hide();
-          $scope.loader.hide();
-        }, 500)
-      }
-
-      if ($scope.user.guru_mode) {
-
-        $scope.rating.guru_rate_student = true;
-        $scope.rating.student_rating = $scope.starsSelected;
-        $scope.root.util.removeObjectByKey($scope.user.pending_student_ratings, 'id', $scope.rating.id);
-      } else {
-        $scope.rating.student_rate_guru = true;
-        $scope.rating.guru_rating = $scope.starsSelected;
-        $scope.root.util.removeObjectByKey($scope.user.pending_guru_ratings, 'id', $scope.rating.id);
-      }
-
-      var ratingPayload = $scope.rating;
-
-      $scope.user.updateObj($scope.user, 'ratings', ratingPayload, $scope, serverCallback);
-
     }
 
     function hasClass(element, cls) {

@@ -573,7 +573,7 @@ angular.module('uguru.util.controllers')
           if ($scope.root.vars.last_verb_index_clicked === 2) {
             $scope.success.show(0, 1250, 'Please enter a task title');
           } else {
-            $scope.success.show(0, 1250, 'Please enter a course');
+            $scope.success.show(0, 1250, 'Please a course');
           }
 
           return false;

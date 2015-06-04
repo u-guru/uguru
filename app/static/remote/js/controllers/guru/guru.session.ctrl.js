@@ -32,7 +32,9 @@ angular.module('uguru.guru.controllers')
 
 
 
-    $scope.session = JSON.parse($stateParams.sessionObj);
+    if (!$scope.session) {
+      $scope.session = JSON.parse($stateParams.sessionObj);
+    }
 
 
     $scope.details = {show: true};
@@ -142,6 +144,32 @@ angular.module('uguru.guru.controllers')
 
     }
 
+    $scope.endSession = function() {
+      //guru start session
+        $scope.session.status = 3;
+
+
+        //todo later
+        if ($scope.timer) {
+          $scope.session.minutes = $scope.timer.minutes;
+          $scope.session.seconds = $scope.timer.seconds;
+          $scope.session.hours = $scope.timer.hours;
+        }
+
+        var sessionPayload = {session: $scope.session}
+
+        $scope.loader.show();
+
+        $scope.postServerCallback = function() {
+
+          $scope.loader.hide();
+
+        }
+
+        $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope, postServerCallback);
+
+    }
+
 
 
     $scope.getCurrentDate = function() {
@@ -155,6 +183,19 @@ angular.module('uguru.guru.controllers')
         }
         result = hour + ':' + minutes + ' ' + ending
         return result
+    }
+
+    $scope.launchGuruInSessionModal = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.in-session.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.guruInSessionModal = modal;
+            $scope.guruInSessionModal.show();
+        });
+
     }
 
     $scope.last_updated = $scope.getCurrentDate();
@@ -193,6 +234,43 @@ angular.module('uguru.guru.controllers')
         }
       }
       return payload;
+    }
+
+    $scope.startSessionGuru = function(session) {
+
+      var dialogCallBackSuccess = function() {
+
+        $scope.session.status = 2;
+        $scope.session.minutes = 0;
+        $scope.session.hours = 0;
+        $scope.session.seconds = 0;
+
+        var sessionPayload = {session: $scope.session}
+
+        $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope);
+        $scope.launchGuruInSessionModal();
+
+        $scope.timeout(function(){
+          $state.go('^.guru');
+        }, 1000);
+      }
+
+      var dialog = {
+        message: "Only start if the student is around you and you're good to go",
+        title: "Are you sure?",
+        button_arr: ['Cancel', 'Yes'],
+        callback_arr: [null, dialogCallBackSuccess]
+      }
+
+      if ($scope.platform.web) {
+        if (confirm('Are you sure? \n' + dialog.message)) {
+            dialogCallBackSuccess();
+        }
+
+      } else {
+          $scope.root.dialog.confirm(dialog.message, dialog.title, dialog.button_arr, dialog.callback_arr);
+      }
+
     }
 
     $scope.sendMessage = function (content) {

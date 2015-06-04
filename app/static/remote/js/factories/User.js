@@ -19,7 +19,7 @@ angular.module('uguru.user', [])
                 }
                 result = 0;
                 for (var i = 0; i < ratings_arr.length; i ++) {
-                    if (ratings_arr[i].student_rating) {
+                    if (ratings_arr[i].student_rating || ratings_arr[i].student_rating === 0) {
                         result += ratings_arr[i].student_rating;
                     } else {
                         result += ratings_arr[i].guru_rating;
@@ -183,10 +183,11 @@ angular.module('uguru.user', [])
                   var index_rating = guru_ratings[i];
                   if (index_rating.student_rating === 0 && user.id === index_rating.guru_id) {
                     if (index_rating.session && index_rating.session.transaction) {
+                        console.log(index_rating.session.transaction);
                         index_rating.session.transaction.student_amount = parseFloat(index_rating.session.transaction.student_amount).toFixed(2);
                         index_rating.session.transaction.guru_amount = parseFloat(index_rating.session.transaction.guru_amount).toFixed(2);
+                        user.pending_student_ratings.push(index_rating);
                     }
-                    user.pending_student_ratings.push(index_rating);
                   }
                 }
             }
@@ -833,14 +834,12 @@ angular.module('uguru.user', [])
                     .one('user', userObj.id).one(param)
                     .customPUT(JSON.stringify(payload))
                     .then(function(user){
+
                         var processed_user = processResults(user);
-                        assignPropertiesToRootScope($scope, processed_user)
+                        assignPropertiesToRootScope($scope, processed_user);
                         delegateActionsFromProcessedUser($scope);
 
                         $localstorage.setObject('user', $scope.user);
-
-                        //TODO GET RID OF THIS
-                        // $state.go('^.home');
 
                         if (callback_success) {
                             callback_success($scope, processed_user)
@@ -867,6 +866,8 @@ angular.module('uguru.user', [])
                         if (callback_success) {
                             callback_success();
                         }
+
+                        $scope.loader.hide();
 
                     }, function(err){
                     if (err.status === 409 ) {

@@ -16,9 +16,10 @@ angular.module('uguru.student.controllers')
   '$ionicSideMenuDelegate',
   '$ionicBackdrop',
   '$ionicViewSwitcher',
+  '$ionicActionSheet',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
-  $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher)     {
+  $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher, $ionicActionSheet)     {
 
   console.log($scope.user);
 
@@ -41,11 +42,200 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   }
 
   //student specific functions
-  if ($scope.user && $scope.user.active_student_sessions && $scope.user.active_student_sessions.length > 0) {
+  if ($scope.user && $scope.user.active_student_sessions &&  ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
     $scope.goToSessionDetails = function(session) {
       $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.student-session', {sessionObj:JSON.stringify(session)})
     }
+
+    $scope.launchStudentInSessionModal = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/student.in-session.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.studentInSessionModal = modal;
+            $scope.studentInSessionModal.show();
+        });
+
+    }
+
+    $scope.launchStudentSessionDetailsModal = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/student.session.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+      }).then(function(modal) {
+            $scope.studentSessionDetailsModal = modal;
+            $scope.studentSessionDetailsModal.show();
+      });
+
+    }
+
+
+    $scope.launchStudentRatingsModal = function(rating) {
+
+
+            $ionicModal.fromTemplateUrl(BASE + 'templates/student.ratings.modal.html', {
+                  scope: $scope,
+                  animation: 'slide-in-up'
+              }).then(function(modal) {
+                  $scope.pending_rating = rating;
+                  $scope.starsSelected;
+                  $scope.studentRatingsModal = modal;
+                  $scope.studentRatingsModal.show();
+              });
+
+    }
+
+    $scope.closeStudentRatingsModal = function() {
+
+        $scope.loader.show();
+        $scope.studentRatingsModal.hide();
+
+        $scope.submitStudentRatingServer();
+
+    }
+
+    $scope.goBack = function() {
+            $scope.studentSessionDetailsModal.hide();
+    }
+
+    $scope.cancelStudentActiveSession = function(session) {
+
+              //guru goes back to session 'pending', maybe clicked start by accident
+              $scope.session.status = 1;
+
+              var sessionPayload = {session: $scope.session}
+
+                //Mixpanel Track
+
+              $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope);
+
+              $scope.closeAttachActionSheet();
+
+              $ionicViewSwitcher.nextDirection('forward');
+              $state.go('^.student-session', {sessionObj:JSON.stringify(session)})
+
+              $timeout(function() {
+                $scope.studentInSessionModal.hide()
+              }, 500)
+
+
+    }
+
+
+    $scope.submitStudentRatingServer = function () {
+        if ($scope.root.vars.guru_mode) {
+
+          $scope.pending_rating.guru_rate_student = true;
+          $scope.pending_rating.student_rating = parseInt($scope.root.vars.starsSelected);
+
+
+        } else {
+          $scope.pending_rating.student_rate_guru = true;
+          $scope.pending_rating.guru_rating = parseInt($scope.root.vars.starsSelected);
+
+        }
+
+        var ratingPayload = $scope.pending_rating;
+
+        var serverCallback = function() {
+          $scope.loader.hide();
+          $scope.launchPendingActions();
+        }
+
+        $scope.loader.show();
+
+        console.log('payload to be submitted', ratingPayload);
+
+        $scope.user.updateObj($scope.user, 'ratings', ratingPayload, $scope, serverCallback);
+      }
+
+      $scope.showAttachActionSheet = function() {
+
+            var options = [{ text: 'Undo Start Session' }, {text: 'View Session Details'}, { text: 'Support' }];
+
+              // Show the action sheet
+              $scope.closeAttachActionSheet = $ionicActionSheet.show({
+                  buttons: options,
+                  cancelText: 'Cancel',
+                  cancel: function() {
+                      $scope.closeAttachActionSheet();
+                  },
+                  buttonClicked: function(index) {
+                    console.log(index);
+                    if (index === 0) {
+
+                      $scope.success.show(0, 2000, 'Your guru must cancel the session. Contact support if your guru is not around');
+                       // confirm('Are you sure? You will lose all session progress')
+                       $scope.closeAttachActionSheet();
+                      // $timeout(function() {
+                      //   $scope.cancelStudentActiveSession($scope.session);
+                      // }, 500)
+
+                    }
+                    if (index === 1) {
+                      $scope.launchStudentSessionDetailsModal();
+                      $scope.closeAttachActionSheet();
+                    }
+
+                    if (index === 2) {
+                      $scope.success.show(0, 2000, 'Coming Soon!');
+                      $scope.closeAttachActionSheet();
+                    }
+                  }
+            });
+    }
+
+    $scope.launchPendingActions = function() {
+
+            //priority 1: see if any ratings are allowed
+
+            if ($scope.user.pending_guru_ratings.length > 0) {
+
+              var rating = $scope.user.pending_guru_ratings[0];
+              //pop the first item
+
+              $scope.user.pending_guru_ratings.shift();
+
+              $scope.pending_rating = rating;
+
+              $scope.launchStudentRatingsModal(rating);
+
+              //no reason to
+              return;
+
+            }
+
+            //see if any sessions are going on right now
+
+            for (var i = 0 ; i < $scope.user.active_student_sessions.length; i ++) {
+
+                  var session = $scope.user.active_student_sessions[i];
+                  if (session.status === 2) {
+                    $scope.session = session;
+                    $timeout(function() {
+
+                      $scope.details = {show: true};
+
+
+                      $scope.launchStudentInSessionModal();
+
+
+                    }, 500);
+                  }
+
+            }
+
+    }
+
+
+
+          $scope.launchPendingActions();
+
   }
 
 
