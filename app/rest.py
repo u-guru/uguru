@@ -309,7 +309,7 @@ class UserOneView(restful.Resource):
             user.summer_15 = request.json.get('summer_15')
 
         if 'push_notifications' in request.json:
-            user.push_notifications = request.json.get('push_notifications')
+            user.push_notifications = request.json.get('push_notifications').get('push_notifications')
 
         if 'text_notifications' in request.json:
             user.text_notifications = request.json.get('text_notifications')
