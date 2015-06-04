@@ -476,7 +476,14 @@ class UserOneView(restful.Resource):
         # if request.json.get('university_id'):
         #     user.university_id = None
 
-        user.requests = [];
+        user.requests = []
+        user.student_sessions = []
+        user.guru_sessions = []
+        user.student_ratings = []
+        user.guru_ratings = []
+
+        if user.proposals:
+            user.proposals = []
 
 
         u = University.query.filter_by(name='Uguru University').first()
