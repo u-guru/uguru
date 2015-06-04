@@ -47,7 +47,7 @@ angular.module('uguru.util.controllers')
       attached_files: [],
       description: '',
       time_estimate: {hours: 2, minutes:0},
-      urgency: false,
+      urgency: true,
       tags:[],
       availability_edit: false,
       calendar_edit:false,
@@ -147,7 +147,7 @@ angular.module('uguru.util.controllers')
         var course_input = document.getElementById('course-input');
 
         if ($scope.requestModal && $scope.requestModal.isShown()
-        && course_input.value && course_input.value.length === 0 && !$scope.locationModal.isShown()
+        && !course_input.value && course_input.value.length === 0 && !$scope.locationModal.isShown()
         && !$scope.tagsModal.isShown() && !$scope.availabilityModal.isShown()
         && !$scope.descriptionModal.isShown()) {
 
@@ -208,18 +208,15 @@ angular.module('uguru.util.controllers')
 
 
 
-
-
-        // var description_input = document.getElementById('description-input');
-        // description_input.blur();
-
         $timeout(function(){
+
 
             $scope.tagsModal.show();
 
         },250);
       if ($scope.descriptionModal.isShown()) {
         $timeout(function() {
+          // document.getElementById("description-input").blur();
           $scope.closeDescriptionModal();
         }, 1000);
       }

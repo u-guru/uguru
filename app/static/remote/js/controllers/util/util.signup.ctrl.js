@@ -195,9 +195,12 @@ angular.module('uguru.util.controllers')
         $scope.signupForm.profile_url = "https://graph.facebook.com/" + success.id + "/picture?width=100&height=100";
         $scope.signupForm.gender = success.gender;
 
-        $scope.success.show(0, 2000, 'Login Successful');
+
         $scope.completeSignup();
         $scope.loader.hide();
+        $timeout(function() {
+          $ionicSideMenuDelegate.toggleRight();
+        }, 1500);
 
 
       }, function (error) {
@@ -456,8 +459,7 @@ angular.module('uguru.util.controllers')
 
 
 
-            User.getUserFromServer($scope, null, $state);
-            $ionicSideMenuDelegate.toggleRight();
+            User.getUserFromServer($scope, null, $state)
 
             if ($scope.root.vars.pending_request)  {
 

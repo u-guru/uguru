@@ -45,10 +45,12 @@ angular.module('uguru.util.controllers')
 
       if ($scope.tagsModal && $scope.tagsModal.isShown()) {
 
+        document.getElementById("description-input").blur();
+
         $timeout(function() {
 
             //focus on keyboard
-            var tags_input = document.getElementById('tags-input')
+            var tags_input = document.getElementById('tags-input');
 
             //focus the input
             tags_input.focus();

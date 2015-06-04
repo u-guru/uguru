@@ -4,7 +4,7 @@
     <div class="buttons">
       <button class="button button-clear button-header-link" ng-click='closeDescriptionModal()'>Cancel</button>
     </div>
-    <h1 class="title micro-text modal-header-text">Describe your problem</h1>
+    <h1 class="title micro-text modal-header-text" style='padding-left:5px;'>Describe your problem</h1>
       <a class="button button-clear button-blue button-header-link " ng-click='saveDescriptionAndCloseModal()'>
         Done
       </a>
@@ -43,7 +43,6 @@
           <img style='margin-top:0.4em;'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/tags.svg'>
           <p class='empty-tags-placeholder opacity-1-2' style='margin-top:0.4em;' ng-show='!request.tags || request.tags.length === 0'>Add some tags (optional)</p>
           <p class='tags-wrapper'>&nbsp;<span class='blue request-tag' ng-repeat='tag in request.tags'>#{{tag}} </span> </p>
-          <!-- <p class='tags-wrapper' style='white-space:normal; padding-left:1em;' >&nbsp;<span class='blue request-tag' ng-repeat='tag in request.tags'>#{{tag}} </span> </p> -->
         </label>
       </div>
     </div>

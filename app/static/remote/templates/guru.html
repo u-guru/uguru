@@ -19,14 +19,17 @@
 
 
 <ion-content class='white-bg has-subheader request-form-tags-offset'>
-    <ion-refresher
-        pulling-icon="ion-arrow-down-c"
-        spinner="circles"
-        on-refresh="doRefresh()">
-    </ion-refresher>
 
     <div class='pure-g-c flex-column flex-space-between'>
       <ion-scroll class='has-header visible-overflow'>
+
+
+        <ion-refresher
+          pulling-icon="ion-arrow-down-c"
+          spinner="circles"
+          on-refresh="doRefresh()">
+        </ion-refresher>
+
         <div class='pure-g'>
         <!-- <div class='flex-item-c pure-g'> -->
           <!-- 1. create inset list, offset it by -5% margin-top -->

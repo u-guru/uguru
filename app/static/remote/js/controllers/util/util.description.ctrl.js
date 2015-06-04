@@ -91,13 +91,15 @@ angular.module('uguru.util.controllers')
 
       if ($scope.descriptionModal && $scope.descriptionModal.isShown()) {
 
+        document.getElementById("course-input").blur();
+
         $timeout(function() {
 
             //focus on keyboard
             document.getElementById("description-input").focus();
 
 
-        }, 500);
+        }, 1000);
 
       }
 

@@ -174,8 +174,6 @@ class User(Base):
     official_guru_rank = Column(Integer)
     official_guru_rank_last_updated = Column(DateTime)
 
-
-
     #user hardware permissions
     location_services_enabled = Column(Boolean)
     push_notifications_enabled = Column(Boolean)
@@ -2146,20 +2144,23 @@ class Transaction(Base):
 
         transaction.guru.total_earned += transaction.guru_amount
 
-        stripe_charge = charge_customer(_session.student, transaction.student_amount)
-        transaction.session = _session
+        if _session.student.cards:
+            stripe_charge = charge_customer(_session.student, transaction.student_amount)
+            transaction.session = _session
 
-        if type(stripe_charge) is str:
-            transaction.stripe_error_string = stripe_charge
+            if type(stripe_charge) is str:
+                transaction.stripe_error_string = stripe_charge
 
+            else:
+                transaction.charge_id = stripe_charge.id
+                transaction.stripe_fee = (transaction.student_amount * .029) + 0.3
+                transaction.profit = transaction.student_amount - transaction.guru_amount - transaction.stripe_fee
+
+                transaction.guru_id = _session.guru_id
+                transaction.student_id = _session.guru_id
+                transaction.card_id = _session.card_id
         else:
-            transaction.charge_id = stripe_charge.id
-            transaction.stripe_fee = (transaction.student_amount * .029) + 0.3
-            transaction.profit = transaction.student_amount - transaction.guru_amount - transaction.stripe_fee
-
-        transaction.guru_id = _session.guru_id
-        transaction.student_id = _session.guru_id
-        transaction.card_id = _session.card_id
+            transaction.stripe_error_string = 'Student does not have card'
 
         db_session.add(transaction)
         try:

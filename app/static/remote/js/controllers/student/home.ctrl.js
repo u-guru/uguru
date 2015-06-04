@@ -25,7 +25,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
   //case-specific functions
-  if ($scope.user && $scope.user.active_requests && $scope.user.active_requests.length > 0) {
+
 
 
     $scope.cancelRequest = function(request) {
@@ -39,10 +39,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
     }
 
-  }
 
   //student specific functions
-  if ($scope.user && $scope.user.active_student_sessions &&  ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
+  if ($scope.user && $scope.user.active_student_sessions && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
     $scope.goToSessionDetails = function(session) {
       $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.student-session', {sessionObj:JSON.stringify(session)})
