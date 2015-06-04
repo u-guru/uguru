@@ -14,7 +14,7 @@ var doneButton = element(by.css('[ng-click="submitRequest()"]'));
 var doneButton = element(by.css('[ng-click="submitRequest()"]'));
 
 var CancelButton = element(by.buttonText("Cancel"));
-var courseButton = element(by.css('ng-click="focusCourseInput()"'));
+var CourseButton = element(by.css('ng-click="focusCourseInput()"'));
 
 var LocatButton
 var ToggleButton;
@@ -39,43 +39,49 @@ beforeEach(function () {
 
 
 });
-
 describe('All the button is disabled except Cancel and Enter Course', function () {
-
+   /*
+ 
     describe('Cancel button', function () {
         //Cancel is Disabled
         it('is Enabled', function () {
             expect(CancelButton.isEnabled()).toBe(true);
         });
     });
+    
+    
     describe('Done button', function () {
         //Done is Disabled
         it('is Enabled, but not able to submit', function () {
             doneButton.click();
 
             var test = element.all(by.css('.loading-container')).last();
-            expect( test.element(by.css('.loading')).getText()).toContain("");
-            //expect( element(by.css('.loading-container')).getText()).toContain("Please enter a course");
+            //expect( test.element(by.css('.loading span')).getText()).toContain("");
+            expect( element(by.css('.loading span')).getText()).toContain("Please enter a course");
         });
 
     });
-   
-});
- 
-/*
+    
+    */
     describe('Course button', function () {
         //Check Course  is Enabled
         it('is disabled', function () {
-        except(courseButton.isEnabled()).toBe(true);
+        element(by.name("course-input")).sendKeys("CS");
+        //expect(CourseButton.isEnabled()).toBe(true);
+        waits(5000);
+         expect($('[ng-show=[progress && root.vars.matchingCourses.length > 0].autocomplete-wrapper').isDisplayed()).toBeTruthy();
         });
 
     });
-
+    
+});
+ 
+/*
     describe('Location button ', function () {
 
         //Location is disabled
         it('is disabled', function () {
-        except(LocatButton.isEnabled()).toBe(true);
+        expect(LocatButton.isEnabled()).toBe(true);
         });
 
     });
@@ -84,7 +90,7 @@ describe('All the button is disabled except Cancel and Enter Course', function (
 
         //Toggle is disabled
         it('is disabled', function () {
-        except(ToggleButton.isEnabled()).toBe(true);
+        expect(ToggleButton.isEnabled()).toBe(true);
         });
 
     });
