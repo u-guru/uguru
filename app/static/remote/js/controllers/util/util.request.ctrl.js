@@ -75,8 +75,6 @@ angular.module('uguru.util.controllers')
       availability: {hours: 2, minutes:"00"},
     }
 
-    console.log('Starting', $scope.request.type.value);
-
     var detailed_verbs = ['chores.svg', 'items.svg', 'food.svg', 'skilled_task.svg', 'specific.svg'];
     var detailed_verb_placeholders = ['My laundry + dishes', 'Get bread from safeway', 'I want ice cream', 'Please fix my iPhone', 'Wait this line for me'];
 
@@ -284,7 +282,7 @@ angular.module('uguru.util.controllers')
       {'short_name': 'ARC 120', 'title': 'Ancient Architecture..'},
     ];
     $scope.closeRequestModal = function() {
-      $scope.requestModal.hide();
+      $scope.requestModal.remove();
     }
 
     $scope.addSelectedStudentCourse = function(course) {
@@ -295,6 +293,8 @@ angular.module('uguru.util.controllers')
     };
 
     $scope.addSelectedCourse = function(course, input_text) {
+
+      console.log(course, input_text);
       $scope.course_search_text = course.short_name.toUpperCase();
 
 
@@ -472,6 +472,13 @@ angular.module('uguru.util.controllers')
               $scope.loader.hide()
               $scope.user.recent_position = null;
               alert('Sorry! Please check your privacy settings check your GPS signal.');
+
+              var text = document.getElementById('location-input');
+                if (!text.value && text.value.length === 0) {
+                  $timeout(function() {
+                    text.focus();
+                  }, 1000)
+                }
           });
 
         };
@@ -668,20 +675,38 @@ angular.module('uguru.util.controllers')
 
             $scope.launchContactingModal();
 
-            $scope.user.createObj($scope.user, 'requests', $scope.request, $scope);
+            var callbackSuccess = function($scope, $state) {
 
-            $timeout(function() {
+              $timeout(function() {
               $scope.closeRequestModal();
               $scope.verbModal.hide();
               if ($scope.choosePriceModal) {
-                $scope.closeChoosePriceModal();
-              }
-            }, 2000);
+                  $scope.closeChoosePriceModal();
+                }
+              }, 1000);
+
+              $timeout(function() {
+                $scope.closeContactingModal();
+                console.log('saved request', $scope.root.vars.request)
+              }, 4000);
+
+            };
 
             $timeout(function() {
-              $scope.closeContactingModal();
-              console.log('saved request', $scope.root.vars.request)
-            }, 5000);
+
+                if ($scope.contactingModal.isShown()) {
+
+
+
+                  $scope.closeContactingModal();
+                  $scope.success.show(0, 5000, 'Oops... Sorry something went wrong, please try again, or contact support!');
+
+
+                }
+
+              }, 10000);
+
+            $scope.user.createObj($scope.user, 'requests', $scope.request, $scope, callbackSuccess);
 
          }
 
