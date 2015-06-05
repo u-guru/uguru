@@ -41,7 +41,7 @@
         <label class="item item-input relative" ng-click='launchTagsModal()'>
           <img style='margin-top:0.4em;'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/tags.svg'>
           <p class='empty-tags-placeholder opacity-1-2' style='margin-top:0.4em;' ng-show='!request.tags || request.tags.length === 0'>Add some tags (optional)</p>
-          <p class='tags-wrapper'>&nbsp;<span class='blue request-tag' ng-repeat='tag in request.tags'>#{{tag}} </span> </p>
+          <p class='tags-wrapper'>&nbsp;<span class='blue request-tag' ng-repeat='tag in request.tags'>#{{tag.name}} </span> </p>
         </label>
       </div>
     </div>

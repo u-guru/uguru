@@ -6,7 +6,7 @@
     </div>
     <h1 class="title">{{request_fields.title}}</h1>
     <div class="buttons">
-      <button class="button button-clear button-header-link submit-button" ng-click='submitRequest()'>
+      <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='submitRequest()'>
         <span ng-show='!progress' class='ng-class:{"grey-text":!validateFormVanilla()}'>Done </span>
         <span class='blue' ng-show='progress'>Okay</span>
       </button>

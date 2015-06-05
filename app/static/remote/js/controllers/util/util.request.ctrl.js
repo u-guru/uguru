@@ -44,7 +44,7 @@ angular.module('uguru.util.controllers')
       location: null,
       course: null,
       title: null,
-      files: [],
+      tags: [],
       description: '',
       time_estimate: {hours: 2, minutes:0},
       urgency: true,
@@ -442,6 +442,8 @@ angular.module('uguru.util.controllers')
             enableHighAccuracy: false, //may cause high errors if true
           }
 
+
+
           $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
 
               console.log('location found!', position.coords.latitude, position.coords.longitude);
@@ -563,7 +565,7 @@ angular.module('uguru.util.controllers')
               $scope.request.position = {longitude: -122.44696, latitude: 37.76999};
             } else {
               console.log('using user gps position');
-              $scope.request.position = {longitude: user_location.coords.longitude, latitude: user_location.coords.latitude};
+              $scope.request.position = {longitude: user_location.longitude.longitude, latitude: user_location.coords.latitude};
               var user_location = new google.maps.LatLng(user_location.coords.latitude, user_location.coords.longitude);
             }
             $scope.service.getPlacePredictions({ input: text, location: user_location, radius:5000 }, $scope.autocompleteQuerycallback);

@@ -26,8 +26,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
   //case-specific functions
 
-
-
     $scope.cancelRequest = function(request) {
       if (confirm('Are you sure you want to cancel this request?')) {
         request.status = 4;
@@ -40,9 +38,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
 
 
-  //student specific functions
-  if ($scope.user && $scope.user.active_student_sessions && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
-    $scope.goToSessionDetails = function(session) {
+  $scope.goToSessionDetails = function(session) {
       $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.student-session', {sessionObj:JSON.stringify(session)})
     }
@@ -193,44 +189,47 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
             //priority 1: see if any ratings are allowed
 
-            if ($scope.user.pending_guru_ratings.length > 0) {
+      if ($scope.user.pending_guru_ratings.length > 0) {
 
-              var rating = $scope.user.pending_guru_ratings[0];
-              //pop the first item
+        var rating = $scope.user.pending_guru_ratings[0];
+        //pop the first item
 
-              $scope.user.pending_guru_ratings.shift();
+        $scope.user.pending_guru_ratings.shift();
 
-              $scope.pending_rating = rating;
+        $scope.pending_rating = rating;
 
-              $scope.launchStudentRatingsModal(rating);
+        $scope.launchStudentRatingsModal(rating);
 
-              //no reason to
-              return;
+        //no reason to
+        return;
 
+      }
+
+      //see if any sessions are going on right now
+
+      for (var i = 0 ; i < $scope.user.active_student_sessions.length; i ++) {
+
+            var session = $scope.user.active_student_sessions[i];
+            if (session.status === 2) {
+              $scope.session = session;
+              $timeout(function() {
+
+                $scope.details = {show: true};
+
+
+                $scope.launchStudentInSessionModal();
+
+
+              }, 500);
             }
 
-            //see if any sessions are going on right now
-
-            for (var i = 0 ; i < $scope.user.active_student_sessions.length; i ++) {
-
-                  var session = $scope.user.active_student_sessions[i];
-                  if (session.status === 2) {
-                    $scope.session = session;
-                    $timeout(function() {
-
-                      $scope.details = {show: true};
-
-
-                      $scope.launchStudentInSessionModal();
-
-
-                    }, 500);
-                  }
-
-            }
+      }
 
     }
 
+  //student specific functions
+  if ($scope.user && $scope.user.active_student_sessions
+    && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
 
 
           $scope.launchPendingActions();
@@ -361,17 +360,18 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.verbModal.hide();
     }
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/student.request.incoming.modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.incomingGuruModal = modal;
+    });
+
 
 
     $scope.initAndShowIncomingRequestModal = function() {
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/student.request.incoming.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.incomingGuruModal = modal;
-            $scope.incomingGuruModal.show();
-        });
+        $scope.incomingGuruModal.show();
 
     }
 

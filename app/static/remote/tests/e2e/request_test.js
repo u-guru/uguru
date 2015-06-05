@@ -10,8 +10,7 @@ var sessionButton =  element(by.css('[ng-click="launchRequestModal(0)"]'));
 
 var verbCancelButton = element(by.id('verb-cancel-button'));
 var sidemenu = element(by.id('side_menu'));
-var doneButton = element(by.css('[ng-click="submitRequest()"]'));
-var doneButton = element(by.css('[ng-click="submitRequest()"]'));
+// var doneButton = element(by.css('[ng-click="submitRequest()"]'));
 
 var CancelButton = element(by.buttonText("Cancel"));
 var CourseButton = element(by.css('ng-click="focusCourseInput()"'));
@@ -40,29 +39,38 @@ beforeEach(function () {
 
 });
 describe('All the button is disabled except Cancel and Enter Course', function () {
-   /*
- 
+
+
     describe('Cancel button', function () {
         //Cancel is Disabled
         it('is Enabled', function () {
             expect(CancelButton.isEnabled()).toBe(true);
         });
     });
-    
-    
+
+
     describe('Done button', function () {
         //Done is Disabled
         it('is Enabled, but not able to submit', function () {
+
+            // setTimeout(function() {
+            waits(2000);
+            var doneButton = element(by.id('done-button'));
+            console.log('done button', JSON.stringify(doneButton))
+
             doneButton.click();
+            waits(2000);
 
             var test = element.all(by.css('.loading-container')).last();
             //expect( test.element(by.css('.loading span')).getText()).toContain("");
             expect( element(by.css('.loading span')).getText()).toContain("Please enter a course");
+
+            // },2000);
         });
 
     });
-    
-    */
+
+
     describe('Course button', function () {
         //Check Course  is Enabled
         it('is disabled', function () {
@@ -73,9 +81,9 @@ describe('All the button is disabled except Cancel and Enter Course', function (
         });
 
     });
-    
+
 });
- 
+
 /*
     describe('Location button ', function () {
 
@@ -154,7 +162,7 @@ describe('All the button is disabled except Cancel and Enter Course', function (
 >>>>>>> a7e79da41b3ae50f37edbfa04705c938ae62eadd
 describe('Cancel Button active', function () {
     it('can cancel the request forun', function () {
-        //Check can it cancel the the request forum?    
+        //Check can it cancel the the request forum?
         CancelButton.click();
         request.click();
         sessionButton.click();
@@ -164,7 +172,7 @@ describe('Cancel Button active', function () {
 });
 
 describe('Testing Course Input', function () {
-    
+
     //check data are loaded or not
     beforeEach(function () {
         describe('Course Data', function () {
@@ -206,7 +214,7 @@ describe('Testing Course Input', function () {
     });
     //choose the course;
 
-   
+
 
 });
 describe('Location', function () {
@@ -260,11 +268,11 @@ describe('Time', function () {
     });
 });
 describe('Calender', function () {
-    //able to drag 
+    //able to drag
     //able to resize
-    //check all 3 tabs 
-    //able to cancel 
-    //anble to Done 
+    //check all 3 tabs
+    //able to cancel
+    //anble to Done
 
 });
 
@@ -279,7 +287,7 @@ describe('The Describe', function () {
     //check done button disabled
     describe('Done Button', function () {
         it('disabled?', function () {
-            
+
 <<<<<<< HEAD
             expect(Done.isEnabled()).toBe(true);
 =======
@@ -314,7 +322,7 @@ describe('The Describe', function () {
     });
     //Not sure How does thit one
     describe('Tags', function () {
-        
+
         //Click tags
         //or key in tags
 
@@ -322,7 +330,7 @@ describe('The Describe', function () {
     });
     //attach file
 
-        //camera 
+        //camera
     //delete files
 });
 <<<<<<< HEAD

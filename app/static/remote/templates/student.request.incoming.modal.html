@@ -28,7 +28,7 @@
                     <img class='pure-img verb-img' ng-src='{{img_base}}./img/verbs/{{incoming_request.verb_image}}' />
                       <h2 class='uppercase course-header'>{{incoming_request.course.short_name}}</h2>
                       <p class='tags-wrapper'>
-                        <span class='blue incoming_request-tag' ng-repeat='tag in incoming_request.tags'>#{{tag}}
+                        <span class='blue incoming_request-tag' ng-repeat='tag in incoming_request.tags'>#{{tag.name}}
                         </span>
                       </p>
                     <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon incoming_request-icon' src='{{img_base}}./img/icons/paperclip-outline-blue.svg' style='margin-right: 0.33em; margin-top:0.4em;'>

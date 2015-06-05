@@ -666,6 +666,25 @@ angular.module('uguru.user', [])
                             callback($scope);
                         }
 
+                        if ($scope.user && $scope.root.vars.guru_mode
+                            && ($scope.user.active_guru_sessions.length > 0 || $scope.user.pending_student_ratings.length > 0)
+                            && $scope.launchPendingActions) {
+
+
+
+                              $scope.launchPendingActions();
+
+                        }
+
+                        if ($scope.user && !$scope.root.vars.guru_mode
+                            && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)
+                            && $scope.launchPendingActions) {
+
+
+                              $scope.launchPendingActions();
+
+                        }
+
                     }
 
                 },
