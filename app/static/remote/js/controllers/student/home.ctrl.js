@@ -430,8 +430,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       $scope.showGoogleMap = function() {
 
-        $scope.incoming_request.position.latitude = 51.219053;
-        $scope.incoming_request.position.longitude = 4.404418;
+        if (!$scope.proposal.request.position.latitude || !$scope.proposal.request.position.longitude) {
+            $scope.proposal.request.position.latitude = 51.219053;
+            $scope.proposal.request.position.longitude = 4.404418;
+        }
 
 
         if (!$scope.incoming_request.position || !$scope.incoming_request.position.latitude || !$scope.incoming_request.position.longitude) {
@@ -439,7 +441,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           return;
         }
 
-        $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
+        $scope.map = {center: {latitude: $scope.proposal.request.position.latitude, longitude: $scope.proposal.request.position.longitude }, zoom: 14, control: {} };
         $scope.options = {scrollwheel: false};
 
         var mapContainer = document.getElementById("map_canvas");
@@ -449,7 +451,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         initMapCoords = $scope.createGoogleLatLng(parseFloat($scope.incoming_request.position.latitude),parseFloat($scope.incoming_request.position.longitude))
         var mapOptions = {
           center: initMapCoords,
-          zoom: 17,
+          zoom: 10,
           disableDefaultUI: true,
           draggable: false,
           zoomControl: false,
@@ -554,12 +556,15 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       });
 
-     $scope.$on('$ionicView.afterEnter', function() {
+     $scope.$on('$ionicView.enter', function() {
 
         //user has incoming request for help
         if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
           $scope.processIncomingRequests($scope.user.incoming_requests);
         }
+
+        console.log('shit is called');
+        $scope.launchPendingActions();
 
     });
 

@@ -41,9 +41,9 @@ angular.module('uguru.guru.controllers')
     $scope.new_message = {content: ''};
     $scope.default_profile_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100';
 
-    if ($scope.session.guru.id === $scope.user.id) {
+    if ($scope.session.request.status > 0  && $scope.session.guru.id === $scope.user.id) {
       $scope.message_name = $scope.session.request.student.name.split(' ')[0];
-    } else {
+    } else if ($scope.session.request.status > 0){
       $scope.message_name = $scope.session.guru.name.split(' ')[0];
     }
 
@@ -93,11 +93,11 @@ angular.module('uguru.guru.controllers')
 
     //todo come back and do these properly
     $scope.session.request.schedule_time = 45;
-    $scope.session.request.description = "Drainage! Drainage, Eli, you boy. Drained dry. I'm so sorry. Here if you have a milkshake, and I have a milkshake, and I have a straw. There it is, that's a straw, you see? Watch it. Now, my straw reaches acroooooss the room and starts to drink your milkshake. I ... drink ... your .... milkshake!";
+
 
     $scope.session.request.files = [{url: $scope.user.profile_url}, {url:$scope.user.profile_url}, {url:$scope.user.profile_url}];
 
-    $scope.session.request.tags = ['milleniumfalcon'];;
+
 
     $scope.cancelSession = function(session) {
       console.log('calling cancel');
@@ -396,13 +396,14 @@ angular.module('uguru.guru.controllers')
 
     $scope.$on('$ionicView.afterEnter', function() {
 
-
+      if ($scope.session.request.status > 0) {
         $scope.messages = $scope.processMessages($scope.session.messages);
         $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
 
         $timeout(function() {
           $scope.getMessagesFromServer(30000);
         }, 30000)
+      }
 
     });
 

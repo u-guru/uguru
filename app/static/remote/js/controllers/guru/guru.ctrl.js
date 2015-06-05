@@ -309,7 +309,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
           $scope.proposal.request.time_estimate = {hours: processed_time[0], minutes:processed_time[1]};
 
-          $scope.proposal.request.tags = ['milleniumfalcon'];
+          // $scope.proposal.request.tags = ['milleniumfalcon'];
 
       }
 
@@ -331,7 +331,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
       $scope.initAndShowProposalModal = function() {
-        $scope.incomingStudentSessionProposal.show();
+        $timeout(function() {
+          $scope.incomingStudentSessionProposal.show();
+        }, 2000)
       }
 
       $scope.acceptIncomingStudentProposal = function() {
@@ -407,6 +409,16 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         }
 
+        $scope.goToProposalRequestDetails = function(proposal) {
+
+            var session = {
+              request: proposal.request
+            }
+
+            $ionicViewSwitcher.nextDirection('forward');
+            $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
+        }
+
         $scope.createGoogleLatLng = function(latCoord, longCoord) {
             return new google.maps.LatLng(latCoord, longCoord);
         }
@@ -436,7 +448,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           initMapCoords = $scope.createGoogleLatLng(parseFloat($scope.proposal.request.position.latitude),parseFloat($scope.proposal.request.position.longitude))
           var mapOptions = {
             center: initMapCoords,
-            zoom: 17,
+            zoom: 10,
             disableDefaultUI: true,
             draggable: false,
             zoomControl: false,

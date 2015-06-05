@@ -253,6 +253,11 @@ angular.module('uguru.util.controllers')
 
               }, function(err) {
                 console.log(JSON.stringify(err));
+                $scope.user.push_notifications = false;
+                payload = {
+                      'push_notifications': false
+                    }
+                $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
                 alert('Please turn your Push Notifications ON in your settings.');
               });
             };
@@ -434,6 +439,7 @@ angular.module('uguru.util.controllers')
 
                 // console.log('device is resuming....');
                 // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+                console.log('device resumed');
                 User.getUserFromServer($scope, null, $state);
 
             }, false);

@@ -14,7 +14,7 @@
 
   </ion-header-bar>
 
-<div class="tabs home-request-tabs-top tabs-top">
+<div class="tabs home-request-tabs-top tabs-top" ng-show='session.request.status > 0'>
       <a class="tab-item uppercase opacity-1-2" ng-click='showDetails()' ng-show='!details.show'>
         Details
       </a>
@@ -30,11 +30,11 @@
 </div>
 
 
-<ion-content class='white-bg has-subheader' ng-show='details.show'>
+<ion-content class='white-bg ng-class:{"session.request.status > 0":"has-subheader"}' ng-show='details.show'>
       <div class='pure-g'>
           <ion-list class='pure-u-1'>
 
-            <ion-item class='padding-1em item-avatar-left dark-bg white-text'>
+            <ion-item class='padding-1em item-avatar-left dark-bg white-text' ng-show='session.request.status > 0'>
               <img class='pure-img can-help-profile-img'  src='{{session.request.student.profile_url}}'/>
                 <div class='guru-info-wrapper'>
                   <h2>{{session.request.student.name.split(' ')[0]}} </h2>

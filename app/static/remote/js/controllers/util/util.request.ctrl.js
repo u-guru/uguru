@@ -506,16 +506,21 @@ angular.module('uguru.util.controllers')
 
       $scope.validateForm = function() {
         course_input_value = document.getElementById('course-input').value;
-        result = (($scope.request.course && $scope.request.course.short_name) || (course_input_value.length > 0)) && ($scope.request.address && $scope.request.address.length > 0);
+        result = (($scope.request.course && $scope.request.course.short_name) || (course_input_value.length > 0));
         if (!result && $scope.root.vars.last_verb_index_clicked !== 1) {
           //if is a task
           if ($scope.root.vars.last_verb_index_clicked === 2) {
             $scope.success.show(0, 1250, 'Please enter a task title');
           } else {
-            $scope.success.show(0, 1250, 'Please a course');
+            $scope.success.show(0, 1250, 'Please enter a course');
           }
 
           return false;
+        }
+
+        if  ($scope.root.vars.last_verb_index_clicked !== 1 && (!$scope.request.address || $scope.request.address.length === 0)) {
+            $scope.success.show(0, 1250, 'Please enter a location');
+            return false;
         }
 
         //is a question

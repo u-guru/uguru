@@ -854,7 +854,7 @@ angular.module('uguru.user', [])
                     .customPUT(JSON.stringify(payload))
                     .then(function(user){
 
-                        var processed_user = processResults(user);
+                        var processed_user = processResults(user.plain());
                         assignPropertiesToRootScope($scope, processed_user);
                         delegateActionsFromProcessedUser($scope);
 
@@ -1005,7 +1005,7 @@ angular.module('uguru.user', [])
             User.updateAttr(payload, user.id).then(function(user) {
 
                 var processed_user = processResults(user.plain());
-                console.log(processed_user);
+
                 assignPropertiesToRootScope($scope, processed_user)
                 delegateActionsFromProcessedUser($scope);
                 $localstorage.setObject('user', $scope.user);

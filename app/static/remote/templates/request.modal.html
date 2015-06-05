@@ -124,31 +124,29 @@
           <div class='item item-divider' ng-hide='progress || !request_fields.show_divider_two' ng-click='!request.availability_edit || toggleAvailability()'>
           </div>
           <ion-item class='relative item-icon-right description-item request-form-item' ng-hide='progress' ng-click='launchDescriptionModal()' >
-            <div class='empty-description-wrapper' ng-hide='progress || request.description'>
+            <div class='empty-description-wrapper' ng-hide='progress || request.description || request.files.length > 0'>
               <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip.svg' style='margin-right: 0.33em; margin-top:0.4em;'>
               <span><p class='white-space-normal' style='padding-right:2em;'> {{request_fields.description_placeholder}}</p></span>
               <div class='pure-u-1 padding-1em'>&nbsp;<br></div>
               <div class='pure-u-1 padding-1em'>&nbsp;<br></div>
             </div>
 
-            <div class='description-wrapper item-icon-right' ng-hide='progress || (!request.description && !request.attached_files.length > 0)' style='margin-right: 0.33em;'>
+            <div class='description-wrapper item-icon-right' ng-hide='progress || (!request.description && !request.files.length > 0)' style='margin-right: 0.33em;'>
               <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip.svg'>
               <p class='black white-space-normal' ng-show='request.description'>
                 {{request.description}}
               </p>
 
-              <div class='pure-u-1'>
-                <div class='pure-u-1-4' ng-repeat='file in request.attached_files track by $index' ng-show='true || request && request.files && request.files.length > 0'>
-                  <div class='attach-img-wrapper padding-1em relative'>
-                    <a ng-click='deleteFile($index)' >
-                      <i class='icon absolute-icon ion-close attach-icon'></i>
-                    </a>
-                    <div class="attach-img" style='background-image:url("{{file.url}}")'>
+            </div>
+
+
+            <div class='pure-g' ng-show='request.files && request.files.length > 0' ng-show='true || request && request.files && request.files.length > 0'>
+              <div class='pure-u-1' style='border-top: 1px solid rgba(0,0,0,0.1)'>
+                <div class='pure-u-1-4' ng-repeat='file in request.files track by $index'>
+                    <div class="attach-img pure-img padding-half" style='background-image:url("{{file.url}}")'>
                     </div>
-                  </div>
                 </div>
               </div>
-
             </div>
 
           </ion-item>
