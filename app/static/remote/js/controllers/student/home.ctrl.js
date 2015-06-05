@@ -41,7 +41,17 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $scope.goToSessionDetails = function(session) {
       $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.student-session', {sessionObj:JSON.stringify(session)})
-    }
+  }
+
+  $scope.goToPendingRequestDetails = function(request) {
+
+      var session = {
+        request: request
+      }
+
+      $ionicViewSwitcher.nextDirection('forward');
+      $state.go('^.student-session', {sessionObj:JSON.stringify(session)})
+  }
 
     $scope.launchStudentInSessionModal = function() {
 
@@ -306,6 +316,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     $scope.launchRequestModal = function(index, verb_index) {
       if ($scope.root.vars.courses) {
+
+
 
           $scope.root.vars.last_verb_index_clicked = index;
           if (verb_index) {

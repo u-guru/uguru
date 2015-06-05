@@ -3,7 +3,8 @@
   <ion-header-bar class='dark-bg-header mini-header'>
 
     <button class="button button-clear button-header-link" ng-click='goBack()'>Back</button>
-    <h1 class="title">Session with {{session.request.student.name.split(' ')[0]}}</h1>
+    <h1 class="title"ng-show='session.request.status > 0'>Session with {{session.request.student.name.split(' ')[0]}}</h1>
+    <h1 class="title"ng-show='session.request.status === 0'>{{session.request.course.short_name.toUpperCase()}} Session</h1>
 
     <button class="button button-clear button-header-link submit-button" ng-click='showAttachActionSheet()'>
       Help
@@ -11,7 +12,7 @@
 
   </ion-header-bar>
 
-<div class="tabs home-request-tabs-top tabs-top">
+<div class="tabs home-request-tabs-top tabs-top" ng-show='session.request.status > 0'>
       <a class="tab-item uppercase opacity-1-2" ng-click='showDetails()' ng-show='!details.show'>
         Details
       </a>
@@ -27,11 +28,11 @@
 </div>
 
 
-<ion-content class='white-bg has-subheader' ng-show='details.show'>
+<ion-content class='white-bg ng-class:{"session.request.status > 0":"has-subheader"}' ng-show='details.show'>
       <div class='pure-g'>
           <ion-list class='pure-u-1'>
 
-            <ion-item class='padding-1em item-avatar-left dark-bg white-text'>
+            <ion-item class='padding-1em item-avatar-left dark-bg white-text' ng-show='session.request.status > 0'>
               <img class='pure-img can-help-profile-img'  src='{{session.guru.profile_url}}'/>
                 <div class='guru-info-wrapper'>
                   <h2 >{{session.guru.name.split(' ')[0]}} </h2>
@@ -73,7 +74,7 @@
             <div class='item item-divider'>
             </div>
 
-            <ion-item>
+            <ion-item ng-show='session.request.description && session.request.description.length > 0'>
               <p class='pico-text white-space-normal'> {{session.request.description}} </p>
               <div class='pure-u-1'>
                 <div class='pure-u-1-3 session-details-img-wrapper padding-right-half padding-top-half' ng-repeat='file in session.request.files'>
@@ -82,7 +83,7 @@
               </div>
             </ion-item>
 
-            <ion-item class='item-icon-left'>
+            <ion-item class='item-icon-left' ng-show='session.request.tags && session.request.tags.length > 0'>
               <img style='margin-top:0.4em; left:24px; top:5px;'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/tags.svg'>
               <p>&nbsp;<span class='blue request-tag' ng-repeat='tag in session.request.tags'>#{{tag.name}} </span> </p>
             </ion-item>
@@ -94,7 +95,7 @@
 
 </ion-content>
 
-<div ng-show='!details.show' >
+<div ng-show='!details.show && session.request.status > 0' >
   <ion-content delegate-handle="message-scroll" ng-click='setUnfocus()' class='white-background message-content has-subheader'>
         <ion-refresher
           pulling-icon="ion-arrow-down-c"

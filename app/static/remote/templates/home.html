@@ -98,7 +98,7 @@
           <ion-list class='pure-u-1' can-swipe="true">
 
               <div class='active-request-card-item-wrapper' ng-repeat='request in user.active_requests'>
-                <ion-item class='item-avatar request-card-item' on-hold="cancelRequest(request)">
+                <ion-item class='item-avatar request-card-item' on-hold="cancelRequest(request)" ng-click='goToPendingRequestDetails(request)'>
                   <img class='pure-img' ng-src='{{img_base}}./img/verbs/{{request.verb_image}}' />
                   <div class='request-card-content relative'>
                     <p class='course-text relative'>

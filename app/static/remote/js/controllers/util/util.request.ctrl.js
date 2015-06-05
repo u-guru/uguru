@@ -49,6 +49,7 @@ angular.module('uguru.util.controllers')
       time_estimate: {hours: 2, minutes:0},
       urgency: true,
       tags:[],
+      files:[],
       position:{latitude:null, longitude:null},
       availability_edit: false,
       calendar_edit:false,
