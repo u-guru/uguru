@@ -15,6 +15,10 @@ major_fields = {}
 major_fields['id'] = fields.Integer(attribute='id')
 major_fields['name'] = fields.String(attribute='name')
 
+tag_fields = {}
+tag_fields['id'] = fields.Integer(attribute='id')
+tag_fields['name'] = fields.String(attribute='name')
+
 
 course_fields = {}
 course_fields['id'] = fields.Integer(attribute='id')
@@ -117,6 +121,7 @@ request_fields['status'] = fields.Integer(attribute='status')
 request_fields['files'] = fields.List(fields.Nested(file_fields))
 request_fields['student_calendar'] = fields.List(fields.Nested(calendar_fields))
 request_fields['guru_calendar'] = fields.List(fields.Nested(calendar_fields))
+request_fields['tags'] = fields.List(fields.Nested(tag_fields))
 request_fields['_type'] = fields.Integer(attribute='_type')
 request_fields['student_price'] = fields.Float(attribute='student_price')
 request_fields['task_title'] = fields.String(attribute='task_title')

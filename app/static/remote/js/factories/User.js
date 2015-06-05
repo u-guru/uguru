@@ -760,7 +760,7 @@ angular.module('uguru.user', [])
 
 
                             if ($state.current.name === 'root.home') {
-                                $scope.request.attached_files.push(file.plain());
+                                $scope.request.files.push(file.plain());
                             } else {
                                 $scope.user.profile_url = file.plain().url;
                                 $localstorage.setObject('user', $scope.user);

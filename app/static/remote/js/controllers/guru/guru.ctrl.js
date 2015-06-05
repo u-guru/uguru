@@ -413,16 +413,19 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         $scope.showGoogleMap = function() {
 
-          $scope.proposal.request.position.latitude = 51.219053;
-          $scope.proposal.request.position.longitude = 4.404418;
-          console.log($scope.proposal.request.position);
+          if (!$scope.proposal.request.position.latitude || !$scope.proposal.request.position.longitude) {
+            $scope.proposal.request.position.latitude = 51.219053;
+            $scope.proposal.request.position.longitude = 4.404418;
+          }
+
+          console.log('location right before we show the map', JSON.stringify($scope.proposal.request.position));
 
           if (!$scope.proposal.request.position || !$scope.proposal.request.position.latitude || !$scope.proposal.request.position.longitude) {
             console.log('no coordinates... forget about it');
             return;
           }
 
-          $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
+          $scope.map = {center: {latitude: $scope.proposal.request.position.latitude, longitude: $scope.proposal.request.position.longitude }, zoom: 14, control: {} };
           $scope.options = {scrollwheel: false};
 
           var mapContainer = document.getElementById("map_canvas");

@@ -136,21 +136,21 @@
                       <strong>Description</strong>
                      </span>
 
-                     <span ng-show='request.description && request.files_attached.length > 0 '>
+                     <span ng-show='request.description && request.files.length > 0 '>
                      and
                      </span>
 
-                      <span ng-show="request.files_attached.length > 0">
+                      <span ng-show="request.files.length > 0">
                         <strong>Attachments</strong>
                       </span>
 
-                      <span ng-show='request.description && request.files_attached.length > 0 '>
+                      <span ng-show='request.description && request.files.length > 0 '>
                         have been added.
                       </span>
-                      <span ng-show='!request.description && request.files_attached.length > 0 '>
+                      <span ng-show='!request.description && request.files.length > 0 '>
                         have been added.
                       </span>
-                      <span ng-show='request.description && !request.files_attached.length > 0 '>
+                      <span ng-show='request.description && !request.fo;es.length > 0 '>
                         has been added.
                       </span>
                   </p>

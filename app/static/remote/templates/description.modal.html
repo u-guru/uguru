@@ -20,15 +20,14 @@
                 <textarea id='description-input'  style='padding-right:3em; font-size:1.25em;' rows="10" class='full-width' ng-model='request.description' placeholder='Describe your problem (optional)'></textarea>
           </ion-item>
         </ion-list>
-
     </div>
   </ion-content>
   <input type='file' id='file-input-web' onchange="angular.element(this).scope().file_changed(this)">
 
   <ion-footer-bar class="bar-footer" keyboard-attach style='height:auto;'>
     <div class='pure-g full-width'>
-      <div class='pure-u-1' ng-show='request.attached_files && request.attached_files.length > 0'>
-        <div class='pure-u-1-4' ng-repeat='file in request.attached_files track by $index' ng-show='true || request && request.files && request.files.length > 0'>
+      <div class='pure-u-1' ng-show='request.files && request.files.length > 0'>
+        <div class='pure-u-1-4' ng-repeat='file in request.files track by $index' ng-show='true || request && request.files && request.files.length > 0'>
           <div class='attach-img-wrapper padding-1em relative'>
             <a ng-click='deleteFile($index)' >
               <i class='icon absolute-icon ion-close attach-icon'></i>

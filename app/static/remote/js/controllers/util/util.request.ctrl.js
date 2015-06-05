@@ -44,11 +44,12 @@ angular.module('uguru.util.controllers')
       location: null,
       course: null,
       title: null,
-      attached_files: [],
+      files: [],
       description: '',
       time_estimate: {hours: 2, minutes:0},
       urgency: true,
       tags:[],
+      position:{latitude:null, longitude:null},
       availability_edit: false,
       calendar_edit:false,
       selected_price_option: null,
@@ -445,6 +446,8 @@ angular.module('uguru.util.controllers')
 
               console.log('location found!', position.coords.latitude, position.coords.longitude);
 
+              $scope.request.position = position.coords;
+
               $scope.user.recent_position = position;
               if ($scope.locationModal.isShown()) {
                 $scope.auto_choose_first_location = true;
@@ -473,78 +476,7 @@ angular.module('uguru.util.controllers')
 
         $scope.service = new google.maps.places.AutocompleteService();
 
-      $scope.queryAutocomplete = function(search_input) {
 
-        var text = search_input;
-        if (!search_input || search_input.length === 0) {
-            var text = document.getElementById('location-input').value;
-            console.log('empty arg passed g-query places');
-        }
-
-        if (!text && !search_input) {
-          search_input = 'a';
-        }
-
-          if (search_input.length > 0) {
-
-            var user_location = $scope.user.recent_position;
-            if (!user_location) {
-              //set to san francisco
-              var user_location = new google.maps.LatLng(37.76999,-122.44696);
-            } else {
-              console.log('using user gps position');
-              var user_location = new google.maps.LatLng(user_location.coords.latitude, user_location.coords.longitude);
-            }
-            $scope.service.getPlacePredictions({ input: text, location: user_location, radius:5000 }, $scope.autocompleteQuerycallback);
-          }
-    }
-
-    $scope.autocompleteQuerycallback = function(predictions, status) {
-        console.log(status, predictions[0].terms[0].value);
-        if (status != google.maps.places.PlacesServiceStatus.OK) {
-          alert(status);
-          return;
-        }
-
-        // var results = document.getElementById('results');
-        $scope.nearby_locations.matches = [];
-        $scope.root.vars.nearby_locations = [];
-        for (var i = 0, prediction; prediction = predictions[i]; i++) {
-          //clear the list from before
-          // console.log(predictions);
-          var payload = {
-            'local_name': prediction.terms[0].value,
-            'description': prediction.description,
-            'terms': prediction.terms
-          }
-
-          all_but_first = prediction.terms.splice(1);
-
-          result_str = '';
-          for (var j = 0; j < all_but_first.length; j ++) {
-            result_str += ' ' + all_but_first[j].value;
-          }
-
-          payload.city_info = result_str;
-          payload.place_id = prediction.place_id;
-
-          $scope.nearby_locations.matches.push(payload);
-          $scope.root.vars.nearby_locations.push(payload);
-
-        }
-
-        if ($scope.auto_choose_first_location) {
-          $scope.auto_choose_first_location = false;
-          var location = $scope.root.vars.nearby_locations[0];
-
-          $scope.request.address = location.local_name;
-          $scope.request.city_info = location.city_info;
-          $scope.request.place_id = location.place_id;
-          $scope.closeLocationModal();
-        }
-
-        $scope.$apply();
-      }
 
       $timeout(function() {
 
@@ -609,12 +541,92 @@ angular.module('uguru.util.controllers')
 
       }
 
+
+      $scope.queryAutocomplete = function(search_input) {
+
+        var text = search_input;
+        if (!search_input || search_input.length === 0) {
+            var text = document.getElementById('location-input').value;
+            console.log('empty arg passed g-query places');
+        }
+
+        if (!text && !search_input) {
+          search_input = 'a';
+        }
+
+          if (search_input.length > 0) {
+
+            var user_location = $scope.user.recent_position;
+            if (!user_location) {
+              //set to san francisco
+              var user_location = new google.maps.LatLng(37.76999,-122.44696);
+              $scope.request.position = {longitude: -122.44696, latitude: 37.76999};
+            } else {
+              console.log('using user gps position');
+              $scope.request.position = {longitude: user_location.coords.longitude, latitude: user_location.coords.latitude};
+              var user_location = new google.maps.LatLng(user_location.coords.latitude, user_location.coords.longitude);
+            }
+            $scope.service.getPlacePredictions({ input: text, location: user_location, radius:5000 }, $scope.autocompleteQuerycallback);
+          }
+    }
+
+
+    //each time key is pressed for the input, this function is called
+    $scope.autocompleteQuerycallback = function(predictions, status) {
+        console.log(status, predictions[0].terms[0].value);
+        if (status != google.maps.places.PlacesServiceStatus.OK) {
+          alert(status);
+          return;
+        }
+
+        // var results = document.getElementById('results');
+        $scope.nearby_locations.matches = [];
+        $scope.root.vars.nearby_locations = [];
+        for (var i = 0, prediction; prediction = predictions[i]; i++) {
+          //clear the list from before
+          // console.log(predictions);
+          var payload = {
+            'local_name': prediction.terms[0].value,
+            'description': prediction.description,
+            'terms': prediction.terms
+          }
+
+          all_but_first = prediction.terms.splice(1);
+
+          result_str = '';
+          for (var j = 0; j < all_but_first.length; j ++) {
+            result_str += ' ' + all_but_first[j].value;
+          }
+
+          payload.city_info = result_str;
+          payload.place_id = prediction.place_id;
+
+          $scope.nearby_locations.matches.push(payload);
+          $scope.root.vars.nearby_locations.push(payload);
+
+        }
+
+        if ($scope.auto_choose_first_location) {
+          $scope.auto_choose_first_location = false;
+          var location = $scope.root.vars.nearby_locations[0];
+
+          $scope.request.address = location.local_name;
+          $scope.request.city_info = location.city_info;
+          $scope.request.place_id = location.place_id;
+          $scope.closeLocationModal();
+        }
+
+        $scope.$apply();
+      }
+
       $scope.submitRequest = function() {
 
         if (!$scope.validateForm()) {
           console.log('Form is not complete')
           return;
         }
+
+        console.log('location', $scope.request.position.latitude);
         if (!$scope.request.selected_price_option && $scope.root.vars.last_verb_index_clicked > 0) {
           $scope.launchChoosePriceModal();
           return;
@@ -650,6 +662,7 @@ angular.module('uguru.util.controllers')
         }
          else {
           !$scope.request.availability_edit || $scope.toggleAvailability();
+
 
             $scope.launchContactingModal();
 

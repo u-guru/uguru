@@ -573,6 +573,8 @@ class UserRequestView(restful.Resource):
         _request.student_price = request.json.get('student_price')
         _request.task_title = request.json.get('task_title')
 
+
+
         if request.json.get('fields'):
             _request.verb_image = request.json.get('fields').get('img')
             _request.inital_status = request.json.get('fields').get('initial_status')
@@ -604,6 +606,31 @@ class UserRequestView(restful.Resource):
         user.requests.append(_request)
         db_session.commit()
 
+        if request.json.get('tags'):
+            json_tags = request.json.get('tags')
+            for tag in json_tags:
+                _tag = Tag.query.filter_by(name=tag).first()
+                if _tag:
+                    _tag.requests.append(_request)
+                    _tag.last_referenced = datetime.now()
+                    if _tag.times_referenced or _tag.times_referenced == 0:
+                        _tag.times_referenced += 1
+                    else:
+                        _tag.times_referenced = 1
+                else:
+                    _tag = Tag()
+                    db_session.add(_tag)
+                    _tag.creator_id = _request.student.id
+                    _tag.time_created = datetime.now()
+                    _tag.name = tag
+                    _tag.times_referenced = 1
+                    _tag.last_referenced = datetime.now()
+                    _tag.name, 'successfully created'
+                    _tag.requests.append(_request)
+
+                db_session.commit()
+
+
         # print request.json
         # print "request committed!", position
         # calendar = Calendar.initFromRequest(_request, 2)
@@ -632,6 +659,7 @@ class UserRequestView(restful.Resource):
 
         print request.json.get('files')
         if request.json.get('files'):
+            print 'there are', len(request.json.get('files')), 'files'
             files_json = request.json.get('files')
             if type(files_json) != bool:
                 for file_json in request.json.get('files'):

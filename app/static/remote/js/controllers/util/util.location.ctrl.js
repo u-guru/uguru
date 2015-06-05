@@ -24,7 +24,26 @@ angular.module('uguru.util.controllers')
       $scope.request.address = location.local_name;
       $scope.request.city_info = location.city_info;
       $scope.request.place_id = location.place_id;
+      $scope.request.position = $scope.getGPSCoordsFromPlace(location.local_name, location.city_info, location.description);
+      // console.log(JSON.stringify(google.maps.places.getPlace(location.place_id)));
       $scope.locationModal.hide();
+    }
+
+
+    $scope.getGPSCoordsFromPlace = function(local_name , city, country){
+
+      var address = local_name + ", " + city +", "+ country;
+      var geocoder = new google.maps.Geocoder();
+
+      geocoder.geocode( { 'address': address}, function(results, status) {
+
+        if (status == google.maps.GeocoderStatus.OK) {
+          $scope.request.position = {latitude: results[0].geometry.location.lat(), longitude: results[0].geometry.location.lng()};
+
+        } else {
+          console.log("Geocode was not successful for the following reason: " + status);
+        }
+      });
     }
 
     /*
@@ -85,11 +104,14 @@ angular.module('uguru.util.controllers')
           if (search_input.length > 0) {
 
             var user_location = $scope.user.recent_position;
-            if (!user_location) {
+
+            if (!user_location || Object.keys($scope.user.recent_position).length === 0) {
               //set to san francisco
               var user_location = new google.maps.LatLng(37.76999,-122.44696);
+              $scope.request.position = {longitude: -122.44696, latitude: 37.76999};
             } else {
-              console.log('using user gps position');
+              console.log('using user gps position', JSON.stringify($scope.user.recent_position));
+              $scope.request.position = {longitude: user_location.coords.longitude, latitude: user_location.coords.latitude};
               var user_location = new google.maps.LatLng(user_location.coords.latitude, user_location.coords.longitude);
             }
             $scope.service.getPlacePredictions({ input: text, location: user_location, radius:5000 }, $scope.autocompleteQuerycallback);

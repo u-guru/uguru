@@ -21,8 +21,8 @@
               </div>
             </div>
             <div class='pure-g center'>
-              <div class='pure-u-1' ng-show='user && user.university.title.length > 0'>
-                <p class='micro-text uppercase semibold grey'>Uc Berkeley</p>
+              <div class='pure-u-1' ng-show='user && user.university.title.length > 0 && !user.is_admin'>
+                <p class='micro-text uppercase semibold grey'>{{user.university.title}}</p>
               </div>
             </div>
 

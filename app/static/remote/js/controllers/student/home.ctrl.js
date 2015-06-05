@@ -347,7 +347,14 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     $scope.closeContactingModal = function() {
       $scope.contactingModal.hide();
+      if (!$scope.user.push_notifications) {
+        $timeout(function() {
+          $scope.requestPushNotifications();
+        }, 1000);
+      }
     }
+
+
 
 
     $scope.closeVerbModal = function() {
