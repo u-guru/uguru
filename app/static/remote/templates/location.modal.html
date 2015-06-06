@@ -19,7 +19,7 @@
 
           </ion-item>
 
-          <ion-item class='item-icon-left current-location-item' ng-click='attemptToGetLocation()' ng-show='!user.recent_position || !user.recent_position.coords'>
+          <ion-item class='item-icon-left current-location-item' ng-click='attemptToGetLocation()' ng-show='!user.location_services_enabled'>
             <img   style='margin-top: 0.4em;' class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/location.svg'>
             <p> Current Location</p>
           </ion-item>

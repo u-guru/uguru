@@ -140,28 +140,6 @@ angular.module('uguru.util.controllers')
       $scope.locationModal.show();
     }
 
-    $scope.$on('modal.shown', function() {
-
-      $timeout(function() {
-
-        var course_input = document.getElementById('course-input');
-
-        if ($scope.requestModal && $scope.requestModal.isShown()
-        && !course_input.value && course_input.value.length === 0 && !$scope.locationModal.isShown()
-        && !$scope.tagsModal.isShown() && !$scope.availabilityModal.isShown()
-        && !$scope.descriptionModal.isShown()) {
-
-          $timeout(function() {
-
-
-            course_input.focus();
-
-          }, 1500);
-        }
-
-      }, 500)
-
-    })
 
     $scope.toggleYourCourses = function() {
 
@@ -452,6 +430,17 @@ angular.module('uguru.util.controllers')
               $scope.request.position = position.coords;
 
               $scope.user.recent_position = position;
+
+              $scope.user.location_services_enabled = true;
+
+
+              payload = {
+                'location_services_enabled': true,
+                'recent_latitude': position.coords.latitude,
+                'recent_longitude': position.coords.longitude
+              }
+              $scope.user.updateAttr('recent_position', $scope.user, payload, null, $scope);
+
               if ($scope.locationModal.isShown()) {
                 $scope.auto_choose_first_location = true;
 
@@ -578,7 +567,7 @@ angular.module('uguru.util.controllers')
               $scope.request.position = {longitude: -122.44696, latitude: 37.76999};
             } else {
               console.log('using user gps position');
-              $scope.request.position = {longitude: user_location.longitude.longitude, latitude: user_location.coords.latitude};
+              $scope.request.position = {longitude: user_location.coords.longitude, latitude: user_location.coords.latitude};
               var user_location = new google.maps.LatLng(user_location.coords.latitude, user_location.coords.longitude);
             }
             $scope.service.getPlacePredictions({ input: text, location: user_location, radius:5000 }, $scope.autocompleteQuerycallback);
@@ -718,6 +707,47 @@ angular.module('uguru.util.controllers')
 
 
       }
+
+      $scope.requestModalOnlyShown = function() {
+        return (!$scope.locationModal.isShown() && !$scope.tagsModal.isShown() && !$scope.availabilityModal.isShown()
+          && !$scope.descriptionModal.isShown())
+      }
+
+
+      $scope.$on('modal.shown', function() {
+        //if request modal and no other modal is shown..
+         $timeout(function() {
+
+          if ($scope.requestModal && $scope.requestModal.isShown() && $scope.requestModalOnlyShown()) {
+            if ($scope.user.location_services_enabled) {
+
+            }
+
+          }
+
+         }, 500)
+
+        //put focus on course input & show keyboard if empty
+        $timeout(function() {
+
+          var course_input = document.getElementById('course-input');
+
+          if ($scope.requestModal && $scope.requestModal.isShown()
+          && !course_input.value && course_input.value.length === 0 && !$scope.locationModal.isShown()
+          && !$scope.tagsModal.isShown() && !$scope.availabilityModal.isShown()
+          && !$scope.descriptionModal.isShown()) {
+
+            $timeout(function() {
+
+
+              course_input.focus();
+
+            }, 1000);
+          }
+
+        }, 500)
+
+      })
 
 
   }

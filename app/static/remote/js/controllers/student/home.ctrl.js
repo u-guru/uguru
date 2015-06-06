@@ -38,6 +38,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
 
 
+
+
   $scope.goToSessionDetails = function(session) {
       $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.student-session', {sessionObj:JSON.stringify(session)})
@@ -174,12 +176,16 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                     console.log(index);
                     if (index === 0) {
 
-                      $scope.success.show(0, 2000, 'Your guru must cancel the session. Contact support if your guru is not around');
-                       // confirm('Are you sure? You will lose all session progress')
-                       $scope.closeAttachActionSheet();
-                      // $timeout(function() {
-                      //   $scope.cancelStudentActiveSession($scope.session);
-                      // }, 500)
+                      // $scope.success.show(0, 2000, 'Your guru must cancel the session. Contact support if your guru is not around');
+
+                      $scope.closeAttachActionSheet();
+                      if (confirm('Are you sure? You will lose all session progress')) {
+
+                        $timeout(function() {
+                          $scope.cancelStudentActiveSession($scope.session);
+                        }, 500)
+
+                       }
 
                     }
                     if (index === 1) {
@@ -236,16 +242,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
 
     }
-
-  //student specific functions
-  if ($scope.user && $scope.user.active_student_sessions
-    && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
-
-
-          $scope.launchPendingActions();
-
-  }
-
 
   $ionicPlatform.ready(function() {
 
@@ -430,9 +426,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       $scope.showGoogleMap = function() {
 
-        if (!$scope.proposal.request.position.latitude || !$scope.proposal.request.position.longitude) {
-            $scope.proposal.request.position.latitude = 51.219053;
-            $scope.proposal.request.position.longitude = 4.404418;
+        if (!$scope.incoming_request.position.latitude || !$scope.incoming_request.position.longitude) {
+            $scope.incoming_request.position.latitude = 51.219053;
+            $scope.incoming_request.position.longitude = 4.404418;
         }
 
 
@@ -441,7 +437,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           return;
         }
 
-        $scope.map = {center: {latitude: $scope.proposal.request.position.latitude, longitude: $scope.proposal.request.position.longitude }, zoom: 14, control: {} };
+        $scope.map = {center: {latitude: $scope.incoming_request.position.latitude, longitude: $scope.incoming_request.position.longitude }, zoom: 14, control: {} };
         $scope.options = {scrollwheel: false};
 
         var mapContainer = document.getElementById("map_canvas");
@@ -477,13 +473,20 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         $scope.incoming_request.guru_id = $scope.incoming_request.guru.id;
         $scope.incoming_request.status = 1;
-        $scope.user.createObj($scope.user, 'sessions', $scope.incoming_request, $scope, null);
+
+
+        $scope.loader.show()
+
+        var closeModalAndShowSessionStatus = function($scope, $state) {
+          $scope.loader.hide();
+          $scope.incomingGuruModal.hide();
+        }
+
+        $scope.user.createObj($scope.user, 'sessions', $scope.incoming_request, $scope, closeModalAndShowSessionStatus);
 
 
 
         $scope.incoming_request.status = 2;
-
-        $scope.incomingGuruModal.hide();
 
       }
 
@@ -563,10 +566,37 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $scope.processIncomingRequests($scope.user.incoming_requests);
         }
 
-        console.log('shit is called');
-        $scope.launchPendingActions();
+        //student specific functions
+        if ($scope.user && $scope.user.active_student_sessions
+          && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
+
+                console.log('checking for user actions...');
+                $scope.launchPendingActions();
+
+        }
+
+        // $scope.launchPendingActions();
 
     });
+
+    document.addEventListener("resume", function() {
+
+
+        console.log('device resumed... checking student actions');
+
+        if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
+          $scope.processIncomingRequests($scope.user.incoming_requests);
+        }
+
+        //student specific functions
+        if ($scope.user && $scope.user.active_student_sessions
+          && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
+
+                $scope.launchPendingActions();
+
+        }
+
+    }, false);
 
 
     // $timeout(function() {

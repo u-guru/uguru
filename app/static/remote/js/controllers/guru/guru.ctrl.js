@@ -42,46 +42,50 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
     }
 
-
-    // functions relevant to these sections
-    $scope.launchGuruInSessionModal = function() {
-
-
-      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.in-session.modal.html', {
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.in-session.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function(modal) {
             $scope.guruInSessionModal = modal;
-            $scope.guruInSessionModal.show();
         });
+
+
+    // functions relevant to these sections
+    $scope.launchGuruInSessionModal = function() {
+
+      $scope.guruInSessionModal.show();
 
     }
 
-    $scope.launchGuruSessionDetailsModal = function() {
-
-
-      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.session.modal.html', {
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.session.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function(modal) {
             $scope.guruSessionDetailsModal = modal;
-            $scope.guruSessionDetailsModal.show();
-        });
+
+    });
+
+    $scope.launchGuruSessionDetailsModal = function() {
+
+
+        $scope.guruSessionDetailsModal.show();
 
     }
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.ratings.modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.guruRatingsModal = modal;
+    });
 
     $scope.launchGuruRatingsModal = function(rating) {
 
 
-      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.ratings.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.pending_rating = rating;
-            $scope.starsSelected;
-            $scope.guruRatingsModal = modal;
-            $scope.guruRatingsModal.show();
-        });
+        $scope.pending_rating = rating;
+        $scope.starsSelected;
+
+        $scope.guruRatingsModal.show();
 
     }
 
@@ -229,7 +233,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         $scope.pending_rating = rating;
 
-        $scope.launchGuruRatingsModal(rating);
+        if(!$scope.guruRatingsModal.isShown()) {
+          $scope.launchGuruRatingsModal(rating);
+        }
 
         //no reason to
         return;
@@ -248,8 +254,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 $scope.details = {show: true};
 
 
-                $scope.launchGuruInSessionModal();
-
+                if (!$scope.guruInSessionModal.isShown()) {
+                  $scope.launchGuruInSessionModal();
+                }
 
               }, 500);
             }
@@ -258,16 +265,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     }
 
-  if ($scope.user && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
 
-
-
-          $scope.root.vars.launchPendingActionsStudent = $scope.launchPendingActions;
-          $scope.launchPendingActions();
-          //check to see if any of the guru sessions are active
-
-
-  }
 
 
 
@@ -415,8 +413,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               request: proposal.request
             }
 
-            $ionicViewSwitcher.nextDirection('forward');
-            $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
+            $scope.guruSessionDetailsModal.show();
+
+            // $ionicViewSwitcher.nextDirection('forward');
+            // $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
         }
 
         $scope.createGoogleLatLng = function(latCoord, longCoord) {
@@ -487,14 +487,52 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         });
 
-        $scope.$on('$ionicView.afterEnter', function() {
-
+        $scope.$on('$ionicView.enter', function() {
+            console.log('checking for pending actions...');
             //user has incoming request for help
             if ($scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
-              $scope.processActiveProposalsGuru($scope.user.active_proposals);
+
+
+                    $scope.processActiveProposalsGuru($scope.user.active_proposals);
+
+
+            }
+
+            if ($scope.user && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
+
+
+
+                    $scope.launchPendingActions();
+                    //check to see if any of the guru sessions are active
+
+
             }
 
         });
+
+        document.addEventListener("resume", function() {
+          console.log('checking for pending actions...');
+
+          if ($scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
+
+
+                    $scope.processActiveProposalsGuru($scope.user.active_proposals);
+
+
+          }
+
+          if ($scope.user && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
+
+
+
+                  $scope.launchPendingActions();
+                  //check to see if any of the guru sessions are active
+
+
+          }
+
+
+        }, false);
 
 
 

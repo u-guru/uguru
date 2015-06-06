@@ -308,6 +308,13 @@ class UserOneView(restful.Resource):
         if 'summer_15' in request.json:
             user.summer_15 = request.json.get('summer_15')
 
+        if 'recent_position' in request.json:
+            print 'sup'
+            recent_position_json = request.json.get('recent_position')
+            user.location_services_enabled = recent_position_json.get('location_services_enabled')
+            user.recent_latitude = recent_position_json.get('recent_latitude')
+            user.recent_longitude = recent_position_json.get('recent_longitude')
+
         if 'push_notifications' in request.json:
             user.push_notifications = request.json.get('push_notifications').get('push_notifications')
 

@@ -439,7 +439,7 @@ angular.module('uguru.util.controllers')
 
                 // console.log('device is resuming....');
                 // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                console.log('device resumed');
+                // console.log('device resumed');
                 User.getUserFromServer($scope, null, $state);
 
             }, false);

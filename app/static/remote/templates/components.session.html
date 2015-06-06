@@ -4,9 +4,9 @@
     <h1 class="title">Session with {{session.request.student.name.split(' ')[0]}}</h1>
 
     <div class='buttons'>
-      <button class="button button-clear button-header-link submit-button" ng-click='showAttachActionSheet()'>
+      <!-- <button class="button button-clear button-header-link submit-button" ng-click='showAttachActionSheet()'>
         <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' style='height:15px; margin-top:0.18em' src='{{img_base}}./img/paperclip-blue.svg' ng-show='!details.show'>
-      </button>
+      </button> -->
       <button class="button button-clear button-header-link submit-button" ng-click='showAttachActionSheet()'>
         Help
       </button>
@@ -30,7 +30,7 @@
 </div>
 
 
-<ion-content class='white-bg ng-class:{"session.request.status > 0":"has-subheader"}' ng-show='details.show'>
+<ion-content class='white-bg has-subheader' ng-show='details.show'>
       <div class='pure-g'>
           <ion-list class='pure-u-1'>
 
@@ -156,7 +156,7 @@
 <ion-footer-bar class='guru-session-footer' ng-show='details.show'>
 
 
-      <button class='button button-full button-bright' ng-click='startSessionGuru()' ng-show='session.status === 1'>
+      <button class='button button-full button-bright' ng-click='startSessionGuru()' ng-show='session.status === 1 || !session.status'>
         Tap to start session!
       </button>
 

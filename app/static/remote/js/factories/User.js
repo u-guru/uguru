@@ -326,11 +326,11 @@ angular.module('uguru.user', [])
         $scope.user.phone_number = user.phone_number;
         $scope.user.active_proposals = user.active_proposals;
         $scope.user.impact_events = user.impact_events;
-        $scope.user.pending_proposals = user.pending_proposals;
+        $scope.user.pending_proposals = user.pending_proposals.reverse();
         $scope.user.active_guru_sessions = user.active_guru_sessions;
         $scope.user.pending_student_ratings = user.pending_student_ratings;
         $scope.user.previous_guru_sessions = user.previous_guru_sessions;
-        $scope.user.active_requests = user.active_requests;
+        $scope.user.active_requests = user.active_requests.reverse();
         $scope.user.pending_guru_ratings = user.pending_guru_ratings;
         $scope.user.pending_student_ratings = user.pending_student_ratings;
         $scope.user.incoming_requests = user.incoming_requests;
@@ -566,6 +566,13 @@ angular.module('uguru.user', [])
                     'profile_info': obj
                 }
               }
+
+              if (arg === 'recent_position') {
+                return {
+                    'recent_position': obj
+                }
+              }
+
               if (arg === 'change_password') {
                 return {
                     'change_password': obj
@@ -577,6 +584,8 @@ angular.module('uguru.user', [])
                     'push_notifications': obj
                 }
               }
+
+
 
               if (arg === 'email_notifications') {
                 return {

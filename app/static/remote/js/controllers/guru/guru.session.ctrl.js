@@ -95,10 +95,6 @@ angular.module('uguru.guru.controllers')
     $scope.session.request.schedule_time = 45;
 
 
-    $scope.session.request.files = [{url: $scope.user.profile_url}, {url:$scope.user.profile_url}, {url:$scope.user.profile_url}];
-
-
-
     $scope.cancelSession = function(session) {
       console.log('calling cancel');
       var dialogCallBackSuccess = function() {
@@ -160,6 +156,14 @@ angular.module('uguru.guru.controllers')
 
         $scope.loader.show();
 
+        if ($scope.guruInSessionModal.isShown()) {
+            $scope.guruInSessionModal.hide();
+        }
+
+        if ($scope.guruSessionDetailsModal.isShown()) {
+            $scope.guruSessionDetailsModal.hide();
+        }
+
         $scope.postServerCallback = function() {
 
           $scope.loader.hide();
@@ -185,18 +189,18 @@ angular.module('uguru.guru.controllers')
         return result
     }
 
-    $scope.launchGuruInSessionModal = function() {
-
-
-      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.in-session.modal.html', {
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.in-session.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function(modal) {
             $scope.guruInSessionModal = modal;
-            $scope.guruInSessionModal.show();
         });
 
+    $scope.launchGuruInSessionModal = function() {
+      $scope.guruInSessionModal.show();
     }
+
+
 
     $scope.last_updated = $scope.getCurrentDate();
 
@@ -247,12 +251,21 @@ angular.module('uguru.guru.controllers')
 
         var sessionPayload = {session: $scope.session}
 
-        $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope);
-        $scope.launchGuruInSessionModal();
+        $scope.loader.show();
+        $state.go('^.guru');
 
-        $scope.timeout(function(){
-          $state.go('^.guru');
-        }, 1000);
+        var callbackSuccess = function() {
+          // $scope.launchGuruInSessionModal();
+          $scope.loader.hide();
+        }
+
+        $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope, callbackSuccess);
+
+
+        // $timeout(function(){
+
+        //   $scope.$apply();
+        // }, 1000);
       }
 
       var dialog = {
