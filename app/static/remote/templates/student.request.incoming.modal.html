@@ -12,7 +12,13 @@
                   <!-- 2.  padding 2em h1 format bold, SemiBold, relative-->
                   <ion-item class='padding-2em item-avatar-left' style='padding-bottom:1em;'>
                     <img class='pure-img profile-img sidebar-img inline can-help-profile-img'  src='{{incoming_request.guru.profile_url}}'/>
-                    <h2 class='can-help-text' ><strong>{{incoming_request.guru.name.split(' ')[0]}}</strong> can help!
+                    <h2 class='can-help-text' >
+                      <span ng-show='incoming_request._type !== 1'>
+                        <strong>{{incoming_request.guru.name.split(' ')[0]}}</strong> can help!
+                      </span>
+                      <span ng-show='incoming_request._type === 1'>
+                        <strong>{{incoming_request.guru.name.split(' ')[0]}}</strong> replied to your question!
+                      </span>
                       <br>
                       <div class='padding-top-half ratings-wrapper'>
                         <div class='pure-u-1-12' ng-repeat='number in getNumber(incoming_request.guru.guru_avg_rating) track by $index'>
@@ -36,7 +42,7 @@
 
                   </ion-item>
 
-                  <ion-item class='item-avatar-left card-item-left'>
+                  <ion-item class='item-avatar-left card-item-left' ng-show='incoming_request._type !== 1'>
                     <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
                       <div class='pure-u-1-4'>
                         <p class='inline'>
@@ -47,7 +53,7 @@
                             {{incoming_request.time_estimate.minutes}} min
                           </span>
                           <span ng-show='incoming_request.time_estimate.minutes && incoming_request.time_estimate.hours'>
-                            {{incoming_request.time_estimate.hour}}hr {{incoming_request.time_estimate.minutes}}m
+                            {{incoming_request.time_estimate.hour}}hr {{incoming_request.time_estimate.minutes}}
                           </span>
                         </p>
                       </div>
@@ -60,15 +66,21 @@
                   </ion-item>
 
                   <!-- 5.  Same old but no orange> -->
-                  <ion-item class='item-avatar-left card-item-left'>
+                  <ion-item class='item-avatar-left card-item-left' ng-show='incoming_request.address'>
                     <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/marker.svg'>
                     <p class='inline'> Meet up </p>
                     <p class='inline black' style='padding-left:1em'> {{incoming_request.address}} </p>
                   </ion-item>
 
+                  <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='incoming_request.student_price'>
+                    <img class='icon ion-plus-custom blue pure-img' style='margin-left:-0.7em;'src='{{img_base}}./img/icons/stacks.svg'>
+                    <p class='inline'> You offered </p>
+                    <p class='inline black' style='padding-left:1em'> <span class='light-font opacity-1-2'>$</span>{{incoming_request.student_price}} </p>
+                  </ion-item>
+
                   <!-- 5.  Formalize list button-->
 
-                  <div class='pure-u-1'>
+                  <div class='pure-u-1' ng-show='incoming_request._type !== 1'>
                     <div id="map_canvas" style="height:100px;width: 100%;">
                       <ui-gmap-google-map center="map.center" control="map.control" zoom="map.zoom"  pan="true" options="options">
                       </ui-gmap-google-map>
@@ -80,13 +92,21 @@
 
                  <div class='pure-u-1'style='padding-left:1.2em; padding-right:1.2em'>
                       <button class='button button-full button-blue blue-bg button-submit white-text center' ng-click='acceptIncomingGuru()'>
-                          Awesome!
+                          <span ng-show='incoming_request._type !== 1'>
+                            Awesome!
+                          </span>
+                          <span ng-show='incoming_request._type === 1'>
+                            This is the answer!
+                          </span>
                       </button>
                   </div>
                   <div class='pure-u-1' style='padding-left:1.2em; padding-right:1.2em'>
                       <a class='close-modal-link' id='verb-cancel-button' ng-click='rejectIncomingGuru()'>
-                        <p class='standard micro-text center'>
+                        <p class='standard micro-text center' ng-show='incoming_request._type !== 1'>
                           Uh oh! Cancel
+                        </p>
+                        <p class='standard micro-text center' ng-show='incoming_request._type === 1'>
+                          This is not the answer...
                         </p>
                       </a>
                   </div>

@@ -945,6 +945,10 @@ class Request(Base):
     guru = relationship("User", uselist=False,
         primaryjoin = "User.id == Request.guru_id")
 
+
+    # selected_proposal_id = Column(Integer, ForeignKey('proposal.id'))
+    selected_proposal =  relationship("Proposal", uselist=False)
+
     def process_proposal(self, proposal_json):
         self.status = proposal_json.get('status')
         try:

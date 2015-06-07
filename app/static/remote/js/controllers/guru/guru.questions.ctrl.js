@@ -29,11 +29,44 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $scope.questionsModal = modal;
     });
 
-    $scope.launchAnswerQuestionModal = function(question) {
+      $scope.postQuestionResponse = function() {
+        console.log($scope.proposal.request.response);
+        proposalObj = $scope.proposal;
+        proposalObj.status = 2; //guru accepted
+        proposalObj.proposal = true;
 
-      $scope.question = question;
-      $scope.question.tags = [{name:'mars'}, {name:'pluto'}];
-      $scope.question.student_price = parseInt($scope.question.student_price);
+        $scope.deleteProposalFromList($scope.proposal, $scope.user.active_proposals);
+
+        if (!$scope.user.pending_proposals) {
+          $scope.user.pending_proposals = [];
+        }
+
+        // $scope.user.pending_proposals.push(proposalObj);
+
+        $scope.loader.show();
+
+        $state.go('^.guru');
+
+
+
+
+        var successCallback = function() {
+          $timeout(function() {
+
+              $scope.loader.hide();
+              $scope.questionsModal.remove();
+
+          }, 1000)
+        }
+
+        $scope.user.updateObj($scope.user, 'requests', proposalObj, $scope, successCallback);
+
+      }
+
+    $scope.launchAnswerQuestionModal = function(proposal) {
+      $scope.proposal = proposal;
+      $scope.proposal.request.tags = [{name:'mars'}, {name:'pluto'}];
+      $scope.proposal.request.student_price = parseInt($scope.proposal.request.student_price);
       $scope.questionsModal.show();
     }
 

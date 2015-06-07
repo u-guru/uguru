@@ -749,6 +749,11 @@ class UserRequestView(restful.Resource):
                 proposal.request.guru_calendar_id = calendar.id
                 calendar_events_json = proposal_json.get('guru_calendar')
 
+                print 'response found!', proposal_json.get('response')
+                proposal.question_response = proposal_json.get('response')
+
+                return
+
                 if calendar_events_json:
                     day_index = 0
                     for day_arr in calendar_events_json:

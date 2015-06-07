@@ -45,7 +45,7 @@
                       <span ng-show='proposal.request._type === 2' class='transform-capitalize'>
                         {{proposal.request.task_title}}
                       </span>
-                      <span class='request-tag-status'> {{proposal.request.initial_status}} </span>
+                      <span class='request-tag-status'> AWAITING RESPONSE </span>
                     </p>
                     <p class='location-text'> {{proposal.request.address}}</p>
                   </div>
@@ -110,7 +110,7 @@
         <div class='pure-g'>
         <!-- <div class='flex-item-c pure-g'> -->
           <!-- 1. create inset list, offset it by -5% margin-top -->
-          <ion-list class='list-inset visible-overflow pure-u-1' style='margin-top:-5%; margin-bottom:10%; padding-top:5%;' ng-repeat='session in user.active_guru_sessions' ng-click='goToSessionDetails(session);'>
+          <ion-list class='list-inset visible-overflow pure-u-1' style='margin-top:-5%; margin-bottom:10%; padding-top:10%;' ng-repeat='session in user.active_guru_sessions' ng-click='goToSessionDetails(session);'>
 
             <!-- 2.  padding 2em h1 format bold, SemiBold, relative-->
             <ion-item class='padding-2em absolute padding-vertical-1em float-center visible-overflow center'>
