@@ -1011,7 +1011,8 @@ class Proposal(Base):
     student_price = Column(Float)
     guru_price = Column(Float)
     guru_proposed_price = Column(Float) #rebuttal
-    guru_description = Column(Float)
+    guru_description = Column(String)
+    question_response = Column(String)
 
     request_id = Column(Integer, ForeignKey('request.id'))
     request = relationship("Request",

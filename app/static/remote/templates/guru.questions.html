@@ -10,7 +10,7 @@
 
       </ion-tab>
 
-      <ion-tab class="uppercase white-bg black opacity-1-2" title='Expire'>
+      <ion-tab class="uppercase white-bg black opacity-1-2" title='Expired'>
 
       </ion-tab>
 </ion-tabs>
@@ -19,16 +19,23 @@
 <ion-content class='white-bg has-subheader flex-item flex-direction' scroll='false'>
   <ion-scroll class='full-height'>
 
+    <ion-refresher
+        pulling-icon="ion-arrow-down-c"
+        spinner="circles"
+        on-refresh="doRefresh()">
+    </ion-refresher>
+
+
     <ion-list>
-      <ion-item ng-repeat='question in questions' class='item-avatar-left question-item' ng-click='goToQuestionResponse(question)'>
+      <ion-item ng-repeat='proposal in active_questions' class='item-avatar-left question-item' ng-click='launchAnswerQuestionModal(proposal.request)'>
 
          <img class='pure-img verb-img' ng-src='{{img_base}}./img/icons/question.svg' ng-show='question.student_price === 0'/>
-         <img class='pure-img verb-img stack_circle' ng-src='{{img_base}}./img/icons/stacks_circled.svg' ng-show='question.student_price > 0'/>
-         <h4 class='black uppercase semibold'> {{question.course.short_name}} </h4>
-         <h4 class='black white-space-normal nano-text regular'>{{question.description}}</h4>
+         <img class='pure-img verb-img stack_circle' ng-src='{{img_base}}./img/icons/stacks_circled.svg' ng-show='proposal.request.student_price > 0'/>
+         <h4 class='black uppercase semibold'> {{proposal.request.course.short_name}} </h4>
+         <h4 class='black white-space-normal nano-text regular'>{{proposal.request.description}}</h4>
 
          <p class='tags-wrapper nano-text'>
-            <span class='blue request-tag' ng-repeat='tag in question.tags'>#{{tag}}
+            <span class='blue request-tag' ng-repeat='tag in question.tags'>#{{tag.name}}
             </span>
           </p>
 

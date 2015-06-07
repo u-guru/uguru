@@ -19,32 +19,29 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop)     {
 
-    $scope.questions = [
 
-      {
-        description: 'What would happen if all the water in the ocean was replaced with deuterium oxide?',
-        course:{short_name: 'Chem 101'},
-        tags: ['heavy water', 'D20'],
-        time_created: '',
-        student_price: 0,
-        time_expired:0
-      },
-      {
-        description: 'Can you please explain the stable marriage algorithm using my extended family? Maybe ill finally make the connection.',
-        course:{short_name: 'Math 70'},
-        tags: ['N*k-1', 'Discrete probability'],
-        time_created: '',
-        student_price: 5,
-      },
-      {
-        description: 'What would happen if all the water in the ocean was replaced with deuterium oxide?',
-        course:{short_name: 'Chem 101'},
-        tags: ['heavy water', 'D20'],
-        time_created: '',
-        student_price: 0,
-      },
 
-    ]
+    //initialize location modal
+    $ionicModal.fromTemplateUrl(BASE + 'templates/questions.modal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+      }).then(function(modal) {
+          $scope.questionsModal = modal;
+    });
+
+    $scope.launchAnswerQuestionModal = function(question) {
+
+      $scope.question = question;
+      $scope.question.tags = [{name:'mars'}, {name:'pluto'}];
+      $scope.question.student_price = parseInt($scope.question.student_price);
+      $scope.questionsModal.show();
+    }
+
+    $scope.closeQuestionsModal = function() {
+      $scope.questionsModal.hide();
+    }
+
+    $scope.active_questions = $scope.user.active_questions;
   }
 
 ]);

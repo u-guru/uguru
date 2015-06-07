@@ -65,10 +65,16 @@
             </ion-item>
 
             <!-- 5.  Same old but no orange> -->
-            <ion-item class='item-avatar-left card-item-left request-form-item'>
+            <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.address'>
               <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/marker.svg'>
               <p class='inline'> Meet up </p>
               <p class='inline black' style='padding-left:1em'> {{session.request.address}} </p>
+            </ion-item>
+
+            <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.student_price'>
+              <img class='icon ion-plus-custom blue pure-img' style='margin-left:-0.7em;'src='{{img_base}}./img/icons/stacks.svg'>
+              <p class='inline'> You offered </p>
+              <p class='inline black' style='padding-left:1em'> <span class='light-font opacity-1-2'>$</span>{{session.request.student_price}} </p>
             </ion-item>
 
             <div class='item item-divider'>

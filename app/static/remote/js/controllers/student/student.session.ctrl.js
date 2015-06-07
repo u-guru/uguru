@@ -33,6 +33,10 @@ angular.module('uguru.student.controllers')
 
     $scope.session = JSON.parse($stateParams.sessionObj);
 
+    if ($scope.session.request.student_price) {
+      $scope.session.request.student_price = parseInt($scope.session.request.student_price);
+    }
+
     $scope.details = {show: true};
     $scope.new_message = {content: ''};
     $scope.default_profile_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100';

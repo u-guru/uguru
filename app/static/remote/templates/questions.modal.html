@@ -1,0 +1,50 @@
+<ion-modal-view class='question-modal'>
+
+  <ion-header-bar align-title="center" class='dark-bg-header no-background-image'>
+    <div class="buttons">
+      <button class="button button-clear button-header-link" ng-click='closeQuestionsModal()'>Cancel</button>
+    </div>
+    <h1 class="title">Got An Answer?</h1>
+    <div class="buttons">
+      <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='submitRequest()'>
+        <span class='ng-class:{"grey-text":question.response.length === 0}'>Post</span>
+      </button>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class='has-header' scroll='false'>
+
+        <ion-list>
+
+          <ion-item class='dark-bg'>
+
+            <div class='pure-g'>
+              <div class='pure-u-1-8'>
+                <img class='pure-img verb-img stack_circle white-bg' style='margin-left:-0.5em' ng-src='{{img_base}}./img/icons/stacks_circled.svg' ng-show='question.student_price > 0'/>
+              </div>
+              <div class='pure-u-7-8'>
+                <h5 class='white-text bold'>
+                  {{question.course.short_name}} <span ng-show='question.student_price > 0' class='white-text opacity-1-2'> ${{question.student_price}}</span>
+                </h5>
+                <div class='nano-text white-text white-space-normal' style='line-height:1.5em;'>
+                  {{question.description}} <span class='blue' ng-repeat="tag in question.tags">#{{tag.name}} </span>
+                </div>
+              </div>
+            </div>
+
+          </ion-item>
+
+          <ion-item class='pure-u-1 item-icon-right relative description-wrapper-item nano-text' ng-hide='progress'>
+            <a ng-click='showAttachActionSheet()'>
+              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip.svg'>
+            </a>
+            <textarea id='description-input'  style='padding-right:3em; font-size:1.25em;' rows="10" class='full-width' ng-model='question.response' placeholder='Describe your problem (optional)'></textarea>
+            <span class='character-count opacity-1-2 ng-class:{"red-text":question.response.length > 500}'>{{500 - question.response.length}}</span>
+          </ion-item>
+
+
+          </ionic-scroll>
+
+      </ion-list>
+  </ion-content>
+</ion-modal-view>

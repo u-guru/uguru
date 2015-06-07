@@ -167,6 +167,7 @@ angular.module('uguru.user', [])
             }
             user.active_proposals = [];
             user.pending_proposals = [];
+            user.active_questions = [];
             user.active_guru_sessions = [];
             user.previous_guru_proposals = [];
             user.pending_student_ratings = [];
@@ -225,9 +226,13 @@ angular.module('uguru.user', [])
                     if (index_proposal.status === 0 && index_proposal.request.status !==0) {
                         user.previous_guru_proposals.push(index_proposal);
                     }
-                    if (index_proposal.status === 0 && index_proposal.request.status === 0) {
+                    if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 0) {
                         index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
                         user.active_proposals.push(index_proposal);
+                    }
+                    if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 1) {
+                        index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
+                        user.active_questions.push(index_proposal);
                     }
                     if (index_proposal.status === 2) {
                         user.pending_proposals.push(index_proposal);
@@ -318,6 +323,7 @@ angular.module('uguru.user', [])
         $scope.user.current_hourly = user.current_hourly;
         $scope.user.previous_guru_proposals = user.previous_guru_proposals;
         $scope.user.is_admin = user.is_admin;
+        $scope.user.active_questions = user.active_questions;
 
         $scope.user.text_notifications = user.text_notifications;
         $scope.user.email_notifications = user.email_notifications;

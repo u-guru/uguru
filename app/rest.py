@@ -309,7 +309,6 @@ class UserOneView(restful.Resource):
             user.summer_15 = request.json.get('summer_15')
 
         if 'recent_position' in request.json:
-            print 'sup'
             recent_position_json = request.json.get('recent_position')
             user.location_services_enabled = recent_position_json.get('location_services_enabled')
             user.recent_latitude = recent_position_json.get('recent_latitude')
@@ -557,8 +556,11 @@ class UserRequestView(restful.Resource):
 
         #check if request is already active
 
-        if course and course.get('id') and user.request_active(course.get('id')):
-            abort(409)
+        if course and course.get('id'):
+            course_id = course.get('id')
+            print 'type', request.json.get('type')
+            if (user.request_active(course_id)):
+                abort(409)
 
         position = request.json.get('position')
 

@@ -257,6 +257,7 @@ angular.module('uguru.guru.controllers')
         var callbackSuccess = function() {
           // $scope.launchGuruInSessionModal();
           $scope.loader.hide();
+
         }
 
         $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope, callbackSuccess);

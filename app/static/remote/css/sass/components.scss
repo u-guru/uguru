@@ -726,6 +726,13 @@ input.dark-search {
     color: $blue !important;
 }
 
+.questions-modal
+.description-wrapper-item
+    {
+        padding: 0.75em 1.25em;
+        font-size: 0.85em;
+    }
+
 .description-modal {
 
     .description-wrapper-item
@@ -1458,6 +1465,16 @@ ion-list.list-inset.visible-overflow.proposal-card-request.disable-user-behavior
     border-color: transparent;
 }
 
-.platform-ios .side-menu-right .white-text{
+.ios .side-menu-right .white-text{
     border-top:20px solid #2B3233;
+}
+
+.character-count {
+    bottom:0.5em;
+    right:0.5em !important;
+    color:black;
+}
+
+.red-text {
+    color:red;
 }
