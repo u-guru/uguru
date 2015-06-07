@@ -334,6 +334,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }, 2000)
       }
 
+
+
       $scope.acceptIncomingStudentProposal = function() {
 
         proposalObj = $scope.proposal;

@@ -752,7 +752,7 @@ class UserRequestView(restful.Resource):
                 print 'response found!', proposal_json.get('response')
                 proposal.question_response = proposal_json.get('response')
 
-                return
+                proposal.request.selected_proposal = proposal
 
                 if calendar_events_json:
                     day_index = 0
@@ -803,6 +803,25 @@ class UserRequestView(restful.Resource):
             if status == Request.STUDENT_RECEIVED_GURU:
                 event_dict = {'status': Request.STUDENT_RECEIVED_GURU, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
+            elif status == Request.QUESTION_ACCEPTED:
+                print 'student has accepted guru'
+                for proposal in _request.proposals:
+
+                    # if another guru was answering this question...
+                    if proposal.guru_id != int(guru_json.get('id')):
+
+                        # Question has been replied by another guru
+                        proposal.status = 12
+                        event_dict = {'status': Proposal.QUESTION_TOO_LATE, 'proposal_id':proposal.id}
+                        event = Event.initFromDict(event_dict)
+                    # this is the guru who was chosen
+
+                    if proposal.guru_id == int(guru_json.get('id')):
+                        proposal.status = 13
+
+                        event_dict = {'status': Proposal.QUESTION_GURU_CHOSEN, 'proposal_id':proposal.id}
+                        event = Event.initFromDict(event_dict)
+
             elif status == Request.STUDENT_REJECTED_GURU:
                 event_dict = {'status': Request.STUDENT_REJECTED_GURU, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)

@@ -399,6 +399,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       //get first one out of array
       var incoming_request = incoming_requests[0];
+      console.log(incoming_request);
 
       //get rid of the first one
       incoming_requests.shift();
@@ -540,6 +541,81 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
     }
 
+    $scope.acceptIncomingQuestion = function() {
+
+      var acceptQuestionCallback = function() {
+
+        requestObj = $scope.incoming_request;
+        requestObj.status = 12;
+
+          //remove request from array
+        $scope.root.util.removeObjectByKey($scope.user.incoming_requests, 'id', $scope.incoming_request.id);
+
+        // $scope.root.util.updateObjectByKey($scope.user.requests, 'id', $scope.incoming_request.id, 'status', 0);
+
+        $scope.loader.show()
+
+        var closeModalAndShowQuestionComplete = function($scope, $state) {
+          $scope.loader.hide();
+          $scope.incomingGuruModal.hide();
+        }
+
+        $scope.user.updateObj($scope.user, 'requests', requestObj, $scope, closeModalAndShowQuestionComplete);
+
+      }
+
+      //remove request from array
+      dialog_title = "Accept this Question?";
+
+      if ($scope.incoming_request.student_price) {
+        dialog_message = "Your card **-" + $scope.user.default_payment_card.card_last4 + " will be billed $" + parseInt($scope.incoming_request.student_price) + ".";
+      } else {
+        dialog_message = "The guru will be notified & their reputation will be increased!";
+      }
+
+      button_arr = ['Not sure yet', 'Yes'];
+
+      if ($scope.platform.web) {
+        if (confirm('Are you sure? \n' + dialog_message)) {
+            acceptQuestionCallback();
+        }
+
+      } else {
+            $scope.root.dialog.confirm(dialog_message, dialog_title, button_arr, [null, acceptQuestionCallback])
+      }
+
+    }
+
+    $scope.rejectIncomingQuestion = function() {
+
+      var rejectQuestionCallback = function() {
+          requestObj = $scope.incoming_request;
+          requestObj.status = 3;
+
+          //remove request from array
+          $scope.root.util.removeObjectByKey($scope.user.incoming_requests, 'id', $scope.incoming_request.id);
+
+          $scope.root.util.updateObjectByKey($scope.user.requests, 'id', $scope.incoming_request.id, 'status', 0);
+
+          $scope.user.updateObj($scope.user, 'requests', requestObj, $scope);
+          $scope.success.show(0, 2000, 'Response rejected. Searching for another Guru to reply.');
+
+          $scope.incomingGuruModal.hide();
+      }
+
+
+      dialog_title = "Are you sure?";
+      dialog_message = "We will try our best to get your question answered again!";
+      button_arr = ['Cancel', 'Sure'];
+      if ($scope.platform.web) {
+        if (confirm('Are you sure? \n' + dialog_message)) {
+          rejectQuestionCallback();
+        }
+      } else {
+        $scope.root.dialog.confirm(dialog_message, dialog_title, button_arr, [null, rejectQuestionCallback])
+      }
+    }
+
     $scope.$on('modal.shown', function() {
 
           if ($scope.incomingGuruModal && $scope.incomingGuruModal.isShown()) {
@@ -563,7 +639,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         //user has incoming request for help
         if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
-          $scope.processIncomingRequests($scope.user.incoming_requests);
+          $timeout(function() {
+            $scope.processIncomingRequests($scope.user.incoming_requests);
+          }, 500)
         }
 
         //student specific functions

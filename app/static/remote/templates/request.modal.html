@@ -79,7 +79,7 @@
               </button>
             </ion-item>
 
-          <ion-toggle ng-hide='progress || !request_fields.show_urgency' ng-model='request.urgency' class='request-form-item' ng-click='request.availability_edit = false;'>
+          <ion-toggle ng-hide='progress || !request_fields.show_urgency' ng-model='request.urgency' class='request-form-item' ng-click='success.show(0, 2000, "Scheduled tutoring sessions coming soon!"); request.urgency = true;'>
             <p> Is this session urgent? </p>
           </ion-toggle>
 

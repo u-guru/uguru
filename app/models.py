@@ -279,9 +279,9 @@ class User(Base):
     def get_transfer_cards(self):
         return [card for card in self.cards if card.is_transfer_card]
 
-    def request_active(self, course_id):
+    def request_active(self, course_id, _type):
         for _request in self.requests:
-            if _request.course_id == course_id and _request.is_active():
+            if _request.course_id == course_id and _request.is_active() and request._type == _type:
                 return True
         return False
 
@@ -879,7 +879,8 @@ class Request(Base):
     DEFAULT_PRICE = 20
 
     GURU_REQUEST = 0
-    QUESTION = 1
+
+    QUESTION_ACCEPTED = 12
 
 
     id = Column(Integer, primary_key=True)
@@ -1008,6 +1009,10 @@ class Proposal(Base):
     GURU_REJECTED_RECURRING = 10
 
     GURU_NO_REPLY_RECURRING = 11
+
+    QUESTION_TOO_LATE = 12
+
+    QUESTION_GURU_CHOSEN = 13
 
     time_created = Column(DateTime)
     time_updated = Column(DateTime)

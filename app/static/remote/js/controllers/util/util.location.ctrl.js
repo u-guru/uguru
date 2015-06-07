@@ -46,6 +46,17 @@ angular.module('uguru.util.controllers')
       });
     }
 
+    $scope.getAddressfromGeolocation = function(latitude, longitude) {
+      var latlng = new google.maps.LatLng(lat, lng);
+      geocoder.geocode({'latLng': latlng}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (results[1]) {
+            console.log(results[1]);
+          }
+        }
+      });
+    }
+
     /*
 
       START AUTOCOMPLETE CODE

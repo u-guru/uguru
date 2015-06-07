@@ -410,8 +410,30 @@ angular.module('uguru.util.controllers')
 
         }
         $scope.nearby_locations = {matches:[]};
+
+
         $scope.attemptToGetLocation = function() {
           $scope.getLocation()
+        }
+
+        $scope.getAddressfromGeolocation = function(lat, lng) {
+          geocoder = new google.maps.Geocoder();
+          var latlng = new google.maps.LatLng(lat, lng);
+          geocoder.geocode({'latLng': latlng}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+              if (results[1]) {
+                var formatted_address = results[1].formatted_address;
+                $scope.request.position = {longitude: lng, latitude: lat};
+                $scope.request.address = formatted_address.split(',').splice(0, 1).join(", ").replace(/\s+/g, " ").replace(/^\s|\s$/g, "");
+                $scope.request.city_info = formatted_address.split(',').splice(1, formatted_address.split(',').length).join(", ").replace(/\s+/g, " ").replace(/^\s|\s$/g, "");
+                $scope.request.place_id = results.place_id;
+                $scope.closeLocationModal();
+                $timeout(function() {
+                  $scope.loader.hide();
+                }, 1000);
+              }
+            }
+          });
         }
 
         $scope.getLocation = function() {
@@ -422,7 +444,7 @@ angular.module('uguru.util.controllers')
           }
 
 
-
+          $scope.loader.show();
           $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
 
               console.log('location found!', position.coords.latitude, position.coords.longitude);
@@ -444,12 +466,15 @@ angular.module('uguru.util.controllers')
               if ($scope.locationModal.isShown()) {
                 $scope.auto_choose_first_location = true;
 
-                var text = document.getElementById('location-input');
-                if (text.value && text.value.length > 0) {
-                  $scope.queryAutocomplete(text.value);
-                } else {
-                  $scope.queryAutocomplete('a');
-                }
+                console.log('getting address from gps coordinates');
+
+                $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
+                // var text = document.getElementById('location-input');
+                // if (text.value && text.value.length > 0) {
+                //   $scope.queryAutocomplete(text.value);
+                // } else {
+                //   $scope.queryAutocomplete('a');
+                // }
 
 
                 $timeout(function() {

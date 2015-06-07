@@ -140,6 +140,18 @@ proposal_fields['id'] = fields.Integer(attribute='id')
 proposal_fields['student_calendar'] = fields.List(fields.Nested(calendar_fields))
 proposal_fields['student_price'] = fields.Float(attribute='student_price')
 proposal_fields['guru_price'] = fields.Float(attribute='guru_price')
+proposal_fields['question_response'] = fields.String(attribute='question_response')
+
+selected_proposal_fields = {}
+selected_proposal_fields['time_created'] = fields.DateTime(attribute='time_created')
+selected_proposal_fields['files'] = fields.Nested(file_fields)
+selected_proposal_fields['status'] = fields.Integer(attribute='status')
+selected_proposal_fields['id'] = fields.Integer(attribute='id')
+selected_proposal_fields['student_price'] = fields.Float(attribute='student_price')
+selected_proposal_fields['guru_price'] = fields.Float(attribute='guru_price')
+selected_proposal_fields['question_response'] = fields.String(attribute='question_response')
+
+request_fields['selected_proposal'] = fields.Nested(selected_proposal_fields)
 
 card_fields = {}
 card_fields['time_created'] = fields.DateTime(attribute='time_created')
@@ -219,6 +231,8 @@ relationship_fields = {}
 relationship_fields['student'] = fields.Nested(student_fields)
 relationship_fields['guru'] = fields.Nested(guru_fields)
 relationship_fields['sessions'] = fields.Nested(session_fields)
+
+
 
 UserSerializer = {
     'id': fields.Integer,

@@ -738,8 +738,13 @@ angular.module('uguru.user', [])
                     }, function(err){
                         if (err.status === 409 ) {
                             if (callback_success) {
+                                $scope.loader.show();
                                 callback_success($scope);
-                                alert('already have an active request for this course!');
+                                $scope.closeContactingModal();
+                                alert('already have an active request or question for this course!');
+                                $timeout(function() {
+                                    $scope.loader.hide()
+                                }, 3000);
                             }
 
                         } else {
