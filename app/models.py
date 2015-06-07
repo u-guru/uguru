@@ -1123,6 +1123,13 @@ class File(Base):
         backref = "files"
     )
 
+    proposal_id = Column(Integer, ForeignKey("proposal.id"))
+    proposal = relationship("Proposal",
+        uselist = False,
+        primaryjoin = "Proposal.id == File.proposal_id",
+        backref = "files"
+    )
+
     user_id = Column(Integer, ForeignKey("user.id"))
     user = relationship("User",
         uselist = False,
