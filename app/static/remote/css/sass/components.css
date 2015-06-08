@@ -1029,3 +1029,16 @@ ion-list.list-inset.visible-overflow.proposal-card-request.disable-user-behavior
 
 .red-text {
   color: red; }
+
+.sidebar-card-input {
+  padding-left: 2.25em !important;
+  font-size: 1.25em !important;
+  font-family: "OpenSans-SemiBold";
+  padding-right: 0px !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+  line-height: normal !important; }
+
+.sidebar-mm-input, .sidebar-yy-input {
+  font-size: 1.25em !important;
+  font-family: "OpenSans-SemiBold";
+  line-height: normal !important; }

@@ -1,12 +1,51 @@
 
 <ion-modal-view class='side-menu-right' id="side_menu" ng-controller='SignupController'>
-  <ion-content class='white-text' scroll='false'>
+
+  <ion-content ng-show='root.vars.show_price_fields' ng-controller='PaymentsController' scroll='false'>
+    <ion-header-bar align-title="center" class='dark-bg-header no-background-image'>
+      <div class="buttons">
+        <button class="button button-clear button-header-link grey-text light nano-text" ng-click='togglePaymentSideBarView()'>Cancel</button>
+      </div>
+      <h1 class="title micro-text">Add Payment</h1>
+      <div class="buttons">
+        <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='savePaymentStatic()'>
+          <span class='ng-class:{"grey-text":card_details.number.length === 0}'>Post</span>
+        </button>
+      </div>
+    </ion-header-bar>
+    <ion-scroll class='has-subheader'>
+                <div class='pure-g'>
+                  <div class='pure-u-1'>
+                    <label class="item item-input item-icon-left">
+                      <i class="icon ion-card placeholder-icon"></i>
+                      <input type="tel" id='card-input' class='sidebar-card-input' ng-model='card_details.number' placeholder='1234 5678 9012 3456'></input>
+                    </label>
+                  </div>
+                </div>
+                <div class='pure-g'>
+                  <div class='pure-u-1-2'>
+                    <label class="item item-input item-icon-right">
+                      <input type="tel" id='mm-input' class='sidebar-mm-input' ng-model='card_details.month'  placeholder='MM'></input>
+                    </label>
+                  </div>
+                  <div class='pure-u-1-2'>
+                    <label class="item item-input item-icon-right">
+                      <input type="tel" id='yy-input' class='sidebar-yy-input' ng-model='card_details.year' placeholder='YY'></input>
+                    </label>
+                  </div>
+                </div>
+
+
+    </ion-scroll>
+  </ion-content>
+
+  <ion-content class='white-text' scroll='false' ng-show='!root.vars.show_price_fields'>
     <div class='pure-g-c flex-column flex-space-between'>
         <div class='pure-g-c flex-column height-40 j-end padding-2em'>
             <div class='center no-margin'>
               <div class='pure-u-1 center float-center'>
                 <img ng-show='user && !user.id'class='pure-img profile-img sidebar-img inline'  src='https://graph.facebook.com/10152573868267292/picture?width=100&height=100'/>
-                <img ng-show='user && user.profile_url'class='pure-img profile-img sidebar-img inline'  src='{{user.profile_url}}'/>
+                <img ng-show='user && user.profile_url' class='pure-img profile-img sidebar-img inline'  src='{{user.profile_url}}'/>
               </div>
             </div>
             <div class='pure-g'>
@@ -34,37 +73,10 @@
           </div>
 
           <div class='flex-item-c flex-column height-40 j-start' ng-show='user && user.id'>
-              <ion-scroll ng-show='root.vars.show_price_fields' ng-controller='PaymentsController'>
-                <div class='pure-g'>
-                  <div class='pure-u-1' ng-show='user && user.name.length > 0'>
-                    <h4 class='semibold black center uppercase opacity-1-2 padding-1em'> Add Card Information </h4>
-                  </div>
-                </div>
-                <div class='pure-u-1'>
-                  <label class="item item-input item-icon-right">
-                    <input type="tel" id='card-input' ng-model='card_input_text' placeholder='•••• •••• •••• ••••'></input>
-                    <i class="icon ion-card placeholder-icon"></i>
-                  </label>
-                </div>
-                <div class='pure-u-3-5'>
-                  <label class="item item-input item-icon-right">
-                    <input type="tel" id='mm-input' ng-model='mm_input_text'  placeholder='MM'></input>
-                  </label>
-                </div>
-                <div class='pure-u-2-5'>
-                  <label class="item item-input item-icon-right">
-                    <input type="tel" id='yy-input' ng-model='yy_input_text' placeholder='YY'></input>
-                  </label>
-                </div>
-
-                <div class='pure-u-1 padding-1em no-padding-bottom'>
-                  <button class='button button-full button-black micro-text' ng-click='savePayment()'>Become a Guru</button>
-                </div>
 
 
-              </ion-scroll>
 
-              <ion-list ng-show='!root.vars.show_price_fields'>
+              <ion-list>
 
 
                 <ion-toggle ng-model="user.email_notifications" ng-change='emailNotificationChange()' toggle-class="toggle-calm">
@@ -77,6 +89,9 @@
 
                   <p style='padding-bottom:0.5em; padding-top:0.5em'class='black nano-text'> Push Notifications </p>
                 </ion-toggle>
+                <ion-item  ng-show='user && user.id && user.cards.length === 0' ng-click='root.vars.show_price_fields = !root.vars.show_price_fields'>
+                  <p class='nano-text black'> Add Payment Method </p>
+                </ion-item>
                 <ion-item ng-click='resetAccount()' ng-show='user.is_admin'>
                   <p class='nano-text black'> Reset Account </p>
                 </ion-item>
@@ -100,6 +115,12 @@
           <div class='pure-g-c flex-column j-start height-20' ng-show='user.is_a_guru && !root.vars.guru_mode'>
             <div class='pure-u-1 padding-1em no-padding-bottom' >
               <button class='button button-full button-black micro-text' ng-click='goToGuruMode()'>Switch to Guru</button>
+            </div>
+          </div>
+
+          <div class='pure-g-c flex-column j-start height-20' ng-show='user && user.id && !user.is_a_guru && !root.vars.guru_mode'>
+            <div class='pure-u-1 padding-1em no-padding-bottom'>
+              <button class='button button-full button-black micro-text' ng-click='savePayment()'>Become a Guru</button>
             </div>
           </div>
 

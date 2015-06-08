@@ -635,6 +635,19 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       });
 
+    $scope.togglePaymentSideBarView = function() {
+      $scope.root.vars.show_price_fields = !$scope.root.vars.show_price_fields;
+      if ($scope.root.vars.show_price_fields) {
+        $timeout(function() {
+
+          var sidebar_input = document.getElementById('card-input')
+          console.log(sidebar_input);
+          sidebar_input.focus();
+
+        }, 500);
+      }
+    }
+
      $scope.$on('$ionicView.enter', function() {
 
         //user has incoming request for help
@@ -677,16 +690,17 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }, false);
 
 
-    // $timeout(function() {
+    // $timeout(function(){
 
-    //   $ionicModal.fromTemplateUrl(BASE + 'templates/price.home.modal.html', {
-    //           scope: $scope,
-    //           animation: 'slide-in-up'
-    //       }).then(function(modal) {
-    //         $scope.priceModal = modal;
-    //         $scope.priceModal.show();
-    //   }, 500);
-    // });
+    //   $ionicSideMenuDelegate.toggleRight();
+    //   $timeout(function() {
+    //     $scope.togglePaymentSideBarView();
+    //     // $timeout(function() {
+    //     //   $scope.beforeEnterFunctionTrigger();
+    //     // }, 1000);
+    //   }, 500)
+
+    // }, 1000)
 
   }
 

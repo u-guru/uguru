@@ -15,6 +15,7 @@
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicHistory, $stateParams, $ionicViewSwitcher, $ionicSideMenuDelegate) {
 
+    $scope.card_details = {number: '', month:'', year:''};
 
 
     // console.log();
@@ -80,7 +81,24 @@
         }
     }
 
-    $scope.savePayment = function() {
+    $scope.savePaymentStatic = function() {
+
+      var successCallback = function() {
+        $scope.success.show(500, 2000, 'Your card was successfully added!');
+        $scope.root.vars.show_price_fields = !$scope.root.vars.show_price_fields;
+      }
+
+      $scope.savePayment(successCallback, null);
+
+    }
+
+    $scope.savePaymentHome = function() {
+
+      $scope.success.show(500, 2000, 'Your card was successfully added!');
+      $ionicSideMenuDelegate.toggleRight();
+    }
+
+    $scope.savePayment = function(callbackSuccess, callbackFailure) {
 
 
 
@@ -98,9 +116,9 @@
       //   //make card shake
       // }
 
-      var cardNum = $scope.card_input_text;
-      var expMM = $scope.mm_input_text;
-      var expYY = $scope.yy_input_text;
+      var cardNum = $scope.card_details.number;
+      var expMM = $scope.card_details.month;
+      var expYY = $scope.card_details.year;
       console.log(cardNum, expMM, expYY);
 
       var stripeResponseHandler = function(status, response) {
@@ -151,8 +169,9 @@
           $scope.user.cards.push(cardInfo);
 
           $scope.user.createObj($scope.user, 'cards', cardInfo, $scope);
-          $scope.success.show(500, 2000, 'Your card was successfully added!');
-          $ionicSideMenuDelegate.toggleRight();
+          if (callbackSuccess) {
+            callbackSuccess();
+          }
         }
     }
 

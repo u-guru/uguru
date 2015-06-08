@@ -55,6 +55,7 @@ angular.module('uguru.util.controllers')
             $scope.loader.hide();
             $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
             $ionicSideMenuDelegate.toggleRight();
+            $scope.$apply();
           },
           function(err) {
             console.log(err)

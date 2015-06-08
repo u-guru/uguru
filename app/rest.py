@@ -487,6 +487,7 @@ class UserOneView(restful.Resource):
         user.guru_sessions = []
         user.student_ratings = []
         user.guru_ratings = []
+        user.cards = []
 
         if user.proposals:
             user.proposals = []
@@ -558,8 +559,7 @@ class UserRequestView(restful.Resource):
 
         if course and course.get('id'):
             course_id = course.get('id')
-            print 'type', request.json.get('type')
-            if (user.request_active(course_id)):
+            if (user.request_active(course_id, request.json.get('type'))):
                 abort(409)
 
         position = request.json.get('position')
@@ -805,6 +805,9 @@ class UserRequestView(restful.Resource):
                 event = Event.initFromDict(event_dict)
             elif status == Request.QUESTION_ACCEPTED:
                 print 'student has accepted guru'
+
+                ## charge student $2 on that card
+
                 for proposal in _request.proposals:
 
                     # if another guru was answering this question...
