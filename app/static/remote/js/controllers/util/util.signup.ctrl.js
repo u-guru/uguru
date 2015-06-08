@@ -19,14 +19,27 @@ angular.module('uguru.util.controllers')
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush) {
 
-
+    $scope.root.vars.show_account_fields = false;
+    $scope.loginMode = true;
+    $scope.headerText = 'Log In';
 
     if (!$scope.loginMode) {
       $scope.loginMode = false;
     }
 
+    $scope.toggleAccountView = function() {
+
+      $scope.root.vars.show_account_fields = !$scope.root.vars.show_account_fields;
+
+    }
+
     $scope.toggleLoginMode = function() {
       $scope.loginMode = !$scope.loginMode;
+      if (!$scope.loginMode) {
+        $scope.headerText = 'Sign Up';
+      } else {
+        $scope.headerText = 'Login Up';
+      }
     }
 
     $scope.signupForm = {

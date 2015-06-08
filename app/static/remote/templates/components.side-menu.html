@@ -1,6 +1,58 @@
 
 <ion-modal-view class='side-menu-right' id="side_menu" ng-controller='SignupController'>
 
+  <ion-content ng-show='root.vars.show_account_fields' scroll='false'>
+    <ion-header-bar align-title="center" class='dark-bg-header no-background-image'>
+      <div class="buttons">
+        <button class="button button-clear button-header-link grey-text light nano-text" ng-click='toggleAccountView()'>Cancel</button>
+      </div>
+      <h1 class="title micro-text">{{headerText}}</h1>
+        <!-- <span ng-show='!loginMode'>Sign Up</span> -->
+      <div class="buttons">
+        <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='signupUser()'>
+          <span class='ng-class:{"grey-text":signupForm.email.length === 0 || signupForm.password.length === 0 || signupForm.first_name.length === 0 || signupForm.last_name.length === 0}'>Submit</span>
+        </button>
+      </div>
+    </ion-header-bar>
+    <ion-scroll class='has-subheader'>
+                <div class='pure-g'>
+                  <div class='pure-u-1-2' ng-show='!loginMode'>
+                    <label class="item item-input item-icon-right">
+                      <input type="tel" id='first-name-input' ng-model='signupForm.first_name'  placeholder='First Name'></input>
+                    </label>
+                  </div>
+                  <div class='pure-u-1-2' ng-show='!loginMode'>
+                    <label class="item item-input item-icon-right">
+                      <input type="tel" id='last-name-input' ng-model='signupForm.last_name' placeholder='Last Name'></input>
+                    </label>
+                  </div>
+                </div>
+                <div class='pure-g'>
+                  <div class='pure-u-1'>
+                    <label class="item item-input">
+                      <input type="tel" id='email-input' ng-model='signupForm.email' placeholder='Email'></input>
+                    </label>
+                  </div>
+                </div>
+                <div class='pure-g'>
+                  <div class='pure-u-1'>
+                    <label class="item item-input">
+                      <input type="tel" id='password-input' ng-model='signupForm.password' placeholder='Password'></input>
+                    </label>
+                  </div>
+                </div>
+
+                <div class='pure-u-1 padding-half'>
+                  <div class='pure-u-1 padding-half center' ng-show='user && !user.id'>
+                      <a class='center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='!loginMode'> or <u>Login</u> Here </a>
+                      <a class='center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='loginMode'> or <u>Sign Up</u> Here </a>
+                  </div>
+                </div>
+
+
+    </ion-scroll>
+  </ion-content>
+
   <ion-content ng-show='root.vars.show_price_fields' ng-controller='PaymentsController' scroll='false'>
     <ion-header-bar align-title="center" class='dark-bg-header no-background-image'>
       <div class="buttons">
@@ -39,7 +91,7 @@
     </ion-scroll>
   </ion-content>
 
-  <ion-content class='white-text' scroll='false' ng-show='!root.vars.show_price_fields'>
+  <ion-content class='white-text' scroll='false' ng-show='!root.vars.show_price_fields && !root.vars.show_account_fields'>
     <div class='pure-g-c flex-column flex-space-between'>
         <div class='pure-g-c flex-column height-40 j-end padding-2em'>
             <div class='center no-margin'>
@@ -113,8 +165,8 @@
             <div class='pure-u-1 padding-1em no-padding-bottom' ng-show='user && !user.id'>
               <button class='button button-full button-black micro-text'  ng-click='signupFacebook()'>Continue with Facebook</button>
             </div>
-            <div class='pure-u-1 padding-half' ng-show='user && !user.id'>
-              <div class='center grey uppercase semibold nano-text'  ng-click='comingSoon()'> or with email </div>
+            <div class='pure-u-1 padding-half center' ng-show='user && !user.id'>
+              <a class='center grey uppercase semibold nano-text'  ng-click='toggleAccountView()'> or with email </a>
             </div>
           </div>
 

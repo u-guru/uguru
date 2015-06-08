@@ -213,6 +213,12 @@ angular.module('uguru.util.controllers')
             }
           }
 
+          $scope.toggleSignupBar = function() {
+            console.log('this was clicked');
+            $scope.root.vars.show_account_fields = !$scope.root.vars.show_account_fields;
+
+          }
+
           $scope.togglePaymentSideBarView = function() {
             $scope.root.vars.show_price_fields = !$scope.root.vars.show_price_fields;
             console.log('this was clicked');
@@ -221,7 +227,11 @@ angular.module('uguru.util.controllers')
 
                 if ($scope.root.vars.price_modal_shown) {
                   $scope.root.vars.price_modal_shown = false;
-                  console.log('sup its shown');
+                  var sidebar_input = document.getElementById('card-input');
+                  document.getElementsByClassName('sidebar-card-input')
+
+                  sidebar_input.focus();
+
                 } else {
                   var sidebar_input = document.getElementById('card-input');
 
