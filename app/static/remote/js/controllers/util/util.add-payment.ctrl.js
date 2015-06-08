@@ -31,22 +31,27 @@
     }
 
     $scope.addCard = function() {
-      $scope.root.vars.show_price_fields = true;
-
-      $timeout(function() {
-
-        $scope.$apply();
-      }, 500)
-
-      $timeout(function() {
-         console.log('shit triggered');
-         var payment_input = document.getElementById('card-input');
-         payment_input.focus();
-         console.log(payment_input);
-         $scope.beforeEnterFunctionTrigger();
-      }, 1000)
-
       $ionicSideMenuDelegate.toggleRight();
+      $timeout(function() {
+        $scope.togglePaymentSideBarView();
+      }, 500);
+      // $scope.root.vars.show_price_fields = true;
+
+      // $timeout(function() {
+
+      //   $scope.$apply();
+      // }, 500)
+
+      // $timeout(function() {
+      //    console.log('shit triggered');
+      //    var payment_input = document.getElementById('card-input');
+      //    payment_input.focus();
+      //    // $scope.beforeEnterFunctionTrigger();
+      // }, 1000)
+
+      $timeout(function() {
+
+      }, 500)
 
     }
 
@@ -84,8 +89,12 @@
     $scope.savePaymentStatic = function() {
 
       var successCallback = function() {
-        $scope.success.show(500, 2000, 'Your card was successfully added!');
-        $scope.root.vars.show_price_fields = !$scope.root.vars.show_price_fields;
+        $scope.success.show(0, 2000, 'Your card was successfully added!');
+        $timeout(function() {
+          $scope.root.vars.show_price_fields = !$scope.root.vars.show_price_fields;
+        }, 500);
+
+
       }
 
       $scope.savePayment(successCallback, null);
@@ -98,23 +107,7 @@
       $ionicSideMenuDelegate.toggleRight();
     }
 
-    $scope.savePayment = function(callbackSuccess, callbackFailure) {
-
-
-
-      // $scope.cardInput = document.getElementById('card-input');
-      // $scope.cardMM = document.getElementById('mm-input');
-      // $scope.cardYY = document.getElementById('yy-input');
-
-      // var cardNum = $scope.cardInput.value.split(" ").join("")
-      // var expMM = $scope.cardMM.value;
-      // var expYY = $scope.cardYY.value;
-      // var cardType = $scope.getCardType(cardNum);
-      // console.log($scope.card_input_text, expMM, expYY);
-      //check for errors
-      // if (!$scope.validatedAddCardForm(cardNum, ccvNum)) {
-      //   //make card shake
-      // }
+    $scope.savePayment = function() {
 
       var cardNum = $scope.card_details.number;
       var expMM = $scope.card_details.month;
@@ -133,8 +126,6 @@
             $scope.card_input_text = '';
             $scope.card_mm_text = '';
             $scope.card_yy_text = '';
-            // alert(response.error.message);
-
         }
         else if ($scope.debitCardOnly && response.card.funding !== "debit") {
             $scope.success.show(0, 2000, "Please Enter a Debit Card. This one appears to be credit.");
@@ -163,15 +154,24 @@
               $scope.user.payment_cards = [];
             }
             $scope.user.payment_cards.push(cardInfo);
-            // $scope.user.payment_cards.push(cardInfo)
           }
 
           $scope.user.cards.push(cardInfo);
 
-          $scope.user.createObj($scope.user, 'cards', cardInfo, $scope);
-          if (callbackSuccess) {
-            callbackSuccess();
+          $scope.loader.show();
+          var successCallback = function($scope, $state) {
+            if ($state.current.name === 'root.home') {
+              $scope.loader.hide();
+              $scope.success.show(0, 2000, 'Your card has been successfully added')
+              $timeout(function() {
+                $ionicSideMenuDelegate.toggleRight();
+              }, 500)
+              $timeout(function() {
+                $scope.togglePaymentSideBarView();
+              }, 1000)
+            }
           }
+          $scope.user.createObj($scope.user, 'cards', cardInfo, $scope, successCallback);
         }
     }
 
@@ -209,11 +209,13 @@
       var user_card = $scope.card;
 
       if ($scope.debitCardOnly) {
+
         for (var i = 0; i < $scope.user.transfer_cards.length; i++) {
           if (user_card.id != $scope.user.transfer_cards[i].id) {
             $scope.user.transfer_cards[i].is_default_transfer = false;
           }
         }
+
         cardInfo.default_transfer = true;
       } else {
 
@@ -267,6 +269,8 @@
         }
       }
 
+
+
       $scope.getCardType = function(number)
         {
             var re = new RegExp("^4");
@@ -280,57 +284,14 @@
             re = new RegExp("^5[1-5]");
             if (number.match(re) != null)
                 return "master";
-
-            re = new RegExp("^6011");
-            if (number.match(re) != null)
+           if (number.match(re) != null)
                 return "discover";
 
             return "";
         }
 
 
-    $scope.beforeEnterFunctionTrigger = function() {
-      // $scope.loader.show();
 
-      // $timeout(function() {
-      //   $scope.loader.hide()
-      //   }, 3000);
-
-      $scope.debitCardOnly = ($stateParams && $stateParams.debitCardOnly) || $scope.user.guru_mode;
-
-      $scope.cardFormComplete = false;
-      $scope.progress_active = false;
-      $scope.actionButtonText = 'save';
-      $scope.headerText = 'Add payment';
-      $scope.placeholderValue = '4242 4242 4242 4242';
-
-      if ($scope.user.guru_mode || $scope.debitCardOnly) {
-        $scope.headerText = 'Add debit card';
-        $scope.placeholderValue = '4000 0566 5566 5556';
-      }
-
-      $scope.card = null;
-      if ($stateParams.cardObj) {
-        $scope.card = JSON.parse($stateParams.cardObj);
-        $scope.actionButtonText = 'clear';
-      }
-
-      $scope.cardInput = document.getElementById('card-input');
-      $scope.cardMM = document.getElementById('mm-input');
-      $scope.cardYY = document.getElementById('yy-input');
-
-
-      if ($scope.card) {
-        $scope.cardInput.value = '**** **** **** ' + $scope.card.card_last4;
-        $scope.cardMM.value = '**';
-        $scope.cardYY.value = '**';
-      } else {
-        $scope.cardInput.focus();
-      }
-
-      // $scope.cardInput.addEventListener('keyup', checkInputState);
-      // $scope.cardMM.addEventListener('keyup', checkInputState);
-    }
 
     $scope.$on('$ionicView.beforeEnter', function(){
 

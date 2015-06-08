@@ -657,6 +657,9 @@ angular.module('uguru.util.controllers')
 
         console.log('location', $scope.request.position.latitude);
         if (!$scope.request.selected_price_option && $scope.root.vars.last_verb_index_clicked > 0) {
+          console.log('launching choose price modal');
+          $scope.root.vars.price_modal_shown = true;
+          $scope.root.vars.show_price_fields = false;
           $scope.launchChoosePriceModal();
           return;
         }

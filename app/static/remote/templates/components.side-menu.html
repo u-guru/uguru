@@ -8,7 +8,7 @@
       </div>
       <h1 class="title micro-text">Add Payment</h1>
       <div class="buttons">
-        <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='savePaymentStatic()'>
+        <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='savePayment()'>
           <span class='ng-class:{"grey-text":card_details.number.length === 0}'>Post</span>
         </button>
       </div>
@@ -89,8 +89,14 @@
 
                   <p style='padding-bottom:0.5em; padding-top:0.5em'class='black nano-text'> Push Notifications </p>
                 </ion-toggle>
-                <ion-item  ng-show='user && user.id && user.cards.length === 0' ng-click='root.vars.show_price_fields = !root.vars.show_price_fields'>
+                <ion-item  ng-show='user && user.id && user.cards.length === 0' ng-click='togglePaymentSideBarView()'>
                   <p class='nano-text black'> Add Payment Method </p>
+                </ion-item>
+                <ion-item ng-click='togglePaymentSideBarView()' ng-show='user && user.id && user.cards.length > 0'>
+                  <p class='nano-text black'>
+                    Payment Card Details
+                  </p>
+                  <p class='opacity-6-10 nano-text'>{{user.default_payment_card.card_type}} **-{{user.default_payment_card.card_last4}}</p>
                 </ion-item>
                 <ion-item ng-click='resetAccount()' ng-show='user.is_admin'>
                   <p class='nano-text black'> Reset Account </p>
@@ -118,11 +124,11 @@
             </div>
           </div>
 
-          <div class='pure-g-c flex-column j-start height-20' ng-show='user && user.id && !user.is_a_guru && !root.vars.guru_mode'>
+          <!-- <div class='pure-g-c flex-column j-start height-20' ng-show='user && user.id && !user.is_a_guru && !root.vars.guru_mode'>
             <div class='pure-u-1 padding-1em no-padding-bottom'>
-              <button class='button button-full button-black micro-text' ng-click='savePayment()'>Become a Guru</button>
+              <button class='button button-full button-black micro-text' ng-click='savePayment()'>Save</button>
             </div>
-          </div>
+          </div> -->
 
           <div class='pure-g-c flex-column j-start height-20' ng-show='user.is_a_guru && root.vars.guru_mode'>
             <div class='pure-u-1 padding-1em no-padding-bottom' >

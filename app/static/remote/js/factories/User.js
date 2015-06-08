@@ -767,6 +767,10 @@ angular.module('uguru.user', [])
 
                         $localstorage.setObject('user', $scope.user);
 
+                        if (callback_success) {
+                            callback_success($scope, $state);
+                        }
+
                     }, function(err){
                         console.log(JSON.stringify(err));
                         console.log('error...something happened with the server;')

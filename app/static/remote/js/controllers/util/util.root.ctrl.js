@@ -213,6 +213,25 @@ angular.module('uguru.util.controllers')
             }
           }
 
+          $scope.togglePaymentSideBarView = function() {
+            $scope.root.vars.show_price_fields = !$scope.root.vars.show_price_fields;
+            console.log('this was clicked');
+            if ($scope.root.vars.show_price_fields) {
+              $timeout(function() {
+
+                if ($scope.root.vars.price_modal_shown) {
+                  $scope.root.vars.price_modal_shown = false;
+                  console.log('sup its shown');
+                } else {
+                  var sidebar_input = document.getElementById('card-input');
+
+                  sidebar_input.focus();
+                }
+
+              }, 1000);
+            }
+          }
+
           $scope.requestPushNotifications = function() {
 
               if (!$scope.user.push_notifications) {

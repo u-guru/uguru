@@ -23,7 +23,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
   console.log($scope.user);
 
-
+  $scope.root.vars.show_price_fields = false;
   //case-specific functions
 
     $scope.cancelRequest = function(request) {
@@ -635,18 +635,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       });
 
-    $scope.togglePaymentSideBarView = function() {
-      $scope.root.vars.show_price_fields = !$scope.root.vars.show_price_fields;
-      if ($scope.root.vars.show_price_fields) {
-        $timeout(function() {
 
-          var sidebar_input = document.getElementById('card-input')
-          console.log(sidebar_input);
-          sidebar_input.focus();
-
-        }, 500);
-      }
-    }
 
      $scope.$on('$ionicView.enter', function() {
 
