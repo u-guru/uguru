@@ -175,6 +175,7 @@ angular.module('uguru.util.controllers')
 
         $scope.completeSignup();
         $scope.loader.hide();
+        $scope.success.show(0, 2000, 'Login Successful!');
         $timeout(function() {
           $ionicSideMenuDelegate.toggleRight();
         }, 1500);
@@ -392,7 +393,7 @@ angular.module('uguru.util.controllers')
 
     $scope.completeSignup = function() {
 
-      if ($scope.loginMode) {
+      if ($scope.loginMode && $scope.root.vars.show_account_fields) {
         $scope.loginUser();
         return;
       }
