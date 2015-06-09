@@ -83,7 +83,7 @@ angular.module('uguru.util.controllers')
 
     $scope.closeSignupModal = function(callback) {
       $scope.loader.hide();
-      if ($scope.platform.mobile && $scope.root.keyboard.isVisible()) {
+      if ($scope.platform.mobile && $scope.signupModal &&  $scope.root.keyboard.isVisible()) {
         $scope.root.keyboard.close();
         $timeout(function() {
           $scope.signupModal.hide();
@@ -354,7 +354,7 @@ angular.module('uguru.util.controllers')
       if (!$scope.validateLoginForm() && !$scope.user.fb_id) {
         return;
       }
-      console.log('login attmepted');
+
       $scope.loginPayload = {
         'email': $scope.signupForm.email,
         'password': $scope.signupForm.password
@@ -371,13 +371,16 @@ angular.module('uguru.util.controllers')
       User.login($scope.loginPayload).then(function(user) {
 
           var processed_user = User.process_results(user.plain());
-          User.assign_properties_to_root_scope($scope, processed_user)
+          User.assign_properties_to_root_scope($scope, processed_user);
           $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
-          var callback = function() {
-            $scope.success.show(0, 2000, 'Login Successful!');
-          }
-          $scope.closeSignupModal(callback);
+
+          $scope.success.show(0, 2000, 'Login Successful!');
+
+
+          $scope.toggleAccountView();
+          $ionicSideMenuDelegate.toggleRight();
+
 
       }, function(err) {
         if (err.status === 401) {
@@ -389,10 +392,14 @@ angular.module('uguru.util.controllers')
 
     $scope.completeSignup = function() {
 
-      if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
+      if ($scope.loginMode) {
+        $scope.loginUser();
         return;
       }
 
+      if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
+        return;
+      }
 
       $scope.signupForm.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
 
@@ -411,13 +418,9 @@ angular.module('uguru.util.controllers')
 
           console.log(JSON.stringify($scope.user));
 
-          User.assign_properties_to_root_scope($scope, processed_user)
+          User.assign_properties_to_root_scope($scope, processed_user);
 
-          // if (!$scope.user.profile_url) {
-          //   $scope.user.profile_url = $scope.signupForm.profile_url;
-          // }
           $scope.user.guru_mode = false;
-          // $scope.user.updateAttr('guru_mode', $scope.user, false);
 
           $localstorage.setObject('user', $scope.user);
 
@@ -432,15 +435,9 @@ angular.module('uguru.util.controllers')
                 $scope.closeSignupModal(callRequestHelp);
             }
 
-
-
-
-
             User.getUserFromServer($scope, null, $state)
 
             if ($scope.root.vars.pending_request)  {
-
-
 
               $scope.root.vars.pending_request = false;
 
@@ -464,8 +461,9 @@ angular.module('uguru.util.controllers')
       },
       function(err){
         console.log(err);
+          $scope.loader.hide();
         if (err.status === 409) {
-          alert('Email already exists in our system! Login?');
+          alert('Email already exists in our system! Login?')
           $scope.toggleLoginMode();
           $scope.signupForm.password = '';
         }

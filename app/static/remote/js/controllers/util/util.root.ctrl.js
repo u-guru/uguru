@@ -132,6 +132,12 @@ angular.module('uguru.util.controllers')
 
           }
 
+          $scope.showSideBar = function() {
+
+            $ionicSideMenuDelegate.toggleRight();
+
+          }
+
 
           //check if local courses exists
           if (!$scope.root.vars.courses) {
@@ -165,6 +171,9 @@ angular.module('uguru.util.controllers')
               console.log('something funky is going on...')
             }
           }
+
+
+
 
           $scope.loader = {
             show: function() {
@@ -213,11 +222,7 @@ angular.module('uguru.util.controllers')
             }
           }
 
-          $scope.toggleSignupBar = function() {
-            console.log('this was clicked');
-            $scope.root.vars.show_account_fields = !$scope.root.vars.show_account_fields;
 
-          }
 
           $scope.togglePaymentSideBarView = function() {
             $scope.root.vars.show_price_fields = !$scope.root.vars.show_price_fields;

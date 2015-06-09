@@ -281,7 +281,7 @@ class User(Base):
 
     def request_active(self, course_id, _type):
         for _request in self.requests:
-            if _request.course_id == course_id and _request.is_active() and request._type == _type:
+            if _request.course_id == course_id and _request.is_active() and _request._type == _type:
                 return True
         return False
 

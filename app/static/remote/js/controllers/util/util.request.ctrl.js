@@ -599,6 +599,12 @@ angular.module('uguru.util.controllers')
           }
     }
 
+    $scope.showSidebar = function() {
+
+      $ionicSideMenuDelegate.toggleRight();
+
+    }
+
 
     //each time key is pressed for the input, this function is called
     $scope.autocompleteQuerycallback = function(predictions, status) {
@@ -656,7 +662,7 @@ angular.module('uguru.util.controllers')
         }
 
         console.log('location', $scope.request.position.latitude);
-        if (!$scope.request.selected_price_option && $scope.root.vars.last_verb_index_clicked > 0) {
+        if ((!$scope.request.selected_price_option && $scope.request.selected_price_option !== 0) && $scope.root.vars.last_verb_index_clicked > 0) {
           console.log('launching choose price modal');
           $scope.root.vars.price_modal_shown = true;
           $scope.root.vars.show_price_fields = false;
@@ -695,7 +701,7 @@ angular.module('uguru.util.controllers')
          else {
           !$scope.request.availability_edit || $scope.toggleAvailability();
 
-
+          console.log('submitting request');
             $scope.launchContactingModal();
 
             var callbackSuccess = function($scope, $state) {

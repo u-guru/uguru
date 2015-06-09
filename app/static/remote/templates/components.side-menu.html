@@ -9,7 +9,7 @@
       <h1 class="title micro-text">{{headerText}}</h1>
         <!-- <span ng-show='!loginMode'>Sign Up</span> -->
       <div class="buttons">
-        <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='signupUser()'>
+        <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='completeSignup()'>
           <span class='ng-class:{"grey-text":signupForm.email.length === 0 || signupForm.password.length === 0 || signupForm.first_name.length === 0 || signupForm.last_name.length === 0}'>Submit</span>
         </button>
       </div>
@@ -30,14 +30,14 @@
                 <div class='pure-g'>
                   <div class='pure-u-1'>
                     <label class="item item-input">
-                      <input type="tel" id='email-input' ng-model='signupForm.email' placeholder='Email'></input>
+                      <input type="email" id='email-input' ng-model='signupForm.email' placeholder='Email'></input>
                     </label>
                   </div>
                 </div>
                 <div class='pure-g'>
                   <div class='pure-u-1'>
                     <label class="item item-input">
-                      <input type="tel" id='password-input' ng-model='signupForm.password' placeholder='Password'></input>
+                      <input type="password" id='password-input' ng-model='signupForm.password' placeholder='Password'></input>
                     </label>
                   </div>
                 </div>
