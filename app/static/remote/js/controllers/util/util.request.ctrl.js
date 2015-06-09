@@ -709,6 +709,7 @@ angular.module('uguru.util.controllers')
               $timeout(function() {
               $scope.closeRequestModal();
               $scope.verbModal.hide();
+              $scope.contactingModal.hide();
               if ($scope.choosePriceModal) {
                   $scope.closeChoosePriceModal();
                 }
@@ -728,7 +729,7 @@ angular.module('uguru.util.controllers')
 
 
                   $scope.closeContactingModal();
-                  $scope.success.show(0, 5000, 'Oops... Sorry something went wrong, please try again, or contact support!');
+                  // $scope.success.show(0, 5000, 'Oops... Sorry something went wrong, please try again, or contact support!');
 
 
                 }
