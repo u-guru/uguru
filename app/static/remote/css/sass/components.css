@@ -1019,7 +1019,7 @@ ion-list.list-inset.visible-overflow.proposal-card-request.disable-user-behavior
 .tabs.dark-bg {
   border-color: transparent; }
 
-.ios .side-menu-right .white-text {
+.platform-ios .side-menu-right .ios-status-bar-dark {
   border-top: 20px solid #2B3233; }
 
 .character-count {
@@ -1042,3 +1042,6 @@ ion-list.list-inset.visible-overflow.proposal-card-request.disable-user-behavior
   font-size: 1.25em !important;
   font-family: "OpenSans-SemiBold";
   line-height: normal !important; }
+
+.fb-blue-bg {
+  background-color: #4D689F !important; }
