@@ -1076,7 +1076,7 @@ p.university-header {
   font-family: "OpenSans-SemiBold"; }
 
 .student-width {
-  width: 26% !important; }
+  width: 30% !important; }
 
 .professional-width {
   width: 37%; }
@@ -1110,7 +1110,6 @@ p.university-header {
   margin-right: 2em;
   border-bottom: 2px solid;
   border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0px 7px 10px -5px black;
   position: relative;
   text-transform: uppercase;
   text-align: left;
@@ -1150,3 +1149,7 @@ p.university-header {
   background-color: inherit;
   border-color: inherit;
   color: inherit; }
+
+.button-footer {
+  margin-bottom: 0px !important;
+  bottom: 0px !important; }
