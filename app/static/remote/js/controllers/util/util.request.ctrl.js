@@ -463,19 +463,12 @@ angular.module('uguru.util.controllers')
               }
               $scope.user.updateAttr('recent_position', $scope.user, payload, null, $scope);
 
-              if ($scope.locationModal.isShown()) {
+              if ($scope.locationModal && $scope.locationModal.isShown()) {
                 $scope.auto_choose_first_location = true;
 
                 console.log('getting address from gps coordinates');
 
                 $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
-                // var text = document.getElementById('location-input');
-                // if (text.value && text.value.length > 0) {
-                //   $scope.queryAutocomplete(text.value);
-                // } else {
-                //   $scope.queryAutocomplete('a');
-                // }
-
 
                 $timeout(function() {
                   $scope.$apply();

@@ -110,6 +110,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.studentSessionDetailsModal.hide();
     }
 
+
+
     $scope.cancelStudentActiveSession = function(session) {
 
               //guru goes back to session 'pending', maybe clicked start by accident

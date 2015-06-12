@@ -43,7 +43,7 @@
                 </div>
 
                 <div class='pure-u-1 padding-half'>
-                  <div class='pure-u-1 padding-half center' ng-show='user && !user.id'>
+                  <div class='pure-u-1 padding-half center' id="E2E_SwitchLog" ng-show='user && !user.id'>
                       <a class='center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='!loginMode'> or <u>Login</u> Here </a>
                       <a class='center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='loginMode'> or <u>Sign Up</u> Here </a>
                   </div>
@@ -165,12 +165,12 @@
             <div class='pure-u-1 padding-1em no-padding-bottom' ng-show='user && !user.id'>
               <button class='button button-full button-black micro-text fb-blue-bg'  ng-click='signupFacebook()'>Continue with Facebook</button>
             </div>
-            <div class='pure-u-1 padding-half center' ng-show='user && !user.id'>
-              <a class='center grey uppercase semibold nano-text'  ng-click='toggleAccountView()'> or with email </a>
-            </div>
+              <div class='pure-u-1 padding-half center' id="E2E_Email" ng-show='user && !user.id'>
+                  <a class='center grey uppercase semibold nano-text' id="email" ng-click='toggleAccountView()'> or with email </a>
+              </div>
           </div>
 
-          <div class='pure-g-c flex-column j-start height-20' ng-show='user.is_a_guru && !root.vars.guru_mode'>
+          <div class='pure-g-c flex-column j-start height-20'  ng-show='user.is_a_guru && !root.vars.guru_mode'>
             <div class='pure-u-1 padding-1em no-padding-bottom' >
               <button class='button button-full button-black micro-text' ng-click='goToGuruMode()'>Switch to Guru</button>
             </div>

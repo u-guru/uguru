@@ -1,6 +1,13 @@
+
 describe('Question Button is disabled when Data is empty?',function(){
     //check Question is disable.
+    beforeEach(function () {
 
+        browser.manage().window().setSize(414, 736);
+    });
+     it('hi', function () {
+           browser.sleep(5000);
+        },30000);
 });
 describe('Cancel Button', function () {
     //Able to cancel ?
@@ -37,7 +44,7 @@ describe('key in the text', function () {
     //does keyboard work ?
 
 });
-descrube('offer cash', function () {
+describe('offer cash', function () {
     //incresase cash
     //submit the cash
     //cancel the Question Request

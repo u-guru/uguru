@@ -1497,3 +1497,139 @@ ion-list.list-inset.visible-overflow.proposal-card-request.disable-user-behavior
 .fb-blue-bg {
     background-color:#4D689F !important;
 }
+
+.light-blue-bg {
+    background-color:#68A7D0 !important;
+    border-color:#68A7D0;
+}
+
+.button-footer {
+    width:100% !important;
+    font-family: OpenSans-Bold !important;
+    font-size: 90% !important;
+}
+
+.button-footer.button.activated, button.active, .button.button-footer.active,
+.button-footer.button:focus {
+    color:white;
+    opacity: 0.85;
+}
+
+// select
+// .add-dotted-border {
+//     border-bottom:2px dotted rgba(255,255,255,0.6);
+//     font-size:120%;
+// }
+
+p.university-header {
+    font-size:125%;
+}
+
+.university select {
+    background-color: transparent;
+    color: inherit;
+    outline: none;
+    border: none;
+    -webkit-appearance: none;
+    border-bottom:2px dotted rgba(255,255,255,0.6) !important;
+    font-size:110% !important;
+    color:$blue !important;
+    border-radius:0px;
+    line-height:1.33em;
+    font-family: "OpenSans-SemiBold";
+}
+
+.student-width {
+    width:26% !important;
+}
+
+.professional-width {
+    width: 37%;
+}
+
+.university-label {
+    background-color: transparent;
+    border: 0px;
+    color: white;
+    margin: 1em 1.5em 0;
+    border-bottom:2px solid rgba(255,255,255,0.5);
+    box-shadow: 0px 7px 10px -5px black;
+
+    input {
+        margin-left: 1.33em !important;
+        background-color: transparent !important;
+        color:white;
+        padding: 0 0.5em;
+        display:inline-block;
+        font-family:"OpenSans-Bold";
+        text-transform:uppercase;
+    }
+    .university-input-container {
+        width:100%;
+        margin-left: -0.8em;
+        margin-bottom: -0.3em;
+        position:relative;
+
+    }
+}
+
+.fake-university-input {
+    color: rgba(255,255,255,0.33);
+    border: 0px;
+    background-color:transparent;
+    margin-left:2em;
+    margin-right:2em;
+    border-bottom: 2px solid;
+    border-bottom:2px solid rgba(255,255,255,0.5);
+    box-shadow: 0px 7px 10px -5px black;
+    position:relative;
+    text-transform: uppercase;
+    text-align:left;
+    font-family: "OpenSans-Bold";
+    line-height:1em;
+    padding-bottom: 0.75em;
+    .icon {
+        display:inline-block;
+        color: rgba(255,255,255,0.5);
+        // position:absolute;
+        left:0px;
+        top:0.4em;
+    }
+    p {
+        font-size:1.1em;
+        margin-left:-0.7em;
+    }
+}
+
+
+.padding-half-horizontal {
+    padding-right: 0.5em;
+    padding-left:0.5em;
+}
+
+.bold {
+    font-family: "OpenSans-Bold" !important;
+}
+
+.subdark-bg {
+    background-color:#363B3D;
+}
+
+.no-box-shadow {
+    box-shadow:none;
+}
+
+.university-view-2 .university-label {
+    padding-top: 0;
+    padding-left: 1.2em;
+}
+
+.university-list.active .university-list.activated {
+    color: $blue;
+}
+
+.fake-university-input.active, .fake-university-input.activated {
+    background-color:inherit;
+    border-color:inherit;
+    color:inherit;
+}

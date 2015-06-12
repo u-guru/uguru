@@ -10,7 +10,8 @@ if (LOCAL) {
   BASE = 'remote/';
  // BASE_URL = 'http://192.168.42.66:8100';
 //  REST_URL = 'http://192.168.42.66:5000';
-  BASE_URL = 'localhost:8100';
+
+  BASE_URL = 'http://localhost:8100';
   // REST_URL = 'localhost:5000';
   REST_URL = 'http://192.168.42.66:5000';
   // var REST_URL = 'http://uguru-rest.herokuapp.com'
@@ -32,6 +33,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   $cordovaDialogs, Version, $rootScope, $cordovaSplashscreen,
   $templateCache, Device, User, $cordovaLocalNotification,
   $cordovaGeolocation) {
+
 
 $ionicPlatform.ready(function() {
 
@@ -152,6 +154,11 @@ $ionicPlatform.ready(function() {
         url: '/home',
         templateUrl: BASE + 'templates/student.home.new.html',
         controller: 'StudentHomeController'
+  }).
+  state('root.university', {
+        url: '/university',
+        templateUrl: BASE + 'templates/university.html',
+        controller: 'HomeController'
   }).
   state('root.home', {
         url: '/new-home',
@@ -415,7 +422,7 @@ $ionicPlatform.ready(function() {
 
   // if none of the above states are matched, use this as the fallback
   // $urlRouterProvider.otherwise('/tab/dash');
-  $urlRouterProvider.otherwise('/new-home');
+  $urlRouterProvider.otherwise('/university');
   // $urlRouterProvider.otherwise('/home');
 
 });

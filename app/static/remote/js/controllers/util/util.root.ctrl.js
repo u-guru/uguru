@@ -55,6 +55,12 @@ angular.module('uguru.util.controllers')
             $scope.img_base = '';
           }
 
+          if ($scope.user && $scope.user.university_id) {
+            console.log('user already has university');
+            $ionicViewSwitcher.nextDirection('enter');
+            $state.go('^.home');
+          }
+
           $scope.rootUser = User;
           $scope.root = RootService;
           $scope.root.vars = {};
@@ -109,6 +115,61 @@ angular.module('uguru.util.controllers')
                 console.log(err);
               })
 
+
+          $scope.getLocation = function() {
+
+          var posOptions = {
+            timeout: 10000,
+            enableHighAccuracy: false, //may cause high errors if true
+          }
+
+
+          $scope.loader.show();
+          $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
+
+              console.log('location found!', position.coords.latitude, position.coords.longitude);
+
+              $scope.request.position = position.coords;
+
+              $scope.user.recent_position = position;
+
+              $scope.user.location_services_enabled = true;
+
+
+              payload = {
+                'location_services_enabled': true,
+                'recent_latitude': position.coords.latitude,
+                'recent_longitude': position.coords.longitude
+              }
+              $scope.user.updateAttr('recent_position', $scope.user, payload, null, $scope);
+
+              if ($scope.locationModal && $scope.locationModal.isShown()) {
+                $scope.auto_choose_first_location = true;
+
+                console.log('getting address from gps coordinates');
+
+                $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
+
+                $timeout(function() {
+                  $scope.$apply();
+                }, 1000);
+              }
+
+          }, function(error) {
+              //show & let them know we couldn't find it
+              $scope.loader.hide()
+              $scope.user.recent_position = null;
+              alert('Sorry! Please check your privacy settings check your GPS signal.');
+
+              var text = document.getElementById('location-input');
+                if (!text.value && text.value.length === 0) {
+                  $timeout(function() {
+                    text.focus();
+                  }, 1000)
+                }
+          });
+
+        };
 
           $scope.logoutUser = function() {
             $localstorage.setObject('user', []);
@@ -190,22 +251,7 @@ angular.module('uguru.util.controllers')
               $scope.root.vars.loaderOn = false;
             }
           }
-          // $scope.backgroundRefresh = function() {
 
-          //   //check if they are in these particular views and user_refresh is false
-          //    if (( $state.current.name === 'root.student-home' ||
-          //         $state.current.name === 'root.guru-home') &&
-          //         !$scope.root.vars.user_refresh) {
-
-          //       $scope.root.vars.user_refresh = true;
-          //       $timeout(function() {
-          //         $scope.doRefresh(true);
-          //       }, 15000)
-
-          //    } else if ($scope.root.vars.user_refresh) {
-          //       console.log('background refresh is already happening bro, check again in 15seconds');
-          //    }
-          // }
 
           $scope.doRefresh = function(repeat) {
             $scope.root.vars.user_refresh = true;
@@ -360,6 +406,8 @@ angular.module('uguru.util.controllers')
             ios: false
           }
 
+
+
           $ionicPlatform.ready(function() {
 
 
@@ -459,8 +507,6 @@ angular.module('uguru.util.controllers')
             }
 
 
-
-
           });
 
 
@@ -510,6 +556,8 @@ angular.module('uguru.util.controllers')
               // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
             }, false);
           });
+
+
 
         }
 ]);

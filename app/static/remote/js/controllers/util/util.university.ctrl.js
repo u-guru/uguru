@@ -14,16 +14,28 @@ angular.module('uguru.util.controllers', [])
   '$cordovaKeyboard',
   '$ionicLoading',
   '$cordovaStatusbar',
+  '$ionicViewSwitcher',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $q, University,
-  $cordovaKeyboard, $ionicLoading, $cordovaStatusbar) {
+  $cordovaKeyboard, $ionicLoading, $cordovaStatusbar,
+  $ionicViewSwitcher) {
 
     $scope.search_text = '';
     $scope.keyboard_force_off = false;
+    $scope.view = 1;
+
+    $scope.toggleView = function(index) {
+      $scope.view = index;
+    }
 
     $scope.setFocus = function(target) {
       if ($scope.search_text.length === 0 && !$scope.keyboard_force_off) {
-        document.getElementsByName("university-input")[0].focus();
+        var element = document.getElementById("university-input")
+        if (element) {
+          element.focus();
+        } else {
+          console.log('University input could not be found');
+        }
       }
     };
 
@@ -112,19 +124,15 @@ angular.module('uguru.util.controllers', [])
         return;
       }
 
-      if (window.StatusBar) {
-          StatusBar.styleDefault();
-      }
-
       var successCallback = function() {
         console.log('callback executed');
         console.log('cleared previous universities courses from the cache')
-          //TODO COME BACK TO THIS
+
           $scope.user.guru_courses = [];
           $scope.user.student_courses = [];
           $localstorage.removeObject('courses');
 
-      }
+      };
 
       //if they have already selected one
       if ($scope.user.university_id && university.id !== $scope.user.university_id) {
@@ -136,11 +144,13 @@ angular.module('uguru.util.controllers', [])
 
         if ($scope.platform.mobile) {
             dialog.arr_callback = [null, successCallback];
-        } else {
-            dialog.arr_callback = [successCallback, successCallback];
+            $scope.root.dialog.confirm(dialog.msg, dialog.title, dialog.button_arr, dialog.arr_callback);
+        }  else {
+          if (confirm(dialog.msg)) {
+            successCallback();
+          }
         }
 
-        $scope.root.dialog.confirm(dialog.msg, dialog.title, dialog.button_arr, dialog.arr_callback);
       }
 
       $scope.user.university_id = university.id;
@@ -152,10 +162,10 @@ angular.module('uguru.util.controllers', [])
       $scope.rootUser.updateLocal($scope.user);
 
       $scope.user.updateAttr('university_id', $scope.user, $scope.user.university_id);
-      $scope.closeKeyboard();
-      // $scope.showSuccess('University Saved!');
+      $scope.success.show(0, 2000, 'Saved!');
       $timeout(function() {
-        $scope.addUniversityModal.hide();
+        $ionicViewSwitcher.nextDirection('forward');
+        $state.go('^.home')
       }, 1000);
 
     }
