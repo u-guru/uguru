@@ -174,7 +174,7 @@ angular.module('uguru.root.services', [])
           });
         },
 
-        confirm: function(msg, title, button_array, arr_callback) {
+        confirm: function(msg, title, button_array, arr_callback, $scope) {
           $cordovaDialogs.confirm(msg, title, button_array).then(function(button_index) {
             if (button_index === 1) {
                 if (arr_callback[0]) {

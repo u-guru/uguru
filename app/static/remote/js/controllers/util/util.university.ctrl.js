@@ -15,10 +15,11 @@ angular.module('uguru.util.controllers', [])
   '$ionicLoading',
   '$cordovaStatusbar',
   '$ionicViewSwitcher',
+  '$cordovaGeolocation',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $q, University,
   $cordovaKeyboard, $ionicLoading, $cordovaStatusbar,
-  $ionicViewSwitcher) {
+  $ionicViewSwitcher, $cordovaGeolocation) {
 
     $scope.search_text = '';
     $scope.keyboard_force_off = false;
@@ -140,11 +141,29 @@ angular.module('uguru.util.controllers', [])
       var successCallback = function() {
         console.log('callback executed');
         console.log('cleared previous universities courses from the cache')
+        $scope.user.guru_courses = [];
+        $scope.user.student_courses = [];
+        $localstorage.removeObject('courses');
 
-          $scope.user.guru_courses = [];
-          $scope.user.student_courses = [];
-          $localstorage.removeObject('courses');
+        $scope.user.university_id = university.id;
+        $scope.user.university = university;
+        $scope.user.university.latitude = university.location.latitude;
+        $scope.user.university.longitude = university.location.longitude;
+        $scope.search_text = '';
+        $scope.keyboard_force_off = true;
+        $scope.rootUser.updateLocal($scope.user);
 
+        payload = {'university_id': $scope.user.university_id};
+
+        var postUniversitySelectedCallback = function() {
+          $scope.success.show(0, 2000, 'Saved!');
+          $timeout(function() {
+            $ionicViewSwitcher.nextDirection('forward');
+            $state.go('^.home')
+          }, 1000);
+        }
+
+        $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
       };
 
       //if they have already selected one
@@ -164,25 +183,124 @@ angular.module('uguru.util.controllers', [])
           }
         }
 
+        return;
+
       }
 
-      $scope.user.university_id = university.id;
-      $scope.user.university = university;
-      $scope.user.university.latitude = university.location.latitude;
-      $scope.user.university.longitude = university.location.longitude;
-      $scope.search_text = '';
-      $scope.keyboard_force_off = true;
-      $scope.rootUser.updateLocal($scope.user);
 
-      $scope.user.updateAttr('university_id', $scope.user, $scope.user.university_id);
-      $scope.success.show(0, 2000, 'Saved!');
-      $timeout(function() {
-        $ionicViewSwitcher.nextDirection('forward');
-        $state.go('^.home')
-      }, 1000);
+        //else proceed normally
+        $scope.user.university_id = university.id;
+        $scope.user.university = university;
+        $scope.user.university.latitude = university.location.latitude;
+        $scope.user.university.longitude = university.location.longitude;
+        $scope.search_text = '';
+        $scope.keyboard_force_off = true;
+        $scope.rootUser.updateLocal($scope.user);
+
+        payload = {'university_id': $scope.user.university_id};
+
+
+
+        $scope.user.updateAttr('university_id', $scope.user, payload, null, $scope)
+
+        $scope.success.show(0, 2000, 'Saved!');
+          $timeout(function() {
+            $ionicViewSwitcher.nextDirection('forward');
+            $state.go('^.home')
+        }, 1000);
+
 
     }
 
+    $scope.getLocation = function() {
+
+            var posOptions = {
+              timeout: 10000,
+              enableHighAccuracy: false, //may cause high errors if true
+            }
+
+
+            $scope.loader.show();
+            $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
+
+                console.log('location found!', position.coords.latitude, position.coords.longitude);
+
+
+                //case 1 --> user is getting location
+                if ($scope.request && $scope.request.position) {
+
+                  $scope.request.position = position.coords;
+
+                  $scope.user.recent_position = position;
+
+                  $scope.user.location_services_enabled = true;
+
+
+                  payload = {
+                    'location_services_enabled': true,
+                    'recent_latitude': position.coords.latitude,
+                    'recent_longitude': position.coords.longitude
+                  }
+                  $scope.user.updateAttr('recent_position', $scope.user, payload, null, $scope);
+
+                  if ($scope.locationModal && $scope.locationModal.isShown()) {
+                    $scope.auto_choose_first_location = true;
+
+                    console.log('getting address from gps coordinates');
+
+                    $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
+
+                    $timeout(function() {
+                      $scope.$apply();
+                    }, 1000);
+                  }
+
+                }
+
+                if ($state.current.name === 'root.university') {
+                  $scope.loader.show();
+
+                  var showUniversityListViewNearest = function($scope, $state) {
+                    $scope.loader.hide();
+                    $scope.view = 2;
+                    console.log('sup', $scope.static.nearest_universities.length);
+                    // $scope.static.universities = $scope.static.nearest_universities;
+                  }
+
+                  var nearestUniversityCallback = function() {
+
+                    getNearestUniversity(position.coords.latitude, position.coords.longitude, $scope.static.universities, 10, $localstorage, $scope, showUniversityListViewNearest, $state);
+                  }
+
+
+                  // if universities already loaded
+                  if ($scope.static && $scope.static.universities && $scope.static.universities.length > 0) {
+                    console.log('universities already loaded, grabbing universities');
+                    getNearestUniversity(position.coords.latitude, position.coords.longitude, $scope.static.universities, 10, $localstorage, $scope, showUniversityListViewNearest, $state);
+                  }
+                  // if universities not already loaded
+                  else {
+                    console.log('universities NOT NOT NOT already loaded first university view, grabbing universities');
+                    on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation);
+                  }
+
+              }
+
+          }, function(error) {
+              //show & let them know we couldn't find it
+              $scope.loader.hide()
+              $scope.user.recent_position = null;
+              alert('Sorry! Please check your privacy settings check your GPS signal.');
+
+              var text = document.getElementById('location-input');
+                if (!text.value && text.value.length === 0) {
+                  $timeout(function() {
+                    text.focus();
+                  }, 1000)
+                }
+          });
+
+        };
 
 
     $scope.hideUniversityModal = function() {

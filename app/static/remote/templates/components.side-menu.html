@@ -144,6 +144,9 @@
                 <ion-item  ng-show='user && user.id && user.cards.length === 0' ng-click='togglePaymentSideBarView()'>
                   <p class='nano-text black'> Add Payment Method </p>
                 </ion-item>
+                <ion-item  ng-show='user && user.id && user.university_id' ng-click='goToEditUniversity()'>
+                  <p class='nano-text black'> Edit University </p>
+                </ion-item>
                 <ion-item ng-click='togglePaymentSideBarView()' ng-show='user && user.id && user.cards.length > 0'>
                   <p class='nano-text black'>
                     Payment Card Details
@@ -192,8 +195,8 @@
 
   </ion-content>
   <ion-footer-bar ng-show='root.vars.version' class='side-menu-footer-bar'>
-    <div class='pure-u-1 nano-text center'>
+    <a class='pure-u-1 nano-text center' ng-click='goToBeginning()'>
         v1.0.{{root.vars.version}}
-    </div>
+    </a>
   </ion-footer-bar>
 </ion-modal-view>

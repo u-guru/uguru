@@ -23,11 +23,12 @@ angular.module('uguru.util.controllers')
   '$cordovaPush',
   '$ionicSideMenuDelegate',
   '$ionicViewSwitcher',
+  '$cordovaGeolocation',
   function($ionicPlatform, $scope, $state, $localstorage, User,
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
           $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush,
-          $ionicSideMenuDelegate, $ionicViewSwitcher) {
+          $ionicSideMenuDelegate, $ionicViewSwitcher, $cordovaGeolocation) {
 
           // console.log('1. checking for app updates\n');
           // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
@@ -116,60 +117,7 @@ angular.module('uguru.util.controllers')
               })
 
 
-          $scope.getLocation = function() {
 
-          var posOptions = {
-            timeout: 10000,
-            enableHighAccuracy: false, //may cause high errors if true
-          }
-
-
-          $scope.loader.show();
-          $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
-
-              console.log('location found!', position.coords.latitude, position.coords.longitude);
-
-              $scope.request.position = position.coords;
-
-              $scope.user.recent_position = position;
-
-              $scope.user.location_services_enabled = true;
-
-
-              payload = {
-                'location_services_enabled': true,
-                'recent_latitude': position.coords.latitude,
-                'recent_longitude': position.coords.longitude
-              }
-              $scope.user.updateAttr('recent_position', $scope.user, payload, null, $scope);
-
-              if ($scope.locationModal && $scope.locationModal.isShown()) {
-                $scope.auto_choose_first_location = true;
-
-                console.log('getting address from gps coordinates');
-
-                $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
-
-                $timeout(function() {
-                  $scope.$apply();
-                }, 1000);
-              }
-
-          }, function(error) {
-              //show & let them know we couldn't find it
-              $scope.loader.hide()
-              $scope.user.recent_position = null;
-              alert('Sorry! Please check your privacy settings check your GPS signal.');
-
-              var text = document.getElementById('location-input');
-                if (!text.value && text.value.length === 0) {
-                  $timeout(function() {
-                    text.focus();
-                  }, 1000)
-                }
-          });
-
-        };
 
           $scope.logoutUser = function() {
             $localstorage.setObject('user', []);
@@ -185,10 +133,13 @@ angular.module('uguru.util.controllers')
               $timeout(function() {
                 $ionicSideMenuDelegate.toggleRight();
               })
+              $timeout(function() {
+                $state.go('^.university');
+              }, 1000);
             }, 500);
 
             // $timeout(function(){
-            //   $scope.$apply();
+            //   $scope.$apply();t
             // }, 500);
 
           }

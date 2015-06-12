@@ -69,6 +69,9 @@ angular.module('uguru.util.controllers')
             $scope.user.university_id = null;
             $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
             $ionicSideMenuDelegate.toggleRight();
+            $timeout(function() {
+              $state.go('^.university');
+            }, 1000)
           },
           function(err) {
             console.log(err)
@@ -76,6 +79,24 @@ angular.module('uguru.util.controllers')
 
 
         // $scope.loader.show();
+      }
+    }
+
+    $scope.goToEditUniversity = function() {
+      $ionicSideMenuDelegate.toggleRight();
+        $timeout(function() {
+          $state.go('^.university');
+        }, 500);
+    }
+
+    $scope.goToBeginning = function() {
+      if (!$scope.user || !$scope.user.id) {
+        $ionicSideMenuDelegate.toggleRight();
+        $scope.user.university_id = null;
+        $localstorage.setObject('user', $scope.user);
+        $timeout(function() {
+          $state.go('^.university');
+        }, 500)
       }
     }
 

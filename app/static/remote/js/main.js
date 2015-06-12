@@ -587,6 +587,7 @@ function getNearestUniversity(user_lat, user_long, uni_list, limit, local_storag
     if (callback) {
       callback($scope, $state);
     }
+
     return largeList.slice(0,10);
 
 }
