@@ -15,6 +15,13 @@
         height: 10.8%;
     }
 
+    select.student-width {
+      width:23.5% !important;
+      padding:0.0em 0em 0em 0.1em;
+      margin:0em 0.2em 0em 0.1em;
+      line-height: 1.6em
+    }
+
     .onboarding-loading #_1 {
       top: 32%;
       right: 23%;
@@ -71,6 +78,12 @@
       top: 34.25%;
       right: 20%;
       height: 4.33%;
+    }
+    select.student-width {
+      width:23.5% !important;
+      padding:0.0em 0em 0em 0.1em;
+      margin:0em 0.2em 0em 0.1em;
+      line-height: 1.66em
     }
     .onboarding-loading #_4 {
       top: 28%;

@@ -488,6 +488,7 @@ class UserOneView(restful.Resource):
         user.student_ratings = []
         user.guru_ratings = []
         user.cards = []
+        user.university_id = None
 
         if user.proposals:
             user.proposals = []

@@ -32,17 +32,15 @@
     </div>
     <ion-list>
       <ion-item class='item-button-right request-form-item'  id='location-filled-item' ng-repeat="university in matchingUniversities" ng-click="universitySelected(university, $event)">
-                <a class='request-location-wrapper-link' ng-click='clearLocationButton()'>
                   <p>{{university.title}}<br>
                     <span class='nano-text'>
 
                       {{university.city}}, {{university.state}}
                     </span>
                   </p>
-                </a>
-                <button class='button button-clear' ng-click='resetLocation()' style='margin-right: -8px;' ng-show='university.miles'>
-                  0.2 miles
-                </button>
+                <div class='button button-clear' style='margin-right: -8px;' ng-show='university.miles'>
+                  {{university.miles}}
+                </div>
       </ion-item>
     </ion-list>
   </ion-content>
@@ -58,9 +56,10 @@
               <p class='standard university-header'>
                 I am a
                 <select class='student-width'>
-                    <option selected>&nbsp;student&nbsp;</option>
+                    <option selected>student</option>
                     <option>professional</option>
-                    <option>high school parent</option>
+                    <option>parent</option>
+                    <option>graduate</option>
                 </select>attending
               </p>
             </div>

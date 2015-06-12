@@ -24,68 +24,6 @@ angular.module('uguru.util.controllers', [])
     $scope.keyboard_force_off = false;
     $scope.view = 1;
 
-    $scope.toggleView = function(index) {
-      $scope.view = index;
-    }
-
-    $scope.setFocus = function(target) {
-      if ($scope.search_text.length === 0 && !$scope.keyboard_force_off) {
-        var element = document.getElementById("university-input")
-        if (element) {
-          element.focus();
-        } else {
-          console.log('University input could not be found');
-        }
-      }
-    };
-
-    var GetUniversityList = function() {
-
-      var universitiesLoaded = $q.defer();
-
-      $scope.$on('modal.shown', function() {
-
-        if (window.StatusBar) {
-            StatusBar.styleLightContent();
-        }
-
-        if ($scope.addUniversityModal.isShown() &&
-          $localstorage.getObject('universities').length === 0) {
-            $scope.getUniversitiesFromServer(universitiesLoaded);
-          }
-
-        if ($scope.addUniversityModal.isShown() &&
-
-            $localstorage.getObject('universities').length > 0) {
-            $scope.keyboard_force_off = false;
-            $timeout(function() {
-                $scope.setFocus();
-            }, 500);
-        }
-
-      });
-
-      if ($localstorage.getObject('universities').length > 0) {
-
-          return $localstorage.getObject('universities');
-
-      } else {
-
-        return universitiesLoaded.promise;
-
-      }
-
-
-    }
-
-    $scope.$on('modal.hidden', function() {
-      if (window.StatusBar) {
-            StatusBar.styleDefault();
-        }
-    });
-
-    $scope.universities = GetUniversityList();
-
     $scope.getUniversitiesFromServer = function(promise) {
         $scope.loader.show();
         University.get().then(
@@ -111,6 +49,81 @@ angular.module('uguru.util.controllers', [])
           }
       );
     }
+
+    $scope.toggleView = function(index) {
+      $scope.view = index;
+      if (index === 2) {
+        if ($scope.platform.mobile && !$cordovaKeyboard.isVisible()) {
+          $timeout(function() {
+            var element = document.getElementById("university-input")
+            if (element) {
+              element.focus();
+            }
+          }, 500);
+        }
+      } else {
+        if ($scope.platform.mobile && $cordovaKeyboard.isVisible()) {
+          $cordovaKeyboard.close();
+        }
+      }
+    }
+
+    $scope.setFocus = function(target) {
+      if ($scope.search_text.length === 0 && !$scope.keyboard_force_off) {
+        var element = document.getElementById("university-input")
+        if (element) {
+          element.focus();
+        } else {
+          console.log('University input could not be found');
+        }
+      }
+    };
+
+    var GetUniversityList = function() {
+
+      var universitiesLoaded = $q.defer();
+
+      // $scope.$on('modal.shown', function() {
+
+        if (window.StatusBar) {
+            StatusBar.styleLightContent();
+        }
+
+        if ($localstorage.getObject('universities').length === 0) {
+            $scope.getUniversitiesFromServer(universitiesLoaded);
+          }
+
+        if ($localstorage.getObject('universities').length > 0) {
+            $scope.keyboard_force_off = false;
+            $timeout(function() {
+                $scope.setFocus();
+            }, 500);
+        }
+
+      // });
+
+      if ($localstorage.getObject('universities').length > 0) {
+
+          return $localstorage.getObject('universities');
+
+      } else {
+
+        return universitiesLoaded.promise;
+
+      }
+
+
+    }
+
+    $scope.$on('modal.hidden', function() {
+      if (window.StatusBar) {
+            StatusBar.styleDefault();
+        }
+    });
+
+    $scope.universities = GetUniversityList();
+
+
 
     $scope.clearSearchInput = function() {
         $scope.search_text = '';

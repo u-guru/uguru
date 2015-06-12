@@ -64,11 +64,11 @@ angular.module('uguru.util.controllers')
         $scope.loader.show();
         User.clearAttr($scope.user, $scope.user.id).then(
           function(user) {
-            console.log('cleared_user', user.plain());
+
             $scope.loader.hide();
+            $scope.user.university_id = null;
             $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
             $ionicSideMenuDelegate.toggleRight();
-            $scope.$apply();
           },
           function(err) {
             console.log(err)
