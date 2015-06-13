@@ -185,39 +185,10 @@ $ionicPlatform.ready(function() {
         templateUrl: BASE + 'templates/guru.session.html',
         controller: 'GuruSessionController'
   }).
-  state('root.onboarding-loading', {
-        url: '/onboarding-loading',
-        templateUrl: BASE + 'templates/onboarding.loading.html',
-        controller: 'OnboardingLoadingController'
-  }).
-  state('root.onboarding-location', {
-        url: '/onboarding-location',
-        templateUrl: BASE + 'templates/onboarding.request-location.html',
-        controller: 'OnboardingRequestLocationController'
-  }).
-  state('root.prompt-location', {
-        url: '/prompt-location',
-        templateUrl: BASE + 'templates/prompt.location.html',
-        controller: 'PromptLocationController'
-  }).
-  state('root.onboarding-nearest-university', {
-        url: '/onboarding-nearest',
-        templateUrl: BASE + 'templates/onboarding.nearest-university.html',
-        controller: 'OnboardingNearestUniversityController'
-  }).
-  state('root.onboarding-university', {
-        url: '/onboarding-university',
-        templateUrl: BASE + 'templates/onboarding.university.html',
-        controller: function($scope, $cordovaStatusbar) {
-          $scope.$on('$ionicView.beforeEnter', function(){
-              console.log('before view has entered');
-              $scope.universities = $scope.static.universities;
-
-              if ($scope.platform.ios && window.StatusBar) {
-                  StatusBar.styleLightContent();
-              }
-          });
-        }
+  state('root.onboarding', {
+        url: '/onboarding',
+        templateUrl: BASE + 'templates/onboarding.html',
+        controller: 'OnboardingController'
   }).
   state('root.student-request', {
         url: '/student-request:courseObj',
@@ -422,7 +393,7 @@ $ionicPlatform.ready(function() {
 
   // if none of the above states are matched, use this as the fallback
   // $urlRouterProvider.otherwise('/tab/dash');
-  $urlRouterProvider.otherwise('/university');
+  $urlRouterProvider.otherwise('/onboarding');
   // $urlRouterProvider.otherwise('/home');
 
 });

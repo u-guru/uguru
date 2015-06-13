@@ -8,7 +8,7 @@ $orange: #FAB96C;
 }
 
 .dark-bg {
-    background-color:$dark;
+    background-color:$dark !important;
 }
 
 .blue-bg {
@@ -1376,6 +1376,8 @@ ion-list.list-inset.visible-overflow.proposal-card-request.disable-user-behavior
 
 .no-border {
     border-width:0px !important;
+    border-top:0px !important;
+    border-bottom:0px !important;
 }
 
 .can-help-text {
@@ -1638,4 +1640,56 @@ p.university-header {
     // padding-bottom:0px !important;
     margin-bottom: 0px !important;
     bottom:0px !important;
+}
+
+.green-bg {
+    background-color:#56CD9F !important;
+}
+
+.slider-pager .slider-pager-page.active {
+    color:white;
+}
+
+.slider-pager .slider-pager-page {
+    opacity:1;
+}
+
+.opacity-1-4 {
+    opacity:0.25 !important;
+}
+
+.opacity-1-3 {
+    opacity:0.33 !important;
+}
+
+h1.onboarding-header-text {
+    font-family: "OpenSans-Bold";
+}
+
+.onboarding-phone-wrapper, .onboarding-img-wrapper {
+    padding-top:5%;
+    img.phone-img {
+        max-width:40%;
+    }
+}
+.lefthand-img {
+    position:absolute;
+    max-width:20%;
+    left:9%;
+    top:30%;
+}
+
+.righthand-img {
+    position:absolute;
+    max-width:20%;
+    right:9%;
+    top:30%;
+}
+
+.bling-guru {
+    max-width:90%;
+}
+
+.help-needed-card-img, .guru-profile-card-img {
+    max-width:80%;
 }
