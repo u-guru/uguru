@@ -1673,11 +1673,17 @@ h1.onboarding-header-text {
     }
 }
 .lefthand-img {
-    position:absolute;
     max-width:20%;
     left:9%;
     top:30%;
+    display:none;
 }
+
+.lefthand-img.absolute {
+    position:absolute;
+    display:block;
+}
+
 
 .righthand-img {
     position:absolute;

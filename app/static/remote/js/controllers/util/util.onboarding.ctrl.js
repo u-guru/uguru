@@ -20,6 +20,7 @@ angular.module('uguru.util.controllers')
 
 
     $scope.activeSlideIndex = 0;
+    $scope.injectAnimated = false;
 
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
@@ -54,6 +55,13 @@ angular.module('uguru.util.controllers')
 
         $scope.turnStatusBarWhite();
 
+    });
+
+    $scope.$on('$ionicView.loaded', function(){
+      $timeout(function() {
+        $scope.injectAnimated = true;
+        console.log('injecting animated right now');
+      }, 500)
     });
 
   }
