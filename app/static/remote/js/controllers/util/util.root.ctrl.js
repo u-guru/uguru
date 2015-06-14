@@ -131,7 +131,7 @@ angular.module('uguru.util.controllers')
                 $ionicSideMenuDelegate.toggleRight();
               })
               $timeout(function() {
-                $state.go('^.university');
+                $state.go('^.onboarding');
               }, 1000);
             }, 500);
 

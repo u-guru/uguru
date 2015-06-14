@@ -59,13 +59,17 @@ angular.module('uguru.util.controllers')
     });
 
     $scope.$on('$ionicView.loaded', function(){
+      var time_delay = 1000;
+      if ($scope.platform.mobile) {
+        var time_delay = 2000;
+      }
       $timeout(function() {
         $scope.injectAnimatedHand = true;
-      }, 1000);
+      }, time_delay);
 
       $timeout(function() {
         $scope.injectAnimatedPhone = true;
-      }, 1000);
+      }, time_delay);
 
     });
 
