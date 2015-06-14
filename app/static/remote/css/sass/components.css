@@ -1187,16 +1187,47 @@ h1.onboarding-header-text {
 
 .lefthand-img.absolute {
   position: absolute;
-  display: block; }
+  max-width: 20%;
+  right: 9%;
+  top: 30%;
+  display: none; }
 
 .righthand-img {
   position: absolute;
   max-width: 20%;
   right: 9%;
-  top: 30%; }
+  top: 30%;
+  display: none; }
 
 .bling-guru {
   max-width: 90%; }
 
 .help-needed-card-img, .guru-profile-card-img {
   max-width: 80%; }
+
+.chores-wrapper, .professional-wrapper, .skilled-wrapper, .chores-wrapper, .labor-wrapper {
+  margin-bottom: 1em; }
+  .chores-wrapper .course-tag, .professional-wrapper .course-tag, .skilled-wrapper .course-tag, .chores-wrapper .course-tag, .labor-wrapper .course-tag {
+    font-size: 70%; }
+
+.chores-wrapper .course-tag {
+  background-color: #9BE36E; }
+  .chores-wrapper .course-tag.selected {
+    color: #9BE36E;
+    background-color: white; }
+
+.professional-wrapper .course-tag.selected {
+  color: #E37543;
+  background-color: white; }
+
+.skilled-wrapper .course-tag {
+  background-color: #D82187; }
+  .skilled-wrapper .course-tag.selected {
+    color: #D82187;
+    background-color: white; }
+
+.labor-wrapper .course-tag {
+  background-color: #5DABF4; }
+  .labor-wrapper .course-tag.selected {
+    color: #5DABF4;
+    background-color: white; }

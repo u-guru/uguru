@@ -100,6 +100,13 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.goToBecomeGuru = function() {
+      $ionicSideMenuDelegate.toggleRight();
+      $timeout(function() {
+        $state.go('^.become-guru');
+      }, 500)
+    }
+
 
 
     $scope.closeSignupModal = function(callback) {
@@ -501,7 +508,6 @@ angular.module('uguru.util.controllers')
             $scope.progress_active = false;
           }, 1000);
     }
-
 
     //if price modal
     if ($scope.root.vars.show_price_fields) {

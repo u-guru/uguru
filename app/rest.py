@@ -410,6 +410,7 @@ class UserOneView(restful.Resource):
 
         if request.json.get('remove_major'):
             major = request.json.get('major')
+            print major
             major_id = major.get('id')
             m = Major.query.get(int(major_id))
             if m in user.majors:

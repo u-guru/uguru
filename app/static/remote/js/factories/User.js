@@ -625,6 +625,13 @@ angular.module('uguru.user', [])
                 }
               }
 
+              if (arg === 'remove_major') {
+                return {
+                    'remove_major': true,
+                    'major': obj
+                }
+              }
+
               if (arg === 'outside_university') {
                 return {
                     'outside_university': obj

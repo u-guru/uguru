@@ -1,0 +1,71 @@
+ <ion-view hide-nav-bar='true' ng-controller='CoursesController' class='dark-bg'>
+
+          <ion-content class='white-text dark-bg has-header' scroll='false' >
+            <div class='pure-g'>
+              <div class="list pure-u-1">
+                <label class="item item-input bg-transparent university-label no-margin no-border no-box-shadow view-2">
+                  <span class='university-input-container relative'>
+                      <i class='icon ion-search'></i>
+                      <input type='text' name="course-input" class='light input-lg guru-course-input course-input form-control'id='guru-course-input' ng-click='focusCourseInput()'
+                        fast-matcher
+                        fast-matcher-source="root.vars.courses"
+                        fast-matcher-output="root.vars.matchingCourses"
+                        fast-matcher-properties="short_name, title"
+                        fast-matcher-any-word="true"
+                        fast-matcher-limit="5"
+                        fast-matcher-preserve-order="true"
+                        fast-matcher-case-insensitive="true"
+                        placeholder="Add a Course to Teach"
+                        ng-model = "course_search_text"
+                        ng-change = "updateProgress(course_search_text)"
+                      />
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- shows courses the guru can add -->
+            <ion-list ng-show='course_search_text.length > 0'>
+              <ion-scroll>
+                <ion-item class='course-item' ng-repeat='course in root.vars.matchingCourses' ng-click='  addSelectedGuruCourse(course, course_search_text)'>
+                  <span class='course-name'> {{course.short_name}} </span> <span class='course-title'> {{course.title}} </span>
+                </ion-item>
+              </ion-scroll>
+            </ion-list>
+
+            <ion-list ng-show='course_search_text.length === 0'>
+
+              <ion-item class='item-button-right request-form-item padding-half' ng-repeat='course in user.guru_courses' ng-click='addSelectedGuruCourse(course, course_search_text)' style='padding-right:3em;'>
+                <p> <strong>{{course.short_name}} </strong> <span class='course-title'> {{course.title}} </span> </p>
+                 <button class='button button-clear' ng-click='success.show(0, 2000, "Coming Soon!")' style='margin-right: -8px;'>
+                    <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' style='margin-top:-0.3em;' src='{{img_base}}./img/icons/close_icon.svg'>
+                  </button>
+              </ion-item>
+
+            </ion-list>
+
+            <div class='pure-g-c flex-column flex-space-between'>
+              <div class='flex-item-c center'>
+              </div>
+              <div class='flex-item-c center j-start'>
+
+                <div class='pure-g'>
+
+                  <div class='pure-u-1'>
+                    <p class='uppercase semibold nano-text opacity-1-2'>
+                      popular courses at at your school
+                    </p>
+                  </div>
+
+
+                </div>
+              </div>
+
+              <div class='flex-item-c j-start'>
+
+              </div>
+            </div>
+        </ion-content>
+
+
+</ion-view>

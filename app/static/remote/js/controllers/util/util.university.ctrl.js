@@ -84,7 +84,7 @@ angular.module('uguru.util.controllers', [])
 
       var universitiesLoaded = $q.defer();
 
-      // $scope.$on('modal.shown', function() {
+
 
         if (window.StatusBar) {
             StatusBar.styleLightContent();

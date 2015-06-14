@@ -21,7 +21,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher, $ionicActionSheet)     {
 
-  console.log($scope.user);
+
 
   $scope.root.vars.show_price_fields = false;
   //case-specific functions
@@ -681,17 +681,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }, false);
 
 
-    // $timeout(function(){
-
-    //   $ionicSideMenuDelegate.toggleRight();
-    //   $timeout(function() {
-    //     $scope.togglePaymentSideBarView();
-    //     // $timeout(function() {
-    //     //   $scope.beforeEnterFunctionTrigger();
-    //     // }, 1000);
-    //   }, 500)
-
-    // }, 1000)
+    // $timeout(function() {
+    //   $state.go('^.become-guru');
+    // }, 500);
 
   }
 

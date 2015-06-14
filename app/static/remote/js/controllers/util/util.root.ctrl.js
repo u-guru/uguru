@@ -24,11 +24,12 @@ angular.module('uguru.util.controllers')
   '$ionicSideMenuDelegate',
   '$ionicViewSwitcher',
   '$cordovaGeolocation',
+  'Major',
   function($ionicPlatform, $scope, $state, $localstorage, User,
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
           $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush,
-          $ionicSideMenuDelegate, $ionicViewSwitcher, $cordovaGeolocation) {
+          $ionicSideMenuDelegate, $ionicViewSwitcher, $cordovaGeolocation, Major) {
 
           // console.log('1. checking for app updates\n');
           // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
@@ -56,11 +57,7 @@ angular.module('uguru.util.controllers')
             $scope.img_base = '';
           }
 
-          if ($scope.user && $scope.user.university_id) {
-            console.log('user already has university');
-            $ionicViewSwitcher.nextDirection('enter');
-            $state.go('^.home');
-          }
+
 
           $scope.rootUser = User;
           $scope.root = RootService;
@@ -170,7 +167,7 @@ angular.module('uguru.util.controllers')
           if (!local_universities || local_universities.length === 0) {
 
             User.getUserFromServer($scope, null, $state);
-            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation);
+            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation, Major);
           } else {
             $scope.static.universities = $localstorage.getObject('universities')
             if ($scope.static.universities && $scope.static.universities.length > 0) {
@@ -178,6 +175,14 @@ angular.module('uguru.util.controllers')
             } else {
               console.log('something funky is going on...')
             }
+          }
+
+          var local_majors = $localstorage.getObject('majors');
+          if (!local_majors || local_majors.length === 0) {
+            console.log('getting majors');
+            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation, Major);
+          } else {
+            console.log('majors already loaded');
           }
 
 
@@ -201,6 +206,15 @@ angular.module('uguru.util.controllers')
               $ionicLoading.hide();
               $scope.root.vars.loaderOn = false;
             }
+          }
+
+          $scope.loader.show();
+          if ($scope.user && $scope.user.university_id) {
+            $ionicViewSwitcher.nextDirection('enter');
+            $state.go('^.home');
+            $timeout(function() {
+              $scope.loader.hide();
+            }, 1000);
           }
 
 

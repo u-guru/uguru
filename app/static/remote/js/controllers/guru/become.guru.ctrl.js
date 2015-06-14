@@ -1,6 +1,6 @@
-angular.module('uguru.util.controllers')
+angular.module('uguru.guru.controllers')
 
-.controller('OnboardingController', [
+.controller('BecomeGuruController', [
 
   //All imported packages go here
   '$scope',
@@ -32,6 +32,10 @@ angular.module('uguru.util.controllers')
 
     $ionicSideMenuDelegate.canDragContent(false);
 
+
+    //
+
+    //handles status bar for light / dark screens
     $ionicPlatform.ready(function() {
 
         $scope.turnStatusBarWhite = function() {
@@ -57,12 +61,32 @@ angular.module('uguru.util.controllers')
 
     });
 
-    $scope.$on('$ionicView.loaded', function(){
+    $scope.initiateSkillEventListeners = function() {
+
+      var skill_elements = document.getElementsByClassName("course-tag");
+      console.log(skill_elements.length, 'on course tag');
+
+      for (var i = 0 ; i < skill_elements.length ; i++) {
+        var element = skill_elements[i];
+        element.addEventListener("mouseleave", function(e) {
+          console.log(this.className);
+          if (this.className.indexOf('selected') === -1) {
+            this.className += " animated flip";
+            $scope.tempElement = this;
+            $timeout(function() {
+              $scope.tempElement.className += ' selected';
+            }, 500);
+          }
+        })
+      }
+
+    }
+
+    $scope.$on('$ionicView.enter', function(){
       $timeout(function() {
-        $scope.injectAnimated = true;
-        console.log('injecting animated right now');
-      }, 1500);
-    });
+        $scope.initiateSkillEventListeners();
+      }, 500);
+    })
 
   }
 

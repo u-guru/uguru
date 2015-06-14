@@ -21,7 +21,9 @@ angular.module('uguru.util.controllers')
     $scope.listCanSwipe = true;
     $ionicSideMenuDelegate.canDragContent(false);
 
-    if ($scope.root.vars.guru_mode) {
+    console.log($scope.user.guru_courses.length);
+
+    if ($scope.root.vars.guru_mode || $state.current.name === 'root.become-guru') {
       $scope.editCourseMode = false;
       $scope.course_search_text = '';
     }
@@ -72,10 +74,8 @@ angular.module('uguru.util.controllers')
     $scope.addSelectedGuruCourse = function(course, input_text) {
       $scope.course_search_text = course.short_name.toUpperCase();
 
-      //set the local request.course object to this course
-      // $scope.request.course = course;
 
-      //clear the search input
+      //set the variable to this
       input_text = '';
 
       //set the course text to what it should be

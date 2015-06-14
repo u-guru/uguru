@@ -112,7 +112,7 @@
               </div>
             </div>
             <div class='pure-g center'>
-              <div class='pure-u-1' ng-show='user && user.university.title.length > 0 && !user.is_admin'>
+              <div class='pure-u-1' ng-show='user && user.id && user.university.title.length > 0 && !user.is_admin'>
                 <p class='micro-text uppercase semibold grey'>{{user.university.title}}</p>
               </div>
             </div>
@@ -173,17 +173,17 @@
               </div>
           </div>
 
+          <div class='pure-g-c flex-column j-start height-20'  ng-show='user && user.is_a_guru && !root.vars.guru_mode'>
+            <div class='pure-u-1 padding-1em no-padding-bottom' >
+              <button class='button button-full button-black micro-text' ng-click='goToBecomeGuru()'>Become a Guru</button>
+            </div>
+          </div>
+
           <div class='pure-g-c flex-column j-start height-20'  ng-show='user.is_a_guru && !root.vars.guru_mode'>
             <div class='pure-u-1 padding-1em no-padding-bottom' >
               <button class='button button-full button-black micro-text' ng-click='goToGuruMode()'>Switch to Guru</button>
             </div>
           </div>
-
-          <!-- <div class='pure-g-c flex-column j-start height-20' ng-show='user && user.id && !user.is_a_guru && !root.vars.guru_mode'>
-            <div class='pure-u-1 padding-1em no-padding-bottom'>
-              <button class='button button-full button-black micro-text' ng-click='savePayment()'>Save</button>
-            </div>
-          </div> -->
 
           <div class='pure-g-c flex-column j-start height-20' ng-show='user.is_a_guru && root.vars.guru_mode'>
             <div class='pure-u-1 padding-1em no-padding-bottom' >
