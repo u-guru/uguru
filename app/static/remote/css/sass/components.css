@@ -1187,10 +1187,21 @@ h1.onboarding-header-text {
 
 .lefthand-img.absolute {
   position: absolute;
-  max-width: 20%;
-  right: 9%;
-  top: 30%;
+  display: block; }
+
+.phone-img {
+  margin: 0 auto;
+  left: 30%;
   display: none; }
+
+.phone-img.absolute {
+  position: absolute;
+  display: block; }
+
+.first-page-wrapper {
+  height: 60%; }
+  .first-page-wrapper .pure-g {
+    height: 100%; }
 
 .righthand-img {
   position: absolute;
@@ -1198,6 +1209,10 @@ h1.onboarding-header-text {
   right: 9%;
   top: 30%;
   display: none; }
+
+.righthand-img.absolute {
+  position: absolute;
+  display: block; }
 
 .bling-guru {
   max-width: 90%; }

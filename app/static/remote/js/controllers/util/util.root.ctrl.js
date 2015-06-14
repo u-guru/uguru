@@ -208,8 +208,8 @@ angular.module('uguru.util.controllers')
             }
           }
 
-          $scope.loader.show();
           if ($scope.user && $scope.user.university_id) {
+            $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
             $state.go('^.home');
             $timeout(function() {

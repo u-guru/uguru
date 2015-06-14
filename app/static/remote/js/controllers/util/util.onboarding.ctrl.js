@@ -20,7 +20,8 @@ angular.module('uguru.util.controllers')
 
 
     $scope.activeSlideIndex = 0;
-    $scope.injectAnimated = false;
+    $scope.injectAnimatedHand = false;
+    $scope.injectAnimatedPhone = false;
 
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
@@ -59,9 +60,13 @@ angular.module('uguru.util.controllers')
 
     $scope.$on('$ionicView.loaded', function(){
       $timeout(function() {
-        $scope.injectAnimated = true;
-        console.log('injecting animated right now');
-      }, 1500);
+        $scope.injectAnimatedHand = true;
+      }, 1000);
+
+      $timeout(function() {
+        $scope.injectAnimatedPhone = true;
+      }, 1000);
+
     });
 
   }

@@ -61,6 +61,18 @@ angular.module('uguru.guru.controllers')
 
     });
 
+    var injectClassIntoElement = function(e) {
+      element = e.target
+      console.log(element.className);
+      if (element.className.indexOf('selected') === -1) {
+        element.className += " animated flip";
+        $scope.tempElement = element;
+        $timeout(function() {
+          $scope.tempElement.className += ' selected';
+        }, 500);
+      }
+    }
+
     $scope.initiateSkillEventListeners = function() {
 
       var skill_elements = document.getElementsByClassName("course-tag");
@@ -68,16 +80,17 @@ angular.module('uguru.guru.controllers')
 
       for (var i = 0 ; i < skill_elements.length ; i++) {
         var element = skill_elements[i];
-        element.addEventListener("mouseleave", function(e) {
-          console.log(this.className);
-          if (this.className.indexOf('selected') === -1) {
-            this.className += " animated flip";
-            $scope.tempElement = this;
-            $timeout(function() {
-              $scope.tempElement.className += ' selected';
-            }, 500);
-          }
-        })
+        ionic.onGesture('tap', injectClassIntoElement, element, {});
+        // element.addEventListener("mouseleave", function(e) {
+        //   console.log(this.className);
+        //   if (this.className.indexOf('selected') === -1) {
+        //     this.className += " animated flip";
+        //     $scope.tempElement = this;
+        //     $timeout(function() {
+        //       $scope.tempElement.className += ' selected';
+        //     }, 500);
+        //   }
+        // })
       }
 
     }
@@ -86,7 +99,7 @@ angular.module('uguru.guru.controllers')
       $timeout(function() {
         $scope.initiateSkillEventListeners();
       }, 500);
-    })
+    });
 
   }
 
