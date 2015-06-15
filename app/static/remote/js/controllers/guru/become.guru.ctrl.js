@@ -76,12 +76,25 @@ angular.module('uguru.guru.controllers')
 
     $scope.initiateSkillEventListeners = function() {
 
-      var skill_elements = document.getElementsByClassName("course-tag");
-      console.log(skill_elements.length, 'on course tag');
+      var skill_elements = document.getElementsByClassName("skill-tag");
 
       for (var i = 0 ; i < skill_elements.length ; i++) {
         var element = skill_elements[i];
         ionic.onGesture('tap', injectClassIntoElement, element, {});
+      }
+
+      var major_elements = document.getElementsByClassName("major-tag");
+
+      for (var j = 0 ; j < major_elements.length ; j++) {
+        var major_element = major_elements[j];
+        ionic.onGesture('tap', injectClassIntoElement, major_element, {});
+      }
+
+      var course_elements = document.getElementsByClassName("popular-course-tag");
+
+      for (var k = 0 ; k < course_elements.length ; k++) {
+        var course_element = course_elements[k];
+        ionic.onGesture('tap', injectClassIntoElement, course_element, {});
       }
 
     }

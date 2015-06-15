@@ -542,6 +542,14 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }, false);
 
 
+        $timeout(function() {
+
+
+            $ionicViewSwitcher.nextDirection('swap')
+            $state.go('^.guru-tasks');
+
+
+        }, 500);
 
 
 

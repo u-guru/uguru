@@ -79,6 +79,23 @@ class UniversityMajorsView(restful.Resource):
 
         return majors, 200
 
+class SkillListView(restful.Resource):
+    @marshal_with(SkillSerializer)
+    def get(self):
+
+        skills = Skill.query.filter_by(is_popular=True).all()
+
+        return skills, 200
+
+class ProfessionListView(restful.Resource):
+    @marshal_with(TagSerializer)
+    def get(self):
+
+        professions = Tag.query.filter_by(is_profession=True).all()
+
+        return professions, 200
+
+
 class UniversityCoursesView(restful.Resource):
     @marshal_with(CourseSerializer)
     def get(self, id):
@@ -495,6 +512,8 @@ class UserOneView(restful.Resource):
         user.student_ratings = []
         user.guru_ratings = []
         user.cards = []
+        user.is_a_guru = False
+        user.current_hourly = None
         user.university_id = None
 
         if user.proposals:
@@ -2300,6 +2319,8 @@ api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:id>/majors')
 api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:id>/courses')
 api.add_resource(MajorListView, '/api/v1/majors')
 api.add_resource(CourseListView, '/api/v1/courses')
+api.add_resource(SkillListView, '/api/v1/skills')
+api.add_resource(ProfessionListView, '/api/v1/professions')
 api.add_resource(UserEmailView, '/api/v1/user_emails')
 
 # Admin views

@@ -56,6 +56,9 @@
                       popular courses at at your school
                     </p>
                   </div>
+                  <div class='pure-u-1'>
+                    <a class='course-tag popular-course-tag' ng-click='addSelectedGuruCourse(popular_course, course_search_text)' style='font-size:60%;' ng-repeat='popular_course in static.popular_courses'>{{popular_course.short_name}}</a>
+                  </div>
 
 
                 </div>

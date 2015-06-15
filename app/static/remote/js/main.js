@@ -200,10 +200,20 @@ $ionicPlatform.ready(function() {
         templateUrl: BASE + 'templates/browse.html',
         // controller: 'BrowseController'
   }).
-  state('root.courses', {
-        url: '/courses',
-        templateUrl: BASE + 'templates/courses.html',
-        controller: 'CoursesController'
+  state('root.ranking', {
+        url: '/ranking',
+        templateUrl: BASE + 'templates/guru.ranking.html',
+        controller: 'GuruRankingController'
+  }).
+  state('root.guru-tasks', {
+        url: '/guru-tasks',
+        templateUrl: BASE + 'templates/guru.tasks.html',
+        controller: 'GuruTaskController'
+  }).
+  state('root.guru-profile', {
+        url: '/guru-profile',
+        templateUrl: BASE + 'templates/guru.profile.html',
+        controller: 'GuruProfileController'
   }).
   state('root.guru-courses', {
         url: '/guru-courses',
@@ -277,7 +287,7 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
         };
 //background loading stuff
 
-var on_app_open_retrieve_objects = function($scope, $state, $localstorage, University, callback, Geolocation, Major) {
+var on_app_open_retrieve_objects = function($scope, $state, $localstorage, University, callback, Geolocation, Major, Skill, Profession) {
   console.log('getting university from server');
   // $cordovaSplashscreen.hide();
   University.get().then(
@@ -307,11 +317,37 @@ var on_app_open_retrieve_objects = function($scope, $state, $localstorage, Unive
 
         $scope.static.majors = majors;
         $localstorage.setObject('majors', majors);
+        $scope.static.popular_majors = majors.slice(0,16);
+        $localstorage.setObject('popular_majors', $scope.static.popular_majors);
     },
     function() {
         console.log('Majors NOT successfully loaded');
     }
   );
+
+  Skill.get().then(function(skills) {
+    var skills = skills.plain();
+    $scope.static.skills = skills;
+    $localstorage.setObject('skills', skills);
+    $scope.static.popular_skills = skills.slice(0, 16);
+    $localstorage.setObject('popular_skills', $scope.static.popular_skills);
+    console.log(skills.length, 'skills loaded');
+  },
+  function() {
+    console.log('Skills NOT successfully loaded');
+  })
+
+  Profession.get().then(function(professions) {
+    var professions = professions.plain();
+    $scope.static.professions = professions;
+    $scope.static.popular_professions = professions.slice(0, 16);
+    $localstorage.setObject('professions', $scope.static.professions);
+    $localstorage.setObject('popular_professions', $scope.static.popular_professions);
+    console.log(professions.length, 'professions loaded')
+  },
+  function() {
+    console.log('professions NOT successfully loaded');
+  })
 
 
 }
@@ -403,4 +439,4 @@ function getNearestUniversity(user_lat, user_long, uni_list, limit, local_storag
 
     return largeList.slice(0,10);
 
-}
+};

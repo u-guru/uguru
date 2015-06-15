@@ -25,11 +25,14 @@ angular.module('uguru.util.controllers')
   '$ionicViewSwitcher',
   '$cordovaGeolocation',
   'Major',
+  'Skill',
+  'Profession',
   function($ionicPlatform, $scope, $state, $localstorage, User,
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
           $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush,
-          $ionicSideMenuDelegate, $ionicViewSwitcher, $cordovaGeolocation, Major) {
+          $ionicSideMenuDelegate, $ionicViewSwitcher, $cordovaGeolocation, Major,
+          Skill, Profession) {
 
           // console.log('1. checking for app updates\n');
           // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
@@ -134,11 +137,6 @@ angular.module('uguru.util.controllers')
                 $state.go('^.onboarding');
               }, 1000);
             }, 500);
-
-            // $timeout(function(){
-            //   $scope.$apply();t
-            // }, 500);
-
           }
 
 
@@ -149,6 +147,9 @@ angular.module('uguru.util.controllers')
             University.getCourses(2732).then(
                   function(courses) {
                       $scope.root.vars.courses = courses;
+                      $scope.root.vars.popular_courses = $scope.root.vars.courses.slice(0, 16);
+                      $scope.static.courses = $scope.root.vars.courses;
+                      $scope.static.popular_courses = $scope.root.vars.popular_courses;
                       console.log(courses.length, 'courses successfully loaded');
                 },
                   function(error) {
@@ -167,7 +168,8 @@ angular.module('uguru.util.controllers')
           if (!local_universities || local_universities.length === 0) {
 
             User.getUserFromServer($scope, null, $state);
-            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation, Major);
+            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+              Major, Skill, Profession);
           } else {
             $scope.static.universities = $localstorage.getObject('universities')
             if ($scope.static.universities && $scope.static.universities.length > 0) {
@@ -178,11 +180,37 @@ angular.module('uguru.util.controllers')
           }
 
           var local_majors = $localstorage.getObject('majors');
-          if (!local_majors || local_majors.length === 0) {
+          var local_popular_majors = $localstorage.getObject('popular_majors');
+          if (!local_majors || local_majors.length === 0 || !local_popular_majors || local_popular_majors.length === 0) {
             console.log('getting majors');
-            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation, Major);
+            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+              Major, Skill, Profession);
           } else {
+            $scope.static.majors = local_majors;
+            $scope.static.popular_majors = local_popular_majors;
             console.log('majors already loaded');
+          }
+
+          var local_skills = $localstorage.getObject('skills');
+          var local_popular_skills = $localstorage.getObject('local_popular_skills');
+          if (!local_skills || local_skills.length === 0) {
+            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+              Major, Skill, Profession);
+          } else {
+            $scope.static.skills = local_skills;
+            $scope.static.popular_skills = local_popular_skills;
+            console.log('skills already loaded');
+          }
+
+          var local_professions = $localstorage.getObject('professions');
+          var local_popular_professions = $localstorage.getObject('local_professions');
+          if (!local_professions || local_professions.length === 0) {
+            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+              Major, Skill, Profession);
+          } else {
+            $scope.static.professions = local_professions;
+            $scope.static.popular_professions = local_popular_professions;
+            console.log('professions already loaded');
           }
 
 
@@ -211,7 +239,7 @@ angular.module('uguru.util.controllers')
           if ($scope.user && $scope.user.university_id) {
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
-            $state.go('^.guru');
+            $state.go('^.home');
             $timeout(function() {
               $scope.loader.hide();
             }, 1000);
@@ -403,7 +431,7 @@ angular.module('uguru.util.controllers')
 
                   }, function(err){
 
-                    console.log(err)
+                    console.log(err);
 
                   });
 
@@ -414,7 +442,8 @@ angular.module('uguru.util.controllers')
                   });
 
                   //grab geolocation super early for android devices
-                  on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation);
+                  on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+                    Major, Skill, Profession);
 
               }
 

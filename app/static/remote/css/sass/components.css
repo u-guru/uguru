@@ -1274,3 +1274,51 @@ select.current-hourly-price {
   font-family: "OpenSans-SemiBold";
   opacity: 0.8;
   color: #56CD9F; }
+
+.font-2em {
+  font-size: 2em; }
+
+.font-3em {
+  font-size: 2em; }
+
+.font-200 {
+  font-size: 200%; }
+
+.font-300 {
+  font-size: 300%; }
+
+.light-sans {
+  font-family: "OpenSans-Light"; }
+
+.ranking-text-container {
+  padding: 20% 20% 0% 20%;
+  position: relative; }
+
+.letter-spacing-small {
+  letter-spacing: 2px; }
+
+.th-text {
+  position: absolute;
+  font-size: 45%;
+  letter-spacing: 2px;
+  font-family: OpenSans-SemiBold;
+  opacity: 0.65;
+  top: 14%;
+  right: 15%; }
+
+.percentile-text {
+  margin-top: 0em; }
+
+.ranking-img {
+  position: fixed;
+  width: 67%;
+  left: 16.6%;
+  top: 25%; }
+
+#profile-tab-button {
+  margin-top: -4px;
+  padding-top: 0px;
+  opacity: 0.3; }
+  #profile-tab-button .icon {
+    font-size: 2.2em !important;
+    margin-left: 0.2em; }

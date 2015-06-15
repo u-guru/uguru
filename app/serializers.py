@@ -383,3 +383,16 @@ FileSerializer = {
     'url': fields.String
 }
 
+SkillSerializer = {
+    'id': fields.Integer,
+    'name': fields.String,
+    'category': fields.String,
+    'is_popular': fields.Boolean,
+    'contributed_user_id': fields.Integer
+}
+
+TagSerializer = {
+    'id': fields.Integer,
+    'name': fields.String,
+    'is_profession': fields.Boolean
+}

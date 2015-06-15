@@ -78,7 +78,7 @@ angular.module('uguru.util.controllers')
             $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
             $ionicSideMenuDelegate.toggleRight();
             $timeout(function() {
-              $state.go('^.university');
+              $state.go('^.onboarding');
             }, 1000)
           },
           function(err) {
@@ -107,7 +107,7 @@ angular.module('uguru.util.controllers')
         $scope.user.university_id = null;
         $localstorage.setObject('user', $scope.user);
         $timeout(function() {
-          $state.go('^.university');
+          $state.go('^.onboarding');
         }, 500)
       }
     }
@@ -468,6 +468,14 @@ angular.module('uguru.util.controllers')
           $localstorage.setObject('user', $scope.user);
 
 
+          //signup normally from sidebar
+          if ($state.current.name === 'root.home') {
+            $scope.success.show(0, 2000, 'Signup Successful!');
+            $scope.show_account_fields = false;
+            $timeout(function() {
+              $ionicSideMenuDelegate.toggleRight();
+            }, 500)
+          }
           //if we are about to create a request
           if ($state.current.name === 'root.student-request') {
                 var callRequestHelp = function() {

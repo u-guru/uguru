@@ -15,6 +15,27 @@
         height: 10.8%;
     }
 
+    .ranking-img {
+      position:fixed;
+      width: 60%;
+      left: 20%;
+      top: 22.5%;
+    }
+
+    .ranking-text-container .font-300 {
+      font-size:250%;
+    }
+
+    .ranking-text-container .th-text {
+      right: 20%;
+    }
+
+    .ranking-text-container {
+      padding:18% 20% 10% 20%;
+      position:relative;
+
+    }
+
     select.student-width {
       width:23.5% !important;
       padding:0.0em 0em 0em 0.1em;
@@ -217,6 +238,8 @@
       height: 10.8%;
     }
 
+
+
 }
 
 /* Portrait */
@@ -236,4 +259,6 @@
   and (orientation: landscape) {
 
 }
+
+
 

@@ -41,10 +41,6 @@ angular.module('uguru.user', [])
             user.skills = [];
         }
 
-        if (!user.current_hourly) {
-            current_hourly = 8;
-        }
-
         if (!user.professions) {
             user.professions = [];
         }
@@ -59,7 +55,6 @@ angular.module('uguru.user', [])
         user.transfer_cards = [];
         user.course_guru_dict = {};
         user.gurus = [];
-        user.current_hourly = 10;
         // user.uber_friendly = false;
         // user.summer_15 = false;
 
