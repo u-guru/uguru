@@ -848,6 +848,8 @@ class Tag(Base):
 
     is_profession = Column(Boolean)
 
+    admin_approved = Column(Boolean, default = False)
+
     creator_id = Column(Integer, ForeignKey('user.id'))
     creator = relationship("User",
         primaryjoin="User.id==Tag.creator_id",
