@@ -46,6 +46,13 @@ event_fields['session_id'] = fields.Integer(attribute='session_id')
 event_fields['impacted_user_id'] = fields.Integer(attribute='impacted_user_id')
 event_fields['impacted_user_notified'] = fields.Boolean(attribute='impacted_user_notified')
 
+skill_fields = {}
+skill_fields['id'] = fields.Integer(attribute='id')
+skill_fields['category'] = fields.String(attribute='category')
+skill_fields['name'] = fields.String(attribute='name')
+skill_fields['time_created'] = fields.String(attribute='time_created')
+
+
 file_fields = {}
 file_fields['id'] = fields.Integer(attribute='id')
 file_fields['url'] = fields.String(attribute='url')
@@ -282,6 +289,7 @@ UserSerializer = {
     'impact_events': fields.List(fields.Nested(event_fields)),
     'guru_relationships': fields.List(fields.Nested(relationship_fields)),
     'student_relationships': fields.List(fields.Nested(relationship_fields)),
+    'guru_skills': fields.List(fields.Nested(skill_fields)),
     'estimated_guru_score': fields.Integer,
     'estimated_guru_rank': fields.Integer,
     'estimated_guru_rank_last_updated': fields.DateTime,

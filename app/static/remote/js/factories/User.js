@@ -346,6 +346,7 @@ angular.module('uguru.user', [])
         $scope.user.previous_guru_proposals = user.previous_guru_proposals;
         $scope.user.is_admin = user.is_admin;
         $scope.user.active_questions = user.active_questions;
+        $scope.user.guru_skills = user.guru_skills;
 
         $scope.user.text_notifications = user.text_notifications;
         $scope.user.email_notifications = user.email_notifications;
