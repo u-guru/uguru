@@ -18,7 +18,7 @@ angular.module('uguru.root.services')
     function($localstorage, $timeout, $cordovaCamera, $state) {
 
         deviceCamera = {
-                    takePicture: function($scope, index) {
+                    takePicture: function($scope, index, callbackSuccess) {
 
                       if ($scope.platform.mobile) {
                         var source_type = 1;
@@ -51,7 +51,7 @@ angular.module('uguru.root.services')
                           var file_name = new Date().getTime().toString();
                           formData.append('filename', file_name);
 
-                          $scope.user.createObj($scope.user, 'files', formData, $scope);
+                          $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
 
                         }, function(err) {
                           console.log(err);

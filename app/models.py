@@ -64,6 +64,12 @@ user_tag_table = Table('user-tag_assoc',
     Column('user_id', Integer, ForeignKey('user.id')),
     Column('tag_id', Integer, ForeignKey('tag.id')))
 
+guru_skill_table = Table('user-skill_assoc',
+    Base.metadata,
+    Column('skill_id', Integer, ForeignKey('skill.id')),
+    Column('user_id', Integer, ForeignKey('user.id'))
+    )
+
 student_resource_table = Table('user-resource_assoc',
     Base.metadata,
     Column('user_id', Integer, ForeignKey('user.id')),
@@ -79,6 +85,7 @@ resource_tag_table = Table('resource-tag_assoc',
     Base.metadata,
     Column('resource_id', Integer, ForeignKey('resource.id')),
     Column('tag_id', Integer, ForeignKey('tag.id')))
+
 
 class User(Base):
     __tablename__ = 'user'
@@ -113,6 +120,8 @@ class User(Base):
 
 
     current_hourly = Column(Float)
+    max_hourly = Column(Float)
+
     uber_friendly = Column(Boolean)
     summer_15 = Column(Boolean)
     outside_university = Column(Boolean)
@@ -124,6 +133,11 @@ class User(Base):
         secondary = student_courses_table,
         backref = backref('students', lazy='dynamic')
         )
+
+    guru_skills = relationship("Skill",
+        secondary = guru_skill_table,
+        backref= backref('gurus', lazy='dynamic')
+    )
 
     student_resources = relationship("Resource",
         secondary= student_resource_table,
@@ -832,6 +846,8 @@ class Tag(Base):
 
     time_created = Column(DateTime)
 
+    is_profession = Column(Boolean)
+
     creator_id = Column(Integer, ForeignKey('user.id'))
     creator = relationship("User",
         primaryjoin="User.id==Tag.creator_id",
@@ -869,18 +885,23 @@ class Request(Base):
     GURU_CANCELED_SEARCHING_AGAIN = 5
     NO_GURUS_AVAILABLE = 6
 
-    GURU_CANCEL_SESSION = 5
-    STUDENT_RATED = 6
-    GURU_RATED = 7
-    BOTH_RATED = 8
-    STUDENT_REFUND = 9
-    GURU_NO_SHOW = 10
-    STUDENT_NO_SHOW = 11
+    GURU_CANCEL_SESSION = 7
+    STUDENT_CANCEL_SESSION = 8
+
+    GURU_RATED = 9
+    STUDENT_RATED = 10
+    BOTH_RATED = 11
+
+    STUDENT_REFUND = 12
+    GURU_NO_SHOW = 13
+    STUDENT_NO_SHOW = 14
     DEFAULT_PRICE = 20
 
-    GURU_REQUEST = 0
+    # GURU_REQUEST = 0
 
-    QUESTION_ACCEPTED = 12
+    QUESTION_ACCEPTED = 15
+    QUESTION_ANSWERED = 16
+    QUESTION_COMPLETE = 17
 
 
     id = Column(Integer, primary_key=True)
@@ -919,11 +940,13 @@ class Request(Base):
 
     student_price = Column(Float)
 
+    guru_hourly = Column(Float)
+
     _type = Column(Integer, default = 0)
 
     task_title = Column(String)
     verb_image = Column(String)
-    inital_status = Column(String)
+    inital_status = Column(String) #TODO CURRENT STATUS
 
 
     giphy_url = Column(String)
@@ -1694,6 +1717,30 @@ class Recipient(Base):
         backref = 'recipients'
     )
     admin_account = Column(Boolean, default = False)
+
+class Skill(Base):
+    __tablename__ = 'skill'
+    id = Column(Integer, primary_key=True)
+    time_added = Column(DateTime)
+    name = Column(String) #Usually department + course_number
+
+    short_name = Column(String) #Casual shorted version that students use
+    full_name = Column(String)
+
+    admin_approved = Column(Boolean, default = False)
+    contributed_user_id = Column(Integer, ForeignKey('user.id'))
+
+    def __init__(self, name=None, university_id=None, admin_approved=False,\
+        contributed_user_id=None, _id=None):
+        if _id:
+            self.id = _id
+        self.name = name
+        self.admin_approved = admin_approved
+        self.contributed_user_id = contributed_user_id
+
+    def __repr__(self):
+        return "<Skill '%r', '%r'>" %\
+              (self.id, self.short_name)
 
 
 class Course(Base):

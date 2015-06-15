@@ -22,9 +22,24 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher, $ionicActionSheet)     {
 
 
-
+  $scope.showUpcoming = true;
   $scope.root.vars.show_price_fields = false;
+
+
+  $scope.showPreviousRequests = function() {
+      if (!$scope.user.previous_requests || $scope.user.previous_requests.length === 0) {
+        $scope.success.show(0, 2000, 'Sorry! Please make a request first.');
+      } else {
+        $scope.showUpcomingToggle();
+      }
+    }
+
+
   //case-specific functions
+
+    $scope.showUpcomingToggle = function() {
+      $scope.showUpcoming = !$scope.showUpcoming;
+    }
 
     $scope.cancelRequest = function(request) {
       if (confirm('Are you sure you want to cancel this request?')) {
@@ -638,7 +653,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       });
 
 
-
      $scope.$on('$ionicView.enter', function() {
 
         //user has incoming request for help
@@ -679,11 +693,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
     }, false);
-
-
-    // $timeout(function() {
-    //   $state.go('^.become-guru');
-    // }, 500);
 
   }
 

@@ -147,6 +147,20 @@
                 <ion-item  ng-show='user && user.id && user.university_id' ng-click='goToEditUniversity()'>
                   <p class='nano-text black'> Edit University </p>
                 </ion-item>
+
+                <label class="item item-input item-select" ng-show='user && user.id && user.current_hourly'>
+                    <div class='label-input'>
+                      <p class='nano-text black'>Current Hourly Price</p>
+                    </div>
+                    <select ng-model='selectedCurrentHourly' class='current-hourly-price' ng-change='updateHourlyPrice(selectedCurrentHourly)'>
+
+                      <option value="{{$index + 1}}" ng-repeat='number in getNumber(user.current_hourly) track by $index'>${{$index + 1}}/hr</option>
+                    </select>
+                </label>
+                  <!-- <p class='opacity-6-10 nano-text'>${{user.current_hourly}} an hour</p> -->
+                </ion-item>
+
+
                 <ion-item ng-click='togglePaymentSideBarView()' ng-show='user && user.id && user.cards.length > 0'>
                   <p class='nano-text black'>
                     Payment Card Details
@@ -173,7 +187,7 @@
               </div>
           </div>
 
-          <div class='pure-g-c flex-column j-start height-20'  ng-show='user && user.is_a_guru && !root.vars.guru_mode'>
+          <div class='pure-g-c flex-column j-start height-20'  ng-show='user && user.show_become_guru'>
             <div class='pure-u-1 padding-1em no-padding-bottom' >
               <button class='button button-full button-black micro-text' ng-click='goToBecomeGuru()'>Become a Guru</button>
             </div>

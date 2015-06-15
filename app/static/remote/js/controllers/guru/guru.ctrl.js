@@ -127,6 +127,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     }
 
+    $scope.goToCashOut = function() {
+      $ionicViewSwitcher.nextDirection('forward');
+      $state.go('^.cashout');
+    }
+
     $scope.submitGuruRatingServer = function () {
       if ($scope.root.vars.guru_mode) {
 

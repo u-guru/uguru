@@ -13,7 +13,7 @@ if (LOCAL) {
 
   BASE_URL = 'http://localhost:8100/';
   // REST_URL = 'localhost:5000';
-  REST_URL = 'http://192.168.42.66:5000';
+  REST_URL = 'http://localhost:5000';
   // var REST_URL = 'http://uguru-rest.herokuapp.com'
 
 } else {
@@ -164,6 +164,11 @@ $ionicPlatform.ready(function() {
         url: '/guru',
         templateUrl: BASE + 'templates/guru.html',
         controller: 'GuruController'
+  }).
+  state('root.cashout', {
+        url: '/cashout',
+        templateUrl: BASE + 'templates/guru.cashout.html',
+        controller: 'GuruCashoutController'
   }).
   state('root.guru-questions', {
         url: '/guru-questions',

@@ -264,6 +264,7 @@ UserSerializer = {
     'guru_ratings': fields.List(fields.Nested(rating_fields)),
     'student_ratings': fields.List(fields.Nested(rating_fields)),
     'guru_sessions': fields.List(fields.Nested(session_fields)),
+    'current_hourly': fields.Float,
     'text_notifications': fields.Boolean,
     'email_notifications': fields.Boolean,
     'push_notifications': fields.Boolean,

@@ -15,13 +15,21 @@ angular.module('uguru.util.controllers')
   '$controller',
   '$ionicSideMenuDelegate',
   '$cordovaPush',
+  '$ionicViewSwitcher',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
-  $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush) {
+  $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
+  $ionicViewSwitcher) {
 
     $scope.root.vars.show_account_fields = false;
     $scope.loginMode = true;
     $scope.headerText = 'Log In';
+
+    $scope.selectedCurrentHourly = 10;
+
+    if ($scope.user && $scope.user.current_hourly) {
+      $scope.selectedCurrentHourly = $scope.user.current_hourly + '';
+    }
 
     if (!$scope.loginMode) {
       $scope.loginMode = false;
@@ -89,6 +97,10 @@ angular.module('uguru.util.controllers')
         }, 500);
     }
 
+    $scope.updateHourlyPrice = function(hourly) {
+      $scope.user.updateAttr('current_hourly', $scope.user, {'current_hourly': parseInt(hourly)}, null, $scope);
+    }
+
     $scope.goToBeginning = function() {
       if (!$scope.user || !$scope.user.id) {
         $ionicSideMenuDelegate.toggleRight();
@@ -102,7 +114,9 @@ angular.module('uguru.util.controllers')
 
     $scope.goToBecomeGuru = function() {
       $ionicSideMenuDelegate.toggleRight();
+      $scope.user.updateAttr('is_a_guru', $scope.user, {'is_a_guru': true}, null, $scope);
       $timeout(function() {
+        $ionicViewSwitcher.nextDirection('forward');
         $state.go('^.become-guru');
       }, 500)
     }

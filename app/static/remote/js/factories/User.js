@@ -30,7 +30,25 @@ angular.module('uguru.user', [])
     }
 
     var processResults = function(user) {
+
+        request_status_arr = ['PROCESSING_GURUS', 'INCOMING GURU', 'SESSION STARTING SOON', 'YOU REJECTED ALL GURUS',
+        'CANCELED','YOUR GURU CANCELED', 'NO GURUS AVAIL', 'YOUR GURU CANCELED', 'YOU CANCELED',
+        'COMPLETED', 'COMPLETED', 'COMPLETED', 'REFUNDED', 'GURU NO SHOW', 'YOU DIDNT SHOW', 'QUESTION ACCEPTED',
+        'QUESTION ANSWERED', 'COMPLETED', null, null, null, 'COMPLETED']
+
         user.active_requests = [];
+        if (!user.skills) {
+            user.skills = [];
+        }
+
+        if (!user.current_hourly) {
+            current_hourly = 8;
+        }
+
+        if (!user.professions) {
+            user.professions = [];
+        }
+
         user.pending_guru_ratings = [];
         user.pending_student_ratings = [];
         user.incoming_requests = [];
@@ -69,14 +87,18 @@ angular.module('uguru.user', [])
         if (user_requests && user_requests.length > 0) {
             for (var i = 0; i < user_requests.length; i ++) {
               var index_request = user_requests[i];
-              if (index_request.status === 0) {
-                index_request.formatted_time = RootService.time.since(new Date(index_request.time_created));
-                user.active_requests.push(index_request);
-              }
-              else if (index_request.status === 1) {
+                if (index_request.status === 0) {
+                    index_request.formatted_time = RootService.time.since(new Date(index_request.time_created));
+                    user.active_requests.push(index_request);
+                }
+                else if (index_request.status === 1) {
                     index_request.guru.guru_avg_rating = parseInt(calcAverage(index_request.guru.guru_ratings));
                     user.incoming_requests.push(index_request);
-                } else {
+                }
+
+                else {
+
+                    index_request.current_status = request_status_arr[index_request.status];
                     user.previous_requests.push(index_request);
                 }
             }
@@ -364,8 +386,14 @@ angular.module('uguru.user', [])
         $scope.user.official_guru_grade = user.official_guru_grade;
         $scope.user.grade_dict = user.grade_dict;
         $scope.user.guru_score_opportunities = user.guru_score_opportunities;
-        // $scope.user.guru_mode = true;
-        // $scope.user.is_a_guru = true;
+        $scope.user.skills = user.skills;
+        $scope.user.professions = user.professions;
+
+
+        //custom logic client side only
+        $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
+        $scope.user.is_a_guru = !$scope.user.show_become_guru;
+
         $localstorage.setObject('user', $scope.user);
     }
 
@@ -555,14 +583,13 @@ angular.module('uguru.user', [])
                 }
               }
               if (arg === 'university_id') {
-                  return {
-                      'university_id': obj
-                  }
+                  return obj;
+              }
+              if (arg === 'current_hourly') {
+                  return obj;
               }
               if (arg === 'is_a_guru') {
-                return {
-                    'is_a_guru': obj
-                }
+                return obj;
               }
               if (arg === 'guru_mode') {
                 return {
@@ -821,6 +848,11 @@ angular.module('uguru.user', [])
                             if ($state.current.name !== 'root.request-description') {
                                 $scope.success.show(0, 1500);
                             }
+
+                            if (callback_success) {
+                                callback_success($scope, $state);
+                            };
+
 
                     }, function(err){
                         console.log(err);

@@ -299,6 +299,10 @@ class UserOneView(restful.Resource):
         if 'is_a_guru' in request.json:
             user.is_a_guru = request.json.get('is_a_guru')
 
+        if 'current_hourly' in request.json:
+            print 'woohoo current hourly'
+            user.current_hourly = int(request.json.get('current_hourly'))
+
         if 'uber_friendly' in request.json:
             user.uber_friendly = request.json.get('uber_friendly')
 
@@ -486,6 +490,8 @@ class UserOneView(restful.Resource):
         user.requests = []
         user.student_sessions = []
         user.guru_sessions = []
+        user.guru_courses = []
+        user.majors = []
         user.student_ratings = []
         user.guru_ratings = []
         user.cards = []
@@ -994,7 +1000,7 @@ class FileView(restful.Resource):
             db_session.commit()
 
             if request.values.get('profile_url'):
-                print 'profile url detected'
+                print request.values.get('profile_url')
                 user = User.query.get(int(request.values.get('profile_url')))
 
                 user.profile_url = file_obj.url

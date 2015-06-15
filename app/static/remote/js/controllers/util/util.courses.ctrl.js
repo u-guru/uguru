@@ -21,8 +21,6 @@ angular.module('uguru.util.controllers')
     $scope.listCanSwipe = true;
     $ionicSideMenuDelegate.canDragContent(false);
 
-    console.log($scope.user.guru_courses.length);
-
     if ($scope.root.vars.guru_mode || $state.current.name === 'root.become-guru') {
       $scope.editCourseMode = false;
       $scope.course_search_text = '';

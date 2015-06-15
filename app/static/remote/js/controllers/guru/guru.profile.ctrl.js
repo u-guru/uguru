@@ -35,12 +35,10 @@ angular.module('uguru.guru.controllers')
         };
 
         reader.readAsDataURL(photofile);
-        // $scope.root.vars.request.files.push(true);
 
         var formData = new FormData();
 
         formData.append('file', photofile);
-        // var file_name = new Date().getTime().toString();
         formData.append('profile_url', $scope.user.id);
         formData.append('profile_url', $scope.user.id);
         $scope.loader.show();

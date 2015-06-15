@@ -14,10 +14,10 @@
   </ion-header-bar>
 
 <div class="tabs home-request-tabs-top tabs-top">
-      <a class="tab-item uppercase blue-bg white-text">
+      <a class="tab-item uppercase blue-bg white-text" ng-click='toggleHomePageTabBarOptions()'>
         Upcoming
       </a>
-      <a class="tab-item uppercase opacity-1-2" ng-click='success.show(0,1000,"Coming Soon!")'>
+      <a class="tab-item uppercase opacity-1-2" ng-click='showPreviousRequests()'>
         History
       </a>
 </div>
@@ -25,7 +25,94 @@
 
 <ion-content class='dark-bg has-subheader request-form-tags-offset' scroll='false'>
 
-    <div class='pure-g-c flex-column flex-space-between'>
+    <div class='pure-g-c flex-column flex-space-between' ng-show='!showUpcoming'>
+
+        <ion-scroll class='full-height'>
+
+        <ion-refresher
+          pulling-icon="ion-arrow-down-c"
+          spinner="circles"
+          on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <div class='pure-g'>
+
+           <ion-list class='pure-u-1' can-swipe="true">
+
+              <div class='active-request-card-item-wrapper' ng-repeat='request in user.previous_requests'>
+                <ion-item class='item-avatar request-card-item' ng-click='goToSessionDetails(request.session)'>
+                  <img class='pure-img' ng-src='{{img_base}}./img/verbs/{{request.verb_image}}' />
+                  <div class='request-card-content relative'>
+                    <p class='course-text relative'>
+                      <span ng-show='request._type === 0 || request._type === 1'>
+                        {{request.course.short_name}}
+                      </span>
+                      <span ng-show='request._type === 2' class='transform-capitalize'>
+                        {{request.task_title}}
+                      </span>
+                      <span class='request-tag-status request-tag-status-completed'> {{request.initial_status}} </span>
+                    </p>
+                    <p class='location-text'> {{request.address}}</p>
+                  </div>
+                  <!-- <i class='icon ion-chevron-right icon-small'> </i> -->
+                </ion-item>
+
+
+                 <ion-item class='item-wrap-text' on-hold="cancelRequest(request)" ng-click='goToPendingRequestDetails(request)' ng-show='request._type === 0 || request._type === 1'>
+                <!-- <ion-item class='item-avatar item-wrap-text'> -->
+                  <p class='request-description white-space-normal' ng-show='request._type === 0'>
+
+                    <!-- required -->
+                    <strong> {{request.calendar.weekday}}
+                    </strong>
+
+                    <!-- not all have calendars -->
+                    <span class='calendar-availability-contact' ng-show='request.calendar.formatted_start_time'>
+                       between <strong>{{request.calendar.formatted_start_time}} & {{request.calendar.formatted_end_time}}</strong>
+                    </span>
+
+                    Today between <strong> 12:00pm & 3:30pm </strong>
+                    <!-- required -->
+                    for <strong>3.5 hours</strong>.
+
+                     <span ng-show="request.description">
+                      <strong>Description</strong>
+                     </span>
+
+                     <span ng-show='request.description && request.files.length > 0 '>
+                     and
+                     </span>
+
+                      <span ng-show="request.files.length > 0">
+                        <strong>Attachments</strong>
+                      </span>
+
+                      <span ng-show='request.description && request.files.length > 0 '>
+                        have been added.
+                      </span>
+                      <span ng-show='!request.description && request.files.length > 0 '>
+                        have been added.
+                      </span>
+                      <span ng-show='request.description && !request.fo;es.length > 0 '>
+                        has been added.
+                      </span>
+                  </p>
+                  <p class='request-description white-space-normal' ng-show='request._type === 1'>
+                    {{request.description}}
+                      <br>
+                      <span ng-show="request.files.length === 0">
+                        <strong>Attachments</strong> have been added
+                      </span>
+                  </p>
+                </ion-item>
+
+              </div>
+            </ion-list>
+          </div>
+
+    </div>
+
+    <div class='pure-g-c flex-column flex-space-between' ng-show='showUpcoming'>
 
       <ion-scroll class='full-height'>
 
@@ -112,7 +199,7 @@
                       <span ng-show='request._type === 2' class='transform-capitalize'>
                         {{request.task_title}}
                       </span>
-                      <span class='request-tag-status'> {{request.initial_status}} </span>
+                      <span class='request-tag-status'> {{request.current_status || 'Completed'}} </span>
                     </p>
                     <p class='location-text'> {{request.address}}</p>
                   </div>

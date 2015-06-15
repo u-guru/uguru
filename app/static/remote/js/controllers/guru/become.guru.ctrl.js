@@ -14,16 +14,17 @@ angular.module('uguru.guru.controllers')
   '$ionicSideMenuDelegate',
   '$ionicPlatform',
   '$cordovaStatusbar',
+  '$ionicSlideBoxDelegate',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
-    $ionicPlatform, $cordovaStatusbar) {
-
+    $ionicPlatform, $cordovaStatusbar, $ionicSlideBoxDelegate) {
 
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
+      console.log(index);
     }
 
     $scope.goToUniversity = function() {
@@ -81,16 +82,6 @@ angular.module('uguru.guru.controllers')
       for (var i = 0 ; i < skill_elements.length ; i++) {
         var element = skill_elements[i];
         ionic.onGesture('tap', injectClassIntoElement, element, {});
-        // element.addEventListener("mouseleave", function(e) {
-        //   console.log(this.className);
-        //   if (this.className.indexOf('selected') === -1) {
-        //     this.className += " animated flip";
-        //     $scope.tempElement = this;
-        //     $timeout(function() {
-        //       $scope.tempElement.className += ' selected';
-        //     }, 500);
-        //   }
-        // })
       }
 
     }
@@ -99,7 +90,13 @@ angular.module('uguru.guru.controllers')
       $timeout(function() {
         $scope.initiateSkillEventListeners();
       }, 500);
+
+
+      $scope.slidebox_handle = $ionicSlideBoxDelegate.$getByHandle('become-guru-slide-box');
+
+
     });
+
 
   }
 

@@ -1,11 +1,14 @@
 <ion-view hide-nav-bar='true' class='request' id='guru-home'>
 
-
   <ion-header-bar align-title="center" class='dark-bg-header item-icon-right'>
       <h1 class="title">Tasks</h1>
-      <!-- <div class="buttons">
-        <button ng-click='launchVerbModal()' class='button-img'><img  style='top:0.4em !important;' class='icon ion-plus-custom blue pure-img custom-icon' src='{{img_base}}./img/icons/blue_add.svg'></img></button>
-      </div> -->
+        <div class="buttons" ng-show='user.balance && user.balance > 0'>
+          <a ng-click='goToCashOut()'>
+            <i class='icon bold green font-1em'>
+              ${{user.balance}}
+            </i>
+          </a>
+        </div>
   </ion-header-bar>
 
 <div class="tabs home-request-tabs-top tabs-top">
