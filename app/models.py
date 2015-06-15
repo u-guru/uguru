@@ -1720,9 +1720,13 @@ class Recipient(Base):
 
 class Skill(Base):
     __tablename__ = 'skill'
+
     id = Column(Integer, primary_key=True)
     time_added = Column(DateTime)
     name = Column(String) #Usually department + course_number
+
+    category = Column(String)
+    is_popular = Column(Boolean)
 
     short_name = Column(String) #Casual shorted version that students use
     full_name = Column(String)
