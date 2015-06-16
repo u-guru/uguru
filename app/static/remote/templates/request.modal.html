@@ -117,7 +117,7 @@
             <a style='width:100%; height:100%;'>
               <p class='inline'> When are you available? </p>
               <p ng-show='!request.calendar.start_time.hours && !request.calendar.start_time.minutes'class='align-right blue item-right-text'>Pick a Time</p>
-              <p ng-show='request.calendar.start_time.hours || request.calendar.start_time.minutes' class='align-right blue item-right-text'>{{request.calendar.date.formatted_date}}, {{request.calendar.formatted_start_time}} </p>
+              <p ng-show='request.calendar.start_time.hours || request.calendar.start_time.minutes' class='align-right blue item-right-text'>{{request.calendar.date.formatted_date}}, {{request.calendar.start_time.formatted}}-{{request.calendar.end_time.formatted}}</p>
             </a>
           </ion-item>
 

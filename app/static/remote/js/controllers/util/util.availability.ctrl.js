@@ -26,7 +26,13 @@ angular.module('uguru.util.controllers')
                     '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm', '8 pm', '9 pm', '10 pm', '11 pm'];
     $scope.calendar = {
 
-                        date: {offset: 0, date:today.getDate(), month: today.getMonth() + 1},
+                        date: {
+                           offset: 0,
+                           date:today.getDate(),
+                           month: today.getMonth() + 1,
+                           formatted_date: $scope.weekdays[today.getDay()] + ' ' + today.getDate()
+                         },
+
                         selected_custom_date:'Date',
                         weekday_offset: (today.getDay()) + 2 % 7,
                         start_date: (today.getDate()) + 2,
@@ -79,29 +85,22 @@ angular.module('uguru.util.controllers')
             $scope.calendar.date.offset = index;
             $scope.toggleCalendarHeight(false);
             var date = today.getDate() + index;
-            // $scope.calendar.date.date = date;
-            // var weekday = $scope.weekdays[(date + $scope.calendar.weekday_offset) % 7];
-            // var full_weekday = $scope.full_weekdays[(date + $scope.calendar.weekday_offset) % 7];
-            // console.log('full_weekday', full_weekday);
-            // $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
-            // $scope.calendar.date.weekday = full_weekday.toString();
-            $scope.calendar.date.formatted_date = $scope.calendar.selected_custom_date;
+
+            var weekday = $scope.weekdays[(date % 7)];
+            $scope.calendar.date.formatted_date =  weekday.toString() + ' ' + date.toString();
           } else
-          if (index === 2 && !date_index) {
+          if (index === 2 && !date_index && date_index !== 0) {
+            $scope.calendar.date.offset = index;
             $scope.showDateTabs = true;
             $scope.toggleCalendarHeight(true);
             var date = today.getDate() + index;
             $scope.calendar.date.date = date;
-            // var weekday = $scope.weekdays[(date + $scope.calendar.weekday_offset) % 7];
-            // var full_weekday = $scope.full_weekdays[(date + $scope.calendar.weekday_offset) % 7];
-            // console.log('full_weekday', full_weekday, weekday);
-            // $scope.calendar.date.weekday = full_weekday.toString();
-            // $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
-            $scope.calendar.date.formatted_date = $scope.calendar.selected_custom_date;
+            var weekday = $scope.weekdays[(date + $scope.calendar.weekday_offset) % 7];
+            $scope.calendar.date.formatted_date = weekday.toString() + ' ' + date.toString();
           }
           else {
             $scope.toggleCalendarHeight(false);
-            $scope.calendar.date.offset = index + date_index;
+            $scope.calendar.date.offset = index + date_index + 1;
             var weekday = $scope.weekdays[(date_index + $scope.calendar.weekday_offset) % 7];
             console.log('selected', index, date_index, actual_date);
             $scope.calendar.date.weekday = weekday.toString();
@@ -112,6 +111,8 @@ angular.module('uguru.util.controllers')
             $scope.showDateTabs = false;
             $scope.date_index = null;
           }
+
+          console.log('current offset', $scope.calendar.date.offset);
         }
 
         $timeout(function() {
@@ -301,7 +302,8 @@ angular.module('uguru.util.controllers')
 
             $scope.updateCalendarMargins();
 
-
+            $scope.getTimeBasedOnStartAndHeight($scope.calendar.coords.currentTopY, $scope.calendar.coords.currentHeight,
+              $scope.calendar.coords.chunkHeights.hours, $scope.calendar.coords.chunkHeights.thirty);
 
 
             // $scope.getCalendarEventRect()
@@ -336,15 +338,19 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    var roundHalf = function (num) {
+       return Math.round(num*2)/2;
+    }
+
     $scope.getTimeBasedOnStartAndHeight = function(start_y, height, hour_chunk, thirty_chunk) {
 
-      hour_length = parseInt(start_y / hour_chunk);
-      // hour_length_2 = parseInt((start_y) / hour_chunk);
+      start_hour = roundHalf(start_y / hour_chunk);
+      end_hour = roundHalf((start_y + height) / hour_chunk)
 
-
-      thirty_length = parseInt(height / thirty_chunk);
-      console.log('start_time', (hour_length % 12));
-      console.log('end_time', (hour_length % 12) + ((hour_length + thirty_length) % 12));
+      $scope.calendar.selected_time.start_time.hours = parseInt(start_hour)
+      $scope.calendar.selected_time.start_time.minutes = Math.abs(parseInt(start_hour) -  start_hour) * 60;
+      $scope.calendar.selected_time.end_time.hours = parseInt(end_hour)
+      $scope.calendar.selected_time.end_time.minutes = Math.abs(parseInt(end_hour) -  end_hour) * 60;
     }
 
     $scope.formatHours = function(hours) {
@@ -368,60 +374,86 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.formatHoursAndMinutes = function(date_obj, is_end_time) {
+      var hours = date_obj.hours;
+      var minutes = date_obj.minutes;
+
+      result = ''
+
+      //if 12am
+      if (hours === 0 || hours === 12) {
+        result += '12';
+      }
+
+      else if (hours > 0 && hours < 12) {
+        result += hours;
+      }
+
+      else if (hours > 12 && hours <= 23) {
+        result += hours % 12
+      }
+
+
+
+      //format minutes
+      if (minutes > 0 && minutes === 30) {
+        result += ':30'
+      }
+
+      if (is_end_time && hours >= 12) {
+        result += 'pm';
+      }
+
+      if (is_end_time && hours < 12) {
+        result += 'am';
+      }
+
+      return result
+
+    }
+
 
     $scope.saveRequestInfo = function() {
 
-
-      // var start_time_hours = $scope.calendar.coords.currentTopY / $scope.calendar.coords.chunkHeights.hours;
-
-
-
-      // var start_time_minutes = $scope.formatMinutes($scope.calendar.coords.currentTopY / $scope.calendar.coords.chunkHeights.thirty);
+       $scope.getTimeBasedOnStartAndHeight($scope.calendar.coords.currentTopY, $scope.calendar.coords.currentHeight,
+        $scope.calendar.coords.chunkHeights.hours, $scope.calendar.coords.chunkHeights.thirty);
 
 
+      $scope.request.calendar.start_time = $scope.calendar.selected_time.start_time;
+      $scope.request.calendar.end_time = $scope.calendar.selected_time.end_time;
 
 
-      $scope.request.calendar.start_time.hours = null;
-      $scope.request.calendar.start_time.minutes = 0;
-      //calculations ==
-      $scope.request.calendar.start_time.hours = ($scope.calendar.coords.currentTopY) / $scope.calendar.coords.chunkHeights.hours;
+      $scope.request.calendar.start_time.formatted = $scope.formatHoursAndMinutes($scope.request.calendar.start_time, false)
+      $scope.request.calendar.end_time.formatted = $scope.formatHoursAndMinutes($scope.request.calendar.end_time, true)
 
-      $scope.request.calendar.start_time.hours = Math.round($scope.request.calendar.start_time.hours, 2);
-
-      $scope.request.calendar.end_time.hours = $scope.request.calendar.start_time.hours + $scope.request.time_estimate.hours;
-
-      $scope.request.calendar.formatted_start_time = $scope.formatHours($scope.request.calendar.start_time.hours);
-      $scope.request.calendar.formatted_end_time = $scope.formatHours($scope.request.calendar.end_time.hours);
-
-      console.log('formatted start_time', $scope.request.calendar.formatted_start_time);
-      console.log('formatted end_time', $scope.request.calendar.formatted_end_time);
-
-      // var session_length_hours = $scope.calendar.coords.currentHeight  / $scope.calendar.coords.chunkHeights.hours;
-
-      // var num_hours = Math.round((session_length_hours * 2), 2) / 2;
-
-      // $scope.request.calendar.end_time.hours = $scope.request.time_estimate.hours;
-
-      // if (Math.floor(num_hours) !== num_hours) {
-      //   $scope.request.calendar.end_time.minutes = $scope.formatMinutes(0.5 * 60);
-      // }
-
-
-      if (!$scope.calendar.date.formatted_date) {
-
-            var date = today.getDate();
-            $scope.calendar.date.date = date;
-            var weekday = $scope.weekdays[(date + $scope.calendar.weekday_offset) % 7];
-            $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
-            $scope.request.calendar.date.formatted_date = $scope.calendar.selected_custom_date;
-
-      } else {
-        $scope.request.calendar.date.formatted_date = $scope.calendar.date.formatted_date;
-      }
-
+      //get todays information for some reason
       $scope.request.calendar.date.day = $scope.calendar.date.date;
       $scope.request.calendar.date.month = today.getMonth();
       $scope.request.calendar.date.year = today.getYear();
+
+
+      //get formatted date
+
+      // {offset: 0, date:today.getDate(), month: today.getMonth() + 1},
+      //                   selected_custom_date:'Date',
+      //                   weekday_offset: (today.getDay()) + 2 % 7,
+      //                   start_date: (today.getDate()) + 2,
+
+      // $scope.calendar.
+
+
+
+
+
+
+
+      //update the length of time
+      $scope.request.calendar.date.formatted_date = $scope.calendar.date.formatted_date;
+      $scope.request.time_estimate.hours = ($scope.request.calendar.end_time.hours - $scope.request.calendar.start_time.hours)
+
+      $scope.request.time_estimate.minutes = Math.abs($scope.request.calendar.end_time.minutes - $scope.request.calendar.start_time.minutes);
+
+
       $scope.closeAvailabilityModal();
 
   }
