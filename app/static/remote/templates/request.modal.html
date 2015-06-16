@@ -79,7 +79,7 @@
               </button>
             </ion-item>
 
-          <ion-toggle ng-hide='progress || !request_fields.show_urgency' ng-model='request.urgency' class='request-form-item' ng-click='success.show(0, 2000, "Scheduled tutoring sessions coming soon!"); request.urgency = true;'>
+          <ion-toggle ng-hide='progress || !request_fields.show_urgency' ng-model='request.urgency' class='request-form-item' ng-click='availability_edit = false;'>
             <p> Is this session urgent? </p>
           </ion-toggle>
 
@@ -142,8 +142,8 @@
 
             <div class='pure-g' ng-show='request.files && request.files.length > 0' ng-show='true || request && request.files && request.files.length > 0'>
               <div class='pure-u-1' style='border-top: 1px solid rgba(0,0,0,0.1)'>
-                <div class='pure-u-1-4' ng-repeat='file in request.files track by $index'>
-                    <div class="attach-img pure-img padding-half" style='background-image:url("{{file.url}}")'>
+                <div class='pure-u-1-4' ng-repeat='file in request.files track by $index' style='padding-top:12px;'>
+                    <div class="attach-img pure-img padding-half auto-margin" style='background-image:url("{{file.url}}")'>
                     </div>
                 </div>
               </div>

@@ -14,7 +14,7 @@
   </ion-header-bar>
 
 <div class="tabs home-request-tabs-top tabs-top">
-      <a class="tab-item uppercase blue-bg white-text" ng-click='toggleHomePageTabBarOptions()'>
+      <a class="tab-item uppercase blue-bg white-text" ng-click='showUpcomingToggle()'>
         Upcoming
       </a>
       <a class="tab-item uppercase opacity-1-2" ng-click='showPreviousRequests()'>
@@ -97,10 +97,11 @@
                         has been added.
                       </span>
                   </p>
+
                   <p class='request-description white-space-normal' ng-show='request._type === 1'>
                     {{request.description}}
                       <br>
-                      <span ng-show="request.files.length === 0">
+                      <span ng-show="request.files.length > 0">
                         <strong>Attachments</strong> have been added
                       </span>
                   </p>
@@ -199,7 +200,7 @@
                       <span ng-show='request._type === 2' class='transform-capitalize'>
                         {{request.task_title}}
                       </span>
-                      <span class='request-tag-status'> {{request.current_status || 'Completed'}} </span>
+                      <span class='request-tag-status'> {{request.initial_status || 'Completed'}} </span>
                     </p>
                     <p class='location-text'> {{request.address}}</p>
                   </div>
@@ -248,7 +249,7 @@
                   <p class='request-description white-space-normal' ng-show='request._type === 1'>
                     {{request.description}}
                       <br>
-                      <span ng-show="request.files.length === 0">
+                      <span ng-show="request.files.length > 0">
                         <strong>Attachments</strong> have been added
                       </span>
                   </p>

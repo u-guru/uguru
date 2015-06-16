@@ -295,8 +295,6 @@ textarea {
   border-bottom: 2px solid #68A7CF;
   color: #68A7CF; }
 
-.availability-modal .home-request-tabs-top {
-  top: 45px !important; }
 .availability-modal .calendar-date {
   line-height: 1.5em;
   margin-top: 0px; }
@@ -310,8 +308,7 @@ textarea {
   display: table-cell;
   padding: 5px 11px; }
 .availability-modal .date-tabs-top {
-  margin-top: 48px;
-  top: 45px;
+  margin-top: 30px;
   border: 0px; }
 
 .height-40 {
@@ -493,6 +490,9 @@ input.dark-search {
 
 .button.button-clear.button-blue {
   color: #68A7CF !important; }
+
+.description-wrapper {
+  min-height: 75px; }
 
 .questions-modal .description-wrapper-item {
   padding: 0.75em 1.25em;
@@ -1254,6 +1254,10 @@ h1.onboarding-header-text {
   color: #E37543;
   background-color: white; }
 
+.major-tag.selected {
+  color: #FAB96C;
+  background-color: white; }
+
 .skilled-wrapper .course-tag {
   background-color: #D82187; }
   .skilled-wrapper .course-tag.selected {
@@ -1310,10 +1314,10 @@ select.current-hourly-price {
   margin-top: 0em; }
 
 .ranking-img {
-  position: fixed;
+  position: absolute;
   width: 67%;
   left: 16.6%;
-  top: 25%; }
+  top: 12.5%; }
 
 #profile-tab-button {
   margin-top: -4px;
@@ -1322,3 +1326,16 @@ select.current-hourly-price {
   #profile-tab-button .icon {
     font-size: 2.2em !important;
     margin-left: 0.2em; }
+
+.auto-margin {
+  margin: auto; }
+
+.max-height-70 {
+  max-height: 70px; }
+
+.tag-icon-question-details {
+  height: 22px !important;
+  top: 1em !important; }
+
+.width-30 {
+  width: 30%; }

@@ -79,11 +79,12 @@ angular.module('uguru.util.controllers')
             $scope.calendar.date.offset = index;
             $scope.toggleCalendarHeight(false);
             var date = today.getDate() + index;
-            $scope.calendar.date.date = date;
-            var weekday = $scope.weekdays[(date + $scope.calendar.weekday_offset) % 7];
-            var full_weekday = $scope.full_weekdays[(date + $scope.calendar.weekday_offset) % 7];
-            $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
-            $scope.calendar.date.weekday = full_weekday.toString();
+            // $scope.calendar.date.date = date;
+            // var weekday = $scope.weekdays[(date + $scope.calendar.weekday_offset) % 7];
+            // var full_weekday = $scope.full_weekdays[(date + $scope.calendar.weekday_offset) % 7];
+            // console.log('full_weekday', full_weekday);
+            // $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
+            // $scope.calendar.date.weekday = full_weekday.toString();
             $scope.calendar.date.formatted_date = $scope.calendar.selected_custom_date;
           } else
           if (index === 2 && !date_index) {
@@ -91,21 +92,22 @@ angular.module('uguru.util.controllers')
             $scope.toggleCalendarHeight(true);
             var date = today.getDate() + index;
             $scope.calendar.date.date = date;
-            var weekday = $scope.weekdays[(date + $scope.calendar.weekday_offset) % 7];
-            var full_weekday = $scope.full_weekdays[(date + $scope.calendar.weekday_offset) % 7];
-            $scope.calendar.date.weekday = full_weekday.toString();
-            $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
+            // var weekday = $scope.weekdays[(date + $scope.calendar.weekday_offset) % 7];
+            // var full_weekday = $scope.full_weekdays[(date + $scope.calendar.weekday_offset) % 7];
+            // console.log('full_weekday', full_weekday, weekday);
+            // $scope.calendar.date.weekday = full_weekday.toString();
+            // $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
             $scope.calendar.date.formatted_date = $scope.calendar.selected_custom_date;
           }
           else {
             $scope.toggleCalendarHeight(false);
             $scope.calendar.date.offset = index + date_index;
             var weekday = $scope.weekdays[(date_index + $scope.calendar.weekday_offset) % 7];
-            var full_weekday = $scope.full_weekdays[(date + $scope.calendar.weekday_offset) % 7];
-            $scope.calendar.date.weekday = full_weekday.toString();
+            console.log('selected', index, date_index, actual_date);
+            $scope.calendar.date.weekday = weekday.toString();
             var date = actual_date;
             $scope.calendar.date.date = date;
-            $scope.calendar.selected_custom_date = weekday.toString() + ' ' + date.toString();
+            $scope.calendar.selected_custom_date = weekday.toString() + ' ' + actual_date.toString();
             $scope.calendar.date.formatted_date = $scope.calendar.selected_custom_date;
             $scope.showDateTabs = false;
             $scope.date_index = null;
@@ -231,6 +233,9 @@ angular.module('uguru.util.controllers')
 
       $scope.updateCalendarMargins();
 
+       $scope.getTimeBasedOnStartAndHeight($scope.calendar.coords.currentTopY, $scope.calendar.coords.currentHeight,
+        $scope.calendar.coords.chunkHeights.hours, $scope.calendar.coords.chunkHeights.thirty);
+
     }
 
     // window.dragMoveListener = dragMoveListener;
@@ -297,6 +302,8 @@ angular.module('uguru.util.controllers')
             $scope.updateCalendarMargins();
 
 
+
+
             // $scope.getCalendarEventRect()
 
         })
@@ -329,9 +336,20 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.getTimeBasedOnStartAndHeight = function(start_y, height, hour_chunk, thirty_chunk) {
+
+      hour_length = parseInt(start_y / hour_chunk);
+      // hour_length_2 = parseInt((start_y) / hour_chunk);
+
+
+      thirty_length = parseInt(height / thirty_chunk);
+      console.log('start_time', (hour_length % 12));
+      console.log('end_time', (hour_length % 12) + ((hour_length + thirty_length) % 12));
+    }
+
     $scope.formatHours = function(hours) {
       hours = Math.round(hours, 2);
-      result = ''
+      result = '';
       if (hours === 0) {
           return "12 PM";
       } else if (hours < 12) {

@@ -31,6 +31,11 @@
     }
 
     $scope.addCard = function() {
+
+      if (!$scope.request.selected_price_option && $scope.request.selected_price_option !== 0) {
+        $scope.success.show(0, 2000, 'Please selected at least one option');
+        return;
+      }
       $ionicSideMenuDelegate.toggleRight();
       $timeout(function() {
         $scope.togglePaymentSideBarView();

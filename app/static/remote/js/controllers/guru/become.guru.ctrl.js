@@ -66,7 +66,7 @@ angular.module('uguru.guru.controllers')
       element = e.target
       console.log(element.className);
       if (element.className.indexOf('selected') === -1) {
-        element.className += " animated flip";
+        element.className += " animated pulse";
         $scope.tempElement = element;
         $timeout(function() {
           $scope.tempElement.className += ' selected';

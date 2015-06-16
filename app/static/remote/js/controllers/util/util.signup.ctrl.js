@@ -153,7 +153,9 @@ angular.module('uguru.util.controllers')
 
 
     $scope.goToGuruMode = function() {
+
       $ionicSideMenuDelegate.toggleRight();
+      $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': true}, null, $scope);
       $timeout(function() {
           $state.go('^.guru');
           $scope.root.vars.guru_mode = true;
@@ -162,6 +164,7 @@ angular.module('uguru.util.controllers')
 
     $scope.goToStudentMode = function() {
       $ionicSideMenuDelegate.toggleRight();
+      $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': false}, null, $scope);
       $timeout(function() {
           $state.go('^.home');
           $scope.root.vars.guru_mode = false;

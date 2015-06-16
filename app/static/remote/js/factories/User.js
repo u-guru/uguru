@@ -295,7 +295,7 @@ angular.module('uguru.user', [])
         $scope.user.name = user.name;
         $scope.user.profile_url = user.profile_url;
         $scope.user.is_a_guru = user.is_a_guru;
-        // $scope.user.guru_mode = user.guru_mode;
+        $scope.user.guru_mode = user.guru_mode;
         $scope.user.gender = user.gender;
         $scope.user.customer_id = user.customer_id;
         $scope.user.recipient_id = user.recipient_id;
@@ -588,9 +588,7 @@ angular.module('uguru.user', [])
                 return obj;
               }
               if (arg === 'guru_mode') {
-                return {
-                    'guru_mode': obj
-                }
+                return obj;
               }
               if (arg === 'profile_info') {
                 return {

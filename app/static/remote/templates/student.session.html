@@ -58,7 +58,7 @@
                 <h2 class='uppercase student-session-course-name'>{{session.request.course.short_name}}</h2>
             </ion-item>
 
-            <ion-item class='item-avatar-left card-item-left request-form-item'>
+            <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.status > 0'>
               <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
               <p class='inline'> Starts in </p>
               <p class='inline time-until' style='padding-left:1em'> {{session.request.schedule_time}} minutes </p>
@@ -73,9 +73,16 @@
 
             <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.student_price'>
               <img class='icon ion-plus-custom blue pure-img' style='margin-left:-0.7em;'src='{{img_base}}./img/icons/stacks.svg'>
-              <p class='inline'> You offered </p>
-              <p class='inline black' style='padding-left:1em'> <span class='light-font opacity-1-2'>$</span>{{session.request.student_price}} </p>
+              <p class='inline width-30'> You offered </p>
+              <p class='inline black' style='padding-left:2.5em'> <span class='light-font opacity-1-2'>$</span>{{session.request.student_price}} </p>
             </ion-item>
+
+            <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.tags && session.request.tags.length > 0 && session.request._type === 1'>
+              <img class='icon ion-plus-custom blue pure-img tag-icon-question-details' style='margin-left:-0.7em;'src='{{img_base}}./img/icons/tags.svg'>
+              <p class='inline width-30'> Your Tags </p>
+              <p class='inline black' style='padding-left:2.5em'><span class='blue request-tag' ng-repeat='tag in session.request.tags'>#{{tag.name}} </span> </p>
+            </ion-item>
+
 
             <div class='item item-divider'>
             </div>
@@ -83,13 +90,13 @@
             <ion-item ng-show='session.request.description && session.request.description.length > 0'>
               <p class='pico-text white-space-normal'> {{session.request.description}} </p>
               <div class='pure-u-1'>
-                <div class='pure-u-1-3 session-details-img-wrapper padding-right-half padding-top-half' ng-repeat='file in session.request.files'>
-                  <img class='pure-img' src='{{file.url}}'/>
+                <div class='pure-u-1-4 session-details-img-wrapper padding-right-half padding-top-half' ng-repeat='file in session.request.files'>
+                  <img class='pure-img max-height-70' src='{{file.url}}'/>
                 </div>
               </div>
             </ion-item>
 
-            <ion-item class='item-icon-left' ng-show='session.request.tags && session.request.tags.length > 0'>
+            <ion-item class='item-icon-left' ng-show='session.request.tags && session.request.tags.length > 0 && !session.request_type === 1'>
               <img style='margin-top:0.4em; left:24px; top:5px;'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/tags.svg'>
               <p>&nbsp;<span class='blue request-tag' ng-repeat='tag in session.request.tags'>#{{tag.name}} </span> </p>
             </ion-item>

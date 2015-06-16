@@ -167,7 +167,7 @@
                   </p>
                   <p class='opacity-6-10 nano-text'>{{user.default_payment_card.card_type}} **-{{user.default_payment_card.card_last4}}</p>
                 </ion-item>
-                <ion-item ng-click='resetAccount()' ng-show='user.is_admin'>
+                <ion-item ng-click='resetAccount()' ng-show='true || user.is_admin'>
                   <p class='nano-text black'> Reset Account </p>
                 </ion-item>
 

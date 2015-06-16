@@ -236,7 +236,18 @@ angular.module('uguru.util.controllers')
             }
           }
 
-          if ($scope.user && $scope.user.university_id) {
+          //if previous in guru mode
+          if ($scope.user.guru_mode) {
+
+            $scope.loader.show();
+            $ionicViewSwitcher.nextDirection('enter');
+            $state.go('^.guru');
+            $timeout(function() {
+              $scope.loader.hide();
+            }, 1000);
+
+          }
+          else if ($scope.user && $scope.user.university_id) {
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
             $state.go('^.home');
