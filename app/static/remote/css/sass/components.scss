@@ -1561,11 +1561,23 @@ p.university-header {
 }
 
 .student-width {
-    width:30% !important;
+    width:30% ;
 }
 
-.professional-width {
-    width: 37%;
+.professional-width, {
+    width: 36%;
+}
+
+.platform-ios .professional-width {
+    width:39%;
+}
+
+.hs-student-width {
+    width:32%;
+}
+
+.platform-ios .hs-student-width {
+    width:35%;
 }
 
 .university-label {
@@ -1614,12 +1626,21 @@ p.university-header {
         color: rgba(255,255,255,0.5);
         // position:absolute;
         left:0px;
-        top:0.4em;
+        top:38%;
+        font-size:1.3em;
     }
     p {
         font-size:1.1em;
         margin-left:-0.7em;
     }
+}
+
+.onboarding-search-icon {
+    color: rgba(255,255,255,0.5);
+    left:1em;
+    top:42%;
+    padding-left:0.8em;
+    font-size:1.3em;
 }
 
 
@@ -1714,7 +1735,7 @@ h1.onboarding-header-text {
 }
 
 .phone-img.absolute {
-    position:absolute;
+    // position:absolute;
     display:block;
 }
 
@@ -1882,4 +1903,19 @@ position: absolute;
 
 .width-30 {
     width:30%;
+}
+
+.button.button-full.button-clear.cancel-clear-button {
+    color:white !important;
+    text-transform: uppercase !important;
+}
+
+.onboarding-search-item-label {
+    border-bottom: 1px solid rgba(255,255,255,0.4) !important;
+    padding: 1em;
+    padding-top:0.6em !important;
+}
+
+.platform-ios .university-view-2 .pure-g {
+    margin-top:30px;
 }

@@ -1094,10 +1094,19 @@ p.university-header {
   font-family: "OpenSans-SemiBold"; }
 
 .student-width {
-  width: 30% !important; }
+  width: 30%; }
 
 .professional-width {
-  width: 37%; }
+  width: 36%; }
+
+.platform-ios .professional-width {
+  width: 39%; }
+
+.hs-student-width {
+  width: 32%; }
+
+.platform-ios .hs-student-width {
+  width: 35%; }
 
 .university-label {
   background-color: transparent;
@@ -1138,10 +1147,18 @@ p.university-header {
     display: inline-block;
     color: rgba(255, 255, 255, 0.5);
     left: 0px;
-    top: 0.4em; }
+    top: 38%;
+    font-size: 1.3em; }
   .fake-university-input p {
     font-size: 1.1em;
     margin-left: -0.7em; }
+
+.onboarding-search-icon {
+  color: rgba(255, 255, 255, 0.5);
+  left: 1em;
+  top: 42%;
+  padding-left: 0.8em;
+  font-size: 1.3em; }
 
 .padding-half-horizontal {
   padding-right: 0.5em;
@@ -1214,7 +1231,6 @@ h1.onboarding-header-text {
   display: none; }
 
 .phone-img.absolute {
-  position: absolute;
   display: block; }
 
 .first-page-wrapper {
@@ -1339,3 +1355,15 @@ select.current-hourly-price {
 
 .width-30 {
   width: 30%; }
+
+.button.button-full.button-clear.cancel-clear-button {
+  color: white !important;
+  text-transform: uppercase !important; }
+
+.onboarding-search-item-label {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
+  padding: 1em;
+  padding-top: 0.6em !important; }
+
+.platform-ios .university-view-2 .pure-g {
+  margin-top: 30px; }

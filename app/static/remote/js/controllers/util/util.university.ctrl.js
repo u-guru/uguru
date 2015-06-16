@@ -54,14 +54,12 @@ angular.module('uguru.util.controllers', [])
     $scope.toggleView = function(index) {
       $scope.view = index;
       if (index === 2) {
-        if ($scope.platform.mobile && !$cordovaKeyboard.isVisible()) {
-          $timeout(function() {
-            var element = document.getElementById("university-input")
-            if (element) {
-              element.focus();
-            }
-          }, 500);
-        }
+        $timeout(function() {
+          var element = document.getElementById("university-input")
+          if (element) {
+            element.focus();
+          }
+        }, 1000);
       } else {
         if ($scope.platform.mobile && $cordovaKeyboard.isVisible()) {
           $cordovaKeyboard.close();

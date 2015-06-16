@@ -23,6 +23,9 @@ angular.module('uguru.util.controllers')
     $scope.injectAnimatedHand = false;
     $scope.injectAnimatedPhone = false;
 
+    $scope.user_bgs = [{name: 'student'}, {name:'professional'}, {name:'HS student'}];
+    $scope.selectedBg = $scope.user_bgs[0];
+
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
     }
