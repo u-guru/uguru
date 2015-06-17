@@ -154,7 +154,6 @@ angular.module('uguru.util.controllers', [])
         payload = {'university_id': $scope.user.university_id};
 
         var postUniversitySelectedCallback = function() {
-          $scope.success.show(0, 2000, 'Saved!');
           $timeout(function() {
             $ionicViewSwitcher.nextDirection('forward');
             $state.go('^.home')
@@ -255,13 +254,12 @@ angular.module('uguru.util.controllers', [])
 
                 }
 
-                if ($state.current.name === 'root.university') {
+                if ($state.current.name === 'root.onboarding') {
                   $scope.loader.show();
 
                   var showUniversityListViewNearest = function($scope, $state) {
                     $scope.loader.hide();
                     $scope.view = 2;
-                    console.log('sup', $scope.static.nearest_universities.length);
                     // $scope.static.universities = $scope.static.nearest_universities;
                   }
 
@@ -291,7 +289,8 @@ angular.module('uguru.util.controllers', [])
               alert('Sorry! Please check your privacy settings check your GPS signal.');
 
               var text = document.getElementById('location-input');
-                if (!text.value && text.value.length === 0) {
+
+                if (text && !text.value && text.value.length === 0) {
                   $timeout(function() {
                     text.focus();
                   }, 1000)
