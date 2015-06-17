@@ -15,7 +15,7 @@
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicHistory, $stateParams, $ionicViewSwitcher, $ionicSideMenuDelegate) {
 
-    $scope.card_details = {number: '', month:'', year:''};
+    $scope.card_details = {number: '', expiry:''};
 
 
     // console.log();
@@ -30,35 +30,6 @@
       $scope.root.keyboard.show('card-input', 500);
     }
 
-    $scope.addCard = function() {
-
-      if (!$scope.request.selected_price_option && $scope.request.selected_price_option !== 0) {
-        $scope.success.show(0, 2000, 'Please selected at least one option');
-        return;
-      }
-      $ionicSideMenuDelegate.toggleRight();
-      $timeout(function() {
-        $scope.togglePaymentSideBarView();
-      }, 500);
-      // $scope.root.vars.show_price_fields = true;
-
-      // $timeout(function() {
-
-      //   $scope.$apply();
-      // }, 500)
-
-      // $timeout(function() {
-      //    console.log('shit triggered');
-      //    var payment_input = document.getElementById('card-input');
-      //    payment_input.focus();
-      //    // $scope.beforeEnterFunctionTrigger();
-      // }, 1000)
-
-      $timeout(function() {
-
-      }, 500)
-
-    }
 
     $scope.addPaymentActionBtn = function() {
       if ($scope.actionButtonText.toLowerCase() === 'save') {
@@ -75,6 +46,10 @@
       } else {
         $scope.actionButtonText = 'clear';
       }
+    }
+
+    $scope.goBack = function() {
+      $ionicHistory.goBack();
     }
 
     $scope.showSuccess = function(msg) {
@@ -115,9 +90,10 @@
     $scope.savePayment = function() {
 
       var cardNum = $scope.card_details.number;
-      var expMM = $scope.card_details.month;
-      var expYY = $scope.card_details.year;
-      console.log(cardNum, expMM, expYY);
+      var expMM = $scope.card_details.expiry.split(' / ')[0];
+      var expYY = $scope.card_details.expiry.split(' / ')[1];
+
+      console.log('new details', cardNum, expMM, expYY);
 
       var stripeResponseHandler = function(status, response) {
 
@@ -165,16 +141,26 @@
 
           $scope.loader.show();
           var successCallback = function($scope, $state) {
-            if ($state.current.name === 'root.home') {
+
+              if ($state.current.name === 'root.home') {
+                $scope.closePaymentsModal();
+
+                if ($scope.choosePriceModal) {
+                  $scope.choosePriceModal.show();
+                }
+              }
+
               $scope.loader.hide();
-              $scope.success.show(0, 2000, 'Your card has been successfully added')
-              $timeout(function() {
-                $ionicSideMenuDelegate.toggleRight();
-              }, 500)
-              $timeout(function() {
-                $scope.togglePaymentSideBarView();
-              }, 1000)
-            }
+              $scope.success.show(0, 1000, 'Your card has been successfully added');
+
+              if ($state.current.name === 'root.payments') {
+
+                $timeout(function() {
+                  $ionicHistory.goBack();
+                }, 500);
+              }
+
+
           }
           $scope.user.createObj($scope.user, 'cards', cardInfo, $scope, successCallback);
         }
@@ -238,6 +224,19 @@
       $ionicHistory.goBack();
 
     }
+    $scope.card_already_created = false;
+
+
+    $scope.$on('modal.shown', function() {
+
+
+        if ($scope.paymentsModal && $scope.paymentsModal.isShown() && !$scope.card_already_created) {
+          console.log('instantiating');
+          $scope.card_already_created = true;
+          $scope.initCardAndFocusInput();
+        }
+    });
+
 
     $scope.injectCardPngClass = function() {
 
@@ -300,12 +299,28 @@
 
     $scope.$on('$ionicView.beforeEnter', function(){
 
-      $scope.beforeEnterFunctionTrigger()
 
     });
 
+    $scope.initCardAndFocusInput = function() {
+      var payment_input = document.getElementById('card-input');
+      payment_input.focus();
+
+      $scope.card_js = new Card({
+          form: document.querySelector('form'),
+          container: '.card-wrapper',
+          values: {name:$scope.user.name || null},
+          formSelectors: {
+              numberInput: 'input#card-input',
+              expiryInput: 'input#expiry-input',
+          },
+      });
+    }
+
     $scope.$on('$ionicView.afterEnter', function(){
-      $scope.loader.hide();
+        console.log('after enter');
+        $scope.initCardAndFocusInput();
+
     });
 
   }

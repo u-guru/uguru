@@ -160,6 +160,11 @@ $ionicPlatform.ready(function() {
         templateUrl: BASE + 'templates/signup.html',
         controller: 'SignupController'
   }).
+  state('root.payments', {
+        url: '/payments',
+        templateUrl: BASE + 'templates/payments.html',
+        controller: 'PaymentsController'
+  }).
   state('root.home', {
         url: '/new-home',
         templateUrl: BASE + 'templates/home.html',

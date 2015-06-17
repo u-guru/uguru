@@ -85,7 +85,8 @@ angular.module('uguru.user', [])
                 if (index_request.status === 0) {
                     index_request.formatted_time = RootService.time.since(new Date(index_request.time_created));
 
-                    if (index_request.student_calendar && index_request.student_calendar.length > 0) {
+                    if (index_request.student_calendar && index_request.student_calendar.length > 0 &&
+                        index_request.student_calendar[0].calendar_events && index_request.student_calendar[0].calendar_events.length > 0) {
 
                         var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
                         var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

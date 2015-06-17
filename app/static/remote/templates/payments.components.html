@@ -1,0 +1,58 @@
+<ion-header-bar align-title="center" class='dark-bg-header no-background-image'>
+      <div class="buttons">
+        <button class="button button-clear button-header-link grey-text light nano-text" ng-click='goBack()'>Cancel</button>
+      </div>
+      <h1 class="title micro-text">Add Payment</h1>
+      <div class="buttons">
+        <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='savePayment()'>
+          <span class='ng-class:{"grey-text":card_details.number.length === 0}'>Post</span>
+        </button>
+      </div>
+  </ion-header-bar>
+
+  <ion-content>
+
+
+    <!-- <div class="demo-container">
+
+
+          <div class="form-container active">
+
+                  <input placeholder="Card number" type="text" name="number">
+                  <input placeholder="Full name" type="text" name="name">
+                  <input placeholder="MM/YY" type="text" name="expiry">
+                  <input placeholder="CVC" type="text" name="cvc">
+              </form>
+          </div>
+        </div>
+    </div> -->
+    <!-- <ion-scroll class='has-subheader'> -->
+
+    <div class='pure-u-1 padding-1em'>
+      <div class="card-wrapper">  </div>
+    </div>
+              <form action="">
+                <div class='pure-g'>
+                  <div class='pure-u-1 padding-1em' style='padding-bottom:0em;'>
+                    <label class="item item-input item-icon-left">
+                      <i class="icon ion-card placeholder-icon"></i>
+                      <input type="tel" id='card-input' class='sidebar-card-input' name='number' ng-model='card_details.number' placeholder='1234 5678 9012 3456'></input>
+                    </label>
+                  </div>
+                </div>
+                <div class='pure-g'>
+                  <div class='pure-u-1 padding-1em' style='padding-top:0em;'>
+                    <label class="item item-input item-icon-left">
+                      <i class="icon ion-calendar placeholder-icon"></i>
+                      <input type="tel" id='expiry-input' class='sidebar-mm-input sidebar-expiry-input' name='expiry' ng-model='card_details.expiry' name='expiry'  placeholder='MM / YY' style='padding-left:2.25em;'></input>
+                    </label>
+                  </div>
+                </div>
+              </form>
+
+
+    <!-- </ion-scroll> -->
+  </ion-content>
+  <script>
+
+  </script>

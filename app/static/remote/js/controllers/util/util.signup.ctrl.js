@@ -151,6 +151,14 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.goToPaymentsFromSideBar = function() {
+      $ionicSideMenuDelegate.toggleRight();
+      $timeout(function() {
+        $ionicViewSwitcher.nextDirection('forward');
+        $state.go('^.payments');
+      }, 300);
+    }
+
     $scope.comingSoon = function() {
       $scope.success.show(0, 1500, 'Coming Soon!');
     }

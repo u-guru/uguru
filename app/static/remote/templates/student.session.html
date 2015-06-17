@@ -4,7 +4,7 @@
 
     <button class="button button-clear button-header-link" ng-click='goBack()'>Back</button>
     <h1 class="title"ng-show='session.request.status > 0'>Session with {{session.request.student.name.split(' ')[0]}}</h1>
-    <h1 class="title"ng-show='session.request.status === 0'>{{session.request.course.short_name.toUpperCase()}} Session</h1>
+    <h1 class="title"ng-show='session.request.status === 0'>Session Details</h1>
 
     <button class="button button-clear button-header-link submit-button" ng-click='showAttachActionSheet()'>
       Help
@@ -55,38 +55,45 @@
             <!-- 4.  jack dfrom student, put hashtags, icon right-->
             <ion-item class='item-avatar-left'>
               <img class='pure-img verb-img' ng-src='{{img_base}}./img/verbs/{{session.request.verb_image}}' />
-                <h2 class='uppercase student-session-course-name'>{{session.request.course.short_name}}</h2>
+                <h2 class='uppercase student-session-course-name'>
+                  <span ng-show='session.request._type === 0 || session.request._type === 1'>
+                    {{session.request.course.short_name}}
+                  </span>
+                  <span ng-show='session.request._type === 2'>
+                    {{session.request.task_title}}
+                  </span>
+                </h2>
             </ion-item>
 
             <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.status > 0'>
               <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
               <p class='inline'> Starts in </p>
-              <p class='inline time-until' style='padding-left:1.5em'> {{session.request.schedule_time}} minutes </p>
+              <p class='inline time-until white-space-normal' style='padding-left:1.5em'> {{session.request.schedule_time}} minutes </p>
             </ion-item>
 
             <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.status === 0'>
               <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
               <p class='inline width-30'> Status </p>
-              <p class='inline time-until' style='padding-left:1.5em'> Searching </p>
+              <p class='inline time-until white-space-normal' style='padding-left:1.5em'> Searching </p>
             </ion-item>
 
             <!-- 5.  Same old but no orange> -->
             <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.address'>
               <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/marker.svg'>
               <p class='inline width-30'> Meet up </p>
-            <p class='inline black' style='padding-left:1.5em'> {{session.request.address}} </p>
+            <p class='inline black white-space-normal' style='padding-left:1.5em'> {{session.request.address}} </p>
             </ion-item>
 
             <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.student_price'>
               <img class='icon ion-plus-custom blue pure-img' style='margin-left:-0.7em;'src='{{img_base}}./img/icons/stacks.svg'>
               <p class='inline width-30'> You offered </p>
-              <p class='inline black' style='padding-left:1.5em'> <span class='light-font opacity-1-2'>$</span>{{session.request.student_price}} </p>
+              <p class='inline black white-space-normal' style='padding-left:1.5em'> <span class='light-font opacity-1-2'>$</span>{{session.request.student_price}} </p>
             </ion-item>
 
             <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.tags && session.request.tags.length > 0 && (session.request._type === 1 || session.request._type === 0)'>
               <img class='icon ion-plus-custom blue pure-img tag-icon-question-details' style='margin-left:-0.7em;'src='{{img_base}}./img/icons/tags.svg'>
               <p class='inline width-30'> Your Tags </p>
-              <p class='inline black' style='padding-left:1.5em'><span class='blue request-tag' ng-repeat='tag in session.request.tags'>#{{tag.name}} </span> </p>
+              <p class='inline black white-space-normal' style='padding-left:1.5em'><span class='blue request-tag' ng-repeat='tag in session.request.tags'>#{{tag.name}} </span> </p>
             </ion-item>
 
 

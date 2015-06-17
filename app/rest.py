@@ -668,15 +668,13 @@ class UserRequestView(restful.Resource):
 
 
 
-
+        calendar = None
         calendar_json = request.json.get('calendar')
         calendar_json_start_time = calendar_json.get('start_time')
         calendar_json_end_time = calendar_json.get('end_time')
 
         # if calendar is actually created
-        if calendar_json_start_time and calendar_json_end_time:
-
-
+        if calendar_json_start_time and calendar_json_end_time and calendar_json_start_time.get('hours'):
             calendar = Calendar()
             calendar.time_created = datetime.now()
             calendar.number_of_days = 9

@@ -38,7 +38,21 @@ angular.module('uguru.util.controllers')
     }
 
 
+    $scope.addCard = function() {
 
+      if (!$scope.request.selected_price_option && $scope.request.selected_price_option !== 0) {
+        $scope.success.show(0, 2000, 'Please selected at least one option');
+        return;
+      }
+
+      $state.go('^.payments');
+      $scope.loader.show()
+      $timeout(function() {
+        $scope.loader.hide()
+        $scope.closeChoosePriceModal();
+      }, 1000);
+
+    }
 
      $scope.request = {
       location: null,
@@ -211,8 +225,24 @@ angular.module('uguru.util.controllers')
             $scope.choosePriceModal = modal;
     });
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/payments.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+      }).then(function(modal) {
+        $scope.paymentsModal = modal;
+    });
+
+
     $scope.launchChoosePriceModal = function() {
       $scope.choosePriceModal.show();
+    }
+
+    $scope.launchPaymentsModal = function() {
+      $scope.paymentsModal.show();
+    }
+
+    $scope.closePaymentsModal = function() {
+      $scope.paymentsModal.hide()
     }
 
     $scope.closeChoosePriceModal = function() {

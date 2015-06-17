@@ -53,7 +53,7 @@
     </ion-scroll>
   </ion-content>
 
-  <ion-content ng-show='root.vars.show_price_fields' ng-controller='PaymentsController' scroll='false'>
+  <ion-content ng-show='root.vars.show_price_fields' scroll='false'>
     <ion-header-bar align-title="center" class='dark-bg-header no-background-image'>
       <div class="buttons">
         <button class="button button-clear button-header-link grey-text light nano-text" ng-click='togglePaymentSideBarView()'>Cancel</button>
@@ -141,7 +141,7 @@
 
                   <p style='padding-bottom:0.5em; padding-top:0.5em'class='black nano-text'> Push Notifications </p>
                 </ion-toggle>
-                <ion-item  ng-show='user && user.id && user.cards.length === 0' ng-click='togglePaymentSideBarView()'>
+                <ion-item  ng-show='user && user.id && user.cards.length === 0' ng-click='goToPaymentsFromSideBar()'>
                   <p class='nano-text black'> Add Payment Method </p>
                 </ion-item>
                 <ion-item  ng-show='user && user.id && user.university_id' ng-click='goToEditUniversity()'>
@@ -161,7 +161,7 @@
                 </ion-item>
 
 
-                <ion-item ng-click='togglePaymentSideBarView()' ng-show='user && user.id && user.cards.length > 0'>
+                <ion-item nav-direction='forward' ng-click='goToPaymentsFromSideBar()' ng-show='user && user.id && user.cards.length > 0'>
                   <p class='nano-text black'>
                     Payment Card Details
                   </p>
