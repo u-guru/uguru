@@ -200,7 +200,7 @@ angular.module('uguru.util.controllers', [])
 
         $scope.user.updateAttr('university_id', $scope.user, payload, null, $scope)
 
-        $scope.success.show(0, 2000, 'Saved!');
+        // $scope.success.show(0, 2000, 'Saved!');
           $timeout(function() {
             $ionicViewSwitcher.nextDirection('forward');
             $state.go('^.home')

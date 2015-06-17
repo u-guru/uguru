@@ -155,6 +155,11 @@ $ionicPlatform.ready(function() {
         templateUrl: BASE + 'templates/university.html',
         controller: 'HomeController'
   }).
+  state('root.signup', {
+        url: '/signup',
+        templateUrl: BASE + 'templates/signup.html',
+        controller: 'SignupController'
+  }).
   state('root.home', {
         url: '/new-home',
         templateUrl: BASE + 'templates/home.html',

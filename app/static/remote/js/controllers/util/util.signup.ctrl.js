@@ -16,14 +16,15 @@ angular.module('uguru.util.controllers')
   '$ionicSideMenuDelegate',
   '$cordovaPush',
   '$ionicViewSwitcher',
+  '$ionicHistory',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
-  $ionicViewSwitcher) {
+  $ionicViewSwitcher, $ionicHistory) {
 
     $scope.root.vars.show_account_fields = false;
-    $scope.loginMode = true;
-    $scope.headerText = 'Log In';
+    $scope.loginMode = false;
+    $scope.headerText = 'Sign Up';
 
     $scope.selectedCurrentHourly = 10;
 
@@ -48,6 +49,13 @@ angular.module('uguru.util.controllers')
       } else {
         $scope.headerText = 'Login Up';
       }
+    }
+
+    $scope.goBack = function(callback,direction) {
+      if (direction) {
+        $ionicViewSwitcher.nextDirection(direction);
+      }
+      $ionicHistory.goBack();
     }
 
     $scope.signupForm = {
@@ -502,6 +510,8 @@ angular.module('uguru.util.controllers')
                       $scope.contactingModal = modal;
                       $scope.contactingModal.show();
               });
+
+              $state.go('^.home');
 
               $scope.user.createObj($scope.user, 'requests', $scope.root.vars.request, $scope);
 

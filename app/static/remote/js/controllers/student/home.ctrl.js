@@ -328,7 +328,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     };
 
     $scope.launchRequestModal = function(index, verb_index) {
-      if ($scope.root.vars.courses) {
+      //UNDO
+      // if ($scope.root.vars.courses) {
 
 
 
@@ -357,11 +358,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             }
 
           });
-
-      } else {
-        alert('courses are not loaded yet');
-      }
+      //UNDO
+      // } else {
+      //   alert('courses are not loaded yet');
+      // }
     }
+
+    console.log($scope.user);
 
     $scope.launchContactingModal = function() {
       $scope.contactingModal.show();
@@ -693,6 +696,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
     }, false);
+
+    $timeout(function() {
+      // $scope.launchRequestModal(0);
+      // $state.go('^.signup');
+    }, 500);
 
   }
 

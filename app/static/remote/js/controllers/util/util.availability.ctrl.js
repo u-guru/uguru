@@ -427,17 +427,11 @@ angular.module('uguru.util.controllers')
       $scope.request.calendar.end_time.formatted = $scope.formatHoursAndMinutes($scope.request.calendar.end_time, true)
 
       //get todays information for some reason
+      $scope.request.calendar.date.offset = $scope.calendar.date.offset;
       $scope.request.calendar.date.day = $scope.calendar.date.date;
       $scope.request.calendar.date.month = today.getMonth();
       $scope.request.calendar.date.year = today.getYear();
 
-
-      //get formatted date
-
-      // {offset: 0, date:today.getDate(), month: today.getMonth() + 1},
-      //                   selected_custom_date:'Date',
-      //                   weekday_offset: (today.getDay()) + 2 % 7,
-      //                   start_date: (today.getDate()) + 2,
 
       // $scope.calendar.
 

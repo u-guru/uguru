@@ -61,26 +61,32 @@
             <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.status > 0'>
               <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
               <p class='inline'> Starts in </p>
-              <p class='inline time-until' style='padding-left:1em'> {{session.request.schedule_time}} minutes </p>
+              <p class='inline time-until' style='padding-left:1.5em'> {{session.request.schedule_time}} minutes </p>
+            </ion-item>
+
+            <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.status === 0'>
+              <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
+              <p class='inline width-30'> Status </p>
+              <p class='inline time-until' style='padding-left:1.5em'> Searching </p>
             </ion-item>
 
             <!-- 5.  Same old but no orange> -->
             <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.address'>
               <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/marker.svg'>
-              <p class='inline'> Meet up </p>
-            <p class='inline black' style='padding-left:1em'> {{session.request.address}} </p>d
+              <p class='inline width-30'> Meet up </p>
+            <p class='inline black' style='padding-left:1.5em'> {{session.request.address}} </p>
             </ion-item>
 
             <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.student_price'>
               <img class='icon ion-plus-custom blue pure-img' style='margin-left:-0.7em;'src='{{img_base}}./img/icons/stacks.svg'>
               <p class='inline width-30'> You offered </p>
-              <p class='inline black' style='padding-left:2.5em'> <span class='light-font opacity-1-2'>$</span>{{session.request.student_price}} </p>
+              <p class='inline black' style='padding-left:1.5em'> <span class='light-font opacity-1-2'>$</span>{{session.request.student_price}} </p>
             </ion-item>
 
-            <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.tags && session.request.tags.length > 0 && session.request._type === 1'>
+            <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.request.tags && session.request.tags.length > 0 && (session.request._type === 1 || session.request._type === 0)'>
               <img class='icon ion-plus-custom blue pure-img tag-icon-question-details' style='margin-left:-0.7em;'src='{{img_base}}./img/icons/tags.svg'>
               <p class='inline width-30'> Your Tags </p>
-              <p class='inline black' style='padding-left:2.5em'><span class='blue request-tag' ng-repeat='tag in session.request.tags'>#{{tag.name}} </span> </p>
+              <p class='inline black' style='padding-left:1.5em'><span class='blue request-tag' ng-repeat='tag in session.request.tags'>#{{tag.name}} </span> </p>
             </ion-item>
 
 

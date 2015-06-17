@@ -80,6 +80,43 @@ angular.module('uguru.root.services', [])
                 return interval + " minutes";
             }
             return Math.floor(seconds) + " seconds";
+        },
+
+        formatHoursAndMinutes: function(date_obj, is_end_time) {
+            var hours = date_obj.hours;
+            var minutes = date_obj.minutes;
+
+            result = ''
+
+            //if 12am
+            if (hours === 0 || hours === 12) {
+                result += '12';
+            }
+
+            else if (hours > 0 && hours < 12) {
+                result += hours;
+            }
+
+            else if (hours > 12 && hours <= 23) {
+                result += hours % 12
+            }
+
+
+
+            //format minutes
+            if (minutes > 0 && minutes === 30) {
+                result += ':30'
+            }
+
+            if (is_end_time && hours >= 12) {
+                result += 'pm';
+            }
+
+            if (is_end_time && hours < 12) {
+                result += 'am';
+            }
+
+            return result
         }
 
     }

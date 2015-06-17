@@ -50,7 +50,7 @@
                       <span ng-show='request._type === 2' class='transform-capitalize'>
                         {{request.task_title}}
                       </span>
-                      <span class='request-tag-status request-tag-status-completed'> {{request.initial_status}} </span>
+                      <span class='request-tag-status request-tag-status-completed' ng-show='request.status === 4'> CANCELED </span>
                     </p>
                     <p class='location-text'> {{request.address}}</p>
                   </div>
@@ -211,18 +211,21 @@
                 <!-- <ion-item class='item-avatar item-wrap-text'> -->
                   <p class='request-description white-space-normal' ng-show='request._type === 0'>
 
-                    <!-- required -->
-                    <strong> {{request.calendar.weekday}}
-                    </strong>
+                    <!-- if not urgent -->
+                    <span ng-show='request.student_calendar &&request.student_calendar.length > 0'>
 
-                    <!-- not all have calendars -->
-                    <span class='calendar-availability-contact' ng-show='request.calendar.formatted_start_time'>
-                       between <strong>{{request.calendar.formatted_start_time}} & {{request.calendar.formatted_end_time}}</strong>
+                      <strong> {{request.student_calendar[0].calendar_events[0].formatted.day}}, {{request.student_calendar[0].calendar_events[0].formatted.month}} {{request.student_calendar[0].calendar_events[0].formatted.date}}
+                      </strong> between
+
+                      <!-- not all have calendars -->
+                      <span class='calendar-availability-contact'>
+                        <strong>{{request.student_calendar[0].calendar_events[0].formatted.start_time_formatted}} -{{request.student_calendar[0].calendar_events[0].formatted.end_time_formatted}}</strong>
+                      </span>
+<!--
+                      <strong> 12:00pm & 3:30pm </strong>
+                      <!-- required -->
+                      for <strong>{{request.student_calendar[0].calendar_events[0].formatted.time_length}} hours</strong>.
                     </span>
-
-                    Today between <strong> 12:00pm & 3:30pm </strong>
-                    <!-- required -->
-                    for <strong>3.5 hours</strong>.
 
                      <span ng-show="request.description">
                       <strong>Description</strong>

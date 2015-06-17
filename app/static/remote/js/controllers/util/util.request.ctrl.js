@@ -264,94 +264,96 @@ angular.module('uguru.util.controllers')
       $scope.requestModal.remove();
     }
 
-    $scope.getLocation = function() {
+    // $scope.getLocation = function() {
 
-            var posOptions = {
-              timeout: 10000,
-              enableHighAccuracy: false, //may cause high errors if true
-            }
-
-
-            $scope.loader.show();
-            $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
-
-                console.log('location found!', position.coords.latitude, position.coords.longitude);
+    //         var posOptions = {
+    //           timeout: 10000,
+    //           enableHighAccuracy: false, //may cause high errors if true
+    //         }
 
 
-                //case 1 --> user is getting location
-                if ($scope.request && $scope.request.position) {
+    //         $scope.loader.show();
+    //         $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
 
-                  $scope.request.position = position.coords;
+    //             console.log('location found!', position.coords.latitude, position.coords.longitude);
 
-                  $scope.user.recent_position = position;
+    //             console.log('request', $scope.request.position);
+    //             //case 1 --> user is getting location
+    //             if ($scope.request && $scope.request.position) {
 
-                  $scope.user.location_services_enabled = true;
+    //               $scope.request.position = position.coords;
 
+    //               $scope.user.recent_position = position;
 
-                  payload = {
-                    'location_services_enabled': true,
-                    'recent_latitude': position.coords.latitude,
-                    'recent_longitude': position.coords.longitude
-                  }
-                  $scope.user.updateAttr('recent_position', $scope.user, payload, null, $scope);
-
-                  if ($scope.locationModal && $scope.locationModal.isShown()) {
-                    $scope.auto_choose_first_location = true;
-
-                    console.log('getting address from gps coordinates');
-
-                    $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
-
-                    $timeout(function() {
-                      $scope.$apply();
-                    }, 1000);
-                  }
-
-                }
-
-                if ($state.current.name === 'root.university') {
-                  $scope.loader.show();
-
-                  var showUniversityListViewNearest = function($scope, $state) {
-                    $scope.loader.hide();
-                    $scope.view = 2;
-                    $scope.$apply();
-                  }
-
-                  var nearestUniversityCallback = function() {
-
-                    getNearestUniversity(position.coords.latitude, position.coords.longitude, $scope.static.universities, 10, $localstorage, $scope, showUniversityListViewNearest, $state);
-                  }
+    //               $scope.user.location_services_enabled = true;
 
 
-                  // if universities already loaded
-                  if ($scope.static && $scope.static.universities && $scope.static.universities.length > 0) {
-                    console.log('universities already loaded, grabbing universities');
-                    getNearestUniversity(position.coords.latitude, position.coords.longitude, $scope.static.universities, 10, $localstorage, $scope, showUniversityListViewNearest, $state);
-                  }
-                  // if universities not already loaded
-                  else {
-                    console.log('universities NOT NOT NOT already loaded first university view, grabbing universities');
-                    on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation);
-                  }
+    //               payload = {
+    //                 'location_services_enabled': true,
+    //                 'recent_latitude': position.coords.latitude,
+    //                 'recent_longitude': position.coords.longitude
+    //               }
+    //               $scope.user.updateAttr('recent_position', $scope.user, payload, null, $scope);
 
-              }
+    //               if ($scope.locationModal && $scope.locationModal.isShown()) {
+    //                 $scope.auto_choose_first_location = true;
 
-          }, function(error) {
-              //show & let them know we couldn't find it
-              $scope.loader.hide()
-              $scope.user.recent_position = null;
-              alert('Sorry! Please check your privacy settings check your GPS signal.');
+    //                 console.log('getting address from gps coordinates');
 
-              var text = document.getElementById('location-input');
-                if (!text.value && text.value.length === 0) {
-                  $timeout(function() {
-                    text.focus();
-                  }, 1000)
-                }
-          });
+    //                 $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
 
-        };
+    //                 $timeout(function() {
+    //                   $scope.$apply();
+    //                 }, 1000);
+    //               } else {
+    //                 $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
+    //               }
+
+    //             }
+
+    //             if ($state.current.name === 'root.university') {
+    //               $scope.loader.show();
+
+    //               var showUniversityListViewNearest = function($scope, $state) {
+    //                 $scope.loader.hide();
+    //                 $scope.view = 2;
+    //                 $scope.$apply();
+    //               }
+
+    //               var nearestUniversityCallback = function() {
+
+    //                 getNearestUniversity(position.coords.latitude, position.coords.longitude, $scope.static.universities, 10, $localstorage, $scope, showUniversityListViewNearest, $state);
+    //               }
+
+
+    //               // if universities already loaded
+    //               if ($scope.static && $scope.static.universities && $scope.static.universities.length > 0) {
+    //                 console.log('universities already loaded, grabbing universities');
+    //                 getNearestUniversity(position.coords.latitude, position.coords.longitude, $scope.static.universities, 10, $localstorage, $scope, showUniversityListViewNearest, $state);
+    //               }
+    //               // if universities not already loaded
+    //               else {
+    //                 console.log('universities NOT NOT NOT already loaded first university view, grabbing universities');
+    //                 on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation);
+    //               }
+
+    //           }
+
+    //       }, function(error) {
+    //           //show & let them know we couldn't find it
+    //           $scope.loader.hide()
+    //           $scope.user.recent_position = null;
+    //           alert('Sorry! Please check your privacy settings check your GPS signal.');
+
+    //           var text = document.getElementById('location-input');
+    //             if (!text.value && text.value.length === 0) {
+    //               $timeout(function() {
+    //                 text.focus();
+    //               }, 1000)
+    //             }
+    //       });
+
+    //     };
 
     $scope.addSelectedStudentCourse = function(course) {
       document.getElementById('course-input').value = course.short_name;
@@ -516,7 +518,10 @@ angular.module('uguru.util.controllers')
                 $scope.request.address = formatted_address.split(',').splice(0, 1).join(", ").replace(/\s+/g, " ").replace(/^\s|\s$/g, "");
                 $scope.request.city_info = formatted_address.split(',').splice(1, formatted_address.split(',').length).join(", ").replace(/\s+/g, " ").replace(/^\s|\s$/g, "");
                 $scope.request.place_id = results.place_id;
-                $scope.closeLocationModal();
+                if ($scope.locationModal.isShown()) {
+                  $scope.closeLocationModal();
+                }
+
                 $timeout(function() {
                   $scope.loader.hide();
                 }, 1000);
@@ -533,7 +538,11 @@ angular.module('uguru.util.controllers')
           }
 
 
-          $scope.loader.show();
+          if (!$scope.requestModalOnlyShown()) {
+            $scope.loader.show();
+          }
+
+
           $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
 
               console.log('location found!', position.coords.latitude, position.coords.longitude);
@@ -562,6 +571,8 @@ angular.module('uguru.util.controllers')
                 $timeout(function() {
                   $scope.$apply();
                 }, 1000);
+              } else {
+                $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
               }
 
           }, function(error) {
@@ -762,22 +773,21 @@ angular.module('uguru.util.controllers')
 
         if (!$scope.user.id) {
           $scope.root.vars.pending_request = true;
-          $scope.success.show(0, 1500, 'Please create an account first');
+          $scope.loader.show();
+          // $scope.success.show(0, 1500, 'Please create an account first');
+          $state.go('^.signup')
 
+          $timeout(function() {
+            $scope.loader.hide();
+          }, 600)
 
 
           $timeout(function() {
               $scope.closeRequestModal();
               $scope.closeChoosePriceModal();
               $scope.verbModal.hide();
-
-              $timeout(function() {
-
-                $ionicSideMenuDelegate.toggleRight();
-
-              },250);
-
-          }, 2000);
+              $scope.root.vars.show_account_fields = true;
+          }, 1000);
           return;
         }
          else {
@@ -791,11 +801,11 @@ angular.module('uguru.util.controllers')
               $timeout(function() {
               $scope.closeRequestModal();
               $scope.verbModal.hide();
-              $scope.contactingModal.hide();
-              if ($scope.choosePriceModal) {
-                  $scope.closeChoosePriceModal();
+
+              if ($scope.choosePriceModal) {;
+                  $scope.closeChoosePriceModal()
                 }
-              }, 1000);
+              }, 500);
 
               $timeout(function() {
                 $scope.closeContactingModal();
@@ -811,7 +821,7 @@ angular.module('uguru.util.controllers')
 
 
                   $scope.closeContactingModal();
-                  // $scope.success.show(0, 5000, 'Oops... Sorry something went wrong, please try again, or contact support!');
+                  $scope.success.show(0, 5000, 'Oops... Sorry something went wrong, please try again, or contact support!');
 
 
                 }
@@ -826,7 +836,7 @@ angular.module('uguru.util.controllers')
       }
 
       $scope.requestModalOnlyShown = function() {
-        return (!$scope.locationModal.isShown() && !$scope.tagsModal.isShown() && !$scope.availabilityModal.isShown()
+        return (($scope.locationModal && !$scope.locationModal.isShown()) && !$scope.tagsModal.isShown() && !$scope.availabilityModal.isShown()
           && !$scope.descriptionModal.isShown())
       }
 
@@ -837,30 +847,30 @@ angular.module('uguru.util.controllers')
 
           if ($scope.requestModal && $scope.requestModal.isShown() && $scope.requestModalOnlyShown()) {
             if ($scope.user.location_services_enabled) {
-
+              $scope.getLocation();
             }
 
           }
 
-         }, 500)
+         })
 
         //put focus on course input & show keyboard if empty
         $timeout(function() {
 
           var course_input = document.getElementById('course-input');
 
-          if ($scope.requestModal && $scope.requestModal.isShown()
-          && !course_input.value && course_input.value.length === 0 && !$scope.locationModal.isShown()
-          && !$scope.tagsModal.isShown() && !$scope.availabilityModal.isShown()
-          && !$scope.descriptionModal.isShown()) {
 
             $timeout(function() {
 
+              if ($scope.requestModal && $scope.requestModal.isShown()
+                  && !course_input.value && course_input.value.length === 0 && !$scope.locationModal.isShown()
+                  && !$scope.tagsModal.isShown() && !$scope.availabilityModal.isShown()
+                  && !$scope.descriptionModal.isShown()) {
+                    course_input.focus();
 
-              course_input.focus();
+                  }
 
             }, 1000);
-          }
 
         }, 500)
 

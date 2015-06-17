@@ -343,7 +343,7 @@ class Calendar(Base):
     def initFromRequest(_request, number_of_days = 2):
         c = Calendar()
         c.time_created = datetime.now()
-        c.request_id = _request.id
+        # c.request_id = _request.id
         c.number_of_days = number_of_days
         db_session.add(c)
         try:
@@ -404,7 +404,7 @@ class Calendar_Event(Base):
         date_now = datetime.now()
         print 'date_now', date_now
         try:
-            day_offset = date_now.replace(day=(date_now.day + day_offset), minute=0, second=0, microsecond=0)
+            day_offset = date_now.replace(day=(date_now.day + day_offset - 1), minute=0, second=0, microsecond=0)
         except ValueError:
             print 'Value Error! Resolving it now...'
             if date_now.day >= 27:
@@ -415,8 +415,8 @@ class Calendar_Event(Base):
         print start_time, end_time
         print type(start_time), type(end_time)
 
-        calendar_event.start_time = day_offset.replace(hour=start_time)
-        calendar_event.end_time = day_offset.replace(hour=end_time)
+        calendar_event.start_time = day_offset.replace(hour=start_time.get('hours'), minute=start_time.get('minutes'))
+        calendar_event.end_time = day_offset.replace(hour=end_time.get('hours'), minute=end_time.get('minutes'))
 
 
         calendar_event.location = event_json.get('location')

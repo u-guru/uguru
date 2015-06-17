@@ -293,18 +293,18 @@ angular.module('uguru.util.controllers')
             }
           }
 
-          $scope.$watch(function () {
-            return (!$ionicSideMenuDelegate.isOpenRight());
-          },
-             function (isClosed) {
-            if (isClosed){
-              $timeout(function() {
-                $scope.root.vars.show_account_fields = false;
-                $scope.root.vars.show_price_fields = false;
-              }, 1000)
-            }
+          // $scope.$watch(function () {
+          //   return (!$ionicSideMenuDelegate.isOpenRight());
+          // },
+          //    function (isClosed) {
+          //   if (isClosed){
+          //     $timeout(function() {
+          //       $scope.root.vars.show_account_fields = false;
+          //       $scope.root.vars.show_price_fields = false;
+          //     }, 1000)
+          //   }
 
-          });
+          // });
 
           $scope.requestPushNotifications = function() {
 

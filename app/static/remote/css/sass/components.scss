@@ -1568,16 +1568,18 @@ p.university-header {
     width: 36%;
 }
 
-.platform-ios .professional-width {
-    width:39%;
+.platform-ios .professional-width,
+.platform-android .professional-width {
+    width:42%;
 }
 
 .hs-student-width {
     width:32%;
 }
 
-.platform-ios .hs-student-width {
-    width:35%;
+.platform-ios .hs-student-width,
+.platform-android .hs-student-width {
+    width:38%;
 }
 
 .university-label {
@@ -1918,4 +1920,17 @@ position: absolute;
 
 .platform-ios .university-view-2 .pure-g {
     margin-top:30px;
+}
+
+.button-right {
+    padding-left:100px !important;
+}
+
+.dont-modify-bounds {
+    right:0px !important;
+    left:0px !important;
+}
+
+.button-left {
+    padding-right:100px !important;
 }

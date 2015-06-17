@@ -2,11 +2,11 @@
 
   <ion-header-bar align-title="center" class='dark-bg-header mini-header'>
     <div class="buttons">
-      <button class="button button-clear button-header-link cancel-button" ng-click='closeRequestModal()'>Cancel</button>
+      <button class="button button-clear button-header-link cancel-button button-left" ng-click='closeRequestModal()'>Cancel</button>
     </div>
-    <h1 class="title">{{request_fields.title}}</h1>
+    <h1 class="title dont-modify-bounds">{{request_fields.title}}</h1>
     <div class="buttons">
-      <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='submitRequest()'>
+      <button class="button button-clear button-header-link submit-button button-right" id='done-button' ng-click='submitRequest()'>
         <span ng-show='!progress' class='ng-class:{"grey-text":!validateFormVanilla()}'>Done </span>
         <span class='blue' ng-show='progress'>Okay</span>
       </button>
@@ -16,7 +16,7 @@
   <ion-content ng-class='rounded-corners'>
       <ion-list class='standard-bg'>
 
-          <ion-item class='item-avatar-left item-mini course-input-item item-icon-right' ng-click='focusCourseInput()'>
+          <ion-item class='item-avatar-left item-mini course-input-item item-button-right' ng-click='focusCourseInput()'>
             <img class='pure-img'  src='{{img_base}}./img/verbs/{{request_fields.img}}' class=''/>
             <input type='text' name="course-input" class='light input-lg course-input form-control'id='course-input' ng-click='focusCourseInput()'
                 fast-matcher
@@ -34,7 +34,7 @@
             />
 
             <!-- ng-change="updateProgress()" -->
-            <a ng-click='toggleYourCourses()'>
+            <a ng-click='toggleYourCourses()' class='button button-clear button-right' style='top:20px;'>
               <img ng-show='show_student_courses' class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='{{img_base}}./img/icons/chevron-filled-down.svg'>
               <img ng-show='!show_student_courses && user.student_courses && user.student_courses.length > 0 && root.vars.last_verb_index_clicked !== 2'class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='{{img_base}}./img/icons/chevron-filled.svg'>
             </a>

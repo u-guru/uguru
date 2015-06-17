@@ -667,31 +667,36 @@ class UserRequestView(restful.Resource):
                 db_session.commit()
 
 
-        # print request.json
-        # print "request committed!", position
-        # calendar = Calendar.initFromRequest(_request, 2)
-        # print "calendar created !", calendar
-        # calendar_events_json = request.json.get('calendar_events')
 
-        # if calendar_events_json:
-        #     day_index = 0
-        #     for day_arr in calendar_events_json:
-        #         index = 0
-        #         for boolean in day_arr:
 
-        #             time_json = {'start_time':None, 'end_time': None}
+        calendar_json = request.json.get('calendar')
+        calendar_json_start_time = calendar_json.get('start_time')
+        calendar_json_end_time = calendar_json.get('end_time')
 
-        #             if boolean:
-        #                 time_json['start_time'] = index
-        #                 time_json['end_time'] = index + 1
-        #             print 'time_json', time_json
-        #             print 'day_offset', day_index
-        #             calendar_event = Calendar_Event.initFromJson(time_json, calendar, day_index)
-        #             index += 1
-        #         day_index += 1
+        # if calendar is actually created
+        if calendar_json_start_time and calendar_json_end_time:
 
-        # print "longass json calendar figured out", calendar
-        calendar = None ###temp
+
+            calendar = Calendar()
+            calendar.time_created = datetime.now()
+            calendar.number_of_days = 9
+            db_session.add(calendar)
+            db_session.commit()
+
+            _request.student_calendar_id = calendar.id
+
+
+            offset_integer = calendar_json.get('date').get('offset')
+
+            print calendar_json
+            print
+            print calendar_json_start_time, calendar_json_end_time, offset_integer
+
+            calendar_event = Calendar_Event.initFromJson(calendar_json, calendar, offset_integer)
+            db_session.add(calendar_event)
+            db_session.commit()
+
+
 
         print request.json.get('files')
         if request.json.get('files'):
