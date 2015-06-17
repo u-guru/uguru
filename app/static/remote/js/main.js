@@ -180,6 +180,11 @@ $ionicPlatform.ready(function() {
         templateUrl: BASE + 'templates/become.guru.html',
         controller: 'BecomeGuruController'
   }).
+  state('root.courses', {
+        url: '/courses',
+        templateUrl: BASE + 'templates/courses.html',
+        controller: 'CoursesController'
+  }).
   state('root.student-session', {
         url: '/student-session:sessionObj',
         templateUrl: BASE + 'templates/student.session.html',
