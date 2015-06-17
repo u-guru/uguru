@@ -18,36 +18,25 @@
 
 
             <div class='pure-u-1 professional-wrapper'>
-                <a class='course-tag skill-tag'>Resume</a>
-                <a class='course-tag skill-tag'>Writing</a>
+                <a ng-click='addSelectedGuruSkill(professional_skill)' class='course-tag skill-tag' ng-repeat='professional_skill in static.professional_skills'>{{professional_skill.name.toUpperCase()}}</a>
+                <!-- <a class='course-tag skill-tag'>Writing</a>
                 <a class='course-tag skill-tag'>Interviews</a><br>
                 <a class='course-tag skill-tag'>Public Speaking</a>
                 <a class='course-tag skill-tag'>Bullshitting</a>
-                <a class='course-tag skill-tag'>Drinking</a>
+                <a class='course-tag skill-tag'>Drinking</a> -->
             </div>
 
 
             <div class='pure-u-1 skilled-wrapper'>
-                <span class='course-tag skill-tag'>iPhone Repair</span>
-                <span class='course-tag skill-tag'>Internet Setup</span><br>
-                <span class='course-tag skill-tag'>Baked Goods</span>
-                <span class='course-tag skill-tag'>Photography</span>
-                <span class='course-tag skill-tag'>Vacuuming</span>
+                <a class='course-tag skill-tag' ng-click='addSelectedGuruSkill(specialized_skill)' ng-repeat='specialized_skill in static.specialized_skills'>{{specialized_skill.name.toUpperCase()}}</a>
             </div>
 
             <div class='pure-u-1 chores-wrapper'>
-                <span class='course-tag skill-tag'>Cleaning</span>
-                <span class='course-tag skill-tag'>Dishes</span><br>
-                <span class='course-tag skill-tag'>Laundry</span>
-                <span class='course-tag skill-tag'>Ironing</span>
+              <a class='course-tag skill-tag' ng-click='addSelectedGuruSkill(chores_skill)' ng-repeat='chores_skill in static.chores_skills'>{{chores_skill.name.toUpperCase()}}</a>
             </div>
 
             <div class='pure-u-1 labor-wrapper' >
-                <span class='course-tag skill-tag'>Ikea Assembly</span>
-                <span class='course-tag skill-tag'>Moving Assistance</span> <br>
-                <span class='course-tag skill-tag'>I have a truck</span>
-                <span class='course-tag skill-tag'>Painting</span>
-                <span class='course-tag skill-tag'>Interior Design</span>
+                <a class='course-tag skill-tag' ng-click='addSelectedGuruSkill(labor_skill)' ng-repeat='labor_skill in static.labor_skills'>{{labor_skill.name.toUpperCase()}}</a>
             </div>
 
 

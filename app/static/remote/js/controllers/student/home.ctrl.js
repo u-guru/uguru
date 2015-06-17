@@ -26,6 +26,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $scope.root.vars.show_price_fields = false;
 
 
+
   $scope.showPreviousRequests = function() {
       if (!$scope.user.previous_requests || $scope.user.previous_requests.length === 0) {
         $scope.success.show(0, 2000, 'Sorry! Please make a request first.');

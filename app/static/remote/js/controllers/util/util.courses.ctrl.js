@@ -69,6 +69,19 @@ angular.module('uguru.util.controllers')
       $scope.user.updateAttr('remove_guru_course', $scope.user, guru_course, null, $scope);
     }
 
+    $scope.addSelectedGuruSkill = function(skill, input_text) {
+      $scope.user.guru_skills.push(skill);
+
+       if ($scope.user.id) {
+        //adds to database for user
+        $scope.user.updateAttr('add_guru_skill', $scope.user, skill, null, $scope);
+      } else {
+        //add to local cache so we can loop through it when it is time to update user
+        $scope.root.vars.remote_cache.push({'add_guru_skill': skill});
+      }
+
+    }
+
     $scope.addSelectedGuruCourse = function(course, input_text) {
       $scope.course_search_text = course.short_name.toUpperCase();
 

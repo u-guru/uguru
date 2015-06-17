@@ -381,6 +381,21 @@ class UserOneView(restful.Resource):
                 db_session.commit()
                 # create major case
 
+        if request.json.get('add_guru_skill'):
+            print 'guru skill submitted!'
+            print request.json.get('add_guru_skill')
+            skill_json = request.json.get('skill')
+            skill_id = skill_json.get('id')
+            if skill_id:
+                skill = Skill.query.get(int(skill_id))
+                if skill:
+                    print skill, skill.category
+                    user.guru_skills.append(skill)
+                    db_session.commit()
+                    print 'length of user skills', len(user.guru_skills)
+
+
+
 
         if request.json.get('add_guru_course'):
             course = request.json.get('course')

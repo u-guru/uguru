@@ -302,6 +302,35 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
         };
 //background loading stuff
 
+
+var processSkills = function($scope) {
+
+  if ($scope.static.skills && $scope.static.skills.length > 0) {
+
+        $scope.static.professional_skills = [];
+        $scope.static.specialized_skills = [];
+        $scope.static.chores_skills = [];
+        $scope.static.labor_skills = [];
+
+        for (var i = 0; i < $scope.static.skills.length; i ++) {
+          var skill = $scope.static.skills[i];
+          if (skill.category === 'labor') {
+            $scope.static.labor_skills.push(skill);
+          }
+          if (skill.category === 'specialized') {
+            $scope.static.specialized_skills.push(skill);
+          }
+          if (skill.category === 'chores') {
+            $scope.static.chores_skills.push(skill);
+          }
+          if (skill.category === 'professional') {
+            $scope.static.professional_skills.push(skill);
+          }
+        }
+    }
+    console.log('skills processed');
+}
+
 var on_app_open_retrieve_objects = function($scope, $state, $localstorage, University, callback, Geolocation, Major, Skill, Profession) {
   console.log('getting university from server');
   // $cordovaSplashscreen.hide();
@@ -346,7 +375,8 @@ var on_app_open_retrieve_objects = function($scope, $state, $localstorage, Unive
     $localstorage.setObject('skills', skills);
     $scope.static.popular_skills = skills.slice(0, 16);
     $localstorage.setObject('popular_skills', $scope.static.popular_skills);
-    console.log(skills.length, 'skills loaded');
+    processSkills($scope);
+
   },
   function() {
     console.log('Skills NOT successfully loaded');

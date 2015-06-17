@@ -1746,7 +1746,7 @@ class Skill(Base):
 
     def __repr__(self):
         return "<Skill '%r', '%r'>" %\
-              (self.id, self.short_name)
+              (self.id, self.name)
 
 
 class Course(Base):

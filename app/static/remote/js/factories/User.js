@@ -555,12 +555,28 @@ angular.module('uguru.user', [])
                       'add_student_course': true
                   }
               }
+
               if (arg === 'add_guru_course') {
                   return {
                         course: obj,
                         'add_guru_course': true
                   }
               }
+
+              if (arg === 'add_guru_skill') {
+                  return {
+                        skill: obj,
+                        'add_guru_skill': true
+                  }
+              }
+
+              if (arg === 'add_guru_profession') {
+                  return {
+                        profession: obj,
+                        'add_guru_profession': true
+                  }
+              }
+
               if (arg === 'remove_guru_course') {
                   return {
                         course: obj,

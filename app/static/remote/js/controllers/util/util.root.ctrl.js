@@ -199,6 +199,7 @@ angular.module('uguru.util.controllers')
           } else {
             $scope.static.skills = local_skills;
             $scope.static.popular_skills = local_popular_skills;
+            processSkills($scope);
             console.log('skills already loaded');
           }
 
