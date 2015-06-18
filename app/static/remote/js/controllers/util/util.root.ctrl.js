@@ -535,7 +535,46 @@ angular.module('uguru.util.controllers')
                 // console.log('device is resuming....');
                 // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
                 // console.log('device resumed');
-                User.getUserFromServer($scope, null, $state);
+
+                Version.getUpdatedVersionNum().then(
+              //if user gets the right version
+                    function(response) {
+                      var serverVersionNumber = parseFloat(JSON.parse(response).version);
+                      $scope.root.vars.version = serverVersionNumber;
+
+
+                      console.log('server', serverVersionNumber, typeof(serverVersionNumber));
+                      console.log('local', local_version, typeof(local_version));
+
+                      if (local_version !== serverVersionNumber) {
+                            if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.show) {
+                              $cordovaSplashscreen.show();
+                            }
+
+                            $ionicHistory.clearCache();
+                            $ionicHistory.clearHistory();
+                            $templateCache.removeAll();
+
+                            window.localStorage.clear();
+                            //remove all angular templates
+
+                            $localstorage.setObject('version', $scope.root.vars.version);
+                            console.log('updating version to', serverVersionNumber, '...');
+
+                            window.location = BASE_URL;
+                            window.location.reload(true);
+
+                      } else {
+                        User.getUserFromServer($scope, null, $state);
+                      }
+
+
+
+                      $localstorage.setObject('version', $scope.root.vars.version);
+
+                    }, function(err) {
+                      console.log(err);
+                    })
 
             }, false);
 
