@@ -10,21 +10,52 @@
   </ion-header-bar>
 
 <ion-content class='white-bg standard-bg'>
-    <ion-list>
-      <ion-item ng-repeat="opportunity in user.guru_score_opportunities">
-        {{opportunity.details.title}}
-        <p style="white-space:normal;">{{opportunity.details.description}}</p>
-        <span class="badge badge-positive">{{opportunity.impact_level}}</span>
-      </ion-item>
-    </ion-list
+    <div class='pure-g-c flex-column flex-space-between'>
+
+      <ion-slide-box show-pager="true">
+        <ion-slide>
+          <div class='pure-g-c flex-column height-40 j-end padding-2em guru-profile-img-wrapper'>
+              <div class='center no-margin'>
+                <div class='pure-u-1 center float-center'>
+                  <img ng-show='user && !user.id'class='pure-img profile-img sidebar-img guru-profile-img inline'  src='https://graph.facebook.com/10152573868267292/picture?width=100&height=100'/>
+                  <img ng-show='user && user.profile_url' class='pure-img profile-img sidebar-img guru-profile-img inline'  src='{{user.profile_url}}'/>
+                </div>
+              </div>
+              <!-- majors section -->
+              <div class='center' ng-show='user.majors && user.majors.length > 0'>
+                <h5 class='semibold uppercase' style='opacity:0.8'> {{user.university.title}} </h5>
+                <p class='nano-text' style='font-size:70%;'>Studying
+                  <span ng-show='user.majors && user.majors.length > 2'>
+                    <span ng-repeat="major in user.majors.slice(0, user.majors.length - 1)"><strong>{{major.name}}</strong>, </span>  and <strong>{{user.majors[user.majors.length - 1].name}}</strong>
+                  </span>
+                  <span ng-show='user.majors && user.majors.length === 2'>
+                    <strong>{{user.majors[0].name}}</strong> and <strong>{{user.majors[1].name}}</strong>.
+                  </span>
+                  <span ng-show='user.majors && user.majors.length === 1'>
+                    <strong> {{user.majors[0].name}} </strong>
+                  </span>
+                 </p>
+              </div>
+              <!--Ratings-->
+
+          </div>
+        </ion-slide>
+        <ion-slide>
+          wassup
+        </ion-slide>
+      </ion-slide-box>
+    </div>
+
 </ion-content>
 
+<div ng-include="img_base + 'templates/guru.footer.components.html'"> </div>
+</div>
 <div class="tabs tabs-icon-only white-bg" id='guru-tab-bar'>
   <a class="tab-item" id='home-button' href='#/guru' nav-direction='home'>
     <img class='pure-img icon' src='{{img_base}}./img/request/house-icon-outline.svg'></i>
   </a>
   <a class="tab-item" id='guru-courses-button'>
-    <img class='pure-img icon' src='{{img_base}}./img/request/guru_book_blue.svg'></i>
+    <img class='pure-img icon' src='{{img_base}}./img/request/guru_book_outline.svg'></i>
   </a>
   <a class="tab-item" href='#/guru-questions' nav-direction='swap' id='questions-button'>
     <img class='pure-img icon' src='{{img_base}}./img/icons/question.svg'></i>
@@ -32,7 +63,8 @@
   <a class="tab-item" id='browse-button'>
     <img class='pure-img icon' src='{{img_base}}./img/icons/task.svg'></i>
   </a>
-  <a class="tab-item">
+  <a class="tab-item" id='profile-tab-button' nav-direction='swap' href='#/guru-profile'>
+    <i class='icon ion-person bg-blue'> </i>
   </a>
   <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
     <img class='pure-img icon' src='{{img_base}}./img/settings-tab-guru.svg'/>

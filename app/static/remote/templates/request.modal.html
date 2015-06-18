@@ -34,7 +34,7 @@
             />
 
             <!-- ng-change="updateProgress()" -->
-            <a ng-click='toggleYourCourses()' class='button button-clear button-right' style='top:20px;'>
+            <a ng-click='toggleYourCourses()' class='button button-clear' style='top:20px; padding-left:50px;'>
               <img ng-show='show_student_courses' class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='{{img_base}}./img/icons/chevron-filled-down.svg'>
               <img ng-show='!show_student_courses && user.student_courses && user.student_courses.length > 0 && root.vars.last_verb_index_clicked !== 2'class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='{{img_base}}./img/icons/chevron-filled.svg'>
             </a>

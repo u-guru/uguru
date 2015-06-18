@@ -13,8 +13,11 @@ angular.module('uguru.guru.controllers')
   '$stateParams',
   '$ionicHistory',
   'Camera',
+  '$ionicSideMenuDelegate',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
- 	$ionicModal, $stateParams, $ionicHistory, Camera) {
+ 	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate) {
+
+    $ionicSideMenuDelegate.canDragContent(false);
 
     $scope.takePhoto = function() {
     if ($scope.platform.mobile) {
