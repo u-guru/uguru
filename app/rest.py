@@ -575,7 +575,12 @@ class UserOneView(restful.Resource):
         #         user.majors.remove(m)
         #     db_session.commit()
 
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            print "ERROR WITH COMMIT"
+            db_session.rollback()
+            raise
         return user, 200
 
 def get_user(user_id):
