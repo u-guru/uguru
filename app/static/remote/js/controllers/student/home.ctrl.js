@@ -698,10 +698,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     }, false);
 
-    $timeout(function() {
-      // $scope.launchRequestModal(0);
-      // $state.go('^.signup');
-    }, 500);
+    // $timeout(function() {
+    //   $state.go('^.become-guru');
+    // }, 4000)
 
   }
 

@@ -3,27 +3,32 @@
 <ion-view hide-nav-bar='true' class='ranking'>
 
   <ion-header-bar class='dark-bg-header'>
-      <div class="buttons">
-        <button class="button button-clear button-header-link cancel-button" ng-click='goBack()'>back</button>
-      </div>
-      <h1 class="title">Guru Profile</h1>
+      <h1 class='title sans-bold bold uppercase'>{{user.name.split(' ')[0] + ' ' + user.name.split(' ')[1][0].toUpperCase()}}.</h1>
   </ion-header-bar>
 
-<ion-content class='white-bg standard-bg'>
-    <div class='pure-g-c flex-column flex-space-between'>
+<ion-content class='white-bg standard-bg full-height' style='bottom:50px;'>
+    <div class='pure-g-c flex-column flex-space-between full-height'>
 
-      <ion-slide-box show-pager="true">
+      <ion-slide-box class='guru-profile-slide-box'>
         <ion-slide>
-          <div class='pure-g-c flex-column height-40 j-end padding-2em guru-profile-img-wrapper'>
+          <div class='pure-g-c flex-column j-end padding-3em guru-profile-img-wrapper' style='padding-top:1em; padding-bottom:1em;'>
               <div class='center no-margin'>
                 <div class='pure-u-1 center float-center'>
                   <img ng-show='user && !user.id'class='pure-img profile-img sidebar-img guru-profile-img inline'  src='https://graph.facebook.com/10152573868267292/picture?width=100&height=100'/>
                   <img ng-show='user && user.profile_url' class='pure-img profile-img sidebar-img guru-profile-img inline'  src='{{user.profile_url}}'/>
                 </div>
               </div>
+              <div class='pure-u-1 center' style='font-size:1.5em;'>
+                    <div class='pure-u-1-8' ng-repeat='number in getNumber(user.guru_avg_rating) track by $index'>
+                            <i class='icon ion-star blue'></i>
+                    </div>
+                    <div class='pure-u-1-8' ng-repeat='number in getNumber(5 - user.guru_avg_rating) track by $index'>
+                      <i class='icon ion-star grey'></i>
+                    </div>
+              </div>
               <!-- majors section -->
               <div class='center' ng-show='user.majors && user.majors.length > 0'>
-                <h5 class='semibold uppercase' style='opacity:0.8'> {{user.university.title}} </h5>
+                <p class='nano-text' style='font-size:70%; margin-bottom:0.4em; margin-top:0.75em;'>Attending <strong>{{user.university.title}}</strong> </p>
                 <p class='nano-text' style='font-size:70%;'>Studying
                   <span ng-show='user.majors && user.majors.length > 2'>
                     <span ng-repeat="major in user.majors.slice(0, user.majors.length - 1)"><strong>{{major.name}}</strong>, </span>  and <strong>{{user.majors[user.majors.length - 1].name}}</strong>
@@ -36,14 +41,58 @@
                   </span>
                  </p>
               </div>
-              <!--Ratings-->
-
           </div>
         </ion-slide>
         <ion-slide>
-          wassup
+          <div class='pure-g-c flex-column j-end padding-3em guru-profile-img-wrapper' style='opacity:1.0'>
+              <div class='center no-margin'>
+
+              </div>
+          </div>
+
         </ion-slide>
       </ion-slide-box>
+      <!-- <div class='pure-g-c flex-column j-start center'> -->
+        <div class='pure-g opacity-3-4' style='border-bottom: 1px solid rgba(0,0,0,0.4)'>
+          <!-- <div class='pure-u-1 center'> -->
+            <!-- <div class='pure-g opacity-3-4'> -->
+              <div class='pure-u-1-3 center'>
+                <div class='padding-1em'>
+                  ${{user.current_hourly || 10}}/hr
+                </div>
+              </div>
+              <div class='pure-u-1-3 center'>
+                <div class='padding-1em'>
+                    {{user.guru_sessions.length}} sessions
+                </div>
+              </div>
+              <div class='pure-u-1-3 center'>
+                <div class='padding-1em'>
+                  %{{user.current_hourly || 100}}
+                </div>
+              </div>
+            <!-- </div> -->
+          <!-- </div> -->
+        </div>
+        <!-- </div> -->
+      <!-- </div> -->
+       <div class='pure-g-c flex-column j-center center'>
+        <div class='pure-g'>
+          <div class='pure-u-1 padding-half'>
+            <h5 class='grey-text center uppercase semibold opacity-1-2' style='font-size:80%;'> My Courses </h5>
+            <div class='courses-container center'>
+              <span class='course-tag uppercase' ng-repeat='guru_course in user.guru_courses'>{{guru_course.short_name}}</span>
+            </div>
+          </div>
+
+          <div class='pure-u-1 padding-half' style='padding-top:0em;'>
+            <h5 class='grey-text center uppercase semibold opacity-1-2' style='font-size:80%;'> My Skills </h5>
+            <div class='courses-container center skilled-wrapper'>
+              <span style='font-size:100%;' class='course-tag specialized-tag uppercase' ng-repeat='guru_skill in user.guru_skills'>{{guru_skill.name}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
 </ion-content>
@@ -54,17 +103,14 @@
   <a class="tab-item" id='home-button' href='#/guru' nav-direction='home'>
     <img class='pure-img icon' src='{{img_base}}./img/request/house-icon-outline.svg'></i>
   </a>
-  <a class="tab-item" id='guru-courses-button'>
-    <img class='pure-img icon' src='{{img_base}}./img/request/guru_book_outline.svg'></i>
-  </a>
   <a class="tab-item" href='#/guru-questions' nav-direction='swap' id='questions-button'>
     <img class='pure-img icon' src='{{img_base}}./img/icons/question.svg'></i>
   </a>
-  <a class="tab-item" id='browse-button'>
+  <a class="tab-item" id='tasks-button' nav-direction='swap' href='#/guru-tasks'>
     <img class='pure-img icon' src='{{img_base}}./img/icons/task.svg'></i>
   </a>
   <a class="tab-item" id='profile-tab-button' nav-direction='swap' href='#/guru-profile'>
-    <i class='icon ion-person bg-blue'> </i>
+    <i class='icon ion-person blue'> </i>
   </a>
   <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
     <img class='pure-img icon' src='{{img_base}}./img/settings-tab-guru.svg'/>

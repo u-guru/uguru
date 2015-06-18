@@ -232,6 +232,13 @@ angular.module('uguru.util.controllers')
         $scope.paymentsModal = modal;
     });
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+      }).then(function(modal) {
+        $scope.signupModal = modal;
+    });
+
 
     $scope.launchChoosePriceModal = function() {
       $scope.choosePriceModal.show();
@@ -243,6 +250,14 @@ angular.module('uguru.util.controllers')
 
     $scope.closePaymentsModal = function() {
       $scope.paymentsModal.hide()
+    }
+
+    $scope.launchSignupModal = function() {
+      $scope.signupModal.show();
+    }
+
+    $scope.closeSignupModal = function() {
+      $scope.signupModal.hide()
     }
 
     $scope.closeChoosePriceModal = function() {

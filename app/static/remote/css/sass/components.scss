@@ -8,6 +8,10 @@ $green: #56CD9F;
     color:#68A7CF;
 }
 
+.orange {
+    color:#E37543
+}
+
 .green {
     color: #56CD9F;
 }
@@ -329,7 +333,7 @@ textarea {
     opacity:0.8;
 }
 
-#location-filled-item, .location-item {
+#location-filled-item, .major-item, .location-item {
 
     padding:8px 12px 6px 12px;
     p {
@@ -1597,7 +1601,6 @@ p.university-header {
     box-shadow: 0px 7px 10px -5px black;
 
     input {
-        margin-left: 1.33em !important;
         background-color: transparent !important;
         color:white;
         padding: 0 0.5em;
@@ -1645,10 +1648,8 @@ p.university-header {
 
 .onboarding-search-icon {
     color: rgba(255,255,255,0.5);
-    left:1em;
-    top:42%;
-    padding-left:0.8em;
-    font-size:1.3em;
+    top:55%;
+    font-size:1.8em;
 }
 
 
@@ -1669,10 +1670,6 @@ p.university-header {
     box-shadow:none;
 }
 
-.university-view-2 .university-label {
-    padding-top: 0;
-    padding-left: 1.2em;
-}
 
 .university-list.active .university-list.activated {
     color: $blue;
@@ -1947,4 +1944,49 @@ position: absolute;
 
 .guru-profile-img-wrapper {
     background-color: rgba(0,0,0,0.1);
+}
+
+#description-input::-webkit-input-placeholder {
+    padding-left:0.5em;
+}
+
+#description-input:-moz-placeholder { /* Firefox 18- */
+   padding-left:0.5em;
+}
+
+#description-input::-moz-placeholder {  /* Firefox 19+ */
+   padding-left:0.5em;
+}
+
+#description-input:-ms-input-placeholder {
+   padding-left:0.5em;
+}
+
+.guru-profile-slide-box .slider-pager {
+    .slider-pager-page {
+        color:rgba(0,0,0,0.1);
+    }
+
+    .slider-pager-page.active {
+        color:white;
+    }
+}
+
+#university-input, #major-input {
+    padding: 0.5em !important;
+    padding-left: 1em !important;
+    font-size: 1.15em;
+    line-height:1.3em !important;
+    text-transform: capitalize;
+}
+
+.align-left-start {
+    margin-left: -1.2em !important;
+}
+
+.major-item {
+    padding:12px 12px !important;
+    p {
+        overflow:visible !important;
+    }
 }

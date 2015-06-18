@@ -46,16 +46,43 @@ angular.module('uguru.util.controllers')
       $scope.loginMode = !$scope.loginMode;
       if (!$scope.loginMode) {
         $scope.headerText = 'Sign Up';
+
       } else {
-        $scope.headerText = 'Login Up';
+        $scope.headerText = 'Log In';
       }
+
+      $timeout(function() {
+
+        if (!$scope.loginMode) {
+        var first_name_input = document.getElementById('first-name-input')
+          if (first_name_input) {
+            first_name_input.focus();
+          }
+        } else {
+          var email_input = document.getElementById('email-input')
+          if (email_input) {
+            email_input.focus();
+          }
+        }
+
+      }, 250)
+
     }
 
     $scope.goBack = function(callback,direction) {
-      if (direction) {
-        $ionicViewSwitcher.nextDirection(direction);
+      //part of a request
+      if ($state.current.name === 'root.home') {
+        if ($scope.signupModal && $scope.signupModal.isShown())  {
+          $scope.signupModal.hide()
+        }
       }
-      $ionicHistory.goBack();
+
+
+      if ($state.current.name === 'root.signup') {
+        $ionicViewSwitcher.nextDirection('back');
+        $state.go('^.home');
+      }
+
     }
 
     $scope.signupForm = {
@@ -156,6 +183,14 @@ angular.module('uguru.util.controllers')
       $timeout(function() {
         $ionicViewSwitcher.nextDirection('forward');
         $state.go('^.payments');
+      }, 300);
+    }
+
+    $scope.goToSignupFromSideBar = function() {
+      $ionicSideMenuDelegate.toggleRight();
+      $timeout(function() {
+        $ionicViewSwitcher.nextDirection('forward');
+        $state.go('^.signup');
       }, 300);
     }
 
@@ -488,12 +523,18 @@ angular.module('uguru.util.controllers')
 
 
           //signup normally from sidebar
-          if ($state.current.name === 'root.home') {
+          if ($state.current.name === 'root.signup') {
             $scope.success.show(0, 2000, 'Signup Successful!');
             $scope.show_account_fields = false;
             $timeout(function() {
               $ionicSideMenuDelegate.toggleRight();
             }, 500)
+          }
+
+          if ($state.current.name === 'root.home') {
+            if ($scope.signupModal && $scope.signupModal.isShown()) {
+              $scope.signupModal.hide();
+            }
           }
           //if we are about to create a request
           if ($state.current.name === 'root.student-request') {
@@ -558,6 +599,46 @@ angular.module('uguru.util.controllers')
       $scope.hide_defaults = true;
 
     }
+
+    $scope.$on('$ionicView.enter', function() {
+      if (!$scope.loginMode) {
+        var first_name_input = document.getElementById('first-name-input')
+        if (first_name_input) {
+          first_name_input.focus();
+        }
+      } else {
+        var email_input = document.getElementById('email-input')
+        if (email_input) {
+          email_input.focus();
+        }
+      }
+    });
+
+    $scope.$on('modal.shown', function() {
+
+
+        if ($scope.signupModal && $scope.signupModal.isShown()) {
+
+
+            if (!$scope.loginMode) {
+              var first_name_input = document.getElementById('first-name-input')
+              if (first_name_input) {
+                $timeout(function() {
+                  first_name_input.focus();
+                }, 500)
+              }
+            } else {
+              var email_input = document.getElementById('email-input')
+              if (email_input) {
+                $timeout(function() {
+                  email_input.focus();
+                }, 500)
+              }
+            }
+
+        }
+    });
+
 
 
 

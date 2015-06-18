@@ -1,6 +1,9 @@
 .blue {
   color: #68A7CF; }
 
+.orange {
+  color: #E37543; }
+
 .green {
   color: #56CD9F; }
 
@@ -221,9 +224,9 @@ textarea {
   font-size: 0.66em;
   opacity: 0.8; }
 
-#location-filled-item, .location-item {
+#location-filled-item, .major-item, .location-item {
   padding: 8px 12px 6px 12px; }
-  #location-filled-item p, .location-item p {
+  #location-filled-item p, .major-item p, .location-item p {
     line-height: 1em;
     opacity: 1;
     margin: 0; }
@@ -1121,7 +1124,6 @@ p.university-header {
   border-bottom: 2px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0px 7px 10px -5px black; }
   .university-label input {
-    margin-left: 1.33em !important;
     background-color: transparent !important;
     color: white;
     padding: 0 0.5em;
@@ -1160,10 +1162,8 @@ p.university-header {
 
 .onboarding-search-icon {
   color: rgba(255, 255, 255, 0.5);
-  left: 1em;
-  top: 42%;
-  padding-left: 0.8em;
-  font-size: 1.3em; }
+  top: 55%;
+  font-size: 1.8em; }
 
 .padding-half-horizontal {
   padding-right: 0.5em;
@@ -1177,10 +1177,6 @@ p.university-header {
 
 .no-box-shadow {
   box-shadow: none; }
-
-.university-view-2 .university-label {
-  padding-top: 0;
-  padding-left: 1.2em; }
 
 .university-list.active .university-list.activated {
   color: #68A7CF; }
@@ -1388,3 +1384,37 @@ select.current-hourly-price {
 
 .guru-profile-img-wrapper {
   background-color: rgba(0, 0, 0, 0.1); }
+
+#description-input::-webkit-input-placeholder {
+  padding-left: 0.5em; }
+
+#description-input:-moz-placeholder {
+  /* Firefox 18- */
+  padding-left: 0.5em; }
+
+#description-input::-moz-placeholder {
+  /* Firefox 19+ */
+  padding-left: 0.5em; }
+
+#description-input:-ms-input-placeholder {
+  padding-left: 0.5em; }
+
+.guru-profile-slide-box .slider-pager .slider-pager-page {
+  color: rgba(0, 0, 0, 0.1); }
+.guru-profile-slide-box .slider-pager .slider-pager-page.active {
+  color: white; }
+
+#university-input, #major-input {
+  padding: 0.5em !important;
+  padding-left: 1em !important;
+  font-size: 1.15em;
+  line-height: 1.3em !important;
+  text-transform: capitalize; }
+
+.align-left-start {
+  margin-left: -1.2em !important; }
+
+.major-item {
+  padding: 12px 12px !important; }
+  .major-item p {
+    overflow: visible !important; }

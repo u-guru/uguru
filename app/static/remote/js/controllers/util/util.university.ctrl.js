@@ -59,7 +59,7 @@ angular.module('uguru.util.controllers', [])
           if (element) {
             element.focus();
           }
-        }, 1000);
+        }, 300);
       } else {
         if ($scope.platform.mobile && $cordovaKeyboard.isVisible()) {
           $cordovaKeyboard.close();
@@ -130,6 +130,7 @@ angular.module('uguru.util.controllers', [])
 
     $scope.universitySelected = function(university, $event) {
 
+      $scope.loader.show();
       if ($scope.onboarding === true) {
 
         $scope.nearestUniversitySelected($event, university);
@@ -155,6 +156,7 @@ angular.module('uguru.util.controllers', [])
 
         var postUniversitySelectedCallback = function() {
           $timeout(function() {
+            $scope.loader.hide();
             $ionicViewSwitcher.nextDirection('forward');
             $state.go('^.home')
           }, 1000);
@@ -202,6 +204,7 @@ angular.module('uguru.util.controllers', [])
 
         // $scope.success.show(0, 2000, 'Saved!');
           $timeout(function() {
+            $scope.loader.hide();
             $ionicViewSwitcher.nextDirection('forward');
             $state.go('^.home')
         }, 1000);

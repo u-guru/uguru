@@ -4,6 +4,11 @@
     <ion-slide-box show-pager="true" class='dark-bg' on-slide-changed="slideHasChanged($index)" delegate-handle='become-guru-slide-box'>
 
       <ion-slide>
+         <div ng-include="img_base + BASE + 'templates/become.guru.courses.html'"></div>
+      </ion-slide>
+
+
+      <ion-slide>
 
         <div ng-include="img_base + BASE + 'templates/majors.html'"></div>
 
@@ -14,11 +19,6 @@
         <div ng-include="img_base + BASE + 'templates/become.guru.skills.html'"></div>
 
       </ion-slide>
-
-      <ion-slide>
-         <div ng-include="img_base + BASE + 'templates/become.guru.courses.html'"></div>
-      </ion-slide>
-
       <ion-slide>
 
         <div ng-include="img_base + BASE + 'templates/become.guru.photo.html'"></div>

@@ -88,12 +88,13 @@ angular.module('uguru.util.controllers')
 
       //set the variable to this
       input_text = '';
+      $scope.search_text = '';
 
       //set the course text to what it should be
-      document.getElementById('guru-course-input').value = '';
-      $scope.course_search_text = course.short_name
+      // document.getElementById('guru-course-input').value = '';
+      // $scope.course_search_text = course.short_name
       //make progress false so we can hide all other elements
-      $scope.progress = false;
+      // $scope.progress = false;
 
       //TODO JASON ADD TEST CASE: check if course is already in their courses
 
@@ -104,7 +105,7 @@ angular.module('uguru.util.controllers')
       //JASON ADD TEST CASE: Check if length of student courses is now longer than one
 
       //if user is already logged in
-      $scope.course_search_text = '';
+      // $scope.course_search_text = '';
 
       if ($scope.user.id) {
         //adds to database for user

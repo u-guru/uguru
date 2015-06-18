@@ -1,95 +1,7 @@
 
 <ion-modal-view class='side-menu-right' id="side_menu" ng-controller='SignupController'>
 
-  <ion-content ng-show='root.vars.show_account_fields' scroll='false'>
-    <ion-header-bar align-title="center" class='dark-bg-header no-background-image'>
-      <div class="buttons">
-        <button class="button button-clear button-header-link grey-text light nano-text" ng-click='toggleAccountView()'>Cancel</button>
-      </div>
-      <h1 class="title micro-text">{{headerText}}</h1>
-        <!-- <span ng-show='!loginMode'>Sign Up</span> -->
-      <div class="buttons">
-        <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='completeSignup()'>
-          <span class='ng-class:{"grey-text":signupForm.email.length === 0 || signupForm.password.length === 0 || signupForm.first_name.length === 0 || signupForm.last_name.length === 0}'>Submit</span>
-        </button>
-      </div>
-    </ion-header-bar>
-    <ion-scroll class='has-subheader'>
-                <div class='pure-g'>
-                  <div class='pure-u-1-2' ng-show='!loginMode'>
-                    <label class="item item-input item-icon-right">
-                      <input type="tel" id='first-name-input' ng-model='signupForm.first_name'  placeholder='First Name'></input>
-                    </label>
-                  </div>
-                  <div class='pure-u-1-2' ng-show='!loginMode'>
-                    <label class="item item-input item-icon-right">
-                      <input type="tel" id='last-name-input' ng-model='signupForm.last_name' placeholder='Last Name'></input>
-                    </label>
-                  </div>
-                </div>
-                <div class='pure-g'>
-                  <div class='pure-u-1'>
-                    <label class="item item-input">
-                      <input type="email" id='email-input' ng-model='signupForm.email' placeholder='Email'></input>
-                    </label>
-                  </div>
-                </div>
-                <div class='pure-g'>
-                  <div class='pure-u-1'>
-                    <label class="item item-input">
-                      <input type="password" id='password-input' ng-model='signupForm.password' placeholder='Password'></input>
-                    </label>
-                  </div>
-                </div>
 
-                <div class='pure-u-1 padding-half'>
-                  <div class='pure-u-1 padding-half center' id="E2E_SwitchLog" ng-show='user && !user.id'>
-                      <a class='center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='!loginMode'> or <u>Login</u> Here </a>
-                      <a class='center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='loginMode'> or <u>Sign Up</u> Here </a>
-                  </div>
-                </div>
-
-
-    </ion-scroll>
-  </ion-content>
-
-  <ion-content ng-show='root.vars.show_price_fields' scroll='false'>
-    <ion-header-bar align-title="center" class='dark-bg-header no-background-image'>
-      <div class="buttons">
-        <button class="button button-clear button-header-link grey-text light nano-text" ng-click='togglePaymentSideBarView()'>Cancel</button>
-      </div>
-      <h1 class="title micro-text">Add Payment</h1>
-      <div class="buttons">
-        <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='savePayment()'>
-          <span class='ng-class:{"grey-text":card_details.number.length === 0}'>Post</span>
-        </button>
-      </div>
-    </ion-header-bar>
-    <ion-scroll class='has-subheader'>
-                <div class='pure-g'>
-                  <div class='pure-u-1'>
-                    <label class="item item-input item-icon-left">
-                      <i class="icon ion-card placeholder-icon"></i>
-                      <input type="tel" id='card-input' class='sidebar-card-input' ng-model='card_details.number' placeholder='1234 5678 9012 3456'></input>
-                    </label>
-                  </div>
-                </div>
-                <div class='pure-g'>
-                  <div class='pure-u-1-2'>
-                    <label class="item item-input item-icon-right">
-                      <input type="tel" id='mm-input' class='sidebar-mm-input' ng-model='card_details.month'  placeholder='MM'></input>
-                    </label>
-                  </div>
-                  <div class='pure-u-1-2'>
-                    <label class="item item-input item-icon-right">
-                      <input type="tel" id='yy-input' class='sidebar-yy-input' ng-model='card_details.year' placeholder='YY'></input>
-                    </label>
-                  </div>
-                </div>
-
-
-    </ion-scroll>
-  </ion-content>
 
   <ion-content class='white-text ios-status-bar-dark' scroll='false' ng-show='!root.vars.show_price_fields && !root.vars.show_account_fields'>
     <div class='pure-g-c flex-column flex-space-between'>
@@ -183,7 +95,7 @@
               <button class='button button-full button-black micro-text fb-blue-bg'  ng-click='signupFacebook()'>Continue with Facebook</button>
             </div>
               <div class='pure-u-1 padding-half center' id="E2E_Email" ng-show='user && !user.id'>
-                  <a class='center grey uppercase semibold nano-text' id="email" ng-click='toggleAccountView()'> or with email </a>
+                  <a class='center grey uppercase semibold nano-text' id="email" ng-click='goToSignupFromSideBar()'> or with email </a>
               </div>
           </div>
 

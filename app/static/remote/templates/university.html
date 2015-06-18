@@ -1,18 +1,10 @@
 <ion-view hide-nav-bar='true' class='university' ng-controller='AddUniversityController'>
-
-  <!-- <ion-header-bar align-title="center" class='dark-bg-header no-background-image uppercase' ng-show='view === 2'>
-      <div class="buttons">
-        <button ng-click='toggleView(1)' class="button button-clear button-header-link grey-text light nano-text opacity-1-2" >Cancel</button>
-      </div>
-      <h1 class="title bold" style='font-size:90%'>Enter My University</h1>
-  </ion-header-bar> -->
-  <ion-content on-tap='toggleView(1)' class='white-text subdark-bg university-view-2' scroll='false' ng-show='view === 2' style='top:0px;'>
+  <ion-content class='white-text subdark-bg university-view-2' scroll='false' ng-show='view === 2' style='top:0px;'>
     <div class='pure-g'>
       <div class="list pure-u-1">
-        <label class="item item-input bg-transparent university-label no-margin no-border no-box-shadow view-2 onboarding-search-item-label">
-          <span class='university-input-container relative' style='padding-top:0.4em;'>
-              <i class='icon ion-search onboarding-search-icon'></i>
-              <input id='university-input' type="text"
+        <label class="item item-input bg-transparent university-label no-margin no-border no-box-shadow view-2">
+              <i class='icon ion-search onboarding-search-icon' ng-hide="search_text.length > 0"></i>
+              <input id='university-input' type="text" class='ng-class:{"align-left-start":search_text.length > 0}'
               fast-matcher
                       fast-matcher-source="universities"
                       fast-matcher-output="matchingUniversities"
@@ -24,14 +16,14 @@
                       placeholder="Search Your University"
                       ng-model="search_text"
                       ng-blur="setFocus()"/>
-          </span>
+          <!-- </span> -->
         </label>
       </div>
     </div>
     <ion-list>
       <ion-scroll>
       <ion-item class='item-button-right request-form-item'  id='location-filled-item' ng-repeat="university in matchingUniversities" ng-click="universitySelected(university, $event)">
-                  <p>{{university.title}}<br>
+                  <p class='semibold'>{{university.title}}<br>
                     <span class='nano-text'>
 
                       {{university.city}}, {{university.state}}
@@ -42,7 +34,7 @@
                 </div>
       </ion-item>
       <ion-item class='item-button-right request-form-item'  id='location-filled-item' ng-repeat="university in static.nearest_universities.slice(0, 10)" ng-click="universitySelected(university, $event)">
-                  <p>{{university.title}}<br>
+                  <p class='semibold'>{{university.title}}<br>
                     <span class='nano-text'>
 
                       {{university.city}}, {{university.state}}

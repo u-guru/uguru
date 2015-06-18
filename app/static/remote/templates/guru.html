@@ -195,10 +195,10 @@
   <a class="tab-item" id='home-button'>
     <img class='pure-img icon' src='{{img_base}}./img/request/house-icon-blue.svg'></i>
   </a>
-  <a class="tab-item" id='guru-courses-button' ng-click='checkCourses()'>
+  <!-- <a class="tab-item" id='guru-courses-button' ng-click='checkCourses()'>
     <img class='pure-img icon' src='{{img_base}}./img/request/guru_book_outline.svg'></i>
-  </a>
-  <a class="tab-item" href='#/guru-questions' nav-direction='swap' id='courses-button'>
+  </a> -->
+  <a class="tab-item" href='#/guru-questions' nav-direction='swap' id='courses-button' ng-show='user.'>
     <img class='pure-img icon' src='{{img_base}}./img/icons/question.svg'></i>
   </a>
   <a class="tab-item" id='tasks-button' nav-direction='swap' href='#/guru-tasks'>

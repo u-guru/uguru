@@ -15,12 +15,12 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout, $localstorage,
   $ionicModal, $ionicTabsDelegate, $q,
   $cordovaKeyboard, University) {
-    $scope.root.vars.hide_list = true;
-    $scope.major_search_text = '';
+
+
     $scope.keyboard_force_off = false;
 
     $scope.setMajorFocus = function(target) {
-      if ($scope.major_search_text.length === 0 && !$scope.keyboard_force_off) {
+      if ($scope.major_input.search_text.length === 0 && !$scope.keyboard_force_off) {
         document.getElementById("major-input").focus();
       }
     };
@@ -96,7 +96,9 @@ angular.module('uguru.util.controllers')
 
     };
 
-    $scope.majors = GetMajorsList();
+    // $scope.majors = $scope.static.majors || GetMajorsList();
+
+    // console.log($scope.static.majors);
 
     $scope.hidemajorModal = function() {
       if ($scope.platform.mobile && $cordovaKeyboard.isVisible()) {
@@ -121,15 +123,16 @@ angular.module('uguru.util.controllers')
       $scope.user.updateAttr('remove_major', $scope.user, major, confirmCallback, $scope);
     }
 
-    $scope.updateView = function(text) {
-      console.log(text);
-      if (text.length > 0) {
-        $scope.root.vars.hide_list = false;
+    $scope.updateMajorProgress = function(text) {
+      $scope.major_progress = text.length > 0;
+      if ($scope.major_progress) {
+        console.log('text is typed in', $scope.static.majors.length);
+      } else {
+        console.log('text is not typed in', $scope.static.majors.length);
       }
-      $scope.major_search_text = text;
     }
 
-
+    $scope.major_progress = false;
 
 
     $scope.majorSelected = function(major, $event) {
@@ -137,20 +140,16 @@ angular.module('uguru.util.controllers')
 
       if (!$scope.user.majors) {
           $scope.user.majors = [];
-
       }
 
+      $scope.search_text = '';
+      $scope.keyboard_force_off = true;
 
-        $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
+      $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
 
-        $scope.keyboard_force_off = true;
-        // $scope.user.majors.push(major)
-        $scope.major_search_text = '';
+      $scope.user.majors.push(major)
 
-        var majorInput = document.getElementById("major-input");
-        majorInput.value = '';
-        $scope.matchingMajors = [];
-        $scope.root.vars.hide_list = true;
+
     }
 
   }

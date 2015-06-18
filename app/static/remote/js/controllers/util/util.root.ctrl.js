@@ -150,7 +150,7 @@ angular.module('uguru.util.controllers')
                       $scope.root.vars.popular_courses = $scope.root.vars.courses.slice(0, 16);
                       $scope.static.courses = $scope.root.vars.courses;
                       $scope.static.popular_courses = $scope.root.vars.popular_courses;
-                      console.log(courses.length, 'courses successfully loaded');
+
                 },
                   function(error) {
                       console.log('Courses NOT successfully loaded');
@@ -186,9 +186,10 @@ angular.module('uguru.util.controllers')
             on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
               Major, Skill, Profession);
           } else {
+            $scope.root.vars.majors = local_majors;
             $scope.static.majors = local_majors;
             $scope.static.popular_majors = local_popular_majors;
-            console.log('majors already loaded');
+            console.log(local_majors.length, 'majors already loaded');
           }
 
           var local_skills = $localstorage.getObject('skills');
@@ -223,13 +224,6 @@ angular.module('uguru.util.controllers')
                 template: '<ion-spinner icon="lines" class="spinner-positive"></ion-spinner>'
               });
               $scope.root.vars.loaderOn = true;
-              // $timeout(function() {
-              //   if ($scope.root.vars.loaderOn) {
-              //     $scope.loader.hide();
-              //     $scope.root.vars.loaderOn = false;
-              //     $scope.success.show(0, 2000, 'Something went wrong. Please try again or contact support.');
-              //   }
-              // }, 10000);
             },
             hide: function(){
               $ionicLoading.hide();
@@ -242,7 +236,7 @@ angular.module('uguru.util.controllers')
 
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
-            $state.go('^.guru-profile');
+            $state.go('^.guru');
             $timeout(function() {
               $scope.loader.hide();
             }, 1000);
@@ -293,19 +287,6 @@ angular.module('uguru.util.controllers')
               }, 1000);
             }
           }
-
-          // $scope.$watch(function () {
-          //   return (!$ionicSideMenuDelegate.isOpenRight());
-          // },
-          //    function (isClosed) {
-          //   if (isClosed){
-          //     $timeout(function() {
-          //       $scope.root.vars.show_account_fields = false;
-          //       $scope.root.vars.show_price_fields = false;
-          //     }, 1000)
-          //   }
-
-          // });
 
           $scope.requestPushNotifications = function() {
 

@@ -21,6 +21,11 @@ angular.module('uguru.guru.controllers')
 
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
+    $scope.majors = $scope.static.majors;
+    $scope.courses = $scope.static.courses;
+    console.log($scope.majors.length);
+
+    $scope.major_input=  {search_text:'', majors:$scope.root.vars.majors};
 
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
