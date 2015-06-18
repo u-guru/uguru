@@ -46,9 +46,6 @@ p {
 .margin-top-half {
   margin-top: 0.5em; }
 
-.request-form-tags-offset {
-  top: 83px; }
-
 .home-request-tabs-top {
   line-height: 44px;
   height: 44px; }
@@ -965,9 +962,7 @@ h4.tap-to-reply-link {
   margin-top: -15%; }
 
 ion-list.list-inset.visible-overflow.proposal-card-request.disable-user-behavior {
-  margin: 0 auto !important;
-  float: center !important;
-  margin-top: 5%; }
+  float: center !important; }
 
 .gm-style-cc {
   display: none; }

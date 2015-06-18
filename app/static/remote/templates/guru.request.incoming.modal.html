@@ -13,7 +13,7 @@
           <div class='pure-g-c flex-column flex-space-between' ng-show='!showIncomingProposalDetails' ng-click='showIncomingProposalDetails = true;'>
               <div class='flex-item-c pure-g'>
                 <!-- 1. create inset list, offset it by -5% margin-top -->
-                <ion-list class='list-inset visible-overflow proposal-card-request' style='margin-top:5%;'>
+                <ion-list class='list-inset visible-overflow proposal-card-request' style='margin: 0px 10px !important;'>
 
                   <!-- 2.  padding 2em h1 format bold, SemiBold, relative-->
                   <ion-item class='padding-1em absolute padding-vertical-1em float-center visible-overflow center' style='padding-bottom:2em;'>
@@ -39,21 +39,26 @@
                     <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
                       <div class='pure-u-1-4'>
                         <p class='inline'>
-                          <span ng-show='proposal.request.time_estimate.hours && !proposal.request.time_estimate.minutes'>
-                            {{proposal.request.time_estimate.hours}} hours
+                          <span ng-show='proposal.request.student_calendar[0].calendar_events[0].formatted.time_length'>
+                            {{proposal.request.student_calendar[0].calendar_events[0].formatted.time_length}} hours
                           </span>
-                          <span ng-show='proposal.request.time_estimate.minutes && !proposal.request.time_estimate.hours'>
+                          <!-- <span ng-show='proposal.request.time_estimate.minutes && !proposal.request.time_estimate.hours'>
                             {{proposal.request.time_estimate.minutes}} min
-                          </span>
-                          <span ng-show='proposal.request.time_estimate.minutes && proposal.request.time_estimate.hours'>
+                          </span> -->
+                          <!-- <span ng-show='proposal.request.time_estimate.minutes && proposal.request.time_estimate.hours'>
                             {{proposal.request.time_estimate.hour}}hr {{proposal.request.time_estimate.minutes}}m
-                          </span>
+                          </span> -->
                         </p>
                       </div>
-                      <div class='pure-u-3-4 micro-text' style='padding-left:1em; opacity:0.8;'>
+                      <div class='pure-u-3-4 micro-text white-space-normal' style='padding-left:1.5em; line-height:2em; opacity:0.8;'>
 
-                        <strong>Thursday</strong>, May 14th, <br>
-                        Between <strong>12:00 pm - 3:30 pm </strong>
+                         <strong> {{proposal.request.student_calendar[0].calendar_events[0].formatted.day}}, {{proposal.request.student_calendar[0].calendar_events[0].formatted.month}} {{proposal.request.student_calendar[0].calendar_events[0].formatted.date}}
+                      </strong> between
+
+                      <!-- not all have calendars -->
+                      <span class='calendar-availability-contact'>
+                        <strong>{{proposal.request.student_calendar[0].calendar_events[0].formatted.start_time_formatted}}-{{proposal.request.student_calendar[0].calendar_events[0].formatted.end_time_formatted}}</strong>
+                      </span>
 
                       </div>
                   </ion-item>
@@ -61,8 +66,12 @@
                   <!-- 5.  Same old but no orange> -->
                   <ion-item class='item-avatar-left card-item-left'>
                     <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/marker.svg'>
-                    <p class='inline'> Meet up </p>
-                    <p class='inline black' style='padding-left:1em'> {{proposal.request.address}} </p>
+                    <div class='pure-u-1-4'>
+                      <p class='inline'> Meet up </p>
+                    </div>
+                    <div class='pure-u-3-4 micro-text white-space-normal' style='padding-left:1.5em; line-height:2em; opacity:0.8'>
+                      <strong> {{proposal.request.address}} </strong>
+                    </div>
                   </ion-item>
 
                   <!-- 5.  Formalize list button-->
@@ -76,7 +85,7 @@
 
 
                 </ion-list>
-                <div class='pure-u-1' style='padding-left:1.2em; padding-right:1.2em'>
+                <div class='pure-u-1' style='padding: 0 10px;'>
                     <button class='button button-full button-blue blue-bg button-submit white-text center' ng-click='acceptIncomingStudentProposal()'>
                           Confirm this session
                   </button>

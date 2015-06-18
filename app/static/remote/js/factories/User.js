@@ -29,6 +29,33 @@ angular.module('uguru.user', [])
                 return result;
     }
 
+    var processStudentRequestCalendar = function(index_request) {
+        if (index_request.student_calendar && index_request.student_calendar.length > 0 &&
+            index_request.student_calendar[0].calendar_events && index_request.student_calendar[0].calendar_events.length > 0) {
+
+            var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+            js_start_date = new Date(index_request.student_calendar[0].calendar_events[0].start_time);
+            js_end_time = new Date(index_request.student_calendar[0].calendar_events[0].end_time);
+
+            var student_availability = index_request.student_calendar[0].calendar_events[0];
+            student_availability.formatted = {
+                date: js_start_date.getUTCDate(),
+                day: weekdays[js_start_date.getUTCDay()],
+                month: months[js_start_date.getUTCMonth()],
+                start_time: {hours: js_start_date.getUTCHours(), minutes: js_start_date.getUTCMinutes()},
+                end_time: {hours: js_end_time.getUTCHours(), minutes: js_end_time.getUTCMinutes()},
+            }
+
+            student_availability.formatted.start_time_formatted = RootService.time.formatHoursAndMinutes(student_availability.formatted.start_time, false);
+            student_availability.formatted.end_time_formatted = RootService.time.formatHoursAndMinutes(student_availability.formatted.end_time, true);
+            student_availability.formatted.time_length = Math.round((index_request.time_estimate / 60)* 2)/2;
+
+        }
+        return index_request;
+    }
+
     var processResults = function(user) {
 
         request_status_arr = ['PROCESSING_GURUS', 'INCOMING GURU', 'SESSION STARTING SOON', 'YOU REJECTED ALL GURUS',
@@ -85,29 +112,7 @@ angular.module('uguru.user', [])
                 if (index_request.status === 0) {
                     index_request.formatted_time = RootService.time.since(new Date(index_request.time_created));
 
-                    if (index_request.student_calendar && index_request.student_calendar.length > 0 &&
-                        index_request.student_calendar[0].calendar_events && index_request.student_calendar[0].calendar_events.length > 0) {
-
-                        var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-                        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-                        js_start_date = new Date(index_request.student_calendar[0].calendar_events[0].start_time);
-                        js_end_time = new Date(index_request.student_calendar[0].calendar_events[0].end_time);
-
-                        var student_availability = index_request.student_calendar[0].calendar_events[0];
-                        student_availability.formatted = {
-                            date: js_start_date.getUTCDate(),
-                            day: weekdays[js_start_date.getUTCDay()],
-                            month: months[js_start_date.getUTCMonth()],
-                            start_time: {hours: js_start_date.getUTCHours(), minutes: js_start_date.getUTCMinutes()},
-                            end_time: {hours: js_end_time.getUTCHours(), minutes: js_end_time.getUTCMinutes()},
-                        }
-
-                        student_availability.formatted.start_time_formatted = RootService.time.formatHoursAndMinutes(student_availability.formatted.start_time, false);
-                        student_availability.formatted.end_time_formatted = RootService.time.formatHoursAndMinutes(student_availability.formatted.end_time, true);
-                        student_availability.formatted.time_length = Math.round((index_request.time_estimate / 60)* 2)/2;
-
-                    }
+                    index_request = processStudentRequestCalendar(index_request);
 
                     user.active_requests.push(index_request);
                 }
@@ -270,6 +275,8 @@ angular.module('uguru.user', [])
                     }
                     if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 0) {
                         index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
+
+                        index_proposal.request = processStudentRequestCalendar(index_proposal.request)
                         user.active_proposals.push(index_proposal);
                     }
                     if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 1) {

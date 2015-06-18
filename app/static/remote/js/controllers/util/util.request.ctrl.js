@@ -624,7 +624,10 @@ angular.module('uguru.util.controllers')
               //show & let them know we couldn't find it
               $scope.loader.hide()
               $scope.user.recent_position = null;
-              alert('Sorry! Please check your privacy settings check your GPS signal.');
+
+              if ($scope.locationModal && $scope.locationModal.isShown()) {
+                alert('Sorry! Please check your privacy settings check your GPS signal.');
+              }
 
               var text = document.getElementById('location-input');
                 if (!text.value && text.value.length === 0) {

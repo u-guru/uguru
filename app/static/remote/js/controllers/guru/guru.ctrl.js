@@ -22,7 +22,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
   $ionicActionSheet)     {
 
-
+  console.log($scope.user);
   document.addEventListener("deviceready", function () {
     $scope.turnStatusBarWhiteText = function() {
       $timeout(function() {
@@ -455,7 +455,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           initMapCoords = $scope.createGoogleLatLng(parseFloat($scope.proposal.request.position.latitude),parseFloat($scope.proposal.request.position.longitude))
           var mapOptions = {
             center: initMapCoords,
-            zoom: 10,
+            zoom: 14,
             disableDefaultUI: true,
             draggable: false,
             zoomControl: false,
