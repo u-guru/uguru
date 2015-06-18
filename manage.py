@@ -332,7 +332,7 @@ if arg == 'update':
     print v.latest_ios, 'updated to', env
 
 if arg == 'init_admin':
-    admin_accounts = ['makhani.samir@gmail.com', 'hair_lvrxrsl_one@tfbnw.net']
+    admin_accounts = ['makhani.samir@gmail.com', 'hair_lvrxrsl_one@tfbnw.net', 'jason_dhcxgww_huang@tfbnw.net']
     u = University.query.filter_by(name='Uguru University').first()
     m = Major.query.get(91)
 
