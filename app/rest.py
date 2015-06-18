@@ -522,7 +522,7 @@ class UserOneView(restful.Resource):
         user.requests = []
         user.student_sessions = []
         user.guru_sessions = []
-        user.guru_courses = []
+        # user.guru_courses = []
         user.majors = []
         user.student_ratings = []
         user.guru_ratings = []
