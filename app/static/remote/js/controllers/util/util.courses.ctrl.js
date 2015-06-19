@@ -83,16 +83,16 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.addSelectedGuruCourse = function(course, input_text) {
-      $scope.course_search_text = course.short_name.toUpperCase();
+      // $scope.course_search_text = course.short_name.toUpperCase();
 
 
       //set the variable to this
-      input_text = '';
+
       $scope.search_text = '';
 
       //set the course text to what it should be
-      // document.getElementById('guru-course-input').value = '';
-      // $scope.course_search_text = course.short_name
+      document.getElementById('guru-course-input').value = '';
+      $scope.course_search_text = course.short_name
       //make progress false so we can hide all other elements
       // $scope.progress = false;
 
