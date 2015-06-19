@@ -868,15 +868,11 @@ class UserRequestView(restful.Resource):
                 print 'student has accepted guru'
 
                 ## charge student $2 on that card
-
+                _request.guru_id = _request.selected_proposal.guru_id
                 rating = Rating.initFromQuestion(_request)
 
                 _request.time_accepted = datetime.now()
 
-
-                transaction = Transaction.initFromRating(_request, user)
-
-                _request.guru_id = proposal.guru_id
                 db_session.commit()
 
                 for proposal in _request.proposals:
@@ -891,12 +887,14 @@ class UserRequestView(restful.Resource):
 
                     # this is the guru who was chosen
                     if proposal.guru_id == int(guru_json.get('id')):
+
                         print 'yeee found it', proposal.guru.name, 'made', proposal.request.student_price
                         proposal.status = 13
 
 
                         if float(proposal.request.student_price):
-                            transaction = Transaction.initFromQuestion(_request, user)
+                            transaction = Transaction.initFromQuestion(_request, user, rating)
+                            _request.transaction_id = transaction.id
 
 
                         event_dict = {'status': Proposal.QUESTION_GURU_CHOSEN, 'proposal_id':proposal.id}

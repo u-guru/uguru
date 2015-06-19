@@ -27,7 +27,7 @@
 
 
     <ion-list>
-      <ion-item ng-repeat='proposal in active_questions' class='item-avatar-left question-item' ng-click='launchAnswerQuestionModal(proposal)'>
+      <ion-item ng-repeat='proposal in user.active_questions' class='item-avatar-left question-item' ng-click='launchAnswerQuestionModal(proposal)'>
 
          <img class='pure-img verb-img' ng-src='{{img_base}}./img/icons/question.svg' ng-show='question.student_price === 0'/>
          <img class='pure-img verb-img stack_circle' ng-src='{{img_base}}./img/icons/stacks_circled.svg' ng-show='proposal.request.student_price > 0'/>

@@ -1606,6 +1606,8 @@ class Rating(Base):
 
     request = relationship("Request", uselist=False, backref="question_rating")
 
+    transaction = relationship("Transaction", uselist=False, backref="rating")
+
     is_question = Column(Boolean)
     is_task = Column(Boolean)
     is_session = Column(Boolean)
@@ -2157,6 +2159,8 @@ class Transaction(Base):
 
     support = relationship("Support", uselist=False, backref="transaction")
 
+    rating_id = Column(Integer, ForeignKey('rating.id'))
+
     is_task = Column(Boolean)
     is_question = Column(Boolean)
     is_session = Column(Boolean)
@@ -2284,12 +2288,13 @@ class Transaction(Base):
         return transaction
 
     @staticmethod
-    def initFromQuestion(_request, user):
+    def initFromQuestion(_request, user, rating):
 
         from app.lib.stripe_client import charge_customer
 
         transaction = Transaction()
         transaction.time_created = datetime.now()
+        transaction.rating_id = rating.id
         transaction._type = 1
         transaction.is_question = True
         transaction.student_amount = float(_request.student_price)
@@ -2322,12 +2327,12 @@ class Transaction(Base):
 
                 # get default card real quick
                 default_card = None
-                for card in student.cards:
-                    if student.is_default_payment:
+                for card in _request.student.cards:
+                    if card.is_default_payment:
                         default_card = card
 
                 if default_card:
-                    transaction.card_id = default_card.card_id
+                    transaction.card_id = default_card.id
         else:
             transaction.stripe_error_string = 'Student does not have card'
 

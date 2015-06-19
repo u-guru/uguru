@@ -256,6 +256,8 @@ angular.module('uguru.util.controllers')
             $scope.root.vars.user_refresh = true;
             if ($scope.root.vars.user_refresh || !repeat) {
 
+
+
               User.getUserFromServer($scope, null, $state);
               if (repeat) {
                 $scope.root.vars.user_refresh = false;

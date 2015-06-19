@@ -199,7 +199,8 @@ transaction_fields['student_amount'] = fields.Float(attribute = 'student_amount'
 transaction_fields['guru_amount'] = fields.Float(attribute = 'guru_amount')
 transaction_fields['time_created'] = fields.DateTime(attribute='time_created')
 transaction_fields['guru'] = fields.Nested(guru_fields)
-transaction_fields['session'] = fields.Nested(session_fields_transaction)
+# transaction_fields['session'] = fields.Nested(session_fields_transaction)
+transaction_fields['request'] = fields.Nested(request_fields)
 transaction_fields['student'] = fields.Nested(student_fields)
 transaction_fields['card'] = fields.Nested(card_fields)
 transaction_fields['id'] = fields.Integer(attribute='id')
@@ -235,6 +236,7 @@ rating_fields['id'] = fields.Integer(attribute='id')
 rating_fields['student_rating'] = fields.Integer(attribute='student_rating')
 rating_fields['guru_rating'] = fields.Integer(attribute='guru_rating')
 rating_fields['session'] = fields.Nested(session_fields)
+rating_fields['transaction'] = fields.Nested(transaction_fields)
 
 relationship_fields = {}
 relationship_fields['student'] = fields.Nested(student_fields)

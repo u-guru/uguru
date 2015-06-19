@@ -577,6 +577,11 @@ angular.module('uguru.util.controllers')
 
         $scope.getLocation = function() {
 
+          if ($scope.request._type === 1) {
+            console.log('no location needed for questions');
+            return;
+          }
+
           var posOptions = {
             timeout: 10000,
             enableHighAccuracy: false, //may cause high errors if true
@@ -617,7 +622,9 @@ angular.module('uguru.util.controllers')
                   $scope.$apply();
                 }, 1000);
               } else {
-                $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
+                if ($scope.request._type === 0 || $scope.request._type === 2) {
+                  $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
+                }
               }
 
           }, function(error) {
