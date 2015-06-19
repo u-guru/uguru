@@ -97,7 +97,7 @@ angular.module('uguru.util.controllers')
                       $ionicHistory.clearHistory();
                       $templateCache.removeAll();
 
-                      window.localStorage.clear();
+                      // window.localStorage.clear();
                       //remove all angular templates
 
                       $localstorage.setObject('version', $scope.root.vars.version);

@@ -882,7 +882,13 @@ angular.module('uguru.user', [])
 
                             if ($state.current.name === 'root.home') {
                                 $scope.request.files.push(file.plain());
-                            } else {
+                            }
+                            else if ($state.current.name === 'root.guru-questions') {
+
+                                $scope.proposal.files.push(file.plain());
+
+                            }
+                            else {
                                 $scope.user.profile_url = file.plain().url;
                                 $localstorage.setObject('user', $scope.user);
                             }

@@ -147,6 +147,7 @@ proposal_fields['id'] = fields.Integer(attribute='id')
 proposal_fields['student_calendar'] = fields.List(fields.Nested(calendar_fields))
 proposal_fields['student_price'] = fields.Float(attribute='student_price')
 proposal_fields['guru_price'] = fields.Float(attribute='guru_price')
+proposal_fields['guru'] = fields.List(fields.Nested(guru_fields))
 proposal_fields['question_response'] = fields.String(attribute='question_response')
 
 selected_proposal_fields = {}
@@ -156,6 +157,7 @@ selected_proposal_fields['status'] = fields.Integer(attribute='status')
 selected_proposal_fields['id'] = fields.Integer(attribute='id')
 selected_proposal_fields['student_price'] = fields.Float(attribute='student_price')
 selected_proposal_fields['guru_price'] = fields.Float(attribute='guru_price')
+selected_proposal_fields['guru'] = fields.List(fields.Nested(guru_fields))
 selected_proposal_fields['question_response'] = fields.String(attribute='question_response')
 
 request_fields['selected_proposal'] = fields.Nested(selected_proposal_fields)

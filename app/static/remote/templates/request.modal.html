@@ -65,7 +65,7 @@
               <p> Location </p>
             </ion-item>
 
-            <ion-item ng-show='request.address && !progress' class='item-button-right request-form-item'  id='location-filled-item' >
+            <ion-item ng-show='request.address && !progress && !request._type === 1' class='item-button-right request-form-item'  id='location-filled-item' >
               <a class='request-location-wrapper-link' ng-click='clearLocationButton()'>
                 <p>{{request.address}}<br>
                   <span class='nano-text'>

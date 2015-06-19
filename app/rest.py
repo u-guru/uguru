@@ -522,7 +522,7 @@ class UserOneView(restful.Resource):
         user.requests = []
         user.student_sessions = []
         user.guru_sessions = []
-        user.proposals = []
+        # user.proposals = []
         # user.guru_courses = []
         user.majors = []
         user.student_ratings = []
@@ -805,6 +805,15 @@ class UserRequestView(restful.Resource):
 
                 proposal.request.selected_proposal = proposal
 
+                proposal.time_answered = datetime.now()
+
+                if request.json.get('files'):
+                    files_json = request.json.get('files')
+                    print 'woohoo', len(request.json.get('files')), 'uploaded'
+                    for file_json in request.json.get('files'):
+                        file_obj = File.query.get(file_json.get('id'))
+                        file_obj.proposal_id = proposal.id
+
                 if calendar_events_json:
                     day_index = 0
                     for day_arr in calendar_events_json:
@@ -847,6 +856,7 @@ class UserRequestView(restful.Resource):
         if 'status' in request.json:
             status = request.json.get('status')
             guru_json = request.json.get('guru')
+            print guru_json
 
             #Default set the status before
             _request.status = request.json.get('status')
@@ -859,6 +869,16 @@ class UserRequestView(restful.Resource):
 
                 ## charge student $2 on that card
 
+                rating = Rating.initFromQuestion(_request)
+
+                _request.time_accepted = datetime.now()
+
+
+                transaction = Transaction.initFromRating(_request, user)
+
+                _request.guru_id = proposal.guru_id
+                db_session.commit()
+
                 for proposal in _request.proposals:
 
                     # if another guru was answering this question...
@@ -868,13 +888,20 @@ class UserRequestView(restful.Resource):
                         proposal.status = 12
                         event_dict = {'status': Proposal.QUESTION_TOO_LATE, 'proposal_id':proposal.id}
                         event = Event.initFromDict(event_dict)
-                    # this is the guru who was chosen
 
+                    # this is the guru who was chosen
                     if proposal.guru_id == int(guru_json.get('id')):
+                        print 'yeee found it', proposal.guru.name, 'made', proposal.request.student_price
                         proposal.status = 13
+
+
+                        if float(proposal.request.student_price):
+                            transaction = Transaction.initFromQuestion(_request, user)
+
 
                         event_dict = {'status': Proposal.QUESTION_GURU_CHOSEN, 'proposal_id':proposal.id}
                         event = Event.initFromDict(event_dict)
+                db_session.commit()
 
             elif status == Request.STUDENT_REJECTED_GURU:
                 event_dict = {'status': Request.STUDENT_REJECTED_GURU, 'request_id':_request.id}

@@ -909,11 +909,18 @@ class Request(Base):
     id = Column(Integer, primary_key=True)
 
     time_created = Column(DateTime)
+    time_accepted = Column(DateTime)
+
+
     description= Column(String)
     status = Column(Integer, default = 0) #0 = pending, # 1 = matched, # 2 = canceled, # 3 = expired
     session = relationship("Session", uselist=False, backref="request")
     position = relationship("Position", uselist=False, backref="request")
     queue = relationship("Queue", uselist=False, backref="request")
+
+    rating_id = Column(Integer, ForeignKey("rating.id"))
+    transaction_id = Column(Integer, ForeignKey("transaction.id"))
+
 
     student_calendar_id = Column(Integer, ForeignKey('calendar.id'))
     student_calendar = relationship("Calendar",
@@ -1041,6 +1048,7 @@ class Proposal(Base):
 
     time_created = Column(DateTime)
     time_updated = Column(DateTime)
+    time_answered = Column(DateTime)
 
     student_price = Column(Float)
     guru_price = Column(Float)
@@ -1579,6 +1587,10 @@ class Rating(Base):
     __tablename__ = 'rating'
     id = Column(Integer, primary_key=True)
 
+    time_created = Column(DateTime)
+    time_student_rated = Column(DateTime)
+    time_guru_rated = Column(DateTime)
+
     student_time_rated = Column(DateTime)
     guru_time_rated = Column(DateTime)
 
@@ -1591,6 +1603,12 @@ class Rating(Base):
     support = relationship("Support", uselist=False, backref="rating")
 
     session = relationship("Session", uselist=False, backref="rating")
+
+    request = relationship("Request", uselist=False, backref="question_rating")
+
+    is_question = Column(Boolean)
+    is_task = Column(Boolean)
+    is_session = Column(Boolean)
 
 
     guru_id = Column(Integer, ForeignKey('user.id'))
@@ -1611,7 +1629,24 @@ class Rating(Base):
         rating = Rating()
         rating.guru_id = _session.guru_id
         rating.student_id = _session.student_id
+        rating.is_session = True
         rating.session = _session
+        db_session.add(rating)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return rating
+
+    @staticmethod
+    def initFromQuestion(_request):
+        rating = Rating()
+        rating.guru_id = _request.guru_id
+        rating.student_id = _request.student_id
+        rating.request = _request
+        rating.is_question = True
+
         db_session.add(rating)
         try:
             db_session.commit()
@@ -2118,7 +2153,13 @@ class Transaction(Base):
 
     session = relationship("Session", uselist=False, backref="transaction")
 
+    request = relationship("Request", uselist=False, backref="transaction")
+
     support = relationship("Support", uselist=False, backref="transaction")
+
+    is_task = Column(Boolean)
+    is_question = Column(Boolean)
+    is_session = Column(Boolean)
 
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
@@ -2202,6 +2243,7 @@ class Transaction(Base):
         transaction = Transaction()
         transaction.time_created = datetime.now()
         transaction._type = 0
+        transaction.is_session = True
         transaction.student_amount = Transaction.calculateStudentPriceFromSession(_session)
 
         transaction.guru = _session.guru
@@ -2227,7 +2269,7 @@ class Transaction(Base):
                 transaction.profit = transaction.student_amount - transaction.guru_amount - transaction.stripe_fee
 
                 transaction.guru_id = _session.guru_id
-                transaction.student_id = _session.guru_id
+                transaction.student_id = _session.student_id
                 transaction.card_id = _session.card_id
         else:
             transaction.stripe_error_string = 'Student does not have card'
@@ -2240,5 +2282,64 @@ class Transaction(Base):
             raise
 
         return transaction
+
+    @staticmethod
+    def initFromQuestion(_request, user):
+
+        from app.lib.stripe_client import charge_customer
+
+        transaction = Transaction()
+        transaction.time_created = datetime.now()
+        transaction._type = 1
+        transaction.is_question = True
+        transaction.student_amount = float(_request.student_price)
+
+        transaction.guru = _request.guru
+        transaction.guru_amount = transaction.student_amount
+
+        # initialize these in case they havent
+        if not transaction.guru.total_earned: transaction.guru.total_earned = 0
+        if not transaction.guru.balance: transaction.guru.balance = 0
+
+        transaction.guru.balance += transaction.guru_amount
+
+        transaction.guru.total_earned += transaction.guru_amount
+
+        if _request.student.cards:
+            stripe_charge = charge_customer(_request.student, transaction.student_amount)
+            transaction.request = _request
+
+            if type(stripe_charge) is str:
+                transaction.stripe_error_string = stripe_charge
+
+            else:
+                transaction.charge_id = stripe_charge.id
+                transaction.stripe_fee = (transaction.student_amount * .029) + 0.3
+                transaction.profit = transaction.student_amount - transaction.guru_amount - transaction.stripe_fee
+
+                transaction.guru_id = _request.guru_id
+                transaction.student_id = _request.student_id
+
+                # get default card real quick
+                default_card = None
+                for card in student.cards:
+                    if student.is_default_payment:
+                        default_card = card
+
+                if default_card:
+                    transaction.card_id = default_card.card_id
+        else:
+            transaction.stripe_error_string = 'Student does not have card'
+
+        db_session.add(transaction)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        return transaction
+
+
 
 

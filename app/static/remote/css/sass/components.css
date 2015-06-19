@@ -549,13 +549,13 @@ input.dark-search {
   z-index: 10; }
 
 .attach-icon {
-  top: 11%;
-  right: 22%;
+  top: 11% !important;
+  right: 22% !important;
   z-index: 11;
   border: 0.33em solid #68A7CF;
   background-color: white;
   border-radius: 5em;
-  font-size: 0.45em;
+  font-size: 0.45em !important;
   padding: 3px 4px 2px 4px;
   margin: 0px;
   line-height: 0.6em;
@@ -1413,3 +1413,6 @@ select.current-hourly-price {
   padding: 12px 12px !important; }
   .major-item p {
     overflow: visible !important; }
+
+.student-incoming-proposal .scroll {
+  height: 100% !important; }

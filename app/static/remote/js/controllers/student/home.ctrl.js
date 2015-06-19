@@ -389,20 +389,20 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.verbModal.hide();
     }
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/student.request.incoming.modal.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.incomingGuruModal = modal;
-    });
-
-
 
     $scope.initAndShowIncomingRequestModal = function() {
 
-        $scope.incomingGuruModal.show();
+       $ionicModal.fromTemplateUrl(BASE + 'templates/student.request.incoming.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.incomingGuruModal = modal;
+            $scope.incomingGuruModal.show();
+        });
 
     }
+
+
 
     $scope.processTimeEstimate = function(minutes) {
         num_hours = Math.floor(Math.round((minutes / 60.0) * 100) / 100);
@@ -429,14 +429,18 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.incoming_request = incoming_request;
 
       //get first one out of array
-      $scope.initAndShowIncomingRequestModal();
+      $timeout(function() {
+        console.log('incoming requests');
+        $scope.initAndShowIncomingRequestModal();
 
 
-      var processed_time = $scope.processTimeEstimate($scope.incoming_request.time_estimate);
+        var processed_time = $scope.processTimeEstimate($scope.incoming_request.time_estimate);
 
-      $scope.incoming_request.time_estimate = {hours: processed_time[0], minutes:processed_time[1]};
+        $scope.incoming_request.time_estimate = {hours: processed_time[0], minutes:processed_time[1]};
 
-      $scope.incoming_request.tags = ['milleniumfalcon'];
+        // $scope.incoming_request.tags = ['milleniumfalcon'];
+
+      }, 500);
 
     }
 
@@ -567,7 +571,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       var acceptQuestionCallback = function() {
 
         requestObj = $scope.incoming_request;
-        requestObj.status = 12;
+        requestObj.status = 15;
 
           //remove request from array
         $scope.root.util.removeObjectByKey($scope.user.incoming_requests, 'id', $scope.incoming_request.id);
@@ -679,13 +683,17 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     });
 
+
+
     document.addEventListener("resume", function() {
 
 
         console.log('device resumed... checking student actions');
 
         if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
-          $scope.processIncomingRequests($scope.user.incoming_requests);
+          $timeout(function() {
+            $scope.processIncomingRequests($scope.user.incoming_requests);
+          }, 500)
         }
 
         //student specific functions

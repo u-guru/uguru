@@ -80,7 +80,7 @@
                       </span>
                       <span class='request-tag-status'> AWAITING RESPONSE </span>
                     </p>
-                    <p class='location-text'> {{proposal.request.address}}</p>
+                    <p class='location-text' ng-show='proposal.request._type !== 1'> {{proposal.request.address}}</p>
                   </div>
                   <!-- <i class='icon ion-chevron-right icon-small'> </i> -->
                 </ion-item>

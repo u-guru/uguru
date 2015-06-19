@@ -51,8 +51,9 @@
                         {{request.task_title}}
                       </span>
                       <span class='request-tag-status request-tag-status-completed' ng-show='request.status === 4'> CANCELED </span>
+                      <span class='request-tag-status request-tag-status-completed' ng-show='request.status === 15'> Answered </span>
                     </p>
-                    <p class='location-text'> {{request.address}}</p>
+                    <p class='location-text' ng-show='request._type !== 1'> {{request.address}}</p>
                   </div>
                   <!-- <i class='icon ion-chevron-right icon-small'> </i> -->
                 </ion-item>
