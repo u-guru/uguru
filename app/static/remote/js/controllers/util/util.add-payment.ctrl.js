@@ -138,8 +138,8 @@
           }
 
           $scope.user.cards.push(cardInfo);
+          $scope.success.show(0, 2000, 'Your card has been successfully added');
 
-          $scope.loader.show();
           var successCallback = function($scope, $state) {
 
               if ($state.current.name === 'root.home') {
@@ -150,8 +150,13 @@
                 }
               }
 
+              if ($scope.paymentsModal && $scope.paymentsModal.isShown()) {
+                $scope.paymentsModal.hide();
+              }
+
               $scope.loader.hide();
-              $scope.success.show(0, 1000, 'Your card has been successfully added');
+
+              // $scope.success.show(0, 2000, 'Your card has been successfully added');
 
               if ($state.current.name === 'root.payments') {
 

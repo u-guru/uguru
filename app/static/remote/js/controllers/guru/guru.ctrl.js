@@ -149,7 +149,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       var serverCallback = function() {
         $scope.loader.hide();
-        $scope.launchPendingActions();
+        $timeout(function() {
+            $scope.launchPendingActions();
+          }, 500);
       }
 
       $scope.loader.show();

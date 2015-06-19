@@ -382,7 +382,7 @@ angular.module('uguru.user', [])
         $scope.user.phone_number = user.phone_number;
         $scope.user.active_proposals = user.active_proposals;
         $scope.user.impact_events = user.impact_events;
-        if ($scope.user.pending_proposals) {
+        if (user.pending_proposals && user.pending_proposals.length > 0) {
             $scope.user.pending_proposals = user.pending_proposals.reverse();
         }
         $scope.user.active_guru_sessions = user.active_guru_sessions;

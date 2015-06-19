@@ -169,6 +169,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         var serverCallback = function() {
           $scope.loader.hide();
+          $timeout(function() {
+
+          }, 500);
           $scope.launchPendingActions();
         }
 
@@ -233,6 +236,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.pending_rating = rating;
 
         $scope.launchStudentRatingsModal(rating);
+
+        if(!$scope.studentRatingsModal.isShown()) {
+          $scope.launchStudentRatingsModal(rating);
+        }
 
         //no reason to
         return;
