@@ -507,6 +507,14 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
             }
 
+            if ($scope.user.active_tasks && $scope.user.active_tasks.length > 0) {
+
+
+                    $scope.processActiveProposalsGuru($scope.user.active_tasks);
+
+
+            }
+
             if ($scope.user && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
 
 

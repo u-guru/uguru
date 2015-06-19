@@ -118,6 +118,7 @@ request_fields['online'] = fields.Boolean(attribute='online')
 request_fields['in_person'] = fields.Boolean(attribute='in_person')
 request_fields['time_estimate'] = fields.Integer(attribute='time_estimate')
 request_fields['address'] = fields.String(attribute='address')
+request_fields['category'] = fields.String(attribute='category')
 request_fields['id'] = fields.Integer(attribute='id')
 request_fields['guru'] = fields.Nested(guru_fields)
 request_fields['guru_id'] = fields.Integer(attribute='guru_id')
@@ -379,7 +380,8 @@ RequestSerializer = {
     'guru': fields.Nested(guru_fields),
     'student': fields.Nested(student_fields),
     'student_id': fields.Integer,
-    'guru_id': fields.Integer
+    'guru_id': fields.Integer,
+    'category': fields.String
 }
 
 FileSerializer = {

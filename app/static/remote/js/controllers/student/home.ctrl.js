@@ -47,7 +47,15 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         request.status = 4;
         $scope.user.updateObj($scope.user, 'requests', request, $scope);
 
-        var cancelMsg = request.course.short_name + ' request canceled';
+
+        if (request._type !== 2) {
+          var cancelMsg = request.course.short_name + ' request canceled';
+        } else {
+          var cancelMsg = request.category +  'Task request canceled';
+        }
+
+
+
         $scope.success.show(0, 2000, cancelMsg);
         $scope.root.util.removeObjectByKey($scope.user.active_requests, 'id', request.id);
       }

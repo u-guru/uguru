@@ -731,14 +731,40 @@ class UserRequestView(restful.Resource):
 
                 db_session.commit()
 
+        print "checking for categories"
         task_category = request.json.get('category')
+        print "task_category", task_category
         task_categories = ['chores', 'items', 'food', 'skilled_task', 'specific']
 
         if task_category and task_category in task_categories:
+            _request.category = task_category
             for skill in Skill.query.all():
                 if skill.is_popular and skill.category == task_category:
-                    print len(skill.gurus), 'gurus found for', skill.name, 'category', skill.category
+                    print len(skill.gurus.all()), 'gurus found for', skill.name, 'category', skill.category
+                    for guru in skill.gurus:
 
+                        proposal = Proposal.initProposal(_request.id, guru.id, None)
+
+
+                        event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
+                        event = Event.initFromDict(event_dict)
+
+                        db_session.commit()
+
+                        #send push notification is user has permitted device
+                        if guru.push_notifications:
+                            from app.lib.push_notif import send_student_request_to_guru
+                            send_student_request_to_guru(_request, guru)
+
+                        if guru.email_notifications and guru.email:
+
+                            from app.emails import send_student_request_to_guru
+                            send_student_request_to_guru(_request, guru)
+
+
+                        if guru.text_notifications and guru.phone_number:
+                            from app.texts import send_student_request_to_guru
+                            send_student_request_to_guru(_request, guru)
 
 
         if _request.course:

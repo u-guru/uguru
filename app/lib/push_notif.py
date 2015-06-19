@@ -129,12 +129,17 @@ def send_student_request_to_guru(_request, guru, delay_seconds=None):
 
     #if the request is a question
     copy_string = 'student_request'
-    args_tuple = (
-        _request.DEFAULT_PRICE,
-        _request.time_estimate,
-        _request.student.name.split(" ")[0],
-        _request.course.short_name.upper()
-    )
+    print "type", _request._type
+
+
+    args_tuple = None
+    if _request.course:
+        args_tuple = (
+            _request.DEFAULT_PRICE,
+            _request.time_estimate,
+            _request.student.name.split(" ")[0],
+            _request.course.short_name.upper()
+        )
 
     # if it is a question
     if _request._type == 1:
@@ -147,7 +152,7 @@ def send_student_request_to_guru(_request, guru, delay_seconds=None):
     if _request._type == 2:
         copy_string = "student_task"
         args_tuple = (
-            _request.task_title
+            _request.category
         )
 
     # send push to to guru
@@ -166,6 +171,7 @@ def send_student_request_to_guru(_request, guru, delay_seconds=None):
 push_notif_copy = {
     "student_request": """Make $%s total in %smin helping %s in %s. Swipe for more details & increase response rate""",
     "student_question": """A student posted a question for %s. Answer it now before it expires!""",
+    "student_task": """A student posted a %s task. Check it out now before its taken!""",
 
     "question_answered": """A guru has answered your %s question! Check it out now and accept or reject.""",
     "guru_can_help": """%s can help! Swipe for more details. %s min until this expires.""",

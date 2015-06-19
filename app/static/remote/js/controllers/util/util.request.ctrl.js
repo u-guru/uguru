@@ -149,7 +149,10 @@ angular.module('uguru.util.controllers')
 
     $scope.request_fields = verb_arr[$scope.root.vars.last_verb_index_clicked];
     $scope.request.fields  = $scope.request_fields;
-    $scope.request.category = detailed_categories[$scope.root.vars.last_verb_index_clicked];
+
+    if ($scope.request.type.task) {
+      $scope.request.category = detailed_categories[$scope.root.vars.detailed_verbs_index_clicked];
+    }
 
 
     $scope.launchLocationModal = function() {
@@ -309,6 +312,7 @@ angular.module('uguru.util.controllers')
       {'short_name': 'ARC 120', 'title': 'Ancient Architecture..'},
     ];
     $scope.closeRequestModal = function() {
+      $scope.root.vars.detailed_verbs_index_clicked = null;
       $scope.requestModal.remove();
     }
 
@@ -806,8 +810,6 @@ angular.module('uguru.util.controllers')
       }
 
       $scope.submitRequest = function() {
-        console.log($scope.request.category, $scope.request.course);
-        return;
         if (!$scope.validateForm()) {
           console.log('Form is not complete')
           return;
@@ -905,7 +907,7 @@ angular.module('uguru.util.controllers')
          $timeout(function() {
 
           if ($scope.requestModal && $scope.requestModal.isShown() && $scope.requestModalOnlyShown()) {
-            if ($scope.user.location_services_enabled) {
+            if ($scope.user.location_services_enabled && !$scope.paymentsModal.isShown() && !$scope.request.address) {
               $scope.getLocation();
             }
 

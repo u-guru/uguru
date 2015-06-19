@@ -74,11 +74,11 @@
             <div class='pure-g'>
               <div class='pure-u-1 padding-horizontal-2em'>
 
-                <button class='button button-full button-blue blue-bg white-text center' ng-click='submitRequest()' ng-show='user.cards &&user.cards.length > 0'>
+                <button class='button button-full button-blue blue-bg white-text center' ng-click='submitRequest()' ng-show='user.payment_cards &&user.payment_cards.length > 0'>
                   Submit my question!
                 </button>
 
-                <button class='button button-full button-blue blue-bg white-text center' ng-click='launchPaymentsModal()' ng-show='user && user.id && user.cards &&user.cards.length === 0'>
+                <button class='button button-full button-blue blue-bg white-text center' ng-click='launchPaymentsModal()' ng-show='user && user.id && user.payment_cards &&user.payment_cards.length === 0'>
                   <div class='pure-u-1 item-icon-left item-icon-right' style='font-size:90%;'>
                      Add a card
                   </div>

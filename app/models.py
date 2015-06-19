@@ -919,6 +919,7 @@ class Request(Base):
     online = Column(Boolean)
     time_estimate = Column(Integer)
 
+    category = Column(String)
 
     contact_email = Column(Boolean)
     contact_push = Column(Boolean)
@@ -1031,6 +1032,10 @@ class Proposal(Base):
     time_created = Column(DateTime)
     time_updated = Column(DateTime)
     time_answered = Column(DateTime)
+
+    # is_task = Column(Boolean)
+    # is_session = Column(Boolean)
+    # is_question = Column(Boolean)
 
     student_price = Column(Float)
     guru_price = Column(Float)

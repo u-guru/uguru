@@ -238,7 +238,9 @@
         if ($scope.paymentsModal && $scope.paymentsModal.isShown() && !$scope.card_already_created) {
           console.log('instantiating');
           $scope.card_already_created = true;
-          $scope.initCardAndFocusInput();
+          $timeout(function() {
+            $scope.initCardAndFocusInput();
+          }, 750);
         }
     });
 

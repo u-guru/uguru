@@ -75,6 +75,7 @@ angular.module('uguru.user', [])
         user.pending_guru_ratings = [];
         user.pending_student_ratings = [];
         user.incoming_requests = [];
+        user.active_tasks = [];
         user.previous_requests = [];
         user.active_student_sessions = [];
         user.previous_student_sessions = [];
@@ -283,6 +284,10 @@ angular.module('uguru.user', [])
                         index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
                         user.active_questions.push(index_proposal);
                     }
+                    if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 2) {
+                        index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
+                        user.active_tasks.push(index_proposal);
+                    }
                     if (index_proposal.status === 2) {
                         user.pending_proposals.push(index_proposal);
                     }
@@ -373,6 +378,7 @@ angular.module('uguru.user', [])
         $scope.user.previous_guru_proposals = user.previous_guru_proposals;
         $scope.user.is_admin = user.is_admin;
         $scope.user.active_questions = user.active_questions;
+        $scope.user.active_tasks = user.active_tasks;
         $scope.user.guru_skills = user.guru_skills;
 
         $scope.user.text_notifications = user.text_notifications;
