@@ -15,9 +15,12 @@ angular.module('uguru.guru.controllers')
   '$localstorage',
   '$ionicSideMenuDelegate',
   '$ionicBackdrop',
+  '$ionicActionSheet',
+  'Camera',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
-  $ionicSideMenuDelegate, $ionicBackdrop)     {
+  $ionicSideMenuDelegate, $ionicBackdrop, $ionicActionSheet,
+  Camera)     {
 
 
 
@@ -69,6 +72,40 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.proposal.request.student_price = parseInt($scope.proposal.request.student_price);
       $scope.questionsModal.show();
     }
+
+    $scope.takePhoto = function(index) {
+      if ($scope.platform.mobile) {
+        Camera.takePicture($scope, index);
+      } else {
+        var element = document.getElementById('file-input-web')
+        element.click();
+      }
+    }
+
+    $scope.showAttachActionSheet = function() {
+
+      var options = [{ text: 'Choose from Library' }];
+      if ($scope.platform.mobile) {
+        options.push({text: 'Take a Photo'})
+      }
+
+     // Show the action sheet
+     $scope.closeAttachActionSheet = $ionicActionSheet.show({
+       buttons: options,
+       cancelText: 'Cancel',
+       cancel: function() {
+            $scope.closeAttachActionSheet();
+        },
+       buttonClicked: function(index) {
+          $scope.takePhoto(index);
+
+          $timeout(function() {
+              $scope.closeAttachActionSheet();
+          }, 500);
+       }
+     });
+
+    };
 
     $scope.closeQuestionsModal = function() {
       $scope.questionsModal.hide();

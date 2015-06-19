@@ -16,10 +16,11 @@ angular.module('uguru.guru.controllers')
   '$cordovaStatusbar',
   '$ionicViewSwitcher',
   '$ionicActionSheet',
+  'Camera',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $cordovaStatusbar, $ionicViewSwitcher,
-    $ionicActionSheet) {
+    $ionicActionSheet, Camera) {
 
 
     $scope.takePhotoCallbackSuccess = function($scope) {

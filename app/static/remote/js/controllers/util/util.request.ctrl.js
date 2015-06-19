@@ -630,7 +630,7 @@ angular.module('uguru.util.controllers')
               }
 
               var text = document.getElementById('location-input');
-                if (!text.value && text.value.length === 0) {
+                if (text && !text.value && text.value.length === 0) {
                   $timeout(function() {
                     text.focus();
                   }, 1000)
