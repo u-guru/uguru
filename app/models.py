@@ -509,20 +509,6 @@ class University(Base):
     school_population = Column(Integer)
     is_public = Column(Boolean)
 
-    # User contributed university
-    # def __init__(self, name=None, user_id=None, _id=None):
-    #     if _id:
-    #         self.id = _id
-    #     self.name = name
-    #     self.last_updated = datetime.now()
-    #     self.contributed_user_id = user_id
-
-    #     db_session.add(self)
-    #     try:
-    #         db_session.commit()
-    #     except:
-    #         db_session.rollback()
-    #         raise
 
     @staticmethod
     def admin_create(args_dict, _id):
@@ -539,18 +525,6 @@ class University(Base):
         u.city = args.get('city')
         u.state = args.get('state')
         u.admin_approved = True
-
-        # if args.get('location'):
-        #     u.address = args.get('location').get('full_address')
-        #     u.state = args.get('location').get('state')
-        #     u.short_state = args.get('location').get('state_short')
-        #     u.city = args.get('location').get('city')
-        #     u.city_short = args.get('location').get('city_short')
-        #     u.latitude = args.get('location').get('latitude')
-        #     u.longitude = args.get('location').get('longitude')
-        #     u.latitude = args.get('location').get('latitude')
-        #     if args.get('location').get('zip_code'):
-        #         u.zip_code = int(args.get('location').get('zip_code').split("-")[0])
 
         try:
             db_session.commit()
@@ -934,6 +908,12 @@ class Request(Base):
         uselist=False
         )
 
+    university_id = Column(Integer, ForeignKey('university.id'))
+    university = relationship("University",
+        primaryjoin="University.id==Request.university_id",
+        uselist=False,
+        backref="requests")
+
     address = Column(String)
     in_person = Column(Boolean)
     online = Column(Boolean)
@@ -966,6 +946,8 @@ class Request(Base):
         primaryjoin = "Course.id == Request.course_id",
         backref="requests"
     )
+
+
 
     student_id = Column(Integer, ForeignKey('user.id'))
     student = relationship("User",

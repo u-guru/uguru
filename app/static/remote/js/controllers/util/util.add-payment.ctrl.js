@@ -146,7 +146,7 @@
                 $scope.closePaymentsModal();
 
                 if ($scope.choosePriceModal) {
-                  $scope.choosePriceModal.show();
+                $scope.choosePriceModal.show();
                 }
               }
 

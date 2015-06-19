@@ -64,6 +64,7 @@ angular.module('uguru.util.controllers')
       urgency: true,
       tags:[],
       files:[],
+      category: '',
       position:{latitude:null, longitude:null},
       availability_edit: false,
       calendar_edit:false,
@@ -91,6 +92,7 @@ angular.module('uguru.util.controllers')
     }
 
     var detailed_verbs = ['chores.svg', 'items.svg', 'food.svg', 'skilled_task.svg', 'specific.svg'];
+    var detailed_categories = ['chores', 'items', 'food', 'skilled_task', 'specific'];
     var detailed_verb_placeholders = ['My laundry + dishes', 'Get bread from safeway', 'I want ice cream', 'Please fix my iPhone', 'Wait this line for me'];
 
     var verb_arr = [
@@ -147,6 +149,7 @@ angular.module('uguru.util.controllers')
 
     $scope.request_fields = verb_arr[$scope.root.vars.last_verb_index_clicked];
     $scope.request.fields  = $scope.request_fields;
+    $scope.request.category = detailed_categories[$scope.root.vars.last_verb_index_clicked];
 
 
     $scope.launchLocationModal = function() {
@@ -803,7 +806,8 @@ angular.module('uguru.util.controllers')
       }
 
       $scope.submitRequest = function() {
-
+        console.log($scope.request.category, $scope.request.course);
+        return;
         if (!$scope.validateForm()) {
           console.log('Form is not complete')
           return;

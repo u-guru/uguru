@@ -653,6 +653,7 @@ class UserRequestView(restful.Resource):
         _request.address = request.json.get('address')
         _request.status = Request.PROCESSING_GURUS
         _request.student_id = user_id
+        _request.university_id = user.university_id
 
 
         _request.contact_email = request.json.get('contact_email')
@@ -729,6 +730,16 @@ class UserRequestView(restful.Resource):
                         file_obj.user_id = _request.student_id
 
                 db_session.commit()
+
+        task_category = request.json.get('category')
+        task_categories = ['chores', 'items', 'food', 'skilled_task', 'specific']
+
+        if task_category and task_category in task_categories:
+            for skill in Skill.query.all():
+                if skill.is_popular and skill.category == task_category:
+                    print len(skill.gurus), 'gurus found for', skill.name, 'category', skill.category
+
+
 
         if _request.course:
 
