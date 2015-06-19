@@ -392,7 +392,7 @@ angular.module('uguru.user', [])
         $scope.user.pending_guru_ratings = user.pending_guru_ratings;
         $scope.user.pending_student_ratings = user.pending_student_ratings;
         $scope.user.incoming_requests = user.incoming_requests;
-        $scope.user.previous_requests = user.previous_requests;
+        $scope.user.previous_requests = user.previous_requests.reverse();
         $scope.user.active_student_sessions = user.active_student_sessions;
         $scope.user.previous_student_sessions = user.previous_student_sessions;
         $scope.user.balance = user.balance;
@@ -850,6 +850,7 @@ angular.module('uguru.user', [])
                         }
 
                     }, function(err){
+                        $scope.success.show(JSON.stringify(err));
                         console.log(JSON.stringify(err));
                         console.log('error...something happened with the server;')
                     });

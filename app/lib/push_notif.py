@@ -104,13 +104,21 @@ def send_student_has_accepted_to_guru(session, guru, delay_seconds=None):
             countdown= delay_seconds )
 
 def send_guru_proposal_to_student(proposal, student, delay_seconds=None):
+    copy_string = 'guru_can_help'
     args_tuple = (
         proposal.guru.name.split(' ')[0].title(),
         str(10)
     )
 
+    # if it is a question
+    if proposal.request._type == 1:
+        copy_string = "question_answered"
+        args_tuple = (
+            proposal.request.course.short_name.upper()
+        )
+
     if not delay_seconds:
-        send_push_for_user_devices(student, 'guru_can_help', args_tuple)
+        send_push_for_user_devices(student, copy_string, args_tuple)
     else:
         send_push_for_user_devices.delay(user=student, \
             notif_key='guru_can_help',
@@ -159,6 +167,7 @@ push_notif_copy = {
     "student_request": """Make $%s total in %smin helping %s in %s. Swipe for more details & increase response rate""",
     "student_question": """A student posted a question for %s. Answer it now before it expires!""",
 
+    "question_answered": """A guru has answered your %s question! Check it out now and accept or reject.""",
     "guru_can_help": """%s can help! Swipe for more details. %s min until this expires.""",
 
     "student_chose_guru": """Congrats! You're one step away from earning $%s, Swipe & start preparing now.""",
