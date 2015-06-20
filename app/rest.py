@@ -622,7 +622,8 @@ class UserRequestView(restful.Resource):
         _request = Request()
 
 
-        _request.position = position
+        if position:
+            _request.position = position
         _request.time_created = datetime.now()
         _request.description = request.json.get('description')
         _request.in_person = request.json.get('in_person')

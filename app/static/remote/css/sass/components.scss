@@ -1994,3 +1994,58 @@ position: absolute;
 .student-incoming-proposal .scroll {
     height:100% !important;
 }
+
+.capitalized {
+    text-transform: capitalize;
+}
+
+.button.button-clear.button-price-bubble {
+    top: 21px;
+    border: 0.175em solid #b2b2b2;
+    border-radius: 50%;
+    font-size: 70%;
+    color: rgba(0,0,0,0.6);
+    font-family: OpenSans-SemiBold;
+}
+
+.task-filter-item {
+    width:54px;
+    display:inline-block;
+    opacity:1;
+}
+
+.task-tabs {
+    border: 0px;
+    padding:0.25;
+    padding-left:0.66em;
+    overflow: scroll;
+    white-space: nowrap !important;
+    justify-content:left;
+    height:55px;
+}
+
+.price-bubble-lengthy {
+    padding: 0.25em !important;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.all-types-verb {
+    background-color: white;
+    border-radius: 50%;
+    width: 40px;
+    padding: 0;
+    height: 40px;
+    top: 2px;
+    span {
+            position:absolute;
+            line-height: 1.2em;
+            text-transform: uppercase;
+            font-family: OpenSans-Bold;
+            top: 25%;
+            left: 20%;
+            font-size: 60%;
+    }
+}
