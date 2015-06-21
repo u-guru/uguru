@@ -60,7 +60,6 @@
 
 
                  <ion-item class='item-wrap-text' on-hold="cancelRequest(request)" ng-click='goToPendingRequestDetails(request)' ng-show='request._type === 0 || request._type === 1'>
-                <!-- <ion-item class='item-avatar item-wrap-text'> -->
                   <p class='request-description white-space-normal' ng-show='request._type === 0'>
 
                     <!-- required -->
@@ -163,7 +162,7 @@
                       <ion-item class='item-avatar item-icon-right session course-details'>
                         <img class='pure-img verb-img' ng-src='{{img_base}}./img/verbs/{{session.request.verb_image}}' />
                           <h2 class='uppercase'>{{session.request.course.short_name}}</h2>
-                          <p class='tags-wrapper'>
+                          <p class='tags-wrapper no-margin no-padding' style='padding:0px !important; margin:0px !important;'>
                             <span class='blue request-tag' ng-repeat='tag in session.request.tags'>#{{tag.name}}
                             </span>
                           </p>
@@ -171,7 +170,7 @@
 
                       </ion-item>
 
-                      <ion-item class='item-avatar-left card-item-left'>
+                      <ion-item class='item-avatar-left card-item-left' ng-show='false || todo'>
                         <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
                         <p class='inline'> Starts in </p>
                         <p class='inline time-until' style='padding-left:1em'> {{session.request.schedule_time}} minutes </p>

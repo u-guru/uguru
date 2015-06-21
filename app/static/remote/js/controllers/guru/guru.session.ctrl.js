@@ -15,9 +15,11 @@ angular.module('uguru.guru.controllers')
   '$ionicPlatform',
   '$ionicScrollDelegate',
   '$cordovaKeyboard',
+  '$ionicHistory',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, $ionicActionSheet,
-  Restangular, $ionicPlatform, $ionicScrollDelegate, $cordovaKeyboard) {
+  Restangular, $ionicPlatform, $ionicScrollDelegate, $cordovaKeyboard,
+  $ionicHistory) {
 
 
     $ionicPlatform.ready(function() {
@@ -35,16 +37,16 @@ angular.module('uguru.guru.controllers')
     if (!$scope.session) {
       $scope.session = JSON.parse($stateParams.sessionObj);
     }
-
+    console.log($scope.session);
 
     $scope.details = {show: true};
     $scope.new_message = {content: ''};
     $scope.default_profile_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100';
 
-    if ($scope.session.request.status > 0  && $scope.session.guru.id === $scope.user.id) {
+    if ($scope.session.request.status === 2  && $scope.session.guru.id === $scope.user.id) {
       $scope.message_name = $scope.session.request.student.name.split(' ')[0];
-    } else if ($scope.session.request.status > 0){
-      $scope.message_name = $scope.session.guru.name.split(' ')[0];
+    } else if ($scope.session.request.status === 1 && $scope.session.student){
+      $scope.message_name = $scope.session.student.name.split(' ')[0];
     }
 
 
@@ -84,7 +86,7 @@ angular.module('uguru.guru.controllers')
 
               }
               if (index === 1) {
-                $scope.success.show(0, 2000, 'Coming Soon!');
+                $scope.success.show(0, 2000, 'Email support@uguru.me for a fast reply');
                 $scope.closeAttachActionSheet();
               }
             }
@@ -410,7 +412,7 @@ angular.module('uguru.guru.controllers')
 
     $scope.$on('$ionicView.afterEnter', function() {
 
-      if ($scope.session.request.status > 0) {
+      if ($scope.session.request.status > 0 && $scope.session.messages) {
         $scope.messages = $scope.processMessages($scope.session.messages);
         $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
 

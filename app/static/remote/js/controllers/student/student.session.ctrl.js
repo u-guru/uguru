@@ -83,7 +83,7 @@ angular.module('uguru.student.controllers')
 
               }
               if (index === 1) {
-                $scope.success.show(0, 2000, 'Coming Soon!');
+                $scope.success.show(0, 2000, 'Email support@uguru.me for a fast reply');
                 $scope.closeAttachActionSheet();
               }
             }

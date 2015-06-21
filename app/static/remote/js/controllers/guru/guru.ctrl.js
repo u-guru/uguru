@@ -22,7 +22,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
   $ionicActionSheet)     {
 
-  console.log($scope.user);
+
+  $scope.showActive = true;
+
   document.addEventListener("deviceready", function () {
     $scope.turnStatusBarWhiteText = function() {
       $timeout(function() {
@@ -35,6 +37,26 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.turnStatusBarWhiteText();
     }
   });
+
+  $scope.showPreviousActions = function(index) {
+      if (!$scope.user.previous_proposals || $scope.user.previous_proposals.length === 0) {
+        $scope.success.show(0, 2000, 'Sorry! No history yet. Update your profile to get more requests!');
+      } else {
+        $scope.showActiveToggle(index);
+      }
+    }
+
+  $scope.showActiveToggle = function(index) {
+      if (index === 1 && $scope.showActive) {
+        $scope.showActive = !$scope.showActive;
+      }
+
+      if (index === 0 && !$scope.showActive) {
+        $scope.showActive = !$scope.showActive;
+      }
+
+  }
+
 
   // functions relevant to these sections
       $scope.goToSessionDetails = function(session) {
@@ -443,10 +465,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               request: proposal.request
             }
 
-            $scope.guruSessionDetailsModal.show();
+            // $scope.guruSessionDetailsModal.show();
 
-            // $ionicViewSwitcher.nextDirection('forward');
-            // $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
+            $ionicViewSwitcher.nextDirection('forward');
+            $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
         }
 
         $scope.createGoogleLatLng = function(latCoord, longCoord) {

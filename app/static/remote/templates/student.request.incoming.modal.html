@@ -49,7 +49,7 @@
                   <!-- 4.  jack dfrom student, put hashtags, icon right-->
                   <ion-item class='item-avatar session course-details ng-class:{"item-icon-right":incoming_request.files && incoming_request.files.length > 0}' ng-show='incoming_request._type !== 1' ng-click='showIncomingProposalDetails = true;'>
                     <img class='pure-img verb-img' ng-src='{{img_base}}./img/verbs/{{incoming_request.verb_image}}' />
-                        <h2 class='uppercase student-session-course-name' ng-show='incoming_request.course && session.request.course.short_name'>{{incoming_request.course.short_name}}</h2>
+                        <h2 class='uppercase student-session-course-name' ng-show='incoming_request.course && incoming_request.course.short_name'>{{incoming_request.course.short_name}}</h2>
                         <h2 class='uppercase student-session-course-name white-space-normal' ng-hide='incoming_request.course && incoming_request.course.short_name'>{{incoming_request.task_title}}</h2>
                       <p class='tags-wrapper'>
                         <span class='blue incoming_request-tag' ng-repeat='tag in incoming_request.tags'>#{{tag.name}}
@@ -81,7 +81,7 @@
 
                       <!-- not all have calendars -->
                       <span class='calendar-availability-contact'>
-                        <strong>{{incoming_request.student_calendar[0].calendar_events[0].formatted.start_time_formatted}}-{{incoming_request.request.student_calendar[0].calendar_events[0].formatted.end_time_formatted}}</strong>
+                        <strong>{{incoming_request.student_calendar[0].calendar_events[0].formatted.start_time_formatted}}-{{incoming_request.student_calendar[0].calendar_events[0].formatted.end_time_formatted}}</strong>
                       </span>
 
                       </div>

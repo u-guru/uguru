@@ -12,10 +12,10 @@
   </ion-header-bar>
 
 <div class="tabs home-request-tabs-top tabs-top">
-      <a class="tab-item uppercase blue-bg white-text">
+      <a class="tab-item uppercase blue-bg white-text" ng-click='showPreviousActions(0);'>
         Your Tasks
       </a>
-      <a class="tab-item uppercase opacity-1-2" ng-click='success.show(0,1000,"Coming Soon!")'>
+      <a class="tab-item uppercase opacity-1-2" ng-click='showPreviousActions(1);'>
         Previous
       </a>
 </div>
@@ -25,7 +25,7 @@
 
 
     <!-- the initial i have no tasks screen -->
-    <div class='pure-g-c flex-column flex-space-between' ng-hide='user && user.pending_proposals && user.pending_proposals.length > 0' style='padding-bottom:65px;'>
+    <div class='pure-g-c flex-column flex-space-between' ng-hide='((user.pending_proposals && user.pending_proposals.length > 0)) || !showActive' style='padding-bottom:65px;' >
 
         <div class='flex-item-c j-end center'>
           <div class='ranking-text-container relative font-3em'>
@@ -52,8 +52,71 @@
           </div>
         </div>
     </div>
+    <div class='pure-g-c flex-column flex-space-between' ng-show='!showActive'>
 
-    <div class='pure-g-c flex-column flex-space-between'>
+
+        <ion-scroll class='full-height'>
+
+          <ion-refresher
+            pulling-icon="ion-arrow-down-c"
+            spinner="circles"
+            on-refresh="doRefresh()">
+          </ion-refresher>
+
+            <div class='pure-g'>
+
+               <ion-list class='pure-u-1' can-swipe="true">
+
+                  <div class='active-request-card-item-wrapper' ng-repeat='proposal in user.previous_proposals'>
+                    <ion-item class='item-avatar request-card-item'>
+                      <img class='pure-img' ng-src='{{img_base}}./img/verbs/{{proposal.request.verb_image}}' />
+                      <div class='request-card-content relative'>
+                        <p class='course-text relative'>
+                          <span ng-show='proposal.request._type === 0 || proposal.request._type === 1'>
+                            {{request.course.short_name}}
+                          </span>
+                          <span ng-show='proposal.request._type === 2' class='transform-capitalize'>
+                            {{proposal.request.task_title}}
+                          </span>
+                          <span class='request-tag-status request-tag-status-completed' ng-show='proposal.status === 4'> STUDENT CANCELED </span>
+                          <span class='request-tag-status request-tag-status-completed' ng-show='proposal.status === 15'> Answered </span>
+                          <span class='request-tag-status request-tag-status-completed' ng-show='proposal.status
+                          === 5'> CANCELED </span>
+                        </p>
+                        <p class='location-text' ng-show='proposal.request._type !== 1'> {{proposal.request.address}}</p>
+                      </div>
+                    </ion-item>
+                  </div>
+
+                  <div class='active-request-card-item-wrapper' ng-repeat='session in user.previous_guru_sessions'>
+                    <ion-item class='item-avatar request-card-item'>
+                      <img class='pure-img' ng-src='{{img_base}}./img/verbs/{{session.request.verb_image}}' />
+                      <div class='request-card-content relative'>
+                        <p class='course-text relative'>
+                          <span ng-show='session.request._type === 0 || session.request._type === 1'>
+                            {{session.request.course.short_name}}
+                          </span>
+                          <span ng-show='session.request._type === 2' class='transform-capitalize'>
+                            {{session.request.task_title}}
+                          </span>
+                          <span class='request-tag-status request-tag-status-completed' ng-show='session.request.status === 4'> STUDENT CANCELED </span>
+                          <span class='request-tag-status request-tag-status-completed' ng-show='session.request.status === 15'> Answered </span>
+                          <span class='request-tag-status request-tag-status-completed' ng-show='session.request.status
+                          === 5'> CANCELED </span>
+                        </p>
+                        <p class='location-text' ng-show='session.request._type !== 1'> {{session.request.address}}</p>
+                      </div>
+                    </ion-item>
+                  </div>
+
+                </ion-list>
+              </div>
+
+        </div>
+
+    </div>
+
+    <div class='pure-g-c flex-column flex-space-between' ng-show='showActive'>
       <ion-scroll class='full-height' style='padding-top:1em;'>
 
 
@@ -68,7 +131,7 @@
           <ion-list class='pure-u-1' can-swipe="true">
 
               <div class='active-request-card-item-wrapper' ng-repeat='proposal in user.pending_proposals'>
-                <ion-item class='item-avatar request-card-item' on-hold="cancelProposal(proposal)" ng-click='goToPendingRequestDetails(proposal.request)'>
+                <ion-item class='item-avatar request-card-item' on-hold="cancelProposal(proposal)" ng-click='goToProposalRequestDetails(proposal)'>
                   <img class='pure-img' ng-src='{{img_base}}./img/verbs/{{proposal.request.verb_image}}' />
                   <div class='request-card-content relative'>
                     <p class='course-text relative'>

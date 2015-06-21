@@ -14,7 +14,7 @@
 
   </ion-header-bar>
 
-<div class="tabs home-request-tabs-top tabs-top" ng-show='session.request.status > 0'>
+<div class="tabs home-request-tabs-top tabs-top" ng-show='session.request.status > 0 && session.messages'>
       <a class="tab-item uppercase opacity-1-2" ng-click='showDetails()' ng-show='!details.show'>
         Details
       </a>
@@ -30,7 +30,7 @@
 </div>
 
 
-<ion-content class='white-bg has-subheader' ng-show='details.show'>
+<ion-content class='white-bg ng-class:{"has-subheader":session.messages}' ng-show='details.show'>
       <div class='pure-g'>
           <ion-list class='pure-u-1'>
 
@@ -39,15 +39,15 @@
                 <div class='guru-info-wrapper'>
                   <h2>{{session.request.student.name.split(' ')[0]}} </h2>
                   <p class='uppercase nano-text'>
-                    <span ng-show='session.request.student.university'>{{session.student.university.title}}  -</span>
-                    <span ng-show='session.request.student.majors'>{{session.student.majors[0].name}}</span>
+                    <span ng-show='session.request.student.university'>{{session.request.student.university.title}}  -</span>
+                    <span ng-show='session.request.student.majors'>{{session.request.student.majors[0].name}}</span>
                   </p>
 
                   <div class='pure-u-11-12'>
-                    <div class='pure-u-1-12' ng-repeat='number in getNumber(session.student.student_avg_rating) track by $index'>
+                    <div class='pure-u-1-12' ng-repeat='number in getNumber(session.request.student.student_avg_rating) track by $index'>
                             <i class='icon ion-star blue'></i>
                     </div>
-                    <div class='pure-u-1-12' ng-repeat='number in getNumber(5 - session.student.student_avg_rating) track by $index'>
+                    <div class='pure-u-1-12' ng-repeat='number in getNumber(5 - session.request.student.student_avg_rating) track by $index'>
                       <i class='icon ion-star grey'></i>
                     </div>
                   </div>
@@ -61,7 +61,7 @@
                 <h2 class='uppercase student-session-course-name'>{{session.request.course.short_name}}</h2>
             </ion-item>
 
-            <ion-item class='item-avatar-left card-item-left request-form-item'>
+            <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='session.messages && session.request.student_calendar'>
               <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
               <p class='inline'> Starts in </p>
               <p ng-show='session.status === 1' class='inline time-until' style='padding-left:1em'> {{session.request.schedule_time}} minutes </p>
@@ -153,7 +153,7 @@
       </button>
     </ion-footer-bar>
   </div>
-<ion-footer-bar class='guru-session-footer' ng-show='details.show'>
+<ion-footer-bar class='guru-session-footer' ng-show='details.show && session.messages'>
 
 
       <button class='button button-full button-bright' ng-click='startSessionGuru()' ng-show='session.status === 1 || !session.status'>
