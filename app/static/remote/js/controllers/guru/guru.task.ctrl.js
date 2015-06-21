@@ -83,7 +83,19 @@ angular.module('uguru.guru.controllers')
     ]
 
     $scope.active_tasks = $scope.user.active_tasks;
+    $scope.selectedVerbIndex = 0;
+    $scope.verbImageIndices = [null, 'items.svg', 'food.svg', 'chores.svg', 'skilled.svg', 'specific.svg'];
 
+    $scope.taskItemsFilterFunction = function(item) {
+      if ($scope.selectedVerbIndex === 0 || item.verb_image === $scope.verbImageIndices[$scope.selectedVerbIndex]) {
+        return true;
+      }
+      return false;
+    }
+
+    $scope.selectedVerb = function (verb_index) {
+      $scope.selectedVerbIndex = verb_index;
+    }
 
     $scope.goBack = function() {
       $ionicViewSwitcher.nextDirection('swap')

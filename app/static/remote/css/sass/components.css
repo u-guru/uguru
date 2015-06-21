@@ -1463,3 +1463,20 @@ select.current-hourly-price {
     top: 25%;
     left: 20%;
     font-size: 60%; }
+
+.all-types-verb.inverted {
+  background-color: transparent;
+  color: white;
+  border: 0.1em solid white; }
+  .all-types-verb.inverted span {
+    left: 18%;
+    top: 23%; }
+
+.task-filter-item img.padding-half {
+  padding: 0.33em; }
+
+.platform-ios .all-types-verb {
+  top: -15px; }
+
+.platform-ios .task-filter-item:nth-child(1) {
+  overflow: visible; }

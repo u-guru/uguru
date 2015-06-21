@@ -10,37 +10,50 @@
 
       <!-- <div class='ion-tabs tabs-top'> -->
         <ion-scroll direction="x" class='tabs tabs-top bar-subheader dark-bg-header task-tabs'>
-          <div class='task-filter-item ion-tab tab-item inline'>
-              <div class='all-types-verb inline white-space-normal upper-case relative'>
+          <a class='task-filter-item ion-tab tab-item inline' ng-click='selectedVerb(0)'>
+              <div ng-show='selectedVerbIndex === 0' class='all-types-verb inline white-space-normal upper-case relative'>
                 <span class='absolute nano-text'> All<br>Types </span>
                 &nbsp;
               </div>
-          </div>
-          <div class='task-filter-item ion-tab tab-item'>
-              <img class='pure-img padding-half' ng-src='{{img_base}}./img/verbs/items.svg'/>
-          </div>
-          <div class='task-filter-item ion-tab tab-item'>
-              <img class='pure-img padding-half' ng-src='{{img_base}}./img/verbs/food.svg'/>
-          </div>
-          <div class='task-filter-item ion-tab tab-item'>
-              <img class='pure-img padding-half' ng-src='{{img_base}}./img/verbs/chores.svg'/>
-          </div>
-          <div class='task-filter-item ion-tab tab-item'>
-              <img class='pure-img padding-half' ng-src='{{img_base}}./img/verbs/skilled.svg'/>
-          </div>
-          <div class='task-filter-item ion-tab tab-item'>
-              <img class='pure-img padding-half' ng-src='{{img_base}}./img/verbs/specific.svg'/>
-          </div>
+              <div ng-hide='selectedVerbIndex === 0' class='all-types-verb inline white-space-normal upper-case relative inverted'>
+                <span class='absolute nano-text'> All<br>Types </span>
+                &nbsp;
+              </div>
+          </a>
+          <a class='task-filter-item ion-tab tab-item' ng-click='selectedVerb(1)'>
+              <img ng-show='selectedVerbIndex === 1' class='pure-img padding-half' ng-src='{{img_base}}./img/verbs/items.svg'/>
+              <img ng-hide='selectedVerbIndex === 1' class='pure-img' ng-src='{{img_base}}./img/verbs/items_inverted.svg'/>
+          </a>
+          <a class='task-filter-item ion-tab tab-item' ng-click='selectedVerb(2)'>
+              <img ng-show='selectedVerbIndex === 2' class='pure-img padding-half' ng-src='{{img_base}}./img/verbs/food.svg'/>
+              <img ng-hide='selectedVerbIndex === 2' class='pure-img' ng-src='{{img_base}}./img/verbs/food_inverted.svg'/>
+          </a>
+          <a class='task-filter-item ion-tab tab-item' ng-click='selectedVerb(3)'>
+              <img ng-show='selectedVerbIndex === 3' class='pure-img padding-half' ng-src='{{img_base}}./img/verbs/chores.svg'/>
+              <img ng-hide='selectedVerbIndex === 3' class='pure-img' ng-src='{{img_base}}./img/verbs/chores_inverted.svg'/>
+          </a>
+          <a class='task-filter-item ion-tab tab-item' ng-click='selectedVerb(4)'>
+              <img ng-show='selectedVerbIndex === 4' class='pure-img padding-half' ng-src='{{img_base}}./img/verbs/skilled.svg'/>
+              <img ng-hide='selectedVerbIndex === 4' class='pure-img' ng-src='{{img_base}}./img/verbs/skilled_inverted.svg'/>
+          </a>
+          <a class='task-filter-item ion-tab tab-item' ng-click='selectedVerb(5)'>
+              <img ng-show='selectedVerbIndex === 5' class='pure-img padding-half' ng-src='{{img_base}}./img/verbs/specific.svg'/>
+              <img ng-hide='selectedVerbIndex === 5' class='pure-img' ng-src='{{img_base}}./img/verbs/specific_inverted.svg'/>
+          </a>
         </ion-scroll>
 
       </div>
     <!-- </ion-header-bar> -->
 <ion-content class='white-bg standard-bg' style='top:91px;'>
-
+  <ion-refresher
+    pulling-icon="ion-arrow-down-c"
+    spinner="circles"
+    on-refresh="doRefresh()">
+  </ion-refresher>
 
           <ion-list class='pure-u-1' can-swipe="true">
 
-              <div class='active-request-card-item-wrapper' ng-repeat='task in active_tasks'>
+              <div class='active-request-card-item-wrapper' ng-repeat='task in active_tasks | filter:taskItemsFilterFunction'>
                 <ion-item class='item-avatar request-card-item item-button-right' on-hold="cancelRequest(request)" ng-click='goToShowTaskDetails(task)'>
                   <img style='top:21px;' class='pure-img' ng-src='{{img_base}}./img/verbs/{{task.verb_image}}' />
                   <div class='request-card-content relative' style='text-align:left;'>

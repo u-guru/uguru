@@ -245,7 +245,7 @@ angular.module('uguru.util.controllers')
           else if ($scope.user && $scope.user.university_id) {
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
-            $state.go('^.guru-tasks');
+            $state.go('^.home');
             $timeout(function() {
               $scope.loader.hide();
             }, 1000);

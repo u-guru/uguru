@@ -77,6 +77,7 @@ angular.module('uguru.user', [])
         user.incoming_requests = [];
         user.active_tasks = [];
         user.previous_requests = [];
+        user.previous_proposals = [];
         user.active_student_sessions = [];
         user.previous_student_sessions = [];
         user.payment_cards = [];
@@ -119,6 +120,7 @@ angular.module('uguru.user', [])
                 }
                 else if (index_request.status === 1) {
                     index_request.guru.guru_avg_rating = parseInt(calcAverage(index_request.guru.guru_ratings));
+                    index_request = processStudentRequestCalendar(index_request);
                     user.incoming_requests.push(index_request);
                 }
 
@@ -271,23 +273,24 @@ angular.module('uguru.user', [])
             if (user.proposals && user.proposals.length > 0) {
                 for (var i = 0; i < user_proposals.length; i ++) {
                     var index_proposal = user_proposals[i];
-                    if (index_proposal.status === 0 && index_proposal.request.status !==0) {
-                        user.previous_guru_proposals.push(index_proposal);
+                     if (index_proposal.status === 4 || index_proposal.status === 5 ) {
+                        index_proposal.status_string = 'STUDENT CANCELED';
+                        user.previous_proposals.push(index_proposal);
                     }
-                    if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 0) {
+                    else if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 0) {
                         index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
 
                         index_proposal.request = processStudentRequestCalendar(index_proposal.request)
                         user.active_proposals.push(index_proposal);
-                    }
+                    } else
                     if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 1) {
                         index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
                         user.active_questions.push(index_proposal);
-                    }
+                    } else
                     if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 2) {
                         index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
                         user.active_tasks.push(index_proposal);
-                    }
+                    } else
                     if (index_proposal.status === 2) {
                         user.pending_proposals.push(index_proposal);
                     }
@@ -375,6 +378,7 @@ angular.module('uguru.user', [])
         $scope.user.current_device = user.current_device;
         $scope.user.devices = user.devices;
         $scope.user.current_hourly = user.current_hourly;
+        $scope.user.previous_proposals = user.previous_proposals;
         $scope.user.previous_guru_proposals = user.previous_guru_proposals;
         $scope.user.is_admin = user.is_admin;
         $scope.user.active_questions = user.active_questions;

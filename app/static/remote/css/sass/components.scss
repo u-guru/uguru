@@ -2049,3 +2049,26 @@ position: absolute;
             font-size: 60%;
     }
 }
+
+.all-types-verb.inverted {
+    background-color:transparent;
+    color:white;
+    border: 0.1em solid white;
+    span {
+        left:18%;
+        top:23%;
+    }
+}
+
+.task-filter-item img.padding-half {
+    padding:0.33em;
+}
+
+.platform-ios .all-types-verb{
+    top: -15px;
+    // overflow:visible;
+}
+
+.platform-ios .task-filter-item:nth-child(1) {
+    overflow:visible;
+}

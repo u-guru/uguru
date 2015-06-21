@@ -58,7 +58,8 @@
             <!-- 4.  jack dfrom student, put hashtags, icon right-->
             <ion-item class='item-avatar-left'>
               <img class='pure-img verb-img' ng-src='{{img_base}}./img/verbs/{{session.request.verb_image}}' />
-                <h2 class='uppercase student-session-course-name'>{{session.request.course.short_name}}</h2>
+                <h2 class='uppercase student-session-course-name' ng-show='session.request.course && session.request.course.short_name'>{{session.request.course.short_name}}</h2>
+                <h2 class='uppercase student-session-course-name' ng-hide='session.request.course && session.request.course.short_name'>{{session.request.task_title}}</h2>
             </ion-item>
 
             <ion-item class='item-avatar-left card-item-left request-form-item'>

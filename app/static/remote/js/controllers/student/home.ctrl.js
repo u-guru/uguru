@@ -51,7 +51,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         if (request._type !== 2) {
           var cancelMsg = request.course.short_name + ' request canceled';
         } else {
-          var cancelMsg = request.category +  'Task request canceled';
+          var cancelMsg = request.category +  ' Task request canceled';
         }
 
 
@@ -415,8 +415,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         });
 
     }
-
-
 
     $scope.processTimeEstimate = function(minutes) {
         num_hours = Math.floor(Math.round((minutes / 60.0) * 100) / 100);

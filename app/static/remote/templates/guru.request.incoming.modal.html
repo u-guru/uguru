@@ -20,13 +20,15 @@
                     <img class='home-card-profile guru-proposal-profile pure-img profile-img sidebar-img inline'  src='{{proposal.request.student.profile_url}}'/>
                     <img class='home-card-profile guru-proposal-profile pure-img profile-img sidebar-img inline'  src='{{user.profile_url}}'/>
                     <!-- <h2> &nbsp; </h2> -->
-                    <h2 class='capitalize proposal-header' style='margin-top:0.5em;'>Session with <strong>{{proposal.request.student.name.split(' ')[0]}}</strong></h2>
+                    <h2 class='capitalize proposal-header white-space-normal' style='margin-top:0.5em;'  ng-show='proposal.request.course && proposal.request.course.short_name'>Session with <strong>{{proposal.request.student.name.split(' ')[0]}}</strong></h2>
+                    <h2 class='capitalize proposal-header white-space-normal' style='margin-top:0.5em;'  ng-hide='proposal.request.course && proposal.request.course.short_name'><strong class='semibold'>{{proposal.request.student.name.split(' ')[0]}}</strong> needs help with <strong class='semibold'>{{proposal.request.category}}</strong></h2>
                   <!-- 3. Absolute positioning item, jack it from settings -->
                   </ion-item>
                   <!-- 4.  jack dfrom student, put hashtags, icon right-->
                   <ion-item class='item-avatar item-icon-right session course-details'>
                     <img class='pure-img verb-img' ng-src='{{img_base}}./img/verbs/{{proposal.request.verb_image}}' />
-                      <h2 class='uppercase course-header'>{{proposal.request.course.short_name}}</h2>
+                      <h2 class='uppercase student-session-course-name' ng-show='proposal.request.course && proposal.request.course.short_name'>{{proposal.request.course.short_name}}</h2>
+                      <h2 class='uppercase student-session-course-name' ng-hide='proposal.request.course && proposal.request.course.short_name'>{{proposal.request.task_title}}</h2>
                       <p class='tags-wrapper'>
                         <span class='blue proposal.request-tag' ng-repeat='tag in proposal.request.tags'>#{{tag.name}}
                         </span>
@@ -35,7 +37,7 @@
 
                   </ion-item>
 
-                  <ion-item class='item-avatar-left card-item-left'>
+                  <ion-item class='item-avatar-left card-item-left' ng-show='proposal.request.student_calendar[0].calendar_events[0].formatted_time'>
                     <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
                       <div class='pure-u-1-4'>
                         <p class='inline'>
@@ -87,7 +89,7 @@
                 </ion-list>
                 <div class='pure-u-1' style='padding: 0 10px;'>
                     <button class='button button-full button-blue blue-bg button-submit white-text center' ng-click='acceptIncomingStudentProposal()'>
-                          Confirm this session
+                          IM DOWN TO DO THIS
                   </button>
                 </div>
 

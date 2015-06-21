@@ -888,13 +888,13 @@ class UserRequestView(restful.Resource):
 
         _request = Request.query.get(int(request.json.get('id')))
 
+
         if not _request:
             abort(404)
 
         if 'status' in request.json:
             status = request.json.get('status')
             guru_json = request.json.get('guru')
-            print guru_json
 
             #Default set the status before
             _request.status = request.json.get('status')
@@ -960,6 +960,7 @@ class UserRequestView(restful.Resource):
                 event_dict = {'status': Request.STUDENT_CANCELED, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
                 for proposal in _request.proposals:
+                    proposal.status = 4
                     if proposal.status == proposal.GURU_ACCEPTED:
                         event_dict = {'status': Proposal.GURU_ACCEPT_STUDENT_CANCELED, 'proposal_id':proposal.id}
                         event = Event.initFromDict(event_dict)
@@ -968,6 +969,17 @@ class UserRequestView(restful.Resource):
                         event = Event.initFromDict(event_dict)
 
             elif status == Request.GURU_CANCELED_SEARCHING_AGAIN:
+                _request.selected_proposal.status = 5;
+                _request.status = 0
+                guru_id = request.json.get('guru_id')
+                for proposal in _request.proposals:
+                    if proposal.guru_id == guru_id:
+                        print proposal.guru_id, guru_id, proposal.id
+                        proposal.status = 5
+                        db_session.commit()
+
+                print 'yo proposal status', request.json.get('status'), _request.selected_proposal.id
+
                 event_dict = {'status': Request.GURU_CANCELED_SEARCHING_AGAIN, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
             elif status == Request.NO_GURUS_AVAILABLE:

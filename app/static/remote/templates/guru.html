@@ -68,7 +68,7 @@
           <ion-list class='pure-u-1' can-swipe="true">
 
               <div class='active-request-card-item-wrapper' ng-repeat='proposal in user.pending_proposals'>
-                <ion-item class='item-avatar request-card-item' on-hold="cancelRequest(proposal.request)" ng-click='goToPendingRequestDetails(proposal.request)'>
+                <ion-item class='item-avatar request-card-item' on-hold="cancelProposal(proposal)" ng-click='goToPendingRequestDetails(proposal.request)'>
                   <img class='pure-img' ng-src='{{img_base}}./img/verbs/{{proposal.request.verb_image}}' />
                   <div class='request-card-content relative'>
                     <p class='course-text relative'>
@@ -85,7 +85,7 @@
                   <!-- <i class='icon ion-chevron-right icon-small'> </i> -->
                 </ion-item>
 
-                <ion-item class='item-wrap-text' on-hold="cancelRequest(proposal.request)" ng-click='goToPendingRequestDetails(proposal.request)' ng-show='proposal.request._type === 0 || proposal.request._type === 1'>
+                <ion-item class='item-wrap-text' on-hold="cancelProposal(proposal)" ng-click='goToPendingRequestDetails(proposal.request)' ng-show='proposal.request._type === 0 || proposal.request._type === 1'>
                 <!-- <ion-item class='item-avatar item-wrap-text'> -->
                   <p class='request-description white-space-normal' ng-show='proposal.request._type === 0'>
 

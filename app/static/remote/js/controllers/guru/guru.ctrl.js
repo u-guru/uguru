@@ -37,10 +37,31 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   });
 
   // functions relevant to these sections
-    $scope.goToSessionDetails = function(session) {
-      $ionicViewSwitcher.nextDirection('forward');
-      $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
+      $scope.goToSessionDetails = function(session) {
+        $ionicViewSwitcher.nextDirection('forward');
+        $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
+      }
+
+     $scope.cancelProposal = function(proposal) {
+      if (confirm('Are you sure you want to cancel this?')) {
+        var request = proposal.request;
+        request.status = 5;
+        $scope.user.updateObj($scope.user, 'requests', request, $scope);
+
+
+        if (request._type !== 2) {
+          var cancelMsg = request.course.short_name + ' request canceled';
+        } else {
+          var cancelMsg = request.category +  ' Task canceled';
+        }
+
+
+
+        $scope.success.show(0, 2000, cancelMsg);
+        $scope.root.util.removeObjectByKey($scope.user.pending_proposals, 'id', proposal.id);
+      }
     }
+
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/guru.in-session.modal.html', {
             scope: $scope,
@@ -298,7 +319,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
 
       $scope.processActiveProposalsGuru = function(active_proposals) {
-
+        console.log(active_proposals);
           if (active_proposals.length === 0) {
             return;
           }

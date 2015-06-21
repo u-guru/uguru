@@ -7,7 +7,7 @@
           <div class='pure-g-c flex-column flex-space-between full-height'  ng-show='!showIncomingProposalDetails'>
               <div class='flex-item-c pure-g j-center'>
                 <!-- 1. create inset list, offset it by -5% margin-top -->
-                <ion-list class='list-inset visible-overflow proposal-card-request no-margin padding-1em'>
+                <ion-list class='list-inset visible-overflow proposal-card-request no-margin padding-1em' style='padding-bottom:2px;'>
 
                   <!-- 2.  padding 2em h1 format bold, SemiBold, relative-->
                   <ion-item class='padding-2em item-avatar-left' style='padding-bottom:1em;'>
@@ -47,18 +47,19 @@
 
                   </ion-item>
                   <!-- 4.  jack dfrom student, put hashtags, icon right-->
-                  <ion-item class='item-avatar item-icon-right session course-details' ng-show='incoming_request._type !== 1' ng-click='showIncomingProposalDetails = true;'>
+                  <ion-item class='item-avatar session course-details ng-class:{"item-icon-right":incoming_request.files && incoming_request.files.length > 0}' ng-show='incoming_request._type !== 1' ng-click='showIncomingProposalDetails = true;'>
                     <img class='pure-img verb-img' ng-src='{{img_base}}./img/verbs/{{incoming_request.verb_image}}' />
-                      <h2 class='uppercase course-header'>{{incoming_request.course.short_name}}</h2>
+                        <h2 class='uppercase student-session-course-name' ng-show='incoming_request.course && session.request.course.short_name'>{{incoming_request.course.short_name}}</h2>
+                        <h2 class='uppercase student-session-course-name white-space-normal' ng-hide='incoming_request.course && incoming_request.course.short_name'>{{incoming_request.task_title}}</h2>
                       <p class='tags-wrapper'>
                         <span class='blue incoming_request-tag' ng-repeat='tag in incoming_request.tags'>#{{tag.name}}
                         </span>
                       </p>
-                    <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon incoming_request-icon' src='{{img_base}}./img/icons/paperclip-outline-blue.svg' style='margin-right: 0.33em; margin-top:0.4em;'>
+                    <img ng-show='incoming_request.files && incoming_request.files.length > 0' class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon incoming_request-icon' src='{{img_base}}./img/icons/paperclip-outline-blue.svg' style='margin-right: 0.33em; margin-top:0.4em;'>
 
                   </ion-item>
 
-                  <ion-item class='item-avatar-left card-item-left' ng-show='incoming_request._type !== 1'>
+                  <ion-item class='item-avatar-left card-item-left' ng-show='incoming_request._type !== 1 && incoming_request.student_calendar'>
                     <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
                       <div class='pure-u-1-4'>
                         <p class='inline'>
@@ -73,10 +74,15 @@
                           </span>
                         </p>
                       </div>
-                      <div class='pure-u-3-4 micro-text' style='padding-left:1em; opacity:0.8;'>
+                       <div class='pure-u-3-4 micro-text white-space-normal' style='padding-left:1.5em; line-height:2em; opacity:0.8;'>
 
-                        <strong>Thursday</strong>, May 14th, <br>
-                        Between <strong>12:00 pm - 3:30 pm </strong>
+                         <strong> {{incoming_request.student_calendar[0].calendar_events[0].formatted.day}}, {{incoming_request.student_calendar[0].calendar_events[0].formatted.month}} {{incoming_request.student_calendar[0].calendar_events[0].formatted.date}}
+                      </strong> between
+
+                      <!-- not all have calendars -->
+                      <span class='calendar-availability-contact'>
+                        <strong>{{incoming_request.student_calendar[0].calendar_events[0].formatted.start_time_formatted}}-{{incoming_request.request.student_calendar[0].calendar_events[0].formatted.end_time_formatted}}</strong>
+                      </span>
 
                       </div>
                   </ion-item>
@@ -122,19 +128,24 @@
 
                   </div>
                   <div class='pure-u-1' style='padding-left:1.2em; padding-right:1.2em'>
-                      <a class='close-modal-link' id='verb-cancel-button' ng-click='rejectIncomingGuru()' ng-show='incoming_request._type !== 1'>
+                      <a class='close-modal-link' id='verb-cancel-button' ng-click='rejectIncomingGuru()' ng-show='incoming_request._type === 0'>
                         <p class='standard micro-text center'>
                           Uh oh! Cancel
                         </p>
                       </a>
                       <a class='close-modal-link' id='verb-cancel-button' ng-click='rejectIncomingQuestion()' ng-show='incoming_request._type === 1'>
-                        <p class='standard micro-text center' ng-show='incoming_request._type === 1'>
+                        <p class='standard micro-text center' ng-show='incoming_request._type !== 1'>
                           This is not the answer...
+                        </p>
+                      </a>
+                      <a class='close-modal-link' id='verb-cancel-button' ng-click='rejectIncomingQuestion()' ng-show='incoming_request._type === 2'>
+                        <p class='standard micro-text center' ng-show='incoming_request._type === 2'>
+                          Not right person for job
                         </p>
                       </a>
                   </div>
 
-              </div>
+              <!-- </div> -->
             </div>
 
               <div class='pure-g-c flex-column flex-space-between' ng-show='showIncomingProposalDetails' ng-click='showIncomingProposalDetails = false;'>
