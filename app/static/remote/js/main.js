@@ -284,9 +284,10 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
                       if ($cordovaSplashscreen) {
                         $cordovaSplashscreen.show();
                       }
+                      $templateCache.removeAll();
                       window.localStorage.clear();
                       //remove all angular templates
-                      $templateCache.removeAll();
+
 
                       Version.setVersion(serverVersionNumber);
                       $localstorage.set('recently_updated', true);
