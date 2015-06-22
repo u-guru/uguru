@@ -61,7 +61,7 @@
             <div class='pure-u-1'>
               <p class='standard university-header'>
                 I am a
-                <select ng-model="selectedBg" class='ng-class:{"student-width": selectedBg.name === "student", "professional-width": selectedBg.name === "professional", "hs-student-width": selectedBg.name === "HS student"}' ng-options="background.name for background in user_bgs"></select><span ng-show='selectedBg.name==="student"'>attending</span><span ng-show='selectedBg.name==="professional"'>who attended</span><span ng-show='selectedBg.name==="HS student"'>aspiring to attend</span>
+                <select ng-model="selectedBg" id='role-select' class='ng-class:{"student-width": selectedBg.name === "student", "professional-width": selectedBg.name === "professional", "hs-student-width": selectedBg.name === "HS student"}' ng-change="unFocusSelect()" ng-options="background.name for background in user_bgs"></select><span ng-show='selectedBg.name==="student"'>attending</span><span ng-show='selectedBg.name==="professional"'>who attended</span><span ng-show='selectedBg.name==="HS student"'>aspiring to attend</span>
               </p>
             </div>
 

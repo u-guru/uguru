@@ -25,6 +25,12 @@ angular.module('uguru.util.controllers', [])
     $scope.keyboard_force_off = false;
     $scope.view = 1;
 
+    $scope.unFocusSelect = function() {
+      var selectElement = document.getElementById('role-select');
+      console.log('found element', JSON.stringify(selectElement));
+      selectElement.blur();
+    }
+
     $scope.getUniversitiesFromServer = function(promise) {
         $scope.loader.show();
         University.get().then(

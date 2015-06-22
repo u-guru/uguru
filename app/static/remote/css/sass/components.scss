@@ -1553,7 +1553,7 @@ ion-list.list-inset.visible-overflow.proposal-card-request.disable-user-behavior
 // }
 
 p.university-header {
-    font-size:125%;
+    font-size:120%;
 }
 
 .university select {
@@ -1563,7 +1563,7 @@ p.university-header {
     border: none;
     -webkit-appearance: none;
     border-bottom:2px dotted rgba(255,255,255,0.6) !important;
-    font-size:110% !important;
+    font-size:100% !important;
     color:$blue !important;
     border-radius:0px;
     line-height:1.33em;
@@ -1575,21 +1575,21 @@ p.university-header {
 }
 
 .professional-width, {
-    width: 36%;
+    width: 34%;
 }
 
 .platform-ios .professional-width,
 .platform-android .professional-width {
-    width:42%;
+    width:33%;
 }
 
 .hs-student-width {
-    width:32%;
+    width:30%;
 }
 
 .platform-ios .hs-student-width,
 .platform-android .hs-student-width {
-    width:38%;
+    width:35%;
 }
 
 .university-label {
