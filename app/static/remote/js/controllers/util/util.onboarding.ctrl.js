@@ -62,17 +62,35 @@ angular.module('uguru.util.controllers')
     });
 
     $scope.$on('$ionicView.loaded', function(){
-      var time_delay = 1000;
-      if ($scope.platform.mobile) {
-        var time_delay = 2000;
-      }
-      $timeout(function() {
-        $scope.injectAnimatedHand = true;
-      }, time_delay);
 
-      $timeout(function() {
-        $scope.injectAnimatedPhone = true;
-      }, time_delay);
+
+
+          document.addEventListener("deviceready", function () {
+
+
+            if ($scope.platform.mobile) {
+              var time_delay = 1000;
+            }
+            $timeout(function() {
+              $scope.injectAnimatedHand = true;
+            }, time_delay);
+
+            $timeout(function() {
+              $scope.injectAnimatedPhone = true;
+            }, time_delay);
+
+          });
+
+
+          $timeout(function() {
+
+            if (!$scope.injectAnimatedHand || !$scope.injectAnimatedPhone) {
+              $scope.injectAnimatedHand = true;
+              $scope.injectAnimatedPhone = true;
+            }
+
+          }, 1250);
+
 
     });
 
