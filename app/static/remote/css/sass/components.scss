@@ -2073,3 +2073,31 @@ position: absolute;
 .platform-ios .task-filter-item:nth-child(1) {
     overflow:visible;
 }
+
+.jp-card .jp-card-front, .jp-card .jp-card-back,
+.jp-card.jp-card-identified .jp-card-front {
+  width:80% !important;
+  margin: 0 auto !important;
+  height:70% !important;
+  top: 10% !important;
+  left: 10% !important;
+}
+
+.jp-card .jp-card-front .jp-card-lower .jp-card-number,
+.jp-card.jp-card-identified .jp-card-front .jp-card-lower .jp-card-number,
+ {
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+.jp-card.jp-card-identified {
+  box-shadow: none !important;
+}
+
+.jp-card .jp-card-front .jp-card-lower .jp-card-name {
+   font-size: 16px !important;
+}
+
+.jp-card .jp-card-front .jp-card-lower {
+  bottom: 20px !important;
+}

@@ -60,13 +60,21 @@ angular.module('uguru.util.controllers', [])
     $scope.toggleView = function(index) {
       $scope.view = index;
       if (index === 2) {
+        $scope.root.slider.hide();
         $timeout(function() {
+
           var element = document.getElementById("university-input")
           if (element) {
             element.focus();
           }
+
+          if ($scope.platform.android && $cordovaKeyboard && !$cordovaKeyboard.isVisible()) {
+            $cordovaKeyboard.show();
+          }
+
         }, 300);
       } else {
+        $scope.root.slider.show();
         if ($scope.platform.mobile && $cordovaKeyboard.isVisible()) {
           $cordovaKeyboard.close();
         }
@@ -81,6 +89,11 @@ angular.module('uguru.util.controllers', [])
         } else {
           console.log('University input could not be found');
         }
+
+        if ($scope.platform.android && $cordovaKeyboard && !$cordovaKeyboard.isVisible()) {
+          $cordovaKeyboard.show();
+        }
+
       }
     };
 

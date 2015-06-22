@@ -158,6 +158,29 @@ angular.module('uguru.root.services', [])
         },
     }
 
+    this.slider = {
+        hide: function() {
+            var element_arr = document.getElementsByClassName('slider-pager');
+
+            if (element_arr && element_arr.length > 0) {
+                element_arr[0].style.display = "none";
+            }
+        },
+        show: function() {
+            var element_arr = document.getElementsByClassName('slider-pager');
+            if (element_arr && element_arr.length > 0) {
+                element_arr[0].style.display = "block";
+            }
+        },
+        shiftUp: function(amount) {
+            var element_arr = document.getElementsByClassName('slider-pager');
+            if (element_arr && element_arr.length > 0) {
+                element_arr[0].style.marginBottom = amount +'px';
+            }
+        }
+
+    }
+
     this.progress = {
         //TODO
         showSuccess: function() {
