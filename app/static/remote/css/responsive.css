@@ -79,10 +79,19 @@
   and (max-device-width: 480px)
   /*and (-webkit-min-device-pixel-ratio: 2)*/
   and (orientation: portrait) {
+
+
     select.student-width {
       width:21.5% !important;
       text-indent:0px;
     }
+
+
+    .platform-android select.student-width {
+      width:23.5% !important;
+
+    }
+
     select.professional-width {
       width:32% !important;
       margin-right:0.2em;
@@ -165,6 +174,18 @@
       width:21.5% !important;
       margin-right:0.0em;
       margin-left:0em;
+    }
+
+    .platform-android select.student-width{
+      width:24% !important;
+    }
+
+    .platform-android select.professional-width{
+      width:34.5% !important;
+    }
+
+    .platform-android select.hs-student-width{
+      width:31% !important;
     }
 
 }
