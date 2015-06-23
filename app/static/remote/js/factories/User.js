@@ -1097,7 +1097,7 @@ angular.module('uguru.user', [])
                         if (err.status === 409 ) {
                             console.log('already have an active request');
                         } else {
-                            console.log(err);
+                            console.log(JSON.stringify(err, err.status));
                             console.log('error...something happened with the server;')
                         }
 
@@ -1147,7 +1147,7 @@ angular.module('uguru.user', [])
                 if (success_callback) {
                     success_callback(err);
                 } else {
-                    console.log(err);
+                    console.log(JSON.stringify(err));
                     console.log('error...something happened with the server;')
                 }
             })

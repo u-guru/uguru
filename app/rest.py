@@ -230,6 +230,10 @@ class UserOneView(restful.Resource):
     @marshal_with(UserSerializer)
     def get(self, _id):
         user = User.query.get(_id)
+
+        if not user:
+            abort(400)
+
         v = Version.query.get(1)
         db_session.refresh(v)
         [db_session.refresh(_request) for _request in user.requests]
@@ -241,15 +245,13 @@ class UserOneView(restful.Resource):
         # if not request.json.get('auth_token'):
         #     abort(400)
 
-        if not user:
-            abort(400)
-        else:
 
-            if not user.profile_url:
-                user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
-                db_session.commit()
 
-            return user, 200
+        if not user.profile_url:
+            user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
+            db_session.commit()
+
+        return user, 200
 
 
     @marshal_with(UserSerializer)

@@ -335,7 +335,10 @@ angular.module('uguru.util.controllers')
                       'push_notifications': false
                     }
                 $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
-                alert('Please turn your Push Notifications ON in your settings.');
+                $scope.user.current_device.push_notif = 'test';
+                $scope.user.current_device.push_notif_enabled = true;
+                $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+                // alert('Please turn your Push Notifications ON in your settings.');
               });
             };
 
@@ -422,7 +425,7 @@ angular.module('uguru.util.controllers')
 
                   $cordovaPush.register(androidConfig).then(function(deviceToken) {
 
-                    console.log('android notifications');
+                    console.log('android notifications', deviceToken);
 
                   }, function(err){
 
@@ -434,6 +437,14 @@ angular.module('uguru.util.controllers')
                   $rootScope.$on('pushNotificationReceived', function(event, notification) {
                     CordovaPushWrapper.received($rootScope, event, notification);
                     console.log('android notifications registered',event, notification);
+                    if ($scope.user && $scope.user.id) {
+
+                      payload = {
+                        'push_notifications': true
+                      }
+                      $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
+
+                    }
                   });
 
                   //grab geolocation super early for android devices

@@ -13,8 +13,8 @@ if (LOCAL) {
 
   BASE_URL = 'http://localhost:8100/';
   // REST_URL = 'localhost:5000';
-  // REST_URL = 'http://localhost:5000';
-  var REST_URL = 'http://uguru-rest.herokuapp.com'
+  REST_URL = 'http://localhost:5000';
+  // var REST_URL = 'http://uguru-rest.herokuapp.com'
 
 } else {
   img_base = '/static/'
@@ -242,11 +242,9 @@ $ionicPlatform.ready(function() {
   });
 
 
-  // if none of the above states are matched, use this as the fallback
-  // $urlRouterProvider.otherwise('/tab/dash');
-  // $urlRouterProvider.otherwise('/onboarding');
+
   $urlRouterProvider.otherwise('/onboarding');
-  // $urlRouterProvider.otherwise('/home');
+
 
 });
 
