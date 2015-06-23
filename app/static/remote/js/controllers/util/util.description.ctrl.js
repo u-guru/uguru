@@ -97,7 +97,7 @@ angular.module('uguru.util.controllers')
 
             //focus on keyboard
             document.getElementById("description-input").focus();
-            $scope.root.keyboard.openAndroid();
+
 
         }, 1000);
 
