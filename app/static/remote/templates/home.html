@@ -207,7 +207,7 @@
                   <!-- <i class='icon ion-chevron-right icon-small'> </i> -->
                 </ion-item>
 
-                <ion-item class='item-wrap-text' on-hold="cancelRequest(request)" ng-click='goToPendingRequestDetails(request)' ng-show='request._type === 0 || request._type === 1'>
+                <ion-item class='item-wrap-text' on-hold="cancelRequest(request)" ng-click='goToPendingRequestDetails(request)' ng-show='(request._type === 0 || request._type === 1) && request.student_calendar[0].calendar_events[0].formatted' >
                 <!-- <ion-item class='item-avatar item-wrap-text'> -->
                   <p class='request-description white-space-normal' ng-show='request._type === 0'>
 

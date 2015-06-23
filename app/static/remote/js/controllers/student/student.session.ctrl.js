@@ -16,10 +16,11 @@ angular.module('uguru.student.controllers')
   '$ionicScrollDelegate',
   '$cordovaKeyboard',
   '$ionicSideMenuDelegate',
+  '$ionicHistory',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, $ionicActionSheet,
   Restangular, $ionicPlatform,$ionicScrollDelegate, $cordovaKeyboard,
-  $ionicSideMenuDelegate) {
+  $ionicSideMenuDelegate, $ionicHistory) {
 
     $ionicPlatform.ready(function() {
 

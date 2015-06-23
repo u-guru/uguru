@@ -514,6 +514,7 @@ angular.module('uguru.util.controllers')
 
         $scope.initAvailabilityScroll = function () {
 
+
              function done() {
                 var results = SpinningWheel.getSelectedValues();
                 alert('values:' + results.values.join(', ') + ' - keys: ' + results.keys.join(', '));
@@ -534,25 +535,26 @@ angular.module('uguru.util.controllers')
                 element, {});
             }, 500);
 
+            var hours = { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4};
+            var minutes = { 0: '00', 1: 15, 2: 30, 3: 45};
 
-            if (!$scope.availability_scroll_init) {
-
-                var hours = { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4};
-                var minutes = { 0: '00', 1: 15, 2: 30, 3: 45};
+            if (!$scope.root.vars.availability_scroll_init) {
                   SpinningWheel.addSlot(hours, 'right', "2");
                   SpinningWheel.addSlot({ separator: ':' }, 'readonly shrink');
                   SpinningWheel.addSlot(minutes, 'left');
-
-
                   SpinningWheel.setCancelAction(cancel);
                   SpinningWheel.setDoneAction(done);
-
-                  SpinningWheel.open('test');
-                  $scope.spinning_wheel = SpinningWheel;
-
-                  $scope.availability_scroll_init = true;
-
             }
+
+            if (!$scope.availability_scroll_init) {
+
+              SpinningWheel.open('test');
+            }
+
+            $scope.spinning_wheel = SpinningWheel;
+
+            $scope.availability_scroll_init = true;
+            $scope.root.vars.availability_scroll_init = true;
 
         }
         $scope.nearby_locations = {matches:[]};
