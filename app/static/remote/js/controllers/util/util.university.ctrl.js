@@ -68,8 +68,8 @@ angular.module('uguru.util.controllers', [])
             element.focus();
           }
 
-          if ($scope.platform.android && $cordovaKeyboard && !$cordovaKeyboard.isVisible()) {
-            $cordovaKeyboard.show();
+          if ($scope.platform.android && window.cordova && window.cordova.plugins.Keyboard) {
+            window.cordova.plugins.Keyboard.show();
           }
 
         }, 300);
@@ -90,8 +90,8 @@ angular.module('uguru.util.controllers', [])
           console.log('University input could not be found');
         }
 
-        if ($scope.platform.android && $cordovaKeyboard && !$cordovaKeyboard.isVisible()) {
-          $cordovaKeyboard.show();
+        if ($scope.platform.android && window.cordova && window.cordova.plugins.Keyboard) {
+            window.cordova.plugins.Keyboard.show();
         }
 
       }
