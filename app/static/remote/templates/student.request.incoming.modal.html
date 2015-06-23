@@ -1,13 +1,13 @@
   <ion-modal-view hide-nav-bar ='true' class='dark-bg incoming-proposal student-incoming-proposal'>
 
-  <ion-content class='white-text dark-bg request-form-tags-offset visible-overflow' scroll='false' >
+  <ion-content class='white-text dark-bg request-form-tags-offset' >
 
 
-        <ion-scroll class='full-height visible-overflow full-height'>
-          <div class='pure-g-c flex-column flex-space-between full-height'  ng-show='!showIncomingProposalDetails'>
+        <!-- <ion-scroll style='margin-top:5%;'> -->
+          <div class='pure-g-c flex-column flex-space-between'  ng-show='!showIncomingProposalDetails'>
               <div class='flex-item-c pure-g j-center'>
                 <!-- 1. create inset list, offset it by -5% margin-top -->
-                <ion-list class='list-inset visible-overflow proposal-card-request no-margin padding-1em' style='padding-bottom:2px;'>
+                <ion-list class='list-inset proposal-card-request no-margin padding-1em' style='padding-bottom:2px;'>
 
                   <!-- 2.  padding 2em h1 format bold, SemiBold, relative-->
                   <ion-item class='padding-2em item-avatar-left' style='padding-bottom:1em;'>
@@ -114,7 +114,7 @@
 
                 </ion-list>
 
-                 <div class='pure-u-1'style='padding-left:1em; padding-right:1em'>
+                 <div class='pure-u-1'style='padding-left:1em; padding-right:1em;'>
                       <button ng-show='incoming_request._type !== 1' class='button button-full button-blue blue-bg button-submit white-text center' ng-click='acceptIncomingGuru()'>
                           <span >
                             Awesome!
@@ -222,7 +222,7 @@
 
 
     </div>
-  </ion-scrolL>
+  <!-- </ion-scrolL> -->
 
 
     </ion-content>

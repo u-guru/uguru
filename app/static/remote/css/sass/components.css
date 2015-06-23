@@ -1416,7 +1416,8 @@ select.current-hourly-price {
     overflow: visible !important; }
 
 .student-incoming-proposal .scroll {
-  height: 100% !important; }
+  margin: 5% 0 5% 0 !important;
+  padding-bottom: 5%; }
 
 .capitalized {
   text-transform: capitalize; }
