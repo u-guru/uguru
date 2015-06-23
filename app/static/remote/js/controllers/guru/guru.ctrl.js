@@ -353,9 +353,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $scope.initAndShowProposalModal();
 
 
-          var processed_time = $scope.processTimeEstimate($scope.proposal.request.time_estimate);
+          // var processed_time = $scope.processTimeEstimate($scope.proposal.request.time_estimate);
 
-          $scope.proposal.request.time_estimate = {hours: processed_time[0], minutes:processed_time[1]};
+          // $scope.proposal.request.time_estimate = {hours: processed_time[0], minutes:processed_time[1]};
 
           // $scope.proposal.request.tags = ['milleniumfalcon'];
 

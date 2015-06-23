@@ -119,7 +119,7 @@ angular.module('uguru.user', [])
                     user.active_requests.push(index_request);
                 }
                 else if (index_request.status === 1) {
-                    if (index_request.guru && index_rating.guru.guru_ratings && index_rating.guru.guru_ratings.length > 0) {
+                    if (index_request.guru && index_request.guru.guru_ratings && index_request.guru.guru_ratings.length > 0) {
                         index_request.guru.guru_avg_rating = parseInt(calcAverage(index_request.guru.guru_ratings));
                     } else if (index_request.guru) {
                         index_request.guru.guru_avg_rating = 0;
