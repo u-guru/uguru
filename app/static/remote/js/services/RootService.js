@@ -9,7 +9,8 @@ angular.module('uguru.root.services', [])
     '$ionicHistory',
     '$ionicViewSwitcher',
     '$state',
-    function($cordovaKeyboard, $localstorage, $timeout, $cordovaProgress, $cordovaDialogs, $ionicHistory, $ionicViewSwitcher, $state) {
+    '$ionicPlatform',
+    function($cordovaKeyboard, $localstorage, $timeout, $cordovaProgress, $cordovaDialogs, $ionicHistory, $ionicViewSwitcher, $state, $ionicPlatform) {
 
     this.util = {
         objectFindByKey: function(array, key, value) {
@@ -157,7 +158,7 @@ angular.module('uguru.root.services', [])
 
         },
         openAndroid: function() {
-            if ($scope.platform.android && window.cordova && window.cordova.plugins.Keyboard) {
+            if (ionic.Platform.isAndroid() && window.cordova && window.cordova.plugins.Keyboard) {
                 window.cordova.plugins.Keyboard.show();
             }
         }

@@ -119,7 +119,11 @@ angular.module('uguru.user', [])
                     user.active_requests.push(index_request);
                 }
                 else if (index_request.status === 1) {
-                    index_request.guru.guru_avg_rating = parseInt(calcAverage(index_request.guru.guru_ratings));
+                    if (index_request.guru && index_rating.guru.guru_ratings && index_rating.guru.guru_ratings.length > 0) {
+                        index_request.guru.guru_avg_rating = parseInt(calcAverage(index_request.guru.guru_ratings));
+                    } else if (index_request.guru) {
+                        index_request.guru.guru_avg_rating = 0;
+                    }
                     index_request = processStudentRequestCalendar(index_request);
                     user.incoming_requests.push(index_request);
                 }
@@ -210,7 +214,7 @@ angular.module('uguru.user', [])
             if (!user.balance) {
                 user.balance = 0;
             } else {
-                Math.round(user.balance, 2);
+                user.balance = parseInt(user.balance);
             }
             if (!user.total_earned) {
                 user.total_earned = 0;
@@ -261,7 +265,9 @@ angular.module('uguru.user', [])
                 for (var i = 0; i < guru_sessions.length; i ++) {
                   var index_session = guru_sessions[i];
                   if (index_session.status === 0 || index_session.status === 1 || index_session.status === 2) {
-                    index_session.student.student_avg_rating = parseInt(calcAverage(index_session.student.student_ratings));
+                    if (index_session.student && index_session.student.student_ratings && index_session.student.student_ratings.length > 0) {
+                        index_session.student.student_avg_rating = parseInt(calcAverage(index_session.student.student_ratings));
+                    }
                     user.active_guru_sessions.push(index_session);
                   } else if (index_session.status === 6 || index_session.status === 7 || index_session.status === 8 ) {
                     user.previous_guru_sessions.push(index_session);
