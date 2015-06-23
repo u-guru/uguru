@@ -793,16 +793,19 @@ class UserRequestView(restful.Resource):
 
                 #send push notification is user has permitted device
                 if guru.push_notifications:
+                    print guru.name, 'has push notifications'
+
                     from app.lib.push_notif import send_student_request_to_guru
                     send_student_request_to_guru(_request, guru)
 
                 if guru.email_notifications and guru.email:
-
+                    print guru.name, 'has email'
                     from app.emails import send_student_request_to_guru
                     send_student_request_to_guru(_request, guru)
 
 
                 if guru.text_notifications and guru.phone_number:
+                    print guru.name, 'has phone number'
                     from app.texts import send_student_request_to_guru
                     send_student_request_to_guru(_request, guru)
         else:
