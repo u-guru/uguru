@@ -52,6 +52,7 @@ angular.module('uguru.util.controllers')
 
             //focus the input
             tags_input.focus();
+            $scope.root.keyboard.openAndroid();
 
             tags_input.addEventListener( 'keyup', function( e ) {
                 if(e.which === 13 && tags_input.value.length > 0) {

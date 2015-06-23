@@ -312,6 +312,7 @@
     $scope.initCardAndFocusInput = function() {
       var payment_input = document.getElementById('card-input');
       payment_input.focus();
+      $scope.root.keyboard.openAndroid();
 
       $scope.card_js = new Card({
           form: document.querySelector('form'),

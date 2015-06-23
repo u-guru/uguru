@@ -22,6 +22,7 @@ angular.module('uguru.util.controllers')
     $scope.setMajorFocus = function(target) {
       if ($scope.major_input.search_text.length === 0 && !$scope.keyboard_force_off) {
         document.getElementById("major-input").focus();
+        $scope.root.keyboard.openAndroid();
       }
     };
 

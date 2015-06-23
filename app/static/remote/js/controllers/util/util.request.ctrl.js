@@ -472,6 +472,7 @@ angular.module('uguru.util.controllers')
       var input = document.getElementById('course-input');
       if (input) {
         input.focus();
+        $scope.root.keyboard.openAndroid();
       }
     }
 
@@ -480,6 +481,7 @@ angular.module('uguru.util.controllers')
       var input = document.getElementById('tags-input');
       if (input) {
         input.focus();
+        $scope.root.keyboard.openAndroid();
       }
     }
 
@@ -496,6 +498,7 @@ angular.module('uguru.util.controllers')
 
         if ($scope.course_search_text.length === 0 && !$scope.keyboard_force_off) {
           document.getElementsByName("course-input")[0].focus();
+          $scope.root.keyboard.openAndroid();
         }
 
 
@@ -647,6 +650,7 @@ angular.module('uguru.util.controllers')
                 if (text && !text.value && text.value.length === 0) {
                   $timeout(function() {
                     text.focus();
+                    $scope.root.keyboard.openAndroid();
                   }, 1000)
                 }
           });
@@ -928,6 +932,7 @@ angular.module('uguru.util.controllers')
                   && !$scope.tagsModal.isShown() && !$scope.availabilityModal.isShown()
                   && !$scope.descriptionModal.isShown()) {
                     course_input.focus();
+                  $scope.root.keyboard.openAndroid();
 
                   }
 

@@ -156,6 +156,11 @@ angular.module('uguru.root.services', [])
             }
 
         },
+        openAndroid: function() {
+            if ($scope.platform.android && window.cordova && window.cordova.plugins.Keyboard) {
+                window.cordova.plugins.Keyboard.show();
+            }
+        }
     }
 
     this.slider = {

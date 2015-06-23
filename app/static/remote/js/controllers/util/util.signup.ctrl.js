@@ -57,11 +57,13 @@ angular.module('uguru.util.controllers')
         var first_name_input = document.getElementById('first-name-input')
           if (first_name_input) {
             first_name_input.focus();
+            $scope.root.keyboard.openAndroid();
           }
         } else {
           var email_input = document.getElementById('email-input')
           if (email_input) {
             email_input.focus();
+            $scope.root.keyboard.openAndroid();
           }
         }
 
@@ -326,6 +328,7 @@ angular.module('uguru.util.controllers')
       if (!formDict.email) {
         $scope.success.show(0,2000,'Please enter your email');
         document.getElementsByName('login-email')[0].focus();
+        $scope.root.keyboard.openAndroid();
         var shake = document.getElementById('input_email_login')
         shake.classList.add('animated', 'shake');
         setTimeout(function() {
@@ -337,6 +340,7 @@ angular.module('uguru.util.controllers')
 
       if (!validateEmail(formDict.email)) {
         document.getElementsByName('login-email')[0].focus();
+        $scope.root.keyboard.openAndroid();
         var shake = document.getElementById('input_email_login')
         shake.classList.add('animated', 'shake');
         setTimeout(function() {
@@ -349,6 +353,7 @@ angular.module('uguru.util.controllers')
 
       if (!formDict.password) {
         document.getElementsByName('login-password')[0].focus();
+        $scope.root.keyboard.openAndroid();
         var shake = document.getElementById('input_password_login')
         shake.classList.add('animated', 'shake');
         setTimeout(function() {
@@ -378,6 +383,7 @@ angular.module('uguru.util.controllers')
       if (!formDict.first_name) {
         $scope.success.show(0,2000,'Please fill in all fields!');
         document.getElementsByName('signup-first-name')[0].focus();
+        $scope.root.keyboard.openAndroid();
         var shake = document.getElementById('input_first')
         shake.classList.add('animated', 'shake');
         setTimeout(function() {
@@ -391,6 +397,7 @@ angular.module('uguru.util.controllers')
       if (!formDict.last_name) {
         $scope.success.show(0,2000,'Please fill in all fields!');
         document.getElementsByName('signup-last-name')[0].focus();
+        $scope.root.keyboard.openAndroid();
         var shake = document.getElementById('input_last')
         shake.classList.add('animated', 'shake');
         setTimeout(function() {
@@ -404,6 +411,7 @@ angular.module('uguru.util.controllers')
       if (!formDict.email) {
         $scope.success.show(0,2000,'Please fill in all fields!');
         document.getElementsByName('signup-email')[0].focus();
+        $scope.root.keyboard.openAndroid();
         var shake = document.getElementById('input_email')
         shake.classList.add('animated', 'shake');
         setTimeout(function() {
@@ -415,6 +423,7 @@ angular.module('uguru.util.controllers')
       if (!validateEmail(formDict.email)) {
         $scope.success.show(0,2000,'Please fill in all fields!');
         document.getElementsByName('signup-email')[0].focus();
+        $scope.root.keyboard.openAndroid();
         var shake = document.getElementById('input_email')
         shake.classList.add('animated', 'shake');
         setTimeout(function() {
@@ -429,6 +438,7 @@ angular.module('uguru.util.controllers')
         $scope.success.show(0,2000,'Please fill in all fields!');
         $scope.user.password = $scope.signupForm.password;
         document.getElementsByName('signup-password')[0].focus();
+        $scope.root.keyboard.openAndroid();
         var shake = document.getElementById('input_password')
         shake.classList.add('animated', 'shake');
         setTimeout(function() {
@@ -605,11 +615,13 @@ angular.module('uguru.util.controllers')
         var first_name_input = document.getElementById('first-name-input')
         if (first_name_input) {
           first_name_input.focus();
+          $scope.root.keyboard.openAndroid();
         }
       } else {
         var email_input = document.getElementById('email-input')
         if (email_input) {
           email_input.focus();
+          $scope.root.keyboard.openAndroid();
         }
       }
     });
@@ -625,6 +637,7 @@ angular.module('uguru.util.controllers')
               if (first_name_input) {
                 $timeout(function() {
                   first_name_input.focus();
+                  $scope.root.keyboard.openAndroid();
                 }, 500)
               }
             } else {
@@ -632,6 +645,7 @@ angular.module('uguru.util.controllers')
               if (email_input) {
                 $timeout(function() {
                   email_input.focus();
+                  $scope.root.keyboard.openAndroid();
                 }, 500)
               }
             }

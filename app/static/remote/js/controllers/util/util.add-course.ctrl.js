@@ -39,6 +39,7 @@ angular.module('uguru.util.controllers')
 
       if ($scope.course_search_text.length === 0 && !$scope.keyboard_force_off) {
         document.getElementsByName("course-input")[0].focus();
+        $scope.root.keyboard.openAndroid();
       }
 
       if ($scope.platform && $scope.platform.android) {
