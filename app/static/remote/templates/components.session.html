@@ -30,7 +30,7 @@
 </div>
 
 
-<ion-content class='white-bg ng-class:{"has-subheader":session.messages}' ng-show='details.show'>
+<ion-content class='dirty-white-bg ng-class:{"has-subheader":session.messages}' ng-show='details.show'>
       <div class='pure-g'>
           <ion-list class='pure-u-1'>
 
@@ -75,10 +75,10 @@
               <p class='inline black' style='padding-left:1em'> {{session.request.address}} </p>
             </ion-item>
 
-            <div class='item item-divider'>
+            <div class='item item-divider' ng-show='(session.request.description && session.request.description.length > 0) || (session.request.files && session.request.files.length > 0) || (session.request.tags && session.request.tags.length > 0) '>
             </div>
 
-            <ion-item>
+            <ion-item ng-show='session.request.description && session.request.description.length > 0'>
               <p class='pico-text white-space-normal'> {{session.request.description}} </p>
               <div class='pure-u-1'>
                 <div class='pure-u-1-3 session-details-img-wrapper padding-right-half padding-top-half' ng-repeat='file in session.request.files'>
@@ -87,7 +87,7 @@
               </div>
             </ion-item>
 
-            <ion-item class='item-icon-left'>
+            <ion-item class='item-icon-left' ng-show='session.request.tags && session.request.tags.length > 0'>
               <img style='margin-top:0.4em; left:24px; top:5px;'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/tags.svg'>
               <p>&nbsp;<span class='blue request-tag' ng-repeat='tag in session.request.tags'>#{{tag.name}} </span> </p>
             </ion-item>

@@ -192,9 +192,9 @@
               <div class='active-request-card-item-wrapper' ng-repeat='request in user.active_requests'>
                 <ion-item class='item-avatar request-card-item' on-hold="cancelRequest(request)" ng-click='goToPendingRequestDetails(request)'>
                   <img class='pure-img' ng-src='{{img_base}}./img/verbs/{{request.verb_image}}' />
-                  <div class='request-card-content relative'>
-                    <p class='course-text relative'>
-                      <span ng-show='request._type === 0 || request._type === 1'>
+                  <div class='request-card-content'>
+                    <p class='course-text'>
+                      <span ng-class="ng-class: {'card-font-small': proposal.request.course.short_name.length > 8 && proposal.request.course.short_name.length < 11, 'card-font-xs': proposal.request.course.short_name.length >= 11}" ng-show='request._type === 0 || request._type === 1'>
                         {{request.course.short_name}}
                       </span>
                       <span ng-show='request._type === 2' class='transform-capitalize'>

@@ -585,7 +585,7 @@ p.request-description {
   font-size: 0.7em; }
 
 .request-tag-status {
-  font-size: 0.5em;
+  font-size: 40%;
   font-family: "OpenSans-Bold";
   color: #FAB96C;
   border: 1px solid #FAB96C;
@@ -593,8 +593,8 @@ p.request-description {
   position: absolute;
   line-height: 1em;
   border-radius: 2px;
-  margin-top: 8px;
-  margin-left: 10px;
+  right: 1%;
+  margin-top: 4%;
   opacity: 1; }
 
 .request-tag-status-completed {
@@ -1192,9 +1192,6 @@ p.university-header {
 .slider-pager .slider-pager-page.active {
   color: white; }
 
-.slider-pager .slider-pager-page {
-  opacity: 1; }
-
 .opacity-1-4 {
   opacity: 0.25 !important; }
 
@@ -1416,7 +1413,7 @@ select.current-hourly-price {
     overflow: visible !important; }
 
 .student-incoming-proposal .scroll {
-  margin: 5% 0 5% 0 !important;
+  margin: 1em 0 1em 0 !important;
   padding-bottom: 5%; }
 
 .capitalized {
@@ -1505,3 +1502,15 @@ select.current-hourly-price {
 
 .platform-ios .tasks .has-header {
   margin-top: 25px !important; }
+
+.dirty-white-bg {
+  background-color: rgba(0, 0, 0, 0.04); }
+
+.guru-pending-proposal-card {
+  padding-bottom: 5%; }
+
+.card-font-xs {
+  font-size: 70%; }
+
+.card-font-small {
+  font-size: 85%; }

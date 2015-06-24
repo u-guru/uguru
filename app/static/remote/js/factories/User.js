@@ -14,6 +14,10 @@ angular.module('uguru.user', [])
     }
 
     var calcAverage = function(ratings_arr) {
+                if (!ratings_arr) {
+                    return;
+                }
+
                 if (ratings_arr.length === 0)  {
                     return 0;
                 }
@@ -298,6 +302,7 @@ angular.module('uguru.user', [])
                         user.active_tasks.push(index_proposal);
                     } else
                     if (index_proposal.status === 2) {
+                        console.log('pending proposal', index_proposal);
                         user.pending_proposals.push(index_proposal);
                     }
                 }
@@ -775,7 +780,7 @@ angular.module('uguru.user', [])
                             callback($scope);
                         }
 
-                        if ($scope.user && $scope.root.vars.guru_mode
+                        if ($scope.user && $scope.root.vars.guru_mode && $scope.user.active_guru_sessions
                             && ($scope.user.active_guru_sessions.length > 0 || $scope.user.pending_student_ratings.length > 0)
                             && $scope.launchPendingActions) {
 

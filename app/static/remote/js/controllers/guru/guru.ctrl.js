@@ -558,7 +558,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
             }
 
-            if ($scope.user && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
+            if ($scope.user && $scope.user.active_guru_sessions &&  ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
 
 
 

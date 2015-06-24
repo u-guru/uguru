@@ -1,13 +1,13 @@
   <ion-modal-view hide-nav-bar ='true' class='dark-bg incoming-proposal student-incoming-proposal'>
 
-  <ion-content class='white-text dark-bg request-form-tags-offset' >
+  <ion-content class='white-text dark-bg request-form-tags-offset full-height visible-overflow' style='margin-top:5%'>
 
 
         <!-- <ion-scroll style='margin-top:5%;'> -->
           <div class='pure-g-c flex-column flex-space-between'  ng-show='!showIncomingProposalDetails'>
-              <div class='flex-item-c pure-g j-center'>
+              <div class='flex-item-c pure-g'>
                 <!-- 1. create inset list, offset it by -5% margin-top -->
-                <ion-list class='list-inset proposal-card-request no-margin padding-1em' style='padding-bottom:2px;'>
+                <ion-list class='list-inset proposal-card-request' style='padding-bottom:2px;'>
 
                   <!-- 2.  padding 2em h1 format bold, SemiBold, relative-->
                   <ion-item class='padding-2em item-avatar-left' style='padding-bottom:1em;'>
@@ -147,6 +147,7 @@
 
               <!-- </div> -->
             </div>
+          </div>
 
               <div class='pure-g-c flex-column flex-space-between' ng-show='showIncomingProposalDetails' ng-click='showIncomingProposalDetails = false;'>
                 <div class='flex-item-c pure-g'>
@@ -214,14 +215,14 @@
                   </ion-list>
 
               </div>
-
-<!--
+            </div>
+<!--  </div
         <div class='flex-item-c pure-g j-start'>
 
         </div> -->
 
 
-    </div>
+
   <!-- </ion-scrolL> -->
 
 

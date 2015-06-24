@@ -876,7 +876,7 @@ p.request-description {
     }
 
 .request-tag-status {
-    font-size: 0.5em;
+    font-size: 40%;
     font-family: "OpenSans-Bold";
     color: $orange;
     border: 1px solid $orange;
@@ -884,8 +884,8 @@ p.request-description {
     position: absolute;
     line-height: 1em;
     border-radius: 2px;
-    margin-top: 8px;
-    margin-left: 10px;
+    right:1%;
+    margin-top:4%;
     opacity:1;
 }
 
@@ -1696,9 +1696,9 @@ p.university-header {
     color:white;
 }
 
-.slider-pager .slider-pager-page {
-    opacity:1;
-}
+// .slider-pager .slider-pager-page {
+//     opacity:1;
+// }
 
 .opacity-1-4 {
     opacity:0.25 !important;
@@ -1993,7 +1993,7 @@ position: absolute;
 }
 
 .student-incoming-proposal .scroll {
-    margin:5% 0 5% 0 !important;
+    margin:1em 0 1em 0 !important;
     padding-bottom:5%;
 }
 
@@ -2106,4 +2106,20 @@ position: absolute;
 .platform-ios .tasks .has-header
 {
     margin-top:25px !important;
+}
+
+.dirty-white-bg {
+    background-color: rgba(0,0,0,0.04);
+}
+
+.guru-pending-proposal-card {
+    padding-bottom:5%;
+}
+
+.card-font-xs {
+    font-size: 70%;
+}
+
+.card-font-small {
+    font-size: 85%;
 }

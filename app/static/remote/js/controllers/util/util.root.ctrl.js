@@ -335,10 +335,7 @@ angular.module('uguru.util.controllers')
                       'push_notifications': false
                     }
                 $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
-                $scope.user.current_device.push_notif = 'test';
-                $scope.user.current_device.push_notif_enabled = true;
-                $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
-                // alert('Please turn your Push Notifications ON in your settings.');
+                alert('Please turn your Push Notifications ON in your settings.');
               });
             };
 
