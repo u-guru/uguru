@@ -1059,7 +1059,6 @@ class Proposal(Base):
 
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
-        uselist=False,
         primaryjoin = "User.id == Proposal.guru_id",
         backref="proposals"
     )

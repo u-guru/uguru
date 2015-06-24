@@ -81,6 +81,7 @@ angular.module('uguru.user', [])
         user.incoming_requests = [];
         user.active_tasks = [];
         user.previous_requests = [];
+        user.pending_proposals = [];
         user.previous_proposals = [];
         user.active_student_sessions = [];
         user.previous_student_sessions = [];
@@ -780,24 +781,34 @@ angular.module('uguru.user', [])
                             callback($scope);
                         }
 
-                        if ($scope.user && $scope.root.vars.guru_mode && $scope.user.active_guru_sessions
-                            && ($scope.user.active_guru_sessions.length > 0 || $scope.user.pending_student_ratings.length > 0)
-                            && $scope.launchPendingActions) {
-
-
-
-                              $scope.launchPendingActions();
-
+                        if ($scope.user && $scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
+                            console.log('incoming request exists');
+                            $scope.root.vars.processIncomingRequests($scope.user.incoming_requests);
                         }
 
-                        if ($scope.user && !$scope.root.vars.guru_mode
-                            && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)
-                            && $scope.launchPendingActions) {
+                         if ($scope.user && $scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
+                            console.log('active proposal exists');
+                            $scope.root.vars.processActiveProposalsGuru($scope.user.active_proposals);
+                         }
+
+                        // if ($scope.user && $scope.root.vars.guru_mode && $scope.user.active_guru_sessions
+                        //     && ($scope.user.active_guru_sessions.length > 0 || $scope.user.pending_student_ratings.length > 0)
+                        //     && $scope.launchPendingActions) {
 
 
-                              $scope.launchPendingActions();
 
-                        }
+                        //       $scope.launchPendingActions();
+
+                        // }
+
+                        // if ($scope.user && !$scope.root.vars.guru_mode
+                        //     && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)
+                        //     && $scope.launchPendingActions) {
+
+
+                        //       $scope.launchPendingActions();
+
+                        // }
 
                     }
 
@@ -934,6 +945,10 @@ angular.module('uguru.user', [])
                     .customPOST(JSON.stringify(payload))
                     .then(function(user){
                         var processed_user = processResults(user.plain())
+
+                        assignPropertiesToRootScope($scope, processed_user)
+                        delegateActionsFromProcessedUser($scope);
+
                         $localstorage.setObject('user', processed_user);
                         console.log('student has accepted guru');
                         console.log(processed_user)

@@ -534,7 +534,7 @@ class UserOneView(restful.Resource):
         user.student_sessions = []
         user.guru_sessions = []
         user.proposals = []
-        user.guru_courses = []
+        # user.guru_courses = []
         user.majors = []
         user.student_ratings = []
         user.guru_ratings = []
@@ -545,6 +545,14 @@ class UserOneView(restful.Resource):
 
         if user.proposals:
             user.proposals = []
+
+        for proposal in Proposal.query.all():
+            if proposal.guru_id == user.id:
+                proposal.guru_id = None
+                if proposal in user.proposals:
+                    user.proposals.remove(proposal)
+        db_session.commit()
+
 
 
         u = University.query.filter_by(name='Uguru University').first()
@@ -1223,6 +1231,7 @@ class UserSessionView(restful.Resource):
         #non-recurring session
         session_json = request.json
         _request = Request.query.get(request.json.get('id'))
+        _request.selected_proposal.status = 5
         _request.guru = User.query.get(request.json.get('guru_id'))
         _request.status = Request.STUDENT_ACCEPTED_GURU
         session_json['student_id'] = _request.student_id
@@ -1234,10 +1243,19 @@ class UserSessionView(restful.Resource):
         #create a session
         session = Session.initFromJson(session_json, True)
 
+        guru_json = request.json.get('guru')
+        guru_id = None
+        if guru_json:
+            guru_id = guru_json.get('id')
+
+        print 'guru found',
+
         #update the proposal from the request
         for proposal in _request.proposals:
-            if proposal.guru_id == _request.guru_id:
-                proposal.status = Proposal.GURU_CHOSEN
+
+            if proposal.guru_id == _request.guru_id or proposal.guru_id == guru_id:
+                print 'yee guru found', proposal.guru_id
+                proposal.status = 5
                 event_dict = {'status': Proposal.GURU_CHOSEN, 'proposal_id':proposal.id}
                 event = Event.initFromDict(event_dict)
                 break

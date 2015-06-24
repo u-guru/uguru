@@ -194,7 +194,7 @@
                   <img class='pure-img' ng-src='{{img_base}}./img/verbs/{{request.verb_image}}' />
                   <div class='request-card-content'>
                     <p class='course-text'>
-                      <span ng-class="ng-class: {'card-font-small': request.course.short_name.length > 8 && request.course.short_name.length < 11, 'card-font-xs': request.course.short_name.length >= 11}" ng-show='request._type === 0 || request._type === 1'>
+                      <span class="ng-class: {'card-font-small': request.course.short_name.length > 8 && request.course.short_name.length < 11, 'card-font-xs': request.course.short_name.length >= 11}" ng-show='request._type === 0 || request._type === 1'>
                         {{request.course.short_name}}
                       </span>
                       <span ng-show='request._type === 2' class='transform-capitalize'>

@@ -423,7 +423,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     }
 
-    $scope.processIncomingRequests = function(incoming_requests) {
+    $scope.root.vars.processIncomingRequests = function(incoming_requests) {
 
       if (incoming_requests.length === 0) {
         return;
@@ -465,6 +465,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }, 2500);
 
     }
+
+    $scope.processIncomingRequests = $scope.root.vars.processIncomingRequests;
+
+
 
      $scope.createGoogleLatLng = function(latCoord, longCoord) {
             return new google.maps.LatLng(latCoord, longCoord);
@@ -526,8 +530,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.loader.show()
 
         var closeModalAndShowSessionStatus = function($scope, $state) {
-          $scope.loader.hide();
-          $scope.incomingGuruModal.hide();
+          console.log('closing modal call back from student accept guru')
+          $timeout(function() {
+            $scope.incomingGuruModal.hide();
+          }, 500);
+          $timeout(function() {
+            $scope.loader.hide();
+          }, 1000);
         }
 
         $scope.user.createObj($scope.user, 'sessions', $scope.incoming_request, $scope, closeModalAndShowSessionStatus);

@@ -401,6 +401,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }, 2000)
       }
 
+      console.log($scope.user);
 
 
       $scope.acceptIncomingStudentProposal = function() {
@@ -417,18 +418,23 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $scope.user.pending_proposals = [];
         }
 
-        $scope.user.pending_proposals.push(proposalObj);
+        // $scope.user.pending_proposals.push(proposalObj);
+
+        var closeModalAfterUpdate = function($scope, $state) {
+          $timeout(function() {
+            $scope.incomingStudentSessionProposal.hide();
+          }, 500)
+          $timeout(function() {
+            $scope.loader.hide();
+          }, 1000)
+        }
 
 
-        $scope.user.updateObj($scope.user, 'requests', proposalObj, $scope);
+        $scope.user.updateObj($scope.user, 'requests', proposalObj, $scope, closeModalAfterUpdate);
 
         alert("Student request accepted. We'll let you know if they choose you! \n See below for progress");
+        $scope.loader.show();
           //Mixpanel Track
-
-
-
-        $scope.incomingStudentSessionProposal.hide();
-
 
         //timeout
         $timeout(function() {
@@ -559,31 +565,33 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.$on('$ionicView.enter', function() {
             console.log('checking for pending actions...');
             //user has incoming request for help
-            if ($scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
+            // if ($scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
 
 
-                    $scope.processActiveProposalsGuru($scope.user.active_proposals);
+            //         $scope.processActiveProposalsGuru($scope.user.active_proposals);
 
 
-            }
+            // }
 
-            if ($scope.user.active_tasks && $scope.user.active_tasks.length > 0) {
-
-
-                    $scope.processActiveProposalsGuru($scope.user.active_tasks);
+            // if ($scope.user.active_tasks && $scope.user.active_tasks.length > 0) {
 
 
-            }
-
-            if ($scope.user && $scope.user.active_guru_sessions &&  ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
+            //         $scope.processActiveProposalsGuru($scope.user.active_tasks);
 
 
+            // }
 
-                    $scope.launchPendingActions();
-                    //check to see if any of the guru sessions are active
+            // if ($scope.user && $scope.user.active_guru_sessions &&  ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
 
 
-            }
+
+            //         $scope.launchPendingActions();
+            //         //check to see if any of the guru sessions are active
+
+
+            // }
+
+            $scope.doRefresh();
 
         });
 
@@ -598,7 +606,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
           }
 
-          if ($scope.user && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
+          if ($scope.user && $scope.user.active_guru_sessions && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
 
 
 
