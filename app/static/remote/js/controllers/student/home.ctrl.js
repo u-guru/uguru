@@ -429,7 +429,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         return;
       }
 
+      if ($scope.root.vars.active_processing) {
+        console.log('we have already began processing');
+        return;
+      }
 
+      $scope.root.vars.active_processing = true;
       //get first one out of array
       var incoming_request = incoming_requests[0];
       console.log(incoming_request);
@@ -439,6 +444,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       //get first one out of array
       $scope.incoming_request = incoming_request;
+
+      $scope.success.show(0, 2500, '<span class="center">You have 1 new request <br> Loading....  </span>')
 
       //get first one out of array
       $timeout(function() {
@@ -452,7 +459,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         // $scope.incoming_request.tags = ['milleniumfalcon'];
 
-      }, 500);
+        $scope.root.vars.active_processing = false;
+
+
+      }, 2500);
 
     }
 
@@ -674,24 +684,19 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
      $scope.$on('$ionicView.enter', function() {
-
+        console.log('\n\nview has entered\n\n')
         //user has incoming request for help
         if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
-          $timeout(function() {
             $scope.processIncomingRequests($scope.user.incoming_requests);
-          }, 500)
         }
 
         //student specific functions
         if ($scope.user && $scope.user.active_student_sessions
           && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
 
-                console.log('checking for user actions...');
                 $scope.launchPendingActions();
 
         }
-
-        // $scope.launchPendingActions();
 
     });
 
@@ -700,12 +705,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     document.addEventListener("resume", function() {
 
 
-        console.log('device resumed... checking student actions');
+        console.log('\n\nview has resumed\n\n')
 
         if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
-          $timeout(function() {
+
             $scope.processIncomingRequests($scope.user.incoming_requests);
-          }, 500)
         }
 
         //student specific functions

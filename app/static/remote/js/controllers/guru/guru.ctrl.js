@@ -342,16 +342,31 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       $scope.processActiveProposalsGuru = function(active_proposals) {
         console.log(active_proposals);
-          if (active_proposals.length === 0) {
+          if (active_proposals.length === 0 || !$scope.root.vars.guru_mode) {
             return;
           }
 
+          if ($scope.root.vars.active_processing_guru) {
+            console.log('we have already began processing');
+            return;
+          }
+
+          $scope.root.vars.active_processing_guru = true;
+
           var first_proposal = active_proposals[0];
+          console.log($scope.user, active_proposals)
           active_proposals.shift();
           $scope.featuredProposal = first_proposal;
           $scope.proposal = $scope.featuredProposal;
-          $scope.initAndShowProposalModal();
 
+
+
+
+          $scope.success.show(0, 2500, '<span class="center">You have 1 new request <br> Loading....  </span>')
+
+          $timeout(function() {
+            $scope.initAndShowProposalModal();
+          }, 2000);
 
           // var processed_time = $scope.processTimeEstimate($scope.proposal.request.time_estimate);
 
@@ -360,6 +375,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           // $scope.proposal.request.tags = ['milleniumfalcon'];
 
       }
+
+      $scope.root.vars.processActiveProposalsGuru = $scope.processActiveProposalsGuru;
 
       $scope.processTimeEstimate = function(minutes) {
         num_hours = Math.floor(Math.round((minutes / 60.0) * 100) / 100);

@@ -231,25 +231,9 @@ angular.module('uguru.util.controllers')
             }
           }
 
-          //if previous in guru mode
-          if ($scope.user.guru_mode) {
 
-            $scope.loader.show();
-            $ionicViewSwitcher.nextDirection('enter');
-            $state.go('^.guru');
-            $timeout(function() {
-              $scope.loader.hide();
-            }, 1000);
 
-          }
-          else if ($scope.user && $scope.user.university_id) {
-            $scope.loader.show();
-            $ionicViewSwitcher.nextDirection('enter');
-            $state.go('^.home');
-            $timeout(function() {
-              $scope.loader.hide();
-            }, 1000);
-          }
+
 
 
           $scope.doRefresh = function(repeat) {
@@ -592,6 +576,43 @@ angular.module('uguru.util.controllers')
               // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
             }, false);
           });
+
+
+          //if student has any active sessions even if they are in guru mode
+          if ($scope.user && (
+              ($scope.user.incoming_requests &&
+                $scope.user.incoming_requests.length>0) ||
+                ($scope.user.active_student_sessions &&
+                  $scope.user.active_student_sessions.length > 0))
+              ) {
+              $ionicViewSwitcher.nextDirection('enter');
+              $state.go('^.home');
+          } else if (($scope.user.active_proposals && $scope.user.active_proposals.length > 0) ||
+          $scope.user.active_guru_sessions && $scope.user.active_guru_sessions.length > 0 )
+          {
+            $ionicViewSwitcher.nextDirection('enter');
+            $state.go('^.guru')
+
+          }
+        //if previous in guru mode
+          else if ($scope.user && $scope.user.guru_mode) {
+
+            $scope.loader.show();
+            $ionicViewSwitcher.nextDirection('enter');
+            $state.go('^.guru');
+            $timeout(function() {
+              $scope.loader.hide();
+            }, 1000);
+
+          }
+          else if ($scope.user && $scope.user.university_id) {
+            $scope.loader.show();
+            $ionicViewSwitcher.nextDirection('enter');
+            $state.go('^.home');
+            $timeout(function() {
+              $scope.loader.hide();
+            }, 1000);
+          }
 
 
 
