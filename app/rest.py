@@ -132,6 +132,15 @@ class OneDeviceView(restful.Resource):
                 new_device.user.current_device = new_device
                 db_session.commit()
 
+            if request.json.get('user_id') and not new_device.user_id:
+                print 'adding device for this user'
+                user = User.query.get(int(request.json.get('user_id')))
+                if user and not new_device in user.devices:
+                    print user
+                    new_device.user_id = user.id
+                    db_session.commit()
+
+
             return new_device, 200
 
 
