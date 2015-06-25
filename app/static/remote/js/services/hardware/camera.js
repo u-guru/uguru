@@ -18,7 +18,7 @@ angular.module('uguru.root.services')
     function($localstorage, $timeout, $cordovaCamera, $state) {
 
         deviceCamera = {
-                    takePicture: function($scope, index, callbackSuccess) {
+                    takePicture: function($scope, index, has_callback) {
 
                       if ($scope.platform.mobile) {
                         var source_type = 1;
@@ -40,8 +40,15 @@ angular.module('uguru.root.services')
                           //guru profile
                           // guru profile #2
                           //student profile #1
+                          var callbackSuccess;
 
+                          if (has_callback) {
+                            $scope.loader.show();
 
+                            var callbackSuccess = function() {
+                              $scope.loader.hide();
+                            }
+                          }
 
 
 

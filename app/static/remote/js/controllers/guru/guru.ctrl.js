@@ -84,6 +84,56 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
     }
 
+    $scope.cancelActiveSession = function(session) {
+      console.log('calling cancel');
+
+
+
+      var canceled_session = session;
+
+      var dialogCallBackSuccess = function() {
+        //guru cancels session
+        canceled_session.status = 5;
+
+        var sessionPayload = {session: canceled_session}
+
+        $scope.user.previous_guru_sessions.push(canceled_session);
+
+        //remove session locally from active guru session
+        $scope.root.util.removeObjectByKey($scope.user.active_guru_sessions, 'id', canceled_session.id);
+
+        //update session locally
+        $scope.root.util.updateObjectByKey($scope.user.guru_sessions, 'id', canceled_session.id, 'status', 5);
+          //Mixpanel Track
+
+        $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope);
+
+        $scope.success.show(0, 2000, 'Request successfully canceled');
+
+        $scope.closeAttachActionSheet();
+
+        $scope.goBack();
+      }
+
+      var dialog = {
+        message: "Are you sure? This will be closely investigated by us and may impact your Guru ranking.",
+        title: "Cancel Session",
+        button_arr: ['Never Mind', 'Cancel Session'],
+        callback_arr: [null, dialogCallBackSuccess]
+      }
+
+      if ($scope.platform.web) {
+        if (confirm('Are you sure? \n' + dialog.message)) {
+            dialogCallBackSuccess();
+        }
+      }
+
+      else {
+          $scope.root.dialog.confirm(dialog.message, dialog.title, dialog.button_arr, dialog.callback_arr);
+      }
+
+    }
+
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/guru.in-session.modal.html', {
             scope: $scope,
@@ -340,7 +390,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
       }
 
-      $scope.processActiveProposalsGuru = function(active_proposals) {
+      $scope.root.vars.processActiveProposalsGuru = function(active_proposals) {
         console.log(active_proposals);
           if (active_proposals.length === 0 || !$scope.root.vars.guru_mode) {
             return;
@@ -376,7 +426,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       }
 
-      $scope.root.vars.processActiveProposalsGuru = $scope.processActiveProposalsGuru;
+      $scope.processActiveProposalsGuru = $scope.root.vars.processActiveProposalsGuru;
 
       $scope.processTimeEstimate = function(minutes) {
         num_hours = Math.floor(Math.round((minutes / 60.0) * 100) / 100);
@@ -619,15 +669,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         }, false);
 
-
-        // $timeout(function() {
-
-
-        //     $ionicViewSwitcher.nextDirection('swap')
-        //     $state.go('^.guru-tasks');
-
-
-        // }, 500);
 
 
 

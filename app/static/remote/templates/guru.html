@@ -24,7 +24,7 @@
 <ion-content class='white-bg has-subheader dirty-white-bg' scroll='false'>
 
     <!-- the initial i have no tasks screen -->
-    <div class='pure-g-c flex-column flex-space-between' ng-hide='((user.pending_proposals && user.pending_proposals.length > 0)) || !showActive' style='padding-bottom:65px;' >
+    <div class='pure-g-c flex-column flex-space-between' ng-hide='((user.pending_proposals && user.pending_proposals.length > 0)) || !showActive || (user.active_guru_sessions && user.active_guru_sessions.length > 0)' style='padding-bottom:65px;' >
 
 
         <div class='flex-item-c j-end center'>
@@ -74,7 +74,7 @@
                       <div class='request-card-content relative'>
                         <p class='course-text relative'>
                           <span ng-show='proposal.request._type === 0 || proposal.request._type === 1'>
-                            {{request.course.short_name}}
+                            {{proposal.request.course.short_name}}
                           </span>
                           <span ng-show='proposal.request._type === 2' class='transform-capitalize'>
                             {{proposal.request.task_title}}
@@ -149,7 +149,7 @@
                   <!-- <i class='icon ion-chevron-right icon-small'> </i> -->
                 </ion-item>
 
-                <ion-item class='item-wrap-text' on-hold="cancelProposal(proposal)" ng-click='goToPendingRequestDetails(proposal.request)' ng-show='(proposal.request._type === 0 || proposal.request._type === 1) && (proposal.request.student_calendar[0].calendar_events[0].formatted || proposal.request.description.length > 0)'>
+                <ion-item class='item-wrap-text' on-hold="cancelProposal(proposal)" ng-click='goToProposalRequestDetails(proposal)' ng-show='(proposal.request._type === 0 || proposal.request._type === 1) && (proposal.request.student_calendar[0].calendar_events[0].formatted || proposal.request.description.length > 0)'>
                 <!-- <ion-item class='item-avatar item-wrap-text'> -->
                   <p class='request-description white-space-normal' ng-show='proposal.request._type === 0'>
 
@@ -210,9 +210,8 @@
 
 
         <div class='pure-g'>
-        <!-- <div class='flex-item-c pure-g'> -->
           <!-- 1. create inset list, offset it by -5% margin-top -->
-          <ion-list class='list-inset visible-overflow pure-u-1' style='margin-top:-5%; margin-bottom:10%; margin:0em !important; padding:1em; padding-top:10%;' ng-repeat='session in user.active_guru_sessions' ng-click='goToSessionDetails(session);'>
+          <ion-list class='list-inset visible-overflow pure-u-1' style='margin-top:-5%; margin-bottom:10%; margin:0em !important; padding:1em; padding-top:10%;' on-hold='cancelActiveSession(session)'ng-repeat='session in user.active_guru_sessions' ng-click='goToSessionDetails(session);'>
 
             <!-- 2.  padding 2em h1 format bold, SemiBold, relative-->
             <ion-item class='padding-2em absolute padding-vertical-1em float-center visible-overflow center'>

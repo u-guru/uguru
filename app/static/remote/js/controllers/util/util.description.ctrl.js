@@ -21,7 +21,11 @@ angular.module('uguru.util.controllers')
 
     $scope.takePhoto = function(index) {
       if ($scope.platform.mobile) {
-        Camera.takePicture($scope, index);
+
+
+
+
+        Camera.takePicture($scope, index, true);
       } else {
         var element = document.getElementById('file-input-web')
         element.click();
@@ -165,7 +169,13 @@ angular.module('uguru.util.controllers')
 
         // }, 3000);
 
-        $scope.user.createObj($scope.user, 'files', formData, $scope);
+      $scope.loader.show();
+
+      var callbackSuccess = function() {
+        $scope.loader.hide();
+      }
+
+        $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
     };
 
   }
