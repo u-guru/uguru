@@ -13,7 +13,14 @@
 
 <ion-content>
     <ion-scroll class='has-header'>
-              <div class='container' style='padding-left:1em; padding-right:1em'>
+          <div class='pure-g'>
+            <div class='pure-u-1 padding-1em center'>
+              <button class='button button-full button-black micro-text fb-blue-bg'  ng-click='signupFacebook()'>Continue with Facebook</button>
+              <br>
+              <a class='center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();'> Or </a>
+            </div>
+          </div>
+              <div class='container' style='padding-left:1em; padding-right:1em; opacity:0.5' ng-click='this.style.opacity = 0.1;'>
                 <div class='pure-g'>
                   <div class='pure-u-1-2' ng-show='!loginMode'>
                     <label class="item item-input item-icon-right">
@@ -57,7 +64,7 @@
 
                 <div class='pure-u-1 padding-half' style='font-size:150%; opacity:0.5;margin-top:-0.5em;' >
                   <div class='pure-u-1 padding-half center' id="E2E_SwitchLog" ng-show='user && !user.id'>
-                      <a class='button button-full button-stable-outlined center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='!loginMode'> or Login Here </a>
+                      <a class='button button-full button-stable-outlined center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='!loginMode'> Already have an account? </a>
                       <a class='button button-full button-stable-outlined center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='loginMode'> or Sign Up Here </a>
                   </div>
                 </div>

@@ -146,10 +146,10 @@
 
 
 
-        <div ng-show='user.active_student_sessions && user.active_student_sessions.length > 0' class='padding-1em'>
+        <div ng-show='user.active_student_sessions && user.active_student_sessions.length > 0'  class='padding-1em'>
 
                   <!-- for upcoming sessions for a tutor and guru that have been matched -->
-                  <ion-list class='list-inset visible-overflow' ng-repeat='session in user.active_student_sessions' ng-click='goToSessionDetails(session);'>
+                  <ion-list class='list-inset visible-overflow' on-hold="cancelActiveSession(session)" ng-repeat='session in user.active_student_sessions' ng-click='goToSessionDetails(session);'>
 
                       <!-- 2.  padding 2em h1 format bold, SemiBold, relative-->
                       <ion-item class='padding-2em absolute padding-vertical-1em float-center visible-overflow center'>

@@ -486,7 +486,10 @@ angular.module('uguru.util.controllers')
 
 
           $scope.toggleAccountView();
-          $ionicSideMenuDelegate.toggleRight();
+
+          if ($state.current.name === 'root.home') {
+            $ionicSideMenuDelegate.toggleRight();
+          }
 
 
       }, function(err) {
@@ -537,7 +540,9 @@ angular.module('uguru.util.controllers')
             $scope.success.show(0, 2000, 'Signup Successful!');
             $scope.show_account_fields = false;
             $timeout(function() {
-              $ionicSideMenuDelegate.toggleRight();
+              if ($state.current.name === 'root.home') {
+                $ionicSideMenuDelegate.toggleRight();
+              }
             }, 500)
           }
 

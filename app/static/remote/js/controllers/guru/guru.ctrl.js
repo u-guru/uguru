@@ -414,9 +414,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         $scope.deleteProposalFromList($scope.proposal, $scope.user.active_proposals);
 
-        if (!$scope.user.pending_proposals) {
-          $scope.user.pending_proposals = [];
-        }
+        // if (!$scope.user.pending_proposals) {
+        //   $scope.user.pending_proposals = [];
+        // }
 
         // $scope.user.pending_proposals.push(proposalObj);
 

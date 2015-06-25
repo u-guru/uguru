@@ -88,7 +88,9 @@
           <a ng-hide='progress || !request_fields.show_estimate' ng-blur='toggleAvailability()' ng-click='toggleAvailability()' class='item request-form-item'>
             <p class='inline'> How much time do you need?
             </p>
-            <p class='align-right blue item-right-text'>{{request.time_estimate.hours}} hours <span ng-show='request.time_estimate.minutes > 0'>{{request.time_estimate.minutes}} min</span></p>
+            <p ng-show='request.time_estimate.hours && !request.time_estimate.minutes' class='align-right blue item-right-text'>{{request.time_estimate.hours}} hours <span ng-show='request.time_estimate.minutes > 0'>{{request.time_estimate.minutes}} min</span></p>
+
+            <p ng-show='request.time_estimate.hours && request.time_estimate.minutes' class='align-right blue item-right-text'>{{request.time_estimate.hours}}hr <span ng-show='request.time_estimate.minutes > 0'>{{request.time_estimate.minutes}}m</span></p>
           </a>
 
           <ion-item  ng-show='request.availability_edit && !progress' class='scroll-availability-section relative item request-form-item' data-tap-disabled="true">

@@ -1065,7 +1065,8 @@ ion-list.list-inset.visible-overflow.proposal-card-request.disable-user-behavior
   line-height: normal !important; }
 
 .fb-blue-bg {
-  background-color: #4D689F !important; }
+  background-color: #4D689F !important;
+  border-color: #4D689F !important; }
 
 .light-blue-bg {
   background-color: #68A7D0 !important;
@@ -1514,3 +1515,9 @@ select.current-hourly-price {
 
 .card-font-small {
   font-size: 85%; }
+
+.border-radius-circular-right {
+  border-radius: 0px 50% 50% 0px; }
+
+.border-radius-circular-left {
+  border-radius: 50% 0% 0% 50%; }

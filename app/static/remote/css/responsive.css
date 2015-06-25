@@ -16,10 +16,10 @@
     }
 
     .ranking-img {
-      position:fixed;
+      /*position:fixed;*/
       width: 60%;
       left: 20%;
-      top: 22.5%;
+      top: 13.5%;
     }
 
     .ranking-text-container .font-300 {
@@ -323,7 +323,3 @@
 
 }
 
-.jp-card .jp-card-front, .jp-card .jp-card-back {
-  width:80% !important;
-  left:10%;
-}

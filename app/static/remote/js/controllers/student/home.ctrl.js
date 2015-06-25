@@ -379,10 +379,73 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       // }
     }
 
-    console.log($scope.user);
+
+
+
 
     $scope.launchContactingModal = function() {
+
       $scope.contactingModal.show();
+    }
+
+    $scope.cancelActiveSession = function(session) {
+
+
+      //before guru is matched
+      if (session.request.status === 0) {
+
+        $scope.cancelRequest(session.request);
+        return;
+
+      }
+
+      $scope.root.vars.active_session = session;
+
+      //after guru is matched
+      var dialogCallBackSuccess = function() {
+        //guru cancels session
+        $scope.success.show(0, 2000, $scope.root.vars.active_session.request.course_name + ' successfully canceled!');
+        var canceled_session = $scope.root.vars.active_session;
+
+        canceled_session.status = 4;
+
+        var sessionPayload = {session: canceled_session}
+
+        $scope.user.previous_student_sessions.push(canceled_session);
+
+        //remove session locally from active guru session
+        $scope.root.util.removeObjectByKey($scope.user.active_student_sessions, 'id', canceled_session.id);
+
+        //update session locally
+        $scope.root.util.updateObjectByKey($scope.user.student_sessions, 'id', canceled_session.id, 'status', 5);
+          //Mixpanel Track
+
+        $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope);
+
+        $scope.root.vars.active_session = null;
+
+        if ($state.current.name === 'root.student-session') {
+          $scope.goBack();
+        }
+      }
+
+      var dialog = {
+        message: "Are you sure? This will be closely investigated by us and may impact your Guru ranking.",
+        title: "Cancel Session",
+        button_arr: ['Never Mind', 'Cancel Session'],
+        callback_arr: [null, dialogCallBackSuccess]
+      }
+
+      if ($scope.platform.web) {
+        if (confirm('Are you sure? \n' + dialog.message)) {
+            dialogCallBackSuccess();
+        }
+      }
+
+      else {
+          $scope.root.dialog.confirm(dialog.message, dialog.title, dialog.button_arr, dialog.callback_arr);
+      }
+
     }
 
 
