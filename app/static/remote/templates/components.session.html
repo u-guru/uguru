@@ -14,17 +14,11 @@
 
   </ion-header-bar>
 
-<div class="tabs home-request-tabs-top tabs-top" ng-show='session.request.status > 0 && session.messages'>
-      <a class="tab-item uppercase opacity-1-2" ng-click='showDetails()' ng-show='!details.show'>
+<div class="tabs home-request-tabs-top tabs-top" ng-show='session.request.status > 0 && session.messages' style='height:45px;'>
+      <a class="tab-item uppercase ng-class:{'blue-bg white-text':details.show, 'opacity-1-2':!details.show}" ng-click='showDetails()' >
         Details
       </a>
-      <a class="tab-item uppercase blue-bg white-text" ng-click='showDetails()' ng-show='details.show'>
-        Details
-      </a>
-      <a class="tab-item uppercase opacity-1-2" ng-click='showChat()' ng-show='details.show'>
-        Chat
-      </a>
-      <a class="tab-item uppercase blue-bg white-text" ng-click='showChat()' ng-show='!details.show'>
+      <a class="tab-item uppercase ng-class:{'blue-bg white-text':!details.show, 'opacity-1-2':details.show}" ng-click='showChat()'>
         Chat
       </a>
 </div>
@@ -110,7 +104,7 @@
         Tap to start session!
       </button>
 
-      <button class='button button-full dark-bg white-text' ng-click='endSessionGuru()' ng-show='session.status === 2'>
-        Tap to send session
+      <button class='button button-full end-session-button dark-bg white-text' ng-click='endSessionGuru()' ng-show='session.status === 2'>
+        Tap to end session
       </button>
 </ion-footer-bar>

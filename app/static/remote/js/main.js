@@ -126,6 +126,12 @@ $ionicPlatform.ready(function() {
         v: '3.17',
         libraries: 'places'
     });
+
+
+  if (ionic.Platform.isWindowsPhone()) {
+    $compileProvider.imgSrcSanitizationWhitelist('CapturedImagesCache/');
+  }
+
   // })
 
   if (!window.cordova) {

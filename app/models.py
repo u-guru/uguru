@@ -119,7 +119,7 @@ class User(Base):
     time_created = Column(DateTime)
 
 
-    current_hourly = Column(Float)
+    current_hourly = Column(Float, default= 10.0)
     max_hourly = Column(Float)
 
     uber_friendly = Column(Boolean)

@@ -70,6 +70,7 @@ guru_fields['guru_introduction'] = fields.String(attribute='guru_introduction')
 guru_fields['guru_ratings'] = fields.List(fields.Nested(guru_rating_fields))
 guru_fields['profile_url'] = fields.String(attribute='profile_url')
 guru_fields['university'] = fields.Nested(university_fields)
+guru_fields['current_hourly'] = fields.Float(attribute='current_hourly')
 # guru_fields['guru_sessions'] = fields.List(fields.Nested(session_fields))
 
 student_fields = {}

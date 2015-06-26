@@ -14,10 +14,10 @@
   </ion-header-bar>
 
 <div class="tabs home-request-tabs-top tabs-top">
-      <a class="tab-item uppercase blue-bg white-text" ng-click='showUpcomingToggle()'>
+      <a class="tab-item uppercase ng-class:{'blue-bg white-text':showUpcoming, 'opacity-1-2':!showUpcoming}" ng-click='showUpcomingToggle()'>
         Upcoming
       </a>
-      <a class="tab-item uppercase opacity-1-2" ng-click='showPreviousRequests()'>
+      <a class="tab-item uppercase ng-class:{'blue-bg white-text':!showUpcoming, 'opacity-1-2': showUpcoming}" ng-click='showPreviousRequests()'>
         History
       </a>
 </div>

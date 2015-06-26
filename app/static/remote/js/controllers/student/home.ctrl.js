@@ -170,17 +170,18 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         } else {
           $scope.pending_rating.student_rate_guru = true;
           $scope.pending_rating.guru_rating = parseInt($scope.root.vars.starsSelected);
-
         }
 
         var ratingPayload = $scope.pending_rating;
 
         var serverCallback = function() {
           $scope.loader.hide();
-          $timeout(function() {
-            $scope.launchPendingActions();
-          }, 500);
+          // $timeout(function() {
+          //   $scope.launchPendingActions();
+          // }, 500);
         }
+
+        $scope.success.show(0, 1500, 'Rating Saved!');
 
         $scope.loader.show();
 
@@ -229,7 +230,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             });
     }
 
-    $scope.launchPendingActions = function() {
+    $scope.root.vars.launchPendingActions = function() {
 
             //priority 1: see if any ratings are allowed
 
@@ -238,13 +239,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         var rating = $scope.user.pending_guru_ratings[0];
         //pop the first item
 
-        $scope.user.pending_guru_ratings.shift();
+        // $scope.user.pending_guru_ratings.shift();
 
         $scope.pending_rating = rating;
 
-        $scope.launchStudentRatingsModal(rating);
+        // $scope.launchStudentRatingsModal(rating);
 
-        if(!$scope.studentRatingsModal.isShown()) {
+        if(!$scope.studentRatingsModal || !$scope.studentRatingsModal.isShown()) {
           $scope.launchStudentRatingsModal(rating);
         }
 
@@ -274,6 +275,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
 
     }
+
+    $scope.launchPendingActions = $scope.root.vars.launchPendingActions;
 
   $ionicPlatform.ready(function() {
 
@@ -419,6 +422,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         //update session locally
         $scope.root.util.updateObjectByKey($scope.user.student_sessions, 'id', canceled_session.id, 'status', 5);
           //Mixpanel Track
+
 
         $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope);
 
@@ -766,7 +770,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         if ($scope.user && $scope.user.active_student_sessions
           && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
 
-                $scope.launchPendingActions();
+                $scope.root.vars.launchPendingActions();
 
         }
 
@@ -788,7 +792,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         if ($scope.user && $scope.user.active_student_sessions
           && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
 
-                $scope.launchPendingActions();
+                $scope.root.vars.launchPendingActions();
 
         }
 

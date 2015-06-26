@@ -1582,6 +1582,14 @@ li.item.item-avatar-right.message-item {
   text-transform: none;
   font-size: 55%; }
 
+.button.button-full.end-session-button {
+  margin: 0.5em auto !important;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 90%; }
+
 .button.button-positive.button-clear.button-search {
   color: #68A7CF;
   font-family: "OpenSans-SemiBold"; }

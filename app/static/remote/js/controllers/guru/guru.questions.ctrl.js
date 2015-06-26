@@ -145,7 +145,16 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
      $scope.$on('$ionicView.enter', function() {
 
 
-      })
+        if ($scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
+
+                    $ionicViewSwitcher.nextDirection('enter');
+                    $state.go('^.guru');
+          }
+
+
+
+
+    });
 
 
      document.addEventListener("resume", function() {
@@ -156,13 +165,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                     $ionicViewSwitcher.nextDirection('enter');
                     $state.go('^.guru');
           }
-
-          if ($scope.user && $scope.user.active_guru_sessions && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
-
-                  $ionicViewSwitcher.nextDirection('enter');
-                  $state.go('^.guru');
-          }
-
 
     }, false);
 

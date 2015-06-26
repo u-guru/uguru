@@ -12,10 +12,11 @@
   </ion-header-bar>
 
 <div class="tabs home-request-tabs-top tabs-top">
-      <a class="tab-item uppercase blue-bg white-text" ng-click='showPreviousActions(0);'>
+
+      <a class="tab-item uppercase ng-class:{'blue-bg white-text':showActive, 'opacity-1-2':!showActive}" ng-click='showPreviousActions(0);'>
         Your Tasks
       </a>
-      <a class="tab-item uppercase opacity-1-2" ng-click='showPreviousActions(1);'>
+      <a class="tab-item uppercase ng-class:{'blue-bg white-text':!showActive, 'opacity-1-2':showActive}" ng-click='showPreviousActions(1);'>
         Previous
       </a>
 </div>

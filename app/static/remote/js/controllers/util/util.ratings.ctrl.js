@@ -24,6 +24,9 @@ angular.module('uguru.util.controllers')
 
     });
 
+    if ($scope.pending_rating) {
+      $scope.pending_rating.session.guru.current_hourly = 10;
+    }
 
     if ($scope.user.guru_mode) {
       $scope.rating = $scope.user.pending_student_ratings[0];

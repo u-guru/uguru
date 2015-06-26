@@ -7,7 +7,7 @@
             Session<br>Completed!
           </h1>
           <p>
-            {{pending_rating.transaction.time_created}}
+            {{pending_rating.session.time_completed}}
           </p>
         </div>
         <div class='padding-2em flex-item-c center'>
@@ -24,11 +24,11 @@
               <div class='pure-u-3-4 margin-1em'>
 
                 <div class='item item-avatar-left transparent-background no-border white-text align-left'>
-                  <img src='{{pending_rating.transaction.student.profile_url}}' class='pure-img'/>
+                  <img src='{{pending_rating.session.student.profile_url}}' class='pure-img'/>
                   <span class='sans-regular'>
-                    {{pending_rating.transaction.student.name.split(" ")[0]}}
+                    {{pending_rating.session.student.name.split(" ")[0]}}
                   </span>
-                  <p>{{pending_rating.transaction.request.course.short_name}}</p>
+                  <p>{{pending_rating.session.request.course.short_name}}</p>
                 </div>
               </div>
             </div>

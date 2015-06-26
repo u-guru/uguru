@@ -34,7 +34,10 @@ angular.module('uguru.guru.controllers')
 
 
 
-    if (!$scope.session) {
+    if ($scope.root.vars.guru_active_session) {
+      $scope.session = $scope.root.vars.guru_active_session;
+    }
+    else if (!$scope.session) {
       $scope.session = JSON.parse($stateParams.sessionObj);
     }
     console.log($scope.session);
@@ -251,6 +254,54 @@ angular.module('uguru.guru.controllers')
       return payload;
     }
 
+    $scope.root.vars.launchPendingActions = function() {
+
+
+      //priority 1: see if any ratings are allowed
+
+      if ($scope.user.pending_student_ratings.length > 0) {
+
+        var rating = $scope.user.pending_student_ratings[0];
+
+        //pop the first item
+
+        $scope.user.pending_student_ratings.shift();
+
+        $scope.pending_rating = rating;
+
+        if(!$scope.guruRatingsModal || !$scope.guruRatingsModal.isShown()) {
+          $scope.launchGuruRatingsModal(rating);
+        }
+
+        //no reason to
+        return;
+
+      }
+
+
+      //see if any sessions are going on right now
+
+      for (var i = 0 ; i < $scope.user.active_guru_sessions.length; i ++) {
+
+            var session = $scope.user.active_guru_sessions[i];
+            if (session.status === 2) {
+              $scope.session = session;
+              $timeout(function() {
+
+                $scope.details = {show: true};
+
+
+                if (!$scope.guruInSessionModal.isShown()) {
+                  $scope.launchGuruInSessionModal();
+                }
+
+              }, 500);
+            }
+
+      }
+
+    }
+
     $scope.startSessionGuru = function(session) {
 
       var dialogCallBackSuccess = function() {
@@ -263,11 +314,13 @@ angular.module('uguru.guru.controllers')
         var sessionPayload = {session: $scope.session}
 
         $scope.loader.show();
-        $state.go('^.guru');
 
         var callbackSuccess = function() {
-          // $scope.launchGuruInSessionModal();
-          $scope.loader.hide();
+          // $scope.root.vars.launchPendingActions();
+          // $timeout(function() {
+
+          // }, 1000);
+          $state.go('^.guru');
 
         }
 

@@ -23,6 +23,8 @@ angular.module('uguru.root.services')
                       if ($scope.platform.mobile) {
                         var source_type = 1;
                       }
+
+
                         var options = {
                           quality: 15,
                           destinationType: Camera.DestinationType.DATA_URL,

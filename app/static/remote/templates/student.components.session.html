@@ -19,17 +19,11 @@
 
   </ion-header-bar>
 
-<div class="tabs home-request-tabs-top tabs-top" ng-show='session.request.status > 1'>
-      <a class="tab-item uppercase opacity-1-2" ng-click='showDetails()' ng-show='!details.show'>
+<div class="tabs home-request-tabs-top tabs-top" ng-show='session.request.status > 1' style='height:45px;'>
+      <a class="tab-item uppercase ng-class:{'blue-bg white-text':details.show, 'opacity-1-2':!details.show}" ng-click='showDetails()' >
         Details
       </a>
-      <a class="tab-item uppercase blue-bg white-text" ng-click='showDetails()' ng-show='details.show'>
-        Details
-      </a>
-      <a class="tab-item uppercase opacity-1-2" ng-click='showChat()' ng-show='details.show'>
-        Chat
-      </a>
-      <a class="tab-item uppercase blue-bg white-text" ng-click='showChat()' ng-show='!details.show'>
+      <a class="tab-item uppercase ng-class:{'blue-bg white-text':!details.show, 'opacity-1-2':details.show}" ng-click='showChat()'>
         Chat
       </a>
 </div>
