@@ -70,17 +70,17 @@ angular.module('uguru.root.services', [])
             }
             interval = Math.floor(seconds / 86400);
             if (interval > 1) {
-                return interval + " days";
+                return interval + "d ago";
             }
             interval = Math.floor(seconds / 3600);
             if (interval > 1) {
-                return interval + " hours";
+                return interval + "hr ago";
             }
             interval = Math.floor(seconds / 60);
             if (interval > 1) {
-                return interval + " minutes";
+                return interval + "m ago";
             }
-            return Math.floor(seconds) + " seconds";
+            return Math.floor(seconds) + "s ago";
         },
 
         formatHoursAndMinutes: function(date_obj, is_end_time) {

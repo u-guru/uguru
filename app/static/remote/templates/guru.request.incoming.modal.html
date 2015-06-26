@@ -100,10 +100,10 @@
 
 
         <div class='pure-g-c flex-column flex-space-between' ng-show='showIncomingProposalDetails' ng-click='showIncomingProposalDetails = false;'>
-              <div class='flex-item-c pure-g'>
-                  <ion-list class='visible-overflow proposal-card-request'>
+              <div class='flex-item-c pure-g full-width padding-1em'>
+                  <ion-list class='list-inset proposal-card-request full-width' style='margin:0px !important;'>
 
-                    <ion-item class='padding-1em item-avatar-left dark-bg white-text'>
+                    <ion-item class='padding-1em item-avatar-left dark-bg white-text' style='border-color: rgba(255,255,255,0.2);'>
                       <img class='pure-img can-help-profile-img'  src='{{proposal.request.student.profile_url}}'/>
                         <div class='guru-info-wrapper'>
                           <h2>{{proposal.request.student.name.split(' ')[0]}} </h2>

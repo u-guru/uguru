@@ -4,7 +4,7 @@
 
 
         <!-- <ion-scroll style='margin-top:5%;'> -->
-          <div class='pure-g-c flex-column flex-space-between'  ng-show='!showIncomingProposalDetails'>
+          <div class='pure-g-c flex-column flex-space-between'  ng-show='!showIncomingProposalDetails' ng-click='showIncomingProposalDetails = true;'>
               <div class='flex-item-c pure-g'>
                 <!-- 1. create inset list, offset it by -5% margin-top -->
                 <ion-list class='list-inset proposal-card-request' style='padding-bottom:2px;'>
@@ -63,15 +63,7 @@
                     <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
                       <div class='pure-u-1-4'>
                         <p class='inline'>
-                         <!--  <span ng-show='incoming_request.time_estimate.hours && !incoming_request.time_estimate.minutes'>
-                            {{incoming_request.time_estimate.hours}} hours
-                          </span>
-                          <span ng-show='incoming_request.time_estimate.minutes && !incoming_request.time_estimate.hours'>
-                            {{incoming_request.time_estimate.minutes}} min
-                          </span>
-                          <span ng-show='incoming_request.time_estimate.minutes && incoming_request.time_estimate.hours'>
-                            {{incoming_request.time_estimate.hour}}hr {{incoming_request.time_estimate.minutes}}
-                          </span> -->
+
                           Time
                         </p>
                       </div>
@@ -150,11 +142,13 @@
             </div>
           </div>
 
+
+
               <div class='pure-g-c flex-column flex-space-between' ng-show='showIncomingProposalDetails' ng-click='showIncomingProposalDetails = false;'>
                 <div class='flex-item-c pure-g'>
-                  <ion-list class='visible-overflow proposal-card-request'>
+                  <ion-list class='list-inset proposal-card-request visible-overflow proposal-card-request'>
 
-                    <ion-item class='padding-1em item-avatar-left dark-bg white-text'>
+                    <ion-item class='padding-2em item-avatar-left dark-bg white-text' style='padding-bottom:1em;'>
                       <img class='pure-img can-help-profile-img'  src='{{incoming_request.student.profile_url}}'/>
                         <div class='guru-info-wrapper'>
                           <h2>{{incoming_request.student.name.split(' ')[0]}} </h2>

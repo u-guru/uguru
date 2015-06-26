@@ -222,11 +222,11 @@ angular.module('uguru.student.controllers')
 
       // $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
 
-      messagePayload.message.class = 'item-avatar-right animated fadeInUp';
+      messagePayload.message.class = 'item-avatar-right animated fadeIn';
       messagePayload.message.profile_url= $scope.user.profile_url;
       messagePayload.message.formatted_time = 'a couple seconds ago';
       $scope.new_message.content = '';
-      $scope.messages.push(messagePayload.message);
+      $scope.local_messages.push(messagePayload.message);
       // $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
       // $ionicScrollDelegate.$getByHandle('message-scroll').scrollBy(0, 100, false);
     }
@@ -260,10 +260,11 @@ angular.module('uguru.student.controllers')
                 var updated_messages = $scope.processMessages(processed_user.active_student_sessions[i].messages);
                 updated_messages.sort($scope.sortMessageComparator);
 
-                $timeout(
-                  function(){
-                    $scope.messages = updated_messages;
-                  }, 1000);
+                $scope.messages = updated_messages;
+
+                if (updated_messages.length > $scope.local_messages.length) {
+                  $scope.local_messages = updated_messages;
+                }
 
               }
             }
@@ -314,6 +315,11 @@ angular.module('uguru.student.controllers')
               $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
             }
             $scope.messages = server_messages;
+
+            if ($scope.messages.length > $scope.local_messages.length) {
+              $scope.local_messages = $scope.messages;
+            }
+
             if ($state.current.name === 'root.student-messages' && !one_time) {
               $timeout(function() {
                 $scope.getMessagesFromServer(time_between);
@@ -338,6 +344,8 @@ angular.module('uguru.student.controllers')
         if ($scope.session.request.status > 0) {
 
           $scope.messages = $scope.processMessages($scope.session.messages);
+          $scope.local_messages = $scope.messages;
+
           $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
 
             $timeout(function() {

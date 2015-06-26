@@ -284,10 +284,12 @@ angular.module('uguru.user', [])
             if (user.proposals && user.proposals.length > 0) {
                 for (var i = 0; i < user_proposals.length; i ++) {
                     var index_proposal = user_proposals[i];
+
                      if (index_proposal.status === 4 || index_proposal.status === 5 ) {
                         index_proposal.status_string = 'STUDENT CANCELED';
                         user.previous_proposals.push(index_proposal);
                     }
+
                     else if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 0) {
                         index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
 
