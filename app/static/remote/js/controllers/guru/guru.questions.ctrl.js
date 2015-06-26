@@ -142,6 +142,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     $scope.active_questions = $scope.user.active_questions;
 
+     $scope.$on('$ionicView.enter', function() {
+
+
+      })
+
 
      document.addEventListener("resume", function() {
 

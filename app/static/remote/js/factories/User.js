@@ -406,6 +406,8 @@ angular.module('uguru.user', [])
         $scope.user.impact_events = user.impact_events;
         if (user.pending_proposals && user.pending_proposals.length > 0) {
             $scope.user.pending_proposals = user.pending_proposals.reverse();
+        } else {
+            $scope.user.pending_proposals = user.pending_proposals;
         }
         $scope.user.active_guru_sessions = user.active_guru_sessions;
         $scope.user.pending_student_ratings = user.pending_student_ratings;

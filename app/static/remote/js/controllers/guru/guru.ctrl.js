@@ -460,9 +460,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         proposalObj.status = 2; //guru accepted
         proposalObj.proposal = true;
 
-        //fake it for now...r
-
-        $scope.deleteProposalFromList($scope.proposal, $scope.user.active_proposals);
+        //fake it for now...
 
         // if (!$scope.user.pending_proposals) {
         //   $scope.user.pending_proposals = [];
@@ -476,22 +474,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           }, 500)
           $timeout(function() {
             $scope.loader.hide();
+            alert("Student request accepted. We'll let you know if they choose you! \n See below for progress");
           }, 1000)
         }
 
-
-        $scope.user.updateObj($scope.user, 'requests', proposalObj, $scope, closeModalAfterUpdate);
-
-        alert("Student request accepted. We'll let you know if they choose you! \n See below for progress");
         $scope.loader.show();
-          //Mixpanel Track
-
-        //timeout
-        $timeout(function() {
-
-          $scope.processActiveProposalsGuru($scope.user.active_proposals);
-
-        }, 500);
+        $scope.user.updateObj($scope.user, 'requests', proposalObj, $scope, closeModalAfterUpdate);
 
       }
 
@@ -651,7 +639,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           if ($scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
 
 
-                    $scope.processActiveProposalsGuru($scope.user.active_proposals);
+                    $scope.root.vars.processActiveProposalsGuru($scope.user.active_proposals);
 
 
           }
