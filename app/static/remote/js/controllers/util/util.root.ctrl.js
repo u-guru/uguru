@@ -32,7 +32,7 @@ angular.module('uguru.util.controllers')
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
           $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush,
           $ionicSideMenuDelegate, $ionicViewSwitcher, $cordovaGeolocation, Major,
-          Skill, Profession) {
+          Skill, Profession, $cordovaDevice) {
 
           // console.log('1. checking for app updates\n');
           // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
@@ -380,17 +380,23 @@ angular.module('uguru.util.controllers')
 
 
 
-          $ionicPlatform.ready(function() {
+          // $ionicPlatform.ready(function() {
 
-
+          document.addEventListener("deviceready", function () {
             // console.log('ENDING MOBILE ONLY tasks below \n\n');
             $scope.platform = {
                 ios: ionic.Platform.isIOS(),
                 android: ionic.Platform.isAndroid(),
                 windows: ionic.Platform.isWindowsPhone(),
                 mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone(),
-                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid()),
+                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone()),
                 device: ionic.Platform.device(),
+            }
+
+            if ($cordovaDevice && $cordovaDevice.getPlatform() === 'Win32NT') {
+              $scope.platform.windows = true;
+              $scope.platform.mobile = true;
+              $scope.platform.web = false;
             }
 
             if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.hide) {

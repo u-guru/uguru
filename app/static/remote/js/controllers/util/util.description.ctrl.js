@@ -35,9 +35,9 @@ angular.module('uguru.util.controllers')
     $scope.showAttachActionSheet = function() {
 
       var options = [{ text: 'Choose from Library' }];
-      if ($scope.platform.mobile) {
-        options.push({text: 'Take a Photo'})
-      }
+      // if ($scope.platform.mobile) {
+      options.push({text: 'Take a Photo'})
+      // }
 
      // Show the action sheet
      $scope.closeAttachActionSheet = $ionicActionSheet.show({

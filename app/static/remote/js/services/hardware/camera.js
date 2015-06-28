@@ -20,9 +20,9 @@ angular.module('uguru.root.services')
         deviceCamera = {
                     takePicture: function($scope, index, has_callback) {
 
-                      if ($scope.platform.mobile) {
+                      // if ($scope.platform.mobile) {
                         var source_type = 1;
-                      }
+                      // }
 
 
                         var options = {

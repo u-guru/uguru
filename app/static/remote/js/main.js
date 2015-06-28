@@ -32,7 +32,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
   $cordovaDialogs, Version, $rootScope, $cordovaSplashscreen,
   $templateCache, Device, User, $cordovaLocalNotification,
-  $cordovaGeolocation) {
+  $cordovaGeolocation, $cordovaDevice) {
 
 
 // $ionicPlatform.ready(function() {
@@ -58,6 +58,12 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                 mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone(),
                 web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone()),
                 device: ionic.Platform.device(),
+            }
+
+            if ($cordovaDevice && $cordovaDevice.getPlatform() === 'Win32NT') {
+              $rootScope.platform.windows = true;
+              $rootScope.platform.mobile = true;
+              $rootScope.platform.web = false;
             }
 
             console.log('user is on device:', ionic.Platform.platform());
