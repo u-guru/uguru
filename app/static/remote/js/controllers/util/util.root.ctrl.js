@@ -434,8 +434,8 @@ angular.module('uguru.util.controllers')
 
               }
 
-            if ($scope.platform.windows && cordovaPush) {
-
+            if ($scope.platform.windows && $cordovaPush) {
+                console.log('we are updating the push notifications on windows device')
                   $cordovaPush.register(
                       channelHandler,
                       errorHandler,

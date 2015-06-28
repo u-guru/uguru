@@ -35,7 +35,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   $cordovaGeolocation) {
 
 
-$ionicPlatform.ready(function() {
+// $ionicPlatform.ready(function() {
 
   document.addEventListener("deviceready", function () {
         // console.log('list of all plugins checkpoint 2', JSON.stringify(cordova.require("cordova/plugin_list").metadata));
@@ -54,12 +54,16 @@ $ionicPlatform.ready(function() {
             $rootScope.platform = {
                 ios: ionic.Platform.isIOS(),
                 android: ionic.Platform.isAndroid(),
-                mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid(),
-                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid()),
+                windows: ionic.Platform.isWindowsPhone(),
+                mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone(),
+                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone()),
                 device: ionic.Platform.device(),
             }
 
-            // console.log('user is on device:', ionic.Platform.platform());
+            console.log('user is on device:', ionic.Platform.platform());
+            if (ionic.Platform.isWindowsPhone()) {
+              console.log('woooooo we detected were on windows niggaaa');
+            }
             //performing mobile tasks
             // console.log('STARTING MOBILE ONLY tasks below \n\n');
 
@@ -70,7 +74,7 @@ $ionicPlatform.ready(function() {
             if (window.cordova && $rootScope.platform.mobile) {
 
                 //hiding the splash screen
-                // console.log('1. hiding splashscreen on mobile devices \n\n');
+                console.log('1. hiding splashscreen on mobile devices \n\n');
 
                 if (navigator.splashscreen) {
                   // console.log('hide the splash screen on ios via cordova navigator v2');
@@ -84,7 +88,7 @@ $ionicPlatform.ready(function() {
                 //grabbing nextwork speed
                 if ($cordovaNetwork) {
                   $rootScope.network_speed = getNetworkSpeed();
-                  // console.log('2. grabbing network speed which is: ', $rootScope.network_speed, '\n\n');
+                  console.log('2. grabbing network speed which is: ', $rootScope.network_speed, '\n\n');
                 }
 
 
@@ -114,7 +118,7 @@ $ionicPlatform.ready(function() {
 
     });
     // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-  });
+  // });
 
 })
 
