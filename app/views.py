@@ -134,9 +134,10 @@ def admin_testing():
 @app.route('/admin/')
 @app.route('/admin/team/members/')
 def admin_members():
+    from app.lib.admin import admin_info
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/admin.team-members.html", team=[])
+    return render_template("new_admin/admin.team-members.html", team=admin_info)
 
 
 @app.route('/admin/')
