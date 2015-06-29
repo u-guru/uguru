@@ -11,8 +11,8 @@ admin_info = {
         'name': 'Jason Huang',
         'profile_url': 'https://lh5.googleusercontent.com/yY50SAUR9rjps3dZybgw8ZZefRlGKEG7U7c8-6zLlM1dn0MmA_LMw54Zxb9x_VGOIBY6bdGY1zSD0OA=w1256-h1221'
     },
-    'jourdan@uguru.me': {
-        'name': 'Jourdan *',
+    'jourdon@uguru.me': {
+        'name': 'Jourdon Ahn',
         'profile_url': 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100'
     },
     'randy@uguru.me': {
