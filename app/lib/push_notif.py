@@ -17,9 +17,6 @@ def send_ios_notification(message, user_apns_token):
     payload = Payload(alert=message, sound="default", badge=1)
 
 
-    production_test_devices = ['6e38ba59724d7d99d3851e7e16e9b3cc0578671317d3414b178b2c99f3de76ab', \
-    '2b884303d8cbae68d6e355c2beb18ca5ad005680394671dc175d0e10b1b34f55', '22def699260bb1b43666e6ec89074bd1bc1134ad70108ac27272a9d01680ae58',
-    '717126ba8a841d8ae5aff1324d2c7b479522753f5264d39fe7cdc4a88bfbcdb4', '3f03a3c3e68ab64ec8425a4b17648f02a3dd8dc802263a778b6d411fb46528e9']
     if os.environ.get('PRODUCTION'):
         apns_client.gateway_server.send_notification(user_apns_token, payload)
 
@@ -42,6 +39,7 @@ def send_push_for_user_devices(user, notif_key, args_tuple):
         # if device is ios & push enabled
 
         if device.platform and device.push_notif and device.push_notif_enabled:
+
             device_os = device.platform.lower()
             if device_os == 'ios' and device.push_notif != "ERROR":
 

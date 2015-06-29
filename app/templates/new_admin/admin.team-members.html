@@ -1,0 +1,141 @@
+{% extends 'new_admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/new_admin/plugins/ionslider/ion.rangeSlider.css" rel="stylesheet" type="text/css" />
+    <!-- ion slider Nice -->
+    <link href="/static/new_admin/plugins/ionslider/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css" />
+    <link href="/static/new_admin/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="/static/new_admin/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+
+      <div class="content-wrapper" style="min-height: 918px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Team Members
+            <small>Roles, Strengths, Responsibilities</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <!-- Info boxes -->
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-aqua">
+                  <img src="/static/new_admin/dist/img/user1-128x128.jpg" alt="User Image" style='border-radius:50%; height:75px; margin-top:-7px;'>
+                </span>
+                <div class="info-box-content">
+                  <span class="info-box-number">Samir M</span>
+                  <div class='row' style='padding-left:1em;'>
+                    <div>
+                      <strong> University: </strong> Berkeley
+                    </div>
+                    <div>
+                      <strong> Start Date: </strong>  January 1 2014
+                    </div>
+                  </div>
+
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-red">
+                  <img src="/static/new_admin/dist/img/user1-128x128.jpg" alt="User Image" style='border-radius:50%; height:75px; margin-top:-7px;'>
+                </span>
+                <div class="info-box-content">
+                  <span class="info-box-number">Jason Huang</span>
+                  <div class='row' style='padding-left:1em;'>
+                    <div>
+                      <strong> University: </strong> San Jose State University
+                    </div>
+                    <div>
+                      <strong> Start Date: </strong>  April 15,2015
+                    </div>
+                  </div>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-green">
+                  <img src="/static/new_admin/dist/img/user1-128x128.jpg" alt="User Image" style='border-radius:50%; height:75px; margin-top:-7px;'>
+                </span>
+                <div class="info-box-content">
+                  <span class="info-box-number">Randy Kim</span>
+                  <div class='row' style='padding-left:1em;'>
+                    <div>
+                      <strong> University: </strong> Deanza Community College
+                    </div>
+                    <div>
+                      <strong> Start Date: </strong>  May 15, 2015
+                    </div>
+                  </div>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-yellow">
+                  <img src="/static/new_admin/dist/img/user1-128x128.jpg" alt="User Image" style='border-radius:50%; height:75px; margin-top:-7px;'>
+                </span>
+                <div class="info-box-content">
+                  <span class="info-box-number">Ben Dahal</span>
+                  <div class='row' style='padding-left:1em;'>
+                      <div>
+                        <strong> University: </strong>  Berkeley City College
+                      </div>
+                      <div>
+                        <strong> Start Date: </strong>  May 1, 2015
+                      </div>
+                  </div>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-navy">
+                  <img src="/static/new_admin/dist/img/user1-128x128.jpg" alt="User Image" style='border-radius:50%; height:75px; margin-top:-7px;'>
+                </span>
+                <div class="info-box-content">
+                  <span class="info-box-number">Jourdan Ahn</span>
+                  <div class='row' style='padding-left:1em;'>
+                      <div>
+                        <strong> University: </strong>  SF State
+                      </div>
+                      <div>
+                        <strong> Start Date: </strong>  June 29, 2015
+                      </div>
+                  </div>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+
+
+        </section><!-- /.content -->
+      </div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/new_admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/new_admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/new_admin/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="/static/new_admin/plugins/timepicker/bootstrap-timepicker.js" type="text/javascript"></script>
+<script src="/static/js/new_admin/mandrill.js" type="text/javascript"></script>
+
+{% endblock %}

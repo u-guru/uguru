@@ -49,7 +49,7 @@ def admin_login():
         session.pop('error')
 
     if session.get('user'):
-        return redirect(url_for('admin_team'))
+        return redirect(url_for('admin_members'))
 
 
     return render_template("new_admin/login.html", error=error)
@@ -130,6 +130,14 @@ def admin_testing():
     from app.models import Support
     support_tickets = Support.query.all()
     return render_template("new_admin/admin.support.tickets.html", support_tickets=support_tickets[::-1])
+
+@app.route('/admin/')
+@app.route('/admin/team/members/')
+def admin_members():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin.team-members.html", team=[])
+
 
 @app.route('/admin/')
 @app.route('/admin/team/')
