@@ -1,15 +1,15 @@
 admin_info = {
     'samir@uguru.me': {
         'name': 'Samir Makhani',
-        'profile_url': 'https://lh4.googleusercontent.com/dbH4Kmo3i_1ysdTZI0EO-dzUJIThN9tVNTg2VRvIP-c15T55XLfzC-wRCSRvhoT0IA8KdoGluUbDTZI=w1256-h1221'
+        'profile_url': 'https://lh5.googleusercontent.com/8i88SOGqe94QpUeKUTYzSHPZHKJuHFfduLGiJoy8aQQMj5LuA7t4oRltg89P2F7wrOu7Lw=w100-h100-p-k-nu'
     },
     'ben@uguru.me': {
         'name': 'Ben Dalal',
-        'profile_url': 'https://lh3.googleusercontent.com/_AwrXhb8lEJ9JkjKlfR5_cwfCmp5p_Kis1gSFVMIABt719q21nple0n2ucR8-ul4BcSGfho6VEOvSSU=w1256-h1221'
+        'profile_url': 'https://lh3.googleusercontent.com/hc37ai3UoTGvbmqNarrip4be20I-97kEzvpRYIcQtz0e8yORzwKyIypj2NqRmPzlA-9VmA=w100-h100-p-k-nu'
     },
     'jason@uguru.me': {
         'name': 'Jason Huang',
-        'profile_url': 'https://lh5.googleusercontent.com/yY50SAUR9rjps3dZybgw8ZZefRlGKEG7U7c8-6zLlM1dn0MmA_LMw54Zxb9x_VGOIBY6bdGY1zSD0OA=w1256-h1221'
+        'profile_url': 'https://lh5.googleusercontent.com/ubBjAt_ine93Z_IBGBjtDEotoCaQgOP5Wcqe4j9J58240b075xaZ9Hcg-PZzeud0IGA8og=w100-h100-p-k-nu'
     },
     'jourdon@uguru.me': {
         'name': 'Jourdon Ahn',
@@ -17,6 +17,6 @@ admin_info = {
     },
     'randy@uguru.me': {
         'name': 'Randy Kim',
-        'profile_url': 'https://lh4.googleusercontent.com/P_s_ZjcQzNlL29j1_Go6eMM3C49gjDb-7I7nQYv2dLInBU7cbA91yLW3zhbOOa8e7g-JrFry=w1256-h1221'
+        'profile_url': 'https://lh4.googleusercontent.com/MacAxBRW5d9QlPLeZ31qhd3E1k0KpMypa5mmeqj3Kcj8D31rLSZ4MMa7lLf_uyZFT2Ee1A=w100-h100-p-k-nu'
     }
 }
