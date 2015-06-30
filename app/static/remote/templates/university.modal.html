@@ -5,30 +5,12 @@
       </ion-header-bar>
       <ion-content>
 
-        <div class="list">
-          <li class="item" ng-repeat="university in matchingUniversities" ng-click="universitySelected(university, $event)">
+        <ion-list class="list">
+          <ion-item ng-repeat="university in matchingUniversities" class='university-list'ng-click="universitySelected(university, $event)">
             <h2>{{university.title}}</h2>
             <p>{{university.city}}, {{university.state}}</p>
-          </li>
-        </div>
-
-      <!-- <div class="list list-inset" ng-show="nearest_universities" style="margin-top:15%">
-           <label class="item item-radio" ng-repeat="university in nearest_universities | limitTo:10" style="margin:0px 5px;">
-              <input name="university_radio" ng-change="onSubmitUniversity(university)" ng-model="university.checked" value="{{university}}" type="radio">
-              <div class="item-content">
-                <h2>{{university.title}}</h2>
-                <p>
-                  {{university.location.city}}, {{university.location.state}}
-                </p>
-              </div>
-              <i class="radio-icon ion-checkmark"></i>
-            </label>
-            <li class="item item-icon-left" ng-click="toggleNearestUniversities()" style="margin-top:0px;">
-              <i class="icon ion-search"></i>
-              <span class="regular-text">Search a university</span>
-            </li>
-      </div> -->
-
+          </ion-item>
+        </ion-list>
 
     </ion-content>
 
@@ -38,7 +20,7 @@
           <label class="item-input-wrapper">
               <i class="icon ion-search placeholder-icon"></i>
 
-              <input type="search" name="university-input" class="form-control"
+              <input type="search" name="university-input" id='university-input'class="form-control"
                       fast-matcher
                       fast-matcher-source="universities"
                       fast-matcher-output="matchingUniversities"

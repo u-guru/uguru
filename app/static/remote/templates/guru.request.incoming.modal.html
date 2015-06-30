@@ -13,20 +13,22 @@
           <div class='pure-g-c flex-column flex-space-between' ng-show='!showIncomingProposalDetails' ng-click='showIncomingProposalDetails = true;'>
               <div class='flex-item-c pure-g'>
                 <!-- 1. create inset list, offset it by -5% margin-top -->
-                <ion-list class='list-inset visible-overflow proposal-card-request' style='margin-top:5%;'>
+                <ion-list class='list-inset visible-overflow proposal-card-request' style='margin: 0px 10px !important;'>
 
                   <!-- 2.  padding 2em h1 format bold, SemiBold, relative-->
                   <ion-item class='padding-1em absolute padding-vertical-1em float-center visible-overflow center' style='padding-bottom:2em;'>
                     <img class='home-card-profile guru-proposal-profile pure-img profile-img sidebar-img inline'  src='{{proposal.request.student.profile_url}}'/>
                     <img class='home-card-profile guru-proposal-profile pure-img profile-img sidebar-img inline'  src='{{user.profile_url}}'/>
                     <!-- <h2> &nbsp; </h2> -->
-                    <h2 class='capitalize proposal-header' style='margin-top:0.5em;'>Session with <strong>{{proposal.request.student.name.split(' ')[0]}}</strong></h2>
+                    <h2 class='capitalize proposal-header white-space-normal' style='margin-top:0.5em;'  ng-show='proposal.request.course && proposal.request.course.short_name'>Session with <strong>{{proposal.request.student.name.split(' ')[0]}}</strong></h2>
+                    <h2 class='capitalize proposal-header white-space-normal' style='margin-top:0.5em;'  ng-hide='proposal.request.course && proposal.request.course.short_name'><strong class='semibold'>{{proposal.request.student.name.split(' ')[0]}}</strong> needs help with <strong class='semibold'>{{proposal.request.category}}</strong></h2>
                   <!-- 3. Absolute positioning item, jack it from settings -->
                   </ion-item>
                   <!-- 4.  jack dfrom student, put hashtags, icon right-->
                   <ion-item class='item-avatar item-icon-right session course-details'>
                     <img class='pure-img verb-img' ng-src='{{img_base}}./img/verbs/{{proposal.request.verb_image}}' />
-                      <h2 class='uppercase course-header'>{{proposal.request.course.short_name}}</h2>
+                      <h2 class='uppercase student-session-course-name' ng-show='proposal.request.course && proposal.request.course.short_name'>{{proposal.request.course.short_name}}</h2>
+                      <h2 class='uppercase student-session-course-name' ng-hide='proposal.request.course && proposal.request.course.short_name'>{{proposal.request.task_title}}</h2>
                       <p class='tags-wrapper'>
                         <span class='blue proposal.request-tag' ng-repeat='tag in proposal.request.tags'>#{{tag.name}}
                         </span>
@@ -35,25 +37,30 @@
 
                   </ion-item>
 
-                  <ion-item class='item-avatar-left card-item-left'>
+                  <ion-item class='item-avatar-left card-item-left' ng-show='proposal.request.student_calendar[0].calendar_events[0].formatted_time'>
                     <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
                       <div class='pure-u-1-4'>
                         <p class='inline'>
-                          <span ng-show='proposal.request.time_estimate.hours && !proposal.request.time_estimate.minutes'>
-                            {{proposal.request.time_estimate.hours}} hours
+                          <span ng-show='proposal.request.student_calendar[0].calendar_events[0].formatted.time_length'>
+                            {{proposal.request.student_calendar[0].calendar_events[0].formatted.time_length}} hours
                           </span>
-                          <span ng-show='proposal.request.time_estimate.minutes && !proposal.request.time_estimate.hours'>
+                          <!-- <span ng-show='proposal.request.time_estimate.minutes && !proposal.request.time_estimate.hours'>
                             {{proposal.request.time_estimate.minutes}} min
-                          </span>
-                          <span ng-show='proposal.request.time_estimate.minutes && proposal.request.time_estimate.hours'>
+                          </span> -->
+                          <!-- <span ng-show='proposal.request.time_estimate.minutes && proposal.request.time_estimate.hours'>
                             {{proposal.request.time_estimate.hour}}hr {{proposal.request.time_estimate.minutes}}m
-                          </span>
+                          </span> -->
                         </p>
                       </div>
-                      <div class='pure-u-3-4 micro-text' style='padding-left:1em; opacity:0.8;'>
+                      <div class='pure-u-3-4 micro-text white-space-normal' style='padding-left:1.5em; line-height:2em; opacity:0.8;'>
 
-                        <strong>Thursday</strong>, May 14th, <br>
-                        Between <strong>12:00 pm - 3:30 pm </strong>
+                         <strong> {{proposal.request.student_calendar[0].calendar_events[0].formatted.day}}, {{proposal.request.student_calendar[0].calendar_events[0].formatted.month}} {{proposal.request.student_calendar[0].calendar_events[0].formatted.date}}
+                      </strong> between
+
+                      <!-- not all have calendars -->
+                      <span class='calendar-availability-contact'>
+                        <strong>{{proposal.request.student_calendar[0].calendar_events[0].formatted.start_time_formatted}}-{{proposal.request.student_calendar[0].calendar_events[0].formatted.end_time_formatted}}</strong>
+                      </span>
 
                       </div>
                   </ion-item>
@@ -61,8 +68,12 @@
                   <!-- 5.  Same old but no orange> -->
                   <ion-item class='item-avatar-left card-item-left'>
                     <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/marker.svg'>
-                    <p class='inline'> Meet up </p>
-                    <p class='inline black' style='padding-left:1em'> {{proposal.request.address}} </p>
+                    <div class='pure-u-1-4'>
+                      <p class='inline'> Meet up </p>
+                    </div>
+                    <div class='pure-u-3-4 micro-text white-space-normal' style='padding-left:1.5em; line-height:2em; opacity:0.8'>
+                      <strong> {{proposal.request.address}} </strong>
+                    </div>
                   </ion-item>
 
                   <!-- 5.  Formalize list button-->
@@ -76,9 +87,9 @@
 
 
                 </ion-list>
-                <div class='pure-u-1' style='padding-left:1.2em; padding-right:1.2em'>
+                <div class='pure-u-1' style='padding: 0 10px;'>
                     <button class='button button-full button-blue blue-bg button-submit white-text center' ng-click='acceptIncomingStudentProposal()'>
-                          Confirm this session
+                          IM DOWN TO DO THIS
                   </button>
                 </div>
 
@@ -89,10 +100,10 @@
 
 
         <div class='pure-g-c flex-column flex-space-between' ng-show='showIncomingProposalDetails' ng-click='showIncomingProposalDetails = false;'>
-              <div class='flex-item-c pure-g'>
-                  <ion-list class='visible-overflow proposal-card-request'>
+              <div class='flex-item-c pure-g full-width padding-1em'>
+                  <ion-list class='list-inset proposal-card-request full-width' style='margin:0px !important;'>
 
-                    <ion-item class='padding-1em item-avatar-left dark-bg white-text'>
+                    <ion-item class='padding-1em item-avatar-left dark-bg white-text' style='border-color: rgba(255,255,255,0.2);'>
                       <img class='pure-img can-help-profile-img'  src='{{proposal.request.student.profile_url}}'/>
                         <div class='guru-info-wrapper'>
                           <h2>{{proposal.request.student.name.split(' ')[0]}} </h2>

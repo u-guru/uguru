@@ -1,4 +1,4 @@
-angular.module('ionic.major', [])
+angular.module('uguru.rest')
 .factory('Major', ['Restangular', function(Restangular) {
     var Major;
     Major = {

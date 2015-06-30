@@ -18,11 +18,13 @@ angular.module('uguru.root.services')
     function($localstorage, $timeout, $cordovaCamera, $state) {
 
         deviceCamera = {
-                    takePicture: function($scope, index) {
+                    takePicture: function($scope, index, has_callback) {
 
-                      if ($scope.platform.mobile) {
+                      // if ($scope.platform.mobile) {
                         var source_type = 1;
-                      }
+                      // }
+
+
                         var options = {
                           quality: 15,
                           destinationType: Camera.DestinationType.DATA_URL,
@@ -40,8 +42,15 @@ angular.module('uguru.root.services')
                           //guru profile
                           // guru profile #2
                           //student profile #1
+                          var callbackSuccess;
 
+                          if (has_callback) {
+                            $scope.loader.show();
 
+                            var callbackSuccess = function() {
+                              $scope.loader.hide();
+                            }
+                          }
 
 
 
@@ -51,7 +60,7 @@ angular.module('uguru.root.services')
                           var file_name = new Date().getTime().toString();
                           formData.append('filename', file_name);
 
-                          $scope.user.createObj($scope.user, 'files', formData, $scope);
+                          $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
 
                         }, function(err) {
                           console.log(err);

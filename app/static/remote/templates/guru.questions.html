@@ -27,7 +27,7 @@
 
 
     <ion-list>
-      <ion-item ng-repeat='proposal in active_questions' class='item-avatar-left question-item' ng-click='launchAnswerQuestionModal(proposal)'>
+      <ion-item ng-repeat='proposal in user.active_questions' class='item-avatar-left question-item' ng-click='launchAnswerQuestionModal(proposal)'>
 
          <img class='pure-img verb-img' ng-src='{{img_base}}./img/icons/question.svg' ng-show='question.student_price === 0'/>
          <img class='pure-img verb-img stack_circle' ng-src='{{img_base}}./img/icons/stacks_circled.svg' ng-show='proposal.request.student_price > 0'/>
@@ -50,17 +50,17 @@
   <a class="tab-item" href='#/guru' nav-direction='swap' id='guru-home-button'>
     <img class='pure-img icon' src='{{img_base}}./img/request/house-icon-outline.svg'></i>
   </a>
-  <a class="tab-item" id='guru-courses-button' href='#/guru-courses' nav-direction='swap'>
+  <!-- <a class="tab-item" id='guru-courses-button' href='#/guru-courses' nav-direction='swap'>
     <img class='pure-img icon' src='{{img_base}}./img/request/guru_book_outline.svg'></i>
-  </a>
+  </a> -->
   <a class="tab-item" href='#/guru-questions' nav-direction='swap' id='guru-questions-button'>
     <img class='pure-img icon' src='{{img_base}}./img/icons/question-blue.svg'></i>
   </a>
-  <a class="tab-item" id='browse-button'>
+  <a class="tab-item" nav-direction='swap' id='guru-questions-button' href='#/guru-tasks'>
     <img class='pure-img icon' src='{{img_base}}./img/icons/task.svg'></i>
   </a>
-  <a class="tab-item">
-    &nbsp;
+  <a class="tab-item" id='profile-tab-button' nav-direction='swap' href='#/guru-profile'>
+    <i class='icon ion-person bg-blue'> </i>
   </a>
   <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
     <img class='pure-img icon' src='{{img_base}}./img/settings-tab-guru.svg'/>

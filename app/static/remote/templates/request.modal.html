@@ -2,11 +2,11 @@
 
   <ion-header-bar align-title="center" class='dark-bg-header mini-header'>
     <div class="buttons">
-      <button class="button button-clear button-header-link cancel-button" ng-click='closeRequestModal()'>Cancel</button>
+      <button class="button button-clear button-header-link cancel-button button-left" ng-click='closeRequestModal()'>Cancel</button>
     </div>
-    <h1 class="title">{{request_fields.title}}</h1>
+    <h1 class="title dont-modify-bounds">{{request_fields.title}}</h1>
     <div class="buttons">
-      <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='submitRequest()'>
+      <button class="button button-clear button-header-link submit-button button-right" id='done-button' ng-click='submitRequest()'>
         <span ng-show='!progress' class='ng-class:{"grey-text":!validateFormVanilla()}'>Done </span>
         <span class='blue' ng-show='progress'>Okay</span>
       </button>
@@ -16,7 +16,7 @@
   <ion-content ng-class='rounded-corners'>
       <ion-list class='standard-bg'>
 
-          <ion-item class='item-avatar-left item-mini course-input-item item-icon-right' ng-click='focusCourseInput()'>
+          <ion-item class='item-avatar-left item-mini course-input-item item-button-right' ng-click='focusCourseInput()'>
             <img class='pure-img'  src='{{img_base}}./img/verbs/{{request_fields.img}}' class=''/>
             <input type='text' name="course-input" class='light input-lg course-input form-control'id='course-input' ng-click='focusCourseInput()'
                 fast-matcher
@@ -34,7 +34,7 @@
             />
 
             <!-- ng-change="updateProgress()" -->
-            <a ng-click='toggleYourCourses()'>
+            <a ng-click='toggleYourCourses()' class='button button-clear' style='top:20px; padding-left:50px;'>
               <img ng-show='show_student_courses' class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='{{img_base}}./img/icons/chevron-filled-down.svg'>
               <img ng-show='!show_student_courses && user.student_courses && user.student_courses.length > 0 && root.vars.last_verb_index_clicked !== 2'class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='{{img_base}}./img/icons/chevron-filled.svg'>
             </a>
@@ -65,7 +65,7 @@
               <p> Location </p>
             </ion-item>
 
-            <ion-item ng-show='request.address && !progress' class='item-button-right request-form-item'  id='location-filled-item' >
+            <ion-item ng-show='request.address && !progress && request._type !== 1' class='item-button-right request-form-item'  id='location-filled-item' >
               <a class='request-location-wrapper-link' ng-click='clearLocationButton()'>
                 <p>{{request.address}}<br>
                   <span class='nano-text'>
@@ -79,7 +79,7 @@
               </button>
             </ion-item>
 
-          <ion-toggle ng-hide='progress || !request_fields.show_urgency' ng-model='request.urgency' class='request-form-item' ng-click='success.show(0, 2000, "Scheduled tutoring sessions coming soon!"); request.urgency = true;'>
+          <ion-toggle ng-hide='progress || !request_fields.show_urgency' ng-model='request.urgency' class='request-form-item' ng-click='availability_edit = false;'>
             <p> Is this session urgent? </p>
           </ion-toggle>
 
@@ -88,7 +88,9 @@
           <a ng-hide='progress || !request_fields.show_estimate' ng-blur='toggleAvailability()' ng-click='toggleAvailability()' class='item request-form-item'>
             <p class='inline'> How much time do you need?
             </p>
-            <p class='align-right blue item-right-text'>{{request.time_estimate.hours}} hours <span ng-show='request.time_estimate.minutes > 0'>{{request.time_estimate.minutes}} min</span></p>
+            <p ng-show='request.time_estimate.hours && !request.time_estimate.minutes' class='align-right blue item-right-text'>{{request.time_estimate.hours}} hours <span ng-show='request.time_estimate.minutes > 0'>{{request.time_estimate.minutes}} min</span></p>
+
+            <p ng-show='request.time_estimate.hours && request.time_estimate.minutes' class='align-right blue item-right-text'>{{request.time_estimate.hours}}hr <span ng-show='request.time_estimate.minutes > 0'>{{request.time_estimate.minutes}}m</span></p>
           </a>
 
           <ion-item  ng-show='request.availability_edit && !progress' class='scroll-availability-section relative item request-form-item' data-tap-disabled="true">
@@ -117,7 +119,7 @@
             <a style='width:100%; height:100%;'>
               <p class='inline'> When are you available? </p>
               <p ng-show='!request.calendar.start_time.hours && !request.calendar.start_time.minutes'class='align-right blue item-right-text'>Pick a Time</p>
-              <p ng-show='request.calendar.start_time.hours || request.calendar.start_time.minutes' class='align-right blue item-right-text'>{{request.calendar.date.formatted_date}}, {{request.calendar.formatted_start_time}} </p>
+              <p ng-show='request.calendar.start_time.hours || request.calendar.start_time.minutes' class='align-right blue item-right-text'>{{request.calendar.date.formatted_date}}, {{request.calendar.start_time.formatted}}-{{request.calendar.end_time.formatted}}</p>
             </a>
           </ion-item>
 
@@ -142,8 +144,8 @@
 
             <div class='pure-g' ng-show='request.files && request.files.length > 0' ng-show='true || request && request.files && request.files.length > 0'>
               <div class='pure-u-1' style='border-top: 1px solid rgba(0,0,0,0.1)'>
-                <div class='pure-u-1-4' ng-repeat='file in request.files track by $index'>
-                    <div class="attach-img pure-img padding-half" style='background-image:url("{{file.url}}")'>
+                <div class='pure-u-1-4' ng-repeat='file in request.files track by $index' style='padding-top:12px;'>
+                    <div class="attach-img pure-img padding-half auto-margin" style='background-image:url("{{file.url}}")'>
                     </div>
                 </div>
               </div>

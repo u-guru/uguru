@@ -23,11 +23,16 @@ angular.module('uguru.util.controllers')
   '$cordovaPush',
   '$ionicSideMenuDelegate',
   '$ionicViewSwitcher',
+  '$cordovaGeolocation',
+  'Major',
+  'Skill',
+  'Profession',
   function($ionicPlatform, $scope, $state, $localstorage, User,
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
           $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush,
-          $ionicSideMenuDelegate, $ionicViewSwitcher) {
+          $ionicSideMenuDelegate, $ionicViewSwitcher, $cordovaGeolocation, Major,
+          Skill, Profession, $cordovaDevice) {
 
           // console.log('1. checking for app updates\n');
           // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
@@ -54,6 +59,8 @@ angular.module('uguru.util.controllers')
           } else {
             $scope.img_base = '';
           }
+
+
 
           $scope.rootUser = User;
           $scope.root = RootService;
@@ -90,7 +97,7 @@ angular.module('uguru.util.controllers')
                       $ionicHistory.clearHistory();
                       $templateCache.removeAll();
 
-                      window.localStorage.clear();
+                      // window.localStorage.clear();
                       //remove all angular templates
 
                       $localstorage.setObject('version', $scope.root.vars.version);
@@ -110,6 +117,8 @@ angular.module('uguru.util.controllers')
               })
 
 
+
+
           $scope.logoutUser = function() {
             $localstorage.setObject('user', []);
             // $scope.user = null;;
@@ -124,13 +133,13 @@ angular.module('uguru.util.controllers')
               $timeout(function() {
                 $ionicSideMenuDelegate.toggleRight();
               })
+              $timeout(function() {
+                $state.go('^.onboarding');
+              }, 1000);
             }, 500);
-
-            // $timeout(function(){
-            //   $scope.$apply();
-            // }, 500);
-
           }
+
+
 
 
           //check if local courses exists
@@ -138,7 +147,10 @@ angular.module('uguru.util.controllers')
             University.getCourses(2732).then(
                   function(courses) {
                       $scope.root.vars.courses = courses;
-                      console.log(courses.length, 'courses successfully loaded');
+                      $scope.root.vars.popular_courses = $scope.root.vars.courses.slice(0, 16);
+                      $scope.static.courses = $scope.root.vars.courses;
+                      $scope.static.popular_courses = $scope.root.vars.popular_courses;
+
                 },
                   function(error) {
                       console.log('Courses NOT successfully loaded');
@@ -156,7 +168,8 @@ angular.module('uguru.util.controllers')
           if (!local_universities || local_universities.length === 0) {
 
             User.getUserFromServer($scope, null, $state);
-            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation);
+            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+              Major, Skill, Profession);
           } else {
             $scope.static.universities = $localstorage.getObject('universities')
             if ($scope.static.universities && $scope.static.universities.length > 0) {
@@ -166,50 +179,98 @@ angular.module('uguru.util.controllers')
             }
           }
 
+          var local_majors = $localstorage.getObject('majors');
+          var local_popular_majors = $localstorage.getObject('popular_majors');
+          if (!local_majors || local_majors.length === 0 || !local_popular_majors || local_popular_majors.length === 0) {
+            console.log('getting majors');
+            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+              Major, Skill, Profession);
+          } else {
+            $scope.root.vars.majors = local_majors;
+            $scope.static.majors = local_majors;
+            $scope.static.popular_majors = local_popular_majors;
+            console.log(local_majors.length, 'majors already loaded');
+          }
+
+          var local_skills = $localstorage.getObject('skills');
+          var local_popular_skills = $localstorage.getObject('local_popular_skills');
+          if (!local_skills || local_skills.length === 0) {
+            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+              Major, Skill, Profession);
+          } else {
+            $scope.static.skills = local_skills;
+            $scope.static.popular_skills = local_popular_skills;
+            processSkills($scope);
+            console.log('skills already loaded');
+          }
+
+          var local_professions = $localstorage.getObject('professions');
+          var local_popular_professions = $localstorage.getObject('local_professions');
+          if (!local_professions || local_professions.length === 0) {
+            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+              Major, Skill, Profession);
+          } else {
+            $scope.static.professions = local_professions;
+            $scope.static.popular_professions = local_popular_professions;
+            console.log('professions already loaded');
+          }
+
+
+
+
           $scope.loader = {
             show: function() {
               $ionicLoading.show({
                 template: '<ion-spinner icon="lines" class="spinner-positive"></ion-spinner>'
               });
               $scope.root.vars.loaderOn = true;
-              // $timeout(function() {
-              //   if ($scope.root.vars.loaderOn) {
-              //     $scope.loader.hide();
-              //     $scope.root.vars.loaderOn = false;
-              //     $scope.success.show(0, 2000, 'Something went wrong. Please try again or contact support.');
-              //   }
-              // }, 10000);
             },
             hide: function(){
               $ionicLoading.hide();
               $scope.root.vars.loaderOn = false;
             }
           }
-          // $scope.backgroundRefresh = function() {
 
-          //   //check if they are in these particular views and user_refresh is false
-          //    if (( $state.current.name === 'root.student-home' ||
-          //         $state.current.name === 'root.guru-home') &&
-          //         !$scope.root.vars.user_refresh) {
 
-          //       $scope.root.vars.user_refresh = true;
-          //       $timeout(function() {
-          //         $scope.doRefresh(true);
-          //       }, 15000)
 
-          //    } else if ($scope.root.vars.user_refresh) {
-          //       console.log('background refresh is already happening bro, check again in 15seconds');
-          //    }
-          // }
+
+
 
           $scope.doRefresh = function(repeat) {
             $scope.root.vars.user_refresh = true;
             if ($scope.root.vars.user_refresh || !repeat) {
 
+
+
               User.getUserFromServer($scope, null, $state);
               if (repeat) {
                 $scope.root.vars.user_refresh = false;
               }
+            }
+          }
+
+
+
+          $scope.togglePaymentSideBarView = function() {
+            $scope.root.vars.show_price_fields = !$scope.root.vars.show_price_fields;
+            console.log('this was clicked');
+            if ($scope.root.vars.show_price_fields) {
+              $timeout(function() {
+
+                if ($scope.root.vars.price_modal_shown) {
+                  $scope.root.vars.price_modal_shown = false;
+                  var sidebar_input = document.getElementById('card-input');
+                  document.getElementsByClassName('sidebar-card-input')
+
+                  sidebar_input.focus();
+
+                } else {
+                  var sidebar_input = document.getElementById('card-input');
+
+                  sidebar_input.focus();
+                }
+
+              }, 1000);
             }
           }
 
@@ -299,7 +360,7 @@ angular.module('uguru.util.controllers')
                   message = 'Saved!';
               }
               $ionicLoading.show({
-                template: message,
+                template: '<span class="capitalized">'  + message + '</span>',
                 delay: delay,
                 duration: duration
               });
@@ -317,17 +378,25 @@ angular.module('uguru.util.controllers')
             ios: false
           }
 
-          $ionicPlatform.ready(function() {
 
 
+          // $ionicPlatform.ready(function() {
+
+          document.addEventListener("deviceready", function () {
             // console.log('ENDING MOBILE ONLY tasks below \n\n');
             $scope.platform = {
                 ios: ionic.Platform.isIOS(),
                 android: ionic.Platform.isAndroid(),
                 windows: ionic.Platform.isWindowsPhone(),
                 mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone(),
-                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid()),
+                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone()),
                 device: ionic.Platform.device(),
+            }
+
+            if ($cordovaDevice && $cordovaDevice.getPlatform() === 'Win32NT') {
+              $scope.platform.windows = true;
+              $scope.platform.mobile = true;
+              $scope.platform.web = false;
             }
 
             if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.hide) {
@@ -343,11 +412,11 @@ angular.module('uguru.util.controllers')
 
                   $cordovaPush.register(androidConfig).then(function(deviceToken) {
 
-                    console.log('android notifications');
+                    console.log('android notifications', deviceToken);
 
                   }, function(err){
 
-                    console.log(err)
+                    console.log(err);
 
                   });
 
@@ -355,15 +424,24 @@ angular.module('uguru.util.controllers')
                   $rootScope.$on('pushNotificationReceived', function(event, notification) {
                     CordovaPushWrapper.received($rootScope, event, notification);
                     console.log('android notifications registered',event, notification);
+                    if ($scope.user && $scope.user.id) {
+
+                      payload = {
+                        'push_notifications': true
+                      }
+                      $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
+
+                    }
                   });
 
                   //grab geolocation super early for android devices
-                  on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation);
+                  on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+                    Major, Skill, Profession);
 
               }
 
-            if ($scope.platform.windows && cordovaPush) {
-
+            if ($scope.platform.windows && $cordovaPush) {
+                console.log('we are updating the push notifications on windows device')
                   $cordovaPush.register(
                       channelHandler,
                       errorHandler,
@@ -416,8 +494,6 @@ angular.module('uguru.util.controllers')
             }
 
 
-
-
           });
 
 
@@ -440,7 +516,46 @@ angular.module('uguru.util.controllers')
                 // console.log('device is resuming....');
                 // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
                 // console.log('device resumed');
-                User.getUserFromServer($scope, null, $state);
+
+                Version.getUpdatedVersionNum().then(
+              //if user gets the right version
+                    function(response) {
+                      var serverVersionNumber = parseFloat(JSON.parse(response).version);
+                      $scope.root.vars.version = serverVersionNumber;
+
+
+                      console.log('server', serverVersionNumber, typeof(serverVersionNumber));
+                      console.log('local', local_version, typeof(local_version));
+
+                      if (local_version !== serverVersionNumber) {
+                            if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.show) {
+                              $cordovaSplashscreen.show();
+                            }
+
+                            $ionicHistory.clearCache();
+                            $ionicHistory.clearHistory();
+                            $templateCache.removeAll();
+
+                            // window.localStorage.clear();
+                            //remove all angular templates
+
+                            $localstorage.setObject('version', $scope.root.vars.version);
+                            console.log('updating version to', serverVersionNumber, '...');
+
+                            window.location = BASE_URL;
+                            window.location.reload(true);
+
+                      } else {
+                        User.getUserFromServer($scope, null, $state);
+                      }
+
+
+
+                      $localstorage.setObject('version', $scope.root.vars.version);
+
+                    }, function(err) {
+                      console.log(err);
+                    })
 
             }, false);
 
@@ -467,6 +582,45 @@ angular.module('uguru.util.controllers')
               // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
             }, false);
           });
+
+
+          //if student has any active sessions even if they are in guru mode
+          if ($scope.user && (
+              ($scope.user.incoming_requests &&
+                $scope.user.incoming_requests.length>0) ||
+                ($scope.user.active_student_sessions &&
+                  $scope.user.active_student_sessions.length > 0))
+              ) {
+              $ionicViewSwitcher.nextDirection('enter');
+              $state.go('^.home');
+          } else if (($scope.user.active_proposals && $scope.user.active_proposals.length > 0) ||
+          $scope.user.active_guru_sessions && $scope.user.active_guru_sessions.length > 0 )
+          {
+            $ionicViewSwitcher.nextDirection('enter');
+            $state.go('^.guru')
+
+          }
+        //if previous in guru mode
+          else if ($scope.user && $scope.user.guru_mode) {
+
+            $scope.loader.show();
+            $ionicViewSwitcher.nextDirection('enter');
+            $state.go('^.guru');
+            $timeout(function() {
+              $scope.loader.hide();
+            }, 1000);
+
+          }
+          else if ($scope.user && $scope.user.university_id) {
+            $scope.loader.show();
+            $ionicViewSwitcher.nextDirection('enter');
+            $state.go('^.home');
+            $timeout(function() {
+              $scope.loader.hide();
+            }, 1000);
+          }
+
+
 
         }
 ]);

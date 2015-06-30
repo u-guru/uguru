@@ -46,6 +46,13 @@ event_fields['session_id'] = fields.Integer(attribute='session_id')
 event_fields['impacted_user_id'] = fields.Integer(attribute='impacted_user_id')
 event_fields['impacted_user_notified'] = fields.Boolean(attribute='impacted_user_notified')
 
+skill_fields = {}
+skill_fields['id'] = fields.Integer(attribute='id')
+skill_fields['category'] = fields.String(attribute='category')
+skill_fields['name'] = fields.String(attribute='name')
+skill_fields['time_created'] = fields.String(attribute='time_created')
+
+
 file_fields = {}
 file_fields['id'] = fields.Integer(attribute='id')
 file_fields['url'] = fields.String(attribute='url')
@@ -63,6 +70,7 @@ guru_fields['guru_introduction'] = fields.String(attribute='guru_introduction')
 guru_fields['guru_ratings'] = fields.List(fields.Nested(guru_rating_fields))
 guru_fields['profile_url'] = fields.String(attribute='profile_url')
 guru_fields['university'] = fields.Nested(university_fields)
+guru_fields['current_hourly'] = fields.Float(attribute='current_hourly')
 # guru_fields['guru_sessions'] = fields.List(fields.Nested(session_fields))
 
 student_fields = {}
@@ -111,6 +119,7 @@ request_fields['online'] = fields.Boolean(attribute='online')
 request_fields['in_person'] = fields.Boolean(attribute='in_person')
 request_fields['time_estimate'] = fields.Integer(attribute='time_estimate')
 request_fields['address'] = fields.String(attribute='address')
+request_fields['category'] = fields.String(attribute='category')
 request_fields['id'] = fields.Integer(attribute='id')
 request_fields['guru'] = fields.Nested(guru_fields)
 request_fields['guru_id'] = fields.Integer(attribute='guru_id')
@@ -140,6 +149,7 @@ proposal_fields['id'] = fields.Integer(attribute='id')
 proposal_fields['student_calendar'] = fields.List(fields.Nested(calendar_fields))
 proposal_fields['student_price'] = fields.Float(attribute='student_price')
 proposal_fields['guru_price'] = fields.Float(attribute='guru_price')
+proposal_fields['guru'] = fields.List(fields.Nested(guru_fields))
 proposal_fields['question_response'] = fields.String(attribute='question_response')
 
 selected_proposal_fields = {}
@@ -149,6 +159,7 @@ selected_proposal_fields['status'] = fields.Integer(attribute='status')
 selected_proposal_fields['id'] = fields.Integer(attribute='id')
 selected_proposal_fields['student_price'] = fields.Float(attribute='student_price')
 selected_proposal_fields['guru_price'] = fields.Float(attribute='guru_price')
+selected_proposal_fields['guru'] = fields.List(fields.Nested(guru_fields))
 selected_proposal_fields['question_response'] = fields.String(attribute='question_response')
 
 request_fields['selected_proposal'] = fields.Nested(selected_proposal_fields)
@@ -190,7 +201,8 @@ transaction_fields['student_amount'] = fields.Float(attribute = 'student_amount'
 transaction_fields['guru_amount'] = fields.Float(attribute = 'guru_amount')
 transaction_fields['time_created'] = fields.DateTime(attribute='time_created')
 transaction_fields['guru'] = fields.Nested(guru_fields)
-transaction_fields['session'] = fields.Nested(session_fields_transaction)
+# transaction_fields['session'] = fields.Nested(session_fields_transaction)
+transaction_fields['request'] = fields.Nested(request_fields)
 transaction_fields['student'] = fields.Nested(student_fields)
 transaction_fields['card'] = fields.Nested(card_fields)
 transaction_fields['id'] = fields.Integer(attribute='id')
@@ -226,6 +238,7 @@ rating_fields['id'] = fields.Integer(attribute='id')
 rating_fields['student_rating'] = fields.Integer(attribute='student_rating')
 rating_fields['guru_rating'] = fields.Integer(attribute='guru_rating')
 rating_fields['session'] = fields.Nested(session_fields)
+rating_fields['transaction'] = fields.Nested(transaction_fields)
 
 relationship_fields = {}
 relationship_fields['student'] = fields.Nested(student_fields)
@@ -264,6 +277,7 @@ UserSerializer = {
     'guru_ratings': fields.List(fields.Nested(rating_fields)),
     'student_ratings': fields.List(fields.Nested(rating_fields)),
     'guru_sessions': fields.List(fields.Nested(session_fields)),
+    'current_hourly': fields.Float,
     'text_notifications': fields.Boolean,
     'email_notifications': fields.Boolean,
     'push_notifications': fields.Boolean,
@@ -281,6 +295,7 @@ UserSerializer = {
     'impact_events': fields.List(fields.Nested(event_fields)),
     'guru_relationships': fields.List(fields.Nested(relationship_fields)),
     'student_relationships': fields.List(fields.Nested(relationship_fields)),
+    'guru_skills': fields.List(fields.Nested(skill_fields)),
     'estimated_guru_score': fields.Integer,
     'estimated_guru_rank': fields.Integer,
     'estimated_guru_rank_last_updated': fields.DateTime,
@@ -366,7 +381,8 @@ RequestSerializer = {
     'guru': fields.Nested(guru_fields),
     'student': fields.Nested(student_fields),
     'student_id': fields.Integer,
-    'guru_id': fields.Integer
+    'guru_id': fields.Integer,
+    'category': fields.String
 }
 
 FileSerializer = {
@@ -374,3 +390,16 @@ FileSerializer = {
     'url': fields.String
 }
 
+SkillSerializer = {
+    'id': fields.Integer,
+    'name': fields.String,
+    'category': fields.String,
+    'is_popular': fields.Boolean,
+    'contributed_user_id': fields.Integer
+}
+
+TagSerializer = {
+    'id': fields.Integer,
+    'name': fields.String,
+    'is_profession': fields.Boolean
+}

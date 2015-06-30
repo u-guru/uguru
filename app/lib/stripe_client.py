@@ -90,6 +90,9 @@ def charge_customer(user, amount):
         if card.is_default_payment:
             default_card = card
 
+    if not default_card:
+        return 0
+
     if amount < 50:
         amount = 50
 

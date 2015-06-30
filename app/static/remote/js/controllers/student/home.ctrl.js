@@ -21,17 +21,41 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher, $ionicActionSheet)     {
 
-  console.log($scope.user);
+
+  $scope.showUpcoming = true;
+  $scope.root.vars.show_price_fields = false;
+
+
+
+  $scope.showPreviousRequests = function() {
+      if (!$scope.user.previous_requests || $scope.user.previous_requests.length === 0) {
+        $scope.success.show(0, 2000, 'Sorry! Please make a request first.');
+      } else {
+        $scope.showUpcomingToggle();
+      }
+    }
 
 
   //case-specific functions
+
+    $scope.showUpcomingToggle = function() {
+      $scope.showUpcoming = !$scope.showUpcoming;
+    }
 
     $scope.cancelRequest = function(request) {
       if (confirm('Are you sure you want to cancel this request?')) {
         request.status = 4;
         $scope.user.updateObj($scope.user, 'requests', request, $scope);
 
-        var cancelMsg = request.course.short_name + ' request canceled';
+
+        if (request._type !== 2) {
+          var cancelMsg = request.course.short_name + ' request canceled';
+        } else {
+          var cancelMsg = request.category +  ' Task request canceled';
+        }
+
+
+
         $scope.success.show(0, 2000, cancelMsg);
         $scope.root.util.removeObjectByKey($scope.user.active_requests, 'id', request.id);
       }
@@ -110,6 +134,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.studentSessionDetailsModal.hide();
     }
 
+
+
     $scope.cancelStudentActiveSession = function(session) {
 
               //guru goes back to session 'pending', maybe clicked start by accident
@@ -144,15 +170,18 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         } else {
           $scope.pending_rating.student_rate_guru = true;
           $scope.pending_rating.guru_rating = parseInt($scope.root.vars.starsSelected);
-
         }
 
         var ratingPayload = $scope.pending_rating;
 
         var serverCallback = function() {
           $scope.loader.hide();
-          $scope.launchPendingActions();
+          // $timeout(function() {
+          //   $scope.launchPendingActions();
+          // }, 500);
         }
+
+        $scope.success.show(0, 1500, 'Rating Saved!');
 
         $scope.loader.show();
 
@@ -201,7 +230,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             });
     }
 
-    $scope.launchPendingActions = function() {
+    $scope.root.vars.launchPendingActions = function() {
 
             //priority 1: see if any ratings are allowed
 
@@ -210,11 +239,15 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         var rating = $scope.user.pending_guru_ratings[0];
         //pop the first item
 
-        $scope.user.pending_guru_ratings.shift();
+        // $scope.user.pending_guru_ratings.shift();
 
         $scope.pending_rating = rating;
 
-        $scope.launchStudentRatingsModal(rating);
+        // $scope.launchStudentRatingsModal(rating);
+
+        if(!$scope.studentRatingsModal || !$scope.studentRatingsModal.isShown()) {
+          $scope.launchStudentRatingsModal(rating);
+        }
 
         //no reason to
         return;
@@ -242,6 +275,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
 
     }
+
+    $scope.launchPendingActions = $scope.root.vars.launchPendingActions;
 
   $ionicPlatform.ready(function() {
 
@@ -311,7 +346,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     };
 
     $scope.launchRequestModal = function(index, verb_index) {
-      if ($scope.root.vars.courses) {
+      //UNDO
+      // if ($scope.root.vars.courses) {
 
 
 
@@ -340,14 +376,80 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             }
 
           });
-
-      } else {
-        alert('courses are not loaded yet');
-      }
+      //UNDO
+      // } else {
+      //   alert('courses are not loaded yet');
+      // }
     }
 
+
+
+
+
     $scope.launchContactingModal = function() {
+
       $scope.contactingModal.show();
+    }
+
+    $scope.cancelActiveSession = function(session) {
+
+
+      //before guru is matched
+      if (session.request.status === 0) {
+
+        $scope.cancelRequest(session.request);
+        return;
+
+      }
+
+      $scope.root.vars.active_session = session;
+
+      //after guru is matched
+      var dialogCallBackSuccess = function() {
+        //guru cancels session
+        $scope.success.show(0, 2000, $scope.root.vars.active_session.request.course_name + ' successfully canceled!');
+        var canceled_session = $scope.root.vars.active_session;
+
+        canceled_session.status = 4;
+
+        var sessionPayload = {session: canceled_session}
+
+        $scope.user.previous_student_sessions.push(canceled_session);
+
+        //remove session locally from active guru session
+        $scope.root.util.removeObjectByKey($scope.user.active_student_sessions, 'id', canceled_session.id);
+
+        //update session locally
+        $scope.root.util.updateObjectByKey($scope.user.student_sessions, 'id', canceled_session.id, 'status', 5);
+          //Mixpanel Track
+
+
+        $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope);
+
+        $scope.root.vars.active_session = null;
+
+        if ($state.current.name === 'root.student-session') {
+          $scope.goBack();
+        }
+      }
+
+      var dialog = {
+        message: "Are you sure? This will be closely investigated by us and may impact your Guru ranking.",
+        title: "Cancel Session",
+        button_arr: ['Never Mind', 'Cancel Session'],
+        callback_arr: [null, dialogCallBackSuccess]
+      }
+
+      if ($scope.platform.web) {
+        if (confirm('Are you sure? \n' + dialog.message)) {
+            dialogCallBackSuccess();
+        }
+      }
+
+      else {
+          $scope.root.dialog.confirm(dialog.message, dialog.title, dialog.button_arr, dialog.callback_arr);
+      }
+
     }
 
 
@@ -368,18 +470,16 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.verbModal.hide();
     }
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/student.request.incoming.modal.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.incomingGuruModal = modal;
-    });
-
-
 
     $scope.initAndShowIncomingRequestModal = function() {
 
-        $scope.incomingGuruModal.show();
+       $ionicModal.fromTemplateUrl(BASE + 'templates/student.request.incoming.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.incomingGuruModal = modal;
+            $scope.incomingGuruModal.show();
+        });
 
     }
 
@@ -390,13 +490,18 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     }
 
-    $scope.processIncomingRequests = function(incoming_requests) {
+    $scope.root.vars.processIncomingRequests = function(incoming_requests) {
 
       if (incoming_requests.length === 0) {
         return;
       }
 
+      if ($scope.root.vars.active_processing) {
+        console.log('we have already began processing');
+        return;
+      }
 
+      $scope.root.vars.active_processing = true;
       //get first one out of array
       var incoming_request = incoming_requests[0];
       console.log(incoming_request);
@@ -407,17 +512,30 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       //get first one out of array
       $scope.incoming_request = incoming_request;
 
+      $scope.success.show(0, 2500, '<span class="center">You have 1 new request <br> Loading....  </span>')
+
       //get first one out of array
-      $scope.initAndShowIncomingRequestModal();
+      $timeout(function() {
+        console.log('incoming requests');
+        $scope.initAndShowIncomingRequestModal();
 
 
-      var processed_time = $scope.processTimeEstimate($scope.incoming_request.time_estimate);
+        var processed_time = $scope.processTimeEstimate($scope.incoming_request.time_estimate);
 
-      $scope.incoming_request.time_estimate = {hours: processed_time[0], minutes:processed_time[1]};
+        $scope.incoming_request.time_estimate = {hours: processed_time[0], minutes:processed_time[1]};
 
-      $scope.incoming_request.tags = ['milleniumfalcon'];
+        // $scope.incoming_request.tags = ['milleniumfalcon'];
+
+        $scope.root.vars.active_processing = false;
+
+
+      }, 2500);
 
     }
+
+    $scope.processIncomingRequests = $scope.root.vars.processIncomingRequests;
+
+
 
      $scope.createGoogleLatLng = function(latCoord, longCoord) {
             return new google.maps.LatLng(latCoord, longCoord);
@@ -479,8 +597,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.loader.show()
 
         var closeModalAndShowSessionStatus = function($scope, $state) {
-          $scope.loader.hide();
-          $scope.incomingGuruModal.hide();
+          console.log('closing modal call back from student accept guru')
+          $timeout(function() {
+            $scope.incomingGuruModal.hide();
+          }, 500);
+          $timeout(function() {
+            $scope.loader.hide();
+          }, 1000);
         }
 
         $scope.user.createObj($scope.user, 'sessions', $scope.incoming_request, $scope, closeModalAndShowSessionStatus);
@@ -546,7 +669,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       var acceptQuestionCallback = function() {
 
         requestObj = $scope.incoming_request;
-        requestObj.status = 12;
+        requestObj.status = 15;
 
           //remove request from array
         $scope.root.util.removeObjectByKey($scope.user.incoming_requests, 'id', $scope.incoming_request.id);
@@ -635,72 +758,49 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       });
 
-    $scope.togglePaymentSideBarView = function() {
-      $scope.root.vars.show_price_fields = !$scope.root.vars.show_price_fields;
-      if ($scope.root.vars.show_price_fields) {
-        $timeout(function() {
-
-          var sidebar_input = document.getElementById('card-input')
-          console.log(sidebar_input);
-          sidebar_input.focus();
-
-        }, 500);
-      }
-    }
 
      $scope.$on('$ionicView.enter', function() {
-
+        console.log('\n\nview has entered\n\n')
         //user has incoming request for help
         if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
-          $timeout(function() {
             $scope.processIncomingRequests($scope.user.incoming_requests);
-          }, 500)
         }
 
         //student specific functions
         if ($scope.user && $scope.user.active_student_sessions
           && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
 
-                console.log('checking for user actions...');
-                $scope.launchPendingActions();
+                $scope.root.vars.launchPendingActions();
 
         }
 
-        // $scope.launchPendingActions();
-
     });
+
+
 
     document.addEventListener("resume", function() {
 
 
-        console.log('device resumed... checking student actions');
+        console.log('\n\nview has resumed\n\n')
 
         if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
-          $scope.processIncomingRequests($scope.user.incoming_requests);
+
+            $scope.processIncomingRequests($scope.user.incoming_requests);
         }
 
         //student specific functions
         if ($scope.user && $scope.user.active_student_sessions
           && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
 
-                $scope.launchPendingActions();
+                $scope.root.vars.launchPendingActions();
 
         }
 
     }, false);
 
-
-    // $timeout(function(){
-
-    //   $ionicSideMenuDelegate.toggleRight();
-    //   $timeout(function() {
-    //     $scope.togglePaymentSideBarView();
-    //     // $timeout(function() {
-    //     //   $scope.beforeEnterFunctionTrigger();
-    //     // }, 1000);
-    //   }, 500)
-
-    // }, 1000)
+    // $timeout(function() {
+    //   $state.go('^.become-guru');
+    // }, 4000)
 
   }
 

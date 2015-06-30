@@ -53,6 +53,7 @@ angular.module('uguru.util.controllers')
             //focus the input
             tags_input.focus();
 
+
             tags_input.addEventListener( 'keyup', function( e ) {
                 if(e.which === 13 && tags_input.value.length > 0) {
                     $scope.saveTag();

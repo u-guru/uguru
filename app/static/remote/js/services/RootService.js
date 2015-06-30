@@ -9,7 +9,8 @@ angular.module('uguru.root.services', [])
     '$ionicHistory',
     '$ionicViewSwitcher',
     '$state',
-    function($cordovaKeyboard, $localstorage, $timeout, $cordovaProgress, $cordovaDialogs, $ionicHistory, $ionicViewSwitcher, $state) {
+    '$ionicPlatform',
+    function($cordovaKeyboard, $localstorage, $timeout, $cordovaProgress, $cordovaDialogs, $ionicHistory, $ionicViewSwitcher, $state, $ionicPlatform) {
 
     this.util = {
         objectFindByKey: function(array, key, value) {
@@ -69,17 +70,54 @@ angular.module('uguru.root.services', [])
             }
             interval = Math.floor(seconds / 86400);
             if (interval > 1) {
-                return interval + " days";
+                return interval + "d ago";
             }
             interval = Math.floor(seconds / 3600);
             if (interval > 1) {
-                return interval + " hours";
+                return interval + "hr ago";
             }
             interval = Math.floor(seconds / 60);
             if (interval > 1) {
-                return interval + " minutes";
+                return interval + "m ago";
             }
-            return Math.floor(seconds) + " seconds";
+            return Math.floor(seconds) + "s ago";
+        },
+
+        formatHoursAndMinutes: function(date_obj, is_end_time) {
+            var hours = date_obj.hours;
+            var minutes = date_obj.minutes;
+
+            result = ''
+
+            //if 12am
+            if (hours === 0 || hours === 12) {
+                result += '12';
+            }
+
+            else if (hours > 0 && hours < 12) {
+                result += hours;
+            }
+
+            else if (hours > 12 && hours <= 23) {
+                result += hours % 12
+            }
+
+
+
+            //format minutes
+            if (minutes > 0 && minutes === 30) {
+                result += ':30'
+            }
+
+            if (is_end_time && hours >= 12) {
+                result += 'pm';
+            }
+
+            if (is_end_time && hours < 12) {
+                result += 'am';
+            }
+
+            return result
         }
 
     }
@@ -119,6 +157,34 @@ angular.module('uguru.root.services', [])
             }
 
         },
+        openAndroid: function() {
+            if (ionic.Platform.isAndroid() && window.cordova && window.cordova.plugins.Keyboard) {
+                window.cordova.plugins.Keyboard.show();
+            }
+        }
+    }
+
+    this.slider = {
+        hide: function() {
+            var element_arr = document.getElementsByClassName('slider-pager');
+
+            if (element_arr && element_arr.length > 0) {
+                element_arr[0].style.display = "none";
+            }
+        },
+        show: function() {
+            var element_arr = document.getElementsByClassName('slider-pager');
+            if (element_arr && element_arr.length > 0) {
+                element_arr[0].style.display = "block";
+            }
+        },
+        shiftUp: function(amount) {
+            var element_arr = document.getElementsByClassName('slider-pager');
+            if (element_arr && element_arr.length > 0) {
+                element_arr[0].style.marginBottom = amount +'px';
+            }
+        }
+
     }
 
     this.progress = {
@@ -174,7 +240,7 @@ angular.module('uguru.root.services', [])
           });
         },
 
-        confirm: function(msg, title, button_array, arr_callback) {
+        confirm: function(msg, title, button_array, arr_callback, $scope) {
           $cordovaDialogs.confirm(msg, title, button_array).then(function(button_index) {
             if (button_index === 1) {
                 if (arr_callback[0]) {

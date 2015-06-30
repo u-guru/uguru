@@ -1,6 +1,5 @@
-<ion-side-menus>
-<ion-side-menu-content>
-  <ion-modal-view hide-nav-bar ='true' class='price-modal' ng-controller='PaymentsController'>
+
+  <ion-modal-view hide-nav-bar ='true' class='price-modal'>
     <ion-content class='white-text dark-bg' scroll='false' >
       <div class='pure-g-c flex-column flex-space-between'>
 
@@ -75,16 +74,20 @@
             <div class='pure-g'>
               <div class='pure-u-1 padding-horizontal-2em'>
 
-                <button class='button button-full button-blue blue-bg white-text center' ng-click='submitRequest()' ng-show='user.cards &&user.cards.length > 0'>
+                <button class='button button-full button-blue blue-bg white-text center' ng-click='submitRequest()' ng-show='user.payment_cards &&user.payment_cards.length > 0'>
                   Submit my question!
                 </button>
 
-                <button class='button button-full button-blue blue-bg white-text center' ng-click='addCard()' ng-show='user.cards &&user.cards.length === 0'>
+                <button class='button button-full button-blue blue-bg white-text center' ng-click='launchPaymentsModal()' ng-show='user && user.id && user.payment_cards &&user.payment_cards.length === 0'>
                   <div class='pure-u-1 item-icon-left item-icon-right' style='font-size:90%;'>
-                    <i class='icon ion-card icon'> </i>
-
                      Add a card
-                     <i class='icon ion-arrow-right-b icon-small'> </i>
+                  </div>
+                </button>
+
+                <button class='button button-full button-blue blue-bg white-text center' ng-click='launchSignupModal()' ng-show='user && !user.id'>
+                  <div class='pure-u-1' style='font-size:90%;'>
+
+                     Next Step
                   </div>
                 </button>
 
@@ -103,11 +106,3 @@
       </div>
   </ion-content>
 </ion-modal-view>
-</ion-side-menu-content>
-
-
-<ion-side-menu side="right" width='300' >
-              <div ng-include="img_base + BASE + 'templates/components.side-menu.html'"></div>
-</ion-side-menu>
-
-</ion-side-menus>

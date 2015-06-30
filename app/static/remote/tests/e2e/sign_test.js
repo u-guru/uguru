@@ -2,7 +2,7 @@ var settingButton = element(by.id('settings-button'));
 var connectFB = element(by.css('[ng-click="signupFacebook()"]'))
 var logoff = element(by.css('[ng-click="logoutUser()"]'))
 describe('Testing Home Page', function () {
-
+/*
   beforeEach(function () {
 
         browser.manage().window().setSize(414, 736);
@@ -11,7 +11,7 @@ describe('Testing Home Page', function () {
         settingButton.click();
         
         //expect(connectFB.isEnabled()).toBe(true);
-            connectFB.click();
+        connectFB.click();
             //Switch Screen
             browser.getAllWindowHandles().then(function (handles) {
               // switch to the popup
@@ -33,7 +33,11 @@ describe('Testing Home Page', function () {
             }, 10000);
 
     },30000);
-
+*/
+    beforeEach(function()
+        {
+            browser.driver.ignoreSynchronization = true;
+        });
         //Cancel is Disabled
         it('is Login', function () {
            
@@ -42,7 +46,7 @@ describe('Testing Home Page', function () {
            logoff.click();    
 
            });
-            browser.sleep(5000);
+           browser.sleep(5000);
 
                         
 

@@ -23,6 +23,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicActionSheet)     {
 
 
+  $scope.showActive = true;
+
   document.addEventListener("deviceready", function () {
     $scope.turnStatusBarWhiteText = function() {
       $timeout(function() {
@@ -36,34 +38,119 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
   });
 
-  // functions relevant to these sections
-    $scope.goToSessionDetails = function(session) {
-      $ionicViewSwitcher.nextDirection('forward');
-      $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
+  $scope.showPreviousActions = function(index) {
+      if (!$scope.user.previous_proposals || $scope.user.previous_proposals.length === 0) {
+        $scope.success.show(0, 2000, 'Sorry! No history yet. Update your profile to get more requests!');
+      } else {
+        $scope.showActiveToggle(index);
+      }
     }
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.in-session.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.guruInSessionModal = modal;
-        });
+  $scope.showActiveToggle = function(index) {
+      if (index === 1 && $scope.showActive) {
+        $scope.showActive = !$scope.showActive;
+      }
+
+      if (index === 0 && !$scope.showActive) {
+        $scope.showActive = !$scope.showActive;
+      }
+
+  }
+
+
+  // functions relevant to these sections
+      $scope.goToSessionDetails = function(session) {
+        $ionicViewSwitcher.nextDirection('forward');
+        $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
+      }
+
+     $scope.cancelProposal = function(proposal) {
+      if (confirm('Are you sure you want to cancel this?')) {
+        var request = proposal.request;
+        request.status = 5;
+        $scope.user.updateObj($scope.user, 'requests', request, $scope);
+
+
+        if (request._type !== 2) {
+          var cancelMsg = request.course.short_name + ' request canceled';
+        } else {
+          var cancelMsg = request.category +  ' Task canceled';
+        }
+
+
+
+        $scope.success.show(0, 2000, cancelMsg);
+        $scope.root.util.removeObjectByKey($scope.user.pending_proposals, 'id', proposal.id);
+      }
+    }
+
+    $scope.cancelActiveSession = function(session) {
+      console.log('calling cancel');
+
+
+
+      var canceled_session = session;
+
+      var dialogCallBackSuccess = function() {
+        //guru cancels session
+        canceled_session.status = 5;
+
+        var sessionPayload = {session: canceled_session}
+
+        $scope.user.previous_guru_sessions.push(canceled_session);
+
+        //remove session locally from active guru session
+        $scope.root.util.removeObjectByKey($scope.user.active_guru_sessions, 'id', canceled_session.id);
+
+        //update session locally
+        $scope.root.util.updateObjectByKey($scope.user.guru_sessions, 'id', canceled_session.id, 'status', 5);
+          //Mixpanel Track
+
+        $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope);
+
+        $scope.success.show(0, 2000, 'Request successfully canceled');
+
+        $scope.closeAttachActionSheet();
+
+        $scope.goBack();
+      }
+
+      var dialog = {
+        message: "Are you sure? This will be closely investigated by us and may impact your Guru ranking.",
+        title: "Cancel Session",
+        button_arr: ['Never Mind', 'Cancel Session'],
+        callback_arr: [null, dialogCallBackSuccess]
+      }
+
+      if ($scope.platform.web) {
+        if (confirm('Are you sure? \n' + dialog.message)) {
+            dialogCallBackSuccess();
+        }
+      }
+
+      else {
+          $scope.root.dialog.confirm(dialog.message, dialog.title, dialog.button_arr, dialog.callback_arr);
+      }
+
+    }
+
+
+
 
 
     // functions relevant to these sections
     $scope.launchGuruInSessionModal = function() {
 
-      $scope.guruInSessionModal.show();
-
-    }
-
-    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.session.modal.html', {
+      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.session.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function(modal) {
             $scope.guruSessionDetailsModal = modal;
+            $scope.guruInSessionModal.show();
 
-    });
+      });
+
+    }
 
     $scope.launchGuruSessionDetailsModal = function() {
 
@@ -72,20 +159,21 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     }
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.ratings.modal.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.guruRatingsModal = modal;
-    });
+
 
     $scope.launchGuruRatingsModal = function(rating) {
-
+        console.log('rating 2', rating);
 
         $scope.pending_rating = rating;
         $scope.starsSelected;
 
-        $scope.guruRatingsModal.show();
+        $ionicModal.fromTemplateUrl(BASE + 'templates/guru.ratings.modal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.guruRatingsModal = modal;
+            $scope.guruRatingsModal.show();
+        });
 
     }
 
@@ -127,6 +215,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     }
 
+    $scope.goToCashOut = function() {
+      $ionicViewSwitcher.nextDirection('forward');
+      $state.go('^.cashout');
+    }
+
     $scope.submitGuruRatingServer = function () {
       if ($scope.root.vars.guru_mode) {
 
@@ -144,7 +237,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       var serverCallback = function() {
         $scope.loader.hide();
-        $scope.launchPendingActions();
+        $timeout(function() {
+            $scope.launchPendingActions();
+          }, 500);
       }
 
       $scope.loader.show();
@@ -219,7 +314,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
 
 
-    $scope.launchPendingActions = function() {
+    $scope.root.vars.launchPendingActions = function() {
+
+      if ($state.current.name !== 'root.guru') {
+        return;
+      }
 
       //priority 1: see if any ratings are allowed
 
@@ -229,11 +328,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         //pop the first item
 
-        $scope.user.pending_student_ratings.shift();
+        // $scope.user.pending_student_ratings.shift();
 
         $scope.pending_rating = rating;
 
-        if(!$scope.guruRatingsModal.isShown()) {
+        if( !$scope.guruRatingsModal || !$scope.guruRatingsModal.isShown()) {
           $scope.launchGuruRatingsModal(rating);
         }
 
@@ -242,28 +341,42 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       }
 
+
       //see if any sessions are going on right now
 
       for (var i = 0 ; i < $scope.user.active_guru_sessions.length; i ++) {
 
             var session = $scope.user.active_guru_sessions[i];
+
             if (session.status === 2) {
+              $scope.success.show(0, 1500, 'You have 1 active session <br> Loading...')
               $scope.session = session;
-              $timeout(function() {
+              $scope.root.vars.guru_active_session = session;
 
-                $scope.details = {show: true};
+              $ionicModal.fromTemplateUrl(BASE + 'templates/guru.in-session.modal.html', {
+                  scope: $scope,
+                  animation: 'slide-in-up'
+              }).then(function(modal) {
+                  $scope.guruInSessionModal = modal;
+                  $scope.details = {show: true};
 
 
-                if (!$scope.guruInSessionModal.isShown()) {
-                  $scope.launchGuruInSessionModal();
-                }
+                  if (!$scope.guruInSessionModal.isShown()) {
+                    $timeout(function() {
+                      $scope.launchGuruInSessionModal();
+                    }, 500)
+                  }
+              });
 
-              }, 500);
             }
 
       }
 
+      $scope.loader.hide();
+
     }
+
+    $scope.launchPendingActions = $scope.root.vars.launchPendingActions;
 
 
 
@@ -290,26 +403,47 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
       }
 
-      $scope.processActiveProposalsGuru = function(active_proposals) {
+      $scope.root.vars.processActiveProposalsGuru = function(active_proposals) {
 
-          if (active_proposals.length === 0) {
+          if ($state.current.name !== 'root.guru') {
             return;
           }
 
+          if (active_proposals.length === 0 || !$scope.root.vars.guru_mode) {
+            return;
+          }
+
+          if ($scope.root.vars.active_processing_guru) {
+            console.log('we have already began processing');
+            return;
+          }
+
+          $scope.root.vars.active_processing_guru = true;
+
           var first_proposal = active_proposals[0];
+          console.log($scope.user, active_proposals)
           active_proposals.shift();
           $scope.featuredProposal = first_proposal;
           $scope.proposal = $scope.featuredProposal;
-          $scope.initAndShowProposalModal();
 
 
-          var processed_time = $scope.processTimeEstimate($scope.proposal.request.time_estimate);
 
-          $scope.proposal.request.time_estimate = {hours: processed_time[0], minutes:processed_time[1]};
+
+          $scope.success.show(0, 2500, '<span class="center">You have 1 new request <br> Loading....  </span>')
+
+          $timeout(function() {
+            $scope.initAndShowProposalModal();
+          }, 2000);
+
+          // var processed_time = $scope.processTimeEstimate($scope.proposal.request.time_estimate);
+
+          // $scope.proposal.request.time_estimate = {hours: processed_time[0], minutes:processed_time[1]};
 
           // $scope.proposal.request.tags = ['milleniumfalcon'];
 
       }
+
+      $scope.processActiveProposalsGuru = $scope.root.vars.processActiveProposalsGuru;
 
       $scope.processTimeEstimate = function(minutes) {
         num_hours = Math.floor(Math.round((minutes / 60.0) * 100) / 100);
@@ -334,6 +468,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }, 2000)
       }
 
+      console.log($scope.user);
 
 
       $scope.acceptIncomingStudentProposal = function() {
@@ -342,33 +477,26 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         proposalObj.status = 2; //guru accepted
         proposalObj.proposal = true;
 
-        //fake it for now...r
+        //fake it for now...
 
-        $scope.deleteProposalFromList($scope.proposal, $scope.user.active_proposals);
+        // if (!$scope.user.pending_proposals) {
+        //   $scope.user.pending_proposals = [];
+        // }
 
-        if (!$scope.user.pending_proposals) {
-          $scope.user.pending_proposals = [];
+        // $scope.user.pending_proposals.push(proposalObj);
+
+        var closeModalAfterUpdate = function($scope, $state) {
+          $timeout(function() {
+            $scope.incomingStudentSessionProposal.hide();
+          }, 500)
+          $timeout(function() {
+            $scope.loader.hide();
+            alert("Student request accepted. We'll let you know if they choose you! \n See below for progress");
+          }, 1000)
         }
 
-        $scope.user.pending_proposals.push(proposalObj);
-
-
-        $scope.user.updateObj($scope.user, 'requests', proposalObj, $scope);
-
-        alert("Student request accepted. We'll let you know if they choose you! \n See below for progress");
-          //Mixpanel Track
-
-
-
-        $scope.incomingStudentSessionProposal.hide();
-
-
-        //timeout
-        $timeout(function() {
-
-          $scope.processActiveProposalsGuru($scope.user.active_proposals);
-
-        }, 500);
+        $scope.loader.show();
+        $scope.user.updateObj($scope.user, 'requests', proposalObj, $scope, closeModalAfterUpdate);
 
       }
 
@@ -415,10 +543,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               request: proposal.request
             }
 
-            $scope.guruSessionDetailsModal.show();
+            // $scope.guruSessionDetailsModal.show();
 
-            // $ionicViewSwitcher.nextDirection('forward');
-            // $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
+            $ionicViewSwitcher.nextDirection('forward');
+            $state.go('^.guru-session', {sessionObj:JSON.stringify(session)})
         }
 
         $scope.createGoogleLatLng = function(latCoord, longCoord) {
@@ -450,7 +578,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           initMapCoords = $scope.createGoogleLatLng(parseFloat($scope.proposal.request.position.latitude),parseFloat($scope.proposal.request.position.longitude))
           var mapOptions = {
             center: initMapCoords,
-            zoom: 10,
+            zoom: 14,
             disableDefaultUI: true,
             draggable: false,
             zoomControl: false,
@@ -491,24 +619,20 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         $scope.$on('$ionicView.enter', function() {
             console.log('checking for pending actions...');
-            //user has incoming request for help
-            if ($scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
 
 
-                    $scope.processActiveProposalsGuru($scope.user.active_proposals);
+            $scope.doRefresh();
 
+            if ($scope.user && $scope.user.active_guru_sessions && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
 
-            }
+                  $timeout(function() {
+                    $scope.root.vars.launchPendingActions();
+                  }, 1000)
 
-            if ($scope.user && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
-
-
-
-                    $scope.launchPendingActions();
-                    //check to see if any of the guru sessions are active
-
+                  //check to see if any of the guru sessions are active
 
             }
+
 
         });
 
@@ -518,24 +642,22 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           if ($scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
 
 
-                    $scope.processActiveProposalsGuru($scope.user.active_proposals);
+                    $scope.root.vars.processActiveProposalsGuru($scope.user.active_proposals);
 
 
           }
 
-          if ($scope.user && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
+          if ($scope.user && $scope.user.active_guru_sessions && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
 
-
-
-                  $scope.launchPendingActions();
-                  //check to see if any of the guru sessions are active
+                  $timeout(function() {
+                    $scope.root.vars.launchPendingActions();
+                  }, 1000)
 
 
           }
 
 
         }, false);
-
 
 
 

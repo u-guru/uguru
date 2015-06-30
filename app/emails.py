@@ -118,8 +118,10 @@ def send_transactional_email(subject, content, receiver, tags):
         print "testing: email skipped intended for", receiver.email, subject, tags
 
     else:
-        result = mandrill_client.messages.send(message=message)
-        return result
+        print "production: email turned off for now", receiver.email, subject, tags
+
+        # result = mandrill_client.messages.send(message=message)
+        # return result
 
 def compose_email_notif_message(notif_key, args_tuple):
     return str(email_notif_copy[notif_key] % args_tuple)
@@ -148,15 +150,35 @@ def send_message_to_receiver_support(sender, receiver):
     print result
 
 def send_student_request_to_guru(_request, guru):
-    args_tuple = (
-        _request.DEFAULT_PRICE,
-        _request.time_estimate,
-        _request.student.name.split(" ")[0],
-        _request.course.short_name.upper()
-    )
 
-    email_subject = '1 New ' + _request.course.short_name.upper() + ' Request From' + guru.name.split(' ')[0].upper()
-    email_message = compose_email_notif_message('student_request', args_tuple)
+    message_string = 'student_request'
+    if _request.course and _request._type == 0:
+        args_tuple = (
+            _request.DEFAULT_PRICE,
+            _request.time_estimate,
+            _request.student.name.split(" ")[0],
+            _request.course.short_name.upper()
+        )
+
+        email_subject = '1 New ' + _request.course.short_name.upper() + ' Request From' + guru.name.split(' ')[0].upper()
+
+    if _request._type == 1:
+        message_string = "student_question"
+        args_tuple = (
+            _request.course.short_name.upper()
+        )
+
+        email_subject = '1 New ' + _request.course.short_name.upper() + ' Question. Check it out now!'
+
+    if _request._type == 2:
+        message_string = "student_task"
+        args_tuple = (
+            _request.category
+        )
+
+        email_subject = '1 New ' + _request.category + ' Task. Check it out now!'
+
+    email_message = compose_email_notif_message(message_string, args_tuple)
     email_receiver = guru
     email_tags = "guru-receives-request"
 
@@ -220,6 +242,9 @@ def send_campaign_email_test(campaign_name, template_name,
 
 email_notif_copy = {
     "student_request": """Make $%s total in %smin helping %s in %s. Swipe for more details & increase response rate""",
+
+    "student_question": """A student posted a question for %s. Answer it now before it expires!""",
+    "student_task": """A student posted a %s task. Check it out now before its taken!""",
 
     "guru_can_help": """%s can help! Swipe for more details. %s min until this expires.""",
 

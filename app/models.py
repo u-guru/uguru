@@ -64,6 +64,12 @@ user_tag_table = Table('user-tag_assoc',
     Column('user_id', Integer, ForeignKey('user.id')),
     Column('tag_id', Integer, ForeignKey('tag.id')))
 
+guru_skill_table = Table('user-skill_assoc',
+    Base.metadata,
+    Column('skill_id', Integer, ForeignKey('skill.id')),
+    Column('user_id', Integer, ForeignKey('user.id'))
+    )
+
 student_resource_table = Table('user-resource_assoc',
     Base.metadata,
     Column('user_id', Integer, ForeignKey('user.id')),
@@ -79,6 +85,7 @@ resource_tag_table = Table('resource-tag_assoc',
     Base.metadata,
     Column('resource_id', Integer, ForeignKey('resource.id')),
     Column('tag_id', Integer, ForeignKey('tag.id')))
+
 
 class User(Base):
     __tablename__ = 'user'
@@ -112,7 +119,9 @@ class User(Base):
     time_created = Column(DateTime)
 
 
-    current_hourly = Column(Float)
+    current_hourly = Column(Float, default= 10.0)
+    max_hourly = Column(Float)
+
     uber_friendly = Column(Boolean)
     summer_15 = Column(Boolean)
     outside_university = Column(Boolean)
@@ -124,6 +133,11 @@ class User(Base):
         secondary = student_courses_table,
         backref = backref('students', lazy='dynamic')
         )
+
+    guru_skills = relationship("Skill",
+        secondary = guru_skill_table,
+        backref= backref('gurus', lazy='dynamic')
+    )
 
     student_resources = relationship("Resource",
         secondary= student_resource_table,
@@ -281,7 +295,7 @@ class User(Base):
 
     def request_active(self, course_id, _type):
         for _request in self.requests:
-            if _request.course_id == course_id and _request.is_active() and request._type == _type:
+            if _request.course_id == course_id and _request.is_active() and _request._type == _type:
                 return True
         return False
 
@@ -329,7 +343,7 @@ class Calendar(Base):
     def initFromRequest(_request, number_of_days = 2):
         c = Calendar()
         c.time_created = datetime.now()
-        c.request_id = _request.id
+        # c.request_id = _request.id
         c.number_of_days = number_of_days
         db_session.add(c)
         try:
@@ -390,7 +404,7 @@ class Calendar_Event(Base):
         date_now = datetime.now()
         print 'date_now', date_now
         try:
-            day_offset = date_now.replace(day=(date_now.day + day_offset), minute=0, second=0, microsecond=0)
+            day_offset = date_now.replace(day=(date_now.day + day_offset - 1), minute=0, second=0, microsecond=0)
         except ValueError:
             print 'Value Error! Resolving it now...'
             if date_now.day >= 27:
@@ -401,8 +415,8 @@ class Calendar_Event(Base):
         print start_time, end_time
         print type(start_time), type(end_time)
 
-        calendar_event.start_time = day_offset.replace(hour=start_time)
-        calendar_event.end_time = day_offset.replace(hour=end_time)
+        calendar_event.start_time = day_offset.replace(hour=start_time.get('hours'), minute=start_time.get('minutes'))
+        calendar_event.end_time = day_offset.replace(hour=end_time.get('hours'), minute=end_time.get('minutes'))
 
 
         calendar_event.location = event_json.get('location')
@@ -495,20 +509,6 @@ class University(Base):
     school_population = Column(Integer)
     is_public = Column(Boolean)
 
-    # User contributed university
-    # def __init__(self, name=None, user_id=None, _id=None):
-    #     if _id:
-    #         self.id = _id
-    #     self.name = name
-    #     self.last_updated = datetime.now()
-    #     self.contributed_user_id = user_id
-
-    #     db_session.add(self)
-    #     try:
-    #         db_session.commit()
-    #     except:
-    #         db_session.rollback()
-    #         raise
 
     @staticmethod
     def admin_create(args_dict, _id):
@@ -525,18 +525,6 @@ class University(Base):
         u.city = args.get('city')
         u.state = args.get('state')
         u.admin_approved = True
-
-        # if args.get('location'):
-        #     u.address = args.get('location').get('full_address')
-        #     u.state = args.get('location').get('state')
-        #     u.short_state = args.get('location').get('state_short')
-        #     u.city = args.get('location').get('city')
-        #     u.city_short = args.get('location').get('city_short')
-        #     u.latitude = args.get('location').get('latitude')
-        #     u.longitude = args.get('location').get('longitude')
-        #     u.latitude = args.get('location').get('latitude')
-        #     if args.get('location').get('zip_code'):
-        #         u.zip_code = int(args.get('location').get('zip_code').split("-")[0])
 
         try:
             db_session.commit()
@@ -832,6 +820,10 @@ class Tag(Base):
 
     time_created = Column(DateTime)
 
+    is_profession = Column(Boolean)
+
+    admin_approved = Column(Boolean, default = False)
+
     creator_id = Column(Integer, ForeignKey('user.id'))
     creator = relationship("User",
         primaryjoin="User.id==Tag.creator_id",
@@ -869,28 +861,40 @@ class Request(Base):
     GURU_CANCELED_SEARCHING_AGAIN = 5
     NO_GURUS_AVAILABLE = 6
 
-    GURU_CANCEL_SESSION = 5
-    STUDENT_RATED = 6
-    GURU_RATED = 7
-    BOTH_RATED = 8
-    STUDENT_REFUND = 9
-    GURU_NO_SHOW = 10
-    STUDENT_NO_SHOW = 11
+    GURU_CANCEL_SESSION = 7
+    STUDENT_CANCEL_SESSION = 8
+
+    GURU_RATED = 9
+    STUDENT_RATED = 10
+    BOTH_RATED = 11
+
+    STUDENT_REFUND = 12
+    GURU_NO_SHOW = 13
+    STUDENT_NO_SHOW = 14
     DEFAULT_PRICE = 20
 
-    GURU_REQUEST = 0
+    # GURU_REQUEST = 0
 
-    QUESTION_ACCEPTED = 12
+    QUESTION_ACCEPTED = 15
+    QUESTION_ANSWERED = 16
+    QUESTION_COMPLETE = 17
 
 
     id = Column(Integer, primary_key=True)
 
     time_created = Column(DateTime)
+    time_accepted = Column(DateTime)
+
+
     description= Column(String)
     status = Column(Integer, default = 0) #0 = pending, # 1 = matched, # 2 = canceled, # 3 = expired
     session = relationship("Session", uselist=False, backref="request")
     position = relationship("Position", uselist=False, backref="request")
     queue = relationship("Queue", uselist=False, backref="request")
+
+    rating_id = Column(Integer, ForeignKey("rating.id"))
+    transaction_id = Column(Integer, ForeignKey("transaction.id"))
+
 
     student_calendar_id = Column(Integer, ForeignKey('calendar.id'))
     student_calendar = relationship("Calendar",
@@ -904,11 +908,18 @@ class Request(Base):
         uselist=False
         )
 
+    university_id = Column(Integer, ForeignKey('university.id'))
+    university = relationship("University",
+        primaryjoin="University.id==Request.university_id",
+        uselist=False,
+        backref="requests")
+
     address = Column(String)
     in_person = Column(Boolean)
     online = Column(Boolean)
     time_estimate = Column(Integer)
 
+    category = Column(String)
 
     contact_email = Column(Boolean)
     contact_push = Column(Boolean)
@@ -919,11 +930,13 @@ class Request(Base):
 
     student_price = Column(Float)
 
+    guru_hourly = Column(Float)
+
     _type = Column(Integer, default = 0)
 
     task_title = Column(String)
     verb_image = Column(String)
-    inital_status = Column(String)
+    inital_status = Column(String) #TODO CURRENT STATUS
 
 
     giphy_url = Column(String)
@@ -934,6 +947,8 @@ class Request(Base):
         primaryjoin = "Course.id == Request.course_id",
         backref="requests"
     )
+
+
 
     student_id = Column(Integer, ForeignKey('user.id'))
     student = relationship("User",
@@ -1016,6 +1031,11 @@ class Proposal(Base):
 
     time_created = Column(DateTime)
     time_updated = Column(DateTime)
+    time_answered = Column(DateTime)
+
+    # is_task = Column(Boolean)
+    # is_session = Column(Boolean)
+    # is_question = Column(Boolean)
 
     student_price = Column(Float)
     guru_price = Column(Float)
@@ -1039,7 +1059,6 @@ class Proposal(Base):
 
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
-        uselist=False,
         primaryjoin = "User.id == Proposal.guru_id",
         backref="proposals"
     )
@@ -1554,6 +1573,10 @@ class Rating(Base):
     __tablename__ = 'rating'
     id = Column(Integer, primary_key=True)
 
+    time_created = Column(DateTime)
+    time_student_rated = Column(DateTime)
+    time_guru_rated = Column(DateTime)
+
     student_time_rated = Column(DateTime)
     guru_time_rated = Column(DateTime)
 
@@ -1566,6 +1589,14 @@ class Rating(Base):
     support = relationship("Support", uselist=False, backref="rating")
 
     session = relationship("Session", uselist=False, backref="rating")
+
+    request = relationship("Request", uselist=False, backref="question_rating")
+
+    transaction = relationship("Transaction", uselist=False, backref="rating")
+
+    is_question = Column(Boolean)
+    is_task = Column(Boolean)
+    is_session = Column(Boolean)
 
 
     guru_id = Column(Integer, ForeignKey('user.id'))
@@ -1586,7 +1617,24 @@ class Rating(Base):
         rating = Rating()
         rating.guru_id = _session.guru_id
         rating.student_id = _session.student_id
+        rating.is_session = True
         rating.session = _session
+        db_session.add(rating)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return rating
+
+    @staticmethod
+    def initFromQuestion(_request):
+        rating = Rating()
+        rating.guru_id = _request.guru_id
+        rating.student_id = _request.student_id
+        rating.request = _request
+        rating.is_question = True
+
         db_session.add(rating)
         try:
             db_session.commit()
@@ -1694,6 +1742,34 @@ class Recipient(Base):
         backref = 'recipients'
     )
     admin_account = Column(Boolean, default = False)
+
+class Skill(Base):
+    __tablename__ = 'skill'
+
+    id = Column(Integer, primary_key=True)
+    time_added = Column(DateTime)
+    name = Column(String) #Usually department + course_number
+
+    category = Column(String)
+    is_popular = Column(Boolean)
+
+    short_name = Column(String) #Casual shorted version that students use
+    full_name = Column(String)
+
+    admin_approved = Column(Boolean, default = False)
+    contributed_user_id = Column(Integer, ForeignKey('user.id'))
+
+    def __init__(self, name=None, university_id=None, admin_approved=False,\
+        contributed_user_id=None, _id=None):
+        if _id:
+            self.id = _id
+        self.name = name
+        self.admin_approved = admin_approved
+        self.contributed_user_id = contributed_user_id
+
+    def __repr__(self):
+        return "<Skill '%r', '%r'>" %\
+              (self.id, self.name)
 
 
 class Course(Base):
@@ -2065,7 +2141,15 @@ class Transaction(Base):
 
     session = relationship("Session", uselist=False, backref="transaction")
 
+    request = relationship("Request", uselist=False, backref="transaction")
+
     support = relationship("Support", uselist=False, backref="transaction")
+
+    rating_id = Column(Integer, ForeignKey('rating.id'))
+
+    is_task = Column(Boolean)
+    is_question = Column(Boolean)
+    is_session = Column(Boolean)
 
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
@@ -2149,6 +2233,7 @@ class Transaction(Base):
         transaction = Transaction()
         transaction.time_created = datetime.now()
         transaction._type = 0
+        transaction.is_session = True
         transaction.student_amount = Transaction.calculateStudentPriceFromSession(_session)
 
         transaction.guru = _session.guru
@@ -2174,7 +2259,7 @@ class Transaction(Base):
                 transaction.profit = transaction.student_amount - transaction.guru_amount - transaction.stripe_fee
 
                 transaction.guru_id = _session.guru_id
-                transaction.student_id = _session.guru_id
+                transaction.student_id = _session.student_id
                 transaction.card_id = _session.card_id
         else:
             transaction.stripe_error_string = 'Student does not have card'
@@ -2187,5 +2272,65 @@ class Transaction(Base):
             raise
 
         return transaction
+
+    @staticmethod
+    def initFromQuestion(_request, user, rating):
+
+        from app.lib.stripe_client import charge_customer
+
+        transaction = Transaction()
+        transaction.time_created = datetime.now()
+        transaction.rating_id = rating.id
+        transaction._type = 1
+        transaction.is_question = True
+        transaction.student_amount = float(_request.student_price)
+
+        transaction.guru = _request.guru
+        transaction.guru_amount = transaction.student_amount
+
+        # initialize these in case they havent
+        if not transaction.guru.total_earned: transaction.guru.total_earned = 0
+        if not transaction.guru.balance: transaction.guru.balance = 0
+
+        transaction.guru.balance += transaction.guru_amount
+
+        transaction.guru.total_earned += transaction.guru_amount
+
+        if _request.student.cards:
+            stripe_charge = charge_customer(_request.student, transaction.student_amount)
+            transaction.request = _request
+
+            if type(stripe_charge) is str:
+                transaction.stripe_error_string = stripe_charge
+
+            else:
+                transaction.charge_id = stripe_charge.id
+                transaction.stripe_fee = (transaction.student_amount * .029) + 0.3
+                transaction.profit = transaction.student_amount - transaction.guru_amount - transaction.stripe_fee
+
+                transaction.guru_id = _request.guru_id
+                transaction.student_id = _request.student_id
+
+                # get default card real quick
+                default_card = None
+                for card in _request.student.cards:
+                    if card.is_default_payment:
+                        default_card = card
+
+                if default_card:
+                    transaction.card_id = default_card.id
+        else:
+            transaction.stripe_error_string = 'Student does not have card'
+
+        db_session.add(transaction)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        return transaction
+
+
 
 

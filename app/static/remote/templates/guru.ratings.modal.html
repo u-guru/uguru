@@ -7,12 +7,12 @@
             Session<br>Completed!
           </h1>
           <p>
-            {{pending_rating.session.time_created}}
+            {{pending_rating.session.time_completed}}
           </p>
         </div>
         <div class='padding-2em flex-item-c center'>
           <div class='pure-u-1'>
-              <h1 style='font-size:400%' class='white-text'><span class="bucks sans-light">$</span><span class='sans-bold'>{{pending_rating.session.transaction.guru_amount}} </span>
+              <h1 style='font-size:400%' class='white-text'><span class="bucks sans-light">$</span><span class='sans-bold'>{{pending_rating.session.guru.current_hourly * (pending_rating.session.hours + (pending_rating.session.minutes / 60.0))} </span>
               </h1>
           </div>
         </div>
@@ -24,9 +24,9 @@
               <div class='pure-u-3-4 margin-1em'>
 
                 <div class='item item-avatar-left transparent-background no-border white-text align-left'>
-                  <img src='{{pending_rating.session.request.student.profile_url}}' class='pure-img'/>
+                  <img src='{{pending_rating.session.student.profile_url}}' class='pure-img'/>
                   <span class='sans-regular'>
-                    {{pending_rating.session.guru.name.split(" ")[0]}}
+                    {{pending_rating.session.student.name.split(" ")[0]}}
                   </span>
                   <p>{{pending_rating.session.request.course.short_name}}</p>
                 </div>

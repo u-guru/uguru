@@ -332,7 +332,7 @@ if arg == 'update':
     print v.latest_ios, 'updated to', env
 
 if arg == 'init_admin':
-    admin_accounts = ['makhani.samir@gmail.com', 'hair_lvrxrsl_one@tfbnw.net']
+    admin_accounts = ['makhani.samir@gmail.com', 'hair_lvrxrsl_one@tfbnw.net', 'jason_dhcxgww_huang@tfbnw.net', 'randykm4@gmail.com']
     u = University.query.filter_by(name='Uguru University').first()
     m = Major.query.get(91)
 
@@ -396,6 +396,49 @@ if arg == 'parse_uni_updated':
     with open('web_university4.json', 'wb') as fp:
         json.dump(result_schools, fp, indent = 4)
 
+
+if arg =='init_skills':
+    from app.models import *
+    from app.database import *
+
+    skills = [('resume', 'professional'), ('writing', 'professional'), ('interviews', 'professional'),
+        ('public speaking', 'professional'), ('drinking', 'professional'), ('iPhone Repair', 'specialized'),
+        ('internet setup', 'specialized'), ('baked goods', 'specialized'), ('photography', 'specialized'),
+        ('vacuuming', 'specialized'), ('house cleaning', 'chores'), ('dirty dishes', 'chores'), ('ironing', 'chores'),
+        ('laundry', 'chores'), ('ikea assembly', 'labor'), ('moving assistance', 'labor'), ('i have a truck', 'labor'),
+        ('painting', 'labor'), ('interior design', 'labor')]
+
+
+    for skill_string, category_string in skills:
+        skill = Skill()
+        skill.is_popular = True
+        skill.name = skill_string
+        skill.admin_approved = True
+        skill.category = category_string
+        db_session.add(skill)
+        db_session.commit()
+
+
+    print len(Skill.query.all()),  'all skills successfully added'
+
+if arg == 'init_professions':
+    from app.models import *
+    from app.database  import *
+    from datetime import datetime
+
+    professions = ['Software Engineer', 'Doctor', 'Human Resources', 'Neurosurgeon', 'Mechnical Engineer', 'Mathematician',
+    'I dont know', 'Chemist', 'Physicist', 'Academic Researcher'];
+
+    for profession in professions:
+        tag = Tag()
+        tag.is_profession = True
+        tag.time_created = datetime.now()
+        tag.name = profession
+        tag.admin_approved = True
+        db_session.add(tag)
+        db_session.commit()
+
+    print len(professions),  'all skills successfully added'
 
 if arg =='migrate':
 

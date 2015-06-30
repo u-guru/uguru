@@ -21,7 +21,11 @@ angular.module('uguru.util.controllers')
 
     $scope.takePhoto = function(index) {
       if ($scope.platform.mobile) {
-        Camera.takePicture($scope, index);
+
+
+
+
+        Camera.takePicture($scope, index, true);
       } else {
         var element = document.getElementById('file-input-web')
         element.click();
@@ -31,9 +35,9 @@ angular.module('uguru.util.controllers')
     $scope.showAttachActionSheet = function() {
 
       var options = [{ text: 'Choose from Library' }];
-      if ($scope.platform.mobile) {
-        options.push({text: 'Take a Photo'})
-      }
+      // if ($scope.platform.mobile) {
+      options.push({text: 'Take a Photo'})
+      // }
 
      // Show the action sheet
      $scope.closeAttachActionSheet = $ionicActionSheet.show({
@@ -126,7 +130,7 @@ angular.module('uguru.util.controllers')
     $scope.deleteFile = function(index) {
       console.log('attempt to delete file', index);
       if (confirm('Are you sure you want to delete this photo?')) {
-        $scope.request.attached_files.splice(index, 1);
+        $scope.request.files.splice(index, 1);
         $scope.success.show(0, 750, 'File deleted!');
         $scope.file_index -= 1;
       }
@@ -165,7 +169,13 @@ angular.module('uguru.util.controllers')
 
         // }, 3000);
 
-        $scope.user.createObj($scope.user, 'files', formData, $scope);
+      $scope.loader.show();
+
+      var callbackSuccess = function() {
+        $scope.loader.hide();
+      }
+
+        $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
     };
 
   }

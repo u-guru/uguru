@@ -1,0 +1,37 @@
+  <ion-view hide-nav-bar="true" class="payment-cards">
+    <ion-header-bar class='header-bar' ng-hide='user.guru_mode'>
+        <a class='button button-clear button-back' ng-click='goBack()'>Back</a>
+        <h5 class="title">PAYMENT OPTIONS</h5>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item class="item item-icon-right" ui-sref="^.add-payment">Add a Payment Card
+          <i class='icon ion-chevron-right icon-small'></i>
+        </ion-item>
+        <ion-item class="item item-icon-right" ng-click="goToAddTransferMethod(true)" ng-show='user.guru_mode'>Add a Bank Card
+          <i class='icon ion-chevron-right icon-small'></i>
+        </ion-item>
+      </ion-list>
+
+        <ion-list>
+          <div class='item item-divider divider' ng-show='user.payment_cards && user.payment_cards.length > 0'>
+            Your Payment Cards
+          </div>
+          <ion-item ng-repeat="card in user.payment_cards" class="cards-container item-avatar-left item-icon-right" ng-click="goToEditCard(card)">
+              <img src="./img/{{card.card_type.toLowerCase()}}.png" class="card-img pure-img"> ****{{card.card_last4}}<span ng-show="card.is_default_payment" class="positive default-card-class">&nbsp;&nbsp;Default</span>
+               <i class='icon ion-chevron-right icon-small'></i>
+          </ion-item>
+        </ion-list>
+      </div>
+
+          <ion-list ng-show="user.transfer_cards.length > 0">
+            <div class='item item-divider divider'>
+              Your Transfer Cards
+            </div>
+            <ion-item ng-repeat="card in user.transfer_cards" class="cards-padding cards-container item-avatar-left" ng-click="goToEditCard(card)">
+                  <img src="./img/{{card.card_type.toLowerCase()}}.png" class="card-img"> ****{{card.card_last4}}<span ng-show="card.is_default_transfer" class="positive default-card-class">&nbsp;&nbsp;Default</span>
+                   <img src="./img/right-chevron.png" class="right-chevron">
+            </ion-item>
+          </ion-list>
+    </ion-content>
+  </ion-view>

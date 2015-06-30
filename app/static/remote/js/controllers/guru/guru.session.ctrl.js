@@ -15,9 +15,11 @@ angular.module('uguru.guru.controllers')
   '$ionicPlatform',
   '$ionicScrollDelegate',
   '$cordovaKeyboard',
+  '$ionicHistory',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, $ionicActionSheet,
-  Restangular, $ionicPlatform, $ionicScrollDelegate, $cordovaKeyboard) {
+  Restangular, $ionicPlatform, $ionicScrollDelegate, $cordovaKeyboard,
+  $ionicHistory) {
 
 
     $ionicPlatform.ready(function() {
@@ -32,19 +34,22 @@ angular.module('uguru.guru.controllers')
 
 
 
-    if (!$scope.session) {
+    if ($scope.root.vars.guru_active_session) {
+      $scope.session = $scope.root.vars.guru_active_session;
+    }
+    else if (!$scope.session) {
       $scope.session = JSON.parse($stateParams.sessionObj);
     }
-
+    console.log($scope.session);
 
     $scope.details = {show: true};
     $scope.new_message = {content: ''};
     $scope.default_profile_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100';
 
-    if ($scope.session.request.status > 0  && $scope.session.guru.id === $scope.user.id) {
+    if ($scope.session.request.status === 2  && $scope.session.guru.id === $scope.user.id) {
       $scope.message_name = $scope.session.request.student.name.split(' ')[0];
-    } else if ($scope.session.request.status > 0){
-      $scope.message_name = $scope.session.guru.name.split(' ')[0];
+    } else if ($scope.session.request.status === 1 && $scope.session.student){
+      $scope.message_name = $scope.session.student.name.split(' ')[0];
     }
 
 
@@ -84,7 +89,7 @@ angular.module('uguru.guru.controllers')
 
               }
               if (index === 1) {
-                $scope.success.show(0, 2000, 'Coming Soon!');
+                $scope.success.show(0, 2000, 'Email support@uguru.me for a fast reply');
                 $scope.closeAttachActionSheet();
               }
             }
@@ -228,16 +233,73 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.getMessagePayload = function (content) {
+
+      //user is the guru
+      var sender_id = $scope.user.id;
+      if ($scope.session.guru.id === $scope.user.id) {
+        var receiver_id = $scope.session.student.id;
+      } else {
+        var receiver_id = $scope.session.guru.id;
+      }
+
       var payload = {
         message: {
           contents: content,
           relationship_id: $scope.session.relationship_id,
-          receiver_id: $scope.session.guru.id,
+          receiver_id: receiver_id,
           sender_id: $scope.user.id,
           session_id: $scope.session.id
         }
       }
       return payload;
+    }
+
+    $scope.root.vars.launchPendingActions = function() {
+
+
+      //priority 1: see if any ratings are allowed
+
+      if ($scope.user.pending_student_ratings.length > 0) {
+
+        var rating = $scope.user.pending_student_ratings[0];
+
+        //pop the first item
+
+        $scope.user.pending_student_ratings.shift();
+
+        $scope.pending_rating = rating;
+
+        if(!$scope.guruRatingsModal || !$scope.guruRatingsModal.isShown()) {
+          $scope.launchGuruRatingsModal(rating);
+        }
+
+        //no reason to
+        return;
+
+      }
+
+
+      //see if any sessions are going on right now
+
+      for (var i = 0 ; i < $scope.user.active_guru_sessions.length; i ++) {
+
+            var session = $scope.user.active_guru_sessions[i];
+            if (session.status === 2) {
+              $scope.session = session;
+              $timeout(function() {
+
+                $scope.details = {show: true};
+
+
+                if (!$scope.guruInSessionModal.isShown()) {
+                  $scope.launchGuruInSessionModal();
+                }
+
+              }, 500);
+            }
+
+      }
+
     }
 
     $scope.startSessionGuru = function(session) {
@@ -252,11 +314,13 @@ angular.module('uguru.guru.controllers')
         var sessionPayload = {session: $scope.session}
 
         $scope.loader.show();
-        $state.go('^.guru');
 
         var callbackSuccess = function() {
-          // $scope.launchGuruInSessionModal();
-          $scope.loader.hide();
+          // $scope.root.vars.launchPendingActions();
+          // $timeout(function() {
+
+          // }, 1000);
+          $state.go('^.guru');
 
         }
 
@@ -301,7 +365,7 @@ angular.module('uguru.guru.controllers')
       messagePayload.message.profile_url= $scope.user.profile_url;
       messagePayload.message.formatted_time = 'a couple seconds';
       $scope.new_message.content = '';
-      $scope.messages.push(messagePayload.message);
+      $scope.local_messages.push(messagePayload.message);
       // $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
       // $ionicScrollDelegate.$getByHandle('message-scroll').scrollBy(0, 100, false);
     }
@@ -335,10 +399,11 @@ angular.module('uguru.guru.controllers')
                 var updated_messages = $scope.processMessages(processed_user.active_student_sessions[i].messages);
                 updated_messages.sort($scope.sortMessageComparator);
 
-                $timeout(
-                  function(){
-                    $scope.messages = updated_messages;
-                  }, 1000);
+                  $scope.messages = updated_messages;
+
+                  if (updated_messages.length > $scope.local_messages.length) {
+                    $scope.local_messages = updated_messages;
+                  }
 
               }
             }
@@ -389,6 +454,13 @@ angular.module('uguru.guru.controllers')
               $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
             }
             $scope.messages = server_messages;
+
+
+            if ($scope.messages.length > $scope.local_messages.length) {
+              $scope.local_messages = $scope.messages;
+            }
+
+
             if ($state.current.name === 'root.student-messages' && !one_time) {
               $timeout(function() {
                 $scope.getMessagesFromServer(time_between);
@@ -410,8 +482,12 @@ angular.module('uguru.guru.controllers')
 
     $scope.$on('$ionicView.afterEnter', function() {
 
-      if ($scope.session.request.status > 0) {
+      if ($scope.session.request.status > 0 && $scope.session.messages) {
+
         $scope.messages = $scope.processMessages($scope.session.messages);
+        $scope.local_messages = $scope.messages;
+
+
         $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
 
         $timeout(function() {

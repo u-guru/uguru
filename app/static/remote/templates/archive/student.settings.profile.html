@@ -1,0 +1,35 @@
+<ion-view hide-nav-bar='true' class='settings-profile'>
+        <ion-header-bar class='header-bar'>
+            <a class='button button-clear positive' ng-click="goBack()">Back</a>
+        <h5 class="title">Profile</h5>
+      </ion-header-bar>
+    <ion-content>
+    <div class="account">
+		        	<div class="list margin-bottom-10">
+			            <label class="item item-input">
+			                <div class="tag">First</div><input name="signup-first-name" type="text" ng-model="user.first_name" placeholder="your first name">
+			              </label>
+			              <label class="item item-input">
+			                <div class="tag">last</div><input name="signup-last-name" type="text" ng-model="user.last_name" placeholder="your last name">
+			              </label>
+			              <label class="item item-input">
+			                <div class="tag">email</div><input type="text" name="signup-email" ng-model="user.email" placeholder="peter.parker@berkeley.edu">
+			              </label>
+                            <button class="button button-full button-positive" ng-click="saveProfile()">
+                                Save Information
+                            </button>
+		            </div>
+		            <div class="list">
+		              <label class="item item-input">
+		                <div class="tag">Old Password</div><input type="password" name="signup-password" ng-model="changePasswordForm.old_password" placeholder="at least 6 characters">
+		              </label>
+		              <label class="item item-input">
+		                <div class="tag">New Password</div><input type="password" name="signup-password" ng-model="changePasswordForm.new_password" placeholder="at least 6 characters">
+		              </label>
+		              <button class="button button-full button-positive" ng-click='changePassword()'>
+		              	Save Password
+		              </button>
+		        	</div>
+		    </div>
+    </ion-content>
+  </ion-view>

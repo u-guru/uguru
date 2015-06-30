@@ -1,0 +1,89 @@
+
+<ion-view class='guru-sessions' cache-view='false'>
+  <ion-header-bar class='header-bar header-bar-dark bar-dark'>
+    <h5 class="title uppercase">Guru Sessions</h5>
+    <a class='button button-clear' ng-click="addCourseModal.show()"></a>
+  </ion-header-bar>
+  <ion-tabs class="tabs-stable tabs-striped tabs-top session-tabs" delegate-handle="student-home-tabs-top">
+    <ion-tab title="Incoming" >
+    </ion-tab>
+
+    <ion-tab title="Scheduled">
+    </ion-tab>
+    <ion-tab title="Past">
+    </ion-tab>
+  </ion-tabs>
+
+  <!-- incoming proposals -->
+  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 0'>
+    <ion-refresher
+        pulling-icon="ion-arrow-down-c"
+        spinner="circles"
+        on-refresh="doRefresh()">
+    </ion-refresher>
+    <!-- No sessions yet -->
+    <div class='scroll pure-g-c flex-column center full-height' ng-show='(!user.active_proposals && !user.pending_proposals) || (user.active_proposals.length === 0 && user.pending_proposals.length===0)'>
+      <div class='padding-1em padding-1em flex-item-c'> </div>
+      <div class='flex-item-c sleeping-guru light-opacity'>
+        <img class='pure-img animated swing' src='{{img_base}}./img/guru-sleeping-guru-mode.svg' >
+      </div>
+      <div class='flex-item-c light-opacity padding-1em flex-direction-init '>
+        No sessions yet!
+      </div>
+    </div>
+
+    <!-- Incoming Student Proposal -->
+    <div class="list" ng-show='user.active_proposals.length > 0'>
+      <a class="item item-avatar-right upcoming-session-card" ng-repeat='proposal in user.active_proposals' ng-click='goToProposalDetails(proposal)'>
+        <img ng-src="{{proposal.request.student.profile_url}}">
+        <h2>{{proposal.request.student.name}} {{proposal.request.course.short_name}}</h2>
+        <h4 class='pending'> EXPIRING SOON</h4> <p class='inline italic'>{{proposal.formatted_time}} ago</p>
+      </a>
+
+    <!-- Guru is waiting for student response -->
+    <div ng-show='user.pending_proposals.length > 0'>
+      <a class="item item-avatar-right upcoming-session-card" ng-repeat='proposal in user.pending_proposals' ng-click='goToProposalDetails(proposal)'>
+        <img ng-src="{{proposal.request.student.profile_url}}">
+        <h2>{{proposal.request.student.name}} {{proposal.request.course.short_name}}</h2>
+        <h4 class='pending'> WAITING FOR STUDENT </h4>
+      </a>
+    </div>
+  </div>
+  </ion-content>
+
+  <!-- scheduled sessions -->
+  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 1'>
+      <ion-refresher
+        pulling-icon="ion-arrow-down-c"
+        spinner="circles"
+        on-refresh="doRefresh()">
+      </ion-refresher>
+    <div class="list" ng-show='user.active_guru_sessions.length > 0'>
+        <a class="item item-avatar-right upcoming-session-card" ng-repeat='session in user.active_guru_sessions' ng-click='goToActiveSession(session)'>
+          <img ng-src="{{session.request.student.profile_url}}">
+          <h2>{{session.request.student.name}} <strong>{{session.request.course.short_name}}</strong></h2>
+          <h4 class='pending'> Starting Soon! </h4>
+        </a>
+      </div>
+
+  </ion-content>
+
+  <ion-content class='has-subheader' ng-show='topTabsDelegate.selectedIndex() === 2'>
+    <ion-refresher
+        pulling-icon="ion-arrow-down-c"
+        spinner="circles"
+        on-refresh="doRefresh()">
+      </ion-refresher>
+    <div class="list" ng-show='user.previous_guru_proposals.length > 0'>
+        <a class="item item-avatar-right upcoming-session-card" ng-repeat='proposal in user.previous_guru_proposals' ng-click='goToProposalDetails(proposal)'>
+        <img ng-src="{{proposal.request.student.profile_url}}">
+        <h2>{{proposal.request.student.name}} {{proposal.request.course.short_name}}</h2>
+        <h4 ng-show='proposal.request.status === 4'class='danger'>User Canceled Request</h4>
+        <h4 ng-show='proposal.request.status !== 4'class='danger'>User Chose Another Guru</h4>
+        </a>
+      </div>
+
+
+  </ion-content>
+
+</ion-view>

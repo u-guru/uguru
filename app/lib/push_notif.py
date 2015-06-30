@@ -104,13 +104,21 @@ def send_student_has_accepted_to_guru(session, guru, delay_seconds=None):
             countdown= delay_seconds )
 
 def send_guru_proposal_to_student(proposal, student, delay_seconds=None):
+    copy_string = 'guru_can_help'
     args_tuple = (
         proposal.guru.name.split(' ')[0].title(),
         str(10)
     )
 
+    # if it is a question
+    if proposal.request._type == 1:
+        copy_string = "question_answered"
+        args_tuple = (
+            proposal.request.course.short_name.upper()
+        )
+
     if not delay_seconds:
-        send_push_for_user_devices(student, 'guru_can_help', args_tuple)
+        send_push_for_user_devices(student, copy_string, args_tuple)
     else:
         send_push_for_user_devices.delay(user=student, \
             notif_key='guru_can_help',
@@ -118,16 +126,38 @@ def send_guru_proposal_to_student(proposal, student, delay_seconds=None):
             countdown= delay_seconds )
 
 def send_student_request_to_guru(_request, guru, delay_seconds=None):
-    args_tuple = (
-        _request.DEFAULT_PRICE,
-        _request.time_estimate,
-        _request.student.name.split(" ")[0],
-        _request.course.short_name.upper()
-    )
+
+    #if the request is a question
+    copy_string = 'student_request'
+    print "type", _request._type
+
+
+    args_tuple = None
+    if _request.course:
+        args_tuple = (
+            _request.DEFAULT_PRICE,
+            _request.time_estimate,
+            _request.student.name.split(" ")[0],
+            _request.course.short_name.upper()
+        )
+
+    # if it is a question
+    if _request._type == 1:
+        copy_string = "student_question"
+        args_tuple = (
+            _request.course.short_name.upper()
+        )
+
+    # if it is a question
+    if _request._type == 2:
+        copy_string = "student_task"
+        args_tuple = (
+            _request.category
+        )
 
     # send push to to guru
     if not delay_seconds:
-        send_push_for_user_devices(guru, 'student_request', args_tuple)
+        send_push_for_user_devices(guru, copy_string, args_tuple)
     else:
         send_push_for_user_devices.delay(user=guru, \
             notif_key='student_request',
@@ -140,7 +170,10 @@ def send_student_request_to_guru(_request, guru, delay_seconds=None):
 # TODO , finish the copy
 push_notif_copy = {
     "student_request": """Make $%s total in %smin helping %s in %s. Swipe for more details & increase response rate""",
+    "student_question": """A student posted a question for %s. Answer it now before it expires!""",
+    "student_task": """A student posted a %s task. Check it out now before its taken!""",
 
+    "question_answered": """A guru has answered your %s question! Check it out now and accept or reject.""",
     "guru_can_help": """%s can help! Swipe for more details. %s min until this expires.""",
 
     "student_chose_guru": """Congrats! You're one step away from earning $%s, Swipe & start preparing now.""",
@@ -149,6 +182,6 @@ push_notif_copy = {
     "guru_student_rejected": "",
     "message_received":"""You have one new message from %s about %s""",
     "support_message_received":"""You have 1 new message from Uguru Support""",
-    "message_received_nudged": "",
+    "ratings": """Please confirm that your %s session with %s is over""",
 
 }

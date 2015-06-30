@@ -13,8 +13,11 @@ angular.module('uguru.guru.controllers')
   '$stateParams',
   '$ionicHistory',
   'Camera',
+  '$ionicSideMenuDelegate',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
- 	$ionicModal, $stateParams, $ionicHistory, Camera) {
+ 	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate) {
+
+    $ionicSideMenuDelegate.canDragContent(false);
 
     $scope.takePhoto = function() {
     if ($scope.platform.mobile) {
@@ -35,17 +38,41 @@ angular.module('uguru.guru.controllers')
         };
 
         reader.readAsDataURL(photofile);
-        // $scope.root.vars.request.files.push(true);
 
         var formData = new FormData();
 
         formData.append('file', photofile);
-        // var file_name = new Date().getTime().toString();
         formData.append('profile_url', $scope.user.id);
         formData.append('profile_url', $scope.user.id);
         $scope.loader.show();
         $scope.user.createObj($scope.user, 'files', formData, $scope);
     };
+
+     document.addEventListener("resume", function() {
+
+
+          if ($scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
+
+                    $ionicViewSwitcher.nextDirection('enter');
+                    $state.go('^.guru');
+          }
+
+
+    }, false);
+
+     $scope.active_questions = $scope.user.active_questions;
+
+     $scope.$on('$ionicView.enter', function() {
+
+
+        if ($scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
+
+                    $ionicViewSwitcher.nextDirection('enter');
+                    $state.go('^.guru');
+          }
+
+
+    });
 
 
   }

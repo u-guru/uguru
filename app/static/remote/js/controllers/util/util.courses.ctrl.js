@@ -21,7 +21,7 @@ angular.module('uguru.util.controllers')
     $scope.listCanSwipe = true;
     $ionicSideMenuDelegate.canDragContent(false);
 
-    if ($scope.root.vars.guru_mode) {
+    if ($scope.root.vars.guru_mode || $state.current.name === 'root.become-guru') {
       $scope.editCourseMode = false;
       $scope.course_search_text = '';
     }
@@ -69,20 +69,32 @@ angular.module('uguru.util.controllers')
       $scope.user.updateAttr('remove_guru_course', $scope.user, guru_course, null, $scope);
     }
 
+    $scope.addSelectedGuruSkill = function(skill, input_text) {
+      $scope.user.guru_skills.push(skill);
+
+       if ($scope.user.id) {
+        //adds to database for user
+        $scope.user.updateAttr('add_guru_skill', $scope.user, skill, null, $scope);
+      } else {
+        //add to local cache so we can loop through it when it is time to update user
+        $scope.root.vars.remote_cache.push({'add_guru_skill': skill});
+      }
+
+    }
+
     $scope.addSelectedGuruCourse = function(course, input_text) {
-      $scope.course_search_text = course.short_name.toUpperCase();
+      // $scope.course_search_text = course.short_name.toUpperCase();
 
-      //set the local request.course object to this course
-      // $scope.request.course = course;
 
-      //clear the search input
-      input_text = '';
+      //set the variable to this
+
+      $scope.search_text = '';
 
       //set the course text to what it should be
       document.getElementById('guru-course-input').value = '';
       $scope.course_search_text = course.short_name
       //make progress false so we can hide all other elements
-      $scope.progress = false;
+      // $scope.progress = false;
 
       //TODO JASON ADD TEST CASE: check if course is already in their courses
 
@@ -93,7 +105,7 @@ angular.module('uguru.util.controllers')
       //JASON ADD TEST CASE: Check if length of student courses is now longer than one
 
       //if user is already logged in
-      $scope.course_search_text = '';
+      // $scope.course_search_text = '';
 
       if ($scope.user.id) {
         //adds to database for user

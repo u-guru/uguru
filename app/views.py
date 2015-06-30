@@ -49,7 +49,7 @@ def admin_login():
         session.pop('error')
 
     if session.get('user'):
-        return redirect(url_for('admin_requests'))
+        return redirect(url_for('admin_team'))
 
 
     return render_template("new_admin/login.html", error=error)
@@ -134,7 +134,12 @@ def admin_testing():
 @app.route('/admin/')
 @app.route('/admin/team/')
 @app.route('/admin/home/')
-@app.route('/admin/team/action_items/')
+def admin_expectations():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin.team-expectations.html", team=[])
+
+@app.route('/admin/team/action/')
 def admin_team():
     if not session.get('user'):
         return redirect(url_for('admin_login'))

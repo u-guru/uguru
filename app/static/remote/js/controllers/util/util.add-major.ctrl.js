@@ -16,12 +16,13 @@ angular.module('uguru.util.controllers')
   $ionicModal, $ionicTabsDelegate, $q,
   $cordovaKeyboard, University) {
 
-    $scope.major_search_text = '';
+
     $scope.keyboard_force_off = false;
 
     $scope.setMajorFocus = function(target) {
-      if ($scope.major_search_text.length === 0 && !$scope.keyboard_force_off) {
-        document.getElementsByName("major-input")[0].focus();
+      if ($scope.major_input.search_text.length === 0 && !$scope.keyboard_force_off) {
+        document.getElementById("major-input").focus();
+
       }
     };
 
@@ -32,13 +33,6 @@ angular.module('uguru.util.controllers')
     $scope.getMajorsFromServer = function(promise) {
         var university_title = $scope.user.university.title;
         var msg_details = "Retrieving all " + university_title + ' majors'
-
-        // if (!$scope.progress_active) {
-        //   $scope.progress_active = true;
-        //   $cordovaProgress.showSimpleWithLabelDetail(true, "Loading", msg_details);
-        // } else {
-        //   console.log('progress spinner is already active!');
-        // }
 
         $scope.loader.show()
 
@@ -58,14 +52,6 @@ angular.module('uguru.util.controllers')
                     promise.resolve(majors);
                 }
 
-                $timeout(function() {
-                    $scope.setMajorFocus();
-                  }, 1000);
-                // $timeout(function() {
-                //     $cordovaProgress.hide();
-                //     $scope.showSuccess('Success!');
-                // }, 500)
-
               $scope.majors = majors;
               $localstorage.setObject('majors', $scope.majors);
 
@@ -80,72 +66,40 @@ angular.module('uguru.util.controllers')
 
     var GetMajorsList = function() {
 
+      var majorsLoaded = $q.defer();
+
       if ($localstorage.getObject('majors').length > 0) {
-
-          $scope.$on('modal.shown', function() {
-
-          if ($scope.addMajorModal.isShown() &&
-              $localstorage.getObject('majors').length > 0) {
-              $scope.keyboard_force_off = false;
-
-              $timeout(function() {
-                $scope.setMajorFocus();
-              }, 500);
-
-            }
-          });
 
           return $localstorage.getObject('majors');
 
+      };
+
+      if ($localstorage.getObject('majors').length === 0 && $scope.user.university_id) {
+
+            $scope.getMajorsFromServer(majorsLoaded);
       }
 
-      var majorsLoaded = $q.defer();
 
-      $scope.$on('modal.hidden', function() {
+        if ($localstorage.getObject('majors').length > 0) {
 
-          if (!$scope.addUniversityModal.isShown() &&
-            $scope.addMajorModal.isShown() &&
-            $scope.user.university_id) {
 
-              //if there are no majors after university modal is shown;
-              if ($localstorage.getObject('majors').length === 0) {
-                $scope.getMajorsFromServer(majorsLoaded);
-              //if there are majors after the modal is shown
-              } else {
-                //show the keyboard
-                $timeout(function() {
-                  $scope.setMajorFocus();
-                }, 500);
-              }
-          }
+          return $localstorage.getObject('majors');
 
-      });
 
-      $scope.$on('modal.shown', function() {
-
-        if ($scope.addMajorModal.isShown() &&
-          !$scope.addUniversityModal.isShown() &&
-          $localstorage.getObject('majors').length > 0) {
-          $scope.keyboard_force_off = false;
-
-          $timeout(function() {
-            $scope.setMajorFocus();
-          }, 500);
-
-        } else
-
-        if ($scope.addMajorModal.isShown() &&
-          $localstorage.getObject('majors').length === 0) {
+        } else {
 
           $scope.getMajorsFromServer(majorsLoaded);
         }
 
-      });
 
-      return majorsLoaded.promise;
-    }
+        return majorsLoaded.promise;
 
-    $scope.majors = GetMajorsList();
+
+    };
+
+    // $scope.majors = $scope.static.majors || GetMajorsList();
+
+    // console.log($scope.static.majors);
 
     $scope.hidemajorModal = function() {
       if ($scope.platform.mobile && $cordovaKeyboard.isVisible()) {
@@ -161,38 +115,42 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.removeMajor = function(major, index) {
 
-    $scope.majorSelected = function(major) {
+      var confirmCallback = function() {
+        $scope.success.show(0, 2000, major.name + ' successfully removed');
+      }
+
+      $scope.user.updateAttr('remove_major', $scope.user, major, confirmCallback, $scope);
+    }
+
+    $scope.updateMajorProgress = function(text) {
+      $scope.major_progress = text.length > 0;
+      if ($scope.major_progress) {
+        console.log('text is typed in', $scope.static.majors.length);
+      } else {
+        console.log('text is not typed in', $scope.static.majors.length);
+      }
+    }
+
+    $scope.major_progress = false;
+
+
+    $scope.majorSelected = function(major, $event) {
 
 
       if (!$scope.user.majors) {
           $scope.user.majors = [];
-          // $timeout(function() {
-          // popoverOptions = {
-          //   targetElement:'.student-major',
-          //   title: 'Tap to request help',
-          //   delay: 500,
-          //   animation:null,
-          //   placement: 'bottom',
-          //   body: "We'll find a Guru to help you out <br> in a matter of minutes.<br>",
-          //   buttonText: 'Got it',
-          //   dropshadow: true
-          // }
-
-          // Popover.tutorial.show($scope, popoverOptions);
-
-          // }, 1500)
       }
-        $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
 
-        $scope.keyboard_force_off = true;
-        $scope.user.majors.push(major);
-        $scope.success.show(0, 1000);
-        $scope.major_search_text = '';
-        // $scope.showSuccess('Major Saved!');
-        $timeout(function() {
-          $scope.addMajorModal.hide();
-        }, 1000);
+      $scope.search_text = '';
+      $scope.keyboard_force_off = true;
+
+      $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
+
+      $scope.user.majors.push(major)
+
+
     }
 
   }

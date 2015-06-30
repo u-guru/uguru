@@ -79,6 +79,23 @@ class UniversityMajorsView(restful.Resource):
 
         return majors, 200
 
+class SkillListView(restful.Resource):
+    @marshal_with(SkillSerializer)
+    def get(self):
+
+        skills = Skill.query.filter_by(is_popular=True).all()
+
+        return skills, 200
+
+class ProfessionListView(restful.Resource):
+    @marshal_with(TagSerializer)
+    def get(self):
+
+        professions = Tag.query.filter_by(is_profession=True).all()
+
+        return professions, 200
+
+
 class UniversityCoursesView(restful.Resource):
     @marshal_with(CourseSerializer)
     def get(self, id):
@@ -114,6 +131,15 @@ class OneDeviceView(restful.Resource):
                 print 'and has a user', new_device.user.name
                 new_device.user.current_device = new_device
                 db_session.commit()
+
+            if request.json.get('user_id') and not new_device.user_id:
+                print 'adding device for this user'
+                user = User.query.get(int(request.json.get('user_id')))
+                if user and not new_device in user.devices:
+                    print user
+                    new_device.user_id = user.id
+                    db_session.commit()
+
 
             return new_device, 200
 
@@ -213,6 +239,10 @@ class UserOneView(restful.Resource):
     @marshal_with(UserSerializer)
     def get(self, _id):
         user = User.query.get(_id)
+
+        if not user:
+            abort(400)
+
         v = Version.query.get(1)
         db_session.refresh(v)
         [db_session.refresh(_request) for _request in user.requests]
@@ -224,15 +254,13 @@ class UserOneView(restful.Resource):
         # if not request.json.get('auth_token'):
         #     abort(400)
 
-        if not user:
-            abort(400)
-        else:
 
-            if not user.profile_url:
-                user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
-                db_session.commit()
 
-            return user, 200
+        if not user.profile_url:
+            user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
+            db_session.commit()
+
+        return user, 200
 
 
     @marshal_with(UserSerializer)
@@ -299,6 +327,10 @@ class UserOneView(restful.Resource):
         if 'is_a_guru' in request.json:
             user.is_a_guru = request.json.get('is_a_guru')
 
+        if 'current_hourly' in request.json:
+            print 'woohoo current hourly'
+            user.current_hourly = int(request.json.get('current_hourly'))
+
         if 'uber_friendly' in request.json:
             user.uber_friendly = request.json.get('uber_friendly')
 
@@ -360,6 +392,21 @@ class UserOneView(restful.Resource):
                 db_session.commit()
                 # create major case
 
+        if request.json.get('add_guru_skill'):
+            print 'guru skill submitted!'
+            print request.json.get('add_guru_skill')
+            skill_json = request.json.get('skill')
+            skill_id = skill_json.get('id')
+            if skill_id:
+                skill = Skill.query.get(int(skill_id))
+                if skill:
+                    print skill, skill.category
+                    user.guru_skills.append(skill)
+                    db_session.commit()
+                    print 'length of user skills', len(user.guru_skills)
+
+
+
 
         if request.json.get('add_guru_course'):
             course = request.json.get('course')
@@ -410,6 +457,7 @@ class UserOneView(restful.Resource):
 
         if request.json.get('remove_major'):
             major = request.json.get('major')
+            print major
             major_id = major.get('id')
             m = Major.query.get(int(major_id))
             if m in user.majors:
@@ -485,12 +533,26 @@ class UserOneView(restful.Resource):
         user.requests = []
         user.student_sessions = []
         user.guru_sessions = []
+        user.proposals = []
+        # user.guru_courses = []
+        user.majors = []
         user.student_ratings = []
         user.guru_ratings = []
         user.cards = []
+        user.is_a_guru = False
+        user.current_hourly = None
+        user.university_id = None
 
         if user.proposals:
             user.proposals = []
+
+        for proposal in Proposal.query.all():
+            if proposal.guru_id == user.id:
+                proposal.guru_id = None
+                if proposal in user.proposals:
+                    user.proposals.remove(proposal)
+        db_session.commit()
+
 
 
         u = University.query.filter_by(name='Uguru University').first()
@@ -533,7 +595,12 @@ class UserOneView(restful.Resource):
         #         user.majors.remove(m)
         #     db_session.commit()
 
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            print "ERROR WITH COMMIT"
+            db_session.rollback()
+            raise
         return user, 200
 
 def get_user(user_id):
@@ -574,7 +641,8 @@ class UserRequestView(restful.Resource):
         _request = Request()
 
 
-        _request.position = position
+        if position:
+            _request.position = position
         _request.time_created = datetime.now()
         _request.description = request.json.get('description')
         _request.in_person = request.json.get('in_person')
@@ -605,6 +673,7 @@ class UserRequestView(restful.Resource):
         _request.address = request.json.get('address')
         _request.status = Request.PROCESSING_GURUS
         _request.student_id = user_id
+        _request.university_id = user.university_id
 
 
         _request.contact_email = request.json.get('contact_email')
@@ -640,31 +709,34 @@ class UserRequestView(restful.Resource):
                 db_session.commit()
 
 
-        # print request.json
-        # print "request committed!", position
-        # calendar = Calendar.initFromRequest(_request, 2)
-        # print "calendar created !", calendar
-        # calendar_events_json = request.json.get('calendar_events')
 
-        # if calendar_events_json:
-        #     day_index = 0
-        #     for day_arr in calendar_events_json:
-        #         index = 0
-        #         for boolean in day_arr:
+        calendar = None
+        calendar_json = request.json.get('calendar')
+        calendar_json_start_time = calendar_json.get('start_time')
+        calendar_json_end_time = calendar_json.get('end_time')
 
-        #             time_json = {'start_time':None, 'end_time': None}
+        # if calendar is actually created
+        if calendar_json_start_time and calendar_json_end_time and calendar_json_start_time.get('hours'):
+            calendar = Calendar()
+            calendar.time_created = datetime.now()
+            calendar.number_of_days = 9
+            db_session.add(calendar)
+            db_session.commit()
 
-        #             if boolean:
-        #                 time_json['start_time'] = index
-        #                 time_json['end_time'] = index + 1
-        #             print 'time_json', time_json
-        #             print 'day_offset', day_index
-        #             calendar_event = Calendar_Event.initFromJson(time_json, calendar, day_index)
-        #             index += 1
-        #         day_index += 1
+            _request.student_calendar_id = calendar.id
 
-        # print "longass json calendar figured out", calendar
-        calendar = None ###temp
+
+            offset_integer = calendar_json.get('date').get('offset')
+
+            print calendar_json
+            print
+            print calendar_json_start_time, calendar_json_end_time, offset_integer
+
+            calendar_event = Calendar_Event.initFromJson(calendar_json, calendar, offset_integer)
+            db_session.add(calendar_event)
+            db_session.commit()
+
+
 
         print request.json.get('files')
         if request.json.get('files'):
@@ -678,6 +750,42 @@ class UserRequestView(restful.Resource):
                         file_obj.user_id = _request.student_id
 
                 db_session.commit()
+
+        print "checking for categories"
+        task_category = request.json.get('category')
+        print "task_category", task_category
+        task_categories = ['chores', 'items', 'food', 'skilled_task', 'specific']
+
+        if task_category and task_category in task_categories:
+            _request.category = task_category
+            for skill in Skill.query.all():
+                if skill.is_popular and skill.category == task_category:
+                    print len(skill.gurus.all()), 'gurus found for', skill.name, 'category', skill.category
+                    for guru in skill.gurus:
+
+                        proposal = Proposal.initProposal(_request.id, guru.id, None)
+
+
+                        event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
+                        event = Event.initFromDict(event_dict)
+
+                        db_session.commit()
+
+                        #send push notification is user has permitted device
+                        if guru.push_notifications:
+                            from app.lib.push_notif import send_student_request_to_guru
+                            send_student_request_to_guru(_request, guru)
+
+                        if guru.email_notifications and guru.email:
+
+                            from app.emails import send_student_request_to_guru
+                            send_student_request_to_guru(_request, guru)
+
+
+                        if guru.text_notifications and guru.phone_number:
+                            from app.texts import send_student_request_to_guru
+                            send_student_request_to_guru(_request, guru)
+
 
         if _request.course:
 
@@ -702,16 +810,19 @@ class UserRequestView(restful.Resource):
 
                 #send push notification is user has permitted device
                 if guru.push_notifications:
+                    print guru.name, 'has push notifications'
+
                     from app.lib.push_notif import send_student_request_to_guru
                     send_student_request_to_guru(_request, guru)
 
                 if guru.email_notifications and guru.email:
-
+                    print guru.name, 'has email'
                     from app.emails import send_student_request_to_guru
                     send_student_request_to_guru(_request, guru)
 
 
                 if guru.text_notifications and guru.phone_number:
+                    print guru.name, 'has phone number'
                     from app.texts import send_student_request_to_guru
                     send_student_request_to_guru(_request, guru)
         else:
@@ -754,6 +865,15 @@ class UserRequestView(restful.Resource):
 
                 proposal.request.selected_proposal = proposal
 
+                proposal.time_answered = datetime.now()
+
+                if request.json.get('files'):
+                    files_json = request.json.get('files')
+                    print 'woohoo', len(request.json.get('files')), 'uploaded'
+                    for file_json in request.json.get('files'):
+                        file_obj = File.query.get(file_json.get('id'))
+                        file_obj.proposal_id = proposal.id
+
                 if calendar_events_json:
                     day_index = 0
                     for day_arr in calendar_events_json:
@@ -790,6 +910,7 @@ class UserRequestView(restful.Resource):
 
         _request = Request.query.get(int(request.json.get('id')))
 
+
         if not _request:
             abort(404)
 
@@ -807,6 +928,12 @@ class UserRequestView(restful.Resource):
                 print 'student has accepted guru'
 
                 ## charge student $2 on that card
+                _request.guru_id = _request.selected_proposal.guru_id
+                rating = Rating.initFromQuestion(_request)
+
+                _request.time_accepted = datetime.now()
+
+                db_session.commit()
 
                 for proposal in _request.proposals:
 
@@ -817,13 +944,22 @@ class UserRequestView(restful.Resource):
                         proposal.status = 12
                         event_dict = {'status': Proposal.QUESTION_TOO_LATE, 'proposal_id':proposal.id}
                         event = Event.initFromDict(event_dict)
-                    # this is the guru who was chosen
 
+                    # this is the guru who was chosen
                     if proposal.guru_id == int(guru_json.get('id')):
+
+                        print 'yeee found it', proposal.guru.name, 'made', proposal.request.student_price
                         proposal.status = 13
+
+
+                        if float(proposal.request.student_price):
+                            transaction = Transaction.initFromQuestion(_request, user, rating)
+                            _request.transaction_id = transaction.id
+
 
                         event_dict = {'status': Proposal.QUESTION_GURU_CHOSEN, 'proposal_id':proposal.id}
                         event = Event.initFromDict(event_dict)
+                db_session.commit()
 
             elif status == Request.STUDENT_REJECTED_GURU:
                 event_dict = {'status': Request.STUDENT_REJECTED_GURU, 'request_id':_request.id}
@@ -846,6 +982,7 @@ class UserRequestView(restful.Resource):
                 event_dict = {'status': Request.STUDENT_CANCELED, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
                 for proposal in _request.proposals:
+                    proposal.status = 4
                     if proposal.status == proposal.GURU_ACCEPTED:
                         event_dict = {'status': Proposal.GURU_ACCEPT_STUDENT_CANCELED, 'proposal_id':proposal.id}
                         event = Event.initFromDict(event_dict)
@@ -854,6 +991,17 @@ class UserRequestView(restful.Resource):
                         event = Event.initFromDict(event_dict)
 
             elif status == Request.GURU_CANCELED_SEARCHING_AGAIN:
+                _request.selected_proposal.status = 5;
+                _request.status = 0
+                guru_id = request.json.get('guru_id')
+                for proposal in _request.proposals:
+                    if proposal.guru_id == guru_id:
+                        print proposal.guru_id, guru_id, proposal.id
+                        proposal.status = 5
+                        db_session.commit()
+
+                print 'yo proposal status', request.json.get('status'), _request.selected_proposal.id
+
                 event_dict = {'status': Request.GURU_CANCELED_SEARCHING_AGAIN, 'request_id':_request.id}
                 event = Event.initFromDict(event_dict)
             elif status == Request.NO_GURUS_AVAILABLE:
@@ -992,7 +1140,7 @@ class FileView(restful.Resource):
             db_session.commit()
 
             if request.values.get('profile_url'):
-                print 'profile url detected'
+                print request.values.get('profile_url')
                 user = User.query.get(int(request.values.get('profile_url')))
 
                 user.profile_url = file_obj.url
@@ -1083,6 +1231,7 @@ class UserSessionView(restful.Resource):
         #non-recurring session
         session_json = request.json
         _request = Request.query.get(request.json.get('id'))
+        _request.selected_proposal.status = 5
         _request.guru = User.query.get(request.json.get('guru_id'))
         _request.status = Request.STUDENT_ACCEPTED_GURU
         session_json['student_id'] = _request.student_id
@@ -1094,10 +1243,19 @@ class UserSessionView(restful.Resource):
         #create a session
         session = Session.initFromJson(session_json, True)
 
+        guru_json = request.json.get('guru')
+        guru_id = None
+        if guru_json:
+            guru_id = guru_json.get('id')
+
+        print 'guru found',
+
         #update the proposal from the request
         for proposal in _request.proposals:
-            if proposal.guru_id == _request.guru_id:
-                proposal.status = Proposal.GURU_CHOSEN
+
+            if proposal.guru_id == _request.guru_id or proposal.guru_id == guru_id:
+                print 'yee guru found', proposal.guru_id
+                proposal.status = 5
                 event_dict = {'status': Proposal.GURU_CHOSEN, 'proposal_id':proposal.id}
                 event = Event.initFromDict(event_dict)
                 break
@@ -2292,6 +2450,8 @@ api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:id>/majors')
 api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:id>/courses')
 api.add_resource(MajorListView, '/api/v1/majors')
 api.add_resource(CourseListView, '/api/v1/courses')
+api.add_resource(SkillListView, '/api/v1/skills')
+api.add_resource(ProfessionListView, '/api/v1/professions')
 api.add_resource(UserEmailView, '/api/v1/user_emails')
 
 # Admin views
