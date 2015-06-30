@@ -2,7 +2,7 @@ import time, dryscrape, json, math
 
 # The username and password combination
 USERNAME = "raisethehell_biplov@yahoo.com"
-PASSWORD = "5102217320nm"
+PASSWORD = "thispasswordistoogoodforme"
 
 # The file to output the data to
 OUTPUT_PATH = "output.json"
