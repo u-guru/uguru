@@ -32,7 +32,7 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 def admin_login():
     error = None
     if request.args.get("email", None) and request.args.get("password"):
-        email = request.args.get("email")
+        email = request.args.get("email").lower()
         password = request.args.get("password")
 
         from app.lib.admin import admin_info
@@ -147,6 +147,12 @@ def admin_expectations():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     return render_template("new_admin/admin.team-expectations.html", team=[])
+
+@app.route('/admin/team/project/')
+def admin_team():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/team-project-items.html", team=[])
 
 @app.route('/admin/team/action/')
 def admin_team():

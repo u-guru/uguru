@@ -10,7 +10,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Weekly Team Projects<br>
+            Daily Action Items<br>
           </h1>
           <ol class="breadcrumb">
             <li><a href="/new_admin/"><i class="fa fa-dashboard"></i> Home </a></li>
@@ -64,7 +64,7 @@
 
       var get_all_boards = function() {
         $.ajax({
-            url: "https://api.trello.com/1/boards/XLbMWWEk?lists=open&list_fields=name&fields=name,desc&key=" + TRELLO_API_KEY,
+            url: "https://api.trello.com/1/boards/8zend7RA?lists=open&list_fields=name&fields=name,desc&key=" + TRELLO_API_KEY,
             type: "GET",
             success: function(board){
               all_trello_list_id_objs = board.lists;
