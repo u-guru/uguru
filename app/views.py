@@ -160,6 +160,20 @@ def admin_team():
         return redirect(url_for('admin_login'))
     return render_template("new_admin/team-action-items.html", team=[])
 
+
+
+@app.route('/admin/design/guidelines/')
+def admin_design_guidelines():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/design-guidelines.html", team=[])
+
+@app.route('/admin/development/guidelines/')
+def admin_dev_guidelines():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/development-guidelines.html", team=[])
+
 @app.route('/admin/team/calendar/')
 def admin_team_calendar():
     if not session.get('user'):
