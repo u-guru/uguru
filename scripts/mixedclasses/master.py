@@ -133,7 +133,7 @@ if __name__ == '__main__':
 		print("Dumped school data to file")
 
 	# Iterates through chegg courses
-	for school in SCHOOLS[1500:1900]:
+	for school in SCHOOLS[0:1]:
 		print("Attempting to load course information for " + school["name"])
 
 		## have we already scraped that schools chegg data?
@@ -169,36 +169,65 @@ if __name__ == '__main__':
 				with open("master_five.json", 'w') as outfile:
 					json.dump(obj=master_json, fp=outfile, indent=4, sort_keys=True)
 
-		# print("Getting teacher information from RateMyProfessor for " + school["name"])
-		# teacher_ids = []
+		print("Getting teacher information from RateMyProfessor for " + school["name"])
+		teacher_ids = []
+		teacher_data = []
 
-		# url = get_school_url(school["id"])
+		url = get_school_url(school["id"])
 
-		# response = json.loads(requests.get(url).text)["response"]["docs"]
+		response = json.loads(requests.get(url).text)["response"]["docs"]
+		print len(response), 'teachers found'
+		for teacher in response[0:1]:
 
-		# for teacher in response:
-		# 	teacher_ids.append(teacher["pk_id"])
+			teacher_ids.append(teacher["pk_id"])
+			teacher_data.append(teacher)
 
-		# class_information = {}
+		class_information = {}
+		university_info['popular_courses'] = []
 
-		# print("Getting teacher ratings from RateMyProfessor for " + school["name"])
-		# for teacher in teacher_ids:
-		# 	url = get_teacher_url(teacher)
+		print("Getting teacher ratings from RateMyProfessor for " + school["name"])
+		for teacher in teacher_ids[0:1]:
+			url = get_teacher_url(teacher)
 
-		# 	response = json.loads(requests.get(url).text)["ratings"]
+			response = json.loads(requests.get(url).text)["ratings"]
+			from pprint import pprint
+			# print len(response), 'ratings found'
+			for rating in response:
+				class_name = rating["rClass"]
 
-		# 	for rating in response:
-		# 		class_name = rating["rClass"]
+				# Skip the rating if the class doesn't contain a number
+				if contains_number(class_name) == False:
+					continue
 
-		# 		# Skip the rating if the class doesn't contain a number
-		# 		if contains_number(class_name) == False:
-		# 			continue
+				# Skip the rating if the first letter of the class name is a number
+				if contains_number(class_name[0]) == True:
+					continue
 
-		# 		# Skip the rating if the first letter of the class name is a number
-		# 		if contains_number(class_name[0]) == True:
-		# 			continue
+				class_name = format_class_name(class_name)
 
-		# 		class_name = format_class_name(class_name)
+				class_abbr = class_name.split(' ')[0]
+
+				all_university_abbrs = [dept['abbr'] for dept in university_info['departments']]
+				# print class_abbr, university_info['all_stats']['num_departments'], len(all_university_abbrs)
+
+				if class_abbr in all_university_abbrs:
+					abbr_index = all_university_abbrs.index(class_abbr)
+					dept_info = university_info['departments'][abbr_index]
+					dept_courses = dept_info['courses']
+					all_dept_course_codes = [dept_course['code'].upper() for dept_course in dept_courses]
+					if class_name.upper() in all_dept_course_codes:
+						print class_name, 'connected!'
+						class_name_index = all_dept_course_codes.index(class_name.upper())
+						dept_course_info = dept_courses[class_name_index]
+						if not dept_course_info.get('frequency'):
+							dept_course_info['frequency'] = 1
+						else:
+							dept_course_info['frequency'] += 1
+					else:
+						print class_name, 'not connected'
+				else:
+					print class_abbr, class_name, 'abbr not connected'
+
 
 		# 		class_description_found = 1
 		# 		try:
@@ -218,7 +247,7 @@ if __name__ == '__main__':
 		# 			class_information[class_name]["description"] = description
 		# 			class_information[class_name]["frequency"] = frequency
 
-		# with open("output-" + school["name"] + ".json", 'w') as outfile:
+		# with open("results/final-" + school["name"] + ".json", 'w') as outfile:
 		# 	json.dump(class_information, outfile)
 
 		# print("Information dumped to output-" + school["name"] + ".json")
