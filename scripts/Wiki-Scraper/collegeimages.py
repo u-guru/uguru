@@ -1,4 +1,4 @@
-import requests, ast, json
+import tor_module, ast, json
 from bs4 import BeautifulSoup
 
 SHCHOOL_ARRAY = ['ucla']
@@ -15,7 +15,7 @@ for college_url in SHCHOOL_ARRAY:
 	url = url + "&format=json"
  
 # Construct the dictionary from the JSON data and isolate the query.pages array
-	dictionary = ast.literal_eval(requests.get(url).text)['query']['pages']
+	dictionary = ast.literal_eval(tor_module.get(url).text)['query']['pages']
  
 # Iterate through every page
 	for page in dictionary:
@@ -25,7 +25,7 @@ for college_url in SHCHOOL_ARRAY:
 			page_url = dictionary[page]['fullurl']
 	   
 		# Construct the beautiful soup object for the current page
-			soup = BeautifulSoup(requests.get(page_url).text)
+			soup = BeautifulSoup(tor_module.get(page_url).text)
 	   
 		# Get the table on the right hand side of the page
 			table = soup.find('table', class_ = "infobox")
