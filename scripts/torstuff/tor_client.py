@@ -14,7 +14,7 @@ def get(url):
     'http': 'socks5://127.0.0.1:9150',
     'https': 'socks5://127.0.0.1:9150'
     }
-    
+   
     
     ## ^^ am not sure of the tor syntax but fill in whatever is necessary
     return tor_client.get(url)
