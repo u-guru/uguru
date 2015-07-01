@@ -1,4 +1,4 @@
-import requests, json
+import tor_client, json
 from bs4 import BeautifulSoup
 
 # An array of schools to get course data for
@@ -23,7 +23,7 @@ for school in SCHOOLS_TO_SEARCH:
 	print (school['name'] + " started")
 	# Construct the school URL and create a BeautifulSoup object
 	url = "http://www.chegg.com/courses/" + school['id']
-	soup = BeautifulSoup(requests.get(url).text)
+	soup = BeautifulSoup(tor_client.get(url).text)
 	
 	# Get every subject list element from the page
 	subjects = soup.find('div', attrs = {'class': 'subjects-list'}).findAll('li')
@@ -35,7 +35,7 @@ for school in SCHOOLS_TO_SEARCH:
 	for subject in subjects:
 		# Get the URL of the specific subject information and create a BeautifulSoup object
 		subject_url = subject.a['href']
-		subject_soup = BeautifulSoup(requests.get(subject_url).text)
+		subject_soup = BeautifulSoup(tor_client.get(subject_url).text)
 		
 		# Get the name and code of the subject
 		subject_name = subject.find('span', attrs = {'class': 'name'}).text.upper()

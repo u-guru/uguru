@@ -1,4 +1,4 @@
-import requests, json
+import tor_client, json
  
 SCHOOLS = [{"id": 742, "name": "oregon-state-university"}, {"id": 775, "name": "portland-state-university"}, {"id": 1074, "name": "university-of-irvine"}]
  
@@ -14,7 +14,7 @@ if __name__ == '__main__':
                
                 url = get_school_url(school["id"])
                
-                response = json.loads(requests.get(url).text)["response"]["docs"]
+                response = json.loads(tor_client.get(url).text)["response"]["docs"]
                
                 for teacher in response:
                         teacher_ids.append(teacher["pk_id"])

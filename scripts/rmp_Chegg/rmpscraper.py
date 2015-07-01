@@ -1,4 +1,4 @@
-import requests, json
+import tor_client, json
  
 SCHOOL_IDS = [742] #1074, 1175
  
@@ -14,7 +14,7 @@ if __name__ == '__main__':
         for school in SCHOOL_IDS:
                 url = get_school_url(school)
                
-                response = json.loads(requests.get(url).text)["response"]["docs"]
+                response = json.loads(tor_client.get(url).text)["response"]["docs"]
                
                 for teacher in response:
                         teacher_ids.append(teacher["pk_id"])
@@ -24,7 +24,7 @@ if __name__ == '__main__':
         for teacher in teacher_ids:
                 url = get_teacher_url(teacher)
                
-                response = json.loads(requests.get(url).text)["ratings"]
+                response = json.loads(tor_client.get(url).text)["ratings"]
                
                 for rating in response:
                         try:

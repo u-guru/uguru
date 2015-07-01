@@ -1,4 +1,4 @@
- import requests, json
+ import tor_client, json
 from bs4 import BeautifulSoup
 from fuzzywuzzy import fuzz, process
 
@@ -63,7 +63,7 @@ def get_chegg_course_descriptions(chegg_name):
 	descriptions = {}
 
 	url = "http://www.chegg.com/courses/" + chegg_name
-	soup = BeautifulSoup(requests.get(url).text)
+	soup = BeautifulSoup(tor_client.get(url).text)
 	
 	subjects = soup.find('div', attrs = {'class': 'subjects-list'}).findAll('li')
 	
@@ -72,7 +72,7 @@ def get_chegg_course_descriptions(chegg_name):
 	for subject in subjects:
 		subject_url = subject.a["href"]
 		
-		subject_soup = BeautifulSoup(requests.get(subject_url).text)
+		subject_soup = BeautifulSoup(tor_client.get(subject_url).text)
 		courses = subject_soup.find('div', attrs = {'class': 'courses-list'}).findAll('li')
 		
 		for course in courses:
