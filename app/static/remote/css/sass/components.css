@@ -1593,3 +1593,30 @@ li.item.item-avatar-right.message-item {
 .button.button-positive.button-clear.button-search {
   color: #68A7CF;
   font-family: "OpenSans-SemiBold"; }
+
+.ratings-profile-img {
+  width: 30%;
+  margin: 0 auto;
+  border-radius: 50%; }
+
+.ratings-border-bottom {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+
+button.button-full.ratings-footer-button {
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 80%;
+  font-family: OpenSans-Bold; }
+
+.ratings-modal .pure-u-1-5.blue .icon {
+  opacity: 1; }
+
+.button.button-full.button-blue.button-bold {
+  font-size: 80%;
+  font-family: OpenSans-Bold;
+  text-transform: uppercase; }
+
+.padding-3-4em {
+  padding: 0.75em; }

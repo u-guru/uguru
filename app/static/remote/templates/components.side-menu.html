@@ -2,9 +2,72 @@
 <ion-modal-view class='side-menu-right' id="side_menu" ng-controller='SignupController'>
 
 
-
   <ion-content class='white-text ios-status-bar-dark' scroll='false'>
-    <div class='pure-g-c flex-column flex-space-between'>
+    <div class='pure-g full-height'>
+      <div class='pure-u-1-5 dark-bg full-height' style='z-index:1000;'>
+        <div class='pure-g-c flex-column flex-space-between animated slideInUp'>
+
+          <div class='flex-item-c center'>
+            <div class='pure-u-1 padding-3-4em'>
+              <a ng-click='setSettingsToIndex(1)'>
+                <img class='pure-img' ng-src='{{img_base}}./img/settings/profile.svg'/ ng-show='settingsIndex === 1'>
+                <img class='pure-img' ng-src='{{img_base}}./img/settings/profile-outline.svg'/ ng-hide='settingsIndex === 1'>
+              </a>
+            </div>
+          </div>
+          <div class='flex-item-c center'>
+            <div class='pure-u-1 padding-3-4em'>
+              <a ng-click='setSettingsToIndex(2)'>
+                <img class='pure-img' ng-src='{{img_base}}./img/settings/notification.svg'/ ng-show='settingsIndex === 2'>
+                <img class='pure-img' ng-src='{{img_base}}./img/settings/notification-outline.svg'/ ng-hide='settingsIndex === 2'>
+              </a>
+            </div>
+          </div>
+          <div class='flex-item-c center'>
+            <div class='pure-u-1 padding-3-4em'>
+              <a ng-click='setSettingsToIndex(3)'>
+                  <img class='pure-img' ng-src='{{img_base}}./img/settings/card.svg'/ ng-show='settingsIndex === 3'>
+                  <img class='pure-img' ng-src='{{img_base}}./img/settings/card-outline.svg'/ ng-hide='settingsIndex === 3'>
+              </a>
+            </div>
+          </div>
+          <div class='flex-item-c center'>
+            <div class='pure-u-1 padding-3-4em'>
+              <a ng-click='setSettingsToIndex(4)'>
+                  <img class='pure-img' ng-src='{{img_base}}./img/settings/support.svg'/ ng-show='settingsIndex === 4'>
+                  <img class='pure-img' ng-src='{{img_base}}./img/settings/support-outline.svg'/ ng-hide='settingsIndex === 4'>
+              </a>
+            </div>
+          </div>
+          <div class='flex-item-c center'>
+            <div class='pure-u-1 padding-3-4em'>
+              <a ng-click='setSettingsToIndex(5)'>
+                  <img class='pure-img' ng-src='{{img_base}}./img/settings/become-guru.svg'/ ng-show='settingsIndex === 5'>
+                  <img class='pure-img' ng-src='{{img_base}}./img/settings/become-guru-outline.svg'/ ng-hide='settingsIndex === 5'>
+              </a>
+            </div>
+          </div>
+          <div class='flex-item-c center'>
+            <div class='pure-u-1 padding-3-4em'>
+              <a ng-click='logoutUser()'>
+                <img class='pure-img' ng-src='{{img_base}}./img/settings/logout.svg'/>
+              </a>
+            </div>
+          </div>
+          <div class='flex-item-c center' style='background-color:rgba(255,255,255,0.1)'>
+            <div class='pure-u-1' style='padding:1.5em;'>
+              <a ng-click='closeSideBar()'>
+                <img class='pure-img' ng-src='{{img_base}}./img/settings/settings-back.svg'/>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class='pure-u-4-5 full-height'>
+
+          <div class='pure-g-c flex-column flex-space-between'>
         <div class='pure-g-c flex-column height-40 j-end padding-2em'>
             <div class='center no-margin'>
               <div class='pure-u-1 center float-center'>
@@ -117,12 +180,13 @@
             </div>
           </div>
 
+      </div>
     </div>
+    <ion-footer-bar ng-show='root.vars.version' class='side-menu-footer-bar' style='padding-left:20%; background-color:transparent;'>
+      <a class='pure-u-1 nano-text center' ng-click='goToBeginning()'>
+          v1.0.{{root.vars.version}}
+      </a>
+    </ion-footer-bar>
 
   </ion-content>
-  <ion-footer-bar ng-show='root.vars.version' class='side-menu-footer-bar'>
-    <a class='pure-u-1 nano-text center' ng-click='goToBeginning()'>
-        v1.0.{{root.vars.version}}
-    </a>
-  </ion-footer-bar>
 </ion-modal-view>

@@ -43,11 +43,16 @@
               <div class="pure-u-1-5"><span ng-click="starClicked($event)" value="5" class="icon ion-star ion-star-rating" id="starFive"></span></div>
             </div>
           </div>
-          <div class='pure-u-1 padding-2em' ng-show='!starsSelected'> </div>
+          <div class='pure-u-1' ng-show='!starsSelected'> </div>
           <div class='pure-u-1'>
-            <button class='button button-full button-positive-outline' style='width:100%;' ng-click='submitRatingToServer()' ng-show='starsSelected'>
+            <button class='button button-full button-positive-outline' style='width:100%;' ng-show='!starsSelected'>
               Submit
             </button>
+
+            <button class='button button-full button-blue' style='width:100%;'  ng-click='submitRatingToServer()' ng-show='starsSelected'>
+              Submit
+            </button>
+
           </div>
         </div>
       </div>

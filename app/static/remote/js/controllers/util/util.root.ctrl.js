@@ -120,23 +120,27 @@ angular.module('uguru.util.controllers')
 
 
           $scope.logoutUser = function() {
-            $localstorage.setObject('user', []);
-            // $scope.user = null;;
-            $ionicHistory.clearCache();
-            $ionicHistory.clearHistory();
-            $timeout(function() {
-              $scope.user = User.getLocal();
-              $scope.user.updateAttr = User.updateAttrUser;
-              $scope.user.createObj = User.createObj;
-              $scope.user.updateObj = User.updateObj;
-              $scope.success.show(0, 1500, 'You have been successfully logged out!');
+            if (confirm('Are you sure you want to log out?')) {
+
+              $localstorage.setObject('user', []);
+              // $scope.user = null;;
+              $ionicHistory.clearCache();
+              $ionicHistory.clearHistory();
               $timeout(function() {
-                $ionicSideMenuDelegate.toggleRight();
-              })
-              $timeout(function() {
-                $state.go('^.onboarding');
-              }, 1000);
-            }, 500);
+                $scope.user = User.getLocal();
+                $scope.user.updateAttr = User.updateAttrUser;
+                $scope.user.createObj = User.createObj;
+                $scope.user.updateObj = User.updateObj;
+                $scope.success.show(0, 1500, 'You have been successfully logged out!');
+                $timeout(function() {
+                  $ionicSideMenuDelegate.toggleRight();
+                })
+                $timeout(function() {
+                  $state.go('^.onboarding');
+                }, 1000);
+              }, 500);
+
+            }
           }
 
 

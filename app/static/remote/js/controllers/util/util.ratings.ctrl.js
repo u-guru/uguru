@@ -56,8 +56,8 @@ angular.module('uguru.util.controllers')
       for (var i = 0; i < value; i++) {
         var tempStar = allStarElements[i];
 
-        if (!hasClass(tempStar, 'green')) {
-          tempStar.className = tempStar.className + ' green';
+        if (!hasClass(tempStar, 'blue')) {
+          tempStar.className = tempStar.className + ' blue';
         }
 
       }
@@ -65,8 +65,8 @@ angular.module('uguru.util.controllers')
       for (var j = value; j < 5; j++ ) {
 
         var tempStar = allStarElements[j];
-        if (hasClass(tempStar, 'green')) {
-          tempStar.className= tempStar.className.replace("green","");
+        if (hasClass(tempStar, 'blue')) {
+          tempStar.className= tempStar.className.replace("blue","");
         }
 
       }

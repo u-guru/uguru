@@ -26,7 +26,13 @@ angular.module('uguru.util.controllers')
     $scope.loginMode = false;
     $scope.headerText = 'Sign Up';
 
+    $scope.settingsIndex = 2;
+
     $scope.selectedCurrentHourly = 10;
+
+    $scope.setSettingsToIndex = function(index) {
+      $scope.settingsIndex = index;
+    }
 
     if ($scope.user && $scope.user.current_hourly) {
       $scope.selectedCurrentHourly = $scope.user.current_hourly + '';
@@ -251,6 +257,10 @@ angular.module('uguru.util.controllers')
       });
 
     };
+
+    $scope.closeSideBar = function() {
+      $ionicSideMenuDelegate.toggleRight();
+    }
 
 
      $scope.getMe = function () {

@@ -9,11 +9,21 @@
   /*and (-webkit-min-device-pixel-ratio: 2)*/ {
 
 
+    .ratings-modal .small-screen-extra-50-padding-top {
+      padding-top:50px;
+    }
+
+    .small-screen-no-padding-top {
+      padding-top:0px;
+    }
+
     .onboarding-loading #_4 {
         top: 25.5%;
         left: 24%;
         height: 10.8%;
     }
+
+
 
     .ranking-img {
       /*position:fixed;*/
@@ -322,4 +332,6 @@
   and (orientation: landscape) {
 
 }
+
+
 

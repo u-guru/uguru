@@ -760,7 +760,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
      $scope.$on('$ionicView.enter', function() {
-        console.log('\n\nview has entered\n\n')
+        // $timeout(function() {
+        //   $ionicSideMenuDelegate.toggleRight();
+        // }, 500);
         //user has incoming request for help
         if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
             $scope.processIncomingRequests($scope.user.incoming_requests);
@@ -797,10 +799,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
     }, false);
-
-    // $timeout(function() {
-    //   $state.go('^.become-guru');
-    // }, 4000)
 
   }
 

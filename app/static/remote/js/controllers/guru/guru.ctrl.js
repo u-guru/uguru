@@ -162,7 +162,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
     $scope.launchGuruRatingsModal = function(rating) {
-        console.log('rating 2', rating);
+
 
         $scope.pending_rating = rating;
         $scope.starsSelected;
@@ -221,30 +221,19 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
 
     $scope.submitGuruRatingServer = function () {
-      if ($scope.root.vars.guru_mode) {
+
 
         $scope.pending_rating.guru_rate_student = true;
         $scope.pending_rating.student_rating = parseInt($scope.root.vars.starsSelected);
 
 
-      } else {
-        $scope.pending_rating.student_rate_guru = true;
-        $scope.pending_rating.guru_rating = parseInt($scope.root.vars.starsSelected);
-
-      }
-
       var ratingPayload = $scope.pending_rating;
 
       var serverCallback = function() {
         $scope.loader.hide();
-        $timeout(function() {
-            $scope.launchPendingActions();
-          }, 500);
       }
 
       $scope.loader.show();
-
-      console.log('payload to be submitted', ratingPayload);
 
       $scope.user.updateObj($scope.user, 'ratings', ratingPayload, $scope, serverCallback);
     }
@@ -625,9 +614,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
             if ($scope.user && $scope.user.active_guru_sessions && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
 
-                  $timeout(function() {
+                  // $timeout(function() {
                     $scope.root.vars.launchPendingActions();
-                  }, 1000)
+                  // }, 1000)
 
                   //check to see if any of the guru sessions are active
 
@@ -649,10 +638,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
           if ($scope.user && $scope.user.active_guru_sessions && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
 
-                  $timeout(function() {
-                    $scope.root.vars.launchPendingActions();
-                  }, 1000)
-
+                $scope.root.vars.launchPendingActions();
 
           }
 

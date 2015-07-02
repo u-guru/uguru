@@ -226,8 +226,8 @@
 
 
     <ion-nav-bar class="transparent-bg no-background-image no-border nav-bar-text bold-font">
-      <ion-nav-back-button class="button-clear" style="width:140px;">
-          <img src="./img/left-chevron.png" class='uguru-back-button'/>
+      <ion-nav-back-button class="button-clear">
+          <!-- <img src="./img/left-chevron.png" class='uguru-back-button'/> -->
       </ion-nav-back-button>
     </ion-nav-bar>
       <script type="text/javascript">
@@ -246,7 +246,7 @@
 
             </ion-side-menu-content>
 
-            <ion-side-menu side="right" width='window.width * .80' >
+            <ion-side-menu side="right" width='window.width * 1' style='padding-right:{{window.width * .2}}'>
               <div ng-include="'remote/templates/components.side-menu.html'"></div>
             </ion-side-menu>
       </ion-side-menus>
