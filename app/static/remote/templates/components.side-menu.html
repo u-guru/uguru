@@ -2,75 +2,74 @@
 <ion-modal-view class='side-menu-right' id="side_menu" ng-controller='SignupController'>
 
 
-  <ion-content class='white-text ios-status-bar-dark' scroll='false'>
-    <div class='pure-g full-height'>
+  <ion-content class='ios-status-bar-dark' scroll='false' style='margin-top:-1px;'>
+    <div class='pure-g full-height' style='margin-top:-1px;'>
       <div class='pure-u-1-5 dark-bg full-height' style='z-index:1000;'>
         <div class='pure-g-c flex-column flex-space-between animated slideInUp'>
 
           <div class='flex-item-c center'>
-            <div class='pure-u-1 padding-3-4em'>
-              <a ng-click='setSettingsToIndex(1)' ng-show='settingsIndex === 1'>
-                <img class='pure-img' ng-src='{{img_base}}./img/settings/profile.svg'/>
-              </a>
-              <a ng-click='setSettingsToIndex(1)' ng-show='settingsIndex !== 1'>
-                <img class='pure-img' ng-src='{{img_base}}./img/settings/profile-outline.svg'/>
-              </a>
-            </div>
+            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(1)'>
+              <!-- <div ng-show='settings.icons.profile'> -->
+                <img class='pure-img animated pulse ng-class:{"hide":!settings.icons.profile}' ng-src='{{img_base}}./img/settings/profile.svg'/>
+              <!-- </div> -->
+              <!-- <div ng-show='!settings.icons.profile'> -->
+                <img class='pure-img ng-class:{"hide":settings.icons.profile}' ng-src='{{img_base}}./img/settings/profile-outline.svg'/>
+              <!-- </div> -->
+            </a>
           </div>
           <div class='flex-item-c center'>
-            <div class='pure-u-1 padding-3-4em'>
-              <a ng-click='setSettingsToIndex(2)'>
-                <img class='pure-img' ng-src='{{img_base}}./img/settings/notification.svg'/ ng-show='settingsIndex === 2'>
-                <img class='pure-img' ng-src='{{img_base}}./img/settings/notification-outline.svg'/ ng-hide='settingsIndex === 2'>
-              </a>
-            </div>
+            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(2)'>
+              <!-- <div ng-show='settings.icons.notifications'> -->
+                <img class='pure-img animated pulse ng-class:{"hide":!settings.icons.notifications}' ng-src='{{img_base}}./img/settings/notification.svg'/>
+              <!-- </div> -->
+
+              <!-- <div ng-show='!settings.icons.notifications'> -->
+                <img class='pure-img ng-class:{"hide":settings.icons.notifications}' ng-src='{{img_base}}./img/settings/notification-outline.svg'>
+              <!-- </div> -->
+            </a>
           </div>
           <div class='flex-item-c center'>
-            <div class='pure-u-1 padding-3-4em'>
-              <a ng-click='setSettingsToIndex(3)'>
-                  <img class='pure-img' ng-src='{{img_base}}./img/settings/card.svg'/ ng-show='settingsIndex === 3'>
-                  <img class='pure-img' ng-src='{{img_base}}./img/settings/card-outline.svg'/ ng-hide='settingsIndex === 3'>
-              </a>
-            </div>
+            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(3)'>
+
+                <img class='pure-img animated pulse ng-class:{"hide":!settings.icons.card}' ng-src='{{img_base}}./img/settings/card.svg'/>
+
+                <img class='pure-img ng-class:{"hide":settings.icons.card}' ng-src='{{img_base}}./img/settings/card-outline.svg'>
+            </a>
           </div>
           <div class='flex-item-c center'>
-            <div class='pure-u-1 padding-3-4em'>
-              <a ng-click='setSettingsToIndex(4)'>
-                  <img class='pure-img' ng-src='{{img_base}}./img/settings/support.svg'/ ng-show='settingsIndex === 4'>
-                  <img class='pure-img' ng-src='{{img_base}}./img/settings/support-outline.svg'/ ng-hide='settingsIndex === 4'>
-              </a>
-            </div>
+            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(4)'>
+
+                <img class='pure-img animated pulse ng-class:{"hide":!settings.icons.support}' ng-src='{{img_base}}./img/settings/support.svg'/>
+
+                <img class='pure-img ng-class:{"hide":settings.icons.support}' ng-src='{{img_base}}./img/settings/support-outline.svg'>
+            </a>
           </div>
           <div class='flex-item-c center'>
-            <div class='pure-u-1 padding-3-4em'>
-              <a ng-click='setSettingsToIndex(5)'>
-                  <img class='pure-img' ng-src='{{img_base}}./img/settings/become-guru.svg'/ ng-show='settingsIndex === 5'>
-                  <img class='pure-img' ng-src='{{img_base}}./img/settings/become-guru-outline.svg'/ ng-hide='settingsIndex === 5'>
-              </a>
-            </div>
+            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(5)'>
+              <img class='pure-img animated pulse ng-class:{"hide":!root.vars.guru_mode}' ng-src='{{img_base}}./img/settings/become-guru.svg'/>
+
+                <img class='pure-img ng-class:{"hide":root.vars.guru_mode}' ng-src='{{img_base}}./img/settings/become-guru-outline.svg'>
+            </a>
           </div>
-          <div class='flex-item-c center'>
+          <a ng-click='logoutUser()' class='flex-item-c center'>
             <div class='pure-u-1 padding-3-4em'>
-              <a ng-click='logoutUser()'>
                 <img class='pure-img' ng-src='{{img_base}}./img/settings/logout.svg'/>
-              </a>
             </div>
-          </div>
-          <div class='flex-item-c center' style='background-color:rgba(255,255,255,0.1)'>
+          </a>
+          <a ng-click='closeSideBar()' class='flex-item-c center' style='background-color:rgba(255,255,255,0.1)'>
             <div class='pure-u-1' style='padding:1.5em;'>
-              <a ng-click='closeSideBar()'>
                 <img class='pure-img' ng-src='{{img_base}}./img/settings/settings-back.svg'/>
-              </a>
             </div>
-          </div>
+          </a>
 
         </div>
       </div>
 
-      <div class='pure-u-4-5 full-height padding-1em'>
+      <div class='pure-u-4-5 full-height settings-view-container'>
 
-          <div class='pure-g-c flex-column flex-space-between'>
-        <div class='pure-g-c flex-column height-40 j-end padding-2em'>
+        <!-- settings icon section 1 profile -->
+        <div class='pure-g-c flex-column flex-space-between' ng-show='false'>
+          <div class='pure-g-c flex-column height-40 j-end padding-2em'>
             <div class='center no-margin'>
               <div class='pure-u-1 center float-center'>
                 <img ng-show='user && !user.id'class='pure-img profile-img sidebar-img inline'  src='https://graph.facebook.com/10152573868267292/picture?width=100&height=100'/>
@@ -155,14 +154,7 @@
               </ion-list>
           </div>
 
-          <div class='pure-g-c flex-column j-start height-20'>
-            <div class='pure-u-1 padding-1em no-padding-bottom' ng-show='user && !user.id'>
-              <button class='button button-full button-black micro-text fb-blue-bg'  ng-click='signupFacebook()'>Continue with Facebook</button>
-            </div>
-              <div class='pure-u-1 padding-half center' id="E2E_Email" ng-show='user && !user.id'>
-                  <a class='center grey uppercase semibold nano-text' id="email" ng-click='goToSignupFromSideBar()'> or with email </a>
-              </div>
-          </div>
+
 
           <div class='pure-g-c flex-column j-start height-20'  ng-show='user && user.show_become_guru'>
             <div class='pure-u-1 padding-1em no-padding-bottom' >
@@ -183,6 +175,85 @@
           </div>
 
       </div>
+
+      <!-- [Profile] settings icon section -->
+      <div ng-show='settings.icons.profile' class='relative full-height'>
+        <div class="bar bar-header dark-bg-header mini-header uppercase relative" style='width:auto;'>
+          <h1 class="title bold animated zoomIn">Profile</h1>
+        </div>
+        <div class='pure-g-c flex-column flex-space-between full-height'>
+
+          <div class='pure-g-c flex-column height-40 j-end padding-2em'>
+            <div class='center no-margin'>
+              <div class='pure-u-1 center float-center relative padding-1em center'>
+                <div class='absolute settings-profile-image-container'>
+                  <img ng-show='user && !user.id'class='pure-img profile-img sidebar-img inline'  src='https://graph.facebook.com/10152573868267292/picture?width=100&height=100'/>
+                  <img ng-show='user && user.profile_url' class='pure-img profile-img sidebar-img inline'  src='{{user.profile_url}}'/>
+                </div>
+                <div class='pure-u-1 regular'>
+                  <div ng-show='user && user.id'>
+                    <h1 class='light regular-text'>
+                      {{user.name.split(' ')[0]}} {{user.name.split(' ')[1][0].toUpperCase()}}.
+                    </h1>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+
+           <div class='flex-item-c j-center padding-1em' ng-show='user && !user.id'>
+
+            <div class='pure-u-1'>
+              <div class='pure-g-c flex-column j-end'>
+                <div class='pure-u-1 padding-1em no-padding-bottom' ng-show='user && !user.id'>
+                  <button class='button button-full button-black micro-text fb-blue-bg'  ng-click='signupFacebook()'>Continue with Facebook
+                  </button>
+                </div>
+                <div class='pure-u-1 padding-half center' id="E2E_Email" ng-show='user && !user.id'>
+                      <a class='center grey uppercase semibold nano-text' id="email" ng-click='goToSignupFromSideBar()'> or with email </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+      <!-- [Notifications] settings icon section -->
+
+      <div ng-show='settings.icons.notifications' class='relative'>
+        <div class="bar bar-header dark-bg-header mini-header uppercase" style='width:auto;'>
+          <h1 class="title bold animated zoomIn">Notification Settings</h1>
+        </div>
+        <div class='pure-g-c flex-column flex-space-between'>
+        </div>
+      </div>
+
+      <div ng-show='settings.icons.card' class='relative'>
+        <div class="bar bar-header dark-bg-header mini-header uppercase" style='width:auto;'>
+          <h1 class="title bold animated zoomIn">Your Cards</h1>
+        </div>
+        <div class='pure-g-c flex-column flex-space-between'>
+        </div>
+      </div>
+
+      <div ng-show='settings.icons.support' class='relative'>
+        <div class="bar bar-header dark-bg-header mini-header uppercase" style='width:auto;'>
+          <h1 class="title bold animated zoomIn">Support</h1>
+        </div>
+        <div class='pure-g-c flex-column flex-space-between'>
+        </div>
+      </div>
+
+
+
     </div>
     <ion-footer-bar ng-show='root.vars.version' class='side-menu-footer-bar' style='padding-left:20%; background-color:transparent;'>
       <a class='pure-u-1 nano-text center' ng-click='goToBeginning()'>
