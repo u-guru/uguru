@@ -9,9 +9,11 @@
 
           <div class='flex-item-c center'>
             <div class='pure-u-1 padding-3-4em'>
-              <a ng-click='setSettingsToIndex(1)'>
-                <img class='pure-img' ng-src='{{img_base}}./img/settings/profile.svg'/ ng-show='settingsIndex === 1'>
-                <img class='pure-img' ng-src='{{img_base}}./img/settings/profile-outline.svg'/ ng-hide='settingsIndex === 1'>
+              <a ng-click='setSettingsToIndex(1)' ng-show='settingsIndex === 1'>
+                <img class='pure-img' ng-src='{{img_base}}./img/settings/profile.svg'/>
+              </a>
+              <a ng-click='setSettingsToIndex(1)' ng-show='settingsIndex !== 1'>
+                <img class='pure-img' ng-src='{{img_base}}./img/settings/profile-outline.svg'/>
               </a>
             </div>
           </div>
@@ -65,7 +67,7 @@
         </div>
       </div>
 
-      <div class='pure-u-4-5 full-height'>
+      <div class='pure-u-4-5 full-height padding-1em'>
 
           <div class='pure-g-c flex-column flex-space-between'>
         <div class='pure-g-c flex-column height-40 j-end padding-2em'>
