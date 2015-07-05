@@ -1624,3 +1624,50 @@ button.button-full.ratings-footer-button {
 .light.regular-text {
   opacity: 0.7;
   color: #000000; }
+
+.auto-marign {
+  margin: 0 auto; }
+
+.course-tag.student-settings {
+  font-size: 70%;
+  padding: 3px 5px; }
+
+.settings-view-container .button.button-blue.blue-bg {
+  border-color: #68A7CF;
+  font-family: "OpenSans-Light";
+  padding: 0em 2.5em;
+  min-height: 0px; }
+
+.button.button-blue.blue-bg.active, .button.button-blue.blue-bg.activated {
+  opacity: 0.6; }
+
+.opacity-4-5 {
+  opacity: 0.8; }
+
+.settings-view-container .item-toggle .toggle {
+  top: 5px; }
+
+.card-img {
+  position: absolute; }
+
+.card-icons-right {
+  position: absolute;
+  right: -5%;
+  top: 50%; }
+  .card-icons-right .ion-checkmark {
+    font-size: 120%;
+    padding-right: 1.5em; }
+  .card-icons-right .ion-chevron-right, .card-icons-right .ion-plus {
+    padding-right: 0.5em;
+    opacity: 0.7; }
+
+.support-img-container img {
+  max-height: 35px;
+  margin: 0 auto; }
+.support-img-container .card-img-support {
+  height: 27px; }
+.support-img-container .card-img-confused {
+  height: 27px; }
+.support-img-container .other-img-support {
+  height: 40px;
+  width: 40px; }

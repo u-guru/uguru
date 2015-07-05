@@ -61,6 +61,7 @@ angular.module('uguru.util.controllers')
       if (index === 5) {
         if ($scope.root.vars.guru_mode) {
 
+          $scope.root.vars.guru_mode = false;
           $scope.goToStudentMode();
 
         } else {
@@ -147,7 +148,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.resetAccount = function() {
-      if (confirm('Are you sure you want to reset your admin account?')) {
+      if ($scope.user.is_admin && confirm('Are you sure you want to reset your admin account?')) {
 
         $scope.loader.show();
         User.clearAttr($scope.user, $scope.user.id).then(
@@ -157,9 +158,8 @@ angular.module('uguru.util.controllers')
             $scope.user.university_id = null;
             $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
             $ionicSideMenuDelegate.toggleRight();
-            $timeout(function() {
-              $state.go('^.onboarding');
-            }, 1000)
+            $scope.logoutUser();
+            $scope.goToBeginning();
           },
           function(err) {
             console.log(err)

@@ -329,7 +329,19 @@ angular.module('uguru.util.controllers')
 
           //returns empty array of length
           $scope.getNumber = function(num) {
-            return new Array(num);
+            if (typeof(num) === "string") {
+              num = parseInt(num) | 0;
+            }
+            arr =  new Array(num);
+            return arr;
+          }
+
+          $scope.getGrayNumber = function(num) {
+            if (typeof(num) === "string") {
+              num = parseInt(num) | 0;
+            }
+            arr =  new Array(5 - num);
+            return arr;
           }
 
           $scope.checkCourses = function() {
