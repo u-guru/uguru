@@ -105,7 +105,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <aside class="main-sidebar">
 
         <!-- investor admin portal -->
-        {% if 'investors' not in request.url %}
+        {% if 'investors.uguru.me' in request.url %}
         <section class="sidebar">
           <ul class="sidebar-menu">
             <li class="header">Investor Portal </li>
@@ -203,7 +203,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         {% endif %}
 
         <!-- team admin portal -->
-        {% if 'investors' in request.url %}
+        {% if 'investors' not in request.url %}
         <section class="sidebar">
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
