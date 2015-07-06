@@ -609,16 +609,17 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.$on('$ionicView.enter', function() {
             console.log('checking for pending actions...');
 
+            // $timeout(function() {
+            //   $state.go('^.cashout');
+            // }, 500)
 
             $scope.doRefresh();
 
             if ($scope.user && $scope.user.active_guru_sessions && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
 
-                  // $timeout(function() {
+
                     $scope.root.vars.launchPendingActions();
                   // }, 1000)
-
-                  //check to see if any of the guru sessions are active
 
             }
 

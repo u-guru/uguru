@@ -39,6 +39,10 @@ def admin_login():
         print email, password
         if check_admin_password(email, password):
             session['user'] = admin_info[email]
+
+            if 'investors.uguru.me' in request.url:
+                return redirect(url_for('admin_investor_stats'))
+
             return redirect(request.path)
         else:
             session['error'] = 'incorrect username & password'
@@ -51,10 +55,41 @@ def admin_login():
     if session.get('user'):
         return redirect(url_for('admin_members'))
 
-
     return render_template("new_admin/login.html", error=error)
 
 
+###############
+## Investors ##
+###############
+
+@app.route('/admin/i/stats/')
+def admin_investor_stats():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin.investors.statistics.html")
+
+@app.route('/admin/i/product/')
+def admin_view_campaigns():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin.investors.product.html")
+
+@app.route('/admin/i/competition/')
+def admin_investors_competition():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin.investors.competition.html")
+
+@app.route('/admin/i/biz-model/')
+def admin_investors_biz_model():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin.investors.business-model.html")
+
+
+###################
+## END Investors ##
+###################
 
 @app.route('/admin/campaigns/')
 def admin_view_campaigns():
@@ -123,6 +158,12 @@ def admin_best_practices():
         return redirect(url_for('admin_login'))
     return render_template("new_admin/admin.product.practices.html")
 
+@app.route('/admin/i/statistics/')
+def admin_best_practices():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin.investors.statistics.html")
+
 @app.route('/admin/support/tickets/')
 def admin_testing():
     if not session.get('user'):
@@ -138,6 +179,13 @@ def admin_members():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     return render_template("new_admin/admin.team-members.html", team=admin_info)
+
+@app.route('/admin/team/routine/')
+def admin_routine():
+    from app.lib.admin import admin_info
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin.team-routine.html", team=admin_info)
 
 
 @app.route('/admin/')
@@ -437,6 +485,9 @@ def app_student_home():
     from random import sample
     from app.lib.gen_departments import departments
 
+    if 'investors' in request.url:
+        return redirect(url_for('admin_login'))
+
     university_names = supported_universities.keys()
 
 
@@ -568,7 +619,15 @@ def app_home():
 
 @app.route('/itunes/app/')
 def itunes_app():
-    return redirect('https://www.dropbox.com/s/1tvzqjmsu0657nf/Uguru.ipa?dl=0')
+    return redirect('https://itunes.com/apps/uguru')
+
+@app.route('/android/app/')
+def android_app():
+    return redirect('https://play.google.com/store/apps/details?id=com.beta.college.Uguru')
+
+@app.route('/windows/app/')
+def windows_app():
+    return redirect('https://www.windowsphone.com/en-us/store/app/uguru/8df574bc-cbdd-4d6c-af3f-a7b2fe259494')
 
 @app.route('/production/app/')
 @app.route('/app/production/')
@@ -713,9 +772,13 @@ def admin_accounts():
 def check_admin_password(email, password):
     from app.lib.admin import admin_info
     print email, password
+    print email.lower(), password.lower()
     if admin_info.get(email):
         email_user_info = admin_info[email]
         first_name = email_user_info['name'].split(' ')[0].lower()
         if password == first_name + '-uguru-1':
             return True
+    if admin_info.get(email) and (email.lower() == 'investors@uguru.me') and (password == '786-uguru-investor'):
+        print 'it works'
+        return True
     return False

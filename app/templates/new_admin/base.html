@@ -58,7 +58,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="/static/new_admin/starter.html" class="logo"><b>Uguru</b>Pro</a>
+        {% if 'investors.uguru.me' in request.url %}
+        <a href="/admin/i/stats/" class="logo"><b>Uguru</b>Investors</a>
+        {% else %}
+        <a href="/admin/" class="logo"><b>Uguru</b>Pro</a>
+        {% endif %}
 
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -100,7 +104,106 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Left side column. contains the logo and sidebar -->
       <aside class="main-sidebar">
 
-        <!-- sidebar: style can be found in sidebar.less -->
+        <!-- investor admin portal -->
+        {% if 'investors' not in request.url %}
+        <section class="sidebar">
+          <ul class="sidebar-menu">
+            <li class="header">Investor Portal </li>
+            <li>
+              <a href="/admin/i/stats/">
+                <i class="fa fa-bar-chart-o"></i>
+                <span>Statistics</span>
+              </a>
+            </li>
+            <li>
+              <a href="/admin/team/members/">
+                <i class="fa fa-group"></i>
+                <span>Team Info & Background</span>
+              </a>
+            </li>
+            <li class='treeview'>
+              <a href="#">
+                <i class="fa fa-apple"></i>
+                <span>Supported Platforms</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li>
+                  <a href="/itunes/app/" target='_blank'>
+                    <i class="fa fa-apple"></i>
+                    iOS
+                  </a>
+                </li>
+                <li>
+                  <a href="/android/app/" target='_blank'>
+                    <i class="fa fa-android"></i>
+                    Android
+                  </a>
+                </li>
+                <li>
+                  <a href="/windows/app/" target='_blank'>
+                    <i class="fa fa-windows"></i>
+                    Windows
+                  </a>
+                </li>
+                <li>
+                  <a href="/production/app/" target='_blank'>
+                    <i class="fa fa-globe"></i>
+                    Web
+                  </a>
+                </li>
+                <li>
+                <a href="#"><i class="fa fa-circle-o"></i> Coming Soon <i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                    <li><a href="#" onclick="alert('Coming Soon before Aug 1!')"><i class="fa fa-apple"></i> Apple Watch </a>
+                    </li>
+                    <li><a href="#" onclick="alert('Coming Soon before Aug 1!')"><i class="fa fa-android"></i> Android Watch </a>
+                    </li>
+                    <li><a href="#" onclick="alert('Coming Soon before Aug 1!')"><i class="fa fa-comments-o"></i> Text Only </a>
+                    </li>
+                  </ul>
+                </a>
+
+              </ul>
+
+            </li>
+            <li>
+              <a href="/admin/i/biz-model/">
+                <i class="fa fa-usd"></i>
+                <span>Business Model</span>
+              </a>
+            </li>
+            <li>
+              <a href="/admin/i/competition/">
+                <i class="fa fa-shield"></i>
+                <span>Competition</span>
+              </a>
+            </li>
+            <li>
+              <a href="/admin/coming-soon/">
+                <i class="fa fa-signal"></i>
+                <span>Milestones</span>
+              </a>
+            </li>
+            <li>
+              <a href="/admin/i/product/">
+                <i class="fa fa-mobile"></i>
+                <span>Product Details</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" onclick='alert("Email samir@uguru.me or TEXT 813-5009853 for anything you need!")'>
+                <i class="fa fa-phone"></i>
+                <span>Contact Samir</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        {% endif %}
+
+        <!-- team admin portal -->
+        {% if 'investors' in request.url %}
         <section class="sidebar">
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
@@ -134,17 +237,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </a>
                 </li>
                 <li>
-                  <a href="/admin/team/calendar/">
-                    <i class="fa fa-circle-o"></i>
-                    Calendar
-                  </a>
-                </li>
-                <li>
                   <a href="/admin/team/members/">
                     <i class="fa fa-circle-o"></i>
                     Members & Roles
                   </a>
                 </li>
+                <li>
+                  <a href="/admin/team/routine/">
+                    <i class="fa fa-circle-o"></i>
+                    Routine
+                  </a>
+                </li>
+                <!-- <li>
+                  <a href="/admin/coming-soon/">
+                    <i class="fa fa-circle-o"></i>
+                    Calendar
+                  </a>
+                </li> -->
+
               </ul>
             </li>
 
@@ -320,6 +430,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li> -->
           </ul><!-- /.sidebar-menu -->
         </section>
+        {% endif %}
         <!-- /.sidebar -->
       </aside>
 
