@@ -409,6 +409,8 @@ angular.module('uguru.util.controllers')
                 device: ionic.Platform.device(),
             }
 
+            console.log('device is ready from the root controller');
+
             if ($cordovaDevice && $cordovaDevice.getPlatform() === 'Win32NT') {
               $scope.platform.windows = true;
               $scope.platform.mobile = true;
