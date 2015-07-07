@@ -1,5 +1,5 @@
 // Platform: wp8
-// 10ffabbd64eb74e345526739d72ab03b682c4793
+// b0463746dd842818c1f08560e998ec847460596c
 /*
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -19,7 +19,7 @@
  under the License.
 */
 ;(function() {
-var PLATFORM_VERSION_BUILD_LABEL = '3.7.1';
+var PLATFORM_VERSION_BUILD_LABEL = '3.8.1';
 // file: src/scripts/require.js
 
 /*jshint -W079 */
@@ -101,9 +101,14 @@ if (typeof module === "object" && typeof require === "function") {
 // file: src/cordova.js
 define("cordova", function(require, exports, module) {
 
+if(window.cordova){
+    throw new Error("cordova already defined");
+}
+
 
 var channel = require('cordova/channel');
 var platform = require('cordova/platform');
+
 
 /**
  * Intercept calls to addEventListener + removeEventListener and handle deviceready,
@@ -284,10 +289,16 @@ var cordova = {
             if (callback) {
                 if (isSuccess && status == cordova.callbackStatus.OK) {
                     callback.success && callback.success.apply(null, args);
-                } else {
+                } else if (!isSuccess) {
                     callback.fail && callback.fail.apply(null, args);
                 }
-
+                /*
+                else
+                    Note, this case is intentionally not caught.
+                    this can happen if isSuccess is true, but callbackStatus is NO_RESULT
+                    which is used to remove a callback from the list without calling the callbacks
+                    typically keepCallback is false in this case
+                */
                 // Clear callback if not expecting any more results
                 if (!keepCallback) {
                     delete cordova.callbacks[callbackId];
@@ -586,7 +597,6 @@ var utils = require('cordova/utils'),
  * onDeviceReady*              User event fired to indicate that Cordova is ready
  * onResume                    User event fired to indicate a start/resume lifecycle event
  * onPause                     User event fired to indicate a pause lifecycle event
- * onDestroy*                  Internal event fired when app is being destroyed (User should use window.onunload event, not this one).
  *
  * The events marked with an * are sticky. Once they have fired, they will stay in the fired state.
  * All listeners that subscribe after the event is fired will be executed right away.
@@ -797,9 +807,6 @@ channel.create('onResume');
 
 // Event to indicate a pause lifecycle event
 channel.create('onPause');
-
-// Event to indicate a destroy lifecycle event
-channel.createSticky('onDestroy');
 
 // Channels that must fire before "deviceready" is fired.
 channel.waitForInitialization('onCordovaReady');
@@ -1360,7 +1367,7 @@ function findCordovaPath() {
 exports.load = function(callback) {
     var pathPrefix = findCordovaPath();
     if (pathPrefix === null) {
-        console.log('Could not find windows.cordova.js script tag. Plugin loading may fail.');
+        console.log('Could not find cordova.js script tag. Plugin loading may fail.');
         pathPrefix = '';
     }
     injectIfNecessary('cordova/plugin_list', pathPrefix + 'windows.cordova_plugins.js', function() {

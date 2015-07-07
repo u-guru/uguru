@@ -1,6 +1,13 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
+        "file": "windows_plugins/com.cordova.plugins.sms/www/sms.js",
+        "id": "com.cordova.plugins.sms.Sms",
+        "clobbers": [
+            "window.sms"
+        ]
+    },
+    {
         "file": "windows_plugins/com.ionic.keyboard/www/keyboard.js",
         "id": "com.ionic.keyboard.keyboard",
         "clobbers": [
@@ -12,6 +19,13 @@ module.exports = [
         "id": "com.ohh2ahh.plugins.appavailability.AppAvailability",
         "clobbers": [
             "appAvailability"
+        ]
+    },
+    {
+        "file": "windows_plugins/com.phonegap.plugins.barcodescanner/www/barcodescanner.js",
+        "id": "com.phonegap.plugins.barcodescanner.BarcodeScanner",
+        "clobbers": [
+            "cordova.plugins.barcodeScanner"
         ]
     },
     {
@@ -36,11 +50,326 @@ module.exports = [
         ]
     },
     {
+        "file": "windows_plugins/cordova-plugin-admob/www/AdMob.js",
+        "id": "cordova-plugin-admob.AdMob",
+        "clobbers": [
+            "window.plugins.AdMob"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-battery-status/www/battery.js",
+        "id": "cordova-plugin-battery-status.battery",
+        "clobbers": [
+            "navigator.battery"
+        ]
+    },
+    {
         "file": "windows_plugins/cordova-plugin-device/www/device.js",
         "id": "cordova-plugin-device.device",
         "clobbers": [
             "device"
         ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-device-motion/www/Acceleration.js",
+        "id": "cordova-plugin-device-motion.Acceleration",
+        "clobbers": [
+            "Acceleration"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-device-motion/www/accelerometer.js",
+        "id": "cordova-plugin-device-motion.accelerometer",
+        "clobbers": [
+            "navigator.accelerometer"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-device-orientation/www/CompassError.js",
+        "id": "cordova-plugin-device-orientation.CompassError",
+        "clobbers": [
+            "CompassError"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-device-orientation/www/CompassHeading.js",
+        "id": "cordova-plugin-device-orientation.CompassHeading",
+        "clobbers": [
+            "CompassHeading"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-device-orientation/www/compass.js",
+        "id": "cordova-plugin-device-orientation.compass",
+        "clobbers": [
+            "navigator.compass"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/DirectoryEntry.js",
+        "id": "cordova-plugin-file.DirectoryEntry",
+        "clobbers": [
+            "window.DirectoryEntry"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/DirectoryReader.js",
+        "id": "cordova-plugin-file.DirectoryReader",
+        "clobbers": [
+            "window.DirectoryReader"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/Entry.js",
+        "id": "cordova-plugin-file.Entry",
+        "clobbers": [
+            "window.Entry"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/File.js",
+        "id": "cordova-plugin-file.File",
+        "clobbers": [
+            "window.File"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/FileEntry.js",
+        "id": "cordova-plugin-file.FileEntry",
+        "clobbers": [
+            "window.FileEntry"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/FileError.js",
+        "id": "cordova-plugin-file.FileError",
+        "clobbers": [
+            "window.FileError"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/FileReader.js",
+        "id": "cordova-plugin-file.FileReader",
+        "clobbers": [
+            "window.FileReader"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/FileSystem.js",
+        "id": "cordova-plugin-file.FileSystem",
+        "clobbers": [
+            "window.FileSystem"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/FileUploadOptions.js",
+        "id": "cordova-plugin-file.FileUploadOptions",
+        "clobbers": [
+            "window.FileUploadOptions"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/FileUploadResult.js",
+        "id": "cordova-plugin-file.FileUploadResult",
+        "clobbers": [
+            "window.FileUploadResult"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/FileWriter.js",
+        "id": "cordova-plugin-file.FileWriter",
+        "clobbers": [
+            "window.FileWriter"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/Flags.js",
+        "id": "cordova-plugin-file.Flags",
+        "clobbers": [
+            "window.Flags"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/LocalFileSystem.js",
+        "id": "cordova-plugin-file.LocalFileSystem",
+        "clobbers": [
+            "window.LocalFileSystem"
+        ],
+        "merges": [
+            "window"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/Metadata.js",
+        "id": "cordova-plugin-file.Metadata",
+        "clobbers": [
+            "window.Metadata"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/ProgressEvent.js",
+        "id": "cordova-plugin-file.ProgressEvent",
+        "clobbers": [
+            "window.ProgressEvent"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/fileSystems.js",
+        "id": "cordova-plugin-file.fileSystems"
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/requestFileSystem.js",
+        "id": "cordova-plugin-file.requestFileSystem",
+        "clobbers": [
+            "window.requestFileSystem"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/resolveLocalFileSystemURI.js",
+        "id": "cordova-plugin-file.resolveLocalFileSystemURI",
+        "merges": [
+            "window"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-file/www/wp/FileUploadOptions.js",
+        "id": "cordova-plugin-file.FileUploadOptions1",
+        "merges": [
+            "window.FileUploadOptions"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
+        "clobbers": [
+            "cordova.InAppBrowser.open",
+            "window.open"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-media/www/MediaError.js",
+        "id": "cordova-plugin-media.MediaError",
+        "clobbers": [
+            "window.MediaError"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-media/www/Media.js",
+        "id": "cordova-plugin-media.Media",
+        "clobbers": [
+            "window.Media"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-media-capture/www/CaptureAudioOptions.js",
+        "id": "cordova-plugin-media-capture.CaptureAudioOptions",
+        "clobbers": [
+            "CaptureAudioOptions"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-media-capture/www/CaptureImageOptions.js",
+        "id": "cordova-plugin-media-capture.CaptureImageOptions",
+        "clobbers": [
+            "CaptureImageOptions"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-media-capture/www/CaptureVideoOptions.js",
+        "id": "cordova-plugin-media-capture.CaptureVideoOptions",
+        "clobbers": [
+            "CaptureVideoOptions"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-media-capture/www/CaptureError.js",
+        "id": "cordova-plugin-media-capture.CaptureError",
+        "clobbers": [
+            "CaptureError"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-media-capture/www/MediaFileData.js",
+        "id": "cordova-plugin-media-capture.MediaFileData",
+        "clobbers": [
+            "MediaFileData"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-media-capture/www/MediaFile.js",
+        "id": "cordova-plugin-media-capture.MediaFile",
+        "clobbers": [
+            "MediaFile"
+        ]
+    },
+    {
+        "file": "windows_plugins/cordova-plugin-media-capture/www/capture.js",
+        "id": "cordova-plugin-media-capture.capture",
+        "clobbers": [
+            "navigator.device.capture"
+        ]
+    },
+    {
+        "file": "windows_plugins/de.appplant.cordova.plugin.badge/www/badge.js",
+        "id": "de.appplant.cordova.plugin.badge.Badge",
+        "clobbers": [
+            "plugin.notification.badge",
+            "cordova.plugins.notification.badge"
+        ]
+    },
+    {
+        "file": "windows_plugins/de.appplant.cordova.plugin.email-composer/www/email_composer.js",
+        "id": "de.appplant.cordova.plugin.email-composer.EmailComposer",
+        "clobbers": [
+            "cordova.plugins.email",
+            "plugin.email"
+        ]
+    },
+    {
+        "file": "windows_plugins/hu.dpal.phonegap.plugins.SpinnerDialog/www/spinner.js",
+        "id": "hu.dpal.phonegap.plugins.SpinnerDialog.SpinnerDialog",
+        "merges": [
+            "window.plugins.spinnerDialog"
+        ]
+    },
+    {
+        "file": "windows_plugins/io.github.pwlin.cordova.plugins.fileopener2/www/plugins.FileOpener2.js",
+        "id": "io.github.pwlin.cordova.plugins.fileopener2.FileOpener2",
+        "clobbers": [
+            "cordova.plugins.fileOpener2"
+        ]
+    },
+    {
+        "file": "windows_plugins/nl.x-services.plugins.actionsheet/www/ActionSheet.js",
+        "id": "nl.x-services.plugins.actionsheet.ActionSheet",
+        "clobbers": [
+            "window.plugins.actionsheet"
+        ]
+    },
+    {
+        "file": "windows_plugins/nl.x-services.plugins.flashlight/www/Flashlight.js",
+        "id": "nl.x-services.plugins.flashlight.Flashlight",
+        "clobbers": [
+            "window.plugins.flashlight"
+        ]
+    },
+    {
+        "file": "windows_plugins/nl.x-services.plugins.socialsharing/www/SocialSharing.js",
+        "id": "nl.x-services.plugins.socialsharing.SocialSharing",
+        "clobbers": [
+            "window.plugins.socialsharing"
+        ]
+    },
+    {
+        "file": "windows_plugins/nl.x-services.plugins.toast/www/Toast.js",
+        "id": "nl.x-services.plugins.toast.Toast",
+        "clobbers": [
+            "window.plugins.toast"
+        ]
+    },
+    {
+        "file": "windows_plugins/nl.x-services.plugins.toast/test/tests.js",
+        "id": "nl.x-services.plugins.toast.tests"
     },
     {
         "file": "windows_plugins/org.apache.cordova.camera/www/CameraConstants.js",
@@ -169,13 +498,6 @@ module.exports = [
         ]
     },
     {
-        "file": "windows_plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
-        "id": "org.apache.cordova.inappbrowser.inappbrowser",
-        "clobbers": [
-            "window.open"
-        ]
-    },
-    {
         "file": "windows_plugins/org.apache.cordova.network-information/www/network.js",
         "id": "org.apache.cordova.network-information.network",
         "clobbers": [
@@ -249,20 +571,39 @@ module.exports = [
 module.exports.metadata =
 // TOP OF METADATA
 {
+    "com.cordova.plugins.sms": "0.1.4",
+    "com.google.admobsdk": "6.12.2",
     "com.ionic.keyboard": "1.0.3",
     "com.ohh2ahh.plugins.appavailability": "0.3.1",
+    "com.phonegap.plugins.barcodescanner": "2.2.0",
     "com.phonegap.plugins.PushPlugin": "2.4.0",
     "com.plugin.datepicker": "0.5.0",
     "com.synconset.imagepicker": "1.0.6",
     "com.verso.cordova.clipboard": "0.1.0",
-    "cordova-plugin-device": "1.0.2-dev",
+    "cordova-plugin-admob": "2.2.0",
+    "cordova-plugin-battery-status": "1.1.0",
+    "cordova-plugin-datepicker": "0.8.2",
+    "cordova-plugin-device": "1.0.1",
+    "cordova-plugin-device-motion": "1.1.1",
+    "cordova-plugin-device-orientation": "1.0.1",
+    "cordova-plugin-file": "2.1.0",
+    "cordova-plugin-inappbrowser": "1.0.2-dev",
+    "cordova-plugin-media": "1.0.1",
+    "cordova-plugin-media-capture": "1.0.1",
+    "de.appplant.cordova.plugin.badge": "0.6.4",
+    "de.appplant.cordova.plugin.email-composer": "0.8.2",
+    "hu.dpal.phonegap.plugins.SpinnerDialog": "1.3.1",
+    "io.github.pwlin.cordova.plugins.fileopener2": "1.0.11",
+    "nl.x-services.plugins.actionsheet": "1.1.7",
+    "nl.x-services.plugins.flashlight": "2.0.4",
+    "nl.x-services.plugins.socialsharing": "4.3.19-dev",
+    "nl.x-services.plugins.toast": "2.1.1",
     "org.apache.cordova.camera": "0.3.5",
     "org.apache.cordova.console": "0.2.12",
     "org.apache.cordova.contacts": "0.2.16",
     "org.apache.cordova.dialogs": "0.2.11",
     "org.apache.cordova.geolocation": "0.3.12",
     "org.apache.cordova.globalization": "0.3.4",
-    "org.apache.cordova.inappbrowser": "0.6.0",
     "org.apache.cordova.network-information": "0.2.14",
     "org.apache.cordova.splashscreen": "1.0.0",
     "org.apache.cordova.statusbar": "0.1.10",
