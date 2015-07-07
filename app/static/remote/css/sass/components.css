@@ -1077,6 +1077,10 @@ ion-list.list-inset.visible-overflow.proposal-card-request.disable-user-behavior
   color: white;
   opacity: 0.85; }
 
+.button-footer.button.activated, button.active, .button.button-footer.active, .button-footer.button:focus, .button-footer.button:visited {
+  color: white;
+  opacity: 0.85; }
+
 p.university-header {
   font-size: 120%; }
 
@@ -1868,12 +1872,24 @@ input.bill-student-input {
 
 .ranking-container {
   border: 15px solid #68A7CF;
+  border-left-color: rgba(255, 255, 255, 0.89);
   border-radius: 50%;
-  padding: 22% 0%;
+  padding: 35% 0%;
   font-size: 0.6em;
   background-color: grey;
-  width: 100%;
-  margin-top: -20%; }
+  width: 90%;
+  left: 5%;
+  margin-top: -15%;
+  text-align: center; }
+  .ranking-container h1 {
+    color: white; }
+  .ranking-container .text {
+    margin: 0 auto;
+    width: 100%;
+    top: 40%;
+    font-size: 20px;
+    text-align: center;
+    left: 5%; }
 
 .ranking-box {
   padding-right: 2em;
@@ -1882,3 +1898,18 @@ input.bill-student-input {
 .payscale-box {
   padding-left: 1.5em;
   margin-top: -1.5em; }
+
+.absolute {
+  position: absolute; }
+
+.ranking-num {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  padding-bottom: 0.5em; }
+
+.university-banner-text span {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.2em 0.6em;
+  font-size: 115%; }
+
+#guru-home .guru-profile-img-wrapper {
+  background-color: transparent; }

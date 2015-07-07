@@ -40,6 +40,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
 
           if ($cordovaSplashscreen && $cordovaSplashscreen.hide) {
+
+
             $cordovaSplashscreen.hide();
           }
 
@@ -57,6 +59,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                 web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone()),
                 device: ionic.Platform.device(),
             }
+
+            console.log(JSON.stringify($rootScope.platform));
+
 
             if ($cordovaDevice && $cordovaDevice.getPlatform() === 'Win32NT') {
               $rootScope.platform.windows = true;

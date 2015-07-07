@@ -27,14 +27,14 @@
     <!-- the initial i have no tasks screen -->
     <div class='pure-g-c flex-column flex-space-between' ng-hide='((user.pending_proposals && user.pending_proposals.length > 0)) || !showActive || (user.active_guru_sessions && user.active_guru_sessions.length > 0)' style='padding-bottom:55px;' >
         <div class='pure-g j-start relative' style='min-height:180px; height:180px;'>
-          <div class='profile-banner-bg full-height'  style='background-image:url({{img_base}}./img/profile/library.png); min-height:180px; height:180px;'>
+          <div class='profile-banner-bg full-height'  style='background-image:url({{img_base}}./img/guru/university-banner.png); min-height:180px; height:180px;'>
           </div>
             <div class='pure-g-c flex-column j-start guru-profile-img-wrapper full-width relative' style='height:50%;top:0%; opacity:1; min-height:180px;'>
               <div class='pure-g'>
                 <div class='pure-u-1 padding-2em' style='padding-top:0.75em; z-index:1000; opacity-1'>
 
                   <div class='grey-container center'>
-                    <h4 class='light capitalized'>  <span class=' padding-half dark-bg'>UC Berkeley Guru Rank </span></h4>
+                    <h4 class='light capitalized university-banner-text' style='margin-top:5px;'>  <span class='padding-half'>UC Berkeley Guru Rank </span></h4>
                   </div>
                 </div>
               </div>
@@ -43,9 +43,15 @@
               <div class='pure-g'>
                 <div class='pure-u-1 center'>
                   <div class='pure-u-1-2 relative margin-auto'>
-                    <div class='ranking-container auto-margin full-width' style='position:absolute;'>
+                    <div class='ranking-container auto-margin full-width relative' style='position:absolute;'>
 
-                        <h1 class='white-text' style='font-size:350%;'>9th</h1>
+                      <span class='light absolute text'>
+                        <span class='font-400'>9</span><span class='micro-text uppercase semibold'>th</span>
+                      </span>
+                        <!-- <div class='row'>
+
+                        </div>
+                        <h1 class='white-text' style='position:absolute'></h1> -->
 
                     </div>
                   </div>
@@ -56,8 +62,8 @@
                 <div class='pure-u-1-3 ranking-box'>
 
                     <div class='grey-container center padding-half' style='width:105%;'>
-                      <h6 class='light uppercase no-margin semibold'>  <div class='dark-bg padding-half'>Rank</div></h6>
-                      <h4 class='light capitalized no-margin no-padding'>  <div class='dark-bg'>131</div></h4>
+                      <h6 class='light uppercase no-margin semibold'>  <div class='dark-bg bold padding-half opacity-4-5'>Rank</div></h6>
+                      <h4 class='light capitalized no-margin no-padding'>  <div class='ranking-num'>131</div></h4>
                     </div>
 
                 </div>
@@ -66,8 +72,8 @@
                 </div>
                 <div class='pure-u-1-3 payscale-box'>
                   <div class='grey-container center padding-half' style='width:105%;'>
-                      <h6 class='light uppercase no-margin semibold'>  <div class='dark-bg padding-half'>Payscale</div></h6>
-                      <h4 class='light capitalized no-margin no-padding'>  <div class='dark-bg'>131</div></h4>
+                      <h6 class='light uppercase no-margin semibold'>  <div class='dark-bg bold opacity-4-5 padding-half'>Payscale</div></h6>
+                      <h4 class='light capitalized no-margin no-padding'>  <div class='ranking-num'>131</div></h4>
                     </div>
                 </div>
               </div>
