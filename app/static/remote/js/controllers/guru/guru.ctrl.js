@@ -331,7 +331,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
 
 
-      //see if any sessions are going on right now
 
       for (var i = 0 ; i < $scope.user.active_guru_sessions.length; i ++) {
 
@@ -456,6 +455,114 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $scope.incomingStudentSessionProposal.show();
         }, 2000)
       }
+
+
+      //start timer section
+
+      $scope.startTimerFromX = function (second) {
+        $scope.timer_seconds.animate(second / 60, {duration:1000});
+      }
+
+      $scope.incrementMinute = function() {
+        $scope.timer.minutes += 1;
+      }
+
+      $scope.decrementMinute = function() {
+        $scope.timer.minutes -= 1;
+      }
+
+      $scope.incrementHour = function() {
+        $scope.timer.hours += 1;
+      }
+
+      $scope.decrementHour = function() {
+        $scope.timer.hours -= 1;
+      }
+
+      $scope.resetTimer = function() {
+        var successCallback = function() {
+          $scope.timer.seconds = 0;
+          $scope.timer.hours = 0;
+          $scope.timer.minutes = 0;
+          $scope.pauseTimer();
+          $scope.session.reset_timer = true;
+          $scope.startTimerFromX(-1);
+          $scope.user.updateObj($scope.user, 'sessions', $scope.session, $scope);
+
+        }
+
+        var arr_callback = [null, successCallback];
+
+        if ($scope.platform.web) {
+          if (confirm('Are you sure? \n You will lose track of all progress')) {
+            successCallback();
+          }
+        } else {
+          $scope.root.dialog.confirm('You will lose track of all progress', 'Are you sure?', ['Cancel', 'Yes'], arr_callback);
+        }
+      }
+
+      $scope.addOneSecond = function() {
+        $timeout(function() {
+
+
+          $scope.timer.seconds += 1;
+          $scope.updateTimer();
+          if ($scope.timer.active) {
+            $scope.startTimerFromX($scope.timer.seconds);
+            $scope.addOneSecond();
+          }
+
+        },1000)
+      }
+
+      $scope.updateTimer = function() {
+        if ($scope.timer.seconds > 59) {
+          $scope.timer.seconds = 0;
+          $scope.timer.minutes += 1;
+        }
+        if ($scope.timer.minutes > 59) {
+          $scope.timer.minutes = 0;
+          $scope.timer.hours += 1
+        }
+
+      }
+
+   $scope.initTimer = function() {
+
+
+
+
+      $scope.timer_seconds = new ProgressBar.Circle('#timer-container', {
+        color: '#FFFFFF',
+        strokeWidth: 3.1,
+        trailColor:'#A1D5CC'
+      });
+
+      $timeout(function(){
+        $scope.timer_seconds.animate(1, function() {
+          $scope.timer_seconds.set(0.001);
+        });
+      }, 1000);
+
+   }
+
+    $scope.pauseTimer = function() {
+      $scope.timer.active = false;
+      $scope.timer_seconds.stop();
+    }
+
+    $scope.setTimer = function(seconds, minutes, hours) {
+        $scope.timer.hours = hours;
+        $scope.timer.minutes = minutes;
+        $scope.timer.seconds = seconds;
+
+        $scope.session.update_timer = $scope.timer;
+        $scope.user.updateObj($scope.user, 'sessions', $scope.session, $scope);
+    }
+
+      //end timer section
+
 
       console.log($scope.user);
 
@@ -608,6 +715,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         $scope.$on('$ionicView.enter', function() {
             console.log('checking for pending actions...');
+            //see if any sessions are going on right now
 
             // $timeout(function() {
             //   $state.go('^.cashout');

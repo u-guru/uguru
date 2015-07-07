@@ -535,12 +535,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     $scope.processIncomingRequests = $scope.root.vars.processIncomingRequests;
 
-
-
      $scope.createGoogleLatLng = function(latCoord, longCoord) {
             return new google.maps.LatLng(latCoord, longCoord);
-        }
-
+      }
 
 
       $scope.showGoogleMap = function() {
@@ -760,10 +757,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
      $scope.$on('$ionicView.enter', function() {
+
         // $timeout(function() {
-        //   $ionicSideMenuDelegate.toggleRight();
-        // }, 500);
-        //user has incoming request for help
+        //   $state.go('^.bill-student');
+        // }, 500)
+
         if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
             $scope.processIncomingRequests($scope.user.incoming_requests);
         }
@@ -777,10 +775,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
     });
-
-     console.log($scope.user);
-
-
 
     document.addEventListener("resume", function() {
 

@@ -449,6 +449,8 @@ angular.module('uguru.user', [])
         $scope.user.is_a_guru = !$scope.user.show_become_guru;
 
         $localstorage.setObject('user', $scope.user);
+
+
     }
 
     var delegateActionsFromProcessedUser = function($scope) {
