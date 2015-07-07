@@ -715,11 +715,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         $scope.$on('$ionicView.enter', function() {
             console.log('checking for pending actions...');
-            //see if any sessions are going on right now
 
-            // $timeout(function() {
-            //   $state.go('^.cashout');
-            // }, 500)
 
             $scope.doRefresh();
 

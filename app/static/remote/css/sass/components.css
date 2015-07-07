@@ -1913,3 +1913,15 @@ input.bill-student-input {
 
 #guru-home .guru-profile-img-wrapper {
   background-color: transparent; }
+
+.ranking .ranking-container {
+  border: 15px solid #68A7CF;
+  border-left-color: rgba(255, 255, 255, 0.89);
+  border-radius: 50%;
+  padding: 33% 0%;
+  font-size: 0.6em;
+  background-color: grey;
+  width: 90%;
+  left: 5%;
+  margin-top: -15%;
+  text-align: center; }
