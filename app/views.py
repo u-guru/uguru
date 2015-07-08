@@ -634,6 +634,10 @@ def windows_app():
 @app.route('/app/')
 def app_route():
     version = Version.query.get(1).ios
+    print '\n\n\n\n\nrequest headers'
+    print request.headers, type(request.headers)
+    if 'iPad' in str(request.headers) and 'Safari' in str(request.headers):
+        return redirect(url_for('hybrid_app'))
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
         return redirect('http://u.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
