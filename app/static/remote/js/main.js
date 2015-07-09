@@ -9,10 +9,10 @@ var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
   // BASE_URL = 'http://192.168.42.66:8100';
- // REST_URL = 'http://192.168.42.66:5000';
+ REST_URL = 'http://192.168.42.66:5000';
 
   BASE_URL = 'http://localhost:8100/';
-  REST_URL = 'http://localhost:5000';
+  // REST_URL = 'http://localhost:5000';
 
 } else {
   img_base = '/static/'
@@ -141,8 +141,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
     });
 
 
+
   if (ionic.Platform.isWindowsPhone()) {
-    $compileProvider.imgSrcSanitizationWhitelist('CapturedImagesCache/');
+
+    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|chrome-extension|x-wmapp.?):|data:image\//);
+
   }
 
   // })
