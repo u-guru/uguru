@@ -17,13 +17,13 @@
 }
 
 .left-icon-menu-bar .flex-item-c {
-    flex-grow:inherit;
+    flex-grow:0;
 }
 
 select::-ms-expand {
     display: none;
 }
 
-.platform-windowsphone .view-container{
+.platform-windowsphone .menu-content{
     margin-bottom:-20px;
 }

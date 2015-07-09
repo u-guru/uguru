@@ -185,6 +185,7 @@ else window.addEventListener('load', __ldinsp, false);
           else if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i)) {
             console.log('injecting windows specific css & js');
             injectJs('windows.cordova.js');
+            injectCss('windows.css');
           }
           else
           {
