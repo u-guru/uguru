@@ -1,0 +1,46 @@
+
+
+<ion-view hide-nav-bar="true" class="student-request-budget">
+
+    <ion-header-bar class='header-bar'>
+        <a class="button button-clear button-back" nav-direction="back" href="#/student-request">Back</a>
+        <h5 class="title">Your Budget</h5>
+        <a class="button button-clear button-back" nav-direction="forward" href="#/request-contact-method">Next</a>
+    </ion-header-bar>
+
+    <ion-content class='request-budget-container' scroll="false">
+
+          <div class="pure-g-c flex-column flex-space-between">
+            <div class='container'>
+                <div class='padding-1em'>
+                    <h5> This session should last at least </h5>
+                </div>
+                <div class='pure-g margin-1em scroll-container'>
+                        <div class='pure-u-1-2 padding-1em'>
+                            <div class='pure-g-c flex-column hour-scroll'>
+
+                                <a class='button button-icon button-clear flex-item-c' ng-click='decrementHour()'>
+                                    <i class='icon ion-chevron-up positive'></i>&nbsp;&nbsp;
+                                </a>
+                                <div class='flex-item-c hours-offset'>
+                                    <span ng-show='(root.vars.request._length.hours - 1) >= 0'>
+                                    {{(root.vars.request._length.hours - 1)}}</span>&nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div class='flex-item-c main-hours'>
+                                    <strong>{{root.vars.request._length.hours + 0}}</strong>h
+                                </div>
+                                <div class='flex-item-c hours-offset'>
+                                    <span>{{root.vars.request._length.hours + 1}}</span>&nbsp;&nbsp;&nbsp;
+                                </div>
+                                <a class='button button-icon button-clear flex-item-c' ng-click='incrementHour()'>
+                                    <i class='icon ion-chevron-down positive'></i> &nbsp;
+                                </a>
+
+                            </div>
+
+                        </div>
+
+    </ion-content>
+
+
+</ion-view>

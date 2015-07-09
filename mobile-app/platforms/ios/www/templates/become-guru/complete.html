@@ -1,0 +1,105 @@
+<!-- <ion-view view-title='uguru' hide-back-button="true">
+    <ion-nav-buttons side="secondary">
+        <button ng-click="showActionSheet()"class="button button-icon icon ion-more"></button>
+    </ion-nav-buttons>
+  <ion-content class="padding" scroll="false">
+  </ion-content> 
+</ion-view> -->
+
+<ion-view hide-back-button="true" hide-nav-bar="true" style="background-color:rgba(0,0,0,0.7)">
+  
+
+    <ion-header-bar class="guru-complete-background">
+      <h1 class="title white-header-text">uguru</h1>
+      <div class="buttons">
+        <button style="color:rgba(255,255,255,0.5);"ng-click="showActionSheet()"class="button button-icon icon ion-more"></button>
+      </div>
+    </ion-header-bar>
+
+    <ion-content scroll="false" class="guru-complete-background">
+        
+
+        <div class="list guru-complete-background" style="margin-bottom:0px;">
+
+            <div class="item item-thumbnail-left guru-complete-background guru-complete-photo-item">
+                <img src="{{user.profile_url}}" style="max-width:65px; max-height:65px; margin:5px; border-radius:4px;">
+                <div class="white-bio-name-text" ng-show="user.name">{{user.name.split(" ")[0]}}
+                  <span class="guru-tag">Guru</span>
+                </div>
+                <p class="grey-bio-major-text" ng-show="user.majors.length > 0">
+                  <span style="white-space:nowrap; font-weight:40%">
+                  <b>
+                    {{user.university.title}}
+                  </b>
+                </span>
+                <br>
+                <span style="white-space:nowrap; font-weight:40%">
+                  {{user.majors[0].name}}
+                </span>
+                </p>
+            </div>
+            <ion-slide-box on-slide-changed="slideHasChanged($index)" slide-interval="2000" show-pager="false">
+              <ion-slide style="height:140px!important;">
+                <div class="item guru-complete-background padding center" style="border:0px;border-top:1px solid rgba(255,255,255,0.1); margin-bottom:15px;">
+                <p class="guru-complete-ranking-text" style="padding-bottom:0px; margin-top:10px;">Your Ranking</p>
+                <h1 class="white-title-text bold no-margin-top"> {{guru_score}}th <span style="font-family:OpenSans-Light; margin-top:0px;">Percentile!</span></h1>
+                </div>
+              </ion-slide>
+              <ion-slide>
+                <div class="item guru-complete-list-item padding center guru-complete-list-item" style="height:140px!important;">
+                    <p class="subheader-text-lower" style="font-size: 1.2em; color: rgba(255,255,255,0.7); white-space: normal; height: auto; line-height: initial; margin-bottom: 10px;">Improving your ranking is easy!</p>
+
+                    <p style="font-size: 1em; font-family:'OpenSans-Regular';margin-top:20px; color: rgba(255,255,255,0.7); white-space: normal; height: auto; line-height: initial; margin-bottom: 10px;">With a higher ranking you'll attract more students and increase your hourly rate.</p>                
+                </div>
+              </ion-slide>
+            </ion-slide-box>
+        </div>
+
+        <ion-scroll>
+            <div class="content">
+                <div class="list list-inset" style="margin:0px; margin-bottom:20px; padding:6px 10px; border-radius:0px; background-color:#F5F5F5" id="guru-complete-virality">
+                        <ion-toggle ng-model="pushNotification.checked" ng-change="pushNotificationChange()" toggle-class="toggle-positive" class="regular-text guru-complete-item-virality">
+                            <div class="guru-complete-virality-item-header">
+                            Turn on push notifications
+                            </div>
+                            <div class="subheader-text">
+                                This will raise your ranking by 50pts
+                            </div>
+
+                        </ion-toggle>
+                        <a class="item guru-complete-item-virality regular-text item-thumbnail-right" ui-sref='^.share'>
+                            <img src="img/right-chevron.png" class="uguru-front-button" />
+                            <div class="guru-complete-virality-item-header">
+                            Invite your best friends
+                            </div>
+                            <div class="subheader-text">
+                                Your code can be used <b>5</b> times
+                            </div>
+                        </a>
+                        <a class="item guru-complete-item-virality regular-text item-thumbnail-right" ui-sref="^.verify">
+                            <img src="img/right-chevron.png" class="uguru-front-button" />
+                            <div class="guru-complete-virality-item-header">
+                            Add background information
+                            </div>
+                            <div class="subheader-text">
+                                This will raise your ranking by 100 points
+                            </div>
+                        </a>
+                        <a class="item guru-complete-item-virality regular-text item-thumbnail-right" style="margin-bottom:15px; position:relative">
+                            <img src="img/right-chevron.png" class="uguru-front-button" />
+                            <div class="guru-complete-virality-item-header">
+                            Be a Chief Guru.
+                            </div>
+                            <div class="subheader-text">
+                            More traction sent to you, make more $$.
+                            </div>
+                        </a>
+                </div>
+            </div>
+        </ion-scroll>
+
+    </div>
+
+  </ion-content> 
+
+</ion-view>

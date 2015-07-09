@@ -1,0 +1,99 @@
+    <ion-header-bar class='header-bar'>
+        <h1 class="title">FIND A GURU</h1>
+    </ion-header-bar>
+
+    <div class="bar bar-subheader">
+        <ion-tabs class="tabs-dark tabs-icon-only" delegate-handle="student-home-tabs-top">
+          <ion-tab title="My Classes">
+          </ion-tab>
+          <ion-tab title="My Sessions" on-select="addGreenbar()">
+          </ion-tab>
+        </ion-tabs>
+    </div>
+
+    <ion-content ng-show="topTabsDelegate.selectedIndex() === 0">
+      <div class="add-class margin-top-40" ng-show="user.active_student_sessions && user.active_student_sessions.length > 0">
+        <div class="session-progress" ng-repeat="session in user.active_student_sessions" ng-click="goToActiveSession(session)">
+          <li class="item padding-0 no-border">
+            <div class="course padding-10-15">
+              <div class="box-1">
+                <span class="name">{{session.request.course.short_name}}</span>
+                <span class="session">Session</span>
+              </div>
+              <div class="message">
+                <span ng-show="session.status === 1">GURU EN ROUTE</span>
+                <span ng-show="session.status === 2">SESSION IN PROGRESS</span>
+              </div>
+            </div>
+          </li>
+          <li class="item padding-6-15">
+            <div class="icon"><img ng-src="{{session.guru.profile_url}}" class='width'></div>
+            <div class="box-2 margin-top">
+              <div class="name">{{session.request.guru.name.split(" ")[0]}}
+                <span class="profile" style="font-size:14px !important;" >Details</span>
+              </div>
+              <div class="stars" ng-show="guru.guru_avg_rating">
+                <span class="icon ion-star" ng-repeat="i in getNumber(guru.student_avg_rating) track by $index"></span>
+              </div>
+              <div class="stars" ng-show="!session.request.guru.guru_avg_rating">
+                First Time Guru
+              </div>
+
+            </div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="location" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="icon ion-navigate"></span><span class="bold">Location:</span> {{session.address}}</div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="tag"><span class="icon ion-pricetag"></span><span class="bold">$4</span> for every <span class="bold">15 minutes</span></div>
+          </li>
+        </div>
+      </div>
+      <div class="add-class margin-top-40" >
+
+        <div class="lg-box student-course" ng-repeat="course in user.student_courses" animation="slide-left-right">
+          <div class="course-name-box" on-touch="showButtonPressed($event, 'course-name-box')" on-release="showButtonReleased($event, 'course-name-box')">
+            <div class="text" ng-hide="checkCourseInActiveRequests(course)" ng-click="goToRequest(course)">
+              {{course.short_name}}
+            </div>
+            <div class="text" ng-show="checkCourseInActiveRequests(course)" style="border-left: 4px solid gold;" ng-click="goToRequestStatus(course)">
+              {{course.short_name}}
+              <span style="position:absolute; font-size:10px; right:5%;text-transform:uppercase; font-family:'OpenSans-Semibold';color:rgba(0,0,0,0.5);">SEE REQUEST STATUS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="add-item-box" ng-click="addCourseModal.show()" id="home-header">
+          <div class="green-box"><span class="icon ion-plus"></span>
+          </div>
+          <div class="md-box"> <!-- add active later -->
+            <div class="text">
+              Add a class ...
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </ion-content>
+    <ion-content ng-show="topTabsDelegate.selectedIndex() === 1">
+        <div class="no-session margin-150-10 center" ng-show="!user.previous_student_sessions">
+          <h2>No sessions yet.</h2>
+          <div class="gray">Add a class to get started.</div>
+          <div class="green" ng-click="addCourseModal.show()">+Add a class</div>
+        </div>
+
+        <div class="guru-book margin-top-40" ng-repeat="session in user.previous_student_sessions" ng-click="goToPreviousSessionDetails(session)" ng-show="user.previous_student_sessions.length && user.previous_student_sessions.length > 0 && !user.guru_mode">
+          <li class="item padding-6-15">
+            <div class="icon"><img ng-src="{{session.guru.profile_url}}" class='width'></div>
+            <div class="box-2 margin-top">
+              <div class="box-3">
+                <span class="name">{{session.guru.name.split(" ")[0]}}
+                </span>
+                <div class="stars" ng-show="session.guru.guru_avg_rating">
+                  <span class="icon ion-star" ng-repeat="i in getNumber(session.guru.guru_avg_rating) track by $index"></span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+    </ion-content>

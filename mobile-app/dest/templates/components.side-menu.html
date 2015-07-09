@@ -1,0 +1,265 @@
+
+<ion-modal-view class='side-menu-right' id="side_menu" ng-controller='SignupController'>
+
+
+  <ion-content class='ios-status-bar-dark' scroll='false' style='margin-top:-1px;'>
+    <div class='pure-g full-height' style='margin-top:-1px;'>
+      <div class='pure-u-1-5 dark-bg full-height' style='z-index:1000;'>
+        <div class='pure-g-c flex-column flex-space-between animated slideInUp'>
+
+          <div class='flex-item-c center'>
+            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(1)'>
+              <!-- <div ng-show='settings.icons.profile'> -->
+                <img class='pure-img animated pulse ng-class:{"hide":!settings.icons.profile}' ng-src='{{img_base}}./img/settings/profile.svg'/>
+              <!-- </div> -->
+              <!-- <div ng-show='!settings.icons.profile'> -->
+                <img class='pure-img ng-class:{"hide":settings.icons.profile}' ng-src='{{img_base}}./img/settings/profile-outline.svg'/>
+              <!-- </div> -->
+            </a>
+          </div>
+          <div class='flex-item-c center'>
+            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(2)'>
+              <!-- <div ng-show='settings.icons.notifications'> -->
+                <img class='pure-img animated pulse ng-class:{"hide":!settings.icons.notifications}' ng-src='{{img_base}}./img/settings/notification.svg'/>
+              <!-- </div> -->
+
+              <!-- <div ng-show='!settings.icons.notifications'> -->
+                <img class='pure-img ng-class:{"hide":settings.icons.notifications}' ng-src='{{img_base}}./img/settings/notification-outline.svg'>
+              <!-- </div> -->
+            </a>
+          </div>
+          <div class='flex-item-c center'>
+            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(3)'>
+
+                <img class='pure-img animated pulse ng-class:{"hide":!settings.icons.card}' ng-src='{{img_base}}./img/settings/card.svg'/>
+
+                <img class='pure-img ng-class:{"hide":settings.icons.card}' ng-src='{{img_base}}./img/settings/card-outline.svg'>
+            </a>
+          </div>
+          <div class='flex-item-c center'>
+            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(4)'>
+
+                <img class='pure-img animated pulse ng-class:{"hide":!settings.icons.support}' ng-src='{{img_base}}./img/settings/support.svg'/>
+
+                <img class='pure-img ng-class:{"hide":settings.icons.support}' ng-src='{{img_base}}./img/settings/support-outline.svg'>
+            </a>
+          </div>
+          <div class='flex-item-c center'>
+            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(5)'>
+              <img class='pure-img animated pulse ng-class:{"hide":!root.vars.guru_mode}' ng-src='{{img_base}}./img/settings/become-guru.svg'/>
+
+                <img class='pure-img ng-class:{"hide":root.vars.guru_mode}' ng-src='{{img_base}}./img/settings/become-guru-outline.svg'>
+            </a>
+          </div>
+          <a ng-click='logoutUser()' class='flex-item-c center'>
+            <div class='pure-u-1 padding-3-4em'>
+                <img class='pure-img' ng-src='{{img_base}}./img/settings/logout.svg'/>
+            </div>
+          </a>
+          <a ng-click='closeSideBar()' class='flex-item-c center' style='background-color:rgba(255,255,255,0.1)'>
+            <div class='pure-u-1' style='padding:1.5em;'>
+                <img class='pure-img' ng-src='{{img_base}}./img/settings/settings-back.svg'/>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <div class='pure-u-4-5 full-height settings-view-container'>
+
+        <!-- settings icon section 1 profile -->
+        <div class='pure-g-c flex-column flex-space-between' ng-show='false'>
+          <div class='pure-g-c flex-column height-40 j-end padding-2em'>
+            <div class='center no-margin'>
+              <div class='pure-u-1 center float-center'>
+                <img ng-show='user && !user.id'class='pure-img profile-img sidebar-img inline'  src='https://graph.facebook.com/10152573868267292/picture?width=100&height=100'/>
+                <img ng-show='user && user.profile_url' class='pure-img profile-img sidebar-img inline'  src='{{user.profile_url}}'/>
+              </div>
+            </div>
+            <div class='pure-g'>
+              <div class='pure-u-1' ng-show='!user.id'>
+                <br>
+                <p class='micro-text uppercase semibold grey center'>We need proof <br> you're wonderful & human</p>
+              </div>
+            </div>
+            <div class='pure-g'>
+              <div class='pure-u-1' ng-show='user && user.name.length > 0'>
+                <h1 class='header-text semibold black center user-name'> {{user.name}} </h1>
+              </div>
+            </div>
+            <div class='pure-g center'>
+              <div class='pure-u-1' ng-show='user && user.id && user.university.title.length > 0 && !user.is_admin'>
+                <p class='micro-text uppercase semibold grey'>{{user.university.title}}</p>
+              </div>
+            </div>
+
+            <div class='pure-g center'>
+              <div class='pure-u-1' ng-show='user && user.is_admin > 0'>
+                <p class='micro-text uppercase semibold grey'>Uguru University</p>
+              </div>
+            </div>
+          </div>
+
+          <div class='flex-item-c flex-column height-40 j-start' ng-show='user && user.id'>
+
+
+
+              <ion-list>
+
+
+                <ion-toggle ng-model="user.email_notifications" ng-change='emailNotificationChange()' toggle-class="toggle-calm">
+                  <p class='nano-text black'>
+                    Email Notifications
+                  </p>
+                  <p class='opacity-6-10 nano-text'> {{user.email}}</p>
+                </ion-toggle>
+                <ion-toggle ng-change="requestPushNotifications()" ng-show='platform.mobile' ng-model="user.push_notifications" toggle-class="toggle-calm">
+
+                  <p style='padding-bottom:0.5em; padding-top:0.5em'class='black nano-text'> Push Notifications </p>
+                </ion-toggle>
+                <ion-item  ng-show='user && user.id && user.cards.length === 0' ng-click='goToPaymentsFromSideBar()'>
+                  <p class='nano-text black'> Add Payment Method </p>
+                </ion-item>
+                <ion-item  ng-show='user && user.id && user.university_id' ng-click='goToEditUniversity()'>
+                  <p class='nano-text black'> Edit University </p>
+                </ion-item>
+
+                <label class="item item-input item-select" ng-show='user && user.id && user.current_hourly'>
+                    <div class='label-input'>
+                      <p class='nano-text black'>Current Hourly Price</p>
+                    </div>
+                    <select ng-model='selectedCurrentHourly' class='current-hourly-price' ng-change='updateHourlyPrice(selectedCurrentHourly)'>
+
+                      <option value="{{$index + 1}}" ng-repeat='number in getNumber(user.current_hourly) track by $index'>${{$index + 1}}/hr</option>
+                    </select>
+                </label>
+                  <!-- <p class='opacity-6-10 nano-text'>${{user.current_hourly}} an hour</p> -->
+                <!-- </ion-item> -->
+
+
+                <ion-item nav-direction='forward' ng-click='goToPaymentsFromSideBar()' ng-show='user && user.id && user.cards.length > 0'>
+                  <p class='nano-text black'>
+                    Payment Card Details
+                  </p>
+                  <p class='opacity-6-10 nano-text'>{{user.default_payment_card.card_type}} **-{{user.default_payment_card.card_last4}}</p>
+                </ion-item>
+                <ion-item ng-click='resetAccount()' ng-show='true || user.is_admin'>
+                  <p class='nano-text black'> Reset Account </p>
+                </ion-item>
+
+                <ion-item ng-click='logoutUser()'>
+                  <p class='nano-text black'> Logout </p>
+                </ion-item>
+
+              </ion-list>
+          </div>
+
+
+
+          <div class='pure-g-c flex-column j-start height-20'  ng-show='user && user.show_become_guru'>
+            <div class='pure-u-1 padding-1em no-padding-bottom' >
+              <button class='button button-full button-black micro-text' ng-click='goToBecomeGuru()'>Become a Guru</button>
+            </div>
+          </div>
+
+          <div class='pure-g-c flex-column j-start height-20'  ng-show='user.is_a_guru && !root.vars.guru_mode'>
+            <div class='pure-u-1 padding-1em no-padding-bottom' >
+              <button class='button button-full button-black micro-text' ng-click='goToGuruMode()'>Switch to Guru</button>
+            </div>
+          </div>
+
+          <div class='pure-g-c flex-column j-start height-20' ng-show='user.is_a_guru && root.vars.guru_mode'>
+            <div class='pure-u-1 padding-1em no-padding-bottom' >
+              <button class='button button-full button-black micro-text' ng-click='goToStudentMode()'>Back to student mode</button>
+            </div>
+          </div>
+
+      </div>
+
+      <!-- [Profile] settings icon section -->
+      <div ng-show='settings.icons.profile' class='relative full-height'>
+        <div class="bar bar-header dark-bg-header mini-header uppercase relative" style='width:auto;'>
+          <h1 class="title bold animated zoomIn">Profile</h1>
+        </div>
+        <div class='pure-g-c flex-column flex-space-between full-height'>
+
+          <div class='pure-g-c flex-column height-40 j-end padding-2em'>
+            <div class='center no-margin'>
+              <div class='pure-u-1 center float-center relative padding-1em center'>
+                <div class='absolute settings-profile-image-container'>
+                  <img ng-show='user && !user.id'class='pure-img profile-img sidebar-img inline'  src='https://graph.facebook.com/10152573868267292/picture?width=100&height=100'/>
+                  <img ng-show='user && user.profile_url' class='pure-img profile-img sidebar-img inline'  src='{{user.profile_url}}'/>
+                </div>
+                <div class='pure-u-1 regular'>
+                  <div ng-show='user && user.id'>
+                    <h1 class='light regular-text'>
+                      {{user.name.split(' ')[0]}} {{user.name.split(' ')[1][0].toUpperCase()}}.
+                    </h1>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+
+           <div class='flex-item-c j-center padding-1em' ng-show='user && !user.id'>
+
+            <div class='pure-u-1'>
+              <div class='pure-g-c flex-column j-end'>
+                <div class='pure-u-1 padding-1em no-padding-bottom' ng-show='user && !user.id'>
+                  <button class='button button-full button-black micro-text fb-blue-bg'  ng-click='signupFacebook()'>Continue with Facebook
+                  </button>
+                </div>
+                <div class='pure-u-1 padding-half center' id="E2E_Email" ng-show='user && !user.id'>
+                      <a class='center grey uppercase semibold nano-text' id="email" ng-click='goToSignupFromSideBar()'> or with email </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+      <!-- [Notifications] settings icon section -->
+
+      <div ng-show='settings.icons.notifications' class='relative'>
+        <div class="bar bar-header dark-bg-header mini-header uppercase" style='width:auto;'>
+          <h1 class="title bold animated zoomIn">Notification Settings</h1>
+        </div>
+        <div class='pure-g-c flex-column flex-space-between'>
+        </div>
+      </div>
+
+      <div ng-show='settings.icons.card' class='relative'>
+        <div class="bar bar-header dark-bg-header mini-header uppercase" style='width:auto;'>
+          <h1 class="title bold animated zoomIn">Your Cards</h1>
+        </div>
+        <div class='pure-g-c flex-column flex-space-between'>
+        </div>
+      </div>
+
+      <div ng-show='settings.icons.support' class='relative'>
+        <div class="bar bar-header dark-bg-header mini-header uppercase" style='width:auto;'>
+          <h1 class="title bold animated zoomIn">Support</h1>
+        </div>
+        <div class='pure-g-c flex-column flex-space-between'>
+        </div>
+      </div>
+
+
+
+    </div>
+    <ion-footer-bar ng-show='root.vars.version' class='side-menu-footer-bar' style='padding-left:20%; background-color:transparent;'>
+      <a class='pure-u-1 nano-text center' ng-click='goToBeginning()'>
+          v1.0.{{root.vars.version}}
+      </a>
+    </ion-footer-bar>
+
+  </ion-content>
+</ion-modal-view>

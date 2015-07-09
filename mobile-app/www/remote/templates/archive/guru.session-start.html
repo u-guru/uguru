@@ -1,0 +1,71 @@
+<ion-view hide-nav-bar='true' class='session-start-timer'>
+
+    <ion-header-bar class="header-bar positive-header timer-bar">
+      <a class="button button-clear button-back button-white" nav-direction='back' ng-click='goBack()'>Back</a>
+      <h5 class="title uppercase white-text">Timer </h5>
+      <a class="button button-clear button-back bold uppercase button-white" nav-direction='back' ng-click='showTimerActionSheet()'>Options</a>
+    </ion-header-bar>
+
+  <ion-content scroll='false'>
+    <div class='main-timer-view' ng-show='!set_timer_mode'>
+      <div class='pure-g-c flex-column center'>
+        <div class='flex-item-c white-text padding-2em relative' style='margin-left:0.2em;'>
+          <div id="timer-container"></div>
+
+            <a ng-click='startTimer()' class='timer-icon-link'> <i class='icon icon-xl ion-play absolute timer-icon'></i> </a>
+            <a class='timer-icon-link' ng-show='timer.active' ng-click='pauseTimer()'> <i class='icon icon-xl ion-pause absolute timer-icon'></i> </a>
+        </div>
+        <div class='pure-g'>
+            <div class='pure-u-1'>
+              <span ng-show='timer.hours && timer.hours > 0'class='timer-hours'>{{timer.hours}}</span>
+              <span ng-show='timer.hours && timer.hours > 0' class='timer-hours-h'>h</span>
+              <span ng-show='timer.minutes && timer.minutes > 0' class='timer-minutes'>{{timer.minutes}}</span>
+              <span ng-show='timer.minutes && timer.minutes > 0' class='timer-minutes-m'>m</span> &nbsp;
+              <span class='timer-minutes'>{{timer.seconds}}</span>
+              <span class='timer-minutes-m'>s</span>
+            </div>
+        </div>
+      </div>
+      <button ng-show='!timer.active' class="absolute button button-full button-positive" ng-click="startTimer()" style='position:absolute;bottom:0px;'>
+            Start Timer
+      </button>
+      <button ng-show='timer.seconds > 0' class="absolute button button-full button-positive" ng-click="submitTime()" ng-show="!timer.active" style='position:absolute;bottom:0px;'>
+            Submit Time
+      </button>
+    </div>
+
+
+    <!-- <div class='set-timer-view' ng-show='set_timer_mode'>
+
+      <div class="pure-g">
+          <div class='pure-u-1 padding-1em'>
+          </div>
+            <div class='pure-u-1-2'>
+                <ion-scroll class='hour-scroll'>
+                  <ion-list>
+                      <ion-item class='white-text sans-bold transparent-background no-border' ng-repeat="i in max_hour track by $index">
+                          <span class='timer-hours'>{{$index}}</span>
+                          <span class='timer-hours-h'>h</span>
+                      </ion-item>
+                  </ion-list>
+                </ion-scroll>
+            </div>
+            <div class='pure-u-1-2'>
+                <ion-scroll class='minute-scroll'>
+                  <ion-list>
+                      <ion-item class='white-text sans-bold transparent-background no-border' ng-repeat="i in max_minutes track by $index">
+                          <span class='timer-hours'>{{$index}}</span>
+                          <span class='timer-hours-h'>m</span>
+                      </ion-item>
+                  </ion-list>
+                </ion-scroll>
+            </div>
+        </div>
+
+        <button class="absolute button button-full button-positive" ng-click="submitTime()" ng-show="!timer.active" style='position:absolute;bottom:0px;'>
+            Set Timer
+        </button>
+
+    </div> -->
+  </ion-content>
+</ion-view>

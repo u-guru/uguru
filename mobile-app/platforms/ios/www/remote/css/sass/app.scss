@@ -1,0 +1,65 @@
+$primary-color: #69b2a5;
+$banner-color: #2D3440;
+$school-banner-color: #2D3440;
+$stat-square-1:#608283;
+$stat-square-2:#9E817A;
+$stat-square-3:#627363;
+$stat-square-4:#A59F9B;
+$popular-course-1: $stat-square-2;
+$popular-course-2: #6B8D8E;
+$popular-course-3: $stat-square-3;
+$popular-course-4: $stat-square-4;
+$popular-course-5: #DFAE91;
+$popular-course-6: $stat-square-1;
+$popular-course-7: #728372;
+$popular-course-8: #817160;
+$popular-course-9: #716169;
+$popular-course-10: #839081;
+$popular-course-11: #777281;
+$popular-course-12: #837F70;
+$testimonial-1: #4C6F6E;
+$testimonial-2: #687689;
+
+$font-stack: Helvetica, sans-serif;
+
+body {
+    font: 100% $font-stack;
+    color: $primary-color;
+}
+
+
+//import all fonts
+@font-face {
+  font-family: "Antonio-Light";
+  src: url("../../fonts/Antonio-Light.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("../../fonts/OpenSans-Bold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenSans-Light";
+  src: url("../../fonts/OpenSans-Light.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenSans-Semibold";
+  src: url("../../fonts/OpenSans-Semibold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url("../../fonts/OpenSans-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}

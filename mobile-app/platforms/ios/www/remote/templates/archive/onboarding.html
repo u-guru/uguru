@@ -1,0 +1,49 @@
+<ion-view hide-nav-bar="true">
+
+
+  <ion-tabs class="tabs-dark tabs-icon-only" delegate-handle="student-home-tabs-bottom" style="background-color: rgb(43,50,52)">
+
+    <ion-tab title="Home" icon-on="ion-ios7-home" icon-off="ion-ios7-home-outline" style="color:white; text-decoration:none;">
+      <div ng-show="bottomTabsDelegate.selectedIndex() === 0" ng-include="base_url + 'templates/student.home.body.html'"></div>
+    </ion-tab>
+
+  <ion-tab title="Guru Book" icon-on="ion-ios7-bookmarks" icon-off="ion-ios7-bookmarks-outline">
+      <div ng-show="bottomTabsDelegate.selectedIndex() === 1" ng-include="base_url + 'templates/student.guru-book.html'"></div>
+  </ion-tab>
+
+  <ion-tab title="Settings" icon-on="ion-ios7-gear" icon-off="ion-ios7-gear-outline">
+    <div ng-show="bottomTabsDelegate.selectedIndex() === 2"ng-include="base_url + 'templates/student.settings.html'"></div>
+  </ion-tab>
+
+  </ion-tabs>
+  <ion-content>
+    <div class="list">
+
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-email"></i>
+        Check mail
+      </a>
+
+      <a class="item item-icon-left item-icon-right" href="#">
+        <i class="icon ion-chatbubble-working"></i>
+        Call Ma
+        <i class="icon ion-ios7-telephone-outline"></i>
+      </a>
+
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-mic-a"></i>
+        Record album
+        <span class="item-note">
+          Grammy
+        </span>
+      </a>
+
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-person-stalker"></i>
+        Friends
+        <span class="badge badge-assertive">0</span>
+      </a>
+
+    </div>
+  </ion-content>
+</ion-view>

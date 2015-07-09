@@ -1,0 +1,20 @@
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/ant-build/CordovaApp-debug-unaligned.apk : \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/ant-build/CordovaApp.ap_ \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/ant-build/classes.dex \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/CordovaLib/ant-build/classes.jar \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/com.phonegap.plugins.facebookconnect/Uguru-FacebookLib/ant-build/classes.jar \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/com.phonegap.plugins.facebookconnect/Uguru-FacebookLib/libs/bolts-android-1.1.2.jar \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/libs/gcm.jar \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/libs/card.io.jar \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/libs/android-support-v13.jar \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/libs/arm64-v8a/libcardioDecider.so \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/libs/armeabi/libcardioDecider.so \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/libs/armeabi-v7a/libcardioDecider.so \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/libs/armeabi-v7a/libcardioRecognizer.so \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/libs/armeabi-v7a/libcardioRecognizer_tegra2.so \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/libs/armeabi-v7a/libopencv_core.so \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/libs/armeabi-v7a/libopencv_imgproc.so \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/libs/mips/libcardioDecider.so \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/libs/mips64/libcardioDecider.so \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/libs/x86/libcardioDecider.so \
+/Users/Samir/Git/uguru/uguru-mobile/platforms/android/libs/x86_64/libcardioDecider.so \

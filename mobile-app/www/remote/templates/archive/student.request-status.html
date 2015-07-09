@@ -1,0 +1,112 @@
+<ion-view class='request-status student-view' hide-nav-bar='true' cache-view='false'>
+
+  <ion-header-bar class="header-bar">
+        <a class="button button-clear button-back" ng-click='goBack()'>Back</a>
+        <h5 class="title">{{course.short_name}}</h5>
+  </ion-header-bar>
+
+  <ion-content>
+    <ion-refresher
+      spinner="ios"
+      pulling-icon="ion-arrow-down-c"
+      spinner="circles"
+      on-refresh="doRefresh()">
+    </ion-refresher>
+
+    <div class='pure-g-c flex-column flex-space-between padding-1em'>
+
+
+      <a class='item item-avatar-left item-icon-right pure-g no-border margin-half request-status-student-card' ng-click='goToGuruProfile(request.guru)' ng-show='request.guru.name'>
+        <img ng-src="{{request.guru.profile_url}}">
+        <span class='pure-u-1'>{{request.guru.name}}
+        </span>
+        <span class='pure-u-1-2'>
+          <span class='pure-u-1-5'><i class='ion-star gold-student-star' ng-repeat='star in getNumber(5) track by $index'></i>&nbsp;<span class='opacity-1-2'></span></span>
+        </span>
+        <i class='icon icon-small ion-chevron-right positive'></i>
+      </a>
+
+      <hr style='border: 1px solid rgba(0,0,0,0.2); width:90%;' ng-show='request.guru.name'>
+
+      <!-- <div class='pure-g-c flex-column flex-space-between'> -->
+        <!-- <a class='item pure-g row-details' ng-click='goToGuruProfile(request.guru)' ng-show='request.guru.name'>
+          <div class='pure-u-1-5 grey-subject-text'>Guru</div>
+          <div class='pure-u-4-5 item-avatar-right'>{{request.guru.name}}
+              <img ng-src="{{request.guru.profile_url}}">
+          </div>
+        </a>  -->
+        <!-- <div class='pure-g row-details'>
+          <div class='pure-u-1-5 grey-subject-text'>Class</div>
+          <div class='pure-u-4-5'></div>
+        </div> -->
+        <!-- <div class='flex-item-c j-start'> -->
+          <div class='pure-g row-details'>
+            <div class='pure-u-1-5 grey-subject-text'>Date</div>
+            <div class='pure-u-4-5'>{{formatted_time_created}}</div>
+          </div>
+          <div class='pure-g row-details'>
+            <div class='pure-u-1-5 grey-subject-text'>Estimate</div>
+            <div class='pure-u-4-5'>{{formatted_time_estimated_hours}} hours, {{request.time_estimate % 60}} minutes</div>
+          </div>
+        <!-- <div class='pure-g row-details'>
+          <div class='pure-u-1-5 grey-subject-text'>Calendar</div>
+          <a ng-click='goToStudentCalendar()'class='pure-u-4-5 item-icon-right'>See Calendar
+            <i class='ion icon-chevron-right icon-positive'></i>
+          </a>
+        </div> -->
+        <div class='pure-g row-details'>
+          <div class='pure-u-1-5 grey-subject-text'>Type</div>
+          <div class='pure-u-4-5'>{{formatted_request_type}}</div>
+        </div>
+        <div class='pure-g row-details' ng-show='request.status === 1 && user.cards && user.cards.length > 0 '>
+          <div class='pure-u-1-5 grey-subject-text'>Card Info</div>
+          <div class='pure-u-4-5'>{{user.cards[0].card_last4}}, {{user.cards[0].card_type}}</div>
+        </div>
+        <div class='pure-g row-details'>
+          <div class='pure-u-1-5 grey-subject-text'>Details</div>
+          <div class='pure-u-4-5'>{{request.description}}</div>
+          <div class='pure-u-1-5 grey-subject-text'></div>
+          <div ng-show="request.files && request.files.length > 0" class='pure-u-4-5 relative'><span class='opacity-3-4'><i class='icon ion-paperclip'></i>&nbsp;{{request.files.length}} Attachment </span>
+            <a class='button button-clear button-positive attachment-img' ng-click='viewFilesModal.show();'> view </a>
+          </div>
+        </div>
+        <div class='pure-g row-details'>
+          <div class='pure-u-1-5 grey-subject-text'>Location</div>
+          <div class='pure-u-4-5'>{{request.address.split(', ').slice(0,3).join(', ')}}</div>
+          <!-- <div class='pure-u-1 padding-1em'>
+            <div class='map-container'>
+            </div>
+          </div> -->
+          <div class='pure-u-1' style='margin-top:1em;'>
+            <div id="map_canvas" style="height: 100px;width: 100%;">
+              <ui-gmap-google-map center="map.center" control="map.control" zoom="map.zoom"  pan="true" options="options">
+              </ui-gmap-google-map>
+            </div>
+          </div>
+        </div>
+
+      <!-- </div> -->
+      <div class='pure-g flex-item-c j-start-end' ng-click="cancelRequest()" ng-show='request.status === 0'>
+        <div class='pure-u-1'>
+          <button class='button button-full button-light'> Cancel Session </button>
+        </div>
+      </div>
+      <div class='incoming-request-container pure-g' ng-show='request.status === 1'>
+          <div class='pure-u-1-2'>
+              <button class='button button-full button-light' ng-click='rejectGuru()'> Reject </button>
+          </div>
+          <div class='pure-u-1-2'>
+              <button class='button button-full button-light' ng-click='acceptGuru()'> Accept
+              </button>
+          </div>
+      </div>
+      <div class='cancel-session-container pure-g' ng-show='proposal.status === 1'>
+          <div class='pure-u-1 padding-1em center white-text'>
+              Proposal Accepted! We'll keep you updated
+          </div>
+      </div>
+
+    </div>
+
+  </ion-content>
+</ion-view>
