@@ -1,10 +1,24 @@
 Uguru Mobile
 ============
 
-- We are using the [Ionic Framework](http://ionicframework.com)
-- Styling with [Sass](http://ionicframework.com/tutorials/customizing-ionic-with-sass/)
-- Compiling for native platforms through Cordova
-- Package an app using Ionic package service: ionic package <MODE> <PLATFORM>
+**Setup**
+
+- % brew install npm
+- % npm install -g cordova ionic
+- % npm install -g
+
+**Run local server on ios-sim**
+
+- % ionic emulate ios -clr
+
+
+
+
+
+
+======LESS IMPORTANT STUFF BELOW======
+
+
 
 **Github Best Practices (DO THESE IN THIS ORDER!!)**
 - Add your files!
@@ -19,30 +33,10 @@ Uguru Mobile
 - Push to the live server
     - % git push origin jason
 
-**Setup**
-
-- Install [Node.js](http://nodejs.org)
-- % npm install -g ionic cordova
-- % npm install -g (*install all dependancies globally*)
-- % ionic serve (*in browser*)
-- If modules missing enter following command:
-	- % npm install gulp-load-plugins open del beepbeep express jshint-stylish connect-livereload streamqueue run-sequence merge-stream gulp-debug gulp-autoprefixer gulp-sass gulp-rename karma yargs gulp-concat gulp-minify-css gulp-util
-
-- [OPTION] LINUX: git fetch, git pull, or git push Without Enter usr name & Passowrd
-	- Follow : https://help.github.com/articles/generating-ssh-keys/
-	- Switching remote URLs from HTTPS to SSH
-		- % git remote -v
-		- % git remote set-url origin git@github.com:sam1rm/uguru-mobile.git
-		- % git remote -v
-
 **Adding Cordova/Phonegap Plugins**
 
 - % cordova -d plugin add ~/Git/packages/phonegap-facebook-plugin-master --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
 
-**Building for Multiple Platforms**
-
-- % ionic platform add <PLATFORM>
-- *You will need to read-add some, if not all, of your plugins for use with the new <PLATFORM>*
 
 *iOS Build*
 
