@@ -2317,14 +2317,6 @@ class AdminViewGithubIssues(restful.Resource):
         return jsonify(success=True)
 
 
-
-class AdminUniversityCoursesView(restful.Resource):
-    def post(self, auth_token, uni_id):
-        if not auth_token in APPROVED_ADMIN_TOKENS:
-            return "UNAUTHORIZED", 401
-
-        return jsonify(success=[True])
-
 class UserEmailView(restful.Resource):
     def put (self):
         email_user_id = session.get('email_user_id')
@@ -2395,7 +2387,37 @@ class AdminUniversityAddRecipientsView(restful.Resource):
         return jsonify(success=results)
 
 
-class AdminUniversityDepartmentsView(restful.Resource):
+
+################################
+### START ADMIN API (OFFICIAL) #
+################################
+
+class AdminUniversityCourseView(restful.Resource):
+    def post(self, auth_token, uni_id):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        return jsonify(success=[True])
+
+    def get(self, auth_token, uni_id):
+        if not auth_token in uni_id:
+            return "UNAUTHORIZED", 401
+
+        return jsonify(success=[True])
+
+class AdminUniversityListView(restful.Resource):
+    def get(self):
+
+        from static.data.universities_efficient import universities_arr
+
+        return json.dumps(universities_arr), 200
+
+class AdminUniversityDeptCoursesView(restful.Resource):
+    def post(self, auth_token, uni_id, dept_id):
+        pass
+
+# create a department
+class AdminUniversityDeptView(restful.Resource):
     def post(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
@@ -2427,6 +2449,10 @@ class AdminUniversityDepartmentsView(restful.Resource):
 
         return jsonify(success=results)
 
+####################
+### END (OFFICIAL) #
+####################
+
 api.add_resource(UserView, '/api/v1/users')
 api.add_resource(UserNewView, '/api/v1/user')
 api.add_resource(UserOneView, '/api/v1/user/<int:_id>')
@@ -2457,8 +2483,10 @@ api.add_resource(UserEmailView, '/api/v1/user_emails')
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')
 api.add_resource(AdminUserView, '/api/admin/users/')
-api.add_resource(AdminUniversityCoursesView, '/api/admin/<string:auth_token>/university/<int:uni_id>/courses')
-api.add_resource(AdminUniversityDepartmentsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/departments')
+api.add_resource(AdminUniversityListView, '/api/admin/<string:auth_token>/universities')
+api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/university/<int:uni_id>/courses')
+api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/university/<int:uni_id>/departments')
+api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/university/<int:uni_id>/depts/<int:dept_id>/courses')
 api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients')
 api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test')
 api.add_resource(AdminAppUpdateView, '/api/admin/app/update')

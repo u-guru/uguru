@@ -1,6 +1,6 @@
 import requests
 
-ADMIN_AUTH_TOKEN = 'a;dljasiodna90sdnaidna'
+ADMIN_AUTH_TOKEN = '9c1185a5c5e9fc54612808977ee8f548b2258d31'
 
 # POST request
 def create_university(payload):
