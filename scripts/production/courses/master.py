@@ -1,4 +1,4 @@
-import requests, json
+import requests, json, tor_client
 from bs4 import BeautifulSoup
 
 def get_school_url(id):
@@ -133,7 +133,7 @@ def get_chegg_course_descriptions(chegg_name):
 	university_info = {'departments': [], 'name': chegg_name}
 
 	url = "http://www.chegg.com/courses/" + chegg_name
-	soup = BeautifulSoup(requests.get(url).text)
+	soup = BeautifulSoup(tor_client.get(url).text)
 
 	subjects = soup.find('div', attrs = {'class': 'subjects-list'}).findAll('li')
 
@@ -149,7 +149,7 @@ def get_chegg_course_descriptions(chegg_name):
 		subject_info = {'url':subject_url, 'name': subject_text, 'courses': [], 'abbr':subject_abbr}
 
 
-		subject_soup = BeautifulSoup(requests.get(subject_url).text)
+		subject_soup = BeautifulSoup(tor_client.get(subject_url).text)
 		try:
 			courses = subject_soup.find('div', attrs = {'class': 'courses-list'}).findAll('li')
 		except:
@@ -179,7 +179,7 @@ def get_chegg_course_descriptions(chegg_name):
 def get_school_information():
 	school_list = []
 
-	soup = BeautifulSoup(requests.get('http://www.chegg.com/courses/').text)
+	soup = BeautifulSoup(tor_client.get('http://www.chegg.com/courses/').text)
 	schools = soup.find('div', attrs = {'class': 'schools-list'}).findAll('li')
 
 	for school in schools:
@@ -219,7 +219,7 @@ def remove_special_chars_and_articles(string):
 
 def get_school_id(school_name):
 	
-	response = requests.get('http://search.mtvnservices.com/typeahead/suggest/?solrformat=true&rows=1&q=' + school_name + '&siteName=rmp&group=off&group.field=content_type_s&group.limit=20&fq=content_type_s%3ASCHOOL').text
+	response = tor_client.get('http://search.mtvnservices.com/typeahead/suggest/?solrformat=true&rows=1&q=' + school_name + '&siteName=rmp&group=off&group.field=content_type_s&group.limit=20&fq=content_type_s%3ASCHOOL').text
 
 	try:
 		response_json = json.loads(response)['response']['docs'][0]
@@ -243,7 +243,7 @@ if __name__ == '__main__':
 
 	# Iterates through chegg courses
 	index = 0
-	for school in SCHOOLS:
+	for school in SCHOOLS[0:100]:
 		index += 1
 		print(str(index) + " Attempting to load course information for " + school["name"])
 
@@ -252,9 +252,22 @@ if __name__ == '__main__':
 			with open("input-" + school["name"] + ".json") as data_file:
 				university_info = json.load(data_file)
 			print("Loaded course information for " + school["name"])
+			
+			
+			if len(university_info.keys()) == 0:
+				university_info = get_chegg_course_descriptions(school["chegg-name"])
+				print("EMPTY DICT: Writing course information for " + school["name"])
+
+			with open("input-" + school["name"] + ".json", 'w') as outfile:
+				# we're going to send this to the server, might as well make it look nice & easy to read
+				json.dump(obj=university_info, fp=outfile, indent=4, sort_keys=True)
 		except IOError:
 			print("Getting course information from Chegg for " + school["name"])
-			university_info = get_chegg_course_descriptions(school["chegg-name"])
+			
+			try:
+				university_info = get_chegg_course_descriptions(school["chegg-name"])
+			except:
+				print "ERROR within get chegg course descriptions for",  school["chegg-name"]
 
 			print("Writing course information for " + school["name"])
 
@@ -265,20 +278,27 @@ if __name__ == '__main__':
 
 		# update master.json
 
-		with open("master.json") as data_file:
-			master_json = json.load(data_file)
-			universities = master_json['universities']
-			if not universities.get(school['name']):
-				master_json['universities'][school['name']] = university_info
-				master_json['universities'][school['name']].pop('departments') # dont want to make this a MASSIVE file
-				master_json['all_stats']['num_courses'] = sum([master_json['universities'][uni]['all_stats']['num_courses'] for uni in master_json['universities'].keys()])
-				master_json['all_stats']['num_departments'] = sum([master_json['universities'][uni]['all_stats']['num_departments'] for uni in master_json['universities'].keys()])
-				#update this file
-				with open("master.json", 'w') as outfile:
-					json.dump(obj=master_json, fp=outfile, indent=4, sort_keys=True)
+		
+		# try:
+		# 	with open("master.json") as data_file:
+		# 		master_json = json.load(data_file)
+		# 		universities = master_json['universities']
+		# 		if not universities.get(school['name']):
+		# 			try:
+		# 				master_json['universities'][school['name']] = university_info
+		# 				master_json['universities'][school['name']].pop('departments') # dont want to make this a MASSIVE file
+		# 				master_json['all_stats']['num_courses'] = sum([master_json['universities'][uni]['all_stats']['num_courses'] for uni in master_json['universities'].keys()])
+		# 				master_json['all_stats']['num_departments'] = sum([master_json['universities'][uni]['all_stats']['num_departments'] for uni in master_json['universities'].keys()])
+		# 			except:
+		# 				print "some shit went down"
+		# 				#update this file
+		# 			with open("master.json", 'w') as outfile:
+		# 				json.dump(obj=master_json, fp=outfile, indent=4, sort_keys=True)
 
-				with open("master_five.json", 'w') as outfile:
-					json.dump(obj=master_json, fp=outfile, indent=4, sort_keys=True)
+		# 			with open("master_five.json", 'w') as outfile:
+		# 				json.dump(obj=master_json, fp=outfile, indent=4, sort_keys=True)
+		# except:
+		# 	print "master.json broke again fuck this"
 
 		# print("Getting teacher information from RateMyProfessor for " + school["name"])
 		# teacher_ids = []
@@ -286,7 +306,7 @@ if __name__ == '__main__':
 
 		# url = get_school_url(school["id"])
 
-		# response = requests.get(url).text
+		# response = tor_client.get(url).text
 		# try:
 
 		# 	response = json.loads(response)["response"]["docs"]
@@ -309,7 +329,7 @@ if __name__ == '__main__':
 		# 	url = get_teacher_url(teacher)
 		# 	from time import sleep
 		# 	sleep(0.25)
-		# 	response = json.loads(requests.get(url).text)["ratings"]
+		# 	response = json.loads(tor_client.get(url).text)["ratings"]
 		# 	from pprint import pprint
 		# 	# print len(response), 'ratings found'
 		# 	index = 0
@@ -429,18 +449,18 @@ if __name__ == '__main__':
 		# # 		try:
 		# # 			description = course_descriptions[class_name]
 		# # 		except KeyError:
-		# 			class_description_found = 0
+		# # 			class_description_found = 0
 
-		# 		if class_description_found == 1:
-		# 			try:
-		# 				frequency = class_information[class_name]["frequency"]
-		# 			except KeyError:
-		# 				frequency = 0
-		# 				class_information[class_name] = {}
+		# # 		if class_description_found == 1:
+		# # 			try:
+		# # 				frequency = class_information[class_name]["frequency"]
+		# # 			except KeyError:
+		# # 				frequency = 0
+		# # 				class_information[class_name] = {}
 
-		# 			frequency += 1
+		# # 			frequency += 1
 
-		# 			class_information[class_name]["description"] = description
-		# 			class_information[class_name]["frequency"] = frequency
+		# # 			class_information[class_name]["description"] = description
+		# # 			class_information[class_name]["frequency"] = frequency
 
-		# print("Information dumped to output-" + school["name"] + ".json")
+		# # print("Information dumped to output-" + school["name"] + ".json")

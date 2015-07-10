@@ -778,6 +778,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     });
 
+     console.log($scope.user);
+
 
 
     document.addEventListener("resume", function() {

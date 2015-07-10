@@ -26,10 +26,11 @@ angular.module('uguru.util.controllers')
     $scope.loginMode = false;
     $scope.headerText = 'Sign Up';
 
+    $scope.settings = {}
     $scope.settings.icons = {
       profile:true,
       notifications: false,
-      payments: false,
+      card: false,
       support: false,
       guru: false
     }
@@ -37,7 +38,37 @@ angular.module('uguru.util.controllers')
     $scope.selectedCurrentHourly = 10;
 
     $scope.setSettingsToIndex = function(index) {
-      $scope.settingsIndex = index;
+
+
+
+      for (var i = 0; i < Object.keys($scope.settings.icons).length; i++ ) {
+
+        var settingsKey = Object.keys($scope.settings.icons)[i];
+
+        //previously true, now false
+        if ($scope.settings.icons[settingsKey]) {
+          $scope.settings.icons[settingsKey] = false;
+        }
+
+        //needs to be true now
+
+        if ((i + 1) === index) {
+          $scope.settings.icons[settingsKey] = true;
+        }
+
+      }
+
+      if (index === 5) {
+        if ($scope.root.vars.guru_mode) {
+
+          $scope.goToStudentMode();
+
+        } else {
+          $scope.goToGuru();
+        }
+      }
+
+
     }
 
     if ($scope.user && $scope.user.current_hourly) {
@@ -116,7 +147,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.resetAccount = function() {
-      if (confirm('Are you sure you want to reset your admin account?')) {
+      if ($scope.user.is_admin && confirm('Are you sure you want to reset your admin account?')) {
 
         $scope.loader.show();
         User.clearAttr($scope.user, $scope.user.id).then(
@@ -126,9 +157,8 @@ angular.module('uguru.util.controllers')
             $scope.user.university_id = null;
             $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
             $ionicSideMenuDelegate.toggleRight();
-            $timeout(function() {
-              $state.go('^.onboarding');
-            }, 1000)
+            $scope.logoutUser();
+            $scope.goToBeginning();
           },
           function(err) {
             console.log(err)
@@ -168,6 +198,33 @@ angular.module('uguru.util.controllers')
         $ionicViewSwitcher.nextDirection('forward');
         $state.go('^.become-guru');
       }, 500)
+    }
+
+    $scope.goToGuru = function() {
+
+      if ($scope.user && $scope.user.show_become_guru) {
+
+        $state.go('^.become-guru');
+
+        $scope.user.updateAttr('is_a_guru', $scope.user, {'is_a_guru': true}, null, $scope);
+
+        $timeout(function() {
+          $ionicViewSwitcher.nextDirection('back');
+          $ionicSideMenuDelegate.toggleRight();
+        }, 500)
+
+      } else {
+
+        $state.go('^.guru');
+        $scope.root.vars.guru_mode = true;
+        $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': true}, null, $scope);
+        $timeout(function() {
+            $ionicViewSwitcher.nextDirection('back');
+            $ionicSideMenuDelegate.toggleRight();
+        }, 500);
+
+      }
+
     }
 
 
@@ -228,11 +285,11 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.goToStudentMode = function() {
-      $ionicSideMenuDelegate.toggleRight();
+      $scope.root.vars.guru_mode = false;
+      $state.go('^.home');
       $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': false}, null, $scope);
       $timeout(function() {
-          $state.go('^.home');
-          $scope.root.vars.guru_mode = false;
+          $ionicSideMenuDelegate.toggleRight();
       }, 500);
     }
 

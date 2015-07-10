@@ -1,8 +1,9 @@
-
 import requests
 import requesocks
 # add all necessary tor components here
 ### do whatever you need here to get the HTML page using tor connection
+## i.e. tor_obj.request_page
+
 
 
 # Takes a URL as INPUT and OUTPUTS the **HTML TEXT/STRING** of the url we are retrieving
@@ -13,6 +14,7 @@ def get(url):
     'http': 'socks5://127.0.0.1:9150',
     'https': 'socks5://127.0.0.1:9150'
     }
+   
     
     ## ^^ am not sure of the tor syntax but fill in whatever is necessary
     return tor_client.get(url)
@@ -24,4 +26,5 @@ def post():
 
 ## initiates tor connection, returns tor connection object
 def initiate_tor_connection():
+    
     pass
